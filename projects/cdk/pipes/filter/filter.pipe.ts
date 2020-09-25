@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {TuiMatcher} from '@taiga-ui/cdk/types';
 
 @Pipe({name: 'tuiFilter'})
-export class TuiFilterPipe<T> implements PipeTransform {
+export class TuiFilterPipe implements PipeTransform {
     /**
      * Filters an array through a matcher function using additional arguments
      *
@@ -10,7 +10,7 @@ export class TuiFilterPipe<T> implements PipeTransform {
      * @param matcher method for filtering
      * @param args arbitrary number of additional arguments
      */
-    transform(items: ReadonlyArray<T>, matcher: TuiMatcher<T>, ...args: any[]): T[] {
+    transform<T>(items: ReadonlyArray<T>, matcher: TuiMatcher<T>, ...args: any[]): T[] {
         return items.filter(item => matcher(item, ...args));
     }
 }

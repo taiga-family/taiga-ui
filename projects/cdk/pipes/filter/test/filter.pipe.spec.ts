@@ -2,7 +2,7 @@ import {TuiMatcher} from '../../../types/matcher';
 import {TuiFilterPipe} from '../filter.pipe';
 
 describe('TuiFilter pipe', () => {
-    let pipe: TuiFilterPipe<string>;
+    let pipe: TuiFilterPipe;
     const data = ['two', 'eleven'];
     const args = ['two', 'four'];
     const matcher: TuiMatcher<string> = (item, search, ...rest) =>

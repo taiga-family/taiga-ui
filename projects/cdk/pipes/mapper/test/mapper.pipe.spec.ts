@@ -2,7 +2,7 @@ import {TuiMapper} from '../../../types/mapper';
 import {TuiMapperPipe} from '../mapper.pipe';
 
 describe('TuiMapper pipe', () => {
-    let pipe: TuiMapperPipe<string, string>;
+    let pipe: TuiMapperPipe;
     const data = 'test';
     const args = ['three', 'eleven'];
     const mapper: TuiMapper<string, string> = (item, ...rest) =>
