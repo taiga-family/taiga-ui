@@ -1,0 +1,14 @@
+{
+    "rulesDirectory": ["node_modules/@tinkoff"],
+    "extends": ["@tinkoff/linters/tslint/bases/prettier.tslint.json"],
+    "rules": {
+        "ordered-imports": true
+    },
+    "linterOptions": {
+        "exclude": [
+            "projects/**/test.ts",
+            "projects/**/icons/all.ts",
+            "**/schematics/*/files/**/*"
+        ]
+    }
+}

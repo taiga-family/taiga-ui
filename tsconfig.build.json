@@ -1,0 +1,23 @@
+{
+    "extends": "./tsconfig.json",
+    "exclude": ["projects/**/test.ts", "**/*.spec.ts"],
+    "angularCompilerOptions": {
+        "preserveWhitespaces": false,
+        "annotateForClosureCompiler": false,
+        "skipTemplateCodegen": true,
+        "strictMetadataEmit": true,
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true,
+        "enableResourceInlining": true
+    },
+    "compilerOptions": {
+        "target": "es2015",
+        "declaration": true,
+        "inlineSources": true,
+        "outDir": "../dist/out-tsc/lib",
+        "types": [],
+        "paths": {
+            "@taiga-ui/cdk": ["./dist/cdk"]
+        }
+    }
+}

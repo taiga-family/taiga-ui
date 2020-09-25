@@ -1,0 +1,13 @@
+<polymorpheus-outlet
+    *ngFor="let item of dialogs$ | async"
+    tuiFocusTrap
+    tuiOverscroll="all"
+    class="dialog"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-labelledby]="item.id"
+    [content]="dialog"
+    [context]="item"
+    [@tuiParentAnimation]
+></polymorpheus-outlet>
+<div class="overlay"></div>

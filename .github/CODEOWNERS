@@ -1,0 +1,14 @@
+
+# ==================================================================================
+# ==================================================================================
+#                            @taiga-ui codeowners
+# ==================================================================================
+# ==================================================================================
+#
+#  Configuration of code ownership and review approvals for the @taiga-ui repo.
+#
+#  More info: https://help.github.com/articles/about-codeowners/
+#
+
+* @waterplea @MarsiBarsi
+# will be requested for review when someone opens a pull request

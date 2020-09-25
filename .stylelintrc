@@ -1,0 +1,13 @@
+{
+    "extends": ["@tinkoff/linters/stylelint/bases/prettier.stylelint.json"],
+    "rules": {
+        "value-keyword-case": null,
+        "selector-type-no-unknown": [
+            true,
+            {
+                "ignore": ["custom-elements"],
+                "ignoreTypes": ["/^/deep/"]
+            }
+        ]
+    }
+}
