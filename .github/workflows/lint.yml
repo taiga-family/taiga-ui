@@ -3,7 +3,7 @@ name: Lint all packages of Taiga UI
 on: push
 
 jobs:
-  build:
+  lint:
     # Setup part
     runs-on: ubuntu-latest
     steps:
