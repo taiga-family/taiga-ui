@@ -5,7 +5,7 @@
     "scripts": {
         "build:all": "npm run build:cdk",
         "build:cdk": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng run cdk:build",
-        "test": "ng test --browsers=ChromeHeadless --karmaConfig=./karma.conf.js --",
+        "test": "ng test --browsers=ChromeHeadless --code-coverage=true --karmaConfig=./karma.conf.js --",
         "lint": "ng lint",
         "lint:less": "stylelint '**/*.less'",
         "prettier": "prettier --write \"**/*.{js,ts,html,md,less,json}\"",
