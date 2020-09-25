@@ -1,6 +1,6 @@
 name: Test all packages of Taiga UI and check coverage with Coveralls
 
-on: ["push", "pull_request"]
+on: push
 
 jobs:
   build:
