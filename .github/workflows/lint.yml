@@ -1,4 +1,4 @@
-name: Build all packages of Taiga UI
+name: Lint all packages of Taiga UI
 
 on: push
 
