@@ -14,7 +14,7 @@
         "release:patch": "npm run release -- --release-as patch",
         "release:minor": "npm run release -- --release-as minor",
         "release:major": "npm run release -- --release-as major",
-        "publish": "npm run build:cdk && npm publish ./dist/common"
+        "publish": "npm run build:cdk && npm publish ./dist/cdk"
     },
     "keywords": [
         "angular",

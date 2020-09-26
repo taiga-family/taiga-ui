@@ -7,6 +7,12 @@
 
 It is based on [ng-polymorpheus](https://github.com/TinkoffCreditSystems/ng-polymorpheus) dynamic content approach and uses [Web APIs for Angular](https://github.com/ng-web-apis) for required browser APIs.
 
+## How to install
+
+```
+npm i @taiga-ui/cdk
+```
+
 ## Quick links
 
 -   [CDK Documentation](https://github.com/TinkoffCreditSystems/taiga-ui/wiki/CDK)
