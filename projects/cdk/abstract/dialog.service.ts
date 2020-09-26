@@ -1,15 +1,23 @@
 import {Inject, Injectable} from '@angular/core';
-import {TuiBaseDialog, TuiBaseDialogContext} from '@taiga-ui/cdk/interfaces';
+import {
+    TuiAriaDialogContext,
+    TuiBaseDialog,
+    TuiBaseDialogContext,
+} from '@taiga-ui/cdk/interfaces';
 import {TuiIdService} from '@taiga-ui/cdk/services';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable} from 'rxjs';
 
-type Dialog<T> = TuiBaseDialog<any, TuiBaseDialogContext<any> & T> & T;
+type Dialog<T> = TuiBaseDialog<any, TuiBaseDialogContext<any> & T> &
+    T &
+    TuiAriaDialogContext;
 
 @Injectable()
 export abstract class AbstractTuiDialogService<T extends {}> extends Observable<
     ReadonlyArray<Dialog<T>>
 > {
+    protected abstract readonly component: PolymorpheusContent<Dialog<T>>;
+
     protected abstract readonly defaultOptions: T;
 
     protected readonly dialogs$ = new BehaviorSubject<ReadonlyArray<Dialog<T>>>([]);
@@ -30,6 +38,7 @@ export abstract class AbstractTuiDialogService<T extends {}> extends Observable<
                 ...options,
                 observer,
                 content,
+                component: this.component,
                 id: this.idService.generate(),
             };
 

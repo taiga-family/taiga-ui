@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
 import {TuiAriaDialogContext} from '@taiga-ui/cdk/interfaces';
-import {TUI_DIALOG, TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
+import {merge, Observable} from 'rxjs';
 
+// @dynamic
 @Component({
     selector: 'tui-dialog-host',
     templateUrl: './dialog-host.template.html',
@@ -13,8 +13,10 @@ import {Observable} from 'rxjs';
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiDialogHostComponent<T extends TuiAriaDialogContext> {
+    readonly dialogs$ = merge(...this.dialogs);
+
     constructor(
-        @Inject(TUI_DIALOG) readonly dialog: PolymorpheusContent<T>,
-        @Inject(TUI_DIALOGS) readonly dialogs$: Observable<ReadonlyArray<T>>,
+        @Inject(TUI_DIALOGS)
+        private readonly dialogs: ReadonlyArray<Observable<ReadonlyArray<T>>>,
     ) {}
 }
