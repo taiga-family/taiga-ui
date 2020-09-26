@@ -25,10 +25,6 @@ export abstract class AbstractTuiControl<T>
     protected readonly destroy$ = new Subject<void>();
 
     @Input()
-    @tuiDefaultProp()
-    success = false;
-
-    @Input()
     @HostBinding('class._readonly')
     @tuiDefaultProp()
     readOnly = false;
@@ -67,16 +63,12 @@ export abstract class AbstractTuiControl<T>
         return this.validation;
     }
 
-    get validationSuccess(): boolean {
-        return this.computedValidation === TuiValidation.Success;
-    }
-
     get validation(): TuiValidation {
         if (this.touched && this.invalid) {
             return TuiValidation.Error;
         }
 
-        if (this.success) {
+        if (this.touched && this.valid) {
             return TuiValidation.Success;
         }
 
@@ -93,6 +85,10 @@ export abstract class AbstractTuiControl<T>
 
     get invalid(): boolean {
         return this.safeNgControlData<boolean>(({invalid}) => invalid, false);
+    }
+
+    get valid(): boolean {
+        return this.safeNgControlData<boolean>(({valid}) => valid, false);
     }
 
     get touched(): boolean {

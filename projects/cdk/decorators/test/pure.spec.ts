@@ -39,4 +39,23 @@ describe('tuiPure', () => {
 
         expect(testObject.combine(name, age)).toBe(result);
     });
+
+    it('has access to this', () => {
+        const name = 'Alex';
+        const age = 30;
+
+        class TestClass {
+            constructor(readonly prefix: string) {}
+
+            @tuiPure
+            combine(name: string, age: number): [string, string, number] {
+                return [this.prefix, name, age];
+            }
+        }
+
+        const testObject = new TestClass('awesome');
+        const result = testObject.combine(name, age);
+
+        expect(testObject.combine(name, age)).toBe(result);
+    });
 });

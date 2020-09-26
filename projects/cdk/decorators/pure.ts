@@ -46,7 +46,7 @@ export function tuiPure<T>(
                 }
 
                 previousArgs = args;
-                previousResult = original(...args);
+                previousResult = original.apply(this, args);
 
                 return previousResult;
             };
