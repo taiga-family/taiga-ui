@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "2.0.0",
+    "version": "1.1.0",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "scripts": {
         "build:all": "npm run build:cdk",
@@ -10,6 +10,10 @@
         "lint:less": "stylelint '**/*.less'",
         "prettier": "prettier --write \"**/*.{js,ts,html,md,less,json}\"",
         "typecheck": "tsc --noEmit --skipLibCheck",
+        "release": "standard-version",
+        "release:patch": "npm run release -- --release-as patch",
+        "release:minor": "npm run release -- --release-as minor",
+        "release:major": "npm run release -- --release-as major",
         "publish": "npm run build:cdk && npm publish ./dist/common"
     },
     "keywords": [
