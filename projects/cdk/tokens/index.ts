@@ -1,5 +1,4 @@
 export * from './default-renderer';
-export * from './dialog';
 export * from './dialogs';
 export * from './focusable-item-accessor';
 export * from './is-android';
