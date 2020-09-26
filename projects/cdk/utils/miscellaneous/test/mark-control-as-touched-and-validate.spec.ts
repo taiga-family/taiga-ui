@@ -31,7 +31,7 @@ describe('markControlAsTouchedAndValidate', () => {
         expect(array.at(1).touched).toBe(true);
     });
 
-    it('Сложная комбинация', () => {
+    it('With nested form arrays', () => {
         const form = new FormGroup({
             control1: new FormControl(),
             control2: new FormControl(),
