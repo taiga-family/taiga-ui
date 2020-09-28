@@ -1,5 +1,5 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {MonthNumber} from '@taiga-ui/cdk/enums';
+import {TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {TuiMonthLike} from '@taiga-ui/cdk/interfaces';
 import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
@@ -162,12 +162,12 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         tuiAssert.assert(TuiMonth.isValidMonthPart(month));
 
         switch (month) {
-            case MonthNumber.February:
+            case TuiMonthNumber.February:
                 return isLeapYear ? 29 : 28;
-            case MonthNumber.April:
-            case MonthNumber.June:
-            case MonthNumber.September:
-            case MonthNumber.November:
+            case TuiMonthNumber.April:
+            case TuiMonthNumber.June:
+            case TuiMonthNumber.September:
+            case TuiMonthNumber.November:
                 return 30;
             default:
                 return 31;

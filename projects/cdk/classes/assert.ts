@@ -1,5 +1,4 @@
 import {isDevMode} from '@angular/core';
-import {TuiAssertLevel} from '@taiga-ui/cdk/enums';
 
 const NOOP = () => {};
 
@@ -10,22 +9,10 @@ const NOOP = () => {};
 export class TuiAssertHelper {
     bootstrapped = false;
 
-    level = TuiAssertLevel.Warn;
-
     get assert(): (assertion: boolean, ...args: any[]) => void {
-        if (!this.bootstrapped || !isDevMode()) {
-            return NOOP;
-        }
-
-        return Function.prototype.bind.call(console.assert, console);
-    }
-
-    get assertWarn(): (assertion: boolean, ...args: any[]) => void {
-        if (!this.bootstrapped || this.level < TuiAssertLevel.Warn || !isDevMode()) {
-            return NOOP;
-        }
-
-        return Function.prototype.bind.call(console.assert, console);
+        return !this.bootstrapped || !isDevMode()
+            ? NOOP
+            : Function.prototype.bind.call(console.assert, console);
     }
 }
 

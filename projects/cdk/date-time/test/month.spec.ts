@@ -1,4 +1,4 @@
-import {MonthNumber} from '../../enums/month-number';
+import {TuiMonthNumber} from '../../enums/month-number';
 import {TuiMonth} from '../month';
 import {mockDateInside, pendingIfNotMoscowTimeZone} from './helpers';
 
@@ -45,64 +45,76 @@ describe('TuiMonth', () => {
         describe('getMonthDaysCount returns', () => {
             describe('31 if month is', () => {
                 it('January', () => {
-                    expect(TuiMonth.getMonthDaysCount(MonthNumber.January, true)).toBe(
+                    expect(TuiMonth.getMonthDaysCount(TuiMonthNumber.January, true)).toBe(
                         31,
                     );
                 });
 
                 it('May', () => {
-                    expect(TuiMonth.getMonthDaysCount(MonthNumber.May, true)).toBe(31);
+                    expect(TuiMonth.getMonthDaysCount(TuiMonthNumber.May, true)).toBe(31);
                 });
 
                 it('July', () => {
-                    expect(TuiMonth.getMonthDaysCount(MonthNumber.July, true)).toBe(31);
+                    expect(TuiMonth.getMonthDaysCount(TuiMonthNumber.July, true)).toBe(
+                        31,
+                    );
                 });
 
                 it('August', () => {
-                    expect(TuiMonth.getMonthDaysCount(MonthNumber.August, true)).toBe(31);
+                    expect(TuiMonth.getMonthDaysCount(TuiMonthNumber.August, true)).toBe(
+                        31,
+                    );
                 });
 
                 it('October', () => {
-                    expect(TuiMonth.getMonthDaysCount(MonthNumber.October, true)).toBe(
+                    expect(TuiMonth.getMonthDaysCount(TuiMonthNumber.October, true)).toBe(
                         31,
                     );
                 });
 
                 it('December', () => {
-                    expect(TuiMonth.getMonthDaysCount(MonthNumber.December, true)).toBe(
-                        31,
-                    );
+                    expect(
+                        TuiMonth.getMonthDaysCount(TuiMonthNumber.December, true),
+                    ).toBe(31);
                 });
             });
 
             describe('30 if month is', () => {
                 it('April', () => {
-                    expect(TuiMonth.getMonthDaysCount(MonthNumber.April, true)).toBe(30);
+                    expect(TuiMonth.getMonthDaysCount(TuiMonthNumber.April, true)).toBe(
+                        30,
+                    );
                 });
 
                 it('June', () => {
-                    expect(TuiMonth.getMonthDaysCount(MonthNumber.June, true)).toBe(30);
+                    expect(TuiMonth.getMonthDaysCount(TuiMonthNumber.June, true)).toBe(
+                        30,
+                    );
                 });
 
                 it('September', () => {
-                    expect(TuiMonth.getMonthDaysCount(MonthNumber.September, true)).toBe(
-                        30,
-                    );
+                    expect(
+                        TuiMonth.getMonthDaysCount(TuiMonthNumber.September, true),
+                    ).toBe(30);
                 });
 
                 it('November', () => {
-                    expect(TuiMonth.getMonthDaysCount(MonthNumber.November, true)).toBe(
-                        30,
-                    );
+                    expect(
+                        TuiMonth.getMonthDaysCount(TuiMonthNumber.November, true),
+                    ).toBe(30);
                 });
             });
 
             it('29 if month is February and the year is a leap year', () => {
-                expect(TuiMonth.getMonthDaysCount(MonthNumber.February, true)).toBe(29);
+                expect(TuiMonth.getMonthDaysCount(TuiMonthNumber.February, true)).toBe(
+                    29,
+                );
             });
 
             it('28 if month is February and the year is not a leap year', () => {
-                expect(TuiMonth.getMonthDaysCount(MonthNumber.February, false)).toBe(28);
+                expect(TuiMonth.getMonthDaysCount(TuiMonthNumber.February, false)).toBe(
+                    28,
+                );
             });
         });
 
@@ -209,64 +221,76 @@ describe('TuiMonth', () => {
             describe('daysCount', () => {
                 describe('31 if month is', () => {
                     it('January', () => {
-                        expect(new TuiMonth(2000, MonthNumber.January).daysCount).toBe(
+                        expect(new TuiMonth(2000, TuiMonthNumber.January).daysCount).toBe(
                             31,
                         );
                     });
 
                     it('May', () => {
-                        expect(new TuiMonth(2000, MonthNumber.May).daysCount).toBe(31);
+                        expect(new TuiMonth(2000, TuiMonthNumber.May).daysCount).toBe(31);
                     });
 
                     it('July', () => {
-                        expect(new TuiMonth(2000, MonthNumber.July).daysCount).toBe(31);
+                        expect(new TuiMonth(2000, TuiMonthNumber.July).daysCount).toBe(
+                            31,
+                        );
                     });
 
                     it('August', () => {
-                        expect(new TuiMonth(2000, MonthNumber.August).daysCount).toBe(31);
+                        expect(new TuiMonth(2000, TuiMonthNumber.August).daysCount).toBe(
+                            31,
+                        );
                     });
 
                     it('October', () => {
-                        expect(new TuiMonth(2000, MonthNumber.October).daysCount).toBe(
+                        expect(new TuiMonth(2000, TuiMonthNumber.October).daysCount).toBe(
                             31,
                         );
                     });
 
                     it('December', () => {
-                        expect(new TuiMonth(2000, MonthNumber.December).daysCount).toBe(
-                            31,
-                        );
+                        expect(
+                            new TuiMonth(2000, TuiMonthNumber.December).daysCount,
+                        ).toBe(31);
                     });
                 });
 
                 describe('30 if month is', () => {
                     it('April', () => {
-                        expect(new TuiMonth(2000, MonthNumber.April).daysCount).toBe(30);
+                        expect(new TuiMonth(2000, TuiMonthNumber.April).daysCount).toBe(
+                            30,
+                        );
                     });
 
                     it('June', () => {
-                        expect(new TuiMonth(2000, MonthNumber.June).daysCount).toBe(30);
+                        expect(new TuiMonth(2000, TuiMonthNumber.June).daysCount).toBe(
+                            30,
+                        );
                     });
 
                     it('September', () => {
-                        expect(new TuiMonth(2000, MonthNumber.September).daysCount).toBe(
-                            30,
-                        );
+                        expect(
+                            new TuiMonth(2000, TuiMonthNumber.September).daysCount,
+                        ).toBe(30);
                     });
 
                     it('November', () => {
-                        expect(new TuiMonth(2000, MonthNumber.November).daysCount).toBe(
-                            30,
-                        );
+                        expect(
+                            new TuiMonth(2000, TuiMonthNumber.November).daysCount,
+                        ).toBe(30);
                     });
                 });
 
                 it('29 if month is February and the year is a leap year', () => {
-                    expect(new TuiMonth(2000, MonthNumber.February).daysCount).toBe(29);
+                    expect(new TuiMonth(2000, TuiMonthNumber.February).daysCount).toBe(
+                        29,
+                    );
                 });
 
                 it('28 if month is February and the year is not a leap year', () => {
-                    expect(new TuiMonth(2001, MonthNumber.February).daysCount).toBe(28);
+                    expect(new TuiMonth(2001, TuiMonthNumber.February).daysCount).toBe(
+                        28,
+                    );
                 });
             });
 

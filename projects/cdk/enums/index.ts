@@ -1,4 +1,3 @@
-export * from './assert-level';
 export * from './autocomplete';
 export * from './input-mode';
 export * from './input-type';
