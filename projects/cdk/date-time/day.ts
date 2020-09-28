@@ -1,5 +1,5 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {MonthNumber} from '@taiga-ui/cdk/enums';
+import {TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {TuiDayLike} from '@taiga-ui/cdk/interfaces';
 import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
@@ -143,18 +143,18 @@ export class TuiDay extends TuiMonth {
         while (days > TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years))) {
             days -= TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years));
 
-            if (months === MonthNumber.December) {
+            if (months === TuiMonthNumber.December) {
                 years++;
-                months = MonthNumber.January;
+                months = TuiMonthNumber.January;
             } else {
                 months++;
             }
         }
 
         while (days < MIN_DAY) {
-            if (months === MonthNumber.January) {
+            if (months === TuiMonthNumber.January) {
                 years--;
-                months = MonthNumber.December;
+                months = TuiMonthNumber.December;
             } else {
                 months--;
             }

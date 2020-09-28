@@ -1,4 +1,4 @@
-export const enum MonthNumber {
+export const enum TuiMonthNumber {
     January,
     February,
     March,
