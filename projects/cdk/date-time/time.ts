@@ -125,8 +125,8 @@ export class TuiTime implements TuiTimeLike {
         const date = new Date();
 
         return TuiTime.fromAbsoluteMilliseconds(
-            (Date.now() % MILLISECONDS_IN_DAY) -
-                date.getTimezoneOffset() * MILLISECONDS_IN_MINUTE,
+            (Date.now() - date.getTimezoneOffset() * MILLISECONDS_IN_MINUTE) %
+                MILLISECONDS_IN_DAY,
         );
     }
 
