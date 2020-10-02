@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, HostBinding, Input, OnDestroy, OnInit} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angular/forms';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
+import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 import {TuiValidation} from '@taiga-ui/cdk/enums';
 import {fallbackValue} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -16,9 +17,9 @@ export abstract class AbstractTuiControl<T>
     implements OnDestroy, OnInit, ControlValueAccessor {
     private previousInternalValue?: T;
 
-    private onTouched?: () => void;
+    private onTouched = EMPTY_FUNCTION;
 
-    private onChange?: (value: T) => void;
+    private onChange = EMPTY_FUNCTION;
 
     protected readonly fallbackValue = this.getFallbackValue();
 
@@ -56,11 +57,7 @@ export abstract class AbstractTuiControl<T>
             return TuiValidation.Normal;
         }
 
-        if (this.pseudoValidation !== null) {
-            return this.pseudoValidation;
-        }
-
-        return this.validation;
+        return this.pseudoValidation === null ? this.validation : this.pseudoValidation;
     }
 
     get validation(): TuiValidation {
@@ -204,18 +201,12 @@ export abstract class AbstractTuiControl<T>
     }
 
     private controlMarkAsTouched() {
-        if (this.onTouched) {
-            this.onTouched();
-        }
-
+        this.onTouched();
         this.checkControlUpdate();
     }
 
     private controlSetValue(value: T) {
-        if (this.onChange) {
-            this.onChange(value);
-        }
-
+        this.onChange(value);
         this.checkControlUpdate();
     }
 
