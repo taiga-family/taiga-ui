@@ -71,46 +71,28 @@ export abstract class AbstractTuiInteractive {
 
     @HostBinding('class._hovered')
     get computedHovered(): boolean {
-        if (this.computedDisabled) {
-            return false;
-        }
-
-        return fallbackValue(this.pseudoHovered, this.hovered);
+        return !this.computedDisabled && fallbackValue(this.pseudoHovered, this.hovered);
     }
 
     @HostBinding('class._pressed')
     get computedPressed(): boolean {
-        if (this.computedDisabled) {
-            return false;
-        }
-
-        return fallbackValue(this.pseudoPressed, this.pressed);
+        return !this.computedDisabled && fallbackValue(this.pseudoPressed, this.pressed);
     }
 
     get computedFocusable(): boolean {
-        if (this.computedDisabled) {
-            return false;
-        }
-
-        return this.focusable || this.focused;
+        return !this.computedDisabled && (this.focusable || this.focused);
     }
 
     @HostBinding('class._focused')
     get computedFocused(): boolean {
-        if (this.computedDisabled) {
-            return false;
-        }
-
-        return fallbackValue(this.pseudoFocused, this.focused);
+        return !this.computedDisabled && fallbackValue(this.pseudoFocused, this.focused);
     }
 
     @HostBinding('class._focus-visible')
     get computedFocusVisible(): boolean {
-        if (this.computedDisabled) {
-            return false;
-        }
-
-        return fallbackValue(this.pseudoFocused, this.focusVisible);
+        return (
+            !this.computedDisabled && fallbackValue(this.pseudoFocused, this.focusVisible)
+        );
     }
 
     get id(): string {
