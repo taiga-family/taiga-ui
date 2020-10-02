@@ -161,6 +161,29 @@ describe('TuiMonth', () => {
                 });
             });
         });
+
+        describe('lengthBetween', () => {
+            it('one month', () => {
+                const first = new TuiMonth(2020, 4);
+                const second = new TuiMonth(2020, 5);
+
+                expect(TuiMonth.lengthBetween(first, second)).toBe(1);
+            });
+
+            it('13 months', () => {
+                const first = new TuiMonth(2020, 4);
+                const second = new TuiMonth(2021, 5);
+
+                expect(TuiMonth.lengthBetween(first, second)).toBe(13);
+            });
+
+            it('second less than first', () => {
+                const first = new TuiMonth(2020, 4);
+                const second = new TuiMonth(2020, 2);
+
+                expect(TuiMonth.lengthBetween(first, second)).toBe(-2);
+            });
+        });
     });
 
     describe('prototype', () => {
