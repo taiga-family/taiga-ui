@@ -1,7 +1,7 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 /**
- * Normalized any number to an integer within inclusive range
+ * Normalizes any number to an integer within inclusive range
  *
  * @param value
  * @param min lower inclusive integer
