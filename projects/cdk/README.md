@@ -1,6 +1,6 @@
 # Taiga UI — CDK
 
-[![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk.svg)](https://npmjs.com/package/@tinkoff/ng-polymorpheus)
+[![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk.svg)](https://npmjs.com/package/@taiga-ui/cdk)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@taiga-ui/cdk)](https://bundlephobia.com/result?p=@taiga-ui/cdk)
 
 > Development kit consisting of the low level tools and abstractions used to develop Taiga UI Angular entities
