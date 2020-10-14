@@ -62,19 +62,15 @@ export class TuiTime implements TuiTimeLike {
     /**
      * Converts TuiTime to string
      */
-    toString(mode: TuiTimeMode = 'HH:MM'): string {
+    toString(mode?: TuiTimeMode): string {
+        const needAddMs = mode === 'HH:MM:SS.MS' || (!mode && this.ms > 0);
+        const needAddSeconds =
+            needAddMs || mode === 'HH:MM:SS' || (!mode && this.seconds > 0);
+
         return (
             `${this.formatTime(this.hours)}:${this.formatTime(this.minutes)}` +
-            `${
-                mode.includes('HH:MM:SS') || this.seconds > 0 || this.ms > 0
-                    ? ':' + this.formatTime(this.seconds)
-                    : ''
-            }` +
-            `${
-                mode === 'HH:MM:SS.MS' || this.ms > 0
-                    ? '.' + this.formatTime(this.ms, 3)
-                    : ''
-            }`
+            `${needAddSeconds ? ':' + this.formatTime(this.seconds) : ''}` +
+            `${needAddMs ? '.' + this.formatTime(this.ms, 3) : ''}`
         );
     }
 
