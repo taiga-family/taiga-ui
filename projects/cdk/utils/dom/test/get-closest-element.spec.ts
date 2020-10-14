@@ -9,6 +9,9 @@ describe('getClosestElement', () => {
         document.body.appendChild(div);
 
         expect(getClosestElement(element, 'div')).toEqual(div);
+
+        document.body.removeChild(element);
+        document.body.removeChild(div);
     });
 
     it('fallback works without closest and matches element', () => {
@@ -25,6 +28,8 @@ describe('getClosestElement', () => {
         expect(getClosestElement(element, 'div')).toEqual(div);
 
         Element.prototype.closest = savedCLosest;
+        document.body.removeChild(element);
+        document.body.removeChild(div);
     });
 
     it('fallback works without closest and with nested element', () => {
@@ -39,5 +44,6 @@ describe('getClosestElement', () => {
         expect(getClosestElement(div, 'img')).toEqual(null);
 
         Element.prototype.closest = savedCLosest;
+        document.body.removeChild(div);
     });
 });

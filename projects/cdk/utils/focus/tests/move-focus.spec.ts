@@ -13,5 +13,8 @@ describe('move focus', () => {
         moveFocus(0, arr, 1);
 
         expect(document.activeElement).toEqual(second);
+
+        document.body.removeChild(first);
+        document.body.removeChild(second);
     });
 });

@@ -17,5 +17,7 @@ describe('getDocumentOrShadowRoot', () => {
         expect(getDocumentOrShadowRoot(element)).toEqual(
             element.getRootNode() as Document,
         );
+
+        document.body.removeChild(element);
     });
 });

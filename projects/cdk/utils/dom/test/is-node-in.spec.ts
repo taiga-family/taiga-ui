@@ -7,6 +7,8 @@ describe('isNodeIn', () => {
         document.body.appendChild(div);
 
         expect(isNodeIn(div, 'div')).toEqual(true);
+
+        document.body.removeChild(div);
     });
 
     it('class selector', () => {
@@ -17,6 +19,8 @@ describe('isNodeIn', () => {
         document.body.appendChild(div);
 
         expect(isNodeIn(div, '.hello')).toEqual(true);
+
+        document.body.removeChild(div);
     });
 
     it('works with text nodes', () => {
@@ -28,5 +32,7 @@ describe('isNodeIn', () => {
         document.body.appendChild(p);
 
         expect(isNodeIn(textNode, 'p')).toEqual(true);
+
+        document.body.removeChild(p);
     });
 });
