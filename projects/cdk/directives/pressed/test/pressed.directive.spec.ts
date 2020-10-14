@@ -7,9 +7,19 @@ import {TuiPressedModule} from '../pressed.module';
 describe('TuiPressed directive', () => {
     @Component({
         template: `
-            <div class="wrapper">
-                text
-                <div class="inner" (tuiPressedChange)="pressed = $event"></div>
+            <div
+                class="wrapper"
+                style="position: absolute;
+                       top: 0;
+                       left: 0;"
+            >
+                <div
+                    class="inner"
+                    style="height: 100px; width: 100px"
+                    (tuiPressedChange)="pressed = $event"
+                >
+                    button
+                </div>
                 text
             </div>
         `,
@@ -22,12 +32,26 @@ describe('TuiPressed directive', () => {
     let testComponent: TestComponent;
     let wrapperElement: DebugElement & {nativeElement: HTMLDivElement};
     let innerElement: DebugElement & {nativeElement: HTMLDivElement};
+    let socket: WebSocket;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
             imports: [TuiPressedModule],
             declarations: [TestComponent],
         });
+    });
+
+    beforeAll(done => {
+        fetch('http://localhost:9222/json')
+            .then(response => response.json())
+            .then(response => {
+                socket = new WebSocket(response[0].webSocketDebuggerUrl);
+                socket.onopen = done;
+            });
+    });
+
+    afterAll(() => {
+        socket.close();
     });
 
     beforeEach(() => {
@@ -40,11 +64,22 @@ describe('TuiPressed directive', () => {
     });
 
     describe('when pressed', () => {
-        beforeEach(() => {
-            innerElement.nativeElement.dispatchEvent(
-                new MouseEvent('mousedown', {bubbles: true}),
+        beforeEach(done => {
+            socket.send(
+                JSON.stringify({
+                    id: 1,
+                    method: 'Input.dispatchMouseEvent',
+                    params: {
+                        type: 'mousePressed',
+                        button: 'left',
+                        clickCount: 1,
+                        x: 5,
+                        y: 100,
+                    },
+                }),
             );
-            fixture.detectChanges();
+
+            setTimeout(done, 100);
         });
 
         it('emits "true"', () => {
