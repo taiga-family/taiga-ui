@@ -32,6 +32,7 @@ module.exports = function (config) {
                     '--no-sandbox',
                     '--headless',
                     '--disable-gpu',
+                    '--disable-web-security',
                     '--remote-debugging-port=9222',
                 ],
             },
