@@ -18,6 +18,8 @@ describe('getClosestKeyboardFocusable', () => {
         document.body.appendChild(root);
 
         expect(getClosestKeyboardFocusable(divElement, true, root)).toBe(buttonElement);
+
+        document.body.removeChild(root);
     });
 
     it('returns closest focusable if there is towards', () => {
@@ -30,6 +32,8 @@ describe('getClosestKeyboardFocusable', () => {
         document.body.appendChild(root);
 
         expect(getClosestKeyboardFocusable(divElement, false, root)).toBe(buttonElement);
+
+        document.body.removeChild(root);
     });
 
     it('returns null if there is no focusable elements', () => {
@@ -40,5 +44,7 @@ describe('getClosestKeyboardFocusable', () => {
         document.body.appendChild(root);
 
         expect(getClosestKeyboardFocusable(divElement, undefined, root)).toBe(null);
+
+        document.body.removeChild(root);
     });
 });

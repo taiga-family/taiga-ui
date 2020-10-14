@@ -5,13 +5,13 @@ describe('blurNativeFocused', () => {
     let element: HTMLInputElement;
 
     beforeEach(() => {
-        if (element) {
-            document.body.removeChild(element);
-        }
-
         element = document.createElement('input');
         document.body.appendChild(element);
         setNativeFocused(element, true);
+    });
+
+    afterAll(() => {
+        document.body.removeChild(element);
     });
 
     it('Element is focused', () => {

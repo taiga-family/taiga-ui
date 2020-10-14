@@ -8,6 +8,8 @@ describe('getNativeFocused', () => {
         buttonElement.focus();
 
         expect(getNativeFocused(document)).toBe(buttonElement);
+
+        document.body.removeChild(buttonElement);
     });
 
     it('returns element from shadowRoot', () => {
@@ -22,5 +24,7 @@ describe('getNativeFocused', () => {
         buttonElement.focus();
 
         expect(getNativeFocused(document)).toBe(buttonElement);
+
+        document.body.removeChild(div);
     });
 });

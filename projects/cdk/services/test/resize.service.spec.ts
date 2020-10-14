@@ -26,6 +26,10 @@ describe('TuiResizeService', () => {
         });
     });
 
+    afterEach(() => {
+        document.body.removeChild(element);
+    });
+
     it('emits default first value', done => {
         const resize$ = TestBed.get(TuiResizeService);
 

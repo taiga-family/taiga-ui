@@ -5,15 +5,15 @@ describe('setNativeFocused', () => {
     let top: number;
 
     beforeEach(() => {
-        if (element) {
-            document.body.removeChild(element);
-        }
-
         element = document.createElement('input');
         element.style.marginTop = '200vh';
         document.body.scrollTop = 0;
         document.body.appendChild(element);
         top = element.getBoundingClientRect().top;
+    });
+
+    afterEach(() => {
+        document.body.removeChild(element);
     });
 
     it('Element is not focused', () => {
