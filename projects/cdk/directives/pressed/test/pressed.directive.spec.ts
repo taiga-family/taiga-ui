@@ -48,6 +48,8 @@ describe('TuiPressed directive', () => {
                 socket = new WebSocket(response[0].webSocketDebuggerUrl);
                 socket.onopen = done;
             });
+        // tslint:disable-next-line:no-console
+        document.addEventListener('mousedown', e => console.log(e.target));
     });
 
     afterAll(() => {
