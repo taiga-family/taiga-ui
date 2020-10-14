@@ -7,15 +7,10 @@ import {TuiPressedModule} from '../pressed.module';
 describe('TuiPressed directive', () => {
     @Component({
         template: `
-            <div
-                class="wrapper"
-                style="position: absolute;
-                       top: 0;
-                       left: 0;"
-            >
+            <div class="wrapper" style="position: fixed; top: 0; left: 0; z-index: 1000">
                 <div
                     class="inner"
-                    style="height: 200px; width: 100px"
+                    style="position: absolute; left: 0; top: 0; height: 200px; width: 100px"
                     (tuiPressedChange)="pressed = $event"
                 >
                     button
@@ -48,8 +43,6 @@ describe('TuiPressed directive', () => {
                 socket = new WebSocket(response[0].webSocketDebuggerUrl);
                 socket.onopen = done;
             });
-        // tslint:disable-next-line:no-console
-        document.addEventListener('mousedown', e => console.log(e.target));
     });
 
     afterAll(() => {
