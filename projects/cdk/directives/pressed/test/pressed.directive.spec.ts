@@ -15,7 +15,7 @@ describe('TuiPressed directive', () => {
             >
                 <div
                     class="inner"
-                    style="height: 100px; width: 100px"
+                    style="height: 200px; width: 100px"
                     (tuiPressedChange)="pressed = $event"
                 >
                     button
