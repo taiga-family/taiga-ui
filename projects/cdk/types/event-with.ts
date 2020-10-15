@@ -14,11 +14,6 @@ export interface TuiTypedEventTarget<E> {
 /**
  * Wrapper around {@link Event} to add typings to target and currentTarget.
  */
-export type TuiEventWith<
-    G extends Event,
-    T extends TuiTypedEventTarget<G>,
-    K extends TuiTypedEventTarget<G> = T
-> = G & {
+export type TuiEventWith<G extends Event, T extends TuiTypedEventTarget<G>> = G & {
     readonly currentTarget: T;
-    readonly target: K;
 };
