@@ -1,6 +1,6 @@
 export function canScroll(
-    element: HTMLElement,
-    rootElement: HTMLElement,
+    element: Element,
+    rootElement: Element,
     vertical: boolean,
     scrollEnd: boolean,
 ): boolean {

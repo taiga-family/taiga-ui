@@ -93,7 +93,7 @@ export class TuiOverscrollDirective {
     ) {
         const {target, currentTarget, cancelable} = event;
 
-        if (!cancelable) {
+        if (!cancelable || !(target instanceof Element)) {
             return;
         }
 
