@@ -4,12 +4,9 @@ import {TuiDestroyService} from '../destroy.service';
 import {TuiResizeService} from '../resize.service';
 
 describe('TuiResizeService', () => {
-    let emitCounter: number;
     let element: HTMLElement;
 
     beforeEach(() => {
-        emitCounter = 0;
-
         element = document.createElement('div');
         element.style.width = '200px';
         document.body.appendChild(element);
@@ -31,6 +28,7 @@ describe('TuiResizeService', () => {
     });
 
     it('emits default first value', done => {
+        let emitCounter = 0;
         const resize$ = TestBed.get(TuiResizeService);
 
         resize$.subscribe(() => {
@@ -44,6 +42,7 @@ describe('TuiResizeService', () => {
     });
 
     it('emits when element is resized', done => {
+        let emitCounter = 0;
         const resize$ = TestBed.get(TuiResizeService);
 
         resize$.subscribe(() => {
