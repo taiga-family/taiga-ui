@@ -48,6 +48,7 @@
         "@nguniversal/module-map-ngfactory-loader": "^7.1.1",
         "@ng-web-apis/common": "1.7.0",
         "@ng-web-apis/intersection-observer": "2.0.1",
+        "@ng-web-apis/mutation-observer": "1.1.0",
         "@ng-web-apis/resize-observer": "1.0.3",
         "@ng-web-apis/universal": "^1.6.0",
         "@tinkoff/angular-contenteditable-accessor": "1.1.0",
