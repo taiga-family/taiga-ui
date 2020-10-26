@@ -40,14 +40,14 @@ export abstract class AbstractTuiControl<T>
     ) {
         super();
 
-        if (ngControl === null) {
+        if (this.ngControl === null) {
             tuiAssert.assert(
                 false,
                 `NgControl not injected in ${this.constructor.name}!\n`,
                 'Use [(ngModel)] or [formControl] or formControlName for correct work.',
             );
         } else {
-            ngControl.valueAccessor = this;
+            this.ngControl.valueAccessor = this;
         }
     }
 
@@ -108,7 +108,7 @@ export abstract class AbstractTuiControl<T>
     }
 
     protected get controlName(): string | null {
-        return this.ngControl === null ? null : this.ngControl.name;
+        return this.ngControl && this.ngControl.name;
     }
 
     private get rawValue(): T | undefined {
@@ -195,9 +195,10 @@ export abstract class AbstractTuiControl<T>
         extractor: (ngControl: NgControl) => T | null | undefined,
         defaultFieldValue: T,
     ): T {
-        return this.ngControl === null
-            ? defaultFieldValue
-            : fallbackValue<T>(extractor(this.ngControl), defaultFieldValue);
+        return fallbackValue<T>(
+            this.ngControl && extractor(this.ngControl),
+            defaultFieldValue,
+        );
     }
 
     private controlMarkAsTouched() {

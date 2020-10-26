@@ -16,6 +16,7 @@
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "dependencies": {
         "@ng-web-apis/common": "1.7.0",
+        "@ng-web-apis/mutation-observer": "1.1.0",
         "@ng-web-apis/resize-observer": "1.0.3",
         "@tinkoff/ng-event-plugins": "1.0.1",
         "@tinkoff/ng-polymorpheus": "2.1.0",

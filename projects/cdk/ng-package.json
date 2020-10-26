@@ -5,6 +5,7 @@
         "@tinkoff/ng-polymorpheus",
         "@tinkoff/ng-event-plugins",
         "@ng-web-apis/common",
+        "@ng-web-apis/mutation-observer",
         "@ng-web-apis/resize-observer",
         "@types/resize-observer-browser"
     ],
