@@ -27,8 +27,16 @@ export const TUI_STRICT_MATCHER: TuiMatcher<any> = (
 
 /**
  * Default handler to match equality of two elements
+ * ATTENTION: considers two empty arrays equal
+ *
  * @param item1 first element
  * @param item2 second element
  */
-export const TUI_IDENTITY_MATCHER: TuiIdentityMatcher<any> = (item1, item2) =>
-    item1 === item2;
+export const TUI_IDENTITY_MATCHER: TuiIdentityMatcher<unknown> = (item1, item2) =>
+    item1 === item2 || bothEmpty(item1, item2);
+
+function bothEmpty(item1: unknown, item2: unknown): boolean {
+    return (
+        item1 instanceof Array && item2 instanceof Array && !item1.length && !item2.length
+    );
+}

@@ -55,9 +55,7 @@ describe('Matcher functions', () => {
 
     describe('TUI_STRICT_MATCHER', () => {
         it('returns false by not equal stringified values, case insensitive', () => {
-            const stringify = (item: Item) => item.toString();
-
-            expect(strictMatcher(item, search, stringify)).toBe(false);
+            expect(strictMatcher(item, search)).toBe(false);
         });
 
         it('returns true by equal stringified values, case insensitive', () => {
@@ -69,11 +67,19 @@ describe('Matcher functions', () => {
     });
 
     describe('TUI_IDENTITY_MATCHER', () => {
-        it('returns true if the parametrs are the same', () => {
+        it('returns true if the parameters are the same', () => {
             expect(identityMatcher(item, item)).toBe(true);
         });
 
-        it('returns false if the parametrs are not the same object', () => {
+        it('returns true if both parameters are empty arrays', () => {
+            expect(identityMatcher([], [])).toBe(true);
+        });
+
+        it('returns false if both parameters are equal arrays', () => {
+            expect(identityMatcher([0], [0])).toBe(false);
+        });
+
+        it('returns false if the parameters are not the same object', () => {
             const anotherItemWithSameFields = new Item(item.name, item.price);
 
             expect(identityMatcher(item, anotherItemWithSameFields)).toBe(false);
