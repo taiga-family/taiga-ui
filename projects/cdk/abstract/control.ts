@@ -211,7 +211,7 @@ export abstract class AbstractTuiControl<T>
         this.checkControlUpdate();
     }
 
-    private refreshLocalValue(value: T) {
+    private refreshLocalValue(value: T | null) {
         this.previousInternalValue = value;
         this.checkControlUpdate();
     }
