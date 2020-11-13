@@ -15,7 +15,7 @@ import {AbstractTuiInteractive} from './interactive';
 export abstract class AbstractTuiControl<T>
     extends AbstractTuiInteractive
     implements OnDestroy, OnInit, ControlValueAccessor {
-    private previousInternalValue?: T;
+    private previousInternalValue?: T | null;
 
     private onTouched = EMPTY_FUNCTION;
 
@@ -160,7 +160,7 @@ export abstract class AbstractTuiControl<T>
         this.checkControlUpdate();
     }
 
-    writeValue(value: T) {
+    writeValue(value: T | null) {
         this.refreshLocalValue(
             this.ngControl instanceof NgModel && this.previousInternalValue === undefined
                 ? this.ngControl.model
@@ -211,7 +211,7 @@ export abstract class AbstractTuiControl<T>
         this.checkControlUpdate();
     }
 
-    private refreshLocalValue(value: T) {
+    private refreshLocalValue(value: T | null) {
         this.previousInternalValue = value;
         this.checkControlUpdate();
     }
