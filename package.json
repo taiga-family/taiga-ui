@@ -8,7 +8,7 @@
         "test": "ng test --browsers=ChromeHeadless --code-coverage=true --karmaConfig=./karma.conf.js --",
         "lint": "ng lint",
         "lint:less": "stylelint '**/*.less'",
-        "prettier": "prettier --write \"**/*.{js,ts,html,md,less,json}\"",
+        "prettier": "prettier --write \"projects/**/*.{js,ts,html,md,less,json}\"",
         "typecheck": "tsc --noEmit --skipLibCheck",
         "release": "standard-version",
         "release:patch": "npm run release -- --release-as patch",
