@@ -55,8 +55,9 @@ export abstract class AbstractTuiControl<T>
         return (
             !this.readOnly &&
             !this.disabled &&
-            ((this.pseudoInvalid !== null && this.pseudoInvalid) ||
-                (this.touched && this.invalid))
+            (this.pseudoInvalid !== null
+                ? this.pseudoInvalid
+                : this.touched && this.invalid)
         );
     }
 
