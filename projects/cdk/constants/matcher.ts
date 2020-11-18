@@ -32,7 +32,7 @@ export const TUI_STRICT_MATCHER: TuiMatcher<any> = (
  * @param item1 first element
  * @param item2 second element
  */
-export const TUI_IDENTITY_MATCHER: TuiIdentityMatcher<unknown> = (item1, item2) =>
+export const TUI_DEFAULT_IDENTITY_MATCHER: TuiIdentityMatcher<unknown> = (item1, item2) =>
     item1 === item2 || bothEmpty(item1, item2);
 
 function bothEmpty(item1: unknown, item2: unknown): boolean {
