@@ -1,5 +1,9 @@
 import {TuiStringHandler} from '../../types/handler';
-import {TUI_DEFAULT_MATCHER, TUI_IDENTITY_MATCHER, TUI_STRICT_MATCHER} from '../matcher';
+import {
+    TUI_DEFAULT_IDENTITY_MATCHER,
+    TUI_DEFAULT_MATCHER,
+    TUI_STRICT_MATCHER,
+} from '../matcher';
 import {TUI_DEFAULT_STRINGIFY} from '../stringify';
 
 class Item {
@@ -14,7 +18,7 @@ describe('Matcher functions', () => {
     const defaultStringify = TUI_DEFAULT_STRINGIFY;
     const defaultMatcher = TUI_DEFAULT_MATCHER;
     const strictMatcher = TUI_STRICT_MATCHER;
-    const identityMatcher = TUI_IDENTITY_MATCHER;
+    const identityMatcher = TUI_DEFAULT_IDENTITY_MATCHER;
     const stringify: TuiStringHandler<Item> = item => item.price.toString();
     const search = 'HOLY GRAIL';
     const item = new Item('Monty Python and the Holy Grail DVD', 99);
@@ -66,7 +70,7 @@ describe('Matcher functions', () => {
         });
     });
 
-    describe('TUI_IDENTITY_MATCHER', () => {
+    describe('TUI_DEFAULT_IDENTITY_MATCHER', () => {
         it('returns true if the parameters are the same', () => {
             expect(identityMatcher(item, item)).toBe(true);
         });

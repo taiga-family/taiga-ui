@@ -15,10 +15,8 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 -   **cdk:** `TUI_IDENTITY_MATCHER` consider two empty arrays equal ([#34](https://github.com/TinkoffCreditSystems/taiga-ui/issues/34)) ([e17c08d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e17c08d7eb209c6b389b4dc07a32ff9e792d70af))
--   **cdk:** `TUI_IDENTITY_MATCHER` consider two empty arrays equal ([#35](https://github.com/TinkoffCreditSystems/taiga-ui/issues/35)) ([0983a17](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0983a176bd6f3eae2f03f26da2c2a709a083fa22))
 -   **cdk:** add @ng-web-apis/mutation-observer ([#32](https://github.com/TinkoffCreditSystems/taiga-ui/issues/32)) ([7459c70](https://github.com/TinkoffCreditSystems/taiga-ui/commit/7459c70f272b464cd95959a7f66f039194d874ce))
 -   **cdk:** remove preventScroll polyfill ([#21](https://github.com/TinkoffCreditSystems/taiga-ui/issues/21)) ([68db75a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/68db75adc7bb3d7eea37709963e89a3ab2152f1e))
--   **observables:** `stopPropagation` add operator ([bed17a5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bed17a569adee2a6013109e0ca4db4d1b1651c0a))
 -   **observables:** `stopPropagation` add operator ([d930e9d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d930e9dcc0255c154089d1baceb4fe0a28e74604))
 
 ### Bug Fixes
