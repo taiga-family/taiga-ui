@@ -3,7 +3,6 @@ import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angula
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
-import {TuiValidation} from '@taiga-ui/cdk/enums';
 import {fallbackValue} from '@taiga-ui/cdk/utils/miscellaneous';
 import {merge, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -32,7 +31,7 @@ export abstract class AbstractTuiControl<T>
 
     @Input()
     @tuiDefaultProp()
-    pseudoValidation: TuiValidation | null = null;
+    pseudoInvalid: boolean | null = null;
 
     protected constructor(
         private readonly ngControl: NgControl | null,
@@ -51,25 +50,15 @@ export abstract class AbstractTuiControl<T>
         }
     }
 
-    @HostBinding('attr.data-tui-host-validation')
-    get computedValidation(): TuiValidation {
-        if (this.readOnly || this.disabled) {
-            return TuiValidation.Normal;
-        }
-
-        return this.pseudoValidation === null ? this.validation : this.pseudoValidation;
-    }
-
-    get validation(): TuiValidation {
-        if (this.touched && this.invalid) {
-            return TuiValidation.Error;
-        }
-
-        if (this.touched && this.valid) {
-            return TuiValidation.Success;
-        }
-
-        return TuiValidation.Normal;
+    @HostBinding('class._invalid')
+    get computedInvalid(): boolean {
+        return (
+            !this.readOnly &&
+            !this.disabled &&
+            (this.pseudoInvalid !== null
+                ? this.pseudoInvalid
+                : this.touched && this.invalid)
+        );
     }
 
     get value(): T {
