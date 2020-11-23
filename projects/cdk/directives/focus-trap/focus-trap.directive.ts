@@ -31,7 +31,11 @@ export class TuiFocusTrapDirective implements AfterViewInit, OnDestroy {
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
-    ) {}
+    ) {
+        if (this.activeElement instanceof HTMLElement) {
+            setNativeFocused(this.activeElement, false);
+        }
+    }
 
     ngAfterViewInit() {
         setNativeFocused(this.elementRef.nativeElement);
