@@ -1,4 +1,4 @@
-import {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk/types';
+import {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 import {TUI_DEFAULT_STRINGIFY} from './stringify';
 
 /**
@@ -10,7 +10,7 @@ import {TUI_DEFAULT_STRINGIFY} from './stringify';
 export const TUI_DEFAULT_MATCHER = <T>(
     item: T,
     search: string,
-    stringify: TuiStringHandler<T> = TUI_DEFAULT_STRINGIFY,
+    stringify: TuiHandler<T, string> = TUI_DEFAULT_STRINGIFY,
 ) => stringify(item).toLowerCase().includes(search.toLowerCase());
 
 /**
@@ -22,7 +22,7 @@ export const TUI_DEFAULT_MATCHER = <T>(
 export const TUI_STRICT_MATCHER = <T>(
     item: T,
     search: string,
-    stringify: TuiStringHandler<T> = TUI_DEFAULT_STRINGIFY,
+    stringify: TuiHandler<T, string> = TUI_DEFAULT_STRINGIFY,
 ) => stringify(item).toLowerCase() === search.toLowerCase();
 
 /**
