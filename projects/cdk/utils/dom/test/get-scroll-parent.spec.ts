@@ -1,6 +1,6 @@
-import {getScrollParent} from '../get-scrollable-parent';
+import {getScrollParent} from '../get-scroll-parent';
 
-describe('getScrollableParent', () => {
+describe('getScrollParent', () => {
     it('There is no element', () => {
         expect(getScrollParent(null)).toEqual(null);
     });

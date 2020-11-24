@@ -7,6 +7,6 @@ export * from './get-closest-element';
 export * from './get-document-or-shadow-root';
 export * from './get-element-obscurers';
 export * from './get-element-offset';
-export * from './get-scrollable-parent';
+export * from './get-scroll-parent';
 export * from './is-current-target';
 export * from './is-node-in';
