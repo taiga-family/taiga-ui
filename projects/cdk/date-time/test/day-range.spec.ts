@@ -2,6 +2,9 @@ import {RANGE_SEPARATOR_CHAR} from '../date-time';
 import {TuiDay} from '../day';
 import {TuiDayRange} from '../day-range';
 
+const DEFAULT_DATE_FILLER = `dd.mm.yyyy`;
+const DEFAULT_DATE_RANGE_FILLER = `${DEFAULT_DATE_FILLER}${RANGE_SEPARATOR_CHAR}${DEFAULT_DATE_FILLER}`;
+
 describe('TuiDayRange', () => {
     describe('static method', () => {
         describe('sort returns', () => {
@@ -41,6 +44,8 @@ describe('TuiDayRange', () => {
             it('corresponding range in normal case', () => {
                 const result: TuiDayRange = TuiDayRange.normalizeParse(
                     `12.03.4567${RANGE_SEPARATOR_CHAR}07.06.9321`,
+                    DEFAULT_DATE_FILLER,
+                    DEFAULT_DATE_RANGE_FILLER,
                 );
 
                 expect(result.from.day).toBe(12);
@@ -54,6 +59,8 @@ describe('TuiDayRange', () => {
             it('corresponding range ignoring wrong delimiters', () => {
                 const result: TuiDayRange = TuiDayRange.normalizeParse(
                     `12#03#4567#!#07#06#9321`,
+                    DEFAULT_DATE_FILLER,
+                    DEFAULT_DATE_RANGE_FILLER,
                 );
 
                 expect(result.from.day).toBe(12);
@@ -67,6 +74,8 @@ describe('TuiDayRange', () => {
             it('properly normalized range', () => {
                 const result: TuiDayRange = TuiDayRange.normalizeParse(
                     `00.00.0000${RANGE_SEPARATOR_CHAR}99.99.9999`,
+                    DEFAULT_DATE_FILLER,
+                    DEFAULT_DATE_RANGE_FILLER,
                 );
 
                 expect(result.from.day).toBe(1);
@@ -80,6 +89,8 @@ describe('TuiDayRange', () => {
             it('sorted range if the order is wrong', () => {
                 const result: TuiDayRange = TuiDayRange.normalizeParse(
                     `07.06.9321${RANGE_SEPARATOR_CHAR}12.03.4567`,
+                    DEFAULT_DATE_FILLER,
+                    DEFAULT_DATE_RANGE_FILLER,
                 );
 
                 expect(result.from.day).toBe(12);
@@ -93,6 +104,8 @@ describe('TuiDayRange', () => {
             it('one day range if rangeString is not long enough', () => {
                 const result: TuiDayRange = TuiDayRange.normalizeParse(
                     `07.06.9321${RANGE_SEPARATOR_CHAR}12.03.4`,
+                    DEFAULT_DATE_FILLER,
+                    DEFAULT_DATE_RANGE_FILLER,
                 );
 
                 expect(result.from.day).toBe(7);

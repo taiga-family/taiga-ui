@@ -1,5 +1,5 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {DATE_FILLER, DATE_RANGE_FILLER, RANGE_SEPARATOR_CHAR} from './date-time';
+import {RANGE_SEPARATOR_CHAR} from './date-time';
 import {TuiDay} from './day';
 import {TuiMonthRange} from './month-range';
 
@@ -61,20 +61,24 @@ export class TuiDayRange extends TuiMonthRange {
     /**
      * Parse and correct a day range in string format
      *
-     * @param rangeString a string of dates in a format DD.MM.Yyyy - DD.MM.Yyyy
+     * @param rangeString a string of dates in a format dd.mm.yyyy - dd.mm.yyyy
      * @return normalized day range object
      */
-    static normalizeParse(rangeString: string): TuiDayRange {
-        const leftDay = TuiDay.normalizeParse(rangeString.slice(0, DATE_FILLER.length));
+    static normalizeParse(
+        rangeString: string,
+        dateFiller: string,
+        dateRangeFiller: string,
+    ): TuiDayRange {
+        const leftDay = TuiDay.normalizeParse(rangeString.slice(0, dateFiller.length));
 
-        if (rangeString.length < DATE_RANGE_FILLER.length) {
+        if (rangeString.length < dateRangeFiller.length) {
             return new TuiDayRange(leftDay, leftDay);
         }
 
         return TuiDayRange.sort(
             leftDay,
             TuiDay.normalizeParse(
-                rangeString.slice(DATE_FILLER.length + RANGE_SEPARATOR_CHAR.length),
+                rangeString.slice(dateFiller.length + RANGE_SEPARATOR_CHAR.length),
             ),
         );
     }
