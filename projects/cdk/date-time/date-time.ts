@@ -18,12 +18,7 @@ export const MIN_YEAR = 0;
 
 export const MAX_YEAR = 9999;
 
-// TODO: i18n
-export const DATE_FILLER = `дд.мм.гггг`;
-
 export const RANGE_SEPARATOR_CHAR = `${CHAR_NO_BREAK_SPACE}${CHAR_EN_DASH}${CHAR_NO_BREAK_SPACE}`;
-
-export const DATE_RANGE_FILLER = `${DATE_FILLER}${RANGE_SEPARATOR_CHAR}${DATE_FILLER}`;
 
 export const MILLISECONDS_IN_SECOND = 1000;
 
