@@ -1,9 +1,0 @@
-import { ElementRef, NgZone, PipeTransform } from '@angular/core';
-import { MarkdownService } from './markdown.service';
-export declare class MarkdownPipe implements PipeTransform {
-    private elementRef;
-    private markdownService;
-    private zone;
-    constructor(elementRef: ElementRef<HTMLElement>, markdownService: MarkdownService, zone: NgZone);
-    transform(value: string): string;
-}

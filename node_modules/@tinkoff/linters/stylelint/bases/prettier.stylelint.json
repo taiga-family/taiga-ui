@@ -1,3 +1,0 @@
-{
-	"extends": ["./base.stylelint.json", "stylelint-config-prettier"]
-}

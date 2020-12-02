@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "allowJs": false,
-    "outDir": "tmp",
-    "declaration": true,
-    "declarationDir": "./"
-  }
-}

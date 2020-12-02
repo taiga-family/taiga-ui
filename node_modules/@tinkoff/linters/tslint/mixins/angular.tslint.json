@@ -1,6 +1,0 @@
-{
-	"rulesDirectory": ["../rules"],
-	"rules": {
-		"tinkoff-angular-member-ordering": true
-	}
-}

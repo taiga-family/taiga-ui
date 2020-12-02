@@ -1,4 +1,0 @@
-import { PipeTransform } from '@angular/core';
-export declare class LanguagePipe implements PipeTransform {
-    transform(value: string, language: string): string;
-}

@@ -1,4 +1,0 @@
-export declare enum PrismPlugin {
-    LineHighlight = "line-highlight",
-    LineNumbers = "line-numbers"
-}

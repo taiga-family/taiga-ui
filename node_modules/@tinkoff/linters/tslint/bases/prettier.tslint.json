@@ -1,6 +1,0 @@
-{
-	"extends": ["./base.tslint.json"],
-	"rules": {
-		"trailing-comma": false
-	}
-}
