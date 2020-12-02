@@ -17,7 +17,6 @@
                     },
                     "configurations": {
                         "production": {
-                            "optimization": true,
                             "tsConfig": "projects/cdk/tsconfig.lib.prod.json"
                         }
                     }
@@ -37,33 +36,6 @@
                             "projects/cdk/tsconfig.lib.json",
                             "projects/cdk/tsconfig.spec.json"
                         ],
-                        "exclude": ["**/node_modules/**"]
-                    }
-                }
-            }
-        },
-        "icons": {
-            "root": "projects/icons",
-            "sourceRoot": "projects/icons/src",
-            "projectType": "library",
-            "prefix": "tui",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "options": {
-                        "tsConfig": "projects/icons/tsconfig.lib.json",
-                        "project": "projects/icons/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/icons/tsconfig.lib.prod.json"
-                        }
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/icons/tsconfig.lib.json"],
                         "exclude": ["**/node_modules/**"]
                     }
                 }
@@ -121,7 +93,6 @@
                     },
                     "configurations": {
                         "production": {
-                            "optimization": true,
                             "tsConfig": "projects/kit/tsconfig.lib.prod.json"
                         }
                     }
@@ -144,6 +115,33 @@
                             "projects/kit/tsconfig.lib.json",
                             "projects/kit/tsconfig.spec.json"
                         ],
+                        "exclude": ["**/node_modules/**"]
+                    }
+                }
+            }
+        },
+        "icons": {
+            "root": "projects/icons",
+            "sourceRoot": "projects/icons/src",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "tsConfig": "projects/icons/tsconfig.lib.json",
+                        "project": "projects/icons/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/icons/tsconfig.lib.prod.json"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": ["projects/icons/tsconfig.lib.json"],
                         "exclude": ["**/node_modules/**"]
                     }
                 }
