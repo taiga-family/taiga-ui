@@ -90,7 +90,7 @@ describe('MobileCalendar', () => {
             pageObject
                 .getByAutomationId('tui-mobile-calendar__label')!
                 .nativeElement.textContent.trim(),
-        ).toBe('Выберите день');
+        ).toBe('Choose day');
     });
 
     it('single === false', () => {
@@ -101,7 +101,7 @@ describe('MobileCalendar', () => {
             pageObject
                 .getByAutomationId('tui-mobile-calendar__label')!
                 .nativeElement.textContent.trim(),
-        ).toBe('Выберите период');
+        ).toBe('Choose range');
     });
 
     describe('кнопка "Готово" испускает', () => {
