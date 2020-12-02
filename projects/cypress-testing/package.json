@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/cypress-testing",
-    "version": "1.34.0",
+    "version": "1.6.0",
     "description": "Extension package for Taiga UI that adds cypress helpers",
     "keywords": [
         "angular",
