@@ -323,7 +323,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             this.directive.limitMinWidth === TuiDropdownWidth.Fixed &&
             !this.directive.sided
                 ? px(directiveRect.width)
-                : null;
+                : '';
 
         if (
             isIE(this.userAgent) &&
@@ -345,8 +345,8 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             return;
         }
 
-        style.minWidth = null;
-        style.maxWidth = null;
+        style.minWidth = '';
+        style.maxWidth = '';
     }
 
     private moveFocusOutside(previous: boolean) {

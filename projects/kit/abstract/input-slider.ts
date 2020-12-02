@@ -1,4 +1,4 @@
-import {HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {
     AbstractTuiControl,
     clamp,
@@ -28,6 +28,7 @@ import {TuiKeySteps} from '@taiga-ui/kit/types';
 /**
  * @internal
  */
+@Directive()
 export abstract class AbstractTuiInputSlider<T>
     extends AbstractTuiControl<T>
     implements TuiWithOptionalMinMax<number> {

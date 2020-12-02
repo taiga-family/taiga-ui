@@ -102,7 +102,7 @@ export class TuiRadioComponent<T>
             : this.item !== undefined && this.identityMatcher(this.value, this.item);
     }
 
-    get computedName(): string | null {
+    get computedName(): string | number | null {
         return this.name || this.radioGroupName || this.controlName || null;
     }
 

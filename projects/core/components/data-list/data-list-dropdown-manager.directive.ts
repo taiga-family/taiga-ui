@@ -140,7 +140,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
         );
     }
 
-    private notInDropdown(element: EventTarget, index: number): boolean {
+    private notInDropdown(element: EventTarget | null, index: number): boolean {
         const dropdown = this.dropdowns.toArray()[index];
 
         return (

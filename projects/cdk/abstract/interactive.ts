@@ -1,4 +1,4 @@
-import {EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import {Directive, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 import {fallbackValue} from '@taiga-ui/cdk/utils/miscellaneous';
 
@@ -7,6 +7,7 @@ const TUI = 'tui_interactive_';
 /**
  * The most basic class for interactive components
  */
+@Directive()
 export abstract class AbstractTuiInteractive {
     private readonly autoIdString: string;
 

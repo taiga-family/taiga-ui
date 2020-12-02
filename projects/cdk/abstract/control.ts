@@ -1,4 +1,11 @@
-import {ChangeDetectorRef, HostBinding, Input, OnDestroy, OnInit} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Directive,
+    HostBinding,
+    Input,
+    OnDestroy,
+    OnInit,
+} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angular/forms';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
@@ -11,6 +18,7 @@ import {AbstractTuiInteractive} from './interactive';
 /**
  * Basic ControlValueAccessor class to build form components upon
  */
+@Directive()
 export abstract class AbstractTuiControl<T>
     extends AbstractTuiInteractive
     implements OnDestroy, OnInit, ControlValueAccessor {
@@ -92,11 +100,11 @@ export abstract class AbstractTuiControl<T>
         );
     }
 
-    get computedName(): string | null {
+    get computedName(): string | number | null {
         return this.controlName;
     }
 
-    protected get controlName(): string | null {
+    protected get controlName(): string | number | null {
         return this.ngControl && this.ngControl.name;
     }
 

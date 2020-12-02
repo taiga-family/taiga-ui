@@ -29,7 +29,7 @@ export class TuiFlatPickerComponent {
     constructor(@Inject(TuiPickerService) point$: Observable<TuiPoint>) {
         point$.subscribe(point => {
             this.value = point;
-            this.valueChange.emit(point);
+            this.valueChange.emit([point[0], point[1]]);
         });
     }
 

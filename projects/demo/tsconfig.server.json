@@ -5,5 +5,7 @@
     },
     "angularCompilerOptions": {
         "entryModule": "src/modules/app/app.server.module#AppServerModule"
-    }
+    },
+    "files": ["src/main.server.ts"],
+    "include": ["projects/demo/src/**/*.d.ts"]
 }

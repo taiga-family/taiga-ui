@@ -11,5 +11,5 @@ export function draw(
 ): string {
     return smoothing
         ? drawCurve(array, index, smoothing / COEFFICIENT)
-        : drawLine(array[index]);
+        : drawLine([array[index][0], array[index][1]]);
 }

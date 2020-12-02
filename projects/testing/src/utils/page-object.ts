@@ -12,19 +12,8 @@ export class PageObject<T> {
         return PageObject.getIds(debugElement).indexOf(automationId) >= 0;
     }
 
-    static containsOneOfIds(
-        debugElement: DebugElement,
-        automationIds: ReadonlyArray<string>,
-    ): boolean {
-        return PageObject.getIds(debugElement).some(id => automationIds.indexOf(id) >= 0);
-    }
-
     private static byAutomationId(automationId: string): Predicate<DebugElement> {
         return debugElement => PageObject.containsId(debugElement, automationId);
-    }
-
-    private static byOneOfIds(ids: ReadonlyArray<string>): Predicate<DebugElement> {
-        return debugElement => PageObject.containsOneOfIds(debugElement, ids);
     }
 
     constructor(protected fixture: ComponentFixture<T>) {}
@@ -34,13 +23,6 @@ export class PageObject<T> {
         debugElement: DebugElement = this.fixture.debugElement,
     ): DebugElement | null {
         return debugElement.query(PageObject.byAutomationId(automationId));
-    }
-
-    getAllByOneOfIds(
-        ids: ReadonlyArray<string>,
-        debugElement: DebugElement = this.fixture.debugElement,
-    ): DebugElement[] {
-        return debugElement.queryAll(PageObject.byOneOfIds(ids));
     }
 
     // Syncing result order with DOM order: https://github.com/angular/angular/issues/13066

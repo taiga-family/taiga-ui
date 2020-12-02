@@ -17,7 +17,8 @@
                     },
                     "configurations": {
                         "production": {
-                            "optimization": true
+                            "optimization": true,
+                            "tsConfig": "projects/cdk/tsconfig.lib.prod.json"
                         }
                     }
                 },
@@ -52,6 +53,11 @@
                     "options": {
                         "tsConfig": "projects/icons/tsconfig.lib.json",
                         "project": "projects/icons/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/icons/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "lint": {
@@ -74,6 +80,11 @@
                     "options": {
                         "tsConfig": "projects/core/tsconfig.lib.json",
                         "project": "projects/core/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/core/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "test": {
@@ -110,7 +121,8 @@
                     },
                     "configurations": {
                         "production": {
-                            "optimization": true
+                            "optimization": true,
+                            "tsConfig": "projects/kit/tsconfig.lib.prod.json"
                         }
                     }
                 },
@@ -148,6 +160,11 @@
                     "options": {
                         "tsConfig": "projects/addon-charts/tsconfig.lib.json",
                         "project": "projects/addon-charts/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/addon-charts/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "test": {
@@ -184,6 +201,11 @@
                     "options": {
                         "tsConfig": "projects/addon-commerce/tsconfig.lib.json",
                         "project": "projects/addon-commerce/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/addon-commerce/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "test": {
@@ -220,6 +242,11 @@
                     "options": {
                         "tsConfig": "projects/addon-mobile/tsconfig.lib.json",
                         "project": "projects/addon-mobile/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/addon-mobile/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "test": {
@@ -256,6 +283,11 @@
                     "options": {
                         "tsConfig": "projects/addon-tablebars/tsconfig.lib.json",
                         "project": "projects/addon-tablebars/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/addon-tablebars/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "test": {
@@ -292,6 +324,11 @@
                     "options": {
                         "tsConfig": "projects/addon-table/tsconfig.lib.json",
                         "project": "projects/addon-table/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/addon-table/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "test": {
@@ -328,6 +365,11 @@
                     "options": {
                         "tsConfig": "projects/addon-editor/tsconfig.lib.json",
                         "project": "projects/addon-editor/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/addon-editor/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "test": {
@@ -364,6 +406,11 @@
                     "options": {
                         "tsConfig": "projects/addon-doc/tsconfig.lib.json",
                         "project": "projects/addon-doc/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/addon-doc/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "test": {
@@ -400,6 +447,11 @@
                     "options": {
                         "tsConfig": "projects/testing/tsconfig.lib.json",
                         "project": "projects/testing/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/testing/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "lint": {
@@ -421,6 +473,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+                        "aot": true,
                         "outputPath": "dist/demo",
                         "index": "projects/demo/src/index.html",
                         "main": "projects/demo/src/main.browser.ts",
@@ -470,10 +523,20 @@
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
                                 }
                             ]
                         },
                         "hmr": {
+                            "budgets": [
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "projects/demo/src/environments/environment.ts",
@@ -482,6 +545,12 @@
                             ]
                         },
                         "def": {
+                            "budgets": [
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "projects/demo/src/changeDetectionStrategy.ts",
@@ -490,6 +559,12 @@
                             ]
                         },
                         "shadow": {
+                            "budgets": [
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "public/projects/demo/src/viewEncapsulation.ts",
@@ -539,7 +614,8 @@
                                     "replace": "projects/demo/src/environments/environment.ts",
                                     "with": "projects/demo/src/environments/environment.prod.ts"
                                 }
-                            ]
+                            ],
+                            "optimization": true
                         }
                     }
                 },

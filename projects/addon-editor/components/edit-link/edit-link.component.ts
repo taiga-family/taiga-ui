@@ -105,7 +105,7 @@ export class TuiEditLinkComponent {
     }
 
     private getHref({focusNode}: Selection): string {
-        if (!focusNode.parentElement) {
+        if (!focusNode || !focusNode.parentElement) {
             return '';
         }
 

@@ -1,10 +1,11 @@
-import {ElementRef, Input, OnDestroy} from '@angular/core';
+import {Directive, ElementRef, Input, OnDestroy} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiHintMode} from '@taiga-ui/core/enums';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {TuiDirection} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+@Directive()
 export abstract class AbstractTuiHint implements OnDestroy {
     @Input('tuiHintMode')
     @tuiDefaultProp()
