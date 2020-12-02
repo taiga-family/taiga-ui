@@ -1,4 +1,4 @@
-import * as logo from '!!raw-loader!../../assets/images/taiga.svg';
+import {default as logo} from '!!raw-loader!../../assets/images/taiga.svg';
 import {Component, Inject} from '@angular/core';
 import {TUI_DOC_LOGO} from '@taiga-ui/addon-doc';
 import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
@@ -21,7 +21,9 @@ export class AppComponent {
     constructor(
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
-    ) {}
+    ) {
+        console.log(logo);
+    }
 
     @tuiPure
     get isChristmas(): boolean {

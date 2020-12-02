@@ -130,6 +130,7 @@
         "ng-packagr": "^9.0.0",
         "prettier": "^2.1.1",
         "protractor": "~5.4.0",
+        "raw-loader": "^4.0.2",
         "rollup": "^1.10.0",
         "rollup-plugin-typescript2": "^0.20.1",
         "rollup-pluginutils": "^2.6.0",

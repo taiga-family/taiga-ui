@@ -1,5 +1,5 @@
 {
     "extends": "../../tsconfig",
     "files": ["src/main.browser.ts", "src/polyfills.ts"],
-    "include": ["projects/demo/src/**/*.d.ts"]
+    "include": ["**/*.d.ts"]
 }
