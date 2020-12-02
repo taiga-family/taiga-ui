@@ -1,4 +1,0 @@
-<form [formGroup]="testForm">
-    <tui-input-date-range formControlName="testValue">
-    </tui-input-date-range>
-</form>

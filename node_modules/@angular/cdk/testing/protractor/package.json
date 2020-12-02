@@ -1,0 +1,11 @@
+{
+  "name": "@angular/cdk/testing/protractor",
+  "main": "../../bundles/cdk-testing-protractor.umd.js",
+  "fesm5": "../../fesm5/testing/protractor.js",
+  "fesm2015": "../../fesm2015/testing/protractor.js",
+  "esm5": "../../esm5/testing/protractor/index.js",
+  "esm2015": "../../esm2015/testing/protractor/index.js",
+  "typings": "./index.d.ts",
+  "module": "../../fesm5/testing/protractor.js",
+  "es2015": "../../fesm2015/testing/protractor.js"
+}

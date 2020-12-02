@@ -1,7 +1,0 @@
-{
-    "extends": "./tsconfig.json",
-    "exclude": ["**/schematics/**/*"],
-    "compilerOptions": {
-        "strictPropertyInitialization": false
-    }
-}

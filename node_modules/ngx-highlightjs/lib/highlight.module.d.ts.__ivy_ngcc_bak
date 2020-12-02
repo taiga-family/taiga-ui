@@ -1,0 +1,5 @@
+import { ModuleWithProviders } from '@angular/core';
+import { HighlightOptions } from './highlight.model';
+export declare class HighlightModule {
+    static forRoot(options: HighlightOptions): ModuleWithProviders;
+}

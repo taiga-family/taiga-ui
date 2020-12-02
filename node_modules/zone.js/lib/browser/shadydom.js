@@ -1,0 +1,28 @@
+"use strict";
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+Zone.__load_patch('shadydom', function (global, Zone, api) {
+    // https://github.com/angular/zone.js/issues/782
+    // in web components, shadydom will patch addEventListener/removeEventListener of
+    // Node.prototype and WindowPrototype, this will have conflict with zone.js
+    // so zone.js need to patch them again.
+    var HTMLSlotElement = global.HTMLSlotElement;
+    var prototypes = [
+        Object.getPrototypeOf(window), Node.prototype, Text.prototype, Element.prototype,
+        HTMLElement.prototype, HTMLSlotElement && HTMLSlotElement.prototype, DocumentFragment.prototype,
+        Document.prototype
+    ];
+    prototypes.forEach(function (proto) {
+        if (proto && proto.hasOwnProperty('addEventListener')) {
+            proto[Zone.__symbol__('addEventListener')] = null;
+            proto[Zone.__symbol__('removeEventListener')] = null;
+            api.patchEventTarget(global, [proto]);
+        }
+    });
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2hhZHlkb20uanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi8uLi9wYWNrYWdlcy96b25lLmpzL2xpYi9icm93c2VyL3NoYWR5ZG9tLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7O0dBTUc7QUFDSCxJQUFJLENBQUMsWUFBWSxDQUFDLFVBQVUsRUFBRSxVQUFDLE1BQVcsRUFBRSxJQUFjLEVBQUUsR0FBaUI7SUFDM0UsZ0RBQWdEO0lBQ2hELGlGQUFpRjtJQUNqRiwyRUFBMkU7SUFDM0UsdUNBQXVDO0lBQ3ZDLElBQU0sZUFBZSxHQUFHLE1BQU0sQ0FBQyxlQUFlLENBQUM7SUFDL0MsSUFBTSxVQUFVLEdBQUc7UUFDakIsTUFBTSxDQUFDLGNBQWMsQ0FBQyxNQUFNLENBQUMsRUFBRSxJQUFJLENBQUMsU0FBUyxFQUFFLElBQUksQ0FBQyxTQUFTLEVBQUUsT0FBTyxDQUFDLFNBQVM7UUFDaEYsV0FBVyxDQUFDLFNBQVMsRUFBRSxlQUFlLElBQUksZUFBZSxDQUFDLFNBQVMsRUFBRSxnQkFBZ0IsQ0FBQyxTQUFTO1FBQy9GLFFBQVEsQ0FBQyxTQUFTO0tBQ25CLENBQUM7SUFDRixVQUFVLENBQUMsT0FBTyxDQUFDLFVBQVMsS0FBSztRQUMvQixJQUFJLEtBQUssSUFBSSxLQUFLLENBQUMsY0FBYyxDQUFDLGtCQUFrQixDQUFDLEVBQUU7WUFDckQsS0FBSyxDQUFDLElBQUksQ0FBQyxVQUFVLENBQUMsa0JBQWtCLENBQUMsQ0FBQyxHQUFHLElBQUksQ0FBQztZQUNsRCxLQUFLLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxxQkFBcUIsQ0FBQyxDQUFDLEdBQUcsSUFBSSxDQUFDO1lBQ3JELEdBQUcsQ0FBQyxnQkFBZ0IsQ0FBQyxNQUFNLEVBQUUsQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDO1NBQ3ZDO0lBQ0gsQ0FBQyxDQUFDLENBQUM7QUFDTCxDQUFDLENBQUMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCBHb29nbGUgSW5jLiBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICpcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXG4gKi9cblpvbmUuX19sb2FkX3BhdGNoKCdzaGFkeWRvbScsIChnbG9iYWw6IGFueSwgWm9uZTogWm9uZVR5cGUsIGFwaTogX1pvbmVQcml2YXRlKSA9PiB7XG4gIC8vIGh0dHBzOi8vZ2l0aHViLmNvbS9hbmd1bGFyL3pvbmUuanMvaXNzdWVzLzc4MlxuICAvLyBpbiB3ZWIgY29tcG9uZW50cywgc2hhZHlkb20gd2lsbCBwYXRjaCBhZGRFdmVudExpc3RlbmVyL3JlbW92ZUV2ZW50TGlzdGVuZXIgb2ZcbiAgLy8gTm9kZS5wcm90b3R5cGUgYW5kIFdpbmRvd1Byb3RvdHlwZSwgdGhpcyB3aWxsIGhhdmUgY29uZmxpY3Qgd2l0aCB6b25lLmpzXG4gIC8vIHNvIHpvbmUuanMgbmVlZCB0byBwYXRjaCB0aGVtIGFnYWluLlxuICBjb25zdCBIVE1MU2xvdEVsZW1lbnQgPSBnbG9iYWwuSFRNTFNsb3RFbGVtZW50O1xuICBjb25zdCBwcm90b3R5cGVzID0gW1xuICAgIE9iamVjdC5nZXRQcm90b3R5cGVPZih3aW5kb3cpLCBOb2RlLnByb3RvdHlwZSwgVGV4dC5wcm90b3R5cGUsIEVsZW1lbnQucHJvdG90eXBlLFxuICAgIEhUTUxFbGVtZW50LnByb3RvdHlwZSwgSFRNTFNsb3RFbGVtZW50ICYmIEhUTUxTbG90RWxlbWVudC5wcm90b3R5cGUsIERvY3VtZW50RnJhZ21lbnQucHJvdG90eXBlLFxuICAgIERvY3VtZW50LnByb3RvdHlwZVxuICBdO1xuICBwcm90b3R5cGVzLmZvckVhY2goZnVuY3Rpb24ocHJvdG8pIHtcbiAgICBpZiAocHJvdG8gJiYgcHJvdG8uaGFzT3duUHJvcGVydHkoJ2FkZEV2ZW50TGlzdGVuZXInKSkge1xuICAgICAgcHJvdG9bWm9uZS5fX3N5bWJvbF9fKCdhZGRFdmVudExpc3RlbmVyJyldID0gbnVsbDtcbiAgICAgIHByb3RvW1pvbmUuX19zeW1ib2xfXygncmVtb3ZlRXZlbnRMaXN0ZW5lcicpXSA9IG51bGw7XG4gICAgICBhcGkucGF0Y2hFdmVudFRhcmdldChnbG9iYWwsIFtwcm90b10pO1xuICAgIH1cbiAgfSk7XG59KTtcbiJdfQ==

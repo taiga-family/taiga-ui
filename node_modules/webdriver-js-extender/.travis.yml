@@ -1,0 +1,23 @@
+language: node_js
+sudo: false
+node_js:
+  - "6"
+  - "8"
+  - "10"
+
+env:
+  global:
+    - CXX=g++-4.8
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+
+before_install:
+  - g++-4.8 --version
+
+script:
+  - npm test

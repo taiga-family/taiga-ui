@@ -1,0 +1,19 @@
+"use strict";
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Monkey patch `MessagePort.prototype.onmessage` and `MessagePort.prototype.onmessageerror`
+ * properties to make the callback in the zone when the value are set.
+ */
+Zone.__load_patch('MessagePort', function (global, Zone, api) {
+    var MessagePort = global['MessagePort'];
+    if (typeof MessagePort !== 'undefined' && MessagePort.prototype) {
+        api.patchOnProperties(MessagePort.prototype, ['message', 'messageerror']);
+    }
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWVzc2FnZS1wb3J0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vLi4vLi4vcGFja2FnZXMvem9uZS5qcy9saWIvYnJvd3Nlci9tZXNzYWdlLXBvcnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBOzs7Ozs7R0FNRztBQUVIOzs7R0FHRztBQUNILElBQUksQ0FBQyxZQUFZLENBQUMsYUFBYSxFQUFFLFVBQUMsTUFBVyxFQUFFLElBQWMsRUFBRSxHQUFpQjtJQUM5RSxJQUFNLFdBQVcsR0FBRyxNQUFNLENBQUMsYUFBYSxDQUFDLENBQUM7SUFDMUMsSUFBSSxPQUFPLFdBQVcsS0FBSyxXQUFXLElBQUksV0FBVyxDQUFDLFNBQVMsRUFBRTtRQUMvRCxHQUFHLENBQUMsaUJBQWlCLENBQUMsV0FBVyxDQUFDLFNBQVMsRUFBRSxDQUFDLFNBQVMsRUFBRSxjQUFjLENBQUMsQ0FBQyxDQUFDO0tBQzNFO0FBQ0gsQ0FBQyxDQUFDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEBsaWNlbnNlXG4gKiBDb3B5cmlnaHQgR29vZ2xlIEluYy4gQWxsIFJpZ2h0cyBSZXNlcnZlZC5cbiAqXG4gKiBVc2Ugb2YgdGhpcyBzb3VyY2UgY29kZSBpcyBnb3Zlcm5lZCBieSBhbiBNSVQtc3R5bGUgbGljZW5zZSB0aGF0IGNhbiBiZVxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2FuZ3VsYXIuaW8vbGljZW5zZVxuICovXG5cbi8qKlxuICogTW9ua2V5IHBhdGNoIGBNZXNzYWdlUG9ydC5wcm90b3R5cGUub25tZXNzYWdlYCBhbmQgYE1lc3NhZ2VQb3J0LnByb3RvdHlwZS5vbm1lc3NhZ2VlcnJvcmBcbiAqIHByb3BlcnRpZXMgdG8gbWFrZSB0aGUgY2FsbGJhY2sgaW4gdGhlIHpvbmUgd2hlbiB0aGUgdmFsdWUgYXJlIHNldC5cbiAqL1xuWm9uZS5fX2xvYWRfcGF0Y2goJ01lc3NhZ2VQb3J0JywgKGdsb2JhbDogYW55LCBab25lOiBab25lVHlwZSwgYXBpOiBfWm9uZVByaXZhdGUpID0+IHtcbiAgY29uc3QgTWVzc2FnZVBvcnQgPSBnbG9iYWxbJ01lc3NhZ2VQb3J0J107XG4gIGlmICh0eXBlb2YgTWVzc2FnZVBvcnQgIT09ICd1bmRlZmluZWQnICYmIE1lc3NhZ2VQb3J0LnByb3RvdHlwZSkge1xuICAgIGFwaS5wYXRjaE9uUHJvcGVydGllcyhNZXNzYWdlUG9ydC5wcm90b3R5cGUsIFsnbWVzc2FnZScsICdtZXNzYWdlZXJyb3InXSk7XG4gIH1cbn0pO1xuIl19

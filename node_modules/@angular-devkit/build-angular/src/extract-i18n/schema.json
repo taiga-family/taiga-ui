@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Extract i18n Target",
+  "description": "Extract i18n target options for Build Facade.",
+  "type": "object",
+  "properties": {
+    "browserTarget": {
+      "type": "string",
+      "description": "Target to extract from.",
+      "pattern": "^[^:\\s]+:[^:\\s]+(:[^\\s]+)?$"
+    },
+    "format": {
+      "type": "string",
+      "description": "Output format for the generated file.",
+      "default": "xlf",
+      "enum": [
+        "xmb",
+        "xlf",
+        "xlif",
+        "xliff",
+        "xlf2",
+        "xliff2"
+      ]
+    },
+    "i18nFormat": {
+      "type": "string",
+      "description": "Output format for the generated file.",
+      "default": "xlf",
+      "x-deprecated": "Use 'format' option instead.",
+      "enum": [
+        "xmb",
+        "xlf",
+        "xlif",
+        "xliff",
+        "xlf2",
+        "xliff2"
+      ]
+    },
+    "i18nLocale": {
+      "type": "string",
+      "description": "Specifies the source language of the application.",
+      "x-deprecated": "Use 'i18n' project level sub-option 'sourceLocale' instead."
+    },
+    "progress": {
+      "type": "boolean",
+      "description": "Log progress to the console.",
+      "default": true
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "Path where output will be placed."
+    },
+    "outFile": {
+      "type": "string",
+      "description": "Name of the file to output."
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "browserTarget"
+  ]
+}

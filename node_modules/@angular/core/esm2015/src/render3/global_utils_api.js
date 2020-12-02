@@ -1,0 +1,22 @@
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ *
+ * @fileoverview
+ * This file is the index file collecting all of the symbols published on the global.ng namespace.
+ *
+ * The reason why this file/module is separate global_utils.ts file is that we use this file
+ * to generate a d.ts file containing all the published symbols that is then compared to the golden
+ * file in the public_api_guard test.
+ *
+ * Generated from: packages/core/src/render3/global_utils_api.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { applyChanges } from './util/change_detection_utils';
+export { getComponent, getContext, getDirectives, getHostElement, getInjector, getListeners, getOwningComponent, getRootComponents } from './util/discovery_utils';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZ2xvYmFsX3V0aWxzX2FwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL3BhY2thZ2VzL2NvcmUvc3JjL3JlbmRlcjMvZ2xvYmFsX3V0aWxzX2FwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBaUJBLE9BQU8sRUFBQyxZQUFZLEVBQUMsTUFBTSwrQkFBK0IsQ0FBQztBQUMzRCxPQUFPLEVBQUMsWUFBWSxFQUFFLFVBQVUsRUFBRSxhQUFhLEVBQUUsY0FBYyxFQUFFLFdBQVcsRUFBRSxZQUFZLEVBQUUsa0JBQWtCLEVBQUUsaUJBQWlCLEVBQVcsTUFBTSx3QkFBd0IsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCBHb29nbGUgSW5jLiBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICpcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXG4gKi9cblxuLyoqXG4gKiBAZmlsZW92ZXJ2aWV3XG4gKiBUaGlzIGZpbGUgaXMgdGhlIGluZGV4IGZpbGUgY29sbGVjdGluZyBhbGwgb2YgdGhlIHN5bWJvbHMgcHVibGlzaGVkIG9uIHRoZSBnbG9iYWwubmcgbmFtZXNwYWNlLlxuICpcbiAqIFRoZSByZWFzb24gd2h5IHRoaXMgZmlsZS9tb2R1bGUgaXMgc2VwYXJhdGUgZ2xvYmFsX3V0aWxzLnRzIGZpbGUgaXMgdGhhdCB3ZSB1c2UgdGhpcyBmaWxlXG4gKiB0byBnZW5lcmF0ZSBhIGQudHMgZmlsZSBjb250YWluaW5nIGFsbCB0aGUgcHVibGlzaGVkIHN5bWJvbHMgdGhhdCBpcyB0aGVuIGNvbXBhcmVkIHRvIHRoZSBnb2xkZW5cbiAqIGZpbGUgaW4gdGhlIHB1YmxpY19hcGlfZ3VhcmQgdGVzdC5cbiAqL1xuXG5leHBvcnQge2FwcGx5Q2hhbmdlc30gZnJvbSAnLi91dGlsL2NoYW5nZV9kZXRlY3Rpb25fdXRpbHMnO1xuZXhwb3J0IHtnZXRDb21wb25lbnQsIGdldENvbnRleHQsIGdldERpcmVjdGl2ZXMsIGdldEhvc3RFbGVtZW50LCBnZXRJbmplY3RvciwgZ2V0TGlzdGVuZXJzLCBnZXRPd25pbmdDb21wb25lbnQsIGdldFJvb3RDb21wb25lbnRzLCBMaXN0ZW5lcn0gZnJvbSAnLi91dGlsL2Rpc2NvdmVyeV91dGlscyc7XG4iXX0=

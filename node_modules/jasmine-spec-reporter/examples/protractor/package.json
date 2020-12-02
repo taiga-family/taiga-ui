@@ -1,0 +1,16 @@
+{
+  "name": "protractor-example",
+  "version": "1.0.0",
+  "description": "a protractor example",
+  "scripts": {
+    "install-local-jsr": "rm -rf node_modules/jasmine-spec-reporter && npm install jasmine-spec-reporter",
+    "postinstall": "yarn install-local-jsr && webdriver-manager update",
+    "test": "protractor protractor.conf.js"
+  },
+  "author": "Bastien Caudan",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "jasmine-spec-reporter": "file:../../",
+    "protractor": "file:../../node_modules/protractor"
+  }
+}

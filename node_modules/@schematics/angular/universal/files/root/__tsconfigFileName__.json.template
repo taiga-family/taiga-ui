@@ -1,0 +1,16 @@
+{
+  "extends": "./<%= tsConfigExtends %>",
+  "compilerOptions": {
+    "outDir": "<%= outDir %>-server",
+    "module": "commonjs",
+    "types": [
+      "node"
+    ]
+  },
+  "files": [
+    "src/<%= stripTsExtension(main) %>.ts"
+  ],
+  "angularCompilerOptions": {
+    "entryModule": "./<%= rootInSrc ? '' : 'src/' %><%= appDir %>/<%= stripTsExtension(rootModuleFileName) %>#<%= rootModuleClassName %>"
+  }
+}

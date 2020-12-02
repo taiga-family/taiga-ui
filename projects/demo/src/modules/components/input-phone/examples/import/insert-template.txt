@@ -1,3 +1,0 @@
-<form [formGroup]="testForm">
-    <tui-input-phone formControlName="testValue"></tui-input-phone>
-</form>

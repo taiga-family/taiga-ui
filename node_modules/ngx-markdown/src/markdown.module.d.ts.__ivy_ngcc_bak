@@ -1,0 +1,10 @@
+import { ModuleWithProviders, Provider } from '@angular/core';
+export interface MarkdownModuleConfig {
+    loader?: Provider;
+    markedOptions?: Provider;
+}
+export declare const initialMarkedOptions: Provider;
+export declare class MarkdownModule {
+    static forRoot(markdownModuleConfig?: MarkdownModuleConfig): ModuleWithProviders;
+    static forChild(): ModuleWithProviders;
+}

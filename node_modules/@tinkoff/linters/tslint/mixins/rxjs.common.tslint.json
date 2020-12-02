@@ -1,0 +1,24 @@
+{
+	"rulesDirectory": ["rxjs-tslint"],
+	"extends": ["rxjs-tslint-rules"],
+	"rules": {
+		"rxjs-collapse-imports": true,
+		"rxjs-pipeable-operators-only": true,
+		"rxjs-no-static-observable-methods": true,
+		"rxjs-no-unsafe-catch": true,
+		"rxjs-no-unsafe-switchmap": true,
+		"rxjs-no-subject-unsubscribe": true,
+		"rxjs-finnish": {
+			"options": [
+				{
+					"functions": false,
+					"methods": false,
+					"parameters": true,
+					"properties": true,
+					"variables": true
+				}
+			],
+			"severity": "error"
+		}
+	}
+}

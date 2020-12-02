@@ -1,0 +1,56 @@
+#!/usr/bin/env node
+
+var path = require('path');
+var fs = require('fs');
+var cwd = process.cwd();
+
+var nodeModuleName = 'webdriver-manager';
+var localInstall = path.resolve(cwd, 'node_modules', nodeModuleName);
+var parentPath = path.resolve(cwd, '..');
+var dir = __dirname;
+var folder = cwd.replace(parentPath, '').substring(1);
+
+var isProjectVersion = folder === nodeModuleName;
+var isLocalVersion = false;
+
+var printCyan, printMagenta, printGreen;
+
+printCyan = printMagenta = printGreen = function(message) {
+  return message;
+};
+
+try {
+  var chalk = require('chalk');
+  printMagenta = chalk.magenta;
+  printCyan = chalk.cyan;
+  printGreen = chalk.green;
+}
+catch (e) {
+  console.log("Error loading chalk, output will be boring.");
+}
+
+try {
+  isLocalVersion = fs.statSync(localInstall).isDirectory();
+} catch(e) {
+}
+
+// project version
+if (folder === nodeModuleName) {
+  console.log(nodeModuleName + ': using ' + printMagenta('project version ' +
+    require(path.resolve('package.json')).version));
+  require(path.resolve('built/lib/webdriver'));
+}
+
+// local version
+else if (isLocalVersion) {
+  console.log(nodeModuleName + ': using ' + printCyan('local installed version ' +
+    require(path.resolve(localInstall, 'package.json')).version));
+  require(path.resolve(localInstall, 'built/lib/webdriver'));
+}
+
+// global version
+else {
+  console.log(nodeModuleName + ': using ' + printGreen('global installed version ' +
+    require(path.resolve(dir, '../package.json')).version));
+  require(path.resolve(dir, '../built/lib/webdriver'));
+}

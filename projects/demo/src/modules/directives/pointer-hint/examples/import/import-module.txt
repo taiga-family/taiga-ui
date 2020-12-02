@@ -1,9 +1,0 @@
-import {TuiPointerHintModule} from '@taiga-ui/core'; 
-
-... 
-@NgModule({
-    imports: [ 
-        ... 
-        TuiPointerHintModule 
-    ],
-...

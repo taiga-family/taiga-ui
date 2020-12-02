@@ -1,0 +1,1 @@
+export declare type Predicate<T> = (this: T, ...args: any[]) => boolean;

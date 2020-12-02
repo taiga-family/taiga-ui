@@ -1,0 +1,2 @@
+import { Provider } from '@angular/core';
+export declare const NG_EVENT_PLUGINS: Provider[];

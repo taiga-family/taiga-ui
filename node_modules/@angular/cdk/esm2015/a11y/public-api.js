@@ -1,0 +1,29 @@
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/a11y/public-api.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+export { MESSAGES_CONTAINER_ID, CDK_DESCRIBEDBY_ID_PREFIX, CDK_DESCRIBEDBY_HOST_ATTRIBUTE, AriaDescriber } from './aria-describer/aria-describer';
+export { ActiveDescendantKeyManager } from './key-manager/activedescendant-key-manager';
+export { FocusKeyManager } from './key-manager/focus-key-manager';
+export { ListKeyManager } from './key-manager/list-key-manager';
+export { ConfigurableFocusTrap } from './focus-trap/configurable-focus-trap';
+export { EventListenerFocusTrapInertStrategy } from './focus-trap/event-listener-inert-strategy';
+export { FocusTrap, FocusTrapFactory, CdkTrapFocus } from './focus-trap/focus-trap';
+export { ConfigurableFocusTrapFactory } from './focus-trap/configurable-focus-trap-factory';
+export { FOCUS_TRAP_INERT_STRATEGY } from './focus-trap/focus-trap-inert-strategy';
+export { InteractivityChecker } from './interactivity-checker/interactivity-checker';
+export { LiveAnnouncer, CdkAriaLive } from './live-announcer/live-announcer';
+export { LIVE_ANNOUNCER_ELEMENT_TOKEN_FACTORY, LIVE_ANNOUNCER_ELEMENT_TOKEN, LIVE_ANNOUNCER_DEFAULT_OPTIONS } from './live-announcer/live-announcer-tokens';
+export { TOUCH_BUFFER_MS, FOCUS_MONITOR_DEFAULT_OPTIONS, FocusMonitor, CdkMonitorFocus } from './focus-monitor/focus-monitor';
+export { isFakeMousedownFromScreenReader } from './fake-mousedown';
+export { A11yModule } from './a11y-module';
+export { HighContrastModeDetector, } from './high-contrast-mode/high-contrast-mode-detector';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3NyYy9jZGsvYTExeS9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7OztBQU9BLGdIQUFjLGlDQUFpQyxDQUFDO0FBQ2hELDJDQUFjLDRDQUE0QyxDQUFDO0FBQzNELGdDQUFjLGlDQUFpQyxDQUFDO0FBQ2hELCtCQUFjLGdDQUFnQyxDQUFDO0FBQy9DLHNDQUFjLHNDQUFzQyxDQUFDO0FBQ3JELG9EQUFjLDRDQUE0QyxDQUFDO0FBQzNELDBEQUFjLHlCQUF5QixDQUFDO0FBQ3hDLDZDQUFjLDhDQUE4QyxDQUFDO0FBQzdELDBDQUFjLHdDQUF3QyxDQUFDO0FBQ3ZELHFDQUFjLCtDQUErQyxDQUFDO0FBQzlELDJDQUFjLGlDQUFpQyxDQUFDO0FBQ2hELG1IQUFjLHdDQUF3QyxDQUFDO0FBQ3ZELDhGQUFjLCtCQUErQixDQUFDO0FBQzlDLGdEQUFjLGtCQUFrQixDQUFDO0FBQ2pDLDJCQUFjLGVBQWUsQ0FBQztBQUM5QixPQUFPLEVBQ0wsd0JBQXdCLEdBRXpCLE1BQU0sa0RBQWtELENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEBsaWNlbnNlXG4gKiBDb3B5cmlnaHQgR29vZ2xlIExMQyBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICpcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXG4gKi9cbmV4cG9ydCAqIGZyb20gJy4vYXJpYS1kZXNjcmliZXIvYXJpYS1kZXNjcmliZXInO1xuZXhwb3J0ICogZnJvbSAnLi9rZXktbWFuYWdlci9hY3RpdmVkZXNjZW5kYW50LWtleS1tYW5hZ2VyJztcbmV4cG9ydCAqIGZyb20gJy4va2V5LW1hbmFnZXIvZm9jdXMta2V5LW1hbmFnZXInO1xuZXhwb3J0ICogZnJvbSAnLi9rZXktbWFuYWdlci9saXN0LWtleS1tYW5hZ2VyJztcbmV4cG9ydCAqIGZyb20gJy4vZm9jdXMtdHJhcC9jb25maWd1cmFibGUtZm9jdXMtdHJhcCc7XG5leHBvcnQgKiBmcm9tICcuL2ZvY3VzLXRyYXAvZXZlbnQtbGlzdGVuZXItaW5lcnQtc3RyYXRlZ3knO1xuZXhwb3J0ICogZnJvbSAnLi9mb2N1cy10cmFwL2ZvY3VzLXRyYXAnO1xuZXhwb3J0ICogZnJvbSAnLi9mb2N1cy10cmFwL2NvbmZpZ3VyYWJsZS1mb2N1cy10cmFwLWZhY3RvcnknO1xuZXhwb3J0ICogZnJvbSAnLi9mb2N1cy10cmFwL2ZvY3VzLXRyYXAtaW5lcnQtc3RyYXRlZ3knO1xuZXhwb3J0ICogZnJvbSAnLi9pbnRlcmFjdGl2aXR5LWNoZWNrZXIvaW50ZXJhY3Rpdml0eS1jaGVja2VyJztcbmV4cG9ydCAqIGZyb20gJy4vbGl2ZS1hbm5vdW5jZXIvbGl2ZS1hbm5vdW5jZXInO1xuZXhwb3J0ICogZnJvbSAnLi9saXZlLWFubm91bmNlci9saXZlLWFubm91bmNlci10b2tlbnMnO1xuZXhwb3J0ICogZnJvbSAnLi9mb2N1cy1tb25pdG9yL2ZvY3VzLW1vbml0b3InO1xuZXhwb3J0ICogZnJvbSAnLi9mYWtlLW1vdXNlZG93bic7XG5leHBvcnQgKiBmcm9tICcuL2ExMXktbW9kdWxlJztcbmV4cG9ydCB7XG4gIEhpZ2hDb250cmFzdE1vZGVEZXRlY3RvcixcbiAgSGlnaENvbnRyYXN0TW9kZSxcbn0gZnJvbSAnLi9oaWdoLWNvbnRyYXN0LW1vZGUvaGlnaC1jb250cmFzdC1tb2RlLWRldGVjdG9yJztcbiJdfQ==

@@ -1,0 +1,23 @@
+#!/bin/bash
+set -e
+
+if [ -t 1 ]; then
+  red="$(printf "\033[31m")"
+  brightred="$(printf "\033[31;1m")"
+  green="$(printf "\033[32m")"
+  reset="$(printf "\033[m")"
+else
+  red=
+  brightred=
+  green=
+  reset=
+fi
+
+phantomjs tests/runner.coffee tests/qunit.html | sed -E "
+  # failure line:
+  s/^(✘.+)/${red}\\1${reset}/
+  # failure details:
+  s/^(  .+)/${brightred}\\1${reset}/
+  # success marker:
+  s/(✔︎)/${green}\\1${reset}/
+"

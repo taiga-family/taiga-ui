@@ -1,2 +1,0 @@
-<tui-breadcrumbs [items]="items"
-                 [size]="size"></tui-breadcrumbs>

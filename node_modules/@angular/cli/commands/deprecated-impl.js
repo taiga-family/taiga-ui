@@ -1,0 +1,21 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+const command_1 = require("../models/command");
+class DeprecatedCommand extends command_1.Command {
+    async run() {
+        let message = 'The "${this.description.name}" command has been deprecated.';
+        if (this.description.name == 'get' || this.description.name == 'set') {
+            message = 'get/set have been deprecated in favor of the config command.';
+        }
+        this.logger.error(message);
+        return 0;
+    }
+}
+exports.DeprecatedCommand = DeprecatedCommand;

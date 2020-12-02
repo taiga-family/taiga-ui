@@ -1,0 +1,44 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+import { Platform } from '@angular/cdk/platform';
+/** Set of possible high-contrast mode backgrounds. */
+import * as ɵngcc0 from '@angular/core';
+export declare const enum HighContrastMode {
+    NONE = 0,
+    BLACK_ON_WHITE = 1,
+    WHITE_ON_BLACK = 2
+}
+/** CSS class applied to the document body when in black-on-white high-contrast mode. */
+export declare const BLACK_ON_WHITE_CSS_CLASS = "cdk-high-contrast-black-on-white";
+/** CSS class applied to the document body when in white-on-black high-contrast mode. */
+export declare const WHITE_ON_BLACK_CSS_CLASS = "cdk-high-contrast-white-on-black";
+/** CSS class applied to the document body when in high-contrast mode. */
+export declare const HIGH_CONTRAST_MODE_ACTIVE_CSS_CLASS = "cdk-high-contrast-active";
+/**
+ * Service to determine whether the browser is currently in a high-contrast-mode environment.
+ *
+ * Microsoft Windows supports an accessibility feature called "High Contrast Mode". This mode
+ * changes the appearance of all applications, including web applications, to dramatically increase
+ * contrast.
+ *
+ * IE, Edge, and Firefox currently support this mode. Chrome does not support Windows High Contrast
+ * Mode. This service does not detect high-contrast mode as added by the Chrome "High Contrast"
+ * browser extension.
+ */
+export declare class HighContrastModeDetector {
+    private _platform;
+    private _document;
+    constructor(_platform: Platform, document: any);
+    /** Gets the current high-contrast-mode for the page. */
+    getHighContrastMode(): HighContrastMode;
+    /** Applies CSS classes indicating high-contrast mode to document body (browser-only). */
+    _applyBodyHighContrastModeCssClasses(): void;
+    static ɵfac: ɵngcc0.ɵɵFactoryDef<HighContrastModeDetector, never>;
+}
+
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaGlnaC1jb250cmFzdC1tb2RlLWRldGVjdG9yLmQudHMiLCJzb3VyY2VzIjpbImhpZ2gtY29udHJhc3QtbW9kZS1kZXRlY3Rvci5kLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEBsaWNlbnNlXG4gKiBDb3B5cmlnaHQgR29vZ2xlIExMQyBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICpcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXG4gKi9cbmltcG9ydCB7IFBsYXRmb3JtIH0gZnJvbSAnQGFuZ3VsYXIvY2RrL3BsYXRmb3JtJztcbi8qKiBTZXQgb2YgcG9zc2libGUgaGlnaC1jb250cmFzdCBtb2RlIGJhY2tncm91bmRzLiAqL1xuZXhwb3J0IGRlY2xhcmUgY29uc3QgZW51bSBIaWdoQ29udHJhc3RNb2RlIHtcbiAgICBOT05FID0gMCxcbiAgICBCTEFDS19PTl9XSElURSA9IDEsXG4gICAgV0hJVEVfT05fQkxBQ0sgPSAyXG59XG4vKiogQ1NTIGNsYXNzIGFwcGxpZWQgdG8gdGhlIGRvY3VtZW50IGJvZHkgd2hlbiBpbiBibGFjay1vbi13aGl0ZSBoaWdoLWNvbnRyYXN0IG1vZGUuICovXG5leHBvcnQgZGVjbGFyZSBjb25zdCBCTEFDS19PTl9XSElURV9DU1NfQ0xBU1MgPSBcImNkay1oaWdoLWNvbnRyYXN0LWJsYWNrLW9uLXdoaXRlXCI7XG4vKiogQ1NTIGNsYXNzIGFwcGxpZWQgdG8gdGhlIGRvY3VtZW50IGJvZHkgd2hlbiBpbiB3aGl0ZS1vbi1ibGFjayBoaWdoLWNvbnRyYXN0IG1vZGUuICovXG5leHBvcnQgZGVjbGFyZSBjb25zdCBXSElURV9PTl9CTEFDS19DU1NfQ0xBU1MgPSBcImNkay1oaWdoLWNvbnRyYXN0LXdoaXRlLW9uLWJsYWNrXCI7XG4vKiogQ1NTIGNsYXNzIGFwcGxpZWQgdG8gdGhlIGRvY3VtZW50IGJvZHkgd2hlbiBpbiBoaWdoLWNvbnRyYXN0IG1vZGUuICovXG5leHBvcnQgZGVjbGFyZSBjb25zdCBISUdIX0NPTlRSQVNUX01PREVfQUNUSVZFX0NTU19DTEFTUyA9IFwiY2RrLWhpZ2gtY29udHJhc3QtYWN0aXZlXCI7XG4vKipcbiAqIFNlcnZpY2UgdG8gZGV0ZXJtaW5lIHdoZXRoZXIgdGhlIGJyb3dzZXIgaXMgY3VycmVudGx5IGluIGEgaGlnaC1jb250cmFzdC1tb2RlIGVudmlyb25tZW50LlxuICpcbiAqIE1pY3Jvc29mdCBXaW5kb3dzIHN1cHBvcnRzIGFuIGFjY2Vzc2liaWxpdHkgZmVhdHVyZSBjYWxsZWQgXCJIaWdoIENvbnRyYXN0IE1vZGVcIi4gVGhpcyBtb2RlXG4gKiBjaGFuZ2VzIHRoZSBhcHBlYXJhbmNlIG9mIGFsbCBhcHBsaWNhdGlvbnMsIGluY2x1ZGluZyB3ZWIgYXBwbGljYXRpb25zLCB0byBkcmFtYXRpY2FsbHkgaW5jcmVhc2VcbiAqIGNvbnRyYXN0LlxuICpcbiAqIElFLCBFZGdlLCBhbmQgRmlyZWZveCBjdXJyZW50bHkgc3VwcG9ydCB0aGlzIG1vZGUuIENocm9tZSBkb2VzIG5vdCBzdXBwb3J0IFdpbmRvd3MgSGlnaCBDb250cmFzdFxuICogTW9kZS4gVGhpcyBzZXJ2aWNlIGRvZXMgbm90IGRldGVjdCBoaWdoLWNvbnRyYXN0IG1vZGUgYXMgYWRkZWQgYnkgdGhlIENocm9tZSBcIkhpZ2ggQ29udHJhc3RcIlxuICogYnJvd3NlciBleHRlbnNpb24uXG4gKi9cbmV4cG9ydCBkZWNsYXJlIGNsYXNzIEhpZ2hDb250cmFzdE1vZGVEZXRlY3RvciB7XG4gICAgcHJpdmF0ZSBfcGxhdGZvcm07XG4gICAgcHJpdmF0ZSBfZG9jdW1lbnQ7XG4gICAgY29uc3RydWN0b3IoX3BsYXRmb3JtOiBQbGF0Zm9ybSwgZG9jdW1lbnQ6IGFueSk7XG4gICAgLyoqIEdldHMgdGhlIGN1cnJlbnQgaGlnaC1jb250cmFzdC1tb2RlIGZvciB0aGUgcGFnZS4gKi9cbiAgICBnZXRIaWdoQ29udHJhc3RNb2RlKCk6IEhpZ2hDb250cmFzdE1vZGU7XG4gICAgLyoqIEFwcGxpZXMgQ1NTIGNsYXNzZXMgaW5kaWNhdGluZyBoaWdoLWNvbnRyYXN0IG1vZGUgdG8gZG9jdW1lbnQgYm9keSAoYnJvd3Nlci1vbmx5KS4gKi9cbiAgICBfYXBwbHlCb2R5SGlnaENvbnRyYXN0TW9kZUNzc0NsYXNzZXMoKTogdm9pZDtcbn1cbiJdfQ==

@@ -1,5 +1,0 @@
-<tui-editor
-    exampleText="Пример ввода"
-    [(ngModel)]="model">
-    Плейсхолдер
-</tui-editor>

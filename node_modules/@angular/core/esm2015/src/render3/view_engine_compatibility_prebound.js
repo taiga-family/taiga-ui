@@ -1,0 +1,46 @@
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/core/src/render3/view_engine_compatibility_prebound.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+import { InjectFlags } from '../di/interface/injector';
+import { ElementRef as ViewEngine_ElementRef } from '../linker/element_ref';
+import { TemplateRef as ViewEngine_TemplateRef } from '../linker/template_ref';
+import { createTemplateRef, injectChangeDetectorRef } from './view_engine_compatibility';
+/**
+ * Retrieves `TemplateRef` instance from `Injector` when a local reference is placed on the
+ * `<ng-template>` element.
+ *
+ * \@codeGenApi
+ * @param {?} tNode
+ * @param {?} currentView
+ * @return {?}
+ */
+export function ɵɵtemplateRefExtractor(tNode, currentView) {
+    return createTemplateRef(ViewEngine_TemplateRef, ViewEngine_ElementRef, tNode, currentView);
+}
+/**
+ * Returns the appropriate `ChangeDetectorRef` for a pipe.
+ *
+ * \@codeGenApi
+ * @param {?=} flags
+ * @return {?}
+ */
+export function ɵɵinjectPipeChangeDetectorRef(flags = InjectFlags.Default) {
+    /** @type {?} */
+    const value = injectChangeDetectorRef(true);
+    if (value == null && !(flags & InjectFlags.Optional)) {
+        throw new Error(`No provider for ChangeDetectorRef!`);
+    }
+    else {
+        return value;
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidmlld19lbmdpbmVfY29tcGF0aWJpbGl0eV9wcmVib3VuZC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL3BhY2thZ2VzL2NvcmUvc3JjL3JlbmRlcjMvdmlld19lbmdpbmVfY29tcGF0aWJpbGl0eV9wcmVib3VuZC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7QUFVQSxPQUFPLEVBQUMsV0FBVyxFQUFDLE1BQU0sMEJBQTBCLENBQUM7QUFDckQsT0FBTyxFQUFDLFVBQVUsSUFBSSxxQkFBcUIsRUFBQyxNQUFNLHVCQUF1QixDQUFDO0FBQzFFLE9BQU8sRUFBQyxXQUFXLElBQUksc0JBQXNCLEVBQUMsTUFBTSx3QkFBd0IsQ0FBQztBQUk3RSxPQUFPLEVBQUMsaUJBQWlCLEVBQUUsdUJBQXVCLEVBQUMsTUFBTSw2QkFBNkIsQ0FBQzs7Ozs7Ozs7OztBQVV2RixNQUFNLFVBQVUsc0JBQXNCLENBQUMsS0FBWSxFQUFFLFdBQWtCO0lBQ3JFLE9BQU8saUJBQWlCLENBQUMsc0JBQXNCLEVBQUUscUJBQXFCLEVBQUUsS0FBSyxFQUFFLFdBQVcsQ0FBQyxDQUFDO0FBQzlGLENBQUM7Ozs7Ozs7O0FBUUQsTUFBTSxVQUFVLDZCQUE2QixDQUFDLEtBQUssR0FBRyxXQUFXLENBQUMsT0FBTzs7VUFDakUsS0FBSyxHQUFHLHVCQUF1QixDQUFDLElBQUksQ0FBQztJQUMzQyxJQUFJLEtBQUssSUFBSSxJQUFJLElBQUksQ0FBQyxDQUFDLEtBQUssR0FBRyxXQUFXLENBQUMsUUFBUSxDQUFDLEVBQUU7UUFDcEQsTUFBTSxJQUFJLEtBQUssQ0FBQyxvQ0FBb0MsQ0FBQyxDQUFDO0tBQ3ZEO1NBQU07UUFDTCxPQUFPLEtBQUssQ0FBQztLQUNkO0FBQ0gsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCBHb29nbGUgSW5jLiBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICpcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXG4gKi9cblxuXG5pbXBvcnQge0NoYW5nZURldGVjdG9yUmVmfSBmcm9tICcuLi9jaGFuZ2VfZGV0ZWN0aW9uL2NoYW5nZV9kZXRlY3Rvcl9yZWYnO1xuaW1wb3J0IHtJbmplY3RGbGFnc30gZnJvbSAnLi4vZGkvaW50ZXJmYWNlL2luamVjdG9yJztcbmltcG9ydCB7RWxlbWVudFJlZiBhcyBWaWV3RW5naW5lX0VsZW1lbnRSZWZ9IGZyb20gJy4uL2xpbmtlci9lbGVtZW50X3JlZic7XG5pbXBvcnQge1RlbXBsYXRlUmVmIGFzIFZpZXdFbmdpbmVfVGVtcGxhdGVSZWZ9IGZyb20gJy4uL2xpbmtlci90ZW1wbGF0ZV9yZWYnO1xuXG5pbXBvcnQge1ROb2RlfSBmcm9tICcuL2ludGVyZmFjZXMvbm9kZSc7XG5pbXBvcnQge0xWaWV3fSBmcm9tICcuL2ludGVyZmFjZXMvdmlldyc7XG5pbXBvcnQge2NyZWF0ZVRlbXBsYXRlUmVmLCBpbmplY3RDaGFuZ2VEZXRlY3RvclJlZn0gZnJvbSAnLi92aWV3X2VuZ2luZV9jb21wYXRpYmlsaXR5JztcblxuXG5cbi8qKlxuICogUmV0cmlldmVzIGBUZW1wbGF0ZVJlZmAgaW5zdGFuY2UgZnJvbSBgSW5qZWN0b3JgIHdoZW4gYSBsb2NhbCByZWZlcmVuY2UgaXMgcGxhY2VkIG9uIHRoZVxuICogYDxuZy10ZW1wbGF0ZT5gIGVsZW1lbnQuXG4gKlxuICogQGNvZGVHZW5BcGlcbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIMm1ybV0ZW1wbGF0ZVJlZkV4dHJhY3Rvcih0Tm9kZTogVE5vZGUsIGN1cnJlbnRWaWV3OiBMVmlldykge1xuICByZXR1cm4gY3JlYXRlVGVtcGxhdGVSZWYoVmlld0VuZ2luZV9UZW1wbGF0ZVJlZiwgVmlld0VuZ2luZV9FbGVtZW50UmVmLCB0Tm9kZSwgY3VycmVudFZpZXcpO1xufVxuXG5cbi8qKlxuICogUmV0dXJucyB0aGUgYXBwcm9wcmlhdGUgYENoYW5nZURldGVjdG9yUmVmYCBmb3IgYSBwaXBlLlxuICpcbiAqIEBjb2RlR2VuQXBpXG4gKi9cbmV4cG9ydCBmdW5jdGlvbiDJtcm1aW5qZWN0UGlwZUNoYW5nZURldGVjdG9yUmVmKGZsYWdzID0gSW5qZWN0RmxhZ3MuRGVmYXVsdCk6IENoYW5nZURldGVjdG9yUmVmfG51bGwge1xuICBjb25zdCB2YWx1ZSA9IGluamVjdENoYW5nZURldGVjdG9yUmVmKHRydWUpO1xuICBpZiAodmFsdWUgPT0gbnVsbCAmJiAhKGZsYWdzICYgSW5qZWN0RmxhZ3MuT3B0aW9uYWwpKSB7XG4gICAgdGhyb3cgbmV3IEVycm9yKGBObyBwcm92aWRlciBmb3IgQ2hhbmdlRGV0ZWN0b3JSZWYhYCk7XG4gIH0gZWxzZSB7XG4gICAgcmV0dXJuIHZhbHVlO1xuICB9XG59XG4iXX0=

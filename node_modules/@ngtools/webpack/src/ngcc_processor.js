@@ -1,0 +1,179 @@
+"use strict";
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+const ngcc_1 = require("@angular/compiler-cli/ngcc");
+const child_process_1 = require("child_process");
+const fs_1 = require("fs");
+const path = require("path");
+const benchmark_1 = require("./benchmark");
+// We cannot create a plugin for this, because NGTSC requires addition type
+// information which ngcc creates when processing a package which was compiled with NGC.
+// Example of such errors:
+// ERROR in node_modules/@angular/platform-browser/platform-browser.d.ts(42,22):
+// error TS-996002: Appears in the NgModule.imports of AppModule,
+// but could not be resolved to an NgModule class
+// We now transform a package and it's typings when NGTSC is resolving a module.
+class NgccProcessor {
+    constructor(propertiesToConsider, inputFileSystem, compilationWarnings, compilationErrors, basePath, compilerOptions, tsConfigPath) {
+        this.propertiesToConsider = propertiesToConsider;
+        this.inputFileSystem = inputFileSystem;
+        this.compilationWarnings = compilationWarnings;
+        this.compilationErrors = compilationErrors;
+        this.basePath = basePath;
+        this.compilerOptions = compilerOptions;
+        this.tsConfigPath = tsConfigPath;
+        this._processedModules = new Set();
+        this._logger = new NgccLogger(this.compilationWarnings, this.compilationErrors);
+        this._nodeModulesDirectory = this.findNodeModulesDirectory(this.basePath);
+        const { baseUrl, paths } = this.compilerOptions;
+        if (baseUrl && paths) {
+            this._pathMappings = {
+                baseUrl,
+                paths,
+            };
+        }
+    }
+    /** Process the entire node modules tree. */
+    process() {
+        // Under Bazel when running in sandbox mode parts of the filesystem is read-only.
+        if (process.env.BAZEL_TARGET) {
+            return;
+        }
+        // Skip if node_modules are read-only
+        const corePackage = this.tryResolvePackage('@angular/core', this._nodeModulesDirectory);
+        if (corePackage && isReadOnlyFile(corePackage)) {
+            return;
+        }
+        const timeLabel = 'NgccProcessor.process';
+        benchmark_1.time(timeLabel);
+        // We spawn instead of using the API because:
+        // - NGCC Async uses clustering which is problematic when used via the API which means
+        // that we cannot setup multiple cluster masters with different options.
+        // - We will not be able to have concurrent builds otherwise Ex: App-Shell,
+        // as NGCC will create a lock file for both builds and it will cause builds to fails.
+        const { status, error } = child_process_1.spawnSync(process.execPath, [
+            require.resolve('@angular/compiler-cli/ngcc/main-ngcc.js'),
+            '--source',
+            this._nodeModulesDirectory,
+            '--properties',
+            ...this.propertiesToConsider,
+            '--first-only',
+            '--create-ivy-entry-points',
+            '--async',
+            '--tsconfig',
+            this.tsConfigPath,
+        ], {
+            stdio: ['inherit', process.stderr, process.stderr],
+        });
+        if (status !== 0) {
+            const errorMessage = (error === null || error === void 0 ? void 0 : error.message) || '';
+            throw new Error(errorMessage + `NGCC failed${errorMessage ? ', see above' : ''}.`);
+        }
+        benchmark_1.timeEnd(timeLabel);
+    }
+    /** Process a module and it's depedencies. */
+    processModule(moduleName, resolvedModule) {
+        const resolvedFileName = resolvedModule.resolvedFileName;
+        if (!resolvedFileName || moduleName.startsWith('.')
+            || this._processedModules.has(resolvedFileName)) {
+            // Skip when module is unknown, relative or NGCC compiler is not found or already processed.
+            return;
+        }
+        const packageJsonPath = this.tryResolvePackage(moduleName, resolvedFileName);
+        // If the package.json is read only we should skip calling NGCC.
+        // With Bazel when running under sandbox the filesystem is read-only.
+        if (!packageJsonPath || isReadOnlyFile(packageJsonPath)) {
+            // add it to processed so the second time round we skip this.
+            this._processedModules.add(resolvedFileName);
+            return;
+        }
+        const timeLabel = `NgccProcessor.processModule.ngcc.process+${moduleName}`;
+        benchmark_1.time(timeLabel);
+        ngcc_1.process({
+            basePath: this._nodeModulesDirectory,
+            targetEntryPointPath: path.dirname(packageJsonPath),
+            propertiesToConsider: this.propertiesToConsider,
+            compileAllFormats: false,
+            createNewEntryPointFormats: true,
+            logger: this._logger,
+            // Path mappings are not longer required since NGCC 9.1
+            // We keep using them to be backward compatible with NGCC 9.0
+            pathMappings: this._pathMappings,
+            tsConfigPath: this.tsConfigPath,
+        });
+        benchmark_1.timeEnd(timeLabel);
+        // Purge this file from cache, since NGCC add new mainFields. Ex: module_ivy_ngcc
+        // which are unknown in the cached file.
+        // tslint:disable-next-line:no-any
+        this.inputFileSystem.purge(packageJsonPath);
+        this._processedModules.add(resolvedFileName);
+    }
+    invalidate(fileName) {
+        this._processedModules.delete(fileName);
+    }
+    /**
+     * Try resolve a package.json file from the resolved .d.ts file.
+     */
+    tryResolvePackage(moduleName, resolvedFileName) {
+        try {
+            // This is based on the logic in the NGCC compiler
+            // tslint:disable-next-line:max-line-length
+            // See: https://github.com/angular/angular/blob/b93c1dffa17e4e6900b3ab1b9e554b6da92be0de/packages/compiler-cli/src/ngcc/src/packages/dependency_host.ts#L85-L121
+            return require.resolve(`${moduleName}/package.json`, {
+                paths: [resolvedFileName],
+            });
+        }
+        catch (_a) {
+            // if it fails this might be a deep import which doesn't have a package.json
+            // Ex: @angular/compiler/src/i18n/i18n_ast/package.json
+            // or local libraries which don't reside in node_modules
+            const packageJsonPath = path.resolve(resolvedFileName, '../package.json');
+            return fs_1.existsSync(packageJsonPath) ? packageJsonPath : undefined;
+        }
+    }
+    findNodeModulesDirectory(startPoint) {
+        let current = startPoint;
+        while (path.dirname(current) !== current) {
+            const nodePath = path.join(current, 'node_modules');
+            if (fs_1.existsSync(nodePath)) {
+                return nodePath;
+            }
+            current = path.dirname(current);
+        }
+        throw new Error(`Cannot locate the 'node_modules' directory.`);
+    }
+}
+exports.NgccProcessor = NgccProcessor;
+class NgccLogger {
+    constructor(compilationWarnings, compilationErrors) {
+        this.compilationWarnings = compilationWarnings;
+        this.compilationErrors = compilationErrors;
+        this.level = ngcc_1.LogLevel.info;
+    }
+    debug(..._args) { }
+    info(...args) {
+        // Log to stderr because it's a progress-like info message.
+        process.stderr.write(`\n${args.join(' ')}\n`);
+    }
+    warn(...args) {
+        this.compilationWarnings.push(args.join(' '));
+    }
+    error(...args) {
+        this.compilationErrors.push(new Error(args.join(' ')));
+    }
+}
+function isReadOnlyFile(fileName) {
+    try {
+        fs_1.accessSync(fileName, fs_1.constants.W_OK);
+        return false;
+    }
+    catch (_a) {
+        return true;
+    }
+}

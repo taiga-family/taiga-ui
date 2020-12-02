@@ -1,5 +1,0 @@
-active = false;
-
-onActiveZone(active: boolean) {
-    this.active = active;
-}

@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+"use strict";
+
+const run = require("../src");
+run(process.cwd()).catch((error) => console.error(error));

@@ -1,0 +1,27 @@
+# Streamroller Changelog
+
+## 1.0.6
+
+- [Fix for overwriting old backup files](https://github.com/log4js-node/streamroller/pull/43)
+- Updated lodash to 4.17.14
+
+## 1.0.5
+
+- [Updated dependencies](https://github.com/log4js-node/streamroller/pull/38)
+- [Fix for initial file date when appending to existing file](https://github.com/log4js-node/streamroller/pull/40)
+
+## 1.0.4
+
+- [Fix for initial size when appending to existing file](https://github.com/log4js-node/streamroller/pull/35)
+
+## 1.0.3
+
+- [Fix for crash when pattern is all digits](https://github.com/log4js-node/streamroller/pull/33)
+
+## 1.0.2
+
+- is exactly the same as 1.0.1, due to me being an idiot and not pulling before I pushed
+
+## Previous versions
+
+Previous release details are available by browsing the milestones in github.

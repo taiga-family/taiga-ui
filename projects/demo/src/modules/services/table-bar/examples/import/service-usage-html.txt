@@ -1,3 +1,0 @@
-<ng-template #tableBarTemplate>
-    <p>Переданный шаблон</p>
-</ng-template>

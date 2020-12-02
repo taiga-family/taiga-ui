@@ -1,0 +1,4 @@
+script: script/test
+language: node_js
+node_js:
+- '0.10'

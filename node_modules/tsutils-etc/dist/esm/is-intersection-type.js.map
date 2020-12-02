@@ -1,0 +1,1 @@
+{"version":3,"file":"is-intersection-type.js","sourceRoot":"","sources":["../../source/is-intersection-type.ts"],"names":[],"mappings":"AAKA,OAAO,KAAK,OAAO,MAAM,SAAS,CAAC;AACnC,OAAO,KAAK,EAAE,MAAM,YAAY,CAAC;AAEjC,MAAM,UAAU,kBAAkB,CAAC,IAAa;IAC9C,OAAO,OAAO,CAAC,aAAa,CAAC,IAAI,EAAE,EAAE,CAAC,SAAS,CAAC,YAAY,CAAC,CAAC;AAChE,CAAC"}

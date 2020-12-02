@@ -1,0 +1,153 @@
+/**
+ * @license Angular v9.1.12
+ * (c) 2010-2020 Google LLC. https://angular.io/
+ * License: MIT
+ */
+
+import { AnimationBuilder } from '@angular/animations';
+import { AnimationDriver } from '@angular/animations/browser';
+import { AnimationFactory } from '@angular/animations';
+import { AnimationMetadata } from '@angular/animations';
+import { AnimationOptions } from '@angular/animations';
+import { AnimationPlayer } from '@angular/animations';
+import { InjectionToken } from '@angular/core';
+import { NgZone } from '@angular/core';
+import { Provider } from '@angular/core';
+import { Renderer2 } from '@angular/core';
+import { RendererFactory2 } from '@angular/core';
+import { RendererStyleFlags2 } from '@angular/core';
+import { RendererType2 } from '@angular/core';
+import { ɵAnimationEngine } from '@angular/animations/browser';
+import { ɵAnimationStyleNormalizer } from '@angular/animations/browser';
+import { ɵCssKeyframesDriver } from '@angular/animations/browser';
+import { ɵDomRendererFactory2 } from '@angular/platform-browser';
+import { ɵWebAnimationsDriver } from '@angular/animations/browser';
+import { ɵWebAnimationsStyleNormalizer } from '@angular/animations/browser';
+
+/**
+ * @publicApi
+ */
+import * as ɵngcc0 from '@angular/core';
+import * as ɵngcc1 from '@angular/platform-browser';
+export declare const ANIMATION_MODULE_TYPE: InjectionToken<"NoopAnimations" | "BrowserAnimations">;
+
+/**
+ * Exports `BrowserModule` with additional [dependency-injection providers](guide/glossary#provider)
+ * for use with animations. See [Animations](guide/animations).
+ * @publicApi
+ */
+export declare class BrowserAnimationsModule {
+    static ɵmod: ɵngcc0.ɵɵNgModuleDefWithMeta<BrowserAnimationsModule, never, never, [typeof ɵngcc1.BrowserModule]>;
+    static ɵinj: ɵngcc0.ɵɵInjectorDef<BrowserAnimationsModule>;
+}
+
+/**
+ * A null player that must be imported to allow disabling of animations.
+ * @publicApi
+ */
+export declare class NoopAnimationsModule {
+    static ɵmod: ɵngcc0.ɵɵNgModuleDefWithMeta<NoopAnimationsModule, never, never, [typeof ɵngcc1.BrowserModule]>;
+    static ɵinj: ɵngcc0.ɵɵInjectorDef<NoopAnimationsModule>;
+}
+
+export declare function ɵangular_packages_platform_browser_animations_animations_a(): ɵWebAnimationsDriver | ɵCssKeyframesDriver;
+
+export declare function ɵangular_packages_platform_browser_animations_animations_b(): ɵWebAnimationsStyleNormalizer;
+
+export declare function ɵangular_packages_platform_browser_animations_animations_c(renderer: ɵDomRendererFactory2, engine: ɵAnimationEngine, zone: NgZone): ɵAnimationRendererFactory;
+
+/**
+ * Separate providers from the actual module so that we can do a local modification in Google3 to
+ * include them in the BrowserModule.
+ */
+export declare const ɵangular_packages_platform_browser_animations_animations_d: Provider[];
+
+/**
+ * Separate providers from the actual module so that we can do a local modification in Google3 to
+ * include them in the BrowserTestingModule.
+ */
+export declare const ɵangular_packages_platform_browser_animations_animations_e: Provider[];
+
+export declare class ɵangular_packages_platform_browser_animations_animations_f implements Renderer2 {
+    protected namespaceId: string;
+    delegate: Renderer2;
+    engine: ɵAnimationEngine;
+    constructor(namespaceId: string, delegate: Renderer2, engine: ɵAnimationEngine);
+    get data(): {
+        [key: string]: any;
+    };
+    destroyNode: ((n: any) => void) | null;
+    destroy(): void;
+    createElement(name: string, namespace?: string | null | undefined): any;
+    createComment(value: string): any;
+    createText(value: string): any;
+    appendChild(parent: any, newChild: any): void;
+    insertBefore(parent: any, newChild: any, refChild: any): void;
+    removeChild(parent: any, oldChild: any, isHostElement: boolean): void;
+    selectRootElement(selectorOrNode: any, preserveContent?: boolean): any;
+    parentNode(node: any): any;
+    nextSibling(node: any): any;
+    setAttribute(el: any, name: string, value: string, namespace?: string | null | undefined): void;
+    removeAttribute(el: any, name: string, namespace?: string | null | undefined): void;
+    addClass(el: any, name: string): void;
+    removeClass(el: any, name: string): void;
+    setStyle(el: any, style: string, value: any, flags?: RendererStyleFlags2 | undefined): void;
+    removeStyle(el: any, style: string, flags?: RendererStyleFlags2 | undefined): void;
+    setProperty(el: any, name: string, value: any): void;
+    setValue(node: any, value: string): void;
+    listen(target: any, eventName: string, callback: (event: any) => boolean | void): () => void;
+    protected disableAnimations(element: any, value: boolean): void;
+}
+
+export declare class ɵAnimationRenderer extends ɵangular_packages_platform_browser_animations_animations_f implements Renderer2 {
+    factory: ɵAnimationRendererFactory;
+    constructor(factory: ɵAnimationRendererFactory, namespaceId: string, delegate: Renderer2, engine: ɵAnimationEngine);
+    setProperty(el: any, name: string, value: any): void;
+    listen(target: 'window' | 'document' | 'body' | any, eventName: string, callback: (event: any) => any): () => void;
+}
+
+export declare class ɵAnimationRendererFactory implements RendererFactory2 {
+    private delegate;
+    private engine;
+    private _zone;
+    private _currentId;
+    private _microtaskId;
+    private _animationCallbacksBuffer;
+    private _rendererCache;
+    private _cdRecurDepth;
+    private promise;
+    constructor(delegate: RendererFactory2, engine: ɵAnimationEngine, _zone: NgZone);
+    createRenderer(hostElement: any, type: RendererType2): Renderer2;
+    begin(): void;
+    private _scheduleCountTask;
+    end(): void;
+    whenRenderingDone(): Promise<any>;
+    static ɵfac: ɵngcc0.ɵɵFactoryDef<ɵAnimationRendererFactory, never>;
+    static ɵprov: ɵngcc0.ɵɵInjectableDef<ɵAnimationRendererFactory>;
+}
+
+export declare class ɵBrowserAnimationBuilder extends AnimationBuilder {
+    private _nextAnimationId;
+    private _renderer;
+    constructor(rootRenderer: RendererFactory2, doc: any);
+    build(animation: AnimationMetadata | AnimationMetadata[]): AnimationFactory;
+    static ɵfac: ɵngcc0.ɵɵFactoryDef<ɵBrowserAnimationBuilder, never>;
+    static ɵprov: ɵngcc0.ɵɵInjectableDef<ɵBrowserAnimationBuilder>;
+}
+
+export declare class ɵBrowserAnimationFactory extends AnimationFactory {
+    private _id;
+    private _renderer;
+    constructor(_id: string, _renderer: ɵAnimationRenderer);
+    create(element: any, options?: AnimationOptions): AnimationPlayer;
+}
+
+export declare class ɵInjectableAnimationEngine extends ɵAnimationEngine {
+    constructor(doc: any, driver: AnimationDriver, normalizer: ɵAnimationStyleNormalizer);
+    static ɵfac: ɵngcc0.ɵɵFactoryDef<ɵInjectableAnimationEngine, never>;
+    static ɵprov: ɵngcc0.ɵɵInjectableDef<ɵInjectableAnimationEngine>;
+}
+
+export { }
+
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5pbWF0aW9ucy5kLnRzIiwic291cmNlcyI6WyJhbmltYXRpb25zLmQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7O0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7O0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7OztBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7OztBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOzs7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOzs7QUFDQTtBQUNBO0FBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEBsaWNlbnNlIEFuZ3VsYXIgdjkuMS4xMlxuICogKGMpIDIwMTAtMjAyMCBHb29nbGUgTExDLiBodHRwczovL2FuZ3VsYXIuaW8vXG4gKiBMaWNlbnNlOiBNSVRcbiAqL1xuXG5pbXBvcnQgeyBBbmltYXRpb25CdWlsZGVyIH0gZnJvbSAnQGFuZ3VsYXIvYW5pbWF0aW9ucyc7XHJcbmltcG9ydCB7IEFuaW1hdGlvbkRyaXZlciB9IGZyb20gJ0Bhbmd1bGFyL2FuaW1hdGlvbnMvYnJvd3Nlcic7XHJcbmltcG9ydCB7IEFuaW1hdGlvbkZhY3RvcnkgfSBmcm9tICdAYW5ndWxhci9hbmltYXRpb25zJztcclxuaW1wb3J0IHsgQW5pbWF0aW9uTWV0YWRhdGEgfSBmcm9tICdAYW5ndWxhci9hbmltYXRpb25zJztcclxuaW1wb3J0IHsgQW5pbWF0aW9uT3B0aW9ucyB9IGZyb20gJ0Bhbmd1bGFyL2FuaW1hdGlvbnMnO1xyXG5pbXBvcnQgeyBBbmltYXRpb25QbGF5ZXIgfSBmcm9tICdAYW5ndWxhci9hbmltYXRpb25zJztcclxuaW1wb3J0IHsgSW5qZWN0aW9uVG9rZW4gfSBmcm9tICdAYW5ndWxhci9jb3JlJztcclxuaW1wb3J0IHsgTmdab25lIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XHJcbmltcG9ydCB7IFByb3ZpZGVyIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XHJcbmltcG9ydCB7IFJlbmRlcmVyMiB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xyXG5pbXBvcnQgeyBSZW5kZXJlckZhY3RvcnkyIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XHJcbmltcG9ydCB7IFJlbmRlcmVyU3R5bGVGbGFnczIgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcclxuaW1wb3J0IHsgUmVuZGVyZXJUeXBlMiB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xyXG5pbXBvcnQgeyDJtUFuaW1hdGlvbkVuZ2luZSB9IGZyb20gJ0Bhbmd1bGFyL2FuaW1hdGlvbnMvYnJvd3Nlcic7XHJcbmltcG9ydCB7IMm1QW5pbWF0aW9uU3R5bGVOb3JtYWxpemVyIH0gZnJvbSAnQGFuZ3VsYXIvYW5pbWF0aW9ucy9icm93c2VyJztcclxuaW1wb3J0IHsgybVDc3NLZXlmcmFtZXNEcml2ZXIgfSBmcm9tICdAYW5ndWxhci9hbmltYXRpb25zL2Jyb3dzZXInO1xyXG5pbXBvcnQgeyDJtURvbVJlbmRlcmVyRmFjdG9yeTIgfSBmcm9tICdAYW5ndWxhci9wbGF0Zm9ybS1icm93c2VyJztcclxuaW1wb3J0IHsgybVXZWJBbmltYXRpb25zRHJpdmVyIH0gZnJvbSAnQGFuZ3VsYXIvYW5pbWF0aW9ucy9icm93c2VyJztcclxuaW1wb3J0IHsgybVXZWJBbmltYXRpb25zU3R5bGVOb3JtYWxpemVyIH0gZnJvbSAnQGFuZ3VsYXIvYW5pbWF0aW9ucy9icm93c2VyJztcclxuXHJcbi8qKlxyXG4gKiBAcHVibGljQXBpXHJcbiAqL1xyXG5leHBvcnQgZGVjbGFyZSBjb25zdCBBTklNQVRJT05fTU9EVUxFX1RZUEU6IEluamVjdGlvblRva2VuPFwiTm9vcEFuaW1hdGlvbnNcIiB8IFwiQnJvd3NlckFuaW1hdGlvbnNcIj47XHJcblxyXG4vKipcclxuICogRXhwb3J0cyBgQnJvd3Nlck1vZHVsZWAgd2l0aCBhZGRpdGlvbmFsIFtkZXBlbmRlbmN5LWluamVjdGlvbiBwcm92aWRlcnNdKGd1aWRlL2dsb3NzYXJ5I3Byb3ZpZGVyKVxyXG4gKiBmb3IgdXNlIHdpdGggYW5pbWF0aW9ucy4gU2VlIFtBbmltYXRpb25zXShndWlkZS9hbmltYXRpb25zKS5cclxuICogQHB1YmxpY0FwaVxyXG4gKi9cclxuZXhwb3J0IGRlY2xhcmUgY2xhc3MgQnJvd3NlckFuaW1hdGlvbnNNb2R1bGUge1xyXG59XHJcblxyXG4vKipcclxuICogQSBudWxsIHBsYXllciB0aGF0IG11c3QgYmUgaW1wb3J0ZWQgdG8gYWxsb3cgZGlzYWJsaW5nIG9mIGFuaW1hdGlvbnMuXHJcbiAqIEBwdWJsaWNBcGlcclxuICovXHJcbmV4cG9ydCBkZWNsYXJlIGNsYXNzIE5vb3BBbmltYXRpb25zTW9kdWxlIHtcclxufVxyXG5cclxuZXhwb3J0IGRlY2xhcmUgZnVuY3Rpb24gybVhbmd1bGFyX3BhY2thZ2VzX3BsYXRmb3JtX2Jyb3dzZXJfYW5pbWF0aW9uc19hbmltYXRpb25zX2EoKTogybVXZWJBbmltYXRpb25zRHJpdmVyIHwgybVDc3NLZXlmcmFtZXNEcml2ZXI7XHJcblxyXG5leHBvcnQgZGVjbGFyZSBmdW5jdGlvbiDJtWFuZ3VsYXJfcGFja2FnZXNfcGxhdGZvcm1fYnJvd3Nlcl9hbmltYXRpb25zX2FuaW1hdGlvbnNfYigpOiDJtVdlYkFuaW1hdGlvbnNTdHlsZU5vcm1hbGl6ZXI7XHJcblxyXG5leHBvcnQgZGVjbGFyZSBmdW5jdGlvbiDJtWFuZ3VsYXJfcGFja2FnZXNfcGxhdGZvcm1fYnJvd3Nlcl9hbmltYXRpb25zX2FuaW1hdGlvbnNfYyhyZW5kZXJlcjogybVEb21SZW5kZXJlckZhY3RvcnkyLCBlbmdpbmU6IMm1QW5pbWF0aW9uRW5naW5lLCB6b25lOiBOZ1pvbmUpOiDJtUFuaW1hdGlvblJlbmRlcmVyRmFjdG9yeTtcclxuXHJcbi8qKlxyXG4gKiBTZXBhcmF0ZSBwcm92aWRlcnMgZnJvbSB0aGUgYWN0dWFsIG1vZHVsZSBzbyB0aGF0IHdlIGNhbiBkbyBhIGxvY2FsIG1vZGlmaWNhdGlvbiBpbiBHb29nbGUzIHRvXHJcbiAqIGluY2x1ZGUgdGhlbSBpbiB0aGUgQnJvd3Nlck1vZHVsZS5cclxuICovXHJcbmV4cG9ydCBkZWNsYXJlIGNvbnN0IMm1YW5ndWxhcl9wYWNrYWdlc19wbGF0Zm9ybV9icm93c2VyX2FuaW1hdGlvbnNfYW5pbWF0aW9uc19kOiBQcm92aWRlcltdO1xyXG5cclxuLyoqXHJcbiAqIFNlcGFyYXRlIHByb3ZpZGVycyBmcm9tIHRoZSBhY3R1YWwgbW9kdWxlIHNvIHRoYXQgd2UgY2FuIGRvIGEgbG9jYWwgbW9kaWZpY2F0aW9uIGluIEdvb2dsZTMgdG9cclxuICogaW5jbHVkZSB0aGVtIGluIHRoZSBCcm93c2VyVGVzdGluZ01vZHVsZS5cclxuICovXHJcbmV4cG9ydCBkZWNsYXJlIGNvbnN0IMm1YW5ndWxhcl9wYWNrYWdlc19wbGF0Zm9ybV9icm93c2VyX2FuaW1hdGlvbnNfYW5pbWF0aW9uc19lOiBQcm92aWRlcltdO1xyXG5cclxuZXhwb3J0IGRlY2xhcmUgY2xhc3MgybVhbmd1bGFyX3BhY2thZ2VzX3BsYXRmb3JtX2Jyb3dzZXJfYW5pbWF0aW9uc19hbmltYXRpb25zX2YgaW1wbGVtZW50cyBSZW5kZXJlcjIge1xyXG4gICAgcHJvdGVjdGVkIG5hbWVzcGFjZUlkOiBzdHJpbmc7XHJcbiAgICBkZWxlZ2F0ZTogUmVuZGVyZXIyO1xyXG4gICAgZW5naW5lOiDJtUFuaW1hdGlvbkVuZ2luZTtcclxuICAgIGNvbnN0cnVjdG9yKG5hbWVzcGFjZUlkOiBzdHJpbmcsIGRlbGVnYXRlOiBSZW5kZXJlcjIsIGVuZ2luZTogybVBbmltYXRpb25FbmdpbmUpO1xyXG4gICAgZ2V0IGRhdGEoKToge1xyXG4gICAgICAgIFtrZXk6IHN0cmluZ106IGFueTtcclxuICAgIH07XHJcbiAgICBkZXN0cm95Tm9kZTogKChuOiBhbnkpID0+IHZvaWQpIHwgbnVsbDtcclxuICAgIGRlc3Ryb3koKTogdm9pZDtcclxuICAgIGNyZWF0ZUVsZW1lbnQobmFtZTogc3RyaW5nLCBuYW1lc3BhY2U/OiBzdHJpbmcgfCBudWxsIHwgdW5kZWZpbmVkKTogYW55O1xyXG4gICAgY3JlYXRlQ29tbWVudCh2YWx1ZTogc3RyaW5nKTogYW55O1xyXG4gICAgY3JlYXRlVGV4dCh2YWx1ZTogc3RyaW5nKTogYW55O1xyXG4gICAgYXBwZW5kQ2hpbGQocGFyZW50OiBhbnksIG5ld0NoaWxkOiBhbnkpOiB2b2lkO1xyXG4gICAgaW5zZXJ0QmVmb3JlKHBhcmVudDogYW55LCBuZXdDaGlsZDogYW55LCByZWZDaGlsZDogYW55KTogdm9pZDtcclxuICAgIHJlbW92ZUNoaWxkKHBhcmVudDogYW55LCBvbGRDaGlsZDogYW55LCBpc0hvc3RFbGVtZW50OiBib29sZWFuKTogdm9pZDtcclxuICAgIHNlbGVjdFJvb3RFbGVtZW50KHNlbGVjdG9yT3JOb2RlOiBhbnksIHByZXNlcnZlQ29udGVudD86IGJvb2xlYW4pOiBhbnk7XHJcbiAgICBwYXJlbnROb2RlKG5vZGU6IGFueSk6IGFueTtcclxuICAgIG5leHRTaWJsaW5nKG5vZGU6IGFueSk6IGFueTtcclxuICAgIHNldEF0dHJpYnV0ZShlbDogYW55LCBuYW1lOiBzdHJpbmcsIHZhbHVlOiBzdHJpbmcsIG5hbWVzcGFjZT86IHN0cmluZyB8IG51bGwgfCB1bmRlZmluZWQpOiB2b2lkO1xyXG4gICAgcmVtb3ZlQXR0cmlidXRlKGVsOiBhbnksIG5hbWU6IHN0cmluZywgbmFtZXNwYWNlPzogc3RyaW5nIHwgbnVsbCB8IHVuZGVmaW5lZCk6IHZvaWQ7XHJcbiAgICBhZGRDbGFzcyhlbDogYW55LCBuYW1lOiBzdHJpbmcpOiB2b2lkO1xyXG4gICAgcmVtb3ZlQ2xhc3MoZWw6IGFueSwgbmFtZTogc3RyaW5nKTogdm9pZDtcclxuICAgIHNldFN0eWxlKGVsOiBhbnksIHN0eWxlOiBzdHJpbmcsIHZhbHVlOiBhbnksIGZsYWdzPzogUmVuZGVyZXJTdHlsZUZsYWdzMiB8IHVuZGVmaW5lZCk6IHZvaWQ7XHJcbiAgICByZW1vdmVTdHlsZShlbDogYW55LCBzdHlsZTogc3RyaW5nLCBmbGFncz86IFJlbmRlcmVyU3R5bGVGbGFnczIgfCB1bmRlZmluZWQpOiB2b2lkO1xyXG4gICAgc2V0UHJvcGVydHkoZWw6IGFueSwgbmFtZTogc3RyaW5nLCB2YWx1ZTogYW55KTogdm9pZDtcclxuICAgIHNldFZhbHVlKG5vZGU6IGFueSwgdmFsdWU6IHN0cmluZyk6IHZvaWQ7XHJcbiAgICBsaXN0ZW4odGFyZ2V0OiBhbnksIGV2ZW50TmFtZTogc3RyaW5nLCBjYWxsYmFjazogKGV2ZW50OiBhbnkpID0+IGJvb2xlYW4gfCB2b2lkKTogKCkgPT4gdm9pZDtcclxuICAgIHByb3RlY3RlZCBkaXNhYmxlQW5pbWF0aW9ucyhlbGVtZW50OiBhbnksIHZhbHVlOiBib29sZWFuKTogdm9pZDtcclxufVxyXG5cclxuZXhwb3J0IGRlY2xhcmUgY2xhc3MgybVBbmltYXRpb25SZW5kZXJlciBleHRlbmRzIMm1YW5ndWxhcl9wYWNrYWdlc19wbGF0Zm9ybV9icm93c2VyX2FuaW1hdGlvbnNfYW5pbWF0aW9uc19mIGltcGxlbWVudHMgUmVuZGVyZXIyIHtcclxuICAgIGZhY3Rvcnk6IMm1QW5pbWF0aW9uUmVuZGVyZXJGYWN0b3J5O1xyXG4gICAgY29uc3RydWN0b3IoZmFjdG9yeTogybVBbmltYXRpb25SZW5kZXJlckZhY3RvcnksIG5hbWVzcGFjZUlkOiBzdHJpbmcsIGRlbGVnYXRlOiBSZW5kZXJlcjIsIGVuZ2luZTogybVBbmltYXRpb25FbmdpbmUpO1xyXG4gICAgc2V0UHJvcGVydHkoZWw6IGFueSwgbmFtZTogc3RyaW5nLCB2YWx1ZTogYW55KTogdm9pZDtcclxuICAgIGxpc3Rlbih0YXJnZXQ6ICd3aW5kb3cnIHwgJ2RvY3VtZW50JyB8ICdib2R5JyB8IGFueSwgZXZlbnROYW1lOiBzdHJpbmcsIGNhbGxiYWNrOiAoZXZlbnQ6IGFueSkgPT4gYW55KTogKCkgPT4gdm9pZDtcclxufVxyXG5cclxuZXhwb3J0IGRlY2xhcmUgY2xhc3MgybVBbmltYXRpb25SZW5kZXJlckZhY3RvcnkgaW1wbGVtZW50cyBSZW5kZXJlckZhY3RvcnkyIHtcclxuICAgIHByaXZhdGUgZGVsZWdhdGU7XHJcbiAgICBwcml2YXRlIGVuZ2luZTtcclxuICAgIHByaXZhdGUgX3pvbmU7XHJcbiAgICBwcml2YXRlIF9jdXJyZW50SWQ7XHJcbiAgICBwcml2YXRlIF9taWNyb3Rhc2tJZDtcclxuICAgIHByaXZhdGUgX2FuaW1hdGlvbkNhbGxiYWNrc0J1ZmZlcjtcclxuICAgIHByaXZhdGUgX3JlbmRlcmVyQ2FjaGU7XHJcbiAgICBwcml2YXRlIF9jZFJlY3VyRGVwdGg7XHJcbiAgICBwcml2YXRlIHByb21pc2U7XHJcbiAgICBjb25zdHJ1Y3RvcihkZWxlZ2F0ZTogUmVuZGVyZXJGYWN0b3J5MiwgZW5naW5lOiDJtUFuaW1hdGlvbkVuZ2luZSwgX3pvbmU6IE5nWm9uZSk7XHJcbiAgICBjcmVhdGVSZW5kZXJlcihob3N0RWxlbWVudDogYW55LCB0eXBlOiBSZW5kZXJlclR5cGUyKTogUmVuZGVyZXIyO1xyXG4gICAgYmVnaW4oKTogdm9pZDtcclxuICAgIHByaXZhdGUgX3NjaGVkdWxlQ291bnRUYXNrO1xyXG4gICAgZW5kKCk6IHZvaWQ7XHJcbiAgICB3aGVuUmVuZGVyaW5nRG9uZSgpOiBQcm9taXNlPGFueT47XHJcbn1cclxuXHJcbmV4cG9ydCBkZWNsYXJlIGNsYXNzIMm1QnJvd3NlckFuaW1hdGlvbkJ1aWxkZXIgZXh0ZW5kcyBBbmltYXRpb25CdWlsZGVyIHtcclxuICAgIHByaXZhdGUgX25leHRBbmltYXRpb25JZDtcclxuICAgIHByaXZhdGUgX3JlbmRlcmVyO1xyXG4gICAgY29uc3RydWN0b3Iocm9vdFJlbmRlcmVyOiBSZW5kZXJlckZhY3RvcnkyLCBkb2M6IGFueSk7XHJcbiAgICBidWlsZChhbmltYXRpb246IEFuaW1hdGlvbk1ldGFkYXRhIHwgQW5pbWF0aW9uTWV0YWRhdGFbXSk6IEFuaW1hdGlvbkZhY3Rvcnk7XHJcbn1cclxuXHJcbmV4cG9ydCBkZWNsYXJlIGNsYXNzIMm1QnJvd3NlckFuaW1hdGlvbkZhY3RvcnkgZXh0ZW5kcyBBbmltYXRpb25GYWN0b3J5IHtcclxuICAgIHByaXZhdGUgX2lkO1xyXG4gICAgcHJpdmF0ZSBfcmVuZGVyZXI7XHJcbiAgICBjb25zdHJ1Y3RvcihfaWQ6IHN0cmluZywgX3JlbmRlcmVyOiDJtUFuaW1hdGlvblJlbmRlcmVyKTtcclxuICAgIGNyZWF0ZShlbGVtZW50OiBhbnksIG9wdGlvbnM/OiBBbmltYXRpb25PcHRpb25zKTogQW5pbWF0aW9uUGxheWVyO1xyXG59XHJcblxyXG5leHBvcnQgZGVjbGFyZSBjbGFzcyDJtUluamVjdGFibGVBbmltYXRpb25FbmdpbmUgZXh0ZW5kcyDJtUFuaW1hdGlvbkVuZ2luZSB7XHJcbiAgICBjb25zdHJ1Y3Rvcihkb2M6IGFueSwgZHJpdmVyOiBBbmltYXRpb25Ecml2ZXIsIG5vcm1hbGl6ZXI6IMm1QW5pbWF0aW9uU3R5bGVOb3JtYWxpemVyKTtcclxufVxyXG5cclxuZXhwb3J0IHsgfVxyXG4iXX0=

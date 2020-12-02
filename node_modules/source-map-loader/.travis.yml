@@ -1,0 +1,19 @@
+sudo: false
+language: node_js
+branches:
+  only:
+    - master
+matrix:
+  fast_finish: true
+  include:
+    - os: linux
+      node_js: '8'
+      env: JOB_PART=test
+    - os: linux
+      node_js: '9'
+      env: JOB_PART=test
+before_install:
+  - nvm --version
+  - node --version
+script:
+  - npm run travis:$JOB_PART

@@ -1,0 +1,15 @@
+/**
+ * @fileoverview added by tsickle
+ * Generated from: packages/common/src/private_export.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+export { DomAdapter as ɵDomAdapter, getDOM as ɵgetDOM, setRootDomAdapter as ɵsetRootDomAdapter } from './dom_adapter';
+export { BrowserPlatformLocation as ɵBrowserPlatformLocation } from './location/platform_location';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHJpdmF0ZV9leHBvcnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi9wYWNrYWdlcy9jb21tb24vc3JjL3ByaXZhdGVfZXhwb3J0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7OztBQVFBLE9BQU8sRUFBQyxVQUFVLElBQUksV0FBVyxFQUFFLE1BQU0sSUFBSSxPQUFPLEVBQUUsaUJBQWlCLElBQUksa0JBQWtCLEVBQUMsTUFBTSxlQUFlLENBQUM7QUFDcEgsT0FBTyxFQUFDLHVCQUF1QixJQUFJLHdCQUF3QixFQUFDLE1BQU0sOEJBQThCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEBsaWNlbnNlXG4gKiBDb3B5cmlnaHQgR29vZ2xlIEluYy4gQWxsIFJpZ2h0cyBSZXNlcnZlZC5cbiAqXG4gKiBVc2Ugb2YgdGhpcyBzb3VyY2UgY29kZSBpcyBnb3Zlcm5lZCBieSBhbiBNSVQtc3R5bGUgbGljZW5zZSB0aGF0IGNhbiBiZVxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2FuZ3VsYXIuaW8vbGljZW5zZVxuICovXG5cbmV4cG9ydCB7RG9tQWRhcHRlciBhcyDJtURvbUFkYXB0ZXIsIGdldERPTSBhcyDJtWdldERPTSwgc2V0Um9vdERvbUFkYXB0ZXIgYXMgybVzZXRSb290RG9tQWRhcHRlcn0gZnJvbSAnLi9kb21fYWRhcHRlcic7XG5leHBvcnQge0Jyb3dzZXJQbGF0Zm9ybUxvY2F0aW9uIGFzIMm1QnJvd3NlclBsYXRmb3JtTG9jYXRpb259IGZyb20gJy4vbG9jYXRpb24vcGxhdGZvcm1fbG9jYXRpb24nO1xuIl19

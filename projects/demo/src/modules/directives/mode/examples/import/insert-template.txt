@@ -1,3 +1,0 @@
-<div tuiMode="light">
-    ...
-</div>

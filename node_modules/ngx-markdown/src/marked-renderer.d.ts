@@ -1,0 +1,3 @@
+import { Renderer } from 'marked';
+export declare class MarkedRenderer extends Renderer {
+}

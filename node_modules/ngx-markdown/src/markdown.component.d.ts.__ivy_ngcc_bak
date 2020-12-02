@@ -1,0 +1,34 @@
+import { AfterViewInit, ElementRef, EventEmitter, OnChanges } from '@angular/core';
+import { KatexOptions } from './katex-options';
+import { MarkdownService } from './markdown.service';
+export declare class MarkdownComponent implements OnChanges, AfterViewInit {
+    element: ElementRef<HTMLElement>;
+    markdownService: MarkdownService;
+    data: string;
+    src: string;
+    katex: boolean;
+    katexOptions: KatexOptions;
+    lineNumbers: boolean;
+    start: number;
+    lineHighlight: boolean;
+    line: string | string[];
+    lineOffset: number;
+    error: EventEmitter<string>;
+    load: EventEmitter<string>;
+    ready: EventEmitter<void>;
+    private _katex;
+    private _lineHighlight;
+    private _lineNumbers;
+    constructor(element: ElementRef<HTMLElement>, markdownService: MarkdownService);
+    ngOnChanges(): void;
+    ngAfterViewInit(): void;
+    render(markdown: string, decodeHtml?: boolean): void;
+    private coerceBooleanProperty;
+    private handleData;
+    private handleSrc;
+    private handleTransclusion;
+    private handlePlugins;
+    private setPluginClass;
+    private setPluginOptions;
+    private toLispCase;
+}

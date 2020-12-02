@@ -1,0 +1,22 @@
+{
+  "name": "@angular/animations/browser",
+  "typings": "./browser.d.ts",
+  "main": "../bundles/animations-browser.umd.js",
+  "module": "../fesm5/browser.js",
+  "es2015_ivy_ngcc": "../__ivy_ngcc__/fesm2015/browser.js",
+  "es2015": "../fesm2015/browser.js",
+  "esm5": "../esm5/browser/browser.js",
+  "esm2015": "../esm2015/browser/browser.js",
+  "fesm5": "../fesm5/browser.js",
+  "fesm2015_ivy_ngcc": "../__ivy_ngcc__/fesm2015/browser.js",
+  "fesm2015": "../fesm2015/browser.js",
+  "sideEffects": false,
+  "__processed_by_ivy_ngcc__": {
+    "es2015": "9.1.12",
+    "fesm2015": "9.1.12",
+    "typings": "9.1.12"
+  },
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by NGCC. This is not allowed.\\nPlease delete and rebuild the package, without compiling with NGCC, before attempting to publish.\\nNote that NGCC may have been run by importing this package into another project that is being built with Ivy enabled.\\n')\" && exit 1"
+  }
+}

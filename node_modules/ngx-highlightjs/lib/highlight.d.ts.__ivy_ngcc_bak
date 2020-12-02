@@ -1,0 +1,26 @@
+import { OnChanges, SimpleChanges, EventEmitter, NgZone } from '@angular/core';
+import { HighlightJS } from './highlight.service';
+import { HighlightResult } from './highlight.model';
+export declare class Highlight implements OnChanges {
+    private _hljs;
+    private _zone;
+    /** Highlighted Code */
+    highlightedCode: string;
+    /** An optional array of language names and aliases restricting detection to only those languages.
+     * The subset can also be set with configure, but the local parameter overrides the option if set.
+     */
+    languages: string[];
+    /** Highlight code input */
+    code: any;
+    /** Stream that emits when code string is highlighted */
+    highlighted: EventEmitter<HighlightResult>;
+    constructor(_hljs: HighlightJS, _zone: NgZone);
+    ngOnChanges(changes: SimpleChanges): void;
+    /**
+     * Highlighting with language detection and fix markup.
+     * @param value Accepts a string with the code to highlight
+     * @param languageSubset An optional array of language names and aliases restricting detection to only those languages.
+     * The subset can also be set with configure, but the local parameter overrides the option if set.
+     */
+    highlightElement(code: string, languages?: string[]): void;
+}

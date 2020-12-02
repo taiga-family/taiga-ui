@@ -1,0 +1,1 @@
+{"version":3,"file":"is-union-type.js","sourceRoot":"","sources":["../../source/is-union-type.ts"],"names":[],"mappings":"AAKA,OAAO,KAAK,OAAO,MAAM,SAAS,CAAC;AACnC,OAAO,KAAK,EAAE,MAAM,YAAY,CAAC;AAEjC,MAAM,UAAU,WAAW,CAAC,IAAa;IACvC,OAAO,OAAO,CAAC,aAAa,CAAC,IAAI,EAAE,EAAE,CAAC,SAAS,CAAC,KAAK,CAAC,CAAC;AACzD,CAAC"}

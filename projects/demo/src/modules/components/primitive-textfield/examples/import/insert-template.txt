@@ -1,3 +1,0 @@
-<tui-primitive-textfield [(value)]="value">
-    Введите текст
-</tui-primitive-textfield>

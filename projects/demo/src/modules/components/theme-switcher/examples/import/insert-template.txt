@@ -1,4 +1,0 @@
-<tui-root>
-    <tui-theme-blue></tui-theme-blue>
-    ...
-</tui-root>

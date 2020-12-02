@@ -1,0 +1,39 @@
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @description
+ *
+ * Provides a way to migrate AngularJS applications to Angular.
+ *
+ * @publicApi
+ */
+var UrlHandlingStrategy = /** @class */ (function () {
+    function UrlHandlingStrategy() {
+    }
+    return UrlHandlingStrategy;
+}());
+export { UrlHandlingStrategy };
+/**
+ * @publicApi
+ */
+var DefaultUrlHandlingStrategy = /** @class */ (function () {
+    function DefaultUrlHandlingStrategy() {
+    }
+    DefaultUrlHandlingStrategy.prototype.shouldProcessUrl = function (url) {
+        return true;
+    };
+    DefaultUrlHandlingStrategy.prototype.extract = function (url) {
+        return url;
+    };
+    DefaultUrlHandlingStrategy.prototype.merge = function (newUrlPart, wholeUrl) {
+        return newUrlPart;
+    };
+    return DefaultUrlHandlingStrategy;
+}());
+export { DefaultUrlHandlingStrategy };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidXJsX2hhbmRsaW5nX3N0cmF0ZWd5LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vcGFja2FnZXMvcm91dGVyL3NyYy91cmxfaGFuZGxpbmdfc3RyYXRlZ3kudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztHQU1HO0FBSUg7Ozs7OztHQU1HO0FBQ0g7SUFBQTtJQXFCQSxDQUFDO0lBQUQsMEJBQUM7QUFBRCxDQUFDLEFBckJELElBcUJDOztBQUVEOztHQUVHO0FBQ0g7SUFBQTtJQVVBLENBQUM7SUFUQyxxREFBZ0IsR0FBaEIsVUFBaUIsR0FBWTtRQUMzQixPQUFPLElBQUksQ0FBQztJQUNkLENBQUM7SUFDRCw0Q0FBTyxHQUFQLFVBQVEsR0FBWTtRQUNsQixPQUFPLEdBQUcsQ0FBQztJQUNiLENBQUM7SUFDRCwwQ0FBSyxHQUFMLFVBQU0sVUFBbUIsRUFBRSxRQUFpQjtRQUMxQyxPQUFPLFVBQVUsQ0FBQztJQUNwQixDQUFDO0lBQ0gsaUNBQUM7QUFBRCxDQUFDLEFBVkQsSUFVQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCBHb29nbGUgSW5jLiBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICpcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXG4gKi9cblxuaW1wb3J0IHtVcmxUcmVlfSBmcm9tICcuL3VybF90cmVlJztcblxuLyoqXG4gKiBAZGVzY3JpcHRpb25cbiAqXG4gKiBQcm92aWRlcyBhIHdheSB0byBtaWdyYXRlIEFuZ3VsYXJKUyBhcHBsaWNhdGlvbnMgdG8gQW5ndWxhci5cbiAqXG4gKiBAcHVibGljQXBpXG4gKi9cbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBVcmxIYW5kbGluZ1N0cmF0ZWd5IHtcbiAgLyoqXG4gICAqIFRlbGxzIHRoZSByb3V0ZXIgaWYgdGhpcyBVUkwgc2hvdWxkIGJlIHByb2Nlc3NlZC5cbiAgICpcbiAgICogV2hlbiBpdCByZXR1cm5zIHRydWUsIHRoZSByb3V0ZXIgd2lsbCBleGVjdXRlIHRoZSByZWd1bGFyIG5hdmlnYXRpb24uXG4gICAqIFdoZW4gaXQgcmV0dXJucyBmYWxzZSwgdGhlIHJvdXRlciB3aWxsIHNldCB0aGUgcm91dGVyIHN0YXRlIHRvIGFuIGVtcHR5IHN0YXRlLlxuICAgKiBBcyBhIHJlc3VsdCwgYWxsIHRoZSBhY3RpdmUgY29tcG9uZW50cyB3aWxsIGJlIGRlc3Ryb3llZC5cbiAgICpcbiAgICovXG4gIGFic3RyYWN0IHNob3VsZFByb2Nlc3NVcmwodXJsOiBVcmxUcmVlKTogYm9vbGVhbjtcblxuICAvKipcbiAgICogRXh0cmFjdHMgdGhlIHBhcnQgb2YgdGhlIFVSTCB0aGF0IHNob3VsZCBiZSBoYW5kbGVkIGJ5IHRoZSByb3V0ZXIuXG4gICAqIFRoZSByZXN0IG9mIHRoZSBVUkwgd2lsbCByZW1haW4gdW50b3VjaGVkLlxuICAgKi9cbiAgYWJzdHJhY3QgZXh0cmFjdCh1cmw6IFVybFRyZWUpOiBVcmxUcmVlO1xuXG4gIC8qKlxuICAgKiBNZXJnZXMgdGhlIFVSTCBmcmFnbWVudCB3aXRoIHRoZSByZXN0IG9mIHRoZSBVUkwuXG4gICAqL1xuICBhYnN0cmFjdCBtZXJnZShuZXdVcmxQYXJ0OiBVcmxUcmVlLCByYXdVcmw6IFVybFRyZWUpOiBVcmxUcmVlO1xufVxuXG4vKipcbiAqIEBwdWJsaWNBcGlcbiAqL1xuZXhwb3J0IGNsYXNzIERlZmF1bHRVcmxIYW5kbGluZ1N0cmF0ZWd5IGltcGxlbWVudHMgVXJsSGFuZGxpbmdTdHJhdGVneSB7XG4gIHNob3VsZFByb2Nlc3NVcmwodXJsOiBVcmxUcmVlKTogYm9vbGVhbiB7XG4gICAgcmV0dXJuIHRydWU7XG4gIH1cbiAgZXh0cmFjdCh1cmw6IFVybFRyZWUpOiBVcmxUcmVlIHtcbiAgICByZXR1cm4gdXJsO1xuICB9XG4gIG1lcmdlKG5ld1VybFBhcnQ6IFVybFRyZWUsIHdob2xlVXJsOiBVcmxUcmVlKTogVXJsVHJlZSB7XG4gICAgcmV0dXJuIG5ld1VybFBhcnQ7XG4gIH1cbn0iXX0=

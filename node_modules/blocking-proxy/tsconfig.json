@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "sourceMap": true,
+    "declaration": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "outDir": "built/"
+  },
+  "exclude": [
+    "built",
+    "node_modules",
+    "selenium",
+    "testapp",
+    "typings/browser",
+    "typings/browser.d.ts"
+  ],
+  "filesGlob": [
+    "**/*.ts"
+  ]
+}
