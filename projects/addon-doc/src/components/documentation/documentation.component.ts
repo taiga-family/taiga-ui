@@ -18,6 +18,7 @@ import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-pro
 
 // @bad TODO отслеживать изменения полей в propertiesConnectors
 // @bad TODO refactor to make more flexible
+// @dynamic
 @Component({
     selector: 'tui-doc-documentation',
     templateUrl: './documentation.template.html',

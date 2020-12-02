@@ -25,6 +25,7 @@ import {TUI_DOC_DEMO_TEXTS} from '../../tokens/i18n';
 
 const MIN_COMPONENT_WIDTH = 104;
 
+// @dynamic
 @Component({
     selector: 'tui-doc-demo',
     templateUrl: './demo.template.html',

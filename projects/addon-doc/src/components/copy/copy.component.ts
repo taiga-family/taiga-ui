@@ -6,6 +6,7 @@ import {mapTo, startWith, switchMapTo} from 'rxjs/operators';
 
 const COPIED_TIMEOUT = 1500;
 
+// @dynamic
 @Component({
     selector: 'tui-doc-copy',
     templateUrl: './copy.template.html',

@@ -16,6 +16,7 @@ type InternalContext<I> = TuiBaseDialog<
     TuiMobileDialogOptions<I> &
     TuiAriaDialogContext;
 
+// @dynamic
 @Component({
     selector: 'tui-mobile-dialog',
     templateUrl: './mobile-dialog.template.html',

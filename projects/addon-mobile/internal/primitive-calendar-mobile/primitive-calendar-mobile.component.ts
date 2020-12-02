@@ -18,6 +18,7 @@ const ROWS_COUNT = 6;
 
 /**
  * @internal
+ * @dynamic
  */
 @Component({
     selector: 'tui-primitive-calendar-mobile',
