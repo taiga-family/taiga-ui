@@ -1,0 +1,14 @@
+<form class="container" [formGroup]="testForm">
+    <div class="tui-row">
+        <div class="tui-col_md-6">
+            <tui-text-area formControlName="testValue1"
+                >Введите текст</tui-text-area
+            >
+        </div>
+        <div class="tui-col_md-6">
+            <tui-text-area formControlName="testValue2" [expandable]="true"
+                >Введите текст</tui-text-area
+            >
+        </div>
+    </div>
+</form>

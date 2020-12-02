@@ -1,0 +1,20 @@
+<tui-flat-picker
+    class="flat"
+    [style.backgroundColor]="base"
+    [value]="point"
+    (valueChange)="onPointChange($event)"
+></tui-flat-picker>
+<div class="wrapper wrapper_hue">
+    <tui-linear-picker
+        class="hue"
+        [value]="hue"
+        (valueChange)="onHueChange($event)"
+    ></tui-linear-picker>
+</div>
+<div class="wrapper wrapper_opacity" [style.background]="gradient">
+    <tui-linear-picker
+        class="opacity"
+        [value]="opacity"
+        (valueChange)="onOpacityChange($event)"
+    ></tui-linear-picker>
+</div>

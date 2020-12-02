@@ -1,0 +1,17 @@
+<span class="text">Ваш баланс:</span>&nbsp;
+<tui-money [value]="value"></tui-money>
+<div tuiMode="dark" class="controls tui-space_top-3">
+    <button
+        tuiButton
+        type="button"
+        class="tui-space_right-3"
+        appearance="outline"
+        size="m"
+        (click)="submit()"
+    >
+        Отправить
+    </button>
+    <button tuiLink type="button" [pseudo]="true" (click)="increaseBalance()">
+        Пополнить
+    </button>
+</div>

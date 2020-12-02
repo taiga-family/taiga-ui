@@ -1,0 +1,106 @@
+<tui-doc-page header="CalendarMonth" package="KIT">
+    <ng-template pageTab>
+        Компонент месяца для использования отдельно от
+        <a tuiLink routerLink="/tui-input-month-range">InputMonthRange</a>
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-calendar-month-example-1></tui-calendar-month-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="range" heading="диапазон" [content]="example2">
+            <tui-calendar-month-example-2></tui-calendar-month-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-calendar-month
+                [disabledItemHandler]="disabledItemHandler"
+                [min]="min"
+                [max]="max"
+                [year]="year"
+                [value]="value"
+                (monthClick)="onMonthClick($event)"
+            ></tui-calendar-month>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Функция, определяющая, заблокирован ли месяц.<br />
+                <strong>Должна быть чистой функцией.</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMonth"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Максимальный месяц
+            </ng-template>
+            <ng-template
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMonth"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Минимальный месяц
+            </ng-template>
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMonth | TuiMonthRange | null"
+                [documentationPropertyValues]="valueVariants"
+                [(documentationPropertyValue)]="value"
+            >
+                Выбранный месяц или диапазон месяцев
+            </ng-template>
+            <ng-template
+                documentationPropertyName="year"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="TuiYear"
+                [documentationPropertyValues]="yearVariants"
+                [(documentationPropertyValue)]="year"
+            >
+                Текущий год
+            </ng-template>
+            <ng-template
+                documentationPropertyName="monthClick"
+                documentationPropertyMode="output"
+                documentationPropertyType="TuiMonth"
+            >
+                Клик по месяцу
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiCalendarMonthModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

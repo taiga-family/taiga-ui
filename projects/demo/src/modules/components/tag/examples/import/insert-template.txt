@@ -1,0 +1,6 @@
+<tui-tag [value]="tag"></tui-tag>
+ <!--Если тэг должен быть ссылкой, то использовать ссылку-->
+<a tuiTag
+   href="//somesite.com"
+   target="_blank"
+   [value]="tag"></a>

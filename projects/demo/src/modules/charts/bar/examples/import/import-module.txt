@@ -1,0 +1,10 @@
+import {TuiBarModule} from '@taiga-ui/addon-charts';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiBarModule
+    ],
+...

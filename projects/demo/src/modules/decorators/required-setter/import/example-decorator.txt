@@ -1,0 +1,13 @@
+@Input()
+min = 10;
+
+@Input()
+@tuiRequiredSetter<MyComponent, 'quanity'>(
+    (quantity, context) => Number.isInteger(quantity) && quantity >= context.min,
+    'Количество должно быть целым конечным числом, больше минимального значения'
+)
+set quantity(quantity: number) {
+    this.items = new Array(quantity).fill(Math.floor(Math.random() * Math.floor(100)));
+}
+
+items: Array<number>;

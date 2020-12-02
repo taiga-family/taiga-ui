@@ -1,0 +1,28 @@
+<form [formGroup]="group">
+    <p>
+        <tui-input formControlName="name"> Имя </tui-input>
+    </p>
+    <p>
+        <tui-select [ngModelOptions]="options" [(ngModel)]="type">
+            Способ связи
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="items"
+            ></tui-data-list-wrapper>
+        </tui-select>
+    </p>
+    <p>
+        <tui-input
+            *ngIf="type === items[0]; else phone"
+            formControlName="contact"
+            [tuiValidator]="validator"
+        >
+            Контакт
+        </tui-input>
+        <ng-template #phone>
+            <tui-input-phone formControlName="contact">
+                Контакт
+            </tui-input-phone>
+        </ng-template>
+    </p>
+</form>

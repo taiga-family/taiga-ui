@@ -1,0 +1,21 @@
+<h2 *ngIf="!!internal.label" class="heading" [id]="context.id">
+    {{internal.label}}
+</h2>
+<polymorpheus-outlet
+    class="content"
+    [content]="internal.content"
+    [context]="context"
+></polymorpheus-outlet>
+<button
+    *ngFor="let action of internal.actions; let index = index"
+    tuiButton
+    tuiRipple
+    type="button"
+    class="button"
+    size="s"
+    appearance="flat"
+    [class.button_column]="internal.actions.length > 2"
+    (click)="onAction(index)"
+>
+    {{action}}
+</button>

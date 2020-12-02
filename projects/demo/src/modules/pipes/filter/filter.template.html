@@ -1,0 +1,63 @@
+<tui-doc-page header="Filter" package="CDK">
+    <ng-template pageTab> Пайп для фильтрации массива. </ng-template>
+
+    <ng-template pageTab>
+        <table class="table">
+            <tr
+                *ngFor="let item of items | tuiFilter: matcher: args"
+                class="row"
+            >
+                <td class="cell">
+                    <tui-money [value]="item.price"></tui-money>
+                </td>
+                <td class="cell">{{item.name}}</td>
+            </tr>
+        </table>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="matcher"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMatcher"
+                [documentationPropertyValues]="matcherVariants"
+                [(documentationPropertyValue)]="matcher"
+            >
+                Матчер-функция
+            </ng-template>
+            <ng-template
+                documentationPropertyName="args"
+                documentationPropertyMode="input"
+                documentationPropertyType="any"
+                [documentationPropertyValues]="argsVariants"
+                [(documentationPropertyValue)]="args"
+            >
+                Произвольное количество аргументов, необходимых матчер-функции
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiFilterPipeModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в необходимый <code>binding</code> (в
+                <code>tuiFilter</code> передаем матчер-функцию и аргументы):
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

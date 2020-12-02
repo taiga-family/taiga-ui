@@ -1,0 +1,185 @@
+<tui-doc-page header="Tag" package="KIT">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Теги предназначены для выводы информации в виде тегов. Их можно
+            удалять, редактировать, при этом можно подписаться на эти действия.
+            Обладает обширным набором модификаций внешнего вида.
+        </div>
+
+        Селектором для тега может быть как стандартный <code>tui-tag</code>, так
+        и <code>a[tuiTag]</code>.
+
+        <tui-doc-example id="sizes" heading="размеры" [content]="example1">
+            <tui-tag-example-1></tui-tag-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="statuses" heading="статусы" [content]="example2">
+            <tui-tag-example-2></tui-tag-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="кастомный цвет"
+            [content]="example3"
+        >
+            <tui-tag-example-3></tui-tag-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-tag
+                class="tag"
+                [value]="value"
+                [autoColor]="autoColor"
+                [disabled]="disabled"
+                [editable]="editable"
+                [hoverable]="hoverable"
+                [removable]="removable"
+                [leftContent]="leftContent"
+                [maxLength]="maxLength"
+                [size]="size"
+                [showLoader]="showLoader"
+                [status]="status"
+                (edited)="editTag($event)"
+            ></tui-tag>
+            <ng-template #errorIcon>
+                <tui-svg class="error-icon" src="tuiIconAttention"></tui-svg>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="autoColor"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="autoColor"
+            >
+                Автоматическое задание цвета для тега
+            </ng-template>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент задизейблен
+            </ng-template>
+            <ng-template
+                documentationPropertyName="editable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="editable"
+            >
+                Тег можно редактировать
+            </ng-template>
+            <ng-template
+                documentationPropertyName="edited"
+                documentationPropertyMode="output"
+                documentationPropertyType="string"
+            >
+                Подписка на изменение тега (если тег отредактирован до
+                пробелов/пустой строки — эмиттится событие удаления)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hoverable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="hoverable"
+            >
+                Позволяет включить эффект наведения (hover).
+            </ng-template>
+            <ng-template
+                documentationPropertyName="leftContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent | null"
+                [documentationPropertyValues]="leftContentVariants"
+                [(documentationPropertyValue)]="leftContentSelected"
+            >
+                Контент слева от текста тега
+            </ng-template>
+            <ng-template
+                documentationPropertyName="maxLength"
+                documentationPropertyMode="input"
+                documentationPropertyType="number | null"
+                [documentationPropertyValues]="maxLengthVariants"
+                [(documentationPropertyValue)]="maxLength"
+            >
+                Ограничение на длину тега (при редактировании)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="removable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="removable"
+            >
+                Компонент можно удалять
+            </ng-template>
+            <ng-template
+                documentationPropertyName="showLoader"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="showLoader"
+            >
+                Показать лоадер
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер тега
+            </ng-template>
+            <ng-template
+                documentationPropertyName="status"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiStatus | TuiSupportColor"
+                [documentationPropertyValues]="statusVariants"
+                [(documentationPropertyValue)]="status"
+            >
+                Статус меняет цвет тега
+            </ng-template>
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="value"
+            >
+                Строка для вывода
+            </ng-template>
+            <ng-template
+                documentationPropertyName="edited"
+                documentationPropertyMode="output"
+                documentationPropertyType="string"
+            >
+                Подписка на редактирование тега, эмитит пустую строку при
+                удалении
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiTagModule</code> в тот же модуль, куда добавляется ваш
+                компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

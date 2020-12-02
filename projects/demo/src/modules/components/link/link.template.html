@@ -1,0 +1,121 @@
+<tui-doc-page header="Link" package="CORE">
+    <ng-template pageTab>
+        Компонент ссылки. Имеет кастомную подсветку при фокусе и может иметь
+        иконку.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-link-example-1></tui-link-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="with-icon"
+            heading="ссылки с иконкой"
+            [content]="example2"
+        >
+            <tui-link-example-2></tui-link-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example id="mods" heading="виды ссылок" [content]="example3">
+            <tui-link-example-3></tui-link-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <ng-container *ngIf="!pseudo; else pseudoLink">
+                <a
+                    tuiLink
+                    [mode]="mode"
+                    [icon]="icon"
+                    [iconAlign]="iconAlign"
+                    [iconRotated]="iconRotated"
+                    >пример ссылки</a
+                >
+            </ng-container>
+            <ng-template #pseudoLink>
+                <button
+                    tuiLink
+                    [mode]="mode"
+                    [icon]="icon"
+                    [iconAlign]="iconAlign"
+                    [pseudo]="true"
+                    [iconRotated]="iconRotated"
+                >
+                    пример кнопки в виде псевдо-ссылки
+                </button>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="mode"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiLinkMode | null"
+                [documentationPropertyValues]="modeValues"
+                [(documentationPropertyValue)]="mode"
+            >
+                Вид ссылки, по умолчанию <code>normal</code>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="icon"
+                documentationPropertyMode="input"
+                documentationPropertyType="string | null"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                Иконка в виде кода SVG-изображения. Предварительно импортировать
+                в переменную
+            </ng-template>
+            <ng-template
+                documentationPropertyName="iconAlign"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="iconAlignValues"
+                [(documentationPropertyValue)]="iconAlign"
+            >
+                Положение иконки относительно текста, по умолчанию
+                <code>right</code>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="iconRotated"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="iconRotated"
+            >
+                Повернуть иконки на 180 градусов (при вызове выпадающих списков)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="pseudo"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="pseudo"
+            >
+                Псевдо-ссылка
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiLinkModule</code> в тот же модуль, куда добавляется ваш
+                компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон (<code>icon</code> и
+                <code>iconAlign</code> только для варианта с иконкой):
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

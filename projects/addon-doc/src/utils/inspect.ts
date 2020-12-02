@@ -1,0 +1,86 @@
+function inspectArray(array: ReadonlyArray<any>, depth: number): string {
+    if (depth === 0) {
+        return '[…]';
+    }
+
+    let result = '';
+    let first = true;
+
+    for (let index = 0; index < array.length; index++) {
+        if (first) {
+            first = false;
+        } else {
+            result += ', ';
+        }
+
+        result += index in array ? inspectAny(array[index], depth - 1) : 'empty';
+    }
+
+    return `[${result}]`;
+}
+
+function inspectObject(object: {[key: string]: any}, depth: number): string {
+    const prefix =
+        object.constructor.name === 'Object' ? '' : `${object.constructor.name} `;
+
+    if (depth === 0) {
+        return `${prefix}{…}`;
+    }
+
+    let result = '';
+
+    let first = true;
+
+    for (const key in object) {
+        if (!object.hasOwnProperty(key)) {
+            continue;
+        }
+
+        if (first) {
+            first = false;
+        } else {
+            result += ', ';
+        }
+
+        result += `${key}: ${inspectAny(object[key], depth - 1)}`;
+    }
+
+    return `${prefix}{${result}}`;
+}
+
+// @bad TODO добавить больше типов
+/**
+ * Выводит в человекочитаемом виде JS сущности.
+ * @param data сущность
+ * @param depth глубина
+ * @return человекочитаемый вид JS сущности
+ */
+export function inspectAny(data: any, depth: number): string {
+    if (data === null) {
+        return 'null';
+    }
+
+    switch (typeof data) {
+        case 'string':
+            return `'${data}'`;
+        case 'undefined':
+        case 'number':
+        case 'boolean':
+        case 'function':
+            return String(data);
+    }
+
+    if (data instanceof RegExp) {
+        return data.toString();
+    }
+
+    if (Array.isArray(data)) {
+        return inspectArray(data, depth);
+    }
+
+    if (data.constructor.name === 'Object') {
+        return inspectObject(data, depth);
+    }
+
+    return data.constructor.name;
+}

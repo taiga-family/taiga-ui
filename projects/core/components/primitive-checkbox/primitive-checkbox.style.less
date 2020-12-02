@@ -1,0 +1,33 @@
+@import '../../styles/basic/basic-imports';
+
+@sizeM: 16px;
+@sizeL: 24px;
+
+:host {
+    display: block;
+    border-radius: 8px;
+    font-size: 0;
+
+    &[data-tui-host-size='m'] {
+        width: @sizeM;
+        height: @sizeM;
+        border-radius: 4px;
+    }
+
+    &[data-tui-host-size='l'] {
+        width: @sizeL;
+        height: @sizeL;
+    }
+}
+
+.mark {
+    .transition(transform);
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+
+    &_on {
+        transform: scale(1);
+    }
+}

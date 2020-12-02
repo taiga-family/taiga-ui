@@ -1,0 +1,138 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    .text-basic();
+    display: inline-block;
+    vertical-align: top;
+    border-radius: var(--tui-radius);
+
+    &[data-tui-host-size='m'],
+    &[data-tui-host-size='l'] {
+        .text-body-m();
+    }
+
+    &._disabled,
+    &._readonly {
+        pointer-events: none;
+    }
+}
+
+:host-context(.tui-group_collapsed) {
+    &:not(:last-child) {
+        margin-right: -2px;
+    }
+}
+
+:host-context(.tui-group_collapsed.tui-group_orientation_vertical) {
+    &:not(:last-child) {
+        margin-bottom: -2px;
+        margin-right: 0;
+    }
+}
+
+.wrapper {
+    position: relative;
+    border-radius: inherit;
+    cursor: pointer;
+    user-select: none;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    :host[data-tui-host-size='s'] & {
+        min-height: @height-small;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        min-height: @height-large;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        min-height: @height-extra-large;
+    }
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    min-height: inherit;
+
+    :host[data-tui-host-align='right'] & {
+        flex-direction: row-reverse;
+    }
+
+    :host[data-tui-host-size='s'] & {
+        padding: 0 16px 0 8px;
+    }
+
+    :host[data-tui-host-size='s'][data-tui-host-align='right'] & {
+        padding: 0 8px 0 16px;
+    }
+
+    :host[data-tui-host-size='s']._hidden_checkbox & {
+        padding: 0 16px;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        padding: 0 16px 0 12px;
+    }
+
+    :host[data-tui-host-size='m'][data-tui-host-align='right'] & {
+        padding: 0 12px 0 16px;
+    }
+
+    :host[data-tui-host-size='m']._hidden_checkbox & {
+        padding: 0 24px;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        padding: 0 16px;
+    }
+
+    :host[data-tui-host-size='l']._hidden_checkbox & {
+        padding: 0 36px;
+    }
+}
+
+.view {
+    margin-top: 12px;
+    margin-right: 12px;
+    align-self: flex-start;
+
+    :host[data-tui-host-align='right'] & {
+        margin-left: 12px;
+        margin-right: 0;
+    }
+
+    :host[data-tui-host-size='s'] & {
+        margin-top: 8px;
+        margin-right: 8px;
+    }
+
+    :host[data-tui-host-size='s'][data-tui-host-align='right'] & {
+        margin-left: 8px;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        margin-top: 14px;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        margin-top: 16px;
+    }
+
+    :host._hidden_checkbox & {
+        .visually-hidden();
+    }
+}
+
+.label {
+    .text-overflow();
+    flex-grow: 1;
+
+    :host._hidden_checkbox & {
+        text-align: center;
+    }
+}

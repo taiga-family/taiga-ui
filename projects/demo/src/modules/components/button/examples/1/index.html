@@ -1,0 +1,113 @@
+<ng-template #icon>
+    <tui-avatar size="xs" [rounded]="true" [avatarUrl]="avatarUrl"></tui-avatar>
+</ng-template>
+<h3>button[tuiButton]</h3>
+<p>
+    <button
+        tuiButton
+        type="button"
+        class="tui-space_right-2"
+        [icon]="icon"
+        (click)="onClick($event)"
+    >
+        Кнопка
+    </button>
+
+    <button
+        tuiButton
+        type="button"
+        class="tui-space_right-2"
+        iconRight="tuiIconSearch"
+        [disabled]="true"
+        (click)="onClick($event)"
+    >
+        Кнопка заблокирована
+    </button>
+
+    <button
+        tuiButton
+        type="button"
+        [showLoader]="true"
+        (click)="onClick($event)"
+    >
+        Кнопка loading
+    </button>
+</p>
+<h3>button[tuiIconButton]</h3>
+<p>
+    <button
+        tuiIconButton
+        type="button"
+        class="tui-space_right-2"
+        [icon]="icon"
+        (click)="onClick($event)"
+    ></button>
+
+    <button
+        tuiIconButton
+        type="button"
+        class="tui-space_right-2"
+        icon="tuiIconSearch"
+        [disabled]="true"
+        (click)="onClick($event)"
+    ></button>
+
+    <button
+        tuiIconButton
+        type="button"
+        [showLoader]="true"
+        (click)="onClick($event)"
+    ></button>
+</p>
+<h3>a[tuiButton]</h3>
+<p>
+    <a
+        tuiButton
+        type="button"
+        class="tui-space_right-2"
+        href="http://google.com"
+        [icon]="icon"
+    >
+        Ссылка
+    </a>
+
+    <a
+        tuiButton
+        type="button"
+        class="tui-space_right-2"
+        iconRight="tuiIconSearch"
+        [disabled]="true"
+    >
+        Кнопка заблокирована
+    </a>
+
+    <a tuiButton [showLoader]="true"> Кнопка loading </a>
+</p>
+<h3>a[tuiIconButton]</h3>
+<p>
+    <a
+        tuiIconButton
+        type="button"
+        class="tui-space_right-2"
+        [icon]="icon"
+        [routerLink]="['/tui-dropdown']"
+    ></a>
+
+    <a
+        tuiIconButton
+        type="button"
+        class="tui-space_right-2"
+        icon="tuiIconSearch"
+        [disabled]="true"
+        [routerLink]=""
+        [tuiFocusable]="false"
+    ></a>
+
+    <a
+        tuiIconButton
+        type="button"
+        [showLoader]="true"
+        [routerLink]=""
+        [tuiFocusable]="false"
+    ></a>
+</p>

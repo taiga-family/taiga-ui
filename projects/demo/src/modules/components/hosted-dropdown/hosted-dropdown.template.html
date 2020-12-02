@@ -1,0 +1,136 @@
+<tui-doc-page header="HostedDropdown" package="CORE">
+    <ng-template pageTab>
+        <code>tui-hosted-dropdown</code> — обёртка для фокусируемых элементов
+        для прикрепления к ним выпадашки с заложенной работой с клавиатуры. Если
+        обёрнутый элемент — инпут, то выпадашка открывается по нажатию стрелки
+        вниз, последующее нажатие стрелки вниз переводит фокус на первый
+        фокусируемый элемент выпадашки. Если обёрнутый элемент — любой другой, к
+        примеру, кнопка, то по клику мышки по нему выпадашка будет открываться и
+        закрываться. По умолчанию, в качестве "хоста" используется первый
+        фокусируемый элемент внутри компонента, если нужно задать область поиска
+        фокусируемого компонента более точечно — можно пометить необходимый тэг
+        с помощью директивы <code>tuiHostedDropdownHost</code>.
+
+        <tui-doc-example id="menu" heading="с меню" [content]="example1">
+            <tui-hosted-dropdown-example-1></tui-hosted-dropdown-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="tuiDropdownHost"
+            heading="с заданием хоста"
+            [content]="example2"
+        >
+            <tui-hosted-dropdown-example-2></tui-hosted-dropdown-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="native"
+            heading="на нативной ссылке"
+            [content]="example3"
+        >
+            <tui-hosted-dropdown-example-3></tui-hosted-dropdown-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-hosted-dropdown
+                [content]="template ? dropdown : content"
+                [tuiDropdownAlign]="align"
+                [canOpen]="canOpen"
+                [tuiDropdownDirection]="direction"
+                [tuiDropdownLimitWidth]="limitWidth"
+                [tuiDropdownMinHeight]="minHeight"
+                [tuiDropdownMaxHeight]="maxHeight"
+                [(open)]="open"
+            >
+                <tui-input
+                    class="input"
+                    [ngModel]="input"
+                    (ngModelChange)="onInput($event)"
+                >
+                    Выпадашка появится при вводе
+                </tui-input>
+            </tui-hosted-dropdown>
+        </tui-doc-demo>
+        <ng-template #dropdown="polymorpheus" polymorpheus>
+            <div class="dropdown">
+                <div>Вам нравится пользоваться Taiga UI?</div>
+                <p class="buttons">
+                    <button
+                        tuiButton
+                        type="button"
+                        class="button"
+                        size="m"
+                        (click)="onClick()"
+                    >
+                        Да
+                    </button>
+                    <button
+                        tuiButton
+                        type="button"
+                        class="button"
+                        appearance="secondary"
+                        size="m"
+                        (click)="onClick()"
+                    >
+                        Да
+                    </button>
+                </p>
+            </div>
+        </ng-template>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="open"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="open"
+            >
+                Показана ли выпадашка
+            </ng-template>
+            <ng-template
+                documentationPropertyName="canOpen"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [documentationPropertyValues]="canOpenVariants"
+                [(documentationPropertyValue)]="canOpenSelected"
+            >
+                Хэндлер для ручного ограничения возможности открыть выпадашку
+            </ng-template>
+            <ng-template
+                documentationPropertyName="content"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="contentVariants"
+                [(documentationPropertyValue)]="content"
+            >
+                Контент — содержимое выпадашки
+            </ng-template>
+        </tui-doc-documentation>
+        <dropdown-controller-documentation></dropdown-controller-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiHostedDropdownModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

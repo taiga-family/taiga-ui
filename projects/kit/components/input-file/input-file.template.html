@@ -1,0 +1,72 @@
+<tui-wrapper
+    *ngIf="multiple || !value"
+    class="wrapper"
+    [class.wrapper_mobile]="isMobile"
+    [class.wrapper_has-files]="hasFiles"
+    [focused]="computedFocused"
+    [hovered]="computedHovered || fileDragged"
+    [pressed]="computedPressed"
+    [readOnly]="readOnly"
+    [disabled]="computedDisabled"
+>
+    <label automation-id="tui-input-file__label">
+        <polymorpheus-outlet
+            class="link"
+            [content]="computedLink"
+        ></polymorpheus-outlet>
+        <span *ngIf="computedLabel">&nbsp;</span>
+        <polymorpheus-outlet
+            class="text"
+            [content]="computedLabel"
+        ></polymorpheus-outlet>
+        <input
+            *ngIf="!readOnly && !computedDisabled"
+            #input
+            class="native"
+            type="file"
+            tuiPreventDefault="mousedown"
+            [id]="id"
+            [accept]="accept"
+            [multiple]="multiple"
+            [tuiFocusable]="focusable"
+            (change)="onFilesSelected(input)"
+            (tuiHoveredChange)="onHovered($event)"
+            (tuiFocusedChange)="onFocused($event)"
+            (tuiPressedChange)="onPressed($event)"
+            (tuiDroppableDropped)="onDropped($event)"
+            (tuiDroppableDragOverChange)="onDragOver($event)"
+        />
+    </label>
+</tui-wrapper>
+
+<tui-group class="files" orientation="vertical" [collapsed]="true">
+    <tui-file
+        *ngFor="let file of rejectedFiles"
+        automation-id="tui-input-file__error"
+        state="error"
+        [showSize]="showSize"
+        [allowDelete]="allowDelete"
+        [size]="size"
+        [file]="file"
+        (fileRemoved)="removeRejectedFile(file)"
+    ></tui-file>
+    <tui-file
+        *ngFor="let file of computedLoading"
+        automation-id="tui-input-file__loading"
+        state="loading"
+        [showSize]="showSize"
+        [allowDelete]="allowDelete"
+        [size]="size"
+        [file]="file"
+        (fileRemoved)="removeFile(file)"
+    ></tui-file>
+    <tui-file
+        *ngFor="let file of readyFiles"
+        automation-id="tui-input-file__file"
+        [showSize]="showSize"
+        [allowDelete]="allowDelete"
+        [size]="size"
+        [file]="file"
+        (fileRemoved)="removeFile(file)"
+    ></tui-file>
+</tui-group>

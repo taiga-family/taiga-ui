@@ -1,0 +1,118 @@
+<tui-doc-page header="RadioList" package="KIT">
+    <ng-template pageTab>
+        Компонент позволяет развернуть набор radio-кнопок из массива.
+        Поддерживает кастомный контент
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-radio-list-example-1></tui-radio-list-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="large"
+            heading="большой размер"
+            [content]="example2"
+        >
+            <tui-radio-list-example-2></tui-radio-list-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-radio-list
+                    class="tui-space_bottom-3"
+                    [formControl]="control"
+                    [items]="items"
+                    [orientation]="orientation"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    [size]="size"
+                    [itemContent]="itemContent"
+                    [disabledItemHandler]="disabledItemHandler"
+                    [focusable]="focusable"
+                    [readOnly]="readOnly"
+                ></tui-radio-list>
+            </ng-template>
+        </tui-doc-demo>
+        <ng-template #itemContent="polymorpheus" polymorpheus let-data>
+            <div>Тариф &laquo;{{data.name}}&raquo;.</div>
+            <div class="description">{{data.description}}</div>
+        </ng-template>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<T>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Функция, определяющая заблокирован ли отдельный элемент.<br />
+                <strong>Должна быть чистой функцией.</strong><br />
+            </ng-template>
+            <ng-template
+                documentationPropertyName="orientation"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiOrientation"
+                [documentationPropertyValues]="orientationVariants"
+                [(documentationPropertyValue)]="orientation"
+            >
+                Направление
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер контрола
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiRadioListModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон. Внутри <code>ng-template</code> описываем
+                шаблон для элемента радио-группы:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

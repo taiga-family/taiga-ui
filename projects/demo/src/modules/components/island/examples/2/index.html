@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="tui-row">
+        <div class="tui-col_md-4">
+            <tui-island size="l">
+                <div class="tui-island__content">
+                    <div class="tui-island__figure">
+                        <form [formGroup]="testForm">
+                            <tui-toggle
+                                size="l"
+                                formControlName="testValue"
+                            ></tui-toggle>
+                        </form>
+                    </div>
+                    <div>
+                        <p class="tui-island__category">категория</p>
+                        <h3 class="tui-island__title">
+                            Реквизиты и&nbsp;информация по&nbsp;платежу
+                        </h3>
+                        <p class="tui-island__paragraph">
+                            Для участия в&nbsp;розыгрыше нужно в&nbsp;одной
+                            из&nbsp;социальных сетей Facebook, Instagram,
+                            Twitter, Вконтакте или Одноклассники рассказать,
+                            на&nbsp;что ты&nbsp;готов ради билета.
+                        </p>
+                        <p
+                            class="tui-island__paragraph tui-island__paragraph_link"
+                        >
+                            <a href="/" tuiLink>Ссылка</a>
+                        </p>
+                    </div>
+                </div>
+            </tui-island>
+        </div>
+        <div class="tui-col_md-4">
+            <a
+                size="l"
+                href="http://ng-web-apis.github.io/"
+                tuiIsland
+                target="_blank"
+                [hoverable]="true"
+            >
+                <div class="tui-island__content">
+                    <figure class="tui-island__figure">
+                        <div class="some-figure"></div>
+                    </figure>
+                    <div>
+                        <h3 class="tui-island__title">Кредитная карта</h3>
+                        <p class="tui-island__paragraph">
+                            Для участия в&nbsp;розыгрыше нужно в&nbsp;одной
+                            из&nbsp;социальных сетей Facebook, Instagram,
+                            Twitter.
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="tui-col_md-4">
+            <tui-island size="l" textAlign="center">
+                <div class="tui-island__content">
+                    <figure class="tui-island__figure">
+                        <div class="some-figure"></div>
+                    </figure>
+                    <div>
+                        <h3 class="tui-island__title">Дебетовая карта</h3>
+                        <p class="tui-island__paragraph">
+                            Для участия в&nbsp;розыгрыше нужно в&nbsp;одной
+                            из&nbsp;социальных сетей Facebook, Instagram,
+                            Twitter.
+                        </p>
+                        <button
+                            tuiButton
+                            type="button"
+                            class="tui-island__footer-button"
+                            appearance="flat"
+                            size="m"
+                        >
+                            Кнопка
+                        </button>
+                    </div>
+                </div>
+            </tui-island>
+        </div>
+    </div>
+</div>

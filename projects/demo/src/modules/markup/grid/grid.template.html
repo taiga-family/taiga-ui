@@ -1,0 +1,71 @@
+<tui-doc-page header="Сетка (Grid)">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Класс <code>tui-container</code> предназначен для формирования
+            контейнера для контента.
+        </div>
+        <div class="tui-space_bottom-3">
+            Класс <code>tui-row</code> и подмножество классов
+            <code>tui-col_*</code> предназначены для формирования сетки внутри
+            контейнера.
+        </div>
+        <h3 class="title">Классы контейнера</h3>
+        <ul
+            class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
+        >
+            <li class="tui-list__item">
+                <code>.tui-container</code>: ширина 1104px на экранах >= 1360px
+                и 824px на экранах <= 1359px
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-container_adaptive</code>: ширина 1104px на экранах
+                >= 1360px, 824px на экранах >= 1024px и <= 1359px, 608px на
+                экранах >= 768px и <= 1023px, 512px на экранах >= 600px и <=
+                767px, 100% на экранах < 600px
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-container_fullwidth</code>: ширина 100% с отступами
+                по краям в 24px на экранах >= 1024px и 16px на экранах <= 1023px
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-container_fixed</code>: ширина 1104px
+            </li>
+        </ul>
+        <h3 class="title">Колоночные классы для адаптивной сетки</h3>
+        <ul
+            class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
+        >
+            <li class="tui-list__item">
+                <code>.tui-col_lg-*</code>: ширина экрана >= 1360px (Desktop L)
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-col_md-*</code>: 1024px =< ширина экрана <= 1359px
+                (Desktop M)
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-col_sm-*</code>: 600px =< ширина экрана <= 1023px
+                (Tablet)
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-col_s-*</code>: 600px =< ширина экрана <= 767px
+                (Tablet S)
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-col_xs-*</code>: 320px =< ширина экрана <= 599px
+                (Mobile)
+            </li>
+        </ul>
+
+        <tui-doc-example
+            id="mods"
+            heading="все виды сеток"
+            [content]="example1"
+        >
+            <tui-grid-example-1></tui-grid-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="modes" heading="модификаторы" [content]="example2">
+            <tui-grid-example-2></tui-grid-example-2>
+        </tui-doc-example>
+    </ng-template>
+</tui-doc-page>

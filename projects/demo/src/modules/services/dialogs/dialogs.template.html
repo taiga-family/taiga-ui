@@ -1,0 +1,318 @@
+<tui-doc-page header="DialogService" package="CORE">
+    <ng-template pageTab>
+        Опциональный сервис для показа модальных окон. Для использования
+        добавьте <code><strong>TuiDialogModule</strong></code> в ваш главный
+        модуль.
+
+        <tui-notification class="tui-space_vertical-4" [hasCloseButton]="false">
+            Используйте токен <code><strong>TUI_DIALOGS_CLOSE</strong></code
+            >, если вам необходимо закрывать попапы по стриму. Например, в
+            случае закрытия попапов по навигации, можно определить его следующим
+            образом:
+            <p><tui-doc-code [code]="token"></tui-doc-code></p>
+        </tui-notification>
+
+        <tui-notification
+            class="tui-space_vertical-4"
+            status="warning"
+            [hasCloseButton]="false"
+        >
+            Перед использованием не забудьте добавить
+            <code>TuiDialogModule</code> в главный модуль вашего приложения
+            (подробнее в разделе "Подключение")
+        </tui-notification>
+
+        <tui-doc-example
+            heading="Диалог через компонент"
+            id="component"
+            [content]="example1"
+        >
+            <tui-dialog-example-1></tui-dialog-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            heading="Диалог с передачей данных"
+            id="data"
+            [content]="example2"
+        >
+            <tui-dialog-example-2></tui-dialog-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            heading="Диалог через шаблон"
+            id="template"
+            [content]="example3"
+        >
+            <tui-dialog-example-3></tui-dialog-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            heading="Мобильный попап"
+            id="mobile"
+            [content]="example4"
+        >
+            <tui-dialog-example-4></tui-dialog-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            heading="Попап с шапкой"
+            id="header"
+            [content]="example5"
+        >
+            <tui-dialog-example-5></tui-dialog-example-5>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <div>
+            <button
+                tuiButton
+                type="button"
+                size="m"
+                (click)="showDialog(template)"
+            >
+                Показать
+            </button>
+        </div>
+        <ng-template
+            #template
+            let-observer
+            let-size="size"
+            let-data="data"
+            let-completeWith="completeWith"
+        >
+            <h2 [class.big]="size === 'xl'">Я пример попапа</h2>
+            <h2 *ngIf="size === 'xl'">
+                Шаблон можно кастомизировать, в зависимости от размера
+            </h2>
+            <p>
+                Диалог имеет в контексте <code>Observer</code> для вызовов
+                <code>next</code>, <code>complete</code> или <code>error</code>,
+                а так же метод <code>completeWith</code> для одновременной
+                передачи данных и закрытия. Они позволяют декларативно работать
+                с диалогом без необходимости хранения подписки для закрытия
+                шаблонного попапа.
+            </p>
+            <p>Входные данные: {{data}}.</p>
+            <p>
+                <i>
+                    В случае шаблонного попапа нет необходимости во входных
+                    данных — их можно указать прямо в шаблоне, но если вы
+                    используете компонент, то иначе как через контекст данные в
+                    него попасть не могут.
+                </i>
+            </p>
+            <tui-accordion class="container">
+                <tui-accordion-item>
+                    Динамическое увеличение высоты попапа
+                    <ng-template tuiAccordionItemContent>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Aspernatur eligendi esse minima nobis! Assumenda
+                        debitis, delectus dicta dolore eos explicabo fuga id
+                        inventore maiores, nihil, nobis nostrum quasi quo unde!
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Aspernatur eligendi esse minima nobis! Assumenda
+                        debitis, delectus dicta dolore eos explicabo fuga id
+                        inventore maiores, nihil, nobis nostrum quasi quo unde!
+                    </ng-template>
+                </tui-accordion-item>
+            </tui-accordion>
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_top-2 tui-space_right-1"
+                size="m"
+                (click)="observer.complete()"
+            >
+                Закрыть
+            </button>
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_top-2 tui-space_right-1"
+                size="m"
+                (click)="observer.next('Привет')"
+            >
+                Сказать "Привет"
+            </button>
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_top-2 tui-space_right-1"
+                size="m"
+                (click)="completeWith('Привет и пока')"
+            >
+                Сказать "Привет и пока"
+            </button>
+        </ng-template>
+        <div class="b-full-width">
+            <p>Показ попапа осуществляется с помощью метода</p>
+            <p>
+                <code>
+                    <div>open&lt;O&gt;(</div>
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;content:
+                        PolymorpheusContent&lt;TuiDialogContext&lt;O, I&gt;&gt;
+                    </div>
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;options:
+                        Partial&lt;TuiDialogOptions&lt;I&gt;&gt;
+                    </div>
+                    <div>): Observable&lt;O&gt;</div>
+                </code>
+            </p>
+            сервиса <code>TuiDialogService</code>, где <code>O</code> — тип
+            выходных данных диалога и <code>I</code> — входных. В примере
+            входные данные типа <code>number</code>, а выходные —
+            <code>string</code>.
+            <p>
+                Для программного скрытия диалога можно отписаться от
+                <code>Observable</code>, возвращаемого методом
+                <code>open</code>. Для этого можно хранить подписку или
+                использовать любые <code>RxJs</code> средства, вроде
+                <code>takeUntil</code>.
+            </p>
+        </div>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="closeable"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="closeable"
+            >
+                Показывать крестик, закрывающий попап
+            </ng-template>
+            <ng-template
+                documentationPropertyName="dismissible"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="dismissible"
+            >
+                Диалог можно закрыть, нажав клавишу Escape или кликнув мимо него
+            </ng-template>
+            <ng-template
+                documentationPropertyName="data"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="data"
+            >
+                Данные, передаваемые в диалог, тип &lt;I&gt;
+            </ng-template>
+            <ng-template
+                documentationPropertyName="header"
+                documentationPropertyType="PolymorpheusContent"
+            >
+                Содержимое над заголовком
+            </ng-template>
+            <ng-template
+                documentationPropertyName="label"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="label"
+            >
+                Заголовок диалога
+            </ng-template>
+            <ng-template
+                documentationPropertyName="required"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="required"
+            >
+                Диалог обязательный, закрытие по крестику, клику мимо или
+                клавише Escape вызовет ошибку в цепочке <code>Observable</code>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyType="TuiDialogSize"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер диалога
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p>
+                    Добавьте <code>TuiDialogModule</code> в ваш главный модуль
+                </p>
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+            <li>
+                Для отображения диалога вызовите метод сервиса
+                <code>open</code> и подписаться на ответный
+                <code>Observable</code>:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleServiceUsage"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Для использования своего компонента в качестве диалога в него
+                нужно прокинуть токен <code>POLYMORPHEUS_CONTEXT</code>. В
+                случае диалогов, он сожержит в себе переданные опции вызова, в
+                <code>$implicit</code> содержится
+                <code>Observer&lt;O&gt;</code> и есть дополнительный хук
+                <code>completeWith</code>, для вызова <code>next</code> и
+                <code>complete</code>
+                одним методом. При этом, необходимо добавить сам компонент в
+                <code>entryComponents</code> вашего модуля:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModuleComponent"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Можно обойтись без компонента, использовав
+                <a routerLink="/tui-dialog" fragment="example-template" tuiLink>
+                    шаблон
+                </a>
+            </li>
+
+            <li>
+                Закрытие и передача данных из диалога осуществляется через
+                <code>Observer</code> находящийся в
+                <code>$implicit</code> контекста и метод контекста
+                <code>completeWith</code>:
+
+                <tui-doc-code
+                    filename="myDialog.component.ts"
+                    [code]="exampleCustomDialog"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Для использования диалогов в lazy подгруженных модулях,
+                передайте в
+                <code>new PolymorpheusComponent Injector</code> компонента, из
+                которого вызываете диалог:
+
+                <tui-doc-code
+                    filename="myDialog.component.ts"
+                    [code]="exampleLazyModule"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+
+    <ng-template pageTab="Свои диалоги">
+        <p>
+            Для создания собственных диалогов, вместо "заводских", например, для
+            гибридных мобильных приложений, можно полностью кастомизировать
+            поведение и внешний вид под себя.
+        </p>
+        <p>
+            Для этого нужно предоставить стрим диалогов в мульти токен
+            <code>TUI_DIALOGS</code>.
+        </p>
+        <p>
+            Для удобства создания своего стрима можно воспользоваться
+            <code>AbstractTuiDialogService</code>.
+        </p>
+    </ng-template>
+</tui-doc-page>

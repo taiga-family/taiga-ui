@@ -1,0 +1,106 @@
+<tui-doc-page header="InputPhoneInternational" package="KIT">
+    <ng-template pageTab>
+        Позволяет вводить номер телефона в международном формате
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-input-phone-international-example-1></tui-input-phone-international-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="all-countries"
+            heading="все возможные страны"
+            [content]="example2"
+        >
+            <tui-input-phone-international-example-2></tui-input-phone-international-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-phone-international
+                    [formControl]="control"
+                    [focusable]="focusable"
+                    [countryIsoCode]="countryIsoCode"
+                    [countries]="countries"
+                    [readOnly]="readOnly"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiHintMode]="hintMode"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoInvalid]="pseudoInvalid"
+                >
+                    Введите телефон
+                </tui-input-phone-international>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="countries"
+                documentationPropertyMode="input"
+                documentationPropertyType="ReadonlyArray<TuiCountryIsoCode>"
+                [documentationPropertyValues]="countriesVariants"
+                [(documentationPropertyValue)]="countries"
+            >
+                Массив ISO-кодов стран для выбора
+            </ng-template>
+            <ng-template
+                documentationPropertyName="countryIsoCode"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiCountryIsoCode"
+                [documentationPropertyValues]="countryIsoCodeVariants"
+                [(documentationPropertyValue)]="countryIsoCode"
+            >
+                ISO-код страны
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль <code>TuiInputPhoneInternationalModule</code> в
+                тот же модуль, куда добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте. Составьте массив стран
+                для выбора с помощью enum'а <code>TuiCountryIsoCode</code>:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

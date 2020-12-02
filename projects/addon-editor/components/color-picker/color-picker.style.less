@@ -1,0 +1,79 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    .createStackingContext();
+    display: block;
+}
+
+.flat {
+    height: 224px;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),
+        linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    margin-bottom: 4px;
+    overflow: hidden;
+}
+
+.wrapper {
+    position: relative;
+    margin: 16px 20px;
+    border-radius: 8px;
+
+    &:after {
+        .fullsize();
+        content: '';
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+        pointer-events: none;
+        border-radius: inherit;
+    }
+
+    &_hue {
+        background: rgb(255, 0, 0);
+    }
+
+    &_opacity {
+        &:before {
+            .fullsize();
+            content: '';
+            z-index: -1;
+            background-image: linear-gradient(
+                    45deg,
+                    var(--tui-color-border) 25%,
+                    transparent 25%,
+                    transparent 75%,
+                    var(--tui-color-border) 75%,
+                    var(--tui-color-border)
+                ),
+                linear-gradient(
+                    45deg,
+                    var(--tui-color-border) 25%,
+                    transparent 25%,
+                    transparent 75%,
+                    var(--tui-color-border) 75%,
+                    var(--tui-color-border)
+                );
+            background-size: 6px 6px;
+            background-position: 0 0, 3px 3px;
+            border-radius: inherit;
+        }
+    }
+}
+
+.hue {
+    background: linear-gradient(
+        to right,
+        rgb(255, 0, 0),
+        rgb(255, 255, 0),
+        rgb(0, 255, 0),
+        rgb(0, 255, 255),
+        rgb(0, 0, 255),
+        rgb(255, 0, 255),
+        rgb(255, 0, 0)
+    );
+    border-radius: inherit;
+    margin: 0 8px;
+}
+
+.opacity {
+    border-radius: inherit;
+    margin: 0 8px;
+}

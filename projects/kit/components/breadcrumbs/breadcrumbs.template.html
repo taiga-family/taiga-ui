@@ -1,0 +1,26 @@
+<ng-container *ngFor="let item of items; last as lastItem">
+    <ng-container *tuiLet="item | tuiMapper: routerLinkOptions as options">
+        <a
+            tuiLink
+            tuiMode="dark"
+            routerLinkActive="active-link"
+            #rla="routerLinkActive"
+            [attr.tabindex]="rla.isActive ? -1 : null"
+            [fragment]="options.fragment"
+            [preserveFragment]="options.preserveFragment"
+            [replaceUrl]="options.replaceUrl"
+            [routerLink]="item.routerLink"
+            [routerLinkActiveOptions]="item.routerLinkActiveOptions || {exact: false}"
+            [skipLocationChange]="options.skipLocationChange"
+            [queryParams]="options.queryParams"
+            [target]="options.target"
+        >
+            {{item.caption}}
+        </a>
+        <tui-svg
+            *ngIf="!lastItem"
+            class="icon"
+            src="tuiIconArrowRight"
+        ></tui-svg>
+    </ng-container>
+</ng-container>

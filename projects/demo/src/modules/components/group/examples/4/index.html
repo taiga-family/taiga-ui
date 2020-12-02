@@ -1,0 +1,28 @@
+<p>Директива позволяет избежать лишней вложенности</p>
+
+<form tuiGroup [collapsed]="true" [formGroup]="testForm">
+    <tui-radio-block
+        size="l"
+        contentAlign="right"
+        formControlName="testValue"
+        item="orange"
+    >
+        Апельсины
+    </tui-radio-block>
+    <tui-radio-block
+        size="l"
+        contentAlign="right"
+        formControlName="testValue"
+        item="apple"
+    >
+        Яблоки
+    </tui-radio-block>
+    <tui-radio-block
+        size="l"
+        contentAlign="right"
+        formControlName="testValue"
+        item="pineapple"
+    >
+        Ананасы
+    </tui-radio-block>
+</form>

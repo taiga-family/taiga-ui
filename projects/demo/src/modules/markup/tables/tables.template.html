@@ -1,0 +1,124 @@
+<tui-doc-page header="Таблицы">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Таблицы создаются блоком <strong>.tui-table</strong> и его
+            элементами и модификациями:
+        </div>
+        <h3 class="title">Элементы</h3>
+        <ul
+            class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
+        >
+            <li class="tui-list__item">
+                <code>.tui-table__tr</code>: строка таблицы
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__th</code>: заголовочная ячейка
+            </li>
+            <li class="tui-list__item"><code>.tui-table__td</code>: ячейка</li>
+            <li class="tui-list__item">
+                <code>.tui-table__subtext</code>: маленький и серый текст в
+                ячейке
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__sort</code>: кнопка сортировки
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__sort-icon</code>: стрелка в кнопке сортировки
+            </li>
+        </ul>
+        <h3 class="title">Модификаторы</h3>
+        <ul
+            class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
+        >
+            <li class="tui-list__item">
+                <code>.tui-table_layout_fixed</code>: Фиксированная ширина ячеек
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table_font-size_l</code>: l-размер текста для всей
+                таблицы
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table_font-size_s</code>: s-размер текста для всей
+                таблицы
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table_size_l</code>: l-размер ячеек для всей таблицы
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__tr_border_top</code>: верхний бордер для ряда
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__tr_border_none</code>: отключить нижний бордер
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__tr_hover_disabled</code>: отключить смену фона
+                при наведении
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__tr_cursor_pointer</code>: включить cursor:
+                pointer при наведении
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__th_font-size_l</code>: l-размер текста для
+                заголовочной ячейки
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__td_font-size_l</code>: l-размер текста для
+                ячейки
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__td_font-size_s</code>: s-размер текста для
+                ячейки
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__td_size_l</code>: l-размер для ячейки
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__td_align_center</code>: вертикальное
+                выравнивание по центру в ячеейке
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__td_first, .tui-table__th_first</code>: нулевой
+                паддинг слева в ячейке
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__td_last, .tui-table__th_last</code>: нулевой
+                паддинг справа в ячейке
+            </li>
+            <li class="tui-list__item">
+                <code
+                    >.tui-table__td_text_center,
+                    .tui-table__th_text_center</code
+                >: текст по центру в ячейке
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__td_text_right, .tui-table__th_text_right</code
+                >: текст справа в ячейке
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__td_text_overflow</code>: однострочное
+                обрезание текста с многоточием в ячейке
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__sort_active</code>: активное состояние
+                сортировочной кнопки
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-table__sort_up</code>: состояние сортировочной
+                кнопки, при котором стрелочка повернута вверх
+            </li>
+        </ul>
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-tables-example-1></tui-tables-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="full-featured"
+            heading="со всеми модификациями"
+            [content]="example2"
+        >
+            <tui-tables-example-2></tui-tables-example-2>
+        </tui-doc-example>
+    </ng-template>
+</tui-doc-page>

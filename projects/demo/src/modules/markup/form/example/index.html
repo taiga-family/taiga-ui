@@ -1,0 +1,263 @@
+<div class="tui-container">
+    <div class="stepper">
+        <tui-stepper [activeItemIndex]="0">
+            <button tuiStep>Первый шаг</button>
+            <button tuiStep [disabled]="true">Второй шаг</button>
+            <button tuiStep [disabled]="true">Третий шаг</button>
+            <button tuiStep [disabled]="true">Четвёртый шаг</button>
+        </tui-stepper>
+    </div>
+    <form [formGroup]="testForm">
+        <div class="tui-row tui-row_sme">
+            <div class="tui-col_8">
+                <h3 class="tui-form__header tui-form__header_margin-top_none">
+                    Заголовок блока
+                </h3>
+                <div class="tui-form__row">
+                    <tui-input
+                        tuiTextfieldExampleText="Плэйсхолдер поля"
+                        formControlName="nameValue"
+                        tuiHintContent="Текст тултипа"
+                    >
+                        Текстовое поле<span class="tui-required"></span>
+                    </tui-input>
+                    <tui-field-error
+                        formControlName="nameValue"
+                    ></tui-field-error>
+                </div>
+                <div class="tui-form__row">
+                    <tui-input-date
+                        tuiTextfieldExampleText="Плэйсхолдер поля"
+                        formControlName="periodValue"
+                    >
+                        Поле для ввода даты<span class="tui-required"></span>
+                    </tui-input-date>
+                    <tui-field-error
+                        formControlName="periodValue"
+                    ></tui-field-error>
+                </div>
+                <div class="tui-form__row tui-form__row_multi-fields">
+                    <div class="tui-form__multi-field">
+                        <tui-input-password formControlName="passwordValue">
+                            Поле для ввода пароля
+                        </tui-input-password>
+                        <tui-field-error
+                            formControlName="passwordValue"
+                        ></tui-field-error>
+                    </div>
+                    <div class="tui-form__multi-field">
+                        <tui-input-number
+                            formControlName="moneyValue"
+                            [postfix]="'RUB' | tuiCurrency"
+                        >
+                            Поле для ввода денег
+                        </tui-input-number>
+                        <tui-field-error
+                            formControlName="moneyValue"
+                        ></tui-field-error>
+                    </div>
+                </div>
+                <div class="tui-form__row">
+                    <tui-input-slider
+                        formControlName="quantityValue"
+                        [min]="50000"
+                        [max]="3000000"
+                        [pluralize]="['₽', '₽', '₽']"
+                        [segments]="1"
+                        [segmentsPluralize]="['₽', '₽', '₽']"
+                    >
+                        Желаемая сумма кредита
+                    </tui-input-slider>
+                    <div class="tui-form__field-note">
+                        При выплате процентов на вклад повышается его доходность
+                    </div>
+                    <tui-field-error
+                        formControlName="quantityValue"
+                    ></tui-field-error>
+                </div>
+                <div class="tui-form__row tui-form__row_multi-fields">
+                    <div class="tui-form__multi-field">
+                        <tui-select
+                            formControlName="personValue"
+                            [valueContent]="personValueContent"
+                        >
+                            Выберите человека
+                            <tui-data-list-wrapper
+                                *tuiDataList
+                                [items]="persons"
+                            ></tui-data-list-wrapper>
+                        </tui-select>
+                        <ng-template #personValueContent let-data>
+                            <div class="uppercase-name">
+                                {{data.firstName}} {{data.lastName}}
+                            </div>
+                        </ng-template>
+                        <tui-field-error
+                            formControlName="personValue"
+                        ></tui-field-error>
+                    </div>
+                    <div class="tui-form__multi-field">
+                        <tui-input-phone formControlName="phoneValue">
+                            Напишите телефон
+                        </tui-input-phone>
+                        <tui-field-error
+                            formControlName="phoneValue"
+                        ></tui-field-error>
+                    </div>
+                </div>
+                <h3 class="tui-form__header">Заголовок блока</h3>
+                <div class="tui-form__row">
+                    <tui-group [adaptive]="true" [collapsed]="true">
+                        <tui-radio-block
+                            contentAlign="right"
+                            formControlName="radioValue"
+                            item="with-commission"
+                            size="l"
+                        >
+                            С комисcией
+                        </tui-radio-block>
+                        <tui-radio-block
+                            contentAlign="right"
+                            formControlName="radioValue"
+                            item="without-commission"
+                            size="l"
+                        >
+                            Без комиссии
+                        </tui-radio-block>
+                    </tui-group>
+                </div>
+                <div class="tui-form__row tui-form__row_half-width">
+                    <tui-input-time formControlName="timeValue">
+                        Поле для ввода времени
+                    </tui-input-time>
+                </div>
+                <div class="tui-form__row tui-form__row_checkboxes">
+                    <tui-checkbox-labeled
+                        class="tui-form__checkbox"
+                        formControlName="osnoValue"
+                        size="l"
+                    >
+                        ОСНО
+                    </tui-checkbox-labeled>
+                    <tui-checkbox-labeled
+                        class="tui-form__checkbox"
+                        formControlName="usnValue"
+                        size="l"
+                    >
+                        УСН &laquo;Доходы&raquo;
+                    </tui-checkbox-labeled>
+                    <tui-checkbox-labeled
+                        class="tui-form__checkbox"
+                        formControlName="eshnValue"
+                        size="l"
+                    >
+                        ECXH
+                    </tui-checkbox-labeled>
+                    <tui-checkbox-labeled
+                        class="tui-form__checkbox"
+                        formControlName="envdValue"
+                        size="l"
+                    >
+                        ЕНВД
+                    </tui-checkbox-labeled>
+                    <tui-checkbox-labeled
+                        class="tui-form__checkbox"
+                        formControlName="usn2Value"
+                        size="l"
+                    >
+                        УСН &laquo;Доходы&nbsp;&mdash; Расходы&raquo;
+                    </tui-checkbox-labeled>
+                    <tui-checkbox-labeled
+                        class="tui-form__checkbox"
+                        formControlName="patentValue"
+                        size="l"
+                    >
+                        Патентная СН
+                    </tui-checkbox-labeled>
+                </div>
+                <h3
+                    class="tui-form__header tui-form__header_margin-bottom_small"
+                >
+                    Заголовок блока
+                </h3>
+                <div class="tui-form__row">
+                    <label tuiLabel label="Откуда">
+                        <tui-select
+                            class="accounts-select"
+                            formControlName="accountWherefrom"
+                            [tuiTextfieldLabelOutside]="true"
+                            [valueContent]="accountContent"
+                        >
+                            Выберите счет
+                            <tui-data-list-wrapper
+                                *tuiDataList
+                                [items]="accounts"
+                                [itemContent]="accountContent"
+                            ></tui-data-list-wrapper>
+                        </tui-select>
+                    </label>
+                </div>
+                <div class="tui-form__row">
+                    <label tuiLabel label="Куда">
+                        <tui-select
+                            class="accounts-select"
+                            formControlName="accountWhere"
+                            [tuiTextfieldLabelOutside]="true"
+                            [valueContent]="accountContent"
+                        >
+                            Выберите счет
+                            <tui-data-list-wrapper
+                                *tuiDataList
+                                [items]="accounts"
+                                [itemContent]="accountContent"
+                            ></tui-data-list-wrapper>
+                        </tui-select>
+                    </label>
+                </div>
+                <h3 class="tui-form__header">Заголовок блока</h3>
+                <div class="tui-form__row">
+                    <tui-input
+                        tuiTextfieldExampleText="Плэйсхолдер поля"
+                        formControlName="textValue"
+                        tuiHintContent="Текст тултипа"
+                    >
+                        Текстовое поле
+                    </tui-input>
+                    <div class="tui-form__field-checkbox">
+                        <tui-checkbox-labeled
+                            formControlName="checkboxValue"
+                            size="l"
+                        >
+                            Оплата налога за третье лицо
+                        </tui-checkbox-labeled>
+                    </div>
+                </div>
+                <div class="tui-form__buttons">
+                    <button
+                        tuiButton
+                        class="tui-form__button"
+                        size="l"
+                        type="submit"
+                    >
+                        Отправить
+                    </button>
+                    <button
+                        tuiButton
+                        type="button"
+                        class="tui-form__button"
+                        appearance="flat"
+                        size="l"
+                    >
+                        Отменить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <ng-template #accountContent let-account>
+            <span class="account">
+                {{account.name}}
+                <tui-money [value]="account.amount"></tui-money>
+            </span>
+        </ng-template>
+    </form>
+</div>

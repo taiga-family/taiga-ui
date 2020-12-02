@@ -1,0 +1,21 @@
+<p>Ваш баланс: <tui-money [value]="money"></tui-money></p>
+<button tuiButton type="button" size="m" (click)="showDialog(template)">
+    Показать
+</button>
+
+<ng-template #template="polymorpheus" polymorpheus let-observer>
+    <p>Попап можно показывать с помощью шаблона</p>
+    <p>Ваш баланс: <tui-money [value]="money"></tui-money></p>
+    <button
+        class="tui-space_right-3"
+        tuiButton
+        type="button"
+        size="m"
+        (click)="withdraw()"
+    >
+        Списать&nbsp;<tui-money [value]="100"></tui-money>
+    </button>
+    <button tuiButton type="button" size="m" (click)="observer.complete()">
+        Закрыть
+    </button>
+</ng-template>

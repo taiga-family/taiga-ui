@@ -1,0 +1,135 @@
+<tui-doc-page header="Badge" package="KIT">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Бэджи содержат текстовые и числовые значения. Числовые значения
+            указывают, например, на количество непрочитанных сообщений или
+            нотификаций.
+        </div>
+
+        Используйте бэджи для привлечения внимания к новому или обновленному
+        контенту. Бэджи с числовыми значениями обычно помещаются после метки и
+        содержат только цифры или знак «+», который указывает количество,
+        большее, чем максимальное значение.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-badge-example-1></tui-badge-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="size"
+            heading="размеры и hoverable"
+            [content]="example2"
+        >
+            <tui-badge-example-2></tui-badge-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="кастомный цвет"
+            [content]="example3"
+        >
+            <tui-badge-example-3></tui-badge-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="notification"
+            heading="с нотификациями"
+            [content]="example4"
+        >
+            <tui-badge-example-4></tui-badge-example-4>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-badge
+                [hoverable]="hoverable"
+                [notification]="notification"
+                [size]="size"
+                [status]="status"
+                [textColor]="textColor"
+                [value]="values[value]"
+            ></tui-badge>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="hoverable"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="hoverable"
+            >
+                Позволяет включить эффект наведения на бэдж (hover).
+            </ng-template>
+            <ng-template
+                documentationPropertyName="notification"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiNotification | TuiSupportColor | null"
+                [documentationPropertyValues]="notificationVariants"
+                [(documentationPropertyValue)]="notification"
+            >
+                Показывать нотификацию выбранного цвета
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер бэджа
+            </ng-template>
+            <ng-template
+                documentationPropertyName="status"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiStatus | TuiSupportColor"
+                [documentationPropertyValues]="statusVariants"
+                [(documentationPropertyValue)]="status"
+            >
+                Статус меняет цвет бейджа.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="textColor"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiTextColor | null"
+                [documentationPropertyValues]="textColorVariants"
+                [(documentationPropertyValue)]="textColor"
+            >
+                Цвет текста
+            </ng-template>
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="string | number"
+                [documentationPropertyValues]="valueVariants"
+                [(documentationPropertyValue)]="value"
+            >
+                Значение. Числовые значения, превыщающие 99, заменяются
+                на&nbsp;&laquo;99+&raquo;.
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiBadgeModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

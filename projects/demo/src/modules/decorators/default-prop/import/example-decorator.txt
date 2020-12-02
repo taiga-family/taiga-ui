@@ -1,0 +1,9 @@
+@Input()
+min = 10;
+
+@Input()
+@tuiDefaultProp<MyComponent, 'quanity'>(
+    (quantity, context) => Number.isInteger(quantity) && quantity >= context.min,
+    'Количество должно быть целым конечным числом, больше минимального значения'
+)
+quantity = 10;

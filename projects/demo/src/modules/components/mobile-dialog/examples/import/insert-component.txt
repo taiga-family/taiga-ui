@@ -1,0 +1,17 @@
+constructor(private readonly dialogsService: TuiMobileDialogService) {}
+
+// ...
+
+this.dialogsService
+    .open(
+        'Текст',
+        {
+            label: 'Заголовок',
+            actions: ['Кнопка 1', 'Кнопка 2'],
+            data: 'Произвольные входные данные'
+        },
+    )
+    .subscribe(index => {
+        // Индекс нажатой кнопки
+        console.log(index);
+    });

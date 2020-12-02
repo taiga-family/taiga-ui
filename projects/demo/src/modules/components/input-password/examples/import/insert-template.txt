@@ -1,0 +1,5 @@
+<form [formGroup]="testForm">
+    <tui-input-password formControlName="testValue">
+        Введите пароль
+    </tui-input-password>
+</form>

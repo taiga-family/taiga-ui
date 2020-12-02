@@ -1,0 +1,101 @@
+<div class="zone" (tuiActiveZoneChange)="onActiveZone($event)">
+    <tui-wrapper
+        appearance="textfield"
+        [readOnly]="readOnly"
+        [disabled]="disabled"
+        [focused]="computedFocused"
+        [hovered]="computedHovered"
+        [invalid]="computedInvalid"
+    >
+        <span
+            *ngIf="hasPlaceholder"
+            class="placeholder"
+            automation-id="tui-input-range__placeholder"
+        >
+            <ng-content></ng-content>
+        </span>
+        <div class="content">
+            <span *ngIf="!showMinLabel" class="label">
+                <span class="value">{{inputValueLeft}}</span>
+                <span
+                    *ngIf="isPluralized(pluralize)"
+                    class="pluralize"
+                    automation-id="tui-input-range__pluralize-left"
+                >
+                    {{value[0] | tuiPluralize: pluralize}}
+                </span>
+            </span>
+            <span
+                *ngIf="showMinLabel"
+                class="label"
+                automation-id="tui-input-range__min-label"
+            >
+                {{minLabel}}
+            </span>
+            <span
+                *ngIf="showMaxLabel"
+                automation-id="tui-input-range__max-label"
+                class="max"
+            >
+                {{maxLabel}}
+            </span>
+        </div>
+        <tui-range
+            class="slider"
+            [min]="min"
+            [max]="max"
+            [steps]="computedSteps"
+            [segments]="segments"
+            [keySteps]="keySteps"
+            [pluralize]="segmentsPluralize"
+            [focusable]="false"
+            [disabled]="readOnly || disabled"
+            [ngModel]="value"
+            (ngModelChange)="onRangeValue($event)"
+            (mousedown.prevent)="onMouseDown()"
+        ></tui-range>
+    </tui-wrapper>
+
+    <div class="native-wrapper" (tuiHoveredChange)="onHovered($event)">
+        <input
+            #nativeLeft
+            class="native"
+            automation-id="tui-input-range__native-left"
+            [disabled]="disabled"
+            [readOnly]="readOnly"
+            [class.native_hidden]="showMinLabel"
+            [tuiInputMode]="inputMode"
+            [tuiFocusable]="focusable"
+            [textMask]="quantum | tuiMapper: mask: min"
+            [ngModel]="computedValueLeft"
+            (ngModelChange)="onInputLeft()"
+            (tuiFocusedChange)="onLeftFocused($event)"
+            (keydown.arrowUp)="onKeyDownArrowUpLeft($event)"
+            (keydown.arrowDown)="onKeyDownArrowDownLeft($event)"
+        />
+        <input
+            #nativeRight
+            class="native native_right"
+            automation-id="tui-input-range__native-right"
+            [disabled]="disabled"
+            [readOnly]="readOnly"
+            [class.native_hidden]="showMaxLabel"
+            [tuiInputMode]="inputMode"
+            [tuiFocusable]="focusable"
+            [textMask]="quantum | tuiMapper: mask: min"
+            [ngModel]="computedValueRight"
+            (ngModelChange)="onInputRight()"
+            (tuiFocusedChange)="onRightFocused($event)"
+            (keydown.arrowUp)="onKeyDownArrowUpRight($event)"
+            (keydown.arrowDown)="onKeyDownArrowDownRight($event)"
+        />
+        <span
+            *ngIf="isPluralized(pluralize) && !showMaxLabel"
+            class="pluralize pluralize_right"
+            automation-id="tui-input-range__pluralize-right"
+            (mousedown)="onMouseDown()"
+        >
+            {{value[1] | tuiPluralize: pluralize}}
+        </span>
+    </div>
+</div>

@@ -1,0 +1,255 @@
+@import 'taiga-ui-angular-local';
+
+@padding: 12px;
+
+:host {
+    .text-body-s(2);
+    .transition(background-color);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: var(--tui-base-01);
+    border-radius: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &:hover,
+    &:active {
+        &._hoverable {
+            &[data-tui-background='inherit'],
+            &[data-tui-background^='support-'],
+            &[data-tui-background='success'],
+            &[data-tui-background='error'] {
+                &:before {
+                    .fullsize();
+                    content: '';
+                    background-color: var(--tui-clear);
+                }
+            }
+        }
+    }
+
+    &._hoverable {
+        cursor: pointer;
+    }
+
+    &[data-tui-host-padding='m'] {
+        padding: 0 @padding - 4px;
+
+        &[data-tui-host-size='s'] {
+            padding: 0 @padding - 6px;
+        }
+
+        &[data-tui-host-size='l'] {
+            padding: 0 @padding - 2px;
+        }
+    }
+
+    &[data-tui-host-padding='l'] {
+        padding: 0 @padding;
+
+        &[data-tui-host-size='s'] {
+            padding: 0 @padding - 2px;
+        }
+    }
+
+    &[data-tui-host-size='s'] {
+        .text-body-xs();
+        height: @height-extra-extra-small;
+        line-height: @height-extra-extra-small;
+        min-width: @height-extra-extra-small;
+    }
+
+    &[data-tui-host-size='m'] {
+        height: @height-extra-small;
+        line-height: @height-extra-small;
+        min-width: @height-extra-small;
+    }
+
+    &[data-tui-host-size='l'] {
+        height: @height-small;
+        line-height: @height-small;
+        min-width: @height-small;
+    }
+
+    &[data-tui-background='normal'] {
+        background-color: var(--tui-base-06);
+
+        &._hoverable {
+            &:hover {
+                background-color: var(--tui-base-07);
+            }
+
+            &:active {
+                background-color: var(--tui-base-08);
+            }
+        }
+    }
+
+    &[data-tui-background='light'] {
+        background-color: var(--tui-secondary);
+
+        &._hoverable {
+            &:hover {
+                background-color: var(--tui-secondary-hover);
+            }
+
+            &:active {
+                background-color: var(--tui-secondary-active);
+            }
+        }
+    }
+
+    &[data-tui-background='gray'] {
+        background-color: var(--tui-base-03);
+
+        &._hoverable {
+            &:hover {
+                background-color: var(--tui-base-04);
+            }
+
+            &:active {
+                background-color: var(--tui-base-05);
+            }
+        }
+    }
+
+    &[data-tui-background='primary'] {
+        color: var(--tui-primary-text);
+
+        &._hoverable {
+            &:hover {
+                background-color: var(--tui-primary-hover);
+            }
+
+            &:active {
+                background-color: var(--tui-primary-active);
+            }
+        }
+    }
+
+    &[data-tui-background='secondary'] {
+        color: var(--tui-accent-text);
+        background-color: var(--tui-accent);
+
+        &._hoverable {
+            &:hover {
+                background-color: var(--tui-accent-hover);
+            }
+
+            &:active {
+                background-color: var(--tui-accent-active);
+            }
+        }
+    }
+
+    &[data-tui-background='transparent-dark'] {
+        background-color: var(--tui-clear);
+
+        &._hoverable {
+            &:hover {
+                background-color: var(--tui-clear-hover);
+            }
+
+            &:active {
+                background-color: var(--tui-clear-active);
+            }
+        }
+    }
+
+    &[data-tui-background='transparent-light'] {
+        background-color: var(--tui-clear-inverse);
+
+        &._hoverable {
+            &:hover {
+                background-color: var(--tui-clear-inverse-hover);
+            }
+
+            &:active {
+                background-color: var(--tui-clear-inverse-active);
+            }
+        }
+    }
+
+    &[data-tui-background='highlight'] {
+        color: var(--tui-text-01);
+        background-color: var(--tui-base-01);
+
+        &:after {
+            .fullsize();
+            content: '';
+            box-sizing: border-box;
+            border-radius: inherit;
+            border: 2px solid var(--tui-primary);
+        }
+
+        &._hoverable {
+            &:hover,
+            &:active {
+                background-color: var(--tui-base-01);
+
+                &:after {
+                    border-color: var(--tui-primary-hover);
+                }
+            }
+        }
+    }
+
+    &[data-tui-background='white'] {
+        color: var(--tui-text-01);
+        background-color: var(--tui-base-01);
+
+        &._hoverable {
+            &:hover,
+            &:active {
+                background-color: var(--tui-base-01);
+
+                &:after {
+                    .fullsize();
+                    content: '';
+                    box-sizing: border-box;
+                    border-radius: inherit;
+                    border: 1px solid var(--tui-base-04);
+                }
+            }
+        }
+    }
+
+    &[data-tui-background='light'],
+    &[data-tui-background='gray'],
+    &[data-tui-background='transparent-dark'] {
+        color: var(--tui-text-01);
+    }
+
+    &[data-tui-host-text-color='black'] {
+        color: var(--tui-text-01);
+    }
+
+    &[data-tui-host-text-color='white'] {
+        color: var(--tui-base-01);
+    }
+}
+
+.notification {
+    margin: 0 6px 0 -2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+
+    &:not([data-tui-background]) {
+        background-color: var(--tui-base-06);
+    }
+
+    :host[data-tui-host-size='s'] & {
+        width: 4px;
+        height: 4px;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        margin: 0 8px 0 0;
+        width: 8px;
+        height: 8px;
+    }
+}

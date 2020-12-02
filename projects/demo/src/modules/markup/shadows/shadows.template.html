@@ -1,0 +1,39 @@
+<tui-doc-page header="Тени">
+    <ng-template pageTab>
+        <div class="wrapper">
+            <div class="example">
+                <div class="item item_standart">Обычная тень</div>
+                <div class="item item_dropdown">Тень для выпадашек</div>
+                <div class="item item_modal">Тень для модалов</div>
+                <div class="item item_sidebar">Тень для сайдбаров</div>
+            </div>
+            <pre class="code">
+                .item &#123;
+                    // Карточка
+                    &_standart &#123;
+                        .shadow();
+
+                        &:hover &#123;
+                            .shadow(5);
+                        &#125;
+                    &#125;
+
+                    // Дропдауны
+                    &_dropdown &#123;
+                        .shadow(2);
+                    &#125;
+
+                    // Модальные окна
+                    &_modal &#123;
+                        .shadow(3);
+                    &#125;
+
+                    // Сайдбар
+                    &_dialog &#123;
+                        .shadow(4);
+                    &#125;
+                }
+            </pre>
+        </div>
+    </ng-template>
+</tui-doc-page>

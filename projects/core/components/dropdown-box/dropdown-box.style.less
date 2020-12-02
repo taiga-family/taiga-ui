@@ -1,0 +1,37 @@
+@import '../../styles/basic/basic-imports';
+
+:host {
+    .createStackingContext();
+    .shadow(2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    background-color: #fff; // Fallback for IE
+    background-color: var(--tui-base-01);
+    border-radius: var(--tui-radius);
+    overflow: hidden;
+    border: 1px solid var(--tui-base-03);
+    box-sizing: border-box;
+
+    &.ng-animating {
+        pointer-events: none;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+
+.wrapper {
+    flex-grow: 1;
+    max-width: 100%;
+    max-height: inherit;
+    overflow: visible;
+}
+
+.scroll {
+    height: 100%;
+}

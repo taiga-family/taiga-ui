@@ -1,0 +1,24 @@
+<p>
+    Произвольный хост делается через директиву
+    <a tuiLink tuiMode="light" [routerLink]="['/tui-hint']"
+        ><code>tuiHint</code></a
+    >
+</p>
+<tui-avatar
+    tabindex="0"
+    size="l"
+    text="❤"
+    tuiDescribedBy="love"
+    tuiHintId="love"
+    tuiHintMode="light"
+    tuiHintDirection="right"
+    [tuiHint]="tooltip"
+    [autoColor]="true"
+    [rounded]="true"
+></tui-avatar>
+<ng-template #tooltip="polymorpheus" polymorpheus>
+    <div>What is <strong>love</strong>?</div>
+    <div>Baby don't hurt me</div>
+    <div>Don't hurt me</div>
+    <div>No more...</div>
+</ng-template>

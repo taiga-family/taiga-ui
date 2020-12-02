@@ -1,0 +1,143 @@
+<tui-doc-page header="InputDate" package="KIT">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">Поле с календарем для выбора даты.</div>
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-input-date-example-1></tui-input-date-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example heading="размеры" id="sizes" [content]="example2">
+            <tui-input-date-example-2></tui-input-date-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            heading="Именованная дата"
+            id="named"
+            [content]="example3"
+        >
+            <tui-input-date-example-3></tui-input-date-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-date
+                    [formControl]="control"
+                    [focusable]="focusable"
+                    [min]="min"
+                    [max]="max"
+                    [markerHandler]="markerHandler"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [disabledItemHandler]="disabledItemHandler"
+                    [items]="items"
+                    [tuiTextfieldAutocomplete]="autocomplete"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiHintMode]="hintMode"
+                >
+                    Выберите дату
+                </tui-input-date>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<TuiDay>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Функция, определяющая, заблокирована ли дата в календаре.<br />
+                <strong>Должна быть чистой функцией.</strong><br />
+                Не препятствует ручному вводу значения в текстовое поле.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="items"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiNamedDay[]"
+                [documentationPropertyValues]="itemsVariants"
+                [(documentationPropertyValue)]="items"
+            >
+                Пресеты именованных дней для выставления по кнопке в выпадашке
+            </ng-template>
+            <ng-template
+                documentationPropertyName="markerHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMarkerHandler"
+                [documentationPropertyValues]="markerHandlerVariants"
+                [(documentationPropertyValue)]="markerHandler"
+            >
+                Функция, которая определяет, показаны ли под датой
+                кружки-маркеры и задает их цвета
+            </ng-template>
+            <ng-template
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDay"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Минимальная дата
+            </ng-template>
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDay"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Максимальная дата
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation [dropdown]="true"></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiInputDateModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Вставить компонент <code>TuiInputDate</code> в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

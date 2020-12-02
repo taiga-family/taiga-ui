@@ -1,0 +1,226 @@
+<tui-doc-page header="MultiSelect" package="KIT">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            <code>MultiSelect</code> представляет собой поле с выпадающим
+            списком для выбора нескольких из предложенных вариантов.
+        </div>
+        <div class="tui-space_bottom-3">
+            Выпадающий список по умолчанию имеет ограничение по высоте в 400px,
+            которое можно изменить.
+        </div>
+
+        Для вставки в DOM выпадающего списка используется <code>Portal</code>,
+        он должен присутствовать на странице. См.
+        <a tuiLink routerLink="/">раздел</a> о вставке вспомогательных
+        компонентов.
+
+        <tui-doc-example
+            id="string-array"
+            heading="список строк"
+            [content]="example1"
+        >
+            <tui-multi-select-example-1></tui-multi-select-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="object-array"
+            heading="список объектов, кастомный шаблон, асинхронная загрузка"
+            [content]="example2"
+        >
+            <tui-multi-select-example-2></tui-multi-select-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example id="sizes" heading="размеры" [content]="example3">
+            <tui-multi-select-example-3></tui-multi-select-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example id="ids" heading="Только ID" [content]="example4">
+            <tui-multi-select-example-4></tui-multi-select-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example id="datalist" heading="DataList" [content]="example5">
+            <tui-multi-select-example-5></tui-multi-select-example-5>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-multi-select
+                    [formControl]="control"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldExampleText]="exampleText"
+                    [tuiTextfieldMaxLength]="maxLength"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiHintMode]="hintMode"
+                    [focusable]="focusable"
+                    [disabledItemHandler]="disabledItemHandler"
+                    [editable]="editable"
+                    [expandable]="expandable"
+                    [identityMatcher]="identityMatcher"
+                    [readOnly]="readOnly"
+                    [stringify]="stringify"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    [valueContent]="valueContent"
+                    [(search)]="search"
+                >
+                    Выберите счёт списания
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        tuiMultiSelectGroup
+                        [items]="items"
+                    ></tui-data-list-wrapper>
+                </tui-multi-select>
+            </ng-template>
+        </tui-doc-demo>
+        <ng-template #item="polymorpheus" polymorpheus let-item>
+            <div class="content">
+                <tui-avatar
+                    class="avatar"
+                    size="s"
+                    [text]="item.toString()"
+                ></tui-avatar>
+                {{item}}
+            </div>
+        </ng-template>
+        <p class="b-full-width">
+            Задать значение копией объекта из items для проверки
+            <code>identityMatcher</code>: <br /><br />
+            <button tuiButton type="button" size="m" (click)="setValue()">
+                Задать
+            </button>
+        </p>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="search"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="string | null"
+                [(documentationPropertyValue)]="search"
+            >
+                Значение нативного поля для подписки на ввод и передачи снаружи
+                (сбрасывается в <code>null</code> при выборе элемента)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<T>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Хэндлер отключенности отдельных пунктов выпадающего списка
+            </ng-template>
+            <ng-template
+                documentationPropertyName="editable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="editable"
+            >
+                Использовать поле ввода
+            </ng-template>
+            <ng-template
+                documentationPropertyName="expandable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="expandable"
+            >
+                Высота поля увеличивается, чтобы уместить все тэги
+            </ng-template>
+            <ng-template
+                documentationPropertyName="identityMatcher"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiIdentityMatcher"
+                [documentationPropertyValues]="identityMatcherVariants"
+                [(documentationPropertyValue)]="identityMatcher"
+            >
+                Функция определения равенства объектов (нужна в случае, если
+                выбранное значение задано изначально и не присутствует в
+                <code>items</code>, однако там есть точная копия, которую можно
+                определить по какому-нибудь критерию. По умолчанию используется
+                сравнение <code>===</code>.
+                <strong>Должна быть чистой функцией</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="stringify"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiStringHandler"
+                [documentationPropertyValues]="stringifyVariants"
+                [(documentationPropertyValue)]="stringify"
+            >
+                Функция преобразования объекта в строку. По умолчанию
+                используется <code>String(value)</code>.
+                <strong>Должна быть чистой функцией</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="valueContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="valueContentVariants"
+                [(documentationPropertyValue)]="valueContent"
+            >
+                Шаблон значения
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation [dropdown]="true"></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p>
+                    Для использования импортировать модули для работы с формами
+                    из Angular и модули компонентов в тот же модуль, куда
+                    добавляется ваш компонент:
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+
+                <p>
+                    Можно не использовать <code>tui-data-list-wrapper</code> и
+                    работать с вариантами непосредственно (см. примеры
+                    использования)
+                </p>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

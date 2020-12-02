@@ -1,0 +1,26 @@
+<div>
+    Основные цвета
+    <tui-tag class="tag" [hoverable]="true" [value]="tag"></tui-tag>
+    <tui-tag
+        class="tag"
+        [hoverable]="true"
+        status="primary"
+        [value]="tag"
+    ></tui-tag>
+    <div class="light-mode" tuiMode="light">
+        <tui-tag class="tag" [hoverable]="true" [value]="tag"></tui-tag>
+    </div>
+    <div class="dark-mode" tuiMode="dark">
+        <tui-tag class="tag" [hoverable]="true" [value]="tag"></tui-tag>
+    </div>
+</div>
+<div class="tui-space_top-3">
+    Вспомогательные цвета через CSS и <code>status="custom"</code>
+    <tui-tag
+        *tuiRepeatTimes="let index of 20"
+        class="tag support-{{index + 1}}"
+        status="custom"
+        [hoverable]="true"
+        [value]="tag"
+    ></tui-tag>
+</div>

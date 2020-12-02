@@ -1,0 +1,82 @@
+<tui-doc-page header="Notification" package="CORE">
+    <ng-template pageTab>
+        Inline уведомления представляют собой сообщения разного типа (info,
+        success, warning, error) без прерывания действий пользователя.
+        Появляется в&nbsp;контексте совершаемого действия и&nbsp;сообщает
+        о&nbsp;его статусе.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-notification-example-1></tui-notification-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-notification
+                [hasCloseButton]="hasCloseButton"
+                [hasIcon]="hasIcon"
+                [status]="status"
+                (close)="onClose()"
+                >Короткое простое информационное сообщение</tui-notification
+            >
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="hasCloseButton"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="hasCloseButton"
+            >
+                Наличие крестика для закрытия
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hasIcon"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="hasIcon"
+            >
+                Наличие иконки статуса
+            </ng-template>
+            <ng-template
+                documentationPropertyName="status"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiNotification"
+                [documentationPropertyValues]="statusVariants"
+                [(documentationPropertyValue)]="status"
+            >
+                Статус меняет цвет нотификации
+            </ng-template>
+            <ng-template
+                documentationPropertyName="close"
+                documentationPropertyMode="output"
+                documentationPropertyType="void"
+            >
+                Подписка на клик по крестику
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiNotificationModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

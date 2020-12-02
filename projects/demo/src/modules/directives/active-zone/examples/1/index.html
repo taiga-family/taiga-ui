@@ -1,0 +1,36 @@
+<p>Родительская зона: {{parentActive}}</p>
+<p>Дочерняя зона: {{childActive}}</p>
+<p>
+    <input placeholder="input вне зоны" />
+</p>
+<div
+    #parent="tuiActiveZone"
+    class="active-zone"
+    [class.active-zone_active]="parentActive"
+    (tuiActiveZoneChange)="onParentActiveZone($event)"
+>
+    <h2>Родительская зона</h2>
+    <button tuiButton type="button">Кнопка в зоне</button>
+</div>
+<p>
+    <button>Кнопка вне зоны</button>
+</p>
+<div
+    class="active-zone"
+    [class.active-zone_active]="childActive"
+    [tuiActiveZoneParent]="parent"
+    (tuiActiveZoneChange)="onChildActiveZone($event)"
+>
+    <h2>Дочерняя зона</h2>
+    <tui-input #input>Инпут в зоне</tui-input>
+    <p>
+        Для связывания блоков, разнесённых в DOM можно передать родительскую
+        зону, с помощью инпута
+        <code>[tuiActiveZoneParent]</code>.
+    </p>
+</div>
+<p>
+    <input placeholder="input вне зоны" />
+    <button (click)="onClick(input)">Сфокусировать инпут в зоне</button>
+</p>
+<p>Зона сохраняется активной при уходе со вкладки.</p>

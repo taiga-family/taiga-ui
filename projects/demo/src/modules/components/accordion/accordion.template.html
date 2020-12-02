@@ -1,0 +1,196 @@
+<tui-doc-page header="Accordion" package="KIT">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Позволяет пользователю раскрывать/скрывать отдельные секции
+            контента.
+        </div>
+
+        По дефолту в аккордеоне может быть открыта только одна секция, но
+        опционально открывать можно и несколько секций.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-accordion-example-1></tui-accordion-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="без стрелок, обрамления и с более сложной версткой внутри"
+            [content]="example2"
+        >
+            <tui-accordion-example-2></tui-accordion-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example id="single" heading="одинокий" [content]="example3">
+            <tui-accordion-example-3></tui-accordion-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-accordion [closeOthers]="closeOthers" [rounded]="rounded">
+                <tui-accordion-item
+                    [borders]="borders"
+                    [disabled]="disabled"
+                    [noPadding]="noPadding"
+                    [size]="size"
+                    [showArrow]="showArrow"
+                >
+                    Автоматическое пополнение кредита
+                    <ng-template tuiAccordionItemContent>
+                        По закону вы имеете право получать зарплату на счет в
+                        любом банке, оформленный на ваше имя. Потребуйте в
+                        отделе кадров перечислять зарплату на вашу карту, и вы
+                        сможете легко управлять зарплатой сразу после
+                        поступления: откладывать деньги на накопительные счета и
+                        во вклад.
+                    </ng-template>
+                </tui-accordion-item>
+                <tui-accordion-item
+                    [borders]="borders"
+                    [disabled]="disabled"
+                    [noPadding]="noPadding"
+                    [size]="size"
+                    [showArrow]="showArrow"
+                    [async]="async"
+                    [open]="open"
+                    (openChange)="onOpenChange($event)"
+                >
+                    Зарплата на дебетовую карту
+                    <ng-template tuiAccordionItemContent>
+                        <div #content>
+                            По закону вы имеете право получать зарплату на счет
+                            в любом банке, оформленный на ваше имя. Потребуйте в
+                            отделе кадров перечислять зарплату на вашу карту, и
+                            вы сможете легко управлять зарплатой сразу после
+                            поступления: откладывать деньги на накопительные
+                            счета и во вклад.
+                        </div>
+                    </ng-template>
+                </tui-accordion-item>
+            </tui-accordion>
+        </tui-doc-demo>
+
+        <tui-accordion class="b-full-width" [closeOthers]="false">
+            <tui-accordion-item [open]="true">
+                TuiAccordionComponent
+                <ng-template tuiAccordionItemContent>
+                    <tui-doc-documentation>
+                        <ng-template
+                            documentationPropertyName="closeOthers"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="closeOthers"
+                        >
+                            При открытии одной секции аккордеона закрывать
+                            остальные
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="rounded"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="rounded"
+                        >
+                            Включить закругления вокруг аккордеона
+                        </ng-template>
+                    </tui-doc-documentation>
+                </ng-template>
+            </tui-accordion-item>
+            <tui-accordion-item>
+                TuiAccordionItemComponent
+                <ng-template tuiAccordionItemContent>
+                    <tui-doc-documentation>
+                        <ng-template
+                            documentationPropertyName="async"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="async"
+                        >
+                            При открытии компонент ждёт кастомного события
+                            <code>TUI_EXPAND_LOADED</code>, прежде чем
+                            раскрыться, но контент на странице появляется сразу
+                            (для случаев, если компонент внутри при
+                            инициализации подгружает какие-то данные, влияющие
+                            на его высоту)
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="borders"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="TuiBorders | null"
+                            [documentationPropertyValues]="bordersVariants"
+                            [(documentationPropertyValue)]="borders"
+                        >
+                            Управление бордерами секций аккордеона
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="disabled"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="disabled"
+                        >
+                            Блокировать открытие вкладки
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="noPadding"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="noPadding"
+                        >
+                            Убрать паддинги по краям
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="open"
+                            documentationPropertyMode="input-output"
+                            documentationPropertyType="boolean"
+                            [documentationPropertyValue]="open"
+                            (documentationPropertyValueChange)="onOpenChange($event)"
+                        >
+                            Открыта ли секция аккордеона (пример на второй
+                            секции)
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="size"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="TuiSizeS"
+                            [documentationPropertyValues]="sizeVariants"
+                            [(documentationPropertyValue)]="size"
+                        >
+                            Размер вкладки аккордеона
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="showArrow"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="showArrow"
+                        >
+                            Показывать или скрывать стрелку
+                        </ng-template>
+                    </tui-doc-documentation>
+                </ng-template>
+            </tui-accordion-item>
+        </tui-accordion>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiAccordionModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

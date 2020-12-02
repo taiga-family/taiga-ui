@@ -1,0 +1,168 @@
+<tui-doc-page header="InputFile" package="KIT">
+    <ng-template pageTab>
+        Поле для выбора и&nbsp;прикрепления одного или более файлов. Выбор файла
+        или файлов осуществляется либо через нативный поиск, либо путем
+        перетаскивания в&nbsp;определенную область на&nbsp;странице продукта.
+
+        <tui-doc-example
+            id="single"
+            heading="Единичный файл"
+            [content]="example1"
+        >
+            <tui-input-file-example-1></tui-input-file-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="multiple"
+            heading="Несколько файлов"
+            [content]="example2"
+        >
+            <tui-input-file-example-2></tui-input-file-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example id="model" heading="ngModel" [content]="example3">
+            <tui-input-file-example-3></tui-input-file-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="size"
+            heading="Большой размер"
+            [content]="example4"
+        >
+            <tui-input-file-example-4></tui-input-file-example-4>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-input-file
+                [formControl]="control"
+                [accept]="accept"
+                [link]="link"
+                [label]="label"
+                [maxFileSize]="maxFileSize"
+                [multiple]="multiple"
+                [rejectedFiles]="rejectedFiles"
+                [readOnly]="readOnly"
+                [size]="size"
+                [showSize]="showSize"
+                [focusable]="focusable"
+                [pseudoFocused]="pseudoFocused"
+                [pseudoHovered]="pseudoHovered"
+                [pseudoPressed]="pseudoPressed"
+            >
+            </tui-input-file>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="accept"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="acceptVariants"
+                [(documentationPropertyValue)]="accept"
+            >
+                Разрешенные к загрузке форматы (нативный атрибут
+                <code>accept</code>)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="label"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="label"
+            >
+                Текст лэйбла
+            </ng-template>
+            <ng-template
+                documentationPropertyName="link"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="link"
+            >
+                Текст внутри ссылки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="loadingFiles"
+                documentationPropertyMode="input"
+                documentationPropertyType="ReadonlyArray<TuiFileLike>"
+            >
+                Загружающиеся файлы
+            </ng-template>
+            <ng-template
+                documentationPropertyName="maxFileSize"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="maxFileSizeVariants"
+                [(documentationPropertyValue)]="maxFileSize"
+            >
+                Максимально допустимый размер файла в байтах (по умолчанию 30 *
+                1000 * 1000 — 30 МБ)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="multiple"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="multiple"
+            >
+                Разрешить выбор нескольких файлов
+            </ng-template>
+            <ng-template
+                documentationPropertyName="rejectedFiles"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="ReadonlyArray<TuiFileLike>"
+                [documentationPropertyValues]="rejectedFilesVariants"
+                [(documentationPropertyValue)]="rejectedFiles"
+            >
+                Файлы, не прошедшие проверку
+            </ng-template>
+            <ng-template
+                documentationPropertyName="showSize"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="showSize"
+            >
+                Показывать размер файлов
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер списка файлов
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiInputFileModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,24 @@
+<a href="#" tuiLink>Ссылка normal</a>
+<p>
+    <span class="plate plate_light" tuiMode="dark">
+        см. директиву <a tuiLink routerLink="/tui-mode">tuiMode</a>
+        <button tuiLink [pseudo]="true" (click)="onClick($event)">
+            Ссылка pseudo
+        </button>
+    </span>
+</p>
+<span class="plate plate_dark" tuiMode="light">
+    см. директиву <a tuiLink routerLink="/tui-mode">tuiMode</a>
+    <button tuiLink [pseudo]="true" (click)="onClick($event)">
+        Ссылка pseudo
+    </button>
+</span>
+<p>
+    <a href="#" tuiLink mode="success">Ссылка success</a>
+</p>
+<p>
+    <a href="#" tuiLink mode="alert">Ссылка alert</a>
+</p>
+<button tuiLink [pseudo]="true" (click)="onClick($event)">Ссылка pseudo</button>
+(в случае pseudo-ссылки использовать элемент <code>button</code> для возможности
+фокусировки)

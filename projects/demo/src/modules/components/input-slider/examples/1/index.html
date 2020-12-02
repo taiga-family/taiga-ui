@@ -1,0 +1,34 @@
+<form [formGroup]="testForm" class="form">
+    <tui-input-slider
+        class="control"
+        formControlName="testValue"
+        size="m"
+        minLabel="Самую малость"
+        maxLabel="Совсем всё"
+        [pluralize]="pluralize"
+        [segmentsPluralize]="pluralize"
+        [segments]="1"
+        [min]="50000"
+        [max]="30000000"
+        [steps]="104"
+        [quantum]="1000"
+        [keySteps]="keySteps"
+    >
+    </tui-input-slider>
+    <tui-input-slider
+        class="control"
+        formControlName="testValue"
+        minLabel="Самую малость"
+        maxLabel="Совсем всё"
+        [pluralize]="pluralize"
+        [segmentsPluralize]="pluralize"
+        [segments]="1"
+        [min]="50000"
+        [max]="30000000"
+        [steps]="104"
+        [quantum]="1000"
+        [keySteps]="keySteps"
+    >
+        Сколько золота раздать народу
+    </tui-input-slider>
+</form>

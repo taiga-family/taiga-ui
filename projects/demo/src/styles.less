@@ -1,0 +1,162 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'taiga-ui-angular-global';
+
+@sidebar-width: 248px;
+
+body {
+    .text-body-m();
+    overflow-x: hidden;
+}
+
+.b-demo-page {
+    height: 100vh;
+
+    &__navigation {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        z-index: 3;
+        width: @sidebar-width;
+        box-sizing: border-box;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        margin-left: @sidebar-width;
+
+        @media @tablet-s {
+            margin-left: 0;
+        }
+    }
+
+    &__router-outlet + * {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        flex-grow: 1;
+    }
+}
+
+.b-demo-example {
+    &__item {
+        margin-bottom: 12px;
+    }
+
+    &__title {
+        .text-body-m-bold();
+        margin-bottom: 20px;
+    }
+}
+
+.b-demo-steps {
+    list-style-type: decimal;
+    padding-left: 15px;
+    margin: 16px 0;
+
+    & li {
+        margin-bottom: 20px;
+    }
+}
+
+.b-input-wrapper {
+    max-width: 320px;
+}
+
+.b-inherit-button {
+    background: linear-gradient(45deg, #8fffea 0%, #ff973f 100%);
+}
+
+.b-full-width {
+    width: 100%;
+}
+
+/* stylelint-disable */
+// Чтобы элемент был блочный и правильно показывался при скриншот-тестировании
+sandbox .demo > * {
+    display: block;
+}
+
+.b-animated-example {
+    animation: 1s 300ms tuiShaking;
+}
+
+/* stylelint-disable selector-type-no-unknown */
+markdown {
+    display: block;
+    max-width: 932px;
+
+    h1 {
+        .text-h1();
+    }
+
+    h2 {
+        .text-h2();
+    }
+
+    h3 {
+        .text-h3();
+    }
+
+    h4 {
+        .text-h4();
+    }
+
+    h5 {
+        .text-h5();
+    }
+
+    h6 {
+        .text-h6();
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 48px 0 16px;
+    }
+
+    img {
+        margin: 10px 48px 24px 0;
+        max-width: 440px;
+
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
+    }
+
+    ul {
+        &:extend(.tui-list);
+    }
+
+    li {
+        position: relative;
+        padding-left: @space * 6;
+        word-wrap: break-word;
+        margin-top: @space * 3;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--tui-primary);
+        }
+    }
+
+    & a {
+        text-decoration: none;
+        color: var(--tui-link);
+
+        &:hover,
+        &:active {
+            color: var(--tui-link-hover);
+        }
+    }
+}

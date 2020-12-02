@@ -1,0 +1,20 @@
+<form [formGroup]="testForm" class="label">
+    <label tuiLabel [label]="label">
+        <tui-input
+            nativeId="uniqueId"
+            formControlName="testValue"
+            tuiTextfieldSize="m"
+            [tuiTextfieldLabelOutside]="true"
+        >
+            0,00
+        </tui-input>
+    </label>
+    <ng-template #label>
+        Сумма оплаты
+        <tui-tooltip
+            describeId="uniqueId"
+            content="Я тултип, доступный для Screen Reader`ов"
+            direction="top-right"
+        ></tui-tooltip>
+    </ng-template>
+</form>

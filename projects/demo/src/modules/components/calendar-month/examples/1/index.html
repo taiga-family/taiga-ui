@@ -1,0 +1,7 @@
+<tui-calendar-month
+    [value]="value"
+    (monthClick)="onMonthClick($event)"
+    (hoveredItemChange)="onMonthHovered($event)"
+></tui-calendar-month>
+<p>Выбранный месяц: {{value}}</p>
+<p>Месяц под ховером: {{hoveredMonth}}</p>

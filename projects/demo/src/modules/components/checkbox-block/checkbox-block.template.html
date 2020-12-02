@@ -1,0 +1,150 @@
+<tui-doc-page header="CheckboxBlock" package="KIT">
+    <ng-template pageTab>
+        <code>CheckboxBlock</code> используется в основном в формах, где выбор
+        опции не влияет на смену и обновление контента, т.е. не работает как
+        фильтр. Группируется только в горизонтальный стек. Перестроение в
+        вертикальный стек происходит на компактных гридах – на мобильных или
+        таблетных версиях. Лейбл всегда располагается слева, чекбокс – справа.
+
+        <tui-doc-example id="sizes" heading="размеры" [content]="example1">
+            <tui-checkbox-block-example-1></tui-checkbox-block-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="groups" heading="группировка" [content]="example2">
+            <tui-checkbox-block-example-2></tui-checkbox-block-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="кастомная верстка"
+            [content]="example3"
+        >
+            <tui-checkbox-block-example-3></tui-checkbox-block-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <form [formGroup]="control">
+                    <tui-checkbox-block
+                        class="tui-space_all-1"
+                        formControlName="testValue1"
+                        [contentAlign]="contentAlign"
+                        [focusable]="focusable"
+                        [hideCheckbox]="hideCheckbox"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [readOnly]="readOnly"
+                        [size]="size"
+                    >
+                        Согласен оплатить онлайн
+                    </tui-checkbox-block>
+                    <tui-checkbox-block
+                        class="tui-space_all-1"
+                        formControlName="testValue2"
+                        [contentAlign]="contentAlign"
+                        [focusable]="focusable"
+                        [hideCheckbox]="hideCheckbox"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [readOnly]="readOnly"
+                        [size]="size"
+                    >
+                        Отказывается оплатить онлайн
+                    </tui-checkbox-block>
+                    <tui-checkbox-block
+                        class="tui-space_all-1"
+                        formControlName="testValue3"
+                        [contentAlign]="contentAlign"
+                        [focusable]="focusable"
+                        [hideCheckbox]="hideCheckbox"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [readOnly]="readOnly"
+                        [size]="size"
+                    >
+                        Другой вариант
+                    </tui-checkbox-block>
+                </form>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="contentAlign"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiHorizontalDirection"
+                [documentationPropertyValues]="contentAlignVariants"
+                [(documentationPropertyValue)]="contentAlign"
+            >
+                Положение чекбокса
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hideCheckbox"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="hideCheckbox"
+            >
+                Скрыть чекбокс
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS | TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер контрола
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiCheckboxBlockModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

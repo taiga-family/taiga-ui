@@ -1,0 +1,21 @@
+<form class="container" [formGroup]="testForm">
+    <tui-input-copy formControlName="testValue" tuiTextfieldSize="s">
+        Значение поля
+    </tui-input-copy>
+
+    <tui-input-copy
+        class="tui-space_top-2"
+        formControlName="testValue"
+        tuiTextfieldSize="m"
+    >
+        Значение поля
+    </tui-input-copy>
+
+    <tui-input-copy
+        class="tui-space_top-2"
+        formControlName="testValue"
+        hintContent="Cкопируй, пожалуйста"
+    >
+        Значение поля
+    </tui-input-copy>
+</form>

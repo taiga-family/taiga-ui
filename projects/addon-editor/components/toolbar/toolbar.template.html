@@ -1,0 +1,826 @@
+<div [tuiFocusable]="focusable" (focus)="onTopFocus()"></div>
+<div [tuiFocusable]="focusable" (focus)="onBottomFocus()"></div>
+<!--TODO: i18n-->
+<div *ngIf="enabled(TuiEditorTool.Undo)" class="block">
+    <button
+        #button
+        #undoBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconToolbarUndo"
+        class="button button_margin"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        [tuiHint]="cancelWord"
+        [tuiHintId]="undoBtn.id"
+        [tuiDescribedBy]="undoBtn.id"
+        [disabled]="undoDisabled"
+        [focusable]="false"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+        (keydown.arrowRight.prevent)="onArrowRight()"
+        (click)="undo()"
+    ></button>
+    <button
+        #button
+        #redoBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconToolbarRedo"
+        class="button button_margin"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        tuiHint="Повторить"
+        [tuiHintId]="redoBtn.id"
+        [tuiDescribedBy]="redoBtn.id"
+        [disabled]="redoDisabled"
+        [focusable]="false"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+        (keydown.arrowRight.prevent)="onArrowRight()"
+        (click)="redo()"
+    ></button>
+</div>
+<div *ngIf="enabled(TuiEditorTool.Size)" class="block">
+    <tui-hosted-dropdown #fonts class="wrapper" [content]="fontsDropdown">
+        <button
+            #button
+            #fontsBtn
+            tuiIconButton
+            type="button"
+            size="s"
+            appearance="icon"
+            class="button"
+            icon="tuiIconToolbarFont"
+            tuiHintDirection="top-left"
+            tuiHint="Шрифт"
+            [tuiHintId]="fontsBtn.id"
+            [tuiDescribedBy]="fontsBtn.id"
+            [pseudoPressed]="fonts.open"
+            [focusable]="fonts.open"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
+        ></button>
+        <ng-template #fontsDropdown>
+            <tui-data-list #dropdown>
+                <button
+                    *ngFor="let item of fontsOptions"
+                    tuiOption
+                    [style.fontFamily]="item.family"
+                    [style.fontSize.px]="item.px"
+                    (click)="onFont(item.size)"
+                >
+                    {{item.name}}
+                </button>
+            </tui-data-list>
+        </ng-template>
+    </tui-hosted-dropdown>
+</div>
+<div *ngIf="firstBigBlockEnabled" class="block">
+    <!-- @bad TODO: Keyboard navigation-->
+    <tui-hosted-dropdown
+        *ngIf="formatEnabled"
+        #format
+        class="wrapper"
+        [content]="formatDropdown"
+    >
+        <button
+            #button
+            #formatBtn
+            tuiIconButton
+            type="button"
+            size="s"
+            icon="tuiIconToolbarFormat"
+            appearance="icon"
+            class="button"
+            tuiHintDirection="top-left"
+            tuiHint="Стиль шрифта"
+            [tuiHintId]="formatBtn.id"
+            [tuiDescribedBy]="formatBtn.id"
+            [pseudoPressed]="format.open || bold || italic || underline || strikeThrough"
+            [focusable]="format.open"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
+        ></button>
+        <ng-template #formatDropdown>
+            <div #dropdown class="dropdown">
+                <button
+                    *ngIf="enabled(TuiEditorTool.Bold)"
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Полужирный"
+                    icon="tuiIconToolbarBold"
+                    appearance="icon"
+                    class="button button_margin"
+                    [pseudoPressed]="bold"
+                    (click)="toggleBold()"
+                ></button>
+                <button
+                    *ngIf="enabled(TuiEditorTool.Italic)"
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Курсив"
+                    icon="tuiIconToolbarItalic"
+                    appearance="icon"
+                    class="button button_margin"
+                    [pseudoPressed]="italic"
+                    (click)="toggleItalic()"
+                ></button>
+                <button
+                    *ngIf="enabled(TuiEditorTool.Underline)"
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Подчеркнутый"
+                    icon="tuiIconToolbarUnderline"
+                    appearance="icon"
+                    class="button button_margin"
+                    [pseudoPressed]="underline"
+                    (click)="toggleUnderline()"
+                ></button>
+                <button
+                    *ngIf="enabled(TuiEditorTool.Strikethrough)"
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Зачеркнутый"
+                    icon="tuiIconToolbarStrikeThrough"
+                    appearance="icon"
+                    class="button button_margin"
+                    [pseudoPressed]="strikeThrough"
+                    (click)="toggleStrikeThrough()"
+                ></button>
+            </div>
+        </ng-template>
+    </tui-hosted-dropdown>
+    <!-- @bad TODO: Keyboard navigation-->
+    <tui-hosted-dropdown
+        *ngIf="enabled(TuiEditorTool.Align)"
+        #align
+        class="wrapper"
+        [content]="alignDropdown"
+    >
+        <button
+            #button
+            #alignBtn
+            tuiIconButton
+            type="button"
+            size="s"
+            icon="tuiIconToolbarJustifyLeft"
+            appearance="icon"
+            class="button"
+            tuiHintDirection="top-left"
+            tuiHint="Выравнивание"
+            [tuiHintId]="alignBtn.id"
+            [tuiDescribedBy]="alignBtn.id"
+            [pseudoPressed]="align.open"
+            [focusable]="align.open"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
+        ></button>
+        <ng-template #alignDropdown>
+            <div #dropdown class="dropdown">
+                <button
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Выровнять текст по левому краю"
+                    icon="tuiIconToolbarJustifyLeft"
+                    class="button button_margin"
+                    appearance="icon"
+                    (click)="onAlign('justifyLeft')"
+                ></button>
+                <button
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Выровнять тект по центру"
+                    icon="tuiIconToolbarJustifyCenter"
+                    class="button button_margin"
+                    appearance="icon"
+                    (click)="onAlign('justifyCenter')"
+                ></button>
+                <button
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Выровнять текст по правому краю"
+                    icon="tuiIconToolbarJustifyRight"
+                    class="button button_margin"
+                    appearance="icon"
+                    (click)="onAlign('justifyRight')"
+                ></button>
+                <button
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Выровнять по ширине"
+                    icon="tuiIconToolbarJustifyFull"
+                    class="button button_margin"
+                    appearance="icon"
+                    (click)="onAlign('justifyFull')"
+                ></button>
+            </div>
+        </ng-template>
+    </tui-hosted-dropdown>
+    <!-- @bad TODO: Keyboard navigation-->
+    <tui-hosted-dropdown
+        *ngIf="enabled(TuiEditorTool.List)"
+        #list
+        class="wrapper"
+        [content]="listDropdown"
+    >
+        <button
+            #button
+            #listBtn
+            tuiIconButton
+            type="button"
+            size="s"
+            icon="tuiIconToolbarUL"
+            class="button"
+            appearance="icon"
+            tuiHintDirection="top-left"
+            tuiHint="Списки"
+            [tuiHintId]="listBtn.id"
+            [tuiDescribedBy]="listBtn.id"
+            [pseudoPressed]="list.open || unorderedList || orderedList"
+            [focusable]="list.open"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
+        ></button>
+        <ng-template #listDropdown>
+            <div #dropdown class="dropdown">
+                <button
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Маркированный список"
+                    icon="tuiIconToolbarUL"
+                    appearance="icon"
+                    class="button button_margin"
+                    [pseudoPressed]="unorderedList"
+                    (click)="toggleUnorderedList()"
+                ></button>
+                <button
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Нумерованный список"
+                    icon="tuiIconToolbarOL"
+                    appearance="icon"
+                    class="button button_margin"
+                    [pseudoPressed]="orderedList"
+                    (click)="toggleOrderedList()"
+                ></button>
+                <button
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Уменьшить отступ"
+                    icon="tuiIconToolbarIndent"
+                    class="button button_margin"
+                    appearance="icon"
+                    [disabled]="!unorderedList && !orderedList"
+                    (click)="indent()"
+                ></button>
+                <button
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    tuiHint="Увеличить отступ"
+                    icon="tuiIconToolbarOutdent"
+                    class="button button_margin"
+                    appearance="icon"
+                    [disabled]="!unorderedList && !orderedList"
+                    (click)="outdent()"
+                ></button>
+            </div>
+        </ng-template>
+    </tui-hosted-dropdown>
+    <button
+        *ngIf="enabled(TuiEditorTool.Quote)"
+        #button
+        #quoteBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconToolbarQuote"
+        appearance="icon"
+        class="button button_margin"
+        tuiHintDirection="top-left"
+        tuiHint="Цитата"
+        [tuiHintId]="quoteBtn.id"
+        [tuiDescribedBy]="quoteBtn.id"
+        [pseudoPressed]="blockquote"
+        [disabled]="unorderedList || orderedList"
+        [focusable]="false"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+        (keydown.arrowRight.prevent)="onArrowRight()"
+        (click)="toggleQuote()"
+    ></button>
+    <tui-hosted-dropdown
+        *ngIf="enabled(TuiEditorTool.Link)"
+        #link
+        class="wrapper"
+        [canOpen]="!a"
+        [content]="linkDropdown"
+    >
+        <button
+            #button
+            #linkBtn
+            tuiIconButton
+            type="button"
+            size="s"
+            icon="tuiIconToolbarLink"
+            appearance="icon"
+            class="button"
+            tuiHintDirection="top-left"
+            tuiHint="Ссылка"
+            [tuiHintId]="linkBtn.id"
+            [tuiDescribedBy]="linkBtn.id"
+            [pseudoPressed]="link.open || a"
+            [focusable]="link.open"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
+            (click)="onLinkClick()"
+        ></button>
+        <ng-template #linkDropdown>
+            <tui-edit-link
+                #dropdown
+                (addLink)="onLink(link, $event)"
+                (removeLink)="onLink(link)"
+            ></tui-edit-link>
+        </ng-template>
+    </tui-hosted-dropdown>
+    <button
+        *ngIf="enabled(TuiEditorTool.Attach)"
+        #button
+        #attachBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconToolbarAttach"
+        class="button button_margin"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        tuiHint="Вставить файл"
+        [tuiHintId]="attachBtn.id"
+        [tuiDescribedBy]="attachBtn.id"
+        [focusable]="false"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+        (keydown.arrowRight.prevent)="onArrowRight()"
+        (click)="onAttach()"
+    ></button>
+</div>
+<div
+    *ngIf="enabled(TuiEditorTool.Sub) || enabled(TuiEditorTool.Sup)"
+    class="block"
+>
+    <button
+        *ngIf="enabled(TuiEditorTool.Sub)"
+        #button
+        #subBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconToolbarSubscript"
+        appearance="icon"
+        class="button button_margin"
+        tuiHintDirection="top-left"
+        tuiHint="Подстрочный"
+        [tuiHintId]="subBtn.id"
+        [tuiDescribedBy]="subBtn.id"
+        [pseudoPressed]="subscript"
+        [focusable]="false"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+        (keydown.arrowRight.prevent)="onArrowRight()"
+        (click)="toggleSubscript()"
+    ></button>
+    <button
+        *ngIf="enabled(TuiEditorTool.Sup)"
+        #button
+        #supBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconToolbarSuperscript"
+        appearance="icon"
+        class="button button_margin"
+        tuiHintDirection="top-left"
+        tuiHint="Надстрочный"
+        [tuiHintId]="supBtn.id"
+        [tuiDescribedBy]="supBtn.id"
+        [pseudoPressed]="superscript"
+        [focusable]="false"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+        (keydown.arrowRight.prevent)="onArrowRight()"
+        (click)="toggleSuperscript()"
+    ></button>
+</div>
+<div
+    *ngIf="enabled(TuiEditorTool.Color) || enabled(TuiEditorTool.Hilite)"
+    class="block"
+>
+    <!-- @bad TODO: Keyboard navigation-->
+    <tui-hosted-dropdown
+        *ngIf="enabled(TuiEditorTool.Color)"
+        #color
+        class="wrapper"
+        [content]="colorDropdown"
+    >
+        <button
+            #button
+            #colorBtn
+            tuiIconButton
+            type="button"
+            size="s"
+            icon="tuiIconToolbarColor"
+            appearance="icon"
+            class="button"
+            tuiHintDirection="top-left"
+            tuiHint="Цвет шрифта"
+            [tuiHintId]="colorBtn.id"
+            [tuiDescribedBy]="colorBtn.id"
+            [pseudoPressed]="color.open"
+            [focusable]="color.open"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
+        ></button>
+        <div class="plate" [style.background]="foreColor"></div>
+        <ng-template #colorDropdown>
+            <div #dropdown class="dropdown">
+                <div>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Текст"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_text"
+                        [class.color_active]="foreColorBlank"
+                        (click)="setForeColor('#333')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Белый"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_white"
+                        [class.color_active]="foreColorActive('rgb(255, 255, 255)')"
+                        (click)="setForeColor('#fff')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Primary"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_primary"
+                        [class.color_active]="foreColorActive('rgb(255, 221, 45)')"
+                        (click)="setForeColor('#ffdd2d')"
+                    ></button>
+                </div>
+                <div>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Pinkie"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_pinkie"
+                        [class.color_active]="foreColorActive('rgb(255, 120, 167)')"
+                        (click)="setForeColor('#ff78a7')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Amethyst"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_amethyst"
+                        [class.color_active]="foreColorActive('rgb(188, 113, 201)')"
+                        (click)="setForeColor('#bc71c9')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Helio"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_helio"
+                        [class.color_active]="foreColorActive('rgb(163, 129, 255)')"
+                        (click)="setForeColor('#a381ff')"
+                    ></button>
+                </div>
+                <div>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Picton"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_picton"
+                        [class.color_active]="foreColorActive('rgb(77, 195, 247)')"
+                        (click)="setForeColor('#4dc3f7')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Puerto Rico"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_puertorico"
+                        [class.color_active]="foreColorActive('rgb(79, 189, 178)')"
+                        (click)="setForeColor('#4fbdb2')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Feijoa"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_feijoa"
+                        [class.color_active]="foreColorActive('rgb(174, 213, 127)')"
+                        (click)="setForeColor('#aed57f')"
+                    ></button>
+                </div>
+            </div>
+        </ng-template>
+    </tui-hosted-dropdown>
+    <!-- @bad TODO: Keyboard navigation-->
+    <tui-hosted-dropdown
+        *ngIf="enabled(TuiEditorTool.Hilite)"
+        #hilite
+        class="wrapper"
+        [content]="hiliteDropdown"
+    >
+        <button
+            #button
+            #hiliteBtn
+            tuiIconButton
+            type="button"
+            size="s"
+            tuiHintDirection="top-left"
+            tuiHint="Цвет фона"
+            appearance="icon"
+            class="button"
+            icon="tuiIconToolbarHilite"
+            [tuiHintId]="hiliteBtn.id"
+            [tuiDescribedBy]="hiliteBtn.id"
+            [pseudoPressed]="hilite.open"
+            [focusable]="hilite.open"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
+        ></button>
+        <div
+            *ngIf="!hiliteColorBlank"
+            class="plate"
+            [style.background]="hiliteColor"
+        ></div>
+        <ng-template #hiliteDropdown>
+            <div #dropdown class="dropdown">
+                <div>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Прозрачный"
+                        icon="tuiIconToolbarTransparent"
+                        shape="rounded"
+                        appearance="icon"
+                        class="color"
+                        [class.color_active]="hiliteColorBlank"
+                        (click)="setHiliteColor('transparent')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Primary"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_primary"
+                        [class.color_active]="hiliteColorActive('rgb(255, 221, 45)')"
+                        (click)="setHiliteColor('#ffdd2d')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Tan"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_tan"
+                        [class.color_active]="hiliteColorActive('rgb(248, 163, 77)')"
+                        (click)="setHiliteColor('#f8a34d')"
+                    ></button>
+                </div>
+                <div>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Pinkie"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_pinkie"
+                        [class.color_active]="hiliteColorActive('rgb(255, 120, 167)')"
+                        (click)="setHiliteColor('#ff78a7')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Amethyst"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_amethyst"
+                        [class.color_active]="hiliteColorActive('rgb(188, 113, 201)')"
+                        (click)="setHiliteColor('#bc71c9')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Helio"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_helio"
+                        [class.color_active]="hiliteColorActive('rgb(163, 129, 255)')"
+                        (click)="setHiliteColor('#a381ff')"
+                    ></button>
+                </div>
+                <div>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Picton"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_picton"
+                        [class.color_active]="hiliteColorActive('rgb(77, 195, 247)')"
+                        (click)="setHiliteColor('#4dc3f7')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Puerto Rico"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_puertorico"
+                        [class.color_active]="hiliteColorActive('rgb(79, 189, 178)')"
+                        (click)="setHiliteColor('#4fbdb2')"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        type="button"
+                        size="xs"
+                        tuiHint="Цвет: Feijoa"
+                        appearance="icon"
+                        shape="rounded"
+                        class="color color_feijoa"
+                        [class.color_active]="hiliteColorActive('rgb(174, 213, 127)')"
+                        (click)="setHiliteColor('#aed57f')"
+                    ></button>
+                </div>
+            </div>
+        </ng-template>
+    </tui-hosted-dropdown>
+</div>
+<div *ngIf="secondBigBlockEnabled" class="block">
+    <tui-hosted-dropdown
+        *ngIf="enabled(TuiEditorTool.Code)"
+        #codes
+        class="wrapper"
+        [content]="codesDropdown"
+    >
+        <button
+            #button
+            #codeBtn
+            tuiIconButton
+            type="button"
+            size="s"
+            icon="tuiIconToolbarCode"
+            appearance="icon"
+            class="button"
+            tuiHintDirection="top-left"
+            tuiHint="Код"
+            [tuiHintId]="codeBtn.id"
+            [tuiDescribedBy]="codeBtn.id"
+            [pseudoPressed]="codes.open || code || pre"
+            [focusable]="codes.open"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
+        ></button>
+        <ng-template #codesDropdown>
+            <tui-data-list #dropdown>
+                <button
+                    *ngFor="let item of codesOptions"
+                    tuiOption
+                    (click)="onCode(item)"
+                >
+                    {{item}}
+                </button>
+            </tui-data-list>
+        </ng-template>
+    </tui-hosted-dropdown>
+    <button
+        *ngIf="enabled(TuiEditorTool.Tex)"
+        #button
+        #texBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconToolbarTeX"
+        class="button"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        tuiHint="Вставить формулу"
+        [tuiHintId]="texBtn.id"
+        [tuiDescribedBy]="texBtn.id"
+        [focusable]="false"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+        (keydown.arrowRight.prevent)="onArrowRight()"
+        (click)="onTeX()"
+    ></button>
+    <div *ngIf="enabled(TuiEditorTool.Img)" class="wrapper">
+        <input
+            #image
+            class="image"
+            type="file"
+            accept="image/*"
+            [tuiFocusable]="false"
+            (change)="onImage(image)"
+        />
+        <button
+            #button
+            tuiIconButton
+            type="button"
+            size="s"
+            icon="tuiIconToolbarImg"
+            class="button"
+            appearance="icon"
+            tuiHintDirection="top-left"
+            tuiHint="Вставить изображение"
+            [id]="button.id"
+            [tuiHintId]="button.id"
+            [focusable]="false"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
+            (click)="image.click()"
+        ></button>
+    </div>
+    <button
+        *ngIf="enabled(TuiEditorTool.HR)"
+        #button
+        #hrBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconToolbarHr"
+        class="button button_margin"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        tuiHint="Разделитель"
+        [tuiHintId]="hrBtn.id"
+        [tuiDescribedBy]="hrBtn.id"
+        [focusable]="false"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+        (keydown.arrowRight.prevent)="onArrowRight()"
+        (click)="insertHorizontalRule()"
+    ></button>
+</div>
+<div *ngIf="enabled(TuiEditorTool.Clear)" class="block">
+    <button
+        #button
+        #clearBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconToolbarClearFormat"
+        class="button button_margin"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        tuiHint="Сбросить форматирование"
+        [tuiHintId]="clearBtn.id"
+        [tuiDescribedBy]="clearBtn.id"
+        [focusable]="false"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+        (keydown.arrowRight.prevent)="onArrowRight()"
+        (click)="removeFormat()"
+    ></button>
+</div>

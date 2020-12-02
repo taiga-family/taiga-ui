@@ -1,0 +1,139 @@
+@import 'taiga-ui-angular-local';
+
+@width-full: 392px;
+@width-mobile: 288px;
+@offset-full: 115px;
+@offset-small: 65px;
+@wrapper-offset-full: 105px;
+@wrapper-offset-small: 66px;
+@value-offset-full: -105px;
+@value-offset-small: -68px;
+
+:host {
+    display: block;
+    height: var(--tui-height-extra-large);
+    width: @width-full;
+    border-radius: var(--tui-radius);
+    overflow: hidden;
+
+    &._mobile {
+        width: @width-mobile;
+    }
+}
+
+.outline {
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper {
+    .transition(transform);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    &_cvc {
+        margin-left: @offset-full;
+        transform: translate3d(100%, 0, 0);
+
+        :host._mobile & {
+            margin-left: @offset-small;
+        }
+    }
+
+    &_expire {
+        transform: translate3d(100%, 0, 0);
+    }
+
+    &_active {
+        transform: translate3d(@wrapper-offset-full, 0, 0);
+
+        :host._mobile & {
+            transform: translate3d(@wrapper-offset-small, 0, 0);
+        }
+    }
+}
+
+.card {
+    .center-top();
+    right: 44px;
+    width: 32px;
+    height: 32px;
+
+    &_right {
+        right: 12px;
+    }
+}
+
+.collapsed {
+    .textfield-input();
+    line-height: 36px;
+    transition: color 0s;
+
+    &:before {
+        content: '*';
+    }
+
+    &_inactive,
+    :host._disabled &_inactive {
+        color: transparent;
+        transition: color 0s @animation-duration;
+    }
+}
+
+.collapsed-wrapper {
+    position: absolute;
+    left: 22px;
+    overflow: hidden;
+}
+
+.value {
+    .transition(transform);
+    display: block;
+    text-indent: -6px;
+
+    &_collapsed {
+        transform: translate3d(@value-offset-full, 0, 0);
+    }
+
+    &_small&_collapsed {
+        transform: translate3d(@value-offset-small, 0, 0);
+    }
+}
+
+.input {
+    .textfield-input();
+
+    &_card {
+        transition: color 0s @animation-duration;
+
+        :host._disabled & {
+            transition: color 0s;
+        }
+    }
+
+    &_hidden,
+    :host._disabled &_hidden {
+        color: transparent;
+        transition: color 0s;
+    }
+}
+
+.cleaner {
+    .icon-button();
+    position: absolute;
+    right: 12px;
+    top: 16px;
+}
+
+.placeholder {
+    .textfield-placeholder();
+    margin: 18px 16px;
+    line-height: 20px;
+}
+
+.example-text {
+    .example-text();
+    position: absolute;
+    margin: 18px 16px;
+}

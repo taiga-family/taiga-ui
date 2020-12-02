@@ -1,0 +1,27 @@
+<tui-primitive-textfield
+    [invalid]="computedInvalid"
+    [focusable]="focusable"
+    [tuiTextfieldMaxLength]="maxLength"
+    [tuiTextfieldAutocomplete]="autocomplete"
+    [tuiTextfieldType]="inputType"
+    [disabled]="disabled"
+    [readOnly]="readOnly"
+    [iconContent]="hasEyeIcon ? iconContent : null"
+    [value]="value"
+    (valueChange)="onValueChange($event)"
+    (focusedChange)="onFocused($event)"
+>
+    <ng-content></ng-content>
+</tui-primitive-textfield>
+
+<ng-template #iconContent="polymorpheus" polymorpheus>
+    <tui-svg
+        class="icon"
+        tuiHintId="not_required"
+        [tuiHint]="hintContent"
+        [src]="icon"
+        (click)="togglePasswordVisibility()"
+    ></tui-svg>
+</ng-template>
+
+<ng-template #hintContent="polymorpheus" polymorpheus> {{hint}} </ng-template>

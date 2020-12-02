@@ -1,0 +1,10 @@
+import {TuiTabsModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiTabsModule,
+    ],
+...

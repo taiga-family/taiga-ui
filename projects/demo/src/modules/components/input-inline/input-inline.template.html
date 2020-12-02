@@ -1,0 +1,97 @@
+<tui-doc-page header="InputInline" package="KIT">
+    <ng-template pageTab>
+        Поле для ввода, которое встраивается в окружение
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-input-inline-example-1></tui-input-inline-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="in-heading"
+            heading="в заголовке"
+            [content]="example2"
+        >
+            <tui-input-inline-example-2></tui-input-inline-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-inline
+                    class="b-input-wrapper b-input-wrapper_bordered"
+                    [formControl]="control"
+                    [maxLength]="maxLength"
+                    [textMaskOptions]="textMaskOptions"
+                    [unmaskHandler]="unmaskHandler"
+                >
+                    Плейсхолдер
+                </tui-input-inline>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="maxLength"
+                documentationPropertyMode="input"
+                documentationPropertyType="number | null"
+                [documentationPropertyValues]="maxLengthVariants"
+                [(documentationPropertyValue)]="maxLength"
+            >
+                Максимальное число вводимых символов.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="textMaskOptions"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiTextMaskOptions | null"
+                [documentationPropertyValues]="textMaskOptionsVariants"
+                [(documentationPropertyValue)]="textMaskOptions"
+            >
+                Параметры маски (<a
+                    tuiLink
+                    href="https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#text-mask-documentation"
+                    >официальная документация</a
+                >).
+            </ng-template>
+            <ng-template
+                documentationPropertyName="unmaskHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="string => string"
+                [documentationPropertyValues]="unmaskHandlerVariants"
+                [(documentationPropertyValue)]="unmaskHandler"
+            >
+                Функция для снятия маски перед отправкой значения в контрол
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiInputInlineModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

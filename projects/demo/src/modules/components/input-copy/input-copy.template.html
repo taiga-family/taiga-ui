@@ -1,0 +1,126 @@
+<tui-doc-page header="InputCopy" package="KIT">
+    <ng-template pageTab>
+        Компонент InputCopy предназначен для предоставления пользователю
+        возможности скопировать содержимое инпута
+
+        <tui-doc-example
+            id="example-size"
+            heading="Размеры"
+            [content]="example1"
+        >
+            <tui-input-copy-example-1></tui-input-copy-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-input-copy
+                [formControl]="control"
+                [focusable]="focusable"
+                [tuiTextfieldAutocomplete]="autocomplete"
+                [tuiTextfieldExampleText]="exampleText"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
+                [tuiTextfieldMaxLength]="maxLength"
+                [successMessage]="notificationTemplate"
+                [messageDirection]="hintDirection"
+                [messageMode]="hintMode"
+                [readOnly]="readOnly"
+                [pseudoInvalid]="pseudoInvalid"
+                [pseudoFocused]="pseudoFocused"
+                [pseudoHovered]="pseudoHovered"
+                [textMaskOptions]="textMaskOptions"
+            >
+                Введите значение
+            </tui-input-copy>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="successMessage"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="successMessageVariants"
+                [(documentationPropertyValue)]="successMessage"
+            >
+                Сообщение тултипа после копирования
+            </ng-template>
+            <ng-template
+                documentationPropertyName="messageDirection"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDirection"
+                [documentationPropertyValues]="hintDirectionVariants"
+                [(documentationPropertyValue)]="messageDirection"
+            >
+                Направление тултипа
+            </ng-template>
+            <ng-template
+                documentationPropertyName="messageMode"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiHintMode | null"
+                [documentationPropertyValues]="hintModeVariants"
+                [(documentationPropertyValue)]="messageMode"
+            >
+                Модификация тултипа
+            </ng-template>
+            <ng-template
+                documentationPropertyName="textMaskOptions"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiTextMaskOptions | null"
+                [documentationPropertyValues]="textMaskOptionsVariants"
+                [(documentationPropertyValue)]="textMaskOptions"
+            >
+                Параметры маски (<a
+                    tuiLink
+                    href="https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#text-mask-documentation"
+                    >официальная документация</a
+                >).
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+    <ng-template #customTemplate>
+        <i>Кастомный контент</i>, оповещающий о том, что содержимое успешно
+        скопировано
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiInputCopyModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,45 @@
+<tui-doc-page header="Отступы">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Чтобы удобнее и быстрее задавать отступы между элементами, кратные 4
+            пикселям, есть 2 способа -
+            <strong>классы</strong> и <strong>миксины</strong>.
+        </div>
+
+        <tui-doc-code
+            filename="styles.less"
+            [code]="exampleIndexLess"
+        ></tui-doc-code>
+
+        <div class="tui-space_top-3 tui-space_bottom-3">
+            <strong>Классы</strong> входят в глобальный импорт и доступны везде.
+        </div>
+        <div class="tui-space_bottom-3">
+            Класс формируется из направления и значения
+            (<code>tui-space_&lt;направление&gt;-&lt;значение&gt;</code>).
+            Значение берется из промежутка от 0 до 12.
+        </div>
+
+        <tui-doc-code
+            filename="styles.less"
+            [code]="exampleBasicImportsLess"
+        ></tui-doc-code>
+
+        <div class="tui-space_top-3 tui-space_bottom-3">
+            <strong>Миксины</strong> входят в локальный импорт и не доступны
+            глобально, поэтому их необходимо импортировать в место применения.
+        </div>
+
+        Миксин принимает в себя направление и значения (<code
+            >.tui-space(&lt;направление&gt;, &lt;значение&gt;);</code
+        >).
+
+        <tui-doc-example id="classes" heading="классы" [content]="example1">
+            <tui-spaces-example-1></tui-spaces-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="mixins" heading="миксины" [content]="example2">
+            <tui-spaces-example-2></tui-spaces-example-2>
+        </tui-doc-example>
+    </ng-template>
+</tui-doc-page>

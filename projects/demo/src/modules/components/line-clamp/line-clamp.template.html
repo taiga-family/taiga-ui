@@ -1,0 +1,85 @@
+<tui-doc-page header="LineClamp" package="KIT">
+    <ng-template pageTab>
+        Компонент для обрезания невлезающего текста с многоточием и показа всего
+        текста по наведению в хинте.
+
+        <tui-doc-example
+            id="basic"
+            heading="Изменение стилей"
+            [content]="example1"
+        >
+            <tui-line-clamp-example-1></tui-line-clamp-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="expand" heading="раскрытие" [content]="example2">
+            <tui-line-clamp-example-2></tui-line-clamp-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-line-clamp
+                [content]="content"
+                [linesLimit]="linesLimit"
+                [lineHeight]="lineHeight"
+            ></tui-line-clamp>
+            <ng-template #content>
+                Lorem ipsum<br />
+                Gaudeamus igitur<br />
+                <strong>Carpe diem</strong><br />
+                Veni, vidi, vici
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="content"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+            >
+                Содержимое
+            </ng-template>
+            <ng-template
+                documentationPropertyName="lineHeight"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="lineHeight"
+            >
+                Высота строки. Значение считается автоматически, но для
+                оптимизации лучше передать руками,
+                <strong>чтобы избежать reflow</strong>.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="linesLimit"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="linesLimit"
+            >
+                Число видимых строк текста
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiLineClampModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

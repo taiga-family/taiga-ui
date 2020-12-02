@@ -1,0 +1,36 @@
+<tui-hosted-dropdown class="wrapper" [content]="picker" [(open)]="open">
+    <tui-primitive-textfield
+        class="textfield"
+        iconAlign="left"
+        tuiTextfieldAutocomplete="off"
+        [pseudoFocused]="computedFocused"
+        [pseudoHovered]="pseudoHovered"
+        [pseudoPressed]="pseudoPressed"
+        [invalid]="computedInvalid"
+        [focusable]="focusable"
+        [nativeId]="nativeId"
+        [disabled]="disabled"
+        [readOnly]="readOnly"
+        [value]="value"
+        [iconContent]="color"
+        (valueChange)="onValueChange($event)"
+        (focusedChange)="onFocused($event)"
+        (hoveredChange)="onHovered($event)"
+        (pressedChange)="onPressed($event)"
+    >
+        <ng-content></ng-content>
+    </tui-primitive-textfield>
+</tui-hosted-dropdown>
+
+<ng-template #color>
+    <div class="color" [style.background]="background"></div>
+</ng-template>
+
+<ng-template #picker="polymorpheus" polymorpheus let-activeZone>
+    <tui-color-selector
+        [tuiActiveZoneParent]="activeZone"
+        [colors]="colors"
+        [color]="value"
+        (colorChange)="onValueChange($event)"
+    ></tui-color-selector>
+</ng-template>

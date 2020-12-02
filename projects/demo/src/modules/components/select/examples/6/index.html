@@ -1,0 +1,26 @@
+<tui-select
+    *tuiLet="items$ | async as items"
+    class="control"
+    [(ngModel)]="value"
+>
+    Select user
+    <tui-data-list-wrapper
+        *tuiDataList
+        size="l"
+        [items]="items"
+        [itemContent]="content"
+        [disabledItemHandler]="disabledItemHandler"
+    ></tui-data-list-wrapper>
+</tui-select>
+
+<ng-template #content let-data>
+    <div class="template">
+        <tui-avatar
+            class="avatar"
+            size="xs"
+            [avatarUrl]="data.avatarUrl || null"
+            [text]="data.toString()"
+        ></tui-avatar>
+        <div class="name">{{data}}</div>
+    </div>
+</ng-template>

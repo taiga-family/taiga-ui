@@ -1,0 +1,84 @@
+<tui-wrapper
+    appearance="textfield"
+    [readOnly]="readOnly"
+    [disabled]="disabled"
+    [focused]="computedFocused"
+    [hovered]="computedHovered"
+    [invalid]="computedInvalid"
+>
+    <span
+        *ngIf="hasPlaceholder"
+        class="placeholder"
+        automation-id="tui-input-slider__placeholder"
+    >
+        <ng-content></ng-content>
+    </span>
+    <input
+        #focusableElement
+        class="native"
+        automation-id="tui-input-slider__native"
+        [disabled]="disabled"
+        [readOnly]="readOnly"
+        [tuiInputMode]="inputMode"
+        [tuiFocusable]="focusable"
+        [textMask]="quantum | tuiMapper: mask: min"
+        [ngModel]="computedValue"
+        (ngModelChange)="onValue($event)"
+        (tuiFocusedChange)="onFocused($event)"
+        (tuiHoveredChange)="onHovered($event)"
+        (keydown.arrowUp)="onKeyDownArrowUp($event)"
+        (keydown.arrowDown)="onKeyDownArrowDown($event)"
+    />
+    <div class="content">
+        <span *ngIf="showValue" class="label">
+            <span class="value">{{computedValue}}</span>
+            <span
+                *ngIf="isPluralized(pluralize)"
+                automation-id="tui-input-slider__pluralize"
+            >
+                {{value | tuiPluralize: pluralize}}
+            </span>
+        </span>
+        <span
+            *ngIf="showMinLabel"
+            class="label"
+            automation-id="tui-input-slider__min-label"
+        >
+            {{minLabel}}
+        </span>
+        <span
+            *ngIf="showMaxLabel"
+            class="label"
+            automation-id="tui-input-slider__max-label"
+        >
+            {{maxLabel}}
+        </span>
+        <span class="secondary" automation-id="tui-input-slider__secondary">
+            {{secondary}}
+            <tui-tooltip
+                *ngIf="hasTooltip"
+                automation-id="tui-input-slider__tooltip"
+                class="tooltip"
+                describeId="placeholer_until_accesibility_is_added"
+                [content]="hintController.content"
+                [direction]="hintController.direction"
+                [mode]="hintController.mode"
+                (mousedown.prevent)="onMouseDown()"
+            ></tui-tooltip>
+        </span>
+    </div>
+</tui-wrapper>
+<tui-slider
+    class="slider"
+    [min]="min"
+    [max]="max"
+    [steps]="computedSteps"
+    [segments]="segments"
+    [keySteps]="keySteps"
+    [pluralize]="segmentsPluralize"
+    [focusable]="false"
+    [disabled]="readOnly || disabled"
+    [ngModel]="value"
+    (ngModelChange)="onSliderValue($event)"
+    (mousedown)="onMouseDown()"
+></tui-slider>

@@ -1,0 +1,30 @@
+@import 'taiga-ui-angular-local';
+
+.wrapper {
+    width: 200px;
+    text-align: right;
+}
+
+.link {
+    font-size: 17px;
+}
+
+.sort {
+    vertical-align: -2px;
+
+    &_ascending {
+        transform: scale(1, -1);
+    }
+}
+
+.item {
+    min-width: 200px;
+}
+
+.arrow {
+    .transition(transform);
+
+    &_open {
+        transform: rotate(180deg);
+    }
+}

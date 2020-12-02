@@ -1,0 +1,42 @@
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {
+    TuiInputCardModule,
+    TuiInputCVCModule,
+    TuiInputExpireModule,
+} from '@taiga-ui/addon-commerce';
+import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {
+    TuiGroupModule,
+    TuiHintControllerModule,
+    TuiLinkModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiAccordionModule, TuiFieldErrorModule} from '@taiga-ui/kit';
+import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
+import {TuiInputCardExample1} from './examples/1';
+import {ExampleTuiInputCardComponent} from './input-card.component';
+
+@NgModule({
+    imports: [
+        TuiInputCardModule,
+        TuiInputCVCModule,
+        TuiInputExpireModule,
+        TuiGroupModule,
+        TuiLinkModule,
+        TuiFieldErrorModule,
+        TuiAccordionModule,
+        CommonModule,
+        TuiHintControllerModule,
+        TuiTextfieldControllerModule,
+        ReactiveFormsModule,
+        ...TUI_DOC_PAGE_MODULES,
+        InheritedDocumentationModule,
+        RouterModule.forChild(generateRoutes(ExampleTuiInputCardComponent)),
+    ],
+    declarations: [ExampleTuiInputCardComponent, TuiInputCardExample1],
+    exports: [ExampleTuiInputCardComponent],
+})
+export class ExampleTuiInputCardModule {}

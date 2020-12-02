@@ -1,0 +1,62 @@
+<tui-doc-page header="Error" package="CORE">
+    <ng-template pageTab>
+        <p>
+            Компонент <code>Error</code> служит для показа ошибки. В случае
+            валидации поля формы, используйте
+            <a tuiLink [routerLink]="['/tui-field-error']"
+                ><code>TuiFieldError</code></a
+            >.
+        </p>
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-error-example-1></tui-error-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-error [error]="error"></tui-error>
+        </tui-doc-demo>
+
+        <ng-template #errorContent>
+            Error with <em><strong>HTML</strong></em>
+        </ng-template>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="error"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiValidationError | null"
+                [documentationPropertyValues]="errorVariants"
+                [(documentationPropertyValue)]="selectedError"
+            >
+                Active состояние, например, в случае
+                <code>routerLinkActive</code>
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiErrorModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

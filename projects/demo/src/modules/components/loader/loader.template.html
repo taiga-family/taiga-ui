@@ -1,0 +1,132 @@
+<tui-doc-page header="Loader" package="CORE">
+    <ng-template pageTab>
+        Индикатор загрузки
+
+        <tui-doc-example
+            id="button"
+            heading="кнопка с загрузкой"
+            [content]="example1"
+        >
+            <tui-loader-example-1></tui-loader-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="inherit-color"
+            heading="на фоне основного цвета"
+            [content]="example2"
+        >
+            <tui-loader-example-2></tui-loader-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="overlay"
+            heading="прибледняющий содержимое"
+            [content]="example3"
+        >
+            <tui-loader-example-3></tui-loader-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <p class="example">
+                <tui-loader
+                    [showLoader]="showLoader"
+                    [inheritColor]="inheritColor"
+                    [overlay]="overlay"
+                    [size]="size"
+                    [textContent]="template"
+                >
+                    <div>
+                        <b>Colonel Trautman:</b> It's over Johnny. It's over!
+                    </div>
+                    <div>
+                        <b>Rambo:</b> Nothing is over! Nothing! You just don't
+                        turn it off! It wasn't my war! You asked me I didn't ask
+                        you! And I did what I had to do to win, for somebody who
+                        wouldn't let us win! Then I come back to the world, and
+                        I see all those maggots at the airport, protestin' me,
+                        spittin', callin' me a baby killer and all kinds of vile
+                        crap! Who are they to protest me?! Huh?! Who are they?!
+                        Unless they been me and been there and know what the
+                        hell they yellin' about!
+                    </div>
+                </tui-loader>
+                <ng-template #textTemplate="polymorpheus" polymorpheus>
+                    <div>Загрузка</div>
+                    <div>
+                        Здесь может быть <a routerLink="/tui-alert">HTML</a>
+                    </div>
+                </ng-template>
+            </p>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="showLoader"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="showLoader"
+            >
+                Показать лоадер
+            </ng-template>
+            <ng-template
+                documentationPropertyName="inheritColor"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="inheritColor"
+            >
+                Наследовать цвет текста родителя
+            </ng-template>
+            <ng-template
+                documentationPropertyName="overlay"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="overlay"
+            >
+                Делать содержимое полупрозрачным, когда показан лоадер
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeXS | TuiSizeXL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер лоадера
+            </ng-template>
+            <ng-template
+                documentationPropertyName="textContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent | null"
+                [documentationPropertyValues]="textVariants"
+                [(documentationPropertyValue)]="selectedTemplate"
+            >
+                Текст рядом с лоадером
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiLoaderModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон, обернув лоадером контент:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

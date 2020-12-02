@@ -1,0 +1,69 @@
+<tui-doc-page header="FormatNumber" package="CORE">
+    <ng-template pageTab>
+        Пайп для форматирования чисел согласно ред. политики компании (тысячи
+        отделяются пробелами).
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-format-number-example-1></tui-format-number-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <p class="text b-full-width">
+            Форматированное число: {{value | tuiFormatNumber: decimalLimit:
+            decimalSeparator}}
+        </p>
+        <tui-input-slider
+            class="slider"
+            size="m"
+            [max]="10000000"
+            [quantum]="0.111"
+            [(ngModel)]="value"
+        ></tui-input-slider>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="decimalLimit"
+                documentationPropertyType="number | null"
+                [documentationPropertyValues]="decimalLimitVariants"
+                [(documentationPropertyValue)]="decimalLimit"
+            >
+                Количество знаков после запятой (<code>null</code>, чтобы
+                оставить как есть)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="decimalSeparator"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="decimalSeparatorVariants"
+                [(documentationPropertyValue)]="decimalSeparator"
+            >
+                Символ разделителя дробной части числа
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiFormatNumberPipe</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в необходимый <code>binding</code> (дополнительными
+                аргументами могут быть кастомные символы для разделителя тысяч и
+                дробной части):
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

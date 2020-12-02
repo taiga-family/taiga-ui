@@ -1,0 +1,160 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    display: flex;
+}
+
+.wrapper {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+}
+
+.grid {
+    .createStackingContext();
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    align-items: flex-end;
+    border-width: 1px;
+    border-color: var(--tui-base-03);
+}
+
+.horizontal {
+    .fullsize();
+    display: flex;
+    flex-direction: column;
+}
+
+.vertical {
+    .fullsize();
+    display: flex;
+
+    :host._centered &:after {
+        content: '';
+        display: block;
+        flex: 1 0 1px;
+    }
+}
+
+.line {
+    flex: 2 0 1px;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-color: var(--tui-base-03);
+
+    &_vertical {
+        :host._centered &:first-child {
+            flex: 1 0 1px;
+            pointer-events: none;
+        }
+    }
+}
+
+.side {
+    display: flex;
+    align-items: stretch;
+
+    &_padding {
+        padding-bottom: 32px;
+    }
+}
+
+.name {
+    .text-body-xs();
+    writing-mode: tb;
+    text-align: center;
+    padding-left: 12px;
+    color: var(--tui-text-02);
+
+    &_primary {
+        transform: rotate(180deg);
+    }
+}
+
+.labels-y {
+    .text-body-xs();
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    color: var(--tui-text-02);
+
+    &_primary {
+        text-align: right;
+        padding-right: 12px;
+    }
+
+    &_secondary {
+        padding-left: 12px;
+    }
+
+    &_transparent {
+        border-color: transparent;
+    }
+
+    &_inset {
+        position: absolute;
+        top: 9px;
+        left: 4px;
+        bottom: -12px;
+        pointer-events: none;
+
+        &_secondary {
+            left: auto;
+            right: 4px;
+            text-align: right;
+        }
+    }
+}
+
+.labels-x {
+    .text-body-xs();
+    display: flex;
+    border-right: 1px solid transparent;
+    color: var(--tui-text-02);
+}
+
+.label-x {
+    height: 7px;
+    border-left: 1px solid var(--tui-base-03);
+    flex: 1;
+    margin-bottom: 25px;
+
+    &:before {
+        content: '';
+        display: block;
+        height: 9px;
+    }
+
+    &_transparent {
+        border-color: transparent;
+    }
+
+    :host._centered & {
+        height: 32px;
+        text-align: center;
+        border: none;
+        margin: 0;
+    }
+}
+
+.label-y {
+    &:first-child {
+        margin-bottom: -6px;
+    }
+
+    &:last-child {
+        margin-top: -6px;
+    }
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    right: 0;
+    bottom: -1px;
+    display: flex;
+    align-items: flex-end;
+}

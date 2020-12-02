@@ -1,0 +1,55 @@
+<tui-doc-page header="Pluralize" package="CORE">
+    <ng-template pageTab>
+        Пайп для склонения существительных множественного числа.
+    </ng-template>
+
+    <ng-template pageTab>
+        <p class="text b-full-width">
+            Сегодня сделано {{index}} {{index | tuiPluralize: pluralize}}
+        </p>
+        <tui-input-slider
+            class="slider"
+            size="m"
+            [max]="100"
+            [quantum]="1"
+            [(ngModel)]="index"
+        ></tui-input-slider>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="pluralize"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiPluralize"
+                [documentationPropertyValues]="pluralizeVariants"
+                [(documentationPropertyValue)]="pluralize"
+            >
+                Формы множественного числа
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiPluralizePipeModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в необходимый <code>binding</code> (в
+                <code>tuiPluralize</code> передаем массив склоненных
+                существительных):
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

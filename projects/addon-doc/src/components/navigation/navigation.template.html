@@ -1,0 +1,118 @@
+<button
+    tuiIconButton
+    type="button"
+    appearance=""
+    size="s"
+    shape="rounded"
+    icon="tuiIconArrowRightLgLarge"
+    class="button"
+    [title]="texts[0]"
+    (click)="toggleMenu()"
+></button>
+<tui-svg class="logo" routerLink="/" [src]="logo"></tui-svg>
+<tui-hosted-dropdown
+    *tuiLet="filteredItems as filtered"
+    class="input"
+    tuiDropdownLimitWidth="fixed"
+    [content]="dropdown"
+    [canOpen]="canOpen"
+    [(open)]="open"
+>
+    <tui-primitive-textfield
+        iconAlign="left"
+        tuiTextfieldSize="m"
+        iconContent="tuiIconSearch"
+        [pseudoFocused]="open || null"
+        [tuiTextfieldCleaner]="true"
+        [tuiTextfieldLabelOutside]="true"
+        [value]="search"
+        (valueChange)="onSearchChange($event)"
+    >
+        {{texts[1]}}
+    </tui-primitive-textfield>
+    <ng-template #dropdown>
+        <tui-data-list>
+            <tui-opt-group
+                *ngFor="let group of filtered; let index = index"
+                [label]="labels[index]"
+            >
+                <a
+                    *ngFor="let item of group"
+                    tuiOption
+                    [routerLink]="item.route"
+                    (click)="onClick()"
+                >
+                    {{item.title}}
+                </a>
+            </tui-opt-group>
+        </tui-data-list>
+    </ng-template>
+</tui-hosted-dropdown>
+
+<nav class="navigation">
+    <tui-scrollbar class="scrollbar">
+        <tui-accordion [closeOthers]="false" [rounded]="false">
+            <tui-accordion-item
+                *ngFor="let label of labels; index as index"
+                size="s"
+                [borders]="null"
+            >
+                <span class="tui-space_left-2">
+                    <strong>{{label}}</strong>
+                </span>
+                <ng-template tuiAccordionItemContent>
+                    <div class="section">
+                        <ng-container
+                            *ngFor="let item of items[index]; index as index"
+                        >
+                            <a
+                                *ngIf="!item.subPages; else subPages"
+                                tuiLink
+                                class="sublink"
+                                routerLinkActive
+                                [routerLink]="item.route"
+                                (click)="toggleMenu()"
+                            >
+                                {{item.title}}
+                            </a>
+                            <ng-template #subPages>
+                                <div
+                                    routerLinkActive
+                                    class="subsection"
+                                    [routerLinkActiveOptions]="{exact: false}"
+                                >
+                                    <button
+                                        *ngIf="item.subPages"
+                                        tuiLink
+                                        type="button"
+                                        class="sublink sublink_subsection"
+                                        (click)="onGroupClick(index)"
+                                    >
+                                        {{item.title}}
+                                    </button>
+                                    <tui-expand
+                                        [expanded]="!!openGroupsArr[index]"
+                                    >
+                                        <div class="section section_bordered">
+                                            <a
+                                                *ngFor="let subPage of item.subPages"
+                                                tuiLink
+                                                class="sublink sublink_small"
+                                                routerLinkActive
+                                                [routerLink]="subPage.route"
+                                                (click)="toggleMenu()"
+                                            >
+                                                {{subPage.title}}
+                                            </a>
+                                        </div>
+                                    </tui-expand>
+                                </div>
+                            </ng-template>
+                        </ng-container>
+                    </div>
+                </ng-template>
+            </tui-accordion-item>
+        </tui-accordion>
+    </tui-scrollbar>
+</nav>
+<ng-content></ng-content>

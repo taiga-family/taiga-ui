@@ -1,0 +1,25 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    position: relative;
+    display: block;
+    overflow: hidden;
+
+    &._initialized {
+        .transition(max-height);
+    }
+}
+
+.wrapper {
+    /* stylelint-disable-next-line */
+    display: -webkit-box;
+
+    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    &_ellipsis {
+        .text-overflow();
+        display: block;
+    }
+}

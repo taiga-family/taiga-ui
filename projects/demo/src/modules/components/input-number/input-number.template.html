@@ -1,0 +1,147 @@
+<tui-doc-page header="InputNumber" package="KIT">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            InputNumber&nbsp;&mdash; компонент для ввода чисел. Введенное
+            значение форматируется: тысячи разделяются пробелом. В&nbsp;отличие
+            от&nbsp;<a tuiLink routerLink="/tui-input"><code>Input</code></a>
+            значением поля является число, а&nbsp;не&nbsp;строка.
+        </div>
+
+        Компонент также может использоваться для ввода денежных сумм, т.к. в
+        качестве постфикса можно использовать знак валюты с помощью
+        <code>tuiCurrency</code> пайпа. Другие компоненты для ввода чисел:
+        <a tuiLink routerLink="/tui-input-count"><code>InputCount</code></a>
+        для ввода целых чисел не&nbsp;больше 999,
+        <a tuiLink routerLink="/tui-slider"><code>Slider</code></a>
+        и&nbsp;<a tuiLink routerLink="/tui-input-slider"
+            ><code>InputSlider</code></a
+        >
+        для ввода с&nbsp;помощью ползунка.
+
+        <tui-doc-example id="currency" heading="валюта" [content]="example1">
+            <tui-input-number-example-1></tui-input-number-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="sizes" heading="размеры" [content]="example2">
+            <tui-input-number-example-2></tui-input-number-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="precision"
+            heading="c возможностью ввода 4х знаков после запятой"
+            [content]="example3"
+        >
+            <tui-input-number-example-3></tui-input-number-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-number
+                    [formControl]="control"
+                    [focusable]="focusable"
+                    [tuiTextfieldAutocomplete]="autocomplete"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldExampleText]="exampleText"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    [min]="min"
+                    [max]="max"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [precision]="precision"
+                    [readOnly]="readOnly"
+                    [decimal]="decimal"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiHintMode]="hintMode"
+                >
+                    Введите сумму
+                </tui-input-number>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Минимальное значение
+            </ng-template>
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Максимальное значение
+            </ng-template>
+            <ng-template
+                documentationPropertyName="precision"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="precisionVariants"
+                [(documentationPropertyValue)]="precision"
+            >
+                Число знаков после запятой
+            </ng-template>
+            <ng-template
+                documentationPropertyName="decimal"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDecimal"
+                [documentationPropertyValues]="decimalVariants"
+                [(documentationPropertyValue)]="decimal"
+            >
+                Показывать копейки
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiInputNumberModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

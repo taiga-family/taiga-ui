@@ -1,0 +1,31 @@
+<form [formGroup]="testForm" class="container">
+    <div class="tui-row">
+        <div class="tui-col_md-3">
+            <tui-input
+                class="input"
+                tuiTextfieldSize="s"
+                formControlName="testValue"
+                >Электронная почта</tui-input
+            >
+        </div>
+        <div class="tui-col_md-3">
+            <tui-input
+                class="input"
+                tuiTextfieldSize="m"
+                formControlName="testValue"
+                [tuiTextfieldLabelOutside]="true"
+                >Электронная почта</tui-input
+            >
+        </div>
+        <div class="tui-col_md-3">
+            <tui-input
+                class="input"
+                tuiTextfieldExampleText="mail@mail.ru"
+                formControlName="testValue"
+                tuiHintContent="На эту почту будут отправляться закрывающие документы"
+                [tuiTextfieldCleaner]="true"
+                >Электронная почта&nbsp;<span class="tui-required"></span
+            ></tui-input>
+        </div>
+    </div>
+</form>

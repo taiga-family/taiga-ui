@@ -1,0 +1,60 @@
+<form class="control" [formGroup]="testForm">
+    <div class="tui-form__row">
+        <tui-radio-block formControlName="testValue" item="example1" size="l">
+            <div class="content">
+                <tui-avatar
+                    class="tui-space_right-3"
+                    text="Заголовок"
+                    size="s"
+                    [rounded]="true"
+                ></tui-avatar>
+                Заголовок
+            </div>
+        </tui-radio-block>
+    </div>
+    <div class="tui-form__row">
+        <tui-radio-block formControlName="testValue" item="example2" size="l">
+            <div class="content">
+                <tui-avatar
+                    class="tui-space_right-3"
+                    text="Заголовок"
+                    size="s"
+                    [rounded]="true"
+                ></tui-avatar>
+                <div>
+                    <div class="label">Лейбл</div>
+                    Плейсхолдер
+                </div>
+            </div>
+        </tui-radio-block>
+    </div>
+    <div class="tui-form__row">
+        <tui-radio-block formControlName="testValue" item="example3" size="l">
+            <div class="inner">
+                Заголовок
+                <div class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Animi atque incidunt itaque iusto natus quaerat quia
+                    similique veniam?
+                </div>
+            </div>
+        </tui-radio-block>
+    </div>
+    <div class="tui-form__row">
+        <tui-radio-block
+            formControlName="testValue"
+            contentAlign="left"
+            item="example4"
+            nativeId="example4"
+            size="l"
+        >
+            <div class="inner inner_flex">
+                Материнский капитал
+                <tui-tooltip
+                    describeId="example4"
+                    content="Форма государственной поддержки российских семей, имеющих детей."
+                ></tui-tooltip>
+            </div>
+        </tui-radio-block>
+    </div>
+</form>

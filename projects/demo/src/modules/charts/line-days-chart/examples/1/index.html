@@ -1,0 +1,21 @@
+<tui-input-date-range
+    class="control"
+    [maxLength]="maxLength"
+    [(ngModel)]="range"
+>
+    Диапазон
+</tui-input-date-range>
+<tui-axes
+    class="axes"
+    [verticalLines]="labels.length"
+    [horizontalLines]="4"
+    [axisXLabels]="labels"
+>
+    <tui-line-days-chart
+        class="chart"
+        [height]="200"
+        [value]="value"
+        [yStringify]="yStringify"
+        [xStringify]="xStringify"
+    ></tui-line-days-chart>
+</tui-axes>

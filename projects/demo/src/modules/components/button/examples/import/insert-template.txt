@@ -1,0 +1,3 @@
+<button tuiButton type="button" icon="tuiIconSettings">
+    Кнопка
+</button>

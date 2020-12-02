@@ -1,0 +1,11 @@
+<form [formGroup]="form">
+    <tui-filter
+        formControlName="filters"
+        size="s"
+        [disabledItemHandler]="disabledItemHandler"
+        [items]="items"
+    ></tui-filter>
+</form>
+<div>
+    <pre>Значение формы: {{form.value | json}}</pre>
+</div>

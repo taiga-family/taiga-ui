@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {startWith} from 'rxjs/operators';
 
 /**
- * Turns AbstractControl/AbstractControlDirective valueChanges into ReplaySubject(1)
+ * Turns AbstractControl/Abstract-control-directive valueChanges into ReplaySubject(1)
  */
 export function tuiReplayedValueChangesFrom<T>(
     control: AbstractControl | AbstractControlDirective,

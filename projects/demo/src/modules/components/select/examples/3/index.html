@@ -1,0 +1,32 @@
+<form class="wrapper" [formGroup]="testForm">
+    <tui-select class="tui-space_bottom-4" formControlName="email">
+        Введите адрес получателя
+        <tui-data-list *tuiDataList>
+            <button
+                *ngIf="!signatureVisible"
+                tuiOption
+                class="link"
+                (click)="toggle()"
+            >
+                <tui-svg class="icon" src="tuiIconPlusCircleLarge"></tui-svg>
+                Добавить подпись
+            </button>
+            <button *ngFor="let item of items" tuiOption [value]="item">
+                {{item}}
+            </button>
+        </tui-data-list>
+    </tui-select>
+    <ng-container *ngIf="signatureVisible">
+        <tui-text-area
+            class="tui-space_bottom-4"
+            formControlName="signature"
+            tuiTextfieldSize="m"
+            tuiAutoFocus
+        >
+            Введите подпись
+        </tui-text-area>
+        <button tuiButton type="button" size="m" (click)="toggle()">
+            Скрыть подпись
+        </button>
+    </ng-container>
+</form>

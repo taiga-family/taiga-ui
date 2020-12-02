@@ -1,0 +1,25 @@
+<div class="front">
+    <ng-container *ngIf="hasBrandLogo">
+        <div class="box box_brand"></div>
+        <tui-svg class="brand-logo" [src]="brandLogo"></tui-svg>
+    </ng-container>
+
+    <ng-container *ngIf="!!cardNumber">
+        <div class="box box_number"></div>
+        <span class="number"> {{cardNumber}} </span>
+    </ng-container>
+
+    <ng-container *ngIf="!!paymentSystem">
+        <div class="box box_system">
+            <tui-svg
+                class="secret-payment-system-logo"
+                [src]="paymentSystemLogo"
+            ></tui-svg>
+        </div>
+        <tui-svg
+            class="payment-system-logo"
+            [src]="paymentSystemLogo"
+        ></tui-svg>
+    </ng-container>
+</div>
+<div class="back"></div>

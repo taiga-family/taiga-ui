@@ -1,0 +1,6 @@
+<button tuiButton type="button" class="tui-space_bottom-5" (click)="onClick()">
+    Покажи инпут
+</button>
+<tui-input *ngIf="showInput" tuiAutoFocus [(ngModel)]="model">
+    Фокусируемый tui-input
+</tui-input>

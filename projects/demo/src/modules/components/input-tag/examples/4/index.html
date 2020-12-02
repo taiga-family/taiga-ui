@@ -1,0 +1,19 @@
+<p>В этом примере теги, которые содержат цифры, маркируются невалидными</p>
+
+<tui-input-tag
+    class="control"
+    [formControl]="control"
+    [tuiTextfieldLabelOutside]="true"
+    [tagValidator]="tagValidator"
+    [(search)]="search"
+>
+    Попробуй сам
+    <ng-container *ngIf="filtered.length">
+        <tui-data-list *tuiDataList>
+            <button *ngFor="let item of filtered" tuiOption [value]="item">
+                {{item}}
+            </button>
+        </tui-data-list>
+    </ng-container>
+</tui-input-tag>
+<tui-field-error [formControl]="control"></tui-field-error>

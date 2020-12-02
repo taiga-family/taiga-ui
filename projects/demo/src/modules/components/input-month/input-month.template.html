@@ -1,0 +1,110 @@
+<tui-doc-page header="InputMonth" package="KIT">
+    <ng-template pageTab>
+        Компонент для ввода месяца
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <input-month-example-1></input-month-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example heading="размеры" id="sizes" [content]="example2">
+            <input-month-example-2></input-month-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-month
+                    [formControl]="control"
+                    [min]="min"
+                    [max]="max"
+                    [focusable]="focusable"
+                    [readOnly]="readOnly"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    [disabledItemHandler]="disabledItemHandler"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    [tuiTextfieldCleaner]="cleaner"
+                >
+                    Срок
+                </tui-input-month>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<TuiMonth>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Функция, определяющая, заблокирован ли месяц в календаре.<br />
+                <strong>Должна быть чистой функцией.</strong><br />
+            </ng-template>
+            <ng-template
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMonth"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Минимальная дата
+            </ng-template>
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMonth"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Максимальная дата
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>InputMonthModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="examples.importModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="examples.declareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Вставить компонент <code>TuiInoutMonthComponent</code> в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="examples.insertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

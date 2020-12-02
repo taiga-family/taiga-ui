@@ -1,0 +1,163 @@
+<tui-doc-page header="Calendar" package="CORE">
+    <ng-template pageTab>
+        Компонент календаря для использования отдельно от
+        <a tuiLink [routerLink]="['/tui-input-date']">InputDate</a> или
+        <a tuiLink [routerLink]="['/tui-input-date-range']">InputDateRange</a>.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-calendar-example-1></tui-calendar-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="range" heading="диапазон" [content]="example2">
+            <tui-calendar-example-2></tui-calendar-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="markers"
+            heading="С маркерами"
+            [content]="example3"
+        >
+            <tui-calendar-example-3></tui-calendar-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-calendar
+                [value]="value"
+                [disabledItemHandler]="disabledItemHandler"
+                [min]="min"
+                [max]="max"
+                [markerHandler]="markerHandler"
+                [minViewedMonth]="minViewedMonth"
+                [maxViewedMonth]="maxViewedMonth"
+                [showAdjacent]="showAdjacent"
+                [(month)]="month"
+                [(hoveredItem)]="hoveredItem"
+                (dayClick)="onDayClick($event)"
+            ></tui-calendar>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<TuiDay>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Функция, определяющая, заблокирована ли дата в календаре.<br />
+                <strong>Должна быть чистой функцией.</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="showAdjacent"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="showAdjacent"
+            >
+                Показывать дни соседних месяцев
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hoveredItem"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="TuiDay | null"
+                [(documentationPropertyValue)]="hoveredItem"
+            >
+                Наведённый элемент
+            </ng-template>
+            <ng-template
+                documentationPropertyName="markerHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMarkerHandler"
+                [documentationPropertyValues]="markerHandlerVariants"
+                [(documentationPropertyValue)]="markerHandler"
+            >
+                Функция, которая определяет, показаны ли под датой
+                кружки-маркеры и задает их цвета
+            </ng-template>
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDay"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Максимальная дата
+            </ng-template>
+            <ng-template
+                documentationPropertyName="maxViewedMonth"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMonth"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Максимальный месяц для листания
+            </ng-template>
+            <ng-template
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDay"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Минимальная дата
+            </ng-template>
+            <ng-template
+                documentationPropertyName="minViewedMonth"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMonth"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Минимальный месяц для листания
+            </ng-template>
+            <ng-template
+                documentationPropertyName="month"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="TuiMonth"
+                [(documentationPropertyValue)]="month"
+            >
+                Текущий месяц
+            </ng-template>
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDay | TuiDayRange | null"
+                [documentationPropertyValues]="valueVariants"
+                [(documentationPropertyValue)]="value"
+            >
+                Выбранный день или диапазон дат
+            </ng-template>
+            <ng-template
+                documentationPropertyName="dayClick"
+                documentationPropertyMode="output"
+                documentationPropertyType="TuiDay"
+            >
+                Клик по дате
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiCalendarModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

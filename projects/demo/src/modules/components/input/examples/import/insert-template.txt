@@ -1,0 +1,5 @@
+<form [formGroup]="testForm">
+    <tui-input formControlName="testValue">
+        Введите текст
+    </tui-input>
+</form>

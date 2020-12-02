@@ -1,0 +1,27 @@
+<tui-hosted-dropdown
+    class="hosted"
+    [canOpen]="canOpen"
+    [content]="datalist || ''"
+    [(open)]="open"
+    (tuiActiveZoneChange)="onActiveZone($event)"
+>
+    <tui-primitive-textfield
+        automation-id="tui-input__textfield"
+        class="textfield"
+        [pseudoFocused]="computedFocused"
+        [pseudoHovered]="computedHovered"
+        [invalid]="computedInvalid"
+        [nativeId]="nativeId"
+        [readOnly]="readOnly"
+        [iconContent]="icon"
+        [iconAlign]="iconAlign"
+        [disabled]="computedDisabled"
+        [focusable]="computedFocusable"
+        [textMask]="computedMask"
+        [value]="maskedValue"
+        (valueChange)="onValueChange($event)"
+        (hoveredChange)="onHovered($event)"
+    >
+        <ng-content></ng-content>
+    </tui-primitive-textfield>
+</tui-hosted-dropdown>

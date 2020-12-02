@@ -1,0 +1,41 @@
+<tui-doc-page header="DropdownController" package="CORE">
+    <ng-template pageTab>
+        Директива позволяет передать настройки к
+        <a tuiLink routerLink="/tui-hosted-dropdown" target="_blank"
+            >TuiHostedDropdown</a
+        >
+        или задать их для китовых компонентов с выпадашками внутри.
+
+        <tui-doc-example id="base" heading="Базовый" [content]="example1">
+            <tui-dropdown-controller-example-1></tui-dropdown-controller-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Подключение">
+        <ol class="b-demo-steps">
+            <li>
+                Для использования необходимо импортировать модуль
+                <code>TuiDropdownControllerModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Используйте в шаблоне на компоненте
+                <a tuiLink routerLink="/tui-hosted-dropdown" target="_blank"
+                    >TuiHostedDropdown</a
+                >
+                или на компоненте, который содержит его внутри
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

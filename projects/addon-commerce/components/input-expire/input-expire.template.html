@@ -1,0 +1,18 @@
+<tui-primitive-textfield
+    class="input"
+    tuiTextfieldInputMode="numeric"
+    tuiTextfieldExampleText="00/00"
+    [tuiTextfieldAutocomplete]="autocomplete"
+    [nativeId]="nativeId"
+    [disabled]="disabled"
+    [invalid]="computedInvalid"
+    [pseudoHovered]="pseudoHovered"
+    [pseudoPressed]="pseudoPressed"
+    [pseudoFocused]="pseudoFocused"
+    [textMask]="textMaskOptions"
+    [value]="value"
+    (valueChange)="onValueChange($event)"
+    (focusedChange)="onFocused($event)"
+>
+    <ng-content></ng-content>
+</tui-primitive-textfield>

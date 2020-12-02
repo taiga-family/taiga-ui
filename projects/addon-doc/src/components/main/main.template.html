@@ -1,0 +1,22 @@
+<tui-root>
+    <div class="tui-doc-page">
+        <tui-doc-navigation>
+            <ng-content></ng-content>
+        </tui-doc-navigation>
+        <div class="tui-doc-content">
+            <router-outlet class="tui-doc-outlet"></router-outlet>
+        </div>
+    </div>
+    <ng-container ngProjectAs="tuiOverDialogs">
+        <ng-content select="tuiOverDialogs"></ng-content>
+    </ng-container>
+    <ng-container ngProjectAs="tuiOverNotifications">
+        <ng-content select="tuiOverNotifications"></ng-content>
+    </ng-container>
+    <ng-container ngProjectAs="tuiOverPortals">
+        <ng-content select="tuiOverPortals"></ng-content>
+    </ng-container>
+    <ng-container ngProjectAs="tuiOverHints">
+        <ng-content select="tuiOverHints"></ng-content>
+    </ng-container>
+</tui-root>

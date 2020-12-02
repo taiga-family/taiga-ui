@@ -1,0 +1,170 @@
+@import '../../styles/basic/basic-imports';
+
+@padding-xs: 8px;
+@padding-s: 12px;
+@padding-m: 24px;
+@padding-l: 36px;
+@padding-xl: 40px;
+@icon-margin: 8px;
+@font-size-large: 15px;
+@font-size-extra-large: 17px;
+
+:host {
+    .clearbtn();
+    .text-basic();
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    vertical-align: top;
+    border-radius: var(--tui-button-radius);
+    user-select: none;
+    text-decoration: none;
+    font-weight: bold;
+    outline: none;
+
+    &[disabled] {
+        pointer-events: none;
+    }
+
+    &[tuiIconButton] .left,
+    &[tuiIconButton] .right {
+        margin: 0;
+    }
+
+    &[data-tui-host-shape='rounded'] {
+        border-radius: 100px;
+    }
+
+    &[data-tui-host-size='xs'] {
+        height: @height-extra-small;
+        font-weight: normal;
+
+        &[data-tui-host-shape='square'],
+        &[tuiIconButton] {
+            height: @height-extra-small;
+            width: @height-extra-small;
+        }
+    }
+
+    &[data-tui-host-size='s'] {
+        height: @height-small;
+        font-weight: normal;
+
+        &[data-tui-host-shape='square'],
+        &[tuiIconButton] {
+            height: @height-small;
+            width: @height-small;
+        }
+    }
+
+    &[data-tui-host-size='m'] {
+        height: @height-large;
+        font-size: @font-size-large;
+
+        &[data-tui-host-shape='square'],
+        &[tuiIconButton] {
+            height: @height-large;
+            width: @height-large;
+        }
+    }
+
+    &[data-tui-host-size='l'] {
+        height: @height-extra-large;
+        font-size: @font-size-large;
+
+        &[data-tui-host-shape='square'],
+        &[tuiIconButton] {
+            height: @height-extra-large;
+            width: @height-extra-large;
+        }
+    }
+
+    &[data-tui-host-size='xl'] {
+        height: @height-extra-extra-large;
+        font-size: @font-size-large;
+
+        &[data-tui-host-shape='square'],
+        &[tuiIconButton] {
+            height: @height-extra-extra-large;
+            width: @height-extra-extra-large;
+        }
+    }
+}
+
+.loader {
+    .fullsize();
+    cursor: default;
+}
+
+.left {
+    margin: 0 @icon-margin 0 -@icon-margin / 2;
+}
+
+.right {
+    margin: 0 -@icon-margin 0 @icon-margin / 2;
+}
+
+.icon {
+    display: block;
+
+    :host[data-tui-host-size='s'] &,
+    :host[data-tui-host-size='xs'] & {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.left,
+.right,
+.icon {
+    :host[tuiIconButton] & {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.wrapper {
+    .createStackingContext();
+    box-sizing: border-box;
+    cursor: pointer;
+
+    :host[data-tui-host-size='xs'] & {
+        padding: 0 @padding-xs;
+    }
+
+    :host[data-tui-host-size='s'] & {
+        padding: 0 @padding-s;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        padding: 0 @padding-m;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        padding: 0 @padding-l;
+    }
+
+    :host[data-tui-host-size='xl'] & {
+        padding: 0 @padding-xl;
+    }
+
+    :host[data-tui-host-shape='square'] &,
+    :host[tuiIconButton] & {
+        padding: 0;
+    }
+}
+
+.content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    :host._loading & {
+        opacity: 0;
+    }
+}

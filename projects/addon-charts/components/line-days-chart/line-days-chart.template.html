@@ -1,0 +1,21 @@
+<tui-line-chart
+    *ngFor="let month of months; let first = first"
+    class="chart"
+    [style.zIndex]="zIndex"
+    [dots]="dots"
+    [x]="first ? 0 : getX(month[0][0])"
+    [y]="y"
+    [width]="first ? firstWidth : getWidth(month[0][0])"
+    [height]="height"
+    [value]="month"
+    [smoothingFactor]="smoothingFactor"
+    [hintContent]="hintContent ? hint : ''"
+    [yStringify]="yStringify"
+    [xStringify]="xStringify ? daysStringify : null"
+></tui-line-chart>
+<ng-template #hint let-point>
+    <polymorpheus-outlet
+        [content]="hintContent"
+        [context]="getHintContext(point[0], value)"
+    ></polymorpheus-outlet>
+</ng-template>

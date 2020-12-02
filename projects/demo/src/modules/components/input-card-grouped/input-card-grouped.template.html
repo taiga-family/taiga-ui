@@ -1,0 +1,117 @@
+<tui-doc-page header="InputCardGrouped" package="ADDON-COMMERCE">
+    <ng-template pageTab>
+        Компонент <code>InputCardGrouped</code> используется для ввода данных
+        карты в единый контрол.
+
+        <tui-doc-example
+            id="validation"
+            heading="С валидацией"
+            [content]="example1"
+        >
+            <tui-input-card-grouped-example-1></tui-input-card-grouped-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-card-grouped
+                    [formControl]="control"
+                    [autocompleteEnabled]="autocompleteEnabled"
+                    [cardSrc]="cardSrc"
+                    [codeLength]="codeLength"
+                    [exampleText]="exampleText"
+                    [readOnly]="readOnly"
+                    [focusable]="focusable"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    (binChange)="onBinChange($event)"
+                ></tui-input-card-grouped>
+            </ng-template>
+        </tui-doc-demo>
+        <div class="b-full-width tui-space_bottom-6">
+            <p>
+                Для валидации ввода номера карты алгоритмом Луна добавьте
+                <code>tuiCreateLuhnValidator(customMessage?)</code> к
+                валидаторам контрола.
+            </p>
+        </div>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="autocompleteEnabled"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="autocompleteEnabled"
+            >
+                Позволить браузеру подставлять сохранённые данные
+            </ng-template>
+            <ng-template
+                documentationPropertyName="cardSrc"
+                documentationPropertyMode="input"
+                documentationPropertyType="string | null"
+                [documentationPropertyValues]="cardSrcVariants"
+                [(documentationPropertyValue)]="cardSrcSelected"
+            >
+                SVG иконки карты
+            </ng-template>
+            <ng-template
+                documentationPropertyName="exampleText"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="exampleText"
+            >
+                Пример заполнения поля номера карты
+            </ng-template>
+            <ng-template
+                documentationPropertyName="codeLength"
+                documentationPropertyMode="input"
+                documentationPropertyType="3 | 4"
+                [documentationPropertyValues]="codeLengthVariants"
+                [(documentationPropertyValue)]="codeLength"
+            >
+                Длина кода
+            </ng-template>
+            <ng-template
+                documentationPropertyName="binChange"
+                documentationPropertyMode="output"
+                documentationPropertyType="string | null"
+            >
+                Значение BIN (первые 6 символов карты)
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiInputCardGroupedModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

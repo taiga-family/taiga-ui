@@ -1,0 +1,9 @@
+<div [class.hidden]="!visible"
+     (tuiPresentChange)="onPresentChange($event)">
+    Я компонент, скрытый через CSS
+</div>
+или
+<div *ngIf="visible"
+     (tuiPresentChange)="onPresentChange($event)">
+    Я компонент, скрытый через ngIf
+</div>

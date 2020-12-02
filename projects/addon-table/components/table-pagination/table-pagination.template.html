@@ -1,0 +1,48 @@
+<!-- TODO: i18n -->
+<span class="pages">Страниц: <strong class="strong">{{pages}}</strong></span>
+<span>
+    Строк на страницу
+    <tui-hosted-dropdown [content]="content" [(open)]="open">
+        <button tuiLink>
+            <strong>{{start + 1}}–{{end}}</strong>
+        </button>
+        <ng-template #content>
+            <tui-data-list>
+                <ng-container *ngFor="let item of items">
+                    <button
+                        *ngIf="item !== size"
+                        tuiOption
+                        size="s"
+                        class="item"
+                        (click)="onItem(item)"
+                    >
+                        {{item}}
+                    </button>
+                </ng-container>
+            </tui-data-list>
+        </ng-template>
+    </tui-hosted-dropdown>
+    из <strong class="strong">{{total}}</strong>
+</span>
+<!-- TODO: i18n -->
+<button
+    tuiIconButton
+    type="button"
+    class="tui-space_left-6 tui-space_right-1"
+    title="Назад"
+    size="xs"
+    appearance="icon"
+    icon="tuiIconArrowLeft"
+    [disabled]="leftDisabled"
+    (click)="back()"
+></button>
+<button
+    tuiIconButton
+    type="button"
+    title="Вперед"
+    size="xs"
+    appearance="icon"
+    icon="tuiIconArrowRight"
+    [disabled]="rightDisabled"
+    (click)="forth()"
+></button>

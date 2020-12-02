@@ -1,0 +1,414 @@
+<tui-doc-page header="Контейнеры">
+    <ng-template pageTab>
+        <div class="inner">
+            <div class="item">
+                <h3 class="subtitle">Textfield</h3>
+                <tui-wrapper class="color" appearance="textfield">
+                    <div class="name">фон: <code>@color-textfield</code></div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [hovered]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-textfield-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [focused]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-blank</code><br />
+                        бордер: <code>@color-focus</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [readOnly]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-textfield-readonly</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [disabled]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-textfield-disabled</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    appearance="textfield"
+                    class="color"
+                    [invalid]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-textfield-error</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [invalid]="true"
+                    [hovered]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-textfield-error-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [invalid]="true"
+                    [focused]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-blank</code><br />
+                        бордер: <code>@color-textfield-error-focus-border</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [focused]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-blank</code><br />
+                        бордер:
+                        <code>@color-textfield-success-focus-border</code>
+                    </div>
+                </tui-wrapper>
+            </div>
+            <div tuiMode="light" class="item item_dark">
+                <h3 class="subtitle subtitle_light">Textfield Light</h3>
+                <tui-wrapper class="color" appearance="textfield">
+                    <div class="name">
+                        фон: <code>@color-textfield-light</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [hovered]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-textfield-light-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [focused]="true"
+                >
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-textfield-light-focus-border</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [readOnly]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-textfield-light-readonly</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [disabled]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-textfield-light-disabled</code>
+                    </div>
+                </tui-wrapper>
+            </div>
+            <div tuiMode="dark" class="item item_gray">
+                <h3 class="subtitle">Textfield Dark</h3>
+                <tui-wrapper class="color" appearance="textfield">
+                    <div class="name">
+                        фон: <code>@color-textfield-dark</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [hovered]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-textfield-dark-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [focused]="true"
+                >
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-textfield-dark-focus-border</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [readOnly]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-textfield-dark-readonly</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="textfield"
+                    [disabled]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-textfield-dark-disabled</code>
+                    </div>
+                </tui-wrapper>
+            </div>
+            <div class="item">
+                <h3 class="subtitle">Primary</h3>
+                <tui-wrapper class="color" appearance="primary">
+                    <div class="name">фон: <code>@color-primary</code></div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="primary"
+                    [hovered]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-primary-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="primary"
+                    [pressed]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-primary-active</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="primary"
+                    [focused]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-primary-active</code><br />
+                        бордер: <code>@color-focus</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="primary"
+                    [disabled]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-primary-disabled</code>
+                    </div>
+                </tui-wrapper>
+            </div>
+            <div class="item">
+                <h3 class="subtitle">Secondary</h3>
+                <tui-wrapper class="color" appearance="secondary">
+                    <div class="name">фон: <code>@color-secondary</code></div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="secondary"
+                    [hovered]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-secondary-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="secondary"
+                    [pressed]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-secondary-active</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="secondary"
+                    [focused]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-secondary-active</code><br />
+                        бордер: <code>@color-border-focus</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="secondary"
+                    [disabled]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-secondary-disabled</code>
+                    </div>
+                </tui-wrapper>
+            </div>
+            <div class="item">
+                <h3 class="subtitle">Outline</h3>
+                <tui-wrapper class="color" appearance="outline">
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-outline</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [hovered]="true"
+                >
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-outline-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [pressed]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-outline-active</code><br />
+                        бордер: <code>@color-outline-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [focused]="true"
+                >
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-border-focus</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [disabled]="true"
+                >
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-outline-border-disabled</code>
+                    </div>
+                </tui-wrapper>
+            </div>
+            <div tuiMode="dark" class="item">
+                <h3 class="subtitle">Outline Dark</h3>
+                <tui-wrapper class="color" appearance="outline">
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-outline-dark</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [hovered]="true"
+                >
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-outline-dark-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [pressed]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-outline-dark-active</code><br />
+                        бордер: <code>@color-outline-dark-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [focused]="true"
+                >
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-focus</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [disabled]="true"
+                >
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-outline-dark-border-disabled</code>
+                    </div>
+                </tui-wrapper>
+            </div>
+            <div tuiMode="light" class="item item_dark">
+                <h3 class="subtitle subtitle_light">Outline Light</h3>
+                <tui-wrapper class="color" appearance="outline">
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-outline-light</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [hovered]="true"
+                >
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-outline-light-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [pressed]="true"
+                >
+                    <div class="name">
+                        фон: <code>@color-outline-light-active</code><br />
+                        бордер: <code>@color-outline-light-hover</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [focused]="true"
+                >
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер: <code>@color-blank</code>
+                    </div>
+                </tui-wrapper>
+                <tui-wrapper
+                    class="color"
+                    appearance="outline"
+                    [disabled]="true"
+                >
+                    <div class="name">
+                        фон: <code>transparent</code><br />
+                        бордер:
+                        <code>@color-outline-light-border-disabled</code>
+                    </div>
+                </tui-wrapper>
+            </div>
+        </div>
+    </ng-template>
+</tui-doc-page>

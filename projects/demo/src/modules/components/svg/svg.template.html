@@ -1,0 +1,71 @@
+<tui-doc-page header="Svg" package="CORE">
+    <ng-template pageTab>
+        Компонент <code>Svg</code> предназначен для вставки SVG-изображений с
+        возможностью наследования цвета.
+
+        <tui-doc-example id="all" heading="Все варианты" [content]="example1">
+            <tui-svg-example-1></tui-svg-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            *ngIf="(themeService | async) !== 'Open-source'"
+            id="double"
+            heading="Двойной цвет"
+            [content]="example2"
+        >
+            <tui-svg-example-2></tui-svg-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <div class="b-full-width">
+            <tui-svg class="icon" [src]="icon"></tui-svg>
+        </div>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="src"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                Код SVG-изображения, ссылка на файл, ссылка на сегмент или имя
+                объявленной иконки. При использовании имени или сегмента
+                необходимо задать размер через CSS, так как компоненту он
+                неизвестен.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tui-icon-error"
+                documentationPropertyMode="output"
+                documentationPropertyType="CustomEvent<TuiIconError>"
+            >
+                Всплывающее CustomEvent событие ошибки загрузки изображения
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiSvgModule</code> в тот же модуль, куда добавляется ваш
+                компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Вставить компонент <code>TuiSvg</code> в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

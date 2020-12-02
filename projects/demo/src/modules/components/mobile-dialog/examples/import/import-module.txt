@@ -1,0 +1,10 @@
+import {TuiMobileDialogModule} from '@taiga-ui/addon-mobile';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiMobileDialogModule
+    ],
+...

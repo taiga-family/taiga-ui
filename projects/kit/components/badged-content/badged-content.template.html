@@ -1,0 +1,61 @@
+<ng-content></ng-content>
+
+<div
+    *ngIf="topNotification"
+    class="notification notification_top"
+    [tuiBackground]="topNotification"
+    [style.boxShadow]="boxShadow"
+></div>
+
+<div
+    *ngIf="bottomNotification"
+    class="notification notification_bottom"
+    [tuiBackground]="bottomNotification"
+    [style.boxShadow]="boxShadow"
+></div>
+
+<polymorpheus-outlet
+    *ngIf="contentTop"
+    class="content content_top"
+    [style.background]="borderColor"
+    [style.boxShadow]="boxShadow"
+    [content]="contentTop"
+>
+    <ng-template let-content>
+        <tui-badge
+            *ngIf="contentIsNumber(content) && !badgeHidden"
+            [status]="statusTop"
+            [size]="badgeSize"
+            [value]="contentTop"
+        ></tui-badge>
+        <tui-svg
+            *ngIf="contentIsString(content)"
+            class="icon"
+            [tuiColor]="statusTop"
+            [src]="content"
+        ></tui-svg>
+    </ng-template>
+</polymorpheus-outlet>
+
+<polymorpheus-outlet
+    *ngIf="contentBottom && sizeBig"
+    class="content content_bottom"
+    [style.boxShadow]="boxShadow"
+    [style.background]="borderColor"
+    [content]="contentBottom"
+>
+    <ng-template let-content>
+        <tui-badge
+            *ngIf="contentIsNumber(content)"
+            [status]="statusBottom"
+            [size]="badgeSize"
+            [value]="contentBottom"
+        ></tui-badge>
+        <tui-svg
+            *ngIf="contentIsString(content)"
+            class="icon"
+            [tuiColor]="statusBottom"
+            [src]="content"
+        ></tui-svg>
+    </ng-template>
+</polymorpheus-outlet>

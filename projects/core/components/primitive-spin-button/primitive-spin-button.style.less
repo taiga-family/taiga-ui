@@ -1,0 +1,31 @@
+@import '../../styles/basic/basic-imports';
+
+:host {
+    .text-body-l();
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    outline: none;
+}
+
+.arrow {
+    margin: 0 @space;
+
+    &_hidden {
+        visibility: hidden;
+    }
+}
+
+.content {
+    padding: 0 2 * @space;
+
+    :host._focus-visible & {
+        box-shadow: 0 0 0 2px var(--tui-focus);
+    }
+}

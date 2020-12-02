@@ -1,0 +1,171 @@
+<tui-doc-page header="RadioBlock" package="KIT">
+    <ng-template pageTab>
+        Выбор из нескольких варинтов с подписями. Сгруппированный вариант
+        используется в формах. Поддерживает кастомный контент
+
+        <tui-doc-example id="sizes" heading="размеры" [content]="example1">
+            <tui-radio-block-example-1></tui-radio-block-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="groups" heading="группировка" [content]="example2">
+            <tui-radio-block-example-2></tui-radio-block-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="кастомная верстка"
+            [content]="example3"
+        >
+            <tui-radio-block-example-3></tui-radio-block-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-group class="group" [collapsed]="true">
+                    <tui-radio-block
+                        item="orange"
+                        [formControl]="control"
+                        [contentAlign]="contentAlign"
+                        [hideRadio]="hideRadio"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [pseudoDisabled]="pseudoDisabled"
+                        [size]="size"
+                        [focusable]="focusable"
+                        [readOnly]="readOnly"
+                    >
+                        Апельсины
+                    </tui-radio-block>
+                    <tui-radio-block
+                        item="apple"
+                        [formControl]="control"
+                        [contentAlign]="contentAlign"
+                        [hideRadio]="hideRadio"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [pseudoDisabled]="pseudoDisabled"
+                        [size]="size"
+                        [focusable]="focusable"
+                        [readOnly]="readOnly"
+                    >
+                        Яблоки
+                    </tui-radio-block>
+                    <tui-radio-block
+                        item="pineapple"
+                        [formControl]="control"
+                        [contentAlign]="contentAlign"
+                        [hideRadio]="hideRadio"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [pseudoDisabled]="pseudoDisabled"
+                        [size]="size"
+                        [focusable]="focusable"
+                        [readOnly]="readOnly"
+                    >
+                        Ананасы
+                    </tui-radio-block>
+                </tui-group>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="contentAlign"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiHorizontalDirection"
+                [documentationPropertyValues]="contentAlignVariants"
+                [(documentationPropertyValue)]="contentAlign"
+            >
+                Положение радио
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hideRadio"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="hideRadio"
+            >
+                Скрыть радио-кнопку
+            </ng-template>
+            <ng-template
+                documentationPropertyName="identityMatcher"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiIdentityMatcher"
+            >
+                Функция определения равенства объектов (нужна в случае, если
+                выбранное значение задано изначально и не присутствует в
+                <code>items</code>, однако там есть точная копия, которую можно
+                определить по какому-нибудь критерию. По умолчанию используется
+                сравнение <code>===</code>.
+                <strong>Должна быть чистой функцией</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="pseudoDisabled"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="pseudoDisabled"
+            >
+                Disabled&nbsp;&mdash; установить принудительно, не изменяя
+                значение формы
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS | TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер контрола
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiRadioBlockModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

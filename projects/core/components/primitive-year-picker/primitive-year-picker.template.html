@@ -1,0 +1,23 @@
+<div
+    *tuiRepeatTimes="let rowIndex of rows"
+    automation-id="tui-primitive-year-picker__row"
+    class="row"
+>
+    <ng-container *tuiRepeatTimes="let colIndex of 4">
+        <div
+            *tuiLet="getItem(rowIndex, colIndex) as item"
+            automation-id="tui-primitive-year-picker__cell"
+            class="cell"
+            [class.cell_today]="itemIsToday(item)"
+            [class.cell_interval]="itemIsInterval(item)"
+            [attr.data-tui-element-range]="getItemRange(item)"
+            [attr.data-tui-element-state]="getItemState(item)"
+            [tuiScrollIntoView]="scrollItemIntoView(item)"
+            (tuiHoveredChange)="onItemHovered($event, item)"
+            (tuiPressedChange)="onItemPressed($event, item)"
+            (click)="onItemClick(item)"
+        >
+            <div class="item">{{item}}</div>
+        </div>
+    </ng-container>
+</div>

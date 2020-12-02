@@ -1,0 +1,122 @@
+@import 'taiga-ui-angular-local';
+
+@itemSize: 44px;
+@accent: #458bf6;
+@faded: #dae8fd;
+
+.picker(@itemSize);
+
+:host {
+    width: 332px;
+    max-width: 100vw;
+
+    &._ios {
+        width: 362px;
+    }
+}
+
+.row {
+    height: 48px;
+    justify-content: flex-start;
+
+    &:first-child {
+        justify-content: flex-end;
+    }
+
+    :host._ios & {
+        height: 50px;
+    }
+}
+
+.cell {
+    height: @itemSize;
+    border-radius: 100%;
+    margin-right: 4px;
+
+    &:last-child,
+    :host._ios &:last-child {
+        margin-right: 0;
+    }
+
+    &:before {
+        right: -100vw;
+    }
+
+    &:first-child:before {
+        left: -100vw;
+    }
+
+    &_today:after {
+        height: 6px;
+        width: 6px;
+        background-color: @accent;
+    }
+
+    &_disabled {
+        color: fade(#333, 30%);
+    }
+
+    &_interval {
+        &:before {
+            background-color: @faded;
+        }
+
+        &:last-child:first-child:before {
+            right: -100vw;
+        }
+    }
+
+    &[data-tui-element-range='single'],
+    &[data-tui-element-range='start'],
+    &[data-tui-element-range='end'] {
+        border-radius: 100%;
+        background-color: @accent;
+        color: #fff;
+        font-weight: 500;
+
+        &:after {
+            background-color: #fff;
+        }
+
+        :host._ios & {
+            font-weight: 600;
+        }
+    }
+
+    &[data-tui-element-range='start']:before {
+        left: 50%;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    &[data-tui-element-range='end']:not(:first-child):before {
+        left: 50%;
+        background: #fff;
+        border-radius: 0;
+    }
+
+    &[data-tui-element-range='end']:first-child:before {
+        right: 50%;
+        background-color: @faded;
+    }
+
+    :host._ios & {
+        margin-right: 9px;
+
+        &:before {
+            border-radius: 8px;
+        }
+    }
+}
+
+@media screen and (max-width: 359px) {
+    .cell,
+    :host._ios .cell {
+        margin-right: 2px;
+    }
+
+    .cell:last-child,
+    :host._ios .cell:last-child {
+        margin-right: 0;
+    }
+}

@@ -1,0 +1,29 @@
+<button tuiButton type="button" size="m" (click)="showTableBar()">
+    Показать TableBar
+</button>
+
+<ng-template #tableBarTemplate="polymorpheus" polymorpheus let-close>
+    <div class="content" tuiMode="light">
+        <button tuiButton type="button" size="m">Сохранить</button>
+        <button
+            tuiButton
+            type="button"
+            class="tui-space_left-3"
+            appearance="flat"
+            size="m"
+            (click)="close()"
+        >
+            Отменить
+        </button>
+        <button
+            tuiButton
+            type="button"
+            class="delete-button"
+            appearance="outline"
+            size="m"
+            icon="tuiIconTrashLarge"
+        >
+            Удалить
+        </button>
+    </div>
+</ng-template>

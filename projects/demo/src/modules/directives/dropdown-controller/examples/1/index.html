@@ -1,0 +1,24 @@
+<p>
+    Работает как с самим
+    <a tuiLink routerLink="/tui-hosted-dropdown" target="_blank"
+        >TuiHostedDropdown</a
+    >:
+</p>
+
+<tui-hosted-dropdown
+    tuiDropdownDirection="top"
+    [open]="open"
+    [content]="dropdown"
+>
+    <button tuiButton type="button" (click)="onClick()">Нажимай</button>
+</tui-hosted-dropdown>
+
+<ng-template #dropdown>
+    <div class="dropdown">Всем привет!</div>
+</ng-template>
+
+<p>Так и с инпутами кита, которые имеют выпадашки:</p>
+
+<tui-input-date class="input" tuiDropdownLimitAlign="right">
+    Выбери день
+</tui-input-date>

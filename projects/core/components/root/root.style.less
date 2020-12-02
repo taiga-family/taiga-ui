@@ -1,0 +1,37 @@
+@import '../../styles/mixins/mixins';
+
+:host {
+    position: relative;
+    display: block;
+    height: 100vh;
+    overflow: auto;
+
+    &:not(._legacy) {
+        /* stylelint-disable*/
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        /* stylelint-enable*/
+
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-thumb {
+            background: transparent;
+            width: 0;
+            height: 0;
+        }
+    }
+
+    &._legacy {
+        .customize-scroll();
+        overflow: overlay;
+    }
+
+    @media print {
+        height: auto;
+        overflow: visible;
+    }
+}
+
+.content {
+    .createStackingContext();
+    height: 100%;
+}

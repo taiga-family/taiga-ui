@@ -1,0 +1,103 @@
+import {Component, ViewChild} from '@angular/core';
+import {DebugElement} from '@angular/core/src/debug/debug_node';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {PageObject} from '@taiga-ui/testing';
+import {configureTestSuite} from 'ng-bullet';
+import {TuiNotification} from '../../../enums/notification';
+import {TuiSvgService} from '../../../services/svg.service';
+import {STATUS_ICON, TuiNotificationComponent} from '../notification.component';
+import {TuiNotificationModule} from '../notification.module';
+
+describe('Notification', () => {
+    @Component({
+        template: `
+            <tui-notification
+                [hasCloseButton]="hasCloseButton"
+                [hasIcon]="hasIcon"
+                [status]="status"
+            >
+                Короткое простое информационное сообщение
+            </tui-notification>
+        `,
+    })
+    class TestComponent {
+        @ViewChild(TuiNotificationComponent)
+        component: TuiNotificationComponent;
+
+        hasCloseButton = true;
+        hasIcon = true;
+        status: TuiNotification = TuiNotification.Info;
+    }
+
+    let fixture: ComponentFixture<TestComponent>;
+    let testComponent: TestComponent;
+    let component: TuiNotificationComponent;
+    let pageObject: PageObject<TestComponent>;
+
+    function getIcon(): DebugElement {
+        return pageObject.getByAutomationId('tui-notification__icon')!;
+    }
+
+    function getClose(): DebugElement {
+        return pageObject.getByAutomationId('tui-notification__close')!;
+    }
+
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            imports: [NoopAnimationsModule, TuiNotificationModule],
+            declarations: [TestComponent],
+            providers: [TuiSvgService],
+        });
+    });
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(TestComponent);
+        pageObject = new PageObject(fixture);
+        testComponent = fixture.componentInstance;
+        fixture.detectChanges();
+        component = testComponent.component;
+    });
+
+    describe('icon', () => {
+        it('по умолчанию присутствует', () => {
+            expect(getIcon()).not.toBeNull();
+        });
+
+        it('выбирается правильно в зависимости от статуса', () => {
+            expect(component.icon).toBe(STATUS_ICON[testComponent.status]);
+
+            testComponent.status = TuiNotification.Success;
+            fixture.detectChanges();
+            expect(component.icon).toBe(STATUS_ICON[testComponent.status]);
+
+            testComponent.status = TuiNotification.Error;
+            fixture.detectChanges();
+            expect(component.icon).toBe(STATUS_ICON[testComponent.status]);
+
+            testComponent.status = TuiNotification.Warning;
+            fixture.detectChanges();
+            expect(component.icon).toBe(STATUS_ICON[testComponent.status]);
+        });
+
+        it('при hasIcon=false отсутствует', () => {
+            testComponent.hasIcon = false;
+            fixture.detectChanges();
+
+            expect(getIcon()).toBeNull();
+        });
+    });
+
+    describe('крестик закрытия', () => {
+        it('по умолчанию присутствует', () => {
+            expect(getClose()).not.toBeNull();
+        });
+
+        it('при hasCloseButton=false отсутствует', () => {
+            testComponent.hasCloseButton = false;
+            fixture.detectChanges();
+
+            expect(getClose()).toBeNull();
+        });
+    });
+});

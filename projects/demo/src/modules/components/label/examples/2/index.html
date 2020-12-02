@@ -1,0 +1,14 @@
+<form [formGroup]="testForm" class="label">
+    <label
+        tuiLabel
+        label="Сумма оплаты с длинной многострочной подписью, которая аккуратно переносится на следующую строку"
+    >
+        <tui-input
+            formControlName="testValue"
+            tuiTextfieldSize="m"
+            [tuiTextfieldLabelOutside]="true"
+        >
+            0,00
+        </tui-input>
+    </label>
+</form>

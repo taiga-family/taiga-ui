@@ -1,0 +1,58 @@
+@import '../../../styles/basic/basic-imports';
+
+:host {
+    .clearbtn();
+    .text-body-m();
+    .transition(background);
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    padding: 0 16px;
+    box-sizing: border-box;
+    color: var(--tui-text-01);
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    margin: -8px 0;
+    background-clip: padding-box;
+
+    &:disabled {
+        opacity: var(--tui-disabled-opacity);
+        cursor: default;
+    }
+
+    &:focus,
+    &._with-dropdown {
+        background-color: var(--tui-base-02);
+    }
+
+    &[data-size='xs'] {
+        .text-body-s();
+        min-height: @height-small + 16px;
+    }
+
+    &[data-size='s'] {
+        min-height: @height-small + 16px;
+    }
+
+    &[data-size='m'] {
+        min-height: @height-large + 16px;
+    }
+
+    &[data-size='l'] {
+        min-height: @height-extra-large + 16px;
+    }
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+
+.arrow {
+    margin: 0 -8px 0 12px;
+}

@@ -1,0 +1,10 @@
+import {TuiMobileCalendarModule} from '@taiga-ui/addon-mobile';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiMobileCalendarModule,
+    ],
+...

@@ -1,0 +1,20 @@
+<tui-root>
+    <!-- здесь контент приложения -->
+
+    <!--
+     при необходимости, вы можете вклинить часть
+     своего приложения между слоями кита:
+    -->
+    <ng-container ngProjectAs="tuiOverDialogs">
+        <!-- контент над попапами кита -->
+    </ng-container>
+    <ng-container ngProjectAs="tuiOverNotifications">
+        <!-- контент над нотификациями кита -->
+    </ng-container>
+    <ng-container ngProjectAs="tuiOverPortals">
+        <!-- контент над выпадашками кита -->
+    </ng-container>
+    <ng-container ngProjectAs="tuiOverHints">
+        <!-- контент над хинтами кита -->
+    </ng-container>
+</tui-root>

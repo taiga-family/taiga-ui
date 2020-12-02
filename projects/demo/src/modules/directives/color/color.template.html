@@ -1,0 +1,60 @@
+<tui-doc-page header="Color" package="CORE">
+    <ng-template pageTab>
+        Директива <code>tuiColor / tuiBackground</code> нужна для задания цвета
+        текста или фона одним из цветов основной и дополнительной палитры по
+        названию цвета
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <div [tuiColor]="tuiColor" [tuiBackground]="tuiBackground">
+                Пример текста
+            </div>
+        </tui-doc-demo>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="tuiBackground"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiColor | string"
+                [documentationPropertyValues]="variants"
+                [(documentationPropertyValue)]="tuiBackground"
+            >
+                Название цвета фона
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiColor"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiColor | string"
+                [documentationPropertyValues]="variants"
+                [(documentationPropertyValue)]="tuiColor"
+            >
+                Название цвета текста
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiColorModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

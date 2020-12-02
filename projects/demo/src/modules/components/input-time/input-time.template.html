@@ -1,0 +1,237 @@
+<tui-doc-page header="InputTime" package="KIT">
+    <ng-template pageTab>
+        Компонент <code>InputTime</code> предназначен для ввода времени в
+        формате ЧЧ:ММ.
+
+        <tui-doc-example
+            id="base"
+            heading="базовый"
+            description="У компонента типичный для полей набор размеров: s, m, l."
+            [content]="example1"
+        >
+            <tui-input-time-example-1></tui-input-time-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="dropdown"
+            heading="Выпадающий список"
+            description="Компоненту можно задавать варианты времени в выпадающием списке."
+            [content]="example2"
+        >
+            <tui-input-time-example-2></tui-input-time-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-time
+                    [formControl]="control"
+                    [focusable]="focusable"
+                    [disabledItemHandler]="disabledItemHandler"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [items]="items"
+                    [itemSize]="itemSize"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    [mode]="mode"
+                    [readOnly]="readOnly"
+                    [strict]="strict"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiHintMode]="hintMode"
+                >
+                    Введите время
+                </tui-input-time>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="cleaner"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="cleaner"
+            >
+                Cleaner для очистки поля
+            </ng-template>
+            <ng-template
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<TuiTime>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Хэндлер отключенности отдельных пунктов выпадающего списка
+            </ng-template>
+            <ng-template
+                documentationPropertyName="dropdownDirection"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiVerticalDirection | null"
+                [documentationPropertyValues]="dropdownDirectionVariants"
+                [(documentationPropertyValue)]="dropdownDirection"
+            >
+                Задать явно направление открытия выпадающего списка
+            </ng-template>
+            <ng-template
+                documentationPropertyName="dropdownLimitWidth"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDropdownWidth"
+                [documentationPropertyValues]="dropdownLimitWidthVariants"
+                [(documentationPropertyValue)]="dropdownLimitWidth"
+            >
+                Ограничить выпадающий список по ширине
+            </ng-template>
+            <ng-template
+                documentationPropertyName="dropdownMinHeight"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="dropdownMinHeight"
+            >
+                Минимальная высота выпадающего списка, при которой учитывается
+                принудительное направление открытия
+            </ng-template>
+            <ng-template
+                documentationPropertyName="dropdownMaxHeight"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="dropdownMaxHeight"
+            >
+                Максимальная высота выпадающего списка
+            </ng-template>
+            <ng-template
+                documentationPropertyName="items"
+                documentationPropertyMode="input"
+                documentationPropertyType="ReadonlyArray<TuiTime>"
+                [documentationPropertyValues]="itemsVariants"
+                [(documentationPropertyValue)]="items"
+            >
+                Список элементов.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="itemSize"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS | TuiSizeL"
+                [documentationPropertyValues]="itemSizeVariants"
+                [(documentationPropertyValue)]="itemSize"
+            >
+                Размер пункта выпадашки.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="labelOutside"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="labelOutside"
+            >
+                Лэйбл снаружи, а не внутри компонента. Лэйбл в этом случае
+                создается с помощью компонента
+                <a tuiLink routerLink="/tui-label">
+                    <code>Label</code>
+                </a>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS | TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер поля
+            </ng-template>
+            <ng-template
+                documentationPropertyName="strict"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="strict"
+            >
+                Допускать только значения из набора <code>items</code>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="mode"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiTimeMode"
+                [documentationPropertyValues]="modeVariants"
+                [(documentationPropertyValue)]="mode"
+            >
+                Моды с поддержкой секунд и миллисекунд
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hintContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent | null"
+                [documentationPropertyValues]="hintContentVariants"
+                [(documentationPropertyValue)]="hintContent"
+            >
+                Содержимое тултипа
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hintDirection"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDirection"
+                [documentationPropertyValues]="hintDirectionVariants"
+                [(documentationPropertyValue)]="hintDirection"
+            >
+                Направление тултипа
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hintMode"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuihintMode | null"
+                [documentationPropertyValues]="hintModeVariants"
+                [(documentationPropertyValue)]="hintMode"
+            >
+                Модификация тултипа
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiInputTimeModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

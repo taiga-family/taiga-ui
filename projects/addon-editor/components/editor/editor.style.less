@@ -1,0 +1,84 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    .createStackingContext();
+    .text-body-m();
+    display: block;
+}
+
+.outline {
+    .fullsize();
+    border-radius: var(--tui-radius);
+    pointer-events: none;
+}
+
+.toolbar-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.invisible {
+    height: 0;
+    visibility: hidden;
+}
+
+.wrapper {
+    position: relative;
+    height: 100%;
+    max-height: inherit;
+    min-height: 160px;
+    cursor: text;
+    overflow: hidden;
+}
+
+.scrollbar {
+    display: flex;
+    max-height: inherit;
+    border-top: 74px solid transparent;
+    border-bottom: 1px solid transparent;
+    box-sizing: border-box;
+}
+
+.link {
+    padding: 12px 16px;
+}
+
+.placeholder {
+    .textfield-placeholder();
+    position: absolute;
+    left: 16px;
+    bottom: -36px;
+    width: 95%;
+    font-size: 15px;
+
+    &_raised {
+        width: 110%;
+    }
+}
+
+.example-text {
+    position: absolute;
+    left: 16px;
+    bottom: -50px;
+    color: var(--tui-base-06);
+    letter-spacing: normal;
+    text-transform: none;
+
+    &_light {
+        color: var(--tui-text-03-night);
+    }
+
+    &_dark {
+        color: var(--tui-text-03);
+    }
+}
+
+.editor {
+    display: block;
+    width: 100%;
+    min-height: 86px;
+    border: none;
+}

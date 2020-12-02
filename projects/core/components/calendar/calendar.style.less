@@ -1,0 +1,22 @@
+@verticalSpace: 16px;
+@horizontalSpace: 18px;
+@itemSize: 36px;
+@paginationSize: 24px;
+@calendarSize: @itemSize * 7;
+
+:host {
+    display: block;
+    height: @paginationSize + @verticalSpace + @calendarSize;
+    width: @calendarSize;
+    padding: @verticalSpace @horizontalSpace;
+    box-sizing: content-box;
+}
+
+.scrollbar {
+    height: @paginationSize + @verticalSpace + @calendarSize;
+    width: @calendarSize + @horizontalSpace;
+}
+
+.pagination {
+    margin-bottom: @verticalSpace;
+}

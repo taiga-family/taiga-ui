@@ -1,0 +1,104 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.svg {
+    transform: scale(1, -1);
+}
+
+.column {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    pointer-events: auto;
+}
+
+.dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background: currentColor;
+    margin: -3px;
+    box-shadow: 0 0 0 2px #fff;
+}
+
+.host {
+    position: absolute;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    opacity: 0;
+    background: #fff;
+    margin: -4px;
+    box-shadow: 0 0 0 2px currentColor, 0 1px 3px 2px rgba(0, 0, 0, 0.1);
+    outline: none;
+    pointer-events: none;
+
+    &:focus,
+    .column_hovered &,
+    .column:hover &,
+    .column._hint_hovered & {
+        opacity: 1;
+    }
+}
+
+.line {
+    position: absolute;
+    opacity: 0;
+    background: var(--tui-base-03);
+
+    &_vertical {
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+    }
+
+    &_horizontal {
+        z-index: -1;
+        width: 100%;
+        height: 1px;
+    }
+
+    :host[style^='z-index: 0'] .column_hovered &,
+    :host:not([style]) .column:hover &,
+    :host:not([style]) .column._hint_hovered &,
+    :host[style^='z-index: 0'] .column_hovered + &,
+    :host:not([style]) .column:hover + &,
+    :host:not([style]) .column._hint_hovered + & {
+        opacity: 1;
+    }
+}
+
+.text {
+    white-space: pre-wrap;
+}
+
+.hint {
+    .shadow();
+    .text-body-xs();
+    position: absolute;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: -10px;
+    padding: 0 6px;
+    white-space: nowrap;
+    color: var(--tui-base-09);
+    background: var(--tui-base-01);
+    transform: translate3d(-50%, 0, 0);
+
+    &_x {
+        bottom: 0;
+    }
+
+    &_y {
+        left: 0;
+    }
+}

@@ -1,0 +1,74 @@
+import {Component, forwardRef, Inject} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {changeDetection} from '../../../change-detection-strategy';
+import {AbstractExampleTuiReactiveField} from '../../components/abstract/reactive-field';
+
+import * as exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
+import * as exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
+
+import * as example1Html from '!!raw-loader!./examples/1/index.html';
+import * as example1Ts from '!!raw-loader!./examples/1/index.ts';
+import {LogService} from '../../app/log.service';
+import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
+import {FrontEndExample} from '../../interfaces/front-end-example';
+
+@Component({
+    selector: 'example-input-card-grouped',
+    templateUrl: './input-card-grouped.template.html',
+    styleUrls: ['./input-card-grouped.style.less'],
+    changeDetection,
+    providers: [
+        LogService,
+        {
+            provide: ABSTRACT_PROPS_ACCESSOR,
+            useExisting: forwardRef(() => ExampleTuiInputCardGroupedComponent),
+        },
+    ],
+})
+export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiReactiveField {
+    readonly exampleImportModule = exampleImportModule;
+
+    readonly exampleInsertTemplate = exampleInsertTemplate;
+
+    readonly example1: FrontEndExample = {
+        TypeScript: example1Ts,
+        HTML: example1Html,
+    };
+
+    readonly cards = {
+        common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
+        universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
+        intersection:
+            'https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg',
+        mutation:
+            'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
+    };
+
+    cardSrcVariants = Object.keys(this.cards);
+
+    cardSrcSelected: string | null = null;
+
+    autocompleteEnabled = false;
+
+    exampleText = '0000 0000 0000 0000';
+
+    readonly codeLengthVariants = [3, 4];
+
+    codeLength = this.codeLengthVariants[0];
+
+    control = new FormControl();
+
+    constructor(@Inject(LogService) private readonly log: LogService) {
+        super();
+    }
+
+    get cardSrc(): string | null {
+        return this.cardSrcSelected === null
+            ? null
+            : (this.cards as any)[this.cardSrcSelected];
+    }
+
+    onBinChange(bin: string) {
+        this.log.log(`bin: ${bin}`);
+    }
+}

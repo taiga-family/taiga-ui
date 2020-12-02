@@ -1,0 +1,21 @@
+import {Component, Inject} from '@angular/core';
+import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import {changeDetection} from '../../../../../change-detection-strategy';
+import {encapsulation} from '../../../../../view-encapsulation';
+
+@Component({
+    selector: 'tui-color-picker-example-2',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    changeDetection,
+    encapsulation,
+})
+export class TuiColorPickerExample2 {
+    color = '#ffdd2d';
+
+    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
+
+    get background(): SafeStyle {
+        return this.sanitizer.bypassSecurityTrustStyle(this.color);
+    }
+}

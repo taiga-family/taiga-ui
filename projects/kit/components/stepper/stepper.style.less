@@ -1,0 +1,11 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    display: flex;
+    overflow: auto;
+    counter-reset: steps;
+
+    &[data-orientation='vertical'] {
+        flex-direction: column;
+    }
+}

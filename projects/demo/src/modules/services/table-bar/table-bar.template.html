@@ -1,0 +1,111 @@
+<tui-doc-page header="TableBarsService" package="ADDON-TABLEBARS">
+    <ng-template pageTab>
+        Отображается внизу экрана и используется для отображения списка действий
+        как при массовом выборе элементов, так и&nbsp;при одиночном выборе.
+        Содержимое может быть произвольным, в&nbsp;зависимости от&nbsp;кейсов.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-table-bar-example-1></tui-table-bar-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <div>
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_right-2"
+                size="m"
+                (click)="showTableBar()"
+            >
+                Показать tableBar
+            </button>
+            <button tuiButton type="button" size="m" (click)="destroy()">
+                Скрыть tableBar
+            </button>
+        </div>
+        <ng-template #tableBarTemplate polymorpheus>
+            <p>Переданный шаблон</p>
+        </ng-template>
+        <br />
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="adaptive"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="adaptive"
+            >
+                Адаптивный шаблон
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hasCloseButton"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="hasCloseButton"
+            >
+                Крестик для закрытия
+            </ng-template>
+            <ng-template
+                documentationPropertyName="mode"
+                documentationPropertyType="TuiBrightness"
+                [documentationPropertyValues]="modeVariants"
+                [(documentationPropertyValue)]="mode"
+            >
+                Мод внешнего вида
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p>
+                    Добавьте <code>TuiTableBarsHostModule</code> в ваш главный
+                    модуль
+                </p>
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+            <li>
+                <p>
+                    Добавьте <code>tui-table-bars-host</code> в шаблон следующим
+                    образом
+                </p>
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    [code]="exampleTemplate"
+                ></tui-doc-code>
+            </li>
+            <li>
+                Для отображения TableBar вызвать метод сервиса
+                <code>showTableBar</code> и подписаться на ответный
+                <code>Observable</code>.
+                <br />
+                Для передачи содержимого нужно передать свой PolymorpheusContent
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleServiceUsageHtml"
+                ></tui-doc-code>
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleServiceUsage"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Для использования попапов в lazy подгруженных модулях, передайте
+                в
+                <code>new TuiComponentContent Injector</code> компонента, из
+                которого вызываете TableBar:
+
+                <tui-doc-code
+                    filename="сustomNotification.component.ts"
+                    [code]="exampleLazyModule"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

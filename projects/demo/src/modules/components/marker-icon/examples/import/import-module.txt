@@ -1,0 +1,10 @@
+import {TuiMarkerIconModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiMarkerIconModule
+    ],
+...

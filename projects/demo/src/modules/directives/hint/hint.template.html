@@ -1,0 +1,71 @@
+<tui-doc-page header="Hint" package="CORE">
+    <ng-template pageTab>
+        Директива для показа подсказки при наведении на произвольный элемент.
+
+        <tui-doc-example id="multiple" heading="базовый" [content]="example1">
+            <tui-hint-example-1></tui-hint-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <span
+                tuiHint="Ваши данные замаскированы в целях безопасности. Для изменения данных с вами свяжется оператор."
+                [tuiHintMode]="mode"
+                [tuiHintId]="id"
+                [tuiHintDirection]="direction"
+            >
+                Наведи!
+            </span>
+            <input placeholder="id: qwerty" tuiDescribedBy="qwerty" />
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="tuiHint"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent | null"
+            >
+                Содержимое тултипа
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiHintId"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="id"
+            >
+                Для соответствия Accessibility требованиям, подсказка должна
+                ставиться в соответствие фокусируемому элементу и пользователи
+                со Screen Reader`ами должны слышать текст подсказки при фокусе
+                после небольшой задержки. Для реализации, задайте уникальный
+                <code>tuiHintId</code> и повесьте директиву
+                <code>[tuiDescribedBy]="тот же id"</code> на фокусируемый
+                элемент.
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiHintModule</code> в тот же модуль, куда добавляется ваш
+                компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,15 @@
+<tui-input icon="tuiIconSearchLarge" [(ngModel)]="search">Search</tui-input>
+<table class="tui-space_top-4">
+    <thead>
+        <tr>
+            <th>Member</th>
+            <th>Nickname</th>
+            <th>Fate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of rows">
+            <td *ngFor="let cell of row" [tuiHighlight]="search">{{cell}}</td>
+        </tr>
+    </tbody>
+</table>

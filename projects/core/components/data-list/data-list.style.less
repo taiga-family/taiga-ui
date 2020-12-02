@@ -1,0 +1,61 @@
+@import '../../styles/basic/basic-imports';
+
+tui-data-list {
+    .text-body-m();
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    color: var(--tui-text-03);
+
+    &:focus-within {
+        .trap {
+            display: none;
+        }
+
+        [tuiOption]._with-dropdown:not(:focus) {
+            background-color: transparent;
+        }
+    }
+
+    & > .empty {
+        margin: 12px 16px;
+    }
+}
+
+tui-opt-group {
+    .text-body-xs();
+    .text-overflow();
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    line-height: 32px;
+    padding: 8px 0;
+    margin: -8px 0;
+
+    &:empty:before,
+    &:empty:after {
+        display: none;
+    }
+
+    &:before {
+        content: attr(data-label);
+        padding: 0 16px;
+        color: var(--tui-text-02);
+    }
+
+    &:not(:empty) ~ & {
+        &:before {
+            padding-top: 16px;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 7px;
+            height: 1px;
+            background: var(--tui-base-03);
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<form [formGroup]="testForm">
+    <tui-radio-labeled
+        formControlName="testValue1"
+        class="tui-space_bottom-5"
+        size="l"
+        [item]="items[0]"
+    >
+        В собственности
+    </tui-radio-labeled>
+    <tui-radio-labeled
+        formControlName="testValue1"
+        class="tui-space_bottom-5"
+        size="l"
+        [item]="items[1]"
+    >
+        В аренде
+    </tui-radio-labeled>
+    <tui-radio-labeled formControlName="testValue1" size="l" [item]="items[2]">
+        В субаренде
+    </tui-radio-labeled>
+</form>

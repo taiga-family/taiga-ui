@@ -1,0 +1,34 @@
+<tui-hosted-dropdown
+    class="hosted"
+    [canOpen]="canOpen"
+    [content]="datalist || ''"
+    (tuiActiveZoneChange)="onActiveZone($event)"
+>
+    <tui-primitive-textfield
+        automation-id="tui-select__textfield"
+        class="textfield"
+        [editable]="false"
+        [pseudoFocused]="computedFocused"
+        [pseudoHovered]="computedHovered"
+        [invalid]="computedInvalid"
+        [nativeId]="nativeId"
+        [readOnly]="readOnly"
+        [iconContent]="arrow"
+        [disabled]="computedDisabled"
+        [focusable]="computedFocusable"
+        [value]="computedValue"
+        (valueChange)="onValueChange($event)"
+        (hoveredChange)="onHovered($event)"
+        (keydown.delete.prevent)="onKeyDownDelete()"
+        (keydown.backspace.prevent)="onKeyDownDelete()"
+    >
+        <ng-content></ng-content>
+        <polymorpheus-outlet
+            *ngIf="value"
+            class="value"
+            automation-id="tui-select__value"
+            [content]="computedContent"
+            [context]="computeContext(value, computedFocused)"
+        ></polymorpheus-outlet>
+    </tui-primitive-textfield>
+</tui-hosted-dropdown>

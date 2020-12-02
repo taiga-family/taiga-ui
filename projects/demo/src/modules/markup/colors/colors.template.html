@@ -1,0 +1,32 @@
+<tui-doc-page header="Цвета">
+    <ng-template pageTab="Текст">
+        <table [colors]="text"></table>
+        <table [colors]="textNight" [dark]="true"></table>
+    </ng-template>
+
+    <ng-template pageTab="Статусы">
+        <table [colors]="status"></table>
+        <table [colors]="statusNight" [dark]="true"></table>
+    </ng-template>
+
+    <ng-template pageTab="Основная палитра">
+        <table class="base-colors" [colors]="base"></table>
+        <table [colors]="baseNight" [dark]="true"></table>
+    </ng-template>
+
+    <ng-template pageTab="Вспомогательная палитра">
+        <table [colors]="support"></table>
+    </ng-template>
+
+    <ng-template pageTab="Подключение">
+        UI Kit использует <strong>CSS custom properties</strong> для задания
+        цветов. Для работы в браузерах без их поддержки присутствует полифилл.
+        Цвета доступны глобально и для их использования не требуется ничего
+        импортировать.
+
+        <tui-doc-code
+            filename="styles.less"
+            [code]="basicImportsLess"
+        ></tui-doc-code>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,130 @@
+<tui-doc-page header="InputPhone" package="KIT">
+    <ng-template pageTab>
+        Компонент <code>InputPhone</code> предназначен для ввода телефона в
+        формате <code>+78005553535</code>.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-input-phone-example-1></tui-input-phone-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="validated"
+            heading="с валидатором по числу символов"
+            [content]="example2"
+        >
+            <tui-input-phone-example-2></tui-input-phone-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="autocomplete"
+            description="Как по телефону, так и по имени."
+            heading="с автодополнением"
+            [content]="example3"
+        >
+            <tui-input-phone-example-3></tui-input-phone-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-phone
+                    [formControl]="control"
+                    [focusable]="focusable"
+                    [readOnly]="readOnly"
+                    [tuiTextfieldAutocomplete]="autocomplete"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldCustomContent]="customContent"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    [countryCode]="countryCode"
+                    [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiHintMode]="hintMode"
+                >
+                    Введите телефон
+                </tui-input-phone>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="countryCode"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="countryCodes"
+                [(documentationPropertyValue)]="countryCode"
+            >
+                Код страны
+            </ng-template>
+            <ng-template
+                documentationPropertyName="phoneMaskAfterCountryCode"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="phoneMasksAfterCountryCode"
+                [(documentationPropertyValue)]="phoneMaskAfterCountryCode"
+            >
+                Маска номера после кода страны. В качестве символов шаблона
+                можно передавать <code>#</code>,<code>-</code> и пробелы.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="search"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="string"
+            >
+                Значение нативного поля при вводе текста для подписки на ввод и
+                передачи снаружи
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation [dropdown]="true"></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль <code>TuiInputPhoneModule</code> в тот же
+                модуль, куда добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

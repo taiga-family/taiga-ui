@@ -1,0 +1,77 @@
+<ng-container *ngIf="!src; else withLink">
+    <ng-container *ngTemplateOutlet="fileInfoTemplate"></ng-container>
+</ng-container>
+
+<ng-template #withLink>
+    <a
+        class="link"
+        rel="noreferrer noopener"
+        target="_blank"
+        [href]="src"
+        (tuiFocusVisibleChange)="onFocusVisible($event)"
+    >
+        <ng-container *ngTemplateOutlet="fileInfoTemplate"></ng-container>
+    </a>
+</ng-template>
+
+<ng-template #fileInfoTemplate>
+    <div class="preview" [class.preview_big]="isBig">
+        <img
+            *ngIf="preview; else loader"
+            automation-id="tui-file__preview"
+            class="image"
+            [alt]="fileTexts['preview']"
+            [src]="preview"
+        />
+        <ng-template #loader>
+            <tui-loader
+                *ngIf="isLoading; else svg"
+                automation-id="tui-file__loader"
+                class="loader"
+                [showLoader]="true"
+                [inheritColor]="isBig"
+            ></tui-loader>
+        </ng-template>
+        <ng-template #svg>
+            <tui-svg
+                class="icon"
+                automation-id="tui-file__icon"
+                [class.icon_deleted]="isDeleted"
+                [class.icon_error]="isError"
+                [src]="icon"
+            ></tui-svg>
+        </ng-template>
+    </div>
+    <div class="wrapper">
+        <div class="text">
+            <div automation-id="tui-file__name" class="name">{{name}}</div>
+            <div automation-id="tui-file__type" class="type">{{type}}</div>
+            <div
+                *ngIf="showSize && fileSize"
+                automation-id="tui-file__size"
+                class="size"
+            >
+                {{fileSize}}
+            </div>
+        </div>
+        <polymorpheus-outlet
+            *ngIf="content"
+            automation-id="tui-file__content"
+            class="content"
+            [content]="content"
+        ></polymorpheus-outlet>
+    </div>
+    <button
+        *ngIf="allowDelete"
+        automation-id="tui-file__remove"
+        tuiIconButton
+        type="button"
+        size="xs"
+        icon="tuiIconCloseLarge"
+        appearance="icon"
+        class="remove"
+        [title]="fileTexts['remove']"
+        [class.remove_mobile]="isMobile"
+        (click.prevent)="onRemoveClick()"
+    ></button>
+</ng-template>

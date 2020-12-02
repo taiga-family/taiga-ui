@@ -1,0 +1,34 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    display: block;
+    margin-bottom: -@space;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+}
+
+.item {
+    margin-right: @space;
+    margin-bottom: @space;
+
+    &:last-child,
+    :host[data-tui-host-size='l'] &:last-child {
+        margin-right: 0;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        margin-right: @space * 2;
+        margin-bottom: @space * 2;
+    }
+}
+
+.badge {
+    margin-left: @space;
+
+    &_disabled {
+        opacity: @disabled-opacity;
+    }
+}

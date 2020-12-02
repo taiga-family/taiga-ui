@@ -1,0 +1,32 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    display: block;
+}
+
+.header {
+    .text-body-s-bold();
+}
+
+.code {
+    margin: 0;
+}
+
+// highlightjs added class
+.hljs:not(:empty) {
+    .text-body-m();
+    .customize-scroll();
+    padding: 24px 32px;
+    font-family: monospace;
+    background-color: var(--tui-base-02);
+    word-wrap: break-word;
+    white-space: pre-wrap;
+
+    :host._has-filename & {
+        border-radius: 12px;
+    }
+
+    @media @mobile {
+        padding: 16px;
+    }
+}

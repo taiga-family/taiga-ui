@@ -1,0 +1,33 @@
+<div class="container">
+    <tui-multi-select
+        class="tui-space_top-2"
+        tuiTextfieldSize="m"
+        [editable]="false"
+        [formControl]="control"
+        [stringify]="stringify"
+        [identityMatcher]="identityMatcher"
+        [tuiTextfieldLabelOutside]="true"
+    >
+        Выберите любимых героев
+        <tui-data-list *tuiDataList tuiMultiSelectGroup>
+            <button *ngFor="let item of items" tuiOption [value]="item">
+                {{item.name}}
+            </button>
+        </tui-data-list>
+    </tui-multi-select>
+    <tui-multi-select
+        class="tui-space_top-2"
+        [editable]="false"
+        [formControl]="control"
+        [stringify]="stringify"
+        [identityMatcher]="identityMatcher"
+    >
+        Выберите любимых героев
+        <tui-data-list-wrapper
+            *tuiDataList
+            tuiMultiSelectGroup
+            [items]="items"
+            [itemContent]="stringify"
+        ></tui-data-list-wrapper>
+    </tui-multi-select>
+</div>

@@ -1,0 +1,86 @@
+<tui-doc-page header="Форма">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Формы создаются блоком <strong>.tui-form</strong> и его элементами и
+            модификациями:
+        </div>
+        <ul class="tui-list tui-list_small">
+            <li class="tui-list__item">
+                <code>.tui-form__header</code>: заголовок формы. Отступы: 32px
+                вверху и 20px вниз.
+                <ul
+                    class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
+                >
+                    <li class="tui-list__item">
+                        <code>.tui-form__header_margin-top_none</code>:
+                        обнуленный <code>margin-top</code>
+                    </li>
+                    <li class="tui-list__item">
+                        <code>.tui-form__header_margin-bottom_none</code>:
+                        обнуленный <code>margin-bottom</code>
+                    </li>
+                    <li class="tui-list__item">
+                        <code>.tui-form__header_margin-bottom_small</code>:
+                        уменьшенный до 16x
+                        <code>margin-bottom</code>
+                    </li>
+                </ul>
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-form__row</code>: ряд формы. Между рядами отступ в
+                20px.
+                <ul
+                    class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
+                >
+                    <li class="tui-list__item">
+                        <code>.tui-form__row_multi-fields</code>: ряд с
+                        несколькими рядом стоящими полями, между которыми отступ
+                        в 20px
+                    </li>
+                    <li class="tui-list__item">
+                        <code>.tui-form__row_half-width</code>: ряд в половину
+                        ширины от нормальной
+                    </li>
+                    <li class="tui-list__item">
+                        <code>.tui-form__row_checkboxes</code>: ряд с 2
+                        колонками чекбоксов
+                    </li>
+                </ul>
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-form__multi-field</code>: поле в ряду
+                <code>tui-form__row_multi-fields</code>. Между такими полями
+                отступ в 20px.
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-form__checkbox</code>: чебкокс с лэйблом в случае
+                расположения в 2-х колонках
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-form__field-note</code>: серая надпись под полем
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-form__field-checkbox</code>: чекбокс под полем
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-form__buttons</code>: блок с кнопками с вертикальным
+                отступом вверх 32px.
+                <ul
+                    class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
+                >
+                    <li class="tui-list__item">
+                        <code>.tui-form__buttons_align_end</code>: кнопки
+                        выровнены по правому краю
+                    </li>
+                </ul>
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-form__button</code>: кнопка в блоке с кнопками
+            </li>
+        </ul>
+
+        <tui-doc-example id="form" heading="Пример формы" [content]="example1">
+            <tui-form-example-1></tui-form-example-1>
+        </tui-doc-example>
+    </ng-template>
+</tui-doc-page>

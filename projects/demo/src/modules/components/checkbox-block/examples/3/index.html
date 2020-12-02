@@ -1,0 +1,59 @@
+<form class="control" [formGroup]="testForm">
+    <div class="tui-form__row">
+        <tui-checkbox-block formControlName="testValue1" size="l">
+            <div class="content">
+                <tui-avatar
+                    class="tui-space_right-3"
+                    text="Заголовок"
+                    size="s"
+                    [rounded]="true"
+                ></tui-avatar>
+                Заголовок
+            </div>
+        </tui-checkbox-block>
+    </div>
+    <div class="tui-form__row">
+        <tui-checkbox-block formControlName="testValue2" size="l">
+            <div class="content">
+                <tui-avatar
+                    class="tui-space_right-3"
+                    text="Заголовок"
+                    size="s"
+                    [rounded]="true"
+                ></tui-avatar>
+                <div>
+                    <div class="label">Лейбл</div>
+                    Плейсхолдер
+                </div>
+            </div>
+        </tui-checkbox-block>
+    </div>
+    <div class="tui-form__row">
+        <tui-checkbox-block formControlName="testValue3" size="l">
+            <div class="inner">
+                Заголовок
+                <div class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Animi atque incidunt itaque iusto natus quaerat quia
+                    similique veniam?
+                </div>
+            </div>
+        </tui-checkbox-block>
+    </div>
+    <div class="tui-form__row">
+        <tui-checkbox-block
+            formControlName="testValue4"
+            contentAlign="left"
+            nativeId="example3"
+            size="l"
+        >
+            <div class="inner inner_flex">
+                Материнский капитал
+                <tui-tooltip
+                    describeId="example3"
+                    content="Форма государственной поддержки российских семей, имеющих детей."
+                ></tui-tooltip>
+            </div>
+        </tui-checkbox-block>
+    </div>
+</form>

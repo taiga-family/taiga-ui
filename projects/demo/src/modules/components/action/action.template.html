@@ -1,0 +1,61 @@
+<tui-doc-page header="Action" package="KIT">
+    <ng-template pageTab>
+        Компонент предназначен для выполнения действия и используется группами.
+
+        <tui-doc-example id="basic" heading="Базовый" [content]="example1">
+            <tui-action-example-1></tui-action-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="links" heading="Ссылки" [content]="example2">
+            <tui-action-example-2></tui-action-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-action [icon]="icon">
+                It's not pining, it's passed on! This parrot is no more! It has
+                ceased to be! It's expired and gone to meet its maker! This is a
+                late parrot! It's a stiff! Bereft of life, it rests in peace! If
+                you hadn't nailed it to the perch, it would be pushing up the
+                daisies! It's rung down the curtain and joined the choir
+                invisible. This is an ex-parrot!
+            </tui-action>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="icon"
+                documentationPropertyType="string"
+                documentationPropertyMode="input"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                Иконка
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiActionModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

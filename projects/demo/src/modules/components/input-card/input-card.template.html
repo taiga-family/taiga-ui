@@ -1,0 +1,216 @@
+<tui-doc-page header="InputCard" package="ADDON-COMMERCE">
+    <ng-template pageTab>
+        Компонент <code>InputCard</code> используется вместе с
+        <code>InputExpire</code> и <code>InputCVC</code> для ввода данных по
+        банковским картам.
+
+        <tui-doc-example id="group" heading="в tui-group" [content]="example1">
+            <tui-input-card-example-1></tui-input-card-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <form class="form" [formGroup]="control">
+                    <tui-input-card
+                        class="control"
+                        formControlName="card"
+                        [autocompleteEnabled]="autocompleteEnabledCard"
+                        [cardSrc]="cardSrc"
+                        [focusable]="focusable"
+                        [tuiTextfieldSize]="sizeCard"
+                        [tuiTextfieldCleaner]="cleaner"
+                        [tuiTextfieldLabelOutside]="labelOutsideCard"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocused]="pseudoFocused"
+                        [tuiHintContent]="hintContent"
+                        [tuiHintDirection]="hintDirection"
+                        [tuiHintMode]="hintMode"
+                        (binChange)="onBinChange($event)"
+                    >
+                        Номер карты
+                    </tui-input-card>
+                    <tui-input-expire
+                        class="control"
+                        formControlName="expire"
+                        [autocompleteEnabled]="autocompleteEnabledExpire"
+                        [focusable]="focusable"
+                        [tuiTextfieldSize]="sizeExpire"
+                        [tuiTextfieldLabelOutside]="labelOutsideExpire"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocused]="pseudoFocused"
+                    >
+                        Срок действия
+                    </tui-input-expire>
+                    <tui-input-cvc
+                        class="control"
+                        formControlName="cvc"
+                        [autocompleteEnabled]="autocompleteEnabledCVC"
+                        [focusable]="focusable"
+                        [length]="length"
+                        [tuiTextfieldSize]="sizeCVC"
+                        [tuiTextfieldLabelOutside]="labelOutsideCVC"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [pseudoFocused]="pseudoFocused"
+                        [tuiHintContent]="hintContentCVC"
+                        [tuiHintDirection]="hintDirectionCVC"
+                        [tuiHintMode]="hintModeCVC"
+                    >
+                        CVC/CVV
+                    </tui-input-cvc>
+                    <tui-field-error
+                        class="error"
+                        formControlName="card"
+                    ></tui-field-error>
+                </form>
+            </ng-template>
+        </tui-doc-demo>
+        <div class="b-full-width tui-space_bottom-6">
+            <p>
+                Для валидации ввода номера карты алгоритмом Луна добавьте
+                <code>tuiCreateLuhnValidator(customMessage?)</code> к
+                валидаторам контрола.
+            </p>
+            <p>
+                При <code>[tuiTextfieldLabelOutside]="true"</code> и
+                фокусировании в поле в <code>InputCard</code> и
+                <code>InputExpire</code> в поле показывается
+                <code>exampleText</code>, а в <code>InputCVC</code> —
+                <code>placeholder</code>.
+            </p>
+        </div>
+        <tui-accordion class="b-full-width" [closeOthers]="false">
+            <tui-accordion-item [open]="true">
+                TuiInputCardComponent
+                <ng-template tuiAccordionItemContent>
+                    <tui-doc-documentation>
+                        <ng-template
+                            documentationPropertyName=""
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="disabledCard"
+                        >
+                            Компонент формы disabled (через
+                            formControl.disable())
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="autocompleteEnabled"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="autocompleteEnabledCard"
+                        >
+                            Позволить браузеру подставлять сохранённые данные
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="cardSrc"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="string | null"
+                            [documentationPropertyValues]="cardSrcVariants"
+                            [(documentationPropertyValue)]="cardSrcSelected"
+                        >
+                            SVG иконки карты
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="binChange"
+                            documentationPropertyMode="output"
+                            documentationPropertyType="string | null"
+                        >
+                            Значение BIN (первые 6 символов карты)
+                        </ng-template>
+                    </tui-doc-documentation>
+                    <inherited-documentation></inherited-documentation>
+                </ng-template>
+            </tui-accordion-item>
+
+            <tui-accordion-item [open]="false">
+                TuiInputExpireComponent
+                <ng-template tuiAccordionItemContent>
+                    <tui-doc-documentation>
+                        <ng-template
+                            documentationPropertyName=""
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="disabledExpire"
+                        >
+                            Компонент формы disabled (через
+                            formControl.disable())
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="autocompleteEnabled"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="autocompleteEnabledExpire"
+                        >
+                            Позволить браузеру подставлять сохранённые данные
+                        </ng-template>
+                    </tui-doc-documentation>
+                    <inherited-documentation></inherited-documentation>
+                </ng-template>
+            </tui-accordion-item>
+
+            <tui-accordion-item [open]="false">
+                TuiInputCVCComponent
+                <ng-template tuiAccordionItemContent>
+                    <tui-doc-documentation>
+                        <ng-template
+                            documentationPropertyName=""
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="disabledCVC"
+                        >
+                            Компонент формы disabled (через
+                            formControl.disable())
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="autocompleteEnabled"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="boolean"
+                            [(documentationPropertyValue)]="autocompleteEnabledCVC"
+                        >
+                            Позволить браузеру подставлять сохранённые данные
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyName="length"
+                            documentationPropertyMode="input"
+                            documentationPropertyType="3 | 4"
+                            [documentationPropertyValues]="lengthVariants"
+                            [(documentationPropertyValue)]="length"
+                        >
+                            Длина кода
+                        </ng-template>
+                    </tui-doc-documentation>
+                    <inherited-documentation></inherited-documentation>
+                </ng-template>
+            </tui-accordion-item>
+        </tui-accordion>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули
+                <code>TuiInputCardModule</code>, <code>TuiInputCVCModule</code>,
+                <code>TuiInputExpireModule</code>
+                в тот же модуль, куда добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

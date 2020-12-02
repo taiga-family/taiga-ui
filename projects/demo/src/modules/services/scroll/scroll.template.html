@@ -1,0 +1,86 @@
+<tui-doc-page header="ScrollService" package="CDK">
+    <ng-template pageTab>
+        Сервис для плавного скролла.
+
+        <tui-doc-example
+            id="interactive"
+            heading="Интерактивный пример"
+            [content]="example1"
+        >
+            <tui-scroll-example-1></tui-scroll-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <p class="b-full-width">
+            Метод
+            <strong
+                ><code
+                    >scroll$: Observable&lt;[number, number]&gt;</code
+                ></strong
+            >
+            <em>(эмитит <code>[scrollTop, scrollLeft]</code> кортежи)</em>
+        </p>
+        <tui-doc-documentation [showValues]="false">
+            <ng-template
+                documentationPropertyName="element"
+                documentationPropertyType="Element"
+            >
+                Элемент, который будет прокручиваться
+            </ng-template>
+            <ng-template
+                documentationPropertyName="scrollTop"
+                documentationPropertyType="number"
+            >
+                Целевая позиция скролла по вертикали
+            </ng-template>
+            <ng-template
+                documentationPropertyName="scrollLeft"
+                documentationPropertyType="number"
+            >
+                <strong>Опционально</strong>. Целевая позиция скролла по
+                горизонтали
+            </ng-template>
+            <ng-template
+                documentationPropertyName="duration"
+                documentationPropertyType="number"
+            >
+                <strong>Опционально</strong>. Длительность в миллисекундах (0
+                для моментального скролла).
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Добавить сервис <code>TuiScrollService</code> в модуль вашего
+                компонента:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Заинжектить <code>TuiScrollService</code> в ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleInjectService"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Вызвать метод <code>scroll$</code> с соответствующими данными
+                для прокрутки и подписаться на возвращаемый
+                <code>Observable</code>:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleScroll"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

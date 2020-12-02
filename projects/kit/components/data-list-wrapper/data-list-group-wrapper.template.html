@@ -1,0 +1,27 @@
+<tui-data-list *ngIf="items else loading">
+    <tui-opt-group
+        *ngFor="let group of items; let index = index"
+        [label]="labels[index]"
+    >
+        <button
+            *ngFor="let item of group"
+            #elementRef="elementRef"
+            tuiElement
+            tuiOption
+            automation-id="tui-data-list-wrapper__option"
+            [size]="size"
+            [value]="item"
+            [disabled]="disabledItemHandler(item)"
+        >
+            <span
+                polymorpheus-outlet
+                class="content"
+                [content]="itemContent"
+                [context]="getContext(item, elementRef)"
+            ></span>
+        </button>
+    </tui-opt-group>
+</tui-data-list>
+<ng-template #loading>
+    <tui-loader class="tui-space_vertical-3" [showLoader]="true"></tui-loader>
+</ng-template>

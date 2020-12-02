@@ -1,0 +1,17 @@
+<tui-group class="group">
+    <tui-input formControlName="testValue"
+               tuiTextfieldExampleText="Номер дома"
+               tuiHintContent="Пишите только цифру">
+        Дом
+    </tui-input>
+    <tui-input formControlName="testValue2"
+               tuiTextfieldExampleText="Номер корпуса"
+               tuiHintContent="Пишите только корпус">
+        Корпус
+    </tui-input>
+    <tui-input formControlName="testValue3"
+               tuiTextfieldExampleText="Номер квартиры"
+               tuiHintContent="Пишите только квартиру">
+        Квартира
+    </tui-input>
+</tui-group>

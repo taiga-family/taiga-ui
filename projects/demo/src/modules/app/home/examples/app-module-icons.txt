@@ -1,0 +1,23 @@
+import {TUI_SANITIZER} from '@taiga-ui/cdk';
+import {iconsPathFactory, TUI_ICONS_PATH} from '@taiga-ui/core';
+...
+
+const unsafeSanitizer: Sanitizer = {
+    sanitize: (_: any, value: any) => value,
+};
+
+@NgModule({
+    ...
+    providers: [
+        {
+            provide: TUI_SANITIZER,
+            useValue: unsafeSanitizer,
+        },
+        {
+            provide: TUI_ICONS_PATH,
+            useValue: iconsPathFactory('assets/taiga-ui/icons/'),
+        },
+    ]
+})
+export class AppModule {
+}

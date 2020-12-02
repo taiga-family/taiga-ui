@@ -1,0 +1,16 @@
+<tui-hint-box
+    *ngFor="let hint of hints"
+    role="tooltip"
+    [attr.id]="hint.id"
+    [@tuiFadeIn]
+    [mode]="hint.mode"
+    [direction]="hint.direction"
+    [hint]="hint"
+    (tuiHoveredChange)="onHovered($event, hint)"
+>
+    <polymorpheus-outlet [content]="hint.content">
+        <ng-template let-text>
+            <span class="text">{{text}}</span>
+        </ng-template>
+    </polymorpheus-outlet>
+</tui-hint-box>

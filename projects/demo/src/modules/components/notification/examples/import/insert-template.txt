@@ -1,0 +1,4 @@
+<tui-notification status="error"
+                  [hasCloseButton]="false"
+                  [hasIcon]="false"
+                  (close)="onClose()">Короткое простое информационное сообщение</tui-notification>

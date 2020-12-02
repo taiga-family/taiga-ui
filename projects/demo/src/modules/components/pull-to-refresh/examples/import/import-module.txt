@@ -1,0 +1,10 @@
+import {TuiPullToRefreshModule} from '@taiga-ui/addon-mobile';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiPullToRefreshModule,
+    ],
+...

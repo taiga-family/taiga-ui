@@ -1,0 +1,24 @@
+<ng-template #tooltip="polymorpheus" polymorpheus>
+    Допустимые символы: ♠ ♣ ♦ ♥
+</ng-template>
+
+<tui-input
+    class="input"
+    tuiTextfieldSize="m"
+    [tuiTextfieldLabelOutside]="true"
+></tui-input>
+<tui-tooltip [content]="tooltip" direction="right"></tui-tooltip>
+
+<tui-input
+    class="input"
+    tuiTextfieldSize="m"
+    [tuiTextfieldLabelOutside]="true"
+></tui-input>
+<tui-tooltip
+    class="primary"
+    content="Задайте цвет иконки через color"
+    direction="right"
+></tui-tooltip>
+
+<tui-input class="input" tuiTextfieldSize="m"></tui-input>
+<tui-tooltip [content]="tooltip" direction="right"></tui-tooltip>

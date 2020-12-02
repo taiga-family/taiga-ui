@@ -1,0 +1,40 @@
+<tui-doc-page header="Let" package="CDK">
+    <ng-template pageTab>
+        Директива <code>tuiLet</code> нужна для случаев, когда в шаблоне нужно
+        использовать результат одного вычисления в нескольких местах, чтобы
+        избежать многократных вызовов геттеров, подписок на стримы async пайпом
+        и т.д.
+
+        <tui-doc-example id="pipe" heading="с Pipe" [content]="example1">
+            <tui-let-example-1></tui-let-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="getter" heading="с геттером" [content]="example2">
+            <tui-let-example-2></tui-let-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiLetModule</code> в тот же модуль, куда добавляется ваш
+                компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

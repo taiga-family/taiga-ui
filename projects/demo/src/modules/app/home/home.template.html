@@ -1,0 +1,174 @@
+<p class="tui-space_top-0">Здесь описано подключение Taiga UI к проекту.</p>
+<p>Для подключения конкретного компонента, см. его документацию.</p>
+
+<div class="tui-space_top-5">
+    <ol class="steps">
+        <li>
+            <a tuiLink routerLink="." fragment="project">Создание проекта</a>.
+        </li>
+        <li>
+            <a tuiLink routerLink="." fragment="install">Установка библиотеки</a
+            >.
+        </li>
+        <li><a tuiLink routerLink="." fragment="less">Базовые стили</a>.</li>
+        <li>
+            <a tuiLink routerLink="." fragment="root">Основной компонент</a>.
+        </li>
+        <li>
+            <a tuiLink routerLink="." fragment="options"
+                >Добавление опциональных компонентов</a
+            >.
+        </li>
+        <li><a tuiLink routerLink="." fragment="icons">Иконки</a>.</li>
+        <li><a tuiLink routerLink="." fragment="theme">Смена темы</a>.</li>
+    </ol>
+
+    <ol class="b-demo-steps">
+        <li id="project">
+            При создании проекта выбрать LESS в качестве препроцессора CSS
+            (<code>--style less</code>). Если это не было сделано сразу, после
+            генерации проекта можно поменять в файле <code>angular.json</code>.
+        </li>
+
+        <li id="install">
+            Установить свежую версию необходимых вам пакетов Taiga UI. Данная
+            команда также сохранит номер установленной версии в package.json.
+
+            <tui-doc-code
+                filename="Main Taiga UI packages"
+                [code]="examples.main"
+            ></tui-doc-code>
+
+            <tui-doc-code
+                filename="Taiga UI addons based on main packages"
+                [code]="examples.addons"
+            ></tui-doc-code>
+        </li>
+
+        <li id="less">
+            Подключить стили Taiga UI для нормализации в глобальный
+            <code>styles.less</code>
+            (включает нормализацию и глобальные стили: отступы, grid, списки и
+            т.п.)
+
+            <tui-doc-code
+                filename="styles.less"
+                [code]="examples.importBaseLess"
+            ></tui-doc-code>
+
+            <p>
+                Для использования миксинов и переменных в компонентах нужно
+                подключить локальный набор стилей:
+
+                <tui-doc-code
+                    filename="component.styles.less"
+                    [code]="examples.importLocalLess"
+                ></tui-doc-code>
+            </p>
+        </li>
+
+        <li id="root">
+            Для работы большинства компонентов Taiga UI приложение должно быть
+            обёрнуто в компонент <code>tui-root</code>. Для этого надо
+            импортировать модуль <code>TuiRootModule</code> и добавить
+            <code>TuiRootScroller</code>
+            в провайдеры для корректной работы роутера Angular:
+
+            <tui-doc-code
+                class="tui-space_bottom-4"
+                filename="app.module.ts"
+                [code]="examples.appModule"
+            ></tui-doc-code>
+
+            И обернуть контент в шаблоне корневого компонента
+
+            <tui-doc-code
+                filename="app.component.html"
+                [code]="examples.appTemplate"
+            ></tui-doc-code>
+        </li>
+
+        <li id="options">
+            В Taiga UI входят опциональные модули, такие, как попапы,
+            нотификации и другие. Для их включения, нужно добавить их в основной
+            модуль:
+
+            <tui-doc-code
+                class="tui-space_bottom-4"
+                filename="app.module.ts"
+                [code]="examples.appModuleOptional"
+            ></tui-doc-code>
+        </li>
+
+        <li id="icons">
+            Иконки не включены в бандл библиотеки. Для того, чтобы в компонентах
+            появились необходимые им иконки (календари, галочки, крестики и
+            т.д.) нужно предоставить токен <code>TUI_ICONS_PATH</code> —
+            функцию, получающую на вход имя иконки и возвращающую путь до неё.
+            Добавьте иконки в assets вашего приложения:
+
+            <tui-doc-code
+                class="tui-space_bottom-4"
+                filename="angular.json"
+                [code]="examples.assets"
+            ></tui-doc-code>
+
+            Затем укажите через провайдер заданный путь. Кроме того, встроенный
+            <code>Sanitizer</code> ангуляра не пропускает код <code>SVG</code>,
+            поэтому необходимо предоставить токен <code>TUI_SANITIZER</code>,
+            ответственный за удаление вредоносного кода из иконок. Если вы
+            доверяете всем используемым иконкам, то можете использовать
+            константу как в примере ниже, в противном случае рекомендуем
+            использовать нашу библиотеку
+            <a
+                href="https://github.com/TinkoffCreditSystems/ng-dompurify"
+                tuiLink
+                >ng-dompurify</a
+            >.
+
+            <tui-doc-code
+                class="tui-space_bottom-4"
+                filename="app.module.ts"
+                [code]="examples.appModuleIcons"
+            ></tui-doc-code>
+        </li>
+
+        <li id="theme">
+            Для смены темы см. раздел
+            <a tuiLink routerLink="/theme">Темы</a>.
+        </li>
+
+        <li id="ie">
+            Стили Taiga UI строятся на основе CSS-переменных, которые не
+            поддерживаются в браузере Internet Explorer.
+            <strong>Если вам необходима поддержка IE 11</strong>, то
+            воспользуйтесь пакетом
+            <a
+                tuiLink
+                target="_blank"
+                href="https://www.npmjs.com/package/css-vars-ponyfill"
+                >css-vars-ponyfill</a
+            >
+
+            <p>Установка css-vars-ponyfill:</p>
+
+            <tui-doc-code [code]="examples.ponyfill"></tui-doc-code>
+
+            <p>
+                Добавьте полифилл к
+                <a
+                    tuiLink
+                    target="_blank"
+                    href="https://angular.io/api/core/APP_BOOTSTRAP_LISTENER"
+                    ><code>APP_BOOTSTRAP_LISTENER</code></a
+                >
+                вашего приложения
+            </p>
+
+            <tui-doc-code
+                filename="app.module.ts"
+                [code]="examples.ieSupport"
+            ></tui-doc-code>
+        </li>
+    </ol>
+</div>

@@ -1,0 +1,15 @@
+<form class="b-input-wrapper" [formGroup]="testForm">
+    <label tuiLabel label="Шаг по умолчанию равен 1">
+        <tui-input-count formControlName="testValue1" [min]="1" [max]="200">
+            Кол-во счетов
+        </tui-input-count>
+    </label>
+
+    <label tuiLabel class="tui-space_top-4" label="Шаг увеличен до 100">
+        <tui-input-count
+            formControlName="testValue2"
+            [tuiTextfieldLabelOutside]="true"
+            [step]="100"
+        ></tui-input-count>
+    </label>
+</form>

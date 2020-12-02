@@ -1,0 +1,32 @@
+<div class="tui-row">
+    <div class="tui-col_md-4">
+        <tui-select tuiTextfieldSize="s" [formControl]="testValue">
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="items"
+            ></tui-data-list-wrapper>
+        </tui-select>
+    </div>
+    <div class="tui-col_md-4">
+        <tui-select
+            tuiTextfieldSize="m"
+            [formControl]="testValue"
+            [tuiTextfieldLabelOutside]="true"
+        >
+            Выберите героя
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="items"
+            ></tui-data-list-wrapper>
+        </tui-select>
+    </div>
+    <div class="tui-col_md-4">
+        <tui-select [formControl]="testValue">
+            Выберите героя
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="items"
+            ></tui-data-list-wrapper>
+        </tui-select>
+    </div>
+</div>

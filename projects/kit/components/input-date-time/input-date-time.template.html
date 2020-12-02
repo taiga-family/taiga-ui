@@ -1,0 +1,40 @@
+<tui-hosted-dropdown
+    class="hosted"
+    [canOpen]="canOpen"
+    [content]="dropdown"
+    [open]="open && canOpen"
+    (openChange)="onOpenChange($event)"
+>
+    <tui-primitive-textfield
+        class="textfield"
+        [pseudoFocused]="pseudoFocused"
+        [pseudoHovered]="pseudoHovered"
+        [invalid]="computedInvalid"
+        [filler]="filler"
+        [nativeId]="nativeId"
+        [readOnly]="readOnly"
+        [iconContent]="calendarIcon"
+        [disabled]="disabled"
+        [textMask]="textMaskOptions"
+        [value]="computedValue"
+        (valueChange)="onValueChange($event)"
+        (hoveredChange)="onHovered($event)"
+        (focusedChange)="onFocused($event)"
+        (mousedown)="onMouseDown()"
+    >
+        <ng-content></ng-content>
+    </tui-primitive-textfield>
+
+    <ng-template #dropdown="polymorpheus" polymorpheus>
+        <tui-calendar
+            tuiPreventDefault="mousedown"
+            [min]="min"
+            [max]="max"
+            [disabledItemHandler]="disabledItemHandler"
+            [month]="computedActiveYearMonth"
+            [value]="calendarValue"
+            (dayClick)="onDayClick($event)"
+            (monthChange)="onMonthChange($event)"
+        ></tui-calendar>
+    </ng-template>
+</tui-hosted-dropdown>

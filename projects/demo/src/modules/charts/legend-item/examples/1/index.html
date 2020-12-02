@@ -1,0 +1,25 @@
+<div class="wrapper">
+    <tui-ring-chart
+        [value]="value"
+        [content]="content"
+        [(activeItemIndex)]="activeItemIndex"
+    ></tui-ring-chart>
+
+    <ng-template #content="polymorpheus" polymorpheus>
+        <tui-money [singleColor]="true" [value]="sum"></tui-money>
+        <div>Всего</div>
+    </ng-template>
+
+    <div class="legend">
+        <tui-legend-item
+            *ngFor="let label of labels; let index = index"
+            class="item"
+            [color]="colorHandler(index)"
+            [text]="label"
+            [active]="isItemActive(index)"
+            (tuiHoveredChange)="onHover(index, $event)"
+        >
+            <tui-money [singleColor]="true" [value]="value[index]"></tui-money>
+        </tui-legend-item>
+    </div>
+</div>

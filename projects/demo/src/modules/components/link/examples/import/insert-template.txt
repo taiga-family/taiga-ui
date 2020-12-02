@@ -1,0 +1,6 @@
+<a tuiLink href="#">ссылка</a>
+
+<a tuiLink
+   [icon]="tuiIconSettings"
+   iconAlign="left"
+   href="#">ссылка с иконкой слева</a>

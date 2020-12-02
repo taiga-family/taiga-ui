@@ -1,0 +1,37 @@
+@import '../../styles/basic/basic-imports';
+
+:host {
+    position: relative;
+    display: flex;
+    overflow: auto;
+
+    &:not(._legacy) {
+        /* stylelint-disable*/
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        /* stylelint-enable*/
+
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-thumb {
+            background: transparent;
+            width: 0;
+            height: 0;
+        }
+    }
+
+    &._legacy {
+        .customize-scroll();
+        overflow: overlay;
+    }
+
+    &._container tui-scroll-controls {
+        position: absolute;
+    }
+}
+
+.content {
+    .createStackingContext();
+    flex: 1;
+    flex-basis: auto;
+    width: 100%;
+}

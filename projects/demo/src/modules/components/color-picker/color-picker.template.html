@@ -1,0 +1,57 @@
+<tui-doc-page header="ColorPicker" package="ADDON-editor">
+    <ng-template pageTab>
+        ColorPicker — компонент для выбора цвета с прозрачностью. На его базе
+        сделаны компоненты InputColor и ColorSelector
+
+        <tui-doc-example id="input" heading="Поле ввода" [content]="example1">
+            <tui-color-picker-example-1></tui-color-picker-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="dropdown"
+            heading="ColorSelector в выпадашке"
+            [content]="example2"
+        >
+            <tui-color-picker-example-2></tui-color-picker-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-color-picker></tui-color-picker>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="color"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="[number, number, number, number]"
+            >
+                Массив цвета в формате rgba
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiColorPickerModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

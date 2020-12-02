@@ -1,0 +1,62 @@
+<p>Ваш баланс: <tui-money [value]="money"></tui-money></p>
+<button
+    tuiButton
+    type="button"
+    class="tui-space_right-3"
+    size="m"
+    (click)="showWithdrawAlert()"
+>
+    Снять
+</button>
+<button
+    tuiButton
+    type="button"
+    class="tui-space_right-3"
+    size="m"
+    (click)="showDepositAlert()"
+>
+    Пополнить
+</button>
+<button
+    tuiButton
+    type="button"
+    class="tui-space_right-3"
+    size="m"
+    (click)="withdraw()"
+>
+    Списать&nbsp;<tui-money [value]="100"></tui-money>
+</button>
+
+<ng-template #withdrawTemplate>
+    <p>Нотификации можно показывать с помощью шаблона</p>
+    <p>Ваш баланс: <tui-money [value]="money"></tui-money></p>
+    <button
+        tuiButton
+        type="button"
+        tuiMode="dark"
+        appearance="outline"
+        size="m"
+        (click)="withdraw()"
+    >
+        Списать&nbsp;<tui-money [value]="100"></tui-money>
+    </button>
+</ng-template>
+
+<ng-template #depositTemplate>
+    <p>
+        Если шаблонов много, вместо <code>ViewChild</code> можно использовать
+        <code>ViewChildren</code>, или назначать им индивидуальные
+        идентификаторы через # (см. код этого примера).
+    </p>
+    <p>Ваш баланс: <tui-money [value]="money"></tui-money></p>
+    <button
+        tuiButton
+        type="button"
+        tuiMode="dark"
+        appearance="outline"
+        size="m"
+        (click)="deposit()"
+    >
+        Зачислить&nbsp;<tui-money [value]="100"></tui-money>
+    </button>
+</ng-template>

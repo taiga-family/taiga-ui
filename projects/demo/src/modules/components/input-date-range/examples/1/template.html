@@ -1,0 +1,15 @@
+<form class="container" [formGroup]="testForm">
+    <p>
+        В случае, если поле необязательное, но не до конца заполненное поле
+        нужно считать невалидным, используйте
+        <code>tuiUnfinishedValidator</code> директиву.
+    </p>
+    <tui-input-date-range
+        tuiUnfinishedValidator
+        formControlName="testValue"
+        [min]="min"
+        [max]="max"
+    >
+        Введите даты
+    </tui-input-date-range>
+</form>

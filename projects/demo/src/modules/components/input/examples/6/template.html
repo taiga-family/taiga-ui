@@ -1,0 +1,113 @@
+<p><code>tuiTable</code> директива содержится в <code>TuiModeModule</code></p>
+
+<form tuiTable [formGroup]="form">
+    <table class="tui-table table">
+        <thead>
+            <tr>
+                <th class="tui-table__th cell_name">Имя</th>
+                <th class="tui-table__th cell_date">Дата</th>
+                <th class="tui-table__th cell_gender">Пол</th>
+                <th class="tui-table__th cell_quantity">Шт.</th>
+                <th class="tui-table__th cell_sum">Сумма, ₽</th>
+            </tr>
+        </thead>
+    </table>
+    <div class="table">
+        <tui-group class="row" [collapsed]="true">
+            <tui-input
+                class="cell cell_name"
+                tuiTextfieldSize="m"
+                tuiTextfieldExampleText="Иванов Иван Иванович"
+                formControlName="name"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Имя
+            </tui-input>
+            <tui-input-date
+                class="cell cell_date"
+                tuiTextfieldSize="m"
+                formControlName="date"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Дата
+            </tui-input-date>
+            <tui-select
+                class="cell cell_color"
+                formControlName="color"
+                tuiTextfieldSize="m"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Цвет
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [items]="items"
+                ></tui-data-list-wrapper>
+            </tui-select>
+            <tui-input-count
+                class="cell cell_quantity"
+                tuiTextfieldSize="m"
+                formControlName="quantity"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Шт.
+            </tui-input-count>
+            <tui-input-number
+                class="cell cell_sum"
+                tuiTextfieldSize="m"
+                formControlName="sum"
+                [tuiTextfieldLabelOutside]="true"
+                [readOnly]="true"
+            >
+                Сумма
+            </tui-input-number>
+        </tui-group>
+        <tui-group class="row" [collapsed]="true">
+            <tui-input
+                class="cell cell_name"
+                tuiTextfieldSize="m"
+                tuiTextfieldExampleText="Иванов Иван Иванович"
+                formControlName="name"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Имя
+            </tui-input>
+            <tui-input-date
+                class="cell cell_date"
+                tuiTextfieldSize="m"
+                formControlName="date"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Дата
+            </tui-input-date>
+            <tui-select
+                class="cell cell_color"
+                formControlName="color"
+                tuiTextfieldSize="m"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Цвет
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [items]="items"
+                ></tui-data-list-wrapper>
+            </tui-select>
+            <tui-input-count
+                class="cell cell_quantity"
+                tuiTextfieldSize="m"
+                formControlName="quantity"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Шт.
+            </tui-input-count>
+            <tui-input-number
+                class="cell cell_sum"
+                tuiTextfieldSize="m"
+                formControlName="sum"
+                [tuiTextfieldLabelOutside]="true"
+                [readOnly]="true"
+            >
+                Сумма
+            </tui-input-number>
+        </tui-group>
+    </div>
+</form>

@@ -1,4 +1,4 @@
-// TODO: remove after TS fix (https://github.com/microsoft/TypeScript/issues/41529)
+// TODO: remove after TS fix (https://github.com/microsoft/Type-script/issues/41529)
 export interface TuiNativeFocusableElement extends Element, HTMLOrSVGElement {}
 
 /**

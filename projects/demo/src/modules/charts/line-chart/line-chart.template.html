@@ -1,0 +1,167 @@
+<tui-doc-page header="LineChart" package="ADDON-CHARTS">
+    <ng-template pageTab>
+        Компонент линейного графика
+
+        <tui-doc-example id="line" heading="прямые" [content]="example1">
+            <tui-line-chart-example-1></tui-line-chart-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="curve" heading="кривые" [content]="example2">
+            <tui-line-chart-example-2></tui-line-chart-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example id="dash" heading="пунктир" [content]="example3">
+            <tui-line-chart-example-3></tui-line-chart-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example id="hint" heading="подсказка" [content]="example4">
+            <tui-line-chart-example-4></tui-line-chart-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="multiple"
+            heading="подсказка на несколько графиков"
+            [content]="example5"
+        >
+            <tui-line-chart-example-5></tui-line-chart-example-5>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo
+            ><tui-axes class="axes" [verticalLines]="4" [horizontalLines]="2">
+                <tui-line-chart
+                    [x]="x"
+                    [y]="y"
+                    [width]="width"
+                    [height]="height"
+                    [smoothingFactor]="smoothingFactor"
+                    [value]="value"
+                    [filled]="filled"
+                    [dots]="dots"
+                    [hintContent]="hintContent"
+                    [xStringify]="xStringify"
+                    [yStringify]="yStringify"
+                ></tui-line-chart>
+            </tui-axes>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="dots"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="dots"
+            >
+                Показывать кружки на графике (имеет смысл только для широко
+                стоящих точек)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="filled"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="filled"
+            >
+                Заливка градиентом
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hintContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="hintContentVariants"
+                [(documentationPropertyValue)]="hintContent"
+            >
+                Контент для подсказки при наведении. <code>$implicit</code> в
+                контексте равен туплу <code>[TuiDay, number]</code>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="height"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="height"
+            >
+                Дипазон оси y, масштаб пикселей 1:1
+            </ng-template>
+            <ng-template
+                documentationPropertyName="y"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="y"
+            >
+                Начало оси y
+            </ng-template>
+            <ng-template
+                documentationPropertyName="width"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="width"
+            >
+                Дипазон оси x, масштаб пикселей 1:1
+            </ng-template>
+            <ng-template
+                documentationPropertyName="x"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="x"
+            >
+                Начало оси x
+            </ng-template>
+            <ng-template
+                documentationPropertyName="smoothingFactor"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="smoothingFactor"
+            >
+                Коэффициент сглаживания от 0 до 99
+            </ng-template>
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiPoint[]"
+            >
+                Данные для графика
+            </ng-template>
+            <ng-template
+                documentationPropertyName="xStringify"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiStringHandler<number> | null"
+                [documentationPropertyValues]="xStringifyVariants"
+                [(documentationPropertyValue)]="xStringify"
+            >
+                Функция приведения числа к строке, для подсказки на оси x
+            </ng-template>
+            <ng-template
+                documentationPropertyName="yStringify"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiStringHandler<number> | null"
+                [documentationPropertyValues]="yStringifyVariants"
+                [(documentationPropertyValue)]="yStringify"
+            >
+                Функция приведения значение к строке, для подсказки на оси y
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiLineChartModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

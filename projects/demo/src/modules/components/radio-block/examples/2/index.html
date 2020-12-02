@@ -1,0 +1,58 @@
+<h3 class="title">Горизонтальная группировка</h3>
+<form class="group" [formGroup]="testForm">
+    <tui-group class="group" [collapsed]="true">
+        <tui-radio-block
+            contentAlign="right"
+            formControlName="testValue"
+            item="orange"
+            size="l"
+        >
+            Апельсины
+        </tui-radio-block>
+        <tui-radio-block
+            contentAlign="right"
+            formControlName="testValue"
+            item="apple"
+            size="l"
+        >
+            Апельсины
+        </tui-radio-block>
+        <tui-radio-block
+            contentAlign="right"
+            formControlName="testValue"
+            item="pineapple"
+            size="l"
+        >
+            Апельсины
+        </tui-radio-block>
+    </tui-group>
+</form>
+<h3 class="title">Вертикальная группировка</h3>
+<form [formGroup]="testForm">
+    <tui-group class="group" orientation="vertical" [collapsed]="true">
+        <tui-radio-block
+            contentAlign="right"
+            formControlName="testValue"
+            item="orange"
+            size="l"
+        >
+            Апельсины
+        </tui-radio-block>
+        <tui-radio-block
+            contentAlign="right"
+            formControlName="testValue"
+            item="apple"
+            size="l"
+        >
+            Апельсины
+        </tui-radio-block>
+        <tui-radio-block
+            contentAlign="right"
+            formControlName="testValue"
+            item="pineapple"
+            size="l"
+        >
+            Апельсины
+        </tui-radio-block>
+    </tui-group>
+</form>

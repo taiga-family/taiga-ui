@@ -1,0 +1,68 @@
+<div *ngIf="items$ | async as items" class="wrapper">
+    <tui-underline *ngIf="underline" [element]="activeElement"></tui-underline>
+    <tui-tabs
+        class="tabs"
+        [underline]="false"
+        [activeItemIndex]="activeItemIndex"
+        (activeItemIndexChange)="onActiveItemIndexChange($event)"
+        (keydown.arrowRight)="onArrowRight($event.target)"
+    >
+        <ng-container *ngFor="let item of items; let index = index">
+            <ng-container
+                *ngIf="index <= lastVisibleIndex; else hidden"
+                [ngTemplateOutlet]="item.template"
+            ></ng-container>
+            <ng-template #hidden>
+                <div class="hidden">
+                    <ng-container
+                        *ngTemplateOutlet="item.template"
+                    ></ng-container>
+                </div>
+            </ng-template>
+        </ng-container>
+    </tui-tabs>
+    <tui-hosted-dropdown
+        class="more_wrapper"
+        [class.hidden]="!isMoreVisible"
+        [content]="dropdown"
+        [(open)]="open"
+    >
+        <button
+            tuiTab
+            type="button"
+            class="more"
+            [class._active]="isMoreActive"
+            [tuiFocusable]="isMoreFocusable"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+        >
+            <polymorpheus-outlet
+                [content]="moreContent || more"
+            ></polymorpheus-outlet>
+        </button>
+        <ng-template #more>
+            {{moreWord}}
+            <tui-svg
+                src="tuiIconArrowDown"
+                class="icon"
+                [class.icon_rotated]="open"
+            ></tui-svg>
+        </ng-template>
+    </tui-hosted-dropdown>
+    <ng-template #dropdown>
+        <div
+            #element
+            class="dropdown"
+            (click)="onClick($event.target, $event.currentTarget)"
+            (keydown.arrowUp.prevent)="onWrapperArrow($event.target, element, true)"
+            (keydown.arrowDown.prevent)="onWrapperArrow($event.target, element, false)"
+            (tuiPresentChange)="onPresent($event, element)"
+        >
+            <ng-container *ngFor="let item of items; let index = index">
+                <ng-container
+                    *ngIf="index > lastVisibleIndex"
+                    [ngTemplateOutlet]="item.template"
+                ></ng-container
+            ></ng-container>
+        </div>
+    </ng-template>
+</div>

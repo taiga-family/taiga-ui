@@ -1,0 +1,21 @@
+<button
+    tuiButton
+    type="button"
+    class="tui-space_right-3"
+    size="m"
+    (click)="ok()"
+>
+    Да
+</button>
+<button tuiButton type="button" size="m" (click)="cancel()">Нет</button>
+<p>
+    <button tuiButton type="button" size="m" (click)="showDialog(template)">
+        Показать еще один попап
+    </button>
+</p>
+
+<ng-template #template>
+    <div class="dialog">
+        <p>Попап, вызванный с помощью шаблона</p>
+    </div>
+</ng-template>

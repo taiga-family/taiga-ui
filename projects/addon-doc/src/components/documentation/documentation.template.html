@@ -1,0 +1,146 @@
+<h1 *ngIf="heading" class="tui-text_h4">{{heading}}</h1>
+<ng-content></ng-content>
+<table class="tui-table tui-table_layout_fixed tui-table_font-size_s">
+    <tr class="tui-table__tr tui-table__tr_hover_disabled row row_header">
+        <th class="tui-table__th tui-table__th_first cell cell_prop">
+            {{texts[2]}}
+        </th>
+        <td class="tui-table__th">{{type}}</td>
+        <td
+            *ngIf="showValues && !isAPI"
+            class="tui-table__th tui-table__th_last tui-table__th_text_right cell cell_value"
+        >
+            {{texts[3]}}
+        </td>
+    </tr>
+    <tr
+        *ngFor="let propertyConnector of propertiesConnectors; last as lastItem"
+        class="tui-table__tr tui-table__tr_hover_disabled row"
+        [class.deprecated]="propertyConnector.documentationPropertyDeprecated"
+        [class.tui-table__tr_border_none]="lastItem"
+    >
+        <td
+            class="tui-table__td tui-table__td_first tui-table__td_align_center cell"
+        >
+            <div class="property cell">
+                {{stripOptional(propertyConnector.attrName)}}
+                <tui-badge
+                    *ngIf="isOptional(propertyConnector.attrName)"
+                    size="s"
+                    value="Optional"
+                ></tui-badge>
+            </div>
+            <span
+                *ngIf="propertyConnector.documentationPropertyDeprecated"
+                class="deprecated-label"
+                >deprecated</span
+            >
+            <ng-container
+                *ngTemplateOutlet="propertyConnector.template"
+            ></ng-container>
+        </td>
+        <td class="tui-table__td tui-table__td_align_center cell">
+            <span class="type">
+                {{propertyConnector.documentationPropertyType}}
+                <tui-tooltip
+                    *ngIf="showContentTooltip(propertyConnector.documentationPropertyType)"
+                    [describeId]="propertyConnector.attrName"
+                    [content]="content"
+                >
+                    <ng-template #content>
+                        {{texts[4]}}
+                        <a
+                            tuiLink
+                            tuiMode="light"
+                            target="_blank"
+                            href="https://github.com/TinkoffCreditSystems/ng-polymorpheus"
+                            ><code>ng-polymorpheus</code></a
+                        >
+                    </ng-template>
+                </tui-tooltip>
+            </span>
+        </td>
+        <td
+            *ngIf="showValues"
+            class="tui-table__td tui-table__td_align_center tui-table__td_last tui-table__td_text_right cell"
+        >
+            <ng-container *ngIf="propertyConnector.shouldShowValues">
+                <tui-select
+                    *ngIf="propertyConnector.hasItems; else noItems"
+                    tuiTextfieldSize="m"
+                    tuiDropdownLimitWidth="min"
+                    [tuiTextfieldCleaner]="showCleaner(propertyConnector.documentationPropertyType)"
+                    [tuiTextfieldLabelOutside]="true"
+                    [nativeId]="propertyConnector.attrName"
+                    [valueContent]="selectContent"
+                    [ngModel]="propertyConnector.documentationPropertyValue"
+                    (ngModelChange)="propertyConnector.onValueChange($event)"
+                >
+                    <code>null</code>
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="propertyConnector.documentationPropertyValues"
+                        [itemContent]="selectContent"
+                    ></tui-data-list-wrapper>
+                </tui-select>
+                <ng-template #selectContent let-data>
+                    <code>{{inspectAny(data)}}</code>
+                </ng-template>
+
+                <ng-template #noItems>
+                    <ng-container
+                        [ngSwitch]="propertyConnector.documentationPropertyType"
+                    >
+                        <tui-toggle
+                            *ngSwitchCase="'boolean'"
+                            size="l"
+                            [nativeId]="propertyConnector.attrName"
+                            [showIcons]="true"
+                            [ngModel]="propertyConnector.documentationPropertyValue"
+                            (ngModelChange)="propertyConnector.onValueChange($event)"
+                        ></tui-toggle>
+
+                        <tui-primitive-textfield
+                            *ngSwitchCase="'string'"
+                            tuiTextfieldSize="m"
+                            [nativeId]="propertyConnector.attrName"
+                            [tuiTextfieldLabelOutside]="true"
+                            [tuiTextfieldCleaner]="true"
+                            [value]="propertyConnector.documentationPropertyValue || ''"
+                            (valueChange)="propertyConnector.onValueChange($event)"
+                        ></tui-primitive-textfield>
+
+                        <tui-group *ngSwitchCase="'color'">
+                            <tui-primitive-textfield
+                                tuiTextfieldType="color"
+                                tuiTextfieldSize="m"
+                                [attr.id]="propertyConnector.attrName"
+                                [tuiTextfieldLabelOutside]="true"
+                                [tuiInputOpacity]="getOpacity(propertyConnector.documentationPropertyValue)"
+                                [value]="getColor(propertyConnector.documentationPropertyValue)"
+                                (valueChange)="onColorChange(propertyConnector, $event)"
+                            ></tui-primitive-textfield>
+                            <tui-input-count
+                                tuiTextfieldSize="m"
+                                [max]="100"
+                                [ngModel]="getOpacity(propertyConnector.documentationPropertyValue)"
+                                (ngModelChange)="onOpacityChange(propertyConnector, $event)"
+                            >
+                                Opacity
+                            </tui-input-count>
+                        </tui-group>
+
+                        <tui-input-count
+                            *ngSwitchCase="'number'"
+                            tuiTextfieldSize="m"
+                            [nativeId]="propertyConnector.attrName"
+                            [tuiTextfieldLabelOutside]="true"
+                            [ngModel]="propertyConnector.documentationPropertyValue"
+                            (ngModelChange)="propertyConnector.onValueChange($event)"
+                        ></tui-input-count>
+                    </ng-container>
+                </ng-template>
+            </ng-container>
+        </td>
+    </tr>
+</table>

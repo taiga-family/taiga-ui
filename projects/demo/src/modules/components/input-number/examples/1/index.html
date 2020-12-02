@@ -1,0 +1,41 @@
+<form [formGroup]="testForm">
+    <div class="tui-row">
+        <tui-input-number
+            formControlName="testValue"
+            class="tui-col_md-4"
+            [postfix]="'UGX' | tuiCurrency"
+        >
+            Выберите сумму
+        </tui-input-number>
+        <tui-input-number
+            class="tui-col_md-4"
+            formControlName="testValue"
+            [postfix]="'EUR' | tuiCurrency"
+        >
+            Выберите сумму
+        </tui-input-number>
+        <tui-input-number
+            class="tui-col_md-4"
+            formControlName="testValue"
+            [postfix]="'840' | tuiCurrency"
+        >
+            Выберите сумму
+        </tui-input-number>
+    </div>
+    <div class="tui-row tui-space_top-2">
+        <tui-input-number
+            class="tui-col_md-4"
+            formControlName="testValue"
+            [postfix]="826 | tuiCurrency"
+        >
+            Выберите сумму
+        </tui-input-number>
+        <tui-input-number
+            class="tui-col_md-4"
+            formControlName="testValue"
+            [postfix]="null | tuiCurrency"
+        >
+            Выберите сумму
+        </tui-input-number>
+    </div>
+</form>

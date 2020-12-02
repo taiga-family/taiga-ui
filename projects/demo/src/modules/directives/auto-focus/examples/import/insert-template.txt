@@ -1,0 +1,7 @@
+<!-- Обычный HTML элемент -->
+<div tuiAutoFocus tabindex="0"></div>
+
+<!-- Или фокусируемый компонент Taiga UI -->
+<tui-input tuiAutoFocus [(ngModel)]="model">
+    Input
+</tui-input>

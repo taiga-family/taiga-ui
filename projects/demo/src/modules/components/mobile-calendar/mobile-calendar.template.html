@@ -1,0 +1,127 @@
+<tui-doc-page header="MobileCalendar" package="ADDON-MOBILE">
+    <ng-template pageTab>
+        Компонент календаря для мобильных устройств. Используется автоматически
+        в
+        <a tuiLink [routerLink]="['/tui-input-date']">InputDate</a> и
+        <a tuiLink [routerLink]="['/tui-input-date-range']">InputDateRange</a>
+        при подключении модуля <code>TuiMobileCalendarDialogModule</code>.
+        <p>
+            Для передачи текущего значения используется провайдер токен
+            <code>TUI_CALENDAR_DATA_STREAM</code>, см. пример.
+        </p>
+        <strong>
+            Компонент рассчитан на полноэкранное использование на мобильных
+            устройствах.
+        </strong>
+
+        <tui-doc-example
+            id="dropdown"
+            heading="произвольная выпадашка"
+            [content]="example1"
+        >
+            <tui-mobile-calendar-example-1></tui-mobile-calendar-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-mobile-calendar
+                class="calendar"
+                [disabledItemHandler]="disabledItemHandler"
+                [max]="max"
+                [min]="min"
+                [single]="single"
+            ></tui-mobile-calendar>
+        </tui-doc-demo>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<TuiDay>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Функция, определяющая, заблокирована ли дата в календаре.<br />
+                <strong>Должна быть чистой функцией.</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDay"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Максимальная дата
+            </ng-template>
+            <ng-template
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDay"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Минимальная дата
+            </ng-template>
+            <ng-template
+                documentationPropertyName="single"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="single"
+            >
+                Одиночная дата или диапазон
+            </ng-template>
+            <ng-template
+                documentationPropertyName="cancel"
+                documentationPropertyMode="output"
+                documentationPropertyType="void"
+            >
+                Нажатие на крестик
+            </ng-template>
+            <ng-template
+                documentationPropertyName="confirm"
+                documentationPropertyMode="output"
+                documentationPropertyType="TuiDayRange | TuiDay"
+            >
+                Нажатие кнопки "Готово"
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiMobileCalendarModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Для автоматического использования вместе с
+                <code>TuiInputDate</code> или
+                <code>TuiInputDateRange</code> достаточно импортировать модуль
+                <code>TuiMobileCalendarDialogModule</code>
+                в тот же модуль, куда добавляются инпуты:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportDialogModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

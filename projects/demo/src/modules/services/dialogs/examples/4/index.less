@@ -1,0 +1,77 @@
+@import 'taiga-ui-angular-local';
+
+@color-mobile-header: #6ab5df;
+@color-mobile-background: #f6f7f8;
+@color-mobile-gray: #9299a2;
+
+:host {
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+.portal {
+    .center-left();
+    position: fixed;
+    bottom: 20px;
+    animation: tuiFadeIn @animation-duration @animation-duration;
+    animation-fill-mode: backwards;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    width: calc(100% + 48px);
+    margin-top: -24px;
+    margin-left: -24px;
+    text-align: center;
+    word-wrap: break-word;
+    background: @color-mobile-header;
+    border-radius: inherit;
+    transform-origin: top center;
+}
+
+.wrapper {
+    background: @color-mobile-background;
+    padding: 50px 0 32px;
+}
+
+.logo {
+    position: relative;
+    height: 88px;
+    color: var(--tui-base-01);
+}
+
+.date {
+    display: block;
+    font-size: 17px;
+    line-height: 18px;
+    padding: 12px 0;
+}
+
+.icon[data-tui-host-size='m'] {
+    position: relative;
+    margin-top: 4px;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 0 0 4px @color-mobile-background;
+    color: @color-mobile-background;
+    background: @color-mobile-header;
+}
+
+.description {
+    font-size: 17px;
+    line-height: 18px;
+    margin: 8px 0 0;
+    color: @color-mobile-gray;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    margin: 24px 0 4px;
+}
+
+.money {
+    font-size: 34px;
+    line-height: 40px;
+}

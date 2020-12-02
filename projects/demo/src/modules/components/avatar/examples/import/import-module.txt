@@ -1,0 +1,10 @@
+import {TuiAvatarModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiAvatarModule
+    ],
+...

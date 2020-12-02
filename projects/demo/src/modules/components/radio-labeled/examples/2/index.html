@@ -1,0 +1,43 @@
+<form [formGroup]="testForm">
+    <tui-radio-labeled
+        formControlName="testValue1"
+        class="tui-space_bottom-3"
+        [item]="items[0]"
+    >
+        <div>Тариф &laquo;Простой&raquo;</div>
+        <div class="description">
+            Если у&nbsp;вас месяц нет оборотов&nbsp;&mdash; абонентскую плату
+            не&nbsp;берем. Поможет тем, кто редко проводит платежи, проверяет
+            идею бизнеса и&nbsp;бережно относится к&nbsp;своим расходам.
+            <a tuiLink href="#" onclick="return false;">Подробнее о тарифе</a>
+        </div>
+    </tui-radio-labeled>
+    <tui-radio-labeled
+        formControlName="testValue1"
+        class="tui-space_bottom-3"
+        [item]="items[1]"
+    >
+        <div>Тариф &laquo;Продвинутый&raquo;</div>
+        <div class="description">
+            Больше свободы: 10&nbsp;бесплатных платёжных поручений
+            и&nbsp;возможность подключить безлимитные опции. Проще получать
+            прибыль для&nbsp;ИП: возможность переводить в&nbsp;месяц
+            до&nbsp;300&nbsp;000&nbsp;₽ на&nbsp;собственную карту
+            и&nbsp;до&nbsp;350&nbsp;000&nbsp;₽ на&nbsp;свою кредитную карту без
+            комиссии.
+            <a tuiLink href="#" onclick="return false;">Подробнее о тарифе</a>
+        </div>
+    </tui-radio-labeled>
+    <tui-radio-labeled formControlName="testValue1" [item]="items[2]">
+        <div>Тариф &laquo;Профессиональный&raquo;</div>
+        <div class="description">
+            Безграничные возможности: низкие тарифы на&nbsp;валютный контроль
+            и&nbsp;переводы, выгодные курсы конвертации, расширенный объем
+            снятия наличных, безлимитные переводы физлицам и&nbsp;контрагентам.
+            Торговый эквайринг от&nbsp;1,59% от&nbsp;оборота. Бесплатный
+            зарплатный проект и&nbsp;ежемесячные начисления до&nbsp;8%
+            на&nbsp;остаток по&nbsp;счету.
+            <a tuiLink href="#" onclick="return false;">Подробнее о тарифе</a>
+        </div>
+    </tui-radio-labeled>
+</form>

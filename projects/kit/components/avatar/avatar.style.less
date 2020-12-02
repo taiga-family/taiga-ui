@@ -1,0 +1,80 @@
+@import 'taiga-ui-angular-local';
+
+@size-xs: 24px;
+@size-s: 32px;
+@size-m: 48px;
+@size-l: 64px;
+@size-xl: 96px;
+@size-xxl: 144px;
+
+:host {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    border-radius: var(--tui-radius);
+    color: var(--tui-secondary-active);
+    text-align: center;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    background-color: currentColor;
+    user-select: none;
+    overflow: hidden;
+
+    &[data-tui-host-size='xs'] {
+        .text-body-s(2);
+        width: @size-xs;
+        height: @size-xs;
+    }
+
+    &[data-tui-host-size='s'] {
+        .text-body-m(2);
+        width: @size-s;
+        height: @size-s;
+    }
+
+    &[data-tui-host-size='m'] {
+        .text-body-l();
+        width: @size-m;
+        height: @size-m;
+    }
+
+    &[data-tui-host-size='l'] {
+        .text-h5();
+        width: @size-l;
+        height: @size-l;
+        border-radius: var(--tui-radius-xl);
+    }
+
+    &[data-tui-host-size='xl'] {
+        .text-h3();
+        width: @size-xl;
+        height: @size-xl;
+        border-radius: var(--tui-radius-xl);
+    }
+
+    &[data-tui-host-size='xxl'] {
+        .text-h1();
+        width: @size-xxl;
+        height: @size-xxl;
+        border-radius: var(--tui-radius-xl);
+    }
+
+    &._has-avatar {
+        background-color: transparent;
+    }
+
+    &._rounded {
+        border-radius: 100%;
+    }
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text {
+    color: var(--tui-text-01);
+}

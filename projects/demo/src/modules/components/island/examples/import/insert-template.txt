@@ -1,0 +1,11 @@
+<tui-island>
+    <h3 class="tui-island__title">
+        Дебетовая карта
+    </h3>
+    <p class="tui-island__paragraph">
+        Для участия в розыгрыше нужно в одной из социальных сетей Facebook, Instagram, Twitter.
+    </p>
+    <p class="tui-island__paragraph tui-island__paragraph_button">
+        <button tuiButton type="button" appearance="secondary">Кнопка</button>
+    </p>
+</tui-island>

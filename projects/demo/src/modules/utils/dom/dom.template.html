@@ -1,0 +1,47 @@
+<tui-doc-page header="DOM утилиты" package="CDK">
+    <ng-template pageTab>
+        Набор функций для упрощения взаимодействия с DOM деревом
+
+        <div class="description-header">tuiCustomEvent</div>
+        Генерирует кастомное событие
+
+        <div class="description-header">getActualTarget</div>
+        Возвращает target события из Shadow DOM, если событие произошло внутри
+        него. Иначе вернет target обычного DOM.
+
+        <div class="description-header">getClipboardDataText</div>
+        Возвращает текст из <code>data</code> в <code>clipboardEvent</code>.
+        Работает также в браузерах IE и Edge.
+
+        <div class="description-header">getClosestElement</div>
+        Возвращает ближайший родительский элемент, подходящий по указанному
+        селектору. Иначе возвращает null. Аналог element.closest().
+
+        <div class="description-header">getDocumentOrShadowRoot</div>
+        Вернет shadowRoot, если таковой имеется. Иначе вернет document.
+
+        <div class="description-header">getScrollParent</div>
+        Возвращает ближайший родительский элемент, в котором присутствует
+        скролл.
+
+        <div class="description-header">isElementAtPoint</div>
+        Проверяет, попадает ли переданная точка в заданный элемент
+
+        <div class="description-header">isElementObscured</div>
+        Проверяет, перекрыт ли элемент другими или проскроллен вне зоны
+        видимости. Делает это с запасом в 2 пикселя на округления.
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования достаточно импортировать функции в компоненте
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="importComponentExample"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

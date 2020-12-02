@@ -1,0 +1,53 @@
+<tui-wrapper
+    [appearance]="appearance"
+    [disabled]="disabled"
+    [focused]="computedFocusVisible"
+    [hovered]="computedHovered"
+    [pressed]="computedPressed"
+    [invalid]="computedInvalid"
+>
+    <div class="toggle">
+        <tui-loader
+            *ngIf="showLoader"
+            class="loader"
+            [size]="loaderSize"
+            [inheritColor]="true"
+            [showLoader]="checked"
+        ></tui-loader>
+        <tui-svg
+            *ngIf="showIcons && !showLoader"
+            class="icon"
+            automation-id="tui-toggle__check-icon"
+            [src]="iconOn"
+        ></tui-svg>
+        <div class="circle"></div>
+        <tui-loader
+            *ngIf="showLoader"
+            class="loader"
+            [size]="loaderSize"
+            [inheritColor]="true"
+            [showLoader]="!checked"
+        ></tui-loader>
+        <tui-svg
+            *ngIf="showIcons && !showLoader"
+            class="icon icon_off"
+            automation-id="tui-toggle__cancel-icon"
+            [src]="iconOff"
+        ></tui-svg>
+    </div>
+</tui-wrapper>
+<input
+    #focusableElement
+    type="checkbox"
+    class="checkbox"
+    role="switch"
+    automation-id="tui-toggle__checkbox"
+    [disabled]="disabled"
+    [tuiChecked]="checked"
+    [tuiFocusable]="focusable"
+    (tuiCheckedChange)="onChecked($event)"
+    (tuiFocusedChange)="onFocused($event)"
+    (tuiHoveredChange)="onHovered($event)"
+    (tuiPressedChange)="onPressed($event)"
+    (tuiFocusVisibleChange)="onFocusVisible($event)"
+/>

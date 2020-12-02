@@ -1,0 +1,54 @@
+<tui-hosted-dropdown
+    class="hosted"
+    [canOpen]="canOpen"
+    [content]="dropdown"
+    [open]="open && canOpen"
+    (openChange)="onOpenChange($event)"
+    (tuiActiveZoneChange)="onActiveZone($event)"
+>
+    <tui-primitive-textfield
+        automation-id="tui-input-date-range__textfield"
+        class="textfield"
+        [pseudoFocused]="innerPseudoFocused"
+        [pseudoHovered]="pseudoHovered"
+        [pseudoPressed]="pseudoPressed"
+        [invalid]="computedInvalid"
+        [tuiTextfieldExampleText]="computedExampleText"
+        [nativeId]="nativeId"
+        [filler]="computedFiller"
+        [readOnly]="readOnly"
+        [iconContent]="computedMobile ? iconContent : calendarIcon"
+        [disabled]="computedDisabled"
+        [textMask]="computedMask"
+        [value]="computedValue"
+        (valueChange)="onValueChange($event)"
+        (hoveredChange)="onHovered($event)"
+        (pressedChange)="onPressed($event)"
+        (click.prevent)="onClick()"
+    >
+        <ng-content></ng-content>
+    </tui-primitive-textfield>
+
+    <ng-template #iconContent>
+        <tui-svg
+            automation-id="tui-input-date-range__icon"
+            class="icon"
+            [src]="calendarIcon"
+            (touchstart)="onMobileMouseDown($event)"
+        ></tui-svg>
+    </ng-template>
+
+    <ng-template #dropdown>
+        <tui-calendar-range
+            [defaultViewedMonth]="defaultViewedMonth"
+            [disabledItemHandler]="disabledItemHandler"
+            [items]="items"
+            [min]="min"
+            [max]="max"
+            [markerHandler]="markerHandler"
+            [minLength]="minLength"
+            [maxLength]="maxLength"
+            (rangeChange)="onRangeChange($event)"
+        ></tui-calendar-range>
+    </ng-template>
+</tui-hosted-dropdown>

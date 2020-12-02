@@ -1,0 +1,158 @@
+<tui-doc-page header="BadgedContent" package="KIT">
+    <ng-template pageTab>
+        <p>
+            BadgedContent служит оберткой компонентов для отображение в них
+            бейджа или нотификации.
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="с нотификацией"
+            [content]="example1"
+        >
+            <tui-badged-content-example-1></tui-badged-content-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="components"
+            heading="с различными компонентами"
+            [content]="example2"
+        >
+            <tui-badged-content-example-2></tui-badged-content-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="badge"
+            heading="с бейджем и иконкой"
+            [content]="example3"
+        >
+            <tui-badged-content-example-3></tui-badged-content-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-badged-content
+                [borderColor]="borderColor"
+                [contentTop]="contentTop === 'Шаблон' ? example : contentTop"
+                [contentBottom]="contentBottom === 'Шаблон' ? example : contentBottom"
+                [rounded]="rounded"
+                [statusTop]="statusTop"
+                [statusBottom]="statusBottom"
+                [size]="size"
+            >
+                <tui-avatar
+                    [text]="text"
+                    [rounded]="rounded"
+                    [size]="size"
+                ></tui-avatar>
+            </tui-badged-content>
+            <ng-template #example="polymorpheus" polymorpheus>
+                <tui-avatar
+                    text="Пример"
+                    size="s"
+                    [avatarUrl]="imageUrl"
+                    [rounded]="true"
+                ></tui-avatar>
+            </ng-template>
+        </tui-doc-demo>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="borderColor"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyDeprecated]="true"
+                [(documentationPropertyValue)]="borderColor"
+            >
+                Цвет обводки вокруг бейджа. Выставите <code>null</code> и
+                используйте CSS <code>color</code>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="contentBottom"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent | null"
+                [documentationPropertyValues]="contentVariants"
+                [(documentationPropertyValue)]="contentBottom"
+            >
+                Произвольный контент в правом нижнем углу. В случае числа
+                вставляется в бейдж, в случае строки — считается иконкой.
+                <b>Внимание:</b> используйте большие иконки для всех размеров,
+                кроме 'xs'.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="contentTop"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent | null"
+                [documentationPropertyValues]="contentVariants"
+                [(documentationPropertyValue)]="contentTop"
+            >
+                Произвольный контент в правом верхнем углу. В случае числа
+                вставляется в бейдж, в случае строки — считается иконкой.
+                <b>Внимание:</b> используйте большие иконки для всех размеров,
+                кроме 'xs'.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="statusBottom"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiNotification | TuiSupportColor | null"
+                [documentationPropertyValues]="statusVariants"
+                [(documentationPropertyValue)]="statusBottom"
+            >
+                Цвет содержимого в правом нижнем углу. При отсутствии
+                содержимого, показывается кружок соответствующего цвета.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="statusTop"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiNotification | TuiSupportColor | null"
+                [documentationPropertyValues]="statusVariants"
+                [(documentationPropertyValue)]="statusTop"
+            >
+                Цвет содержимого в правом верхнем углу. При отсутствии
+                содержимого, показывается кружок соответствующего цвета.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyType="TuiSizeXS | TuiSizeXXL"
+                documentationPropertyMode="input"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер
+            </ng-template>
+            <ng-template
+                documentationPropertyName="rounded"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="rounded"
+            >
+                Круглый контент
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiBadgedContentModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

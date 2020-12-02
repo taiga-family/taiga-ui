@@ -1,0 +1,40 @@
+<div
+    class="wrapper"
+    tuiPreventDefault="mousedown"
+    #wrapper
+    [tuiFocusable]="computedFocusable"
+    (tuiFocusedChange)="onFocused($event)"
+    (tuiFocusVisibleChange)="onFocusVisible($event)"
+    (keydown.arrowLeft)="onLeftClick()"
+    (keydown.arrowRight)="onRightClick()"
+>
+    <button
+        tuiIconButton
+        type="button"
+        size="xs"
+        appearance=""
+        automation-id="tui-primitive-spin-button__left"
+        icon="tuiIconArrowLeftLarge"
+        class="arrow"
+        [class.arrow_hidden]="leftComputedDisabled"
+        [title]="spinTexts[0]"
+        [focusable]="false"
+        (click)="onLeftClick()"
+    ></button>
+    <span class="content">
+        <ng-content></ng-content>
+    </span>
+    <button
+        tuiIconButton
+        type="button"
+        size="xs"
+        appearance=""
+        automation-id="tui-primitive-spin-button__right"
+        icon="tuiIconArrowRightLarge"
+        class="arrow"
+        [class.arrow_hidden]="rightComputedDisabled"
+        [title]="spinTexts[1]"
+        [focusable]="false"
+        (click)="onRightClick()"
+    ></button>
+</div>

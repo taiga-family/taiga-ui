@@ -1,0 +1,21 @@
+@import '../../../styles/basic/basic-imports';
+
+:host {
+    .shadow(2);
+    display: block;
+    border-radius: var(--tui-radius);
+}
+
+.heading {
+    .text-body-m-bold(2);
+    margin: 0;
+}
+
+.content {
+    color: var(--tui-text-01);
+    word-wrap: break-word;
+
+    &:empty {
+        display: none;
+    }
+}

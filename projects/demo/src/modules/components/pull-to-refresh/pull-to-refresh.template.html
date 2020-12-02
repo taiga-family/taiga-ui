@@ -1,0 +1,49 @@
+<tui-doc-page header="PullToRefresh" package="ADDON-MOBILE">
+    <ng-template pageTab>
+        Компонент для обновления контента блока по пуллу сверху вниз. Эмулирует
+        внешний вид и поведение нативных вариантов из iOS и Android.
+
+        <tui-notification class="tui-space_top-4" [hasCloseButton]="false">
+            <div>
+                Компонент эмитит событие <code>(pulled)</code>, когда
+                пользователь инициировал загрузку.
+            </div>
+            <div class="tui-space_top-2">
+                Завершить загрузку можно стримом <code>TUI_LOADED</code>,
+                который задается через DI
+            </div>
+        </tui-notification>
+
+        <tui-doc-example id="android" heading="Android" [content]="example1">
+            <tui-pull-to-refresh-example-1></tui-pull-to-refresh-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="ios" heading="iOS" [content]="example2">
+            <tui-pull-to-refresh-example-2></tui-pull-to-refresh-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Подключение">
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiPullToRefreshModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

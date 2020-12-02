@@ -1,0 +1,14 @@
+import {TuiNotificationsService} from '@taiga-ui/core';
+...
+
+constructor(@Inject(TuiNotificationsService) private readonly notificationsService: TuiNotificationsService) {
+
+...
+
+    this.notificationsService.showNotification('Notification')
+        .subscribe({
+            complete: () => {
+                console.log('Notification is closed');
+            }
+        });
+...

@@ -1,0 +1,40 @@
+<tui-doc-page header="HintController" package="CORE">
+    <ng-template pageTab>
+        Директива позволяет задать настройки для китовых компонентов с хинтами
+        внутри. Например, чтобы у
+        <a tuiLink target="_blank" routerLink="/tui-primitive-textfield"
+            ><code>TuiPrimitiveTextfield</code></a
+        >
+        появился тултип, навесьте на него или на один родительских элементов эту
+        директиву
+
+        <tui-doc-example id="base" heading="Базовый" [content]="example1">
+            <tui-hint-controller-example-1></tui-hint-controller-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Подключение">
+        <ol class="b-demo-steps">
+            <li>
+                Для использования необходимо импортировать модуль
+                <code>TuiHintControllerModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Используйте в шаблоне на компоненте с поддержкой хинтов, либо на
+                одной из его оберток
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

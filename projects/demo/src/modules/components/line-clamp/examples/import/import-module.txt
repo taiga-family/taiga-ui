@@ -1,0 +1,10 @@
+import {TuiLineClampModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiLineClampModule,
+    ],
+...

@@ -1,0 +1,21 @@
+<tui-tabs [(activeItemIndex)]="activeItemIndex">
+    <button tuiTab type="button" (click)="onClick('Карты')">
+        <tui-svg src="tuiIconCard" class="tui-space_right-2"></tui-svg>
+        Карты
+    </button>
+    <button tuiTab type="button" disabled (click)="onClick('Вызовы')">
+        <tui-svg src="tuiIconCall" class="tui-space_right-2"></tui-svg>
+        Вызовы
+    </button>
+    <button tuiTab type="button" (click)="onClick('Тариф')">
+        <tui-svg src="tuiIconSettings" class="tui-space_right-2"></tui-svg>
+        Тариф
+    </button>
+</tui-tabs>
+<tui-input-count
+    class="tui-space_top-4"
+    [max]="2"
+    [(ngModel)]="activeItemIndex"
+>
+    activeItemIndex
+</tui-input-count>

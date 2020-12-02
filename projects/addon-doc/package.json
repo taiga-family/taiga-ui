@@ -1,0 +1,35 @@
+{
+    "name": "@taiga-ui/addon-doc",
+    "version": "1.34.0",
+    "description": "Taiga UI based library for developing documentation portals for Angular libraries.",
+    "keywords": [
+        "angular",
+        "component",
+        "library",
+        "docs",
+        "documentation",
+        "storybook"
+    ],
+    "schematics": "./schematics/collection.json",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "peerDependencies": {
+        "@angular/common": ">=6.0.0",
+        "@angular/core": ">=6.0.0",
+        "@angular/forms": ">=6.0.0",
+        "@angular/router": ">=6.0.0",
+        "@angular-devkit/schematics": "^8.3.21",
+        "@tinkoff/ng-polymorpheus": ">=2.0.0",
+        "@taiga-ui/cdk": "^1.5.2",
+        "@taiga-ui/core": "1.34.0",
+        "@taiga-ui/kit": "1.34.0",
+        "schematics-utilities": "1.0.1",
+        "highlight.js": "^9.15.5",
+        "ngx-highlightjs": "3.0.3"
+    },
+    "devDependencies": {
+        "@taiga-ui/core": "1.34.0",
+        "@taiga-ui/kit": "1.34.0"
+    }
+}

@@ -1,0 +1,21 @@
+@import '../../styles/basic/basic-imports';
+
+@itemSize: 63px;
+
+.picker(@itemSize);
+
+:host {
+    width: @itemSize * 4;
+}
+
+.row {
+    margin: 14px 0;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

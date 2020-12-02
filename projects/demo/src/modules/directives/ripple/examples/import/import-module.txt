@@ -1,0 +1,10 @@
+import {TuiRippleModule} from '@taiga-ui/addon-mobile';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiRippleModule,
+    ],
+...

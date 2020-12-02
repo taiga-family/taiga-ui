@@ -1,0 +1,102 @@
+<tui-doc-page header="Pagination" package="KIT">
+    <ng-template pageTab>
+        Paginator полный
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-pagination-example-1></tui-pagination-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="around"
+            heading="количество видимых страниц вокруг активной"
+            [content]="example2"
+        >
+            <tui-pagination-example-2></tui-pagination-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="edges"
+            heading="количество видимых страниц с краёв"
+            [content]="example3"
+        >
+            <tui-pagination-example-3></tui-pagination-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="кастомный шаблон"
+            [content]="example4"
+        >
+            <tui-pagination-example-4></tui-pagination-example-4>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-pagination
+                [focusable]="focusable"
+                [length]="length"
+                [size]="size"
+                [(index)]="index"
+            ></tui-pagination>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="focusable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="focusable"
+            >
+                Принимает фокус с клавиатуры
+            </ng-template>
+            <ng-template
+                documentationPropertyName="index"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="index"
+            >
+                Индекс активной страницы
+            </ng-template>
+            <ng-template
+                documentationPropertyName="length"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="length"
+            >
+                Количество страниц
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiPaginationModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

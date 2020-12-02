@@ -1,0 +1,34 @@
+:host {
+    display: flex;
+    min-width: 2px;
+    flex-direction: column-reverse;
+    border-top-left-radius: var(--tui-radius-xl);
+    border-top-right-radius: var(--tui-radius-xl);
+    overflow: hidden;
+
+    &:not([data-tui-background]) {
+        background-color: var(--tui-base-05);
+    }
+
+    &[data-tui-host-size='l'] {
+        width: 16px;
+        max-width: 16px;
+        margin: 0 3px;
+    }
+
+    &[data-tui-host-size='m'] {
+        width: 8px;
+        max-width: 8px;
+        margin: 0 3px;
+    }
+
+    &[data-tui-host-size='s'] {
+        width: 4px;
+        max-width: 8px;
+        margin: 0 2px;
+    }
+}
+
+.bar:not([data-tui-background]) {
+    background-color: var(--tui-base-05);
+}

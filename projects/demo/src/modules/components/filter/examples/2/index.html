@@ -1,0 +1,13 @@
+<form [formGroup]="form">
+    <tui-filter
+        formControlName="filters"
+        [identityMatcher]="identityMatcher"
+        [content]="content"
+        [badgeHandler]="badgeHandler"
+        [items]="items"
+    ></tui-filter>
+</form>
+<ng-template #content let-item> {{item.title}} </ng-template>
+<div>
+    <pre>Значение формы: {{form.value | json}}</pre>
+</div>

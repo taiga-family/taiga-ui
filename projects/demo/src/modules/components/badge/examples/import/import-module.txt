@@ -1,0 +1,10 @@
+import {TuiBadgeModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiBadgeModule
+    ],
+...

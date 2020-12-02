@@ -1,0 +1,68 @@
+<tui-doc-page header="Форматирующие утилиты" package="CDK / CORE">
+    <ng-template pageTab>
+        Набор безопасных форматирующих функций
+
+        <tui-doc-example
+            id="px"
+            heading="px"
+            description="Добавляет px к конечному числу."
+            [content]="example1"
+        >
+            <tui-format-example-1></tui-format-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="padStart"
+            heading="padStart"
+            description="Добавляет в начало строки заданный заполнитель."
+            [content]="example2"
+        >
+            <tui-format-example-2></tui-format-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="getCurrencySymbol"
+            heading="getCurrencySymbol"
+            description="Возвращает символ валюты строковому представлению
+                                         кода валюты, а также по трехбуквенной аббревиатуре валюты в стандарте
+                                         ISO 4217. Поддерживает 17 валют, которые входят в список доступных
+                                         для открытия счетов в банке и имеют символ."
+            [content]="example3"
+        >
+            <tui-format-example-3></tui-format-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="capitalize"
+            heading="capitalize"
+            description="Преобразовывает строку, заменяя её на нижний регистр и делая первую
+                                                  букву каждого слова в верхнем регистре."
+            [content]="example4"
+        >
+            <tui-format-example-4></tui-format-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="formatPhone"
+            heading="formatPhone"
+            description="Форматирует строку с телефоном формата +7XXXXXXXXXX,
+                                                  добавляя заданные заполнители."
+            [content]="example5"
+        >
+            <tui-format-example-5></tui-format-example-5>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Подключение">
+        <ol class="b-demo-steps">
+            <li>
+                Для использования достаточно импортировать функции в компоненте
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="importComponentExample"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

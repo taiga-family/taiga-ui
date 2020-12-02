@@ -1,0 +1,9 @@
+<polymorpheus-outlet
+    *ngIf="!!error"
+    automation-id="tui-error__text"
+    class="message-text"
+    [content]="error.message || defauleErrorMessage"
+    [context]="error.context || {}"
+    [@tuiHeightCollapse]
+    [@tuiFadeIn]
+></polymorpheus-outlet>

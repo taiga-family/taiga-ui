@@ -1,0 +1,43 @@
+<tui-combo-box
+    *tuiLet="service.request(search) | async as filtered"
+    class="control"
+    tuiTextfieldExampleText="Вводите имя / фамилию"
+    [formControl]="control"
+    [valueContent]="value"
+    [(search)]="search"
+>
+    Найдите лучших сотрудников
+    <ng-template #value let-item>
+        <tui-avatar
+            class="avatar"
+            size="xs"
+            [avatarUrl]="item.avatarUrl || null"
+            [text]="item.toString()"
+        ></tui-avatar>
+        <span class="name"> {{item}} </span>
+    </ng-template>
+    <ng-template tuiDataList>
+        <tui-data-list *ngIf="filtered; else loading">
+            <button
+                *ngFor="let item of filtered"
+                tuiOption
+                [value]="item"
+                [disabled]="item.disabled"
+            >
+                <tui-avatar
+                    class="avatar"
+                    size="xs"
+                    [avatarUrl]="item.avatarUrl || null"
+                    [text]="item.toString()"
+                ></tui-avatar>
+                <span class="name"> {{item}} </span>
+            </button>
+        </tui-data-list>
+        <ng-template #loading>
+            <tui-loader
+                class="tui-space_vertical-4"
+                [showLoader]="true"
+            ></tui-loader>
+        </ng-template>
+    </ng-template>
+</tui-combo-box>

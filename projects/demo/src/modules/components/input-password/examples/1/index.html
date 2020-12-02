@@ -1,0 +1,16 @@
+<form class="container" [formGroup]="testForm">
+    <tui-input-password formControlName="testValue" tuiTextfieldSize="s">
+        Введите пароль
+    </tui-input-password>
+    <tui-input-password
+        class="tui-space_top-2"
+        formControlName="testValue"
+        tuiTextfieldSize="m"
+        [tuiTextfieldLabelOutside]="true"
+    >
+        Введите пароль
+    </tui-input-password>
+    <tui-input-password class="tui-space_top-2" formControlName="testValue">
+        Введите пароль
+    </tui-input-password>
+</form>

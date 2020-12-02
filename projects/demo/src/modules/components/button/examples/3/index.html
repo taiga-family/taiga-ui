@@ -1,0 +1,15 @@
+<tui-hosted-dropdown
+    tuiDropdownLimitWidth="fixed"
+    [open]="open"
+    [content]="dropdown"
+>
+    <button tuiButton type="button" [iconRight]="arrow" (click)="onClick()">
+        Где же взять такую стрелку...?
+    </button>
+</tui-hosted-dropdown>
+<ng-template #dropdown>
+    <div class="content">
+        Используйте <code>TuiArrowModule</code> из
+        <code>@taiga-ui/kit</code>
+    </div>
+</ng-template>

@@ -1,0 +1,50 @@
+<tui-hosted-dropdown [content]="dropdown" [(open)]="open">
+    <tui-group>
+        <button
+            tuiButton
+            type="button"
+            class="tui-group__auto-width-item"
+            size="l"
+        >
+            Кнопка
+        </button>
+        <button
+            tuiIconButton
+            type="button"
+            tuiHostedDropdownHost
+            class="tui-group__auto-width-item"
+            title="Меню"
+            size="l"
+            [iconRight]="icon"
+        ></button>
+        <ng-template #icon>
+            <tui-svg
+                src="tuiIconArrowDown"
+                class="icon"
+                [class.icon_rotated]="open"
+            ></tui-svg>
+        </ng-template>
+    </tui-group>
+</tui-hosted-dropdown>
+<ng-template #dropdown let-activeZone>
+    <p class="margin">
+        Для работы вложенных выпадашек в<br />
+        контексте шаблона есть <code>let-activeZone</code>
+    </p>
+    <tui-select
+        class="margin"
+        [tuiActiveZoneParent]="activeZone"
+        [(ngModel)]="selected"
+    >
+        Вложенный селект
+        <tui-data-list-wrapper
+            *tuiDataList
+            [items]="selectItems"
+        ></tui-data-list-wrapper>
+    </tui-select>
+    <tui-data-list>
+        <button *ngFor="let item of items" tuiOption (click)="onClick()">
+            {{item}}
+        </button>
+    </tui-data-list>
+</ng-template>

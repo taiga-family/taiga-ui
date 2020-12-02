@@ -1,0 +1,21 @@
+<tui-select #select class="control" [(ngModel)]="value">
+    Select user
+    <tui-data-list *tuiDataList>
+        <tui-opt-group label="Monty Python">
+            <button *ngFor="let python of pythons" tuiOption [value]="python">
+                {{python}}
+            </button>
+        </tui-opt-group>
+        <tui-opt-group label="Open-source squad">
+            <button tuiOption value="Alexander Inkin">Alexander Inkin</button>
+            <button tuiOption value="Roman Sedov">Roman Sedov</button>
+        </tui-opt-group>
+        <button class="more" tuiOption (click)="addMore(select)">
+            <tui-svg
+                class="tui-space_right-2"
+                src="tuiIconPlusCircleLarge"
+            ></tui-svg>
+            Add more
+        </button>
+    </tui-data-list>
+</tui-select>

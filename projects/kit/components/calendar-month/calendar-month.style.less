@@ -1,0 +1,35 @@
+@import 'taiga-ui-angular-local';
+
+.picker(59px);
+
+:host {
+    display: block;
+    height: 218px;
+    width: 252px;
+    padding: 18px;
+    box-sizing: content-box;
+}
+
+.row {
+    flex-wrap: wrap;
+    margin-top: 23px;
+}
+
+.cell {
+    box-sizing: content-box;
+
+    &:nth-child(n + 5) {
+        margin-top: 28px;
+    }
+}
+
+.cell_interval:nth-child(4n) {
+    &:before {
+        right: 0;
+    }
+}
+
+.scrollbar {
+    height: inherit;
+    width: inherit;
+}

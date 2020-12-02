@@ -1,0 +1,131 @@
+<tui-doc-page header="LineDaysChart" package="ADDON-CHARTS">
+    <ng-template pageTab>
+        Компонент линейного графика для дней
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-line-days-chart-example-1></tui-line-days-chart-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="complex" heading="сложный" [content]="example2">
+            <tui-line-days-chart-example-2></tui-line-days-chart-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-axes
+                class="axes"
+                [verticalLines]="3"
+                [horizontalLines]="4"
+                [axisXLabels]="labels"
+            >
+                <tui-line-days-chart
+                    [value]="value"
+                    [y]="y"
+                    [height]="height"
+                    [hintContent]="hintContent"
+                    [xStringify]="xStringify"
+                    [yStringify]="yStringify"
+                    [smoothingFactor]="smoothingFactor"
+                    [dots]="dots"
+                ></tui-line-days-chart>
+            </tui-axes>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="dots"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="dots"
+            >
+                Показывать кружки на графике (имеет смысл только для широко
+                стоящих точек)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hintContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="hintContentVariants"
+                [(documentationPropertyValue)]="hintContent"
+            >
+                Контент для подсказки при наведении. <code>$implicit</code> в
+                контексте равен туплу <code>[TuiDay, number]</code>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="height"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="height"
+            >
+                Дипазон оси y, масштаб пикселей 1:1
+            </ng-template>
+            <ng-template
+                documentationPropertyName="y"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="y"
+            >
+                Начало оси y
+            </ng-template>
+            <ng-template
+                documentationPropertyName="smoothingFactor"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="smoothingFactor"
+            >
+                Коэффициент сглаживания от 0 до 99
+            </ng-template>
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="[TuiDay, number][]"
+                [documentationPropertyValues]="valueVariants"
+                [(documentationPropertyValue)]="value"
+            >
+                Данные для графика
+            </ng-template>
+            <ng-template
+                documentationPropertyName="xStringify"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiStringHandler<TuiDay> | null"
+                [documentationPropertyValues]="xStringifyVariants"
+                [(documentationPropertyValue)]="xStringify"
+            >
+                Функция приведения даты к строке, для подсказки на оси x
+            </ng-template>
+            <ng-template
+                documentationPropertyName="yStringify"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiStringHandler<number> | null"
+                [documentationPropertyValues]="yStringifyVariants"
+                [(documentationPropertyValue)]="yStringify"
+            >
+                Функция приведения значение к строке, для подсказки на оси y
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiLineDaysChartModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

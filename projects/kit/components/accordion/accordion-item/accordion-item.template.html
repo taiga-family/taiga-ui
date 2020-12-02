@@ -1,0 +1,39 @@
+<div
+    #focusableElement
+    automation-id="tui-accordion__item-wrapper"
+    class="wrapper"
+    [tuiFocusable]="computedFocusable"
+    (tuiFocusVisibleChange)="onFocusVisible($event)"
+    (tuiFocusedChange)="onFocused($event)"
+    (keydown.space)="onItemKeyDownSpace($event)"
+    (keydown.enter)="onItemKeyDownSpace($event)"
+    (keydown.esc)="onItemKeyDownEsc($event)"
+>
+    <div
+        automation-id="tui-accordion__item-header"
+        class="header"
+        [class.header_open]="open"
+        (tuiHoveredChange)="onHovered($event)"
+        (click)="onRowToggle()"
+    >
+        <div class="title" automation-id="tui-accordion__item-title">
+            <ng-content></ng-content>
+        </div>
+        <tui-svg
+            *ngIf="showArrow"
+            automation-id="tui-accordion__item-arrow"
+            class="icon"
+            src="tuiIconArrowDownLarge"
+            [class.icon_open]="open"
+        ></tui-svg>
+    </div>
+    <tui-expand [async]="async" [expanded]="open">
+        <ng-template tuiExpandContent>
+            <polymorpheus-outlet
+                automation-id="tui-accordion__item-content"
+                class="content"
+                [content]="content"
+            ></polymorpheus-outlet>
+        </ng-template>
+    </tui-expand>
+</div>

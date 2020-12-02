@@ -1,0 +1,13 @@
+<p>Компонент принимает как статичный текст...</p>
+<tui-tooltip content="Please don't touch this" direction="left"></tui-tooltip>
+<p>
+    ...так и шаблон с любым HTML и логикой с помощью
+    <code>PolymorpheusContent</code>:
+</p>
+<tui-tooltip direction="bottom-right" [content]="tooltip"></tui-tooltip>
+
+<ng-template #tooltip="polymorpheus" polymorpheus>
+    <tui-loader class="tooltip" size="s" [showLoader]="loader">
+        {{text}}
+    </tui-loader>
+</ng-template>

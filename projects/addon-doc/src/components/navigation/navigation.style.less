@@ -1,0 +1,127 @@
+@import 'taiga-ui-angular-local';
+
+@sidebar-width: 260px;
+
+:host {
+    .transition(transform);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    display: flex;
+    width: @sidebar-width;
+    flex-direction: column;
+    text-align: center;
+    border-right: 1px solid var(--tui-base-03);
+    background: var(--tui-base-01);
+
+    @media @tablet-s {
+        transform: translateX(-100%);
+
+        &._open {
+            transform: translateX(0);
+        }
+    }
+}
+
+.logo {
+    .transition(opacity);
+    width: auto;
+    height: auto;
+    margin: 20px auto;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.versions {
+    display: flex;
+}
+
+.input {
+    display: block;
+    margin: 0 24px 24px;
+}
+
+.navigation {
+    display: flex;
+    max-height: 100%;
+    min-height: 0;
+    flex: 1 1 0;
+    text-align: left;
+}
+
+.scrollbar {
+    width: 100%;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: -16px 0 -8px;
+
+    &_bordered {
+        margin: 8px 0;
+        border-left: 1px solid var(--tui-base-03);
+    }
+}
+
+.search-link {
+    display: block;
+    flex: 1;
+    min-width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+    padding: 10px 16px 10px 32px;
+    margin-left: -16px;
+}
+
+.subsection {
+    margin-left: 8px;
+}
+
+.sublink {
+    .clearbtn();
+    .text-body-m();
+    margin-left: 8px;
+    line-height: 44px;
+    color: var(--tui-text-02);
+
+    &_small {
+        margin-left: 16px;
+        line-height: 24px;
+
+        &:not(:first-child) {
+            margin-top: 16px;
+        }
+    }
+
+    &_subsection {
+        margin-left: 0;
+        line-height: 44px;
+    }
+}
+
+.button {
+    .transition(transform);
+    position: absolute;
+    top: 18px;
+    right: -18px;
+    display: none;
+    background-color: var(--tui-base-01);
+    border: 1px solid var(--tui-base-03);
+
+    :host._open & {
+        transform: rotate(180deg);
+    }
+
+    @media @tablet-s {
+        display: block;
+    }
+}

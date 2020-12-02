@@ -1,0 +1,12 @@
+<tui-multi-select
+    class="control"
+    [formControl]="control"
+    [tuiTextfieldLabelOutside]="true"
+    [(search)]="search"
+>
+    <tui-data-list-wrapper
+        *tuiDataList
+        tuiMultiSelectGroup
+        [items]="filter(search)"
+    ></tui-data-list-wrapper>
+</tui-multi-select>

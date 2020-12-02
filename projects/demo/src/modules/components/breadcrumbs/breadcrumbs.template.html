@@ -1,0 +1,60 @@
+<tui-doc-page header="Breadcrumbs" package="KIT">
+    <ng-template pageTab>
+        Элемент навигации, представляющий собой путь от корневой страницы до
+        текущей.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-breadcrumbs-example-1></tui-breadcrumbs-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-breadcrumbs [items]="items" [size]="size"></tui-breadcrumbs>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="items"
+                documentationPropertyMode="input"
+                documentationPropertyType="ReadonlyArray<TuiBreadCrumbsItem>"
+                [documentationPropertyValues]="itemsVariants"
+                [(documentationPropertyValue)]="items"
+            >
+                Список ссылок
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер текста
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiBreadcrumbsModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

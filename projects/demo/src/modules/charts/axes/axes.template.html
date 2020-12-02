@@ -1,0 +1,176 @@
+<tui-doc-page header="Axes" package="ADDON-CHARTS">
+    <ng-template pageTab>
+        Компонент осей координат для всевозможных графиков
+
+        <tui-doc-example
+            id="advanced"
+            heading="Навороченный"
+            [content]="example1"
+        >
+            <tui-axes-example-1></tui-axes-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="bars" heading="Со столбиками" [content]="example2">
+            <tui-axes-example-2></tui-axes-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-axes
+                class="axes"
+                [axisX]="axisX"
+                [axisXLabels]="axisXLabels"
+                [axisY]="axisY"
+                [axisYInset]="axisYInset"
+                [axisYLabels]="axisYLabels"
+                [axisYName]="axisYName"
+                [axisYSecondaryInset]="axisYSecondaryInset"
+                [axisYSecondaryLabels]="axisYSecondaryLabels"
+                [axisYSecondaryName]="axisYSecondaryName"
+                [horizontalLines]="horizontalLines"
+                [horizontalLinesHandler]="horizontalLinesHandler"
+                [verticalLines]="verticalLines"
+                [verticalLinesHandler]="verticalLinesHandler"
+            ></tui-axes>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="axisX"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiLineType"
+                [documentationPropertyValues]="lineVariants"
+                [(documentationPropertyValue)]="axisX"
+            >
+                Тип оси X
+            </ng-template>
+            <ng-template
+                documentationPropertyName="axisXLabels"
+                documentationPropertyMode="input"
+                documentationPropertyType="ReadonlyArray<string | null>"
+                [documentationPropertyValues]="labelsVariants"
+                [(documentationPropertyValue)]="axisXLabels"
+            >
+                Лейблы по оси X. Пустая строчка для пустой рисочки,
+                <code>null</code> — для отсутствия рисочки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="axisY"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiLineType"
+                [documentationPropertyValues]="lineVariants"
+                [(documentationPropertyValue)]="axisY"
+            >
+                Тип оси Y
+            </ng-template>
+            <ng-template
+                documentationPropertyName="axisYInset"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="axisYInset"
+            >
+                Расположение лейблов внутри графика по оси Y
+            </ng-template>
+            <ng-template
+                documentationPropertyName="axisYLabels"
+                documentationPropertyMode="input"
+                documentationPropertyType="ReadonlyArray<string>"
+                [documentationPropertyValues]="labelsVariants"
+                [(documentationPropertyValue)]="axisYLabels"
+            >
+                Лейблы по оси Y
+            </ng-template>
+            <ng-template
+                documentationPropertyName="axisYName"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="axisYName"
+            >
+                Имя оси Y
+            </ng-template>
+            <ng-template
+                documentationPropertyName="axisYSecondaryInset"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="axisYSecondaryInset"
+            >
+                Расположение лейблов внутри графика по второстепенной оси Y
+            </ng-template>
+            <ng-template
+                documentationPropertyName="axisYSecondaryLabels"
+                documentationPropertyMode="input"
+                documentationPropertyType="ReadonlyArray<string>"
+                [documentationPropertyValues]="labelsVariants"
+                [(documentationPropertyValue)]="axisYSecondaryLabels"
+            >
+                Лейблы по второстепенной оси Y
+            </ng-template>
+            <ng-template
+                documentationPropertyName="axisYSecondaryName"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="axisYSecondaryName"
+            >
+                Имя второстепенной оси Y
+            </ng-template>
+            <ng-template
+                documentationPropertyName="horizontalLines"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="horizontalLines"
+            >
+                Количество горизонтальных линий
+            </ng-template>
+            <ng-template
+                documentationPropertyName="horizontalLinesHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiLineHandler"
+                [documentationPropertyValues]="handlerVariants"
+                [(documentationPropertyValue)]="horizontalLinesHandler"
+            >
+                Функция выбора типа горизонтальных линий
+            </ng-template>
+            <ng-template
+                documentationPropertyName="verticalLines"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="verticalLines"
+            >
+                Количество вертикальных линий
+            </ng-template>
+            <ng-template
+                documentationPropertyName="verticalLinesHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiLineHandler"
+                [documentationPropertyValues]="handlerVariants"
+                [(documentationPropertyValue)]="verticalLinesHandler"
+            >
+                Функция выбора типа вертикальных линий
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiAxesModule</code> в тот же модуль, куда добавляется ваш
+                компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

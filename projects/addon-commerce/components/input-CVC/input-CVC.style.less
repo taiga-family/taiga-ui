@@ -1,0 +1,26 @@
+@import 'taiga-ui-angular-local';
+
+@font-face {
+    font-family: 'cvc';
+    src: url('font/cvc.woff2') format('woff2'), url('font/cvc.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+:host {
+    display: block;
+    max-width: 176px;
+    border-radius: var(--tui-radius);
+
+    // @bad TODO: Think of something better
+    // Hide input with dot font so proper screen keyboard and autocomplete work
+    /* stylelint-disable */
+    ::ng-deep input.input {
+        font-family: cvc, sans-serif;
+    }
+    /* stylelint-enable */
+}
+
+.input {
+    border-radius: inherit;
+}

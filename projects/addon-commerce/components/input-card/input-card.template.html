@@ -1,0 +1,19 @@
+<tui-primitive-textfield
+    class="input"
+    tuiTextfieldInputMode="numeric"
+    [disabled]="disabled"
+    [focusable]="focusable"
+    [nativeId]="nativeId"
+    [invalid]="computedInvalid"
+    [pseudoHovered]="pseudoHovered"
+    [pseudoPressed]="pseudoPressed"
+    [pseudoFocused]="pseudoFocused"
+    [textMask]="textMaskOptions"
+    [value]="formattedCard"
+    [tuiTextfieldAutocomplete]="autocomplete"
+    [tuiTextfieldCustomContent]="icon"
+    (valueChange)="onValueChange($event)"
+    (focusedChange)="onFocused($event)"
+>
+    <ng-content></ng-content>
+</tui-primitive-textfield>

@@ -1,0 +1,117 @@
+.tui-list {
+    .text-body-m();
+    list-style-type: none;
+    color: var(--tui-text-01);
+
+    &_large {
+        .text-body-l();
+    }
+
+    &_small,
+    &_extra-small {
+        .text-body-s();
+    }
+
+    &_nested {
+        margin: 12px 0 12px 20px;
+        color: var(--tui-text-02);
+
+        .tui-list_large & {
+            margin-left: 12px;
+        }
+
+        .tui-list_small & {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+    }
+
+    &_ordered {
+        counter-reset: counter;
+    }
+
+    &__item {
+        position: relative;
+        padding-left: @space * 6;
+        word-wrap: break-word;
+        margin-top: @space * 3;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--tui-primary);
+
+            .tui-list_large > & {
+                top: 8px;
+            }
+
+            .tui-list_small > & {
+                top: 5px;
+            }
+        }
+
+        .tui-list_extra-small > & {
+            margin-top: @space * 2;
+        }
+
+        .tui-list_linear & {
+            padding-left: @space * 7;
+
+            &:before {
+                content: '\2014';
+                left: 0;
+                top: auto;
+                width: auto;
+                height: auto;
+                background-color: transparent;
+            }
+        }
+
+        .tui-list_ordered & {
+            padding-left: @space * 5;
+
+            &:before {
+                content: counter(counter) '.';
+                left: 0;
+                top: auto;
+                counter-increment: counter;
+                width: auto;
+                height: auto;
+                color: var(--tui-text-03);
+                background-color: transparent;
+            }
+        }
+    }
+
+    &__item-title {
+        .text-h5();
+        margin: 0;
+
+        .tui-list_small & {
+            .text-body-l-bold(2);
+        }
+    }
+
+    &__description {
+        margin: @space * 2 0 0;
+        color: var(--tui-text-02);
+
+        .tui-list_small & {
+            margin-top: @space;
+        }
+
+        .tui-list_large & {
+            line-height: 28px;
+            margin-top: @space * 3;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+@import 'taiga-ui-angular-local';
+
+.wrapper {
+    display: flex;
+}
+
+.example {
+    .customize-scroll();
+    .drop-shadow();
+    .transition('box-shadow, max-height', 0.5s);
+    flex: 1;
+    padding: 20px;
+    max-height: 150px;
+    overflow: auto;
+    border-radius: var(--tui-radius);
+
+    &:hover {
+        .drop-shadow(6);
+        max-height: 250px;
+    }
+}
+
+.code {
+    flex: 1;
+}
+
+.gradient-plate {
+    .gradient(var(--tui-primary), var(--tui-base-01), 90deg);
+    font-size: 32px;
+    flex: 1;
+    padding: 20px;
+}
+
+.text-overflow {
+    .drop-shadow();
+    .text-overflow();
+    flex: 1;
+    padding: 20px;
+
+    &:hover {
+        white-space: normal;
+    }
+}
+
+.card-wrapper {
+    flex: 1;
+    padding: 24px 0;
+}
+
+.card {
+    .hoverable-with-shadow();
+    display: inline-block;
+    padding: 20px;
+    border-radius: 8px;
+    background: var(--tui-base-01);
+}

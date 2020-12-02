@@ -1,0 +1,34 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    display: block;
+}
+
+.title {
+    .text-h6();
+    margin: 24px 0 12px;
+}
+
+.description {
+    .text-body-m();
+}
+
+.row {
+    display: flex;
+
+    &_align-items_bottom {
+        align-items: flex-end;
+    }
+}
+
+.example {
+    .text-body-m();
+    .drop-shadow(3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 75px;
+    background-color: var(--tui-base-01);
+    border-radius: var(--tui-radius);
+}

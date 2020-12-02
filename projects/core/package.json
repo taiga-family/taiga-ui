@@ -1,0 +1,29 @@
+{
+    "name": "@taiga-ui/core",
+    "version": "1.34.0",
+    "description": "Core library for creating Angular components and applications using Taiga UI",
+    "keywords": [
+        "angular",
+        "kit",
+        "ui",
+        "component-library",
+        "component",
+        "service",
+        "directive"
+    ],
+    "license": "Apache-2.0",
+    "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "peerDependencies": {
+        "@taiga-ui/cdk": "^1.5.2",
+        "@angular/animations": ">=6.0.0",
+        "@angular/common": ">=6.0.0",
+        "@angular/core": ">=6.0.0",
+        "@angular/forms": ">=6.0.0",
+        "@angular/platform-browser": ">=6.0.0",
+        "@angular/router": ">=6.0.0",
+        "@tinkoff/ng-event-filters": ">=1.0.0",
+        "@tinkoff/ng-polymorpheus": ">=2.0.0",
+        "rxjs": ">=6.0.0"
+    }
+}

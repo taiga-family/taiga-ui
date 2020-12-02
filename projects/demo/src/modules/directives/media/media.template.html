@@ -1,0 +1,82 @@
+<tui-doc-page header="Media" package="CDK">
+    <ng-template pageTab>
+        Директива для декларативной работы с HTML5 video и audio
+
+        <tui-doc-example
+            id="native"
+            heading="Нативные контролы"
+            [content]="example1"
+        >
+            <tui-media-example-1></tui-media-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="video" heading="Видеоплеер" [content]="example2">
+            <tui-media-example-2></tui-media-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example id="audio" heading="Аудиоплеер" [content]="example3">
+            <tui-media-example-3></tui-media-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <audio
+            tuiMedia
+            controls
+            src="assets/media/strays.mp3"
+            [(currentTime)]="currentTime"
+            [paused]="paused"
+            [(volume)]="volume"
+        ></audio>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="currentTime"
+                documentationPropertyType="number"
+                documentationPropertyMode="input-output"
+                [(documentationPropertyValue)]="currentTime"
+            >
+                Текущее время
+            </ng-template>
+            <ng-template
+                documentationPropertyName="paused"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input-output"
+                [(documentationPropertyValue)]="paused"
+            >
+                Состояние воспроизведения
+            </ng-template>
+            <ng-template
+                documentationPropertyName="volume"
+                documentationPropertyType="number"
+                documentationPropertyMode="input-output"
+                [documentationPropertyValues]="volumeVariants"
+                [(documentationPropertyValue)]="volume"
+            >
+                Громкость
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiMediaModule</code> в модуль вашего компонента:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

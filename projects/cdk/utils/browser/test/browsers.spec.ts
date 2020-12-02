@@ -1,7 +1,7 @@
 import {isEdge} from '../is-edge';
 import {isEdgeOlderThan} from '../is-edge-older-than';
 import {isFirefox} from '../is-firefox';
-import {isIE} from '../is-iE';
+import {isIE} from '../is-IE';
 
 describe('Browsers', () => {
     it('isIE', () => {

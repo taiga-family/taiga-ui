@@ -1,0 +1,28 @@
+<form [formGroup]="testForm">
+    <tui-group class="group" orientation="vertical" [collapsed]="true">
+        <tui-radio-block
+            size="l"
+            contentAlign="right"
+            formControlName="testValue"
+            item="orange"
+        >
+            Апельсины
+        </tui-radio-block>
+        <tui-radio-block
+            size="l"
+            contentAlign="right"
+            formControlName="testValue"
+            item="apple"
+        >
+            Яблоки
+        </tui-radio-block>
+        <tui-radio-block
+            size="l"
+            contentAlign="right"
+            formControlName="testValue"
+            item="pineapple"
+        >
+            Ананасы
+        </tui-radio-block>
+    </tui-group>
+</form>

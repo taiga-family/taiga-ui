@@ -1,0 +1,10 @@
+import {TuiAccordionModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiAccordionModule
+    ],
+...

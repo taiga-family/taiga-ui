@@ -1,0 +1,104 @@
+<tui-doc-page header="Tooltip" package="CORE">
+    <ng-template pageTab>
+        Компонент для показа иконки с подсказкой при наведении.
+
+        <tui-doc-example
+            id="example-base"
+            heading="базовый"
+            [content]="example1"
+        >
+            <tui-tooltip-example-1></tui-tooltip-example-1>
+        </tui-doc-example>
+        <tui-doc-example
+            id="custom-host"
+            heading="произвольный хост"
+            [content]="example2"
+        >
+            <tui-tooltip-example-2></tui-tooltip-example-2>
+        </tui-doc-example>
+        <tui-doc-example
+            id="repeating-template"
+            heading="повторяющийся шаблон"
+            [content]="example3"
+        >
+            <tui-tooltip-example-3></tui-tooltip-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-tooltip
+                content="Ваши данные замаскированы в целях безопасности. Для изменения данных с вами свяжется оператор."
+                [mode]="mode"
+                [describeId]="describeId"
+                [direction]="direction"
+            ></tui-tooltip>
+            <input placeholder="id: qwerty" tuiDescribedBy="qwerty" />
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="content"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent | null"
+            >
+                Содержимое тултипа
+            </ng-template>
+            <ng-template
+                documentationPropertyName="describeId"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="describeId"
+            >
+                Для соответствия Accessibility требованиям, подсказка должна
+                ставиться в соответствие фокусируемому элементу и пользователи
+                со Screen Reader`ами должны слышать текст подсказки при фокусе
+                после небольшой задержки. Для реализации, задайте уникальный
+                <code>describeId</code> и повесьте директиву
+                <code>[tuiDescribedBy]="тот же id"</code> на фокусируемый
+                элемент.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="mode"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiTooltipMode | null"
+                [documentationPropertyValues]="modeVariants"
+                [(documentationPropertyValue)]="mode"
+            >
+                Модификация тултипа
+            </ng-template>
+            <ng-template
+                documentationPropertyName="direction"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDirection"
+                [documentationPropertyValues]="directionVariants"
+                [(documentationPropertyValue)]="direction"
+            >
+                Направление тултипа
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiTooltipModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

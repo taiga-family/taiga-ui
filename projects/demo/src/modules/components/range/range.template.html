@@ -1,0 +1,135 @@
+<tui-doc-page header="Range" package="KIT">
+    <ng-template pageTab>
+        Компонент для выбора части диапазона
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-range-example-1></tui-range-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-range
+                    [formControl]="control"
+                    [min]="min"
+                    [max]="max"
+                    [steps]="steps"
+                    [segments]="segments"
+                    [pluralize]="pluralize"
+                    [keySteps]="keySteps"
+                    [size]="size"
+                ></tui-range>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Минимальная величина
+            </ng-template>
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Максимальная величина
+            </ng-template>
+            <ng-template
+                documentationPropertyName="pluralize"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiPluralize"
+                [documentationPropertyValues]="pluralizeVariants"
+                [(documentationPropertyValue)]="pluralize"
+            >
+                Формы множественного числа для подписей
+            </ng-template>
+            <ng-template
+                documentationPropertyName="segments"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="segmentsVariants"
+                [(documentationPropertyValue)]="segments"
+            >
+                Количество участков визуальной разбивки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="steps"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="stepsVariants"
+                [(documentationPropertyValue)]="steps"
+            >
+                Количество фактических дискретных значений
+            </ng-template>
+            <ng-template
+                documentationPropertyName="keySteps"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiKeySteps"
+                [documentationPropertyValues]="keyStepsVariants"
+                [(documentationPropertyValue)]="keySteps"
+            >
+                Опорные точки неоднородной зависимости значения и положения
+                слайдера
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер слайдера
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiRangeModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон с использованием реактивных форм или
+                <code>ngModel</code>:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

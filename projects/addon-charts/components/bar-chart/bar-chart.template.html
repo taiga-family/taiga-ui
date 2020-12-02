@@ -1,0 +1,30 @@
+<div
+    *ngFor="let set of transposed; let index = index"
+    tuiHintDirection="top-left"
+    class="wrapper"
+    [class.wrapper_hoverable]="hasHint"
+    [tuiHintHost]="hintHost"
+    [tuiHintId]="getHintId(index)"
+    [tuiHint]="getHint(hint)"
+    [tuiHintMode]="hintMode"
+>
+    <div class="container" [style.height.%]="getPercent(set)">
+        <div #hintHost class="host"></div>
+        <tui-bar-set
+            class="set"
+            [tuiDescribedBy]="getHintId(index)"
+            [tuiFocusable]="hasHint"
+            [value]="set"
+            [size]="size"
+            [collapsed]="collapsed"
+            [colorHandler]="colorHandler"
+        ></tui-bar-set>
+    </div>
+    <ng-template #hint="polymorpheus" polymorpheus>
+        <polymorpheus-outlet
+            class="text"
+            [content]="hintContent"
+            [context]="getContentContext(index)"
+        ></polymorpheus-outlet>
+    </ng-template>
+</div>

@@ -1,0 +1,47 @@
+<div class="row row_weekday">
+    <div *ngFor="let day of weekDays" class="cell">{{day}}</div>
+</div>
+<div>
+    <div
+        *tuiRepeatTimes="let rowIndex of sheet.length"
+        automation-id="tui-primitive-calendar__row"
+        class="row"
+    >
+        <ng-container *tuiRepeatTimes="let colIndex of sheet[rowIndex].length">
+            <ng-container *tuiLet="sheet[rowIndex][colIndex] as item">
+                <div
+                    *ngIf="!itemIsUnavailable(item) || showAdjacent"
+                    automation-id="tui-primitive-calendar__cell"
+                    class="cell"
+                    [class.cell_today]="itemIsToday(item)"
+                    [class.cell_interval]="itemIsInterval(item)"
+                    [attr.data-tui-element-range]="getItemRange(item)"
+                    [attr.data-tui-element-state]="getItemState(item)"
+                    (tuiHoveredChange)="onItemHovered($event, item)"
+                    (tuiPressedChange)="onItemPressed($event, item)"
+                    (click)="onItemClick($event, item)"
+                >
+                    <div
+                        automation-id="tui-primitive-calendar__item"
+                        class="item"
+                        [class.item_weekend]="colIndex > 4"
+                        [class.item_unavailable]="itemIsUnavailable(item)"
+                    >
+                        {{item.day}}
+                        <div
+                            *ngIf="item | tuiMapper : toMarkers : itemIsToday(item) : !!getItemRange(item) as markers"
+                            class="dots"
+                        >
+                            <div class="dot" [tuiBackground]="markers[0]"></div>
+                            <div
+                                *ngIf="markers.length > 1"
+                                class="dot"
+                                [tuiBackground]="markers[1]"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

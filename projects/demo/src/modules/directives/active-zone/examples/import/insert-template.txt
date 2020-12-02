@@ -1,0 +1,8 @@
+<div (tuiActiveZoneChange)="onActiveZone($event)">
+    <button tuiButton type="button">
+        Кнопка 1
+    </button>
+    <button tuiButton type="button">
+        Кнопка 2
+    </button>
+</div>

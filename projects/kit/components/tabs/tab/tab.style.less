@@ -1,0 +1,133 @@
+@import 'taiga-ui-angular-local';
+
+:host-context(._underline):hover {
+    box-shadow: inset 0 -2px var(--tui-base-03);
+}
+
+:host {
+    .transition(all);
+    .clearbtn();
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+    transition-property: color, box-shadow, opacity;
+
+    &:not(:last-child) {
+        margin-right: 24px;
+    }
+
+    &:hover {
+        color: var(--tui-text-01);
+    }
+
+    &:disabled {
+        opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
+    }
+
+    &:not([data-mode])._active {
+        opacity: 1;
+        color: var(--tui-text-01);
+        box-shadow: none;
+        pointer-events: none;
+    }
+
+    &[data-mode='light'] {
+        color: rgba(255, 255, 255, 0.72);
+
+        &:hover,
+        &._active {
+            color: #fff;
+        }
+
+        &._focus-visible .highlight {
+            background: #fff;
+            color: var(--tui-text-01);
+        }
+    }
+
+    &[data-mode='dark'] {
+        color: rgba(0, 0, 0, 0.56);
+
+        &._focus-visible .highlight {
+            background: var(--tui-text-01);
+            color: #fff;
+        }
+    }
+
+    &._focus-visible .highlight {
+        background: var(--tui-selection);
+    }
+
+    &._android {
+        .transition(opacity);
+        height: 48px;
+        flex: 1;
+        flex-shrink: 0;
+        justify-content: center;
+        margin: 0;
+        text-transform: uppercase;
+        color: var(--tui-base-09);
+        opacity: 0.5;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: -0.13px;
+        font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+
+        &:hover {
+            box-shadow: none;
+        }
+
+        &._active {
+            opacity: 1;
+            color: var(--tui-base-09);
+        }
+
+        & .highlight {
+            width: auto;
+        }
+    }
+
+    &._ios {
+        height: 28px;
+        flex: 1;
+        flex-shrink: 0;
+        justify-content: center;
+        margin: 0;
+        color: var(--tui-base-01);
+        opacity: 1;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: -0.08px;
+        font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+
+        &:hover {
+            box-shadow: none;
+        }
+
+        &._active {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--tui-link);
+        }
+
+        & .highlight {
+            width: auto;
+        }
+    }
+}
+
+.highlight {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: inherit;
+}

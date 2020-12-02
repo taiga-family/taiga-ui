@@ -1,0 +1,124 @@
+<tui-doc-page header="CheckboxLabeled" package="KIT">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            <code>CheckboxLabeled</code> состоит из чекбокса
+            <code>Checkbox</code> и лейбла. Клик по лейблу меняет состояние
+            чекбокса. Для использования без лейбла&nbsp;см.
+            <a tuiLink routerLink="/tui-checkbox"><code>Checkbox</code></a
+            >.
+        </div>
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-checkbox-labeled-example-1></tui-checkbox-labeled-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="large"
+            heading="большой размер"
+            [content]="example2"
+        >
+            <tui-checkbox-labeled-example-2></tui-checkbox-labeled-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <form [formGroup]="control">
+                    <tui-checkbox-labeled
+                        formControlName="testValue1"
+                        [focusable]="focusable"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [readOnly]="readOnly"
+                        [size]="size"
+                    >
+                        Кредитная карта
+                    </tui-checkbox-labeled>
+                    <tui-checkbox-labeled
+                        class="tui-space_top-2"
+                        formControlName="testValue2"
+                        [focusable]="focusable"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [readOnly]="readOnly"
+                        [size]="size"
+                    >
+                        Дебетовая карта
+                    </tui-checkbox-labeled>
+                    <tui-checkbox-labeled
+                        class="tui-space_top-2"
+                        formControlName="testValue3"
+                        [focusable]="focusable"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoFocused]="pseudoFocused"
+                        [pseudoHovered]="pseudoHovered"
+                        [pseudoPressed]="pseudoPressed"
+                        [readOnly]="readOnly"
+                        [size]="size"
+                    >
+                        Транспортная карта
+                    </tui-checkbox-labeled>
+                </form>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер контрола
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiCheckboxLabeledModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

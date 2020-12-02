@@ -1,0 +1,35 @@
+:host {
+    display: block;
+}
+
+.video {
+    display: block;
+}
+
+.player {
+    position: relative;
+    width: 320px;
+}
+
+.controls {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 12px 12px 8px;
+    box-sizing: border-box;
+    color: var(--tui-base-01);
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.56));
+}
+
+.slider {
+    flex: 1;
+    margin-left: 12px;
+}
+
+.time {
+    flex-shrink: 0;
+    margin-left: 12px;
+    font-size: 13px;
+}

@@ -1,0 +1,21 @@
+<tui-hosted-dropdown
+    tuiDropdownAlign="left"
+    [content]="picker"
+    [tuiDropdownMaxHeight]="999"
+>
+    <button
+        tuiButton
+        type="button"
+        appearance=""
+        [style.background]="background"
+        [style.color]="background"
+    >
+        Color me Kubrick
+    </button>
+</tui-hosted-dropdown>
+<ng-template #picker let-activeZone>
+    <tui-color-selector
+        [tuiActiveZoneParent]="activeZone"
+        [(color)]="color"
+    ></tui-color-selector>
+</ng-template>

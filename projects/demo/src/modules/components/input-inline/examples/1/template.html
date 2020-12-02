@@ -1,0 +1,25 @@
+<form [formGroup]="testForm">
+    <tui-input-inline
+        class="input1"
+        formControlName="testValue1"
+    ></tui-input-inline>
+    <tui-input-inline
+        class="input2"
+        formControlName="testValue2"
+    ></tui-input-inline>
+    <tui-input-inline
+        class="input3"
+        formControlName="testValue3"
+    ></tui-input-inline>
+    <tui-input-inline
+        class="input4"
+        formControlName="testValue4"
+        [class.input4_empty]="input4Empty"
+    >
+        (Show placeholder if control is empty)
+    </tui-input-inline>
+</form>
+
+<button tuiButton type="button" size="m" (click)="onToggleClick()">
+    {{toggleContent}}
+</button>

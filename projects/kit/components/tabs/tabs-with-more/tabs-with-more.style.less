@@ -1,0 +1,81 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    .text-body-m();
+    position: relative;
+    display: flex;
+    height: @height-extra-large;
+    box-sizing: border-box;
+    color: var(--tui-base-06);
+    box-shadow: inset 0 -1px var(--tui-base-03);
+    overflow: hidden;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+}
+
+.tabs {
+    height: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    overflow: visible;
+    box-shadow: none;
+    color: inherit;
+}
+
+.hidden {
+    width: 0;
+    max-width: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.more_wrapper {
+    height: 100%;
+}
+
+.more {
+    &&._active {
+        pointer-events: auto;
+    }
+}
+
+.icon {
+    .transition(transform);
+    margin-left: 4px;
+    vertical-align: bottom;
+
+    &_rotated {
+        transform: rotate(180deg);
+    }
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+
+    /* stylelint-disable */
+    ::ng-deep *[tuiTab] {
+        height: 44px;
+        justify-content: flex-start;
+        margin: 0;
+        padding: 0 16px;
+        color: var(--tui-base-06);
+
+        &:before {
+            display: none;
+        }
+
+        &:hover,
+        &:focus,
+        &._active {
+            box-shadow: none;
+            color: var(--tui-base-08);
+            background: var(--tui-base-02);
+        }
+    }
+    /* stylelint-enable */
+}

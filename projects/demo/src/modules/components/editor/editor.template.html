@@ -1,0 +1,85 @@
+<tui-doc-page header="Editor" package="ADDON-EDITOR">
+    <ng-template pageTab>
+        Rich Text Editor для использования с формами Angular.
+
+        <tui-notification
+            class="tui-space_top-4"
+            status="warning"
+            [hasCloseButton]="false"
+        >
+            Этот компонент экспериментальный. Используйте его осторожно.
+        </tui-notification>
+
+        <tui-doc-example id="basic" heading="Базовый" [content]="example1">
+            <tui-editor-example-1></tui-editor-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-editor
+                [formControl]="control"
+                [focusable]="focusable"
+                [exampleText]="exampleText"
+                [readOnly]="readOnly"
+                [tools]="tools"
+                [pseudoInvalid]="pseudoInvalid"
+                [pseudoFocused]="pseudoFocused"
+                [pseudoHovered]="pseudoHovered"
+            >
+                Введите значение
+            </tui-editor>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="exampleText"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="exampleText"
+            >
+                Пример заполнения поля
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tools"
+                documentationPropertyMode="input"
+                documentationPropertyType="ReadonlyArray<TuiEditorTool>"
+                [documentationPropertyValues]="toolsVariants"
+                [(documentationPropertyValue)]="tools"
+            >
+                Набор доступных инструментов редактирования
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль <code>TuiEditorModule</code> в тот же модуль,
+                куда добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

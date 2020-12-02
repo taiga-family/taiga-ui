@@ -1,0 +1,16 @@
+<span (tuiActiveZoneChange)="onActiveZone($event)">
+    <button
+        tuiButton
+        type="button"
+        iconRight="tuiIconArrowDown"
+        [tuiDropdownContent]="dropdownContent"
+        [tuiDropdown]="open"
+        (tuiObscured)="onObscured($event)"
+        (click)="onClick()"
+    >
+        Выберите смысл жизни
+    </button>
+    <ng-template #dropdownContent="polymorpheus" polymorpheus>
+        <div class="dropdown">Смысл жизни не найден</div>
+    </ng-template>
+</span>

@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'tuiHeading';
+    src: local('hapica');
+    font-weight: 400;
+    font-style: normal;
+}
+
+html {
+    touch-action: manipulation;
+}
+
+body {
+    overscroll-behavior: none;
+}
+
+* {
+    outline: none;
+    scrollbar-width: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+*:not(input):not(textarea) {
+    user-select: none !important;
+}
+
+::selection {
+    background-color: transparent;
+}
+
+.tui-island {
+    padding: 16px;
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);
+
+    &:before {
+        display: none;
+    }
+}
+
+a[tuiButton],
+a[tuiIconButton],
+button[tuiButton],
+button[tuiIconButton] {
+    font-size: 14px !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+}

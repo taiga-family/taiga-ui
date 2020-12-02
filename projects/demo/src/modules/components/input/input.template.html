@@ -1,0 +1,278 @@
+<tui-doc-page header="Input" package="KIT">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Input&nbsp;&mdash; однострочное текстовое поле.
+            Не&nbsp;рекомендуется использовать для ввода чисел, т.к. значением
+            является строка.
+        </div>
+        Для ввода данных других типов используйте:
+
+        <blockquote>
+            <ul>
+                <li>
+                    <a tuiLink routerLink="/tui-text-area"
+                        ><code>TextArea</code></a
+                    >
+                    — для ввода многострочного текста,
+                </li>
+                <li>
+                    <a tuiLink routerLink="/tui-input-date"
+                        ><code>InputDate</code></a
+                    >
+                    — для ввода дат,
+                </li>
+                <li>
+                    <a tuiLink routerLink="/tui-input-date-range"
+                        ><code>InputDateRange</code></a
+                    >
+                    — для ввода периода дат,
+                </li>
+                <li>
+                    <a tuiLink routerLink="/tui-input-number"
+                        ><code>InputNumber</code></a
+                    >
+                    — для ввода чисел (также поддерживает меру измерения),
+                </li>
+                <li>
+                    <a tuiLink routerLink="/tui-input-password"
+                        ><code>InputPassword</code></a
+                    >
+                    — для ввода паролей,
+                </li>
+                <li>
+                    <a tuiLink routerLink="/tui-input-phone"
+                        ><code>InputPhone</code></a
+                    >
+                    — для ввода телефонных номеров,
+                </li>
+                <li>
+                    <a tuiLink routerLink="/tui-input-tag"
+                        ><code>InputTag</code></a
+                    >
+                    — для ввода набора тэгов,
+                </li>
+                <li>
+                    <a tuiLink routerLink="/tui-input-range"
+                        ><code>InputRange</code></a
+                    >,
+                    <a tuiLink routerLink="/tui-input-slider"
+                        ><code>InputSlider</code></a
+                    >
+                    — для ввода точных числовых значений,
+                </li>
+                <li>
+                    <a tuiLink routerLink="/tui-slider"><code>Slider</code></a
+                    >,
+                    <a tuiLink routerLink="/tui-range"><code>Range</code></a>
+                    — для ввода неточных числовых значений,
+                </li>
+                <li>
+                    <a tuiLink routerLink="/tui-input-count"
+                        ><code>InputCount</code></a
+                    >
+                    — для ввода количества.
+                </li>
+            </ul>
+        </blockquote>
+
+        <tui-doc-example
+            id="base"
+            heading="базовый"
+            description="Инпут в своем дефолтном состоянии."
+            [content]="example1"
+        >
+            <tui-input-example-1></tui-input-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="sizes"
+            heading="размеры"
+            description="Все возможные размеры, поддерживаемые инпутом."
+            [content]="example2"
+        >
+            <tui-input-example-2></tui-input-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="mask"
+            heading="маска"
+            description="Варианты использования масок в поле."
+            [content]="example3"
+        >
+            <tui-input-example-3></tui-input-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="autocomplete"
+            heading="автозаполнение"
+            description="Показательный пример реализации автозаполнения полей."
+            [content]="example4"
+        >
+            <tui-input-example-4></tui-input-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="modes"
+            heading="моды"
+            description="Визуальные модификации, присущие инпутам."
+            [content]="example5"
+        >
+            <tui-input-example-5></tui-input-example-5>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="table"
+            heading="Табличный вид"
+            description="Реализация редактируемой таблицы с использованием инпутов с помощью директивы tuiTable"
+            [content]="example6"
+        >
+            <tui-input-example-6></tui-input-example-6>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="success"
+            heading="Галочка"
+            description="Показ галочки при успешной валидации"
+            [content]="example7"
+        >
+            <tui-input-example-7></tui-input-example-7>
+        </tui-doc-example>
+
+        <tui-doc-example id="datalist" heading="DataList" [content]="example8">
+            <tui-input-example-8></tui-input-example-8>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input
+                    [formControl]="control"
+                    [focusable]="focusable"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [icon]="icon"
+                    [iconAlign]="iconAlign"
+                    [readOnly]="readOnly"
+                    [textMaskOptions]="textMaskOptions"
+                    [unmaskHandler]="unmaskHandler"
+                    [tuiTextfieldType]="type"
+                    [tuiTextfieldExampleText]="exampleText"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldCustomContent]="customContent"
+                    [tuiTextfieldAutocomplete]="autocomplete"
+                    [tuiTextfieldInputMode]="inputMode"
+                    [tuiTextfieldSize]="size"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldMaxLength]="maxLength"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiHintMode]="hintMode"
+                >
+                    placeholder <strong>strong text</strong>
+                </tui-input>
+            </ng-template>
+        </tui-doc-demo>
+        <ng-template #itemContent let-data>
+            <div class="account">
+                <div class="name">{{data.name}}</div>
+                <tui-money [value]="data.balance"></tui-money>
+            </div>
+        </ng-template>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="icon"
+                documentationPropertyMode="input"
+                documentationPropertyType="string | null"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                Иконка. Принимает содержимое svg-файла в виде строки или имя
+                иконки, определённой с помощью
+                <a tuiLink routerLink="/tui-svg-service"
+                    ><code>SvgService</code></a
+                >
+            </ng-template>
+            <ng-template
+                documentationPropertyName="iconAlign"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiHorizontalDirection"
+                [documentationPropertyValues]="iconAlignVariants"
+                [(documentationPropertyValue)]="iconAlign"
+            >
+                Положение иконки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="textMaskOptions"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiTextMaskOptions | null"
+                [documentationPropertyValues]="textMaskOptionsVariants"
+                [(documentationPropertyValue)]="textMaskOptions"
+            >
+                Параметры маски (<a
+                    tuiLink
+                    href="https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#text-mask-documentation"
+                    >официальная документация</a
+                >).
+            </ng-template>
+            <ng-template
+                documentationPropertyName="unmaskHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="string => string"
+                [documentationPropertyValues]="unmaskHandlerVariants"
+                [(documentationPropertyValue)]="unmaskHandler"
+            >
+                Функция для снятия маски перед отправкой значения в контрол
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation [dropdown]="true"></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiInputModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

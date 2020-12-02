@@ -1,0 +1,55 @@
+<tui-doc-page header="PointerHint" package="CORE">
+    <ng-template pageTab>
+        Директива для показа подсказки под курсором
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-pointer-hint-example-1></tui-pointer-hint-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <div
+                tuiPointerHint="'Некоторая информация'"
+                [tuiHintMode]="mode"
+                [tuiHintDirection]="direction"
+            >
+                Блок для отлеживания
+            </div>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="tuiPointerHint"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent | null"
+            >
+                Содержимое тултипа
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiPointerHintModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

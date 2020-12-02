@@ -1,0 +1,22 @@
+<div
+    tuiOverscroll
+    [class.drop-animation]="dropped$ | async"
+    [style.transform]="contentTransform$ | async"
+>
+    <ng-content></ng-content>
+</div>
+
+<tui-mobile-ios-loader
+    *ngIf="isIOS; else angroidLoader"
+    class="ios-spinner"
+    [loaded]="loadedInPercent$ | async"
+></tui-mobile-ios-loader>
+
+<ng-template #angroidLoader>
+    <tui-mobile-android-loader
+        class="android-loader"
+        [class.drop-animation]="dropped$ | async"
+        [style.transform]="loaderTransform$ | async"
+        [loaded]="loadedInPercent$ | async"
+    ></tui-mobile-android-loader>
+</ng-template>

@@ -1,0 +1,75 @@
+<tui-wrapper
+    automation-id="tui-text-area__wrapper"
+    class="outline"
+    [appearance]="appearance"
+    [disabled]="disabled"
+    [focused]="computedFocused"
+    [hovered]="computedHovered"
+    [readOnly]="readOnly"
+    [invalid]="computedInvalid"
+>
+    <div
+        *ngIf="hasCounter"
+        automation-id="tui-text-area__counter"
+        class="counter"
+    >
+        {{value.length}}/{{controller.maxLength}}
+    </div>
+</tui-wrapper>
+
+<label
+    class="content"
+    (tuiHoveredChange)="onHovered($event)"
+    (mousedown)="onMouseDown($event)"
+>
+    <div class="wrapper">
+        <div
+            *ngIf="hasPlaceholder"
+            automation-id="tui-text-area__placeholder"
+            class="placeholder"
+            [class.placeholder_raised]="placeholderRaised"
+        >
+            <ng-content></ng-content>
+        </div>
+        <div
+            *ngIf="hasExampleText"
+            automation-id="tui-text-area__example-text"
+            class="example-text"
+        >
+            <span class="example-text-inner"> {{controller.exampleText}} </span>
+        </div>
+        <tui-scrollbar
+            automation-id="tui-text-area__scrollbar"
+            class="box"
+            [style.maxHeight.px]="computeMaxHeight"
+        >
+            <div class="input-wrapper">
+                <div class="relative">
+                    <div class="pseudo-content">{{value}}&nbsp;</div>
+                    <textarea
+                        #focusableElement
+                        automation-id="tui-text-area__native"
+                        class="input"
+                        [attr.maxLength]="controller.maxLength"
+                        [id]="id"
+                        [tuiFocusable]="focusable"
+                        [disabled]="disabled"
+                        [ngModel]="value"
+                        [readOnly]="readOnly"
+                        (tuiFocusedChange)="onFocused($event)"
+                        (ngModelChange)="onValue($event)"
+                    ></textarea>
+                </div>
+            </div>
+        </tui-scrollbar>
+    </div>
+    <tui-tooltip
+        *ngIf="hasTooltip"
+        automation-id="tui-text-area__tooltip"
+        class="tooltip"
+        describeId="placeholer_until_accesibility_is_added"
+        [direction]="hintController.direction"
+        [mode]="hintController.mode"
+        [content]="hintController.content"
+    ></tui-tooltip>
+</label>

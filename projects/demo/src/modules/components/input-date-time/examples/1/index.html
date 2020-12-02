@@ -1,0 +1,9 @@
+<form class="container" [formGroup]="testForm">
+    <tui-input-date-time formControlName="testValue">
+        Введите дату и время
+    </tui-input-date-time>
+
+    <p>Значение формы:</p>
+
+    <pre><code>{{testForm.value | json}}</code></pre>
+</form>

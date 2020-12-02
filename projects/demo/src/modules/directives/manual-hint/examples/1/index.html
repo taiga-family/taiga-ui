@@ -1,0 +1,15 @@
+<button
+    tuiButton
+    type="button"
+    [tuiManualHint]="template"
+    [tuiManualHintShow]="hintShown"
+    (click)="toggleHint()"
+>
+    Подсказка
+</button>
+
+<ng-template #template="polymorpheus" polymorpheus>
+    <div tuiMode="light">
+        Используй <a tuiLink class="link" href="tui-hint">Hint</a>
+    </div>
+</ng-template>

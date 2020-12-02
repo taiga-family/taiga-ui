@@ -1,0 +1,75 @@
+<header class="header">
+    <button
+        tuiIconButton
+        type="button"
+        class="close"
+        automation-id="tui-mobile-calendar__cancel"
+        icon="tuiIconCloseLgLarge"
+        shape="rounded"
+        appearance=""
+        tuiRipple
+        [title]="closeWord"
+        (click)="onClose()"
+    ></button>
+    <button
+        tuiLink
+        tuiTouchable="opacity"
+        type="button"
+        class="link link_close"
+        (click)="onClose()"
+    >
+        {{cancelWord}}
+    </button>
+    <h2 class="label" automation-id="tui-mobile-calendar__label">
+        {{single ? chooseDayOrRangeTexts[0] : chooseDayOrRangeTexts[1]}}
+    </h2>
+    <button
+        tuiLink
+        tuiTouchable="opacity"
+        type="button"
+        automation-id="tui-mobile-calendar__confirm"
+        class="link"
+        (click)="onConfirm()"
+    >
+        {{doneWord}}
+    </button>
+</header>
+<cdk-virtual-scroll-viewport
+    #yearsScrollRef
+    class="years tui-zero-scrollbar"
+    orientation="horizontal"
+    [itemSize]="yearWidth"
+>
+    <div class="years-wrapper">
+        <button
+            *cdkVirtualFor="let index of years"
+            class="year"
+            [attr.data-tui-element-state]="getState(index)"
+            (click)="setYear(index)"
+        >
+            {{index}}
+        </button>
+    </div>
+</cdk-virtual-scroll-viewport>
+<div class="week">
+    <div *ngFor="let day of weekDays" class="day">{{day}}</div>
+</div>
+<cdk-virtual-scroll-viewport
+    #monthsScrollRef
+    class="months tui-zero-scrollbar"
+    (scrolledIndexChange)="onMonthChange($event)"
+>
+    <section
+        *cdkVirtualFor="let month of months; templateCacheSize: 10"
+        class="month-wrapper"
+    >
+        <h2 class="month">{{month | tuiMonth}}</h2>
+        <tui-primitive-calendar-mobile
+            class="calendar"
+            [month]="month"
+            [value]="value"
+            [disabledItemHandler]="disabledItemHandler | tuiMapper : disabledItemHandlerMapper : min : max"
+            (dayClick)="onDayClick($event)"
+        ></tui-primitive-calendar-mobile>
+    </section>
+</cdk-virtual-scroll-viewport>

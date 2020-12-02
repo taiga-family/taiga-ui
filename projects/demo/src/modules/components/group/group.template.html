@@ -1,0 +1,144 @@
+<tui-doc-page header="Group" package="CORE">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Компонент и директика для группировки других компонентов, например,
+            <a tuiLink routerLink="/tui-input">полей ввода</a> и
+            <a tuiLink routerLink="/tui-button">кнопок</a>.
+        </div>
+        <div class="tui-space_bottom-3">
+            Элементы внутри группы одинаково растягиваются на максимально
+            возможную ширину. Чтобы элемент не растягивался, есть класс
+            <code>class="<strong>tui-group__auto-width-item</strong>"</code>.
+        </div>
+
+        Чтобы элемент мог наследовать скругление, есть класс
+        <code>class="<strong>tui-group__inherit-item</strong>"</code>.
+        Пригодится в группе инпутов с выводом ошибок.
+
+        <tui-doc-example id="inputs" heading="Inputs" [content]="example1">
+            <tui-group-example-1></tui-group-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="buttons"
+            heading="ButtonGroup"
+            [content]="example2"
+        >
+            <tui-group-example-2></tui-group-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="vertical"
+            heading="вертикальная группа"
+            [content]="example3"
+        >
+            <tui-group-example-3></tui-group-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="directive"
+            heading="Директива"
+            [content]="example4"
+        >
+            <tui-group-example-4></tui-group-example-4>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-group
+                class="group"
+                [adaptive]="adaptive"
+                [collapsed]="collapsed"
+                [rounded]="rounded"
+                [orientation]="orientation"
+                [size]="size"
+            >
+                <button tuiButton type="button" appearance="outline" size="l">
+                    Кнопка 1
+                </button>
+                <button tuiButton type="button" appearance="outline" size="l">
+                    Кнопка 2
+                </button>
+                <button tuiButton type="button" appearance="outline" size="l">
+                    Кнопка 3
+                </button>
+            </tui-group>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="adaptive"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="adaptive"
+            >
+                Включить адаптацию под mobile
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="collapsed"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="collapsed"
+            >
+                Убрать зазор между элементами (по умолчанию между ними отступ в
+                <code>2px</code>)
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="rounded"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="rounded"
+            >
+                Задать закругления для первого и последнего элемента группы
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="orientation"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiOrientation"
+                [documentationPropertyValues]="orientationVariants"
+                [(documentationPropertyValue)]="orientation"
+            >
+                Направление группы (по умолчанию горизонтальное)
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер скруглений
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiGroupModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон (<code>collapsed</code>, чтобы убрать зазор
+                между элементами,
+                <code>orientation</code>, чтобы задать направление):
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

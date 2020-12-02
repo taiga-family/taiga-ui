@@ -1,0 +1,122 @@
+<tui-wrapper
+    automation-id="tui-primitive-textfield__wrapper"
+    [appearance]="appearance"
+    [readOnly]="readOnly"
+    [disabled]="disabled"
+    [focused]="computedFocused"
+    [hovered]="computedHovered"
+    [pressed]="computedPressed"
+    [invalid]="computedInvalid"
+    (tuiHoveredChange)="onHovered($event)"
+    (mousedown)="onMouseDown($event)"
+>
+    <input
+        #focusableElement
+        tuiMaskAccessor
+        automation-id="tui-primitive-textfield__native-input"
+        class="input"
+        [class.input_hidden]="inputHidden"
+        [style.paddingLeft.px]="paddingLeft"
+        [style.paddingRight.px]="paddingRight"
+        [attr.disabled]="computedDisabled || null"
+        [attr.maxLength]="controller.maxLength"
+        [attr.name]="name"
+        [attr.aria-placeholder]="controller.exampleText"
+        [attr.aria-invalid]="computedInvalid"
+        [autocomplete]="controller.autocomplete"
+        [type]="controller.type"
+        [id]="id"
+        [readOnly]="readOnly || !editable"
+        [tuiInputMode]="controller.inputMode"
+        [tuiFocusable]="computedFocusable"
+        [tuiDescribedBy]="id"
+        [ngModel]="value"
+        (ngModelChange)="onModelChange($event)"
+        (tuiFocusedChange)="onFocused($event)"
+        (tuiAutofilledChange)="onAutofilled($event)"
+    />
+    <div
+        *ngIf="inputHidden"
+        automation-id="tui-primitive-textfield__value"
+        class="input input_template"
+        [style.paddingLeft.px]="paddingLeft"
+        [style.borderRightWidth.px]="paddingRight"
+    >
+        <ng-content select="polymorpheus-outlet"></ng-content>
+    </div>
+    <div class="content" tuiPreventDefault="click">
+        <polymorpheus-outlet
+            *ngIf="iconAlignLeft"
+            class="icon icon_left"
+            [content]="iconContent"
+        >
+            <ng-template let-iconSrc>
+                <tui-svg [src]="iconSrc"></tui-svg>
+            </ng-template>
+        </polymorpheus-outlet>
+        <div class="wrapper">
+            <label
+                *ngIf="hasPlaceholder"
+                automation-id="tui-primitive-textfield__placeholder"
+                class="placeholder"
+                [class.placeholder_raised]="placeholderRaised"
+                [for]="id"
+            >
+                <ng-content></ng-content>
+            </label>
+            <div
+                *ngIf="hasValueDecoration"
+                class="value-decoration"
+                automation-id="tui-primitive-textfield__value-decoration"
+                aria-hidden="true"
+            >
+                <span class="value-decoration-inner">
+                    <span class="ghost">{{value}}</span>
+                    <span automation-id="tui-primitive-textfield__example-text"
+                        >{{computedFiller}}</span
+                    >
+                    <span
+                        *ngIf="hasPostfix"
+                        class="postfix"
+                        [class.postfix_shifted]="postfixShifted"
+                        >{{postfix}}</span
+                    >
+                </span>
+            </div>
+        </div>
+        <polymorpheus-outlet
+            *ngIf="hasCustomContent"
+            class="custom-content"
+            automation-id="tui-primitive-textfield__custom-content"
+            [content]="controller.customContent"
+        >
+            <ng-template let-iconSrc>
+                <tui-svg class="custom-icon" [src]="iconSrc"></tui-svg>
+            </ng-template>
+        </polymorpheus-outlet>
+        <tui-svg
+            *ngIf="hasCleaner"
+            class="cleaner"
+            automation-id="tui-primitive-textfield__cleaner"
+            src="tuiIconCloseLarge"
+            (click.stop)="clear()"
+        ></tui-svg>
+        <tui-tooltip
+            *ngIf="hasTooltip"
+            automation-id="tui-primitive-textfield__tooltip"
+            [describeId]="id"
+            [content]="hintController.content"
+            [direction]="hintController.direction"
+            [mode]="hintController.mode"
+        ></tui-tooltip>
+        <polymorpheus-outlet
+            *ngIf="iconAlignRight"
+            class="icon"
+            [content]="iconContent"
+        >
+            <ng-template let-iconSrc>
+                <tui-svg [src]="iconSrc"></tui-svg>
+            </ng-template>
+        </polymorpheus-outlet>
+    </div>
+</tui-wrapper>

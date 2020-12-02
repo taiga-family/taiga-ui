@@ -1,0 +1,108 @@
+<tui-doc-page header="Card" package="ADDON-COMMERCE">
+    <ng-template pageTab>
+        Кастомизируемый логотип карточки
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-card-example-1></tui-card-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="sizes" heading="размеры" [content]="example2">
+            <tui-card-example-2></tui-card-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example id="best" heading="крутой" [content]="example3">
+            <tui-card-example-3></tui-card-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-card
+                class="logo"
+                [active]="active"
+                [brandLogo]="brandLogo"
+                [cardNumber]="cardNumber"
+                [paymentSystem]="paymentSystem"
+                [size]="size"
+            ></tui-card>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="active"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="active"
+            >
+                Активное состояние карты
+            </ng-template>
+            <ng-template
+                documentationPropertyName="brandLogo"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="brandLogoVariants"
+                [(documentationPropertyValue)]="brandLogo"
+            >
+                Логотип компании партнера
+            </ng-template>
+            <ng-template
+                documentationPropertyName="cardNumber"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="cardNumber"
+            >
+                Четыре последние цифры карты
+            </ng-template>
+            <ng-template
+                documentationPropertyName="paymentSystem"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiPaymentSystem | null"
+                [documentationPropertyValues]="paymentSystemVariants"
+                [(documentationPropertyValue)]="paymentSystem"
+            >
+                Платежная система
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiCardModule</code> в тот же модуль, куда добавляется ваш
+                компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Задать стили карточки через <code>color</code>,
+                <code>background-color</code>, <code>background-image</code>:
+
+                <tui-doc-code
+                    filename="myComponent.style.less"
+                    [code]="exampleCustomizeStyles"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

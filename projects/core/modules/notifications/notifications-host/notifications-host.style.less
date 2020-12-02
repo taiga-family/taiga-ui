@@ -1,0 +1,27 @@
+@import '../../../styles/basic/basic-imports';
+
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+}
+
+.wrapper {
+    width: 288px;
+    margin-left: auto;
+    padding: 32px 48px 0 0;
+
+    @media @tablet {
+        padding: 16px 16px 0 0;
+    }
+
+    @media @desktop-lg-min {
+        width: 368px;
+    }
+}
+
+.alert:not(:first-child) {
+    margin-top: 12px;
+}

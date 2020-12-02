@@ -1,0 +1,13 @@
+<form class="container" [formGroup]="testForm">
+    <tui-input-time formControlName="testValue" [items]="items1">
+        Введите время
+    </tui-input-time>
+    <tui-input-time
+        class="tui-space_top-4"
+        formControlName="testValue"
+        [items]="items2"
+        [strict]="true"
+    >
+        Введите время
+    </tui-input-time>
+</form>

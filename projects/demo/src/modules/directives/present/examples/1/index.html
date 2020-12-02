@@ -1,0 +1,16 @@
+<p (tuiHoveredChange)="onHovered($event)">
+    Наведите
+    <span [class.hidden]="!hovered" (tuiPresentChange)="onCSS($event)">
+        Я компонент, скрытый через CSS
+    </span>
+    <span *ngIf="hovered" (tuiPresentChange)="onIf($event)">
+        Я компонент, скрытый через ngIf
+    </span>
+</p>
+<p>Число появлений компонента минус число исчезновений:</p>
+<p>CSS: <tui-badge [value]="counterCSS"></tui-badge></p>
+<p>ngIf: <tui-badge [value]="counterIf"></tui-badge></p>
+<p>
+    Скрытие через CSS через родительские ноды пока возможно отследить только в
+    Firefox.
+</p>

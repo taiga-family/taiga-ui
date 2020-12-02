@@ -1,0 +1,52 @@
+<h3 class="title">Горизонтальная группировка</h3>
+<form class="group" [formGroup]="testForm">
+    <tui-group class="group" [collapsed]="true">
+        <tui-checkbox-block
+            contentAlign="right"
+            formControlName="testValue1"
+            size="l"
+        >
+            Заголовок
+        </tui-checkbox-block>
+        <tui-checkbox-block
+            contentAlign="right"
+            formControlName="testValue2"
+            size="l"
+        >
+            Заголовок
+        </tui-checkbox-block>
+        <tui-checkbox-block
+            contentAlign="right"
+            formControlName="testValue3"
+            size="l"
+        >
+            Заголовок
+        </tui-checkbox-block>
+    </tui-group>
+</form>
+<h3 class="title">Вертикальная группировка</h3>
+<form [formGroup]="testForm">
+    <tui-group class="group" orientation="vertical" [collapsed]="true">
+        <tui-checkbox-block
+            contentAlign="right"
+            formControlName="testValue1"
+            size="l"
+        >
+            Заголовок
+        </tui-checkbox-block>
+        <tui-checkbox-block
+            contentAlign="right"
+            formControlName="testValue2"
+            size="l"
+        >
+            Заголовок
+        </tui-checkbox-block>
+        <tui-checkbox-block
+            contentAlign="right"
+            formControlName="testValue3"
+            size="l"
+        >
+            Заголовок
+        </tui-checkbox-block>
+    </tui-group>
+</form>

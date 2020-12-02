@@ -1,0 +1,114 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    .clearbtn();
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--tui-link);
+    margin-right: 32px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    counter-increment: steps;
+
+    &:disabled {
+        opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
+    }
+
+    &:hover {
+        color: var(--tui-link-hover);
+    }
+
+    &:not(:last-of-type)._vertical {
+        margin-bottom: 20px;
+    }
+
+    &._active,
+    &._active:hover {
+        color: var(--tui-text-01);
+        cursor: default;
+    }
+
+    &._focus-visible:before {
+        content: '';
+        position: absolute;
+        left: 44px;
+        right: 0;
+        top: 50%;
+        height: 24px;
+        margin-top: -12px;
+        background: var(--tui-selection);
+    }
+}
+
+.marker {
+    .transition(background);
+    display: flex;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    margin-right: 12px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    background: var(--tui-secondary);
+    color: var(--tui-link);
+
+    &_index {
+        &:before {
+            content: counter(steps);
+        }
+
+        :host:hover & {
+            color: var(--tui-link-hover);
+            background: var(--tui-secondary-hover);
+        }
+
+        :host._active & {
+            color: var(--tui-primary-text);
+            background: var(--tui-primary);
+        }
+
+        :host:not([data-state='normal']):not(._active) &,
+        :host:not(._active) .marker_custom ~ & {
+            display: none;
+        }
+    }
+
+    &_error {
+        background: var(--tui-error-bg);
+        color: var(--tui-error-fill);
+
+        :host:hover & {
+            background: var(--tui-error-bg-hover);
+            color: var(--tui-error-fill);
+        }
+
+        :host:not([data-state='error']) &,
+        :host._active & {
+            display: none;
+        }
+    }
+
+    &_pass {
+        :host:not([data-state='pass']) &,
+        :host._active & {
+            display: none;
+        }
+    }
+
+    &_custom {
+        :host:not([data-state='normal']) &,
+        :host._active & {
+            display: none;
+        }
+
+        :host:hover & {
+            color: var(--tui-link-hover);
+            background: var(--tui-secondary-hover);
+        }
+    }
+}

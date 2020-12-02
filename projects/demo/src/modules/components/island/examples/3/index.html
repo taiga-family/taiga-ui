@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="tui-row">
+        <div class="tui-col_md-4">
+            <tui-island size="l">
+                <ul class="tui-list">
+                    <li class="tui-list__item">
+                        Доходность 6% годовых в рублях (0,1% годовых в долларах
+                        и 0,1% годовых в евро) с ежемесячной капитализацией
+                        процентов
+                    </li>
+                    <li class="tui-list__item">
+                        В любой момент, начиная со 2 дня вклада, но не позднее,
+                        чем за 30 дней до конца вклада
+                    </li>
+                    <li class="tui-list__item">
+                        Пополнение и изъятие в любой момент без потери процентов
+                    </li>
+                    <li class="tui-list__item">
+                        Удобно регулярно откладывать деньги
+                    </li>
+                </ul>
+            </tui-island>
+        </div>
+        <div class="tui-col_md-4">
+            <tui-island size="l" textAlign="center">
+                <h3 class="title">Мы перезвоним!</h3>
+                <form [formGroup]="testForm">
+                    <tui-input-phone
+                        class="input"
+                        formControlName="testValue"
+                        [tuiTextfieldLabelOutside]="true"
+                    >
+                        Введите телефон
+                    </tui-input-phone>
+                    <tui-field-error
+                        formControlName="testValue"
+                    ></tui-field-error>
+                </form>
+            </tui-island>
+        </div>
+        <div class="tui-col_md-4">
+            <a
+                tuiIsland
+                href="http://ng-web-apis.github.io/"
+                size="l"
+                target="_blank"
+                [hoverable]="true"
+            >
+                <img class="image" alt="Taiga" [src]="bannerImage" />
+                <h3 class="title title_size_s">Мы перезвоним!</h3>
+                <p class="text">
+                    До 30% кэшбэк по карте и до 6% годовых на остаток.
+                </p>
+                <a
+                    tuiButton
+                    type="button"
+                    href="https://ng-web-apis.github.io"
+                    class="button"
+                    mode="secondary"
+                    size="m"
+                    target="_blank"
+                >
+                    Оформить карту
+                </a>
+            </a>
+        </div>
+    </div>
+    <div class="tui-row tui-space_top-5">
+        <div class="tui-col_md-4">
+            <tui-island textAlign="center">
+                <h3 class="tui-island__title">Дебетовая карта</h3>
+                <p class="tui-island__paragraph">{{collapsingText}}</p>
+                <p class="tui-island__paragraph tui-island__paragraph_link">
+                    <button tuiLink type="button" (click)="expandText()">
+                        Показать
+                        <ng-container *ngIf="expanded; else more"
+                            >меньше</ng-container
+                        >
+                        <ng-template #more>больше</ng-template>
+                    </button>
+                </p>
+            </tui-island>
+        </div>
+        <div class="tui-col_md-4"></div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+{
+    "ngPackage": {
+        "lib": {
+            "cssUrl": "inline",
+            "entryFile": "index.ts",
+            "styleIncludePaths": [
+                "../../../core/styles"
+            ]
+        }
+    }
+}

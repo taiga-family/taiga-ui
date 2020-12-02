@@ -1,0 +1,31 @@
+@import 'taiga-ui-angular-local';
+
+.input1,
+.input2,
+.input3 {
+    margin-right: 10px;
+}
+
+.input1 {
+    border: 2px solid @color-red-100;
+}
+
+.input2 {
+    background: var(--tui-base-09);
+    padding: 10px;
+    color: @color-white;
+    letter-spacing: 10px;
+    font-size: 20px;
+}
+
+.input3 {
+    font-family: monospace;
+    font-weight: bold;
+    background: @color-gray-300;
+}
+
+.input4 {
+    &_empty {
+        opacity: 0.3;
+    }
+}

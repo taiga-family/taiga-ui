@@ -1,0 +1,9 @@
+<div class="trap" tabindex="0" (focusin)="onFocus($event.target, true)"></div>
+<ng-content></ng-content>
+<div
+    *ngIf="empty$ | async"
+    class="empty"
+    polymorpheus-outlet
+    [content]="emptyContent"
+></div>
+<div class="trap" tabindex="0" (focusin)="onFocus($event.target, false)"></div>

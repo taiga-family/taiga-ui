@@ -1,0 +1,13 @@
+<tui-doc-main>
+    <img
+        *ngIf="isChristmas"
+        alt="Santa hat"
+        class="christmas"
+        src="/assets/images/hat.svg"
+    />
+    <tui-table-bars-host
+        ngProjectAs="tuiOverNotifications"
+    ></tui-table-bars-host>
+    <tui-theme-android *ngIf="isAndroid"></tui-theme-android>
+    <tui-theme-ios *ngIf="isIos"></tui-theme-ios>
+</tui-doc-main>

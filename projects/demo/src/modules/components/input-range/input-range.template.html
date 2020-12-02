@@ -1,0 +1,172 @@
+<tui-doc-page header="InputRange" package="KIT">
+    <ng-template pageTab>
+        Компонент для ввода диапазона значений
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-input-range-example-1></tui-input-range-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-range
+                    [formControl]="control"
+                    [focusable]="focusable"
+                    [min]="min"
+                    [max]="max"
+                    [minLabel]="minLabel"
+                    [maxLabel]="maxLabel"
+                    [segments]="segments"
+                    [segmentsPluralize]="segmentsPluralize"
+                    [size]="size"
+                    [keySteps]="keySteps"
+                    [pluralize]="pluralize"
+                    [steps]="steps"
+                    [quantum]="quantum"
+                    [readOnly]="readOnly"
+                >
+                    Срок
+                </tui-input-range>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="quantum"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="quantumVariants"
+                [(documentationPropertyValue)]="quantum"
+            >
+                Минимальное неделимое значение
+            </ng-template>
+            <ng-template
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Минимальная величина
+            </ng-template>
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Максимальная величина
+            </ng-template>
+            <ng-template
+                documentationPropertyName="minLabel"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="minLabelVariants"
+                [(documentationPropertyValue)]="minLabel"
+            >
+                Подпись для минимального значения
+            </ng-template>
+            <ng-template
+                documentationPropertyName="maxLabel"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="maxLabelVariants"
+                [(documentationPropertyValue)]="maxLabel"
+            >
+                Подпись для максимального значения
+            </ng-template>
+            <ng-template
+                documentationPropertyName="pluralize"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiPluralize"
+                [documentationPropertyValues]="pluralizeVariants"
+                [(documentationPropertyValue)]="pluralize"
+            >
+                Формы множественного числа для подписей
+            </ng-template>
+            <ng-template
+                documentationPropertyName="segments"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="segmentsVariants"
+                [(documentationPropertyValue)]="segments"
+            >
+                Количество участков визуальной разбивки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="segmentsPluralize"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiPluralize"
+                [documentationPropertyValues]="pluralizeVariants"
+                [(documentationPropertyValue)]="segmentsPluralize"
+            >
+                Формы множественного числа для подписей шкалы (используется
+                вместе с <code>segments</code>)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер поля
+            </ng-template>
+            <ng-template
+                documentationPropertyName="steps"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="stepsVariants"
+                [(documentationPropertyValue)]="steps"
+            >
+                Количество фактических дискретных шагов слайдера
+            </ng-template>
+            <ng-template
+                documentationPropertyName="keySteps"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiKeySteps"
+                [documentationPropertyValues]="keyStepsVariants"
+                [(documentationPropertyValue)]="keySteps"
+            >
+                Опорные точки неоднородной зависимости значения и положения
+                слайдера
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiInputRangeModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон (<code>minValue</code> для минимального
+                значения, <code>maxValue</code> для максимального значения,
+                <code>step</code> для задания шага инкремента,
+                <code>right</code> для варианта кнопками справа):
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

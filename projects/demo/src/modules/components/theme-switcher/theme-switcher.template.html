@@ -1,0 +1,38 @@
+<tui-doc-page header="ThemeSwitcher" package="CDK">
+    <ng-template pageTab>
+        Абстрактный класс <code>AbstractTuiThemeSwitcher</code> используется для
+        создания компонентов для динамического переключения тем. В примере выше
+        показан такой компонент — он наследуется от
+        <code>AbstractTuiThemeSwitcher</code> и содержит переопределения
+        переменных стилей. Для динамического включения/выключения можно
+        использовать <code>*ngIf</code>. <b>Важно:</b> компонент должен иметь
+        выключенную инкапсуляцию стилей.
+
+        <tui-doc-example id="green" heading="зелёная тема" [content]="example1">
+            <tui-theme-switcher-1></tui-theme-switcher-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Подключение">
+        <ol class="b-demo-steps">
+            <li>
+                Для включения синей темы импортировать модуль с вашей темой в
+                ваш основной модуль:
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон внутрь или после <code>tui-root</code>:
+
+                <tui-doc-code
+                    filename="app.component.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

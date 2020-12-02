@@ -1,0 +1,31 @@
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {TuiThemeAndroidModule, TuiThemeIosModule} from '@taiga-ui/addon-mobile';
+import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
+import {TuiIslandModule} from '@taiga-ui/kit';
+import {TuiMobileThemesExample1} from './examples/1';
+import {TuiMobileThemesExample2} from './examples/2';
+import {ExampleTuiMobileThemesComponent} from './mobile-themes.component';
+
+@NgModule({
+    imports: [
+        CommonModule,
+        RouterModule,
+        TuiThemeIosModule,
+        TuiThemeAndroidModule,
+        TuiButtonModule,
+        TuiLinkModule,
+        TuiIslandModule,
+        ...TUI_DOC_PAGE_MODULES,
+        RouterModule.forChild(generateRoutes(ExampleTuiMobileThemesComponent)),
+    ],
+    declarations: [
+        ExampleTuiMobileThemesComponent,
+        TuiMobileThemesExample1,
+        TuiMobileThemesExample2,
+    ],
+    exports: [ExampleTuiMobileThemesComponent],
+})
+export class ExampleTuiMobileThemesModule {}

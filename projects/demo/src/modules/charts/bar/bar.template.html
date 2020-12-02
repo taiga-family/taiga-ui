@@ -1,0 +1,77 @@
+<tui-doc-page header="Bar" package="ADDON-CHARTS">
+    <ng-template pageTab>
+        Компонент столбика для столбчатой диаграммы
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-bar-example-1></tui-bar-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="segments" heading="сегменты" [content]="example2">
+            <tui-bar-example-2></tui-bar-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-bar
+                class="bar"
+                [size]="size"
+                [value]="value"
+                [colorHandler]="colorHandler"
+            ></tui-bar>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="colorHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiColorHandler"
+                [documentationPropertyValues]="colorHandlerVariants"
+                [(documentationPropertyValue)]="colorHandler"
+            >
+                Функция, получающая на вход индекс сегмента, и возвращающая цвет
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS | TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер столбика
+            </ng-template>
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="ReadonlyArray<number>"
+                [documentationPropertyValues]="valueVariants"
+                [(documentationPropertyValue)]="value"
+            >
+                Массив сегментов
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiBarModule</code> в тот же модуль, куда добавляется ваш
+                компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

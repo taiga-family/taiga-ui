@@ -1,0 +1,95 @@
+<h6 class="tui-text_h6">
+    Можно расширить с помощью
+    <a tuiLink target="_blank" routerLink="/tui-textfield-controller"
+        >TuiTextfieldController</a
+    >:
+</h6>
+<tui-doc-documentation>
+    <ng-template
+        documentationPropertyName="tuiTextfieldAutocomplete"
+        documentationPropertyMode="input"
+        documentationPropertyType="TuiAutofillFieldName | null"
+        [documentationPropertyValues]="documentedComponent.autocompleteVariants"
+        [(documentationPropertyValue)]="documentedComponent.autocomplete"
+    >
+        Атрибут autocomplete для нативного инпута (<a
+            tuiLink
+            href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#inappropriate-for-the-control"
+            >описание имен</a
+        >)
+    </ng-template>
+    <ng-template
+        documentationPropertyName="tuiTextfieldCleaner"
+        documentationPropertyMode="input"
+        documentationPropertyType="boolean"
+        [(documentationPropertyValue)]="documentedComponent.cleaner"
+    >
+        Показывать крестик для очистки поля
+    </ng-template>
+    <ng-template
+        documentationPropertyName="tuiTextfieldCustomContent"
+        documentationPropertyMode="input"
+        documentationPropertyType="PolymorpheusContent | null"
+        [documentationPropertyValues]="documentedComponent.customContentVariants"
+        [(documentationPropertyValue)]="documentedComponent.customContentSelected"
+    >
+        Произвольный контент справа (к примеру, иконка карточки, максимальный
+        размер 32х32px). В случае строки — вставляется как
+        <code>src</code> или имя иконки в <code>tui-svg</code>
+    </ng-template>
+    <ng-template
+        documentationPropertyName="tuiTextfieldExampleText"
+        documentationPropertyMode="input"
+        documentationPropertyType="string"
+        [(documentationPropertyValue)]="documentedComponent.exampleText"
+    >
+        Пример заполнения поля
+    </ng-template>
+    <ng-template
+        documentationPropertyName="tuiTextfieldInputMode"
+        documentationPropertyMode="input"
+        documentationPropertyType="TuiInputMode"
+        [documentationPropertyValues]="documentedComponent.inputModeVariants"
+        [(documentationPropertyValue)]="documentedComponent.inputMode"
+    >
+        Атрибут <code>inputmode</code> для нативного инпута, позволяет задать
+        вид экранной клавиатуры на мобильных устройствах
+    </ng-template>
+    <ng-template
+        documentationPropertyName="tuiTextfieldLabelOutside"
+        documentationPropertyMode="input"
+        documentationPropertyType="boolean"
+        [(documentationPropertyValue)]="documentedComponent.labelOutside"
+    >
+        Лэйбл снаружи, а не внутри компонента. Лэйбл в этом случае создается с
+        помощью компонента
+        <a tuiLink routerLink="/tui-label"><code>Label</code></a>
+    </ng-template>
+    <ng-template
+        documentationPropertyName="tuiTextfieldMaxLength"
+        documentationPropertyMode="input"
+        documentationPropertyType="number | null"
+        [documentationPropertyValues]="documentedComponent.maxLengthVariants"
+        [(documentationPropertyValue)]="documentedComponent.maxLength"
+    >
+        Максимальное число вводимых символов. Не работает, если задана маска.
+    </ng-template>
+    <ng-template
+        documentationPropertyName="tuiTextfieldSize"
+        documentationPropertyMode="input"
+        documentationPropertyType="TuiSizeS | TuiSizeL"
+        [documentationPropertyValues]="documentedComponent.sizeVariants"
+        [(documentationPropertyValue)]="documentedComponent.size"
+    >
+        Размер поля
+    </ng-template>
+    <ng-template
+        documentationPropertyName="tuiTextfieldType"
+        documentationPropertyMode="input"
+        documentationPropertyType="TuiInputType"
+        [documentationPropertyValues]="documentedComponent.typeVariants"
+        [(documentationPropertyValue)]="documentedComponent.type"
+    >
+        Атрибут <code>type</code> для нативного инпута
+    </ng-template>
+</tui-doc-documentation>

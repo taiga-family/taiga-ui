@@ -1,0 +1,16 @@
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {TuiNotificationsService} from '@taiga-ui/core';
+import {CustomNotificationComponent} from 'customNotification.component';
+...
+
+constructor(@Inject(TuiNotificationsService) private readonly notificationsService: TuiNotificationsService) {
+
+...
+
+    this.notificationsService.showNotification(new PolymorpheusComponent(CustomNotificationComponent))
+        .subscribe({
+            complete: () => {
+            console.log('Notification is closed');
+        }
+    });
+...

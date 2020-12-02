@@ -1,0 +1,140 @@
+<tui-doc-page header="Filter">
+    <ng-template pageTab>
+        Компонент представляет набор разделенных между собой пунктов, которые
+        используются для выборочной фильтрации контента на странице. Для
+        фильтрации может быть выбрано любое количество пунктов из списка.
+        Предусмотрен вариант с беджами.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-filter-example-1></tui-filter-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="badge" heading="с бэджами" [content]="example2">
+            <tui-filter-example-2></tui-filter-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="кастомный контент"
+            [content]="example3"
+        >
+            <tui-filter-example-3></tui-filter-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="all"
+            heading="С возможностью выбрать всё"
+            [content]="example4"
+        >
+            <tui-filter-example-4></tui-filter-example-4>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-filter
+                    [formControl]="control"
+                    [badgeHandler]="badgeHandler"
+                    [disabledItemHandler]="disabledItemHandler"
+                    [items]="items"
+                    [size]="size"
+                    (toggledItem)="onToggledItemChange($event)"
+                ></tui-filter>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="badgeHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiHandler<T>"
+                [documentationPropertyValues]="badgeHandlerVariants"
+                [(documentationPropertyValue)]="badgeHandler"
+            >
+                Функция, определяющая значение бэджей в пунктах. Если не задана,
+                то у объектов вызывается
+                <code>valueOf</code>, чтобы получить число для отображения.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="content"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent<any>"
+            >
+                Шаблон для произвольного контента в фильтре
+            </ng-template>
+            <ng-template
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<T>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Функция, определяющая заблокирован ли пункт.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="identityMatcher"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiIdentityMatcher"
+            >
+                Функция определения равенства объектов (нужна в случае, если
+                выбранное значение задано изначально и не присутствует в
+                <code>items</code>, однако там есть точная копия, которую можно
+                определить по какому-нибудь критерию. По умолчанию используется
+                сравнение <code>===</code>.
+                <strong>Должна быть чистой функцией</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="items"
+                documentationPropertyMode="input"
+                documentationPropertyType="T[]"
+                [documentationPropertyValues]="itemsVariants"
+                [(documentationPropertyValue)]="items"
+            >
+                Список элементов. Принимает массив строк или массив объектов.
+                Если не задан кастомный шаблон для элементов, то у объектов
+                вызывается
+                <code>toString</code>, чтобы получить строку для отображения.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS | TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер
+            </ng-template>
+            <ng-template
+                documentationPropertyName="toggledItem"
+                documentationPropertyMode="output"
+                documentationPropertyType="T"
+            >
+                Подписка на toggled пункт фильтра
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiFilterModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,118 @@
+<tui-doc-page header="BarSet" package="ADDON-CHARTS">
+    <ng-template pageTab>
+        Компонент группы столбиков для столбчатой диаграммы
+
+        <tui-doc-example
+            id="flexible"
+            heading="Динамический размер"
+            [content]="example1"
+        >
+            <tui-bar-set-example-1></tui-bar-set-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="fixed"
+            heading="Фиксированный размер"
+            [content]="example2"
+        >
+            <tui-bar-set-example-2></tui-bar-set-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="negative"
+            heading="С отрицательными значениями"
+            [content]="example3"
+        >
+            <tui-bar-set-example-3></tui-bar-set-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="horizontal"
+            heading="Горизонтальный"
+            [content]="example4"
+        >
+            <tui-bar-set-example-4></tui-bar-set-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="collapsed"
+            heading="Схлопнутый"
+            [content]="example5"
+        >
+            <tui-bar-set-example-5></tui-bar-set-example-5>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-bar-set
+                class="bars"
+                [collapsed]="collapsed"
+                [value]="value"
+                [size]="size"
+                [colorHandler]="colorHandler"
+            ></tui-bar-set>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="collapsed"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="collapsed"
+            >
+                Показывать набор данных на одном столбце
+            </ng-template>
+            <ng-template
+                documentationPropertyName="colorHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiColorHandler"
+                [documentationPropertyValues]="colorHandlerVariants"
+                [(documentationPropertyValue)]="colorHandler"
+            >
+                Функция, получающая на вход индекс сегмента, и возвращающая цвет
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS | TuiSizeL | null"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер столбцов (<code>null</code> для авторазмера)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="ReadonlyArray<number>"
+                [documentationPropertyValues]="valueVariants"
+                [(documentationPropertyValue)]="value"
+            >
+                Массив сегментов
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiBarSetModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,231 @@
+@import 'taiga-ui-angular-local';
+
+@padding: 8px;
+@padding-large: 12px;
+
+:host {
+    .transition(background);
+    .text-body-s(2);
+    position: relative;
+    display: inline-block;
+    border-radius: 8px;
+    max-width: 100%;
+    cursor: default;
+    color: var(--tui-base-01);
+    outline: none;
+    text-decoration: none;
+
+    &:after {
+        .transition(background);
+        .fullsize();
+        content: '';
+        box-sizing: border-box;
+        border-radius: inherit;
+        pointer-events: none;
+    }
+
+    &:hover,
+    &:active {
+        &._hoverable[data-tui-host-status='custom']:not(._editing):after {
+            background-color: var(--tui-clear);
+        }
+    }
+
+    &:focus:after {
+        border: 2px solid var(--tui-focus);
+    }
+
+    &[data-tui-host-status='primary'] {
+        background-color: var(--tui-primary);
+        color: var(--tui-primary-text);
+    }
+
+    &[data-tui-host-status='default'] {
+        background-color: var(--tui-base-06);
+    }
+
+    &[data-tui-host-status='default'][data-tui-host-mode='light'] {
+        background-color: var(--tui-clear-inverse);
+
+        &:hover {
+            background-color: var(--tui-clear-inverse-hover);
+        }
+
+        &:active {
+            background-color: var(--tui-clear-inverse-active);
+        }
+
+        &:focus:after {
+            border: 2px solid var(--tui-base-01);
+        }
+    }
+
+    &[data-tui-host-status='default'][data-tui-host-mode='dark'] {
+        background-color: var(--tui-clear);
+        color: var(--tui-text-01);
+
+        &:hover {
+            background-color: var(--tui-clear-hover);
+        }
+
+        &:active {
+            background-color: var(--tui-clear-active);
+        }
+    }
+
+    &._editing {
+        background: transparent !important;
+    }
+
+    &._disabled {
+        pointer-events: none;
+        opacity: var(--tui-disabled-opacity);
+    }
+
+    &._hoverable {
+        cursor: pointer;
+
+        &[data-tui-host-status='primary'] {
+            &:hover {
+                background-color: var(--tui-primary-hover);
+            }
+
+            &:active {
+                background-color: var(--tui-primary-active);
+            }
+        }
+
+        &[data-tui-host-status='default']:not([data-tui-host-mode]) {
+            &:hover {
+                background-color: var(--tui-base-07);
+            }
+
+            &:active {
+                background-color: var(--tui-base-08);
+            }
+        }
+    }
+
+    &._autocolor {
+        color: var(--tui-text-01);
+    }
+}
+
+.text {
+    .text-overflow();
+    padding-right: @compensational-padding;
+}
+
+.tag {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: inherit;
+    white-space: pre;
+
+    :host[data-tui-host-size='s'] & {
+        .text-body-xs();
+        height: @height-extra-extra-small;
+        padding: 0 @padding;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        height: @height-extra-small;
+        padding: 0 @padding;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        height: @height-small;
+        padding: 0 @padding-large;
+    }
+
+    :host._has-icon[data-tui-host-size='s'] & {
+        padding-right: @space / 2;
+    }
+
+    :host._has-icon[data-tui-host-size='m'] & {
+        padding-right: 0;
+    }
+
+    :host._has-icon[data-tui-host-size='l'] & {
+        padding-right: @space;
+    }
+
+    :host._editing & {
+        visibility: hidden;
+    }
+
+    :host._disabled._has-icon[data-tui-host-size='s'] &,
+    :host._disabled._has-icon[data-tui-host-size='m'] & {
+        padding-right: @padding;
+    }
+
+    :host._disabled._has-icon[data-tui-host-size='l'] & {
+        padding-right: @padding-large;
+    }
+}
+
+.edit {
+    .text-body-s(2);
+    .clearinput();
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    :host[data-tui-host-size='s'] & {
+        height: @height-extra-extra-small;
+        line-height: @height-extra-extra-small;
+        padding-left: @padding;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        height: @height-extra-small;
+        line-height: @height-extra-small;
+        padding-left: @padding;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        height: @height-small;
+        line-height: @height-small;
+        padding-left: @padding-large;
+    }
+}
+
+.icon {
+    margin-left: @space;
+    height: 100%;
+
+    &:not(&_loader) {
+        cursor: pointer;
+        pointer-events: all;
+        opacity: @disabled-opacity;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &_loader {
+        width: 16px;
+        height: 16px;
+        margin: 0 4px;
+
+        :host[data-tui-host-size='s'] & {
+            margin: 0 6px 0 12px;
+            width: 8px;
+            height: 8px;
+        }
+
+        :host[data-tui-host-size='l'] & {
+            margin: 0 4px 0 8px;
+        }
+    }
+}
+
+.left-content {
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+}

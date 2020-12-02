@@ -1,0 +1,35 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.table {
+    width: 100%;
+}
+
+.th {
+    .text-caption();
+    border-bottom: 1px solid var(--tui-base-03);
+    padding: 10px 30px;
+    white-space: nowrap;
+
+    &:first-child {
+        min-width: 200px;
+        padding-left: 0;
+        text-align: left;
+    }
+}
+
+.td {
+    padding: 30px;
+    vertical-align: baseline;
+    white-space: nowrap;
+
+    &:first-child {
+        padding-left: 0;
+        white-space: normal;
+    }
+}

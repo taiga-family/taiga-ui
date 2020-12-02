@@ -1,0 +1,21 @@
+<form class="container" [formGroup]="testForm">
+    <tui-input-time formControlName="testValue" tuiTextfieldSize="s">
+        Введите время
+    </tui-input-time>
+    <tui-input-time
+        class="tui-space_top-2"
+        formControlName="testValue"
+        tuiTextfieldSize="m"
+        [tuiTextfieldLabelOutside]="true"
+    >
+        Введите время
+    </tui-input-time>
+    <p>
+        В случае, если поле необязательное, но не до конца заполненное поле
+        нужно считать невалидным, используйте
+        <code>tuiUnfinishedValidator</code> директиву.
+    </p>
+    <tui-input-time tuiUnfinishedValidator formControlName="testValue">
+        Введите время
+    </tui-input-time>
+</form>

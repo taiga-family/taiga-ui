@@ -1,0 +1,22 @@
+<form [formGroup]="testForm" class="form">
+    <tui-input-range
+        class="control"
+        formControlName="testValue"
+        size="m"
+        minLabel="Ничегошеньки"
+        maxLabel="Совсем всё"
+        [max]="1000"
+        [quantum]="10"
+    >
+    </tui-input-range>
+    <tui-input-range
+        class="control"
+        formControlName="testValue"
+        minLabel="Ничегошеньки"
+        maxLabel="Совсем всё"
+        [max]="1000"
+        [quantum]="10"
+    >
+        Сколько золота раздать народу
+    </tui-input-range>
+</form>

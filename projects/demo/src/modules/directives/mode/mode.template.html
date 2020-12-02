@@ -1,0 +1,33 @@
+<tui-doc-page header="Mode" package="CORE">
+    <ng-template pageTab>
+        Директива <code>tuiMode</code> позволяет задавать внешний вид группы
+        компонентов.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-mode-example-1></tui-mode-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiModeModule</code>:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,57 @@
+@import 'taiga-ui-angular-local';
+
+@sizeM: 16px;
+@sizeL: 24px;
+@dotSizeM: 8px;
+@dotSizeL: 10px;
+
+:host {
+    .text-basic();
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+    border-radius: 50%;
+
+    &[data-tui-host-size='m'] {
+        width: @sizeM;
+        height: @sizeM;
+    }
+
+    &[data-tui-host-size='l'] {
+        width: @sizeL;
+        height: @sizeL;
+    }
+
+    &._readonly {
+        pointer-events: none;
+    }
+}
+
+.mark {
+    position: absolute;
+    background-color: currentColor;
+    border-radius: 50%;
+
+    :host[data-tui-host-size='m'] & {
+        margin: 4px;
+        width: @dotSizeM;
+        height: @dotSizeM;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        margin: 7px;
+        width: @dotSizeL;
+        height: @dotSizeL;
+    }
+}
+
+.native {
+    .clearinput();
+    .fullsize();
+    opacity: 0;
+    cursor: pointer;
+
+    :host._disabled & {
+        cursor: default;
+    }
+}

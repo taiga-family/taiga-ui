@@ -1,0 +1,67 @@
+<h2 *ngIf="isIE; else customization">
+    Интерактивная настройка темы недоступна в Internet Explorer.
+</h2>
+<ng-template #customization>
+    <tui-doc-demo #demo [attr.style]="style">
+        <ng-content></ng-content>
+    </tui-doc-demo>
+    <tui-doc-documentation
+        *ngIf="basic; else withMode"
+        class="tui-space_top-6"
+        [tuiMode]="null"
+    >
+        <ng-template
+            *ngFor="let variable of keys"
+            [documentationPropertyName]="variable"
+            [documentationPropertyType]="getType(variable)"
+            [documentationPropertyValue]="getVariable(variable)"
+            (documentationPropertyValueChange)="onModelChange(variable, $event)"
+        ></ng-template>
+    </tui-doc-documentation>
+    <ng-template #withMode>
+        <tui-accordion class="tui-space_top-6" [tuiMode]="null">
+            <tui-accordion-item>
+                Состояие по умолчанию
+                <tui-doc-documentation *tuiAccordionItemContent>
+                    <ng-container *ngFor="let variable of keys">
+                        <ng-template
+                            *ngIf="!isDark(variable) && !isLight(variable)"
+                            [documentationPropertyName]="variable"
+                            [documentationPropertyType]="getType(variable)"
+                            [documentationPropertyValue]="getVariable(variable)"
+                            (documentationPropertyValueChange)="onModelChange(variable, $event)"
+                        ></ng-template>
+                    </ng-container>
+                </tui-doc-documentation>
+            </tui-accordion-item>
+            <tui-accordion-item *ngIf="hasLight">
+                Светлое состояние
+                <tui-doc-documentation *tuiAccordionItemContent>
+                    <ng-container *ngFor="let variable of keys">
+                        <ng-template
+                            *ngIf="isLight(variable)"
+                            [documentationPropertyName]="variable"
+                            [documentationPropertyType]="getType(variable)"
+                            [documentationPropertyValue]="getVariable(variable)"
+                            (documentationPropertyValueChange)="onModelChange(variable, $event)"
+                        ></ng-template>
+                    </ng-container>
+                </tui-doc-documentation>
+            </tui-accordion-item>
+            <tui-accordion-item *ngIf="hasLight">
+                Тёмное состояние
+                <tui-doc-documentation *tuiAccordionItemContent>
+                    <ng-container *ngFor="let variable of keys">
+                        <ng-template
+                            *ngIf="isDark(variable)"
+                            [documentationPropertyName]="variable"
+                            [documentationPropertyType]="getType(variable)"
+                            [documentationPropertyValue]="getVariable(variable)"
+                            (documentationPropertyValueChange)="onModelChange(variable, $event)"
+                        ></ng-template>
+                    </ng-container>
+                </tui-doc-documentation>
+            </tui-accordion-item>
+        </tui-accordion>
+    </ng-template>
+</ng-template>

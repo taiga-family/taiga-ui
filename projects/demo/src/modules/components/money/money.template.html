@@ -1,0 +1,171 @@
+<tui-doc-page header="Money" package="ADDON-COMMERCE">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Компонент <code>Money</code> предназначен для вывода форматированных
+            денежных сумм. Может отображать сумму со&nbsp;знаком валюты
+            и&nbsp;без, с&nbsp;копейками и&nbsp;без копеек.
+        </div>
+
+        Копейки могут иметь тот&nbsp;же цвет, что и&nbsp;целая часть суммы,
+        а&nbsp;могут быть показаны серым цветом. Этим управляет параметр
+        <code>singleColor</code>. Его следует выставлять в <code>true</code>,
+        если компонент используется в&nbsp;тексте.
+
+        <tui-doc-example id="currency" heading="валюта" [content]="example1">
+            <tui-money-example-1></tui-money-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="color" heading="цвет" [content]="example2">
+            <tui-money-example-2></tui-money-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="sizes"
+            heading="наследование размера"
+            [content]="example3"
+        >
+            <tui-money-example-3></tui-money-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example id="text" heading="в тексте" [content]="example4">
+            <tui-money-example-4></tui-money-example-4>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-money
+                [value]="value"
+                [decimal]="decimal"
+                [currency]="currency"
+                [sign]="sign"
+                [precision]="precision"
+                [singleColor]="singleColor"
+                [colored]="colored"
+            ></tui-money>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="colored"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="colored"
+            >
+                В&nbsp;цветном режиме положительные суммы показаны зеленым
+                цветом, отрицательные&nbsp;&mdash; красным.
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="currency"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiCurrencyVariants"
+                [documentationPropertyValues]="currencyVariants"
+                [(documentationPropertyValue)]="currency"
+            >
+                Валюта
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="decimal"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDecimal"
+                [documentationPropertyValues]="decimalVariants"
+                [(documentationPropertyValue)]="decimal"
+            >
+                <ol>
+                    <li>
+                        <code>not-zero</code> — показывать ненулевые копейки (по
+                        умолчанию)
+                    </li>
+                    <li><code>always</code> — всегда показывать копейки</li>
+                    <li>
+                        <code>never</code> — никогда не показывать копейки
+                        (копейки скрываются без округления)
+                    </li>
+                </ol>
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="precision"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="precisionVariants"
+                [(documentationPropertyValue)]="precision"
+            >
+                Число знаков после запятой
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="sign"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMoneySign"
+                [documentationPropertyValues]="signVariants"
+                [(documentationPropertyValue)]="sign"
+            >
+                <ol>
+                    <li>
+                        <code>negative-only</code> — показывать знак только для
+                        отрицательных чисел (по умолчанию)
+                    </li>
+                    <li>
+                        <code>always</code> — показывать знак всегда (кроме
+                        нуля)
+                    </li>
+                    <li><code>never</code> — не показывать знак</li>
+                    <li>
+                        <code>force-negative</code> — показывать минус вне
+                        зависимости от числа (кроме нуля)
+                    </li>
+                    <li>
+                        <code>force-positive</code> — показывать плюс вне
+                        зависимости от числа (кроме нуля)
+                    </li>
+                </ol>
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="singleColor"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="singleColor"
+            >
+                Показывать копейки и символ валюты тем же цветом, что и целую
+                часть
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="valueVariants"
+                [(documentationPropertyValue)]="value"
+            >
+                Денежная сумма для форматирования
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiMoneyModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

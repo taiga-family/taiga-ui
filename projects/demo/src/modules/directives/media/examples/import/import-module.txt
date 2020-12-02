@@ -1,0 +1,10 @@
+import {TuiMediaModule} from '@taiga-ui/cdk';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiMediaModule,
+    ],
+...

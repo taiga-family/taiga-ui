@@ -1,0 +1,12 @@
+<tui-input
+    class="control"
+    tuiHintContent="Введите 5 или более букв"
+    [tuiTextfieldCleaner]="true"
+    [tuiTextfieldCustomContent]="control.valid ? success : ''"
+    [formControl]="control"
+>
+    Всем привет
+</tui-input>
+<ng-template #success>
+    <tui-svg class="success tui-space_left-3" src="tuiIconCheckLarge"></tui-svg>
+</ng-template>

@@ -1,0 +1,24 @@
+<header
+    *ngIf="header"
+    polymorpheus-outlet
+    class="header"
+    [content]="header"
+    [context]="context"
+></header>
+<h2 class="heading tui-text_{{h}}" [id]="context.id">{{context.label}}</h2>
+<section polymorpheus-outlet [context]="context" [content]="content"></section>
+<div class="wrapper">
+    <button
+        *ngIf="context.closeable"
+        tuiIconButton
+        tuiPreventDefault="mousedown"
+        automation-id="tui-dialog__close"
+        class="close"
+        size="s"
+        appearance=""
+        icon="tuiIconCloseLarge"
+        shape="rounded"
+        [title]="closeWord"
+        (click)="close()"
+    ></button>
+</div>

@@ -1,0 +1,230 @@
+@import '../variables/colors';
+@import '../variables/font';
+
+// PALETTE, common colors
+@color-blank: @color-white;
+@color-blank-disabled: fade(@color-blank, @disabled-opacity-percentage);
+@color-void: fade(@color-white, 0%);
+@color-true-black: @color-black-400;
+@color-selection: fade(@color-primary, 32%);
+
+// common text colors
+@color-text: fade(@color-black-400, 80%);
+@color-text-light: @color-black-200;
+@color-text-lighter: @color-black-100;
+@color-text-secondary: fade(@color-black-400, 54%);
+@color-text-secondary-disabled: fade(@color-text, 40%);
+@color-text-tertiary: fade(@color-black-400, 40%);
+@color-text-error: @color-red-100;
+@color-text-success: @color-green-300;
+@color-text-disabled: fade(@color-text, @disabled-opacity-percentage);
+@color-text-error-disabled: fade(@color-red-100, @disabled-opacity-percentage);
+@color-text-success-disabled: fade(@color-green-100, @disabled-opacity-percentage);
+@color-text-inverse: @color-blank;
+@color-text-inverse-secondary: fade(@color-blank, 72%);
+@color-text-inverse-tertiary: fade(@color-blank, 64%);
+
+// common border colors
+@color-border: @color-gray-200;
+@color-border-dark: @color-gray-300;
+@color-border-darker: @color-gray-400;
+@color-border-active: @color-primary;
+@color-border-focus: fade(@color-black-300, 48%);
+@color-border-disabled: fade(@color-border, @disabled-opacity-percentage);
+
+// Scrollbar
+@color-scrollbar: fade(@color-black-300, 24%);
+@color-scrollbar-hover: fade(@color-black-300, 36%);
+@color-scrollbar-active: fade(@color-black-300, @disabled-opacity-percentage);
+@color-scrollbar-light: fade(@color-blank, 24%);
+@color-scrollbar-light-hover: fade(@color-blank, 36%);
+@color-scrollbar-light-active: fade(@color-blank, @disabled-opacity-percentage);
+
+// Textfield
+@color-textfield: @color-light-blue-100;
+@color-textfield-hover: @color-light-blue-200;
+@color-textfield-active: @color-light-blue-300;
+@color-textfield-readonly: transparent;
+@color-textfield-disabled: fade(@color-textfield, @disabled-opacity-percentage);
+@color-textfield-error: fade(@color-red-100, 8%);
+@color-textfield-error-hover: fade(@color-red-100, 16%);
+@color-textfield-error-focus-border: @color-red-100;
+@color-textfield-error-text: @color-red-100;
+@color-textfield-success: fade(@color-green-100, 8%);
+@color-textfield-success-hover: fade(@color-green-100, 16%);
+@color-textfield-success-focus-border: @color-green-100;
+@color-textfield-success-text: @color-green-100;
+@color-textfield-autofill: @color-yellow-400;
+
+// Textfield Light
+@color-textfield-light: fade(@color-blank, 16%);
+@color-textfield-light-hover: fade(@color-blank, 24%);
+@color-textfield-light-active: fade(@color-blank, 32%);
+@color-textfield-light-focus-border: @color-blank;
+@color-textfield-light-readonly: fade(@color-blank, 8%);
+@color-textfield-light-disabled: fade(@color-blank, 8%);
+
+// Textfield Dark
+@color-textfield-dark: fade(@color-text, 16%);
+@color-textfield-dark-hover: fade(@color-text, 24%);
+@color-textfield-dark-active: fade(@color-text, 28%);
+@color-textfield-dark-focus-border: @color-text;
+@color-textfield-dark-readonly: fade(@color-text, 8%);
+@color-textfield-dark-disabled: fade(@color-text, 8%);
+
+// Primary
+@color-primary: @color-yellow-100;
+@color-primary-hover: @color-yellow-200;
+@color-primary-active: @color-yellow-300;
+@color-primary-disabled: fade(@color-primary, @disabled-opacity-percentage);
+@color-primary-text: @color-black-300;
+@color-primary-text-disabled: fade(@color-primary-text, @disabled-opacity-percentage);
+
+// Secondary
+@color-secondary: @color-light-blue-100;
+@color-secondary-hover: @color-light-blue-200;
+@color-secondary-active: @color-light-blue-300;
+@color-secondary-disabled: fade(@color-secondary, @disabled-opacity-percentage);
+@color-secondary-text: @color-blue-100;
+@color-secondary-text-hover: @color-blue-200;
+@color-secondary-text-active: @color-blue-300;
+@color-secondary-text-disabled: fade(@color-blue-100, @disabled-opacity-percentage);
+
+// Outline
+@color-outline-border: @color-blue-100;
+@color-outline-hover: fade(@color-blue-100, 8%);
+@color-outline-border-hover: @color-blue-200;
+@color-outline-border-active: @color-blue-300;
+@color-outline-active: fade(@color-blue-100, 16%);
+@color-outline-border-disabled: fade(@color-outline-border, @disabled-opacity-percentage);
+
+// Outline Dark
+@color-outline-dark-border: @color-text;
+@color-outline-dark-hover: fade(@color-text, 8%);
+@color-outline-dark-border-hover: @color-black-100;
+@color-outline-dark-active: fade(@color-text, 16%);
+@color-outline-dark-border-disabled: fade(@color-outline-dark-border, @disabled-opacity-percentage);
+@color-outline-dark-text-disabled: fade(@color-outline-dark-border, @disabled-opacity-percentage);
+
+// Outline Light
+@color-outline-light-border: @color-blank;
+@color-outline-light-hover: fade(@color-blank, 8%);
+@color-outline-light-border-hover: fade(@color-blank, @disabled-opacity-percentage);
+@color-outline-light-active: fade(@color-blank, 16%);
+@color-outline-light-focus-border: @color-blank;
+@color-outline-light-border-disabled: fade(@color-blank, 24%);
+@color-outline-light-text-disabled: fade(@color-blank, 24%);
+
+// White Block
+@color-whiteblock-border: @color-border;
+@color-whiteblock-hover: @color-gray-100;
+@color-whiteblock-border-hover: @color-border-dark;
+@color-whiteblock-border-active: @color-primary;
+@color-whiteblock-border-active-hover: @color-primary-hover;
+@color-whiteblock-border-active-disabled: @color-primary-disabled;
+
+// Card
+@color-card-primary: @color-blank;
+@color-card-secondary: @color-gray-100;
+
+// PALETTE, particular colors
+// flat button
+@color-flat-text-disabled: fade(@color-link, @disabled-opacity-percentage);
+@color-flat-light-text-disabled: fade(@color-blank, 36%);
+@color-flat-background-hover: @color-secondary;
+@color-flat-background-active: @color-secondary-hover;
+
+// link
+@color-link: @color-blue-100;
+@color-link-light: fade(@color-white, @disabled-opacity-percentage);
+@color-link-hover: @color-blue-200;
+@color-link-active: @color-blue-300;
+@color-link-disabled: fade(@color-blue-100, @disabled-opacity-percentage);
+
+// textfield
+@color-textfield-placeholder: @color-gray-500;
+@color-textfield-placeholder-hover: @color-gray-600;
+@color-textfield-placeholder-disabled: fade(@color-textfield-placeholder, @disabled-opacity-percentage);
+@color-textfield-focus-border: @color-gray-600;
+@color-textfield-label: @color-text-secondary;
+@color-textfield-icon: @color-gray-400;
+@color-textfield-icon-hover: @color-gray-600;
+@color-textfield-icon-disabled: fade(@color-gray-500, @disabled-opacity-percentage);
+
+// textfield-light
+@color-textfield-light-placeholder: fade(@color-white, @disabled-opacity-percentage);
+@color-textfield-light-placeholder-disabled: fade(@color-white, @disabled-opacity-transparent-percentage);
+@color-textfield-light-label: fade(@color-white, @disabled-opacity-percentage);
+@color-textfield-light-icon: fade(@color-white, @disabled-opacity-percentage);
+@color-textfield-light-icon-disabled: fade(@color-white, @disabled-opacity-transparent-percentage);
+
+// textfield-dark
+@color-textfield-dark-placeholder-disabled: fade(@color-text, @disabled-opacity-transparent-percentage);
+@color-textfield-dark-icon-disabled: fade(@color-text, @disabled-opacity-transparent-percentage);
+
+// toggle
+@color-toggle-on-disabled: @color-text-secondary;
+@color-toggle-off-disabled: fade(@color-toggle-on-disabled, @disabled-opacity-percentage);
+
+// tabs
+@color-tabs: @color-gray-500;
+@color-tabs-border: @color-border;
+
+// accordion
+@color-accordion-border: @color-border-dark;
+@color-accordion-background-hover: @color-whiteblock-hover;
+
+// status (badge, tag)
+@color-status-text: @color-text-light;
+@color-status: @color-gray-400;
+@color-status-hover: @color-gray-500;
+@color-status-active: @color-gray-600;
+@color-status-onlight: fade(@color-true-black, 8%);
+@color-status-ondark: fade(@color-white, 32%);
+@color-status-light: @color-textfield;
+@color-status-light-hover: @color-textfield-hover;
+@color-status-light-active: @color-textfield-active;
+@color-status-gray: @color-gray-200;
+@color-status-gray-hover: @color-gray-300;
+@color-status-gray-active: @color-gray-400;
+@color-status-error: @color-red-100;
+@color-status-error-disabled: fade(@color-status-error, @disabled-opacity-percentage);
+@color-status-error-hover: @color-red-200;
+@color-status-error-active: @color-red-300;
+@color-status-error-light: fade(@color-red-100, 12%);
+@color-status-error-light-hover: fade(@color-red-100, 24%);
+@color-status-error-light-active: fade(@color-red-100, 32%);
+@color-status-warning: @color-yellow-100;
+@color-status-warning-disabled: fade(@color-status-warning, @disabled-opacity-percentage);
+@color-status-warning-hover: @color-yellow-200;
+@color-status-warning-active: @color-yellow-300;
+@color-status-warning-light: fade(@color-yellow-200, 12%);
+@color-status-success: @color-green-100;
+@color-status-success-hover: @color-green-200;
+@color-status-success-active: @color-green-300;
+@color-status-success-light: fade(@color-green-100, 16%);
+@color-status-secondary: @color-blue-100;
+@color-status-secondary-hover: @color-blue-200;
+@color-status-secondary-active: @color-blue-300;
+@color-status-secondary-light: fade(@color-blue-100, 12%);
+@color-status-secondary-text: @color-blank;
+@color-status-secondary-text-disabled: fade(@color-status-secondary-text, @disabled-opacity-percentage);
+
+// textfield-light
+@color-avatar: @color-light-blue-300;
+
+// Tooltip
+@color-tooltip-dark-background: @color-gray-600;
+@color-tooltip-error-background: @color-red-100;
+@color-tooltip-light-background: @color-blank;
+
+// table bar
+@color-table-bar: @color-gray-500;
+
+// alert
+@color-alert-warning: @color-yellow-200;
+
+// menu
+@color-menu-dark: @color-gray-600;
+
+@fallback-font: @font-fallback;

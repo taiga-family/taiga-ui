@@ -1,0 +1,91 @@
+<form class="input-wrapper" [formGroup]="testForm">
+    <tui-group class="group">
+        <div>
+            <tui-input
+                class="tui-group__inherit-item"
+                formControlName="testValue"
+                tuiTextfieldExampleText="Номер дома"
+                tuiHintContent="Пишите только цифру"
+            >
+                Дом
+            </tui-input>
+            <tui-field-error formControlName="testValue"></tui-field-error>
+        </div>
+        <div>
+            <tui-input
+                class="tui-group__inherit-item"
+                formControlName="testValue2"
+                tuiTextfieldExampleText="Номер корпуса"
+                tuiHintContent="Пишите только корпус"
+            >
+                Корпус
+            </tui-input>
+            <tui-field-error formControlName="testValue2"></tui-field-error>
+        </div>
+        <div>
+            <tui-input
+                class="tui-group__inherit-item"
+                formControlName="testValue3"
+                tuiTextfieldExampleText="Номер квартиры"
+                tuiHintContent="Пишите только квартиру"
+            >
+                Квартира
+            </tui-input>
+            <tui-field-error formControlName="testValue3"></tui-field-error>
+        </div>
+    </tui-group>
+    <p class="tui-space_top-8">
+        Если у вас используется несколько уровней оберток до необходимого
+        компонента, то целесообразно будет использовать директиву
+        <code><strong>tuiProjectClassDirective</strong></code
+        >, которая проецирует указанные классы из предков в свой хостовый
+        элемент.
+    </p>
+    <tui-group tuiTable class="group" [collapsed]="true">
+        <div [tuiProjectClass]="classNames">
+            <div>
+                <div>
+                    <tui-combo-box
+                        formControlName="combo"
+                        [tuiTextfieldLabelOutside]="true"
+                    >
+                        Сколько?
+                        <tui-data-list-wrapper
+                            *tuiDataList
+                            [items]="items"
+                        ></tui-data-list-wrapper>
+                    </tui-combo-box>
+                </div>
+            </div>
+        </div>
+        <div [tuiProjectClass]="classNames">
+            <div>
+                <div>
+                    <tui-input-number
+                        formControlName="money"
+                        [tuiTextfieldLabelOutside]="true"
+                        [postfix]="'USD' | tuiCurrency"
+                    >
+                        За сколько?
+                    </tui-input-number>
+                </div>
+            </div>
+        </div>
+        <div [tuiProjectClass]="classNames">
+            <div>
+                <div>
+                    <tui-select
+                        formControlName="select"
+                        [tuiTextfieldLabelOutside]="true"
+                    >
+                        Сколько?
+                        <tui-data-list-wrapper
+                            *tuiDataList
+                            [items]="items"
+                        ></tui-data-list-wrapper>
+                    </tui-select>
+                </div>
+            </div>
+        </div>
+    </tui-group>
+</form>

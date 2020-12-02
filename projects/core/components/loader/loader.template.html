@@ -1,0 +1,40 @@
+<fieldset
+    class="content"
+    [class.content_has-overlay]="hasOverlay"
+    [class.content_loading]="loading"
+    [attr.disabled]="loading || null"
+>
+    <ng-content></ng-content>
+</fieldset>
+
+<div
+    *ngIf="loading"
+    class="loader"
+    [attr.data-tui-element-size]="size"
+    [class.loader_horizontal]="isHorizontal"
+    [class.loader_inherit-color]="inheritColor"
+>
+    <svg
+        automation-id="tui-loader__loader"
+        class="icon"
+        focusable="false"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <circle
+            class="circle"
+            cx="50"
+            cy="50"
+            r="50"
+            stroke-dasharray="314"
+        ></circle>
+    </svg>
+
+    <polymorpheus-outlet
+        *ngIf="hasText"
+        automation-id="tui-loader__text"
+        class="text"
+        [class.text_horizontal]="isHorizontal"
+        [content]="textContent"
+    ></polymorpheus-outlet>
+</div>

@@ -1,0 +1,62 @@
+<button
+    tuiButton
+    type="button"
+    class="tui-space_right-3 tui-space_bottom-2"
+    size="m"
+    (click)="showDialog(long, button)"
+>
+    Показать длинный мобильный попап с фильтрами
+</button>
+
+<ng-template #button>
+    <button
+        *ngIf="!filters"
+        tuiButton
+        type="button"
+        class="portal"
+        tuiPreventDefault="touchmove"
+        (click)="onFilterClick()"
+    >
+        Фильтры
+    </button>
+</ng-template>
+
+<ng-template #long="polymorpheus" polymorpheus>
+    <header class="header">
+        <section class="logo">
+            <label class="date">8 марта, 23:51</label>
+            <tui-marker-icon
+                class="icon"
+                mode="custom"
+                src="tuiIconArrowDownLarge"
+            ></tui-marker-icon>
+        </section>
+        <div class="wrapper">
+            <p class="description">Платеж с карты</p>
+            <h3 class="title">Суши Маркет</h3>
+            <tui-money decimal="always" class="money" [value]="300"></tui-money>
+        </div>
+    </header>
+    <blockquote>
+        <h1>Дополнительная информация</h1>
+        <p>
+            Модальное окно в графическом интерфейсе пользователя — окно, которое
+            блокирует работу пользователя с родительским приложением до тех пор,
+            пока пользователь это окно не закроет. Модальными преимущественно
+            реализованы диалоговые окна. Также модальные окна часто используются
+            для привлечения внимания пользователя к важному событию или
+            критической ситуации.
+        </p>
+    </blockquote>
+    <blockquote>
+        <h1>Дополнительная информация</h1>
+        <p>
+            Модальное окно в графическом интерфейсе пользователя — окно, которое
+            блокирует работу пользователя с родительским приложением до тех пор,
+            пока пользователь это окно не закроет. Модальными преимущественно
+            реализованы диалоговые окна. Также модальные окна часто используются
+            для привлечения внимания пользователя к важному событию или
+            критической ситуации.
+        </p>
+    </blockquote>
+</ng-template>

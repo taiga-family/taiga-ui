@@ -1,0 +1,21 @@
+<tui-doc-page header="Темы для мобильных" package="ADDON-MOBILE">
+    <ng-template pageTab="Android">
+        Подплючите <code>TuiThemeAndroidModule</code> в свой app.module и
+        добавьте компонент <code>tui-theme-android</code>. Понять, что
+        пользователь зашел с Андроида поможет токен <code>TUI_IS_ANDROID</code>
+
+        <tui-doc-example id="Android" heading="Android" [content]="example1">
+            <tui-mobile-themes-example-1></tui-mobile-themes-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="IOS">
+        Подплючите <code>TuiThemeIosModule</code> в свой app.module и добавьте
+        компонент <code>tui-theme-ios</code>. Понять, что пользователь зашел с
+        IOS поможет токен <code>TUI_IS_IOS</code>
+
+        <tui-doc-example id="IOS" heading="IOS" [content]="example2">
+            <tui-mobile-themes-example-2></tui-mobile-themes-example-2>
+        </tui-doc-example>
+    </ng-template>
+</tui-doc-page>

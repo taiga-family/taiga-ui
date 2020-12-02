@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="tui-space_bottom-1">
+        С кастомным типом файлов и асинхронной загрузкой
+    </div>
+    <tui-input-file
+        link="Выберите изображения"
+        accept="image/*"
+        [formControl]="files"
+        [multiple]="true"
+        [loadingFiles]="loading$ | async"
+        [rejectedFiles]="rejected$ | async"
+        (rejectedFilesChange)="onRejectedFilesChange($event)"
+    ></tui-input-file>
+</div>

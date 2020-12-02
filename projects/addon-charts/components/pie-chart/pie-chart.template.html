@@ -1,0 +1,49 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="svg"
+    height="100%"
+    width="100%"
+    viewBox="-100 -100 200 200"
+    focusable="false"
+>
+    <defs>
+        <mask [attr.id]="maskId">
+            <rect
+                x="-200"
+                y="-200"
+                width="400"
+                height="400"
+                fill="white"
+            ></rect>
+            <circle cx="0" cy="0" [attr.r]="radius"></circle>
+        </mask>
+    </defs>
+    <g [style.mask]="mask">
+        <path
+            *ngFor="let segment of segments; let index = index"
+            fill="currentColor"
+            automation-id="tui-pie-chart__segment"
+            class="segment"
+            tuiHintMode="light"
+            tuiHintDirection="top-right"
+            [attr.transform]="getTransform(index)"
+            [attr.d]="segment"
+            [tuiColor]="colorHandler(index)"
+            [tuiPointerHint]="getHint(hint)"
+            (tuiHoveredChange)="onHovered($event, index)"
+        >
+            <ng-template #hint>
+                <ng-container
+                    *ngTemplateOutlet="template; context: getContentContext(index)"
+                ></ng-container>
+            </ng-template>
+        </path>
+    </g>
+</svg>
+<ng-template #template let-index>
+    <polymorpheus-outlet
+        class="text"
+        [content]="hintContent"
+        [context]="getContentContext(index)"
+    ></polymorpheus-outlet>
+</ng-template>

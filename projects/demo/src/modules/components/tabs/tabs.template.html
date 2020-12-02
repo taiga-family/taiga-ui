@@ -1,0 +1,115 @@
+<tui-doc-page header="Tabs" package="KIT">
+    <ng-template pageTab>
+        Компонент для создания вкладок. Эмулирует внешний вид и поведение
+        нативных вариантов из iOS и Android.
+
+        <tui-notification class="tui-space_top-4" [hasCloseButton]="false">
+            При использовании <code>routerLink</code> нужно также добавить на
+            вкладку директиву <code>routerLinkActive</code>.
+        </tui-notification>
+
+        <tui-doc-example id="android" heading="Android" [content]="example1">
+            <tui-tabs-example-1></tui-tabs-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="ios" heading="iOS" [content]="example2">
+            <tui-tabs-example-2></tui-tabs-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example id="desktop" heading="Desktop" [content]="example3">
+            <tui-tabs-example-3></tui-tabs-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example id="more" heading="TabsWithMore" [content]="example4">
+            <tui-tabs-example-4></tui-tabs-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="complex"
+            heading="Сложный пример"
+            [content]="example5"
+        >
+            <tui-tabs-example-5></tui-tabs-example-5>
+        </tui-doc-example>
+
+        <tui-doc-example id="stepper" heading="Степпер" [content]="example6">
+            <tui-tabs-example-6></tui-tabs-example-6>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-tabs-with-more
+                [underline]="underline"
+                [moreContent]="moreContent"
+                [itemsLimit]="itemsLimit"
+                [(activeItemIndex)]="activeItemIndex"
+            >
+                <ng-container *ngFor="let button of buttons">
+                    <button *tuiTab tuiTab type="button">{{ button}}</button>
+                </ng-container>
+            </tui-tabs-with-more>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="itemsLimit"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="itemsLimit"
+            >
+                <div>Количество изначально видимых табов</div>
+                <strong>Только для <code>TabsWithMore</code></strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="moreContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="moreContentVariants"
+                [(documentationPropertyValue)]="moreContent"
+            >
+                <div>Содержимое кнопки ещё</div>
+                <strong>Только для <code>TabsWithMore</code></strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="underline"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="underline"
+            >
+                Выключить подчеркивание у активных элементов
+            </ng-template>
+            <ng-template
+                documentationPropertyName="activeItemIndex"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="activeItemIndex"
+            >
+                Индекс активного таба
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiTabsModule</code> в тот же модуль, куда добавляется ваш
+                компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

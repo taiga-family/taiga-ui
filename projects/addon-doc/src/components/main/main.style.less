@@ -1,0 +1,143 @@
+@import 'taiga-ui-angular-local';
+
+@keyframes tuiShaking {
+    from,
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translate3d(-5px, 0, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translate3d(5px, 0, 0);
+    }
+}
+
+@sidebar-width: 260px;
+
+.tui-doc-page {
+    height: 100vh;
+}
+
+.tui-doc-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: @sidebar-width;
+
+    @media @tablet-s {
+        margin-left: 0;
+    }
+}
+
+.tui-doc-outlet + * {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex-grow: 1;
+}
+
+.tui-doc-animated-example {
+    animation: 1s 300ms tuiShaking;
+}
+
+// highlightjs custom theme
+.hljs-tag {
+    background: none;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: var(--tui-text-primary);
+    background-color: var(--tui-base-02);
+}
+
+.hljs-subst,
+.hljs-title {
+    font-weight: normal;
+    color: #000;
+}
+
+.hljs-comment,
+.hljs-quote {
+    color: var(--tui-text-03);
+    font-style: italic;
+}
+
+.hljs-meta {
+    color: #e38162;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-literal,
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type,
+.hljs-selector-id,
+.hljs-selector-class {
+    font-weight: bold;
+    color: var(--tui-link);
+}
+
+.hljs-attribute,
+.hljs-number,
+.hljs-regexp,
+.hljs-link {
+    font-weight: bold;
+    color: var(--tui-primary-active);
+}
+
+.hljs-number,
+.hljs-regexp,
+.hljs-link {
+    font-weight: normal;
+}
+
+.hljs-string {
+    color: var(--tui-positive);
+    font-weight: bold;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-formula {
+    color: var(--tui-text-primary);
+    background: var(--tui-base-02);
+    font-style: italic;
+}
+
+.hljs-doctag {
+    text-decoration: underline;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+    color: var(--tui-warning-fill);
+}
+
+.hljs-addition {
+    background: var(--tui-success-bg);
+}
+
+.hljs-deletion {
+    background: var(--tui-error-bg);
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}

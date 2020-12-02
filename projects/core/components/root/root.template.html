@@ -1,0 +1,17 @@
+<tui-scroll-controls *ngIf="showScrollbar"></tui-scroll-controls>
+<tui-svg-defs-host></tui-svg-defs-host>
+<tui-portal-host>
+    <div class="content">
+        <ng-content></ng-content>
+    </div>
+    <tui-dialog-host *ngIf="dialogs && dialogs.length"></tui-dialog-host>
+    <ng-content select="tuiOverDialogs"></ng-content>
+    <ng-container
+        *ngIf="notificationsHost"
+        [ngComponentOutlet]="notificationsHost"
+    ></ng-container>
+    <ng-content select="tuiOverNotifications"></ng-content>
+</tui-portal-host>
+<ng-content select="tuiOverPortals"></ng-content>
+<tui-hints-host></tui-hints-host>
+<ng-content select="tuiOverHints"></ng-content>

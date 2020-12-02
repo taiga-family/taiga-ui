@@ -1,0 +1,62 @@
+<tui-hosted-dropdown
+    class="hosted"
+    [canOpen]="canOpen"
+    [content]="dropdown"
+    [open]="open && canOpen"
+    (openChange)="onOpenChange($event)"
+>
+    <tui-primitive-textfield
+        automation-id="tui-input-date-range__textfield"
+        class="textfield"
+        [pseudoFocused]="pseudoFocused"
+        [pseudoHovered]="pseudoHovered"
+        [invalid]="computedInvalid"
+        [filler]="computedFiller"
+        [nativeId]="nativeId"
+        [readOnly]="readOnly"
+        [focusable]="computedFocusable"
+        [iconContent]="computedMobile ? iconContent : calendarIcon"
+        [disabled]="computedDisabled"
+        [textMask]="computedMask"
+        [value]="computedValue"
+        (valueChange)="onValueChange($event)"
+        (hoveredChange)="onHovered($event)"
+        (focusedChange)="onFocused($event)"
+        (mousedown)="onMouseDown()"
+    >
+        <ng-content></ng-content>
+    </tui-primitive-textfield>
+
+    <ng-template #iconContent>
+        <tui-svg
+            automation-id="tui-input-date-range__icon"
+            class="icon"
+            [src]="calendarIcon"
+            (touchstart)="onMobileMouseDown($event)"
+        ></tui-svg>
+    </ng-template>
+
+    <ng-template #dropdown="polymorpheus" polymorpheus>
+        <tui-calendar
+            tuiPreventDefault="mousedown"
+            automation-id="tui-input-date__calendar"
+            [min]="min"
+            [max]="max"
+            [markerHandler]="markerHandler"
+            [disabledItemHandler]="disabledItemHandler"
+            [month]="computedActiveYearMonth"
+            [value]="value"
+            (dayClick)="onDayClick($event)"
+            (monthChange)="onMonthChange($event)"
+        ></tui-calendar>
+        <div
+            *ngIf="items.length === 1"
+            tuiPreventDefault="mousedown"
+            class="button"
+        >
+            <button tuiLink type="button" (click)="onItemClick(items[0])">
+                {{items[0]}}
+            </button>
+        </div>
+    </ng-template>
+</tui-hosted-dropdown>

@@ -1,0 +1,12 @@
+<button
+    tuiButton
+    type="button"
+    size="s"
+    appearance="whiteblock"
+    class="button"
+    [pseudoHovered]="pseudoHovered"
+>
+    <span class="dot" [tuiBackground]="color"></span>
+    <span class="text">{{text}}</span>
+    <ng-content></ng-content>
+</button>

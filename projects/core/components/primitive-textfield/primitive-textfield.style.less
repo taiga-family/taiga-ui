@@ -1,0 +1,87 @@
+@import '../../styles/basic/basic-imports';
+
+.textfield();
+
+.custom-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-right: @space;
+    pointer-events: none;
+}
+
+.custom-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.icon {
+    .icon-button();
+    position: relative;
+    pointer-events: none;
+
+    :host._hovered:not(._readonly) & {
+        color: var(--tui-text-02);
+    }
+
+    :host[data-tui-host-mode='light']._hovered:not(._readonly) & {
+        color: var(--tui-text-01-night);
+    }
+
+    :host[data-tui-host-mode='dark']._hovered:not(._readonly) & {
+        color: var(--tui-text-01);
+    }
+}
+
+.input {
+    &_hidden {
+        opacity: 0;
+        text-indent: -10em; // Hide blinking caret even in IE
+        -webkit-user-select: none; // Hide blinking caret in mobile safari
+    }
+
+    :host[data-tui-host-size] &_template {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
+        padding-right: 0;
+        border-right: 0 solid transparent;
+        pointer-events: none;
+    }
+
+    /* stylelint-disable */
+    /* Safari autofill icons */
+    &::-webkit-caps-lock-indicator {
+        margin-right: 6px;
+        align-self: center;
+
+        :host[data-tui-host-size='l']:not(._label-outside) & {
+            margin-top: -20px;
+        }
+    }
+
+    &::-webkit-credentials-auto-fill-button,
+    &::-webkit-contacts-auto-fill-button,
+    &::-webkit-credit-card-auto-fill-button {
+        background-color: var(--tui-text-03);
+
+        :host[data-tui-host-size='l']:not(._label-outside) & {
+            margin-top: -20px;
+        }
+    }
+
+    &::-webkit-credentials-auto-fill-button:hover,
+    &::-webkit-contacts-auto-fill-button:hover,
+    &::-webkit-credit-card-auto-fill-button:hover {
+        background-color: var(--tui-text-02);
+    }
+    /* stylelint-enable */
+}
+
+.text-template {
+    .text-overflow();
+}

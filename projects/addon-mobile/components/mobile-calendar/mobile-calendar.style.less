@@ -1,0 +1,198 @@
+@import 'taiga-ui-angular-local';
+
+@accent: #458bf6;
+@text: #333;
+@secondary: #9299a2;
+@border: #c7c9cc;
+@header-border: #eaecee;
+@background: #f6f7f8;
+
+:host {
+    display: block;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    color: @text;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding: 0 16px;
+    border-bottom: 0.5px solid @header-border;
+
+    :host._ios & {
+        height: 44px;
+        border-bottom: none;
+    }
+}
+
+.close {
+    width: 24px;
+    height: 24px;
+    margin-right: 32px;
+
+    :host._ios & {
+        display: none;
+    }
+}
+
+.link {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: @accent;
+
+    &_close {
+        display: none;
+    }
+
+    :host._ios & {
+        min-width: 60px;
+        text-align: right;
+        font-size: 15px;
+        line-height: 18px;
+        font-weight: 400;
+        letter-spacing: 0.29px;
+        text-transform: none;
+
+        &_close {
+            display: block;
+            margin: 0 auto 0 0;
+            text-align: left;
+        }
+    }
+}
+
+.label {
+    .text-overflow-with-fade();
+    flex-grow: 1;
+    margin: 0;
+    font-size: 20px;
+    line-height: 56px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+
+    :host._ios & {
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.41px;
+        text-align: center;
+    }
+}
+
+.years {
+    height: 65px;
+    background-color: @background;
+    box-shadow: 0 0.5px @border;
+
+    :host._ios & {
+        background-color: transparent;
+    }
+}
+
+.years-wrapper {
+    display: flex;
+    height: 65px;
+}
+
+.year {
+    .clearbtn();
+    outline: none;
+    width: 20vw;
+    flex-shrink: 0;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.25px;
+    cursor: pointer;
+    opacity: 0.1;
+    transform: scale(0.73);
+    transition: color, opacity, transform 0.2s;
+
+    &[data-tui-element-state='adjacent'] {
+        transform: scale(0.86);
+        opacity: 0.3;
+    }
+
+    &[data-tui-element-state='active'] {
+        color: @accent;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.week {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 332px;
+    max-width: 100%;
+    margin: 0 auto;
+    font-size: 12px;
+
+    :host._ios & {
+        width: 362px;
+        font-size: 11px;
+        font-weight: 500;
+        color: @secondary;
+    }
+}
+
+.day {
+    flex: 1;
+    text-align: center;
+}
+
+.months {
+    height: ~'calc(100% - 152px)';
+    box-shadow: 0 -1px @border;
+    overflow-x: hidden;
+
+    :host._ios & {
+        height: ~'calc(100% - 140px)';
+    }
+}
+
+.month-wrapper {
+    margin: 10px 0 -10px;
+}
+
+.month {
+    height: 44px;
+    line-height: 44px;
+    padding-left: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+    box-sizing: border-box;
+    border-bottom: 0.5px solid @border;
+
+    :host._ios & {
+        height: 50px;
+        margin: 0;
+        border-bottom: none;
+        text-transform: none;
+        font-size: 22px;
+        line-height: 50px;
+        letter-spacing: 0.32px;
+        font-weight: 700;
+    }
+}
+
+.calendar {
+    margin: 0 auto;
+    font-family: inherit;
+    font-size: 18px;
+    transition: opacity 0.2s;
+
+    :host._ios & {
+        font-size: 17px;
+    }
+}

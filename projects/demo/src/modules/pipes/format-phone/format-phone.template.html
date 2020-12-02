@@ -1,0 +1,67 @@
+<tui-doc-page header="FormatPhone" package="CORE">
+    <ng-template pageTab>
+        Пайп для форматирования телефонов. Без передачи параметров (при условии
+        что номер начинается с +7) согласно ред. политики компании будет
+        отображаться - +7 800 555-77-78.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-format-phone-example-1></tui-format-phone-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <p class="text b-full-width">
+            Форматированный телефон: {{index | tuiFormatPhone: countryCode :
+            phoneMask}}
+        </p>
+        <tui-input
+            class="slider"
+            tuiTextfieldSize="m"
+            [tuiTextfieldMaxLength]="maxLength"
+            [tuiTextfieldLabelOutside]="true"
+            [(ngModel)]="index"
+        ></tui-input>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="countryCode"
+                documentationPropertyType="string | undefined"
+                [documentationPropertyValues]="countryCodes"
+                [(documentationPropertyValue)]="countryCode"
+            >
+                Телефонный код страны
+            </ng-template>
+            <ng-template
+                documentationPropertyName="phoneMask"
+                documentationPropertyType="string | undefined"
+                [documentationPropertyValues]="phoneMasks"
+                [(documentationPropertyValue)]="phoneMask"
+            >
+                Маска телефонного номера
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiFormatPhonePipe</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в необходимый <code>binding</code>:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

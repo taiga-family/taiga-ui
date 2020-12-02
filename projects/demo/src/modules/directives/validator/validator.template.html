@@ -1,0 +1,33 @@
+<tui-doc-page header="Validator" package="CDK">
+    <ng-template pageTab>
+        Директива <code>tuiValidator</code> позволяет динамически задавать
+        валидаторы на контролы формы
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-validator-example-1></tui-validator-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiValidatorModule</code>:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

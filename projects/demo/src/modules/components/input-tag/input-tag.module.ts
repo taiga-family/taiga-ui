@@ -1,0 +1,51 @@
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {
+    TuiDataListModule,
+    TuiDropdownControllerModule,
+    TuiHintControllerModule,
+    TuiLinkModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {
+    TuiDataListWrapperModule,
+    TuiFieldErrorModule,
+    TuiInputTagModule,
+} from '@taiga-ui/kit';
+import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {TuiInputTagExample1} from './examples/1';
+import {TuiInputTagExample2} from './examples/2';
+import {TuiInputTagExample3} from './examples/3';
+import {TuiInputTagExample4} from './examples/4';
+import {ExampleTuiInputTagComponent} from './input-tag.component';
+
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        InheritedDocumentationModule,
+        TuiDataListModule,
+        TuiDataListWrapperModule,
+        TuiLinkModule,
+        TuiInputTagModule,
+        TuiFieldErrorModule,
+        TuiDropdownControllerModule,
+        TuiTextfieldControllerModule,
+        TuiHintControllerModule,
+        ...TUI_DOC_PAGE_MODULES,
+        RouterModule.forChild(generateRoutes(ExampleTuiInputTagComponent)),
+    ],
+    declarations: [
+        ExampleTuiInputTagComponent,
+        TuiInputTagExample1,
+        TuiInputTagExample2,
+        TuiInputTagExample3,
+        TuiInputTagExample4,
+    ],
+    exports: [ExampleTuiInputTagComponent],
+})
+export class ExampleTuiInputTagModule {}

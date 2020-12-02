@@ -1,0 +1,21 @@
+<tui-svg
+    *ngIf="hasIcon"
+    automation-id="tui-notification__icon"
+    class="icon"
+    [src]="icon"
+></tui-svg>
+<div class="content">
+    <ng-content></ng-content>
+</div>
+<button
+    *ngIf="hasCloseButton"
+    tuiIconButton
+    type="button"
+    automation-id="tui-notification__close"
+    size="xs"
+    class="close"
+    icon="tuiIconCloseLarge"
+    appearance="icon"
+    [title]="closeWord"
+    (click)="onCloseClick()"
+></button>

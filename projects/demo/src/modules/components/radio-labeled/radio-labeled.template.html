@@ -1,0 +1,159 @@
+<tui-doc-page header="RadioLabeled" package="KIT">
+    <ng-template pageTab>
+        <code>RadioLabeled</code> состоит из радио-кнопки <code>Radio</code> и
+        лейбла. Клик по лейблу меняет состояние контрола. Для использования без
+        лейбла&nbsp;см. <a tuiLink routerLink="/tui-radio"><code>Radio</code></a
+        >.
+
+        <tui-doc-example
+            id="base"
+            heading="лейбл без форматирования"
+            [content]="example1"
+        >
+            <tui-radio-labeled-example-1></tui-radio-labeled-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="лейбл с форматированием"
+            [content]="example2"
+        >
+            <tui-radio-labeled-example-2></tui-radio-labeled-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="large"
+            heading="большой размер"
+            [content]="example3"
+        >
+            <tui-radio-labeled-example-3></tui-radio-labeled-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-radio-labeled
+                    class="tui-space_bottom-3"
+                    [formControl]="control"
+                    [item]="items[0]"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    [pseudoDisabled]="pseudoDisabled"
+                    [size]="size"
+                    [focusable]="focusable"
+                    [readOnly]="readOnly"
+                >
+                    Тариф &laquo;Простой&raquo;
+                </tui-radio-labeled>
+                <tui-radio-labeled
+                    class="tui-space_bottom-3"
+                    [formControl]="control"
+                    [item]="items[1]"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    [pseudoDisabled]="pseudoDisabled"
+                    [size]="size"
+                    [focusable]="focusable"
+                    [readOnly]="readOnly"
+                >
+                    Тариф &laquo;Продвинутый&raquo;
+                </tui-radio-labeled>
+                <tui-radio-labeled
+                    class="tui-space_bottom-3"
+                    [formControl]="control"
+                    [item]="items[2]"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    [pseudoDisabled]="pseudoDisabled"
+                    [size]="size"
+                    [focusable]="focusable"
+                    [readOnly]="readOnly"
+                >
+                    Тариф &laquo;Профессиональный&raquo;
+                </tui-radio-labeled>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="identityMatcher"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiIdentityMatcher"
+            >
+                Функция определения равенства объектов (нужна в случае, если
+                выбранное значение задано изначально и не присутствует в
+                <code>items</code>, однако там есть точная копия, которую можно
+                определить по какому-нибудь критерию. По умолчанию используется
+                сравнение <code>===</code>.
+                <strong>Должна быть чистой функцией</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="pseudoDisabled"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="pseudoDisabled"
+            >
+                Disabled&nbsp;&mdash; установить принудительно, не изменяя
+                значение формы
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер контрола
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiRadioLabeledModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,102 @@
+<tui-doc-page header="DataList" package="CORE">
+    <ng-template pageTab>
+        <p>
+            Компонент <code>DataList</code> служит для создания всевозможных
+            списков меню
+        </p>
+
+        <tui-doc-example id="custom" heading="Custom list" [content]="example4">
+            <tui-data-list-example-4></tui-data-list-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example id="links" heading="ссылки" [content]="example1">
+            <tui-notification
+                class="tui-space_bottom-3"
+                [hasCloseButton]="false"
+            >
+                Импортируйте <code>TuiArrowModule</code> для использования
+                вращающейся стрелки.
+            </tui-notification>
+            <tui-data-list-example-1></tui-data-list-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="submenu"
+            heading="вложенное меню"
+            [content]="example2"
+        >
+            <tui-data-list-example-2></tui-data-list-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="control"
+            heading="Form control"
+            [content]="example3"
+        >
+            <tui-data-list-example-3></tui-data-list-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <h2>DataList</h2>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="role"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDataListRole"
+            >
+                Нативная роль для доступности — <code>listbox</code
+                ><em>(default)</em> или <code>menu</code> для меню общего
+                назначения
+            </ng-template>
+        </tui-doc-documentation>
+
+        <h2>OptGroup</h2>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="label"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+            >
+                Имя группы
+            </ng-template>
+        </tui-doc-documentation>
+
+        <h2>Option</h2>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="role"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiOptionRole"
+            >
+                Нативная роль для доступности. Обратите внимание, что для всех
+                ролей, кроме <code>menuitem</code> требуется указать
+                <code>aria-checked</code> (см. пример)
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiDataListModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

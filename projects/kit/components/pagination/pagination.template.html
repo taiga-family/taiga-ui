@@ -1,0 +1,77 @@
+<div class="content" (tuiActiveZoneChange)="onActiveZone($event)">
+    <ng-container *ngIf="sizeM; else smallButtons">
+        <button
+            tuiIconButton
+            type="button"
+            tuiPreventDefault="mousedown"
+            class="button"
+            size="s"
+            appearance="flat"
+            icon="tuiIconArrowLeft"
+            [title]="texts[0]"
+            [disabled]="arrowIsDisabledLeft"
+            [focusable]="false"
+            (click)="onArrowClick('left')"
+        ></button>
+        <ng-container *tuiRepeatTimes="let elementIndex of elementsLength">
+            <ng-container
+                *tuiLet="getItemIndexByElementIndex(elementIndex) as index"
+            >
+                <button
+                    *ngIf="index !== null; else dotsTemplate"
+                    #element
+                    tuiButton
+                    type="button"
+                    automation-id="tui-pagination__element"
+                    class="button"
+                    shape="square"
+                    size="s"
+                    [disabled]="disabled"
+                    [focusable]="elementIsFocusable(index)"
+                    [appearance]="getElementMode(index)"
+                    (click)="onElementClick(index)"
+                    (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
+                    (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
+                >
+                    <polymorpheus-outlet
+                        [content]="content || index + 1"
+                        [context]="getItemContext(index)"
+                    ></polymorpheus-outlet>
+                </button>
+            </ng-container>
+        </ng-container>
+        <button
+            tuiIconButton
+            type="button"
+            tuiPreventDefault="mousedown"
+            class="button"
+            size="s"
+            appearance="flat"
+            icon="tuiIconArrowRight"
+            [title]="texts[1]"
+            [disabled]="arrowIsDisabledRight"
+            [focusable]="false"
+            (click)="onArrowClick('right')"
+        ></button>
+    </ng-container>
+    <ng-template #smallButtons>
+        <button
+            *tuiRepeatTimes="let indexItem of length"
+            #element
+            tuiButton
+            type="button"
+            class="button button_small"
+            shape="square"
+            [class.button_active]="indexItem === index"
+            [disabled]="disabled"
+            [focusable]="elementIsFocusable(indexItem)"
+            [appearance]="getSmallElementMode(indexItem, mode)"
+            (click)="onElementClick(indexItem)"
+            (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
+            (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
+        ></button>
+    </ng-template>
+    <ng-template #dotsTemplate>
+        <div automation-id="tui-pagination__element" class="dots"></div>
+    </ng-template>
+</div>

@@ -1,0 +1,93 @@
+<tui-doc-page header="Expand" package="CORE">
+    <ng-template pageTab>
+        Компонент для показа выпадающего контента
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-expand-example-1></tui-expand-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        Darth Vader is (spoilers below):
+        <tui-expand class="b-full-width" [expanded]="expanded" [async]="async">
+            <ng-template tuiExpandContent>
+                <div *ngIf="!delayed">
+                    <p>Luke's father.</p>
+                    <p class="tooltip">
+                        Also Tyler Durden doesn't actually exist (hover for mode
+                        details)
+                        <span class="bubble">
+                            Fight Club reference (notice how spoiler has
+                            <code>overflow: visible;</code> when it's open).
+                        </span>
+                    </p>
+                    <div>
+                        A spoiler is an element of a disseminated summary or
+                        description of any piece of fiction that reveals any
+                        plot elements which threaten to give away important
+                        details. Typically, the details of the conclusion of the
+                        plot, including the climax and ending, are especially
+                        regarded as spoiler material. It can also be used to
+                        refer to any piece of information regarding any part of
+                        a given media that a potential consumer would not want
+                        to know beforehand. Because enjoyment of fiction depends
+                        a great deal upon the suspense of revealing plot details
+                        through standard narrative progression, the prior
+                        revelation of how things will turn out can "spoil" the
+                        enjoyment that some consumers of the narrative would
+                        otherwise have experienced. Spoilers can be found in
+                        message boards, articles, reviews, commercials, and
+                        movie trailers.
+                    </div>
+                </div>
+            </ng-template>
+        </tui-expand>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="async"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="async"
+            >
+                При открытии компонент ждёт кастомного события
+                <code>TUI_EXPAND_LOADED</code>, прежде чем раскрыться, но
+                контент на странице появляется сразу (для случаев, если
+                компонент внутри при инициализации подгружает какие-то данные,
+                влияющие на его высоту)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="expanded"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [documentationPropertyValue]="expanded"
+                (documentationPropertyValueChange)="onExpandedChange($event)"
+            >
+                Компонент открыт/закрыт
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiExpandModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,45 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    .fullsize(fixed);
+    display: flex;
+
+    &:before,
+    &:after {
+        .fullsize();
+        content: '';
+        background: fade(@color-text, 48%);
+        animation: tuiFadeIn 0.3s;
+        transition: opacity 0.3s;
+    }
+
+    &:before {
+        left: -100%;
+        width: 200%;
+    }
+
+    &:after {
+        left: 100%;
+    }
+
+    &.ng-animating:before,
+    &.ng-animating:after {
+        opacity: 0;
+    }
+
+    &.right {
+        justify-content: flex-end;
+    }
+
+    &.left {
+        justify-content: flex-start;
+    }
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--tui-base-01);
+    width: 276px;
+}

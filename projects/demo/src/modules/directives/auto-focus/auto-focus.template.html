@@ -1,0 +1,35 @@
+<tui-doc-page header="AutoFocus" package="CDK">
+    <ng-template pageTab>
+        Директива <code>tuiAutoFocus</code> позволяет сфокусировать HTML-элемент
+        при его появлении. Также фокусирует нативный элемент фокусируемых
+        компонентов Taiga UI.
+
+        <tui-doc-example id="base" heading="Базовый" [content]="example1">
+            <tui-auto-focus-example-1></tui-auto-focus-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Подключение">
+        <ol class="b-demo-steps">
+            <li>
+                Для использования необходимо импортировать модуль
+                <code>TuiAutoFocus</code> в тот же модуль, куда добавляется ваш
+                компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

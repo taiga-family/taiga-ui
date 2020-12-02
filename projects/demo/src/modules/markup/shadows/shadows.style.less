@@ -1,0 +1,52 @@
+@import 'taiga-ui-angular-local';
+
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.example {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.code {
+    flex: 1;
+}
+
+.item {
+    .transition(box-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-left: 40px;
+    width: 160px;
+    height: 80px;
+    border-radius: var(--tui-radius);
+    color: var(--tui-text-03);
+    cursor: pointer;
+    text-align: center;
+
+    &_standart {
+        .shadow();
+
+        &:hover {
+            .shadow(5);
+        }
+    }
+
+    &_dropdown {
+        .shadow(2);
+    }
+
+    &_modal {
+        .shadow(3);
+    }
+
+    &_sidebar {
+        .shadow(4);
+    }
+}

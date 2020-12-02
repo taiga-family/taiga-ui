@@ -1,0 +1,34 @@
+<tui-doc-page header="Темы">
+    <h3 class="tui-text_h3 tui-space_top-0 tui-space_bottom-4">Инструкция</h3>
+    <bootstrap *ngIf="isBootstrap"></bootstrap>
+    <material *ngIf="isMaterial"></material>
+    <p>
+        Taiga UI использует <strong>CSS custom properties</strong> для задания
+        цветов и стилей компонентов. Для работы в браузерах без их поддержки
+        присутствует полифилл. Чтобы сменить тему нужно переопределить
+        переменные для цветов в <code>:root</code> блоке CSS а для более сложных
+        кейсов переопределить стили внутреннего компонента
+        <code>tui-wrapper</code>. Всё это можно делать в реальном времени через
+        <a tuiLink><code>ThemeSwitcher</code></a
+        >.
+    </p>
+    <h3 class="tui-text_h3 tui-space_top-0 tui-space_bottom-4">Примеры</h3>
+    <div class="theme-wrapper">
+        <tui-tabs [underline]="!isBootstrap" [(activeItemIndex)]="activeItem">
+            <button *ngFor="let tab of tabs" tuiTab>{{tab}}</button>
+        </tui-tabs>
+        <div class="wrapper">
+            <label tuiLabel [label]="label">
+                <tui-input
+                    class="input"
+                    tuiTextfieldExampleText="you@example.com"
+                    [tuiTextfieldSize]="size"
+                    [(ngModel)]="value"
+                >
+                    <span class="demo-placeholder">{{placeholder}}</span>
+                </tui-input>
+            </label>
+            <button tuiButton type="button" [size]="size">Отправить</button>
+        </div>
+    </div>
+</tui-doc-page>

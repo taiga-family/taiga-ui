@@ -1,0 +1,149 @@
+<tui-doc-page header="Radio" package="KIT">
+    <ng-template pageTab>
+        Радио-кнопка без лейбла. Для использования с&nbsp;лейблом&nbsp;см.
+        <a tuiLink routerLink="/tui-radio-labeled"><code>RadioLabeled</code></a
+        >, внутри кнопки см.
+        <a tuiLink routerLink="/tui-radio-block"><code>RadioBlock</code></a
+        >.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-radio-example-1></tui-radio-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="large"
+            heading="большой размер"
+            [content]="example2"
+        >
+            <tui-radio-example-2></tui-radio-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-radio
+                    class="tui-space_bottom-3"
+                    [formControl]="control"
+                    [item]="null"
+                    [identityMatcher]="identityMatcher"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    [pseudoDisabled]="pseudoDisabled"
+                    [size]="size"
+                    [focusable]="focusable"
+                    [readOnly]="readOnly"
+                ></tui-radio>
+                <tui-radio
+                    class="tui-space_bottom-3"
+                    [formControl]="control"
+                    [item]="items[1]"
+                    [identityMatcher]="identityMatcher"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    [pseudoDisabled]="pseudoDisabled"
+                    [size]="size"
+                    [focusable]="focusable"
+                    [readOnly]="readOnly"
+                ></tui-radio>
+                <tui-radio
+                    class="tui-space_bottom-3"
+                    [formControl]="control"
+                    [item]="items[2]"
+                    [identityMatcher]="identityMatcher"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    [pseudoDisabled]="pseudoDisabled"
+                    [size]="size"
+                    [focusable]="focusable"
+                    [readOnly]="readOnly"
+                ></tui-radio>
+            </ng-template>
+        </tui-doc-demo>
+        <button tuiButton type="button" size="m" (click)="onClick()">
+            Задать значение копией
+        </button>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="identityMatcher"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiIdentityMatcher"
+                [documentationPropertyValues]="identityMatcherVariants"
+                [(documentationPropertyValue)]="identityMatcher"
+            >
+                Функция определения равенства объектов (нужна в случае, если
+                выбранное значение задано изначально и не присутствует в
+                <code>items</code>, однако там есть точная копия, которую можно
+                определить по какому-нибудь критерию. По умолчанию используется
+                сравнение <code>===</code>.
+                <strong>Должна быть чистой функцией</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="pseudoDisabled"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="pseudoDisabled"
+            >
+                Disabled&nbsp;&mdash; установить принудительно, не изменяя
+                значение формы
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер контрола
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiRadioModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

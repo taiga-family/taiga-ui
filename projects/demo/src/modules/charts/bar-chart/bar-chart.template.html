@@ -1,0 +1,112 @@
+<tui-doc-page header="BarChart" package="ADDON-CHARTS">
+    <ng-template pageTab>
+        Компонент столбчатой диаграммы. Как правило, используется в контенте
+        <a tuiLink [routerLink]="['/tui-axes']">осей координат</a>.
+
+        <tui-doc-example id="axes" heading="В осях" [content]="example1">
+            <tui-bar-chart-example-1></tui-bar-chart-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-bar-chart
+                class="chart"
+                [collapsed]="collapsed"
+                [value]="value"
+                [max]="max"
+                [size]="size"
+                [colorHandler]="colorHandler"
+                [hintContent]="hintContent"
+                [hintMode]="hintMode"
+            ></tui-bar-chart>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="collapsed"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="collapsed"
+            >
+                Показывать набор данных на одном столбце
+            </ng-template>
+            <ng-template
+                documentationPropertyName="colorHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiColorHandler"
+                [documentationPropertyValues]="colorHandlerVariants"
+                [(documentationPropertyValue)]="colorHandler"
+            >
+                Функция, получающая на вход индекс сегмента, и возвращающая цвет
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hintContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="contentVariants"
+                [(documentationPropertyValue)]="hintContent"
+            >
+                Контент подсказки для сегмента, в контексте получает индекс
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hintMode"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiHintMode"
+                [documentationPropertyValues]="hintModeVariants"
+                [(documentationPropertyValue)]="hintMode"
+            >
+                Режим отображения подсказки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="max"
+            >
+                Задание максимума вручную
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS | TuiSizeL | null"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер столбцов (<code>null</code> для авторазмера)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="ReadonlyArray<ReadonlyArray<number>>"
+                [documentationPropertyValues]="valueVariants"
+                [(documentationPropertyValue)]="value"
+            >
+                Массив сегментов
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiBarChartModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

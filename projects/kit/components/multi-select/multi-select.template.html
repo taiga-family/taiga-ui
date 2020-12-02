@@ -1,0 +1,52 @@
+<tui-hosted-dropdown
+    class="wrapper"
+    [canOpen]="interactive"
+    [content]="datalist || ''"
+    [(open)]="open"
+    (tuiHoveredChange)="onHoveredChange($event)"
+    (tuiActiveZoneChange)="onActiveZone($event)"
+>
+    <tui-input-tag
+        tuiHostedDropdownHost
+        #inputTag
+        automation-id="tui-multi-select__input"
+        class="input"
+        [nativeId]="nativeId"
+        [icon]="tagIcon"
+        [disabled]="disabled"
+        [disabledItemHandler]="disabledItemHandler | tuiMapper : disabledItemHandlerWrapper"
+        [readOnly]="readOnly"
+        [inputHidden]="!editable"
+        [pseudoHovered]="hovered"
+        [pseudoFocused]="focused"
+        [pseudoInvalid]="computedInvalid"
+        [editable]="false"
+        [expandable]="expandable"
+        [search]="searchOrSpace"
+        [ngModel]="computedValue | tuiMapper: valueMapper: stringify"
+        (ngModelChange)="onInput($event)"
+        (searchChange)="onSearch($event)"
+        (keydown.space)="onSpace($event)"
+        (keydown.enter)="onEnter($event)"
+        (click.stop)="onClick(inputTag)"
+    >
+        <ng-content></ng-content>
+    </tui-input-tag>
+    <div
+        *ngIf="computedGroup"
+        polymorpheus-outlet
+        class="group"
+        [class.group_fullsize]="textfieldLabelOutside.labelOutside"
+        [context]="context"
+        [content]="valueContent"
+    ></div>
+    <tui-svg
+        *ngIf="interactive"
+        automation-id="tui-multi-select__arrow"
+        class="arrow"
+        src="tuiIconArrowDownLarge"
+        tuiPreventDefault="mousedown"
+        [class.arrow_open]="open"
+        (click.prevent)="onArrowClick()"
+    ></tui-svg>
+</tui-hosted-dropdown>

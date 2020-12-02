@@ -1,0 +1,21 @@
+import {FormControl, FormGroup} from '@angular/forms';
+import {TuiCountryIsoCode} from '@taiga-ui/kit';
+
+...
+
+@Component({
+...
+})
+export class MyComponent {
+    readonly testForm = new FormGroup({
+        // +78005553535 - предвыбранное значение, можно не передавать
+        testValue: new FormControl('+78005553535')
+    });
+
+    readonly countries: ReadonlyArray<TuiCountryIsoCode> = [
+        TuiCountryIsoCode.RU,
+        TuiCountryIsoCode.KZ,
+        TuiCountryIsoCode.UA,
+        TuiCountryIsoCode.BY,
+    ]
+}

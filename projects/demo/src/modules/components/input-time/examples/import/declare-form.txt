@@ -1,0 +1,14 @@
+import {FormControl, FormGroup} from '@angular/forms';
+import {TuiTime} from '@taiga-ui/core';
+
+...
+
+@Component({
+...
+})
+export class MyComponent {
+    testForm = new FormGroup({
+        // TuiTime(12, 30) - предвыбранное значение, можно не передавать
+        testValue: new FormControl(new TuiTime(12, 30))
+    });
+}

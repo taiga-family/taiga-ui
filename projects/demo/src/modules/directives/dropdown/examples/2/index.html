@@ -1,0 +1,28 @@
+На все вопросы, связанные с директивой <code>tuiDropdown</code>,&nbsp;<button
+    tuiLink
+    mode="pseudo"
+    tuiDropdownAlign="right"
+    tuiDropdownDirection="top"
+    [tuiDropdownContent]="dropdownContent"
+    [tuiDropdown]="open"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+>
+    Саша
+</button>
+ответит с радостью!
+
+<ng-template #dropdownContent="polymorpheus" polymorpheus>
+    <div class="dropdown">
+        <tui-avatar
+            size="l"
+            [rounded]="true"
+            [avatarUrl]="avatarUrl"
+        ></tui-avatar>
+        <div class="text">
+            <div class="label">Разработчик Taiga UI</div>
+            <div class="name">Александр Инкин</div>
+            <div class="account">a.inkin</div>
+        </div>
+    </div>
+</ng-template>

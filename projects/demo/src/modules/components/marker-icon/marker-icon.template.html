@@ -1,0 +1,92 @@
+<tui-doc-page header="MarkerIcon" package="KIT">
+    <ng-template pageTab>
+        <p>
+            Компонент <code>MarkerIcon</code> предназначен для вставки
+            изображений в формате SVG в круглой рамке. Цвет задаётся через
+            параметр <code>mode</code>. При необходимости его можно задать
+            стилями на компоненте.
+        </p>
+        <tui-notification [hasCloseButton]="false">
+            Маркерные иконки должны иметь размер 48х48px или менее. Иконки
+            меньшего размера будут центрироваться. При размере
+            <strong>s</strong> они будут показаны в натуральную величину, в
+            остальных размерах они будут масштабироваться соответствующим
+            образом.
+        </tui-notification>
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-marker-icon-example-1></tui-marker-icon-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="modes" heading="модификации" [content]="example2">
+            <tui-marker-icon-example-2></tui-marker-icon-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example id="sizes" heading="размеры" [content]="example3">
+            <tui-marker-icon-example-3></tui-marker-icon-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-marker-icon
+                [mode]="mode"
+                [src]="selectedIcon"
+                [size]="size"
+            ></tui-marker-icon>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="mode"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMarkerIconMode | null"
+                [documentationPropertyValues]="modeVariants"
+                [(documentationPropertyValue)]="mode"
+            >
+                Модификация
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeXS | TuiSizeXL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер
+            </ng-template>
+            <ng-template
+                documentationPropertyName="src"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="icons"
+                [(documentationPropertyValue)]="selectedIcon"
+            >
+                Код SVG-изображения или имя иконки
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiMarkerIconModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Вставить компонент <code>TuiMarkerIcon</code> в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

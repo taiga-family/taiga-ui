@@ -1,0 +1,15 @@
+<button
+    tuiButton
+    type="button"
+    class="copy"
+    appearance=""
+    size="s"
+    (click)="onClick()"
+>
+    <span class="content" [class.content_moved]="copied$ | async">
+        <span class="initial">
+            <ng-content></ng-content>
+        </span>
+        {{texts[1]}}
+    </span>
+</button>

@@ -1,0 +1,61 @@
+<ng-container *ngIf="edit; else view">
+    <label class="label">
+        URL
+        <span class="url">
+            {{prefix}}
+            <tui-input-inline
+                tuiAutoFocus
+                class="input"
+                [class.input_filled]="hasUrl"
+                [ngModel]="url"
+                (ngModelChange)="onChange($event)"
+                (keydown.enter)="onSave()"
+                (keydown.backspace)="onBackspace()"
+            >
+                example.com
+            </tui-input-inline>
+        </span>
+    </label>
+    <tui-svg
+        src="tuiIconCloseLarge"
+        class="cleaner"
+        [class.cleaner_hidden]="!hasUrl"
+        (click)="onClear()"
+    ></tui-svg>
+    <button
+        tuiIconButton
+        type="button"
+        size="s"
+        title="Вставить ссылку"
+        icon="tuiIconCheckCircleLarge"
+        class="button"
+        shape="rounded"
+        appearance="icon"
+        (click)="onSave()"
+    ></button>
+</ng-container>
+<ng-template #view>
+    <a tuiLink [href]="href" target="_blank" class="link"> {{shortUrl}} </a>
+    <button
+        tuiIconButton
+        type="button"
+        size="s"
+        title="Изменить ссылку"
+        icon="tuiIconEdit2Large"
+        class="button"
+        shape="rounded"
+        appearance="icon"
+        (click)="onEdit()"
+    ></button>
+    <button
+        tuiIconButton
+        type="button"
+        size="s"
+        title="Удалить ссылку"
+        icon="tuiIconTrashLarge"
+        class="button"
+        shape="rounded"
+        appearance="icon"
+        (click)="onRemove()"
+    ></button>
+</ng-template>

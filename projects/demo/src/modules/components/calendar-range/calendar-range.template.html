@@ -1,0 +1,141 @@
+<tui-doc-page header="CalendarRange" package="KIT">
+    <ng-template pageTab>
+        Компонент для выбора диапазона дат
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-range-example-1></tui-range-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="with-value"
+            heading="с заранее заданным значением"
+            [content]="example2"
+        >
+            <tui-range-example-2></tui-range-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="periods"
+            heading="с периодами"
+            [content]="example3"
+        >
+            <tui-range-example-3></tui-range-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-calendar-range
+                [defaultViewedMonth]="defaultViewedMonth"
+                [disabledItemHandler]="disabledItemHandler"
+                [items]="items"
+                [markerHandler]="markerHandler"
+                [min]="min"
+                [max]="max"
+                [minLength]="minLength"
+                [maxLength]="maxLength"
+            ></tui-calendar-range>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="defaultViewedMonth"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMonth"
+                [documentationPropertyValues]="defaultViewedMonthVariants"
+                [(documentationPropertyValue)]="defaultViewedMonth"
+            >
+                Месяц, открываемый по умолчанию на календаре (если значение не
+                передано)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<TuiDay>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Функция, определяющая, заблокирована ли дата в календаре.<br />
+                <strong>Должна быть чистой функцией.</strong><br />
+                Не препятствует ручному вводу значения в текстовое поле.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="items"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDayRangePeriod[]"
+                [documentationPropertyValues]="itemsVariants"
+                [(documentationPropertyValue)]="items"
+            >
+                Фиксированные интервалы (при пустом массиве показывает 2
+                календаря)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="markerHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMarkerHandler"
+                [documentationPropertyValues]="markerHandlerVariants"
+                [(documentationPropertyValue)]="markerHandler"
+            >
+                Функция, которая определяет, показаны ли под датой
+                кружки-маркеры и задает их цвета
+            </ng-template>
+            <ng-template
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDay"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Минимальная дата
+            </ng-template>
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDay"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Максимальная дата
+            </ng-template>
+            <ng-template
+                documentationPropertyName="minLength"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDayLike | null"
+                [documentationPropertyValues]="minLengthVariants"
+                [(documentationPropertyValue)]="minLength"
+            >
+                Ограничение диапазона снизу
+            </ng-template>
+            <ng-template
+                documentationPropertyName="maxLength"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDayLike | null"
+                [documentationPropertyValues]="maxLengthVariants"
+                [(documentationPropertyValue)]="maxLength"
+            >
+                Ограничение диапазона сверху
+            </ng-template>
+            <ng-template
+                documentationPropertyName="rangeChange"
+                documentationPropertyMode="output"
+                documentationPropertyType="TuiDayRange"
+            >
+                Событие выбора интервала дат
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования достаточно импортировать модуль
+                <code>TuiCalendarRangeModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

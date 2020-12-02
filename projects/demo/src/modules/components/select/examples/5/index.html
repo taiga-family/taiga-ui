@@ -1,0 +1,21 @@
+<tui-select
+    *tuiLet="items$ | async as items"
+    class="control"
+    [tuiTextfieldLabelOutside]="true"
+    [valueContent]="items ? stringify(items) : loading"
+    [(ngModel)]="value"
+>
+    <ng-template tuiDataList>
+        <tui-data-list *ngIf="items else loading">
+            <button *ngFor="let item of items" tuiOption [value]="item.id">
+                {{item.name}}
+            </button>
+        </tui-data-list>
+    </ng-template>
+    <ng-template #loading>
+        <tui-loader
+            class="tui-space_vertical-3 loader"
+            [showLoader]="true"
+        ></tui-loader>
+    </ng-template>
+</tui-select>

@@ -1,0 +1,21 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    display: block;
+    border-radius: var(--tui-radius);
+}
+
+.icon {
+    position: relative;
+    cursor: pointer;
+    pointer-events: auto;
+    color: var(--tui-base-06);
+
+    :host:not(._has-value) & {
+        pointer-events: none;
+    }
+}
+
+.textfield {
+    border-radius: inherit;
+}

@@ -1,0 +1,45 @@
+<tui-doc-page header="Pure" package="CDK">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Декоратор для мемоизации вычислений на чистых функциях/геттерах
+        </div>
+
+        <strong>
+            ВНИМАНИЕ: Декоратор переопределяет геттер/сеттер/значение.
+        </strong>
+
+        <p>
+            Данный декоратор предназначен для того, чтобы геттер, значение
+            которого не меняется (чистая функция) вычислялся однократно при
+            первом обращении. После этого геттер подменяется статичным
+            посчитанным значением.
+        </p>
+        <p>
+            В случае с чистыми функциями, декоратор не выполняет вычисления
+            результата повторно для тех же самых аргументов, что и при прошлом
+            вызове, что схоже с чистыми пайпами Angular.
+        </p>
+
+        <tui-doc-example id="getter" heading="геттер" [content]="example1">
+            <example-tui-pure-getter></example-tui-pure-getter>
+        </tui-doc-example>
+
+        <tui-doc-example id="function" heading="функция" [content]="example2">
+            <example-tui-pure-function></example-tui-pure-function>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования добавить декоратор
+                <code>@tuiPure</code> к функции или геттеру в вашем классе:
+
+                <tui-doc-code
+                    filename="myClass.component.ts"
+                    [code]="exampleDecorator"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

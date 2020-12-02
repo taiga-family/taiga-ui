@@ -1,0 +1,4 @@
+npm install @taiga-ui/cdk
+npm install @taiga-ui/core
+npm install @taiga-ui/kit
+npm install @taiga-ui/icons

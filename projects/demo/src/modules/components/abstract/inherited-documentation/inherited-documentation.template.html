@@ -1,0 +1,128 @@
+<dropdown-controller-documentation
+    *ngIf="dropdown"
+></dropdown-controller-documentation>
+<ng-container *ngIf="isTuiReactiveControl(documentedComponent)">
+    <hint-controller-documentation></hint-controller-documentation>
+    <textfield-controller-documentation></textfield-controller-documentation>
+
+    <h6 class="tui-text_h6">
+        Унаследованные от класса <code>TuiReactiveControl</code>
+    </h6>
+    <tui-doc-documentation>
+        <ng-template
+            documentationPropertyName="readOnly"
+            documentationPropertyMode="input"
+            documentationPropertyType="boolean"
+            [(documentationPropertyValue)]="documentedComponent.readOnly"
+        >
+            Компонент доступен только для чтения
+        </ng-template>
+        <ng-template
+            documentationPropertyName="pseudoInvalid"
+            documentationPropertyMode="input"
+            documentationPropertyType="boolean | null"
+            [documentationPropertyValues]="booleanVariants"
+            [(documentationPropertyValue)]="documentedComponent.pseudoInvalid"
+        >
+            Состояние невалидности&nbsp;&mdash; установить принудительно извне
+            компонента
+        </ng-template>
+    </tui-doc-documentation>
+</ng-container>
+<ng-container *ngIf="isTuiInteractive(documentedComponent)">
+    <h6 class="tui-text_h6">
+        Унаследованные от класса <code>TuiInteractive</code>
+    </h6>
+    <tui-doc-documentation>
+        <ng-template
+            documentationPropertyName="focusable"
+            documentationPropertyMode="input"
+            documentationPropertyType="boolean"
+            [(documentationPropertyValue)]="documentedComponent.focusable"
+        >
+            Сделать элемент фокусируемым или нефокусируемым
+        </ng-template>
+        <ng-template
+            documentationPropertyName="nativeId"
+            documentationPropertyMode="input"
+            documentationPropertyType="string"
+        >
+            Задает нативное свойство id для элемента. Помогает ориентироваться
+            на странице пользователям со Screen Reader`ами.
+        </ng-template>
+        <ng-template
+            documentationPropertyName="pseudoHovered"
+            documentationPropertyMode="input"
+            documentationPropertyType="boolean | null"
+            [documentationPropertyValues]="booleanVariants"
+            [(documentationPropertyValue)]="documentedComponent.pseudoHovered"
+        >
+            Hovered&nbsp;&mdash; установить принудительно извне компонента
+        </ng-template>
+        <ng-template
+            documentationPropertyName="pseudoFocused"
+            documentationPropertyMode="input"
+            documentationPropertyType="boolean | null"
+            [documentationPropertyValues]="booleanVariants"
+            [(documentationPropertyValue)]="documentedComponent.pseudoFocused"
+        >
+            Визуальная сфокусированность&nbsp;&mdash; установить принудительно
+            извне компонента
+        </ng-template>
+        <ng-template
+            documentationPropertyName="pseudoPressed"
+            documentationPropertyMode="input"
+            documentationPropertyType="boolean | null"
+            [documentationPropertyValues]="booleanVariants"
+            [(documentationPropertyValue)]="documentedComponent.pseudoPressed"
+        >
+            Pressed&nbsp;&mdash; установить принудительно извне компонента
+        </ng-template>
+        <ng-template
+            documentationPropertyName="focusedChange"
+            documentationPropertyMode="output"
+            documentationPropertyType="function"
+        >
+            Изменение состояния сфокусированности
+        </ng-template>
+        <ng-template
+            documentationPropertyName="hoveredChange"
+            documentationPropertyMode="output"
+            documentationPropertyType="function"
+        >
+            Изменение состояния наведенности
+        </ng-template>
+        <ng-template
+            documentationPropertyName="pressedChange"
+            documentationPropertyMode="output"
+            documentationPropertyType="function"
+        >
+            Изменение состояния нажатости
+        </ng-template>
+    </tui-doc-documentation>
+</ng-container>
+<ng-container *ngIf="isTuiHint(documentedComponent)">
+    <h6 class="tui-text_h6">
+        Унаследованные от класса <code>AbstractHint</code>
+    </h6>
+    <tui-doc-documentation>
+        <ng-template
+            documentationPropertyName="tuiHintDirection"
+            documentationPropertyMode="input"
+            documentationPropertyType="TuiDirection"
+            [documentationPropertyValues]="directionVariants"
+            [(documentationPropertyValue)]="documentedComponent.direction"
+        >
+            Направление тултипа
+        </ng-template>
+        <ng-template
+            documentationPropertyName="tuiHintMode"
+            documentationPropertyMode="input"
+            documentationPropertyType="TuiHintMode | null"
+            [documentationPropertyValues]="modeVariants"
+            [(documentationPropertyValue)]="documentedComponent.mode"
+        >
+            Модификация тултипа
+        </ng-template>
+    </tui-doc-documentation>
+</ng-container>

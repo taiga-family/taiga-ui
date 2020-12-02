@@ -1,0 +1,199 @@
+<tui-doc-page header="InputTag" package="KIT">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            <code>InputTag</code> представляет собой поле для ввода тегов с
+            возможностью автокомплита с вариантами в выпадающем списке.
+        </div>
+        <div class="tui-space_bottom-3">
+            Выпадающий список по умолчанию имеет ограничение по высоте в 400px,
+            которое можно изменить.
+        </div>
+
+        Для вставки в DOM выпадающего списка используется <code>Portal</code>,
+        он должен присутствовать на странице. См.
+        <a tuiLink routerLink="/">раздел</a> о вставке вспомогательных
+        компонентов.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-input-tag-example-1></tui-input-tag-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="async"
+            heading="асиннхронная загрузка подсказок"
+            [content]="example2"
+        >
+            <tui-input-tag-example-2></tui-input-tag-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example id="sizes" heading="размеры" [content]="example3">
+            <tui-input-tag-example-3></tui-input-tag-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="validation"
+            heading="Со сложной валидацией"
+            [content]="example4"
+        >
+            <tui-input-tag-example-4></tui-input-tag-example-4>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-tag
+                    [formControl]="control"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiHintMode]="hintMode"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldExampleText]="exampleText"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldMaxLength]="maxLength"
+                    [tuiTextfieldSize]="size"
+                    [focusable]="focusable"
+                    [disabledItemHandler]="disabledItemHandler"
+                    [editable]="editable"
+                    [expandable]="expandable"
+                    [icon]="icon"
+                    [iconAlign]="iconAlign"
+                    [readOnly]="readOnly"
+                    [allowSpaces]="allowSpaces"
+                    [tagValidator]="tagValidator"
+                    [inputHidden]="inputHidden"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [(search)]="search"
+                >
+                    Please enter Pythons' names
+                </tui-input-tag>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="search"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="string | null"
+                [(documentationPropertyValue)]="search"
+            >
+                Значение нативного поля для подписки на ввод и передачи снаружи
+                (сбрасывается в <code>null</code> при выборе элемента)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="allowSpaces"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="allowSpaces"
+            >
+                Разрешить ввод пробелов внутри тега
+            </ng-template>
+            <ng-template
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<string>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Хэндлер отключенности тегов и отдельных пунктов выпадающего
+                списка
+            </ng-template>
+            <ng-template
+                documentationPropertyName="editable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="editable"
+            >
+                Введённые тэги можно редактировать
+            </ng-template>
+            <ng-template
+                documentationPropertyName="expandable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="expandable"
+            >
+                Высота поля увеличивается, чтобы уместить все тэги
+            </ng-template>
+            <ng-template
+                documentationPropertyName="icon"
+                documentationPropertyMode="input"
+                documentationPropertyType="string | null"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                Иконка. Принимает содержимое svg-файла в виде строки или имя
+                иконки, определённой с помощью
+                <a tuiLink routerLink="/tui-svg-service"
+                    ><code>SvgService</code></a
+                >
+            </ng-template>
+            <ng-template
+                documentationPropertyName="iconAlign"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiHorizontalDirection"
+                [documentationPropertyValues]="iconAlignVariants"
+                [(documentationPropertyValue)]="iconAlign"
+            >
+                Положение иконки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="inputHidden"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="inputHidden"
+            >
+                Позволяет скрыть поле ввода, например чтобы ограничить
+                добавление новых тэгов
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tagValidator"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<string>"
+                [documentationPropertyValues]="tagValidatorVariants"
+                [(documentationPropertyValue)]="tagValidator"
+            >
+                Функция, определяющая валидность каждого тэга
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation [dropdown]="true"></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiInputTagModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон с использованием реактивных форм или
+                <code>ngModel</code>:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,25 @@
+<form class="container" [formGroup]="testForm">
+    <tui-input-number
+        formControlName="testValue"
+        tuiTextfieldSize="s"
+        postfix="кг"
+    >
+        Картошка
+    </tui-input-number>
+    <tui-input-number
+        class="tui-space_top-2"
+        formControlName="testValue"
+        postfix="л"
+        tuiTextfieldSize="m"
+        [tuiTextfieldLabelOutside]="true"
+    >
+        Молоко
+    </tui-input-number>
+    <tui-input-number
+        class="tui-space_top-2"
+        postfix="см"
+        formControlName="testValue"
+    >
+        Морковь
+    </tui-input-number>
+</form>

@@ -1,0 +1,129 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    .text-body-m();
+    position: relative;
+    display: flex;
+    border: 1px solid var(--tui-base-03);
+    border-radius: var(--tui-radius);
+
+    &:not(._link) {
+        padding: 9px 35px 9px 9px;
+    }
+
+    &:hover .remove {
+        opacity: 1;
+    }
+
+    &._focused {
+        border-color: var(--tui-focus);
+        box-shadow: 0 0 0 1px inset var(--tui-focus);
+    }
+}
+
+.link {
+    display: flex;
+    flex: 1;
+    padding: 9px 35px 9px 9px;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--tui-text-01);
+    max-width: ~'calc(100% - 44px)';
+
+    &:hover {
+        background-color: var(--tui-base-02);
+    }
+}
+
+.preview {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    border-radius: var(--tui-radius);
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.24);
+
+    &_big {
+        width: 64px;
+        height: 64px;
+        margin-right: 16px;
+
+        &:before {
+            .fullsize();
+            content: '';
+            background: #333;
+            opacity: 0.08;
+        }
+    }
+}
+
+.image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.loader {
+    .fullsize();
+}
+
+.icon {
+    .fullsize();
+    color: var(--tui-success-fill);
+
+    &_error {
+        color: var(--tui-error-fill);
+    }
+
+    &_deleted {
+        color: var(--tui-base-06);
+    }
+}
+
+.remove {
+    .transition(opacity);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+
+    &:focus,
+    &_mobile {
+        opacity: 1;
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.text {
+    display: flex;
+}
+
+.size {
+    flex-shrink: 0;
+    opacity: var(--tui-disabled-opacity);
+    margin-left: 2 * @space;
+}
+
+.type {
+    flex-shrink: 0;
+}
+
+.name {
+    .text-overflow();
+}
+
+.content {
+    .text-body-s();
+    color: var(--tui-error-fill);
+}

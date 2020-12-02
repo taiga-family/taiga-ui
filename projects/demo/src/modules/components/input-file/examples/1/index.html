@@ -1,0 +1,8 @@
+<tui-input-file
+    class="container"
+    link="Выберите изображение"
+    accept="image/*"
+    [formControl]="control"
+    [loadingFiles]="loading$ | async"
+    [rejectedFiles]="rejected$ | async"
+></tui-input-file>

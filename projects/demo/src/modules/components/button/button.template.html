@@ -1,0 +1,180 @@
+<tui-doc-page header="Button" package="CORE">
+    <ng-template pageTab>
+        <code>TuiButtonModule</code> — модуль с компонентами
+        <code>tuiButton</code>, <code>tuiIconButton</code> для использования с
+        нативными <code>button</code> и <code>a</code>.
+
+        <tui-doc-example
+            id="usage"
+            heading="Использование"
+            [content]="example1"
+        >
+            <tui-button-example-1></tui-button-example-1>
+            <tui-notification [hasCloseButton]="false">
+                Ссылки не могут иметь <code>disabled</code> состояние. Для
+                создания неактивной ссылки нужно убрать
+                <code>href</code> атрибут, а в случае
+                <code>routerLink</code> передать пустую строку. Также, чтобы
+                пустой <code>routerLink</code> не фокусировался с клавиатуры
+                нужно повесить на неё директиву
+                <code>[tuiFocusable]="false"</code>.
+            </tui-notification>
+        </tui-doc-example>
+
+        <tui-doc-example id="appearance" heading="Виды" [content]="example2">
+            <tui-button-example-2></tui-button-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="dropdown"
+            heading="Вращение иконки"
+            [content]="example3"
+        >
+            <tui-button-example-3></tui-button-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="Кастомная тема"
+            [content]="example4"
+        >
+            <tui-button-example-4></tui-button-example-4>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <p>
+                <button
+                    *ngIf="iconButton; else button"
+                    tuiIconButton
+                    type="button"
+                    [appearance]="appearance"
+                    [disabled]="disabled"
+                    [icon]="icon"
+                    [shape]="shape"
+                    [showLoader]="showLoader"
+                    [size]="size"
+                ></button>
+                <ng-template #button>
+                    <button
+                        tuiButton
+                        type="button"
+                        class="tui-space_right-4"
+                        [appearance]="appearance"
+                        [disabled]="disabled"
+                        [icon]="icon"
+                        [iconRight]="iconRight"
+                        [shape]="shape"
+                        [showLoader]="showLoader"
+                        [size]="size"
+                    >
+                        Оплатить
+                    </button>
+                </ng-template>
+            </p>
+            tuiButton
+            <tui-toggle
+                class="tui-space_horizontal-2"
+                [singleColor]="true"
+                [(ngModel)]="iconButton"
+            ></tui-toggle>
+            tuiIconButton
+        </tui-doc-demo>
+        <ng-template #template>
+            <tui-card
+                class="card"
+                cardNumber="1234"
+                paymentSystem="maestro"
+                size="s"
+            ></tui-card>
+        </ng-template>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="appearance"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiAppearance | string"
+                [documentationPropertyValues]="appearanceVariants"
+                [(documentationPropertyValue)]="appearance"
+            >
+                Модификация внешнего вида
+            </ng-template>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                disabled состояние
+            </ng-template>
+            <ng-template
+                documentationPropertyName="icon"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="getContentVariants(template)"
+                [(documentationPropertyValue)]="icon"
+            >
+                Содержимое слева
+            </ng-template>
+            <ng-template
+                documentationPropertyName="iconRight"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="getContentVariants(template)"
+                [(documentationPropertyValue)]="iconRight"
+            >
+                Содержимое справа
+            </ng-template>
+            <ng-template
+                documentationPropertyName="shape"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiButtonShape | null"
+                [documentationPropertyValues]="shapeVariants"
+                [(documentationPropertyValue)]="shape"
+            >
+                Форма кнопки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="showLoader"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="showLoader"
+            >
+                Показывать спиннер
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeXS | TuiSizeXL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiButtonModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

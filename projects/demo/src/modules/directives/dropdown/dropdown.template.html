@@ -1,0 +1,181 @@
+<tui-doc-page header="Dropdown" package="CORE">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Директива <code>tuiDropdown</code> нужна для показа выпадашки с
+            произвольным шаблоном. Для скрытия выпадашки используйте директиву
+            <a tuiLink [routerLink]="['/tui-active-zone']">ActiveZone</a>.
+        </div>
+
+        См. также
+        <a tuiLink [routerLink]="['/tui-hosted-dropdown']">HostedDropdown</a>
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-dropdown-example-1></tui-dropdown-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="full-featured"
+            heading="поинтереснее"
+            [content]="example2"
+        >
+            <tui-dropdown-example-2></tui-dropdown-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="change-detection"
+            heading="отслеживание изменений"
+            [content]="example3"
+        >
+            <tui-dropdown-example-3></tui-dropdown-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <span (tuiActiveZoneChange)="onActiveZone($event)">
+                <button
+                    tuiButton
+                    type="button"
+                    [tuiDropdownContent]="dropdownContent"
+                    [tuiDropdownMinHeight]="tuiDropdownMinHeight"
+                    [tuiDropdownMaxHeight]="tuiDropdownMaxHeight"
+                    [tuiDropdownAlign]="tuiDropdownAlign"
+                    [tuiDropdownDirection]="tuiDropdownDirection"
+                    [tuiDropdownLimitWidth]="tuiDropdownLimitWidth"
+                    [tuiDropdownSided]="tuiDropdownSided"
+                    [tuiDropdown]="open"
+                    (tuiObscured)="onObscured($event)"
+                    (click)="onClick()"
+                >
+                    ЖМИ!
+                    <i>
+                        * Здесь присутствует много текста для проверки
+                        ограничения ширины
+                    </i>
+                </button>
+                <ng-template #dropdownContent="polymorpheus" polymorpheus>
+                    <div class="dropdown">
+                        Тут может быть любой контент
+                        <p>Можно сюда даже другие компоненты вставлять:</p>
+                        <button tuiButton type="button">НЕ ЖМИ!</button>
+                        <p>Всё, что душе угодно. *</p>
+                        <sub>
+                            * Кроме случаев, предусмотренных действующим
+                            законодательством Российской Федерации
+                        </sub>
+                    </div>
+                </ng-template>
+            </span>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="tuiDropdown"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="open"
+            >
+                Показана ли выпадашка
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiDropdownContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+            >
+                Содержимое выпадашки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiDropdownAlign"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiHorizontalDirection"
+                [documentationPropertyValues]="alignVariants"
+                [(documentationPropertyValue)]="tuiDropdownAlign"
+            >
+                Опорная сторона, от которой строится контент выпадашки. При
+                <code>sided</code> — сторона выпадашки, которая "прилипает" к
+                хосту, иначе, при
+                <code>tuiDropdownLimitWidth !== 'fixed'</code> — сторона хоста,
+                по которой выпадашка выровнена. При
+                <code>tuiDropdownLimitWidth === 'fixed'</code> не имеет эффекта,
+                так как и левая и правая стороны выпадашки фиксированы по ширине
+                хоста.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiDropdownDirection"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiVerticalDirection | null"
+                [documentationPropertyValues]="dropdownDirectionVariants"
+                [(documentationPropertyValue)]="tuiDropdownDirection"
+            >
+                Задать явно направление открытия выпадашки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiDropdownHost"
+                documentationPropertyMode="input"
+                documentationPropertyType="HTMLElement | null"
+            >
+                Задать явно элемент, считающийся инициатором выпадашки — при
+                выходе фокуса из выпадашки через Tab/Shift+Tab этот элемент
+                будет учитываться для поиска нового элемента для фокуса. По
+                умолчанию используется элемент, на котором находится директива.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiDropdownLimitWidth"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDropdownWidth"
+                [documentationPropertyValues]="tuiDropdownLimitWidthVariants"
+                [(documentationPropertyValue)]="tuiDropdownLimitWidth"
+            >
+                Ограничить выпадающий список по ширине
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiDropdownMinHeight"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="tuiDropdownMinHeight"
+            >
+                Минимальная высота выпадающего списка, при которой учитывается
+                принудительное направление открытия
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiDropdownMaxHeight"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="tuiDropdownMaxHeight"
+            >
+                Максимальная высота выпадающего списка
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiDropdownSided"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="tuiDropdownSided"
+            >
+                Показывать выпадашку сбоку от хоста
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiDropdownModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

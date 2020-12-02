@@ -1,0 +1,67 @@
+<tui-doc-page header="ManualHint" package="CORE">
+    <ng-template pageTab>
+        Директива для императивного показа подсказки
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-manual-hint-example-1></tui-manual-hint-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <button
+                tuiButton
+                type="button"
+                tuiManualHint="Она говорит 'Всем привет' в консоль!"
+                [tuiManualHintShow]="show"
+                [tuiHintMode]="mode"
+                [tuiHintDirection]="direction"
+                (click)="sayHi()"
+            >
+                Непонятная кнопка
+            </button>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="tuiManualHint"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent | null"
+            >
+                Содержимое тултипа
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiManualHintShow"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="show"
+            >
+                Показан ли тултип
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiManualHintModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

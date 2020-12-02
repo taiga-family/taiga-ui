@@ -1,0 +1,15 @@
+<p>
+    Пример с <code>disabledItemHandler</code>, когда при выборе левого края
+    диапазона пересчитывается диапазон заблокированных месяцев: не менее одного
+    месяца вперед
+</p>
+
+<form class="container" [formGroup]="testForm">
+    <tui-input-month-range
+        class="tui-space_bottom-2"
+        formControlName="testValue"
+        [disabledItemHandler]="disabledItemHandler"
+    >
+        Выберите диапазон
+    </tui-input-month-range>
+</form>

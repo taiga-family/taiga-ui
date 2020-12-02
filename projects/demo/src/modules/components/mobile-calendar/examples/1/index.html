@@ -1,0 +1,12 @@
+<div class="wrapper">
+    <button
+        tuiIconButton
+        type="button"
+        title="Выберите дату"
+        appearance="secondary"
+        shape="rounded"
+        icon="tuiIconCalendarLarge"
+        (click)="onClick()"
+    ></button>
+    <span class="date" [class.date_empty]="empty"> {{date}} </span>
+</div>

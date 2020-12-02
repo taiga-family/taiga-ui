@@ -1,0 +1,13 @@
+import {FormControl, FormGroup} from '@angular/forms';
+
+...
+
+@Component({
+    ...
+})
+export class MyComponent {
+    testForm = new FormGroup({
+        // 5000 - предвыбранное значение, можно не передавать
+        testValue: new FormControl(5000)
+    });
+}

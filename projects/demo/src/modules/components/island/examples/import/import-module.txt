@@ -1,0 +1,10 @@
+import {TuiIslandModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiIslandModule
+    ],
+...

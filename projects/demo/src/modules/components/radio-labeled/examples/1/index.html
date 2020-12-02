@@ -1,0 +1,19 @@
+<form [formGroup]="testForm">
+    <tui-radio-labeled
+        formControlName="testValue1"
+        class="tui-space_bottom-3"
+        [item]="items[0]"
+    >
+        Тариф &laquo;Простой&raquo;
+    </tui-radio-labeled>
+    <tui-radio-labeled
+        formControlName="testValue1"
+        class="tui-space_bottom-3"
+        [item]="items[1]"
+    >
+        Тариф &laquo;Продвинутый&raquo;
+    </tui-radio-labeled>
+    <tui-radio-labeled formControlName="testValue1" [item]="items[2]">
+        Тариф &laquo;Профессиональный&raquo;
+    </tui-radio-labeled>
+</form>

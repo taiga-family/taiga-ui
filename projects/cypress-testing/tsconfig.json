@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es2015",
+        "lib": ["es5", "dom"],
+        "types": ["cypress", "node"],
+        "outDir": "../dist/out-tsc/lib"
+    },
+    "include": ["**/*.ts"]
+}

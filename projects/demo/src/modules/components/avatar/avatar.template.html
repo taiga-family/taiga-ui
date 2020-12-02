@@ -1,0 +1,106 @@
+<tui-doc-page header="Avatar" package="KIT">
+    <ng-template pageTab>
+        <p>
+            Аватар используется для отображения в&nbsp;интерфейсе миниатюрного
+            представления личности или компании. Аватар может иметь различные
+            представления: первую букву фамилии, две первые буквы имени
+            и&nbsp;фамилии, фотографию или иконку.
+        </p>
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-avatar-example-1></tui-avatar-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="autocolor"
+            heading="цветные аватары"
+            [content]="example2"
+        >
+            <tui-avatar-example-2></tui-avatar-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-avatar
+                [avatarUrl]="avatarUrl"
+                [text]="text"
+                [rounded]="rounded"
+                [size]="size"
+                [autoColor]="autoColor"
+            ></tui-avatar>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="autoColor"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="autoColor"
+            >
+                Автоматическое задание цвета для аватара
+            </ng-template>
+            <ng-template
+                documentationPropertyName="avatarUrl"
+                documentationPropertyType="string | null"
+                documentationPropertyMode="input"
+                [documentationPropertyValues]="avatarUrlVariants"
+                [(documentationPropertyValue)]="avatarUrl"
+            >
+                URL аватара
+            </ng-template>
+            <ng-template
+                documentationPropertyName="rounded"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="rounded"
+            >
+                Круглый аватар
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyType="TuiSizeXS | TuiSizeXXL"
+                documentationPropertyMode="input"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер
+            </ng-template>
+            <ng-template
+                documentationPropertyName="text"
+                documentationPropertyType="string"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="text"
+            >
+                Текст имени (для вывода первых букв, если аватар без картинки)
+            </ng-template>
+        </tui-doc-documentation>
+        <i>
+            Не рекомендуется ставить большую картинку на маленький аватар — IE и
+            Firefox плохо уменьшают картинки.
+        </i>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiAvatarModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

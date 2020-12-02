@@ -1,0 +1,53 @@
+<div class="wrapper" tuiMode="light">
+    <h1 class="tui-text_h3 title">Monty Python</h1>
+    <tui-tabs-with-more
+        class="tabs"
+        [activeItemIndex]="activeItemIndex"
+        [moreContent]="more"
+    >
+        <ng-container *ngFor="let tab of tabs">
+            <ng-container *ngIf="isString(tab); else submenu">
+                <button *tuiTab tuiTab type="button" (click)="onClick(tab)">
+                    {{tab}}
+                </button>
+            </ng-container>
+            <ng-template #submenu>
+                <tui-hosted-dropdown
+                    *tuiTab
+                    class="dropdown"
+                    [content]="dropdown"
+                    [(open)]="open"
+                >
+                    <button
+                        class="collaborators"
+                        tuiTab
+                        type="button"
+                        (tui-tab-activate)="stop($event)"
+                    >
+                        Collaborators
+                        <tui-svg
+                            src="tuiIconArrowDown"
+                            class="icon"
+                            [class.icon_rotated]="open"
+                        ></tui-svg>
+                    </button>
+                </tui-hosted-dropdown>
+            </ng-template>
+        </ng-container>
+    </tui-tabs-with-more>
+</div>
+<section class="content">Currently active: {{activeElement}}</section>
+<ng-template #dropdown>
+    <tui-data-list>
+        <button
+            *ngFor="let collaborator of collaborators"
+            tuiOption
+            (click)="onClick(collaborator)"
+        >
+            {{collaborator}}
+        </button>
+    </tui-data-list>
+</ng-template>
+<ng-template #more>
+    <tui-svg src="tuiIconMoreHorLarge"></tui-svg>
+</ng-template>

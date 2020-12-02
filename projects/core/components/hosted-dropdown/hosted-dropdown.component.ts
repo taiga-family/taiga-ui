@@ -1,0 +1,289 @@
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ContentChild,
+    ElementRef,
+    EventEmitter,
+    forwardRef,
+    HostBinding,
+    HostListener,
+    Inject,
+    Input,
+    Output,
+    ViewChild,
+} from '@angular/core';
+import {
+    getClosestKeyboardFocusable,
+    isNativeFocusedIn,
+    isNativeKeyboardFocusable,
+    setNativeFocused,
+    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TuiActiveZoneDirective,
+    TuiContextWithImplicit,
+    tuiDefaultProp,
+    TuiEventWith,
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+    tuiPure,
+} from '@taiga-ui/cdk';
+import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {
+    DROPDOWN_CONTROLLER_PROVIDER,
+    TUI_DROPDOWN_WATCHED_CONTROLLER,
+    TuiDropdownControllerDirective,
+} from '@taiga-ui/core/directives/dropdown-controller';
+import {isEditingKey} from '@taiga-ui/core/utils/miscellaneous';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
+
+@Component({
+    selector: 'tui-hosted-dropdown',
+    templateUrl: './hosted-dropdown.template.html',
+    styleUrls: ['./hosted-dropdown.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
+            useExisting: forwardRef(() => TuiHostedDropdownComponent),
+        },
+        DROPDOWN_CONTROLLER_PROVIDER,
+    ],
+})
+export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
+    @Input()
+    @tuiDefaultProp()
+    content: PolymorpheusContent = '';
+
+    @Input()
+    @tuiDefaultProp()
+    canOpen = true;
+
+    @Input()
+    @tuiDefaultProp()
+    open = false;
+
+    @Output()
+    readonly openChange = new EventEmitter<boolean>();
+
+    @Output()
+    readonly focusedChange = new EventEmitter<boolean>();
+
+    @ViewChild(TuiActiveZoneDirective)
+    readonly activeZone?: TuiActiveZoneDirective;
+
+    @ContentChild(TuiHostedDropdownConnectorDirective)
+    private dropdownHost?: TuiHostedDropdownConnectorDirective;
+
+    @ViewChild('wrapper', {read: ElementRef})
+    private wrapper?: ElementRef<HTMLDivElement>;
+
+    @ViewChild(TuiDropdownDirective)
+    private dropdownDirective?: TuiDropdownDirective;
+
+    constructor(
+        @Inject(ElementRef) private readonly elementRef: ElementRef,
+        @Inject(TUI_DROPDOWN_WATCHED_CONTROLLER)
+        readonly controller: TuiDropdownControllerDirective,
+    ) {}
+
+    get host(): HTMLElement {
+        return this.dropdownHost
+            ? this.dropdownHost.elementRef.nativeElement
+            : this.elementRef.nativeElement;
+    }
+
+    get dropdown(): HTMLElement | null {
+        return !this.dropdownDirective || this.dropdownDirective.dropdownBoxRef === null
+            ? null
+            : this.dropdownDirective.dropdownBoxRef.location.nativeElement;
+    }
+
+    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+        return isNativeKeyboardFocusable(this.host)
+            ? this.host
+            : getClosestKeyboardFocusable(
+                  this.host,
+                  false,
+                  this.elementRef.nativeElement,
+              );
+    }
+
+    get contentContext(): TuiContextWithImplicit<TuiActiveZoneDirective | undefined> {
+        return this.calculateContentContext(this.activeZone);
+    }
+
+    @HostBinding('class._hosted_dropdown_focused')
+    get focused(): boolean {
+        return (
+            isNativeFocusedIn(this.host) ||
+            (this.open && !!this.wrapper && isNativeFocusedIn(this.wrapper.nativeElement))
+        );
+    }
+
+    @HostListener('focusin', ['$event'])
+    onFocusIn({target}: TuiEventWith<FocusEvent, HTMLElement>) {
+        const host = this.dropdownHost
+            ? this.dropdownHost.elementRef.nativeElement
+            : this.nativeFocusableElement || this.elementRef.nativeElement;
+
+        if (!host.contains(target)) {
+            this.updateOpen(false);
+        }
+    }
+
+    @HostListener('click', ['$event'])
+    onClick({target}: TuiEventWith<MouseEvent, HTMLElement>) {
+        const host = this.nativeFocusableElement || this.host;
+        const dropdownHost = this.dropdownHost
+            ? this.dropdownHost.elementRef.nativeElement
+            : host;
+
+        if (
+            !this.hostEditable &&
+            target instanceof Node &&
+            dropdownHost.contains(target)
+        ) {
+            this.updateOpen(!this.open);
+        }
+    }
+
+    @HostListener('keydown.esc', ['$event'])
+    onKeyDownEsc(event: KeyboardEvent) {
+        if (!this.open) {
+            return;
+        }
+
+        event.stopPropagation();
+        this.closeDropdown();
+    }
+
+    @HostListener('keydown.arrowDown', ['$event'])
+    onArrowDown(event: TuiEventWith<KeyboardEvent, HTMLElement>) {
+        this.focusDropdown(event, true);
+    }
+
+    @HostListener('keydown.arrowUp', ['$event'])
+    onArrowUp(event: TuiEventWith<KeyboardEvent, HTMLElement>) {
+        this.focusDropdown(event, false);
+    }
+
+    onKeydown({key, target, defaultPrevented}: KeyboardEvent) {
+        if (
+            !defaultPrevented &&
+            isEditingKey(key) &&
+            this.hostEditable &&
+            target instanceof HTMLElement &&
+            !this.isElementEditable(target)
+        ) {
+            this.focusHost();
+        }
+    }
+
+    onActiveZone(active: boolean) {
+        this.updateFocused(active);
+
+        if (!active) {
+            this.updateOpen(false);
+        }
+    }
+
+    onHostObscured(obscured: boolean) {
+        if (obscured) {
+            this.closeDropdown();
+        }
+    }
+
+    updateOpen(open: boolean) {
+        if (open && !this.canOpen) {
+            return;
+        }
+
+        this.open = open;
+        this.openChange.emit(open);
+    }
+
+    private get hostEditable(): boolean {
+        const host = this.nativeFocusableElement || this.host;
+
+        return host instanceof HTMLElement && this.isElementEditable(host);
+    }
+
+    @tuiPure
+    private calculateContentContext(
+        $implicit?: TuiActiveZoneDirective,
+    ): TuiContextWithImplicit<TuiActiveZoneDirective | undefined> {
+        return {$implicit};
+    }
+
+    private isElementEditable(element: HTMLElement): boolean {
+        return (
+            (element instanceof HTMLInputElement && !element.readOnly) ||
+            (element instanceof HTMLTextAreaElement && !element.readOnly) ||
+            element.contentEditable === 'true'
+        );
+    }
+
+    private focusDropdown(event: KeyboardEvent, first: boolean) {
+        const host = this.nativeFocusableElement;
+
+        if (
+            !host ||
+            !(host instanceof HTMLElement) ||
+            !(event.target instanceof Node) ||
+            !host.contains(event.target)
+        ) {
+            return;
+        }
+
+        if (
+            !this.wrapper ||
+            !this.open ||
+            this.dropdown === null ||
+            !(this.wrapper.nativeElement.nextElementSibling instanceof HTMLElement)
+        ) {
+            this.updateOpen(true);
+
+            if (!this.isElementEditable(host)) {
+                event.preventDefault();
+            }
+
+            return;
+        }
+
+        const initial = first
+            ? this.wrapper.nativeElement
+            : this.wrapper.nativeElement.nextElementSibling;
+        const focusable = getClosestKeyboardFocusable(
+            initial,
+            !first,
+            this.wrapper.nativeElement,
+        );
+
+        if (focusable === null) {
+            return;
+        }
+
+        setNativeFocused(focusable);
+        event.preventDefault();
+    }
+
+    private closeDropdown() {
+        if (this.focused) {
+            this.focusHost();
+        }
+
+        this.updateOpen(false);
+    }
+
+    private focusHost() {
+        const host = this.nativeFocusableElement;
+
+        if (host !== null) {
+            setNativeFocused(host, true, true);
+        }
+    }
+
+    private updateFocused(focused: boolean) {
+        this.focusedChange.emit(focused);
+    }
+}

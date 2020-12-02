@@ -1,0 +1,19 @@
+<span *ngIf="!hasValue" automation-id="tui-input-inline__placeholder">
+    <ng-content></ng-content>
+</span>
+
+<input
+    #native
+    automation-id="tui-input-inline__native"
+    class="native"
+    type="text"
+    [attr.maxLength]="maxLengthMasked"
+    [id]="id"
+    [disabled]="computedDisabled"
+    [readOnly]="readOnly"
+    [textMask]="computedMask"
+    [tuiFocusable]="focusable"
+    [ngModel]="maskedValue"
+    (ngModelChange)="onNativeModelChange($event)"
+    (tuiFocusedChange)="onFocused($event)"
+/>

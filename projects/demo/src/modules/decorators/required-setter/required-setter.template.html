@@ -1,0 +1,84 @@
+<tui-doc-page header="RequiredSetter" package="CDK">
+    <ng-template pageTab> Декоратор для инпутов с сеттером. </ng-template>
+
+    <ng-template pageTab>
+        <div>
+            <p>См. консоль</p>
+            <example-tui-required-setter-demo
+                [min]="min"
+                [quantity]="quantity"
+            ></example-tui-required-setter-demo>
+            <tui-input-count class="tui-space_top-4" [(ngModel)]="quantity">
+                quantity
+            </tui-input-count>
+            <tui-input-count class="tui-space_top-4" [(ngModel)]="min">
+                min
+            </tui-input-count>
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_top-4 tui-space_bottom-8"
+                (click)="setUndefined()"
+            >
+                Set undefined
+            </button>
+        </div>
+    </ng-template>
+
+    <ng-template pageTab>
+        <p>
+            Данный декоратор презназначен для недопуска undefined значений на
+            вход компонента. При получении undefined сеттер для инпута вызван не
+            будет. При этом в DevMode ангуляра в консоли появится сообщение о
+            том, что это скорее всего случилось по ошибке, так как это
+            несовпадение ожидаемого типа и переданного значения.
+        </p>
+        <p>
+            Опционально можно передать на вход функцию-контракт вида
+            <code>(input: T[K], context: T) => boolean</code>, где вторым
+            аргументом будет инстанс компонента, в котором происходит проверка.
+            При неуспешном прохождении проверки об этом также будет выведено
+            сообщение в консоль в DevMode. Дополнительно можно предать
+            произвольное количество аргументов для дополнения стандартного
+            сообщения.
+        </p>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="assertion"
+                documentationPropertyType="TuiAssertion<T, K>"
+            >
+                Опциональный аргумент — функция-контракт.
+                <p>
+                    <strong>Внимание:</strong> Angular Compiler не позволяет
+                    стрелочные функции в декораторах при включённом
+                    <code>strictMetadataEmit</code> (по умолчанию). Чтобы
+                    использовать стрелочные функции, необходимо добавить
+                    комментарий <code>// @dynamic</code> прямо над
+                    <code>@Component</code>
+                    вашего компонента
+                </p>
+            </ng-template>
+            <ng-template
+                documentationPropertyName="args"
+                documentationPropertyType="any"
+            >
+                Произвольное количество аргументов, передаваемых для вывода в
+                консоль в случае неуспешного прохождения функции-контракта
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования добавить декоратор
+                <code>@tuiRequiredSetter</code> к инпуту вашего компонента:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDecorator"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,124 @@
+<tui-doc-page header="TextArea" package="KIT">
+    <ng-template pageTab>
+        Текстовое поле для ввода многострочного текста. Может растягиваться в
+        высоту в зависимости от количества введенного текста.
+
+        <tui-doc-example
+            id="base"
+            heading="обычное поле и expandable"
+            description="Обычное поле имеет фиксированный размер и контент скролится в пределах этого размера. Еxpandable - имеет возможность растягиваться в высоту в зависимости от количества введенного текста, но не больше высоты заданной через свойство rows."
+            [content]="example1"
+        >
+            <tui-text-area-example-1></tui-text-area-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="large"
+            heading="произвольный размер"
+            description="Компоненту можно задать произвольный исходный размер через css свойство min-height."
+            [content]="example2"
+        >
+            <tui-text-area-example-2></tui-text-area-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="large"
+            heading="с внешним лейблом"
+            description="Лейбл компонента можно вынести за его пределы обернув tui-text-area в tui-label."
+            [content]="example3"
+        >
+            <tui-text-area-example-3></tui-text-area-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-text-area
+                class="contrainer"
+                [formControl]="control"
+                [focusable]="focusable"
+                [tuiTextfieldExampleText]="exampleText"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldMaxLength]="maxLength"
+                [tuiTextfieldSize]="size"
+                [expandable]="expandable"
+                [pseudoInvalid]="pseudoInvalid"
+                [pseudoFocused]="pseudoFocused"
+                [pseudoHovered]="pseudoHovered"
+                [readOnly]="readOnly"
+                [rows]="rows"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiHintMode]="hintMode"
+            >
+                placeholder
+                <strong>strong text</strong>
+            </tui-text-area>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled переключается через formControl.disable()
+            </ng-template>
+            <ng-template
+                documentationPropertyName="expandable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="expandable"
+            >
+                Растягивается по высоте в зависимости от введенного текста
+            </ng-template>
+            <ng-template
+                documentationPropertyName="rows"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="rowsVariants"
+                [(documentationPropertyValue)]="rows"
+            >
+                Позволяет изменить количество видимых строк в поле для режима
+                <code>expandable</code>
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiTextAreaModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон (<code>expandable</code> включает автовысоту,
+                <code>rows</code> позволяет изменить стандартное ограничение в
+                20 строк):
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

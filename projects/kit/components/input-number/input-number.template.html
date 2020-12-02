@@ -1,0 +1,20 @@
+<tui-primitive-textfield
+    class="textfield"
+    [pseudoHovered]="pseudoHovered"
+    [pseudoFocused]="computedFocused"
+    [invalid]="computedInvalid"
+    [tuiTextfieldMaxLength]="calculatedMaxLength"
+    [readOnly]="readOnly"
+    [disabled]="computedDisabled"
+    [textMask]="isNegativeAllowed | tuiMapper: mask:decimal:precision:nativeFocusableElement"
+    [value]="computedValue"
+    [postfix]="postfix"
+    [focusable]="focusable"
+    (valueChange)="onValue($event)"
+    (hoveredChange)="onHovered($event)"
+    (focusedChange)="onFocused($event)"
+    (pressedChange)="onPressed($event)"
+    (keydown)="onKeyDown($event)"
+>
+    <ng-content></ng-content>
+</tui-primitive-textfield>

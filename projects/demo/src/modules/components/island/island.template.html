@@ -1,0 +1,165 @@
+<tui-doc-page header="Island" package="KIT">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Острова (айленды) предназначены для отображения информации в виде
+            блока с рамкой и закругленными углами.
+        </div>
+
+        Для типовых элементов заготовлены классы семейства
+        <strong>.tui-island</strong>:
+        <ul class="tui-list tui-list_small tui-space_top-3">
+            <li class="tui-list__item">
+                <code>.tui-island__category</code>: <b>категория</b>
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-island__title</code>: <b>заголовок</b>
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-island__paragraph</code>: <b>абзац текста</b>
+                <ul
+                    class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
+                >
+                    <li class="tui-list__item">
+                        <code>.tui-island__paragraph_link</code>: абзац с
+                        ссылками. Отступ вверх <code>16px</code>
+                    </li>
+                    <li class="tui-list__item">
+                        <code>.tui-island__paragraph_button</code>: абзац с
+                        кнопками. Отступ вверх <code>20px</code>
+                    </li>
+                </ul>
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-island__figure</code>: <b>фигура</b>
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-island__content</code>: второстепенный класс для
+                случая с фигурой сбоку
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-island__carousel-controls</code>: блок с
+                <b>элементами управления каруселью</b>
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-island__carousel-button</code>:
+                <b>кнопка управления каруселью</b>
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-island__carousel-pages</code>:
+                <b>страницы карусели</b>
+            </li>
+            <li class="tui-list__item">
+                <code>.tui-island__footer-button</code>:
+                <b>футерная кнопка</b> на всю ширину айленда
+            </li>
+        </ul>
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-island-example-1></tui-island-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="full-featured"
+            heading="со всеми опциями"
+            [content]="example2"
+        >
+            <tui-island-example-2></tui-island-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="кастомная верстка"
+            [content]="example3"
+        >
+            <tui-island-example-3></tui-island-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-island
+                class="island"
+                [hoverable]="hoverable"
+                [size]="size"
+                [textAlign]="textAlign"
+            >
+                <div class="tui-island__content">
+                    <figure class="tui-island__figure">
+                        <div class="some-figure"></div>
+                    </figure>
+                    <div>
+                        <h3 class="tui-island__title">Дебетовая карта</h3>
+                        <p class="tui-island__paragraph">
+                            Для участия в розыгрыше нужно в одной из социальных
+                            сетей Facebook, Instagram, Twitter.
+                        </p>
+                        <p
+                            class="tui-island__paragraph tui-island__paragraph_button"
+                        >
+                            <button
+                                tuiButton
+                                type="button"
+                                appearance="secondary"
+                                [size]="size"
+                            >
+                                Кнопка
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </tui-island>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="hoverable"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="hoverable"
+            >
+                Позволяет включить эффект наведения
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер
+            </ng-template>
+            <ng-template
+                documentationPropertyName="textAlign"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiTextAlign"
+                [documentationPropertyValues]="textAlignVariants"
+                [(documentationPropertyValue)]="textAlign"
+            >
+                Выравнивание текста
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiIslandModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

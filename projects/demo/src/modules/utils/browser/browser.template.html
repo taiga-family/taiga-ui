@@ -1,0 +1,25 @@
+<tui-doc-page header="Браузерные утилиты" package="CDK">
+    <ng-template pageTab>
+        <tui-doc-example
+            id="browser"
+            heading="Определение браузера"
+            description="Функции для определения браузера пользователя"
+            [content]="example1"
+        >
+            <tui-browser-example-1></tui-browser-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Подключеине">
+        <ol class="b-demo-steps">
+            <li>
+                Для использования достаточно импортировать функции в компоненте
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="importComponentExample"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,133 @@
+<tui-doc-page header="Toggle" package="KIT">
+    <ng-template pageTab>
+        Toggle&nbsp;&mdash; переключатель с&nbsp;двумя состояниями. Можно
+        включить показ иконок состояний или спиннера. Переключатель без иконок
+        используется, если состояния означают не&nbsp;&laquo;включено&raquo;
+        и&nbsp;&laquo;выключено&raquo;, а&nbsp;две равнозначных опции.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-toggle-example-1></tui-toggle-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-toggle
+                [formControl]="control"
+                [pseudoFocused]="pseudoFocused"
+                [pseudoHovered]="pseudoHovered"
+                [pseudoPressed]="pseudoPressed"
+                [showIcons]="showIcons"
+                [showLoader]="showLoader"
+                [singleColor]="singleColor"
+                [size]="size"
+            ></tui-toggle>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="pseudoFocused"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean | null"
+                [documentationPropertyValues]="pseudoVariants"
+                [(documentationPropertyValue)]="pseudoFocused"
+            >
+                Визуальная сфокусированность&nbsp;&mdash; установить
+                принудительно извне компонента
+            </ng-template>
+            <ng-template
+                documentationPropertyName="pseudoHovered"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean | null"
+                [documentationPropertyValues]="pseudoVariants"
+                [(documentationPropertyValue)]="pseudoHovered"
+            >
+                Hovered&nbsp;&mdash; установить принудительно извне компонента
+            </ng-template>
+            <ng-template
+                documentationPropertyName="pseudoPressed"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean | null"
+                [documentationPropertyValues]="pseudoVariants"
+                [(documentationPropertyValue)]="pseudoPressed"
+            >
+                Pressed&nbsp;&mdash; установить принудительно извне компонента
+            </ng-template>
+            <ng-template
+                documentationPropertyName="showIcons"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="showIcons"
+            >
+                Показывать иконки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="showLoader"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="showLoader"
+            >
+                Показывать спиннер. Если одновременно включен показ иконок,
+                приоритет у&nbsp;спиннера
+            </ng-template>
+            <ng-template
+                documentationPropertyName="singleColor"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="singleColor"
+            >
+                Все состояния одного цвета
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер контрола
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiToggleModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,14 @@
+<tui-input-slider
+    class="slider"
+    secondary="index"
+    size="m"
+    [max]="length - 1"
+    [quantum]="1"
+    [(ngModel)]="index"
+></tui-input-slider>
+
+<tui-pagination
+    [length]="length"
+    [index]="index"
+    (indexChange)="goToPage($event)"
+></tui-pagination>

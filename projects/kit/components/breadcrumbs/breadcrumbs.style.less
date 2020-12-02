@@ -1,0 +1,26 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    display: flex;
+    align-items: center;
+    height: @height-medium;
+
+    &[data-tui-host-size='m'] {
+        .text-body-s(2);
+    }
+
+    &[data-tui-host-size='l'] {
+        .text-body-m(2);
+    }
+}
+
+.icon {
+    margin: 0 @space;
+    color: var(--tui-text-03);
+}
+
+// specificity is the reason of this selector
+a.active-link[data-tui-host-mode='dark'] {
+    color: var(--tui-text-03);
+    pointer-events: none;
+}

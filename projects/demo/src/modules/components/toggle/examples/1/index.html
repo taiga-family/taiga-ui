@@ -1,0 +1,49 @@
+<form [formGroup]="testForm">
+    <div class="tui-space_bottom-2">
+        <!-- размер M с иконками -->
+        <tui-toggle
+            formControlName="testValue1"
+            [showIcons]="true"
+        ></tui-toggle>
+        <tui-toggle
+            class="tui-space_left-1"
+            formControlName="testValue2"
+            [showIcons]="true"
+        ></tui-toggle>
+    </div>
+
+    <div class="tui-space_bottom-2">
+        <!-- размер M без иконок -->
+        <tui-toggle formControlName="testValue3"></tui-toggle>
+        <tui-toggle
+            class="tui-space_left-1"
+            formControlName="testValue4"
+        ></tui-toggle>
+    </div>
+
+    <div class="tui-space_bottom-2">
+        <!-- размер L с иконками -->
+        <tui-toggle
+            formControlName="testValue5"
+            size="l"
+            [showIcons]="true"
+        ></tui-toggle>
+        <tui-toggle
+            class="tui-space_left-1"
+            formControlName="testValue6"
+            size="l"
+            [showIcons]="true"
+        ></tui-toggle>
+    </div>
+
+    <div>
+        <!-- размер L без иконок -->
+        <tui-toggle formControlName="testValue7" size="l"> </tui-toggle>
+        <tui-toggle
+            class="tui-space_left-1"
+            formControlName="testValue8"
+            size="l"
+        >
+        </tui-toggle>
+    </div>
+</form>

@@ -1,0 +1,6 @@
+import {TuiSvgService, tuiIconTrashLarge} from '@taiga-ui/core';
+...
+constructor(@Inject(TuiSvgService) tuiSvgService: TuiSvgService) {
+    tuiSvgService.define({tuiIconTrashLarge}); 
+} 
+...

@@ -1,0 +1,87 @@
+@import '../../styles/basic/basic-imports';
+
+@scroll-width: 12px;
+@scroll-width-large: 14px;
+@scroll-min-size: 24px;
+
+:host {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    min-width: calc(100% - 1px);
+    min-height: calc(100% - 1px);
+    float: left;
+    margin-right: calc(-100% + 1px);
+    pointer-events: none;
+}
+
+.bar {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    &_vertical {
+        top: 0;
+    }
+
+    &_horizontal {
+        left: 0;
+    }
+
+    &_has-horizontal {
+        bottom: @scroll-width - @space;
+    }
+
+    &_has-vertical {
+        right: @scroll-width - @space;
+    }
+}
+
+.thumb {
+    .transition(all, 0.15s);
+    position: absolute;
+    border-radius: 100px;
+    border: @space solid transparent;
+    cursor: pointer;
+    pointer-events: auto;
+    background: var(--tui-base-09);
+    background-clip: content-box;
+    box-sizing: border-box;
+    transition-property: width, height;
+    opacity: 0.2;
+
+    &:hover {
+        opacity: 0.24;
+    }
+
+    &:active {
+        opacity: 0.48;
+    }
+
+    &_light {
+        background-color: var(--tui-base-01);
+    }
+
+    .bar_vertical & {
+        right: 0;
+        width: @scroll-width;
+        min-height: @scroll-min-size;
+    }
+
+    .bar_vertical:hover &,
+    .bar_vertical &:active {
+        width: @scroll-width-large;
+    }
+
+    .bar_horizontal & {
+        bottom: 0;
+        height: @scroll-width;
+        min-width: @scroll-min-size;
+    }
+
+    .bar_horizontal:hover &,
+    .bar_horizontal &:active {
+        height: @scroll-width-large;
+    }
+}

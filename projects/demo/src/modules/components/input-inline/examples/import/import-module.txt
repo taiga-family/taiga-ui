@@ -1,0 +1,10 @@
+import {TuiInputInlineModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiInputInlineModule
+    ],
+...

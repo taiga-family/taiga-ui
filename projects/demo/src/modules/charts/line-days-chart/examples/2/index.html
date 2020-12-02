@@ -1,0 +1,63 @@
+<tui-notification [hasCloseButton]="false">
+    <code>TuiLineDaysChart</code> нужен только для демонстрации графика в
+    масштабе месяцев, поскольку в месяцах различное количество дней
+</tui-notification>
+<p class="controls">
+    <tui-input-date-range
+        class="control"
+        [maxLength]="maxLength"
+        [(ngModel)]="data"
+        (ngModelChange)="onDataChange($event)"
+    >
+        Данные
+    </tui-input-date-range>
+    <tui-input-date-range
+        class="control tui-space_left-4"
+        [maxLength]="maxLength"
+        [(ngModel)]="show"
+    >
+        Видимый диапазон
+    </tui-input-date-range>
+</p>
+<p class="legend">
+    <span *ngFor="let chart of days; let index = index" class="item">
+        <small class="name">График {{index + 1}}</small>
+    </span>
+</p>
+<tui-axes
+    *ngIf="show | labels as labels"
+    class="axes"
+    [verticalLines]="labels.length"
+    [horizontalLines]="4"
+    [axisXLabels]="labels"
+    [tuiLineChartHint]="hint"
+>
+    <ng-container *ngIf="getWidth(show) > 90; else line">
+        <tui-line-days-chart
+            *ngFor="let chart of days"
+            class="chart"
+            [height]="200"
+            [value]="chart | tuiFilter : filter : range"
+        ></tui-line-days-chart>
+    </ng-container>
+    <ng-template #line>
+        <tui-line-chart
+            *ngFor="let chart of days"
+            class="chart"
+            [height]="200"
+            [width]="getWidth(range)"
+            [value]="chart | tuiFilter : filter : range | tuiMapper : toNumbers : range"
+        ></tui-line-chart>
+    </ng-template>
+</tui-axes>
+
+<ng-template #hint let-data>
+    <div class="tui-space_bottom-2">
+        <strong>{{getDate(data[0][0], range.from)}}</strong>
+    </div>
+    <div>
+        <div *ngFor="let point of data" class="item">
+            <span class="value">${{point[1].toFixed(0)}}</span>
+        </div>
+    </div>
+</ng-template>

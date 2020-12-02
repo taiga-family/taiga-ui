@@ -1,0 +1,3 @@
+<div class="wrapper" [tuiTextfieldCleaner]="true">
+    <tui-primitive-textfield>...</tui-primitive-textfield>
+</div>

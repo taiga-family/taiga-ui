@@ -1,0 +1,71 @@
+<tui-doc-page header="Label" package="CORE">
+    <ng-template pageTab>
+        Компонент позволяет связать подпись и произвольный контент, например,
+        поле ввода.
+
+        <tui-doc-example id="basic" heading="Базовый" [content]="example1">
+            <tui-label-example-1></tui-label-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="multiline"
+            heading="многострочный"
+            [content]="example2"
+        >
+            <tui-label-example-2></tui-label-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example id="text" heading="просто текст" [content]="example3">
+            <tui-label-example-3></tui-label-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <label tuiLabel [label]="getLabel(template)">
+                Содержимое внутри тэга
+            </label>
+        </tui-doc-demo>
+        <ng-template #template>
+            Лейбл через шаблон
+            <tui-tooltip
+                content="Так можно использовать компоненты и HTML"
+            ></tui-tooltip>
+        </ng-template>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="label"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="labelVariants"
+                [(documentationPropertyValue)]="label"
+            >
+                Лейбл
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiLabelModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

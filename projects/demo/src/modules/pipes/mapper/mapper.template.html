@@ -1,0 +1,54 @@
+<tui-doc-page header="Mapper" package="CDK">
+    <ng-template pageTab> Пайп для маппинга. </ng-template>
+
+    <ng-template pageTab>
+        <p class="text">
+            Брюки превращаются в {{trousers | tuiMapper: mapper: args}}
+        </p>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="mapper"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMapper"
+                [documentationPropertyValues]="mapperVariants"
+                [(documentationPropertyValue)]="mapper"
+            >
+                Мап-функция
+            </ng-template>
+            <ng-template
+                documentationPropertyName="args"
+                documentationPropertyMode="input"
+                documentationPropertyType="any"
+                [documentationPropertyValues]="argsVariants"
+                [(documentationPropertyValue)]="args"
+            >
+                Произвольное количество аргументов, необходимых маппер-функции
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiMapperPipeModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в необходимый <code>binding</code> (в
+                <code>tuiMapper</code> передаем мап-функцию и аргументы):
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

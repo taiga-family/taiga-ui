@@ -1,0 +1,3 @@
+<form [formGroup]="testForm">
+    <tui-input-time formControlName="testValue"></tui-input-time>
+</form>

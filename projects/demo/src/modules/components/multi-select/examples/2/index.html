@@ -1,0 +1,27 @@
+<tui-multi-select
+    *tuiLet="items$ | async as items"
+    #component
+    class="control"
+    [formControl]="testValue"
+    [tuiTextfieldLabelOutside]="true"
+    [expandable]="false"
+    (searchChange)="onSearchChange($event)"
+>
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items | tuiHideSelected : component"
+        [itemContent]="itemContent"
+    ></tui-data-list-wrapper>
+</tui-multi-select>
+
+<ng-template #itemContent let-data>
+    <div class="template">
+        <tui-avatar
+            class="avatar"
+            size="xs"
+            [avatarUrl]="data.avatarUrl"
+            [text]="data.toString()"
+        ></tui-avatar>
+        {{data}}
+    </div>
+</ng-template>

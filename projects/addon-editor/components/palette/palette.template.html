@@ -1,0 +1,10 @@
+<button
+    *ngFor="let color of colors | keyvalue"
+    type="button"
+    class="button"
+    [style.background]="color.value"
+    [tuiHint]="color.key"
+    [tuiHintId]="color.key"
+    [tuiDescribedBy]="color.key"
+    (click)="selectedColor.emit(color.value)"
+></button>

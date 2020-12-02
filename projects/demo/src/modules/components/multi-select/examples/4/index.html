@@ -1,0 +1,15 @@
+<tui-multi-select
+    *tuiLet="items$ | async as items"
+    class="control"
+    [formControl]="control"
+    [tuiTextfieldLabelOutside]="true"
+    [stringify]="stringify$ | async"
+    (searchChange)="onSearch($event)"
+>
+    <tui-data-list-wrapper
+        *tuiDataList
+        tuiMultiSelectGroup
+        [items]="items"
+        [itemContent]="stringify$ | async"
+    ></tui-data-list-wrapper>
+</tui-multi-select>

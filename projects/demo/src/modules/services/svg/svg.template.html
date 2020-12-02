@@ -1,0 +1,48 @@
+<tui-doc-page header="SvgService" package="CORE">
+    <ng-template pageTab>
+        Сервис для определения SVG для дальнейшего переиспользования.
+        <p>
+            <strong>Синглтон</strong> — импортировать нигде не нужно,
+            добавляется в <code>TuiRootModule</code>, достаточно инжектить сразу
+            в конструкторе компонента.
+        </p>
+    </ng-template>
+    <ng-template pageTab>
+        <tui-doc-documentation [isAPI]="true">
+            <ng-template
+                documentationPropertyName="define"
+                documentationPropertyType="Record<string, string>"
+            >
+                Метод для определения иконки
+                <p>
+                    <strong
+                        >Внимание, ИМЯ иконки не должно начинаться с
+                        "<code>&lt;</code>"</strong
+                    >
+                </p>
+                Имя должно быть уникальным, при иморте иконок из кита должно
+                сопадать с названием константы. Повторный импорт того же имени
+                ничего не выполнит, поэтому стоит вызывать его везде, где
+                используется иконка — добавится она только один раз.
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Заинжектить <code>TuiSvgService</code> в ваш компонент и
+                определить иконку:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="injectService"
+                ></tui-doc-code>
+
+                <p>Выводить на страницу через <code>tui-svg</code>:</p>
+                <p>
+                    <tui-svg src="tuiIconTrashLarge"></tui-svg>
+                </p>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

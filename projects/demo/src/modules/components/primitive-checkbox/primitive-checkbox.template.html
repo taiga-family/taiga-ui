@@ -1,0 +1,115 @@
+<tui-doc-page header="PrimitiveCheckbox" package="CORE">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Статичный чекбокс для использования вне формы исключительно для
+            визуальных целей. Не фокусируется, не кликабелен. Для испольвания в
+            форме см.
+            <a tuiLink routerLink="/tui-checkbox"><code>Checkbox</code></a
+            >, с&nbsp;лейблом&nbsp;см.
+            <a tuiLink routerLink="/tui-checkbox-labeled"
+                ><code>CheckboxLabeled</code></a
+            >, внутри кнопки см.
+            <a tuiLink routerLink="/tui-checkbox-block"
+                ><code>CheckboxBlock</code></a
+            >.
+        </div>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-primitive-checkbox
+                [disabled]="disabled"
+                [focused]="focused"
+                [hovered]="hovered"
+                [pressed]="pressed"
+                [size]="size"
+                [invalid]="invalid"
+                [value]="value"
+            ></tui-primitive-checkbox>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Заблокированное состояние
+            </ng-template>
+            <ng-template
+                documentationPropertyName="focused"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="focused"
+            >
+                Состояние сфокусированности
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hovered"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="hovered"
+            >
+                Состояние наведённости
+            </ng-template>
+            <ng-template
+                documentationPropertyName="pressed"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="pressed"
+            >
+                Состояние нажатости
+            </ng-template>
+            <ng-template
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Размер чекбокса
+            </ng-template>
+            <ng-template
+                documentationPropertyName="invalid"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="invalid"
+            >
+                Визуализация валидации
+            </ng-template>
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean | null"
+                [documentationPropertyValues]="valueVariants"
+                [(documentationPropertyValue)]="value"
+            >
+                Значение
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiPrimitiveCheckboxModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

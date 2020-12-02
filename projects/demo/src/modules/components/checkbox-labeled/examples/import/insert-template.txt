@@ -1,0 +1,3 @@
+<div [formGroup]="testForm">
+    <tui-checkbox-labeled formControlName="testValue"></tui-checkbox-labeled>
+</div>

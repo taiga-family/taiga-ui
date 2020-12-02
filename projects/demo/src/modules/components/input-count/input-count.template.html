@@ -1,0 +1,134 @@
+<tui-doc-page header="InputCount" package="KIT">
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            Компонент <code>InputCount</code> предназначен для ввода целых
+            чисел. Не рекомендуется использовать для значений больше 999.
+        </div>
+        <div class="tui-space_bottom-3">
+            Позволяет задать минимальное и максимальное значение. При попытке
+            ввода числа, не попадающего в заданный диапазон, значение
+            автоматически заменится на подходящее.
+        </div>
+
+        Индикация валидации не предусмотрена.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-input-count-example-1></tui-input-count-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="medium-large"
+            heading="Размер М"
+            [content]="example2"
+        >
+            <tui-input-count-example-2></tui-input-count-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-count
+                    [formControl]="control"
+                    [focusable]="focusable"
+                    [min]="min"
+                    [max]="max"
+                    [hideButtons]="hideButtons"
+                    [step]="step"
+                    [postfix]="postfix"
+                    [readOnly]="readOnly"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                >
+                    Количество счетов
+                </tui-input-count>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Компонент формы disabled (через formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hideButtons"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="hideButtons"
+            >
+                Скрыть кнопки
+            </ng-template>
+            <ng-template
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="min"
+            >
+                Минимальное значение
+            </ng-template>
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="max"
+            >
+                Максимальное значение (значение по умолчанию — Infinity)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="postfix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="postfix"
+            >
+                Подпись после числа
+            </ng-template>
+            <ng-template
+                documentationPropertyName="step"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="step"
+                [documentationPropertyValues]="stepValues"
+            >
+                Шаг изменения значения кнопками
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль
+                <code>TuiInputCountModule</code> в тот же модуль, куда
+                добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Объявить форму (<code>FormGroup</code>) или контрол
+                (<code>FormControl</code>) в компоненте:
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleDeclareForm"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

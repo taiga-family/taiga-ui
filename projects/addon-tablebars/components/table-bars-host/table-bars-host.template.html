@@ -1,0 +1,37 @@
+<div *tuiLet="items$ | async as items" class="wrapper">
+    <div
+        *ngIf="items[items.length - 1] as item"
+        automation-id="tui-table-bar__bar"
+        class="bar"
+        [class.bar_light]="item.mode === 'light'"
+        [@tuiSlideInTop]
+    >
+        <div
+            class="tui-container"
+            [class.tui-container_adaptive]="item.adaptive"
+        >
+            <div class="inner">
+                <polymorpheus-outlet
+                    class="content"
+                    [content]="item.content"
+                    [context]="getItemContext(item)"
+                ></polymorpheus-outlet>
+
+                <!--TODO: i18n-->
+                <button
+                    *ngIf="item.hasCloseButton"
+                    tuiIconButton
+                    type="button"
+                    title="Закрыть"
+                    automation-id="tui-table-bar__close-button"
+                    class="close-button tui-space_left-6"
+                    size="xs"
+                    icon="tuiIconCloseLgLarge"
+                    appearance="icon"
+                    [tuiMode]="getMode(item.mode)"
+                    (click)="onCloseClick(item)"
+                ></button>
+            </div>
+        </div>
+    </div>
+</div>

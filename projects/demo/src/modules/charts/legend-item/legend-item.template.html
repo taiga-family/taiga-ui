@@ -1,0 +1,76 @@
+<tui-doc-page header="LegendItem" package="ADDON-CHARTS">
+    <ng-template pageTab>
+        Компонент кнопки для легенды круговых диаграмм
+
+        <tui-doc-example
+            id="ring"
+            heading="с кольцевой диаграммой"
+            [content]="example1"
+        >
+            <tui-legend-item-example-1></tui-legend-item-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-legend-item [active]="active" [color]="color" [text]="text">
+                <tui-money [value]="123456" [singleColor]="true"></tui-money>
+            </tui-legend-item>
+            <p>
+                Компонент <code>tui-money</code> передан в контент для
+                возможности настроить валюту и отображение копеек
+            </p>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="active"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="active"
+            >
+                Состояние наведённости извне
+            </ng-template>
+            <ng-template
+                documentationPropertyName="color"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiColor | string | null"
+                [documentationPropertyValues]="colorVariants"
+                [(documentationPropertyValue)]="color"
+            >
+                Цвет кружочка
+            </ng-template>
+            <ng-template
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="text"
+            >
+                Текст внутри
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiBarModule</code> в тот же модуль, куда добавляется ваш
+                компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

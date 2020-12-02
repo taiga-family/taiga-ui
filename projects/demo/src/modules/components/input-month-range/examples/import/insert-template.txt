@@ -1,0 +1,5 @@
+<form [formGroup]="testForm">
+    <tui-input-month-range formControlName="testValue">
+        Выберите дату
+    </tui-input-month-range>
+</form>

@@ -1,0 +1,10 @@
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {TuiDialogService} from '@taiga-ui/core';
+...
+
+constructor(@Inject(TuiDialogService) private readonly dialogService: TuiDialogService) {
+
+...
+
+    this.dialogService.open('Привет!').subscribe();
+...

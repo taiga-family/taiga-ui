@@ -1,0 +1,186 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    position: relative; // fix stacking context in Safari
+    display: block;
+    overflow: hidden;
+    border-radius: var(--tui-radius-xl);
+
+    &[data-tui-host-borders='top-bottom'] {
+        // @bad TODO: find the better way to prevent radius in case
+        // when accordion has rounded=true and item has top-bottom borders
+        border-radius: 0 !important;
+    }
+}
+
+.wrapper {
+    position: relative;
+    border-radius: inherit;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:after {
+        .fullsize();
+        content: '';
+        box-sizing: border-box;
+        border-radius: inherit;
+        border: 1px solid var(--tui-base-05);
+        pointer-events: none;
+
+        :host:not([data-tui-host-borders]) & {
+            border-width: 0;
+        }
+
+        :host[data-tui-host-borders='all'] & {
+            border-width: 1px;
+        }
+
+        :host[data-tui-host-borders='top-bottom'] & {
+            border-left-width: 0;
+            border-right-width: 0;
+        }
+
+        :host[data-tui-host-borders='top'] & {
+            border-left-width: 0;
+            border-right-width: 0;
+            border-bottom-width: 0;
+        }
+
+        :host[data-tui-host-borders='bottom'] & {
+            border-left-width: 0;
+            border-right-width: 0;
+            border-top-width: 0;
+        }
+
+        :host[data-tui-host-mode='light'] & {
+            border-color: var(--tui-base-01);
+        }
+
+        :host[data-tui-host-mode='dark'] & {
+            border-color: var(--tui-text-01);
+        }
+
+        :host._focus-visible & {
+            border: 2px solid var(--tui-focus);
+        }
+    }
+
+    :host:not([data-tui-host-mode]) & {
+        background: var(--tui-base-01);
+    }
+}
+
+.header {
+    .text-body-l();
+    .transition(background);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--tui-base-05);
+    min-height: @height-extra-large;
+    padding: 12px 20px;
+    color: var(--tui-text-01);
+    cursor: pointer;
+
+    :host[data-tui-host-mode='light'] & {
+        color: var(--tui-base-01);
+        border-color: var(--tui-base-01);
+    }
+
+    :host[data-tui-host-mode='dark'] & {
+        border-color: var(--tui-text-01);
+    }
+
+    :host:not([data-tui-host-borders]) & {
+        border-bottom-width: 0;
+        box-shadow: none;
+    }
+
+    :host._has-arrow & {
+        padding-right: 12px;
+    }
+
+    :host._hovered:not([data-tui-host-mode]) & {
+        background: var(--tui-base-02);
+    }
+
+    :host._hovered[data-tui-host-mode='light'] &,
+    :host[data-tui-host-mode='light'] &_open {
+        background: fade(@color-blank, 16%);
+    }
+
+    :host._hovered[data-tui-host-mode='dark'] &,
+    :host[data-tui-host-mode='dark'] &_open {
+        background: fade(@color-text, 8%);
+    }
+
+    :host[data-tui-host-size='s'] & {
+        .text-body-m();
+        min-height: @height-large;
+        padding: 10px 12px 10px 16px;
+    }
+
+    :host._no-padding & {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    :host._disabled & {
+        cursor: default;
+    }
+}
+
+.title {
+    .text-overflow();
+    margin-right: 0;
+    flex-grow: 1;
+
+    :host._has-arrow & {
+        margin-right: @space * 2;
+    }
+}
+
+.icon {
+    .transition(~'transform, color');
+    width: 24px;
+    height: 24px;
+    margin-left: auto;
+    color: var(--tui-base-06);
+
+    &_open {
+        transform: rotate(180deg);
+    }
+
+    :host[data-tui-host-mode] & {
+        opacity: @disabled-opacity;
+    }
+
+    :host._hovered[data-tui-host-mode] & {
+        opacity: 0.8;
+    }
+
+    :host[data-tui-host-mode='light'] & {
+        color: var(--tui-base-01);
+    }
+
+    :host[data-tui-host-mode='dark'] & {
+        color: var(--tui-text-01);
+    }
+
+    :host._hovered:not([data-tui-host-mode]) & {
+        color: var(--tui-base-07);
+    }
+}
+
+.content {
+    .text-body-m();
+    padding: 20px;
+    word-wrap: break-word;
+
+    :host[data-tui-host-size='s'] & {
+        .text-body-s();
+        padding: 16px;
+    }
+}

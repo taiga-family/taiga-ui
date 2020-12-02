@@ -1,0 +1,60 @@
+@import 'taiga-ui-angular-local';
+
+@color-property: #8f75d1;
+
+:host {
+    display: block;
+    min-width: 100%;
+}
+
+.row {
+    @media @tablet-s {
+        display: flex;
+        flex-wrap: wrap;
+
+        &_header {
+            display: none;
+        }
+    }
+}
+
+.cell {
+    &_prop {
+        width: 40%;
+    }
+
+    &_value {
+        max-width: 320px;
+
+        @media @tablet {
+            width: 150px;
+        }
+    }
+
+    @media @tablet-s {
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
+        text-align: left;
+    }
+}
+
+.property {
+    .text-body-m();
+    margin-bottom: @space;
+    font-family: monospace;
+    color: @color-property;
+}
+
+.type {
+    font-family: monospace;
+}
+
+.deprecated {
+    background-color: fade(@color-red-100, 8%);
+}
+
+.deprecated-label {
+    margin-right: 2px;
+    color: @color-text-error;
+}

@@ -1,0 +1,19 @@
+<polymorpheus-outlet
+    *ngIf="!!sourceCode"
+    [content]="sourceCode"
+    [context]="pathOptions"
+>
+    <ng-template let-link>
+        <a
+            *ngIf="link"
+            tuiIconButton
+            type="button"
+            icon="tuiIconCodeLarge"
+            appearance="icon"
+            target="_blank"
+            size="s"
+            [title]="text"
+            [href]="link"
+        ></a>
+    </ng-template>
+</polymorpheus-outlet>

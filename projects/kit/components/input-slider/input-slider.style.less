@@ -1,0 +1,121 @@
+@import 'taiga-ui-angular-local';
+
+@padding: 16px;
+@padding2: @padding * 2;
+
+:host {
+    .text-body-m(2);
+    .createStackingContext();
+    display: block;
+    border-radius: var(--tui-radius);
+    color: var(--tui-text-01);
+
+    &._segmented {
+        border-bottom: 26px solid transparent;
+    }
+}
+
+.native {
+    .fullsize();
+    .clearinput();
+    width: 100%;
+    color: var(--tui-text-01);
+    box-sizing: border-box;
+    padding: 0 @padding;
+    outline: none;
+
+    :host._disabled & {
+        color: var(--tui-text-03);
+        user-select: none;
+    }
+
+    :host._min-label &,
+    :host._max-label & {
+        opacity: 0;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        padding: @padding-top-when-transformed @padding 0;
+    }
+
+    :host[data-tui-host-mode='light'] & {
+        color: var(--tui-text-01-night);
+    }
+
+    :host[data-tui-host-mode='light']._disabled & {
+        color: var(--tui-text-03-night);
+    }
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    height: @height-large;
+    padding: 0 @padding;
+    justify-content: space-between;
+
+    :host[data-tui-host-size='l'] & {
+        height: @height-extra-large;
+        padding: 0 @padding;
+    }
+}
+
+.placeholder {
+    .textfield-placeholder();
+    .fullsize();
+    left: @padding;
+    transform: @placeholder-transformed;
+    line-height: @height-extra-large;
+    max-width: ~'calc(114% - @{padding2})';
+
+    :host._has-tooltip & {
+        max-width: ~'calc(114% - 60px)';
+    }
+}
+
+.value {
+    visibility: hidden;
+}
+
+.label {
+    line-height: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    :host[data-tui-host-size='l'] & {
+        padding-top: @padding-top-when-transformed;
+    }
+}
+
+.secondary {
+    color: var(--tui-text-01);
+    font-size: 17px;
+
+    :host._disabled & {
+        color: var(--tui-text-03);
+    }
+
+    :host[data-tui-host-mode='light']._disabled & {
+        color: var(--tui-text-03-night);
+    }
+}
+
+.tooltip {
+    margin-left: 12px;
+}
+
+.slider {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin: -9px 0 0;
+    color: transparent;
+
+    :host._disabled &,
+    :host._readonly & {
+        pointer-events: none;
+    }
+}

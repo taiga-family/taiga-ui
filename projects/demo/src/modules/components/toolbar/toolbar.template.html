@@ -1,0 +1,39 @@
+<tui-doc-page header="Toolbar" package="ADDON-editor">
+    <ng-template pageTab>
+        Toolbar — компонент для панели инструментов редактирования rich-текста.
+        Для работы с формами можно использовать пакет
+        <a
+            tuiLink
+            href="https://github.com/TinkoffCreditSystems/angular-contenteditable-accessor"
+            >@tinkoff/angular-contenteditable-accessor</a
+        >
+
+        <tui-doc-example id="basic" heading="Базовый" [content]="example1">
+            <tui-toolbar-example-1></tui-toolbar-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Подключение">
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модули для работы с формами из
+                Angular и модуль <code>TuiEditorModule</code> в тот же модуль,
+                куда добавляется ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

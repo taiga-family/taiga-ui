@@ -1,0 +1,23 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    white-space: nowrap;
+
+    &._red {
+        color: var(--tui-negative);
+    }
+
+    &._green {
+        color: var(--tui-positive);
+    }
+}
+
+.lighter {
+    :host:not(._inherit-color) & {
+        opacity: var(--tui-disabled-opacity);
+    }
+}
+
+.currency:not(:empty) {
+    margin-left: 0.25em;
+}

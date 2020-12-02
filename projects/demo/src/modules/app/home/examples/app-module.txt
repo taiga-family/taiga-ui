@@ -1,0 +1,19 @@
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {TuiRootModule} from '@taiga-ui/core';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+
+@NgModule({
+    declarations: [
+        AppComponent,
+    ],
+    imports: [
+        BrowserModule,
+        TuiRootModule,
+        AppRoutingModule,
+    ],
+    bootstrap: [AppComponent],
+})
+export class AppModule {
+}

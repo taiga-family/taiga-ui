@@ -1,0 +1,229 @@
+@import 'taiga-ui-angular-local';
+
+@height: 108px;
+@heightCounter: 126px;
+@padding: 0 16px;
+@margin: 7px;
+
+:host {
+    .text-body-m();
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: @height;
+    border-radius: var(--tui-radius);
+    overflow: hidden;
+    color: var(--tui-text-01);
+
+    &[data-tui-host-mode='light'] {
+        color: var(--tui-base-01);
+    }
+
+    &[data-tui-host-size='m'] {
+        .text-body-s();
+        min-height: @height - 20px;
+    }
+
+    &[data-tui-host-size='m']._has-counter {
+        min-height: @heightCounter - 20px;
+    }
+
+    &[data-tui-host-size='l']._has-counter {
+        min-height: @heightCounter;
+    }
+}
+
+.outline {
+    .fullsize();
+    z-index: -1;
+}
+
+.content {
+    .customize-scroll();
+    margin-top: 0;
+    margin-bottom: 0;
+    min-height: inherit;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: text;
+
+    :host._disabled & {
+        cursor: auto;
+        opacity: var(--tui-disabled-opacity);
+    }
+
+    :host:not(._expandable) & {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 1px;
+        right: 0;
+        min-height: auto;
+    }
+
+    :host._has-counter:not(._expandable) & {
+        bottom: 27px;
+    }
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    padding-bottom: @margin;
+    box-sizing: border-box;
+
+    :host[data-tui-host-size='m']._focused &,
+    :host[data-tui-host-size='m']._has-value & {
+        padding-top: 20px;
+    }
+
+    :host[data-tui-host-size='l']._focused &,
+    :host[data-tui-host-size='l']._has-value & {
+        padding-top: 25px;
+    }
+
+    :host[data-tui-host-size='m']._label-outside & {
+        padding-top: 15px;
+    }
+
+    :host[data-tui-host-size='l']._label-outside & {
+        padding-top: 16px;
+    }
+}
+
+.input-wrapper {
+    min-height: inherit;
+    width: 100%;
+    flex: 1;
+}
+
+.relative {
+    position: relative;
+    min-height: inherit;
+}
+
+.box {
+    display: flex;
+    min-height: 100%;
+    width: 100%;
+
+    :host:not(._expandable) & {
+        height: 100%;
+    }
+
+    :host._has-counter._expandable & {
+        margin-bottom: 20px;
+    }
+}
+
+.pseudo-content {
+    padding: @padding;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    pointer-events: none;
+    visibility: hidden;
+    overflow: hidden;
+
+    :host._focused._has-tooltip &,
+    :host._has-value._has-tooltip & {
+        margin-right: 40px;
+    }
+}
+
+.input {
+    .clearinput();
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: @padding;
+    height: 100%;
+    resize: none;
+    overflow: hidden;
+
+    &:focus {
+        outline: none;
+    }
+
+    :host._focused._has-tooltip &,
+    :host._has-value._has-tooltip & {
+        padding-right: 40px;
+    }
+
+    :host._ios & {
+        padding-left: 13px; // compensation of unkillable padding in mobile safari
+    }
+
+    :host[data-tui-host-mode='light']._disabled & {
+        color: var(--tui-text-03-night);
+    }
+}
+
+.placeholder {
+    .textfield-placeholder();
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    max-width: ~'calc(100% - 24px)';
+
+    &_raised {
+        max-width: ~'calc(113% - 32px)';
+    }
+
+    :host._has-tooltip & {
+        max-width: ~'calc(100% - 52px)';
+    }
+}
+
+.example-text {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    max-width: ~'calc(100% - 24px)';
+    color: var(--tui-text-03);
+    user-select: none;
+
+    :host._label-outside & {
+        top: 16px;
+        left: 16px;
+        color: var(--tui-text-03);
+    }
+
+    :host:not(._label-outside) & {
+        top: 25px;
+        left: 16px;
+        max-width: ~'calc(100% - 32px)';
+        color: var(--tui-text-02);
+    }
+
+    :host._has-tooltip._focused &,
+    :host._has-tooltip._has-value & {
+        max-width: ~'calc(100% - 52px)';
+    }
+}
+
+.tooltip {
+    position: absolute;
+    top: 16px;
+    right: 12px;
+}
+
+.counter {
+    .text-body-s();
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    pointer-events: none;
+    margin-top: auto;
+    text-align: right;
+    color: var(--tui-text-03);
+
+    :host[data-tui-host-mode='light'] & {
+        color: var(--tui-text-03-night);
+    }
+}

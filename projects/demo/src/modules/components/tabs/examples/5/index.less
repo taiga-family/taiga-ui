@@ -1,0 +1,47 @@
+@import 'taiga-ui-angular-local';
+
+:host {
+    display: block;
+    margin: -32px;
+    background: #454e58;
+    color: #fff;
+}
+
+.wrapper {
+    .inset-border(bottom, light);
+    display: flex;
+    align-items: center;
+    padding: 32px 32px 0;
+}
+
+.content {
+    padding: 32px;
+}
+
+.title {
+    min-width: 250px;
+    margin: 0;
+}
+
+.tabs {
+    width: ~'calc(100% - 250px)';
+    justify-content: flex-end;
+    box-shadow: none;
+}
+
+.collaborators._active {
+    pointer-events: auto;
+}
+
+.dropdown {
+    margin-right: 24px;
+}
+
+.icon {
+    .transition(transform);
+    margin-left: 4px;
+
+    &_rotated {
+        transform: rotate(180deg);
+    }
+}

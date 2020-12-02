@@ -1,0 +1,283 @@
+:host {
+    position: relative;
+    display: inline-block;
+}
+
+.notification {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px currentColor;
+
+    &:not([data-tui-background]) {
+        background-color: currentColor;
+    }
+
+    &_top {
+        :host[data-tui-host-size='xs']:not(._rounded) &,
+        :host[data-tui-host-size='s']:not(._rounded) &,
+        :host[data-tui-host-size='m']:not(._rounded) & {
+            top: -2px;
+            right: -2px;
+        }
+
+        :host[data-tui-host-size='l']:not(._rounded) &,
+        :host[data-tui-host-size='xl']:not(._rounded) & {
+            top: -4px;
+            right: -4px;
+        }
+
+        :host[data-tui-host-size='xxl']:not(._rounded) & {
+            top: -8px;
+            right: -8px;
+        }
+
+        :host[data-tui-host-size='xs']._rounded & {
+            top: 0;
+            right: 0;
+        }
+
+        :host[data-tui-host-size='s']._rounded & {
+            top: 1px;
+            right: 1px;
+        }
+
+        :host[data-tui-host-size='m']._rounded & {
+            top: 3px;
+            right: 3px;
+        }
+
+        :host[data-tui-host-size='l']._rounded & {
+            top: 4px;
+            right: 4px;
+        }
+
+        :host[data-tui-host-size='xl']._rounded & {
+            top: 6px;
+            right: 6px;
+        }
+
+        :host[data-tui-host-size='xxl']._rounded & {
+            top: 8px;
+            right: 8px;
+        }
+    }
+
+    &_bottom {
+        :host[data-tui-host-size='m']:not(._rounded) & {
+            bottom: -2px;
+            right: -2px;
+        }
+
+        :host[data-tui-host-size='l']:not(._rounded) &,
+        :host[data-tui-host-size='xl']:not(._rounded) & {
+            bottom: -4px;
+            right: -4px;
+        }
+
+        :host[data-tui-host-size='xxl']:not(._rounded) & {
+            bottom: -8px;
+            right: -8px;
+        }
+
+        :host[data-tui-host-size='m']._rounded & {
+            bottom: 3px;
+            right: 3px;
+        }
+
+        :host[data-tui-host-size='l']._rounded & {
+            bottom: 4px;
+            right: 4px;
+        }
+
+        :host[data-tui-host-size='xl']._rounded & {
+            bottom: 6px;
+            right: 6px;
+        }
+
+        :host[data-tui-host-size='xxl']._rounded & {
+            bottom: 8px;
+            right: 8px;
+        }
+    }
+
+    :host[data-tui-host-size='xs'] &,
+    :host[data-tui-host-size='s'] &,
+    :host[data-tui-host-size='m'] & {
+        width: 8px;
+        height: 8px;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        width: 12px;
+        height: 12px;
+    }
+
+    :host[data-tui-host-size='xl'] & {
+        width: 16px;
+        height: 16px;
+    }
+
+    :host[data-tui-host-size='xxl'] & {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.icon,
+.notification {
+    &[data-tui-color='normal'] {
+        color: var(--tui-base-06);
+    }
+
+    &[data-tui-color='light'] {
+        color: var(--tui-secondary);
+    }
+
+    &[data-tui-color='gray'] {
+        color: var(--tui-base-03);
+    }
+
+    &[data-tui-color='warning'] {
+        color: var(--tui-primary);
+    }
+
+    &[data-tui-color='secondary'] {
+        color: var(--tui-info-fill);
+    }
+
+    &[data-tui-color='highlight'],
+    &[data-tui-color='white'] {
+        color: var(--tui-base-01);
+    }
+
+    &[data-tui-color='transparent-dark'] {
+        color: var(--tui-clear);
+    }
+
+    &[data-tui-color='transparent-light'] {
+        color: var(--tui-clear-inverse);
+    }
+}
+
+.icon {
+    :host[data-tui-host-size='s'] &,
+    :host[data-tui-host-size='m'] & {
+        width: 24px;
+        height: 24px;
+        margin: -2px;
+    }
+
+    :host[data-tui-host-size='l'] &,
+    :host[data-tui-host-size='xl'] & {
+        transform: scale(1.2);
+    }
+
+    :host[data-tui-host-size='xxl'] & {
+        transform: scale(1.6);
+    }
+}
+
+.content {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    overflow: hidden;
+    background-color: currentColor;
+    box-shadow: 0 0 0 2px currentColor;
+
+    &_top {
+        :host[data-tui-host-size='xxl'][data-tui-host-top]:not(._rounded) &,
+        :host[data-tui-host-size='l'][data-tui-host-top]:not(._rounded) & {
+            right: -8px;
+            top: -8px;
+        }
+
+        :host[data-tui-host-size='xl'][data-tui-host-top]:not(._rounded) & {
+            right: -6px;
+            top: -6px;
+        }
+
+        :host[data-tui-host-size='m'][data-tui-host-top]:not(._rounded) &,
+        :host[data-tui-host-size='s'][data-tui-host-top]:not(._rounded) &,
+        :host[data-tui-host-size='xs'][data-tui-host-top]:not(._rounded) & {
+            right: -4px;
+            top: -4px;
+        }
+
+        :host[data-tui-host-size='xxl'][data-tui-host-top]._rounded & {
+            right: 4px;
+            top: 4px;
+        }
+
+        :host[data-tui-host-size='xl'][data-tui-host-top]._rounded & {
+            right: 2px;
+            top: 2px;
+        }
+
+        :host[data-tui-host-size='l'][data-tui-host-top]._rounded &,
+        :host[data-tui-host-size='m'][data-tui-host-top]._rounded &,
+        :host[data-tui-host-size='s'][data-tui-host-top]._rounded &,
+        :host[data-tui-host-size='xs'][data-tui-host-top]._rounded & {
+            right: -4px;
+            top: -4px;
+        }
+    }
+
+    &_bottom {
+        :host[data-tui-host-size='xxl'][data-tui-host-bottom]:not(._rounded) &,
+        :host[data-tui-host-size='l'][data-tui-host-bottom]:not(._rounded) & {
+            bottom: -8px;
+            right: -8px;
+        }
+
+        :host[data-tui-host-size='xl'][data-tui-host-bottom]:not(._rounded) & {
+            bottom: -6px;
+            right: -6px;
+        }
+
+        :host[data-tui-host-size='m'][data-tui-host-bottom]:not(._rounded) & {
+            bottom: -4px;
+            right: -4px;
+        }
+
+        :host[data-tui-host-size='xxl'][data-tui-host-bottom]._rounded & {
+            bottom: 4px;
+            right: 4px;
+        }
+
+        :host[data-tui-host-size='xl'][data-tui-host-bottom]._rounded & {
+            bottom: 2px;
+            right: 2px;
+        }
+
+        :host[data-tui-host-size='l'][data-tui-host-bottom]._rounded &,
+        :host[data-tui-host-size='m'][data-tui-host-bottom]._rounded & {
+            bottom: -4px;
+            right: -4px;
+        }
+    }
+
+    :host[data-tui-host-size='xxl'] & {
+        height: 32px;
+        min-width: 32px;
+    }
+
+    :host[data-tui-host-size='xl'] &,
+    :host[data-tui-host-size='l'] & {
+        height: 24px;
+        min-width: 24px;
+    }
+
+    :host[data-tui-host-size='m'] &,
+    :host[data-tui-host-size='s'] & {
+        height: 20px;
+        min-width: 20px;
+    }
+
+    :host[data-tui-host-size='xs'] & {
+        height: 16px;
+        min-width: 16px;
+    }
+}

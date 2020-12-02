@@ -1,0 +1,16 @@
+<div
+    class="wrapper"
+    [tuiOverscroll]="overscroll"
+    [tuiMode]="null"
+    [tuiActiveZoneParent]="directive.activeZone"
+>
+    <tui-scrollbar class="scroll">
+        <div tabindex="0" (focus)="onTopFocus()"></div>
+        <polymorpheus-outlet
+            #content
+            class="content"
+            [content]="directive.content"
+        ></polymorpheus-outlet>
+        <div tabindex="0" (focus)="onBottomFocus()"></div>
+    </tui-scrollbar>
+</div>

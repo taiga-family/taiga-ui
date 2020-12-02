@@ -1,0 +1,10 @@
+import {InputMonth} from 'packageName';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        InputMonth
+    ],
+...

@@ -1,0 +1,177 @@
+@import 'taiga-ui-angular-local';
+
+@color-dark: #454e58;
+@color-gray: #e5e7ea;
+@color-dark-resizer: #3e464e;
+
+:host {
+    position: relative;
+    display: block;
+    min-width: 100%;
+    margin: 24px 0;
+}
+
+.bg-toggle {
+    position: absolute;
+    bottom: ~'calc(100% + 12px)';
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    pointer-events: none;
+    width: 100%;
+
+    & > * {
+        pointer-events: auto;
+    }
+}
+
+.wrapper {
+    .shadow(2);
+    display: flex;
+    border: 1px solid var(--tui-base-03);
+    border-radius: var(--tui-radius);
+    max-width: 100%;
+    min-height: 96px;
+    width: 100%;
+    background-color: var(--tui-base-01);
+    overflow: hidden;
+
+    &.wrapper_transparent {
+        background-image: linear-gradient(45deg, var(--tui-base-02) 25%, transparent 25%),
+            linear-gradient(-45deg, var(--tui-base-02) 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, var(--tui-base-02) 75%),
+            linear-gradient(-45deg, transparent 75%, var(--tui-base-02) 75%);
+        background-size: 20px 20px;
+        background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+    }
+
+    &.wrapper_dark {
+        background-color: @color-dark;
+        color: var(--tui-base-01);
+    }
+
+    &.wrapper_gray {
+        background-color: @color-gray;
+    }
+
+    &.wrapper_dark.wrapper_transparent {
+        background-image: linear-gradient(45deg, var(--tui-focus) 25%, transparent 25%),
+            linear-gradient(-45deg, var(--tui-focus) 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, var(--tui-focus) 75%),
+            linear-gradient(-45deg, transparent 75%, var(--tui-focus) 75%);
+    }
+
+    &.wrapper_gray.wrapper_transparent {
+        background-image: linear-gradient(45deg, var(--tui-base-05) 25%, transparent 25%),
+            linear-gradient(-45deg, var(--tui-base-05) 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, var(--tui-base-05) 75%),
+            linear-gradient(-45deg, transparent 75%, var(--tui-base-05) 75%);
+    }
+
+    @media @mobile {
+        min-height: auto;
+    }
+}
+
+.content {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    @media @mobile {
+        padding: 16px;
+    }
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.input-wrapper {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.expand {
+    width: 100%;
+}
+
+.icon {
+    .transition(transform);
+
+    &_rotated {
+        transform: rotate(180deg);
+    }
+}
+
+.value {
+    flex: 1;
+    background: var(--tui-clear-inverse);
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.select {
+    max-width: 240px;
+}
+
+.resizer {
+    .clearbtn();
+    .shadow(2);
+    position: relative;
+    width: 56px;
+    min-height: inherit;
+    flex-shrink: 0;
+    border-left: 1px solid var(--tui-base-03);
+    cursor: col-resize;
+    outline: none;
+    background: var(--tui-base-01);
+    color: var(--tui-text-01);
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        bottom: 12px;
+        width: 1px;
+        background: var(--tui-base-05);
+    }
+
+    &:before {
+        transform: translateX(2px);
+    }
+
+    &:after {
+        transform: translateX(-3px);
+    }
+
+    @media @mobile {
+        display: none;
+    }
+}
+
+.resizer-text {
+    .text-body-s();
+    position: relative;
+    z-index: 1;
+    padding: 12px;
+    background: var(--tui-base-01);
+
+    .wrapper_light & {
+        background: @color-dark-resizer;
+    }
+}
+
+@supports (position: sticky) {
+    :host {
+        position: sticky;
+        top: 8px;
+        z-index: 2;
+    }
+}

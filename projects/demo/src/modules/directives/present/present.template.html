@@ -1,0 +1,34 @@
+<tui-doc-page header="Present" package="CORE">
+    <ng-template pageTab>
+        Директива <code>tuiPresentChange</code> позволяет отслеживать появление
+        элементов в DOM.
+
+        <tui-doc-example id="base" heading="базовый" [content]="example1">
+            <tui-present-example-1></tui-present-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                Для использования импортировать модуль
+                <code>TuiPresentModule</code> в тот же модуль, куда добавляется
+                ваш компонент:
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавить в шаблон:
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

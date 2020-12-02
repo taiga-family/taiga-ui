@@ -1,0 +1,73 @@
+@import 'taiga-ui-angular-local';
+
+.container {
+    max-width: 750px;
+}
+
+.operation-header {
+    .text-body-l();
+    display: flex;
+    align-items: center;
+}
+
+.operation-date {
+    .text-body-xl();
+    text-align: center;
+}
+
+.operation-date,
+.operation-info {
+    color: var(--tui-text-02);
+}
+
+.operation-month,
+.operation-status {
+    .text-body-s();
+}
+
+.operation-pic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 0 24px;
+    background: var(--tui-secondary-active);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    color: var(--tui-text-03);
+}
+
+.operation-title {
+    .text-overflow();
+    margin-right: 24px;
+    flex-grow: 1;
+}
+
+.operation-info {
+    text-align: right;
+}
+
+.operation-status {
+    &_success {
+        color: var(--tui-success-fill);
+    }
+
+    &_error {
+        color: var(--tui-error-fill);
+    }
+}
+
+.form-title {
+    .text-h6();
+    margin: 0 0 20px;
+}
+
+.input {
+    max-width: 460px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+}

@@ -1,0 +1,26 @@
+import * as exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
+import * as exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
+
+import {Component} from '@angular/core';
+import {TuiPluralize} from '@taiga-ui/core';
+import {changeDetection} from '../../../change-detection-strategy';
+
+@Component({
+    selector: 'example-tui-pluralize',
+    templateUrl: './pluralize.template.html',
+    styleUrls: ['./pluralize.style.less'],
+    changeDetection,
+})
+export class ExampleTuiPluralizeComponent {
+    readonly exampleImportModule = exampleImportModule;
+    readonly exampleInsertTemplate = exampleInsertTemplate;
+
+    index = 10;
+
+    pluralizeVariants: ReadonlyArray<TuiPluralize> = [
+        ['фича', 'фичи', 'фич'],
+        ['баг', 'бага', 'багов'],
+    ];
+
+    pluralize = this.pluralizeVariants[0];
+}
