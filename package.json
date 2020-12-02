@@ -82,7 +82,6 @@
         "angular2-text-mask": "9.0.0",
         "classlist.js": "^1.1.20150312",
         "core-js": "^2.6.9",
-        "css-vars-ponyfill": "2.0.2",
         "dompurify": "1.0.11",
         "highlight.js": "^9.15.5",
         "ngx-highlightjs": "3.0.3",
