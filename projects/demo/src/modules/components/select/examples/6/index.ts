@@ -1,4 +1,4 @@
-import * as avatar from '!!file-loader!../../../../../assets/images/avatar.jpg';
+import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 import {Component} from '@angular/core';
 import {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {of} from 'rxjs';

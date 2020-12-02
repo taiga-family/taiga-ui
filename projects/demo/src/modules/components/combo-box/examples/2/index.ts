@@ -1,4 +1,4 @@
-import * as avatar from '!!file-loader!../../../../../assets/images/avatar.jpg';
+import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 import {Component, Inject, Injectable} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';

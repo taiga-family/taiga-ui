@@ -1,4 +1,4 @@
-import * as avatar from '!!file-loader!../../../../../assets/images/avatar.jpg';
+import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TUI_DEFAULT_MATCHER, tuiReplayedValueChangesFrom} from '@taiga-ui/cdk';

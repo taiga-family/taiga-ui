@@ -1,4 +1,4 @@
-import * as avatar from '!!file-loader!../../../../../assets/images/avatar.jpg';
+import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 import {Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
 import {EMPTY_QUERY, setNativeFocused, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
 import {TuiOptionComponent} from '@taiga-ui/core';

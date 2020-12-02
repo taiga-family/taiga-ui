@@ -1,4 +1,4 @@
-import * as imageUrl from '!!file-loader!../../../../../assets/images/ts.svg';
+import {default as imageUrl} from '!!file-loader!../../../../../assets/images/ts.svg';
 
 import {Component, Inject} from '@angular/core';
 import {tuiIconMaestro, tuiIconMastercard} from '@taiga-ui/addon-commerce';
