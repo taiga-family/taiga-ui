@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
 
 // http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
-
+// @dynamic
 @Injectable({
     providedIn: 'root',
 })

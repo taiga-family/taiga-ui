@@ -32,6 +32,7 @@ import {incorrectMaxMessage, maxAssertion} from '@taiga-ui/kit/constants';
 
 const DEFAULT_MAX_LENGTH = 18;
 
+// @dynamic
 @Component({
     selector: 'tui-input-number',
     templateUrl: './input-number.template.html',

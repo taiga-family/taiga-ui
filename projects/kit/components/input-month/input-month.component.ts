@@ -32,6 +32,7 @@ import {
 import {incorrectMaxMessage, maxDayAssertion} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 
+// @dynamic
 @Component({
     selector: 'tui-input-month',
     templateUrl: './input-month.template.html',

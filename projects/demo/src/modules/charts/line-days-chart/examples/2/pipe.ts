@@ -1,6 +1,7 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {TUI_MONTHS, TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
 
+// @dynamic
 @Pipe({
     name: 'labels',
 })

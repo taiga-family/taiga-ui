@@ -32,6 +32,7 @@ import {
     tap,
 } from 'rxjs/operators';
 
+// @dynamic
 @Directive({
     selector:
         '[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)',

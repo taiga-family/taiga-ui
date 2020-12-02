@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {tuiRequiredSetter} from '@taiga-ui/cdk';
 import {changeDetection} from '../../../change-detection-strategy';
 
+// @dynamic
 @Component({
     selector: 'example-tui-required-setter-demo',
     template: '<span *ngFor="let item of items">♥</span>',

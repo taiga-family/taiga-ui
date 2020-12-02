@@ -37,6 +37,7 @@ const incorrectMaxMessage = 'Min value must be less than max value';
 const incorrectMaxMonthMessage =
     'Min month value must be equal or less than max month value';
 
+// @dynamic
 @Component({
     selector: 'tui-calendar',
     templateUrl: './calendar.template.html',

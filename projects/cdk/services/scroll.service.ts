@@ -8,6 +8,7 @@ import {map, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 const SCROLL_TIME = 300;
 
+// @dynamic
 @Injectable()
 export class TuiScrollService {
     constructor(

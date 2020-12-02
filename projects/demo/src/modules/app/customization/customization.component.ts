@@ -12,6 +12,7 @@ import {
     TUI_DOC_CUSTOMIZATION_VARS,
 } from './customization.providers';
 
+// @dynamic
 @Component({
     selector: 'tui-customization',
     templateUrl: './customization.template.html',

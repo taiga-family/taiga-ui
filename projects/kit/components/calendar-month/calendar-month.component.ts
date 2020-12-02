@@ -33,6 +33,7 @@ const incorrectMaxMessage = 'Min value must be less than max value';
 
 const TODAY = TuiDay.currentLocal();
 
+// @dynamic
 @Component({
     selector: 'tui-calendar-month',
     templateUrl: './calendar-month.template.html',

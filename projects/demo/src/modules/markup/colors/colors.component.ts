@@ -11,6 +11,7 @@ import {
     TEXT_NIGHT,
 } from './colors.constants';
 
+// @dynamic
 @Component({
     selector: 'colors',
     templateUrl: 'colors.template.html',

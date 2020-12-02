@@ -32,6 +32,7 @@ import {TuiTabComponent} from '../tab/tab.component';
 import {TAB_ACTIVE_CLASS, TAB_MARGIN} from '../tabs.const';
 import {TABS_PROVIDERS, TABS_REFRESH} from './tabs-with-more.providers';
 
+// @dynamic
 @Component({
     selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
     templateUrl: './tabs-with-more.template.html',

@@ -16,6 +16,7 @@ import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/token
 import {formatSize} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+// @dynamic
 @Component({
     selector: 'tui-file',
     changeDetection: ChangeDetectionStrategy.OnPush,

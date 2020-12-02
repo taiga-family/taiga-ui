@@ -13,6 +13,7 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
+// @dynamic
 @Directive({
     selector: '[tuiDroppableDropped], [tuiDroppableDragOverChange]',
     providers: [TuiDestroyService],

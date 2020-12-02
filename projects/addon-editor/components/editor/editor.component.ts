@@ -55,6 +55,7 @@ export function elementFactory(editor: TuiEditorComponent): ElementRef | null {
         : null;
 }
 
+// @dynamic
 @Component({
     selector: 'tui-editor',
     templateUrl: './editor.template.html',

@@ -38,7 +38,7 @@ import {takeUntil} from 'rxjs/operators';
  */
 // @bad TODO: OnPush
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
-
+// @dynamic
 @Component({
     selector: 'tui-dropdown-box',
     templateUrl: './dropdown-box.template.html',

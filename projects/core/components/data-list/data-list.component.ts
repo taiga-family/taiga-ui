@@ -30,7 +30,7 @@ import {map} from 'rxjs/operators';
 import {TuiOptionComponent} from './option/option.component';
 
 // TODO: Consider aria-activedescendant for proper accessibility implementation
-
+// @dynamic
 @Component({
     selector: 'tui-data-list',
     templateUrl: './data-list.template.html',

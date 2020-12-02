@@ -35,6 +35,7 @@ const STYLE = `
     }
 }`;
 
+// @dynamic
 @Directive({
     selector: 'input[tuiAutofilledChange]',
     host: {

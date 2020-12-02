@@ -31,6 +31,7 @@ import {
 } from '@taiga-ui/core';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
 
+// @dynamic
 @Component({
     selector: 'tui-input-slider',
     templateUrl: './input-slider.template.html',

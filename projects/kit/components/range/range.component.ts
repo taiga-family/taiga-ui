@@ -21,6 +21,7 @@ import {AbstractTuiSlider, DOT_WIDTH, SLIDER_KEYBOARD_STEP} from '@taiga-ui/kit/
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 
+// @dynamic
 @Component({
     selector: 'tui-range',
     templateUrl: '../../abstract/slider/slider.common.template.html',

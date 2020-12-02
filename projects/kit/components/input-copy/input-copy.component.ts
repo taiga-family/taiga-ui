@@ -35,6 +35,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, of, Subject, timer} from 'rxjs';
 import {mapTo, startWith, switchMap} from 'rxjs/operators';
 
+// @dynamic
 @Component({
     selector: 'tui-input-copy',
     templateUrl: './input-copy.template.html',

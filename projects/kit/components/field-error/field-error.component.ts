@@ -23,7 +23,7 @@ import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 // TODO: Refactor
-
+// @dynamic
 @Component({
     selector: 'tui-field-error',
     // @bad TODO: find a way to get 'touched' state change

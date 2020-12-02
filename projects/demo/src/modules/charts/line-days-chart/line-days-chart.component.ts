@@ -21,6 +21,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
+// @dynamic
 @Component({
     selector: 'example-tui-line-days-chart',
     templateUrl: './line-days-chart.template.html',

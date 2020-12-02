@@ -44,6 +44,7 @@ export function paginationLengthAssertion(length: number): boolean {
     return Number.isInteger(length);
 }
 
+// @dynamic
 @Component({
     selector: 'tui-pagination',
     templateUrl: './pagination.template.html',

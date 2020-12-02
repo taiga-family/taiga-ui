@@ -4,6 +4,7 @@ import {TUI_DEFAULT_RENDERER} from '@taiga-ui/cdk/tokens';
 
 /**
  * Service to use styles with directives
+ * @dynamic
  */
 @Injectable({
     providedIn: 'root',
