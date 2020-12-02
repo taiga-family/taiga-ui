@@ -22,6 +22,7 @@ import {
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 
+// @dynamic
 @Component({
     selector: 'tui-input-password',
     templateUrl: './input-password.template.html',

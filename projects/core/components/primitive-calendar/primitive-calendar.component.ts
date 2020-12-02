@@ -25,6 +25,7 @@ import {TuiColor, TuiMarkerHandler} from '@taiga-ui/core/types';
 
 const ROWS_COUNT = 6;
 
+// @dynamic
 @Component({
     selector: 'tui-primitive-calendar',
     templateUrl: './primitive-calendar.template.html',

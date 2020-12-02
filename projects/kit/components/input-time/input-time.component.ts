@@ -41,6 +41,7 @@ import {
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
 
+// @dynamic
 @Component({
     selector: 'tui-input-time',
     templateUrl: './input-time.template.html',

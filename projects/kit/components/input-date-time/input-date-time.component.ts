@@ -49,6 +49,7 @@ import {
 } from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 
+// @dynamic
 @Component({
     selector: 'tui-input-date-time',
     templateUrl: './input-date-time.template.html',

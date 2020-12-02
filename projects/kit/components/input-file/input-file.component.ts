@@ -32,6 +32,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
 
+// @dynamic
 @Component({
     selector: 'tui-input-file',
     templateUrl: './input-file.template.html',

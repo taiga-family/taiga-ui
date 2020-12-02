@@ -35,6 +35,7 @@ export const DOT_WIDTH: {[key: string]: number} = {
 /**
  * @awful TODO: refactor
  * @internal
+ * @dynamic
  */
 @Directive()
 export abstract class AbstractTuiSlider<T>
