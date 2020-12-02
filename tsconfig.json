@@ -14,7 +14,6 @@
         "declaration": false,
         "module": "esnext",
         "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "allowSyntheticDefaultImports": true,
         "importHelpers": true,
