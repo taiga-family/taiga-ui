@@ -15,7 +15,7 @@ import {TuiParentsScrollService} from './parents-scroll.service';
  * of elements that overlap given element edges
  */
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
-// @dynamic
+
 @Injectable()
 export class TuiObscuredService extends Observable<null | ReadonlyArray<Element>> {
     private obscured$: Observable<null | ReadonlyArray<Element>>;

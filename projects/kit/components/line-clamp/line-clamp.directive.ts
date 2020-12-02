@@ -17,7 +17,6 @@ import {TuiLineClampComponent} from './line-clamp.component';
 
 const HIDDEN_LEFT = -200;
 
-// @dynamic
 @Directive({
     selector: '[lineClamp]',
     providers: [TuiDestroyService],

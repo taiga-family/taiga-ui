@@ -52,7 +52,6 @@ export function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     );
 }
 
-// @dynamic
 @Component({
     selector: 'tui-toolbar',
     templateUrl: './toolbar.template.html',

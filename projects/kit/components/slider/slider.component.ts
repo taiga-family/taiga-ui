@@ -18,7 +18,6 @@ import {
 import {AbstractTuiSlider, SLIDER_KEYBOARD_STEP} from '@taiga-ui/kit/abstract';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 
-// @dynamic
 @Component({
     selector: 'tui-slider',
     templateUrl: '../../abstract/slider/slider.common.template.html',

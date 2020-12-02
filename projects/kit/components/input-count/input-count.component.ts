@@ -38,7 +38,6 @@ import {
 import {incorrectMaxMessage, maxAssertion} from '@taiga-ui/kit/constants';
 import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
 
-// @dynamic
 @Component({
     selector: 'tui-input-count',
     templateUrl: './input-count.template.html',

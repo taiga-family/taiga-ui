@@ -4,7 +4,6 @@ import {TUI_DOC_LOGO} from '@taiga-ui/addon-doc';
 import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
 import {changeDetection} from '../../change-detection-strategy';
 
-// @dynamic
 @Component({
     selector: 'app',
     templateUrl: 'app.template.html',

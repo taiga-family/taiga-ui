@@ -6,7 +6,6 @@ import {TuiPoint} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {map, startWith, switchMap, takeUntil} from 'rxjs/operators';
 
-// @dynamic
 @Injectable()
 export class TuiPickerService extends Observable<TuiPoint> {
     constructor(

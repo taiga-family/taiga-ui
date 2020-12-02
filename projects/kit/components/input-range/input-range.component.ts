@@ -26,7 +26,6 @@ import {
 } from '@taiga-ui/core';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
 
-// @dynamic
 @Component({
     selector: 'tui-input-range',
     templateUrl: './input-range.template.html',

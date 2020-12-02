@@ -4,7 +4,6 @@ import {TuiAriaDialogContext} from '@taiga-ui/cdk/interfaces';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {merge, Observable} from 'rxjs';
 
-// @dynamic
 @Component({
     selector: 'tui-dialog-host',
     templateUrl: './dialog-host.template.html',

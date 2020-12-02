@@ -13,7 +13,7 @@ import {ClipboardCopyService} from '../../services/clipboard-copy.service';
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
-// @dynamic
+
 @Component({
     selector: 'tui-doc-example',
     templateUrl: './example.template.html',

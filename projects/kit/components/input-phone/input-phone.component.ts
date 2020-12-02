@@ -41,7 +41,6 @@ import {INPUT_PHONE_PROVIDERS, SELECTION_STREAM} from './input-phone.providers';
 
 const NON_PLUS_AND_DIGITS_REGEX = /[ \-_\(\)]/g;
 
-// @dynamic
 @Component({
     selector: 'tui-input-phone',
     templateUrl: './input-phone.template.html',

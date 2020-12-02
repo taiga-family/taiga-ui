@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
-// @dynamic
 @Component({
     selector: 'tui-theme-ios',
     styleUrls: ['./theme-ios.style.less'],

@@ -23,7 +23,6 @@ import {SilentEventPlugin} from '@tinkoff/ng-event-plugins';
 import {merge, Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
-// @dynamic
 @Component({
     selector: 'tui-root',
     templateUrl: 'root.template.html',

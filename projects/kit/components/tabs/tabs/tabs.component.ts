@@ -33,7 +33,6 @@ import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
 import {TAB_ACTIVE_CLASS} from '../tabs.const';
 
-// @dynamic
 @Component({
     selector: 'tui-tabs, nav[tuiTabs]',
     templateUrl: './tabs.template.html',

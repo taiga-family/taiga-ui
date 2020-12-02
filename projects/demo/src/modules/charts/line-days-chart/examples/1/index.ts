@@ -11,7 +11,6 @@ import {
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
-// @dynamic
 @Component({
     selector: 'tui-line-days-chart-example-1',
     templateUrl: './index.html',

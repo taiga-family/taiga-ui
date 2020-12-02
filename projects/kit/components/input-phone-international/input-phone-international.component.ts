@@ -31,7 +31,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {COUNTRIES} from './const/countries';
 import {TuiCountryIsoCode} from './country-iso-code';
 
-// @dynamic
 @Component({
     selector: 'tui-input-phone-international',
     templateUrl: './input-phone-international.template.html',

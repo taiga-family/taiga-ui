@@ -15,7 +15,7 @@ import {map, switchMap, takeUntil} from 'rxjs/operators';
 const MIN_WIDTH = 24;
 
 // @bad TODO: add support for window scroll control
-// @dynamic
+
 @Directive({
     selector: '[tuiScrollbar]',
     providers: [TuiDestroyService],

@@ -31,7 +31,6 @@ const databaseMockData: ReadonlyArray<User> = [
     new User('Александр', 'Инкин', avatar),
 ];
 
-// @dynamic
 @Injectable()
 export class Service {
     private readonly request$ = new Subject<string>();

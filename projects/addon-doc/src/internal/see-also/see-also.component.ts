@@ -3,7 +3,6 @@ import {TuiDocPage, TuiDocPageGroup} from '../../interfaces/page';
 import {TUI_DOC_SEE_ALSO_TEXT} from '../../tokens/i18n';
 import {TUI_DOC_PAGES} from '../../tokens/pages';
 
-// @dynamic
 @Component({
     selector: 'tui-doc-see-also',
     templateUrl: './see-also.template.html',

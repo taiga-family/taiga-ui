@@ -25,7 +25,6 @@ type InternalContext<O, I> = TuiBaseDialog<O, ExternalContext<O, I>> &
     TuiDialogOptions<I> &
     TuiAriaDialogContext;
 
-// @dynamic
 @Component({
     selector: 'tui-dialog',
     templateUrl: './dialog.template.html',

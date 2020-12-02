@@ -15,7 +15,6 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_EDITOR_STYLES} from '@taiga-ui/addon-editor/tokens';
 import {TUI_SANITIZER} from '@taiga-ui/cdk';
 
-// @dynamic
 @Component({
     selector: 'tui-editor-socket',
     template: '',

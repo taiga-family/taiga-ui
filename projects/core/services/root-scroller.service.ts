@@ -5,7 +5,6 @@ import {WINDOW} from '@ng-web-apis/common';
 // TODO: fix cross-import between SEPs
 type TuiRootComponent = any;
 
-// @dynamic
 @Injectable({
     providedIn: 'root',
 })

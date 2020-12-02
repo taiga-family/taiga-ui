@@ -20,7 +20,6 @@ import {
 const SMALL_TABLET_SCREEN = 767;
 const SCROLL_INTO_VIEW_DELAY = 200;
 
-// @dynamic
 @Component({
     selector: 'tui-doc-navigation',
     templateUrl: 'navigation.template.html',

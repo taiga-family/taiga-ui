@@ -12,7 +12,7 @@ import {TuiDocPageTabConnectorDirective} from './page-tab.directive';
 import {PAGE_PROVIDERS, PAGE_SEE_ALSO} from './page.providers';
 
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
-// @dynamic
+
 @Component({
     selector: 'tui-doc-page',
     templateUrl: './page.template.html',

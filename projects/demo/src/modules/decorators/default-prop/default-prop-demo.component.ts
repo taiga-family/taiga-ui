@@ -2,7 +2,6 @@ import {Component, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {changeDetection} from '../../../change-detection-strategy';
 
-// @dynamic
 @Component({
     selector: 'example-tui-default-prop-demo',
     template: 'Значение: {{quantity}}',

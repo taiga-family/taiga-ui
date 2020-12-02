@@ -15,7 +15,7 @@ import {interval, Observable} from 'rxjs';
 import {distinctUntilChanged, map, share} from 'rxjs/operators';
 
 // @bad TODO: handle click on bar to scroll to that position
-// @dynamic
+
 @Component({
     selector: 'tui-scroll-controls',
     templateUrl: './scroll-controls.template.html',

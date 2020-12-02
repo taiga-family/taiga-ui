@@ -12,7 +12,6 @@ import {
     take,
 } from 'rxjs/operators';
 
-// @dynamic
 @Injectable({
     providedIn: 'root',
 })

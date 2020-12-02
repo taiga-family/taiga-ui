@@ -20,7 +20,6 @@ import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
 import {sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// @dynamic
 @Component({
     selector: 'tui-loader',
     templateUrl: './loader.template.html',

@@ -9,7 +9,6 @@ import {Observable} from 'rxjs';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
-// @dynamic
 @Component({
     selector: 'tui-mobile-calendar-example-1',
     templateUrl: './index.html',
