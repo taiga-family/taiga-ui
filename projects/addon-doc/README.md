@@ -109,8 +109,8 @@
     ```typescript
     import {Component} from '@angular/core';
 
-    import * as exampleHtml from '!!raw-loader!./examples/1/index.html';
-    import * as exampleTs from '!!raw-loader!./examples/1/index.ts';
+    import {default as exampleHtml} from '!!raw-loader!./examples/1/index.html';
+    import {default as exampleTs} from '!!raw-loader!./examples/1/index.ts';
 
     @Component({
         selector: 'super-component',

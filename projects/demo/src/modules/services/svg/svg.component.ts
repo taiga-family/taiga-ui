@@ -1,4 +1,4 @@
-import * as injectService from '!!raw-loader!./examples/inject-service.txt';
+import {default as injectService} from '!!raw-loader!./examples/inject-service.txt';
 
 import {Component, Inject} from '@angular/core';
 import {TuiSvgService} from '@taiga-ui/core';

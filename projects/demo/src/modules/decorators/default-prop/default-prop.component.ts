@@ -1,4 +1,4 @@
-import * as exampleDecorator from '!!raw-loader!./import/example-decorator.txt';
+import {default as exampleDecorator} from '!!raw-loader!./import/example-decorator.txt';
 import {Component} from '@angular/core';
 import {changeDetection} from '../../../change-detection-strategy';
 

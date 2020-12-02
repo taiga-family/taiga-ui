@@ -1,14 +1,14 @@
-import * as example1Ts from '!!raw-loader!./examples/1/component.ts';
-import * as example1Less from '!!raw-loader!./examples/1/style.less';
-import * as example1Html from '!!raw-loader!./examples/1/template.html';
+import {default as example1Ts} from '!!raw-loader!./examples/1/component.ts';
+import {default as example1Less} from '!!raw-loader!./examples/1/style.less';
+import {default as example1Html} from '!!raw-loader!./examples/1/template.html';
 
-import * as example2Ts from '!!raw-loader!./examples/2/component.ts';
-import * as example2Less from '!!raw-loader!./examples/2/style.less';
-import * as example2Html from '!!raw-loader!./examples/2/template.html';
+import {default as example2Ts} from '!!raw-loader!./examples/2/component.ts';
+import {default as example2Less} from '!!raw-loader!./examples/2/style.less';
+import {default as example2Html} from '!!raw-loader!./examples/2/template.html';
 
-import * as exampleDeclareForm from '!!raw-loader!./examples/import/declare-form.txt';
-import * as exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
-import * as exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
+import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';

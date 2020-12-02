@@ -1,4 +1,4 @@
-import * as changelog from '!!raw-loader!../../../../../../CHANGELOG.md';
+import {default as changelog} from '!!raw-loader!../../../../../../CHANGELOG.md';
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '../../../change-detection-strategy';
 

@@ -1,4 +1,4 @@
-import * as docReadme from '!!raw-loader!../../../../../addon-doc/README.md';
+import {default as docReadme} from '!!raw-loader!../../../../../addon-doc/README.md';
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '../../../change-detection-strategy';
 

@@ -1,21 +1,21 @@
-import * as example1Html from '!!raw-loader!./examples/1/index.html';
-import * as example1Ts from '!!raw-loader!./examples/1/index.ts';
+import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
+import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
-import * as example2Html from '!!raw-loader!./examples/2/index.html';
-import * as example2Ts from '!!raw-loader!./examples/2/index.ts';
+import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
+import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
-import * as example3Html from '!!raw-loader!./examples/3/index.html';
-import * as example3Ts from '!!raw-loader!./examples/3/index.ts';
+import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
+import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
-import * as example4Html from '!!raw-loader!./examples/4/index.html';
-import * as example4Ts from '!!raw-loader!./examples/4/index.ts';
+import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
+import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
-import * as exampleCustomAlert from '!!raw-loader!./examples/import/custom-alert.txt';
-import * as exampleImportModuleComponent from '!!raw-loader!./examples/import/import-module-component.txt';
-import * as exampleLazyModule from '!!raw-loader!./examples/import/lazy-module.txt';
-import * as exampleModule from '!!raw-loader!./examples/import/module.txt';
-import * as exampleServiceUsageComponent from '!!raw-loader!./examples/import/service-usage-component.txt';
-import * as exampleServiceUsage from '!!raw-loader!./examples/import/service-usage.txt';
+import {default as exampleCustomAlert} from '!!raw-loader!./examples/import/custom-alert.txt';
+import {default as exampleImportModuleComponent} from '!!raw-loader!./examples/import/import-module-component.txt';
+import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
+import {default as exampleServiceUsageComponent} from '!!raw-loader!./examples/import/service-usage-component.txt';
+import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/service-usage.txt';
 
 import {Component, Inject, Injector} from '@angular/core';
 import {

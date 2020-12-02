@@ -21,9 +21,7 @@ export class AppComponent {
     constructor(
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
-    ) {
-        console.log(logo);
-    }
+    ) {}
 
     @tuiPure
     get isChristmas(): boolean {

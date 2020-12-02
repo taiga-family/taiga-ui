@@ -1,5 +1,5 @@
-import * as exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
-import * as exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component} from '@angular/core';
 import {TuiMapper} from '@taiga-ui/cdk';

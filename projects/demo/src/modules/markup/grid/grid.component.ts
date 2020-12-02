@@ -1,8 +1,8 @@
-import * as example1Html from '!!raw-loader!./examples/1/index.html';
-import * as example1Less from '!!raw-loader!./examples/1/index.less';
+import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
+import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
 
-import * as example2Html from '!!raw-loader!./examples/2/index.html';
-import * as example2Less from '!!raw-loader!./examples/2/index.less';
+import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
+import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
 
 import {Component} from '@angular/core';
 import {changeDetection} from '../../../change-detection-strategy';

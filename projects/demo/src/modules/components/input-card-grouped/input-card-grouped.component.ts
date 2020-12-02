@@ -3,11 +3,11 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '../../../change-detection-strategy';
 import {AbstractExampleTuiReactiveField} from '../../components/abstract/reactive-field';
 
-import * as exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
-import * as exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import * as example1Html from '!!raw-loader!./examples/1/index.html';
-import * as example1Ts from '!!raw-loader!./examples/1/index.ts';
+import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
+import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {LogService} from '../../app/log.service';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {FrontEndExample} from '../../interfaces/front-end-example';

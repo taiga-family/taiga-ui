@@ -1,7 +1,7 @@
-import * as example1Html from '!!raw-loader!./examples/1/index.html';
-import * as example1Ts from '!!raw-loader!./examples/1/index.ts';
-import * as example2Html from '!!raw-loader!./examples/2/index.html';
-import * as example2Ts from '!!raw-loader!./examples/2/index.ts';
+import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
+import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
+import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
+import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {Component} from '@angular/core';
 import {changeDetection} from '../../../change-detection-strategy';
