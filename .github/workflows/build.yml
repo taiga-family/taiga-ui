@@ -23,4 +23,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
     # End of setup
-    - run: npm run build:all
+    - run: |
+        npm run build:cdk
+        npm run build:core
+        npm run build:kit
