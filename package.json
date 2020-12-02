@@ -19,7 +19,7 @@
         "clear": "prettier --write '**/projects/**/*.{js,ts,html,md,less,json}' && tslint '**/projects/**/*.ts' --fix",
         "typecheck": "tsc --noEmit --skipLibCheck",
         "*** build **": "use package=name command to build a package",
-        "build": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng run $package:build",
+        "build": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng run $package:build --configuration=production",
         "build:cdk": "package=cdk npm run build",
         "build:core": "package=core npm run build",
         "build:kit": "package=kit npm run build",
