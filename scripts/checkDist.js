@@ -2,7 +2,7 @@ const {execSync} = require('child_process');
 const process = require('process');
 const path = require('path');
 
-const DIST_PATH = '../../dist/';
+const DIST_PATH = '../dist/';
 const folder = process.argv.length > 2 ? process.argv[2] : '';
 const pathToSearch = path.join(__dirname, DIST_PATH, folder);
 

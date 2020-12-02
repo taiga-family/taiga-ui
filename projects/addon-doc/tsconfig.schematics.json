@@ -2,7 +2,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "lib": ["es2018", "dom"],
-        "outDir": "../../../dist",
+        "outDir": "../../dist",
         "declaration": true,
         "module": "commonjs",
         "moduleResolution": "node",
