@@ -109,8 +109,7 @@ export class TuiTagComponent {
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TUI_MODE)
-        mode$: Observable<TuiModeVariants | null>,
+        @Inject(TUI_MODE) mode$: Observable<TuiModeVariants | null>,
     ) {
         mode$.subscribe(mode => {
             this.mode = mode;

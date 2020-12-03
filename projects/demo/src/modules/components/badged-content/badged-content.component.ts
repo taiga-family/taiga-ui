@@ -11,8 +11,7 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component} from '@angular/core';
-import {TuiNotification, TuiSizeXS, TuiSizeXXL, TuiSupportColor} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit';
+import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -41,54 +40,9 @@ export class ExampleTuiBadgedContentComponent {
         HTML: example3Html,
     };
 
-    imageUrl = 'https://ng-web-apis.github.io/dist/assets/images/web-api.svg';
-
-    borderColor = '#fff';
-
-    statusVariants: ReadonlyArray<
-        TuiStatus | TuiSupportColor | TuiNotification | null
-    > = [
-        null,
-        TuiStatus.Normal,
-        TuiStatus.Error,
-        TuiStatus.Success,
-        TuiStatus.Light,
-        TuiStatus.Gray,
-        TuiStatus.Primary,
-        TuiStatus.Secondary,
-        TuiStatus.White,
-        TuiStatus.Highlight,
-        TuiStatus.Inherit,
-        TuiNotification.Info,
-        TuiNotification.Warning,
-        TuiSupportColor.Mustard,
-        TuiSupportColor.Texas,
-        TuiSupportColor.Tan,
-        TuiSupportColor.Salmon,
-        TuiSupportColor.Sienna,
-        TuiSupportColor.Bittersweet,
-        TuiSupportColor.Pinkie,
-        TuiSupportColor.Charm,
-        TuiSupportColor.Amethist,
-        TuiSupportColor.Helio,
-        TuiSupportColor.Lilac,
-        TuiSupportColor.Malibu,
-        TuiSupportColor.Havelock,
-        TuiSupportColor.Picton,
-        TuiSupportColor.Mint,
-        TuiSupportColor.Fountain,
-        TuiSupportColor.Puertorico,
-        TuiSupportColor.Bay,
-        TuiSupportColor.Forest,
-        TuiSupportColor.York,
-        TuiSupportColor.Feijoa,
-    ];
-
-    text = 'daenerys targaryen';
-
     rounded = false;
 
-    sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
+    readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
         'xs',
         's',
         'm',
@@ -99,13 +53,21 @@ export class ExampleTuiBadgedContentComponent {
 
     size = this.sizeVariants[2];
 
-    statusTop: TuiStatus | TuiNotification | TuiSupportColor | null = null;
+    colorTop = '';
 
-    statusBottom: TuiStatus | TuiNotification | TuiSupportColor | null = null;
+    colorBottom = '';
 
-    contentTop: PolymorpheusContent | null = null;
+    contentTop: PolymorpheusContent = '';
 
-    contentBottom: PolymorpheusContent | null = null;
+    contentBottom: PolymorpheusContent = '';
 
-    contentVariants = [1, 5, 155, 'tuiIconCheck', 'Шаблон', 'tuiIconCheckCircleLarge'];
+    readonly contentVariants = [
+        '',
+        1,
+        5,
+        155,
+        'tuiIconCheck',
+        'Шаблон',
+        'tuiIconCheckCircleLarge',
+    ];
 }

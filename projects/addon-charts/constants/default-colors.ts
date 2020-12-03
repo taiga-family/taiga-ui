@@ -1,5 +1,6 @@
 import {TuiBaseColor, TuiColor, TuiSupportColor} from '@taiga-ui/core';
 
+// TODO: Consider removing
 export const DEFAULT_COLORS: ReadonlyArray<TuiColor | string | null> = [
     TuiBaseColor.Primary,
     TuiSupportColor.Havelock,

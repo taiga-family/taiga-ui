@@ -67,6 +67,9 @@ export class ExampleTuiTagComponent {
     readonly statusVariants: ReadonlyArray<TuiStatus> = [
         TuiStatus.Default,
         TuiStatus.Primary,
+        TuiStatus.Success,
+        TuiStatus.Error,
+        TuiStatus.Warning,
         TuiStatus.Custom,
     ];
 

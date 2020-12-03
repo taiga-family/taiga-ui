@@ -8,9 +8,4 @@ import {encapsulation} from '../../../../../view-encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiBadgedContentExample1 {
-    badgeStatus = 'success';
-    notification = 'error';
-    rounded = true;
-    size = 'l';
-}
+export class TuiBadgedContentExample1 {}

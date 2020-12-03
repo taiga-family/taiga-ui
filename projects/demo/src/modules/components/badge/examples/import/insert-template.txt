@@ -1,8 +1,6 @@
 <!--Здесь передается число, будет показано 99+ -->
-<tui-badge status="primary"
-           [value]="100"></tui-badge>
+<tui-badge [value]="100"></tui-badge>
 
 
 <!--Здесь передается строка, будет показано 100 -->
-<tui-badge status="primary"
-           value="100"></tui-badge>
+<tui-badge status="primary" value="100"></tui-badge>
