@@ -1,3 +1,4 @@
+// TODO: Consider removing
 export const enum TuiBaseColor {
     Primary = 'primary',
     Secondary = 'secondary',

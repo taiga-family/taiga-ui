@@ -10,19 +10,14 @@ import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
+import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component} from '@angular/core';
-import {
-    TuiNotification,
-    TuiSizeL,
-    TuiSizeS,
-    TuiSupportColor,
-    TuiTextColor,
-} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -56,78 +51,19 @@ export class ExampleTuiBadgeComponent {
     readonly example4: FrontEndExample = {
         TypeScript: example4Ts,
         HTML: example4Html,
+        LESS: example4Less,
     };
 
-    readonly statusVariants: ReadonlyArray<TuiStatus | TuiSupportColor> = [
-        TuiStatus.Normal,
-        TuiStatus.Error,
-        TuiStatus.Success,
-        TuiStatus.Light,
-        TuiStatus.Gray,
+    readonly statusVariants: ReadonlyArray<TuiStatus> = [
+        TuiStatus.Default,
         TuiStatus.Primary,
-        TuiStatus.Secondary,
-        TuiStatus.TransparentDark,
-        TuiStatus.TransparentLight,
-        TuiStatus.White,
-        TuiStatus.Highlight,
-        TuiSupportColor.Mustard,
-        TuiSupportColor.Texas,
-        TuiSupportColor.Tan,
-        TuiSupportColor.Salmon,
-        TuiSupportColor.Sienna,
-        TuiSupportColor.Bittersweet,
-        TuiSupportColor.Pinkie,
-        TuiSupportColor.Charm,
-        TuiSupportColor.Amethist,
-        TuiSupportColor.Helio,
-        TuiSupportColor.Lilac,
-        TuiSupportColor.Malibu,
-        TuiSupportColor.Havelock,
-        TuiSupportColor.Picton,
-        TuiSupportColor.Mint,
-        TuiSupportColor.Fountain,
-        TuiSupportColor.Puertorico,
-        TuiSupportColor.Bay,
-        TuiSupportColor.Forest,
-        TuiSupportColor.York,
-        TuiSupportColor.Feijoa,
-        TuiStatus.Inherit,
+        TuiStatus.Success,
+        TuiStatus.Error,
+        TuiStatus.Warning,
+        TuiStatus.Custom,
     ];
 
-    status: TuiStatus | TuiSupportColor = this.statusVariants[0];
-
-    readonly notificationVariants: ReadonlyArray<
-        TuiNotification | TuiSupportColor | null
-    > = [
-        null,
-        TuiNotification.Info,
-        TuiNotification.Warning,
-        TuiNotification.Error,
-        TuiNotification.Success,
-        TuiSupportColor.Mustard,
-        TuiSupportColor.Texas,
-        TuiSupportColor.Tan,
-        TuiSupportColor.Salmon,
-        TuiSupportColor.Sienna,
-        TuiSupportColor.Bittersweet,
-        TuiSupportColor.Pinkie,
-        TuiSupportColor.Charm,
-        TuiSupportColor.Amethist,
-        TuiSupportColor.Helio,
-        TuiSupportColor.Lilac,
-        TuiSupportColor.Malibu,
-        TuiSupportColor.Havelock,
-        TuiSupportColor.Picton,
-        TuiSupportColor.Mint,
-        TuiSupportColor.Fountain,
-        TuiSupportColor.Puertorico,
-        TuiSupportColor.Bay,
-        TuiSupportColor.Forest,
-        TuiSupportColor.York,
-        TuiSupportColor.Feijoa,
-    ];
-
-    notification: TuiNotification | TuiSupportColor | null = null;
+    status = this.statusVariants[0];
 
     values: {[key: string]: string | number} = {
         Taiga: 'Taiga',
@@ -139,13 +75,6 @@ export class ExampleTuiBadgeComponent {
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
 
     size: TuiSizeS | TuiSizeL = this.sizeVariants[1];
-
-    readonly textColorVariants: ReadonlyArray<TuiTextColor> = [
-        TuiTextColor.Black,
-        TuiTextColor.White,
-    ];
-
-    textColor: TuiTextColor | null = null;
 
     valueVariants: ReadonlyArray<string | number> = Object.keys(this.values);
 
