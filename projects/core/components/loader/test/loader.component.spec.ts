@@ -28,7 +28,7 @@ describe('Loader', () => {
     })
     class TestComponent {
         @ViewChild(TuiLoaderComponent, {static: true})
-        component: TuiLoaderComponent;
+        component!: TuiLoaderComponent;
 
         size: TuiSizeXS | TuiSizeXL = 'm';
         showLoader = false;
@@ -36,8 +36,8 @@ describe('Loader', () => {
         overlay = false;
         textContent: PolymorpheusContent | null = null;
 
-        @ViewChild('textTemplate')
-        textTemplate: PolymorpheusTemplate<{}>;
+        @ViewChild('textTemplate', {static: true})
+        textTemplate!: PolymorpheusTemplate<{}>;
     }
 
     let fixture: ComponentFixture<TestComponent>;

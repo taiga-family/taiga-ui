@@ -29,7 +29,7 @@ describe('TuiResizeService', () => {
 
     it('emits default first value', done => {
         let emitCounter = 0;
-        const resize$ = TestBed.get(TuiResizeService);
+        const resize$ = TestBed.inject(TuiResizeService);
 
         resize$.subscribe(() => {
             emitCounter++;
@@ -43,7 +43,7 @@ describe('TuiResizeService', () => {
 
     it('emits when element is resized', done => {
         let emitCounter = 0;
-        const resize$ = TestBed.get(TuiResizeService);
+        const resize$ = TestBed.inject(TuiResizeService);
 
         resize$.subscribe(() => {
             emitCounter++;

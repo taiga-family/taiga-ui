@@ -22,7 +22,7 @@ describe('rootScroller', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let service: TuiRootScroller;
+    let service: ViewportScroller;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -40,7 +40,7 @@ describe('rootScroller', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        service = TestBed.get(ViewportScroller);
+        service = TestBed.inject(ViewportScroller);
         fixture.detectChanges();
     });
 

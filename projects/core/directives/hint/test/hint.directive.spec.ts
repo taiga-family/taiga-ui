@@ -74,15 +74,12 @@ describe('Hint', () => {
             discardPeriodicTasks();
         }));
 
-        it('is shown after 500ms', () => {
-            expect(getTooltip()!.textContent!.trim()).toBe('Tooltip text');
-        });
-
-        it('is not hidden immediately after pointer left host', () => {
-            getHost().dispatchEvent(new Event('mouseleave'));
-            fixture.detectChanges();
-
-            expect(getTooltip()).not.toBeNull();
+        it('is shown after 500ms', done => {
+            fixture.whenStable().then(() => {
+                fixture.detectChanges();
+                expect(getTooltip()!.textContent!.trim()).toBe('Tooltip text');
+                done();
+            });
         });
 
         it('is hidden immediately if null is passed as content', done => {

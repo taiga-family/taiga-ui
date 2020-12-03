@@ -72,28 +72,32 @@ describe('ManualHint', () => {
         expect(getTooltip()).not.toBeNull();
     }));
 
-    it('Tooltip disappears if host disappears with flag', fakeAsync(() => {
+    it('Tooltip disappears if host disappears with flag', done => {
         component.show = true;
 
         fixture.detectChanges();
-        tick();
 
         component.host = false;
 
         fixture.detectChanges();
-        tick();
 
-        expect(getTooltip()).toBeNull();
-    }));
+        fixture.whenStable().then(() => {
+            fixture.detectChanges();
+            expect(getTooltip()).toBeNull();
+            done();
+        });
+    });
 
-    it('Tooltip is not showed with no flag', fakeAsync(() => {
+    it('Tooltip is not showed with no flag', done => {
         component.show = false;
 
         fixture.detectChanges();
-        tick();
 
-        expect(getTooltip()).toBeNull();
-    }));
+        fixture.whenStable().then(() => {
+            expect(getTooltip()).toBeNull();
+            done();
+        });
+    });
 
     function getTooltip(): Element | null {
         return document.querySelector('[automation-id=tui-hint-box__tooltip]');

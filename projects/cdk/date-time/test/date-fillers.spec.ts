@@ -6,7 +6,7 @@ describe('Date Fillers', () => {
     it('TUI_DATE_FILLER is a global token with default value', () => {
         TestBed.configureTestingModule({});
 
-        const result = TestBed.get(TUI_DATE_FILLER);
+        const result = TestBed.inject(TUI_DATE_FILLER);
 
         expect(result).toBe('dd.mm.yyyy');
     });
@@ -14,7 +14,7 @@ describe('Date Fillers', () => {
     it('TUI_DATE_RANGE_FILLER is a global token with default value', () => {
         TestBed.configureTestingModule({});
 
-        const result = TestBed.get(TUI_DATE_RANGE_FILLER);
+        const result = TestBed.inject(TUI_DATE_RANGE_FILLER);
 
         expect(result).toBe('dd.mm.yyyy' + RANGE_SEPARATOR_CHAR + 'dd.mm.yyyy');
     });

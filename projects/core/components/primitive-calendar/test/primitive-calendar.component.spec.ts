@@ -37,8 +37,8 @@ describe('PrimitiveCalendar', () => {
 
         disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
-        @ViewChild(TuiPrimitiveCalendarComponent)
-        component: TuiPrimitiveCalendarComponent;
+        @ViewChild(TuiPrimitiveCalendarComponent, {static: true})
+        component!: TuiPrimitiveCalendarComponent;
 
         onDayClick(_: TuiDay) {}
     }

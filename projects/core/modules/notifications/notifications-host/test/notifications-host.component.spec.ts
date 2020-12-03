@@ -34,7 +34,7 @@ describe('NotificationsHost', () => {
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;
-        service = TestBed.get(TuiNotificationsService);
+        service = TestBed.inject(TuiNotificationsService);
     });
 
     beforeEach(() => {

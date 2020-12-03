@@ -107,22 +107,28 @@ describe('expand', () => {
     });
 
     describe('async', () => {
-        beforeEach(fakeAsync(() => {
+        beforeEach(done => {
             testComponent.async = true;
             testComponent.expanded = false;
             fixture.detectChanges();
             testComponent.expanded = true;
             fixture.detectChanges();
-            tick(1000 / 60);
-            fixture.detectChanges();
-        }));
+
+            fixture.whenStable().then(() => {
+                done();
+            });
+        });
 
         it('содержимое обрабатывается', () => {
             expect(testComponent.content).toBeDefined();
         });
 
-        it('виден лоадер', () => {
-            expect(pageObject.getByAutomationId('tui-loader__loader')).not.toBeNull();
+        it('виден лоадер', done => {
+            fixture.whenStable().then(() => {
+                fixture.detectChanges();
+                expect(pageObject.getByAutomationId('tui-loader__loader')).not.toBeNull();
+                done();
+            });
         });
 
         it('после события TUI_EXPAND_LOADED лоадер скрыт', fakeAsync(() => {
