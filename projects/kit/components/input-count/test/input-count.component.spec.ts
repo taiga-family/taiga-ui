@@ -26,7 +26,7 @@ describe('InputCount', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputCountComponent, {static: true})
+        @ViewChild(TuiInputCountComponent)
         component: TuiInputCountComponent;
 
         control = new FormControl();
@@ -179,18 +179,26 @@ describe('InputCount', () => {
                 expect(testComponent.control.value).toBe(testComponent.min);
             });
 
-            it('Если значение равно максимальному, кнопка "плюс" дизейблится', () => {
+            it('Если значение равно максимальному, кнопка "плюс" дизейблится', done => {
                 testComponent.control.setValue(12);
                 fixture.detectChanges();
 
-                expect(testComponent.component.plusButtonDisabled).toBe(true);
+                fixture.whenStable().then(() => {
+                    fixture.detectChanges();
+                    expect(testComponent.component.plusButtonDisabled).toBe(true);
+                    done();
+                });
             });
 
-            it('Если значение равно минимальному, кнопка "минус" дизейблится', () => {
+            it('Если значение равно минимальному, кнопка "минус" дизейблится', done => {
                 testComponent.control.setValue(testComponent.min);
                 fixture.detectChanges();
 
-                expect(testComponent.component.minusButtonDisabled).toBe(true);
+                fixture.whenStable().then(() => {
+                    fixture.detectChanges();
+                    expect(testComponent.component.minusButtonDisabled).toBe(true);
+                    done();
+                });
             });
         });
     });
@@ -239,14 +247,20 @@ describe('InputCount', () => {
             expect(testComponent.control.value).toBe(10);
         });
 
-        it('Если стереть содержимое поля, восстанавливается минимальное значение', () => {
+        it('Если стереть содержимое поля, восстанавливается минимальное значение', done => {
             testComponent.control.setValue(123);
             fixture.detectChanges();
 
             inputPO.sendText('');
             testComponent.component.onFocused(false);
 
-            expect(testComponent.control.value).toBe(0);
+            fixture.detectChanges();
+
+            fixture.whenStable().then(() => {
+                fixture.detectChanges();
+                expect(testComponent.control.value).toBe(0);
+                done();
+            });
         });
     });
 

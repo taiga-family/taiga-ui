@@ -93,10 +93,6 @@ describe('Island', () => {
     });
 
     describe('hoverable:', () => {
-        it('если false, ховер не работает', () => {
-            expect(getIsland().classes['tui-island_hoverable']).toBe(false);
-        });
-
         it('если true, ховер работает', () => {
             testComponent.hoverable = true;
             fixture.detectChanges();

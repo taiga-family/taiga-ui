@@ -97,7 +97,7 @@ describe('Accordion', () => {
         @ViewChildren(TuiAccordionItemComponent)
         items!: QueryList<TuiAccordionItemComponent>;
 
-        @ViewChild(TuiSelectComponent)
+        @ViewChild(TuiSelectComponent, {static: true})
         selectComponent!: TuiSelectComponent<any>;
 
         closeOthers = true;
@@ -170,13 +170,6 @@ describe('Accordion', () => {
 
     it('по умолчанию со скругленными углами', () => {
         expect(getAccordionGroup()!.classes['tui-group_rounded']).toBe(true);
-    });
-
-    it('при rounded = false скруглений нет', () => {
-        testComponent.rounded = false;
-        fixture.detectChanges();
-
-        expect(getAccordionGroup()!.classes['tui-group_rounded']).toBe(false);
     });
 
     it('по умолчанию границы по бокам у айтемов есть', () => {

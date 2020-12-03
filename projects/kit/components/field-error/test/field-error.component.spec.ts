@@ -79,7 +79,7 @@ describe('FieldError', () => {
             `,
         })
         class TestComponent {
-            @ViewChild(TuiFieldErrorComponent)
+            @ViewChild(TuiFieldErrorComponent, {static: true})
             component: TuiFieldErrorComponent;
 
             testForm = new FormGroup({
@@ -147,7 +147,7 @@ describe('FieldError', () => {
             `,
         })
         class TestComponent {
-            @ViewChild(TuiFieldErrorComponent)
+            @ViewChild(TuiFieldErrorComponent, {static: true})
             component: TuiFieldErrorComponent;
 
             testForm = new FormGroup(
@@ -216,7 +216,7 @@ describe('FieldError', () => {
             `,
         })
         class TestComponent {
-            @ViewChild('errorContent')
+            @ViewChild('errorContent', {static: true})
             errorContent: PolymorpheusTemplate<{}>;
 
             readonly testMes = ZIP_CODE_MESSAGE;
@@ -309,15 +309,20 @@ describe('FieldError', () => {
                 expect(errorText).toBe(ZIP_CODE_MESSAGE);
             });
 
-            it('Если ввести корректное значение в не валидное поле, ошибка скрывается', () => {
+            it('Если ввести корректное значение в не валидное поле, ошибка скрывается', done => {
                 input.setValidators([zipCodeValidator]);
                 input.setValue('012');
                 input.markAsTouched();
                 fixture.detectChanges();
 
                 inputPO.sendText('012345');
+                fixture.detectChanges();
 
-                expect(isErrorVisible(pageObject)).toBe(false);
+                fixture.whenStable().then(() => {
+                    fixture.detectChanges();
+                    expect(isErrorVisible(pageObject)).toBe(false);
+                    done();
+                });
             });
 
             it('Если ввести некорректное значение в валидное поле, ошибка появляется', () => {

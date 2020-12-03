@@ -31,7 +31,7 @@ describe('InputSlider', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputSliderComponent, {static: true})
+        @ViewChild(TuiInputSliderComponent)
         component: TuiInputSliderComponent;
 
         control = new FormControl(0);

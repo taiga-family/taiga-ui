@@ -116,10 +116,6 @@ describe('Badge', () => {
     });
 
     describe('hoverable:', () => {
-        it('если false, ховер не работает', () => {
-            expect(getBadge().classes['_hoverable']).toBe(false);
-        });
-
         it('если true, ховер работает', () => {
             testComponent.hoverable = true;
             fixture.detectChanges();

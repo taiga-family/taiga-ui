@@ -1,5 +1,5 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
@@ -37,7 +37,7 @@ describe('InputNumber', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputNumberComponent, {static: true})
+        @ViewChild(TuiInputNumberComponent)
         component!: TuiInputNumberComponent;
 
         control = new FormControl(12345.0);
@@ -88,52 +88,69 @@ describe('InputNumber', () => {
             fixture.detectChanges();
         });
 
-        it('Нулевые копейки не показаны', fakeAsync(() => {
+        it('Нулевые копейки не показаны', done => {
             testComponent.control.setValue(1234.0);
             fixture.detectChanges();
-            tick();
 
-            expect(getNativeInput()!.nativeElement.value).toBe(
-                `1${CHAR_NO_BREAK_SPACE}234`,
-            );
-        }));
+            fixture.whenStable().then(() => {
+                fixture.detectChanges();
+                expect(getNativeInput()!.nativeElement.value).toBe(
+                    `1${CHAR_NO_BREAK_SPACE}234`,
+                );
+                done();
+            });
+        });
 
-        it('Ненулевые копейки показаны', fakeAsync(() => {
+        it('Ненулевые копейки показаны', done => {
             testComponent.control.setValue(12.345);
             fixture.detectChanges();
-            tick();
 
-            expect(getNativeInput()!.nativeElement.value).toBe('12,34');
-        }));
+            fixture.whenStable().then(() => {
+                fixture.detectChanges();
+                expect(getNativeInput()!.nativeElement.value).toBe('12,34');
+                done();
+            });
+        });
     });
 
-    it(`Ненулевые копейки не показаны при decimal = 'never'`, fakeAsync(() => {
+    it(`Ненулевые копейки не показаны при decimal = 'never'`, done => {
         testComponent.control.setValue(12.3);
         fixture.detectChanges();
-        tick();
 
-        expect(getNativeInput()!.nativeElement.value).toBe('12');
-    }));
+        fixture.whenStable().then(() => {
+            fixture.detectChanges();
+            expect(getNativeInput()!.nativeElement.value).toBe('12');
+            done();
+        });
+    });
 
-    it('Знак минус отсутствует при отрицательных значениях при min >= 0', fakeAsync(() => {
+    it('Знак минус отсутствует при отрицательных значениях при min >= 0', done => {
         testComponent.component.min = 0;
         testComponent.control.setValue(-12345);
         fixture.detectChanges();
-        tick();
 
-        expect(getNativeInput()!.nativeElement.value).toBe(`12${CHAR_NO_BREAK_SPACE}345`);
-    }));
+        fixture.whenStable().then(() => {
+            fixture.detectChanges();
+            expect(getNativeInput()!.nativeElement.value).toBe(
+                `12${CHAR_NO_BREAK_SPACE}345`,
+            );
+            done();
+        });
+    });
 
-    it('Знак минус отсутствует при неотрицательном значении min', fakeAsync(() => {
+    it('Знак минус отсутствует при неотрицательном значении min', done => {
         testComponent.component.min = 10;
         testComponent.control.setValue(-12345);
         fixture.detectChanges();
-        tick();
 
-        expect(getNativeInput()!.nativeElement!.value).toBe(
-            `12${CHAR_NO_BREAK_SPACE}345`,
-        );
-    }));
+        fixture.whenStable().then(() => {
+            fixture.detectChanges();
+            expect(getNativeInput()!.nativeElement!.value).toBe(
+                `12${CHAR_NO_BREAK_SPACE}345`,
+            );
+            done();
+        });
+    });
 
     describe('onValue | обновление значений формы', () => {
         describe('Недозаполненное значение передаёт в форму null', () => {

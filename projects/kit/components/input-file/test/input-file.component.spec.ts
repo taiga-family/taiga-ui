@@ -116,7 +116,7 @@ describe('InputFile', () => {
                 pageObject
                     .getByAutomationId('tui-file__size')!
                     .nativeElement.textContent.trim(),
-            ).toBe('237 Б');
+            ).toBe('237 B');
         });
 
         it('size is hidden', () => {

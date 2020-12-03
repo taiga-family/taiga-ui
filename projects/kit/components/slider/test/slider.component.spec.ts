@@ -27,7 +27,7 @@ describe('Slider', () => {
     })
     class TestComponent {
         @ViewChild(TuiSliderComponent, {static: true})
-        component: TuiSliderComponent;
+        component!: TuiSliderComponent;
 
         testValue = new FormControl(5);
         default = false;
@@ -41,7 +41,6 @@ describe('Slider', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let component: TuiSliderComponent;
     let pageObject: PageObject<TestComponent>;
     const keydownArrowLeft = new KeyboardEvent('keydown', {
         key: 'arrowLeft',
@@ -80,22 +79,12 @@ describe('Slider', () => {
         pageObject = new PageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        component = testComponent.component;
     });
 
     describe('Значения по умолчанию', () => {
         beforeEach(() => {
             testComponent.default = true;
             fixture.detectChanges();
-            component = testComponent.component;
-        });
-
-        it('min', () => {
-            expect(component.min).toBe(0);
-        });
-
-        it('segments', () => {
-            expect(component.segments).toBe(0);
         });
 
         it('Сегменты отсутствуют', () => {

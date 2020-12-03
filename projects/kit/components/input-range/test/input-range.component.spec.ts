@@ -82,10 +82,6 @@ describe('InputRange', () => {
             fixture.detectChanges();
         });
 
-        it('min равен нулю', () => {
-            expect(testComponent.component.min).toBe(0);
-        });
-
         it('minLabel отсутствует', () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}min-label`),
