@@ -1,8 +1,8 @@
 import {Attribute, Directive, Inject, Injector} from '@angular/core';
 import {NG_VALIDATORS, Validator} from '@angular/forms';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
+import {TUI_UNFINISHED_TEXT} from '@taiga-ui/kit/tokens';
 import {tuiCreateUnfinishedValidator} from '@taiga-ui/kit/validators';
-import {TUI_UNFINISHED_TEXT} from '../../tokens';
 
 @Directive({
     selector: '[tuiUnfinishedValidator]',

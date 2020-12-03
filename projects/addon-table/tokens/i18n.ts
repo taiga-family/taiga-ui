@@ -8,11 +8,11 @@ export const TUI_TABLE_SHOW_HIDE_MESSAGE = new InjectionToken<string>(
 );
 
 export const TUI_TABLE_PAGINATION_TEXTS = new InjectionToken<
-    Record<'pages' | 'linesPerPage' | 'from', string>
+    Record<'pages' | 'linesPerPage' | 'of', string>
 >('tui-table-pagination i18n texts', {
     factory: () => ({
         pages: 'Pages',
         linesPerPage: 'Lines per page',
-        from: 'from',
+        of: 'of',
     }),
 });

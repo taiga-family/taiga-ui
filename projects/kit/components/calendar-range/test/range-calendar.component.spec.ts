@@ -114,13 +114,6 @@ describe('rangeCalendarComponent', () => {
             const items = getItems();
 
             expect(items.length).toBe(7);
-            expect(items[0].nativeElement.textContent.trim()).toBe('За все время');
-            expect(items[1].nativeElement.textContent.trim()).toBe('Сегодня');
-            expect(items[2].nativeElement.textContent.trim()).toBe('Вчера');
-            expect(items[3].nativeElement.textContent.trim()).toBe('Текущая неделя');
-            expect(items[4].nativeElement.textContent.trim()).toBe('Текущий месяц');
-            expect(items[5].nativeElement.textContent.trim()).toBe('Прошлый месяц');
-            expect(items[6].nativeElement.textContent.trim()).toBe('Другая дата...');
         });
 
         it('Если значение не подходит ни под один диапазон — галочка у "Другая дата..."', () => {
@@ -163,8 +156,8 @@ describe('rangeCalendarComponent', () => {
 
             const items = getItems().map(item => item.nativeElement.textContent.trim());
 
-            expect(items.some(item => item === 'Вчера')).toBe(true);
-            expect(items.some(item => item === 'Сегодня')).toBe(false);
+            expect(items.some(item => item === 'Yesterday')).toBe(true);
+            expect(items.some(item => item === 'Today')).toBe(false);
         });
 
         it('При переопределении интервалов в списке всегда есть "Другая дата..."', () => {
@@ -181,7 +174,7 @@ describe('rangeCalendarComponent', () => {
 
             expect(items.length).toBe(2);
             expect(items[0].nativeElement.textContent.trim()).toBe(title);
-            expect(items[1].nativeElement.textContent.trim()).toBe('Другая дата...');
+            expect(items[1].nativeElement.textContent.trim()).toBe('Other date...');
         });
     });
 
