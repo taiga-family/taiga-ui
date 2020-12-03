@@ -33,7 +33,7 @@
         "*** Icons ***": "",
         "compile:icons": "ts-node --project ./tsconfig.compiler.json scripts/compileIcons.ts",
         "prebuild:icons": "npm run compile:icons projects/icons",
-        "build:icons": "ng run icons:build",
+        "build:icons": "ng run icons:build --configuration=production",
         "postbuild:icons": "node projects/icons/scripts/copy-icons.js",
         "*** Release ***": "",
         "release": "standard-version",
