@@ -1,56 +1,56 @@
 <div class="row">
     <tui-badged-content
         class="tui-space_right-5"
-        [statusTop]="notification"
-        [rounded]="rounded"
-        [size]="size"
+        colorTop="var(--tui-error-fill)"
+        size="l"
+        [rounded]="true"
     >
-        <tui-avatar text="a b" [rounded]="rounded" [size]="size"></tui-avatar>
+        <tui-avatar text="a b" [rounded]="true" size="l"></tui-avatar>
     </tui-badged-content>
 
     <tui-badged-content
         class="tui-space_right-5"
-        [statusBottom]="badgeStatus"
-        [rounded]="rounded"
-        [size]="size"
+        colorBottom="var(--tui-success-fill)"
+        size="l"
+        [rounded]="true"
     >
-        <tui-avatar text="c d" [rounded]="rounded" [size]="size"></tui-avatar>
+        <tui-avatar text="c d" [rounded]="true" size="l"></tui-avatar>
     </tui-badged-content>
 
     <tui-badged-content
         class="tui-space_right-5"
-        [statusTop]="badgeStatus"
-        [statusBottom]="notification"
-        [rounded]="rounded"
-        [size]="size"
+        colorTop="var(--tui-success-fill)"
+        colorBottom="var(--tui-error-fill)"
+        size="l"
+        [rounded]="true"
     >
-        <tui-avatar text="e" [rounded]="rounded" [size]="size"></tui-avatar>
+        <tui-avatar text="e" [rounded]="true" size="l"></tui-avatar>
     </tui-badged-content>
 </div>
 
 <div class="row tui-space_top-5">
     <tui-badged-content
         class="tui-space_right-5"
-        [statusTop]="notification"
-        [size]="size"
+        colorTop="var(--tui-error-fill)"
+        size="l"
     >
-        <tui-avatar text="a b" [size]="size"></tui-avatar>
+        <tui-avatar text="a b" size="l"></tui-avatar>
     </tui-badged-content>
 
     <tui-badged-content
         class="tui-space_right-5"
-        [statusBottom]="badgeStatus"
-        [size]="size"
+        colorBottom="var(--tui-success-fill)"
+        size="l"
     >
-        <tui-avatar text="c d" [size]="size"></tui-avatar>
+        <tui-avatar text="c d" size="l"></tui-avatar>
     </tui-badged-content>
 
     <tui-badged-content
         class="tui-space_right-5"
-        [statusTop]="badgeStatus"
-        [statusBottom]="notification"
-        [size]="size"
+        colorTop="var(--tui-success-fill)"
+        colorBottom="var(--tui-error-fill)"
+        size="l"
     >
-        <tui-avatar text="e" [size]="size"></tui-avatar>
+        <tui-avatar text="e" size="l"></tui-avatar>
     </tui-badged-content>
 </div>

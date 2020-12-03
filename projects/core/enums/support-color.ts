@@ -1,3 +1,4 @@
+// TODO: Consider removing
 export const enum TuiSupportColor {
     Mustard = 'support-01',
     Texas = 'support-02',

@@ -33,25 +33,24 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-badged-content
-                [borderColor]="borderColor"
                 [contentTop]="contentTop === 'Шаблон' ? example : contentTop"
                 [contentBottom]="contentBottom === 'Шаблон' ? example : contentBottom"
                 [rounded]="rounded"
-                [statusTop]="statusTop"
-                [statusBottom]="statusBottom"
+                [colorTop]="colorTop"
+                [colorBottom]="colorBottom"
                 [size]="size"
             >
                 <tui-avatar
-                    [text]="text"
+                    text="daenerys targaryen"
                     [rounded]="rounded"
                     [size]="size"
                 ></tui-avatar>
             </tui-badged-content>
-            <ng-template #example="polymorpheus" polymorpheus>
+            <ng-template #example>
                 <tui-avatar
                     text="Пример"
                     size="s"
-                    [avatarUrl]="imageUrl"
+                    avatarUrl="https://ng-web-apis.github.io/dist/assets/images/web-api.svg"
                     [rounded]="true"
                 ></tui-avatar>
             </ng-template>
@@ -59,19 +58,9 @@
 
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="borderColor"
-                documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [documentationPropertyDeprecated]="true"
-                [(documentationPropertyValue)]="borderColor"
-            >
-                Цвет обводки вокруг бейджа. Выставите <code>null</code> и
-                используйте CSS <code>color</code>
-            </ng-template>
-            <ng-template
                 documentationPropertyName="contentBottom"
                 documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent | null"
+                documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="contentVariants"
                 [(documentationPropertyValue)]="contentBottom"
             >
@@ -83,7 +72,7 @@
             <ng-template
                 documentationPropertyName="contentTop"
                 documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent | null"
+                documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="contentVariants"
                 [(documentationPropertyValue)]="contentTop"
             >
@@ -93,21 +82,19 @@
                 кроме 'xs'.
             </ng-template>
             <ng-template
-                documentationPropertyName="statusBottom"
+                documentationPropertyName="colorBottom"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiNotification | TuiSupportColor | null"
-                [documentationPropertyValues]="statusVariants"
-                [(documentationPropertyValue)]="statusBottom"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="colorBottom"
             >
                 Цвет содержимого в правом нижнем углу. При отсутствии
                 содержимого, показывается кружок соответствующего цвета.
             </ng-template>
             <ng-template
-                documentationPropertyName="statusTop"
+                documentationPropertyName="colorTop"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiNotification | TuiSupportColor | null"
-                [documentationPropertyValues]="statusVariants"
-                [(documentationPropertyValue)]="statusTop"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="colorTop"
             >
                 Цвет содержимого в правом верхнем углу. При отсутствии
                 содержимого, показывается кружок соответствующего цвета.

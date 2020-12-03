@@ -1,32 +1,26 @@
-<div>
-    <tui-badged-content [contentTop]="badgeValue" statusTop="support-salmon">
-        <form class="b-input-wrapper" [formGroup]="testForm">
-            <tui-input class="input" formControlName="testValue">
-                Введите текст
-            </tui-input>
-        </form>
-    </tui-badged-content>
-</div>
+<tui-badged-content [contentTop]="badgeValue" colorTop="var(--tui-support-01)">
+    <tui-input class="input" [(ngModel)]="value">Введите текст</tui-input>
+</tui-badged-content>
 
 <div class="tui-space_top-5">
     <tui-badged-content
         [contentTop]="contentTop"
-        [contentBottom]="badgeValueCount === 50 ? customBadge : null"
-        [statusTop]="buttonStatusTop"
+        [contentBottom]="contentTop === 50 ? customBadge : ''"
+        [colorTop]="color"
     >
         <button
             tuiButton
             type="button"
             appearance="secondary"
             size="xl"
-            [disabled]="badgeValueCount === 50"
+            [disabled]="contentTop === 50"
             (click)="onClick()"
         >
             Кликни 50+ раз и ...
         </button>
     </tui-badged-content>
 
-    <ng-template #customBadge="polymorpheus" polymorpheus>
-        <div class="custom-template">... ничего не произойдет</div>
+    <ng-template #customBadge>
+        <div class="template">... ничего не произойдет</div>
     </ng-template>
 </div>

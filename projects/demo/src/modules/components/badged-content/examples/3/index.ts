@@ -8,11 +8,4 @@ import {encapsulation} from '../../../../../view-encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiBadgedContentExample3 {
-    avatar = 'https://ng-web-apis.github.io/dist/assets/images/web-api.svg';
-    badgeStatus = 'success';
-    badgeValue = 64;
-    notification = 'error';
-    rounded = true;
-    size = 'l';
-}
+export class TuiBadgedContentExample3 {}

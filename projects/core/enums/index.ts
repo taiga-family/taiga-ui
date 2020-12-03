@@ -12,4 +12,3 @@ export * from './notification';
 export * from './orientation';
 export * from './range-state';
 export * from './support-color';
-export * from './text-color';
