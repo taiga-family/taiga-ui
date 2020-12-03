@@ -18,7 +18,11 @@ import {USER_AGENT} from '@ng-web-apis/common';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
-import {TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
+import {
+    EditorToolbarTexts,
+    TUI_EDITOR_TOOLBAR_TEXTS,
+    TUI_IMAGE_LOADER,
+} from '@taiga-ui/addon-editor/tokens';
 import {isSelectionIn, tuiInsertHtml} from '@taiga-ui/addon-editor/utils';
 import {
     EMPTY_QUERY,
@@ -36,10 +40,9 @@ import {
     TuiButtonComponent,
     TuiHostedDropdownComponent,
 } from '@taiga-ui/core';
-import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {merge, Observable} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
-import {TUI_CANCEL_WORD} from '../../../kit';
 
 const DEFAULT_FONT = 'haas, helvetica, arial, sans-serif';
 const MONOSPACE_FONT = 'Courier';
@@ -145,7 +148,8 @@ export class TuiToolbarComponent {
         @Inject(TUI_IMAGE_LOADER)
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(USER_AGENT) private readonly userAgent: string,
-        @Inject(TUI_CANCEL_WORD) readonly cancelWord: string,
+        @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
+        readonly texts: Record<EditorToolbarTexts, string>,
     ) {
         this.documentRef = shadowRootRef || documentRef;
 

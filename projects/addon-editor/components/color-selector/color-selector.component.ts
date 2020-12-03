@@ -12,6 +12,7 @@ import {getGradientData, parseColor, parseGradient} from '@taiga-ui/addon-editor
 import {tuiDefaultProp, tuiPure, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '../../tokens';
 
 const EMPTY_STOP: [number, number, number, number] = [0, 0, 0, 0];
 const DEFAULT_STEPS: ReadonlyArray<[number, [number, number, number, number]]> = [
@@ -29,6 +30,7 @@ const ICONS: Record<TuiGradientDirection, string> = {
     'to top': 'tuiIconArrowLongUp',
 };
 
+// @dynamic
 @Component({
     selector: 'tui-color-selector',
     templateUrl: './color-selector.template.html',
@@ -52,9 +54,6 @@ export class TuiColorSelectorComponent {
 
     color: [number, number, number, number] = [0, 0, 0, 1];
 
-    // TODO: i18n
-    readonly modes = ['Сплошной цвет', 'Градиент'];
-
     currentMode = this.modes[0];
 
     readonly buttons: ReadonlyArray<TuiGradientDirection> = [
@@ -74,7 +73,10 @@ export class TuiColorSelectorComponent {
 
     private direction: TuiGradientDirection = 'to bottom';
 
-    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
+    constructor(
+        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+        @Inject(TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES) readonly modes: [string, string],
+    ) {}
 
     get palette(): Map<string, string> {
         return this.filterPalette(this.colors, this.isGradient);
