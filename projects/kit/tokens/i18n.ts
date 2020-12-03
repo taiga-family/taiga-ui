@@ -93,16 +93,15 @@ export const TUI_CALENDAR_MONTHS = new InjectionToken<ReadonlyArray<string>>(
     },
 );
 
-export const TUI_FILE_TEXTS = new InjectionToken<Record<string, string>>(
-    'file i18n texts',
-    {
-        factory: () => ({
-            loadingError: 'Loading error',
-            preview: 'Preview',
-            remove: 'Remove',
-        }),
-    },
-);
+export const TUI_FILE_TEXTS = new InjectionToken<
+    Record<'loadingError' | 'preview' | 'remove', string>
+>('file i18n texts', {
+    factory: () => ({
+        loadingError: 'Loading error',
+        preview: 'Preview',
+        remove: 'Remove',
+    }),
+});
 
 export const TUI_PAGINATION_TEXTS = new InjectionToken<[string, string]>(
     'pagination i18n texts',
@@ -111,18 +110,27 @@ export const TUI_PAGINATION_TEXTS = new InjectionToken<[string, string]>(
     },
 );
 
-export const TUI_INPUT_FILE_TEXTS = new InjectionToken<Record<string, string>>(
-    'tui-input-file i18n texts',
-    {
-        factory: () => ({
-            defaultLabelSingle: 'or drag\u00A0it\u00A0here',
-            defaultLabelMultiple: 'or drag\u00A0them\u00A0here',
-            defaultLinkSingle: 'Choose a file',
-            defaultLinkMultiple: 'Choose files',
-            maxSizeRejectionReason: 'File exceeds size ',
-            formatRejectionReason: 'Wrong file format',
-            drop: 'Drop file here',
-            dropMultiple: 'Drop files here',
-        }),
-    },
-);
+export const TUI_INPUT_FILE_TEXTS = new InjectionToken<
+    Record<
+        | 'defaultLabelSingle'
+        | 'defaultLabelMultiple'
+        | 'defaultLinkSingle'
+        | 'defaultLinkMultiple'
+        | 'maxSizeRejectionReason'
+        | 'formatRejectionReason'
+        | 'drop'
+        | 'dropMultiple',
+        string
+    >
+>('tui-input-file i18n texts', {
+    factory: () => ({
+        defaultLabelSingle: 'or drag\u00A0it\u00A0here',
+        defaultLabelMultiple: 'or drag\u00A0them\u00A0here',
+        defaultLinkSingle: 'Choose a file',
+        defaultLinkMultiple: 'Choose files',
+        maxSizeRejectionReason: 'File exceeds size ',
+        formatRejectionReason: 'Wrong file format',
+        drop: 'Drop file here',
+        dropMultiple: 'Drop files here',
+    }),
+});

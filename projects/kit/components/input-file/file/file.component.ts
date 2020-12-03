@@ -53,7 +53,8 @@ export class TuiFileComponent {
     constructor(
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(TUI_FILE_TEXTS) readonly fileTexts: Record<string, string>,
+        @Inject(TUI_FILE_TEXTS)
+        readonly fileTexts: Record<'loadingError' | 'preview' | 'remove', string>,
         @Inject(TUI_DIGITAL_INFORMATION_UNITS)
         private readonly units: [string, string, string],
     ) {}
