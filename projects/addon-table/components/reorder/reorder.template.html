@@ -2,14 +2,13 @@
     <div *ngFor="let item of items" class="item" cdkDrag>
         <tui-svg src="tuiIconDrag" class="icon"></tui-svg>
         {{item}}
-        <!-- TODO: i18n -->
         <button
             type="button"
             tuiIconButton
             appearance="icon"
             class="button"
             size="xs"
-            title="Показать/Скрыть"
+            [title]="showHideText"
             [icon]="getIcon(item)"
             (click)="toggle(item)"
         ></button>
