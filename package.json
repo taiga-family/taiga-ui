@@ -10,7 +10,7 @@
         "start:aot": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng serve --configuration production",
         "start:ssr": "npm run build:ssr && npm run serve:ssr",
         "build:demo": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod --configuration=production",
-        "postbuild:demo": "node scripts/checkDist.js",
+        "postbuild:demo": "node scripts/checkDist.js && cp ./dist/demo/index.html ./dist/demo/404.html",
         "*** Workflow ***": "",
         "test": "ng test --browsers=ChromeHeadless --code-coverage=true --",
         "lint": "ng lint",
