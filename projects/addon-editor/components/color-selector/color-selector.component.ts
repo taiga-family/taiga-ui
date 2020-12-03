@@ -7,12 +7,12 @@ import {
     Output,
 } from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '@taiga-ui/addon-editor/tokens';
 import {TuiGradientDirection} from '@taiga-ui/addon-editor/types';
 import {getGradientData, parseColor, parseGradient} from '@taiga-ui/addon-editor/utils';
 import {tuiDefaultProp, tuiPure, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '@taiga-ui/addon-editor/tokens';
 
 const EMPTY_STOP: [number, number, number, number] = [0, 0, 0, 0];
 const DEFAULT_STEPS: ReadonlyArray<[number, [number, number, number, number]]> = [
