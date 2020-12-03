@@ -1,6 +1,6 @@
 <h3 class="title">Горизонтальная группировка</h3>
 <form class="group" [formGroup]="testForm">
-    <tui-group class="group" [collapsed]="true">
+    <div tuiGroup class="group" [collapsed]="true">
         <tui-radio-block
             contentAlign="right"
             formControlName="testValue"
@@ -25,11 +25,11 @@
         >
             Апельсины
         </tui-radio-block>
-    </tui-group>
+    </div>
 </form>
 <h3 class="title">Вертикальная группировка</h3>
 <form [formGroup]="testForm">
-    <tui-group class="group" orientation="vertical" [collapsed]="true">
+    <div tuiGroup class="group" orientation="vertical" [collapsed]="true">
         <tui-radio-block
             contentAlign="right"
             formControlName="testValue"
@@ -54,5 +54,5 @@
         >
             Апельсины
         </tui-radio-block>
-    </tui-group>
+    </div>
 </form>

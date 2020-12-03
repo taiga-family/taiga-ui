@@ -13,6 +13,7 @@ import {
     TuiModeModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiTableModeModule} from '@taiga-ui/core/directives/table-mode';
 import {
     TuiBadgeModule,
     TuiComboBoxModule,
@@ -45,6 +46,7 @@ import {ExampleTuiGroupComponent} from './group.component';
         TuiCurrencyPipeModule,
         TuiInputNumberModule,
         TuiModeModule,
+        TuiTableModeModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
         CommonModule,

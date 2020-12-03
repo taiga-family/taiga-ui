@@ -53,7 +53,7 @@ import {
     TuiScrollbarComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTableDirective,
+    TuiTableModeDirective,
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {ALLOWED_SPACE_REGEXP} from '@taiga-ui/kit/components/tag';
@@ -175,8 +175,8 @@ export class TuiInputTagComponent
         @Inject(TuiScrollService) private tuiScrollService: TuiScrollService,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Optional()
-        @Inject(TuiTableDirective)
-        private readonly tableMode: TuiTableDirective | null,
+        @Inject(TuiTableModeDirective)
+        private readonly tableMode: TuiTableModeDirective | null,
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,

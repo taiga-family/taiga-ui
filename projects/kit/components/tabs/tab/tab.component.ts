@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {TUI_IS_ANDROID, TUI_IS_IOS, TuiFocusVisibleService} from '@taiga-ui/cdk';
-import {TUI_MODE, TuiModeVariants} from '@taiga-ui/core';
+import {TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
@@ -31,7 +31,7 @@ export class TuiTabComponent {
     focusVisible = false;
 
     @HostBinding('attr.data-mode')
-    mode: TuiModeVariants | null = null;
+    mode: TuiBrightness | null = null;
 
     constructor(
         @Optional()
@@ -41,7 +41,7 @@ export class TuiTabComponent {
         @Inject(TUI_IS_IOS) isIos: boolean,
         @Inject(TUI_IS_ANDROID) isAndroid: boolean,
         @Inject(TUI_TAB_EVENT) event$: Observable<Event>,
-        @Inject(TUI_MODE) mode$: Observable<TuiModeVariants | null>,
+        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
     ) {

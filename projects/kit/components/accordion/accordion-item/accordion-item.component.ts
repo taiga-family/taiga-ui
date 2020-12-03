@@ -21,9 +21,8 @@ import {
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiModeDirective, TuiModeVariants, TuiSizeS} from '@taiga-ui/core';
+import {TuiBrightness, TuiModeDirective, TuiSizeS} from '@taiga-ui/core';
 import {TuiBorders} from '@taiga-ui/kit/enums';
-
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
 
 @Component({
@@ -107,7 +106,7 @@ export class TuiAccordionItemComponent
     }
 
     @HostBinding('attr.data-tui-host-mode')
-    get hostMode(): TuiModeVariants | null {
+    get hostMode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }
 

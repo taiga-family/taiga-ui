@@ -29,7 +29,6 @@ import {
     TuiButtonComponent,
     TuiHorizontalDirection,
     TuiModeDirective,
-    TuiModeVariants,
     TuiSizeS,
 } from '@taiga-ui/core';
 import {incorrectLengthMessage} from '@taiga-ui/kit/constants';
@@ -158,7 +157,7 @@ export class TuiPaginationComponent
         return this.size === 'm';
     }
 
-    get mode(): TuiModeVariants | null {
+    get mode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }
 
@@ -218,7 +217,7 @@ export class TuiPaginationComponent
         return this.index === index ? TuiAppearance.Primary : TuiAppearance.Flat;
     }
 
-    getSmallElementMode(index: number, mode: TuiModeVariants | null): TuiAppearance {
+    getSmallElementMode(index: number, mode: TuiBrightness | null): TuiAppearance {
         return this.index === index && mode !== TuiBrightness.Dark
             ? TuiAppearance.Primary
             : TuiAppearance.Secondary;

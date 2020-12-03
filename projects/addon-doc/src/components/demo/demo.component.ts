@@ -18,7 +18,7 @@ import {
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {UrlSerializer} from '@angular/router';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {TuiModeDirective, TuiModeVariants} from '@taiga-ui/core';
+import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {startWith, takeUntil} from 'rxjs/operators';
 import {TUI_DOC_DEMO_TEXTS} from '../../tokens/i18n';
@@ -49,7 +49,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     opaque = true;
     modeControl = new FormControl();
 
-    mode: TuiModeVariants | null = null;
+    mode: TuiBrightness | null = null;
     readonly change$ = new Subject<void>();
 
     @ContentChild(TemplateRef)

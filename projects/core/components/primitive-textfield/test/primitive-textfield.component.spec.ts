@@ -15,7 +15,6 @@ import {TuiHintControllerModule} from '../../../directives/hint-controller/hint-
 import {TuiModeModule} from '../../../directives/mode/mode.module';
 import {TuiTextfieldControllerModule} from '../../../directives/textfield-controller';
 import {TuiBrightness} from '../../../enums/brightness';
-import {TuiModeVariants} from '../../../types/mode-variants';
 import {TuiSizeL, TuiSizeS} from '../../../types/size';
 import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
 import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
@@ -63,7 +62,7 @@ describe('PrimitiveTextfield', () => {
 
         disabled = false;
 
-        mode: TuiModeVariants | null = null;
+        mode: TuiBrightness | null = null;
     }
 
     let fixture: ComponentFixture<TestComponent>;

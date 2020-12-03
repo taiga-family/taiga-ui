@@ -5,13 +5,13 @@
     display: block;
     color: var(--tui-negative);
     word-wrap: break-word;
-
-    &[data-tui-host-mode='light'] {
-        color: var(--tui-negative-night);
-    }
 }
 
 .message-text {
     margin-top: 4px;
     white-space: pre-wrap;
+
+    &_light {
+        color: var(--tui-negative-night);
+    }
 }

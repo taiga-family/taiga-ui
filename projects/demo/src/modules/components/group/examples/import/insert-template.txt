@@ -1,4 +1,4 @@
-<tui-group class="group">
+<div tuiGroup class="group">
     <tui-input formControlName="testValue"
                tuiTextfieldExampleText="Номер дома"
                tuiHintContent="Пишите только цифру">

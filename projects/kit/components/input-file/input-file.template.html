@@ -39,7 +39,7 @@
     </label>
 </tui-wrapper>
 
-<tui-group class="files" orientation="vertical" [collapsed]="true">
+<section tuiGroup class="files" orientation="vertical" [collapsed]="true">
     <tui-file
         *ngFor="let file of rejectedFiles"
         automation-id="tui-input-file__error"
@@ -69,4 +69,4 @@
         [file]="file"
         (fileRemoved)="removeFile(file)"
     ></tui-file>
-</tui-group>
+</section>

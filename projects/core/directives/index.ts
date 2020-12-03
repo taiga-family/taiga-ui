@@ -9,4 +9,5 @@ export * from '@taiga-ui/core/directives/manual-hint';
 export * from '@taiga-ui/core/directives/mode';
 export * from '@taiga-ui/core/directives/pointer-hint';
 export * from '@taiga-ui/core/directives/scroll-into-view';
+export * from '@taiga-ui/core/directives/table-mode';
 export * from '@taiga-ui/core/directives/textfield-controller';

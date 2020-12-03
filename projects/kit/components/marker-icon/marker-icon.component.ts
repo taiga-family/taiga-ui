@@ -10,7 +10,6 @@ import {
     MODE_PROVIDER,
     TUI_MODE,
     TuiBrightness,
-    TuiModeVariants,
     TuiSizeXL,
     TuiSizeXS,
 } from '@taiga-ui/core';
@@ -38,9 +37,9 @@ export class TuiMarkerIconComponent {
     @tuiDefaultProp()
     src = '';
 
-    private globalMode: TuiModeVariants | null = null;
+    private globalMode: TuiBrightness | null = null;
 
-    constructor(@Inject(TUI_MODE) mode$: Observable<TuiModeVariants | null>) {
+    constructor(@Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>) {
         mode$.subscribe(mode => {
             this.globalMode = mode;
         });

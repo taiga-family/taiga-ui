@@ -22,8 +22,8 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiAppearance,
+    TuiBrightness,
     TuiModeDirective,
-    TuiModeVariants,
     TuiSizeL,
     TuiSizeXS,
 } from '@taiga-ui/core';
@@ -112,7 +112,7 @@ export class TuiToggleComponent
     }
 
     @HostBinding('attr.data-tui-host-mode')
-    get hostMode(): TuiModeVariants | null {
+    get hostMode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }
 

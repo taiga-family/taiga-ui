@@ -46,11 +46,13 @@ import {
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {
+    MODE_PROVIDER,
     TUI_DIGIT_REGEXP,
-    TuiModeDirective,
-    TuiModeVariants,
+    TUI_MODE,
+    TuiBrightness,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
+import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 const icons = {
@@ -69,6 +71,7 @@ const icons = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
+        MODE_PROVIDER,
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputCardGroupedComponent),
@@ -116,6 +119,9 @@ export class TuiInputCardGroupedComponent
         guide: false,
     };
 
+    @HostBinding('attr.data-tui-host-mode')
+    mode: TuiBrightness | null = null;
+
     readonly maskCard: TuiTextMaskOptions = {
         mask: TUI_CARD_MASK,
         guide: false,
@@ -158,13 +164,15 @@ export class TuiInputCardGroupedComponent
         @Inject(TuiDestroyService)
         destroy$: TuiDestroyService,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
     ) {
         super(control, changeDetectorRef);
 
         this.isMobile = isMobile;
+
+        mode$.subscribe(mode => {
+            this.mode = mode;
+        });
 
         // Prevent scrolling when focusing hidden field with Tab
         typedFromEvent(this.elementRef.nativeElement, 'scroll')
@@ -232,11 +240,6 @@ export class TuiInputCardGroupedComponent
         return !this.value || this.value.card.length < 6
             ? null
             : this.value.card.substr(0, 6);
-    }
-
-    @HostBinding('attr.data-tui-host-mode')
-    get mode(): TuiModeVariants | null {
-        return this.modeDirective && this.modeDirective.mode;
     }
 
     get paymentSystem(): TuiPaymentSystem | null {

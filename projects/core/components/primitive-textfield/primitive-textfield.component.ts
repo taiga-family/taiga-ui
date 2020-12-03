@@ -30,20 +30,16 @@ import {
     TUI_HINT_WATCHED_CONTROLLER,
     TuiHintControllerDirective,
 } from '@taiga-ui/core/directives/hint-controller';
-import {TuiModeDirective, TuiTableDirective} from '@taiga-ui/core/directives/mode';
+import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
+import {TuiTableModeDirective} from '@taiga-ui/core/directives/table-mode';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTIFELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives/textfield-controller';
-import {TuiAppearance} from '@taiga-ui/core/enums';
+import {TuiAppearance, TuiBrightness} from '@taiga-ui/core/enums';
 import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core/tokens';
-import {
-    TuiHorizontalDirection,
-    TuiModeVariants,
-    TuiSizeL,
-    TuiSizeS,
-} from '@taiga-ui/core/types';
+import {TuiHorizontalDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {getPadding, sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
 
@@ -128,8 +124,8 @@ export class TuiPrimitiveTextfieldComponent
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
         @Optional()
-        @Inject(TuiTableDirective)
-        private readonly tableMode: TuiTableDirective | null,
+        @Inject(TuiTableModeDirective)
+        private readonly tableMode: TuiTableModeDirective | null,
         @Inject(TUI_TEXTIFELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
@@ -278,7 +274,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     @HostBinding('attr.data-tui-host-mode')
-    get hostMode(): TuiModeVariants | null {
+    get hostMode(): TuiBrightness | null {
         return this.modeDirective && this.modeDirective.mode;
     }
 

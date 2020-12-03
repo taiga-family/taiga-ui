@@ -3,7 +3,7 @@ import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {USER_AGENT} from '@ng-web-apis/common';
 import {TuiDocDemoComponent} from '@taiga-ui/addon-doc';
 import {isIE, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
-import {TuiModeVariants} from '@taiga-ui/core';
+import {TuiBrightness} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {changeDetection} from '../../../change-detection-strategy';
@@ -55,7 +55,7 @@ export class TuiCustomizationComponent implements AfterViewInit {
         return this.keys.some(this.isDark);
     }
 
-    get mode(): TuiModeVariants | null {
+    get mode(): TuiBrightness | null {
         return (this.demo && this.demo.mode) || null;
     }
 

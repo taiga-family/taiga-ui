@@ -1,9 +1,9 @@
 import {InjectionToken} from '@angular/core';
-import {TuiModeVariants} from '@taiga-ui/core/types';
+import {TuiBrightness} from '@taiga-ui/core/enums';
 import {Observable} from 'rxjs';
 
 export const TUI_MODE: InjectionToken<
-    Observable<TuiModeVariants | null>
-> = new InjectionToken<Observable<TuiModeVariants | null>>(
+    Observable<TuiBrightness | null>
+> = new InjectionToken<Observable<TuiBrightness | null>>(
     'Mode stream for private providers',
 );
