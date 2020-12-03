@@ -24,8 +24,7 @@
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                <!--TODO: i18n-->
-                {{isMobile ? 'Номер' : 'Номер карты'}}
+                {{isMobile ? cardNumberTexts[0] : cardNumberTexts[1]}}
             </span>
             <span
                 class="collapsed"
@@ -74,8 +73,7 @@
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                <!--TODO: i18n-->
-                {{isMobile ? 'Срок' : 'Срок действия'}}
+                {{isMobile ? cardExpiryTexts[0] : cardExpiryTexts[1]}}
             </span>
             <input
                 #inputExpire

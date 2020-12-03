@@ -7,7 +7,10 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
+import {
+    TUI_LUHN_DEFAULT_ERROR_MESSAGE,
+    tuiCreateLuhnValidator,
+} from '@taiga-ui/addon-commerce';
 import {changeDetection} from '../../../change-detection-strategy';
 import {LogService} from '../../app/log.service';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
@@ -86,12 +89,19 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiReactiveFiel
     autocompleteEnabledExpire = false;
 
     control = new FormGroup({
-        card: new FormControl('', [Validators.required, tuiCreateLuhnValidator()]),
+        card: new FormControl('', [
+            Validators.required,
+            tuiCreateLuhnValidator(this.defaultLuhnMessage),
+        ]),
         expire: new FormControl('', Validators.required),
         cvc: new FormControl('', Validators.required),
     });
 
-    constructor(@Inject(LogService) private readonly log: LogService) {
+    constructor(
+        @Inject(LogService) private readonly log: LogService,
+        @Inject(TUI_LUHN_DEFAULT_ERROR_MESSAGE)
+        private readonly defaultLuhnMessage: string,
+    ) {
         super();
     }
 
