@@ -280,7 +280,7 @@ describe('FieldError', () => {
                 const errorText = getErrorText(pageObject);
 
                 expect(isErrorVisible(pageObject)).toBe(true);
-                expect(errorText).toBe('Поле заполнено неверно');
+                expect(errorText).toBe('Value is invalid');
             });
 
             it('Для кастомного валидатора со строкой показан соответствующий текст ошибки', () => {
@@ -341,7 +341,7 @@ describe('FieldError', () => {
                 fixture.detectChanges();
 
                 expect(isErrorVisible(pageObject)).toBe(true);
-                expect(getErrorText(pageObject)).toBe('Поле заполнено неверно');
+                expect(getErrorText(pageObject)).toBe('Value is invalid');
             });
 
             it('Изменение порядка меняет текст ошибки', () => {

@@ -21,7 +21,7 @@ describe('Notification', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiNotificationComponent)
+        @ViewChild(TuiNotificationComponent, {static: true})
         component: TuiNotificationComponent;
 
         hasCloseButton = true;

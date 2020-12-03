@@ -11,7 +11,7 @@ describe('NotificationsHost', () => {
         template: ` <tui-notifications-host></tui-notifications-host> `,
     })
     class TestComponent {
-        @ViewChild(TuiNotificationsHostComponent)
+        @ViewChild(TuiNotificationsHostComponent, {static: true})
         component: TuiNotificationsHostComponent;
     }
 

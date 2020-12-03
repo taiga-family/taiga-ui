@@ -55,7 +55,7 @@ describe('InputTag', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputTagComponent)
+        @ViewChild(TuiInputTagComponent, {static: true})
         component: TuiInputTagComponent;
 
         control = new FormControl([TAG]);

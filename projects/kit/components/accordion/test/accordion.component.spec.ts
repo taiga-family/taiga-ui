@@ -91,7 +91,7 @@ describe('Accordion', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiAccordionComponent)
+        @ViewChild(TuiAccordionComponent, {static: true})
         component!: TuiAccordionComponent;
 
         @ViewChildren(TuiAccordionItemComponent)

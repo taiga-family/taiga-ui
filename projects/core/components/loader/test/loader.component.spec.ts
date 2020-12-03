@@ -27,7 +27,7 @@ describe('Loader', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiLoaderComponent)
+        @ViewChild(TuiLoaderComponent, {static: true})
         component: TuiLoaderComponent;
 
         size: TuiSizeXS | TuiSizeXL = 'm';

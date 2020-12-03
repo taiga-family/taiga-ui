@@ -18,7 +18,7 @@ describe('TablePagination', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiTablePaginationComponent)
+        @ViewChild(TuiTablePaginationComponent, {static: true})
         component!: TuiTablePaginationComponent;
 
         page = 3;

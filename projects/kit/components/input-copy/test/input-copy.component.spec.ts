@@ -19,7 +19,7 @@ describe('InputCopy', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputCopyComponent)
+        @ViewChild(TuiInputCopyComponent, {static: true})
         component!: TuiInputCopyComponent;
 
         control = new FormControl();

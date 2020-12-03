@@ -26,7 +26,7 @@ describe('Money', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiMoneyComponent)
+        @ViewChild(TuiMoneyComponent, {static: true})
         component!: TuiMoneyComponent;
 
         value = 237;

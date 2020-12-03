@@ -34,7 +34,7 @@ describe('Breadcrumbs', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiBreadcrumbsComponent)
+        @ViewChild(TuiBreadcrumbsComponent, {static: true})
         component: TuiBreadcrumbsComponent;
 
         items = ITEMS;

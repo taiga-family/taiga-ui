@@ -21,7 +21,7 @@ describe('InputInline', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputInlineComponent)
+        @ViewChild(TuiInputInlineComponent, {static: true})
         component: TuiInputInlineComponent;
 
         control = new FormControl('');

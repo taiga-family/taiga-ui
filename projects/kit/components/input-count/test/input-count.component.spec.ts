@@ -26,7 +26,7 @@ describe('InputCount', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputCountComponent)
+        @ViewChild(TuiInputCountComponent, {static: true})
         component: TuiInputCountComponent;
 
         control = new FormControl();

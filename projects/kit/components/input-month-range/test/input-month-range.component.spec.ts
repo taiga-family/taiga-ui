@@ -14,7 +14,7 @@ describe('InputMonthRange', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputMonthRangeComponent)
+        @ViewChild(TuiInputMonthRangeComponent, {static: true})
         component: TuiInputMonthRangeComponent;
 
         control = new FormControl(null);

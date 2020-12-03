@@ -14,7 +14,7 @@ describe('TableBarsHost', () => {
         template: ` <tui-table-bars-host></tui-table-bars-host> `,
     })
     class TestComponent {
-        @ViewChild(TuiTableBarsHostComponent)
+        @ViewChild(TuiTableBarsHostComponent, {static: true})
         component: TuiTableBarsHostComponent;
     }
 

@@ -11,7 +11,7 @@ describe('PrimitiveRangeCalendar component', () => {
         template: ` <tui-primitive-calendar-range></tui-primitive-calendar-range> `,
     })
     class TestComponent {
-        @ViewChild(TuiPrimitiveCalendarRangeComponent)
+        @ViewChild(TuiPrimitiveCalendarRangeComponent, {static: true})
         component!: TuiPrimitiveCalendarRangeComponent;
     }
 

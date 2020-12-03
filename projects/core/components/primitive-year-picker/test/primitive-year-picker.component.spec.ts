@@ -21,7 +21,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiPrimitiveYearPickerComponent)
+        @ViewChild(TuiPrimitiveYearPickerComponent, {static: true})
         component: TuiPrimitiveYearPickerComponent;
 
         min = TUI_FIRST_DAY;

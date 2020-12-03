@@ -42,7 +42,7 @@ describe('Filter', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiFilterComponent)
+        @ViewChild(TuiFilterComponent, {static: true})
         component: TuiFilterComponent<any>;
 
         badgeHandler: TuiHandler<any, number> = item => Number(item);

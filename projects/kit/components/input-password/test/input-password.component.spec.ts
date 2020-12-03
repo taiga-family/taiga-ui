@@ -19,7 +19,7 @@ describe('InputPassword', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputPasswordComponent)
+        @ViewChild(TuiInputPasswordComponent, {static: true})
         component!: TuiInputPasswordComponent;
 
         control = new FormControl();

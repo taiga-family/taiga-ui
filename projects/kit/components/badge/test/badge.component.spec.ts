@@ -21,7 +21,7 @@ describe('Badge', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiBadgeComponent)
+        @ViewChild(TuiBadgeComponent, {static: true})
         component: TuiBadgeComponent;
 
         hoverable = false;

@@ -25,7 +25,7 @@ describe('Tag', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiTagComponent)
+        @ViewChild(TuiTagComponent, {static: true})
         component!: TuiTagComponent;
 
         default = false;

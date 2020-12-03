@@ -71,7 +71,7 @@ describe('NotificationAlertComponent', () => {
         template: ` <tui-notification-alert [item]="alert"></tui-notification-alert> `,
     })
     class TestComponent {
-        @ViewChild(TuiNotificationAlertComponent)
+        @ViewChild(TuiNotificationAlertComponent, {static: true})
         component: TuiNotificationAlertComponent<string, string>;
 
         alert = new NotificationAlert(observerMock, content, {label});

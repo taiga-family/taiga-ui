@@ -19,7 +19,7 @@ describe('Range', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiRangeComponent)
+        @ViewChild(TuiRangeComponent, {static: true})
         component: TuiRangeComponent;
 
         testValue = new FormControl([3, 5]);

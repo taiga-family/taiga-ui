@@ -19,7 +19,7 @@ describe('Avatar', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiAvatarComponent)
+        @ViewChild(TuiAvatarComponent, {static: true})
         component: TuiAvatarComponent;
 
         avatarUrl: string | null = 'someUrl';

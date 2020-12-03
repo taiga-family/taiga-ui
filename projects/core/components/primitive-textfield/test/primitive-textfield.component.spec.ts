@@ -39,7 +39,7 @@ describe('PrimitiveTextfield', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiPrimitiveTextfieldComponent)
+        @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
         component: TuiPrimitiveTextfieldComponent;
 
         @ViewChild('submit')

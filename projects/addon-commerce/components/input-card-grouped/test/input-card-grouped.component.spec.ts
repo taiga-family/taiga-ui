@@ -17,7 +17,7 @@ describe('InputCardGrouped', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputCardGroupedComponent)
+        @ViewChild(TuiInputCardGroupedComponent, {static: true})
         component: TuiInputCardGroupedComponent;
 
         control = new FormControl('');

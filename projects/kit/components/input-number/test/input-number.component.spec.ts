@@ -37,7 +37,7 @@ describe('InputNumber', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputNumberComponent)
+        @ViewChild(TuiInputNumberComponent, {static: true})
         component!: TuiInputNumberComponent;
 
         control = new FormControl(12345.0);

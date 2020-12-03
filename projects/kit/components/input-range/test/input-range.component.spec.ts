@@ -30,7 +30,7 @@ describe('InputRange', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputRangeComponent)
+        @ViewChild(TuiInputRangeComponent, {static: true})
         component: TuiInputRangeComponent;
 
         control = new FormControl([0, 1]);

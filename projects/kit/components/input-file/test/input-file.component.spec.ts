@@ -26,7 +26,7 @@ describe('InputFile', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputFileComponent)
+        @ViewChild(TuiInputFileComponent, {static: true})
         component!: TuiInputFileComponent;
 
         files: ReadonlyArray<TuiFileLike> = [

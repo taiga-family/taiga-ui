@@ -21,7 +21,7 @@ describe('Island', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiIslandComponent)
+        @ViewChild(TuiIslandComponent, {static: true})
         component: TuiIslandComponent;
 
         hoverable = false;

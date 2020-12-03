@@ -69,7 +69,7 @@ describe('Input', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputComponent)
+        @ViewChild(TuiInputComponent, {static: true})
         component: TuiInputComponent;
 
         @ViewChild('submit')

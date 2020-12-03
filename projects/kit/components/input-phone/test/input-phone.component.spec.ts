@@ -28,7 +28,7 @@ describe('InputPhone', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiInputPhoneComponent)
+        @ViewChild(TuiInputPhoneComponent, {static: true})
         component!: TuiInputPhoneComponent;
 
         control = new FormControl('+79110330102');

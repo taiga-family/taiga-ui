@@ -12,7 +12,7 @@ describe('InputMonth', () => {
         template: ` <tui-input-month [formControl]="control"></tui-input-month> `,
     })
     class TestComponent {
-        @ViewChild(TuiInputMonthComponent)
+        @ViewChild(TuiInputMonthComponent, {static: true})
         component: TuiInputMonthComponent;
 
         control = new FormControl(null);

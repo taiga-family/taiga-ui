@@ -51,7 +51,7 @@ describe('Select', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiSelectComponent)
+        @ViewChild(TuiSelectComponent, {static: true})
         component!: TuiSelectComponent<string | Beast>;
         items = ITEMS;
         control = new FormControl();

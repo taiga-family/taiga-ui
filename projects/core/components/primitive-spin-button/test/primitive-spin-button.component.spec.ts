@@ -13,7 +13,7 @@ describe('primitiveSpinButton', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiPrimitiveSpinButtonComponent)
+        @ViewChild(TuiPrimitiveSpinButtonComponent, {static: true})
         component: TuiPrimitiveSpinButtonComponent;
     }
 

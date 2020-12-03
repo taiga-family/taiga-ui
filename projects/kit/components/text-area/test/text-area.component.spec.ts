@@ -30,7 +30,7 @@ describe('TextArea', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiTextAreaComponent)
+        @ViewChild(TuiTextAreaComponent, {static: true})
         component!: TuiTextAreaComponent;
 
         control = new FormControl();

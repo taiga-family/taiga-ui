@@ -21,7 +21,7 @@ describe('Calendar', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiCalendarComponent)
+        @ViewChild(TuiCalendarComponent, {static: true})
         component: TuiCalendarComponent;
 
         min = TuiDay.currentLocal().append({month: -2});

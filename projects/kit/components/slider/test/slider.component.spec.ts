@@ -26,7 +26,7 @@ describe('Slider', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiSliderComponent)
+        @ViewChild(TuiSliderComponent, {static: true})
         component: TuiSliderComponent;
 
         testValue = new FormControl(5);
