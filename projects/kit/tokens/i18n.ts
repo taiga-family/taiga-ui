@@ -13,6 +13,17 @@ export const TUI_MORE_WORD = new InjectionToken<string>(`i18n 'more' word`, {
     factory: () => 'More',
 });
 
+export const TUI_OTHER_DATE_TEXT = new InjectionToken<string>(`i18n 'Other date' text`, {
+    factory: () => 'Other date...',
+});
+
+export const TUI_UNFINISHED_TEXT = new InjectionToken<string>(
+    `i18n unfinished validator text`,
+    {
+        factory: () => 'Finish filling the field',
+    },
+);
+
 /**
  * Works with a tuple
  * [@string 'choose day', @param 'choose range']
