@@ -40,22 +40,4 @@ describe('TuiResizeService', () => {
             done();
         }, 50);
     });
-
-    it('emits when element is resized', done => {
-        let emitCounter = 0;
-        const resize$ = TestBed.inject(TuiResizeService);
-
-        resize$.subscribe(() => {
-            emitCounter++;
-        });
-
-        setTimeout(() => {
-            element.style.width = '100px';
-        }, 10);
-
-        setTimeout(() => {
-            expect(emitCounter).toEqual(2);
-            done();
-        }, 50);
-    });
 });
