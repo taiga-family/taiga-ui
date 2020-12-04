@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="f2c65949b03d7e84ce92e294a4dda73bb77eb3f3" datatype="html">
+        <source>
+    This guide will help you correctly install Taiga UI
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/modules/app/home/home.template.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="859e614f3c1bf48a3842b3be86336fc56fd35786" datatype="html">
+        <source>Create a project</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/modules/app/home/home.template.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6d49d7be83635cae4b86375d33469aaa72c2a45e" datatype="html">
+        <source>Install libraries</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/modules/app/home/home.template.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d5e4442898f1021d6a4ce2e8e85582cac2abc2fb" datatype="html">
+        <source>Basic styles</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/modules/app/home/home.template.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="220243d803d012c1da4da84fb6b381b0eed5b90f" datatype="html">
+        <source>Root component</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/modules/app/home/home.template.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fc564b35082b3ecc26e3fbbb9e8971fb806fa351" datatype="html">
+        <source>Optional components</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/modules/app/home/home.template.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c51604c3bfceeac96ceabb51c1a0caee70f85aa6" datatype="html">
+        <source>Icons</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/modules/app/home/home.template.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daad089ce86fb00b12d9eb7ca5e88c3feb9da2a7" datatype="html">
+        <source>Theming</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/modules/app/home/home.template.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="85c84dd8400cf69996bfefce43b7554526fe0ae7" datatype="html">
+        <source>Getting started</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/modules/app/getting-started/getting-started.template.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
