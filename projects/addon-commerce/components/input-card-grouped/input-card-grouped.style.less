@@ -1,4 +1,4 @@
-@import 'taiga-ui-angular-local';
+@import 'taiga-ui-local';
 
 @width-full: 392px;
 @width-mobile: 288px;
@@ -11,7 +11,7 @@
 
 :host {
     display: block;
-    height: var(--tui-height-extra-large);
+    height: @height-extra-large;
     width: @width-full;
     border-radius: var(--tui-radius);
     overflow: hidden;
@@ -77,7 +77,7 @@
     &_inactive,
     :host._disabled &_inactive {
         color: transparent;
-        transition: color 0s @animation-duration;
+        transition: color 0s 0.3s;
     }
 }
 
@@ -105,7 +105,7 @@
     .textfield-input();
 
     &_card {
-        transition: color 0s @animation-duration;
+        transition: color 0s 0.3s;
 
         :host._disabled & {
             transition: color 0s;

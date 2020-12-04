@@ -1,4 +1,4 @@
-@import 'taiga-ui-angular-local';
+@import 'taiga-ui-local';
 
 :host {
     .center-all();
@@ -12,7 +12,7 @@
         max-width: 280px;
         border-radius: 2px;
         text-align: left;
-        box-shadow: 0 24px 24px 0 fade(@color-text, 40%);
+        box-shadow: 0 24px 24px 0 fade(#000, 32%);
     }
 
     &._ios {
@@ -27,7 +27,7 @@
     font-size: 16px;
 
     :host._ios & {
-        font-weight: @font-bold;
+        font-weight: bold;
         font-size: 18px;
     }
 }
