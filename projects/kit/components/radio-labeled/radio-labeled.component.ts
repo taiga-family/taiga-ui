@@ -20,7 +20,7 @@ import {
     TuiIdentityMatcher,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiModeDirective, TuiModeVariants, TuiSizeL} from '@taiga-ui/core';
+import {TuiBrightness, TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
 @Component({
@@ -84,7 +84,7 @@ export class TuiRadioLabeledComponent<T>
     }
 
     @HostBinding('attr.data-tui-host-mode')
-    get mode(): TuiModeVariants | null {
+    get mode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }
 

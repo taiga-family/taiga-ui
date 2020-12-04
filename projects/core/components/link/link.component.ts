@@ -19,8 +19,8 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
-import {TuiLinkMode} from '@taiga-ui/core/enums';
-import {TuiHorizontalDirection, TuiModeVariants} from '@taiga-ui/core/types';
+import {TuiBrightness, TuiLinkMode} from '@taiga-ui/core/enums';
+import {TuiHorizontalDirection} from '@taiga-ui/core/types';
 
 // @bad TODO: Think about extending Interactive
 @Component({
@@ -59,7 +59,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
 
     @Input()
     @tuiDefaultProp()
-    mode: TuiLinkMode | TuiModeVariants | null = null;
+    mode: TuiLinkMode | null = null;
 
     @HostBinding('class._focus-visible')
     focusVisible = false;
@@ -82,7 +82,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     }
 
     @HostBinding('attr.data-tui-host-mode')
-    get hostMode(): TuiLinkMode | TuiModeVariants | null {
+    get hostMode(): TuiLinkMode | TuiBrightness | null {
         return this.mode !== null ||
             this.modeDirective === null ||
             this.modeDirective.mode === null

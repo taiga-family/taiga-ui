@@ -1,6 +1,9 @@
-<p><code>tuiTable</code> директива содержится в <code>TuiModeModule</code></p>
+<p>
+    <code>tuiTableMode</code> директива содержится в
+    <code>TuiTableModeModule</code>
+</p>
 
-<form tuiTable [formGroup]="form">
+<form tuiTableMode [formGroup]="form">
     <table class="tui-table table">
         <thead>
             <tr>
@@ -13,7 +16,7 @@
         </thead>
     </table>
     <div class="table">
-        <tui-group class="row" [collapsed]="true">
+        <div tuiGroup class="row" [collapsed]="true">
             <tui-input
                 class="cell cell_name"
                 tuiTextfieldSize="m"
@@ -60,8 +63,8 @@
             >
                 Сумма
             </tui-input-number>
-        </tui-group>
-        <tui-group class="row" [collapsed]="true">
+        </div>
+        <div tuiGroup class="row" [collapsed]="true">
             <tui-input
                 class="cell cell_name"
                 tuiTextfieldSize="m"
@@ -108,6 +111,6 @@
             >
                 Сумма
             </tui-input-number>
-        </tui-group>
+        </div>
     </div>
 </form>

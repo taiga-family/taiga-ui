@@ -15,6 +15,7 @@ import {
     TuiModeModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
+    TuiTableModeModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -55,6 +56,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiMoneyModule,
         TuiLinkModule,
         TuiModeModule,
+        TuiTableModeModule,
         TuiInputDateModule,
         TuiRepeatTimesModule,
         TuiSvgModule,

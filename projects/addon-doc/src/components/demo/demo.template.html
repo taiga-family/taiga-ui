@@ -8,7 +8,7 @@
             >
         </ng-template>
     </tui-tooltip>
-    <tui-group class="tui-space_left-3" [collapsed]="true">
+    <div tuiGroup class="tui-space_left-3" [collapsed]="true">
         <tui-radio-block
             class="tui-group__auto-width-item"
             size="s"
@@ -39,7 +39,7 @@
         >
             dark
         </tui-radio-block>
-    </tui-group>
+    </div>
     <tui-checkbox-labeled
         class="tui-space_left-3"
         size="m"
@@ -82,7 +82,7 @@
                     <pre class="value">
 Form data: {{testForm.value | json}}</pre
                     >
-                    <tui-group class="tui-space_top-3">
+                    <div tuiGroup class="tui-space_top-3">
                         <tui-select
                             class="select"
                             tuiTextfieldSize="s"
@@ -112,7 +112,7 @@ Form data: {{testForm.value | json}}</pre
                         >
                             Submit
                         </button>
-                    </tui-group>
+                    </div>
                 </ng-template>
             </tui-expand>
         </form>

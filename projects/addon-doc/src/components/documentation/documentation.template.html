@@ -110,7 +110,7 @@
                             (valueChange)="propertyConnector.onValueChange($event)"
                         ></tui-primitive-textfield>
 
-                        <tui-group *ngSwitchCase="'color'">
+                        <div *ngSwitchCase="'color'" tuiGroup>
                             <tui-primitive-textfield
                                 tuiTextfieldType="color"
                                 tuiTextfieldSize="m"
@@ -128,7 +128,7 @@
                             >
                                 Opacity
                             </tui-input-count>
-                        </tui-group>
+                        </div>
 
                         <tui-input-count
                             *ngSwitchCase="'number'"

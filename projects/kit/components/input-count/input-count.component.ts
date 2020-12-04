@@ -29,7 +29,7 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTableDirective,
+    TuiTableModeDirective,
     TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
@@ -92,8 +92,8 @@ export class TuiInputCountComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Optional()
-        @Inject(TuiTableDirective)
-        private readonly tableMode: TuiTableDirective | null,
+        @Inject(TuiTableModeDirective)
+        private readonly tableMode: TuiTableModeDirective | null,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PLUS_MINUS_TEXTS)

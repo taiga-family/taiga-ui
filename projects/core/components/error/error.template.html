@@ -2,6 +2,7 @@
     *ngIf="!!error"
     automation-id="tui-error__text"
     class="message-text"
+    [class.message-text_light]="(mode$ | async) === 'light'"
     [content]="error.message || defauleErrorMessage"
     [context]="error.context || {}"
     [@tuiHeightCollapse]

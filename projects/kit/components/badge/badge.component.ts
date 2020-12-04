@@ -6,13 +6,7 @@ import {
     Input,
 } from '@angular/core';
 import {tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiModeVariants,
-    TuiSizeL,
-    TuiSizeS,
-} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/enums';
 import {Observable} from 'rxjs';
 
@@ -44,9 +38,9 @@ export class TuiBadgeComponent {
     hoverable = false;
 
     @HostBinding('attr.data-tui-host-mode')
-    mode: TuiModeVariants | null = null;
+    mode: TuiBrightness | null = null;
 
-    constructor(@Inject(TUI_MODE) mode$: Observable<TuiModeVariants | null>) {
+    constructor(@Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>) {
         mode$.subscribe(mode => {
             this.mode = mode;
         });

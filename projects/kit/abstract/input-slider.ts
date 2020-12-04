@@ -9,10 +9,10 @@ import {
 } from '@taiga-ui/cdk';
 import {
     maskedNumberStringToNumber,
+    TuiBrightness,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
     TuiModeDirective,
-    TuiModeVariants,
     TuiPluralize,
     TuiSizeL,
     TuiTextMaskOptions,
@@ -115,7 +115,7 @@ export abstract class AbstractTuiInputSlider<T>
     }
 
     @HostBinding('attr.data-tui-host-mode')
-    get hostMode(): TuiModeVariants | null {
+    get hostMode(): TuiBrightness | null {
         return this.modeDirective && this.modeDirective.mode;
     }
 

@@ -19,7 +19,7 @@ import {
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiModeDirective, TuiModeVariants, TuiSizeL} from '@taiga-ui/core';
+import {TuiBrightness, TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 
 @Component({
@@ -67,7 +67,7 @@ export class TuiCheckboxLabeledComponent
     }
 
     @HostBinding('attr.data-tui-host-mode')
-    get hostMode(): TuiModeVariants | null {
+    get hostMode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }
 

@@ -1,5 +1,5 @@
 <tui-hosted-dropdown [content]="dropdown" [(open)]="open">
-    <tui-group>
+    <div tuiGroup>
         <button
             tuiButton
             type="button"
@@ -24,7 +24,7 @@
                 [class.icon_rotated]="open"
             ></tui-svg>
         </ng-template>
-    </tui-group>
+    </div>
 </tui-hosted-dropdown>
 <ng-template #dropdown let-activeZone>
     <p class="margin">

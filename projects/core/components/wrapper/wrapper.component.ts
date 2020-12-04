@@ -6,9 +6,8 @@ import {
     Input,
 } from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiInteractiveState} from '@taiga-ui/core/enums';
+import {TuiBrightness, TuiInteractiveState} from '@taiga-ui/core/enums';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiModeVariants} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 
 import {TUI_WRAPPER_PROVIDERS} from './wrapper.providers';
@@ -44,11 +43,11 @@ export class TuiWrapperComponent {
     appearance = '';
 
     @HostBinding('attr.data-mode')
-    mode: TuiModeVariants | null = null;
+    mode: TuiBrightness | null = null;
 
     constructor(
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TUI_MODE) mode$: Observable<TuiModeVariants | null>,
+        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
     ) {
         mode$.subscribe(mode => {
             this.mode = mode;

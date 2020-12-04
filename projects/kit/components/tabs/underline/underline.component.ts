@@ -17,7 +17,7 @@ import {
     TuiDestroyService,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiModeVariants} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {Observable, of, Subject} from 'rxjs';
 import {
@@ -50,7 +50,7 @@ export class TuiUnderlineComponent {
     readonly isAndroid: boolean;
 
     @HostBinding('attr.data-mode')
-    mode: TuiModeVariants | null = null;
+    mode: TuiBrightness | null = null;
 
     private readonly element$ = new Subject<HTMLElement | null>();
 
@@ -63,7 +63,7 @@ export class TuiUnderlineComponent {
         @Inject(TUI_MOBILE_AWARE) mobileAware: boolean,
         @Inject(TUI_IS_IOS) isIos: boolean,
         @Inject(TUI_IS_ANDROID) isAndroid: boolean,
-        @Inject(TUI_MODE) mode$: Observable<TuiModeVariants | null>,
+        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
     ) {
         this.isIos = mobileAware && isIos;
         this.isAndroid = mobileAware && isAndroid;

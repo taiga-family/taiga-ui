@@ -15,7 +15,7 @@ import {
     MODE_PROVIDER,
     sizeBigger,
     TUI_MODE,
-    TuiModeVariants,
+    TuiBrightness,
     TuiSizeL,
     TuiSizeS,
     TuiSizeXS,
@@ -98,7 +98,7 @@ export class TuiTagComponent {
     editedText: string | null = null;
 
     @HostBinding('attr.data-tui-host-mode')
-    mode: TuiModeVariants | null = null;
+    mode: TuiBrightness | null = null;
 
     @ViewChild('input', {read: ElementRef})
     set input(input: ElementRef<HTMLInputElement>) {
@@ -109,7 +109,7 @@ export class TuiTagComponent {
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TUI_MODE) mode$: Observable<TuiModeVariants | null>,
+        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
     ) {
         mode$.subscribe(mode => {
             this.mode = mode;

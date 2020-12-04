@@ -27,12 +27,12 @@ import {
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_TEXTIFELD_WATCHED_CONTROLLER,
     TuiAppearance,
+    TuiBrightness,
     TuiHintControllerDirective,
     TuiModeDirective,
-    TuiModeVariants,
     TuiSizeL,
     TuiSizeS,
-    TuiTableDirective,
+    TuiTableModeDirective,
     TuiTextfieldController,
 } from '@taiga-ui/core';
 
@@ -79,8 +79,8 @@ export class TuiTextAreaComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Optional()
-        @Inject(TuiTableDirective)
-        private readonly tableMode: TuiTableDirective | null,
+        @Inject(TuiTableModeDirective)
+        private readonly tableMode: TuiTableModeDirective | null,
         @Inject(TUI_IS_IOS) isIOS: boolean,
         @Optional()
         @Inject(TuiModeDirective)
@@ -143,7 +143,7 @@ export class TuiTextAreaComponent
     }
 
     @HostBinding('attr.data-tui-host-mode')
-    get hostMode(): TuiModeVariants | null {
+    get hostMode(): TuiBrightness | null {
         return this.modeDirective && this.modeDirective.mode;
     }
 

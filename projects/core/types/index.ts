@@ -5,7 +5,6 @@ export * from './dialog-size';
 export * from './direction';
 export * from './items';
 export * from './marker-handler';
-export * from './mode-variants';
 export * from './option-role';
 export * from './pluralize';
 export * from './point';

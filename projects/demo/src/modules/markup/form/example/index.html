@@ -106,25 +106,28 @@
                     </div>
                 </div>
                 <h3 class="tui-form__header">Заголовок блока</h3>
-                <div class="tui-form__row">
-                    <tui-group [adaptive]="true" [collapsed]="true">
-                        <tui-radio-block
-                            contentAlign="right"
-                            formControlName="radioValue"
-                            item="with-commission"
-                            size="l"
-                        >
-                            С комисcией
-                        </tui-radio-block>
-                        <tui-radio-block
-                            contentAlign="right"
-                            formControlName="radioValue"
-                            item="without-commission"
-                            size="l"
-                        >
-                            Без комиссии
-                        </tui-radio-block>
-                    </tui-group>
+                <div
+                    tuiGroup
+                    class="tui-form__row"
+                    [adaptive]="true"
+                    [collapsed]="true"
+                >
+                    <tui-radio-block
+                        contentAlign="right"
+                        formControlName="radioValue"
+                        item="with-commission"
+                        size="l"
+                    >
+                        С комисcией
+                    </tui-radio-block>
+                    <tui-radio-block
+                        contentAlign="right"
+                        formControlName="radioValue"
+                        item="without-commission"
+                        size="l"
+                    >
+                        Без комиссии
+                    </tui-radio-block>
                 </div>
                 <div class="tui-form__row tui-form__row_half-width">
                     <tui-input-time formControlName="timeValue">

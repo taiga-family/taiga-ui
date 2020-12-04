@@ -1,5 +1,5 @@
 <form class="input-wrapper" [formGroup]="testForm">
-    <tui-group class="group">
+    <div tuiGroup class="group">
         <div>
             <tui-input
                 class="tui-group__inherit-item"
@@ -33,7 +33,7 @@
             </tui-input>
             <tui-field-error formControlName="testValue3"></tui-field-error>
         </div>
-    </tui-group>
+    </div>
     <p class="tui-space_top-8">
         Если у вас используется несколько уровней оберток до необходимого
         компонента, то целесообразно будет использовать директиву
@@ -41,7 +41,7 @@
         >, которая проецирует указанные классы из предков в свой хостовый
         элемент.
     </p>
-    <tui-group tuiTable class="group" [collapsed]="true">
+    <div tuiGroup tuiTableMode class="group" [collapsed]="true">
         <div [tuiProjectClass]="classNames">
             <div>
                 <div>
@@ -87,5 +87,5 @@
                 </div>
             </div>
         </div>
-    </tui-group>
+    </div>
 </form>
