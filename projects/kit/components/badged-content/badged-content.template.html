@@ -3,35 +3,35 @@
 <div
     *ngIf="topNotification"
     class="notification notification_top"
-    [tuiBackground]="topNotification"
+    [style.background]="topNotification"
     [style.boxShadow]="boxShadow"
 ></div>
 
 <div
     *ngIf="bottomNotification"
     class="notification notification_bottom"
-    [tuiBackground]="bottomNotification"
+    [style.background]="bottomNotification"
     [style.boxShadow]="boxShadow"
 ></div>
 
 <polymorpheus-outlet
     *ngIf="contentTop"
     class="content content_top"
-    [style.background]="borderColor"
     [style.boxShadow]="boxShadow"
     [content]="contentTop"
 >
     <ng-template let-content>
         <tui-badge
             *ngIf="contentIsNumber(content) && !badgeHidden"
-            [status]="statusTop"
+            [status]="getStatus(colorTop)"
+            [style.backgroundColor]="colorTop"
             [size]="badgeSize"
             [value]="contentTop"
         ></tui-badge>
         <tui-svg
             *ngIf="contentIsString(content)"
             class="icon"
-            [tuiColor]="statusTop"
+            [style.color]="colorTop"
             [src]="content"
         ></tui-svg>
     </ng-template>
@@ -41,20 +41,20 @@
     *ngIf="contentBottom && sizeBig"
     class="content content_bottom"
     [style.boxShadow]="boxShadow"
-    [style.background]="borderColor"
     [content]="contentBottom"
 >
     <ng-template let-content>
         <tui-badge
             *ngIf="contentIsNumber(content)"
-            [status]="statusBottom"
+            [status]="getStatus(colorBottom)"
+            [style.backgroundColor]="colorBottom"
             [size]="badgeSize"
             [value]="contentBottom"
         ></tui-badge>
         <tui-svg
             *ngIf="contentIsString(content)"
             class="icon"
-            [tuiColor]="statusBottom"
+            [style.color]="colorBottom"
             [src]="content"
         ></tui-svg>
     </ng-template>

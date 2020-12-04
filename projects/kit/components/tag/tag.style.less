@@ -24,9 +24,9 @@
         pointer-events: none;
     }
 
-    &:hover,
-    &:active {
-        &._hoverable[data-tui-host-status='custom']:not(._editing):after {
+    &._hoverable:hover,
+    &._hoverable:active {
+        &[data-tui-host-status='custom']:after {
             background-color: var(--tui-clear);
         }
     }
@@ -38,38 +38,116 @@
     &[data-tui-host-status='primary'] {
         background-color: var(--tui-primary);
         color: var(--tui-primary-text);
+
+        &._hoverable:hover {
+            background-color: var(--tui-primary-hover);
+        }
+
+        &._hoverable:active {
+            background-color: var(--tui-primary-active);
+        }
+    }
+
+    &[data-tui-host-status='error'] {
+        background-color: var(--tui-error-bg);
+        color: var(--tui-text-01);
+
+        &._hoverable:hover,
+        &._hoverable:active {
+            background-color: var(--tui-error-bg-hover);
+        }
+
+        &[data-tui-host-mode='light'] {
+            background-color: var(--tui-error-bg-night);
+            color: var(--tui-text-01-night);
+
+            &._hoverable:hover,
+            &._hoverable:active {
+                background-color: var(--tui-error-bg-night-hover);
+            }
+        }
+    }
+
+    &[data-tui-host-status='success'] {
+        background-color: var(--tui-success-bg);
+        color: var(--tui-text-01);
+
+        &._hoverable:hover,
+        &._hoverable:active {
+            background-color: var(--tui-success-bg-hover);
+        }
+
+        &[data-tui-host-mode='light'] {
+            background-color: var(--tui-success-bg-night);
+            color: var(--tui-text-01-night);
+
+            &._hoverable:hover,
+            &._hoverable:active {
+                background-color: var(--tui-success-bg-night-hover);
+            }
+        }
+    }
+
+    &[data-tui-host-status='warning'] {
+        background-color: var(--tui-warning-bg);
+        color: var(--tui-text-01);
+
+        &._hoverable:hover,
+        &._hoverable:active {
+            background-color: var(--tui-warning-bg-hover);
+        }
+
+        &[data-tui-host-mode='light'] {
+            background-color: var(--tui-warning-bg-night);
+            color: var(--tui-text-01-night);
+
+            &._hoverable:hover,
+            &._hoverable:active {
+                background-color: var(--tui-warning-bg-night-hover);
+            }
+        }
     }
 
     &[data-tui-host-status='default'] {
         background-color: var(--tui-base-06);
-    }
 
-    &[data-tui-host-status='default'][data-tui-host-mode='light'] {
-        background-color: var(--tui-clear-inverse);
+        &:not([data-tui-host-mode]) {
+            &._hoverable:hover {
+                background-color: var(--tui-base-07);
+            }
 
-        &:hover {
-            background-color: var(--tui-clear-inverse-hover);
+            &._hoverable:active {
+                background-color: var(--tui-base-08);
+            }
         }
 
-        &:active {
-            background-color: var(--tui-clear-inverse-active);
+        &[data-tui-host-mode='light'] {
+            background-color: var(--tui-clear-inverse);
+
+            &._hoverable:hover {
+                background-color: var(--tui-clear-inverse-hover);
+            }
+
+            &._hoverable:active {
+                background-color: var(--tui-clear-inverse-active);
+            }
+
+            &:focus:after {
+                border: 2px solid var(--tui-base-01);
+            }
         }
 
-        &:focus:after {
-            border: 2px solid var(--tui-base-01);
-        }
-    }
+        &[data-tui-host-mode='dark'] {
+            background-color: var(--tui-clear);
+            color: var(--tui-text-01);
 
-    &[data-tui-host-status='default'][data-tui-host-mode='dark'] {
-        background-color: var(--tui-clear);
-        color: var(--tui-text-01);
+            &._hoverable:hover {
+                background-color: var(--tui-clear-hover);
+            }
 
-        &:hover {
-            background-color: var(--tui-clear-hover);
-        }
-
-        &:active {
-            background-color: var(--tui-clear-active);
+            &._hoverable:active {
+                background-color: var(--tui-clear-active);
+            }
         }
     }
 
@@ -84,26 +162,6 @@
 
     &._hoverable {
         cursor: pointer;
-
-        &[data-tui-host-status='primary'] {
-            &:hover {
-                background-color: var(--tui-primary-hover);
-            }
-
-            &:active {
-                background-color: var(--tui-primary-active);
-            }
-        }
-
-        &[data-tui-host-status='default']:not([data-tui-host-mode]) {
-            &:hover {
-                background-color: var(--tui-base-07);
-            }
-
-            &:active {
-                background-color: var(--tui-base-08);
-            }
-        }
     }
 
     &._autocolor {

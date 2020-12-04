@@ -7,6 +7,8 @@
 
 It is based on [ng-polymorpheus](https://github.com/TinkoffCreditSystems/ng-polymorpheus) dynamic content approach and uses [Web APIs for Angular](https://github.com/ng-web-apis) for required browser APIs.
 
+***ATTENTION:*** Versions 1.x.y are transition releases from closed to open source, expect breaking changes until stable 2.0.0 is released and properly announced
+
 ## How to install
 
 ```

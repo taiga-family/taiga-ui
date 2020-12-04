@@ -1,8 +1,4 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {TuiNotification, TuiSupportColor} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -14,31 +10,23 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiBadgedContentExample2 {
-    testForm = new FormGroup({
-        testValue: new FormControl(''),
-    });
+    value = '';
 
-    badgeValueCount = 0;
-
-    buttonStatusTop: TuiNotification | TuiStatus | TuiSupportColor | null = null;
-
-    contentTop: PolymorpheusContent | null = null;
+    contentTop = 0;
 
     get badgeValue(): number {
-        return this.testForm.value.testValue.length;
+        return this.value.length;
+    }
+
+    get color(): string {
+        return this.contentTop === 50 ? 'tuiIconCheck' : 'var(--tui-error-fill)';
+    }
+
+    get contentBottom(): string {
+        return this.contentTop === 50 ? '' : '';
     }
 
     onClick() {
-        this.badgeValueCount++;
-
-        this.contentTop = this.badgeValueCount;
-
-        if (this.badgeValueCount > 0) {
-            this.buttonStatusTop = TuiStatus.Error;
-        }
-
-        if (this.badgeValueCount === 50) {
-            this.contentTop = 'tuiIconCheck';
-        }
+        this.contentTop++;
     }
 }

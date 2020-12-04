@@ -44,10 +44,8 @@
         <tui-doc-demo>
             <tui-badge
                 [hoverable]="hoverable"
-                [notification]="notification"
                 [size]="size"
                 [status]="status"
-                [textColor]="textColor"
                 [value]="values[value]"
             ></tui-badge>
         </tui-doc-demo>
@@ -58,16 +56,7 @@
                 documentationPropertyMode="input"
                 [(documentationPropertyValue)]="hoverable"
             >
-                Позволяет включить эффект наведения на бэдж (hover).
-            </ng-template>
-            <ng-template
-                documentationPropertyName="notification"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiNotification | TuiSupportColor | null"
-                [documentationPropertyValues]="notificationVariants"
-                [(documentationPropertyValue)]="notification"
-            >
-                Показывать нотификацию выбранного цвета
+                Позволяет включить изменение цвета при наведении
             </ng-template>
             <ng-template
                 documentationPropertyName="size"
@@ -85,16 +74,7 @@
                 [documentationPropertyValues]="statusVariants"
                 [(documentationPropertyValue)]="status"
             >
-                Статус меняет цвет бейджа.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="textColor"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiTextColor | null"
-                [documentationPropertyValues]="textColorVariants"
-                [(documentationPropertyValue)]="textColor"
-            >
-                Цвет текста
+                Статус меняет цвет бейджа
             </ng-template>
             <ng-template
                 documentationPropertyName="value"
@@ -104,7 +84,7 @@
                 [(documentationPropertyValue)]="value"
             >
                 Значение. Числовые значения, превыщающие 99, заменяются
-                на&nbsp;&laquo;99+&raquo;.
+                на&nbsp;&laquo;99+&raquo;
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

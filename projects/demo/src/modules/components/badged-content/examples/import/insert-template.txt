@@ -1,4 +1,6 @@
-<tui-badged-content [contentTop]="contentTop"
-                    [statusTop]="statusTop">
-    <Оборачиваемый-компонент>
+<tui-badged-content
+    [contentTop]="contentTop"
+    [colorTop]="colorTop"
+>
+    Оборачиваемый-компонент
 </tui-badged-content>
