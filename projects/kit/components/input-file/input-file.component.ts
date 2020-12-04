@@ -103,7 +103,18 @@ export class TuiInputFileComponent
         changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_IS_MOBILE)
         isMobile: boolean,
-        @Inject(TUI_INPUT_FILE_TEXTS) readonly inputFileTexts: Record<string, string>,
+        @Inject(TUI_INPUT_FILE_TEXTS)
+        readonly inputFileTexts: Record<
+            | 'defaultLabelSingle'
+            | 'defaultLabelMultiple'
+            | 'defaultLinkSingle'
+            | 'defaultLinkMultiple'
+            | 'maxSizeRejectionReason'
+            | 'formatRejectionReason'
+            | 'drop'
+            | 'dropMultiple',
+            string
+        >,
         @Inject(TUI_DIGITAL_INFORMATION_UNITS)
         private readonly units: [string, string, string],
     ) {

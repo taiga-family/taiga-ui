@@ -1,7 +1,8 @@
-<!-- TODO: i18n -->
-<span class="pages">Страниц: <strong class="strong">{{pages}}</strong></span>
+<span class="pages"
+    >{{texts.pages}} <strong class="strong">{{pages}}</strong></span
+>
 <span>
-    Строк на страницу
+    {{texts.linesPerPage}}
     <tui-hosted-dropdown [content]="content" [(open)]="open">
         <button tuiLink>
             <strong>{{start + 1}}–{{end}}</strong>
@@ -22,27 +23,26 @@
             </tui-data-list>
         </ng-template>
     </tui-hosted-dropdown>
-    из <strong class="strong">{{total}}</strong>
+    {{texts.of}} <strong class="strong">{{total}}</strong>
 </span>
-<!-- TODO: i18n -->
 <button
     tuiIconButton
     type="button"
     class="tui-space_left-6 tui-space_right-1"
-    title="Назад"
     size="xs"
     appearance="icon"
     icon="tuiIconArrowLeft"
     [disabled]="leftDisabled"
+    [title]="spinTexts[0]"
     (click)="back()"
 ></button>
 <button
     tuiIconButton
     type="button"
-    title="Вперед"
     size="xs"
     appearance="icon"
     icon="tuiIconArrowRight"
     [disabled]="rightDisabled"
+    [title]="spinTexts[1]"
     (click)="forth()"
 ></button>

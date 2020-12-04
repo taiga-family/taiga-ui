@@ -24,6 +24,14 @@ jobs:
       run: npm ci
     # End of setup
     - run: |
-        npm run build:cdk
-        npm run build:core
-        npm run build:kit
+        npm run build cdk
+        npm run build core
+        npm run build kit
+        npm run build addon-charts
+        npm run build addon-commerce
+        npm run build addon-mobile
+        npm run build addon-doc
+        npm run build addon-editor
+        npm run build addon-table
+        npm run build addon-tablebars
+

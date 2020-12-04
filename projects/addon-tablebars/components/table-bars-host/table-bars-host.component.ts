@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiBrightness, tuiSlideInTop} from '@taiga-ui/core';
+import {TUI_CLOSE_WORD, TuiBrightness, tuiSlideInTop} from '@taiga-ui/core';
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {TableBar} from '../../classes/table-bar';
 import {TuiTableBarsService} from '../../services/table-bars.service';
@@ -19,7 +19,10 @@ export class TuiTableBarsHostComponent {
 
     private readonly subscription: Subscription;
 
-    constructor(@Inject(TuiTableBarsService) service: TuiTableBarsService) {
+    constructor(
+        @Inject(TuiTableBarsService) service: TuiTableBarsService,
+        @Inject(TUI_CLOSE_WORD) readonly closeWord: string,
+    ) {
         this.subscription = service.open$.subscribe(item => {
             this.addItem(item);
         });

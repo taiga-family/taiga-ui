@@ -25,6 +25,10 @@ import {
 } from '@taiga-ui/addon-commerce/icons';
 import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
 import {
+    TUI_CARD_EXPIRY_TEXTS,
+    TUI_CARD_NUMBER_TEXTS,
+} from '@taiga-ui/addon-commerce/tokens';
+import {
     getPaymentSystem,
     isCardLengthValid,
     isCardNumberValid,
@@ -165,6 +169,8 @@ export class TuiInputCardGroupedComponent
         destroy$: TuiDestroyService,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_CARD_NUMBER_TEXTS) readonly cardNumberTexts: [string, string],
+        @Inject(TUI_CARD_EXPIRY_TEXTS) readonly cardExpiryTexts: [string, string],
     ) {
         super(control, changeDetectorRef);
 
