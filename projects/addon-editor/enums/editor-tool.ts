@@ -2,7 +2,7 @@ export enum TuiEditorTool {
     Undo = 'undo',
     Size = 'fontSize',
     Bold = 'bold',
-    Italic = 'italict',
+    Italic = 'italic',
     Underline = 'underline',
     Strikethrough = 'strikeThrough',
     Align = 'justify',

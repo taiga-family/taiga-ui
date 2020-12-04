@@ -3,9 +3,8 @@ import {TuiValidationError} from '@taiga-ui/cdk';
 import {tuiCreateLuhnValidator} from '../luhn.validator';
 
 describe('tuiCreateLuhnValidator', () => {
-    const control = new FormControl('', tuiCreateLuhnValidator());
-    const controlCustom = new FormControl('', tuiCreateLuhnValidator('ошибка'));
-    const error = {luhn: new TuiValidationError('Неверный формат карты')};
+    const control = new FormControl('', tuiCreateLuhnValidator('error'));
+    const error = {luhn: new TuiValidationError('error')};
 
     it('Валидный номер карты валиден, проверка 1', () => {
         control.setValue('4111 1111 1111 1111');
@@ -47,12 +46,5 @@ describe('tuiCreateLuhnValidator', () => {
         control.updateValueAndValidity();
 
         expect(control.errors).toEqual(error);
-    });
-
-    it('Кастомный текст ошибки', () => {
-        controlCustom.setValue('2345 7823 4095 8723');
-        controlCustom.updateValueAndValidity();
-
-        expect(controlCustom.errors).toEqual({luhn: new TuiValidationError('ошибка')});
     });
 });

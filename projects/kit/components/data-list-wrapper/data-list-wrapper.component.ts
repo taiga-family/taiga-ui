@@ -3,6 +3,7 @@ import {
     Component,
     ElementRef,
     forwardRef,
+    Inject,
     Input,
     QueryList,
     ViewChildren,
@@ -18,6 +19,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_ACCESSOR,
+    TUI_NOTHING_FOUND_MESSAGE,
     TuiDataListAccessor,
     TuiOptionComponent,
     TuiSizeL,
@@ -47,10 +49,9 @@ export class TuiDataListWrapperComponent<T> implements TuiDataListAccessor<T> {
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
 
-    // TODO i18n
     @Input()
     @tuiDefaultProp()
-    emptyContent: PolymorpheusContent = 'Ничего не найдено';
+    emptyContent: PolymorpheusContent = this.defaultEmptyContent;
 
     @Input()
     @tuiDefaultProp()
@@ -63,6 +64,10 @@ export class TuiDataListWrapperComponent<T> implements TuiDataListAccessor<T> {
 
     @ViewChildren(forwardRef(() => TuiOptionComponent))
     private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+
+    constructor(
+        @Inject(TUI_NOTHING_FOUND_MESSAGE) private readonly defaultEmptyContent: string,
+    ) {}
 
     getContext(
         $implicit: T,

@@ -86,7 +86,10 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiReactiveFiel
     autocompleteEnabledExpire = false;
 
     control = new FormGroup({
-        card: new FormControl('', [Validators.required, tuiCreateLuhnValidator()]),
+        card: new FormControl('', [
+            Validators.required,
+            tuiCreateLuhnValidator('Invalid card number'),
+        ]),
         expire: new FormControl('', Validators.required),
         cvc: new FormControl('', Validators.required),
     });

@@ -4,6 +4,13 @@ export const TUI_CLOSE_WORD = new InjectionToken<string>(`i18n 'close' word`, {
     factory: () => 'Close',
 });
 
+export const TUI_NOTHING_FOUND_MESSAGE = new InjectionToken<string>(
+    `i18n 'Nothing found' message`,
+    {
+        factory: () => 'Nothing found',
+    },
+);
+
 export const TUI_DEFAULT_ERROR_MESSAGE = new InjectionToken<string>(
     `i18n of error message`,
     {

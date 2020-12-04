@@ -17,18 +17,17 @@
                     [context]="getItemContext(item)"
                 ></polymorpheus-outlet>
 
-                <!--TODO: i18n-->
                 <button
                     *ngIf="item.hasCloseButton"
                     tuiIconButton
                     type="button"
-                    title="Закрыть"
                     automation-id="tui-table-bar__close-button"
                     class="close-button tui-space_left-6"
                     size="xs"
                     icon="tuiIconCloseLgLarge"
                     appearance="icon"
                     [tuiMode]="getMode(item.mode)"
+                    [title]="closeWord"
                     (click)="onCloseClick(item)"
                 ></button>
             </div>

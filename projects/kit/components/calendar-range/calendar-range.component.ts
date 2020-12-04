@@ -35,7 +35,7 @@ import {
     MAX_DAY_RANGE_LENGTH_MAPPER,
     maxDayAssertion,
 } from '@taiga-ui/kit/constants';
-import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit/tokens';
+import {TUI_CALENDAR_DATA_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -100,8 +100,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
                 item.range.to.daySameOrAfter(min) &&
                 (max === null || item.range.from.daySameOrBefore(max)),
         ),
-        // TODO: i18n
-        'Другая дата...',
+        this.otherDateText,
     ];
 
     constructor(
@@ -110,6 +109,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         valueChanges: Observable<TuiDayRange | null> | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Inject(TUI_OTHER_DATE_TEXT) private readonly otherDateText: string,
     ) {
         if (!valueChanges) {
             return;

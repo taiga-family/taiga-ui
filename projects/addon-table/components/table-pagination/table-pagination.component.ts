@@ -1,6 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
+import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {TUI_SPIN_TEXTS} from '@taiga-ui/core';
 
+// @dynamic
 @Component({
     selector: 'tui-table-pagination',
     templateUrl: './table-pagination.template.html',
@@ -30,6 +33,12 @@ export class TuiTablePaginationComponent {
     readonly sizeChange = new EventEmitter<number>();
 
     open = false;
+
+    constructor(
+        @Inject(TUI_SPIN_TEXTS) readonly spinTexts: [string, string],
+        @Inject(TUI_TABLE_PAGINATION_TEXTS)
+        readonly texts: Record<'pages' | 'linesPerPage' | 'of', string>,
+    ) {}
 
     get pages(): number {
         return Math.ceil(this.total / this.size);
