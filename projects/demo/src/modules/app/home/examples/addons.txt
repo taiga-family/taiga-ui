@@ -1,5 +1,6 @@
 npm install @taiga-ui/addon-charts
 npm install @taiga-ui/addon-commerce
 npm install @taiga-ui/addon-mobile
+npm install @taiga-ui/addon-table
 npm install @taiga-ui/addon-tablebars
 npm install @taiga-ui/addon-editor
