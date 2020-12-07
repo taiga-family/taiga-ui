@@ -2,7 +2,12 @@
     <ng-template pageTab>
         Директива для показа подсказки под курсором
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-pointer-hint-example-1></tui-pointer-hint-example-1>
         </tui-doc-example>
     </ng-template>
