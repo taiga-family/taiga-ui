@@ -1,4 +1,5 @@
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
@@ -20,7 +21,7 @@ import {filter, mapTo, pairwise, startWith, switchMap} from 'rxjs/operators';
     styleUrls: ['./line-clamp.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLineClampComponent {
+export class TuiLineClampComponent implements AfterViewInit {
     @Input()
     @tuiDefaultProp()
     set linesLimit(linesLimit: number) {
@@ -39,6 +40,8 @@ export class TuiLineClampComponent {
 
     @ViewChild(PolymorpheusOutletComponent, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
+
+    private initialized = false;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -87,13 +90,17 @@ export class TuiLineClampComponent {
     }
 
     @HostBinding('style.maxHeight.px')
-    get maxHeight(): number {
-        return this.lineHeight * this.linesLimit$.value;
+    get maxHeight(): number | null {
+        return this.initialized ? this.lineHeight * this.linesLimit$.value : null;
     }
 
     @HostBinding('style.height.px')
     get height(): number | null {
         return !this.outlet ? 0 : this.outlet.nativeElement.scrollHeight + 4 || null;
+    }
+
+    ngAfterViewInit() {
+        this.initialized = true;
     }
 
     // Change detection

@@ -13,10 +13,10 @@ export function modeFactory(
     return (
         (mode &&
             mode.change$.pipe(
+                startWith(null),
                 map(() => mode.mode),
                 watch(changeDetectorRef),
                 takeUntil(destroy$),
-                startWith(mode.mode),
             )) ||
         EMPTY
     );
