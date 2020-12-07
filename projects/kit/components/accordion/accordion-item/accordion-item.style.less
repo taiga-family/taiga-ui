@@ -1,4 +1,4 @@
-@import 'taiga-ui-angular-local';
+@import 'taiga-ui-local';
 
 :host {
     position: relative; // fix stacking context in Safari
@@ -108,12 +108,12 @@
 
     :host._hovered[data-tui-host-mode='light'] &,
     :host[data-tui-host-mode='light'] &_open {
-        background: fade(@color-blank, 16%);
+        background: var(--tui-clear-inverse);
     }
 
     :host._hovered[data-tui-host-mode='dark'] &,
     :host[data-tui-host-mode='dark'] &_open {
-        background: fade(@color-text, 8%);
+        background: var(--tui-clear);
     }
 
     :host[data-tui-host-size='s'] & {
@@ -154,7 +154,7 @@
     }
 
     :host[data-tui-host-mode] & {
-        opacity: @disabled-opacity;
+        opacity: var(--tui-disabled-opacity);
     }
 
     :host._hovered[data-tui-host-mode] & {

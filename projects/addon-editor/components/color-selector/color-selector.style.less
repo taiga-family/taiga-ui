@@ -1,4 +1,4 @@
-@import 'taiga-ui-angular-local';
+@import 'taiga-ui-local';
 
 :host {
     .createStackingContext();
@@ -25,19 +25,19 @@
         z-index: -1;
         background-image: linear-gradient(
                 45deg,
-                var(--tui-color-border) 25%,
+                var(--tui-base-03) 25%,
                 transparent 25%,
                 transparent 75%,
-                var(--tui-color-border) 75%,
-                var(--tui-color-border)
+                var(--tui-base-03) 75%,
+                var(--tui-base-03)
             ),
             linear-gradient(
                 45deg,
-                var(--tui-color-border) 25%,
+                var(--tui-base-03) 25%,
                 transparent 25%,
                 transparent 75%,
-                var(--tui-color-border) 75%,
-                var(--tui-color-border)
+                var(--tui-base-03) 75%,
+                var(--tui-base-03)
             );
         background-size: 6px 6px;
         background-position: 0 0, 3px 3px;
@@ -49,7 +49,7 @@
     height: 1px;
     margin: 0 0 0 -1px;
     border: none;
-    background: var(--tui-color-border);
+    background: var(--tui-base-03);
 }
 
 .gradient {
@@ -85,13 +85,13 @@
 }
 
 .direction {
-    color: var(--tui-color-text-light);
+    color: var(--tui-text-02);
     margin: 0 6px;
 
     &:hover,
     &_active {
-        color: var(--tui-color-primary-text);
-        background: var(--tui-color-secondary-hover);
+        color: var(--tui-primary-text);
+        background: var(--tui-secondary-hover);
     }
 }
 
@@ -101,5 +101,5 @@
 
 .palette {
     box-sizing: border-box;
-    box-shadow: inset 0 1px var(--tui-color-border);
+    box-shadow: inset 0 1px var(--tui-base-03);
 }

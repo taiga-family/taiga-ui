@@ -1,5 +1,3 @@
-@import '../variables/font';
-
 .text-basic() {
     .text-body-s();
     color: var(--tui-text-01);
@@ -7,33 +5,27 @@
 
 //headings
 .text-h1() {
-    .font_heading(50px, 56px, 'bold');
-    letter-spacing: -0.3px;
+    .font_heading(50px, 56px);
 }
 
 .text-h2() {
-    .font_heading(40px, 44px, 'bold');
-    letter-spacing: -0.3px;
+    .font_heading(40px, 44px);
 }
 
 .text-h3() {
-    .font_heading(30px, 36px, 'bold');
-    letter-spacing: -0.3px;
+    .font_heading(30px, 36px);
 }
 
 .text-h4() {
-    .font_heading(28px, 32px, 'bold');
-    letter-spacing: -0.3px;
+    .font_heading(28px, 32px);
 }
 
 .text-h5() {
-    .font_heading(24px, 28px, 'bold');
-    letter-spacing: -0.3px;
+    .font_heading(24px, 28px);
 }
 
 .text-h6() {
-    .font_heading(20px, 24px, 'bold');
-    letter-spacing: -0.3px;
+    .font_heading(20px, 24px);
 }
 
 //typed text
@@ -133,40 +125,23 @@
 }
 
 // mixins fot font properties
-.font(@size, @line-height: 'none', @weight: 'none', @color: 'none') {
-    @_weight: 'font-@{weight}';
-    font-weight: @@_weight;
+.font(@size, @line-height: 'none', @weight: 'normal', @color: 'none') {
+    font-weight: @weight;
     font-size: @size;
     font-family: var(--tui-text-font);
 }
 
-.font(@size, @line-height: 'none', @weight: 'none', @color: 'none') when not (@line-height = 'none') {
+.font(@size, @line-height: 'none', @weight: 'normal', @color: 'none') when not (@line-height = 'none') {
     line-height: @line-height;
 }
 
-.font(@size, @line-height: 'none', @weight: 'none', @color: 'none') when not (@color = 'none') {
+.font(@size, @line-height: 'none', @weight: 'normal', @color: 'none') when not (@color = 'none') {
     color: @color;
 }
 
-.font-h(@size, @line-height: 'normal') {
+.font_heading(@size, @line-height: 'normal') {
     font-weight: bold;
     line-height: @line-height;
     font-size: @size;
     font-family: var(--tui-heading-font);
-}
-
-// @deprecated mixins
-.font_heading(@size, @line-height: 'none', @weight: 'extralight', @color: 'none') {
-    @_weight: 'font-@{weight}';
-    font-weight: @@_weight;
-    font-size: @size;
-    font-family: var(--tui-heading-font);
-}
-
-.font_heading(@size, @line-height: 'none', @weight: 'extralight', @color: 'none') when not (@line-height = 'none') {
-    line-height: @line-height;
-}
-
-.font_heading(@size, @line-height: 'none', @weight: 'extralight', @color: 'none') when not (@color = 'none') {
-    color: @color;
 }

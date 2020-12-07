@@ -885,16 +885,6 @@ const ROUTES = [
         },
     },
     {
-        path: 'containers',
-        loadChildren: () =>
-            import(`../markup/containers/containers.module`).then(
-                m => m.ContainersModule,
-            ),
-        data: {
-            title: 'Контейнеры',
-        },
-    },
-    {
         path: 'form',
         loadChildren: () => import(`../markup/form/form.module`).then(m => m.FormModule),
         data: {
@@ -922,14 +912,6 @@ const ROUTES = [
             import(`../markup/lists/lists.module`).then(m => m.ListsModule),
         data: {
             title: 'Списки',
-        },
-    },
-    {
-        path: 'mixins',
-        loadChildren: () =>
-            import(`../markup/mixins/mixins.module`).then(m => m.MixinsModule),
-        data: {
-            title: 'Миксины',
         },
     },
     {

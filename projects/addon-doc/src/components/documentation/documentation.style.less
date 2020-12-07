@@ -1,4 +1,4 @@
-@import 'taiga-ui-angular-local';
+@import 'taiga-ui-local';
 
 @color-property: #8f75d1;
 
@@ -51,10 +51,10 @@
 }
 
 .deprecated {
-    background-color: fade(@color-red-100, 8%);
+    background-color: var(--tui-error-bg);
 }
 
 .deprecated-label {
     margin-right: 2px;
-    color: @color-text-error;
+    color: var(--tui-error-fill);
 }

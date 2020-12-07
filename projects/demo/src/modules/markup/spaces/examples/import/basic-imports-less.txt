@@ -1,1 +1,1 @@
-@import '~@taiga-ui/core/styles/taiga-ui-angular-local';
+@import '~@taiga-ui/core/styles/taiga-ui-local';
