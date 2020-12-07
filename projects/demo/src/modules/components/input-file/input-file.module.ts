@@ -5,7 +5,6 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiInputFileModule, TuiInputModule} from '@taiga-ui/kit';
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputFileExample1} from './examples/1';
 import {TuiInputFileExample2} from './examples/2';
 import {TuiInputFileExample3} from './examples/3';
@@ -21,7 +20,6 @@ import {ExampleTuiInputFileComponent} from './input-file.component';
         TuiInputModule,
         TuiLinkModule,
         ...TUI_DOC_PAGE_MODULES,
-        InheritedDocumentationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputFileComponent)),
     ],
     declarations: [
