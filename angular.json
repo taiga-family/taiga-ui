@@ -470,7 +470,6 @@
             "i18n": {
                 "sourceLocale": "en-US",
                 "locales": {
-                    "en": "projects/demo/src/locale/messages.xlf",
                     "ru": "projects/demo/src/locale/messages.ru.xlf"
                 }
             },

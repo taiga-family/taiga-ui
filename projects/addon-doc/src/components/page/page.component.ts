@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
+    ElementRef,
     Inject,
     QueryList,
 } from '@angular/core';
@@ -30,6 +31,7 @@ export class TuiDocPageComponent {
         @Attribute('header') readonly header: string,
         @Attribute('package') readonly packageName: string,
         @Attribute('deprecated') readonly deprecated: string | null,
+        @Inject(ElementRef) readonly elementRef: ElementRef,
         @Inject(TUI_DOC_DEFAULT_TABS) readonly defaultTabs: ReadonlyArray<string>,
         @Inject(PAGE_SEE_ALSO) readonly seeAlso: ReadonlyArray<string>,
     ) {}
