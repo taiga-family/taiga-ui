@@ -5,6 +5,7 @@ import {
     ContentChildren,
     ElementRef,
     Inject,
+    Input,
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
@@ -22,14 +23,18 @@ import {PAGE_PROVIDERS, PAGE_SEE_ALSO} from './page.providers';
     providers: PAGE_PROVIDERS,
 })
 export class TuiDocPageComponent {
+    @Input()
+    header = '';
+
+    @Input()
+    packageName = '';
+
     activeItemIndex = NaN;
 
     @ContentChildren(TuiDocPageTabConnectorDirective)
     readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> = EMPTY_QUERY;
 
     constructor(
-        @Attribute('header') readonly header: string,
-        @Attribute('package') readonly packageName: string,
         @Attribute('deprecated') readonly deprecated: string | null,
         @Inject(ElementRef) readonly elementRef: ElementRef,
         @Inject(TUI_DOC_DEFAULT_TABS) readonly defaultTabs: ReadonlyArray<string>,
