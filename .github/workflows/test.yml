@@ -1,6 +1,15 @@
 name: Test all packages of Taiga UI and check coverage with Coveralls
 
-on: push
+on:
+  push:
+    paths:
+      - 'projects/**'
+      - '!projects/*testing/**'
+      - '!projects/demo/**'
+      - '!projects/icons/**'
+      - 'angular.json'
+      - 'package.json'
+      - 'tsconfig*'
 
 jobs:
   test:
