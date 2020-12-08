@@ -1,5 +1,5 @@
 {
     "name": "@taiga-ui/testing",
-    "version": "1.6.1",
+    "version": "1.6.2",
     "description": "Utils functions for unit testing Taiga UI packages"
 }
