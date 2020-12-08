@@ -3,7 +3,6 @@
     "dest": "../../dist/addon-commerce",
     "lib": {
         "entryFile": "index.ts",
-        "cssUrl": "inline",
         "styleIncludePaths": ["../core/styles"]
     }
 }
