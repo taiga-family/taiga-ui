@@ -911,7 +911,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/lists/lists.module`).then(m => m.ListsModule),
         data: {
-            title: 'Списки',
+            title: $localize`Lists`,
         },
     },
     {

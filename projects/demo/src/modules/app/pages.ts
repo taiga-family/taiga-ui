@@ -64,14 +64,14 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Common`,
                 title: $localize`Shadows`,
-                keywords: 'верстка, markup, тень, shadows',
+                keywords: 'layout, markup, тень, shadows',
                 route: '/shadows',
             },
             {
                 section: $localize`Common`,
-                title: 'Списки',
+                title: $localize`Lists`,
                 keywords:
-                    'верстка, markup, списки, стили, список, точки, list, ul, li, немаркированный, маркированный',
+                    'layout, markup, списки, стили, список, точки, list, ol, ul, li, немаркированный, маркированный',
                 route: '/lists',
             },
             {
