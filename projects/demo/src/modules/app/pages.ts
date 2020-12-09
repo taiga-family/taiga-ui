@@ -59,11 +59,11 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Common`,
-        title: 'Стили',
+        title: $localize`Styles`,
         subPages: [
             {
                 section: $localize`Common`,
-                title: 'Тени',
+                title: $localize`Shadows`,
                 keywords: 'верстка, markup, тень, shadows',
                 route: '/shadows',
             },
