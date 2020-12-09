@@ -38,7 +38,7 @@ export class TuiDataListExample1 {
                     routerLink: '/icons',
                 },
                 {
-                    label: 'Типографика',
+                    label: $localize`Typography`,
                     routerLink: '/typography',
                 },
             ],

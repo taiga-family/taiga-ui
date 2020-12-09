@@ -961,7 +961,7 @@ const ROUTES = [
                 m => m.TypographyModule,
             ),
         data: {
-            title: 'Типографика',
+            title: $localize`Typography`,
         },
     },
     // DIRECTIVES

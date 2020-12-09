@@ -34,9 +34,9 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Common`,
-        title: 'Типографика',
+        title: $localize`Typography`,
         keywords:
-            'верстка, markup, font, текст, шрифты, поиграться, гельветика, comic sans, typography',
+            'layout, text, верстка, markup, font, текст, шрифты, поиграться, гельветика, comic sans, typography',
         route: '/typography',
     },
     {
