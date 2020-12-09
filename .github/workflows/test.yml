@@ -2,6 +2,8 @@ name: Test all packages of Taiga UI and check coverage with Coveralls
 
 on:
   push:
+    branches:
+      - '!release/**'
     paths:
       - 'projects/**'
       - '!projects/*testing/**'
