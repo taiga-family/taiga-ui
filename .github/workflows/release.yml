@@ -15,6 +15,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
     - name: Cache Node.js modules
       uses: actions/cache@v2
       with:
@@ -40,6 +41,8 @@ jobs:
         npm run build addon-tablebars
         npm run build:icons
     - name: publish packages
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         npm publish dist/cdk
         npm publish dist/core
@@ -52,5 +55,3 @@ jobs:
         npm publish dist/addon-table
         npm publish dist/addon-tablebars
         npm publish dist/icons
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
