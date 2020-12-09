@@ -53,8 +53,8 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Common`,
-        title: 'Иконки',
-        keywords: 'верстка, markup, icons, картинка, свг, svg, графика',
+        title: $localize`Icons`,
+        keywords: 'img, layout, markup, icons, image, картинка, свг, svg, графика',
         route: '/icons',
     },
     {

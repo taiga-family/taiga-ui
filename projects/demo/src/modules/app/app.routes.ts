@@ -903,7 +903,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/icons/icons.module`).then(m => m.IconsModule),
         data: {
-            title: 'Иконки',
+            title: $localize`Icons`,
         },
     },
     {
