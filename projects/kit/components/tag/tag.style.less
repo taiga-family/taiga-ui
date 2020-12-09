@@ -1,4 +1,4 @@
-@import 'taiga-ui-angular-local';
+@import 'taiga-ui-local';
 
 @padding: 8px;
 @padding-large: 12px;
@@ -258,7 +258,7 @@
     &:not(&_loader) {
         cursor: pointer;
         pointer-events: all;
-        opacity: @disabled-opacity;
+        opacity: var(--tui-disabled-opacity);
     }
 
     &:hover {

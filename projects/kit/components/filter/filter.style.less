@@ -1,4 +1,4 @@
-@import 'taiga-ui-angular-local';
+@import 'taiga-ui-local';
 
 :host {
     display: block;
@@ -29,6 +29,6 @@
     margin-left: @space;
 
     &_disabled {
-        opacity: @disabled-opacity;
+        opacity: var(--tui-disabled-opacity);
     }
 }

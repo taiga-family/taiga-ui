@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'projects/**'
+      - 'angular.json'
+      - 'package.json'
 
 jobs:
   build-and-deploy:

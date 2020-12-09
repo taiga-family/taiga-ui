@@ -3,6 +3,7 @@
     class="wrapper"
     [class.wrapper_mobile]="isMobile"
     [class.wrapper_has-files]="hasFiles"
+    [appearance]="getAppearance(mode$ | async)"
     [focused]="computedFocused"
     [hovered]="computedHovered || fileDragged"
     [pressed]="computedPressed"
@@ -10,15 +11,19 @@
     [disabled]="computedDisabled"
 >
     <label automation-id="tui-input-file__label">
-        <polymorpheus-outlet
-            class="link"
-            [content]="computedLink"
-        ></polymorpheus-outlet>
+        <a tuiLink>
+            <span
+                polymorpheus-outlet
+                class="inline"
+                [content]="computedLink"
+            ></span>
+        </a>
         <span *ngIf="computedLabel">&nbsp;</span>
-        <polymorpheus-outlet
-            class="text"
+        <span
+            polymorpheus-outlet
+            class="inline"
             [content]="computedLabel"
-        ></polymorpheus-outlet>
+        ></span>
         <input
             *ngIf="!readOnly && !computedDisabled"
             #input
@@ -44,6 +49,7 @@
         *ngFor="let file of rejectedFiles"
         automation-id="tui-input-file__error"
         state="error"
+        [attr.data-mode]="mode$ | async"
         [showSize]="showSize"
         [allowDelete]="allowDelete"
         [size]="size"
@@ -54,6 +60,7 @@
         *ngFor="let file of computedLoading"
         automation-id="tui-input-file__loading"
         state="loading"
+        [attr.data-mode]="mode$ | async"
         [showSize]="showSize"
         [allowDelete]="allowDelete"
         [size]="size"
@@ -63,6 +70,7 @@
     <tui-file
         *ngFor="let file of readyFiles"
         automation-id="tui-input-file__file"
+        [attr.data-mode]="mode$ | async"
         [showSize]="showSize"
         [allowDelete]="allowDelete"
         [size]="size"

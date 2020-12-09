@@ -1,15 +1,15 @@
-@import 'taiga-ui-angular-local';
+@import 'taiga-ui-local';
 
 :host {
     display: flex;
-    height: var(--tui-height-extra-large);
+    height: @height-extra-large;
     align-items: center;
     padding-right: 12px;
 }
 
 .label {
     .text-body-s();
-    height: var(--tui-height-extra-large);
+    height: @height-extra-large;
     box-sizing: border-box;
     padding: 7px 16px;
     min-width: 200px;
@@ -33,7 +33,7 @@
 .button {
     width: 32px;
     height: 32px;
-    margin: 0 var(--tui-space);
+    margin: 0 @space;
     transition: background 0.2s;
 }
 

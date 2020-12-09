@@ -1,4 +1,4 @@
-@import 'taiga-ui-angular-local';
+@import 'taiga-ui-local';
 
 :host {
     display: flex;
@@ -18,7 +18,7 @@
     &:not(:last-child):after {
         content: '';
         display: block;
-        margin: 0 var(--tui-space);
+        margin: 0 @space;
         width: 1px;
         background: var(--tui-secondary-active);
     }
@@ -32,7 +32,7 @@
     }
 
     &_margin {
-        margin: 0 var(--tui-space);
+        margin: 0 @space;
     }
 }
 
@@ -64,44 +64,44 @@
     }
 
     &_text {
-        background: @color-text;
+        background: var(--tui-text-01);
     }
 
     &_white {
-        background: @color-blank;
+        background: var(--tui-base-01);
         box-shadow: inset 0 0 0 1px var(--tui-text-03);
     }
 
     &_primary {
-        background: @color-primary;
+        background: var(--tui-primary);
     }
 
     &_tan {
-        background: @color-support-tan;
+        background: var(--tui-support-03);
     }
 
     &_pinkie {
-        background: @color-support-pinkie;
+        background: var(--tui-support-07);
     }
 
     &_amethyst {
-        background: @color-support-amethyst;
+        background: var(--tui-support-09);
     }
 
     &_helio {
-        background: @color-support-helio;
+        background: var(--tui-support-10);
     }
 
     &_picton {
-        background: @color-support-picton;
+        background: var(--tui-support-14);
     }
 
     &_puertorico {
-        background: @color-support-puertorico;
+        background: var(--tui-support-17);
     }
 
     &_feijoa {
-        background: @color-support-feijoa;
+        background: var(--tui-support-21);
     }
 }
 

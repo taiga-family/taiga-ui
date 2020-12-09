@@ -20,15 +20,23 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     tuiDefaultProp,
+    TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
+import {
+    MODE_PROVIDER,
+    TUI_MODE,
+    TuiAppearance,
+    TuiBrightness,
+    TuiSizeL,
+} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {formatSize} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 
 const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
 
@@ -43,6 +51,8 @@ const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputFileComponent),
         },
+        TuiDestroyService,
+        MODE_PROVIDER,
     ],
 })
 export class TuiInputFileComponent
@@ -115,6 +125,7 @@ export class TuiInputFileComponent
             | 'dropMultiple',
             string
         >,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_DIGITAL_INFORMATION_UNITS)
         private readonly units: [string, string, string],
     ) {
@@ -227,6 +238,10 @@ export class TuiInputFileComponent
 
     removeRejectedFile(removedFile: TuiFileLike) {
         this.updateRejectedFiles(this.rejectedFiles.filter(file => file !== removedFile));
+    }
+
+    getAppearance(mode: null | unknown): string {
+        return mode === null ? '' : TuiAppearance.Outline;
     }
 
     @tuiPure

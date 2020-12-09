@@ -3,6 +3,7 @@ export * from './focus-visible-observable';
 export * from './is-alive';
 export * from './items-query-list-observable';
 export * from './mouse-drag-finish-from';
+export * from './must-be-present';
 export * from './pressed-observable';
 export * from './prevent-default';
 export * from './replay-control-value-changes';
