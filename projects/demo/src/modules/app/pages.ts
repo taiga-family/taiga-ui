@@ -42,12 +42,12 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Common`,
         title: $localize`Colors`,
-        keywords: 'верстка, markup, цвет, палитра, colors',
+        keywords: 'layout, верстка, palette, markup, цвет, палитра',
         route: '/colors',
     },
     {
         section: $localize`Common`,
-        title: 'Сетка',
+        title: $localize`Grid`,
         keywords: 'верстка, markup, layout, grid, сетка, стили',
         route: '/grid',
     },
@@ -59,20 +59,8 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Common`,
-        title: 'Миксины',
-        keywords: 'верстка, markup, примеси, стили, тень, тени, скрол, mixins',
-        route: '/mixins',
-    },
-    {
-        section: $localize`Common`,
         title: 'Стили',
         subPages: [
-            {
-                section: $localize`Common`,
-                title: 'Контейнеры',
-                keywords: 'верстка, markup, цвет, палитра, colors, контейнер, container',
-                route: '/containers',
-            },
             {
                 section: $localize`Common`,
                 title: 'Тени',

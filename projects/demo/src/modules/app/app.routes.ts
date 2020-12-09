@@ -895,7 +895,7 @@ const ROUTES = [
         path: 'grid',
         loadChildren: () => import(`../markup/grid/grid.module`).then(m => m.GridModule),
         data: {
-            title: 'Сетка',
+            title: $localize`Grid`,
         },
     },
     {
