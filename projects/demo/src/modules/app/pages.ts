@@ -107,7 +107,7 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Common`,
-                title: 'Темы для IOS и Android PWA',
+                title: $localize`PWA themes`,
                 keywords: 'верстка, pwa, мобильные, нативные',
                 route: '/mobile-themes',
             },

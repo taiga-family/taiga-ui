@@ -507,7 +507,7 @@ const ROUTES = [
                 m => m.ExampleTuiMobileThemesModule,
             ),
         data: {
-            title: 'Темы для PWA',
+            title: $localize`PWA themes`,
         },
     },
     {
