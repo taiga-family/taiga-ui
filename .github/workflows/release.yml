@@ -1,17 +1,9 @@
-name: Build all packages of Taiga UI
+name: Release Taiga UI packages
 
 on:
   push:
     branches:
-      - '!release/**'
-    paths:
-      - 'projects/**'
-      - '!projects/*testing/**'
-      - '!projects/demo/**'
-      - '!projects/icons/**'
-      - 'angular.json'
-      - 'package.json'
-      - 'tsconfig*'
+      - 'release/**'
 
 jobs:
   build:
@@ -40,9 +32,23 @@ jobs:
         npm run build kit
         npm run build addon-charts
         npm run build addon-commerce
-        npm run build addon-mobile
         npm run build addon-doc
         npm run build addon-editor
+        npm run build addon-mobile
         npm run build addon-table
         npm run build addon-tablebars
-
+        npm run build:icons
+    - run: |
+        npm publish dist/cdk
+        npm publish dist/core
+        npm publish dist/kit
+        npm publish dist/addon-charts
+        npm publish dist/addon-commerce
+        npm publish dist/addon-doc
+        npm publish dist/addon-editor
+        npm publish dist/addon-mobile
+        npm publish dist/addon-table
+        npm publish dist/addon-tablebars
+        npm publish dist/icons
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
