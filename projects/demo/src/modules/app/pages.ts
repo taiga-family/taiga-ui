@@ -36,12 +36,12 @@ export const pages: TuiDocPages = [
         section: $localize`Common`,
         title: $localize`Typography`,
         keywords:
-            'layout, text, верстка, markup, font, текст, шрифты, поиграться, гельветика, comic sans, typography',
+            'layout, text, верстка, markup, font, текст, шрифты, гельветика, sans, typography',
         route: '/typography',
     },
     {
         section: $localize`Common`,
-        title: 'Цвета',
+        title: $localize`Colors`,
         keywords: 'верстка, markup, цвет, палитра, colors',
         route: '/colors',
     },

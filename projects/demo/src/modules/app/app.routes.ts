@@ -881,7 +881,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/colors/colors.module`).then(m => m.ColorsModule),
         data: {
-            title: 'Цвета',
+            title: $localize`Colors`,
         },
     },
     {

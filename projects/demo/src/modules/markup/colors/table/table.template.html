@@ -3,10 +3,11 @@
     <td>
         <h3 class="name">
             <tui-doc-copy
+                i18n
                 class="copy"
                 (click)="copyCodeExample('var(' + color.name + ')')"
             >
-                Скопировать
+                Copy
             </tui-doc-copy>
             {{color.name}}
         </h3>
@@ -18,10 +19,11 @@
     <td>
         <div class="value">
             <tui-doc-copy
+                i18n
                 class="copy"
                 (click)="copyCodeExample(getValue(color.name))"
             >
-                Скопировать
+                Copy
             </tui-doc-copy>
             {{getValue(color.name)}}
         </div>
