@@ -47,7 +47,7 @@ export class TuiDataListExample1 {
             label: '',
             items: [
                 {
-                    label: 'История релизов',
+                    label: $localize`Changelog`,
                     routerLink: '/changelog',
                 },
             ],

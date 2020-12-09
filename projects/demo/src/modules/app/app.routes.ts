@@ -7,7 +7,7 @@ const ROUTES = [
         path: 'getting-started',
         component: GettingStartedComponent,
         data: {
-            title: 'Начало работы',
+            title: $localize`Getting started`,
         },
     },
     {
@@ -15,7 +15,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../info/browsers/browsers.module`).then(m => m.BrowsersModule),
         data: {
-            title: 'Поддержка браузеров',
+            title: $localize`Browser support`,
         },
     },
     {
@@ -23,14 +23,14 @@ const ROUTES = [
         loadChildren: () =>
             import(`../info/changelog/changelog.module`).then(m => m.ChangelogModule),
         data: {
-            title: 'История релизов',
+            title: $localize`Changelog`,
         },
     },
     {
         path: 'tui-doc',
         loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
         data: {
-            title: 'Собственная витрина',
+            title: $localize`Documentation engine`,
         },
     },
     {
@@ -38,7 +38,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../info/related/related.module`).then(m => m.RelatedModule),
         data: {
-            title: 'Дружественные библиотеки',
+            title: $localize`Friendly libraries`,
         },
     },
     // COMPONENTS
