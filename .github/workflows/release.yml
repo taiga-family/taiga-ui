@@ -26,7 +26,8 @@ jobs:
     - name: Install dependencies
       run: npm ci
     # End of setup
-    - run: |
+    - name: build packages
+      run: |
         npm run build cdk
         npm run build core
         npm run build kit
@@ -38,7 +39,8 @@ jobs:
         npm run build addon-table
         npm run build addon-tablebars
         npm run build:icons
-    - run: |
+    - name: publish packages
+      run: |
         npm publish dist/cdk
         npm publish dist/core
         npm publish dist/kit
