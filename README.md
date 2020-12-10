@@ -28,7 +28,7 @@ npm i @taiga-ui/cdk
                 ><img
                     src="https://github.com/waterplea.png?size=100"
                     width="100"
-                    style="margin-bottom: -4px"
+                    style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Alex Inkin"
                 /><br /><sub><b>Alex Inkin</b></sub></a
             >
@@ -61,7 +61,7 @@ npm i @taiga-ui/cdk
                 ><img
                     src="https://github.com/marsibarsi.png?size=100"
                     width="100"
-                    style="margin-bottom: -4px"
+                    style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Roman Sedov"
                 /><br /><sub><b>Roman Sedov</b></sub></a
             >
