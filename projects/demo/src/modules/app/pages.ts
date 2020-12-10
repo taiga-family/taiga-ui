@@ -116,19 +116,19 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: 'Accordion',
-        keywords: 'молекулы, аккордеон, expand, раскрывашка, spoiler, cut',
+        keywords: 'open, аккордеон, expand, раскрывашка, spoiler, cut',
         route: '/tui-accordion',
     },
     {
         section: $localize`Components`,
         title: 'Action',
-        keywords: 'молекулы, кнопка, button, ссылка, link, действие, icon, иконка',
+        keywords: 'кнопка, button, ссылка, link, действие, icon, иконка',
         route: '/tui-action',
     },
     {
         section: $localize`Components`,
         title: 'Avatar',
-        keywords: 'атомы, аватар, картинка, изображение, avatar',
+        keywords: 'аватар, картинка, изображение, avatar',
         route: '/tui-avatar',
     },
     {
@@ -138,13 +138,13 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: 'Badge',
-                keywords: 'атомы, бэдж, овал, badge',
+                keywords: 'бэдж, овал, badge',
                 route: '/tui-badge',
             },
             {
                 section: $localize`Components`,
                 title: 'BadgedContent',
-                keywords: 'атомы, бэдж, овал, badge, нотификация',
+                keywords: 'бэдж, овал, badge, нотификация',
                 route: '/tui-badged-content',
             },
         ],
@@ -152,7 +152,7 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: 'Button',
-        keywords: 'атомы, кнопка, button, icon-button, иконка',
+        keywords: 'кнопка, button, icon-button, иконка',
         route: '/tui-button',
     },
     {
@@ -163,7 +163,7 @@ export const pages: TuiDocPages = [
                 section: $localize`Components`,
                 title: 'Calendar',
                 keywords:
-                    'атомы, календарь, форма, день, неделя, месяц, год, дата, calendar, датапикер, datepicker',
+                    'календарь, форма, день, неделя, месяц, год, дата, calendar, датапикер, datepicker',
                 route: '/tui-calendar',
             },
             {
@@ -175,8 +175,7 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: 'CalendarMonth',
-                keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, month, месяц, год, дата',
+                keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
                 route: '/tui-calendar-month',
             },
         ],
@@ -256,25 +255,25 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: 'Checkbox',
-                keywords: 'атомы, чек, ввод, форма, checkbox',
+                keywords: 'чек, ввод, форма, checkbox',
                 route: '/tui-checkbox',
             },
             {
                 section: $localize`Components`,
                 title: 'CheckboxBlock',
-                keywords: 'молекулы, кнопка, чек, форма, ввод, checkbox, CheckboxBlock',
+                keywords: 'кнопка, чек, форма, ввод, checkbox, CheckboxBlock',
                 route: '/tui-checkbox-block',
             },
             {
                 section: $localize`Components`,
                 title: 'CheckboxLabeled',
-                keywords: 'молекулы, label, чек, форма, ввод, checkbox, checkboxLabeled',
+                keywords: 'label, чек, форма, ввод, checkbox, checkboxLabeled',
                 route: '/tui-checkbox-labeled',
             },
             {
                 section: $localize`Components`,
                 title: 'PrimitiveCheckbox',
-                keywords: 'атомы, чек, checkbox, внутренние',
+                keywords: 'чек, checkbox, внутренние',
                 route: '/tui-primitive-checkbox',
             },
         ],
@@ -282,7 +281,7 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: 'ColorPicker',
-        keywords: 'атомы, цвет, выбор, градиент, gradient, палитра, input, inputcolor',
+        keywords: 'цвет, выбор, градиент, gradient, палитра, input, inputcolor',
         route: '/tui-color-picker',
     },
     {
@@ -293,14 +292,14 @@ export const pages: TuiDocPages = [
                 section: $localize`Components`,
                 title: 'DataList',
                 keywords:
-                    'молекулы, контекст, выпадашка, дропдаун, меню, Context, ContextMenu, option,' +
+                    'контекст, выпадашка, дропдаун, меню, Context, ContextMenu, option,' +
                     'optGroup, опции, tuiOption, варианты',
                 route: '/tui-data-list',
             },
             {
                 section: $localize`Components`,
                 title: 'HostedDropdown',
-                keywords: 'молекулы, dropdown, контекст, выпадашка, дропдаун, меню, menu',
+                keywords: 'dropdown, контекст, выпадашка, дропдаун, меню, menu',
                 route: '/tui-hosted-dropdown',
             },
         ],
@@ -312,13 +311,13 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: 'Error',
-                keywords: 'атомы, error, ошибка',
+                keywords: 'error, ошибка',
                 route: '/tui-error',
             },
             {
                 section: $localize`Components`,
                 title: 'FieldError',
-                keywords: 'атомы, field, поле, форма, error, ошибка, field-error',
+                keywords: 'field, поле, форма, error, ошибка, field-error',
                 route: '/tui-field-error',
             },
         ],
@@ -326,7 +325,7 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: 'Expand',
-        keywords: 'атомы, аккордеон, expand, раскрывашка, spoiler, cut',
+        keywords: 'аккордеон, expand, раскрывашка, spoiler, cut',
         route: '/tui-expand',
     },
     {
@@ -338,14 +337,13 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: 'Group',
-        keywords:
-            'молекулы, buttongroup, форма, поле, кнопка, группировка, группа, Group',
+        keywords: 'buttongroup, форма, поле, кнопка, группировка, группа, Group',
         route: '/tui-group',
     },
     {
         section: $localize`Components`,
         title: 'MarkerIcon',
-        keywords: 'молекулы, icon, картинка, свг, иконка, svg, графика',
+        keywords: 'icon, картинка, свг, иконка, svg, графика',
         route: '/tui-marker-icon',
     },
     {
@@ -361,14 +359,14 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: 'Input',
-                keywords: 'атомы, поле, инпут, форма, ввод, input, table, таблица',
+                keywords: 'поле, инпут, форма, ввод, input, table, таблица',
                 route: '/tui-input',
             },
             {
                 section: $localize`Components`,
                 title: 'InputDate',
                 keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, календарь, день, ' +
+                    'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar',
                 route: '/tui-input-date',
             },
@@ -395,14 +393,14 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: 'InputCount',
-                keywords: 'молекулы, селект, форма, числа, ввод, input, select, count',
+                keywords: 'селект, форма, числа, ввод, input, select, count',
                 route: '/tui-input-count',
             },
             {
                 section: $localize`Components`,
                 title: 'InputDateTime',
                 keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, календарь, день, ' +
+                    'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс',
                 route: '/tui-input-date-time',
             },
@@ -410,50 +408,45 @@ export const pages: TuiDocPages = [
                 section: $localize`Components`,
                 title: 'InputFile',
                 keywords:
-                    'молекулы, селект, форма, файл, загрузка, ввод, input, file, attach, load',
+                    'селект, форма, файл, загрузка, ввод, input, file, attach, load',
                 route: '/tui-input-file',
             },
             {
                 section: $localize`Components`,
                 title: 'InputMonth',
-                keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, month, месяц, год, дата',
+                keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
                 route: '/tui-input-month',
             },
             {
                 section: $localize`Components`,
                 title: 'InputMonthRange',
-                keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, month, месяц, год, дата',
+                keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
                 route: '/tui-input-month-range',
             },
             {
                 section: $localize`Components`,
                 title: 'InputNumber',
                 keywords:
-                    'молекулы, поле, инпут, number, число, форма, ввод, input, money, деньги, ' +
+                    'поле, инпут, number, число, форма, ввод, input, money, деньги, ' +
                     'cash, копейки, рубли, доллары, евро, control, контрол',
                 route: '/tui-input-number',
             },
             {
                 section: $localize`Components`,
                 title: 'InputPassword',
-                keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, password, пароль, код, шифр',
+                keywords: 'поле, инпут, форма, ввод, input, password, пароль, код, шифр',
                 route: '/tui-input-password',
             },
             {
                 section: $localize`Components`,
                 title: 'InputPhone',
-                keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, phone, телефон, номера',
+                keywords: 'поле, инпут, форма, ввод, input, phone, телефон, номера',
                 route: '/tui-input-phone',
             },
             {
                 section: $localize`Components`,
                 title: 'InputRange',
-                keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, range, slider, диапазон',
+                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
                 route: '/tui-input-range',
             },
             {
@@ -465,40 +458,39 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: 'InputSlider',
-                keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, range, slider, диапазон',
+                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
                 route: '/tui-input-slider',
             },
             {
                 section: $localize`Components`,
                 title: 'InputTag',
-                keywords: 'молекулы, поле, инпут, форма, ввод, input, tag, тэг',
+                keywords: 'поле, инпут, форма, ввод, input, tag, тэг',
                 route: '/tui-input-tag',
             },
             {
                 section: $localize`Components`,
                 title: 'InputTime',
                 keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
+                    'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
                 route: '/tui-input-time',
             },
             {
                 section: $localize`Components`,
                 title: 'InputPhoneInternational',
                 keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, phone, телефон, страны, номера,',
+                    'поле, инпут, форма, ввод, input, phone, телефон, страны, номера,',
                 route: '/tui-input-phone-international',
             },
             {
                 section: $localize`Components`,
                 title: 'PrimitiveTextfield',
-                keywords: 'атомы, текст, инпут, база, input',
+                keywords: 'текст, инпут, база, input',
                 route: '/tui-primitive-textfield',
             },
             {
                 section: $localize`Components`,
                 title: 'TextArea',
-                keywords: 'атомы, поле, инпут, форма, ввод, text-area, area',
+                keywords: 'поле, инпут, форма, ввод, text-area, area',
                 route: '/tui-text-area',
             },
             {
@@ -513,13 +505,13 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: 'Island',
-        keywords: 'молекулы, Island, остров, плашка',
+        keywords: 'Island, остров, плашка',
         route: '/tui-island',
     },
     {
         section: $localize`Components`,
         title: 'Label',
-        keywords: 'молекулы, лэйбл, метка, форма, label',
+        keywords: 'лэйбл, метка, форма, label',
         route: '/tui-label',
     },
     {
@@ -531,26 +523,26 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: 'Link',
-        keywords: 'атомы, href, anchor, ссылка, псевдо, pseudo, link',
+        keywords: 'href, anchor, ссылка, псевдо, pseudo, link',
         route: '/tui-link',
     },
     {
         section: $localize`Components`,
         title: 'Loader',
         keywords:
-            'атомы, загрузка, крутилка, лоадер, спиннер, спинер, крутится, мутится, spinner, loader',
+            'загрузка, крутилка, лоадер, спиннер, спинер, крутится, мутится, spinner, loader',
         route: '/tui-loader',
     },
     {
         section: $localize`Components`,
         title: 'Money',
-        keywords: 'атомы, money, деньги, cash, копейки, рубли, доллары, евро',
+        keywords: 'money, деньги, cash, копейки, рубли, доллары, евро',
         route: '/tui-money',
     },
     {
         section: $localize`Components`,
         title: 'Notification',
-        keywords: 'атомы, уведомление, нотификация, бабл, облачко, alert, notification',
+        keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
         route: '/tui-notification',
     },
     {
@@ -568,7 +560,7 @@ export const pages: TuiDocPages = [
                 section: $localize`Components`,
                 title: 'MobileCalendar',
                 keywords:
-                    'молекулы, календарь, день, неделя, месяц, год, дата, calendar, datapicker, data, picker',
+                    'календарь, день, неделя, месяц, год, дата, calendar, datapicker, data, picker',
                 route: '/tui-mobile-calendar',
             },
             {
@@ -587,20 +579,19 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: 'Radio',
-                keywords: 'атомы, инпут, форма, ввод, radio, радио',
+                keywords: 'инпут, форма, ввод, radio, радио',
                 route: '/tui-radio',
             },
             {
                 section: $localize`Components`,
                 title: 'RadioBlock',
-                keywords:
-                    'молекулы, инпут, кнопка, форма, ввод, radio, радио, radio-boxed',
+                keywords: 'инпут, кнопка, форма, ввод, radio, радио, radio-boxed',
                 route: '/tui-radio-block',
             },
             {
                 section: $localize`Components`,
                 title: 'RadioLabeled',
-                keywords: 'молекулы, инпут, форма, ввод, radio, радио, label, лэйбл',
+                keywords: 'инпут, форма, ввод, radio, радио, label, лэйбл',
                 route: '/tui-radio-labeled',
             },
             {
@@ -619,20 +610,20 @@ export const pages: TuiDocPages = [
                 section: $localize`Components`,
                 title: 'ComboBox',
                 keywords:
-                    'атомы, инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
+                    'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
                 route: '/tui-combo-box',
             },
             {
                 section: $localize`Components`,
                 title: 'MultiSelect',
                 keywords:
-                    'атомы, инпут, форма, ввод, select, селект, выбор, multiselect, мультиселект',
+                    'инпут, форма, ввод, select, селект, выбор, multiselect, мультиселект',
                 route: '/tui-multi-select',
             },
             {
                 section: $localize`Components`,
                 title: 'Select',
-                keywords: 'атомы, инпут, форма, ввод, select, селект, выбор',
+                keywords: 'инпут, форма, ввод, select, селект, выбор',
                 route: '/tui-select',
             },
         ],
@@ -650,29 +641,25 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: 'InputRange',
-                keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, range, slider, диапазон',
+                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
                 route: '/tui-input-range',
             },
             {
                 section: $localize`Components`,
                 title: 'InputSlider',
-                keywords:
-                    'молекулы, поле, инпут, форма, ввод, input, range, slider, диапазон',
+                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
                 route: '/tui-input-slider',
             },
             {
                 section: $localize`Components`,
                 title: 'Slider',
-                keywords:
-                    'атомы, инпут, числа, форма, ввод, slider, слайдер, range, диапазон',
+                keywords: 'инпут, числа, форма, ввод, slider, слайдер, range, диапазон',
                 route: '/tui-slider',
             },
             {
                 section: $localize`Components`,
                 title: 'Range',
-                keywords:
-                    'атомы, инпут, числа, форма, ввод, slider, слайдер, range, диапазон',
+                keywords: 'инпут, числа, форма, ввод, slider, слайдер, range, диапазон',
                 route: '/tui-range',
             },
         ],
@@ -680,7 +667,7 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: 'Svg',
-        keywords: 'атомы, icon, картинка, свг, иконка, svg, графика',
+        keywords: 'icon, картинка, свг, иконка, svg, графика',
         route: '/tui-svg',
     },
     {
@@ -710,25 +697,25 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: 'Tag',
-        keywords: 'молекулы, атомы, tag, тэг',
+        keywords: 'tag, тэг',
         route: '/tui-tag',
     },
     {
         section: $localize`Components`,
         title: 'ThemeSwitcher',
-        keywords: 'атомы, тема, blue, цвета, стили, кастомизация, синий, синяя',
+        keywords: 'тема, blue, цвета, стили, кастомизация, синий, синяя',
         route: '/tui-theme-switcher',
     },
     {
         section: $localize`Components`,
         title: 'Toggle',
-        keywords: 'атомы, инпут, форма, ввод, toggle, переключение',
+        keywords: 'инпут, форма, ввод, toggle, переключение',
         route: '/tui-toggle',
     },
     {
         section: $localize`Components`,
         title: 'Tooltip',
-        keywords: 'атомы, tooltip, тултип, hint, подсказка, помощь, help',
+        keywords: 'tooltip, тултип, hint, подсказка, помощь, help',
         route: '/tui-tooltip',
     },
     {
@@ -740,26 +727,26 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Navigation`,
         title: 'Breadcrumbs',
-        keywords: 'атомы, шаги, навигация, nav, хлебные, крошки, breadcrumbs',
+        keywords: 'шаги, навигация, nav, хлебные, крошки, breadcrumbs',
         route: '/tui-breadcrumbs',
     },
     {
         section: $localize`Navigation`,
         title: 'Pagination',
         keywords:
-            'атомы, пагинатор, страницы, пэйджы, навигация, navigation, paginator, pagination',
+            'пагинатор, страницы, пэйджы, навигация, navigation, paginator, pagination',
         route: '/tui-pagination',
     },
     {
         section: $localize`Navigation`,
         title: 'Stepper',
-        keywords: 'молекулы, stepper, step, группа, group, шаг, check',
+        keywords: 'stepper, step, группа, group, шаг, check',
         route: '/tui-stepper',
     },
     {
         section: $localize`Navigation`,
         title: 'Tabs',
-        keywords: 'mobile, ios, android, атомы, шаги, таб, tab, tabs',
+        keywords: 'mobile, ios, android, шаги, таб, tab, tabs',
         route: '/tui-tabs',
     },
     {
@@ -796,7 +783,7 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: 'ActiveZone',
-                keywords: 'атомы, focus, blur, фокус, activeElement',
+                keywords: 'focus, blur, фокус, activeElement',
                 route: '/tui-active-zone',
             },
             {
@@ -814,14 +801,14 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: 'Dropdown',
-                keywords: 'атомы, dropdown, контекст, выпадашка, дропдаун, Context',
+                keywords: 'dropdown, контекст, выпадашка, дропдаун, Context',
                 route: '/tui-dropdown',
             },
             {
                 section: $localize`Tools`,
                 title: 'DropdownSelection',
                 keywords:
-                    'атомы, dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context',
+                    'dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context',
                 route: '/tui-dropdown-selection',
             },
             {
@@ -846,7 +833,7 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: 'Hint',
-                keywords: 'атомы, tooltip, тултип, hint, подсказка, помощь, help, хинт',
+                keywords: 'tooltip, тултип, hint, подсказка, помощь, help, хинт',
                 route: '/tui-hint',
             },
             {
@@ -859,21 +846,20 @@ export const pages: TuiDocPages = [
                 section: $localize`Tools`,
                 title: 'ManualHint',
                 keywords:
-                    'атомы, tooltip, тултип, hint, подсказка, помощь, help, manual, программный, хинт',
+                    'tooltip, тултип, hint, подсказка, помощь, help, manual, программный, хинт',
                 route: '/tui-manual-hint',
             },
             {
                 section: $localize`Tools`,
                 title: 'PointerHint',
-                keywords:
-                    'атомы, tooltip, тултип, hint, подсказка, помощь, help, хинт, курсор',
+                keywords: 'tooltip, тултип, hint, подсказка, помощь, help, хинт, курсор',
                 route: '/tui-pointer-hint',
             },
             {
                 section: $localize`Tools`,
                 title: 'Let',
                 keywords:
-                    'атомы, let, переменная, шаблон, геттер, getter, pipe, пайп, async, подписка',
+                    'let, переменная, шаблон, геттер, getter, pipe, пайп, async, подписка',
                 route: '/tui-let',
             },
             {
@@ -885,13 +871,13 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: 'Mode',
-                keywords: 'атомы, фон, вид, цвет',
+                keywords: 'фон, вид, цвет',
                 route: '/tui-mode',
             },
             {
                 section: $localize`Tools`,
                 title: 'Present',
-                keywords: 'атомы, DOM, директива, появление, наличие, присутствие',
+                keywords: 'DOM, директива, появление, наличие, присутствие',
                 route: '/tui-present',
             },
             {
@@ -982,15 +968,13 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: 'NotificationsService',
-                keywords:
-                    'атомы, уведомление, нотификация, бабл, облачко, alert, notification',
+                keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
                 route: '/tui-notifications-service',
             },
             {
                 section: $localize`Tools`,
                 title: 'DialogService',
-                keywords:
-                    'атомы, молекулы, попап, модал, popup, dialog, диалог, modal, окно',
+                keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
                 route: '/tui-dialog-service',
             },
             {

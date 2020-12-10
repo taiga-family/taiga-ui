@@ -20,10 +20,10 @@ class Account {
     encapsulation,
 })
 export class TuiAccordionExample2 {
-    accounts = [
-        new Account('Рублёвый', 500),
-        new Account('Долларовый', 237),
-        new Account('Евровый', 100),
+    readonly accounts = [
+        new Account('Rubles', 500),
+        new Account('Dollar', 237),
+        new Account('Euro', 100),
     ];
 
     svgIcons = {rubl};
