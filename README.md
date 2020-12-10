@@ -61,7 +61,7 @@ See our [Getting started](https://taiga-ui.dev/getting-started) page to start wo
             </div>
         </td>
         <td align="center">
-            <a href="https://twitter.com/marsibarsi"
+            <a href="http://marsibarsi.me"
                 ><img
                     src="https://github.com/marsibarsi.png?size=100"
                     width="100"
