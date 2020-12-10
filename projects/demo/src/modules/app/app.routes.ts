@@ -935,7 +935,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/spaces/spaces.module`).then(m => m.SpacesModule),
         data: {
-            title: 'Отступы',
+            title: $localize`Spaces`,
         },
     },
     {

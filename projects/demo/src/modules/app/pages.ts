@@ -76,9 +76,9 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Common`,
-                title: 'Отступы',
+                title: $localize`Spaces`,
                 keywords:
-                    'верстка, markup, отступы, margin, padding, маржин, падинг, spaces',
+                    'layout, markup, отступы, margin, padding, маржин, падинг, spaces',
                 route: '/spaces',
             },
             {
