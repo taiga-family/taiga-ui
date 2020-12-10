@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk.svg)](https://npmjs.com/package/@taiga-ui/cdk)
 ![All packages CI](https://github.com/TinkoffCreditSystems/taiga-ui/workflows/Build%20all%20packages%20of%20Taiga%20UI/badge.svg?branch=main)
-[![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/Us8d8JVaTg)
+[![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 [![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/TinkoffCreditSystems/angular-open-source-starter)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki) • [Core team](#core-team)
