@@ -44,14 +44,13 @@ export const TUI_DOC_EXAMPLE_TEXTS = new InjectionToken<[string, string, string]
     {factory: () => ['Preview', 'Link to a sample was successfully copied', 'Done']},
 );
 
-/**
- * Works with a tuple
- * [@string word 'menu', @string word 'Search]
- */
-export const TUI_DOC_NAVIGATION_TEXTS = new InjectionToken<[string, string]>(
-    'tui-doc-navigation i18n texts',
-    {factory: () => ['Menu', 'Search']},
-);
+export const TUI_DOC_MENU_TEXT = new InjectionToken<string>('menu i18n text', {
+    factory: () => 'Menu',
+});
+
+export const TUI_DOC_SEARCH_TEXT = new InjectionToken<string>('search i18n text', {
+    factory: () => 'Search',
+});
 
 export const TUI_DOC_SEE_ALSO_TEXT = new InjectionToken<string>(
     'tui-doc-see-also i18n text',

@@ -496,7 +496,10 @@
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         },
-                        "scripts": ["node_modules/marked/lib/marked.js"],
+                        "scripts": [
+                            "node_modules/prismjs/prism.js",
+                            "node_modules/marked/lib/marked.js"
+                        ],
                         "es5BrowserSupport": true
                     },
                     "configurations": {

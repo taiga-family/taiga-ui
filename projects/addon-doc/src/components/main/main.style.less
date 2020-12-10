@@ -26,6 +26,19 @@
 
 .tui-doc-page {
     height: 100vh;
+    padding-top: 44px;
+}
+
+tui-doc-navigation.tui-doc-navigation {
+    position: fixed;
+    top: 64px;
+    bottom: 0;
+    width: @sidebar-width;
+    border-right: 1px solid var(--tui-base-03);
+
+    @media @tablet-s {
+        display: none;
+    }
 }
 
 .tui-doc-content {
@@ -140,4 +153,15 @@
 
 .hljs-strong {
     font-weight: bold;
+}
+
+.hljs .hljs-line-numbers {
+    padding: 0;
+}
+
+.hljs-ln-numbers {
+    vertical-align: top;
+    opacity: 0.3;
+    text-align: right;
+    padding-right: 1em !important;
 }

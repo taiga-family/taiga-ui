@@ -2,6 +2,7 @@ import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {Title} from '@angular/platform-browser';
 import {
     TUI_DOC_DEFAULT_TABS,
+    TUI_DOC_LOGO,
     TUI_DOC_PAGES,
     TUI_DOC_SEE_ALSO,
     TUI_DOC_TITLE,
@@ -11,7 +12,7 @@ import {iconsPathFactory, TUI_ICONS_PATH} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {SEE_ALSO_GROUPS} from './app.const';
-import {languages} from './languages';
+import {LOGO_CONTENT} from './logo/logo.component';
 import {pages} from './pages';
 
 const DEFAULT_TABS = [
@@ -26,12 +27,20 @@ export const ICONS_PATH = iconsPathFactory('assets/taiga-ui/icons/');
 
 export const APP_PROVIDERS = [
     Title,
-    {
-        provide: HIGHLIGHT_OPTIONS,
-        useValue: {
-            languages,
+    [
+        {
+            provide: HIGHLIGHT_OPTIONS,
+            useValue: {
+                coreLibraryLoader: () => import('highlight.js/lib/core'),
+                lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
+                languages: {
+                    typescript: () => import('highlight.js/lib/languages/typescript'),
+                    less: () => import('highlight.js/lib/languages/less'),
+                    xml: () => import('highlight.js/lib/languages/xml'),
+                },
+            },
         },
-    },
+    ],
     {
         provide: TUI_SANITIZER,
         useClass: NgDompurifySanitizer,
@@ -59,5 +68,9 @@ export const APP_PROVIDERS = [
     {
         provide: TUI_DOC_DEFAULT_TABS,
         useValue: DEFAULT_TABS,
+    },
+    {
+        provide: TUI_DOC_LOGO,
+        useValue: LOGO_CONTENT,
     },
 ];
