@@ -1,4 +1,6 @@
-# Taiga UI
+<p align="center"><a href="https://cube.dev"><img src="projects/demo/src/assets/images/taiga.svg" alt="taiga ui logo" width="64px"></a></p>
+
+<h1 align="center"> Taiga UI</h1>
 
 ![All packages CI](https://github.com/TinkoffCreditSystems/taiga-ui/workflows/Build%20all%20packages%20of%20Taiga%20UI/badge.svg?branch=main)
 [![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/TinkoffCreditSystems/angular-open-source-starter)
