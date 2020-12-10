@@ -14,14 +14,33 @@ It is based on [ng-polymorpheus](https://github.com/TinkoffCreditSystems/ng-poly
 
 ## Why Taiga UI
 
--   One reason
--   Another one
+-   **Modular and fully-treeshakable.** We harnessed the power of Secondary Entry Points mechanism. You can import even one entity from our library and be sure that there is no redundant code in your bundle
+
+-   **Agnostic**. Our components are very flexible to be ready for any usecase. But we do not forget about basic UX issues to let you focus on your project features
+
+-   **Customizable**. We use CSS custom properties for all our styling and provide easy methods to customize all UI components
+
+-   **Well engineered**. We do not afraid of DI, all our components in are OnPush, the whole project uses `strict` TypeScript mode
+
+-   **It's big!** We have 130+ components, 100+ directives, dozens of tokens, utils and tools. And it isn't over yet 🚀
+
+<!-- Read more about Taiga UI main features in [this article]() on inDepth -->
 
 ## How to start
 
 See our [Getting started](https://taiga-ui.dev/getting-started) page to start working with Taiga UI
 
 > If you want to use cdk tools only, see [CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki)
+
+## Community
+
+💡 Feel free to share your ideas in Github issues or discussions
+
+<!-- 🅰️ You can also find [#taiga-ui](./) channel in Angular original discord -->
+
+## Contributing
+
+See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide
 
 ## Core team
 
