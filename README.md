@@ -33,11 +33,6 @@ npm i @taiga-ui/cdk
                 /><br /><sub><b>Alex Inkin</b></sub></a
             >
             <div style="margin-top: 4px">
-                <a href="https://github.com/waterplea" title="Github"
-                    ><img
-                        width="16"
-                        src="https://image.flaticon.com/icons/svg/2111/2111425.svg"
-                /></a>
                 <a
                     style="margin-left: 8px"
                     href="https://twitter.com/waterplea"
@@ -45,6 +40,11 @@ npm i @taiga-ui/cdk
                     ><img
                         width="16"
                         src="https://image.flaticon.com/icons/svg/733/733579.svg"
+                /></a>
+                <a href="https://github.com/waterplea" title="Github"
+                    ><img
+                        width="16"
+                        src="https://image.flaticon.com/icons/svg/2111/2111425.svg"
                 /></a>
                 <a
                     style="margin-left: 8px"
@@ -66,11 +66,6 @@ npm i @taiga-ui/cdk
                 /><br /><sub><b>Roman Sedov</b></sub></a
             >
             <div style="margin-top: 4px">
-                <a href="https://github.com/marsibarsi" title="Github"
-                    ><img
-                        width="16"
-                        src="https://image.flaticon.com/icons/svg/2111/2111425.svg"
-                /></a>
                 <a
                     style="margin-left: 8px"
                     href="https://twitter.com/marsibarsi"
@@ -78,6 +73,11 @@ npm i @taiga-ui/cdk
                     ><img
                         width="16"
                         src="https://image.flaticon.com/icons/svg/733/733579.svg"
+                /></a>
+                <a href="https://github.com/marsibarsi" title="Github"
+                    ><img
+                        width="16"
+                        src="https://image.flaticon.com/icons/svg/2111/2111425.svg"
                 /></a>
                 <a
                     style="margin-left: 8px"
