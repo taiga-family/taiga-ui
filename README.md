@@ -34,9 +34,9 @@ See our [Getting started](https://taiga-ui.dev/getting-started) page to start wo
 
 ## Community
 
-💡 Feel free to share your ideas in Github issues or discussions
+💡 Your ideas are very welcome in Github issues or discussions
 
-<!-- 🅰️ You can also find [#taiga-ui](./) channel in Angular original discord -->
+🅰️ For live communication join [#taiga-ui](https://discord.gg/zrB2EdJjEy) channel in official Angular
 
 ## Contributing
 
@@ -117,7 +117,7 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide
 
 ## License
 
-🆓 Feel free in both commercial and private use of our components
+🆓 Feel free to use our library in your commercial and private applications
 
 All Taiga UI packages are covered by [Apache 2.0](/LICENSE)
 
