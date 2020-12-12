@@ -2,16 +2,13 @@ name: Build all packages of Taiga UI
 
 on:
   push:
-    branches:
-      - '!release/**'
-    paths:
-      - 'projects/**'
-      - '!projects/*testing/**'
-      - '!projects/demo/**'
-      - '!projects/icons/**'
-      - 'angular.json'
-      - 'package.json'
-      - 'tsconfig*'
+    branches-ignore:
+      - 'release/**'
+    paths-ignore:
+      - 'projects/*testing/**'
+      - 'projects/demo/**'
+      - 'projects/icons/**'
+      - '**/*.md'
 
 jobs:
   build:
