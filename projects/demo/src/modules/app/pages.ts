@@ -95,7 +95,7 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Common`,
-                title: 'Скелетон',
+                title: $localize`Skeleton`,
                 keywords: 'верстка, markup, скелетон, loader, загрузка, skeleton',
                 route: '/skeleton',
             },

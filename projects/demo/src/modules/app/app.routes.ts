@@ -927,7 +927,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/skeleton/skeleton.module`).then(m => m.SkeletonModule),
         data: {
-            title: 'Скелетон',
+            title: $localize`Skeleton`,
         },
     },
     {
