@@ -89,7 +89,7 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Common`,
-                title: 'Темы',
+                title: $localize`Theming`,
                 keywords: 'тема, custom, themes',
                 route: '/theme',
             },

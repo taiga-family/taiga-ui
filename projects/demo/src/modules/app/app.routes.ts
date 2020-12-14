@@ -951,7 +951,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/theme/theme.module`).then(m => m.ThemeModule),
         data: {
-            title: 'Темы',
+            title: $localize`Theming`,
         },
     },
     {
