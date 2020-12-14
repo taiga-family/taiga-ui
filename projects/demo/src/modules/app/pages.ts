@@ -83,7 +83,7 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Common`,
-                title: 'Таблицы',
+                title: $localize`Tables`,
                 keywords: 'верстка, markup, таблицы, tables',
                 route: '/tables',
             },

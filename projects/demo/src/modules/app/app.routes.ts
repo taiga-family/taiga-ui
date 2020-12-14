@@ -943,7 +943,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/tables/tables.module`).then(m => m.TablesModule),
         data: {
-            title: 'Таблицы',
+            title: $localize`Tables`,
         },
     },
     {
