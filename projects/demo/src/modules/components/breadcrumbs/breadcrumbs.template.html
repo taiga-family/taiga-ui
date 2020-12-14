@@ -1,7 +1,8 @@
 <tui-doc-page i18n-header header="Breadcrumbs" package="KIT">
     <ng-template pageTab>
-        Элемент навигации, представляющий собой путь от корневой страницы до
-        текущей.
+        <p i18n>
+            Navigation element that shows a path from root page to current
+        </p>
 
         <tui-doc-example
             id="base"
@@ -19,22 +20,24 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="items"
                 documentationPropertyMode="input"
                 documentationPropertyType="ReadonlyArray<TuiBreadCrumbsItem>"
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
             >
-                Список ссылок
+                Array of links
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер текста
+                Text size
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

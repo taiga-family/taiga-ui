@@ -11,19 +11,19 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiBreadcrumbsExample1 {
     items = [
         {
-            caption: 'Селекты',
+            caption: 'Selects',
             routerLink: '/tui-select',
         },
         {
-            caption: 'Мульти',
+            caption: 'Multi',
             routerLink: '/tui-multi-select',
         },
         {
-            caption: 'С тегами',
+            caption: 'With tags',
             routerLink: '/tui-multi-select',
         },
         {
-            caption: 'Текущая',
+            caption: 'Currect',
             routerLink: '/tui-breadcrumbs',
             routerLinkActiveOptions: {exact: true},
         },

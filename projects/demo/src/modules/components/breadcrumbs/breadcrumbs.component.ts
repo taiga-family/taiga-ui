@@ -23,21 +23,21 @@ export class ExampleTuiBreadcrumbsComponent {
         HTML: example1Html,
     };
 
-    items1 = [
+    readonly items1 = [
         {
-            caption: 'Селекты',
+            caption: 'Select',
             routerLink: '/tui-select',
         },
         {
-            caption: 'Мульти',
+            caption: 'Multi',
             routerLink: '/tui-multi-select',
         },
         {
-            caption: 'С тегами',
+            caption: 'With tags',
             routerLink: '/tui-multi-select',
         },
         {
-            caption: 'Текущая',
+            caption: 'Current',
             routerLink: '/tui-breadcrumbs',
         },
     ];
