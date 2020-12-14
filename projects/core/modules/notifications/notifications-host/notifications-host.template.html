@@ -1,4 +1,4 @@
-<ng-container *tuiLet="items$ | async as items">
+<ng-container *tuiLet="service.items$ | async as items">
     <div
         *ngIf="items.length"
         class="wrapper"
