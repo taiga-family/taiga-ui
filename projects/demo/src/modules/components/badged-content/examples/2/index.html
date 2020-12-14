@@ -1,5 +1,5 @@
 <tui-badged-content [contentTop]="badgeValue" colorTop="var(--tui-support-01)">
-    <tui-input class="input" [(ngModel)]="value">Введите текст</tui-input>
+    <tui-input class="input" [(ngModel)]="value">Input text</tui-input>
 </tui-badged-content>
 
 <div class="tui-space_top-5">
@@ -16,11 +16,11 @@
             [disabled]="contentTop === 50"
             (click)="onClick()"
         >
-            Кликни 50+ раз и ...
+            Let's click 50 times ...
         </button>
     </tui-badged-content>
 
     <ng-template #customBadge>
-        <div class="template">... ничего не произойдет</div>
+        <div class="template">... and nothing happened</div>
     </ng-template>
 </div>

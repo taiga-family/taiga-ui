@@ -2,5 +2,5 @@
     [contentTop]="contentTop"
     [colorTop]="colorTop"
 >
-    Оборачиваемый-компонент
+    Content to wrap
 </tui-badged-content>

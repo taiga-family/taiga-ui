@@ -67,7 +67,7 @@ export class ExampleTuiBadgedContentComponent {
         5,
         155,
         'tuiIconCheck',
-        'Шаблон',
+        'Template',
         'tuiIconCheckCircleLarge',
     ];
 }
