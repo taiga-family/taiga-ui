@@ -1,7 +1,9 @@
 <tui-doc-page header="CalendarMonth" package="KIT">
     <ng-template pageTab>
-        Компонент месяца для использования отдельно от
-        <a tuiLink routerLink="/tui-input-month-range">InputMonthRange</a>
+        <p i18n>
+            Month picker component. If you want a textfield, see
+            <a tuiLink routerLink="/tui-input-month-range">InputMonthRange</a>
+        </p>
 
         <tui-doc-example
             id="base"
@@ -12,7 +14,12 @@
             <tui-calendar-month-example-1></tui-calendar-month-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="range" heading="диапазон" [content]="example2">
+        <tui-doc-example
+            id="range"
+            i18n-heading
+            heading="Range"
+            [content]="example2"
+        >
             <tui-calendar-month-example-2></tui-calendar-month-example-2>
         </tui-doc-example>
     </ng-template>
@@ -30,23 +37,29 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                Функция, определяющая, заблокирован ли месяц.<br />
-                <strong>Должна быть чистой функцией.</strong>
+                <div>
+                    A handler that gets a month and returns true if it is
+                    disabled.
+                </div>
+
+                <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальный месяц
+                Maximal month
             </ng-template>
             <ng-template
                 documentationPropertyName="min"
@@ -55,16 +68,17 @@
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальный месяц
+                Minimal month
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth | TuiMonthRange | null"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >
-                Выбранный месяц или диапазон месяцев
+                A single month or a range of months
             </ng-template>
             <ng-template
                 documentationPropertyName="year"
@@ -73,14 +87,14 @@
                 [documentationPropertyValues]="yearVariants"
                 [(documentationPropertyValue)]="year"
             >
-                Текущий год
+                Current year
             </ng-template>
             <ng-template
                 documentationPropertyName="monthClick"
                 documentationPropertyMode="output"
                 documentationPropertyType="TuiMonth"
             >
-                Клик по месяцу
+                Selected month
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
