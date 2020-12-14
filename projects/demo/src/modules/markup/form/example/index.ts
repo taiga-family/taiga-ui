@@ -38,7 +38,7 @@ export class TuiExample {
             'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
     };
 
-    persons = [new User('роман', 'Седов'), new User('Александр', 'Инкин')];
+    persons = [new User('Roman', 'Sedov'), new User('Alex', 'Inkin')];
 
     accounts = [
         new Account('1', 'Common', 24876.55, TuiCurrency.Ruble, this.svgIcons.common),

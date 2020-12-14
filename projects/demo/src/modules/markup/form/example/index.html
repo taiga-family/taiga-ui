@@ -1,25 +1,25 @@
 <div class="tui-container">
     <div class="stepper">
         <tui-stepper [activeItemIndex]="0">
-            <button tuiStep>Первый шаг</button>
-            <button tuiStep [disabled]="true">Второй шаг</button>
-            <button tuiStep [disabled]="true">Третий шаг</button>
-            <button tuiStep [disabled]="true">Четвёртый шаг</button>
+            <button tuiStep>First step</button>
+            <button tuiStep [disabled]="true">Second step</button>
+            <button tuiStep [disabled]="true">Third step</button>
+            <button tuiStep [disabled]="true">Fourth step</button>
         </tui-stepper>
     </div>
     <form [formGroup]="testForm">
         <div class="tui-row tui-row_sme">
             <div class="tui-col_8">
                 <h3 class="tui-form__header tui-form__header_margin-top_none">
-                    Заголовок блока
+                    A header
                 </h3>
                 <div class="tui-form__row">
                     <tui-input
-                        tuiTextfieldExampleText="Плэйсхолдер поля"
+                        tuiTextfieldExampleText="Field placeholder"
                         formControlName="nameValue"
-                        tuiHintContent="Текст тултипа"
+                        tuiHintContent="A tooltip"
                     >
-                        Текстовое поле<span class="tui-required"></span>
+                        Textfield<span class="tui-required"></span>
                     </tui-input>
                     <tui-field-error
                         formControlName="nameValue"
@@ -27,10 +27,10 @@
                 </div>
                 <div class="tui-form__row">
                     <tui-input-date
-                        tuiTextfieldExampleText="Плэйсхолдер поля"
+                        tuiTextfieldExampleText="Placeholder"
                         formControlName="periodValue"
                     >
-                        Поле для ввода даты<span class="tui-required"></span>
+                        Input date<span class="tui-required"></span>
                     </tui-input-date>
                     <tui-field-error
                         formControlName="periodValue"
@@ -39,7 +39,7 @@
                 <div class="tui-form__row tui-form__row_multi-fields">
                     <div class="tui-form__multi-field">
                         <tui-input-password formControlName="passwordValue">
-                            Поле для ввода пароля
+                            Input password
                         </tui-input-password>
                         <tui-field-error
                             formControlName="passwordValue"
@@ -50,7 +50,7 @@
                             formControlName="moneyValue"
                             [postfix]="'RUB' | tuiCurrency"
                         >
-                            Поле для ввода денег
+                            Input money
                         </tui-input-number>
                         <tui-field-error
                             formControlName="moneyValue"
@@ -66,11 +66,9 @@
                         [segments]="1"
                         [segmentsPluralize]="['₽', '₽', '₽']"
                     >
-                        Желаемая сумма кредита
+                        Some slider
                     </tui-input-slider>
-                    <div class="tui-form__field-note">
-                        При выплате процентов на вклад повышается его доходность
-                    </div>
+                    <div class="tui-form__field-note">Some additional text</div>
                     <tui-field-error
                         formControlName="quantityValue"
                     ></tui-field-error>
@@ -81,7 +79,7 @@
                             formControlName="personValue"
                             [valueContent]="personValueContent"
                         >
-                            Выберите человека
+                            Choose a person
                             <tui-data-list-wrapper
                                 *tuiDataList
                                 [items]="persons"
@@ -98,14 +96,14 @@
                     </div>
                     <div class="tui-form__multi-field">
                         <tui-input-phone formControlName="phoneValue">
-                            Напишите телефон
+                            Input phone
                         </tui-input-phone>
                         <tui-field-error
                             formControlName="phoneValue"
                         ></tui-field-error>
                     </div>
                 </div>
-                <h3 class="tui-form__header">Заголовок блока</h3>
+                <h3 class="tui-form__header">Header</h3>
                 <div
                     tuiGroup
                     class="tui-form__row"
@@ -118,7 +116,7 @@
                         item="with-commission"
                         size="l"
                     >
-                        С комисcией
+                        One option
                     </tui-radio-block>
                     <tui-radio-block
                         contentAlign="right"
@@ -126,12 +124,12 @@
                         item="without-commission"
                         size="l"
                     >
-                        Без комиссии
+                        An alternative one
                     </tui-radio-block>
                 </div>
                 <div class="tui-form__row tui-form__row_half-width">
                     <tui-input-time formControlName="timeValue">
-                        Поле для ввода времени
+                        Input time
                     </tui-input-time>
                 </div>
                 <div class="tui-form__row tui-form__row_checkboxes">
@@ -140,58 +138,58 @@
                         formControlName="osnoValue"
                         size="l"
                     >
-                        ОСНО
+                        First option
                     </tui-checkbox-labeled>
                     <tui-checkbox-labeled
                         class="tui-form__checkbox"
                         formControlName="usnValue"
                         size="l"
                     >
-                        УСН &laquo;Доходы&raquo;
+                        Other option
                     </tui-checkbox-labeled>
                     <tui-checkbox-labeled
                         class="tui-form__checkbox"
                         formControlName="eshnValue"
                         size="l"
                     >
-                        ECXH
+                        Cool option
                     </tui-checkbox-labeled>
                     <tui-checkbox-labeled
                         class="tui-form__checkbox"
                         formControlName="envdValue"
                         size="l"
                     >
-                        ЕНВД
+                        Your personal option
                     </tui-checkbox-labeled>
                     <tui-checkbox-labeled
                         class="tui-form__checkbox"
                         formControlName="usn2Value"
                         size="l"
                     >
-                        УСН &laquo;Доходы&nbsp;&mdash; Расходы&raquo;
+                        Doubtful option
                     </tui-checkbox-labeled>
                     <tui-checkbox-labeled
                         class="tui-form__checkbox"
                         formControlName="patentValue"
                         size="l"
                     >
-                        Патентная СН
+                        One more value
                     </tui-checkbox-labeled>
                 </div>
                 <h3
                     class="tui-form__header tui-form__header_margin-bottom_small"
                 >
-                    Заголовок блока
+                    Header
                 </h3>
                 <div class="tui-form__row">
-                    <label tuiLabel label="Откуда">
+                    <label tuiLabel label="From">
                         <tui-select
                             class="accounts-select"
                             formControlName="accountWherefrom"
                             [tuiTextfieldLabelOutside]="true"
                             [valueContent]="accountContent"
                         >
-                            Выберите счет
+                            Choose an account
                             <tui-data-list-wrapper
                                 *tuiDataList
                                 [items]="accounts"
@@ -201,14 +199,14 @@
                     </label>
                 </div>
                 <div class="tui-form__row">
-                    <label tuiLabel label="Куда">
+                    <label tuiLabel label="To">
                         <tui-select
                             class="accounts-select"
                             formControlName="accountWhere"
                             [tuiTextfieldLabelOutside]="true"
                             [valueContent]="accountContent"
                         >
-                            Выберите счет
+                            Choose an account
                             <tui-data-list-wrapper
                                 *tuiDataList
                                 [items]="accounts"
@@ -217,21 +215,21 @@
                         </tui-select>
                     </label>
                 </div>
-                <h3 class="tui-form__header">Заголовок блока</h3>
+                <h3 class="tui-form__header">Header</h3>
                 <div class="tui-form__row">
                     <tui-input
-                        tuiTextfieldExampleText="Плэйсхолдер поля"
+                        tuiTextfieldExampleText="Placeholder"
                         formControlName="textValue"
-                        tuiHintContent="Текст тултипа"
+                        tuiHintContent="A tooltip"
                     >
-                        Текстовое поле
+                        Textfield
                     </tui-input>
                     <div class="tui-form__field-checkbox">
                         <tui-checkbox-labeled
                             formControlName="checkboxValue"
                             size="l"
                         >
-                            Оплата налога за третье лицо
+                            Try this
                         </tui-checkbox-labeled>
                     </div>
                 </div>
@@ -242,7 +240,7 @@
                         size="l"
                         type="submit"
                     >
-                        Отправить
+                        Submit
                     </button>
                     <button
                         tuiButton
@@ -251,7 +249,7 @@
                         appearance="flat"
                         size="l"
                     >
-                        Отменить
+                        Cancel
                     </button>
                 </div>
             </div>

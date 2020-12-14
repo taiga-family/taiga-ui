@@ -888,7 +888,7 @@ const ROUTES = [
         path: 'form',
         loadChildren: () => import(`../markup/form/form.module`).then(m => m.FormModule),
         data: {
-            title: 'Форма',
+            title: $localize`Form`,
         },
     },
     {

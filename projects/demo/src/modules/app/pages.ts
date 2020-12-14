@@ -101,7 +101,7 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Common`,
-                title: 'Форма',
+                title: $localize`Form`,
                 keywords: 'верстка, markup, форма, ввод, пример, input, form',
                 route: '/form',
             },
