@@ -1,6 +1,24 @@
 # Taiga UI — Doc
 
+[![npm version](https://img.shields.io/npm/v/@taiga-ui/addon-doc.svg)](https://npmjs.com/package/@taiga-ui/addon-doc)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@taiga-ui/addon-doc)](https://bundlephobia.com/result?p=@taiga-ui/addon-doc)
+[![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
+
 > Taiga UI based library for developing documentation portals for Angular libraries.
+
+## How to install
+
+Install main packages:
+
+```
+npm i @taiga-ui/{cdk,core,kit}
+```
+
+Install doc:
+
+```
+npm i @taiga-ui/addon-doc
+```
 
 ## How to use
 
