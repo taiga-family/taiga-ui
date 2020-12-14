@@ -10,7 +10,7 @@
         [icon]="icon"
         (click)="onClick($event)"
     >
-        Кнопка
+        Button
     </button>
 
     <button
@@ -21,7 +21,7 @@
         [disabled]="true"
         (click)="onClick($event)"
     >
-        Кнопка заблокирована
+        Disabled button
     </button>
 
     <button
@@ -30,7 +30,7 @@
         [showLoader]="true"
         (click)="onClick($event)"
     >
-        Кнопка loading
+        Loading button
     </button>
 </p>
 <h3>button[tuiIconButton]</h3>
@@ -68,20 +68,10 @@
         href="http://google.com"
         [icon]="icon"
     >
-        Ссылка
+        Link
     </a>
 
-    <a
-        tuiButton
-        type="button"
-        class="tui-space_right-2"
-        iconRight="tuiIconSearch"
-        [disabled]="true"
-    >
-        Кнопка заблокирована
-    </a>
-
-    <a tuiButton [showLoader]="true"> Кнопка loading </a>
+    <a tuiButton [showLoader]="true"> Loading button </a>
 </p>
 <h3>a[tuiIconButton]</h3>
 <p>
