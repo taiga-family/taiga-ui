@@ -1,6 +1,6 @@
-<!--Здесь передается число, будет показано 99+ -->
+<!-- It is a number and badge shows 99+ -->
 <tui-badge [value]="100"></tui-badge>
 
 
-<!--Здесь передается строка, будет показано 100 -->
+<!-- It is a string and badge shows 100 -->
 <tui-badge status="primary" value="100"></tui-badge>
