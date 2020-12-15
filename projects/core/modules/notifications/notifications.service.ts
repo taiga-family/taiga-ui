@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, Observer, ReplaySubject, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Observer} from 'rxjs';
 import {NotificationAlert} from './notification-alert/Notification-alert';
 import {TuiNotificationContentContext} from './notification-content-context';
 import {
@@ -17,42 +17,32 @@ const NO_HOST =
 })
 export class TuiNotificationsService {
     /** @internal */
-    readonly open$ = new ReplaySubject<NotificationAlert<any, any>>(1);
+    readonly items$ = new BehaviorSubject<ReadonlyArray<NotificationAlert<any, any>>>([]);
 
-    /** @internal */
-    readonly close$ = new Subject<NotificationAlert<any, any>>();
-
-    showNotification<O = void>(
+    show<O = void>(
         content: PolymorpheusContent<TuiNotificationContentContext<O>>,
     ): Observable<O>;
-    showNotification<O = void>(
+    show<O = void>(
         content: PolymorpheusContent<TuiNotificationContentContext<O>>,
         options: TuiNotificationOptions,
     ): Observable<O>;
-    showNotification<O, I>(
+    show<O, I>(
         content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
         options: TuiNotificationOptionsWithData<I>,
     ): Observable<O>;
-    showNotification<O, I>(
+    show<O, I>(
         content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
         options: TuiNotificationOptions | TuiNotificationOptionsWithData<I> = {},
     ): Observable<O> {
-        tuiAssert.assert(!!this.open$.observers.length, NO_HOST);
+        tuiAssert.assert(!!this.items$.observers.length, NO_HOST);
 
-        return this.createNotification(content, options);
-    }
-
-    private createNotification<O, I>(
-        content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
-        options: TuiNotificationOptions | TuiNotificationOptionsWithData<I>,
-    ): Observable<O> {
         return new Observable((observer: Observer<O>) => {
             const notification = new NotificationAlert(observer, content, options);
 
-            this.open$.next(notification);
+            this.items$.next([...this.items$.value, notification]);
 
             return () => {
-                this.close$.next(notification);
+                this.items$.next(this.items$.value.filter(item => item !== notification));
             };
         });
     }

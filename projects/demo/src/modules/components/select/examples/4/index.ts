@@ -30,6 +30,6 @@ export class TuiSelectExample4 {
 
     addMore(select: TuiSelectComponent<unknown>) {
         select.handleOption(select.value);
-        this.notifications.showNotification('Add more is clicked').subscribe();
+        this.notifications.show('Add more is clicked').subscribe();
     }
 }

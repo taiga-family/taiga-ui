@@ -4,7 +4,8 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiBrightness} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
-import {Subscription} from 'rxjs';
+import {Subscription, timer} from 'rxjs';
+import {skip, take, takeUntil} from 'rxjs/operators';
 import {TuiTableBarsService} from '../../../services/table-bars.service';
 import {TuiTableBarsHostComponent} from '../table-bars-host.component';
 import {TuiTableBarsHostModule} from '../table-bars-host.module';
@@ -58,61 +59,71 @@ describe('TableBarsHost', () => {
     }
 
     beforeEach(() => {
-        subscription = service.showTableBar(title).subscribe();
+        if (subscription) {
+            subscription.unsubscribe();
+        }
     });
 
-    it('Слушает сервис для добавления tableBar', () => {
-        expect(component.items$.value[0].content).toBe(title);
+    it('Слушает сервис для добавления tableBar', done => {
+        component.service.bar$.pipe(take(1)).subscribe(bar => {
+            expect(bar && bar.content).toBe(title);
+            done();
+        });
+
+        service.open(title).pipe(take(1)).subscribe();
     });
 
-    it('tableBar удаляются', () => {
-        (component as any).removeItem(component.items$.value[0]);
+    it('tableBar удаляются по unsubscribe', done => {
+        component.service.bar$.pipe(skip(1), take(1)).subscribe(bar => {
+            expect(bar).toBe(null);
+            done();
+        });
 
-        expect(component.items$.value.length).toBe(0);
-    });
-
-    it('tableBar удаляются по unsubscribe', () => {
-        subscription.unsubscribe();
-
-        expect(component.items$.value.length).toBe(0);
+        service
+            .open(title)
+            .pipe(takeUntil(timer(1)))
+            .subscribe();
     });
 
     it('по умолчанию tableBar темный', () => {
+        service.open(title).pipe(take(1)).subscribe();
+
         fixture.detectChanges();
 
         expect(getBar().nativeElement.classList.contains('bar_light')).toBe(false);
     });
 
     it('при mode: light tableBar светлый', () => {
-        subscription = service
-            .showTableBar(title, {mode: TuiBrightness.Light})
-            .subscribe();
+        service.open(title, {mode: TuiBrightness.Light}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
         expect(getBar().nativeElement.classList.contains('bar_light')).toBe(true);
     });
 
     it('по умолчанию кнопки закрытия нет', () => {
+        service.open(title).pipe(take(1)).subscribe();
+
         fixture.detectChanges();
 
         expect(getCloseButton()).toBeNull();
     });
 
     it('при hasCloseButton: true tableBar кнопка закрытия есть', () => {
-        subscription = service.showTableBar(title, {hasCloseButton: true}).subscribe();
+        service.open(title, {hasCloseButton: true}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
         expect(getCloseButton()).not.toBeNull();
     });
 
-    it('нажатие closeButton удаляет текущий tableBar', () => {
-        subscription.unsubscribe();
-        subscription = service.showTableBar(title, {hasCloseButton: true}).subscribe();
+    it('нажатие closeButton удаляет текущий tableBar', done => {
+        service.bar$.pipe(skip(1), take(1)).subscribe(bar => {
+            expect(bar).toBe(null);
+            done();
+        });
+
+        subscription = service.open(title, {hasCloseButton: true}).subscribe();
         fixture.detectChanges();
 
         getCloseButton().nativeElement.click();
-        fixture.detectChanges();
-
-        expect(component.items$.value.length).toBe(0);
     });
 });

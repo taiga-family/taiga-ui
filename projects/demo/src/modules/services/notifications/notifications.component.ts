@@ -108,7 +108,7 @@ export class ExampleTuiNotificationsComponent {
 
     showNotification() {
         this.notificationsService
-            .showNotification(this.selectedContent, {
+            .show(this.selectedContent, {
                 label: this.label,
                 data: this.data,
                 status: this.status,
@@ -117,7 +117,7 @@ export class ExampleTuiNotificationsComponent {
             })
             .pipe(
                 switchMap(response =>
-                    this.notificationsService.showNotification(response, {
+                    this.notificationsService.show(response, {
                         label: 'Notification responded with:',
                     }),
                 ),

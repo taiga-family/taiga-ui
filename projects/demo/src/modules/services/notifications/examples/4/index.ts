@@ -23,7 +23,7 @@ export class TuiNotificationsExampleComponent4 {
         @Inject(Injector) private injector: Injector,
     ) {
         this.notification = notificationsService
-            .showNotification<number, number>(
+            .show<number, number>(
                 new PolymorpheusComponent(AlertExampleWithDataComponent, this.injector),
                 {
                     label: 'Заголовок такой длинный, что даже не влезает в одну строку',
@@ -34,10 +34,9 @@ export class TuiNotificationsExampleComponent4 {
             )
             .pipe(
                 switchMap(response =>
-                    notificationsService.showNotification(
-                        'Получено значение — ' + response,
-                        {label: 'Информация.'},
-                    ),
+                    notificationsService.show('Получено значение — ' + response, {
+                        label: 'Информация.',
+                    }),
                 ),
                 takeUntil(router.events),
             );
