@@ -1,9 +1,9 @@
-<tui-doc-page i18n-header header="CheckboxLabeled" package="KIT">
+<tui-doc-page header="CheckboxLabeled" package="KIT">
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
-            <code>CheckboxLabeled</code> состоит из чекбокса
-            <code>Checkbox</code> и лейбла. Клик по лейблу меняет состояние
-            чекбокса. Для использования без лейбла&nbsp;см.
+        <div i18n class="tui-space_bottom-3">
+            <code>CheckboxLabeled</code> is a <code>Checkbox</code> with a
+            label. Click on label changes checkbox state. If you do not need a
+            label, see
             <a tuiLink routerLink="/tui-checkbox"><code>Checkbox</code></a
             >.
         </div>
@@ -19,7 +19,8 @@
 
         <tui-doc-example
             id="large"
-            heading="большой размер"
+            i18n-heading
+            heading="Big size"
             [content]="example2"
         >
             <tui-checkbox-labeled-example-2></tui-checkbox-labeled-example-2>
@@ -31,6 +32,7 @@
             <ng-template>
                 <form [formGroup]="control">
                     <tui-checkbox-labeled
+                        i18n
                         formControlName="testValue1"
                         [focusable]="focusable"
                         [pseudoInvalid]="pseudoInvalid"
@@ -40,9 +42,10 @@
                         [readOnly]="readOnly"
                         [size]="size"
                     >
-                        Кредитная карта
+                        An option
                     </tui-checkbox-labeled>
                     <tui-checkbox-labeled
+                        i18n
                         class="tui-space_top-2"
                         formControlName="testValue2"
                         [focusable]="focusable"
@@ -53,9 +56,10 @@
                         [readOnly]="readOnly"
                         [size]="size"
                     >
-                        Дебетовая карта
+                        An alternative one
                     </tui-checkbox-labeled>
                     <tui-checkbox-labeled
+                        i18n
                         class="tui-space_top-2"
                         formControlName="testValue3"
                         [focusable]="focusable"
@@ -66,27 +70,29 @@
                         [readOnly]="readOnly"
                         [size]="size"
                     >
-                        Транспортная карта
+                        Other
                     </tui-checkbox-labeled>
                 </form>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент формы disabled (через formControl.disable())
+                Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер контрола
+                Size
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
@@ -95,10 +101,11 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модули для работы с формами из
-                Angular и модуль
-                <code>TuiCheckboxLabeledModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiCheckboxLabeledModule</code> in the same module
+                    where you want to use our component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -107,8 +114,10 @@
             </li>
 
             <li>
-                Объявить форму (<code>FormGroup</code>) или контрол
-                (<code>FormControl</code>) в компоненте:
+                <p i18n>
+                    Declare a form (<code>FormGroup</code>) or a control
+                    (<code>FormControl</code>) in your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
