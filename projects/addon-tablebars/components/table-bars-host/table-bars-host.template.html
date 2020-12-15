@@ -1,6 +1,5 @@
-<div *tuiLet="items$ | async as items" class="wrapper">
+<div *ngIf="service.bar$ | async as item" class="wrapper">
     <div
-        *ngIf="items[items.length - 1] as item"
         automation-id="tui-table-bar__bar"
         class="bar"
         [class.bar_light]="item.mode === 'light'"

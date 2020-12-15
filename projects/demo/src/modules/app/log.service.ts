@@ -9,12 +9,12 @@ export class LogService {
     ) {}
 
     log(value: any) {
-        this.notifications.showNotification(String(value)).subscribe();
+        this.notifications.show(String(value)).subscribe();
     }
 
     event(eventName: string, value: any) {
         this.notifications
-            .showNotification(String(value), {label: `event (${eventName})`})
+            .show(String(value), {label: `event (${eventName})`})
             .subscribe();
 
         // нужно, чтобы на витрине в консоли можно было посмотреть объект события

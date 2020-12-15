@@ -49,6 +49,6 @@ export class TuiTabsExample2 {
     ) {}
 
     onClick(item: string) {
-        this.notifications.showNotification(item).subscribe();
+        this.notifications.show(item).subscribe();
     }
 }
