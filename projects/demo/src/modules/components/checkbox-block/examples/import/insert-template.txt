@@ -1,5 +1,5 @@
 <div [formGroup]="testForm">
     <tui-checkbox-block formControlName="testValue">
-        Согласен оплатить онлайн
+        Content
     </tui-checkbox-block>
 </div>
