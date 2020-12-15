@@ -6,7 +6,7 @@
     [class.components_second]="current === 2"
 >
     <div class="topography">
-        <img class="map" src="assets/images/topography.svg" alt="" />
+        <img src="assets/images/topography.svg" alt="" />
     </div>
     <div class="container">
         <h2 class="title">Dozens of<br />components</h2>
@@ -168,6 +168,9 @@
 </section>
 
 <section class="initial" [class.initial_hidden]="current">
+    <div class="map">
+        <img src="assets/images/topography.svg" alt="" />
+    </div>
     <h1 class="wrapper" [class.wrapper_hidden]="current">
         <span class="block">
             Taiga UI <span class="dash">——</span>
@@ -205,5 +208,6 @@
     >
         Browse components
     </a>
+    <div class="scroll" [class.scroll_hidden]="current === 2"></div>
     <img src="assets/images/by.svg" alt="by Tinkoff" class="by" />
 </footer>

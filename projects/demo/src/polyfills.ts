@@ -63,3 +63,5 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 
 import 'prismjs';
 import 'prismjs/components/prism-typescript.min.js';
+
+import 'intersection-observer';

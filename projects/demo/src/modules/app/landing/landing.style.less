@@ -1,5 +1,25 @@
 @import 'taiga-ui-local';
 
+@keyframes scroll {
+    0% {
+        color: transparent;
+    }
+
+    50% {
+        color: rgba(0, 0, 0, 0.2);
+    }
+
+    100% {
+        color: transparent;
+    }
+}
+
+@keyframes bounce {
+    to {
+        transform: translate3d(0, 10px, 0);
+    }
+}
+
 :host {
     .fullsize();
     z-index: 1;
@@ -90,7 +110,24 @@
     }
 }
 
+.map {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #3dc67c;
+    border: 44px solid transparent;
+    border-bottom-width: 120px;
+    overflow: hidden;
+
+    @media all and (min-width: 700px) {
+        display: none;
+    }
+}
+
 .wrapper {
+    position: relative;
     transition: opacity 0.6s 0.4s;
     white-space: nowrap;
     margin: 0;
@@ -327,4 +364,42 @@
 
 .link {
     color: white;
+}
+
+.scroll {
+    .transition(opacity);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -35px -12px;
+    width: 25px;
+    height: 60px;
+    border-radius: 20px;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    animation: bounce 1s infinite alternate;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        left: 6.5px;
+        top: 15px;
+        transform: rotate(-45deg);
+        border-bottom: 3px solid;
+        border-left: 3px solid;
+        color: transparent;
+        animation-fill-mode: both;
+        animation: scroll 1s infinite;
+    }
+
+    &:after {
+        top: 30px;
+        animation: scroll 1s 0.3s infinite;
+    }
+
+    &_hidden {
+        opacity: 0;
+    }
 }

@@ -74,6 +74,7 @@
         "core-js": "^2.6.9",
         "dompurify": "^2.2.3",
         "highlight.js": "^10.4.1",
+        "intersection-observer": "^0.12.0",
         "ngx-highlightjs": "^4.1.3",
         "ngx-markdown": "^11.0.1",
         "preboot": "^7.0.0",
