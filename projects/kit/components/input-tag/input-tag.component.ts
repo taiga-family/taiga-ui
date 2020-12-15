@@ -43,7 +43,6 @@ import {
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_TEXTIFELD_WATCHED_CONTROLLER,
     TuiAppearance,
-    TuiBrightness,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHintControllerDirective,
@@ -57,6 +56,7 @@ import {
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {ALLOWED_SPACE_REGEXP} from '@taiga-ui/kit/components/tag';
+import {TuiStatus} from '@taiga-ui/kit/enums';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Subject} from 'rxjs';
@@ -261,8 +261,10 @@ export class TuiInputTagComponent
         return this.hasCleaner || this.hasTooltip || this.iconAlignRight;
     }
 
-    get mode(): TuiBrightness {
-        return (this.modeDirective && this.modeDirective.mode) || TuiBrightness.Dark;
+    get status(): TuiStatus {
+        return this.modeDirective && this.modeDirective.mode
+            ? TuiStatus.Default
+            : TuiStatus.Primary;
     }
 
     get appearance(): TuiAppearance {

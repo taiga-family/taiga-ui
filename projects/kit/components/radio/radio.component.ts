@@ -78,7 +78,7 @@ export class TuiRadioComponent<T>
     }
 
     get appearance(): TuiAppearance {
-        return this.checked ? TuiAppearance.Primary : TuiAppearance.Secondary;
+        return this.checked ? TuiAppearance.Primary : TuiAppearance.Outline;
     }
 
     @HostBinding('class._disabled')

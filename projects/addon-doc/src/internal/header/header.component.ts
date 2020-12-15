@@ -1,9 +1,10 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
-import {TUI_DOC_LOGO, TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Subject} from 'rxjs';
 import {distinctUntilChanged, mapTo, startWith} from 'rxjs/operators';
+import {TUI_DOC_MENU_TEXT} from '../../tokens/i18n';
+import {TUI_DOC_LOGO} from '../../tokens/logo';
 
 @Component({
     selector: 'header[tuiDocHeader]',

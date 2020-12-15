@@ -16,6 +16,7 @@ import {APP_PROVIDERS} from './app.providers';
 import {AppRoutingModule} from './app.routes';
 import {GettingStartedModule} from './getting-started/getting-started.module';
 import {HomeModule} from './home/home.module';
+import {LandingModule} from './landing/landing.module';
 import {LogoModule} from './logo/logo.module';
 
 @NgModule({
@@ -35,6 +36,7 @@ import {LogoModule} from './logo/logo.module';
         TuiLinkModule,
         GettingStartedModule,
         HomeModule,
+        LandingModule,
         LogoModule,
         HttpClientModule,
         MarkdownModule.forRoot({
