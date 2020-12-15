@@ -64,13 +64,13 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiReactiveField
         LESS: example2Less,
     };
 
-    readonly items = [new Account('Рублёвый', 500), new Account('Долларовый', 237)];
+    readonly items = [new Account('Rubles', 500), new Account('Dollars', 237)];
 
     strict = true;
 
     search = '';
 
-    valueTemplateVariants = ['', 'Шаблон'];
+    valueTemplateVariants = ['', 'Template'];
 
     selectedValueTemplate = '';
 
@@ -117,6 +117,6 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiReactiveField
     }
 
     setValue() {
-        this.control.setValue(new Account('Долларовый', 237));
+        this.control.setValue(new Account('Dollars', 237));
     }
 }
