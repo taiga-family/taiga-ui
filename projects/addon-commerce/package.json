@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-commerce",
-    "version": "1.6.4",
+    "version": "1.6.5",
     "description": "Extension package for Taiga UI related to commerce, payment systems, currencies etc.",
     "keywords": [
         "angular",
@@ -18,12 +18,12 @@
         "@angular/core": ">=6.0.0",
         "@angular/forms": ">=6.0.0",
         "@tinkoff/ng-polymorpheus": ">=2.0.0",
-        "@taiga-ui/cdk": "1.6.4",
-        "@taiga-ui/core": "1.6.4",
+        "@taiga-ui/cdk": "1.6.5",
+        "@taiga-ui/core": "1.6.5",
         "angular2-text-mask": "9.0.0",
         "rxjs": ">=6.0.0"
     },
     "devDependencies": {
-        "@taiga-ui/core": "1.6.4"
+        "@taiga-ui/core": "1.6.5"
     }
 }
