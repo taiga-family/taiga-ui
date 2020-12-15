@@ -1,15 +1,3 @@
-<button
-    tuiIconButton
-    type="button"
-    appearance=""
-    size="s"
-    shape="rounded"
-    icon="tuiIconArrowRightLgLarge"
-    class="button"
-    [title]="texts[0]"
-    (click)="toggleMenu()"
-></button>
-<tui-svg class="logo" routerLink="/" [src]="logo"></tui-svg>
 <tui-hosted-dropdown
     *tuiLet="filteredItems as filtered"
     class="input"
@@ -28,9 +16,9 @@
         [value]="search"
         (valueChange)="onSearchChange($event)"
     >
-        {{texts[1]}}
+        {{searchText}}
     </tui-primitive-textfield>
-    <ng-template #dropdown>
+    <ng-template #dropdown let-activeZone>
         <tui-data-list>
             <tui-opt-group
                 *ngFor="let group of filtered; let index = index"
@@ -115,4 +103,3 @@
         </tui-accordion>
     </tui-scrollbar>
 </nav>
-<ng-content></ng-content>

@@ -1,49 +1,15 @@
 @import 'taiga-ui-local';
 
-@sidebar-width: 260px;
-
 :host {
-    .transition(transform);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    z-index: 3;
     display: flex;
-    width: @sidebar-width;
     flex-direction: column;
     text-align: center;
-    border-right: 1px solid var(--tui-base-03);
     background: var(--tui-base-01);
-
-    @media @tablet-s {
-        transform: translateX(-100%);
-
-        &._open {
-            transform: translateX(0);
-        }
-    }
-}
-
-.logo {
-    .transition(opacity);
-    width: auto;
-    height: auto;
-    margin: 20px auto;
-    cursor: pointer;
-    outline: none;
-
-    &:hover {
-        opacity: 0.8;
-    }
-}
-
-.versions {
-    display: flex;
 }
 
 .input {
     display: block;
-    margin: 0 24px 24px;
+    margin: 20px;
 }
 
 .navigation {
@@ -70,18 +36,6 @@
     }
 }
 
-.search-link {
-    display: block;
-    flex: 1;
-    min-width: 100%;
-    box-sizing: border-box;
-    outline: none;
-    text-decoration: none;
-    color: inherit;
-    padding: 10px 16px 10px 32px;
-    margin-left: -16px;
-}
-
 .subsection {
     margin-left: 8px;
 }
@@ -105,23 +59,5 @@
     &_subsection {
         margin-left: 0;
         line-height: 44px;
-    }
-}
-
-.button {
-    .transition(transform);
-    position: absolute;
-    top: 18px;
-    right: -18px;
-    display: none;
-    background-color: var(--tui-base-01);
-    border: 1px solid var(--tui-base-03);
-
-    :host._open & {
-        transform: rotate(180deg);
-    }
-
-    @media @tablet-s {
-        display: block;
     }
 }

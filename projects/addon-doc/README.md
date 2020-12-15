@@ -33,23 +33,10 @@ npm i @taiga-ui/addon-doc
 2. Configure languages to highlight in your main module:
 
     ```typescript
-    import * as typescript from 'highlight.js/lib/languages/typescript';
-    import {HighlightLanguage} from 'ngx-highlightjs';
-
-    /**
-     * Import every language you wish to highlight here
-     * NOTE: The name of each language must match the file name its imported from
-     */
-    export function hljsLanguages(): ReadonlyArray<HighlightLanguage> {
-        return [{name: 'typescript', func: typescript}];
-    }
-    ```
-
-    ```typescript
     import {NgModule} from '@angular/core';
     import {TuiDocMainModule} from '@taiga-ui/addon-doc';
     import {hljsLanguages} from './hljsLanguages';
-    import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
+    import {HIGHLIGHT_OPTIONS, HighlightLanguage} from 'ngx-highlightjs';
     import {AppComponent} from './app.component';
 
     @NgModule({
@@ -60,7 +47,13 @@ npm i @taiga-ui/addon-doc
             {
                 provide: HIGHLIGHT_OPTIONS,
                 useValue: {
-                    languages: hljsLanguages,
+                    coreLibraryLoader: () => import('highlight.js/lib/core'),
+                    lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
+                    languages: {
+                        typescript: () => import('highlight.js/lib/languages/typescript'),
+                        less: () => import('highlight.js/lib/languages/less'),
+                        xml: () => import('highlight.js/lib/languages/xml'),
+                    },
                 },
             },
         ],

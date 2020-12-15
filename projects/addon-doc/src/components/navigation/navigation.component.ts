@@ -5,8 +5,7 @@ import {tuiPure} from '@taiga-ui/cdk';
 import {getScreenWidth} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {TuiDocPage} from '../../interfaces/page';
-import {TUI_DOC_NAVIGATION_TEXTS} from '../../tokens/i18n';
-import {TUI_DOC_LOGO} from '../../tokens/logo';
+import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
 import {TuiDocPages} from '../../types/pages';
 import {transliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
 import {uniqBy} from '../../utils/uniq-by';
@@ -39,11 +38,10 @@ export class TuiDocNavigationComponent {
         @Inject(Location) locationRef: Location,
         @Inject(NAVIGATION_TITLE) title$: Observable<string>,
         @Inject(DOCUMENT) private readonly documentRef: Document,
-        @Inject(TUI_DOC_LOGO) readonly logo: string,
         @Inject(NAVIGATION_LABELS) readonly labels: string,
         @Inject(NAVIGATION_ITEMS)
         readonly items: ReadonlyArray<TuiDocPages>,
-        @Inject(TUI_DOC_NAVIGATION_TEXTS) readonly texts: [string, string],
+        @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
     ) {
         // Angular can't navigate no anchor links
         // https://stackoverflow.com/questions/36101756/angular2-routing-with-hashtag-to-page-anchor

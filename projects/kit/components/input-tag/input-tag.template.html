@@ -47,7 +47,7 @@
                     <ng-container *ngTemplateOutlet="items"></ng-container>
                 </tui-scrollbar>
                 <ng-template #items>
-                    <div #tagsContainer class="tags" [tuiMode]="mode">
+                    <div #tagsContainer class="tags">
                         <ng-container
                             *ngIf="controller.labelOutside; else text"
                         >
@@ -56,6 +56,7 @@
                                 #tag
                                 class="tag"
                                 automation-id="tui-input-tag__tag"
+                                [status]="status"
                                 [leftContent]="getLeftContent(item)"
                                 [allowSpaces]="allowSpaces"
                                 [tuiFocusable]="false"

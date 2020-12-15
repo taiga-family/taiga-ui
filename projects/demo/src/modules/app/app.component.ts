@@ -1,6 +1,4 @@
-import {default as logo} from '!!raw-loader!../../assets/images/taiga.svg';
 import {Component, Inject} from '@angular/core';
-import {TUI_DOC_LOGO} from '@taiga-ui/addon-doc';
 import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
 import {changeDetection} from '../../change-detection-strategy';
 
@@ -10,12 +8,6 @@ import {changeDetection} from '../../change-detection-strategy';
     templateUrl: 'app.template.html',
     styleUrls: ['app.style.less'],
     changeDetection,
-    providers: [
-        {
-            provide: TUI_DOC_LOGO,
-            useValue: logo,
-        },
-    ],
 })
 export class AppComponent {
     constructor(

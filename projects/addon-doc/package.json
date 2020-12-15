@@ -25,8 +25,8 @@
         "@taiga-ui/core": "1.6.5",
         "@taiga-ui/kit": "1.6.5",
         "schematics-utilities": "1.0.1",
-        "highlight.js": "^9.15.5",
-        "ngx-highlightjs": "3.0.3"
+        "highlight.js": "^10.0.0",
+        "ngx-highlightjs": "^4.0.0"
     },
     "devDependencies": {
         "@taiga-ui/core": "1.6.5",
