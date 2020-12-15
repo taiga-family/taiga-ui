@@ -38,9 +38,7 @@ export class TuiMobileDialogExample1 {
                 },
             )
             .pipe(
-                switchMap(index =>
-                    this.notifications.showNotification(`Выбрано: ${actions[index]}`),
-                ),
+                switchMap(index => this.notifications.show(`Выбрано: ${actions[index]}`)),
             )
             .subscribe();
     }

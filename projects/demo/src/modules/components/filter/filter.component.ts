@@ -104,6 +104,6 @@ export class ExampleTuiFilterComponent {
     ) {}
 
     onToggledItemChange(item: any) {
-        this.notifications.showNotification(String(item)).subscribe();
+        this.notifications.show(String(item)).subscribe();
     }
 }

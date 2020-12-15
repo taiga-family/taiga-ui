@@ -17,6 +17,6 @@ export class TuiActionExample1 {
     ) {}
 
     onClick(result: string) {
-        this.notificationsService.showNotification(result).subscribe();
+        this.notificationsService.show(result).subscribe();
     }
 }

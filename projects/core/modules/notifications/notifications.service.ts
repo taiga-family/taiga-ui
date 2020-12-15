@@ -19,30 +19,23 @@ export class TuiNotificationsService {
     /** @internal */
     readonly items$ = new BehaviorSubject<ReadonlyArray<NotificationAlert<any, any>>>([]);
 
-    showNotification<O = void>(
+    show<O = void>(
         content: PolymorpheusContent<TuiNotificationContentContext<O>>,
     ): Observable<O>;
-    showNotification<O = void>(
+    show<O = void>(
         content: PolymorpheusContent<TuiNotificationContentContext<O>>,
         options: TuiNotificationOptions,
     ): Observable<O>;
-    showNotification<O, I>(
+    show<O, I>(
         content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
         options: TuiNotificationOptionsWithData<I>,
     ): Observable<O>;
-    showNotification<O, I>(
+    show<O, I>(
         content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
         options: TuiNotificationOptions | TuiNotificationOptionsWithData<I> = {},
     ): Observable<O> {
         tuiAssert.assert(!!this.items$.observers.length, NO_HOST);
 
-        return this.createNotification(content, options);
-    }
-
-    private createNotification<O, I>(
-        content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
-        options: TuiNotificationOptions | TuiNotificationOptionsWithData<I>,
-    ): Observable<O> {
         return new Observable((observer: Observer<O>) => {
             const notification = new NotificationAlert(observer, content, options);
 

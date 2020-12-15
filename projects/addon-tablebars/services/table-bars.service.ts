@@ -15,19 +15,9 @@ const NO_HOST =
 export class TuiTableBarsService {
     readonly bar$ = new Subject<TableBar | null>();
 
-    showTableBar(
-        content: PolymorpheusContent,
-        options?: TuiTableBarOptions,
-    ): Observable<never> {
+    open(content: PolymorpheusContent, options?: TuiTableBarOptions): Observable<never> {
         tuiAssert.assert(!!this.bar$.observers.length, NO_HOST);
 
-        return this.createTableBar(content, options);
-    }
-
-    private createTableBar(
-        content: PolymorpheusContent,
-        options?: TuiTableBarOptions,
-    ): Observable<never> {
         return new Observable(observer => {
             const tableBar = new TableBar(observer, content, options);
 

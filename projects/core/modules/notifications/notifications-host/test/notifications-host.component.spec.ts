@@ -43,7 +43,7 @@ describe('NotificationsHost', () => {
             done();
         });
 
-        service.showNotification(label, {label}).pipe(take(1)).subscribe();
+        service.show(label, {label}).pipe(take(1)).subscribe();
     });
 
     it('Removes item after unsubscribe', done => {
@@ -53,7 +53,7 @@ describe('NotificationsHost', () => {
         });
 
         service
-            .showNotification(label, {label})
+            .show(label, {label})
             .pipe(takeUntil(timer(1)))
             .subscribe();
     });

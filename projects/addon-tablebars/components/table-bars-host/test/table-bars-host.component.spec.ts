@@ -70,7 +70,7 @@ describe('TableBarsHost', () => {
             done();
         });
 
-        service.showTableBar(title).pipe(take(1)).subscribe();
+        service.open(title).pipe(take(1)).subscribe();
     });
 
     it('tableBar удаляются по unsubscribe', done => {
@@ -80,13 +80,13 @@ describe('TableBarsHost', () => {
         });
 
         service
-            .showTableBar(title)
+            .open(title)
             .pipe(takeUntil(timer(1)))
             .subscribe();
     });
 
     it('по умолчанию tableBar темный', () => {
-        service.showTableBar(title).pipe(take(1)).subscribe();
+        service.open(title).pipe(take(1)).subscribe();
 
         fixture.detectChanges();
 
@@ -94,17 +94,14 @@ describe('TableBarsHost', () => {
     });
 
     it('при mode: light tableBar светлый', () => {
-        service
-            .showTableBar(title, {mode: TuiBrightness.Light})
-            .pipe(take(1))
-            .subscribe();
+        service.open(title, {mode: TuiBrightness.Light}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
         expect(getBar().nativeElement.classList.contains('bar_light')).toBe(true);
     });
 
     it('по умолчанию кнопки закрытия нет', () => {
-        service.showTableBar(title).pipe(take(1)).subscribe();
+        service.open(title).pipe(take(1)).subscribe();
 
         fixture.detectChanges();
 
@@ -112,7 +109,7 @@ describe('TableBarsHost', () => {
     });
 
     it('при hasCloseButton: true tableBar кнопка закрытия есть', () => {
-        service.showTableBar(title, {hasCloseButton: true}).pipe(take(1)).subscribe();
+        service.open(title, {hasCloseButton: true}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
         expect(getCloseButton()).not.toBeNull();
@@ -124,7 +121,7 @@ describe('TableBarsHost', () => {
             done();
         });
 
-        subscription = service.showTableBar(title, {hasCloseButton: true}).subscribe();
+        subscription = service.open(title, {hasCloseButton: true}).subscribe();
         fixture.detectChanges();
 
         getCloseButton().nativeElement.click();

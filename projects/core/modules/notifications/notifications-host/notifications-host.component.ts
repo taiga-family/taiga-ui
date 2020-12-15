@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {
     tuiFadeInList,
     tuiHeightCollapseList,
@@ -13,7 +12,6 @@ import {TuiNotificationsService} from '../notifications.service';
     templateUrl: './notifications-host.template.html',
     styleUrls: ['./notifications-host.style.less'],
     animations: [tuiFadeInList, tuiSlideInRightList, tuiHeightCollapseList],
-    providers: [TuiDestroyService],
 })
 export class TuiNotificationsHostComponent {
     constructor(

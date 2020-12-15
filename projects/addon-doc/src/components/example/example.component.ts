@@ -80,7 +80,7 @@ export class TuiDocExampleComponent {
         this.clipboardCopyService.copyToClipboard(url);
 
         this.notifications
-            .showNotification(this.texts[1], {
+            .show(this.texts[1], {
                 label: this.texts[2],
                 status: TuiNotification.Success,
             })

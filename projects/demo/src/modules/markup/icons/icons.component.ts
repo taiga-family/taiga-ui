@@ -125,7 +125,7 @@ export class IconsComponent {
         this.clipboardCopyService.copyToClipboard(name);
 
         this.notifications
-            .showNotification(`Имя ${name} скопировано`, {
+            .show(`Имя ${name} скопировано`, {
                 status: TuiNotification.Success,
             })
             .subscribe();
