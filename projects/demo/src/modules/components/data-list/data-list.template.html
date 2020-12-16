@@ -1,28 +1,31 @@
-<tui-doc-page i18n-header header="DataList" package="CORE">
+<tui-doc-page header="DataList" package="CORE">
     <ng-template pageTab>
-        <p>
-            Компонент <code>DataList</code> служит для создания всевозможных
-            списков меню
-        </p>
+        <p i18n><code>DataList</code> allows to make lists or menus</p>
 
         <tui-doc-example id="custom" heading="Custom list" [content]="example4">
             <tui-data-list-example-4></tui-data-list-example-4>
         </tui-doc-example>
 
-        <tui-doc-example id="links" heading="ссылки" [content]="example1">
+        <tui-doc-example
+            id="links"
+            i18n-heading
+            heading="Links"
+            [content]="example1"
+        >
             <tui-notification
+                i18n
                 class="tui-space_bottom-3"
                 [hasCloseButton]="false"
             >
-                Импортируйте <code>TuiArrowModule</code> для использования
-                вращающейся стрелки.
+                Import <code>TuiArrowModule</code> if you need a rotated arrow
             </tui-notification>
             <tui-data-list-example-1></tui-data-list-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             id="submenu"
-            heading="вложенное меню"
+            i18n-heading
+            heading="Submenu"
             [content]="example2"
         >
             <tui-data-list-example-2></tui-data-list-example-2>
@@ -41,37 +44,38 @@
         <h2>DataList</h2>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="role"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDataListRole"
             >
-                Нативная роль для доступности — <code>listbox</code
-                ><em>(default)</em> или <code>menu</code> для меню общего
-                назначения
+                Nativa accessability role — <code>listbox</code
+                ><em>(default)</em> or <code>menu</code> for common usage
             </ng-template>
         </tui-doc-documentation>
 
         <h2>OptGroup</h2>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="label"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
             >
-                Имя группы
+                Group label
             </ng-template>
         </tui-doc-documentation>
 
         <h2>Option</h2>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="role"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiOptionRole"
             >
-                Нативная роль для доступности. Обратите внимание, что для всех
-                ролей, кроме <code>menuitem</code> требуется указать
-                <code>aria-checked</code> (см. пример)
+                Native accessability role. Set <code>aria-checked</code> for all
+                roles except <code>menuitem</code> (see sample)
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
