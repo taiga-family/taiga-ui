@@ -69,8 +69,5 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
     - run: npm run test addon-tablebars
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      # Find out more about empty lcov generation
 
