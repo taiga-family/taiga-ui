@@ -34,17 +34,6 @@ describe('BarChart', () => {
         fixture.detectChanges();
     });
 
-    it('Finds max correctly', () => {
-        expect(testComponent.component.computedMax).toBe(6);
-    });
-
-    it('Uses manual max', () => {
-        testComponent.max = 10;
-        fixture.detectChanges();
-
-        expect(testComponent.component.computedMax).toBe(10);
-    });
-
     it('Transposes correctly', () => {
         expect(testComponent.component.transposed).toEqual([
             [1, 4],
