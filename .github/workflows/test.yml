@@ -62,10 +62,7 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
     - run: npm run test addon-mobile
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      # Find out more about empty lcov generation
     - run: npm run test addon-table
     - name: Coveralls
       uses: coverallsapp/github-action@master
