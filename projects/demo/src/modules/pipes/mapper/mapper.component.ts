@@ -25,7 +25,7 @@ export class ExampleTuiMapperComponent {
 
     mapper = this.mapperVariants[0];
 
-    argsVariants: ReadonlyArray<string> = [
+    argsVariants: readonly string[] = [
         '',
         '. У вас нет такого же, но с перламутровыми пуговицами?',
     ];

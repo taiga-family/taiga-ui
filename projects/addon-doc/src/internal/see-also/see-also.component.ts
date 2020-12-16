@@ -12,7 +12,7 @@ import {TUI_DOC_PAGES} from '../../tokens/pages';
 })
 export class TuiDocSeeAlsoComponent {
     @Input()
-    seeAlso: ReadonlyArray<string> = [];
+    seeAlso: readonly string[] = [];
 
     constructor(
         @Inject(TUI_DOC_SEE_ALSO_TEXT) readonly text: string,

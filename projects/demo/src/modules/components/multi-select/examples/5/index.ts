@@ -10,7 +10,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiMultiSelectExample5 {
-    readonly jedi: ReadonlyArray<string> = [
+    readonly jedi: readonly string[] = [
         'Luke Skywalker',
         'Princess Leia',
         'Han Solo',
@@ -18,7 +18,7 @@ export class TuiMultiSelectExample5 {
         'Yoda',
     ];
 
-    readonly sith: ReadonlyArray<string> = ['Emperor', 'Darth Vader', 'Darth Maul'];
+    readonly sith: readonly string[] = ['Emperor', 'Darth Vader', 'Darth Maul'];
 
-    value: ReadonlyArray<string> = [this.jedi[0]];
+    value: readonly string[] = [this.jedi[0]];
 }

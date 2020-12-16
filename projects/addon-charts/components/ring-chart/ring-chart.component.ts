@@ -22,7 +22,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export class TuiRingChartComponent {
     @Input()
     @tuiDefaultProp()
-    value: ReadonlyArray<number> = [];
+    value: readonly number[] = [];
 
     @Input()
     @HostBinding('attr.data-tui-host-size')
@@ -35,7 +35,7 @@ export class TuiRingChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent<TuiRingChartContext> | null = null;
+    content: PolymorpheusContent<TuiRingChartContext> = '';
 
     @Input()
     @tuiDefaultProp()
@@ -43,10 +43,10 @@ export class TuiRingChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    activeItemIndex: number | null = null;
+    activeItemIndex = NaN;
 
     @Output()
-    activeItemIndexChange = new EventEmitter<number | null>();
+    activeItemIndexChange = new EventEmitter<number>();
 
     get hasContent(): boolean {
         return this.size !== 's' && !!this.content;
@@ -56,11 +56,11 @@ export class TuiRingChartComponent {
         return this.getContentContext(this.activeItemIndex, this.value);
     }
 
-    onActiveItemIndexChange(index: number | null) {
+    onActiveItemIndexChange(index: number) {
         this.updateActiveItemIndex(index);
     }
 
-    private updateActiveItemIndex(index: number | null) {
+    private updateActiveItemIndex(index: number) {
         if (index === this.activeItemIndex) {
             return;
         }
@@ -71,8 +71,8 @@ export class TuiRingChartComponent {
 
     @tuiPure
     private getContentContext(
-        $implicit: number | null,
-        value: ReadonlyArray<number>,
+        $implicit: number,
+        value: readonly number[],
     ): TuiRingChartContext {
         return {$implicit, value};
     }

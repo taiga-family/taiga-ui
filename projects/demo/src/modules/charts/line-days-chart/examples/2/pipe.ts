@@ -6,9 +6,9 @@ import {TUI_MONTHS, TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
     name: 'labels',
 })
 export class LabelsPipe implements PipeTransform {
-    constructor(@Inject(TUI_MONTHS) private readonly months: ReadonlyArray<string>) {}
+    constructor(@Inject(TUI_MONTHS) private readonly months: readonly string[]) {}
 
-    transform({from, to}: TuiDayRange): ReadonlyArray<string> {
+    transform({from, to}: TuiDayRange): readonly string[] {
         const length = TuiDay.lengthBetween(from, to);
 
         if (length > 90) {
@@ -38,7 +38,7 @@ export class LabelsPipe implements PipeTransform {
     }
 }
 
-function onlyMondays(range: ReadonlyArray<TuiDay>): ReadonlyArray<string> {
+function onlyMondays(range: ReadonlyArray<TuiDay>): readonly string[] {
     return range.filter(day => !day.dayOfWeek()).map(String);
 }
 

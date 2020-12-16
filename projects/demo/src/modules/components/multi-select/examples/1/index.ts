@@ -4,7 +4,7 @@ import {TUI_DEFAULT_MATCHER, tuiPure} from '@taiga-ui/cdk';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
-const ITEMS: ReadonlyArray<string> = [
+const ITEMS: readonly string[] = [
     'Люк Скайуокер',
     'Принцесса Лея',
     'Дарт Вейдер',
@@ -26,7 +26,7 @@ export class TuiMultiSelectExample1 {
     readonly control = new FormControl([ITEMS[0]]);
 
     @tuiPure
-    filter(search: string | null): ReadonlyArray<string> {
+    filter(search: string | null): readonly string[] {
         return ITEMS.filter(item => TUI_DEFAULT_MATCHER(item, search || ''));
     }
 }

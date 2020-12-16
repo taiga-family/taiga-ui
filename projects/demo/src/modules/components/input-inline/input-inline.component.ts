@@ -40,7 +40,7 @@ export class ExampleTuiInputInlineComponent extends AbstractExampleTuiReactiveFi
 
     control = new FormControl('111', Validators.required);
 
-    readonly maxLengthVariants: ReadonlyArray<number> = [10];
+    readonly maxLengthVariants: readonly number[] = [10];
     maxLength = null;
 
     readonly textMaskOptionsVariants: ReadonlyArray<TuiTextMaskOptions> = [

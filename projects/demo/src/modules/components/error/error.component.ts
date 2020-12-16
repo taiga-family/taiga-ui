@@ -26,7 +26,7 @@ export class ExampleTuiErrorComponent {
     @ViewChild('errorContent')
     errorContent?: TemplateRef<{}>;
 
-    readonly errorVariants: ReadonlyArray<string> = [
+    readonly errorVariants: readonly string[] = [
         'Error as string',
         'Error as HTML content',
     ];

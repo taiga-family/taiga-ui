@@ -110,13 +110,11 @@ export class TuiLineChartComponent {
     }
 
     get fill(): string {
-        if (!this.filled) {
-            return 'none';
-        }
-
-        const url = this.locationRef.prepareExternalUrl(this.locationRef.path());
-
-        return `url(${url}#${this.fillId})`;
+        return this.filled
+            ? `url(${this.locationRef.prepareExternalUrl(this.locationRef.path())}#${
+                  this.fillId
+              })`
+            : 'none';
     }
 
     get viewBox(): string {

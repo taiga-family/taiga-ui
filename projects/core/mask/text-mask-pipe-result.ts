@@ -4,5 +4,5 @@
 export interface TuiTextMaskPipeResult {
     value: string;
 
-    indexesOfPipedChars?: ReadonlyArray<number>;
+    indexesOfPipedChars?: readonly number[];
 }

@@ -1,1 +1,1 @@
-export const PRERENDERED_ROUTES: ReadonlyArray<string> = [];
+export const PRERENDERED_ROUTES: readonly string[] = [];

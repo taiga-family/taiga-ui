@@ -10,7 +10,7 @@ import {
 import {TuiHintMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-export function valueAssertion(value: ReadonlyArray<ReadonlyArray<number>>): boolean {
+export function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
     const valid = value.every(array => array.length === value[0].length);
 
     return valid;
@@ -27,7 +27,7 @@ const VALUE_ERROR = 'All arrays must be of the same length';
 export class TuiBarChartComponent {
     @Input()
     @tuiDefaultProp(valueAssertion, VALUE_ERROR)
-    value: ReadonlyArray<ReadonlyArray<number>> = [];
+    value: ReadonlyArray<readonly number[]> = [];
 
     @Input()
     @tuiDefaultProp()
@@ -47,7 +47,7 @@ export class TuiBarChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> | null = null;
+    hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
 
     @Input()
     @tuiDefaultProp()
@@ -63,20 +63,16 @@ export class TuiBarChartComponent {
         return !!this.hintContent;
     }
 
-    get transposed(): ReadonlyArray<ReadonlyArray<number>> {
+    get transposed(): ReadonlyArray<readonly number[]> {
         return this.transpose(this.value);
     }
 
-    get computedMax(): number {
-        return this.max || this.getMax(this.value);
-    }
-
-    getPercent(set: ReadonlyArray<number>): number {
+    getPercent(set: readonly number[]): number {
         return (100 * Math.max(...set)) / this.computedMax;
     }
 
-    getHint(hint: PolymorpheusContent): PolymorpheusContent | null {
-        return this.hasHint ? hint : null;
+    getHint(hint: PolymorpheusContent): PolymorpheusContent {
+        return this.hasHint ? hint : '';
     }
 
     getHintId(index: number): string {
@@ -90,11 +86,15 @@ export class TuiBarChartComponent {
         };
     }
 
+    private get computedMax(): number {
+        return this.max || this.getMax(this.value);
+    }
+
     @tuiPure
     private transpose(
-        value: ReadonlyArray<ReadonlyArray<number>>,
-    ): ReadonlyArray<ReadonlyArray<number>> {
-        return value.reduce<ReadonlyArray<ReadonlyArray<number>>>(
+        value: ReadonlyArray<readonly number[]>,
+    ): ReadonlyArray<readonly number[]> {
+        return value.reduce<ReadonlyArray<readonly number[]>>(
             (result, next) =>
                 next.map((_, index) => [...(result[index] || []), next[index]]),
             [],
@@ -102,7 +102,7 @@ export class TuiBarChartComponent {
     }
 
     @tuiPure
-    private getMax(value: ReadonlyArray<ReadonlyArray<number>>): number {
+    private getMax(value: ReadonlyArray<readonly number[]>): number {
         return value.reduce((max, value) => Math.max(...value, max), 0);
     }
 }

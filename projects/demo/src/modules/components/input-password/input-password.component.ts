@@ -36,7 +36,7 @@ export class ExampleTuiInputPasswordComponent extends AbstractExampleTuiReactive
         TypeScript: example1Ts,
     };
 
-    readonly maxLengthVariants: ReadonlyArray<number> = [10];
+    readonly maxLengthVariants: readonly number[] = [10];
 
     autocompleteVariants = ['off', 'new-password', 'current-password'];
 

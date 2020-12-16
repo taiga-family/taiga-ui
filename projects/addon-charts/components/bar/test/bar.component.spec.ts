@@ -20,7 +20,6 @@ describe('Bar', () => {
     }
 
     let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -31,16 +30,7 @@ describe('Bar', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
-        testComponent = fixture.componentInstance;
         fixture.detectChanges();
-    });
-
-    it('Computes sum correctly', () => {
-        expect(testComponent.component.sum).toBe(100);
-    });
-
-    it('Gets largest element correctly', () => {
-        expect(testComponent.component.largest).toBe(40);
     });
 
     it('Sets color correctly', () => {

@@ -33,9 +33,9 @@ export class TuiLineDaysChartExample1 {
     readonly yStringify: TuiStringHandler<number> = y =>
         `${(10 * y).toLocaleString('ru-RU', {maximumFractionDigits: 0})} $`;
 
-    constructor(@Inject(TUI_MONTHS) private readonly months: ReadonlyArray<string>) {}
+    constructor(@Inject(TUI_MONTHS) private readonly months: readonly string[]) {}
 
-    get labels(): ReadonlyArray<string> {
+    get labels(): readonly string[] {
         return this.computeLabels(this.range, this.months);
     }
 
@@ -62,8 +62,8 @@ export class TuiLineDaysChartExample1 {
     @tuiPure
     private computeLabels(
         {from, to}: TuiDayRange,
-        months: ReadonlyArray<string>,
-    ): ReadonlyArray<string> {
+        months: readonly string[],
+    ): readonly string[] {
         return Array.from(
             {length: TuiMonth.lengthBetween(from, to) + 1},
             (_, i) => months[from.append({month: i}).month],

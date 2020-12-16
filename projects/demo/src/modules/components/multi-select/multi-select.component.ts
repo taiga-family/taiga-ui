@@ -145,7 +145,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiReactiveFi
 
     identityMatcher = this.identityMatcherVariants[0];
 
-    readonly maxLengthVariants: ReadonlyArray<number> = [10];
+    readonly maxLengthVariants: readonly number[] = [10];
 
     maxLength = null;
 

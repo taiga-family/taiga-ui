@@ -79,7 +79,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiFie
 
     postfix = '';
 
-    readonly maxLengthVariants: ReadonlyArray<number> = [10];
+    readonly maxLengthVariants: readonly number[] = [10];
 
     maxLength = null;
 
@@ -129,7 +129,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiFie
 
     size = this.sizeVariants[2];
 
-    readonly hintContentVariants: ReadonlyArray<string> = ['Иванов Иван Иванович'];
+    readonly hintContentVariants: readonly string[] = ['Иванов Иван Иванович'];
 
     readonly hintDirectionVariants: ReadonlyArray<TuiDirection> = [
         'left',

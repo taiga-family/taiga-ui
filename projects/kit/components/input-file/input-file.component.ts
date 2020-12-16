@@ -185,7 +185,7 @@ export class TuiInputFileComponent
         );
     }
 
-    get acceptArray(): ReadonlyArray<string> {
+    get acceptArray(): readonly string[] {
         return this.getAcceptArray(this.accept);
     }
 
@@ -272,7 +272,7 @@ export class TuiInputFileComponent
     }
 
     @tuiPure
-    private getAcceptArray(accept: string): ReadonlyArray<string> {
+    private getAcceptArray(accept: string): readonly string[] {
         return accept.toLowerCase().split(',');
     }
 

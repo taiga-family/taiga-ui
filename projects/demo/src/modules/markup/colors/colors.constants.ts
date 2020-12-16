@@ -247,7 +247,7 @@ export const STATUS_NIGHT: ReadonlyArray<Color> = [
     },
 ];
 
-export const SUPPORT: ReadonlyArray<string> = [
+export const SUPPORT: readonly string[] = [
     '--tui-support-01',
     '--tui-support-02',
     '--tui-support-03',

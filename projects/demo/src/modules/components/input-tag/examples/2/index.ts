@@ -4,7 +4,7 @@ import {delay, startWith, switchMap} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
-const databaseMockData: ReadonlyArray<string> = [
+const databaseMockData: readonly string[] = [
     'John Cleese',
     'Eric Idle',
     'Michael Palin',
@@ -27,9 +27,7 @@ export class TuiInputTagExample2 {
 
     readonly items$ = this.search$.pipe(
         switchMap(search =>
-            this.serverRequest(search).pipe(
-                startWith<ReadonlyArray<string> | null>(null),
-            ),
+            this.serverRequest(search).pipe(startWith<readonly string[] | null>(null)),
         ),
         startWith(databaseMockData),
     );
@@ -41,7 +39,7 @@ export class TuiInputTagExample2 {
     /**
      * Имитация запроса на сервер
      */
-    private serverRequest(search: string): Observable<ReadonlyArray<string>> {
+    private serverRequest(search: string): Observable<readonly string[]> {
         const result = databaseMockData.filter(
             item => item.toLowerCase().indexOf(search.toLowerCase()) !== -1,
         );

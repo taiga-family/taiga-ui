@@ -10,7 +10,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 export class TuiProjectClassDirective implements AfterViewChecked {
     @Input('tuiProjectClass')
     @tuiDefaultProp()
-    classNames: ReadonlyArray<string> = [];
+    classNames: readonly string[] = [];
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,

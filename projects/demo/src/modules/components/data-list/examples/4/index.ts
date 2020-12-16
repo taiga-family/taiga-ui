@@ -44,15 +44,12 @@ export class TuiDataListExample4 {
 
     readonly items = [INCOME, EXPENSES];
 
-    readonly identityMatcher: TuiIdentityMatcher<ReadonlyArray<string>> = (
-        items1,
-        items2,
-    ) =>
+    readonly identityMatcher: TuiIdentityMatcher<readonly string[]> = (items1, items2) =>
         items1.length === items2.length &&
         items1.every(item => items2.indexOf(item) !== -1);
 
     readonly valueContent: TuiStringHandler<
-        TuiContextWithImplicit<ReadonlyArray<string>>
+        TuiContextWithImplicit<readonly string[]>
     > = ({$implicit}) => {
         if (!$implicit.length) {
             return 'All';

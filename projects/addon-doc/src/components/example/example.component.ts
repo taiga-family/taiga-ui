@@ -50,7 +50,7 @@ export class TuiDocExampleComponent {
         return this.tabs[this.activeItemIndex];
     }
 
-    get tabs(): ReadonlyArray<string> {
+    get tabs(): readonly string[] {
         return this.getTabs(this.content);
     }
 
@@ -65,7 +65,7 @@ export class TuiDocExampleComponent {
     }
 
     @tuiPure
-    private getTabs(content: Record<string, string>): ReadonlyArray<string> {
+    private getTabs(content: Record<string, string>): readonly string[] {
         return [this.defaultTab, ...Object.keys(content)];
     }
 
