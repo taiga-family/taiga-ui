@@ -1,35 +1,38 @@
-<h6 class="tui-text_h6">
-    Можно расширить с помощью
+<h6 i18n class="tui-text_h6">
+    Can be expanded with
     <a tuiLink target="_blank" routerLink="/tui-hint-controller"
         >TuiHintController</a
     >:
 </h6>
 <tui-doc-documentation>
     <ng-template
+        i18n
         documentationPropertyName="tuiHintContent"
         documentationPropertyMode="input"
         documentationPropertyType="PolymorpheusContent | null"
         [documentationPropertyValues]="documentedComponent.hintContentVariants"
         [(documentationPropertyValue)]="documentedComponent.hintContent"
     >
-        Наличие и содержимое тултипа
+        Content of hint (does not show tooltip if content is null)
     </ng-template>
     <ng-template
+        i18n
         documentationPropertyName="tuiHintDirection"
         documentationPropertyMode="input"
         documentationPropertyType="TuiDirection"
         [documentationPropertyValues]="documentedComponent.hintDirectionVariants"
         [(documentationPropertyValue)]="documentedComponent.hintDirection"
     >
-        Направление тултипа
+        Hint direction
     </ng-template>
     <ng-template
+        i18n
         documentationPropertyName="tuiHintMode"
         documentationPropertyMode="input"
         documentationPropertyType="TuiHintMode | null"
         [documentationPropertyValues]="documentedComponent.hintModeVariants"
         [(documentationPropertyValue)]="documentedComponent.hintMode"
     >
-        Модификация тултипа
+        Hint mode
     </ng-template>
 </tui-doc-documentation>
