@@ -2,7 +2,7 @@
     class="content"
     [class.content_has-overlay]="hasOverlay"
     [class.content_loading]="loading"
-    [attr.disabled]="loading || null"
+    [disabled]="loading"
 >
     <ng-content></ng-content>
 </fieldset>

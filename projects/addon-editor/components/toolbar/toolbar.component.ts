@@ -123,7 +123,7 @@ export class TuiToolbarComponent {
     ];
 
     // TODO: i18n
-    readonly codesOptions: ReadonlyArray<string> = ['Код в тексте', 'Код в блоке'];
+    readonly codesOptions: readonly string[] = ['Код в тексте', 'Код в блоке'];
 
     @ViewChildren('button')
     private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;

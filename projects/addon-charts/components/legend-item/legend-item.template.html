@@ -4,7 +4,7 @@
     size="s"
     appearance="whiteblock"
     class="button"
-    [pseudoHovered]="pseudoHovered"
+    [pseudoHovered]="active || null"
 >
     <span class="dot" [tuiBackground]="color"></span>
     <span class="text">{{text}}</span>

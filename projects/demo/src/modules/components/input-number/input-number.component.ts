@@ -37,11 +37,11 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiReactiveFi
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
-    readonly minVariants: ReadonlyArray<number> = [-Infinity, -500, 5, 25];
+    readonly minVariants: readonly number[] = [-Infinity, -500, 5, 25];
 
     min = this.minVariants[0];
 
-    readonly maxVariants: ReadonlyArray<number> = [Infinity, 10, 500];
+    readonly maxVariants: readonly number[] = [Infinity, 10, 500];
 
     max = this.maxVariants[0];
 
@@ -75,7 +75,7 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiReactiveFi
 
     cleaner = false;
 
-    readonly precisionVariants: ReadonlyArray<number> = [2, 3, 4];
+    readonly precisionVariants: readonly number[] = [2, 3, 4];
 
     precision = this.precisionVariants[0];
 

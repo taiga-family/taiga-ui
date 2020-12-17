@@ -39,7 +39,7 @@ export class TuiCustomizationComponent implements AfterViewInit {
         return this.getStyle(this.sanitizer, this.stringify(this.variables));
     }
 
-    get keys(): ReadonlyArray<string> {
+    get keys(): readonly string[] {
         return this.getKeys(this.variables);
     }
 
@@ -103,7 +103,7 @@ export class TuiCustomizationComponent implements AfterViewInit {
     }
 
     @tuiPure
-    private getKeys(variables: Record<string, string>): ReadonlyArray<string> {
+    private getKeys(variables: Record<string, string>): readonly string[] {
         return Object.keys(variables);
     }
 

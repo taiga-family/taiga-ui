@@ -45,7 +45,7 @@ const TRANSFORM = {
 export class TuiPieChartComponent {
     @Input()
     @tuiDefaultProp()
-    value: ReadonlyArray<number> = [];
+    value: readonly number[] = [];
 
     @Input()
     @HostBinding('attr.data-tui-host-size')
@@ -58,7 +58,7 @@ export class TuiPieChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> | null = null;
+    hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
 
     @Input()
     @tuiDefaultProp()
@@ -66,10 +66,10 @@ export class TuiPieChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    activeItemIndex: number | null = null;
+    activeItemIndex = NaN;
 
     @Output()
-    activeItemIndexChange = new EventEmitter<number | null>();
+    activeItemIndexChange = new EventEmitter<number>();
 
     private readonly autoIdString: string;
 
@@ -85,25 +85,19 @@ export class TuiPieChartComponent {
     }
 
     get mask(): string | null {
-        if (!this.masked) {
-            return null;
-        }
-
-        const url = this.locationRef.prepareExternalUrl(this.locationRef.path());
-
-        return `url(${url}#${this.maskId})`;
+        return this.masked
+            ? `url(${this.locationRef.prepareExternalUrl(this.locationRef.path())}#${
+                  this.maskId
+              })`
+            : null;
     }
 
     get radius(): string {
         return RADII[this.size];
     }
 
-    get segments(): ReadonlyArray<string> {
+    get segments(): readonly string[] {
         return this.getSegments(this.value);
-    }
-
-    get hasHint(): boolean {
-        return !!this.hintContent;
     }
 
     getTransform(index: number): string | null {
@@ -114,12 +108,12 @@ export class TuiPieChartComponent {
         return index === this.activeItemIndex ? transform : null;
     }
 
-    getHint(hint: PolymorpheusContent): PolymorpheusContent | null {
-        return this.hasHint ? hint : null;
+    getHint(hint: PolymorpheusContent): PolymorpheusContent {
+        return this.hintContent ? hint : '';
     }
 
     onHovered(hovered: boolean, index: number) {
-        this.updateActiveItemIndex(hovered ? index : null);
+        this.updateActiveItemIndex(hovered ? index : NaN);
     }
 
     @tuiPure
@@ -128,7 +122,7 @@ export class TuiPieChartComponent {
     }
 
     @tuiPure
-    private getSegments(value: ReadonlyArray<number>): ReadonlyArray<string> {
+    private getSegments(value: readonly number[]): readonly string[] {
         const total = sum(...value);
 
         return value
@@ -144,7 +138,7 @@ export class TuiPieChartComponent {
             );
     }
 
-    private updateActiveItemIndex(index: number | null) {
+    private updateActiveItemIndex(index: number) {
         if (index === this.activeItemIndex) {
             return;
         }

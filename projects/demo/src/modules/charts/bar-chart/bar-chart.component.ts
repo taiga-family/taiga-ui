@@ -19,7 +19,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
-const MONTHS: ReadonlyArray<string> = [
+const MONTHS: readonly string[] = [
     'ЯНВ 2019',
     'ФЕВ',
     'МАР',
@@ -83,9 +83,13 @@ export class ExampleTuiBarChartComponent {
 
     readonly contentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContextWithImplicit<number>>
-    > = [({$implicit}) => this.getHint($implicit), ({$implicit}) => MONTHS[$implicit]];
+    > = [
+        '',
+        ({$implicit}) => this.getHint($implicit),
+        ({$implicit}) => MONTHS[$implicit],
+    ];
 
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> | null = null;
+    hintContent = this.contentVariants[0];
 
     readonly hintModeVariants: ReadonlyArray<TuiHintMode | null> = [
         null,

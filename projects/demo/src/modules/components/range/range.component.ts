@@ -46,19 +46,19 @@ export class ExampleTuiRangeComponent {
 
     size: TuiSizeS = this.sizeVariants[1];
 
-    minVariants: ReadonlyArray<number> = [0, 1, 5, 7.77];
+    minVariants: readonly number[] = [0, 1, 5, 7.77];
 
     min = this.minVariants[0];
 
-    maxVariants: ReadonlyArray<number> = [10, 100, 10000];
+    maxVariants: readonly number[] = [10, 100, 10000];
 
     max = this.maxVariants[0];
 
-    segmentsVariants: ReadonlyArray<number> = [0, 1, 5, 13];
+    segmentsVariants: readonly number[] = [0, 1, 5, 13];
 
     segments = this.segmentsVariants[0];
 
-    stepsVariants: ReadonlyArray<number> = [0, 4, 10];
+    stepsVariants: readonly number[] = [0, 4, 10];
 
     steps = this.stepsVariants[0];
 

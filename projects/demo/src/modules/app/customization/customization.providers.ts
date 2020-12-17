@@ -23,7 +23,7 @@ export const TUI_DOC_CUSTOMIZATION_PROVIDERS: Provider[] = [
 
 export function varsFactory(
     windowRef: Window,
-    variables: ReadonlyArray<string>,
+    variables: readonly string[],
 ): Record<string, string> {
     const styles = windowRef.getComputedStyle(windowRef.document.documentElement);
 

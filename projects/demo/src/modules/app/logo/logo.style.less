@@ -1,3 +1,5 @@
+@import 'taiga-ui-local';
+
 :host {
     display: flex;
 }
@@ -10,4 +12,8 @@
 .by {
     opacity: 0.4;
     margin-left: 14px;
+
+    @media @mobile {
+        display: none;
+    }
 }

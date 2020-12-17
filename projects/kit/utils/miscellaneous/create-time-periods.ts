@@ -3,7 +3,7 @@ import {HOURS_IN_DAY, TuiTime} from '@taiga-ui/cdk';
 export function tuiCreateTimePeriods(
     minHour: number = 0,
     maxHour: number = HOURS_IN_DAY,
-    minutes: ReadonlyArray<number> = [0, 30],
+    minutes: readonly number[] = [0, 30],
 ): ReadonlyArray<TuiTime> {
     const timeArray: Array<TuiTime> = [];
 

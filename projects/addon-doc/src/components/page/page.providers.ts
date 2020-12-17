@@ -1,7 +1,7 @@
 import {ElementRef, InjectionToken, Provider} from '@angular/core';
 import {TUI_DOC_SEE_ALSO} from '../../tokens/see-also';
 
-export const PAGE_SEE_ALSO = new InjectionToken<ReadonlyArray<string>>('Page see also');
+export const PAGE_SEE_ALSO = new InjectionToken<readonly string[]>('Page see also');
 
 export const PAGE_PROVIDERS: Provider[] = [
     {
@@ -13,8 +13,8 @@ export const PAGE_PROVIDERS: Provider[] = [
 
 export function seeAlsoProviderFactory(
     {nativeElement}: ElementRef,
-    seeAlsoGroups: ReadonlyArray<ReadonlyArray<string>>,
-): ReadonlyArray<string> {
+    seeAlsoGroups: ReadonlyArray<readonly string[]>,
+): readonly string[] {
     const groups =
         seeAlsoGroups.filter(group => group.indexOf(nativeElement.header) !== -1) || [];
 

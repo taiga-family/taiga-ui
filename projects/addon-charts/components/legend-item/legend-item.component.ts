@@ -20,8 +20,4 @@ export class TuiLegendItemComponent {
     @Input()
     @tuiDefaultProp()
     text = '';
-
-    get pseudoHovered(): boolean | null {
-        return this.active || null;
-    }
 }

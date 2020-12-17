@@ -86,7 +86,7 @@ export const TUI_PASSWORD_TEXTS = new InjectionToken<[string, string]>(
     },
 );
 
-export const TUI_CALENDAR_MONTHS = new InjectionToken<ReadonlyArray<string>>(
+export const TUI_CALENDAR_MONTHS = new InjectionToken<readonly string[]>(
     'short calendar months i18n',
     {
         factory: () => inject(TUI_MONTHS).map(month => month.slice(0, 3)),

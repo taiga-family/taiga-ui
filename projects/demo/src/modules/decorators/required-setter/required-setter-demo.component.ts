@@ -23,5 +23,5 @@ export class ExampleTuiRequiredSetterDemoComponent {
         );
     }
 
-    items: ReadonlyArray<number> = [];
+    items: readonly number[] = [];
 }

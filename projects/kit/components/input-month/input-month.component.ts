@@ -72,7 +72,7 @@ export class TuiInputMonthComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_MONTHS) private readonly months: ReadonlyArray<string>,
+        @Inject(TUI_MONTHS) private readonly months: readonly string[],
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {

@@ -104,5 +104,5 @@ export class ExampleTuiLineDaysChartComponent {
 
     height = 200;
 
-    constructor(@Inject(TUI_MONTHS) private readonly months: ReadonlyArray<string>) {}
+    constructor(@Inject(TUI_MONTHS) private readonly months: readonly string[]) {}
 }

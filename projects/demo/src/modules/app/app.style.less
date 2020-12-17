@@ -1,3 +1,5 @@
+@import 'taiga-ui-local';
+
 .christmas {
     position: absolute;
     left: 50%;
@@ -8,9 +10,13 @@
     margin-left: 20px;
 }
 
-.navigation {
+.link {
     font-weight: bold;
-    box-shadow: none;
+    height: 24px;
+
+    @media @mobile {
+        font-size: 0;
+    }
 }
 
 .github {

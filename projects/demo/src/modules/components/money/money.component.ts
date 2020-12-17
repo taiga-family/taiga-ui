@@ -74,13 +74,7 @@ export class ExampleTuiMoneyComponent {
 
     currency = this.currencyVariants[0];
 
-    readonly valueVariants: ReadonlyArray<number> = [
-        -12345.1,
-        237,
-        1234,
-        123123414.0234,
-        0,
-    ];
+    readonly valueVariants: readonly number[] = [-12345.1, 237, 1234, 123123414.0234, 0];
 
     value = this.valueVariants[0];
 
@@ -96,7 +90,7 @@ export class ExampleTuiMoneyComponent {
 
     sign = this.signVariants[0];
 
-    readonly precisionVariants: ReadonlyArray<number> = [2, 3, 4];
+    readonly precisionVariants: readonly number[] = [2, 3, 4];
 
     precision = this.precisionVariants[0];
 

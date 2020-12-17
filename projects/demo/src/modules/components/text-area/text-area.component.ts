@@ -57,11 +57,11 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiReactiveField
     readonly exampleInsertTemplate = exampleInsertTemplate;
     exampleDeclareForm = exampleDeclareForm;
 
-    readonly maxLengthVariants: ReadonlyArray<number> = [50, 100, 500];
+    readonly maxLengthVariants: readonly number[] = [50, 100, 500];
 
     maxLength = null;
 
-    readonly rowsVariants: ReadonlyArray<number> = [8, 15, 30];
+    readonly rowsVariants: readonly number[] = [8, 15, 30];
 
     rows: number = this.rowsVariants[0];
 

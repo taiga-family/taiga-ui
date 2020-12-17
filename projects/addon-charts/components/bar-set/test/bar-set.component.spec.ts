@@ -42,14 +42,6 @@ describe('BarSet', () => {
         fixture.detectChanges();
     });
 
-    it('Computes sum correctly', () => {
-        expect(testComponent.component.sum).toBe(100);
-    });
-
-    it('Gets largest element correctly', () => {
-        expect(testComponent.component.largest).toBe(40);
-    });
-
     it('Sets color correctly', () => {
         expect(
             fixture.debugElement.queryAll(By.css('[data-tui-background="primary"]'))

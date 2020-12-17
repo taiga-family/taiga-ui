@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
 
-export const SEE_ALSO_GROUPS: ReadonlyArray<ReadonlyArray<string>> = [
+export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['Tooltip', 'Hint', 'ManualHint'],
     [
         'TextArea',
@@ -37,9 +37,6 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<ReadonlyArray<string>> = [
     ['Dropdown', 'DropdownSelection', 'HostedDropdown'],
 ];
 
-export const SEE_ALSO = new InjectionToken<ReadonlyArray<ReadonlyArray<string>>>(
-    'SEE_ALSO',
-    {
-        factory: () => SEE_ALSO_GROUPS,
-    },
-);
+export const SEE_ALSO = new InjectionToken<ReadonlyArray<readonly string[]>>('SEE_ALSO', {
+    factory: () => SEE_ALSO_GROUPS,
+});

@@ -35,7 +35,7 @@ export class ExampleTuiSvgComponent {
         LESS: example2Less,
     };
 
-    readonly iconVariants: ReadonlyArray<string> = [
+    readonly iconVariants: readonly string[] = [
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',
         'tuiIconTooltip',
         `<svg xmlns="http://www.w3.org/2000/svg"

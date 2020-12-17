@@ -15,7 +15,7 @@ const PERCENT = 100;
 export class TuiBarComponent {
     @Input()
     @tuiDefaultProp()
-    value: ReadonlyArray<number> = [];
+    value: readonly number[] = [];
 
     @Input()
     @tuiDefaultProp()
@@ -26,25 +26,12 @@ export class TuiBarComponent {
     @tuiDefaultProp()
     size: TuiSizeS | TuiSizeL = 'm';
 
-    get sum(): number {
-        return this.getSum(this.value);
-    }
-
-    get largest(): number {
-        return this.getLargest(this.value);
-    }
-
     getHeight(value: number): number {
-        return (PERCENT * value) / this.sum;
+        return (PERCENT * value) / this.getSum(this.value);
     }
 
     @tuiPure
-    private getSum(value: ReadonlyArray<number>): number {
+    private getSum(value: readonly number[]): number {
         return sum(...value);
-    }
-
-    @tuiPure
-    private getLargest(value: ReadonlyArray<number>): number {
-        return Math.max(...value);
     }
 }

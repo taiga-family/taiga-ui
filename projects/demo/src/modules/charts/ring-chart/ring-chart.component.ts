@@ -51,9 +51,9 @@ export class ExampleTuiRingChartComponent {
 
     value = this.valueVariants[0];
 
-    readonly activeItemIndexVariants = [0, 1, 2];
+    readonly activeItemIndexVariants = [NaN, 0, 1, 2];
 
-    activeItemIndex = null;
+    activeItemIndex = this.activeItemIndexVariants[0];
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = ['s', 'm', 'l', 'xl'];
 
@@ -67,15 +67,16 @@ export class ExampleTuiRingChartComponent {
     colorHandler = this.colorHandlerVariants[0];
 
     readonly contentVariants: ReadonlyArray<PolymorpheusContent<TuiRingChartContext>> = [
+        '',
         ({$implicit, value}) =>
-            $implicit === null
+            isNaN($implicit)
                 ? ''
                 : `${round((100 * value[$implicit]) / sum(...value), 2)} %`,
         ({$implicit, value}) =>
-            $implicit === null
+            isNaN($implicit)
                 ? `${formatNumber(sum(...value))}\nВсего`
                 : `${formatNumber(value[$implicit])}\nСектор №${$implicit + 1}`,
     ];
 
-    content: PolymorpheusContent<TuiRingChartContext> | null = null;
+    content = this.contentVariants[0];
 }

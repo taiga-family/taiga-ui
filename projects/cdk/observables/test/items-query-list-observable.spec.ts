@@ -10,17 +10,17 @@ describe('itemsQueryListObservable', () => {
     });
 
     it('emits current array on subscription', () => {
-        let result: ReadonlyArray<number> | null = null;
+        let result: readonly number[] | null = null;
 
         itemsQueryListObservable<number>(queryList).subscribe(data => {
             result = data;
         });
 
-        expect<ReadonlyArray<number> | null>(result).toEqual([1, 2]);
+        expect<readonly number[] | null>(result).toEqual([1, 2]);
     });
 
     it('emits new array on changes', () => {
-        let result: ReadonlyArray<number> | null = null;
+        let result: readonly number[] | null = null;
 
         itemsQueryListObservable<number>(queryList).subscribe(data => {
             result = data;
@@ -29,6 +29,6 @@ describe('itemsQueryListObservable', () => {
         queryList.reset([1, 2, 3]);
         queryList.notifyOnChanges();
 
-        expect<ReadonlyArray<number> | null>(result).toEqual([1, 2, 3]);
+        expect<readonly number[] | null>(result).toEqual([1, 2, 3]);
     });
 });

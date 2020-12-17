@@ -36,13 +36,13 @@ import {takeUntil} from 'rxjs/operators';
 export class TuiFieldErrorComponent implements OnInit, OnDestroy {
     @Input()
     @tuiRequiredSetter()
-    set order(value: ReadonlyArray<string>) {
+    set order(value: readonly string[]) {
         this.errorsOrder = value;
         this.updateErrorText();
     }
 
     private firstError: TuiValidationError | null = null;
-    private errorsOrder: ReadonlyArray<string> = [];
+    private errorsOrder: readonly string[] = [];
     private destroy$ = new Subject<void>();
 
     constructor(

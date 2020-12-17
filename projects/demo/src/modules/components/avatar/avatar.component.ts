@@ -31,7 +31,7 @@ export class ExampleTuiAvatarComponent {
         HTML: example2Html,
     };
 
-    avatarUrlVariants: ReadonlyArray<string> = [
+    avatarUrlVariants: readonly string[] = [
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',
     ];
 

@@ -29,7 +29,7 @@ export class TuiAxesComponent {
 
     @Input()
     @tuiDefaultProp()
-    axisYLabels: ReadonlyArray<string> = [];
+    axisYLabels: readonly string[] = [];
 
     @Input()
     @tuiDefaultProp()
@@ -41,7 +41,7 @@ export class TuiAxesComponent {
 
     @Input()
     @tuiDefaultProp()
-    axisYSecondaryLabels: ReadonlyArray<string> = [];
+    axisYSecondaryLabels: readonly string[] = [];
 
     @Input()
     @tuiDefaultProp()
@@ -83,7 +83,7 @@ export class TuiAxesComponent {
         );
     }
 
-    fallback(label: string): string {
+    fallback(label: string | null): string {
         return label || CHAR_NO_BREAK_SPACE;
     }
 }
