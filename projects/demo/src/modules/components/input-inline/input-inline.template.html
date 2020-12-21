@@ -1,6 +1,6 @@
 <tui-doc-page i18n-header header="InputInline" package="KIT">
     <ng-template pageTab>
-        Поле для ввода, которое встраивается в окружение
+        <p i18n>Inline field</p>
 
         <tui-doc-example
             id="base"
@@ -13,7 +13,8 @@
 
         <tui-doc-example
             id="in-heading"
-            heading="в заголовке"
+            i18n-heading
+            heading="In heading"
             [content]="example2"
         >
             <tui-input-inline-example-2></tui-input-inline-example-2>
@@ -30,12 +31,13 @@
                     [textMaskOptions]="textMaskOptions"
                     [unmaskHandler]="unmaskHandler"
                 >
-                    Плейсхолдер
+                    Placeholder
                 </tui-input-inline>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -43,35 +45,39 @@
                 Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="maxLength"
                 documentationPropertyMode="input"
                 documentationPropertyType="number | null"
                 [documentationPropertyValues]="maxLengthVariants"
                 [(documentationPropertyValue)]="maxLength"
             >
-                Максимальное число вводимых символов.
+                Maximum number of symbols
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="textMaskOptions"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiTextMaskOptions | null"
                 [documentationPropertyValues]="textMaskOptionsVariants"
                 [(documentationPropertyValue)]="textMaskOptions"
             >
-                Параметры маски (<a
+                Text mask params (<a
                     tuiLink
                     href="https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#text-mask-documentation"
-                    >официальная документация</a
-                >).
+                    >official documentation</a
+                >)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="unmaskHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="string => string"
                 [documentationPropertyValues]="unmaskHandlerVariants"
                 [(documentationPropertyValue)]="unmaskHandler"
             >
-                Функция для снятия маски перед отправкой значения в контрол
+                A funciton to handle a value from mask before it is set into
+                control
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

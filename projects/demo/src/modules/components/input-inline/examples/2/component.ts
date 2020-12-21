@@ -11,7 +11,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     styleUrls: ['./style.less'],
 })
 export class TuiInputInlineExample2 {
-    heading = 'Заголовок страницы';
+    heading = 'Page heading';
     editing = false;
 
     constructor(
@@ -32,7 +32,7 @@ export class TuiInputInlineExample2 {
 
     private saveHeading(newHeading: string) {
         this.notifications
-            .showNotification(newHeading, {label: 'Новый заголовок'})
+            .showNotification(newHeading, {label: 'New heading'})
             .subscribe();
     }
 }

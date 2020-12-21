@@ -15,7 +15,6 @@ import {TuiTextMaskOptions} from '@taiga-ui/core';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
-// для сокращения примеров с маской
 const D = /\d/;
 
 @Component({

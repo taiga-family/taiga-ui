@@ -43,7 +43,6 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
-// для сокращения примеров с маской
 const D = /\d/;
 
 @Component({
