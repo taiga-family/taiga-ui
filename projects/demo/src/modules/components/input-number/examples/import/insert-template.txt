@@ -1,5 +1,5 @@
 <div [formGroup]="testForm">
     <tui-input-number formControlName="testValue">
-        Введите сумму
+        Type a sum
     </tui-input-number>
 </div>
