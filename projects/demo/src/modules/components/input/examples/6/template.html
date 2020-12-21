@@ -1,5 +1,5 @@
-<p>
-    <code>tuiTableMode</code> директива содержится в
+<p i18n>
+    <code>tuiTableMode</code> directive from
     <code>TuiTableModeModule</code>
 </p>
 
@@ -7,11 +7,11 @@
     <table class="tui-table table">
         <thead>
             <tr>
-                <th class="tui-table__th cell_name">Имя</th>
-                <th class="tui-table__th cell_date">Дата</th>
-                <th class="tui-table__th cell_gender">Пол</th>
-                <th class="tui-table__th cell_quantity">Шт.</th>
-                <th class="tui-table__th cell_sum">Сумма, ₽</th>
+                <th class="tui-table__th cell_name">Name</th>
+                <th class="tui-table__th cell_date">Date</th>
+                <th class="tui-table__th cell_gender">Gender</th>
+                <th class="tui-table__th cell_quantity">Quantity</th>
+                <th class="tui-table__th cell_sum">Sum, $</th>
             </tr>
         </thead>
     </table>
@@ -20,11 +20,11 @@
             <tui-input
                 class="cell cell_name"
                 tuiTextfieldSize="m"
-                tuiTextfieldExampleText="Иванов Иван Иванович"
+                tuiTextfieldExampleText="Ivan Ivanov"
                 formControlName="name"
                 [tuiTextfieldLabelOutside]="true"
             >
-                Имя
+                Name
             </tui-input>
             <tui-input-date
                 class="cell cell_date"
@@ -32,7 +32,7 @@
                 formControlName="date"
                 [tuiTextfieldLabelOutside]="true"
             >
-                Дата
+                Date
             </tui-input-date>
             <tui-select
                 class="cell cell_color"
@@ -40,7 +40,7 @@
                 tuiTextfieldSize="m"
                 [tuiTextfieldLabelOutside]="true"
             >
-                Цвет
+                Color
                 <tui-data-list-wrapper
                     *tuiDataList
                     [items]="items"
@@ -52,7 +52,7 @@
                 formControlName="quantity"
                 [tuiTextfieldLabelOutside]="true"
             >
-                Шт.
+                Quantity
             </tui-input-count>
             <tui-input-number
                 class="cell cell_sum"
@@ -61,18 +61,18 @@
                 [tuiTextfieldLabelOutside]="true"
                 [readOnly]="true"
             >
-                Сумма
+                Sum
             </tui-input-number>
         </div>
         <div tuiGroup class="row" [collapsed]="true">
             <tui-input
                 class="cell cell_name"
                 tuiTextfieldSize="m"
-                tuiTextfieldExampleText="Иванов Иван Иванович"
+                tuiTextfieldExampleText="Ivan Ivanov"
                 formControlName="name"
                 [tuiTextfieldLabelOutside]="true"
             >
-                Имя
+                Name
             </tui-input>
             <tui-input-date
                 class="cell cell_date"
@@ -80,7 +80,7 @@
                 formControlName="date"
                 [tuiTextfieldLabelOutside]="true"
             >
-                Дата
+                Date
             </tui-input-date>
             <tui-select
                 class="cell cell_color"
@@ -88,7 +88,7 @@
                 tuiTextfieldSize="m"
                 [tuiTextfieldLabelOutside]="true"
             >
-                Цвет
+                Color
                 <tui-data-list-wrapper
                     *tuiDataList
                     [items]="items"
@@ -100,7 +100,7 @@
                 formControlName="quantity"
                 [tuiTextfieldLabelOutside]="true"
             >
-                Шт.
+                Quantity
             </tui-input-count>
             <tui-input-number
                 class="cell cell_sum"
@@ -109,7 +109,7 @@
                 [tuiTextfieldLabelOutside]="true"
                 [readOnly]="true"
             >
-                Сумма
+                Sum
             </tui-input-number>
         </div>
     </div>

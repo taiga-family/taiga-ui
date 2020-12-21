@@ -12,17 +12,17 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiInputExample3 {
-    testForm = new FormGroup({
+    readonly testForm = new FormGroup({
         testValue1: new FormControl(''),
         testValue2: new FormControl(''),
     });
 
-    textMaskOptions1: TuiTextMaskOptions = {
+    readonly textMaskOptions1: TuiTextMaskOptions = {
         guide: false,
         mask: [/\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/],
     };
 
-    textMaskOptions2: TuiTextMaskOptions = {
+    readonly textMaskOptions2: TuiTextMaskOptions = {
         guide: false,
         mask: [
             /\d/,

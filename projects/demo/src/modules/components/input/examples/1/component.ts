@@ -11,7 +11,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiInputExample1 {
-    testForm = new FormGroup({
+    readonly testForm = new FormGroup({
         testValue: new FormControl('mail@mail.ru'),
     });
 }

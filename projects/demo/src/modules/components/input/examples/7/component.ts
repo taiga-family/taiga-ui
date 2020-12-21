@@ -11,5 +11,8 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiInputExample7 {
-    control = new FormControl(null, [Validators.required, Validators.minLength(5)]);
+    readonly control = new FormControl(null, [
+        Validators.required,
+        Validators.minLength(5),
+    ]);
 }
