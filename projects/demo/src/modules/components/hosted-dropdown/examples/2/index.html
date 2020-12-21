@@ -6,14 +6,14 @@
             class="tui-group__auto-width-item"
             size="l"
         >
-            Кнопка
+            Button
         </button>
         <button
             tuiIconButton
             type="button"
             tuiHostedDropdownHost
             class="tui-group__auto-width-item"
-            title="Меню"
+            title="Menu"
             size="l"
             [iconRight]="icon"
         ></button>
@@ -28,15 +28,15 @@
 </tui-hosted-dropdown>
 <ng-template #dropdown let-activeZone>
     <p class="margin">
-        Для работы вложенных выпадашек в<br />
-        контексте шаблона есть <code>let-activeZone</code>
+        There is <code>let-activeZone</code> in dropdown template context to
+        work with nested dropdowns
     </p>
     <tui-select
         class="margin"
         [tuiActiveZoneParent]="activeZone"
         [(ngModel)]="selected"
     >
-        Вложенный селект
+        Nested Select
         <tui-data-list-wrapper
             *tuiDataList
             [items]="selectItems"

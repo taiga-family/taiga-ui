@@ -11,9 +11,9 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiHostedDropdownExample2 {
-    readonly items = ['Изменить', 'Скачать', 'Переименовать', 'Удалить'];
+    readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
 
-    readonly selectItems = ['Выбор 1', 'Выбор 2'];
+    readonly selectItems = ['Item 1', 'Item 2'];
 
     open = false;
 
