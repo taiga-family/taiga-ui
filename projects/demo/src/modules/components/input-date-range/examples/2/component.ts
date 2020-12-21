@@ -12,7 +12,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiInputDateRangeExample2 {
-    testForm = new FormGroup({
+    readonly testForm = new FormGroup({
         testValue: new FormControl(
             new TuiDayRange(new TuiDay(2018, 2, 10), new TuiDay(2018, 3, 20)),
         ),
