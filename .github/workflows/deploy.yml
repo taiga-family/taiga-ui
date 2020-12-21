@@ -21,11 +21,11 @@ jobs:
     - name: Cache Node.js modules
       uses: actions/cache@v2
       with:
-        path: ~/.npm 
+        path: ~/.npm
         key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.OS }}-node-
-          ${{ runner.OS }}- 
+          ${{ runner.OS }}-
     - name: npm ci and build demo
       run: |
         npm ci
@@ -35,4 +35,4 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: dist/demo
+        FOLDER: dist/demo/browser
