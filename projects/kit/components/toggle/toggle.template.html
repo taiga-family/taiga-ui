@@ -42,6 +42,8 @@
     class="checkbox"
     role="switch"
     automation-id="tui-toggle__checkbox"
+    [attr.aria-checked]="value"
+    [id]="id"
     [disabled]="disabled"
     [tuiChecked]="checked"
     [tuiFocusable]="focusable"
