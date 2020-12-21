@@ -1,7 +1,6 @@
-<p>
-    Пример с <code>disabledItemHandler</code>, когда при выборе левого края
-    диапазона пересчитывается диапазон заблокированных месяцев: не менее одного
-    месяца вперед
+<p i18n>
+    A sample with <code>disabledItemHandler</code> when selecting a left value
+    of range changes available right value: a range no more than one month
 </p>
 
 <form class="container" [formGroup]="testForm">
@@ -10,6 +9,6 @@
         formControlName="testValue"
         [disabledItemHandler]="disabledItemHandler"
     >
-        Выберите диапазон
+        Choose a range of months
     </tui-input-month-range>
 </form>

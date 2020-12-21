@@ -1,6 +1,6 @@
 <tui-doc-page i18n-header header="InputMonth" package="KIT">
     <ng-template pageTab>
-        Компонент для ввода месяца
+        <p i18n>Component to input a single month</p>
 
         <tui-doc-example
             id="base"
@@ -40,12 +40,13 @@
                     [tuiTextfieldSize]="size"
                     [tuiTextfieldCleaner]="cleaner"
                 >
-                    Срок
+                    Month
                 </tui-input-month>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -53,32 +54,39 @@
                 Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<TuiMonth>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                Функция, определяющая, заблокирован ли месяц в календаре.<br />
-                <strong>Должна быть чистой функцией.</strong><br />
+                <div>
+                    A handler that gets a date and returns true if it is
+                    disabled.
+                </div>
+
+                <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальная дата
+                Minimum date
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальная дата
+                Maximum date
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
