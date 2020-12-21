@@ -1,8 +1,8 @@
 <tui-doc-page i18n-header header="Error" package="CORE">
     <ng-template pageTab>
-        <p>
-            Компонент <code>Error</code> служит для показа ошибки. В случае
-            валидации поля формы, используйте
+        <p i18n>
+            <code>Error</code> allows to show an error. If you work with a form,
+            see
             <a tuiLink [routerLink]="['/tui-field-error']"
                 ><code>TuiFieldError</code></a
             >.
@@ -29,14 +29,15 @@
 
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="error"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiValidationError | null"
                 [documentationPropertyValues]="errorVariants"
                 [(documentationPropertyValue)]="selectedError"
             >
-                Active состояние, например, в случае
-                <code>routerLinkActive</code>
+                Active state for
+                <code>routerLinkActive</code>, for example
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
