@@ -12,7 +12,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiInputTimeExample2 {
-    testForm = new FormGroup({
+    readonly testForm = new FormGroup({
         testValue: new FormControl(null),
     });
 
