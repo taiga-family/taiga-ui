@@ -1,7 +1,6 @@
 <tui-doc-page i18n-header header="InputCopy" package="KIT">
     <ng-template pageTab>
-        Компонент InputCopy предназначен для предоставления пользователю
-        возможности скопировать содержимое инпута
+        <p i18n>InputCopy alows user to copy a text of textfield</p>
 
         <tui-doc-example
             id="example-size"
@@ -32,11 +31,12 @@
                 [pseudoHovered]="pseudoHovered"
                 [textMaskOptions]="textMaskOptions"
             >
-                Введите значение
+                Type a text
             </tui-input-copy>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -44,51 +44,54 @@
                 Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="successMessage"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="successMessageVariants"
                 [(documentationPropertyValue)]="successMessage"
             >
-                Сообщение тултипа после копирования
+                Tooltip message after successfull copy
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="messageDirection"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDirection"
                 [documentationPropertyValues]="hintDirectionVariants"
                 [(documentationPropertyValue)]="messageDirection"
             >
-                Направление тултипа
+                Message tooltip direction
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="messageMode"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiHintMode | null"
                 [documentationPropertyValues]="hintModeVariants"
                 [(documentationPropertyValue)]="messageMode"
             >
-                Модификация тултипа
+                Message tooltip mode
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="textMaskOptions"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiTextMaskOptions | null"
                 [documentationPropertyValues]="textMaskOptionsVariants"
                 [(documentationPropertyValue)]="textMaskOptions"
             >
-                Параметры маски (<a
+                Mask params (<a
                     tuiLink
                     href="https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#text-mask-documentation"
-                    >официальная документация</a
-                >).
+                    >official documentation</a
+                >)
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
     </ng-template>
     <ng-template #customTemplate>
-        <i>Кастомный контент</i>, оповещающий о том, что содержимое успешно
-        скопировано
+        <i>Some custom content</i>, that says that content is copied
     </ng-template>
 
     <ng-template pageTab>

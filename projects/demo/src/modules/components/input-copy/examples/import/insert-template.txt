@@ -1,5 +1,5 @@
 <form [formGroup]="testForm">
     <tui-input-copy formControlName="testValue">
-        Введите значение
+        Type a value
     </tui-input-copy>
 </form>
