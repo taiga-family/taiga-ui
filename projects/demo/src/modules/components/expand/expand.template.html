@@ -1,6 +1,6 @@
 <tui-doc-page i18n-header header="Expand" package="CORE">
     <ng-template pageTab>
-        Компонент для показа выпадающего контента
+        <p i18n>Component to show expandable content</p>
 
         <tui-doc-example
             id="base"
@@ -49,25 +49,25 @@
         </tui-expand>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="async"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="async"
             >
-                При открытии компонент ждёт кастомного события
-                <code>TUI_EXPAND_LOADED</code>, прежде чем раскрыться, но
-                контент на странице появляется сразу (для случаев, если
-                компонент внутри при инициализации подгружает какие-то данные,
-                влияющие на его высоту)
+                Waits for a custom event
+                <code>TUI_EXPAND_LOADED</code> before opening. Content is
+                initialized when opening starts
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="expanded"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [documentationPropertyValue]="expanded"
                 (documentationPropertyValueChange)="onExpandedChange($event)"
             >
-                Компонент открыт/закрыт
+                Open / close state
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
