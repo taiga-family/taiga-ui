@@ -13,15 +13,15 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiInputSliderExample1 {
-    testForm = new FormGroup({
+    readonly testForm = new FormGroup({
         testValue: new FormControl(100000),
     });
 
-    // 30 шагов по 5000, 16 шагов по 50 000, 58 шагов по 500 000 = 104 шага
-    keySteps: TuiKeySteps = [
+    // 30 steps of 5000, 16 steps of 50 000, 58 steps of 500 000 = 104 steps
+    readonly keySteps: TuiKeySteps = [
         [(100 / 104) * 30, 200000],
         [(100 / 104) * (30 + 16), 1000000],
     ];
 
-    pluralize: TuiPluralize = ['₽', '₽', '₽'];
+    readonly pluralize: TuiPluralize = ['₽', '₽', '₽'];
 }
