@@ -1,16 +1,14 @@
 <tui-doc-page i18n-header header="InputCount" package="KIT">
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
-            Компонент <code>InputCount</code> предназначен для ввода целых
-            чисел. Не рекомендуется использовать для значений больше 999.
+        <div i18n class="tui-space_bottom-3">
+            <code>InputCount</code> is a good choice to input integer positive
+            numbers under 999
         </div>
-        <div class="tui-space_bottom-3">
-            Позволяет задать минимальное и максимальное значение. При попытке
-            ввода числа, не попадающего в заданный диапазон, значение
-            автоматически заменится на подходящее.
+        <div i18n class="tui-space_bottom-3">
+            It allows limit value with min and max and handles such cases
         </div>
 
-        Индикация валидации не предусмотрена.
+        <p i18n>It does not indicate validation status</p>
 
         <tui-doc-example
             id="base"
@@ -45,12 +43,13 @@
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                 >
-                    Количество счетов
+                    Number of accounts
                 </tui-input-count>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -58,45 +57,50 @@
                 Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="hideButtons"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="hideButtons"
             >
-                Скрыть кнопки
+                Hide icon buttons
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальное значение
+                Minimum value
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальное значение (значение по умолчанию — Infinity)
+                Maximum value (<code>Infinity</code> by default)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="postfix"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="postfix"
             >
-                Подпись после числа
+                Some string after value
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="step"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="step"
                 [documentationPropertyValues]="stepValues"
             >
-                Шаг изменения значения кнопками
+                Step for buttons
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>

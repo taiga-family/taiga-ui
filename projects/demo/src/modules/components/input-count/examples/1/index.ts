@@ -10,7 +10,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiInputCountExample1 {
-    testForm = new FormGroup({
+    readonly testForm = new FormGroup({
         testValue1: new FormControl(10, Validators.required),
         testValue2: new FormControl(10, Validators.required),
     });

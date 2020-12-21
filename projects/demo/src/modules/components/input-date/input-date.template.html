@@ -1,6 +1,6 @@
 <tui-doc-page i18n-header header="InputDate" package="KIT">
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">Поле с календарем для выбора даты.</div>
+        <div i18n class="tui-space_bottom-3">Input with a calendar</div>
 
         <tui-doc-example
             id="base"
@@ -21,7 +21,8 @@
         </tui-doc-example>
 
         <tui-doc-example
-            heading="Именованная дата"
+            i18n-heading
+            heading="With named dates"
             id="named"
             [content]="example3"
         >
@@ -52,12 +53,13 @@
                     [tuiHintDirection]="hintDirection"
                     [tuiHintMode]="hintMode"
                 >
-                    Выберите дату
+                    Choose a date
                 </tui-input-date>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -65,52 +67,60 @@
                 Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<TuiDay>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                Функция, определяющая, заблокирована ли дата в календаре.<br />
-                <strong>Должна быть чистой функцией.</strong><br />
-                Не препятствует ручному вводу значения в текстовое поле.
+                <div>
+                    A handler that gets a date and returns true if it is
+                    disabled.
+                </div>
+
+                <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="items"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiNamedDay[]"
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
             >
-                Пресеты именованных дней для выставления по кнопке в выпадашке
+                A list of preset dates for dropdown
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="markerHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMarkerHandler"
                 [documentationPropertyValues]="markerHandlerVariants"
                 [(documentationPropertyValue)]="markerHandler"
             >
-                Функция, которая определяет, показаны ли под датой
-                кружки-маркеры и задает их цвета
+                A handler that gets date and returns null or a tuple with
+                circled marker colors
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальная дата
+                Minimum date
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальная дата
+                Maximum date
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>
@@ -144,7 +154,7 @@
             </li>
 
             <li>
-                Вставить компонент <code>TuiInputDate</code> в шаблон:
+                Use <code>TuiInputDate</code> in template:
 
                 <tui-doc-code
                     filename="myComponent.template.html"
