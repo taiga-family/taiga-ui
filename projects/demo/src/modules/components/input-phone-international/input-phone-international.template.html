@@ -1,6 +1,6 @@
 <tui-doc-page i18n-header header="InputPhoneInternational" package="KIT">
     <ng-template pageTab>
-        Позволяет вводить номер телефона в международном формате
+        <p i18n>Allows to input phone number in international format</p>
 
         <tui-doc-example
             id="base"
@@ -13,7 +13,8 @@
 
         <tui-doc-example
             id="all-countries"
-            heading="все возможные страны"
+            i18n-heading
+            heading="All available contries"
             [content]="example2"
         >
             <tui-input-phone-international-example-2></tui-input-phone-international-example-2>
@@ -40,12 +41,13 @@
                     [pseudoFocused]="pseudoFocused"
                     [pseudoInvalid]="pseudoInvalid"
                 >
-                    Введите телефон
+                    Type a phone number
                 </tui-input-phone-international>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -53,22 +55,24 @@
                 Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="countries"
                 documentationPropertyMode="input"
                 documentationPropertyType="ReadonlyArray<TuiCountryIsoCode>"
                 [documentationPropertyValues]="countriesVariants"
                 [(documentationPropertyValue)]="countries"
             >
-                Массив ISO-кодов стран для выбора
+                Array of ISO-codes of countries to choose
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="countryIsoCode"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiCountryIsoCode"
                 [documentationPropertyValues]="countryIsoCodeVariants"
                 [(documentationPropertyValue)]="countryIsoCode"
             >
-                ISO-код страны
+                ISO-code of selected country
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
@@ -77,9 +81,11 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модули для работы с формами из
-                Angular и модуль <code>TuiInputPhoneInternationalModule</code> в
-                тот же модуль, куда добавляется ваш компонент:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiInputPhoneInternationalModule</code> in the same
+                    module where you want to use our component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -88,9 +94,10 @@
             </li>
 
             <li>
-                Объявить форму (<code>FormGroup</code>) или контрол
-                (<code>FormControl</code>) в компоненте. Составьте массив стран
-                для выбора с помощью enum'а <code>TuiCountryIsoCode</code>:
+                <p i18n>
+                    Declare a form (<code>FormGroup</code>) or a control
+                    (<code>FormControl</code>) in your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
