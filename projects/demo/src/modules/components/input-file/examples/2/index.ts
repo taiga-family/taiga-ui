@@ -130,7 +130,9 @@ export class TuiInputFileExample2 {
     private serverRequest(file: File): Observable<RejectedFile | File | null> {
         const delay = Math.round(Math.random() * 5000 + 500);
         const result =
-            delay % 2 ? null : new RejectedFile(file, 'Сервер ответил за нечётное время');
+            delay % 2
+                ? null
+                : new RejectedFile(file, 'Server responded for odd number of time');
 
         return timer(delay).pipe(mapTo(result));
     }
