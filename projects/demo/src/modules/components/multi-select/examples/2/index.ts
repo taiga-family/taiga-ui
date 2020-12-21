@@ -48,7 +48,7 @@ export class TuiMultiSelectExample2 {
     }
 
     /**
-     * Имитация запроса на сервер
+     * Server request emulation
      */
     private serverRequest(searchQuery: string): Observable<ReadonlyArray<User>> {
         const result = databaseMockData.filter(

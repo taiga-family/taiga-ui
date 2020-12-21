@@ -16,7 +16,7 @@ function createControlValidator(handler: TuiBooleanHandler<string>): ValidatorFn
 
         return invalidTags.length > 0
             ? {
-                  tags: new TuiValidationError('Некоторые теги невалидны'),
+                  tags: new TuiValidationError('Some tags are invalid'),
               }
             : null;
     };

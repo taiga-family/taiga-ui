@@ -39,7 +39,7 @@ export class TuiInputTagExample2 {
     }
 
     /**
-     * Имитация запроса на сервер
+     * Server request emulation
      */
     private serverRequest(search: string): Observable<ReadonlyArray<string>> {
         const result = databaseMockData.filter(
