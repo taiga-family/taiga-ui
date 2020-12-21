@@ -7,10 +7,10 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
 enum Department {
-    SME = 'SME',
-    TCRM = 'TCRM',
-    BPM = 'BPM',
-    WEB_OFFICE = 'WebOffice',
+    IT = 'IT',
+    HR = 'HR',
+    HeadOffice = 'Heads',
+    Delivery = 'Delivery',
 }
 
 @Component({
