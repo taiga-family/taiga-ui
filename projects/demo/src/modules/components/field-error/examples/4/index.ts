@@ -19,7 +19,7 @@ function asyncValidatorFn(): AsyncValidatorFn {
         return field.value && latinChars.test(field.value)
             ? of(null).pipe()
             : of({
-                  error: new TuiValidationError('Допустимы только латинские буквы'),
+                  error: new TuiValidationError('Only latin letters allowed'),
               }).pipe(delay(5000));
     };
 }

@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
 export function maxLengthValidator(context: {requiredLength: string}): string {
-    return `максимальная длина - ${context.requiredLength}`;
+    return `Maximum length — ${context.requiredLength}`;
 }
 
 export function minLengthValidator(context: {requiredLength: string}): string {
-    return `максимальная длина - ${context.requiredLength}`;
+    return `Minimum length — ${context.requiredLength}`;
 }
 
 @Component({
@@ -22,24 +22,27 @@ export function minLengthValidator(context: {requiredLength: string}): string {
         {
             provide: TUI_VALIDATION_ERRORS,
             useValue: {
-                required: 'Слышь, заполни',
-                email: 'Введите корректный email',
+                required: 'Enter this!',
+                email: 'Enter a valid email',
                 maxlength: maxLengthValidator,
                 minlength: minLengthValidator,
             },
         },
     ],
 })
-export class TuiFieldErrorExample5 implements OnInit {
-    testValue1 = new FormControl('', [Validators.minLength(4), Validators.maxLength(4)]);
-    testValue2 = new FormControl('', [Validators.required, Validators.email]);
+export class TuiFieldErrorExample5 {
+    readonly testValue1 = new FormControl('', [
+        Validators.minLength(4),
+        Validators.maxLength(4),
+    ]);
+    readonly testValue2 = new FormControl('', [Validators.required, Validators.email]);
 
-    testForm = new FormGroup({
+    readonly testForm = new FormGroup({
         testValue1: this.testValue1,
         testValue2: this.testValue2,
     });
 
-    ngOnInit() {
+    constructor() {
         this.testValue1.valueChanges.subscribe(() => {
             this.testValue1.markAsTouched();
         });

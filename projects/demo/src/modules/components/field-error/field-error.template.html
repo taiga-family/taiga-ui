@@ -1,8 +1,8 @@
 <tui-doc-page i18n-header header="FieldError" package="KIT">
     <ng-template pageTab>
-        <p>
-            Компонент <code>FieldError</code> служит для показа ошибки валидации
-            поля формы. Для показа ошибки без контрола, используйте
+        <p i18n>
+            <code>FieldError</code> shows a validation error of a field. If you
+            do not use forms, see
             <a tuiLink [routerLink]="['/tui-error']"><code>TuiError</code></a
             >.
         </p>
@@ -18,7 +18,8 @@
 
         <tui-doc-example
             id="patterns"
-            heading="с шаблонами"
+            i18n-heading
+            heading="with a template"
             [content]="example2"
         >
             <tui-field-error-example-2></tui-field-error-example-2>
@@ -26,7 +27,8 @@
 
         <tui-doc-example
             id="formArray"
-            heading="с динамическим добавлением (FormArray)"
+            i18n-heading
+            heading="With adding new controls (FormArray)"
             [content]="example3"
         >
             <tui-field-error-example-3></tui-field-error-example-3>
@@ -34,7 +36,8 @@
 
         <tui-doc-example
             id="async"
-            heading="с асинхронным валидатором"
+            i18n-heading
+            heading="async validator"
             [content]="example4"
         >
             <tui-field-error-example-4></tui-field-error-example-4>
@@ -42,14 +45,15 @@
 
         <tui-doc-example
             id="customMessages"
-            heading="С кастомными сообщениями для встроенных валидаторов"
+            i18n-heading
+            heading="With custom messages for validators"
             [content]="example5"
         >
             <tui-field-error-example-5></tui-field-error-example-5>
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
@@ -64,8 +68,7 @@
             </li>
 
             <li>
-                Добавить в шаблон, <code>formControlName</code> &mdash; имя
-                контрола, для которого будет показана ошибка:
+                <p i18n>Add into template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

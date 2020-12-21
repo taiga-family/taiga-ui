@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {changeDetection} from '../../../../../change-detection-strategy';
@@ -10,7 +10,7 @@ export function passwordValidator(field: AbstractControl): Validators | null {
     return field.value && latinChars.test(field.value)
         ? null
         : {
-              other: new TuiValidationError('Допустимы только латинские буквы'),
+              other: new TuiValidationError('Only latin letters are allowed'),
           };
 }
 
@@ -18,7 +18,7 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
     return field.value === '42'
         ? null
         : {
-              other: new TuiValidationError('Ответ неверный'),
+              other: new TuiValidationError('Wrong'),
           };
 }
 
@@ -29,15 +29,15 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
     changeDetection,
     encapsulation,
 })
-export class TuiFieldErrorExample1 implements OnInit {
-    testValue1 = new FormControl('', [Validators.required, passwordValidator]);
+export class TuiFieldErrorExample1 {
+    readonly testValue1 = new FormControl('', [Validators.required, passwordValidator]);
 
-    testForm = new FormGroup({
+    readonly testForm = new FormGroup({
         testValue1: this.testValue1,
         testValue2: new FormControl('', [Validators.required, superComputerValidator]),
     });
 
-    ngOnInit() {
+    constructor() {
         this.testValue1.valueChanges.subscribe(() => {
             this.testValue1.markAsTouched();
         });

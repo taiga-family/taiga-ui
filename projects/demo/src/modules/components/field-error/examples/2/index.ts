@@ -11,15 +11,15 @@ import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
-const innRegexTen = /^\d{10}$/;
-const innRegexTwelve = /^\d{12}$/;
+const secretRegexTen = /^\d{10}$/;
+const secretRegexTwelve = /^\d{12}$/;
 
 export function innValidator(field: AbstractControl): any {
     return field.value &&
-        (innRegexTen.test(field.value) || innRegexTwelve.test(field.value))
+        (secretRegexTen.test(field.value) || secretRegexTwelve.test(field.value))
         ? null
         : {
-              inn: new TuiValidationError('ИНН — 10 или 12 цифр'),
+              inn: new TuiValidationError('Secret number contains 10 or 12 digits'),
           };
 }
 
@@ -37,10 +37,10 @@ export class TuiFieldErrorExample2 implements OnInit {
     @ViewChild('bigErrorContent')
     bigErrorContent?: PolymorpheusTemplate<{}>;
 
-    testValue2 = new FormControl('');
+    readonly testValue2 = new FormControl('');
 
-    testForm = new FormGroup({
-        testValue1: new FormControl('', [Validators.required, this.getInnValidator()]),
+    readonly testForm = new FormGroup({
+        testValue1: new FormControl('', [Validators.required, this.getSecretValidator()]),
         testValue2: this.testValue2,
     });
 
@@ -57,13 +57,13 @@ export class TuiFieldErrorExample2 implements OnInit {
         this.testValue2.setValidators([Validators.required, this.companyValidator]);
     }
 
-    private getInnValidator(): (field: AbstractControl) => ValidationErrors | null {
+    private getSecretValidator(): (field: AbstractControl) => ValidationErrors | null {
         return (field: AbstractControl): ValidationErrors | null =>
             field.value &&
-            (innRegexTen.test(field.value) || innRegexTwelve.test(field.value))
+            (secretRegexTen.test(field.value) || secretRegexTwelve.test(field.value))
                 ? null
                 : {
-                      inn: new TuiValidationError(this.errorContent || ''),
+                      secret: new TuiValidationError(this.errorContent || ''),
                   };
     }
 }
