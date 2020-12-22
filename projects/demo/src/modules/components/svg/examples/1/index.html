@@ -1,23 +1,21 @@
-<h2>Именованная иконка в ShadowDOM</h2>
+<h2 i18n>Named icon from ShadowDOM</h2>
 <tui-svg class="icon" src="customTuiIconMaestro"></tui-svg>
 <ng-container *ngIf="timeout$ | async">
-    <h2>Именованная иконка</h2>
+    <h2 i18n>Named icon</h2>
     <tui-svg class="icon" src="customTuiIconMastercard"></tui-svg>
 
-    <h2>
-        Именованная иконка, перенаправленная через <code>TUI_ICONS_PATH</code>
-    </h2>
+    <h2 i18n>Named icon got with <code>TUI_ICONS_PATH</code></h2>
     <tui-svg class="icon" src="tuiIconLikeLarge"></tui-svg>
 
-    <h2>Исходный код</h2>
+    <h2 i18n>Source code</h2>
     <tui-svg [src]="tuiIconTimeLarge"></tui-svg>
 
-    <h2>Внешняя ссылка</h2>
+    <h2 i18n>External link</h2>
     <tui-svg
         class="external-icon"
         src="https://ng-web-apis.github.io/dist/assets/images/web-api.svg"
     ></tui-svg>
 
-    <h2>Внешняя ссылка на сегмент</h2>
+    <h2 i18n>External segment link</h2>
     <tui-svg class="icon" [src]="imageUrl"></tui-svg>
 </ng-container>
