@@ -11,12 +11,12 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiSelectExample1 {
     items = [
-        'Люк Скайуокер',
-        'Принцесса Лея',
-        'Дарт Вейдер',
-        'Хан Соло',
-        'Оби-Ван Кеноби',
-        'Йода',
+        'Luke Skywalker',
+        'Leia Organa Solo',
+        'Darth Vader',
+        'Han Solo',
+        'Obi-Wan Kenobi',
+        'Yoda',
     ];
 
     testValue = new FormControl(this.items[0]);

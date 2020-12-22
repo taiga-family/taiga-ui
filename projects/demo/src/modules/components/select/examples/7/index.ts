@@ -11,22 +11,22 @@ interface Account {
 
 const BANK: ReadonlyArray<Account> = [
     {
-        name: 'Рублевый счет',
+        name: 'Ruble',
         account: 1234567890987654321,
     },
     {
-        name: 'Долларовый счет',
+        name: 'Dollar',
         account: 1234567890987654321,
     },
 ];
 
 const OTHERS: ReadonlyArray<Account> = [
     {
-        name: 'Сбер',
+        name: 'Bank',
         account: 1234567890987654321,
     },
     {
-        name: 'ВТБ',
+        name: 'Other bank',
         account: 1234567890987654321,
     },
     {
@@ -36,7 +36,7 @@ const OTHERS: ReadonlyArray<Account> = [
 ];
 
 const CASH: Account = {
-    name: 'Наличные',
+    name: 'Cash',
     account: NaN,
 };
 
@@ -57,5 +57,5 @@ export class TuiSelectExample7 {
 
     readonly content: TuiStringHandler<
         TuiValueContentContext<ReadonlyArray<unknown>>
-    > = ({$implicit: {length}}) => (length ? `${length} счета` : 'Все');
+    > = ({$implicit: {length}}) => (length ? `${length} accounts` : 'All');
 }

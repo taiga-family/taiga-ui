@@ -104,9 +104,9 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiReactiveField {
         LESS: example7Less,
     };
 
-    readonly items = [new Account('Рублёвый', 500), new Account('Долларовый', 237)];
+    readonly items = [new Account('Ruble', 500), new Account('Dollar', 237)];
 
-    readonly valueTemplateVariants = ['', 'Шаблон'];
+    readonly valueTemplateVariants = ['', 'Template'];
 
     selectedValueTemplate = this.valueTemplateVariants[0];
 
@@ -134,6 +134,6 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiReactiveField {
     }
 
     setValue() {
-        this.control.setValue(new Account('Долларовый', 237));
+        this.control.setValue(new Account('Dollar', 237));
     }
 }
