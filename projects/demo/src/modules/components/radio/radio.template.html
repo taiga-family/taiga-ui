@@ -1,10 +1,13 @@
-<tui-doc-page i18n-header header="Radio" package="KIT">
+<tui-doc-page header="Radio" package="KIT">
     <ng-template pageTab>
-        Радио-кнопка без лейбла. Для использования с&nbsp;лейблом&nbsp;см.
-        <a tuiLink routerLink="/tui-radio-labeled"><code>RadioLabeled</code></a
-        >, внутри кнопки см.
-        <a tuiLink routerLink="/tui-radio-block"><code>RadioBlock</code></a
-        >.
+        <p i18n>
+            Radio button without a label. If use want to have a label, see
+            <a tuiLink routerLink="/tui-radio-labeled"
+                ><code>RadioLabeled</code></a
+            >, and inside button
+            <a tuiLink routerLink="/tui-radio-block"><code>RadioBlock</code></a
+            >.
+        </p>
 
         <tui-doc-example
             id="base"
@@ -72,11 +75,12 @@
                 ></tui-radio>
             </ng-template>
         </tui-doc-demo>
-        <button tuiButton type="button" size="m" (click)="onClick()">
-            Задать значение копией
+        <button i18n tuiButton type="button" size="m" (click)="onClick()">
+            Set a value with a copy
         </button>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -84,36 +88,36 @@
                 Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiIdentityMatcher"
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
             >
-                Функция определения равенства объектов (нужна в случае, если
-                выбранное значение задано изначально и не присутствует в
-                <code>items</code>, однако там есть точная копия, которую можно
-                определить по какому-нибудь критерию. По умолчанию используется
-                сравнение <code>===</code>.
-                <strong>Должна быть чистой функцией</strong>
+                Function that matches value and items, e.g. if objects are
+                copied. Uses <code>===</code> by default.
+
+                <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pseudoDisabled"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="pseudoDisabled"
             >
-                Disabled&nbsp;&mdash; установить принудительно, не изменяя
-                значение формы
+                Emulates disabled state without disabling a form
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер контрола
+                Size
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
