@@ -485,7 +485,7 @@
                             },
                             {
                                 "glob": "**/*",
-                                "input": "projects/icons/src/icons/src",
+                                "input": "projects/icons/src",
                                 "output": "assets/taiga-ui/icons"
                             }
                         ],
