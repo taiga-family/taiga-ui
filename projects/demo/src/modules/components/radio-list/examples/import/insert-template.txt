@@ -3,7 +3,7 @@
                     [items]="items">
         <ng-template tuiRadioList
                      let-item>
-            <div class="tariff">Тариф &laquo;{{item.name}}&raquo;.</div>
+            <div class="tariff">Option &laquo;{{item.name}}&raquo;.</div>
             <div>{{item.description}}</div>
         </ng-template>
     </tui-radio-list>

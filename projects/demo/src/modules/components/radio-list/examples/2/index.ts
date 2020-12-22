@@ -13,17 +13,16 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiRadioListExample2 {
     readonly items = [
         {
-            name: 'Простой',
-            description: 'Это описание простого тарифа. Он совсем прост.',
+            name: 'Simple',
+            description: 'Something usual',
         },
         {
-            name: 'Продвинутый',
-            description: 'Это описание продвинутого тарифа.',
+            name: 'Advanced',
+            description: 'Something better',
         },
         {
-            name: 'Профессиональный',
-            description:
-                'Это описание профессионального тарифа. Это наш самый крутой тариф.',
+            name: 'PRO',
+            description: 'Something cool',
         },
     ];
 

@@ -1,7 +1,9 @@
-<tui-doc-page i18n-header header="RadioList" package="KIT">
+<tui-doc-page header="RadioList" package="KIT">
     <ng-template pageTab>
-        Компонент позволяет развернуть набор radio-кнопок из массива.
-        Поддерживает кастомный контент
+        <p i18n>
+            Component for fast showing many radio buttons. It supports also
+            custom content
+        </p>
 
         <tui-doc-example
             id="base"
@@ -43,11 +45,12 @@
             </ng-template>
         </tui-doc-demo>
         <ng-template #itemContent="polymorpheus" polymorpheus let-data>
-            <div>Тариф &laquo;{{data.name}}&raquo;.</div>
+            <div>Option &laquo;{{data.name}}&raquo;.</div>
             <div class="description">{{data.description}}</div>
         </ng-template>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -55,32 +58,39 @@
                 Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<T>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                Функция, определяющая заблокирован ли отдельный элемент.<br />
-                <strong>Должна быть чистой функцией.</strong><br />
+                <div>
+                    A handler that gets a date and returns true if it is
+                    disabled.
+                </div>
+
+                <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="orientation"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiOrientation"
                 [documentationPropertyValues]="orientationVariants"
                 [(documentationPropertyValue)]="orientation"
             >
-                Направление
+                Direction of group
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер контрола
+                Size
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
@@ -114,8 +124,7 @@
             </li>
 
             <li>
-                Добавить в шаблон. Внутри <code>ng-template</code> описываем
-                шаблон для элемента радио-группы:
+                <p i18n>Add into template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

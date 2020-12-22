@@ -1,13 +1,16 @@
-<tui-doc-page i18n-header header="RadioLabeled" package="KIT">
+<tui-doc-page header="RadioLabeled" package="KIT">
     <ng-template pageTab>
-        <code>RadioLabeled</code> состоит из радио-кнопки <code>Radio</code> и
-        лейбла. Клик по лейблу меняет состояние контрола. Для использования без
-        лейбла&nbsp;см. <a tuiLink routerLink="/tui-radio"><code>Radio</code></a
-        >.
+        <p i18n>
+            <code>RadioLabeled</code> is a radio and a label. Label click
+            changes form value. Without label:
+            <a tuiLink routerLink="/tui-radio"><code>Radio</code></a
+            >.
+        </p>
 
         <tui-doc-example
             id="base"
-            heading="лейбл без форматирования"
+            i18n-heading
+            heading="Label without formatting"
             [content]="example1"
         >
             <tui-radio-labeled-example-1></tui-radio-labeled-example-1>
@@ -15,7 +18,8 @@
 
         <tui-doc-example
             id="custom"
-            heading="лейбл с форматированием"
+            i18n-heading
+            heading="Label with formatting"
             [content]="example2"
         >
             <tui-radio-labeled-example-2></tui-radio-labeled-example-2>
@@ -47,7 +51,7 @@
                     [focusable]="focusable"
                     [readOnly]="readOnly"
                 >
-                    Тариф &laquo;Простой&raquo;
+                    One
                 </tui-radio-labeled>
                 <tui-radio-labeled
                     class="tui-space_bottom-3"
@@ -62,7 +66,7 @@
                     [focusable]="focusable"
                     [readOnly]="readOnly"
                 >
-                    Тариф &laquo;Продвинутый&raquo;
+                    Two
                 </tui-radio-labeled>
                 <tui-radio-labeled
                     class="tui-space_bottom-3"
@@ -77,12 +81,13 @@
                     [focusable]="focusable"
                     [readOnly]="readOnly"
                 >
-                    Тариф &laquo;Профессиональный&raquo;
+                    Three
                 </tui-radio-labeled>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -90,34 +95,34 @@
                 Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiIdentityMatcher"
             >
-                Функция определения равенства объектов (нужна в случае, если
-                выбранное значение задано изначально и не присутствует в
-                <code>items</code>, однако там есть точная копия, которую можно
-                определить по какому-нибудь критерию. По умолчанию используется
-                сравнение <code>===</code>.
-                <strong>Должна быть чистой функцией</strong>
+                Function that matches value and items, e.g. if objects are
+                copied. Uses <code>===</code> by default.
+
+                <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pseudoDisabled"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="pseudoDisabled"
             >
-                Disabled&nbsp;&mdash; установить принудительно, не изменяя
-                значение формы
+                Emulates disabled state without disabling a form
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер контрола
+                Size
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
