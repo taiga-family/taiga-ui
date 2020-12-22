@@ -1,7 +1,6 @@
 <tui-doc-page i18n-header header="Stepper" package="KIT">
     <ng-template pageTab>
-        Компонент Stepper предназначен для навигации по шагам с визуальной
-        индикацией пройденных шагов
+        <p i18n>Stepper makes visual step navigation</p>
 
         <tui-doc-example
             id="base"
@@ -27,50 +26,54 @@
                 [orientation]="orientation"
                 [(activeItemIndex)]="activeItemIndex"
             >
-                <button tuiStep>Просто шаг</button>
-                <button tuiStep>Просто шаг</button>
+                <button tuiStep>Simple step</button>
+                <button tuiStep>Simple step</button>
                 <button tuiStep [state]="state" [icon]="icon">
-                    Просто шаг
+                    Simple step
                 </button>
             </tui-stepper>
         </tui-doc-demo>
         <tui-doc-documentation heading="Stepper">
             <ng-template
+                i18n
                 documentationPropertyName="orientation"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiOrientation | 'none'"
                 [documentationPropertyValues]="orientationVariants"
                 [(documentationPropertyValue)]="orientation"
             >
-                Направление шагов
+                Steps direction
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="activeItemIndex"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="activeItemIndex"
             >
-                Индекс активного шага
+                Active step index
             </ng-template>
         </tui-doc-documentation>
         <tui-doc-documentation heading="Step">
             <ng-template
+                i18n
                 documentationPropertyName="state"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiStepState"
                 [documentationPropertyValues]="stateVariants"
                 [(documentationPropertyValue)]="state"
             >
-                Состояние шага
+                Step state
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="icon"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
             >
-                Произвольная иконка
+                Step custom icon
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -90,7 +93,7 @@
             </li>
 
             <li>
-                Добавить в шаблон компонент с элементами:
+                <p i18n>Add into template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
