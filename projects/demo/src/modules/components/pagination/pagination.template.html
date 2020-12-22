@@ -1,7 +1,5 @@
-<tui-doc-page i18n-header header="Pagination" package="KIT">
+<tui-doc-page header="Pagination" package="KIT">
     <ng-template pageTab>
-        Paginator полный
-
         <tui-doc-example
             id="base"
             i18n-heading
@@ -13,7 +11,8 @@
 
         <tui-doc-example
             id="around"
-            heading="количество видимых страниц вокруг активной"
+            i18n-heading
+            heading="Visible pages around active"
             [content]="example2"
         >
             <tui-pagination-example-2></tui-pagination-example-2>
@@ -21,7 +20,8 @@
 
         <tui-doc-example
             id="edges"
-            heading="количество видимых страниц с краёв"
+            i18n-heading
+            heading="Visible edge pages"
             [content]="example3"
         >
             <tui-pagination-example-3></tui-pagination-example-3>
@@ -29,7 +29,8 @@
 
         <tui-doc-example
             id="custom"
-            heading="кастомный шаблон"
+            i18n-heading
+            heading="Custom"
             [content]="example4"
         >
             <tui-pagination-example-4></tui-pagination-example-4>
@@ -47,6 +48,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="focusable"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -55,6 +57,7 @@
                 Принимает фокус с клавиатуры
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="index"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="number"
@@ -63,6 +66,7 @@
                 Индекс активной страницы
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="length"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -71,6 +75,7 @@
                 Количество страниц
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS"
