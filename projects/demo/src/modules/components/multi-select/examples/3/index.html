@@ -8,7 +8,7 @@
         [identityMatcher]="identityMatcher"
         [tuiTextfieldLabelOutside]="true"
     >
-        Выберите любимых героев
+        Choose your heroes
         <tui-data-list *tuiDataList tuiMultiSelectGroup>
             <button *ngFor="let item of items" tuiOption [value]="item">
                 {{item.name}}
@@ -22,7 +22,7 @@
         [stringify]="stringify"
         [identityMatcher]="identityMatcher"
     >
-        Выберите любимых героев
+        Choose your heroes
         <tui-data-list-wrapper
             *tuiDataList
             tuiMultiSelectGroup

@@ -1,9 +1,9 @@
 <tui-doc-page i18n-header header="Notification" package="CORE">
     <ng-template pageTab>
-        Inline уведомления представляют собой сообщения разного типа (info,
-        success, warning, error) без прерывания действий пользователя.
-        Появляется в&nbsp;контексте совершаемого действия и&nbsp;сообщает
-        о&nbsp;его статусе.
+        <p i18n>
+            An inline message with a type (info, success, warning, error) that
+            does not interrupt user actions
+        </p>
 
         <tui-doc-example
             id="base"
@@ -22,41 +22,45 @@
                 [hasIcon]="hasIcon"
                 [status]="status"
                 (close)="onClose()"
-                >Короткое простое информационное сообщение</tui-notification
+                >A short simple informative message</tui-notification
             >
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="hasCloseButton"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
                 [(documentationPropertyValue)]="hasCloseButton"
             >
-                Наличие крестика для закрытия
+                Enables close cross
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="hasIcon"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
                 [(documentationPropertyValue)]="hasIcon"
             >
-                Наличие иконки статуса
+                A small icon with status
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="status"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiNotification"
                 [documentationPropertyValues]="statusVariants"
                 [(documentationPropertyValue)]="status"
             >
-                Статус меняет цвет нотификации
+                Status changes color of notification
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="close"
                 documentationPropertyMode="output"
                 documentationPropertyType="void"
             >
-                Подписка на клик по крестику
+                Emits click on close cross
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
