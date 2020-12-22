@@ -1,6 +1,6 @@
 <tui-doc-page i18n-header header="Range" package="KIT">
     <ng-template pageTab>
-        Компонент для выбора части диапазона
+        <p i18n>Component allows to choose a part of range</p>
 
         <tui-doc-example
             id="base"
@@ -29,6 +29,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -36,68 +37,74 @@
                 Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальная величина
+                Min value
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальная величина
+                Max value
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pluralize"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiPluralize"
                 [documentationPropertyValues]="pluralizeVariants"
                 [(documentationPropertyValue)]="pluralize"
             >
-                Формы множественного числа для подписей
+                Plural forms for labels
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="segments"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="segmentsVariants"
                 [(documentationPropertyValue)]="segments"
             >
-                Количество участков визуальной разбивки
+                A number of visual segments
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="steps"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="stepsVariants"
                 [(documentationPropertyValue)]="steps"
             >
-                Количество фактических дискретных значений
+                Number of actual discrete slider steps
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="keySteps"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiKeySteps"
                 [documentationPropertyValues]="keyStepsVariants"
                 [(documentationPropertyValue)]="keySteps"
             >
-                Опорные точки неоднородной зависимости значения и положения
-                слайдера
+                Anchor points of non-uniform format between value and position
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер слайдера
+                Size
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -128,8 +135,7 @@
             </li>
 
             <li>
-                Добавить в шаблон с использованием реактивных форм или
-                <code>ngModel</code>:
+                <p i18n>Add into template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
