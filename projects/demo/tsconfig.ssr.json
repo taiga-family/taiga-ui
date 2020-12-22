@@ -1,8 +1,0 @@
-{
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "outDir": "../../dist/ssr",
-        "module": "commonjs"
-    },
-    "include": ["src/typings.d.ts", "server.ts", "prerender.ts"]
-}

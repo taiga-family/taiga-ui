@@ -101,6 +101,10 @@ export class TuiInputCVCComponent
         this.updateFocused(focused);
     }
 
+    onHovered(hovered: boolean) {
+        this.updateHovered(hovered);
+    }
+
     onCopy() {}
 
     onValueChange(value: string) {
