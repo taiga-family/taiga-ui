@@ -11,7 +11,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiLabelExample3 {
-    testForm = new FormGroup({
+    readonly testForm = new FormGroup({
         testValue: new FormControl(),
     });
 }

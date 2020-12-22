@@ -37,7 +37,7 @@ export class ExampleTuiLabelComponent {
         HTML: example3Html,
     };
 
-    readonly labelVariants = ['Значения по умолчанию нет', 'Шаблон'];
+    readonly labelVariants = ['No default value', 'Template'];
 
     label = this.labelVariants[0];
 
