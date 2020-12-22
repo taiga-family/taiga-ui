@@ -12,6 +12,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiTextAreaExample2 {
     testForm = new FormGroup({
-        testValue1: new FormControl('Просто поле', Validators.required),
+        testValue1: new FormControl('A field', Validators.required),
     });
 }
