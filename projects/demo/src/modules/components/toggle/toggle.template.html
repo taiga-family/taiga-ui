@@ -1,9 +1,9 @@
 <tui-doc-page i18n-header header="Toggle" package="KIT">
     <ng-template pageTab>
-        Toggle&nbsp;&mdash; переключатель с&nbsp;двумя состояниями. Можно
-        включить показ иконок состояний или спиннера. Переключатель без иконок
-        используется, если состояния означают не&nbsp;&laquo;включено&raquo;
-        и&nbsp;&laquo;выключено&raquo;, а&nbsp;две равнозначных опции.
+        <p i18n>
+            Toggle is a switcher between two states. It can be also used with
+            icons and loading.
+        </p>
 
         <tui-doc-example
             id="base"
@@ -30,6 +30,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -37,66 +38,71 @@
                 Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pseudoFocused"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean | null"
                 [documentationPropertyValues]="pseudoVariants"
                 [(documentationPropertyValue)]="pseudoFocused"
             >
-                Визуальная сфокусированность&nbsp;&mdash; установить
-                принудительно извне компонента
+                Visual focused state
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pseudoHovered"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean | null"
                 [documentationPropertyValues]="pseudoVariants"
                 [(documentationPropertyValue)]="pseudoHovered"
             >
-                Hovered&nbsp;&mdash; установить принудительно извне компонента
+                Visual hovered state
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pseudoPressed"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean | null"
                 [documentationPropertyValues]="pseudoVariants"
                 [(documentationPropertyValue)]="pseudoPressed"
             >
-                Pressed&nbsp;&mdash; установить принудительно извне компонента
+                Visual pseudo state
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="showIcons"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showIcons"
             >
-                Показывать иконки
+                Show icons
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="showLoader"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showLoader"
             >
-                Показывать спиннер. Если одновременно включен показ иконок,
-                приоритет у&nbsp;спиннера
+                Show loader. If icons are also enabled, show loader anyway.
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="singleColor"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="singleColor"
             >
-                Все состояния одного цвета
+                All states have the same color
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер контрола
+                Size
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
