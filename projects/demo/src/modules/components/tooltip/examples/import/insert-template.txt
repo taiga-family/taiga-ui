@@ -1,11 +1,1 @@
-Примеры использования (обратите внимание на связки с фокусируемыми элементами для доступности):
-
-<tui-primitive-textfield nativeId="first_example" [(value)]="value"></tui-primitive-textfield>
-<tui-tooltip describeId="first_example" content="Please don't touch this"></tui-tooltip>
-
-<button tuiButton type="button" tuiDescribedBy="second_example">Нативная кнопка</button>
-<tui-tooltip describeId="second_example" [content]="template"></tui-tooltip>
-
-<ng-template #template>
-    Темплейт для переиспользования
-</ng-template>
+<tui-tooltip content="Please don't touch this" direction="left"></tui-tooltip>
