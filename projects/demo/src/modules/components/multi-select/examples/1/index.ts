@@ -5,12 +5,12 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
 const ITEMS: ReadonlyArray<string> = [
-    'Люк Скайуокер',
-    'Принцесса Лея',
-    'Дарт Вейдер',
-    'Хан Соло',
-    'Оби-Ван Кеноби',
-    'Йода',
+    'Luke Skywalker',
+    'Leia Organa Solo',
+    'Darth Vader',
+    'Han Solo',
+    'Obi-Wan Kenobi',
+    'Yoda',
 ];
 
 @Component({

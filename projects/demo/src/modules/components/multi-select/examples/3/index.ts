@@ -22,18 +22,18 @@ interface Hero {
 })
 export class TuiMultiSelectExample3 {
     readonly items: ReadonlyArray<Hero> = [
-        {id: 1, name: 'Люк Скайуокер'},
-        {id: 2, name: 'Принцесса Лея'},
-        {id: 3, name: 'Дарт Вейдер'},
-        {id: 4, name: 'Хан Соло'},
-        {id: 5, name: 'Оби-Ван Кеноби'},
-        {id: 6, name: 'Йода'},
+        {id: 1, name: 'Luke Skywalker'},
+        {id: 2, name: 'Leia Organa Solo'},
+        {id: 3, name: 'Darth Vader'},
+        {id: 4, name: 'Han Solo'},
+        {id: 5, name: 'Obi-Wan Kenobi'},
+        {id: 6, name: 'Yoda'},
     ];
 
     readonly control = new FormControl([
         {
             id: 4,
-            name: 'Хан Соло',
+            name: 'Han Solo',
         },
     ]);
 

@@ -107,11 +107,11 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiReactiveFi
     dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
 
     readonly items = [
-        new Account('Рублевый', 500),
-        new Account('Долларовый', 500),
-        new Account('Евровый', 500),
-        new Account('Фунтовый', 500),
-        new Account('Юаневый ', 237),
+        new Account('Ruble', 500),
+        new Account('Dollar', 500),
+        new Account('Euro', 500),
+        new Account('Pounds', 500),
+        new Account('Yuan', 237),
     ];
 
     expandable = true;
@@ -158,7 +158,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiReactiveFi
 
     readonly valueContentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContextWithImplicit<ReadonlyArray<unknown>>>
-    > = ['', ({$implicit: {length}}) => `Выбрано: ${length}`];
+    > = ['', ({$implicit: {length}}) => `Selected: ${length}`];
 
     valueContent = this.valueContentVariants[0];
 
@@ -183,6 +183,6 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiReactiveFi
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 
     setValue() {
-        this.control.setValue([new Account('Долларовый', 237)]);
+        this.control.setValue([new Account('Dollar', 237)]);
     }
 }
