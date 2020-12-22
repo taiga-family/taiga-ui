@@ -56,7 +56,7 @@ export class TuiMobileCalendarExample1 {
     }
 
     get date(): string {
-        return this.parsed || 'Выберите дату';
+        return this.parsed || 'Choose a date';
     }
 
     get parsed(): string {
