@@ -111,13 +111,13 @@ export class TuiToolbarComponent {
         {
             size: '5',
             px: 24,
-            family: 'tuiHeading',
+            family: 'var(--tui-heading-font)',
             name: 'Подзаголовок',
         },
         {
             size: '6',
             px: 30,
-            family: 'tuiHeading',
+            family: 'var(--tui-heading-font)',
             name: 'Заголовок',
         },
     ];
