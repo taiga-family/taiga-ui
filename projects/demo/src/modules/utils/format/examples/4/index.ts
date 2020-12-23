@@ -13,7 +13,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiFormatExample4 {
     parametersForm = new FormGroup({
-        value: new FormControl('седов рОмАн андреевич'),
+        value: new FormControl('roman sEdOv'),
     });
 
     get capitalized(): string {
