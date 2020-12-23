@@ -73,7 +73,7 @@ export class ExampleTuiLineDaysChartComponent {
     readonly labels = Array.from({length: 3}, (_, i) => this.months[i]);
 
     readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
-        y => `${(10 * y).toLocaleString('ru-RU', {maximumFractionDigits: 0})} $`,
+        y => `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
     ];
 
     readonly xStringifyVariants: ReadonlyArray<TuiStringHandler<TuiDay>> = [
@@ -87,7 +87,7 @@ export class ExampleTuiLineDaysChartComponent {
         ({$implicit}) =>
             `${this.months[$implicit[0].month]}, ${$implicit[0].day}\n${(
                 10 * $implicit[1]
-            ).toLocaleString('ru-RU', {maximumFractionDigits: 0})} $`,
+            ).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
     ];
 
     yStringify: TuiStringHandler<number> | null = null;
