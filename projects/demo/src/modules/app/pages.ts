@@ -128,7 +128,7 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: 'Avatar',
-        keywords: 'аватар, картинка, изображение, avatar',
+        keywords: 'аватар, image, pic, картинка, изображение, avatar',
         route: '/tui-avatar',
     },
     {
@@ -163,19 +163,21 @@ export const pages: TuiDocPages = [
                 section: $localize`Components`,
                 title: 'Calendar',
                 keywords:
-                    'календарь, форма, день, неделя, месяц, год, дата, calendar, датапикер, datepicker',
+                    'календарь, форма, день, неделя, месяц, год, дата, calendar, датапикер, datepicker' +
+                    'date, day, week, month, year',
                 route: '/tui-calendar',
             },
             {
                 section: $localize`Components`,
                 title: 'CalendarRange',
-                keywords: 'календарь, calendar, даты, период',
+                keywords: 'календарь, calendar, даты, период, day, week, month, year',
                 route: '/tui-calendar-range',
             },
             {
                 section: $localize`Components`,
                 title: 'CalendarMonth',
-                keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
+                keywords:
+                    'поле, инпут, форма, ввод, input, month, месяц, год, дата, day, week, month, year',
                 route: '/tui-calendar-month',
             },
         ],
@@ -184,7 +186,7 @@ export const pages: TuiDocPages = [
         section: $localize`Components`,
         title: 'Card',
         keywords:
-            'карта, карточка, card, visa, mastercard, credit, дебетовая, кредитная, иконка, логотип',
+            'карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип',
         route: '/tui-card',
     },
     {
@@ -255,25 +257,25 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: 'Checkbox',
-                keywords: 'чек, ввод, форма, checkbox',
+                keywords: 'чек, ввод, форма, form, checkbox',
                 route: '/tui-checkbox',
             },
             {
                 section: $localize`Components`,
                 title: 'CheckboxBlock',
-                keywords: 'кнопка, чек, форма, ввод, checkbox, CheckboxBlock',
+                keywords: 'кнопка, чек, форма, form, ввод, checkbox, CheckboxBlock',
                 route: '/tui-checkbox-block',
             },
             {
                 section: $localize`Components`,
                 title: 'CheckboxLabeled',
-                keywords: 'label, чек, форма, ввод, checkbox, checkboxLabeled',
+                keywords: 'label, чек, форма, form, ввод, checkbox, checkboxLabeled',
                 route: '/tui-checkbox-labeled',
             },
             {
                 section: $localize`Components`,
                 title: 'PrimitiveCheckbox',
-                keywords: 'чек, checkbox, внутренние',
+                keywords: 'чек, checkbox, box, внутренние',
                 route: '/tui-primitive-checkbox',
             },
         ],
@@ -293,7 +295,7 @@ export const pages: TuiDocPages = [
                 title: 'DataList',
                 keywords:
                     'контекст, выпадашка, дропдаун, меню, Context, ContextMenu, option,' +
-                    'optGroup, опции, tuiOption, варианты',
+                    'optGroup, опции, tuiOption, варианты, dropdown, menu',
                 route: '/tui-data-list',
             },
             {
@@ -1000,18 +1002,18 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Tools`,
-        title: 'Утилиты',
+        title: $localize`Utils`,
         subPages: [
             {
                 section: $localize`Tools`,
-                title: 'Математические',
+                title: $localize`Math`,
                 keywords: `Инструменты, утилиты, математические, utils, utilits, math,
                            round, clamp, inRange, normalizeToIntNumber, quantize`,
                 route: '/math',
             },
             {
                 section: $localize`Tools`,
-                title: 'Форматирующие',
+                title: $localize`Format`,
                 keywords: `Инструменты, утилиты, форматирующие, format, px, padStart, getCurrencySymbol, capitalize,
                            formatPhone`,
                 route: '/format',
@@ -1026,13 +1028,13 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
-                title: 'Браузер',
+                title: $localize`Browser`,
                 keywords: `Инструменты, утилиты, browser, браузер, firefox, ie, edge, ios, chrome`,
                 route: '/browser',
             },
             {
                 section: $localize`Tools`,
-                title: 'Прочие',
+                title: $localize`Miscellaneous`,
                 keywords: `Инструменты, утилиты, miscellaneous, прочие, assert, isNil, isPresent, flatLength,
                            getPaymentSystem, syncObject`,
                 route: '/miscellaneous',
