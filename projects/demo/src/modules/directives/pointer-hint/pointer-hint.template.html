@@ -1,6 +1,6 @@
 <tui-doc-page i18n-header header="PointerHint" package="CORE">
     <ng-template pageTab>
-        Директива для показа подсказки под курсором
+        <p i18n>A directive to show a hint above the cursor</p>
 
         <tui-doc-example
             id="base"
@@ -15,20 +15,22 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <div
-                tuiPointerHint="'Некоторая информация'"
+                i18n
+                tuiPointerHint="Some information"
                 [tuiHintMode]="mode"
                 [tuiHintDirection]="direction"
             >
-                Блок для отлеживания
+                It is followed inside the block
             </div>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="tuiPointerHint"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent | null"
             >
-                Содержимое тултипа
+                Hint content
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
