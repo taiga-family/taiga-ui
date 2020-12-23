@@ -5,7 +5,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 // @dynamic
 @Component({
     selector: 'example-tui-default-prop-demo',
-    template: 'Значение: {{quantity}}',
+    template: 'Value: {{quantity}}',
     changeDetection,
 })
 export class ExampleTuiDefaultPropDemoComponent {
@@ -15,7 +15,7 @@ export class ExampleTuiDefaultPropDemoComponent {
     @Input()
     @tuiDefaultProp<ExampleTuiDefaultPropDemoComponent, 'quantity'>(
         (quantity, context) => Number.isInteger(quantity) && quantity >= context.min,
-        'Количество должно быть целым конечным числом, больше минимального значения',
+        'Should be ingeter number more than min value',
     )
     quantity = 10;
 }

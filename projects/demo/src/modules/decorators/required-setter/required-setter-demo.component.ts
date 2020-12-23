@@ -15,7 +15,7 @@ export class ExampleTuiRequiredSetterDemoComponent {
     @Input()
     @tuiRequiredSetter<ExampleTuiRequiredSetterDemoComponent, 'quantity'>(
         (quantity, context) => Number.isInteger(quantity) && quantity >= context.min,
-        'Количество должно быть целым конечным числом, больше минимального значения',
+        'Should be ingeter number more than min value',
     )
     set quantity(quantity: number) {
         this.items = new Array(quantity).fill(
