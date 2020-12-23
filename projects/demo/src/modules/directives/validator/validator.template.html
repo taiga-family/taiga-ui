@@ -1,7 +1,9 @@
 <tui-doc-page i18n-header header="Validator" package="CDK">
     <ng-template pageTab>
-        Директива <code>tuiValidator</code> позволяет динамически задавать
-        валидаторы на контролы формы
+        <p i18n>
+            <code>tuiValidator</code> allows set validators for form control on
+            the fly
+        </p>
 
         <tui-doc-example
             id="base"
@@ -16,8 +18,11 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiValidatorModule</code>:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiValidatorModule</code> in the same module where you
+                    want to use our directive:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"

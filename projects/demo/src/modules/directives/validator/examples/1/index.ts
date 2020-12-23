@@ -10,7 +10,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiValidatorExample1 {
-    readonly items = ['Email', 'Телефон'];
+    readonly items = ['Email', 'Phone'];
 
     readonly options = {standalone: true};
 
