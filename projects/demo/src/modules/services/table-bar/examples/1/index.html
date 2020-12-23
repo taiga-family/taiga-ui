@@ -1,5 +1,5 @@
 <button tuiButton type="button" size="m" (click)="showTableBar()">
-    Показать TableBar
+    Show TableBar
 </button>
 
 <ng-template #tableBarTemplate="polymorpheus" polymorpheus let-close>
@@ -13,7 +13,7 @@
             size="m"
             (click)="close()"
         >
-            Отменить
+            Cancel
         </button>
         <button
             tuiButton
@@ -23,7 +23,7 @@
             size="m"
             icon="tuiIconTrashLarge"
         >
-            Удалить
+            Delete
         </button>
     </div>
 </ng-template>
