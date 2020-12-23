@@ -1,6 +1,6 @@
 <tui-doc-page i18n-header header="Ripple" package="ADDON-MOBILE">
     <ng-template pageTab>
-        Директива для «ripple»-эффекта на мобильных устройствах.
+        <p i18n>Directive for «ripple» effect on mobile devices</p>
 
         <tui-doc-example
             id="basic"
@@ -12,11 +12,14 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiRippleModule</code> в модуль вашего компонента:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiRippleModule</code> in the same module where you
+                    want to use our directive:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
