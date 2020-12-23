@@ -1,1 +1,1 @@
-Форматированное число: {{index | tuiFormatNumber}}
+Fomatted number: {{index | tuiFormatNumber}}

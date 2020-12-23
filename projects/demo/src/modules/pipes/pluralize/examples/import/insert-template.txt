@@ -1,1 +1,1 @@
-Показано {{index}} {{index | tuiPluralize: ['результат', 'результаты', 'результатов']}}
+Showed {{index}} {{index | tuiPluralize: ['result', 'results', 'results']}}

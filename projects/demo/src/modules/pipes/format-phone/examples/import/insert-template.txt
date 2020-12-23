@@ -1,3 +1,3 @@
-Форматированный телефон: {{ phone | tuiFormatPhone}}
+Formatted number: {{ phone | tuiFormatPhone}}
 
-Форматированный телефон c параметрами: {{ phone | tuiFormatPhone: 'код страны' : 'маска'}}
+Formatted number with custom params: {{ phone | tuiFormatPhone: 'country code' : 'mask'}}
