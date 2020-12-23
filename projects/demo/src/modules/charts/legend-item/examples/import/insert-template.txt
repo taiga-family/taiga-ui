@@ -1,1 +1,1 @@
-<tui-legend-item [value]="value">Расходы</tui-legend-item>
+<tui-legend-item [value]="value">Content</tui-legend-item>

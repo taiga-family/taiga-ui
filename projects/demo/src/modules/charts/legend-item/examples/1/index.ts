@@ -17,7 +17,7 @@ export class TuiLegendItemExample1 {
     readonly value = [13769, 12367, 10172, 3018, 2592];
     readonly sum = sum(...this.value);
     readonly colorHandler = TUI_DEFAULT_COLOR_HANDLER;
-    readonly labels = ['Супермаркеты', 'Рестораны', 'Распутство', 'Транспорт', 'Другое'];
+    readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'Other'];
 
     isItemActive(index: number): boolean {
         return this.activeItemIndex === index;
