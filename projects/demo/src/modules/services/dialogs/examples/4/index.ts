@@ -22,7 +22,7 @@ export class TuiDialogExampleComponent4 {
 
     onFilterClick() {
         this.filters = true;
-        this.dialogService.open('Попап с фильтрами').subscribe({
+        this.dialogService.open('Dialog with filters').subscribe({
             complete: () => {
                 this.filters = false;
             },

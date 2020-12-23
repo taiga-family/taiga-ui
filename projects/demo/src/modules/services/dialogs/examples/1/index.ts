@@ -14,7 +14,7 @@ import {DialogExampleComponent} from '../../dialog-example/dialog-example.compon
 export class TuiDialogExampleComponent1 {
     private readonly dialog = this.dialogService.open<boolean>(
         new PolymorpheusComponent(DialogExampleComponent, this.injector),
-        {dismissible: true, label: 'Да?'},
+        {dismissible: true, label: 'Yes?'},
     );
 
     constructor(

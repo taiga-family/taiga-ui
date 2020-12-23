@@ -5,17 +5,17 @@
     size="m"
     (click)="ok()"
 >
-    Да
+    Yes
 </button>
-<button tuiButton type="button" size="m" (click)="cancel()">Нет</button>
+<button tuiButton type="button" size="m" (click)="cancel()">No</button>
 <p>
     <button tuiButton type="button" size="m" (click)="showDialog(template)">
-        Показать еще один попап
+        Show one more dialog
     </button>
 </p>
 
 <ng-template #template>
     <div class="dialog">
-        <p>Попап, вызванный с помощью шаблона</p>
+        <p>This one is a template dialog</p>
     </div>
 </ng-template>
