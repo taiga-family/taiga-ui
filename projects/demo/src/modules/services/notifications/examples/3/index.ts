@@ -26,17 +26,16 @@ export class TuiNotificationsExampleComponent3 {
             .showNotification<boolean>(
                 new PolymorpheusComponent(AlertExampleComponent, this.injector),
                 {
-                    label: 'Дилемма',
+                    label: 'Question',
                     status: TuiNotification.Error,
                     autoClose: false,
                 },
             )
             .pipe(
                 switchMap(response =>
-                    notificationsService.showNotification(
-                        'Получено значение — ' + response,
-                        {label: 'Информация.'},
-                    ),
+                    notificationsService.showNotification('Got a value — ' + response, {
+                        label: 'Information',
+                    }),
                 ),
                 takeUntil(router.events),
             );

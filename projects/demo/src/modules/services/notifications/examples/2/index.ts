@@ -30,7 +30,7 @@ export class TuiNotificationsExampleComponent2 {
     showWithdrawAlert() {
         this.notificationsService
             .showNotification(this.withdrawTemplate || '', {
-                label: 'Пример с шаблоном',
+                label: 'A template sample',
                 status: TuiNotification.Warning,
                 autoClose: false,
             })
@@ -40,7 +40,7 @@ export class TuiNotificationsExampleComponent2 {
     showDepositAlert() {
         this.notificationsService
             .showNotification(this.depositTemplate || '', {
-                label: 'Пример с шаблоном',
+                label: 'A template sample',
                 status: TuiNotification.Success,
                 autoClose: false,
             })
