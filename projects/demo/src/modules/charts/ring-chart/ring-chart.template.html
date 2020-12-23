@@ -1,7 +1,5 @@
 <tui-doc-page i18n-header header="RingChart" package="ADDON-CHARTS">
     <ng-template pageTab>
-        Компонент кольцевой диаграммы
-
         <tui-doc-example
             id="sizes"
             i18n-heading
@@ -11,7 +9,12 @@
             <tui-ring-chart-example-1></tui-ring-chart-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="labels" heading="С подписями" [content]="example2">
+        <tui-doc-example
+            id="labels"
+            i18n-heading
+            heading="With labels"
+            [content]="example2"
+        >
             <tui-ring-chart-example-2></tui-ring-chart-example-2>
         </tui-doc-example>
     </ng-template>
@@ -29,15 +32,17 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="activeItemIndex"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="number | null"
                 [documentationPropertyValues]="activeItemIndexVariants"
                 [(documentationPropertyValue)]="activeItemIndex"
             >
-                Выделенный фрагмент
+                Active fragment
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="colorHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiColorHandler"
@@ -47,32 +52,35 @@
                 A function that gets segment index and returns its color
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="content"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent<TuiRingChartContext>"
                 [documentationPropertyValues]="contentVariants"
                 [(documentationPropertyValue)]="content"
             >
-                Контент в середине, в контексте получает индекс активного
-                сегмента и общую сумму
+                Content in the middle of ring. It gets index of active segment
+                and total sum in context
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS | TuiSizeXL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер графика
+                Size
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input"
                 documentationPropertyType="ReadonlyArray<number>"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >
-                Значение
+                Value
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

@@ -10,5 +10,5 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiPieChartExample2 {
     readonly value = [13769, 12367, 10172, 3018, 2592];
-    readonly labels = ['Супермаркеты', 'Рестораны', 'Распутство', 'Транспорт', 'Другое'];
+    readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'Other'];
 }

@@ -13,19 +13,13 @@ export class TuiRingChartExample2 {
     readonly value = [13769, 12367, 10172, 3018, 2592];
 
     private readonly sum = sum(...this.value);
-    private readonly labels = [
-        'Супермаркеты',
-        'Рестораны',
-        'Распутство',
-        'Транспорт',
-        'Другое',
-    ];
+    private readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'other'];
 
     getValue(index: number | null): number {
         return index === null ? this.sum : this.value[index];
     }
 
     getLabel(index: number | null): string {
-        return index === null ? 'Всего' : this.labels[index];
+        return index === null ? 'Total' : this.labels[index];
     }
 }
