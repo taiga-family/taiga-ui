@@ -27,20 +27,18 @@ export const ICONS_PATH = iconsPathFactory('assets/taiga-ui/icons/');
 
 export const APP_PROVIDERS = [
     Title,
-    [
-        {
-            provide: HIGHLIGHT_OPTIONS,
-            useValue: {
-                coreLibraryLoader: () => import('highlight.js/lib/core'),
-                lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
-                languages: {
-                    typescript: () => import('highlight.js/lib/languages/typescript'),
-                    less: () => import('highlight.js/lib/languages/less'),
-                    xml: () => import('highlight.js/lib/languages/xml'),
-                },
+    {
+        provide: HIGHLIGHT_OPTIONS,
+        useValue: {
+            coreLibraryLoader: () => import('highlight.js/lib/core'),
+            lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
+            languages: {
+                typescript: () => import('highlight.js/lib/languages/typescript'),
+                less: () => import('highlight.js/lib/languages/less'),
+                xml: () => import('highlight.js/lib/languages/xml'),
             },
         },
-    ],
+    },
     {
         provide: TUI_SANITIZER,
         useClass: NgDompurifySanitizer,
