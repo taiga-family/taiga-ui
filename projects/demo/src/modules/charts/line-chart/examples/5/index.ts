@@ -14,7 +14,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiLineChartExample5 {
     readonly hint: TuiStringHandler<TuiContextWithImplicit<ReadonlyArray<TuiPoint>>> = ({
         $implicit,
-    }) => `${$implicit[0][0]}шт:\n\n${$implicit.map(([_, y]) => y).join('$\n')}$`;
+    }) => `${$implicit[0][0]} items:\n\n${$implicit.map(([_, y]) => y).join('$\n')}$`;
 
     readonly values = [
         [
