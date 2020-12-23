@@ -28,8 +28,8 @@ export class TuiAxesExample2 {
 
     readonly axisYSecondaryLabels = [
         '',
-        `${this.getMax(this.value) / 2} тыс.`,
-        `${this.getMax(this.value)} тыс.`,
+        `${this.getMax(this.value) / 2} k`,
+        `${this.getMax(this.value)} k`,
     ];
 
     readonly axisXLabels = ['Q1', 'Q2', 'Q3', 'Q4'];

@@ -1,6 +1,6 @@
 <tui-doc-page i18n-header header="Bar" package="ADDON-CHARTS">
     <ng-template pageTab>
-        Компонент столбика для столбчатой диаграммы
+        <p i18n>A bar for bar chart</p>
 
         <tui-doc-example
             id="base"
@@ -11,7 +11,12 @@
             <tui-bar-example-1></tui-bar-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="segments" heading="сегменты" [content]="example2">
+        <tui-doc-example
+            id="segments"
+            i18n-heading
+            heading="Segments"
+            [content]="example2"
+        >
             <tui-bar-example-2></tui-bar-example-2>
         </tui-doc-example>
     </ng-template>
@@ -27,31 +32,34 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="colorHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiColorHandler"
                 [documentationPropertyValues]="colorHandlerVariants"
                 [(documentationPropertyValue)]="colorHandler"
             >
-                Функция, получающая на вход индекс сегмента, и возвращающая цвет
+                A function that gets segment index and returs its color
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS | TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер столбика
+                Size
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input"
                 documentationPropertyType="ReadonlyArray<number>"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >
-                Массив сегментов
+                An array of segments
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
