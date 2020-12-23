@@ -11,9 +11,9 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiAxesExample1 {
-    readonly axisXLabels = ['ЯНВ 2019', 'ФЕВ', 'МАР'];
+    readonly axisXLabels = ['Jan 2019', 'Feb', 'Mar'];
     readonly axisYLabels = ['', '25%', '50%', '75%', '100%'];
-    readonly axisYSecondaryLabels = ['80 тыс.', '100 тыс.', '120 тыс.'];
+    readonly axisYSecondaryLabels = ['80 k', '100 k', '120 k'];
     readonly verticalLinesHandler: TuiLineHandler = (index, total) =>
         index === total - 1 ? TuiLineType.None : TuiLineType.Dashed;
 }

@@ -38,7 +38,7 @@ export class TuiAxesExample2 {
 
     readonly verticalLinesHandler = TUI_ALWAYS_NONE;
 
-    private readonly setNames = ['Симпсоны', 'Смурфы', 'Черепашки Ниндзя', 'Танос'];
+    private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
 
     getPercent(set: [number, number, number, number]): number {
         return (BENJI * Math.max(...set)) / this.getMax(this.value);
