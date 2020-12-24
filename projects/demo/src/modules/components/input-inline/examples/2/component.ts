@@ -31,8 +31,6 @@ export class TuiInputInlineExample2 {
     }
 
     private saveHeading(newHeading: string) {
-        this.notifications
-            .showNotification(newHeading, {label: 'New heading'})
-            .subscribe();
+        this.notifications.show(newHeading, {label: 'New heading'}).subscribe();
     }
 }

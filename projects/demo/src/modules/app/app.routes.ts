@@ -1,8 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {GettingStartedComponent} from './getting-started/getting-started.component';
+import {LandingComponent} from './landing/landing.component';
 
 const ROUTES = [
+    {
+        path: '',
+        component: LandingComponent,
+        data: {
+            title: 'A powerful set of open source components for Angular',
+        },
+    },
     {
         path: 'getting-started',
         component: GettingStartedComponent,
@@ -1373,7 +1381,7 @@ const ROUTES = [
             title: 'Miscellaneous',
         },
     },
-    {path: '**', redirectTo: 'getting-started'},
+    {path: '**', redirectTo: ''},
 ];
 
 @NgModule({

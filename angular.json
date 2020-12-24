@@ -478,7 +478,7 @@
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
                         "aot": true,
-                        "outputPath": "dist/demo",
+                        "outputPath": "dist/demo/browser",
                         "index": "projects/demo/src/index.html",
                         "main": "projects/demo/src/main.browser.ts",
                         "polyfills": "projects/demo/src/polyfills.ts",
@@ -491,7 +491,7 @@
                             },
                             {
                                 "glob": "**/*",
-                                "input": "projects/icons/src/icons/src",
+                                "input": "projects/icons/src",
                                 "output": "assets/taiga-ui/icons"
                             }
                         ],
@@ -502,7 +502,10 @@
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         },
-                        "scripts": ["node_modules/marked/lib/marked.js"],
+                        "scripts": [
+                            "node_modules/prismjs/prism.js",
+                            "node_modules/marked/lib/marked.js"
+                        ],
                         "es5BrowserSupport": true
                     },
                     "configurations": {
@@ -610,8 +613,8 @@
                 "server": {
                     "builder": "@angular-devkit/build-angular:server",
                     "options": {
-                        "outputPath": "dist/server",
-                        "main": "projects/demo/src/main.server.ts",
+                        "outputPath": "dist/demo/server",
+                        "main": "projects/demo/server.ts",
                         "tsConfig": "projects/demo/tsconfig.server.json",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
@@ -619,14 +622,34 @@
                     },
                     "configurations": {
                         "production": {
-                            "fileReplacements": [
-                                {
-                                    "replace": "projects/demo/src/environments/environment.ts",
-                                    "with": "projects/demo/src/environments/environment.prod.ts"
-                                }
-                            ],
+                            "outputHashing": "media",
+                            "sourceMap": false,
                             "optimization": true
                         }
+                    }
+                },
+                "serve-ssr": {
+                    "builder": "@nguniversal/builders:ssr-dev-server",
+                    "options": {
+                        "browserTarget": "demo:build",
+                        "serverTarget": "demo:server"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "demo:build:production",
+                            "serverTarget": "demo:server:production"
+                        }
+                    }
+                },
+                "prerender": {
+                    "builder": "@nguniversal/builders:prerender",
+                    "options": {
+                        "browserTarget": "demo:build:production",
+                        "serverTarget": "demo:server:production",
+                        "routes": ["/"]
+                    },
+                    "configurations": {
+                        "production": {}
                     }
                 },
                 "extract-i18n": {

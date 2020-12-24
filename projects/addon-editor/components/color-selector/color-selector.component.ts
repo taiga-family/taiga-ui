@@ -144,7 +144,7 @@ export class TuiColorSelectorComponent {
         this.updateColor(this.getGradient(this.direction));
     }
 
-    onStopsChange(stopsKeys: ReadonlyArray<number>) {
+    onStopsChange(stopsKeys: readonly number[]) {
         const removed = this.stopsKeys.find(item => stopsKeys.indexOf(item) === -1);
         const added = stopsKeys.find(item => this.stopsKeys.indexOf(item) === -1);
 

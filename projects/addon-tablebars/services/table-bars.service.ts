@@ -13,32 +13,18 @@ const NO_HOST =
     providedIn: 'root',
 })
 export class TuiTableBarsService {
-    /** @internal */
-    readonly open$ = new Subject<TableBar>();
+    readonly bar$ = new Subject<TableBar | null>();
 
-    /** @internal */
-    readonly close$ = new Subject<TableBar>();
+    open(content: PolymorpheusContent, options?: TuiTableBarOptions): Observable<never> {
+        tuiAssert.assert(!!this.bar$.observers.length, NO_HOST);
 
-    showTableBar(
-        content: PolymorpheusContent,
-        options?: TuiTableBarOptions,
-    ): Observable<never> {
-        tuiAssert.assert(!!this.open$.observers.length, NO_HOST);
-
-        return this.createTableBar(content, options);
-    }
-
-    private createTableBar(
-        content: PolymorpheusContent,
-        options?: TuiTableBarOptions,
-    ): Observable<never> {
         return new Observable(observer => {
             const tableBar = new TableBar(observer, content, options);
 
-            this.open$.next(tableBar);
+            this.bar$.next(tableBar);
 
             return () => {
-                this.close$.next(tableBar);
+                this.bar$.next(null);
             };
         });
     }

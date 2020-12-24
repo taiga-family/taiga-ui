@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    ElementRef,
     Inject,
     Input,
     QueryList,
@@ -36,9 +35,8 @@ export class TuiDocPageComponent {
 
     constructor(
         @Attribute('deprecated') readonly deprecated: string | null,
-        @Inject(ElementRef) readonly elementRef: ElementRef,
-        @Inject(TUI_DOC_DEFAULT_TABS) readonly defaultTabs: ReadonlyArray<string>,
-        @Inject(PAGE_SEE_ALSO) readonly seeAlso: ReadonlyArray<string>,
+        @Inject(TUI_DOC_DEFAULT_TABS) readonly defaultTabs: readonly string[],
+        @Inject(PAGE_SEE_ALSO) readonly seeAlso: readonly string[],
     ) {}
 
     get showSeeAlso(): boolean {

@@ -37,23 +37,23 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiReactiveFi
 
     readonly control = new FormControl();
 
-    readonly minVariants: ReadonlyArray<number> = [0, 1, 5, 7.77, -10];
+    readonly minVariants: readonly number[] = [0, 1, 5, 7.77, -10];
 
     min = this.minVariants[0];
 
-    readonly maxVariants: ReadonlyArray<number> = [10, 100, 10000];
+    readonly maxVariants: readonly number[] = [10, 100, 10000];
 
     max = this.maxVariants[0];
 
-    readonly segmentsVariants: ReadonlyArray<number> = [0, 1, 5, 13];
+    readonly segmentsVariants: readonly number[] = [0, 1, 5, 13];
 
     segments = this.segmentsVariants[0];
 
-    readonly stepsVariants: ReadonlyArray<number> = [0, 4, 10];
+    readonly stepsVariants: readonly number[] = [0, 4, 10];
 
     steps = this.stepsVariants[0];
 
-    readonly quantumVariants: ReadonlyArray<number> = [1, 0.01, 10, 100];
+    readonly quantumVariants: readonly number[] = [1, 0.01, 10, 100];
 
     quantum = this.quantumVariants[0];
 
@@ -71,15 +71,15 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiReactiveFi
 
     segmentsPluralize = null;
 
-    readonly secondaryVariants: ReadonlyArray<string> = ['getter процентов', 'условно'];
+    readonly secondaryVariants: readonly string[] = ['getter процентов', 'условно'];
 
     secondarySelected = null;
 
-    readonly minLabelVariants: ReadonlyArray<string> = ['', 'Ничего'];
+    readonly minLabelVariants: readonly string[] = ['', 'Ничего'];
 
     minLabel = this.minLabelVariants[0];
 
-    readonly maxLabelVariants: ReadonlyArray<string> = ['', 'Всё'];
+    readonly maxLabelVariants: readonly string[] = ['', 'Всё'];
 
     maxLabel = this.maxLabelVariants[0];
 

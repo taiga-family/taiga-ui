@@ -13,7 +13,7 @@ export const YEARLY_CYCLE = 28;
 export const ANDROID_CYCLE = getCycle(ANDROID_LABEL, ANDROID_WEEK);
 export const IOS_CYCLE = getCycle(IOS_LABEL, IOS_WEEK);
 
-function getCycle(label: number, week: number): ReadonlyArray<ReadonlyArray<number>> {
+function getCycle(label: number, week: number): ReadonlyArray<readonly number[]> {
     return Array.from({length: YEARLY_CYCLE}, (_, i) =>
         Array.from(
             {length: MONTHS_IN_YEAR},

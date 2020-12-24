@@ -1,7 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {Subscription} from 'rxjs';
+import {timer} from 'rxjs';
+import {skip, take, takeUntil} from 'rxjs/operators';
 import {TuiNotificationsModule} from '../../notifications.module';
 import {TuiNotificationsService} from '../../notifications.service';
 import {TuiNotificationsHostComponent} from '../notifications-host.component';
@@ -19,7 +20,6 @@ describe('NotificationsHost', () => {
     let testComponent: TestComponent;
     let component: TuiNotificationsHostComponent;
     let service: TuiNotificationsService;
-    let subscription: Subscription;
 
     const label = 'Breaking news!';
 
@@ -37,23 +37,24 @@ describe('NotificationsHost', () => {
         service = TestBed.inject(TuiNotificationsService);
     });
 
-    beforeEach(() => {
-        subscription = service.showNotification(label, {label}).subscribe();
+    it('Listens to its notification service', done => {
+        component.service.items$.pipe(skip(1), take(1)).subscribe(items => {
+            expect(items[0].label).toBe(label);
+            done();
+        });
+
+        service.show(label, {label}).pipe(take(1)).subscribe();
     });
 
-    it('Слушает сервис для добавления нотификаций', () => {
-        expect(component.items$.value[0].label).toBe(label);
-    });
+    it('Removes item after unsubscribe', done => {
+        component.service.items$.pipe(skip(2), take(1)).subscribe(items => {
+            expect(items.length).toBe(0);
+            done();
+        });
 
-    it('Нотификации удаляются', () => {
-        (component as any).removeItem(component.items$.value[0]);
-
-        expect(component.items$.value.length).toBe(0);
-    });
-
-    it('Нотификации удаляются по unsubscribe', () => {
-        subscription.unsubscribe();
-
-        expect(component.items$.value.length).toBe(0);
+        service
+            .show(label, {label})
+            .pipe(takeUntil(timer(1)))
+            .subscribe();
     });
 });

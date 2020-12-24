@@ -37,23 +37,23 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiReactiveFie
 
     control = new FormControl();
 
-    minVariants: ReadonlyArray<number> = [0, 5, 7.77, -10];
+    minVariants: readonly number[] = [0, 5, 7.77, -10];
 
     min = this.minVariants[0];
 
-    maxVariants: ReadonlyArray<number> = [10, 100, 10000];
+    maxVariants: readonly number[] = [10, 100, 10000];
 
     max = this.maxVariants[0];
 
-    segmentsVariants: ReadonlyArray<number> = [0, 1, 5, 13];
+    segmentsVariants: readonly number[] = [0, 1, 5, 13];
 
     segments = this.segmentsVariants[0];
 
-    stepsVariants: ReadonlyArray<number> = [0, 4, 10];
+    stepsVariants: readonly number[] = [0, 4, 10];
 
     steps = this.stepsVariants[0];
 
-    quantumVariants: ReadonlyArray<number> = [1, 10, 100];
+    quantumVariants: readonly number[] = [1, 10, 100];
 
     quantum = this.quantumVariants[0];
 
@@ -71,11 +71,11 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiReactiveFie
 
     segmentsPluralize = null;
 
-    minLabelVariants: ReadonlyArray<string> = ['', 'Ничего'];
+    minLabelVariants: readonly string[] = ['', 'Ничего'];
 
     minLabel = this.minLabelVariants[0];
 
-    maxLabelVariants: ReadonlyArray<string> = ['', 'Всё'];
+    maxLabelVariants: readonly string[] = ['', 'Всё'];
 
     maxLabel = this.maxLabelVariants[0];
 

@@ -42,7 +42,7 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiReactiveFiel
 
     readonly control = new FormControl('', Validators.required);
 
-    readonly maxLengthVariants: ReadonlyArray<number> = [10];
+    readonly maxLengthVariants: readonly number[] = [10];
 
     readonly autocompleteVariants = [
         'off',

@@ -10,7 +10,6 @@
         content: '';
         background: fade(#000, 38%);
         animation: tuiFadeIn 0.3s;
-        transition: opacity 0.3s;
     }
 
     &:before {
@@ -25,6 +24,7 @@
     &.ng-animating:before,
     &.ng-animating:after {
         opacity: 0;
+        transition: opacity 0.3s;
     }
 
     &.right {

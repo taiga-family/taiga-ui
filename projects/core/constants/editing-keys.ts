@@ -1,4 +1,4 @@
-export const tuiEditingKeys: ReadonlyArray<string> = [
+export const tuiEditingKeys: readonly string[] = [
     'Spacebar',
     'Backspace',
     'Delete',

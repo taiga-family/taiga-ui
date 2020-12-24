@@ -24,5 +24,5 @@ export class TuiDataListGroupWrapperComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    labels: ReadonlyArray<string> = [];
+    labels: readonly string[] = [];
 }

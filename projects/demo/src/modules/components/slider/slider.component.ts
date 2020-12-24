@@ -53,13 +53,13 @@ export class ExampleTuiSliderComponent {
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
     size: TuiSizeS = this.sizeVariants[1];
-    readonly minVariants: ReadonlyArray<number> = [0, 1, 5, 7.77, 5000];
+    readonly minVariants: readonly number[] = [0, 1, 5, 7.77, 5000];
     min = this.minVariants[0];
-    readonly maxVariants: ReadonlyArray<number> = [10, 100, 10000, 1000000];
+    readonly maxVariants: readonly number[] = [10, 100, 10000, 1000000];
     max = this.maxVariants[0];
-    readonly segmentsVariants: ReadonlyArray<number> = [0, 1, 3, 5, 13];
+    readonly segmentsVariants: readonly number[] = [0, 1, 3, 5, 13];
     segments = this.segmentsVariants[0];
-    readonly stepsVariants: ReadonlyArray<number> = [0, 3, 4, 10];
+    readonly stepsVariants: readonly number[] = [0, 3, 4, 10];
     steps = this.stepsVariants[0];
     readonly pluralizeVariants: ReadonlyArray<TuiPluralize> = [
         ['год', 'года', 'лет'],

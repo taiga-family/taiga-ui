@@ -23,7 +23,7 @@ export class TuiNotificationsExampleComponent3 {
         @Inject(Injector) private injector: Injector,
     ) {
         this.notification = notificationsService
-            .showNotification<boolean>(
+            .show<boolean>(
                 new PolymorpheusComponent(AlertExampleComponent, this.injector),
                 {
                     label: 'Question',
@@ -33,7 +33,7 @@ export class TuiNotificationsExampleComponent3 {
             )
             .pipe(
                 switchMap(response =>
-                    notificationsService.showNotification('Got a value — ' + response, {
+                    notificationsService.show('Got a value — ' + response, {
                         label: 'Information',
                     }),
                 ),

@@ -25,7 +25,7 @@ export class TuiMobileCalendarExample1 {
     constructor(
         @Inject(TuiDialogService) dialogService: TuiDialogService,
         @Inject(Injector) injector: Injector,
-        @Inject(TUI_MONTHS) private readonly months: ReadonlyArray<string>,
+        @Inject(TUI_MONTHS) private readonly months: readonly string[],
     ) {
         const dataStream = tuiReplayedValueChangesFrom(this.control);
         const computedInjector = Injector.create({

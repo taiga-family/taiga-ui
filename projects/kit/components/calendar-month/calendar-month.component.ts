@@ -78,7 +78,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     hoveredItem: TuiMonth | null = null;
     pressedItem: TuiMonth | null = null;
 
-    constructor(@Inject(TUI_CALENDAR_MONTHS) readonly months: ReadonlyArray<string>) {}
+    constructor(@Inject(TUI_CALENDAR_MONTHS) readonly months: readonly string[]) {}
 
     @HostBinding('class._single')
     get isSingle(): boolean {

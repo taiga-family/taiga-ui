@@ -70,7 +70,7 @@ describe('TuiPaginationComponent', () => {
         fixture.detectChanges();
     }
 
-    function getElements(): ReadonlyArray<number> {
+    function getElements(): readonly number[] {
         return pageObject
             .getAllByAutomationId(`${testContext.prefix}element`)
             .map<number>(({nativeElement}) => {

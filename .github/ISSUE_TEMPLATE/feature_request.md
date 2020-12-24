@@ -3,7 +3,7 @@ name: 🚀 Feature request
 about: Suggest an idea for this project
 title: '[FEATURE]'
 labels: ''
-assignees: waterplea
+assignees: waterplea, MarsiBarsi
 ---
 
 # 🚀 Feature request

@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
 import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
-import {sum, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 const PERCENT = 100;
-const EMPTY_ARRAY: ReadonlyArray<number> = [];
-const FILLER_ARRAY: ReadonlyArray<number> = [1];
+const EMPTY_ARRAY: readonly number[] = [];
+const FILLER_ARRAY: readonly number[] = [1];
 
 @Component({
     selector: 'tui-bar-set',
@@ -17,7 +17,7 @@ const FILLER_ARRAY: ReadonlyArray<number> = [1];
 export class TuiBarSetComponent {
     @Input()
     @tuiDefaultProp()
-    value: ReadonlyArray<number> = [];
+    value: readonly number[] = [];
 
     @Input()
     @tuiDefaultProp()
@@ -31,11 +31,11 @@ export class TuiBarSetComponent {
     @tuiDefaultProp()
     collapsed = false;
 
-    get computedValue(): ReadonlyArray<number> {
+    get computedValue(): readonly number[] {
         return this.collapsed ? FILLER_ARRAY : this.value;
     }
 
-    get computedSegments(): ReadonlyArray<number> {
+    get computedSegments(): readonly number[] {
         return this.collapsed ? this.value : EMPTY_ARRAY;
     }
 
@@ -43,25 +43,12 @@ export class TuiBarSetComponent {
         return this.size || 'm';
     }
 
-    get sum(): number {
-        return this.getSum(this.value);
-    }
-
-    get largest(): number {
-        return this.getLargest(this.computedValue);
-    }
-
     getHeight(value: number): number {
-        return Math.abs((PERCENT * value) / this.largest);
+        return Math.abs((PERCENT * value) / this.getLargest(this.computedValue));
     }
 
     @tuiPure
-    private getSum(value: ReadonlyArray<number>): number {
-        return sum(...value);
-    }
-
-    @tuiPure
-    private getLargest(value: ReadonlyArray<number>): number {
+    private getLargest(value: readonly number[]): number {
         return value.reduce((a, b) => (a > b ? a : b), 0);
     }
 }

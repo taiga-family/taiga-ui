@@ -8,7 +8,7 @@ import {TUI_DOC_TITLE} from '../../tokens/title';
 import {TuiDocPages} from '../../types/pages';
 
 export const NAVIGATION_TITLE = new InjectionToken<Observable<string>>('Page title');
-export const NAVIGATION_LABELS = new InjectionToken<ReadonlyArray<string>>(
+export const NAVIGATION_LABELS = new InjectionToken<readonly string[]>(
     'Navigation sections labels for search',
 );
 export const NAVIGATION_ITEMS: InjectionToken<
@@ -50,7 +50,7 @@ export function titleProviderFactory(
     );
 }
 
-export function labelsProviderFactory(pages: TuiDocPages): ReadonlyArray<string> {
+export function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
     return pages
         .map(({section}) => section)
         .filter((item, index, array) => array.indexOf(item) === index);

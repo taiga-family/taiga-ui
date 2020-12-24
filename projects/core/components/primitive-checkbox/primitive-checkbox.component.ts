@@ -40,7 +40,7 @@ export class TuiPrimitiveCheckboxComponent {
     value: boolean | null = false;
 
     get appearance(): TuiAppearance {
-        return !this.empty ? TuiAppearance.Primary : TuiAppearance.Secondary;
+        return !this.empty ? TuiAppearance.Primary : TuiAppearance.Outline;
     }
 
     get empty(): boolean {

@@ -9,13 +9,15 @@ import {
     TuiThemeIosModule,
 } from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
-import {TuiDialogModule} from '@taiga-ui/core';
+import {TuiDialogModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {MarkdownModule} from 'ngx-markdown';
 import {AppComponent} from './app.component';
 import {APP_PROVIDERS} from './app.providers';
 import {AppRoutingModule} from './app.routes';
 import {GettingStartedModule} from './getting-started/getting-started.module';
 import {HomeModule} from './home/home.module';
+import {LandingModule} from './landing/landing.module';
+import {LogoModule} from './logo/logo.module';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -30,8 +32,12 @@ import {HomeModule} from './home/home.module';
         TuiThemeIosModule,
         TuiDialogModule,
         TuiMobileDialogModule,
+        TuiModeModule,
+        TuiLinkModule,
         GettingStartedModule,
         HomeModule,
+        LandingModule,
+        LogoModule,
         HttpClientModule,
         MarkdownModule.forRoot({
             loader: HttpClient,

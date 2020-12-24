@@ -29,7 +29,7 @@ export class TuiNotificationsExampleComponent2 {
 
     showWithdrawAlert() {
         this.notificationsService
-            .showNotification(this.withdrawTemplate || '', {
+            .show(this.withdrawTemplate || '', {
                 label: 'A template sample',
                 status: TuiNotification.Warning,
                 autoClose: false,
@@ -39,7 +39,7 @@ export class TuiNotificationsExampleComponent2 {
 
     showDepositAlert() {
         this.notificationsService
-            .showNotification(this.depositTemplate || '', {
+            .show(this.depositTemplate || '', {
                 label: 'A template sample',
                 status: TuiNotification.Success,
                 autoClose: false,

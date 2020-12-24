@@ -105,9 +105,7 @@ export class TuiInputFileExample3 {
         const removed = getRemoved(this.files, files);
 
         if (removed) {
-            this.notificationsService
-                .showNotification(`"${removed.name}" was removed`)
-                .subscribe();
+            this.notificationsService.show(`"${removed.name}" was removed`).subscribe();
         }
     }
 

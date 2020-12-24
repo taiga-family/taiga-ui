@@ -50,7 +50,7 @@ export class TuiDocExampleComponent {
         return this.tabs[this.activeItemIndex];
     }
 
-    get tabs(): ReadonlyArray<string> {
+    get tabs(): readonly string[] {
         return this.getTabs(this.content);
     }
 
@@ -65,7 +65,7 @@ export class TuiDocExampleComponent {
     }
 
     @tuiPure
-    private getTabs(content: Record<string, string>): ReadonlyArray<string> {
+    private getTabs(content: Record<string, string>): readonly string[] {
         return [this.defaultTab, ...Object.keys(content)];
     }
 
@@ -80,7 +80,7 @@ export class TuiDocExampleComponent {
         this.clipboardCopyService.copyToClipboard(url);
 
         this.notifications
-            .showNotification(this.texts[1], {
+            .show(this.texts[1], {
                 label: this.texts[2],
                 status: TuiNotification.Success,
             })

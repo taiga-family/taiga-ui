@@ -111,19 +111,19 @@ export class TuiToolbarComponent {
         {
             size: '5',
             px: 24,
-            family: 'tuiHeading',
+            family: 'var(--tui-heading-font)',
             name: 'Подзаголовок',
         },
         {
             size: '6',
             px: 30,
-            family: 'tuiHeading',
+            family: 'var(--tui-heading-font)',
             name: 'Заголовок',
         },
     ];
 
     // TODO: i18n
-    readonly codesOptions: ReadonlyArray<string> = ['Код в тексте', 'Код в блоке'];
+    readonly codesOptions: readonly string[] = ['Код в тексте', 'Код в блоке'];
 
     @ViewChildren('button')
     private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;

@@ -1,29 +1,26 @@
-<!-- @bad TODO: figure out why we need two separate streams to kick change detection -->
-<ng-container *tuiLet="hasVerticalBar$ | async as vertical">
-    <ng-container *tuiLet="hasHorizontalBar$ | async as horizontal">
+<ng-container *tuiLet="refresh$ | async as bars">
+    <div
+        *ngIf="bars[0]"
+        class="bar bar_vertical"
+        [class.bar_has-horizontal]="bars[1]"
+        [@tuiFadeIn]
+    >
         <div
-            *ngIf="vertical"
-            class="bar bar_vertical"
-            [class.bar_has-horizontal]="horizontal"
-            [@tuiFadeIn]
-        >
-            <div
-                tuiScrollbar="vertical"
-                class="thumb"
-                [class.thumb_light]="isLight"
-            ></div>
-        </div>
+            tuiScrollbar="vertical"
+            class="thumb"
+            [class.thumb_light]="isLight"
+        ></div>
+    </div>
+    <div
+        *ngIf="bars[1]"
+        class="bar bar_horizontal"
+        [class.bar_has-vertical]="bars[0]"
+        [@tuiFadeIn]
+    >
         <div
-            *ngIf="horizontal"
-            class="bar bar_horizontal"
-            [class.bar_has-vertical]="vertical"
-            [@tuiFadeIn]
-        >
-            <div
-                tuiScrollbar="horizontal"
-                class="thumb"
-                [class.thumb_light]="isLight"
-            ></div>
-        </div>
-    </ng-container>
+            tuiScrollbar="horizontal"
+            class="thumb"
+            [class.thumb_light]="isLight"
+        ></div>
+    </div>
 </ng-container>

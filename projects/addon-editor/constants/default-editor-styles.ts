@@ -127,7 +127,7 @@ body.tui-editor-socket {
 .tui-editor-socket font[size='7'] {
     display: block;
     margin: 32px 0 16px;
-    font-family: tuiHeading, 'Manrope', sans-serif;
+    font-family: var(--tui-heading-font);
 }
 
 .tui-editor-socket font[size='5'] {

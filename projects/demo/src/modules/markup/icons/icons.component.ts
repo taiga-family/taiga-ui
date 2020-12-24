@@ -51,7 +51,7 @@ export const TUI_ADDITIONAL_ICONS = new InjectionToken<AdditionalIcons>(
 
 export interface AdditionalIcons {
     package: string;
-    icons: ReadonlyArray<string>;
+    icons: readonly string[];
 }
 
 @Component({
@@ -61,15 +61,15 @@ export interface AdditionalIcons {
     changeDetection,
 })
 export class IconsComponent {
-    icons: ReadonlyArray<string>;
+    icons: readonly string[];
 
-    assets: ReadonlyArray<string> = [];
+    assets: readonly string[] = [];
 
-    iconsToolbar: ReadonlyArray<string> = [];
+    iconsToolbar: readonly string[] = [];
 
-    iconsLarge: ReadonlyArray<string> = [];
+    iconsLarge: readonly string[] = [];
 
-    logos: ReadonlyArray<string> = [];
+    logos: readonly string[] = [];
 
     search = '';
 
@@ -125,7 +125,7 @@ export class IconsComponent {
         this.clipboardCopyService.copyToClipboard(name);
 
         this.notifications
-            .showNotification(`Имя ${name} скопировано`, {
+            .show(`Имя ${name} скопировано`, {
                 status: TuiNotification.Success,
             })
             .subscribe();

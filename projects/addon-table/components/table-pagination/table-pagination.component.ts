@@ -12,7 +12,7 @@ import {TUI_SPIN_TEXTS} from '@taiga-ui/core';
 export class TuiTablePaginationComponent {
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<number> = [10, 20, 50, 100];
+    items: readonly number[] = [10, 20, 50, 100];
 
     @Input()
     @tuiDefaultProp()

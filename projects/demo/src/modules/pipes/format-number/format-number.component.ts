@@ -28,6 +28,6 @@ export class ExampleTuiFormatNumberComponent {
     readonly decimalLimitVariants = [0, 2, 4];
     decimalLimit = null;
 
-    readonly decimalSeparatorVariants: ReadonlyArray<string> = [',', '.', '/'];
+    readonly decimalSeparatorVariants: readonly string[] = [',', '.', '/'];
     decimalSeparator = this.decimalSeparatorVariants[0];
 }

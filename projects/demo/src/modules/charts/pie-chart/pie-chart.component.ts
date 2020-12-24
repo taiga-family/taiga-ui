@@ -47,9 +47,9 @@ export class ExampleTuiPieChartComponent {
 
     value = this.valueVariants[0];
 
-    readonly activeItemIndexVariants = [0, 1, 2];
+    readonly activeItemIndexVariants = [NaN, 0, 1, 2];
 
-    activeItemIndex = null;
+    activeItemIndex = this.activeItemIndexVariants[0];
 
     readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXL> = [
         'xs',
@@ -71,11 +71,12 @@ export class ExampleTuiPieChartComponent {
     readonly contentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContextWithImplicit<number>>
     > = [
+        '',
         ({$implicit}) => this.getPercent($implicit),
         ({$implicit}) => this.format($implicit),
     ];
 
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> | null = null;
+    hintContent = this.contentVariants[0];
 
     getPercent(index: number): string {
         return `${round((100 * this.value[index]) / sum(...this.value), 2)} %`;

@@ -23,10 +23,10 @@ enum Department {
 export class TuiFilterExample4 {
     readonly items = Object.values(Department);
 
-    readonly filters$ = new BehaviorSubject<ReadonlyArray<string>>([]);
+    readonly filters$ = new BehaviorSubject<readonly string[]>([]);
 
     @tuiPure
-    get model$(): Observable<ReadonlyArray<string>> {
+    get model$(): Observable<readonly string[]> {
         return this.filters$.pipe(
             map(value => (value.length === this.items.length ? [] : value)),
         );
@@ -43,7 +43,7 @@ export class TuiFilterExample4 {
         );
     }
 
-    onModelChange(model: ReadonlyArray<string>) {
+    onModelChange(model: readonly string[]) {
         this.filters$.next(model);
     }
 
