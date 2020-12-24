@@ -16,13 +16,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
-import {
-    tuiIconElectron,
-    tuiIconMaestro,
-    tuiIconMastercard,
-    tuiIconMir,
-    tuiIconVisa,
-} from '@taiga-ui/addon-commerce/icons';
 import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
 import {
     TUI_CARD_EXPIRY_TEXTS,
@@ -47,7 +40,6 @@ import {
     TuiFocusableElementAccessor,
     tuiPure,
     tuiRequiredSetter,
-    typedFromEvent,
 } from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
@@ -57,14 +49,13 @@ import {
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 
 const icons = {
-    [TuiPaymentSystem.Mir]: tuiIconMir,
-    [TuiPaymentSystem.Visa]: tuiIconVisa,
-    [TuiPaymentSystem.Electron]: tuiIconElectron,
-    [TuiPaymentSystem.Mastercard]: tuiIconMastercard,
-    [TuiPaymentSystem.Maestro]: tuiIconMaestro,
+    [TuiPaymentSystem.Mir]: 'tuiIconMir',
+    [TuiPaymentSystem.Visa]: 'tuiIconVisa',
+    [TuiPaymentSystem.Electron]: 'tuiIconElectron',
+    [TuiPaymentSystem.Mastercard]: 'tuiIconMastercard',
+    [TuiPaymentSystem.Maestro]: 'tuiIconMaestro',
 };
 
 // @dynamic
@@ -165,8 +156,6 @@ export class TuiInputCardGroupedComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_IS_MOBILE) isMobile: boolean,
-        @Inject(TuiDestroyService)
-        destroy$: TuiDestroyService,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_CARD_NUMBER_TEXTS) readonly cardNumberTexts: [string, string],
@@ -179,13 +168,6 @@ export class TuiInputCardGroupedComponent
         mode$.subscribe(mode => {
             this.mode = mode;
         });
-
-        // Prevent scrolling when focusing hidden field with Tab
-        typedFromEvent(this.elementRef.nativeElement, 'scroll')
-            .pipe(takeUntil(destroy$))
-            .subscribe(() => {
-                this.elementRef.nativeElement.scrollLeft = 0;
-            });
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

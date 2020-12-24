@@ -43,7 +43,7 @@ export class ExampleTuiLoaderComponent {
         HTML: example3Html,
     };
 
-    showLoader = false;
+    showLoader = true;
 
     inheritColor = false;
 

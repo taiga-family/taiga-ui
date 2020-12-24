@@ -45,7 +45,7 @@ describe('Card', () => {
 
             fixture.detectChanges();
 
-            expect(testComponent.component.paymentSystemLogo).toMatch(/<svg/);
+            expect(testComponent.component.paymentSystemLogo).toBe('tuiIconVisa');
         });
 
         it('returns empty string if paymentSystem is not inputed', () => {
