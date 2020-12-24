@@ -20,14 +20,14 @@ const DEFAULT_STEPS: ReadonlyArray<[number, [number, number, number, number]]> =
     [1, [255, 255, 255, 1]],
 ];
 const ICONS: Record<TuiGradientDirection, string> = {
-    'to top right': 'tuiIconArrowLongUpRight',
-    'to right': 'tuiIconArrowLongRight',
-    'to bottom right': 'tuiIconArrowLongDownRight',
-    'to bottom': 'tuiIconArrowLongDown',
-    'to bottom left': 'tuiIconArrowLongDownLeft',
-    'to left': 'tuiIconArrowLongLeft',
-    'to top left': 'tuiIconArrowLongUpLeft',
-    'to top': 'tuiIconArrowLongUp',
+    'to top right': 'tuiIconArrowUpRight',
+    'to right': 'tuiIconArrowRight',
+    'to bottom right': 'tuiIconArrowDownRight',
+    'to bottom': 'tuiIconArrowDown',
+    'to bottom left': 'tuiIconArrowDownLeft',
+    'to left': 'tuiIconArrowLeft',
+    'to top left': 'tuiIconArrowUpLeft',
+    'to top': 'tuiIconArrowUp',
 };
 
 // @dynamic

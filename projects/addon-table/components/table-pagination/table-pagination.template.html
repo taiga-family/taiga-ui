@@ -1,6 +1,6 @@
-<span class="pages"
-    >{{texts.pages}} <strong class="strong">{{pages}}</strong></span
->
+<span class="pages">
+    {{texts.pages}} <strong class="strong">{{pages}}</strong>
+</span>
 <span>
     {{texts.linesPerPage}}
     <tui-hosted-dropdown [content]="content" [(open)]="open">
@@ -31,7 +31,7 @@
     class="tui-space_left-6 tui-space_right-1"
     size="xs"
     appearance="icon"
-    icon="tuiIconArrowLeft"
+    icon="tuiIconChevronLeft"
     [disabled]="leftDisabled"
     [title]="spinTexts[0]"
     (click)="back()"
@@ -41,7 +41,7 @@
     type="button"
     size="xs"
     appearance="icon"
-    icon="tuiIconArrowRight"
+    icon="tuiIconChevronRight"
     [disabled]="rightDisabled"
     [title]="spinTexts[1]"
     (click)="forth()"

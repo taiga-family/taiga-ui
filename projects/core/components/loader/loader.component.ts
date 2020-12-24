@@ -56,7 +56,7 @@ export class TuiLoaderComponent {
     }
 
     @HostBinding('class._loading')
-    loading = false;
+    loading = true;
 
     @HostBinding('class._animated-with-js')
     animatedWithJs = isEdgeOlderThan(17, this.userAgent) || isIE(this.userAgent);

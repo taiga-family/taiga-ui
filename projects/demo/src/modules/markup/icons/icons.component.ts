@@ -4,46 +4,6 @@ import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 import {changeDetection} from '../../../change-detection-strategy';
 
-const DEPRECATED = [
-    'tuiIconArchiveLarge',
-    'tuiIconDropLarge',
-    'tuiIconEditLarge',
-    'tuiIconGeo2Large',
-    'tuiIconPauseLarge',
-    'tuiIconPhoneLarge',
-    'tuiIconPlayLarge',
-    'tuiIconSettingsLarge',
-    'tuiIconToggleOffLarge',
-    'tuiIconTargetCircleLarge',
-    'tuiIconVideoLarge',
-    'tuiIconToggleOff',
-    'tuiIconStructura',
-    'tuiIconSettings2',
-    'tuiIconRight',
-    'tuiIconKey',
-    'tuiIconHome',
-    'tuiIconHide',
-    'tuiIconShow',
-    'tuiIconFolderDelete',
-    'tuiIconFolderAdd',
-    'tuiIconCreate',
-    'tuiIconChat',
-    'tuiIconBookmarks',
-    'tuiIconBookmarks',
-    'tuiIconOff',
-    'tuiIconPause',
-    'tuiIconPlay',
-    'tuiIconPlay',
-    'tuiIconCalculator',
-    'tuiIconDoc',
-    'tuiIconUnlock',
-    'tuiIconLeft',
-    'tuiIconRight',
-    'tuiIconNotification',
-    'tuiIconEyeClosedLarge',
-    'tuiIconEyeOpenLarge',
-];
-
 export const TUI_ADDITIONAL_ICONS = new InjectionToken<AdditionalIcons>(
     'Additional icons',
 );
@@ -63,8 +23,6 @@ export class IconsComponent {
     icons: readonly string[];
 
     assets: readonly string[] = [];
-
-    iconsToolbar: readonly string[] = [];
 
     iconsLarge: readonly string[] = [];
 
@@ -93,18 +51,12 @@ export class IconsComponent {
         const icons = Object.keys(all).filter(
             item =>
                 this.commerce.indexOf(item) === -1 &&
-                DEPRECATED.indexOf(item) === -1 &&
-                !item.startsWith('tuiIconLogo') &&
-                !item.startsWith('tuiIconToolbar') &&
                 item !== 'tuiCoreIcons' &&
                 item !== 'tuiKitIcons',
         );
 
         this.icons = icons.filter(item => !item.includes('Large'));
         this.iconsLarge = icons.filter(item => item.includes('Large'));
-        this.iconsToolbar = Object.keys(all).filter(item =>
-            item.startsWith('tuiIconToolbar'),
-        );
 
         if (!this.iconsMarker) {
             return;
