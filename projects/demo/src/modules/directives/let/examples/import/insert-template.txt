@@ -3,9 +3,8 @@
         {{streamValue}}
         <tui-tooltip [content]="template"></tui-tooltip>
     </p>
-    <button tuiButton type="button">Удалить {{streamValue}}</button>
+    <button tuiButton type="button">Delete {{streamValue}}</button>
     <ng-template #template>
-        {{streamValue}} является текущим значением потока someStream,
-        подписка на который оформлена однократно через async пайп.
+        {{streamValue}} is a current value of a someStream
     </ng-template>
 </ng-container>
