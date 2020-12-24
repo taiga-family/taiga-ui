@@ -7,9 +7,9 @@
 </button>
 
 <button tuiButton type="button" [tuiManualHint]="template" [tuiManualHintShow]="true">
-    Press him ↑
+    Press that ↑
 </button>
 
 <ng-template #template="polymorpheus" polymorpheus>
-    Темплейт для переиспользования
+    Reusable template
 </ng-template>
