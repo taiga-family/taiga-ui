@@ -29,7 +29,7 @@ export abstract class AbstractExampleTuiReactiveField extends AbstractExampleTui
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
 
-    readonly hintContentVariants: readonly string[] = ['Иванов Иван Иванович'];
+    readonly hintContentVariants: readonly string[] = ['Some content'];
 
     readonly hintDirectionVariants: ReadonlyArray<TuiDirection> = [
         'left',
