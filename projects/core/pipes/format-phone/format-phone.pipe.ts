@@ -5,11 +5,11 @@ import {formatPhone} from '@taiga-ui/core/utils/format';
 @Pipe({name: 'tuiFormatPhone'})
 export class TuiFormatPhonePipe implements PipeTransform {
     /**
-     * Форматирует строку с телефоном формата +7XXXXXXXXXX, добавляя скобки и дефисы
-     * @param value строка для форматирования
-     * @param countryCode код страны
-     * @param phoneMask маска телефона
-     * @return отформатированная строка телефона вида +7(XXX)XXX-XX-XX
+     * Formats phone number string of +7XXXXXXXXXX fomrat with adding separator symbols
+     * @param value
+     * @param countryCode
+     * @param phoneMask
+     * @return formatted phone number string +7(XXX)XXX-XX-XX
      */
     transform(
         value: string,

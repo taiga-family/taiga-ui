@@ -16,7 +16,7 @@ const SERIALIZED_SUFFIX = '$';
 
 export type DocumentationPropertyType = 'input' | 'output' | 'input-output' | null;
 
-// @bad TODO: добаботать параметры output, синхронизацию значений
+// @bad TODO: refactor output and value sync
 @Directive({
     selector: 'ng-template[documentationPropertyName]',
 })

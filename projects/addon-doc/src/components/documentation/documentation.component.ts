@@ -16,7 +16,7 @@ import {hexToRgb, rgbToHex} from '../../utils/color-conversion';
 import {inspectAny} from '../../utils/inspect';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 
-// @bad TODO отслеживать изменения полей в propertiesConnectors
+// @bad TODO subscribe propertiesConnectors changes
 // @bad TODO refactor to make more flexible
 // @dynamic
 @Component({
