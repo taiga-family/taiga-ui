@@ -1,8 +1,8 @@
 import {default as imageUrl} from '!!file-loader!../../../../../assets/images/ts.svg';
 
 import {Component, Inject} from '@angular/core';
-import {tuiIconMaestro, tuiIconMastercard} from '@taiga-ui/addon-commerce';
 import {TuiSvgService} from '@taiga-ui/core';
+import {tuiIconMaestro, tuiIconMastercard} from '@taiga-ui/icons';
 import {tuiIconTimeLarge} from '@taiga-ui/icons';
 import {timer} from 'rxjs';
 import {mapTo} from 'rxjs/operators';

@@ -1,6 +1,5 @@
 import {Component, Inject, InjectionToken, Optional} from '@angular/core';
 import {ClipboardCopyService} from '@taiga-ui/addon-doc';
-import * as allWYSIWYGImports from '@taiga-ui/addon-editor';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 import {changeDetection} from '../../../change-detection-strategy';
@@ -91,7 +90,6 @@ export class IconsComponent {
         private readonly notifications: TuiNotificationsService,
     ) {
         const all: Record<string, any> = allIcons;
-        const allWYSIWYG: Record<string, any> = allWYSIWYGImports;
         const icons = Object.keys(all).filter(
             item =>
                 this.commerce.indexOf(item) === -1 &&
@@ -102,12 +100,11 @@ export class IconsComponent {
                 item !== 'tuiKitIcons',
         );
 
-        this.iconsToolbar = Object.keys(allWYSIWYG).filter(
-            item => item.slice(0, 7) === 'tuiIcon',
-        );
-
         this.icons = icons.filter(item => !item.includes('Large'));
         this.iconsLarge = icons.filter(item => item.includes('Large'));
+        this.iconsToolbar = Object.keys(all).filter(item =>
+            item.startsWith('tuiIconToolbar'),
+        );
 
         if (!this.iconsMarker) {
             return;
