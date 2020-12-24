@@ -1,8 +1,8 @@
 <div [tuiDropdownContent]="dropdownContent"
      [tuiDropdown]="open">
-    Хост-элемент
+    Host element
 </div>
 
 <ng-template #dropdownContent>
-    Содержимое выпадашки
+    Dropdown content
 </ng-template>
