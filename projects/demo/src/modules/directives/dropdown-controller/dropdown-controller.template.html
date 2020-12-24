@@ -1,10 +1,12 @@
 <tui-doc-page i18n-header header="DropdownController" package="CORE">
     <ng-template pageTab>
-        Директива позволяет передать настройки к
-        <a tuiLink routerLink="/tui-hosted-dropdown" target="_blank"
-            >TuiHostedDropdown</a
-        >
-        или задать их для китовых компонентов с выпадашками внутри.
+        <p i18n>
+            Directive allows to control dropdown setting in
+            <a tuiLink routerLink="/tui-hosted-dropdown" target="_blank"
+                >TuiHostedDropdown</a
+            >
+            component or Taiga UI components with dropdown inside
+        </p>
 
         <tui-doc-example
             id="base"
@@ -16,7 +18,7 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
@@ -32,11 +34,13 @@
             </li>
 
             <li>
-                Используйте в шаблоне на компоненте
-                <a tuiLink routerLink="/tui-hosted-dropdown" target="_blank"
-                    >TuiHostedDropdown</a
-                >
-                или на компоненте, который содержит его внутри
+                <p i18n>
+                    Use in template on
+                    <a tuiLink routerLink="/tui-hosted-dropdown" target="_blank"
+                        >TuiHostedDropdown</a
+                    >
+                    component or its parent
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
