@@ -1,8 +1,8 @@
 <div tuiDropdownSelection [tuiDropdownContent]="dropdownContent">
-    Хост-элемент
+    Host element
 </div>
 
 <ng-template #dropdownContent="polymorpheus"
              polymorpheus>
-    Содержимое выпадашки
+    Dropdown content
 </ng-template>

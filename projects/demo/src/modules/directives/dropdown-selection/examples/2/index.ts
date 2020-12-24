@@ -20,7 +20,7 @@ export interface User {
     encapsulation,
 })
 export class TuiDropdownSelectionExample2 {
-    value = 'Наберите @ для показа выпадашки';
+    value = 'Type @ to see a dropdown';
 
     @ViewChildren(TuiOptionComponent, {read: ElementRef})
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
