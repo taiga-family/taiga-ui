@@ -6,10 +6,10 @@ import {
     Input,
 } from '@angular/core';
 import {tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
-import {TuiBrightness, TuiHintMode} from '@taiga-ui/core/enums';
+import {TuiHintMode} from '@taiga-ui/core/enums';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiDirection} from '@taiga-ui/core/types';
+import {TuiBrightness, TuiDirection} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 

@@ -93,7 +93,7 @@ export class ExampleTuiBarChartComponent {
 
     readonly hintModeVariants: ReadonlyArray<TuiHintMode | null> = [
         null,
-        TuiHintMode.Light,
+        TuiHintMode.OnDark,
         TuiHintMode.Error,
     ];
 

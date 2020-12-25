@@ -42,7 +42,7 @@ export abstract class AbstractExampleTuiReactiveField extends AbstractExampleTui
 
     readonly hintModeVariants: ReadonlyArray<TuiHintMode> = [
         TuiHintMode.Error,
-        TuiHintMode.Light,
+        TuiHintMode.OnDark,
     ];
 
     readonly typeVariants: ReadonlyArray<TuiInputType> = [

@@ -37,9 +37,14 @@ import {
     TUI_TEXTIFELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives/textfield-controller';
-import {TuiAppearance, TuiBrightness} from '@taiga-ui/core/enums';
+import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core/tokens';
-import {TuiHorizontalDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {
+    TuiBrightness,
+    TuiHorizontalDirection,
+    TuiSizeL,
+    TuiSizeS,
+} from '@taiga-ui/core/types';
 import {getPadding, sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
 

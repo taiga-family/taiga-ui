@@ -19,7 +19,7 @@ export class TuiTableBarsHostComponent {
     ) {}
 
     getMode(mode: TuiBrightness): TuiBrightness | null {
-        return mode === 'dark' ? TuiBrightness.Light : null;
+        return mode === 'onLight' ? 'onLight' : null;
     }
 
     onCloseClick(itemToRemove: TableBar) {

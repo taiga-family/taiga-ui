@@ -1,5 +1,5 @@
 export const enum TuiHintMode {
     Error = 'error',
-    Light = 'light',
+    OnDark = 'onDark',
     Overflow = 'overflow',
 }

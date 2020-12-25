@@ -142,7 +142,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiFie
 
     readonly hintModeVariants: ReadonlyArray<TuiHintMode> = [
         TuiHintMode.Error,
-        TuiHintMode.Light,
+        TuiHintMode.OnDark,
     ];
 
     invalid = false;

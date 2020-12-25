@@ -15,7 +15,7 @@
         color: var(--tui-link-hover);
     }
 
-    &[data-tui-host-mode='dark'] {
+    &[data-tui-host-mode='onLight'] {
         color: var(--tui-text-03);
 
         &:hover,
@@ -33,7 +33,7 @@
         }
     }
 
-    &[data-tui-host-mode='light'] {
+    &[data-tui-host-mode='onDark'] {
         color: var(--tui-text-03-night);
 
         &:hover,
@@ -77,12 +77,12 @@
         background: var(--tui-selection);
     }
 
-    :host[data-tui-host-mode='dark']._focus-visible & {
+    :host[data-tui-host-mode='onLight']._focus-visible & {
         background: var(--tui-text-01);
         color: var(--tui-base-01);
     }
 
-    :host[data-tui-host-mode='light']._focus-visible & {
+    :host[data-tui-host-mode='onDark']._focus-visible & {
         background: var(--tui-base-01);
         color: var(--tui-text-01);
     }

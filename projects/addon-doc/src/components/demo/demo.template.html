@@ -3,7 +3,7 @@
     <tui-tooltip size="l" describeId="form" [content]="tooltip">
         <ng-template #tooltip>
             {{texts[0]}}
-            <a tuiLink tuiMode="light" routerLink="/tui-mode">
+            <a tuiLink tuiMode="onDark" routerLink="/tui-mode">
                 <code>tuiMode</code>
             </a>
         </ng-template>
@@ -21,23 +21,23 @@
         </tui-radio-block>
         <tui-radio-block
             class="tui-group__auto-width-item"
-            item="light"
+            item="onDark"
             size="s"
             nativeId="form"
             [hideRadio]="true"
             [formControl]="modeControl"
         >
-            light
+            onDark
         </tui-radio-block>
         <tui-radio-block
             class="tui-group__auto-width-item"
-            item="dark"
+            item="onLight"
             size="s"
             nativeId="form"
             [hideRadio]="true"
             [formControl]="modeControl"
         >
-            dark
+            onLight
         </tui-radio-block>
     </div>
     <tui-checkbox-labeled
@@ -51,8 +51,8 @@
 <div
     #wrapper
     class="wrapper"
-    [class.wrapper_dark]="modeControl.value === 'light'"
-    [class.wrapper_gray]="modeControl.value === 'dark'"
+    [class.wrapper_dark]="modeControl.value === 'onDark'"
+    [class.wrapper_gray]="modeControl.value === 'onLight'"
     [class.wrapper_transparent]="!opaque"
 >
     <div #content id="demoContent" class="content">
