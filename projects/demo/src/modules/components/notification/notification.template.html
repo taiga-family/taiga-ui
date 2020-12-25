@@ -18,23 +18,14 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-notification
-                [hasCloseButton]="hasCloseButton"
                 [hasIcon]="hasIcon"
                 [status]="status"
                 (close)="onClose()"
-                >A short simple informative message</tui-notification
             >
+                A short simple informative message
+            </tui-notification>
         </tui-doc-demo>
         <tui-doc-documentation>
-            <ng-template
-                i18n
-                documentationPropertyName="hasCloseButton"
-                documentationPropertyType="boolean"
-                documentationPropertyMode="input"
-                [(documentationPropertyValue)]="hasCloseButton"
-            >
-                Enables close cross
-            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="hasIcon"
@@ -60,7 +51,8 @@
                 documentationPropertyMode="output"
                 documentationPropertyType="void"
             >
-                Emits click on close cross
+                Emits click on close cross. When subscribed to, close button
+                appears.
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

@@ -32,11 +32,6 @@ export class TuiNotificationComponent {
     hasIcon = true;
 
     @Input()
-    @tuiDefaultProp()
-    @HostBinding('class._has-close-button')
-    hasCloseButton = true;
-
-    @Input()
     @HostBinding('attr.data-tui-host-status')
     @tuiDefaultProp()
     status: TuiNotification = TuiNotification.Info;
@@ -50,7 +45,8 @@ export class TuiNotificationComponent {
         return STATUS_ICON[this.status];
     }
 
-    onCloseClick() {
-        this.close.emit();
+    @HostBinding('class._has-close-button')
+    get hasClose(): boolean {
+        return !!this.close.observers.length;
     }
 }

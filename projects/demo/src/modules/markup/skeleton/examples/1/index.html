@@ -13,7 +13,11 @@
     </button>
 </p>
 
-<div class="container" [class.container_dark]="lightMode">
+<div
+    class="container"
+    [class.container_dark]="lightMode"
+    [tuiMode]="lightMode ? 'light' : null"
+>
     <div class="tui-row">
         <div class="tui-col_md-4 tui-col_stretch">
             <tui-island class="island" size="l" [transparent]="true">

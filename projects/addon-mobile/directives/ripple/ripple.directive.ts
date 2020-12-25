@@ -22,7 +22,6 @@ import {
     TUI_RIPPLE_START,
 } from './ripple.providers';
 
-const RIPPLE_SELECTOR = '[tuiRipple]';
 const TOUCH_MOVE_DELAY = 100;
 const STYLE = `
 @keyframes ${RIPPLE_ON} {
@@ -49,7 +48,7 @@ const STYLE = `
     }
 }
 
-*${RIPPLE_SELECTOR} {
+*[tuiRipple] {
     position: relative;
     overflow: hidden;
 }
@@ -67,7 +66,7 @@ const STYLE = `
 `;
 
 @Directive({
-    selector: RIPPLE_SELECTOR,
+    selector: '[tuiRipple]',
     providers: TUI_RIPPLE_PROVIDERS,
 })
 export class TuiRippleDirective {

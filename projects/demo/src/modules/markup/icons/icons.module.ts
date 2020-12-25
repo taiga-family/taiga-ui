@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
+    TuiHintControllerModule,
     TuiLinkModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
@@ -23,6 +24,7 @@ import {IconsComponent} from './icons.component';
         TuiInputModule,
         TuiButtonModule,
         TuiTextfieldControllerModule,
+        TuiHintControllerModule,
         ...TUI_DOC_PAGE_MODULES,
         RouterModule.forChild(generateRoutes(IconsComponent)),
     ],

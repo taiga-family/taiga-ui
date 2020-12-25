@@ -9,4 +9,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiNotificationExample1 {}
+export class TuiNotificationExample1 {
+    onClose() {}
+}

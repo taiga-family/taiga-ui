@@ -5,20 +5,14 @@ import {areCssVarsSupported} from '@taiga-ui/core/utils/dom';
 import cssVars from 'css-vars-ponyfill';
 
 export function bootstrapListenerFactory(
-    documentRef: Document,
-    cssRef: any, // TODO: change it to CSS if you have TS 3.9+ (https://github.com/ng-web-apis/common/pull/6)
+    rootElement: Document,
+    cssRef: CSS,
     userAgent: string,
 ): () => void {
     const factory = () => {
-        if (areCssVarsSupported(cssRef, userAgent)) {
-            return;
+        if (!areCssVarsSupported(cssRef, userAgent)) {
+            cssVars({rootElement, onlyLegacy: false, watch: true});
         }
-
-        cssVars({
-            rootElement: documentRef,
-            onlyLegacy: false,
-            watch: true,
-        });
     };
 
     return factory;

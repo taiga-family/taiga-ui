@@ -12,26 +12,33 @@ describe('Notification', () => {
     @Component({
         template: `
             <tui-notification
-                [hasCloseButton]="hasCloseButton"
+                *ngIf="hasCloseButton; else noClose"
                 [hasIcon]="hasIcon"
                 [status]="status"
+                (close)="onClose()"
             >
                 Короткое простое информационное сообщение
             </tui-notification>
+            <ng-template #noClose>
+                <tui-notification [hasIcon]="hasIcon" [status]="status">
+                    Короткое простое информационное сообщение
+                </tui-notification>
+            </ng-template>
         `,
     })
     class TestComponent {
-        @ViewChild(TuiNotificationComponent, {static: true})
+        @ViewChild(TuiNotificationComponent, {static: false})
         component: TuiNotificationComponent;
 
         hasCloseButton = true;
         hasIcon = true;
         status: TuiNotification = TuiNotification.Info;
+
+        onClose() {}
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let component: TuiNotificationComponent;
     let pageObject: PageObject<TestComponent>;
 
     function getIcon(): DebugElement {
@@ -55,7 +62,6 @@ describe('Notification', () => {
         pageObject = new PageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        component = testComponent.component;
     });
 
     describe('icon', () => {
@@ -64,19 +70,19 @@ describe('Notification', () => {
         });
 
         it('выбирается правильно в зависимости от статуса', () => {
-            expect(component.icon).toBe(STATUS_ICON[testComponent.status]);
+            expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
 
             testComponent.status = TuiNotification.Success;
             fixture.detectChanges();
-            expect(component.icon).toBe(STATUS_ICON[testComponent.status]);
+            expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
 
             testComponent.status = TuiNotification.Error;
             fixture.detectChanges();
-            expect(component.icon).toBe(STATUS_ICON[testComponent.status]);
+            expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
 
             testComponent.status = TuiNotification.Warning;
             fixture.detectChanges();
-            expect(component.icon).toBe(STATUS_ICON[testComponent.status]);
+            expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
         });
 
         it('при hasIcon=false отсутствует', () => {
@@ -88,11 +94,11 @@ describe('Notification', () => {
     });
 
     describe('крестик закрытия', () => {
-        it('по умолчанию присутствует', () => {
+        it('присутствует при подписке на close', () => {
             expect(getClose()).not.toBeNull();
         });
 
-        it('при hasCloseButton=false отсутствует', () => {
+        it('без подписки на close отсутствует', () => {
             testComponent.hasCloseButton = false;
             fixture.detectChanges();
 
