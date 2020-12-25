@@ -29,11 +29,12 @@
     </div>
     <tui-expand [async]="async" [expanded]="open">
         <ng-template tuiExpandContent>
-            <polymorpheus-outlet
+            <div
+                polymorpheus-outlet
                 automation-id="tui-accordion__item-content"
                 class="content"
                 [content]="content"
-            ></polymorpheus-outlet>
+            ></div>
         </ng-template>
     </tui-expand>
 </div>

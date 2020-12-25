@@ -14,7 +14,8 @@
     [style.boxShadow]="boxShadow"
 ></div>
 
-<polymorpheus-outlet
+<div
+    polymorpheus-outlet
     *ngIf="contentTop"
     class="content content_top"
     [style.boxShadow]="boxShadow"
@@ -35,9 +36,10 @@
             [src]="content"
         ></tui-svg>
     </ng-template>
-</polymorpheus-outlet>
+</div>
 
-<polymorpheus-outlet
+<div
+    polymorpheus-outlet
     *ngIf="contentBottom && sizeBig"
     class="content content_bottom"
     [style.boxShadow]="boxShadow"
@@ -58,4 +60,4 @@
             [src]="content"
         ></tui-svg>
     </ng-template>
-</polymorpheus-outlet>
+</div>

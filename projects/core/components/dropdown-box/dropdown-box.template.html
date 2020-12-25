@@ -6,11 +6,12 @@
 >
     <tui-scrollbar class="scroll">
         <div tabindex="0" (focus)="onTopFocus()"></div>
-        <polymorpheus-outlet
+        <div
+            polymorpheus-outlet
             #content
             class="content"
             [content]="directive.content"
-        ></polymorpheus-outlet>
+        ></div>
         <div tabindex="0" (focus)="onBottomFocus()"></div>
     </tui-scrollbar>
 </div>

@@ -30,11 +30,12 @@
         ></circle>
     </svg>
 
-    <polymorpheus-outlet
+    <div
+        polymorpheus-outlet
         *ngIf="hasText"
         automation-id="tui-loader__text"
         class="text"
         [class.text_horizontal]="isHorizontal"
         [content]="textContent"
-    ></polymorpheus-outlet>
+    ></div>
 </div>

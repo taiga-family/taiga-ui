@@ -33,10 +33,11 @@
                     (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
                     (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
                 >
-                    <polymorpheus-outlet
+                    <div
+                        polymorpheus-outlet
                         [content]="content || index + 1"
                         [context]="getItemContext(index)"
-                    ></polymorpheus-outlet>
+                    ></div>
                 </button>
             </ng-container>
         </ng-container>

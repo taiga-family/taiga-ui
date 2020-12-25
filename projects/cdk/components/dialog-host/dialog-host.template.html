@@ -1,4 +1,5 @@
-<polymorpheus-outlet
+<div
+    polymorpheus-outlet
     *ngFor="let item of dialogs$ | async"
     tuiFocusTrap
     tuiOverscroll="all"
@@ -9,5 +10,5 @@
     [content]="item.component"
     [context]="item"
     [@tuiParentAnimation]
-></polymorpheus-outlet>
+></div>
 <div class="overlay"></div>

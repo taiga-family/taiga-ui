@@ -25,12 +25,6 @@ import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 
-function maxMonthAssertion(max: TuiMonth, context: {min: TuiMonth}): boolean {
-    return max.monthAfter(context.min);
-}
-
-const incorrectMaxMessage = 'Min value must be less than max value';
-
 const TODAY = TuiDay.currentLocal();
 
 // @dynamic
@@ -61,7 +55,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     min: TuiMonth = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp(maxMonthAssertion, incorrectMaxMessage)
+    @tuiDefaultProp()
     max: TuiMonth = TUI_LAST_DAY;
 
     @Output()

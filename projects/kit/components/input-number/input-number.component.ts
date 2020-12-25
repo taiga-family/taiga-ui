@@ -28,7 +28,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
-import {incorrectMaxMessage, maxAssertion} from '@taiga-ui/kit/constants';
 
 const DEFAULT_MAX_LENGTH = 18;
 
@@ -53,7 +52,7 @@ export class TuiInputNumberComponent
     min = -Infinity;
 
     @Input()
-    @tuiDefaultProp(maxAssertion, incorrectMaxMessage)
+    @tuiDefaultProp()
     max = Infinity;
 
     @Input()

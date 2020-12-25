@@ -14,8 +14,9 @@
     [xStringify]="xStringify ? daysStringify : null"
 ></tui-line-chart>
 <ng-template #hint let-point>
-    <polymorpheus-outlet
+    <div
+        polymorpheus-outlet
         [content]="hintContent"
         [context]="getHintContext(point[0], value)"
-    ></polymorpheus-outlet>
+    ></div>
 </ng-template>

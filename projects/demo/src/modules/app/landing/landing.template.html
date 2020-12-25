@@ -185,6 +185,7 @@
 
 <div
     *tuiRepeatTimes="let index of 3"
+    #block
     class="screen"
     waIntersectionObserver
     waIntersectionThreshold="0.5"
@@ -208,6 +209,11 @@
     >
         Browse components
     </a>
-    <div class="scroll" [class.scroll_hidden]="current === 2"></div>
+    <button
+        type="button"
+        class="scroll"
+        [class.scroll_hidden]="current === 2"
+        (click)="onClick()"
+    ></button>
     <img src="assets/images/by.svg" alt="by Tinkoff" class="by" />
 </footer>

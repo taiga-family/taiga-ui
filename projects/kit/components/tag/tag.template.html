@@ -3,11 +3,12 @@
     [style.backgroundColor]="backgroundColor"
     (dblclick)="edit($event)"
 >
-    <polymorpheus-outlet
+    <div
+        polymorpheus-outlet
         *ngIf="leftContent"
         class="left-content"
         [content]="leftContent"
-    ></polymorpheus-outlet>
+    ></div>
     <span automation-id="tui-tag__text" class="text">{{displayText}}</span>
     <tui-loader
         *ngIf="showLoader"

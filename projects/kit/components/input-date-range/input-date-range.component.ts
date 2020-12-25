@@ -48,9 +48,7 @@ import {
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {
     EMPTY_MASK,
-    incorrectMaxMessage,
     MAX_DAY_RANGE_LENGTH_MAPPER,
-    maxDayAssertion,
     TUI_DATE_RANGE_MASK,
 } from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -101,7 +99,7 @@ export class TuiInputDateRangeComponent
     min = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp(maxDayAssertion, incorrectMaxMessage)
+    @tuiDefaultProp()
     max = TUI_LAST_DAY;
 
     @Input()

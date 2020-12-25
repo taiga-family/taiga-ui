@@ -22,21 +22,6 @@ import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
 import {TuiMarkerHandler} from '@taiga-ui/core/types';
 
-function maxDayAssertion(max: TuiDay, context: {min: TuiDay}): boolean {
-    return max.dayAfter(context.min);
-}
-
-function maxMonthAssertion(
-    maxViewedMonth: TuiMonth,
-    context: {minViewedMonth: TuiMonth},
-): boolean {
-    return maxViewedMonth.month >= context.minViewedMonth.month;
-}
-
-const incorrectMaxMessage = 'Min value must be less than max value';
-const incorrectMaxMonthMessage =
-    'Min month value must be equal or less than max month value';
-
 // @dynamic
 @Component({
     selector: 'tui-calendar',
@@ -62,7 +47,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     min = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp(maxDayAssertion, incorrectMaxMessage)
+    @tuiDefaultProp()
     max = TUI_LAST_DAY;
 
     @Input()
@@ -70,7 +55,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     minViewedMonth: TuiMonth = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp(maxMonthAssertion, incorrectMaxMonthMessage)
+    @tuiDefaultProp()
     maxViewedMonth: TuiMonth = TUI_LAST_DAY;
 
     @Input()

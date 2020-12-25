@@ -10,12 +10,13 @@
     >
         {{safeItem.label}}
     </label>
-    <polymorpheus-outlet
+    <div
+        polymorpheus-outlet
         automation-id="tui-notification-alert__content"
         class="content"
         [content]="safeItem.content"
         [context]="context"
-    ></polymorpheus-outlet>
+    ></div>
 </tui-notification>
 <ng-template #noClose>
     <tui-notification [status]="status">
@@ -26,11 +27,12 @@
         >
             {{safeItem.label}}
         </label>
-        <polymorpheus-outlet
+        <div
+            polymorpheus-outlet
             automation-id="tui-notification-alert__content"
             class="content"
             [content]="safeItem.content"
             [context]="context"
-        ></polymorpheus-outlet>
+        ></div>
     </tui-notification>
 </ng-template>

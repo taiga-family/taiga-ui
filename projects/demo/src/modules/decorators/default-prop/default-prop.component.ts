@@ -12,8 +12,6 @@ export class ExampleTuiDefaultPropComponent {
 
     quantity: number | undefined = 10;
 
-    min = 10;
-
     setUndefined() {
         this.quantity = undefined;
     }
