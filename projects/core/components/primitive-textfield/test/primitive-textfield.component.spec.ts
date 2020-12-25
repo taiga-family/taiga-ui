@@ -14,7 +14,7 @@ import {configureTestSuite} from 'ng-bullet';
 import {TuiHintControllerModule} from '../../../directives/hint-controller/hint-controller.module';
 import {TuiModeModule} from '../../../directives/mode/mode.module';
 import {TuiTextfieldControllerModule} from '../../../directives/textfield-controller';
-import {TuiBrightness} from '../../../enums/brightness';
+import {TuiBrightness} from '../../../types/brightness';
 import {TuiSizeL, TuiSizeS} from '../../../types/size';
 import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
 import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
