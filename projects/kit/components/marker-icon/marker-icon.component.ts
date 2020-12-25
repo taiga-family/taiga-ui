@@ -47,7 +47,7 @@ export class TuiMarkerIconComponent {
 
     @HostBinding('attr.data-tui-host-mode')
     get computedMode(): TuiMarkerIconMode | null {
-        return this.globalMode === 'onLight' && !this.mode
+        return this.globalMode === 'onDark' && !this.mode
             ? TuiMarkerIconMode.OnDark
             : this.mode;
     }
