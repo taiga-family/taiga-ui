@@ -15,7 +15,7 @@ export class TableBar {
         readonly content: PolymorpheusContent<{}>,
         options: TuiTableBarOptions = {},
     ) {
-        const {mode = 'onDark', hasCloseButton = false, adaptive = false} = options;
+        const {mode = 'onLight', hasCloseButton = false, adaptive = false} = options;
 
         this.mode = mode;
         this.hasCloseButton = hasCloseButton;

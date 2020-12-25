@@ -39,7 +39,7 @@ export class TuiScrollControlsComponent {
     ) {}
 
     get isLight(): boolean {
-        return !!this.modeDirective && this.modeDirective.mode === 'onLight';
+        return !!this.modeDirective && this.modeDirective.mode === 'onDark';
     }
 
     private get scrollbars(): [boolean, boolean] {
