@@ -1,7 +1,6 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiBrightness} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 import {Subscription, timer} from 'rxjs';
@@ -94,7 +93,7 @@ describe('TableBarsHost', () => {
     });
 
     it('при mode: light tableBar светлый', () => {
-        service.open(title, {mode: TuiBrightness.Light}).pipe(take(1)).subscribe();
+        service.open(title, {mode: 'onDark'}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
         expect(getBar().nativeElement.classList.contains('bar_light')).toBe(true);

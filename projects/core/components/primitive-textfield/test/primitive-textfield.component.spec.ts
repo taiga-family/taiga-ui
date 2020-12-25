@@ -112,17 +112,17 @@ describe('PrimitiveTextfield', () => {
 
     describe('background', () => {
         it('gets light mode correctly', () => {
-            testComponent.mode = TuiBrightness.Light;
+            testComponent.mode = 'onDark';
             fixture.detectChanges();
 
-            expect(testComponent.component.hostMode).toBe(TuiBrightness.Light);
+            expect(testComponent.component.hostMode).toBe('onDark');
         });
 
         it('gets dark mode correctly', () => {
-            testComponent.mode = TuiBrightness.Dark;
+            testComponent.mode = 'onLight';
             fixture.detectChanges();
 
-            expect(testComponent.component.hostMode).toBe(TuiBrightness.Dark);
+            expect(testComponent.component.hostMode).toBe('onLight');
         });
     });
 
