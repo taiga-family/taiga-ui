@@ -218,7 +218,7 @@ export class TuiPaginationComponent
     }
 
     getSmallElementMode(index: number, mode: TuiBrightness | null): TuiAppearance {
-        return this.index === index && mode !== TuiBrightness.Dark
+        return this.index === index && mode !== 'onLight'
             ? TuiAppearance.Primary
             : TuiAppearance.Secondary;
     }

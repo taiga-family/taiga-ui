@@ -29,7 +29,7 @@ export class InheritedDocumentationComponent {
 
     readonly modeVariants: ReadonlyArray<TuiHintMode> = [
         TuiHintMode.Error,
-        TuiHintMode.Light,
+        TuiHintMode.OnDark,
     ];
 
     constructor(

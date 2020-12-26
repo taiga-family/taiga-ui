@@ -16,7 +16,7 @@
     overflow: hidden;
     color: var(--tui-text-01);
 
-    &[data-tui-host-mode='light'] {
+    &[data-tui-host-mode='onDark'] {
         color: var(--tui-base-01);
     }
 
@@ -159,7 +159,7 @@
         padding-left: 13px; // compensation of unkillable padding in mobile safari
     }
 
-    :host[data-tui-host-mode='light']._disabled & {
+    :host[data-tui-host-mode='onDark']._disabled & {
         color: var(--tui-text-03-night);
     }
 }
@@ -223,7 +223,7 @@
     text-align: right;
     color: var(--tui-text-03);
 
-    :host[data-tui-host-mode='light'] & {
+    :host[data-tui-host-mode='onDark'] & {
         color: var(--tui-text-03-night);
     }
 }

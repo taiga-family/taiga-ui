@@ -100,19 +100,19 @@
         color: var(--tui-base-05);
     }
 
-    :host:not(._checked)[data-tui-host-mode='light'] & {
+    :host:not(._checked)[data-tui-host-mode='onDark'] & {
         color: var(--tui-text-03-night);
     }
 
-    :host:not(._checked)[data-tui-host-mode='light']._disabled & {
+    :host:not(._checked)[data-tui-host-mode='onDark']._disabled & {
         color: var(--tui-clear-inverse-active);
     }
 
-    :host:not(._checked)[data-tui-host-mode='dark'] & {
+    :host:not(._checked)[data-tui-host-mode='onLight'] & {
         color: var(--tui-text-03);
     }
 
-    :host:not(._checked)[data-tui-host-mode='dark']._disabled & {
+    :host:not(._checked)[data-tui-host-mode='onLight']._disabled & {
         color: var(--tui-clear-active);
     }
 
@@ -137,19 +137,19 @@
             color: var(--tui-base-05);
         }
 
-        :host[data-tui-host-mode='light'] & {
+        :host[data-tui-host-mode='onDark'] & {
             color: var(--tui-text-03-night);
         }
 
-        :host[data-tui-host-mode='light']._disabled & {
+        :host[data-tui-host-mode='onDark']._disabled & {
             color: var(--tui-clear-inverse-active);
         }
 
-        :host[data-tui-host-mode='dark'] & {
+        :host[data-tui-host-mode='onLight'] & {
             color: var(--tui-text-03);
         }
 
-        :host[data-tui-host-mode='dark']._disabled & {
+        :host[data-tui-host-mode='onLight']._disabled & {
             color: var(--tui-clear-active);
         }
     }

@@ -19,8 +19,8 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
-import {TuiBrightness, TuiLinkMode} from '@taiga-ui/core/enums';
-import {TuiHorizontalDirection} from '@taiga-ui/core/types';
+import {TuiLinkMode} from '@taiga-ui/core/enums';
+import {TuiBrightness, TuiHorizontalDirection} from '@taiga-ui/core/types';
 
 // @bad TODO: Think about extending Interactive
 @Component({

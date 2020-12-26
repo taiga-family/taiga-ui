@@ -70,11 +70,11 @@ export class TuiCustomizationComponent implements AfterViewInit {
     }
 
     isLight(key: string): boolean {
-        return key.includes('light');
+        return key.includes('onDark');
     }
 
     isDark(key: string): boolean {
-        return key.includes('dark');
+        return key.includes('onLight');
     }
 
     onModelChange(variable: string, value: string | number) {

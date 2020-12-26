@@ -6,5 +6,5 @@ export const enum TuiMarkerIconMode {
     Secondary = 'secondary',
     Success = 'success',
     Error = 'error',
-    Light = 'light',
+    OnDark = 'onDark',
 }
