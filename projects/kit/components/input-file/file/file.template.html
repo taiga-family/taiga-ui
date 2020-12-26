@@ -53,12 +53,13 @@
                 {{fileSize}}
             </div>
         </div>
-        <polymorpheus-outlet
+        <div
+            polymorpheus-outlet
             *ngIf="content"
             automation-id="tui-file__content"
             class="content"
             [content]="content"
-        ></polymorpheus-outlet>
+        ></div>
     </div>
     <button
         *ngIf="allowDelete"

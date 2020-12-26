@@ -1,8 +1,9 @@
 <tui-doc-page header="InputCard" package="ADDON-COMMERCE">
     <ng-template pageTab>
-        Компонент <code>InputCard</code> используется вместе с
-        <code>InputExpire</code> и <code>InputCVC</code> для ввода данных по
-        банковским картам.
+        <p i18n>
+            <code>InputCard</code> can be used with <code>InputExpire</code> and
+            <code>InputCVC</code> to input a card
+        </p>
 
         <tui-doc-example id="group" heading="в tui-group" [content]="example1">
             <tui-input-card-example-1></tui-input-card-example-1>
@@ -31,7 +32,7 @@
                         [tuiHintMode]="hintMode"
                         (binChange)="onBinChange($event)"
                     >
-                        Номер карты
+                        Card number
                     </tui-input-card>
                     <tui-input-expire
                         class="control"
@@ -45,7 +46,7 @@
                         [pseudoPressed]="pseudoPressed"
                         [pseudoFocused]="pseudoFocused"
                     >
-                        Срок действия
+                        Expire date
                     </tui-input-expire>
                     <tui-input-cvc
                         class="control"
@@ -73,17 +74,9 @@
             </ng-template>
         </tui-doc-demo>
         <div class="b-full-width tui-space_bottom-6">
-            <p>
-                Для валидации ввода номера карты алгоритмом Луна добавьте
-                <code>tuiCreateLuhnValidator(customMessage?)</code> к
-                валидаторам контрола.
-            </p>
-            <p>
-                При <code>[tuiTextfieldLabelOutside]="true"</code> и
-                фокусировании в поле в <code>InputCard</code> и
-                <code>InputExpire</code> в поле показывается
-                <code>exampleText</code>, а в <code>InputCVC</code> —
-                <code>placeholder</code>.
+            <p i18n>
+                Add <code>tuiCreateLuhnValidator(customMessage?)</code> to
+                control validators to validate it with Luhn algorithm
             </p>
         </div>
         <tui-accordion class="b-full-width" [closeOthers]="false">
@@ -92,36 +85,40 @@
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
+                            i18n
                             documentationPropertyName=""
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disabledCard"
                         >
-                            Компонент формы disabled (через
-                            formControl.disable())
+                            Disabled state (use
+                            <code>formControl.disable()</code>)
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="autocompleteEnabled"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="autocompleteEnabledCard"
                         >
-                            Позволить браузеру подставлять сохранённые данные
+                            Browser autocomplete of card
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="cardSrc"
                             documentationPropertyMode="input"
                             documentationPropertyType="string | null"
                             [documentationPropertyValues]="cardSrcVariants"
                             [(documentationPropertyValue)]="cardSrcSelected"
                         >
-                            SVG иконки карты
+                            SVG card icon
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="binChange"
                             documentationPropertyMode="output"
                             documentationPropertyType="string | null"
                         >
-                            Значение BIN (первые 6 символов карты)
+                            BIN value (card first 6 symbols)
                         </ng-template>
                     </tui-doc-documentation>
                     <inherited-documentation></inherited-documentation>
@@ -133,20 +130,22 @@
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
+                            i18n
                             documentationPropertyName=""
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disabledExpire"
                         >
-                            Компонент формы disabled (через
-                            formControl.disable())
+                            Disabled state (use
+                            <code>formControl.disable()</code>)
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="autocompleteEnabled"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="autocompleteEnabledExpire"
                         >
-                            Позволить браузеру подставлять сохранённые данные
+                            Browser autocomplete of card
                         </ng-template>
                     </tui-doc-documentation>
                     <inherited-documentation></inherited-documentation>
@@ -158,29 +157,32 @@
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
+                            i18n
                             documentationPropertyName=""
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disabledCVC"
                         >
-                            Компонент формы disabled (через
-                            formControl.disable())
+                            Disabled state (use
+                            <code>formControl.disable()</code>)
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="autocompleteEnabled"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="autocompleteEnabledCVC"
                         >
-                            Позволить браузеру подставлять сохранённые данные
+                            Browser autocomplete of card
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="length"
                             documentationPropertyMode="input"
                             documentationPropertyType="3 | 4"
                             [documentationPropertyValues]="lengthVariants"
                             [(documentationPropertyValue)]="length"
                         >
-                            Длина кода
+                            Code length
                         </ng-template>
                     </tui-doc-documentation>
                     <inherited-documentation></inherited-documentation>
@@ -191,11 +193,11 @@
 
     <ng-template pageTab>
         <ol class="b-demo-steps">
-            <li>
-                Для использования импортировать модули
+            <li i18n>
+                Import
                 <code>TuiInputCardModule</code>, <code>TuiInputCVCModule</code>,
-                <code>TuiInputExpireModule</code>
-                в тот же модуль, куда добавляется ваш компонент:
+                <code>TuiInputExpireModule</code> modules into the module where
+                you want to use them:
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -204,7 +206,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -1,6 +1,6 @@
-<tui-notification [hasCloseButton]="false">
-    <code>TuiLineDaysChart</code> нужен только для демонстрации графика в
-    масштабе месяцев, поскольку в месяцах различное количество дней
+<tui-notification i18n>
+    <code>TuiLineDaysChart</code> is used to show data of several months to
+    simplify working with different number of days in months
 </tui-notification>
 <p class="controls">
     <tui-input-date-range
@@ -9,19 +9,19 @@
         [(ngModel)]="data"
         (ngModelChange)="onDataChange($event)"
     >
-        Данные
+        Data
     </tui-input-date-range>
     <tui-input-date-range
         class="control tui-space_left-4"
         [maxLength]="maxLength"
         [(ngModel)]="show"
     >
-        Видимый диапазон
+        Visible range
     </tui-input-date-range>
 </p>
 <p class="legend">
     <span *ngFor="let chart of days; let index = index" class="item">
-        <small class="name">График {{index + 1}}</small>
+        <small class="name">Chart {{index + 1}}</small>
     </span>
 </p>
 <tui-axes

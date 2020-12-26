@@ -1,6 +1,6 @@
 <div class="container">
-    <p class="tui-space_bottom-1">
-        С предустановленными файлами и действием при удалении
+    <p i18n class="tui-space_bottom-1">
+        With preset files and actions when deleting
     </p>
     <tui-input-file
         [ngModel]="files"
@@ -9,8 +9,5 @@
         [(rejectedFiles)]="rejectedFiles"
         (ngModelChange)="onModelChange($event)"
     ></tui-input-file>
-    <p>
-        Обратите внимание, что загружаемые файлы так же должны присутствовать и
-        в контроле
-    </p>
+    <p i18n>Loading files should also be in control</p>
 </div>

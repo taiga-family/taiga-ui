@@ -1,39 +1,28 @@
-<tui-doc-page header="Тени">
+<tui-doc-page i18n-header header="Shadows">
     <ng-template pageTab>
-        <div class="wrapper">
-            <div class="example">
-                <div class="item item_standart">Обычная тень</div>
-                <div class="item item_dropdown">Тень для выпадашек</div>
-                <div class="item item_modal">Тень для модалов</div>
-                <div class="item item_sidebar">Тень для сайдбаров</div>
+        <p i18n>Different kinds of shadows can be applied with mixin:</p>
+        <div i18n class="example">
+            <div class="item item_default">
+                <span>
+                    Basic shadow: <code>.shadow(1)</code> with
+                    <code>.shadow(5)</code> when hovered
+                </span>
             </div>
-            <pre class="code">
-                .item &#123;
-                    // Карточка
-                    &_standart &#123;
-                        .shadow();
-
-                        &:hover &#123;
-                            .shadow(5);
-                        &#125;
-                    &#125;
-
-                    // Дропдауны
-                    &_dropdown &#123;
-                        .shadow(2);
-                    &#125;
-
-                    // Модальные окна
-                    &_modal &#123;
-                        .shadow(3);
-                    &#125;
-
-                    // Сайдбар
-                    &_dialog &#123;
-                        .shadow(4);
-                    &#125;
-                }
-            </pre>
+            <div class="item item_dropdown">
+                Dropdown shadow: <code>.shadow(2)</code>
+            </div>
+            <div class="item item_modal">
+                Modal shadow: <code>.shadow(3)</code>
+            </div>
+            <div class="item item_sidebar">
+                Sidebar shadow: <code>.shadow(4)</code>
+            </div>
+            <div class="item item_navigation">
+                Navigation shadow: <code>.shadow(6)</code>
+            </div>
+            <div class="item item_mobile">
+                Mobile modal shadow: <code>.shadow(7)</code>
+            </div>
         </div>
     </ng-template>
 </tui-doc-page>

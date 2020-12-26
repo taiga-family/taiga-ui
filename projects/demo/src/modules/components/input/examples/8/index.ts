@@ -21,8 +21,8 @@ class User {
 }
 
 const DATA: ReadonlyArray<User> = [
-    new User('Роман', 'Седов', 'http://marsibarsi.me/images/1x1small.jpg'),
-    new User('Александр', 'Инкин', avatar),
+    new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
+    new User('Alex', 'Inkin', avatar),
 ];
 
 @Component({

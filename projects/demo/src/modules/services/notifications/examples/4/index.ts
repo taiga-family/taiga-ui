@@ -26,7 +26,8 @@ export class TuiNotificationsExampleComponent4 {
             .show<number, number>(
                 new PolymorpheusComponent(AlertExampleWithDataComponent, this.injector),
                 {
-                    label: 'Заголовок такой длинный, что даже не влезает в одну строку',
+                    label:
+                        'Heading is so long that it should be shown in two lines of text',
                     data: 237,
                     status: TuiNotification.Warning,
                     autoClose: false,
@@ -34,8 +35,8 @@ export class TuiNotificationsExampleComponent4 {
             )
             .pipe(
                 switchMap(response =>
-                    notificationsService.show('Получено значение — ' + response, {
-                        label: 'Информация.',
+                    notificationsService.show('Got a value — ' + response, {
+                        label: 'Information',
                     }),
                 ),
                 takeUntil(router.events),

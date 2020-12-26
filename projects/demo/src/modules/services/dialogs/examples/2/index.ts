@@ -17,7 +17,7 @@ export class TuiDialogExampleComponent2 {
         {
             data: 237,
             dismissible: true,
-            label: 'Заголовочек',
+            label: 'Heading',
         },
     );
 

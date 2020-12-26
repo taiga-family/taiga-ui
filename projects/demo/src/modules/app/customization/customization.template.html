@@ -1,6 +1,4 @@
-<h2 *ngIf="isIE; else customization">
-    Интерактивная настройка темы недоступна в Internet Explorer.
-</h2>
+<h2 *ngIf="isIE; else customization">Not available in Internet Explorer.</h2>
 <ng-template #customization>
     <tui-doc-demo #demo [attr.style]="style">
         <ng-content></ng-content>
@@ -21,7 +19,7 @@
     <ng-template #withMode>
         <tui-accordion class="tui-space_top-6" [tuiMode]="null">
             <tui-accordion-item>
-                Состояие по умолчанию
+                Default
                 <tui-doc-documentation *tuiAccordionItemContent>
                     <ng-container *ngFor="let variable of keys">
                         <ng-template
@@ -35,7 +33,7 @@
                 </tui-doc-documentation>
             </tui-accordion-item>
             <tui-accordion-item *ngIf="hasLight">
-                Светлое состояние
+                Light
                 <tui-doc-documentation *tuiAccordionItemContent>
                     <ng-container *ngFor="let variable of keys">
                         <ng-template
@@ -49,7 +47,7 @@
                 </tui-doc-documentation>
             </tui-accordion-item>
             <tui-accordion-item *ngIf="hasLight">
-                Тёмное состояние
+                Dark
                 <tui-doc-documentation *tuiAccordionItemContent>
                     <ng-container *ngFor="let variable of keys">
                         <ng-template

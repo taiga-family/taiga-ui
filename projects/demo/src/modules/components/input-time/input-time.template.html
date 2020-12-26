@@ -1,12 +1,11 @@
 <tui-doc-page header="InputTime" package="KIT">
     <ng-template pageTab>
-        Компонент <code>InputTime</code> предназначен для ввода времени в
-        формате ЧЧ:ММ.
+        <p i18n><code>InputTime</code> allows input time in HH:MM format</p>
 
         <tui-doc-example
             id="base"
-            heading="базовый"
-            description="У компонента типичный для полей набор размеров: s, m, l."
+            i18n-heading
+            heading="Basic"
             [content]="example1"
         >
             <tui-input-time-example-1></tui-input-time-example-1>
@@ -14,8 +13,10 @@
 
         <tui-doc-example
             id="dropdown"
-            heading="Выпадающий список"
-            description="Компоненту можно задавать варианты времени в выпадающием списке."
+            i18n-heading
+            i18n-description
+            heading="Dropdown"
+            description="You can set items for dropdown"
             [content]="example2"
         >
             <tui-input-time-example-2></tui-input-time-example-2>
@@ -49,152 +50,67 @@
                     [tuiHintDirection]="hintDirection"
                     [tuiHintMode]="hintMode"
                 >
-                    Введите время
+                    Input time
                 </tui-input-time>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент формы disabled (через formControl.disable())
+                Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
-                documentationPropertyName="cleaner"
-                documentationPropertyMode="input"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="cleaner"
-            >
-                Cleaner для очистки поля
-            </ng-template>
-            <ng-template
+                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<TuiTime>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                Хэндлер отключенности отдельных пунктов выпадающего списка
+                Hadler to disable some items
             </ng-template>
             <ng-template
-                documentationPropertyName="dropdownDirection"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiVerticalDirection | null"
-                [documentationPropertyValues]="dropdownDirectionVariants"
-                [(documentationPropertyValue)]="dropdownDirection"
-            >
-                Задать явно направление открытия выпадающего списка
-            </ng-template>
-            <ng-template
-                documentationPropertyName="dropdownLimitWidth"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiDropdownWidth"
-                [documentationPropertyValues]="dropdownLimitWidthVariants"
-                [(documentationPropertyValue)]="dropdownLimitWidth"
-            >
-                Ограничить выпадающий список по ширине
-            </ng-template>
-            <ng-template
-                documentationPropertyName="dropdownMinHeight"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="dropdownMinHeight"
-            >
-                Минимальная высота выпадающего списка, при которой учитывается
-                принудительное направление открытия
-            </ng-template>
-            <ng-template
-                documentationPropertyName="dropdownMaxHeight"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="dropdownMaxHeight"
-            >
-                Максимальная высота выпадающего списка
-            </ng-template>
-            <ng-template
+                i18n
                 documentationPropertyName="items"
                 documentationPropertyMode="input"
                 documentationPropertyType="ReadonlyArray<TuiTime>"
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
             >
-                Список элементов.
+                Items to choose
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="itemSize"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS | TuiSizeL"
                 [documentationPropertyValues]="itemSizeVariants"
                 [(documentationPropertyValue)]="itemSize"
             >
-                Размер пункта выпадашки.
+                Item size
             </ng-template>
             <ng-template
-                documentationPropertyName="labelOutside"
-                documentationPropertyMode="input"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="labelOutside"
-            >
-                Лэйбл снаружи, а не внутри компонента. Лэйбл в этом случае
-                создается с помощью компонента
-                <a tuiLink routerLink="/tui-label">
-                    <code>Label</code>
-                </a>
-            </ng-template>
-            <ng-template
-                documentationPropertyName="size"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
-            >
-                Размер поля
-            </ng-template>
-            <ng-template
+                i18n
                 documentationPropertyName="strict"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="strict"
             >
-                Допускать только значения из набора <code>items</code>
+                Only <code>items</code> are allowed
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="mode"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiTimeMode"
                 [documentationPropertyValues]="modeVariants"
                 [(documentationPropertyValue)]="mode"
             >
-                Моды с поддержкой секунд и миллисекунд
-            </ng-template>
-            <ng-template
-                documentationPropertyName="hintContent"
-                documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent | null"
-                [documentationPropertyValues]="hintContentVariants"
-                [(documentationPropertyValue)]="hintContent"
-            >
-                Содержимое тултипа
-            </ng-template>
-            <ng-template
-                documentationPropertyName="hintDirection"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiDirection"
-                [documentationPropertyValues]="hintDirectionVariants"
-                [(documentationPropertyValue)]="hintDirection"
-            >
-                Направление тултипа
-            </ng-template>
-            <ng-template
-                documentationPropertyName="hintMode"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuihintMode | null"
-                [documentationPropertyValues]="hintModeVariants"
-                [(documentationPropertyValue)]="hintMode"
-            >
-                Модификация тултипа
+                Modes for seconds and ms support
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
@@ -203,10 +119,11 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модули для работы с формами из
-                Angular и модуль
-                <code>TuiInputTimeModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiInputTimeModule</code> in the same module where you
+                    want to use our component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -215,8 +132,10 @@
             </li>
 
             <li>
-                Объявить форму (<code>FormGroup</code>) или контрол
-                (<code>FormControl</code>) в компоненте:
+                <p i18n>
+                    Declare a form (<code>FormGroup</code>) or a control
+                    (<code>FormControl</code>) in your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -225,7 +144,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

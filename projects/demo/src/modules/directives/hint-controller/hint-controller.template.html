@@ -1,24 +1,31 @@
-<tui-doc-page header="HintController" package="CORE">
+<tui-doc-page i18n-header header="HintController" package="CORE">
     <ng-template pageTab>
-        Директива позволяет задать настройки для китовых компонентов с хинтами
-        внутри. Например, чтобы у
-        <a tuiLink target="_blank" routerLink="/tui-primitive-textfield"
-            ><code>TuiPrimitiveTextfield</code></a
-        >
-        появился тултип, навесьте на него или на один родительских элементов эту
-        директиву
+        <p i18n>
+            Directive allows to control hint setting on hint or its parent
+            components. For example, if you want to add tooltip to
+            <a tuiLink target="_blank" routerLink="/tui-primitive-textfield"
+                ><code>TuiPrimitiveTextfield</code></a
+            >, use this directive on it.
+        </p>
 
-        <tui-doc-example id="base" heading="Базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-hint-controller-example-1></tui-hint-controller-example-1>
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Для использования необходимо импортировать модуль
-                <code>TuiHintControllerModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiHintControllerModule</code> in the same module
+                    where you want to use our directive:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -27,8 +34,7 @@
             </li>
 
             <li>
-                Используйте в шаблоне на компоненте с поддержкой хинтов, либо на
-                одной из его оберток
+                <p i18n>Use into template on hint or its parent elements:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -1,15 +1,20 @@
 <tui-doc-page header="InputPhone" package="KIT">
     <ng-template pageTab>
-        Компонент <code>InputPhone</code> предназначен для ввода телефона в
-        формате <code>+78005553535</code>.
+        <p i18n><code>InputPhone</code> allows to input a phone number</p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-input-phone-example-1></tui-input-phone-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             id="validated"
-            heading="с валидатором по числу символов"
+            i18n-heading
+            heading="With length validator"
             [content]="example2"
         >
             <tui-input-phone-example-2></tui-input-phone-example-2>
@@ -17,8 +22,10 @@
 
         <tui-doc-example
             id="autocomplete"
-            description="Как по телефону, так и по имени."
-            heading="с автодополнением"
+            i18n-heading
+            i18n-description
+            heading="With autocomplete"
+            description="By number and by name"
             [content]="example3"
         >
             <tui-input-phone-example-3></tui-input-phone-example-3>
@@ -51,44 +58,50 @@
                     [tuiHintDirection]="hintDirection"
                     [tuiHintMode]="hintMode"
                 >
-                    Введите телефон
+                    Type a phone number
                 </tui-input-phone>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент формы disabled (через formControl.disable())
+                Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="countryCode"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="countryCodes"
                 [(documentationPropertyValue)]="countryCode"
             >
-                Код страны
+                Country code
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="phoneMaskAfterCountryCode"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="phoneMasksAfterCountryCode"
                 [(documentationPropertyValue)]="phoneMaskAfterCountryCode"
             >
-                Маска номера после кода страны. В качестве символов шаблона
-                можно передавать <code>#</code>,<code>-</code> и пробелы.
+                Text mask after country code. You can use <code>#</code>,<code
+                    >-</code
+                >
+                and spaces as a template sumbol
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="search"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="string"
             >
-                Значение нативного поля при вводе текста для подписки на ввод и
-                передачи снаружи
+                Textfield value to subscribe on input or setting it from the
+                outside
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>
@@ -97,9 +110,11 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модули для работы с формами из
-                Angular и модуль <code>TuiInputPhoneModule</code> в тот же
-                модуль, куда добавляется ваш компонент:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiInputPhoneModule</code> in the same module where
+                    you want to use our component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -108,8 +123,10 @@
             </li>
 
             <li>
-                Объявить форму (<code>FormGroup</code>) или контрол
-                (<code>FormControl</code>) в компоненте:
+                <p i18n>
+                    Declare a form (<code>FormGroup</code>) or a control
+                    (<code>FormControl</code>) in your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -118,7 +135,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -1,11 +1,11 @@
 <tui-stepper>
     <a routerLink="/step-1" routerLinkActive tuiStep>
-        Шаг 1
+        One 1
     </a>
     <a routerLink="/step-2" routerLinkActive tuiStep>
-        Шаг 2
+        Two 2
     </a>
     <a routerLink="/step-3" routerLinkActive tuiStep>
-        Шаг 3
+        Three 3
     </a>
 </tui-stepper>

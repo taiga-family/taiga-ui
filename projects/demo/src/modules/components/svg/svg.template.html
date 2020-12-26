@@ -1,16 +1,21 @@
-<tui-doc-page header="Svg" package="CORE">
+<tui-doc-page i18n-header header="Svg" package="CORE">
     <ng-template pageTab>
-        Компонент <code>Svg</code> предназначен для вставки SVG-изображений с
-        возможностью наследования цвета.
+        <p i18n><code>Svg</code> for working with SVG-images and its colors</p>
 
-        <tui-doc-example id="all" heading="Все варианты" [content]="example1">
+        <tui-doc-example
+            id="all"
+            i18n-heading
+            heading="All options"
+            [content]="example1"
+        >
             <tui-svg-example-1></tui-svg-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             *ngIf="(themeService | async) !== 'Open-source'"
             id="double"
-            heading="Двойной цвет"
+            i18n-heading
+            heading="Two colors"
             [content]="example2"
         >
             <tui-svg-example-2></tui-svg-example-2>
@@ -24,23 +29,23 @@
 
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="src"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
             >
-                Код SVG-изображения, ссылка на файл, ссылка на сегмент или имя
-                объявленной иконки. При использовании имени или сегмента
-                необходимо задать размер через CSS, так как компоненту он
-                неизвестен.
+                SVG image code, link to a file, link to a segment or icon name.
+                If you use name or segment, set icon size with CSS
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="tui-icon-error"
                 documentationPropertyMode="output"
                 documentationPropertyType="CustomEvent<TuiIconError>"
             >
-                Всплывающее CustomEvent событие ошибки загрузки изображения
+                CustomEvent of loading error
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -48,9 +53,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiSvgModule</code> в тот же модуль, куда добавляется ваш
-                компонент:
+                <p i18n>
+                    Import <code>TuiSvgModule</code> into a module where you
+                    want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -59,7 +65,7 @@
             </li>
 
             <li>
-                Вставить компонент <code>TuiSvg</code> в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

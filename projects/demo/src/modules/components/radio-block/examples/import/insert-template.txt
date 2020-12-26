@@ -1,14 +1,14 @@
 <div [formGroup]="testForm">
     <tui-radio-block formControlName="testValue"
                      item="orange">
-        Апельсины
+        Oranges
     </tui-radio-block>
     <tui-radio-block formControlName="testValue"
                      item="apple">
-        Яблоки
+        Apples
     </tui-radio-block>
     <tui-radio-block formControlName="testValue"
                      item="pineapple">
-        Ананасы
+        Pinapples
     </tui-radio-block>
 </div>

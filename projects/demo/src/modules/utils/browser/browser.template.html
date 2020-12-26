@@ -1,19 +1,19 @@
-<tui-doc-page header="Браузерные утилиты" package="CDK">
+<tui-doc-page i18n-header header="Browser utils" package="CDK">
     <ng-template pageTab>
         <tui-doc-example
             id="browser"
-            heading="Определение браузера"
-            description="Функции для определения браузера пользователя"
+            i18n-heading
+            heading="Browser detection"
             [content]="example1"
         >
             <tui-browser-example-1></tui-browser-example-1>
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключеине">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Для использования достаточно импортировать функции в компоненте
+                <p i18n>Import into component and use:</p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"

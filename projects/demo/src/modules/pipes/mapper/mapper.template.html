@@ -1,28 +1,30 @@
 <tui-doc-page header="Mapper" package="CDK">
-    <ng-template pageTab> Пайп для маппинга. </ng-template>
+    <ng-template i18n pageTab>
+        Pipe to transform a value with a function
+    </ng-template>
 
     <ng-template pageTab>
-        <p class="text">
-            Брюки превращаются в {{trousers | tuiMapper: mapper: args}}
-        </p>
+        <p i18n class="text">Transform: {{value | tuiMapper: mapper: args}}</p>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="mapper"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMapper"
                 [documentationPropertyValues]="mapperVariants"
                 [(documentationPropertyValue)]="mapper"
             >
-                Мап-функция
+                Mapper function
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="args"
                 documentationPropertyMode="input"
                 documentationPropertyType="any"
                 [documentationPropertyValues]="argsVariants"
                 [(documentationPropertyValue)]="args"
             >
-                Произвольное количество аргументов, необходимых маппер-функции
+                Arguments for mapper function
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -30,9 +32,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiMapperPipeModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import <code>TuiMapperPipeModule</code> into a module where
+                    you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -41,8 +44,9 @@
             </li>
 
             <li>
-                Добавить в необходимый <code>binding</code> (в
-                <code>tuiMapper</code> передаем мап-функцию и аргументы):
+                <p i18n>
+                    Use pipe into template with function and its arguments:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

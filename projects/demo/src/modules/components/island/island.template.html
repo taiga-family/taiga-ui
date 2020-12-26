@@ -1,66 +1,70 @@
 <tui-doc-page header="Island" package="KIT">
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
-            Острова (айленды) предназначены для отображения информации в виде
-            блока с рамкой и закругленными углами.
+        <div i18n class="tui-space_bottom-3">
+            Islands show information in rounded block with a border
         </div>
 
-        Для типовых элементов заготовлены классы семейства
         <strong>.tui-island</strong>:
         <ul class="tui-list tui-list_small tui-space_top-3">
             <li class="tui-list__item">
-                <code>.tui-island__category</code>: <b>категория</b>
+                <code>.tui-island__category</code>
             </li>
             <li class="tui-list__item">
-                <code>.tui-island__title</code>: <b>заголовок</b>
+                <code>.tui-island__title</code>
             </li>
             <li class="tui-list__item">
-                <code>.tui-island__paragraph</code>: <b>абзац текста</b>
+                <code>.tui-island__paragraph</code>
                 <ul
                     class="tui-list tui-list_linear tui-list_nested tui-list_extra-small"
                 >
                     <li class="tui-list__item">
-                        <code>.tui-island__paragraph_link</code>: абзац с
-                        ссылками. Отступ вверх <code>16px</code>
+                        <code>.tui-island__paragraph_link</code>: parahraph with
+                        links. Margin top <code>16px</code>
                     </li>
                     <li class="tui-list__item">
-                        <code>.tui-island__paragraph_button</code>: абзац с
-                        кнопками. Отступ вверх <code>20px</code>
+                        <code>.tui-island__paragraph_button</code>: parahraph
+                        with buttons. Margin to <code>20px</code>
                     </li>
                 </ul>
             </li>
             <li class="tui-list__item">
-                <code>.tui-island__figure</code>: <b>фигура</b>
+                <code>.tui-island__figure</code>
             </li>
             <li class="tui-list__item">
-                <code>.tui-island__content</code>: второстепенный класс для
-                случая с фигурой сбоку
+                <code>.tui-island__content</code>: a class for a case when
+                figure is aside
             </li>
             <li class="tui-list__item">
-                <code>.tui-island__carousel-controls</code>: блок с
-                <b>элементами управления каруселью</b>
+                <code>.tui-island__carousel-controls</code>: block with
+                <b>carousel actions</b>
             </li>
             <li class="tui-list__item">
                 <code>.tui-island__carousel-button</code>:
-                <b>кнопка управления каруселью</b>
+                <b>button for carousel</b>
             </li>
             <li class="tui-list__item">
                 <code>.tui-island__carousel-pages</code>:
-                <b>страницы карусели</b>
+                <b>carousel pages</b>
             </li>
             <li class="tui-list__item">
                 <code>.tui-island__footer-button</code>:
-                <b>футерная кнопка</b> на всю ширину айленда
+                <b>footer button</b> with island width
             </li>
         </ul>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-island-example-1></tui-island-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             id="full-featured"
-            heading="со всеми опциями"
+            i18n-heading
+            heading="Many options"
             [content]="example2"
         >
             <tui-island-example-2></tui-island-example-2>
@@ -68,7 +72,8 @@
 
         <tui-doc-example
             id="custom"
-            heading="кастомная верстка"
+            i18n-heading
+            heading="Custom"
             [content]="example3"
         >
             <tui-island-example-3></tui-island-example-3>
@@ -88,11 +93,8 @@
                         <div class="some-figure"></div>
                     </figure>
                     <div>
-                        <h3 class="tui-island__title">Дебетовая карта</h3>
-                        <p class="tui-island__paragraph">
-                            Для участия в розыгрыше нужно в одной из социальных
-                            сетей Facebook, Instagram, Twitter.
-                        </p>
+                        <h3 class="tui-island__title">Some heading</h3>
+                        <p class="tui-island__paragraph">Some information</p>
                         <p
                             class="tui-island__paragraph tui-island__paragraph_button"
                         >
@@ -102,7 +104,7 @@
                                 appearance="secondary"
                                 [size]="size"
                             >
-                                Кнопка
+                                Button
                             </button>
                         </p>
                     </div>
@@ -111,21 +113,23 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="hoverable"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
                 [(documentationPropertyValue)]="hoverable"
             >
-                Позволяет включить эффект наведения
+                Hoverable
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер
+                Size
             </ng-template>
             <ng-template
                 documentationPropertyName="textAlign"
@@ -134,7 +138,7 @@
                 [documentationPropertyValues]="textAlignVariants"
                 [(documentationPropertyValue)]="textAlign"
             >
-                Выравнивание текста
+                Text align
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -142,9 +146,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiIslandModule</code> в тот же модуль, куда добавляется
-                ваш компонент:
+                <p i18n>
+                    Import <code>TuiIslandModule</code> into a module where you
+                    want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -153,7 +158,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

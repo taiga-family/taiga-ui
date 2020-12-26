@@ -6,12 +6,12 @@ this.dialogsService
     .open(
         'Текст',
         {
-            label: 'Заголовок',
-            actions: ['Кнопка 1', 'Кнопка 2'],
-            data: 'Произвольные входные данные'
+            label: 'Heading',
+            actions: ['Button 1', 'Button 2'],
+            data: 'Some data'
         },
     )
     .subscribe(index => {
-        // Индекс нажатой кнопки
+        // Index of clicked button
         console.log(index);
     });

@@ -3,7 +3,7 @@
         tuiLabel
         *ngFor="let phone of formData.controls; let i = index"
         class="tui-space_bottom-4"
-        label="Номер {{i + 1}}"
+        label="Phone number {{i + 1}}"
         formArrayName="phones"
     >
         <div class="row">
@@ -19,14 +19,14 @@
                 type="button"
                 class="tui-space_left-2 icon"
                 size="m"
-                title="Удалить телефон"
+                title="Delete phone number"
                 appearance="icon"
                 icon="tuiIconTrash"
                 (click)="removePhone(i)"
             ></button>
         </div>
-        <ng-template #phoneErrorContent="polymorpheus" polymorpheus>
-            Неверная длина номера
+        <ng-template #phoneErrorContent>
+            Invalid phone number length
         </ng-template>
         <tui-field-error formControlName="{{i}}"></tui-field-error>
     </label>
@@ -43,6 +43,6 @@
         size="s"
         (click)="addPhone()"
     >
-        Добавить телефон
+        Add a phone number
     </button>
 </form>

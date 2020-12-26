@@ -1,9 +1,14 @@
-<tui-doc-page header="Дружественные библиотеки">
+<tui-doc-page i18n-header header="Friendly libraries">
+    <p i18n>
+        We maintain these projects ourselves and higly recommend them for modern
+        Angular apps
+    </p>
+
     <table class="tui-table">
         <tbody>
             <tr class="tui-table__tr">
-                <th class="tui-table__th">Библиотека</th>
-                <th class="tui-table__th">Назначение</th>
+                <th i18n class="tui-table__th">Library</th>
+                <th i18n class="tui-table__th">About</th>
             </tr>
             <tr class="tui-table__tr">
                 <td class="tui-table__td cell">
@@ -13,22 +18,12 @@
                     >
                         @tinkoff/ng-polymorpheus
                     </a>
-                    <p>
-                        <strong>Важно:</strong>
-                        Сейчас включена в dependency кита, после выхода 2.0
-                        будет перенесена в peerDependency
-                    </p>
                 </td>
-                <td class="tui-table__td">
-                    Библиотека для использования полиморфных шаблонов в Angular
-                    <p>
-                        <a
-                            tuiLink
-                            href="https://habr.com/ru/company/tinkoff/blog/473108/"
-                        >
-                            Читать статью о пакете
-                        </a>
-                    </p>
+                <td i18n class="tui-table__td">
+                    A tiny library that abstracts over different ways of view
+                    customization in Angular with one simple attribute
+                    component.
+                    <strong>Included with <code>@taiga-ui/cdk</code></strong>
                 </td>
             </tr>
             <tr class="tui-table__tr">
@@ -39,22 +34,17 @@
                     >
                         @tinkoff/ng-event-plugins
                     </a>
-                    <p>
-                        <strong>Важно:</strong>
-                        Сейчас включена в dependency кита, после выхода 2.0
-                        будет перенесена в peerDependency
-                    </p>
                 </td>
-                <td class="tui-table__td">
-                    Набор плагинов для обработки событий. Включается
-                    атоматически в
-                    <code>TuiRootModule</code> и позволяет добавлять
-                    модификаторы <code>.stop</code>, <code>.prevent</code> и
-                    <code>.silent</code> к имени события при подписке для
-                    декларативного вызова stopPropagation, preventDefault и
-                    вызова обработчика вне проверки изменений Angular. Для
-                    запуска проверки и вызова обработчика по условию используйте
-                    декоратор <code>shouldCall</code>.
+                <td i18n class="tui-table__td">
+                    Angular event plugins library for optimizing change
+                    detection cycles for performance sensitive events (such as
+                    <code>touchmove</code>, <code>scroll</code>,
+                    <code>drag</code> etc.) and declarative
+                    <code>preventDefault()</code> and
+                    <code>stopPropagation()</code> as well as capture phase
+                    listeners.
+                    <strong>Included with <code>@taiga-ui/cdk</code></strong>
+                    and enabled by <code>TuiRootModule</code>
                 </td>
             </tr>
             <tr class="tui-table__tr">
@@ -66,22 +56,13 @@
                         @tinkoff/ng-dompurify
                     </a>
                 </td>
-                <td class="tui-table__td">
-                    Библиотека для использования
+                <td i18n class="tui-table__td">
+                    This library implements DOMPurify as Angular Sanitizer or
+                    Pipe. It delegates sanitizing to DOMPurify and supports the
+                    same configuration. See
                     <a tuiLink href="https://github.com/cure53/DOMPurify">
                         DOMPurify
                     </a>
-                    в Angular. Позволяет очищать содержимое при вставке в DOM
-                    специализированными средствами, вместо встроенного
-                    санитайзера Angular.
-                    <p>
-                        <a
-                            tuiLink
-                            href="https://habr.com/ru/company/tinkoff/blog/459396/"
-                        >
-                            Читать статью о пакете
-                        </a>
-                    </p>
                 </td>
             </tr>
             <tr class="tui-table__tr">
@@ -93,17 +74,12 @@
                         @tinkoff/angular-contenteditable-accessor
                     </a>
                 </td>
-                <td class="tui-table__td">
-                    Директива для использования форм Angular с contentediable
-                    элементами
-                    <p>
-                        <a
-                            tuiLink
-                            href="https://habr.com/ru/company/tinkoff/blog/443714/"
-                        >
-                            Читать статью о пакете
-                        </a>
-                    </p>
+                <td i18n class="tui-table__td">
+                    This accessor allows you to use Angular forms with
+                    contenteditable elements with ease. It has zero
+                    dependencies, other than Angular itself as peer and works
+                    with Angular 4+ in all modern browsers, including Internet
+                    Explorer 11
                 </td>
             </tr>
             <tr class="tui-table__tr">
@@ -112,44 +88,15 @@
                         Web APIs for Angular
                     </a>
                 </td>
-                <td class="tui-table__td">
-                    Сайд проект команды кита — набор микробиблиотек для
-                    использования всевозможного нативного API идиоматически в
-                    Angular:
-                    <ul class="tui-list tui-list_linear tui-space_top-4">
-                        <li class="tui-list__item">
-                            <a
-                                tuiLink
-                                href="https://github.com/ng-web-apis/payment-request"
-                            >
-                                Payment Request API
-                            </a>
-                        </li>
-                        <li class="tui-list__item">
-                            <a
-                                tuiLink
-                                href="https://github.com/ng-web-apis/geolocation"
-                            >
-                                Geolocation API
-                            </a>
-                        </li>
-                        <li class="tui-list__item">
-                            <a
-                                tuiLink
-                                href="https://github.com/ng-web-apis/audio"
-                            >
-                                Web Audio API
-                            </a>
-                        </li>
-                        <li class="tui-list__item">
-                            <a
-                                tuiLink
-                                href="https://github.com/ng-web-apis/midi"
-                            >
-                                Web MIDI API
-                            </a>
-                        </li>
-                    </ul>
+                <td i18n class="tui-table__td">
+                    High quality lightweight wrappers for native Web APIs for
+                    idiomatic use with Angular.
+                    <strong>
+                        <code>@ng-web-apis/common</code>,
+                        <code>@ng-web-apis/mutation-observer</code> and
+                        <code>@ng-web-apis/resize-observer</code> are included
+                        with <code>@taiga-ui/cdk</code>
+                    </strong>
                 </td>
             </tr>
         </tbody>

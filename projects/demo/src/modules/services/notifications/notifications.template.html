@@ -1,27 +1,27 @@
 <tui-doc-page header="NotificationsService" package="CORE">
     <ng-template pageTab>
-        Сервис для показа нотификаций.
-        <p>
-            <strong>Опциональный</strong> — добавьте
-            <code>TuiNotificationsModule</code> в ваш главный модуль
+        <p i18n>Service to show notifications</p>
+        <p i18n>
+            Do not forget to add
+            <code>TuiNotificationsModule</code> into your app.module to use it
         </p>
-        <p></p>
-        <p>
-            <strong>Синглтон сервис</strong> — импортировать нигде не нужно,
-            достаточно инжектить сразу в конструкторе компонента.
+
+        <p i18n>
+            <strong>Singleton</strong> you do not need to provide a service. It
+            is just available to inject
         </p>
 
         <tui-doc-example id="text" heading="Текст" [content]="example1">
             <tui-notifications-example-1></tui-notifications-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="template" heading="Шаблон" [content]="example2">
+        <tui-doc-example id="template" heading="Template" [content]="example2">
             <tui-notifications-example-2></tui-notifications-example-2>
         </tui-doc-example>
 
         <tui-doc-example
             id="component"
-            heading="Компонент"
+            heading="Component"
             [content]="example3"
         >
             <tui-notifications-example-3></tui-notifications-example-3>
@@ -29,7 +29,8 @@
 
         <tui-doc-example
             id="data"
-            heading="Компонент с данными"
+            i18n-heading
+            heading="Component with data"
             [content]="example4"
         >
             <tui-notifications-example-4></tui-notifications-example-4>
@@ -38,13 +39,13 @@
 
     <ng-template pageTab>
         <button tuiButton type="button" size="m" (click)="showNotification()">
-            Показать
+            Show
         </button>
-        <div class="b-full-width">
-            <p>Показ нотификации осуществляется с помощью метода</p>
+        <div i18n class="b-full-width">
+            <p>To show notification, use method</p>
             <p>
                 <code>
-                    <div>showNotification&lt;O, I&gt;(</div>
+                    <div>show&lt;O, I&gt;(</div>
                     <div>
                         &nbsp;&nbsp;&nbsp;&nbsp;content:
                         PolymorpheusContent&lt;TuiNotificationContentContext&lt;O,
@@ -57,74 +58,78 @@
                     <div>): Observable&lt;O&gt;</div>
                 </code>
             </p>
-            сервиса <code>TuiNotificationsService</code>, где <code>O</code> —
-            тип выходных данных нотификаций и <code>I</code> — входных. Если
-            контент не требует входных данных, второй аргумент опционален. В
-            примере выше оба типа <code>number</code>.
+            of <code>TuiNotificationsService</code>, where <code>O</code> is
+            output data type and <code>I</code> is input data type. If content
+            does not need input data, the second argument is optional. In the
+            sample above the both of them are <code>number</code>.
             <p>
-                Для программного скрытия нотификации можно отписаться от
-                <code>Observable</code>, возвращаемого методами сервиса. Для
-                этого можно хранить подписку или использовать любые
-                <code>RxJs</code> средства, вроде <code>TakeUntil</code>.
+                You can also just unsubcribe from a stream to hode a
+                notification (this observable is returned from
+                <code>open</code> method). You can save a subscription for that
+                or use <code>takeUntil</code> like tools from <code>RxJs</code>
             </p>
         </div>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="content"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="contentVariants"
                 [(documentationPropertyValue)]="content"
             >
-                Контент
+                Content
             </ng-template>
         </tui-doc-documentation>
-        <br />
-        <p>Поля интерфейса <code>TuiNotificationOptionsWithData</code>:</p>
+        <p i18n><code>TuiNotificationOptionsWithData</code> interface:</p>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="status"
                 documentationPropertyType="TuiNotification"
                 [documentationPropertyValues]="statusVariants"
                 [(documentationPropertyValue)]="status"
             >
-                Статус
+                Status
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="label"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="label"
             >
-                Заголовок
+                Heading
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="data"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="data"
             >
-                Данные, передаваемые в нотификацию, тип &lt;I&gt;
+                Input data of notification, type &lt;I&gt;
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="autoClose"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="autoClose"
             >
-                Автоматическое закрытие через 3 секунды
+                Autoclose after 3 seconds
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="hasCloseButton"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="hasCloseButton"
             >
-                Наличие крестика для закрытия
+                Has close button
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p>
-                    Добавьте <code>TuiNotificationsModule</code> в ваш главный
-                    модуль
+                <p i18n>
+                    Add <code>TuiNotificationsModule</code> into your app.module
                 </p>
 
                 <tui-doc-code
@@ -134,9 +139,10 @@
             </li>
 
             <li>
-                Для отображения нотификации вызвать метод сервиса
-                <code>showNotification</code> и подписаться на ответный
-                <code>Observable</code>:
+                <p i18n>
+                    Use service <code>show</code> method and subscribe to
+                    <code>Observable</code>
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -144,24 +150,25 @@
                 ></tui-doc-code>
             </li>
 
-            <li>
-                Для передачи нотификации с произвольным содержимым можно
-                передать
+            <li i18n>
+                To pass notification with custom content, you can use
                 <a
                     routerLink="/tui-notifications-service"
                     fragment="example-template"
                     tuiLink
                 >
-                    <code>свой шаблон</code> </a
+                    <code>your template</code> </a
                 >.
             </li>
 
             <li>
-                Если требуется реализовать нотификацию с произвольным шаблоном,
-                в том числе с полями ввода и возвратом значения, можно также
-                создать свой компонент и прокинуть в него токен
-                <code>POLYMORPHEUS_CONTEXT</code>. В случае нотификаций, он
-                реализует следующий интерфейс:
+                <p i18n>
+                    You can also customize notification logic with a component.
+                    Use <code>POLYMORPHEUS_CONTEXT</code> into the component to
+                    get context input data and to output results. It has the
+                    following interface:
+                </p>
+
                 <p>
                     <code>
                         <div>
@@ -185,9 +192,12 @@
                         {{'}'}}
                     </code>
                 </p>
-                где O — возвращаемое значение, I — входные данные. При этом,
-                необходимо добавить сам компонент в
-                <code>entryComponents</code> вашего модуля:
+
+                <div i18n>
+                    where O is output data type and I is input data type. Do not
+                    forget to add notification component into
+                    <code>entryComponents</code> of your module:
+                </div>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -196,12 +206,14 @@
             </li>
 
             <li>
-                Чтобы затем показать нотификацию из компонента с передачей
-                данных нужно создать компонентный контент с помощью
-                <code
-                    >new
-                    PolymorpheusComponent(CustomNotificationComponent)</code
-                >:
+                <p i18n>
+                    Use
+                    <code
+                        >new
+                        PolymorpheusComponent(CustomNotificationComponent)</code
+                    >
+                    to show notification component with a service:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -210,9 +222,11 @@
             </li>
 
             <li>
-                Закрытие и передача данных из нотификации осуществляется
-                методами контекста <code>emitHook</code>,
-                <code>closeHook</code> и <code>emitAndCloseHook</code>:
+                <p i18n>
+                    Use <code>emitHook</code>, <code>closeHook</code> and
+                    <code>emitAndCloseHook</code> methods to control
+                    notification from itself:
+                </p>
 
                 <tui-doc-code
                     filename="сustomNotification.component.ts"
@@ -221,10 +235,11 @@
             </li>
 
             <li>
-                Для использования компонентной нотификации в lazy подгруженных
-                модулях, передайте в
-                <code>new TuiComponentContent Injector</code> компонента, из
-                которого вызываете нотификацию:
+                <p i18n>
+                    If you use it from lazy loading modules, do not forget to
+                    use <code>new TuiComponentContent Injector</code> of
+                    component where you call it
+                </p>
 
                 <tui-doc-code
                     filename="сustomNotification.component.ts"

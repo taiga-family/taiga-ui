@@ -48,12 +48,12 @@ function inspectObject(object: {[key: string]: any}, depth: number): string {
     return `${prefix}{${result}}`;
 }
 
-// @bad TODO добавить больше типов
+// @bad TODO add more types
 /**
- * Выводит в человекочитаемом виде JS сущности.
- * @param data сущность
- * @param depth глубина
- * @return человекочитаемый вид JS сущности
+ * Returns readable JS entity
+ * @param data
+ * @param depth
+ * @return readable JS entity
  */
 export function inspectAny(data: any, depth: number): string {
     if (data === null) {

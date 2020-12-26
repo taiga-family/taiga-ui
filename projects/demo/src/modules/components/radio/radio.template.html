@@ -1,18 +1,27 @@
 <tui-doc-page header="Radio" package="KIT">
     <ng-template pageTab>
-        Радио-кнопка без лейбла. Для использования с&nbsp;лейблом&nbsp;см.
-        <a tuiLink routerLink="/tui-radio-labeled"><code>RadioLabeled</code></a
-        >, внутри кнопки см.
-        <a tuiLink routerLink="/tui-radio-block"><code>RadioBlock</code></a
-        >.
+        <p i18n>
+            Radio button without a label. If use want to have a label, see
+            <a tuiLink routerLink="/tui-radio-labeled"
+                ><code>RadioLabeled</code></a
+            >, and inside button
+            <a tuiLink routerLink="/tui-radio-block"><code>RadioBlock</code></a
+            >.
+        </p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-radio-example-1></tui-radio-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             id="large"
-            heading="большой размер"
+            i18n-heading
+            heading="Big size"
             [content]="example2"
         >
             <tui-radio-example-2></tui-radio-example-2>
@@ -66,48 +75,49 @@
                 ></tui-radio>
             </ng-template>
         </tui-doc-demo>
-        <button tuiButton type="button" size="m" (click)="onClick()">
-            Задать значение копией
+        <button i18n tuiButton type="button" size="m" (click)="onClick()">
+            Set a value with a copy
         </button>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент формы disabled (через formControl.disable())
+                Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiIdentityMatcher"
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
             >
-                Функция определения равенства объектов (нужна в случае, если
-                выбранное значение задано изначально и не присутствует в
-                <code>items</code>, однако там есть точная копия, которую можно
-                определить по какому-нибудь критерию. По умолчанию используется
-                сравнение <code>===</code>.
-                <strong>Должна быть чистой функцией</strong>
+                Function that matches value and items, e.g. if objects are
+                copied. Uses <code>===</code> by default.
+
+                <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pseudoDisabled"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="pseudoDisabled"
             >
-                Disabled&nbsp;&mdash; установить принудительно, не изменяя
-                значение формы
+                Emulates disabled state without disabling a form
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер контрола
+                Size
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
@@ -115,10 +125,9 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модули для работы с формами из
-                Angular и модуль
-                <code>TuiRadioModule</code> в тот же модуль, куда добавляется
-                ваш компонент:
+                Import an Angular module for forms and
+                <code>TuiRadioModule</code> in the same module where you want to
+                use our component:
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -127,8 +136,10 @@
             </li>
 
             <li>
-                Объявить форму (<code>FormGroup</code>) или контрол
-                (<code>FormControl</code>) в компоненте:
+                <p i18n>
+                    Declare a form (<code>FormGroup</code>) or a control
+                    (<code>FormControl</code>) in your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -137,7 +148,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

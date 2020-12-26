@@ -1,10 +1,11 @@
-<tui-doc-page header="LegendItem" package="ADDON-CHARTS">
+<tui-doc-page i18n-header header="LegendItem" package="ADDON-CHARTS">
     <ng-template pageTab>
-        Компонент кнопки для легенды круговых диаграмм
+        <p i18n>A button for a legend of ring or pie charts</p>
 
         <tui-doc-example
             id="ring"
-            heading="с кольцевой диаграммой"
+            i18n-heading
+            heading="With a ring chart"
             [content]="example1"
         >
             <tui-legend-item-example-1></tui-legend-item-example-1>
@@ -16,36 +17,38 @@
             <tui-legend-item [active]="active" [color]="color" [text]="text">
                 <tui-money [value]="123456" [singleColor]="true"></tui-money>
             </tui-legend-item>
-            <p>
-                Компонент <code>tui-money</code> передан в контент для
-                возможности настроить валюту и отображение копеек
+            <p i18n>
+                <code>tui-money</code> is used to format currency and fraction
             </p>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="active"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="active"
             >
-                Состояние наведённости извне
+                Active state from outside
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="color"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiColor | string | null"
                 [documentationPropertyValues]="colorVariants"
                 [(documentationPropertyValue)]="color"
             >
-                Цвет кружочка
+                Indicator color
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="text"
             >
-                Текст внутри
+                Text inside
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -53,9 +56,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiBarModule</code> в тот же модуль, куда добавляется ваш
-                компонент:
+                <p i18n>
+                    Import <code>TuiBarModule</code> into a module where you
+                    want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -64,7 +68,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -1,9 +1,9 @@
 <form [formGroup]="form">
     <tui-input-card formControlName="card">
-        Номер карты
+        Card number
     </tui-input-card>
     <tui-input-expire formControlName="expire">
-        Срок действия
+        Expire date
     </tui-input-expire>
     <tui-input-cvc formControlName="cvc">
         CVC/CVV

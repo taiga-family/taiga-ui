@@ -1,31 +1,36 @@
 <div class="input-wrapper" [formGroup]="testForm">
-    <label tuiLabel label="Введите ответ" class="tui-space_bottom-4">
+    <label
+        i18n-label
+        tuiLabel
+        label="Type the ultimate answer"
+        class="tui-space_bottom-4"
+    >
         <tui-input
             formControlName="testValue2"
             tuiTextfieldSize="m"
             [tuiTextfieldLabelOutside]="true"
         >
-            На все вопросы вселенной и всего такого
+            to the Question of Life, the Universe, and Everything
         </tui-input>
 
         <tui-field-error formControlName="testValue2"></tui-field-error>
     </label>
 
-    <label tuiLabel label="Задайте пароль">
+    <label tuiLabel i18n-label label="Set a password">
         <tui-input
             formControlName="testValue1"
             tuiTextfieldSize="m"
             [tuiTextfieldLabelOutside]="true"
         >
-            Только латинские буквы
+            Latin letters only
         </tui-input>
 
         <tui-field-error formControlName="testValue1"></tui-field-error>
     </label>
 
-    <p>
-        Если вам нужно отобразить валидацию сразу, как только пользователь начал
-        что-то вводить в поле — подпишитесь на изменения значения формы и
-        вызовите markAsTouched на контроле при первом же изменении значения:
+    <p i18n>
+        If you need to show validation message as early as a user started to
+        type something, subscribe on form value changes and call markAsTouched
+        on control on first value change
     </p>
 </div>

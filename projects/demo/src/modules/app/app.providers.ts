@@ -16,10 +16,10 @@ import {LOGO_CONTENT} from './logo/logo.component';
 import {pages} from './pages';
 
 const DEFAULT_TABS = [
-    'Описание и примеры',
-    'Свойства и методы',
-    'Подключение',
-    'Правила использования',
+    $localize`Description and examples`,
+    $localize`API`,
+    $localize`Setup`,
+    $localize`How to use`,
 ];
 const TITLE_PREFIX = 'Taiga UI: ';
 

@@ -1,16 +1,18 @@
 <tui-doc-page header="PullToRefresh" package="ADDON-MOBILE">
     <ng-template pageTab>
-        Компонент для обновления контента блока по пуллу сверху вниз. Эмулирует
-        внешний вид и поведение нативных вариантов из iOS и Android.
+        <p i18n>
+            Component to refresh content after pull top. It emulates appearance
+            of native iOS and Android components
+        </p>
 
-        <tui-notification class="tui-space_top-4" [hasCloseButton]="false">
+        <tui-notification i18n class="tui-space_top-4">
             <div>
-                Компонент эмитит событие <code>(pulled)</code>, когда
-                пользователь инициировал загрузку.
+                It emits <code>(pulled)</code> event when user wants to start
+                loading.
             </div>
             <div class="tui-space_top-2">
-                Завершить загрузку можно стримом <code>TUI_LOADED</code>,
-                который задается через DI
+                You can finish loading with <code>TUI_LOADED</code> stream token
+                that can be provided in DI
             </div>
         </tui-notification>
 
@@ -23,12 +25,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiPullToRefreshModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import <code>TuiPullToRefreshModule</code> into a module
+                    where you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -37,7 +40,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

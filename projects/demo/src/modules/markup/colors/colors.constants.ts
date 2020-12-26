@@ -6,244 +6,230 @@ export interface Color {
 export const BASE: ReadonlyArray<Color> = [
     {
         name: '--tui-base-01',
-        desc:
-            'Для заливки основного фона страницы и заливки иконок на инвертированных фонах',
+        desc: $localize`Page primary background and icon fill for color inverted background`,
     },
     {
         name: '--tui-base-02',
-        desc:
-            'Для заливки второстпенного фона, плиток на основном фоне и подложки статичных маркерных иконок',
+        desc: $localize`Page secondary background, tile on primary background and background of static marker icons`,
     },
     {
         name: '--tui-base-03',
-        desc: 'Для бордеров таблиц, айлендов и других и блоков',
+        desc: $localize`Table borders, islands and blocks`,
     },
     {
         name: '--tui-base-04',
-        desc:
-            'Для подсветки бордеров айлендов и других и интерактивных блоков при наведении',
+        desc: $localize`Hovered island border or other interactive blocks`,
     },
-    {name: '--tui-base-05', desc: 'Для заливки интерфейсных иконок'},
+    {name: '--tui-base-05', desc: $localize`Interface icons color`},
     {
         name: '--tui-base-06',
-        desc:
-            'Для заливки интерфейсных иконок, для ховера залитых --tui-base-05 интерфейсных иконок',
+        desc: $localize`Hovered color for interactive interface icons with --tui-base-05`,
     },
     {
         name: '--tui-base-07',
-        desc: 'Для заливки блоков с инвертированным от основного фоном',
+        desc: $localize`For blocks with inverted background color`,
     },
-    {name: '--tui-base-08', desc: 'Для заливки интерфейсных иконок'},
+    {name: '--tui-base-08', desc: $localize`Alternative interface icons color`},
     {
         name: '--tui-base-09',
-        desc: 'Для заливки иконок на инвертированном фоне',
+        desc: $localize`Icons color over inverted background`,
     },
     {
         name: '--tui-primary',
-        desc: 'Для заливки основных кнопок, фона макрерных иконок',
+        desc: $localize`Background of buttons, marker icons`,
     },
     {
         name: '--tui-primary-hover',
-        desc: 'Для подсветки основных кнопок при наведении',
+        desc: $localize`Hovered state background of buttons, marker icons`,
     },
     {
         name: '--tui-primary-active',
-        desc: 'Для подсветки основных кнопок в состоянии нажатия',
+        desc: $localize`Active state background of buttons`,
     },
     {
         name: '--tui-secondary',
-        desc: 'Для заливки полей ввода и второстепенных кнопок',
+        desc: $localize`Background of input field and secondary buttons`,
     },
     {
         name: '--tui-secondary-hover',
-        desc: 'Для подсветки полей ввода  и второстепенных кнопок при наведении',
+        desc: $localize`Hovered state background of input field and secondary buttons`,
     },
     {
         name: '--tui-secondary-active',
-        desc: 'Для подсветки второстепенных кнопок в состоянии нажатия',
+        desc: $localize`Active state background of input field and secondary buttons`,
     },
     {
         name: '--tui-accent',
-        desc: 'Для заливки и обводки акцентных элементов: иконок, иллюстраций, кнопок',
+        desc: $localize`Background of accent icons or buttons`,
     },
     {
         name: '--tui-accent-hover',
-        desc: 'Для подсветки акцентных интерактивных элементов при наведении',
+        desc: $localize`Hovered state background of accent icons or buttons`,
     },
     {
         name: '--tui-accent-active',
-        desc: 'Для подсветки акцентных интерактивных элементов при наведении',
+        desc: $localize`Active state background of accent icons or buttons`,
     },
     {
         name: '--tui-selection',
-        desc: 'Для подсветки выделенного текста',
+        desc: $localize`Selected text highlight color`,
     },
     {
         name: '--tui-focus',
-        desc: 'Для обводки сфокусированных элементов',
+        desc: $localize`Focused element border color`,
     },
     {
         name: '--tui-clear',
-        desc: 'Для заливки элементов интерфейса на цветных фонах: тегов, бейджей, кнопок',
+        desc: $localize`Filling color of interface elements on colored background: tages, badges, buttons`,
     },
     {
         name: '--tui-clear-hover',
-        desc: 'Для подсветки элементов интерфейса на цветных фонах при наведении',
+        desc: $localize`Hovered state of filling color of interface elements on colored background`,
     },
     {
         name: '--tui-clear-active',
-        desc: 'Для подсветки элементов интерфейса на цветных фонах при нажатии',
+        desc: $localize`Active state of filling color of interface elements on colored background`,
     },
 ];
 
 export const BASE_NIGHT: ReadonlyArray<Color> = [
     {
         name: '--tui-clear-inverse',
-        desc: 'Для заливки элементов интерфейса на темных фонах: тегов, бейджей, кнопок',
+        desc: $localize`Filling color of interface elements on dark background: tages, badges, buttons`,
     },
     {
         name: '--tui-clear-inverse-hover',
-        desc: 'Для подсветки элементов интерфейса на темных фонах при наведении',
+        desc: $localize`Hovered state of filling color of interface elements on dark background`,
     },
     {
         name: '--tui-clear-inverse-active',
-        desc: 'Для подсветки элементов интерфейса на темных фонах при нажатии',
+        desc: $localize`Active state of filling color of interface elements on dark background`,
     },
 ];
 
 export const STATUS: ReadonlyArray<Color> = [
     {
         name: '--tui-error-fill',
-        desc:
-            'Для заливки иконок и декторативных элементов в компонентах со статусом «ошибка»',
+        desc: $localize`Icons or other elements with error status`,
     },
     {
         name: '--tui-error-bg',
-        desc: 'Для фона компонентов со статусом «ошибка»',
+        desc: $localize`Background for elements with error status`,
     },
     {
         name: '--tui-error-bg-hover',
-        desc: 'Для подсветки фона при наведении у компонентов со статусом «ошибка»',
+        desc: $localize`Hovered state of background for elements with error status`,
     },
     {
         name: '--tui-success-fill',
-        desc:
-            'Для заливки иконок и декторативных элементов в компонентах со статусом «успех»',
+        desc: $localize`Icons or other elements with success status`,
     },
     {
         name: '--tui-success-bg',
-        desc: 'Для фона компонентов со статусом «успех»',
+        desc: $localize`Background for elements with success status`,
     },
     {
         name: '--tui-success-bg-hover',
-        desc: 'Для подсветки фона при наведении у компонентов со статусом «успех»',
+        desc: $localize`Hovered state of background for elements with success status`,
     },
     {
         name: '--tui-warning-fill',
-        desc:
-            'Для заливки иконок и декторативных элементов в компонентах со статусом «внимание»',
+        desc: $localize`Icons or other elements with warning status`,
     },
     {
         name: '--tui-warning-bg',
-        desc: 'Для фона компонентов со статусом «внимание»',
+        desc: $localize`Background icons or other elements with warning status`,
     },
     {
         name: '--tui-warning-bg-hover',
-        desc: 'Для подсветки фона при наведении у компонентов со статусом «внимание»',
+        desc: $localize`Hovered status of background icons or other elements with warning status`,
     },
     {
         name: '--tui-info-fill',
-        desc:
-            'Для заливки иконок и декторативных элементов в компонентах со статусом «информация»',
+        desc: $localize`Icons or other elements with info status`,
     },
     {
         name: '--tui-info-bg',
-        desc: 'Для фона компонентов со статусом «информация»',
+        desc: $localize`Background icons or other elements with info status`,
     },
     {
         name: '--tui-info-bg-hover',
-        desc: 'Для подсветки фона при наведении у компонентов со статусом «информация»',
+        desc: $localize`Hovered status of background icons or other elements with info status`,
     },
     {
         name: '--tui-neutral-fill',
-        desc:
-            'Для заливки иконок и декторативных элементов в компонентах с нейтральным статусом',
+        desc: $localize`Icons or other elements with neutral status`,
     },
     {
         name: '--tui-neutral-bg',
-        desc: 'Для фона компонентов с нейтральным статусом',
+        desc: $localize`Background icons or other elements with neutral status`,
     },
     {
         name: '--tui-neutral-bg-hover',
-        desc: 'Для подсветки фона при наведении у компонентов с нейтральным статусом',
+        desc: $localize`Hovered status of background icons or other elements with neutral status`,
     },
 ];
 
 export const STATUS_NIGHT: ReadonlyArray<Color> = [
     {
         name: '--tui-error-fill-night',
-        desc:
-            'Для заливки иконок и декторативных элементов в компонентах со статусом «ошибка»',
+        desc: $localize`Icons or other elements with error status`,
     },
     {
         name: '--tui-error-bg-night',
-        desc: 'Для фона компонентов со статусом «ошибка»',
+        desc: $localize`Background for elements with error status`,
     },
     {
         name: '--tui-error-bg-night-hover',
-        desc: 'Для подсветки фона при наведении у компонентов со статусом «ошибка»',
+        desc: $localize`Hovered state of background for elements with error status`,
     },
     {
         name: '--tui-success-fill-night',
-        desc:
-            'Для заливки иконок и декторативных элементов в компонентах со статусом «успех»',
+        desc: $localize`Icons or other elements with success status`,
     },
     {
         name: '--tui-success-bg-night',
-        desc: 'Для фона компонентов со статусом «успех»',
+        desc: $localize`Background for elements with success status`,
     },
     {
         name: '--tui-success-bg-night-hover',
-        desc: 'Для подсветки фона при наведении у компонентов со статусом «успех»',
+        desc: $localize`Hovered state of background for elements with success status`,
     },
     {
         name: '--tui-warning-fill-night',
-        desc:
-            'Для заливки иконок и декторативных элементов в компонентах со статусом «внимание»',
+        desc: $localize`Icons or other elements with warning status`,
     },
     {
         name: '--tui-warning-bg-night',
-        desc: 'Для фона компонентов со статусом «внимание»',
+        desc: $localize`Background icons or other elements with warning status`,
     },
     {
         name: '--tui-warning-bg-night-hover',
-        desc: 'Для подсветки фона при наведении у компонентов со статусом «внимание»',
+        desc: $localize`Hovered status of background icons or other elements with warning status`,
     },
     {
         name: '--tui-info-fill-night',
-        desc:
-            'Для заливки иконок и декторативных элементов в компонентах со статусом «информация»',
+        desc: $localize`Icons or other elements with info status`,
     },
     {
         name: '--tui-info-bg-night',
-        desc: 'Для фона компонентов со статусом «информация»',
+        desc: $localize`Background icons or other elements with info status`,
     },
     {
         name: '--tui-info-bg-night-hover',
-        desc: 'Для подсветки фона при наведении у компонентов со статусом «информация»',
+        desc: $localize`Hovered status of background icons or other elements with info status`,
     },
     {
         name: '--tui-neutral-fill-night',
-        desc:
-            'Для заливки иконок и декторативных элементов в компонентах с нейтральным статусом',
+        desc: $localize`Icons or other elements with neutral status`,
     },
     {
         name: '--tui-neutral-bg-night',
-        desc: 'Для фона компонентов с нейтральным статусом',
+        desc: $localize`Background icons or other elements with neutral status`,
     },
     {
         name: '--tui-neutral-bg-night-hover',
-        desc: 'Для подсветки фона при наведении у компонентов с нейтральным статусом',
+        desc: $localize`Hovered status of background icons or other elements with neutral status`,
     },
 ];
 
@@ -274,83 +260,77 @@ export const SUPPORT: readonly string[] = [
 export const TEXT: ReadonlyArray<Color> = [
     {
         name: '--tui-text-01',
-        desc: 'Для основного текста и заголовков',
+        desc: $localize`Primary text and hedings`,
     },
     {
         name: '--tui-text-02',
-        desc: 'Для второстепенного текста и пояснений',
+        desc: $localize`Secondary text and descriptions`,
     },
     {
         name: '--tui-text-03',
-        desc:
-            'Для неактивных и вспомогательных пунктов, незначительных пояснений и хелперов',
+        desc: $localize`Inactive and additional points, minor information and helpers`,
     },
     {
         name: '--tui-link',
-        desc: 'Для ссылок и текста во второстепенных кнопках',
+        desc: $localize`Link and secondary buttons text`,
     },
     {
         name: '--tui-link-hover',
-        desc: 'Для подсветки ссылок и текста во второстепенных кнопках при наведении',
+        desc: $localize`Hovered state of link and secondary buttons text`,
     },
     {
         name: '--tui-positive',
-        desc:
-            'Для позитивных значений: пополнение счета, рост стоимости акций, успешное завершение сценария',
+        desc: $localize`Positive values: income, stock price grow, etc.`,
     },
     {
         name: '--tui-positive-hover',
-        desc: 'Для подсветки позитивных значений при наведении',
+        desc: $localize`Hovered state of positive values: income, stock price grow, etc.`,
     },
     {
         name: '--tui-negative',
-        desc:
-            'Для негативных значений: списания, падение стоимости акций, ошибки в формах',
+        desc: $localize`Negative values: expense, stock price fall, etc.`,
     },
     {
         name: '--tui-negative-hover',
-        desc: 'Для подсветки негативных значений при наведении',
+        desc: $localize`Hovered state of negative values: expense, stock price fall, etc.`,
     },
 ];
 
 export const TEXT_NIGHT: ReadonlyArray<Color> = [
     {
         name: '--tui-text-01-night',
-        desc: 'Для основного текста и заголовков',
+        desc: $localize`Primary text and hedings`,
     },
     {
         name: '--tui-text-02-night',
-        desc: 'Для второстепенного текста и пояснений',
+        desc: $localize`Secondary text and descriptions`,
     },
     {
         name: '--tui-text-03-night',
-        desc:
-            'Для неактивных и вспомогательных пунктов, незначительных пояснений и хелперов',
+        desc: $localize`Inactive and additional points, minor information and helpers`,
     },
     {
         name: '--tui-link-night',
-        desc: 'Для ссылок и текста во второстепенных кнопках',
+        desc: $localize`Link and secondary buttons text`,
     },
     {
         name: '--tui-link-night-hover',
-        desc: 'Для подсветки ссылок и текста во второстепенных кнопках при наведении',
+        desc: $localize`Hovered state of link and secondary buttons text`,
     },
     {
         name: '--tui-positive-night',
-        desc:
-            'Для позитивных значений: пополнение счета, рост стоимости акций, успешное завершение сценария',
+        desc: $localize`Positive values: income, stock price grow, etc.`,
     },
     {
         name: '--tui-positive-night-hover',
-        desc: 'Для подсветки позитивных значений при наведении',
+        desc: $localize`Hovered state of positive values: income, stock price grow, etc.`,
     },
     {
         name: '--tui-negative-night',
-        desc:
-            'Для негативных значений: списания, падение стоимости акций, ошибки в формах',
+        desc: $localize`Negative values: expense, stock price fall, etc.`,
     },
     {
         name: '--tui-negative-night-hover',
-        desc: 'Для подсветки негативных значений при наведении',
+        desc: $localize`Hovered state of negative values: expense, stock price fall, etc.`,
     },
 ];

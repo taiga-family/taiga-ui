@@ -1,5 +1,5 @@
 <form class="input-wrapper" [formGroup]="testForm">
-    <label tuiLabel label="ИНН">
+    <label tuiLabel label="Secret number">
         <tui-input
             formControlName="testValue1"
             tuiTextfieldSize="m"
@@ -7,8 +7,7 @@
         ></tui-input>
 
         <ng-template #errorContent="polymorpheus" polymorpheus>
-            ИНН — 10 или 12 цифр. См.
-            <a href="https://google.com" tuiLink> Google </a>
+            Secret number must contain <strong>10 or 12 digits</strong>.
         </ng-template>
 
         <tui-field-error
@@ -19,8 +18,9 @@
 
     <label
         tuiLabel
+        i18n-label
         class="tui-space_top-4"
-        label="Введите название вашей компании"
+        label="Enter company name"
     >
         <tui-input
             formControlName="testValue2"
@@ -29,9 +29,9 @@
         ></tui-input>
 
         <ng-template #bigErrorContent="polymorpheus" polymorpheus>
-            Данная компания уже зарегистрирована!
+            This company is already registered
             <button tuiButton type="button" class="tui-space_top-2">
-                Я владелец
+                It is mine
             </button>
         </ng-template>
 

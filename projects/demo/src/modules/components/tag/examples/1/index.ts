@@ -9,5 +9,5 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiTagExample1 {
-    tag = 'Январь';
+    tag = 'Hello';
 }

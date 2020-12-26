@@ -31,7 +31,7 @@ export class TuiLineDaysChartExample1 {
         `${this.months[month]}, ${day}`;
 
     readonly yStringify: TuiStringHandler<number> = y =>
-        `${(10 * y).toLocaleString('ru-RU', {maximumFractionDigits: 0})} $`;
+        `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
 
     constructor(@Inject(TUI_MONTHS) private readonly months: readonly string[]) {}
 

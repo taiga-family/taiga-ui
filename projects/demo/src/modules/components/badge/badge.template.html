@@ -1,23 +1,29 @@
 <tui-doc-page header="Badge" package="KIT">
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
-            Бэджи содержат текстовые и числовые значения. Числовые значения
-            указывают, например, на количество непрочитанных сообщений или
-            нотификаций.
+        <div i18n class="tui-space_bottom-3">
+            Badges show text and number values. Number values may show new
+            message or notifications.
         </div>
 
-        Используйте бэджи для привлечения внимания к новому или обновленному
-        контенту. Бэджи с числовыми значениями обычно помещаются после метки и
-        содержат только цифры или знак «+», который указывает количество,
-        большее, чем максимальное значение.
+        <p i18n>
+            Use badges to attract attenton to a new or updated content. Number
+            values may also be with "+" sign that shows that number is more than
+            maximum value to show.
+        </p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-badge-example-1></tui-badge-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             id="size"
-            heading="размеры и hoverable"
+            i18n-heading
+            heading="Sizes and hoverable"
             [content]="example2"
         >
             <tui-badge-example-2></tui-badge-example-2>
@@ -25,7 +31,8 @@
 
         <tui-doc-example
             id="custom"
-            heading="кастомный цвет"
+            i18n-heading
+            heading="Custom"
             [content]="example3"
         >
             <tui-badge-example-3></tui-badge-example-3>
@@ -33,7 +40,8 @@
 
         <tui-doc-example
             id="notification"
-            heading="с нотификациями"
+            i18n-heading
+            heading="With notifications"
             [content]="example4"
         >
             <tui-badge-example-4></tui-badge-example-4>
@@ -51,40 +59,44 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="hoverable"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
                 [(documentationPropertyValue)]="hoverable"
             >
-                Позволяет включить изменение цвета при наведении
+                Enable hovered state
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер бэджа
+                Size
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="status"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiStatus | TuiSupportColor"
                 [documentationPropertyValues]="statusVariants"
                 [(documentationPropertyValue)]="status"
             >
-                Статус меняет цвет бейджа
+                Status changes badge color
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input"
                 documentationPropertyType="string | number"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >
-                Значение. Числовые значения, превыщающие 99, заменяются
-                на&nbsp;&laquo;99+&raquo;
+                Value. If value is a number and is more than 99, it will be
+                replaced with &laquo;99+&raquo;
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -92,9 +104,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiBadgeModule</code> в тот же модуль, куда добавляется
-                ваш компонент:
+                <p i18n>
+                    Import <code>TuiBadgeModule</code> into a module where you
+                    want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -103,7 +116,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

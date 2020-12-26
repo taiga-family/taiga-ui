@@ -2,10 +2,10 @@
     <tui-input
         *tuiLet="users$ | async as users"
         formControlName="user"
-        tuiTextfieldExampleText="введите имя или фамилию"
+        tuiTextfieldExampleText="Type ypur name or surname"
         [tuiTextfieldCustomContent]="content"
     >
-        Пользователь
+        User
         <ng-container *ngIf="users.length">
             <tui-data-list *tuiDataList>
                 <button
@@ -34,7 +34,7 @@
         ></tui-avatar>
     </ng-template>
     <tui-input class="tui-space_vertical-5" formControlName="account">
-        Счет
+        Account
         <tui-data-list-wrapper
             *tuiDataList
             [items]="accounts"
@@ -52,6 +52,6 @@
         [tuiTextfieldCleaner]="true"
         [cardSrc]="card"
     >
-        Номер карты
+        Card number
     </tui-input-card>
 </form>

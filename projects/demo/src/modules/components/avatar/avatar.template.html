@@ -1,19 +1,23 @@
 <tui-doc-page header="Avatar" package="KIT">
     <ng-template pageTab>
-        <p>
-            Аватар используется для отображения в&nbsp;интерфейсе миниатюрного
-            представления личности или компании. Аватар может иметь различные
-            представления: первую букву фамилии, две первые буквы имени
-            и&nbsp;фамилии, фотографию или иконку.
+        <p i18n>
+            Use Avatar to view person or company. It can be photo, icon or first
+            letters of name.
         </p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-avatar-example-1></tui-avatar-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             id="autocolor"
-            heading="цветные аватары"
+            i18n-heading
+            heading="Colors"
             [content]="example2"
         >
             <tui-avatar-example-2></tui-avatar-example-2>
@@ -32,60 +36,66 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="autoColor"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
                 [(documentationPropertyValue)]="autoColor"
             >
-                Автоматическое задание цвета для аватара
+                Autocolor if there is no image
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="avatarUrl"
                 documentationPropertyType="string | null"
                 documentationPropertyMode="input"
                 [documentationPropertyValues]="avatarUrlVariants"
                 [(documentationPropertyValue)]="avatarUrl"
             >
-                URL аватара
+                Avatar URL
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="rounded"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
                 [(documentationPropertyValue)]="rounded"
             >
-                Круглый аватар
+                Rounded mode
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyType="TuiSizeXS | TuiSizeXXL"
                 documentationPropertyMode="input"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер
+                Size
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="text"
                 documentationPropertyType="string"
                 documentationPropertyMode="input"
                 [(documentationPropertyValue)]="text"
             >
-                Текст имени (для вывода первых букв, если аватар без картинки)
+                Name (Avatar shows first letters of name if there is no image)
             </ng-template>
         </tui-doc-documentation>
-        <i>
-            Не рекомендуется ставить большую картинку на маленький аватар — IE и
-            Firefox плохо уменьшают картинки.
+        <i i18n>
+            Better do not use big images with Avatar. Some browsers like IE or
+            Firefox work with resized image not so good.
         </i>
     </ng-template>
 
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiAvatarModule</code> в тот же модуль, куда добавляется
-                ваш компонент:
+                <p i18n>
+                    Import <code>TuiAvatarModule</code> into a module where you
+                    want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -94,7 +104,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

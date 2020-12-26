@@ -1,10 +1,16 @@
 <tui-doc-page header="TableBarsService" package="ADDON-TABLEBARS">
     <ng-template pageTab>
-        Отображается внизу экрана и используется для отображения списка действий
-        как при массовом выборе элементов, так и&nbsp;при одиночном выборе.
-        Содержимое может быть произвольным, в&nbsp;зависимости от&nbsp;кейсов.
+        <p i18n>
+            It is an element on the bottom of screen to show actions by
+            multiselect of some items. It works with custom content.
+        </p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-table-bar-example-1></tui-table-bar-example-1>
         </tui-doc-example>
     </ng-template>
@@ -18,47 +24,49 @@
                 size="m"
                 (click)="showTableBar()"
             >
-                Показать tableBar
+                Show tableBar
             </button>
             <button tuiButton type="button" size="m" (click)="destroy()">
-                Скрыть tableBar
+                Hide tableBar
             </button>
         </div>
         <ng-template #tableBarTemplate polymorpheus>
-            <p>Переданный шаблон</p>
+            <p>Some template</p>
         </ng-template>
         <br />
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="adaptive"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="adaptive"
             >
-                Адаптивный шаблон
+                Adaprive content
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="hasCloseButton"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="hasCloseButton"
             >
-                Крестик для закрытия
+                Enable close button
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="mode"
                 documentationPropertyType="TuiBrightness"
                 [documentationPropertyValues]="modeVariants"
                 [(documentationPropertyValue)]="mode"
             >
-                Мод внешнего вида
+                Light / dark mode
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p>
-                    Добавьте <code>TuiTableBarsHostModule</code> в ваш главный
-                    модуль
+                <p i18n>
+                    Add <code>TuiTableBarsHostModule</code> into your app.module
                 </p>
 
                 <tui-doc-code
@@ -67,9 +75,8 @@
                 ></tui-doc-code>
             </li>
             <li>
-                <p>
-                    Добавьте <code>tui-table-bars-host</code> в шаблон следующим
-                    образом
+                <p i18n>
+                    Add <code>tui-table-bars-host</code> into your app.template
                 </p>
 
                 <tui-doc-code
@@ -78,11 +85,10 @@
                 ></tui-doc-code>
             </li>
             <li>
-                Для отображения TableBar вызвать метод сервиса
-                <code>showTableBar</code> и подписаться на ответный
-                <code>Observable</code>.
-                <br />
-                Для передачи содержимого нужно передать свой PolymorpheusContent
+                <p i18n>
+                    Use <code>open</code> method and subscribe to returened
+                    <code>Observable</code>
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
@@ -96,10 +102,12 @@
             </li>
 
             <li>
-                Для использования попапов в lazy подгруженных модулях, передайте
-                в
-                <code>new TuiComponentContent Injector</code> компонента, из
-                которого вызываете TableBar:
+                <p i18n>
+                    If you use component in lazy loading modules, do not forget
+                    to pass into
+                    <code>new PolymorpheusComponent Injector</code> of component
+                    where you open table bar
+                </p>
 
                 <tui-doc-code
                     filename="сustomNotification.component.ts"

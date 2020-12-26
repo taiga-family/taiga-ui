@@ -1,8 +1,13 @@
 <tui-doc-page header="InputRange" package="KIT">
     <ng-template pageTab>
-        Компонент для ввода диапазона значений
+        <p i18n>Component to input a range of values</p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-input-range-example-1></tui-input-range-example-1>
         </tui-doc-example>
     </ng-template>
@@ -26,118 +31,128 @@
                     [quantum]="quantum"
                     [readOnly]="readOnly"
                 >
-                    Срок
+                    Range
                 </tui-input-range>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент формы disabled (через formControl.disable())
+                Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="quantum"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="quantumVariants"
                 [(documentationPropertyValue)]="quantum"
             >
-                Минимальное неделимое значение
+                Minimum indivisible value
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальная величина
+                Min value
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальная величина
+                Max value
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="minLabel"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="minLabelVariants"
                 [(documentationPropertyValue)]="minLabel"
             >
-                Подпись для минимального значения
+                Label for min value
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="maxLabel"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="maxLabelVariants"
                 [(documentationPropertyValue)]="maxLabel"
             >
-                Подпись для максимального значения
+                Label for max value
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pluralize"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiPluralize"
                 [documentationPropertyValues]="pluralizeVariants"
                 [(documentationPropertyValue)]="pluralize"
             >
-                Формы множественного числа для подписей
+                Plural forms for labels
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="segments"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="segmentsVariants"
                 [(documentationPropertyValue)]="segments"
             >
-                Количество участков визуальной разбивки
+                A number of visual segments
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="segmentsPluralize"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiPluralize"
                 [documentationPropertyValues]="pluralizeVariants"
                 [(documentationPropertyValue)]="segmentsPluralize"
             >
-                Формы множественного числа для подписей шкалы (используется
-                вместе с <code>segments</code>)
+                Plural forms for <code>segments</code>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер поля
+                Size
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="steps"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="stepsVariants"
                 [(documentationPropertyValue)]="steps"
             >
-                Количество фактических дискретных шагов слайдера
+                Number of actual discrete slider steps
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="keySteps"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiKeySteps"
                 [documentationPropertyValues]="keyStepsVariants"
                 [(documentationPropertyValue)]="keySteps"
             >
-                Опорные точки неоднородной зависимости значения и положения
-                слайдера
+                Anchor points of non-uniform format between value and position
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
@@ -146,9 +161,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiInputRangeModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import <code>TuiInputRangeModule</code> into a module where
+                    you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -157,10 +173,7 @@
             </li>
 
             <li>
-                Добавить в шаблон (<code>minValue</code> для минимального
-                значения, <code>maxValue</code> для максимального значения,
-                <code>step</code> для задания шага инкремента,
-                <code>right</code> для варианта кнопками справа):
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

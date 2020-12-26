@@ -15,7 +15,7 @@ const ROUTES = [
         path: 'getting-started',
         component: GettingStartedComponent,
         data: {
-            title: 'Начало работы',
+            title: $localize`Getting started`,
         },
     },
     {
@@ -23,7 +23,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../info/browsers/browsers.module`).then(m => m.BrowsersModule),
         data: {
-            title: 'Поддержка браузеров',
+            title: $localize`Browser support`,
         },
     },
     {
@@ -31,14 +31,14 @@ const ROUTES = [
         loadChildren: () =>
             import(`../info/changelog/changelog.module`).then(m => m.ChangelogModule),
         data: {
-            title: 'История релизов',
+            title: $localize`Changelog`,
         },
     },
     {
         path: 'tui-doc',
         loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
         data: {
-            title: 'Собственная витрина',
+            title: $localize`Documentation engine`,
         },
     },
     {
@@ -46,7 +46,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../info/related/related.module`).then(m => m.RelatedModule),
         data: {
-            title: 'Дружественные библиотеки',
+            title: $localize`Friendly libraries`,
         },
     },
     // COMPONENTS
@@ -515,7 +515,7 @@ const ROUTES = [
                 m => m.ExampleTuiMobileThemesModule,
             ),
         data: {
-            title: 'Темы для PWA',
+            title: $localize`PWA themes`,
         },
     },
     {
@@ -889,21 +889,21 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/colors/colors.module`).then(m => m.ColorsModule),
         data: {
-            title: 'Цвета',
+            title: $localize`Colors`,
         },
     },
     {
         path: 'form',
         loadChildren: () => import(`../markup/form/form.module`).then(m => m.FormModule),
         data: {
-            title: 'Форма',
+            title: $localize`Form`,
         },
     },
     {
         path: 'grid',
         loadChildren: () => import(`../markup/grid/grid.module`).then(m => m.GridModule),
         data: {
-            title: 'Сетка',
+            title: $localize`Grid`,
         },
     },
     {
@@ -911,7 +911,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/icons/icons.module`).then(m => m.IconsModule),
         data: {
-            title: 'Иконки',
+            title: $localize`Icons`,
         },
     },
     {
@@ -919,7 +919,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/lists/lists.module`).then(m => m.ListsModule),
         data: {
-            title: 'Списки',
+            title: $localize`Lists`,
         },
     },
     {
@@ -927,7 +927,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/shadows/shadows.module`).then(m => m.ShadowsModule),
         data: {
-            title: 'Тени',
+            title: $localize`Тени`,
         },
     },
     {
@@ -935,7 +935,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/skeleton/skeleton.module`).then(m => m.SkeletonModule),
         data: {
-            title: 'Скелетон',
+            title: $localize`Skeleton`,
         },
     },
     {
@@ -943,7 +943,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/spaces/spaces.module`).then(m => m.SpacesModule),
         data: {
-            title: 'Отступы',
+            title: $localize`Spaces`,
         },
     },
     {
@@ -951,7 +951,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/tables/tables.module`).then(m => m.TablesModule),
         data: {
-            title: 'Таблицы',
+            title: $localize`Tables`,
         },
     },
     {
@@ -959,7 +959,7 @@ const ROUTES = [
         loadChildren: () =>
             import(`../markup/theme/theme.module`).then(m => m.ThemeModule),
         data: {
-            title: 'Темы',
+            title: $localize`Theming`,
         },
     },
     {
@@ -969,7 +969,7 @@ const ROUTES = [
                 m => m.TypographyModule,
             ),
         data: {
-            title: 'Типографика',
+            title: $localize`Typography`,
         },
     },
     // DIRECTIVES

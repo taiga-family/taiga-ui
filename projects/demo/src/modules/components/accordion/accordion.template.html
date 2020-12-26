@@ -1,26 +1,33 @@
 <tui-doc-page header="Accordion" package="KIT">
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
-            Позволяет пользователю раскрывать/скрывать отдельные секции
-            контента.
-        </div>
+        <p i18n>An element that allows to show and hide content in sections</p>
 
-        По дефолту в аккордеоне может быть открыта только одна секция, но
-        опционально открывать можно и несколько секций.
+        <p i18n>Only one section of accordion can be opened by default</p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-accordion-example-1></tui-accordion-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             id="custom"
-            heading="без стрелок, обрамления и с более сложной версткой внутри"
+            i18n-heading
+            heading="with custom design"
             [content]="example2"
         >
             <tui-accordion-example-2></tui-accordion-example-2>
         </tui-doc-example>
 
-        <tui-doc-example id="single" heading="одинокий" [content]="example3">
+        <tui-doc-example
+            id="single"
+            i18n-heading
+            heading="alone"
+            [content]="example3"
+        >
             <tui-accordion-example-3></tui-accordion-example-3>
         </tui-doc-example>
     </ng-template>
@@ -35,14 +42,10 @@
                     [size]="size"
                     [showArrow]="showArrow"
                 >
-                    Автоматическое пополнение кредита
+                    Taiga UI cdk
                     <ng-template tuiAccordionItemContent>
-                        По закону вы имеете право получать зарплату на счет в
-                        любом банке, оформленный на ваше имя. Потребуйте в
-                        отделе кадров перечислять зарплату на вашу карту, и вы
-                        сможете легко управлять зарплатой сразу после
-                        поступления: откладывать деньги на накопительные счета и
-                        во вклад.
+                        Development kit consisting of the low level tools and
+                        abstractions used to develop Taiga UI Angular entities
                     </ng-template>
                 </tui-accordion-item>
                 <tui-accordion-item
@@ -55,15 +58,11 @@
                     [open]="open"
                     (openChange)="onOpenChange($event)"
                 >
-                    Зарплата на дебетовую карту
+                    Taiga UI core
                     <ng-template tuiAccordionItemContent>
                         <div #content>
-                            По закону вы имеете право получать зарплату на счет
-                            в любом банке, оформленный на ваше имя. Потребуйте в
-                            отделе кадров перечислять зарплату на вашу карту, и
-                            вы сможете легко управлять зарплатой сразу после
-                            поступления: откладывать деньги на накопительные
-                            счета и во вклад.
+                            Basic elements needed to develop components,
+                            directives and more using Taiga UI design system
                         </div>
                     </ng-template>
                 </tui-accordion-item>
@@ -76,21 +75,22 @@
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
+                            i18n
                             documentationPropertyName="closeOthers"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="closeOthers"
                         >
-                            При открытии одной секции аккордеона закрывать
-                            остальные
+                            Other sections are closed when user opens one
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="rounded"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="rounded"
                         >
-                            Включить закругления вокруг аккордеона
+                            Rounded accordion style
                         </ng-template>
                     </tui-doc-documentation>
                 </ng-template>
@@ -100,69 +100,72 @@
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
+                            i18n
                             documentationPropertyName="async"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="async"
                         >
-                            При открытии компонент ждёт кастомного события
-                            <code>TUI_EXPAND_LOADED</code>, прежде чем
-                            раскрыться, но контент на странице появляется сразу
-                            (для случаев, если компонент внутри при
-                            инициализации подгружает какие-то данные, влияющие
-                            на его высоту)
+                            Waits for a custom event
+                            <code>TUI_EXPAND_LOADED</code> before opening.
+                            Content is initialized when opening starts
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="borders"
                             documentationPropertyMode="input"
                             documentationPropertyType="TuiBorders | null"
                             [documentationPropertyValues]="bordersVariants"
                             [(documentationPropertyValue)]="borders"
                         >
-                            Управление бордерами секций аккордеона
+                            Borders variants
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="disabled"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disabled"
                         >
-                            Блокировать открытие вкладки
+                            Disabled state for an item
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="noPadding"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="noPadding"
                         >
-                            Убрать паддинги по краям
+                            Removes default paddings
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="open"
                             documentationPropertyMode="input-output"
                             documentationPropertyType="boolean"
                             [documentationPropertyValue]="open"
                             (documentationPropertyValueChange)="onOpenChange($event)"
                         >
-                            Открыта ли секция аккордеона (пример на второй
-                            секции)
+                            Open / close state of section
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="size"
                             documentationPropertyMode="input"
                             documentationPropertyType="TuiSizeS"
                             [documentationPropertyValues]="sizeVariants"
                             [(documentationPropertyValue)]="size"
                         >
-                            Размер вкладки аккордеона
+                            Size of an accordion item
                         </ng-template>
                         <ng-template
+                            i18n
                             documentationPropertyName="showArrow"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="showArrow"
                         >
-                            Показывать или скрывать стрелку
+                            Show / hide an arrow
                         </ng-template>
                     </tui-doc-documentation>
                 </ng-template>
@@ -172,10 +175,9 @@
 
     <ng-template pageTab>
         <ol class="b-demo-steps">
-            <li>
-                Для использования импортировать модуль
-                <code>TuiAccordionModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+            <li i18n>
+                Import <code>TuiAccordionModule</code> into a module where you
+                want to use our component
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -183,8 +185,8 @@
                 ></tui-doc-code>
             </li>
 
-            <li>
-                Добавить в шаблон:
+            <li i18n>
+                Add it into template:
 
                 <tui-doc-code
                     filename="myComponent.template.html"

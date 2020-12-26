@@ -18,8 +18,8 @@ export class ExampleTuiPluralizeComponent {
     index = 10;
 
     pluralizeVariants: ReadonlyArray<TuiPluralize> = [
-        ['фича', 'фичи', 'фич'],
-        ['баг', 'бага', 'багов'],
+        [$localize`feature`, $localize`features`, $localize`features`],
+        [$localize`bug`, $localize`bugs`, $localize`bugs`],
     ];
 
     pluralize = this.pluralizeVariants[0];

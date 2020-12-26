@@ -15,20 +15,17 @@ export class ExampleTuiMapperComponent {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
-    trousers = 'брюки';
+    value = 5;
 
-    mapperVariants: ReadonlyArray<TuiMapper<string, string>> = [
-        item => item,
-        _item => 'элегантные шорты',
-        (item, arg) => item.toUpperCase() + arg,
+    mapperVariants: ReadonlyArray<TuiMapper<number, string>> = [
+        item => String(item),
+        _item => 'Hello!',
+        (item, arg) => item * item + arg,
     ];
 
     mapper = this.mapperVariants[0];
 
-    argsVariants: readonly string[] = [
-        '',
-        '. У вас нет такого же, но с перламутровыми пуговицами?',
-    ];
+    argsVariants: ReadonlyArray<string | number> = ['', 10];
 
     args = this.argsVariants[0];
 }

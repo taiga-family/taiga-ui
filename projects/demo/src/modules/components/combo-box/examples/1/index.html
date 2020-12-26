@@ -1,12 +1,12 @@
 <form *tuiLet="items$ | async as items" class="form">
     <tui-combo-box
         tuiTextfieldSize="s"
-        tuiTextfieldExampleText="Вводите имя / фамилию"
+        tuiTextfieldExampleText="Type a name"
         [formControl]="testValue"
         [valueContent]="content"
         (searchChange)="onSearchChange($event)"
     >
-        Найдите лучших сотрудников
+        Find the best employees
         <tui-data-list-wrapper
             *tuiDataList
             [items]="items"
@@ -16,12 +16,12 @@
     <tui-combo-box
         class="tui-space_vertical-5"
         tuiTextfieldSize="m"
-        tuiTextfieldExampleText="Вводите имя / фамилию"
+        tuiTextfieldExampleText="Type a name"
         [formControl]="testValue"
         [valueContent]="content"
         (searchChange)="onSearchChange($event)"
     >
-        Найдите лучших сотрудников
+        Find the best employees
         <tui-data-list-wrapper
             *tuiDataList
             [items]="items"
@@ -29,12 +29,12 @@
         ></tui-data-list-wrapper>
     </tui-combo-box>
     <tui-combo-box
-        tuiTextfieldExampleText="Вводите имя / фамилию"
+        tuiTextfieldExampleText="Type a name"
         [formControl]="testValue"
         [valueContent]="content"
         (searchChange)="onSearchChange($event)"
     >
-        Выберите разработчика
+        Choose a developer
         <tui-data-list-wrapper
             *tuiDataList
             [items]="items"

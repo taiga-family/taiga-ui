@@ -1,21 +1,31 @@
 <tui-doc-page header="Label" package="CORE">
     <ng-template pageTab>
-        Компонент позволяет связать подпись и произвольный контент, например,
-        поле ввода.
+        <p i18n>Component binds a label and a content, e.g., a textfield</p>
 
-        <tui-doc-example id="basic" heading="Базовый" [content]="example1">
+        <tui-doc-example
+            id="basic"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-label-example-1></tui-label-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             id="multiline"
-            heading="многострочный"
+            i18n-heading
+            heading="Multiline"
             [content]="example2"
         >
             <tui-label-example-2></tui-label-example-2>
         </tui-doc-example>
 
-        <tui-doc-example id="text" heading="просто текст" [content]="example3">
+        <tui-doc-example
+            id="text"
+            i18n-heading
+            heading="Text"
+            [content]="example3"
+        >
             <tui-label-example-3></tui-label-example-3>
         </tui-doc-example>
     </ng-template>
@@ -23,24 +33,25 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <label tuiLabel [label]="getLabel(template)">
-                Содержимое внутри тэга
+                Content inside label
             </label>
         </tui-doc-demo>
         <ng-template #template>
-            Лейбл через шаблон
+            Label is a template
             <tui-tooltip
-                content="Так можно использовать компоненты и HTML"
+                content="This way you can use components or any HTML"
             ></tui-tooltip>
         </ng-template>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="label"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="labelVariants"
                 [(documentationPropertyValue)]="label"
             >
-                Лейбл
+                Label
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -48,9 +59,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiLabelModule</code> в тот же модуль, куда добавляется
-                ваш компонент:
+                <p i18n>
+                    Import <code>TuiLabelModule</code> into a module where you
+                    want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -59,7 +71,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -1,17 +1,20 @@
 <tui-doc-page header="PrimitiveTextfield" package="CORE">
     <ng-template pageTab>
-        PrimitiveTextfield&nbsp;&mdash; базовый гибкий строковый инпут, лежащий
-        в основе более сложных компонентов. Используйте для создания собственных
-        пресетов, но не как самостоятельный компонент.
-        <strong>Не поддерживает формы Angular</strong>
+        <p i18n>
+            PrimitiveTextfield is a flexible string input that can be used as a
+            base for complex inputs. Use it as a basis for other components.
+
+            <strong>Does not work with Angular forms</strong>
+        </p>
 
         <tui-doc-example
             id="example-size"
-            heading="Размеры"
+            i18n-heading
+            heading="sizes"
             [content]="example1"
         >
             <p>
-                Упрощённый вариант
+                Simplified version of
                 <a tuiLink routerLink="/tui-input-password"
                     ><code>InputPassword</code></a
                 >:
@@ -20,7 +23,7 @@
                 hintContent="Additional information"
                 [(ngModel)]="password"
             >
-                Введите пароль
+                Type a password
             </tui-primitive-textfield-example-1>
         </tui-doc-example>
     </ng-template>
@@ -54,7 +57,7 @@
                 [tuiHintMode]="hintMode"
                 [(value)]="value"
             >
-                Лейбл внутри поля
+                Component label
             </tui-primitive-textfield>
         </tui-doc-demo>
         <ng-template #template="polymorpheus" polymorpheus let-item>
@@ -70,85 +73,94 @@
         </ng-template>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="disabled"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент заблокирован
+                Disabled state
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="editable"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="editable"
             >
-                Внутренний инпут позволяет ввод
+                Native input allows inputing
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="filler"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="filler"
             >
-                Серый текст-подложка для ввода (например дд.мм.гггг для ввода
-                даты)
+                Gray background text as a hint (e.g. HH:MM:SS for time)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="iconContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent | null"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="selectedIcon"
             >
-                Произвольный контент иконки. В случае строки — вставляется как
-                <code>src</code> или имя иконки в <code>tui-svg</code>. Для
-                интерактивной иконки передавайте шаблон.
+                Icon content. If content is a string, it is used as stringified
+                svg or a name of icon registered in
+                <a tuiLink routerLink="/tui-svg-service"
+                    ><code>SvgService</code></a
+                >
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="iconAlign"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiHorizontalDirection"
                 [documentationPropertyValues]="iconAlignVariants"
                 [(documentationPropertyValue)]="iconAlign"
             >
-                Положение иконки
+                Icon align
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="postfix"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="postfix"
             >
-                Нефокусируемый текст, который будет добавлен после значения.
-                Например, значок валюты в
+                Unfocusable text after value. For example, currency symbol in
                 <a tuiLink routerLink="/bui-input-number"
                     ><code>InputNumber</code></a
                 >.
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="readOnly"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="readOnly"
             >
-                Компонент доступен только для чтения
+                Component is read only
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="invalid"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="invalid"
             >
-                Невалидность поля
+                Invalid state
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="value"
             >
-                Значение поля
+                Value
             </ng-template>
         </tui-doc-documentation>
         <hint-controller-documentation></hint-controller-documentation>
@@ -159,9 +171,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модули для работы с формами из
-                Angular и модуль <code>TuiPrimitiveTextfieldModule</code> в
-                модуль вашего пресета:
+                <p i18n>
+                    Import <code>TuiPrimitiveTextfieldModule</code> into a
+                    module where you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -170,7 +183,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
@@ -180,7 +193,7 @@
         </ol>
     </ng-template>
 
-    <ng-template pageTab="Темизация">
+    <ng-template i18n-pageTab pageTab="Theming">
         <tui-customization>
             <bootstrap *ngIf="isBootstrap"></bootstrap>
             <material *ngIf="isMaterial"></material>
@@ -191,8 +204,8 @@
                 [items]="themes"
                 [(ngModel)]="theme"
             ></tui-radio-list>
-            <ng-template #label="polymorpheus" polymorpheus>
-                Пример для темизации
+            <ng-template i18n #label="polymorpheus" polymorpheus>
+                Theming sample
             </ng-template>
             <label
                 tuiLabel
@@ -201,8 +214,8 @@
             >
                 <tui-primitive-textfield
                     class="input"
-                    value="Введённое значение"
-                    tuiTextfieldExampleText="Пример ввода"
+                    value="Value"
+                    tuiTextfieldExampleText="Example text"
                     [tuiTextfieldCleaner]="!isBootstrap"
                     [tuiTextfieldLabelOutside]="isBootstrap"
                     [tuiTextfieldSize]="customizationSize"

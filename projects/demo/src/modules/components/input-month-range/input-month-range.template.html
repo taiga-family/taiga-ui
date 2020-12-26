@@ -1,17 +1,28 @@
 <tui-doc-page header="InputMonthRange" package="KIT">
     <ng-template pageTab>
-        Поле для выбора диапазона месяцев
+        <p i18n>Component to input a range of months</p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-input-month-range-example-1></tui-input-month-range-example-1>
         </tui-doc-example>
 
-        <tui-doc-example heading="размеры" id="sizes" [content]="example2">
+        <tui-doc-example
+            i18n-heading
+            heading="sizes"
+            id="sizes"
+            [content]="example2"
+        >
             <tui-input-month-range-example-2></tui-input-month-range-example-2>
         </tui-doc-example>
 
         <tui-doc-example
-            heading="С использованием контекста в disabledItemHandler"
+            i18n-heading
+            heading="With a context usage in disabledItemHandler"
             id="context"
             [content]="example3"
         >
@@ -41,99 +52,53 @@
                     [tuiHintDirection]="hintDirection"
                     [tuiHintMode]="hintMode"
                 >
-                    Срок
+                    Months
                 </tui-input-month-range>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент формы disabled (через formControl.disable())
+                Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
-                documentationPropertyName="cleaner"
-                documentationPropertyMode="input"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="cleaner"
-            >
-                Показывать крестик для очистки поля
-            </ng-template>
-            <ng-template
+                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                Функция, определяющая, заблокирован ли месяц в календаре.<br />
-                <strong>Должна быть чистой функцией.</strong><br />
+                <div>
+                    A handler that gets a date and returns true if it is
+                    disabled.
+                </div>
+
+                <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="labelOutside"
-                documentationPropertyMode="input"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="labelOutside"
-            >
-                Лэйбл снаружи, а не внутри компонента. Лэйбл в этом случае
-                создается с помощью компонента
-                <a tuiLink routerLink="/tui-label"><code>Label</code></a>
-            </ng-template>
-            <ng-template
+                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальная дата
+                Minimum date
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальная дата
-            </ng-template>
-            <ng-template
-                documentationPropertyName="size"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
-            >
-                Размер поля
-            </ng-template>
-            <ng-template
-                documentationPropertyName="hintContent"
-                documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent | null"
-                [documentationPropertyValues]="hintContentVariants"
-                [(documentationPropertyValue)]="hintContent"
-            >
-                Содержимое тултипа
-            </ng-template>
-            <ng-template
-                documentationPropertyName="hintDirection"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiDirection"
-                [documentationPropertyValues]="hintDirectionVariants"
-                [(documentationPropertyValue)]="hintDirection"
-            >
-                Направление тултипа
-            </ng-template>
-            <ng-template
-                documentationPropertyName="hintMode"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuihintMode | null"
-                [documentationPropertyValues]="hintModeVariants"
-                [(documentationPropertyValue)]="hintMode"
-            >
-                Модификация тултипа
+                Maximum date
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
@@ -142,10 +107,11 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модули для работы с формами из
-                Angular и модуль
-                <code>TuiInputMonthRangeModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiInputMonthRangeModule</code> in the same module
+                    where you want to use our component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -154,8 +120,10 @@
             </li>
 
             <li>
-                Объявить форму (<code>FormGroup</code>) или контрол
-                (<code>FormControl</code>) в компоненте:
+                <p i18n>
+                    Declare a form (<code>FormGroup</code>) or a control
+                    (<code>FormControl</code>) in your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -164,7 +132,7 @@
             </li>
 
             <li>
-                Вставить компонент <code>TuiInoutMonthComponent</code> в шаблон:
+                Use <code>TuiInputMonthComponent</code> in template:
 
                 <tui-doc-code
                     filename="myComponent.template.html"

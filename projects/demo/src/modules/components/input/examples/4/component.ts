@@ -70,8 +70,13 @@ const accountsAlex = [
     ),
 ];
 const USERS = [
-    new User('Роман', 'Седов', 'http://marsibarsi.me/images/1x1small.jpg', accountsRoman),
-    new User('Александр', 'Инкин', avatar, accountsAlex, '1234123412341234'),
+    new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg', accountsRoman),
+    new User('Alex', 'Inkin', avatar, accountsAlex, '1234123412341234'),
+    new User('Dmitriy', 'Demenskiy'),
+    new User('Evgeniy', 'Mamaev'),
+    new User('Ivan', 'Ishmametiev'),
+    new User('Igor', 'Katsuba'),
+    new User('Yulia', 'Tsareva'),
 ];
 
 @Component({

@@ -10,12 +10,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiSliderExample2 {
-    testValue = new FormControl();
-
-    /**
-     * Шаги для разбиения слайдеров на разные линейные зависимости.
-     * Каждый элемент массива имеет вид [проценты, значение]
-     */
+    readonly testValue = new FormControl();
 
     keySteps = [
         [(100 / 3) * 1, 100000],

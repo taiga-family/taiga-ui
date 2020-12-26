@@ -1,6 +1,5 @@
 export * from './appearance';
 export * from './base-color';
-export * from './brightness';
 export * from './button-shape';
 export * from './decimal';
 export * from './dropdown-animation';

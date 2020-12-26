@@ -2,7 +2,7 @@
     <ng-container *ngIf="contentVisible">
         <ng-content></ng-content>
         <tui-loader size="l" [overlay]="true" [showLoader]="loading">
-            <polymorpheus-outlet [content]="content"></polymorpheus-outlet>
+            <div polymorpheus-outlet [content]="content"></div>
         </tui-loader>
     </ng-container>
 </div>

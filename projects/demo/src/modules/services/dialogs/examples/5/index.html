@@ -4,17 +4,17 @@
     size="m"
     (click)="onClick(content, header, 'm')"
 >
-    Покажи
+    Show
 </button>
 <button tuiButton size="m" (click)="onClick(content, header, 'fullscreen')">
-    Покажи во весь экран
+    Show fullscreen
 </button>
 
 <ng-template #content="polymorpheus" polymorpheus let-observer>
-    Разве здесь не прекрасно?
+    Take a look
     <div class="buttons">
         <button tuiButton size="m" (click)="observer.complete()">
-            Да вообще ...
+            Very cool!
         </button>
     </div>
 </ng-template>
@@ -23,7 +23,7 @@
     <div class="header">
         <img
             src="https://ng-web-apis.github.io/dist/assets/images/web-api.svg"
-            alt="Красота"
+            alt="Cool"
         />
     </div>
 </ng-template>

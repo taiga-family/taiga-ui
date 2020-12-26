@@ -1,24 +1,27 @@
-<tui-doc-page header="LazyLoading" package="KIT">
+<tui-doc-page i18n-header header="LazyLoading" package="KIT">
     <ng-template pageTab>
-        Директива используется для отложенной загрузки изображений со
-        скелетоном. Равноценно нативному <code>loading="lazy"</code> с
-        поддержкой устаревших браузеров.
+        <p i18n>
+            Directive can be used for image lazy loading. It is the same as
+            <code>loading="lazy"</code> but supports also old browsers
+        </p>
 
         <tui-doc-example
             id="usage"
-            heading="Использование"
+            i18n-heading
+            heading="Usage"
             [content]="example1"
         >
             <tui-lazy-loading-example-1></tui-lazy-loading-example-1>
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiLazyLoadingModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import <code>TuiLazyLoadingModule</code> into a module where
+                    you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -27,7 +30,7 @@
             </li>
 
             <li>
-                Добавить <code>loading="lazy"</code> к картинкам:
+                <p i18n>Add <code>loading="lazy"</code> for your elements:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

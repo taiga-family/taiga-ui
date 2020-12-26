@@ -1,11 +1,10 @@
 <ng-container *tuiLet="timer$ | async as time">
-    <p>Значение таймера: {{time}}</p>
+    <p>Timer value: {{time}}</p>
     <p>
-        Это значение можно использовать многократно:
+        It can be used many times:
         <tui-badge [value]="time"></tui-badge>
     </p>
     <p>
-        При этом подписка будет оформлена единожды и при удалении компонента
-        async пайп произведёт отписку сам.
+        It subsribed once and async pipe unsubsribes it after component destroy
     </p>
 </ng-container>

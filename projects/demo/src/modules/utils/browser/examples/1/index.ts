@@ -15,20 +15,20 @@ export class TuiBrowserExample1 {
     get aboutMyBrowser(): string {
         if (isEdge(this.userAgent)) {
             if (isEdgeOlderThan(13, this.userAgent)) {
-                return 'Edge старше 13-той версии';
+                return 'Edge older than 13';
             }
 
-            return 'Edge до 13 версии';
+            return 'Edge until 13';
         }
 
         if (isIE(this.userAgent)) {
-            return 'К сожалению, у Вас IE11';
+            return 'Unfortunately, you have IE11';
         }
 
         if (isFirefox(this.userAgent)) {
-            return 'Здорово, у вас Firefox!';
+            return 'Okay, you have Firefox!';
         }
 
-        return 'Похоже, что Вы пользуетесь браузером на основе Chromium, поздравляем!';
+        return 'You have Chromium based browser, cool!';
     }
 }

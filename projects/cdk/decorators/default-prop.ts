@@ -1,5 +1,5 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {TuiAssertion} from '@taiga-ui/cdk/types';
+import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 
 /**
  * Decorator for checking input values for undefined. You can also pass
@@ -10,7 +10,7 @@ import {TuiAssertion} from '@taiga-ui/cdk/types';
  * CAUTION: This decorator overwrites other getters and setters.
  */
 export function tuiDefaultProp<T extends object, K extends keyof T>(
-    assertion?: TuiAssertion<T, K>,
+    assertion?: TuiBooleanHandler<T[K]>,
     ...args: any[]
 ): PropertyDecorator {
     return (target, key) => {
@@ -33,7 +33,7 @@ export function tuiDefaultProp<T extends object, K extends keyof T>(
 
                 if (isValid && assertion) {
                     tuiAssert.assert(
-                        assertion(initialValue, this),
+                        assertion.call(this, initialValue),
                         `${String(key)} in ${name} received:`,
                         initialValue,
                         ...args,
@@ -56,7 +56,7 @@ export function tuiDefaultProp<T extends object, K extends keyof T>(
 
                         if (isValid && assertion) {
                             tuiAssert.assert(
-                                assertion(value, this),
+                                assertion.call(this, value),
                                 `${String(key)} in ${name} received:`,
                                 value,
                                 ...args,

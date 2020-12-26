@@ -17,15 +17,15 @@ export class ExampleTuiFilterComponent {
 
     items = [
         {
-            name: 'Супер меч',
+            name: 'Sword',
             price: 1000,
         },
         {
-            name: 'Босяцкий топор',
+            name: 'Axe',
             price: 100,
         },
         {
-            name: 'Добротное копьё',
+            name: 'Spear',
             price: 500,
         },
     ];

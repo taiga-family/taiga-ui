@@ -13,11 +13,11 @@ export class TuiHostedDropdownExample3 {
     open = false;
 
     readonly items = [
-        ['По интересу', 'По жанру', 'По году выпуска', 'По тематике'],
-        ['По возрастанию', 'По убыванию'],
+        ['By interest', 'By genre', 'By release year', 'By subject'],
+        ['Ascending', 'Descending'],
     ];
 
-    primary = 'По жанру';
+    primary = 'By genre';
 
     ascending = false;
 

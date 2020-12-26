@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {TuiBrightness} from '@taiga-ui/core/enums';
+import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 
 export const TUI_MODE: InjectionToken<

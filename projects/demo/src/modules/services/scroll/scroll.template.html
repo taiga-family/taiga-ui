@@ -1,10 +1,11 @@
 <tui-doc-page header="ScrollService" package="CDK">
     <ng-template pageTab>
-        Сервис для плавного скролла.
+        <p i18n>A service for smooth scroll</p>
 
         <tui-doc-example
             id="interactive"
-            heading="Интерактивный пример"
+            i18n-heading
+            heading="Interactive sample"
             [content]="example1"
         >
             <tui-scroll-example-1></tui-scroll-example-1>
@@ -12,58 +13,53 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p class="b-full-width">
-            Метод
+        <p i18n class="b-full-width">
+            Method
             <strong
                 ><code
                     >scroll$: Observable&lt;[number, number]&gt;</code
                 ></strong
             >
-            <em>(эмитит <code>[scrollTop, scrollLeft]</code> кортежи)</em>
+            <em>(emits a tuple tuple <code>[scrollTop, scrollLeft]</code>)</em>
         </p>
         <tui-doc-documentation [showValues]="false">
             <ng-template
+                i18n
                 documentationPropertyName="element"
                 documentationPropertyType="Element"
             >
-                Элемент, который будет прокручиваться
+                Element to be scrolled
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="scrollTop"
                 documentationPropertyType="number"
             >
-                Целевая позиция скролла по вертикали
+                Target position from top
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="scrollLeft"
                 documentationPropertyType="number"
             >
-                <strong>Опционально</strong>. Целевая позиция скролла по
-                горизонтали
+                <strong>Optional</strong>. Target position from left
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="duration"
                 documentationPropertyType="number"
             >
-                <strong>Опционально</strong>. Длительность в миллисекундах (0
-                для моментального скролла).
+                <strong>Optional</strong>. Duration time in ms (0 for an instant
+                scroll).
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Добавить сервис <code>TuiScrollService</code> в модуль вашего
-                компонента:
-
-                <tui-doc-code
-                    filename="myComponent.module.ts"
-                    [code]="exampleImportModule"
-                ></tui-doc-code>
-            </li>
-
-            <li>
-                Заинжектить <code>TuiScrollService</code> в ваш компонент:
+                <p i18n>
+                    Inject <code>TuiScrollService</code> into your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -72,9 +68,10 @@
             </li>
 
             <li>
-                Вызвать метод <code>scroll$</code> с соответствующими данными
-                для прокрутки и подписаться на возвращаемый
-                <code>Observable</code>:
+                <p i18n>
+                    Call <code>scroll$</code> method and subscribe to returened
+                    <code>Observable</code>:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"

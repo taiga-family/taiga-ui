@@ -1,14 +1,20 @@
 <tui-doc-page header="InputDateRange" package="KIT">
     <ng-template pageTab>
-        Поле с календарем для выбора диапазона дат.
+        <p i18n>A field to input a range of dates</p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-input-date-range-example-1></tui-input-date-range-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             id="large"
-            heading="большой размер"
+            i18n-heading
+            heading="Big size"
             [content]="example2"
         >
             <tui-input-date-range-example-2></tui-input-date-range-example-2>
@@ -42,94 +48,104 @@
                     [tuiHintMode]="hintMode"
                     [disabledItemHandler]="disabledItemHandler"
                 >
-                    Введите даты
+                    Choose dates
                 </tui-input-date-range>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент формы disabled (через formControl.disable())
+                Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="defaultViewedMonth"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
                 [documentationPropertyValues]="defaultViewedMonthVariants"
                 [(documentationPropertyValue)]="defaultViewedMonth"
             >
-                Месяц, открываемый по умолчанию на календаре (если в контроле
-                нет значения)
+                Default month to show
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<TuiDay>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                Функция, определяющая, заблокирована ли дата в календаре.<br />
-                <strong>Должна быть чистой функцией.</strong><br />
-                Не препятствует ручному вводу значения в текстовое поле.
+                <div>
+                    A handler that gets a date and returns true if it is
+                    disabled.
+                </div>
+
+                <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="items"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDayRangePeriod[]"
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
             >
-                Фиксированные интервалы (при пустом массиве показывает 2
-                календаря)
+                Fixed intervals (shows 2 calendars with empty array)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="markerHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMarkerHandler"
                 [documentationPropertyValues]="markerHandlerVariants"
                 [(documentationPropertyValue)]="markerHandler"
             >
-                Функция, которая определяет, показаны ли под датой
-                кружки-маркеры и задает их цвета
+                A handler that gets date and returns null or a tuple with
+                circled marker colors
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальная дата
+                Min date
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальная дата
+                Max date
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="minLength"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDayLike | null"
                 [documentationPropertyValues]="minLengthVariants"
                 [(documentationPropertyValue)]="minLength"
             >
-                Ограничение диапазона снизу
+                Minimal length of range
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="maxLength"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDayLike | null"
                 [documentationPropertyValues]="maxLengthVariants"
                 [(documentationPropertyValue)]="maxLength"
             >
-                Ограничение диапазона сверху
+                Maximal length of range
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
@@ -138,10 +154,11 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модули для работы с формами из
-                Angular и модуль
-                <code>TuiInputDateRangeModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiInputDateRangeModule</code> in the same module
+                    where you want to use our component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -150,8 +167,10 @@
             </li>
 
             <li>
-                Объявить форму (<code>FormGroup</code>) или контрол
-                (<code>FormControl</code>) в компоненте:
+                <p i18n>
+                    Declare a form (<code>FormGroup</code>) or a control
+                    (<code>FormControl</code>) in your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -160,7 +179,7 @@
             </li>
 
             <li>
-                Вставить компонент <code>TuiInputDateRange</code> в шаблон:
+                Use <code>TuiInputDateRange</code> in template:
 
                 <tui-doc-code
                     filename="myComponent.template.html"

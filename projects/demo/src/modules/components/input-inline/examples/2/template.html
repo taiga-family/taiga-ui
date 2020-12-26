@@ -7,7 +7,7 @@
         (keydown.esc.prevent)="toggle()"
         (keydown.enter.prevent)="toggle()"
     >
-        Введите заголовок
+        Type a heading
     </tui-input-inline>
     <ng-template #text>
         <span>{{heading}}</span>
@@ -15,7 +15,7 @@
             tuiIconButton
             type="button"
             class="tui-space_left-1"
-            title="Редактировать заголовок"
+            title="Edit heading"
             size="xs"
             appearance="icon"
             icon="tuiIconEdit2Large"

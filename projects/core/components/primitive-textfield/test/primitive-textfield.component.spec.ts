@@ -14,7 +14,7 @@ import {configureTestSuite} from 'ng-bullet';
 import {TuiHintControllerModule} from '../../../directives/hint-controller/hint-controller.module';
 import {TuiModeModule} from '../../../directives/mode/mode.module';
 import {TuiTextfieldControllerModule} from '../../../directives/textfield-controller';
-import {TuiBrightness} from '../../../enums/brightness';
+import {TuiBrightness} from '../../../types/brightness';
 import {TuiSizeL, TuiSizeS} from '../../../types/size';
 import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
 import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
@@ -112,17 +112,17 @@ describe('PrimitiveTextfield', () => {
 
     describe('background', () => {
         it('gets light mode correctly', () => {
-            testComponent.mode = TuiBrightness.Light;
+            testComponent.mode = 'onDark';
             fixture.detectChanges();
 
-            expect(testComponent.component.hostMode).toBe(TuiBrightness.Light);
+            expect(testComponent.component.hostMode).toBe('onDark');
         });
 
         it('gets dark mode correctly', () => {
-            testComponent.mode = TuiBrightness.Dark;
+            testComponent.mode = 'onLight';
             fixture.detectChanges();
 
-            expect(testComponent.component.hostMode).toBe(TuiBrightness.Dark);
+            expect(testComponent.component.hostMode).toBe('onLight');
         });
     });
 

@@ -41,9 +41,10 @@
     </g>
 </svg>
 <ng-template #template let-index>
-    <polymorpheus-outlet
+    <div
+        polymorpheus-outlet
         class="text"
         [content]="hintContent"
         [context]="getContentContext(index)"
-    ></polymorpheus-outlet>
+    ></div>
 </ng-template>

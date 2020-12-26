@@ -1,19 +1,28 @@
-<tui-doc-page header="ElasticSticky" package="ADDON-MOBILE">
+<tui-doc-page i18n-header header="ElasticSticky" package="ADDON-MOBILE">
     <ng-template pageTab>
-        Директива для масштабирования "прилипшего" sticky заголовка. Существует
-        так же в виде сервиса <code>TuiElasticStickyService</code>.
+        <p i18n>
+            Directive allows to scale "stuck" sticky heading. It can be also
+            used as service <code>TuiElasticStickyService</code>
+        </p>
 
-        <tui-doc-example id="basic" heading="Базовый" [content]="example1">
+        <tui-doc-example
+            id="basic"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-elastic-sticky-example-1></tui-elastic-sticky-example-1>
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модули
-                <code>TuiScrollbarModule</code> и
-                <code>TuiElasticStickyModule</code> в модуль вашего компонента:
+                <p i18n>
+                    Import <code>TuiScrollbarModule</code> and
+                    <code>TuiElasticStickyModule</code> into your component
+                    module:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -22,7 +31,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
@@ -31,8 +40,7 @@
             </li>
 
             <li>
-                Подписаться на изменения и масштабировать соответствующие
-                элементы:
+                <p i18n>Subscribe on changes and scale elements:</p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"

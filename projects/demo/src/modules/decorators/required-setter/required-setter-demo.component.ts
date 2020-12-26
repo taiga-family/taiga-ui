@@ -10,12 +10,9 @@ import {changeDetection} from '../../../change-detection-strategy';
 })
 export class ExampleTuiRequiredSetterDemoComponent {
     @Input()
-    min = 10;
-
-    @Input()
-    @tuiRequiredSetter<ExampleTuiRequiredSetterDemoComponent, 'quantity'>(
-        (quantity, context) => Number.isInteger(quantity) && quantity >= context.min,
-        'Количество должно быть целым конечным числом, больше минимального значения',
+    @tuiRequiredSetter(
+        quantity => Number.isInteger(quantity) && quantity >= 5,
+        'Should be integer number more than min value',
     )
     set quantity(quantity: number) {
         this.items = new Array(quantity).fill(

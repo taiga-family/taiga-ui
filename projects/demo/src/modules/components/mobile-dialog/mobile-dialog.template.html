@@ -1,21 +1,27 @@
 <tui-doc-page header="MobileDialog" package="ADDON-MOBILE">
     <ng-template pageTab>
-        <div>
-            Компонент для вывода диалога на мобильном устройстве. Эмулирует
-            внешний вид нативных алертов на iOS и Android
+        <div i18n>
+            Component for showing a dialog on mobile devices. It emulates
+            appearance of native alerts on iOS and Android
         </div>
 
-        <tui-doc-example id="base" heading="Пример" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-mobile-dialog-example-1></tui-mobile-dialog-example-1>
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiMobileDialogModule</code> в
-                <strong>главный модуль</strong>, куда добавляется ваш компонент:
+                <p i18n>
+                    Import <code>TuiMobileDialogModule</code> into a module
+                    where you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -24,7 +30,7 @@
             </li>
 
             <li>
-                Вызвать в компоненте:
+                <p i18n>Use it in component</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

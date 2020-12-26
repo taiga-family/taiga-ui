@@ -1,8 +1,13 @@
 <tui-doc-page header="Range" package="KIT">
     <ng-template pageTab>
-        Компонент для выбора части диапазона
+        <p i18n>Component allows to choose a part of range</p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-range-example-1></tui-range-example-1>
         </tui-doc-example>
     </ng-template>
@@ -24,75 +29,82 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент формы disabled (через formControl.disable())
+                Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальная величина
+                Min value
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальная величина
+                Max value
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pluralize"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiPluralize"
                 [documentationPropertyValues]="pluralizeVariants"
                 [(documentationPropertyValue)]="pluralize"
             >
-                Формы множественного числа для подписей
+                Plural forms for labels
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="segments"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="segmentsVariants"
                 [(documentationPropertyValue)]="segments"
             >
-                Количество участков визуальной разбивки
+                A number of visual segments
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="steps"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="stepsVariants"
                 [(documentationPropertyValue)]="steps"
             >
-                Количество фактических дискретных значений
+                Number of actual discrete slider steps
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="keySteps"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiKeySteps"
                 [documentationPropertyValues]="keyStepsVariants"
                 [(documentationPropertyValue)]="keySteps"
             >
-                Опорные точки неоднородной зависимости значения и положения
-                слайдера
+                Anchor points of non-uniform format between value and position
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер слайдера
+                Size
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -100,10 +112,9 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модули для работы с формами из
-                Angular и модуль
-                <code>TuiRangeModule</code> в тот же модуль, куда добавляется
-                ваш компонент:
+                Import an Angular module for forms and
+                <code>TuiRangeModule</code> in the same module where you want to
+                use our component:
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -112,8 +123,10 @@
             </li>
 
             <li>
-                Объявить форму (<code>FormGroup</code>) или контрол
-                (<code>FormControl</code>) в компоненте:
+                <p i18n>
+                    Declare a form (<code>FormGroup</code>) or a control
+                    (<code>FormControl</code>) in your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -122,8 +135,7 @@
             </li>
 
             <li>
-                Добавить в шаблон с использованием реактивных форм или
-                <code>ngModel</code>:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

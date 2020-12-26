@@ -1,17 +1,14 @@
-<p>
-    Для корректной работы автозаполнения формы контролы должны быть объединены
-    под одним тэгом <code>form</code>
-</p>
+<p i18n><code>form</code> tag is used for better autocomplete</p>
 <form tuiGroup [formGroup]="form">
     <tui-input-card
         formControlName="card"
         [autocompleteEnabled]="true"
         [cardSrc]="card"
     >
-        Номер карты
+        Card number
     </tui-input-card>
     <tui-input-expire formControlName="expire" [autocompleteEnabled]="true">
-        Срок действия
+        Expire date
     </tui-input-expire>
     <tui-input-cvc formControlName="cvc" [autocompleteEnabled]="true">
         CVC/CVV

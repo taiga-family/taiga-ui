@@ -1,16 +1,31 @@
 <tui-doc-page header="Card" package="ADDON-COMMERCE">
     <ng-template pageTab>
-        Кастомизируемый логотип карточки
+        <p i18n>Customizable card logo</p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-card-example-1></tui-card-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="sizes" heading="размеры" [content]="example2">
+        <tui-doc-example
+            id="sizes"
+            i18n-heading
+            heading="Sizes"
+            [content]="example2"
+        >
             <tui-card-example-2></tui-card-example-2>
         </tui-doc-example>
 
-        <tui-doc-example id="best" heading="крутой" [content]="example3">
+        <tui-doc-example
+            id="best"
+            i18n-heading
+            heading="A cool one"
+            [content]="example3"
+        >
             <tui-card-example-3></tui-card-example-3>
         </tui-doc-example>
     </ng-template>
@@ -28,56 +43,62 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="active"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="active"
             >
-                Активное состояние карты
+                Active state
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="brandLogo"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="brandLogoVariants"
                 [(documentationPropertyValue)]="brandLogo"
             >
-                Логотип компании партнера
+                Bank logo
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="cardNumber"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="cardNumber"
             >
-                Четыре последние цифры карты
+                Last four card number
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="paymentSystem"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiPaymentSystem | null"
                 [documentationPropertyValues]="paymentSystemVariants"
                 [(documentationPropertyValue)]="paymentSystem"
             >
-                Платежная система
+                Payment system
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер
+                Size
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiCardModule</code> в тот же модуль, куда добавляется ваш
-                компонент:
+                <p i18n>
+                    Import <code>TuiCardModule</code> into a module where you
+                    want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -86,7 +107,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
@@ -94,8 +115,8 @@
                 ></tui-doc-code>
             </li>
 
-            <li>
-                Задать стили карточки через <code>color</code>,
+            <li i18n>
+                Set card styles with <code>color</code>,
                 <code>background-color</code>, <code>background-image</code>:
 
                 <tui-doc-code

@@ -7,6 +7,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class MyComponent {
     testForm = new FormGroup({
-        testValue: new FormControl('Содержание текстового поля')
+        testValue: new FormControl('Content')
     });
 }

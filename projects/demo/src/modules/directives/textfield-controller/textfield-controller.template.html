@@ -1,4 +1,4 @@
-<tui-doc-page header="TextfieldController" package="CORE">
+<tui-doc-page i18n-header header="TextfieldController" package="CORE">
     <ng-template pageTab>
         Директива позволяет кастомизировать
         <a tuiLink target="_blank" routerLink="/tui-primitive-textfield"
@@ -16,7 +16,12 @@
             которые ближе к текстфилду
         </p>
 
-        <tui-doc-example id="base" heading="Базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-textfield-controller-example-1></tui-textfield-controller-example-1>
         </tui-doc-example>
     </ng-template>
@@ -24,9 +29,11 @@
     <ng-template pageTab="Подключение">
         <ol class="b-demo-steps">
             <li>
-                Для использования необходимо импортировать модуль
-                <code>TuiTextfieldControllerModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiTextfieldControllerModule</code> in the same module
+                    where you want to use our directive:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -35,9 +42,10 @@
             </li>
 
             <li>
-                Используйте в шаблоне на самом элементе
-                <code>tui-primitive-textfield</code> или на его родительских
-                элементах:
+                <p i18n>
+                    Use it on <code>tui-primitive-textfield</code> or its parent
+                    elements
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

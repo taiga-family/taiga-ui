@@ -14,7 +14,7 @@
         border-bottom: 26px solid transparent;
     }
 
-    &[data-tui-host-mode='light'] {
+    &[data-tui-host-mode='onDark'] {
         color: var(--tui-base-01);
     }
 }
@@ -45,7 +45,7 @@
             color: var(--tui-text-03);
         }
 
-        :host[data-tui-host-mode='light']._disabled & {
+        :host[data-tui-host-mode='onDark']._disabled & {
             color: var(--tui-text-03-night);
         }
     }
@@ -77,11 +77,11 @@
         padding: @padding-top-when-transformed @padding 0;
     }
 
-    :host[data-tui-host-mode='light'] & {
+    :host[data-tui-host-mode='onDark'] & {
         color: var(--tui-text-01-night);
     }
 
-    :host[data-tui-host-mode='light']._disabled & {
+    :host[data-tui-host-mode='onDark']._disabled & {
         color: var(--tui-text-03-night);
     }
 }
@@ -102,7 +102,7 @@
         color: var(--tui-text-03);
     }
 
-    :host[data-tui-host-size='l'][data-tui-host-mode='light']._disabled & {
+    :host[data-tui-host-size='l'][data-tui-host-mode='onDark']._disabled & {
         color: var(--tui-text-03-night);
     }
 }

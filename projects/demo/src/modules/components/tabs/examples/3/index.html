@@ -1,15 +1,15 @@
 <tui-tabs [(activeItemIndex)]="activeItemIndex">
-    <button tuiTab type="button" (click)="onClick('Карты')">
+    <button tuiTab type="button" (click)="onClick('Maps')">
         <tui-svg src="tuiIconCard" class="tui-space_right-2"></tui-svg>
-        Карты
+        Maps
     </button>
-    <button tuiTab type="button" disabled (click)="onClick('Вызовы')">
+    <button tuiTab type="button" disabled (click)="onClick('Calls')">
         <tui-svg src="tuiIconCall" class="tui-space_right-2"></tui-svg>
-        Вызовы
+        Calls
     </button>
-    <button tuiTab type="button" (click)="onClick('Тариф')">
+    <button tuiTab type="button" (click)="onClick('Settings')">
         <tui-svg src="tuiIconSettings" class="tui-space_right-2"></tui-svg>
-        Тариф
+        Settings
     </button>
 </tui-tabs>
 <tui-input-count

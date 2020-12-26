@@ -90,7 +90,7 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
     }
 
     get hint(): string {
-        return this.isPasswordHidden ? 'Показать пароль' : 'Скрыть пароль';
+        return this.isPasswordHidden ? 'Show password' : 'Hide password';
     }
 
     get inputType(): string {

@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
 import {
     TuiNotificationsModule,
     TuiDialogModule,
@@ -16,7 +15,6 @@ import {AppComponent} from './app.component';
     imports: [
         BrowserModule,
         TuiRootModule,
-        TuiTableBarsHostModule,
         TuiNotificationsModule,
         TuiDialogModule,
         AppRoutingModule,

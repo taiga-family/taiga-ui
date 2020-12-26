@@ -1,4 +1,4 @@
-<label tuiLabel label="Сумма оплаты">
+<label tuiLabel label="Some label">
     <tui-input
         formControlName="testValue"
         tuiTextfieldSize="m"

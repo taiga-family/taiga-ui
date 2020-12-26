@@ -1,5 +1,5 @@
 <form [formGroup]="testForm">
     <tui-input-date formControlName="testValue">
-        Выберите дату
+        Choose a date
     </tui-input-date>
 </form>

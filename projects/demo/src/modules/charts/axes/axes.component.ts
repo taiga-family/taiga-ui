@@ -50,8 +50,8 @@ export class ExampleTuiAxesComponent {
     readonly labelsVariants = [
         [],
         ['', '25%', '50%', '100%'],
-        ['Один', 'Два', 'Три'],
-        ['Один', null, '', 'Два с половиной', 'Три', null],
+        ['One', 'Two', 'Three'],
+        ['One', null, '', 'Two and a half', 'Three', null],
     ];
 
     readonly handlerVariants: ReadonlyArray<TuiLineHandler> = [

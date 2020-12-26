@@ -1,5 +1,5 @@
 <tui-editor
-    exampleText="Пример ввода"
+    exampleText="Example text"
     [(ngModel)]="model">
-    Плейсхолдер
+    Placeholder
 </tui-editor>

@@ -1,6 +1,6 @@
 <form class="container" [formGroup]="testForm">
     <tui-input-time formControlName="testValue" tuiTextfieldSize="s">
-        Введите время
+        Input time
     </tui-input-time>
     <tui-input-time
         class="tui-space_top-2"
@@ -8,7 +8,7 @@
         tuiTextfieldSize="m"
         [tuiTextfieldLabelOutside]="true"
     >
-        Введите время
+        Input time
     </tui-input-time>
     <p>
         В случае, если поле необязательное, но не до конца заполненное поле
@@ -16,6 +16,6 @@
         <code>tuiUnfinishedValidator</code> директиву.
     </p>
     <tui-input-time tuiUnfinishedValidator formControlName="testValue">
-        Введите время
+        Input time
     </tui-input-time>
 </form>

@@ -5,9 +5,9 @@ import {pluralize} from '@taiga-ui/core/utils/format';
 @Pipe({name: 'tuiPluralize'})
 export class TuiPluralizePipe implements PipeTransform {
     /**
-     * Выбирает корректную форму множественного числа для отображения количества
-     * @param value число
-     * @param args массив из трёх форм множественного числа, например ['год', 'года', 'лет']
+     * Chooses correct plural form
+     * @param value
+     * @param args tuple of three plural forms
      */
     transform(value: number, args: TuiPluralize): string {
         return pluralize(value, args);

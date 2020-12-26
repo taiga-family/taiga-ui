@@ -72,11 +72,12 @@
                 [style.bottom.%]="getBottom(point[1])"
             ></div>
             <ng-template #hint>
-                <polymorpheus-outlet
+                <div
+                    polymorpheus-outlet
                     class="text"
                     [content]="computedHint"
                     [context]="getContentContext(point)"
-                ></polymorpheus-outlet>
+                ></div>
             </ng-template>
         </ng-container>
     </ng-container>

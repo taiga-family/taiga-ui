@@ -20,18 +20,18 @@ import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 const MONTHS: readonly string[] = [
-    'ЯНВ 2019',
-    'ФЕВ',
-    'МАР',
-    'АПР',
-    'МАЙ',
-    'ИЮН',
-    'ИЮЛ',
-    'АВГ',
-    'СЕН',
-    'ОКТ',
-    'НОЯ',
-    'ДЕК',
+    'Jan 2019',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
 ];
 const zebraHandler: TuiColorHandler = index =>
     index % 2 ? TuiBaseColor.Success : TuiBaseColor.Error;
@@ -93,7 +93,7 @@ export class ExampleTuiBarChartComponent {
 
     readonly hintModeVariants: ReadonlyArray<TuiHintMode | null> = [
         null,
-        TuiHintMode.Light,
+        TuiHintMode.OnDark,
         TuiHintMode.Error,
     ];
 

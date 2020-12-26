@@ -1,12 +1,13 @@
-<tui-doc-page header="TextArea" package="KIT">
+<tui-doc-page i18n-header header="TextArea" package="KIT">
     <ng-template pageTab>
-        Текстовое поле для ввода многострочного текста. Может растягиваться в
-        высоту в зависимости от количества введенного текста.
+        <p i18n>
+            Textfield for multiline input. It can be expanded from its content.
+        </p>
 
         <tui-doc-example
             id="base"
-            heading="обычное поле и expandable"
-            description="Обычное поле имеет фиксированный размер и контент скролится в пределах этого размера. Еxpandable - имеет возможность растягиваться в высоту в зависимости от количества введенного текста, но не больше высоты заданной через свойство rows."
+            i18n-heading
+            heading="A simple field and expandable"
             [content]="example1"
         >
             <tui-text-area-example-1></tui-text-area-example-1>
@@ -14,8 +15,8 @@
 
         <tui-doc-example
             id="large"
-            heading="произвольный размер"
-            description="Компоненту можно задать произвольный исходный размер через css свойство min-height."
+            i18n-heading
+            heading="Custom size"
             [content]="example2"
         >
             <tui-text-area-example-2></tui-text-area-example-2>
@@ -23,8 +24,8 @@
 
         <tui-doc-example
             id="large"
-            heading="с внешним лейблом"
-            description="Лейбл компонента можно вынести за его пределы обернув tui-text-area в tui-label."
+            i18n-heading
+            heading="With label outside"
             [content]="example3"
         >
             <tui-text-area-example-3></tui-text-area-example-3>
@@ -57,30 +58,33 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="disabled"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Disabled переключается через formControl.disable()
+                Disabled state (formControl.disable())
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="expandable"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="expandable"
             >
-                Растягивается по высоте в зависимости от введенного текста
+                Control height can be expanded to show all content
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="rows"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="rowsVariants"
                 [(documentationPropertyValue)]="rows"
             >
-                Позволяет изменить количество видимых строк в поле для режима
-                <code>expandable</code>
+                A number of visible rows in
+                <code>expandable</code> mode
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
@@ -89,9 +93,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiTextAreaModule</code> в тот же модуль, куда добавляется
-                ваш компонент:
+                <p i18n>
+                    Import <code>TuiTextAreaModule</code> into a module where
+                    you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -100,8 +105,10 @@
             </li>
 
             <li>
-                Объявить форму (<code>FormGroup</code>) или контрол
-                (<code>FormControl</code>) в компоненте:
+                <p i18n>
+                    Declare a form (<code>FormGroup</code>) or a control
+                    (<code>FormControl</code>) in your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -110,9 +117,7 @@
             </li>
 
             <li>
-                Добавить в шаблон (<code>expandable</code> включает автовысоту,
-                <code>rows</code> позволяет изменить стандартное ограничение в
-                20 строк):
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

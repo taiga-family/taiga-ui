@@ -61,7 +61,7 @@ export class ExampleTuiTabsComponent {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
-    readonly moreContentVariants = ['', 'А также'];
+    readonly moreContentVariants = ['', 'And more'];
 
     moreContent = this.moreContentVariants[0];
 

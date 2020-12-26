@@ -6,8 +6,9 @@ import {
     Input,
 } from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiBrightness, TuiInteractiveState} from '@taiga-ui/core/enums';
+import {TuiInteractiveState} from '@taiga-ui/core/enums';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
+import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 
 import {TUI_WRAPPER_PROVIDERS} from './wrapper.providers';
@@ -74,7 +75,7 @@ export class TuiWrapperComponent {
             return TuiInteractiveState.Readonly;
         }
 
-        if (this.pressed) {
+        if (this.pressed && !this.isMobile) {
             return TuiInteractiveState.Pressed;
         }
 

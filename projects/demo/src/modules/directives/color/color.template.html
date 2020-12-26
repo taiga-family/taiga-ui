@@ -1,35 +1,36 @@
-<tui-doc-page header="Color" package="CORE">
-    <ng-template pageTab>
-        Директива <code>tuiColor / tuiBackground</code> нужна для задания цвета
-        текста или фона одним из цветов основной и дополнительной палитры по
-        названию цвета
+<tui-doc-page i18n-header header="Color" package="CORE">
+    <ng-template i18n pageTab>
+        <code>tuiColor / tuiBackground</code> set color or background color with
+        a name from pallete
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
             <div [tuiColor]="tuiColor" [tuiBackground]="tuiBackground">
-                Пример текста
+                Some text
             </div>
         </tui-doc-demo>
 
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="tuiBackground"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiColor | string"
                 [documentationPropertyValues]="variants"
                 [(documentationPropertyValue)]="tuiBackground"
             >
-                Название цвета фона
+                Background color name
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="tuiColor"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiColor | string"
                 [documentationPropertyValues]="variants"
                 [(documentationPropertyValue)]="tuiColor"
             >
-                Название цвета текста
+                Color name
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -37,9 +38,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiColorModule</code> в тот же модуль, куда добавляется
-                ваш компонент:
+                <p i18n>
+                    Import <code>TuiColorModule</code> into a module where you
+                    want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -48,7 +50,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -4,10 +4,10 @@
             <tui-input
                 class="tui-group__inherit-item"
                 formControlName="testValue"
-                tuiTextfieldExampleText="Номер дома"
-                tuiHintContent="Пишите только цифру"
+                tuiTextfieldExampleText="House"
+                tuiHintContent="Write a number"
             >
-                Дом
+                House
             </tui-input>
             <tui-field-error formControlName="testValue"></tui-field-error>
         </div>
@@ -15,10 +15,10 @@
             <tui-input
                 class="tui-group__inherit-item"
                 formControlName="testValue2"
-                tuiTextfieldExampleText="Номер корпуса"
-                tuiHintContent="Пишите только корпус"
+                tuiTextfieldExampleText="House building"
+                tuiHintContent="Write house building"
             >
-                Корпус
+                House building
             </tui-input>
             <tui-field-error formControlName="testValue2"></tui-field-error>
         </div>
@@ -26,20 +26,18 @@
             <tui-input
                 class="tui-group__inherit-item"
                 formControlName="testValue3"
-                tuiTextfieldExampleText="Номер квартиры"
-                tuiHintContent="Пишите только квартиру"
+                tuiTextfieldExampleText="Apartament number"
+                tuiHintContent="Write an apartament number only"
             >
-                Квартира
+                Apartament
             </tui-input>
             <tui-field-error formControlName="testValue3"></tui-field-error>
         </div>
     </div>
-    <p class="tui-space_top-8">
-        Если у вас используется несколько уровней оберток до необходимого
-        компонента, то целесообразно будет использовать директиву
-        <code><strong>tuiProjectClassDirective</strong></code
-        >, которая проецирует указанные классы из предков в свой хостовый
-        элемент.
+    <p i18n class="tui-space_top-8">
+        If you have nested components, it would be better to use
+        <code><strong>tuiProjectClassDirective</strong></code> that projects
+        classes from parent to host element
     </p>
     <div tuiGroup tuiTableMode class="group" [collapsed]="true">
         <div [tuiProjectClass]="classNames">
@@ -49,7 +47,7 @@
                         formControlName="combo"
                         [tuiTextfieldLabelOutside]="true"
                     >
-                        Сколько?
+                        How much?
                         <tui-data-list-wrapper
                             *tuiDataList
                             [items]="items"
@@ -66,7 +64,7 @@
                         [tuiTextfieldLabelOutside]="true"
                         [postfix]="'USD' | tuiCurrency"
                     >
-                        За сколько?
+                        How much?
                     </tui-input-number>
                 </div>
             </div>
@@ -78,7 +76,7 @@
                         formControlName="select"
                         [tuiTextfieldLabelOutside]="true"
                     >
-                        Сколько?
+                        How much?
                         <tui-data-list-wrapper
                             *tuiDataList
                             [items]="items"

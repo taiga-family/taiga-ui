@@ -1,10 +1,11 @@
 <div *ngIf="hasContent" class="content">
-    <polymorpheus-outlet
+    <div
+        polymorpheus-outlet
         class="wrapper"
         automation-id="tui-ring-chart__content"
         [content]="content"
         [context]="contentContext"
-    ></polymorpheus-outlet>
+    ></div>
 </div>
 
 <tui-pie-chart

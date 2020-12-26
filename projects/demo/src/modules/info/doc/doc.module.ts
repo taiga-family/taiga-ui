@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
-import {MarkdownModule} from 'ngx-markdown';
+import {TuiLinkModule} from '@taiga-ui/core';
 import {DocComponent} from './doc.component';
 
 @NgModule({
     imports: [
-        MarkdownModule,
+        TuiLinkModule,
         ...TUI_DOC_PAGE_MODULES,
         RouterModule.forChild(generateRoutes(DocComponent)),
     ],

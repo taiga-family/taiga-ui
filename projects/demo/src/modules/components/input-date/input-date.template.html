@@ -1,17 +1,28 @@
 <tui-doc-page header="InputDate" package="KIT">
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">Поле с календарем для выбора даты.</div>
+        <div i18n class="tui-space_bottom-3">Input with a calendar</div>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-input-date-example-1></tui-input-date-example-1>
         </tui-doc-example>
 
-        <tui-doc-example heading="размеры" id="sizes" [content]="example2">
+        <tui-doc-example
+            i18n-heading
+            heading="sizes"
+            id="sizes"
+            [content]="example2"
+        >
             <tui-input-date-example-2></tui-input-date-example-2>
         </tui-doc-example>
 
         <tui-doc-example
-            heading="Именованная дата"
+            i18n-heading
+            heading="With named dates"
             id="named"
             [content]="example3"
         >
@@ -42,65 +53,74 @@
                     [tuiHintDirection]="hintDirection"
                     [tuiHintMode]="hintMode"
                 >
-                    Выберите дату
+                    Choose a date
                 </tui-input-date>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент формы disabled (через formControl.disable())
+                Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<TuiDay>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                Функция, определяющая, заблокирована ли дата в календаре.<br />
-                <strong>Должна быть чистой функцией.</strong><br />
-                Не препятствует ручному вводу значения в текстовое поле.
+                <div>
+                    A handler that gets a date and returns true if it is
+                    disabled.
+                </div>
+
+                <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="items"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiNamedDay[]"
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
             >
-                Пресеты именованных дней для выставления по кнопке в выпадашке
+                A list of preset dates for dropdown
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="markerHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMarkerHandler"
                 [documentationPropertyValues]="markerHandlerVariants"
                 [(documentationPropertyValue)]="markerHandler"
             >
-                Функция, которая определяет, показаны ли под датой
-                кружки-маркеры и задает их цвета
+                A handler that gets date and returns null or a tuple with
+                circled marker colors
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальная дата
+                Minimum date
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальная дата
+                Maximum date
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>
@@ -109,10 +129,11 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модули для работы с формами из
-                Angular и модуль
-                <code>TuiInputDateModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiInputDateModule</code> in the same module where you
+                    want to use our component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -121,8 +142,10 @@
             </li>
 
             <li>
-                Объявить форму (<code>FormGroup</code>) или контрол
-                (<code>FormControl</code>) в компоненте:
+                <p i18n>
+                    Declare a form (<code>FormGroup</code>) or a control
+                    (<code>FormControl</code>) in your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -131,7 +154,7 @@
             </li>
 
             <li>
-                Вставить компонент <code>TuiInputDate</code> в шаблон:
+                Use <code>TuiInputDate</code> in template:
 
                 <tui-doc-code
                     filename="myComponent.template.html"

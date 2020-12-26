@@ -1,20 +1,19 @@
 <tui-root>
-    <!-- здесь контент приложения -->
+    <!-- content of your app -->
 
     <!--
-     при необходимости, вы можете вклинить часть
-     своего приложения между слоями кита:
+     If you need, you can add something between Taiga portal layers:
     -->
     <ng-container ngProjectAs="tuiOverDialogs">
-        <!-- контент над попапами кита -->
+        <!-- Content over dialogs-->
     </ng-container>
     <ng-container ngProjectAs="tuiOverNotifications">
-        <!-- контент над нотификациями кита -->
+        <!-- Content over notifications -->
     </ng-container>
     <ng-container ngProjectAs="tuiOverPortals">
-        <!-- контент над выпадашками кита -->
+        <!-- Content over dropdowns -->
     </ng-container>
     <ng-container ngProjectAs="tuiOverHints">
-        <!-- контент над хинтами кита -->
+        <!-- Content over hints -->
     </ng-container>
 </tui-root>

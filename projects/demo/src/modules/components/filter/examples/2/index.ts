@@ -14,7 +14,7 @@ interface Oreration {
 }
 
 const COMPLETED = {
-    title: 'Выполненные',
+    title: 'Done',
     operations: [
         {
             amount: 100,
@@ -40,7 +40,7 @@ export class TuiFilterExample2 {
     items: ReadonlyArray<Orerations> = [
         COMPLETED,
         {
-            title: 'Черновики',
+            title: 'Drafts',
             operations: [
                 {
                     amount: 100,
@@ -57,11 +57,11 @@ export class TuiFilterExample2 {
             ],
         },
         {
-            title: 'На подпись',
+            title: 'For sign',
             operations: [],
         },
         {
-            title: 'Очередь оплаты',
+            title: 'Queue',
             operations: [
                 {
                     amount: 100,
@@ -87,10 +87,10 @@ export class TuiFilterExample2 {
 
     badgeHandler: TuiHandler<Orerations, number> = item => item.operations.length;
 
-    form = new FormGroup({
+    readonly form = new FormGroup({
         filters: new FormControl([
             {
-                title: 'Черновики',
+                title: 'Drafts',
             },
         ]),
     });

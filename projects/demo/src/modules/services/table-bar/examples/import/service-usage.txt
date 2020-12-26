@@ -9,7 +9,7 @@ constructor(@Inject(TuiTableBarsService) private readonly tableBarsService: TuiT
 ...
     this.tableBarsService
         .showTableBar(this.tableBarTemplate, {
-            mode: 'dark',
+            mode: 'onLight',
             hasCloseButton: true,
         })
     .subscribe();

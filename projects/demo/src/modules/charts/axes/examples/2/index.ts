@@ -28,8 +28,8 @@ export class TuiAxesExample2 {
 
     readonly axisYSecondaryLabels = [
         '',
-        `${this.getMax(this.value) / 2} тыс.`,
-        `${this.getMax(this.value)} тыс.`,
+        `${this.getMax(this.value) / 2} k`,
+        `${this.getMax(this.value)} k`,
     ];
 
     readonly axisXLabels = ['Q1', 'Q2', 'Q3', 'Q4'];
@@ -38,7 +38,7 @@ export class TuiAxesExample2 {
 
     readonly verticalLinesHandler = TUI_ALWAYS_NONE;
 
-    private readonly setNames = ['Симпсоны', 'Смурфы', 'Черепашки Ниндзя', 'Танос'];
+    private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
 
     getPercent(set: [number, number, number, number]): number {
         return (BENJI * Math.max(...set)) / this.getMax(this.value);

@@ -45,19 +45,19 @@ function convertRejected({file, reason}: RejectedFile): TuiFileLike {
 export class TuiInputFileExample3 {
     files: ReadonlyArray<TuiFileLike> = [
         {
-            name: 'Загружающийся файл.txt',
+            name: 'Loading file.txt',
         },
         {
             name:
-                'Успешно загруженный файл с очень длинным названием, чтобы проверить срез.txt',
+                'A file with a very very long title to check that it can be cut correctly.txt',
             src: 'https://tools.ietf.org/html/rfc675',
         },
     ];
     loadingFiles: ReadonlyArray<TuiFileLike> = [this.files[0]];
     rejectedFiles: ReadonlyArray<TuiFileLike> = [
         {
-            name: 'Файл с ошибкой.txt',
-            content: 'В этот раз как-то не удалось',
+            name: 'File with an error.txt',
+            content: 'Something went wrong this time',
         },
     ];
 
@@ -132,7 +132,9 @@ export class TuiInputFileExample3 {
     private serverRequest(file: TuiFileLike): Observable<RejectedFile | File | null> {
         const delay = Math.round(Math.random() * 5000 + 500);
         const result =
-            delay % 2 ? null : new RejectedFile(file, 'Сервер ответил за нечётное время');
+            delay % 2
+                ? null
+                : new RejectedFile(file, 'Server responded for odd number of time');
 
         return timer(delay).pipe(mapTo(result));
     }

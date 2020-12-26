@@ -1,23 +1,23 @@
 <tui-doc-page header="Scrollbar" package="CORE">
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
-            <code>Scrollbar</code> реализует кастомный скроллбар,
-            соответствующий общей стилистике Taiga UI.
+        <div i18n class="tui-space_bottom-3">
+            <code>Scrollbar</code> implements a custom scrollbar in Taiga UI
+            style.
         </div>
 
-        Нативный скроллбар просто прячется, что позволяет полностью сохранить
-        специфичное для платформы поведение прокрутки.
+        <p i18n>
+            Native scrollbar is hidden to keep native platform scroll expirience
+        </p>
 
-        <tui-notification class="tui-space_vertical-3" [hasCloseButton]="false">
-            Получить скроллящийся контейнер можно через токен
-            <code>TUI_SCROLL_REF</code>. Это может быть необходимо для работы с
-            библиотеками для виртуального скролла, которым нужно передать
-            контейнер.
+        <tui-notification i18n class="tui-space_vertical-3">
+            Use <code>TUI_SCROLL_REF</code> token to get a scrollable container.
+            For example, when working with virtual scroll.
         </tui-notification>
 
         <tui-doc-example
             id="vertical"
-            heading="вертикальный"
+            i18n-heading
+            heading="Vertical"
             [content]="example1"
         >
             <tui-scrollbar-example-1></tui-scrollbar-example-1>
@@ -25,19 +25,26 @@
 
         <tui-doc-example
             id="horizontal"
-            heading="горизонтальный"
+            i18n-heading
+            heading="horizontal"
             [content]="example2"
         >
             <tui-scrollbar-example-2></tui-scrollbar-example-2>
         </tui-doc-example>
 
-        <tui-doc-example id="all" heading="все" [content]="example3">
+        <tui-doc-example
+            id="all"
+            i18n-heading
+            heading="All"
+            [content]="example3"
+        >
             <tui-scrollbar-example-3></tui-scrollbar-example-3>
         </tui-doc-example>
 
         <tui-doc-example
             id="hidden"
-            heading="прозрачный скроллбар"
+            i18n-heading
+            heading="Hidden"
             [content]="example4"
         >
             <tui-scrollbar-example-4></tui-scrollbar-example-4>
@@ -45,7 +52,8 @@
 
         <tui-doc-example
             id="light"
-            heading="светлый скроллбар"
+            i18n-heading
+            heading="Light scrollbar"
             [content]="example5"
         >
             <tui-scrollbar-example-5></tui-scrollbar-example-5>
@@ -53,24 +61,26 @@
 
         <tui-doc-example
             id="virtual"
-            heading="виртуальный скролл"
+            i18n-heading
+            heading="Virtual scroll"
             [content]="example6"
         >
-            <p>
-                Передать элемент для скролла можно с помощью директивы
-                <code>tuiScrollable</code>. В данном примере используется
-                виртуальный скролл из <code>@angular/cdk</code>.
+            <p i18n>
+                Use <code>tuiScrollable</code> directive as an element for
+                scroll. In this sample, we use vitual scroll from
+                <code>@angular/cdk</code>.
             </p>
             <tui-scrollbar-example-6></tui-scrollbar-example-6>
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiScrollbarModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import <code>TuiScrollbarModule</code> into a module where
+                    you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -79,7 +89,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

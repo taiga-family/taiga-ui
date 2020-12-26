@@ -1,8 +1,13 @@
-<tui-doc-page header="PointerHint" package="CORE">
+<tui-doc-page i18n-header header="PointerHint" package="CORE">
     <ng-template pageTab>
-        Директива для показа подсказки под курсором
+        <p i18n>A directive to show a hint above the cursor</p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-pointer-hint-example-1></tui-pointer-hint-example-1>
         </tui-doc-example>
     </ng-template>
@@ -10,20 +15,22 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <div
-                tuiPointerHint="'Некоторая информация'"
+                i18n
+                tuiPointerHint="Some information"
                 [tuiHintMode]="mode"
                 [tuiHintDirection]="direction"
             >
-                Блок для отлеживания
+                It is followed inside the block
             </div>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="tuiPointerHint"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent | null"
             >
-                Содержимое тултипа
+                Hint content
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
@@ -32,9 +39,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiPointerHintModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import <code>TuiPointerHintModule</code> into a module where
+                    you want to use our directive
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -43,7 +51,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

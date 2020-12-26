@@ -1,27 +1,37 @@
 <tui-doc-page header="Money" package="ADDON-COMMERCE">
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
-            Компонент <code>Money</code> предназначен для вывода форматированных
-            денежных сумм. Может отображать сумму со&nbsp;знаком валюты
-            и&nbsp;без, с&nbsp;копейками и&nbsp;без копеек.
+        <div i18n class="tui-space_bottom-3">
+            <code>Money</code> transforms and shows money sum. There are some
+            ways to show currency symbol and various decimal settings
         </div>
 
-        Копейки могут иметь тот&nbsp;же цвет, что и&nbsp;целая часть суммы,
-        а&nbsp;могут быть показаны серым цветом. Этим управляет параметр
-        <code>singleColor</code>. Его следует выставлять в <code>true</code>,
-        если компонент используется в&nbsp;тексте.
+        <p i18n>
+            Set <code>singleColor</code> to <code>true</code> if component is
+            used in a text
+        </p>
 
-        <tui-doc-example id="currency" heading="валюта" [content]="example1">
+        <tui-doc-example
+            id="currency"
+            i18n-heading
+            heading="Currency"
+            [content]="example1"
+        >
             <tui-money-example-1></tui-money-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="color" heading="цвет" [content]="example2">
+        <tui-doc-example
+            id="color"
+            i18n-heading
+            heading="Color"
+            [content]="example2"
+        >
             <tui-money-example-2></tui-money-example-2>
         </tui-doc-example>
 
         <tui-doc-example
             id="sizes"
-            heading="наследование размера"
+            i18n-heading
+            heading="Size inheritance"
             [content]="example3"
         >
             <tui-money-example-3></tui-money-example-3>
@@ -46,26 +56,29 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="colored"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="colored"
             >
-                В&nbsp;цветном режиме положительные суммы показаны зеленым
-                цветом, отрицательные&nbsp;&mdash; красным.
+                Shows positive number with green color and negative numbers with
+                red
             </ng-template>
 
             <ng-template
+                i18n
                 documentationPropertyName="currency"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiCurrencyVariants"
                 [documentationPropertyValues]="currencyVariants"
                 [(documentationPropertyValue)]="currency"
             >
-                Валюта
+                Currency
             </ng-template>
 
             <ng-template
+                i18n
                 documentationPropertyName="decimal"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDecimal"
@@ -74,28 +87,30 @@
             >
                 <ol>
                     <li>
-                        <code>not-zero</code> — показывать ненулевые копейки (по
-                        умолчанию)
+                        <code>not-zero</code> — shows not zero pennies (by
+                        default)
                     </li>
-                    <li><code>always</code> — всегда показывать копейки</li>
+                    <li><code>always</code> — always shows pennies</li>
                     <li>
-                        <code>never</code> — никогда не показывать копейки
-                        (копейки скрываются без округления)
+                        <code>never</code> — never shows pennies (do not show
+                        them without rounding)
                     </li>
                 </ol>
             </ng-template>
 
             <ng-template
+                i18n
                 documentationPropertyName="precision"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="precisionVariants"
                 [(documentationPropertyValue)]="precision"
             >
-                Число знаков после запятой
+                A number of digits after comma
             </ng-template>
 
             <ng-template
+                i18n
                 documentationPropertyName="sign"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMoneySign"
@@ -104,43 +119,41 @@
             >
                 <ol>
                     <li>
-                        <code>negative-only</code> — показывать знак только для
-                        отрицательных чисел (по умолчанию)
+                        <code>negative-only</code> — shows sign for negative
+                        only (by default)
+                    </li>
+                    <li><code>always</code> — always shows sign (except 0)</li>
+                    <li><code>never</code> — never shows sign</li>
+                    <li>
+                        <code>force-negative</code> — always shows minus (except
+                        0)
                     </li>
                     <li>
-                        <code>always</code> — показывать знак всегда (кроме
-                        нуля)
-                    </li>
-                    <li><code>never</code> — не показывать знак</li>
-                    <li>
-                        <code>force-negative</code> — показывать минус вне
-                        зависимости от числа (кроме нуля)
-                    </li>
-                    <li>
-                        <code>force-positive</code> — показывать плюс вне
-                        зависимости от числа (кроме нуля)
+                        <code>force-positive</code> — always shows plus (except
+                        0)
                     </li>
                 </ol>
             </ng-template>
 
             <ng-template
+                i18n
                 documentationPropertyName="singleColor"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="singleColor"
             >
-                Показывать копейки и символ валюты тем же цветом, что и целую
-                часть
+                The same color for the whole money view
             </ng-template>
 
             <ng-template
+                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >
-                Денежная сумма для форматирования
+                Amount of money to be formatted
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -148,9 +161,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiMoneyModule</code> в тот же модуль, куда добавляется
-                ваш компонент:
+                <p i18n>
+                    Import <code>TuiMoneyModule</code> into a module where you
+                    want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -159,7 +173,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

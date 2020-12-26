@@ -27,7 +27,7 @@ export class TuiFieldErrorExample3 {
     getPhoneArrayValidator = (array: FormArray): ValidationErrors | null => {
         return array.controls.length < 2 ||
             (!!array.controls.filter(item => item.errors).length && array.controls.length)
-            ? {length: new TuiValidationError('Необходимо минимум 2 номера телефона')}
+            ? {length: new TuiValidationError('You should add at least 2 phone number')}
             : null;
     };
 

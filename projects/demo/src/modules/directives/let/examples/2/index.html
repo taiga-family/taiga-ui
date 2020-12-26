@@ -1,8 +1,8 @@
 <div *tuiLet="getter as value">
-    <p>Значение, полученное из геттера: {{value}}</p>
+    <p>Calculated with getter value: {{value}}</p>
     <p>
-        Это значение можно использовать многократно:
+        That can be used many times:
         <tui-badge [value]="value"></tui-badge>
     </p>
-    <p>При этом геттер будет вызван только один раз.</p>
+    <p>And getter is called only once.</p>
 </div>

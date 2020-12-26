@@ -19,8 +19,13 @@ class User {
 }
 
 const databaseMockData: ReadonlyArray<User> = [
-    new User('Роман', 'Седов', 'http://marsibarsi.me/images/1x1small.jpg'),
-    new User('Александр', 'Инкин', avatar),
+    new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
+    new User('Alex', 'Inkin', avatar),
+    new User('Dmitriy', 'Demenskiy'),
+    new User('Evgeniy', 'Mamaev'),
+    new User('Ivan', 'Ishmametiev'),
+    new User('Igor', 'Katsuba'),
+    new User('Yulia', 'Tsareva'),
 ];
 
 @Component({
@@ -48,7 +53,7 @@ export class TuiMultiSelectExample2 {
     }
 
     /**
-     * Имитация запроса на сервер
+     * Server request emulation
      */
     private serverRequest(searchQuery: string): Observable<ReadonlyArray<User>> {
         const result = databaseMockData.filter(

@@ -6,5 +6,5 @@ constructor(@Inject(TuiDialogService) private readonly dialogService: TuiDialogS
 
 ...
 
-    this.dialogService.open('Привет!').subscribe();
+    this.dialogService.open('Hello!').subscribe();
 ...

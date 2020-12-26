@@ -3,7 +3,7 @@
     [(open)]="open"
 >
     <button tuiButton type="button">
-        Показать меню
+        Open menu
     </button>
 </tui-hosted-dropdown>
 <ng-template #dropdown>

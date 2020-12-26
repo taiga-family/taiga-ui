@@ -1,38 +1,42 @@
-<p class="tui-space_top-0">Здесь описано подключение Taiga UI к проекту.</p>
-<p>Для подключения конкретного компонента, см. его документацию.</p>
+<p class="tui-space_top-0" i18n>
+    This guide will help you correctly install Taiga UI
+</p>
 
 <div class="tui-space_top-5">
     <ol class="steps">
         <li>
-            <a tuiLink routerLink="." fragment="project">Создание проекта</a>.
+            <a tuiLink routerLink="." fragment="install" i18n
+                >Install libraries</a
+            >
         </li>
         <li>
-            <a tuiLink routerLink="." fragment="install">Установка библиотеки</a
-            >.
-        </li>
-        <li><a tuiLink routerLink="." fragment="less">Базовые стили</a>.</li>
-        <li>
-            <a tuiLink routerLink="." fragment="root">Основной компонент</a>.
+            <a tuiLink routerLink="." fragment="less" i18n
+                >Styles for LESS projects</a
+            >
         </li>
         <li>
-            <a tuiLink routerLink="." fragment="options"
-                >Добавление опциональных компонентов</a
-            >.
+            <a tuiLink routerLink="." fragment="not-less" i18n
+                >Styles for not LESS projects</a
+            >
         </li>
-        <li><a tuiLink routerLink="." fragment="icons">Иконки</a>.</li>
-        <li><a tuiLink routerLink="." fragment="theme">Смена темы</a>.</li>
+        <li>
+            <a tuiLink routerLink="." fragment="root" i18n>Root component</a>
+        </li>
+        <li>
+            <a tuiLink routerLink="." fragment="options" i18n
+                >Optional components</a
+            >
+        </li>
+        <li><a tuiLink routerLink="." fragment="icons" i18n>Icons</a></li>
+        <li><a tuiLink routerLink="." fragment="theme" i18n>Theming</a></li>
+        <li>
+            <a tuiLink routerLink="." fragment="ie">Internet Explorer</a>
+        </li>
     </ol>
 
     <ol class="b-demo-steps">
-        <li id="project">
-            При создании проекта выбрать LESS в качестве препроцессора CSS
-            (<code>--style less</code>). Если это не было сделано сразу, после
-            генерации проекта можно поменять в файле <code>angular.json</code>.
-        </li>
-
-        <li id="install">
-            Установить свежую версию необходимых вам пакетов Taiga UI. Данная
-            команда также сохранит номер установленной версии в package.json.
+        <li id="install" i18n>
+            Install packages of Taiga UI
 
             <tui-doc-code
                 filename="Main Taiga UI packages"
@@ -45,34 +49,80 @@
             ></tui-doc-code>
         </li>
 
-        <li id="less">
-            Подключить стили Taiga UI для нормализации в глобальный
-            <code>styles.less</code>
-            (включает нормализацию и глобальные стили: отступы, grid, списки и
-            т.п.)
-
-            <tui-doc-code
-                filename="styles.less"
-                [code]="examples.importBaseLess"
-            ></tui-doc-code>
-
+        <li id="less" i18n>
             <p>
-                Для использования миксинов и переменных в компонентах нужно
-                подключить локальный набор стилей:
-
-                <tui-doc-code
-                    filename="component.styles.less"
-                    [code]="examples.importLocalLess"
-                ></tui-doc-code>
+                We use <a tuiLink href="http://lesscss.org/">LESS</a> as CSS
+                preprocessor for our library. If you make a new project, you can
+                choose it by default with <code>--style less</code> flag.
             </p>
+
+            <tui-accordion>
+                <tui-accordion-item>
+                    I have a project with LESS
+                    <ng-template tuiAccordionItemContent>
+                        Import our global styles in yours
+                        <code>styles.less</code>. It adds global classes and CSS
+                        variables
+
+                        <tui-doc-code
+                            filename="styles.less"
+                            [code]="examples.importBaseLess"
+                        ></tui-doc-code>
+
+                        <p>
+                            You can also add a set of our mixins and
+                            LESS-variables to use it in your LESS files
+
+                            <tui-doc-code
+                                filename="my.component.less"
+                                [code]="examples.importLocalLess"
+                            ></tui-doc-code>
+                        </p>
+                    </ng-template>
+                </tui-accordion-item>
+                <tui-accordion-item>
+                    I don't use LESS
+                    <ng-template tuiAccordionItemContent>
+                        Append our global styles to styles of your app in
+                        <code>angular.json</code>. It adds global classes and
+                        CSS-variables
+
+                        <tui-doc-code
+                            filename="angular.json"
+                            [code]="examples.angularJsonStyles"
+                        ></tui-doc-code>
+
+                        <p>
+                            It is not a regular case, but if you need to use our
+                            LESS-mixins or LESS-variables, you can add
+                            additional LESS-styles for your component
+                        </p>
+
+                        <tui-doc-code
+                            filename="my.component.ts"
+                            [code]="examples.componentsStyles"
+                        ></tui-doc-code>
+
+                        <p>Angular resolves it automatically</p>
+
+                        <tui-doc-code
+                            filename="my.component.less"
+                            [code]="examples.importLocalLess"
+                        ></tui-doc-code>
+                    </ng-template>
+                </tui-accordion-item>
+            </tui-accordion>
         </li>
 
-        <li id="root">
-            Для работы большинства компонентов Taiga UI приложение должно быть
-            обёрнуто в компонент <code>tui-root</code>. Для этого надо
-            импортировать модуль <code>TuiRootModule</code> и добавить
-            <code>TuiRootScroller</code>
-            в провайдеры для корректной работы роутера Angular:
+        <li id="not-less" i18n>
+            For non-LESS environment, do not forget about file type if you
+            import styles directly from our library
+        </li>
+
+        <li id="root" i18n>
+            Many of our components need your app to be wrapped into
+            <code>tui-root</code>. Import <code>TuiRootModule</code> in your
+            main module.
 
             <tui-doc-code
                 class="tui-space_bottom-4"
@@ -80,7 +130,13 @@
                 [code]="examples.appModule"
             ></tui-doc-code>
 
-            И обернуть контент в шаблоне корневого компонента
+            <p>Wrap all content of your app with root component</p>
+
+            <em>
+                Note: your <code>window</code> will no longer scroll. To control
+                scrolling when modal dialogs are shown,
+                <code>tui-root</code> tag will be topmost scroll container.
+            </em>
 
             <tui-doc-code
                 filename="app.component.html"
@@ -88,10 +144,9 @@
             ></tui-doc-code>
         </li>
 
-        <li id="options">
-            В Taiga UI входят опциональные модули, такие, как попапы,
-            нотификации и другие. Для их включения, нужно добавить их в основной
-            модуль:
+        <li id="options" i18n>
+            Taiga UI also has optional modules for dialogs and notifications. If
+            you need these features, add modules into your app.module.ts
 
             <tui-doc-code
                 class="tui-space_bottom-4"
@@ -100,12 +155,12 @@
             ></tui-doc-code>
         </li>
 
-        <li id="icons">
-            Иконки не включены в бандл библиотеки. Для того, чтобы в компонентах
-            появились необходимые им иконки (календари, галочки, крестики и
-            т.д.) нужно предоставить токен <code>TUI_ICONS_PATH</code> —
-            функцию, получающую на вход имя иконки и возвращающую путь до неё.
-            Добавьте иконки в assets вашего приложения:
+        <li id="icons" i18n>
+            Icons are not included in the bundle. To add icons provide
+            <code>TUI_ICONS_PATH</code> token with a function that gets icon
+            name and returns path to it.
+
+            <p>First of all, add icons into assets of your app:</p>
 
             <tui-doc-code
                 class="tui-space_bottom-4"
@@ -113,18 +168,7 @@
                 [code]="examples.assets"
             ></tui-doc-code>
 
-            Затем укажите через провайдер заданный путь. Кроме того, встроенный
-            <code>Sanitizer</code> ангуляра не пропускает код <code>SVG</code>,
-            поэтому необходимо предоставить токен <code>TUI_SANITIZER</code>,
-            ответственный за удаление вредоносного кода из иконок. Если вы
-            доверяете всем используемым иконкам, то можете использовать
-            константу как в примере ниже, в противном случае рекомендуем
-            использовать нашу библиотеку
-            <a
-                href="https://github.com/TinkoffCreditSystems/ng-dompurify"
-                tuiLink
-                >ng-dompurify</a
-            >.
+            <p>Then you should provide path with a token:</p>
 
             <tui-doc-code
                 class="tui-space_bottom-4"
@@ -133,42 +177,68 @@
             ></tui-doc-code>
         </li>
 
-        <li id="theme">
-            Для смены темы см. раздел
-            <a tuiLink routerLink="/theme">Темы</a>.
+        <li id="theme" i18n>
+            See
+            <a tuiLink routerLink="/theme">Theme</a> to learn more about theming
         </li>
 
-        <li id="ie">
-            Стили Taiga UI строятся на основе CSS-переменных, которые не
-            поддерживаются в браузере Internet Explorer.
-            <strong>Если вам необходима поддержка IE 11</strong>, то
-            воспользуйтесь пакетом
+        <li id="ie" i18n>
+            Taiga UI uses CSS custom properties for styling that is not
+            supported by Internet Explorer.
+            <strong>If you need to support IE 11</strong>, use
             <a
                 tuiLink
                 target="_blank"
                 href="https://www.npmjs.com/package/css-vars-ponyfill"
-                >css-vars-ponyfill</a
             >
+                css-vars-ponyfill
+            </a>
+            package
 
-            <p>Установка css-vars-ponyfill:</p>
+            <p>Install it:</p>
 
             <tui-doc-code [code]="examples.ponyfill"></tui-doc-code>
 
             <p>
-                Добавьте полифилл к
+                Add polyfill to
                 <a
                     tuiLink
                     target="_blank"
                     href="https://angular.io/api/core/APP_BOOTSTRAP_LISTENER"
                     ><code>APP_BOOTSTRAP_LISTENER</code></a
                 >
-                вашего приложения
+                of your app
             </p>
 
             <tui-doc-code
                 filename="app.module.ts"
                 [code]="examples.ieSupport"
             ></tui-doc-code>
+
+            <p>
+                Internet Explorer also does not support native
+                <code>SVG</code> inlining. Taiga UI icons will be automatically
+                downloaded and inlined directly into DOM. However, Angular
+                <code>Sanitizer</code> removes <code>SVG</code> code in that
+                case. To use custom sanitizer that properly supports
+                <code>SVG</code> provide <code>TUI_SANITIZER</code> token. We
+                recommend you using our library
+                <a
+                    target="_blank"
+                    href="https://github.com/TinkoffCreditSystems/ng-dompurify"
+                    tuiLink
+                >
+                    ng-dompurify
+                </a>
+                to properly sanitize code with
+                <a
+                    target="_blank"
+                    href="https://github.com/cure53/DOMPurify"
+                    tuiLink
+                >
+                    DOMPurify
+                </a>
+            </p>
         </li>
     </ol>
 </div>

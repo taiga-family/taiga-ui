@@ -3,7 +3,7 @@ import {TuiDirection, TuiHintMode} from '@taiga-ui/core';
 export abstract class AbstractExampleTuiHint {
     readonly modeVariants: ReadonlyArray<TuiHintMode> = [
         TuiHintMode.Error,
-        TuiHintMode.Light,
+        TuiHintMode.OnDark,
     ];
 
     mode: TuiHintMode | null = null;

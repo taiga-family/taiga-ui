@@ -21,17 +21,17 @@ export class ExampleTuiAvatarComponent {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
-    example1: FrontEndExample = {
+    readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
     };
 
-    example2: FrontEndExample = {
+    readonly example2: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,
     };
 
-    avatarUrlVariants: readonly string[] = [
+    readonly avatarUrlVariants: readonly string[] = [
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',
     ];
 
@@ -43,7 +43,7 @@ export class ExampleTuiAvatarComponent {
 
     autoColor = false;
 
-    sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
+    readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
         'xs',
         's',
         'm',

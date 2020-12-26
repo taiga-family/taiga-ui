@@ -1,20 +1,35 @@
 <tui-doc-page header="Calendar" package="CORE">
     <ng-template pageTab>
-        Компонент календаря для использования отдельно от
-        <a tuiLink [routerLink]="['/tui-input-date']">InputDate</a> или
-        <a tuiLink [routerLink]="['/tui-input-date-range']">InputDateRange</a>.
+        <p>
+            A simple calendar. If you want a textfield with date, see
+            <a tuiLink [routerLink]="['/tui-input-date']">InputDate</a> and
+            <a tuiLink [routerLink]="['/tui-input-date-range']"
+                >InputDateRange</a
+            >
+        </p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-calendar-example-1></tui-calendar-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="range" heading="диапазон" [content]="example2">
+        <tui-doc-example
+            id="range"
+            i18n-heading
+            heading="range"
+            [content]="example2"
+        >
             <tui-calendar-example-2></tui-calendar-example-2>
         </tui-doc-example>
 
         <tui-doc-example
             id="markers"
-            heading="С маркерами"
+            i18n-heading
+            heading="With markers"
             [content]="example3"
         >
             <tui-calendar-example-3></tui-calendar-example-3>
@@ -39,100 +54,115 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<TuiDay>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                Функция, определяющая, заблокирована ли дата в календаре.<br />
-                <strong>Должна быть чистой функцией.</strong>
+                <div>
+                    A handler that gets a date and returns true if it is
+                    disabled.
+                </div>
+
+                <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="showAdjacent"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showAdjacent"
             >
-                Показывать дни соседних месяцев
+                Show adjacent months days
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="hoveredItem"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="TuiDay | null"
                 [(documentationPropertyValue)]="hoveredItem"
             >
-                Наведённый элемент
+                Hovered date
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="markerHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMarkerHandler"
                 [documentationPropertyValues]="markerHandlerVariants"
                 [(documentationPropertyValue)]="markerHandler"
             >
-                Функция, которая определяет, показаны ли под датой
-                кружки-маркеры и задает их цвета
+                A handler that gets date and returns null or a tuple with
+                circled marker colors
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальная дата
+                Maximal date to choose
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="maxViewedMonth"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
-                Максимальный месяц для листания
+                Maximal month to access
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальная дата
+                Minimum date to choose
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="minViewedMonth"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
-                Минимальный месяц для листания
+                Minimum month to access
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="month"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="TuiMonth"
                 [(documentationPropertyValue)]="month"
             >
-                Текущий месяц
+                Current month
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay | TuiDayRange | null"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >
-                Выбранный день или диапазон дат
+                Selected day or range
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="dayClick"
                 documentationPropertyMode="output"
                 documentationPropertyType="TuiDay"
             >
-                Клик по дате
+                Date click
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -140,9 +170,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiCalendarModule</code> в тот же модуль, куда добавляется
-                ваш компонент:
+                <p i18n>
+                    Import <code>TuiCalendarModule</code> into a module where
+                    you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -151,7 +182,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

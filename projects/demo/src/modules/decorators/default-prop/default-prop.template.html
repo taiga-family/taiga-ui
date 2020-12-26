@@ -1,32 +1,34 @@
-<tui-doc-page header="DefaultProp" package="CDK">
+<tui-doc-page i18n-header header="DefaultProp" package="CDK">
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
-            Декоратор для инпутов, для которых определено начальное значение в
-            компоненте.
+        <div i18n class="tui-space_bottom-3">
+            Decorator for <code>@Input</code> with default value
         </div>
-        <div class="tui-space_bottom-3">
-            <strong
-                >ВНИМАНИЕ: Декоратор переопределяет геттер/сеттер
-                инпута.</strong
-            >
+        <div i18n class="tui-space_bottom-3">
+            <strong>Warning:</strong> decorator overrides getter/setter of input
         </div>
 
-        Для использования с сеттерами см.
-        <a tuiLink [routerLink]="['/tui-required-setter']">RequiredSetter</a>.
-    </ng-template>
+        <p i18n>
+            Decorator stops <code>undefined</code> values if they were passed
+            into input. If it gets <code>undefined</code>, it will use default
+            value and show an error message about the problem in console in dev
+            mode.
+        </p>
 
-    <ng-template pageTab>
+        <div i18n>
+            See
+            <a tuiLink [routerLink]="['/tui-required-setter']">
+                RequiredSetter
+            </a>
+            for work with setters
+        </div>
+
         <div>
-            <p>См. консоль</p>
+            <p i18n>See console. Min value is 5</p>
             <example-tui-default-prop-demo
-                [min]="min"
                 [quantity]="quantity"
             ></example-tui-default-prop-demo>
             <tui-input-count class="tui-space_top-4" [(ngModel)]="quantity">
                 quantity
-            </tui-input-count>
-            <tui-input-count class="tui-space_top-4" [(ngModel)]="min">
-                min
             </tui-input-count>
             <button
                 tuiButton
@@ -40,46 +42,33 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p>
-            Данный декоратор предназначен для недопуска undefined значений на
-            вход компонента. При получении undefined будет применено значение по
-            умолчанию (по аналогии с агрументами функции по умолчанию и
-            деструктурирующим присваиванием). При этом в DevMode ангуляра в
-            консоли появится сообщение о том, что это скорее всего случилось по
-            ошибке, так как это несовпадение ожидаемого типа и переданного
-            значения.
-        </p>
-        <p>
-            Опционально можно передать на вход функцию-контракт вида
-            <code>(input: T[K], context: T) => boolean</code>, где вторым
-            аргументом будет инстанс компонента, в котором происходит проверка.
-            При неуспешном прохождении проверки об этом также будет выведено
-            сообщение в консоль в DevMode. Дополнительно можно предать
-            произвольное количество аргументов для дополнения стандартного
-            сообщения.
+        <p i18n>
+            You can also pass contract function of type
+            <code>TuiBooleanHandler&lt;T&gt;</code> with the component instance
+            as <code>this</code>. If check is unsuccessful, it shows an error
+            message about the problem in console in dev mode.
         </p>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="assertion"
-                documentationPropertyType="TuiAssertion<T, K>"
+                documentationPropertyType="TuiBooleanHandler<T>"
             >
-                Опциональный аргумент — функция-контракт
+                Optional argument, contract function
                 <p>
-                    <strong>Внимание:</strong> Angular Compiler не позволяет
-                    стрелочные функции в декораторах при включённом
-                    <code>strictMetadataEmit</code> (по умолчанию). Чтобы
-                    использовать стрелочные функции, необходимо добавить
-                    комментарий <code>// @dynamic</code> прямо над
-                    <code>@Component</code>
-                    вашего компонента
+                    <strong>Warning:</strong> Angular Compiler does not allow
+                    arrow functions in decorators with
+                    <code>strictMetadataEmit</code> (by default). Add
+                    <code>// @dynamic</code> comment right above your
+                    <code>@Component</code> decorator to use them
                 </p>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="args"
                 documentationPropertyType="any"
             >
-                Произвольное количество аргументов, передаваемых для вывода в
-                консоль в случае неуспешного прохождения функции-контракта
+                Arguments for console.error if check is unsuccessful
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -87,8 +76,9 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования добавить декоратор
-                <code>@tuiDefaultProp</code> к инпуту вашего компонента:
+                <p i18n>
+                    Add <code>@tuiDefaultProp</code> to input of your component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"

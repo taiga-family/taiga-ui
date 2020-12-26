@@ -2,5 +2,5 @@
 <button tuiButton type="button" [tuiHint]="template">Press him ↑</button>
 
 <ng-template #template>
-    Темплейт для переиспользования
+    Reusable template 
 </ng-template>

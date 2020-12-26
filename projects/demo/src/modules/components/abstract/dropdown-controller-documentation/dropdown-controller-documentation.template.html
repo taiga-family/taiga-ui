@@ -1,5 +1,5 @@
-<h6 class="tui-text_h6">
-    Можно расширить с помощью
+<h6 i18n class="tui-text_h6">
+    Can be expanded with
     <a tuiLink target="_blank" routerLink="/tui-dropdown-controller"
         >TuiDropdownController</a
     >:
@@ -7,48 +7,53 @@
 
 <tui-doc-documentation>
     <ng-template
+        i18n
         documentationPropertyName="tuiDropdownAlign"
         documentationPropertyMode="input"
         documentationPropertyType="TuiHorizontalDirection"
         [documentationPropertyValues]="documentedComponent.dropdownAlignVariants"
         [(documentationPropertyValue)]="documentedComponent.dropdownAlign"
     >
-        Сторона, по которой выровнена выпадашка (не имеет смысл при
+        Align of dropdown (does not work together with
         <code>limitWidth === 'fixed'</code>)
     </ng-template>
     <ng-template
+        i18n
         documentationPropertyName="tuiDropdownDirection"
         documentationPropertyMode="input"
         documentationPropertyType="TuiVerticalDirection | null"
         [documentationPropertyValues]="documentedComponent.dropdownDirectionVariants"
         [(documentationPropertyValue)]="documentedComponent.dropdownDirection"
     >
-        Задать явно направление открытия выпадашки
+        Set a vertical direction of dropdown
     </ng-template>
     <ng-template
+        i18n
         documentationPropertyName="tuiDropdownLimitWidth"
         documentationPropertyMode="input"
         documentationPropertyType="TuiDropdownWidth"
         [documentationPropertyValues]="documentedComponent.dropdownLimitWidthVariants"
         [(documentationPropertyValue)]="documentedComponent.dropdownLimitWidth"
     >
-        Ограничить выпадающий список по ширине
+        Limit width of dropdown
     </ng-template>
     <ng-template
+        i18n
         documentationPropertyName="tuiDropdownMinHeight"
         documentationPropertyMode="input"
         documentationPropertyType="number"
         [(documentationPropertyValue)]="documentedComponent.dropdownMinHeight"
     >
-        Минимальная высота выпадающего списка, при которой учитывается
-        принудительное направление открытия
+        Minimum height to calculate that dropdown fits to setted
+        <code>tuiDropdownDirection</code>
     </ng-template>
     <ng-template
+        i18n
         documentationPropertyName="tuiDropdownMaxHeight"
         documentationPropertyMode="input"
         documentationPropertyType="number"
         [(documentationPropertyValue)]="documentedComponent.dropdownMaxHeight"
     >
-        Максимальная высота выпадающего списка
+        Maximum height of dropdown
     </ng-template>
 </tui-doc-documentation>

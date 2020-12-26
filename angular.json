@@ -467,6 +467,12 @@
             "projectType": "application",
             "prefix": "app",
             "schematics": {},
+            "i18n": {
+                "sourceLocale": "en-US",
+                "locales": {
+                    "ru": "projects/demo/src/locale/messages.ru.xlf"
+                }
+            },
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
@@ -572,6 +578,9 @@
                                     "with": "public/projects/demo/src/viewEncapsulation.shadow.ts"
                                 }
                             ]
+                        },
+                        "ru": {
+                            "localize": ["ru"]
                         }
                     }
                 },
@@ -591,10 +600,13 @@
                             "hmr": true
                         },
                         "def": {
-                            "browserTarget": "proprietary-demo:build:def"
+                            "browserTarget": "demo:build:def"
                         },
                         "shadow": {
-                            "browserTarget": "proprietary-demo:build:shadow"
+                            "browserTarget": "demo:build:shadow"
+                        },
+                        "ru": {
+                            "browserTarget": "demo:build:ru"
                         }
                     }
                 },

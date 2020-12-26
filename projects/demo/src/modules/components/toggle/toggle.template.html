@@ -1,11 +1,16 @@
-<tui-doc-page header="Toggle" package="KIT">
+<tui-doc-page i18n-header header="Toggle" package="KIT">
     <ng-template pageTab>
-        Toggle&nbsp;&mdash; переключатель с&nbsp;двумя состояниями. Можно
-        включить показ иконок состояний или спиннера. Переключатель без иконок
-        используется, если состояния означают не&nbsp;&laquo;включено&raquo;
-        и&nbsp;&laquo;выключено&raquo;, а&nbsp;две равнозначных опции.
+        <p i18n>
+            Toggle is a switcher between two states. It can be also used with
+            icons and loading.
+        </p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-toggle-example-1></tui-toggle-example-1>
         </tui-doc-example>
     </ng-template>
@@ -25,73 +30,79 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент формы disabled (через formControl.disable())
+                Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pseudoFocused"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean | null"
                 [documentationPropertyValues]="pseudoVariants"
                 [(documentationPropertyValue)]="pseudoFocused"
             >
-                Визуальная сфокусированность&nbsp;&mdash; установить
-                принудительно извне компонента
+                Visual focused state
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pseudoHovered"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean | null"
                 [documentationPropertyValues]="pseudoVariants"
                 [(documentationPropertyValue)]="pseudoHovered"
             >
-                Hovered&nbsp;&mdash; установить принудительно извне компонента
+                Visual hovered state
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="pseudoPressed"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean | null"
                 [documentationPropertyValues]="pseudoVariants"
                 [(documentationPropertyValue)]="pseudoPressed"
             >
-                Pressed&nbsp;&mdash; установить принудительно извне компонента
+                Visual pseudo state
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="showIcons"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showIcons"
             >
-                Показывать иконки
+                Show icons
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="showLoader"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showLoader"
             >
-                Показывать спиннер. Если одновременно включен показ иконок,
-                приоритет у&nbsp;спиннера
+                Show loader. If icons are also enabled, show loader anyway.
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="singleColor"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="singleColor"
             >
-                Все состояния одного цвета
+                All states have the same color
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Размер контрола
+                Size
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
@@ -100,9 +111,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiToggleModule</code> в тот же модуль, куда добавляется
-                ваш компонент:
+                <p i18n>
+                    Import <code>TuiToggleModule</code> into a module where you
+                    want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -111,8 +123,10 @@
             </li>
 
             <li>
-                Объявить форму (<code>FormGroup</code>) или контрол
-                (<code>FormControl</code>) в компоненте:
+                <p i18n>
+                    Declare a form (<code>FormGroup</code>) or a control
+                    (<code>FormControl</code>) in your component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"
@@ -121,7 +135,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

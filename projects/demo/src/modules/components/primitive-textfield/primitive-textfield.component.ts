@@ -53,9 +53,9 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiFie
     readonly themes = ['Taiga UI', 'Bootstrap', 'Material'];
     theme = this.themes[0];
 
-    readonly iconVariants: string[] = ['tuiIconSearch', 'Интерактивный контент'];
+    readonly iconVariants: string[] = ['tuiIconSearch', 'Interactive content'];
 
-    selectedIcon: 'tuiIconSearch' | 'Интерактивный контент' | null = null;
+    selectedIcon: 'tuiIconSearch' | 'Interactive content' | null = null;
 
     readonly iconAlignVariants: ReadonlyArray<TuiHorizontalDirection> = ['left', 'right'];
 
@@ -109,7 +109,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiFie
 
     inputMode = this.inputModeVariants[0];
 
-    readonly customContentVariants = ['Колокольчик'];
+    readonly customContentVariants = ['Bell'];
 
     customContentSelected = null;
 
@@ -129,7 +129,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiFie
 
     size = this.sizeVariants[2];
 
-    readonly hintContentVariants: readonly string[] = ['Иванов Иван Иванович'];
+    readonly hintContentVariants: readonly string[] = ['Ivan Ivanov'];
 
     readonly hintDirectionVariants: ReadonlyArray<TuiDirection> = [
         'left',
@@ -142,7 +142,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiFie
 
     readonly hintModeVariants: ReadonlyArray<TuiHintMode> = [
         TuiHintMode.Error,
-        TuiHintMode.Light,
+        TuiHintMode.OnDark,
     ];
 
     invalid = false;
@@ -179,7 +179,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiFie
     }
 
     get placeholder(): string {
-        return this.isBootstrap ? 'Введите значение' : 'Пример для темизации';
+        return this.isBootstrap ? 'Type a value' : 'Theming sample';
     }
 
     get customizationSize(): TuiSizeS | TuiSizeL {

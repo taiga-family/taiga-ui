@@ -1,23 +1,25 @@
 <tui-doc-page header="ResizableColumn" package="ADDON-TABLE">
     <ng-template pageTab>
-        Компонент используется для возможности изменения ширины столбцов в
-        таблицах
+        <p i18n>Component is used to change column width in tables</p>
 
         <tui-doc-example
             id="usage"
-            heading="Использование"
+            i18n-heading
+            heading="Usage"
             [content]="example1"
         >
             <tui-resizable-column-example-1></tui-resizable-column-example-1>
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiResizableColumnModule</code> в тот же модуль, где вы
-                работаете с таблицей:
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiResizableColumnModule</code> in the same module
+                    where you want to use our component:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -26,7 +28,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -1,14 +1,20 @@
 <tui-doc-page header="InputInline" package="KIT">
     <ng-template pageTab>
-        Поле для ввода, которое встраивается в окружение
+        <p i18n>Inline field</p>
 
-        <tui-doc-example id="base" heading="базовый" [content]="example1">
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
             <tui-input-inline-example-1></tui-input-inline-example-1>
         </tui-doc-example>
 
         <tui-doc-example
             id="in-heading"
-            heading="в заголовке"
+            i18n-heading
+            heading="In heading"
             [content]="example2"
         >
             <tui-input-inline-example-2></tui-input-inline-example-2>
@@ -25,48 +31,53 @@
                     [textMaskOptions]="textMaskOptions"
                     [unmaskHandler]="unmaskHandler"
                 >
-                    Плейсхолдер
+                    Placeholder
                 </tui-input-inline>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Компонент формы disabled (через formControl.disable())
+                Disabled state (use <code>formControl.disable()</code>)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="maxLength"
                 documentationPropertyMode="input"
                 documentationPropertyType="number | null"
                 [documentationPropertyValues]="maxLengthVariants"
                 [(documentationPropertyValue)]="maxLength"
             >
-                Максимальное число вводимых символов.
+                Maximum number of symbols
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="textMaskOptions"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiTextMaskOptions | null"
                 [documentationPropertyValues]="textMaskOptionsVariants"
                 [(documentationPropertyValue)]="textMaskOptions"
             >
-                Параметры маски (<a
+                Text mask params (<a
                     tuiLink
                     href="https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#text-mask-documentation"
-                    >официальная документация</a
-                >).
+                    >official documentation</a
+                >)
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="unmaskHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="string => string"
                 [documentationPropertyValues]="unmaskHandlerVariants"
                 [(documentationPropertyValue)]="unmaskHandler"
             >
-                Функция для снятия маски перед отправкой значения в контрол
+                A funciton to handle a value from mask before it is set into
+                control
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -74,9 +85,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiInputInlineModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import <code>TuiInputInlineModule</code> into a module where
+                    you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -85,7 +97,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -13,7 +13,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiLineChartExample4 {
     readonly hint: TuiStringHandler<TuiContextWithImplicit<TuiPoint>> = ({$implicit}) =>
-        `По вертикали: ${$implicit[1]}\nПо горизонтали: ${$implicit[0]}`;
+        `Vertical: ${$implicit[1]}\nHorizontal: ${$implicit[0]}`;
 
     readonly value = [
         [50, 50],

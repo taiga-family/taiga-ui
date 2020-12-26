@@ -1,11 +1,12 @@
-<tui-doc-page header="Форматирующие утилиты" package="CDK / CORE">
+<tui-doc-page i18n-header header="Format utils" package="CDK / CORE">
     <ng-template pageTab>
-        Набор безопасных форматирующих функций
+        <p i18n>A set of format utils</p>
 
         <tui-doc-example
             id="px"
             heading="px"
-            description="Добавляет px к конечному числу."
+            i18n-description
+            description="Adds 'px' to a number"
             [content]="example1"
         >
             <tui-format-example-1></tui-format-example-1>
@@ -14,7 +15,8 @@
         <tui-doc-example
             id="padStart"
             heading="padStart"
-            description="Добавляет в начало строки заданный заполнитель."
+            i18n-description
+            description="Adds a fillter to a string"
             [content]="example2"
         >
             <tui-format-example-2></tui-format-example-2>
@@ -23,10 +25,8 @@
         <tui-doc-example
             id="getCurrencySymbol"
             heading="getCurrencySymbol"
-            description="Возвращает символ валюты строковому представлению
-                                         кода валюты, а также по трехбуквенной аббревиатуре валюты в стандарте
-                                         ISO 4217. Поддерживает 17 валют, которые входят в список доступных
-                                         для открытия счетов в банке и имеют символ."
+            i18n-description
+            description="Returns a currency symbol from its three letter code or ISO 4217"
             [content]="example3"
         >
             <tui-format-example-3></tui-format-example-3>
@@ -35,8 +35,8 @@
         <tui-doc-example
             id="capitalize"
             heading="capitalize"
-            description="Преобразовывает строку, заменяя её на нижний регистр и делая первую
-                                                  букву каждого слова в верхнем регистре."
+            i18n-description
+            description="Capitalizes every work in a string"
             [content]="example4"
         >
             <tui-format-example-4></tui-format-example-4>
@@ -45,18 +45,18 @@
         <tui-doc-example
             id="formatPhone"
             heading="formatPhone"
-            description="Форматирует строку с телефоном формата +7XXXXXXXXXX,
-                                                  добавляя заданные заполнители."
+            i18n-description
+            description="Formats a phone number with separators"
             [content]="example5"
         >
             <tui-format-example-5></tui-format-example-5>
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Для использования достаточно импортировать функции в компоненте
+                <p i18n>Import into component and use:</p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"

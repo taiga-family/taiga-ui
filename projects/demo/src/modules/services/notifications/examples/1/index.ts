@@ -17,8 +17,8 @@ export class TuiNotificationsExampleComponent1 {
 
     showNotification() {
         this.notificationsService
-            .show('Это самый простой вариант', {
-                label: 'С заголовком!',
+            .show('A simple option', {
+                label: 'With a heading!',
             })
             .subscribe();
     }

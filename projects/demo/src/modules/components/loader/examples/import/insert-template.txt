@@ -1,4 +1,3 @@
-// Включаем лоадер, выставляя showLoader в true
 <tui-loader [showLoader]="loader">
     Let off some steam, Bennett
 </tui-loader>

@@ -25,7 +25,7 @@ export class ExampleTuiLegendItemComponent {
         LESS: example1Less,
     };
 
-    text = 'Текст внутри';
+    text = 'Text inside';
 
     active = false;
 

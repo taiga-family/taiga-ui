@@ -5,10 +5,12 @@ import {changeDetection} from '../../../change-detection-strategy';
 @Component({
     selector: 'example-tui-pure-function',
     template: `
-        <tui-input [(ngModel)]="text">Введите текст для запуска функции</tui-input>
-        <div>Количество вызовов: {{ counter.count }}</div>
-        <div *ngIf="show">Результат: {{ calculate(counter, text) | json }}</div>
-        <button tuiButton type="button" (click)="show = !show">Показать/скрыть</button>
+        <tui-input [(ngModel)]="text"
+            >Type a text to start computing/tui-input>
+            <div>Called times: {{ counter.count }}</div>
+            <div *ngIf="show">Result: {{ calculate(counter, text) | json }}</div>
+            <button tuiButton type="button" (click)="show = !show">Show/hide</button>
+        </tui-input>
     `,
     changeDetection,
 })

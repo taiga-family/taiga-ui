@@ -28,15 +28,15 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiTabsExample2 {
     readonly items = [
         {
-            text: 'Карты',
+            text: 'Maps',
             icon: 'tuiIconCard',
         },
         {
-            text: 'Вызовы',
+            text: 'Calls',
             icon: 'tuiIconCall',
         },
         {
-            text: 'Тариф',
+            text: 'Settings',
             icon: 'tuiIconSettings',
         },
     ];

@@ -19,9 +19,9 @@ export class TuiIslandExample3 {
     });
 
     collapsingText =
-        'Для участия в розыгрыше нужно в одной из социальных сетей Facebook, Instagram, Twitter, ' +
-        'Behance, Flickr, QQ, WeChat, QZone, Tumblr, Google+, Myspace, Snapchat, LinkedIn, Reddit, Taringa, ' +
-        'Badoo, Одноклассники, ВКонтакте, ЖивойЖурнал, Мой Круг';
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit ' +
+        'sed do eiusmod tempor incididunt ut labore et dolore ' +
+        'magna aliqua.';
 
     get linesLimit(): number {
         return this.expanded ? 10 : 3;

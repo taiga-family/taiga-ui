@@ -7,7 +7,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class MyComponent {
     testForm = new FormGroup({
-        // password - предвыбранное значение, можно не передавать
-        testValue: new FormControl('password')
+        testValue: new FormControl('')
     });
 }

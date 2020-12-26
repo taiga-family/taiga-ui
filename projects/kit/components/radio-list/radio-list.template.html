@@ -12,9 +12,10 @@
         [ngModel]="value"
         (ngModelChange)="onModelChange($event)"
     >
-        <polymorpheus-outlet
+        <div
+            polymorpheus-outlet
             [content]="itemContent"
             [context]="getContentContext(item, index, itemIsActive(item))"
-        ></polymorpheus-outlet>
+        ></div>
     </tui-radio-labeled>
 </tui-radio-group>

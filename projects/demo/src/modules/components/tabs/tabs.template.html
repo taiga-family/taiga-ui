@@ -1,11 +1,14 @@
-<tui-doc-page header="Tabs" package="KIT">
+<tui-doc-page i18n-header header="Tabs" package="KIT">
     <ng-template pageTab>
-        Компонент для создания вкладок. Эмулирует внешний вид и поведение
-        нативных вариантов из iOS и Android.
+        <p i18n>
+            Component for creating tabs. It emulates appearance and behaviour of
+            native iOS and Android components when
+            <code>TUI_MOBILE_AWARE</code> token is <code>true</code>.
+        </p>
 
-        <tui-notification class="tui-space_top-4" [hasCloseButton]="false">
-            При использовании <code>routerLink</code> нужно также добавить на
-            вкладку директиву <code>routerLinkActive</code>.
+        <tui-notification i18n class="tui-space_top-4">
+            If you use <code>routerLink</code>, add also
+            <code>routerLinkActive</code> directive.
         </tui-notification>
 
         <tui-doc-example id="android" heading="Android" [content]="example1">
@@ -26,13 +29,14 @@
 
         <tui-doc-example
             id="complex"
-            heading="Сложный пример"
+            i18n-heading
+            heading="Complex"
             [content]="example5"
         >
             <tui-tabs-example-5></tui-tabs-example-5>
         </tui-doc-example>
 
-        <tui-doc-example id="stepper" heading="Степпер" [content]="example6">
+        <tui-doc-example id="stepper" heading="Stepper" [content]="example6">
             <tui-tabs-example-6></tui-tabs-example-6>
         </tui-doc-example>
     </ng-template>
@@ -52,39 +56,43 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="itemsLimit"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="itemsLimit"
             >
-                <div>Количество изначально видимых табов</div>
-                <strong>Только для <code>TabsWithMore</code></strong>
+                Visible tabs count limit
+                <strong>for <code>TabsWithMore</code> only</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="moreContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="moreContentVariants"
                 [(documentationPropertyValue)]="moreContent"
             >
-                <div>Содержимое кнопки ещё</div>
-                <strong>Только для <code>TabsWithMore</code></strong>
+                "More" button content
+                <strong>for <code>TabsWithMore</code> only</strong>
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="underline"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="underline"
             >
-                Выключить подчеркивание у активных элементов
+                Enable active item underline
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="activeItemIndex"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="activeItemIndex"
             >
-                Индекс активного таба
+                Active index item
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -92,9 +100,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiTabsModule</code> в тот же модуль, куда добавляется ваш
-                компонент:
+                <p i18n>
+                    Import <code>TuiTabsModule</code> into a module where you
+                    want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -103,7 +112,7 @@
             </li>
 
             <li>
-                Добавить в шаблон:
+                <p i18n>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

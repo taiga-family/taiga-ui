@@ -1,12 +1,14 @@
-<tui-doc-page header="ActiveZone" package="CDK">
+<tui-doc-page i18n-header header="ActiveZone" package="CDK">
     <ng-template pageTab>
-        Директива <code>tuiActiveZone</code> используется для отслеживания
-        области, с которой взаимодействует пользователь. К примеру, для закрытия
-        всплывающих элементов при переходе фокуса на другие области страницы.
+        <p i18n>
+            <code>tuiActiveZone</code> allows to track a scope with that user
+            interracts. For example, for closing dropdown on blur
+        </p>
 
         <tui-doc-example
             id="multiple"
-            heading="Составная зона"
+            i18n-heading
+            heading="Composite zone"
             [content]="example1"
         >
             <tui-active-zone-example-1></tui-active-zone-example-1>
@@ -16,9 +18,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiActiveZoneModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import <code>TuiActiveZoneModule</code> into a module where
+                    you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -27,7 +30,7 @@
             </li>
 
             <li>
-                Добавить в шаблон и подписаться на смену зоны:
+                <p i18n>Add to the template and subscribe to a change:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

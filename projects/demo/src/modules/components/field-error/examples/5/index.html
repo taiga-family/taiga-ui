@@ -1,19 +1,20 @@
 <form class="input-wrapper" [formGroup]="testForm">
-    <label tuiLabel class="tui-space_bottom-4" label="Введите email">
+    <label tuiLabel class="tui-space_bottom-4" label="Enter an email">
         <tui-input
+            i18n
             formControlName="testValue2"
             tuiTextfieldSize="m"
             [tuiTextfieldLabelOutside]="true"
         >
-            Обязательное поле
+            Required
         </tui-input>
 
         <tui-field-error formControlName="testValue2"></tui-field-error>
     </label>
 
-    <label tuiLabel label="Минимальная и максимальная длина">
+    <label tuiLabel label="Minimum and maximum length">
         <tui-input formControlName="testValue1" tuiTextfieldSize="m">
-            Слово из 4 букв
+            4 letters word...
         </tui-input>
 
         <tui-field-error formControlName="testValue1"></tui-field-error>

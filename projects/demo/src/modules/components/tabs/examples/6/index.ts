@@ -13,7 +13,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiTabsExample6 {
     activeItemIndex = 0;
 
-    readonly steps = ['Акции', 'Настройки', 'Новости'];
+    readonly steps = ['Sales', 'Settings', 'News'];
 
     constructor(
         @Inject(TuiNotificationsService)

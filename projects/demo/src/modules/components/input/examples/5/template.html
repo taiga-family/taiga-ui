@@ -1,9 +1,8 @@
-<div>
-    Задание внешнего вида для разного фона сделано через директиву
-    <a tuiLink routerLink="/tui-mode"><code>tuiMode</code></a
-    >.
-</div>
-<br /><br /><br />
+<p i18n>
+    Custom mode is set with
+    <a tuiLink routerLink="/tui-mode"><code>tuiMode</code></a> directive
+</p>
+
 <form [formGroup]="testForm" class="container">
     <div class="tui-row">
         <div class="tui-col_md-3">
@@ -11,9 +10,8 @@
                 class="input"
                 formControlName="testValue"
                 tuiTextfieldExampleText="mail@mail.ru"
-                tuiHintContent="На эту почту будут отправляться закрывающие документы"
                 [tuiTextfieldCleaner]="true"
-                >Электронная почта</tui-input
+                >Type an email</tui-input
             >
         </div>
         <div class="tui-col_md-3">
@@ -21,12 +19,11 @@
                 <tui-input
                     class="input"
                     formControlName="testValue"
-                    tuiMode="light"
-                    tuiHintContent="На эту почту будут отправляться закрывающие документы"
+                    tuiMode="onDark"
                     tuiHintMode="light"
                     tuiTextfieldExampleText="mail@mail.ru"
                     [tuiTextfieldCleaner]="true"
-                    >Электронная почта</tui-input
+                    >Type an email</tui-input
                 >
             </div>
         </div>
@@ -36,10 +33,9 @@
                     class="input"
                     tuiTextfieldExampleText="mail@mail.ru"
                     formControlName="testValue"
-                    tuiMode="dark"
-                    tuiHintContent="На эту почту будут отправляться закрывающие документы"
+                    tuiMode="onLight"
                     [tuiTextfieldCleaner]="true"
-                    >Электронная почта</tui-input
+                    >Type an email</tui-input
                 >
             </div>
         </div>

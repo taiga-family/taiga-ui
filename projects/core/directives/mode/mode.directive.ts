@@ -1,5 +1,5 @@
 import {Directive, HostBinding, Input} from '@angular/core';
-import {TuiBrightness} from '@taiga-ui/core/enums';
+import {TuiBrightness} from '@taiga-ui/core/types';
 import {Subject} from 'rxjs';
 
 @Directive({

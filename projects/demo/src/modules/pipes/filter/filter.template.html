@@ -1,5 +1,5 @@
 <tui-doc-page header="Filter" package="CDK">
-    <ng-template pageTab> Пайп для фильтрации массива. </ng-template>
+    <ng-template i18n pageTab> Pipe for filtering array </ng-template>
 
     <ng-template pageTab>
         <table class="table">
@@ -16,22 +16,24 @@
 
         <tui-doc-documentation>
             <ng-template
+                i18n
                 documentationPropertyName="matcher"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMatcher"
                 [documentationPropertyValues]="matcherVariants"
                 [(documentationPropertyValue)]="matcher"
             >
-                Матчер-функция
+                Matcher function
             </ng-template>
             <ng-template
+                i18n
                 documentationPropertyName="args"
                 documentationPropertyMode="input"
                 documentationPropertyType="any"
                 [documentationPropertyValues]="argsVariants"
                 [(documentationPropertyValue)]="args"
             >
-                Произвольное количество аргументов, необходимых матчер-функции
+                Arguments for matcher function
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -39,9 +41,10 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                Для использования импортировать модуль
-                <code>TuiFilterPipeModule</code> в тот же модуль, куда
-                добавляется ваш компонент:
+                <p i18n>
+                    Import <code>TuiFilterPipeModule</code> into a module where
+                    you want to use our component
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -50,8 +53,9 @@
             </li>
 
             <li>
-                Добавить в необходимый <code>binding</code> (в
-                <code>tuiFilter</code> передаем матчер-функцию и аргументы):
+                <p i18n>
+                    Use pipe into template with function and its arguments:
+                </p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

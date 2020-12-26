@@ -18,12 +18,12 @@ import {
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {
-    incorrectQuantumMessage,
-    quantumAssertion,
-    TUI_FLOATING_PRECISION,
-} from '@taiga-ui/kit/constants';
+import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
+
+export function quantumAssertion(quantum: number): boolean {
+    return quantum > 0;
+}
 
 /**
  * @internal
@@ -65,7 +65,7 @@ export abstract class AbstractTuiInputSlider<T>
     steps = 0;
 
     @Input()
-    @tuiDefaultProp(quantumAssertion, incorrectQuantumMessage)
+    @tuiDefaultProp(quantumAssertion, 'Quantum must be positive')
     quantum = 1;
 
     @Input()

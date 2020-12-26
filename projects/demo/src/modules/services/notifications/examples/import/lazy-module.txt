@@ -9,7 +9,7 @@ import {CustomNotificationComponent} from 'customNotification.component';
 ...
     this.notificationsService.showNotification(
         new PolymorpheusComponent(CustomNotificationComponent, this.injector),
-        { label: 'Заголовок' },
+        { label: 'Heading' },
     )
         .subscribe();
 ...

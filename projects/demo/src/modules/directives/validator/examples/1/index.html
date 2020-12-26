@@ -1,10 +1,10 @@
 <form [formGroup]="group">
     <p>
-        <tui-input formControlName="name"> Имя </tui-input>
+        <tui-input formControlName="name">Name</tui-input>
     </p>
     <p>
         <tui-select [ngModelOptions]="options" [(ngModel)]="type">
-            Способ связи
+            Connection
             <tui-data-list-wrapper
                 *tuiDataList
                 [items]="items"
@@ -17,7 +17,7 @@
             formControlName="contact"
             [tuiValidator]="validator"
         >
-            Контакт
+            Contact
         </tui-input>
         <ng-template #phone>
             <tui-input-phone formControlName="contact">
