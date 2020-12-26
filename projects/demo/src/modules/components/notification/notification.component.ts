@@ -26,7 +26,6 @@ export class ExampleTuiNotificationComponent {
     };
 
     hasIcon = true;
-    hasCloseButton = true;
 
     readonly statusVariants: ReadonlyArray<TuiNotification> = [
         TuiNotification.Info,

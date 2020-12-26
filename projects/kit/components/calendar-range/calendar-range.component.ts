@@ -30,11 +30,7 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
-import {
-    incorrectMaxMessage,
-    MAX_DAY_RANGE_LENGTH_MAPPER,
-    maxDayAssertion,
-} from '@taiga-ui/kit/constants';
+import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {TUI_CALENDAR_DATA_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -68,7 +64,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     min: TuiDay = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp(maxDayAssertion, incorrectMaxMessage)
+    @tuiDefaultProp()
     max: TuiDay = TUI_LAST_DAY;
 
     @Input()

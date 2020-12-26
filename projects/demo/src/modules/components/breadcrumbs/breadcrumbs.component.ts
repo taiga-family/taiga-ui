@@ -23,26 +23,26 @@ export class ExampleTuiBreadcrumbsComponent {
         HTML: example1Html,
     };
 
-    readonly items1 = [
-        {
-            caption: 'Select',
-            routerLink: '/tui-select',
-        },
-        {
-            caption: 'Multi',
-            routerLink: '/tui-multi-select',
-        },
-        {
-            caption: 'With tags',
-            routerLink: '/tui-multi-select',
-        },
-        {
-            caption: 'Current',
-            routerLink: '/tui-breadcrumbs',
-        },
+    readonly itemsVariants = [
+        [
+            {
+                caption: 'Select',
+                routerLink: '/tui-select',
+            },
+            {
+                caption: 'MultiSelect',
+                routerLink: '/tui-multi-select',
+            },
+            {
+                caption: 'InputTag',
+                routerLink: '/tui-input-tag',
+            },
+            {
+                caption: 'Current',
+                routerLink: '/tui-breadcrumbs',
+            },
+        ],
     ];
-
-    itemsVariants = [this.items1];
 
     items = this.itemsVariants[0];
 

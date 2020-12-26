@@ -23,12 +23,13 @@
         (keydown.enter)="onFieldKeyDownEnter($event)"
     >
         <ng-content></ng-content>
-        <polymorpheus-outlet
+        <div
+            polymorpheus-outlet
             *ngIf="showValueTemplate"
             class="value"
             automation-id="tui-combo-box__template"
             [content]="computedContent"
             [context]="computeContext(value, computedFocused)"
-        ></polymorpheus-outlet>
+        ></div>
     </tui-primitive-textfield>
 </tui-hosted-dropdown>

@@ -39,12 +39,7 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit/classes';
-import {
-    EMPTY_MASK,
-    incorrectMaxMessage,
-    maxDayAssertion,
-    TUI_DATE_MASK,
-} from '@taiga-ui/kit/constants';
+import {EMPTY_MASK, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_CALENDAR_DATA_STREAM, TUI_MOBILE_CALENDAR} from '@taiga-ui/kit/tokens';
 import {tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit/utils/mask';
@@ -78,7 +73,7 @@ export class TuiInputDateComponent
     min = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp(maxDayAssertion, incorrectMaxMessage)
+    @tuiDefaultProp()
     max = TUI_LAST_DAY;
 
     @Input()

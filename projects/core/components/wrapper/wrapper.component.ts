@@ -75,7 +75,7 @@ export class TuiWrapperComponent {
             return TuiInteractiveState.Readonly;
         }
 
-        if (this.pressed) {
+        if (this.pressed && !this.isMobile) {
             return TuiInteractiveState.Pressed;
         }
 

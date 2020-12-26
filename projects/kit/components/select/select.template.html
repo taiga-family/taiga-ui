@@ -23,12 +23,13 @@
         (keydown.backspace.prevent)="onKeyDownDelete()"
     >
         <ng-content></ng-content>
-        <polymorpheus-outlet
+        <div
+            polymorpheus-outlet
             *ngIf="value"
             class="value"
             automation-id="tui-select__value"
             [content]="computedContent"
             [context]="computeContext(value, computedFocused)"
-        ></polymorpheus-outlet>
+        ></div>
     </tui-primitive-textfield>
 </tui-hosted-dropdown>

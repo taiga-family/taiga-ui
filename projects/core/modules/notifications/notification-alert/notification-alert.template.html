@@ -1,5 +1,5 @@
 <tui-notification
-    [hasCloseButton]="hasCloseButton"
+    *ngIf="hasCloseButton else noClose"
     [status]="status"
     (close)="closeDialog()"
 >
@@ -10,10 +10,29 @@
     >
         {{safeItem.label}}
     </label>
-    <polymorpheus-outlet
+    <div
+        polymorpheus-outlet
         automation-id="tui-notification-alert__content"
         class="content"
         [content]="safeItem.content"
         [context]="context"
-    ></polymorpheus-outlet>
+    ></div>
 </tui-notification>
+<ng-template #noClose>
+    <tui-notification [status]="status">
+        <label
+            *ngIf="safeItem.label"
+            automation-id="tui-notification-alert__heading"
+            class="heading"
+        >
+            {{safeItem.label}}
+        </label>
+        <div
+            polymorpheus-outlet
+            automation-id="tui-notification-alert__content"
+            class="content"
+            [content]="safeItem.content"
+            [context]="context"
+        ></div>
+    </tui-notification>
+</ng-template>

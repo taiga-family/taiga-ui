@@ -35,7 +35,6 @@ import {
     TuiWithOptionalMinMax,
     TuiWithTextMask,
 } from '@taiga-ui/core';
-import {incorrectMaxMessage, maxAssertion} from '@taiga-ui/kit/constants';
 import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
 
 // @dynamic
@@ -66,7 +65,7 @@ export class TuiInputCountComponent
     min = 0;
 
     @Input()
-    @tuiDefaultProp(maxAssertion, incorrectMaxMessage)
+    @tuiDefaultProp()
     max = Infinity;
 
     @Input()

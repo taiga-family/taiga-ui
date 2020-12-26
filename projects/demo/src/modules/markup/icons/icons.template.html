@@ -1,22 +1,14 @@
 <tui-doc-page i18n-header header="Icons">
     <ng-template pageTab>
-        <p i18n>
-            <strong>Icons</strong> can be imported in a component or can be used
-            by its name. You can copy icon's name with a click
-        </p>
-        <p i18n>
-            Use CSS <code>color</code> style to set an icon color. You can also
-            use <code>fill</code> for icons with two colors:
-            <tui-svg class="colored" src="tuiIconCompensationLarge"></tui-svg>
-        </p>
         <h2 i18n class="title">Search by name</h2>
         <tui-input
             size="m"
             i18n
+            tuiHintContent="You can copy icon's name with a click"
             [tuiTextfieldLabelOutside]="true"
             [(ngModel)]="search"
         >
-            Input icons name to highlight
+            Input icon name to highlight
         </tui-input>
         <ng-container *ngIf="logos.length">
             <h2 i18n class="title">Логотипы</h2>

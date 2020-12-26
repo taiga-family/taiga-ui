@@ -10,12 +10,9 @@ import {changeDetection} from '../../../change-detection-strategy';
 })
 export class ExampleTuiDefaultPropDemoComponent {
     @Input()
-    min = 10;
-
-    @Input()
-    @tuiDefaultProp<ExampleTuiDefaultPropDemoComponent, 'quantity'>(
-        (quantity, context) => Number.isInteger(quantity) && quantity >= context.min,
-        'Should be ingeter number more than min value',
+    @tuiDefaultProp(
+        quantity => Number.isInteger(quantity) && quantity >= 5,
+        'Should be integer number more than min value',
     )
     quantity = 10;
 }

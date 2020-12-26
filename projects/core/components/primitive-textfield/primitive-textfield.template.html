@@ -45,7 +45,8 @@
         <ng-content select="polymorpheus-outlet"></ng-content>
     </div>
     <div class="content" tuiPreventDefault="click">
-        <polymorpheus-outlet
+        <div
+            polymorpheus-outlet
             *ngIf="iconAlignLeft"
             class="icon icon_left"
             [content]="iconContent"
@@ -53,7 +54,7 @@
             <ng-template let-iconSrc>
                 <tui-svg [src]="iconSrc"></tui-svg>
             </ng-template>
-        </polymorpheus-outlet>
+        </div>
         <div class="wrapper">
             <label
                 *ngIf="hasPlaceholder"
@@ -84,7 +85,8 @@
                 </span>
             </div>
         </div>
-        <polymorpheus-outlet
+        <div
+            polymorpheus-outlet
             *ngIf="hasCustomContent"
             class="custom-content"
             automation-id="tui-primitive-textfield__custom-content"
@@ -93,7 +95,7 @@
             <ng-template let-iconSrc>
                 <tui-svg class="custom-icon" [src]="iconSrc"></tui-svg>
             </ng-template>
-        </polymorpheus-outlet>
+        </div>
         <tui-svg
             *ngIf="hasCleaner"
             class="cleaner"
@@ -109,7 +111,8 @@
             [direction]="hintController.direction"
             [mode]="hintController.mode"
         ></tui-tooltip>
-        <polymorpheus-outlet
+        <div
+            polymorpheus-outlet
             *ngIf="iconAlignRight"
             class="icon"
             [content]="iconContent"
@@ -117,6 +120,6 @@
             <ng-template let-iconSrc>
                 <tui-svg [src]="iconSrc"></tui-svg>
             </ng-template>
-        </polymorpheus-outlet>
+        </div>
     </div>
 </tui-wrapper>

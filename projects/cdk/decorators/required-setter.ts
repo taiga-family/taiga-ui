@@ -1,5 +1,5 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {TuiAssertion} from '@taiga-ui/cdk/types';
+import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 
 /**
  * Decorator for checking input setter values against a custom assertion which
@@ -8,7 +8,7 @@ import {TuiAssertion} from '@taiga-ui/cdk/types';
  * original setter in this case.
  */
 export function tuiRequiredSetter<T extends object, K extends keyof T>(
-    assertion?: TuiAssertion<T, K>,
+    assertion?: TuiBooleanHandler<T[K]>,
     ...args: any[]
 ): MethodDecorator {
     return (
@@ -25,7 +25,7 @@ export function tuiRequiredSetter<T extends object, K extends keyof T>(
             set(this: T, value: T[K]) {
                 if (value !== undefined && assertion) {
                     tuiAssert.assert(
-                        assertion(value, this),
+                        assertion.call(this, value),
                         `${String(key)} in ${name} received:`,
                         value,
                         ...args,

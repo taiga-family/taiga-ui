@@ -10,9 +10,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 export class ExampleTuiRequiredSetterComponent {
     exampleDecorator = exampleDecorator;
 
-    quantity: number | undefined;
-
-    min = 10;
+    quantity?: number;
 
     setUndefined() {
         this.quantity = undefined;
