@@ -170,7 +170,7 @@ export class TuiMultiSelectComponent<T>
     }
 
     get tagIcon(): string {
-        return this.interactive ? 'iconBlank' : 'tuiIconArrowDownLarge';
+        return this.interactive ? 'iconBlank' : 'tuiIconChevronDownLarge';
     }
 
     get interactive(): boolean {

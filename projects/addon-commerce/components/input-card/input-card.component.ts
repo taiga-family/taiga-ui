@@ -14,13 +14,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
-import {
-    tuiIconElectron,
-    tuiIconMaestro,
-    tuiIconMastercard,
-    tuiIconMir,
-    tuiIconVisa,
-} from '@taiga-ui/addon-commerce/icons';
 import {getPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiControl,
@@ -37,11 +30,11 @@ import {
 } from '@taiga-ui/core';
 
 const icons = {
-    [TuiPaymentSystem.Mir]: tuiIconMir,
-    [TuiPaymentSystem.Visa]: tuiIconVisa,
-    [TuiPaymentSystem.Electron]: tuiIconElectron,
-    [TuiPaymentSystem.Mastercard]: tuiIconMastercard,
-    [TuiPaymentSystem.Maestro]: tuiIconMaestro,
+    [TuiPaymentSystem.Mir]: 'tuiIconMir',
+    [TuiPaymentSystem.Visa]: 'tuiIconVisa',
+    [TuiPaymentSystem.Electron]: 'tuiIconElectron',
+    [TuiPaymentSystem.Mastercard]: 'tuiIconMastercard',
+    [TuiPaymentSystem.Maestro]: 'tuiIconMaestro',
 };
 
 export function cardTextfieldControllerFactory(
@@ -119,11 +112,7 @@ export class TuiInputCardComponent
 
         const {paymentSystem} = this;
 
-        if (paymentSystem === null) {
-            return null;
-        }
-
-        return icons[paymentSystem];
+        return paymentSystem ? icons[paymentSystem] : null;
     }
 
     get autocomplete(): TuiCreditCardAutofillName {

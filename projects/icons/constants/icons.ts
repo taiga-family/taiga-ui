@@ -1,8 +1,5 @@
 import {
     tuiIconAlertCircleLarge,
-    tuiIconArrowDown,
-    tuiIconArrowDownLarge,
-    tuiIconArrowLeft,
     tuiIconArrowRight,
     tuiIconAttention,
     tuiIconCalendar,
@@ -11,9 +8,11 @@ import {
     tuiIconCheck,
     tuiIconCheckCircleLarge,
     tuiIconCheckLarge,
+    tuiIconChevronDown,
+    tuiIconChevronDownLarge,
+    tuiIconChevronLeft,
     tuiIconCloseLarge,
     tuiIconCloseLgLarge,
-    tuiIconEdit2Large,
     tuiIconHideLarge,
     tuiIconInfo,
     tuiIconMinus,
@@ -47,9 +46,9 @@ export const tuiCoreIcons = {
 export const tuiKitIcons = {
     ...tuiCoreIcons,
     tuiIconAlertCircleLarge,
-    tuiIconArrowDown,
-    tuiIconArrowDownLarge,
-    tuiIconArrowLeft,
+    tuiIconChevronDown,
+    tuiIconChevronDownLarge,
+    tuiIconChevronLeft,
     tuiIconCalendar,
     tuiIconCalendarLarge,
     tuiIconCheckCircleLarge,
@@ -63,6 +62,4 @@ export const tuiKitIcons = {
     tuiIconToggleOff,
     tuiIconToggleOffLarge,
     tuiIconTrashLarge,
-    // Technically WYSIWYG
-    tuiIconEdit2Large,
 };

@@ -106,21 +106,5 @@
                 </ng-container>
             </div>
         </ng-container>
-        <h2 i18n class="title">Editor icons</h2>
-        <div class="icons">
-            <button
-                *ngFor="let icon of iconsToolbar"
-                tuiIconButton
-                type="button"
-                size="xs"
-                i18n-header
-                title="Copy"
-                appearance="icon"
-                class="icon"
-                [class.icon_highlighted]="getHighlight(icon)"
-                [icon]="icon"
-                (click)="copyPath(icon)"
-            ></button>
-        </div>
     </ng-template>
 </tui-doc-page>

@@ -1,49 +1,8 @@
 import {Component, Inject, InjectionToken, Optional} from '@angular/core';
 import {ClipboardCopyService} from '@taiga-ui/addon-doc';
-import * as allWYSIWYGImports from '@taiga-ui/addon-editor';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 import {changeDetection} from '../../../change-detection-strategy';
-
-const DEPRECATED = [
-    'tuiIconArchiveLarge',
-    'tuiIconDropLarge',
-    'tuiIconEditLarge',
-    'tuiIconGeo2Large',
-    'tuiIconPauseLarge',
-    'tuiIconPhoneLarge',
-    'tuiIconPlayLarge',
-    'tuiIconSettingsLarge',
-    'tuiIconToggleOffLarge',
-    'tuiIconTargetCircleLarge',
-    'tuiIconVideoLarge',
-    'tuiIconToggleOff',
-    'tuiIconStructura',
-    'tuiIconSettings2',
-    'tuiIconRight',
-    'tuiIconKey',
-    'tuiIconHome',
-    'tuiIconHide',
-    'tuiIconShow',
-    'tuiIconFolderDelete',
-    'tuiIconFolderAdd',
-    'tuiIconCreate',
-    'tuiIconChat',
-    'tuiIconBookmarks',
-    'tuiIconBookmarks',
-    'tuiIconOff',
-    'tuiIconPause',
-    'tuiIconPlay',
-    'tuiIconPlay',
-    'tuiIconCalculator',
-    'tuiIconDoc',
-    'tuiIconUnlock',
-    'tuiIconLeft',
-    'tuiIconRight',
-    'tuiIconNotification',
-    'tuiIconEyeClosedLarge',
-    'tuiIconEyeOpenLarge',
-];
 
 export const TUI_ADDITIONAL_ICONS = new InjectionToken<AdditionalIcons>(
     'Additional icons',
@@ -64,8 +23,6 @@ export class IconsComponent {
     icons: readonly string[];
 
     assets: readonly string[] = [];
-
-    iconsToolbar: readonly string[] = [];
 
     iconsLarge: readonly string[] = [];
 
@@ -91,19 +48,11 @@ export class IconsComponent {
         private readonly notifications: TuiNotificationsService,
     ) {
         const all: Record<string, any> = allIcons;
-        const allWYSIWYG: Record<string, any> = allWYSIWYGImports;
         const icons = Object.keys(all).filter(
             item =>
                 this.commerce.indexOf(item) === -1 &&
-                DEPRECATED.indexOf(item) === -1 &&
-                !item.startsWith('tuiIconLogo') &&
-                !item.startsWith('tuiIconToolbar') &&
                 item !== 'tuiCoreIcons' &&
                 item !== 'tuiKitIcons',
-        );
-
-        this.iconsToolbar = Object.keys(allWYSIWYG).filter(
-            item => item.slice(0, 7) === 'tuiIcon',
         );
 
         this.icons = icons.filter(item => !item.includes('Large'));
