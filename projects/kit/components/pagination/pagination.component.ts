@@ -31,7 +31,6 @@ import {
     TuiModeDirective,
     TuiSizeS,
 } from '@taiga-ui/core';
-import {incorrectLengthMessage} from '@taiga-ui/kit/constants';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {horizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -39,8 +38,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
 
-export function paginationLengthAssertion(length: number): boolean {
-    return Number.isInteger(length);
+export function nonNegativeInteger(length: number): boolean {
+    return Number.isInteger(length) && length >= 0;
 }
 
 // @dynamic
@@ -60,7 +59,7 @@ export class TuiPaginationComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor {
     @Input()
-    @tuiDefaultProp(paginationLengthAssertion, incorrectLengthMessage)
+    @tuiDefaultProp(nonNegativeInteger, 'Must be non-negative integer')
     length = 1;
 
     @Input()
@@ -96,7 +95,7 @@ export class TuiPaginationComponent
      * Active page index
      */
     @Input()
-    @tuiDefaultProp()
+    @tuiDefaultProp(nonNegativeInteger, 'Must be non-negative integer')
     index = 0;
 
     @Output()
@@ -218,7 +217,7 @@ export class TuiPaginationComponent
     }
 
     getSmallElementMode(index: number, mode: TuiBrightness | null): TuiAppearance {
-        return this.index === index && mode !== TuiBrightness.Dark
+        return this.index === index && mode !== 'onLight'
             ? TuiAppearance.Primary
             : TuiAppearance.Secondary;
     }

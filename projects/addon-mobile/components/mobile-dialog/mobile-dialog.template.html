@@ -1,11 +1,12 @@
 <h2 *ngIf="!!internal.label" class="heading" [id]="context.id">
     {{internal.label}}
 </h2>
-<polymorpheus-outlet
+<div
+    polymorpheus-outlet
     class="content"
     [content]="internal.content"
     [context]="context"
-></polymorpheus-outlet>
+></div>
 <button
     *ngFor="let action of internal.actions; let index = index"
     tuiButton

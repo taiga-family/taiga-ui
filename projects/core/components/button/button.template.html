@@ -7,13 +7,14 @@
     [focused]="computedFocusVisible"
 >
     <span class="content">
-        <polymorpheus-outlet *ngIf="icon" class="left" [content]="icon">
+        <span polymorpheus-outlet *ngIf="icon" class="left" [content]="icon">
             <ng-template let-icon>
                 <tui-svg class="icon" [src]="icon"></tui-svg>
             </ng-template>
-        </polymorpheus-outlet>
+        </span>
         <ng-content></ng-content>
-        <polymorpheus-outlet
+        <span
+            polymorpheus-outlet
             *ngIf="iconRight"
             class="right"
             [content]="iconRight"
@@ -21,7 +22,7 @@
             <ng-template let-icon>
                 <tui-svg class="icon" [src]="icon"></tui-svg>
             </ng-template>
-        </polymorpheus-outlet>
+        </span>
     </span>
     <tui-loader
         *ngIf="showLoader"

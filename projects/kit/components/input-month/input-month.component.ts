@@ -29,7 +29,6 @@ import {
     TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {incorrectMaxMessage, maxDayAssertion} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 
 // @dynamic
@@ -54,7 +53,7 @@ export class TuiInputMonthComponent
     min: TuiMonth = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp(maxDayAssertion, incorrectMaxMessage)
+    @tuiDefaultProp()
     max: TuiMonth = TUI_LAST_DAY;
 
     @Input()

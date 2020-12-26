@@ -1,4 +1,7 @@
-<tui-notification status="error"
-                  [hasCloseButton]="false"
-                  [hasIcon]="false"
-                  (close)="onClose()">Some content</tui-notification>
+<tui-notification
+    status="error"
+    [hasIcon]="false"
+    (close)="onClose()"
+>
+    Some content
+</tui-notification>

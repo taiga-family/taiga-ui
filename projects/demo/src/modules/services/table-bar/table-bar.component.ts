@@ -36,10 +36,7 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
         LESS: example1Less,
     };
 
-    readonly modeVariants: ReadonlyArray<TuiBrightness> = [
-        TuiBrightness.Dark,
-        TuiBrightness.Light,
-    ];
+    readonly modeVariants: ReadonlyArray<TuiBrightness> = ['onLight', 'onDark'];
 
     mode = this.modeVariants[0];
 

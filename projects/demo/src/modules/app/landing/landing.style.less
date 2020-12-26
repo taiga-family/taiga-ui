@@ -32,7 +32,7 @@
 }
 
 .footer {
-    position: fixed;
+    position: sticky;
     left: 0;
     right: 0;
     bottom: 0;
@@ -372,10 +372,13 @@
     top: 50%;
     left: 50%;
     margin: -35px -12px;
-    width: 25px;
-    height: 60px;
+    width: 30px;
+    height: 65px;
     border-radius: 20px;
     border: 3px solid rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    background: none;
+    outline: none;
     animation: bounce 1s infinite alternate;
 
     &:before,

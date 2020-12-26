@@ -753,7 +753,7 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Tools`,
-        title: 'Декораторы',
+        title: $localize`Decorators`,
         subPages: [
             {
                 section: $localize`Tools`,
@@ -780,7 +780,7 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Tools`,
-        title: 'Директивы',
+        title: $localize`Directives`,
         subPages: [
             {
                 section: $localize`Tools`,
@@ -926,7 +926,7 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Tools`,
-        title: 'Пайпы',
+        title: $localize`Pipes`,
         subPages: [
             {
                 section: $localize`Tools`,
@@ -965,7 +965,7 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Tools`,
-        title: 'Сервисы',
+        title: $localize`Services`,
         subPages: [
             {
                 section: $localize`Tools`,

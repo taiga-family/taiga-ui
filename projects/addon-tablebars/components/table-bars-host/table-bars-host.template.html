@@ -2,7 +2,7 @@
     <div
         automation-id="tui-table-bar__bar"
         class="bar"
-        [class.bar_light]="item.mode === 'light'"
+        [class.bar_light]="item.mode === 'onDark'"
         [@tuiSlideInTop]
     >
         <div
@@ -10,11 +10,12 @@
             [class.tui-container_adaptive]="item.adaptive"
         >
             <div class="inner">
-                <polymorpheus-outlet
+                <div
+                    polymorpheus-outlet
                     class="content"
                     [content]="item.content"
                     [context]="getItemContext(item)"
-                ></polymorpheus-outlet>
+                ></div>
 
                 <button
                     *ngIf="item.hasCloseButton"

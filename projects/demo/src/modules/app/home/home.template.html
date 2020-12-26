@@ -115,15 +115,14 @@
         </li>
 
         <li id="not-less" i18n>
-            Otherwise, do not forget about file type if you import styles
-            directly from our library
+            For non-LESS environment, do not forget about file type if you
+            import styles directly from our library
         </li>
 
         <li id="root" i18n>
             Many of our components need your app to be wrapped into
             <code>tui-root</code>. Import <code>TuiRootModule</code> in your
-            main module and add <code>TuiRootScroller</code> into providers for
-            correct working of Angular router
+            main module.
 
             <tui-doc-code
                 class="tui-space_bottom-4"
@@ -133,6 +132,12 @@
 
             <p>Wrap all content of your app with root component</p>
 
+            <em>
+                Note: your <code>window</code> will no longer scroll. To control
+                scrolling when modal dialogs are shown,
+                <code>tui-root</code> tag will be topmost scroll container.
+            </em>
+
             <tui-doc-code
                 filename="app.component.html"
                 [code]="examples.appTemplate"
@@ -140,9 +145,8 @@
         </li>
 
         <li id="options" i18n>
-            Taiga UI has also optional modules for dialogs, notifications and
-            tablebars. If you need these features, add modules into your
-            app.module.ts
+            Taiga UI also has optional modules for dialogs and notifications. If
+            you need these features, add modules into your app.module.ts
 
             <tui-doc-code
                 class="tui-space_bottom-4"
@@ -152,9 +156,9 @@
         </li>
 
         <li id="icons" i18n>
-            Icons do not included into library bundle. Add our standart icon
-            pack providing token <code>TUI_ICONS_PATH</code> with a function
-            that gets icon name and returs path to it.
+            Icons are not included in the bundle. To add icons provide
+            <code>TUI_ICONS_PATH</code> token with a function that gets icon
+            name and returns path to it.
 
             <p>First of all, add icons into assets of your app:</p>
 
@@ -164,21 +168,7 @@
                 [code]="examples.assets"
             ></tui-doc-code>
 
-            <p>
-                Then you should provide path with a token. Moreover,
-                <code>Sanitizer</code> of Angular removes <code>SVG</code> code
-                and that is why you also need to reassign
-                <code>TUI_SANITIZER</code> token that is used to sanitize icons.
-                If you use safe icons, you can reassign it with unsafe sanitizer
-                from the sample below. Otherwise, we recommend you using our
-                library
-                <a
-                    target="_blank"
-                    href="https://github.com/TinkoffCreditSystems/ng-dompurify"
-                    tuiLink
-                    >ng-dompurify</a
-                >
-            </p>
+            <p>Then you should provide path with a token:</p>
 
             <tui-doc-code
                 class="tui-space_bottom-4"
@@ -195,13 +185,15 @@
         <li id="ie" i18n>
             Taiga UI uses CSS custom properties for styling that is not
             supported by Internet Explorer.
-            <strong>If you need to support IE 11</strong>, use this package
+            <strong>If you need to support IE 11</strong>, use
             <a
                 tuiLink
                 target="_blank"
                 href="https://www.npmjs.com/package/css-vars-ponyfill"
-                >css-vars-ponyfill</a
             >
+                css-vars-ponyfill
+            </a>
+            package
 
             <p>Install it:</p>
 
@@ -222,6 +214,31 @@
                 filename="app.module.ts"
                 [code]="examples.ieSupport"
             ></tui-doc-code>
+
+            <p>
+                Internet Explorer also does not support native
+                <code>SVG</code> inlining. Taiga UI icons will be automatically
+                downloaded and inlined directly into DOM. However, Angular
+                <code>Sanitizer</code> removes <code>SVG</code> code in that
+                case. To use custom sanitizer that properly supports
+                <code>SVG</code> provide <code>TUI_SANITIZER</code> token. We
+                recommend you using our library
+                <a
+                    target="_blank"
+                    href="https://github.com/TinkoffCreditSystems/ng-dompurify"
+                    tuiLink
+                >
+                    ng-dompurify
+                </a>
+                to properly sanitize code with
+                <a
+                    target="_blank"
+                    href="https://github.com/cure53/DOMPurify"
+                    tuiLink
+                >
+                    DOMPurify
+                </a>
+            </p>
         </li>
     </ol>
 </div>

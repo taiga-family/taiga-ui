@@ -54,11 +54,11 @@
             border-top-width: 0;
         }
 
-        :host[data-tui-host-mode='light'] & {
+        :host[data-tui-host-mode='onDark'] & {
             border-color: var(--tui-base-01);
         }
 
-        :host[data-tui-host-mode='dark'] & {
+        :host[data-tui-host-mode='onLight'] & {
             border-color: var(--tui-text-01);
         }
 
@@ -84,12 +84,12 @@
     color: var(--tui-text-01);
     cursor: pointer;
 
-    :host[data-tui-host-mode='light'] & {
+    :host[data-tui-host-mode='onDark'] & {
         color: var(--tui-base-01);
         border-color: var(--tui-base-01);
     }
 
-    :host[data-tui-host-mode='dark'] & {
+    :host[data-tui-host-mode='onLight'] & {
         border-color: var(--tui-text-01);
     }
 
@@ -106,13 +106,13 @@
         background: var(--tui-base-02);
     }
 
-    :host._hovered[data-tui-host-mode='light'] &,
-    :host[data-tui-host-mode='light'] &_open {
+    :host._hovered[data-tui-host-mode='onDark'] &,
+    :host[data-tui-host-mode='onDark'] &_open {
         background: var(--tui-clear-inverse);
     }
 
-    :host._hovered[data-tui-host-mode='dark'] &,
-    :host[data-tui-host-mode='dark'] &_open {
+    :host._hovered[data-tui-host-mode='onLight'] &,
+    :host[data-tui-host-mode='onLight'] &_open {
         background: var(--tui-clear);
     }
 
@@ -161,11 +161,11 @@
         opacity: 0.8;
     }
 
-    :host[data-tui-host-mode='light'] & {
+    :host[data-tui-host-mode='onDark'] & {
         color: var(--tui-base-01);
     }
 
-    :host[data-tui-host-mode='dark'] & {
+    :host[data-tui-host-mode='onLight'] & {
         color: var(--tui-text-01);
     }
 

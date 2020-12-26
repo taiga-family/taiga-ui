@@ -16,11 +16,11 @@
         color: var(--tui-text-02);
     }
 
-    &[data-tui-host-mode='light'] {
+    &[data-tui-host-mode='onDark'] {
         color: var(--tui-text-01-night);
     }
 
-    &[data-tui-host-mode='dark'] {
+    &[data-tui-host-mode='onLight'] {
         color: var(--tui-text-01);
     }
 
@@ -38,8 +38,8 @@
         color: var(--tui-text-02);
     }
 
-    :host[data-tui-host-mode='dark'] &,
-    :host[data-tui-host-mode='light'] & {
+    :host[data-tui-host-mode='onLight'] &,
+    :host[data-tui-host-mode='onDark'] & {
         opacity: var(--tui-disabled-opacity);
 
         &:hover,

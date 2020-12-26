@@ -7,6 +7,7 @@
     --tui-primary: #007bff;
     --tui-primary-hover: #0069d9;
     --tui-primary-active: #0062cc;
+    --tui-radius: 4px;
     --tui-text-03: #6c757d;
     --tui-text-02: #6c757d;
 
@@ -17,6 +18,7 @@
     tui-wrapper[data-appearance='textfield'] {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         background: transparent;
+        box-shadow: none;
 
         &:after {
             .transition(all);
@@ -29,7 +31,7 @@
         }
     }
 
-    tui-wrapper[data-appearance='textfield'][data-mode='light'] {
+    tui-wrapper[data-appearance='textfield'][data-mode='onDark'] {
         &:after {
             color: #959aa0;
         }
@@ -44,7 +46,7 @@
         }
     }
 
-    tui-wrapper[data-appearance='textfield'][data-mode='dark'] {
+    tui-wrapper[data-appearance='textfield'][data-mode='onLight'] {
         &:after {
             color: #959aa0;
         }

@@ -9,7 +9,6 @@ import {
 import {tuiZoneOptimized} from '@taiga-ui/cdk';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
-import {TuiBrightness} from '@taiga-ui/core/enums';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {interval} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
@@ -40,7 +39,7 @@ export class TuiScrollControlsComponent {
     ) {}
 
     get isLight(): boolean {
-        return !!this.modeDirective && this.modeDirective.mode === TuiBrightness.Light;
+        return !!this.modeDirective && this.modeDirective.mode === 'onDark';
     }
 
     private get scrollbars(): [boolean, boolean] {

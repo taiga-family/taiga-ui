@@ -17,7 +17,7 @@
         "@angular/common": ">=6.0.0",
         "@angular/core": ">=6.0.0",
         "@angular/forms": ">=6.0.0",
-        "@tinkoff/ng-polymorpheus": ">=2.0.0",
+        "@tinkoff/ng-polymorpheus": ">=3.0.0",
         "@taiga-ui/cdk": "1.6.5",
         "@taiga-ui/core": "1.6.5",
         "angular2-text-mask": "9.0.0",

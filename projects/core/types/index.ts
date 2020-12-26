@@ -1,3 +1,4 @@
+export * from './brightness';
 export * from './color';
 export * from './data-list-role';
 export * from './decimal-symbol';

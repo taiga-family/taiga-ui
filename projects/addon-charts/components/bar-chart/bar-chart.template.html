@@ -21,10 +21,11 @@
         ></tui-bar-set>
     </div>
     <ng-template #hint="polymorpheus" polymorpheus>
-        <polymorpheus-outlet
+        <div
+            polymorpheus-outlet
             class="text"
             [content]="hintContent"
             [context]="getContentContext(index)"
-        ></polymorpheus-outlet>
+        ></div>
     </ng-template>
 </div>

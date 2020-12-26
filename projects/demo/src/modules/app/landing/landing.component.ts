@@ -1,6 +1,13 @@
-import {ChangeDetectionStrategy, Component, ElementRef, HostBinding} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    HostBinding,
+    QueryList,
+    ViewChildren,
+} from '@angular/core';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
-import {TuiDay} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'landing',
@@ -23,6 +30,9 @@ export class LandingComponent {
 
     readonly labels = ['New', 'Read', 'Archived', 'Junk'];
 
+    @ViewChildren('block', {read: ElementRef})
+    private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
     @HostBinding('style.background')
     get background(): string {
         return this.current ? '#5f6ed0' : '#3dc67c';
@@ -36,6 +46,14 @@ export class LandingComponent {
 
     onDay(date: TuiDay) {
         this.date = date;
+    }
+
+    onClick() {
+        this.blocks.forEach(({nativeElement}, index) => {
+            if (index === this.current + 1) {
+                nativeElement.scrollIntoView();
+            }
+        });
     }
 
     stop(e?: KeyboardEvent) {

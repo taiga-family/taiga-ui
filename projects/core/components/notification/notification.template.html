@@ -8,7 +8,7 @@
     <ng-content></ng-content>
 </div>
 <button
-    *ngIf="hasCloseButton"
+    *ngIf="hasClose"
     tuiIconButton
     type="button"
     automation-id="tui-notification__close"
@@ -17,5 +17,5 @@
     icon="tuiIconCloseLarge"
     appearance="icon"
     [title]="closeWord"
-    (click)="onCloseClick()"
+    (click)="close.emit()"
 ></button>
