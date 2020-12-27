@@ -62,6 +62,7 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide
                     href="https://twitter.com/waterplea"
                     title="Twitter"
                     ><img
+                        style="width: 16px;"
                         width="16"
                         src="https://image.flaticon.com/icons/svg/733/733579.svg"
                 /></a>
