@@ -927,7 +927,7 @@ export const ROUTES = [
         loadChildren: () =>
             import(`../markup/shadows/shadows.module`).then(m => m.ShadowsModule),
         data: {
-            title: `Тени`,
+            title: `Shadows`,
         },
     },
     {
