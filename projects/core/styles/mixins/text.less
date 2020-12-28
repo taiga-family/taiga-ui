@@ -30,15 +30,15 @@
 
 //typed text
 .text-body-xl-bold() {
-    .font(19px, 28px, 'bold');
+    .font(19px, 28px, bold);
 }
 
 .text-body-xl() {
-    .font(19px, 28px, 'normal');
+    .font(19px, 28px, normal);
 }
 
 .text-body-l-bold(@type: 1) {
-    .font(17px, 24px, 'bold');
+    .font(17px, 24px, bold);
 
     & when (@type = 2) {
         line-height: 20px;
@@ -50,7 +50,7 @@
 }
 
 .text-body-l(@type: 1) {
-    .font(17px, 24px, 'normal');
+    .font(17px, 24px, normal);
 
     & when (@type = 2) {
         line-height: 20px;
@@ -62,7 +62,7 @@
 }
 
 .text-body-m-bold(@type: 1) {
-    .font(15px, 24px, 'bold');
+    .font(15px, 24px, bold);
 
     & when (@type = 2) {
         line-height: 20px;
@@ -70,7 +70,7 @@
 }
 
 .text-body-m(@type: 1) {
-    .font(15px, 24px, 'normal');
+    .font(15px, 24px, normal);
 
     & when (@type = 2) {
         line-height: 20px;
@@ -78,7 +78,7 @@
 }
 
 .text-body-s-bold(@type: 1) {
-    .font(13px, 20px, 'bold');
+    .font(13px, 20px, bold);
 
     & when (@type = 2) {
         line-height: 16px;
@@ -86,7 +86,7 @@
 }
 
 .text-body-s(@type: 1) {
-    .font(13px, 20px, 'normal');
+    .font(13px, 20px, normal);
 
     & when (@type = 2) {
         line-height: 16px;
@@ -94,52 +94,52 @@
 }
 
 .text-body-xs() {
-    .font(11px, 16px, 'normal');
+    .font(11px, 16px, normal);
     letter-spacing: 0.4px;
 }
 
 //tabs,tags, category
 
 .text-caption-l-bold() {
-    .font(13px, 20px, 'bold');
+    .font(13px, 20px, bold);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .text-caption-l() {
-    .font(13px, 20px, 'normal');
+    .font(13px, 20px, normal);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .text-caption-bold() {
-    .font(11px, 16px, 'bold');
+    .font(11px, 16px, bold);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .text-caption() {
-    .font(11px, 16px, 'normal');
+    .font(11px, 16px, normal);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 // mixins fot font properties
-.font(@size, @line-height: 'none', @weight: 'normal', @color: 'none') {
+.font(@size, @line-height: 'none', @weight: normal, @color: 'none') {
     font-weight: @weight;
     font-size: @size;
     font-family: var(--tui-text-font);
 }
 
-.font(@size, @line-height: 'none', @weight: 'normal', @color: 'none') when not (@line-height = 'none') {
+.font(@size, @line-height: 'none', @weight: normal, @color: 'none') when not (@line-height = 'none') {
     line-height: @line-height;
 }
 
-.font(@size, @line-height: 'none', @weight: 'normal', @color: 'none') when not (@color = 'none') {
+.font(@size, @line-height: 'none', @weight: normal, @color: 'none') when not (@color = 'none') {
     color: @color;
 }
 
-.font_heading(@size, @line-height: 'normal') {
+.font_heading(@size, @line-height: normal) {
     font-weight: bold;
     line-height: @line-height;
     font-size: @size;
