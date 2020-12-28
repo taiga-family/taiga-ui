@@ -15,7 +15,7 @@ import {SEE_ALSO_GROUPS} from './app.const';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {pages} from './pages';
 
-const DEFAULT_TABS = [
+export const DEFAULT_TABS = [
     $localize`Description and examples`,
     $localize`API`,
     $localize`Setup`,
@@ -23,21 +23,23 @@ const DEFAULT_TABS = [
 ];
 const TITLE_PREFIX = 'Taiga UI: ';
 
+export const HIGHLIGHT_OPTIONS_VALUE = {
+    coreLibraryLoader: () => import('highlight.js/lib/core'),
+    lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
+    languages: {
+        typescript: () => import('highlight.js/lib/languages/typescript'),
+        less: () => import('highlight.js/lib/languages/less'),
+        xml: () => import('highlight.js/lib/languages/xml'),
+    },
+};
+
 export const ICONS_PATH = iconsPathFactory('assets/taiga-ui/icons/');
 
 export const APP_PROVIDERS = [
     Title,
     {
         provide: HIGHLIGHT_OPTIONS,
-        useValue: {
-            coreLibraryLoader: () => import('highlight.js/lib/core'),
-            lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
-            languages: {
-                typescript: () => import('highlight.js/lib/languages/typescript'),
-                less: () => import('highlight.js/lib/languages/less'),
-                xml: () => import('highlight.js/lib/languages/xml'),
-            },
-        },
+        useValue: HIGHLIGHT_OPTIONS_VALUE,
     },
     {
         provide: TUI_SANITIZER,
