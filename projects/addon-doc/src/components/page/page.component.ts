@@ -26,7 +26,7 @@ export class TuiDocPageComponent {
     header = '';
 
     @Input()
-    packageName = '';
+    package = '';
 
     activeItemIndex = NaN;
 
