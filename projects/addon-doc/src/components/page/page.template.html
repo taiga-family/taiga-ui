@@ -8,9 +8,9 @@
             status="custom"
         ></tui-tag>
         <tui-tag
-            *ngIf="packageName"
+            *ngIf="package"
             class="tag"
-            [value]="packageName"
+            [value]="package"
             [autoColor]="true"
         ></tui-tag>
     </h1>
@@ -48,7 +48,7 @@
     <tui-doc-source-code
         class="source-code"
         [header]="header"
-        [package]="packageName"
+        [package]="package"
     ></tui-doc-source-code>
 </header>
 <div class="content">
