@@ -24,8 +24,8 @@
     >
         <ng-content></ng-content>
         <div
-            polymorpheus-outlet
             *ngIf="value"
+            polymorpheus-outlet
             class="value"
             automation-id="tui-select__value"
             [content]="computedContent"
