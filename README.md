@@ -11,8 +11,6 @@
 
 It is based on [ng-polymorpheus](https://github.com/TinkoffCreditSystems/ng-polymorpheus) dynamic content approach and uses [Web APIs for Angular](https://github.com/ng-web-apis) for required browser APIs.
 
-> **_ATTENTION:_** Versions 1.x.y are transition releases from closed to open source, expect breaking changes until stable 2.0.0 is released and properly announced
-
 ## Why Taiga UI
 
 🧩 **Modular and fully-treeshakable.** We harnessed the power of Secondary Entry Points mechanism. You can import even just one entity from our library and be sure that there is no redundant code in your bundle
