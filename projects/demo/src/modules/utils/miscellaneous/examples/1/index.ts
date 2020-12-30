@@ -14,10 +14,10 @@ export class TuiMiscellaneousExample1 {
         const dayOfWeek = new Date().getDay();
         const isFriday = dayOfWeek === 5;
 
-        tuiAssert.assert(isFriday, 'Сегодня не пятница');
+        tuiAssert.assert(isFriday, 'Today is not a friday');
 
         return isFriday
-            ? 'В консоль ничего не выведено'
-            : `В консоль выведен assert: 'Сегодня не пятница'`;
+            ? 'Nothing in console'
+            : `There is a console assert: 'Today is not a friday'`;
     }
 }

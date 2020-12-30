@@ -100,7 +100,7 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiReactiveField
 
     tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<string>> = [
         ALWAYS_TRUE_HANDLER,
-        item => item === 'тест',
+        item => item === 'test',
         item => item !== 'mail',
     ];
 

@@ -55,8 +55,8 @@ export class ExampleTuiInputFileComponent extends AbstractExampleTuiReactiveFiel
     };
 
     readonly control = new FormControl();
-    link = 'Выберите файл';
-    label = 'или перетащите\u00A0его\u00A0сюда';
+    link = 'Choose a file';
+    label = 'or drop\u00A0it\u00A0here';
     multiple = false;
     showSize = true;
     accept = '';

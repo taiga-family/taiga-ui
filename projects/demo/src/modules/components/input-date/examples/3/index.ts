@@ -19,7 +19,7 @@ export class TuiInputDateExample3 {
     items = [
         new TuiNamedDay(
             TUI_LAST_DAY.append({year: -1}),
-            'По настоящее время',
+            'Unill today',
             TuiDay.currentLocal(),
         ),
     ];

@@ -14,7 +14,7 @@ export class TuiLetExample2 {
     constructor(@Inject(LogService) private readonly log: LogService) {}
 
     get getter(): string {
-        this.log.log('Getter дёрнулся');
+        this.log.log('Getter called');
 
         return '🐳';
     }

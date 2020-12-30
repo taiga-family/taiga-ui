@@ -61,21 +61,21 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiReactiveFie
 
     size = this.sizeVariants[1];
 
-    pluralizeVariants: ReadonlyArray<TuiPluralize> = [
-        ['год', 'года', 'лет'],
-        ['шт', 'шт', 'шт'],
-        ['года', 'лет', 'лет'],
+    readonly pluralizeVariants: ReadonlyArray<TuiPluralize> = [
+        ['year', 'years', 'years'],
+        ['thing', 'things', 'things'],
+        ['year', 'years', 'years'],
     ];
 
     pluralize = null;
 
     segmentsPluralize = null;
 
-    minLabelVariants: readonly string[] = ['', 'Ничего'];
+    minLabelVariants: readonly string[] = ['', 'Nothing'];
 
     minLabel = this.minLabelVariants[0];
 
-    maxLabelVariants: readonly string[] = ['', 'Всё'];
+    maxLabelVariants: readonly string[] = ['', 'Everything'];
 
     maxLabel = this.maxLabelVariants[0];
 

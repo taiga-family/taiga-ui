@@ -62,24 +62,24 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiReactiveFi
     size = this.sizeVariants[1];
 
     readonly pluralizeVariants: ReadonlyArray<TuiPluralize> = [
-        ['год', 'года', 'лет'],
-        ['шт', 'шт', 'шт'],
-        ['года', 'лет', 'лет'],
+        ['year', 'years', 'years'],
+        ['thing', 'things', 'things'],
+        ['year', 'years', 'years'],
     ];
 
     pluralize = null;
 
     segmentsPluralize = null;
 
-    readonly secondaryVariants: readonly string[] = ['getter процентов', 'условно'];
+    readonly secondaryVariants: readonly string[] = ['getter of percent', 'Something'];
 
     secondarySelected = null;
 
-    readonly minLabelVariants: readonly string[] = ['', 'Ничего'];
+    readonly minLabelVariants: readonly string[] = ['', 'Nothing'];
 
     minLabel = this.minLabelVariants[0];
 
-    readonly maxLabelVariants: readonly string[] = ['', 'Всё'];
+    readonly maxLabelVariants: readonly string[] = ['', 'Everything'];
 
     maxLabel = this.maxLabelVariants[0];
 

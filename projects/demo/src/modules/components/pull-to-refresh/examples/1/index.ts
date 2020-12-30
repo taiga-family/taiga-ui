@@ -32,7 +32,7 @@ export class TuiPullToRefreshExample1 {
     constructor(private readonly notifications: TuiNotificationsService) {}
 
     onPull() {
-        this.notifications.show('Загрузка новых данных...').subscribe();
+        this.notifications.show('Loading...').subscribe();
     }
 
     finishLoading() {

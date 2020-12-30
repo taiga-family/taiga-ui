@@ -4,7 +4,7 @@ constructor(private readonly dialogsService: TuiMobileDialogService) {}
 
 this.dialogsService
     .open(
-        'Текст',
+        'Text',
         {
             label: 'Heading',
             actions: ['Button 1', 'Button 2'],

@@ -95,7 +95,7 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiReactiveFiel
 
     readonly itemsVariants = [
         [],
-        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), 'По настоящее время')],
+        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), 'Unill today')],
     ];
 
     readonly markerHandlerVariants: ReadonlyArray<TuiMarkerHandler> = [

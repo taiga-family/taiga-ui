@@ -38,7 +38,7 @@ export class ExampleTuiFilterComponent {
 
     matcher = this.matcherVariants[0];
 
-    argsVariants: ReadonlyArray<string | number> = ['', 'оп', 400];
+    argsVariants: ReadonlyArray<string | number> = ['', 'hey', 400];
 
     args = this.argsVariants[0];
 }

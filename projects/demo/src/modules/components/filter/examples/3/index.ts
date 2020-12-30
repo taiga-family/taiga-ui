@@ -4,11 +4,11 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
 const getIcon: Record<string, string> = {
-    Календарь: 'tuiIconCalendarLarge',
-    Избранное: 'tuiIconStarLarge',
-    Сообщения: 'tuiIconCommentLarge',
+    Calendar: 'tuiIconCalendarLarge',
+    Favorite: 'tuiIconStarLarge',
+    Messages: 'tuiIconCommentLarge',
     FAQ: 'tuiIconHelpCircleLarge',
-    Настройки: 'tuiIconSettings2Large',
+    Settings: 'tuiIconSettings2Large',
 };
 
 @Component({
@@ -19,7 +19,7 @@ const getIcon: Record<string, string> = {
     encapsulation,
 })
 export class TuiFilterExample3 {
-    items = ['Календарь', 'Избранное', 'Сообщения', 'FAQ', 'Настройки'];
+    items = ['Calendar', 'Favorite', 'Messages', 'FAQ', 'Settings'];
 
     form = new FormGroup({
         filters: new FormControl([]),

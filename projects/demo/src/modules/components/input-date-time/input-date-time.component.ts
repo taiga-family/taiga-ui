@@ -81,7 +81,7 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiReactive
 
     readonly itemsVariants = [
         [],
-        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), 'По настоящее время')],
+        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), 'Unill today')],
     ];
 
     items = this.itemsVariants[0];

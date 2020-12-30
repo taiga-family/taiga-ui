@@ -74,8 +74,8 @@ export class ExampleTuiRingChartComponent {
                 : `${round((100 * value[$implicit]) / sum(...value), 2)} %`,
         ({$implicit, value}) =>
             isNaN($implicit)
-                ? `${formatNumber(sum(...value))}\nВсего`
-                : `${formatNumber(value[$implicit])}\nСектор №${$implicit + 1}`,
+                ? `${formatNumber(sum(...value))}\nTotal`
+                : `${formatNumber(value[$implicit])}\nSegment №${$implicit + 1}`,
     ];
 
     content = this.contentVariants[0];

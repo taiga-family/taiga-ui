@@ -77,7 +77,7 @@ export abstract class AbstractExampleTuiReactiveField extends AbstractExampleTui
         TuiInputMode.Numeric,
     ];
 
-    readonly customContentVariants = ['Колокольчик'];
+    readonly customContentVariants = ['Bell'];
 
     customContentSelected = null;
 

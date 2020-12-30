@@ -81,7 +81,7 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiReactiveFiel
     @ViewChild('customTemplate', {read: PolymorpheusTemplate})
     customTemplate: PolymorpheusContent = '';
 
-    readonly successMessageVariants = ['Cкопировано', 'Шаблон'];
+    readonly successMessageVariants = ['Copied', 'Template'];
 
     successMessage = this.successMessageVariants[0];
 
@@ -89,7 +89,7 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiReactiveFiel
     messageMode = this.hintModeVariants[0];
 
     get notificationTemplate(): PolymorpheusContent {
-        return this.successMessage === 'Шаблон'
+        return this.successMessage === 'Template'
             ? this.customTemplate
             : this.successMessage;
     }

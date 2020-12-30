@@ -17,7 +17,6 @@ export class LogService {
             .show(String(value), {label: `event (${eventName})`})
             .subscribe();
 
-        // нужно, чтобы на витрине в консоли можно было посмотреть объект события
         console.log(eventName, value);
     }
 }
