@@ -32,12 +32,13 @@
 }
 
 .footer {
-    position: sticky;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
     display: flex;
     padding: 44px;
+    pointer-events: none;
 
     @media all and (max-width: 700px) {
         padding: 32px;
@@ -61,6 +62,7 @@
     .transition(background);
     color: var(--tui-base-01);
     background: #ff603e;
+    pointer-events: auto;
 
     &:hover {
         background: var(--tui-accent);
@@ -380,6 +382,7 @@
     background: none;
     outline: none;
     animation: bounce 1s infinite alternate;
+    pointer-events: auto;
 
     &:before,
     &:after {
