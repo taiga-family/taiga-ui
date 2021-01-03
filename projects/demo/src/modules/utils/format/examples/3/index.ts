@@ -12,7 +12,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiFormatExample3 {
-    readonly items = ['USD', 'RUB', '643', 'KZT', '051', 'KRW', 'CHF'];
+    readonly items = ['USD', 'RUB', '643', 'KZT', '051', 'KRW', 'CHF', 'EUR', 'GBP'];
 
     parametersForm = new FormGroup({
         currency: new FormControl(null),
