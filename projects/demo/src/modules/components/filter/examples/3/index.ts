@@ -8,7 +8,7 @@ const getIcon: Record<string, string> = {
     Favorite: 'tuiIconStarLarge',
     Messages: 'tuiIconCommentLarge',
     FAQ: 'tuiIconHelpCircleLarge',
-    Settings: 'tuiIconSettings2Large',
+    Settings: 'tuiIconSettingsLarge',
 };
 
 @Component({
