@@ -12,7 +12,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiMiscellaneousExample5 {
-    readonly items = ['Строчка', 'null', 'undefined'];
+    readonly items = ['String', 'null', 'undefined'];
 
     parametersForm = new FormGroup({
         value: new FormControl(null),

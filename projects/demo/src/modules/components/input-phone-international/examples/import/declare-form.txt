@@ -8,7 +8,6 @@ import {TuiCountryIsoCode} from '@taiga-ui/kit';
 })
 export class MyComponent {
     readonly testForm = new FormGroup({
-        // +78005553535 - предвыбранное значение, можно не передавать
         testValue: new FormControl('+78005553535')
     });
 

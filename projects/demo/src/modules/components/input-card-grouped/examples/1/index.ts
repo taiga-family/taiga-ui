@@ -7,7 +7,7 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 function cardNumberValidator({value}: AbstractControl): ValidationErrors | null {
     return value && value.card && !isCardNumberValid(value.card)
         ? {
-              card: new TuiValidationError('Номер карты некорректный'),
+              card: new TuiValidationError('Invalid card number'),
           }
         : null;
 }
@@ -15,7 +15,7 @@ function cardNumberValidator({value}: AbstractControl): ValidationErrors | null 
 function cardExpireValidator({value}: AbstractControl): ValidationErrors | null {
     return value && value.expire.length === 5 && !isExpireValid(value.expire)
         ? {
-              expire: new TuiValidationError('Срок действия истёк'),
+              expire: new TuiValidationError('Expire date'),
           }
         : null;
 }

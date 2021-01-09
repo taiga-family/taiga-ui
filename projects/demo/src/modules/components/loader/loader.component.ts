@@ -65,15 +65,15 @@ export class ExampleTuiLoaderComponent {
     @ViewChild('textTemplate')
     readonly textTemplate?: PolymorpheusTemplate<{}>;
 
-    readonly textVariants: string[] = ['template', 'строка'];
+    readonly textVariants: string[] = ['template', 'string'];
 
     get template(): PolymorpheusContent | null {
         switch (this.selectedTemplate) {
             case 'template': {
                 return this.textTemplate || null;
             }
-            case 'строка': {
-                return 'строка';
+            case 'string': {
+                return 'string';
             }
             default: {
                 return null;

@@ -15,7 +15,7 @@ export class TuiMediaExample2 {
     paused = true;
 
     get icon(): string {
-        return this.paused ? 'tuiIconPlay2Large' : 'tuiIconPause2Large';
+        return this.paused ? 'tuiIconPlayLarge' : 'tuiIconPauseLarge';
     }
 
     getTime(time: number): string {

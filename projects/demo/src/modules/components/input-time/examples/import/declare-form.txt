@@ -8,7 +8,6 @@ import {TuiTime} from '@taiga-ui/core';
 })
 export class MyComponent {
     testForm = new FormGroup({
-        // TuiTime(12, 30) - предвыбранное значение, можно не передавать
         testValue: new FormControl(new TuiTime(12, 30))
     });
 }

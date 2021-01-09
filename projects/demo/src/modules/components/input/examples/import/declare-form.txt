@@ -7,7 +7,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class MyComponent {
     testForm = new FormGroup({
-        // 'mail@mail.ru' - выбранное значение, можно не передавать
         testValue: new FormControl('mail@mail.ru')
     });
 }

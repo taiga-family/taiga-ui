@@ -7,7 +7,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class MyComponent {
     testForm = new FormGroup({
-        // +78005553535 - предвыбранное значение, можно не передавать
         testValue: new FormControl('+78005553535')
     });
 }

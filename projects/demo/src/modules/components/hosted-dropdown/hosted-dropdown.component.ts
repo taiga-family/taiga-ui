@@ -91,12 +91,12 @@ export class ExampleTuiHostedDropdownComponent {
 
     canOpenSelected = this.canOpenVariants[0];
 
-    readonly contentVariants = ['Шаблон', 'Произвольная строка'];
+    readonly contentVariants = ['Template', 'Custom string'];
 
     content = this.contentVariants[0];
 
     get template(): boolean {
-        return this.content === 'Шаблон';
+        return this.content === 'Template';
     }
 
     get canOpen(): boolean {
