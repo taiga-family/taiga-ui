@@ -1,45 +1,61 @@
 <div class="bg-toggle" [tuiMode]="null">
-    tuiMode:
-    <tui-tooltip size="l" describeId="form" [content]="tooltip">
-        <ng-template #tooltip>
-            {{texts[0]}}
-            <a tuiLink tuiMode="onDark" routerLink="/tui-mode">
-                <code>tuiMode</code>
-            </a>
-        </ng-template>
-    </tui-tooltip>
-    <div tuiGroup class="tui-space_left-3" [collapsed]="true">
-        <tui-radio-block
-            class="tui-group__auto-width-item"
-            size="s"
-            nativeId="form"
-            [item]="null"
-            [hideRadio]="true"
+    <ng-template #tooltip>
+        {{texts[0]}}
+        <a tuiLink tuiMode="onDark" routerLink="/tui-mode">
+            <code>tuiMode</code>
+        </a>
+    </ng-template>
+    <ng-container *ngIf="isMobile else desktop">
+        <tui-select
+            class="mode"
+            tuiTextfieldSize="s"
+            [tuiTextfieldCleaner]="true"
+            [tuiHintContent]="tooltip"
             [formControl]="modeControl"
         >
-            null
-        </tui-radio-block>
-        <tui-radio-block
-            class="tui-group__auto-width-item"
-            item="onDark"
-            size="s"
-            nativeId="form"
-            [hideRadio]="true"
-            [formControl]="modeControl"
-        >
-            onDark
-        </tui-radio-block>
-        <tui-radio-block
-            class="tui-group__auto-width-item"
-            item="onLight"
-            size="s"
-            nativeId="form"
-            [hideRadio]="true"
-            [formControl]="modeControl"
-        >
-            onLight
-        </tui-radio-block>
-    </div>
+            tuiMode
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="items"
+            ></tui-data-list-wrapper>
+        </tui-select>
+    </ng-container>
+    <ng-template #desktop>
+        tuiMode:
+        <tui-tooltip describeId="form" [content]="tooltip"></tui-tooltip>
+        <div tuiGroup class="tui-space_left-3" [collapsed]="true">
+            <tui-radio-block
+                class="tui-group__auto-width-item"
+                size="s"
+                nativeId="form"
+                [item]="null"
+                [hideRadio]="true"
+                [formControl]="modeControl"
+            >
+                null
+            </tui-radio-block>
+            <tui-radio-block
+                class="tui-group__auto-width-item"
+                item="onDark"
+                size="s"
+                nativeId="form"
+                [hideRadio]="true"
+                [formControl]="modeControl"
+            >
+                onDark
+            </tui-radio-block>
+            <tui-radio-block
+                class="tui-group__auto-width-item"
+                item="onLight"
+                size="s"
+                nativeId="form"
+                [hideRadio]="true"
+                [formControl]="modeControl"
+            >
+                onLight
+            </tui-radio-block>
+        </div>
+    </ng-template>
     <tui-checkbox-labeled
         class="tui-space_left-3"
         size="m"

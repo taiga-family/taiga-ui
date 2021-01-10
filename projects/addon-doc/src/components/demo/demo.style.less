@@ -115,6 +115,10 @@
     border-radius: 4px;
 }
 
+.mode {
+    width: 200px;
+}
+
 .select {
     max-width: 240px;
 }
@@ -169,9 +173,11 @@
 }
 
 @supports (position: sticky) {
-    :host {
-        position: sticky;
-        top: 8px;
-        z-index: 2;
+    @media screen and (min-height: 600px) {
+        :host {
+            position: sticky;
+            top: 74px;
+            z-index: 2;
+        }
     }
 }
