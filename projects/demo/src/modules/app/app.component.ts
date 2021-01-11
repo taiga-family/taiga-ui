@@ -1,5 +1,7 @@
-import {Component, Inject} from '@angular/core';
-import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
+import {ChangeDetectorRef, Component, HostBinding, Inject} from '@angular/core';
+import {Router} from '@angular/router';
+import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure, watch} from '@taiga-ui/cdk';
+import {distinctUntilChanged, map} from 'rxjs/operators';
 import {changeDetection} from '../../change-detection-strategy';
 
 // @dynamic
@@ -10,10 +12,25 @@ import {changeDetection} from '../../change-detection-strategy';
     changeDetection,
 })
 export class AppComponent {
+    @HostBinding('class._landing')
+    landing = false;
+
     constructor(
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
-    ) {}
+        @Inject(Router) router: Router,
+        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+    ) {
+        router.events
+            .pipe(
+                map(() => router.routerState.snapshot.url === '/'),
+                distinctUntilChanged(),
+                watch(changeDetectorRef),
+            )
+            .subscribe(landing => {
+                this.landing = landing;
+            });
+    }
 
     @tuiPure
     get isChristmas(): boolean {
