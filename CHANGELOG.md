@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v1.6.2...v2.1.0) (2021-01-11)
+
+### Features
+
+-   **cdk:** `Media` add `playbackRate` input ([#83](https://github.com/TinkoffCreditSystems/taiga-ui/issues/83)) ([5351762](https://github.com/TinkoffCreditSystems/taiga-ui/commit/5351762299835c2e99777bb62a37e2a1cc217913))
+
 ### [2.0.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v1.6.2...v2.0.1) (2021-01-11)
 
 ### Features
