@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-editor",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Rich text editor extension package for Taiga UI",
     "keywords": [
         "angular",
@@ -18,13 +18,13 @@
         "@angular/core": ">=6.0.0",
         "@angular/forms": ">=6.0.0",
         "@angular/platform-browser": ">=6.0.0",
-        "@taiga-ui/cdk": "2.0.0",
-        "@taiga-ui/core": "2.0.0",
-        "@taiga-ui/kit": "2.0.0",
+        "@taiga-ui/cdk": "2.0.1",
+        "@taiga-ui/core": "2.0.1",
+        "@taiga-ui/kit": "2.0.1",
         "rxjs": ">=6.0.0"
     },
     "devDependencies": {
-        "@taiga-ui/core": "2.0.0",
-        "@taiga-ui/kit": "2.0.0"
+        "@taiga-ui/core": "2.0.1",
+        "@taiga-ui/kit": "2.0.1"
     }
 }
