@@ -32,6 +32,7 @@ const MIN_COMPONENT_WIDTH = 104;
     styleUrls: ['./demo.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        TuiDestroyService,
         {
             provide: TuiModeDirective,
             useExisting: forwardRef(() => TuiDocDemoComponent),

@@ -1,4 +1,7 @@
-<tui-scroll-controls *ngIf="showScrollbar"></tui-scroll-controls>
+<tui-scroll-controls
+    *ngIf="scrollbars$ | async"
+    class="scrollbar"
+></tui-scroll-controls>
 <tui-svg-defs-host></tui-svg-defs-host>
 <tui-portal-host>
     <div class="content">
