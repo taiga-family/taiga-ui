@@ -41,6 +41,7 @@ export class ExampleTuiMediaComponent {
 
     readonly volumeVariants: readonly number[] = [1, 0.5, 0.25, 0];
 
+    playbackRate = 1;
     currentTime = 0;
     volume = this.volumeVariants[0];
     paused = true;
