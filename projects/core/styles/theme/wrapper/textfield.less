@@ -1,11 +1,12 @@
 tui-wrapper[data-appearance='textfield'] {
-    .transition(~'box-shadow, background');
+    transition: 0.3s ease-in-out;
+    transition-property: box-shadow, background;
     background: var(--tui-base-01);
     color: var(--tui-text-01);
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 
     &[data-appearance='textfield']:after {
-        .transition(color);
+        transition: color 0.3s ease-in-out;
         border-width: 1px;
         color: var(--tui-base-03);
     }
