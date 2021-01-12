@@ -23,7 +23,7 @@ It is based on [ng-polymorpheus](https://github.com/TinkoffCreditSystems/ng-poly
 
 📦 **It's big!** We have 130+ components, 100+ directives, dozens of tokens, utils and tools. And it isn't over yet 🚀
 
-<!-- Read more about Taiga UI main features in [this article]() on inDepth -->
+Read more about Taiga UI main features in [this article](https://indepth.dev/posts/1413/taiga-ui) on inDepth
 
 ## How to start
 
