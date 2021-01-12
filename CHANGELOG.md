@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v1.6.2...v2.1.1) (2021-01-12)
+
+### Bug Fixes
+
+* **core:** fix theme less import syntax for StackBlitz ([#86](https://github.com/TinkoffCreditSystems/taiga-ui/issues/86)) ([3b6d874](https://github.com/TinkoffCreditSystems/taiga-ui/commit/3b6d87447bf99e67b38cb6962a88a7b752475ee8))
+
 ## [2.1.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v1.6.2...v2.1.0) (2021-01-11)
 
 ### Features
