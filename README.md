@@ -31,6 +31,8 @@ See our [Getting started](https://taiga-ui.dev/getting-started) page to start wo
 
 > If you want to use cdk tools only, see [CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki)
 
+You can also use our [StackBlitz starter](https://stackblitz.com/edit/taiga-starter?file=src%2Fapp%2Fapp.component.html) to create a quick sample with Taiga UI
+
 ## Community
 
 💡 Your ideas are very welcome in Github issues or discussions
