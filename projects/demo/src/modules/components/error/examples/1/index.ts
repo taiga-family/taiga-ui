@@ -12,7 +12,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiErrorExample1 {
     enabled = false;
 
-    error = new TuiValidationError('Ошибочка');
+    error = new TuiValidationError('An error');
 
     get computedError(): TuiValidationError | null {
         return this.enabled ? this.error : null;

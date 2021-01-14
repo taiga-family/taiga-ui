@@ -1,4 +1,4 @@
-<tui-data-list *ngIf="items else loading">
+<tui-data-list *ngIf="items else loading" [emptyContent]="emptyContent">
     <tui-opt-group
         *ngFor="let group of items; let index = index"
         [label]="labels[index]"

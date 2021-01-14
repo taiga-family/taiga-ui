@@ -10,7 +10,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiAutoFocusExample1 {
     showInput = false;
-    model = 'Сфокусирован при появлении';
+    model = 'Focused after its appearance';
 
     onClick() {
         this.showInput = true;

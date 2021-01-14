@@ -63,10 +63,10 @@ export class ExampleTuiFilterComponent {
         LESS: example4Less,
     };
 
-    initialItems = ['Александр Инкин', 'Роман Седов'];
+    initialItems = ['Alex Inkin', 'Roman Sedov'];
 
     itemsVariants = [
-        ['Александр Инкин', 'Роман Седов'],
+        ['Alex Inkin', 'Roman Sedov'],
         [
             new ItemWithBadge('Focused Zone', 10),
             new ItemWithBadge('Dropdown', 100),
@@ -84,7 +84,7 @@ export class ExampleTuiFilterComponent {
 
     disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<any>> = [
         ALWAYS_FALSE_HANDLER,
-        item => item === 'Роман Седов',
+        item => item === 'Roman Sedov',
         item => item.valueOf() >= 30,
     ];
 

@@ -8,10 +8,10 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
+import {tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk/decorators';
 
-export function currentTimeAssertion(currentTime: number): boolean {
-    return isFinite(currentTime) && currentTime >= 0;
+export function nonNegativeFiniteAssertion(value: number): boolean {
+    return isFinite(value) && value >= 0;
 }
 
 export function volumeAssertion(volume: number): boolean {
@@ -28,8 +28,14 @@ export class TuiMediaDirective {
     @tuiDefaultProp(volumeAssertion)
     volume = 1;
 
+    @Input('playbackRate')
+    @tuiRequiredSetter(nonNegativeFiniteAssertion)
+    set playbackRateSetter(playbackRate: number) {
+        this.updatePlaybackRate(playbackRate);
+    }
+
     @Input()
-    @tuiDefaultProp(currentTimeAssertion)
+    @tuiRequiredSetter(nonNegativeFiniteAssertion)
     set currentTime(currentTime: number) {
         if (currentTime !== this.currentTime) {
             this.elementRef.nativeElement.currentTime = currentTime;
@@ -42,6 +48,7 @@ export class TuiMediaDirective {
             this.elementRef.nativeElement.pause();
         } else {
             this.elementRef.nativeElement.play();
+            this.updatePlaybackRate(this.playbackRate);
         }
     }
 
@@ -53,6 +60,8 @@ export class TuiMediaDirective {
 
     @Output()
     readonly volumeChange = new EventEmitter<number>();
+
+    private playbackRate = 1;
 
     constructor(
         @Inject(ElementRef)
@@ -73,6 +82,7 @@ export class TuiMediaDirective {
     @HostListener('play', ['false'])
     onPausedChange(paused: boolean) {
         this.pausedChange.emit(paused);
+        this.updatePlaybackRate(this.playbackRate);
     }
 
     @HostListener('volumechange')
@@ -91,5 +101,10 @@ export class TuiMediaDirective {
     @HostListener('durationchange')
     changeDetectionTrigger() {
         // @bad TODO: consider if other events need to trigger CD
+    }
+
+    private updatePlaybackRate(playbackRate: number) {
+        this.playbackRate = playbackRate;
+        this.elementRef.nativeElement.playbackRate = this.playbackRate;
     }
 }

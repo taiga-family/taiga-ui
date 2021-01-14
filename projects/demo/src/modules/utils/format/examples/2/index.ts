@@ -13,9 +13,9 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiFormatExample2 {
     parametersForm = new FormGroup({
-        sourceString: new FormControl('друг!'),
+        sourceString: new FormControl('Friend!'),
         minResultLength: new FormControl(21),
-        padString: new FormControl('привет, '),
+        padString: new FormControl('Hey, '),
     });
 
     get paddedStart(): string {

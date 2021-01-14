@@ -82,7 +82,7 @@ export class ExampleTuiTagComponent {
     @ViewChild('errorIcon')
     errorTemplate?: TemplateRef<{}>;
 
-    readonly leftContentVariants = ['Иконка ошибки'];
+    readonly leftContentVariants = ['Error icon'];
 
     leftContentSelected = null;
 

@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {UrlSerializer} from '@angular/router';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {startWith, takeUntil} from 'rxjs/operators';
@@ -32,6 +32,7 @@ const MIN_COMPONENT_WIDTH = 104;
     styleUrls: ['./demo.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        TuiDestroyService,
         {
             provide: TuiModeDirective,
             useExisting: forwardRef(() => TuiDocDemoComponent),
@@ -55,6 +56,8 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     @ContentChild(TemplateRef)
     readonly template?: TemplateRef<{}>;
 
+    readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
+
     private initialX = 0;
     private wrapperWidth = 0;
 
@@ -70,6 +73,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     private readonly isBrowser: boolean;
 
     constructor(
+        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(PLATFORM_ID) platformId: Object,
@@ -79,7 +83,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     ) {
         this.isBrowser = isPlatformBrowser(platformId);
 
-        const parsedMode = locationRef.path().match(/tui-mode=(light|dark)/);
+        const parsedMode = locationRef.path().match(/tui-mode=(onDark|onLight)/);
 
         if (parsedMode !== null && parsedMode.length > 0) {
             this.modeControl.setValue(parsedMode[1]);

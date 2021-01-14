@@ -22,12 +22,12 @@ class User {
 
 const DATA: ReadonlyArray<User> = [
     new User(
-        'Роман',
-        'Седов',
+        'Roman',
+        'Sedov',
         '+75678901234',
         'http://marsibarsi.me/images/1x1small.jpg',
     ),
-    new User('Александр', 'Инкин', '+75678901234', avatar),
+    new User('Alex', 'Inkin', '+75678901234', avatar),
 ];
 
 @Component({
@@ -74,7 +74,7 @@ export class TuiInputPhoneExample3 {
 
     readonly placeholder$ = combineLatest(this.user$, this.search$).pipe(
         map(([user, search]) => user || this.getPlaceholder(search)),
-        startWith('Номер телефона или имя'),
+        startWith('Phone number or name'),
     );
 
     onSearch(search: string) {
@@ -87,14 +87,14 @@ export class TuiInputPhoneExample3 {
 
     private getPlaceholder(search: string): string {
         if (!search) {
-            return 'Номер телефона или имя';
+            return 'Phone number or name';
         }
 
         if (search.startsWith('+')) {
-            return 'Номер телефона';
+            return 'Phone number';
         }
 
-        return 'Имя';
+        return 'Name';
     }
 
     private isFullMatch(response: ReadonlyArray<User>, value: string): boolean {

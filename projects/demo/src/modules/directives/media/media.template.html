@@ -35,8 +35,9 @@
             tuiMedia
             controls
             src="assets/media/strays.mp3"
+            [playbackRate]="playbackRate"
+            [(paused)]="paused"
             [(currentTime)]="currentTime"
-            [paused]="paused"
             [(volume)]="volume"
         ></audio>
         <tui-doc-documentation>
@@ -57,6 +58,15 @@
                 [(documentationPropertyValue)]="paused"
             >
                 Paused state
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="playbackRate"
+                documentationPropertyType="number"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="playbackRate"
+            >
+                Playback speed
             </ng-template>
             <ng-template
                 i18n

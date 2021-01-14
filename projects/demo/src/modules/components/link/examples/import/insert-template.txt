@@ -1,4 +1,4 @@
-<a tuiLink href="#">ссылка</a>
+<a tuiLink href="#">Link</a>
 
 <a tuiLink
    [icon]="tuiIconSettings"

@@ -1,19 +1,21 @@
 <tui-doc-page i18n-header header="TextfieldController" package="CORE">
     <ng-template pageTab>
-        Директива позволяет кастомизировать
-        <a tuiLink target="_blank" routerLink="/tui-primitive-textfield"
-            ><code>TuiPrimitiveTextfield</code></a
-        >, передавая параметры в него через механизм DI.
-
-        <p>
-            Это значит, что директива может находиться на несколько элементов
-            выше, но все равно будет поставлять данные в дочерний textfield.
+        <p i18n>
+            Directive allows to customize
+            <a tuiLink target="_blank" routerLink="/tui-primitive-textfield"
+                ><code>TuiPrimitiveTextfield</code></a
+            >
+            with parameters that it adds into DI tree
         </p>
 
-        <p>
-            Если над одним текстфилдом будет несколько контроллеров, то их
-            параметры смержатся. Приоритет будет отдаваться контроллерам,
-            которые ближе к текстфилду
+        <p i18n>
+            That means that you can use the directive on any root element and it
+            will be customize all textfields in this scope
+        </p>
+
+        <p i18n>
+            If there are several controllers above textfield, their values will
+            be merged. The nearest directives are in priority
         </p>
 
         <tui-doc-example
@@ -26,7 +28,7 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Подключение">
+    <ng-template i18n-pageTab pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
                 <p i18n>

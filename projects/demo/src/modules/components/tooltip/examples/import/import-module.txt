@@ -1,4 +1,3 @@
-// для компонента tui-tooltip (1), для директивы tuiHint (2)
 import {TuiTooltipModule, TuiHintModule} from '@taiga-ui/core';
 
 ...

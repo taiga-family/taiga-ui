@@ -23,7 +23,7 @@ export class TuiDialogExampleComponent5 {
     ) {
         this.dialogService
             .open(content, {
-                label: 'What a cool libraries',
+                label: 'What a cool library set',
                 header,
                 size,
             })

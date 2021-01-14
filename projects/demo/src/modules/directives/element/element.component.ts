@@ -22,4 +22,6 @@ export class ExampleTuiElementComponent {
 
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
+
+    readonly elementRefText = '{read: ElementRef}';
 }

@@ -6,7 +6,6 @@ import {FormControl, FormGroup} from '@angular/forms';
     ...
 })
 export class MyComponent {
-    // 'orange' - выбранное значение, можно не передавать
     testForm = new FormGroup({
         testValue: new FormControl('orange')
     });

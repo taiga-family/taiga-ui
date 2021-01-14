@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -32,7 +33,10 @@ export class TuiScrollControlsComponent {
 
     constructor(
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(TUI_SCROLL_REF) private readonly scrollRef: ElementRef<HTMLElement>,
+        @Inject(DOCUMENT) private readonly documentRef: Document,
+        @Optional()
+        @Inject(TUI_SCROLL_REF)
+        private readonly scrollRef: ElementRef<HTMLElement> | null,
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
@@ -43,12 +47,9 @@ export class TuiScrollControlsComponent {
     }
 
     private get scrollbars(): [boolean, boolean] {
-        const {
-            clientHeight,
-            scrollHeight,
-            clientWidth,
-            scrollWidth,
-        } = this.scrollRef.nativeElement;
+        const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.scrollRef
+            ? this.scrollRef.nativeElement
+            : this.documentRef.documentElement;
 
         return [
             Math.ceil((clientHeight / scrollHeight) * 100) < 100,

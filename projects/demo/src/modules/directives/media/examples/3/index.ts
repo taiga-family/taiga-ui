@@ -13,7 +13,7 @@ export class TuiMediaExample3 {
     paused = true;
 
     get icon(): string {
-        return this.paused ? 'tuiIconPlay2Large' : 'tuiIconPause2Large';
+        return this.paused ? 'tuiIconPlayLarge' : 'tuiIconPauseLarge';
     }
 
     toggleState() {

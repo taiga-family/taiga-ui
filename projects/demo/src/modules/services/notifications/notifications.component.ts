@@ -65,7 +65,7 @@ export class ExampleTuiNotificationsComponent {
 
     data = 100;
 
-    label = 'Заголовочек';
+    label = 'Heading';
 
     readonly statusVariants: ReadonlyArray<TuiNotification> = [
         TuiNotification.Info,
@@ -76,7 +76,7 @@ export class ExampleTuiNotificationsComponent {
 
     status = this.statusVariants[0];
 
-    readonly contentVariants = ['Строка', 'Компонент'];
+    readonly contentVariants = ['String', 'Component'];
 
     content = this.contentVariants[0];
 
@@ -103,7 +103,7 @@ export class ExampleTuiNotificationsComponent {
     get selectedContent(): PolymorpheusContent<
         TuiNotificationContentContext<number, number>
     > {
-        return this.content === 'Строка' ? this.content : this.component;
+        return this.content === 'String' ? this.content : this.component;
     }
 
     showNotification() {

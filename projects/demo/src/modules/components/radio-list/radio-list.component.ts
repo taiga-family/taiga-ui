@@ -60,17 +60,16 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiReactiveFiel
 
     readonly items = [
         {
-            name: 'Простой',
-            description: 'Это описание простого тарифа. Он совсем прост.',
+            name: 'Simple',
+            description: 'It is simple',
         },
         {
-            name: 'Продвинутый',
-            description: 'Это описание продвинутого тарифа.',
+            name: 'Advanced',
+            description: 'For better clients',
         },
         {
-            name: 'Профессиональный',
-            description:
-                'Это описание профессионального тарифа. Это наш самый крутой тариф.',
+            name: 'PRO',
+            description: 'For pro and cool clients',
         },
     ];
 
@@ -81,7 +80,7 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiReactiveFiel
     readonly disabledItemHandlerVariants: Array<TuiBooleanHandler<any>> = [
         ALWAYS_FALSE_HANDLER,
         ALWAYS_TRUE_HANDLER,
-        item => item.name === 'Продвинутый',
+        item => item.name === 'Advanced',
     ];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];

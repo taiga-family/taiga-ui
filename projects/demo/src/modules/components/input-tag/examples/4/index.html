@@ -7,7 +7,7 @@
     [tagValidator]="tagValidator"
     [(search)]="search"
 >
-    Попробуй сам
+    Try it
     <ng-container *ngIf="filtered.length">
         <tui-data-list *tuiDataList>
             <button *ngFor="let item of filtered" tuiOption [value]="item">
