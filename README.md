@@ -15,7 +15,7 @@ It is based on [ng-polymorpheus](https://github.com/TinkoffCreditSystems/ng-poly
 
 🧩 **Modular and fully-treeshakable.** We harnessed the power of Secondary Entry Points mechanism. You can import even just one entity from our library and be sure that there is no redundant code in your bundle
 
-🧙 **Agnostic**. Our components are very flexible and are ready for any usecase. But we take care of basic UX aspects to let you focus on your project features
+🧙 **Agnostic**. Our components are very flexible and are ready for any use case. But we take care of basic UX aspects to let you focus on your project features
 
 🦋 **Customizable**. We use CSS custom properties for all our styling and provide easy methods to customize all UI components
 
