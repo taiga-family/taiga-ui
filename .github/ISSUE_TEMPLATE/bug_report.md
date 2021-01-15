@@ -15,8 +15,9 @@ assignees: waterplea, MarsiBarsi
 ### Reproduction
 
 <!-- Steps to reproduce or, preferably, a demo on StackBlitz or similar service -->
+<!-- You can use our StackBlitz starter: -->
 
-http://www.stackblitz.com/...
+https://stackblitz.com/edit/taiga-starter?file=src%2Fapp%2Fapp.component.html
 
 ### Expected behavior
 
