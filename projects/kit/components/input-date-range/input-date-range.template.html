@@ -34,7 +34,7 @@
             automation-id="tui-input-date-range__icon"
             class="icon"
             [src]="calendarIcon"
-            (touchstart)="onMobileMouseDown($event)"
+            (click.prevent)="onClick()"
         ></tui-svg>
     </ng-template>
 

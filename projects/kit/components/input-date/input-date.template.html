@@ -22,7 +22,7 @@
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
         (focusedChange)="onFocused($event)"
-        (mousedown)="onMouseDown()"
+        (click.prevent)="onClick()"
     >
         <ng-content></ng-content>
     </tui-primitive-textfield>
@@ -32,7 +32,7 @@
             automation-id="tui-input-date-range__icon"
             class="icon"
             [src]="calendarIcon"
-            (touchstart)="onMobileMouseDown($event)"
+            (click.prevent)="onClick()"
         ></tui-svg>
     </ng-template>
 

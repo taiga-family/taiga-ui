@@ -228,17 +228,12 @@ export class TuiInputDateRangeComponent
     }
 
     onClick() {
-        if (!this.computedMobile) {
+        if (!this.isMobile || !this.mobileCalendar) {
             this.toggle();
-        }
-    }
 
-    onMobileMouseDown(event: TouchEvent) {
-        if (!this.mobileCalendar) {
             return;
         }
 
-        event.stopPropagation();
         this.dialogService
             .open<TuiDayRange>(
                 new PolymorpheusComponent(this.mobileCalendar, this.injector),
