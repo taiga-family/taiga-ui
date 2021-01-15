@@ -2,6 +2,8 @@ import {Component, Inject, TemplateRef} from '@angular/core';
 import {TuiPortalService} from '@taiga-ui/cdk';
 import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -15,6 +17,8 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiDialogExampleComponent4 {
     filters = false;
 
+    readonly close$ = new Subject<void>();
+
     constructor(
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
         @Inject(TuiPortalService) private readonly portalService: TuiPortalService,
@@ -22,11 +26,14 @@ export class TuiDialogExampleComponent4 {
 
     onFilterClick() {
         this.filters = true;
-        this.dialogService.open('Dialog with filters').subscribe({
-            complete: () => {
-                this.filters = false;
-            },
-        });
+        this.dialogService
+            .open('Dialog with filters')
+            .pipe(takeUntil(this.close$))
+            .subscribe({
+                complete: () => {
+                    this.filters = false;
+                },
+            });
     }
 
     showDialog(content: PolymorpheusTemplate<TuiDialogContext>, button: TemplateRef<{}>) {
@@ -37,6 +44,7 @@ export class TuiDialogExampleComponent4 {
                 closeable: false,
                 dismissible: true,
             })
+            .pipe(takeUntil(this.close$))
             .subscribe({
                 complete: () => {
                     this.portalService.removeTemplate(templateRef);

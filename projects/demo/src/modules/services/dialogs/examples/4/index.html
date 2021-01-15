@@ -21,6 +21,19 @@
     >
         Filters
     </button>
+
+    <button
+        i18n
+        tuiIconButton
+        class="close"
+        shape="rounded"
+        appearance="secondary"
+        icon="tuiIconCloseLarge"
+        type="button"
+        size="s"
+        tuiPreventDefault="touchmove"
+        (click)="this.close$.next()"
+    ></button>
 </ng-template>
 
 <ng-template #long="polymorpheus" polymorpheus>
