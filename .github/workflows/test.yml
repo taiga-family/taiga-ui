@@ -1,7 +1,7 @@
 name: Test all packages of Taiga UI and check coverage with Coveralls
 
 on:
-  push:
+  pull_request:
     branches-ignore:
       - 'release/**'
     paths-ignore:
@@ -9,6 +9,9 @@ on:
       - 'projects/demo/**'
       - 'projects/icons/**'
       - '**/*.md'
+  push:
+    branches:
+      - main
 
 jobs:
   test:

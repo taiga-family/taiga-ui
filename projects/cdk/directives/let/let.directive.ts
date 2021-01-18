@@ -18,4 +18,17 @@ export class TuiLetDirective<T> {
     ) {
         viewContainer.createEmbeddedView(templateRef, new TuiLetContext<T>(this));
     }
+
+    /**
+     * Asserts the correct type of the context for the template that `TuiLet` will render.
+     *
+     * The presence of this method is a signal to the Ivy template type-check compiler that the
+     * `TuiLet` structural directive renders its template with a specific context type.
+     */
+    static ngTemplateContextGuard<T>(
+        _dir: TuiLetDirective<T>,
+        _ctx: any,
+    ): _ctx is TuiLetDirective<T> {
+        return true;
+    }
 }

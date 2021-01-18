@@ -5,7 +5,7 @@ constructor(@Inject(TuiNotificationsService) private readonly notificationsServi
 
 ...
 
-    this.notificationsService.showNotification('Notification')
+    this.notificationsService.show('Notification')
         .subscribe({
             complete: () => {
                 console.log('Notification is closed');

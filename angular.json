@@ -560,8 +560,8 @@
                             ],
                             "fileReplacements": [
                                 {
-                                    "replace": "projects/demo/src/changeDetectionStrategy.ts",
-                                    "with": "projects/demo/src/changeDetectionStrategy.def.ts"
+                                    "replace": "projects/demo/src/change-detection-strategy.ts",
+                                    "with": "projects/demo/src/change-detection-strategy.def.ts"
                                 }
                             ]
                         },
@@ -574,8 +574,8 @@
                             ],
                             "fileReplacements": [
                                 {
-                                    "replace": "public/projects/demo/src/viewEncapsulation.ts",
-                                    "with": "public/projects/demo/src/viewEncapsulation.shadow.ts"
+                                    "replace": "public/projects/demo/src/view-encapsulation.ts",
+                                    "with": "public/projects/demo/src/view-encapsulation.shadow.ts"
                                 }
                             ]
                         },

@@ -25,5 +25,10 @@ assignees: waterplea, MarsiBarsi
 
 ### Additional context
 
+<!--
+    You can also provide any StackBlitz samples with our starter:
+    https://stackblitz.com/edit/taiga-starter?file=src%2Fapp%2Fapp.component.html
+-->
+
 <!-- Add any other context or screenshots about the feature request here -->
 <!-- ✍️edit: -->

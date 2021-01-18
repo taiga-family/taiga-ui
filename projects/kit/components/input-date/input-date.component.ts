@@ -195,18 +195,13 @@ export class TuiInputDateComponent
         this.open = false;
     }
 
-    onMouseDown() {
-        if (!this.computedMobile) {
+    onClick() {
+        if (!this.isMobile || !this.mobileCalendar) {
             this.open = !this.open;
-        }
-    }
 
-    onMobileMouseDown(event: TouchEvent) {
-        if (!this.mobileCalendar) {
             return;
         }
 
-        event.stopPropagation();
         this.dialogService
             .open<TuiDay>(new PolymorpheusComponent(this.mobileCalendar, this.injector), {
                 size: 'fullscreen',

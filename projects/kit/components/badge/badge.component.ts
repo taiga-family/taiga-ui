@@ -51,11 +51,11 @@ export class TuiBadgeComponent {
         return typeof this.value.valueOf() === 'number' ? 'm' : 'l';
     }
 
-    get outputValue(): number | string {
+    get outputValue(): string {
         if (typeof this.value.valueOf() === 'number' && this.value.valueOf() > 99) {
             return '99+';
         } else {
-            return this.value;
+            return String(this.value);
         }
     }
 }

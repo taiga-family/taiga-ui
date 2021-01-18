@@ -7,7 +7,7 @@ constructor(@Inject(TuiNotificationsService) private readonly notificationsServi
 
 ...
 
-    this.notificationsService.showNotification(new PolymorpheusComponent(CustomNotificationComponent))
+    this.notificationsService.show(new PolymorpheusComponent(CustomNotificationComponent))
         .subscribe({
             complete: () => {
             console.log('Notification is closed');

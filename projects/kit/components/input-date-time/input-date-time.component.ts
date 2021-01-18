@@ -184,7 +184,7 @@ export class TuiInputDateTimeComponent
         return !this.computedDisabled && !this.readOnly;
     }
 
-    onMouseDown() {
+    onClick() {
         this.open = !this.open;
     }
 
