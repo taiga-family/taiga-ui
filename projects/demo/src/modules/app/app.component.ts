@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, HostBinding, Inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure, watch} from '@taiga-ui/cdk';
+import {VERSION} from '@taiga-ui/core';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {changeDetection} from '../../change-detection-strategy';
 
@@ -14,6 +15,8 @@ import {changeDetection} from '../../change-detection-strategy';
 export class AppComponent {
     @HostBinding('class._landing')
     landing = false;
+
+    readonly version = VERSION;
 
     constructor(
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
