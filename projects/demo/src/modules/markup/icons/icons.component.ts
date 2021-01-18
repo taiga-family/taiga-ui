@@ -1,5 +1,6 @@
 import {Component, Inject, InjectionToken} from '@angular/core';
 import {ClipboardCopyService} from '@taiga-ui/addon-doc';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 import {changeDetection} from '../../../change-detection-strategy';
@@ -64,8 +65,6 @@ export class IconsComponent {
     }
 
     getHighlight(name: string): boolean {
-        return this.search.length < 2
-            ? false
-            : name.toLowerCase().includes(this.search.toLowerCase());
+        return this.search.length > 1 && TUI_DEFAULT_MATCHER(name, this.search);
     }
 }
