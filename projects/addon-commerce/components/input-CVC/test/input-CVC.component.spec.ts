@@ -39,7 +39,7 @@ describe('InputCVC', () => {
         fixture.detectChanges();
     });
 
-    describe('по умолчанию', () => {
+    describe('Default', () => {
         it('exampleText', () => {
             expect(testComponent.default.exampleText).toBe('000');
         });
@@ -52,7 +52,7 @@ describe('InputCVC', () => {
         });
     });
 
-    describe('изменённые', () => {
+    describe('Modified', () => {
         it('exampleText', () => {
             expect(testComponent.custom.exampleText).toBe('0000');
         });
