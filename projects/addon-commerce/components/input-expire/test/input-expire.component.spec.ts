@@ -39,29 +39,29 @@ describe('InputExpire', () => {
         });
     });
 
-    it('не трогает корректный ввод', () => {
+    it('does not change the correct input', () => {
         inputPO.sendText('12/12');
 
         expect(testComponent.value).toBe('12/12');
         expect(inputPO.value).toBe('12/12');
     });
 
-    describe('корректировка ввода', () => {
-        it('заменяет 50/08 на 05/08', () => {
+    describe('Input correction', () => {
+        it('replaces 50/08 with 05/08', () => {
             inputPO.sendText('50/08');
 
             expect(testComponent.value).toBe('05/08');
             expect(inputPO.value).toBe('05/08');
         });
 
-        it('заменяет 14/08 на 12/08', () => {
+        it('replaces 14/08 with 12/08', () => {
             inputPO.sendText('14/08');
 
             expect(testComponent.value).toBe('12/08');
             expect(inputPO.value).toBe('12/08');
         });
 
-        it('заменяет 00/08 на 01/08', () => {
+        it('replaces 00/08 with 01/08', () => {
             inputPO.sendText('00/08');
 
             expect(testComponent.value).toBe('01/08');
