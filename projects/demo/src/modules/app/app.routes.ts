@@ -1185,7 +1185,7 @@ export const ROUTES = [
     },
     // PIPES
     {
-        path: 'tui-filter',
+        path: 'filter',
         loadChildren: () =>
             import(`../pipes/filter/filter.module`).then(m => m.ExampleTuiFilterModule),
         data: {
@@ -1193,7 +1193,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-format-number',
+        path: 'format-number',
         loadChildren: () =>
             import(`../pipes/format-number/format-number.module`).then(
                 m => m.ExampleTuiFormatNumberModule,
@@ -1203,7 +1203,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-format-phone',
+        path: 'format-phone',
         loadChildren: () =>
             import(`../pipes/format-phone/format-phone.module`).then(
                 m => m.ExampleTuiFormatPhoneModule,
@@ -1213,21 +1213,11 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-mapper',
+        path: 'mapper',
         loadChildren: () =>
             import(`../pipes/mapper/mapper.module`).then(m => m.ExampleTuiMapperModule),
         data: {
             title: 'Mapper',
-        },
-    },
-    {
-        path: 'tui-pluralize',
-        loadChildren: () =>
-            import(`../pipes/pluralize/pluralize.module`).then(
-                m => m.ExampleTuiPluralizeModule,
-            ),
-        data: {
-            title: 'Pluralize',
         },
     },
     // SERVICES
