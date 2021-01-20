@@ -24,7 +24,7 @@
     >
         <ng-content></ng-content>
         <div
-            *ngIf="value"
+            *ngIf="value !== null"
             polymorpheus-outlet
             class="value"
             automation-id="tui-select__value"
