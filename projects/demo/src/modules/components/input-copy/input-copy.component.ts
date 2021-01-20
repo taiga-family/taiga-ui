@@ -11,12 +11,9 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 import {FormControl, Validators} from '@angular/forms';
 import {TuiAccountAutofillName} from '@taiga-ui/cdk';
-import {TuiTextMaskOptions} from '@taiga-ui/core';
 import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
-
-const D = /\d/;
 
 @Component({
     selector: 'example-input-copy',
@@ -60,19 +57,6 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiReactiveFiel
         'postal-code',
         'country-name',
     ];
-
-    readonly textMaskOptionsVariants: ReadonlyArray<TuiTextMaskOptions> = [
-        {
-            guide: false,
-            mask: [D, D, D, D, D],
-        },
-        {
-            guide: false,
-            mask: [D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D],
-        },
-    ];
-
-    textMaskOptions: TuiTextMaskOptions | null = null;
 
     readonly autocomplete: TuiAccountAutofillName | null = null;
 

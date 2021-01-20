@@ -22,7 +22,6 @@ import {
     TUI_DIGIT_REGEXP,
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
-    TuiWithTextMask,
 } from '@taiga-ui/core';
 
 @Component({
@@ -39,7 +38,7 @@ import {
 })
 export class TuiInputExpireComponent
     extends AbstractTuiControl<string>
-    implements TuiWithTextMask, TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
     autocompleteEnabled = false;

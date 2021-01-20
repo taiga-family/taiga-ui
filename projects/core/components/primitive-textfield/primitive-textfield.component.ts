@@ -10,7 +10,6 @@ import {
     Input,
     Optional,
     Output,
-    Self,
     ViewChild,
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
@@ -63,7 +62,7 @@ const ICON_PADDING_S = 24;
         },
         {
             provide: TUI_VALUE_ACCESSOR,
-            deps: [[new Optional(), new Self(), NG_VALUE_ACCESSOR]],
+            deps: [[new Optional(), NG_VALUE_ACCESSOR]],
             useFactory: identity,
         },
         TEXTFIELD_CONTROLLER_PROVIDER,

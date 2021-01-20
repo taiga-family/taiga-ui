@@ -33,7 +33,6 @@ import {
     TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
-    TuiWithTextMask,
 } from '@taiga-ui/core';
 import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
 
@@ -52,10 +51,7 @@ import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
 })
 export class TuiInputCountComponent
     extends AbstractTuiControl<number>
-    implements
-        TuiWithOptionalMinMax<number>,
-        TuiWithTextMask,
-        TuiFocusableElementAccessor {
+    implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
     step = 1;
