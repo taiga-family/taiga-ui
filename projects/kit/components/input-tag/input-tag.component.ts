@@ -58,6 +58,7 @@ import {
 import {ALLOWED_SPACE_REGEXP} from '@taiga-ui/kit/components/tag';
 import {TuiStatus} from '@taiga-ui/kit/enums';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import {TUI_TAG_STATUS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Subject} from 'rxjs';
 import {filter, map, mapTo, switchMap, takeUntil} from 'rxjs/operators';
@@ -180,6 +181,7 @@ export class TuiInputTagComponent
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_TAG_STATUS) private readonly tagStatus: TuiStatus,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_TEXTIFELD_WATCHED_CONTROLLER)
@@ -264,7 +266,7 @@ export class TuiInputTagComponent
     get status(): TuiStatus {
         return this.modeDirective && this.modeDirective.mode
             ? TuiStatus.Default
-            : TuiStatus.Primary;
+            : this.tagStatus;
     }
 
     get appearance(): TuiAppearance {
