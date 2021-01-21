@@ -1,9 +1,3 @@
-export interface Language
-    extends LanguageCore,
-        LanguageKit,
-        LanguageCommerce,
-        LanguageTable {}
-
 // prettier-ignore
 type MONTHS_ARRAY = [string, string, string, string, string, string, string, string, string, string, string, string];
 
@@ -107,3 +101,9 @@ export interface LanguageTable {
 
 // TODO: fix it after Editor 1.0
 export type LanguageEditor = Record<string, any>;
+
+export interface Language
+    extends LanguageCore,
+        LanguageKit,
+        LanguageCommerce,
+        LanguageTable {}
