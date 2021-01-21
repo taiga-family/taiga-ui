@@ -29,6 +29,7 @@ import {
     TuiSelectModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {TextMaskModule} from 'angular2-text-mask';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputExample1} from './examples/1/component';
 import {TuiInputExample2} from './examples/2/component';
@@ -39,7 +40,6 @@ import {TuiInputExample6} from './examples/6/component';
 import {TuiInputExample7} from './examples/7/component';
 import {TuiInputExample8} from './examples/8';
 import {ExampleTuiInputComponent} from './input.component';
-import {TextMaskModule} from 'angular2-text-mask';
 
 @NgModule({
     imports: [
