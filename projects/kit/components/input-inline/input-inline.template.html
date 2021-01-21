@@ -7,13 +7,13 @@
     automation-id="tui-input-inline__native"
     class="native"
     type="text"
-    [attr.maxLength]="maxLengthMasked"
+    tuiMaskAccessor
+    [attr.maxLength]="maxLength"
     [id]="id"
     [disabled]="computedDisabled"
     [readOnly]="readOnly"
-    [textMask]="computedMask"
     [tuiFocusable]="focusable"
-    [ngModel]="maskedValue"
-    (ngModelChange)="onNativeModelChange($event)"
+    [ngModel]="value"
+    (ngModelChange)="onValueChange($event)"
     (tuiFocusedChange)="onFocused($event)"
 />

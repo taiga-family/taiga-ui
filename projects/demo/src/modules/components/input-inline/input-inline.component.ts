@@ -10,12 +10,8 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {identity, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiTextMaskOptions} from '@taiga-ui/core';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
-
-const D = /\d/;
 
 @Component({
     selector: 'example-tui-input-inline',
@@ -41,24 +37,4 @@ export class ExampleTuiInputInlineComponent extends AbstractExampleTuiReactiveFi
 
     readonly maxLengthVariants: readonly number[] = [10];
     maxLength = null;
-
-    readonly textMaskOptionsVariants: ReadonlyArray<TuiTextMaskOptions> = [
-        {
-            guide: false,
-            mask: [/[1-9]/, D, D, D, D, D],
-        },
-        {
-            guide: false,
-            mask: [D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D],
-        },
-    ];
-
-    textMaskOptions: TuiTextMaskOptions | null = null;
-
-    readonly unmaskHandlerVariants: ReadonlyArray<TuiStringHandler<string>> = [
-        identity,
-        value => value.replace(/ /g, ''),
-    ];
-
-    unmaskHandler = this.unmaskHandlerVariants[0];
 }

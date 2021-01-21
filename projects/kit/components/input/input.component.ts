@@ -14,13 +14,11 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    identity,
     isNativeFocused,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_HOST,
@@ -29,13 +27,9 @@ import {
     TuiHorizontalDirection,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
-    TuiTextMaskOptions,
-    TuiWithTextMask,
 } from '@taiga-ui/core';
-import {EMPTY_MASK} from '@taiga-ui/kit/constants';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {conformToMask} from 'angular2-text-mask';
 
 @Component({
     selector: 'tui-input',
@@ -56,7 +50,7 @@ import {conformToMask} from 'angular2-text-mask';
 })
 export class TuiInputComponent
     extends AbstractTuiControl<string>
-    implements TuiWithTextMask, TuiFocusableElementAccessor, TuiDataListHost<string> {
+    implements TuiFocusableElementAccessor, TuiDataListHost<string> {
     @Input()
     @tuiDefaultProp()
     icon: string | null = null;
@@ -64,14 +58,6 @@ export class TuiInputComponent
     @Input()
     @tuiDefaultProp()
     iconAlign: TuiHorizontalDirection = 'left';
-
-    @Input()
-    @tuiDefaultProp()
-    textMaskOptions: TuiTextMaskOptions | null = null;
-
-    @Input()
-    @tuiDefaultProp()
-    unmaskHandler: TuiStringHandler<string> = identity;
 
     open = false;
 
@@ -107,20 +93,12 @@ export class TuiInputComponent
         );
     }
 
-    get computedMask(): TuiTextMaskOptions {
-        return this.textMaskOptions || EMPTY_MASK;
-    }
-
-    get maskedValue(): string {
-        return this.conformToMask(this.value);
-    }
-
     get canOpen(): boolean {
         return !this.computedDisabled && !this.readOnly && !!this.datalist;
     }
 
     onValueChange(value: string) {
-        this.updateValue(this.unmaskHandler(value));
+        this.updateValue(value);
         this.open = true;
     }
 
@@ -132,9 +110,9 @@ export class TuiInputComponent
         this.updateFocused(active);
     }
 
-    handleOption(item: string) {
+    handleOption(item: unknown) {
         this.focusInput();
-        this.updateValue(this.unmaskHandler(this.conformToMask(String(item))));
+        this.updateValue(String(item));
         this.open = false;
     }
 
@@ -146,29 +124,5 @@ export class TuiInputComponent
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
         }
-    }
-
-    private conformToMask(value: string): string {
-        if (this.textMaskOptions === null || !value) {
-            return value;
-        }
-
-        const {
-            guide,
-            placeholderChar,
-            pipe,
-            keepCharPositions,
-            showMask,
-            mask,
-        } = this.textMaskOptions;
-        const result = conformToMask(value, mask, {
-            guide,
-            placeholderChar,
-            pipe,
-            keepCharPositions,
-            showMask,
-        });
-
-        return result.conformedValue;
     }
 }

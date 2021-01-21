@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiFocusableModule, TuiFocusedModule} from '@taiga-ui/cdk';
-import {TextMaskModule} from 'angular2-text-mask';
+import {TuiMaskAccessorModule} from '@taiga-ui/core';
 import {TuiInputInlineComponent} from './input-inline.component';
 
 @NgModule({
@@ -11,7 +11,7 @@ import {TuiInputInlineComponent} from './input-inline.component';
         FormsModule,
         TuiFocusableModule,
         TuiFocusedModule,
-        TextMaskModule,
+        TuiMaskAccessorModule
     ],
     declarations: [TuiInputInlineComponent],
     exports: [TuiInputInlineComponent],
