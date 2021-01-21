@@ -35,6 +35,13 @@ export const ROUTES = [
         },
     },
     {
+        path: 'i18n',
+        loadChildren: () => import(`../info/i18n/i18n.module`).then(m => m.I18nModule),
+        data: {
+            title: `I18n`,
+        },
+    },
+    {
         path: 'tui-doc',
         loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
         data: {
