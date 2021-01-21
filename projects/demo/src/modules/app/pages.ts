@@ -938,34 +938,27 @@ export const pages: TuiDocPages = [
                 section: $localize`Tools`,
                 title: 'Filter',
                 keywords: 'filter, совпадения, ngfor, for, match, пайп, pipe',
-                route: '/tui-filter',
+                route: '/filter',
             },
             {
                 section: $localize`Tools`,
                 title: 'FormatNumber',
                 keywords:
                     'format, форматирование, преобразование, пробелы, тысячи, пайп, pipe',
-                route: '/tui-format-number',
+                route: '/format-number',
             },
             {
                 section: $localize`Tools`,
                 title: 'FormatPhone',
                 keywords:
                     'format, форматирование, преобразование, phone, телефон, пайп, pipe',
-                route: '/tui-format-phone',
+                route: '/format-phone',
             },
             {
                 section: $localize`Tools`,
                 title: 'Mapper',
                 keywords: 'mapper, мап, преобразование, пайп, pipe',
-                route: '/tui-mapper',
-            },
-            {
-                section: $localize`Tools`,
-                title: 'Pluralize',
-                keywords:
-                    'pluralize, склонение, преобразование, слова, существительные, пайп, pipe',
-                route: '/tui-pluralize',
+                route: '/mapper',
             },
         ],
     },

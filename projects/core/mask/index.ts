@@ -6,4 +6,3 @@ export * from './text-mask-list';
 export * from './text-mask-list-handler';
 export * from './text-mask-pipe-handler';
 export * from './text-mask-pipe-result';
-export * from './with-text-mask';

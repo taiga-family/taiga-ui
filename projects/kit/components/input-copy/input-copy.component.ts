@@ -26,10 +26,7 @@ import {
     TuiHintMode,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,
-    TuiTextMaskOptions,
-    TuiWithTextMask,
 } from '@taiga-ui/core';
-import {EMPTY_MASK} from '@taiga-ui/kit/constants';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, of, Subject, timer} from 'rxjs';
@@ -50,11 +47,7 @@ import {mapTo, startWith, switchMap} from 'rxjs/operators';
 })
 export class TuiInputCopyComponent
     extends AbstractTuiControl<string>
-    implements TuiWithTextMask, TuiFocusableElementAccessor {
-    @Input()
-    @tuiDefaultProp()
-    textMaskOptions: TuiTextMaskOptions | null = null;
-
+    implements TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
     successMessage: PolymorpheusContent = '';
@@ -122,12 +115,8 @@ export class TuiInputCopyComponent
         return this.textfieldSize.size === 's' ? 'tuiIconCopy' : 'tuiIconCopyLarge';
     }
 
-    get computedMask(): TuiTextMaskOptions {
-        return this.textMaskOptions || EMPTY_MASK;
-    }
-
-    onValueChange(textValue: string) {
-        this.updateValue(textValue);
+    onValueChange(value: string) {
+        this.updateValue(value);
     }
 
     onFocused(focused: boolean) {

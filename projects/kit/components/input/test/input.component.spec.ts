@@ -2,7 +2,6 @@ import {Component, DebugElement, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {identity, TuiStringHandler} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
     tuiEditingKeys,
@@ -11,15 +10,12 @@ import {
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldControllerModule,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {activeText, dispatchOnActive, NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 import {TuiInputComponent} from '../input.component';
 import {TuiInputModule} from '../input.module';
-
-const D = /\d/;
 
 class User {
     constructor(
@@ -54,8 +50,6 @@ describe('Input', () => {
                         [tuiTextfieldSize]="size"
                         [tuiHintContent]="hintContent"
                         [readOnly]="readOnly"
-                        [textMaskOptions]="textMaskOptions"
-                        [unmaskHandler]="unmaskHandler"
                     >
                         <tui-data-list-wrapper
                             *tuiDataList
@@ -88,10 +82,6 @@ describe('Input', () => {
         exampleText = 'placeholder';
 
         hintContent: string | null = 'Подсказка';
-
-        textMaskOptions: TuiTextMaskOptions | null = null;
-
-        unmaskHandler: TuiStringHandler<string> = identity;
 
         group = new FormGroup({control: new FormControl()});
 
@@ -132,31 +122,6 @@ describe('Input', () => {
         testComponent = fixture.componentInstance;
 
         inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
-    });
-
-    describe('Mask', () => {
-        beforeEach(() => {
-            testComponent.textMaskOptions = {
-                guide: false,
-                mask: [D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D],
-            };
-            fixture.detectChanges();
-        });
-
-        it('Masks value', () => {
-            inputPO.sendText('12345');
-
-            expect(testComponent.control.value).toBe('1234 5');
-        });
-
-        it('unmasks value', () => {
-            testComponent.unmaskHandler = value => value.replace(/ /g, '');
-            fixture.detectChanges();
-            inputPO.sendText('12345');
-
-            expect(inputPO.value).toBe('1234 5');
-            expect(testComponent.control.value).toBe('12345');
-        });
     });
 
     describe('Автокомплит', () => {

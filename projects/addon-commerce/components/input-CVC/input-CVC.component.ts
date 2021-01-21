@@ -25,7 +25,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldLabelOutsideDirective,
     TuiTextMaskOptions,
-    TuiWithTextMask,
 } from '@taiga-ui/core';
 
 @Component({
@@ -42,7 +41,7 @@ import {
 })
 export class TuiInputCVCComponent
     extends AbstractTuiControl<string>
-    implements TuiWithTextMask, TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
     autocompleteEnabled = false;

@@ -1,14 +1,13 @@
 import {DOCUMENT, Location} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {tuiPure} from '@taiga-ui/cdk';
+import {tuiPure, uniqBy} from '@taiga-ui/cdk';
 import {getScreenWidth} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {TuiDocPage} from '../../interfaces/page';
 import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
 import {TuiDocPages} from '../../types/pages';
 import {transliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
-import {uniqBy} from '../../utils/uniq-by';
 import {
     NAVIGATION_ITEMS,
     NAVIGATION_LABELS,

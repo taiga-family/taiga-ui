@@ -1,20 +1,23 @@
 <tui-doc-main>
-    <img
-        *ngIf="isChristmas"
-        alt="Santa hat"
-        class="christmas"
-        src="/assets/images/hat.svg"
-    />
-    <a
-        tuiLink
-        tuiMode="onLight"
-        class="link"
-        href="https://github.com/TinkoffCreditSystems/taiga-ui"
-        target="_blank"
-    >
-        <img class="github" src="assets/images/github.svg" alt="" />
-        GitHub
-    </a>
+    <ng-container ngProjectAs="tuiDocHeader">
+        <img
+            *ngIf="isChristmas"
+            alt="Santa hat"
+            class="christmas"
+            src="/assets/images/hat.svg"
+        />
+        <a
+            tuiLink
+            tuiMode="onLight"
+            class="link"
+            href="https://github.com/TinkoffCreditSystems/taiga-ui"
+            target="_blank"
+        >
+            <img class="github" src="assets/images/github.svg" alt="" />
+            GitHub
+        </a>
+    </ng-container>
+    <small class="version" ngProjectAs="tuiDocNavigation">v{{version}}</small>
     <tui-table-bars-host
         ngProjectAs="tuiOverNotifications"
     ></tui-table-bars-host>

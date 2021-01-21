@@ -29,7 +29,6 @@
                 [pseudoInvalid]="pseudoInvalid"
                 [pseudoFocused]="pseudoFocused"
                 [pseudoHovered]="pseudoHovered"
-                [textMaskOptions]="textMaskOptions"
             >
                 Type a text
             </tui-input-copy>
@@ -72,20 +71,6 @@
                 [(documentationPropertyValue)]="messageMode"
             >
                 Message tooltip mode
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="textMaskOptions"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiTextMaskOptions | null"
-                [documentationPropertyValues]="textMaskOptionsVariants"
-                [(documentationPropertyValue)]="textMaskOptions"
-            >
-                Mask params (<a
-                    tuiLink
-                    href="https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#text-mask-documentation"
-                    >official documentation</a
-                >)
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>

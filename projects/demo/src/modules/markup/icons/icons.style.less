@@ -5,15 +5,6 @@
     margin: 30px 0 12px;
 }
 
-.description {
-    margin: -4px 0 12px;
-}
-
-.colored {
-    color: var(--tui-primary);
-    fill: var(--tui-primary-text);
-}
-
 .icons {
     display: flex;
     align-items: center;
@@ -25,27 +16,8 @@
     margin: @space * 3;
     border-radius: 0;
 
-    &_first {
-        order: -1;
-    }
-
-    &_marker {
-        border-radius: 100%;
-    }
-
     &_highlighted {
         transform: scale(1.6);
         filter: drop-shadow(2px 1px 0 var(--tui-primary));
     }
-
-    button&&_logo {
-        width: 128px;
-        height: 128px;
-        margin-right: 60px;
-    }
-}
-
-.name {
-    .text-body-xs();
-    color: var(--tui-text-02);
 }
