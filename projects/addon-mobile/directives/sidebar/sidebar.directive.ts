@@ -6,24 +6,21 @@ import {
     Injector,
     Input,
     OnDestroy,
+    TemplateRef,
 } from '@angular/core';
 import {TuiPortalService} from '@taiga-ui/cdk';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TuiSidebarComponent} from './sidebar.component';
 
 @Directive({
     selector: '[tuiSidebar]',
 })
 export class TuiSidebarDirective implements OnDestroy {
-    @Input('tuiSidebar')
-    content: PolymorpheusContent = '';
-
     @Input('tuiSidebarDirection')
     direction: TuiHorizontalDirection = 'left';
 
     @Input()
-    set tuiSidebarOpen(open: boolean) {
+    set tuiSidebar(open: boolean) {
         if (open) {
             this.show();
         } else {
@@ -34,6 +31,7 @@ export class TuiSidebarDirective implements OnDestroy {
     private sidebarRef: ComponentRef<TuiSidebarComponent> | null = null;
 
     constructor(
+        @Inject(TemplateRef) readonly content: TemplateRef<{}>,
         @Inject(Injector) private readonly injector: Injector,
         @Inject(ComponentFactoryResolver)
         private readonly componentFactoryResolver: ComponentFactoryResolver,
