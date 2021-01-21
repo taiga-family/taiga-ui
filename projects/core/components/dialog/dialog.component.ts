@@ -44,7 +44,7 @@ export class TuiDialogComponent<O, I> {
         private readonly internal: InternalContext<O, I>,
         @Inject(TUI_DIALOG_CLOSE_STREAM)
         close$: Observable<unknown>,
-        @Inject(TUI_CLOSE_WORD) readonly closeWord: string,
+        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
     ) {
         close$.pipe(filter(() => this.context.dismissible)).subscribe(() => {
             this.close();

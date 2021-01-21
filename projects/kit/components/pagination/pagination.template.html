@@ -1,5 +1,5 @@
 <div class="content" (tuiActiveZoneChange)="onActiveZone($event)">
-    <ng-container *ngIf="sizeM; else smallButtons">
+    <ng-container *ngIf="sizeM && (texts$ | async) as texts; else smallButtons">
         <button
             tuiIconButton
             type="button"

@@ -9,6 +9,8 @@ import {WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {ClipboardCopyService} from '../../services/clipboard-copy.service';
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 
@@ -34,6 +36,8 @@ export class TuiDocExampleComponent {
 
     readonly defaultTab = this.texts[0];
 
+    readonly copy$ = this.copyTexts$.pipe(map(([copy]) => copy));
+
     constructor(
         @Attribute('id')
         readonly id: string | null,
@@ -42,7 +46,7 @@ export class TuiDocExampleComponent {
         @Inject(TuiNotificationsService)
         private readonly notifications: TuiNotificationsService,
         @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(TUI_COPY_TEXTS) readonly copyTexts: [string, string],
+        @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
         @Inject(TUI_DOC_EXAMPLE_TEXTS) readonly texts: [string, string, string],
     ) {}
 

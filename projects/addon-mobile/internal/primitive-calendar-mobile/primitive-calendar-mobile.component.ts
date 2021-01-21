@@ -13,6 +13,7 @@ import {
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {TUI_SHORT_WEEK_DAYS, TuiPrimitiveCalendarComponent} from '@taiga-ui/core';
+import {Observable} from 'rxjs';
 
 const ROWS_COUNT = 6;
 
@@ -59,9 +60,9 @@ export class TuiPrimitiveCalendarMobileComponent extends TuiPrimitiveCalendarCom
     constructor(
         @Inject(TUI_IS_IOS) isIOS: boolean,
         @Inject(TUI_SHORT_WEEK_DAYS)
-        readonly weekDays: [string, string, string, string, string, string, string],
+        weekDays$: Observable<[string, string, string, string, string, string, string]>,
     ) {
-        super(weekDays);
+        super(weekDays$);
         this.isIOS = isIOS;
     }
 }

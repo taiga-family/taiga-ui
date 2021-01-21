@@ -20,7 +20,9 @@
         </button>
     </tui-primitive-spin-button>
     <div class="row">
-        <ng-container *ngFor="let month of months; let index = index">
+        <ng-container
+            *ngFor="let month of (months$ | async); let index = index"
+        >
             <div
                 *tuiLet="getTuiMonth(index, year.year) as item"
                 class="cell"

@@ -16,7 +16,6 @@ import {
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
-    TUI_MONTHS,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -24,6 +23,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     sizeBigger,
+    TUI_MONTHS,
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,

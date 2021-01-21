@@ -36,7 +36,8 @@ import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {formatSize} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
 
@@ -60,11 +61,11 @@ export class TuiInputFileComponent
     implements TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
-    link: PolymorpheusContent = this.inputFileTexts['defaultLinkSingle'];
+    link: PolymorpheusContent = '';
 
     @Input()
     @tuiDefaultProp()
-    label: PolymorpheusContent = this.inputFileTexts['defaultLabelSingle'];
+    label: PolymorpheusContent = '';
 
     @Input()
     @tuiDefaultProp()
@@ -100,8 +101,6 @@ export class TuiInputFileComponent
     @ViewChild('input')
     readonly input?: ElementRef<HTMLInputElement>;
 
-    readonly isMobile: boolean;
-
     private dataTransfer: DataTransfer | null = null;
 
     constructor(
@@ -112,26 +111,26 @@ export class TuiInputFileComponent
         @Inject(ChangeDetectorRef)
         changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_IS_MOBILE)
-        isMobile: boolean,
+        readonly isMobile: boolean,
         @Inject(TUI_INPUT_FILE_TEXTS)
-        readonly inputFileTexts: Record<
-            | 'defaultLabelSingle'
-            | 'defaultLabelMultiple'
-            | 'defaultLinkSingle'
-            | 'defaultLinkMultiple'
-            | 'maxSizeRejectionReason'
-            | 'formatRejectionReason'
-            | 'drop'
-            | 'dropMultiple',
-            string
+        readonly inputFileTexts$: Observable<
+            Record<
+                | 'defaultLabelSingle'
+                | 'defaultLabelMultiple'
+                | 'defaultLinkSingle'
+                | 'defaultLinkMultiple'
+                | 'maxSizeRejectionReason'
+                | 'formatRejectionReason'
+                | 'drop'
+                | 'dropMultiple',
+                string
+            >
         >,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_DIGITAL_INFORMATION_UNITS)
-        private readonly units: [string, string, string],
+        readonly units$: Observable<[string, string, string]>,
     ) {
         super(control, changeDetectorRef);
-
-        this.isMobile = isMobile;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
@@ -146,34 +145,16 @@ export class TuiInputFileComponent
         return !this.computedDisabled && !this.readOnly;
     }
 
-    get computedLink(): PolymorpheusContent {
-        if (this.fileDragged) {
-            return '';
-        }
-
-        return this.multiple && this.link === this.inputFileTexts['defaultLinkSingle']
-            ? this.inputFileTexts['defaultLinkMultiple']
-            : this.link;
+    get computedLink$(): Observable<PolymorpheusContent> {
+        return this.computeLink$(this.fileDragged, this.multiple, this.link);
     }
 
-    get computedLabel(): PolymorpheusContent {
-        if (this.isMobile) {
-            return '';
-        }
-
-        if (this.fileDragged) {
-            return this.inputFileTexts[this.multiple ? 'dropMultiple' : 'drop'];
-        }
-
-        return this.multiple && this.label === this.inputFileTexts['defaultLabelSingle']
-            ? this.inputFileTexts['defaultLabelMultiple']
-            : this.label;
-    }
-
-    get maxSizeRejectionReason(): string {
-        return (
-            this.inputFileTexts['maxSizeRejectionReason'] +
-            formatSize(this.units, this.maxFileSize)
+    get computedLabel$(): Observable<PolymorpheusContent> {
+        return this.computeLabel$(
+            this.isMobile,
+            this.fileDragged,
+            this.multiple,
+            this.label,
         );
     }
 
@@ -217,13 +198,22 @@ export class TuiInputFileComponent
         this.updatePressed(pressed);
     }
 
-    onFilesSelected(input: HTMLInputElement) {
-        this.processSelectedFiles(input.files);
+    // TODO: refactor i18n messages
+    onFilesSelected(
+        input: HTMLInputElement,
+        texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
+        units: [string, string, string],
+    ) {
+        this.processSelectedFiles(input.files, texts, units);
         input.value = '';
     }
 
-    onDropped(event: DataTransfer) {
-        this.processSelectedFiles(event.files);
+    onDropped(
+        event: DataTransfer,
+        texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
+        units: [string, string, string],
+    ) {
+        this.processSelectedFiles(event.files, texts, units);
     }
 
     onDragOver(dataTransfer: DataTransfer | null) {
@@ -242,6 +232,51 @@ export class TuiInputFileComponent
 
     getAppearance(mode: null | unknown): string {
         return mode === null ? '' : TuiAppearance.Outline;
+    }
+
+    @tuiPure
+    private computeLink$(
+        fileDragged: boolean,
+        multiple: boolean,
+        link: PolymorpheusContent,
+    ): Observable<PolymorpheusContent> {
+        if (fileDragged) {
+            return of('');
+        }
+
+        return this.inputFileTexts$.pipe(
+            map(texts =>
+                multiple && link === ''
+                    ? texts.defaultLinkMultiple
+                    : link || texts.defaultLinkSingle,
+            ),
+        );
+    }
+
+    @tuiPure
+    private computeLabel$(
+        isMobile: boolean,
+        fileDragged: boolean,
+        multiple: boolean,
+        label: PolymorpheusContent,
+    ): Observable<PolymorpheusContent> {
+        if (isMobile) {
+            return of('');
+        }
+
+        if (fileDragged) {
+            return this.inputFileTexts$.pipe(
+                map(texts => (multiple ? texts.dropMultiple : texts.drop)),
+            );
+        }
+
+        return this.inputFileTexts$.pipe(
+            map(texts =>
+                multiple && label === ''
+                    ? texts.defaultLabelMultiple
+                    : label || texts.defaultLabelSingle,
+            ),
+        );
     }
 
     @tuiPure
@@ -276,7 +311,11 @@ export class TuiInputFileComponent
         return accept.toLowerCase().split(',');
     }
 
-    private processSelectedFiles(files: FileList | null) {
+    private processSelectedFiles(
+        files: FileList | null,
+        texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
+        units: [string, string, string],
+    ) {
         // IE11 после выбора файла через диалог открытия генерирует второе событие, передавая пустой FileList.
         if (files === null || files.length === 0) {
             return;
@@ -297,13 +336,14 @@ export class TuiInputFileComponent
                 name: file.name,
                 type: file.type,
                 size: file.size,
-                content: this.maxSizeRejectionReason,
+                content:
+                    texts.maxSizeRejectionReason + formatSize(units, this.maxFileSize),
             })),
             ...wrongFormatFiles.map(file => ({
                 name: file.name,
                 type: file.type,
                 size: file.size,
-                content: this.inputFileTexts['formatRejectionReason'],
+                content: texts.formatRejectionReason,
             })),
         ]);
         this.updateValue(

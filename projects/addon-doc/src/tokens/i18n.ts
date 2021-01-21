@@ -1,6 +1,10 @@
 import {InjectionToken} from '@angular/core';
 
 /**
+ * TODO: think about reorganization in @taiga-ui/i18n way
+ */
+
+/**
  * Works with a tuple
  * [@string tuiMode tooltip content, @string word 'background', @string 'form value']
  */

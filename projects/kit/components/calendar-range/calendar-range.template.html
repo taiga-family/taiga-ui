@@ -30,7 +30,7 @@
             class="menu"
         >
             <button
-                *ngFor="let item of items | tuiMapper : mapper : min : max : minLength"
+                *ngFor="let item of items | tuiMapper : mapper : min : max : minLength : (otherDateText$ | async)"
                 tuiOption
                 tuiPreventDefault="mousedown"
                 role="menuitemradio"

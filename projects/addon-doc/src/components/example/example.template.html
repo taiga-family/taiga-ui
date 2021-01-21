@@ -8,7 +8,7 @@
         class="link-icon"
         icon="tuiIconLinkLarge"
         appearance="icon"
-        [title]="copyTexts[0]"
+        [title]="copy$ | async"
         (click)="copyExampleLink()"
     ></button>
 </h3>
@@ -29,7 +29,7 @@
         </div>
         <ng-template #codeTab>
             <tui-doc-copy class="copy-code" (click)="copyCodeExample()">
-                {{copyTexts[0]}}
+                {{copy$ | async}}
             </tui-doc-copy>
             <tui-doc-code [code]="code"></tui-doc-code>
         </ng-template>

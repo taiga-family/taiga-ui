@@ -1,4 +1,5 @@
 <div
+    *ngIf="spinTexts$ | async as texts"
     class="wrapper"
     tuiPreventDefault="mousedown"
     #wrapper
@@ -17,7 +18,7 @@
         icon="tuiIconChevronLeftLarge"
         class="arrow"
         [class.arrow_hidden]="leftComputedDisabled"
-        [title]="spinTexts[0]"
+        [title]="texts[0]"
         [focusable]="false"
         (click)="onLeftClick()"
     ></button>
@@ -33,7 +34,7 @@
         icon="tuiIconChevronRightLarge"
         class="arrow"
         [class.arrow_hidden]="rightComputedDisabled"
-        [title]="spinTexts[1]"
+        [title]="texts[1]"
         [focusable]="false"
         (click)="onRightClick()"
     ></button>

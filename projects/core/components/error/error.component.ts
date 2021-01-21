@@ -21,6 +21,7 @@ export class TuiErrorComponent {
 
     constructor(
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_DEFAULT_ERROR_MESSAGE) readonly defauleErrorMessage: string,
+        @Inject(TUI_DEFAULT_ERROR_MESSAGE)
+        readonly defauleErrorMessage$: Observable<string>,
     ) {}
 }

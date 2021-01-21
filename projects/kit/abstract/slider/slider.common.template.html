@@ -11,8 +11,8 @@
                 class="segment"
                 automation-id="tui-slider__segment"
             >
-                <span class="number">
-                    {{getSegmentPrefix(segmentIndex)}}
+                <span *ngIf="fromToTexts$ | async as fromToText" class="number">
+                    {{getSegmentPrefix(segmentIndex, fromToText)}}
                     {{getSegmentLabel(segmentIndex) | tuiFormatNumber}}
                     <span *ngIf="isPluralized(pluralize)">
                         {{getSegmentLabel(segmentIndex) | tuiPluralize:

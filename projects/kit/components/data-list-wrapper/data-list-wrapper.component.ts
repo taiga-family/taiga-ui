@@ -27,6 +27,7 @@ import {
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-data-list-wrapper:not([labels])',
@@ -51,7 +52,7 @@ export class TuiDataListWrapperComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @tuiDefaultProp()
-    emptyContent: PolymorpheusContent = this.defaultEmptyContent;
+    emptyContent: PolymorpheusContent = '';
 
     @Input()
     @tuiDefaultProp()
@@ -66,7 +67,8 @@ export class TuiDataListWrapperComponent<T> implements TuiDataListAccessor<T> {
     private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
     constructor(
-        @Inject(TUI_NOTHING_FOUND_MESSAGE) private readonly defaultEmptyContent: string,
+        @Inject(TUI_NOTHING_FOUND_MESSAGE)
+        readonly defaultEmptyContent$: Observable<string>,
     ) {}
 
     getContext(

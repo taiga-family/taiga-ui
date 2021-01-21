@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TUI_CLOSE_WORD, TuiBrightness, tuiSlideInTop} from '@taiga-ui/core';
+import {TuiBrightness, tuiSlideInTop} from '@taiga-ui/core';
+import {TUI_CLOSE_WORD} from '@taiga-ui/core';
+import {Observable} from 'rxjs';
 import {TableBar} from '../../classes/table-bar';
 import {TuiTableBarsService} from '../../services/table-bars.service';
 
@@ -15,7 +17,7 @@ import {TuiTableBarsService} from '../../services/table-bars.service';
 export class TuiTableBarsHostComponent {
     constructor(
         @Inject(TuiTableBarsService) readonly service: TuiTableBarsService,
-        @Inject(TUI_CLOSE_WORD) readonly closeWord: string,
+        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
     ) {}
 
     getMode(mode: TuiBrightness): TuiBrightness | null {

@@ -34,6 +34,8 @@
             "@taiga-ui/core/*": ["projects/core/*"],
             "@taiga-ui/kit": ["projects/kit/index"],
             "@taiga-ui/kit/*": ["projects/kit/*"],
+            "@taiga-ui/i18n": ["projects/i18n/index"],
+            "@taiga-ui/i18n/*": ["projects/i18n/*"],
             "@taiga-ui/addon-doc": ["projects/addon-doc/src/public-api"],
             "@taiga-ui/addon-charts": ["projects/addon-charts/index"],
             "@taiga-ui/addon-charts/*": ["projects/addon-charts/*"],

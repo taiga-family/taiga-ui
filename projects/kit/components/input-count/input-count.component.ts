@@ -36,6 +36,7 @@ import {
     TuiWithTextMask,
 } from '@taiga-ui/core';
 import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
+import {Observable} from 'rxjs';
 
 // @dynamic
 @Component({
@@ -96,7 +97,7 @@ export class TuiInputCountComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PLUS_MINUS_TEXTS)
-        readonly minusTexts: [string, string],
+        readonly minusTexts$: Observable<[string, string]>,
     ) {
         super(control, changeDetectorRef);
     }

@@ -1,8 +1,9 @@
 import {Component, Inject, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TuiMobileCalendarDialogComponent} from '@taiga-ui/addon-mobile';
-import {TUI_MONTHS, TuiDay, tuiReplayedValueChangesFrom} from '@taiga-ui/cdk';
+import {TuiDay, tuiReplayedValueChangesFrom} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
+import {TUI_MONTHS} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';

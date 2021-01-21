@@ -52,7 +52,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @tuiDefaultProp()
-    emptyContent: PolymorpheusContent = this.defaultEmptyContent;
+    emptyContent: PolymorpheusContent = '';
 
     @ContentChildren(forwardRef(() => TuiOptionComponent), {descendants: true})
     private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
@@ -61,7 +61,8 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TUI_NOTHING_FOUND_MESSAGE) private readonly defaultEmptyContent: string,
+        @Inject(TUI_NOTHING_FOUND_MESSAGE)
+        readonly defaultEmptyContent$: Observable<string>,
     ) {}
 
     @tuiPure

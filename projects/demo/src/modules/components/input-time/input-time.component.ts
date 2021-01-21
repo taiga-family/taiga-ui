@@ -107,7 +107,7 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiReactiveFiel
     readonly modeVariants: ReadonlyArray<TuiTimeMode> = [
         'HH:MM',
         'HH:MM:SS',
-        'HH:MM:SS.MS',
+        'HH:MM:SS.MSS',
     ];
 
     mode = this.modeVariants[0];
