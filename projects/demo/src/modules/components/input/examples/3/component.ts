@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {TuiTextMaskOptions} from '@taiga-ui/core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -17,12 +16,12 @@ export class TuiInputExample3 {
         testValue2: new FormControl(''),
     });
 
-    readonly textMaskOptions1: TuiTextMaskOptions = {
+    readonly textMaskOptions1 = {
         guide: false,
         mask: [/\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/],
     };
 
-    readonly textMaskOptions2: TuiTextMaskOptions = {
+    readonly textMaskOptions2 = {
         guide: false,
         mask: [
             /\d/,

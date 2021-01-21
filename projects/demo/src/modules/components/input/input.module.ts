@@ -12,7 +12,7 @@ import {
     TuiGroupModule,
     TuiHintControllerModule,
     TuiLinkModule,
-    TuiModeModule,
+    TuiModeModule, TuiNotificationModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
     TuiTableModeModule,
@@ -39,6 +39,7 @@ import {TuiInputExample6} from './examples/6/component';
 import {TuiInputExample7} from './examples/7/component';
 import {TuiInputExample8} from './examples/8';
 import {ExampleTuiInputComponent} from './input.component';
+import {TextMaskModule} from 'angular2-text-mask';
 
 @NgModule({
     imports: [
@@ -58,6 +59,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiModeModule,
         TuiTableModeModule,
         TuiInputDateModule,
+        TuiNotificationModule,
         TuiRepeatTimesModule,
         TuiSvgModule,
         TuiRadioListModule,
@@ -74,6 +76,7 @@ import {ExampleTuiInputComponent} from './input.component';
         PolymorpheusModule,
         ...TUI_DOC_PAGE_MODULES,
         RouterModule.forChild(generateRoutes(ExampleTuiInputComponent)),
+        TextMaskModule,
     ],
     declarations: [
         ExampleTuiInputComponent,

@@ -36,14 +36,11 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {identity, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiHorizontalDirection, TuiTextMaskOptions} from '@taiga-ui/core';
+import {TuiHorizontalDirection} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
-
-const D = /\d/;
 
 @Component({
     selector: 'example-tui-input',
@@ -117,26 +114,6 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiReactiveField {
     readonly iconAlignVariants: ReadonlyArray<TuiHorizontalDirection> = ['left', 'right'];
 
     iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
-
-    readonly textMaskOptionsVariants: ReadonlyArray<TuiTextMaskOptions> = [
-        {
-            guide: false,
-            mask: [D, D, D, D, D],
-        },
-        {
-            guide: false,
-            mask: [D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D],
-        },
-    ];
-
-    textMaskOptions: TuiTextMaskOptions | null = null;
-
-    readonly unmaskHandlerVariants: ReadonlyArray<TuiStringHandler<string>> = [
-        identity,
-        value => value.replace(/ /g, ''),
-    ];
-
-    unmaskHandler = this.unmaskHandlerVariants[0];
 
     readonly control = new FormControl('111', Validators.required);
 }
