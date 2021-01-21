@@ -25,6 +25,7 @@ import {
 import {TUI_CHECKBOX_APPEARANCE, TuiAppearance, tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 
+// @dynamic
 @Component({
     selector: 'tui-radio',
     templateUrl: './radio.template.html',
