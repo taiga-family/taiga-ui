@@ -165,7 +165,14 @@ describe('InputFile', () => {
 
         const files: FileList = [text, image, error] as any;
 
-        testComponent.component['processSelectedFiles'](files);
+        testComponent.component.onDropped(
+            {files: files} as any,
+            {
+                maxSizeRejectionReason: 'File exceeds size ',
+                formatRejectionReason: 'Wrong file format',
+            },
+            ['B', 'KB', 'MB'],
+        );
         fixture.detectChanges();
 
         expect(testComponent.rejectedFiles.length).toBe(1);
