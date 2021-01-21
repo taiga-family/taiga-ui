@@ -349,6 +349,6 @@ describe('TuiTime', () => {
     it('stringify and fill zeros for seconds and ms', () => {
         const time = new TuiTime(6, 36, 0, 0);
 
-        expect(time.toString('HH:MM:SS.MS')).toBe('06:36:00.000');
+        expect(time.toString('HH:MM:SS.MSS')).toBe('06:36:00.000');
     });
 });
