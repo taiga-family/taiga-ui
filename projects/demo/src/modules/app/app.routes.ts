@@ -1137,6 +1137,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'tui-sidebar',
+        loadChildren: () =>
+            import(`../directives/sidebar/sidebar.module`).then(
+                m => m.ExampleTuiSidebarModule,
+            ),
+        data: {
+            title: 'Sidebar',
+        },
+    },
+    {
         path: 'tui-touchable',
         loadChildren: () =>
             import(`../directives/touchable/touchable.module`).then(

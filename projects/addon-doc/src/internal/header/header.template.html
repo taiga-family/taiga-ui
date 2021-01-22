@@ -4,14 +4,13 @@
     icon="tuiIconMenuLarge"
     appearance="icon"
     [title]="menu"
-    [tuiSidebar]="sidebar"
-    [tuiSidebarOpen]="open$ | async"
     (click)="onClick()"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
-    <ng-template #sidebar>
-        <tui-doc-navigation class="navigation"></tui-doc-navigation>
-    </ng-template>
+    <tui-doc-navigation
+        *tuiSidebar="open$ | async"
+        class="navigation"
+    ></tui-doc-navigation>
 </button>
 <div polymorpheus-outlet class="logo tui-text_h5" [content]="logo"></div>
 <ng-content></ng-content>
