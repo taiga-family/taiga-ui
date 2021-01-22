@@ -15,7 +15,11 @@ function syncVersions(root) {
         (_, files) => {
             files.forEach(file => {
                 const packageJson = JSON.parse(fs.readFileSync(file));
-                const {peerDependencies, devDependencies} = packageJson;
+                const {dependencies, peerDependencies, devDependencies} = packageJson;
+
+                if (dependencies) {
+                    bumpTUIDeps(dependencies, version);
+                }
 
                 if (peerDependencies) {
                     bumpTUIDeps(peerDependencies, version);
