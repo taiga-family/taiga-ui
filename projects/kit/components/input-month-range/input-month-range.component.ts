@@ -99,7 +99,7 @@ export class TuiInputMonthRangeComponent
     }
 
     computeValue(
-        value: TuiMonthRange,
+        value: TuiMonthRange | null,
         focused: boolean,
         months: readonly string[],
     ): string {
