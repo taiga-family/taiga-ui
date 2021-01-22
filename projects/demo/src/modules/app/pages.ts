@@ -21,6 +21,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Documentation`,
+        title: `i18n`,
+        keywords: 'i18n, internationalization, local, translate, language',
+        route: 'i18n',
+    },
+    {
+        section: $localize`Documentation`,
         title: $localize`Documentation engine`,
         keywords:
             'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',

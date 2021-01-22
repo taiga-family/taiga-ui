@@ -1,5 +1,5 @@
 <div class="row row_weekday">
-    <div *ngFor="let day of weekDays" class="cell">{{day}}</div>
+    <div *ngFor="let day of (weekDays$ | async)" class="cell">{{day}}</div>
 </div>
 <div>
     <div

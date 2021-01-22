@@ -1,18 +1,13 @@
 import {InjectionToken} from '@angular/core';
+import {extractI18n} from '@taiga-ui/i18n';
 
-export const TUI_TABLE_SHOW_HIDE_MESSAGE = new InjectionToken<string>(
-    `tui-reorder i18n button`,
+export const TUI_TABLE_SHOW_HIDE_MESSAGE = new InjectionToken(`tui-reorder i18n button`, {
+    factory: extractI18n('showHideText'),
+});
+
+export const TUI_TABLE_PAGINATION_TEXTS = new InjectionToken(
+    'tui-table-pagination i18n texts',
     {
-        factory: () => 'Show/hide',
+        factory: extractI18n('paginationTexts'),
     },
 );
-
-export const TUI_TABLE_PAGINATION_TEXTS = new InjectionToken<
-    Record<'pages' | 'linesPerPage' | 'of', string>
->('tui-table-pagination i18n texts', {
-    factory: () => ({
-        pages: 'Pages',
-        linesPerPage: 'Lines per page',
-        of: 'of',
-    }),
-});

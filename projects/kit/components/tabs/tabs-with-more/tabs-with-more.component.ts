@@ -81,7 +81,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_MORE_WORD) readonly moreWord: string,
+        @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
     ) {}
 
     @tuiPure

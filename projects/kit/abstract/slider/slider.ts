@@ -23,7 +23,7 @@ import {TuiPluralize, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
-import {race, Subject} from 'rxjs';
+import {Observable, race, Subject} from 'rxjs';
 import {map, switchMap, takeUntil} from 'rxjs/operators';
 
 export const SLIDER_KEYBOARD_STEP = 0.05;
@@ -89,7 +89,8 @@ export abstract class AbstractTuiSlider<T>
         ngControl: NgControl | null,
         changeDetectorRef: ChangeDetectorRef,
         private readonly documentRef: Document,
-        @Inject(TUI_FROM_TO_TEXTS) private readonly fromToTexts: [string, string],
+        @Inject(TUI_FROM_TO_TEXTS)
+        readonly fromToTexts$: Observable<[string, string]>,
     ) {
         super(ngControl, changeDetectorRef);
     }
@@ -230,16 +231,16 @@ export abstract class AbstractTuiSlider<T>
         return round(this.getValueFromFraction(segment / this.segments), 2);
     }
 
-    getSegmentPrefix(segment: number): string {
+    getSegmentPrefix(segment: number, texts: [string, string]): string {
         if (this.segments !== 1) {
             return '';
         }
 
         if (segment === 0) {
-            return `${this.fromToTexts[0]} `;
+            return `${texts[0]} `;
         }
 
-        return `${this.fromToTexts[1]} `;
+        return `${texts[1]} `;
     }
 
     onActiveZone(active: boolean) {

@@ -30,6 +30,7 @@ jobs:
     - name: build packages
       run: |
         npm run build cdk
+        npm run build i18n
         npm run build core
         npm run build kit
         npm run build addon-charts
@@ -45,6 +46,7 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         npm publish dist/cdk
+        npm publish dist/i18n
         npm publish dist/core
         npm publish dist/kit
         npm publish dist/addon-charts

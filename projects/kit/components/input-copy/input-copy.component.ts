@@ -50,7 +50,7 @@ export class TuiInputCopyComponent
     implements TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
-    successMessage: PolymorpheusContent = this.copyTexts[1];
+    successMessage: PolymorpheusContent = '';
 
     @Input()
     @tuiDefaultProp()
@@ -74,7 +74,7 @@ export class TuiInputCopyComponent
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_COPY_TEXTS) private readonly copyTexts: [string, string],
+        @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -86,14 +86,18 @@ export class TuiInputCopyComponent
 
     @tuiPure
     get hintText$(): Observable<PolymorpheusContent> {
-        return this.copy$.pipe(
-            switchMap(() =>
-                merge(
-                    of(this.successMessage),
-                    timer(3000).pipe(mapTo(this.copyTexts[0])),
+        return this.copyTexts$.pipe(
+            switchMap(texts =>
+                this.copy$.pipe(
+                    switchMap(() =>
+                        merge(
+                            of(this.successMessage || texts[1]),
+                            timer(3000).pipe(mapTo(texts[0])),
+                        ),
+                    ),
+                    startWith(texts[0]),
                 ),
             ),
-            startWith(this.copyTexts[0]),
         );
     }
 

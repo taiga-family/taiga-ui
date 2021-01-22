@@ -17,10 +17,10 @@
 <ng-template #fileInfoTemplate>
     <div class="preview" [class.preview_big]="isBig">
         <img
-            *ngIf="preview; else loader"
+            *ngIf="preview && (fileTexts$ | async) as texts; else loader"
             automation-id="tui-file__preview"
             class="image"
-            [alt]="fileTexts['preview']"
+            [alt]="texts.preview"
             [src]="preview"
         />
         <ng-template #loader>
@@ -46,7 +46,7 @@
             <div automation-id="tui-file__name" class="name">{{name}}</div>
             <div automation-id="tui-file__type" class="type">{{type}}</div>
             <div
-                *ngIf="showSize && fileSize"
+                *ngIf="showSize && (fileSize$ | async) as fileSize"
                 automation-id="tui-file__size"
                 class="size"
             >
@@ -55,14 +55,14 @@
         </div>
         <div
             polymorpheus-outlet
-            *ngIf="content"
+            *ngIf="content$ | async as content"
             automation-id="tui-file__content"
             class="content"
             [content]="content"
         ></div>
     </div>
     <button
-        *ngIf="allowDelete"
+        *ngIf="allowDelete && (fileTexts$ | async) as texts"
         automation-id="tui-file__remove"
         tuiIconButton
         type="button"
@@ -70,7 +70,7 @@
         icon="tuiIconCloseLarge"
         appearance="icon"
         class="remove"
-        [title]="fileTexts['remove']"
+        [title]="texts.remove"
         [class.remove_mobile]="isMobile"
         (click.prevent)="onRemoveClick()"
     ></button>

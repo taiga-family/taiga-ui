@@ -6,7 +6,7 @@ export function tuiCreateTimeMask(mode: TuiTimeMode): TuiTextMaskList {
     return [
         ...TUI_TIME_MASK,
         ...(mode.includes('HH:MM:SS') ? [':', TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP] : []),
-        ...(mode === 'HH:MM:SS.MS'
+        ...(mode === 'HH:MM:SS.MSS'
             ? ['.', TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP]
             : []),
     ];

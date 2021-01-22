@@ -158,8 +158,10 @@ export class TuiInputCardGroupedComponent
         @Inject(TUI_IS_MOBILE) isMobile: boolean,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_CARD_NUMBER_TEXTS) readonly cardNumberTexts: [string, string],
-        @Inject(TUI_CARD_EXPIRY_TEXTS) readonly cardExpiryTexts: [string, string],
+        @Inject(TUI_CARD_NUMBER_TEXTS)
+        readonly cardNumberTexts$: Observable<[string, string]>,
+        @Inject(TUI_CARD_EXPIRY_TEXTS)
+        readonly cardExpiryTexts$: Observable<[string, string]>,
     ) {
         super(control, changeDetectorRef);
 

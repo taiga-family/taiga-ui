@@ -15,7 +15,7 @@
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
-        [value]="computedValue"
+        [value]="value === null ? '' : (value | tuiMonth | async) + ' ' + value.formattedYear"
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
         (focusedChange)="onFocused($event)"

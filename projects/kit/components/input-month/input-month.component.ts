@@ -16,7 +16,6 @@ import {
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
-    TUI_MONTHS,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -71,7 +70,6 @@ export class TuiInputMonthComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_MONTHS) private readonly months: readonly string[],
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
@@ -90,12 +88,6 @@ export class TuiInputMonthComponent
         return sizeBigger(this.textfieldSize.size)
             ? 'tuiIconCalendarLarge'
             : 'tuiIconCalendar';
-    }
-
-    get computedValue(): string {
-        const {value, months} = this;
-
-        return value !== null ? `${months[value.month]} ${value.formattedYear}` : '';
     }
 
     get canOpen(): boolean {

@@ -24,6 +24,9 @@
             "@taiga-ui/kit/*": ["./dist/kit/*"],
             "@taiga-ui/kit": ["./dist/kit/index"],
 
+            "@taiga-ui/i18n/*": ["./dist/i18n/*"],
+            "@taiga-ui/i18n": ["./dist/i18n/index"],
+
             "@taiga-ui/addon-charts/*": ["./dist/addon-charts/*"],
             "@taiga-ui/addon-charts": ["./dist/addon-charts/index"],
             "@taiga-ui/addon-mobile/*": ["./dist/addon-mobile/*"],

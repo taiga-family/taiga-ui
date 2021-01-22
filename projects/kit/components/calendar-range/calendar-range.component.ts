@@ -88,7 +88,13 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     readonly mapper: TuiMapper<
         ReadonlyArray<TuiDayRangePeriod>,
         ReadonlyArray<TuiDayRangePeriod | string>
-    > = (items, min: TuiDay, max: TuiDay | null, minLength: TuiDayLike | null) => [
+    > = (
+        items,
+        min: TuiDay,
+        max: TuiDay | null,
+        minLength: TuiDayLike | null,
+        otherDateText: string,
+    ) => [
         ...items.filter(
             item =>
                 (minLength === null ||
@@ -96,7 +102,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
                 item.range.to.daySameOrAfter(min) &&
                 (max === null || item.range.from.daySameOrBefore(max)),
         ),
-        this.otherDateText,
+        otherDateText,
     ];
 
     constructor(
@@ -105,7 +111,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         valueChanges: Observable<TuiDayRange | null> | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        @Inject(TUI_OTHER_DATE_TEXT) private readonly otherDateText: string,
+        @Inject(TUI_OTHER_DATE_TEXT) readonly otherDateText$: Observable<string>,
     ) {
         if (!valueChanges) {
             return;

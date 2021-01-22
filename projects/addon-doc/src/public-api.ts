@@ -29,6 +29,9 @@ export * from './constants/page-modules';
 export * from './interfaces/page';
 export * from './interfaces/source-code-path-options';
 
+/* Languages */
+export * from './languages/russian';
+
 /* Services */
 export * from './services/clipboard-copy.service';
 

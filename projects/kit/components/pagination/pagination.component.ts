@@ -34,6 +34,7 @@ import {
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {horizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
@@ -109,7 +110,7 @@ export class TuiPaginationComponent
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
-        @Inject(TUI_PAGINATION_TEXTS) readonly texts: [string, string],
+        @Inject(TUI_PAGINATION_TEXTS) readonly texts$: Observable<[string, string]>,
     ) {
         super();
     }

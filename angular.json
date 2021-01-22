@@ -41,6 +41,33 @@
                 }
             }
         },
+        "i18n": {
+            "root": "projects/i18n",
+            "sourceRoot": "projects/i18n",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "tsConfig": "projects/i18n/tsconfig.lib.json",
+                        "project": "projects/i18n/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/i18n/tsconfig.lib.prod.json"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": ["projects/i18n/tsconfig.lib.json"],
+                        "exclude": ["**/node_modules/**"]
+                    }
+                }
+            }
+        },
         "core": {
             "root": "projects/core",
             "sourceRoot": "projects/core",

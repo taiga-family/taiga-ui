@@ -129,13 +129,15 @@ export class TuiMobileCalendarComponent {
         private readonly destroy$: TuiDestroyService,
         @Inject(TUI_VALUE_STREAM)
         valueChanges: Observable<TuiDayRange | null>,
-        @Inject(TUI_CLOSE_WORD) readonly closeWord: string,
-        @Inject(TUI_CANCEL_WORD) readonly cancelWord: string,
-        @Inject(TUI_DONE_WORD) readonly doneWord: string,
+        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_CANCEL_WORD) readonly cancelWord$: Observable<string>,
+        @Inject(TUI_DONE_WORD) readonly doneWord$: Observable<string>,
         @Inject(TUI_SHORT_WEEK_DAYS)
-        readonly weekDays: [string, string, string, string, string, string, string],
+        readonly weekDays$: Observable<
+            [string, string, string, string, string, string, string]
+        >,
         @Inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS)
-        readonly chooseDayOrRangeTexts: [string, string],
+        readonly chooseDayOrRangeTexts$: Observable<[string, string]>,
     ) {
         this.isIOS = isIOS;
 

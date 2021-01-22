@@ -1,48 +1,50 @@
-<span class="pages">
-    {{texts.pages}} <strong class="strong">{{pages}}</strong>
-</span>
-<span>
-    {{texts.linesPerPage}}
-    <tui-hosted-dropdown [content]="content" [(open)]="open">
-        <button tuiLink>
-            <strong>{{start + 1}}–{{end}}</strong>
-        </button>
-        <ng-template #content>
-            <tui-data-list>
-                <ng-container *ngFor="let item of items">
-                    <button
-                        *ngIf="item !== size"
-                        tuiOption
-                        size="s"
-                        class="item"
-                        (click)="onItem(item)"
-                    >
-                        {{item}}
-                    </button>
-                </ng-container>
-            </tui-data-list>
-        </ng-template>
-    </tui-hosted-dropdown>
-    {{texts.of}} <strong class="strong">{{total}}</strong>
-</span>
-<button
-    tuiIconButton
-    type="button"
-    class="tui-space_left-6 tui-space_right-1"
-    size="xs"
-    appearance="icon"
-    icon="tuiIconChevronLeft"
-    [disabled]="leftDisabled"
-    [title]="spinTexts[0]"
-    (click)="back()"
-></button>
-<button
-    tuiIconButton
-    type="button"
-    size="xs"
-    appearance="icon"
-    icon="tuiIconChevronRight"
-    [disabled]="rightDisabled"
-    [title]="spinTexts[1]"
-    (click)="forth()"
-></button>
+<ng-container *ngIf="texts$ | async as texts">
+    <span class="pages">
+        {{texts.pages}} <strong class="strong">{{pages}}</strong>
+    </span>
+    <span>
+        {{texts.linesPerPage}}
+        <tui-hosted-dropdown [content]="content" [(open)]="open">
+            <button tuiLink>
+                <strong>{{start + 1}}–{{end}}</strong>
+            </button>
+            <ng-template #content>
+                <tui-data-list>
+                    <ng-container *ngFor="let item of items">
+                        <button
+                            *ngIf="item !== size"
+                            tuiOption
+                            size="s"
+                            class="item"
+                            (click)="onItem(item)"
+                        >
+                            {{item}}
+                        </button>
+                    </ng-container>
+                </tui-data-list>
+            </ng-template>
+        </tui-hosted-dropdown>
+        {{texts.of}} <strong class="strong">{{total}}</strong>
+    </span>
+    <button
+        tuiIconButton
+        type="button"
+        class="tui-space_left-6 tui-space_right-1"
+        size="xs"
+        appearance="icon"
+        icon="tuiIconChevronLeft"
+        [disabled]="leftDisabled"
+        [title]="spinTexts[0]"
+        (click)="back()"
+    ></button>
+    <button
+        tuiIconButton
+        type="button"
+        size="xs"
+        appearance="icon"
+        icon="tuiIconChevronRight"
+        [disabled]="rightDisabled"
+        [title]="spinTexts[1]"
+        (click)="forth()"
+    ></button>
+</ng-container>

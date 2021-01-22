@@ -27,7 +27,7 @@
                     icon="tuiIconRemoveLarge"
                     appearance="icon"
                     [tuiMode]="getMode(item.mode)"
-                    [title]="closeWord"
+                    [title]="closeWord$ | async"
                     (click)="onCloseClick(item)"
                 ></button>
             </div>
