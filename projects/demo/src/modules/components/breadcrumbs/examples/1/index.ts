@@ -23,7 +23,7 @@ export class TuiBreadcrumbsExample1 {
             routerLink: '/tui-multi-select',
         },
         {
-            caption: 'Currect',
+            caption: 'Current',
             routerLink: '/tui-breadcrumbs',
             routerLinkActiveOptions: {exact: true},
         },
