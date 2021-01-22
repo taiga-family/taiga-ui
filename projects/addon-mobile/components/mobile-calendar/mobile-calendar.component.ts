@@ -30,7 +30,7 @@ import {
     TUI_CANCEL_WORD,
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
     TUI_DONE_WORD,
-} from '@taiga-ui/kit/tokens/i18n';
+} from '@taiga-ui/kit';
 import {Observable, race, timer} from 'rxjs';
 import {
     debounceTime,

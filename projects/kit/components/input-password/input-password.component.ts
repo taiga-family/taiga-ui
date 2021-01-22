@@ -14,7 +14,6 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
@@ -23,7 +22,6 @@ import {
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 // @dynamic
 @Component({
@@ -41,7 +39,7 @@ import {map} from 'rxjs/operators';
 export class TuiInputPasswordComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor {
-    private isPasswordHidden = true;
+    isPasswordHidden = true;
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
@@ -55,7 +53,7 @@ export class TuiInputPasswordComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PASSWORD_TEXTS)
-        private readonly passwordTexts$: Observable<[string, string]>,
+        readonly passwordTexts$: Observable<[string, string]>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -76,13 +74,6 @@ export class TuiInputPasswordComponent
         }
 
         return this.isPasswordHidden ? 'tuiIconHideLarge' : 'tuiIconShowLarge';
-    }
-
-    @tuiPure
-    get hint$(): Observable<string> {
-        return this.passwordTexts$.pipe(
-            map(texts => (this.isPasswordHidden ? texts[0] : texts[1])),
-        );
     }
 
     get inputType(): string {
