@@ -6,6 +6,7 @@ import {
     forwardRef,
     HostBinding,
     Inject,
+    InjectionToken,
     Input,
     Optional,
     Self,
@@ -20,6 +21,12 @@ import {
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core';
+import {CheckboxOptions} from './checkbox-options';
+
+/** Injection token that can be used to specify default checkbox options. */
+export const TUI_CHECKBOX_DEFAULT_OPTIONS = new InjectionToken<CheckboxOptions>(
+    'tui-checkbox-default-options',
+);
 
 @Component({
     selector: 'tui-checkbox',
@@ -39,7 +46,7 @@ export class TuiCheckboxComponent
     @Input()
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL;
 
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
@@ -49,9 +56,13 @@ export class TuiCheckboxComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
+        @Optional()
+        @Inject(TUI_CHECKBOX_DEFAULT_OPTIONS)
+        options: CheckboxOptions | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(control, changeDetectorRef);
+        this.size = options?.size ?? 'm';
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
