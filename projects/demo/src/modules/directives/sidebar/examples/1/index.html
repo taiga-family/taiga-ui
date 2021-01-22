@@ -1,0 +1,41 @@
+<button
+    tuiButton
+    type="button"
+    (click)="toggle(true)"
+    (tuiActiveZoneChange)="toggle($event)"
+>
+    Show sidebar
+    <!-- Nest the directive so it is considered the same active zone -->
+    <div *tuiSidebar="open; direction: 'right'">
+        <tui-accordion [rounded]="false">
+            <tui-accordion-item borders="top-bottom">
+                Web APIs for Angular
+                <ng-template tuiAccordionItemContent>
+                    <a
+                        *ngFor="let link of webApis"
+                        tuiLink
+                        class="link"
+                        target="_blank"
+                        href="https://github.com/ng-web-apis/{{link}}"
+                    >
+                        {{link}}
+                    </a>
+                </ng-template>
+            </tui-accordion-item>
+            <tui-accordion-item borders="top-bottom">
+                Other libraries
+                <ng-template tuiAccordionItemContent>
+                    <a
+                        *ngFor="let link of tinkoff"
+                        tuiLink
+                        class="link"
+                        target="_blank"
+                        href="https://github.com/TinkoffCreditSystems/{{link}}"
+                    >
+                        {{link}}
+                    </a>
+                </ng-template>
+            </tui-accordion-item>
+        </tui-accordion>
+    </div>
+</button>

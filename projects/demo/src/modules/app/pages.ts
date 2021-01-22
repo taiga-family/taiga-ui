@@ -890,6 +890,13 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'Sidebar',
+                keywords:
+                    'sidebar, hamburger, drawer menu, mobile, смартфон, pwa, native, hybrid, сайдбар, меню',
+                route: '/tui-sidebar',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'DropdownController',
                 keywords:
                     'контроллер, ввод, параметры, настройка, выпадашка, список, айтемы, items',
