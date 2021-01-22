@@ -30,7 +30,7 @@
             ></span>
         </ng-container>
         <input
-            *ngIf="!readOnly && !computedDisabled && inputFileTexts$ | async as texts"
+            *ngIf="!readOnly && !computedDisabled && (inputFileTexts$ | async) as texts"
             #input
             class="native"
             type="file"
