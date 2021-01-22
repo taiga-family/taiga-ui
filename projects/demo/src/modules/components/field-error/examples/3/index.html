@@ -6,7 +6,7 @@
         label="Phone number {{i + 1}}"
         formArrayName="phones"
     >
-        <div class="row">
+        <span class="row">
             <tui-input-phone
                 class="input"
                 formControlName="{{i}}"
@@ -24,7 +24,7 @@
                 icon="tuiIconTrash"
                 (click)="removePhone(i)"
             ></button>
-        </div>
+        </span>
         <ng-template #phoneErrorContent>
             Invalid phone number length
         </ng-template>

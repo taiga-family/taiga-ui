@@ -6,7 +6,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
 @Component({
     selector: 'tui-input-example-2',
     templateUrl: './template.html',
-    styleUrls: ['./style.less'],
     changeDetection,
     encapsulation,
 })

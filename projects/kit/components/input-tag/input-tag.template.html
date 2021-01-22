@@ -41,8 +41,8 @@
                 </div>
                 <tui-scrollbar
                     *ngIf="!expandable; else items"
-                    mode="hidden"
                     class="scrollbar"
+                    [hidden]="true"
                 >
                     <ng-container *ngTemplateOutlet="items"></ng-container>
                 </tui-scrollbar>

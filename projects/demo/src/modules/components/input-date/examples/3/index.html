@@ -1,14 +1,11 @@
-<h2 class="tui-text_h4">Taiga UI usage expirience</h2>
-<p class="wrapper">
-    <tui-input-date class="control" [min]="min" [max]="max" [(ngModel)]="from">
+<h2 class="tui-text_h4">Taiga UI usage experience</h2>
+<p class="b-form">
+    <tui-input-date [min]="min" [max]="max" [(ngModel)]="from">
         Start
     </tui-input-date>
-    <tui-input-date
-        class="control"
-        [min]="from || min"
-        [items]="items"
-        [(ngModel)]="to"
-    >
+</p>
+<p class="b-form">
+    <tui-input-date [min]="from || min" [items]="items" [(ngModel)]="to">
         Finish
     </tui-input-date>
 </p>

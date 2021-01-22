@@ -15,7 +15,6 @@ export function minLengthValidator(context: {requiredLength: string}): string {
 @Component({
     selector: 'tui-field-error-example-5',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
     providers: [

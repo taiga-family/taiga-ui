@@ -1,13 +1,13 @@
 @import 'taiga-ui-local';
 
-@width-medium: 32px;
-@height-medium: 16px;
-@width-large: 48px;
-@height-large: 24px;
-@toggle-width-medium: 48px;
-@toggle-interval-medium: 16px;
-@toggle-width-large: 72px;
-@toggle-interval-large: 24px;
+@width-m: 32px;
+@height-m: 16px;
+@width-l: 48px;
+@height-l: 24px;
+@toggle-width-m: 48px;
+@toggle-interval-m: 16px;
+@toggle-width-l: 72px;
+@toggle-interval-l: 24px;
 
 :host {
     position: relative;
@@ -17,13 +17,13 @@
     border-radius: 100px;
 
     &[data-tui-host-size='m'] {
-        width: @width-medium;
-        height: @height-medium;
+        width: @width-m;
+        height: @height-m;
     }
 
     &[data-tui-host-size='l'] {
-        width: @width-large;
-        height: @height-large;
+        width: @width-l;
+        height: @height-l;
     }
 }
 
@@ -50,15 +50,15 @@
     justify-content: center;
 
     :host[data-tui-host-size='m'] & {
-        width: @toggle-width-medium;
-        height: @height-medium;
-        transform: translateX(-@toggle-interval-medium);
+        width: @toggle-width-m;
+        height: @height-m;
+        transform: translateX(-@toggle-interval-m);
     }
 
     :host[data-tui-host-size='l'] & {
-        width: @toggle-width-large;
-        height: @height-large;
-        transform: translateX(-@toggle-interval-large);
+        width: @toggle-width-l;
+        height: @height-l;
+        transform: translateX(-@toggle-interval-l);
     }
 
     :host._checked & {

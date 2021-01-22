@@ -1,21 +1,17 @@
-<form class="container" [formGroup]="testForm">
+<form class="b-form" [formGroup]="testForm">
     <tui-input-copy formControlName="testValue" tuiTextfieldSize="s">
         Value
     </tui-input-copy>
 
     <tui-input-copy
-        class="tui-space_top-2"
+        class="tui-space_vertical-4"
         formControlName="testValue"
         tuiTextfieldSize="m"
     >
         Value
     </tui-input-copy>
 
-    <tui-input-copy
-        class="tui-space_top-2"
-        formControlName="testValue"
-        hintContent="Copy, please"
-    >
+    <tui-input-copy formControlName="testValue">
         Value
     </tui-input-copy>
 </form>
