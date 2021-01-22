@@ -18,7 +18,6 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-tui-label',
     templateUrl: './label.template.html',
-    styleUrls: ['./label.style.less'],
     changeDetection,
 })
 export class ExampleTuiLabelComponent {

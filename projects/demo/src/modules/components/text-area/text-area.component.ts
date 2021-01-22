@@ -25,7 +25,6 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 @Component({
     selector: 'example-tui-text-area',
     templateUrl: './text-area.template.html',
-    styleUrls: ['./text-area.style.less'],
     changeDetection,
     providers: [
         {

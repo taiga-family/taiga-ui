@@ -1,10 +1,8 @@
-<tui-input-date-range
-    class="control"
-    [maxLength]="maxLength"
-    [(ngModel)]="range"
->
-    Range
-</tui-input-date-range>
+<p class="b-form">
+    <tui-input-date-range [maxLength]="maxLength" [(ngModel)]="range">
+        Range
+    </tui-input-date-range>
+</p>
 <tui-axes
     class="axes"
     [verticalLines]="labels.length"

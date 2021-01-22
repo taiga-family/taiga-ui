@@ -1,5 +1,4 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
@@ -7,7 +6,6 @@ import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
@@ -75,7 +73,6 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiReactiveFi
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
-        LESS: example1Less,
     };
 
     readonly example2: FrontEndExample = {
@@ -87,7 +84,6 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiReactiveFi
     readonly example3: FrontEndExample = {
         TypeScript: example3Ts,
         HTML: example3Html,
-        LESS: example3Less,
     };
 
     readonly example4: FrontEndExample = {

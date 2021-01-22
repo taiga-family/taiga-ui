@@ -5,7 +5,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
 @Component({
     selector: 'tui-color-picker-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

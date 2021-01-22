@@ -17,7 +17,6 @@ const DICTIONARY = [
 @Component({
     selector: 'tui-multi-select-example-4',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
 })
 export class TuiMultiSelectExample4 {

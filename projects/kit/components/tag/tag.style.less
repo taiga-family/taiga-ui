@@ -183,17 +183,17 @@
 
     :host[data-tui-host-size='s'] & {
         .text-body-xs();
-        height: @height-extra-extra-small;
+        height: 20px;
         padding: 0 @padding;
     }
 
     :host[data-tui-host-size='m'] & {
-        height: @height-extra-small;
+        height: var(--tui-height-xs);
         padding: 0 @padding;
     }
 
     :host[data-tui-host-size='l'] & {
-        height: @height-small;
+        height: var(--tui-height-s);
         padding: 0 @padding-large;
     }
 
@@ -233,20 +233,20 @@
     box-sizing: border-box;
 
     :host[data-tui-host-size='s'] & {
-        height: @height-extra-extra-small;
-        line-height: @height-extra-extra-small;
+        height: 20px;
+        line-height: 20px;
         padding-left: @padding;
     }
 
     :host[data-tui-host-size='m'] & {
-        height: @height-extra-small;
-        line-height: @height-extra-small;
+        height: var(--tui-height-xs);
+        line-height: var(--tui-height-xs);
         padding-left: @padding;
     }
 
     :host[data-tui-host-size='l'] & {
-        height: @height-small;
-        line-height: @height-small;
+        height: var(--tui-height-s);
+        line-height: var(--tui-height-s);
         padding-left: @padding-large;
     }
 }

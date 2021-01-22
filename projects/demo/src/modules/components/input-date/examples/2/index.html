@@ -1,16 +1,14 @@
-<form class="container" [formGroup]="testForm">
+<form class="b-form" [formGroup]="testForm">
     <tui-input-date formControlName="testValue" tuiTextfieldSize="s">
         Choose a date
     </tui-input-date>
     <tui-input-date
-        class="tui-space_top-2"
+        class="tui-space_vertical-4"
         formControlName="testValue"
         tuiTextfieldSize="m"
         [tuiTextfieldLabelOutside]="true"
     >
         Choose a date
     </tui-input-date>
-    <tui-input-date class="tui-space_top-2" formControlName="testValue">
-        Choose a date
-    </tui-input-date>
+    <tui-input-date formControlName="testValue"> Choose a date </tui-input-date>
 </form>

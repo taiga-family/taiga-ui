@@ -16,7 +16,6 @@ interface Hero {
 @Component({
     selector: 'tui-multi-select-example-3',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

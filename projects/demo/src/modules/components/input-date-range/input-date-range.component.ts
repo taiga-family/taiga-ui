@@ -1,9 +1,7 @@
 import {default as example1Ts} from '!!raw-loader!./examples/1/component.ts';
-import {default as example1Less} from '!!raw-loader!./examples/1/style.less';
 import {default as example1Html} from '!!raw-loader!./examples/1/template.html';
 
 import {default as example2Ts} from '!!raw-loader!./examples/2/component.ts';
-import {default as example2Less} from '!!raw-loader!./examples/2/style.less';
 import {default as example2Html} from '!!raw-loader!./examples/2/template.html';
 
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
@@ -55,13 +53,11 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiReactiv
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
-        LESS: example1Less,
     };
 
     readonly example2: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,
-        LESS: example2Less,
     };
 
     minVariants = [TUI_FIRST_DAY, new TuiDay(2021, 2, 5), new TuiDay(1900, 0, 1)];

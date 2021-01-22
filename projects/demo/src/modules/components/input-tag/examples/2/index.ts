@@ -16,7 +16,6 @@ const databaseMockData: readonly string[] = [
 @Component({
     selector: 'tui-input-tag-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

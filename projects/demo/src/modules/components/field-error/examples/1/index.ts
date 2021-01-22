@@ -25,7 +25,6 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
 @Component({
     selector: 'tui-field-error-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
