@@ -1,5 +1,5 @@
-<form [formGroup]="testForm">
-    <tui-input-phone class="input" formControlName="testValue">
+<form class="b-form" [formGroup]="testForm">
+    <tui-input-phone formControlName="testValue">
         Type a phone number
     </tui-input-phone>
     <pre class="tui-space_bottom-3">Form value: {{testForm.value | json}}</pre>

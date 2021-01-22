@@ -16,6 +16,6 @@
     class="close"
     icon="tuiIconCloseLarge"
     appearance="icon"
-    [title]="closeWord"
+    [title]="closeWord$ | async"
     (click)="close.emit()"
 ></button>

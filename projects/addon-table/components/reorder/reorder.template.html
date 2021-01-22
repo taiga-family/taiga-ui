@@ -8,7 +8,7 @@
             appearance="icon"
             class="button"
             size="xs"
-            [title]="showHideText"
+            [title]="showHideText$ | async"
             [icon]="getIcon(item)"
             (click)="toggle(item)"
         ></button>

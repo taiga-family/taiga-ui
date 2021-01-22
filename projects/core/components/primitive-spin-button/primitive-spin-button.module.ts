@@ -1,3 +1,4 @@
+import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {
     TuiFocusableModule,
@@ -11,6 +12,7 @@ import {TuiPrimitiveSpinButtonComponent} from './primitive-spin-button.component
 
 @NgModule({
     imports: [
+        CommonModule,
         TuiFocusVisibleModule,
         TuiFocusedModule,
         TuiFocusableModule,

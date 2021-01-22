@@ -38,7 +38,7 @@
         margin-left: -12px;
 
         :host[data-tui-host-size='l'] & {
-            padding-top: @padding-top-when-transformed;
+            padding-top: 20px;
         }
 
         :host._disabled & {
@@ -74,7 +74,7 @@
     }
 
     :host[data-tui-host-size='l'] & {
-        padding: @padding-top-when-transformed @padding 0;
+        padding: 20px @padding 0;
     }
 
     :host[data-tui-host-mode='onDark'] & {
@@ -88,13 +88,13 @@
 
 .content {
     display: flex;
-    height: @height-large;
+    height: var(--tui-height-l);
     padding: 0 @padding;
     justify-content: space-between;
     align-items: center;
 
     :host[data-tui-host-size='l'] & {
-        height: @height-extra-large;
+        height: var(--tui-height-xl);
         padding: 0 @padding;
     }
 
@@ -111,8 +111,8 @@
     .textfield-placeholder();
     .fullsize();
     left: @padding;
-    transform: @placeholder-transformed;
-    line-height: @height-extra-large;
+    transform: translateY(-10px) scale(0.87);
+    line-height: var(--tui-height-xl);
     max-width: ~'calc(114% - @{padding2})';
 }
 
@@ -131,7 +131,7 @@
     width: 50%;
 
     :host[data-tui-host-size='l'] & {
-        padding-top: @padding-top-when-transformed;
+        padding-top: 20px;
     }
 }
 
@@ -140,8 +140,8 @@
     flex: 1;
 
     :host[data-tui-host-size='l'] & {
-        padding-top: @padding-top-when-transformed;
-        line-height: @height-extra-large - @padding-top-when-transformed;
+        padding-top: 20px;
+        line-height: calc(var(--tui-height-xl) - 20px);
     }
 }
 

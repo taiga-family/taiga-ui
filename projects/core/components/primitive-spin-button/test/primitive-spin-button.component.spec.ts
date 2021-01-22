@@ -7,7 +7,7 @@ import {TuiPrimitiveSpinButtonModule} from '../primitive-spin-button.module';
 describe('primitiveSpinButton', () => {
     @Component({
         template: `
-            <tui-primitive-spin-button icon="tuiIconArrowLeftCircleLarge">
+            <tui-primitive-spin-button>
                 My button
             </tui-primitive-spin-button>
         `,

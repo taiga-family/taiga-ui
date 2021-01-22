@@ -22,7 +22,7 @@
 >
     <ng-content></ng-content>
 </tui-primitive-textfield>
-<ng-container *ngIf="hasButtons">
+<ng-container *ngIf="hasButtons && (minusTexts$ | async) as texts">
     <section class="buttons">
         <button
             tuiIconButton
@@ -32,7 +32,7 @@
             icon="tuiIconPlus"
             class="button button_plus"
             appearance="textfield"
-            [title]="minusTexts[0]"
+            [title]="texts[0]"
             [disabled]="plusButtonDisabled"
             [focusable]="false"
             (mousedown)="onButtonMouseDown($event, plusButtonDisabled)"
@@ -48,7 +48,7 @@
             appearance="textfield"
             [disabled]="minusButtonDisabled"
             [focusable]="false"
-            [title]="minusTexts[1]"
+            [title]="texts[1]"
             (mousedown)="onButtonMouseDown($event, minusButtonDisabled)"
             (click)="decreaseValue()"
         ></button>

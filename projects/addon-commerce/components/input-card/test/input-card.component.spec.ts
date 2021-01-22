@@ -41,19 +41,19 @@ describe('InputCard', () => {
     });
 
     describe('binChange', () => {
-        it('Значение менее 6 символов', () => {
+        it('Less than 6 characters', () => {
             testComponent.control.setValue('12345');
 
             expect(testComponent.onBinChange).not.toHaveBeenCalled();
         });
 
-        it('Значение на 6 и более символов', () => {
+        it('6 and more characters', () => {
             testComponent.control.setValue('123456789');
 
             expect(testComponent.onBinChange).toHaveBeenCalledWith('123456');
         });
 
-        it('Значение изменилось, первые 6 символов неизменны', () => {
+        it('The value has changed, the first 6 characters are unchanged', () => {
             testComponent.control.setValue('123456789');
             testComponent.onBinChange.calls.reset();
             testComponent.control.setValue('123456987');
@@ -61,7 +61,7 @@ describe('InputCard', () => {
             expect(testComponent.onBinChange).not.toHaveBeenCalled();
         });
 
-        it('Значение изменилось, первые 6 символов изменились', () => {
+        it('The value has changed, the first 6 characters have changed', () => {
             testComponent.control.setValue('123456789');
             testComponent.onBinChange.calls.reset();
             testComponent.control.setValue('654321789');
@@ -69,7 +69,7 @@ describe('InputCard', () => {
             expect(testComponent.onBinChange).toHaveBeenCalledWith('654321');
         });
 
-        it('Значение изменилось, стало меньше 6 символов', () => {
+        it('The value has changed to less than 6 characters', () => {
             testComponent.control.setValue('123456789');
             testComponent.onBinChange.calls.reset();
             testComponent.control.setValue('123');
@@ -112,7 +112,7 @@ describe('InputCard', () => {
         });
     });
 
-    describe('Форматирование', () => {
+    describe('Formatting', () => {
         it('13', done => {
             testFormat(done, '4000000000000', '4000 0000 0000 0');
         });

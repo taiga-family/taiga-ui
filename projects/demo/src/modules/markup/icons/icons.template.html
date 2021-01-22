@@ -2,100 +2,30 @@
     <ng-template pageTab>
         <h2 i18n class="title">Search by name</h2>
         <tui-input
-            size="m"
             i18n
             tuiHintContent="You can copy icon's name with a click"
+            tuiTextfieldSize="m"
             [tuiTextfieldLabelOutside]="true"
             [(ngModel)]="search"
         >
             Input icon name to highlight
         </tui-input>
-        <ng-container *ngIf="logos.length">
-            <h2 i18n class="title">Logos</h2>
+        <ng-container *ngFor="let key of keys">
+            <h2 i18n class="title">{{key}}</h2>
             <div class="icons">
                 <button
-                    *ngFor="let logo of logos"
+                    *ngFor="let icon of icons[key]"
                     tuiIconButton
                     type="button"
-                    size="xl"
-                    class="icon icon_logo"
-                    i18n-header
+                    size="m"
+                    i18n-title
                     title="Copy"
-                    appearance=""
-                    [class.icon_highlighted]="getHighlight(logo)"
-                    [icon]="logo"
-                    (click)="copyPath(logo)"
+                    appearance="icon"
+                    class="icon"
+                    [class.icon_highlighted]="getHighlight(icon)"
+                    [icon]="icon"
+                    (click)="copyPath(icon)"
                 ></button>
-            </div>
-        </ng-container>
-        <h2 i18n class="title">Normal interface icons (16px)</h2>
-        <div class="icons">
-            <button
-                *ngFor="let icon of icons"
-                tuiIconButton
-                type="button"
-                size="xs"
-                i18n-header
-                title="Copy"
-                appearance="icon"
-                class="icon"
-                [class.icon_highlighted]="getHighlight(icon)"
-                [icon]="icon"
-                (click)="copyPath(icon)"
-            ></button>
-        </div>
-        <h2 i18n class="title">Large interface icons (24px)</h2>
-        <div class="icons">
-            <button
-                *ngFor="let icon of iconsLarge"
-                tuiIconButton
-                type="button"
-                size="xs"
-                i18n-header
-                title="Copy"
-                appearance="icon"
-                class="icon"
-                [class.icon_first]="getFirstPosition(icon)"
-                [class.icon_highlighted]="getHighlight(icon)"
-                [icon]="icon"
-                (click)="copyPath(icon)"
-            ></button>
-        </div>
-        <h2 i18n class="title">Commerce icons</h2>
-        <div class="icons">
-            <button
-                *ngFor="let icon of commerce"
-                tuiIconButton
-                type="button"
-                size="s"
-                i18n-header
-                title="Copy"
-                appearance="icon"
-                class="icon"
-                [class.icon_highlighted]="getHighlight(icon)"
-                [icon]="icon"
-                (click)="copyPath(icon)"
-            ></button>
-        </div>
-        <ng-container *ngIf="iconsMarker">
-            <h2 i18n class="title">Marker icons</h2>
-            <p i18n class="description">
-                <code>{{iconsMarker.package}}</code> icons for
-                <a tuiLink routerLink="/tui-marker-icon">MarkerIcon</a>
-                component
-            </p>
-            <div class="icons">
-                <ng-container *ngFor="let icon of iconsMarker.icons">
-                    <tui-marker-icon
-                        class="icon icon_marker"
-                        i18n-header
-                        title="Copy"
-                        size="s"
-                        [class.icon_highlighted]="getHighlight(icon)"
-                        [src]="icon"
-                        (click)="copyPath(icon)"
-                    ></tui-marker-icon>
-                </ng-container>
             </div>
         </ng-container>
     </ng-template>

@@ -43,6 +43,8 @@ import {
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 // @dynamic
 @Component({
@@ -102,17 +104,14 @@ export class TuiInputDateTimeComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FILLER) readonly dateFiller: string,
-        @Inject(TUI_TIME_TEXTS) private readonly timeTexts: Record<TuiTimeMode, string>,
+        @Inject(TUI_TIME_TEXTS)
+        readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
     ) {
         super(control, changeDetectorRef);
     }
 
-    get filler(): string {
-        return `${this.dateFiller}${DATE_TIME_SEPARATOR}${this.timeFiller}`;
-    }
-
-    get timeFiller(): string {
-        return this.timeTexts[this.timeMode];
+    get fillerLength(): number {
+        return this.dateFiller.length + DATE_TIME_SEPARATOR.length + this.timeMode.length;
     }
 
     get textMaskOptions(): TuiTextMaskOptions {
@@ -145,7 +144,7 @@ export class TuiInputDateTimeComponent
 
         if (
             (date && !nativeValue) ||
-            (date && nativeValue.length === this.filler.length) ||
+            (date && nativeValue.length === this.fillerLength) ||
             (date && time)
         ) {
             return `${date.toString()}${DATE_TIME_SEPARATOR}${
@@ -184,12 +183,19 @@ export class TuiInputDateTimeComponent
         return !this.computedDisabled && !this.readOnly;
     }
 
+    @tuiPure
+    getFiller$(dateFiller: string, timeMode: TuiTimeMode): Observable<string> {
+        return this.timeTexts$.pipe(
+            map(texts => `${dateFiller}${DATE_TIME_SEPARATOR}${texts[timeMode]}`),
+        );
+    }
+
     onClick() {
         this.open = !this.open;
     }
 
     onValueChange(value: string) {
-        if (value.length < this.filler.length) {
+        if (value.length < this.fillerLength) {
             this.updateValue([null, null]);
 
             return;
@@ -199,7 +205,7 @@ export class TuiInputDateTimeComponent
 
         const parsedDate = TuiDay.normalizeParse(date);
         const parsedTime =
-            time && time.length === this.timeFiller.length
+            time && time.length === this.timeMode.length
                 ? TuiTime.fromString(time)
                 : null;
 
@@ -234,7 +240,7 @@ export class TuiInputDateTimeComponent
             focused ||
             this.value[0] === null ||
             this.value[1] !== null ||
-            this.nativeValue.length <= this.filler.length + DATE_TIME_SEPARATOR.length ||
+            this.nativeValue.length <= this.fillerLength + DATE_TIME_SEPARATOR.length ||
             this.timeMode === 'HH:MM'
         ) {
             return;

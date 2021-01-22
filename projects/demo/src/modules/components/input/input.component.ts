@@ -1,13 +1,10 @@
 import {default as example1Ts} from '!!raw-loader!./examples/1/component.ts';
-import {default as example1Less} from '!!raw-loader!./examples/1/style.less';
 import {default as example1Html} from '!!raw-loader!./examples/1/template.html';
 
 import {default as example2Ts} from '!!raw-loader!./examples/2/component.ts';
-import {default as example2Less} from '!!raw-loader!./examples/2/style.less';
 import {default as example2Html} from '!!raw-loader!./examples/2/template.html';
 
 import {default as example3Ts} from '!!raw-loader!./examples/3/component.ts';
-import {default as example3Less} from '!!raw-loader!./examples/3/style.less';
 import {default as example3Html} from '!!raw-loader!./examples/3/template.html';
 
 import {default as example4Ts} from '!!raw-loader!./examples/4/component.ts';
@@ -36,14 +33,11 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {identity, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiHorizontalDirection, TuiTextMaskOptions} from '@taiga-ui/core';
+import {TuiHorizontalDirection} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
-
-const D = /\d/;
 
 @Component({
     selector: 'example-tui-input',
@@ -65,19 +59,16 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiReactiveField {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
-        LESS: example1Less,
     };
 
     readonly example2: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,
-        LESS: example2Less,
     };
 
     readonly example3: FrontEndExample = {
         TypeScript: example3Ts,
         HTML: example3Html,
-        LESS: example3Less,
     };
 
     readonly example4: FrontEndExample = {
@@ -117,26 +108,6 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiReactiveField {
     readonly iconAlignVariants: ReadonlyArray<TuiHorizontalDirection> = ['left', 'right'];
 
     iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
-
-    readonly textMaskOptionsVariants: ReadonlyArray<TuiTextMaskOptions> = [
-        {
-            guide: false,
-            mask: [D, D, D, D, D],
-        },
-        {
-            guide: false,
-            mask: [D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D],
-        },
-    ];
-
-    textMaskOptions: TuiTextMaskOptions | null = null;
-
-    readonly unmaskHandlerVariants: ReadonlyArray<TuiStringHandler<string>> = [
-        identity,
-        value => value.replace(/ /g, ''),
-    ];
-
-    unmaskHandler = this.unmaskHandlerVariants[0];
 
     readonly control = new FormControl('111', Validators.required);
 }

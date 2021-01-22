@@ -17,6 +17,7 @@ import {
 } from '@taiga-ui/cdk';
 import {AbstractTuiSlider, SLIDER_KEYBOARD_STEP} from '@taiga-ui/kit/abstract';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
+import {Observable} from 'rxjs';
 
 // @dynamic
 @Component({
@@ -41,9 +42,9 @@ export class TuiSliderComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(DOCUMENT) documentRef: Document,
-        @Inject(TUI_FROM_TO_TEXTS) fromToTexts: [string, string],
+        @Inject(TUI_FROM_TO_TEXTS) fromToTexts$: Observable<[string, string]>,
     ) {
-        super(control, changeDetectorRef, documentRef, fromToTexts);
+        super(control, changeDetectorRef, documentRef, fromToTexts$);
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

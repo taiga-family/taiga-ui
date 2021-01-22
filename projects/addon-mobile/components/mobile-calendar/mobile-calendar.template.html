@@ -4,11 +4,11 @@
         type="button"
         class="close"
         automation-id="tui-mobile-calendar__cancel"
-        icon="tuiIconCloseLgLarge"
+        icon="tuiIconRemoveLarge"
         shape="rounded"
         appearance=""
         tuiRipple
-        [title]="closeWord"
+        [title]="closeWord$ | async"
         (click)="onClose()"
     ></button>
     <button
@@ -18,10 +18,14 @@
         class="link link_close"
         (click)="onClose()"
     >
-        {{cancelWord}}
+        {{cancelWord$ | async}}
     </button>
-    <h2 class="label" automation-id="tui-mobile-calendar__label">
-        {{single ? chooseDayOrRangeTexts[0] : chooseDayOrRangeTexts[1]}}
+    <h2
+        *ngIf="chooseDayOrRangeTexts$ | async as texts"
+        class="label"
+        automation-id="tui-mobile-calendar__label"
+    >
+        {{single ? texts[0] : texts[1]}}
     </h2>
     <button
         tuiLink
@@ -31,7 +35,7 @@
         class="link"
         (click)="onConfirm()"
     >
-        {{doneWord}}
+        {{doneWord$ | async}}
     </button>
 </header>
 <cdk-virtual-scroll-viewport
@@ -52,7 +56,7 @@
     </div>
 </cdk-virtual-scroll-viewport>
 <div class="week">
-    <div *ngFor="let day of weekDays" class="day">{{day}}</div>
+    <div *ngFor="let day of weekDays$ | async" class="day">{{day}}</div>
 </div>
 <cdk-virtual-scroll-viewport
     #monthsScrollRef
@@ -63,7 +67,7 @@
         *cdkVirtualFor="let month of months; templateCacheSize: 10"
         class="month-wrapper"
     >
-        <h2 class="month">{{month | tuiMonth}}</h2>
+        <h2 class="month">{{month | tuiMonth | async}}</h2>
         <tui-primitive-calendar-mobile
             class="calendar"
             [month]="month"

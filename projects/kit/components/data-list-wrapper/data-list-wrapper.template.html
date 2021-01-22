@@ -1,4 +1,7 @@
-<tui-data-list *ngIf="items else loading" [emptyContent]="emptyContent">
+<tui-data-list
+    *ngIf="items else loading"
+    [emptyContent]="emptyContent || (defaultEmptyContent$ | async)"
+>
     <button
         *ngFor="let item of items"
         #elementRef="elementRef"

@@ -15,7 +15,7 @@ execSync(`npm run release -- --release-as ${mode}`);
 
 checkChangelog().then(() => {
     execSync('git add .');
-    execSync('git commit --amend --no-edit');
+    execSync(`git commit -m 'chore(changelog): fix incorrect generated logs'`);
     execSync(`git push --set-upstream origin release/${newVersion}`);
     execSync(`git push --tags`);
 });

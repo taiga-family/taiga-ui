@@ -26,10 +26,7 @@ import {
     TuiHintMode,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,
-    TuiTextMaskOptions,
-    TuiWithTextMask,
 } from '@taiga-ui/core';
-import {EMPTY_MASK} from '@taiga-ui/kit/constants';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, of, Subject, timer} from 'rxjs';
@@ -50,14 +47,10 @@ import {mapTo, startWith, switchMap} from 'rxjs/operators';
 })
 export class TuiInputCopyComponent
     extends AbstractTuiControl<string>
-    implements TuiWithTextMask, TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
-    textMaskOptions: TuiTextMaskOptions | null = null;
-
-    @Input()
-    @tuiDefaultProp()
-    successMessage: PolymorpheusContent = this.copyTexts[1];
+    successMessage: PolymorpheusContent = '';
 
     @Input()
     @tuiDefaultProp()
@@ -81,7 +74,7 @@ export class TuiInputCopyComponent
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_COPY_TEXTS) private readonly copyTexts: [string, string],
+        @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -93,14 +86,18 @@ export class TuiInputCopyComponent
 
     @tuiPure
     get hintText$(): Observable<PolymorpheusContent> {
-        return this.copy$.pipe(
-            switchMap(() =>
-                merge(
-                    of(this.successMessage),
-                    timer(3000).pipe(mapTo(this.copyTexts[0])),
+        return this.copyTexts$.pipe(
+            switchMap(texts =>
+                this.copy$.pipe(
+                    switchMap(() =>
+                        merge(
+                            of(this.successMessage || texts[1]),
+                            timer(3000).pipe(mapTo(texts[0])),
+                        ),
+                    ),
+                    startWith(texts[0]),
                 ),
             ),
-            startWith(this.copyTexts[0]),
         );
     }
 
@@ -118,12 +115,8 @@ export class TuiInputCopyComponent
         return this.textfieldSize.size === 's' ? 'tuiIconCopy' : 'tuiIconCopyLarge';
     }
 
-    get computedMask(): TuiTextMaskOptions {
-        return this.textMaskOptions || EMPTY_MASK;
-    }
-
-    onValueChange(textValue: string) {
-        this.updateValue(textValue);
+    onValueChange(value: string) {
+        this.updateValue(value);
     }
 
     onFocused(focused: boolean) {

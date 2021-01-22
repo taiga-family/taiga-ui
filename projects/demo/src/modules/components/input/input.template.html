@@ -156,8 +156,6 @@
                     [icon]="icon"
                     [iconAlign]="iconAlign"
                     [readOnly]="readOnly"
-                    [textMaskOptions]="textMaskOptions"
-                    [unmaskHandler]="unmaskHandler"
                     [tuiTextfieldType]="type"
                     [tuiTextfieldExampleText]="exampleText"
                     [tuiTextfieldLabelOutside]="labelOutside"
@@ -218,30 +216,6 @@
                 [(documentationPropertyValue)]="iconAlign"
             >
                 Icon align
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="textMaskOptions"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiTextMaskOptions | null"
-                [documentationPropertyValues]="textMaskOptionsVariants"
-                [(documentationPropertyValue)]="textMaskOptions"
-            >
-                Text mask params (<a
-                    tuiLink
-                    href="https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#text-mask-documentation"
-                    >official documentation</a
-                >)
-            </ng-template>
-            <ng-template
-                documentationPropertyName="unmaskHandler"
-                documentationPropertyMode="input"
-                documentationPropertyType="string => string"
-                [documentationPropertyValues]="unmaskHandlerVariants"
-                [(documentationPropertyValue)]="unmaskHandler"
-            >
-                A funciton to handle a value from mask before it is set into
-                control
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>

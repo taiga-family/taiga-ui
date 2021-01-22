@@ -40,13 +40,18 @@ describe('InputMonth', () => {
         it('returns empty string if no value', () => {
             testComponent.control.setValue(null);
 
-            expect(component.computedValue).toBe('');
+            expect(component.nativeFocusableElement!.value).toBe('');
         });
 
-        it('returns the whole stringified value if there is', () => {
+        it('returns the whole stringified value if there is', done => {
             testComponent.control.setValue(new TuiMonth(2020, 4));
 
-            expect(component.computedValue).toBe(`May 2020`);
+            fixture.detectChanges();
+
+            setTimeout(() => {
+                expect(component.nativeFocusableElement!.value).toBe(`May 2020`);
+                done();
+            }, 50);
         });
     });
 

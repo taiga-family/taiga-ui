@@ -27,7 +27,6 @@ const ITEMS = ['The Midnight', 'FM-84', 'Timecop1983', 'GUNSHIP'];
 @Component({
     selector: 'tui-input-tag-example-4',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

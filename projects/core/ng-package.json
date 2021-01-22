@@ -2,6 +2,7 @@
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
     "dest": "../../dist/core",
     "assets": ["styles"],
+    "whitelistedNonPeerDependencies": ["@taiga-ui/i18n"],
     "lib": {
         "entryFile": "index.ts"
     }

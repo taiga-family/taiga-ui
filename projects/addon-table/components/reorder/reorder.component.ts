@@ -2,6 +2,7 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-reorder',
@@ -23,7 +24,9 @@ export class TuiReorderComponent<T = string> {
     @Output()
     readonly enabledChange = new EventEmitter<ReadonlyArray<T>>();
 
-    constructor(@Inject(TUI_TABLE_SHOW_HIDE_MESSAGE) readonly showHideText: string) {}
+    constructor(
+        @Inject(TUI_TABLE_SHOW_HIDE_MESSAGE) readonly showHideText$: Observable<string>,
+    ) {}
 
     isEnabled(item: T): boolean {
         return this.enabled.indexOf(item) !== -1;

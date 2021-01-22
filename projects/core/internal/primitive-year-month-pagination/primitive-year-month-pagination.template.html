@@ -5,7 +5,7 @@
     (leftClick)="onPrevMonthClick()"
     (rightClick)="onNextMonthClick()"
 >
-    {{value | tuiMonth}}
+    {{value | tuiMonth | async}}
     <ng-container *ngIf="oneYear; else button">
         {{value.formattedYear}}
     </ng-container>

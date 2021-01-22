@@ -7,7 +7,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
 @Component({
     selector: 'tui-input-date-example-3',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
@@ -19,7 +18,7 @@ export class TuiInputDateExample3 {
     items = [
         new TuiNamedDay(
             TUI_LAST_DAY.append({year: -1}),
-            'Unill today',
+            'Until today',
             TuiDay.currentLocal(),
         ),
     ];

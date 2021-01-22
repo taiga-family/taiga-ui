@@ -6,7 +6,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
 @Component({
     selector: 'input-month-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

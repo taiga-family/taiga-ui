@@ -35,6 +35,13 @@ export const ROUTES = [
         },
     },
     {
+        path: 'i18n',
+        loadChildren: () => import(`../info/i18n/i18n.module`).then(m => m.I18nModule),
+        data: {
+            title: `I18n`,
+        },
+    },
+    {
         path: 'tui-doc',
         loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
         data: {
@@ -1130,6 +1137,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'tui-sidebar',
+        loadChildren: () =>
+            import(`../directives/sidebar/sidebar.module`).then(
+                m => m.ExampleTuiSidebarModule,
+            ),
+        data: {
+            title: 'Sidebar',
+        },
+    },
+    {
         path: 'tui-touchable',
         loadChildren: () =>
             import(`../directives/touchable/touchable.module`).then(
@@ -1185,7 +1202,7 @@ export const ROUTES = [
     },
     // PIPES
     {
-        path: 'tui-filter',
+        path: 'filter',
         loadChildren: () =>
             import(`../pipes/filter/filter.module`).then(m => m.ExampleTuiFilterModule),
         data: {
@@ -1193,7 +1210,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-format-number',
+        path: 'format-number',
         loadChildren: () =>
             import(`../pipes/format-number/format-number.module`).then(
                 m => m.ExampleTuiFormatNumberModule,
@@ -1203,7 +1220,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-format-phone',
+        path: 'format-phone',
         loadChildren: () =>
             import(`../pipes/format-phone/format-phone.module`).then(
                 m => m.ExampleTuiFormatPhoneModule,
@@ -1213,21 +1230,11 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-mapper',
+        path: 'mapper',
         loadChildren: () =>
             import(`../pipes/mapper/mapper.module`).then(m => m.ExampleTuiMapperModule),
         data: {
             title: 'Mapper',
-        },
-    },
-    {
-        path: 'tui-pluralize',
-        loadChildren: () =>
-            import(`../pipes/pluralize/pluralize.module`).then(
-                m => m.ExampleTuiPluralizeModule,
-            ),
-        data: {
-            title: 'Pluralize',
         },
     },
     // SERVICES

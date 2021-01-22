@@ -1,10 +1,13 @@
-<form class="container" [formGroup]="testForm">
+<form class="b-form" [formGroup]="testForm">
     <p i18n>
         If a field is optional, but unfinished field should be marked as
         invalid, use
         <code>tuiUnfinishedValidator</code> directive
     </p>
-    <tui-input-date tuiUnfinishedValidator formControlName="testValue">
+    <tui-input-date
+        tuiUnfinishedValidator="Finish filling the field"
+        formControlName="testValue"
+    >
         Choose a date
     </tui-input-date>
 </form>

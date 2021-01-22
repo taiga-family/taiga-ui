@@ -21,10 +21,11 @@
         </span>
         <label>
             <span
+                *ngIf="cardNumberTexts$ | async as texts"
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{isMobile ? cardNumberTexts[0] : cardNumberTexts[1]}}
+                {{isMobile ? texts[0] : texts[1]}}
             </span>
             <span
                 class="collapsed"
@@ -70,10 +71,11 @@
         <span *ngIf="hasExpireExampleText" class="example-text"> 00/00 </span>
         <label>
             <span
+                *ngIf="cardExpiryTexts$ | async as texts"
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{isMobile ? cardExpiryTexts[0] : cardExpiryTexts[1]}}
+                {{isMobile ? texts[0] : texts[1]}}
             </span>
             <input
                 #inputExpire

@@ -7,7 +7,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
 @Component({
     selector: 'tui-input-date-range-example-1',
     templateUrl: './template.html',
-    styleUrls: ['./style.less'],
     changeDetection,
     encapsulation,
 })

@@ -10,7 +10,7 @@
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
-        [filler]="filler"
+        [filler]="getFiller$(dateFiller, timeMode) | async"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [iconContent]="calendarIcon"

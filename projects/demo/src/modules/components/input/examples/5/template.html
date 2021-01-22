@@ -1,43 +1,40 @@
-<p i18n>
-    Custom mode is set with
-    <a tuiLink routerLink="/tui-mode"><code>tuiMode</code></a> directive
-</p>
+<form class="b-form" [formGroup]="testForm">
+    <tui-notification i18n>
+        Custom mode is set with
+        <a tuiLink routerLink="/tui-mode"><code>tuiMode</code></a> directive
+    </tui-notification>
 
-<form [formGroup]="testForm" class="container">
-    <div class="tui-row">
-        <div class="tui-col_md-3">
+    <p>
+        <tui-input
+            formControlName="testValue"
+            tuiTextfieldExampleText="mail@mail.ru"
+            [tuiTextfieldCleaner]="true"
+        >
+            Type an email
+        </tui-input>
+    </p>
+    <div>
+        <p class="wrapper wrapper_dark">
             <tui-input
-                class="input"
                 formControlName="testValue"
+                tuiMode="onDark"
                 tuiTextfieldExampleText="mail@mail.ru"
                 [tuiTextfieldCleaner]="true"
-                >Type an email</tui-input
             >
-        </div>
-        <div class="tui-col_md-3">
-            <div class="wrapper wrapper_dark">
-                <tui-input
-                    class="input"
-                    formControlName="testValue"
-                    tuiMode="onDark"
-                    tuiHintMode="light"
-                    tuiTextfieldExampleText="mail@mail.ru"
-                    [tuiTextfieldCleaner]="true"
-                    >Type an email</tui-input
-                >
-            </div>
-        </div>
-        <div class="tui-col_md-3">
-            <div class="wrapper wrapper_light">
-                <tui-input
-                    class="input"
-                    tuiTextfieldExampleText="mail@mail.ru"
-                    formControlName="testValue"
-                    tuiMode="onLight"
-                    [tuiTextfieldCleaner]="true"
-                    >Type an email</tui-input
-                >
-            </div>
-        </div>
+                Type an email
+            </tui-input>
+        </p>
+    </div>
+    <div>
+        <p class="wrapper wrapper_light">
+            <tui-input
+                tuiTextfieldExampleText="mail@mail.ru"
+                formControlName="testValue"
+                tuiMode="onLight"
+                [tuiTextfieldCleaner]="true"
+            >
+                Type an email
+            </tui-input>
+        </p>
     </div>
 </form>

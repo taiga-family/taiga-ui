@@ -63,7 +63,7 @@ export class TuiTime implements TuiTimeLike {
      * Converts TuiTime to string
      */
     toString(mode?: TuiTimeMode): string {
-        const needAddMs = mode === 'HH:MM:SS.MS' || (!mode && this.ms > 0);
+        const needAddMs = mode === 'HH:MM:SS.MSS' || (!mode && this.ms > 0);
         const needAddSeconds =
             needAddMs || mode === 'HH:MM:SS' || (!mode && this.seconds > 0);
 

@@ -15,6 +15,8 @@ import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {formatSize} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable, of} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 // @dynamic
 @Component({
@@ -54,9 +56,11 @@ export class TuiFileComponent {
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(TUI_FILE_TEXTS)
-        readonly fileTexts: Record<'loadingError' | 'preview' | 'remove', string>,
+        readonly fileTexts$: Observable<
+            Record<'loadingError' | 'preview' | 'remove', string>
+        >,
         @Inject(TUI_DIGITAL_INFORMATION_UNITS)
-        private readonly units: [string, string, string],
+        private readonly units$: Observable<[string, string, string]>,
     ) {}
 
     get preview(): SafeValue {
@@ -107,14 +111,12 @@ export class TuiFileComponent {
         return '.' + this.file.name.split('.').pop() || '';
     }
 
-    get fileSize(): string | null {
-        return formatSize(this.units, this.file.size);
+    get content$(): Observable<PolymorpheusContent> {
+        return this.calculateContent$(this.state, this.file, this.fileTexts$);
     }
 
-    get content(): PolymorpheusContent {
-        return this.state === TuiFileState.Error && !this.file.content
-            ? this.fileTexts['loadingError']
-            : this.file.content || '';
+    get fileSize$(): Observable<string | null> {
+        return this.calculateFileSize$(this.file, this.units$);
     }
 
     onRemoveClick() {
@@ -123,6 +125,25 @@ export class TuiFileComponent {
 
     onFocusVisible(focusVisible: boolean) {
         this.focused = focusVisible;
+    }
+
+    @tuiPure
+    private calculateContent$(
+        state: TuiFileState,
+        file: TuiFileLike,
+        fileTexts$: Observable<Record<'loadingError' | 'preview' | 'remove', string>>,
+    ): Observable<PolymorpheusContent> {
+        return state === TuiFileState.Error && !file.content
+            ? fileTexts$.pipe(map(texts => texts.loadingError))
+            : of(this.file.content || '');
+    }
+
+    @tuiPure
+    private calculateFileSize$(
+        file: TuiFileLike,
+        units$: Observable<[string, string, string]>,
+    ): Observable<string | null> {
+        return units$.pipe(map(units => formatSize(units, file.size)));
     }
 
     @tuiPure

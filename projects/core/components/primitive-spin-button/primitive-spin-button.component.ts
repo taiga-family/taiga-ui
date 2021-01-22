@@ -11,6 +11,7 @@ import {
 import {AbstractTuiInteractive, isNativeFocused, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
+import {Observable} from 'rxjs';
 
 // @dynamic
 @Component({
@@ -45,7 +46,9 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     @ViewChild('wrapper')
     private readonly wrapper?: ElementRef<HTMLElement>;
 
-    constructor(@Inject(TUI_SPIN_TEXTS) readonly spinTexts: [string, string]) {
+    constructor(
+        @Inject(TUI_SPIN_TEXTS) readonly spinTexts$: Observable<[string, string]>,
+    ) {
         super();
     }
 

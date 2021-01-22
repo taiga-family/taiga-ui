@@ -26,7 +26,6 @@ export function innValidator(field: AbstractControl): any {
 @Component({
     selector: 'tui-field-error-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

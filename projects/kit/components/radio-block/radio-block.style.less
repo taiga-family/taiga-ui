@@ -32,15 +32,15 @@
     flex-direction: column;
 
     :host[data-tui-host-size='s'] & {
-        min-height: @height-small;
+        min-height: var(--tui-height-s);
     }
 
     :host[data-tui-host-size='m'] & {
-        min-height: @height-large;
+        min-height: var(--tui-height-l);
     }
 
     :host[data-tui-host-size='l'] & {
-        min-height: @height-extra-large;
+        min-height: var(--tui-height-xl);
     }
 }
 

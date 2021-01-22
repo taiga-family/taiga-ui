@@ -22,6 +22,7 @@ import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
 import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 import {TuiColor, TuiMarkerHandler} from '@taiga-ui/core/types';
+import {Observable} from 'rxjs';
 
 const ROWS_COUNT = 6;
 
@@ -106,7 +107,9 @@ export class TuiPrimitiveCalendarComponent {
 
     constructor(
         @Inject(TUI_SHORT_WEEK_DAYS)
-        readonly weekDays: [string, string, string, string, string, string, string],
+        readonly weekDays$: Observable<
+            [string, string, string, string, string, string, string]
+        >,
     ) {}
 
     @HostBinding('class._single')

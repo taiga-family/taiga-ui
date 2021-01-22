@@ -21,6 +21,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Documentation`,
+        title: `i18n`,
+        keywords: 'i18n, internationalization, local, translate, language',
+        route: 'i18n',
+    },
+    {
+        section: $localize`Documentation`,
         title: $localize`Documentation engine`,
         keywords:
             'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',
@@ -890,6 +896,13 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'Sidebar',
+                keywords:
+                    'sidebar, hamburger, drawer menu, mobile, смартфон, pwa, native, hybrid, сайдбар, меню',
+                route: '/tui-sidebar',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'DropdownController',
                 keywords:
                     'контроллер, ввод, параметры, настройка, выпадашка, список, айтемы, items',
@@ -932,34 +945,27 @@ export const pages: TuiDocPages = [
                 section: $localize`Tools`,
                 title: 'Filter',
                 keywords: 'filter, совпадения, ngfor, for, match, пайп, pipe',
-                route: '/tui-filter',
+                route: '/filter',
             },
             {
                 section: $localize`Tools`,
                 title: 'FormatNumber',
                 keywords:
                     'format, форматирование, преобразование, пробелы, тысячи, пайп, pipe',
-                route: '/tui-format-number',
+                route: '/format-number',
             },
             {
                 section: $localize`Tools`,
                 title: 'FormatPhone',
                 keywords:
                     'format, форматирование, преобразование, phone, телефон, пайп, pipe',
-                route: '/tui-format-phone',
+                route: '/format-phone',
             },
             {
                 section: $localize`Tools`,
                 title: 'Mapper',
                 keywords: 'mapper, мап, преобразование, пайп, pipe',
-                route: '/tui-mapper',
-            },
-            {
-                section: $localize`Tools`,
-                title: 'Pluralize',
-                keywords:
-                    'pluralize, склонение, преобразование, слова, существительные, пайп, pipe',
-                route: '/tui-pluralize',
+                route: '/mapper',
             },
         ],
     },

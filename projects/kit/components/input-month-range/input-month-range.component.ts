@@ -16,7 +16,6 @@ import {
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
-    TUI_MONTHS,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiMonth,
@@ -24,6 +23,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     sizeBigger,
+    TUI_MONTHS,
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,
@@ -32,6 +32,7 @@ import {
 import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
+import {Observable} from 'rxjs';
 
 // @dynamic
 @Component({
@@ -76,7 +77,7 @@ export class TuiInputMonthRangeComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_MONTHS) private readonly months: readonly string[],
+        @Inject(TUI_MONTHS) readonly months$: Observable<readonly string[]>,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
@@ -97,17 +98,19 @@ export class TuiInputMonthRangeComponent
             : 'tuiIconCalendar';
     }
 
-    get computedValue(): string {
-        const {value} = this;
-
+    computeValue(
+        value: TuiMonthRange | null,
+        focused: boolean,
+        months: readonly string[],
+    ): string {
         if (value === null) {
             return '';
         }
 
         const formattedValueTo =
-            !value.isSingleMonth || !this.focused ? this.formatMonth(value.to) : '';
+            !value.isSingleMonth || !focused ? this.formatMonth(value.to, months) : '';
 
-        return `${this.formatMonth(value.from)} — ${formattedValueTo}`;
+        return `${this.formatMonth(value.from, months)} — ${formattedValueTo}`;
     }
 
     get canOpen(): boolean {
@@ -156,8 +159,11 @@ export class TuiInputMonthRangeComponent
         this.close();
     }
 
-    private formatMonth({month, formattedYear}: TuiMonth): string {
-        return `${this.months[month]} ${formattedYear}`;
+    private formatMonth(
+        {month, formattedYear}: TuiMonth,
+        months: readonly string[],
+    ): string {
+        return `${months[month]} ${formattedYear}`;
     }
 
     private close() {

@@ -20,6 +20,7 @@ import {
 import {AbstractTuiSlider, DOT_WIDTH, SLIDER_KEYBOARD_STEP} from '@taiga-ui/kit/abstract';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
+import {Observable} from 'rxjs';
 
 // @dynamic
 @Component({
@@ -45,9 +46,9 @@ export class TuiRangeComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(DOCUMENT) documentRef: Document,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TUI_FROM_TO_TEXTS) fromToTexts: [string, string],
+        @Inject(TUI_FROM_TO_TEXTS) fromToTexts$: Observable<[string, string]>,
     ) {
-        super(control, changeDetectorRef, documentRef, fromToTexts);
+        super(control, changeDetectorRef, documentRef, fromToTexts$);
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

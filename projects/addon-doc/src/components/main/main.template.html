@@ -1,12 +1,14 @@
 <tui-root>
     <div class="tui-doc-page">
-        <tui-doc-navigation class="tui-doc-navigation"></tui-doc-navigation>
+        <tui-doc-navigation class="tui-doc-navigation">
+            <ng-content select="tuiDocNavigation"></ng-content>
+        </tui-doc-navigation>
         <div class="tui-doc-content">
             <router-outlet class="tui-doc-outlet"></router-outlet>
         </div>
     </div>
     <header tuiDocHeader>
-        <ng-content></ng-content>
+        <ng-content select="tuiDocHeader"></ng-content>
     </header>
     <ng-container ngProjectAs="tuiOverDialogs">
         <ng-content select="tuiOverDialogs"></ng-content>

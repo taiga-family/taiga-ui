@@ -4,19 +4,15 @@ import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 import {FormControl, Validators} from '@angular/forms';
 import {TuiAccountAutofillName} from '@taiga-ui/cdk';
-import {TuiTextMaskOptions} from '@taiga-ui/core';
 import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
-
-const D = /\d/;
 
 @Component({
     selector: 'example-input-copy',
@@ -33,7 +29,6 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiReactiveFiel
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
-        LESS: example1Less,
     };
 
     readonly exampleImportModule = exampleImportModule;
@@ -60,19 +55,6 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiReactiveFiel
         'postal-code',
         'country-name',
     ];
-
-    readonly textMaskOptionsVariants: ReadonlyArray<TuiTextMaskOptions> = [
-        {
-            guide: false,
-            mask: [D, D, D, D, D],
-        },
-        {
-            guide: false,
-            mask: [D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D, ' ', D, D, D, D],
-        },
-    ];
-
-    textMaskOptions: TuiTextMaskOptions | null = null;
 
     readonly autocomplete: TuiAccountAutofillName | null = null;
 

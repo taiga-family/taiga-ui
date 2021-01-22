@@ -1,17 +1,36 @@
-import {Component, Inject, InjectionToken, Optional} from '@angular/core';
+import {Component, Inject, InjectionToken} from '@angular/core';
 import {ClipboardCopyService} from '@taiga-ui/addon-doc';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 import {changeDetection} from '../../../change-detection-strategy';
 
-export const TUI_ADDITIONAL_ICONS = new InjectionToken<AdditionalIcons>(
-    'Additional icons',
-);
+export const COMMERCE = [
+    'tuiIconElectron',
+    'tuiIconMaestro',
+    'tuiIconMastercard',
+    'tuiIconMir',
+    'tuiIconVisa',
+];
 
-export interface AdditionalIcons {
-    package: string;
-    icons: readonly string[];
-}
+export const TUI_ICONS = new InjectionToken<Record<string, readonly string[]>>('Icons', {
+    factory: () => {
+        const icons = Object.keys(allIcons).filter(
+            item =>
+                COMMERCE.indexOf(item) === -1 &&
+                item !== 'tuiCoreIcons' &&
+                item !== 'tuiKitIcons',
+        );
+
+        return {
+            'Normal interface icons (16px)': icons.filter(
+                name => !name.includes('Large'),
+            ),
+            'Large interface icons (24px)': icons.filter(name => name.includes('Large')),
+            'Payment systems': COMMERCE,
+        };
+    },
+});
 
 @Component({
     selector: 'icons',
@@ -20,59 +39,20 @@ export interface AdditionalIcons {
     changeDetection,
 })
 export class IconsComponent {
-    icons: readonly string[];
-
-    assets: readonly string[] = [];
-
-    iconsLarge: readonly string[] = [];
-
-    logos: readonly string[] = [];
-
     search = '';
 
-    readonly commerce = [
-        'tuiIconElectron',
-        'tuiIconMaestro',
-        'tuiIconMastercard',
-        'tuiIconMir',
-        'tuiIconVisa',
-    ];
+    readonly keys = Object.keys(this.icons);
 
     constructor(
-        @Optional()
-        @Inject(TUI_ADDITIONAL_ICONS)
-        readonly iconsMarker: AdditionalIcons | null,
+        @Inject(TUI_ICONS) readonly icons: Record<string, readonly string[]>,
         @Inject(ClipboardCopyService)
         private readonly clipboardCopyService: ClipboardCopyService,
         @Inject(TuiNotificationsService)
         private readonly notifications: TuiNotificationsService,
-    ) {
-        const all: Record<string, any> = allIcons;
-        const icons = Object.keys(all).filter(
-            item =>
-                this.commerce.indexOf(item) === -1 &&
-                item !== 'tuiCoreIcons' &&
-                item !== 'tuiKitIcons',
-        );
-
-        this.icons = icons.filter(item => !item.includes('Large'));
-        this.iconsLarge = icons.filter(item => item.includes('Large'));
-
-        if (!this.iconsMarker) {
-            return;
-        }
-
-        this.logos = this.iconsMarker.icons.filter(icon =>
-            icon.startsWith('tuiIconLogo'),
-        );
-        this.iconsMarker.icons = this.iconsMarker.icons.filter(
-            icon => !icon.startsWith('tuiIconLogo'),
-        );
-    }
+    ) {}
 
     copyPath(name: string) {
         this.clipboardCopyService.copyToClipboard(name);
-
         this.notifications
             .show(`The name ${name} copied`, {
                 status: TuiNotification.Success,
@@ -85,10 +65,6 @@ export class IconsComponent {
     }
 
     getHighlight(name: string): boolean {
-        if (this.search.length < 2) {
-            return false;
-        }
-
-        return name.toLowerCase().includes(this.search.toLowerCase());
+        return this.search.length > 1 && TUI_DEFAULT_MATCHER(name, this.search);
     }
 }

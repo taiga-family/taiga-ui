@@ -1,31 +1,26 @@
-<form [formGroup]="testForm" class="container">
-    <div class="tui-row">
-        <div class="tui-col_md-3">
-            <tui-input
-                class="input"
-                tuiTextfieldSize="s"
-                formControlName="testValue"
-                >Type an email</tui-input
-            >
-        </div>
-        <div class="tui-col_md-3">
-            <tui-input
-                class="input"
-                tuiTextfieldSize="m"
-                formControlName="testValue"
-                [tuiTextfieldLabelOutside]="true"
-                >Type an email</tui-input
-            >
-        </div>
-        <div class="tui-col_md-3">
-            <tui-input
-                class="input"
-                tuiTextfieldExampleText="mail@mail.ru"
-                formControlName="testValue"
-                tuiHintContent="It will be used for sending documents"
-                [tuiTextfieldCleaner]="true"
-                >Type an email&nbsp;<span class="tui-required"></span
-            ></tui-input>
-        </div>
-    </div>
+<form class="b-form" [formGroup]="testForm">
+    <p>
+        <tui-input tuiTextfieldSize="s" formControlName="testValue">
+            Type an email
+        </tui-input>
+    </p>
+    <p>
+        <tui-input
+            tuiTextfieldSize="m"
+            formControlName="testValue"
+            [tuiTextfieldLabelOutside]="true"
+        >
+            Type an email
+        </tui-input>
+    </p>
+    <p>
+        <tui-input
+            tuiTextfieldExampleText="mail@mail.ru"
+            formControlName="testValue"
+            tuiHintContent="It will be used for sending documents"
+            [tuiTextfieldCleaner]="true"
+        >
+            Type an email&nbsp;<span class="tui-required"></span>
+        </tui-input>
+    </p>
 </form>

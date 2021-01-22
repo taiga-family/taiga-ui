@@ -1,20 +1,22 @@
-<form [formGroup]="testForm" class="container">
-    <div class="tui-row">
-        <div class="tui-col_md-3">
-            <tui-input
-                class="input"
-                formControlName="testValue1"
-                [textMaskOptions]="textMaskOptions1"
-                >Document number</tui-input
-            >
-        </div>
-        <div class="tui-col_md-3">
-            <tui-input
-                class="input"
-                formControlName="testValue2"
-                [textMaskOptions]="textMaskOptions2"
-                >Secret number</tui-input
-            >
-        </div>
-    </div>
+<form class="b-form" [formGroup]="testForm">
+    <tui-notification i18n>
+        Taiga UI input is compatible with
+        <a
+            tuiLink
+            href="https://www.npmjs.com/package/angular2-text-mask"
+            target="_blank"
+        >
+            angular2-text-mask
+        </a>
+    </tui-notification>
+    <p>
+        <tui-input formControlName="testValue1" [textMask]="textMaskOptions1">
+            Document number
+        </tui-input>
+    </p>
+    <p>
+        <tui-input formControlName="testValue2" [textMask]="textMaskOptions2">
+            Secret number
+        </tui-input>
+    </p>
 </form>

@@ -7,9 +7,8 @@
 ></header>
 <h2 class="heading tui-text_{{h}}" [id]="context.id">{{context.label}}</h2>
 <section polymorpheus-outlet [context]="context" [content]="content"></section>
-<div class="wrapper">
+<div *ngIf="context.closeable" class="wrapper">
     <button
-        *ngIf="context.closeable"
         tuiIconButton
         tuiPreventDefault="mousedown"
         automation-id="tui-dialog__close"
@@ -18,7 +17,7 @@
         appearance=""
         icon="tuiIconCloseLarge"
         shape="rounded"
-        [title]="closeWord"
+        [title]="closeWord$ | async"
         (click)="close()"
     ></button>
 </div>

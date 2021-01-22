@@ -11,12 +11,8 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component, Inject} from '@angular/core';
-import {
-    TUI_MONTHS,
-    TuiContextWithImplicit,
-    TuiDay,
-    TuiStringHandler,
-} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, TuiDay, TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_MONTHS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';

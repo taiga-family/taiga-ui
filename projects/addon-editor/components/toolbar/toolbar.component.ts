@@ -18,11 +18,8 @@ import {USER_AGENT} from '@ng-web-apis/common';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
-import {
-    EditorToolbarTexts,
-    TUI_EDITOR_TOOLBAR_TEXTS,
-    TUI_IMAGE_LOADER,
-} from '@taiga-ui/addon-editor/tokens';
+import {TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
+import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {isSelectionIn, tuiInsertHtml} from '@taiga-ui/addon-editor/utils';
 import {
     EMPTY_QUERY,
@@ -149,7 +146,7 @@ export class TuiToolbarComponent {
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts: Record<EditorToolbarTexts, string>,
+        readonly texts: Record<string, string>,
     ) {
         this.documentRef = shadowRootRef || documentRef;
 

@@ -1,7 +1,7 @@
 name: Build all packages of Taiga UI
 
 on:
-  push:
+  pull_request:
     branches-ignore:
       - 'release/**'
     paths-ignore:
@@ -9,6 +9,9 @@ on:
       - 'projects/demo/**'
       - 'projects/icons/**'
       - '**/*.md'
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -33,6 +36,7 @@ jobs:
     # End of setup
     - run: |
         npm run build cdk
+        npm run build i18n
         npm run build core
         npm run build kit
         npm run build addon-charts

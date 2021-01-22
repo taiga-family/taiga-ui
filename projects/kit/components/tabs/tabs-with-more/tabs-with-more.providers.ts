@@ -6,7 +6,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 import {merge, Observable} from 'rxjs';
-import {filter, startWith, takeUntil, tap} from 'rxjs/operators';
+import {debounceTime, filter, startWith, takeUntil, tap} from 'rxjs/operators';
 
 export function tabsRefreshFactory(
     resize$: Observable<unknown>,
@@ -22,6 +22,7 @@ export function tabsRefreshFactory(
     ).pipe(
         // Ignoring cases when host is detached from DOM
         filter(() => body.contains(nativeElement)),
+        debounceTime(0),
         startWith(null),
         takeUntil(destroy$),
     );
