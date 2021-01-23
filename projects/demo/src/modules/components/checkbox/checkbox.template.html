@@ -28,6 +28,15 @@
         >
             <tui-checkbox-example-2></tui-checkbox-example-2>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="small"
+            i18n-heading
+            heading="Small size"
+            [content]="example3"
+        >
+            <tui-checkbox-example-3></tui-checkbox-example-3>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -81,7 +90,7 @@
                 i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiSizeL"
+                documentationPropertyType="TuiSizeS | TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >

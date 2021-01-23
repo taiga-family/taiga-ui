@@ -10,6 +10,7 @@ import {InheritedDocumentationModule} from '../abstract/inherited-documentation/
 import {ExampleTuiCheckboxComponent} from './checkbox.component';
 import {TuiCheckboxExample1} from './examples/1';
 import {TuiCheckboxExample2} from './examples/2';
+import {TuiCheckboxExample3} from './examples/3';
 
 @NgModule({
     imports: [
@@ -24,7 +25,12 @@ import {TuiCheckboxExample2} from './examples/2';
         InheritedDocumentationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiCheckboxComponent)),
     ],
-    declarations: [ExampleTuiCheckboxComponent, TuiCheckboxExample1, TuiCheckboxExample2],
+    declarations: [
+        ExampleTuiCheckboxComponent,
+        TuiCheckboxExample1,
+        TuiCheckboxExample2,
+        TuiCheckboxExample3,
+    ],
     exports: [ExampleTuiCheckboxComponent],
 })
 export class ExampleTuiCheckboxModule {}

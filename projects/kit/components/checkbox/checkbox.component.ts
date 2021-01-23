@@ -19,7 +19,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-checkbox',
@@ -39,7 +39,7 @@ export class TuiCheckboxComponent
     @Input()
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeS | TuiSizeL = 'm';
 
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
