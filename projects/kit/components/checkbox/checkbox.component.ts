@@ -62,7 +62,7 @@ export class TuiCheckboxComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(control, changeDetectorRef);
-        this.size = options?.size ?? 'm';
+        this.size = options?.size || 'm';
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
