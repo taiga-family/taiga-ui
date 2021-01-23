@@ -5,13 +5,16 @@ import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
+import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
+import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
+
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component, forwardRef, Inject} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {TuiSizeL} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -45,9 +48,14 @@ export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiReacti
         HTML: example2Html,
     };
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly example3: FrontEndExample = {
+        TypeScript: example3Ts,
+        HTML: example3Html,
+    };
 
-    size: TuiSizeL = this.sizeVariants[0];
+    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
+
+    size: TuiSizeS | TuiSizeL = this.sizeVariants[1];
 
     control = new FormGroup({
         testValue1: new FormControl(false),

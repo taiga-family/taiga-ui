@@ -46,11 +46,11 @@
     }
 
     :host[data-tui-host-size='m'] & {
-        min-height: var(--tui-height-l);
+        min-height: var(--tui-height-m);
     }
 
     :host[data-tui-host-size='l'] & {
-        min-height: var(--tui-height-xl);
+        min-height: var(--tui-height-l);
     }
 }
 
@@ -58,69 +58,55 @@
     display: flex;
     align-items: center;
     min-height: inherit;
+    padding-left: calc(var(--tui-height-m) / 2);
+    padding-right: calc(var(--tui-height-m) / 2);
 
     :host[data-tui-host-align='right'] & {
         flex-direction: row-reverse;
     }
 
     :host[data-tui-host-size='s'] & {
-        padding: 0 16px 0 8px;
-    }
-
-    :host[data-tui-host-size='s'][data-tui-host-align='right'] & {
-        padding: 0 8px 0 16px;
-    }
-
-    :host[data-tui-host-size='s']._hidden_checkbox & {
-        padding: 0 16px;
-    }
-
-    :host[data-tui-host-size='m'] & {
-        padding: 0 16px 0 12px;
-    }
-
-    :host[data-tui-host-size='m'][data-tui-host-align='right'] & {
-        padding: 0 12px 0 16px;
-    }
-
-    :host[data-tui-host-size='m']._hidden_checkbox & {
-        padding: 0 24px;
+        padding-left: calc(var(--tui-height-s) / 2);
+        padding-right: calc(var(--tui-height-s) / 2);
     }
 
     :host[data-tui-host-size='l'] & {
-        padding: 0 16px;
-    }
-
-    :host[data-tui-host-size='l']._hidden_checkbox & {
-        padding: 0 36px;
+        padding-left: calc(var(--tui-height-l) / 2);
+        padding-right: calc(var(--tui-height-l) / 2);
     }
 }
 
 .view {
-    margin-top: 12px;
-    margin-right: 12px;
+    margin-top: calc(var(--tui-height-m) / 4);
+    margin-left: calc(var(--tui-height-m) / -4);
+    margin-right: calc(var(--tui-height-m) / 4);
     align-self: flex-start;
 
     :host[data-tui-host-align='right'] & {
-        margin-left: 12px;
-        margin-right: 0;
+        margin-left: calc(var(--tui-height-m) / 4);
+        margin-right: calc(var(--tui-height-m) / -4);
     }
 
     :host[data-tui-host-size='s'] & {
-        margin-top: 8px;
-        margin-right: 8px;
+        margin-top: calc(var(--tui-height-s) / 4);
+        margin-left: calc(var(--tui-height-s) / -4);
+        margin-right: calc(var(--tui-height-s) / 4);
     }
 
     :host[data-tui-host-size='s'][data-tui-host-align='right'] & {
-        margin-left: 8px;
-    }
-
-    :host[data-tui-host-size='m'] & {
-        margin-top: 14px;
+        margin-left: calc(var(--tui-height-s) / 4);
+        margin-right: calc(var(--tui-height-s) / -4);
     }
 
     :host[data-tui-host-size='l'] & {
-        margin-top: 16px;
+        margin-top: calc(var(--tui-height-l) / 4);
+        margin-left: calc(var(--tui-height-l) / -4);
+        margin-right: calc(var(--tui-height-l) / 4);
+    }
+
+    :host[data-tui-host-size='l'][data-tui-host-align='right'] & {
+        margin-left: calc(var(--tui-height-l) / 4);
+        margin-right: calc(var(--tui-height-l) / -4);
     }
 
     :host._hidden_checkbox & {

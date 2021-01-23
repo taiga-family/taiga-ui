@@ -26,12 +26,17 @@
 }
 
 .content {
-    .text-body-s(2);
+    .text-body-s();
     word-wrap: break-word;
     min-width: 0;
 
     &_disabled {
         opacity: var(--tui-disabled-opacity);
+    }
+
+    :host[data-tui-host-size='s'] & {
+        .text-body-s(2);
+        margin-left: 8px;
     }
 
     :host[data-tui-host-size='m'] & {
