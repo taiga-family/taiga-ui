@@ -1,5 +1,5 @@
 {
-    "name": "@taiga-ui/components",
+    "name": "@taiga-ui/cdk",
     "version": "2.2.1",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "scripts": {
