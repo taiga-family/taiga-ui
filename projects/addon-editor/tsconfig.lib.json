@@ -1,3 +1,6 @@
 {
+    "compilerOptions": {
+        "declarationMap": true
+    },
     "extends": "../../tsconfig.build.json"
 }

@@ -8,5 +8,8 @@
     ],
     "license": "Apache-2.0",
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "dependencies": {
+        "tslib": "^2.0.0"
+    },
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui"
 }

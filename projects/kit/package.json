@@ -26,7 +26,8 @@
     },
     "dependencies": {
         "angular2-text-mask": "9.0.0",
-        "@ng-web-apis/intersection-observer": "2.0.1"
+        "@ng-web-apis/intersection-observer": "2.0.1",
+        "tslib": "^2.0.0"
     },
     "devDependencies": {
         "@taiga-ui/core": "2.2.1"

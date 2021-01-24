@@ -1,4 +1,4 @@
-import {OnDestroy} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 
 /**
  * Use this abstract class to create your own toggleable themes.
@@ -6,6 +6,9 @@ import {OnDestroy} from '@angular/core';
  * and have ViewEncapsulation set to NONE. A boolean input allows to
  * switch theme on or off.
  */
+@Component({
+    template: '',
+})
 export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
     static style: HTMLStyleElement | null = null;
 

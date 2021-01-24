@@ -20,6 +20,9 @@
         "@taiga-ui/cdk": "2.2.1",
         "@taiga-ui/core": "2.2.1"
     },
+    "dependencies": {
+        "tslib": "^2.0.0"
+    },
     "devDependencies": {
         "@taiga-ui/core": "2.2.1"
     }

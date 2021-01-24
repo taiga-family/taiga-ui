@@ -1396,6 +1396,7 @@ export const ROUTES = [
         RouterModule.forRoot(ROUTES, {
             initialNavigation: 'enabled',
             scrollPositionRestoration: 'top',
+            relativeLinkResolution: 'legacy',
         }),
     ],
     exports: [RouterModule],

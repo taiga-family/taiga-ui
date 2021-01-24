@@ -20,6 +20,9 @@
         "@taiga-ui/core": "2.2.1",
         "rxjs": ">=6.0.0"
     },
+    "dependencies": {
+        "tslib": "^2.0.0"
+    },
     "devDependencies": {
         "@taiga-ui/core": "2.2.1"
     }

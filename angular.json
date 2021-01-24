@@ -1,5 +1,8 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "cli": {
+        "analytics": false
+    },
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
@@ -10,7 +13,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/cdk/tsconfig.lib.json",
                         "project": "projects/cdk/ng-package.json"
@@ -48,7 +51,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/i18n/tsconfig.lib.json",
                         "project": "projects/i18n/ng-package.json"
@@ -75,7 +78,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/core/tsconfig.lib.json",
                         "project": "projects/core/ng-package.json"
@@ -113,7 +116,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/kit/tsconfig.lib.json",
                         "project": "projects/kit/ng-package.json"
@@ -154,7 +157,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/icons/tsconfig.lib.json",
                         "project": "projects/icons/ng-package.json"
@@ -181,7 +184,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/addon-charts/tsconfig.lib.json",
                         "project": "projects/addon-charts/ng-package.json"
@@ -222,7 +225,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/addon-commerce/tsconfig.lib.json",
                         "project": "projects/addon-commerce/ng-package.json"
@@ -263,7 +266,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/addon-mobile/tsconfig.lib.json",
                         "project": "projects/addon-mobile/ng-package.json"
@@ -304,7 +307,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/addon-tablebars/tsconfig.lib.json",
                         "project": "projects/addon-tablebars/ng-package.json"
@@ -345,7 +348,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/addon-table/tsconfig.lib.json",
                         "project": "projects/addon-table/ng-package.json"
@@ -386,7 +389,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/addon-editor/tsconfig.lib.json",
                         "project": "projects/addon-editor/ng-package.json"
@@ -427,7 +430,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/addon-doc/tsconfig.lib.json",
                         "project": "projects/addon-doc/ng-package.json"
@@ -468,7 +471,7 @@
             "prefix": "tui",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/testing/tsconfig.lib.json",
                         "project": "projects/testing/ng-package.json"
@@ -532,8 +535,7 @@
                         "scripts": [
                             "node_modules/prismjs/prism.js",
                             "node_modules/marked/lib/marked.js"
-                        ],
-                        "es5BrowserSupport": true
+                        ]
                     },
                     "configurations": {
                         "production": {
@@ -546,7 +548,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": true,

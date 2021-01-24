@@ -2,6 +2,9 @@
     "rulesDirectory": ["node_modules/@tinkoff"],
     "extends": ["@tinkoff/linters/tslint/bases/prettier.tslint.json"],
     "rules": {
+        "deprecation": {
+            "severity": "warning"
+        },
         "ordered-imports": true,
         "tinkoff-angular-member-ordering": false
     },
