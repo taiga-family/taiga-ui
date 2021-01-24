@@ -16,7 +16,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-ring-chart',
     templateUrl: './ring-chart.template.html',
-    styleUrls: ['./ring-chart.style.less'],
+    styleUrls: ['./ring-chart.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiRingChartComponent {

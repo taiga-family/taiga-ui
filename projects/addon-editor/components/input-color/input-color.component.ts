@@ -38,7 +38,7 @@ export function longDropdownControllerFactory(
 @Component({
     selector: 'tui-input-color',
     templateUrl: './input-color.template.html',
-    styleUrls: ['./input-color.style.less'],
+    styleUrls: ['./input-color.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

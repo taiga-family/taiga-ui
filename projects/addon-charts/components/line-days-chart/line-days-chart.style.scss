@@ -1,0 +1,9 @@
+@use 'taiga-ui-local';
+
+:host {
+    display: block;
+}
+
+.chart {
+    @include fullsize();
+}

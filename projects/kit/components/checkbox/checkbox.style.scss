@@ -1,0 +1,33 @@
+@use 'taiga-ui-local';
+
+$sizeM: 16px;
+$sizeL: 24px;
+
+:host {
+    @include text-basic();
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+
+    &[data-tui-host-size='m'] {
+        width: $sizeM;
+        height: $sizeM;
+    }
+
+    &[data-tui-host-size='l'] {
+        width: $sizeL;
+        height: $sizeL;
+    }
+}
+
+.native {
+    @include clearinput();
+    @include fullsize();
+    opacity: 0;
+    cursor: pointer;
+
+    :host._disabled &,
+    :host._readonly & {
+        pointer-events: none;
+    }
+}

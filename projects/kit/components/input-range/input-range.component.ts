@@ -30,7 +30,7 @@ import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
 @Component({
     selector: 'tui-input-range',
     templateUrl: './input-range.template.html',
-    styleUrls: ['./input-range.style.less'],
+    styleUrls: ['./input-range.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

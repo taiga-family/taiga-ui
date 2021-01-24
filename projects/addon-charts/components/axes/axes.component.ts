@@ -7,7 +7,7 @@ import {CHAR_NO_BREAK_SPACE, tuiDefaultProp} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-axes',
     templateUrl: './axes.template.html',
-    styleUrls: ['./axes.style.less'],
+    styleUrls: ['./axes.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAxesComponent {

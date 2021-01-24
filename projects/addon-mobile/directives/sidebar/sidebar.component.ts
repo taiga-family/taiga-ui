@@ -6,7 +6,7 @@ import {TuiSidebarDirective} from './sidebar.directive';
 @Component({
     selector: 'aside[tuiSidebar]',
     templateUrl: './sidebar.template.html',
-    styleUrls: ['./sidebar.style.less'],
+    styleUrls: ['./sidebar.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideIn],
 })

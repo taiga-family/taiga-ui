@@ -4,7 +4,7 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 @Component({
     selector: 'tui-manual-hint-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
 })
 export class TuiManualHintExample1 {

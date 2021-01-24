@@ -6,7 +6,7 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 @Component({
     selector: 'tui-data-list-wrapper[labels]',
     templateUrl: './data-list-group-wrapper.template.html',
-    styleUrls: ['./data-list-wrapper.style.less'],
+    styleUrls: ['./data-list-wrapper.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

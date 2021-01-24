@@ -10,7 +10,7 @@ import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 // @dynamic
 @Component({
     selector: 'tui-theme-ios',
-    styleUrls: ['./theme-ios.style.less'],
+    styleUrls: ['./theme-ios.style.scss'],
     template: '',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,

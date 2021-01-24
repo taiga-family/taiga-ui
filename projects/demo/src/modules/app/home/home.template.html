@@ -10,13 +10,13 @@
             </a>
         </li>
         <li>
-            <a tuiLink routerLink="." fragment="less" i18n>
-                Styles for LESS projects
+            <a tuiLink routerLink="." fragment="scss" i18n>
+                Styles for exampleBasicImportsScss projects
             </a>
         </li>
         <li>
-            <a tuiLink routerLink="." fragment="not-less" i18n>
-                Styles for not LESS projects
+            <a tuiLink routerLink="." fragment="not-scss" i18n>
+                Styles for not SCSS projects
             </a>
         </li>
         <li>
@@ -61,12 +61,12 @@
                     I have a project with LESS
                     <ng-template tuiAccordionItemContent>
                         Import our global styles in yours
-                        <code>styles.less</code>. It adds global classes and CSS
+                        <code>styles.scss</code>. It adds global classes and CSS
                         variables
 
                         <tui-doc-code
-                            filename="styles.less"
-                            [code]="examples.importBaseLess"
+                            filename="styles.scss"
+                            [code]="examples.importBaseScss"
                         ></tui-doc-code>
 
                         <p>
@@ -74,8 +74,8 @@
                             LESS-variables to use it in your LESS files
 
                             <tui-doc-code
-                                filename="my.component.less"
-                                [code]="examples.importLocalLess"
+                                filename="my.component.scss"
+                                [code]="examples.importLocalScss"
                             ></tui-doc-code>
                         </p>
                     </ng-template>
@@ -106,7 +106,7 @@
                         <p>Angular resolves it automatically</p>
 
                         <tui-doc-code
-                            filename="my.component.less"
+                            filename="my.component.scss"
                             [code]="examples.importLocalLess"
                         ></tui-doc-code>
                     </ng-template>
@@ -215,8 +215,8 @@
                 downloaded and inlined directly into DOM. However, Angular
                 <code>Sanitizer</code> removes <code>SVG</code> code in that
                 case. To use a custom sanitizer that properly supports
-                <code>SVG</code> provide the <code>TUI_SANITIZER</code> token. We
-                recommend you to use our library
+                <code>SVG</code> provide the <code>TUI_SANITIZER</code> token.
+                We recommend you to use our library
                 <a
                     target="_blank"
                     href="https://github.com/TinkoffCreditSystems/ng-dompurify"

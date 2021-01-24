@@ -1,0 +1,65 @@
+@use 'taiga-ui-local';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: var(--tui-base-01);
+    // fix for Safari to prevent tabs underline above sidebar
+    z-index: 1;
+}
+
+.input {
+    display: block;
+    margin: 20px;
+}
+
+.navigation {
+    display: flex;
+    max-height: 100%;
+    min-height: 0;
+    flex: 1 1 0;
+    text-align: left;
+}
+
+.scrollbar {
+    width: 100%;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: -16px 0 -8px;
+
+    &_bordered {
+        margin: 8px 0;
+        border-left: 1px solid var(--tui-base-03);
+    }
+}
+
+.subsection {
+    margin-left: 8px;
+}
+
+.sublink {
+    @include clearbtn();
+    @include text-body-m();
+    margin-left: 8px;
+    line-height: 44px;
+    color: var(--tui-text-02);
+
+    &_small {
+        margin-left: 16px;
+        line-height: 24px;
+
+        &:not(:first-child) {
+            margin-top: 16px;
+        }
+    }
+
+    &_subsection {
+        margin-left: 0;
+        line-height: 44px;
+    }
+}

@@ -6,8 +6,8 @@
           "options": {
             "styles": [
               "src/styles.scss",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less"
+              "node_modules/@taiga-ui/core/styles/taiga-ui-global.scss",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.scss"
             ]
           }
         }

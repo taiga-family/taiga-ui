@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-table-pagination',
     templateUrl: './table-pagination.template.html',
-    styleUrls: ['./table-pagination.style.less'],
+    styleUrls: ['./table-pagination.style.scss'],
 })
 export class TuiTablePaginationComponent {
     @Input()

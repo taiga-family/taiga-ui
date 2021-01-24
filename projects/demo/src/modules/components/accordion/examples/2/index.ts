@@ -15,7 +15,7 @@ class Account {
 @Component({
     selector: 'tui-accordion-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

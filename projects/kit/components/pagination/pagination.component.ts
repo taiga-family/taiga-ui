@@ -47,7 +47,7 @@ export function nonNegativeInteger(length: number): boolean {
 @Component({
     selector: 'tui-pagination',
     templateUrl: './pagination.template.html',
-    styleUrls: ['./pagination.style.less'],
+    styleUrls: ['./pagination.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

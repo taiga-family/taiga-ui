@@ -24,7 +24,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-loader',
     templateUrl: './loader.template.html',
-    styleUrls: ['./loader.style.less'],
+    styleUrls: ['./loader.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLoaderComponent {

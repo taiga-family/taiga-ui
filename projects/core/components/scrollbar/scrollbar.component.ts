@@ -24,7 +24,7 @@ export function scrollRefFactory({
 @Component({
     selector: 'tui-scrollbar',
     templateUrl: './scrollbar.template.html',
-    styleUrls: ['./scrollbar.style.less'],
+    styleUrls: ['./scrollbar.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

@@ -1,4 +1,4 @@
-import {default as basicImportsLess} from '!!raw-loader!./examples/import/basic-imports-less.txt';
+import {default as basicImportsScss} from '!!raw-loader!./examples/import/basic-imports-less.txt';
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {
@@ -15,12 +15,12 @@ import {
 @Component({
     selector: 'colors',
     templateUrl: 'colors.template.html',
-    styleUrls: ['colors.style.less'],
+    styleUrls: ['colors.style.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
 export class ColorsComponent {
-    readonly basicImportsLess = basicImportsLess;
+    readonly basicImportsScss = basicImportsScss;
 
     readonly base = BASE;
     readonly baseNight = BASE_NIGHT;

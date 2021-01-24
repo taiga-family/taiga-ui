@@ -7,7 +7,7 @@ import {TUI_DOC_PAGES} from '../../tokens/pages';
 @Component({
     selector: 'tui-doc-see-also',
     templateUrl: './see-also.template.html',
-    styleUrls: ['./see-also.style.less'],
+    styleUrls: ['./see-also.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocSeeAlsoComponent {

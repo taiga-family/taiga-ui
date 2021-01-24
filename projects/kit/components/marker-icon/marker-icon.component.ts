@@ -19,7 +19,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-marker-icon',
     templateUrl: './marker-icon.template.html',
-    styleUrls: ['./marker-icon.style.less'],
+    styleUrls: ['./marker-icon.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, MODE_PROVIDER],
 })

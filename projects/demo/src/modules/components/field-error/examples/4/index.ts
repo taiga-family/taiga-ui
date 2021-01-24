@@ -27,7 +27,7 @@ function asyncValidatorFn(): AsyncValidatorFn {
 @Component({
     selector: 'tui-field-error-example-4',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

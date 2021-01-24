@@ -4,7 +4,7 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 @Component({
     selector: 'tui-media-example-3',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })

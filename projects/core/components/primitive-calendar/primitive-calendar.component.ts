@@ -30,7 +30,7 @@ const ROWS_COUNT = 6;
 @Component({
     selector: 'tui-primitive-calendar',
     templateUrl: './primitive-calendar.template.html',
-    styleUrls: ['./primitive-calendar.style.less'],
+    styleUrls: ['./primitive-calendar.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarComponent {

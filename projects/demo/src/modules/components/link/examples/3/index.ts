@@ -6,7 +6,7 @@ import {LogService} from '../../../../app/log.service';
 @Component({
     selector: 'tui-link-example-3',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
     providers: [LogService],

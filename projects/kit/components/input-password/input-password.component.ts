@@ -27,7 +27,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-input-password',
     templateUrl: './input-password.template.html',
-    styleUrls: ['./input-password.style.less'],
+    styleUrls: ['./input-password.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

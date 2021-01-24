@@ -28,7 +28,7 @@ const LOADER_HEIGHT = 48;
     selector: 'tui-expand',
     templateUrl: './expand.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    styleUrls: ['./expand.style.less'],
+    styleUrls: ['./expand.style.scss'],
 })
 export class TuiExpandComponent {
     @Input()

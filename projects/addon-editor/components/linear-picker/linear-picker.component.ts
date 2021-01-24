@@ -14,7 +14,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-linear-picker',
     templateUrl: './linear-picker.template.html',
-    styleUrls: ['./linear-picker.style.less'],
+    styleUrls: ['./linear-picker.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, TuiPickerService],
 })

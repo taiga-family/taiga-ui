@@ -6,7 +6,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 @Component({
     selector: 'example-dom',
     templateUrl: './dom.template.html',
-    styleUrls: ['./dom.style.less'],
+    styleUrls: ['./dom.style.scss'],
     changeDetection,
 })
 export class ExampleDomComponent {

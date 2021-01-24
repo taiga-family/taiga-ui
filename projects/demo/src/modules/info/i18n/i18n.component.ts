@@ -4,7 +4,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 @Component({
     selector: 'i18n',
     templateUrl: './i18n.template.html',
-    styleUrls: ['./i18n.style.less'],
+    styleUrls: ['./i18n.style.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })

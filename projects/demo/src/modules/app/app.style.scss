@@ -1,0 +1,44 @@
+@use 'taiga-ui-local';
+
+:host._landing {
+    /* stylelint-disable */
+    ::ng-deep tui-doc-navigation,
+    ::ng-deep header[tuiDocHeader] {
+        display: none;
+    }
+    /* stylelint-enable */
+}
+
+.christmas {
+    position: absolute;
+    left: 5px;
+    top: 7px;
+    width: 32px;
+    height: 32px;
+    transform: rotate(20deg);
+    margin-left: 20px;
+
+    @media #{$tablet-s} {
+        left: 40px;
+    }
+}
+
+.version {
+    margin: 1em 0;
+}
+
+.link {
+    font-weight: bold;
+    height: 24px;
+
+    @media #{$mobile} {
+        font-size: 0;
+    }
+}
+
+.github {
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+    vertical-align: -6px;
+}

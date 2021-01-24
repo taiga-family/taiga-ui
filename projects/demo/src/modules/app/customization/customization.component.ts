@@ -16,7 +16,7 @@ import {
 @Component({
     selector: 'tui-customization',
     templateUrl: './customization.template.html',
-    styleUrls: ['./customization.style.less'],
+    styleUrls: ['./customization.style.scss'],
     changeDetection,
     providers: TUI_DOC_CUSTOMIZATION_PROVIDERS,
 })

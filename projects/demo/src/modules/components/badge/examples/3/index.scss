@@ -1,0 +1,5 @@
+@use 'taiga-ui-local';
+
+.badge {
+    @include gradient(#c86dd7, #3023ae);
+}

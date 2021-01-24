@@ -8,7 +8,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 @Component({
     selector: 'example-tui-filter',
     templateUrl: './filter.template.html',
-    styleUrls: ['./filter.style.less'],
+    styleUrls: ['./filter.style.scss'],
     changeDetection,
 })
 export class ExampleTuiFilterComponent {

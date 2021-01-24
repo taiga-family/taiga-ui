@@ -31,7 +31,7 @@ const databaseMockData: ReadonlyArray<User> = [
 @Component({
     selector: 'tui-multi-select-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

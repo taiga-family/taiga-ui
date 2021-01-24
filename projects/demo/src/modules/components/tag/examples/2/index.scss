@@ -1,0 +1,26 @@
+.tag {
+    margin: 4px;
+}
+
+.light-mode {
+    display: inline-block;
+    background-color: #454e58;
+}
+
+.dark-mode {
+    display: inline-block;
+    margin-left: 4px;
+    background-color: #e5e7ea;
+}
+
+$iterations: 20;
+
+@mixin loop($start) {
+    @for $i from $start through $iterations {
+        .support-#{$i} {
+            background-color: var(--tui-support-#{$i}, var(--tui-support-0#{$i}));
+        }
+    }
+}
+
+@include loop($iterations);

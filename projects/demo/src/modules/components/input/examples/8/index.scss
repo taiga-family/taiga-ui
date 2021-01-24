@@ -1,0 +1,12 @@
+@use 'taiga-ui-local';
+
+.avatar {
+    margin: 0 $space * 2 0 0;
+    flex-shrink: 0;
+}
+
+.name {
+    @include text-overflow();
+    flex-shrink: 1;
+    margin-right: auto;
+}

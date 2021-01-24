@@ -528,7 +528,7 @@
                         "baseHref": "/",
                         "deployUrl": "/",
                         "showCircularDependencies": false,
-                        "styles": ["projects/demo/src/styles.less"],
+                        "styles": ["projects/demo/src/styles.scss"],
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         },
@@ -696,5 +696,8 @@
             }
         }
     },
-    "defaultProject": "demo"
+    "defaultProject": "demo",
+    "cli": {
+        "analytics": "8c9a15ac-34c3-47f5-9613-3bf19515e32a"
+    }
 }

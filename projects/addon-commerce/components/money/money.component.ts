@@ -8,7 +8,7 @@ import {formatNumber, TuiDecimal} from '@taiga-ui/core';
     selector: 'tui-money',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './money.template.html',
-    styleUrls: ['./money.style.less'],
+    styleUrls: ['./money.style.scss'],
 })
 export class TuiMoneyComponent {
     @Input()

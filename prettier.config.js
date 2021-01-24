@@ -9,10 +9,10 @@ module.exports = {
             },
         },
         {
-            files: '*.less',
+            files: '*.scss',
             options: {
                 printWidth: 120,
-                parser: 'less',
+                parser: 'scss',
             },
         },
     ],

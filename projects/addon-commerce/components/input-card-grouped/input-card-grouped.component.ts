@@ -62,7 +62,7 @@ const icons = {
 @Component({
     selector: 'tui-input-card-grouped',
     templateUrl: './input-card-grouped.template.html',
-    styleUrls: ['./input-card-grouped.style.less'],
+    styleUrls: ['./input-card-grouped.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,

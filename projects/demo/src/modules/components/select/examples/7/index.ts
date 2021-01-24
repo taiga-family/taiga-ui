@@ -43,7 +43,7 @@ const CASH: Account = {
 @Component({
     selector: 'tui-select-example-7',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

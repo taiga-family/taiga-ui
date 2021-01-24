@@ -23,7 +23,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-slider',
     templateUrl: '../../abstract/slider/slider.common.template.html',
-    styleUrls: ['../../abstract/slider/slider.common.style.less', './slider.style.less'],
+    styleUrls: ['../../abstract/slider/slider.common.style.scss', './slider.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

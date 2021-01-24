@@ -69,7 +69,7 @@ const EVENT_Y_TO_X_COEFFICENT = 3;
     selector: 'tui-input-tag',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './input-tag.template.html',
-    styleUrls: ['./input-tag.style.less'],
+    styleUrls: ['./input-tag.style.scss'],
     providers: [
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,

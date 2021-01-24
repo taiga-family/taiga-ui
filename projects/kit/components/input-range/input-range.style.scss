@@ -1,0 +1,163 @@
+@use 'taiga-ui-local';
+
+$padding: 16px;
+$padding2: $padding * 2;
+
+:host {
+    @include text-body-m(2);
+    @include createStackingContext();
+    display: block;
+    border-radius: var(--tui-radius);
+    color: var(--tui-text-01);
+
+    &._segmented {
+        border-bottom: 26px solid transparent;
+    }
+
+    &[data-tui-host-mode='onDark'] {
+        color: var(--tui-base-01);
+    }
+}
+
+.zone {
+    border-radius: inherit;
+}
+
+.native-wrapper {
+    @include fullsize();
+    display: flex;
+}
+
+.pluralize {
+    display: flex;
+    align-items: center;
+    padding-right: 12px;
+    margin-left: -8px;
+
+    &_right {
+        margin-left: -12px;
+
+        :host[data-tui-host-size='l'] & {
+            padding-top: 20px;
+        }
+
+        :host._disabled & {
+            color: var(--tui-text-03);
+        }
+
+        :host[data-tui-host-mode='onDark']._disabled & {
+            color: var(--tui-text-03-night);
+        }
+    }
+}
+
+.native {
+    @include clearinput();
+    flex: 1;
+    min-width: 0;
+    color: var(--tui-text-01);
+    box-sizing: border-box;
+    padding: 0 $padding;
+    outline: none;
+
+    &_right {
+        text-align: right;
+    }
+
+    &_hidden {
+        opacity: 0;
+    }
+
+    :host._disabled & {
+        color: var(--tui-text-03);
+        user-select: none;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        padding: 20px $padding 0;
+    }
+
+    :host[data-tui-host-mode='onDark'] & {
+        color: var(--tui-text-01-night);
+    }
+
+    :host[data-tui-host-mode='onDark']._disabled & {
+        color: var(--tui-text-03-night);
+    }
+}
+
+.content {
+    display: flex;
+    height: var(--tui-height-l);
+    padding: 0 $padding;
+    justify-content: space-between;
+    align-items: center;
+
+    :host[data-tui-host-size='l'] & {
+        height: var(--tui-height-xl);
+        padding: 0 $padding;
+    }
+
+    :host[data-tui-host-size='l']._disabled & {
+        color: var(--tui-text-03);
+    }
+
+    :host[data-tui-host-size='l'][data-tui-host-mode='onDark']._disabled & {
+        color: var(--tui-text-03-night);
+    }
+}
+
+.placeholder {
+    @include textfield-placeholder();
+    @include fullsize();
+    left: $padding;
+    transform: translateY(-10px) scale(0.87);
+    line-height: var(--tui-height-xl);
+    max-width: calc(114% - ${padding2});
+}
+
+.value {
+    visibility: hidden;
+    overflow: hidden;
+    padding-right: 12px;
+
+    :host._disabled & {
+        color: var(--tui-text-03);
+    }
+}
+
+.label {
+    display: flex;
+    width: 50%;
+
+    :host[data-tui-host-size='l'] & {
+        padding-top: 20px;
+    }
+}
+
+.max {
+    text-align: right;
+    flex: 1;
+
+    :host[data-tui-host-size='l'] & {
+        padding-top: 20px;
+        line-height: calc(var(--tui-height-xl) - 20px);
+    }
+}
+
+.slider {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin: -9px 0 0;
+    color: transparent;
+
+    :host._disabled &,
+    :host._readonly & {
+        pointer-events: none;
+    }
+}

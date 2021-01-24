@@ -28,7 +28,7 @@ const COMPLETED = {
 @Component({
     selector: 'tui-filter-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

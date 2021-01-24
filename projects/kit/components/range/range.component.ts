@@ -26,7 +26,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-range',
     templateUrl: '../../abstract/slider/slider.common.template.html',
-    styleUrls: ['../../abstract/slider/slider.common.style.less'],
+    styleUrls: ['../../abstract/slider/slider.common.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

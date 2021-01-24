@@ -7,7 +7,7 @@ import {TuiTextAlign} from '@taiga-ui/kit/enums';
     selector: 'tui-island, a[tuiIsland]',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './island.template.html',
-    styleUrls: ['./island.style.less'],
+    styleUrls: ['./island.style.scss'],
     host: {
         class: 'tui-island',
     },

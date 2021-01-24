@@ -16,7 +16,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-tooltip',
     templateUrl: './tooltip.template.html',
-    styleUrls: ['./tooltip.style.less'],
+    styleUrls: ['./tooltip.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, MODE_PROVIDER],
 })

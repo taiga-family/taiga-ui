@@ -1,0 +1,52 @@
+$sizes: 15;
+
+@mixin generate-space($direction, $start: 0) {
+    @for $i from $start through $sizes {
+        &_#{$direction}-#{$i} {
+            @if ($direction == all) {
+                margin: $space * $i;
+            }
+
+            @if ($direction == top) {
+                margin-top: $space * $i;
+            }
+
+            @if ($direction == bottom) {
+                margin-bottom: $space * $i;
+            }
+
+            @if ($direction == vertical) {
+                margin-top: $space * $i;
+                margin-bottom: $space * $i;
+            }
+
+            @if ($direction == left) {
+                margin-left: $space * $i;
+            }
+
+            @if ($direction == right) {
+                margin-right: $space * $i;
+            }
+
+            @if ($direction == horizontal) {
+                margin-right: $space * $i;
+                margin-left: $space * $i;
+            }
+        }
+    }
+}
+
+.tui-space {
+    @include generate-space(all);
+    @include generate-space(top);
+    @include generate-space(bottom);
+    @include generate-space(vertical);
+    @include generate-space(left);
+    @include generate-space(right);
+    @include generate-space(horizontal);
+
+    &_auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

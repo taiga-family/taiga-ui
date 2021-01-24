@@ -8,7 +8,7 @@ const SOME_OFFSET_CONST = 20;
 @Component({
     selector: 'tui-scrollbar-example-3',
     templateUrl: './template.html',
-    styleUrls: ['./style.less'],
+    styleUrls: ['./style.scss'],
     changeDetection,
     encapsulation,
 })

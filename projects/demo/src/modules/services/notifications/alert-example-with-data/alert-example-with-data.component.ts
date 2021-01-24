@@ -6,7 +6,7 @@ import {changeDetection} from '../../../../change-detection-strategy';
 @Component({
     selector: 'tui-notifications-service-example-with-data',
     templateUrl: './alert-example-with-data.template.html',
-    styleUrls: ['./alert-example-with-data.style.less'],
+    styleUrls: ['./alert-example-with-data.style.scss'],
     changeDetection,
 })
 export class AlertExampleWithDataComponent {

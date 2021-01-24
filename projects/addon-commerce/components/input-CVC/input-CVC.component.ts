@@ -30,7 +30,7 @@ import {
 @Component({
     selector: 'tui-input-cvc',
     templateUrl: './input-CVC.template.html',
-    styleUrls: ['./input-CVC.style.less'],
+    styleUrls: ['./input-CVC.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

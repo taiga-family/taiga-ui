@@ -1,0 +1,5 @@
+@use 'taiga-ui-local';
+
+.tariff {
+    @include text-body-s-bold();
+}

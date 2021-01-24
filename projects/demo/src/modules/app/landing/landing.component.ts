@@ -12,7 +12,7 @@ import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
 @Component({
     selector: 'landing',
     templateUrl: './landing.template.html',
-    styleUrls: ['./landing.style.less'],
+    styleUrls: ['./landing.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

@@ -5,7 +5,7 @@ import {TuiColor} from '@taiga-ui/core/types';
 import {COLOR} from './color.const';
 
 /**
- * See tui-palette.less for global color styles or add your own named colors similarly
+ * See tui-palette.scss for global color styles or add your own named colors similarly
  */
 @Directive({
     selector: '[tuiColor],[tuiBackground]',

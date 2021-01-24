@@ -1,0 +1,14 @@
+@use 'taiga-ui-local';
+
+:host {
+    display: block;
+}
+
+.heading {
+    @include text-h3();
+    margin: 0 0 24px;
+}
+
+.text {
+    margin: 0 0 12px;
+}

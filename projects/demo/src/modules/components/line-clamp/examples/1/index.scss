@@ -1,0 +1,13 @@
+@use 'taiga-ui-local';
+
+:host {
+    display: block;
+}
+
+.island {
+    width: 320px;
+}
+
+.hint {
+    @include text-body-s();
+}

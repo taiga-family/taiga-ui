@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-reorder',
     templateUrl: './reorder.template.html',
-    styleUrls: ['./reorder.style.less'],
+    styleUrls: ['./reorder.style.scss'],
 })
 export class TuiReorderComponent<T = string> {
     @Input()

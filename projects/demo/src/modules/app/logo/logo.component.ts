@@ -4,7 +4,7 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'logo',
     templateUrl: './logo.template.html',
-    styleUrls: ['./logo.style.less'],
+    styleUrls: ['./logo.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LogoComponent {}

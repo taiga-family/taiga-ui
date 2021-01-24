@@ -5,11 +5,11 @@ import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
-import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
+import {default as example4Less} from '!!raw-loader!./examples/4/index.scss';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
 import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
-import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
+import {default as example5Less} from '!!raw-loader!./examples/5/index.scss';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
 
 import {default as importComponentExample} from '!!raw-loader!./examples/import/import-component.txt';

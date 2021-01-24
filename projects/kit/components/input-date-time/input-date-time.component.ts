@@ -50,7 +50,7 @@ import {map} from 'rxjs/operators';
 @Component({
     selector: 'tui-input-date-time',
     templateUrl: './input-date-time.template.html',
-    styleUrls: ['./input-date-time.style.less'],
+    styleUrls: ['./input-date-time.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

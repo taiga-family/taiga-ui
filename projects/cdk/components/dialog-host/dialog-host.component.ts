@@ -8,7 +8,7 @@ import {merge, Observable} from 'rxjs';
 @Component({
     selector: 'tui-dialog-host',
     templateUrl: './dialog-host.template.html',
-    styleUrls: ['./dialog-host.style.less'],
+    styleUrls: ['./dialog-host.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [TUI_PARENT_ANIMATION],
 })

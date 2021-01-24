@@ -32,7 +32,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-radio-list',
     templateUrl: './radio-list.template.html',
-    styleUrls: ['./radio-list.style.less'],
+    styleUrls: ['./radio-list.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

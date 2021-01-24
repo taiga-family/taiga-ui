@@ -32,7 +32,7 @@ import {AlertExampleWithDataComponent} from './alert-example-with-data/alert-exa
 @Component({
     selector: 'example-tui-notifications',
     templateUrl: './notifications.template.html',
-    styleUrls: ['./notifications.style.less'],
+    styleUrls: ['./notifications.style.scss'],
     changeDetection,
 })
 export class ExampleTuiNotificationsComponent {

@@ -1,0 +1,18 @@
+@use 'taiga-ui-local';
+
+:host {
+    display: flex;
+    flex-direction: column;
+
+    // Overriding default behavior
+    &:before {
+        content: '';
+    }
+}
+
+.label {
+    @include text-body-xs();
+    @include text-overflow();
+    flex: 1;
+    color: var(--tui-text-02);
+}

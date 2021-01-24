@@ -26,7 +26,7 @@ const databaseMockData: ReadonlyArray<User> = [
 @Component({
     selector: 'tui-combo-box-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

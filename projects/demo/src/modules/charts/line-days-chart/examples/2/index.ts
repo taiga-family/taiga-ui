@@ -13,7 +13,7 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 @Component({
     selector: 'tui-line-days-chart-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
 })
 export class TuiLineDaysChartExample2 {

@@ -26,7 +26,7 @@ import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 @Component({
     selector: 'tui-radio-labeled',
     templateUrl: './radio-labeled.template.html',
-    styleUrls: ['./radio-labeled.style.less'],
+    styleUrls: ['./radio-labeled.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

@@ -39,7 +39,7 @@ const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
 @Component({
     selector: 'tui-svg',
     templateUrl: './svg.template.html',
-    styleUrls: ['./svg.style.less'],
+    styleUrls: ['./svg.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSvgComponent {

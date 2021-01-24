@@ -8,7 +8,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'tables',
     templateUrl: 'tables.template.html',
-    styleUrls: ['./tables.style.less'],
+    styleUrls: ['./tables.style.scss'],
     changeDetection,
 })
 export class TablesComponent {

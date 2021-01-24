@@ -33,7 +33,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
 @Component({
     selector: 'tui-line-days-chart',
     templateUrl: './line-days-chart.template.html',
-    styleUrls: ['./line-days-chart.style.less'],
+    styleUrls: ['./line-days-chart.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

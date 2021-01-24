@@ -18,7 +18,7 @@ import {Observable} from 'rxjs';
     selector: 'tui-primitive-spin-button',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './primitive-spin-button.template.html',
-    styleUrls: ['./primitive-spin-button.style.less'],
+    styleUrls: ['./primitive-spin-button.style.scss'],
 })
 export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     @Input()

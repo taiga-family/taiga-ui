@@ -45,7 +45,7 @@ const NON_PLUS_AND_DIGITS_REGEX = /[ \-_\(\)]/g;
 @Component({
     selector: 'tui-input-phone',
     templateUrl: './input-phone.template.html',
-    styleUrls: ['./input-phone.style.less'],
+    styleUrls: ['./input-phone.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

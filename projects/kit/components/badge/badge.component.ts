@@ -14,7 +14,7 @@ import {Observable} from 'rxjs';
     selector: 'tui-badge',
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: '{{outputValue}}',
-    styleUrls: ['./badge.style.less'],
+    styleUrls: ['./badge.style.scss'],
     providers: [TuiDestroyService, MODE_PROVIDER],
 })
 export class TuiBadgeComponent {

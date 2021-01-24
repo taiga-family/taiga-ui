@@ -19,7 +19,7 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 @Component({
     selector: 'tui-scroll-controls',
     templateUrl: './scroll-controls.template.html',
-    styleUrls: ['./scroll-controls.style.less'],
+    styleUrls: ['./scroll-controls.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiFadeIn],
 })

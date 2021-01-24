@@ -11,7 +11,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-tui-format-phone',
     templateUrl: './format-phone.template.html',
-    styleUrls: ['./format-phone.style.less'],
+    styleUrls: ['./format-phone.style.scss'],
     changeDetection,
 })
 export class ExampleTuiFormatPhoneComponent {

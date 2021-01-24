@@ -1,0 +1,9 @@
+@use 'taiga-ui-local';
+
+.icon {
+    @include transition(transform);
+
+    &_rotated {
+        transform: rotate(180deg);
+    }
+}

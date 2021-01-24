@@ -6,7 +6,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 // @dynamic
 @Component({
     selector: 'material',
-    styleUrls: ['./material.style.less'],
+    styleUrls: ['./material.style.scss'],
     template: '',
     encapsulation: ViewEncapsulation.None,
     changeDetection,

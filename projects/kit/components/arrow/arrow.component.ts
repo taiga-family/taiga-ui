@@ -10,7 +10,7 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-arrow',
     templateUrl: './arrow.template.html',
-    styleUrls: ['./arrow.style.less'],
+    styleUrls: ['./arrow.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiArrowComponent {

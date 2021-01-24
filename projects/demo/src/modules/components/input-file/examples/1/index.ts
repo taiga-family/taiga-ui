@@ -23,7 +23,7 @@ function convertRejected({file, reason}: RejectedFile): TuiFileLike {
 @Component({
     selector: 'tui-input-file-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

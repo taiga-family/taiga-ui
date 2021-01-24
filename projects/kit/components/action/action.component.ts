@@ -21,7 +21,7 @@ import {
 @Component({
     selector: 'tui-action, a[tuiAction]',
     templateUrl: './action.template.html',
-    styleUrls: ['./action.style.less'],
+    styleUrls: ['./action.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,

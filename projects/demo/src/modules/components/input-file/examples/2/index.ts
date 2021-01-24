@@ -40,7 +40,7 @@ function convertRejected({file, reason}: RejectedFile): TuiFileLike {
 @Component({
     selector: 'tui-input-file-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

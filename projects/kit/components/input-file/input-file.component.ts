@@ -45,7 +45,7 @@ const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
 @Component({
     selector: 'tui-input-file',
     templateUrl: './input-file.template.html',
-    styleUrls: ['./input-file.style.less'],
+    styleUrls: ['./input-file.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

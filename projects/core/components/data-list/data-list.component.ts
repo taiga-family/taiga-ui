@@ -34,7 +34,7 @@ import {TuiOptionComponent} from './option/option.component';
 @Component({
     selector: 'tui-data-list',
     templateUrl: './data-list.template.html',
-    styleUrls: ['./data-list.style.less'],
+    styleUrls: ['./data-list.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     providers: [

@@ -28,7 +28,7 @@ const BLANK_CLIENT_RECT: ClientRect = {
 @Component({
     selector: 'tui-portal-host',
     templateUrl: './portal-host.template.html',
-    styleUrls: ['./portal-host.style.less'],
+    styleUrls: ['./portal-host.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPortalHostComponent {

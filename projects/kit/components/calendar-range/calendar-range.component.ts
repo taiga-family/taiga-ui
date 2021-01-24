@@ -38,7 +38,7 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'tui-calendar-range',
     templateUrl: './calendar-range.template.html',
-    styleUrls: ['./calendar-range.style.less'],
+    styleUrls: ['./calendar-range.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })

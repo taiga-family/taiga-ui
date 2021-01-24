@@ -8,7 +8,7 @@ import {map} from 'rxjs/operators';
 @Component({
     selector: 'tui-multi-select-option',
     templateUrl: './multi-select-option.template.html',
-    styleUrls: ['./multi-select-option.style.less'],
+    styleUrls: ['./multi-select-option.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMultiSelectOptionComponent<T> extends TuiSelectOptionComponent<T> {

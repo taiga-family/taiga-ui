@@ -36,7 +36,7 @@ const TUI_DEFAULT_CONTENT_STRINGIFY: PolymorpheusContent<
 @Component({
     selector: 'tui-filter',
     templateUrl: './filter.template.html',
-    styleUrls: ['./filter.style.less'],
+    styleUrls: ['./filter.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {

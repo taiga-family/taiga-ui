@@ -39,7 +39,7 @@ const TRANSFORM = {
 @Component({
     selector: 'tui-pie-chart',
     templateUrl: './pie-chart.template.html',
-    styleUrls: ['./pie-chart.style.less'],
+    styleUrls: ['./pie-chart.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPieChartComponent {

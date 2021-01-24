@@ -21,7 +21,7 @@ const VALUE_ERROR = 'All arrays must be of the same length';
 @Component({
     selector: 'tui-bar-chart',
     templateUrl: './bar-chart.template.html',
-    styleUrls: ['./bar-chart.style.less'],
+    styleUrls: ['./bar-chart.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBarChartComponent {

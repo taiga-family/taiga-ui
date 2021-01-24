@@ -72,17 +72,17 @@
       </trans-unit>
             <trans-unit id="0f03b411c3a6dace2c41b17c023730cc51d2a4be" datatype="html">
         <source>
-            We use <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>LESS<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> as CSS
+            We use <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>SCSS<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> as CSS
             preprocessor for our library. If you make a new project, you can
-            choose it by default with <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>--style less<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/> flag. Otherwise,
+            choose it by default with <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>--style scss<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/> flag. Otherwise,
             do not forget about file type if you import styles directly from our
             library
         </source>
         <target>
-            Мы используем <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>LESS<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> как CSS
-            препроцессор для нашей библиотеки. Если вы делаете новый проект, то можете выбрать LESS по-умолчанию с помощью флага 
-            <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>--style less<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/>.
-            В ином случае, не забывайте, что импорт наших стилей доступен только из LESS файлов
+            Мы используем <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>SCSS<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> как CSS
+            препроцессор для нашей библиотеки. Если вы делаете новый проект, то можете выбрать SCSS по-умолчанию с помощью флага 
+            <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>--style scss<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/>.
+            В ином случае, не забывайте, что импорт наших стилей доступен только из SCSS файлов
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/app/home/home.template.html</context>

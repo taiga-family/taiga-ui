@@ -1,5 +1,5 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
+import {default as example1Less} from '!!raw-loader!./examples/1/index.scss';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';

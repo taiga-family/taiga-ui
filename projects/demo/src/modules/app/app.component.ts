@@ -9,7 +9,7 @@ import {changeDetection} from '../../change-detection-strategy';
 @Component({
     selector: 'app',
     templateUrl: 'app.template.html',
-    styleUrls: ['app.style.less'],
+    styleUrls: ['app.style.scss'],
     changeDetection,
 })
 export class AppComponent {

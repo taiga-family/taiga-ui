@@ -8,7 +8,7 @@ import {TuiBreadCrumbsItem} from '@taiga-ui/kit/interfaces';
     selector: 'tui-breadcrumbs',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './breadcrumbs.template.html',
-    styleUrls: ['./breadcrumbs.style.less'],
+    styleUrls: ['./breadcrumbs.style.scss'],
 })
 export class TuiBreadcrumbsComponent {
     @Input()

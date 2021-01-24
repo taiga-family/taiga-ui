@@ -10,7 +10,7 @@ const COPIED_TIMEOUT = 1500;
 @Component({
     selector: 'tui-doc-copy',
     templateUrl: './copy.template.html',
-    styleUrls: ['./copy.style.less'],
+    styleUrls: ['./copy.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })

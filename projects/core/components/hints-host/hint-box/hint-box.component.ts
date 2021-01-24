@@ -55,7 +55,7 @@ const reverseDirectionsHorizontal: {[key in TuiDirection]: TuiDirection} = {
 @Component({
     selector: 'tui-hint-box',
     templateUrl: './hint-box.template.html',
-    styleUrls: ['./hint-box.style.less'],
+    styleUrls: ['./hint-box.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })

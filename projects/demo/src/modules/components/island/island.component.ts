@@ -1,13 +1,13 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
+import {default as example1Less} from '!!raw-loader!./examples/1/index.scss';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
+import {default as example2Less} from '!!raw-loader!./examples/2/index.scss';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
+import {default as example3Less} from '!!raw-loader!./examples/3/index.scss';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
@@ -22,7 +22,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-island',
     templateUrl: './island.template.html',
-    styleUrls: ['./island.style.less'],
+    styleUrls: ['./island.style.scss'],
     changeDetection,
 })
 export class ExampleTuiIslandComponent {

@@ -7,7 +7,7 @@ import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
     selector: 'tui-avatar',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './avatar.template.html',
-    styleUrls: ['./avatar.style.less'],
+    styleUrls: ['./avatar.style.scss'],
 })
 export class TuiAvatarComponent {
     @Input()

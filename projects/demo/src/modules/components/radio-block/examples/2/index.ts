@@ -6,7 +6,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 @Component({
     selector: 'tui-radio-block-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

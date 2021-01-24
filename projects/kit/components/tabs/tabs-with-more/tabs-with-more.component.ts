@@ -36,7 +36,7 @@ import {TABS_PROVIDERS, TABS_REFRESH} from './tabs-with-more.providers';
 @Component({
     selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
     templateUrl: './tabs-with-more.template.html',
-    styleUrls: ['./tabs-with-more.style.less'],
+    styleUrls: ['./tabs-with-more.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TABS_PROVIDERS,
 })

@@ -1,0 +1,26 @@
+.outline {
+    display: inline-block;
+    padding: 4px;
+    margin: -4px 0;
+
+    &_light {
+        background: #30406a;
+    }
+
+    &_dark {
+        background: #e5e7ea;
+    }
+}
+
+$iterations: 20;
+
+@mixin loop($i) {
+    @for $i from 1 through $iterations {
+        .support-#{$i} {
+            background-color: var(--tui-support-#{$i}, var(--tui-support-0#{$i}));
+        }
+    }
+    @include loop($i - 1);
+}
+
+@include loop($iterations);

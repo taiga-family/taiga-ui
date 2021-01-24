@@ -24,7 +24,7 @@ const ROWS_COUNT = 6;
 @Component({
     selector: 'tui-primitive-calendar-mobile',
     templateUrl: './primitive-calendar-mobile.template.html',
-    styleUrls: ['./primitive-calendar-mobile.style.less'],
+    styleUrls: ['./primitive-calendar-mobile.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarMobileComponent extends TuiPrimitiveCalendarComponent {

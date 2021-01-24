@@ -37,7 +37,7 @@ import {TAB_ACTIVE_CLASS} from '../tabs.const';
 @Component({
     selector: 'tui-tabs, nav[tuiTabs]',
     templateUrl: './tabs.template.html',
-    styleUrls: ['./tabs.style.less'],
+    styleUrls: ['./tabs.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         class: 'tui-zero-scrollbar',

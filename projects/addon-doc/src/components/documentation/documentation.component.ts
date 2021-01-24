@@ -22,7 +22,7 @@ import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-pro
 @Component({
     selector: 'tui-doc-documentation',
     templateUrl: './documentation.template.html',
-    styleUrls: ['./documentation.style.less'],
+    styleUrls: ['./documentation.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocDocumentationComponent implements AfterContentInit {

@@ -23,7 +23,7 @@ import {map} from 'rxjs/operators';
     selector: 'tui-file',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './file.template.html',
-    styleUrls: ['./file.style.less'],
+    styleUrls: ['./file.style.scss'],
 })
 export class TuiFileComponent {
     @Input()

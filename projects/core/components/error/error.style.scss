@@ -1,0 +1,17 @@
+@use '../../styles/taiga-ui-local.scss';
+
+:host {
+    @include text-basic();
+    display: block;
+    color: var(--tui-negative);
+    word-wrap: break-word;
+}
+
+.message-text {
+    margin-top: 4px;
+    white-space: pre-wrap;
+
+    &_light {
+        color: var(--tui-negative-night);
+    }
+}

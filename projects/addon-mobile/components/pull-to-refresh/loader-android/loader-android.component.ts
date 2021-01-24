@@ -8,7 +8,7 @@ const ROTATE_X_MULTIPLIER = 2.3;
 @Component({
     selector: 'tui-mobile-android-loader',
     templateUrl: './loader-android.template.html',
-    styleUrls: ['./loader-android.style.less'],
+    styleUrls: ['./loader-android.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMobileLoaderAndroidComponent {

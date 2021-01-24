@@ -35,7 +35,7 @@ import {TuiCountryIsoCode} from './country-iso-code';
 @Component({
     selector: 'tui-input-phone-international',
     templateUrl: './input-phone-international.template.html',
-    styleUrls: ['./input-phone-international.style.less'],
+    styleUrls: ['./input-phone-international.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

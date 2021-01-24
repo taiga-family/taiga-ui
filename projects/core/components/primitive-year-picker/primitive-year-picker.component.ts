@@ -26,7 +26,7 @@ const ITEMS_IN_ROW = 4;
 @Component({
     selector: 'tui-primitive-year-picker',
     templateUrl: './primitive-year-picker.template.html',
-    styleUrls: ['./primitive-year-picker.style.less'],
+    styleUrls: ['./primitive-year-picker.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveYearPickerComponent {

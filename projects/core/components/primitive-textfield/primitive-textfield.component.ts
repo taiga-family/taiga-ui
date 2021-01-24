@@ -53,7 +53,7 @@ const ICON_PADDING_S = 24;
 @Component({
     selector: 'tui-primitive-textfield',
     templateUrl: './primitive-textfield.template.html',
-    styleUrls: ['./primitive-textfield.style.less'],
+    styleUrls: ['./primitive-textfield.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

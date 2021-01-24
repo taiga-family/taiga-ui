@@ -31,7 +31,7 @@ export const ALLOWED_SPACE_REGEXP = new RegExp(`\,|[\\s]`);
     selector: 'tui-tag, a[tuiTag]',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './tag.template.html',
-    styleUrls: ['./tag.style.less'],
+    styleUrls: ['./tag.style.scss'],
     providers: [TuiDestroyService, MODE_PROVIDER],
 })
 export class TuiTagComponent {

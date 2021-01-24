@@ -14,7 +14,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-flat-picker',
     templateUrl: './flat-picker.template.html',
-    styleUrls: ['./flat-picker.style.less'],
+    styleUrls: ['./flat-picker.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, TuiPickerService],
 })

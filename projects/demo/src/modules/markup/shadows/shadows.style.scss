@@ -1,0 +1,51 @@
+@use 'taiga-ui-local';
+
+.example {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.item {
+    @include transition(box-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-left: 40px;
+    width: 280px;
+    height: 80px;
+    border-radius: var(--tui-radius);
+    color: var(--tui-text-03);
+    cursor: pointer;
+    text-align: center;
+
+    &_default {
+        @include shadow();
+
+        &:hover {
+            @include shadow(5);
+        }
+    }
+
+    &_dropdown {
+        @include shadow(2);
+    }
+
+    &_modal {
+        @include shadow(3);
+    }
+
+    &_sidebar {
+        @include shadow(4);
+    }
+
+    &_navigation {
+        @include shadow(6);
+    }
+
+    &_mobile {
+        @include shadow(7);
+    }
+}

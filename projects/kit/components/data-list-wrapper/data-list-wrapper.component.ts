@@ -32,7 +32,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-data-list-wrapper:not([labels])',
     templateUrl: './data-list-wrapper.template.html',
-    styleUrls: ['./data-list-wrapper.style.less'],
+    styleUrls: ['./data-list-wrapper.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

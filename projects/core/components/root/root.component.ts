@@ -18,7 +18,7 @@ import {map} from 'rxjs/operators';
 @Component({
     selector: 'tui-root',
     templateUrl: 'root.template.html',
-    styleUrls: ['./root.style.less'],
+    styleUrls: ['./root.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         'data-tui-version': VERSION,

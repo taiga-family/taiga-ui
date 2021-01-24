@@ -19,7 +19,7 @@ import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 @Component({
     selector: 'tui-doc-example',
     templateUrl: './example.template.html',
-    styleUrls: ['./example.style.less'],
+    styleUrls: ['./example.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocExampleComponent {

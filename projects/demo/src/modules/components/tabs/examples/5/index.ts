@@ -6,7 +6,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 @Component({
     selector: 'tui-tabs-example-5',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
     providers: [

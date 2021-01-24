@@ -5,7 +5,7 @@ import {TuiColor} from '@taiga-ui/core';
 @Component({
     selector: 'tui-legend-item',
     templateUrl: './legend-item.template.html',
-    styleUrls: ['./legend-item.style.less'],
+    styleUrls: ['./legend-item.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLegendItemComponent {

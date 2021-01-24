@@ -12,7 +12,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'label[tuiLabel]',
     templateUrl: './label.template.html',
-    styleUrls: ['./label.style.less'],
+    styleUrls: ['./label.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLabelComponent<T> {

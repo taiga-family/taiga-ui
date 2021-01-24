@@ -59,7 +59,7 @@ import {
 @Component({
     selector: 'tui-mobile-calendar',
     templateUrl: './mobile-calendar.template.html',
-    styleUrls: ['./mobile-calendar.style.less'],
+    styleUrls: ['./mobile-calendar.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
 })

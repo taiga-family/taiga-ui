@@ -41,7 +41,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-input-count',
     templateUrl: './input-count.template.html',
-    styleUrls: ['./input-count.style.less'],
+    styleUrls: ['./input-count.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

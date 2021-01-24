@@ -24,7 +24,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-tui-dropdown',
     templateUrl: './dropdown.template.html',
-    styleUrls: ['./dropdown.style.less'],
+    styleUrls: ['./dropdown.style.scss'],
     changeDetection,
 })
 export class ExampleTuiDropdownComponent {

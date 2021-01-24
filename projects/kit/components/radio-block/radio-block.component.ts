@@ -32,7 +32,7 @@ import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 @Component({
     selector: 'tui-radio-block',
     templateUrl: './radio-block.template.html',
-    styleUrls: ['./radio-block.style.less'],
+    styleUrls: ['./radio-block.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

@@ -19,7 +19,7 @@ function translateY(distance: number): string {
 @Component({
     selector: 'tui-pull-to-refresh',
     templateUrl: './pull-to-refresh.template.html',
-    styleUrls: ['./pull-to-refresh.style.less'],
+    styleUrls: ['./pull-to-refresh.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_PULL_TO_REFRESH_PROVIDERS],
 })

@@ -13,7 +13,7 @@ export const ALERT_AUTOCLOSE_TIMEOUT = 3000;
     selector: 'tui-notification-alert',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './notification-alert.template.html',
-    styleUrls: ['./notification-alert.style.less'],
+    styleUrls: ['./notification-alert.style.scss'],
     providers: [TuiDestroyService],
 })
 export class TuiNotificationAlertComponent<O, I> {

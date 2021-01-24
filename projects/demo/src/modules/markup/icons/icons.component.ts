@@ -35,7 +35,7 @@ export const TUI_ICONS = new InjectionToken<Record<string, readonly string[]>>('
 @Component({
     selector: 'icons',
     templateUrl: 'icons.template.html',
-    styleUrls: ['icons.style.less'],
+    styleUrls: ['icons.style.scss'],
     changeDetection,
 })
 export class IconsComponent {

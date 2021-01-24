@@ -43,7 +43,7 @@ export const LINE_HEIGHT_L = 24;
 @Component({
     selector: 'tui-text-area',
     templateUrl: './text-area.template.html',
-    styleUrls: ['./text-area.style.less'],
+    styleUrls: ['./text-area.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

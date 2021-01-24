@@ -42,7 +42,7 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'tui-dropdown-box',
     templateUrl: './dropdown-box.template.html',
-    styleUrls: ['./dropdown-box.style.less'],
+    styleUrls: ['./dropdown-box.style.scss'],
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [TuiDestroyService],
     animations: [tuiDropdownAnimation],

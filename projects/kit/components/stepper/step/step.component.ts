@@ -23,7 +23,7 @@ import {TuiStepperComponent} from '../stepper.component';
     selector:
         'button[tuiStep], a[tuiStep]:not([routerLink]), a[tuiStep][routerLink][routerLinkActive]',
     templateUrl: './step.template.html',
-    styleUrls: ['./step.style.less'],
+    styleUrls: ['./step.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, TuiRouterLinkActiveService, TuiFocusVisibleService],
     host: {

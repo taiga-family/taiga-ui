@@ -53,7 +53,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-multi-select',
     templateUrl: './multi-select.template.html',
-    styleUrls: ['./multi-select.style.less'],
+    styleUrls: ['./multi-select.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

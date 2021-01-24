@@ -7,7 +7,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 @Component({
     selector: 'tui-format-example-4',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

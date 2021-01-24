@@ -11,7 +11,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-tui-active-zone',
     templateUrl: './active-zone.template.html',
-    styleUrls: ['./active-zone.style.less'],
+    styleUrls: ['./active-zone.style.scss'],
     changeDetection,
 })
 export class ExampleTuiActiveZoneComponent {

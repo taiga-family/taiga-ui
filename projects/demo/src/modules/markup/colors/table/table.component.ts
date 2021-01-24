@@ -11,7 +11,7 @@ import {Color} from '../colors.constants';
 @Component({
     selector: 'table[colors]',
     templateUrl: './table.template.html',
-    styleUrls: ['./table.style.less'],
+    styleUrls: ['./table.style.scss'],
     changeDetection,
 })
 export class TableComponent {

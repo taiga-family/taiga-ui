@@ -30,7 +30,7 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton]',
     templateUrl: './button.template.html',
-    styleUrls: ['./button.style.less'],
+    styleUrls: ['./button.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

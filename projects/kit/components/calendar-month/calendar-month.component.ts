@@ -32,7 +32,7 @@ const TODAY = TuiDay.currentLocal();
 @Component({
     selector: 'tui-calendar-month',
     templateUrl: './calendar-month.template.html',
-    styleUrls: ['./calendar-month.style.less'],
+    styleUrls: ['./calendar-month.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth> {

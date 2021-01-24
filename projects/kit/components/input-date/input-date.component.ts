@@ -50,7 +50,7 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'tui-input-date',
     templateUrl: './input-date.template.html',
-    styleUrls: ['./input-date.style.less'],
+    styleUrls: ['./input-date.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

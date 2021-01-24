@@ -25,7 +25,7 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 @Component({
     selector: 'tui-checkbox-labeled',
     templateUrl: './checkbox-labeled.template.html',
-    styleUrls: ['./checkbox-labeled.style.less'],
+    styleUrls: ['./checkbox-labeled.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

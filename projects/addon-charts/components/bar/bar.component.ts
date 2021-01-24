@@ -9,7 +9,7 @@ const PERCENT = 100;
 @Component({
     selector: 'tui-bar',
     templateUrl: './bar.template.html',
-    styleUrls: ['./bar.style.less'],
+    styleUrls: ['./bar.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBarComponent {

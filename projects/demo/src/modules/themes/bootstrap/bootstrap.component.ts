@@ -6,7 +6,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 // @dynamic
 @Component({
     selector: 'bootstrap',
-    styleUrls: ['./bootstrap.style.less'],
+    styleUrls: ['./bootstrap.style.scss'],
     template: '',
     encapsulation: ViewEncapsulation.None,
     changeDetection,

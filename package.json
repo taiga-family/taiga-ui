@@ -3,7 +3,7 @@
     "version": "2.2.1",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "scripts": {
-        "start": "ng serve",
+        "start": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng serve --verbose",
         "start:ru": "ng serve --configuration ru",
         "start:default": "ng serve --configuration def",
         "start:shadow": "ng serve --configuration shadow",
@@ -16,9 +16,9 @@
         "*** Workflow ***": "",
         "test": "ng test --browsers=ChromeHeadless --code-coverage=true --",
         "lint": "ng lint",
-        "lint:less": "stylelint '**/*.less'",
-        "prettier": "prettier --write \"projects/**/*.{js,ts,html,md,less,json}\"",
-        "clear": "prettier --write '**/projects/**/*.{js,ts,html,md,less,json}' && tslint '**/projects/**/*.ts' --fix",
+        "lint:sass": "stylelint '**/*.scss'",
+        "prettier": "prettier --write \"projects/**/*.{js,ts,html,md,scss,json}\"",
+        "clear": "prettier --write '**/projects/**/*.{js,ts,html,md,scss,json}' && tslint '**/projects/**/*.ts' --fix",
         "typecheck": "tsc --noEmit --skipLibCheck",
         "*** Build **": "",
         "build": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --configuration=production",
@@ -144,7 +144,7 @@
         }
     },
     "lint-staged": {
-        "*.{js,ts,html,md,less,json}": [
+        "*.{js,ts,html,md,scss,json}": [
             "prettier --write",
             "git add"
         ],

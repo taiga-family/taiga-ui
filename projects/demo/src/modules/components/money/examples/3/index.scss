@@ -1,0 +1,17 @@
+@use 'taiga-ui-local';
+
+.extra-large {
+    @include text-body-xl();
+}
+
+.large {
+    @include text-body-l();
+}
+
+.medium {
+    @include text-body-m();
+}
+
+.small {
+    @include text-body-s();
+}

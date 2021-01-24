@@ -4,7 +4,7 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 @Component({
     selector: 'tui-button-example-4',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })

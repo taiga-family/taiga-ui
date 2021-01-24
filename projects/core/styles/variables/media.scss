@@ -1,0 +1,26 @@
+$media-retina: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+$media-retina-mobile: '(-webkit-min-device-pixel-ratio: 2) and (max-width: 599px), (min-resolution: 192dpi) and (max-width: 599px)';
+$media-retina-tablet: '(-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), (min-resolution: 192dpi) and (max-width: 1023px)';
+$media-retina-desktop: '(-webkit-min-device-pixel-ratio: 2) and (max-width: 1359px), (min-resolution: 192dpi) and (max-width: 1359px)';
+
+$mobile: 'screen and (max-width: 599px)';
+$mobile-min: 'screen and (min-width: 320px)';
+$mobile-interval: '(min-width: 320px) and (max-width: 599px)';
+
+$tablet-s: 'screen and (max-width: 767px)';
+$tablet-s-min: 'screen and (min-width: 600px)';
+$tablet-s-interval: '(min-width: 600px) and (max-width: 767px)';
+
+$tablet-lg: 'screen and (max-width: 1023px)';
+$tablet-lg-min: 'screen and (min-width: 768px)';
+$tablet-lg-interval: '(min-width: 768px) and (max-width: 1023px)';
+
+$tablet: 'screen and (max-width: 1023px)';
+$tablet-min: 'screen and (min-width: 600px)';
+$tablet-interval: '(min-width: 600px) and (max-width: 1023px)';
+
+$desktop: 'screen and (max-width: 1359px)';
+$desktop-min: 'screen and (min-width: 1024px)';
+$desktop-interval: '(min-width: 1024px) and (max-width: 1359px)';
+
+$desktop-lg-min: 'screen and (min-width: 1360px)';

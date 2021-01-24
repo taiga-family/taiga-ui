@@ -5,7 +5,7 @@ import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
+import {default as example3Less} from '!!raw-loader!./examples/3/index.scss';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
@@ -29,7 +29,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 @Component({
     selector: 'example-tui-input-phone',
     templateUrl: './input-phone.template.html',
-    styleUrls: ['./input-phone.style.less'],
+    styleUrls: ['./input-phone.style.scss'],
     changeDetection,
     providers: [
         {

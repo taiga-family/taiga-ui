@@ -14,7 +14,7 @@ const BENJI = 100;
 @Component({
     selector: 'tui-axes-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

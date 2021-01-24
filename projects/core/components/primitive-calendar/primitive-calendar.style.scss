@@ -1,0 +1,51 @@
+@use '../../styles/taiga-ui-local.scss';
+
+$itemSize: 36px;
+
+@include picker($itemSize);
+
+:host {
+    width: $itemSize * 7;
+}
+
+.row {
+    justify-content: flex-start;
+
+    &:first-child {
+        justify-content: flex-end;
+    }
+
+    &_weekday {
+        @include text-body-s();
+        color: var(--tui-text-02);
+        pointer-events: none;
+    }
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+}
+
+.item_weekend {
+    color: var(--tui-negative);
+}
+
+.item_unavailable {
+    opacity: var(--tui-disabled-opacity);
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    margin-top: -8px;
+    padding-bottom: 4px;
+}
+
+.dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    margin: 0 1px;
+}

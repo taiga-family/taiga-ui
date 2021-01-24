@@ -4,7 +4,7 @@ import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 @Component({
     selector: 'th[tuiResizableColumn]',
     templateUrl: './resizable-column.template.html',
-    styleUrls: ['./resizable-column.style.less'],
+    styleUrls: ['./resizable-column.style.scss'],
     providers: [
         {
             provide: TUI_ELEMENT_REF,

@@ -11,7 +11,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-tui-element',
     templateUrl: './element.template.html',
-    styleUrls: ['./element.style.less'],
+    styleUrls: ['./element.style.scss'],
     changeDetection,
 })
 export class ExampleTuiElementComponent {

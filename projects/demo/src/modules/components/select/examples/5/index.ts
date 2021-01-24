@@ -22,7 +22,7 @@ const ITEMS: ReadonlyArray<Python> = [
 @Component({
     selector: 'tui-select-example-5',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

@@ -1,9 +1,9 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
+import {default as example1Less} from '!!raw-loader!./examples/1/index.scss';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
+import {default as example2Less} from '!!raw-loader!./examples/2/index.scss';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
@@ -38,7 +38,7 @@ class Account {
 @Component({
     selector: 'example-tui-combo-box',
     templateUrl: './combo-box.template.html',
-    styleUrls: ['./combo-box.style.less'],
+    styleUrls: ['./combo-box.style.scss'],
     changeDetection,
     providers: [
         {

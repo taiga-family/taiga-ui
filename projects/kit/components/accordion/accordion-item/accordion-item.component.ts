@@ -28,7 +28,7 @@ import {TuiAccordionItemContentDirective} from './accordion-item-content.directi
 @Component({
     selector: 'tui-accordion-item',
     templateUrl: './accordion-item.template.html',
-    styleUrls: ['./accordion-item.style.less'],
+    styleUrls: ['./accordion-item.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

@@ -34,7 +34,7 @@ import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers
 @Component({
     selector: 'tui-input-month',
     templateUrl: './input-month.template.html',
-    styleUrls: ['./input-month.style.less'],
+    styleUrls: ['./input-month.style.scss'],
     providers: [
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,

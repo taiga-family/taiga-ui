@@ -22,7 +22,7 @@ const SCROLL_INTO_VIEW_DELAY = 200;
 @Component({
     selector: 'tui-doc-navigation',
     templateUrl: 'navigation.template.html',
-    styleUrls: ['navigation.style.less'],
+    styleUrls: ['navigation.style.scss'],
     providers: NAVIGATION_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -42,7 +42,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-select',
     templateUrl: './select.template.html',
-    styleUrls: ['./select.style.less'],
+    styleUrls: ['./select.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

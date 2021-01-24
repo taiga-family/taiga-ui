@@ -37,7 +37,7 @@ export function shouldFocus({
 @Component({
     selector: `button[tuiOption], a[tuiOption]`,
     templateUrl: './option.template.html',
-    styleUrls: ['./option.style.less'],
+    styleUrls: ['./option.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         tabIndex: '-1',

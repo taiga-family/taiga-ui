@@ -1,5 +1,5 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
+import {default as example1Less} from '!!raw-loader!./examples/1/index.scss';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
@@ -39,7 +39,7 @@ const zebraHandler: TuiColorHandler = index =>
 @Component({
     selector: 'example-tui-bar-chart',
     templateUrl: './bar-chart.template.html',
-    styleUrls: ['./bar-chart.style.less'],
+    styleUrls: ['./bar-chart.style.scss'],
     changeDetection,
 })
 export class ExampleTuiBarChartComponent {

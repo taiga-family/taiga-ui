@@ -31,7 +31,7 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 @Component({
     selector: 'tui-checkbox-block',
     templateUrl: './checkbox-block.template.html',
-    styleUrls: ['./checkbox-block.style.less'],
+    styleUrls: ['./checkbox-block.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

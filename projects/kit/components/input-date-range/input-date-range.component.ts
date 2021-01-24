@@ -61,7 +61,7 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'tui-input-date-range',
     templateUrl: './input-date-range.template.html',
-    styleUrls: ['./input-date-range.style.less'],
+    styleUrls: ['./input-date-range.style.scss'],
     providers: [
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,

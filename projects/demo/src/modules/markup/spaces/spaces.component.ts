@@ -1,11 +1,11 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.style.less';
+import {default as example1Less} from '!!raw-loader!./examples/1/index.style.scss';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.style.less';
+import {default as example2Less} from '!!raw-loader!./examples/2/index.style.scss';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleBasicImportsLess} from '!!raw-loader!./examples/import/basic-imports-less.txt';
+import {default as exampleBasicImportsScss} from '!!raw-loader!./examples/import/basic-imports-less.txt';
 import {default as exampleIndexLess} from '!!raw-loader!./examples/import/index-less.txt';
 
 import {Component} from '@angular/core';
@@ -18,7 +18,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class SpacesComponent {
-    readonly exampleBasicImportsLess = exampleBasicImportsLess;
+    readonly exampleBasicImportsScss = exampleBasicImportsScss;
     readonly exampleIndexLess = exampleIndexLess;
 
     readonly example1: FrontEndExample = {

@@ -20,7 +20,7 @@ type InternalContext<I> = TuiBaseDialog<
 @Component({
     selector: 'tui-mobile-dialog',
     templateUrl: './mobile-dialog.template.html',
-    styleUrls: ['./mobile-dialog.style.less'],
+    styleUrls: ['./mobile-dialog.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._ios]': 'isIOS',

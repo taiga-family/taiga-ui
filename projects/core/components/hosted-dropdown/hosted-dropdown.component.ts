@@ -39,7 +39,7 @@ import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.d
 @Component({
     selector: 'tui-hosted-dropdown',
     templateUrl: './hosted-dropdown.template.html',
-    styleUrls: ['./hosted-dropdown.style.less'],
+    styleUrls: ['./hosted-dropdown.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

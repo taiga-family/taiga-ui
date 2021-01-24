@@ -50,7 +50,7 @@ export function cardTextfieldControllerFactory(
 @Component({
     selector: 'tui-input-card',
     templateUrl: './input-card.template.html',
-    styleUrls: ['./input-card.style.less'],
+    styleUrls: ['./input-card.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

@@ -34,7 +34,7 @@ const ICONS: Record<TuiGradientDirection, string> = {
 @Component({
     selector: 'tui-color-selector',
     templateUrl: './color-selector.template.html',
-    styleUrls: ['./color-selector.style.less'],
+    styleUrls: ['./color-selector.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
 })

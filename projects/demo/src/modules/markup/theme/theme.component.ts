@@ -4,7 +4,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 @Component({
     selector: 'theme',
     templateUrl: './theme.template.html',
-    styleUrls: ['./theme.style.less'],
+    styleUrls: ['./theme.style.scss'],
     changeDetection,
 })
 export class ThemeComponent {

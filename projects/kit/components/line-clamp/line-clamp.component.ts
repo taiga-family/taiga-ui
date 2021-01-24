@@ -18,7 +18,7 @@ import {filter, mapTo, pairwise, startWith, switchMap} from 'rxjs/operators';
 @Component({
     selector: 'tui-line-clamp',
     templateUrl: './line-clamp.template.html',
-    styleUrls: ['./line-clamp.style.less'],
+    styleUrls: ['./line-clamp.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLineClampComponent implements AfterViewInit {

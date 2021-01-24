@@ -26,7 +26,7 @@ import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core';
 @Component({
     selector: 'tui-input-inline',
     templateUrl: './input-inline.template.html',
-    styleUrls: ['./input-inline.style.less'],
+    styleUrls: ['./input-inline.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

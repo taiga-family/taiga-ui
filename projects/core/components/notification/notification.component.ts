@@ -23,7 +23,7 @@ export const STATUS_ICON: Record<string, string> = {
 @Component({
     selector: 'tui-notification',
     templateUrl: './notification.template.html',
-    styleUrls: ['./notification.style.less'],
+    styleUrls: ['./notification.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNotificationComponent {

@@ -14,7 +14,7 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-mobile-calendar-dialog',
     templateUrl: './mobile-calendar-dialog.template.html',
-    styleUrls: ['./mobile-calendar-dialog.style.less'],
+    styleUrls: ['./mobile-calendar-dialog.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMobileCalendarDialogComponent {

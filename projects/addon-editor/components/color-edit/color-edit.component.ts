@@ -12,7 +12,7 @@ import {TuiTextMaskOptions} from '@taiga-ui/core';
 @Component({
     selector: 'tui-color-edit',
     templateUrl: './color-edit.template.html',
-    styleUrls: ['./color-edit.style.less'],
+    styleUrls: ['./color-edit.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorEditComponent {

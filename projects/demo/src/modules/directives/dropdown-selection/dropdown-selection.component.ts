@@ -2,7 +2,7 @@ import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
+import {default as example2Less} from '!!raw-loader!./examples/2/index.scss';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
@@ -23,7 +23,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-tui-dropdown-selection',
     templateUrl: './dropdown-selection.template.html',
-    styleUrls: ['./dropdown-selection.style.less'],
+    styleUrls: ['./dropdown-selection.style.scss'],
     changeDetection,
 })
 export class ExampleTuiDropdownSelectionComponent {

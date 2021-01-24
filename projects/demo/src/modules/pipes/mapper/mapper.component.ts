@@ -8,7 +8,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 @Component({
     selector: 'example-tui-mapper',
     templateUrl: './mapper.template.html',
-    styleUrls: ['./mapper.style.less'],
+    styleUrls: ['./mapper.style.scss'],
     changeDetection,
 })
 export class ExampleTuiMapperComponent {

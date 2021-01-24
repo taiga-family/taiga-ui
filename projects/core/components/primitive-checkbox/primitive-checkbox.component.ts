@@ -14,7 +14,7 @@ import {TuiSizeL} from '@taiga-ui/core/types';
 @Component({
     selector: 'tui-primitive-checkbox',
     templateUrl: './primitive-checkbox.template.html',
-    styleUrls: ['./primitive-checkbox.style.less'],
+    styleUrls: ['./primitive-checkbox.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCheckboxComponent {

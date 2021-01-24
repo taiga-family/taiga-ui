@@ -32,7 +32,7 @@ import {
 @Component({
     selector: 'tui-underline',
     template: '',
-    styleUrls: ['./underline.style.less'],
+    styleUrls: ['./underline.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, MODE_PROVIDER],
 })

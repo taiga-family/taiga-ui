@@ -17,7 +17,7 @@ import {PAGE_PROVIDERS, PAGE_SEE_ALSO} from './page.providers';
 @Component({
     selector: 'tui-doc-page',
     templateUrl: './page.template.html',
-    styleUrls: ['./page.style.less'],
+    styleUrls: ['./page.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: PAGE_PROVIDERS,
 })

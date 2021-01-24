@@ -1,13 +1,13 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
+import {default as example1Less} from '!!raw-loader!./examples/1/index.scss';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
+import {default as example2Less} from '!!raw-loader!./examples/2/index.scss';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
+import {default as example3Less} from '!!raw-loader!./examples/3/index.scss';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
 import {default as exampleCustomizeStyles} from '!!raw-loader!./examples/import/customize-styles.txt';
@@ -32,7 +32,7 @@ const BRAND_LOGOS = [
 @Component({
     selector: 'example-tui-card',
     templateUrl: './card.template.html',
-    styleUrls: ['card.style.less'],
+    styleUrls: ['card.style.scss'],
     changeDetection,
 })
 export class ExampleTuiCardComponent {

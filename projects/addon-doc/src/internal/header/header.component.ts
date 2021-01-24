@@ -9,7 +9,7 @@ import {TUI_DOC_LOGO} from '../../tokens/logo';
 @Component({
     selector: 'header[tuiDocHeader]',
     templateUrl: './header.template.html',
-    styleUrls: ['./header.style.less'],
+    styleUrls: ['./header.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocHeaderComponent {

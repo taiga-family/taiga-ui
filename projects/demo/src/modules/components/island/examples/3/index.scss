@@ -1,0 +1,27 @@
+@use 'taiga-ui-local';
+
+.container {
+    max-width: 1000px;
+}
+
+.title {
+    @include text-h4();
+    margin: 0 0 $space * 4;
+
+    &_size_s {
+        @include text-h6();
+        margin: 0 0 $space * 3;
+    }
+}
+
+.text {
+    @include text-body-m();
+    margin: 0 0 $space * 6;
+}
+
+.image {
+    display: block;
+    max-width: calc(100% + 40px);
+    margin: -20px -20px 20px;
+    border-radius: var(--tui-radius-xl) var(--tui-radius-xl) 0 0;
+}

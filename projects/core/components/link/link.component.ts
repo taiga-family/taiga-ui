@@ -26,7 +26,7 @@ import {TuiBrightness, TuiHorizontalDirection} from '@taiga-ui/core/types';
 @Component({
     selector: 'a[tuiLink], button[tuiLink]',
     templateUrl: './link.template.html',
-    styleUrls: ['./link.style.less'],
+    styleUrls: ['./link.style.scss'],
     providers: [
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,

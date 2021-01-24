@@ -7,7 +7,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 @Component({
     selector: 'tui-math-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

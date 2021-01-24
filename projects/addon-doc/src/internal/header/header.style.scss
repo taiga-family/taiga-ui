@@ -1,0 +1,32 @@
+@use 'taiga-ui-local';
+
+:host {
+    @include shadow(6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 64px;
+    align-items: center;
+    padding: 0 20px;
+    background: var(--tui-base-01);
+    // fix for Safari to prevent tabs underline above sidebar
+    z-index: 1;
+}
+
+.logo {
+    margin-right: auto;
+}
+
+.menu {
+    margin-left: -20px;
+
+    @media #{$tablet-lg-min} {
+        display: none;
+    }
+}
+
+.navigation {
+    min-height: 100%;
+}

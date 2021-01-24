@@ -5,7 +5,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 @Component({
     selector: 'tui-scrollbar-example-6',
     templateUrl: './template.html',
-    styleUrls: ['./style.less'],
+    styleUrls: ['./style.scss'],
     changeDetection,
     encapsulation,
 })

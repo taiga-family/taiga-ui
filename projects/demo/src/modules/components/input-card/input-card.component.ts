@@ -16,7 +16,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-input-card',
     templateUrl: './input-card.template.html',
-    styleUrls: ['./input-card.style.less'],
+    styleUrls: ['./input-card.style.scss'],
     changeDetection,
     providers: [
         LogService,

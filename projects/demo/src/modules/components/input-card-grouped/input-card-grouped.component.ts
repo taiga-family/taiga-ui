@@ -15,7 +15,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-input-card-grouped',
     templateUrl: './input-card-grouped.template.html',
-    styleUrls: ['./input-card-grouped.style.less'],
+    styleUrls: ['./input-card-grouped.style.scss'],
     changeDetection,
     providers: [
         LogService,

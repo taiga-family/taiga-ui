@@ -1,5 +1,5 @@
 import {default as example1Ts} from '!!raw-loader!./examples/1/component.ts';
-import {default as example1Less} from '!!raw-loader!./examples/1/style.less';
+import {default as example1Less} from '!!raw-loader!./examples/1/style.scss';
 import {default as example1Html} from '!!raw-loader!./examples/1/template.html';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -31,7 +31,7 @@ viewBox="0 0 24 24">
 @Component({
     selector: 'example-tui-primitive-textfield',
     templateUrl: './primitive-textfield.template.html',
-    styleUrls: ['./primitive-textfield.style.less'],
+    styleUrls: ['./primitive-textfield.style.scss'],
     changeDetection,
     providers: [
         {

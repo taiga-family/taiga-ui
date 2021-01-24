@@ -16,7 +16,7 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
 @Component({
     selector: `a[tuiTab]:not([routerLink]), a[tuiTab][routerLink][routerLinkActive], button[tuiTab]`,
     templateUrl: './tab.template.html',
-    styleUrls: ['./tab.style.less'],
+    styleUrls: ['./tab.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TAB_PROVIDERS,
 })

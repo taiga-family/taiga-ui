@@ -5,7 +5,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 @Component({
     selector: 'typography',
     templateUrl: './typography.template.html',
-    styleUrls: ['./typography.style.less'],
+    styleUrls: ['./typography.style.scss'],
     changeDetection,
 })
 export class TypographyComponent {

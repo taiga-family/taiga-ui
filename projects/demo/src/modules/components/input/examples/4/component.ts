@@ -82,7 +82,7 @@ const USERS = [
 @Component({
     selector: 'tui-input-example-4',
     templateUrl: './template.html',
-    styleUrls: ['./style.less'],
+    styleUrls: ['./style.scss'],
     changeDetection,
     encapsulation,
 })

@@ -14,7 +14,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-expand',
     templateUrl: './expand.template.html',
-    styleUrls: ['./expand.style.less'],
+    styleUrls: ['./expand.style.scss'],
     changeDetection,
 })
 export class ExampleTuiExpandComponent {

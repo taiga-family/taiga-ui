@@ -36,7 +36,7 @@ import {mapTo, startWith, switchMap} from 'rxjs/operators';
 @Component({
     selector: 'tui-input-copy',
     templateUrl: './input-copy.template.html',
-    styleUrls: ['./input-copy.style.less'],
+    styleUrls: ['./input-copy.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

@@ -1,0 +1,17 @@
+@use '../../styles/mixins/mixins.scss';
+
+:host {
+    position: relative;
+    display: block;
+    flex: 1;
+}
+
+.scrollbar {
+    @include fullsize(fixed, inset);
+    margin: 0;
+}
+
+.content {
+    @include createStackingContext();
+    height: 100%;
+}

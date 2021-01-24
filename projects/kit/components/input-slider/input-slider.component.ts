@@ -35,7 +35,7 @@ import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
 @Component({
     selector: 'tui-input-slider',
     templateUrl: './input-slider.template.html',
-    styleUrls: ['./input-slider.style.less'],
+    styleUrls: ['./input-slider.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

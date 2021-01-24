@@ -1,0 +1,11 @@
+@use 'taiga-ui-local';
+
+.group {
+    max-width: 528px;
+    margin-bottom: 24px;
+}
+
+.title {
+    @include text-h5();
+    margin: 0 0 16px;
+}

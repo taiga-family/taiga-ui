@@ -17,7 +17,7 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'tui-svg-defs-host',
     templateUrl: './svg-defs-host.template.html',
-    styleUrls: ['./svg-defs-host.style.less'],
+    styleUrls: ['./svg-defs-host.style.scss'],
     providers: [TuiDestroyService],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

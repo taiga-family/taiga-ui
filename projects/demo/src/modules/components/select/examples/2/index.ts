@@ -20,7 +20,7 @@ class Account {
 @Component({
     selector: 'tui-select-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

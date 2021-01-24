@@ -29,7 +29,7 @@ const MIN_COMPONENT_WIDTH = 104;
 @Component({
     selector: 'tui-doc-demo',
     templateUrl: './demo.template.html',
-    styleUrls: ['./demo.style.less'],
+    styleUrls: ['./demo.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,

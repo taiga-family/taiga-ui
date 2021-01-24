@@ -38,7 +38,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-input-month-range',
     templateUrl: './input-month-range.template.html',
-    styleUrls: ['./input-month-range.style.less'],
+    styleUrls: ['./input-month-range.style.scss'],
     providers: [
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,

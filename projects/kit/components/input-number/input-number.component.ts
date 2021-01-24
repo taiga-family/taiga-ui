@@ -35,7 +35,7 @@ const DEFAULT_MAX_LENGTH = 18;
 @Component({
     selector: 'tui-input-number',
     templateUrl: './input-number.template.html',
-    styleUrls: ['./input-number.style.less'],
+    styleUrls: ['./input-number.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

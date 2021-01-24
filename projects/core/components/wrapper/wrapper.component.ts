@@ -16,7 +16,7 @@ import {TUI_WRAPPER_PROVIDERS} from './wrapper.providers';
 @Component({
     selector: 'tui-wrapper',
     template: '<ng-content></ng-content>',
-    styleUrls: ['./wrapper.style.less'],
+    styleUrls: ['./wrapper.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_WRAPPER_PROVIDERS,
 })

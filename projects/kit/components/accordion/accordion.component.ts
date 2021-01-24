@@ -21,7 +21,7 @@ import {TuiAccordionItemComponent} from './accordion-item/accordion-item.compone
 
 @Component({
     selector: 'tui-accordion',
-    styleUrls: ['./accordion.style.less'],
+    styleUrls: ['./accordion.style.scss'],
     templateUrl: 'accordion.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],

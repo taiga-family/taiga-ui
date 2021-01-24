@@ -25,7 +25,7 @@ class Account {
 @Component({
     selector: 'tui-form-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.style.less'],
+    styleUrls: ['./index.style.scss'],
     changeDetection,
 })
 export class TuiExample {

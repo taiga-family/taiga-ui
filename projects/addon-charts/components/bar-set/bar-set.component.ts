@@ -11,7 +11,7 @@ const FILLER_ARRAY: readonly number[] = [1];
 @Component({
     selector: 'tui-bar-set',
     templateUrl: './bar-set.template.html',
-    styleUrls: ['./bar-set.style.less'],
+    styleUrls: ['./bar-set.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBarSetComponent {

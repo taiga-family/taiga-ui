@@ -32,7 +32,7 @@ import {map} from 'rxjs/operators';
 @Component({
     selector: 'tui-opt-group[tuiMultiSelectGroup]',
     templateUrl: './multi-select-group.template.html',
-    styleUrls: ['./multi-select-group.style.less'],
+    styleUrls: ['./multi-select-group.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMultiSelectGroupComponent<T> {

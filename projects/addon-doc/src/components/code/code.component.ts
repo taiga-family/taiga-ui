@@ -3,7 +3,7 @@ import {Component, HostBinding, Input} from '@angular/core';
 @Component({
     selector: 'tui-doc-code',
     templateUrl: './code.template.html',
-    styleUrls: ['./code.style.less'],
+    styleUrls: ['./code.style.scss'],
 })
 export class TuiDocCodeComponent {
     @Input()

@@ -5,7 +5,7 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 
 @Component({
     selector: 'elderly',
-    styleUrls: ['./elderly.style.less'],
+    styleUrls: ['./elderly.style.scss'],
     template: '',
     encapsulation: ViewEncapsulation.None,
     changeDetection,

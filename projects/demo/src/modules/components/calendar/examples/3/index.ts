@@ -10,7 +10,7 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
 @Component({
     selector: 'tui-calendar-example-3',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

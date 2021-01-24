@@ -7,8 +7,8 @@ import {default as appTemplate} from '!!raw-loader!./examples/app-template.txt';
 import {default as assets} from '!!raw-loader!./examples/assets.txt';
 import {default as componentsStyles} from '!!raw-loader!./examples/components-styles.txt';
 import {default as ieSupport} from '!!raw-loader!./examples/ie-support.txt';
-import {default as importBaseLess} from '!!raw-loader!./examples/import-base-less.txt';
-import {default as importLocalLess} from '!!raw-loader!./examples/import-local-less.txt';
+import {default as importBaseScss} from '!!raw-loader!./examples/import-base-less.txt';
+import {default as importLocalScss} from '!!raw-loader!./examples/import-local-less.txt';
 import {default as main} from '!!raw-loader!./examples/main.txt';
 import {default as ponyfill} from '!!raw-loader!./examples/ponyfill.txt';
 import {Component} from '@angular/core';
@@ -17,7 +17,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 @Component({
     selector: 'home',
     templateUrl: 'home.template.html',
-    styleUrls: ['./home.style.less'],
+    styleUrls: ['./home.style.scss'],
     changeDetection,
 })
 export class HomeComponent {
@@ -29,8 +29,8 @@ export class HomeComponent {
         appModuleOptional,
         assets,
         componentsStyles,
-        importBaseLess,
-        importLocalLess,
+        importBaseScss: importBaseScss,
+        importLocalScss: importLocalScss,
         main,
         addons,
         ponyfill,

@@ -1,0 +1,23 @@
+@use 'taiga-ui-local';
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.control {
+    flex: 1;
+    margin-bottom: 4px;
+
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+}
+
+.error {
+    min-width: 100%;
+}
+
+.title {
+    @include text-h5();
+}

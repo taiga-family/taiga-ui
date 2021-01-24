@@ -1,0 +1,172 @@
+@use 'taiga-ui-local';
+
+$width-m: 32px;
+$height-m: 16px;
+$width-l: 48px;
+$height-l: 24px;
+$toggle-width-m: 48px;
+$toggle-interval-m: 16px;
+$toggle-width-l: 72px;
+$toggle-interval-l: 24px;
+
+:host {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    border-radius: 100px;
+
+    &[data-tui-host-size='m'] {
+        width: $width-m;
+        height: $height-m;
+    }
+
+    &[data-tui-host-size='l'] {
+        width: $width-l;
+        height: $height-l;
+    }
+}
+
+.checkbox {
+    @include clearinput();
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+
+    :host._disabled & {
+        pointer-events: none;
+        cursor: default;
+    }
+}
+
+.toggle {
+    @include transition(transform);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    :host[data-tui-host-size='m'] & {
+        width: $toggle-width-m;
+        height: $height-m;
+        transform: translateX(-$toggle-interval-m);
+    }
+
+    :host[data-tui-host-size='l'] & {
+        width: $toggle-width-l;
+        height: $height-l;
+        transform: translateX(-$toggle-interval-l);
+    }
+
+    :host._checked & {
+        transform: translateX(0);
+    }
+}
+
+.circle {
+    margin: 2px 0;
+    flex-shrink: 0;
+    border-radius: 100%;
+    background-color: var(--tui-base-01);
+
+    :host._disabled &_light {
+        opacity: 0.24;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        width: 12px;
+        height: 12px;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        width: 16px;
+        height: 16px;
+    }
+
+    :host._disabled & {
+        background-color: var(--tui-base-01);
+    }
+}
+
+.loader {
+    :host:not(._checked) & {
+        color: var(--tui-base-06);
+    }
+
+    :host:not(._checked)._disabled & {
+        color: var(--tui-base-05);
+    }
+
+    :host:not(._checked)[data-tui-host-mode='onDark'] & {
+        color: var(--tui-text-03-night);
+    }
+
+    :host:not(._checked)[data-tui-host-mode='onDark']._disabled & {
+        color: var(--tui-clear-inverse-active);
+    }
+
+    :host:not(._checked)[data-tui-host-mode='onLight'] & {
+        color: var(--tui-text-03);
+    }
+
+    :host:not(._checked)[data-tui-host-mode='onLight']._disabled & {
+        color: var(--tui-clear-active);
+    }
+
+    :host[data-tui-host-size='m'] & {
+        width: 8px;
+        margin: 0 $space;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        width: 16px;
+        margin: 0 $space + 2;
+    }
+}
+
+.icon {
+    opacity: 0.8;
+
+    &_off {
+        color: var(--tui-base-06);
+
+        :host._disabled & {
+            color: var(--tui-base-05);
+        }
+
+        :host[data-tui-host-mode='onDark'] & {
+            color: var(--tui-text-03-night);
+        }
+
+        :host[data-tui-host-mode='onDark']._disabled & {
+            color: var(--tui-clear-inverse-active);
+        }
+
+        :host[data-tui-host-mode='onLight'] & {
+            color: var(--tui-text-03);
+        }
+
+        :host[data-tui-host-mode='onLight']._disabled & {
+            color: var(--tui-clear-active);
+        }
+    }
+
+    :host[data-tui-host-size='m'] & {
+        width: 16px;
+        height: 16px;
+        transform: scale(0.75);
+    }
+
+    :host[data-tui-host-size='l'] & {
+        margin: 0 $space / 2;
+        width: 24px;
+        height: 24px;
+    }
+
+    :host._hovered & {
+        opacity: 1;
+    }
+}

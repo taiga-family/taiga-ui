@@ -56,7 +56,7 @@ export function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
 @Component({
     selector: 'tui-toolbar',
     templateUrl: './toolbar.template.html',
-    styleUrls: ['./toolbar.style.less'],
+    styleUrls: ['./toolbar.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {

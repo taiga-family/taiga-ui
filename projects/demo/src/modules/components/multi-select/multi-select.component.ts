@@ -2,7 +2,7 @@ import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
+import {default as example2Less} from '!!raw-loader!./examples/2/index.scss';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
@@ -53,7 +53,7 @@ class Account {
 @Component({
     selector: 'example-tui-multi-select',
     templateUrl: './multi-select.template.html',
-    styleUrls: ['./multi-select.style.less'],
+    styleUrls: ['./multi-select.style.scss'],
     changeDetection,
     providers: [
         {

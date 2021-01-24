@@ -34,7 +34,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-input',
     templateUrl: './input.template.html',
-    styleUrls: ['./input.style.less'],
+    styleUrls: ['./input.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

@@ -8,7 +8,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 @Component({
     selector: 'example-tui-pluralize',
     templateUrl: './pluralize.template.html',
-    styleUrls: ['./pluralize.style.less'],
+    styleUrls: ['./pluralize.style.scss'],
     changeDetection,
 })
 export class ExampleTuiPluralizeComponent {

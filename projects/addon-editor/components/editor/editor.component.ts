@@ -59,7 +59,7 @@ export function elementFactory(editor: TuiEditorComponent): ElementRef | null {
 @Component({
     selector: 'tui-editor',
     templateUrl: './editor.template.html',
-    styleUrls: ['./editor.style.less'],
+    styleUrls: ['./editor.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,

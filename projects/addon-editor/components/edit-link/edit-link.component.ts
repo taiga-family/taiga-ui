@@ -19,7 +19,7 @@ const END = MAX_LENGTH - START - 10;
 @Component({
     selector: 'tui-edit-link',
     templateUrl: './edit-link.template.html',
-    styleUrls: ['./edit-link.style.less'],
+    styleUrls: ['./edit-link.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditLinkComponent {

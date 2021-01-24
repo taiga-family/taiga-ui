@@ -1,0 +1,11 @@
+@use 'taiga-ui-local';
+
+.user {
+    margin-right: auto;
+}
+
+.phone {
+    @include text-body-s();
+    display: block;
+    color: var(--tui-text-03);
+}

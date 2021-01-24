@@ -14,7 +14,7 @@ import {TuiPoint} from '@taiga-ui/core';
 @Component({
     selector: 'tui-color-picker',
     templateUrl: './color-picker.template.html',
-    styleUrls: ['./color-picker.style.less'],
+    styleUrls: ['./color-picker.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorPickerComponent {

@@ -16,7 +16,7 @@ enum Department {
 @Component({
     selector: 'tui-filter-example-4',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

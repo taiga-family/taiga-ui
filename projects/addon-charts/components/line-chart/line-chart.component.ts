@@ -33,7 +33,7 @@ const SMOOTHING_MESSAGE = 'smoothingFactor must be between 0 and 100';
 @Component({
     selector: 'tui-line-chart',
     templateUrl: './line-chart.template.html',
-    styleUrls: ['./line-chart.style.less'],
+    styleUrls: ['./line-chart.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLineChartComponent {

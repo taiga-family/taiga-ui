@@ -1,0 +1,11 @@
+@use 'taiga-ui-local';
+
+.description {
+    @include text-body-xs();
+    margin-top: $space;
+    color: var(--tui-text-03);
+
+    [data-tui-host-size='l'] & {
+        @include text-body-s();
+    }
+}

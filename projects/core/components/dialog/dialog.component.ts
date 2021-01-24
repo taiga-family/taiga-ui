@@ -29,7 +29,7 @@ type InternalContext<O, I> = TuiBaseDialog<O, ExternalContext<O, I>> &
 @Component({
     selector: 'tui-dialog',
     templateUrl: './dialog.template.html',
-    styleUrls: ['./dialog.style.less'],
+    styleUrls: ['./dialog.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_DIALOG_PROVIDERS,
     animations: [tuiSlideInTop, tuiFadeIn],

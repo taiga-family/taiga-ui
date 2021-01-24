@@ -28,7 +28,7 @@ const DATA: ReadonlyArray<User> = [
 @Component({
     selector: 'tui-input-example-8',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

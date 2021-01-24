@@ -24,7 +24,7 @@ import {TuiSizeL} from '@taiga-ui/core';
 @Component({
     selector: 'tui-checkbox',
     templateUrl: './checkbox.template.html',
-    styleUrls: ['./checkbox.style.less'],
+    styleUrls: ['./checkbox.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

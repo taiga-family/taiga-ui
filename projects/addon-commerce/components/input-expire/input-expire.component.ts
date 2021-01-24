@@ -27,7 +27,7 @@ import {
 @Component({
     selector: 'tui-input-expire',
     templateUrl: './input-expire.template.html',
-    styleUrls: ['./input-expire.style.less'],
+    styleUrls: ['./input-expire.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

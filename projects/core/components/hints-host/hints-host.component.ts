@@ -16,7 +16,7 @@ import {skip, takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'tui-hints-host',
     templateUrl: './hints-host.template.html',
-    styleUrls: ['./hints-host.style.less'],
+    styleUrls: ['./hints-host.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiFadeIn],
     providers: [TuiDestroyService],

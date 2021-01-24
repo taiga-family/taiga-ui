@@ -20,7 +20,7 @@ import {map} from 'rxjs/operators';
 @Component({
     selector: 'tui-select-option',
     templateUrl: './select-option.template.html',
-    styleUrls: ['./select-option.style.less'],
+    styleUrls: ['./select-option.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSelectOptionComponent<T> implements OnInit {

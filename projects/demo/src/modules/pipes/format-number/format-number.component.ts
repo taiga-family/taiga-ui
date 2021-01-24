@@ -11,7 +11,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-tui-format-number',
     templateUrl: './format-number.template.html',
-    styleUrls: ['./format-number.style.less'],
+    styleUrls: ['./format-number.style.scss'],
     changeDetection,
 })
 export class ExampleTuiFormatNumberComponent {

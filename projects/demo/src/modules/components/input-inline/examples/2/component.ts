@@ -8,7 +8,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     templateUrl: './template.html',
     changeDetection,
     encapsulation,
-    styleUrls: ['./style.less'],
+    styleUrls: ['./style.scss'],
 })
 export class TuiInputInlineExample2 {
     heading = 'Page heading';

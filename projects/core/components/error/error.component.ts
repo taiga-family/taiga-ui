@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-error',
     templateUrl: './error.template.html',
-    styleUrls: ['./error.style.less'],
+    styleUrls: ['./error.style.scss'],
     providers: [TuiDestroyService, MODE_PROVIDER],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiHeightCollapse, tuiFadeIn],

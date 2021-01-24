@@ -31,7 +31,7 @@ import {
 @Component({
     selector: 'tui-toggle',
     templateUrl: './toggle.template.html',
-    styleUrls: ['./toggle.style.less'],
+    styleUrls: ['./toggle.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

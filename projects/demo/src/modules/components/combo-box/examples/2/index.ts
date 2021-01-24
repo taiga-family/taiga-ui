@@ -61,7 +61,7 @@ export class Service {
 @Component({
     selector: 'tui-combo-box-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     providers: [Service, TuiDestroyService],
     changeDetection,
 })

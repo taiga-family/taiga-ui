@@ -30,7 +30,7 @@ import {takeUntil} from 'rxjs/operators';
     // https://github.com/angular/angular/issues/10887
     // changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './field-error.template.html',
-    styleUrls: ['./field-error.style.less'],
+    styleUrls: ['./field-error.style.scss'],
     animations: [tuiHeightCollapse, tuiFadeIn],
 })
 export class TuiFieldErrorComponent implements OnInit, OnDestroy {

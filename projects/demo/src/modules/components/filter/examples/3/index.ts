@@ -14,7 +14,7 @@ const getIcon: Record<string, string> = {
 @Component({
     selector: 'tui-filter-example-3',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

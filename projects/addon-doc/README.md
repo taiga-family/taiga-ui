@@ -52,6 +52,7 @@ npm i @taiga-ui/addon-doc
                     languages: {
                         typescript: () => import('highlight.js/lib/languages/typescript'),
                         less: () => import('highlight.js/lib/languages/less'),
+                        scss: () => import('highlight.js/lib/languages/scss'),
                         xml: () => import('highlight.js/lib/languages/xml'),
                     },
                 },

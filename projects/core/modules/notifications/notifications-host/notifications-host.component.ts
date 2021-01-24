@@ -10,7 +10,7 @@ import {TuiNotificationsService} from '../notifications.service';
     selector: 'tui-notifications-host',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './notifications-host.template.html',
-    styleUrls: ['./notifications-host.style.less'],
+    styleUrls: ['./notifications-host.style.scss'],
     animations: [tuiFadeInList, tuiSlideInRightList, tuiHeightCollapseList],
 })
 export class TuiNotificationsHostComponent {

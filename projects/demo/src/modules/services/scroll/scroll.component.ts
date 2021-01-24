@@ -1,5 +1,5 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
+import {default as example1Less} from '!!raw-loader!./examples/1/index.scss';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInjectService} from '!!raw-loader!./examples/import/inject-service.txt';
@@ -13,7 +13,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-tui-scrollbar',
     templateUrl: './scroll.template.html',
-    styleUrls: ['./scroll.style.less'],
+    styleUrls: ['./scroll.style.scss'],
     changeDetection,
 })
 export class ExampleTuiScrollComponent {

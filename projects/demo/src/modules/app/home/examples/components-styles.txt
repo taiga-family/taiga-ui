@@ -1,5 +1,5 @@
 @Component({
   ...,
-  styleUrls: ['./my.component.scss', './my.component.less'],
+  styleUrls: ['./my.component.scss', './my.component.scss'],
 })
 export class MyComponent {}

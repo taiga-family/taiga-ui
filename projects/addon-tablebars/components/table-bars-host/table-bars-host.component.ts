@@ -11,7 +11,7 @@ import {TuiTableBarsService} from '../../services/table-bars.service';
     selector: 'tui-table-bars-host',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './table-bars-host.template.html',
-    styleUrls: ['./table-bars-host.style.less'],
+    styleUrls: ['./table-bars-host.style.scss'],
     animations: [tuiSlideInTop],
 })
 export class TuiTableBarsHostComponent {

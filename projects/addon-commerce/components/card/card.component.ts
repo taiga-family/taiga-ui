@@ -20,7 +20,7 @@ const icons = {
 @Component({
     selector: 'tui-card',
     templateUrl: 'card.template.html',
-    styleUrls: ['./card.style.less'],
+    styleUrls: ['./card.style.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCardComponent {

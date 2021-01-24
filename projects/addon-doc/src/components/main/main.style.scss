@@ -1,0 +1,170 @@
+@use 'taiga-ui-local';
+
+@keyframes tuiShaking {
+    from,
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translate3d(-5px, 0, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translate3d(5px, 0, 0);
+    }
+}
+
+$sidebar-width: 260px;
+
+.tui-doc-page {
+    @include createStackingContext();
+    height: 100%;
+    padding-top: 64px;
+    box-sizing: border-box;
+}
+
+tui-doc-navigation.tui-doc-navigation {
+    position: fixed;
+    top: 64px;
+    bottom: 0;
+    width: $sidebar-width;
+    border-right: 1px solid var(--tui-base-03);
+
+    @media #{$tablet-s} {
+        display: none;
+    }
+}
+
+.tui-doc-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: $sidebar-width;
+
+    @media #{$tablet-s} {
+        margin-left: 0;
+    }
+}
+
+.tui-doc-outlet + * {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex-grow: 1;
+}
+
+.tui-doc-animated-example {
+    animation: 1s 300ms tuiShaking;
+}
+
+// highlightjs custom theme
+.hljs-tag {
+    background: none;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: var(--tui-text-primary);
+    background-color: var(--tui-base-02);
+}
+
+.hljs-subst,
+.hljs-title {
+    font-weight: normal;
+    color: #000;
+}
+
+.hljs-comment,
+.hljs-quote {
+    color: var(--tui-text-03);
+    font-style: italic;
+}
+
+.hljs-meta {
+    color: #e38162;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-literal,
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type,
+.hljs-selector-id,
+.hljs-selector-class {
+    font-weight: bold;
+    color: var(--tui-link);
+}
+
+.hljs-attribute,
+.hljs-number,
+.hljs-regexp,
+.hljs-link {
+    font-weight: bold;
+    color: var(--tui-primary-active);
+}
+
+.hljs-number,
+.hljs-regexp,
+.hljs-link {
+    font-weight: normal;
+}
+
+.hljs-string {
+    color: var(--tui-positive);
+    font-weight: bold;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-formula {
+    color: var(--tui-text-primary);
+    background: var(--tui-base-02);
+    font-style: italic;
+}
+
+.hljs-doctag {
+    text-decoration: underline;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+    color: var(--tui-warning-fill);
+}
+
+.hljs-addition {
+    background: var(--tui-success-bg);
+}
+
+.hljs-deletion {
+    background: var(--tui-error-bg);
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}
+
+.hljs .hljs-line-numbers {
+    padding: 0;
+}
+
+.hljs-ln-numbers {
+    vertical-align: top;
+    opacity: 0.3;
+    text-align: right;
+    padding-right: 1em !important;
+}

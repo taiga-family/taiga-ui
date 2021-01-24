@@ -15,7 +15,7 @@ export interface User {
 @Component({
     selector: 'tui-dropdown-selection-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./index.scss'],
     changeDetection,
     encapsulation,
 })

@@ -6,7 +6,7 @@ import {changeDetection} from '../../../../change-detection-strategy';
 @Component({
     selector: 'dialog-example',
     templateUrl: './dialog-example.template.html',
-    styleUrls: ['./dialog-example.style.less'],
+    styleUrls: ['./dialog-example.style.scss'],
     changeDetection,
 })
 export class DialogExampleComponent {
