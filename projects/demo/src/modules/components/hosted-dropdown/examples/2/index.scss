@@ -1,11 +1,11 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .margin {
     margin: 4 * $space;
 }
 
 .icon {
-    @include transition(transform);
+    //@include transition(transform);
 
     &_rotated {
         transform: rotate(180deg);

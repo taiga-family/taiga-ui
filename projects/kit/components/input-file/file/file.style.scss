@@ -1,7 +1,7 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
-    @include text-body-m();
+    //@include text-body-m();
     position: relative;
     display: flex;
     border: 1px solid var(--tui-base-03);
@@ -59,7 +59,7 @@
         margin-right: 16px;
 
         &:before {
-            @include fullsize();
+            //@include fullsize();
             content: '';
             background: #333;
             opacity: 0.08;
@@ -73,11 +73,11 @@
 }
 
 .loader {
-    @include fullsize();
+    //@include fullsize();
 }
 
 .icon {
-    @include fullsize();
+    //@include fullsize();
     color: var(--tui-success-fill);
 
     &_error {
@@ -90,7 +90,7 @@
 }
 
 .remove {
-    @include transition(opacity);
+    //@include transition(opacity);
     position: absolute;
     top: 10px;
     right: 10px;
@@ -124,10 +124,10 @@
 }
 
 .name {
-    @include text-overflow();
+    //@include text-overflow();
 }
 
 .content {
-    @include text-body-s();
+    //@include text-body-s();
     color: var(--tui-error-fill);
 }

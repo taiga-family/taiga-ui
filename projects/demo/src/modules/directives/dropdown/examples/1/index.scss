@@ -1,6 +1,6 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .dropdown {
-    @include text-caption-l();
+    //@include text-caption-l();
     padding: 4px 12px;
 }

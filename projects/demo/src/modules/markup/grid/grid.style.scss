@@ -1,6 +1,6 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .title {
-    @include text-h5();
+    //@include text-h5();
     margin: 16px 0 4px;
 }

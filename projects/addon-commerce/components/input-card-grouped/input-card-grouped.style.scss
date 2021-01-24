@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 $width-full: 392px;
 $width-mobile: 288px;
@@ -27,7 +27,7 @@ $value-offset-small: -68px;
 }
 
 .wrapper {
-    @include transition(transform);
+    //@include transition(transform);
     position: absolute;
     width: 100%;
     height: 100%;
@@ -55,7 +55,7 @@ $value-offset-small: -68px;
 }
 
 .card {
-    @include center-top();
+    //@include center-top();
     right: 44px;
     width: 32px;
     height: 32px;
@@ -66,7 +66,7 @@ $value-offset-small: -68px;
 }
 
 .collapsed {
-    @include textfield-input();
+    //@include textfield-input();
     line-height: 36px;
     transition: color 0s;
 
@@ -88,21 +88,23 @@ $value-offset-small: -68px;
 }
 
 .value {
-    @include transition(transform);
+    //@include transition(transform);
     display: block;
     text-indent: -6px;
 
-    &_collapsed {
+    .value_collapsed {
         transform: translate3d($value-offset-full, 0, 0);
     }
 
-    &_small&_collapsed {
-        transform: translate3d($value-offset-small, 0, 0);
+    .value_small {
+        &.value_collapsed {
+            transform: translate3d($value-offset-small, 0, 0);
+        }
     }
 }
 
 .input {
-    @include textfield-input();
+    //@include textfield-input();
 
     &_card {
         transition: color 0s 0.3s;
@@ -120,20 +122,20 @@ $value-offset-small: -68px;
 }
 
 .cleaner {
-    @include icon-button();
+    //@include icon-button();
     position: absolute;
     right: 12px;
     top: 16px;
 }
 
 .placeholder {
-    @include textfield-placeholder();
+    //@include textfield-placeholder();
     margin: 18px 16px;
     line-height: 20px;
 }
 
 .example-text {
-    @include example-text();
+    //@include example-text();
     position: absolute;
     margin: 18px 16px;
 }

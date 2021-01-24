@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 $size-s: 64px;
 $size-m: 144px;
@@ -31,8 +31,8 @@ $size-xl: 256px;
 }
 
 .content {
-    @include fullsize();
-    @include text-body-m(2);
+    //@include fullsize();
+    //@include text-body-m(2);
     display: flex;
     max-height: 100%;
     flex-direction: column;
@@ -47,7 +47,7 @@ $size-xl: 256px;
     color: var(--tui-text-02);
 
     :host[data-tui-host-size='m'] & {
-        @include text-body-xs();
+        //@include text-body-xs();
     }
 }
 
@@ -55,11 +55,11 @@ $size-xl: 256px;
     color: var(--tui-text-01);
 
     :host[data-tui-host-size='l'] & {
-        @include text-body-l-bold();
+        //@include text-body-l-bold();
     }
 
     :host[data-tui-host-size='m'] & {
-        @include text-body-m-bold();
+        //@include text-body-m-bold();
     }
 }
 

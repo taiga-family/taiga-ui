@@ -1,11 +1,11 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     display: block;
 }
 
 .header {
-    @include text-body-s-bold();
+    //@include text-body-s-bold();
 }
 
 .code {
@@ -14,8 +14,8 @@
 
 // highlightjs added class
 .hljs:not(:empty) {
-    @include text-body-m();
-    @include customize-scroll();
+    //@include text-body-m();
+    //@include customize-scroll();
     padding: 24px 32px;
     font-family: monospace;
     background-color: var(--tui-base-02);

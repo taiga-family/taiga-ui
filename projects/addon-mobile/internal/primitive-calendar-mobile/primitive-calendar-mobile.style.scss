@@ -1,10 +1,10 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 $itemSize: 44px;
 $accent: #458bf6;
 $faded: #dae8fd;
 
-@include picker($itemSize);
+//@include picker($itemSize);
 
 :host {
     width: 332px;

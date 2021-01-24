@@ -1,7 +1,7 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
-    @include text-body-s();
+    //@include text-body-s();
     display: flex;
     align-items: center;
     color: var(--tui-text-03);

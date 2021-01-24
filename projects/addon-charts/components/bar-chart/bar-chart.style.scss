@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     display: flex;
@@ -7,7 +7,7 @@
 }
 
 .wrapper {
-    @include transition(background-color);
+    //@include transition(background-color);
     position: relative;
     display: flex;
     flex: 1;

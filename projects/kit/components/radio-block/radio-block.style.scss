@@ -1,14 +1,14 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
-    @include text-basic();
+    //@include text-basic();
     display: inline-block;
     vertical-align: top;
     border-radius: var(--tui-radius);
 
     &[data-tui-host-size='m'],
     &[data-tui-host-size='l'] {
-        @include text-body-m();
+        //@include text-body-m();
     }
 
     &._readonly {
@@ -119,12 +119,12 @@
     }
 
     :host._hidden_radio & {
-        @include visually-hidden();
+        //@include visually-hidden();
     }
 }
 
 .label {
-    @include text-overflow();
+    //@include text-overflow();
     flex-grow: 1;
 
     :host._hidden_radio & {

@@ -1,6 +1,6 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
-@include textfield();
+//@include textfield();
 
 :host {
     cursor: text;
@@ -98,7 +98,7 @@
 }
 
 .absolute-wrapper {
-    @include fullsize();
+    //@include fullsize();
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -174,9 +174,9 @@
 }
 
 .native {
-    @include clearinput();
-    @include fullsize();
-    @include text-overflow();
+    //@include clearinput();
+    //@include fullsize();
+    //@include text-overflow();
     box-sizing: border-box;
     padding: 0;
     cursor: inherit;

@@ -1,7 +1,7 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
-    @include center-all();
+    //@include center-all();
     display: block;
     background: var(--tui-base-01);
     word-break: break-word;

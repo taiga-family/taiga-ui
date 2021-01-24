@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     position: relative;
@@ -6,7 +6,7 @@
     overflow: hidden;
 
     &._initialized {
-        @include transition(max-height);
+        //@include transition(max-height);
     }
 }
 
@@ -19,7 +19,7 @@
     overflow: hidden;
 
     &_ellipsis {
-        @include text-overflow();
+        //@include text-overflow();
         display: block;
     }
 }

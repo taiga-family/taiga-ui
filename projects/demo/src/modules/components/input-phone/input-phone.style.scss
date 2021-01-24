@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .item {
     display: flex;
@@ -18,6 +18,6 @@
 }
 
 .phone {
-    @include text-body-s();
+    //@include text-body-s();
     color: var(--tui-text-03);
 }

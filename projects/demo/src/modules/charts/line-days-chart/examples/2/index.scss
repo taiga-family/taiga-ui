@@ -1,6 +1,6 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
-.color() {
+@mixin color() {
     color: var(--tui-support-01);
 
     &:first-child {
@@ -27,7 +27,7 @@
 }
 
 .item {
-    @include color();
+    //@include color();
     display: flex;
     align-items: center;
     margin: 0 12px;
@@ -49,6 +49,6 @@
 }
 
 .chart {
-    @include color();
-    @include fullsize();
+    //@include color();
+    //@include fullsize();
 }

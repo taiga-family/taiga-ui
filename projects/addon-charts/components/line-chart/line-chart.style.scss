@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     display: flex;
@@ -82,8 +82,8 @@
 }
 
 .hint {
-    @include shadow();
-    @include text-body-xs();
+    //@include shadow();
+    //@include text-body-xs();
     position: absolute;
     height: 20px;
     line-height: 20px;

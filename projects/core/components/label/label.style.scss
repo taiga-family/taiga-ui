@@ -1,4 +1,4 @@
-@use '../../styles/taiga-ui-local.scss';
+@use 'taiga-ui-local' as *;
 
 :host {
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 .label {
-    @include text-body-s();
+    //@include text-body-s();
     max-width: 100%;
     align-self: inherit;
     overflow: inherit;

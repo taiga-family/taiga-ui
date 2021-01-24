@@ -28,7 +28,7 @@
         opacity: var(--tui-disabled-opacity);
     }
 
-    &&_flexible {
+    &#{&}_flexible {
         max-width: none;
         width: 75%;
         margin: 0 auto;

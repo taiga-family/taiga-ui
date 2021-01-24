@@ -20,7 +20,7 @@ $iterations: 20;
             background-color: var(--tui-support-#{$i}, var(--tui-support-0#{$i}));
         }
     }
-    @include loop($i - 1);
+    //@include loop($i - 1);
 }
 
-@include loop($iterations);
+//@include loop($iterations);

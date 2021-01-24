@@ -1,7 +1,7 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
-    @include text-body-m();
+    //@include text-body-m();
     position: relative;
     display: flex;
     height: var(--tui-height-xl);
@@ -37,13 +37,13 @@
 }
 
 .more {
-    &&._active {
+    &._active {
         pointer-events: auto;
     }
 }
 
 .icon {
-    @include transition(transform);
+    //@include transition(transform);
     margin-left: 4px;
     vertical-align: bottom;
 

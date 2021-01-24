@@ -1,3 +1,5 @@
+@use 'taiga-ui-local' as *;
+
 $sizes: 15;
 
 @mixin generate-space($direction, $start: 0) {

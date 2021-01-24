@@ -1,3 +1,5 @@
+$space: 4px;
+
 // centering with translate
 @mixin center-left() {
     position: absolute;
@@ -218,9 +220,9 @@
 }
 
 // dashed border
-@mixin dashed-border($color: currentColor, $alignment: bottom, $space: 4) {
-    $size: unit($space, px);
-    $percentage: (100% / $space * 2);
+@mixin dashed-border($color: currentColor, $alignment: bottom, $spacing: 4) {
+    $size: unit($spacing, px);
+    $percentage: (100% / $spacing * 2);
     background-image: linear-gradient(to right, $color 0%, $color $percentage, transparent $percentage);
     background-position: 0 $alignment;
     background-size: $size 1px;

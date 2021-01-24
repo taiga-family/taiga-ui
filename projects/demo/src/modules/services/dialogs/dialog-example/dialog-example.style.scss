@@ -1,11 +1,11 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     display: block;
 }
 
 .heading {
-    @include text-h3();
+    //@include text-h3();
     margin: 0 0 24px;
 }
 

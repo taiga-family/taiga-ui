@@ -1,7 +1,7 @@
-@use '../../styles/taiga-ui-local.scss';
+@use 'taiga-ui-local' as *;
 
 :host {
-    @include text-body-l();
+    //@include text-body-l();
     display: block;
     text-align: center;
     font-weight: bold;

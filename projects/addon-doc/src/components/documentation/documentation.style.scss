@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 $color-property: #8f75d1;
 
@@ -40,7 +40,7 @@ $color-property: #8f75d1;
 }
 
 .property {
-    @include text-body-m();
+    //@include text-body-m();
     margin-bottom: $space;
     font-family: monospace;
     color: $color-property;

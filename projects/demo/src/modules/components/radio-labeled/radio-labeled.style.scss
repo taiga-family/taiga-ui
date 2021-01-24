@@ -1,5 +1,5 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .tariff {
-    @include text-body-s-bold();
+    //@include text-body-s-bold();
 }

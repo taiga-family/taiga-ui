@@ -1,4 +1,4 @@
-@use '../../styles/taiga-ui-local.scss';
+@use 'taiga-ui-local' as *;
 
 :host {
     position: relative;
@@ -20,7 +20,7 @@
     }
 
     &._legacy {
-        @include customize-scroll();
+        //@include customize-scroll();
         overflow: overlay;
     }
 
@@ -30,7 +30,7 @@
 }
 
 .content {
-    @include createStackingContext();
+    //@include createStackingContext();
     flex: 1;
     flex-basis: auto;
     width: 100%;

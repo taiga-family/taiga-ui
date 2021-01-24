@@ -1,7 +1,7 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
-    @include shadow(2);
+    //@include shadow(2);
     display: flex;
     height: 36px;
     width: 36px;

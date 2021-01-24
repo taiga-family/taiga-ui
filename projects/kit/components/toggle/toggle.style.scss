@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 $width-m: 32px;
 $height-m: 16px;
@@ -28,7 +28,7 @@ $toggle-interval-l: 24px;
 }
 
 .checkbox {
-    @include clearinput();
+    //@include clearinput();
     position: absolute;
     top: 0;
     left: 0;
@@ -44,7 +44,7 @@ $toggle-interval-l: 24px;
 }
 
 .toggle {
-    @include transition(transform);
+    //@include transition(transform);
     display: flex;
     align-items: center;
     justify-content: center;

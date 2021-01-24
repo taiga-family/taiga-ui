@@ -1,16 +1,16 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     display: block;
 }
 
 .title {
-    @include text-h6();
+    //@include text-h6();
     margin: 24px 0 12px;
 }
 
 .description {
-    @include text-body-m();
+    //@include text-body-m();
 }
 
 .row {
@@ -22,9 +22,9 @@
 }
 
 .example {
-    @include tui-space(left, 2);
-    @include text-body-m();
-    @include shadow(3);
+    //@include tui-space(left, 2);
+    //@include text-body-m();
+    //@include shadow(3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,90 +34,90 @@
     border-radius: var(--tui-radius);
 
     &_top-1 {
-        @include tui-space(top, 1);
+        //@include tui-space(top, 1);
     }
 
     &_top-2 {
-        @include tui-space(top, 2);
+        //@include tui-space(top, 2);
     }
 
     &_top-3 {
-        @include tui-space(top, 3);
+        //@include tui-space(top, 3);
     }
 
     &_top-4 {
-        @include tui-space(top, 4);
+        //@include tui-space(top, 4);
     }
 
     &_top-5 {
-        @include tui-space(top, 5);
+        //@include tui-space(top, 5);
     }
 
     &_bottom-1 {
-        @include tui-space(bottom, 1);
+        //@include tui-space(bottom, 1);
     }
 
     &_bottom-2 {
-        @include tui-space(bottom, 2);
+        //@include tui-space(bottom, 2);
     }
 
     &_bottom-3 {
-        @include tui-space(bottom, 3);
+        //@include tui-space(bottom, 3);
     }
 
     &_bottom-4 {
-        @include tui-space(bottom, 4);
+        //@include tui-space(bottom, 4);
     }
 
     &_bottom-5 {
-        @include tui-space(bottom, 5);
+        //@include tui-space(bottom, 5);
     }
 
     &_right-1 {
-        @include tui-space(right, 1);
+        //@include tui-space(right, 1);
     }
 
     &_right-2 {
-        @include tui-space(right, 2);
+        //@include tui-space(right, 2);
     }
 
     &_right-3 {
-        @include tui-space(right, 3);
+        //@include tui-space(right, 3);
     }
 
     &_right-4 {
-        @include tui-space(right, 4);
+        //@include tui-space(right, 4);
     }
 
     &_right-5 {
-        @include tui-space(right, 5);
+        //@include tui-space(right, 5);
     }
 
     &_left-1.example {
-        @include tui-space(left, 1);
+        //@include tui-space(left, 1);
     }
 
     &_left-2.example {
-        @include tui-space(left, 2);
+        //@include tui-space(left, 2);
     }
 
     &_left-3.example {
-        @include tui-space(left, 3);
+        //@include tui-space(left, 3);
     }
 
     &_left-4.example {
-        @include tui-space(left, 4);
+        //@include tui-space(left, 4);
     }
 
     &_left-5.example {
-        @include tui-space(left, 5);
+        //@include tui-space(left, 5);
     }
 
     &_vertical {
-        @include tui-space(vertical, 4);
+        //@include tui-space(vertical, 4);
     }
 
     &_horizontal {
-        @include tui-space(horizontal, 4);
+        //@include tui-space(horizontal, 4);
     }
 }

@@ -1,7 +1,7 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .description-header {
-    @include text-body-l-bold();
+    //@include text-body-l-bold();
     line-height: 46px;
     height: 35px;
 }

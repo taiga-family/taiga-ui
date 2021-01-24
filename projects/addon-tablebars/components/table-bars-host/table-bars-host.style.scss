@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     position: fixed;
@@ -16,7 +16,7 @@
 }
 
 .bar {
-    @include shadow();
+    //@include shadow();
     flex: 0 0 100%;
     background: var(--tui-base-07);
     color: var(--tui-base-01);

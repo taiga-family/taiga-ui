@@ -1,6 +1,6 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
-@include picker(59px);
+//@include picker(59px);
 
 :host {
     display: block;

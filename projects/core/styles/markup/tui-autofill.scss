@@ -1,3 +1,5 @@
+@use 'taiga-ui-local' as *;
+
 // $bad TODO: Move into tuiAutofill directive
 .tui-autofill {
     &:not(:-webkit-autofill) {

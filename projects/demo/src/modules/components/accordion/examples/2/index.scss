@@ -1,17 +1,17 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .container {
     max-width: 750px;
 }
 
 .operation-header {
-    @include text-body-l();
+    //@include text-body-l();
     display: flex;
     align-items: center;
 }
 
 .operation-date {
-    @include text-body-xl();
+    //@include text-body-xl();
     text-align: center;
 }
 
@@ -22,7 +22,7 @@
 
 .operation-month,
 .operation-status {
-    @include text-body-s();
+    //@include text-body-s();
 }
 
 .operation-pic {
@@ -39,7 +39,7 @@
 }
 
 .operation-title {
-    @include text-overflow();
+    //@include text-overflow();
     margin-right: 24px;
     flex-grow: 1;
 }
@@ -59,7 +59,7 @@
 }
 
 .form-title {
-    @include text-h6();
+    //@include text-h6();
     margin: 0 0 20px;
 }
 

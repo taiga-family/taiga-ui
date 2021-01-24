@@ -1,12 +1,12 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host-context(._underline):hover {
     box-shadow: inset 0 -2px var(--tui-base-03);
 }
 
 :host {
-    @include transition(all);
-    @include clearbtn();
+    //@include transition(all);
+    //@include clearbtn();
     position: relative;
     display: flex;
     flex-shrink: 0;
@@ -67,7 +67,7 @@
     }
 
     &._android {
-        @include transition(opacity);
+        //@include transition(opacity);
         height: 48px;
         flex: 1;
         flex-shrink: 0;

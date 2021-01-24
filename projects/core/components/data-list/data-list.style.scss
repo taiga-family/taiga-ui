@@ -1,7 +1,7 @@
-@use '../../styles/taiga-ui-local.scss';
+@use 'taiga-ui-local' as *;
 
 tui-data-list {
-    @include text-body-m();
+    //@include text-body-m();
     display: flex;
     flex-direction: column;
     padding: 8px 0;
@@ -23,8 +23,8 @@ tui-data-list {
 }
 
 tui-opt-group {
-    @include text-body-xs();
-    @include text-overflow();
+    //@include text-body-xs();
+    //@include text-overflow();
     position: relative;
     display: flex;
     flex-direction: column;

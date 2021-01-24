@@ -1,8 +1,8 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
-    @include hoverable-with-shadow();
-    @include text-body-m();
+    //@include hoverable-with-shadow();
+    //@include text-body-m();
     position: relative;
     display: flex;
     padding: 14px;
@@ -18,8 +18,8 @@
 }
 
 .button {
-    @include fullsize();
-    @include clearbtn();
+    //@include fullsize();
+    //@include clearbtn();
     cursor: pointer;
     outline: none;
 }

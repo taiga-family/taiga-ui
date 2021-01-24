@@ -1,13 +1,13 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
-    @include text-body-s();
+    //@include text-body-s();
     display: block;
     padding: 8px 0;
 }
 
 .item {
-    @include transition(background);
+    //@include transition(background);
     display: flex;
     height: 32px;
     align-items: center;
@@ -30,7 +30,7 @@
 }
 
 .button {
-    @include transition(opacity);
+    //@include transition(opacity);
     margin-left: auto;
     opacity: 0;
 }

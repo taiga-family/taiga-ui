@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 $accent: #458bf6;
 $text: #333;
@@ -70,7 +70,7 @@ $background: #f6f7f8;
 }
 
 .label {
-    @include text-overflow-with-fade();
+    //@include text-overflow-with-fade();
     flex-grow: 1;
     margin: 0;
     font-size: 20px;
@@ -103,7 +103,7 @@ $background: #f6f7f8;
 }
 
 .year {
-    @include clearbtn();
+    //@include clearbtn();
     outline: none;
     width: 20vw;
     flex-shrink: 0;

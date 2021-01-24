@@ -1,3 +1,5 @@
+@use 'taiga-ui-local' as *;
+
 .tui-text {
     &_h1 {
         @include text-h1();

@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 $sizeM: 16px;
 $sizeL: 24px;
@@ -6,7 +6,7 @@ $dotSizeM: 8px;
 $dotSizeL: 10px;
 
 :host {
-    @include text-basic();
+    //@include text-basic();
     position: relative;
     display: block;
     flex-shrink: 0;
@@ -46,8 +46,8 @@ $dotSizeL: 10px;
 }
 
 .native {
-    @include clearinput();
-    @include fullsize();
+    //@include clearinput();
+    //@include fullsize();
     opacity: 0;
     cursor: pointer;
 

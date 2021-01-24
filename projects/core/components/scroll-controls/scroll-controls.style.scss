@@ -1,4 +1,4 @@
-@use '../../styles/taiga-ui-local.scss';
+@use 'taiga-ui-local' as *;
 
 $scroll-width: 12px;
 $scroll-width-large: 14px;
@@ -39,7 +39,7 @@ $scroll-min-size: 24px;
 }
 
 .thumb {
-    @include transition(all, 0.15s);
+    //@include transition(all, 0.15s);
     position: absolute;
     border-radius: 100px;
     border: $space solid transparent;

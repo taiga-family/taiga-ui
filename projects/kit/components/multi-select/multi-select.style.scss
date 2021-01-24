@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     position: relative;
@@ -20,9 +20,9 @@
 }
 
 .arrow {
-    @include transition(transform);
-    @include icon-button();
-    @include center-top();
+    //@include transition(transform);
+    //@include icon-button();
+    //@include center-top();
     right: 12px;
     height: 24px;
     box-sizing: content-box;
@@ -47,7 +47,7 @@
         padding-top: 1px;
         padding-bottom: 0;
 
-        :host[data-tui-host-size='m'] && {
+        :host[data-tui-host-size='m'] & {
             padding-top: 0;
         }
     }

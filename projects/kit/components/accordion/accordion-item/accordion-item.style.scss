@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     position: relative; // fix stacking context in Safari
@@ -22,7 +22,7 @@
     }
 
     &:after {
-        @include fullsize();
+        //@include fullsize();
         content: '';
         box-sizing: border-box;
         border-radius: inherit;
@@ -73,8 +73,8 @@
 }
 
 .header {
-    @include text-body-l();
-    @include transition(background);
+    //@include text-body-l();
+    //@include transition(background);
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -117,7 +117,7 @@
     }
 
     :host[data-tui-host-size='s'] & {
-        @include text-body-m();
+        //@include text-body-m();
         min-height: var(--tui-height-l);
         padding: 10px 12px 10px 16px;
     }
@@ -133,7 +133,7 @@
 }
 
 .title {
-    @include text-overflow();
+    //@include text-overflow();
     margin-right: 0;
     flex-grow: 1;
 
@@ -143,7 +143,7 @@
 }
 
 .icon {
-    @include transition('transform, color');
+    //@include transition('transform, color');
     width: 24px;
     height: 24px;
     margin-left: auto;
@@ -175,12 +175,12 @@
 }
 
 .content {
-    @include text-body-m();
+    //@include text-body-m();
     padding: 20px;
     word-wrap: break-word;
 
     :host[data-tui-host-size='s'] & {
-        @include text-body-s();
+        //@include text-body-s();
         padding: 16px;
     }
 }

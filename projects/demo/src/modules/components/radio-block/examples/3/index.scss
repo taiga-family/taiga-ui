@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .control {
     max-width: 272px;
@@ -10,12 +10,12 @@
 }
 
 .label {
-    @include text-body-s();
+    //@include text-body-s();
     color: var(--tui-text-03);
 }
 
 .text {
-    @include text-body-s();
+    //@include text-body-s();
     margin-top: $space;
     color: var(--tui-text-02);
 }

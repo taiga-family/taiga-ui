@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .wrapper {
     width: 200px;
@@ -22,7 +22,7 @@
 }
 
 .arrow {
-    @include transition(transform);
+    //@include transition(transform);
 
     &_open {
         transform: rotate(180deg);

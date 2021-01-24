@@ -1,7 +1,7 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .form {
-    @include createStackingContext();
+    //@include createStackingContext();
 }
 
 .table {

@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     position: relative;
@@ -12,16 +12,16 @@
 }
 
 .title {
-    @include text-h5();
+    //@include text-h5();
     margin: 0 0 8px;
 
     @media #{$mobile} {
-        @include text-h6();
+        //@include text-h6();
     }
 }
 
 .description {
-    @include text-body-m();
+    //@include text-body-m();
     font-weight: normal;
     margin: 0;
 }
@@ -55,7 +55,7 @@
 }
 
 .demo {
-    @include customize-scroll();
+    //@include customize-scroll();
     padding: 32px;
     overflow-x: auto;
 

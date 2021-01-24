@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     width: 100%;
@@ -40,7 +40,7 @@
 }
 
 .name {
-    @include transition(color);
+    //@include transition(color);
     position: relative;
     display: inline-block;
     height: 32px;
@@ -76,7 +76,7 @@
 }
 
 .copy {
-    @include transition(opacity);
+    //@include transition(opacity);
     position: absolute;
     top: 0;
     left: 0;

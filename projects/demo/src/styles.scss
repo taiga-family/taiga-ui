@@ -3,9 +3,10 @@
 @use 'taiga-ui-theme';
 
 $sidebar-width: 248px;
+$space: 4px;
 
 body {
-    @include text-body-m();
+    //@include text-body-m();
     overflow-x: hidden;
 }
 
@@ -38,27 +39,27 @@ markdown {
     max-width: 932px;
 
     h1 {
-        @include text-h1();
+        //@include text-h1();
     }
 
     h2 {
-        @include text-h2();
+        //@include text-h2();
     }
 
     h3 {
-        @include text-h3();
+        //@include text-h3();
     }
 
     h4 {
-        @include text-h4();
+        //@include text-h4();
     }
 
     h5 {
-        @include text-h5();
+        //@include text-h5();
     }
 
     h6 {
-        @include text-h6();
+        //@include text-h6();
     }
 
     h1,
@@ -80,7 +81,7 @@ markdown {
     }
 
     ul {
-        @extend .tui-list;
+        //@extend .tui-list;
     }
 
     li {

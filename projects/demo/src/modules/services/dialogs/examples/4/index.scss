@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 $color-mobile-header: #6ab5df;
 $color-mobile-background: #f6f7f8;
@@ -9,7 +9,7 @@ $color-mobile-gray: #9299a2;
 }
 
 .portal {
-    @include center-left();
+    //@include center-left();
     position: fixed;
     bottom: 20px;
     animation: tuiFadeIn 0.3s 0.3s;

@@ -1,8 +1,8 @@
-@use '../../styles/taiga-ui-local.scss';
+@use 'taiga-ui-local' as *;
 
 $itemSize: 63px;
 
-@include picker($itemSize);
+//@include picker($itemSize);
 
 :host {
     width: $itemSize * 4;

@@ -1,7 +1,7 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
-    @include text-basic();
+    //@include text-basic();
     display: block;
     text-align: center;
 }
@@ -19,7 +19,7 @@
         background: currentColor;
     }
 
-    &&&_small {
+    &_small {
         width: 8px;
         height: 8px;
         margin: 0;

@@ -1,3 +1,5 @@
+@use 'taiga-ui-local' as *;
+
 // $bad TODO: remove when everything switches to tuiColor directive
 [data-tui-background='primary'] {
     background-color: var(--tui-primary);

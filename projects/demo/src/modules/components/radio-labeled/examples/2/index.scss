@@ -1,7 +1,7 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .description {
-    @include text-body-xs();
+    //@include text-body-xs();
     margin-top: $space;
     color: var(--tui-text-03);
 }

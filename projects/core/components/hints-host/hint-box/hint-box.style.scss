@@ -1,4 +1,4 @@
-@use '../../../styles/taiga-ui-local.scss';
+@use 'taiga-ui-local' as *;
 
 $arrowSize: 8px;
 $arrowOffset: 14px;
@@ -81,7 +81,7 @@ $arrowCompensation: 3.2px; // 8px * 1.4 - 8px
 
     &[data-tui-host-mode='onDark'],
     &[data-tui-host-mode='overflow'] {
-        @include shadow(2);
+        //@include shadow(2);
         border: 1px solid var(--tui-base-03);
         background-color: var(--tui-base-01);
         color: var(--tui-text-01);
@@ -123,7 +123,7 @@ $arrowCompensation: 3.2px; // 8px * 1.4 - 8px
 }
 
 .tooltip {
-    @include text-body-s();
+    //@include text-body-s();
     word-wrap: break-word;
 
     :host[data-tui-host-mode='overflow'] & {

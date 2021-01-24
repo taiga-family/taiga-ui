@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     display: block;
@@ -8,7 +8,7 @@
 }
 
 .wrapper {
-    @include inset-border(bottom, light);
+    //@include inset-border(bottom, light);
     display: flex;
     align-items: center;
     padding: 32px 32px 0;
@@ -38,7 +38,7 @@
 }
 
 .icon {
-    @include transition(transform);
+    //@include transition(transform);
     margin-left: 4px;
 
     &_rotated {

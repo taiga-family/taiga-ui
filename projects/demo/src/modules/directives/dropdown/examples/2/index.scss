@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 .dropdown {
     display: flex;
@@ -10,16 +10,16 @@
 }
 
 .label {
-    @include text-body-m();
+    //@include text-body-m();
     color: var(--tui-text-03);
 }
 
 .name {
-    @include text-h6();
+    //@include text-h6();
 }
 
 .account {
-    @include text-body-s();
+    //@include text-body-s();
     margin-top: 4px;
     color: var(--tui-text-02);
 }

@@ -1,4 +1,4 @@
-@use 'taiga-ui-local';
+@use 'taiga-ui-local' as *;
 
 :host {
     display: flex;
@@ -25,7 +25,7 @@
 }
 
 .button {
-    @include transition(background);
+    //@include transition(background);
 
     &:hover {
         background: var(--tui-secondary-hover);
@@ -113,7 +113,7 @@
 }
 
 .image {
-    @include fullsize();
+    //@include fullsize();
     font-size: 0;
     opacity: 0;
     cursor: pointer;

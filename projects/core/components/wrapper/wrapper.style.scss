@@ -1,7 +1,7 @@
-@use '../../styles/taiga-ui-local.scss';
+@use 'taiga-ui-local' as *;
 
 :host {
-    @include transition('color, background');
+    //@include transition('color, background');
     position: relative;
     display: block;
     height: 100%;
@@ -10,7 +10,7 @@
     border-radius: inherit;
 
     &:after {
-        @include transition(box-shadow);
+        //@include transition(box-shadow);
         content: '';
         position: absolute;
         top: 0;
