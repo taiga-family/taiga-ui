@@ -1,5 +1,4 @@
-import {Component, Inject} from '@angular/core';
-import {ClipboardCopyService} from '@taiga-ui/addon-doc';
+import {Component} from '@angular/core';
 import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
@@ -8,13 +7,4 @@ import {changeDetection} from '../../../change-detection-strategy';
     styleUrls: ['./typography.style.less'],
     changeDetection,
 })
-export class TypographyComponent {
-    constructor(
-        @Inject(ClipboardCopyService)
-        private readonly clipboardCopyService: ClipboardCopyService,
-    ) {}
-
-    copyCodeExample(color: string) {
-        this.clipboardCopyService.copyToClipboard(color);
-    }
-}
+export class TypographyComponent {}

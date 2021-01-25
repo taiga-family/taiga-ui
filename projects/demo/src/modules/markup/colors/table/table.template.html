@@ -5,7 +5,7 @@
             <tui-doc-copy
                 i18n
                 class="copy"
-                (click)="copyCodeExample('var(' + color.name + ')')"
+                [cdkCopyToClipboard]="'var(' + color.name + ')'"
             >
                 Copy
             </tui-doc-copy>
@@ -21,7 +21,7 @@
             <tui-doc-copy
                 i18n
                 class="copy"
-                (click)="copyCodeExample(getValue(color.name))"
+                [cdkCopyToClipboard]="getValue(color.name)"
             >
                 Copy
             </tui-doc-copy>

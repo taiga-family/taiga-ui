@@ -7,7 +7,7 @@
     .text-body-m(2);
     .createStackingContext();
     display: block;
-    border-radius: var(--tui-radius);
+    border-radius: var(--tui-radius-m);
     color: var(--tui-text-01);
 
     &._segmented {
@@ -88,13 +88,13 @@
 
 .content {
     display: flex;
-    height: var(--tui-height-l);
+    height: var(--tui-height-m);
     padding: 0 @padding;
     justify-content: space-between;
     align-items: center;
 
     :host[data-tui-host-size='l'] & {
-        height: var(--tui-height-xl);
+        height: var(--tui-height-l);
         padding: 0 @padding;
     }
 
@@ -112,7 +112,7 @@
     .fullsize();
     left: @padding;
     transform: translateY(-10px) scale(0.87);
-    line-height: var(--tui-height-xl);
+    line-height: var(--tui-height-l);
     max-width: ~'calc(114% - @{padding2})';
 }
 
@@ -141,7 +141,7 @@
 
     :host[data-tui-host-size='l'] & {
         padding-top: 20px;
-        line-height: calc(var(--tui-height-xl) - 20px);
+        line-height: calc(var(--tui-height-l) - 20px);
     }
 }
 

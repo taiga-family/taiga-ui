@@ -97,13 +97,13 @@
     &_rounded.tui-group_orientation_horizontal {
         & > * {
             &:first-child {
-                border-top-left-radius: var(--tui-radius);
-                border-bottom-left-radius: var(--tui-radius);
+                border-top-left-radius: var(--tui-radius-m);
+                border-bottom-left-radius: var(--tui-radius-m);
             }
 
             &:last-child {
-                border-top-right-radius: var(--tui-radius);
-                border-bottom-right-radius: var(--tui-radius);
+                border-top-right-radius: var(--tui-radius-m);
+                border-bottom-right-radius: var(--tui-radius-m);
             }
         }
     }
@@ -111,13 +111,13 @@
     &_rounded.tui-group_orientation_horizontal.tui-group_radius_large {
         & > * {
             &:first-child {
-                border-top-left-radius: var(--tui-radius-xl);
-                border-bottom-left-radius: var(--tui-radius-xl);
+                border-top-left-radius: var(--tui-radius-l);
+                border-bottom-left-radius: var(--tui-radius-l);
             }
 
             &:last-child {
-                border-top-right-radius: var(--tui-radius-xl);
-                border-bottom-right-radius: var(--tui-radius-xl);
+                border-top-right-radius: var(--tui-radius-l);
+                border-bottom-right-radius: var(--tui-radius-l);
             }
         }
     }
@@ -125,13 +125,13 @@
     &_rounded.tui-group_orientation_vertical {
         & > * {
             &:first-child {
-                border-top-left-radius: var(--tui-radius);
-                border-top-right-radius: var(--tui-radius);
+                border-top-left-radius: var(--tui-radius-m);
+                border-top-right-radius: var(--tui-radius-m);
             }
 
             &:last-child {
-                border-bottom-left-radius: var(--tui-radius);
-                border-bottom-right-radius: var(--tui-radius);
+                border-bottom-left-radius: var(--tui-radius-m);
+                border-bottom-right-radius: var(--tui-radius-m);
             }
         }
     }
@@ -139,13 +139,13 @@
     &_rounded.tui-group_orientation_vertical.tui-group_radius_large {
         & > * {
             &:first-child {
-                border-top-left-radius: var(--tui-radius-xl);
-                border-top-right-radius: var(--tui-radius-xl);
+                border-top-left-radius: var(--tui-radius-l);
+                border-top-right-radius: var(--tui-radius-l);
             }
 
             &:last-child {
-                border-bottom-left-radius: var(--tui-radius-xl);
-                border-bottom-right-radius: var(--tui-radius-xl);
+                border-bottom-left-radius: var(--tui-radius-l);
+                border-bottom-right-radius: var(--tui-radius-l);
             }
         }
     }
@@ -157,7 +157,7 @@
                 @media @mobile {
                     &:first-child:not(:last-child),
                     &:last-child:not(:first-child) {
-                        border-radius: var(--tui-radius);
+                        border-radius: var(--tui-radius-m);
                     }
                 }
             }
@@ -171,7 +171,7 @@
                 @media @mobile {
                     &:first-child:not(:last-child),
                     &:last-child:not(:first-child) {
-                        border-radius: var(--tui-radius-xl);
+                        border-radius: var(--tui-radius-l);
                     }
                 }
             }
@@ -185,7 +185,7 @@
 
                 & > * {
                     &:nth-child(n):not(:only-child) {
-                        border-radius: var(--tui-radius);
+                        border-radius: var(--tui-radius-m);
                     }
 
                     &:not(:last-child) {
@@ -200,11 +200,11 @@
                         }
 
                         &:first-child:not(:last-child) {
-                            border-radius: var(--tui-radius) var(--tui-radius) 0 0;
+                            border-radius: var(--tui-radius-m) var(--tui-radius-m) 0 0;
                         }
 
                         &:last-child:not(:first-child) {
-                            border-radius: 0 0 var(--tui-radius) var(--tui-radius);
+                            border-radius: 0 0 var(--tui-radius-m) var(--tui-radius-m);
                         }
 
                         &:not(:last-child) {
@@ -222,7 +222,7 @@
 
                 & > * {
                     &:nth-child(n):not(:only-child) {
-                        border-radius: var(--tui-radius);
+                        border-radius: var(--tui-radius-m);
                     }
 
                     &:not(:last-child) {
@@ -238,11 +238,11 @@
                         }
 
                         &:first-child:not(:last-child) {
-                            border-radius: var(--tui-radius) var(--tui-radius) 0 0;
+                            border-radius: var(--tui-radius-m) var(--tui-radius-m) 0 0;
                         }
 
                         &:last-child:not(:first-child) {
-                            border-radius: 0 0 var(--tui-radius) var(--tui-radius);
+                            border-radius: 0 0 var(--tui-radius-m) var(--tui-radius-m);
                         }
 
                         &:not(:last-child) {
@@ -260,7 +260,7 @@
             @media @mobile {
                 & > * {
                     &:nth-child(n):not(:only-child) {
-                        border-radius: var(--tui-radius-xl);
+                        border-radius: var(--tui-radius-l);
                     }
                 }
 
@@ -271,11 +271,11 @@
                         }
 
                         &:first-child:not(:last-child) {
-                            border-radius: var(--tui-radius-xl) var(--tui-radius-xl) 0 0;
+                            border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
                         }
 
                         &:last-child:not(:first-child) {
-                            border-radius: 0 0 var(--tui-radius-xl) var(--tui-radius-xl);
+                            border-radius: 0 0 var(--tui-radius-l) var(--tui-radius-l);
                         }
                     }
                 }
@@ -286,7 +286,7 @@
             @media @mobile {
                 & > * {
                     &:nth-child(n):not(:only-child) {
-                        border-radius: var(--tui-radius-xl);
+                        border-radius: var(--tui-radius-l);
                     }
                 }
 
@@ -297,11 +297,11 @@
                         }
 
                         &:first-child:not(:last-child) {
-                            border-radius: var(--tui-radius-xl) var(--tui-radius-xl) 0 0;
+                            border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
                         }
 
                         &:last-child:not(:first-child) {
-                            border-radius: 0 0 var(--tui-radius-xl) var(--tui-radius-xl);
+                            border-radius: 0 0 var(--tui-radius-l) var(--tui-radius-l);
                         }
                     }
                 }

@@ -74,7 +74,9 @@ export class TuiInputInlineComponent
 
     @HostBinding('attr.data-value')
     get maskedValue(): string {
-        return this.native ? this.native.nativeElement.value : '';
+        return this.native && this.value
+            ? this.native.nativeElement.value
+            : String(this.value);
     }
 
     onValueChange(value: string) {

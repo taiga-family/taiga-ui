@@ -28,9 +28,10 @@
             <ng-content></ng-content>
         </div>
         <ng-template #codeTab>
-            <tui-doc-copy class="copy-code" (click)="copyCodeExample()">
-                {{copy$ | async}}
-            </tui-doc-copy>
+            <tui-doc-copy
+                class="copy-code"
+                [cdkCopyToClipboard]="code"
+            ></tui-doc-copy>
             <tui-doc-code [code]="code"></tui-doc-code>
         </ng-template>
     </ng-container>
