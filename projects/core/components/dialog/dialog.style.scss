@@ -1,7 +1,7 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
-    //@include text-body-m();
+    @include text-body-m();
     position: relative;
     display: flex;
     flex-direction: column;
@@ -14,8 +14,8 @@
     border: 40px solid transparent;
 
     &:after {
-        //@include fullsize();
-        //@include shadow(3);
+        @include fullsize();
+        @include shadow(3);
         content: '';
         border-radius: 16px;
         pointer-events: none;
@@ -140,7 +140,7 @@
 }
 
 .close {
-    //@include transition(background);
+    @include transition(background);
     position: absolute;
     top: 0;
     right: 0;

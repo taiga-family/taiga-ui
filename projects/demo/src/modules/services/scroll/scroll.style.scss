@@ -1,7 +1,7 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .wrapper {
-    //@include customize-scroll();
+    @include customize-scroll();
     width: 500px;
     height: 500px;
     overflow: auto;

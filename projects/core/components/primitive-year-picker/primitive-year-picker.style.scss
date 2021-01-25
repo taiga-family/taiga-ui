@@ -1,8 +1,8 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $itemSize: 63px;
 
-//@include picker($itemSize);
+@include picker($itemSize);
 
 :host {
     width: $itemSize * 4;

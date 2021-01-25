@@ -1,10 +1,10 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $itemSize: 44px;
 $accent: #458bf6;
 $faded: #dae8fd;
 
-//@include picker($itemSize);
+@include picker($itemSize);
 
 :host {
     width: 332px;
@@ -53,7 +53,7 @@ $faded: #dae8fd;
     }
 
     &_disabled {
-        color: fade(#333, 30%);
+        color: rgba(#333, 30%);
     }
 
     &_interval {

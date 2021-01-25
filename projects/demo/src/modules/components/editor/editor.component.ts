@@ -1,13 +1,12 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.scss';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
+import example1Html from '!!raw-loader!./examples/1/index.html';
+import example1Scss from '!!raw-loader!./examples/1/index.scss';
+import example1Ts from '!!raw-loader!./examples/1/index.ts';
+import exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
+import exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {defaultEditorTools, TuiEditorTool} from '@taiga-ui/addon-editor';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -31,7 +30,7 @@ export class ExampleTuiEditorComponent extends AbstractExampleTuiReactiveField {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
-        LESS: example1Less,
+        SCSS: example1Scss,
     };
 
     readonly control = new FormControl();

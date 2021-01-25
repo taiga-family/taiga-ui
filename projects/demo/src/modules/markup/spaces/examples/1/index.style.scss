@@ -1,16 +1,16 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
     display: block;
 }
 
 .title {
-    //@include text-h6();
+    @include text-h6();
     margin: 24px 0 12px;
 }
 
 .description {
-    //@include text-body-m();
+    @include text-body-m();
 }
 
 .row {
@@ -22,8 +22,8 @@
 }
 
 .example {
-    //@include text-body-m();
-    //@include shadow(1);
+    @include text-body-m();
+    @include shadow(1);
     display: flex;
     align-items: center;
     justify-content: center;

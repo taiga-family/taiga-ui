@@ -1,23 +1,20 @@
+import example1Html from '!!raw-loader!./examples/1/index.html';
+import example1Scss from '!!raw-loader!./examples/1/index.scss';
+import example1Ts from '!!raw-loader!./examples/1/index.ts';
+import example2Html from '!!raw-loader!./examples/2/index.html';
+import example2Scss from '!!raw-loader!./examples/2/index.scss';
+import example2Ts from '!!raw-loader!./examples/2/index.ts';
+import example3Html from '!!raw-loader!./examples/3/index.html';
+import example3Scss from '!!raw-loader!./examples/3/index.scss';
+import example3Ts from '!!raw-loader!./examples/3/index.ts';
+import exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
+import exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
 import {DOCUMENT} from '@angular/common';
 import {Component, ElementRef, Inject, ViewChild} from '@angular/core';
 import {tuiCustomEvent} from '@taiga-ui/cdk';
-import {TUI_EXPAND_LOADED, TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeS, TUI_EXPAND_LOADED} from '@taiga-ui/core';
 import {TuiBorders} from '@taiga-ui/kit';
 
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.scss';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.scss';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Less} from '!!raw-loader!./examples/3/index.scss';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -41,19 +38,19 @@ export class ExampleTuiAccordionComponent {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
-        LESS: example1Less,
+        SCSS: example1Scss,
     };
 
     readonly example2: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,
-        LESS: example2Less,
+        SCSS: example2Scss,
     };
 
     readonly example3: FrontEndExample = {
         TypeScript: example3Ts,
         HTML: example3Html,
-        LESS: example3Less,
+        SCSS: example3Scss,
     };
 
     readonly bordersVariants: ReadonlyArray<TuiBorders | null> = [

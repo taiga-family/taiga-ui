@@ -1,8 +1,8 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/elderly/elderly.component.ts';
-import {default as example1Less} from '!!raw-loader!./examples/elderly/elderly.style.scss';
-
+import example1Html from '!!raw-loader!./examples/1/index.html';
+import example1Ts from '!!raw-loader!./examples/elderly/elderly.component.ts';
+import example1Scss from '!!raw-loader!./examples/elderly/elderly.style.scss';
 import {Component} from '@angular/core';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -16,6 +16,6 @@ export class ExampleTuiThemeSwitcherComponent {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
-        LESS: example1Less,
+        SCSS: example1Scss,
     };
 }

@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
     position: relative;
@@ -20,9 +20,9 @@
 }
 
 .arrow {
-    //@include transition(transform);
-    //@include icon-button();
-    //@include center-top();
+    @include transition(transform);
+    @include icon-button();
+    @include center-top();
     right: 12px;
     height: 24px;
     box-sizing: content-box;

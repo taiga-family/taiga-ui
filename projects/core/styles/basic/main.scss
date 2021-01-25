@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    //@include text-basic();
+    @include text-basic();
     height: 100%;
     min-height: 100%;
     text-rendering: optimizeLegibility;

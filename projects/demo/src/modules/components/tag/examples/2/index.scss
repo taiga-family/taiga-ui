@@ -15,12 +15,12 @@
 
 $iterations: 20;
 
-@mixin loop($start) {
-    @for $i from $start through $iterations {
+@mixin loop() {
+    @for $i from 1 through $iterations {
         .support-#{$i} {
             background-color: var(--tui-support-#{$i}, var(--tui-support-0#{$i}));
         }
     }
 }
 
-//@include loop($iterations);
+@include loop();

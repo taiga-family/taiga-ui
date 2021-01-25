@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .example {
     display: flex;
@@ -8,7 +8,7 @@
 }
 
 .item {
-    //@include transition(box-shadow);
+    @include transition(box-shadow);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,30 +22,30 @@
     text-align: center;
 
     &_default {
-        //@include shadow();
+        @include shadow();
 
         &:hover {
-            //@include shadow(5);
+            @include shadow(5);
         }
     }
 
     &_dropdown {
-        //@include shadow(2);
+        @include shadow(2);
     }
 
     &_modal {
-        //@include shadow(3);
+        @include shadow(3);
     }
 
     &_sidebar {
-        //@include shadow(4);
+        @include shadow(4);
     }
 
     &_navigation {
-        //@include shadow(6);
+        @include shadow(6);
     }
 
     &_mobile {
-        //@include shadow(7);
+        @include shadow(7);
     }
 }

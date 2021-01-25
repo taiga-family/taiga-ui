@@ -1,8 +1,8 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $itemSize: 36px;
 
-//@include picker($itemSize);
+@include picker($itemSize);
 
 :host {
     width: $itemSize * 7;
@@ -16,7 +16,7 @@ $itemSize: 36px;
     }
 
     &_weekday {
-        //@include text-body-s();
+        @include text-body-s();
         color: var(--tui-text-02);
         pointer-events: none;
     }

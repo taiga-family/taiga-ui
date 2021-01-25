@@ -1,23 +1,22 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.scss';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as exampleImportDialogModule} from '!!raw-loader!./examples/import/import-dialog-module.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
+import example1Html from '!!raw-loader!./examples/1/index.html';
+import example1Scss from '!!raw-loader!./examples/1/index.scss';
+import example1Ts from '!!raw-loader!./examples/1/index.ts';
+import exampleImportDialogModule from '!!raw-loader!./examples/import/import-dialog-module.txt';
+import exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
+import exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {
     ALWAYS_FALSE_HANDLER,
-    TUI_FIRST_DAY,
-    TUI_LAST_DAY,
     TuiBooleanHandler,
     TuiDay,
     tuiReplayedValueChangesFrom,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -48,7 +47,7 @@ export class ExampleTuiMobileCalendarComponent {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
-        LESS: example1Less,
+        SCSS: example1Scss,
     };
 
     minVariants = [TUI_FIRST_DAY, new TuiDay(2017, 2, 5), new TuiDay(1900, 0, 1)];

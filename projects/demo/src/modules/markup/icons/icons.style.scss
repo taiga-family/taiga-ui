@@ -1,7 +1,7 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .title {
-    //@include text-h6();
+    @include text-h6();
     margin: 30px 0 12px;
 }
 

@@ -1,8 +1,8 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
-    //@include createStackingContext();
-    //@include shadow(2);
+    @include createStackingContext();
+    @include shadow(2);
     position: absolute;
     top: 0;
     left: 0;

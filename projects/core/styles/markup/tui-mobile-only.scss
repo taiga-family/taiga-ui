@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 @media #{$tablet-s-min} {
     .tui-mobile-only {

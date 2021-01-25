@@ -1,9 +1,9 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
     display: block;
 }
 
 .chart {
-    //@include fullsize();
+    @include fullsize();
 }

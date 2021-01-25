@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $fields-space: $space * 5;
 $fields-space-mobile: $space * 4;
@@ -48,7 +48,7 @@ $fields-space-large-mobile: $space * 6;
         }
 
         &_half-width {
-            width: calc(50% - $fields-space / 2);
+            width: calc(50% - (#{$fields-space} / 2));
 
             @media #{$mobile} {
                 width: 100%;

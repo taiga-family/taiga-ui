@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
     display: flex;
@@ -43,8 +43,8 @@
 }
 
 .sublink {
-    //@include clearbtn();
-    //@include text-body-m();
+    @include clearbtn();
+    @include text-body-m();
     margin-left: 8px;
     line-height: 44px;
     color: var(--tui-text-02);

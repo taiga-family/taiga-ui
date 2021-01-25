@@ -1,8 +1,8 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
-    //@include clearbtn();
-    //@include transition(color);
+    @include clearbtn();
+    @include transition(color);
     color: var(--tui-link);
     text-decoration: none;
     text-align: left;
@@ -96,13 +96,13 @@
     }
 
     :host._pseudo & {
-        //@include dashed-border($color: currentColor, $alignment: 1.15em);
+        @include dashed-border($color: currentColor, $alignment: 1.15em);
         padding-bottom: 0.15em;
     }
 }
 
 .icon {
-    //@include transition(transform);
+    @include transition(transform);
     margin-top: -2px;
     opacity: 0.8;
 

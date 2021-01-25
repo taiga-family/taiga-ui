@@ -2,8 +2,8 @@ $font-fallback: -apple-system, 'BlinkMacSystemFont', system-ui, 'Roboto', 'Segoe
 
 :root {
     // Fonts
-    --tui-heading-font: 'Manrope', $font-fallback;
-    --tui-text-font: 'Manrope', $font-fallback;
+    --tui-heading-font: 'Manrope', #{$font-fallback};
+    --tui-text-font: 'Manrope', #{$font-fallback};
     // Styles
     --tui-radius: 10px;
     --tui-radius-xl: 10px;
@@ -121,7 +121,7 @@ $font-fallback: -apple-system, 'BlinkMacSystemFont', system-ui, 'Roboto', 'Segoe
     --tui-support-22: #3c7ba8;
 
     @media all and (max-width: 599px) {
-        --tui-heading-font: $font-fallback;
-        --tui-text-font: $font-fallback;
+        --tui-heading-font: #{$font-fallback};
+        --tui-text-font: #{$font-fallback};
     }
 }

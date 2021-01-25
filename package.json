@@ -3,7 +3,7 @@
     "version": "2.2.1",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "scripts": {
-        "start": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng serve",
+        "start": "ng serve",
         "start:ru": "ng serve --configuration ru",
         "start:default": "ng serve --configuration def",
         "start:shadow": "ng serve --configuration shadow",

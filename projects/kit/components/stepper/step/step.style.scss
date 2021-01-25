@@ -1,7 +1,7 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
-    //@include clearbtn();
+    @include clearbtn();
     position: relative;
     display: flex;
     align-items: center;
@@ -45,7 +45,7 @@
 }
 
 .marker {
-    //@include transition(background);
+    @include transition(background);
     display: flex;
     width: 32px;
     height: 32px;

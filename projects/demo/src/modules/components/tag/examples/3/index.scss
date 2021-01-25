@@ -1,5 +1,5 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .tag {
-    //@include gradient(#c86dd7, #3023ae);
+    @include gradient(#c86dd7, #3023ae);
 }

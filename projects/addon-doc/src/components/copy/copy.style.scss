@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
     position: relative;
@@ -6,7 +6,7 @@
 }
 
 .copy {
-    //@include transition(background);
+    @include transition(background);
     width: 100%;
     color: var(--tui-text-01);
     background: var(--tui-base-01);
@@ -18,7 +18,7 @@
 }
 
 .content {
-    //@include transition(transform);
+    @include transition(transform);
     display: flex;
     flex-direction: column;
     transform: translateY(16px);

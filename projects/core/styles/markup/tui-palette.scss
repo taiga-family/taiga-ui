@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 // $bad TODO: remove when everything switches to tuiColor directive
 [data-tui-background='primary'] {

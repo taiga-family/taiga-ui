@@ -1,21 +1,21 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .container {
     max-width: 1000px;
 }
 
 .title {
-    //@include text-h4();
+    @include text-h4();
     margin: 0 0 $space * 4;
 
     &_size_s {
-        //@include text-h6();
+        @include text-h6();
         margin: 0 0 $space * 3;
     }
 }
 
 .text {
-    //@include text-body-m();
+    @include text-body-m();
     margin: 0 0 $space * 6;
 }
 

@@ -1,7 +1,7 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .icon {
-    //@include transition(transform);
+    @include transition(transform);
     cursor: pointer;
 
     &_rotated {

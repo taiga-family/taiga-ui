@@ -1,7 +1,7 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
-    //@include text-basic();
+    @include text-basic();
     position: relative;
     display: block;
     padding: 13px 16px 11px;
@@ -11,7 +11,7 @@
     overflow: hidden;
 
     &:after {
-        //@include fullsize();
+        @include fullsize();
         content: '';
         pointer-events: none;
     }

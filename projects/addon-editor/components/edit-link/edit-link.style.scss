@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
     display: flex;
@@ -8,7 +8,7 @@
 }
 
 .label {
-    //@include text-body-s();
+    @include text-body-s();
     height: var(--tui-height-xl);
     box-sizing: border-box;
     padding: 7px 16px;
@@ -17,7 +17,7 @@
 }
 
 .url {
-    //@include text-body-m();
+    @include text-body-m();
     display: flex;
     color: var(--tui-text-02);
 }
@@ -42,7 +42,7 @@
 }
 
 .cleaner {
-    //@include transition(color);
+    @include transition(color);
     color: var(--tui-base-06);
     cursor: pointer;
 

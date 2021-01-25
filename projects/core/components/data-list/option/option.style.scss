@@ -1,9 +1,9 @@
-@use '../../../styles/taiga-ui-local.scss';
+@import '../../../styles/taiga-ui-local.scss';
 
 :host {
-    //@include clearbtn();
-    //@include text-body-m();
-    //@include transition(background);
+    @include clearbtn();
+    @include text-body-m();
+    @include transition(background);
     display: flex;
     width: 100%;
     align-items: center;
@@ -31,7 +31,7 @@
     }
 
     &[data-size='xs'] {
-        //@include text-body-s();
+        @include text-body-s();
         min-height: 32px + 16px;
     }
 

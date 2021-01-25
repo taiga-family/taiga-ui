@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
     display: block;
@@ -9,5 +9,5 @@
 }
 
 .hint {
-    //@include text-body-s();
+    @include text-body-s();
 }

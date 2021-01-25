@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .tui-skeleton {
     position: relative;
@@ -10,12 +10,12 @@
     &:after {
         @include fullsize();
         content: '';
-        background-color: fade(#000, 8%);
+        background-color: rgba(#000, 8%);
         animation: tuiSkeletonBackgroundVibe ease-in-out 1s infinite alternate;
     }
 
     &_light:after {
-        background-color: fade(#000, 16%);
+        background-color: rgba(#000, 16%);
         animation-name: tuiSkeletonLightBackgroundVibe;
     }
 

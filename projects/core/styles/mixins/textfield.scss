@@ -181,7 +181,7 @@
 }
 
 @mixin icon-button() {
-    //@include transition(all);
+    @include transition(all);
     @include input-icon();
     position: relative;
     box-sizing: border-box;

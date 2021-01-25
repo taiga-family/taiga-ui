@@ -1,11 +1,11 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
     max-width: 550px;
 }
 
 .title {
-    //@include text-h5();
+    @include text-h5();
     margin: 0 0 $space * 3;
 }
 

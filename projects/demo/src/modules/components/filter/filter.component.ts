@@ -1,23 +1,19 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-
-import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
-import {default as example4Less} from '!!raw-loader!./examples/4/index.scss';
-import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
-
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
+import example1Html from '!!raw-loader!./examples/1/index.html';
+import example1Ts from '!!raw-loader!./examples/1/index.ts';
+import example2Html from '!!raw-loader!./examples/2/index.html';
+import example2Ts from '!!raw-loader!./examples/2/index.ts';
+import example3Html from '!!raw-loader!./examples/3/index.html';
+import example3Ts from '!!raw-loader!./examples/3/index.ts';
+import example4Html from '!!raw-loader!./examples/4/index.html';
+import example4Scss from '!!raw-loader!./examples/4/index.scss';
+import example4Ts from '!!raw-loader!./examples/4/index.ts';
+import exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
+import exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
 import {Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
 import {TuiNotificationsService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -60,7 +56,7 @@ export class ExampleTuiFilterComponent {
     readonly example4: FrontEndExample = {
         TypeScript: example4Ts,
         HTML: example4Html,
-        LESS: example4Less,
+        SCSS: example4Scss,
     };
 
     initialItems = ['Alex Inkin', 'Roman Sedov'];

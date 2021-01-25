@@ -1,39 +1,31 @@
-import {default as example1Ts} from '!!raw-loader!./examples/1/component.ts';
-import {default as example1Html} from '!!raw-loader!./examples/1/template.html';
-
-import {default as example2Ts} from '!!raw-loader!./examples/2/component.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/template.html';
-
-import {default as example3Ts} from '!!raw-loader!./examples/3/component.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/template.html';
-
-import {default as example4Ts} from '!!raw-loader!./examples/4/component.ts';
-import {default as example4Less} from '!!raw-loader!./examples/4/style.scss';
-import {default as example4Html} from '!!raw-loader!./examples/4/template.html';
-
-import {default as example5Ts} from '!!raw-loader!./examples/5/component.ts';
-import {default as example5Less} from '!!raw-loader!./examples/5/style.scss';
-import {default as example5Html} from '!!raw-loader!./examples/5/template.html';
-
-import {default as example6Ts} from '!!raw-loader!./examples/6/component.ts';
-import {default as example6Less} from '!!raw-loader!./examples/6/style.scss';
-import {default as example6Html} from '!!raw-loader!./examples/6/template.html';
-
-import {default as example7Ts} from '!!raw-loader!./examples/7/component.ts';
-import {default as example7Less} from '!!raw-loader!./examples/7/style.scss';
-import {default as example7Html} from '!!raw-loader!./examples/7/template.html';
-
-import {default as example8Html} from '!!raw-loader!./examples/8/index.html';
-import {default as example8Less} from '!!raw-loader!./examples/8/index.scss';
-import {default as example8Ts} from '!!raw-loader!./examples/8/index.ts';
-
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
+import example1Ts from '!!raw-loader!./examples/1/component.ts';
+import example1Html from '!!raw-loader!./examples/1/template.html';
+import example2Ts from '!!raw-loader!./examples/2/component.ts';
+import example2Html from '!!raw-loader!./examples/2/template.html';
+import example3Ts from '!!raw-loader!./examples/3/component.ts';
+import example3Html from '!!raw-loader!./examples/3/template.html';
+import example4Ts from '!!raw-loader!./examples/4/component.ts';
+import example4Scss from '!!raw-loader!./examples/4/style.scss';
+import example4Html from '!!raw-loader!./examples/4/template.html';
+import example5Ts from '!!raw-loader!./examples/5/component.ts';
+import example5Scss from '!!raw-loader!./examples/5/style.scss';
+import example5Html from '!!raw-loader!./examples/5/template.html';
+import example6Ts from '!!raw-loader!./examples/6/component.ts';
+import example6Scss from '!!raw-loader!./examples/6/style.scss';
+import example6Html from '!!raw-loader!./examples/6/template.html';
+import example7Ts from '!!raw-loader!./examples/7/component.ts';
+import example7Scss from '!!raw-loader!./examples/7/style.scss';
+import example7Html from '!!raw-loader!./examples/7/template.html';
+import example8Html from '!!raw-loader!./examples/8/index.html';
+import example8Scss from '!!raw-loader!./examples/8/index.scss';
+import example8Ts from '!!raw-loader!./examples/8/index.ts';
+import exampleDeclareForm from '!!raw-loader!./examples/import/declare-form.txt';
+import exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
+import exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -74,31 +66,31 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiReactiveField {
     readonly example4: FrontEndExample = {
         TypeScript: example4Ts,
         HTML: example4Html,
-        LESS: example4Less,
+        SCSS: example4Scss,
     };
 
     readonly example5: FrontEndExample = {
         TypeScript: example5Ts,
         HTML: example5Html,
-        LESS: example5Less,
+        SCSS: example5Scss,
     };
 
     readonly example6: FrontEndExample = {
         TypeScript: example6Ts,
         HTML: example6Html,
-        LESS: example6Less,
+        SCSS: example6Scss,
     };
 
     readonly example7: FrontEndExample = {
         TypeScript: example7Ts,
         HTML: example7Html,
-        LESS: example7Less,
+        SCSS: example7Scss,
     };
 
     readonly example8: FrontEndExample = {
         TypeScript: example8Ts,
         HTML: example8Html,
-        LESS: example8Less,
+        SCSS: example8Scss,
     };
 
     readonly iconVariants = ['tuiIconSearch', 'tuiIconCalendar'];

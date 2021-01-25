@@ -1,11 +1,11 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .description {
-    //@include text-body-xs();
+    @include text-body-xs();
     margin-top: $space;
     color: var(--tui-text-03);
 
     [data-tui-host-size='l'] & {
-        //@include text-body-s();
+        @include text-body-s();
     }
 }

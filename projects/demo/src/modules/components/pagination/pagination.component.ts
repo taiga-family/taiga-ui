@@ -1,7 +1,7 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.scss';
-import {default as example2Less} from '!!raw-loader!./examples/1/index.scss';
-import {default as example3Less} from '!!raw-loader!./examples/1/index.scss';
+import {default as example1Scss} from '!!raw-loader!./examples/1/index.scss';
+import {default as example2Scss} from '!!raw-loader!./examples/1/index.scss';
+import {default as example3Scss} from '!!raw-loader!./examples/1/index.scss';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
@@ -33,19 +33,19 @@ export class ExampleTuiPaginationComponent {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
-        LESS: example1Less,
+        SCSS: example1Scss,
     };
 
     readonly example2: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,
-        LESS: example2Less,
+        SCSS: example2Scss,
     };
 
     readonly example3: FrontEndExample = {
         TypeScript: example3Ts,
         HTML: example3Html,
-        LESS: example3Less,
+        SCSS: example3Scss,
     };
 
     readonly example4: FrontEndExample = {

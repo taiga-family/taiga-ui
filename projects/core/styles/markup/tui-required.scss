@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .tui-required {
     &:after {
@@ -10,6 +10,6 @@
     }
 
     &_spacing:after {
-        content: '\0000a0*';
+        content: addBackslash('0000a0*');
     }
 }

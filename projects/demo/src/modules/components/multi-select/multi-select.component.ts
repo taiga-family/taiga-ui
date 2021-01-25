@@ -1,32 +1,26 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.scss';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-
-import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
-import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
-
-import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
-import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
-
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
+import example1Html from '!!raw-loader!./examples/1/index.html';
+import example1Ts from '!!raw-loader!./examples/1/index.ts';
+import example2Html from '!!raw-loader!./examples/2/index.html';
+import example2Scss from '!!raw-loader!./examples/2/index.scss';
+import example2Ts from '!!raw-loader!./examples/2/index.ts';
+import example3Html from '!!raw-loader!./examples/3/index.html';
+import example3Ts from '!!raw-loader!./examples/3/index.ts';
+import example4Html from '!!raw-loader!./examples/4/index.html';
+import example4Ts from '!!raw-loader!./examples/4/index.ts';
+import example5Html from '!!raw-loader!./examples/5/index.html';
+import example5Ts from '!!raw-loader!./examples/5/index.ts';
+import exampleDeclareForm from '!!raw-loader!./examples/import/declare-form.txt';
+import exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
+import exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {
     ALWAYS_FALSE_HANDLER,
-    TUI_DEFAULT_STRINGIFY,
     TuiBooleanHandler,
     TuiContextWithImplicit,
     TuiIdentityMatcher,
     TuiStringHandler,
+    TUI_DEFAULT_STRINGIFY,
 } from '@taiga-ui/cdk';
 import {
     DEFAULT_MAX_HEIGHT,
@@ -37,6 +31,7 @@ import {
     TuiVerticalDirection,
 } from '@taiga-ui/core';
 import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -78,7 +73,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiReactiveFi
     readonly example2: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,
-        LESS: example2Less,
+        SCSS: example2Scss,
     };
 
     readonly example3: FrontEndExample = {

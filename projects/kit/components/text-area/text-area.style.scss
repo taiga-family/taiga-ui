@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $height: 108px;
 $heightCounter: 126px;
@@ -6,7 +6,7 @@ $padding: 0 16px;
 $margin: 7px;
 
 :host {
-    //@include text-body-m();
+    @include text-body-m();
     position: relative;
     z-index: 0;
     display: flex;
@@ -20,7 +20,7 @@ $margin: 7px;
     }
 
     &[data-tui-host-size='m'] {
-        //@include text-body-s();
+        @include text-body-s();
         min-height: $height - 20px;
     }
 
@@ -34,12 +34,12 @@ $margin: 7px;
 }
 
 .outline {
-    //@include fullsize();
+    @include fullsize();
     z-index: -1;
 }
 
 .content {
-    //@include customize-scroll();
+    @include customize-scroll();
     margin-top: 0;
     margin-bottom: 0;
     min-height: inherit;
@@ -134,7 +134,7 @@ $margin: 7px;
 }
 
 .input {
-    //@include clearinput();
+    @include clearinput();
     position: absolute;
     top: 0;
     left: 0;
@@ -164,7 +164,7 @@ $margin: 7px;
 }
 
 .placeholder {
-    //@include textfield-placeholder();
+    @include textfield-placeholder();
     position: absolute;
     top: 16px;
     left: 16px;
@@ -213,7 +213,7 @@ $margin: 7px;
 }
 
 .counter {
-    //@include text-body-s();
+    @include text-body-s();
     position: absolute;
     bottom: 8px;
     right: 12px;

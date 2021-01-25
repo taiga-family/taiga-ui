@@ -1,4 +1,4 @@
-@use '../../styles/mixins/mixins.scss';
+@import '../../styles/mixins/mixins.scss';
 
 :host {
     position: relative;
@@ -7,11 +7,11 @@
 }
 
 .scrollbar {
-    //@include fullsize(fixed, inset);
+    @include fullsize(fixed, inset);
     margin: 0;
 }
 
 .content {
-    //@include createStackingContext();
+    @include createStackingContext();
     height: 100%;
 }

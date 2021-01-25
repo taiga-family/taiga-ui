@@ -1,20 +1,16 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-
-import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
-import {default as example4Less} from '!!raw-loader!./examples/4/index.scss';
-import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
-
-import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
-import {default as example5Less} from '!!raw-loader!./examples/5/index.scss';
-import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
-
-import {default as importComponentExample} from '!!raw-loader!./examples/import/import-component.txt';
-
+import example1Html from '!!raw-loader!./examples/1/index.html';
+import example1Ts from '!!raw-loader!./examples/1/index.ts';
+import example2Html from '!!raw-loader!./examples/2/index.html';
+import example2Ts from '!!raw-loader!./examples/2/index.ts';
+import example4Html from '!!raw-loader!./examples/4/index.html';
+import example4Scss from '!!raw-loader!./examples/4/index.scss';
+import example4Ts from '!!raw-loader!./examples/4/index.ts';
+import example5Html from '!!raw-loader!./examples/5/index.html';
+import example5Scss from '!!raw-loader!./examples/5/index.scss';
+import example5Ts from '!!raw-loader!./examples/5/index.ts';
+import importComponentExample from '!!raw-loader!./examples/import/import-component.txt';
 import {Component} from '@angular/core';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -39,12 +35,12 @@ export class ExampleMiscellaneousComponent {
     readonly example4: FrontEndExample = {
         TypeScript: example4Ts,
         HTML: example4Html,
-        LESS: example4Less,
+        SCSS: example4Scss,
     };
 
     readonly example5: FrontEndExample = {
         TypeScript: example5Ts,
         HTML: example5Html,
-        LESS: example5Less,
+        SCSS: example5Scss,
     };
 }

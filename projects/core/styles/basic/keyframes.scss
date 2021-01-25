@@ -20,20 +20,20 @@
 
 @keyframes tuiSkeletonBackgroundVibe {
     from {
-        background-color: fade(#000, 8%);
+        background-color: rgba(#000, 8%);
     }
 
     to {
-        background-color: fade(#000, 16%);
+        background-color: rgba(#000, 16%);
     }
 }
 
 @keyframes tuiSkeletonLightBackgroundVibe {
     from {
-        background-color: fade(#fff, 16%);
+        background-color: rgba(#fff, 16%);
     }
 
     to {
-        background-color: fade(#fff, 24%);
+        background-color: rgba(#fff, 24%);
     }
 }

@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .template {
     display: flex;
@@ -11,6 +11,6 @@
 }
 
 .name {
-    //@include text-overflow();
+    @include text-overflow();
     flex-shrink: 1;
 }

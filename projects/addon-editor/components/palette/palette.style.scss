@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
     display: block;
@@ -6,7 +6,7 @@
 }
 
 .button {
-    //@include clearbtn();
+    @include clearbtn();
     width: 25px;
     height: 25px;
     box-sizing: border-box;

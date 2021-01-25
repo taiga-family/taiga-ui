@@ -1,7 +1,7 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
-    //@include text-body-s(2);
+    @include text-body-s(2);
     position: relative;
     display: block;
 
@@ -34,7 +34,7 @@
     }
 
     :host[data-tui-host-size='l'] & {
-        //@include text-body-m();
+        @include text-body-m();
         margin-left: 12px;
     }
 }

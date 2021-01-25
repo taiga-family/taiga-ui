@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
     display: flex;
@@ -12,7 +12,7 @@
 }
 
 .grid {
-    //@include createStackingContext();
+    @include createStackingContext();
     display: flex;
     flex: 1;
     justify-content: space-around;
@@ -22,13 +22,13 @@
 }
 
 .horizontal {
-    //@include fullsize();
+    @include fullsize();
     display: flex;
     flex-direction: column;
 }
 
 .vertical {
-    //@include fullsize();
+    @include fullsize();
     display: flex;
 
     :host._centered &:after {
@@ -62,7 +62,7 @@
 }
 
 .name {
-    //@include text-body-xs();
+    @include text-body-xs();
     writing-mode: tb;
     text-align: center;
     padding-left: 12px;
@@ -74,7 +74,7 @@
 }
 
 .labels-y {
-    //@include text-body-xs();
+    @include text-body-xs();
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
@@ -109,7 +109,7 @@
 }
 
 .labels-x {
-    //@include text-body-xs();
+    @include text-body-xs();
     display: flex;
     border-right: 1px solid transparent;
     color: var(--tui-text-02);

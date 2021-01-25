@@ -1,28 +1,23 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-
-import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
-import {default as example4Less} from '!!raw-loader!./examples/4/index.scss';
-import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
-
-import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
-import {default as example5Less} from '!!raw-loader!./examples/5/index.scss';
-import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
-
-import {default as exampleCustomDialog} from '!!raw-loader!./examples/import/custom-dialog.txt';
-import {default as exampleImportModuleComponent} from '!!raw-loader!./examples/import/import-module-component.txt';
-import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
-import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
-import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/service-usage.txt';
-
+import example1Html from '!!raw-loader!./examples/1/index.html';
+import example1Ts from '!!raw-loader!./examples/1/index.ts';
+import example2Html from '!!raw-loader!./examples/2/index.html';
+import example2Ts from '!!raw-loader!./examples/2/index.ts';
+import example3Html from '!!raw-loader!./examples/3/index.html';
+import example3Ts from '!!raw-loader!./examples/3/index.ts';
+import example4Html from '!!raw-loader!./examples/4/index.html';
+import example4Scss from '!!raw-loader!./examples/4/index.scss';
+import example4Ts from '!!raw-loader!./examples/4/index.ts';
+import example5Html from '!!raw-loader!./examples/5/index.html';
+import example5Scss from '!!raw-loader!./examples/5/index.scss';
+import example5Ts from '!!raw-loader!./examples/5/index.ts';
+import exampleCustomDialog from '!!raw-loader!./examples/import/custom-dialog.txt';
+import exampleImportModuleComponent from '!!raw-loader!./examples/import/import-module-component.txt';
+import exampleLazyModule from '!!raw-loader!./examples/import/lazy-module.txt';
+import exampleModule from '!!raw-loader!./examples/import/module.txt';
+import exampleServiceUsage from '!!raw-loader!./examples/import/service-usage.txt';
 import {Component, Inject, TemplateRef} from '@angular/core';
 import {TuiDialogContext, TuiDialogService, TuiDialogSize} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {LogService} from '../../app/log.service';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -61,13 +56,13 @@ export class ExampleTuiDialogsComponent {
     readonly example4: FrontEndExample = {
         TypeScript: example4Ts,
         HTML: example4Html,
-        LESS: example4Less,
+        SCSS: example4Scss,
     };
 
     readonly example5: FrontEndExample = {
         TypeScript: example5Ts,
         HTML: example5Html,
-        LESS: example5Less,
+        SCSS: example5Scss,
     };
 
     readonly exampleImportModuleComponent = exampleImportModuleComponent;

@@ -1,13 +1,13 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $space-small: 8px;
 $space-normal: 20px;
 $space-large: 24px;
 
 /* stylelint-disable order/order */
-@mixin generate-columns($infix, $total, $padding, $start: 1) {
-    @for $i from $start through $total {
-        &_#{infix}-#{$i} {
+@mixin generate-columns($infix, $total, $padding) {
+    @for $i from 1 through $total {
+        &_#{$infix}-#{$i} {
             width: ($i * 100% / $total);
             padding-left: $padding;
             padding-right: $padding;
@@ -16,18 +16,18 @@ $space-large: 24px;
     }
 }
 
-@mixin generate-offset-columns($infix, $total, $start: 1) {
-    @for $i from $start through $total {
+@mixin generate-offset-columns($infix, $total) {
+    @for $i from 1 through $total {
         &_#{$infix}-#{$i} {
             margin-left: ($i * 100% / $total);
         }
     }
 }
 
-@mixin generate-sme-columns($total, $padding, $start: 1) {
-    @for $i from $start through $total {
+@mixin generate-sme-columns($total, $padding) {
+    @for $i from 1 through $total {
         &_#{$i} {
-            width: ($start * 100% / $total);
+            width: ($i * 100% / $total);
             padding-left: $padding;
             padding-right: $padding;
             box-sizing: border-box;
@@ -35,10 +35,10 @@ $space-large: 24px;
     }
 }
 
-@mixin generate-sme-offset-columns($total, $start: 1) {
-    @for $i from $start through $total {
+@mixin generate-sme-offset-columns($total) {
+    @for $i from 1 through $total {
         &_#{$i} {
-            margin-left: ($start * 100% / $total);
+            margin-left: ($i * 100% / $total);
         }
     }
 }

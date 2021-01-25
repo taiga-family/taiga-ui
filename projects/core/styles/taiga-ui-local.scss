@@ -1,7 +1,7 @@
 $space: 4px;
 
-@forward 'mixins/mixins.scss';
-@forward 'mixins/picker.scss';
-@forward 'mixins/text.scss';
-@forward 'mixins/textfield.scss';
-@forward 'variables/media.scss';
+@import 'mixins/mixins.scss';
+@import 'mixins/picker.scss';
+@import 'mixins/text.scss';
+@import 'mixins/textfield.scss';
+@import 'variables/media.scss';

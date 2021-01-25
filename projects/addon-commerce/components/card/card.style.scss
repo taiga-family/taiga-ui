@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $payment-system-logo-height: 10px;
 $brand-logo-size: 14px;
@@ -31,7 +31,7 @@ $space: 2px;
 }
 
 .front {
-    //@include fullsize();
+    @include fullsize();
     backface-visibility: hidden;
     background: inherit;
     border-radius: var(--tui-radius);
@@ -119,7 +119,7 @@ $space: 2px;
 }
 
 .back {
-    //@include fullsize();
+    @include fullsize();
     backface-visibility: hidden;
     transform: rotateY(180deg) translate3d(0, 0, 0.1px);
     border-radius: 3px;

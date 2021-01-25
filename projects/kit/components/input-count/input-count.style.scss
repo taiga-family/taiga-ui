@@ -1,10 +1,10 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $padding-medium: 12px;
 $padding-large: 16px;
 
 :host {
-    //@include text-body-s();
+    @include text-body-s();
     display: flex;
     border-radius: var(--tui-radius);
     height: var(--tui-height-l);
@@ -15,7 +15,7 @@ $padding-large: 16px;
     }
 
     &[data-tui-host-size='l'] {
-        //@include text-body-m();
+        @include text-body-m();
         height: var(--tui-height-xl);
     }
 }

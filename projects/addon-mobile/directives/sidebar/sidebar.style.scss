@@ -1,14 +1,14 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
-    //@include fullsize(fixed);
+    @include fullsize(fixed);
     display: flex;
 
     &:before,
     &:after {
-        //@include fullsize();
+        @include fullsize();
         content: '';
-        background: fade(#000, 38%);
+        background: rbga(#000, 0.38);
         animation: tuiFadeIn 0.3s;
     }
 

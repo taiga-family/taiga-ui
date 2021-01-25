@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $height: 2px;
 $dotSmallSize: 8px;
@@ -58,7 +58,7 @@ $dotMediumSize: 16px;
 }
 
 .dot {
-    //@include transition(background-color);
+    @include transition(background-color);
     position: absolute;
     top: 50%;
     z-index: 1;
@@ -105,7 +105,7 @@ $dotMediumSize: 16px;
     position: relative;
     height: inherit;
     width: 4px;
-    background-color: fade(#000, 36%);
+    background-color: rgba(#000, 36%);
     pointer-events: none;
 
     &:first-of-type,
@@ -115,8 +115,8 @@ $dotMediumSize: 16px;
 }
 
 .number {
-    //@include center-left();
-    //@include text-body-s();
+    @include center-left();
+    @include text-body-s();
     top: 100%;
     margin-top: $space * 2;
     color: var(--tui-text-02);

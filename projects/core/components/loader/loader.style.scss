@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $size-xs: 12px;
 $size-s: 16px;
@@ -122,8 +122,8 @@ $width-xxl: 10;
 }
 
 .text {
-    //@include text-basic();
-    //@include text-overflow();
+    @include text-basic();
+    @include text-overflow();
     margin-top: 16px;
     color: inherit;
     max-width: 100%;

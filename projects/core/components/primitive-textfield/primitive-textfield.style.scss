@@ -1,6 +1,6 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
-//@include textfield();
+@include textfield();
 
 .custom-content {
     position: relative;
@@ -19,7 +19,7 @@
 }
 
 .icon {
-    //@include icon-button();
+    @include icon-button();
     position: relative;
     pointer-events: none;
 
@@ -83,5 +83,5 @@
 }
 
 .text-template {
-    //@include text-overflow();
+    @include text-overflow();
 }

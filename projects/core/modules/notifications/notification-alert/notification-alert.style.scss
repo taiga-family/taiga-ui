@@ -1,13 +1,13 @@
-@use '../../../styles/taiga-ui-local.scss';
+@import '../../../styles/taiga-ui-local.scss';
 
 :host {
-    //@include shadow(2);
+    @include shadow(2);
     display: block;
     border-radius: var(--tui-radius);
 }
 
 .heading {
-    //@include text-body-m-bold(2);
+    @include text-body-m-bold(2);
     margin: 0;
 }
 

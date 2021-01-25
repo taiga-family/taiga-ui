@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .box {
     width: 256px;
@@ -11,6 +11,6 @@
 }
 
 p {
-    color: fade(#fff, 72%);
+    color: rgba(#fff, 72%);
     white-space: nowrap;
 }

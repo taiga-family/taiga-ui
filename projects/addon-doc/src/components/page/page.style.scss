@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 .header {
-    //@include text-h3();
+    @include text-h3();
     display: flex;
     flex-wrap: wrap;
     min-height: 116px;
@@ -21,7 +21,7 @@
     margin: 0 min(10vw, 140px);
 
     @media #{$tablet-s} {
-        //@include text-h4();
+        @include text-h4();
         min-height: 72px;
         padding: 20px 20px 0;
         margin: 0;

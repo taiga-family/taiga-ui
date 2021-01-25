@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 @keyframes tuiShaking {
     from,
@@ -25,7 +25,7 @@
 $sidebar-width: 260px;
 
 .tui-doc-page {
-    //@include createStackingContext();
+    @include createStackingContext();
     height: 100%;
     padding-top: 64px;
     box-sizing: border-box;

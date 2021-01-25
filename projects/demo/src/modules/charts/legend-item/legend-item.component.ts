@@ -1,12 +1,11 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.scss';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
+import example1Html from '!!raw-loader!./examples/1/index.html';
+import example1Scss from '!!raw-loader!./examples/1/index.scss';
+import example1Ts from '!!raw-loader!./examples/1/index.ts';
+import exampleImportModule from '!!raw-loader!./examples/import/import-module.txt';
+import exampleInsertTemplate from '!!raw-loader!./examples/import/insert-template.txt';
 import {Component} from '@angular/core';
 import {TuiBaseColor, TuiColor, TuiSupportColor} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -22,7 +21,7 @@ export class ExampleTuiLegendItemComponent {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
-        LESS: example1Less,
+        SCSS: example1Scss,
     };
 
     text = 'Text inside';

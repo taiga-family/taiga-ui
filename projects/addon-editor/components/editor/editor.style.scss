@@ -1,13 +1,13 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
-    //@include createStackingContext();
-    //@include text-body-m();
+    @include createStackingContext();
+    @include text-body-m();
     display: block;
 }
 
 .outline {
-    //@include fullsize();
+    @include fullsize();
     border-radius: var(--tui-radius);
     pointer-events: none;
 }
@@ -47,7 +47,7 @@
 }
 
 .placeholder {
-    //@include textfield-placeholder();
+    @include textfield-placeholder();
     position: absolute;
     left: 16px;
     bottom: -36px;

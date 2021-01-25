@@ -1,5 +1,3 @@
-$space: 4px;
-
 // centering with translate
 @mixin center-left() {
     position: absolute;
@@ -221,7 +219,7 @@ $space: 4px;
 
 // dashed border
 @mixin dashed-border($color: currentColor, $alignment: bottom, $spacing: 4) {
-    $size: unit($spacing, px);
+    $size: $spacing * 1px;
     $percentage: (100% / $spacing * 2);
     background-image: linear-gradient(to right, $color 0%, $color $percentage, transparent $percentage);
     background-position: 0 $alignment;
@@ -329,6 +327,10 @@ $space: 4px;
 }
 
 @mixin blurred-background($color: #fff) {
-    background: fade($color, 70%);
+    background: rgba($color, 70%);
     backdrop-filter: blur(7px);
+}
+
+@function addBackslash($character) {
+    @return unquote('"') + unquote(str-insert($character, '\\', 1)) + unquote('"');
 }

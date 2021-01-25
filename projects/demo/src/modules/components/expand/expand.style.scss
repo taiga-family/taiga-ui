@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .tooltip {
     position: relative;
@@ -9,7 +9,7 @@
 }
 
 .bubble {
-    //@include transition(opacity);
+    @include transition(opacity);
     position: absolute;
     left: 50px;
     bottom: 30px;

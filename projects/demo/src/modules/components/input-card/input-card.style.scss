@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .form {
     display: flex;
@@ -19,5 +19,5 @@
 }
 
 .title {
-    //@include text-h5();
+    @include text-h5();
 }

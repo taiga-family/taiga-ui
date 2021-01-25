@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $color-dark: #454e58;
 $color-gray: #e5e7ea;
@@ -26,7 +26,7 @@ $color-dark-resizer: #3e464e;
 }
 
 .wrapper {
-    //@include shadow(2);
+    @include shadow(2);
     display: flex;
     border: 1px solid var(--tui-base-03);
     border-radius: var(--tui-radius);
@@ -101,7 +101,7 @@ $color-dark-resizer: #3e464e;
 }
 
 .icon {
-    //@include transition(transform);
+    @include transition(transform);
 
     &_rotated {
         transform: rotate(180deg);
@@ -124,8 +124,8 @@ $color-dark-resizer: #3e464e;
 }
 
 .resizer {
-    //@include clearbtn();
-    //@include shadow(2);
+    @include clearbtn();
+    @include shadow(2);
     position: relative;
     width: 56px;
     min-height: inherit;
@@ -161,7 +161,7 @@ $color-dark-resizer: #3e464e;
 }
 
 .resizer-text {
-    //@include text-body-s();
+    @include text-body-s();
     position: relative;
     z-index: 1;
     padding: 12px;

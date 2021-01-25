@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $size-xs: 32px;
 $size-s: 64px;
@@ -44,7 +44,7 @@ $size-xl: 256px;
 }
 
 .segment {
-    //@include transition(transform);
+    @include transition(transform);
 
     &:not([data-tui-color]) {
         color: var(--tui-base-05);

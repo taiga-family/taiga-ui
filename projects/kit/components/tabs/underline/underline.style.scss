@@ -1,7 +1,7 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 :host {
-    //@include transition(all);
+    @include transition(all);
     position: absolute;
     left: 0;
     height: 100%;

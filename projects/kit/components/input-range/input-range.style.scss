@@ -1,11 +1,11 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 $padding: 16px;
 $padding2: $padding * 2;
 
 :host {
-    //@include text-body-m(2);
-    //@include createStackingContext();
+    @include text-body-m(2);
+    @include createStackingContext();
     display: block;
     border-radius: var(--tui-radius);
     color: var(--tui-text-01);
@@ -24,7 +24,7 @@ $padding2: $padding * 2;
 }
 
 .native-wrapper {
-    //@include fullsize();
+    @include fullsize();
     display: flex;
 }
 
@@ -52,7 +52,7 @@ $padding2: $padding * 2;
 }
 
 .native {
-    //@include clearinput();
+    @include clearinput();
     flex: 1;
     min-width: 0;
     color: var(--tui-text-01);
@@ -108,8 +108,8 @@ $padding2: $padding * 2;
 }
 
 .placeholder {
-    //@include textfield-placeholder();
-    //@include fullsize();
+    @include textfield-placeholder();
+    @include fullsize();
     left: $padding;
     transform: translateY(-10px) scale(0.87);
     line-height: var(--tui-height-xl);

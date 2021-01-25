@@ -1,4 +1,4 @@
-@use 'taiga-ui-local' as *;
+@import 'taiga-ui-local';
 
 .content {
     display: flex;
@@ -6,12 +6,12 @@
 }
 
 .label {
-    //@include text-body-s();
+    @include text-body-s();
     color: var(--tui-text-03);
 }
 
 .text {
-    //@include text-body-s();
+    @include text-body-s();
     margin-top: $space;
     color: var(--tui-text-02);
 }
