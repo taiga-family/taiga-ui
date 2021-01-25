@@ -35,7 +35,7 @@
             [tuiFocusable]="isMoreFocusable"
             (keydown.arrowLeft.prevent)="onArrowLeft()"
         >
-            <div polymorpheus-outlet [content]="moreContent || more"></div>
+            <span polymorpheus-outlet [content]="moreContent || more"></span>
         </button>
         <ng-template #more>
             {{moreWord$ | async}}
