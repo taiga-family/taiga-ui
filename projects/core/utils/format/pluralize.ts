@@ -5,6 +5,8 @@ import {TuiPluralize} from '@taiga-ui/core/types';
  *
  * @param value the input number
  * @param args an array of three plural forms, e.g. ['год', 'года', 'лет']
+ * @deprecated This implementation targets Russian.
+ * Use https://angular.io/api/common/NgPlural for your implementations.
  */
 export function pluralize(value: number, [one, few, many]: TuiPluralize): string {
     const ten = value % 10;
