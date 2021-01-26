@@ -1,9 +1,12 @@
 import {TuiPluralize} from '@taiga-ui/core/types';
 
 /**
- * Выбирает корректную форму множественного числа для отображения количества
- * @param value число
- * @param args массив из трёх форм множественного числа, например ['год', 'года', 'лет']
+ * Selects the correct plural form to display.
+ *
+ * @param value the input number
+ * @param args an array of three plural forms, e.g. ['год', 'года', 'лет']
+ * @deprecated This implementation targets Russian.
+ * Use https://angular.io/api/common/NgPlural for your implementations.
  */
 export function pluralize(value: number, [one, few, many]: TuiPluralize): string {
     const ten = value % 10;

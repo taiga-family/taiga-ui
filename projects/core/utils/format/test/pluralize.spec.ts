@@ -4,7 +4,7 @@ function check(value: number, result: string) {
     expect(pluralize(value, ['год', 'года', 'лет'])).toBe(result);
 }
 
-describe('pluralize', () => {
+describe('Pluralize', () => {
     describe('год', () => {
         it('1', () => {
             check(1, 'год');
