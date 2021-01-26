@@ -92,7 +92,7 @@ export class TuiButtonComponent
                 this.updateHovered(hovered);
             });
         pressedObservable(elementRef.nativeElement)
-            .pipe(takeUntil(destroy$))
+            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(pressed => {
                 this.updatePressed(pressed);
             });

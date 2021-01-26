@@ -28,10 +28,6 @@
             </a>
         </li>
         <li><a tuiLink routerLink="." fragment="icons" i18n>Icons</a></li>
-        <li><a tuiLink routerLink="." fragment="theme" i18n>Theming</a></li>
-        <li>
-            <a tuiLink routerLink="." fragment="ie">Internet Explorer</a>
-        </li>
     </ol>
 
     <ol class="b-demo-steps">
@@ -169,70 +165,6 @@
                 filename="app.module.ts"
                 [code]="examples.appModuleIcons"
             ></tui-doc-code>
-        </li>
-
-        <li id="theme" i18n>
-            See
-            <a tuiLink routerLink="/theme">Theme</a> to learn more about theming
-        </li>
-
-        <li id="ie" i18n>
-            Taiga UI uses CSS custom properties for styling that is not
-            supported by Internet Explorer.
-            <strong>If you need to support IE 11</strong>, use
-            <a
-                tuiLink
-                target="_blank"
-                href="https://www.npmjs.com/package/css-vars-ponyfill"
-            >
-                css-vars-ponyfill
-            </a>
-            package
-
-            <p>Install it:</p>
-
-            <tui-doc-code [code]="examples.ponyfill"></tui-doc-code>
-
-            <p>
-                Add polyfill to
-                <a
-                    tuiLink
-                    target="_blank"
-                    href="https://angular.io/api/core/APP_BOOTSTRAP_LISTENER"
-                    ><code>APP_BOOTSTRAP_LISTENER</code></a
-                >
-                of your app
-            </p>
-
-            <tui-doc-code
-                filename="app.module.ts"
-                [code]="examples.ieSupport"
-            ></tui-doc-code>
-
-            <p>
-                Internet Explorer also does not support native
-                <code>SVG</code> inlining. Taiga UI icons will be automatically
-                downloaded and inlined directly into DOM. However, Angular
-                <code>Sanitizer</code> removes <code>SVG</code> code in that
-                case. To use a custom sanitizer that properly supports
-                <code>SVG</code> provide the <code>TUI_SANITIZER</code> token. We
-                recommend you to use our library
-                <a
-                    target="_blank"
-                    href="https://github.com/TinkoffCreditSystems/ng-dompurify"
-                    tuiLink
-                >
-                    ng-dompurify
-                </a>
-                to properly sanitize code with
-                <a
-                    target="_blank"
-                    href="https://github.com/cure53/DOMPurify"
-                    tuiLink
-                >
-                    DOMPurify
-                </a>
-            </p>
         </li>
     </ol>
 </div>

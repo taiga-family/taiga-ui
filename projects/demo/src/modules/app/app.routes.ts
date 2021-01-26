@@ -53,6 +53,14 @@ export const ROUTES = [
         },
     },
     {
+        path: 'wrapper',
+        loadChildren: () =>
+            import(`../customization/wrapper/wrapper.module`).then(m => m.WrapperModule),
+        data: {
+            title: `Wrapper`,
+        },
+    },
+    {
         path: 'tui-doc',
         loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
         data: {

@@ -126,6 +126,12 @@ export const pages: TuiDocPages = [
         route: 'variables',
     },
     {
+        section: $localize`Customization`,
+        title: `Wrapper`,
+        keywords: 'colors, css, theme, custom, style',
+        route: 'wrapper',
+    },
+    {
         section: $localize`Components`,
         title: 'Accordion',
         keywords: 'open, аккордеон, expand, раскрывашка, spoiler, cut',
