@@ -541,7 +541,7 @@ export const ROUTES = [
                 m => m.ExampleTuiMobileThemesModule,
             ),
         data: {
-            title: `PWA themes`,
+            title: `Mobile`,
         },
     },
     {
@@ -978,14 +978,6 @@ export const ROUTES = [
             import(`../markup/tables/tables.module`).then(m => m.TablesModule),
         data: {
             title: `Tables`,
-        },
-    },
-    {
-        path: 'theme',
-        loadChildren: () =>
-            import(`../markup/theme/theme.module`).then(m => m.ThemeModule),
-        data: {
-            title: `Theming`,
         },
     },
     {
