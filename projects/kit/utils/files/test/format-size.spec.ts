@@ -2,28 +2,28 @@ import {formatSize} from '../format-size';
 
 const units: [string, string, string] = ['B', 'KB', 'MB'];
 
-describe('Форматирование размера файла', () => {
-    it('Размер в байтах меньше 1 КБ выводится в байтах', () => {
+describe('File size formatting', () => {
+    it('Size in bytes less than 1KB is output in bytes', () => {
         expect(formatSize(units, 900)).toBe('900 B');
     });
 
-    it('Размер в байтах 1 КБ, выводится в килобайтах', () => {
+    it('Size in bytes 1 KB, displayed in kilobytes', () => {
         expect(formatSize(units, 1000)).toBe('1 KB');
     });
 
-    it('Размер в байтах 1025 байт выводится в килобайтах с округлением вниз до 1 KB', () => {
+    it('Size in bytes 1025 bytes are output in kilobytes, rounded down to 1 KB', () => {
         expect(formatSize(units, 1025)).toBe('1 KB');
     });
 
-    it('Размер в байтах больше 1976 выводится в килобайтах с округлением вверх до 2 KB', () => {
+    it('Bytes larger than 1976 are displayed in kilobytes, rounded up to 2 KB', () => {
         expect(formatSize(units, 1977)).toBe('2 KB');
     });
 
-    it('Размер в байтах больше 1 Мб выводится в мегабайтах', () => {
+    it('Size in bytes greater than 1 MB is displayed in megabytes', () => {
         expect(formatSize(units, 10 * 1000 * 1000)).toBe('10 MB');
     });
 
-    it('Мегабайты округляются до двух знаков после запятой', () => {
+    it('Megabytes are rounded to two decimal places', () => {
         expect(formatSize(units, 10 * 1000 * 1000 + 220 * 1000)).toBe('10.22 MB');
     });
 });

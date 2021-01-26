@@ -65,14 +65,14 @@ describe('InputCount', () => {
         inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
-    describe('Инициализация', () => {
-        describe('Значение не передано', () => {
+    describe('Initialization', () => {
+        describe('Value not passed', () => {
             beforeEach(() => {
                 testComponent.defaultStep = true;
                 fixture.detectChanges();
             });
 
-            it('При инициализации отображается fallback значение 0, контрол не меняет значения', done => {
+            it('During initialization, fallback value 0 is displayed, control does not change values', done => {
                 fixture.whenStable().then(() => {
                     expect(inputPO.value).toBe('0');
                     expect(testComponent.control.value).toBe(null);
@@ -81,14 +81,14 @@ describe('InputCount', () => {
             });
         });
 
-        describe('Значение передано при создании контрола', () => {
+        describe('The value was passed when creating the control', () => {
             beforeEach(() => {
                 testComponent.control.setValue(12);
                 testComponent.defaultStep = true;
                 fixture.detectChanges();
             });
 
-            it('При инициализации значение не меняется', done => {
+            it('Value does not change during initialization', done => {
                 fixture.whenStable().then(() => {
                     expect(inputPO.value).toBe('12');
                     expect(testComponent.control.value).toBe(12);
@@ -98,8 +98,8 @@ describe('InputCount', () => {
         });
     });
 
-    describe('Изменение значения при помощи кнопок', () => {
-        describe('шаг не задан', () => {
+    describe('Change value using buttons', () => {
+        describe('step not set', () => {
             beforeEach(done => {
                 testComponent.defaultStep = true;
                 testComponent.control.setValue(1);
@@ -109,21 +109,21 @@ describe('InputCount', () => {
                 });
             });
 
-            it('Нажатие на "плюс" увеличивает значение на 1', () => {
+            it('Pressing the plus increases the value by 1', () => {
                 clickPlusButton();
 
                 expect(inputPO.value).toBe('2');
                 expect(testComponent.control.value).toBe(2);
             });
 
-            it('Нажатие на "минус" уменьшает значение на 1', () => {
+            it('Pressing the minus decreases the value by 1', () => {
                 clickMinusButton();
 
                 expect(inputPO.value).toBe('0');
                 expect(testComponent.control.value).toBe(0);
             });
 
-            it('При readOnly нажатие на "плюс" и "минус" игнорируются', () => {
+            it('With readOnly, plus and minus presses are ignored', () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
 
@@ -139,7 +139,7 @@ describe('InputCount', () => {
             });
         });
 
-        describe('Задан шаг, отличный от 1', () => {
+        describe('A step other than 1 is set', () => {
             beforeEach(() => {
                 testComponent.customStep = true;
                 testComponent.control.setValue(6);
@@ -149,37 +149,37 @@ describe('InputCount', () => {
                 fixture.detectChanges();
             });
 
-            it('Нажатие на "плюс" увеличивает значение на заданный шаг', () => {
+            it('Pressing the plus increases the value by the specified step', () => {
                 clickPlusButton();
 
                 expect(inputPO.value).toBe('11');
                 expect(testComponent.control.value).toBe(11);
             });
 
-            it('Нажатие на "минус" уменьшает значение на заданный шаг', () => {
+            it('Pressing the "minus" decreases the value by a given step', () => {
                 clickMinusButton();
 
                 expect(inputPO.value).toBe('1');
                 expect(testComponent.control.value).toBe(1);
             });
 
-            it('Невозможно сделать значение больше, чем maxValue', () => {
-                clickPlusButton(); // новое значение стало 11
-                clickPlusButton(); // новое значение стало бы 16, но это больше maxValue
+            it('Cannot make value greater than maxValue', () => {
+                clickPlusButton(); // the new value is 11
+                clickPlusButton(); // the new value would be 16, but it is greater than maxValue
 
                 expect(inputPO.value).toBe('12');
                 expect(testComponent.control.value).toBe(12);
             });
 
-            it('Невозможно сделать значение меньше, чем min', () => {
-                clickMinusButton(); // значение стало === 1
-                clickMinusButton(); // новое значение стало бы -4, но это меньше min
+            it('Cannot make value less than min', () => {
+                clickMinusButton(); // value became === 1
+                clickMinusButton(); // the new value would be -4, but it's less than min
 
                 expect(inputPO.value).toBe(testComponent.min.toString());
                 expect(testComponent.control.value).toBe(testComponent.min);
             });
 
-            it('Если значение равно максимальному, кнопка "плюс" дизейблится', done => {
+            it('If the value is equal to the maximum, the "plus" button is disabled', done => {
                 testComponent.control.setValue(12);
                 fixture.detectChanges();
 
@@ -190,7 +190,7 @@ describe('InputCount', () => {
                 });
             });
 
-            it('Если значение равно минимальному, кнопка "минус" дизейблится', done => {
+            it('If the value is equal to the minimum, the "minus" button is disabled', done => {
                 testComponent.control.setValue(testComponent.min);
                 fixture.detectChanges();
 
@@ -203,12 +203,12 @@ describe('InputCount', () => {
         });
     });
 
-    describe('Изменение значения при помощи текстового поля', () => {
+    describe('Changing a value using a text box', () => {
         beforeEach(() => {
             testComponent.defaultStep = true;
         });
 
-        it('Ввод в поле изменяет значение контрола', () => {
+        it('Entering in the field changes the valuecontrol', () => {
             fixture.detectChanges();
 
             inputPO.sendText('12');
@@ -216,7 +216,7 @@ describe('InputCount', () => {
             expect(testComponent.control.value).toBe(12);
         });
 
-        it('Ввод в поле большого числа изменяет значение на предельное значение', () => {
+        it('Entering a large number in the field changes the value to the limit', () => {
             fixture.detectChanges();
 
             inputPO.sendText('43000789');
@@ -224,7 +224,7 @@ describe('InputCount', () => {
             expect(testComponent.control.value).toBe(testComponent.max);
         });
 
-        it('Если ввести число, меньшее min, новое значение равно min', done => {
+        it('If you enter a number less than min, the new value is min', done => {
             testComponent.min = 10;
             fixture.detectChanges();
 
@@ -237,7 +237,7 @@ describe('InputCount', () => {
             });
         });
 
-        it('Если ввести число, большее max, новое значение равно max', () => {
+        it('If you enter a number greater than max, the new value is max', () => {
             testComponent.max = 10;
             fixture.detectChanges();
 
@@ -247,7 +247,7 @@ describe('InputCount', () => {
             expect(testComponent.control.value).toBe(10);
         });
 
-        it('Если стереть содержимое поля, восстанавливается минимальное значение', done => {
+        it('If you erase the field contents, the minimum value is restored', done => {
             testComponent.control.setValue(123);
             fixture.detectChanges();
 
@@ -264,7 +264,7 @@ describe('InputCount', () => {
         });
     });
 
-    describe('Изменение значения при помощи стрелок на клавиатуре', () => {
+    describe('Changing the value using the arrows on the keyboard', () => {
         beforeEach(() => {
             testComponent.customStep = true;
             testComponent.control.setValue(10);
@@ -274,38 +274,38 @@ describe('InputCount', () => {
             fixture.detectChanges();
         });
 
-        it('Нажатие стрелки вверх увеличивает значение на заданный шаг', () => {
+        it('Pressing the up arrow increases the value by the specified step', () => {
             inputPO.sendKeydown('ArrowUp');
 
             expect(inputPO.value).toBe('15');
             expect(testComponent.control.value).toBe(15);
         });
 
-        it('Нажатие стрелки вниз уменьшает значение на заданный шаг', () => {
+        it('Pressing the down arrow decreases the value by the specified step', () => {
             inputPO.sendKeydown('ArrowDown');
 
             expect(inputPO.value).toBe('5');
             expect(testComponent.control.value).toBe(5);
         });
 
-        it('Невозможно сделать значение больше, чем maxValue', () => {
-            inputPO.sendKeydown('ArrowUp'); // value стало === 15
-            inputPO.sendKeydown('ArrowUp'); // value должно было стать 20, но это > maxValue
+        it('Cannot make value greater than maxValue', () => {
+            inputPO.sendKeydown('ArrowUp'); // value became === 15
+            inputPO.sendKeydown('ArrowUp'); // value should have become 20, but it's > maxValue
 
             expect(inputPO.value).toBe('17');
             expect(testComponent.control.value).toBe(17);
         });
 
-        it('Невозможно сделать значение меньше, чем min', () => {
-            inputPO.sendKeydown('ArrowDown'); // value стало === 5
-            inputPO.sendKeydown('ArrowDown'); // value должно было стать 0, но это < min
+        it('Cannot make value less than min', () => {
+            inputPO.sendKeydown('ArrowDown'); // value became === 5
+            inputPO.sendKeydown('ArrowDown'); // value should have become 0, but it's < min
 
             expect(inputPO.value).toBe('2');
             expect(testComponent.control.value).toBe(2);
         });
     });
 
-    it('maxlength по умолчанию установлено на 18', () => {
+    it('maxlength is set to 18 by default', () => {
         testComponent.defaultStep = true;
         fixture.detectChanges();
 

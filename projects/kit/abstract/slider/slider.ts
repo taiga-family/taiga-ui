@@ -297,11 +297,11 @@ export abstract class AbstractTuiSlider<T>
     }
 
     /**
-     * Функция для перевода заполненности слайдера в значение и наоборот
-     * с учётом шагов линейной зависимости.
+     * Function for converting the fullness of the slider to a value and vice versa
+     * taking into account the steps of linear dependence.
      *
-     * @param value переданное значение
-     * @param isFraction перевод осуществляется с заполненности на значение
+     * @param value passed value
+     * @param isFraction translation is carried out from fullness to value
      */
     private fractionValueKeyStepConverter(value: number, isFraction: boolean): number {
         const steps = [[0, this.min]].concat(this.keySteps as TuiKeySteps, [

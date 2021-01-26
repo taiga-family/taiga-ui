@@ -34,9 +34,9 @@ const MAP: Record<string, string> = {
 };
 
 /**
- * Транслитирует текст, ошибочно набранный в русской раскладке, в английскую
- * @param string строка с символами русской раскладки
- * @return строка с символами английской раскладки
+ * Translates text mistakenly typed in the Russian layout into English
+ * @param string string with Russian layout characters
+ * @return string with English layout characters
  */
 export function transliterateKeyboardLayout(string: string): string {
     let newStr = '';

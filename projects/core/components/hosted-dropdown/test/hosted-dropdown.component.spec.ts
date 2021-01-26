@@ -22,11 +22,11 @@ describe('TuiHostedDropdown', () => {
                     [content]="dropdown"
                     [(open)]="open"
                 >
-                    <button id="native-button">Нативная кнопка</button>
-                    <button tuiButton>Кнопка</button>
+                    <button id="native-button">Native button</button>
+                    <button tuiButton>Button</button>
                 </tui-hosted-dropdown>
                 <tui-hosted-dropdown *ngIf="input" [content]="dropdown" [(open)]="open">
-                    <tui-primitive-textfield> Поле ввода </tui-primitive-textfield>
+                    <tui-primitive-textfield> Entry field </tui-primitive-textfield>
                 </tui-hosted-dropdown>
                 <tui-hosted-dropdown
                     *ngIf="targeted"
@@ -34,8 +34,8 @@ describe('TuiHostedDropdown', () => {
                     [(open)]="open"
                 >
                     <div>
-                        <button tuiButton>Кнопка</button>
-                        <button #host tuiButton tuiHostedDropdownHost>Стрелка</button>
+                        <button tuiButton>Button</button>
+                        <button #host tuiButton tuiHostedDropdownHost>Arrow</button>
                     </div>
                 </tui-hosted-dropdown>
                 <ng-template #dropdown>
@@ -106,36 +106,36 @@ describe('TuiHostedDropdown', () => {
         nativeButton = document.querySelector('#native-button') as HTMLElement;
     });
 
-    describe('Кнопки', () => {
-        it('Первый фокусируемый элемент — хост, клик по нему открывает выпадашку', () => {
+    describe('Buttons', () => {
+        it('The first element to be focused is the host, clicking on it opens a dropdown', () => {
             nativeButton.click();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(2);
         });
 
-        it('Клик по другой кнопке не открывает выпадашку', () => {
+        it('Clicking on another button does not open the dropdown', () => {
             (testComponent.tuiButton.nativeFocusableElement as HTMLElement).click();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(0);
         });
 
-        it('Стрелка вниз открывает выпадашку', () => {
+        it('Down arrow opens a dropdown', () => {
             nativeButton.focus();
             dispatchOnActive('arrowDown', fixture);
 
             expect(getItems().length).toBe(2);
         });
 
-        it('Стрелка вниз на другой кнопке не открывает выпадашку', () => {
+        it('Down arrow on another button does not open the dropdown', () => {
             testComponent.tuiButton.nativeFocusableElement!.focus();
             dispatchOnActive('arrowDown', fixture);
 
             expect(getItems().length).toBe(0);
         });
 
-        it('Стрелка вниз переводит фокус на выпадашку', () => {
+        it('Down arrow moves focus to dropdown', () => {
             nativeButton.focus();
             dispatchOnActive('arrowDown', fixture);
             dispatchOnActive('arrowDown', fixture);
@@ -143,7 +143,7 @@ describe('TuiHostedDropdown', () => {
             expect(document.activeElement).toBe(getItems()[0].nativeElement);
         });
 
-        it('Escape закрывает выпадашку', () => {
+        it('Escape closes the dropdown', () => {
             nativeButton.focus();
             dispatchOnActive('arrowDown', fixture);
             dispatchOnActive('escape', fixture);
@@ -151,7 +151,7 @@ describe('TuiHostedDropdown', () => {
             expect(getItems().length).toBe(0);
         });
 
-        it('Escape в выпадашке закрывает её и переносит фокус на хост', () => {
+        it('Escape in the dropdown closes it and brings focus to the host', () => {
             nativeButton.focus();
             dispatchOnActive('arrowDown', fixture);
             dispatchOnActive('arrowDown', fixture);
@@ -161,7 +161,7 @@ describe('TuiHostedDropdown', () => {
             expect(document.activeElement).toBe(nativeButton);
         });
 
-        it('Потеря фокуса закрывает выпадашку', () => {
+        it('Loss of focus closes the dropdown', () => {
             nativeButton.focus();
             dispatchOnActive('arrowDown', fixture);
             dispatchOnActive('arrowDown', fixture);
@@ -171,7 +171,7 @@ describe('TuiHostedDropdown', () => {
             expect(getItems().length).toBe(0);
         });
 
-        it('Стрелка вниз не открывает выпадашку, если canOpen === false', () => {
+        it('Down arrow does not open dropdown if canOpen === false', () => {
             testComponent.canOpen = false;
             fixture.detectChanges();
             nativeButton.focus();
@@ -180,7 +180,7 @@ describe('TuiHostedDropdown', () => {
             expect(getItems().length).toBe(0);
         });
 
-        it('Клик не открывает выпадашку, если canOpen === false', () => {
+        it('Click does not open the dropdown if canOpen === false', () => {
             testComponent.canOpen = false;
             fixture.detectChanges();
             nativeButton.click();
@@ -190,27 +190,27 @@ describe('TuiHostedDropdown', () => {
         });
     });
 
-    describe('Поле ввода', () => {
+    describe('Entry field', () => {
         beforeEach(() => {
             testComponent.mode = 'input';
             fixture.detectChanges();
         });
 
-        it('Клик по хосту не открывает выпадашку', () => {
+        it('Clicking on the host does not open the dropdown', () => {
             (testComponent.tuiTextfield.nativeFocusableElement as HTMLElement).click();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(0);
         });
 
-        it('Стрелка вниз открывает выпадашку', () => {
+        it('Down arrow opens a dropdown', () => {
             testComponent.tuiTextfield.nativeFocusableElement!.focus();
             dispatchOnActive('arrowDown', fixture);
 
             expect(getItems().length).toBe(2);
         });
 
-        it('Обновление items переводит фокус на input', () => {
+        it('Updating items brings focus to input', () => {
             testComponent.tuiTextfield.nativeFocusableElement!.focus();
             dispatchOnActive('arrowDown', fixture);
 
@@ -222,20 +222,20 @@ describe('TuiHostedDropdown', () => {
         });
     });
 
-    describe('Прямое указание хоста', () => {
+    describe('Direct Host Specification', () => {
         beforeEach(() => {
             testComponent.mode = 'targeted';
             fixture.detectChanges();
         });
 
-        it('Клик по по первому фокусируемому элементу не открывает выпадашку', () => {
+        it('Clicking on the first focused element does not open the dropdown', () => {
             (testComponent.tuiButton.nativeFocusableElement as HTMLElement).click();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(0);
         });
 
-        it('Элемент с tuiHostedDropdownHost используется в качестве хоста, клик по нему открывает выпадашку', () => {
+        it('An element with tuiHostedDropdownHost is used as a host, clicking on it opens a dropdown', () => {
             (testComponent.target.nativeFocusableElement as HTMLElement).click();
             fixture.detectChanges();
 

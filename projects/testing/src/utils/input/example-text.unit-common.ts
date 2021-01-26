@@ -30,7 +30,7 @@ export function testExampleText(
     let testComponent: TestComponent;
     let inputPO: NativeInputPO;
 
-    describe('Пример заполнения в поле (example-text)', () => {
+    describe('Example of filling in the field (example-text)', () => {
         beforeEach(() => {
             pageObject = context.pageObject;
             fixture = context.fixture;
@@ -40,14 +40,14 @@ export function testExampleText(
             fixture.detectChanges();
         });
 
-        it('если инпут не сфокусирован, то example-text не показан', done => {
+        it('if the input is not focused, then example-text is not shown', done => {
             fixture.whenStable().then(() => {
                 expect(getExampleText()).toBeNull();
                 done();
             });
         });
 
-        it('если инпут имеет value, то example-text не показан', done => {
+        it('if the input has value, then example-text is not shown', done => {
             updateValue(setValue);
             fixture.whenStable().then(() => {
                 fixture.detectChanges();
@@ -56,7 +56,7 @@ export function testExampleText(
             });
         });
 
-        it('если инпут сфокусирован, то example-text показан', done => {
+        it('if the input is focused, then example-text is shown', done => {
             updateValue(clearValue);
             testComponent.size = visibleExampleTextSize;
             inputPO.focus();
@@ -67,7 +67,7 @@ export function testExampleText(
             });
         });
 
-        it('В example-text корректно передается текст', done => {
+        it('In example-text, the text is correctly passed', done => {
             updateValue(clearValue);
             testComponent.size = visibleExampleTextSize;
             inputPO.focus();

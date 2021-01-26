@@ -63,7 +63,7 @@ describe('TableBarsHost', () => {
         }
     });
 
-    it('Слушает сервис для добавления tableBar', done => {
+    it('Listens to service for adding tableBar', done => {
         component.service.bar$.pipe(take(1)).subscribe(bar => {
             expect(bar && bar.content).toBe(title);
             done();
@@ -72,7 +72,7 @@ describe('TableBarsHost', () => {
         service.open(title).pipe(take(1)).subscribe();
     });
 
-    it('tableBar удаляются по unsubscribe', done => {
+    it('tableBar removed by unsubscribe', done => {
         component.service.bar$.pipe(skip(1), take(1)).subscribe(bar => {
             expect(bar).toBe(null);
             done();
@@ -84,7 +84,7 @@ describe('TableBarsHost', () => {
             .subscribe();
     });
 
-    it('по умолчанию tableBar темный', () => {
+    it('the default tableBar is dark', () => {
         service.open(title).pipe(take(1)).subscribe();
 
         fixture.detectChanges();
@@ -92,14 +92,14 @@ describe('TableBarsHost', () => {
         expect(getBar().nativeElement.classList.contains('bar_light')).toBe(false);
     });
 
-    it('при mode: light tableBar светлый', () => {
+    it('pi mode: light tableBar light', () => {
         service.open(title, {mode: 'onDark'}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
         expect(getBar().nativeElement.classList.contains('bar_light')).toBe(true);
     });
 
-    it('по умолчанию кнопки закрытия нет', () => {
+    it('there is no close button by default', () => {
         service.open(title).pipe(take(1)).subscribe();
 
         fixture.detectChanges();
@@ -107,14 +107,14 @@ describe('TableBarsHost', () => {
         expect(getCloseButton()).toBeNull();
     });
 
-    it('при hasCloseButton: true tableBar кнопка закрытия есть', () => {
+    it('when hasCloseButton: true tableBar there is a close button', () => {
         service.open(title, {hasCloseButton: true}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
         expect(getCloseButton()).not.toBeNull();
     });
 
-    it('нажатие closeButton удаляет текущий tableBar', done => {
+    it('pressing closeButton removes the current tableBar', done => {
         service.bar$.pipe(skip(1), take(1)).subscribe(bar => {
             expect(bar).toBe(null);
             done();

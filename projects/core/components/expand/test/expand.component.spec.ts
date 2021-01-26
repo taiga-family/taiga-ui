@@ -44,27 +44,27 @@ describe('expand', () => {
         testComponent = fixture.componentInstance;
     });
 
-    describe('закрыт по умолчанию', () => {
+    describe('closed by default', () => {
         beforeEach(() => {
             testComponent.expanded = false;
             fixture.detectChanges();
         });
 
-        it('содержимое не обрабатывается', () => {
+        it('content is not processed', () => {
             expect(testComponent.content).not.toBeDefined();
         });
 
-        describe('после этого expanded меняется на true', () => {
+        describe('after that expanded changes to true', () => {
             beforeEach(() => {
                 testComponent.expanded = true;
                 fixture.detectChanges();
             });
 
-            it('и содержимое появляется сразу же', () => {
+            it('and the content appears immediately', () => {
                 expect(testComponent.content).toBeDefined();
             });
 
-            it('и после конца анимации содержимое остаётся', done => {
+            it('and after the end of the animation, the content remains', done => {
                 setTimeout(() => {
                     expect(testComponent.content).toBeDefined();
                     done();
@@ -73,17 +73,17 @@ describe('expand', () => {
         });
     });
 
-    describe('открыт по умолчанию', () => {
+    describe('open by default', () => {
         beforeEach(() => {
             testComponent.expanded = true;
             fixture.detectChanges();
         });
 
-        it('содержимое обрабатывается', () => {
+        it('content is being processed', () => {
             expect(testComponent.content).toBeDefined();
         });
 
-        describe('после этого expanded меняется на false', () => {
+        describe('after that expanded changes to false', () => {
             beforeEach(done => {
                 setTimeout(() => {
                     testComponent.expanded = false;
@@ -92,11 +92,11 @@ describe('expand', () => {
                 }, 100);
             });
 
-            it('и содержимое не пропадает сразу же', () => {
+            it('and the content does not disappear immediately', () => {
                 expect(testComponent.content).toBeDefined();
             });
 
-            it('и после конца анимации содержимое пропадает', done => {
+            it('and after the end of the animation, the content disappears', done => {
                 setTimeout(() => {
                     fixture.detectChanges();
                     expect(testComponent.content).not.toBeDefined();
@@ -119,11 +119,11 @@ describe('expand', () => {
             });
         });
 
-        it('содержимое обрабатывается', () => {
+        it('content is being processed', () => {
             expect(testComponent.content).toBeDefined();
         });
 
-        it('виден лоадер', done => {
+        it('visible loader', done => {
             fixture.whenStable().then(() => {
                 fixture.detectChanges();
                 expect(pageObject.getByAutomationId('tui-loader__loader')).not.toBeNull();
@@ -131,7 +131,7 @@ describe('expand', () => {
             });
         });
 
-        it('после события TUI_EXPAND_LOADED лоадер скрыт', fakeAsync(() => {
+        it('after the TUI_EXPAND_LOADED event, the loader is hidden', fakeAsync(() => {
             const event = tuiCustomEvent(TUI_EXPAND_LOADED, {bubbles: true}, document);
 
             testComponent.content.nativeElement.dispatchEvent(event);

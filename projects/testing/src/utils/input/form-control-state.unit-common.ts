@@ -17,7 +17,7 @@ export function testFormControlState(context: TestParams) {
     let testComponent: TestComponent;
     let inputPO: NativeInputPO;
 
-    describe('Состояние FormControl', () => {
+    describe('FormControl state', () => {
         beforeEach(() => {
             fixture = context.fixture;
             testComponent = context.testComponent;
@@ -26,28 +26,28 @@ export function testFormControlState(context: TestParams) {
             fixture.detectChanges();
         });
 
-        it('После инициализации контрола dirty === false', () => {
+        it('After initializing control dirty === false', () => {
             expect(testComponent.control.dirty).toBe(false);
         });
 
-        it('После инициализации контрола touched === false', () => {
+        it('After control initialization touched === false', () => {
             expect(testComponent.control.touched).toBe(false);
         });
 
-        it('После установки значения извне dirty === false', () => {
+        it('After setting value from outside dirty === false', () => {
             testComponent.control.setValue('123');
             fixture.detectChanges();
 
             expect(testComponent.control.dirty).toBe(false);
         });
 
-        it('После ввода значения dirty === true', () => {
+        it('After entering the value dirty === true', () => {
             inputPO.sendText('123');
 
             expect(testComponent.control.dirty).toBe(true);
         });
 
-        it('После установки и снятия фокуса touched === true', done => {
+        it('After setting and de-focusing touched === true', done => {
             inputPO.focus();
             inputPO.blur();
 

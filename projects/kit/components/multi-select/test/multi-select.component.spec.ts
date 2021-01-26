@@ -89,22 +89,22 @@ describe('MultiSelect', () => {
         fixture.detectChanges();
     });
 
-    describe('Поле', () => {
-        describe('при клике на него', () => {
+    describe('Field', () => {
+        describe('when you click on it', () => {
             beforeEach(() => {
                 // Focus happens before click, after mousedown
                 inputPO.focus();
             });
 
-            it('открывает выпадашку', () => {
+            it('opens a dropdown', () => {
                 getInputTag().nativeElement.click();
                 fixture.detectChanges();
 
                 expect(getDropdown()).not.toBeNull();
             });
 
-            describe('не открывает выпадашку', () => {
-                it('в режиме readOnly', () => {
+            describe('does not open the dropdown', () => {
+                it('in readOnly mode', () => {
                     testComponent.readOnly = true;
                     fixture.detectChanges();
                     getInputTag().nativeElement.click();
@@ -113,7 +113,7 @@ describe('MultiSelect', () => {
                     expect(getDropdown()).toBeNull();
                 });
 
-                it('если контрол отключен', () => {
+                it('if control is disabled', () => {
                     testComponent.control.disable();
                     fixture.detectChanges();
                     getInputTag().nativeElement.click();
@@ -125,15 +125,15 @@ describe('MultiSelect', () => {
         });
     });
 
-    describe('Стрелочка', () => {
-        it('Клик по стрелке открывает выпадашку', () => {
+    describe('Arrow', () => {
+        it('Click on the arrow to open the dropdown', () => {
             getArrow()!.nativeElement.click();
             fixture.detectChanges();
 
             expect(getDropdown()).not.toBeNull();
         });
 
-        it('Повторный клик по стрелке закрывает выпадашку', () => {
+        it('Clicking the arrow again closes the dropdown', () => {
             getArrow()!.nativeElement.click();
             fixture.detectChanges();
             getArrow()!.nativeElement.click();
@@ -142,14 +142,14 @@ describe('MultiSelect', () => {
             expect(getDropdown()).toBeNull();
         });
 
-        it('В режиме readOnly интерактивной стрелочки нет', () => {
+        it('There is no interactive arrow in readOnly mode', () => {
             testComponent.readOnly = true;
             fixture.detectChanges();
 
             expect(getArrow()).toBeNull();
         });
 
-        it('В режиме disabled интерактивной стрелочки нет', () => {
+        it('In disabled mode there is no interactive arrow', () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
@@ -157,19 +157,19 @@ describe('MultiSelect', () => {
         });
     });
 
-    describe('Клавиатура', () => {
+    describe('Keyboard', () => {
         beforeEach(() => {
             inputPO.focus();
         });
 
-        it('Стрелка вниз открывает выпадашку', () => {
+        it('Down arrow opens a dropdown', () => {
             inputPO.sendKeydown('ArrowDown');
             fixture.detectChanges();
 
             expect(getDropdown()).not.toBeNull();
         });
 
-        it('Esc закрывает выпадашку', () => {
+        it('Esc closes the dropdown', () => {
             inputPO.sendKeydown('ArrowDown');
             fixture.detectChanges();
             inputPO.sendKeydown('Escape');
@@ -178,7 +178,7 @@ describe('MultiSelect', () => {
             expect(getDropdown()).not.toBeNull();
         });
 
-        it('В режиме readOnly стрелка вниз не открывает выпадашку', () => {
+        it('Down arrow does not open dropdown in readOnly mode', () => {
             testComponent.readOnly = true;
             fixture.detectChanges();
             inputPO.sendKeydown('ArrowDown');
@@ -187,14 +187,14 @@ describe('MultiSelect', () => {
             expect(getDropdown()).toBeNull();
         });
 
-        it('Повторная стрелка вниз переводит фокус на пункт', () => {
+        it('The repeated down arrow moves focus to the item', () => {
             inputPO.sendKeydown('ArrowDown');
             inputPO.sendKeydown('ArrowDown');
 
             expect(document.activeElement!.tagName.toLowerCase()).toBe('button');
         });
 
-        it('Клик снимает выбранный пункт', () => {
+        it('Click to remove the selected item', () => {
             inputPO.sendKeydown('ArrowDown');
             inputPO.sendKeydown('ArrowDown');
             (document.activeElement as HTMLElement).click();
@@ -202,7 +202,7 @@ describe('MultiSelect', () => {
             expect(testComponent.control.value).toEqual([]);
         });
 
-        it('Клик выбирает невыбранный пункт', () => {
+        it('Click to select an unselected item', () => {
             inputPO.sendKeydown('ArrowDown');
             inputPO.sendKeydown('ArrowDown');
             (document.activeElement as HTMLElement).click();

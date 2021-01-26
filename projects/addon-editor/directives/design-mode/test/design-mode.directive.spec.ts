@@ -34,7 +34,7 @@ describe('TuiDesignMode directive', () => {
     });
 
     // TODO: Understand why this doesn't work
-    xit('работает туда', () => {
+    xit('works there', () => {
         const documentRef = contentDocument();
 
         if (documentRef) {
@@ -47,7 +47,7 @@ describe('TuiDesignMode directive', () => {
         expect(testComponent.model).toBe(html);
     });
 
-    it('работает сюда', done => {
+    it('works here', done => {
         testComponent.model = html;
         fixture.detectChanges();
 

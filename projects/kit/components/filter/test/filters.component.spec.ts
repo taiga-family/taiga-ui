@@ -23,7 +23,7 @@ class ItemWithBadge {
     }
 }
 
-const ARR_STRING = ['Одежда и обувь'];
+const ARR_STRING = ['Clothes and footwear'];
 
 const ARR_OBJECT = [new ItemWithBadge('Focused Zone', BADGE_VALUE)];
 
@@ -94,18 +94,18 @@ describe('Filter', () => {
     }
 
     describe('value', () => {
-        it('по умолчанию отсутствует', () => {
+        it('default absent', () => {
             expect(testComponent.control.value.length).toBe(0);
         });
 
-        it('устанавливается из checked пунктов', () => {
+        it('set from checked items', () => {
             component.onCheckbox(true, ARR_STRING[0]);
             fixture.detectChanges();
 
             expect(testComponent.control.value).toEqual(ARR_STRING);
         });
 
-        it('устанавливается при создании контрола', () => {
+        it('set when creating a control', () => {
             testComponent.control.setValue(ARR_STRING);
             fixture.detectChanges();
 
@@ -113,12 +113,14 @@ describe('Filter', () => {
         });
     });
 
-    describe('содержимое пунктов', () => {
-        it('передано корректно, если items - массив строк', () => {
-            expect(getContent().nativeElement.textContent.trim()).toBe('Одежда и обувь');
+    describe('content items', () => {
+        it('passed correctly if items is an array of strings', () => {
+            expect(getContent().nativeElement.textContent.trim()).toBe(
+                'Clothes and footwear',
+            );
         });
 
-        it('передано корректно, если items - массив объектов с toString', () => {
+        it('passed correctly if items is an array of objects with toString', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
@@ -127,25 +129,25 @@ describe('Filter', () => {
     });
 
     describe('badge', () => {
-        it('отсутствует, если badgeHandler возвращает NaN', () => {
+        it('missing if badgeHandler returns NaN', () => {
             expect(getBadge()).toBeNull();
         });
 
-        it('отсутствует, если badgeHandler возвращает 0', () => {
+        it('missing if badgeHandler returns 0', () => {
             testComponent.items = ARR_OBJECT_WITH_ZERO_BADGE;
             fixture.detectChanges();
 
             expect(getBadge()).toBeNull();
         });
 
-        it('присутствует, если badgeHandler возвращает число', () => {
+        it('present if badgeHandler returns a number', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
             expect(getBadge()).not.toBeNull();
         });
 
-        it('имеет корректное значение', () => {
+        it('has the correct meaning', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
@@ -153,22 +155,22 @@ describe('Filter', () => {
         });
     });
 
-    describe('disabled элемент', () => {
-        it('отсутствует по умолчанию', () => {
+    describe('disabled element', () => {
+        it('false by default', () => {
             expect(getCheckbox().nativeElement.classList.contains('_disabled')).toBe(
                 false,
             );
         });
 
-        it('присутствует, если disabledHandler вернул true', () => {
-            testComponent.disabledItemHandler = item => item.indexOf('обувь') > -1;
+        it('present if disabledHandler returned true', () => {
+            testComponent.disabledItemHandler = item => item.indexOf('footwear') > -1;
             fixture.detectChanges();
             expect(getCheckbox().componentInstance.ngControl.isDisabled).toBe(true);
         });
     });
 
     describe('size', () => {
-        it('если m, то и у CheckboxBlock, и у badge - m', () => {
+        it('if m, then both CheckboxBlock and badge have m', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
@@ -176,7 +178,7 @@ describe('Filter', () => {
             expect(getBadge().attributes['data-tui-host-size']).toBe('m');
         });
 
-        it('если s, то и у CheckboxBlock, и у badge - s', () => {
+        it('if s, then both CheckboxBlock and badge have s', () => {
             testComponent.items = ARR_OBJECT;
             testComponent.size = 's';
             fixture.detectChanges();

@@ -54,7 +54,7 @@ describe('InputTime', () => {
         labelOutside = false;
         size: TuiSizeS | TuiSizeL = 'l';
         strict = false;
-        hintContent: string | null = 'Подсказка';
+        hintContent: string | null = 'prompt';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -94,27 +94,27 @@ describe('InputTime', () => {
         });
     });
 
-    describe('Начальное значение', () => {
-        it('Значение в поле отформатировано по маске', done => {
+    describe('Initial value', () => {
+        it('The value in the field is formatted by mask', done => {
             fixture.whenStable().then(() => {
                 expect(inputPO.value).toBe('12:30');
                 done();
             });
         });
 
-        it('Исходное значение в formControl выдается в виде объекта со свойствами hours и minutes', () => {
+        it('The initial value in the formControl is issued as an object with the hours and minutes properties', () => {
             expect(testComponent.control.value.hours).toBe(12);
             expect(testComponent.control.value.minutes).toBe(30);
         });
     });
 
-    describe('Значение в formControl меняется снаружи', () => {
+    describe('The value in the formControl changes outside', () => {
         beforeEach(() => {
             testComponent.control.setValue(new TuiTime(22, 30));
             fixture.detectChanges();
         });
 
-        it('В поле появляется новое отформатированное значение', done => {
+        it('A new formatted value appears in the field', done => {
             fixture.whenStable().then(() => {
                 fixture.detectChanges();
                 fixture.whenStable().then(() => {
@@ -124,36 +124,36 @@ describe('InputTime', () => {
             });
         });
 
-        it('В formControl выдается в виде объекта со свойствами hours и minutes', () => {
+        it('In the formControl is issued as an object with hours and minutes properties', () => {
             expect(testComponent.control.value.hours).toBe(22);
             expect(testComponent.control.value.minutes).toBe(30);
         });
     });
 
-    describe('Ввод короткого времени (меньше 5 символов, включая двоеточие)', () => {
-        it('В значение formControl передается null', () => {
+    describe('Short time input (less than 5 characters, including colon)', () => {
+        it('The value of formControl is passed null', () => {
             component.onValueChange('11:1');
             fixture.detectChanges();
             expect(testComponent.control.value).toBeNull();
         });
     });
 
-    describe('Ввод короткого времени (меньше 5 символов, включая двоеточие)', () => {
-        it('В значение formControl передается null', () => {
+    describe('Short time input (less than 5 characters, including colon)', () => {
+        it('The value of formControl is passed null', () => {
             component.onValueChange('11:1');
             fixture.detectChanges();
             expect(testComponent.control.value).toBeNull();
         });
     });
 
-    describe('Управление с клавиатуры', () => {
+    describe('Keyboard control', () => {
         beforeEach(done => {
             fixture.whenStable().then(() => {
                 done();
             });
         });
 
-        it('Если курсор стоит на позиции 0, то при нажатии UP увеличивается час на 1', () => {
+        it('If the cursor is at position 0, then pressing UP increases the hour by 1', () => {
             inputPO.focus();
             component.nativeFocusableElement!.setSelectionRange(0, 0);
             inputPO.sendKeydown('ArrowUp');
@@ -161,7 +161,7 @@ describe('InputTime', () => {
             expect(inputPO.value).toBe('13:30');
         });
 
-        it('Если курсор стоит на позиции 4, то при нажатии UP увеличивается минута на 1', () => {
+        it('If the cursor is at position 4, then pressing UP increases the minute by 1', () => {
             inputPO.focus();
             component.nativeFocusableElement!.setSelectionRange(4, 4);
             inputPO.sendKeydown('ArrowUp');
@@ -169,7 +169,7 @@ describe('InputTime', () => {
             expect(inputPO.value).toBe('12:31');
         });
 
-        it('Если курсор стоит на позиции 0, то при нажатии DOWN уменьшается час на 1', () => {
+        it('If the cursor is at position 0, then pressing DOWN decreases the hour by 1', () => {
             inputPO.focus();
             component.nativeFocusableElement!.setSelectionRange(0, 0);
             inputPO.sendKeydown('ArrowDown');
@@ -177,7 +177,7 @@ describe('InputTime', () => {
             expect(inputPO.value).toBe('11:30');
         });
 
-        it('Если курсор стоит на позиции 4, то при нажатии DOWN уменьшается минута на 1', () => {
+        it('If the cursor is at position 4, then pressing DOWN decreases the minute by 1', () => {
             inputPO.focus();
             component.nativeFocusableElement!.setSelectionRange(4, 4);
             inputPO.sendKeydown('ArrowDown');
@@ -185,7 +185,7 @@ describe('InputTime', () => {
             expect(inputPO.value).toBe('12:29');
         });
 
-        it('При readOnly игнорируются', done => {
+        it('When readOnly is ignored', done => {
             testComponent.readOnly = true;
             inputPO.focus();
             component.nativeFocusableElement!.setSelectionRange(0, 0);
@@ -202,7 +202,7 @@ describe('InputTime', () => {
         });
     });
 
-    describe('Выпадающий список', () => {
+    describe('Drop-down list', () => {
         beforeEach(() => {
             testComponent.items = TIMES;
 
@@ -210,26 +210,26 @@ describe('InputTime', () => {
             inputPO.focus();
         });
 
-        describe('Выпадашка появляется', () => {
-            it('при нажатии стрелки вниз', () => {
+        describe('Dropdown appears', () => {
+            it('down arrow', () => {
                 inputPO.sendKeydown('arrowDown');
 
                 expect(getDropdown()).not.toBeNull();
             });
 
-            it('при вводе', () => {
+            it('when typing', () => {
                 inputPO.sendText('1');
 
                 expect(getDropdown()).not.toBeNull();
             });
         });
 
-        describe('Выпадашка не появляется', () => {
-            it('Выпадашка не появляется при фокусе', () => {
+        describe('Dropdown does not appear', () => {
+            it('Dropdown does not appear on focus', () => {
                 expect(getDropdown()).toBeNull();
             });
 
-            it('при нажатии стрелки вниз когда стоит readonly', () => {
+            it('down arrow when readonly is on', () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
                 inputPO.sendKeydown('arrowDown');
@@ -238,7 +238,7 @@ describe('InputTime', () => {
             });
         });
 
-        it('Ввод фильтрует элементы', () => {
+        it('Input filters items', () => {
             inputPO.sendText('3');
 
             expect(pageObject.getAllByAutomationId(`tui-input-time__item`).length).toBe(
@@ -246,7 +246,7 @@ describe('InputTime', () => {
             );
         });
 
-        it('Значение подставляется при выборе элемента из выпадашки', () => {
+        it('The value is substituted when selecting an item from the dropdown', () => {
             inputPO.sendText('3');
             pageObject.getByAutomationId(`tui-input-time__item`)!.nativeElement.click();
 
@@ -255,14 +255,14 @@ describe('InputTime', () => {
             );
         });
 
-        describe('strict режим', () => {
-            it('по умолчанию он false, и введенное значение свободно выставляется в контроле', () => {
+        describe('strict mode', () => {
+            it('by default it is false, and the entered value is freely exposed in the control', () => {
                 inputPO.sendText('1111');
 
                 expect(testComponent.control.value.toString().trim()).toBe('11:11');
             });
 
-            it('при strict=true введенное значение не проставляется, если отсутствует в items', () => {
+            it('with strict = true, the entered value is not set if it is absent in items', () => {
                 testComponent.strict = true;
                 fixture.detectChanges();
                 inputPO.sendText('1111');
@@ -271,7 +271,7 @@ describe('InputTime', () => {
                 expect(testComponent.control.value.toString().trim()).not.toBe('11:11');
             });
 
-            it('при strict=true введенное значение проставляется, если присутствует в items', () => {
+            it('with strict = true, the entered value is added if present in items', () => {
                 testComponent.strict = true;
                 fixture.detectChanges();
                 inputPO.sendText('0130');
@@ -280,7 +280,7 @@ describe('InputTime', () => {
                 expect(testComponent.control.value.toString().trim()).toBe('01:30');
             });
 
-            it('при strict=true введенное значение округляется к ближайшему в items', () => {
+            it('with strict = true, the entered value is rounded to the nearest in items', () => {
                 testComponent.strict = true;
                 fixture.detectChanges();
                 inputPO.sendText('0120');

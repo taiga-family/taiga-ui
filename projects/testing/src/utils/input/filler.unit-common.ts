@@ -26,7 +26,7 @@ export function testFiller(
     let testComponent: TestComponent;
     let inputPO: NativeInputPO;
 
-    describe('Филлер(маска)', () => {
+    describe('Filler (mask)', () => {
         beforeEach(() => {
             pageObject = context.pageObject;
             fixture = context.fixture;
@@ -36,17 +36,17 @@ export function testFiller(
             fixture.detectChanges();
         });
 
-        describe('если в поле нет значения', () => {
+        describe('if there is no value in the field', () => {
             beforeEach(() => {
                 testComponent.control.setValue(clearValue);
                 fixture.detectChanges();
             });
 
-            it('не виден', () => {
+            it('not visible', () => {
                 expect(getFiller()).toBeNull();
             });
 
-            it('при фокусировании появляется', done => {
+            it('when focusing appears', done => {
                 inputPO.focus();
                 fixture.detectChanges();
                 fixture.whenStable().then(() => {
@@ -56,17 +56,17 @@ export function testFiller(
             });
         });
 
-        describe('если в поле есть значение', () => {
+        describe('if the field has a value', () => {
             beforeEach(() => {
                 testComponent.control.setValue(setValue);
                 fixture.detectChanges();
             });
 
-            it('не виден', () => {
+            it('not visible', () => {
                 expect(getFiller()).toBeNull();
             });
 
-            it('при фокусировании также не виден', () => {
+            it('also not visible when focusing', () => {
                 inputPO.nativeElement.focus();
                 fixture.detectChanges();
 

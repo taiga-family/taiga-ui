@@ -8,7 +8,7 @@ import {TuiTextMaskPipeHandler} from '@taiga-ui/core/mask';
 import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
 /**
- * Используется для добивания числа нулями до заданной точности
+ * Used to finish a number with zeros to a given precision
  */
 export function tuiCreateAutoCorrectedNumberPipe(
     decimalLimit: number = 0,

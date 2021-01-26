@@ -30,9 +30,9 @@ class Beast {
 }
 
 const ITEMS = [
-    new Beast('мышка', 'Серая', '0'),
-    new Beast('кошка', 'Хитрая', '1'),
-    new Beast('енотик', 'Шкодливый', '2'),
+    new Beast('mouse', 'Gray', '0'),
+    new Beast('cat', 'Sly', '1'),
+    new Beast('raccoon', 'Naughty', '2'),
 ];
 
 function stringify({trait}: Beast): string {
@@ -57,7 +57,7 @@ describe('ComboBox', () => {
                     [tuiTextfieldExampleText]="exampleText"
                     [tuiHintContent]="hintContent"
                 >
-                    Кто украл мячик?
+                    Who stole the ball?
                     <tui-data-list-wrapper
                         *tuiDataList
                         [items]="items"
@@ -75,7 +75,7 @@ describe('ComboBox', () => {
         cleaner = false;
         size: TuiSizeS | TuiSizeL = 'm';
         readOnly = false;
-        hintContent: string | null = 'Подсказка';
+        hintContent: string | null = 'prompt';
         exampleText = 'exampleText';
 
         get stringify(): TuiStringHandler<Beast> {
@@ -124,11 +124,11 @@ describe('ComboBox', () => {
             fixture.detectChanges();
         });
 
-        it('Значение по умолчанию — String(item)', () => {
+        it('The default is String(item)', () => {
             expect(getValue()!.nativeElement.textContent.trim()).toBe(String(ITEMS[0]));
         });
 
-        it('Кастомное значение', () => {
+        it('Custom value', () => {
             testComponent.defaultInputs = false;
             fixture.detectChanges();
 
@@ -136,12 +136,12 @@ describe('ComboBox', () => {
         });
     });
 
-    it('При изменении items подставляет точное совпадение в контрол', done => {
+    it('When changing items, substitutes an exact match in the control', done => {
         testComponent.defaultInputs = true;
         testComponent.items = [];
         testComponent.control.setValue(ITEMS[0]);
         fixture.detectChanges();
-        inputPO.sendText('Хитрая кошка');
+        inputPO.sendText('Sly cat');
 
         expect(testComponent.control.value).toBeNull();
 
@@ -155,42 +155,42 @@ describe('ComboBox', () => {
     });
 
     describe('identityMatcher', () => {
-        describe('Матчер по умолчанию', () => {
+        describe('Default matcher', () => {
             beforeEach(() => {
                 testComponent.defaultInputs = true;
                 fixture.detectChanges();
                 inputPO.sendKeydown('ArrowDown');
             });
 
-            it('Считает один и тот же объект идентичным самому себе', () => {
+            it('Considers the same object to be identical to itself', () => {
                 testComponent.control.setValue(ITEMS[0]);
                 fixture.detectChanges();
 
                 expect(getCheckmark()).not.toBeNull();
             });
 
-            it('Не считает копии объектов идентичными', () => {
-                testComponent.control.setValue(new Beast('мышка', 'Серая', '0'));
+            it(`Doesn't consider copies of objects identical`, () => {
+                testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
                 fixture.detectChanges();
 
                 expect(getCheckmark()).toBeNull();
             });
         });
 
-        describe('Кастомный матчер (сверка по id)', () => {
+        describe('Custom matcher (matching by id)', () => {
             beforeEach(() => {
                 inputPO.sendKeydown('ArrowDown');
             });
 
-            it('Считает один и тот же объект идентичным самому себе', () => {
+            it('Considers the same object to be identical to itself', () => {
                 testComponent.control.setValue(ITEMS[0]);
                 fixture.detectChanges();
 
                 expect(getCheckmark()).not.toBeNull();
             });
 
-            it('Считает копии объектов идентичными', () => {
-                testComponent.control.setValue(new Beast('мышка', 'Серая', '0'));
+            it('Considers copies of objects identical', () => {
+                testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
                 fixture.detectChanges();
 
                 expect(getCheckmark()).not.toBeNull();
