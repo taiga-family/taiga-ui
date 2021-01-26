@@ -1,3 +1,4 @@
+import {Clipboard} from '@angular/cdk/clipboard';
 import {
     Attribute,
     ChangeDetectionStrategy,
@@ -11,7 +12,6 @@ import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ClipboardCopyService} from '../../services/clipboard-copy.service';
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
@@ -41,8 +41,7 @@ export class TuiDocExampleComponent {
     constructor(
         @Attribute('id')
         readonly id: string | null,
-        @Inject(ClipboardCopyService)
-        private readonly clipboardCopyService: ClipboardCopyService,
+        @Inject(Clipboard) private readonly clipboard: Clipboard,
         @Inject(TuiNotificationsService)
         private readonly notifications: TuiNotificationsService,
         @Inject(WINDOW) private readonly windowRef: Window,
@@ -81,17 +80,12 @@ export class TuiDocExampleComponent {
                 : this.windowRef.location.href;
         const url = `${currentUrl}#${this.id}`;
 
-        this.clipboardCopyService.copyToClipboard(url);
-
+        this.clipboard.copy(url);
         this.notifications
             .show(this.texts[1], {
                 label: this.texts[2],
                 status: TuiNotification.Success,
             })
             .subscribe();
-    }
-
-    copyCodeExample() {
-        this.clipboardCopyService.copyToClipboard(this.code);
     }
 }

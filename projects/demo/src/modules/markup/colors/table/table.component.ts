@@ -1,7 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {Component, HostBinding, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {ClipboardCopyService} from '@taiga-ui/addon-doc';
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 import {changeDetection} from '../../../../change-detection-strategy';
@@ -32,15 +31,9 @@ export class TableComponent {
         @Inject(TuiThemeService) private readonly themeService: Observable<unknown>,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(ClipboardCopyService)
-        private readonly clipboardCopyService: ClipboardCopyService,
     ) {}
 
     getValue(variable: string): string {
         return this.styles.getPropertyValue(variable);
-    }
-
-    copyCodeExample(color: string) {
-        this.clipboardCopyService.copyToClipboard(color);
     }
 }

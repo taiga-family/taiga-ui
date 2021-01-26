@@ -47,7 +47,6 @@
     .text-body-m();
     margin-left: 8px;
     line-height: 44px;
-    color: var(--tui-text-02);
 
     &_small {
         margin-left: 16px;
@@ -61,5 +60,20 @@
     &_subsection {
         margin-left: 0;
         line-height: 44px;
+    }
+
+    &_active {
+        color: var(--tui-text-01);
+    }
+}
+
+.chevron {
+    .transition(transform);
+    width: 16px;
+    height: 16px;
+    margin: -4px 4px 0 -3px;
+
+    &_active {
+        transform: rotate(90deg);
     }
 }

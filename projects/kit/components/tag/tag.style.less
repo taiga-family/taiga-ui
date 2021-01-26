@@ -8,7 +8,7 @@
     .text-body-s(2);
     position: relative;
     display: inline-block;
-    border-radius: 8px;
+    border-radius: var(--tui-radius-s);
     max-width: 100%;
     cursor: default;
     outline: none;
@@ -108,6 +108,7 @@
     }
 
     &[data-tui-host-status='default'] {
+        color: var(--tui-text-01-night);
         background-color: var(--tui-base-06);
 
         &:not([data-tui-host-mode]) {

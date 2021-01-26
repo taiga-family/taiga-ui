@@ -1,3 +1,4 @@
+import {ClipboardModule} from '@angular/cdk/clipboard';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {
@@ -9,9 +10,10 @@ import {TypographyComponent} from './typography.component';
 
 @NgModule({
     imports: [
+        ClipboardModule,
+        TuiDocCopyModule,
         ...TUI_DOC_PAGE_MODULES,
         RouterModule.forChild(generateRoutes(TypographyComponent)),
-        TuiDocCopyModule,
     ],
     declarations: [TypographyComponent],
     exports: [TypographyComponent],

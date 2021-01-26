@@ -36,9 +36,20 @@ export const ROUTES = [
     },
     {
         path: 'i18n',
-        loadChildren: () => import(`../info/i18n/i18n.module`).then(m => m.I18nModule),
+        loadChildren: () =>
+            import(`../customization/i18n/i18n.module`).then(m => m.I18nModule),
         data: {
             title: `I18n`,
+        },
+    },
+    {
+        path: 'variables',
+        loadChildren: () =>
+            import(`../customization/variables/variables.module`).then(
+                m => m.VariablesModule,
+            ),
+        data: {
+            title: `Variables`,
         },
     },
     {

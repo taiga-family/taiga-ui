@@ -16,7 +16,7 @@
     display: inline-block;
     flex-shrink: 0;
     vertical-align: top;
-    border-radius: var(--tui-radius);
+    border-radius: var(--tui-radius-m);
     user-select: none;
     text-decoration: none;
     font-weight: bold;
@@ -58,6 +58,17 @@
     }
 
     &[data-tui-host-size='m'] {
+        height: var(--tui-height-m);
+        font-size: @font-size-large;
+
+        &[data-tui-host-shape='square'],
+        &[tuiIconButton] {
+            height: var(--tui-height-m);
+            width: var(--tui-height-m);
+        }
+    }
+
+    &[data-tui-host-size='l'] {
         height: var(--tui-height-l);
         font-size: @font-size-large;
 
@@ -65,17 +76,6 @@
         &[tuiIconButton] {
             height: var(--tui-height-l);
             width: var(--tui-height-l);
-        }
-    }
-
-    &[data-tui-host-size='l'] {
-        height: var(--tui-height-xl);
-        font-size: @font-size-large;
-
-        &[data-tui-host-shape='square'],
-        &[tuiIconButton] {
-            height: var(--tui-height-xl);
-            width: var(--tui-height-xl);
         }
     }
 

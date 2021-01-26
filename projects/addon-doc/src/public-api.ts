@@ -32,9 +32,6 @@ export * from './interfaces/source-code-path-options';
 /* Languages */
 export * from './languages/russian';
 
-/* Services */
-export * from './services/clipboard-copy.service';
-
 /* Tokens */
 export * from './tokens/default-tabs';
 export * from './tokens/i18n';

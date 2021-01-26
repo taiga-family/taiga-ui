@@ -41,8 +41,8 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DATA_LIST_HOST,
     TUI_HINT_WATCHED_CONTROLLER,
+    TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTIFELD_WATCHED_CONTROLLER,
-    TuiAppearance,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHintControllerDirective,
@@ -52,7 +52,6 @@ import {
     TuiScrollbarComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTableModeDirective,
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {ALLOWED_SPACE_REGEXP} from '@taiga-ui/kit/components/tag';
@@ -175,9 +174,7 @@ export class TuiInputTagComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiScrollService) private tuiScrollService: TuiScrollService,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Optional()
-        @Inject(TuiTableModeDirective)
-        private readonly tableMode: TuiTableModeDirective | null,
+        @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
@@ -267,10 +264,6 @@ export class TuiInputTagComponent
         return this.modeDirective && this.modeDirective.mode
             ? TuiStatus.Default
             : this.tagStatus;
-    }
-
-    get appearance(): TuiAppearance {
-        return this.tableMode ? TuiAppearance.Table : TuiAppearance.Textfield;
     }
 
     getLeftContent(tag: string): PolymorpheusContent | null {

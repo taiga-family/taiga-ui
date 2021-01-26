@@ -11,7 +11,7 @@
     position: relative;
     display: flex;
     flex-shrink: 0;
-    border-radius: var(--tui-radius);
+    border-radius: var(--tui-radius-m);
     color: var(--tui-secondary-active);
     text-align: center;
     text-transform: uppercase;
@@ -43,21 +43,21 @@
         .text-h5();
         width: @size-l;
         height: @size-l;
-        border-radius: var(--tui-radius-xl);
+        border-radius: var(--tui-radius-l);
     }
 
     &[data-tui-host-size='xl'] {
         .text-h3();
         width: @size-xl;
         height: @size-xl;
-        border-radius: var(--tui-radius-xl);
+        border-radius: var(--tui-radius-l);
     }
 
     &[data-tui-host-size='xxl'] {
         .text-h1();
         width: @size-xxl;
         height: @size-xxl;
-        border-radius: var(--tui-radius-xl);
+        border-radius: var(--tui-radius-l);
     }
 
     &._has-avatar {

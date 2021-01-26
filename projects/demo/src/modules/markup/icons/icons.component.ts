@@ -1,5 +1,5 @@
+import {Clipboard} from '@angular/cdk/clipboard';
 import {Component, Inject, InjectionToken} from '@angular/core';
-import {ClipboardCopyService} from '@taiga-ui/addon-doc';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
@@ -12,25 +12,24 @@ export const COMMERCE = [
     'tuiIconMir',
     'tuiIconVisa',
 ];
+const FILTERED = Object.keys(allIcons).filter(
+    item =>
+        COMMERCE.indexOf(item) === -1 &&
+        item !== 'tuiCoreIcons' &&
+        item !== 'tuiKitIcons',
+);
+export const ICONS = {
+    'Normal interface icons (16px)': FILTERED.filter(name => !name.includes('Large')),
+    'Large interface icons (24px)': FILTERED.filter(name => name.includes('Large')),
+    'Payment systems': COMMERCE,
+};
 
-export const TUI_ICONS = new InjectionToken<Record<string, readonly string[]>>('Icons', {
-    factory: () => {
-        const icons = Object.keys(allIcons).filter(
-            item =>
-                COMMERCE.indexOf(item) === -1 &&
-                item !== 'tuiCoreIcons' &&
-                item !== 'tuiKitIcons',
-        );
-
-        return {
-            'Normal interface icons (16px)': icons.filter(
-                name => !name.includes('Large'),
-            ),
-            'Large interface icons (24px)': icons.filter(name => name.includes('Large')),
-            'Payment systems': COMMERCE,
-        };
+export const TUI_DEMO_ICONS = new InjectionToken<Record<string, readonly string[]>>(
+    'Icons',
+    {
+        factory: () => ICONS,
     },
-});
+);
 
 @Component({
     selector: 'icons',
@@ -44,24 +43,19 @@ export class IconsComponent {
     readonly keys = Object.keys(this.icons);
 
     constructor(
-        @Inject(TUI_ICONS) readonly icons: Record<string, readonly string[]>,
-        @Inject(ClipboardCopyService)
-        private readonly clipboardCopyService: ClipboardCopyService,
+        @Inject(TUI_DEMO_ICONS) readonly icons: Record<string, readonly string[]>,
+        @Inject(Clipboard) private readonly clipboard: Clipboard,
         @Inject(TuiNotificationsService)
         private readonly notifications: TuiNotificationsService,
     ) {}
 
     copyPath(name: string) {
-        this.clipboardCopyService.copyToClipboard(name);
+        this.clipboard.copy(name);
         this.notifications
             .show(`The name ${name} copied`, {
                 status: TuiNotification.Success,
             })
             .subscribe();
-    }
-
-    getFirstPosition(name: string): boolean {
-        return !(allIcons as Record<string, any>)[name].includes('currentColor');
     }
 
     getHighlight(name: string): boolean {

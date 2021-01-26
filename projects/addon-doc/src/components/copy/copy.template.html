@@ -1,15 +1,17 @@
 <button
+    *ngIf="texts$ | async as texts"
     tuiButton
     type="button"
     class="copy"
     appearance=""
     size="s"
+    [title]="texts[0]"
     (click)="onClick()"
 >
     <span class="content" [class.content_moved]="copied$ | async">
-        <span class="initial">
+        <span class="initial" [attr.data-text]="texts[0]">
             <ng-content></ng-content>
         </span>
-        {{copiedMessage}}
+        {{texts[1]}}
     </span>
 </button>

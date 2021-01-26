@@ -5,18 +5,18 @@
 
 :host {
     display: block;
-    border-radius: 8px;
     font-size: 0;
 
     &[data-tui-host-size='m'] {
         width: @sizeM;
         height: @sizeM;
-        border-radius: 4px;
+        border-radius: var(--tui-radius-xs);
     }
 
     &[data-tui-host-size='l'] {
         width: @sizeL;
         height: @sizeL;
+        border-radius: var(--tui-radius-s);
     }
 }
 

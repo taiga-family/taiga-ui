@@ -127,7 +127,7 @@ body.tui-editor-socket {
 .tui-editor-socket font[size='7'] {
     display: block;
     margin: 32px 0 16px;
-    font-family: var(--tui-heading-font);
+    font-family: var(--tui-font-heading);
 }
 
 .tui-editor-socket font[size='5'] {
