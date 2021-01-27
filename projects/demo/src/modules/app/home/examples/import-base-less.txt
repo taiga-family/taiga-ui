@@ -1,2 +1,0 @@
-@import '~@taiga-ui/core/styles/taiga-ui-global';
-@import '~@taiga-ui/core/styles/taiga-ui-theme';

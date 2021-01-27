@@ -89,12 +89,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Common`,
-                title: $localize`Theming`,
-                keywords: 'тема, custom, themes',
-                route: '/theme',
-            },
-            {
-                section: $localize`Common`,
                 title: $localize`Skeleton`,
                 keywords: 'верстка, markup, скелетон, loader, загрузка, skeleton',
                 route: '/skeleton',
@@ -107,7 +101,7 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Common`,
-                title: $localize`PWA themes`,
+                title: $localize`Mobile`,
                 keywords: 'верстка, pwa, мобильные, нативные',
                 route: '/mobile-themes',
             },
@@ -124,6 +118,12 @@ export const pages: TuiDocPages = [
         title: `Variables`,
         keywords: 'colors, css, vars, custom, properties, style',
         route: 'variables',
+    },
+    {
+        section: $localize`Customization`,
+        title: `Wrapper`,
+        keywords: 'colors, css, theme, custom, style',
+        route: 'wrapper',
     },
     {
         section: $localize`Components`,

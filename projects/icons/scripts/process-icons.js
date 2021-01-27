@@ -13,7 +13,7 @@ function processIcons() {
             const wrapped = wrapIcon(src, file.replace('.svg', ''));
             const final =
                 typeof wrapped === 'string'
-                    ? wrapped.replace('<svg', '<svg focusable="false"')
+                    ? wrapped.replace(START, '<svg focusable="false"')
                     : `<svg xmlns="http://www.w3.org/2000/svg" width="${wrapped.width}" height="${wrapped.height}" focusable="false">${wrapped.src}</svg>`;
 
             fs.writeFileSync(file, final);
@@ -24,27 +24,27 @@ function processIcons() {
 function wrapIcon(source, name) {
     const indexOfSTART = source.indexOf(START);
     const src = source.substring(indexOfSTART);
-    const attibutes = src.substring(indexOfSTART, src.indexOf('>', indexOfSTART));
+    const attributes = src.substring(indexOfSTART, src.indexOf('>', indexOfSTART));
 
     if (
-        !attibutes ||
-        !attibutes.includes(WIDTH_SEARCH) ||
-        !attibutes.includes(HEIGHT_SEARCH)
+        !attributes ||
+        !attributes.includes(WIDTH_SEARCH) ||
+        !attributes.includes(HEIGHT_SEARCH)
     ) {
-        return '';
+        return src;
     }
 
-    const indexOfWidth = attibutes.indexOf(WIDTH_SEARCH);
-    const indexOfHeight = attibutes.indexOf(HEIGHT_SEARCH);
+    const indexOfWidth = attributes.indexOf(WIDTH_SEARCH);
+    const indexOfHeight = attributes.indexOf(HEIGHT_SEARCH);
     const widthOffset = indexOfWidth + WIDTH_SEARCH.length;
     const heightOffset = indexOfHeight + HEIGHT_SEARCH.length;
-    const widthString = attibutes.substring(
+    const widthString = attributes.substring(
         widthOffset,
-        attibutes.indexOf('"', widthOffset),
+        attributes.indexOf('"', widthOffset),
     );
-    const heightString = attibutes.substring(
+    const heightString = attributes.substring(
         heightOffset,
-        attibutes.indexOf('"', heightOffset),
+        attributes.indexOf('"', heightOffset),
     );
 
     if (
