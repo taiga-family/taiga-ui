@@ -2,7 +2,7 @@ import {default as injectService} from '!!raw-loader!./examples/inject-service.t
 
 import {Component, Inject} from '@angular/core';
 import {TuiSvgService} from '@taiga-ui/core';
-import {tuiIconTrashLarge} from '@taiga-ui/icons';
+import {tuiIconTrash} from '@taiga-ui/icons';
 import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
@@ -14,6 +14,6 @@ export class ExampleTuiSvgComponent {
     injectService = injectService;
 
     constructor(@Inject(TuiSvgService) tuiSvgService: TuiSvgService) {
-        tuiSvgService.define({tuiIconTrashLarge});
+        tuiSvgService.define({tuiIconTrash});
     }
 }

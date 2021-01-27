@@ -3,7 +3,7 @@ import {default as imageUrl} from '!!file-loader!../../../../../assets/images/ts
 import {Component, Inject} from '@angular/core';
 import {TuiSvgService} from '@taiga-ui/core';
 import {tuiIconMaestro, tuiIconMastercard} from '@taiga-ui/icons';
-import {tuiIconTimeLarge} from '@taiga-ui/icons';
+import {tuiIconTime} from '@taiga-ui/icons';
 import {timer} from 'rxjs';
 import {mapTo} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
@@ -21,7 +21,7 @@ export class TuiSvgExample1 {
 
     readonly imageUrl = imageUrl + '#ts';
 
-    readonly tuiIconTimeLarge = tuiIconTimeLarge;
+    readonly tuiIconTime = tuiIconTime;
 
     constructor(@Inject(TuiSvgService) svgService: TuiSvgService) {
         svgService.define({

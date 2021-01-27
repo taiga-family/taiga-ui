@@ -23,10 +23,7 @@ export const TUI_ICONS = new InjectionToken<Record<string, readonly string[]>>('
         );
 
         return {
-            'Normal interface icons (16px)': icons.filter(
-                name => !name.includes('Large'),
-            ),
-            'Large interface icons (24px)': icons.filter(name => name.includes('Large')),
+            'Interface icons': icons,
             'Payment systems': COMMERCE,
         };
     },
