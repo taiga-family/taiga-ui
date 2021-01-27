@@ -75,19 +75,19 @@ describe('Tag', () => {
         fixture.detectChanges();
     });
 
-    describe('Значения по умолчанию:', () => {
+    describe('Default values:', () => {
         beforeEach(() => {
             testComponent.default = true;
             fixture.detectChanges();
         });
 
-        it('Крестик не показан', () => {
+        it('Cross not shown', () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}remove`),
             ).toBeNull();
         });
 
-        it('Тэг не редактируется', () => {
+        it('Tag is not editable', () => {
             getTag().dispatchEvent(keydownEnter);
             fixture.detectChanges();
 
@@ -95,19 +95,19 @@ describe('Tag', () => {
         });
     });
 
-    describe('Редактирование тэга, editable === true', () => {
+    describe('Editing a tag, editable === true', () => {
         beforeEach(() => {
             getTag().dispatchEvent(keydownEnter);
             fixture.detectChanges();
         });
 
-        it('Тэг редактируется', () => {
+        it('Tag is being edited', () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}edit`),
             ).not.toBeNull();
         });
 
-        it('Эмиттит событие редактирования по enter', () => {
+        it('Emit an edit event on enter', () => {
             getInput().value = 'Hapica';
             getInput().dispatchEvent(new Event('input'));
             fixture.detectChanges();
@@ -117,7 +117,7 @@ describe('Tag', () => {
             expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica');
         });
 
-        it('Эмиттит событие редактирования по выходу из поля', () => {
+        it('Emitting edit event on field exit', () => {
             getInput().value = 'Hapica';
             getInput().dispatchEvent(new Event('input'));
             fixture.detectChanges();
@@ -128,7 +128,7 @@ describe('Tag', () => {
             expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica');
         });
 
-        it('Эмиттит событие редактирования при вводе запятой', () => {
+        it('Emitting edit event on comma input', () => {
             getInput().value = 'Hapica, ogo';
             getInput().dispatchEvent(new Event('input'));
             fixture.detectChanges();
@@ -136,7 +136,7 @@ describe('Tag', () => {
             expect(testComponent.editedSpy).toHaveBeenCalledWith('Hapica, ogo');
         });
 
-        it('Эмиттит пустую строку при сохранении пустого тэга', () => {
+        it('Issuer empty string when storing empty tag', () => {
             getInput().value = '';
             getInput().dispatchEvent(new Event('input'));
             fixture.detectChanges();
@@ -148,14 +148,14 @@ describe('Tag', () => {
         });
     });
 
-    describe('Удаление тэга', () => {
-        it('Крестик показан при removable === true', () => {
+    describe('Deleting a tag', () => {
+        it('Cross shown with removable === true', () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}remove`),
             ).not.toBeNull();
         });
 
-        it('Эмиттит пустую строку по крестику', () => {
+        it('Emit an empty line across a cross', () => {
             pageObject
                 .getByAutomationId(`${testContext.prefix}remove`)!
                 .nativeElement.click();
@@ -163,7 +163,7 @@ describe('Tag', () => {
             expect(testComponent.editedSpy).toHaveBeenCalledWith('');
         });
 
-        it('При нажатии на backspace на тэге эмиттится пустая строка', () => {
+        it('When you press the backspace on the tag, an empty line is emitted', () => {
             getTag().dispatchEvent(
                 new KeyboardEvent('keydown', {
                     key: 'backspace',
@@ -173,7 +173,7 @@ describe('Tag', () => {
             expect(testComponent.editedSpy).toHaveBeenCalledWith('');
         });
 
-        it('При нажатии на delete на тэге эмиттится пустая строка', () => {
+        it('When you press delete on the tag, an empty string is emitted', () => {
             getTag().dispatchEvent(
                 new KeyboardEvent('keydown', {
                     key: 'delete',
@@ -184,9 +184,9 @@ describe('Tag', () => {
         });
     });
 
-    // TODO: переделать stringHashToHsl в stringHashToRgb и включить тест
-    xdescribe('Цвет тэга', () => {
-        it('при включении autoColor, цвет будет — rgb(241, 188, 229)', () => {
+    // TODO: remake stringHashToHsl to stringHashToRgb and include test
+    xdescribe('Tag color', () => {
+        it('when autoColor is enabled, the color will be rgb(241, 188, 229)', () => {
             testComponent.autoColor = true;
             fixture.detectChanges();
             expect(getComputedStyle(getTagDiv()).backgroundColor).toBe(

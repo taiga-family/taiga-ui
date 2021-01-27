@@ -45,7 +45,7 @@ describe('TextArea', () => {
 
         expandable = false;
 
-        hintContent: string | null = 'Подсказка';
+        hintContent: string | null = 'prompt';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -115,20 +115,20 @@ describe('TextArea', () => {
     });
 
     describe('expandable:', () => {
-        it('по умолчанию поле не растягивается', () => {
+        it('by default the field is not stretched', () => {
             fixture.detectChanges();
 
             expect(component.computeMaxHeight).toBeNull();
         });
 
-        it('при expandable true у поля появляется MaxHeight', () => {
+        it('when expandable true, the field has MaxHeight', () => {
             testComponent.expandable = true;
             fixture.detectChanges();
 
             expect(component.computeMaxHeight).not.toBeNull();
         });
 
-        it('дефолтное значение MaxHeight корректно рассчитывается', () => {
+        it('the default MaxHeight value is calculated correctly', () => {
             testComponent.expandable = true;
             fixture.detectChanges();
 
@@ -137,7 +137,7 @@ describe('TextArea', () => {
             expect(getScrollbar().style.maxHeight).toEqual(maxHeight + 'px');
         });
 
-        it('при изменении rows MaxHeight корректно рассчитывается', () => {
+        it('when rows change, MaxHeight is calculated correctly', () => {
             testComponent.expandable = true;
             testComponent.rows = 10;
             fixture.detectChanges();
@@ -147,7 +147,7 @@ describe('TextArea', () => {
             expect(getScrollbar().style.maxHeight).toEqual(maxHeight + 'px');
         });
 
-        it('при изменении rows MaxHeight корректно рассчитывается', () => {
+        it('when rows change, MaxHeight is calculated correctly', () => {
             testComponent.expandable = true;
             testComponent.rows = 15;
             fixture.detectChanges();
@@ -157,7 +157,7 @@ describe('TextArea', () => {
             expect(getScrollbar().style.maxHeight).toEqual(maxHeight + 'px');
         });
 
-        it('при expandable true и увеличении размера контента увеличивается высота tui-outline', () => {
+        it('when expandable is true and the content size increases, the tui-outline height increases', () => {
             testComponent.expandable = true;
             testComponent.control.setValue(`
                 Льется дождик золотой,
@@ -180,27 +180,27 @@ describe('TextArea', () => {
         });
     });
 
-    describe('counter и maxLength:', () => {
-        it('по умолчанию счетчика нет', () => {
+    describe('counter and maxLength:', () => {
+        it('there is no counter by default', () => {
             fixture.detectChanges();
 
             expect(getCounter()).toBeNull();
         });
 
-        it('по умолчанию счетчика нет', () => {
+        it('there is no counter by default', () => {
             fixture.detectChanges();
 
             expect(getCounter()).toBeNull();
         });
 
-        it('с выставленным maxLength счетчик есть', () => {
+        it('with set maxLength the counter is', () => {
             testComponent.maxLength = 200;
             fixture.detectChanges();
 
             expect(getCounter()).not.toBeNull();
         });
 
-        it('с выставленным maxLength и в disabled-состоянии счетчика нет', () => {
+        it('with maxLength set and there is no counter in the disabled state', () => {
             testComponent.maxLength = 200;
             testComponent.control.disable();
             fixture.detectChanges();
@@ -208,7 +208,7 @@ describe('TextArea', () => {
             expect(getCounter()).toBeNull();
         });
 
-        it('с выставленным maxLength и в readOnly-состоянии счетчика нет', () => {
+        it('with maxLength set and there is no counter in the readOnly state', () => {
             testComponent.maxLength = 200;
             testComponent.readOnly = true;
             fixture.detectChanges();
@@ -218,20 +218,20 @@ describe('TextArea', () => {
     });
 
     describe('placeholder', () => {
-        it('если значение не задано, показан placeholder', () => {
+        it('if no value is given, placeholder is shown', () => {
             fixture.detectChanges();
 
             expect(getPlaceholder()).not.toBeNull();
         });
 
-        it('если значение - пустая строка, показан placeholder', () => {
+        it('if value is empty string, placeholder is shown', () => {
             testComponent.control.setValue('');
             fixture.detectChanges();
 
             expect(getPlaceholder()).not.toBeNull();
         });
 
-        it('значение задано, то placeholder показан', () => {
+        it('value is given then placeholder is shown', () => {
             testComponent.control.setValue('test');
             fixture.detectChanges();
 
@@ -240,7 +240,7 @@ describe('TextArea', () => {
     });
 
     describe('tooltip', () => {
-        it('если значение задано, показан tooltip', () => {
+        it('if set, tooltip is shown', () => {
             testComponent.hintContent = 'Tooltip';
 
             fixture.detectChanges();

@@ -59,13 +59,13 @@ describe('Island', () => {
     });
 
     describe('size:', () => {
-        it('если значение не задано, размер айленда m', () => {
+        it('if not specified, island size m', () => {
             const size = component.sizeM;
 
             expect(size).toBe(true);
         });
 
-        it('если значение l, размер айленда l', () => {
+        it('if the value is l, the size of the island is l', () => {
             testComponent.size = 'l';
             fixture.detectChanges();
 
@@ -76,13 +76,13 @@ describe('Island', () => {
     });
 
     describe('textAlign:', () => {
-        it('если значение не задано, текст выровнен по левому краю', () => {
+        it('if no value is specified, the text is left aligned', () => {
             const textAlign = component.textAlignLeft;
 
             expect(textAlign).toBe(true);
         });
 
-        it('если передать center, текст будет выровнен по центру', () => {
+        it('if you pass center, the text will be centered', () => {
             testComponent.textAlign = TuiTextAlign.Center;
             fixture.detectChanges();
 
@@ -93,7 +93,7 @@ describe('Island', () => {
     });
 
     describe('hoverable:', () => {
-        it('если true, ховер работает', () => {
+        it('if true, hover works', () => {
             testComponent.hoverable = true;
             fixture.detectChanges();
 

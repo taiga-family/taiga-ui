@@ -8,7 +8,7 @@ import {configureTestSuite} from 'ng-bullet';
 import {TuiComboBoxModule} from '../../../components/combo-box/combo-box.module';
 import {TuiProjectClassModule} from '../project-class.module';
 
-describe('Директива TuiProjectClassDirective', () => {
+describe('Directive TuiProjectClassDirective', () => {
     @Component({
         template: `
             <div id="parent" [tuiProjectClass]="classNames">
@@ -51,11 +51,11 @@ describe('Директива TuiProjectClassDirective', () => {
         inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
-    it('если на потомке нет нужного класса, его нет и на хосте', () => {
+    it('if the child does not have the required class, it is not on the host either', () => {
         expect(getParentElement().classList.contains('_focused')).toBe(false);
     });
 
-    it('если на потомке появляется класс, он проецируется хосту', () => {
+    it('if a class appears on the child, it is projected to the host', () => {
         inputPO.focus();
         fixture.detectChanges();
 

@@ -59,18 +59,18 @@ describe('Avatar', () => {
     });
 
     describe('computedText', () => {
-        it('если есть аватар, текстовое значение пустое', () => {
+        it('if there is an avatar, the text value is empty', () => {
             expect(component.computedText).toBe('');
         });
 
-        it('если аватар отсутствует, текстовое значение берётся из первых букв слов в text', () => {
+        it('if there is no avatar, the text value is taken from the first letters of the words in text', () => {
             testComponent.avatarUrl = null;
             fixture.detectChanges();
 
             expect(component.computedText).toBe('JC');
         });
 
-        it('если аватар отсутствует, и в text одно слово — берётся его первая буква', () => {
+        it('if the avatar is absent, and there is one word in text, its first letter is taken', () => {
             testComponent.avatarUrl = null;
             testComponent.text = 'James';
             fixture.detectChanges();
@@ -78,7 +78,7 @@ describe('Avatar', () => {
             expect(component.computedText).toBe('J');
         });
 
-        it('для xs размеров берётся только одна буква', () => {
+        it('for xs sizes only one letter is taken', () => {
             testComponent.avatarUrl = null;
             testComponent.size = 'xs';
             fixture.detectChanges();
@@ -87,14 +87,14 @@ describe('Avatar', () => {
         });
     });
 
-    describe('Цвет аватара', () => {
-        it('если есть avatarUrl, цвет rgba(0, 0, 0, 0)', () => {
+    describe('Avatar color', () => {
+        it('if there is an avatarUrl the color is rgba(0, 0, 0, 0)', () => {
             expect(getComputedStyle(getAvatar()).backgroundColor).toBe(
                 'rgba(0, 0, 0, 0)',
             );
         });
 
-        it('при включении autoColor, цвет будет - rgb(160, 170, 228)', () => {
+        it('when autoColor is on, the color will be - rgb(160, 170, 228)', () => {
             testComponent.autoColor = true;
             fixture.detectChanges();
             expect(getComputedStyle(getAvatar()).backgroundColor).toBe(

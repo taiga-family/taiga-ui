@@ -10,15 +10,15 @@ import {TuiBreadcrumbsModule} from '../breadcrumbs.module';
 
 const ITEMS = [
     {
-        caption: 'Селекты',
+        caption: 'Select',
         routerLink: '/tui-select',
     },
     {
-        caption: 'Мульти',
+        caption: 'Multi',
         routerLink: '/tui-multi-select',
     },
     {
-        caption: 'С тегами',
+        caption: 'With tags',
         routerLink: '/tui-multi-select',
     },
 ];
@@ -70,11 +70,11 @@ describe('Breadcrumbs', () => {
     });
 
     describe('size:', () => {
-        it('выставлен по умолчанию medium', () => {
+        it('default is medium', () => {
             expect(getBreadcrumbs().attributes['data-tui-host-size']).toBe('m');
         });
 
-        it('выставляется large при size="l"', () => {
+        it('large is set for size = "l"', () => {
             testComponent.size = 'l';
             fixture.detectChanges();
 
@@ -82,8 +82,8 @@ describe('Breadcrumbs', () => {
         });
     });
 
-    describe('иконка:', () => {
-        it('у последнего элемента отсутстует', () => {
+    describe('icon:', () => {
+        it('the last element is missing ', () => {
             const itemsArrayLength = ITEMS.length;
             const iconsArrayLength = fixture.debugElement.queryAll(By.css('.icon'))
                 .length;

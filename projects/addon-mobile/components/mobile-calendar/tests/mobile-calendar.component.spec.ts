@@ -77,7 +77,7 @@ describe('MobileCalendar', () => {
             .find(item => item.classes['cell_today'])!.nativeElement;
     }
 
-    it('кнопка назад испускает событие cancel', () => {
+    it('the back button emits a cancel event', () => {
         pageObject
             .getByAutomationId('tui-mobile-calendar__cancel')!
             .nativeElement.click();
@@ -104,8 +104,8 @@ describe('MobileCalendar', () => {
         ).toBe('Choose range');
     });
 
-    describe('кнопка "Готово" испускает', () => {
-        it('событие confirm с выбранным днём', done => {
+    describe('when the done button emits', () => {
+        it('confirm event with selected day', done => {
             setTimeout(() => {
                 fixture.detectChanges();
                 getToday().click();
@@ -120,7 +120,7 @@ describe('MobileCalendar', () => {
             }, 100);
         });
 
-        it('событие confirm с выбранным интервалом', done => {
+        it('confirm event at selected interval', done => {
             setTimeout(() => {
                 fixture.detectChanges();
                 testComponent.single = false;
@@ -139,7 +139,7 @@ describe('MobileCalendar', () => {
             }, 100);
         });
 
-        it('событие confirm с выбранным интервалом с разными датами', fakeAsync(() => {
+        it('confirm event with selected interval with different dates', fakeAsync(() => {
             testComponent.single = false;
             fixture.autoDetectChanges();
             tick(500);
@@ -159,7 +159,7 @@ describe('MobileCalendar', () => {
             expect(value.isSingleDay).toBe(false);
         }));
 
-        it('событие cancel, если значение null', fakeAsync(() => {
+        it('cancel event if null', fakeAsync(() => {
             testComponent.component.value = null;
             pageObject
                 .getByAutomationId('tui-mobile-calendar__confirm')!
@@ -171,7 +171,7 @@ describe('MobileCalendar', () => {
     });
 
     // :hidethepain:
-    it('Выбор года прокручивает месяцы', done => {
+    it('Year selection scrolls through months', done => {
         setTimeout(() => {
             testComponent.component.setYear(1950);
             fixture.detectChanges();

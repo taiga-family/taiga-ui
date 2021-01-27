@@ -17,11 +17,11 @@ describe('Notification', () => {
                 [status]="status"
                 (close)="onClose()"
             >
-                Короткое простое информационное сообщение
+                Short simple informational message
             </tui-notification>
             <ng-template #noClose>
                 <tui-notification [hasIcon]="hasIcon" [status]="status">
-                    Короткое простое информационное сообщение
+                    Short simple informational message
                 </tui-notification>
             </ng-template>
         `,
@@ -65,11 +65,11 @@ describe('Notification', () => {
     });
 
     describe('icon', () => {
-        it('по умолчанию присутствует', () => {
+        it('present by default', () => {
             expect(getIcon()).not.toBeNull();
         });
 
-        it('выбирается правильно в зависимости от статуса', () => {
+        it('chosen correctly depending on the status', () => {
             expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
 
             testComponent.status = TuiNotification.Success;
@@ -85,7 +85,7 @@ describe('Notification', () => {
             expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
         });
 
-        it('при hasIcon=false отсутствует', () => {
+        it('when hasIcon = false is absent', () => {
             testComponent.hasIcon = false;
             fixture.detectChanges();
 
@@ -93,12 +93,12 @@ describe('Notification', () => {
         });
     });
 
-    describe('крестик закрытия', () => {
-        it('присутствует при подписке на close', () => {
+    describe('closing cross', () => {
+        it('present when subscribing to close', () => {
             expect(getClose()).not.toBeNull();
         });
 
-        it('без подписки на close отсутствует', () => {
+        it('without subscription to close is missing', () => {
             testComponent.hasCloseButton = false;
             fixture.detectChanges();
 

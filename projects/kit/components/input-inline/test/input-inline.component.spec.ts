@@ -41,23 +41,23 @@ describe('InputInline', () => {
     });
 
     describe('placeholder', () => {
-        it('отображается, если нет значения', () => {
+        it('displayed if no value', () => {
             expect(getPlaceholder()).not.toBeNull();
         });
 
-        it('не отображается, если есть значение', () => {
+        it('not displayed if there is a value', () => {
             testComponent.control.setValue('123');
             fixture.detectChanges();
             expect(getPlaceholder()).toBeNull();
         });
     });
 
-    describe('поле ввода', () => {
-        it('редактируемо, если не заблокировано', () => {
+    describe('entry field', () => {
+        it('editable if not locked', () => {
             expect(getNative()!.nativeElement.disabled).toBe(false);
         });
 
-        it('не редактируемо, если заблокировано', done => {
+        it('not editable if locked', done => {
             testComponent.control.disable();
             fixture.detectChanges();
 

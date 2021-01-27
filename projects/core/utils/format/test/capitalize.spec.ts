@@ -2,11 +2,11 @@ import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {capitalize} from '../capitalize';
 
 describe('Capitalize', () => {
-    it('capitalizes the first letter of the word', () => {
+    it('Capitalizes the first letter of a word', () => {
         expect(capitalize('lorem')).toBe('Lorem');
     });
 
-    it('capitalizes the first letter of each word', () => {
+    it('Capitalizes the first letter of each word', () => {
         expect(capitalize('lorem ipsum')).toBe('Lorem Ipsum');
     });
 

@@ -30,7 +30,7 @@ export function testCleaner(
     let testComponent: TestComponent;
     let inputPO: NativeInputPO;
 
-    describe('Крестик для очистки поля', () => {
+    describe('Cross for field cleaning', () => {
         beforeEach(() => {
             pageObject = context.pageObject;
             fixture = context.fixture;
@@ -40,12 +40,12 @@ export function testCleaner(
             fixture.detectChanges();
         });
 
-        describe('Крестик включен', () => {
+        describe('Cross included', () => {
             beforeEach(() => {
                 testComponent.cleaner = true;
             });
 
-            it('Если значение не задано, крестик не показан', () => {
+            it('If no value is specified, the cross is not shown', () => {
                 updateValue(clearValue);
 
                 fixture.detectChanges();
@@ -53,7 +53,7 @@ export function testCleaner(
                 expect(getCleaner()).toBeNull();
             });
 
-            it('Если поле readonly, крестик не показан', () => {
+            it('If the field is readonly, the cross is not shown', () => {
                 updateValue(setValue);
 
                 testComponent.readOnly = true;
@@ -62,7 +62,7 @@ export function testCleaner(
                 expect(getCleaner()).toBeNull();
             });
 
-            it('Если поле disabled, крестик не показан', () => {
+            it('If the field is disabled, the cross is not shown', () => {
                 updateValue(setValue);
 
                 if (testComponent.control) {
@@ -75,7 +75,7 @@ export function testCleaner(
                 expect(getCleaner()).toBeNull();
             });
 
-            it('Если значение задано, крестик показан', () => {
+            it('If a value is specified, a cross is shown', () => {
                 updateValue(setValue);
 
                 fixture.detectChanges();
@@ -83,7 +83,7 @@ export function testCleaner(
                 expect(getCleaner()).not.toBeNull();
             });
 
-            it('При нажатии на крестик значение поля очищается', () => {
+            it('When you click on the cross, the field value is cleared', () => {
                 updateValue(setValue);
 
                 fixture.detectChanges();
@@ -103,8 +103,8 @@ export function testCleaner(
             });
         });
 
-        describe('Крестик отключен', () => {
-            it('Значение задано, крестик не показывается', () => {
+        describe('Cross disabled', () => {
+            it('The value is set, the cross is not shown', () => {
                 updateValue(setValue);
 
                 testComponent.cleaner = false;

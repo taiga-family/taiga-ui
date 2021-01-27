@@ -18,36 +18,36 @@ function wrapper(
     ) as TuiTextMaskPipeResult).value;
 }
 
-describe('tuiCreateAutoCorrectedDateRangePipe возвращает', () => {
-    describe('исходную строку, если она', () => {
-        it('пустая', () => {
+describe('tuiCreateAutoCorrectedDateRangePipe returns', () => {
+    describe('the original string if it is', () => {
+        it('empty', () => {
             expect(wrapper('')).toBe('');
         });
 
-        it('меньше одной даты', () => {
+        it('less than one date', () => {
             expect(wrapper('99.99.99')).toBe('99.99.99');
         });
 
-        it('больше одной, но меньше двух дат', () => {
+        it('more than one but less than two dates', () => {
             expect(wrapper(`99.99.9999${RANGE_SEPARATOR_CHAR}99.99.99`)).toBe(
                 `99.99.9999${RANGE_SEPARATOR_CHAR}99.99.99`,
             );
         });
 
-        describe('валидная и', () => {
-            describe('одинарная и', () => {
-                it('без тире', () => {
+        describe('valid and', () => {
+            describe('single and', () => {
+                it('without dash', () => {
                     expect(wrapper('06.06.2000')).toBe('06.06.2000');
                 });
 
-                it('c тире', () => {
+                it('with a dash', () => {
                     expect(wrapper(`06.06.2000${RANGE_SEPARATOR_CHAR}`)).toBe(
                         `06.06.2000${RANGE_SEPARATOR_CHAR}`,
                     );
                 });
             });
 
-            it('двойная', () => {
+            it('double', () => {
                 expect(wrapper(`01.01.2000${RANGE_SEPARATOR_CHAR}.31.12.3000`)).toBe(
                     `01.01.2000${RANGE_SEPARATOR_CHAR}.31.12.3000`,
                 );
@@ -55,29 +55,29 @@ describe('tuiCreateAutoCorrectedDateRangePipe возвращает', () => {
         });
     });
 
-    describe('исправленную строку, если она', () => {
-        describe('одинарная и', () => {
-            describe('не валидная', () => {
-                it('без тире', () => {
+    describe('the corrected line if it is', () => {
+        describe('single and', () => {
+            describe('not valid', () => {
+                it('without dash', () => {
                     expect(wrapper('99.99.4444')).toBe('31.12.4444');
                 });
 
-                it('с тире', () => {
+                it('with a dash', () => {
                     expect(wrapper(`99.99.4444${RANGE_SEPARATOR_CHAR}`)).toBe(
                         `31.12.4444${RANGE_SEPARATOR_CHAR}`,
                     );
                 });
             });
 
-            describe('валидная, но', () => {
-                describe('меньше минимальной даты', () => {
-                    it('без тире', () => {
+            describe('valid, but', () => {
+                describe('less than the minimum date', () => {
+                    it('without dash', () => {
                         expect(wrapper('01.01.1000', new TuiDay(2000, 5, 6))).toBe(
                             '06.06.2000',
                         );
                     });
 
-                    it('с тире', () => {
+                    it('with a dash', () => {
                         expect(
                             wrapper(
                                 `01.01.1000${RANGE_SEPARATOR_CHAR}`,
@@ -86,14 +86,14 @@ describe('tuiCreateAutoCorrectedDateRangePipe возвращает', () => {
                         ).toBe(`06.06.2000${RANGE_SEPARATOR_CHAR}`);
                     });
                 });
-                describe('больше максимальной даты', () => {
-                    it('без тире', () => {
+                describe('more than maximum date', () => {
+                    it('without dash', () => {
                         expect(wrapper('31.12.3000', null, new TuiDay(2000, 5, 6))).toBe(
                             '06.06.2000',
                         );
                     });
 
-                    it('с тире', () => {
+                    it('with a dash', () => {
                         expect(
                             wrapper(
                                 `31.12.3000${RANGE_SEPARATOR_CHAR}`,
@@ -106,14 +106,14 @@ describe('tuiCreateAutoCorrectedDateRangePipe возвращает', () => {
             });
         });
 
-        describe('двойная и', () => {
-            it('даты поменяны местами', () => {
+        describe('double and', () => {
+            it('dates are swapped', () => {
                 expect(wrapper(`31.12.3000${RANGE_SEPARATOR_CHAR}01.01.2000`)).toBe(
                     `01.01.2000${RANGE_SEPARATOR_CHAR}31.12.3000`,
                 );
             });
 
-            it('не валидная', () => {
+            it('not valid', () => {
                 expect(wrapper(`99.99.2000${RANGE_SEPARATOR_CHAR}99.99.3000`)).toBe(
                     `31.12.2000${RANGE_SEPARATOR_CHAR}31.12.3000`,
                 );

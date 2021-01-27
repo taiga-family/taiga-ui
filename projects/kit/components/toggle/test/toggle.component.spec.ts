@@ -44,7 +44,7 @@ describe('Toggle', () => {
         testComponent = fixture.componentInstance;
     });
 
-    it('Если value не задано, клик меняет значение на true', () => {
+    it('If value is not set, click changes the value to true', () => {
         fixture.detectChanges();
 
         clickOnToggle();
@@ -52,7 +52,7 @@ describe('Toggle', () => {
         expect(testComponent.control.value).toBe(true);
     });
 
-    it('Если value === false, клик меняет значение на true', () => {
+    it('If value === false, click changes the value to true', () => {
         testComponent.control.setValue(false);
         fixture.detectChanges();
 
@@ -61,7 +61,7 @@ describe('Toggle', () => {
         expect(testComponent.control.value).toBe(true);
     });
 
-    it('Если value === true, клик меняет значение на false', () => {
+    it('If value === true, click changes the value to false', () => {
         testComponent.control.setValue(true);
         fixture.detectChanges();
 
@@ -70,7 +70,7 @@ describe('Toggle', () => {
         expect(testComponent.control.value).toBe(false);
     });
 
-    it('Если контрол задизейблен, клик не меняет значение', () => {
+    it('If the control is disabled, the click does not change the value', () => {
         testComponent.control.setValue(false);
         testComponent.control.disable();
         fixture.detectChanges();
@@ -80,7 +80,7 @@ describe('Toggle', () => {
         expect(testComponent.control.value).toBe(false);
     });
 
-    it('Если контрол снова раздизейблен, клик меняет значение на противоположное', () => {
+    it('If the control is un-disabled again, click reverses the value', () => {
         testComponent.control.setValue(false);
         testComponent.control.disable();
         fixture.detectChanges();
@@ -93,13 +93,13 @@ describe('Toggle', () => {
         expect(testComponent.control.value).toBe(true);
     });
 
-    describe('Иконки', () => {
+    describe('Icons', () => {
         describe('showIcons === false', () => {
             beforeEach(() => {
                 testComponent.showIcons = false;
             });
 
-            it('Иконки скрыты, когда toggle в состоянии "отключен"', () => {
+            it('Icons are hidden when toggle is "disabled"', () => {
                 testComponent.control.setValue(false);
                 fixture.detectChanges();
 
@@ -107,7 +107,7 @@ describe('Toggle', () => {
                 checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
             });
 
-            it('Иконки скрыты, когда toggle в состоянии "включен"', () => {
+            it('Icons are hidden when toggle is "on"', () => {
                 testComponent.control.setValue(true);
                 fixture.detectChanges();
 
@@ -121,17 +121,17 @@ describe('Toggle', () => {
                 testComponent.showIcons = true;
             });
 
-            it('Иконки показаны, когда toggle в состоянии "отключен"', () => {
+            it('Icons are shown when toggle is "disabled"', () => {
                 testComponent.control.setValue(false);
                 fixture.detectChanges();
 
-                // Если иконки включены, то в DOM добавляются сразу обе -
-                // особенность реализации для плавной анимации
+                // If icons are enabled, then both are added to the DOM at once -
+                // implementation feature for smooth animation
                 checkIconVisibility(`${testContext.prefix}check-icon`, true);
                 checkIconVisibility(`${testContext.prefix}cancel-icon`, true);
             });
 
-            it('Иконки показаны, когда toggle в состоянии "включен"', () => {
+            it('Icons are shown when toggle is "on"', () => {
                 testComponent.control.setValue(true);
                 fixture.detectChanges();
 
@@ -147,7 +147,7 @@ describe('Toggle', () => {
                 testComponent.showLoader = false;
             });
 
-            it('Иконки скрыты, когда toggle в состоянии "отключен"', () => {
+            it('Icons are hidden when toggle is "disabled"', () => {
                 testComponent.control.setValue(false);
                 fixture.detectChanges();
 
@@ -155,7 +155,7 @@ describe('Toggle', () => {
                 checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
             });
 
-            it('Иконки скрыты, когда toggle в состоянии "включен"', () => {
+            it('Icons are hidden when toggle is "on"', () => {
                 testComponent.control.setValue(true);
                 fixture.detectChanges();
 
@@ -170,7 +170,7 @@ describe('Toggle', () => {
                 testComponent.showIcons = true;
             });
 
-            it('Иконки скрыты, когда toggle в состоянии "отключен", loader имеет над ними приоритет', () => {
+            it('Icons are hidden when toggle is disabled, loader takes precedence over them', () => {
                 testComponent.control.setValue(false);
                 fixture.detectChanges();
 
@@ -178,7 +178,7 @@ describe('Toggle', () => {
                 checkIconVisibility(`${testContext.prefix}cancel-icon`, false);
             });
 
-            it('Иконки скрыты, когда toggle в состоянии "включен", loader имеет над ними приоритет', () => {
+            it('Icons are hidden when toggle is on, loader takes precedence over them', () => {
                 testComponent.control.setValue(true);
                 fixture.detectChanges();
 

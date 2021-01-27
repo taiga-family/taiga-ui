@@ -94,37 +94,37 @@ describe('rangeCalendarComponent', () => {
         });
     });
 
-    it('показаны два календаря, если items — пустой массив', () => {
+    it('showing two calendars if items is an empty array', () => {
         testComponent.items = [];
 
         expect(getCalendars()).not.toBeNull();
     });
 
-    describe('пункты', () => {
+    describe('points', () => {
         beforeEach(() => {
             testComponent.items = tuiCreateDefaultDayRangePeriods();
             fixture.detectChanges();
         });
 
-        it('Если есть items — показан один календарь с меню, а 2 календаря скрыты', () => {
+        it('If there are items - one calendar with a menu is shown, and 2 calendars are hidden', () => {
             expect(getCalendar()).not.toBeNull();
         });
 
-        it('Пункты по умолчанию из генератора', () => {
+        it('Default items from generator', () => {
             const items = getItems();
 
             expect(items.length).toBe(7);
         });
 
-        it('Если значение не подходит ни под один диапазон — галочка у "Другая дата..."', () => {
+        it('If the value does not fit any range, check the box next to "Other date..."', () => {
             expect(getItems()[6].nativeElement.contains(getCheckmark())).toBe(true);
         });
 
-        it('Если значение не подходит под диапазон — галочки у диапазона нет', () => {
+        it('If the value does not fit the range, the range has no tick', () => {
             expect(getItems()[5].nativeElement.contains(getCheckmark())).toBe(false);
         });
 
-        it('Выбор интервала учитывает min/max', () => {
+        it('Interval selection takes into account min / max', () => {
             const today = TuiDay.currentLocal();
             const startOfMonth = today.append({day: 1 - today.day});
             const startOfLastMonth = startOfMonth.append({month: -1});
@@ -142,7 +142,7 @@ describe('rangeCalendarComponent', () => {
             ).toBe(true);
         });
 
-        it('Интервалы, полностью находящиеся за пределами min и max не выводятся', () => {
+        it('Intervals that are completely outside min and max are not displayed', () => {
             const today = TuiDay.currentLocal();
 
             testComponent.min = TuiDay.currentLocal().append({
@@ -160,12 +160,12 @@ describe('rangeCalendarComponent', () => {
             expect(items.some(item => item === 'Today')).toBe(false);
         });
 
-        it('При переопределении интервалов в списке всегда есть "Другая дата..."', () => {
+        it('When redefining intervals, the list always contains "Other date..."', () => {
             const august = new TuiDayRange(
                 new TuiDay(1944, 7, 1),
                 new TuiDay(1944, 7, 31),
             );
-            const title = 'В августе 44-го';
+            const title = 'In August 44th';
 
             testComponent.items = [new TuiDayRangePeriod(august, title)];
             fixture.detectChanges();
