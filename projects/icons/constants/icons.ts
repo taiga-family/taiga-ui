@@ -1,5 +1,5 @@
 import {
-    tuiIconAlertCircleLarge,
+    tuiIconAlertCircle,
     tuiIconArrowRight,
     tuiIconAttention,
     tuiIconCalendar,
@@ -45,7 +45,7 @@ export const tuiCoreIcons = {
 
 export const tuiKitIcons = {
     ...tuiCoreIcons,
-    tuiIconAlertCircleLarge,
+    tuiIconAlertCircle,
     tuiIconChevronDown,
     tuiIconChevronDownLarge,
     tuiIconChevronLeft,

@@ -92,7 +92,7 @@ export class TuiFileComponent {
             case TuiFileState.Deleted:
                 return 'tuiIconTrashLarge';
             case TuiFileState.Error:
-                return 'tuiIconAlertCircleLarge';
+                return 'tuiIconAlertCircle';
             default:
                 return 'tuiIconCheckCircleLarge';
         }

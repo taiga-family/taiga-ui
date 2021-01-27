@@ -1,5 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" focusable="false" height="32"><g id="tuiIconMir" xmlns="http://www.w3.org/2000/svg" transform="translate(-16,-16)"><svg x="50%" y="50%">
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
     <defs>
         <linearGradient x1="-0.18041958%" y1="50%" x2="100%" y2="50%" id="tui-mir-gradient">
             <stop stop-color="#00B4E6" offset="0%"></stop>
@@ -13,4 +12,3 @@
         <path d="M0,9.14285714 L0,0 L2.93877551,0 C2.93877551,0 3.7877551,0 4.24489796,1.30612245 C5.42040816,4.76734694 5.55102041,5.2244898 5.55102041,5.2244898 C5.55102041,5.2244898 5.8122449,4.3755102 6.85714286,1.30612245 C7.31428571,0 8.16326531,0 8.16326531,0 L11.1020408,0 L11.1020408,9.14285714 L8.16326531,9.14285714 L8.16326531,4.24489796 L7.83673469,4.24489796 L6.20408163,9.14285714 L4.89795918,9.14285714 L3.26530612,4.24489796 L2.93877551,4.24489796 L2.93877551,9.14285714 L0,9.14285714 Z" fill="#4DB45F"></path>
     </g>
 </svg>
-</svg></g></svg>
