@@ -140,7 +140,7 @@ export class TuiInputTimeComponent
     }
 
     get icon(): string {
-        return sizeBigger(this.textfieldSize.size) ? 'tuiIconTimeLarge' : 'tuiIconTime';
+        return sizeBigger(this.textfieldSize.size) ? 'tuiIconTime' : 'tuiIconTime';
     }
 
     get nativeValue(): string {

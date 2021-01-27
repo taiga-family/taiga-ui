@@ -53,7 +53,7 @@ export class ExampleTuiLinkComponent {
 
     icon = null;
 
-    readonly iconVariants = ['tuiIconStarLarge', 'tuiIconGeoLarge'];
+    readonly iconVariants = ['tuiIconStar', 'tuiIconGeo'];
 
     iconAlign: TuiHorizontalDirection = this.iconAlignValues[0];
 }

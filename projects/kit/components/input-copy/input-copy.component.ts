@@ -112,7 +112,7 @@ export class TuiInputCopyComponent
     }
 
     get icon(): string {
-        return this.textfieldSize.size === 's' ? 'tuiIconCopy' : 'tuiIconCopyLarge';
+        return this.textfieldSize.size === 's' ? 'tuiIconCopy' : 'tuiIconCopy';
     }
 
     onValueChange(value: string) {

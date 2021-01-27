@@ -86,7 +86,7 @@ export class TuiInputMonthComponent
 
     get calendarIcon(): string {
         return sizeBigger(this.textfieldSize.size)
-            ? 'tuiIconCalendarLarge'
+            ? 'tuiIconCalendar'
             : 'tuiIconCalendar';
     }
 

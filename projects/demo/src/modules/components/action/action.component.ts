@@ -33,11 +33,7 @@ export class ExampleTuiActionComponent {
 
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
-    readonly iconVariants = [
-        'tuiIconPrintLarge',
-        'tuiIconLoginLarge',
-        'tuiIconPhoneLarge',
-    ];
+    readonly iconVariants = ['tuiIconPrint', 'tuiIconLogin', 'tuiIconPhone'];
 
     icon = this.iconVariants[0];
 }

@@ -63,7 +63,7 @@ describe('InputCopy', () => {
             const iconSrc = component.icon;
 
             expect(icon).not.toBeNull();
-            expect(iconSrc).toBe('tuiIconCopyLarge');
+            expect(iconSrc).toBe('tuiIconCopy');
         });
 
         it('If component is small, icon size is small', () => {

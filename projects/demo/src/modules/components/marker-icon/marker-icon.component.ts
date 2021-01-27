@@ -43,7 +43,7 @@ export class ExampleTuiMarkerIconComponent {
         HTML: example3Html,
     };
 
-    readonly icons = ['tuiIconAttachLarge', 'tuiIconCallLarge', 'tuiIconStarLarge'];
+    readonly icons = ['tuiIconAttach', 'tuiIconCall', 'tuiIconStar'];
 
     selectedIcon = this.icons[0];
 

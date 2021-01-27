@@ -23,7 +23,7 @@ export class TuiArrowComponent {
 
     get arrowIcon(): string {
         return sizeBigger(this.textfieldSize.size)
-            ? 'tuiIconChevronDownLarge'
+            ? 'tuiIconChevronDown'
             : 'tuiIconChevronDown';
     }
 }

@@ -159,7 +159,7 @@ export class TuiInputDateRangeComponent
 
     get calendarIcon(): string {
         return sizeBigger(this.textfieldSize.size)
-            ? 'tuiIconCalendarLarge'
+            ? 'tuiIconCalendar'
             : 'tuiIconCalendar';
     }
 

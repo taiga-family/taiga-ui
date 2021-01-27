@@ -65,10 +65,10 @@ export class TuiPrimitiveCheckboxComponent {
     }
 
     get iconCheck(): string {
-        return this.size === 'm' ? 'tuiIconCheck' : 'tuiIconCheckLarge';
+        return this.size === 'm' ? 'tuiIconCheck' : 'tuiIconCheck';
     }
 
     get iconIndeterminate(): string {
-        return this.size === 'm' ? 'tuiIconMinus' : 'tuiIconMinusLarge';
+        return this.size === 'm' ? 'tuiIconMinus' : 'tuiIconMinus';
     }
 }

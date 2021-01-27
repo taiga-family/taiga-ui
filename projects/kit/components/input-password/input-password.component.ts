@@ -73,7 +73,7 @@ export class TuiInputPasswordComponent
             return this.isPasswordHidden ? 'tuiIconEyeClosed' : 'tuiIconEyeOpen';
         }
 
-        return this.isPasswordHidden ? 'tuiIconHideLarge' : 'tuiIconShowLarge';
+        return this.isPasswordHidden ? 'tuiIconHide' : 'tuiIconShow';
     }
 
     get inputType(): string {

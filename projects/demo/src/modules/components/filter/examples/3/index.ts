@@ -4,11 +4,11 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
 const getIcon: Record<string, string> = {
-    Calendar: 'tuiIconCalendarLarge',
-    Favorite: 'tuiIconStarLarge',
-    Messages: 'tuiIconCommentLarge',
-    FAQ: 'tuiIconHelpCircleLarge',
-    Settings: 'tuiIconSettingsLarge',
+    Calendar: 'tuiIconCalendar',
+    Favorite: 'tuiIconStar',
+    Messages: 'tuiIconComment',
+    FAQ: 'tuiIconHelpCircle',
+    Settings: 'tuiIconSettings',
 };
 
 @Component({

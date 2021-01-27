@@ -99,14 +99,6 @@ export class TuiToggleComponent
         return this.value;
     }
 
-    get iconOn(): string {
-        return this.sizeM ? 'tuiIconToggleOn' : 'tuiIconToggleOnLarge';
-    }
-
-    get iconOff(): string {
-        return this.sizeM ? 'tuiIconToggleOff' : 'tuiIconToggleOffLarge';
-    }
-
     get loaderSize(): TuiSizeXS {
         return this.sizeM ? 'xs' : 's';
     }

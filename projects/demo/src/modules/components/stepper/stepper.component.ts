@@ -41,7 +41,7 @@ export class ExampleTuiStepperComponent {
 
     orientation: TuiOrientation = this.orientationVariants[0];
 
-    readonly iconVariants = ['', 'tuiIconTimeLarge', 'tuiIconHeart'];
+    readonly iconVariants = ['', 'tuiIconTime', 'tuiIconHeart'];
 
     icon = this.iconVariants[0];
 

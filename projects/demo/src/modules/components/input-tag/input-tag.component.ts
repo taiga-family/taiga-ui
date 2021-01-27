@@ -72,9 +72,9 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiReactiveField
 
     allowSpaces = true;
 
-    readonly iconVariants = ['tuiIconSearchLarge'];
+    readonly iconVariants = ['tuiIconSearch'];
 
-    icon: 'tuiIconSearchLarge' | null = null;
+    icon: 'tuiIconSearch' | null = null;
 
     readonly iconAlignVariants: ReadonlyArray<TuiHorizontalDirection> = ['left', 'right'];
 

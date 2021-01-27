@@ -63,7 +63,7 @@ describe('InputPassword', () => {
             const iconSrc = component.icon;
 
             expect(icon).not.toBeNull();
-            expect(iconSrc).toBe('tuiIconHideLarge');
+            expect(iconSrc).toBe('tuiIconHide');
         });
 
         it('При клике на нее иконка представляет собой "Открытый глаз"', () => {
@@ -74,7 +74,7 @@ describe('InputPassword', () => {
             const iconSrc = component.icon;
 
             expect(icon).not.toBeNull();
-            expect(iconSrc).toBe('tuiIconShowLarge');
+            expect(iconSrc).toBe('tuiIconShow');
         });
 
         it('В маленьком размере иконки маленькие', () => {

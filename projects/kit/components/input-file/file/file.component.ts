@@ -85,16 +85,16 @@ export class TuiFileComponent {
 
     get icon(): string {
         if (this.state === TuiFileState.Normal && this.isBig) {
-            return 'tuiIconDefaultDocLarge';
+            return 'tuiIconDefaultDoc';
         }
 
         switch (this.state) {
             case TuiFileState.Deleted:
-                return 'tuiIconTrashLarge';
+                return 'tuiIconTrash';
             case TuiFileState.Error:
                 return 'tuiIconAlertCircle';
             default:
-                return 'tuiIconCheckCircleLarge';
+                return 'tuiIconCheckCircle';
         }
     }
 

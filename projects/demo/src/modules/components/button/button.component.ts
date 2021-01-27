@@ -98,6 +98,6 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiField {
 
     @tuiPure
     getContentVariants(template: TemplateRef<{}>): ReadonlyArray<PolymorpheusContent> {
-        return ['', 'tuiIconEyeClosed', 'tuiIconHeartLarge', template];
+        return ['', 'tuiIconEyeClosed', 'tuiIconHeart', template];
     }
 }
