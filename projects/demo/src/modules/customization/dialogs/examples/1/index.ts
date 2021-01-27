@@ -1,8 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
-import {PromptService} from '../prompt/prompt.component';
-import {switchMap} from 'rxjs/operators';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {switchMap} from 'rxjs/operators';
+import {PromptService} from '../prompt/prompt.component';
 
 @Component({
     selector: 'tui-dialogs-example-1',
@@ -23,7 +23,7 @@ export class TuiDialogsExample1 {
     ) {
         this.promptService
             .open(choose, {
-                heading: 'Taiga UI is the greatest Angular lib',
+                heading: 'Taiga UI is the best',
                 buttons: ['Absolutely!', 'No way!'],
             })
             .pipe(
