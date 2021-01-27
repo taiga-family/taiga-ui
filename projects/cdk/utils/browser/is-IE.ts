@@ -1,3 +1,3 @@
 export function isIE(userAgent: string): boolean {
-    return userAgent.includes('trident');
+    return userAgent.toLowerCase().includes('trident');
 }
