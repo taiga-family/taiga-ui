@@ -14,6 +14,7 @@ describe('Browsers', () => {
 
     it('isFirefox', () => {
         expect(isFirefox('firefox')).toBe(true);
+        expect(isFirefox('Firefox')).toBe(true);
     });
 
     it('isEdgeOlderThan', () => {
