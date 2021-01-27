@@ -61,6 +61,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'dialogs',
+        loadChildren: () =>
+            import(`../customization/dialogs/dialogs.module`).then(
+                m => m.DialogsModule,
+            ),
+        data: {
+            title: `Dialogs`,
+        },
+    },
+    {
         path: 'tui-doc',
         loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
         data: {

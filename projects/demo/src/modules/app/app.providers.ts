@@ -11,6 +11,7 @@ import {TUI_SANITIZER} from '@taiga-ui/cdk';
 import {iconsPathFactory, TUI_ICONS_PATH} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
+import {PROMPT_PROVIDER} from '../customization/dialogs/examples/prompt/prompt.component';
 import {SEE_ALSO_GROUPS} from './app.const';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {pages} from './pages';
@@ -37,6 +38,7 @@ export const ICONS_PATH = iconsPathFactory('assets/taiga-ui/icons/');
 
 export const APP_PROVIDERS = [
     Title,
+    PROMPT_PROVIDER,
     {
         provide: HIGHLIGHT_OPTIONS,
         useValue: HIGHLIGHT_OPTIONS_VALUE,

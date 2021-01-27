@@ -33,6 +33,17 @@ tui-wrapper[data-appearance='material-textfield'] {
             transform: scaleY(2);
         }
     }
+
+    &._invalid {
+        // TODO: Better internal elements customization
+        label {
+            color: #b00020 !important;
+        }
+
+        &:after {
+            background: #b00020;
+        }
+    }
 }
 
 tui-wrapper[data-appearance='material-button'] {
