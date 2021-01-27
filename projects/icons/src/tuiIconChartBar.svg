@@ -1,1 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconChartBar" viewBox="0 0 16 16" fill="none"><path d="M12 13.333V6.666M8 13.333V2.667M4 13.334v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconChartBar" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 13.333V6.666m-4 6.667V2.667M4 13.334v-4"/></svg>

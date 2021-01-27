@@ -1,1 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconPause" viewBox="0 0 24 24" fill="none"><path d="M10 4H6v16h4V4zM18 4h-4v16h4V4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconPause" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 4H6v16h4V4zm8 0h-4v16h4V4z"/></svg>

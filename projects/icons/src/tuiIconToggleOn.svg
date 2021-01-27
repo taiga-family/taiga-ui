@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconToggleOn"
-
-
-	 viewBox="0 0 24 24">
-	<path d="M12 8.5V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconToggleOn" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 8.5V16"/></svg>

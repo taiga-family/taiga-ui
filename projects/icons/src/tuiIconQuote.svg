@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconQuote" viewBox="0 0 24 24" fill="none">
-<rect x="2" y="5" width="8" height="9" rx="2" stroke="currentColor" stroke-width="2"/>
-<rect x="14" y="5" width="8" height="9" rx="2" stroke="currentColor" stroke-width="2"/>
-<path d="M10 12C10 17.625 6 21 6 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-<path d="M22 12C22 17.625 18 21 18 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconQuote" fill="none" viewBox="0 0 24 24"><rect width="8" height="9" x="2" y="5" stroke="currentColor" stroke-width="2" rx="2"/><rect width="8" height="9" x="14" y="5" stroke="currentColor" stroke-width="2" rx="2"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M10 12c0 5.625-4 9-4 9m16-9c0 5.625-4 9-4 9"/></svg>

@@ -1,1 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconMinusCircle" viewBox="0 0 16 16" fill="none"><path d="M8 14.667A6.667 6.667 0 1 0 8 1.334a6.667 6.667 0 0 0 0 13.333zM5.333 8h5.334" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconMinusCircle" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14.667A6.667 6.667 0 108 1.334a6.667 6.667 0 000 13.333zM5.333 8h5.334"/></svg>

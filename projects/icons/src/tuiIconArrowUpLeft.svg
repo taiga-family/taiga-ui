@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconArrowUpLeft" viewBox="0 0 16 16" fill="none">
-<path d="M12 12L4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M11 4L3.99997 4L3.99997 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="tuiIconArrowUpLeft" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12L4 4m7 0H4v7"/></svg>
