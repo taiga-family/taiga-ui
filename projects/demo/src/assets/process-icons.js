@@ -13,8 +13,11 @@ function processIcons() {
             const wrapped = wrapIcon(src, file.replace('.svg', ''));
             const final =
                 typeof wrapped === 'string'
-                    ? wrapped.replace(START, '<svg focusable="false"')
-                    : `<svg xmlns="http://www.w3.org/2000/svg" width="${wrapped.width}" height="${wrapped.height}" focusable="false">${wrapped.src}</svg>`;
+                    ? wrapped.replace(
+                          START,
+                          `<svg xmlns="http://www.w3.org/2000/svg"><g id="${name}" xmlns="http://www.w3.org/2000/svg"><svg`,
+                      ) + '</g></svg>'
+                    : `<svg xmlns="http://www.w3.org/2000/svg" width="${wrapped.width}" height="${wrapped.height}">${wrapped.src}</svg>`;
 
             fs.writeFileSync(file, final);
         });
@@ -22,9 +25,8 @@ function processIcons() {
 }
 
 function wrapIcon(source, name) {
-    const indexOfSTART = source.indexOf(START);
-    const src = source.substring(indexOfSTART);
-    const attributes = src.substring(indexOfSTART, src.indexOf('>', indexOfSTART));
+    const src = source.substring(source.indexOf(START));
+    const attributes = src.substring(0, src.indexOf('>'));
 
     if (
         !attributes ||

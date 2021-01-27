@@ -1,0 +1,15 @@
+<div class="b-form">
+    <tui-notification>
+        As usual with the DI this is hierarchical. Meaning you can provide
+        different <code>TUI_ICONS_PATH</code> and use different icons across
+        your app.
+    </tui-notification>
+    <tui-input-date-range
+        class="tui-space_top-4"
+        tuiHintContent="You can use any icons you want"
+        [tuiTextfieldCleaner]="true"
+        [(ngModel)]="date"
+    >
+        Pick your favorite date range
+    </tui-input-date-range>
+</div>
