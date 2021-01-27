@@ -61,6 +61,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'icon-set',
+        loadChildren: () =>
+            import(`../customization/icon-set/icon-set.module`).then(
+                m => m.IconSetModule,
+            ),
+        data: {
+            title: `Icon set`,
+        },
+    },
+    {
         path: 'tui-doc',
         loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
         data: {
