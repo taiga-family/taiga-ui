@@ -127,6 +127,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Customization`,
+        title: `Dialogs`,
+        keywords: 'dialog, modal, popup, theme, custom, style',
+        route: 'dialogs',
+    },
+    {
+        section: $localize`Customization`,
         title: `Icon set`,
         keywords: 'icons, svg, theme, custom, style',
         route: 'icon-set',

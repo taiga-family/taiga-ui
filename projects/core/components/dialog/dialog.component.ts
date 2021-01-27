@@ -1,11 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
-import {
-    TUI_IS_MOBILE,
-    TuiAriaDialogContext,
-    TuiBaseDialog,
-    TuiBaseDialogContext,
-    tuiPure,
-} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
@@ -13,17 +7,11 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
-
 import {TUI_DIALOG_CLOSE_STREAM, TUI_DIALOG_PROVIDERS} from './dialog.providers';
 
 const SMALL_DIALOGS_ANIMATION = {value: '', params: {start: '40px'}};
 const FULLSCREEN_DIALOGS_ANIMATION = {value: '', params: {start: '100vh'}};
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
-
-type ExternalContext<O, I> = TuiBaseDialogContext<O> & TuiDialogOptions<I>;
-type InternalContext<O, I> = TuiBaseDialog<O, ExternalContext<O, I>> &
-    TuiDialogOptions<I> &
-    TuiAriaDialogContext;
 
 // @dynamic
 @Component({
@@ -41,7 +29,7 @@ export class TuiDialogComponent<O, I> {
     constructor(
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly internal: InternalContext<O, I>,
+        readonly context: TuiDialog<TuiDialogOptions<I>, O>,
         @Inject(TUI_DIALOG_CLOSE_STREAM)
         close$: Observable<unknown>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
@@ -74,26 +62,6 @@ export class TuiDialogComponent<O, I> {
             default:
                 return 'h3';
         }
-    }
-
-    get content(): PolymorpheusContent<ExternalContext<O, I>> {
-        return this.internal.content;
-    }
-
-    @tuiPure
-    get context(): ExternalContext<O, I> {
-        const internal = {...this.internal};
-        const $implicit = internal.observer;
-        const completeWith = (result: O) => {
-            $implicit.next(result);
-            $implicit.complete();
-        };
-
-        return {
-            ...internal,
-            completeWith,
-            $implicit,
-        };
     }
 
     @HostBinding('@tuiSlideInTop')

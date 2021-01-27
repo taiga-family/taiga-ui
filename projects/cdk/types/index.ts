@@ -1,3 +1,4 @@
+export * from './dialog';
 export * from './event-with';
 export * from './handler';
 export * from './mapper';

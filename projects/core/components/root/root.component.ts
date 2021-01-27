@@ -26,9 +26,10 @@ import {map} from 'rxjs/operators';
     animations: [tuiFadeIn],
 })
 export class TuiRootComponent {
-    readonly scrollbars$ = this.dialogs
-        ? merge(...this.dialogs).pipe(map(({length}) => !length))
-        : of(!this.isMobile);
+    readonly scrollbars$ =
+        this.dialogs && !this.isMobile
+            ? merge(...this.dialogs).pipe(map(({length}) => !length))
+            : of(!this.isMobile);
 
     constructor(
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,

@@ -61,6 +61,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'dialogs',
+        loadChildren: () =>
+            import(`../customization/dialogs/dialogs.module`).then(
+                m => m.DialogsModule,
+            ),
+        data: {
+            title: `Dialogs`,
+        },
+    },
+    {
         path: 'icon-set',
         loadChildren: () =>
             import(`../customization/icon-set/icon-set.module`).then(
