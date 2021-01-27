@@ -35,20 +35,20 @@ export function testPlaceholder(
             fixture.detectChanges();
         });
 
-        describe('в размере S', () => {
+        describe('in size S', () => {
             beforeEach(() => {
                 testComponent.size = 's';
                 fixture.detectChanges();
             });
 
-            it('если значения нет, то показан', () => {
+            it('if no value, then shown', () => {
                 updateValue(clearValue);
                 fixture.detectChanges();
 
                 expect(getPlaceholder()).not.toBeNull();
             });
 
-            it('если значение задано, то не показан', () => {
+            it('if specified, not shown', () => {
                 updateValue(setValue);
                 fixture.detectChanges();
 
@@ -56,20 +56,20 @@ export function testPlaceholder(
             });
         });
 
-        describe('в размере M', () => {
+        describe('in size M', () => {
             beforeEach(() => {
                 testComponent.size = 'm';
                 fixture.detectChanges();
             });
 
-            it('если значения нет, то показан', () => {
+            it('if no value, then shown', () => {
                 updateValue(clearValue);
                 fixture.detectChanges();
 
                 expect(getPlaceholder()).not.toBeNull();
             });
 
-            it('если значение задано, то показан', () => {
+            it('if a value is given, then', () => {
                 updateValue(setValue);
                 testComponent.labelOutside = false;
                 fixture.detectChanges();
@@ -77,7 +77,7 @@ export function testPlaceholder(
                 expect(getPlaceholder()).not.toBeNull();
             });
 
-            it('если значение задано, но лейбл снаружи, то не показан', () => {
+            it('if value is given but label is outside, then not shown', () => {
                 updateValue(setValue);
                 testComponent.labelOutside = true;
                 fixture.detectChanges();
@@ -86,20 +86,20 @@ export function testPlaceholder(
             });
         });
 
-        describe('в размере L', () => {
+        describe('in size L', () => {
             beforeEach(() => {
                 testComponent.size = 'l';
                 fixture.detectChanges();
             });
 
-            it('если значения нет, то показан', () => {
+            it('if no value, then shown', () => {
                 updateValue(clearValue);
                 fixture.detectChanges();
 
                 expect(getPlaceholder()).not.toBeNull();
             });
 
-            it('если значение задано, то показан', () => {
+            it('if a value is given, then', () => {
                 updateValue(setValue);
                 testComponent.labelOutside = false;
                 fixture.detectChanges();
@@ -107,7 +107,7 @@ export function testPlaceholder(
                 expect(getPlaceholder()).not.toBeNull();
             });
 
-            it('если значение задано, но лейбл снаружи, то не показан', () => {
+            it('if value is given but label is outside, then not shown', () => {
                 updateValue(setValue);
                 testComponent.labelOutside = true;
                 fixture.detectChanges();

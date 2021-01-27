@@ -1,8 +1,8 @@
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {maskedNumberStringToNumber} from '../masked-number-string-to-number';
 
-describe('Превращает текстовое значение числа, полученное от маски в число', () => {
-    it('Корректно отрабатывает разделитель', () => {
+describe('Converts the text value of a number obtained from a mask into a number', () => {
+    it('the separator works correctly', () => {
         expect(
             maskedNumberStringToNumber(
                 `12${CHAR_NO_BREAK_SPACE}345${CHAR_NO_BREAK_SPACE}678`,
@@ -10,11 +10,11 @@ describe('Превращает текстовое значение числа, �
         ).toBe(12345678);
     });
 
-    it('Корректно отрабатывает дробную часть', () => {
+    it('correctly handles the fractional part', () => {
         expect(maskedNumberStringToNumber('1,23')).toBe(1.23);
     });
 
-    it('Возвращает NaN, если невозможно перевести строку в число', () => {
+    it('returns NaN if the string cannot be converted to a number', () => {
         expect(maskedNumberStringToNumber('Дичь')).toBeNaN();
     });
 });

@@ -2,7 +2,8 @@
 
 :host {
     position: relative;
-    display: block;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .copy {
@@ -15,6 +16,10 @@
     &:hover {
         background: var(--tui-base-02);
     }
+}
+
+.initial:empty:before {
+    content: attr(data-text);
 }
 
 .content {

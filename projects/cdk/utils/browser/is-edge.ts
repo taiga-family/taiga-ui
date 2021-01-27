@@ -1,3 +1,3 @@
 export function isEdge(userAgent: string): boolean {
-    return userAgent.includes('edge');
+    return userAgent.toLowerCase().includes('edge');
 }

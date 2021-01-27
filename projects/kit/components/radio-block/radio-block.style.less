@@ -4,7 +4,7 @@
     .text-basic();
     display: inline-block;
     vertical-align: top;
-    border-radius: var(--tui-radius);
+    border-radius: var(--tui-radius-m);
 
     &[data-tui-host-size='m'],
     &[data-tui-host-size='l'] {
@@ -36,11 +36,11 @@
     }
 
     :host[data-tui-host-size='m'] & {
-        min-height: var(--tui-height-l);
+        min-height: var(--tui-height-m);
     }
 
     :host[data-tui-host-size='l'] & {
-        min-height: var(--tui-height-xl);
+        min-height: var(--tui-height-l);
     }
 }
 

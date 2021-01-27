@@ -33,7 +33,7 @@ const testContext = {
 
 function arrayValidator(array: AbstractControl): ValidationErrors | null {
     return array instanceof FormArray && array.controls.length < 2
-        ? {length: new TuiValidationError('Неверная длина массива')}
+        ? {length: new TuiValidationError('Invalid array length')}
         : null;
 }
 
@@ -51,7 +51,7 @@ function formGroupValidator(form: AbstractControl): ValidationErrors | null {
         }
     }
 
-    return error ? {error: new TuiValidationError('Есть пустые значения')} : null;
+    return error ? {error: new TuiValidationError('There are empty values')} : null;
 }
 
 function zipCodeValidator(field: AbstractControl): ValidationErrors | null {
@@ -119,15 +119,15 @@ describe('FieldError', () => {
             fixture.detectChanges();
         });
 
-        it('Вывод ошибки валидатора в связи с неверной длиной', () => {
+        it('Validator error output due to incorrect length', () => {
             testComponent.formData.markAsTouched();
             fixture.detectChanges();
 
             expect(isErrorVisible(pageObject)).toBe(true);
-            expect(getErrorText(pageObject)).toBe('Неверная длина массива');
+            expect(getErrorText(pageObject)).toBe('Invalid array length');
         });
 
-        it('При соблюдении условий валидатора, скрываем ошибку', () => {
+        it('If the conditions of the validator are met, hide the error', () => {
             testComponent.addItem();
             fixture.detectChanges();
 
@@ -180,16 +180,16 @@ describe('FieldError', () => {
             fixture.detectChanges();
         });
 
-        it('Вывод ошибки валидатора в связи с отсутствием значение у контролеров формы', () => {
+        it('Displaying validator error due to lack of value from form checkers', () => {
             testComponent.testForm.controls.item_1.setValue('test');
             testComponent.testForm.markAsTouched();
             fixture.detectChanges();
 
             expect(isErrorVisible(pageObject)).toBe(true);
-            expect(getErrorText(pageObject)).toBe('Есть пустые значения');
+            expect(getErrorText(pageObject)).toBe('There are empty values');
         });
 
-        it('При соблюдении условий валидатора, скрываем ошибку', () => {
+        it('If the conditions of the validator are met, hide the error', () => {
             testComponent.testForm.controls.item_1.setValue('test');
             testComponent.testForm.controls.item_2.setValue('test');
             fixture.detectChanges();
@@ -255,14 +255,14 @@ describe('FieldError', () => {
         });
 
         describe('untouched', () => {
-            it('Ошибка не показывается в пустом поле', () => {
+            it('The error is not shown in an empty field', () => {
                 input.setValidators([Validators.required]);
                 fixture.detectChanges();
 
                 expect(isErrorVisible(pageObject)).toBe(false);
             });
 
-            it('Ошибка не показывается в заполненном поле', () => {
+            it('The error is not shown in the filled field', () => {
                 input.setValidators([zipCodeValidator]);
                 input.setValue('012');
                 fixture.detectChanges();
@@ -272,7 +272,7 @@ describe('FieldError', () => {
         });
 
         describe('touched', () => {
-            it('Для стандартного валидатора показана ошибка по умолчанию', () => {
+            it('Default error shown for standard validator', () => {
                 input.setValidators([Validators.required]);
                 input.markAsTouched();
                 fixture.detectChanges();
@@ -283,7 +283,7 @@ describe('FieldError', () => {
                 expect(errorText).toBe('Value is invalid');
             });
 
-            it('Для кастомного валидатора со строкой показан соответствующий текст ошибки', () => {
+            it('For a custom validator with a string, the corresponding error text is shown', () => {
                 input.setValidators([zipCodeValidator]);
                 input.setValue('012');
                 input.markAsTouched();
@@ -295,7 +295,7 @@ describe('FieldError', () => {
                 expect(errorText).toBe(ZIP_CODE_MESSAGE);
             });
 
-            it('Для кастомного валидатора c шаблоном показан соответствующий текст ошибки', () => {
+            it('For a custom validator with a template, the corresponding error text is shown', () => {
                 const content = testComponent.errorContent;
 
                 input.setValidators([getZipCodeValidatorWithContent(content)]);
@@ -309,7 +309,7 @@ describe('FieldError', () => {
                 expect(errorText).toBe(ZIP_CODE_MESSAGE);
             });
 
-            it('Если ввести корректное значение в не валидное поле, ошибка скрывается', done => {
+            it('If you enter a correct value in an invalid field, the error is hidden', done => {
                 input.setValidators([zipCodeValidator]);
                 input.setValue('012');
                 input.markAsTouched();
@@ -325,7 +325,7 @@ describe('FieldError', () => {
                 });
             });
 
-            it('Если ввести некорректное значение в валидное поле, ошибка появляется', () => {
+            it('If you enter an incorrect value in a valid field, an error appears', () => {
                 input.setValidators([zipCodeValidator]);
                 input.setValue('012345');
                 input.markAsTouched();
@@ -338,8 +338,8 @@ describe('FieldError', () => {
             });
         });
 
-        describe('Кастомный порядок ошибок', () => {
-            it('Ошибки выводятся в заданном порядке', () => {
+        describe('Custom error order', () => {
+            it('Errors are displayed in the specified order', () => {
                 testComponent.order = ['required', 'zipCode'];
                 input.setValidators([Validators.required, zipCodeValidator]);
                 input.markAsTouched();
@@ -349,7 +349,7 @@ describe('FieldError', () => {
                 expect(getErrorText(pageObject)).toBe('Value is invalid');
             });
 
-            it('Изменение порядка меняет текст ошибки', () => {
+            it('Changing the order changes the error text', () => {
                 testComponent.order = ['required', 'zipCode'];
                 input.setValidators([Validators.required, zipCodeValidator]);
                 input.markAsTouched();

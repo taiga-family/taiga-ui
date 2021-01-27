@@ -147,7 +147,7 @@ export class TuiPaginationComponent
     }
 
     /**
-     * Количество пунктов в контейнере.
+     * Number of items in a container.
      */
     get elementsLength(): number {
         return this.itemsFit ? this.length : this.maxElementsLength;

@@ -1,3 +1,4 @@
+import {ClipboardModule} from '@angular/cdk/clipboard';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiButtonModule} from '@taiga-ui/core';
@@ -9,6 +10,7 @@ import {TuiDocExampleComponent} from './example.component';
 @NgModule({
     imports: [
         CommonModule,
+        ClipboardModule,
         TuiTabsModule,
         TuiButtonModule,
         TuiDocCopyModule,

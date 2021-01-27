@@ -78,7 +78,7 @@ describe('PrimitiveYearMonthPaginationComponent', () => {
                 expect(component.prevMonthDisabled).toBe(true);
             });
 
-            describe('false если', () => {
+            describe('false if', () => {
                 it('min is smaller than value', () => {
                     expect(component.prevMonthDisabled).toBe(false);
                 });
@@ -92,7 +92,7 @@ describe('PrimitiveYearMonthPaginationComponent', () => {
                 expect(component.nextMonthDisabled).toBe(true);
             });
 
-            describe('false если', () => {
+            describe('false if', () => {
                 it('max is bigger than value', () => {
                     expect(component.nextMonthDisabled).toBe(false);
                 });

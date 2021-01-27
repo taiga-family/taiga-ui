@@ -10,7 +10,6 @@ import {TuiInteractiveState} from '@taiga-ui/core/enums';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
-
 import {TUI_WRAPPER_PROVIDERS} from './wrapper.providers';
 
 @Component({

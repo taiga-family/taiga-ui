@@ -34,13 +34,13 @@ describe('PrimitiveRangeCalendar component', () => {
     });
 
     describe('viewedMonthFirst', () => {
-        it('При инициализации без value устанавливает значение defaultViewedMonthFirst', () => {
+        it('When initialized without value, sets defaultViewedMonthFirst', () => {
             expect(component.userViewedMonthFirst).toBe(
                 component.defaultViewedMonthFirst,
             );
         });
 
-        it('При инициализации без value и defaultViewedMonthSecond показывает месяц локальной даты', () => {
+        it('When initialized without value and defaultViewedMonthSecond shows the month of the local date', () => {
             expect(component.userViewedMonthFirst.formattedMonth).toBe(
                 TuiMonth.currentLocal().formattedMonth,
             );
@@ -48,13 +48,13 @@ describe('PrimitiveRangeCalendar component', () => {
     });
 
     describe('viewedMonthSecond', () => {
-        it('При инициализации без value устанавливает значение defaultViewedMonthSecond', () => {
+        it('When initialized without value, sets defaultViewedMonthSecond', () => {
             expect(component.userViewedMonthSecond).toBe(
                 component.defaultViewedMonthSecond,
             );
         });
 
-        it('При инициализации без value и defaultViewedMonthSecond показывает следующий после месяца локальной даты', () => {
+        it('When initialized without value and defaultViewedMonthSecond shows the next local date after month', () => {
             const formattedNextMonth = TuiMonth.currentLocal().append({month: 1})
                 .formattedMonth;
 

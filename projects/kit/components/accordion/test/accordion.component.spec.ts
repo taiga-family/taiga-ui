@@ -47,29 +47,29 @@ describe('Accordion', () => {
                     [showArrow]="showArrow"
                     [open]="open"
                 >
-                    Заголовок аккордеона
-                    <ng-template tuiAccordionItemContent>Контент аккордеона</ng-template>
+                    Accordion header
+                    <ng-template tuiAccordionItemContent>Accordion content</ng-template>
                 </tui-accordion-item>
             </tui-accordion>
             <tui-accordion *ngIf="!single" [closeOthers]="closeOthers">
                 <tui-accordion-item automation-id="tui-accordion__item2">
-                    Заголовок аккордеона
+                    Accordion header
                     <ng-template tuiAccordionItemContent>
                         <div automation-id="tui-accordion__content1">
                             <form [formGroup]="testForm">
                                 <tui-input
                                     automation-id="tui-accordion__input"
                                     tuiTextfieldSize="l"
-                                    tuiTextfieldExampleText="Иванов Иван Иванович"
+                                    tuiTextfieldExampleText="Ivanov Ivan Ivanovich"
                                     formControlName="name"
-                                    >Введите ФИО</tui-input
+                                    >Enter your full name</tui-input
                                 >
                                 <tui-select
                                     automation-id="tui-accordion__select"
                                     tuiTextfieldSize="l"
                                     formControlName="accounts"
                                 >
-                                    Выберите счет
+                                    Select account
                                     <tui-data-list-wrapper
                                         *tuiDataList
                                         [items]="accounts"
@@ -80,10 +80,10 @@ describe('Accordion', () => {
                     </ng-template>
                 </tui-accordion-item>
                 <tui-accordion-item automation-id="tui-accordion__item3">
-                    Заголовок аккордеона
+                    Accordion header
                     <ng-template tuiAccordionItemContent>
                         <div automation-id="tui-accordion__content2">
-                            Контент аккордеона
+                            Accordion content
                         </div>
                     </ng-template>
                 </tui-accordion-item>
@@ -108,9 +108,9 @@ describe('Accordion', () => {
         open = false;
 
         accounts = [
-            new Account('Рублёвый', 500),
-            new Account('Долларовый', 237),
-            new Account('Евровый', 100),
+            new Account('Ruble', 500),
+            new Account('Dollar', 237),
+            new Account('Euro', 100),
         ];
 
         testForm = new FormGroup({
@@ -142,41 +142,41 @@ describe('Accordion', () => {
         fixture.detectChanges();
     });
 
-    it('содержит заголовок', () => {
+    it('contains title', () => {
         expect(getAccordionItemTitle()!.nativeElement.textContent.trim()).toBe(
-            'Заголовок аккордеона',
+            'Accordion header',
         );
     });
 
-    it('контент по умолчанию скрыт', () => {
+    it('content is hidden by default', () => {
         expect(getAccordionItemContent()).toBeNull();
     });
 
-    it('контент открывается по клику', () => {
+    it('content opens on click', () => {
         getAccordionItemHeaderSingle()!.click();
         fixture.detectChanges();
 
         expect(getAccordionItemContent()).not.toBeNull();
     });
 
-    it('в контент коррекно передалось содержимое', () => {
+    it('the content was correctly transferred to the content', () => {
         getAccordionItemHeaderSingle()!.click();
         fixture.detectChanges();
 
         expect(getAccordionItemContent()!.nativeElement.textContent.trim()).toBe(
-            'Контент аккордеона',
+            'Accordion content',
         );
     });
 
-    it('по умолчанию со скругленными углами', () => {
+    it('default with rounded corners', () => {
         expect(getAccordionGroup()!.classes['tui-group_rounded']).toBe(true);
     });
 
-    it('по умолчанию границы по бокам у айтемов есть', () => {
+    it('by default, items have borders on the sides', () => {
         expect(getAccordionItem()!.attributes['data-tui-host-borders']).toBe('all');
     });
 
-    it('при borders = top-bottom границ нет', () => {
+    it('with borders = top-bottom there are no borders', () => {
         testComponent.borders = TuiBorders.TopBottom;
         fixture.detectChanges();
 
@@ -185,18 +185,18 @@ describe('Accordion', () => {
         );
     });
 
-    it('по умолчанию стрелка есть', () => {
+    it('by default there is an arrow', () => {
         expect(getAccordionItemArrow()!).not.toBeNull();
     });
 
-    it('при showArrow = false стрелки нет', () => {
+    it('with showArrow = false there is no arrow', () => {
         testComponent.showArrow = false;
         fixture.detectChanges();
 
         expect(getAccordionItemArrow()!).toBeNull();
     });
 
-    describe('Управление с клавиатуры', () => {
+    describe('Keyboard control', () => {
         beforeEach(() => {
             pageObject
                 .getByAutomationId(`${testContext.prefix}item-wrapper`)!
@@ -204,14 +204,14 @@ describe('Accordion', () => {
             fixture.detectChanges();
         });
 
-        it('Нажатие space открывает контент', () => {
+        it('Pressing space opens content', () => {
             sendKeydown(space);
             fixture.detectChanges();
 
             expect(getAccordionItemContent()).not.toBeNull();
         });
 
-        it('Повторное нажатие space закрывает контент', () => {
+        it('Pressing space again closes the content', () => {
             sendKeydown(space);
             sendKeydown(space);
             fixture.detectChanges();
@@ -221,14 +221,14 @@ describe('Accordion', () => {
             );
         });
 
-        it('Нажатие enter открывает контент', () => {
+        it('Pressing enter opens content', () => {
             sendKeydown(enter);
             fixture.detectChanges();
 
             expect(getAccordionItemContent()).not.toBeNull();
         });
 
-        it('Повторное нажатие enter закрывает контент', () => {
+        it('Pressing enter again closes the content', () => {
             sendKeydown(enter);
             sendKeydown(enter);
             fixture.detectChanges();
@@ -238,7 +238,7 @@ describe('Accordion', () => {
             );
         });
 
-        it('Нажатие esc закрывает контент', () => {
+        it('Pressing esc closes the content', () => {
             sendKeydown(space);
             sendKeydown(esc);
             fixture.detectChanges();
@@ -249,13 +249,13 @@ describe('Accordion', () => {
         });
     });
 
-    describe('Многосекционный', () => {
+    describe('Multi-section', () => {
         beforeEach(() => {
             testComponent.single = false;
             fixture.detectChanges();
         });
 
-        it('клик по 1-ой секции открывает ее содержимое', () => {
+        it('clicking on the 1st section opens its contents', () => {
             accordionHeaderClick(2);
             fixture.detectChanges();
 
@@ -263,7 +263,7 @@ describe('Accordion', () => {
             expect(getAccordionContent2()).toBeNull();
         });
 
-        it('клик по 2-ой секции открывает ее содержимое и закрывает содержимое 1-й', () => {
+        it('clicking on the 2nd section opens its contents and closes the contents of the 1st', () => {
             accordionHeaderClick(2);
             accordionHeaderClick(3);
             fixture.detectChanges();
@@ -272,7 +272,7 @@ describe('Accordion', () => {
             expect(getAccordionContent2()).not.toBeNull();
         });
 
-        it('при closeOthers = false уже открытые секции не закрываются при открытии новых', () => {
+        it('when closeOthers = false, already open sections are not closed when new ones are opened', () => {
             testComponent.closeOthers = false;
             fixture.detectChanges();
 
@@ -284,7 +284,7 @@ describe('Accordion', () => {
             expect(getAccordionContent2()).not.toBeNull();
         });
 
-        it('нажатие пробела в инпуте не закрывает аккордеон', () => {
+        it('pressing the space bar in the input does not close the accordion', () => {
             accordionHeaderClick(2);
             fixture.detectChanges();
 
@@ -297,8 +297,8 @@ describe('Accordion', () => {
         });
 
         it(
-            'в селекте внутри контента корректно закрывается дропдаун на ESC, ' +
-                'контент аккордеона при этом не закрывается',
+            'in the select inside the content, the dropdown on ESC is correctly closed, ' +
+                'the accordion content is not closed',
             done => {
                 accordionHeaderClick(2);
                 fixture.detectChanges();

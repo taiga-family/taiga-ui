@@ -79,14 +79,14 @@ describe('InputDateRangeComponent', () => {
         });
     });
 
-    describe('Клик на поле ввода', () => {
-        it('открывает календарь', () => {
+    describe('Click on the input field', () => {
+        it('opens the calendar', () => {
             clickOnTextfield();
 
             expect(getCalendars()).not.toBeNull();
         });
 
-        it('при повторном клике закроет календарь', () => {
+        it('close the calendar when clicked again', () => {
             clickOnTextfield();
             clickOnTextfield();
 
@@ -94,7 +94,7 @@ describe('InputDateRangeComponent', () => {
         });
     });
 
-    describe('выпадающий календарь', () => {
+    describe('dropdown calendar', () => {
         let y2000m0d1: TuiDay;
         let y2000m0d2: TuiDay;
 
@@ -105,15 +105,15 @@ describe('InputDateRangeComponent', () => {
             fixture.detectChanges();
         });
 
-        describe('закрывается при выборе', () => {
-            it('той же даты', () => {
+        describe('closes when selected', () => {
+            it('same date', () => {
                 component.onRangeChange(new TuiDayRange(y2000m0d1, y2000m0d1));
                 fixture.detectChanges();
 
                 expect(getCalendars()).toBeNull();
             });
 
-            it('другой даты', () => {
+            it('another date', () => {
                 component.onRangeChange(new TuiDayRange(y2000m0d2, y2000m0d2));
                 fixture.detectChanges();
 
@@ -122,7 +122,7 @@ describe('InputDateRangeComponent', () => {
         });
     });
 
-    describe('Ввод с клавиатуры', () => {
+    describe('Keyboard input', () => {
         beforeEach(done => {
             fixture.whenStable().then(() => {
                 fixture.detectChanges();
@@ -130,19 +130,19 @@ describe('InputDateRangeComponent', () => {
             });
         });
 
-        it('При вводе неверной даты значение корректируется', () => {
+        it('If you enter an invalid date, the value is adjusted', () => {
             inputPO.sendText('32.12.2012');
 
             expect(inputPO.value).toBe('31.12.2012');
         });
 
-        it('При вводе первой даты значение контрола — null', () => {
+        it('When entering the first date, the control value is null', () => {
             inputPO.sendText('31.12.2012');
 
             expect(testComponent.control.value).toBeNull();
         });
 
-        it('При вводе двух дат значение контрола обновляется', () => {
+        it('When entering two dates, the control value is updated', () => {
             inputPO.sendText(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
 
             expect(testComponent.control.value.formattedDayRange).toBe(
@@ -150,7 +150,7 @@ describe('InputDateRangeComponent', () => {
             );
         });
 
-        it('При вводе двух дат значение обрезается по min/max обновляется', () => {
+        it('When entering two dates, the value is truncated by min / max is updated', () => {
             testComponent.min = new TuiDay(2001, 6, 15);
             testComponent.max = new TuiDay(2019, 6, 15);
             fixture.detectChanges();

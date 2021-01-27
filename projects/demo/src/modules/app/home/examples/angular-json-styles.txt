@@ -5,7 +5,7 @@
         "build": {
           "options": {
             "styles": [
-              "src/styles.scss",
+              "src/styles.css",
               "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less"
             ]

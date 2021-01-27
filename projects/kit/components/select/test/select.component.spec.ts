@@ -24,9 +24,9 @@ class Beast {
 }
 
 const ITEMS = [
-    new Beast('мышка', 'Серая', '0'),
-    new Beast('кошка', 'Хитрая', '1'),
-    new Beast('енотик', 'Шкодливый', '2'),
+    new Beast('mouse', 'Gray', '0'),
+    new Beast('cat', 'Sly', '1'),
+    new Beast('raccoon', 'Naughty', '2'),
 ];
 
 const CHECKMARK = 'tui-select-option__checkmark';
@@ -41,7 +41,7 @@ describe('Select', () => {
                     [formControl]="control"
                     [identityMatcher]="identityMatcher"
                 >
-                    Кто украл мячик?
+                    Who stole the ball?
                     <tui-data-list-wrapper
                         *tuiDataList
                         [items]="items"
@@ -89,13 +89,13 @@ describe('Select', () => {
         inputPO = new NativeInputPO(fixture, 'tui-primitive-textfield__native-input');
     });
 
-    describe('Очистка поля', () => {
+    describe('Cleaning the field', () => {
         beforeEach(() => {
             testComponent.cleaner = true;
             fixture.detectChanges();
         });
 
-        it('клавиша delete очищает поле', () => {
+        it('delete key clears the field', () => {
             testComponent.control.setValue(ITEMS[0]);
             fixture.detectChanges();
             inputPO.sendKeydown('delete');
@@ -103,7 +103,7 @@ describe('Select', () => {
             expect(testComponent.control.value).toBeNull();
         });
 
-        it('если крестик отключен, клавиша delete не очищает поле', () => {
+        it('if the cross is disabled, the delete key does not clear the field', () => {
             testComponent.cleaner = false;
             testComponent.control.setValue(ITEMS[0]);
             fixture.detectChanges();
@@ -114,41 +114,41 @@ describe('Select', () => {
     });
 
     describe('identityMatcher', () => {
-        describe('Матчер по умолчанию', () => {
+        describe('Default matcher', () => {
             beforeEach(() => {
                 inputPO.sendKeydown('ArrowDown');
             });
 
-            it('Считает один и тот же объект идентичным самому себе', () => {
+            it('Considers the same object to be identical to itself', () => {
                 testComponent.control.setValue(ITEMS[0]);
                 fixture.detectChanges();
 
                 expect(pageObject.getByAutomationId(CHECKMARK)).not.toBeNull();
             });
 
-            it('Не считает копии объектов идентичными', () => {
-                testComponent.control.setValue(new Beast('мышка', 'Серая', '0'));
+            it("Doesn't consider copies of objects identical", () => {
+                testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
                 fixture.detectChanges();
 
                 expect(pageObject.getByAutomationId(CHECKMARK)).toBeNull();
             });
         });
 
-        describe('Кастомный матчер (сверка по id)', () => {
+        describe('Custom matcher (matching by id)', () => {
             beforeEach(() => {
                 testComponent.identityMatcher = MATCHER;
                 fixture.detectChanges();
             });
 
-            it('Считает один и тот же объект идентичным самому себе', () => {
+            it('Considers the same object to be identical to itself', () => {
                 testComponent.control.setValue(ITEMS[0]);
                 inputPO.sendKeydown('ArrowDown');
 
                 expect(pageObject.getByAutomationId(CHECKMARK)).not.toBeNull();
             });
 
-            it('Считает копии объектов идентичными', () => {
-                testComponent.control.setValue(new Beast('мышка', 'Серая', '0'));
+            it('Considers copies of objects identical', () => {
+                testComponent.control.setValue(new Beast('mouse', 'Gray', '0'));
                 inputPO.sendKeydown('ArrowDown');
 
                 expect(pageObject.getByAutomationId(CHECKMARK)).not.toBeNull();

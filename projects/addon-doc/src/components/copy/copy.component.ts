@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {Observable, Subject, timer} from 'rxjs';
-import {mapTo, startWith, switchMapTo, takeUntil} from 'rxjs/operators';
+import {mapTo, startWith, switchMapTo} from 'rxjs/operators';
 
 const COPIED_TIMEOUT = 1500;
 
@@ -17,19 +17,7 @@ const COPIED_TIMEOUT = 1500;
 export class TuiDocCopyComponent {
     private readonly copy$ = new Subject();
 
-    @HostBinding('attr.title')
-    title = '';
-
-    copiedMessage = '';
-
-    constructor(
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(TUI_COPY_TEXTS) texts$: Observable<[string, string]>,
-    ) {
-        texts$.pipe(takeUntil(destroy$)).subscribe(texts => {
-            [this.title, this.copiedMessage] = texts;
-        });
-    }
+    constructor(@Inject(TUI_COPY_TEXTS) readonly texts$: Observable<[string, string]>) {}
 
     @tuiPure
     get copied$(): Observable<boolean> {

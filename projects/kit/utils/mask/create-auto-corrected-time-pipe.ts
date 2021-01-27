@@ -2,8 +2,8 @@ import {TuiTimeMode} from '@taiga-ui/cdk';
 import {TuiTextMaskPipeHandler} from '@taiga-ui/core';
 
 /**
- * Корректирует вводимое время, пропуская только подходящие значения для часов и минут
- * @returns время в виде строки
+ * Adjusts the entered time by omitting only suitable values ​​for hours and minutes
+ * @returns time as a string
  */
 export function tuiCreateAutoCorrectedTimePipe(
     timeMode: TuiTimeMode = 'HH:MM',

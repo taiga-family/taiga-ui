@@ -21,12 +21,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Documentation`,
-        title: `i18n`,
-        keywords: 'i18n, internationalization, local, translate, language',
-        route: 'i18n',
-    },
-    {
-        section: $localize`Documentation`,
         title: $localize`Documentation engine`,
         keywords:
             'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',
@@ -95,12 +89,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Common`,
-                title: $localize`Theming`,
-                keywords: 'тема, custom, themes',
-                route: '/theme',
-            },
-            {
-                section: $localize`Common`,
                 title: $localize`Skeleton`,
                 keywords: 'верстка, markup, скелетон, loader, загрузка, skeleton',
                 route: '/skeleton',
@@ -113,11 +101,41 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Common`,
-                title: $localize`PWA themes`,
+                title: $localize`Mobile`,
                 keywords: 'верстка, pwa, мобильные, нативные',
                 route: '/mobile-themes',
             },
         ],
+    },
+    {
+        section: $localize`Customization`,
+        title: `i18n`,
+        keywords: 'i18n, internationalization, local, translate, language',
+        route: 'i18n',
+    },
+    {
+        section: $localize`Customization`,
+        title: `Variables`,
+        keywords: 'colors, css, vars, custom, properties, style',
+        route: 'variables',
+    },
+    {
+        section: $localize`Customization`,
+        title: `Wrapper`,
+        keywords: 'colors, css, theme, custom, style',
+        route: 'wrapper',
+    },
+    {
+        section: $localize`Customization`,
+        title: `Dialogs`,
+        keywords: 'dialog, modal, popup, theme, custom, style',
+        route: 'dialogs',
+    },
+    {
+        section: $localize`Customization`,
+        title: `Icon set`,
+        keywords: 'icons, svg, theme, custom, style',
+        route: 'icon-set',
     },
     {
         section: $localize`Components`,

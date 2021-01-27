@@ -316,7 +316,7 @@ export class TuiInputFileComponent
         texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
         units: [string, string, string],
     ) {
-        // IE11 после выбора файла через диалог открытия генерирует второе событие, передавая пустой FileList.
+        // IE11 after selecting a file through the open dialog generates a second event passing an empty FileList.
         if (files === null || files.length === 0) {
             return;
         }

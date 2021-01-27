@@ -58,17 +58,17 @@ describe('Calendar', () => {
         fixture.detectChanges();
     });
 
-    it('Выбор года изначально не виден', () => {
+    it('Year selection is not initially visible', () => {
         expect(pageObject.getByAutomationId(`${testContext.prefix}year`)).toBeNull();
     });
 
-    it('Выбор месяца изначально виден', () => {
+    it('Month selection is initially visible', () => {
         expect(
             pageObject.getByAutomationId(`${testContext.prefix}pagination`),
         ).not.toBeNull();
     });
 
-    it('Выбор дня изначально виден', () => {
+    it('Day selection is initially visible', () => {
         expect(
             pageObject.getByAutomationId(`${testContext.prefix}calendar`),
         ).not.toBeNull();

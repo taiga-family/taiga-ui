@@ -6,8 +6,8 @@
 :host {
     .text-body-s();
     display: flex;
-    border-radius: var(--tui-radius);
-    height: var(--tui-height-l);
+    border-radius: var(--tui-radius-m);
+    height: var(--tui-height-m);
     color: var(--tui-text-01);
 
     &._disabled {
@@ -16,7 +16,7 @@
 
     &[data-tui-host-size='l'] {
         .text-body-m();
-        height: var(--tui-height-xl);
+        height: var(--tui-height-l);
     }
 }
 
@@ -44,15 +44,15 @@
 
         &_plus {
             margin-bottom: 2px;
-            border-radius: 0 var(--tui-radius) 0 0;
+            border-radius: 0 var(--tui-radius-m) 0 0;
         }
 
         &_minus {
-            border-radius: 0 0 var(--tui-radius);
+            border-radius: 0 0 var(--tui-radius-m);
         }
 
         :host[data-tui-host-size='l'] & {
-            width: var(--tui-height-m);
+            width: 40px;
             height: 27px;
         }
     }

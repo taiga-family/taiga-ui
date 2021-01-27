@@ -30,14 +30,13 @@ import {
     TuiHintControllerDirective,
 } from '@taiga-ui/core/directives/hint-controller';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
-import {TuiTableModeDirective} from '@taiga-ui/core/directives/table-mode';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTIFELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives/textfield-controller';
 import {TuiAppearance} from '@taiga-ui/core/enums';
-import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core/tokens';
+import {TUI_TEXTFIELD_APPEARANCE, TUI_VALUE_ACCESSOR} from '@taiga-ui/core/tokens';
 import {
     TuiBrightness,
     TuiHorizontalDirection,
@@ -127,9 +126,7 @@ export class TuiPrimitiveTextfieldComponent
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
-        @Optional()
-        @Inject(TuiTableModeDirective)
-        private readonly tableMode: TuiTableModeDirective | null,
+        @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
         @Inject(TUI_TEXTIFELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
@@ -232,7 +229,7 @@ export class TuiPrimitiveTextfieldComponent
     @HostBinding('class._right-aligned')
     get rightAligned(): boolean {
         return (
-            !!this.tableMode &&
+            this.appearance === TuiAppearance.Table &&
             (this.controller.inputMode === TuiInputMode.Numeric ||
                 this.controller.inputMode === TuiInputMode.Decimal)
         );
@@ -271,10 +268,6 @@ export class TuiPrimitiveTextfieldComponent
         return this.controller.autocomplete === TuiCreditCardAutofillName.CcExp
             ? 'ccexpiryyear'
             : null;
-    }
-
-    get appearance(): TuiAppearance {
-        return this.tableMode ? TuiAppearance.Table : TuiAppearance.Textfield;
     }
 
     @HostBinding('attr.data-tui-host-mode')

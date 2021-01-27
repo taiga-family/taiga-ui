@@ -29,7 +29,7 @@ describe('InputDate', () => {
                     [tuiTextfieldSize]="size"
                     [tuiHintContent]="hintContent"
                 >
-                    Выберите дату
+                    Select date
                 </tui-input-date>
             </tui-root>
         `,
@@ -50,7 +50,7 @@ describe('InputDate', () => {
 
         size: TuiSizeS | TuiSizeL = 'm';
 
-        hintContent: string | null = 'Подсказка';
+        hintContent: string | null = 'prompt';
 
         exampleText = '';
     }
@@ -106,7 +106,7 @@ describe('InputDate', () => {
         });
     });
 
-    it('Если есть min и начальное значение, и начальное значение меньше min - оставлять начальное значение', done => {
+    it('If there is min and an initial value and an initial value less than min - keep the initial value', done => {
         testComponent.min = new TuiDay(2018, 3, 11);
         fixture.detectChanges();
 
@@ -119,26 +119,26 @@ describe('InputDate', () => {
         });
     });
 
-    describe('Ввод с клавиатуры', () => {
-        it('Переданная дата вставляется в поле', () => {
+    describe('Keyboard input', () => {
+        it('The passed date is inserted into the field', () => {
             inputPO.sendText('01.03.2017');
 
             expect(inputPO.value).toBe('01.03.2017');
         });
 
-        it('При вводе неверной даты значение корректируется', () => {
+        it('If you enter an invalid date, the value is adjusted', () => {
             inputPO.sendText('32.12.2012');
 
             expect(inputPO.value).toBe('31.12.2012');
         });
 
-        it('При вводе неполной даты оставляет её в поле', () => {
+        it('When entering an incomplete date, leaves it in the field', () => {
             inputPO.sendText('31.12.20');
 
             expect(inputPO.value).toBe('31.12.20');
         });
 
-        it('При вводе неполной даты значение контрола — null', () => {
+        it('When entering an incomplete date, the control value is null', () => {
             inputPO.sendText('31.12.20');
 
             expect(testComponent.control.value).toBeNull();
@@ -146,23 +146,23 @@ describe('InputDate', () => {
     });
 
     describe('textfield', () => {
-        describe('при mousedown на него', () => {
-            describe('если поле не заблокировано и не только для чтения', () => {
-                it('открывает календарь', () => {
+        describe('when mousedown on it', () => {
+            describe('unless the field is locked and not read-only', () => {
+                it('opens the calendar', () => {
                     mouseDownOnTextfield();
 
                     expect(getCalendar()).not.toBeNull();
                 });
 
-                it('при повторном mousedown закроет календарь', () => {
+                it('on repeated mousedown will close the calendar', () => {
                     mouseDownOnTextfield();
                     mouseDownOnTextfield();
 
                     expect(getCalendar()).toBeNull();
                 });
 
-                describe('если поле заблокировано', () => {
-                    it('календарь не открывается', () => {
+                describe('if the field is locked', () => {
+                    it('the calendar does not open', () => {
                         testComponent.control.disable();
                         fixture.detectChanges();
                         mouseDownOnTextfield();
@@ -171,8 +171,8 @@ describe('InputDate', () => {
                     });
                 });
 
-                describe('если поле readOnly', () => {
-                    it('календарь не открывается', () => {
+                describe('if the readOnly field', () => {
+                    it('the calendar does not open', () => {
                         testComponent.readOnly = true;
                         fixture.detectChanges();
                         mouseDownOnTextfield();

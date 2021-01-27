@@ -94,8 +94,8 @@ describe('TuiPaginationComponent', () => {
         component = testComponent.component;
     });
 
-    describe('количество пунктов', () => {
-        describe('меньше чем length', () => {
+    describe('number of points', () => {
+        describe('less than length', () => {
             beforeEach(() => {
                 setParams({length: 99});
             });
@@ -131,7 +131,7 @@ describe('TuiPaginationComponent', () => {
             });
         });
 
-        describe('равно length', () => {
+        describe('is equal to length', () => {
             describe('length = 3', () => {
                 beforeEach(() => {
                     setParams({length: 3});
@@ -176,8 +176,8 @@ describe('TuiPaginationComponent', () => {
         });
     });
 
-    describe('Поведение стрелок переключения страниц', () => {
-        it('Если выбран первый элемент, стрелка влево отключена, вправо - включена', () => {
+    describe('Page switching arrow behavior', () => {
+        it('If the first item is selected, the left arrow is disabled, the right arrow is enabled', () => {
             setParams({index: 0});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;
@@ -187,7 +187,7 @@ describe('TuiPaginationComponent', () => {
             expect(rightArrowDisabledState).toBe(false);
         });
 
-        it('Если выбран второй элемент, стрелка влево включена, также как и вправо', () => {
+        it('If the second item is selected, the left arrow is on, as well as the right', () => {
             setParams({index: 1});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;
@@ -197,7 +197,7 @@ describe('TuiPaginationComponent', () => {
             expect(rightArrowDisabledState).toBe(false);
         });
 
-        it('Если выбран последний элемент, стрелка вправа отключена, влево - включена', () => {
+        it('If the last item is selected, the right arrow is disabled, the left arrow is enabled', () => {
             setParams({index: 49});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;
@@ -207,7 +207,7 @@ describe('TuiPaginationComponent', () => {
             expect(rightArrowDisabledState).toBe(true);
         });
 
-        it('Если выбран предпоследний элемент, стрелка вправа включена, также как и влево', () => {
+        it('If the penultimate item is selected, the right arrow is on, as well as the left', () => {
             setParams({index: 48});
 
             const leftArrowDisabledState = component.arrowIsDisabledLeft;

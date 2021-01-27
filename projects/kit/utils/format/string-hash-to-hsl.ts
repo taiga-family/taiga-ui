@@ -1,9 +1,9 @@
 /**
- * Преобразовывает строку в цвет формата HSL
- * @param value строка для преобразования
- * @return строка с цветом в формате HSL
+ * Converts a string to an HSL color
+ * @param value string to convert
+ * @return HSL color string
  */
-// @bad TODO: переделать stringHashToHsl в stringHashToRgb
+// @bad TODO: convert stringHashToHsl to stringHashToRgb
 export function stringHashToHsl(value: string): string {
     if (value === '') {
         return '';

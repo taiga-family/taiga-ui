@@ -2,39 +2,37 @@ import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {capitalize} from '../capitalize';
 
 describe('Capitalize', () => {
-    it('Делает первую букву слова заглавной', () => {
-        expect(capitalize('бэн')).toBe('Бэн');
+    it('Capitalizes the first letter of a word', () => {
+        expect(capitalize('lorem')).toBe('Lorem');
     });
 
-    it('Делает первую букву каждого слова заглавной', () => {
-        expect(capitalize('папаша торк')).toBe('Папаша Торк');
+    it('Capitalizes the first letter of each word', () => {
+        expect(capitalize('lorem ipsum')).toBe('Lorem Ipsum');
     });
 
-    it('Делает остальные буквы слова строчными', () => {
-        expect(capitalize('FULL THROTTLE')).toBe('Full Throttle');
+    it('transforms the other letters of a word to lowercase', () => {
+        expect(capitalize('LOREM IPSUM')).toBe('Lorem Ipsum');
     });
 
-    it('Работает для символа неразрывного пробела', () => {
+    it('works for the non-breaking space character', () => {
         expect(
-            capitalize(
-                `тяжёлый${CHAR_NO_BREAK_SPACE}запах${CHAR_NO_BREAK_SPACE}асфальта`,
-            ),
-        ).toBe(`Тяжёлый${CHAR_NO_BREAK_SPACE}Запах${CHAR_NO_BREAK_SPACE}Асфальта`);
+            capitalize(`lorem${CHAR_NO_BREAK_SPACE}ipsum${CHAR_NO_BREAK_SPACE}dolor`),
+        ).toBe(`Lorem${CHAR_NO_BREAK_SPACE}Ipsum${CHAR_NO_BREAK_SPACE}Dolor`);
     });
 
-    it('Слово с дефисом не считается за два слова', () => {
-        expect(capitalize('корлей-моторс')).toBe('Корлей-моторс');
+    it('a hyphen inside the word does not break it into two', () => {
+        expect(capitalize('up-to-date')).toBe('Up-to-date');
     });
 
-    it('Точка внутри слова не разбивает его на два', () => {
+    it('a dot inside the word does not break it into two', () => {
         expect(capitalize('adrian.ripburger')).toBe('Adrian.ripburger');
     });
 
-    it('Запятая внутри слова не разбивает его на два', () => {
+    it('a comma inside the word does not break it into two', () => {
         expect(capitalize('malcolm,corley')).toBe('Malcolm,corley');
     });
 
-    it('Корректно отрабатывает всякую всячину', () => {
+    it('correctly handles all sorts of things', () => {
         expect(
             capitalize(
                 'Добавь тЕст. где 2 предложения: с!Разными №знаками;препинания, ок?',

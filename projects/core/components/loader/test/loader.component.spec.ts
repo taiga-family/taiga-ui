@@ -65,13 +65,13 @@ describe('Loader', () => {
     });
 
     describe('showLoader:', () => {
-        it('По умолчанию лоадер не показан', () => {
+        it('Loader is not shown by default', () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}loader'`),
             ).toBeNull();
         });
 
-        it('При заданном showLoader = true лоадер показан', () => {
+        it('With showLoader = true, the loader is shown', () => {
             testComponent.showLoader = true;
             fixture.detectChanges();
 
@@ -81,13 +81,13 @@ describe('Loader', () => {
         });
     });
 
-    describe('Текст', () => {
-        it('Текста нет', () => {
+    describe('Text', () => {
+        it('No text', () => {
             testComponent.showLoader = true;
             expect(pageObject.getByAutomationId(`${testContext.prefix}text`)).toBeNull();
         });
 
-        it('При наличии `textContent` текст показан', () => {
+        it('If there is `textContent`, the text is shown', () => {
             testComponent.textContent = testComponent.textTemplate;
             testComponent.showLoader = true;
             fixture.detectChanges();

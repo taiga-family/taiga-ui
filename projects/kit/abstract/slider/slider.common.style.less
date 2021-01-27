@@ -6,7 +6,7 @@
 
 :host {
     display: block;
-    border-radius: var(--tui-radius);
+    border-radius: var(--tui-radius-m);
     color: var(--tui-base-03);
     min-height: @height;
     font-size: @dotMediumSize;
@@ -52,8 +52,8 @@
     background-color: var(--tui-primary);
 
     :host-context(tui-input-slider) & {
-        margin-left: calc(var(--tui-radius) / 2);
-        border-bottom-left-radius: calc(var(--tui-radius) * 5) calc(var(--tui-radius) * 1.5);
+        margin-left: calc(var(--tui-radius-m) / 2);
+        border-bottom-left-radius: calc(var(--tui-radius-m) * 5) calc(var(--tui-radius-m) * 1.5);
     }
 }
 

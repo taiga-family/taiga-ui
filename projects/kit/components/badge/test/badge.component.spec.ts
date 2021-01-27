@@ -43,28 +43,28 @@ describe('Badge', () => {
     });
 
     describe('value:', () => {
-        it('если принимает двузначное число, выводит его', () => {
+        it('if it accepts a two-digit number, it outputs it', () => {
             testComponent.value = 99;
             fixture.detectChanges();
 
             expect(testComponent.element.nativeElement.textContent).toEqual('99');
         });
 
-        it('если принимает трехзначное и более, выводит сокращение 99+', () => {
+        it('if it takes three digits or more, it displays the abbreviation 99+', () => {
             testComponent.value = 999;
             fixture.detectChanges();
 
             expect(testComponent.element.nativeElement.textContent).toEqual('99+');
         });
 
-        it('если принимает строку, выводит её', () => {
-            testComponent.value = 'Текст';
+        it('if it accepts a string, it outputs it', () => {
+            testComponent.value = 'Text';
             fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent).toEqual('Текст');
+            expect(testComponent.element.nativeElement.textContent).toEqual('Text');
         });
 
-        it('если принимает строку, содержащую число, выводит её в неизменном виде', () => {
+        it('if it accepts a string containing a number, it outputs it unchanged', () => {
             testComponent.value = '125';
             fixture.detectChanges();
 
@@ -73,14 +73,14 @@ describe('Badge', () => {
     });
 
     describe('padding:', () => {
-        it('если значение – число, у padding размер m', () => {
+        it('if value is a number, padding has size m', () => {
             testComponent.value = 99;
             fixture.detectChanges();
 
             expect(component.padding).toBe('m');
         });
 
-        it('если значение – строка, у padding размер l', () => {
+        it('if value is a string, padding has size l', () => {
             testComponent.value = '99';
             fixture.detectChanges();
 

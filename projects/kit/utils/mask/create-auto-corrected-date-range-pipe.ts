@@ -46,7 +46,7 @@ function processRawValue(
  * 2. It is a single date and a separator
  * 3. It is two dates and a separator between them
  *
- * В **остальных** случаях значение не изменяется.
+ * In **other** cases, the value does not change.
  *
  * @param config with min and max date
  * @return mask pipe handler that handles `min` and `max`

@@ -18,6 +18,10 @@ import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
 import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
 
+import {default as example6Html} from '!!raw-loader!./examples/6/index.html';
+import {default as example6Less} from '!!raw-loader!./examples/6/index.less';
+import {default as example6Ts} from '!!raw-loader!./examples/6/index.ts';
+
 import {default as importComponentExample} from '!!raw-loader!./examples/import/import-component.txt';
 
 import {Component} from '@angular/core';
@@ -60,5 +64,11 @@ export class ExampleFormatComponent {
         TypeScript: example5Ts,
         HTML: example5Html,
         LESS: example5Less,
+    };
+
+    readonly example6: FrontEndExample = {
+        TypeScript: example6Ts,
+        HTML: example6Html,
+        LESS: example6Less,
     };
 }

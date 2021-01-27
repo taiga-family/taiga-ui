@@ -23,6 +23,7 @@
                     appearance="icon"
                     class="icon"
                     [class.icon_highlighted]="getHighlight(icon)"
+                    [attr.aria-label]="icon"
                     [icon]="icon"
                     (click)="copyPath(icon)"
                 ></button>

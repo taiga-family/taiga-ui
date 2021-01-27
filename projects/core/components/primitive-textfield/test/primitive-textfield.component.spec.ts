@@ -54,7 +54,7 @@ describe('PrimitiveTextfield', () => {
 
         exampleText = 'placeholder';
 
-        hintContent: string | null = 'Подсказка';
+        hintContent: string | null = 'prompt';
 
         value = '';
 

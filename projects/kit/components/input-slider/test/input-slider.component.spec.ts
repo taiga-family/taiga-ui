@@ -41,8 +41,8 @@ describe('InputSlider', () => {
         min = -10;
         quantum = 5;
         steps = 0;
-        minLabel = 'Ничего';
-        maxLabel = 'Всё';
+        minLabel = 'Nothing';
+        maxLabel = 'All';
         secondary = 'Хоп';
         pluralize = ['год', 'года', 'лет'];
     }
@@ -76,23 +76,23 @@ describe('InputSlider', () => {
         inputPO = new NativeInputPO(fixture, `${testContext.prefix}native`);
     });
 
-    describe('Значения по-умолчанию', () => {
+    describe('Default values', () => {
         beforeEach(() => {
             testComponent.default = true;
             fixture.detectChanges();
         });
 
-        it('min равен нулю', () => {
+        it('min is zero', () => {
             expect(testComponent.component.min).toBe(0);
         });
 
-        it('minLabel отсутствует', () => {
+        it('minLabel is missing', () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}min-label`),
             ).toBeNull();
         });
 
-        it('maxLabel отсутствует', () => {
+        it('maxLabel is missing', () => {
             testComponent.control.setValue(10);
             fixture.detectChanges();
 
@@ -101,35 +101,35 @@ describe('InputSlider', () => {
             ).toBeNull();
         });
 
-        it('Подпись множественного числа отсутствует', () => {
+        it('Plural signature missing', () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}pluralize`),
             ).toBeNull();
         });
 
-        it('Лейбл справа отсутствует', () => {
+        it('There is no label on the right', () => {
             expect(aid(`${testContext.prefix}secondary`).textContent.trim()).toBe('');
         });
     });
 
-    describe('Лейблы', () => {
-        it('Лейбл справа показан', () => {
+    describe('Labels', () => {
+        it('The label on the right is shown', () => {
             expect(aid(`${testContext.prefix}secondary`).textContent.trim()).toBe(
                 testComponent.secondary,
             );
         });
 
-        it('Подпись множественного числа присутствует', () => {
+        it('Plural signature is present', () => {
             expect(aid(`${testContext.prefix}pluralize`).textContent.trim()).toBe('лет');
         });
 
-        it('minLabel не показан при start > min', () => {
+        it('minLabel not shown at start> min', () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}min-label`),
             ).toBeNull();
         });
 
-        it('minLabel показан', () => {
+        it('minLabel is shown', () => {
             testComponent.control.setValue(-10);
             fixture.detectChanges();
 
@@ -138,7 +138,7 @@ describe('InputSlider', () => {
             );
         });
 
-        it('minLabel отсутствует при фокусе', () => {
+        it('minLabel missing on focus', () => {
             testComponent.control.setValue(-10);
             inputPO.focus();
 
@@ -147,13 +147,13 @@ describe('InputSlider', () => {
             ).toBeNull();
         });
 
-        it('maxLabel не показан при end < max', () => {
+        it('maxLabel not shown when end < max', () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}min-label`),
             ).toBeNull();
         });
 
-        it('maxLabel показан', () => {
+        it('maxLabel is shown', () => {
             testComponent.control.setValue(10);
             fixture.detectChanges();
 
@@ -162,7 +162,7 @@ describe('InputSlider', () => {
             );
         });
 
-        it('maxLabel отсутствует при фокусе', () => {
+        it('maxLabel missing on focus', () => {
             testComponent.control.setValue(10);
             inputPO.focus();
 
@@ -173,20 +173,20 @@ describe('InputSlider', () => {
     });
 
     describe('quantum', () => {
-        it('Округляет значение до ближайшего кванта при потере фокуса', () => {
+        it('Rounds value to nearest quantum when focus is lost', () => {
             inputPO.sendTextAndBlur('7');
 
             expect(testComponent.control.value).toBe(5);
         });
 
-        it('Округляет значение поля ввода до ближайшего кванта при потере фокуса', () => {
+        it('Rounds the input field value to the nearest quantum when focus is lost', () => {
             inputPO.sendTextAndBlur('7');
 
             expect(inputPO.value).toBe('5');
         });
     });
 
-    describe('Формат', () => {
+    describe('Format', () => {
         beforeEach(() => {
             testComponent.max = 100000;
             testComponent.quantum = 0.01;
@@ -194,16 +194,16 @@ describe('InputSlider', () => {
             inputPO.sendTextAndBlur('12345.67');
         });
 
-        it('Форматирует ввод', () => {
+        it('Formats input', () => {
             expect(inputPO.value).toBe(`12${CHAR_NO_BREAK_SPACE}345,67`);
         });
 
-        it('Не форматирует значение', () => {
+        it(`Doesn't format the value`, () => {
             expect(testComponent.control.value).toBe(12345.67);
         });
     });
 
-    it('Не меняет значение при удалении содержимого', () => {
+    it(`Doesn't change value when content is removed`, () => {
         inputPO.sendTextAndBlur('5');
         inputPO.sendTextAndBlur('');
 
@@ -211,7 +211,7 @@ describe('InputSlider', () => {
         expect(inputPO.value).toBe('5');
     });
 
-    describe('Стрелочки', () => {
+    describe('Arrows', () => {
         beforeEach(() => {
             testComponent.min = 0;
             testComponent.max = 10;
@@ -220,14 +220,14 @@ describe('InputSlider', () => {
             fixture.detectChanges();
         });
 
-        describe('Квант', () => {
-            it('Стрелка вверх увеличивает значение на квант', () => {
+        describe('Quantum', () => {
+            it('Up arrow increases the value by a quantum', () => {
                 inputPO.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value).toBe(7);
             });
 
-            it('Стрелка вниз уменьшает значение на квант', () => {
+            it('Down arrow decrements the value by a quantum', () => {
                 inputPO.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value).toBe(5);
@@ -235,7 +235,7 @@ describe('InputSlider', () => {
         });
 
         describe('readOnly', () => {
-            it('Стрелка вверх не увеличивает значение', () => {
+            it('Up arrow does not increase the value', () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
 
@@ -244,7 +244,7 @@ describe('InputSlider', () => {
                 expect(testComponent.control.value).toBe(6);
             });
 
-            it('Стрелка вниз не уменьшает значение', () => {
+            it('Down arrow does not decrease value', () => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
 
@@ -254,47 +254,47 @@ describe('InputSlider', () => {
             });
         });
 
-        describe('Шаги', () => {
+        describe('Steps', () => {
             beforeEach(() => {
                 testComponent.steps = 5;
                 fixture.detectChanges();
             });
 
-            it('Стрелка вверх увеличивает значение на шаг', () => {
+            it('Up arrow increments the value', () => {
                 inputPO.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value).toBe(8);
             });
 
-            it('Стрелка вниз уменьшает значение на шаг', () => {
+            it('Down arrow decreases the value by one step', () => {
                 inputPO.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value).toBe(4);
             });
         });
 
-        describe('Ограничения', () => {
-            it('Стрелка вверх на увеличивает значение за границу max', () => {
+        describe('Limitations', () => {
+            it('Up arrow increases the value out of the max', () => {
                 testComponent.control.setValue(10);
                 inputPO.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value).toBe(10);
             });
 
-            it('Стрелка вниз не уменьшает значение за границу min', () => {
+            it('Down arrow does not decrease the value beyond the min boundary', () => {
                 testComponent.control.setValue(0);
                 inputPO.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value).toBe(0);
             });
 
-            it('Ввод с клавиатуры не выходит за max', () => {
+            it('Keyboard input does not exceed max', () => {
                 inputPO.sendText('12345');
 
                 expect(inputPO.value).toBe('10');
             });
 
-            it('Ввод с клавиатуры не выходит за min', () => {
+            it('Keyboard input does not exceed min', () => {
                 testComponent.min = -10;
                 fixture.detectChanges();
                 inputPO.sendText('-123');

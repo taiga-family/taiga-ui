@@ -2,29 +2,34 @@ const WIDTH_SEARCH = 'width="';
 const HEIGHT_SEARCH = 'height="';
 const START = '<svg';
 
-export function processIcon(src: string, name: string): string {
-    const indexOfStart = src.indexOf(START);
-    const attibutes = src.substring(indexOfStart, src.indexOf('>', indexOfStart));
+export function processIcon(source: string, name: string): string {
+    const src = source.substring(source.indexOf(START));
+    const attributes = src.substring(0, src.indexOf('>'));
 
     if (
-        !attibutes ||
-        !attibutes.includes(WIDTH_SEARCH) ||
-        !attibutes.includes(HEIGHT_SEARCH)
+        !attributes ||
+        !attributes.includes(WIDTH_SEARCH) ||
+        !attributes.includes(HEIGHT_SEARCH)
     ) {
-        return '';
+        return (
+            src.replace(
+                START,
+                `<svg xmlns="http://www.w3.org/2000/svg"><g id="${name}" xmlns="http://www.w3.org/2000/svg"><svg`,
+            ) + '</g></svg>'
+        );
     }
 
-    const indexOfWidth = attibutes.indexOf(WIDTH_SEARCH);
-    const indexOfHeight = attibutes.indexOf(HEIGHT_SEARCH);
+    const indexOfWidth = attributes.indexOf(WIDTH_SEARCH);
+    const indexOfHeight = attributes.indexOf(HEIGHT_SEARCH);
     const widthOffset = indexOfWidth + WIDTH_SEARCH.length;
     const heightOffset = indexOfHeight + HEIGHT_SEARCH.length;
-    const widthString = attibutes.substring(
+    const widthString = attributes.substring(
         widthOffset,
-        attibutes.indexOf('"', widthOffset),
+        attributes.indexOf('"', widthOffset),
     );
-    const heightString = attibutes.substring(
+    const heightString = attributes.substring(
         heightOffset,
-        attibutes.indexOf('"', heightOffset),
+        attributes.indexOf('"', heightOffset),
     );
 
     if (

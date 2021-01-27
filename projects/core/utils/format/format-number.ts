@@ -4,15 +4,17 @@ import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
  * Formats number adding thousand separators and correct decimal separator
  * padding decimal part with zeroes to given length
  *
- * @param value number
- * @param decimalSeparator
+ * @param value the input number
  * @param decimalLimit number of digits of decimal part, null to keep untouched
- * @return formatted string
+ * @param decimalSeparator separator between the integer and the decimal part
+ * @param thousandSeparator separator between thousands
+ * @return the formatted string
  */
 export function formatNumber(
     value: number,
     decimalLimit: number | null = null,
     decimalSeparator: string = ',',
+    thousandSeparator: string = CHAR_NO_BREAK_SPACE,
 ): string {
     const integerPartString = Math.floor(Math.abs(value)).toString();
     const fractionPartString = value.toString().split('.')[1] || '';
@@ -27,7 +29,7 @@ export function formatNumber(
 
     for (let i = 1; i < integerPartString.length; i++) {
         if (i % 3 === remainder && integerPartString.length > 3) {
-            result += CHAR_NO_BREAK_SPACE;
+            result += thousandSeparator;
         }
 
         result += integerPartString.charAt(i);

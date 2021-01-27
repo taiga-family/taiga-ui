@@ -29,7 +29,7 @@ describe('InputNumber', () => {
                     [tuiTextfieldExampleText]="exampleText"
                     [tuiHintContent]="hintContent"
                 >
-                    Введите сумму
+                    Enter the amount
                 </tui-input-number>
                 <tui-input-number *ngIf="defaultValues" formControlName="control">
                 </tui-input-number>
@@ -49,7 +49,7 @@ describe('InputNumber', () => {
         cleaner = true;
         defaultValues = false;
         size: TuiSizeS | TuiSizeL = 'm';
-        hintContent: string | null = 'Подсказка';
+        hintContent: string | null = 'prompt';
         exampleText = 'placeholder';
     }
 
@@ -82,13 +82,13 @@ describe('InputNumber', () => {
         inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
     });
 
-    describe('Значения по умолчанию:', () => {
+    describe('Default values:', () => {
         beforeEach(() => {
             testComponent.defaultValues = true;
             fixture.detectChanges();
         });
 
-        it('Нулевые копейки не показаны', done => {
+        it('Zero pennies are not shown', done => {
             testComponent.control.setValue(1234.0);
             fixture.detectChanges();
 
@@ -101,7 +101,7 @@ describe('InputNumber', () => {
             });
         });
 
-        it('Ненулевые копейки показаны', done => {
+        it('Non-zero pennies are shown', done => {
             testComponent.control.setValue(12.345);
             fixture.detectChanges();
 
@@ -113,7 +113,7 @@ describe('InputNumber', () => {
         });
     });
 
-    it(`Ненулевые копейки не показаны при decimal = 'never'`, done => {
+    it(`Non-zero pennies are not shown when decimal = 'never'`, done => {
         testComponent.control.setValue(12.3);
         fixture.detectChanges();
 
@@ -124,7 +124,7 @@ describe('InputNumber', () => {
         });
     });
 
-    it('Знак минус отсутствует при отрицательных значениях при min >= 0', done => {
+    it('There is no minus sign for negative values ​​with min> = 0', done => {
         testComponent.component.min = 0;
         testComponent.control.setValue(-12345);
         fixture.detectChanges();
@@ -138,7 +138,7 @@ describe('InputNumber', () => {
         });
     });
 
-    it('Знак минус отсутствует при неотрицательном значении min', done => {
+    it('No minus sign for non-negative min', done => {
         testComponent.component.min = 10;
         testComponent.control.setValue(-12345);
         fixture.detectChanges();
@@ -152,47 +152,47 @@ describe('InputNumber', () => {
         });
     });
 
-    describe('onValue | обновление значений формы', () => {
-        describe('Недозаполненное значение передаёт в форму null', () => {
-            it(`Значение ''`, () => {
+    describe('onValue | updating form values', () => {
+        describe('An incomplete value is passed to the form null', () => {
+            it(`Value ''`, () => {
                 component.onValue('');
 
                 expect(testComponent.control.value).toBe(null);
             });
 
-            it(`Значение '-'`, () => {
+            it(`Value '-'`, () => {
                 component.onValue('-');
 
                 expect(testComponent.control.value).toBe(null);
             });
 
-            it(`Значение ','`, () => {
+            it(`Value ','`, () => {
                 component.onValue(',');
 
                 expect(testComponent.control.value).toBe(null);
             });
 
-            it(`Значение '-,'`, () => {
+            it(`Value '-,'`, () => {
                 component.onValue('-,');
 
                 expect(testComponent.control.value).toBe(null);
             });
         });
 
-        describe('Свойства min и max', () => {
+        describe('The min and max properties', () => {
             beforeEach(() => {
                 inputPO.sendText('');
                 testComponent.control.setValue(null);
             });
 
-            it('Значение меньше положительного min не обновляет контрол', () => {
+            it('A value less than positive min does not update the control', () => {
                 testComponent.component.min = 15;
                 component.onValue(`10`);
 
                 expect(testComponent.control.value).toBe(null);
             });
 
-            it('Значение больше max обрезается до max', () => {
+            it('A value greater than max is clipped to max', () => {
                 const savedMax = 25;
 
                 testComponent.component.max = savedMax;
@@ -201,14 +201,14 @@ describe('InputNumber', () => {
                 expect(testComponent.control.value).toBe(savedMax);
             });
 
-            it('Значение больше отрицательного max не обновляет контрол', () => {
+            it('A value greater than negative max does not update the control', () => {
                 testComponent.component.max = -15;
                 component.onValue(`-10`);
 
                 expect(testComponent.control.value).toBe(null);
             });
 
-            it('Значение меньше отрицательного min обрезается до min', () => {
+            it('A value less than negative min is truncated to min', () => {
                 const savedMin = -25;
 
                 testComponent.component.min = savedMin;
@@ -218,20 +218,20 @@ describe('InputNumber', () => {
             });
         });
 
-        it(`Корректно заполненное значение передаёт в форму number`, () => {
+        it(`The correctly filled value is passed to the form number`, () => {
             component.onValue(`-12${CHAR_NO_BREAK_SPACE}345,67`);
 
             expect(testComponent.control.value).toBe(-12345.67);
         });
     });
 
-    describe('computedValue | значение для отображения', () => {
-        describe('Значение формы null не меняет отображаемое значение', () => {
+    describe('computedValue | value to display', () => {
+        describe('Form value null does not change the displayed value', () => {
             beforeEach(() => {
                 testComponent.control.setValue(null);
             });
 
-            it(`Значение ''`, () => {
+            it(`Value ''`, () => {
                 const value = '';
 
                 inputPO.nativeElement.value = value;
@@ -239,7 +239,7 @@ describe('InputNumber', () => {
                 expect(component.computedValue).toBe(value);
             });
 
-            it(`Значение '-'`, () => {
+            it(`Value '-'`, () => {
                 const value = '-';
 
                 inputPO.nativeElement.value = value;
@@ -247,7 +247,7 @@ describe('InputNumber', () => {
                 expect(component.computedValue).toBe(value);
             });
 
-            it(`Значение ','`, () => {
+            it(`Value ','`, () => {
                 const value = ',';
 
                 inputPO.nativeElement.value = value;
@@ -255,7 +255,7 @@ describe('InputNumber', () => {
                 expect(component.computedValue).toBe(value);
             });
 
-            it(`Значение '-,'`, () => {
+            it(`Value '-,'`, () => {
                 const value = '-,';
 
                 inputPO.nativeElement.value = value;
@@ -264,13 +264,13 @@ describe('InputNumber', () => {
             });
         });
 
-        it(`Заданное значение из формы корректно преобразовывается в строку`, () => {
+        it(`The given value from the form is correctly converted to a string`, () => {
             testComponent.control.setValue(-12345.67);
 
             expect(component.computedValue).toBe(`-12${CHAR_NO_BREAK_SPACE}345,67`);
         });
 
-        it(`Не обрезает нули, если инпут в фокусе`, () => {
+        it(`Doesn't trim zeros if the input is focused`, () => {
             component.decimal = TuiDecimal.NotZero;
 
             inputPO.focus();
@@ -280,7 +280,7 @@ describe('InputNumber', () => {
             expect(component.computedValue).toBe('10,0');
         });
 
-        it(`форматирует значение, если элемент вне фокуса`, () => {
+        it(`formats a value if the element is out of focus`, () => {
             component.decimal = TuiDecimal.NotZero;
 
             inputPO.sendText('10,0');
@@ -289,14 +289,14 @@ describe('InputNumber', () => {
         });
     });
 
-    it('maxlength по умолчанию установлено на 18', () => {
+    it('maxlength is set to 18 by default', () => {
         const nativeInput = getNativeInput()!.nativeElement;
 
         expect(nativeInput.getAttribute('maxlength')).toBe('18');
     });
 
     describe('При decimal === always', () => {
-        it(`Добавляет определенное свойством precision количество нулей при обновлении Value целым числом`, () => {
+        it(`Adds the number of zeros specified by the precision property when updating Value with an integer`, () => {
             const value = '123';
             const precision = 2;
 

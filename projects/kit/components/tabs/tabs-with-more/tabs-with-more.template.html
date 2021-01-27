@@ -13,7 +13,7 @@
                 [ngTemplateOutlet]="item.template"
             ></ng-container>
             <ng-template #hidden>
-                <div class="hidden">
+                <div class="visually-hidden">
                     <ng-container
                         *ngTemplateOutlet="item.template"
                     ></ng-container>
@@ -23,7 +23,7 @@
     </tui-tabs>
     <tui-hosted-dropdown
         class="more_wrapper"
-        [class.hidden]="!isMoreVisible"
+        [class.visually-hidden]="!isMoreVisible"
         [content]="dropdown"
         [(open)]="open"
     >
@@ -35,7 +35,7 @@
             [tuiFocusable]="isMoreFocusable"
             (keydown.arrowLeft.prevent)="onArrowLeft()"
         >
-            <div polymorpheus-outlet [content]="moreContent || more"></div>
+            <span polymorpheus-outlet [content]="moreContent || more"></span>
         </button>
         <ng-template #more>
             {{moreWord$ | async}}

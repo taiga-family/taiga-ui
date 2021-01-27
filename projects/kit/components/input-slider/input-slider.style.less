@@ -7,7 +7,7 @@
     .text-body-m(2);
     .createStackingContext();
     display: block;
-    border-radius: var(--tui-radius);
+    border-radius: var(--tui-radius-m);
     color: var(--tui-text-01);
 
     &._segmented {
@@ -50,12 +50,12 @@
 .content {
     display: flex;
     align-items: center;
-    height: var(--tui-height-l);
+    height: var(--tui-height-m);
     padding: 0 @padding;
     justify-content: space-between;
 
     :host[data-tui-host-size='l'] & {
-        height: var(--tui-height-xl);
+        height: var(--tui-height-l);
         padding: 0 @padding;
     }
 }
@@ -65,7 +65,7 @@
     .fullsize();
     left: @padding;
     transform: translateY(-10px) scale(0.87);
-    line-height: var(--tui-height-xl);
+    line-height: var(--tui-height-l);
     max-width: ~'calc(114% - @{padding2})';
 
     :host._has-tooltip & {

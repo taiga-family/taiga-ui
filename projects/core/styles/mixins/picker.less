@@ -15,7 +15,7 @@
         position: relative;
         flex: 1;
         line-height: 32px;
-        border-radius: var(--tui-radius);
+        border-radius: var(--tui-radius-m);
 
         &:before,
         &:after {
@@ -26,7 +26,7 @@
             right: 0;
             bottom: 0;
             z-index: -1;
-            border-radius: var(--tui-radius);
+            border-radius: var(--tui-radius-m);
         }
     }
 
@@ -51,7 +51,7 @@
             right: 0;
             bottom: 0;
             z-index: -1;
-            border-radius: var(--tui-radius);
+            border-radius: var(--tui-radius-m);
         }
 
         &_today:after {
@@ -82,13 +82,13 @@
             }
 
             &:first-child > .item {
-                border-top-left-radius: var(--tui-radius);
-                border-bottom-left-radius: var(--tui-radius);
+                border-top-left-radius: var(--tui-radius-m);
+                border-bottom-left-radius: var(--tui-radius-m);
             }
 
             &:last-child > .item {
-                border-top-right-radius: var(--tui-radius);
-                border-bottom-right-radius: var(--tui-radius);
+                border-top-right-radius: var(--tui-radius-m);
+                border-bottom-right-radius: var(--tui-radius-m);
             }
 
             & > .item {

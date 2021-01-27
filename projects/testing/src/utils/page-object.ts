@@ -53,11 +53,11 @@ export class PageObject<T> {
         );
 
         if (inputDebugElement === null) {
-            throw new Error(`Поле ${automationId} не найдено`);
+            throw new Error(`Field ${automationId} not found`);
         }
 
         if (!(inputDebugElement.nativeElement instanceof HTMLInputElement)) {
-            throw new Error(`Элемент ${automationId} не является <input />`);
+            throw new Error(`Element ${automationId} is not <input />`);
         }
 
         inputDebugElement.nativeElement.value = value;

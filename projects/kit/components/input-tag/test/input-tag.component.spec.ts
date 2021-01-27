@@ -66,7 +66,7 @@ describe('InputTag', () => {
         labelOutside = true;
         exampleText = 'Пример';
         size: TuiSizeS | TuiSizeL = 'm';
-        hintContent: string | null = 'Подсказка';
+        hintContent: string | null = 'prompt';
         tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
     }
 
@@ -121,7 +121,7 @@ describe('InputTag', () => {
         inputPO = new NativeInputPO(fixture, `${testContext.prefix}native`);
     });
 
-    describe('Добавление тэгов', () => {
+    describe('Adding tags', () => {
         beforeEach(done => {
             inputPO.focus();
             fixture.detectChanges();
@@ -129,23 +129,23 @@ describe('InputTag', () => {
             fixture.whenStable().then(done);
         });
 
-        it('Добавляет тэги введённые через запятую', () => {
+        it('Adds tags separated by commas', () => {
             expect(component.value[1]).toEqual('1234');
             expect(component.value[2]).toEqual('567');
             expect(component.value.length).toBe(3);
         });
 
-        it('Оставляет значение после последней запятой в поле ввода', () => {
+        it('Leaves the value after the last comma in the input field', () => {
             expect(inputPO.value).toEqual('89');
         });
 
-        it('Не создаёт пустые тэги', () => {
+        it(`Doesn't create empty tags`, () => {
             inputPO.sendText(' ,  ,,,');
 
             expect(component.value.length).toBe(3);
         });
 
-        it('При выходе из поля добавляет ввод как тэг', done => {
+        it('When exiting the field adds input as a tag', done => {
             focusStealer.focus();
             fixture.detectChanges();
 
@@ -156,7 +156,7 @@ describe('InputTag', () => {
             });
         });
 
-        it('При выходе из поля не добавляет пустые тэги', () => {
+        it('Does not add empty tags when leaving the field', () => {
             inputPO.sendText('   ');
             focusStealer.focus();
             fixture.detectChanges();
@@ -164,7 +164,7 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(3);
         });
 
-        it('При добавлении тэга по выходу из поля поле очищается', done => {
+        it('When adding a tag on leaving the field, the field is cleared', done => {
             focusStealer.focus();
             fixture.detectChanges();
 
@@ -174,21 +174,21 @@ describe('InputTag', () => {
             });
         });
 
-        it('При нажатии Enter на поле добавляет ввод как тэг', () => {
+        it('Pressing Enter on the field adds the input as a tag', () => {
             inputPO.sendKeydown('enter');
 
             expect(component.value.length).toBe(4);
             expect(component.value[3]).toBe('89');
         });
 
-        it('При нажатии Enter на поле не добавляет пустые тэги', () => {
+        it('Pressing Enter on the field does not add empty tags', () => {
             inputPO.sendText('   ');
             inputPO.sendKeydown('enter');
 
             expect(component.value.length).toBe(3);
         });
 
-        it('При нажатии Enter на поле поле очищается', done => {
+        it('Pressing Enter on a field clears the field', done => {
             inputPO.sendKeydown('enter');
             fixture.detectChanges();
 
@@ -198,17 +198,17 @@ describe('InputTag', () => {
             });
         });
 
-        it('При нажатии Enter не добавляет тег, если disabledItemHandler вернул false', () => {
-            component.disabledItemHandler = item => item === 'Тег';
-            inputPO.sendText('Тег');
+        it(`Doesn't add tag on hitting Enter if disabledItemHandler returned false`, () => {
+            component.disabledItemHandler = item => item === 'Tag';
+            inputPO.sendText('Tag');
             inputPO.sendKeydown('enter');
 
             expect(component.value.length).toBe(3);
         });
     });
 
-    describe('Добавление тэгов c пробелами при включенной опции allowSpaces', () => {
-        it('Пробелы сохраняются и не разделяют на теги', fakeAsync(() => {
+    describe('Adding tags with spaces when the allowSpaces option is enabled', () => {
+        it('Spaces are preserved and not tagged', fakeAsync(() => {
             inputPO.focus();
             fixture.detectChanges();
             tick();
@@ -220,14 +220,14 @@ describe('InputTag', () => {
         }));
     });
 
-    describe('Добавление тэгов при выключенной опции allowSpaces', () => {
+    describe('Adding tags when the allowSpaces option is disabled', () => {
         beforeEach(() => {
             testComponent.allowSpaces = false;
             inputPO.focus();
             fixture.detectChanges();
         });
 
-        it('разбивает на тэги по пробелу', () => {
+        it('splits into tags by space', () => {
             inputPO.sendText('1234 567 89');
 
             expect(component.value[1]).toEqual('1234');
@@ -235,7 +235,7 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(3);
         });
 
-        it('разбивает на тэги по неразрывному пробелу', () => {
+        it('breaks into tags on non-breaking space', () => {
             inputPO.sendText(`1234${CHAR_NO_BREAK_SPACE}567${CHAR_NO_BREAK_SPACE}89`);
 
             expect(component.value[1]).toEqual('1234');
@@ -243,7 +243,7 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(3);
         });
 
-        it('разбивает на тэги по запятой', () => {
+        it('splits into tags by comma', () => {
             inputPO.sendText('1234,567,89');
 
             expect(component.value[1]).toEqual('1234');
@@ -251,7 +251,7 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(3);
         });
 
-        it('При добавлении Space не добавляет тег и не изменяет значение, если tagValidator вернул false', () => {
+        it('When adding Space does not add tag or change value if tagValidator returned false', () => {
             const savedLength = component.value.length;
             const newTag = 'new';
 
@@ -263,7 +263,7 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(savedLength);
         });
 
-        it('При добавлении запятой не добавляет тег и не изменяет значение, если tagValidator вернул false', () => {
+        it('Adding a comma does not add the tag and does not change the value if tagValidator returned false', () => {
             const savedLength = component.value.length;
             const newTag = 'new';
 
@@ -275,7 +275,7 @@ describe('InputTag', () => {
             expect(component.value.length).toBe(savedLength);
         });
 
-        it('Отбрасывает задизебленные теги, поданные через запятую или пробел', () => {
+        it('Strips away the bad tags, separated by commas or spaces', () => {
             const firstValidTag = 'first';
             const secondValidTag = 'second';
             const invalidTag = 'invalid';
@@ -288,7 +288,7 @@ describe('InputTag', () => {
     });
 
     describe('Cleaner', () => {
-        it('По умолчанию cleaner отсутствует', () => {
+        it('There is no cleaner by default', () => {
             testComponent.defaultInputs = true;
             fixture.detectChanges();
 
@@ -297,7 +297,7 @@ describe('InputTag', () => {
             ).toBeNull();
         });
 
-        it('При cleaner === true и пустом поле без тэгов cleaner отсутствует', () => {
+        it('If cleaner === true and empty field without cleaner tags is missing', () => {
             testComponent.control.setValue([]);
             fixture.detectChanges();
 
@@ -306,7 +306,7 @@ describe('InputTag', () => {
             ).toBeNull();
         });
 
-        it('При cleaner === true и не пустом поле cleaner присутствует', () => {
+        it('If cleaner === true and not empty, the cleaner field is present', () => {
             testComponent.control.setValue([]);
             inputPO.sendText('123');
 
@@ -315,13 +315,13 @@ describe('InputTag', () => {
             ).not.toBeNull();
         });
 
-        it('При cleaner === true и добавленных тэгах cleaner присутствует', () => {
+        it('With cleaner === true and added tags, cleaner is present', () => {
             expect(
                 pageObject.getByAutomationId(`${testContext.prefix}cleaner`),
             ).not.toBeNull();
         });
 
-        it('При нажатии на cleaner очищается поле ввода и тэги', () => {
+        it('Clicking on cleaner clears the input field and tags', () => {
             inputPO.sendText('123');
             pageObject
                 .getByAutomationId(`${testContext.prefix}cleaner`)!
@@ -332,15 +332,15 @@ describe('InputTag', () => {
         });
     });
 
-    describe('Редактирование тэгов', () => {
-        it('Редактирует тэги', () => {
+    describe('Editing tags', () => {
+        it('Edits tags', () => {
             component.onTagEdited('Hapica', TAG);
             fixture.detectChanges();
 
             expect(component.value[0]).toBe('Hapica');
         });
 
-        it('Переводит фокус на поле ввода после редактирования', () => {
+        it('Moves focus to the input field after editing', () => {
             component.onTagEdited('Hapica', TAG);
             fixture.detectChanges();
 
@@ -348,8 +348,8 @@ describe('InputTag', () => {
         });
     });
 
-    describe('Переход к тэгам', () => {
-        it('Переходит к тэгам при нажатии arrowLeft', () => {
+    describe('Go to tags', () => {
+        it('Goes to tags when pressing arrowLeft', () => {
             inputPO.focus();
             inputPO.sendKeydown('ArrowLeft');
 
@@ -361,7 +361,7 @@ describe('InputTag', () => {
             ).toBe(true);
         });
 
-        it('Не переходит к тэгам при нажатии arrowLeft, если поле ввода не пустое', () => {
+        it("Doesn't jump to tags when pressing arrowLeft if input field is not empty", () => {
             inputPO.focus();
             inputPO.sendText('123');
             inputPO.sendKeydown('ArrowLeft');
@@ -369,7 +369,7 @@ describe('InputTag', () => {
             expect(inputPO.focused).toBe(true);
         });
 
-        it('Переходит к тэгам при нажатии backspace и пустом поле ввода', () => {
+        it('Goes to tags on backspace and empty input field', () => {
             inputPO.focus();
             inputPO.sendKeydown('backspace');
 
@@ -381,7 +381,7 @@ describe('InputTag', () => {
             ).toBe(true);
         });
 
-        it('Не переходит к тэгам при нажатии backspace и не пустом поле ввода', () => {
+        it("Doesn't jump to tags when pressing backspace and not empty input field", () => {
             inputPO.focus();
             inputPO.sendText('123');
             inputPO.sendKeydown('backspace');

@@ -2,7 +2,7 @@
     .text-basic();
     position: relative;
     display: block;
-    border-radius: var(--tui-radius);
+    border-radius: var(--tui-radius-m);
 
     &[data-tui-host-size='s'] {
         height: var(--tui-height-s);
@@ -11,15 +11,15 @@
     }
 
     &[data-tui-host-size='m'] {
-        height: var(--tui-height-l);
-        min-height: var(--tui-height-l);
-        max-height: var(--tui-height-l);
+        height: var(--tui-height-m);
+        min-height: var(--tui-height-m);
+        max-height: var(--tui-height-m);
     }
 
     &[data-tui-host-size='l'] {
-        height: var(--tui-height-xl);
-        min-height: var(--tui-height-xl);
-        max-height: var(--tui-height-xl);
+        height: var(--tui-height-l);
+        min-height: var(--tui-height-l);
+        max-height: var(--tui-height-l);
         font-size: 15px;
     }
 }
@@ -272,7 +272,7 @@
         color: var(--tui-text-01);
 
         &_shifted {
-            margin-left: @space;
+            margin-left: 1ch;
         }
 
         :host[data-tui-host-mode='onDark'] & {

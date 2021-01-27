@@ -93,34 +93,34 @@ export class TuiToolbarComponent {
         {
             size: '2',
             px: 13,
-            name: 'Небольшой',
+            name: 'Small',
         },
         {
             size: '3',
             px: 15,
-            name: 'Обычный',
+            name: 'Normal',
         },
         {
             size: '4',
             px: 17,
-            name: 'Крупный',
+            name: 'Large',
         },
         {
             size: '5',
             px: 24,
-            family: 'var(--tui-heading-font)',
-            name: 'Подзаголовок',
+            family: 'var(--tui-font-heading)',
+            name: 'Subtitle',
         },
         {
             size: '6',
             px: 30,
-            family: 'var(--tui-heading-font)',
-            name: 'Заголовок',
+            family: 'var(--tui-font-heading)',
+            name: 'Title',
         },
     ];
 
     // TODO: i18n
-    readonly codesOptions: readonly string[] = ['Код в тексте', 'Код в блоке'];
+    readonly codesOptions: readonly string[] = ['Code in the text', 'Code in block'];
 
     @ViewChildren('button')
     private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;

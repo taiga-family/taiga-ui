@@ -1,0 +1,60 @@
+<tui-doc-page i18n-header header="Icons set">
+    <p i18n>
+        Taiga UI uses
+        <a tuiLink routerLink="/tui-svg"><code>tui-svg</code></a> component to
+        display SVG icons. It can show icons by name, link or source code.
+        Several icon names are hardcoded into kit components so if you want to
+        switch to a different icon set you would need to provide a mapping.
+    </p>
+    <p>
+        <button tuiButton (click)="toggle()">Show names</button>
+    </p>
+    <tui-expand [expanded]="expanded">
+        <div class="wrapper">
+            <tui-doc-copy
+                *ngFor="let name of names"
+                [cdkCopyToClipboard]="name"
+            >
+                <code>{{name}}</code>
+            </tui-doc-copy>
+        </div>
+    </tui-expand>
+    <p i18n>
+        These are keys of following dictionaries: <code>tuiCoreIcons</code> and
+        <code>tuiKitIcons</code>. It is not required to provide all those icons,
+        you can gradually add the ones you need depending on components you use.
+    </p>
+
+    <p i18n>
+        There are two ways to add icons: bundled and as assets. Bundled icons
+        have the benefit of immediate display but increase your app size. Assets
+        work like regular
+        <code>img src="xxx"</code> with all the benefits of caching. In both
+        cases you can control color with CSS <code>color</code> style.
+    </p>
+
+    <tui-notification status="warning">
+        Make sure you mark regions in your icons that need to be colored with
+        <code>fill="currentColor"</code> or <code>stroke="currentColor"</code>.
+    </tui-notification>
+
+    <p i18n>
+        If you want to bundle your icons, you need to provide
+        <code>TUI_ICONS</code> token with a dictionary of name to source code.
+        If you want to move your icons to assets you need to process them with
+        <a tuiLink download="process-icons.js" href="assets/process-icons.js"
+            >this script</a
+        >. Drop it to the folder with your icons and run
+        <code>node process-icons.js</code>. Then move your icons to the assets
+        folder and provide <code>TUI_ICONS_PATH</code> as seen in example below:
+    </p>
+
+    <tui-doc-example
+        id="material"
+        i18n-heading
+        heading="Material icons"
+        [content]="example1"
+    >
+        <tui-icon-set-example-1></tui-icon-set-example-1>
+    </tui-doc-example>
+</tui-doc-page>

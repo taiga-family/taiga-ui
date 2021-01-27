@@ -36,9 +36,46 @@ export const ROUTES = [
     },
     {
         path: 'i18n',
-        loadChildren: () => import(`../info/i18n/i18n.module`).then(m => m.I18nModule),
+        loadChildren: () =>
+            import(`../customization/i18n/i18n.module`).then(m => m.I18nModule),
         data: {
             title: `I18n`,
+        },
+    },
+    {
+        path: 'variables',
+        loadChildren: () =>
+            import(`../customization/variables/variables.module`).then(
+                m => m.VariablesModule,
+            ),
+        data: {
+            title: `Variables`,
+        },
+    },
+    {
+        path: 'wrapper',
+        loadChildren: () =>
+            import(`../customization/wrapper/wrapper.module`).then(m => m.WrapperModule),
+        data: {
+            title: `Wrapper`,
+        },
+    },
+    {
+        path: 'dialogs',
+        loadChildren: () =>
+            import(`../customization/dialogs/dialogs.module`).then(m => m.DialogsModule),
+        data: {
+            title: `Dialogs`,
+        },
+    },
+    {
+        path: 'icon-set',
+        loadChildren: () =>
+            import(`../customization/icon-set/icon-set.module`).then(
+                m => m.IconSetModule,
+            ),
+        data: {
+            title: `Icon set`,
         },
     },
     {
@@ -522,7 +559,7 @@ export const ROUTES = [
                 m => m.ExampleTuiMobileThemesModule,
             ),
         data: {
-            title: `PWA themes`,
+            title: `Mobile`,
         },
     },
     {
@@ -959,14 +996,6 @@ export const ROUTES = [
             import(`../markup/tables/tables.module`).then(m => m.TablesModule),
         data: {
             title: `Tables`,
-        },
-    },
-    {
-        path: 'theme',
-        loadChildren: () =>
-            import(`../markup/theme/theme.module`).then(m => m.ThemeModule),
-        data: {
-            title: `Theming`,
         },
     },
     {

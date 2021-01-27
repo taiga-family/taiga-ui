@@ -128,7 +128,7 @@
 .font(@size, @line-height: 'none', @weight: normal, @color: 'none') {
     font-weight: @weight;
     font-size: @size;
-    font-family: var(--tui-text-font);
+    font-family: var(--tui-font-text);
 }
 
 .font(@size, @line-height: 'none', @weight: normal, @color: 'none') when not (@line-height = 'none') {
@@ -143,5 +143,5 @@
     font-weight: bold;
     line-height: @line-height;
     font-size: @size;
-    font-family: var(--tui-heading-font);
+    font-family: var(--tui-font-heading);
 }

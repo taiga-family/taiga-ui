@@ -1,0 +1,128 @@
+tui-wrapper[data-appearance='material-textfield'] {
+    background: #f5f5f5;
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 4px 4px 0 0;
+
+    &:after {
+        height: 1px;
+        background: #8e8e8e;
+        top: auto;
+        border: none;
+        transform-origin: bottom;
+        transition: all 0.3s;
+    }
+
+    &[data-state='hovered'] {
+        background: #ececec;
+
+        &:after {
+            background: #1f1f1f;
+        }
+    }
+
+    &._focused {
+        background: #dcdcdc;
+
+        // TODO: Better internal elements customization
+        label {
+            color: #6200ee !important;
+        }
+
+        &:after {
+            background: #6200ee;
+            transform: scaleY(2);
+        }
+    }
+
+    &._invalid {
+        // TODO: Better internal elements customization
+        label {
+            color: #b00020 !important;
+        }
+
+        &:after {
+            background: #b00020;
+        }
+    }
+}
+
+tui-wrapper[data-appearance='material-button'] {
+    border-radius: 4px;
+    background: #6200ee;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14%),
+        0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s;
+
+    &[data-state='hovered'] {
+        background: #6e14ef;
+        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+            0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    &[data-state='pressed'] {
+        background: #6e14ef;
+        box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+            0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+
+    &._focused {
+        background: #883df2;
+
+        &:after {
+            display: none;
+        }
+    }
+}
+
+tui-wrapper[data-appearance='material-checkbox-on'],
+tui-wrapper[data-appearance='material-checkbox-off'] {
+    color: #fff;
+
+    &:before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 2px;
+        border: 2px solid rgba(0, 0, 0, 0.54);
+        transition: all 0.3s;
+    }
+
+    &:after {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        border-radius: 100%;
+        background: #000;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    &[data-state='hovered'] {
+        &:after {
+            opacity: 0.05;
+        }
+    }
+
+    &[data-state='pressed'],
+    &._focused {
+        &:after {
+            opacity: 0.1;
+        }
+    }
+}
+
+tui-wrapper[data-appearance='material-checkbox-on'] {
+    &:before,
+    &:after {
+        background: #6200ee;
+        border-color: transparent;
+    }
+}
