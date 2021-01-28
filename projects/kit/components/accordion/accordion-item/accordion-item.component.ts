@@ -9,7 +9,6 @@ import {
     HostBinding,
     Inject,
     Input,
-    Optional,
     Output,
     ViewChild,
 } from '@angular/core';
@@ -18,11 +17,13 @@ import {
     isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
+    TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiBrightness, TuiModeDirective, TuiSizeS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeS} from '@taiga-ui/core';
 import {TuiBorders} from '@taiga-ui/kit/enums';
+import {Observable} from 'rxjs';
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
 
 @Component({
@@ -35,6 +36,8 @@ import {TuiAccordionItemContentDirective} from './accordion-item-content.directi
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiAccordionItemComponent),
         },
+        TuiDestroyService,
+        MODE_PROVIDER,
     ],
 })
 export class TuiAccordionItemComponent
@@ -83,16 +86,21 @@ export class TuiAccordionItemComponent
     @ContentChild(TuiAccordionItemContentDirective)
     readonly content?: TuiAccordionItemContentDirective;
 
+    @HostBinding('attr.data-tui-host-mode')
+    mode: TuiBrightness | null = null;
+
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
     ) {
         super();
+
+        mode$.subscribe(mode => {
+            this.mode = mode;
+        });
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
@@ -105,17 +113,10 @@ export class TuiAccordionItemComponent
         return isNativeFocused(this.nativeFocusableElement);
     }
 
-    @HostBinding('attr.data-tui-host-mode')
-    get hostMode(): TuiBrightness | null {
-        return this.modeDirective ? this.modeDirective.mode : null;
-    }
-
     onHovered(hovered: boolean) {
-        if (this.disableHover) {
-            return;
+        if (!this.disableHover) {
+            this.updateHovered(hovered);
         }
-
-        this.updateHovered(hovered);
     }
 
     onFocused(focused: boolean) {

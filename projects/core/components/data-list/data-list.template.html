@@ -4,6 +4,6 @@
     *ngIf="empty$ | async"
     class="empty"
     polymorpheus-outlet
-    [content]="emptyContent"
+    [content]="emptyContent || (defaultEmptyContent$ | async)"
 ></div>
 <div class="trap" tabindex="0" (focusin)="onFocus($event.target, false)"></div>

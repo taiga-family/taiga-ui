@@ -40,7 +40,7 @@
 <nav class="navigation">
     <tui-scrollbar class="scrollbar">
         <tui-accordion
-            tuiMode="onLight"
+            [tuiMode]="mode$ | async"
             [closeOthers]="false"
             [rounded]="false"
         >

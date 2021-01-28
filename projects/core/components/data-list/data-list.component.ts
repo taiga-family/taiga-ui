@@ -22,7 +22,7 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
-import {TUI_DATA_LIST_ACCESSOR} from '@taiga-ui/core/tokens';
+import {TUI_DATA_LIST_ACCESSOR, TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import {TuiDataListRole} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -61,6 +61,8 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(TUI_NOTHING_FOUND_MESSAGE)
+        readonly defaultEmptyContent$: Observable<string>,
     ) {}
 
     @tuiPure
