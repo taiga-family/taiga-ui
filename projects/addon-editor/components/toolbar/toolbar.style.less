@@ -27,6 +27,11 @@
 .button {
     .transition(background);
 
+    &[data-tui-host-size='m'][tuiIconButton] {
+        height: var(--tui-height-s);
+        width: var(--tui-height-s);
+    }
+
     &:hover {
         background: var(--tui-secondary-hover);
     }
