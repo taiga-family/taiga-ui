@@ -330,7 +330,3 @@
     background: rgba($color, 70%);
     backdrop-filter: blur(7px);
 }
-
-@function addBackslash($character) {
-    @return unquote('"') + unquote(str-insert($character, '\\', 1)) + unquote('"');
-}
