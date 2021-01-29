@@ -5,6 +5,7 @@ import {
     Component,
     Inject,
     Input,
+    Optional,
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
@@ -12,6 +13,8 @@ import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {CodeEditor} from '../../interfaces/code-editor';
+import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
@@ -47,6 +50,9 @@ export class TuiDocExampleComponent {
         @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
         @Inject(TUI_DOC_EXAMPLE_TEXTS) readonly texts: [string, string, string],
+        @Optional()
+        @Inject(TUI_DOC_CODE_EDITOR)
+        readonly codeEditor: CodeEditor | null,
     ) {}
 
     get activeItem(): string {
@@ -67,9 +73,8 @@ export class TuiDocExampleComponent {
         return this.activeItem === this.defaultTab;
     }
 
-    @tuiPure
-    private getTabs(content: Record<string, string>): readonly string[] {
-        return [this.defaultTab, ...Object.keys(content)];
+    get componentName(): string {
+        return this.windowRef.location.pathname.slice(1);
     }
 
     copyExampleLink() {
@@ -87,5 +92,10 @@ export class TuiDocExampleComponent {
                 status: TuiNotification.Success,
             })
             .subscribe();
+    }
+
+    @tuiPure
+    private getTabs(content: Record<string, string>): readonly string[] {
+        return [this.defaultTab, ...Object.keys(content)];
     }
 }

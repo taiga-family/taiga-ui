@@ -1,6 +1,7 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {Title} from '@angular/platform-browser';
 import {
+    TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
@@ -15,6 +16,7 @@ import {PROMPT_PROVIDER} from '../customization/dialogs/examples/prompt/prompt.c
 import {SEE_ALSO_GROUPS} from './app.const';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {pages} from './pages';
+import {StackblitzService} from './stackblitz/stackblitz.service';
 
 export const DEFAULT_TABS = [
     $localize`Description and examples`,
@@ -74,5 +76,9 @@ export const APP_PROVIDERS = [
     {
         provide: TUI_DOC_LOGO,
         useValue: LOGO_CONTENT,
+    },
+    {
+        provide: TUI_DOC_CODE_EDITOR,
+        useClass: StackblitzService,
     },
 ];
