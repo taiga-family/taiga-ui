@@ -1,0 +1,36 @@
+<tui-doc-page header="ThemeNight" package="CORE">
+    <ng-template pageTab>
+        <p i18n>
+            <code>ThemeNight</code> is a
+            <a tuiLink routerLink="/tui-theme-switcher">
+                <code>ThemeSwitcher</code>
+            </a>
+            that you can use, together with
+            <a tuiLink routerLink="/tui-mode"><code>Mode</code></a>
+            directive to create a night mode in you application.
+        </p>
+
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import <code>TuiThemeNightModule</code> and
+                    <code>TuiModeModule</code> into your main module:
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

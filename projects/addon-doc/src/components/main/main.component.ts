@@ -6,8 +6,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
-import {Subject} from 'rxjs';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import {Subject} from 'rxjs';
 
 // @dynamic
 @Component({
