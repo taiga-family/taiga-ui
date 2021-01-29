@@ -11,9 +11,8 @@ import {
     SecurityContext,
     ViewEncapsulation,
 } from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_EDITOR_STYLES} from '@taiga-ui/addon-editor/tokens';
-import {TUI_SANITIZER} from '@taiga-ui/cdk';
+import {TUI_SANITIZER} from '@taiga-ui/core';
 
 // @dynamic
 @Component({
@@ -40,7 +39,7 @@ export class TuiEditorSocketComponent {
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+        @Inject(Sanitizer) private readonly sanitizer: Sanitizer,
         @Inject(DOCUMENT) {head}: Document,
         @Inject(TUI_EDITOR_STYLES) styles: string,
         @Optional()
