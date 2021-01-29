@@ -24,7 +24,6 @@ import {
     isNativeFocused,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TUI_SANITIZER,
     TuiDestroyService,
     TuiEventWith,
     TuiFocusableElementAccessor,
@@ -34,6 +33,7 @@ import {
 } from '@taiga-ui/cdk';
 import {merge, Observable} from 'rxjs';
 import {filter, mapTo, take, takeUntil} from 'rxjs/operators';
+import {TUI_SANITIZER} from '@taiga-ui/core';
 
 @Directive({
     selector: 'iframe[tuiDesignMode]',

@@ -12,7 +12,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_EDITOR_STYLES} from '@taiga-ui/addon-editor/tokens';
-import {TUI_SANITIZER} from '@taiga-ui/cdk';
+import {TUI_SANITIZER} from '@taiga-ui/core';
 
 // @dynamic
 @Component({
