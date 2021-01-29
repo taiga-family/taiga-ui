@@ -2,6 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {Component, Inject, ViewEncapsulation} from '@angular/core';
 import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
+// @dynamic
 @Component({
     selector: 'tui-theme-night',
     template: '',

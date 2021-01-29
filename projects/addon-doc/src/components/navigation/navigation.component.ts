@@ -4,6 +4,7 @@ import {Title} from '@angular/platform-browser';
 import {tuiPure, uniqBy} from '@taiga-ui/cdk';
 import {getScreenWidth, TuiModeDirective} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 import {TuiDocPage} from '../../interfaces/page';
 import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
 import {TuiDocPages} from '../../types/pages';
@@ -14,7 +15,6 @@ import {
     NAVIGATION_PROVIDERS,
     NAVIGATION_TITLE,
 } from './navigation.providers';
-import {map, startWith} from 'rxjs/operators';
 
 const SMALL_TABLET_SCREEN = 767;
 const SCROLL_INTO_VIEW_DELAY = 200;
