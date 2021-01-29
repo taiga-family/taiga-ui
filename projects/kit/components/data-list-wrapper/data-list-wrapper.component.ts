@@ -3,7 +3,6 @@ import {
     Component,
     ElementRef,
     forwardRef,
-    Inject,
     Input,
     QueryList,
     ViewChildren,
@@ -19,7 +18,6 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_ACCESSOR,
-    TUI_NOTHING_FOUND_MESSAGE,
     TuiDataListAccessor,
     TuiOptionComponent,
     TuiSizeL,
@@ -27,7 +25,6 @@ import {
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-data-list-wrapper:not([labels])',
@@ -65,11 +62,6 @@ export class TuiDataListWrapperComponent<T> implements TuiDataListAccessor<T> {
 
     @ViewChildren(forwardRef(() => TuiOptionComponent))
     private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
-
-    constructor(
-        @Inject(TUI_NOTHING_FOUND_MESSAGE)
-        readonly defaultEmptyContent$: Observable<string>,
-    ) {}
 
     getContext(
         $implicit: T,

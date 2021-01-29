@@ -1,3 +1,4 @@
+<tui-theme-night *ngIf="night"></tui-theme-night>
 <tui-root>
     <div class="tui-doc-page">
         <tui-doc-navigation class="tui-doc-navigation">
@@ -8,6 +9,14 @@
         </div>
     </div>
     <header tuiDocHeader>
+        <label>
+            Night mode
+            <tui-toggle
+                class="tui-space_left-2"
+                [ngModel]="night"
+                (ngModelChange)="onMode($event)"
+            ></tui-toggle>
+        </label>
         <ng-content select="tuiDocHeader"></ng-content>
     </header>
     <ng-container ngProjectAs="tuiOverDialogs">

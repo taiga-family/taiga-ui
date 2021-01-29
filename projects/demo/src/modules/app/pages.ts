@@ -728,6 +728,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: 'ThemeNight',
+        keywords: 'theme, dark, night, тема, тэг',
+        route: '/tui-theme-night',
+    },
+    {
+        section: $localize`Components`,
         title: 'ThemeSwitcher',
         keywords: 'тема, blue, цвета, стили, кастомизация, синий, синяя',
         route: '/tui-theme-switcher',

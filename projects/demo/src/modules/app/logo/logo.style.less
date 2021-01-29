@@ -3,6 +3,10 @@
 :host {
     display: flex;
     align-items: center;
+
+    @media @mobile {
+        font-size: 0;
+    }
 }
 
 .logo {
@@ -11,7 +15,6 @@
 }
 
 .by {
-    opacity: 0.4;
     margin-left: 14px;
 
     @media @mobile {
