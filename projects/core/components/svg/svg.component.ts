@@ -165,12 +165,12 @@ export class TuiSvgComponent {
         return !this.isShadowDOM || !this.isName ? '' : this.sanitize(icon || '');
     }
 
-    private sanitize(src: string): SafeHtml {
-        return this.sanitizer.bypassSecurityTrustHtml(
-            (this.tuiSanitizer
-                ? this.tuiSanitizer.sanitize(SecurityContext.HTML, src)
-                : this.sanitizer.sanitize(SecurityContext.HTML, src)) || '',
-        );
+    private sanitize(src: string): SafeHtml | string {
+        return this.tuiSanitizer
+            ? this.sanitizer.bypassSecurityTrustHtml(
+                  this.tuiSanitizer.sanitize(SecurityContext.HTML, src) || '',
+              )
+            : src;
     }
 
     // @bad TODO: Create a simple XMLHttpRequest to Observable service

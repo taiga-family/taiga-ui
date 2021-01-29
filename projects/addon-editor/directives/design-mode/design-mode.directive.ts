@@ -15,7 +15,6 @@ import {
     SecurityContext,
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_EDITOR_STYLES, TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
 import {tuiInsertHtml} from '@taiga-ui/addon-editor/utils';
 import {
@@ -89,7 +88,7 @@ export class TuiDesignModeDirective
         private readonly styles: string,
         @Inject(TUI_IMAGE_LOADER)
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+        @Inject(Sanitizer) private readonly sanitizer: Sanitizer,
         @Optional()
         @Inject(TUI_SANITIZER)
         private readonly tuiSanitizer: Sanitizer | null,
