@@ -31,9 +31,9 @@ import {
     tuiRequiredSetter,
     typedFromEvent,
 } from '@taiga-ui/cdk';
+import {TUI_SANITIZER} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
 import {filter, mapTo, take, takeUntil} from 'rxjs/operators';
-import {TUI_SANITIZER} from '@taiga-ui/core';
 
 @Directive({
     selector: 'iframe[tuiDesignMode]',
