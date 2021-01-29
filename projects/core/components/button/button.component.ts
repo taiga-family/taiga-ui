@@ -110,7 +110,7 @@ export class TuiButtonComponent
     }
 
     get loaderSize(): TuiSizeS {
-        return this.size === 'l' ? 'm' : 's';
+        return this.size === 'l' || this.size === 'xl' ? 'm' : 's';
     }
 
     @HostBinding('attr.disabled')
