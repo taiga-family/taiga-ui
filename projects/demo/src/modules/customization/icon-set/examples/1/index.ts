@@ -19,7 +19,6 @@ export function iconsPath(name: string): string {
 @Component({
     selector: 'tui-icon-set-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     providers: [
         {
             provide: TUI_ICONS_PATH,
