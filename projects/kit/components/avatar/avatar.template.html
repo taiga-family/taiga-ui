@@ -1,6 +1,7 @@
 <img
     *ngIf="isUrlValid"
     class="image"
+    loading="lazy"
     [attr.alt]="text"
     [src]="avatarUrl"
     (error)="onError()"
