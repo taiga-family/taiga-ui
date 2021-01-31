@@ -2,15 +2,12 @@
 
 :host {
     .text-body-m();
+
     position: relative;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 32px;
     margin: auto;
-    background: var(--tui-base-01);
-    background-clip: padding-box;
-    border-radius: 56px;
     border: 40px solid transparent;
 
     &:after {
@@ -51,7 +48,14 @@
         min-height: 100vh;
         border-radius: 0;
         border: none;
-        padding: 48px ~'calc(50vw - 720px / 2)';
+        background: var(--tui-base-01);
+
+        .dialog-host {
+            flex: 1 1 auto;
+            display: inherit;
+            flex-direction: inherit;
+            padding: 48px ~'calc(50vw - 720px / 2)';
+        }
 
         &:after {
             border-radius: 0;
@@ -68,6 +72,7 @@
 
     @media @mobile {
         &[data-size] {
+            background: var(--tui-base-01);
             min-width: 100vw;
             width: 100vw;
             max-width: 100vw;
@@ -83,6 +88,21 @@
             .heading {
                 margin-bottom: 8px;
             }
+        }
+    }
+}
+
+.dialog-host {
+    background: var(--tui-base-01);
+    padding: 32px;
+    border-radius: 16px;
+}
+
+@media @mobile {
+    :host[data-size] {
+        .dialog-host {
+            padding: 0;
+            border-radius: 0;
         }
     }
 }
@@ -110,7 +130,7 @@
     }
 
     :host[data-size='fullscreen'] & {
-        margin: -48px ~'calc(720px / 2 - 50vw)' 0;
+        margin: -48px ~'calc(600px / 2 - 50vw)' 0;
         padding-bottom: 48px;
         border-radius: 0;
     }
