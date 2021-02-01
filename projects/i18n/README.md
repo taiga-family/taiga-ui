@@ -13,6 +13,8 @@ Supported languages:
 
 -   **Russian**: 100%
 
+-   **Spanish**: 100%
+
 It's a part of [**Taiga UI**](https://github.com/TinkoffCreditSystems/taiga-ui) that is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons
 
 ## How to install
