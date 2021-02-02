@@ -1,0 +1,151 @@
+@mixin text-basic() {
+    @include text-body-s();
+    color: var(--tui-text-01);
+}
+
+//headings
+@mixin text-h1() {
+    @include font_heading(50px, 56px);
+}
+
+@mixin text-h2() {
+    @include font_heading(40px, 44px);
+}
+
+@mixin text-h3() {
+    @include font_heading(30px, 36px);
+}
+
+@mixin text-h4() {
+    @include font_heading(28px, 32px);
+}
+
+@mixin text-h5() {
+    @include font_heading(24px, 28px);
+}
+
+@mixin text-h6() {
+    @include font_heading(20px, 24px);
+}
+
+//typed text
+@mixin text-body-xl-bold() {
+    @include font(19px, 28px, bold);
+}
+
+@mixin text-body-xl() {
+    @include font(19px, 28px, normal);
+}
+
+@mixin text-body-l-bold($type: 1) {
+    @include font(17px, 24px, bold);
+
+    @if ($type == 2) {
+        line-height: 20px;
+    }
+
+    @if ($type == 3) {
+        line-height: 28px;
+    }
+}
+
+@mixin text-body-l($type: 1) {
+    @include font(17px, 24px, normal);
+
+    @if ($type == 2) {
+        line-height: 20px;
+    }
+
+    @if ($type == 3) {
+        line-height: 28px;
+    }
+}
+
+@mixin text-body-m-bold($type: 1) {
+    @include font(15px, 24px, bold);
+
+    @if ($type == 2) {
+        line-height: 20px;
+    }
+}
+
+@mixin text-body-m($type: 1) {
+    @include font(15px, 24px, normal);
+
+    @if ($type == 2) {
+        line-height: 20px;
+    }
+}
+
+@mixin text-body-s-bold($type: 1) {
+    @include font(13px, 20px, bold);
+
+    @if ($type == 2) {
+        line-height: 16px;
+    }
+}
+
+@mixin text-body-s($type: 1) {
+    @include font(13px, 20px, normal);
+
+    @if ($type == 2) {
+        line-height: 16px;
+    }
+}
+
+@mixin text-body-xs() {
+    @include font(11px, 16px, normal);
+    letter-spacing: 0.4px;
+}
+
+//tabs, tags, category
+
+@mixin text-caption-l-bold() {
+    @include font(13px, 20px, bold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+@mixin text-caption-l() {
+    @include font(13px, 20px, normal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+@mixin text-caption-bold() {
+    @include font(11px, 16px, bold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+@mixin text-caption() {
+    @include font(11px, 16px, normal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+// mixins for font properties
+@mixin font($size, $line-height: 'none', $weight: normal, $color: 'none') {
+    font-weight: $weight;
+    font-size: $size;
+    font-family: var(--tui-text-font);
+
+    @if ($line-height != 'none') {
+        line-height: $line-height;
+    }
+
+    @if ($color != 'none') {
+        color: $color;
+    }
+
+    @if ($line-height != 'none') {
+        line-height: $line-height;
+    }
+}
+
+@mixin font_heading($size, $line-height: normal) {
+    font-weight: bold;
+    line-height: $line-height;
+    font-size: $size;
+    font-family: var(--tui-font-heading);
+}

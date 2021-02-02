@@ -525,7 +525,10 @@
                         "baseHref": "/",
                         "deployUrl": "/",
                         "showCircularDependencies": false,
-                        "styles": ["projects/demo/src/styles.less"],
+                        "styles": [
+                            "projects/demo/src/styles.less",
+                            "projects/demo/src/styles.scss"
+                        ],
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         },
@@ -695,5 +698,8 @@
             }
         }
     },
-    "defaultProject": "demo"
+    "defaultProject": "demo",
+    "cli": {
+        "analytics": "ce6ae05d-f6ae-4271-89e4-40e616f7090f"
+    }
 }

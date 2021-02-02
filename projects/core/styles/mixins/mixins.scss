@@ -1,0 +1,332 @@
+// centering with translate
+@mixin center-left() {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+@mixin center-top() {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+@mixin center-all() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// clearfix
+@mixin clearfix() {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+//.fullsize
+@mixin fullsize($position: absolute, $mode: height) {
+    position: $position;
+    top: 0;
+    left: 0;
+
+    @if ($mode == height) {
+        width: 100%;
+        height: 100%;
+    }
+
+    @if ($mode == inset) {
+        bottom: 0;
+        right: 0;
+    }
+}
+
+@mixin clearbtn() {
+    appearance: none;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+@mixin clearinput() {
+    padding: 0;
+    border: 0;
+    border-radius: inherit;
+    background: none;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    color: inherit;
+    caret-color: currentColor;
+    outline: none;
+    appearance: none;
+    word-break: keep-all;
+    -webkit-text-fill-color: currentColor; // for Safari
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+        border-radius: inherit;
+        -webkit-text-fill-color: inherit !important;
+        color: inherit !important;
+        background-color: transparent !important;
+        -webkit-box-shadow: 0 0 0 1000px var(--tui-autofill) inset !important; // to overlay native background
+    }
+}
+
+@mixin visually-hidden() {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(0);
+}
+
+// customize native scroll
+@mixin customize-scroll() {
+    // exclude non-supporting browsers
+    @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 100px;
+            background-clip: padding-box;
+            border: 6px solid transparent;
+        }
+
+        &::-webkit-scrollbar {
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--tui-clear-hover);
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: var(--tui-clear-active);
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+            background-color: var(--tui-text-03);
+        }
+    }
+}
+
+// shadow
+@mixin shadow($mode: 1) {
+    // Default
+    @if ($mode == 1) {
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    // Dropdown
+    @if ($mode == 2) {
+        box-shadow: 0 8px 16px rgba(51, 51, 51, 0.2);
+    }
+
+    // Modal
+    @if ($mode == 3) {
+        box-shadow: 0 18px 30px rgba(51, 51, 51, 0.52);
+    }
+
+    // Sidebar
+    @if ($mode == 4) {
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+    }
+
+    // Hover
+    @if ($mode == 5) {
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+    }
+
+    // Navigation
+    @if ($mode == 6) {
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    // Modal mobile
+    @if ($mode == 7) {
+        box-shadow: 0 -16px 28px rgba(51, 51, 51, 0.24);
+    }
+}
+
+@mixin inset-border($direction: bottom, $mode: none) {
+    @if ($direction == bottom) {
+        box-shadow: inset 0 -1px var(--tui-base-03);
+
+        @if ($mode == light) {
+            box-shadow: inset 0 -1px rgba(255, 255, 255, 0.24);
+        }
+
+        @if ($mode == dark) {
+            box-shadow: inset 0 -1px rgba(51, 51, 51, 0.24);
+        }
+    }
+
+    @if ($direction == top) {
+        box-shadow: inset 0 1px var(--tui-base-03);
+
+        @if ($mode == light) {
+            box-shadow: inset 0 1px rgba(255, 255, 255, 0.24);
+        }
+
+        @if ($mode == dark) {
+            box-shadow: inset 0 1px rgba(51, 51, 51, 0.24);
+        }
+    }
+
+    @if ($direction == left) {
+        box-shadow: inset 1px 0 var(--tui-base-03);
+
+        @if ($mode == light) {
+            box-shadow: inset 1px 0 rgba(255, 255, 255, 0.24);
+        }
+
+        @if ($mode == dark) {
+            box-shadow: inset 1px 0 rgba(51, 51, 51, 0.24);
+        }
+    }
+
+    @if ($direction == right) {
+        box-shadow: inset -1px 0 var(--tui-base-03);
+
+        @if ($mode == light) {
+            box-shadow: inset -1px 0 rgba(255, 255, 255, 0.24);
+        }
+
+        @if ($mode == dark) {
+            box-shadow: inset -1px 0 rgba(51, 51, 51, 0.24);
+        }
+    }
+}
+
+// transition
+@mixin transition($param, $speed: 0.3s) {
+    transition-property: $param;
+    transition-duration: $speed;
+    transition-timing-function: ease-in-out;
+}
+
+// dashed border
+@mixin dashed-border($color: currentColor, $alignment: bottom, $spacing: 4) {
+    $size: $spacing * 1px;
+    $percentage: (100% / $spacing * 2);
+    background-image: linear-gradient(to right, $color 0%, $color $percentage, transparent $percentage);
+    background-position: 0 $alignment;
+    background-size: $size 1px;
+    background-repeat: repeat-x;
+}
+
+// typical opacity properties for icons
+@mixin opacity-icon() {
+    opacity: 0.8;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+@mixin hoverable-with-shadow() {
+    @include shadow();
+    @include transition(all);
+    cursor: pointer;
+    transition-property: transform, box-shadow;
+    will-change: transform, box-shadow;
+
+    &:hover {
+        @include shadow(5);
+        transform: translateY(-$space);
+    }
+}
+
+// gradient
+@mixin gradient($start-color, $end-color, $angle: 45deg) {
+    background-image: linear-gradient($angle, $start-color 0%, $end-color 100%);
+}
+
+// typical properties for text overflow with ellipsis
+@mixin text-overflow() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* stylelint-disable selector-max-specificity */
+@mixin text-overflow-with-fade(
+    $color: rgba(255, 255, 255, 1),
+    $transparentColor: rgba(255, 255, 255, 0),
+    $width: 30px
+) {
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: $width;
+        height: 100%;
+        background-image: linear-gradient(to right, $transparentColor 0%, $color 80%, $color 100%);
+        pointer-events: none;
+    }
+}
+/* stylelint-enable selector-max-specificity */
+
+@mixin createStackingContext() {
+    position: relative;
+    z-index: 0;
+}
+
+//spaces
+@mixin tui-space($direction, $size) {
+    @if ($direction == all) {
+        margin: $space * $size;
+    }
+
+    @if ($direction == top) {
+        margin-top: $space * $size;
+    }
+
+    @if ($direction == bottom) {
+        margin-bottom: $space * $size;
+    }
+
+    @if ($direction == vertical) {
+        margin-top: $space * $size;
+        margin-bottom: $space * $size;
+    }
+
+    @if ($direction == left) {
+        margin-left: $space * $size;
+    }
+
+    @if ($direction == right) {
+        margin-right: $space * $size;
+    }
+
+    @if ($direction == horizontal) {
+        margin-right: $space * $size;
+        margin-left: $space * $size;
+    }
+}
+
+@mixin contrast-background($background) {
+    background: $background;
+    color: contrast($background, #333, #fff);
+}
+
+@mixin blurred-background($color: #fff) {
+    background: rgba($color, 70%);
+    backdrop-filter: blur(7px);
+}
