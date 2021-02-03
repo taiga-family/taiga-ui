@@ -40,7 +40,7 @@ export class TuiCheckboxComponent
     @Input()
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
-    size: TuiSizeL;
+    size: TuiSizeL = this.options.size;
 
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
@@ -51,11 +51,10 @@ export class TuiCheckboxComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(TUI_CHECKBOX_OPTIONS)
-        options: CheckboxOptions,
+        private readonly options: CheckboxOptions,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(control, changeDetectorRef);
-        this.size = options.size;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
