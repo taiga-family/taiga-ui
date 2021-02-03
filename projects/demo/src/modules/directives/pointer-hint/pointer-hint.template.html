@@ -18,6 +18,8 @@
                 i18n
                 tuiPointerHint="Some information"
                 [tuiHintMode]="mode"
+                [tuiHintShowDelay]="showDelay"
+                [tuiHintHideDelay]="hideDelay"
                 [tuiHintDirection]="direction"
             >
                 It is followed inside the block
@@ -31,6 +33,22 @@
                 documentationPropertyType="PolymorpheusContent | null"
             >
                 Hint content
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiHintShowDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="showDelay"
+            >
+                Show Delay
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiHintHideDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="hideDelay"
+            >
+                Hide Delay
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>

@@ -61,4 +61,8 @@ export class ExampleTuiTooltipComponent {
     direction: TuiDirection = this.directionVariants[2];
 
     describeId = '';
+
+    showDelay = 0;
+
+    hideDelay = 0;
 }

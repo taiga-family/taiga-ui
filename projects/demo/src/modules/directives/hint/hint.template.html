@@ -18,6 +18,8 @@
                 tuiHint="Your data is hidden"
                 [tuiHintMode]="mode"
                 [tuiHintId]="id"
+                [tuiHintShowDelay]="showDelay"
+                [tuiHintHideDelay]="hideDelay"
                 [tuiHintDirection]="direction"
             >
                 Hover it!
@@ -44,6 +46,22 @@
                 <code>describeId</code> and use
                 <code>[tuiDescribedBy]="theSameId"</code> directive on focusable
                 element
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiHintShowDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="showDelay"
+            >
+                Show Delay
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiHintHideDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="hideDelay"
+            >
+                Hide Delay
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
