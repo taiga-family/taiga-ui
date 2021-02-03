@@ -5,67 +5,66 @@
 
 // headings
 
+// deprecated
 @mixin text-h1() {
     font: var(--tui-font-heading-1);
 }
 
+// deprecated
 @mixin text-h2() {
     font: var(--tui-font-heading-2);
 }
 
+// deprecated
 @mixin text-h3() {
     font: var(--tui-font-heading-3);
 }
 
+// deprecated
 @mixin text-h4() {
     font: var(--tui-font-heading-4);
 }
 
+// deprecated
 @mixin text-h5() {
     font: var(--tui-font-heading-5);
 }
 
+// deprecated
 @mixin text-h6() {
     font: var(--tui-font-heading-6);
 }
 
 // typed text
 
+// deprecated
 @mixin text-body-xl() {
     font: var(--tui-font-text-xl);
 }
 
+// deprecated
 @mixin text-body-l() {
     font: var(--tui-font-text-l);
 }
 
+// deprecated
 @mixin text-body-m() {
     font: var(--tui-font-text-m);
 }
 
+// deprecated
 @mixin text-body-s() {
     font: var(--tui-font-text-s);
 }
 
+// deprecated
 @mixin text-body-xs() {
     font: var(--tui-font-text-xs);
 }
 
-// tabs, tags, category
-
-@mixin text-caption-l() {
-    font: var(--tui-font-caption-l);
-    text-transform: uppercase;
-}
-
-@mixin text-caption() {
-    font: var(--tui-font-caption-m);
-    text-transform: uppercase;
-}
-
 // mixins for font properties
-// deprecated
 
+// deprecated
 @mixin font($size, $line-height: 'none', $weight: normal, $color: 'none') {
     font-weight: $weight;
     font-size: $size;
