@@ -32,7 +32,8 @@
 
 .content {
     .fullsize();
-    .text-body-m(2);
+    .text-body-m();
+    line-height: 20px;
     display: flex;
     max-height: 100%;
     flex-direction: column;
@@ -55,11 +56,13 @@
     color: var(--tui-text-01);
 
     :host[data-tui-host-size='l'] & {
-        .text-body-l-bold();
+        .text-body-l();
+        font-weight: bold;
     }
 
     :host[data-tui-host-size='m'] & {
-        .text-body-m-bold();
+        .text-body-m();
+        font-weight: bold;
     }
 }
 

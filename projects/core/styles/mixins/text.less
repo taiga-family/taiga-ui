@@ -3,128 +3,71 @@
     color: var(--tui-text-01);
 }
 
-//headings
+// headings
+
 .text-h1() {
-    .font_heading(50px, 56px);
+    font: var(--tui-font-heading-1);
 }
 
 .text-h2() {
-    .font_heading(40px, 44px);
+    font: var(--tui-font-heading-2);
 }
 
 .text-h3() {
-    .font_heading(30px, 36px);
+    font: var(--tui-font-heading-3);
 }
 
 .text-h4() {
-    .font_heading(28px, 32px);
+    font: var(--tui-font-heading-4);
 }
 
 .text-h5() {
-    .font_heading(24px, 28px);
+    font: var(--tui-font-heading-5);
 }
 
 .text-h6() {
-    .font_heading(20px, 24px);
+    font: var(--tui-font-heading-6);
 }
 
-//typed text
-.text-body-xl-bold() {
-    .font(19px, 28px, bold);
-}
+// typed text
 
 .text-body-xl() {
-    .font(19px, 28px, normal);
+    font: var(--tui-font-text-xl);
 }
 
-.text-body-l-bold(@type: 1) {
-    .font(17px, 24px, bold);
-
-    & when (@type = 2) {
-        line-height: 20px;
-    }
-
-    & when (@type = 3) {
-        line-height: 28px;
-    }
+.text-body-l() {
+    font: var(--tui-font-text-l);
 }
 
-.text-body-l(@type: 1) {
-    .font(17px, 24px, normal);
-
-    & when (@type = 2) {
-        line-height: 20px;
-    }
-
-    & when (@type = 3) {
-        line-height: 28px;
-    }
+.text-body-m() {
+    font: var(--tui-font-text-m);
 }
 
-.text-body-m-bold(@type: 1) {
-    .font(15px, 24px, bold);
-
-    & when (@type = 2) {
-        line-height: 20px;
-    }
-}
-
-.text-body-m(@type: 1) {
-    .font(15px, 24px, normal);
-
-    & when (@type = 2) {
-        line-height: 20px;
-    }
-}
-
-.text-body-s-bold(@type: 1) {
-    .font(13px, 20px, bold);
-
-    & when (@type = 2) {
-        line-height: 16px;
-    }
-}
-
-.text-body-s(@type: 1) {
-    .font(13px, 20px, normal);
-
-    & when (@type = 2) {
-        line-height: 16px;
-    }
+.text-body-s() {
+    font: var(--tui-font-text-s);
 }
 
 .text-body-xs() {
-    .font(11px, 16px, normal);
-    letter-spacing: 0.4px;
+    font: var(--tui-font-text-xs);
 }
 
-//tabs, tags, category
-
-.text-caption-l-bold() {
-    .font(13px, 20px, bold);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
+// tabs, tags, category
 
 .text-caption-l() {
-    .font(13px, 20px, normal);
-    letter-spacing: 1px;
+    font: var(--tui-font-caption-l);
     text-transform: uppercase;
-}
-
-.text-caption-bold() {
-    .font(11px, 16px, bold);
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    letter-spacing: 0.075em;
 }
 
 .text-caption() {
-    .font(11px, 16px, normal);
-    letter-spacing: 1px;
+    font: var(--tui-font-caption-m);
     text-transform: uppercase;
+    letter-spacing: 0.075em;
 }
 
 // mixins for font properties
+// deprecated
+
 .font(@size, @line-height: 'none', @weight: normal, @color: 'none') {
     font-weight: @weight;
     font-size: @size;
@@ -137,11 +80,4 @@
 
 .font(@size, @line-height: 'none', @weight: normal, @color: 'none') when not (@color = 'none') {
     color: @color;
-}
-
-.font_heading(@size, @line-height: normal) {
-    font-weight: bold;
-    line-height: @line-height;
-    font-size: @size;
-    font-family: var(--tui-font-heading);
 }

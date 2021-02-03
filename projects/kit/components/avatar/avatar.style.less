@@ -22,13 +22,15 @@
     overflow: hidden;
 
     &[data-tui-host-size='xs'] {
-        .text-body-s(2);
+        .text-body-s();
+        line-height: 16px;
         width: @size-xs;
         height: @size-xs;
     }
 
     &[data-tui-host-size='s'] {
-        .text-body-m(2);
+        .text-body-m();
+        line-height: 20px;
         width: @size-s;
         height: @size-s;
     }

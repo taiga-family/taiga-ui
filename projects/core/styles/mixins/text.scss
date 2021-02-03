@@ -3,128 +3,69 @@
     color: var(--tui-text-01);
 }
 
-//headings
+// headings
+
 @mixin text-h1() {
-    @include font_heading(50px, 56px);
+    font: var(--tui-font-heading-1);
 }
 
 @mixin text-h2() {
-    @include font_heading(40px, 44px);
+    font: var(--tui-font-heading-2);
 }
 
 @mixin text-h3() {
-    @include font_heading(30px, 36px);
+    font: var(--tui-font-heading-3);
 }
 
 @mixin text-h4() {
-    @include font_heading(28px, 32px);
+    font: var(--tui-font-heading-4);
 }
 
 @mixin text-h5() {
-    @include font_heading(24px, 28px);
+    font: var(--tui-font-heading-5);
 }
 
 @mixin text-h6() {
-    @include font_heading(20px, 24px);
+    font: var(--tui-font-heading-6);
 }
 
-//typed text
-@mixin text-body-xl-bold() {
-    @include font(19px, 28px, bold);
-}
+// typed text
 
 @mixin text-body-xl() {
-    @include font(19px, 28px, normal);
+    font: var(--tui-font-text-xl);
 }
 
-@mixin text-body-l-bold($type: 1) {
-    @include font(17px, 24px, bold);
-
-    @if ($type == 2) {
-        line-height: 20px;
-    }
-
-    @if ($type == 3) {
-        line-height: 28px;
-    }
+@mixin text-body-l() {
+    font: var(--tui-font-text-l);
 }
 
-@mixin text-body-l($type: 1) {
-    @include font(17px, 24px, normal);
-
-    @if ($type == 2) {
-        line-height: 20px;
-    }
-
-    @if ($type == 3) {
-        line-height: 28px;
-    }
+@mixin text-body-m() {
+    font: var(--tui-font-text-m);
 }
 
-@mixin text-body-m-bold($type: 1) {
-    @include font(15px, 24px, bold);
-
-    @if ($type == 2) {
-        line-height: 20px;
-    }
-}
-
-@mixin text-body-m($type: 1) {
-    @include font(15px, 24px, normal);
-
-    @if ($type == 2) {
-        line-height: 20px;
-    }
-}
-
-@mixin text-body-s-bold($type: 1) {
-    @include font(13px, 20px, bold);
-
-    @if ($type == 2) {
-        line-height: 16px;
-    }
-}
-
-@mixin text-body-s($type: 1) {
-    @include font(13px, 20px, normal);
-
-    @if ($type == 2) {
-        line-height: 16px;
-    }
+@mixin text-body-s() {
+    font: var(--tui-font-text-s);
 }
 
 @mixin text-body-xs() {
-    @include font(11px, 16px, normal);
-    letter-spacing: 0.4px;
+    font: var(--tui-font-text-xs);
 }
 
-//tabs, tags, category
-
-@mixin text-caption-l-bold() {
-    @include font(13px, 20px, bold);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
+// tabs, tags, category
 
 @mixin text-caption-l() {
-    @include font(13px, 20px, normal);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-@mixin text-caption-bold() {
-    @include font(11px, 16px, bold);
-    letter-spacing: 1px;
+    font: var(--tui-font-caption-l);
     text-transform: uppercase;
 }
 
 @mixin text-caption() {
-    @include font(11px, 16px, normal);
-    letter-spacing: 1px;
+    font: var(--tui-font-caption-m);
     text-transform: uppercase;
 }
 
 // mixins for font properties
+// deprecated
+
 @mixin font($size, $line-height: 'none', $weight: normal, $color: 'none') {
     font-weight: $weight;
     font-size: $size;
@@ -141,11 +82,4 @@
     @if ($line-height != 'none') {
         line-height: $line-height;
     }
-}
-
-@mixin font_heading($size, $line-height: normal) {
-    font-weight: bold;
-    line-height: $line-height;
-    font-size: $size;
-    font-family: var(--tui-font-heading);
 }
