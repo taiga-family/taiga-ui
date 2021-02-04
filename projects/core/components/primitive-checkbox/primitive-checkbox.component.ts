@@ -6,9 +6,9 @@ import {
     Input,
 } from '@angular/core';
 import {TuiContextWithImplicit, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
-import {CheckboxOptions, TUI_CHECKBOX_OPTIONS} from '@taiga-ui/core/components';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {CheckboxOptions, TUI_CHECKBOX_OPTIONS} from './checkbox-options';
 
 // @dynamic
 @Component({
