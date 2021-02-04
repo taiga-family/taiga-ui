@@ -5,21 +5,22 @@
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki) • [Core team](https://github.com/TinkoffCreditSystems/taiga-ui/#core-team)
 
+<!-- Do not change next line without i18n demo page -->
+
 > A package with tools for Taiga UI library i18n
 
 Supported languages:
 
--   **English**: by default
+| Language             |    Constant name     | Coverage |
+| -------------------- | :------------------: | -------: |
+| English (by default) | TUI_ENGLISH_LANGUAGE |     100% |
+| Russian              | TUI_RUSSIAN_LANGUAGE |     100% |
+| Spanish              | TUI_SPANISH_LANGUAGE |     100% |
+| German               | TUI_GERMAN_LANGUAGE  |     100% |
+| Turkish              | TUI_TURKISH_LANGUAGE |     100% |
+| Dutch                |  TUI_DUTCH_LANGUAGE  |     100% |
 
--   **Russian**: 100%
-
--   **Spanish**: 100%
-
--   **German**: 100%
-
--   **Turkish**: 100%
-
--   **Dutch**: 100%
+<!-- Do not change next line without i18n demo page -->
 
 It's a part of [**Taiga UI**](https://github.com/TinkoffCreditSystems/taiga-ui) that is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons
 
@@ -50,6 +51,18 @@ export class AppModule {}
 ```
 
 You can also switch languages on the fly. Use `useFactory` or `useClass` with a service to make a stream of dictionaries.
+
+If you extremely struggle against every byte of your app, you can build a custom language dictionary with constants:
+
+```ts
+// If we plan to use CORE and KIT packages only
+export const CUSTOM_RUSSIAN_LANGUAGE: Language = {
+    ...TUI_RUSSIAN_LANGUAGE_CORE,
+    ...TUI_RUSSIAN_LANGUAGE_KIT,
+    // ...TUI_RUSSIAN_LANGUAGE_ADDON_COMMERCE,
+    // ...TUI_RUSSIAN_LANGUAGE_ADDON_TABLE,
+};
+```
 
 ## How to add a language
 
