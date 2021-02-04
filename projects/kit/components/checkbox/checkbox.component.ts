@@ -19,8 +19,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
-import {CheckboxOptions, TUI_CHECKBOX_OPTIONS} from './checkbox-options';
+import {CheckboxOptions, TUI_CHECKBOX_OPTIONS, TuiSizeL} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-checkbox',
@@ -36,7 +35,7 @@ import {CheckboxOptions, TUI_CHECKBOX_OPTIONS} from './checkbox-options';
 })
 export class TuiCheckboxComponent
     extends AbstractTuiNullableControl<boolean>
-    implements TuiFocusableElementAccessor, CheckboxOptions {
+    implements TuiFocusableElementAccessor {
     @Input()
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
@@ -68,11 +67,7 @@ export class TuiCheckboxComponent
     }
 
     get computedFocusable(): boolean {
-        if (this.computedDisabled || this.readOnly) {
-            return false;
-        }
-
-        return this.focusable;
+        return !this.computedDisabled && !this.readOnly && this.focusable;
     }
 
     onChecked(checked: boolean) {
