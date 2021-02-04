@@ -52,7 +52,7 @@ export class AppModule {}
 
 You can also switch languages on the fly. Use `useFactory` or `useClass` with a service to make a stream of dictionaries.
 
-If you extrymly struggle against every byte of your app, you can build a custom language dictionary with constants:
+If you extremely struggle against every byte of your app, you can build a custom language dictionary with constants:
 
 ```ts
 // If we plan to use CORE and KIT packages only
