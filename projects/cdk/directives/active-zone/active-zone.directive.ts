@@ -77,8 +77,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
         }
 
         this.tuiActiveZoneChange = merge(
-            // TODO: Remove generic after TypeScript uprade
-            typedFromEvent<FocusEvent>(windowRef, 'focusout').pipe(
+            typedFromEvent(windowRef, 'focusout').pipe(
                 filter(event => {
                     const actualTarget = getActualTarget(event);
 
@@ -92,8 +91,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
                 }),
                 mapTo(false),
             ),
-            // TODO: Remove generic after TypeScript uprade
-            typedFromEvent<FocusEvent>(windowRef, 'focusin').pipe(
+            typedFromEvent(windowRef, 'focusin').pipe(
                 map(event => this.contains(getActualTarget(event))),
             ),
             typedFromEvent(windowRef, 'mousedown').pipe(
@@ -134,8 +132,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
                         // @bad TODO: Think of a way to handle this without side-effects
                         skipNextFocusOut = true;
 
-                        // TODO: Remove generic after TypeScript uprade
-                        return typedFromEvent<FocusEvent>(windowRef, 'focusout').pipe(
+                        return typedFromEvent(windowRef, 'focusout').pipe(
                             take(1),
                             mapTo(targetInZone),
                         );
