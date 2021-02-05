@@ -3,6 +3,10 @@ const HEIGHT_SEARCH = 'height="';
 const START = '<svg';
 
 export function processIcon(source: string, name: string): string {
+    if (source.includes(`id="${name}"`)) {
+        return source;
+    }
+
     const src = source.substring(source.indexOf(START));
     const attributes = src.substring(0, src.indexOf('>'));
 
@@ -11,10 +15,12 @@ export function processIcon(source: string, name: string): string {
         !attributes.includes(WIDTH_SEARCH) ||
         !attributes.includes(HEIGHT_SEARCH)
     ) {
-        return src.replace(
-            START,
-            `<svg xmlns="http://www.w3.org/2000/svg"><g id="${name}" xmlns="http://www.w3.org/2000/svg"><svg`,
-        ) + '</g></svg>';
+        return (
+            src.replace(
+                START,
+                `<svg xmlns="http://www.w3.org/2000/svg"><g id="${name}" xmlns="http://www.w3.org/2000/svg"><svg`,
+            ) + '</g></svg>'
+        );
     }
 
     const indexOfWidth = attributes.indexOf(WIDTH_SEARCH);
