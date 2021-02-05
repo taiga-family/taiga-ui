@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "2.2.1",
+    "version": "2.4.0",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "scripts": {
         "start": "ng serve",

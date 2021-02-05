@@ -1,5 +1,5 @@
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiInputNumberModule} from '@taiga-ui/addon-commerce';
+import {TuiInputNumberModule} from '@taiga-ui/kit';
 
 ...
 

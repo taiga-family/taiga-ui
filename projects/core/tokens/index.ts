@@ -9,6 +9,7 @@ export * from './icons';
 export * from './icons-path';
 export * from './mode';
 export * from './option-content';
+export * from './sanitizer';
 export * from './scroll-ref';
 export * from './textfield-appearance';
 export * from './value-accessor';

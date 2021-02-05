@@ -1,5 +1,6 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
+import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '../../../change-detection-strategy';
@@ -15,6 +16,7 @@ export class WrapperComponent {
     readonly example1: FrontEndExample = {
         HTML: example1Html,
         LESS: example1Less,
+        TypeScript: example1Ts,
     };
 
     readonly state: Record<string, string> = {

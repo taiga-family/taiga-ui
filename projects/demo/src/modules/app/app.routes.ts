@@ -63,9 +63,7 @@ export const ROUTES = [
     {
         path: 'dialogs',
         loadChildren: () =>
-            import(`../customization/dialogs/dialogs.module`).then(
-                m => m.DialogsModule,
-            ),
+            import(`../customization/dialogs/dialogs.module`).then(m => m.DialogsModule),
         data: {
             title: `Dialogs`,
         },
@@ -760,6 +758,16 @@ export const ROUTES = [
             import(`../components/tag/tag.module`).then(m => m.ExampleTuiTagModule),
         data: {
             title: 'Tag',
+        },
+    },
+    {
+        path: 'tui-theme-night',
+        loadChildren: () =>
+            import(`../components/theme-night/theme-night.module`).then(
+                m => m.ExampleTuiThemeNightModule,
+            ),
+        data: {
+            title: 'ThemeNight',
         },
     },
     {

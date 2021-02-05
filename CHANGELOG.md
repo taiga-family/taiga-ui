@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.3.0...v2.4.0) (2021-02-02)
+
+### Features
+
+-   **core:** add scss mixin support ([#165](https://github.com/TinkoffCreditSystems/taiga-ui/issues/165)) ([865bbaa](https://github.com/TinkoffCreditSystems/taiga-ui/commit/865bbaafb5cac5587dd3ffc20eacfa2283329b10))
+-   **i18n:** Add German with 100% support ([#198](https://github.com/TinkoffCreditSystems/taiga-ui/issues/198)) ([54f1284](https://github.com/TinkoffCreditSystems/taiga-ui/commit/54f12843e3521543cb39effea64c66e9440de1c9))
+-   **i18n:** add Spanish with 100% support ([#191](https://github.com/TinkoffCreditSystems/taiga-ui/issues/191)) ([6f9a19e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/6f9a19e7cdee34445cdfe26584a91bd7bcd64291))
+-   **kit:** use lazy loading strategy in avatar component ([#185](https://github.com/TinkoffCreditSystems/taiga-ui/issues/185)) ([d6ea803](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d6ea8032a11a546e7c65474d9991da46030e7e08))
+
+### Bug Fixes
+
+-   **button:** fix button loader size for XL ([#174](https://github.com/TinkoffCreditSystems/taiga-ui/issues/174)) ([f9929fe](https://github.com/TinkoffCreditSystems/taiga-ui/commit/f9929fef2d73cbf829f8d9f53150316d04c739ca))
+-   **cdk:** fix isFirefox check ([#158](https://github.com/TinkoffCreditSystems/taiga-ui/issues/158)) ([8e9c7a4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/8e9c7a45301ef1500faafccc447e503846417527))
+-   **core:** `Button` fix margin for right aligned icons ([#173](https://github.com/TinkoffCreditSystems/taiga-ui/issues/173)) ([a3f9ed5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a3f9ed5a4ab6b650130c16616bb8f20e78d8d718))
+
+## [2.3.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.2.1...v2.3.0) (2021-01-29)
+
+### Features
+
+-   **core:** add `ThemeNight` component ([#167](https://github.com/TinkoffCreditSystems/taiga-ui/issues/167)) ([a953be7](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a953be715ac1c624bf4b2b1d12631715fd376234))
+-   **demo:** add `Wrapper` customization page ([#153](https://github.com/TinkoffCreditSystems/taiga-ui/issues/153)) ([eef8382](https://github.com/TinkoffCreditSystems/taiga-ui/commit/eef83822593c20f8de8c398ed1e4e705578d11bf))
+-   **demo:** add guide on using different icon set ([#157](https://github.com/TinkoffCreditSystems/taiga-ui/issues/157)) ([b35a891](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b35a89181cb59e6ae5f80a54d52ea266490152c1))
+-   **demo:** add page on custom dialogs ([#159](https://github.com/TinkoffCreditSystems/taiga-ui/issues/159)) ([13e17a1](https://github.com/TinkoffCreditSystems/taiga-ui/commit/13e17a13c0e2a805984425f19ad04b6979abdfb0))
+-   **format:** number formatting supports custom thousands separator ([#145](https://github.com/TinkoffCreditSystems/taiga-ui/issues/145)) ([a8c0743](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a8c0743dae7ad432576d1e6f567943a28e7c8a37))
+
+### Bug Fixes
+
+-   **cdk:** fix isFirefox check ([#158](https://github.com/TinkoffCreditSystems/taiga-ui/issues/158)) ([8e9c7a4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/8e9c7a45301ef1500faafccc447e503846417527))
+-   **core:** `Svg` properly use Angular `Sanitizer` ([#170](https://github.com/TinkoffCreditSystems/taiga-ui/issues/170)) ([249392d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/249392d2727c7af1d0da404ae0f2619a08847857))
+-   **core:** fix new CSS vars for height name mismatch ([#149](https://github.com/TinkoffCreditSystems/taiga-ui/issues/149)) ([aa7c961](https://github.com/TinkoffCreditSystems/taiga-ui/commit/aa7c9617ed42b767a118e2c145e2ba6bc4cb54d8))
+
 ### [2.2.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.2.0...v2.2.1) (2021-01-22)
 
 ### Bug Fixes

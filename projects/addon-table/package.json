@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-table",
-    "version": "2.2.1",
+    "version": "2.4.0",
     "description": "A library to display tabled data with filters, search, group actions, etc.",
     "keywords": [
         "angular",
@@ -17,12 +17,12 @@
         "@angular/common": ">=7.0.0",
         "@angular/core": ">=7.0.0",
         "@tinkoff/ng-polymorpheus": ">=3.0.0",
-        "@taiga-ui/cdk": "2.2.1",
-        "@taiga-ui/core": "2.2.1",
-        "@taiga-ui/i18n": "2.2.1",
+        "@taiga-ui/cdk": "2.4.0",
+        "@taiga-ui/core": "2.4.0",
+        "@taiga-ui/i18n": "2.4.0",
         "rxjs": ">=6.0.0"
     },
     "devDependencies": {
-        "@taiga-ui/core": "2.2.1"
+        "@taiga-ui/core": "2.4.0"
     }
 }

@@ -77,10 +77,7 @@ describe('Svg', () => {
             testComponent.svgComponent.innerHTML$
                 .pipe(filter(result => !!result))
                 .subscribe(html => {
-                    expect(
-                        (html as {changingThisBreaksApplicationSecurity: string})
-                            .changingThisBreaksApplicationSecurity,
-                    ).toBe('Text');
+                    expect(html).toBe('<svg>Text</svg>');
                     done();
                 });
         });
@@ -136,20 +133,14 @@ describe('Svg', () => {
             testComponent.svgComponent.innerHTML$
                 .pipe(filter(result => !!result))
                 .subscribe(html => {
-                    expect(
-                        (html as {changingThisBreaksApplicationSecurity: string})
-                            .changingThisBreaksApplicationSecurity,
-                    ).toBe(STATIC_REQUEST_MOCK_RESULT);
+                    expect(html).toBe(STATIC_REQUEST_MOCK_RESULT);
                     done();
                 });
         });
 
         it('innerHTML$ handles error correctly', done => {
             testComponent.svgComponent.innerHTML$.pipe(skip(2)).subscribe(result => {
-                expect(
-                    (result as {changingThisBreaksApplicationSecurity: string})
-                        .changingThisBreaksApplicationSecurity,
-                ).toBe('');
+                expect(result).toBe('');
                 done();
             });
 

@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/i18n",
-    "version": "2.2.1",
+    "version": "2.4.0",
     "description": "A package with tools for Taiga UI library i18n",
     "keywords": [
         "angular",
