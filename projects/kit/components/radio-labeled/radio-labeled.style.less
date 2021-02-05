@@ -1,7 +1,7 @@
 @import 'taiga-ui-local';
 
 :host {
-    .text-body-s();
+    font: var(--tui-font-text-s);
     line-height: 16px;
     position: relative;
     display: block;
@@ -35,7 +35,7 @@
     }
 
     :host[data-tui-host-size='l'] & {
-        .text-body-m();
+        font: var(--tui-font-text-m);
         margin-left: 12px;
     }
 }

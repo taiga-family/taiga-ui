@@ -38,23 +38,79 @@
 // typed text
 
 // deprecated
+@mixin text-body-xl-bold() {
+    font: var(--tui-font-text-xl);
+    font-weight: bold;
+}
+
+// deprecated
 @mixin text-body-xl() {
     font: var(--tui-font-text-xl);
 }
 
 // deprecated
-@mixin text-body-l() {
+@mixin text-body-l-bold($type: 1) {
     font: var(--tui-font-text-l);
+    font-weight: bold;
+
+    @if ($type == 2) {
+        line-height: 20px;
+    }
+
+    @if ($type == 3) {
+        line-height: 28px;
+    }
 }
 
 // deprecated
-@mixin text-body-m() {
+@mixin text-body-l($type: 1) {
+    font: var(--tui-font-text-l);
+
+    @if ($type == 2) {
+        line-height: 20px;
+    }
+
+    @if ($type == 3) {
+        line-height: 28px;
+    }
+}
+
+// deprecated
+@mixin text-body-m-bold($type: 1) {
     font: var(--tui-font-text-m);
+    font-weight: bold;
+
+    @if ($type == 2) {
+        line-height: 20px;
+    }
 }
 
 // deprecated
-@mixin text-body-s() {
+@mixin text-body-m($type: 1) {
+    font: var(--tui-font-text-m);
+
+    @if ($type == 2) {
+        line-height: 20px;
+    }
+}
+
+// deprecated
+@mixin text-body-s-bold($type: 1) {
     font: var(--tui-font-text-s);
+    font-weight: bold;
+
+    @if ($type == 2) {
+        line-height: 16px;
+    }
+}
+
+// deprecated
+@mixin text-body-s($type: 1) {
+    font: var(--tui-font-text-s);
+
+    @if ($type == 2) {
+        line-height: 16px;
+    }
 }
 
 // deprecated
@@ -62,7 +118,45 @@
     font: var(--tui-font-text-xs);
 }
 
+//tabs, tags, category
+
+// deprecated
+@mixin text-caption-l-bold() {
+    @include font(13px, 20px, bold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+// deprecated
+@mixin text-caption-l() {
+    @include font(13px, 20px, normal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+// deprecated
+@mixin text-caption-bold() {
+    @include font(11px, 16px, bold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+// deprecated
+@mixin text-caption() {
+    @include font(11px, 16px, normal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
 // mixins for font properties
+
+// deprecated
+@mixin font_heading($size, $line-height: normal) {
+    font-weight: bold;
+    line-height: $line-height;
+    font-size: $size;
+    font-family: var(--tui-font-heading);
+}
 
 // deprecated
 @mixin font($size, $line-height: 'none', $weight: normal, $color: 'none') {

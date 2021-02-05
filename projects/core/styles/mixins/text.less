@@ -1,5 +1,5 @@
 .text-basic() {
-    .text-body-s();
+    font: var(--tui-font-text-s);
     color: var(--tui-text-01);
 }
 
@@ -38,23 +38,79 @@
 // typed text
 
 // deprecated
+.text-body-xl-bold() {
+    font: var(--tui-font-text-xl);
+    font-weight: bold;
+}
+
+// deprecated
 .text-body-xl() {
     font: var(--tui-font-text-xl);
 }
 
 // deprecated
-.text-body-l() {
+.text-body-l-bold(@type: 1) {
     font: var(--tui-font-text-l);
+    font-weight: bold;
+
+    & when (@type = 2) {
+        line-height: 20px;
+    }
+
+    & when (@type = 3) {
+        line-height: 28px;
+    }
 }
 
 // deprecated
-.text-body-m() {
+.text-body-l(@type: 1) {
+    font: var(--tui-font-text-l);
+
+    & when (@type = 2) {
+        line-height: 20px;
+    }
+
+    & when (@type = 3) {
+        line-height: 28px;
+    }
+}
+
+// deprecated
+.text-body-m-bold(@type: 1) {
     font: var(--tui-font-text-m);
+    font-weight: bold;
+
+    & when (@type = 2) {
+        line-height: 20px;
+    }
 }
 
 // deprecated
-.text-body-s() {
+.text-body-m(@type: 1) {
+    font: var(--tui-font-text-m);
+
+    & when (@type = 2) {
+        line-height: 20px;
+    }
+}
+
+// deprecated
+.text-body-s-bold(@type: 1) {
     font: var(--tui-font-text-s);
+    font-weight: bold;
+
+    & when (@type = 2) {
+        line-height: 16px;
+    }
+}
+
+// deprecated
+.text-body-s(@type: 1) {
+    font: var(--tui-font-text-s);
+
+    & when (@type = 2) {
+        line-height: 16px;
+    }
 }
 
 // deprecated
@@ -62,7 +118,45 @@
     font: var(--tui-font-text-xs);
 }
 
+//tabs, tags, category
+
+// deprecated
+.text-caption-l-bold() {
+    .font(13px, 20px, bold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+// deprecated
+.text-caption-l() {
+    .font(13px, 20px, normal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+// deprecated
+.text-caption-bold() {
+    .font(11px, 16px, bold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+// deprecated
+.text-caption() {
+    .font(11px, 16px, normal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
 // mixins for font properties
+
+// deprecated
+.font_heading(@size, @line-height: normal) {
+    font-weight: bold;
+    line-height: @line-height;
+    font-size: @size;
+    font-family: var(--tui-font-heading);
+}
 
 // deprecated
 .font(@size, @line-height: 'none', @weight: normal, @color: 'none') {
