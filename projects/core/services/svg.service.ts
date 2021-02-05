@@ -62,7 +62,7 @@ export class TuiSvgService {
     }
 
     private parseSrc(name: string, src: string): SafeHtml {
-        return this.sanitize(name.startsWith('tuiIcon') ? src : processIcon(src, name));
+        return this.sanitize(processIcon(src, name));
     }
 
     private sanitize(src: string): SafeHtml {
