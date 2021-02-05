@@ -6,15 +6,15 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface CheckboxOptions {
     readonly size: TuiSizeL;
-    readonly appearances: {
-        readonly unchecked: string;
-        readonly checked: string;
-        readonly indeterminate: string;
-    };
-    readonly icons: {
-        readonly checked: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
-        readonly indeterminate: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
-    };
+    readonly appearances: Readonly<{
+        unchecked: string;
+        checked: string;
+        indeterminate: string;
+    }>;
+    readonly icons: Readonly<{
+        checked: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
+        indeterminate: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
+    }>;
 }
 
 /** Default values for the checkbox options. */
