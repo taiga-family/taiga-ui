@@ -1,11 +1,11 @@
-<div class="dialog-host">
-    <header
-        *ngIf="header"
-        polymorpheus-outlet
-        class="header"
-        [content]="header"
-        [context]="context"
-    ></header>
+<header
+    *ngIf="header"
+    polymorpheus-outlet
+    class="header"
+    [content]="header"
+    [context]="context"
+></header>
+<div class="content">
     <h2 class="heading tui-text_{{h}}" [id]="context.id">{{context.label}}</h2>
     <section
         polymorpheus-outlet

@@ -46,7 +46,7 @@ export class TuiDialogComponent<O, I> {
     }
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeS | TuiSizeL | 'fullscreen' {
+    get size(): TuiSizeS | TuiSizeL | 'fullscreen' | 'page' {
         return this.context.size;
     }
 
@@ -72,7 +72,7 @@ export class TuiDialogComponent<O, I> {
 
     @HostBinding('@tuiSlideInTop')
     get slideInTop(): TuiAnimationOptions {
-        return this.size === 'fullscreen' || this.isMobile
+        return this.size === 'fullscreen' || this.size === 'page' || this.isMobile
             ? FULLSCREEN_DIALOGS_ANIMATION
             : SMALL_DIALOGS_ANIMATION;
     }
