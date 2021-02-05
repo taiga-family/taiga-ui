@@ -1,4 +1,3 @@
-export * from './checkbox-appearance';
 export * from './data-list-accessor';
 export * from './data-list-host';
 export * from './document-or-shadow-root';

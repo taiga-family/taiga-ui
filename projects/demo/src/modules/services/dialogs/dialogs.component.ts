@@ -30,7 +30,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 const TOKEN = `{
     provide: TUI_DIALOGS_CLOSE,
     deps: [Router],
-    useFactory: ({events}) => events.pipe(filter(event => event instanceof NavigationStart)),
+    useFactory: ({events}) => events,
 }`;
 
 @Component({

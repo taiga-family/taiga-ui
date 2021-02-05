@@ -1,3 +1,4 @@
+import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -13,6 +14,7 @@ import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
 })
 export class ExampleTuiPrimitiveCheckboxComponent {
     readonly exampleImportModule = exampleImportModule;
+    readonly exampleDefineOptions = exampleDefineOptions;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
     readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
