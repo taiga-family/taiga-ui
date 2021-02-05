@@ -84,7 +84,13 @@ export class ExampleTuiDialogsComponent {
 
     required = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiDialogSize> = ['s', 'm', 'l', 'fullscreen'];
+    readonly sizeVariants: ReadonlyArray<TuiDialogSize> = [
+        's',
+        'm',
+        'l',
+        'fullscreen',
+        'page',
+    ];
 
     size: TuiDialogSize = this.sizeVariants[1];
 
