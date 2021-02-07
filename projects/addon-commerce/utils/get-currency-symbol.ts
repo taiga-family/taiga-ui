@@ -57,6 +57,9 @@ export function getCurrencySymbol(currency: TuiCurrencyVariants): string | null 
         case TuiCurrency.Tenge:
         case TuiCurrencyCode.Tenge:
             return '₸';
+        case TuiCurrency.Hryvnia:
+        case TuiCurrencyCode.Hryvnia:
+            return '₴';
         default:
             return null;
     }
