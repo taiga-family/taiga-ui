@@ -3,7 +3,7 @@
 @padding: 12px;
 
 :host {
-    .text-body-s(2);
+    font: var(--tui-font-text-s);
     .transition(background-color);
     position: relative;
     display: inline-flex;
@@ -187,7 +187,7 @@
     }
 
     &[data-tui-host-size='s'] {
-        .text-body-xs();
+        font: var(--tui-font-text-xs);
         height: 20px;
         min-width: 20px;
     }

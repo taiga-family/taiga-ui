@@ -73,7 +73,7 @@
 }
 
 .header {
-    .text-body-l();
+    font: var(--tui-font-text-l);
     .transition(background);
     display: flex;
     align-items: center;
@@ -117,7 +117,7 @@
     }
 
     :host[data-tui-host-size='s'] & {
-        .text-body-m();
+        font: var(--tui-font-text-m);
         min-height: var(--tui-height-m);
         padding: 10px 12px 10px 16px;
     }
@@ -175,12 +175,12 @@
 }
 
 .content {
-    .text-body-m();
+    font: var(--tui-font-text-m);
     padding: 20px;
     word-wrap: break-word;
 
     :host[data-tui-host-size='s'] & {
-        .text-body-s();
+        font: var(--tui-font-text-s);
         padding: 16px;
     }
 }

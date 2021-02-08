@@ -6,7 +6,7 @@
 @margin: 7px;
 
 :host {
-    .text-body-m();
+    font: var(--tui-font-text-m);
     position: relative;
     z-index: 0;
     display: flex;
@@ -20,7 +20,7 @@
     }
 
     &[data-tui-host-size='m'] {
-        .text-body-s();
+        font: var(--tui-font-text-s);
         min-height: @height - 20px;
     }
 
@@ -213,7 +213,7 @@
 }
 
 .counter {
-    .text-body-s();
+    font: var(--tui-font-text-s);
     position: absolute;
     bottom: 8px;
     right: 12px;

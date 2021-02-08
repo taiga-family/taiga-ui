@@ -4,7 +4,7 @@
 @padding-large: 16px;
 
 :host {
-    .text-body-s();
+    font: var(--tui-font-text-s);
     display: flex;
     border-radius: var(--tui-radius-m);
     height: var(--tui-height-m);
@@ -15,7 +15,7 @@
     }
 
     &[data-tui-host-size='l'] {
-        .text-body-m();
+        font: var(--tui-font-text-m);
         height: var(--tui-height-l);
     }
 }

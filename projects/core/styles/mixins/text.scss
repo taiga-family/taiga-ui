@@ -3,42 +3,55 @@
     color: var(--tui-text-01);
 }
 
-//headings
+// headings
+
+// deprecated
 @mixin text-h1() {
-    @include font_heading(50px, 56px);
+    font: var(--tui-font-heading-1);
 }
 
+// deprecated
 @mixin text-h2() {
-    @include font_heading(40px, 44px);
+    font: var(--tui-font-heading-2);
 }
 
+// deprecated
 @mixin text-h3() {
-    @include font_heading(30px, 36px);
+    font: var(--tui-font-heading-3);
 }
 
+// deprecated
 @mixin text-h4() {
-    @include font_heading(28px, 32px);
+    font: var(--tui-font-heading-4);
 }
 
+// deprecated
 @mixin text-h5() {
-    @include font_heading(24px, 28px);
+    font: var(--tui-font-heading-5);
 }
 
+// deprecated
 @mixin text-h6() {
-    @include font_heading(20px, 24px);
+    font: var(--tui-font-heading-6);
 }
 
-//typed text
+// typed text
+
+// deprecated
 @mixin text-body-xl-bold() {
-    @include font(19px, 28px, bold);
+    font: var(--tui-font-text-xl);
+    font-weight: bold;
 }
 
+// deprecated
 @mixin text-body-xl() {
-    @include font(19px, 28px, normal);
+    font: var(--tui-font-text-xl);
 }
 
+// deprecated
 @mixin text-body-l-bold($type: 1) {
-    @include font(17px, 24px, bold);
+    font: var(--tui-font-text-l);
+    font-weight: bold;
 
     @if ($type == 2) {
         line-height: 20px;
@@ -49,8 +62,9 @@
     }
 }
 
+// deprecated
 @mixin text-body-l($type: 1) {
-    @include font(17px, 24px, normal);
+    font: var(--tui-font-text-l);
 
     @if ($type == 2) {
         line-height: 20px;
@@ -61,63 +75,73 @@
     }
 }
 
+// deprecated
 @mixin text-body-m-bold($type: 1) {
-    @include font(15px, 24px, bold);
+    font: var(--tui-font-text-m);
+    font-weight: bold;
 
     @if ($type == 2) {
         line-height: 20px;
     }
 }
 
+// deprecated
 @mixin text-body-m($type: 1) {
-    @include font(15px, 24px, normal);
+    font: var(--tui-font-text-m);
 
     @if ($type == 2) {
         line-height: 20px;
     }
 }
 
+// deprecated
 @mixin text-body-s-bold($type: 1) {
-    @include font(13px, 20px, bold);
+    font: var(--tui-font-text-s);
+    font-weight: bold;
 
     @if ($type == 2) {
         line-height: 16px;
     }
 }
 
+// deprecated
 @mixin text-body-s($type: 1) {
-    @include font(13px, 20px, normal);
+    font: var(--tui-font-text-s);
 
     @if ($type == 2) {
         line-height: 16px;
     }
 }
 
+// deprecated
 @mixin text-body-xs() {
-    @include font(11px, 16px, normal);
-    letter-spacing: 0.4px;
+    font: var(--tui-font-text-xs);
 }
 
 //tabs, tags, category
 
+// deprecated
 @mixin text-caption-l-bold() {
     @include font(13px, 20px, bold);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
+// deprecated
 @mixin text-caption-l() {
     @include font(13px, 20px, normal);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
+// deprecated
 @mixin text-caption-bold() {
     @include font(11px, 16px, bold);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
+// deprecated
 @mixin text-caption() {
     @include font(11px, 16px, normal);
     letter-spacing: 1px;
@@ -125,6 +149,16 @@
 }
 
 // mixins for font properties
+
+// deprecated
+@mixin font_heading($size, $line-height: normal) {
+    font-weight: bold;
+    line-height: $line-height;
+    font-size: $size;
+    font-family: var(--tui-font-heading);
+}
+
+// deprecated
 @mixin font($size, $line-height: 'none', $weight: normal, $color: 'none') {
     font-weight: $weight;
     font-size: $size;
@@ -141,11 +175,4 @@
     @if ($line-height != 'none') {
         line-height: $line-height;
     }
-}
-
-@mixin font_heading($size, $line-height: normal) {
-    font-weight: bold;
-    line-height: $line-height;
-    font-size: $size;
-    font-family: var(--tui-font-heading);
 }
