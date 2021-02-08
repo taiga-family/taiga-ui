@@ -18,8 +18,12 @@
     }
 }
 
-.initial:empty:before {
-    content: attr(data-text);
+.initial {
+    white-space: nowrap;
+
+    &:empty:before {
+        content: attr(data-text);
+    }
 }
 
 .content {
