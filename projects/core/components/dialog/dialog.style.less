@@ -1,29 +1,29 @@
 @import '../../styles/taiga-ui-local.less';
 
 :host {
-    .text-body-m();
+    font: var(--tui-font-text-m);
     position: relative;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 32px;
     margin: auto;
-    background: var(--tui-base-01);
-    background-clip: padding-box;
-    border-radius: 56px;
+    border-radius: 16px;
     border: 40px solid transparent;
 
     &:after {
         .fullsize();
         .shadow(3);
         content: '';
-        border-radius: 16px;
+        border-radius: inherit;
         pointer-events: none;
     }
 
     &[data-size='s'] {
         width: 480px;
-        padding: 24px;
+
+        .content {
+            padding: 24px;
+        }
 
         .heading {
             margin-bottom: 8px;
@@ -46,19 +46,26 @@
         }
     }
 
-    &[data-size='fullscreen'] {
+    &[data-size='fullscreen'],
+    &[data-size='page'] {
         width: 100vw;
         min-height: 100vh;
         border-radius: 0;
         border: none;
-        padding: 48px ~'calc(50vw - 720px / 2)';
+        background: var(--tui-base-01);
 
-        &:after {
-            border-radius: 0;
+        .content {
+            padding: 48px calc(50vw - 720px / 2);
         }
 
         .heading {
             margin-bottom: 16px;
+        }
+    }
+
+    &[data-size='page'] {
+        .content {
+            padding: 0;
         }
     }
 
@@ -74,10 +81,9 @@
             border-radius: 0;
             border: none;
             margin: auto 0 0;
-            padding: 32px 24px;
 
-            &:after {
-                border-radius: 0;
+            .content {
+                padding: 32px 24px;
             }
 
             .heading {
@@ -98,33 +104,25 @@
 
 .header {
     display: flex;
-    margin: -32px -32px 0;
-    padding-bottom: 32px;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
     overflow: hidden;
 
-    :host[data-size='s'] & {
-        margin: -24px -24px 0;
-        padding-bottom: 24px;
-    }
-
-    :host[data-size='fullscreen'] & {
-        margin: -48px ~'calc(720px / 2 - 50vw)' 0;
-        padding-bottom: 48px;
-        border-radius: 0;
-    }
-
     @media @mobile {
-        :host[data-size] & {
-            margin: -24px -24px 0;
-            padding-bottom: 32px;
-            border-radius: 0;
-        }
-
         :host[data-size='fullscreen'] & {
             flex: 1;
         }
+    }
+}
+
+.content {
+    border-radius: inherit;
+    padding: 32px;
+    background: var(--tui-base-01);
+
+    &:not(:first-child) {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
     }
 }
 
@@ -132,11 +130,6 @@
     position: sticky;
     top: 0;
     order: -1;
-
-    @media @mobile {
-        height: 24px;
-        margin: -32px -24px 0;
-    }
 }
 
 .close {

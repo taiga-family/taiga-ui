@@ -2,7 +2,7 @@
 
 :host {
     .clearbtn();
-    .text-body-m();
+    font: var(--tui-font-text-m);
     .transition(background);
     display: flex;
     width: 100%;
@@ -31,7 +31,7 @@
     }
 
     &[data-size='xs'] {
-        .text-body-s();
+        font: var(--tui-font-text-s);
         min-height: 32px + 16px;
     }
 

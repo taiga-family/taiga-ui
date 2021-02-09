@@ -17,4 +17,5 @@ export const enum TuiCurrencyCode {
     HongKong_dollar = '344',
     CanadianDollar = '124',
     ArmenianDram = '051',
+    Hryvnia = '980',
 }

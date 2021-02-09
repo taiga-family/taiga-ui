@@ -5,7 +5,7 @@
 
 .tui-form {
     &__header {
-        .text-h5();
+        font: var(--tui-font-heading-5);
         margin: @fields-space-large 0 @fields-space;
 
         &_margin-top_none {
@@ -25,7 +25,8 @@
         }
 
         @media @mobile {
-            .text-body-l-bold();
+            font: var(--tui-font-text-l);
+            font-weight: bold;
             margin-bottom: @fields-space-mobile;
         }
     }
@@ -84,7 +85,7 @@
     }
 
     &__field-note {
-        .text-body-s();
+        font: var(--tui-font-text-s);
         margin-top: @space;
         color: var(--tui-text-02);
     }

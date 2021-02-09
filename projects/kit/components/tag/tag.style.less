@@ -5,7 +5,7 @@
 
 :host {
     .transition(background);
-    .text-body-s(2);
+    font: var(--tui-font-text-s);
     position: relative;
     display: inline-block;
     border-radius: var(--tui-radius-s);
@@ -183,7 +183,7 @@
     white-space: pre;
 
     :host[data-tui-host-size='s'] & {
-        .text-body-xs();
+        font: var(--tui-font-text-xs);
         height: 20px;
         padding: 0 @padding;
     }
@@ -225,7 +225,7 @@
 }
 
 .edit {
-    .text-body-s(2);
+    font: var(--tui-font-text-s);
     .clearinput();
     position: absolute;
     top: 0;

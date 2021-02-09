@@ -1,5 +1,11 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
-import {TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    HostListener,
+    Inject,
+} from '@angular/core';
+import {isCurrentTarget, TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
@@ -40,7 +46,7 @@ export class TuiDialogComponent<O, I> {
     }
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeS | TuiSizeL | 'fullscreen' {
+    get size(): TuiSizeS | TuiSizeL | 'fullscreen' | 'page' {
         return this.context.size;
     }
 
@@ -66,9 +72,16 @@ export class TuiDialogComponent<O, I> {
 
     @HostBinding('@tuiSlideInTop')
     get slideInTop(): TuiAnimationOptions {
-        return this.size === 'fullscreen' || this.isMobile
+        return this.size === 'fullscreen' || this.size === 'page' || this.isMobile
             ? FULLSCREEN_DIALOGS_ANIMATION
             : SMALL_DIALOGS_ANIMATION;
+    }
+
+    @HostListener('click', ['$event'])
+    hostClick(event: MouseEvent) {
+        if (isCurrentTarget(event)) {
+            this.close();
+        }
     }
 
     close() {

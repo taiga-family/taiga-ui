@@ -1,15 +1,15 @@
 .tui-list {
-    .text-body-m();
+    font: var(--tui-font-text-m);
     list-style-type: none;
     color: var(--tui-text-01);
 
     &_large {
-        .text-body-l();
+        font: var(--tui-font-text-l);
     }
 
     &_small,
     &_extra-small {
-        .text-body-s();
+        font: var(--tui-font-text-s);
     }
 
     &_nested {
@@ -93,11 +93,12 @@
     }
 
     &__item-title {
-        .text-h5();
+        font: var(--tui-font-heading-5);
         margin: 0;
 
         .tui-list_small & {
-            .text-body-l-bold(2);
+            line-height: 20px;
+            font-weight: bold;
         }
     }
 

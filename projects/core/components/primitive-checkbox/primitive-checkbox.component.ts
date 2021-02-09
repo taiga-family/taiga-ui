@@ -5,10 +5,10 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiAppearance} from '@taiga-ui/core/enums';
-import {TUI_CHECKBOX_APPEARANCE} from '@taiga-ui/core/tokens';
+import {TuiContextWithImplicit, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core/types';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {CheckboxOptions, TUI_CHECKBOX_OPTIONS} from './checkbox-options';
 
 // @dynamic
 @Component({
@@ -21,7 +21,7 @@ export class TuiPrimitiveCheckboxComponent {
     @Input()
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = this.options.size;
 
     @Input()
     @tuiDefaultProp()
@@ -48,27 +48,36 @@ export class TuiPrimitiveCheckboxComponent {
     value: boolean | null = false;
 
     constructor(
-        @Inject(TUI_CHECKBOX_APPEARANCE)
-        private readonly appearances: readonly [TuiAppearance, TuiAppearance],
+        @Inject(TUI_CHECKBOX_OPTIONS) private readonly options: CheckboxOptions,
     ) {}
 
-    get appearance(): TuiAppearance {
-        return this.empty ? this.appearances[0] : this.appearances[1];
+    get appearance(): string {
+        switch (this.value) {
+            case false:
+                return this.options.appearances.unchecked;
+            case true:
+                return this.options.appearances.checked;
+            default:
+                return this.options.appearances.indeterminate;
+        }
     }
 
     get empty(): boolean {
         return this.value === false;
     }
 
-    get icon(): string {
-        return this.value === null ? this.iconIndeterminate : this.iconCheck;
+    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
+        return this.value === null
+            ? this.options.icons.indeterminate
+            : this.options.icons.checked;
     }
 
-    get iconCheck(): string {
-        return this.size === 'm' ? 'tuiIconCheck' : 'tuiIconCheckLarge';
+    get context(): TuiContextWithImplicit<TuiSizeL> {
+        return this.getContext(this.size);
     }
 
-    get iconIndeterminate(): string {
-        return this.size === 'm' ? 'tuiIconMinus' : 'tuiIconMinusLarge';
+    @tuiPure
+    private getContext($implicit: TuiSizeL): TuiContextWithImplicit<TuiSizeL> {
+        return {$implicit};
     }
 }

@@ -32,7 +32,7 @@
 
 .content {
     .fullsize();
-    .text-body-m(2);
+    font: var(--tui-font-text-m);
     display: flex;
     max-height: 100%;
     flex-direction: column;
@@ -47,7 +47,7 @@
     color: var(--tui-text-02);
 
     :host[data-tui-host-size='m'] & {
-        .text-body-xs();
+        font: var(--tui-font-text-xs);
     }
 }
 
@@ -55,11 +55,13 @@
     color: var(--tui-text-01);
 
     :host[data-tui-host-size='l'] & {
-        .text-body-l-bold();
+        font: var(--tui-font-text-l);
+        font-weight: bold;
     }
 
     :host[data-tui-host-size='m'] & {
-        .text-body-m-bold();
+        font: var(--tui-font-text-m);
+        font-weight: bold;
     }
 }
 

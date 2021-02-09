@@ -5,12 +5,14 @@
     [content]="header"
     [context]="context"
 ></header>
-<h2 class="heading tui-text_{{h}}" [id]="context.id">{{context.label}}</h2>
-<section
-    polymorpheus-outlet
-    [context]="context"
-    [content]="context.content"
-></section>
+<div class="content">
+    <h2 class="heading tui-text_{{h}}" [id]="context.id">{{context.label}}</h2>
+    <section
+        polymorpheus-outlet
+        [context]="context"
+        [content]="context.content"
+    ></section>
+</div>
 <div *ngIf="context.closeable" class="wrapper">
     <button
         tuiIconButton
