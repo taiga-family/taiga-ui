@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiResizableColumnModule} from '@taiga-ui/addon-table/components';
+import {TuiResizableColumnModule} from '@taiga-ui/addon-table/components/resizable-column';
 import {TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiCellDirective} from './cell.directive';
