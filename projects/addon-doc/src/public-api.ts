@@ -35,6 +35,7 @@ export * from './languages/russian';
 
 /* Tokens */
 export * from './tokens/code-editor';
+export * from './tokens/example-content-processor';
 export * from './tokens/default-tabs';
 export * from './tokens/i18n';
 export * from './tokens/logo';
