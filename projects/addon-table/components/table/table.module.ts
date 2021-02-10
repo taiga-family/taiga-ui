@@ -7,7 +7,7 @@ import {TuiCellDirective} from './cell.directive';
 import {TuiFindDirectivePipe} from './find-directive.pipe';
 import {TuiHeadDirective} from './head.directive';
 import {TuiTableComponent} from './table.component';
-import {TuiTheadDirective} from '@taiga-ui/addon-table/components/table/thead.directive';
+import {TuiTheadDirective} from './thead.directive';
 
 @NgModule({
     imports: [

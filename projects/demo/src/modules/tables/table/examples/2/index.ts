@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
+import {NgControl, ValidatorFn} from '@angular/forms';
 import {defaultSort, TuiComparator} from '@taiga-ui/addon-table';
 import {TuiDay} from '@taiga-ui/cdk';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
-import {NgControl, ValidatorFn} from '@angular/forms';
 
 interface Item {
     readonly name: string;
