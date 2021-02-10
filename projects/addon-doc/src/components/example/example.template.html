@@ -24,7 +24,7 @@
             tuiButton
             appearance="flat"
             size="s"
-            (click)="codeEditor.open(componentName, id, processedContent)"
+            (click)="codeEditor.open(componentName, id || '',  processedContent)"
         >
             Edit on {{codeEditor.name}}
         </button>
