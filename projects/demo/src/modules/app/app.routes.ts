@@ -1156,6 +1156,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'tui-table',
+        loadChildren: () =>
+            import(`../tables/table/table.module`).then(
+                m => m.ExampleTuiTableModule,
+            ),
+        data: {
+            title: 'Table',
+        },
+    },
+    {
         path: 'tui-table-pagination',
         loadChildren: () =>
             import(`../tables/table-pagination/table-pagination.module`).then(

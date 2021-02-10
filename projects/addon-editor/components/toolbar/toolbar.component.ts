@@ -25,6 +25,7 @@ import {
     EMPTY_QUERY,
     isFirefox,
     isNativeFocusedIn,
+    isNumber,
     setNativeFocused,
     tuiDefaultProp,
     TuiDestroyService,
@@ -279,7 +280,7 @@ export class TuiToolbarComponent {
             this.documentRef.queryCommandValue('foreColor') || 'rgb(51, 51, 51)';
 
         // Number in IE
-        return typeof color === 'number' ? this.numberToColor(color) : color;
+        return isNumber(color) ? this.numberToColor(color) : color;
     }
 
     get hiliteColor(): string {
@@ -288,7 +289,7 @@ export class TuiToolbarComponent {
             const color = this.documentRef.queryCommandValue('backColor');
 
             // Number in IE
-            return typeof color === 'number' && color !== IE_TRANSPARENT
+            return isNumber(color) && color !== IE_TRANSPARENT
                 ? this.numberToColor(color)
                 : color;
         }

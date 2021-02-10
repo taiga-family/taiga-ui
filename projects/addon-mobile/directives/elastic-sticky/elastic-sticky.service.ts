@@ -31,8 +31,8 @@ export class TuiElasticStickyService extends Observable<number> {
         @Inject(WINDOW) windowRef: Window,
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
-        super(subscriber => {
-            return ngZone.onStable
+        super(subscriber =>
+            ngZone.onStable
                 .pipe(
                     take(1),
                     switchMap(() => {
@@ -74,8 +74,8 @@ export class TuiElasticStickyService extends Observable<number> {
                     skip(1),
                     tuiZoneOptimized(ngZone),
                 )
-                .subscribe(subscriber);
-        });
+                .subscribe(subscriber),
+        );
     }
 
     private getInitialOffset(host: Element | Window, element: HTMLElement): number {

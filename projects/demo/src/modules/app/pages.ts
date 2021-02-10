@@ -718,6 +718,12 @@ export const pages: TuiDocPages = [
                 keywords: 'таблица, страницы, pagination, page',
                 route: '/tui-table-pagination',
             },
+            {
+                section: $localize`Components`,
+                title: 'Table',
+                keywords: 'таблица, data, cell',
+                route: '/tui-table',
+            },
         ],
     },
     {

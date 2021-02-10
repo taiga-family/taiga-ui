@@ -12,17 +12,17 @@ import {Observable} from 'rxjs';
 export class TuiReorderComponent<T = string> {
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<T> = [];
+    items: readonly T[] = [];
 
     @Input()
     @tuiDefaultProp()
-    enabled: ReadonlyArray<T> = [];
+    enabled: readonly T[] = [];
 
     @Output()
-    readonly itemsChange = new EventEmitter<ReadonlyArray<T>>();
+    readonly itemsChange = new EventEmitter<readonly T[]>();
 
     @Output()
-    readonly enabledChange = new EventEmitter<ReadonlyArray<T>>();
+    readonly enabledChange = new EventEmitter<readonly T[]>();
 
     constructor(
         @Inject(TUI_TABLE_SHOW_HIDE_MESSAGE) readonly showHideText$: Observable<string>,
@@ -41,15 +41,20 @@ export class TuiReorderComponent<T = string> {
             ? this.enabled.filter(item => item !== toggled)
             : this.enabled.concat(toggled);
 
-        this.enabled = enabled;
-        this.enabledChange.emit(enabled);
+        this.updateEnabled(enabled);
     }
 
-    drop(event: CdkDragDrop<string[]>) {
+    drop(event: CdkDragDrop<T>) {
         const items = [...this.items];
 
         moveItemInArray(items, event.previousIndex, event.currentIndex);
         this.items = items;
         this.itemsChange.emit(items);
+        this.updateEnabled(items.filter(item => this.enabled.indexOf(item) !== -1));
+    }
+
+    private updateEnabled(enabled: readonly T[]) {
+        this.enabled = enabled;
+        this.enabledChange.emit(enabled);
     }
 }

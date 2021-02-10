@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {isNumber, tuiDefaultProp} from '@taiga-ui/cdk';
 import {sizeBigger, TuiSizeL, TuiSizeS, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/enums';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -78,7 +78,7 @@ export class TuiBadgedContentComponent {
     }
 
     contentIsNumber(content: PolymorpheusContent): boolean {
-        return typeof content.valueOf() === 'number';
+        return isNumber(content.valueOf());
     }
 
     contentIsString(content: PolymorpheusContent): boolean {

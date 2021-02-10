@@ -1,0 +1,70 @@
+<tui-scrollbar waIntersectionRoot class="scrollbar" [hidden]="true">
+    <table
+        tuiTable
+        [data]="data"
+        [columns]="columns"
+    >
+        <ng-container *tuiHead="'name' of data; sorter: null">
+            Name
+        </ng-container>
+        <ng-container *tuiHead="'price' of data">Price,&nbsp;$</ng-container>
+        <ng-container *tuiHead="'quantity' of data">Quantity</ng-container>
+        <ng-container *tuiHead="'unit' of data">Units</ng-container>
+        <ng-container *tuiHead="'date' of data">Date</ng-container>
+        <ng-container *tuiHead="'total'; sorter: totalSorter">
+            <div class="head">Total</div>
+        </ng-container>
+
+        <ng-container
+            *tuiCell="'name' of data; sticky: true; let value; let item = item"
+        >
+            <tui-input
+                [ngModel]="value"
+                [ngModelOptions]="options"
+                (ngModelChange)="onValueChange($event, 'name', item)"
+            ></tui-input>
+        </ng-container>
+        <ng-container *tuiCell="'price' of data; let value; let item = item">
+            <tui-input
+                #model="ngModel"
+                tuiHintMode="error"
+                [tuiHintContent]="getError(model)"
+                [tuiValidator]="minPrice"
+                [ngModel]="value"
+                [ngModelOptions]="options"
+                (ngModelChange)="onValueChange($event, 'price', item)"
+            ></tui-input>
+        </ng-container>
+        <ng-container *tuiCell="'quantity' of data; let value; let item = item">
+            <tui-input-number
+                [ngModel]="value"
+                [ngModelOptions]="options"
+                (ngModelChange)="onValueChange($event, 'quantity', item)"
+            ></tui-input-number>
+        </ng-container>
+        <ng-container *tuiCell="'unit' of data; let value; let item = item">
+            <tui-select
+                [ngModel]="value"
+                [ngModelOptions]="options"
+                (ngModelChange)="onValueChange($event, 'unit', item)"
+            >
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [items]="units"
+                ></tui-data-list-wrapper>
+            </tui-select>
+        </ng-container>
+        <ng-container *tuiCell="'date' of data; let value; let item = item">
+            <tui-input-date
+                [ngModel]="value"
+                [ngModelOptions]="options"
+                (ngModelChange)="onValueChange($event, 'date', item)"
+            ></tui-input-date>
+        </ng-container>
+        <ng-container *tuiCell="'total' of data; let item = item">
+            <div class="right">{{getTotal(item) | tuiFormatNumber}}</div>
+        </ng-container>
+    </table>
+    <div class="loh"></div>
+</tui-scrollbar>
+<pre class="tui-space_top-6"><code>{{data | json}}</code></pre>
