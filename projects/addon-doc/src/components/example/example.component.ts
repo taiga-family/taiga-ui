@@ -15,6 +15,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {CodeEditor} from '../../interfaces/code-editor';
 import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';
+import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../tokens/example-content-processor';
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
@@ -33,9 +34,16 @@ export class TuiDocExampleComponent {
     description: string | null = null;
 
     @Input()
-    content: Record<string, string> = {};
+    set content(content: Record<string, string>) {
+        this.processedContent = this.processContent(content);
+    }
+
+    @Input()
+    componentName: string = this.windowRef.location.pathname.slice(1);
 
     activeItemIndex = 0;
+
+    processedContent: Record<string, string> = {};
 
     readonly defaultTab = this.texts[0];
 
@@ -53,6 +61,10 @@ export class TuiDocExampleComponent {
         @Optional()
         @Inject(TUI_DOC_CODE_EDITOR)
         readonly codeEditor: CodeEditor | null,
+        @Inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR)
+        private readonly processContent: (
+            content: Record<string, string>,
+        ) => Record<string, string>,
     ) {}
 
     get activeItem(): string {
@@ -60,21 +72,17 @@ export class TuiDocExampleComponent {
     }
 
     get tabs(): readonly string[] {
-        return this.getTabs(this.content);
+        return this.getTabs(this.processedContent);
     }
 
     get code(): string {
-        const code = this.content[this.activeItem];
+        const code = this.processedContent[this.activeItem];
 
         return code ? code.trim() : '';
     }
 
     get isDefaultItem(): boolean {
         return this.activeItem === this.defaultTab;
-    }
-
-    get componentName(): string {
-        return this.windowRef.location.pathname.slice(1);
     }
 
     copyExampleLink() {
