@@ -1,10 +1,10 @@
-import {InputMonth} from 'packageName';
+import {TuiInputMonthModule} from 'packageName';
 
 ...
 
 @NgModule({
     imports: [
         ...
-        InputMonth
+        TuiInputMonthModule
     ],
 ...

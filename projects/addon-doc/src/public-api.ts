@@ -26,6 +26,7 @@ export * from './components/page/page-tab.directive';
 export * from './constants/page-modules';
 
 /* Interfaces */
+export * from './interfaces/code-editor';
 export * from './interfaces/page';
 export * from './interfaces/source-code-path-options';
 
@@ -33,6 +34,8 @@ export * from './interfaces/source-code-path-options';
 export * from './languages/russian';
 
 /* Tokens */
+export * from './tokens/code-editor';
+export * from './tokens/example-content-processor';
 export * from './tokens/default-tabs';
 export * from './tokens/i18n';
 export * from './tokens/logo';

@@ -5,13 +5,17 @@ import {
     Component,
     Inject,
     Input,
+    Optional,
 } from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
-import {tuiPure} from '@taiga-ui/cdk';
+import {LOCATION} from '@ng-web-apis/common';
+import {TuiHandler, tuiPure} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {CodeEditor} from '../../interfaces/code-editor';
+import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';
+import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../tokens/example-content-processor';
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
@@ -30,9 +34,16 @@ export class TuiDocExampleComponent {
     description: string | null = null;
 
     @Input()
-    content: Record<string, string> = {};
+    set content(content: Record<string, string>) {
+        this.processedContent = this.processContent(content);
+    }
+
+    @Input()
+    componentName: string = this.location.pathname.slice(1);
 
     activeItemIndex = 0;
+
+    processedContent: Record<string, string> = {};
 
     readonly defaultTab = this.texts[0];
 
@@ -44,9 +55,17 @@ export class TuiDocExampleComponent {
         @Inject(Clipboard) private readonly clipboard: Clipboard,
         @Inject(TuiNotificationsService)
         private readonly notifications: TuiNotificationsService,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(LOCATION) private readonly location: Location,
         @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
         @Inject(TUI_DOC_EXAMPLE_TEXTS) readonly texts: [string, string, string],
+        @Optional()
+        @Inject(TUI_DOC_CODE_EDITOR)
+        readonly codeEditor: CodeEditor | null,
+        @Inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR)
+        private readonly processContent: TuiHandler<
+            Record<string, string>,
+            Record<string, string>
+        >,
     ) {}
 
     get activeItem(): string {
@@ -54,11 +73,11 @@ export class TuiDocExampleComponent {
     }
 
     get tabs(): readonly string[] {
-        return this.getTabs(this.content);
+        return this.getTabs(this.processedContent);
     }
 
     get code(): string {
-        const code = this.content[this.activeItem];
+        const code = this.processedContent[this.activeItem];
 
         return code ? code.trim() : '';
     }
@@ -67,17 +86,12 @@ export class TuiDocExampleComponent {
         return this.activeItem === this.defaultTab;
     }
 
-    @tuiPure
-    private getTabs(content: Record<string, string>): readonly string[] {
-        return [this.defaultTab, ...Object.keys(content)];
-    }
-
     copyExampleLink() {
-        const hashPosition = this.windowRef.location.href.indexOf('#');
+        const hashPosition = this.location.href.indexOf('#');
         const currentUrl =
             hashPosition > -1
-                ? this.windowRef.location.href.substr(0, hashPosition)
-                : this.windowRef.location.href;
+                ? this.location.href.substr(0, hashPosition)
+                : this.location.href;
         const url = `${currentUrl}#${this.id}`;
 
         this.clipboard.copy(url);
@@ -87,5 +101,10 @@ export class TuiDocExampleComponent {
                 status: TuiNotification.Success,
             })
             .subscribe();
+    }
+
+    @tuiPure
+    private getTabs(content: Record<string, string>): readonly string[] {
+        return [this.defaultTab, ...Object.keys(content)];
     }
 }
