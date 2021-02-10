@@ -7,8 +7,8 @@ import {
     Input,
     Optional,
 } from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
-import {tuiPure} from '@taiga-ui/cdk';
+import {LOCATION} from '@ng-web-apis/common';
+import {TuiHandler, tuiPure} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
@@ -39,7 +39,7 @@ export class TuiDocExampleComponent {
     }
 
     @Input()
-    componentName: string = this.windowRef.location.pathname.slice(1);
+    componentName: string = this.location.pathname.slice(1);
 
     activeItemIndex = 0;
 
@@ -55,16 +55,17 @@ export class TuiDocExampleComponent {
         @Inject(Clipboard) private readonly clipboard: Clipboard,
         @Inject(TuiNotificationsService)
         private readonly notifications: TuiNotificationsService,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(LOCATION) private readonly location: Location,
         @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
         @Inject(TUI_DOC_EXAMPLE_TEXTS) readonly texts: [string, string, string],
         @Optional()
         @Inject(TUI_DOC_CODE_EDITOR)
         readonly codeEditor: CodeEditor | null,
         @Inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR)
-        private readonly processContent: (
-            content: Record<string, string>,
-        ) => Record<string, string>,
+        private readonly processContent: TuiHandler<
+            Record<string, string>,
+            Record<string, string>
+        >,
     ) {}
 
     get activeItem(): string {
@@ -86,11 +87,11 @@ export class TuiDocExampleComponent {
     }
 
     copyExampleLink() {
-        const hashPosition = this.windowRef.location.href.indexOf('#');
+        const hashPosition = this.location.href.indexOf('#');
         const currentUrl =
             hashPosition > -1
-                ? this.windowRef.location.href.substr(0, hashPosition)
-                : this.windowRef.location.href;
+                ? this.location.href.substr(0, hashPosition)
+                : this.location.href;
         const url = `${currentUrl}#${this.id}`;
 
         this.clipboard.copy(url);
