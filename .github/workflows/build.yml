@@ -2,8 +2,6 @@ name: Build all packages of Taiga UI
 
 on:
   pull_request:
-    branches:
-      - '!release/**'
     paths:
       - 'projects/**'
       - '!projects/*testing/**'
@@ -15,6 +13,7 @@ on:
   push:
     branches:
       - main
+      - '!release/**'
 
 jobs:
   build:
