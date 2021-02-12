@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {TuiResizableColumnModule} from '@taiga-ui/addon-table/components/resizable-column';
 import {TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
@@ -25,5 +25,6 @@ import {TuiTheadDirective} from './thead.directive';
         TuiFindDirectivePipe,
     ],
     exports: [TuiTableComponent, TuiCellDirective, TuiHeadDirective],
+    schemas: [NO_ERRORS_SCHEMA],
 })
 export class TuiTableModule {}
