@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.4.0...v2.5.0) (2021-02-08)
+
+### Features
+
+-   **addon-commerce:** add UAH currency ([#214](https://github.com/TinkoffCreditSystems/taiga-ui/issues/214)) ([54f64a6](https://github.com/TinkoffCreditSystems/taiga-ui/commit/54f64a6490fb6f3d259a0cd49c7477eb4e0e359c))
+-   **common:** added CSS custom properties for fonts ([#201](https://github.com/TinkoffCreditSystems/taiga-ui/issues/201)) ([c9d527c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c9d527c0fb518b68a3f483b1d878c14221c90ef6))
+-   **core:** `Dialog` add `page` size for a fullscreen dialog without any padding ([#213](https://github.com/TinkoffCreditSystems/taiga-ui/issues/213)) ([523eaf9](https://github.com/TinkoffCreditSystems/taiga-ui/commit/523eaf909246509c7fa9e1baec1f58ca20c19986))
+-   **core:** `PrimitiveCheckbox` full customization through DI ([#209](https://github.com/TinkoffCreditSystems/taiga-ui/issues/209)) ([78e87b5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/78e87b5df496de3d73fbaa4d55c16a0dbb9d0a07))
+-   **i18n:** add Dutch with 100% support ([#206](https://github.com/TinkoffCreditSystems/taiga-ui/issues/206)) ([41c0554](https://github.com/TinkoffCreditSystems/taiga-ui/commit/41c055470494ed90a8090582e4cf19f18e639efe))
+-   **i18n:** add Turkish with 100% support ([#200](https://github.com/TinkoffCreditSystems/taiga-ui/issues/200)) ([a4de9d9](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a4de9d983edd6fa453019be6c424f496d8d882fd))
+-   **kit:** allow configuration of default checkbox options ([#139](https://github.com/TinkoffCreditSystems/taiga-ui/issues/139)) ([a977e6e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a977e6e65e048e0a053a89ed37698fa68ca2037f))
+
+### Bug Fixes
+
+-   **core:** `Svg` fix custom icons processing ([#212](https://github.com/TinkoffCreditSystems/taiga-ui/issues/212)) ([76ec2d8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/76ec2d8ead0e3ac326203d9c4984ee25656aa039))
+-   **core:** dialog not closing due to transparent border, closes [#148](https://github.com/TinkoffCreditSystems/taiga-ui/issues/148) ([#190](https://github.com/TinkoffCreditSystems/taiga-ui/issues/190)) ([c791da7](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c791da71f79b59b4f0feb5cc40be38d25943e972))
+-   **i18n:** correct inconsistencies in English translations ([#207](https://github.com/TinkoffCreditSystems/taiga-ui/issues/207)) ([977d7bd](https://github.com/TinkoffCreditSystems/taiga-ui/commit/977d7bd965630062bd9a2cefa565102332faf4bc))
+-   **kit:** `Tabs` clicking on external links will not update active index ([#218](https://github.com/TinkoffCreditSystems/taiga-ui/issues/218)) ([4fee5a3](https://github.com/TinkoffCreditSystems/taiga-ui/commit/4fee5a386d58ba7a2d44263ebec4013ee93acb14))
+
+## [2.4.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.3.0...v2.4.0) (2021-02-02)
+
+### Features
+
+-   **core:** add scss mixin support ([#165](https://github.com/TinkoffCreditSystems/taiga-ui/issues/165)) ([865bbaa](https://github.com/TinkoffCreditSystems/taiga-ui/commit/865bbaafb5cac5587dd3ffc20eacfa2283329b10))
+-   **i18n:** Add German with 100% support ([#198](https://github.com/TinkoffCreditSystems/taiga-ui/issues/198)) ([54f1284](https://github.com/TinkoffCreditSystems/taiga-ui/commit/54f12843e3521543cb39effea64c66e9440de1c9))
+-   **i18n:** add Spanish with 100% support ([#191](https://github.com/TinkoffCreditSystems/taiga-ui/issues/191)) ([6f9a19e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/6f9a19e7cdee34445cdfe26584a91bd7bcd64291))
+-   **kit:** use lazy loading strategy in avatar component ([#185](https://github.com/TinkoffCreditSystems/taiga-ui/issues/185)) ([d6ea803](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d6ea8032a11a546e7c65474d9991da46030e7e08))
+
+### Bug Fixes
+
+-   **button:** fix button loader size for XL ([#174](https://github.com/TinkoffCreditSystems/taiga-ui/issues/174)) ([f9929fe](https://github.com/TinkoffCreditSystems/taiga-ui/commit/f9929fef2d73cbf829f8d9f53150316d04c739ca))
+-   **cdk:** fix isFirefox check ([#158](https://github.com/TinkoffCreditSystems/taiga-ui/issues/158)) ([8e9c7a4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/8e9c7a45301ef1500faafccc447e503846417527))
+-   **core:** `Button` fix margin for right aligned icons ([#173](https://github.com/TinkoffCreditSystems/taiga-ui/issues/173)) ([a3f9ed5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a3f9ed5a4ab6b650130c16616bb8f20e78d8d718))
+
+## [2.3.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.2.1...v2.3.0) (2021-01-29)
+
+### Features
+
+-   **core:** add `ThemeNight` component ([#167](https://github.com/TinkoffCreditSystems/taiga-ui/issues/167)) ([a953be7](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a953be715ac1c624bf4b2b1d12631715fd376234))
+-   **demo:** add `Wrapper` customization page ([#153](https://github.com/TinkoffCreditSystems/taiga-ui/issues/153)) ([eef8382](https://github.com/TinkoffCreditSystems/taiga-ui/commit/eef83822593c20f8de8c398ed1e4e705578d11bf))
+-   **demo:** add guide on using different icon set ([#157](https://github.com/TinkoffCreditSystems/taiga-ui/issues/157)) ([b35a891](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b35a89181cb59e6ae5f80a54d52ea266490152c1))
+-   **demo:** add page on custom dialogs ([#159](https://github.com/TinkoffCreditSystems/taiga-ui/issues/159)) ([13e17a1](https://github.com/TinkoffCreditSystems/taiga-ui/commit/13e17a13c0e2a805984425f19ad04b6979abdfb0))
+-   **format:** number formatting supports custom thousands separator ([#145](https://github.com/TinkoffCreditSystems/taiga-ui/issues/145)) ([a8c0743](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a8c0743dae7ad432576d1e6f567943a28e7c8a37))
+
+### Bug Fixes
+
+-   **cdk:** fix isFirefox check ([#158](https://github.com/TinkoffCreditSystems/taiga-ui/issues/158)) ([8e9c7a4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/8e9c7a45301ef1500faafccc447e503846417527))
+-   **core:** `Svg` properly use Angular `Sanitizer` ([#170](https://github.com/TinkoffCreditSystems/taiga-ui/issues/170)) ([249392d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/249392d2727c7af1d0da404ae0f2619a08847857))
+-   **core:** fix new CSS vars for height name mismatch ([#149](https://github.com/TinkoffCreditSystems/taiga-ui/issues/149)) ([aa7c961](https://github.com/TinkoffCreditSystems/taiga-ui/commit/aa7c9617ed42b767a118e2c145e2ba6bc4cb54d8))
+
 ### [2.2.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.2.0...v2.2.1) (2021-01-22)
 
 ### Bug Fixes

@@ -1,26 +1,31 @@
-<tui-doc-main>
-    <ng-container ngProjectAs="tuiDocHeader">
-        <img
-            *ngIf="isChristmas"
-            alt="Santa hat"
-            class="christmas"
-            src="/assets/images/hat.svg"
-        />
-        <a
-            tuiLink
-            tuiMode="onLight"
-            class="link"
-            href="https://github.com/TinkoffCreditSystems/taiga-ui"
-            target="_blank"
+<router-outlet *ngIf="landing else portal"></router-outlet>
+<ng-template #portal>
+    <tui-doc-main>
+        <ng-container ngProjectAs="tuiDocHeader">
+            <img
+                *ngIf="isChristmas"
+                alt="Santa hat"
+                class="christmas"
+                src="/assets/images/hat.svg"
+            />
+            <a
+                tuiLink
+                tuiMode="onLight"
+                class="link"
+                href="https://github.com/TinkoffCreditSystems/taiga-ui"
+                target="_blank"
+            >
+                <img class="github" src="assets/images/github.svg" alt="" />
+                GitHub
+            </a>
+        </ng-container>
+        <small class="version" ngProjectAs="tuiDocNavigation"
+            >v{{version}}</small
         >
-            <img class="github" src="assets/images/github.svg" alt="" />
-            GitHub
-        </a>
-    </ng-container>
-    <small class="version" ngProjectAs="tuiDocNavigation">v{{version}}</small>
-    <tui-table-bars-host
-        ngProjectAs="tuiOverNotifications"
-    ></tui-table-bars-host>
-    <tui-theme-android *ngIf="isAndroid"></tui-theme-android>
-    <tui-theme-ios *ngIf="isIos"></tui-theme-ios>
-</tui-doc-main>
+        <tui-table-bars-host
+            ngProjectAs="tuiOverNotifications"
+        ></tui-table-bars-host>
+        <tui-theme-android *ngIf="isAndroid"></tui-theme-android>
+        <tui-theme-ios *ngIf="isIos"></tui-theme-ios>
+    </tui-doc-main>
+</ng-template>

@@ -1,7 +1,7 @@
 <tui-doc-page header="Checkbox" package="KIT">
     <ng-template pageTab>
         <div i18n class="tui-space_bottom-3">
-            Checkbox withour a label. For <code>indeterminate</code> state, set
+            Checkbox without a label. For <code>indeterminate</code> state, set
             <code>null</code> as value. If you need a labeled checkbox, see
             <a tuiLink routerLink="/tui-checkbox-labeled"
                 ><code>CheckboxLabeled</code></a
@@ -103,6 +103,19 @@
                 <tui-doc-code
                     filename="myComponent.module.ts"
                     [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Optionally use the
+                    <code>TUI_CHECKBOX_OPTIONS</code> injection token to
+                    override the default options for the component.
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleDefineOptions"
                 ></tui-doc-code>
             </li>
 

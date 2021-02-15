@@ -14,7 +14,6 @@ import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
 import {
     getDocumentOrShadowRoot,
     isIE,
-    TUI_SANITIZER,
     tuiAssert,
     tuiCustomEvent,
     tuiPure,
@@ -25,7 +24,7 @@ import {
 import {TUI_ICON_ERROR} from '@taiga-ui/core/constants';
 import {TuiIconError} from '@taiga-ui/core/interfaces';
 import {TuiSvgService} from '@taiga-ui/core/services';
-import {TUI_ICONS_PATH} from '@taiga-ui/core/tokens';
+import {TUI_ICONS_PATH, TUI_SANITIZER} from '@taiga-ui/core/tokens';
 import {isPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
@@ -165,12 +164,12 @@ export class TuiSvgComponent {
         return !this.isShadowDOM || !this.isName ? '' : this.sanitize(icon || '');
     }
 
-    private sanitize(src: string): SafeHtml {
-        return this.sanitizer.bypassSecurityTrustHtml(
-            (this.tuiSanitizer
-                ? this.tuiSanitizer.sanitize(SecurityContext.HTML, src)
-                : this.sanitizer.sanitize(SecurityContext.HTML, src)) || '',
-        );
+    private sanitize(src: string): SafeHtml | string {
+        return this.tuiSanitizer
+            ? this.sanitizer.bypassSecurityTrustHtml(
+                  this.tuiSanitizer.sanitize(SecurityContext.HTML, src) || '',
+              )
+            : src;
     }
 
     // @bad TODO: Create a simple XMLHttpRequest to Observable service

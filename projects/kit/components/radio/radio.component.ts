@@ -22,7 +22,7 @@ import {
     TuiIdentityMatcher,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TUI_CHECKBOX_APPEARANCE, TuiAppearance, tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
+import {TuiAppearance, tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 
 // @dynamic
@@ -74,14 +74,12 @@ export class TuiRadioComponent<T>
         @Optional()
         @Inject(TuiRadioGroupComponent)
         private readonly radioGroup: TuiRadioGroupComponent | null,
-        @Inject(TUI_CHECKBOX_APPEARANCE)
-        private readonly appearances: readonly [TuiAppearance, TuiAppearance],
     ) {
         super(control, changeDetectorRef);
     }
 
     get appearance(): TuiAppearance {
-        return this.checked ? this.appearances[1] : this.appearances[0];
+        return this.checked ? TuiAppearance.Primary : TuiAppearance.Outline;
     }
 
     @HostBinding('class._disabled')

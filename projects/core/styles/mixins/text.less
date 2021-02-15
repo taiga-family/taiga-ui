@@ -1,44 +1,57 @@
 .text-basic() {
-    .text-body-s();
+    font: var(--tui-font-text-s);
     color: var(--tui-text-01);
 }
 
-//headings
+// headings
+
+// deprecated
 .text-h1() {
-    .font_heading(50px, 56px);
+    font: var(--tui-font-heading-1);
 }
 
+// deprecated
 .text-h2() {
-    .font_heading(40px, 44px);
+    font: var(--tui-font-heading-2);
 }
 
+// deprecated
 .text-h3() {
-    .font_heading(30px, 36px);
+    font: var(--tui-font-heading-3);
 }
 
+// deprecated
 .text-h4() {
-    .font_heading(28px, 32px);
+    font: var(--tui-font-heading-4);
 }
 
+// deprecated
 .text-h5() {
-    .font_heading(24px, 28px);
+    font: var(--tui-font-heading-5);
 }
 
+// deprecated
 .text-h6() {
-    .font_heading(20px, 24px);
+    font: var(--tui-font-heading-6);
 }
 
-//typed text
+// typed text
+
+// deprecated
 .text-body-xl-bold() {
-    .font(19px, 28px, bold);
+    font: var(--tui-font-text-xl);
+    font-weight: bold;
 }
 
+// deprecated
 .text-body-xl() {
-    .font(19px, 28px, normal);
+    font: var(--tui-font-text-xl);
 }
 
+// deprecated
 .text-body-l-bold(@type: 1) {
-    .font(17px, 24px, bold);
+    font: var(--tui-font-text-l);
+    font-weight: bold;
 
     & when (@type = 2) {
         line-height: 20px;
@@ -49,8 +62,9 @@
     }
 }
 
+// deprecated
 .text-body-l(@type: 1) {
-    .font(17px, 24px, normal);
+    font: var(--tui-font-text-l);
 
     & when (@type = 2) {
         line-height: 20px;
@@ -61,63 +75,73 @@
     }
 }
 
+// deprecated
 .text-body-m-bold(@type: 1) {
-    .font(15px, 24px, bold);
+    font: var(--tui-font-text-m);
+    font-weight: bold;
 
     & when (@type = 2) {
         line-height: 20px;
     }
 }
 
+// deprecated
 .text-body-m(@type: 1) {
-    .font(15px, 24px, normal);
+    font: var(--tui-font-text-m);
 
     & when (@type = 2) {
         line-height: 20px;
     }
 }
 
+// deprecated
 .text-body-s-bold(@type: 1) {
-    .font(13px, 20px, bold);
+    font: var(--tui-font-text-s);
+    font-weight: bold;
 
     & when (@type = 2) {
         line-height: 16px;
     }
 }
 
+// deprecated
 .text-body-s(@type: 1) {
-    .font(13px, 20px, normal);
+    font: var(--tui-font-text-s);
 
     & when (@type = 2) {
         line-height: 16px;
     }
 }
 
+// deprecated
 .text-body-xs() {
-    .font(11px, 16px, normal);
-    letter-spacing: 0.4px;
+    font: var(--tui-font-text-xs);
 }
 
 //tabs, tags, category
 
+// deprecated
 .text-caption-l-bold() {
     .font(13px, 20px, bold);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
+// deprecated
 .text-caption-l() {
     .font(13px, 20px, normal);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
+// deprecated
 .text-caption-bold() {
     .font(11px, 16px, bold);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
+// deprecated
 .text-caption() {
     .font(11px, 16px, normal);
     letter-spacing: 1px;
@@ -125,23 +149,28 @@
 }
 
 // mixins for font properties
+
+// deprecated
+.font_heading(@size, @line-height: normal) {
+    font-weight: bold;
+    line-height: @line-height;
+    font-size: @size;
+    font-family: var(--tui-font-heading);
+}
+
+// deprecated
 .font(@size, @line-height: 'none', @weight: normal, @color: 'none') {
     font-weight: @weight;
     font-size: @size;
     font-family: var(--tui-font-text);
 }
 
+// deprecated
 .font(@size, @line-height: 'none', @weight: normal, @color: 'none') when not (@line-height = 'none') {
     line-height: @line-height;
 }
 
+// deprecated
 .font(@size, @line-height: 'none', @weight: normal, @color: 'none') when not (@color = 'none') {
     color: @color;
-}
-
-.font_heading(@size, @line-height: normal) {
-    font-weight: bold;
-    line-height: @line-height;
-    font-size: @size;
-    font-family: var(--tui-font-heading);
 }

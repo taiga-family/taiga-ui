@@ -18,6 +18,16 @@
         <tui-tabs [(activeItemIndex)]="activeItemIndex">
             <button *ngFor="let tab of tabs" tuiTab>{{tab}}</button>
         </tui-tabs>
+
+        <button
+            *ngIf="codeEditor"
+            tuiButton
+            appearance="flat"
+            size="s"
+            (click)="codeEditor.open(componentName, id || '',  processedContent)"
+        >
+            Edit on {{codeEditor.name}}
+        </button>
     </div>
     <ng-container [ngSwitch]="activeItem">
         <div

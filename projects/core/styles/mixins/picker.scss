@@ -1,0 +1,164 @@
+@mixin picker($itemSize) {
+    :host {
+        @include text-body-m();
+        display: block;
+    }
+
+    .row {
+        @include createStackingContext();
+        display: flex;
+        justify-content: space-between;
+        height: 36px;
+    }
+
+    .item {
+        position: relative;
+        flex: 1;
+        line-height: 32px;
+        border-radius: var(--tui-radius-m);
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            border-radius: var(--tui-radius-m);
+        }
+    }
+
+    .cell {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: $itemSize;
+        text-align: center;
+        outline: none;
+        cursor: pointer;
+        background-clip: content-box;
+        box-sizing: border-box;
+        border: 2px solid transparent;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            border-radius: var(--tui-radius-m);
+        }
+
+        &_today:after {
+            @include center-left();
+            content: '';
+            bottom: 5px;
+            height: 2px;
+            width: 12px;
+            border-radius: 6px;
+            background-color: var(--tui-text-02);
+        }
+
+        &_interval {
+            &:before {
+                background: var(--tui-base-02);
+
+                :host._single & {
+                    background: var(--tui-secondary-hover);
+                }
+            }
+
+            &:not(:last-child):before {
+                right: -$itemSize;
+            }
+
+            &:last-child:first-child:before {
+                right: 0;
+            }
+
+            &:first-child > .item {
+                border-top-left-radius: var(--tui-radius-m);
+                border-bottom-left-radius: var(--tui-radius-m);
+            }
+
+            &:last-child > .item {
+                border-top-right-radius: var(--tui-radius-m);
+                border-bottom-right-radius: var(--tui-radius-m);
+            }
+
+            & > .item {
+                border-radius: 0;
+            }
+        }
+
+        &[data-tui-element-range] {
+            &:after {
+                background-color: var(--tui-primary-text);
+            }
+
+            & > .item {
+                color: var(--tui-primary-text);
+
+                &:before,
+                &:after {
+                    background-color: var(--tui-primary);
+                }
+            }
+
+            &[data-tui-element-state='hovered'] > .item:before,
+            &[data-tui-element-state='hovered'] > .item:after {
+                background-color: var(--tui-primary-hover);
+            }
+
+            &[data-tui-element-state='pressed'] > .item:before,
+            &[data-tui-element-state='pressed'] > .item:after {
+                background-color: var(--tui-primary-active);
+            }
+        }
+
+        &[data-tui-element-range='end'] > .item {
+            &:before {
+                left: 4px;
+            }
+
+            &:after {
+                left: -32px;
+                right: 100%;
+                transform: translateX(23px) scaleY(0.6) scaleX(0.4) rotate(45deg);
+            }
+        }
+
+        &[data-tui-element-range='start'] > .item {
+            &:before {
+                right: 4px;
+            }
+
+            &:after {
+                left: 100%;
+                right: -32px;
+                transform: translateX(-23px) scaleY(0.6) scaleX(0.4) rotate(45deg);
+            }
+        }
+
+        &[data-tui-element-state='disabled'] {
+            pointer-events: none;
+
+            & > .item {
+                opacity: 0.36;
+            }
+        }
+
+        &[data-tui-element-state='hovered']:hover:not([data-tui-element-range]) > .item {
+            background-color: var(--tui-secondary-hover);
+        }
+
+        &[data-tui-element-state='pressed']:hover:not([data-tui-element-range]) > .item {
+            background-color: var(--tui-secondary-active);
+        }
+    }
+}

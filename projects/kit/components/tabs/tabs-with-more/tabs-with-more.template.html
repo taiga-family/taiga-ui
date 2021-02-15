@@ -50,7 +50,8 @@
         <div
             #element
             class="dropdown"
-            (click)="onClick($event.target, $event.currentTarget)"
+            (click)="onClick()"
+            (tui-tab-activate)="onActivate($event.target, element)"
             (keydown.arrowUp.prevent)="onWrapperArrow($event.target, element, true)"
             (keydown.arrowDown.prevent)="onWrapperArrow($event.target, element, false)"
             (tuiPresentChange)="onPresent($event, element)"

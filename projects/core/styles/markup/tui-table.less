@@ -29,7 +29,7 @@
     }
 
     &__th {
-        .text-body-s();
+        font: var(--tui-font-text-s);
         .text-overflow();
         padding: 8px 16px;
         vertical-align: middle;
@@ -38,12 +38,12 @@
 
         &_font-size_l,
         .tui-table_font-size_l & {
-            .text-body-m();
+            font: var(--tui-font-text-m);
         }
     }
 
     &__td {
-        .text-body-m();
+        font: var(--tui-font-text-m);
         padding: 16px 16px 14px;
         vertical-align: top;
         word-wrap: break-word;
@@ -57,12 +57,12 @@
 
         &_font-size_l,
         .tui-table_font-size_l & {
-            .text-body-l();
+            font: var(--tui-font-text-l);
         }
 
         &_font-size_s,
         .tui-table_font-size_s & {
-            .text-body-s();
+            font: var(--tui-font-text-s);
         }
 
         &_align_center {
@@ -97,7 +97,7 @@
     }
 
     &__subtext {
-        .text-body-s();
+        font: var(--tui-font-text-s);
         margin: @space 0 0 0;
         color: var(--tui-text-03);
     }

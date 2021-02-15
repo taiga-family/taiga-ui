@@ -1,7 +1,7 @@
-@sizes: 15;
+@sizes: 16;
 
 .generate-space(@direction, @i: 0) when (@i =< @sizes) {
-    .generate-space(@direction, (@i + 1));
+    .generate-space(@direction, @i + 1);
 
     &_@{direction}-@{i} {
         & when (@direction = all) {

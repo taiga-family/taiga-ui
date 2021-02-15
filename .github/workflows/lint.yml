@@ -2,11 +2,12 @@ name: Lint all packages of Taiga UI
 
 on:
   pull_request:
-    branches-ignore:
-      - 'release/**'
+    branches:
+      - main
   push:
     branches:
       - main
+      - '!release/**'
 
 jobs:
   lint:

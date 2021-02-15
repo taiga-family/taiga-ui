@@ -9,7 +9,7 @@ import {
     watch,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TuiRouterLinkActiveService} from '@taiga-ui/core';
-import {merge, Observable} from 'rxjs';
+import {EMPTY, merge, Observable} from 'rxjs';
 import {filter, mapTo, takeUntil} from 'rxjs/operators';
 
 export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
@@ -43,7 +43,7 @@ export function tabActiveFactory(
 ): Observable<Event> {
     return merge(
         routerLinkActiveService.pipe(filter(identity)),
-        typedFromEvent(nativeElement, 'click'),
+        nativeElement.matches('button') ? typedFromEvent(nativeElement, 'click') : EMPTY,
     ).pipe(
         takeUntil(destroy$),
         watch(changeDetectorRef),

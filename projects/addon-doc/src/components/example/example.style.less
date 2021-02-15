@@ -12,16 +12,16 @@
 }
 
 .title {
-    .text-h5();
+    font: var(--tui-font-heading-5);
     margin: 0 0 8px;
 
     @media @mobile {
-        .text-h6();
+        font: var(--tui-font-heading-6);
     }
 }
 
 .description {
-    .text-body-m();
+    font: var(--tui-font-text-m);
     font-weight: normal;
     margin: 0;
 }
@@ -48,6 +48,9 @@
 .tabs {
     padding: 0 32px;
     box-shadow: inset 0 -1px var(--tui-base-03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     @media @mobile {
         padding: 0 16px;

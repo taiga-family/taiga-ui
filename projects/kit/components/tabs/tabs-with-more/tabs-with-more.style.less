@@ -1,7 +1,7 @@
 @import 'taiga-ui-local';
 
 :host {
-    .text-body-m();
+    font: var(--tui-font-text-m);
     position: relative;
     display: flex;
     height: var(--tui-height-l);
@@ -44,7 +44,7 @@
 
 .icon {
     .transition(transform);
-    margin-left: 4px;
+    margin-right: -4px;
     vertical-align: bottom;
 
     &_rotated {
