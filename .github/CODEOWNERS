@@ -12,3 +12,9 @@
 
 * @waterplea @MarsiBarsi
 # will be requested for review when someone opens a pull request
+
+# i18n languages contributors:
+projects/i18n/languages/german/* @danielreiser
+projects/i18n/languages/dutch/* @maartentibau
+projects/i18n/languages/turkish/* @nevzatopcu
+# TODO: find an expert in Spanish
