@@ -1,10 +1,10 @@
-import {TuiActionModule} from '@taiga-ui/kit';
+import {TuiTableModule} from '@taiga-ui/addon-table';
 
 ...
 
 @NgModule({
     imports: [
         ...
-        TuiActionModule
+        TuiTableModule,
     ],
 ...

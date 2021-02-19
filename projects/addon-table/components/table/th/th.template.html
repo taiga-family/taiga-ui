@@ -1,0 +1,15 @@
+<button
+    *ngIf="head && sorter else content"
+    type="button"
+    class="sort"
+    [class.sort_sorted]="isCurrent"
+    (click)="table.updateSorter(sorter)"
+>
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+    <tui-svg
+        src="tuiIconSortDown"
+        class="arrow"
+        [class.arrow_rotated]="table.direction === -1"
+    ></tui-svg>
+</button>
+<ng-template #content><ng-content></ng-content></ng-template>

@@ -1,5 +1,10 @@
-<table tuiTable [data]="data" [columns]="columns">
-    <ng-container *tuiCell="'Balance' of data; let value">
-        {{value | tuiFormatNumber}}
-    </ng-container>
+<table tuiTable class="table" [columns]="columns">
+    <thead tuiThead></thead>
+    <tbody tuiTbody [data]="data">
+        <tr *tuiRow="let item of data" [tuiTr]="item">
+            <td *tuiCell="'Balance' of item; let value" tuiTd>
+                {{value | tuiFormatNumber}}
+            </td>
+        </tr>
+    </tbody>
 </table>

@@ -1,16 +1,12 @@
 import {Component} from '@angular/core';
-import {NgControl, ValidatorFn} from '@angular/forms';
-import {defaultSort, TuiComparator} from '@taiga-ui/addon-table';
-import {TuiDay} from '@taiga-ui/cdk';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
-interface Item {
+interface User {
     readonly name: string;
-    readonly price: number;
-    readonly quantity: number;
-    readonly unit: string;
-    readonly date: TuiDay;
+    readonly email: string;
+    readonly status: 'alive' | 'deceased';
+    readonly tags: readonly string[];
 }
 
 @Component({
@@ -21,74 +17,48 @@ interface Item {
     encapsulation,
 })
 export class TuiTableExample2 {
-    readonly options = {updateOn: 'blur'};
+    readonly columns = ['name', 'email', 'status', 'tags', ''];
 
-    readonly units = ['items', 'kg', 'm'];
-
-    readonly minPrice: ValidatorFn = ({value}) =>
-        value > 400 ? null : {minPrice: 'Price must be above $400'};
-
-    data: readonly Item[] = [
+    users: readonly User[] = [
         {
-            name: 'Holy Grail',
-            price: 999999,
-            quantity: 1,
-            unit: this.units[0],
-            date: TuiDay.currentLocal(),
+            name: 'Michael Palin',
+            email: 'm.palin@montypython.com',
+            status: 'alive',
+            tags: ['Funny'],
         },
         {
-            name: 'Shed',
-            price: 499,
-            quantity: 2,
-            unit: this.units[0],
-            date: TuiDay.currentLocal().append({day: -237}),
+            name: 'Eric Idle',
+            email: 'e.idle@montypython.com',
+            status: 'alive',
+            tags: ['Funny', 'Music'],
         },
         {
-            name: 'Foot',
-            price: 29.95,
-            quantity: 5,
-            unit: this.units[2],
-            date: TuiDay.currentLocal().append({day: -42}),
+            name: 'John Cleese',
+            email: 'j.cleese@montypython.com',
+            status: 'alive',
+            tags: ['Funny', 'Tall', 'Actor'],
         },
         {
-            name: 'Holy Grail',
-            price: 999999,
-            quantity: 1,
-            unit: this.units[0],
-            date: TuiDay.currentLocal(),
+            name: 'Terry Jones',
+            email: '',
+            status: 'deceased',
+            tags: ['Funny', 'Director'],
         },
         {
-            name: 'Shed',
-            price: 499,
-            quantity: 2,
-            unit: this.units[0],
-            date: TuiDay.currentLocal().append({day: -237}),
+            name: 'Terry Gilliam',
+            email: 't.gilliam@montypython.com',
+            status: 'alive',
+            tags: ['Funny', 'Director'],
         },
         {
-            name: 'Foot',
-            price: 29.95,
-            quantity: 5,
-            unit: this.units[2],
-            date: TuiDay.currentLocal().append({day: -42}),
+            name: 'Graham Chapman',
+            email: '',
+            status: 'deceased',
+            tags: ['Funny', 'King Arthur'],
         },
     ];
 
-    readonly columns = [...Object.keys(this.data[0]), 'total'];
-
-    readonly totalSorter: TuiComparator<Item> = (a, b) =>
-        defaultSort(a.price * a.quantity, b.price * b.quantity);
-
-    getError(model: NgControl): string {
-        return model.touched && model.errors ? model.errors['minPrice'] : '';
-    }
-
-    getTotal({price, quantity}: Item): number {
-        return price * quantity;
-    }
-
-    onValueChange<K extends keyof Item>(value: Item[K], key: K, current: Item) {
-        const updated = {...current, [key]: value};
-
-        this.data = this.data.map(item => (item === current ? updated : item));
+    remove(item: User) {
+        this.users = this.users.filter(user => user !== item);
     }
 }

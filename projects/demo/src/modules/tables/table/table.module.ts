@@ -7,11 +7,13 @@ import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
 import {TuiTableModule} from '@taiga-ui/addon-table';
 import {TuiValidatorModule} from '@taiga-ui/cdk';
 import {
+    TuiButtonModule,
     TuiDataListModule,
     TuiFormatNumberPipeModule,
-    TuiHintControllerModule,
+    TuiLinkModule,
     TuiNotificationModule,
     TuiScrollbarModule,
+    TuiSvgModule,
 } from '@taiga-ui/core';
 import {
     TuiDataListWrapperModule,
@@ -20,9 +22,11 @@ import {
     TuiInputModule,
     TuiInputNumberModule,
     TuiSelectModule,
+    TuiTagModule,
 } from '@taiga-ui/kit';
 import {TuiTableExample1} from './examples/1';
 import {TuiTableExample2} from './examples/2';
+import {TuiTableExample3} from './examples/3';
 import {ExampleTuiTableComponent} from './table.component';
 
 @NgModule({
@@ -42,11 +46,19 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiDataListWrapperModule,
         TuiFormatNumberPipeModule,
         TuiValidatorModule,
-        TuiHintControllerModule,
+        TuiSvgModule,
+        TuiButtonModule,
+        TuiLinkModule,
+        TuiTagModule,
         ...TUI_DOC_PAGE_MODULES,
         RouterModule.forChild(generateRoutes(ExampleTuiTableComponent)),
     ],
-    declarations: [ExampleTuiTableComponent, TuiTableExample1, TuiTableExample2],
+    declarations: [
+        ExampleTuiTableComponent,
+        TuiTableExample1,
+        TuiTableExample2,
+        TuiTableExample3,
+    ],
     exports: [ExampleTuiTableComponent],
 })
 export class ExampleTuiTableModule {}

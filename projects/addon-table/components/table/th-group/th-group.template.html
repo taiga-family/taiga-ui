@@ -1,0 +1,6 @@
+<ng-container *ngIf="heads$ | async as headings">
+    <ng-container
+        *ngFor="let key of table.columns"
+        [ngTemplateOutlet]="extract(headings, key)?.template"
+    ></ng-container>
+</ng-container>

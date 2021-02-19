@@ -2,10 +2,6 @@
     <ng-template i18n pageTab>
         <p>Interactive table main component.</p>
 
-        <tui-notification status="warning">
-            This component is currently in development. Use with caution.
-        </tui-notification>
-
         <tui-doc-example
             id="basic"
             i18n-heading
@@ -16,12 +12,21 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="editable"
+            id="custom"
             i18n-heading
-            heading="Editable"
+            heading="Custom"
             [content]="example2"
         >
             <tui-table-example-2></tui-table-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="editable"
+            i18n-heading
+            heading="Editable"
+            [content]="example3"
+        >
+            <tui-table-example-3></tui-table-example-3>
         </tui-doc-example>
     </ng-template>
 
