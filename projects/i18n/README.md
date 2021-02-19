@@ -11,14 +11,15 @@
 
 Supported languages:
 
-| Language             |    Constant name     | Coverage |
-| -------------------- | :------------------: | -------: |
-| English (by default) | TUI_ENGLISH_LANGUAGE |     100% |
-| Russian              | TUI_RUSSIAN_LANGUAGE |     100% |
-| Spanish              | TUI_SPANISH_LANGUAGE |     100% |
-| German               | TUI_GERMAN_LANGUAGE  |     100% |
-| Turkish              | TUI_TURKISH_LANGUAGE |     100% |
-| Dutch                |  TUI_DUTCH_LANGUAGE  |     100% |
+| Language             |     Constant name      | Coverage |
+| -------------------- | :--------------------: | -------: |
+| English (by default) |  TUI_ENGLISH_LANGUAGE  |     100% |
+| Russian              |  TUI_RUSSIAN_LANGUAGE  |     100% |
+| Spanish              |  TUI_SPANISH_LANGUAGE  |     100% |
+| German               |  TUI_GERMAN_LANGUAGE   |     100% |
+| Turkish              |  TUI_TURKISH_LANGUAGE  |     100% |
+| Dutch                |   TUI_DUTCH_LANGUAGE   |     100% |
+| Ukrainian            | TUI_UKRAINIAN_LANGUAGE |     100% |
 
 <!-- Do not change next line without i18n demo page -->
 
