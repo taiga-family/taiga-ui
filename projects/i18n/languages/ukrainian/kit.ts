@@ -10,8 +10,8 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: LanguageKit = {
     countTexts: ['Плюс', 'Мінус'],
     time: {
         'HH:MM': 'ГГ:ХХ',
-        'HH:MM:SS': 'ГГ: ХХ: СС',
-        'HH:MM:SS.MSS': 'ГГ: ХХ: СС.МСС',
+        'HH:MM:SS': 'ГГ:ХХ:СС',
+        'HH:MM:SS.MSS': 'ГГ:ХХ:СС.МСС',
     },
     digitalInformationUnits: ['Б', 'КБ', 'МБ'],
     passwordTexts: ['Показати пароль', 'Приховати пароль'],
