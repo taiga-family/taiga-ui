@@ -2,13 +2,13 @@ import {DOCUMENT} from '@angular/common';
 import {ElementRef, InjectionToken, Provider} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {containsOrAfter, TuiDestroyService, typedFromEvent} from '@taiga-ui/cdk';
-import {merge, NEVER, Observable} from 'rxjs';
+import {EMPTY, merge, Observable} from 'rxjs';
 import {filter, switchMapTo, take, takeUntil} from 'rxjs/operators';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
     'A stream to close dialogs',
     {
-        factory: () => NEVER,
+        factory: () => EMPTY,
     },
 );
 

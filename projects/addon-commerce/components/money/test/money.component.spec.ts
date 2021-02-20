@@ -160,7 +160,7 @@ describe('Money', () => {
             expect(fraction!.nativeElement.textContent).toEqual(',00');
         });
 
-        it('if NEVER is set, non zero decimals are not shown', () => {
+        it('if Never is set, non zero decimals are not shown', () => {
             testComponent.value = 237.123;
             testComponent.decimal = TuiDecimal.Never;
             fixture.detectChanges();
@@ -220,7 +220,7 @@ describe('Money', () => {
             expect(sign!.nativeElement.textContent).toEqual(CHAR_EN_DASH);
         });
 
-        it('if set to NEVER, plus is not shown', () => {
+        it('if set to Never, plus is not shown', () => {
             testComponent.sign = TuiMoneySign.Never;
             fixture.detectChanges();
 
@@ -229,7 +229,7 @@ describe('Money', () => {
             expect(sign!.nativeElement.textContent).toEqual('');
         });
 
-        it('if set to NEVER, minus is not shown', () => {
+        it('if set to Never, minus is not shown', () => {
             testComponent.value = -237;
             testComponent.sign = TuiMoneySign.Never;
             fixture.detectChanges();

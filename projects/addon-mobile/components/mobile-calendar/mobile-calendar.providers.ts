@@ -8,7 +8,7 @@ import {
     watch,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
-import {NEVER, Observable} from 'rxjs';
+import {EMPTY, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {TuiMobileCalendarStrategy} from './mobile-calendar.strategy';
 
@@ -39,5 +39,5 @@ export function valueStreamFactory(
     destroy$: Observable<void>,
     changeDetectorRef: ChangeDetectorRef,
 ): Observable<TuiDayRange | null> {
-    return (value$ || NEVER).pipe(takeUntil(destroy$), watch(changeDetectorRef));
+    return (value$ || EMPTY).pipe(takeUntil(destroy$), watch(changeDetectorRef));
 }
