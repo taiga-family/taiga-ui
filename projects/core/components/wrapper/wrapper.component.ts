@@ -18,10 +18,6 @@ import {Observable} from 'rxjs';
     styleUrls: ['./wrapper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, MODE_PROVIDER],
-    host: {
-        '[$.data-mode.attr]': 'mode$',
-        '($.data-mode.attr)': 'mode$',
-    },
 })
 export class TuiWrapperComponent {
     @Input()
@@ -46,10 +42,17 @@ export class TuiWrapperComponent {
     @HostBinding('attr.data-appearance')
     appearance = '';
 
+    @HostBinding('attr.data-mode')
+    mode: TuiBrightness | null = null;
+
     constructor(
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-    ) {}
+        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
+    ) {
+        mode$.subscribe(mode => {
+            this.mode = mode;
+        });
+    }
 
     @HostBinding('class._invalid')
     get computedInvalid(): boolean {

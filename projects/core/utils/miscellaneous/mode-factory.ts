@@ -1,4 +1,4 @@
-import {ChangeDetectorRef} from '@angular/core';
+import {ChangeDetectorRef, ElementRef} from '@angular/core';
 import {watch} from '@taiga-ui/cdk';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {TuiBrightness} from '@taiga-ui/core/types';
@@ -9,8 +9,9 @@ export function modeFactory(
     destroy$: Observable<void>,
     changeDetectorRef: ChangeDetectorRef,
     mode: TuiModeDirective | null,
+    {nativeElement}: ElementRef,
 ): Observable<TuiBrightness | null> {
-    return (
+    return (nativeElement['$.data-mode.attr'] =
         (mode &&
             mode.change$.pipe(
                 startWith(null),
@@ -18,6 +19,5 @@ export function modeFactory(
                 watch(changeDetectorRef),
                 takeUntil(destroy$),
             )) ||
-        EMPTY
-    );
+        EMPTY);
 }

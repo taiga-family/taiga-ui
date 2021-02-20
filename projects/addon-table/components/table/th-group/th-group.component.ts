@@ -1,24 +1,29 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    ContentChild,
     ContentChildren,
     forwardRef,
     Inject,
     QueryList,
 } from '@angular/core';
+import {TuiThComponent} from '@taiga-ui/addon-table/components';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {map, startWith} from 'rxjs/operators';
 import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';
-import {TUI_WATCHED_TABLE_PROVIDER} from '../providers/common.providers';
+import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 
 @Component({
     selector: 'tr[tuiThGroup]',
     templateUrl: './th-group.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TUI_WATCHED_TABLE_PROVIDER],
+    providers: [TUI_TABLE_PROVIDER],
 })
 export class TuiThGroupComponent<T> {
+    @ContentChild(forwardRef(() => TuiThComponent))
+    readonly th: unknown;
+
     @ContentChildren(forwardRef(() => TuiHeadDirective))
     readonly heads: QueryList<TuiHeadDirective<T>> = EMPTY_QUERY;
 
@@ -36,11 +41,4 @@ export class TuiThGroupComponent<T> {
         @Inject(forwardRef(() => TuiTableDirective))
         readonly table: TuiTableDirective<T>,
     ) {}
-
-    extract(
-        record: Record<any, TuiHeadDirective<T>>,
-        key: keyof T | string,
-    ): TuiHeadDirective<T> | undefined {
-        return record[key];
-    }
 }

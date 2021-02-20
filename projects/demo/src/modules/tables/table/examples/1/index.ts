@@ -12,12 +12,12 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiTableExample1 {
     readonly data = [
         {
-            Name: 'Alex Inkin',
-            Balance: 1323525,
+            name: 'Alex Inkin',
+            balance: 1323525,
         },
         {
-            Name: 'Roman Sedov',
-            Balance: 423242,
+            name: 'Roman Sedov',
+            balance: 423242,
         },
     ] as const;
 

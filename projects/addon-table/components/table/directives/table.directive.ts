@@ -1,27 +1,18 @@
-import {
-    Directive,
-    EventEmitter,
-    HostBinding,
-    HostListener,
-    Inject,
-    Input,
-    Output,
-} from '@angular/core';
+import {Directive, EventEmitter, HostBinding, Inject, Input, Output} from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {Controller, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {asCallable} from '@tinkoff/ng-event-plugins';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
 
 @Directive({
     selector: 'table[tuiTable]',
     providers: TUI_TABLE_PROVIDERS,
     host: {
-        '[$.data-mode.attr]': 'mode$',
         '($.data-mode.attr)': 'mode$',
+        '($.class._stuck)': 'stuck$',
     },
 })
 export class TuiTableDirective<T> extends Controller {
@@ -42,27 +33,17 @@ export class TuiTableDirective<T> extends Controller {
     @tuiDefaultProp()
     direction: -1 | 1 = 1;
 
-    @Input()
-    @HostBinding('class._sticky')
-    @tuiDefaultProp()
-    sticky = true;
-
     @Output()
     readonly directionChange = new EventEmitter<-1 | 1>();
 
     @Output()
     readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
 
-    @HostBinding('$.class._stuck')
-    @HostListener('$.class._stuck')
-    readonly stuck$ = asCallable(
-        this.entries$.pipe(map(([{intersectionRatio}]) => intersectionRatio < 1)),
-    );
-
     constructor(
         @Inject(IntersectionObserverService)
         readonly entries$: Observable<IntersectionObserverEntry[]>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_STUCK) readonly stuck$: Observable<boolean>,
     ) {
         super();
     }

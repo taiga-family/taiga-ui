@@ -1,5 +1,10 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ContentChild,
+    HostBinding,
+} from '@angular/core';
+import {NgControl} from '@angular/forms';
 
 @Component({
     selector: 'th[tuiTd], td[tuiTd]',
@@ -8,8 +13,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTdComponent {
-    @Input()
     @HostBinding('class._editable')
-    @tuiDefaultProp()
-    editable = false;
+    @ContentChild(NgControl)
+    readonly control: unknown;
 }

@@ -13,6 +13,7 @@ import {
     TuiAppearance,
 } from '@taiga-ui/core';
 import {TuiTableDirective} from '../directives/table.directive';
+import {TUI_STUCK_PROVIDER} from './stuck.provider';
 
 export const TUI_TABLE_PROVIDERS = [
     {
@@ -40,4 +41,5 @@ export const TUI_TABLE_PROVIDERS = [
     IntersectionObserverService,
     TuiDestroyService,
     MODE_PROVIDER,
+    TUI_STUCK_PROVIDER,
 ];

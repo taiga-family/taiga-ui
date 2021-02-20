@@ -13,14 +13,14 @@ import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
-import {TUI_WATCHED_TABLE_PROVIDER} from '../providers/common.providers';
+import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 
 @Component({
     selector: 'tbody[tuiTbody]',
     templateUrl: './tbody.template.html',
     styleUrls: ['./tbody.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_WATCHED_TABLE_PROVIDER,
+    providers: TUI_TABLE_PROVIDER,
 })
 export class TuiTbodyComponent<T> {
     @Input()
@@ -40,6 +40,8 @@ export class TuiTbodyComponent<T> {
 
     @ContentChild(forwardRef(() => TuiRowDirective))
     readonly row?: TuiRowDirective<T>;
+
+    readonly toContext = ($implicit: T) => ({$implicit});
 
     constructor(
         @Inject(forwardRef(() => TuiTableDirective))

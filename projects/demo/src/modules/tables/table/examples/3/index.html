@@ -47,7 +47,6 @@
                 <th
                     *tuiCell="'name' of item; let value"
                     tuiTd
-                    [editable]="true"
                     [colSpan]="item.price > 1000 ? 2 : 0"
                 >
                     <tui-input
@@ -57,12 +56,7 @@
                     ></tui-input>
                 </th>
                 <ng-container *tuiCell="'price' of item; let value">
-                    <th
-                        *ngIf="value < 1000"
-                        class="second"
-                        tuiTd
-                        [editable]="true"
-                    >
+                    <th *ngIf="value < 1000" class="second" tuiTd>
                         <tui-input-number
                             [tuiValidator]="minPrice"
                             [ngModel]="value"
@@ -71,22 +65,14 @@
                         ></tui-input-number>
                     </th>
                 </ng-container>
-                <td
-                    *tuiCell="'quantity' of item; let value"
-                    tuiTd
-                    [editable]="true"
-                >
+                <td *tuiCell="'quantity' of item; let value" tuiTd>
                     <tui-input-count
                         [ngModel]="value"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'quantity', item, pythons)"
                     ></tui-input-count>
                 </td>
-                <td
-                    *tuiCell="'unit' of item; let value"
-                    tuiTd
-                    [editable]="true"
-                >
+                <td *tuiCell="'unit' of item; let value" tuiTd>
                     <tui-select
                         class="select"
                         [ngModel]="value"
@@ -99,11 +85,7 @@
                         ></tui-data-list-wrapper>
                     </tui-select>
                 </td>
-                <td
-                    *tuiCell="'date' of item; let value"
-                    tuiTd
-                    [editable]="true"
-                >
+                <td *tuiCell="'date' of item; let value" tuiTd>
                     <tui-input-date
                         [ngModel]="value"
                         [ngModelOptions]="options"
@@ -118,23 +100,14 @@
 
         <tbody tuiTbody [heading]="template" [data]="starwars">
             <tr *tuiRow="let item of starwars" [tuiTr]="item">
-                <th
-                    *tuiCell="'name' of item; let value"
-                    tuiTd
-                    [editable]="true"
-                >
+                <th *tuiCell="'name' of item; let value" tuiTd>
                     <tui-input
                         [ngModel]="value"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'name', item, starwars)"
                     ></tui-input>
                 </th>
-                <th
-                    *tuiCell="'price' of item; let value"
-                    tuiTd
-                    class="second"
-                    [editable]="true"
-                >
+                <th *tuiCell="'price' of item; let value" tuiTd class="second">
                     <tui-input-number
                         [tuiValidator]="minPrice"
                         [ngModel]="value"
@@ -142,22 +115,14 @@
                         (ngModelChange)="onValueChange($event, 'price', item, starwars)"
                     ></tui-input-number>
                 </th>
-                <td
-                    *tuiCell="'quantity' of item; let value"
-                    tuiTd
-                    [editable]="true"
-                >
+                <td *tuiCell="'quantity' of item; let value" tuiTd>
                     <tui-input-count
                         [ngModel]="value"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'quantity', item, starwars)"
                     ></tui-input-count>
                 </td>
-                <td
-                    *tuiCell="'unit' of item; let value"
-                    tuiTd
-                    [editable]="true"
-                >
+                <td *tuiCell="'unit' of item; let value" tuiTd>
                     <tui-select
                         class="select"
                         [ngModel]="value"
@@ -170,11 +135,7 @@
                         ></tui-data-list-wrapper>
                     </tui-select>
                 </td>
-                <td
-                    *tuiCell="'date' of item; let value"
-                    tuiTd
-                    [editable]="true"
-                >
+                <td *tuiCell="'date' of item; let value" tuiTd>
                     <tui-input-date
                         [ngModel]="value"
                         [ngModelOptions]="options"

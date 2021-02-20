@@ -11,13 +11,13 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {map, startWith} from 'rxjs/operators';
 import {TuiCellContext, TuiCellDirective} from '../directives/cell.directive';
 import {TuiTableDirective} from '../directives/table.directive';
-import {TUI_WATCHED_TABLE_PROVIDER} from '../providers/common.providers';
+import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 
 @Component({
     selector: 'tr[tuiTr]',
     templateUrl: './tr.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TUI_WATCHED_TABLE_PROVIDER],
+    providers: [TUI_TABLE_PROVIDER],
 })
 export class TuiTrComponent<T> {
     @Input()
@@ -42,11 +42,4 @@ export class TuiTrComponent<T> {
         @Inject(forwardRef(() => TuiTableDirective))
         readonly table: TuiTableDirective<T>,
     ) {}
-
-    extract(
-        record: Record<any, TuiCellDirective<T, keyof T>>,
-        key: keyof T | string,
-    ): TuiCellDirective<T, keyof T> | undefined {
-        return record[key];
-    }
 }

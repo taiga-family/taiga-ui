@@ -3,7 +3,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
 import {watchedControllerFactory} from '@taiga-ui/core';
 import {TuiTableDirective} from '../directives/table.directive';
 
-export const TUI_WATCHED_TABLE_PROVIDER: Provider[] = [
+export const TUI_TABLE_PROVIDER: Provider[] = [
     TuiDestroyService,
     {
         provide: TuiTableDirective,

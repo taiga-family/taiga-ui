@@ -4,6 +4,6 @@ import {TuiResizableColumnDirective} from './resizable-column.directive';
 
 @NgModule({
     declarations: [TuiResizableColumnComponent, TuiResizableColumnDirective],
-    exports: [TuiResizableColumnComponent],
+    exports: [TuiResizableColumnComponent, TuiResizableColumnDirective],
 })
 export class TuiResizableColumnModule {}
