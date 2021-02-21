@@ -7,12 +7,12 @@ import {
     Inject,
     QueryList,
 } from '@angular/core';
-import {TuiThComponent} from '@taiga-ui/addon-table/components';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {map, startWith} from 'rxjs/operators';
 import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
+import {TuiThComponent} from '../th/th.component';
 
 @Component({
     selector: 'tr[tuiThGroup]',
