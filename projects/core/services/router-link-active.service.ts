@@ -2,7 +2,7 @@ import {Inject, Injectable, NgZone, Optional} from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {TuiDestroyService, tuiZoneOptimized} from '@taiga-ui/cdk';
-import {NEVER, Observable} from 'rxjs';
+import {EMPTY, Observable} from 'rxjs';
 import {distinctUntilChanged, map, takeUntil} from 'rxjs/operators';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class TuiRouterLinkActiveService extends Observable<boolean> {
                   tuiZoneOptimized(ngZone),
                   takeUntil(destroy$),
               )
-            : NEVER;
+            : EMPTY;
 
         super(subscriber => stream$.subscribe(subscriber));
     }

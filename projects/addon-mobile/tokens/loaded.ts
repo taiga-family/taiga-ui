@@ -1,9 +1,9 @@
 import {InjectionToken} from '@angular/core';
-import {NEVER, Observable} from 'rxjs';
+import {EMPTY, Observable} from 'rxjs';
 
 export const TUI_LOADED = new InjectionToken<Observable<unknown>>(
     'Stream that emits when loading is over',
     {
-        factory: () => NEVER,
+        factory: () => EMPTY,
     },
 );

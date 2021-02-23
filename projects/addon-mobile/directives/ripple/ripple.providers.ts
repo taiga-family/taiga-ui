@@ -5,7 +5,7 @@ import {
     TuiDestroyService,
     typedFromEvent,
 } from '@taiga-ui/cdk';
-import {NEVER, Observable} from 'rxjs';
+import {EMPTY, Observable} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
 export const RIPPLE_ON = 'tuiRippleOn';
@@ -36,7 +36,7 @@ export function rippleStartFactory(
     renderer: Renderer2,
 ): Observable<HTMLElement> {
     return !isAndroid
-        ? NEVER
+        ? EMPTY
         : typedFromEvent(nativeElement, 'touchstart').pipe(
               map(({touches}) => {
                   const {clientX, clientY} = touches[touches.length - 1];
@@ -76,7 +76,7 @@ export function rippleEndFactory(
     destroy$: Observable<void>,
 ): Observable<EventTarget> {
     return !isAndroid
-        ? NEVER
+        ? EMPTY
         : typedFromEvent(nativeElement, 'animationend').pipe(
               filter(({animationName}) => animationName === RIPPLE_OFF),
               map(({target}) => target),
