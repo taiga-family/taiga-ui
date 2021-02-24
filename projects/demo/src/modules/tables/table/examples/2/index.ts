@@ -17,7 +17,7 @@ interface User {
     encapsulation,
 })
 export class TuiTableExample2 {
-    readonly columns = ['name', 'email', 'status', 'tags', ''];
+    readonly columns = ['name', 'email', 'status', 'tags', 'actions'];
 
     users: readonly User[] = [
         {

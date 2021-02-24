@@ -9,13 +9,13 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {merge, NEVER, Observable} from 'rxjs';
+import {EMPTY, merge, Observable} from 'rxjs';
 import {filter, switchMapTo, take, takeUntil} from 'rxjs/operators';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
     'A stream to close dialogs',
     {
-        factory: () => NEVER,
+        factory: () => EMPTY,
     },
 );
 
@@ -60,7 +60,7 @@ export function dialogCloseStreamFactory(
               ),
               close$,
           ).pipe(takeUntil(destroy$))
-        : NEVER;
+        : close$;
 }
 
 export const TUI_DIALOG_CLOSE_STREAM = new InjectionToken<Observable<unknown>>(

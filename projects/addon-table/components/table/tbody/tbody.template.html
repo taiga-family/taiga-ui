@@ -11,10 +11,10 @@
         </button>
     </th>
 </tr>
-<ng-container *ngIf="open">
+<ng-container *ngIf="open && row">
     <ng-container
         *ngFor="let item of sorted"
-        [ngTemplateOutlet]="row?.template"
+        [ngTemplateOutlet]="row.template"
         [ngTemplateOutletContext]="item | tuiMapper : toContext"
     ></ng-container>
 </ng-container>

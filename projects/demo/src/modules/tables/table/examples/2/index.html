@@ -5,7 +5,7 @@
             <th *tuiHead="'email'" tuiTh>E-mail</th>
             <th *tuiHead="'status'" tuiTh>Status</th>
             <th *tuiHead="'tags'" tuiTh [sorter]="null">Tags</th>
-            <th *tuiHead="''" tuiTh [sorter]="null"></th>
+            <th *tuiHead="'actions'" tuiTh [sorter]="null"></th>
         </tr>
     </thead>
     <tbody tuiTbody [data]="users">
@@ -27,7 +27,7 @@
                     [autoColor]="true"
                 ></tui-tag>
             </td>
-            <td *tuiCell="''" tuiTd>
+            <td *tuiCell="'actions'" tuiTd>
                 <button
                     tuiIconButton
                     class="remove"

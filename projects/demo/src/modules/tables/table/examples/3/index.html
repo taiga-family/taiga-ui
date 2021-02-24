@@ -56,7 +56,7 @@
                     ></tui-input>
                 </th>
                 <ng-container *tuiCell="'price' of item; let value">
-                    <th *ngIf="value < 1000" class="second" tuiTd>
+                    <th *ngIf="value <= 1000" class="second" tuiTd>
                         <tui-input-number
                             [tuiValidator]="minPrice"
                             [ngModel]="value"
