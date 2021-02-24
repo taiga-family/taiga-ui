@@ -14,7 +14,6 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';
-import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 
 @Component({
     selector: 'th[tuiTh]',
@@ -22,7 +21,6 @@ import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
     styleUrls: ['./th.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        TUI_TABLE_PROVIDER,
         {
             provide: TUI_ELEMENT_REF,
             useExisting: ElementRef,
@@ -48,8 +46,9 @@ export class TuiThComponent<T> {
 
     constructor(
         @Optional() @Inject(TuiHeadDirective) readonly head: TuiHeadDirective<T> | null,
+        @Optional()
         @Inject(forwardRef(() => TuiTableDirective))
-        readonly table: TuiTableDirective<T>,
+        readonly table: TuiTableDirective<T> | null,
     ) {}
 
     get key(): keyof T {
@@ -61,10 +60,10 @@ export class TuiThComponent<T> {
     }
 
     get isCurrent(): boolean {
-        return !!this.sorter && this.sorter === this.table.sorter;
+        return !!this.sorter && !!this.table && this.sorter === this.table.sorter;
     }
 
-    onResize(width: number) {
+    onResized(width: number) {
         this.width = width;
     }
 }

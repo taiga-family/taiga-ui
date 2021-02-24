@@ -4,17 +4,13 @@ import {preventDefault, typedFromEvent} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs/operators';
 
-/** @deprecated use `<th tuiTh [resizable]="true">` from {@link TuiTableModule} */
 // @dynamic
 @Directive({
-    selector: '[tuiResizableColumn]',
+    selector: '[tuiResized]',
 })
-export class TuiResizableColumnDirective {
+export class TuiResizedDirective {
     @Output()
-    readonly tuiResizableColumn = typedFromEvent(
-        this.elementRef.nativeElement,
-        'mousedown',
-    ).pipe(
+    readonly tuiResized = typedFromEvent(this.elementRef.nativeElement, 'mousedown').pipe(
         preventDefault(),
         switchMap(() => {
             const {width, right} = this.parentRef.nativeElement.getBoundingClientRect();

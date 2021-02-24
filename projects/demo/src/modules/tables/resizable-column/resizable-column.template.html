@@ -1,6 +1,10 @@
-<tui-doc-page header="ResizableColumn" package="ADDON-TABLE">
+<tui-doc-page header="ResizableColumn" package="ADDON-TABLE" deprecated>
     <ng-template pageTab>
-        <p i18n>Component is used to change column width in tables</p>
+        <tui-notification status="error">
+            <strong>Deprecated</strong>. Use
+            <code>&lt;th tuiTh [resizable]="true"&gt;</code> from
+            <a tuiLink routerLink="/tui-table">TuiTableModule</a>
+        </tui-notification>
 
         <tui-doc-example
             id="usage"

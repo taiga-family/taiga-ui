@@ -1,11 +1,12 @@
 <button
-    *ngIf="head && sorter else content"
+    *ngIf="head && sorter && table else content"
     type="button"
     class="sort"
     [class.sort_sorted]="isCurrent"
     (click)="table.updateSorter(sorter)"
 >
     <ng-container *ngTemplateOutlet="content"></ng-container>
+    {{ table.change$ | async }}
     <tui-svg
         src="tuiIconSortDown"
         class="arrow"
@@ -13,8 +14,4 @@
     ></tui-svg>
 </button>
 <ng-template #content><ng-content></ng-content></ng-template>
-<div
-    *ngIf="resizable"
-    class="bar"
-    (tuiResizableColumn)="onResize($event)"
-></div>
+<div *ngIf="resizable" class="bar" (tuiResized)="onResized($event)"></div>
