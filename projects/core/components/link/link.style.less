@@ -15,7 +15,7 @@
         color: var(--tui-link-hover);
     }
 
-    &[data-tui-host-mode='onLight'] {
+    &[data-mode='onLight'] {
         color: var(--tui-text-03);
 
         &:hover,
@@ -31,9 +31,19 @@
                 color: var(--tui-text-03);
             }
         }
+
+        &[data-tui-host-mode='negative'] {
+            color: var(--tui-negative-night);
+
+            &:hover,
+            &:active,
+            &._active {
+                color: var(--tui-negative-night-hover);
+            }
+        }
     }
 
-    &[data-tui-host-mode='onDark'] {
+    &[data-mode='onDark'] {
         color: var(--tui-text-03-night);
 
         &:hover,
@@ -51,9 +61,19 @@
                 color: var(--tui-text-03-night);
             }
         }
+
+        &[data-tui-host-mode='positive'] {
+            color: var(--tui-positive-night);
+
+            &:hover,
+            &:active,
+            &._active {
+                color: var(--tui-positive-night-hover);
+            }
+        }
     }
 
-    &[data-tui-host-mode='alert'] {
+    &[data-tui-host-mode='negative'] {
         color: var(--tui-negative);
 
         &:hover {
@@ -61,7 +81,7 @@
         }
     }
 
-    &[data-tui-host-mode='success'] {
+    &[data-tui-host-mode='positive'] {
         color: var(--tui-positive);
 
         &:hover {
@@ -77,21 +97,21 @@
         background: var(--tui-selection);
     }
 
-    :host[data-tui-host-mode='onLight']._focus-visible & {
+    :host[data-mode='onLight']._focus-visible & {
         background: var(--tui-text-01);
         color: var(--tui-base-01);
     }
 
-    :host[data-tui-host-mode='onDark']._focus-visible & {
+    :host[data-mode='onDark']._focus-visible & {
         background: var(--tui-base-01);
         color: var(--tui-text-01);
     }
 
-    :host[data-tui-host-mode='success']._focus-visible & {
+    :host[data-tui-host-mode='positive']._focus-visible & {
         background: var(--tui-success-bg);
     }
 
-    :host[data-tui-host-mode='alert']._focus-visible & {
+    :host[data-tui-host-mode='negative']._focus-visible & {
         background: var(--tui-error-bg);
     }
 
