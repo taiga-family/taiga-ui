@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, InjectionToken, Provider} from '@angular/core';
 import {TuiDestroyService, watch} from '@taiga-ui/cdk';
-import {merge, Observable} from 'rxjs';
+import {merge, NEVER, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {
     TUI_TEXTFIELD_AUTOCOMPLETE,
@@ -54,7 +54,7 @@ export function textfieldWatchedControllerFactory(
         TuiTextfieldTypeDirective,
     ]
 ): TuiTextfieldController {
-    const change$ = merge(...controllers.map(({change$}) => change$)).pipe(
+    const change$ = merge(...controllers.map(({change$}) => change$ || NEVER)).pipe(
         watch(changeDetectorRef),
         takeUntil(destroy$),
     );

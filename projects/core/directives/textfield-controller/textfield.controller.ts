@@ -41,6 +41,7 @@ export class TuiTextfieldController {
     get exampleText(): string {
         return this.exampleTextDirective.exampleText;
     }
+
     get inputMode(): TuiInputMode {
         return this.inputModeDirective.inputMode;
     }

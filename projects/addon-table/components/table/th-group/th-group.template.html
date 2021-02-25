@@ -1,0 +1,11 @@
+<ng-content></ng-content>
+<ng-container *ngIf="heads$ | async as headings">
+    <ng-container
+        *ngFor="let key of table.columns"
+        [ngTemplateOutlet]="headings[key]?.template || plain"
+    >
+        <ng-template #plain>
+            <th *ngIf="!th && !heads.length" tuiTh>{{key}}</th>
+        </ng-template>
+    </ng-container>
+</ng-container>

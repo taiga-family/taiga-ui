@@ -1,0 +1,17 @@
+<button
+    *ngIf="head && sorter && table else content"
+    type="button"
+    class="sort"
+    [class.sort_sorted]="isCurrent"
+    (click)="table.updateSorter(sorter)"
+>
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+    {{ table.change$ | async }}
+    <tui-svg
+        src="tuiIconSortDown"
+        class="arrow"
+        [class.arrow_rotated]="table.direction === -1"
+    ></tui-svg>
+</button>
+<ng-template #content><ng-content></ng-content></ng-template>
+<div *ngIf="resizable" class="bar" (tuiResized)="onResized($event)"></div>

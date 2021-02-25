@@ -72,7 +72,7 @@
         "@stackblitz/sdk": "^1.5.2",
         "@tinkoff/angular-contenteditable-accessor": "1.1.0",
         "@tinkoff/ng-dompurify": "3.0.0",
-        "@tinkoff/ng-event-plugins": "2.0.0",
+        "@tinkoff/ng-event-plugins": "2.1.2",
         "@tinkoff/ng-polymorpheus": "3.0.0",
         "angular2-text-mask": "9.0.0",
         "classlist.js": "^1.1.20150312",

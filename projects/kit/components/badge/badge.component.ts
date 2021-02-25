@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
+import {isNumber, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/enums';
 import {Observable} from 'rxjs';
@@ -48,11 +48,11 @@ export class TuiBadgeComponent {
 
     @HostBinding('attr.data-tui-host-padding')
     get padding(): string {
-        return typeof this.value.valueOf() === 'number' ? 'm' : 'l';
+        return isNumber(this.value.valueOf()) ? 'm' : 'l';
     }
 
     get outputValue(): string {
-        if (typeof this.value.valueOf() === 'number' && this.value.valueOf() > 99) {
+        if (isNumber(this.value.valueOf()) && this.value.valueOf() > 99) {
             return '99+';
         } else {
             return String(this.value);

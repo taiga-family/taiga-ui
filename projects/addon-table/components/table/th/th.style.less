@@ -1,0 +1,154 @@
+@import 'taiga-ui-local';
+
+:host {
+    .transition(box-shadow);
+    position: relative;
+    top: 0;
+    height: var(--tui-height-m);
+    font: var(--tui-font-text-s);
+    z-index: 20;
+    text-align: left;
+    font-weight: bold;
+    color: var(--tui-text-01);
+    background: var(--tui-base-01);
+    cursor: default;
+    padding: 0 12px;
+    box-sizing: border-box;
+    box-shadow: 0 5px rgba(237, 237, 237, 0);
+    border-color: var(--tui-base-04);
+
+    &:before {
+        .fullsize(absolute, inset);
+        left: 0;
+        bottom: -1px;
+        content: '';
+        box-sizing: border-box;
+        pointer-events: none;
+        border: 1px solid;
+        border-color: inherit;
+    }
+
+    &._sticky {
+        z-index: 30;
+
+        &:first-child {
+            left: 0;
+        }
+
+        &:after {
+            .transition(opacity);
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 100%;
+            bottom: 0;
+            width: 5px;
+            pointer-events: none;
+            background: rgba(237, 237, 237, 0.7);
+            opacity: 0;
+        }
+    }
+}
+
+:host-context(table[data-tui-host-size='l']) {
+    height: var(--tui-height-l);
+    font: var(--tui-font-text-m);
+    font-weight: bold;
+    padding: 0 16px;
+}
+
+:host-context(thead[tuiThead]) {
+    position: sticky;
+}
+
+:host-context(table._stuck)._sticky:after {
+    opacity: 1;
+}
+
+:host-context(thead[tuiThead]._stuck) {
+    box-shadow: 0 5px rgba(237, 237, 237, 0.7);
+}
+
+:host-context(table[data-mode='onDark']):after {
+    background: rgba(60, 60, 60, 0.9);
+}
+
+:host-context(table[data-mode='onDark'] thead[tuiThead]._stuck) {
+    box-shadow: 0 5px rgba(60, 60, 60, 0.9);
+}
+
+:host-context(table[data-mode='onDark'] thead[tuiThead]._stuck):first-child {
+    box-shadow: 1px 5px rgba(60, 60, 60, 0.9);
+}
+
+:host-context(table[data-tui-host-size='l'] thead[tuiThead] tr:nth-child(2)) {
+    top: var(--tui-height-l);
+}
+
+:host-context(table[data-tui-host-size='m'] thead[tuiThead] tr:nth-child(2)) {
+    top: var(--tui-height-m);
+}
+
+:host-context(table[data-tui-host-size='s'] thead[tuiThead] tr:nth-child(2)) {
+    top: var(--tui-height-s);
+}
+
+.sort {
+    .transition(color);
+    .clearbtn();
+    display: inline-flex;
+    flex-direction: inherit;
+    align-items: center;
+    outline: none;
+    font-weight: bold;
+    cursor: pointer;
+
+    &_sorted {
+        color: var(--tui-text-01);
+
+        & .arrow_rotated {
+            transform: scaleY(-1);
+        }
+    }
+
+    &:focus-visible {
+        background: var(--tui-selection);
+    }
+
+    &:hover {
+        color: var(--tui-text-02);
+    }
+
+    &_sorted,
+    &:focus-visible,
+    &:hover {
+        & .arrow {
+            opacity: 1;
+        }
+    }
+}
+
+.arrow {
+    .transition(opacity);
+    opacity: 0;
+}
+
+.bar {
+    .transition(opacity);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -1px;
+    width: 3px;
+    justify-self: flex-end;
+    border-left: 2px solid transparent;
+    background: var(--tui-support-12);
+    background-clip: content-box;
+    cursor: ew-resize;
+    opacity: 0;
+
+    &:hover,
+    &:active {
+        opacity: 1;
+    }
+}

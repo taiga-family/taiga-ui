@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Optional, Provider, Self} from '@angular/core';
+import {ChangeDetectorRef, ElementRef, Optional, Provider, Self} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
@@ -10,6 +10,7 @@ export const MODE_PROVIDER: Provider = {
         [new Self(), TuiDestroyService],
         ChangeDetectorRef,
         [new Optional(), TuiModeDirective],
+        ElementRef,
     ],
     useFactory: modeFactory,
 };

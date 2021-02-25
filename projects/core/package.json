@@ -25,7 +25,7 @@
         "@angular/forms": ">=6.0.0",
         "@angular/platform-browser": ">=6.0.0",
         "@angular/router": ">=6.0.0",
-        "@tinkoff/ng-event-plugins": ">=2.0.0",
+        "@tinkoff/ng-event-plugins": ">=2.1.2",
         "@tinkoff/ng-polymorpheus": ">=3.0.0",
         "rxjs": ">=6.0.0"
     }

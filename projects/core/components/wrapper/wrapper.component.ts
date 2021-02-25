@@ -5,19 +5,19 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiInteractiveState} from '@taiga-ui/core/enums';
+import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
-import {TUI_WRAPPER_PROVIDERS} from './wrapper.providers';
 
 @Component({
     selector: 'tui-wrapper',
     template: '<ng-content></ng-content>',
     styleUrls: ['./wrapper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_WRAPPER_PROVIDERS,
+    providers: [TuiDestroyService, MODE_PROVIDER],
 })
 export class TuiWrapperComponent {
     @Input()

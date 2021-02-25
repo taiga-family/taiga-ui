@@ -1,18 +1,11 @@
 @import 'taiga-ui-local';
 
 :host {
+    position: relative;
+
     &:last-child .bar {
         display: none;
     }
-}
-
-.wrapper {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.content {
-    flex: 1;
 }
 
 .bar {
@@ -20,11 +13,10 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 2px;
-    margin-right: -4px;
+    right: -1px;
+    width: 3px;
     justify-self: flex-end;
     border-left: 2px solid transparent;
-    border-right: 2px solid transparent;
     background: var(--tui-support-12);
     background-clip: content-box;
     cursor: ew-resize;

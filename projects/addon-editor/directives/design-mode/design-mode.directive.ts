@@ -22,6 +22,7 @@ import {
     getClipboardDataText,
     getClosestKeyboardFocusable,
     isNativeFocused,
+    preventDefault,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiDestroyService,
@@ -33,7 +34,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_SANITIZER} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
-import {filter, mapTo, take, takeUntil} from 'rxjs/operators';
+import {filter, map, mapTo, take, takeUntil} from 'rxjs/operators';
 
 @Directive({
     selector: 'iframe[tuiDesignMode]',
@@ -252,13 +253,11 @@ export class TuiDesignModeDirective
                         !event.clipboardData ||
                         event.clipboardData.types.indexOf('Files') === -1,
                 ),
+                preventDefault(),
+                map(event => this.sanitize(getClipboardDataText(event, 'text/html'))),
             )
-            .subscribe(event => {
-                event.preventDefault();
-                tuiInsertHtml(
-                    this.computedDocument,
-                    this.sanitize(getClipboardDataText(event, 'text/html')),
-                );
+            .subscribe(html => {
+                tuiInsertHtml(this.computedDocument, html);
             });
     }
 
@@ -273,9 +272,9 @@ export class TuiDesignModeDirective
                     } => !!event.dataTransfer,
                 ),
                 takeUntil(this.destroy$),
+                preventDefault(),
             )
             .subscribe(event => {
-                event.preventDefault();
                 this.setSelectionAt(event.x, event.y);
 
                 if (

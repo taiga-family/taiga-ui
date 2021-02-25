@@ -1,0 +1,23 @@
+<ng-content></ng-content>
+<tr *ngIf="heading">
+    <th class="heading" [colSpan]="table.columns.length">
+        <button class="expand" type="button" (click)="onClick()">
+            <span polymorpheus-outlet class="name" [content]="heading"></span>
+            <tui-svg
+                src="tuiIconChevronUpLarge"
+                class="chevron"
+                [class.chevron_rotated]="open"
+            ></tui-svg>
+        </button>
+    </th>
+</tr>
+<ng-container *ngIf="open && row">
+    <ng-container
+        *ngFor="let item of sorted"
+        [ngTemplateOutlet]="row.template"
+        [ngTemplateOutletContext]="item | tuiMapper : toContext"
+    ></ng-container>
+</ng-container>
+<tr class="footer">
+    <td [colSpan]="table.columns.length"></td>
+</tr>

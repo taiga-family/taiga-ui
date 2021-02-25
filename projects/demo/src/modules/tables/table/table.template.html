@@ -1,0 +1,57 @@
+<tui-doc-page header="Table" package="ADDON-TABLE">
+    <ng-template i18n pageTab>
+        <p>Interactive table main component.</p>
+
+        <tui-doc-example
+            id="basic"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-table-example-1></tui-table-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            i18n-heading
+            heading="Custom"
+            [content]="example2"
+        >
+            <tui-table-example-2></tui-table-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="editable"
+            i18n-heading
+            heading="Editable"
+            [content]="example3"
+        >
+            <tui-table-example-3></tui-table-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import <code>TuiTableModule</code> into a module where you
+                    want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

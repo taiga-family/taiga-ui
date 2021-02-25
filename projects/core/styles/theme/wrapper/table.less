@@ -3,13 +3,21 @@ tui-wrapper[data-appearance='table'] {
     background: transparent;
     color: var(--tui-text-01);
 
-    &[data-appearance='table']:after {
-        border-width: 1px;
-        color: var(--tui-base-03);
+    table &[data-appearance='table']:not(._focused):after {
+        border-width: 0;
     }
 
-    &[data-state='hovered']:after {
+    table &._focused {
+        z-index: 1;
+    }
+
+    &[data-appearance='table']:after {
+        border-width: 1px;
         color: var(--tui-base-04);
+    }
+
+    &[data-state='hovered']:not(._focused) {
+        background: var(--tui-clear-disabled);
     }
 
     &[data-state='disabled'] {
@@ -19,6 +27,10 @@ tui-wrapper[data-appearance='table'] {
     &._focused:after {
         border-width: 2px;
         color: var(--tui-focus);
+    }
+
+    &[data-mode='onDark']._focused:after {
+        color: var(--tui-text-01-night);
     }
 
     &._invalid {
