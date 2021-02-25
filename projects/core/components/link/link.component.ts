@@ -18,9 +18,11 @@ import {
     TuiFocusVisibleService,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {TuiLinkMode} from '@taiga-ui/core/enums';
+import {MODE_PROVIDER} from '@taiga-ui/core/providers';
+import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiHorizontalDirection} from '@taiga-ui/core/types';
+import {Observable} from 'rxjs';
 
 // @bad TODO: Think about extending Interactive
 @Component({
@@ -34,9 +36,13 @@ import {TuiBrightness, TuiHorizontalDirection} from '@taiga-ui/core/types';
         },
         TuiFocusVisibleService,
         TuiDestroyService,
+        MODE_PROVIDER,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'tuiLink',
+    host: {
+        '($.data-mode.attr)': 'mode$',
+    },
 })
 export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @Input()
@@ -58,6 +64,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     iconRotated = false;
 
     @Input()
+    @HostBinding('attr.data-tui-host-mode')
     @tuiDefaultProp()
     mode: TuiLinkMode | null = null;
 
@@ -67,9 +74,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     constructor(
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<TuiNativeFocusableElement>,
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Optional()
         @Inject(RouterLinkActive)
         private readonly routerLinkActive: RouterLinkActive | null,
@@ -79,15 +84,6 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
         focusVisible$.subscribe(visible => {
             this.focusVisible = visible;
         });
-    }
-
-    @HostBinding('attr.data-tui-host-mode')
-    get hostMode(): TuiLinkMode | TuiBrightness | null {
-        return this.mode !== null ||
-            this.modeDirective === null ||
-            this.modeDirective.mode === null
-            ? this.mode
-            : this.modeDirective.mode;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement {
