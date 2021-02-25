@@ -3,6 +3,7 @@ import {ElementRef, InjectionToken, Provider} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     containsOrAfter,
+    isCurrentTarget,
     TuiDestroyService,
     TuiDialog,
     typedFromEvent,
@@ -31,6 +32,7 @@ export function dialogCloseStreamFactory(
 ): Observable<unknown> {
     return dismissible
         ? merge(
+              typedFromEvent(nativeElement, 'click').pipe(filter(isCurrentTarget)),
               typedFromEvent(documentRef, 'keydown').pipe(
                   filter(
                       ({key, target}) =>
