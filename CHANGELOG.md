@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.5.0...v2.6.0) (2021-02-25)
+
+
+### Features
+
+* **addon-doc:** add "Edit on Online IDE" button support ([5cae178](https://github.com/TinkoffCreditSystems/taiga-ui/commit/5cae178da83d0ab825afa5354d5f3805b02600ad))
+* **addon-table:** `Table` add new module ([9ac0243](https://github.com/TinkoffCreditSystems/taiga-ui/commit/9ac024368168fc19af0a8bb903b7c80d97ef7171))
+* **i18n:** add Ukrainian support ([#231](https://github.com/TinkoffCreditSystems/taiga-ui/issues/231)) ([38b292b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/38b292b2d19ca5d19bb603979f26758ce4d11b09))
+
+
+### Bug Fixes
+
+* **core:** `Dialog` fix closing non-dismissible dialog by clicking on border ([#240](https://github.com/TinkoffCreditSystems/taiga-ui/issues/240)) ([516dc74](https://github.com/TinkoffCreditSystems/taiga-ui/commit/516dc74a09267024b7154ebad46d36402d3d6625))
+* **core:** `Link` properly handle various modes ([#241](https://github.com/TinkoffCreditSystems/taiga-ui/issues/241)) ([9197895](https://github.com/TinkoffCreditSystems/taiga-ui/commit/919789593d9553f278bee7b1e0552a0665a6c1ef))
+
 ## [2.5.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.4.0...v2.5.0) (2021-02-08)
 
 ### Features
