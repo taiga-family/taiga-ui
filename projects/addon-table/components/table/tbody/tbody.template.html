@@ -13,9 +13,9 @@
 </tr>
 <ng-container *ngIf="open && row">
     <ng-container
-        *ngFor="let item of sorted"
+        *ngFor="let item of sorted; let index = index"
         [ngTemplateOutlet]="row.template"
-        [ngTemplateOutletContext]="item | tuiMapper : toContext"
+        [ngTemplateOutletContext]="item | tuiMapper : toContext : index"
     ></ng-container>
 </ng-container>
 <tr class="footer">

@@ -9,19 +9,19 @@
         </tr>
     </thead>
     <tbody tuiTbody [data]="users">
-        <tr *tuiRow="let item of users" [tuiTr]="item">
-            <td *tuiCell="'name' of item; let value" tuiTd>{{value}}</td>
-            <td *tuiCell="'email' of item; let value" tuiTd>
-                <a *ngIf="value" tuiLink [href]="'mailto:' + value">
-                    {{value}}
+        <tr *tuiRow="let item of users; let index = index" tuiTr>
+            <td *tuiCell="'name'" tuiTd>{{index + 1}}. {{item.name}}</td>
+            <td *tuiCell="'email'" tuiTd>
+                <a *ngIf="item.email" tuiLink [href]="'mailto:' + item.email">
+                    {{item.email}}
                 </a>
             </td>
-            <td *tuiCell="'status' of item; let value" tuiTd>
-                <div [class]="value">{{value}}</div>
+            <td *tuiCell="'status'" tuiTd>
+                <div [class]="item.status">{{item.status}}</div>
             </td>
-            <td *tuiCell="'tags' of item; let tags" tuiTd>
+            <td *tuiCell="'tags'" tuiTd>
                 <tui-tag
-                    *ngFor="let tag of tags"
+                    *ngFor="let tag of item.tags"
                     class="tui-space_right-1"
                     [value]="tag"
                     [autoColor]="true"

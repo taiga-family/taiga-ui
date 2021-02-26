@@ -1,5 +1,6 @@
 import {Directive, Inject, Input, TemplateRef} from '@angular/core';
-import {TuiContextWithImplicit, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TuiRowContext} from '@taiga-ui/addon-table/interfaces';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Directive({
     selector: 'ng-template[tuiRow]',
@@ -9,14 +10,12 @@ export class TuiRowDirective<T> {
     @tuiDefaultProp()
     tuiRowOf: readonly T[] = [];
 
-    constructor(
-        @Inject(TemplateRef) readonly template: TemplateRef<TuiContextWithImplicit<T>>,
-    ) {}
+    constructor(@Inject(TemplateRef) readonly template: TemplateRef<TuiRowContext<T>>) {}
 
     static ngTemplateContextGuard<T>(
         _dir: TuiRowDirective<T>,
         _ctx: any,
-    ): _ctx is TuiContextWithImplicit<T> {
+    ): _ctx is TuiRowContext<T> {
         return true;
     }
 }

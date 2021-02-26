@@ -2,18 +2,21 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
+    ContentChildren,
     EventEmitter,
     forwardRef,
     Inject,
     Input,
     Output,
+    QueryList,
 } from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
+import {TuiTrComponent} from '../tr/tr.component';
 
 @Component({
     selector: 'tbody[tuiTbody]',
@@ -41,7 +44,10 @@ export class TuiTbodyComponent<T> {
     @ContentChild(forwardRef(() => TuiRowDirective))
     readonly row?: TuiRowDirective<T>;
 
-    readonly toContext = ($implicit: T) => ({$implicit});
+    @ContentChildren(forwardRef(() => TuiTrComponent))
+    readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
+
+    readonly toContext = ($implicit: T, index: number) => ({$implicit, index});
 
     constructor(
         @Inject(forwardRef(() => TuiTableDirective))
