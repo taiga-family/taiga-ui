@@ -19,7 +19,20 @@ export function tuiCreateAutoCorrectedNumberPipe(
     tuiAssert.assert(decimalLimit >= 0);
 
     return (conformedValue, config) => {
-        // remove this hack after text mask library has changed
+        // remove these hacks after text mask library has changed
+        if (nativeInput && isNativeFocused(nativeInput)) {
+            const caret = calculateSafariCaret(
+                config.previousConformedValue,
+                conformedValue,
+            );
+
+            console.log(caret);
+
+            setTimeout(() => {
+                nativeInput.setSelectionRange(caret, caret);
+            });
+        }
+
         if (
             nativeInput &&
             nativeInput.ownerDocument !== getDocumentOrShadowRoot(nativeInput) &&
@@ -45,6 +58,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
 
         return {
             value: withDecimalSymbol + '0'.repeat(zeroPaddingSize),
+            indexesOfPipedChars: [2, 4],
         };
     };
 }
@@ -56,14 +70,41 @@ function addDecimalSymbolIfNeeded(
     return value.indexOf(decimalSymbol) === -1 ? value + decimalSymbol : value;
 }
 
-function calculateCaretGap(privousValue: string = '', current: string): number {
-    const pasteOrCutOperation = Math.abs(privousValue.length - current.length) > 2;
+function calculateSafariCaret(previousValue: string = '', current: string): number {
+    const pasteOrCutOperation = Math.abs(previousValue.length - current.length) > 2;
+
+    if (pasteOrCutOperation) {
+        return current.length;
+    }
+
+    const previousArray = previousValue
+        .split('')
+        .filter(char => char !== CHAR_NO_BREAK_SPACE);
+    const currentArray = current.split('').filter(char => char !== CHAR_NO_BREAK_SPACE);
+
+    if (previousArray.pop() !== currentArray.pop()) {
+        return current.length;
+    }
+
+    console.log(previousArray, currentArray);
+
+    for (let i = 0; i < currentArray.length; i++) {
+        if (previousArray[i] !== currentArray[i]) {
+            return i + Math.ceil(i / 3);
+        }
+    }
+
+    return current.length;
+}
+
+function calculateCaretGap(previousValue: string = '', current: string): number {
+    const pasteOrCutOperation = Math.abs(previousValue.length - current.length) > 2;
 
     if (pasteOrCutOperation) {
         return 0;
     }
 
-    const wereSpaces = privousValue.split(CHAR_NO_BREAK_SPACE).length;
+    const wereSpaces = previousValue.split(CHAR_NO_BREAK_SPACE).length;
     const nowSpaces = current.split(CHAR_NO_BREAK_SPACE).length;
 
     return nowSpaces - wereSpaces;
