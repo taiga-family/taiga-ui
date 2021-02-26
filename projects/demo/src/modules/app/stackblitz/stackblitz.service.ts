@@ -30,6 +30,7 @@ const DEPS: Record<string, string> = {
     '@tinkoff/ng-polymorpheus': '*',
     '@ng-web-apis/common': '*',
     '@tinkoff/ng-event-plugins': '*',
+    '@ng-web-apis/intersection-observer': '*',
     '@ng-web-apis/mutation-observer': '*',
     'angular2-text-mask': '*',
     dompurify: '*',

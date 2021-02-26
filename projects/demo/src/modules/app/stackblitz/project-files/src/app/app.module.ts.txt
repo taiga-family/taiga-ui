@@ -132,6 +132,7 @@ import {
     TuiReorderModule,
     TuiResizableColumnModule,
     TuiTablePaginationModule,
+    TuiTableModule,
 } from '@taiga-ui/addon-table';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -260,6 +261,7 @@ import {AppComponent} from './app.component';
         TuiFormatNumberPipeModule,
         TuiFormatPhonePipeModule,
         TuiMapperPipeModule,
+        TuiTableModule,
     ],
     declarations: [AppComponent],
     bootstrap: [AppComponent],
