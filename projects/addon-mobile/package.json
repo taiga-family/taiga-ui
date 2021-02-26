@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-mobile",
-    "version": "2.6.0",
+    "version": "2.6.1",
     "description": "Extension package for Taiga UI that adds support for mobile specific behaviors such as custom data pickers, dropdowns, etc.",
     "keywords": [
         "angular",
@@ -15,13 +15,13 @@
         "@angular/common": ">=7.0.0",
         "@angular/core": ">=7.0.0",
         "@tinkoff/ng-polymorpheus": ">=3.0.0",
-        "@taiga-ui/cdk": "2.6.0",
-        "@taiga-ui/core": "2.6.0",
-        "@taiga-ui/kit": "2.6.0",
+        "@taiga-ui/cdk": "2.6.1",
+        "@taiga-ui/core": "2.6.1",
+        "@taiga-ui/kit": "2.6.1",
         "rxjs": ">=6.0.0"
     },
     "devDependencies": {
-        "@taiga-ui/core": "2.6.0",
-        "@taiga-ui/kit": "2.6.0"
+        "@taiga-ui/core": "2.6.1",
+        "@taiga-ui/kit": "2.6.1"
     }
 }
