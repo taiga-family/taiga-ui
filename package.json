@@ -131,7 +131,7 @@
         "rollup": "^1.10.0",
         "rollup-plugin-typescript2": "^0.20.1",
         "rollup-pluginutils": "^2.6.0",
-        "standard-version": "^7.0.0",
+        "standard-version": "^8.0.1",
         "stylelint": "^10.0.1",
         "svgo": "^1.2.1",
         "ts-loader": "^5.3.3",
