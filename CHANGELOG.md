@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.6.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.6.0...v2.6.1) (2021-02-26)
+
+
+### Bug Fixes
+
+* **addon-table:** fix incorrect style minification ([c00cf1b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c00cf1b5bfe61fabba137ab8d41c719a0bf96451))
+* **core:** fix underline pseudo link ([#246](https://github.com/TinkoffCreditSystems/taiga-ui/issues/246)) ([bca9201](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bca9201ffd30463da0b24a70aece4a1f2ac01f5b))
+
 ## [2.6.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.5.0...v2.6.0) (2021-02-25)
 
 
