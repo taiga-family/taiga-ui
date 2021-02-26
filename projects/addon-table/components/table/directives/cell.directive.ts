@@ -4,10 +4,10 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 @Directive({
     selector: '[tuiCell]',
 })
-export class TuiCellDirective<T, K extends keyof T> {
+export class TuiCellDirective {
     @Input()
     @tuiDefaultProp()
-    tuiCell!: K | string;
+    tuiCell!: string;
 
     constructor(@Inject(TemplateRef) readonly template: TemplateRef<{}>) {}
 }

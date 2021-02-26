@@ -21,12 +21,12 @@ import {TuiTbodyComponent} from '../tbody/tbody.component';
 })
 export class TuiTrComponent<T> {
     @ContentChildren(forwardRef(() => TuiCellDirective))
-    readonly cells: QueryList<TuiCellDirective<T, keyof T>> = EMPTY_QUERY;
+    private readonly cells: QueryList<TuiCellDirective> = EMPTY_QUERY;
 
     readonly cells$ = this.cells.changes.pipe(
         startWith(null),
         map(() =>
-            this.cells.reduce<Record<any, TuiCellDirective<T, keyof T>>>(
+            this.cells.reduce<Record<any, TuiCellDirective>>(
                 (record, item) => ({...record, [item.tuiCell]: item}),
                 {},
             ),
