@@ -7,7 +7,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 export class TuiCellDirective {
     @Input()
     @tuiDefaultProp()
-    tuiCell!: string;
+    tuiCell = '';
 
     constructor(@Inject(TemplateRef) readonly template: TemplateRef<{}>) {}
 }
