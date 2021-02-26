@@ -4,7 +4,7 @@
     .clearbtn();
     .transition(color);
     color: var(--tui-link);
-    text-decoration: none;
+    // text-decoration: none;
     text-align: left;
     text-transform: inherit;
     font-weight: inherit;
@@ -116,8 +116,8 @@
     }
 
     :host._pseudo & {
-        .dashed-border(@color: currentColor, @alignment: 1.15em);
         padding-bottom: 0.15em;
+        text-decoration: underline dotted;
     }
 }
 
