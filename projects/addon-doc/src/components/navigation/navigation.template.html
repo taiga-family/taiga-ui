@@ -48,6 +48,7 @@
                 *ngFor="let label of labels; index as index"
                 size="s"
                 [borders]="null"
+                [(open)]="!!openPagesArr[index]"
             >
                 <span class="tui-space_left-2">
                     <strong>{{label}}</strong>
@@ -83,13 +84,13 @@
                                         <tui-svg
                                             src="tuiIconChevronRight"
                                             class="chevron"
-                                            [class.chevron_active]="!!openGroupsArr[index]"
+                                            [class.chevron_active]="!!openPagesGroupsArr[index]"
                                         ></tui-svg>
                                         {{item.title}}
                                     </button>
                                     <tui-expand
                                         class="tui-space_left-1"
-                                        [expanded]="!!openGroupsArr[index]"
+                                        [expanded]="!!openPagesGroupsArr[index]"
                                     >
                                         <div class="section section_bordered">
                                             <a
