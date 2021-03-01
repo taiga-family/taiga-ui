@@ -13,6 +13,7 @@ import {
     isEdgeOlderThan,
     isIE,
     isNativeFocusedIn,
+    isSafari,
     tuiDefaultProp,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
@@ -60,6 +61,8 @@ export class TuiLoaderComponent {
 
     @HostBinding('class._animated-with-js')
     animatedWithJs = isEdgeOlderThan(17, this.userAgent) || isIE(this.userAgent);
+
+    readonly isSafari = isSafari(this.elementRef.nativeElement);
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
