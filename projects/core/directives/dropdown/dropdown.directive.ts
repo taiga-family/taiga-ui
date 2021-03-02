@@ -16,6 +16,7 @@ import {
     TuiPortalService,
 } from '@taiga-ui/cdk';
 import {AbstractTuiDropdown} from '@taiga-ui/core/abstract';
+import {TuiModeDirective} from '@taiga-ui/core/directives';
 import {TuiDropdown} from '@taiga-ui/core/interfaces';
 import {TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
 
@@ -44,7 +45,7 @@ export class TuiDropdownDirective
     constructor(
         @Inject(ComponentFactoryResolver)
         componentFactoryResolver: ComponentFactoryResolver,
-        @Inject(Injector) injector: Injector,
+        @Inject(Injector) parent: Injector,
         @Inject(TuiPortalService)
         portalService: TuiPortalService,
         @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
@@ -53,6 +54,20 @@ export class TuiDropdownDirective
         activeZone: TuiActiveZoneDirective | null,
         @Inject(TuiParentsScrollService) readonly refresh$: TuiParentsScrollService,
     ) {
-        super(componentFactoryResolver, injector, portalService, elementRef, activeZone);
+        super(
+            componentFactoryResolver,
+            Injector.create({
+                parent,
+                providers: [
+                    {
+                        provide: TuiModeDirective,
+                        useValue: null,
+                    },
+                ],
+            }),
+            portalService,
+            elementRef,
+            activeZone,
+        );
     }
 }
