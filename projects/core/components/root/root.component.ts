@@ -10,7 +10,7 @@ import {TUI_DIALOGS, TUI_IS_MOBILE, tuiAssert} from '@taiga-ui/cdk';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {VERSION} from '@taiga-ui/core/constants';
 import {TuiNotificationsHostComponent} from '@taiga-ui/core/modules/notifications';
-import {TUI_ASSERT_ENABLED} from '@taiga-ui/core/tokens/assert-enabled';
+import {TUI_ASSERT_ENABLED} from '@taiga-ui/core/tokens';
 import {SilentEventPlugin} from '@tinkoff/ng-event-plugins';
 import {merge, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
