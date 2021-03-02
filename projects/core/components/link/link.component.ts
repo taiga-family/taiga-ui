@@ -64,7 +64,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     iconRotated = false;
 
     @Input()
-    @HostBinding('attr.data-tui-host-mode')
+    @HostBinding('attr.data-mode')
     @tuiDefaultProp()
     mode: TuiLinkMode | null = null;
 

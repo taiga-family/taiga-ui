@@ -32,7 +32,7 @@
             }
         }
 
-        &[data-tui-host-mode='negative'] {
+        &[data-mode='negative'] {
             color: var(--tui-negative-night);
 
             &:hover,
@@ -62,7 +62,7 @@
             }
         }
 
-        &[data-tui-host-mode='positive'] {
+        &[data-mode='positive'] {
             color: var(--tui-positive-night);
 
             &:hover,
@@ -73,7 +73,7 @@
         }
     }
 
-    &[data-tui-host-mode='negative'] {
+    &[data-mode='negative'] {
         color: var(--tui-negative);
 
         &:hover {
@@ -81,7 +81,7 @@
         }
     }
 
-    &[data-tui-host-mode='positive'] {
+    &[data-mode='positive'] {
         color: var(--tui-positive);
 
         &:hover {
@@ -107,11 +107,11 @@
         color: var(--tui-text-01);
     }
 
-    :host[data-tui-host-mode='positive']._focus-visible & {
+    :host[data-mode='positive']._focus-visible & {
         background: var(--tui-success-bg);
     }
 
-    :host[data-tui-host-mode='negative']._focus-visible & {
+    :host[data-mode='negative']._focus-visible & {
         background: var(--tui-error-bg);
     }
 

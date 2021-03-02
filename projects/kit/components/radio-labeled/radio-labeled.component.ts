@@ -83,7 +83,7 @@ export class TuiRadioLabeledComponent<T>
         return this.disabled || this.pseudoDisabled;
     }
 
-    @HostBinding('attr.data-tui-host-mode')
+    @HostBinding('attr.data-mode')
     get mode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }

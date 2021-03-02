@@ -49,12 +49,18 @@
     </label>
 </tui-wrapper>
 
-<section tuiGroup class="files" orientation="vertical" [collapsed]="true">
+<section
+    *tuiLet="mode$ | async as mode"
+    tuiGroup
+    class="files"
+    orientation="vertical"
+    [collapsed]="true"
+>
     <tui-file
         *ngFor="let file of rejectedFiles"
         automation-id="tui-input-file__error"
         state="error"
-        [attr.data-mode]="mode$ | async"
+        [attr.data-mode]="mode"
         [showSize]="showSize"
         [allowDelete]="allowDelete"
         [size]="size"
@@ -65,7 +71,7 @@
         *ngFor="let file of computedLoading"
         automation-id="tui-input-file__loading"
         state="loading"
-        [attr.data-mode]="mode$ | async"
+        [attr.data-mode]="mode"
         [showSize]="showSize"
         [allowDelete]="allowDelete"
         [size]="size"
@@ -75,7 +81,7 @@
     <tui-file
         *ngFor="let file of readyFiles"
         automation-id="tui-input-file__file"
-        [attr.data-mode]="mode$ | async"
+        [attr.data-mode]="mode"
         [showSize]="showSize"
         [allowDelete]="allowDelete"
         [size]="size"

@@ -124,6 +124,21 @@ export class TuiTabsComponent implements AfterViewChecked {
 
         this.activeItemIndex = index;
         this.activeItemIndexChange.emit(index);
+
+        const {offsetLeft, offsetWidth} = element;
+        const {nativeElement} = this.elementRef;
+
+        if (offsetLeft < nativeElement.scrollLeft) {
+            nativeElement.scrollLeft = offsetLeft;
+        }
+
+        if (
+            offsetLeft + offsetWidth >
+            nativeElement.scrollLeft + nativeElement.offsetWidth
+        ) {
+            nativeElement.scrollLeft =
+                offsetLeft + offsetWidth - nativeElement.offsetWidth;
+        }
     }
 
     @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])

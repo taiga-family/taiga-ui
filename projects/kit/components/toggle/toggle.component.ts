@@ -111,7 +111,7 @@ export class TuiToggleComponent
         return this.sizeM ? 'xs' : 's';
     }
 
-    @HostBinding('attr.data-tui-host-mode')
+    @HostBinding('attr.data-mode')
     get hostMode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }
