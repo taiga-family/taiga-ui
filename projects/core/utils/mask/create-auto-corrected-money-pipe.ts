@@ -2,6 +2,7 @@ import {
     CHAR_NO_BREAK_SPACE,
     getDocumentOrShadowRoot,
     isNativeFocused,
+    isSafari,
     tuiAssert,
 } from '@taiga-ui/cdk';
 import {TuiTextMaskPipeHandler} from '@taiga-ui/core/mask';
@@ -18,15 +19,23 @@ export function tuiCreateAutoCorrectedNumberPipe(
     tuiAssert.assert(Number.isInteger(decimalLimit));
     tuiAssert.assert(decimalLimit >= 0);
 
+    // Guess for which browser I need this :)
+    let previousCaret = -1;
+
+    if (nativeInput && isSafari(nativeInput)) {
+        nativeInput.addEventListener('beforeinput', () => {
+            previousCaret = nativeInput.selectionStart || 0;
+        });
+    }
+
     return (conformedValue, config) => {
         // remove these hacks after text mask library has changed
-        if (nativeInput && isNativeFocused(nativeInput)) {
+        if (nativeInput && isSafari(nativeInput) && isNativeFocused(nativeInput)) {
             const caret = calculateSafariCaret(
                 config.previousConformedValue,
                 conformedValue,
+                previousCaret,
             );
-
-            console.log(caret);
 
             setTimeout(() => {
                 nativeInput.setSelectionRange(caret, caret);
@@ -58,7 +67,6 @@ export function tuiCreateAutoCorrectedNumberPipe(
 
         return {
             value: withDecimalSymbol + '0'.repeat(zeroPaddingSize),
-            indexesOfPipedChars: [2, 4],
         };
     };
 }
@@ -70,27 +78,42 @@ function addDecimalSymbolIfNeeded(
     return value.indexOf(decimalSymbol) === -1 ? value + decimalSymbol : value;
 }
 
-function calculateSafariCaret(previousValue: string = '', current: string): number {
-    const pasteOrCutOperation = Math.abs(previousValue.length - current.length) > 2;
+function calculateSafariCaret(
+    previousValue: string = '',
+    current: string,
+    previousCaret: number,
+    decimalSymbol: string = ',',
+): number {
+    const tailRegex = new RegExp(`${decimalSymbol}.+`);
+    const pasteOrCutOperation =
+        Math.abs(
+            previousValue.replace(tailRegex, '').length -
+                current.replace(tailRegex, '').length,
+        ) > 2;
 
     if (pasteOrCutOperation) {
         return current.length;
     }
 
-    const previousArray = previousValue
-        .split('')
-        .filter(char => char !== CHAR_NO_BREAK_SPACE);
-    const currentArray = current.split('').filter(char => char !== CHAR_NO_BREAK_SPACE);
-
-    if (previousArray.pop() !== currentArray.pop()) {
-        return current.length;
+    if (previousValue.length === current.length) {
+        return previousValue.indexOf(decimalSymbol) <= previousCaret
+            ? calculateChangedTailIndex(previousValue, current)
+            : previousCaret - 1;
     }
 
-    console.log(previousArray, currentArray);
+    if (previousValue.length === 0) {
+        return 1;
+    }
 
-    for (let i = 0; i < currentArray.length; i++) {
-        if (previousArray[i] !== currentArray[i]) {
-            return i + Math.ceil(i / 3);
+    const changeLength = current.length - previousValue.length;
+
+    return previousCaret + changeLength;
+}
+
+function calculateChangedTailIndex(previous: string, current: string): number {
+    for (let i = 0; i < current.length; i++) {
+        if (previous[i] !== current[i]) {
+            return current[i] === '0' ? i : i + 1;
         }
     }
 
