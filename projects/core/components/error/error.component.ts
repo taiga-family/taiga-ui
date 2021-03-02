@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {tuiDefaultProp, TuiDestroyService, TuiValidationError} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiValidationError} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse} from '@taiga-ui/core/animations';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_DEFAULT_ERROR_MESSAGE, TUI_MODE} from '@taiga-ui/core/tokens';
@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
     selector: 'tui-error',
     templateUrl: './error.template.html',
     styleUrls: ['./error.style.less'],
-    providers: [TuiDestroyService, MODE_PROVIDER],
+    providers: [MODE_PROVIDER],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiHeightCollapse, tuiFadeIn],
 })

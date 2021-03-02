@@ -16,7 +16,7 @@
     color: var(--tui-primary-text);
     box-sizing: border-box;
 
-    &:not([data-tui-host-mode='overflow']):before,
+    &:not([data-mode='overflow']):before,
     .arrow {
         content: '';
         position: absolute;
@@ -75,12 +75,12 @@
         left: -@arrowSize / 2;
     }
 
-    &[data-tui-host-mode='error'] {
+    &[data-mode='error'] {
         background-color: var(--tui-error-fill);
     }
 
-    &[data-tui-host-mode='onDark'],
-    &[data-tui-host-mode='overflow'] {
+    &[data-mode='onDark'],
+    &[data-mode='overflow'] {
         .shadow(2);
         border: 1px solid var(--tui-base-03);
         background-color: var(--tui-base-01);
@@ -113,7 +113,7 @@
         }
     }
 
-    &[data-tui-host-mode='overflow'] {
+    &[data-mode='overflow'] {
         max-width: none;
     }
 
@@ -126,7 +126,7 @@
     font: var(--tui-font-text-s);
     word-wrap: break-word;
 
-    :host[data-tui-host-mode='overflow'] & {
+    :host[data-mode='overflow'] & {
         font: inherit;
     }
 }

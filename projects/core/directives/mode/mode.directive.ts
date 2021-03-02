@@ -1,23 +1,11 @@
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, Input} from '@angular/core';
+import {Controller} from '@taiga-ui/core/abstract/controller';
 import {TuiBrightness} from '@taiga-ui/core/types';
-import {Subject} from 'rxjs';
 
 @Directive({
     selector: '[tuiMode]',
 })
-export class TuiModeDirective {
+export class TuiModeDirective extends Controller {
     @Input('tuiMode')
-    @HostBinding('attr.data-tui-mode')
-    set mode(mode: TuiBrightness | null) {
-        this.currentMode = mode;
-        this.change$.next();
-    }
-
-    get mode(): TuiBrightness | null {
-        return this.currentMode;
-    }
-
-    readonly change$ = new Subject<void>();
-
-    private currentMode: TuiBrightness | null = null;
+    mode: TuiBrightness | null = null;
 }

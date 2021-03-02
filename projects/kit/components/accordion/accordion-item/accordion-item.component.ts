@@ -17,7 +17,6 @@ import {
     isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
-    TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
@@ -36,9 +35,11 @@ import {TuiAccordionItemContentDirective} from './accordion-item-content.directi
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiAccordionItemComponent),
         },
-        TuiDestroyService,
         MODE_PROVIDER,
     ],
+    host: {
+        '($.data-mode.attr)': 'mode$',
+    },
 })
 export class TuiAccordionItemComponent
     extends AbstractTuiInteractive
@@ -86,21 +87,14 @@ export class TuiAccordionItemComponent
     @ContentChild(TuiAccordionItemContentDirective)
     readonly content?: TuiAccordionItemContentDirective;
 
-    @HostBinding('attr.data-tui-host-mode')
-    mode: TuiBrightness | null = null;
-
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
     ) {
         super();
-
-        mode$.subscribe(mode => {
-            this.mode = mode;
-        });
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

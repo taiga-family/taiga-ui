@@ -19,6 +19,9 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
     styleUrls: ['./tab.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TAB_PROVIDERS,
+    host: {
+        '($.data-mode.attr)': 'mode$',
+    },
 })
 export class TuiTabComponent {
     @HostBinding('class._ios')
@@ -30,18 +33,15 @@ export class TuiTabComponent {
     @HostBinding('class._focus-visible')
     focusVisible = false;
 
-    @HostBinding('attr.data-mode')
-    mode: TuiBrightness | null = null;
-
     constructor(
         @Optional()
         @Inject(RouterLinkActive)
         private readonly routerLinkActive: RouterLinkActive | null,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_MOBILE_AWARE) mobileAware: boolean,
         @Inject(TUI_IS_IOS) isIos: boolean,
         @Inject(TUI_IS_ANDROID) isAndroid: boolean,
         @Inject(TUI_TAB_EVENT) event$: Observable<Event>,
-        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
     ) {
@@ -53,9 +53,6 @@ export class TuiTabComponent {
         });
         focusVisible$.subscribe(visible => {
             this.focusVisible = visible;
-        });
-        mode$.subscribe(mode => {
-            this.mode = mode;
         });
     }
 

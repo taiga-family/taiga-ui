@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {isNumber, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
+import {isNumber, tuiDefaultProp} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/enums';
 import {Observable} from 'rxjs';
@@ -15,7 +15,10 @@ import {Observable} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: '{{outputValue}}',
     styleUrls: ['./badge.style.less'],
-    providers: [TuiDestroyService, MODE_PROVIDER],
+    providers: [MODE_PROVIDER],
+    host: {
+        '($.data-mode.attr)': 'mode$',
+    },
 })
 export class TuiBadgeComponent {
     @Input()
@@ -37,14 +40,7 @@ export class TuiBadgeComponent {
     @tuiDefaultProp()
     hoverable = false;
 
-    @HostBinding('attr.data-tui-host-mode')
-    mode: TuiBrightness | null = null;
-
-    constructor(@Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>) {
-        mode$.subscribe(mode => {
-            this.mode = mode;
-        });
-    }
+    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 
     @HostBinding('attr.data-tui-host-padding')
     get padding(): string {
