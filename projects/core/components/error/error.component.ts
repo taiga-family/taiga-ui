@@ -15,8 +15,12 @@ import {Observable} from 'rxjs';
     animations: [tuiHeightCollapse, tuiFadeIn],
 })
 export class TuiErrorComponent {
-    @Input()
+    @Input('error')
     @tuiDefaultProp()
+    set errorSetter(error: TuiValidationError | string | null) {
+        this.error = typeof error === 'string' ? new TuiValidationError(error) : error;
+    }
+
     error: TuiValidationError | null = null;
 
     constructor(
