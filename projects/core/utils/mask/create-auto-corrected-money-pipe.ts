@@ -22,7 +22,9 @@ export function tuiCreateAutoCorrectedNumberPipe(
     // Guess for which browser I need this :)
     let previousCaret = -1;
 
-    if (nativeInput && isSafari(nativeInput)) {
+    const unlucky = !!nativeInput && isSafari(nativeInput);
+
+    if (nativeInput && unlucky) {
         nativeInput.addEventListener('beforeinput', () => {
             previousCaret = nativeInput.selectionStart || 0;
         });
@@ -30,7 +32,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
 
     return (conformedValue, config) => {
         // remove these hacks after text mask library has changed
-        if (nativeInput && isSafari(nativeInput) && isNativeFocused(nativeInput)) {
+        if (nativeInput && unlucky && isNativeFocused(nativeInput)) {
             const caret = calculateSafariCaret(
                 config.previousConformedValue,
                 conformedValue,
@@ -85,20 +87,24 @@ function calculateSafariCaret(
     decimalSymbol: string = ',',
 ): number {
     const tailRegex = new RegExp(`${decimalSymbol}.+`);
+    const previousWithoutTail = previousValue.replace(tailRegex, '');
+    const currentWithoutTail = current.replace(tailRegex, '');
+
     const pasteOrCutOperation =
-        Math.abs(
-            previousValue.replace(tailRegex, '').length -
-                current.replace(tailRegex, '').length,
-        ) > 2;
+        Math.abs(previousWithoutTail.length - currentWithoutTail.length) > 2;
 
     if (pasteOrCutOperation) {
         return current.length;
     }
 
     if (previousValue.length === current.length) {
-        return previousValue.indexOf(decimalSymbol) <= previousCaret
-            ? calculateChangedTailIndex(previousValue, current)
-            : previousCaret - 1;
+        if (previousValue.indexOf(decimalSymbol) <= previousCaret) {
+            return calculateChangedTailIndex(previousValue, current);
+        }
+
+        return previousWithoutTail === currentWithoutTail
+            ? previousCaret - 1
+            : previousCaret + 1;
     }
 
     if (previousValue.length === 0) {
