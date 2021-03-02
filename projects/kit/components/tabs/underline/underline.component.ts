@@ -13,15 +13,8 @@ import {px, TUI_IS_ANDROID, TUI_IS_IOS, tuiDefaultProp, tuiZonefree} from '@taig
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {asCallable} from '@tinkoff/ng-event-plugins';
-import {Observable, of, Subject} from 'rxjs';
-import {
-    debounceTime,
-    distinctUntilChanged,
-    map,
-    mapTo,
-    share,
-    switchMap,
-} from 'rxjs/operators';
+import {Observable, of, ReplaySubject} from 'rxjs';
+import {debounceTime, map, mapTo, share, switchMap} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-underline',
@@ -46,7 +39,7 @@ export class TuiUnderlineComponent {
     @HostBinding('class._android')
     readonly isAndroid = this.mobileAware && this.android;
 
-    private readonly element$ = new Subject<HTMLElement | null>();
+    private readonly element$ = new ReplaySubject<HTMLElement | null>(1);
 
     private readonly zoneFree$ = this.element$.pipe(
         switchMap(element =>
@@ -58,9 +51,8 @@ export class TuiUnderlineComponent {
 
     @HostListener('$.style.transitionProperty')
     readonly transition$ = asCallable(
-        this.zoneFree$.pipe(
+        this.element$.pipe(
             map(element => element && 'all'),
-            distinctUntilChanged(),
             debounceTime(50),
         ),
     );

@@ -1,5 +1,5 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {Controller} from '@taiga-ui/core/abstract';
+import {TuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_LABEL_OUTSIDE = new InjectionToken<TuiTextfieldLabelOutsideDirective>(
     'tuiTextfieldLabelOutside',
@@ -15,7 +15,7 @@ export const TUI_TEXTFIELD_LABEL_OUTSIDE = new InjectionToken<TuiTextfieldLabelO
         },
     ],
 })
-export class TuiTextfieldLabelOutsideDirective extends Controller {
+export class TuiTextfieldLabelOutsideDirective extends TuiController {
     @Input('tuiTextfieldLabelOutside')
     labelOutside = false;
 }

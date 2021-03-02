@@ -1,8 +1,8 @@
 import {Directive, EventEmitter, HostBinding, Inject, Input, Output} from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {Controller, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
@@ -15,7 +15,7 @@ import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
         '($.class._stuck)': 'stuck$',
     },
 })
-export class TuiTableDirective<T> extends Controller {
+export class TuiTableDirective<T> extends TuiController {
     @Input()
     @tuiDefaultProp()
     columns: ReadonlyArray<keyof T | string> = [];

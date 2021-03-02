@@ -1,6 +1,5 @@
 import {Directive, forwardRef, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {Controller} from '@taiga-ui/core/abstract';
+import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
 import {DEFAULT_MAX_HEIGHT, DEFAULT_MIN_HEIGHT} from '@taiga-ui/core/constants';
 import {TuiDropdownWidth} from '@taiga-ui/core/enums';
 import {TuiHorizontalDirection, TuiVerticalDirection} from '@taiga-ui/core/types';
@@ -17,7 +16,7 @@ import {TUI_DROPDOWN_CONTROLLER} from './dropdown-controller.token';
         },
     ],
 })
-export class TuiDropdownControllerDirective extends Controller {
+export class TuiDropdownControllerDirective extends TuiController {
     @Input('tuiDropdownAlign')
     @tuiDefaultProp()
     align: TuiHorizontalDirection = 'right';
