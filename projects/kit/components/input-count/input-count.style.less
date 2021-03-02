@@ -1,8 +1,5 @@
 @import 'taiga-ui-local';
 
-@padding-medium: 12px;
-@padding-large: 16px;
-
 :host {
     font: var(--tui-font-text-s);
     display: flex;
@@ -39,8 +36,8 @@
 
 .button {
     && {
-        width: var(--tui-height-s);
-        height: 21px;
+        width: calc(var(--tui-height-m) * 0.75);
+        height: calc(50% - 1px);
 
         &_plus {
             margin-bottom: 2px;
@@ -52,8 +49,7 @@
         }
 
         :host[data-tui-host-size='l'] & {
-            width: 40px;
-            height: 27px;
+            width: calc(var(--tui-height-l) * 0.75);
         }
     }
 }
