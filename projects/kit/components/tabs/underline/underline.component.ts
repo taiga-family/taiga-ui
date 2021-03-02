@@ -41,7 +41,7 @@ export class TuiUnderlineComponent {
 
     private readonly element$ = new ReplaySubject<HTMLElement | null>(1);
 
-    private readonly zoneFree$ = this.element$.pipe(
+    private readonly refresh$ = this.element$.pipe(
         switchMap(element =>
             element ? this.animationFrame$.pipe(mapTo(element)) : of(null),
         ),
@@ -59,7 +59,7 @@ export class TuiUnderlineComponent {
 
     @HostListener('$.style.transform')
     readonly transform$ = asCallable(
-        this.zoneFree$.pipe(
+        this.refresh$.pipe(
             map(element =>
                 element ? `translate3d(${px(element.offsetLeft)}, 0, 0)` : null,
             ),
@@ -68,7 +68,7 @@ export class TuiUnderlineComponent {
 
     @HostListener('$.style.width.px')
     readonly width$ = asCallable(
-        this.zoneFree$.pipe(map(element => (element ? element.clientWidth : 0))),
+        this.refresh$.pipe(map(element => (element ? element.clientWidth : 0))),
     );
 
     constructor(
