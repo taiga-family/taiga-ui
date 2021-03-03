@@ -18,15 +18,14 @@ import {
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk';
+import {TuiNotificationsService} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
-import {LogService} from '../../app/log.service';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
     selector: 'example-tui-calendar-month',
     templateUrl: './calendar-month.template.html',
     changeDetection,
-    providers: [LogService],
 })
 export class ExampleTuiCalendarMonthComponent {
     readonly exampleImportModule = exampleImportModule;
@@ -79,9 +78,12 @@ export class ExampleTuiCalendarMonthComponent {
 
     year = this.yearVariants[0];
 
-    constructor(@Inject(LogService) private readonly log: LogService) {}
+    constructor(
+        @Inject(TuiNotificationsService)
+        private readonly notifications: TuiNotificationsService,
+    ) {}
 
     onMonthClick(month: TuiMonth) {
-        this.log.log(month);
+        this.notifications.show(String(month)).subscribe();
     }
 }

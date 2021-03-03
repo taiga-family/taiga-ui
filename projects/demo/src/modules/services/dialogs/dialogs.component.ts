@@ -22,9 +22,13 @@ import {default as exampleModule} from '!!raw-loader!./examples/import/module.tx
 import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/service-usage.txt';
 
 import {Component, Inject, TemplateRef} from '@angular/core';
-import {TuiDialogContext, TuiDialogService, TuiDialogSize} from '@taiga-ui/core';
+import {
+    TuiDialogContext,
+    TuiDialogService,
+    TuiDialogSize,
+    TuiNotificationsService,
+} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
-import {LogService} from '../../app/log.service';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 const TOKEN = `{
@@ -38,7 +42,6 @@ const TOKEN = `{
     templateUrl: './dialogs.template.html',
     styleUrls: ['./dialogs.style.less'],
     changeDetection,
-    providers: [LogService],
 })
 export class ExampleTuiDialogsComponent {
     readonly token = TOKEN;
@@ -97,7 +100,8 @@ export class ExampleTuiDialogsComponent {
     label = '';
 
     constructor(
-        @Inject(LogService) private log: LogService,
+        @Inject(TuiNotificationsService)
+        private readonly notifications: TuiNotificationsService,
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     ) {}
 
@@ -107,7 +111,7 @@ export class ExampleTuiDialogsComponent {
         this.dialogService
             .open(content, {data, label, required, closeable, dismissible, size})
             .subscribe(response => {
-                this.log.log(response);
+                this.notifications.show(String(response)).subscribe();
             });
     }
 }

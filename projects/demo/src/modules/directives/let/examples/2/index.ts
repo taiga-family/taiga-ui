@@ -1,20 +1,22 @@
 import {Component, Inject} from '@angular/core';
+import {TuiNotificationsService} from '@taiga-ui/core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
-import {LogService} from '../../../../app/log.service';
 
 @Component({
     selector: 'tui-let-example-2',
     templateUrl: './index.html',
     changeDetection,
     encapsulation,
-    providers: [LogService],
 })
 export class TuiLetExample2 {
-    constructor(@Inject(LogService) private readonly log: LogService) {}
+    constructor(
+        @Inject(TuiNotificationsService)
+        private readonly notifications: TuiNotificationsService,
+    ) {}
 
     get getter(): string {
-        this.log.log('Getter called');
+        this.notifications.show('Getter called').subscribe();
 
         return '🐳';
     }

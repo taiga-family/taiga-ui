@@ -25,9 +25,9 @@ import {
     TuiBaseColor,
     TuiColor,
     TuiMarkerHandler,
+    TuiNotificationsService,
 } from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
-import {LogService} from '../../app/log.service';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
@@ -37,7 +37,6 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
     selector: 'example-tui-calendar',
     templateUrl: './calendar.template.html',
     changeDetection,
-    providers: [LogService],
 })
 export class ExampleTuiCalendarComponent {
     readonly exampleImportModule = exampleImportModule;
@@ -118,9 +117,12 @@ export class ExampleTuiCalendarComponent {
 
     hoveredItem = null;
 
-    constructor(@Inject(LogService) private readonly log: LogService) {}
+    constructor(
+        @Inject(TuiNotificationsService)
+        private readonly notifications: TuiNotificationsService,
+    ) {}
 
     onDayClick(day: TuiDay) {
-        this.log.log(day);
+        this.notifications.show(String(day)).subscribe();
     }
 }
