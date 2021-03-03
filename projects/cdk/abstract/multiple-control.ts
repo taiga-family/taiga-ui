@@ -1,7 +1,7 @@
-import {Directive, NgModule} from '@angular/core';
+import {Directive} from '@angular/core';
 import {AbstractTuiControl} from './control';
 
-@Directive({selector: 'never-gonna-run-around'})
+@Directive()
 export abstract class AbstractTuiMultipleControl<T> extends AbstractTuiControl<
     ReadonlyArray<T>
 > {
@@ -13,7 +13,3 @@ export abstract class AbstractTuiMultipleControl<T> extends AbstractTuiControl<
         return [];
     }
 }
-
-// TODO: @bad this is a must for Ivy at the moment
-@NgModule({declarations: [AbstractTuiMultipleControl as any]})
-export class AndDesertYouModule {}
