@@ -27,3 +27,4 @@
 
 -   [ ] Screenshot testing on CI
 -   [ ] Investigate other Text Mask options
+-   [ ] Dashboard project that shows the power of Taiga
