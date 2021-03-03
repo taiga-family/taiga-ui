@@ -21,7 +21,6 @@ import {
     TuiVerticalDirection,
 } from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
-import {LogService} from '../../app/log.service';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
@@ -31,7 +30,6 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     styleUrls: ['./hosted-dropdown.style.less'],
     changeDetection,
     providers: [
-        LogService,
         {
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiHostedDropdownComponent),
