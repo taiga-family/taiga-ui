@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.6.2](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.6.1...v2.6.2) (2021-03-04)
+
+
+### Features
+
+* **cdk:** add `isSafari` util ([e616b53](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e616b53f9535416b960486dd2c7b6e615a9e14ce))
+* **core:** `TUI_ASSERT_ENABLED` add new token to allow enabling assertions in prod mode ([39af6cb](https://github.com/TinkoffCreditSystems/taiga-ui/commit/39af6cb58687d0edfa398da8525d71fcf391f444))
+* **kit:** `Radio` add customization through token ([#264](https://github.com/TinkoffCreditSystems/taiga-ui/issues/264)) ([1a6d574](https://github.com/TinkoffCreditSystems/taiga-ui/commit/1a6d57447de0118e87e96848f96d8db4f3dc5b64))
+
+
+### Bug Fixes
+
+* **addon-table:** fix not drawing default cells ([61cd807](https://github.com/TinkoffCreditSystems/taiga-ui/commit/61cd8071f8c631f737dd554cfff373da30ccf95a))
+* **core:** `Loader` fix form freezing in Safari ([#266](https://github.com/TinkoffCreditSystems/taiga-ui/issues/266)) ([0c7330c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0c7330ce0e8d4a3d16dce06d8689f75ce3a96dff))
+* **core:** Loader disables form in Safari ([fc328cf](https://github.com/TinkoffCreditSystems/taiga-ui/commit/fc328cf6a523230098048261e13d7a5f00d46820))
+* **kit:** `InoutNumber` fix all problems with caret in Safari ([b4930c9](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b4930c9d59b915b51a0c6aa705f2cff78b9170f3))
+* **kit:** `InputCount` fix wrong button height for customized height ([#216](https://github.com/TinkoffCreditSystems/taiga-ui/issues/216)) ([4c39f7a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/4c39f7a27dd81c59352cdc3af46114d2ff3184cf))
+* **kit:** fix loader in toggle size m ([#261](https://github.com/TinkoffCreditSystems/taiga-ui/issues/261)) ([5578a16](https://github.com/TinkoffCreditSystems/taiga-ui/commit/5578a167de624f8e3195b7f78ebf2e7e79b64394))
+* **kit:** fix loader in toggle size m ([#261](https://github.com/TinkoffCreditSystems/taiga-ui/issues/261)) ([a1eeaa4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a1eeaa417a2aa3b6b68ba32b524eed17d6f2f144))
+
 ### [2.6.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.6.0...v2.6.1) (2021-02-26)
 
 
