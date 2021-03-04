@@ -1,4 +1,12 @@
-import {Directive, EventEmitter, HostBinding, Inject, Input, Output} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Directive,
+    EventEmitter,
+    HostBinding,
+    Inject,
+    Input,
+    Output,
+} from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
 import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
@@ -44,6 +52,7 @@ export class TuiTableDirective<T> extends TuiController {
         readonly entries$: Observable<IntersectionObserverEntry[]>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_STUCK) readonly stuck$: Observable<boolean>,
+        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
     ) {
         super();
     }
@@ -60,5 +69,9 @@ export class TuiTableDirective<T> extends TuiController {
         }
 
         this.change$.next();
+    }
+
+    ngAfterViewInit() {
+        this.changeDetectorRef.detectChanges();
     }
 }
