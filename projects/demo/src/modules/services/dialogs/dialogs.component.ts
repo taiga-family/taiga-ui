@@ -28,6 +28,7 @@ import {
     TuiDialogSize,
     TuiNotificationsService,
 } from '@taiga-ui/core';
+import {switchMap} from 'rxjs/operators';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -110,8 +111,7 @@ export class ExampleTuiDialogsComponent {
 
         this.dialogService
             .open(content, {data, label, required, closeable, dismissible, size})
-            .subscribe(response => {
-                this.notifications.show(String(response)).subscribe();
-            });
+            .pipe(switchMap(response => this.notifications.show(String(response))))
+            .subscribe();
     }
 }

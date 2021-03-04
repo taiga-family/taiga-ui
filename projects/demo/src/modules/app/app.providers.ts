@@ -39,6 +39,10 @@ export const HIGHLIGHT_OPTIONS_VALUE = {
 };
 
 export function exampleContentProcessor(content: FrontEndExample): FrontEndExample {
+    return processLess(processTs(content));
+}
+
+function processTs(content: FrontEndExample): FrontEndExample {
     if (!content.TypeScript) {
         return content;
     }
@@ -60,6 +64,18 @@ export function exampleContentProcessor(content: FrontEndExample): FrontEndExamp
                 'changeDetection: ChangeDetectionStrategy.OnPush,',
             ),
     };
+}
+
+function processLess(content: FrontEndExample): FrontEndExample {
+    return content.LESS
+        ? {
+              ...content,
+              LESS: content.LESS.replace(
+                  "@import 'taiga-ui-local';",
+                  "@import '~@taiga-ui/core/styles/taiga-ui-local';",
+              ),
+          }
+        : content;
 }
 
 export function addIntoExistingImport(
