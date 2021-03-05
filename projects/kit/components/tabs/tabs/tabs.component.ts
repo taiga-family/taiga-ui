@@ -138,7 +138,7 @@ export class TuiTabsComponent implements AfterViewChecked {
         moveFocus(tabs.indexOf(current), tabs, step);
     }
 
-    updateScrollPosition(element: HTMLElement) {
+    updateScrollPosition(element?: HTMLElement) {
         if (!element) {
             return;
         }
