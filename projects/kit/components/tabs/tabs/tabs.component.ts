@@ -50,9 +50,11 @@ export class TuiTabsComponent implements AfterViewChecked {
     @tuiDefaultProp()
     underline = true;
 
-    @Input()
-    @tuiDefaultProp()
-    activeItemIndex = 0;
+    @Input('activeItemIndex')
+    set activeItemIndexSetter(index: number) {
+        this.activeItemIndex = index;
+        this.updateScrollPosition(this.tabs[index]);
+    }
 
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
@@ -65,6 +67,8 @@ export class TuiTabsComponent implements AfterViewChecked {
 
     @ContentChildren(forwardRef(() => TuiTabComponent))
     private readonly children: QueryList<unknown> = EMPTY_QUERY;
+
+    activeItemIndex = 0;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -122,8 +126,22 @@ export class TuiTabsComponent implements AfterViewChecked {
             return;
         }
 
-        this.activeItemIndex = index;
+        this.activeItemIndexSetter = index;
         this.activeItemIndexChange.emit(index);
+    }
+
+    @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
+    @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
+    onKeyDownArrow(current: HTMLElement, step: number) {
+        const {tabs} = this;
+
+        moveFocus(tabs.indexOf(current), tabs, step);
+    }
+
+    updateScrollPosition(element?: HTMLElement) {
+        if (!element) {
+            return;
+        }
 
         const {offsetLeft, offsetWidth} = element;
         const {nativeElement} = this.elementRef;
@@ -139,13 +157,5 @@ export class TuiTabsComponent implements AfterViewChecked {
             nativeElement.scrollLeft =
                 offsetLeft + offsetWidth - nativeElement.offsetWidth;
         }
-    }
-
-    @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
-    @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
-    onKeyDownArrow(current: HTMLElement, step: number) {
-        const {tabs} = this;
-
-        moveFocus(tabs.indexOf(current), tabs, step);
     }
 }
