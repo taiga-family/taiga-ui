@@ -126,7 +126,7 @@ export class TuiTabsComponent implements AfterViewChecked {
             return;
         }
 
-        this.activeItemIndex = index;
+        this.activeItemIndexSetter = index;
         this.activeItemIndexChange.emit(index);
     }
 
