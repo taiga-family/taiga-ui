@@ -6,6 +6,7 @@ import {
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
     TUI_DOC_SEE_ALSO,
+    TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
 } from '@taiga-ui/addon-doc';
 import {TUI_SANITIZER} from '@taiga-ui/cdk';
@@ -93,6 +94,26 @@ export const APP_PROVIDERS = [
     {
         provide: TUI_ICONS_PATH,
         useValue: ICONS_PATH,
+    },
+    {
+        provide: TUI_DOC_SOURCE_CODE,
+        useValue: (context: any) => {
+            if (context.package) {
+                if (context.type) {
+                    context.header = (
+                        context.header[0].toLowerCase() + context.header.slice(1)
+                    ).replace(/[A-Z]/g, (m: any) => '-' + m.toLowerCase());
+
+                    return `https://github.com/TinkoffCreditSystems/taiga-ui/tree/main/projects/${context.package.toLowerCase()}/${context.type.toLowerCase()}/${
+                        context.header
+                    }`;
+                } else {
+                    return `https://github.com/TinkoffCreditSystems/taiga-ui/tree/main/projects/${context.path}`;
+                }
+            } else {
+                return null;
+            }
+        },
     },
     {
         provide: LocationStrategy,
