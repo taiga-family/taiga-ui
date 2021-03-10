@@ -1,6 +1,6 @@
 <tui-notification
     status="error"
-    [hasIcon]="false"
+    [hasIcon]="true"
     (close)="onClose()"
 >
     Some content

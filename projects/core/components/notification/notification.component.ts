@@ -30,7 +30,7 @@ export class TuiNotificationComponent {
     @Input()
     @HostBinding('class._has-icon')
     @tuiDefaultProp()
-    hasIcon = false;
+    hasIcon = true;
 
     @Input()
     @HostBinding('attr.data-tui-host-status')
