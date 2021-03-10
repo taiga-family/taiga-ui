@@ -1,6 +1,7 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {Title} from '@angular/platform-browser';
 import {
+    TuiDocSourceCodePathOptions,
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
     TUI_DOC_LOGO,
@@ -97,22 +98,16 @@ export const APP_PROVIDERS = [
     },
     {
         provide: TUI_DOC_SOURCE_CODE,
-        useValue: (context: any) => {
-            if (context.package) {
-                if (context.type) {
-                    context.header = (
-                        context.header[0].toLowerCase() + context.header.slice(1)
-                    ).replace(/[A-Z]/g, (m: any) => '-' + m.toLowerCase());
-
-                    return `https://github.com/TinkoffCreditSystems/taiga-ui/tree/main/projects/${context.package.toLowerCase()}/${context.type.toLowerCase()}/${
-                        context.header
-                    }`;
-                } else {
-                    return `https://github.com/TinkoffCreditSystems/taiga-ui/tree/main/projects/${context.path}`;
-                }
-            } else {
+        useValue: (context: TuiDocSourceCodePathOptions) => {
+            if (!context.package) {
                 return null;
             }
+            if (context.type) {
+                return `https://github.com/TinkoffCreditSystems/taiga-ui/tree/main/projects/${context.package.toLowerCase()}/${context.type.toLowerCase()}/${(
+                    context.header[0].toLowerCase() + context.header.slice(1)
+                ).replace(/[A-Z]/g, (m: any) => '-' + m.toLowerCase())}`;
+            }
+            return `https://github.com/TinkoffCreditSystems/taiga-ui/tree/main/projects/${context.path}`;
         },
     },
     {
