@@ -53,6 +53,10 @@ export class TuiNotificationAlertComponent<O, I> {
         return this.safeItem.status;
     }
 
+    get hasIcon(): boolean {
+        return this.safeItem.hasIcon;
+    }
+
     closeDialog() {
         this.safeItem.observer.complete();
     }

@@ -84,6 +84,8 @@ export class ExampleTuiNotificationsComponent {
 
     hasCloseButton = true;
 
+    hasIcon = true;
+
     readonly component: PolymorpheusComponent<
         AlertExampleWithDataComponent,
         TuiNotificationContentContext<number, number>
@@ -114,6 +116,7 @@ export class ExampleTuiNotificationsComponent {
                 status: this.status,
                 autoClose: this.autoClose,
                 hasCloseButton: this.hasCloseButton,
+                hasIcon: this.hasIcon,
             })
             .pipe(
                 switchMap(response =>
