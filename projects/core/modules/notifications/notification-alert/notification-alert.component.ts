@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
-import {TuiNotification} from '@taiga-ui/core/enums';
 import {timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -43,14 +42,6 @@ export class TuiNotificationAlertComponent<O, I> {
 
     get context(): TuiNotificationContentContext<O, I> {
         return this.calculateContext(this.safeItem);
-    }
-
-    get hasCloseButton(): boolean {
-        return this.safeItem.hasCloseButton;
-    }
-
-    get status(): TuiNotification {
-        return this.safeItem.status;
     }
 
     closeDialog() {

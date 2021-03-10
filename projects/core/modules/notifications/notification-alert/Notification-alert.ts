@@ -10,6 +10,8 @@ import {
 export class NotificationAlert<O, I> {
     readonly status: TuiNotification;
 
+    readonly hasIcon: boolean;
+
     readonly autoClose: boolean;
 
     readonly hasCloseButton: boolean;
@@ -30,6 +32,7 @@ export class NotificationAlert<O, I> {
         const {
             label = '',
             status = TuiNotification.Info,
+            hasIcon = true,
             autoClose = true,
             hasCloseButton = true,
         } = options;
@@ -39,6 +42,7 @@ export class NotificationAlert<O, I> {
 
         this.label = label;
         this.status = status;
+        this.hasIcon = hasIcon;
         this.autoClose = autoClose;
         this.hasCloseButton = hasCloseButton;
 
