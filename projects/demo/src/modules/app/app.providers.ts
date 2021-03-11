@@ -101,6 +101,7 @@ export const APP_PROVIDERS = [
         useValue: (context: TuiDocSourceCodePathOptions) => {
             const link =
                 'https://github.com/TinkoffCreditSystems/taiga-ui/tree/main/projects';
+
             if (!context.package) {
                 return null;
             }
