@@ -95,7 +95,7 @@ export class TuiInputCountComponent
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PLUS_MINUS_TEXTS)
         readonly minusTexts$: Observable<[string, string]>,
-        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
+        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
     ) {
         super(control, changeDetectorRef);
     }
