@@ -99,17 +99,19 @@ export const APP_PROVIDERS = [
     {
         provide: TUI_DOC_SOURCE_CODE,
         useValue: (context: TuiDocSourceCodePathOptions) => {
+            const link =
+                'https://github.com/TinkoffCreditSystems/taiga-ui/tree/main/projects';
             if (!context.package) {
                 return null;
             }
 
             if (context.type) {
-                return `https://github.com/TinkoffCreditSystems/taiga-ui/tree/main/projects/${context.package.toLowerCase()}/${context.type.toLowerCase()}/${(
+                return `${link}/${context.package.toLowerCase()}/${context.type.toLowerCase()}/${(
                     context.header[0].toLowerCase() + context.header.slice(1)
-                ).replace(/[A-Z]/g, (m: any) => '-' + m.toLowerCase())}`;
+                ).replace(/[A-Z]/g, m => '-' + m.toLowerCase())}`;
             }
 
-            return `https://github.com/TinkoffCreditSystems/taiga-ui/tree/main/projects/${context.path}`;
+            return `${link}/${context.path}`;
         },
     },
     {
