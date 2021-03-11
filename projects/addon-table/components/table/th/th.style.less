@@ -15,20 +15,14 @@
     padding: 0 12px;
     box-sizing: border-box;
     box-shadow: 0 5px rgba(237, 237, 237, 0);
-    border-color: var(--tui-base-04);
+    border: 1px solid var(--tui-base-04);
 
-    &:before {
-        .fullsize(absolute, inset);
-        left: 0;
-        bottom: -1px;
-        content: '';
-        box-sizing: border-box;
-        pointer-events: none;
-        border: 1px solid;
-        border-color: inherit;
+    &:not(:first-child) {
+        border-left: none;
     }
 
     &._sticky {
+        position: sticky;
         z-index: 30;
 
         &:first-child {
@@ -39,7 +33,7 @@
             .transition(opacity);
             content: '';
             position: absolute;
-            top: 1px;
+            top: 0;
             left: 100%;
             bottom: 0;
             width: 5px;
@@ -48,6 +42,10 @@
             opacity: 0;
         }
     }
+}
+
+:host-context(tr:not(:first-child)) {
+    border-top: none;
 }
 
 :host-context(table[data-tui-host-size='l']) {

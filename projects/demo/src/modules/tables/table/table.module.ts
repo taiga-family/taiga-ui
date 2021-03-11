@@ -16,6 +16,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {
+    TuiAccordionModule,
     TuiDataListWrapperModule,
     TuiInputCountModule,
     TuiInputDateModule,
@@ -50,6 +51,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiButtonModule,
         TuiLinkModule,
         TuiTagModule,
+        TuiAccordionModule,
         ...TUI_DOC_PAGE_MODULES,
         RouterModule.forChild(generateRoutes(ExampleTuiTableComponent)),
     ],

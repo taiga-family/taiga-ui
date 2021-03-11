@@ -21,6 +21,7 @@ import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
     host: {
         '($.data-mode.attr)': 'mode$',
         '($.class._stuck)': 'stuck$',
+        style: 'border-collapse: separate',
     },
 })
 export class TuiTableDirective<T> extends TuiController {
@@ -35,7 +36,7 @@ export class TuiTableDirective<T> extends TuiController {
 
     @Input()
     @tuiDefaultProp()
-    sorter: TuiComparator<T> | null = null;
+    sorter: TuiComparator<T> = () => 0;
 
     @Input()
     @tuiDefaultProp()
