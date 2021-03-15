@@ -15,6 +15,7 @@ import {
     isNativeFocused,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TUI_IS_MOBILE,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
@@ -57,6 +58,7 @@ export class TuiInputRangeComponent
         @Optional()
         @Inject(TuiModeDirective)
         protected readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
     ) {
         super(control, changeDetectorRef);
     }
@@ -108,7 +110,7 @@ export class TuiInputRangeComponent
     }
 
     onMouseDown() {
-        if (this.nativeRight) {
+        if (this.nativeRight && !this.isMobile) {
             setNativeFocused(this.nativeRight.nativeElement);
         }
     }
@@ -198,10 +200,13 @@ export class TuiInputRangeComponent
             return;
         }
 
-        if (guardedValue[0] !== this.value[0]) {
-            setNativeFocused(this.nativeLeft.nativeElement);
-        } else {
-            setNativeFocused(this.nativeRight.nativeElement);
+        if (!this.isMobile) {
+            const element =
+                guardedValue[0] !== this.value[0]
+                    ? this.nativeLeft.nativeElement
+                    : this.nativeRight.nativeElement;
+
+            setNativeFocused(element);
         }
 
         this.updateValue(guardedValue);
