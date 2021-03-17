@@ -15,7 +15,7 @@ export class ExampleTuiRequiredSetterDemoComponent {
         'Should be integer number more than min value',
     )
     set quantity(quantity: number) {
-        this.items = new Array(quantity).fill(
+        this.items = new Array(quantity ?? 0).fill(
             Math.floor(Math.random() * Math.floor(100)),
         );
     }
