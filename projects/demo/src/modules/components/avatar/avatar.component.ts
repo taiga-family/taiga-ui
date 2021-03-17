@@ -37,7 +37,7 @@ export class ExampleTuiAvatarComponent {
 
     avatarUrl = null;
 
-    text = 'daenerys targaryen';
+    text = 'Daenerys Targaryen';
 
     rounded = false;
 
