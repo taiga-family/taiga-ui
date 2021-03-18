@@ -25,8 +25,9 @@ import {Subject} from 'rxjs';
 })
 export class TuiDocMainComponent {
     night =
-        this.windowRef.matchMedia('(prefers-color-scheme: dark)').matches ||
-        this.storage.getItem('night') === 'true';
+        this.storage.getItem('night') === 'true' ||
+        (this.storage.getItem('night') === null &&
+            this.windowRef.matchMedia('(prefers-color-scheme: dark)').matches);
 
     readonly change$ = new Subject<void>();
 
