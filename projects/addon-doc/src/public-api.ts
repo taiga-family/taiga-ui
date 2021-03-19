@@ -49,3 +49,5 @@ export * from './types/pages';
 
 /* Utils */
 export * from './utils/generate-routes';
+
+export * from './addon-doc.module';
