@@ -15,21 +15,25 @@ export function tuiRequiredSetter<T extends object, K extends keyof T>(
         target: Object,
         key,
         {configurable, enumerable, get, set}: PropertyDescriptor,
-    ) => {
+    ): PropertyDescriptor => {
         const {name} = target.constructor;
 
-        Object.defineProperty(target, key, {
+        return {
             configurable,
             enumerable,
             get,
-            set(this: T, value: T[K]) {
+            set(this: T, value: T[K]): void {
                 if (value !== undefined && assertion) {
-                    tuiAssert.assert(
-                        assertion.call(this, value),
-                        `${String(key)} in ${name} received:`,
-                        value,
-                        ...args,
-                    );
+                    if (!assertion.call(this, value)) {
+                        tuiAssert.assert(
+                            false,
+                            `${String(key)} in ${name} received:`,
+                            value,
+                            ...args,
+                        );
+
+                        return;
+                    }
                 }
 
                 if (!set || value === undefined) {
@@ -40,7 +44,7 @@ export function tuiRequiredSetter<T extends object, K extends keyof T>(
 
                 set.call(this, value);
             },
-        });
+        };
     };
 }
 
