@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule, TuiPrimitiveCheckboxModule} from '@taiga-ui/core';
 import {MarkdownModule} from 'ngx-markdown';
 import {ExampleTuiPrimitiveCheckboxComponent} from './primitive-checkbox.component';
@@ -11,7 +11,7 @@ import {ExampleTuiPrimitiveCheckboxComponent} from './primitive-checkbox.compone
         TuiPrimitiveCheckboxModule,
         TuiLinkModule,
         MarkdownModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiPrimitiveCheckboxComponent)),
     ],
     declarations: [ExampleTuiPrimitiveCheckboxComponent],

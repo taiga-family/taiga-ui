@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiBarSetModule} from '@taiga-ui/addon-charts';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {ExampleTuiBarSetComponent} from './bar-set.component';
 import {TuiBarSetExample1} from './examples/1';
 import {TuiBarSetExample2} from './examples/2';
@@ -15,7 +15,7 @@ import {TuiBarSetExample5} from './examples/5';
         CommonModule,
         RouterModule,
         TuiBarSetModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiBarSetComponent)),
     ],
     declarations: [

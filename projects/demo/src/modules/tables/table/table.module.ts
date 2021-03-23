@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiReorderModule,
     TuiTableModule,
@@ -69,7 +69,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiHostedDropdownModule,
         TuiArrowModule,
         TuiReorderModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiTableComponent)),
     ],
     declarations: [

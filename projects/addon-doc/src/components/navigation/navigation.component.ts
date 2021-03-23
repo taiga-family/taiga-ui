@@ -2,7 +2,7 @@ import {DOCUMENT, Location} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {tuiPure, uniqBy} from '@taiga-ui/cdk';
-import {getScreenWidth, TuiModeDirective} from '@taiga-ui/core';
+import {getScreenWidth, TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {TuiDocPage} from '../../interfaces/page';
@@ -33,7 +33,7 @@ export class TuiDocNavigationComponent {
     menuOpen = false;
     openGroupsArr: boolean[] = [];
 
-    readonly mode$ = this.mode.change$.pipe(
+    readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),
         map(() => this.mode.mode || 'onLight'),
     );

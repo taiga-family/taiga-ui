@@ -101,12 +101,12 @@ npm i @taiga-ui/addon-doc
     ```typescript
     import {NgModule} from '@angular/core';
     import {RouterModule} from '@angular/router';
-    import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+    import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
     import {SuperComponent} from './super.component';
 
     @NgModule({
         imports: [
-            ...TUI_DOC_PAGE_MODULES,
+            TuiAddonDocModule,
             RouterModule.forChild(generateRoutes(SuperComponent)),
         ],
         declarations: [SuperComponent],
