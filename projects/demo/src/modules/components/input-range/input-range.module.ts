@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {
     TuiInputRangeModule,
@@ -22,7 +22,7 @@ import {ExampleTuiInputRangeComponent} from './input-range.component';
         FormsModule,
         CommonModule,
         TuiRadioListModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         TuiButtonModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputRangeComponent)),
     ],

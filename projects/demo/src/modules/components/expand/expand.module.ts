@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiExpandModule} from '@taiga-ui/core';
 import {TuiExpandExample1} from './examples/1';
 import {ExampleTuiExpandComponent} from './expand.component';
@@ -14,7 +14,7 @@ import {ExampleTuiExpandComponent} from './expand.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiExpandComponent)),
     ],
     declarations: [ExampleTuiExpandComponent, TuiExpandExample1],

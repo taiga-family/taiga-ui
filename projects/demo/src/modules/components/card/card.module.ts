@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiCardModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {ExampleTuiCardComponent} from './card.component';
 import {TuiCardExample1} from './examples/1';
 import {TuiCardExample2} from './examples/2';
@@ -13,7 +13,7 @@ import {TuiCardExample3} from './examples/3';
         CommonModule,
         TuiCardModule,
         RouterModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiCardComponent)),
     ],
     declarations: [

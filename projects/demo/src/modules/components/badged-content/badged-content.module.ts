@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiAvatarModule, TuiBadgedContentModule, TuiInputModule} from '@taiga-ui/kit';
 import {ExampleTuiBadgedContentComponent} from './badged-content.component';
@@ -18,7 +18,7 @@ import {TuiBadgedContentExample3} from './examples/3';
         TuiBadgedContentModule,
         TuiInputModule,
         TuiButtonModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiBadgedContentComponent)),
     ],
     declarations: [

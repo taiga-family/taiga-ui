@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiInputNumberModule} from '@taiga-ui/kit';
 import {TuiMathExample1} from './examples/1';
 import {TuiMathExample2} from './examples/2';
@@ -17,7 +17,7 @@ import {ExampleMathComponent} from './math.component';
         TuiInputNumberModule,
         FormsModule,
         ReactiveFormsModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleMathComponent)),
     ],
     declarations: [

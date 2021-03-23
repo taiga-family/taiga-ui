@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {TuiLinkExample1} from './examples/1';
 import {TuiLinkExample2} from './examples/2';
@@ -16,7 +16,7 @@ import {ExampleTuiLinkComponent} from './link.component';
         ReactiveFormsModule,
         TuiLinkModule,
         TuiModeModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiLinkComponent)),
     ],
     declarations: [

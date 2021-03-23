@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiRadioListModule} from '@taiga-ui/kit';
 import {TuiMoneyExample1} from './examples/1';
 import {TuiMoneyExample2} from './examples/2';
@@ -18,7 +18,7 @@ import {ExampleTuiMoneyComponent} from './money.component';
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiMoneyComponent)),
     ],
     declarations: [
