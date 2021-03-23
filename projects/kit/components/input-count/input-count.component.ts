@@ -19,6 +19,7 @@ import {
     isPresent,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TUI_IS_MOBILE,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
@@ -94,6 +95,7 @@ export class TuiInputCountComponent
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PLUS_MINUS_TEXTS)
         readonly minusTexts$: Observable<[string, string]>,
+        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
     ) {
         super(control, changeDetectorRef);
     }
@@ -143,7 +145,7 @@ export class TuiInputCountComponent
     }
 
     onButtonMouseDown(event: MouseEvent, disabled: boolean = false) {
-        if (disabled || !this.nativeFocusableElement) {
+        if (disabled || !this.nativeFocusableElement || this.isMobile) {
             return;
         }
 
