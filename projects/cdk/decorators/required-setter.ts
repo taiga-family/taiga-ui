@@ -22,7 +22,7 @@ export function tuiRequiredSetter<T extends object, K extends keyof T>(
             configurable,
             enumerable,
             get,
-            set(this: T, value: T[K]): void {
+            set(this: T, value: T[K]) {
                 if (value !== undefined && assertion) {
                     if (!assertion.call(this, value)) {
                         tuiAssert.assert(
