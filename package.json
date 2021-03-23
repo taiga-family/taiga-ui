@@ -48,6 +48,10 @@
         "Alex Inkin <alexander@inkin.ru>",
         "Roman Sedov <79601794011@ya.ru>"
     ],
+    "maintainers": [
+        "Alex Inkin <alexander@inkin.ru>",
+        "Roman Sedov <79601794011@ya.ru>"
+    ],
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "dependencies": {
