@@ -85,7 +85,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
                         !skipNextFocusOut &&
                         this.contains(actualTarget) &&
                         !isNativeFocused(actualTarget) &&
-                        (event.relatedTarget === null ||
+                        (!event.relatedTarget ||
                             !this.contains(event.relatedTarget as Node))
                     );
                 }),
@@ -95,7 +95,11 @@ export class TuiActiveZoneDirective implements OnDestroy {
                 map(event => this.contains(getActualTarget(event))),
             ),
             typedFromEvent(windowRef, 'mousedown').pipe(
-                filter(event => !isNativeFocused(getActualTarget(event))),
+                filter(
+                    event =>
+                        documentRef.body === event.target ||
+                        !isNativeFocused(getActualTarget(event)),
+                ),
                 switchMap(event => {
                     const actualTarget = getActualTarget(event);
                     const targetInZone = this.contains(actualTarget);
@@ -116,10 +120,9 @@ export class TuiActiveZoneDirective implements OnDestroy {
                     // If mouseDown happened inside the zone and focus is outside we
                     // return true if target is not focusable or wait for focusIn
                     if (targetInZone && !focusInZone && actualTarget instanceof Element) {
-                        // TODO: Remove generic after TypeScript uprade
                         return !isNativeMouseFocusable(actualTarget)
                             ? of(true)
-                            : typedFromEvent<FocusEvent>(windowRef, 'focusin').pipe(
+                            : typedFromEvent(windowRef, 'focusin').pipe(
                                   take(1),
                                   mapTo(targetInZone),
                               );
