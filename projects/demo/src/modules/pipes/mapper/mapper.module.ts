@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {ExampleTuiMapperComponent} from './mapper.component';
 
@@ -9,7 +9,7 @@ import {ExampleTuiMapperComponent} from './mapper.component';
     imports: [
         TuiMapperPipeModule,
         CommonModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiMapperComponent)),
     ],
     declarations: [ExampleTuiMapperComponent],

@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiDescribedByModule, TuiHintModule} from '@taiga-ui/core';
 import {TuiAvatarModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
@@ -15,7 +15,7 @@ import {ExampleTuiHintComponent} from './hint.component';
         TuiDescribedByModule,
         CommonModule,
         InheritedDocumentationModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiHintComponent)),
     ],
     declarations: [ExampleTuiHintComponent, TuiHintExample1],

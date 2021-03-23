@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 
 import {ExampleInputMonthComponent} from './input-month.component';
 
@@ -17,7 +17,7 @@ import {InputMonthExample2} from './examples/2';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         InheritedDocumentationModule,
         RouterModule.forChild(generateRoutes(ExampleInputMonthComponent)),
         TuiInputMonthModule,

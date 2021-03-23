@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAxesModule, TuiBarChartModule} from '@taiga-ui/addon-charts';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiColorModule, TuiHintModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {ExampleTuiAxesComponent} from './axes.component';
@@ -20,7 +20,7 @@ import {TuiAxesExample2} from './examples/2';
         TuiHintModule,
         PolymorpheusModule,
         TuiMoneyModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiAxesComponent)),
     ],
     declarations: [ExampleTuiAxesComponent, TuiAxesExample1, TuiAxesExample2],

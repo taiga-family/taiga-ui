@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiDataListModule} from '@taiga-ui/core';
 import {
     TuiDataListWrapperModule,
@@ -28,7 +28,7 @@ import {ExampleFormatComponent} from './format.component';
         TuiSelectModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleFormatComponent)),
     ],
     declarations: [
