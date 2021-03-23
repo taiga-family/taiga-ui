@@ -24,16 +24,12 @@ export function tuiRequiredSetter<T extends object, K extends keyof T>(
             get,
             set(this: T, value: T[K]) {
                 if (value !== undefined && assertion) {
-                    if (!assertion.call(this, value)) {
-                        tuiAssert.assert(
-                            false,
-                            `${String(key)} in ${name} received:`,
-                            value,
-                            ...args,
-                        );
-
-                        return;
-                    }
+                    tuiAssert.assert(
+                        assertion.call(this, value),
+                        `${String(key)} in ${name} received:`,
+                        value,
+                        ...args,
+                    );
                 }
 
                 if (!set || value === undefined) {
