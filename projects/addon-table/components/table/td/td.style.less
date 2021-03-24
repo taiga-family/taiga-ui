@@ -7,34 +7,19 @@
     text-align: left;
     padding: 0 12px;
     background: var(--tui-base-01);
-    border-color: var(--tui-base-04);
+    border: 1px solid var(--tui-base-04);
+    border-top: none;
 
-    &:before {
-        .fullsize(absolute, inset);
-        top: -1px;
-        left: -1px;
-        content: '';
-        box-sizing: border-box;
-        pointer-events: none;
-        border: 1px solid;
-        border-color: inherit;
-    }
-
-    &:first-child,
-    &:first-child:before {
+    &:first-child {
         left: 0;
     }
 
     &:not(:first-child) {
-        border-left: 1px solid transparent;
+        border-left: none;
     }
 
     &._editable:focus-within {
         z-index: 1;
-
-        &:before {
-            border: 0;
-        }
     }
 
     &._editable {
@@ -97,5 +82,5 @@
 }
 
 .wrapper {
-    margin: -1px 0 0 -1px;
+    margin: -1px -1px -1px 0;
 }

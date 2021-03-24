@@ -4,7 +4,7 @@
         <button class="expand" type="button" (click)="onClick()">
             <span polymorpheus-outlet class="name" [content]="heading"></span>
             <tui-svg
-                src="tuiIconChevronUpLarge"
+                src="tuiIconChevronDownLarge"
                 class="chevron"
                 [class.chevron_rotated]="open"
             ></tui-svg>
@@ -18,6 +18,3 @@
         [ngTemplateOutletContext]="item | tuiMapper : toContext : index"
     ></ng-container>
 </ng-container>
-<tr class="footer">
-    <td [colSpan]="table.columns.length"></td>
-</tr>
