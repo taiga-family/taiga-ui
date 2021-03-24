@@ -222,7 +222,10 @@ export class TuiInputRangeComponent
         const value = isNaN(inputValue) ? this.min : this.valueGuard(inputValue);
 
         this.nativeLeft.nativeElement.value = formatNumber(value);
-        this.updateValue([value, this.value[1]]);
+
+        if (value !== this.value[0]) {
+            this.updateValue([value, this.value[1]]);
+        }
     }
 
     onRightFocused(focused: boolean) {
@@ -236,7 +239,10 @@ export class TuiInputRangeComponent
             : this.valueGuard(Math.max(inputValue, this.value[0]));
 
         this.nativeRight.nativeElement.value = formatNumber(value);
-        this.updateValue([this.value[0], value]);
+
+        if (value !== this.value[1]) {
+            this.updateValue([this.value[0], value]);
+        }
     }
 
     protected getFallbackValue(): [number, number] {
