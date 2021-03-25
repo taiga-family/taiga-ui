@@ -85,8 +85,8 @@ export class TuiActiveZoneDirective implements OnDestroy {
                         !skipNextFocusOut &&
                         this.contains(actualTarget) &&
                         !isNativeFocused(actualTarget) &&
-                        (!event.relatedTarget ||
-                            !this.contains(event.relatedTarget as Node))
+                        isValidFocusoutEvent(event as any) &&
+                        !this.contains(event.relatedTarget as Node | null)
                     );
                 }),
                 mapTo(false),
@@ -165,13 +165,14 @@ export class TuiActiveZoneDirective implements OnDestroy {
         }
     }
 
-    contains(node: Node): boolean {
+    contains(node: Node | null): boolean {
         return (
-            this.element.nativeElement.contains(node) ||
-            this.subActiveZones.some(
-                (item, index, array) =>
-                    array.indexOf(item) === index && item.contains(node),
-            )
+            !!node &&
+            (this.element.nativeElement.contains(node) ||
+                this.subActiveZones.some(
+                    (item, index, array) =>
+                        array.indexOf(item) === index && item.contains(node),
+                ))
         );
     }
 
@@ -187,4 +188,12 @@ export class TuiActiveZoneDirective implements OnDestroy {
             ...this.subActiveZones.slice(index + 1),
         ];
     }
+}
+
+// Chrome workaround for triggering `focusout` event upon element removal
+function isValidFocusoutEvent({
+    relatedTarget,
+    sourceCapabilities,
+}: FocusEvent & {sourceCapabilities: unknown}): boolean {
+    return sourceCapabilities !== null || relatedTarget !== null;
 }
