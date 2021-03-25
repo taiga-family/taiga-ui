@@ -1,10 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    forwardRef,
-    Inject,
-    ViewEncapsulation,
-} from '@angular/core';
+import {Component, forwardRef, Inject, ViewEncapsulation} from '@angular/core';
 import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
@@ -14,7 +8,6 @@ import {Subject} from 'rxjs';
     selector: 'tui-doc-main',
     templateUrl: './main.template.html',
     styleUrls: ['./main.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     providers: [
         {
