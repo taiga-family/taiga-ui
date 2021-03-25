@@ -24,4 +24,8 @@ export class TuiSidebarComponent {
     get content(): PolymorpheusContent {
         return this.directive.content;
     }
+
+    get autoWidth(): boolean {
+        return this.directive.autoWidth;
+    }
 }
