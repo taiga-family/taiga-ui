@@ -2,7 +2,6 @@
 
 @height: 108px;
 @heightCounter: 126px;
-@padding: 0 12px;
 @margin: 7px;
 
 :host {
@@ -120,13 +119,10 @@
 }
 
 .pseudo-content {
-    padding: @padding;
-    :host[data-tui-host-size='m']._focused &,
-    :host[data-tui-host-size='m']._has-value & {
+    :host[data-tui-host-size='m'] & {
         padding: 0 12px;
     }
-    :host[data-tui-host-size='l']._focused &,
-    :host[data-tui-host-size='l']._has-value & {
+    :host[data-tui-host-size='l'] & {
         padding: 0 16px;
     }
     white-space: pre-wrap;
@@ -148,12 +144,10 @@
     left: 0;
     width: 100%;
     box-sizing: border-box;
-    :host[data-tui-host-size='m']._focused &,
-    :host[data-tui-host-size='m']._has-value & {
+    :host[data-tui-host-size='m'] & {
         padding: 0 12px;
     }
-    :host[data-tui-host-size='l']._focused &,
-    :host[data-tui-host-size='l']._has-value & {
+    :host[data-tui-host-size='l'] & {
         padding: 0 16px;
     }
     height: 100%;
@@ -181,12 +175,13 @@
 .placeholder {
     .textfield-placeholder();
     position: absolute;
-    top: 12px;
-    left: 12px;
-    :host[data-tui-host-size='l']._focused &,
-    :host[data-tui-host-size='l']._has-value & {
-        top: 17px;
-        left: 17px;
+    :host[data-tui-host-size='m'] & {
+        top: 12px;
+        left: 12px;
+    }
+    :host[data-tui-host-size='l'] & {
+        top: 16px;
+        left: 16px;
     }
     max-width: ~'calc(100% - 24px)';
 
