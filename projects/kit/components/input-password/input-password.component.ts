@@ -22,6 +22,7 @@ import {
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
+import {delay} from 'rxjs/operators';
 
 // @dynamic
 @Component({
@@ -40,6 +41,7 @@ export class TuiInputPasswordComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor {
     isPasswordHidden = true;
+    texts = ['', ''];
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
@@ -100,8 +102,10 @@ export class TuiInputPasswordComponent
         this.updatePressed(pressed);
     }
 
-    togglePasswordVisibility() {
+    async togglePasswordVisibility() {
         this.isPasswordHidden = !this.isPasswordHidden;
+        this.changeDetectorRef.detectChanges();
+        this.texts = await this.passwordTexts$.pipe(delay(0)).toPromise();
     }
 
     protected getFallbackValue(): string {
