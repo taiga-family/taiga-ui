@@ -24,7 +24,7 @@ export class TuiHoveredService {
         @Inject(NgZone) private readonly ngZone: NgZone,
     ) {
         this.documentEvents$ = merge(
-            typedFromEvent(documentRef, 'mousemove'),
+            typedFromEvent(documentRef, 'mouseenter'),
             typedFromEvent(documentRef, 'touchend'),
         );
     }
@@ -33,10 +33,7 @@ export class TuiHoveredService {
         target: Element,
         options: AddEventListenerOptions = {},
     ): Observable<boolean> {
-        return merge(
-            typedFromEvent(target, 'touchstart', options),
-            typedFromEvent(target, 'mousemove', options),
-        ).pipe(
+        return typedFromEvent(target, 'mousemove', options).pipe(
             switchMap(() =>
                 merge(
                     typedFromEvent(target, 'mouseleave', options),
