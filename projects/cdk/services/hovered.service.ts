@@ -24,7 +24,7 @@ export class TuiHoveredService {
         @Inject(NgZone) private readonly ngZone: NgZone,
     ) {
         this.documentEvents$ = merge(
-            typedFromEvent(documentRef, 'mouseenter'),
+            typedFromEvent(documentRef, 'mousemove'),
             typedFromEvent(documentRef, 'touchend'),
         );
     }
