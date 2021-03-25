@@ -2,7 +2,7 @@
 
 @height: 108px;
 @heightCounter: 126px;
-@padding: 0 16px;
+@padding: 0 12px;
 @margin: 7px;
 
 :host {
@@ -77,7 +77,7 @@
 
     :host[data-tui-host-size='m']._focused &,
     :host[data-tui-host-size='m']._has-value & {
-        padding-top: 20px;
+        padding-top: 22px;
     }
 
     :host[data-tui-host-size='l']._focused &,
@@ -121,6 +121,14 @@
 
 .pseudo-content {
     padding: @padding;
+    :host[data-tui-host-size='m']._focused &,
+    :host[data-tui-host-size='m']._has-value & {
+        padding: 0 12px;
+    }
+    :host[data-tui-host-size='l']._focused &,
+    :host[data-tui-host-size='l']._has-value & {
+        padding: 0 16px;
+    }
     white-space: pre-wrap;
     word-wrap: break-word;
     pointer-events: none;
@@ -140,7 +148,14 @@
     left: 0;
     width: 100%;
     box-sizing: border-box;
-    padding: @padding;
+    :host[data-tui-host-size='m']._focused &,
+    :host[data-tui-host-size='m']._has-value & {
+        padding: 0 12px;
+    }
+    :host[data-tui-host-size='l']._focused &,
+    :host[data-tui-host-size='l']._has-value & {
+        padding: 0 16px;
+    }
     height: 100%;
     resize: none;
     overflow: hidden;
@@ -166,8 +181,13 @@
 .placeholder {
     .textfield-placeholder();
     position: absolute;
-    top: 16px;
-    left: 16px;
+    top: 12px;
+    left: 12px;
+    :host[data-tui-host-size='l']._focused &,
+    :host[data-tui-host-size='l']._has-value & {
+        top: 17px;
+        left: 17px;
+    }
     max-width: ~'calc(100% - 24px)';
 
     &_raised {
@@ -181,21 +201,19 @@
 
 .example-text {
     position: absolute;
-    top: 10px;
-    left: 12px;
     max-width: ~'calc(100% - 24px)';
     color: var(--tui-text-03);
     user-select: none;
 
     :host._label-outside & {
-        top: 16px;
-        left: 16px;
+        top: 12px;
+        left: 12px;
         color: var(--tui-text-03);
     }
 
     :host:not(._label-outside) & {
         top: 25px;
-        left: 16px;
+        left: 12px;
         max-width: ~'calc(100% - 32px)';
         color: var(--tui-text-02);
     }
