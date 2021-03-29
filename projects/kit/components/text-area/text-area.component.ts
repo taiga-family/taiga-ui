@@ -144,6 +144,7 @@ export class TuiTextAreaComponent
         return this.modeDirective && this.modeDirective.mode;
     }
 
+    @HostBinding('class._label-outside')
     get placeholderRaised(): boolean {
         return (
             !this.controller.labelOutside &&

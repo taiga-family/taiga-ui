@@ -74,22 +74,20 @@
     padding-bottom: @margin;
     box-sizing: border-box;
 
-    :host[data-tui-host-size='m']._focused &,
-    :host[data-tui-host-size='m']._has-value & {
+    :host[data-tui-host-size='m']._label-outside & {
         padding-top: 22px;
     }
 
-    :host[data-tui-host-size='l']._focused &,
-    :host[data-tui-host-size='l']._has-value & {
+    :host[data-tui-host-size='l']._label-outside & {
         padding-top: 25px;
     }
 
-    :host[data-tui-host-size='m']._label-outside & {
-        padding-top: 15px;
+    :host[data-tui-host-size='m']:not(._label-outside) & {
+        padding-top: 12px;
     }
 
-    :host[data-tui-host-size='l']._label-outside & {
-        padding-top: 16px;
+    :host[data-tui-host-size='l']:not(._label-outside) & {
+        padding-top: 15px;
     }
 }
 
@@ -199,19 +197,6 @@
     max-width: ~'calc(100% - 24px)';
     color: var(--tui-text-03);
     user-select: none;
-
-    :host._label-outside & {
-        top: 12px;
-        left: 12px;
-        color: var(--tui-text-03);
-    }
-
-    :host:not(._label-outside) & {
-        top: 25px;
-        left: 12px;
-        max-width: ~'calc(100% - 32px)';
-        color: var(--tui-text-02);
-    }
 
     :host._has-tooltip._focused &,
     :host._has-tooltip._has-value & {
