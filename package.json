@@ -71,7 +71,7 @@
         "@ng-web-apis/intersection-observer": "2.1.0",
         "@ng-web-apis/mutation-observer": "1.1.0",
         "@ng-web-apis/resize-observer": "1.0.3",
-        "@ng-web-apis/universal": "1.9.2",
+        "@ng-web-apis/universal": "1.9.5",
         "@nguniversal/express-engine": "^9.1.1",
         "@stackblitz/sdk": "^1.5.2",
         "@tinkoff/angular-contenteditable-accessor": "1.1.0",
