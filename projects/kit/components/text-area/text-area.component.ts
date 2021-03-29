@@ -92,6 +92,11 @@ export class TuiTextAreaComponent
         this.isIOS = isIOS;
     }
 
+    @HostBinding('class._label-outside')
+    get labelOutside(): boolean {
+        return this.controller.labelOutside;
+    }
+
     get nativeFocusableElement(): HTMLTextAreaElement | null {
         return this.computedDisabled || !this.focusableElement
             ? null
@@ -144,7 +149,6 @@ export class TuiTextAreaComponent
         return this.modeDirective && this.modeDirective.mode;
     }
 
-    @HostBinding('class._label-outside')
     get placeholderRaised(): boolean {
         return (
             !this.controller.labelOutside &&
