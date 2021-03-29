@@ -2,7 +2,6 @@
 
 @height: 108px;
 @heightCounter: 126px;
-@padding: 0 16px;
 @margin: 7px;
 
 :host {
@@ -75,22 +74,20 @@
     padding-bottom: @margin;
     box-sizing: border-box;
 
-    :host[data-tui-host-size='m']._focused &,
-    :host[data-tui-host-size='m']._has-value & {
-        padding-top: 20px;
-    }
-
-    :host[data-tui-host-size='l']._focused &,
-    :host[data-tui-host-size='l']._has-value & {
-        padding-top: 25px;
-    }
-
     :host[data-tui-host-size='m']._label-outside & {
-        padding-top: 15px;
+        padding-top: 12px;
     }
 
     :host[data-tui-host-size='l']._label-outside & {
         padding-top: 16px;
+    }
+
+    :host[data-tui-host-size='m']:not(._label-outside) & {
+        padding-top: 22px;
+    }
+
+    :host[data-tui-host-size='l']:not(._label-outside) & {
+        padding-top: 26px;
     }
 }
 
@@ -120,12 +117,19 @@
 }
 
 .pseudo-content {
-    padding: @padding;
     white-space: pre-wrap;
     word-wrap: break-word;
     pointer-events: none;
     visibility: hidden;
     overflow: hidden;
+
+    :host[data-tui-host-size='m'] & {
+        padding: 0 12px;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        padding: 0 16px;
+    }
 
     :host._focused._has-tooltip &,
     :host._has-value._has-tooltip & {
@@ -140,13 +144,20 @@
     left: 0;
     width: 100%;
     box-sizing: border-box;
-    padding: @padding;
     height: 100%;
     resize: none;
     overflow: hidden;
 
     &:focus {
         outline: none;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        padding: 0 12px;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        padding: 0 16px;
     }
 
     :host._focused._has-tooltip &,
@@ -166,12 +177,20 @@
 .placeholder {
     .textfield-placeholder();
     position: absolute;
-    top: 16px;
-    left: 16px;
     max-width: ~'calc(100% - 24px)';
 
     &_raised {
         max-width: ~'calc(113% - 32px)';
+    }
+
+    :host[data-tui-host-size='m'] & {
+        top: 12px;
+        left: 12px;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        top: 16px;
+        left: 16px;
     }
 
     :host._has-tooltip & {
@@ -181,24 +200,9 @@
 
 .example-text {
     position: absolute;
-    top: 10px;
-    left: 12px;
     max-width: ~'calc(100% - 24px)';
     color: var(--tui-text-03);
     user-select: none;
-
-    :host._label-outside & {
-        top: 16px;
-        left: 16px;
-        color: var(--tui-text-03);
-    }
-
-    :host:not(._label-outside) & {
-        top: 25px;
-        left: 16px;
-        max-width: ~'calc(100% - 32px)';
-        color: var(--tui-text-02);
-    }
 
     :host._has-tooltip._focused &,
     :host._has-tooltip._has-value & {
