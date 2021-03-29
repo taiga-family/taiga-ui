@@ -126,6 +126,7 @@
     :host[data-tui-host-size='m'] & {
         padding: 0 12px;
     }
+
     :host[data-tui-host-size='l'] & {
         padding: 0 16px;
     }
@@ -143,18 +144,20 @@
     left: 0;
     width: 100%;
     box-sizing: border-box;
-    :host[data-tui-host-size='m'] & {
-        padding: 0 12px;
-    }
-    :host[data-tui-host-size='l'] & {
-        padding: 0 16px;
-    }
     height: 100%;
     resize: none;
     overflow: hidden;
 
     &:focus {
         outline: none;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        padding: 0 12px;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        padding: 0 16px;
     }
 
     :host._focused._has-tooltip &,
@@ -174,18 +177,20 @@
 .placeholder {
     .textfield-placeholder();
     position: absolute;
-    :host[data-tui-host-size='m'] & {
-        top: 12px;
-        left: 12px;
-    }
-    :host[data-tui-host-size='l'] & {
-        top: 16px;
-        left: 16px;
-    }
     max-width: ~'calc(100% - 24px)';
 
     &_raised {
         max-width: ~'calc(113% - 32px)';
+    }
+
+    :host[data-tui-host-size='m'] & {
+        top: 12px;
+        left: 12px;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        top: 16px;
+        left: 16px;
     }
 
     :host._has-tooltip & {
