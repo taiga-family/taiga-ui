@@ -1,5 +1,5 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {Controller} from '@taiga-ui/core/abstract';
+import {TuiController} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const TUI_TEXTFIELD_CUSTOM_CONTENT = new InjectionToken<TuiTextfieldCustomContentDirective>(
@@ -16,7 +16,7 @@ export const TUI_TEXTFIELD_CUSTOM_CONTENT = new InjectionToken<TuiTextfieldCusto
         },
     ],
 })
-export class TuiTextfieldCustomContentDirective extends Controller {
+export class TuiTextfieldCustomContentDirective extends TuiController {
     @Input('tuiTextfieldCustomContent')
     customContent: PolymorpheusContent | null = null;
 }

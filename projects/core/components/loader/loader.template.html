@@ -2,7 +2,7 @@
     class="content"
     [class.content_has-overlay]="hasOverlay"
     [class.content_loading]="loading"
-    [disabled]="loading"
+    [disabled]="loading && !isApple"
 >
     <ng-content></ng-content>
 </fieldset>

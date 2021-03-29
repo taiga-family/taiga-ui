@@ -4,39 +4,31 @@ import {
     ContentChild,
     ElementRef,
     EventEmitter,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
-    Optional,
     Output,
     ViewChild,
 } from '@angular/core';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {
     AbstractTuiInteractive,
-    identity,
     isNativeFocused,
     setNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiInputMode,
 } from '@taiga-ui/cdk';
 import {
-    HINT_CONTROLLER_PROVIDER,
     TUI_HINT_WATCHED_CONTROLLER,
     TuiHintControllerDirective,
 } from '@taiga-ui/core/directives/hint-controller';
-import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {
-    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTIFELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives/textfield-controller';
 import {TuiAppearance} from '@taiga-ui/core/enums';
-import {TUI_TEXTFIELD_APPEARANCE, TUI_VALUE_ACCESSOR} from '@taiga-ui/core/tokens';
+import {TUI_MODE, TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
 import {
     TuiBrightness,
     TuiHorizontalDirection,
@@ -45,6 +37,8 @@ import {
 } from '@taiga-ui/core/types';
 import {getPadding, sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
+import {TUI_PRIMITIVE_TEXTFIELD_PROVIDERS} from './primitive-textfield.providers';
 
 const ICON_PADDING = 28;
 const ICON_PADDING_S = 24;
@@ -54,19 +48,10 @@ const ICON_PADDING_S = 24;
     templateUrl: './primitive-textfield.template.html',
     styleUrls: ['./primitive-textfield.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiPrimitiveTextfieldComponent),
-        },
-        {
-            provide: TUI_VALUE_ACCESSOR,
-            deps: [[new Optional(), NG_VALUE_ACCESSOR]],
-            useFactory: identity,
-        },
-        TEXTFIELD_CONTROLLER_PROVIDER,
-        HINT_CONTROLLER_PROVIDER,
-    ],
+    providers: TUI_PRIMITIVE_TEXTFIELD_PROVIDERS,
+    host: {
+        '($.data-mode.attr)': 'mode$',
+    },
 })
 export class TuiPrimitiveTextfieldComponent
     extends AbstractTuiInteractive
@@ -123,9 +108,7 @@ export class TuiPrimitiveTextfieldComponent
     private autofilled = false;
 
     constructor(
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
         @Inject(TUI_TEXTIFELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
@@ -268,11 +251,6 @@ export class TuiPrimitiveTextfieldComponent
         return this.controller.autocomplete === TuiCreditCardAutofillName.CcExp
             ? 'ccexpiryyear'
             : null;
-    }
-
-    @HostBinding('attr.data-tui-host-mode')
-    get hostMode(): TuiBrightness | null {
-        return this.modeDirective && this.modeDirective.mode;
     }
 
     clear() {

@@ -19,6 +19,9 @@ export class TuiSidebarDirective implements OnDestroy {
     @Input('tuiSidebarDirection')
     direction: TuiHorizontalDirection = 'left';
 
+    @Input('tuiSidebarAutoWidth')
+    autoWidth = false;
+
     @Input()
     set tuiSidebar(open: boolean) {
         if (open) {

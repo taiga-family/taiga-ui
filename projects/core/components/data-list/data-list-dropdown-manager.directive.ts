@@ -15,7 +15,7 @@ import {
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import {merge, NEVER, Observable} from 'rxjs';
+import {EMPTY, merge, Observable} from 'rxjs';
 import {
     debounceTime,
     filter,
@@ -53,7 +53,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                     const dropdown = this.dropdowns.toArray()[active];
 
                     if (!element || !dropdown || !dropdown.dropdownBoxRef) {
-                        return NEVER;
+                        return EMPTY;
                     }
 
                     const {nativeElement} = dropdown.dropdownBoxRef.location;

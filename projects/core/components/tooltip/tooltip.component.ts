@@ -12,6 +12,7 @@ import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiDirection} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-tooltip',
@@ -39,13 +40,17 @@ export class TuiTooltipComponent {
 
     private globalMode: TuiBrightness | null = null;
 
-    constructor(@Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>) {
-        mode$.subscribe(mode => {
+    constructor(
+        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
+    ) {
+        mode$.pipe(takeUntil(destroy$)).subscribe(mode => {
             this.globalMode = mode;
         });
     }
 
-    @HostBinding('attr.data-tui-host-mode')
+    // TODO: Simplify
+    @HostBinding('attr.data-mode')
     get computedMode(): TuiHintMode | TuiBrightness | null {
         return this.mode || (this.globalMode ? this.globalMode : null);
     }

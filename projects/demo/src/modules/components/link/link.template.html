@@ -1,4 +1,4 @@
-<tui-doc-page header="Link" package="CORE">
+<tui-doc-page header="Link" package="CORE" type="components">
     <ng-template pageTab>
         <p i18n>
             Link component. It has focus highlight and can be customized with an
@@ -67,7 +67,7 @@
                 [documentationPropertyValues]="modeValues"
                 [(documentationPropertyValue)]="mode"
             >
-                Link mode, <code>normal</code> by default
+                Link mode
             </ng-template>
             <ng-template
                 i18n
@@ -79,7 +79,7 @@
             >
                 An icon. It can be stringified svg or a name of icon registered
                 in
-                <a tuiLink routerLink="/tui-svg-service"
+                <a tuiLink routerLink="/services/svg-service"
                     ><code>SvgService</code></a
                 >
             </ng-template>

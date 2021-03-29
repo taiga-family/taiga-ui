@@ -20,7 +20,6 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     tuiDefaultProp,
-    TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
     tuiPure,
@@ -48,12 +47,11 @@ const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
     styleUrls: ['./input-file.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        MODE_PROVIDER,
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputFileComponent),
         },
-        TuiDestroyService,
-        MODE_PROVIDER,
     ],
 })
 export class TuiInputFileComponent

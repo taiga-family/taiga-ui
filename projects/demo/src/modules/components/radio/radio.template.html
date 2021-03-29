@@ -1,11 +1,13 @@
-<tui-doc-page header="Radio" package="KIT">
+<tui-doc-page header="Radio" package="KIT" type="components">
     <ng-template pageTab>
         <p i18n>
-            Radio button without a label. If use want to have a label, see
-            <a tuiLink routerLink="/tui-radio-labeled"
+            Radio button without a label. If you want to use it with a label,
+            see
+            <a tuiLink routerLink="/components/radio-labeled"
                 ><code>RadioLabeled</code></a
-            >, and inside button
-            <a tuiLink routerLink="/tui-radio-block"><code>RadioBlock</code></a
+            >, and inside button — see
+            <a tuiLink routerLink="/components/radio-block"
+                ><code>RadioBlock</code></a
             >.
         </p>
 
@@ -132,6 +134,17 @@
                 <tui-doc-code
                     filename="myComponent.module.ts"
                     [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Optionally use the
+                <code>TUI_RADIO_OPTIONS </code> injection token to override the
+                default options for the component.
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleDefineOptions"
                 ></tui-doc-code>
             </li>
 

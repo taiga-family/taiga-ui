@@ -13,6 +13,8 @@ import {
     isEdgeOlderThan,
     isIE,
     isNativeFocusedIn,
+    isSafari,
+    TUI_IS_IOS,
     tuiDefaultProp,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
@@ -61,10 +63,13 @@ export class TuiLoaderComponent {
     @HostBinding('class._animated-with-js')
     animatedWithJs = isEdgeOlderThan(17, this.userAgent) || isIE(this.userAgent);
 
+    readonly isApple = isSafari(this.elementRef.nativeElement) || this.isIos;
+
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
+        @Inject(TUI_IS_IOS) private readonly isIos: boolean,
     ) {}
 
     get hasOverlay(): boolean {

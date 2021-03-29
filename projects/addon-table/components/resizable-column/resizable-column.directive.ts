@@ -4,6 +4,7 @@ import {preventDefault, typedFromEvent} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs/operators';
 
+/** @deprecated use `<th tuiTh [resizable]="true">` from {@link TuiTableModule} */
 // @dynamic
 @Directive({
     selector: '[tuiResizableColumn]',

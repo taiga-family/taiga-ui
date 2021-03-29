@@ -50,9 +50,11 @@ export class TuiTabsComponent implements AfterViewChecked {
     @tuiDefaultProp()
     underline = true;
 
-    @Input()
-    @tuiDefaultProp()
-    activeItemIndex = 0;
+    @Input('activeItemIndex')
+    set activeItemIndexSetter(index: number) {
+        this.activeItemIndex = index;
+        this.scrollTo(this.tabs[index]);
+    }
 
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
@@ -65,6 +67,8 @@ export class TuiTabsComponent implements AfterViewChecked {
 
     @ContentChildren(forwardRef(() => TuiTabComponent))
     private readonly children: QueryList<unknown> = EMPTY_QUERY;
+
+    activeItemIndex = 0;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -122,7 +126,7 @@ export class TuiTabsComponent implements AfterViewChecked {
             return;
         }
 
-        this.activeItemIndex = index;
+        this.activeItemIndexSetter = index;
         this.activeItemIndexChange.emit(index);
     }
 
@@ -132,5 +136,26 @@ export class TuiTabsComponent implements AfterViewChecked {
         const {tabs} = this;
 
         moveFocus(tabs.indexOf(current), tabs, step);
+    }
+
+    private scrollTo(element?: HTMLElement) {
+        if (!element) {
+            return;
+        }
+
+        const {offsetLeft, offsetWidth} = element;
+        const {nativeElement} = this.elementRef;
+
+        if (offsetLeft < nativeElement.scrollLeft) {
+            nativeElement.scrollLeft = offsetLeft;
+        }
+
+        if (
+            offsetLeft + offsetWidth >
+            nativeElement.scrollLeft + nativeElement.offsetWidth
+        ) {
+            nativeElement.scrollLeft =
+                offsetLeft + offsetWidth - nativeElement.offsetWidth;
+        }
     }
 }

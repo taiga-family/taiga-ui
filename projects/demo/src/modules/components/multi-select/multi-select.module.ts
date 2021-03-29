@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -44,7 +44,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiHintControllerModule,
         TuiTextfieldControllerModule,
         InheritedDocumentationModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiMultiSelectComponent)),
         PolymorpheusModule,
     ],

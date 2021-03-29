@@ -6,7 +6,6 @@ import {
     ElementRef,
     Injector,
     Input,
-    NgModule,
     OnDestroy,
 } from '@angular/core';
 import {
@@ -25,9 +24,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 // @bad TODO: Possibly refactor to make more abstract
-@Directive({
-    selector: 'never-gonna-make-you-cry',
-})
+@Directive()
 export abstract class AbstractTuiDropdown
     implements TuiDropdown, AfterViewChecked, OnDestroy {
     @Input('tuiDropdownContent')
@@ -121,7 +118,3 @@ export abstract class AbstractTuiDropdown
         this.dropdownBoxRef = null;
     }
 }
-
-// TODO: @bad this is a must for Ivy at the moment
-@NgModule({declarations: [AbstractTuiDropdown as any]})
-export class NeverGonnaSayGoodbyeModule {}

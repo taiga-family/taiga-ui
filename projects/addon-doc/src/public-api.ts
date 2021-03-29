@@ -22,9 +22,6 @@ export * from './components/page/page.component';
 export * from './components/page/page.module';
 export * from './components/page/page-tab.directive';
 
-/* Constants */
-export * from './constants/page-modules';
-
 /* Interfaces */
 export * from './interfaces/code-editor';
 export * from './interfaces/page';
@@ -49,3 +46,5 @@ export * from './types/pages';
 
 /* Utils */
 export * from './utils/generate-routes';
+
+export * from './addon-doc.module';

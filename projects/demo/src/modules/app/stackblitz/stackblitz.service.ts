@@ -8,7 +8,7 @@ import {default as polyfills} from '!!raw-loader!./project-files/src/polyfills.t
 import {default as styles} from '!!raw-loader!./project-files/src/styles.less';
 import {default as tsconfig} from '!!raw-loader!./project-files/tsconfig.txt';
 
-import {default as appModuleTs} from '!!raw-loader!./project-files/src/app/app.module.ts';
+import {default as appModuleTs} from '!!raw-loader!./project-files/src/app/app.module.ts.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -30,6 +30,7 @@ const DEPS: Record<string, string> = {
     '@tinkoff/ng-polymorpheus': '*',
     '@ng-web-apis/common': '*',
     '@tinkoff/ng-event-plugins': '*',
+    '@ng-web-apis/intersection-observer': '*',
     '@ng-web-apis/mutation-observer': '*',
     'angular2-text-mask': '*',
     dompurify: '*',

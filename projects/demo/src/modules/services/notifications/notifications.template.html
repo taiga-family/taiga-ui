@@ -1,4 +1,8 @@
-<tui-doc-page header="NotificationsService" package="CORE">
+<tui-doc-page
+    header="NotificationsService"
+    package="CORE"
+    path="core/modules/notifications/notifications.service.ts"
+>
     <ng-template pageTab>
         <p i18n>Service to show notifications</p>
         <p i18n>
@@ -123,6 +127,14 @@
             >
                 Has close button
             </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="hasIcon"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="hasIcon"
+            >
+                Has icon
+            </ng-template>
         </tui-doc-documentation>
     </ng-template>
     <ng-template pageTab>
@@ -153,7 +165,7 @@
             <li i18n>
                 To pass notification with custom content, you can use
                 <a
-                    routerLink="/tui-notifications-service"
+                    routerLink="/services/notifications-service"
                     fragment="example-template"
                     tuiLink
                 >

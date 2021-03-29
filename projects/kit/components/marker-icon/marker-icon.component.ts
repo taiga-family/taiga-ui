@@ -15,6 +15,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiMarkerIconMode} from '@taiga-ui/kit/enums';
 import {Observable} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-marker-icon',
@@ -39,13 +40,17 @@ export class TuiMarkerIconComponent {
 
     private globalMode: TuiBrightness | null = null;
 
-    constructor(@Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>) {
-        mode$.subscribe(mode => {
+    constructor(
+        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
+    ) {
+        mode$.pipe(takeUntil(destroy$)).subscribe(mode => {
             this.globalMode = mode;
         });
     }
 
-    @HostBinding('attr.data-tui-host-mode')
+    // TODO: Simplify
+    @HostBinding('attr.data-mode')
     get computedMode(): TuiMarkerIconMode | null {
         return this.globalMode === 'onDark' && !this.mode
             ? TuiMarkerIconMode.OnDark

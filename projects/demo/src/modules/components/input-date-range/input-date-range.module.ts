@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiMobileCalendarDialogModule} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonModule,
@@ -27,7 +27,7 @@ import {ExampleTuiInputDateRangeComponent} from './input-date-range.component';
         TuiMobileCalendarDialogModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputDateRangeComponent)),
         TuiUnfinishedValidatorModule,
     ],

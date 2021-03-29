@@ -1,23 +1,23 @@
 <a href="#" tuiLink>normal</a>
 <p>
     <span class="plate plate_light" tuiMode="onLight">
-        See <a tuiLink routerLink="/tui-mode">tuiMode</a> directive
+        See <a tuiLink routerLink="/directives/mode">tuiMode</a> directive
         <button tuiLink [pseudo]="true" (click)="onClick($event)">
             Pseudo-link
         </button>
     </span>
 </p>
 <span class="plate plate_dark" tuiMode="onDark">
-    See <a tuiLink routerLink="/tui-mode">tuiMode</a> directive
+    See <a tuiLink routerLink="/directives/mode">tuiMode</a> directive
     <button tuiLink [pseudo]="true" (click)="onClick($event)">
         Pseudo-link
     </button>
 </span>
 <p>
-    <a href="#" tuiLink mode="success">Success link</a>
+    <a href="#" tuiLink mode="positive">Positive link</a>
 </p>
 <p>
-    <a href="#" tuiLink mode="alert">Alert link</a>
+    <a href="#" tuiLink mode="negative">Negative link</a>
 </p>
 <button tuiLink [pseudo]="true" (click)="onClick($event)">Pseudo-link</button>
 (If you need a pseudo-link, use <code>button</code> element for correct work

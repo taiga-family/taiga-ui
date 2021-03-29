@@ -1,18 +1,11 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    HostListener,
-    Inject,
-} from '@angular/core';
-import {isCurrentTarget, TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
+import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {filter} from 'rxjs/operators';
 import {TUI_DIALOG_CLOSE_STREAM, TUI_DIALOG_PROVIDERS} from './dialog.providers';
 
 const SMALL_DIALOGS_ANIMATION = {value: '', params: {start: '40px'}};
@@ -40,7 +33,7 @@ export class TuiDialogComponent<O, I> {
         close$: Observable<unknown>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
     ) {
-        close$.pipe(filter(() => this.context.dismissible)).subscribe(() => {
+        close$.subscribe(() => {
             this.close();
         });
     }
@@ -75,13 +68,6 @@ export class TuiDialogComponent<O, I> {
         return this.size === 'fullscreen' || this.size === 'page' || this.isMobile
             ? FULLSCREEN_DIALOGS_ANIMATION
             : SMALL_DIALOGS_ANIMATION;
-    }
-
-    @HostListener('click', ['$event'])
-    hostClick(event: MouseEvent) {
-        if (isCurrentTarget(event)) {
-            this.close();
-        }
     }
 
     close() {

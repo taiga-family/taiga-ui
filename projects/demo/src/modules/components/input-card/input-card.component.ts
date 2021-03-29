@@ -8,8 +8,8 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
+import {TuiNotificationsService} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
-import {LogService} from '../../app/log.service';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -19,7 +19,6 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     styleUrls: ['./input-card.style.less'],
     changeDetection,
     providers: [
-        LogService,
         {
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiInputCardComponent),
@@ -94,7 +93,10 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiReactiveFiel
         cvc: new FormControl('', Validators.required),
     });
 
-    constructor(@Inject(LogService) private readonly log: LogService) {
+    constructor(
+        @Inject(TuiNotificationsService)
+        private readonly notifications: TuiNotificationsService,
+    ) {
         super();
     }
 
@@ -143,6 +145,6 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiReactiveFiel
     }
 
     onBinChange(bin: string) {
-        this.log.log(`bin: ${bin}`);
+        this.notifications.show(`bin: ${bin}`).subscribe();
     }
 }

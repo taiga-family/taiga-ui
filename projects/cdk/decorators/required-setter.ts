@@ -15,10 +15,10 @@ export function tuiRequiredSetter<T extends object, K extends keyof T>(
         target: Object,
         key,
         {configurable, enumerable, get, set}: PropertyDescriptor,
-    ) => {
+    ): PropertyDescriptor => {
         const {name} = target.constructor;
 
-        Object.defineProperty(target, key, {
+        return {
             configurable,
             enumerable,
             get,
@@ -40,7 +40,7 @@ export function tuiRequiredSetter<T extends object, K extends keyof T>(
 
                 set.call(this, value);
             },
-        });
+        };
     };
 }
 

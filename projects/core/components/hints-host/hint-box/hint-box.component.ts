@@ -68,7 +68,7 @@ export class TuiHintBoxComponent {
     direction: TuiDirection = 'bottom-left';
 
     @Input()
-    @HostBinding('attr.data-tui-host-mode')
+    @HostBinding('attr.data-mode')
     @tuiDefaultProp()
     mode: TuiHintMode | null = null;
 

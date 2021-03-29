@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiHintControllerModule,
     TuiLinkModule,
@@ -18,7 +18,7 @@ import {ExampleTuiHintControllerComponent} from './hint-controller.component';
         TuiLinkModule,
         TuiPrimitiveTextfieldModule,
         TuiHintControllerModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiHintControllerComponent)),
     ],
     declarations: [ExampleTuiHintControllerComponent, TuiHintControllerExample1],

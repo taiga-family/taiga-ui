@@ -114,7 +114,7 @@ export abstract class AbstractTuiInputSlider<T>
         return this.length / this.computedSteps;
     }
 
-    @HostBinding('attr.data-tui-host-mode')
+    @HostBinding('attr.data-mode')
     get hostMode(): TuiBrightness | null {
         return this.modeDirective && this.modeDirective.mode;
     }
