@@ -117,17 +117,18 @@
 }
 
 .pseudo-content {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    pointer-events: none;
+    visibility: hidden;
+    overflow: hidden;
+
     :host[data-tui-host-size='m'] & {
         padding: 0 12px;
     }
     :host[data-tui-host-size='l'] & {
         padding: 0 16px;
     }
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    pointer-events: none;
-    visibility: hidden;
-    overflow: hidden;
 
     :host._focused._has-tooltip &,
     :host._has-value._has-tooltip & {
