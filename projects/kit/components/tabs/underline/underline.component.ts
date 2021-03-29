@@ -43,9 +43,10 @@ export class TuiUnderlineComponent {
 
     private readonly refresh$ = this.element$.pipe(
         switchMap(element =>
-            element ? this.animationFrame$.pipe(mapTo(element)) : of(null),
+            element
+                ? this.animationFrame$.pipe(mapTo(element), tuiZonefree(this.ngZone))
+                : of(null),
         ),
-        tuiZonefree(this.ngZone),
         share(),
     );
 
