@@ -53,7 +53,7 @@ export class TuiTabsComponent implements AfterViewChecked {
     @Input('activeItemIndex')
     set activeItemIndexSetter(index: number) {
         this.activeItemIndex = index;
-        this.updateScrollPosition(this.tabs[index]);
+        this.scrollTo(this.tabs[index]);
     }
 
     @Output()
@@ -138,7 +138,7 @@ export class TuiTabsComponent implements AfterViewChecked {
         moveFocus(tabs.indexOf(current), tabs, step);
     }
 
-    updateScrollPosition(element?: HTMLElement) {
+    private scrollTo(element?: HTMLElement) {
         if (!element) {
             return;
         }
