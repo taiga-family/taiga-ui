@@ -7,8 +7,16 @@ import {
     TuiIdService,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiHintMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {
+    MODE_PROVIDER,
+    TuiBrightness,
+    TuiHintMode,
+    TuiSizeL,
+    TuiSizeS,
+    TUI_MODE,
+} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 
 export function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
     const valid = value.every(array => array.length === value[0].length);
@@ -23,6 +31,10 @@ const VALUE_ERROR = 'All arrays must be of the same length';
     templateUrl: './bar-chart.template.html',
     styleUrls: ['./bar-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [MODE_PROVIDER],
+    host: {
+        '($.data-mode.attr)': 'mode$',
+    },
 })
 export class TuiBarChartComponent {
     @Input()
@@ -55,7 +67,10 @@ export class TuiBarChartComponent {
 
     private readonly autoIdString: string;
 
-    constructor(@Inject(TuiIdService) idService: TuiIdService) {
+    constructor(
+        @Inject(TuiIdService) idService: TuiIdService,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+    ) {
         this.autoIdString = idService.generate();
     }
 
