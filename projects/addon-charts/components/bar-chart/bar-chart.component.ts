@@ -7,14 +7,7 @@ import {
     TuiIdService,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TuiBrightness,
-    TuiHintMode,
-    TuiSizeL,
-    TuiSizeS,
-    TUI_MODE,
-} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -60,10 +53,6 @@ export class TuiBarChartComponent {
     @Input()
     @tuiDefaultProp()
     hintContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
-
-    @Input()
-    @tuiDefaultProp()
-    hintMode: TuiHintMode | null = null;
 
     private readonly autoIdString: string;
 

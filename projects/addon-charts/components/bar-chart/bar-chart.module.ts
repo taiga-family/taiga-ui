@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiBarSetModule} from '@taiga-ui/addon-charts/components/bar-set';
 import {TuiFocusableModule} from '@taiga-ui/cdk';
-import {TuiDescribedByModule, TuiHintModule, TuiModeModule} from '@taiga-ui/core';
+import {TuiDescribedByModule, TuiModeModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiBarChartComponent} from './bar-chart.component';
 
@@ -12,7 +12,6 @@ import {TuiBarChartComponent} from './bar-chart.component';
         PolymorpheusModule,
         TuiDescribedByModule,
         TuiFocusableModule,
-        TuiHintModule,
         TuiBarSetModule,
         TuiModeModule,
     ],

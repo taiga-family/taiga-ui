@@ -30,7 +30,6 @@
                 [size]="size"
                 [colorHandler]="colorHandler"
                 [hintContent]="hintContent"
-                [hintMode]="hintMode"
             ></tui-bar-chart>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -62,16 +61,6 @@
                 [(documentationPropertyValue)]="hintContent"
             >
                 Content of segment hint. It gets index of segment as context
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="hintMode"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHintMode"
-                [documentationPropertyValues]="hintModeVariants"
-                [(documentationPropertyValue)]="hintMode"
-            >
-                Hint mode
             </ng-template>
             <ng-template
                 i18n
