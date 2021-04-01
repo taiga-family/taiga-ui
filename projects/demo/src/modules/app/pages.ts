@@ -1023,6 +1023,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'DestroyService',
+                keywords: 'сервис',
+                route: '/services/destroy-service',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'ScrollService',
                 keywords: 'scroll, прокрутка, скролл',
                 route: '/services/scroll-service',

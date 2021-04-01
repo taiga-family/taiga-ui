@@ -1316,6 +1316,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'services/destroy-service',
+        loadChildren: () =>
+            import(`../services/destroy/destroy.module`).then(
+                m => m.ExampleTuiDestroyModule,
+            ),
+        data: {
+            title: 'DestroyService',
+        },
+    },
+    {
         path: 'services/scroll-service',
         loadChildren: () =>
             import(`../services/scroll/scroll.module`).then(
