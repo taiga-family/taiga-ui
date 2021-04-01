@@ -342,11 +342,18 @@ export class TuiDesignModeDirective
     }
 
     private updateHeight() {
-        this.renderer.setAttribute(this.elementRef.nativeElement, 'height', '0');
+        if (!this.documentRef) {
+            return;
+        }
+
+        const range = this.documentRef.createRange();
+
+        range.selectNodeContents(this.documentRef.body);
+
         this.renderer.setAttribute(
             this.elementRef.nativeElement,
             'height',
-            this.documentRef ? String(this.documentRef.body.offsetHeight) : '',
+            String(range.getBoundingClientRect().height + 26),
         );
     }
 
