@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     forwardRef,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -144,7 +145,7 @@ export class TuiInputDateTimeComponent
 
         if (
             (date && !nativeValue) ||
-            (date && nativeValue.length === this.fillerLength) ||
+            (date && nativeValue.length === this.dateFiller.length) ||
             (date && time)
         ) {
             return `${date.toString()}${DATE_TIME_SEPARATOR}${
@@ -190,12 +191,13 @@ export class TuiInputDateTimeComponent
         );
     }
 
+    @HostListener('click')
     onClick() {
         this.open = !this.open;
     }
 
     onValueChange(value: string) {
-        if (value.length < this.fillerLength) {
+        if (value.length < this.dateFiller.length) {
             this.updateValue([null, null]);
 
             return;

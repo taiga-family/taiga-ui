@@ -2,6 +2,7 @@ import {
     ChangeDetectorRef,
     Component,
     forwardRef,
+    HostListener,
     Inject,
     Injector,
     Input,
@@ -227,8 +228,8 @@ export class TuiInputDateRangeComponent
         this.nativeFocusableElement.value = value;
     }
 
-    onClick() {
-        if (!this.isMobile || !this.mobileCalendar) {
+    onMobileClick() {
+        if (!this.mobileCalendar) {
             this.toggle();
 
             return;
@@ -262,6 +263,13 @@ export class TuiInputDateRangeComponent
             .subscribe(value => {
                 this.updateValue(value);
             });
+    }
+
+    @HostListener('click')
+    onClick() {
+        if (!this.isMobile) {
+            this.toggle();
+        }
     }
 
     onOpenChange(open: boolean) {

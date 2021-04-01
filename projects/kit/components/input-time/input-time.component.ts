@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
+    forwardRef, HostListener,
     Inject,
     Input,
     Optional,
@@ -227,6 +227,11 @@ export class TuiInputTimeComponent
         }
 
         this.processArrow(event, -1);
+    }
+
+    @HostListener('click')
+    onClick() {
+        this.open = !this.open;
     }
 
     onMenuClick(item: TuiTime) {
