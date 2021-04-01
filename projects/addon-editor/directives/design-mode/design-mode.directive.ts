@@ -36,6 +36,8 @@ import {TUI_SANITIZER} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
 import {filter, map, mapTo, take, takeUntil} from 'rxjs/operators';
 
+const PADDING = 26;
+
 @Directive({
     selector: 'iframe[tuiDesignMode]',
     exportAs: 'tuiDesignMode',
@@ -353,7 +355,7 @@ export class TuiDesignModeDirective
         this.renderer.setAttribute(
             this.elementRef.nativeElement,
             'height',
-            String(range.getBoundingClientRect().height + 26),
+            String(range.getBoundingClientRect().height + PADDING),
         );
     }
 
