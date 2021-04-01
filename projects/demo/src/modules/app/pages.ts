@@ -973,6 +973,12 @@ export const pages: TuiDocPages = [
         subPages: [
             {
                 section: $localize`Tools`,
+                title: 'Currency',
+                keywords: 'cyrrency, валюты, деньги, пайп, pipe',
+                route: '/pipes/currency',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'Filter',
                 keywords: 'filter, совпадения, ngfor, for, match, пайп, pipe',
                 route: '/pipes/filter',

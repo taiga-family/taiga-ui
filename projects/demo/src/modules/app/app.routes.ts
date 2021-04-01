@@ -1249,6 +1249,16 @@ export const ROUTES = [
     },
     // PIPES
     {
+        path: 'pipes/currency',
+        loadChildren: () =>
+            import(`../pipes/currency/currency.module`).then(
+                m => m.ExampleTuiCurrencyModule,
+            ),
+        data: {
+            title: 'Currency',
+        },
+    },
+    {
         path: 'pipes/filter',
         loadChildren: () =>
             import(`../pipes/filter/filter.module`).then(m => m.ExampleTuiFilterModule),
