@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {ExampleTuiDestroyComponent} from './destroy.component';
-import {TuiCurrencyExample} from './examples/1/component';
+import {TuiDestroyExample} from './examples/1/component';
 
 @NgModule({
     imports: [
@@ -13,7 +13,7 @@ import {TuiCurrencyExample} from './examples/1/component';
         TuiButtonModule,
         RouterModule.forChild(generateRoutes(ExampleTuiDestroyComponent)),
     ],
-    declarations: [ExampleTuiDestroyComponent, TuiCurrencyExample],
+    declarations: [ExampleTuiDestroyComponent, TuiDestroyExample],
     exports: [ExampleTuiDestroyComponent],
 })
 export class ExampleTuiDestroyModule {}

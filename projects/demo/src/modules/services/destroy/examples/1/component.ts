@@ -6,13 +6,13 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
-    selector: 'tui-currency-example',
+    selector: 'tui-destroy-example',
     templateUrl: './template.html',
     changeDetection,
     encapsulation,
     providers: [TuiDestroyService],
 })
-export class TuiCurrencyExample {
+export class TuiDestroyExample {
     constructor(destroy$: TuiDestroyService, {nativeElement}: ElementRef<HTMLElement>) {
         fromEvent(nativeElement, 'click')
             .pipe(takeUntil(destroy$))
