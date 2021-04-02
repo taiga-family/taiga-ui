@@ -7,7 +7,8 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/kit';
 import {ExampleTuiCurrencyComponent} from './currency.component';
-import {TuiCurrencyExample} from './examples/1/component';
+import {TuiCurrencyExample1} from './examples/1/component';
+import {TuiCurrencyExample2} from './examples/2/component';
 
 @NgModule({
     imports: [
@@ -19,10 +20,9 @@ import {TuiCurrencyExample} from './examples/1/component';
         TuiLinkModule,
         CommonModule,
         TuiAddonDocModule,
-
         RouterModule.forChild(generateRoutes(ExampleTuiCurrencyComponent)),
     ],
-    declarations: [ExampleTuiCurrencyComponent, TuiCurrencyExample],
+    declarations: [ExampleTuiCurrencyComponent, TuiCurrencyExample2, TuiCurrencyExample1],
     exports: [ExampleTuiCurrencyComponent],
 })
 export class ExampleTuiCurrencyModule {}

@@ -4,7 +4,18 @@
     path="cdk/services/destroy.service.ts"
 >
     <ng-template pageTab>
-        <p i18n>Service to destroy another services</p>
+        <p i18n>
+            A service to terminate subscriptions upon component/directive
+            removal.
+        </p>
+        <tui-doc-example
+            id="Basic"
+            i18n-heading
+            heading="Basic"
+            [content]="example"
+        >
+            <tui-currency-example></tui-currency-example>
+        </tui-doc-example>
     </ng-template>
     <ng-template pageTab>
         <ol class="b-demo-steps">
