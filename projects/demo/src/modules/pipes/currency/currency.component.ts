@@ -14,7 +14,6 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-tui-currency',
     templateUrl: './currency.template.html',
-    styleUrls: ['./currency.style.less'],
     changeDetection,
 })
 export class ExampleTuiCurrencyComponent {
