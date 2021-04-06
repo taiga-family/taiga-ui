@@ -4,6 +4,7 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
+    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -62,6 +63,9 @@ export class TuiDesignModeDirective
 
     @Output()
     readonly focusedChange = new EventEmitter<boolean>();
+
+    @HostBinding('style.pointerEvents')
+    pointerEvents = 'all';
 
     private onTouched = EMPTY_FUNCTION;
 
@@ -126,6 +130,12 @@ export class TuiDesignModeDirective
         this.initDOM();
         this.initObserver();
         this.initSubscriptions();
+    }
+
+    @HostListener('document:mousedown', ['"none"'])
+    @HostListener('document:mouseup', ['"all"'])
+    onPointer(pointerEvents: 'all' | 'none') {
+        this.pointerEvents = pointerEvents;
     }
 
     writeValue(value: string) {
