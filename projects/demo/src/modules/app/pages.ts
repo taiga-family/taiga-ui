@@ -973,6 +973,12 @@ export const pages: TuiDocPages = [
         subPages: [
             {
                 section: $localize`Tools`,
+                title: 'Currency',
+                keywords: 'cyrrency, валюты, деньги, пайп, pipe',
+                route: '/pipes/currency',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'Filter',
                 keywords: 'filter, совпадения, ngfor, for, match, пайп, pipe',
                 route: '/pipes/filter',
@@ -1014,6 +1020,12 @@ export const pages: TuiDocPages = [
                 title: 'DialogService',
                 keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
                 route: '/services/dialog-service',
+            },
+            {
+                section: $localize`Tools`,
+                title: 'DestroyService',
+                keywords: 'сервис',
+                route: '/services/destroy-service',
             },
             {
                 section: $localize`Tools`,

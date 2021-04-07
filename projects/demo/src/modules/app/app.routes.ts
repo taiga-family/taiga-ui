@@ -1249,6 +1249,16 @@ export const ROUTES = [
     },
     // PIPES
     {
+        path: 'pipes/currency',
+        loadChildren: () =>
+            import(`../pipes/currency/currency.module`).then(
+                m => m.ExampleTuiCurrencyModule,
+            ),
+        data: {
+            title: 'Currency',
+        },
+    },
+    {
         path: 'pipes/filter',
         loadChildren: () =>
             import(`../pipes/filter/filter.module`).then(m => m.ExampleTuiFilterModule),
@@ -1303,6 +1313,16 @@ export const ROUTES = [
             ),
         data: {
             title: 'DialogService',
+        },
+    },
+    {
+        path: 'services/destroy-service',
+        loadChildren: () =>
+            import(`../services/destroy/destroy.module`).then(
+                m => m.ExampleTuiDestroyModule,
+            ),
+        data: {
+            title: 'DestroyService',
         },
     },
     {
