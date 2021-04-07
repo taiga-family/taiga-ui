@@ -344,7 +344,9 @@ export class TuiInputTagComponent
         if (tag) {
             const parentTag =
                 tag.nativeElement.parentElement?.parentElement?.parentElement;
-            setNativeFocused(tag.nativeElement, true, true);
+
+            tag.nativeElement.focus({preventScroll: true});
+
             if (
                 tag.nativeElement.offsetLeft <
                 (parentTag?.clientWidth || 0) + tag.nativeElement.clientWidth
@@ -366,7 +368,9 @@ export class TuiInputTagComponent
         if (tag) {
             const parentTag =
                 tag.nativeElement.parentElement?.parentElement?.parentElement;
-            setNativeFocused(tag.nativeElement, true, true);
+
+            tag.nativeElement.focus({preventScroll: true});
+
             if (
                 (parentTag?.clientWidth || 0) <
                 tag.nativeElement.offsetLeft + tag.nativeElement.clientWidth
