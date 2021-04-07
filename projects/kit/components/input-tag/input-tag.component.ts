@@ -342,7 +342,15 @@ export class TuiInputTagComponent
         const tag = this.tags.find((_item, index) => index === currentIndex - 1);
 
         if (tag) {
-            setNativeFocused(tag.nativeElement);
+            const parentTag =
+                tag.nativeElement.parentElement?.parentElement?.parentElement;
+            setNativeFocused(tag.nativeElement, true, true);
+            if (
+                tag.nativeElement.offsetLeft <
+                (parentTag?.clientWidth || 0) + tag.nativeElement.clientWidth
+            ) {
+                parentTag?.scrollBy(-tag.nativeElement.clientWidth, 0);
+            }
         }
     }
 
@@ -356,7 +364,15 @@ export class TuiInputTagComponent
         const tag = this.tags.find((_item, index) => index === currentIndex + 1);
 
         if (tag) {
-            setNativeFocused(tag.nativeElement);
+            const parentTag =
+                tag.nativeElement.parentElement?.parentElement?.parentElement;
+            setNativeFocused(tag.nativeElement, true, true);
+            if (
+                (parentTag?.clientWidth || 0) <
+                tag.nativeElement.offsetLeft + tag.nativeElement.clientWidth
+            ) {
+                parentTag?.scrollBy(tag.nativeElement.clientWidth, 0);
+            }
         }
     }
 
