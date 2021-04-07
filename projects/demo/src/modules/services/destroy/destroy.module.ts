@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiNotificationModule} from '@taiga-ui/core';
 import {ExampleTuiDestroyComponent} from './destroy.component';
 import {TuiDestroyExample} from './examples/1/component';
 
@@ -11,6 +11,7 @@ import {TuiDestroyExample} from './examples/1/component';
         CommonModule,
         TuiAddonDocModule,
         TuiButtonModule,
+        TuiNotificationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiDestroyComponent)),
     ],
     declarations: [ExampleTuiDestroyComponent, TuiDestroyExample],
