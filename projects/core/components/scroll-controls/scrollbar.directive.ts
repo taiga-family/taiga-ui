@@ -17,7 +17,7 @@ import {
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiOrientation} from '@taiga-ui/core/enums';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {TUI_ELEMENT_REF, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {fromEvent, interval, merge, Observable} from 'rxjs';
 import {map, switchMap, takeUntil} from 'rxjs/operators';
 
@@ -37,6 +37,7 @@ export class TuiScrollbarDirective {
         @Inject(NgZone) ngZone: NgZone,
         @Inject(Renderer2) renderer: Renderer2,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Inject(TUI_ELEMENT_REF) private readonly wrapper: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TUI_SCROLL_REF)
         private readonly container: ElementRef<HTMLElement> | null,
@@ -54,7 +55,7 @@ export class TuiScrollbarDirective {
             .pipe(
                 preventDefault(),
                 switchMap(event => {
-                    const rect = event.currentTarget.getBoundingClientRect();
+                    const rect = nativeElement.getBoundingClientRect();
                     const vertical = getOffsetVertical(event, rect);
                     const horizontal = getOffsetHorizontal(event, rect);
 
@@ -179,12 +180,13 @@ export class TuiScrollbarDirective {
         offsetVertical: number,
         offsetHorizontal: number,
     ): [number, number] {
-        const {innerWidth, innerHeight} = this.windowRef;
         const {offsetHeight, offsetWidth} = this.elementRef.nativeElement;
-        const {top = 0, left = 0, width = innerWidth, height = innerHeight} = this
-            .container
-            ? this.container.nativeElement.getBoundingClientRect()
-            : {};
+        const {
+            top,
+            left,
+            width,
+            height,
+        } = this.wrapper.nativeElement.getBoundingClientRect();
 
         const maxTop = this.computedContainer.scrollHeight - height;
         const maxLeft = this.computedContainer.scrollWidth - width;
