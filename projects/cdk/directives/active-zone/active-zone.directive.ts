@@ -104,17 +104,14 @@ export class TuiActiveZoneDirective implements OnDestroy {
                     const actualTarget = getActualTarget(event);
                     const targetInZone = this.contains(actualTarget);
                     const activeElement = getNativeFocused(documentRef);
-                    const focusInZone =
-                        activeElement !== null && this.contains(activeElement);
-                    const focusNowhere =
-                        activeElement === null || activeElement === documentRef.body;
+                    const focusInZone = this.contains(activeElement);
 
                     // If default behavior is prevented — focus either remained
                     // where it was or it was moved manually so we just check
                     // if the focused element is within the zone or target is
                     // within the zone and focus is nowhere
                     if (event.defaultPrevented) {
-                        return of(focusInZone || (focusNowhere && targetInZone));
+                        return of(focusInZone || targetInZone);
                     }
 
                     // If mouseDown happened inside the zone and focus is outside we

@@ -1,0 +1,12 @@
+<tui-tabs-with-more [(activeItemIndex)]="activeItemIndex">
+    <ng-container *ngFor="let step of items">
+        <a *tuiTab tuiTab routerLinkActive [routerLink]="step.text">
+            {{step.text}}
+            <tui-svg
+                *ngIf="step.text === 'settings'"
+                src="tuiIconCloseLarge"
+                (click.stop.prevent)="filter(step)"
+            ></tui-svg>
+        </a>
+    </ng-container>
+</tui-tabs-with-more>
