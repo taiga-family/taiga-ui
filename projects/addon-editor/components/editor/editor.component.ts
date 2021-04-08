@@ -38,6 +38,8 @@ import {TUI_DOCUMENT_OR_SHADOW_ROOT, TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {merge, Subscription} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 
+const TEMP_URL = 'TEMP_URL';
+
 export function documentFactory(editor: TuiEditorComponent): DocumentOrShadowRoot | null {
     return editor.focusableElement ? editor.focusableElement.documentRef : null;
 }
@@ -217,7 +219,21 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
 
     onAddLink(url: string) {
         this.selectClosest('a');
-        this.computedDocument.execCommand('createLink', false, url);
+        this.computedDocument.execCommand('createLink', false, TEMP_URL);
+
+        const link = this.computedDocument.querySelector<HTMLAnchorElement>(
+            `[href="${TEMP_URL}"]`,
+        );
+
+        if (!link) {
+            return;
+        }
+
+        link.target = '_blank';
+        link.rel = '_noopener';
+        link.href = url;
+
+        this.computedDocument.dispatchEvent(new Event('input'));
     }
 
     onRemoveLink() {

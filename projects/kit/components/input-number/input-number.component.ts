@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     forwardRef,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -224,6 +225,24 @@ export class TuiInputNumberComponent
 
     onPressed(pressed: boolean) {
         this.updatePressed(pressed);
+    }
+
+    @HostListener('keydown.0', ['$event'])
+    onZero(event: KeyboardEvent) {
+        const decimal = this.nativeValue.split(',')[1] || '';
+        const {nativeFocusableElement} = this;
+
+        if (
+            decimal.length < this.precision ||
+            !nativeFocusableElement ||
+            !nativeFocusableElement.selectionStart ||
+            this.nativeValue[nativeFocusableElement.selectionStart] !== '0'
+        ) {
+            return;
+        }
+
+        event.preventDefault();
+        nativeFocusableElement.selectionStart++;
     }
 
     private get isNativeValueInLimit(): boolean {
