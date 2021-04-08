@@ -15,7 +15,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
-import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
@@ -69,6 +69,10 @@ export class TuiToolbarComponent {
     @Input()
     @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
     tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
+
+    @Input()
+    @tuiDefaultProp()
+    colors: ReadonlyMap<string, string> = defaultEditorColors;
 
     @Input()
     @tuiDefaultProp()
@@ -286,7 +290,7 @@ export class TuiToolbarComponent {
 
     get hiliteColor(): string {
         if (!isFirefox(this.userAgent)) {
-            // Doesn't work in Firefox for 9 years: https://bugzilla.mozilla.org/show_bug.cgi?id=547848
+            // Doesn't work in Firefox for more than a decade: https://bugzilla.mozilla.org/show_bug.cgi?id=547848
             const color = this.documentRef.queryCommandValue('backColor');
 
             // Number in IE
@@ -440,14 +444,6 @@ export class TuiToolbarComponent {
 
     enabled(tool: TuiEditorTool): boolean {
         return this.tools.indexOf(tool) !== -1;
-    }
-
-    foreColorActive(color: string): boolean {
-        return this.foreColor === color;
-    }
-
-    hiliteColorActive(color: string): boolean {
-        return this.hiliteColor === color;
     }
 
     undo() {

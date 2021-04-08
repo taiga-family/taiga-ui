@@ -430,6 +430,7 @@
         #color
         class="wrapper"
         [content]="colorDropdown"
+        [tuiDropdownMaxHeight]="999"
     >
         <button
             #button
@@ -450,114 +451,14 @@
             (keydown.arrowRight.prevent)="onArrowRight()"
         ></button>
         <div class="plate" [style.background]="foreColor"></div>
-        <ng-template #colorDropdown>
-            <div #dropdown class="dropdown">
-                <div>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Текст"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_text"
-                        [class.color_active]="foreColorBlank"
-                        (click)="setForeColor('#333')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Белый"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_white"
-                        [class.color_active]="foreColorActive('rgb(255, 255, 255)')"
-                        (click)="setForeColor('#fff')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Primary"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_primary"
-                        [class.color_active]="foreColorActive('rgb(82, 110, 211)')"
-                        (click)="setForeColor('#526ed3')"
-                    ></button>
-                </div>
-                <div>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Pinkie"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_pinkie"
-                        [class.color_active]="foreColorActive('rgb(255, 120, 167)')"
-                        (click)="setForeColor('#ff78a7')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Amethyst"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_amethyst"
-                        [class.color_active]="foreColorActive('rgb(188, 113, 201)')"
-                        (click)="setForeColor('#bc71c9')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Helio"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_helio"
-                        [class.color_active]="foreColorActive('rgb(163, 129, 255)')"
-                        (click)="setForeColor('#a381ff')"
-                    ></button>
-                </div>
-                <div>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Picton"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_picton"
-                        [class.color_active]="foreColorActive('rgb(77, 195, 247)')"
-                        (click)="setForeColor('#4dc3f7')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Puerto Rico"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_puertorico"
-                        [class.color_active]="foreColorActive('rgb(79, 189, 178)')"
-                        (click)="setForeColor('#4fbdb2')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Feijoa"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_feijoa"
-                        [class.color_active]="foreColorActive('rgb(174, 213, 127)')"
-                        (click)="setForeColor('#aed57f')"
-                    ></button>
-                </div>
-            </div>
+        <ng-template #colorDropdown let-activeZone>
+            <tui-color-selector
+                class="color-picker"
+                [tuiActiveZoneParent]="activeZone"
+                [colors]="colors"
+                [color]="foreColor"
+                (colorChange)="setForeColor($event)"
+            ></tui-color-selector>
         </ng-template>
     </tui-hosted-dropdown>
     <!-- @bad TODO: Keyboard navigation-->
@@ -566,6 +467,7 @@
         #hilite
         class="wrapper"
         [content]="hiliteDropdown"
+        [tuiDropdownMaxHeight]="999"
     >
         <button
             #button
@@ -590,115 +492,14 @@
             class="plate"
             [style.background]="hiliteColor"
         ></div>
-        <ng-template #hiliteDropdown>
-            <div #dropdown class="dropdown">
-                <div>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Transparent"
-                        icon="tuiIconTransparentLarge"
-                        shape="rounded"
-                        appearance="icon"
-                        class="color"
-                        [class.color_active]="hiliteColorBlank"
-                        (click)="setHiliteColor('transparent')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Primary"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_primary"
-                        [class.color_active]="hiliteColorActive('rgb(82, 110, 211)')"
-                        (click)="setHiliteColor('#526ed3')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Tan"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_tan"
-                        [class.color_active]="hiliteColorActive('rgb(248, 163, 77)')"
-                        (click)="setHiliteColor('#f8a34d')"
-                    ></button>
-                </div>
-                <div>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Pinkie"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_pinkie"
-                        [class.color_active]="hiliteColorActive('rgb(255, 120, 167)')"
-                        (click)="setHiliteColor('#ff78a7')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Amethyst"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_amethyst"
-                        [class.color_active]="hiliteColorActive('rgb(188, 113, 201)')"
-                        (click)="setHiliteColor('#bc71c9')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Helio"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_helio"
-                        [class.color_active]="hiliteColorActive('rgb(163, 129, 255)')"
-                        (click)="setHiliteColor('#a381ff')"
-                    ></button>
-                </div>
-                <div>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Picton"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_picton"
-                        [class.color_active]="hiliteColorActive('rgb(77, 195, 247)')"
-                        (click)="setHiliteColor('#4dc3f7')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Puerto Rico"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_puertorico"
-                        [class.color_active]="hiliteColorActive('rgb(79, 189, 178)')"
-                        (click)="setHiliteColor('#4fbdb2')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="xs"
-                        tuiHint="Color: Feijoa"
-                        appearance="icon"
-                        shape="rounded"
-                        class="color color_feijoa"
-                        [class.color_active]="hiliteColorActive('rgb(174, 213, 127)')"
-                        (click)="setHiliteColor('#aed57f')"
-                    ></button>
-                </div>
-            </div>
+        <ng-template #hiliteDropdown let-activeZone>
+            <tui-color-selector
+                class="color-picker"
+                [tuiActiveZoneParent]="activeZone"
+                [colors]="colors"
+                [color]="hiliteColor"
+                (colorChange)="setHiliteColor($event)"
+            ></tui-color-selector>
         </ng-template>
     </tui-hosted-dropdown>
 </div>

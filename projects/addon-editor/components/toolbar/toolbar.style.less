@@ -54,57 +54,6 @@
     pointer-events: none;
 }
 
-.color {
-    width: 24px;
-    height: 24px;
-    margin: 6px 4px;
-
-    &_active {
-        box-shadow: 0 0 0 2px var(--tui-base-01), 0 0 0 4px var(--tui-text-03);
-    }
-
-    &_text {
-        background: var(--tui-text-01);
-    }
-
-    &_white {
-        background: var(--tui-base-01);
-        box-shadow: inset 0 0 0 1px var(--tui-text-03);
-    }
-
-    &_primary {
-        background: var(--tui-primary);
-    }
-
-    &_tan {
-        background: var(--tui-support-07);
-    }
-
-    &_pinkie {
-        background: var(--tui-support-13);
-    }
-
-    &_amethyst {
-        background: var(--tui-support-09);
-    }
-
-    &_helio {
-        background: var(--tui-support-10);
-    }
-
-    &_picton {
-        background: var(--tui-support-02);
-    }
-
-    &_puertorico {
-        background: var(--tui-support-15);
-    }
-
-    &_feijoa {
-        background: var(--tui-support-19);
-    }
-}
-
 .font {
     padding: 0.3em 0;
     outline: none;
@@ -119,6 +68,13 @@
     cursor: pointer;
 
     &::-webkit-file-upload-button {
+        display: none;
+    }
+}
+
+// TODO: remove when gradient is made optional
+.color-picker {
+    ::ng-deep > tui-hosted-dropdown {
         display: none;
     }
 }
