@@ -116,7 +116,7 @@ export class TuiHintBoxComponent {
         }
 
         if (!this.hint) {
-            throw new Error('Hint directive is missing');
+            return;
         }
 
         const hostRect = this.hint.getElementClientRect();
