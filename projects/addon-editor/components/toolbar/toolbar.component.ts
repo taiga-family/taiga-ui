@@ -482,7 +482,6 @@ export class TuiToolbarComponent {
     }
 
     setHiliteColor(color: string) {
-        console.log(color);
         this.focusEditor();
         this.documentRef.execCommand('hiliteColor', false, color);
     }
