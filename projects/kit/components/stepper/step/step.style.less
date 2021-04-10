@@ -14,8 +14,8 @@
     counter-increment: steps;
 
     &:disabled {
-        opacity: var(--tui-disabled-opacity);
         pointer-events: none;
+        color: var(--tui-base-07);
     }
 
     &:hover {
@@ -56,6 +56,11 @@
     justify-content: center;
     background: var(--tui-secondary);
     color: var(--tui-link);
+
+    :host:disabled & {
+        background: var(--tui-base-03);
+        color: var(--tui-base-07);
+    }
 
     &_index {
         &:before {
