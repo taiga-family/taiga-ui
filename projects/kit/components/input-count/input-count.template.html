@@ -11,7 +11,7 @@
     [postfix]="postfix"
     [disabled]="disabled"
     [readOnly]="readOnly"
-    [textMask]="textMaskOptions"
+    [textMask]="mask(min < 0)"
     [invalid]="computedInvalid"
     [value]="computedValue"
     (valueChange)="onValueChange()"

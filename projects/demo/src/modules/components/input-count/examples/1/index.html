@@ -12,4 +12,18 @@
             [step]="100"
         ></tui-input-count>
     </label>
+
+    <label
+        tuiLabel
+        class="tui-space_top-4"
+        i18n-label
+        label="Also works with negative values"
+    >
+        <tui-input-count
+            formControlName="testValue3"
+            [tuiTextfieldLabelOutside]="true"
+            [min]="-100"
+            [max]="100"
+        ></tui-input-count>
+    </label>
 </form>

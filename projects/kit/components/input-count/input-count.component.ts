@@ -22,6 +22,7 @@ import {
     TUI_IS_MOBILE,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     formatNumber,
@@ -75,10 +76,10 @@ export class TuiInputCountComponent
     @tuiDefaultProp()
     postfix = '';
 
-    readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: tuiCreateNumberMask(),
-        guide: false,
-    };
+    @tuiPure
+    mask(allowNegative: boolean): TuiTextMaskOptions {
+        return {mask: tuiCreateNumberMask({allowNegative}), guide: false};
+    }
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;

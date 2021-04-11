@@ -139,6 +139,37 @@ describe('InputCount', () => {
             });
         });
 
+        describe('Negative range is set', () => {
+            beforeEach(() => {
+                testComponent.defaultStep = true;
+                testComponent.control.setValue(-17);
+                testComponent.min = -100;
+                testComponent.max = -10;
+                fixture.detectChanges();
+            });
+
+            it('Pressing the plus increases the value by 1', done => {
+                clickPlusButton();
+
+                // Should wait for the mask updating
+                fixture.whenStable().then(() => {
+                    expect(inputPO.value).toBe('-16');
+                    expect(testComponent.control.value).toBe(-16);
+                    done();
+                });
+            });
+
+            it('Pressing the minus decreases the value by 1', done => {
+                clickMinusButton();
+
+                fixture.whenStable().then(() => {
+                    expect(inputPO.value).toBe('-18');
+                    expect(testComponent.control.value).toBe(-18);
+                    done();
+                });
+            });
+        });
+
         describe('A step other than 1 is set', () => {
             beforeEach(() => {
                 testComponent.customStep = true;
@@ -262,6 +293,15 @@ describe('InputCount', () => {
                 done();
             });
         });
+
+        it('Entering in the field negative value changes the valuecontrol correctly', () => {
+            testComponent.min = -100;
+            fixture.detectChanges();
+
+            inputPO.sendText('-12');
+
+            expect(testComponent.control.value).toBe(-12);
+        });
     });
 
     describe('Changing the value using the arrows on the keyboard', () => {
@@ -302,6 +342,36 @@ describe('InputCount', () => {
 
             expect(inputPO.value).toBe('2');
             expect(testComponent.control.value).toBe(2);
+        });
+
+        it('Pressing the up arrow increases the negative value by the specified step', done => {
+            testComponent.control.setValue(-10);
+            testComponent.step = 5;
+            testComponent.min = -20;
+            testComponent.max = 17;
+            fixture.detectChanges();
+            clickPlusButton();
+
+            fixture.whenStable().then(() => {
+                expect(inputPO.value).toBe('-5');
+                expect(testComponent.control.value).toBe(-5);
+                done();
+            });
+        });
+
+        it('Pressing the down arrow decreases the negative value by the specified step', done => {
+            testComponent.control.setValue(-10);
+            testComponent.step = 5;
+            testComponent.min = -20;
+            testComponent.max = 17;
+            fixture.detectChanges();
+            clickMinusButton();
+
+            fixture.whenStable().then(() => {
+                expect(inputPO.value).toBe('-15');
+                expect(testComponent.control.value).toBe(-15);
+                done();
+            });
         });
     });
 
