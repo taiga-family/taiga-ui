@@ -3,6 +3,10 @@
     tuiHintDirection="top-left"
     class="wrapper"
     [class.wrapper_hoverable]="hasHint"
+    [tuiHintHost]="hintHost"
+    [tuiHintId]="getHintId(index)"
+    [tuiHint]="getHint(hint)"
+    [tuiHintMode]="hintMode"
 >
     <div class="container" [style.height.%]="getPercent(set)">
         <div #hintHost class="host"></div>
