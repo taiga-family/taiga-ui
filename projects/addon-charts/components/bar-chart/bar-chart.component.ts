@@ -8,9 +8,9 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiHintMode} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {TuiHintMode} from '@taiga-ui/core';
 
 export function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
     const valid = value.every(array => array.length === value[0].length);
