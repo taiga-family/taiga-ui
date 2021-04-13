@@ -166,6 +166,9 @@ export class TuiInputTagComponent
     @ViewChild('cleaner', {read: ElementRef})
     private readonly cleanerSvg?: ElementRef<HTMLElement>;
 
+    @ViewChild('scrollBar', {read: ElementRef})
+    private readonly scrollBar?: ElementRef<HTMLElement>;
+
     constructor(
         @Optional()
         @Self()
@@ -339,43 +342,32 @@ export class TuiInputTagComponent
             return;
         }
 
-        const tag = this.tags.find((_item, index) => index === currentIndex - 1);
-
-        if (tag) {
-            const parentTag =
-                tag.nativeElement.parentElement?.parentElement?.parentElement;
-
-            tag.nativeElement.focus({preventScroll: true});
-
-            if (
-                tag.nativeElement.offsetLeft <
-                (parentTag?.clientWidth || 0) + tag.nativeElement.clientWidth
-            ) {
-                parentTag?.scrollBy(-tag.nativeElement.clientWidth, 0);
-            }
-        }
+        this.onScrollKeyDown(currentIndex, -1);
     }
 
     onTagKeyDownArrowRight(currentIndex: number) {
         if (currentIndex === this.value.length - 1) {
             this.focusInput();
-
             return;
         }
 
-        const tag = this.tags.find((_item, index) => index === currentIndex + 1);
+        this.onScrollKeyDown(currentIndex, 1);
+    }
 
-        if (tag) {
-            const parentTag =
-                tag.nativeElement.parentElement?.parentElement?.parentElement;
+    onScrollKeyDown(currentIndex: number, flag: number) {
+        const tag = this.tags.find((_item, index) => index === currentIndex + flag);
 
-            tag.nativeElement.focus({preventScroll: true});
+        if (tag && this.scrollBar) {
+            setNativeFocused(tag.nativeElement);
 
             if (
-                (parentTag?.clientWidth || 0) <
-                tag.nativeElement.offsetLeft + tag.nativeElement.clientWidth
+                flag * this.scrollBar.nativeElement.clientWidth -
+                    flag * tag.nativeElement.offsetLeft -
+                    tag.nativeElement.clientWidth <
+                0
             ) {
-                parentTag?.scrollBy(tag.nativeElement.clientWidth, 0);
+                this.scrollBar.nativeElement.scrollLeft +=
+                    flag * tag.nativeElement.clientWidth;
             }
         }
     }
