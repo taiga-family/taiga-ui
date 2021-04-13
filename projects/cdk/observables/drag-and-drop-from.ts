@@ -1,6 +1,6 @@
 import {isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {concat, merge, Observable} from 'rxjs';
-import {endWith, first, map, repeat, takeWhile} from 'rxjs/operators';
+import {endWith, map, repeat, take, takeWhile} from 'rxjs/operators';
 import {mouseDragFinishFrom} from './mouse-drag-finish-from';
 import {typedFromEvent} from './typed-from-event';
 
@@ -23,7 +23,7 @@ export function dragAndDropFrom(element: Element): Observable<TuiDragState> {
 
     return concat(
         typedFromEvent(element, 'mousedown').pipe(
-            first(),
+            take(1),
             map(event => new TuiDragState(TuiDragStage.Start, event)),
         ),
         merge(
@@ -31,9 +31,9 @@ export function dragAndDropFrom(element: Element): Observable<TuiDragState> {
                 map(event => new TuiDragState(TuiDragStage.Continues, event)),
             ),
             mouseDragFinishFrom(ownerDocument).pipe(
-                first(),
+                take(1),
                 map(event => new TuiDragState(TuiDragStage.End, event)),
-                endWith<TuiDragState | null>(null),
+                endWith(null),
             ),
         ).pipe(takeWhile(isPresent)),
     ).pipe(repeat());

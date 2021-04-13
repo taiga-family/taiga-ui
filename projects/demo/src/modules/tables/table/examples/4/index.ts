@@ -146,7 +146,7 @@ export class TuiTableExample4 {
     }
 
     isMatch(value: unknown): boolean {
-        return TUI_DEFAULT_MATCHER(value, this.search);
+        return !!this.search && TUI_DEFAULT_MATCHER(value, this.search);
     }
 
     getAge(user: User): number {

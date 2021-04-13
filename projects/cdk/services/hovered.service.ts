@@ -31,7 +31,7 @@ export class TuiHoveredService {
 
     createHovered$(
         target: Element,
-        options: AddEventListenerOptions = {},
+        options: AddEventListenerOptions = {passive: true},
     ): Observable<boolean> {
         return merge(
             typedFromEvent(target, 'mouseenter', options),

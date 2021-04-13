@@ -27,7 +27,7 @@ export function pullingFactory(
     destroy$: Observable<void>,
 ): Observable<number> {
     return merge(
-        typedFromEvent(nativeElement, 'touchstart').pipe(
+        typedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(
             filter(() => nativeElement.scrollTop === 0),
             switchMap(touchStart =>
                 typedFromEvent(nativeElement, 'touchmove').pipe(

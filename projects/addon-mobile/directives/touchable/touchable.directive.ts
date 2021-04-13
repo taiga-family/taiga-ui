@@ -39,7 +39,7 @@ export class TuiTouchableDirective {
 
         const element = elementRef ? elementRef.nativeElement : nativeElement;
 
-        typedFromEvent(element, 'touchstart')
+        typedFromEvent(element, 'touchstart', {passive: true})
             .pipe(
                 tap(() => {
                     this.onTouchStart(renderer, element);
@@ -47,7 +47,7 @@ export class TuiTouchableDirective {
                 map(({touches}) => touches[touches.length - 1].identifier),
                 switchMap(identifier =>
                     race(
-                        typedFromEvent(element, 'touchmove').pipe(
+                        typedFromEvent(element, 'touchmove', {passive: true}).pipe(
                             filter(({touches}) =>
                                 this.hasTouchLeft(element, touches, identifier),
                             ),
