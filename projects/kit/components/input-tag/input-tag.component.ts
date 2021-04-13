@@ -348,6 +348,7 @@ export class TuiInputTagComponent
     onTagKeyDownArrowRight(currentIndex: number) {
         if (currentIndex === this.value.length - 1) {
             this.focusInput();
+
             return;
         }
 
