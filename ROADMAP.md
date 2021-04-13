@@ -7,14 +7,14 @@
 -   [x] addon-table
 -   [x] i18n package
 -   [x] Night theme
--   [x] Demo portal improvments (customization guides, edit on Stackblitz, night mode)
+-   [x] Demo portal improvements (customization guides, edit on Stackblitz, night mode)
 
 ### Q2
 
 -   [ ] Expand components customization with DI tokens
 -   [ ] Progress component
--   [ ] addon-editor (WYSIWYG) improvments
--   [ ] Investigate localization such as date, number formating, rtl languages
+-   [ ] addon-editor (WYSIWYG) improvements
+-   [ ] Investigate localization such as date, number formatting, rtl languages
 
 ### Q3
 
