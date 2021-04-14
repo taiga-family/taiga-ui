@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     forwardRef,
+    HostListener,
     Inject,
     Injector,
     Input,
@@ -190,13 +191,8 @@ export class TuiInputDateComponent
         return (value && this.items.find(item => item.day.daySame(value))) || null;
     }
 
-    onItemClick({day}: TuiNamedDay) {
-        this.updateValue(day);
-        this.open = false;
-    }
-
-    onClick() {
-        if (!this.isMobile || !this.mobileCalendar) {
+    onMobileClick() {
+        if (!this.mobileCalendar) {
             this.open = !this.open;
 
             return;
@@ -217,6 +213,13 @@ export class TuiInputDateComponent
             .subscribe(value => {
                 this.updateValue(value);
             });
+    }
+
+    @HostListener('click')
+    onClick() {
+        if (!this.isMobile) {
+            this.open = !this.open;
+        }
     }
 
     onValueChange(value: string) {

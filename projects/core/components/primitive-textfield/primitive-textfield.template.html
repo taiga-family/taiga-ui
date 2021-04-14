@@ -1,5 +1,6 @@
 <tui-wrapper
     automation-id="tui-primitive-textfield__wrapper"
+    tuiPreventDefault="click"
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="disabled"
@@ -44,7 +45,7 @@
     >
         <ng-content select="[polymorpheus-outlet]"></ng-content>
     </div>
-    <div class="content" tuiPreventDefault="click">
+    <div class="content">
         <div
             polymorpheus-outlet
             *ngIf="iconAlignLeft"

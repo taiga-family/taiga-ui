@@ -24,7 +24,6 @@
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
         (pressedChange)="onPressed($event)"
-        (click.prevent)="onClick()"
     >
         <ng-content></ng-content>
     </tui-primitive-textfield>
@@ -32,9 +31,9 @@
     <ng-template #iconContent>
         <tui-svg
             automation-id="tui-input-date-range__icon"
-            class="icon"
+            [class.icon]="!computedDisabled"
             [src]="calendarIcon"
-            (click.prevent)="onClick()"
+            (click)="onMobileClick()"
         ></tui-svg>
     </ng-template>
 
