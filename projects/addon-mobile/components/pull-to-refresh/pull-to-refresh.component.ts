@@ -52,12 +52,10 @@ export class TuiPullToRefreshComponent {
     get contentTransform$(): Observable<string | null> {
         return this.isIOS
             ? this.pulling$.pipe(
-                  map(distance => {
-                      const contentDistance =
-                          distance === PULLED_DISTANCE ? IOS_LOADING_DISTANCE : distance;
-
-                      return translateY(contentDistance);
-                  }),
+                  map(distance =>
+                      distance === PULLED_DISTANCE ? IOS_LOADING_DISTANCE : distance,
+                  ),
+                  map(translateY),
               )
             : of(null);
     }
