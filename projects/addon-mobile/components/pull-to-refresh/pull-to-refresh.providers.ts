@@ -41,13 +41,14 @@ export function pullingFactory(
         loaded$.pipe(mapTo(NaN)),
     ).pipe(
         scan((max, current) => {
-            const androidLoading = !isIOS && max === PULLED_DISTANCE && !isNaN(current);
-
-            if (androidLoading || (current === 0 && max > PULLED_DISTANCE)) {
-                return PULLED_DISTANCE;
+            if (isNaN(current)) {
+                return 0;
             }
 
-            return !isNaN(current) ? current + MICRO_OFFSET : 0;
+            const androidLoading = !isIOS && max === PULLED_DISTANCE;
+            const dropped = current === 0 && max > PULLED_DISTANCE;
+
+            return androidLoading || dropped ? PULLED_DISTANCE : current + MICRO_OFFSET;
         }, 0),
     );
 }
