@@ -816,6 +816,18 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Tools`,
+        title: $localize`Tokens`,
+        subPages: [
+            {
+                section: $localize`Tools`,
+                title: 'TUI_DEFAULT_RENDERER',
+                keywords: 'токен, token',
+                route: '/tokens/default-renderer',
+            },
+        ],
+    },
+    {
+        section: $localize`Tools`,
         title: $localize`Directives`,
         subPages: [
             {

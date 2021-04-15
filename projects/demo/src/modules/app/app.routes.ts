@@ -1412,6 +1412,17 @@ export const ROUTES = [
             title: 'RequiredSetter',
         },
     },
+    // TOKENS
+    {
+        path: 'tokens/default-renderer',
+        loadChildren: () =>
+            import(`../tokens/default-renderer/default-renderer.module`).then(
+                m => m.ExampleTuiDefaultRendererModule,
+            ),
+        data: {
+            title: 'DefaultRenderer',
+        },
+    },
     // UTILS
     {
         path: 'utils/math',
