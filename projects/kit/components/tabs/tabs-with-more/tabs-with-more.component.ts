@@ -95,7 +95,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     get maxIndex(): number {
-        if (this.itemsLimit > this.items.length) {
+        if (this.itemsLimit + 1 >= this.items.length) {
             return this.lastVisibleIndex;
         }
 
@@ -162,43 +162,38 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     private getLastVisibleIndex(): number {
-        const {tabs, elementRef, activeItemIndex} = this;
+        const {tabs, activeItemIndex} = this;
 
-        if (!tabs.length) {
+        if (tabs.length < 2) {
             return 0;
         }
 
-        const filtered = tabs.filter(
-            (tab, index) => tab.scrollWidth && index !== tabs.length - 1,
-        );
-        const last = filtered[filtered.length - 1];
-        const moreWidth = tabs[tabs.length - 1].scrollWidth;
+        const {clientWidth} = this.elementRef.nativeElement;
         const activeWidth = tabs[activeItemIndex] ? tabs[activeItemIndex].scrollWidth : 0;
-        const width =
-            elementRef.nativeElement.clientWidth - moreWidth - activeWidth - TAB_MARGIN;
-        let accumulatedWidth = 0;
-        let lastVisibleIndex = 0;
+        const moreWidth = tabs[tabs.length - 1].scrollWidth;
+        let lastVisibleIndex = tabs.length - 2;
+        let total =
+            tabs.reduce((acc, tab) => acc + tab.scrollWidth, 0) +
+            lastVisibleIndex * TAB_MARGIN -
+            moreWidth;
 
-        for (let tabIndex = 0; tabIndex < tabs.length - 1; tabIndex++) {
-            if (tabIndex === activeItemIndex) {
-                lastVisibleIndex = tabIndex;
-                continue;
-            }
-
-            accumulatedWidth +=
-                tabs[tabIndex] === last
-                    ? tabs[tabIndex].scrollWidth - moreWidth - TAB_MARGIN
-                    : tabs[tabIndex].scrollWidth;
-
-            if (accumulatedWidth > width) {
-                return lastVisibleIndex;
-            }
-
-            accumulatedWidth += TAB_MARGIN * Math.min(tabs[tabIndex].scrollWidth, 1);
-            lastVisibleIndex = tabIndex;
+        if (total <= clientWidth) {
+            return Infinity;
         }
 
-        return Infinity;
+        while (lastVisibleIndex) {
+            total -= tabs[lastVisibleIndex].scrollWidth + TAB_MARGIN;
+            lastVisibleIndex--;
+
+            const activeOffset =
+                activeItemIndex > lastVisibleIndex ? activeWidth + TAB_MARGIN : 0;
+
+            if (total + activeOffset + moreWidth + TAB_MARGIN < clientWidth) {
+                return lastVisibleIndex;
+            }
+        }
+
+        return 0;
     }
 
     private updateActiveItemIndex(activeItemIndex: number) {
