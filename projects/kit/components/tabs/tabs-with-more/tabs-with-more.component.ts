@@ -62,7 +62,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     @ContentChildren(TuiTabDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<{}>> = EMPTY_QUERY;
 
-    opened = false;
+    open = false;
 
     private lastVisibleIndex = Infinity;
 
@@ -95,13 +95,13 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     get maxIndex(): number {
-        const {length} = this.items;
-        const capped = this.itemsLimit + 1 < length ? this.itemsLimit - 1 : length;
+        if (this.itemsLimit > this.items.length) {
+            return this.lastVisibleIndex;
+        }
 
-        return Math.min(
-            capped > this.activeItemIndex ? capped : capped - 1,
-            this.lastVisibleIndex,
-        );
+        const offset = this.itemsLimit - 1 > this.activeItemIndex ? 1 : 2;
+
+        return Math.min(this.itemsLimit - offset, this.lastVisibleIndex);
     }
 
     ngAfterViewInit() {
@@ -121,7 +121,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     onClick(index: number) {
-        this.opened = false;
+        this.open = false;
         this.focusMore();
         this.updateActiveItemIndex(index);
     }
