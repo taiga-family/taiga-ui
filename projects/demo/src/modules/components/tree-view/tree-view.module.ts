@@ -1,8 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiTreeViewModule} from '@taiga-ui/kit';
 import {TuiTreeViewExample1} from './examples/1';
 import {ExampleTuiTreeViewComponent} from './tree-view.component';
@@ -10,9 +10,8 @@ import {ExampleTuiTreeViewComponent} from './tree-view.component';
 @NgModule({
     imports: [
         TuiTreeViewModule,
+        TuiSvgModule,
         CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiTreeViewComponent)),
     ],

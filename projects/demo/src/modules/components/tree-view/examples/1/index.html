@@ -1,0 +1,16 @@
+<tui-tree-view
+    class="custom"
+    [value]="data"
+    [content]="content"
+></tui-tree-view>
+<ng-template #content let-value>
+    <div class="wrapper">
+        <tui-svg
+            *ngIf="value.icon"
+            class="tui-space_right-2"
+            [attr.data-level]="value.level"
+            [src]="value.icon"
+        ></tui-svg>
+        {{value.text}}
+    </div>
+</ng-template>
