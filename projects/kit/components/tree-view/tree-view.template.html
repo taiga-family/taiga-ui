@@ -1,9 +1,9 @@
 <ng-container *ngIf="isArray; else itemView">
-    <tree-view
+    <tui-tree-view
         *ngFor="let item of value"
         [content]="content"
         [value]="item"
-    ></tree-view>
+    ></tui-tree-view>
 </ng-container>
 <ng-template #itemView>
     <div

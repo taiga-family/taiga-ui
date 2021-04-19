@@ -1,0 +1,32 @@
+tui-tree-view.custom,
+tui-tree-view.custom tui-tree-view {
+    &._array:not(:last-child):not(:first-of-type)::before {
+        content: '';
+        position: absolute;
+        top: -1.2em;
+        left: -20px;
+        width: 10px;
+        bottom: 0.6em;
+        border-left: 1px solid;
+    }
+
+    &:not(._array)::before {
+        content: '';
+        position: absolute;
+        left: -20px;
+        width: 10px;
+        bottom: 0.6em;
+        height: 100%;
+        border-left: 1px solid;
+        border-bottom: 1px solid;
+    }
+}
+
+tui-tree-view.custom .wrapper {
+    display: flex;
+    align-items: center;
+}
+
+tui-tree-view.custom tui-svg[data-level='2'] {
+    color: red;
+}
