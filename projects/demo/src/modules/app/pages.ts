@@ -889,6 +889,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'Overscroll',
+                keywords: 'overscroll, scroll, скролл',
+                route: '/directives/overscroll',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'PointerHint',
                 keywords: 'tooltip, тултип, hint, подсказка, помощь, help, хинт, курсор',
                 route: '/directives/pointer-hint',
