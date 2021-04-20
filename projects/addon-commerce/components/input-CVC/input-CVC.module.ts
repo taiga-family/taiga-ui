@@ -4,6 +4,7 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiValueAccessorModule} from '@taiga-ui/kit';
 import {TextMaskModule} from 'angular2-text-mask';
 import {TuiInputCVCComponent} from './input-CVC.component';
 
@@ -13,6 +14,7 @@ import {TuiInputCVCComponent} from './input-CVC.component';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
+        TuiValueAccessorModule,
     ],
     declarations: [TuiInputCVCComponent],
     exports: [TuiInputCVCComponent],

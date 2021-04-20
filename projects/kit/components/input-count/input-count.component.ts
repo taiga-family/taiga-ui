@@ -77,7 +77,7 @@ export class TuiInputCountComponent
     postfix = '';
 
     @tuiPure
-    mask(allowNegative: boolean): TuiTextMaskOptions {
+    getMask(allowNegative: boolean): TuiTextMaskOptions {
         return {mask: tuiCreateNumberMask({allowNegative}), guide: false};
     }
 
