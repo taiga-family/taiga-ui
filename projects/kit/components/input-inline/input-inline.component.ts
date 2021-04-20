@@ -11,17 +11,16 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import {NG_VALUE_ACCESSOR, NgControl} from '@angular/forms';
+import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    identity,
     isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core';
+import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-input-inline',
@@ -29,14 +28,10 @@ import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core';
     styleUrls: ['./input-inline.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        TUI_VALUE_ACCESSOR_PROVIDER,
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputInlineComponent),
-        },
-        {
-            provide: TUI_VALUE_ACCESSOR,
-            deps: [[new Optional(), NG_VALUE_ACCESSOR]],
-            useFactory: identity,
         },
     ],
 })

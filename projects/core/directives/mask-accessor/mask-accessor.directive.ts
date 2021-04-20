@@ -1,4 +1,4 @@
-import {Directive} from '@angular/core';
+import {Directive, Optional} from '@angular/core';
 import {
     ControlValueAccessor,
     DefaultValueAccessor,
@@ -18,7 +18,7 @@ export function fallbackAccessorFactory(
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            deps: [TUI_VALUE_ACCESSOR, DefaultValueAccessor],
+            deps: [[new Optional(), TUI_VALUE_ACCESSOR], DefaultValueAccessor],
             useFactory: fallbackAccessorFactory,
             multi: true,
         },

@@ -22,6 +22,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
+    TUI_VALUE_ACCESSOR_PROVIDER,
     TuiDirection,
     TuiHintMode,
     TuiPrimitiveTextfieldComponent,
@@ -39,6 +40,7 @@ import {mapTo, startWith, switchMap} from 'rxjs/operators';
     styleUrls: ['./input-copy.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        TUI_VALUE_ACCESSOR_PROVIDER,
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputCopyComponent),
