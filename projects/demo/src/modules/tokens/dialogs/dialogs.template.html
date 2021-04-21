@@ -1,0 +1,26 @@
+<tui-doc-page header="TUI_DIALOGS" package="CDK" path="cdk/tokens/dialogs.ts">
+    <ng-template i18n pageTab>
+        A multi token of <code>Observables</code> of modal dialogs displayed by
+        <a tuiLink routerLink="/dialog"><code>TuiDialogHostComponent</code></a
+        >.<br />
+        You can create your own service extending<a
+            tuiLink
+            routerLink="/services/dialog-service"
+            ><code>AbstractTuiDialogService</code></a
+        >
+        to easily add modal dialogs to your application.
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>Inject token into your component:</p>
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -4,10 +4,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
-    selector: 'example-tui-default-renderer',
-    templateUrl: './default-renderer.template.html',
+    selector: 'example-tui-is-android',
+    templateUrl: './is-android.template.html',
     changeDetection,
 })
-export class ExampleTuiDefaultRendererComponent {
+export class ExampleTuiIsAndroidComponent {
     readonly exampleInsertTemplate = exampleInsertTemplate;
 }

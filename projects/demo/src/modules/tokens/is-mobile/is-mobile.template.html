@@ -1,17 +1,17 @@
 <tui-doc-page
-    header="TUI_DEFAULT_RENDERER"
+    header="TUI_IS_MOBILE"
     package="CDK"
-    path="cdk/tokens/default-renderer.ts"
+    path="cdk/tokens/is-mobile.ts"
 >
     <ng-template i18n pageTab>
-        Inject this token if you need access to Renderer inside a singleton
-        service.
+        A token with a factory. It takes <code>USER_AGENT</code> token and
+        parses it with a complex Regex to detect users with mobile devices
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>Inject token into your component:</p>
+                <p i18n>Use token:</p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"

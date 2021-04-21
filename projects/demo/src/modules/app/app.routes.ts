@@ -1423,6 +1423,62 @@ export const ROUTES = [
             title: 'DefaultRenderer',
         },
     },
+    {
+        path: 'tokens/dialogs',
+        loadChildren: () =>
+            import(`../tokens/dialogs/dialogs.module`).then(
+                m => m.ExampleTuiDialogsModule,
+            ),
+        data: {
+            title: 'Dialogs',
+        },
+    },
+    {
+        path: 'tokens/focusable-item-accessor',
+        loadChildren: () =>
+            import(
+                `../tokens/focusable-item-accessor/focusable-item-accessor.module`
+            ).then(m => m.ExampleTuiFocusableItemAccessorModule),
+        data: {
+            title: 'FocusableItemAccessor',
+        },
+    },
+    {
+        path: 'tokens/is-android',
+        loadChildren: () =>
+            import(`../tokens/is-android/is-android.module`).then(
+                m => m.ExampleTuiIsAndroidModule,
+            ),
+        data: {
+            title: 'IsAndroid',
+        },
+    },
+    {
+        path: 'tokens/is-ios',
+        loadChildren: () =>
+            import(`../tokens/is-ios/is-ios.module`).then(m => m.ExampleTuiIsIOSModule),
+        data: {
+            title: 'IsIOS',
+        },
+    },
+    {
+        path: 'tokens/is-mobile',
+        loadChildren: () =>
+            import(`../tokens/is-mobile/is-mobile.module`).then(
+                m => m.ExampleTuiIsMobileModule,
+            ),
+        data: {
+            title: 'IsMobile',
+        },
+    },
+    {
+        path: 'tokens/months',
+        loadChildren: () =>
+            import(`../tokens/months/months.module`).then(m => m.ExampleTuiMonthsModule),
+        data: {
+            title: 'Months',
+        },
+    },
     // UTILS
     {
         path: 'utils/math',

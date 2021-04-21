@@ -816,18 +816,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Tools`,
-        title: $localize`Tokens`,
-        subPages: [
-            {
-                section: $localize`Tools`,
-                title: 'TUI_DEFAULT_RENDERER',
-                keywords: 'токен, token',
-                route: '/tokens/default-renderer',
-            },
-        ],
-    },
-    {
-        section: $localize`Tools`,
         title: $localize`Directives`,
         subPages: [
             {
@@ -1057,6 +1045,54 @@ export const pages: TuiDocPages = [
                 keywords:
                     'молекула, уведомление, нотификация, бабл, облачко, alert, table, bar',
                 route: '/services/table-bars-service',
+            },
+        ],
+    },
+    {
+        section: $localize`Tools`,
+        title: $localize`Tokens`,
+        subPages: [
+            {
+                section: $localize`Tools`,
+                title: 'TUI_DEFAULT_RENDERER',
+                keywords: 'токен, token',
+                route: '/tokens/default-renderer',
+            },
+            {
+                section: $localize`Tools`,
+                title: 'TUI_DIALOGS',
+                keywords: 'токен, token',
+                route: '/tokens/dialogs',
+            },
+            {
+                section: $localize`Tools`,
+                title: 'TUI_FOCUSABLE_ITEM_ACCESSOR',
+                keywords: 'токен, token',
+                route: '/tokens/focusable-item-accessor',
+            },
+            {
+                section: $localize`Tools`,
+                title: 'TUI_IS_ANDROID',
+                keywords: 'токен, token',
+                route: '/tokens/is-android',
+            },
+            {
+                section: $localize`Tools`,
+                title: 'TUI_IS_IOS',
+                keywords: 'токен, token',
+                route: '/tokens/is-ios',
+            },
+            {
+                section: $localize`Tools`,
+                title: 'TUI_IS_MOBILE',
+                keywords: 'токен, token',
+                route: '/tokens/is-mobile',
+            },
+            {
+                section: $localize`Tools`,
+                title: 'TUI_MONTHS',
+                keywords: 'токен, token',
+                route: '/tokens/months',
             },
         ],
     },

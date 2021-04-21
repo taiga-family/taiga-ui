@@ -1,0 +1,10 @@
+import { TUI_FOCUSABLE_ITEM_ACCESSOR } from '@taiga-ui/cdk';
+    ...
+@Component({
+    providers: [
+        {
+            provide: TUI_FOCUSABLE_ITEM_ACCESSOR
+        },
+    ],
+})
+    ...

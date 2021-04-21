@@ -1,17 +1,17 @@
 <tui-doc-page
-    header="TUI_DEFAULT_RENDERER"
+    header="TUI_FOCUSABLE_ITEM_ACCESSOR"
     package="CDK"
-    path="cdk/tokens/default-renderer.ts"
+    path="cdk/tokens/focusable_item_accessor.ts"
 >
     <ng-template i18n pageTab>
-        Inject this token if you need access to Renderer inside a singleton
-        service.
+        All Taiga UI components that can be focused provide this token so you
+        can inject them into your directives that work with focus.
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>Inject token into your component:</p>
+                <p i18n>Provide token into component:</p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"

@@ -4,10 +4,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
-    selector: 'example-tui-default-renderer',
-    templateUrl: './default-renderer.template.html',
+    selector: 'example-tui-focusable-item-accessor',
+    templateUrl: './focusable-item-accessor.template.html',
     changeDetection,
 })
-export class ExampleTuiDefaultRendererComponent {
+export class ExampleTuiFocusableItemAccessorComponent {
     readonly exampleInsertTemplate = exampleInsertTemplate;
 }

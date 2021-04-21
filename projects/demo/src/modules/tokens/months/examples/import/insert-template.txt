@@ -1,0 +1,5 @@
+import {TUI_MONTHS} from '@taiga-ui/core';
+    ...
+constructor(
+    @Inject(TUI_MONTHS) private readonly months: readonly string[],
+) {}

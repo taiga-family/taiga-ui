@@ -1,3 +1,5 @@
-<tui-input-number [postfix]="826 | tuiCurrency">
-    Type a sum
-</tui-input-number>
+import { TUI_DEFAULT_RENDERER } from '@taiga-ui/cdk';
+    ...
+constructor(
+    @Inject(TUI_DEFAULT_RENDERER)
+) {}
