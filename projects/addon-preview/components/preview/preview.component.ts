@@ -93,11 +93,11 @@ export class TuiPreviewComponent {
     );
 
     // TODO: use named tuples after TS update
-    readonly wrapperTranslate$ = combineLatest(
+    readonly wrapperTranslate$ = combineLatest([
         this.drag$.pipe(startWith(null), pairwise()),
         this.zoom$,
         this.rotation$,
-    ).pipe(
+    ]).pipe(
         scan<
             [[TuiDragState | null, TuiDragState | null], number, number],
             [number, number]
@@ -139,11 +139,11 @@ export class TuiPreviewComponent {
         distinctUntilChanged(),
     );
 
-    readonly wrapperTransform$ = combineLatest(
+    readonly wrapperTransform$ = combineLatest([
         this.wrapperTranslate$,
         this.zoom$,
         this.rotation$,
-    ).pipe(
+    ]).pipe(
         map(([translate, zoom, rotation]) =>
             this.sanitizer.bypassSecurityTrustStyle(
                 `translate(${translate}) scale(${zoom}) rotate(${rotation}deg)`,

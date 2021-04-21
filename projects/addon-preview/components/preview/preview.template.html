@@ -15,7 +15,7 @@
     <ng-content></ng-content>
 </section>
 
-<section class="header">
+<header class="header">
     <div class="title">
         <ng-content select="tui-preview-title"></ng-content>
     </div>
@@ -32,9 +32,9 @@
             (click)="close()"
         ></tui-preview-action>
     </div>
-</section>
+</header>
 
-<section class="footer">
+<footer class="footer">
     <tui-preview-action
         *ngIf="rotatable"
         icon="tuiIconRotate"
@@ -51,4 +51,4 @@
         [value]="zoom$ | async"
         (valueChange)="zoom$.next($event)"
     ></tui-preview-zoom>
-</section>
+</footer>
