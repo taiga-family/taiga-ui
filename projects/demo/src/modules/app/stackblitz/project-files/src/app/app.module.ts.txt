@@ -118,7 +118,10 @@ import {
     TuiInputExpireModule,
     TuiMoneyModule,
 } from '@taiga-ui/addon-commerce';
-import {TuiColorPickerModule} from '@taiga-ui/addon-editor';
+import {
+    TuiColorPickerModule,
+    TuiColorOptionsControllerModule,
+} from '@taiga-ui/addon-editor';
 import {
     TuiElasticStickyModule,
     TuiMobileCalendarModule,
@@ -170,6 +173,7 @@ import {AppComponent} from './app.component';
         TuiCheckboxLabeledModule,
         TuiPrimitiveCheckboxModule,
         TuiColorPickerModule,
+        TuiColorOptionsControllerModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiHostedDropdownModule,
