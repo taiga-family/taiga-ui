@@ -107,7 +107,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     ngAfterViewInit() {
         this.refresh$
             .pipe(
-                map(() => this.getLastVisibleIndex()),
+                map(() => this.getMaxIndex()),
                 filter(maxIndex => this.maxIndex !== maxIndex),
             )
             .subscribe(maxIndex => {
@@ -161,7 +161,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
     }
 
-    private getLastVisibleIndex(): number {
+    private getMaxIndex(): number {
         const {tabs, activeItemIndex} = this;
 
         if (tabs.length < 2) {
@@ -203,6 +203,6 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
         this.activeItemIndex = activeItemIndex;
         this.activeItemIndexChange.emit(activeItemIndex);
-        this.maxIndex = this.getLastVisibleIndex();
+        this.maxIndex = this.getMaxIndex();
     }
 }
