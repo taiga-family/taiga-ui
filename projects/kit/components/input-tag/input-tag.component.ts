@@ -358,7 +358,7 @@ export class TuiInputTagComponent
     onScrollKeyDown(currentIndex: number, flag: number) {
         const tag = this.tags.find((_item, index) => index === currentIndex + flag);
 
-        if (!tag || !this.scrollBar) {
+        if (!(tag && this.scrollBar)) {
             return;
         } else {
             setNativeFocused(tag.nativeElement);
