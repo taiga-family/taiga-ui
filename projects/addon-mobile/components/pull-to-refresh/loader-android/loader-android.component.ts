@@ -13,11 +13,11 @@ const ROTATE_X_MULTIPLIER = 2.3;
 })
 export class TuiMobileLoaderAndroidComponent {
     @Input()
-    loaded = 0;
+    pulled = 0;
 
     get transform(): string {
         const rotateX = Math.min(
-            ROTATE_X_DEFAULT + this.loaded * ROTATE_X_MULTIPLIER,
+            ROTATE_X_DEFAULT + this.pulled * ROTATE_X_MULTIPLIER,
             ROTATE_X_MAX,
         );
 
@@ -26,6 +26,6 @@ export class TuiMobileLoaderAndroidComponent {
 
     @HostBinding('class._hidden')
     get hidden(): boolean {
-        return this.loaded < HIDDEN_DISTANCE;
+        return this.pulled < HIDDEN_DISTANCE;
     }
 }
