@@ -9,7 +9,7 @@
     >
         <ng-container *ngFor="let item of items; let index = index">
             <ng-container
-                *ngIf="index <= maxIndex; else hidden"
+                *ngIf="index <= lastVisibleIndex; else hidden"
                 [ngTemplateOutlet]="item"
             ></ng-container>
             <ng-template #hidden>
@@ -58,7 +58,7 @@
                 (tui-tab-activate)="onClick(index)"
             >
                 <ng-container
-                    *ngIf="index > maxIndex && index !== activeItemIndex"
+                    *ngIf="index > lastVisibleIndex && index !== activeItemIndex"
                     [ngTemplateOutlet]="item"
                 ></ng-container>
             </div>

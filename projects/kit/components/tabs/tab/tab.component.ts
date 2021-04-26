@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     HostBinding,
     Inject,
     Optional,
@@ -38,19 +37,15 @@ export class TuiTabComponent {
         @Inject(RouterLinkActive)
         private readonly routerLinkActive: RouterLinkActive | null,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_TAB_EVENT) readonly event$: Observable<Event>,
         @Inject(TUI_MOBILE_AWARE) mobileAware: boolean,
         @Inject(TUI_IS_IOS) isIos: boolean,
         @Inject(TUI_IS_ANDROID) isAndroid: boolean,
-        @Inject(TUI_TAB_EVENT) event$: Observable<Event>,
-        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
     ) {
         this.isIos = mobileAware && isIos;
         this.isAndroid = mobileAware && isAndroid;
 
-        event$.subscribe(event => {
-            nativeElement.dispatchEvent(event);
-        });
         focusVisible$.subscribe(visible => {
             this.focusVisible = visible;
         });

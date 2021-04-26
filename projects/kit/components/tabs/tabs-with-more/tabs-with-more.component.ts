@@ -64,7 +64,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
     open = false;
 
-    private lastVisibleIndex = Infinity;
+    private maxIndex = Infinity;
 
     @ViewChild(TuiTabComponent, {read: ElementRef})
     private readonly moreButton?: ElementRef<HTMLButtonElement>;
@@ -87,31 +87,31 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     get isMoreVisible(): boolean {
-        return this.maxIndex < this.items.length - 1;
+        return this.lastVisibleIndex < this.items.length - 1;
     }
 
     get isMoreFocusable(): boolean {
         return !!this.moreButton && isNativeFocused(this.moreButton.nativeElement);
     }
 
-    get maxIndex(): number {
+    get lastVisibleIndex(): number {
         if (this.itemsLimit + 1 >= this.items.length) {
-            return this.lastVisibleIndex;
+            return this.maxIndex;
         }
 
         const offset = this.itemsLimit - 1 > this.activeItemIndex ? 1 : 2;
 
-        return Math.min(this.itemsLimit - offset, this.lastVisibleIndex);
+        return Math.min(this.itemsLimit - offset, this.maxIndex);
     }
 
     ngAfterViewInit() {
         this.refresh$
             .pipe(
                 map(() => this.getLastVisibleIndex()),
-                filter(lastVisibleIndex => this.lastVisibleIndex !== lastVisibleIndex),
+                filter(maxIndex => this.maxIndex !== maxIndex),
             )
-            .subscribe(lastVisibleIndex => {
-                this.lastVisibleIndex = lastVisibleIndex;
+            .subscribe(maxIndex => {
+                this.maxIndex = maxIndex;
                 this.changeDetectorRef.detectChanges();
             });
     }
@@ -171,25 +171,25 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         const {clientWidth} = this.elementRef.nativeElement;
         const activeWidth = tabs[activeItemIndex] ? tabs[activeItemIndex].scrollWidth : 0;
         const moreWidth = tabs[tabs.length - 1].scrollWidth;
-        let lastVisibleIndex = tabs.length - 2;
+        let maxIndex = tabs.length - 2;
         let total =
             tabs.reduce((acc, tab) => acc + tab.scrollWidth, 0) +
-            lastVisibleIndex * TAB_MARGIN -
+            maxIndex * TAB_MARGIN -
             moreWidth;
 
         if (total <= clientWidth) {
             return Infinity;
         }
 
-        while (lastVisibleIndex) {
-            total -= tabs[lastVisibleIndex].scrollWidth + TAB_MARGIN;
-            lastVisibleIndex--;
+        while (maxIndex) {
+            total -= tabs[maxIndex].scrollWidth + TAB_MARGIN;
+            maxIndex--;
 
             const activeOffset =
-                activeItemIndex > lastVisibleIndex ? activeWidth + TAB_MARGIN : 0;
+                activeItemIndex > maxIndex ? activeWidth + TAB_MARGIN : 0;
 
             if (total + activeOffset + moreWidth + TAB_MARGIN < clientWidth) {
-                return lastVisibleIndex;
+                return maxIndex;
             }
         }
 
@@ -203,6 +203,6 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
         this.activeItemIndex = activeItemIndex;
         this.activeItemIndexChange.emit(activeItemIndex);
-        this.lastVisibleIndex = this.getLastVisibleIndex();
+        this.maxIndex = this.getLastVisibleIndex();
     }
 }
