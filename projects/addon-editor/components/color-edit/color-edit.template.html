@@ -14,6 +14,7 @@
 </tui-select>
 <tui-primitive-textfield
     *ngIf="isHex; else rgb"
+    tuiValueAccessor
     tuiTextfieldSize="m"
     [textMask]="hexMask"
     [tuiTextfieldLabelOutside]="true"

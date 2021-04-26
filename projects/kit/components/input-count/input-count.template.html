@@ -1,5 +1,6 @@
 <tui-primitive-textfield
     class="textfield"
+    tuiValueAccessor
     tuiTextfieldAutocomplete="off"
     tuiTextfieldInputMode="numeric"
     [tuiTextfieldMaxLength]="18"
@@ -11,7 +12,7 @@
     [postfix]="postfix"
     [disabled]="disabled"
     [readOnly]="readOnly"
-    [textMask]="mask(min < 0)"
+    [textMask]="getMask(min < 0)"
     [invalid]="computedInvalid"
     [value]="computedValue"
     (valueChange)="onValueChange()"
