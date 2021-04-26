@@ -166,7 +166,7 @@ export class TuiInputTagComponent
     @ViewChild('cleaner', {read: ElementRef})
     private readonly cleanerSvg?: ElementRef<HTMLElement>;
 
-    @ViewChild('scrollBar', {read: ElementRef})
+    @ViewChild(TuiScrollbarComponent, {read: ElementRef})
     private readonly scrollBar?: ElementRef<HTMLElement>;
 
     constructor(
