@@ -4,8 +4,10 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 import {default as example1Ts} from '!!raw-loader!./examples/1/component.ts';
 import {default as example1Html} from '!!raw-loader!./examples/1/template.html';
 
+import {default as example2Ts} from '!!raw-loader!./examples/2/component.ts';
+import {default as example2Html} from '!!raw-loader!./examples/2/template.html';
+
 import {Component} from '@angular/core';
-import {TuiMapper} from '@taiga-ui/cdk';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -24,17 +26,8 @@ export class ExampleTuiMapperComponent {
         HTML: example1Html,
     };
 
-    value = 5;
-
-    mapperVariants: ReadonlyArray<TuiMapper<number, string>> = [
-        item => String(item),
-        _item => 'Hello!',
-        (item, arg) => item * item + arg,
-    ];
-
-    mapper = this.mapperVariants[0];
-
-    argsVariants: ReadonlyArray<string | number> = ['', 10];
-
-    args = this.argsVariants[0];
+    readonly example2: FrontEndExample = {
+        TypeScript: example2Ts,
+        HTML: example2Html,
+    };
 }

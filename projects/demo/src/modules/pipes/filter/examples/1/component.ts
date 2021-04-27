@@ -9,7 +9,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiFilterExample1 {
-    items = [
+    readonly items = [
         {
             name: 'Sword',
             price: 1000,
@@ -22,7 +22,7 @@ export class TuiFilterExample1 {
             name: 'Spear',
             price: 500,
         },
-    ];
+    ] as const;
 
     matcher = (item: any, search: number) => item.price > search;
 }
