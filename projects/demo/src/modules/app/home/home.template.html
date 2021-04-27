@@ -52,7 +52,7 @@
             ></tui-doc-code>
 
             <tui-notification class="tui-space_top-3">
-                You can use it with your pure CSS, SCSS and etc. projects.
+                You can use it with your pure CSS, SCSS and other projects.
                 Angular resolves this less files automatically
             </tui-notification>
 
@@ -98,24 +98,13 @@
         </li>
 
         <li id="icons" i18n>
-            Icons are not included in the bundle. To add icons provide
-            <code>TUI_ICONS_PATH</code> token with a function that gets icon
-            name and returns path to it.
-
-            <p>First of all, add icons into assets of your app:</p>
+            Icons are not included in the bundle. They go into your app's
+            assets:
 
             <tui-doc-code
                 class="tui-space_bottom-4"
                 filename="angular.json"
                 [code]="examples.assets"
-            ></tui-doc-code>
-
-            <p>Then you should provide path with a token:</p>
-
-            <tui-doc-code
-                class="tui-space_bottom-4"
-                filename="app.module.ts"
-                [code]="examples.appModuleIcons"
             ></tui-doc-code>
         </li>
     </ol>

@@ -1,6 +1,5 @@
 import {default as addons} from '!!raw-loader!./examples/addons.txt';
 import {default as angularJsonStyles} from '!!raw-loader!./examples/angular-json-styles.txt';
-import {default as appModuleIcons} from '!!raw-loader!./examples/app-module-icons.txt';
 import {default as appModuleOptional} from '!!raw-loader!./examples/app-module-optional.txt';
 import {default as appModule} from '!!raw-loader!./examples/app-module.txt';
 import {default as appTemplate} from '!!raw-loader!./examples/app-template.txt';
@@ -22,7 +21,6 @@ export class HomeComponent {
         angularJsonStyles,
         appModule,
         appTemplate,
-        appModuleIcons,
         appModuleOptional,
         assets,
         componentsStyles,
