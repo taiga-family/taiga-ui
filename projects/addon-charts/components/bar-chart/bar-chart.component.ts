@@ -1,16 +1,15 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
-import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
+import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
+import { TUI_DEFAULT_COLOR_HANDLER } from '@taiga-ui/addon-charts/constants';
+import { TuiColorHandler } from '@taiga-ui/addon-charts/types';
 import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiIdService,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHintMode} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import { TuiSizeL, TuiSizeS } from '@taiga-ui/core';
+import { TuiHintMode } from '@taiga-ui/core';
+import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 
 export function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
     const valid = value.every(array => array.length === value[0].length);
@@ -25,10 +24,6 @@ const VALUE_ERROR = 'All arrays must be of the same length';
     templateUrl: './bar-chart.template.html',
     styleUrls: ['./bar-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [MODE_PROVIDER],
-    host: {
-        '($.data-mode.attr)': 'mode$',
-    },
 })
 export class TuiBarChartComponent {
     @Input()
@@ -63,7 +58,6 @@ export class TuiBarChartComponent {
 
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
     ) {
         this.autoIdString = idService.generate();
     }
