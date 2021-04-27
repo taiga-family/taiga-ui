@@ -25,21 +25,20 @@
     color: inherit;
 }
 
-.visually-hidden {
-    width: 0;
-    max-width: 0;
-    overflow: hidden;
-    visibility: hidden;
+.overflown {
+    margin-right: 24px;
+
+    &_hidden {
+        margin: 0;
+        width: 0;
+        max-width: 0;
+        overflow: hidden;
+        visibility: hidden;
+    }
 }
 
 .more_wrapper {
     height: 100%;
-}
-
-.more {
-    &&._active {
-        pointer-events: auto;
-    }
 }
 
 .icon {
@@ -53,12 +52,11 @@
 }
 
 .dropdown {
-    display: flex;
-    flex-direction: column;
     padding: 8px 0;
 
     /* stylelint-disable */
     ::ng-deep *[tuiTab] {
+        width: 100%;
         height: 44px;
         justify-content: flex-start;
         margin: 0;
