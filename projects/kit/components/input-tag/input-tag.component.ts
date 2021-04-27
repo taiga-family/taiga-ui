@@ -355,7 +355,7 @@ export class TuiInputTagComponent
         this.onScrollKeyDown(currentIndex, 1);
     }
 
-    onScrollKeyDown(currentIndex: number, flag: number) {
+    private onScrollKeyDown(currentIndex: number, flag: number) {
         const tag = this.tags.find((_item, index) => index === currentIndex + flag);
 
         if (!(tag && this.scrollBar)) {
