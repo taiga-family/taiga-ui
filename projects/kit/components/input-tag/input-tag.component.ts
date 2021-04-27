@@ -358,20 +358,20 @@ export class TuiInputTagComponent
     private onScrollKeyDown(currentIndex: number, flag: number) {
         const tag = this.tags.find((_item, index) => index === currentIndex + flag);
 
-        if (!(tag && this.scrollBar)) {
+        if (!tag || !this.scrollBar) {
             return;
-        } else {
-            setNativeFocused(tag.nativeElement);
+        }
 
-            if (
-                flag * this.scrollBar.nativeElement.clientWidth -
-                    flag * tag.nativeElement.offsetLeft -
-                    tag.nativeElement.clientWidth <
-                0
-            ) {
-                this.scrollBar.nativeElement.scrollLeft +=
-                    flag * tag.nativeElement.clientWidth;
-            }
+        setNativeFocused(tag.nativeElement);
+
+        if (
+            flag * this.scrollBar.nativeElement.clientWidth -
+                flag * tag.nativeElement.offsetLeft -
+                tag.nativeElement.clientWidth <
+            0
+        ) {
+            this.scrollBar.nativeElement.scrollLeft +=
+                flag * tag.nativeElement.clientWidth;
         }
     }
 
