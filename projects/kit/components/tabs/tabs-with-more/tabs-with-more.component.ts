@@ -16,7 +16,7 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    getClosestKeyboardFocusable,
+    getClosestFocusable,
     isNativeFocused,
     setNativeFocused,
     tuiDefaultProp,
@@ -148,7 +148,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     onWrapperArrow(button: HTMLButtonElement, wrapper: HTMLElement, prev: boolean) {
-        const target = getClosestKeyboardFocusable(button, prev, wrapper);
+        const target = getClosestFocusable(button, prev, wrapper);
 
         if (target) {
             setNativeFocused(target);

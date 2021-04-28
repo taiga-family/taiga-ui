@@ -10,9 +10,8 @@ import {isNativeMouseFocusable} from './is-native-mouse-focusable';
  * @param root top Node limiting the search area
  * @param keyboard determine if only keyboard focus is of interest
  *
- * TODO: Rename in 3.0
  */
-export function getClosestKeyboardFocusable(
+export function getClosestFocusable(
     initial: HTMLElement,
     prev: boolean = false,
     root: Node,
@@ -48,4 +47,5 @@ export function getClosestKeyboardFocusable(
     return null;
 }
 
-export const getClosestFocusable = getClosestKeyboardFocusable;
+/** @deprecated use getClosestFocusable */
+export const getClosestKeyboardFocusable = getClosestFocusable;
