@@ -13,9 +13,9 @@
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "peerDependencies": {
-        "@angular/cdk": ">=7.0.0",
-        "@angular/common": ">=7.0.0",
-        "@angular/core": ">=7.0.0",
+        "@angular/cdk": ">=9.0.0",
+        "@angular/common": ">=9.0.0",
+        "@angular/core": ">=9.0.0",
         "@ng-web-apis/intersection-observer": "2.0.1",
         "@tinkoff/ng-polymorpheus": ">=3.0.0",
         "@taiga-ui/cdk": "2.7.0",

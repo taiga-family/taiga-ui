@@ -23,10 +23,10 @@
         "@types/resize-observer-browser": "0.1.3"
     },
     "peerDependencies": {
-        "@angular/animations": ">=6.0.0",
-        "@angular/common": ">=6.0.0",
-        "@angular/core": ">=6.0.0",
-        "@angular/forms": ">=6.0.0",
+        "@angular/animations": ">=9.0.0",
+        "@angular/common": ">=9.0.0",
+        "@angular/core": ">=9.0.0",
+        "@angular/forms": ">=9.0.0",
         "rxjs": ">=6.0.0"
     }
 }
