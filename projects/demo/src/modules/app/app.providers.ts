@@ -10,7 +10,7 @@ import {
     TUI_DOC_TITLE,
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
-import {TUI_SANITIZER} from '@taiga-ui/cdk';
+import {TUI_SANITIZER} from '@taiga-ui/core';
 import {iconsPathFactory, TUI_ICONS_PATH} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';

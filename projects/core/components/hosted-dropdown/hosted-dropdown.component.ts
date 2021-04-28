@@ -71,8 +71,8 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @ViewChild(TuiActiveZoneDirective)
     readonly activeZone?: TuiActiveZoneDirective;
 
-    @ContentChild(TuiHostedDropdownConnectorDirective)
-    private dropdownHost?: TuiHostedDropdownConnectorDirective;
+    @ContentChild(TuiHostedDropdownConnectorDirective, {read: ElementRef})
+    private dropdownHost?: ElementRef<HTMLElement>;
 
     @ViewChild('wrapper', {read: ElementRef})
     private wrapper?: ElementRef<HTMLDivElement>;
@@ -88,7 +88,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     get host(): HTMLElement {
         return this.dropdownHost
-            ? this.dropdownHost.elementRef.nativeElement
+            ? this.dropdownHost.nativeElement
             : this.elementRef.nativeElement;
     }
 
@@ -123,7 +123,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @HostListener('focusin', ['$event'])
     onFocusIn({target}: TuiEventWith<FocusEvent, HTMLElement>) {
         const host = this.dropdownHost
-            ? this.dropdownHost.elementRef.nativeElement
+            ? this.dropdownHost.nativeElement
             : this.nativeFocusableElement || this.elementRef.nativeElement;
 
         if (!host.contains(target)) {
@@ -134,9 +134,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @HostListener('click', ['$event'])
     onClick({target}: TuiEventWith<MouseEvent, HTMLElement>) {
         const host = this.nativeFocusableElement || this.host;
-        const dropdownHost = this.dropdownHost
-            ? this.dropdownHost.elementRef.nativeElement
-            : host;
+        const dropdownHost = this.dropdownHost ? this.dropdownHost.nativeElement : host;
 
         if (
             !this.hostEditable &&
