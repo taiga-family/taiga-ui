@@ -9,7 +9,7 @@ import {setNativeFocused} from './set-native-focused';
  */
 export function setNativeMouseFocused(
     element: HTMLOrSVGElement & Element,
-    focused: boolean,
+    focused: boolean = true,
     preventScroll: boolean = false,
 ) {
     if (!element.ownerDocument) {

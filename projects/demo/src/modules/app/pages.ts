@@ -325,7 +325,7 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Components`,
                 title: 'HostedDropdown',
-                keywords: 'dropdown, контекст, выпадашка, дропдаун, меню, menu',
+                keywords: 'dropdown, hover, контекст, выпадашка, дропдаун, меню, menu',
                 route: '/components/hosted-dropdown',
             },
         ],

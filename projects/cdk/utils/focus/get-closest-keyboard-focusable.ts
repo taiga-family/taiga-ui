@@ -1,21 +1,28 @@
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
+import {isNativeMouseFocusable} from '@taiga-ui/cdk/utils';
 import {isNativeKeyboardFocusable} from './is-native-keyboard-focusable';
 
 /**
- * Finds closest element that can be focused with a keyboard in theory
+ * Finds closest element that can be focused with a keyboard or mouse in theory
  *
  * @param initial current HTML element
  * @param prev should it look backwards instead (find item that will be focused with Shift + Tab)
  * @param root top Node limiting the search area
+ * @param keyboard determine if only keyboard focus is of interest
+ *
+ * TODO: Rename in 3.0
  */
 export function getClosestKeyboardFocusable(
     initial: HTMLElement,
     prev: boolean = false,
     root: Node,
+    keyboard: boolean = true,
 ): HTMLElement | null {
     if (!root.ownerDocument) {
         return null;
     }
+
+    const check = keyboard ? isNativeKeyboardFocusable : isNativeMouseFocusable;
 
     // Deprecated but ony this overload works in IE
     // Filter must be a function in IE, other modern browsers are compliant to this format
@@ -33,10 +40,12 @@ export function getClosestKeyboardFocusable(
             initial = treeWalker.currentNode;
         }
 
-        if (isNativeKeyboardFocusable(initial)) {
+        if (check(initial)) {
             return initial;
         }
     }
 
     return null;
 }
+
+export const getClosestFocusable = getClosestKeyboardFocusable;

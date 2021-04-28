@@ -11,14 +11,22 @@ import {
     TuiGroupModule,
     TuiHostedDropdownModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule, TuiInputModule, TuiSelectModule} from '@taiga-ui/kit';
+import {
+    TuiDataListWrapperModule,
+    TuiDropdownHoverModule,
+    TuiInputModule,
+    TuiSelectModule,
+    TuiTabsModule,
+} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {DropdownControllerDocumentationModule} from '../abstract/dropdown-controller-documentation/dropdown-controller-documentation.module';
 import {TuiHostedDropdownExample1} from './examples/1';
 import {TuiHostedDropdownExample2} from './examples/2';
 import {TuiHostedDropdownExample3} from './examples/3';
+import {TuiHostedDropdownExample4} from './examples/4';
 import {ExampleTuiHostedDropdownComponent} from './hosted-dropdown.component';
 
 @NgModule({
@@ -28,6 +36,9 @@ import {ExampleTuiHostedDropdownComponent} from './hosted-dropdown.component';
         PolymorpheusModule,
         FormsModule,
         TuiHostedDropdownModule,
+        TuiDropdownHoverModule,
+        TuiNotificationModule,
+        TuiTabsModule,
         TuiInputModule,
         TuiButtonModule,
         TuiGroupModule,
@@ -46,6 +57,7 @@ import {ExampleTuiHostedDropdownComponent} from './hosted-dropdown.component';
         TuiHostedDropdownExample1,
         TuiHostedDropdownExample2,
         TuiHostedDropdownExample3,
+        TuiHostedDropdownExample4,
         ExampleTuiHostedDropdownComponent,
     ],
     exports: [ExampleTuiHostedDropdownComponent],

@@ -13,7 +13,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {
-    getClosestKeyboardFocusable,
+    getClosestFocusable,
     isNativeFocusedIn,
     isNativeKeyboardFocusable,
     setNativeFocused,
@@ -101,11 +101,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return isNativeKeyboardFocusable(this.host)
             ? this.host
-            : getClosestKeyboardFocusable(
-                  this.host,
-                  false,
-                  this.elementRef.nativeElement,
-              );
+            : getClosestFocusable(this.host, false, this.elementRef.nativeElement, false);
     }
 
     get contentContext(): TuiContextWithImplicit<TuiActiveZoneDirective | undefined> {
@@ -253,7 +249,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         const initial = first
             ? this.wrapper.nativeElement
             : this.wrapper.nativeElement.nextElementSibling;
-        const focusable = getClosestKeyboardFocusable(
+        const focusable = getClosestFocusable(
             initial,
             !first,
             this.wrapper.nativeElement,
