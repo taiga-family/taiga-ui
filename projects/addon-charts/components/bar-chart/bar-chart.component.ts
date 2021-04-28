@@ -1,15 +1,14 @@
-import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
-import { TUI_DEFAULT_COLOR_HANDLER } from '@taiga-ui/addon-charts/constants';
-import { TuiColorHandler } from '@taiga-ui/addon-charts/types';
+import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
+import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
 import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiIdService,
     tuiPure,
 } from '@taiga-ui/cdk';
-import { TuiSizeL, TuiSizeS } from '@taiga-ui/core';
-import { TuiHintMode } from '@taiga-ui/core';
-import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
+import {TuiHintMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
     const valid = value.every(array => array.length === value[0].length);
@@ -56,9 +55,7 @@ export class TuiBarChartComponent {
 
     private readonly autoIdString: string;
 
-    constructor(
-        @Inject(TuiIdService) idService: TuiIdService,
-    ) {
+    constructor(@Inject(TuiIdService) idService: TuiIdService) {
         this.autoIdString = idService.generate();
     }
 
