@@ -1,6 +1,6 @@
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
-import {isNativeMouseFocusable} from '@taiga-ui/cdk/utils';
 import {isNativeKeyboardFocusable} from './is-native-keyboard-focusable';
+import {isNativeMouseFocusable} from './is-native-mouse-focusable';
 
 /**
  * Finds closest element that can be focused with a keyboard or mouse in theory
