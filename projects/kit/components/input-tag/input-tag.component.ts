@@ -355,26 +355,6 @@ export class TuiInputTagComponent
         this.onScrollKeyDown(currentIndex, 1);
     }
 
-    private onScrollKeyDown(currentIndex: number, flag: number) {
-        const tag = this.tags.find((_item, index) => index === currentIndex + flag);
-
-        if (!tag || !this.scrollBar) {
-            return;
-        }
-
-        setNativeFocused(tag.nativeElement);
-
-        if (
-            flag * this.scrollBar.nativeElement.clientWidth -
-                flag * tag.nativeElement.offsetLeft -
-                tag.nativeElement.clientWidth <
-            0
-        ) {
-            this.scrollBar.nativeElement.scrollLeft +=
-                flag * tag.nativeElement.clientWidth;
-        }
-    }
-
     onTagEdited(value: string, editedTag: string) {
         this.focusInput();
         this.updateValue(
@@ -428,6 +408,26 @@ export class TuiInputTagComponent
     setDisabledState() {
         super.setDisabledState();
         this.open = false;
+    }
+
+    private onScrollKeyDown(currentIndex: number, flag: number) {
+        const tag = this.tags.find((_item, index) => index === currentIndex + flag);
+
+        if (!tag || !this.scrollBar) {
+            return;
+        }
+
+        setNativeFocused(tag.nativeElement);
+
+        if (
+            flag * this.scrollBar.nativeElement.clientWidth -
+                flag * tag.nativeElement.offsetLeft -
+                tag.nativeElement.clientWidth <
+            0
+        ) {
+            this.scrollBar.nativeElement.scrollLeft +=
+                flag * tag.nativeElement.clientWidth;
+        }
     }
 
     private initScrollerSubscrition(scroller: TuiScrollbarComponent | null) {
