@@ -1,6 +1,6 @@
 import {inject, InjectionToken} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {typedFromEvent} from '@taiga-ui/cdk';
+import {typedFromEvent} from '@taiga-ui/cdk/observables';
 import {merge, Observable} from 'rxjs';
 import {filter, map, repeatWhen, share, takeUntil, withLatestFrom} from 'rxjs/operators';
 import {TUI_REMOVED_ELEMENT} from './removed-element';
