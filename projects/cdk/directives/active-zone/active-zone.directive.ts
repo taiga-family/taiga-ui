@@ -62,9 +62,9 @@ export class TuiActiveZoneDirective implements OnDestroy {
 
     constructor(
         @Inject(ElementRef) private readonly element: ElementRef<Element>,
-        @Inject(TuiActiveZoneDirective)
         @Optional()
         @SkipSelf()
+        @Inject(TuiActiveZoneDirective)
         private readonly directParentActiveZone: TuiActiveZoneDirective | null,
         @Inject(NgZone) ngZone: NgZone,
         @Inject(WINDOW) windowRef: Window,
