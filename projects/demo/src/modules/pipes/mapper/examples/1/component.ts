@@ -9,5 +9,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiMapperExample1 {
-    mapper = (item: number, arg: string) => `Total: ${item} ${arg}`;
+    readonly mapper = (amount: number, currencySymbol: string) =>
+        `Total: ${amount} ${currencySymbol}`;
 }

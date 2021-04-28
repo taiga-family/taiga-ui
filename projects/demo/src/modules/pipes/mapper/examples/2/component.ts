@@ -9,7 +9,8 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiMapperExample2 {
-    readonly items = [1, 2, 3, 4, 5] as const;
+    readonly numbers = [1, 2, 3, 4, 5] as const;
 
-    mapper = (items: Array<number>, arg: number) => items.map(item => item * arg);
+    readonly mapper = (numbers: Array<number>, multiplier: number) =>
+        numbers.map(number => number * multiplier);
 }
