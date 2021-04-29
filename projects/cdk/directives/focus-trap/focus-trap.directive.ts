@@ -10,7 +10,7 @@ import {
 import {containsOrAfter} from '@taiga-ui/cdk/utils/dom';
 import {
     blurNativeFocused,
-    getClosestKeyboardFocusable,
+    getClosestFocusable,
     getNativeFocused,
     setNativeFocused,
 } from '@taiga-ui/cdk/utils/focus';
@@ -52,7 +52,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
             return;
         }
 
-        const focusable = getClosestKeyboardFocusable(
+        const focusable = getClosestFocusable(
             this.elementRef.nativeElement,
             false,
             this.elementRef.nativeElement,

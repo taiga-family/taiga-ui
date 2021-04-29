@@ -1,3 +1,4 @@
+export * from '@taiga-ui/kit/directives/dropdown-hover';
 export * from '@taiga-ui/kit/directives/dropdown-selection';
 export * from '@taiga-ui/kit/directives/highlight';
 export * from '@taiga-ui/kit/directives/lazy-loading';

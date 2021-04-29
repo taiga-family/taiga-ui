@@ -11,7 +11,7 @@ import {
 import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
 import {
     getClosestElement,
-    getClosestKeyboardFocusable,
+    getClosestFocusable,
     inRange,
     isIE,
     POLLING_TIME,
@@ -354,10 +354,10 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         const {ownerDocument} = host;
         const root = ownerDocument ? ownerDocument.body : host;
 
-        let focusable = getClosestKeyboardFocusable(host, previous, root);
+        let focusable = getClosestFocusable(host, previous, root);
 
         while (focusable !== null && host.contains(focusable)) {
-            focusable = getClosestKeyboardFocusable(focusable, previous, root);
+            focusable = getClosestFocusable(focusable, previous, root);
         }
 
         if (focusable === null) {
