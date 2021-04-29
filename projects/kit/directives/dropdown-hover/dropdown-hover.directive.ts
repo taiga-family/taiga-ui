@@ -1,5 +1,6 @@
 import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
 import {
+    getClosestFocusable,
     isNativeFocusedIn,
     isPresent,
     setNativeMouseFocused,
@@ -79,10 +80,16 @@ export class TuiDropdownHoverDirective {
 
     @HostListener('mouseenter')
     onMouseEnter() {
-        const {nativeFocusableElement} = this.dropdown;
+        const {host} = this.dropdown;
 
-        if (nativeFocusableElement) {
-            setNativeMouseFocused(nativeFocusableElement);
+        if (isNativeFocusedIn(host)) {
+            return;
+        }
+
+        const focusable = getClosestFocusable(host, false, host, false);
+
+        if (focusable) {
+            setNativeMouseFocused(focusable);
         }
     }
 }

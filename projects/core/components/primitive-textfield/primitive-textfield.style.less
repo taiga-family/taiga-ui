@@ -4,9 +4,15 @@
 
 .value {
     height: 0;
-    display: block;
+    display: none;
     visibility: hidden;
     white-space: pre;
+}
+
+:host-context(table) {
+    .value {
+        display: block;
+    }
 }
 
 .custom-content {
