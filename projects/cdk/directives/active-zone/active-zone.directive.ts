@@ -1,4 +1,3 @@
-import {DOCUMENT} from '@angular/common';
 import {
     Directive,
     ElementRef,
@@ -10,29 +9,12 @@ import {
     Output,
     SkipSelf,
 } from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
-import {tuiZoneOptimized, typedFromEvent} from '@taiga-ui/cdk/observables';
-import {getActualTarget} from '@taiga-ui/cdk/utils/dom';
-import {
-    getNativeFocused,
-    isNativeFocused,
-    isNativeMouseFocusable,
-} from '@taiga-ui/cdk/utils/focus';
-import {merge, Observable, of} from 'rxjs';
-import {
-    distinctUntilChanged,
-    filter,
-    map,
-    mapTo,
-    skip,
-    startWith,
-    switchMap,
-    take,
-    tap,
-} from 'rxjs/operators';
+import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
+import {Observable} from 'rxjs';
+import {distinctUntilChanged, map} from 'rxjs/operators';
 
-// @dynamic
 @Directive({
     selector:
         '[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)',
@@ -58,98 +40,25 @@ export class TuiActiveZoneDirective implements OnDestroy {
     }
 
     @Output()
-    readonly tuiActiveZoneChange: Observable<boolean>;
+    readonly tuiActiveZoneChange = this.active$.pipe(
+        map(element => !!element && this.contains(element)),
+        distinctUntilChanged(),
+        tuiZoneOptimized(this.ngZone),
+    );
 
     constructor(
-        @Inject(ElementRef) private readonly element: ElementRef<Element>,
+        @Inject(TUI_ACTIVE_ELEMENT)
+        private readonly active$: Observable<Element | null>,
+        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
         @Optional()
         @SkipSelf()
         @Inject(TuiActiveZoneDirective)
         private readonly directParentActiveZone: TuiActiveZoneDirective | null,
-        @Inject(NgZone) ngZone: NgZone,
-        @Inject(WINDOW) windowRef: Window,
-        @Inject(DOCUMENT) documentRef: Document,
     ) {
-        let skipNextFocusOut = false;
-
         if (this.directParentActiveZone) {
             this.directParentActiveZone.addSubActiveZone(this);
         }
-
-        this.tuiActiveZoneChange = merge(
-            typedFromEvent(windowRef, 'focusout').pipe(
-                filter(event => {
-                    const actualTarget = getActualTarget(event);
-
-                    return (
-                        !skipNextFocusOut &&
-                        this.contains(actualTarget) &&
-                        !isNativeFocused(actualTarget) &&
-                        isValidFocusoutEvent(event as any) &&
-                        !this.contains(event.relatedTarget as Node | null)
-                    );
-                }),
-                mapTo(false),
-            ),
-            typedFromEvent(windowRef, 'focusin').pipe(
-                map(event => this.contains(getActualTarget(event))),
-            ),
-            typedFromEvent(windowRef, 'mousedown').pipe(
-                filter(
-                    event =>
-                        documentRef.body === event.target ||
-                        !isNativeFocused(getActualTarget(event)),
-                ),
-                switchMap(event => {
-                    const actualTarget = getActualTarget(event);
-                    const targetInZone = this.contains(actualTarget);
-                    const activeElement = getNativeFocused(documentRef);
-                    const focusInZone = this.contains(activeElement);
-
-                    // If default behavior is prevented — focus either remained
-                    // where it was or it was moved manually so we just check
-                    // if the focused element is within the zone or target is
-                    // within the zone and focus is nowhere
-                    if (event.defaultPrevented) {
-                        return of(focusInZone || targetInZone);
-                    }
-
-                    // If mouseDown happened inside the zone and focus is outside we
-                    // return true if target is not focusable or wait for focusIn
-                    if (targetInZone && !focusInZone && actualTarget instanceof Element) {
-                        return !isNativeMouseFocusable(actualTarget)
-                            ? of(true)
-                            : typedFromEvent(windowRef, 'focusin').pipe(
-                                  take(1),
-                                  mapTo(targetInZone),
-                              );
-                    }
-
-                    // If focus is in the zone we wait for the next focusOut event and
-                    // map it to either true or false, depending on if the mouseDown
-                    // target is within the zone or not
-                    if (focusInZone) {
-                        // @bad TODO: Think of a way to handle this without side-effects
-                        skipNextFocusOut = true;
-
-                        return typedFromEvent(windowRef, 'focusout').pipe(
-                            take(1),
-                            mapTo(targetInZone),
-                        );
-                    }
-
-                    return of(false);
-                }),
-            ),
-        ).pipe(
-            tap(() => {
-                skipNextFocusOut = false;
-            }),
-            startWith(false),
-            distinctUntilChanged(),
-            skip(1),
-            tuiZoneOptimized(ngZone),
-        );
     }
 
     ngOnDestroy() {
@@ -162,14 +71,13 @@ export class TuiActiveZoneDirective implements OnDestroy {
         }
     }
 
-    contains(node: Node | null): boolean {
+    contains(node: Node): boolean {
         return (
-            !!node &&
-            (this.element.nativeElement.contains(node) ||
-                this.subActiveZones.some(
-                    (item, index, array) =>
-                        array.indexOf(item) === index && item.contains(node),
-                ))
+            this.elementRef.nativeElement.contains(node) ||
+            this.subActiveZones.some(
+                (item, index, array) =>
+                    array.indexOf(item) === index && item.contains(node),
+            )
         );
     }
 
@@ -185,12 +93,4 @@ export class TuiActiveZoneDirective implements OnDestroy {
             ...this.subActiveZones.slice(index + 1),
         ];
     }
-}
-
-// Chrome workaround for triggering `focusout` event upon element removal
-function isValidFocusoutEvent({
-    relatedTarget,
-    sourceCapabilities,
-}: FocusEvent & {sourceCapabilities: unknown}): boolean {
-    return sourceCapabilities !== null || relatedTarget !== null;
 }
