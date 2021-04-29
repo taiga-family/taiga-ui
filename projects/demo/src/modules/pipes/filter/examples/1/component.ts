@@ -3,8 +3,8 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
 export interface Item {
-    name: string;
-    price: number;
+    readonly name: string;
+    readonly price: number;
 }
 
 @Component({
@@ -14,7 +14,7 @@ export interface Item {
     encapsulation,
 })
 export class TuiFilterExample1 {
-    readonly items = [
+    readonly items: ReadonlyArray<Item> = [
         {
             name: 'Sword',
             price: 1000,
@@ -27,7 +27,7 @@ export class TuiFilterExample1 {
             name: 'Spear',
             price: 500,
         },
-    ] as const;
+    ];
 
     readonly matcher = (item: Item, search: number) => item.price > search;
 }
