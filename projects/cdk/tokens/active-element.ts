@@ -11,8 +11,6 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
         factory: () => {
             const skip$ = inject(TUI_REMOVED_ELEMENT);
             const windowRef = inject(WINDOW);
-            const activeElement = () => windowRef.document.activeElement;
-
             const focusout$ = typedFromEvent(windowRef, 'focusout');
             const focusin$ = typedFromEvent(windowRef, 'focusin');
             const blur$ = typedFromEvent(windowRef, 'blur');
@@ -28,7 +26,7 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                     map(([{relatedTarget}]) => relatedTarget),
                 ),
                 blur$.pipe(
-                    map(() => activeElement()),
+                    map(() => windowRef.document.activeElement),
                     filter(element => !!element && element.matches('iframe')),
                 ),
                 merge(mousedown$, focusin$).pipe(map(({target}) => target)),
