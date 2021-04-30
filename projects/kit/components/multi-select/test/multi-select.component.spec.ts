@@ -175,7 +175,7 @@ describe('MultiSelect', () => {
             inputPO.sendKeydown('Escape');
             fixture.detectChanges();
 
-            expect(getDropdown()).not.toBeNull();
+            expect(getDropdown()).toBeNull();
         });
 
         it('Down arrow does not open dropdown in readOnly mode', () => {
