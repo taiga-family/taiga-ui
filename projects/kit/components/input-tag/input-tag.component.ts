@@ -269,6 +269,10 @@ export class TuiInputTagComponent
             : this.tagStatus;
     }
 
+    get canOpen(): boolean {
+        return !this.computedDisabled && !this.readOnly && !!this.datalist;
+    }
+
     getLeftContent(tag: string): PolymorpheusContent | null {
         return !this.tagValidator(tag) && this.errorIconTemplate
             ? this.errorIconTemplate
