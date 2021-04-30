@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.8.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.6.2...v2.8.1) (2021-04-30)
+
+### Bug Fixes
+
+-   **core:** `PrimitiveTextfield` fix growing wider than container ([#364](https://github.com/TinkoffCreditSystems/taiga-ui/issues/364)) ([e64fe49](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e64fe4931f22430a4edc260d74a4e5862903e6d5))
+
 ## [2.8.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.7.0...v2.8.0) (2021-04-29)
 
 ### Features
