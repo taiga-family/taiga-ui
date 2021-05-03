@@ -22,6 +22,7 @@ import {
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
+import {InputPasswordOptions, TUI_INPUT_PASSWORD_OPTIONS} from './input-password-options';
 
 // @dynamic
 @Component({
@@ -54,6 +55,8 @@ export class TuiInputPasswordComponent
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PASSWORD_TEXTS)
         readonly passwordTexts$: Observable<[string, string]>,
+        @Inject(TUI_INPUT_PASSWORD_OPTIONS)
+        public readonly options: InputPasswordOptions,
     ) {
         super(control, changeDetectorRef);
     }
@@ -69,11 +72,11 @@ export class TuiInputPasswordComponent
     }
 
     get icon(): string {
-        if (this.textfieldSize.size === 's') {
-            return this.isPasswordHidden ? 'tuiIconEyeClosed' : 'tuiIconEyeOpen';
+        if (this.isPasswordHidden) {
+            return this.options.icons.hide(this.textfieldSize.size);
         }
 
-        return this.isPasswordHidden ? 'tuiIconHideLarge' : 'tuiIconShowLarge';
+        return this.options.icons.show(this.textfieldSize.size);
     }
 
     get inputType(): string {
