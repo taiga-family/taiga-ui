@@ -12,11 +12,11 @@ import {WINDOW} from '@ng-web-apis/common';
 import {
     POLLING_TIME,
     preventDefault,
+    stopPropagation,
     TuiDestroyService,
     tuiZonefree,
     typedFromEvent,
 } from '@taiga-ui/cdk';
-import {stopPropagation} from '@taiga-ui/cdk/observables/stop-propagation';
 import {TuiOrientation} from '@taiga-ui/core/enums';
 import {TUI_ELEMENT_REF, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {fromEvent, interval, merge, Observable} from 'rxjs';
