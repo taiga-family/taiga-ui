@@ -4,6 +4,7 @@
         class="bar bar_vertical"
         [class.bar_has-horizontal]="bars[1]"
         [@tuiFadeIn]="animation"
+        tuiScrollbarWrapper
     >
         <div tuiScrollbar="vertical" class="thumb"></div>
     </div>
@@ -12,6 +13,7 @@
         class="bar bar_horizontal"
         [class.bar_has-vertical]="bars[0]"
         [@tuiFadeIn]="animation"
+        tuiScrollbarWrapper
     >
         <div tuiScrollbar="horizontal" class="thumb"></div>
     </div>

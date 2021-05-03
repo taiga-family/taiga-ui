@@ -21,7 +21,6 @@ import {TuiBrightness} from '@taiga-ui/core/types';
 import {interval, Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
-// @bad TODO: handle click on bar to scroll to that position
 // @dynamic
 @Component({
     selector: 'tui-scroll-controls',

@@ -20,13 +20,16 @@
     position: absolute;
     right: 0;
     bottom: 0;
+    pointer-events: auto;
 
     &_vertical {
         top: 0;
+        width: @scroll-width-large;
     }
 
     &_horizontal {
         left: 0;
+        height: @scroll-width-large;
     }
 
     &_has-horizontal {
