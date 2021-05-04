@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.8.2](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.6.2...v2.8.2) (2021-05-04)
+
+### Bug Fixes
+
+-   **cdk:** fix components emitting initial `blur` ([#370](https://github.com/TinkoffCreditSystems/taiga-ui/issues/370)) ([36f722b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/36f722b19818335f66e2847e1c0aa1f392950be1))
+
 ### [2.8.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.8.0...v2.8.1) (2021-04-30)
 
 ### Bug Fixes
