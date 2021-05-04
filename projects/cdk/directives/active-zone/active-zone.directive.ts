@@ -13,7 +13,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
 import {Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
 
 @Directive({
     selector:
@@ -42,7 +42,9 @@ export class TuiActiveZoneDirective implements OnDestroy {
     @Output()
     readonly tuiActiveZoneChange = this.active$.pipe(
         map(element => !!element && this.contains(element)),
+        startWith(false),
         distinctUntilChanged(),
+        skip(1),
         tuiZoneOptimized(this.ngZone),
     );
 

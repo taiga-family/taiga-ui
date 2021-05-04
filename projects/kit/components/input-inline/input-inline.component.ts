@@ -20,7 +20,7 @@ import {
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/core';
+import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 
 @Component({
     selector: 'tui-input-inline',
