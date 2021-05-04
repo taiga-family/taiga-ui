@@ -22,12 +22,12 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
-    TUI_VALUE_ACCESSOR_PROVIDER,
     TuiDirection,
     TuiHintMode,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
+import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, of, Subject, timer} from 'rxjs';
