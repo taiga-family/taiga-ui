@@ -16,7 +16,6 @@ import {
     NgControl,
 } from '@angular/forms';
 import {tuiAssert, tuiRequiredSetter, TuiValidationError} from '@taiga-ui/cdk';
-import {tuiFadeIn, tuiHeightCollapse} from '@taiga-ui/core';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subject} from 'rxjs';
@@ -31,7 +30,6 @@ import {takeUntil} from 'rxjs/operators';
     // changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './field-error.template.html',
     styleUrls: ['./field-error.style.less'],
-    animations: [tuiHeightCollapse, tuiFadeIn],
 })
 export class TuiFieldErrorComponent implements OnInit, OnDestroy {
     @Input()

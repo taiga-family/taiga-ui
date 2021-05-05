@@ -2,9 +2,9 @@
     <div
         *ngIf="items.length"
         class="wrapper"
-        [@tuiFadeInList]="items.length"
-        [@tuiHeightCollapseList]="items.length"
-        [@tuiSlideInRightList]="items.length"
+        [@tuiFadeInList]="getAnimation(items.length)"
+        [@tuiHeightCollapseList]="getAnimation(items.length)"
+        [@tuiSlideInRightList]="getAnimation(items.length)"
     >
         <tui-notification-alert
             *ngFor="let item of items"

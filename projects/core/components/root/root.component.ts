@@ -7,10 +7,9 @@ import {
 } from '@angular/core';
 import {EVENT_MANAGER_PLUGINS} from '@angular/platform-browser';
 import {TUI_DIALOGS, TUI_IS_MOBILE, tuiAssert} from '@taiga-ui/cdk';
-import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {VERSION} from '@taiga-ui/core/constants';
 import {TuiNotificationsHostComponent} from '@taiga-ui/core/modules/notifications';
-import {TUI_ASSERT_ENABLED} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATIONS_DURATION, TUI_ASSERT_ENABLED} from '@taiga-ui/core/tokens';
 import {SilentEventPlugin} from '@tinkoff/ng-event-plugins';
 import {merge, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -23,8 +22,8 @@ import {map} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         'data-tui-version': VERSION,
+        '[style.--tui-duration]': 'duration + "ms"',
     },
-    animations: [tuiFadeIn],
 })
 export class TuiRootComponent {
     readonly scrollbars$ =
@@ -33,6 +32,7 @@ export class TuiRootComponent {
             : of(!this.isMobile);
 
     constructor(
+        @Inject(TUI_ANIMATIONS_DURATION) readonly duration: number,
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TUI_DIALOGS)

@@ -59,5 +59,11 @@ export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiReacti
         @Inject(HOW_TO_PATH_RESOLVER) readonly howToResolver: (path: string) => string,
     ) {
         super();
+
+        this.control.get('testValue1')!.valueChanges.subscribe(value => {
+            if (value) {
+                this.control.get('testValue1')!.setValue(false);
+            }
+        });
     }
 }

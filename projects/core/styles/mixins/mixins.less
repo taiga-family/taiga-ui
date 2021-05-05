@@ -211,7 +211,7 @@
 }
 
 // transition
-.transition(@param, @speed: 0.3s) {
+.transition(@param, @speed: var(--tui-duration)) {
     transition-property: @param;
     transition-duration: @speed;
     transition-timing-function: ease-in-out;

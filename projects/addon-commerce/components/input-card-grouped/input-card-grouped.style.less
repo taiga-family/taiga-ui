@@ -77,7 +77,7 @@
     &_inactive,
     :host._disabled &_inactive {
         color: transparent;
-        transition: color 0s 0.3s;
+        transition: color 0s var(--tui-duration);
     }
 }
 
@@ -105,7 +105,7 @@
     .textfield-input();
 
     &_card {
-        transition: color 0s 0.3s;
+        transition: color 0s var(--tui-duration);
 
         :host._disabled & {
             transition: color 0s;

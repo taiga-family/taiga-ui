@@ -1,5 +1,4 @@
 export * from './absolute-box-sizes';
-export * from './animation-duration';
 export * from './default-icons-path';
 export * from './default-marker-handler';
 export * from './editing-keys';
