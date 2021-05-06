@@ -26,7 +26,7 @@ export class TuiDialogComponent<O, I> {
             start: '40px',
             duration: this.duration,
         },
-    };
+    } as const;
 
     private readonly fullscreenAnimation = {
         value: '',
@@ -34,7 +34,7 @@ export class TuiDialogComponent<O, I> {
             start: '100vh',
             duration: this.duration,
         },
-    };
+    } as const;
 
     constructor(
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,

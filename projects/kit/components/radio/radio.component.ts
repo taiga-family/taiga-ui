@@ -67,7 +67,7 @@ export class TuiRadioComponent<T>
     readonly animation = {
         value: '',
         ...this.animationOptions,
-    };
+    } as const;
 
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;

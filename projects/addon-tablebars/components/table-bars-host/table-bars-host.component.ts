@@ -19,7 +19,7 @@ export class TuiTableBarsHostComponent {
     readonly animation = {
         value: '',
         ...this.options,
-    };
+    } as const;
 
     constructor(
         @Inject(TuiTableBarsService) readonly service: TuiTableBarsService,

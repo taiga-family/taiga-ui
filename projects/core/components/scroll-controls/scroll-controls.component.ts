@@ -51,7 +51,7 @@ export class TuiScrollControlsComponent {
     readonly animation = {
         value: '',
         ...this.options,
-    };
+    } as const;
 
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
