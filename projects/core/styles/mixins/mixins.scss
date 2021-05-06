@@ -211,7 +211,7 @@
 }
 
 // transition
-@mixin transition($param, $speed: 0.3s) {
+@mixin transition($param, $speed: var(--tui-duration, 300ms)) {
     transition-property: $param;
     transition-duration: $speed;
     transition-timing-function: ease-in-out;

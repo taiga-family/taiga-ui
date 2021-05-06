@@ -1,11 +1,11 @@
 <div
+    *ngIf="error"
     polymorpheus-outlet
-    *ngIf="!!error"
     automation-id="tui-error__text"
     class="message-text"
     [class.message-text_light]="(mode$ | async) === 'onDark'"
     [content]="error.message || (defauleErrorMessage$ | async)"
-    [context]="error.context || {}"
-    [@tuiHeightCollapse]
-    [@tuiFadeIn]
+    [context]="error.context"
+    [@tuiHeightCollapse]="animation"
+    [@tuiFadeIn]="animation"
 ></div>

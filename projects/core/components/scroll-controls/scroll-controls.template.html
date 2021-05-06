@@ -3,7 +3,7 @@
         *ngIf="bars[0]"
         class="bar bar_vertical"
         [class.bar_has-horizontal]="bars[1]"
-        [@tuiFadeIn]
+        [@tuiFadeIn]="animation"
     >
         <div tuiScrollbar="vertical" class="thumb"></div>
     </div>
@@ -11,7 +11,7 @@
         *ngIf="bars[1]"
         class="bar bar_horizontal"
         [class.bar_has-vertical]="bars[0]"
-        [@tuiFadeIn]
+        [@tuiFadeIn]="animation"
     >
         <div tuiScrollbar="horizontal" class="thumb"></div>
     </div>

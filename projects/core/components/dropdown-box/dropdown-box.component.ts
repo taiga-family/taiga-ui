@@ -1,3 +1,4 @@
+import {AnimationOptions} from '@angular/animations';
 import {
     AfterViewChecked,
     ChangeDetectionStrategy,
@@ -8,12 +9,11 @@ import {
     NgZone,
     ViewChild,
 } from '@angular/core';
-import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
+import {WINDOW} from '@ng-web-apis/common';
 import {
     getClosestElement,
     getClosestFocusable,
     inRange,
-    isIE,
     POLLING_TIME,
     px,
     setNativeFocused,
@@ -26,8 +26,8 @@ import {
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {DEFAULT_MARGIN, DEFAULT_MAX_WIDTH} from '@taiga-ui/core/constants';
 import {TuiDropdownAnimation, TuiDropdownWidth} from '@taiga-ui/core/enums';
-import {TuiDropdown} from '@taiga-ui/core/interfaces';
-import {TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
+import {TuiAnimationOptions, TuiDropdown} from '@taiga-ui/core/interfaces';
+import {TUI_ANIMATION_OPTIONS, TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
 import {TuiHorizontalDirection, TuiVerticalDirection} from '@taiga-ui/core/types';
 import {getScreenWidth} from '@taiga-ui/core/utils/dom';
 import {fromEvent, interval, merge} from 'rxjs';
@@ -49,7 +49,17 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class TuiDropdownBoxComponent implements AfterViewChecked {
     @HostBinding('@tuiDropdownAnimation')
-    dropdownAnimation!: TuiDropdownAnimation;
+    dropdownAnimation!: TuiAnimationOptions;
+
+    private readonly animationTop = {
+        value: TuiDropdownAnimation.FadeInTop,
+        ...this.options,
+    };
+
+    private readonly animationBottom = {
+        value: TuiDropdownAnimation.FadeInBottom,
+        ...this.options,
+    };
 
     /**
      * Is previous position on top (to prevent jumping up and down on scroll)
@@ -68,7 +78,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiPortalHostComponent)
         private readonly portalHost: TuiPortalHostComponent,
-        @Inject(USER_AGENT) private readonly userAgent: string,
+        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
     ) {
         merge(
             interval(POLLING_TIME),
@@ -81,6 +91,10 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             });
     }
 
+    get overscroll(): TuiOverscrollMode {
+        return this.inModal ? TuiOverscrollMode.All : TuiOverscrollMode.Scroll;
+    }
+
     ngAfterViewChecked() {
         this.calculatePositionAndSize();
     }
@@ -91,10 +105,6 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
 
     onBottomFocus() {
         this.moveFocusOutside(false);
-    }
-
-    get overscroll(): TuiOverscrollMode {
-        return this.inModal ? TuiOverscrollMode.All : TuiOverscrollMode.Scroll;
     }
 
     @tuiPure
@@ -236,7 +246,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         this.prevDirectionIsTop = finalDirection === 'top';
 
         if (finalDirection === 'top') {
-            this.dropdownAnimation = TuiDropdownAnimation.FadeInBottom;
+            this.dropdownAnimation = this.animationBottom;
 
             style.maxHeight = px(Math.min(boxHeightLimit, topAvailableHeight));
             style.top = 'auto';
@@ -244,7 +254,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
                 hostRect.bottom - directiveRect.top - DEFAULT_MARGIN + offset,
             );
         } else {
-            this.dropdownAnimation = TuiDropdownAnimation.FadeInTop;
+            this.dropdownAnimation = this.animationTop;
 
             style.maxHeight = px(Math.min(boxHeightLimit, bottomAvailableHeight));
             style.top = px(directiveRect.bottom - hostRect.top - DEFAULT_MARGIN + offset);
@@ -324,16 +334,6 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             !this.directive.sided
                 ? px(directiveRect.width)
                 : '';
-
-        if (
-            isIE(this.userAgent) &&
-            this.directive.limitMinWidth === TuiDropdownWidth.Min &&
-            !this.directive.sided
-        ) {
-            style.width = px(DEFAULT_MAX_WIDTH);
-
-            return;
-        }
 
         if (
             this.directive.limitMinWidth === TuiDropdownWidth.Min &&

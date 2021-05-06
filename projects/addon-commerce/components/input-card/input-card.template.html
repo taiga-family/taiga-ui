@@ -2,6 +2,8 @@
     class="input"
     tuiValueAccessor
     tuiTextfieldInputMode="numeric"
+    [tuiTextfieldAutocomplete]="autocomplete"
+    [tuiTextfieldCustomContent]="icon"
     [disabled]="disabled"
     [focusable]="focusable"
     [nativeId]="nativeId"
@@ -11,10 +13,9 @@
     [pseudoFocused]="pseudoFocused"
     [textMask]="textMaskOptions"
     [value]="formattedCard"
-    [tuiTextfieldAutocomplete]="autocomplete"
-    [tuiTextfieldCustomContent]="icon"
     (valueChange)="onValueChange($event)"
     (focusedChange)="onFocused($event)"
+    (hoveredChange)="onHovered($event)"
 >
     <ng-content></ng-content>
 </tui-primitive-textfield>

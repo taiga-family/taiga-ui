@@ -1,3 +1,4 @@
+import {AnimationOptions} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
@@ -10,7 +11,12 @@ import {
 import {tuiZoneOptimized} from '@taiga-ui/cdk';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
-import {TUI_ELEMENT_REF, TUI_MODE, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {
+    TUI_ANIMATION_OPTIONS,
+    TUI_ELEMENT_REF,
+    TUI_MODE,
+    TUI_SCROLL_REF,
+} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
 import {interval, Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
@@ -42,7 +48,13 @@ export class TuiScrollControlsComponent {
         tuiZoneOptimized(this.ngZone),
     );
 
+    readonly animation = {
+        value: '',
+        ...this.options,
+    } as const;
+
     constructor(
+        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Optional()

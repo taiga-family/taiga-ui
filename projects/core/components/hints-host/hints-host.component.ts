@@ -1,3 +1,4 @@
+import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -10,6 +11,7 @@ import {AbstractTuiHint} from '@taiga-ui/core/abstract';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
 import {TuiHintService} from '@taiga-ui/core/services';
+import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {Observable} from 'rxjs';
 import {skip, takeUntil} from 'rxjs/operators';
 
@@ -31,7 +33,13 @@ export class TuiHintsHostComponent {
      */
     hints: ReadonlyArray<AbstractTuiHint> = [];
 
+    readonly animation = {
+        value: '',
+        ...this.options,
+    } as const;
+
     constructor(
+        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiHintService) hints$: TuiHintService,
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,

@@ -2,14 +2,12 @@ import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/
 import {TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
-import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {TUI_DIALOG_CLOSE_STREAM, TUI_DIALOG_PROVIDERS} from './dialog.providers';
 
-const SMALL_DIALOGS_ANIMATION = {value: '', params: {start: '40px'}};
-const FULLSCREEN_DIALOGS_ANIMATION = {value: '', params: {start: '100vh'}};
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
 
 // @dynamic
@@ -20,12 +18,26 @@ const REQUIRED_ERROR = new Error('Required dialog was dismissed');
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_DIALOG_PROVIDERS,
     animations: [tuiSlideInTop, tuiFadeIn],
-    host: {
-        '[@tuiFadeIn]': 'true',
-    },
 })
 export class TuiDialogComponent<O, I> {
+    private readonly animation = {
+        value: '',
+        params: {
+            start: '40px',
+            duration: this.duration,
+        },
+    } as const;
+
+    private readonly fullscreenAnimation = {
+        value: '',
+        params: {
+            start: '100vh',
+            duration: this.duration,
+        },
+    } as const;
+
     constructor(
+        @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<TuiDialogOptions<I>, O>,
@@ -64,10 +76,11 @@ export class TuiDialogComponent<O, I> {
     }
 
     @HostBinding('@tuiSlideInTop')
+    @HostBinding('@tuiFadeIn')
     get slideInTop(): TuiAnimationOptions {
         return this.size === 'fullscreen' || this.size === 'page' || this.isMobile
-            ? FULLSCREEN_DIALOGS_ANIMATION
-            : SMALL_DIALOGS_ANIMATION;
+            ? this.fullscreenAnimation
+            : this.animation;
     }
 
     close() {

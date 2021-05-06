@@ -1,3 +1,4 @@
+import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -22,7 +23,7 @@ import {
     TuiIdentityMatcher,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
+import {TUI_ANIMATION_OPTIONS, tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 import {RadioOptions, TUI_RADIO_OPTIONS} from './radio-options';
 
@@ -63,6 +64,11 @@ export class TuiRadioComponent<T>
     @tuiDefaultProp()
     pseudoDisabled = false;
 
+    readonly animation = {
+        value: '',
+        ...this.animationOptions,
+    } as const;
+
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
@@ -72,6 +78,8 @@ export class TuiRadioComponent<T>
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TUI_ANIMATION_OPTIONS)
+        private readonly animationOptions: AnimationOptions,
         @Inject(TUI_RADIO_OPTIONS)
         private readonly options: RadioOptions,
         @Optional()
