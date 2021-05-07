@@ -220,6 +220,7 @@ export class TuiInputDateTimeComponent
 
     onDayClick(day: TuiDay) {
         this.updateValue([day, this.value[1]]);
+        this.updateNativeValue(day);
         this.open = false;
     }
 
@@ -292,6 +293,12 @@ export class TuiInputDateTimeComponent
                 (a, b) => a.toString() === b.toString(),
             )
         );
+    }
+
+    private updateNativeValue(day: TuiDay) {
+        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
+
+        this.nativeValue = `${day.toString()}${DATE_TIME_SEPARATOR}${time}`;
     }
 
     @tuiPure
