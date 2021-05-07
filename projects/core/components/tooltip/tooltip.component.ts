@@ -36,6 +36,14 @@ export class TuiTooltipComponent {
 
     @Input()
     @tuiDefaultProp()
+    showDelay = 500;
+
+    @Input()
+    @tuiDefaultProp()
+    hideDelay = 200;
+
+    @Input()
+    @tuiDefaultProp()
     describeId = '';
 
     private globalMode: TuiBrightness | null = null;
