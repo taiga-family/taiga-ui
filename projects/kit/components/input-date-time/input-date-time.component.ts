@@ -224,12 +224,6 @@ export class TuiInputDateTimeComponent
         this.open = false;
     }
 
-    updateNativeValue(day: TuiDay) {
-        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
-
-        this.nativeValue = `${day.toString()}${DATE_TIME_SEPARATOR}${time}`;
-    }
-
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
     }
@@ -299,6 +293,12 @@ export class TuiInputDateTimeComponent
                 (a, b) => a.toString() === b.toString(),
             )
         );
+    }
+
+    private updateNativeValue(day: TuiDay) {
+        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
+
+        this.nativeValue = `${day.toString()}${DATE_TIME_SEPARATOR}${time}`;
     }
 
     @tuiPure
