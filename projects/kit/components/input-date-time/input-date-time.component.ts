@@ -225,9 +225,9 @@ export class TuiInputDateTimeComponent
     }
 
     updateNativeValue(day: TuiDay) {
-        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1];
+        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
 
-        this.nativeValue = `${day.toString()}${DATE_TIME_SEPARATOR}${time ? time : ''}`;
+        this.nativeValue = `${day.toString()}${DATE_TIME_SEPARATOR}${time}`;
     }
 
     onHovered(hovered: boolean) {
