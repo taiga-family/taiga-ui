@@ -21,11 +21,9 @@ import {TuiOrientation} from '@taiga-ui/core/enums';
 import {TUI_ELEMENT_REF, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {fromEvent, interval, merge, Observable} from 'rxjs';
 import {map, switchMap, takeUntil} from 'rxjs/operators';
-import {TuiScrollbarWrapperDirective} from './scrollbar-wrapper.directive';
 
 const MIN_WIDTH = 24;
 
-// @bad TODO: add support for window scroll control
 // @dynamic
 @Directive({
     selector: '[tuiScrollbar]',
@@ -47,24 +45,17 @@ export class TuiScrollbarDirective {
         @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(ViewportScroller) private readonly viewportScroller: ViewportScroller,
-        @Inject(TuiScrollbarWrapperDirective)
-        readonly barWrapper: TuiScrollbarWrapperDirective,
     ) {
         const {nativeElement} = this.elementRef;
         const mousedown$ = typedFromEvent(nativeElement, 'mousedown');
         const mousemove$ = typedFromEvent(this.documentRef, 'mousemove');
         const mouseup$ = typedFromEvent(this.documentRef, 'mouseup');
-        const mousedownBarWrapper$ = typedFromEvent(
-            barWrapper.nativeElement,
-            'mousedown',
-        );
+        const mousedownWrapper$ = typedFromEvent(wrapper.nativeElement, 'mousedown');
 
         merge(
-            mousedownBarWrapper$.pipe(
+            mousedownWrapper$.pipe(
                 preventDefault(),
                 map(event => this.getScrolled(event, 0.5, 0.5)),
-                takeUntil(destroy$),
-                tuiZonefree(ngZone),
             ),
             mousedown$.pipe(
                 preventDefault(),
@@ -79,35 +70,35 @@ export class TuiScrollbarDirective {
                         takeUntil(mouseup$),
                     );
                 }),
-                takeUntil(destroy$),
-                tuiZonefree(ngZone),
             ),
-        ).subscribe(([scrollTop, scrollLeft]) => {
-            const [x, y] = this.viewportScroller.getScrollPosition();
+        )
+            .pipe(takeUntil(destroy$), tuiZonefree(ngZone))
+            .subscribe(([scrollTop, scrollLeft]) => {
+                const [x, y] = this.viewportScroller.getScrollPosition();
 
-            if (!this.container) {
-                this.viewportScroller.scrollToPosition([
-                    this.tuiScrollbar === TuiOrientation.Vertical ? x : scrollLeft,
-                    this.tuiScrollbar === TuiOrientation.Vertical ? scrollTop : y,
-                ]);
+                if (!this.container) {
+                    this.viewportScroller.scrollToPosition([
+                        this.tuiScrollbar === TuiOrientation.Vertical ? x : scrollLeft,
+                        this.tuiScrollbar === TuiOrientation.Vertical ? scrollTop : y,
+                    ]);
 
-                return;
-            }
+                    return;
+                }
 
-            if (this.tuiScrollbar === TuiOrientation.Vertical) {
-                renderer.setProperty(
-                    this.container.nativeElement,
-                    'scrollTop',
-                    scrollTop,
-                );
-            } else {
-                renderer.setProperty(
-                    this.container.nativeElement,
-                    'scrollLeft',
-                    scrollLeft,
-                );
-            }
-        });
+                if (this.tuiScrollbar === TuiOrientation.Vertical) {
+                    renderer.setProperty(
+                        this.container.nativeElement,
+                        'scrollTop',
+                        scrollTop,
+                    );
+                } else {
+                    renderer.setProperty(
+                        this.container.nativeElement,
+                        'scrollLeft',
+                        scrollLeft,
+                    );
+                }
+            });
 
         merge(
             fromEvent(
