@@ -13,7 +13,8 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-badge',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '{{outputValue}}',
+    template:
+        '<span class="left-content"><ng-content></ng-content></span>{{outputValue}}',
     styleUrls: ['./badge.style.less'],
     providers: [MODE_PROVIDER],
     host: {
@@ -44,7 +45,7 @@ export class TuiBadgeComponent {
 
     @HostBinding('attr.data-tui-host-padding')
     get padding(): string {
-        return isNumber(this.value.valueOf()) ? 'm' : 'l';
+        return this.isEmpty ? 'none' : isNumber(this.value.valueOf()) ? 'm' : 'l';
     }
 
     get outputValue(): string {
@@ -53,5 +54,10 @@ export class TuiBadgeComponent {
         } else {
             return String(this.value);
         }
+    }
+
+    @HostBinding('class._empty-value')
+    get isEmpty(): boolean {
+        return this.value === '';
     }
 }
