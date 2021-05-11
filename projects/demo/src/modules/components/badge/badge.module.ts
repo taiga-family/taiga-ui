@@ -1,10 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
-import {TuiModeModule} from '@taiga-ui/core';
-import {TuiBadgeModule} from '@taiga-ui/kit';
+import {TuiColorModule, TuiModeModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiBadgeModule, TuiToggleModule} from '@taiga-ui/kit';
 import {ExampleTuiBadgeComponent} from './badge.component';
 import {TuiBadgeExample1} from './examples/1';
 import {TuiBadgeExample2} from './examples/2';
@@ -16,6 +17,10 @@ import {TuiBadgeExample4} from './examples/4';
         TuiBadgeModule,
         TuiModeModule,
         TuiRepeatTimesModule,
+        TuiSvgModule,
+        TuiColorModule,
+        TuiToggleModule,
+        FormsModule,
         CommonModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiBadgeComponent)),
