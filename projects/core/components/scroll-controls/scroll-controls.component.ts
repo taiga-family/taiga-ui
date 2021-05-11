@@ -11,17 +11,11 @@ import {
 import {tuiZoneOptimized} from '@taiga-ui/cdk';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
-import {
-    TUI_ANIMATION_OPTIONS,
-    TUI_ELEMENT_REF,
-    TUI_MODE,
-    TUI_SCROLL_REF,
-} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATION_OPTIONS, TUI_MODE, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
 import {interval, Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
-// @bad TODO: handle click on bar to scroll to that position
 // @dynamic
 @Component({
     selector: 'tui-scroll-controls',
@@ -29,13 +23,7 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
     styleUrls: ['./scroll-controls.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiFadeIn],
-    providers: [
-        MODE_PROVIDER,
-        {
-            provide: TUI_ELEMENT_REF,
-            useExisting: ElementRef,
-        },
-    ],
+    providers: [MODE_PROVIDER],
     host: {
         '($.data-mode.attr)': 'mode$',
     },

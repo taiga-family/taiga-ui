@@ -12,6 +12,7 @@ import {WINDOW} from '@ng-web-apis/common';
 import {
     POLLING_TIME,
     preventDefault,
+    stopPropagation,
     TuiDestroyService,
     tuiZonefree,
     typedFromEvent,
@@ -23,7 +24,6 @@ import {map, switchMap, takeUntil} from 'rxjs/operators';
 
 const MIN_WIDTH = 24;
 
-// @bad TODO: add support for window scroll control
 // @dynamic
 @Directive({
     selector: '[tuiScrollbar]',
@@ -50,10 +50,16 @@ export class TuiScrollbarDirective {
         const mousedown$ = typedFromEvent(nativeElement, 'mousedown');
         const mousemove$ = typedFromEvent(this.documentRef, 'mousemove');
         const mouseup$ = typedFromEvent(this.documentRef, 'mouseup');
+        const mousedownWrapper$ = typedFromEvent(wrapper.nativeElement, 'mousedown');
 
-        mousedown$
-            .pipe(
+        merge(
+            mousedownWrapper$.pipe(
                 preventDefault(),
+                map(event => this.getScrolled(event, 0.5, 0.5)),
+            ),
+            mousedown$.pipe(
+                preventDefault(),
+                stopPropagation(),
                 switchMap(event => {
                     const rect = nativeElement.getBoundingClientRect();
                     const vertical = getOffsetVertical(event, rect);
@@ -64,9 +70,9 @@ export class TuiScrollbarDirective {
                         takeUntil(mouseup$),
                     );
                 }),
-                takeUntil(destroy$),
-                tuiZonefree(ngZone),
-            )
+            ),
+        )
+            .pipe(takeUntil(destroy$), tuiZonefree(ngZone))
             .subscribe(([scrollTop, scrollLeft]) => {
                 const [x, y] = this.viewportScroller.getScrollPosition();
 
