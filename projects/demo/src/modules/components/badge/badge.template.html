@@ -46,6 +46,15 @@
         >
             <tui-badge-example-4></tui-badge-example-4>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="icons"
+            i18n-heading
+            heading="With icon"
+            [content]="example5"
+        >
+            <tui-badge-example-5></tui-badge-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -55,6 +64,7 @@
                 [size]="size"
                 [status]="status"
                 [value]="values[value]"
+                [icon]="icon"
             ></tui-badge>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -98,6 +108,17 @@
                 Value. If value is a number and is more than 99, it will be
                 replaced with &laquo;99+&raquo;
             </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="icon"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="getIconVariants(iconTemplate)"
+                [(documentationPropertyValue)]="icon"
+            >
+                Icon template
+            </ng-template>
         </tui-doc-documentation>
     </ng-template>
 
@@ -126,3 +147,7 @@
         </ol>
     </ng-template>
 </tui-doc-page>
+
+<ng-template #iconTemplate polymorpheus>
+    <tui-svg src="tuiIconTooltip"></tui-svg>
+</ng-template>

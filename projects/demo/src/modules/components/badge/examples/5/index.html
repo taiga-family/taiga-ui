@@ -1,0 +1,30 @@
+<ng-template #iconWithCustomColor polymorpheus>
+    <tui-svg tuiColor="success" src="tuiIconTooltip"></tui-svg>
+</ng-template>
+
+<ng-template #defaultIcon polymorpheus>
+    <tui-svg src="tuiIconTooltip"></tui-svg>
+</ng-template>
+
+<tui-badge
+    class="tui-space_right-2"
+    status="success"
+    value="Taiga"
+    size="l"
+    [icon]="defaultIcon"
+></tui-badge>
+
+<tui-badge
+    class="tui-space_right-2"
+    status="error"
+    value="Taiga"
+    size="l"
+    [icon]="defaultIcon"
+></tui-badge>
+
+<tui-badge
+    class="tui-space_right-2"
+    status="default"
+    size="l"
+    [icon]="iconWithCustomColor"
+></tui-badge>

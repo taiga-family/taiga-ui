@@ -13,12 +13,17 @@ import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
+import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
+import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
+
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {Component} from '@angular/core';
+import {Component, TemplateRef, ViewChild} from '@angular/core';
+import {tuiPure} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -28,6 +33,8 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiBadgeComponent {
+    @ViewChild('iconTemplate') iconTemplate!: PolymorpheusContent;
+
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
@@ -54,6 +61,11 @@ export class ExampleTuiBadgeComponent {
         LESS: example4Less,
     };
 
+    readonly example5: FrontEndExample = {
+        TypeScript: example5Ts,
+        HTML: example5Html,
+    };
+
     readonly statusVariants: ReadonlyArray<TuiStatus> = [
         TuiStatus.Default,
         TuiStatus.Primary,
@@ -70,6 +82,7 @@ export class ExampleTuiBadgeComponent {
         '5': 5,
         '100': 100,
         '"100"': '100',
+        '""': '',
     };
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
@@ -81,4 +94,11 @@ export class ExampleTuiBadgeComponent {
     value: string | number = 'Taiga';
 
     hoverable = false;
+
+    icon: PolymorpheusContent | null = null;
+
+    @tuiPure
+    getIconVariants(template: TemplateRef<any>): ReadonlyArray<PolymorpheusContent> {
+        return [template, ''];
+    }
 }
