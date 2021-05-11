@@ -1,6 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSizeL} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {configureTestSuite} from 'ng-bullet';
 import {TuiStatus} from '../../../enums/status';
 import {TuiBadgeComponent} from '../badge.component';
@@ -9,7 +10,12 @@ import {TuiBadgeModule} from '../badge.module';
 describe('Badge', () => {
     @Component({
         template: `
-            <tui-badge [size]="size" [status]="status" [value]="value"></tui-badge>
+            <tui-badge
+                [size]="size"
+                [status]="status"
+                [value]="value"
+                [icon]="icon"
+            ></tui-badge>
         `,
     })
     class TestComponent {
@@ -22,6 +28,7 @@ describe('Badge', () => {
         size: TuiSizeL = 'm';
         value: number | string;
         status = TuiStatus.Default;
+        icon: PolymorpheusContent = '';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -85,6 +92,32 @@ describe('Badge', () => {
             fixture.detectChanges();
 
             expect(component.padding).toBe('l');
+        });
+
+        it('if value is empty, padding is none', () => {
+            expect(component.padding).toBe('none');
+        });
+    });
+
+    describe('states: ', () => {
+        it('if value is empty, add appropriate css class', () => {
+            testComponent.value = '';
+
+            fixture.detectChanges();
+
+            expect(
+                testComponent.element.nativeElement.classList.contains('_empty-value'),
+            ).toBeTruthy();
+        });
+
+        it('if icon is defined, add appropriate css class', () => {
+            testComponent.icon = 'some icon';
+
+            fixture.detectChanges();
+
+            expect(
+                testComponent.element.nativeElement.classList.contains('_with-icon'),
+            ).toBeTruthy();
         });
     });
 });

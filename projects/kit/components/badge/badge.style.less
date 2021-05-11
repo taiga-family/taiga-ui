@@ -14,6 +14,9 @@
     border-radius: 100px;
     white-space: nowrap;
     overflow: hidden;
+    vertical-align: middle;
+
+    --left-content-color: var(--tui-base-01);
 
     &:after {
         .transition(background);
@@ -48,9 +51,10 @@
         background-color: var(--tui-error-bg);
         color: var(--tui-text-01);
 
+        --left-content-color: var(--tui-error-fill);
+
         &:before {
             content: '';
-            color: var(--tui-error-fill);
         }
 
         &._hoverable:hover,
@@ -73,9 +77,10 @@
         background-color: var(--tui-success-bg);
         color: var(--tui-text-01);
 
+        --left-content-color: var(--tui-success-fill);
+
         &:before {
             content: '';
-            color: var(--tui-success-fill);
         }
 
         &._hoverable:hover,
@@ -98,9 +103,10 @@
         background-color: var(--tui-warning-bg);
         color: var(--tui-text-01);
 
+        --left-content-color: var(--tui-warning-fill);
+
         &:before {
             content: '';
-            color: var(--tui-warning-fill);
         }
 
         &._hoverable:hover,
@@ -179,10 +185,14 @@
     }
 
     &[data-tui-host-padding='l'] {
-        padding: 0 @padding;
+        padding: 0 @padding - 2px;
 
         &[data-tui-host-size='s'] {
-            padding: 0 @padding - 2px;
+            padding: 0 @padding - 4px;
+        }
+
+        &[data-tui-host-size='l'] {
+            padding: 0 @padding;
         }
     }
 
@@ -207,10 +217,11 @@
     &:before {
         display: block;
         background: currentColor;
-        margin: 0 6px 0 -2px;
+        margin: 0 6px 0 0;
         width: 6px;
         height: 6px;
         border-radius: 100%;
+        color: var(--left-content-color);
 
         :host[data-tui-host-size='s'] & {
             width: 4px;
@@ -223,4 +234,31 @@
             height: 8px;
         }
     }
+
+    &._with-icon {
+        &:before {
+            content: none;
+        }
+
+        .left-content {
+            display: block;
+        }
+    }
+
+    &._empty-value {
+        &:before {
+            margin: 0;
+        }
+
+        .left-content {
+            margin: 0 -4px;
+        }
+    }
+}
+
+.left-content {
+    display: none;
+    color: var(--left-content-color);
+    line-height: 0;
+    margin-left: -4px;
 }
