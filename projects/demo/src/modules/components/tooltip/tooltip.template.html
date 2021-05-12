@@ -35,6 +35,8 @@
                 [mode]="mode"
                 [describeId]="describeId"
                 [direction]="direction"
+                [showDelay]="showDelay"
+                [hideDelay]="hideDelay"
             ></tui-tooltip>
             <input placeholder="id: qwerty" tuiDescribedBy="qwerty" />
         </tui-doc-demo>
@@ -80,6 +82,22 @@
                 [(documentationPropertyValue)]="direction"
             >
                 Tooltip direction
+            </ng-template>
+            <ng-template
+                documentationPropertyName="showDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="showDelay"
+            >
+                Show Delay
+            </ng-template>
+            <ng-template
+                documentationPropertyName="hideDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="hideDelay"
+            >
+                Hide Delay
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

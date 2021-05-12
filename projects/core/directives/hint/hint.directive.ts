@@ -32,8 +32,6 @@ import {
 } from 'rxjs/operators';
 
 export const HINT_HOVERED_CLASS = '_hint_hovered';
-const SHOW_DELAY = 500;
-const HIDE_DELAY = 200;
 
 @Directive({
     selector: '[tuiHint]:not(ng-container)',
@@ -44,6 +42,14 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
 
     @Input()
     tuiHintId?: string;
+
+    @Input()
+    @tuiDefaultProp()
+    tuiHintShowDelay = 500;
+
+    @Input()
+    @tuiDefaultProp()
+    tuiHintHideDelay = 200;
 
     @Input()
     @tuiDefaultProp()
@@ -88,7 +94,9 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
                 switchMap(visible => {
                     this.toggleClass(visible);
 
-                    return of(visible).pipe(delay(visible ? SHOW_DELAY : HIDE_DELAY));
+                    return of(visible).pipe(
+                        delay(visible ? this.tuiHintShowDelay : this.tuiHintHideDelay),
+                    );
                 }),
                 switchMap(visible =>
                     visible && this.mode !== TuiHintMode.Overflow

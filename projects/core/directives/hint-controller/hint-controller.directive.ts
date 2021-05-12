@@ -27,4 +27,12 @@ export class TuiHintControllerDirective extends TuiController {
     @Input('tuiHintMode')
     @tuiDefaultProp()
     mode: TuiHintMode | null = null;
+
+    @Input('tuiHintShowDelay')
+    @tuiDefaultProp()
+    showDelay = 500;
+
+    @Input('tuiHintHideDelay')
+    @tuiDefaultProp()
+    hideDelay = 200;
 }

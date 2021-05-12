@@ -29,4 +29,7 @@ export class ExampleTuiPointerHintComponent extends AbstractExampleTuiHint {
         TypeScript: example1Ts,
         HTML: example1Html,
     };
+
+    showDelay = 0;
+    hideDelay = 0;
 }
