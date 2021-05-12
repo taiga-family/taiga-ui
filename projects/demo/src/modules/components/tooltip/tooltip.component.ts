@@ -62,7 +62,7 @@ export class ExampleTuiTooltipComponent {
 
     describeId = '';
 
-    showDelay = 0;
+    showDelay = 500;
 
-    hideDelay = 0;
+    hideDelay = 200;
 }

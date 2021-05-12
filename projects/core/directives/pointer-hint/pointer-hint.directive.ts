@@ -66,11 +66,11 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
 
         hint$
             .pipe(
-                switchMap(visible => {
-                    return of(visible).pipe(
+                switchMap(visible =>
+                    of(visible).pipe(
                         delay(visible ? this.tuiHintShowDelay : this.tuiHintHideDelay),
-                    );
-                }),
+                    ),
+                ),
                 takeUntil(destroy$),
             )
             .subscribe({
