@@ -42,7 +42,7 @@ import {
     TUI_DATA_LIST_HOST,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_TEXTFIELD_APPEARANCE,
-    TUI_TEXTIFELD_WATCHED_CONTROLLER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHintControllerDirective,
@@ -184,7 +184,7 @@ export class TuiInputTagComponent
         @Inject(TUI_TAG_STATUS) private readonly tagStatus: TuiStatus,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
-        @Inject(TUI_TEXTIFELD_WATCHED_CONTROLLER)
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
     ) {
         super(control, changeDetectorRef);
