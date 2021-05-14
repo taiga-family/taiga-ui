@@ -1,2 +1,2 @@
-export * from './manual-hint.directive';
-export * from './manual-hint.module';
+export {TuiManualHintDirective} from './manual-hint.directive';
+export {TuiManualHintModule} from './manual-hint.module';

@@ -1,2 +1,2 @@
-export * from './mode.directive';
-export * from './mode.module';
+export {TuiModeDirective} from './mode.directive';
+export {TuiModeModule} from './mode.module';

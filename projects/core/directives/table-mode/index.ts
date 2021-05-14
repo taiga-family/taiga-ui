@@ -1,2 +1,2 @@
-export * from './table-mode.directive';
-export * from './table-mode.module';
+export {TuiTableModeDirective} from './table-mode.directive';
+export {TuiTableModeModule} from './table-mode.module';

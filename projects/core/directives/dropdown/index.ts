@@ -1,2 +1,2 @@
-export * from './dropdown.directive';
-export * from './dropdown.module';
+export {TuiDropdownDirective} from './dropdown.directive';
+export {TuiDropdownModule} from './dropdown.module';

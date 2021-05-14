@@ -1,2 +1,5 @@
-export * from './mask-accessor.directive';
-export * from './mask-accessor.module';
+export {
+    fallbackAccessorFactory,
+    TuiMaskAccessorDirective,
+} from './mask-accessor.directive';
+export {TuiMaskAccessorModule} from './mask-accessor.module';

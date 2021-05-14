@@ -1,2 +1,2 @@
-export * from './pointer-hint.directive';
-export * from './pointer-hint.module';
+export {TuiPointerHintDirective} from './pointer-hint.directive';
+export {TuiPointerHintModule} from './pointer-hint.module';
