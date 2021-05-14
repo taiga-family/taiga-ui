@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
-import {TuiColorModule, TuiModeModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiModeModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiBadgeModule, TuiToggleModule} from '@taiga-ui/kit';
 import {ExampleTuiBadgeComponent} from './badge.component';
 import {TuiBadgeExample1} from './examples/1';
@@ -18,7 +18,6 @@ import {TuiBadgeExample4} from './examples/4';
         TuiModeModule,
         TuiRepeatTimesModule,
         TuiSvgModule,
-        TuiColorModule,
         TuiToggleModule,
         FormsModule,
         CommonModule,
