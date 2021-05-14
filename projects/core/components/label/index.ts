@@ -1,2 +1,2 @@
-export * from './label.component';
-export * from './label.module';
+export {TuiLabelComponent} from './label.component';
+export {TuiLabelModule} from './label.module';

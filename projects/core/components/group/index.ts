@@ -1,3 +1,3 @@
-export * from './group.component';
-export * from './group.directive';
-export * from './group.module';
+export {TuiGroupComponent} from './group.component';
+export {TuiGroupDirective} from './group.directive';
+export {TuiGroupModule} from './group.module';

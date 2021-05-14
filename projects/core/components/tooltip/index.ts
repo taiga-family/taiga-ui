@@ -1,2 +1,2 @@
-export * from './tooltip.component';
-export * from './tooltip.module';
+export {TuiTooltipComponent} from './tooltip.component';
+export {TuiTooltipModule} from './tooltip.module';

@@ -1,3 +1,3 @@
-export * from './loader.component';
-export * from './loader.directive';
-export * from './loader.module';
+export {TuiLoaderComponent} from './loader.component';
+export {TuiLoaderDirective} from './loader.directive';
+export {TuiLoaderModule} from './loader.module';

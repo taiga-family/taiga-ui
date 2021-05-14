@@ -1,2 +1,2 @@
-export * from './svg.component';
-export * from './svg.module';
+export {TuiSvgComponent} from './svg.component';
+export {TuiSvgModule} from './svg.module';

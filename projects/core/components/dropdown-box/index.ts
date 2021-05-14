@@ -1,2 +1,2 @@
-export * from './dropdown-box.component';
-export * from './dropdown-box.module';
+export {TuiDropdownBoxComponent} from './dropdown-box.component';
+export {TuiDropdownBoxModule} from './dropdown-box.module';

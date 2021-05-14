@@ -1,2 +1,2 @@
-export * from './primitive-year-picker.component';
-export * from './primitive-year-picker.module';
+export {TuiPrimitiveYearPickerComponent} from './primitive-year-picker.component';
+export {TuiPrimitiveYearPickerModule} from './primitive-year-picker.module';

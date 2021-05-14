@@ -1,2 +1,2 @@
-export * from './calendar.component';
-export * from './calendar.module';
+export {TuiCalendarComponent} from './calendar.component';
+export {TuiCalendarModule} from './calendar.module';

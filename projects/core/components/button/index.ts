@@ -1,2 +1,2 @@
-export * from './button.component';
-export * from './button.module';
+export {TuiButtonComponent} from './button.component';
+export {TuiButtonModule} from './button.module';

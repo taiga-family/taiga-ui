@@ -1,4 +1,9 @@
-export * from './dialog.component';
-export * from './dialog.module';
-export * from './dialog.providers';
-export * from './dialog.service';
+export {TuiDialogComponent} from './dialog.component';
+export {TuiDialogModule} from './dialog.module';
+export {
+    TUI_DIALOGS_CLOSE,
+    TUI_DIALOG_CLOSE_STREAM,
+    TUI_DIALOG_PROVIDERS,
+    dialogCloseStreamFactory,
+} from './dialog.providers';
+export {TuiDialogService} from './dialog.service';

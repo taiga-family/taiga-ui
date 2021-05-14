@@ -1,2 +1,2 @@
-export * from './primitive-calendar.component';
-export * from './primitive-calendar.module';
+export {TuiPrimitiveCalendarComponent} from './primitive-calendar.component';
+export {TuiPrimitiveCalendarModule} from './primitive-calendar.module';

@@ -1,3 +1,3 @@
-export * from './expand.component';
-export * from './expand.module';
-export * from './expand-content.directive';
+export {TuiExpandComponent} from './expand.component';
+export {TuiExpandModule} from './expand.module';
+export {TuiExpandContentDirective} from './expand-content.directive';

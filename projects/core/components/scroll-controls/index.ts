@@ -1,3 +1,4 @@
-export * from './scrollbar.directive';
-export * from './scroll-controls.component';
-export * from './scroll-controls.module';
+export {TuiScrollbarDirective} from './scrollbar.directive';
+export {TuiScrollControlsComponent} from './scroll-controls.component';
+export {TuiScrollControlsModule} from './scroll-controls.module';
+export {TuiScrollbarWrapperDirective} from './scrollbar-wrapper.directive';

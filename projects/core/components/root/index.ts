@@ -1,2 +1,2 @@
-export * from './root.component';
-export * from './root.module';
+export {TuiRootComponent} from './root.component';
+export {TuiRootModule} from './root.module';

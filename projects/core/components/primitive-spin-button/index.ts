@@ -1,2 +1,2 @@
-export * from './primitive-spin-button.component';
-export * from './primitive-spin-button.module';
+export {TuiPrimitiveSpinButtonComponent} from './primitive-spin-button.component';
+export {TuiPrimitiveSpinButtonModule} from './primitive-spin-button.module';

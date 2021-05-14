@@ -1,2 +1,2 @@
-export * from './error.component';
-export * from './error.module';
+export {TuiErrorComponent} from './error.component';
+export {TuiErrorModule} from './error.module';
