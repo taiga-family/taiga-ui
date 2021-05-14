@@ -86,5 +86,21 @@ describe('Badge', () => {
 
             expect(component.padding).toBe('l');
         });
+
+        it('if value is empty, padding is none', () => {
+            expect(component.padding).toBe('none');
+        });
+    });
+
+    describe('states: ', () => {
+        it('if value is empty, add appropriate css class', () => {
+            testComponent.value = '';
+
+            fixture.detectChanges();
+
+            expect(
+                testComponent.element.nativeElement.classList.contains('_empty-value'),
+            ).toBeTruthy();
+        });
     });
 });

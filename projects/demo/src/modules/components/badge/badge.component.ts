@@ -10,7 +10,6 @@ import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
-import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
@@ -51,7 +50,6 @@ export class ExampleTuiBadgeComponent {
     readonly example4: FrontEndExample = {
         TypeScript: example4Ts,
         HTML: example4Html,
-        LESS: example4Less,
     };
 
     readonly statusVariants: ReadonlyArray<TuiStatus> = [
@@ -70,6 +68,7 @@ export class ExampleTuiBadgeComponent {
         '5': 5,
         '100': 100,
         '"100"': '100',
+        '""': '',
     };
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
@@ -81,4 +80,6 @@ export class ExampleTuiBadgeComponent {
     value: string | number = 'Taiga';
 
     hoverable = false;
+
+    withIcon = false;
 }

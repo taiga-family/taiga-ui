@@ -1,5 +1,6 @@
 import {Directive, ElementRef, Inject, Input} from '@angular/core';
 import {
+    tuiDefaultProp,
     TuiDestroyService,
     TuiHoveredService,
     tuiRequiredSetter,
@@ -8,14 +9,29 @@ import {
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {distinctUntilChanged, filter, startWith, takeUntil} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {
+    delay,
+    distinctUntilChanged,
+    filter,
+    startWith,
+    switchMap,
+    takeUntil,
+} from 'rxjs/operators';
 
 @Directive({
     selector: '[tuiPointerHint]:not(ng-container)',
     providers: [TuiDestroyService],
 })
 export class TuiPointerHintDirective extends AbstractTuiHint {
+    @Input()
+    @tuiDefaultProp()
+    tuiHintShowDelay = 0;
+
+    @Input()
+    @tuiDefaultProp()
+    tuiHintHideDelay = 0;
+
     @Input()
     @tuiRequiredSetter()
     set tuiPointerHint(value: PolymorpheusContent | null) {
@@ -48,18 +64,27 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
             distinctUntilChanged(),
         );
 
-        hint$.pipe(takeUntil(destroy$)).subscribe({
-            next: visible => {
-                if (visible) {
-                    this.showTooltip();
-                } else {
+        hint$
+            .pipe(
+                switchMap(visible =>
+                    of(visible).pipe(
+                        delay(visible ? this.tuiHintShowDelay : this.tuiHintHideDelay),
+                    ),
+                ),
+                takeUntil(destroy$),
+            )
+            .subscribe({
+                next: visible => {
+                    if (visible) {
+                        this.showTooltip();
+                    } else {
+                        this.hideTooltip();
+                    }
+                },
+                complete: () => {
                     this.hideTooltip();
-                }
-            },
-            complete: () => {
-                this.hideTooltip();
-            },
-        });
+                },
+            });
 
         this.initMouseMoveSubscription();
     }

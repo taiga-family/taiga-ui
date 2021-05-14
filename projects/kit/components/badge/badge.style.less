@@ -14,6 +14,9 @@
     border-radius: 100px;
     white-space: nowrap;
     overflow: hidden;
+    vertical-align: middle;
+
+    --left-content-color: var(--tui-base-01);
 
     &:after {
         .transition(background);
@@ -48,10 +51,7 @@
         background-color: var(--tui-error-bg);
         color: var(--tui-text-01);
 
-        &:before {
-            content: '';
-            color: var(--tui-error-fill);
-        }
+        --left-content-color: var(--tui-error-fill);
 
         &._hoverable:hover,
         &._hoverable:active {
@@ -73,10 +73,7 @@
         background-color: var(--tui-success-bg);
         color: var(--tui-text-01);
 
-        &:before {
-            content: '';
-            color: var(--tui-success-fill);
-        }
+        --left-content-color: var(--tui-success-fill);
 
         &._hoverable:hover,
         &._hoverable:active {
@@ -98,10 +95,7 @@
         background-color: var(--tui-warning-bg);
         color: var(--tui-text-01);
 
-        &:before {
-            content: '';
-            color: var(--tui-warning-fill);
-        }
+        --left-content-color: var(--tui-warning-fill);
 
         &._hoverable:hover,
         &._hoverable:active {
@@ -179,10 +173,14 @@
     }
 
     &[data-tui-host-padding='l'] {
-        padding: 0 @padding;
+        padding: 0 @padding - 2px;
 
         &[data-tui-host-size='s'] {
-            padding: 0 @padding - 2px;
+            padding: 0 @padding - 4px;
+        }
+
+        &[data-tui-host-size='l'] {
+            padding: 0 @padding;
         }
     }
 
@@ -190,6 +188,11 @@
         font: var(--tui-font-text-xs);
         height: 20px;
         min-width: 20px;
+
+        .left-content:before {
+            width: 4px;
+            height: 4px;
+        }
     }
 
     &[data-tui-host-size='m'] {
@@ -202,25 +205,52 @@
         height: var(--tui-height-s);
         line-height: var(--tui-height-s);
         min-width: var(--tui-height-s);
+
+        .left-content:before {
+            margin: 0 8px 0 0;
+            width: 8px;
+            height: 8px;
+        }
+    }
+
+    &._empty-value {
+        .left-content {
+            margin: 0 -4px;
+
+            &:before {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.left-content {
+    display: none;
+    color: var(--left-content-color);
+    line-height: 0;
+
+    &:not(:empty) {
+        display: block;
+        margin-left: -4px;
+
+        &:before {
+            content: none;
+        }
+    }
+
+    :host[data-tui-host-status='error'] &,
+    :host[data-tui-host-status='success'] &,
+    :host[data-tui-host-status='warning'] & {
+        display: block;
     }
 
     &:before {
         display: block;
         background: currentColor;
-        margin: 0 6px 0 -2px;
+        margin: 0 6px 0 0;
         width: 6px;
         height: 6px;
         border-radius: 100%;
-
-        :host[data-tui-host-size='s'] & {
-            width: 4px;
-            height: 4px;
-        }
-
-        :host[data-tui-host-size='l'] & {
-            margin: 0 8px 0 0;
-            width: 8px;
-            height: 8px;
-        }
+        content: '';
     }
 }

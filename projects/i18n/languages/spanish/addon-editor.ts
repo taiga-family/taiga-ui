@@ -9,7 +9,7 @@ export const TUI_SPANISH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         fontStyle: 'Estilo de la fuente',
         fontSize: 'Tamaño de la fuente',
         bold: 'Negrita',
-        italic: 'Italica',
+        italic: 'Cursiva',
         underline: 'Subrayado',
         strikeThrough: 'Tachado',
         justify: 'Justificar',
