@@ -26,7 +26,7 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_TEXTFIELD_APPEARANCE,
-    TUI_TEXTIFELD_WATCHED_CONTROLLER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiBrightness,
     TuiHintControllerDirective,
     TuiModeDirective,
@@ -82,7 +82,7 @@ export class TuiTextAreaComponent
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
-        @Inject(TUI_TEXTIFELD_WATCHED_CONTROLLER)
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,

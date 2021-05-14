@@ -24,7 +24,7 @@ import {
     TuiHintControllerDirective,
 } from '@taiga-ui/core/directives/hint-controller';
 import {
-    TUI_TEXTIFELD_WATCHED_CONTROLLER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives/textfield-controller';
 import {TuiAppearance} from '@taiga-ui/core/enums';
@@ -110,7 +110,7 @@ export class TuiPrimitiveTextfieldComponent
     constructor(
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
-        @Inject(TUI_TEXTIFELD_WATCHED_CONTROLLER)
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
