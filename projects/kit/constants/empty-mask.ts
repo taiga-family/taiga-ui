@@ -1,5 +1,7 @@
 import {TuiTextMaskOptions} from '@taiga-ui/core';
 
 export const EMPTY_MASK: TuiTextMaskOptions = {
-    mask: () => false,
+    mask(): false {
+        return false;
+    },
 };

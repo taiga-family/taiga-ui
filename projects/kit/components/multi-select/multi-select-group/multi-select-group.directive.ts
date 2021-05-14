@@ -2,7 +2,8 @@ import {Directive, forwardRef, Optional} from '@angular/core';
 import {NG_VALUE_ACCESSOR, NgControl} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT, TuiDataListHost} from '@taiga-ui/core';
-import {TUI_MULTI_SELECT_OPTION} from '@taiga-ui/kit/components/multi-select-option';
+import {TuiMultiSelectOptionComponent} from '@taiga-ui/kit/components/multi-select-option';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TuiMultiSelectComponent} from '../multi-select.component';
 
 export function hostFallbackFactory<T>(
@@ -28,6 +29,10 @@ export function hostFallbackFactory<T>(
         }
     );
 }
+
+export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
+    TuiMultiSelectOptionComponent,
+);
 
 @Directive({
     selector: '[tuiMultiSelectGroup]',

@@ -47,6 +47,9 @@ import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellan
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
+// TODO: remove in ivy compilation
+export const TIME_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
+
 // @dynamic
 @Component({
     selector: 'tui-input-date-time',
@@ -61,7 +64,7 @@ import {map} from 'rxjs/operators';
         {
             provide: TUI_CALENDAR_DATA_STREAM,
             deps: [[new Optional(), new Self(), NgControl]],
-            useFactory: TuiReplayControlValueChangesFactory,
+            useFactory: TIME_STREAM_FACTORY,
         },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
     ],
