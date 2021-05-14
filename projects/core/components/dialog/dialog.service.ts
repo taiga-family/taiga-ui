@@ -20,5 +20,5 @@ const DEFAULT_OPTIONS: TuiDialogOptions<undefined> = {
 })
 export class TuiDialogService extends AbstractTuiDialogService<TuiDialogOptions<any>> {
     protected readonly component = DIALOG;
-    protected readonly defaultOptions = DEFAULT_OPTIONS;
+    protected readonly defaultOptions: TuiDialogOptions<any> = DEFAULT_OPTIONS;
 }
