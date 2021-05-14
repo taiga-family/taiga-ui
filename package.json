@@ -22,6 +22,7 @@
         "typecheck": "tsc --noEmit --skipLibCheck --project tsconfig.spec.json",
         "*** Build **": "",
         "build": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --configuration=production",
+        "postbuild": "node scripts/checkDist.js",
         "build:demo": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod --configuration=production",
         "postbuild:demo": "node scripts/checkDist.js && cp ./dist/demo/browser/index.html ./dist/demo/browser/404.html",
         "*** Icons ***": "",
