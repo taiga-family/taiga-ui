@@ -1,13 +1,29 @@
-import {Directive, ElementRef, HostBinding, Inject, Input} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Directive,
+    ElementRef,
+    HostBinding,
+    Inject,
+    Input,
+} from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiLazyLoadingService} from './lazy-loading.service';
 
+import {fromEvent} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+
 @Directive({
     selector: 'img[loading="lazy"]',
-    providers: [TuiLazyLoadingService, IntersectionObserverService, TuiDestroyService],
+    providers: [
+        TuiDestroyService,
+        TuiLazyLoadingService,
+        IntersectionObserverService,
+        TuiDestroyService,
+    ],
     host: {
-        '[style.animation]': '"tuiSkeletonVibe ease-in-out 1s infinite alternate"',
+        '[style.animation]': 'animation',
+        '[style.background-color]': '"rgba(0, 0, 0, .16)"',
     },
 })
 export class TuiLazyLoadingDirective {
@@ -17,21 +33,35 @@ export class TuiLazyLoadingDirective {
         this.src$.next(src);
     }
 
+    animation = 'tuiSkeletonVibe ease-in-out 1s infinite alternate';
+
     @HostBinding('attr.src')
     src: string | null = null;
 
     private readonly supported = 'loading' in this.elementRef.nativeElement;
 
     constructor(
+        @Inject(TuiDestroyService)
+        private readonly destroy$: TuiDestroyService,
+        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiLazyLoadingService)
         private readonly src$: TuiLazyLoadingService,
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLImageElement>,
     ) {
+        fromEvent(this.elementRef.nativeElement, 'load')
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => this.cancelSkeletonAnimation());
+
         if (!this.supported) {
             this.src$.subscribe(src => {
                 this.src = src;
             });
         }
+    }
+
+    private cancelSkeletonAnimation() {
+        this.animation = '';
+        this.changeDetectorRef.markForCheck();
     }
 }
