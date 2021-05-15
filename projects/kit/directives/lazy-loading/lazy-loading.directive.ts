@@ -7,8 +7,7 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
     selector: 'img[loading="lazy"]',
     providers: [TuiLazyLoadingService, IntersectionObserverService, TuiDestroyService],
     host: {
-        '[style.animation]':
-            '"tuiSkeletonBackgroundVibe ease-in-out 1s infinite alternate"',
+        '[style.animation]': '"tuiSkeletonVibe ease-in-out 1s infinite alternate"',
     },
 })
 export class TuiLazyLoadingDirective {
