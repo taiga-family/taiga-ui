@@ -39,6 +39,9 @@ import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+// TODO: remove in ivy compilation
+export const SELECT_OPTION: unknown = TUI_SELECT_OPTION;
+
 @Component({
     selector: 'tui-select',
     templateUrl: './select.template.html',
@@ -55,7 +58,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
         },
         {
             provide: TUI_OPTION_CONTENT,
-            useValue: TUI_SELECT_OPTION,
+            useValue: SELECT_OPTION,
         },
         FIXED_DROPDOWN_CONTROLLER_PROVIDER,
     ],

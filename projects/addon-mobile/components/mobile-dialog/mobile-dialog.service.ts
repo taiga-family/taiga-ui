@@ -6,9 +6,8 @@ import {TuiMobileDialogOptions} from './mobile-dialog-options';
 import {TuiMobileDialogComponent} from './mobile-dialog.component';
 
 const DIALOG = new PolymorpheusComponent(TuiMobileDialogComponent);
-const DEFAULT_OPTIONS: TuiMobileDialogOptions<undefined> = {
+const DEFAULT_OPTIONS: TuiMobileDialogOptions<void> = {
     label: '',
-    data: undefined,
     actions: ['OK'],
 };
 
@@ -19,12 +18,13 @@ export class TuiMobileDialogService extends AbstractTuiDialogService<
     TuiMobileDialogOptions<any>
 > {
     protected readonly component = DIALOG;
-    protected readonly defaultOptions = DEFAULT_OPTIONS;
+    protected readonly defaultOptions: TuiMobileDialogOptions<any> = DEFAULT_OPTIONS;
 
     open<I, O = number>(
         content: PolymorpheusContent<TuiBaseDialogContext<O> & TuiMobileDialogOptions<I>>,
         options: Partial<TuiMobileDialogOptions<I>> = {},
     ): Observable<O> {
-        return super.open(content, options);
+        // TODO: fix type
+        return super.open(content as any, options);
     }
 }

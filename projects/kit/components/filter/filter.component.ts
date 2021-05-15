@@ -28,10 +28,6 @@ import {
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-const TUI_DEFAULT_CONTENT_STRINGIFY: PolymorpheusContent<
-    TuiContextWithImplicit<any>
-> = item => TUI_DEFAULT_STRINGIFY(item.$implicit);
-
 // @bad TODO: Add active zone to track focus
 @Component({
     selector: 'tui-filter',
@@ -55,7 +51,8 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
 
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent<any> = TUI_DEFAULT_CONTENT_STRINGIFY;
+    content: PolymorpheusContent<any> = ({$implicit}: TuiContextWithImplicit<unknown>) =>
+        TUI_DEFAULT_STRINGIFY($implicit);
 
     @Input()
     @tuiDefaultProp()

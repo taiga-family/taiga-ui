@@ -59,6 +59,9 @@ import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellan
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {takeUntil} from 'rxjs/operators';
 
+// TODO: remove in ivy compilation
+export const RANGE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
+
 @Component({
     selector: 'tui-input-date-range',
     templateUrl: './input-date-range.template.html',
@@ -71,7 +74,7 @@ import {takeUntil} from 'rxjs/operators';
         {
             provide: TUI_CALENDAR_DATA_STREAM,
             deps: [[new Optional(), new Self(), NgControl]],
-            useFactory: TuiReplayControlValueChangesFactory,
+            useFactory: RANGE_STREAM_FACTORY,
         },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
     ],
