@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.9.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.9.0...v2.9.1) (2021-05-15)
+
+
+### Bug Fixes
+
+* **all:** fix duplication of private imports for Webpack 5 ([#399](https://github.com/TinkoffCreditSystems/taiga-ui/issues/399)) ([bb89b2d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bb89b2d70f2da108f2f7bc5daeba93323bc4a68c))
+
 ## [2.9.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.8.2...v2.9.0) (2021-05-14)
 
 ### Features
