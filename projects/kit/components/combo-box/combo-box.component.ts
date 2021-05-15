@@ -47,7 +47,7 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // TODO: remove in ivy compilation
-export const COMBOBOX_OPTION = TUI_SELECT_OPTION;
+export const COMBOBOX_OPTION: any = TUI_SELECT_OPTION;
 
 @Component({
     selector: 'tui-combo-box',

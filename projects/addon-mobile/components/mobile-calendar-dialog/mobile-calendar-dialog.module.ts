@@ -3,6 +3,9 @@ import {TuiMobileCalendarModule} from '@taiga-ui/addon-mobile/components/mobile-
 import {TUI_MOBILE_CALENDAR} from '@taiga-ui/kit';
 import {TuiMobileCalendarDialogComponent} from './mobile-calendar-dialog.component';
 
+// TODO: remove in ivy compilation
+export const MOBILE_CALENDAR_COMPONENT = TuiMobileCalendarDialogComponent;
+
 @NgModule({
     imports: [TuiMobileCalendarModule],
     declarations: [TuiMobileCalendarDialogComponent],
@@ -11,7 +14,7 @@ import {TuiMobileCalendarDialogComponent} from './mobile-calendar-dialog.compone
     providers: [
         {
             provide: TUI_MOBILE_CALENDAR,
-            useValue: TuiMobileCalendarDialogComponent,
+            useValue: MOBILE_CALENDAR_COMPONENT,
         },
     ],
 })

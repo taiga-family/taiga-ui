@@ -34,6 +34,13 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
     TuiMultiSelectOptionComponent,
 );
 
+// TODO: remove in ivy compilation
+export const MULTI_SELECT_ACCESSOR = {
+    writeValue: EMPTY_FUNCTION,
+    registerOnChange: EMPTY_FUNCTION,
+    registerOnTouched: EMPTY_FUNCTION,
+};
+
 @Directive({
     selector: '[tuiMultiSelectGroup]',
     providers: [
@@ -52,11 +59,7 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
         {
             provide: NG_VALUE_ACCESSOR,
             multi: true,
-            useValue: {
-                writeValue: EMPTY_FUNCTION,
-                registerOnChange: EMPTY_FUNCTION,
-                registerOnTouched: EMPTY_FUNCTION,
-            },
+            useValue: MULTI_SELECT_ACCESSOR,
         },
     ],
 })

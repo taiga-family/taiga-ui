@@ -51,7 +51,8 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
 
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent<any> = item => TUI_DEFAULT_STRINGIFY(item.$implicit);
+    content: PolymorpheusContent<any> = ({$implicit}: TuiContextWithImplicit<unknown>) =>
+        TUI_DEFAULT_STRINGIFY($implicit);
 
     @Input()
     @tuiDefaultProp()
