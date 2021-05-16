@@ -12,15 +12,23 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TuiContextWithImplicit,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
+    HINT_CONTROLLER_PROVIDER,
+    TUI_HINT_WATCHED_CONTROLLER,
     TUI_TEXTFIELD_SIZE,
+    TuiHintControllerDirective,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {InputPasswordOptions, TUI_INPUT_PASSWORD_OPTIONS} from './input-password-options';
 
@@ -35,6 +43,7 @@ import {InputPasswordOptions, TUI_INPUT_PASSWORD_OPTIONS} from './input-password
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputPasswordComponent),
         },
+        HINT_CONTROLLER_PROVIDER,
     ],
 })
 export class TuiInputPasswordComponent
@@ -57,6 +66,8 @@ export class TuiInputPasswordComponent
         readonly passwordTexts$: Observable<[string, string]>,
         @Inject(TUI_INPUT_PASSWORD_OPTIONS)
         public readonly options: InputPasswordOptions,
+        @Inject(TUI_HINT_WATCHED_CONTROLLER)
+        readonly hintController: TuiHintControllerDirective,
     ) {
         super(control, changeDetectorRef);
     }
@@ -71,12 +82,23 @@ export class TuiInputPasswordComponent
         return !!this.textfield && this.textfield.focused;
     }
 
-    get icon(): string {
+    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
         if (this.isPasswordHidden) {
-            return this.options.icons.hide(this.textfieldSize.size);
+            return this.options.icons.hide;
         }
 
-        return this.options.icons.show(this.textfieldSize.size);
+        return this.options.icons.show;
+    }
+
+    get context(): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
+        return this.getContext(this.textfieldSize.size);
+    }
+
+    @tuiPure
+    private getContext(
+        $implicit: TuiSizeS | TuiSizeL,
+    ): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
+        return {$implicit};
     }
 
     get inputType(): string {

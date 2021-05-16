@@ -7,7 +7,7 @@ import {TUI_HINT_CONTROLLER} from './hint-controller.token';
 
 // TODO: v2.0 use in Charts
 @Directive({
-    selector: '[tuiHintContent]',
+    selector: '[tuiHintContent],[tuiHintDirection],[tuiHintMode]',
     providers: [
         {
             provide: TUI_HINT_CONTROLLER,

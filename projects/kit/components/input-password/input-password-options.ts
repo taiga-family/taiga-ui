@@ -1,23 +1,22 @@
 import {InjectionToken} from '@angular/core';
-import {TuiHintMode} from '@taiga-ui/core/enums';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface InputPasswordOptions {
-    readonly hintMode: Readonly<TuiHintMode | null>;
     readonly icons: Readonly<{
-        hide: (size: TuiSizeS | TuiSizeL) => string;
-        show: (size: TuiSizeS | TuiSizeL) => string;
+        hide: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>;
+        show: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>;
     }>;
 }
 
 /** Default values for the input password options. */
 export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: InputPasswordOptions = {
-    hintMode: null,
     icons: {
-        hide: (size: TuiSizeS | TuiSizeL): string =>
-            size === 's' ? 'tuiIconEyeClosed' : 'tuiIconHideLarge',
-        show: (size: TuiSizeS | TuiSizeL): string =>
-            size === 's' ? 'tuiIconEyeOpen' : 'tuiIconShowLarge',
+        hide: ({$implicit}) =>
+            $implicit === 's' ? 'tuiIconEyeClosed' : 'tuiIconHideLarge',
+        show: ({$implicit}) =>
+            $implicit === 's' ? 'tuiIconEyeOpen' : 'tuiIconShowLarge',
     },
 };
 

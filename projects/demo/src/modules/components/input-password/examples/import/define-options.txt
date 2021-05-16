@@ -7,7 +7,10 @@ import {TUI_INPUT_PASSWORD_OPTIONS, TUI_INPUT_PASSWORD_DEFAULT_OPTIONS} from '@t
         provide: TUI_INPUT_PASSWORD_OPTIONS,
         useValue: {
             ...TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
-            hintMode: 'error'
+            icons: {
+                hide: 'tuiIconEyeClosed',
+                show: 'tuiIconEyeOpen'
+            }
         }
     }],
 ...

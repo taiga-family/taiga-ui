@@ -7,14 +7,6 @@ import {
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
-export function hideIcon(): string {
-    return 'tuiIconEyeClosed';
-}
-
-export function showIcon(): string {
-    return 'tuiIconEyeOpen';
-}
-
 @Component({
     selector: 'tui-input-password-example-2',
     templateUrl: './index.html',
@@ -25,10 +17,9 @@ export function showIcon(): string {
             provide: TUI_INPUT_PASSWORD_OPTIONS,
             useValue: {
                 ...TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
-                hintMode: 'onDark',
                 icons: {
-                    hide: hideIcon,
-                    show: showIcon,
+                    hide: 'tuiIconEyeClosed',
+                    show: 'tuiIconEyeOpen',
                 },
             },
         },
