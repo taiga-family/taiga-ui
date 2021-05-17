@@ -67,12 +67,18 @@ export class TuiSliderComponent
         return 0;
     }
 
-    protected processStep(increment: boolean) {
+    protected processStep(increment: boolean, limits: [number, number]) {
         const fraction = this.getFractionFromValue(this.value);
         const step = this.discrete ? 1 / this.steps : SLIDER_KEYBOARD_STEP;
-        const value = this.getValueFromFraction(
+        let value = this.getValueFromFraction(
             increment ? fraction + step : fraction - step,
         );
+
+        if (limits && value < limits[0]) {
+            value = limits[0];
+        } else if (limits && value > limits[1]) {
+            value = limits[1];
+        }
 
         this.processValue(value);
     }
