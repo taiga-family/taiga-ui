@@ -7,7 +7,6 @@ import {
     TuiButtonModule,
     TuiHintControllerModule,
     TuiLinkModule,
-    TuiModeModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputPasswordModule} from '@taiga-ui/kit';
@@ -26,7 +25,6 @@ import {ExampleTuiInputPasswordComponent} from './input-password.component';
         InheritedDocumentationModule,
         TuiAddonDocModule,
         TuiButtonModule,
-        TuiModeModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputPasswordComponent)),

@@ -50,7 +50,6 @@ import {InputPasswordOptions, TUI_INPUT_PASSWORD_OPTIONS} from './input-password
             useExisting: forwardRef(() => TuiInputPasswordComponent),
         },
         HINT_CONTROLLER_PROVIDER,
-        TuiDestroyService,
         MODE_PROVIDER,
     ],
 })
@@ -89,7 +88,7 @@ export class TuiInputPasswordComponent
     }
 
     get computedMode(): TuiHintMode | TuiBrightness | null {
-        return this.hintController.mode || (this.globalMode ? this.globalMode : null);
+        return this.hintController.mode || this.globalMode;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
