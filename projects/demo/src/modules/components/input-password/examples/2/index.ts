@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {
     TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
     TUI_INPUT_PASSWORD_OPTIONS,
-} from '@taiga-ui/kit/components/input-password/input-password-options';
+} from '@taiga-ui/kit';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

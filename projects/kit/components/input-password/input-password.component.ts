@@ -13,15 +13,20 @@ import {
     AbstractTuiControl,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiContextWithImplicit,
+    TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
     HINT_CONTROLLER_PROVIDER,
+    MODE_PROVIDER,
     TUI_HINT_WATCHED_CONTROLLER,
+    TUI_MODE,
     TUI_TEXTFIELD_SIZE,
+    TuiBrightness,
     TuiHintControllerDirective,
+    TuiHintMode,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
@@ -30,6 +35,7 @@ import {
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {InputPasswordOptions, TUI_INPUT_PASSWORD_OPTIONS} from './input-password-options';
 
 // @dynamic
@@ -44,6 +50,8 @@ import {InputPasswordOptions, TUI_INPUT_PASSWORD_OPTIONS} from './input-password
             useExisting: forwardRef(() => TuiInputPasswordComponent),
         },
         HINT_CONTROLLER_PROVIDER,
+        TuiDestroyService,
+        MODE_PROVIDER,
     ],
 })
 export class TuiInputPasswordComponent
@@ -53,6 +61,8 @@ export class TuiInputPasswordComponent
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    private globalMode: TuiBrightness | null = null;
 
     constructor(
         @Optional()
@@ -68,8 +78,18 @@ export class TuiInputPasswordComponent
         public readonly options: InputPasswordOptions,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
+        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
     ) {
         super(control, changeDetectorRef);
+
+        mode$.pipe(takeUntil(destroy$)).subscribe(mode => {
+            this.globalMode = mode;
+        });
+    }
+
+    get computedMode(): TuiHintMode | TuiBrightness | null {
+        return this.hintController.mode || (this.globalMode ? this.globalMode : null);
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
@@ -83,11 +103,7 @@ export class TuiInputPasswordComponent
     }
 
     get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
-        if (this.isPasswordHidden) {
-            return this.options.icons.hide;
-        }
-
-        return this.options.icons.show;
+        return this.isPasswordHidden ? this.options.icons.hide : this.options.icons.show;
     }
 
     get context(): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {

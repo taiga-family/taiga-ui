@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface InputPasswordOptions {
