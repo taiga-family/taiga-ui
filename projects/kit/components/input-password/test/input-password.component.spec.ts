@@ -4,9 +4,11 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiSizeL, TuiSizeS, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
+import {PolymorpheusHandler} from '@tinkoff/ng-polymorpheus';
 import {configureTestSuite} from 'ng-bullet';
 import {TuiInputPasswordComponent} from '../input-password.component';
 import {TuiInputPasswordModule} from '../input-password.module';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 
 describe('InputPassword', () => {
     @Component({
@@ -36,6 +38,12 @@ describe('InputPassword', () => {
         return pageObject.getByAutomationId(`tui-password__icon`);
     }
 
+    function getIconScr(): string {
+        return (component.icon as PolymorpheusHandler<
+            TuiContextWithImplicit<TuiSizeS | TuiSizeL>
+        >)(component.context) as string;
+    }
+
     configureTestSuite(() => {
         TestBed.configureTestingModule({
             imports: [
@@ -60,35 +68,38 @@ describe('InputPassword', () => {
     describe('Behavior of the Show Password icon"', () => {
         it('It is initially present and represents the "Closed Eye"', () => {
             const icon = getIcon();
+            const iconSrc = getIconScr();
 
             expect(icon).not.toBeNull();
-            expect(icon!.attributes['ng-reflect-src']).toBe('tuiIconHideLarge');
+            expect(iconSrc).toBe('tuiIconHideLarge');
         });
 
         it('When you click on it, the icon represents "Open eye"', () => {
             const icon = getIcon();
 
             icon!.nativeElement.click();
-            fixture.detectChanges();
+
+            const iconSrc = getIconScr();
 
             expect(icon).not.toBeNull();
-            expect(icon!.attributes['ng-reflect-src']).toBe('tuiIconShowLarge');
+            expect(iconSrc).toBe('tuiIconShowLarge');
         });
 
         it('Small icons are small', () => {
-            const icon = getIcon();
-
             testComponent.size = 's';
             fixture.detectChanges();
 
-            expect(icon).not.toBeNull();
-            expect(icon!.attributes['ng-reflect-src']).toBe('tuiIconEyeClosed');
+            const icon = getIcon();
+            let iconSrc = getIconScr();
+
+            expect(iconSrc).toBe('tuiIconEyeClosed');
 
             icon!.nativeElement.click();
-            fixture.detectChanges();
+
+            iconSrc = getIconScr();
 
             expect(icon).not.toBeNull();
-            expect(icon!.attributes['ng-reflect-src']).toBe('tuiIconEyeOpen');
+            expect(iconSrc).toBe('tuiIconEyeOpen');
         });
 
         it('If readOnly - no icon', () => {
