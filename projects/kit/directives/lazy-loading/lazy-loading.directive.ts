@@ -16,7 +16,6 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
     selector: 'img[loading="lazy"]',
     providers: [TuiLazyLoadingService, IntersectionObserverService, TuiDestroyService],
     host: {
-        '[style.animation]': 'animation',
         '[style.background-color]': '"rgba(0, 0, 0, .16)"',
     },
 })
@@ -27,6 +26,7 @@ export class TuiLazyLoadingDirective {
         this.src$.next(src);
     }
 
+    @HostBinding('style.animation')
     animation = 'tuiSkeletonVibe ease-in-out 1s infinite alternate';
 
     @HostBinding('attr.src')
