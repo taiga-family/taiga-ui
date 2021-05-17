@@ -24,10 +24,20 @@
 }
 
 :host-context(.tui-group_collapsed.tui-group_orientation_vertical) {
-    &:not(:last-child) {
+    margin-right: -2px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:not(.tui-group_orientation_horizontal) {
         margin-bottom: -2px;
         margin-right: 0;
-        margin-bottom: initial;
+    }
+
+    &:not(.tui-group_orientation_horizontal):not(:last-child) {
+        margin-right: 0;
+        margin-bottom: -2px;
     }
 }
 
