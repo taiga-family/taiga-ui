@@ -35,16 +35,15 @@ export class TuiLazyLoadingDirective {
     private readonly supported = 'loading' in this.elementRef.nativeElement;
 
     constructor(
-        @Inject(TuiDestroyService)
-        private readonly destroy$: TuiDestroyService,
         @Inject(TuiLazyLoadingService)
         private readonly src$: TuiLazyLoadingService,
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLImageElement>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         fromEvent(this.elementRef.nativeElement, 'load')
-            .pipe(takeUntil(this.destroy$), watch(changeDetectorRef))
+            .pipe(takeUntil(destroy$), watch(changeDetectorRef))
             .subscribe(() => this.cancelSkeletonAnimation());
 
         if (!this.supported) {
