@@ -15,12 +15,7 @@ import {takeUntil} from 'rxjs/operators';
 
 @Directive({
     selector: 'img[loading="lazy"]',
-    providers: [
-        TuiDestroyService,
-        TuiLazyLoadingService,
-        IntersectionObserverService,
-        TuiDestroyService,
-    ],
+    providers: [TuiLazyLoadingService, IntersectionObserverService, TuiDestroyService],
     host: {
         '[style.animation]': 'animation',
         '[style.background-color]': '"rgba(0, 0, 0, .16)"',
