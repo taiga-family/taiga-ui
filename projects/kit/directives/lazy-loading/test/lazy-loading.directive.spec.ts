@@ -1,13 +1,12 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {TuiLazyLoadingModule} from '@taiga-ui/kit/directives';
 import {configureTestSuite} from 'ng-bullet';
 import {fromEvent} from 'rxjs';
 
-import {TuiLazyLoadingModule} from '@taiga-ui/kit/directives';
-
 describe('TuiLazyLoading directive', () => {
     @Component({
-        template: ` <img id="image" loading="lazy" src="https://picsum.photos/1/1" /> `,
+        template: `<img id="image" loading="lazy" src="https://picsum.photos/1/1" />`,
     })
     class TestComponent {}
 
