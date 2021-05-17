@@ -2,8 +2,6 @@ export * from './brightness';
 export * from './color';
 export * from './data-list-role';
 export * from './decimal-symbol';
-export * from './dialog-context';
-export * from './dialog-options';
 export * from './dialog-size';
 export * from './direction';
 export * from './items';

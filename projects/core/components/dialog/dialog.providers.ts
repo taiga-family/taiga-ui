@@ -8,7 +8,7 @@ import {
     TuiDialog,
     typedFromEvent,
 } from '@taiga-ui/cdk';
-import {TuiDialogOptions} from '@taiga-ui/core/types';
+import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, merge, Observable} from 'rxjs';
 import {filter, switchMapTo, take, takeUntil} from 'rxjs/operators';

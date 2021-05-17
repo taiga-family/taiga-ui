@@ -15,7 +15,7 @@
     ></tui-bar-chart>
 </tui-axes>
 
-<ng-template polymorpheus #hint="polymorpheus" let-setIndex>
+<ng-template #hint let-setIndex>
     <p *ngFor="let item of value; let index = index" class="hint">
         <span class="dot" [tuiBackground]="getBackground(index)"></span>
         <span class="name">{{getSetName(index)}}</span>

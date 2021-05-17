@@ -18,8 +18,6 @@ import {
     TuiRadioListModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {DialogExampleWithDataComponent} from './dialog-example-with-data/dialog-example-with-data.component';
-import {DialogExampleWithDataModule} from './dialog-example-with-data/dialog-example-with-data.module';
 import {DialogExampleComponent} from './dialog-example/dialog-example.component';
 import {DialogExampleModule} from './dialog-example/dialog-example.module';
 import {ExampleTuiDialogsComponent} from './dialogs.component';
@@ -45,7 +43,6 @@ import {TuiDialogExampleComponent5} from './examples/5';
         TuiPreventDefaultModule,
         TuiNotificationModule,
         DialogExampleModule,
-        DialogExampleWithDataModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiDialogsComponent)),
     ],
@@ -57,7 +54,7 @@ import {TuiDialogExampleComponent5} from './examples/5';
         TuiDialogExampleComponent4,
         TuiDialogExampleComponent5,
     ],
-    entryComponents: [DialogExampleComponent, DialogExampleWithDataComponent],
+    entryComponents: [DialogExampleComponent],
     exports: [ExampleTuiDialogsComponent],
 })
 export class ExampleTuiDialogsModule {}

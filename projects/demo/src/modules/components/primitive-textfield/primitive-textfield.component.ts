@@ -153,7 +153,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiFie
 
     hintMode: TuiHintMode | null = null;
 
-    @ViewChild('tuiIconInteractiveContent')
+    @ViewChild('interactiveContent')
     private readonly interactiveIcon?: PolymorpheusTemplate<{}>;
 
     get customContent(): string | null {
