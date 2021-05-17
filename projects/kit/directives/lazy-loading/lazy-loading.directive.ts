@@ -7,7 +7,7 @@ import {
     Input,
 } from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {TuiDestroyService, watch} from '@taiga-ui/cdk';
 import {fromEvent} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {TuiLazyLoadingService} from './lazy-loading.service';
@@ -37,14 +37,14 @@ export class TuiLazyLoadingDirective {
     constructor(
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
-        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiLazyLoadingService)
         private readonly src$: TuiLazyLoadingService,
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLImageElement>,
+        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         fromEvent(this.elementRef.nativeElement, 'load')
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntil(this.destroy$), watch(changeDetectorRef))
             .subscribe(() => this.cancelSkeletonAnimation());
 
         if (!this.supported) {
@@ -56,6 +56,5 @@ export class TuiLazyLoadingDirective {
 
     private cancelSkeletonAnimation() {
         this.animation = '';
-        this.changeDetectorRef.markForCheck();
     }
 }
