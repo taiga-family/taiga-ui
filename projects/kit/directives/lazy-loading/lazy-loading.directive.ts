@@ -44,16 +44,12 @@ export class TuiLazyLoadingDirective {
     ) {
         fromEvent(this.elementRef.nativeElement, 'load')
             .pipe(takeUntil(destroy$), watch(changeDetectorRef))
-            .subscribe(() => this.cancelSkeletonAnimation());
+            .subscribe(() => (this.animation = ''));
 
         if (!this.supported) {
             this.src$.subscribe(src => {
                 this.src = src;
             });
         }
-    }
-
-    private cancelSkeletonAnimation() {
-        this.animation = '';
     }
 }
