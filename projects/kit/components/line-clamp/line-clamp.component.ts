@@ -1,5 +1,4 @@
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
@@ -7,6 +6,7 @@ import {
     HostListener,
     Inject,
     Input,
+    OnInit,
     Renderer2,
     ViewChild,
 } from '@angular/core';
@@ -21,7 +21,7 @@ import {filter, mapTo, pairwise, startWith, switchMap} from 'rxjs/operators';
     styleUrls: ['./line-clamp.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLineClampComponent implements AfterViewInit {
+export class TuiLineClampComponent implements OnInit {
     @Input()
     @tuiDefaultProp()
     set linesLimit(linesLimit: number) {
@@ -99,7 +99,7 @@ export class TuiLineClampComponent implements AfterViewInit {
         return !this.outlet ? 0 : this.outlet.nativeElement.scrollHeight + 4 || null;
     }
 
-    ngAfterViewInit() {
+    ngOnInit() {
         this.initialized = true;
     }
 
