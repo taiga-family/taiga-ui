@@ -4,8 +4,9 @@ import {TuiSizeL} from '@taiga-ui/core';
 import {DEFAULT_ROUTER_LINK_OPTIONS} from '@taiga-ui/kit/constants';
 import {TuiBreadCrumbsItem} from '@taiga-ui/kit/interfaces';
 
+/** @deprecated use `<tui-breadcrumbs>` from {@link TuiBreadcrumbsWrapperComponent} */
 @Component({
-    selector: 'tui-breadcrumbs',
+    selector: 'tui-breadcrumbs[items]',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './breadcrumbs.template.html',
     styleUrls: ['./breadcrumbs.style.less'],

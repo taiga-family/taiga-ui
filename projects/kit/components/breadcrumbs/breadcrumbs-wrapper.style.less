@@ -1,0 +1,17 @@
+@import 'taiga-ui-local';
+
+:host {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    font: var(--tui-font-text-s);
+
+    &[data-size='l'] {
+        font: var(--tui-font-text-m);
+    }
+}
+
+.icon {
+    margin: 0 @space;
+    color: var(--tui-text-03);
+}

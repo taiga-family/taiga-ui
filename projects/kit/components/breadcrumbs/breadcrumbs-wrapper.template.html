@@ -1,0 +1,4 @@
+<ng-container *ngFor="let item of items; let last = last">
+    <ng-container *ngTemplateOutlet="item"></ng-container>
+    <tui-svg *ngIf="!last" class="icon" src="tuiIconChevronRight"></tui-svg>
+</ng-container>
