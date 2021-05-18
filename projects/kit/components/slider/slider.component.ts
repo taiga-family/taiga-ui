@@ -74,6 +74,7 @@ export class TuiSliderComponent
         let value = this.getValueFromFraction(
             increment ? fraction + step : fraction - step,
         );
+
         value = clamp(value, limits[0], limits[1]);
         this.processValue(value);
     }
