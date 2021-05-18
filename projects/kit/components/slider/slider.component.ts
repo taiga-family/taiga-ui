@@ -14,6 +14,7 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
+    clamp,
 } from '@taiga-ui/cdk';
 import {AbstractTuiSlider, SLIDER_KEYBOARD_STEP} from '@taiga-ui/kit/abstract';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
@@ -70,15 +71,11 @@ export class TuiSliderComponent
     protected processStep(increment: boolean, limits: [number, number]) {
         const fraction = this.getFractionFromValue(this.value);
         const step = this.discrete ? 1 / this.steps : SLIDER_KEYBOARD_STEP;
-        let value = this.getValueFromFraction(
-            increment ? fraction + step : fraction - step,
+        const value = this.getValueFromFraction(
+            increment
+                ? clamp(fraction + step, limits[0], limits[1])
+                : clamp(fraction - step, limits[0], limits[1]),
         );
-
-        if (limits && value < limits[0]) {
-            value = limits[0];
-        } else if (limits && value > limits[1]) {
-            value = limits[1];
-        }
 
         this.processValue(value);
     }
