@@ -71,12 +71,10 @@ export class TuiSliderComponent
     protected processStep(increment: boolean, limits: [number, number]) {
         const fraction = this.getFractionFromValue(this.value);
         const step = this.discrete ? 1 / this.steps : SLIDER_KEYBOARD_STEP;
-        const value = this.getValueFromFraction(
-            increment
-                ? clamp(fraction + step, limits[0], limits[1])
-                : clamp(fraction - step, limits[0], limits[1]),
+        let value = this.getValueFromFraction(
+            increment ? fraction + step : fraction - step,
         );
-
+        value = clamp(value, limits[0], limits[1]);
         this.processValue(value);
     }
 
