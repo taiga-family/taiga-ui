@@ -57,6 +57,11 @@
     &[data-mode='onLight'] {
         color: rgba(0, 0, 0, 0.56);
 
+        &:hover,
+        &._active {
+            color: var(--tui-text-01);
+        }
+
         &._focus-visible .highlight {
             background: var(--tui-text-01);
             color: #fff;
