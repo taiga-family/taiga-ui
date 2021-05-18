@@ -20,8 +20,12 @@ import {Observable} from 'rxjs';
     animations: [tuiHeightCollapse, tuiFadeIn],
 })
 export class TuiErrorComponent {
-    @Input()
+    @Input('error')
     @tuiDefaultProp()
+    set errorSetter(error: TuiValidationError | string | null) {
+        this.error = typeof error === 'string' ? new TuiValidationError(error) : error;
+    }
+
     error: TuiValidationError | null = null;
 
     readonly animation = {
@@ -33,6 +37,6 @@ export class TuiErrorComponent {
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_DEFAULT_ERROR_MESSAGE)
-        readonly defauleErrorMessage$: Observable<string>,
+        readonly defaultErrorMessage$: Observable<string>,
     ) {}
 }

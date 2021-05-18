@@ -178,20 +178,26 @@ export class TuiFieldErrorComponent implements OnInit, OnDestroy {
 
     private getErrorText(): TuiValidationError | null {
         const firstErrorId = this.firstErrorIdByOrder || this.firstErrorId;
-        const firstError = firstErrorId && this.controlErrors[firstErrorId];
+
+        if (!firstErrorId) {
+            return null;
+        }
+
+        const firstError = this.controlErrors[firstErrorId];
 
         // @bad TODO: Remove firstError.message check after everybody migrates to TuiValidationError
         if (
-            firstError &&
-            (firstError instanceof TuiValidationError ||
-                typeof firstError.message === 'string')
+            firstError instanceof TuiValidationError ||
+            typeof firstError.message === 'string'
         ) {
             return firstError;
         }
 
-        return firstErrorId
-            ? new TuiValidationError(this.validationErrors[firstErrorId], firstError)
-            : null;
+        const errorContent = this.validationErrors[firstErrorId];
+
+        return errorContent === undefined && typeof firstError === 'string'
+            ? new TuiValidationError(firstError)
+            : new TuiValidationError(errorContent, firstError);
     }
 
     private markForCheck() {

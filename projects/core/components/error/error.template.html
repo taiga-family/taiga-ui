@@ -4,8 +4,8 @@
     automation-id="tui-error__text"
     class="message-text"
     [class.message-text_light]="(mode$ | async) === 'onDark'"
-    [content]="error.message || (defauleErrorMessage$ | async)"
-    [context]="error.context"
+    [content]="error.message || (defaultErrorMessage$ | async)"
+    [context]="error.context || {}"
     [@tuiHeightCollapse]="animation"
     [@tuiFadeIn]="animation"
 ></div>
