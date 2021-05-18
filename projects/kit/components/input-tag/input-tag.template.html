@@ -1,6 +1,6 @@
-<!-- TODO: repair -->
 <tui-hosted-dropdown
     class="hosted"
+    [canOpen]="canOpen"
     [content]="datalist || ''"
     [(open)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
@@ -124,6 +124,8 @@
                     [direction]="hintController.direction"
                     [mode]="hintController.mode"
                     [content]="hintController.content"
+                    [showDelay]="hintController.showDelay"
+                    [hideDelay]="hintController.hideDelay"
                 ></tui-tooltip>
                 <tui-svg
                     *ngIf="iconAlignRight"

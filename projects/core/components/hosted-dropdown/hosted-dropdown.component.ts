@@ -13,7 +13,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {
-    getClosestKeyboardFocusable,
+    getClosestFocusable,
+    isElementEditable,
     isNativeFocusedIn,
     isNativeKeyboardFocusable,
     setNativeFocused,
@@ -71,8 +72,8 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @ViewChild(TuiActiveZoneDirective)
     readonly activeZone?: TuiActiveZoneDirective;
 
-    @ContentChild(TuiHostedDropdownConnectorDirective)
-    private dropdownHost?: TuiHostedDropdownConnectorDirective;
+    @ContentChild(TuiHostedDropdownConnectorDirective, {read: ElementRef})
+    private dropdownHost?: ElementRef<HTMLElement>;
 
     @ViewChild('wrapper', {read: ElementRef})
     private wrapper?: ElementRef<HTMLDivElement>;
@@ -88,7 +89,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     get host(): HTMLElement {
         return this.dropdownHost
-            ? this.dropdownHost.elementRef.nativeElement
+            ? this.dropdownHost.nativeElement
             : this.elementRef.nativeElement;
     }
 
@@ -101,11 +102,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return isNativeKeyboardFocusable(this.host)
             ? this.host
-            : getClosestKeyboardFocusable(
-                  this.host,
-                  false,
-                  this.elementRef.nativeElement,
-              );
+            : getClosestFocusable(this.host, false, this.elementRef.nativeElement);
     }
 
     get contentContext(): TuiContextWithImplicit<TuiActiveZoneDirective | undefined> {
@@ -123,7 +120,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @HostListener('focusin', ['$event'])
     onFocusIn({target}: TuiEventWith<FocusEvent, HTMLElement>) {
         const host = this.dropdownHost
-            ? this.dropdownHost.elementRef.nativeElement
+            ? this.dropdownHost.nativeElement
             : this.nativeFocusableElement || this.elementRef.nativeElement;
 
         if (!host.contains(target)) {
@@ -134,9 +131,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @HostListener('click', ['$event'])
     onClick({target}: TuiEventWith<MouseEvent, HTMLElement>) {
         const host = this.nativeFocusableElement || this.host;
-        const dropdownHost = this.dropdownHost
-            ? this.dropdownHost.elementRef.nativeElement
-            : host;
+        const dropdownHost = this.dropdownHost ? this.dropdownHost.nativeElement : host;
 
         if (
             !this.hostEditable &&
@@ -173,7 +168,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
             isEditingKey(key) &&
             this.hostEditable &&
             target instanceof HTMLElement &&
-            !this.isElementEditable(target)
+            !isElementEditable(target)
         ) {
             this.focusHost();
         }
@@ -205,7 +200,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     private get hostEditable(): boolean {
         const host = this.nativeFocusableElement || this.host;
 
-        return host instanceof HTMLElement && this.isElementEditable(host);
+        return host instanceof HTMLElement && isElementEditable(host);
     }
 
     @tuiPure
@@ -213,14 +208,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         $implicit?: TuiActiveZoneDirective,
     ): TuiContextWithImplicit<TuiActiveZoneDirective | undefined> {
         return {$implicit};
-    }
-
-    private isElementEditable(element: HTMLElement): boolean {
-        return (
-            (element instanceof HTMLInputElement && !element.readOnly) ||
-            (element instanceof HTMLTextAreaElement && !element.readOnly) ||
-            element.contentEditable === 'true'
-        );
     }
 
     private focusDropdown(event: KeyboardEvent, first: boolean) {
@@ -243,7 +230,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         ) {
             this.updateOpen(true);
 
-            if (!this.isElementEditable(host)) {
+            if (!isElementEditable(host)) {
                 event.preventDefault();
             }
 
@@ -253,7 +240,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         const initial = first
             ? this.wrapper.nativeElement
             : this.wrapper.nativeElement.nextElementSibling;
-        const focusable = getClosestKeyboardFocusable(
+        const focusable = getClosestFocusable(
             initial,
             !first,
             this.wrapper.nativeElement,

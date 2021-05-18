@@ -12,16 +12,16 @@ const ROTATE_X_STEP = 30;
 })
 export class TuiMobileLoaderIOSComponent {
     @Input()
-    loaded = 0;
+    pulled = 0;
 
     readonly steps = 12;
 
     get finished(): boolean {
-        return this.loaded >= 100;
+        return this.pulled >= 100;
     }
 
     isShown(index: number): boolean {
-        return this.loaded > (index + 1) * LOADED_STEP;
+        return this.pulled > (index + 1) * LOADED_STEP;
     }
 
     calculateTransform(index: number): string {
@@ -29,9 +29,6 @@ export class TuiMobileLoaderIOSComponent {
     }
 
     calculateAnimationBegin(index: number): string {
-        const reversedIndex = index - this.steps;
-        const begin = (reversedIndex * LOADED_STEP) / 100;
-
-        return `${begin}s`;
+        return `${(index * LOADED_STEP) / 100}s`;
     }
 }

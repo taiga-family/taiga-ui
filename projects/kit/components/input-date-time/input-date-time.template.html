@@ -7,6 +7,7 @@
 >
     <tui-primitive-textfield
         class="textfield"
+        tuiValueAccessor
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
@@ -20,7 +21,6 @@
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
         (focusedChange)="onFocused($event)"
-        (click.prevent)="onClick()"
     >
         <ng-content></ng-content>
     </tui-primitive-textfield>

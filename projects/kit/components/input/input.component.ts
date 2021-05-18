@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChild,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -16,37 +15,25 @@ import {
     AbstractTuiControl,
     isNativeFocused,
     setNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {
-    TUI_DATA_LIST_HOST,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHorizontalDirection,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {TUI_INPUT_PROVIDERS} from './input.providers';
 
 @Component({
     selector: 'tui-input',
     templateUrl: './input.template.html',
     styleUrls: ['./input.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputComponent),
-        },
-        FIXED_DROPDOWN_CONTROLLER_PROVIDER,
-        {
-            provide: TUI_DATA_LIST_HOST,
-            useExisting: forwardRef(() => TuiInputComponent),
-        },
-    ],
+    providers: TUI_INPUT_PROVIDERS,
 })
 export class TuiInputComponent
     extends AbstractTuiControl<string>

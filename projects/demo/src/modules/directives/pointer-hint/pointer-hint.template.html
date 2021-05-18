@@ -1,4 +1,4 @@
-<tui-doc-page i18n-header header="PointerHint" package="CORE">
+<tui-doc-page i18n-header header="PointerHint" package="CORE" type="directives">
     <ng-template pageTab>
         <p i18n>A directive to show a hint above the cursor</p>
 
@@ -19,6 +19,8 @@
                 tuiPointerHint="Some information"
                 [tuiHintMode]="mode"
                 [tuiHintDirection]="direction"
+                [tuiHintShowDelay]="showDelay"
+                [tuiHintHideDelay]="hideDelay"
             >
                 It is followed inside the block
             </div>
@@ -31,6 +33,22 @@
                 documentationPropertyType="PolymorpheusContent | null"
             >
                 Hint content
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiHintShowDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="showDelay"
+            >
+                Show Delay
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiHintHideDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="hideDelay"
+            >
+                Hide Delay
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>

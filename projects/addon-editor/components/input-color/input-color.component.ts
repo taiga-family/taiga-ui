@@ -90,7 +90,7 @@ export class TuiInputColorComponent
 
     @HostListener('click')
     onClick() {
-        this.open = true;
+        this.open = !this.open;
     }
 
     onValueChange(textValue: string) {

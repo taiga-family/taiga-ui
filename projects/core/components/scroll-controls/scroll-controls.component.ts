@@ -1,3 +1,4 @@
+import {AnimationOptions} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
@@ -9,12 +10,12 @@ import {
 } from '@angular/core';
 import {tuiZoneOptimized} from '@taiga-ui/cdk';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
-import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
-import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {interval} from 'rxjs';
+import {MODE_PROVIDER} from '@taiga-ui/core/providers';
+import {TUI_ANIMATION_OPTIONS, TUI_MODE, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {TuiBrightness} from '@taiga-ui/core/types';
+import {interval, Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
-// @bad TODO: handle click on bar to scroll to that position
 // @dynamic
 @Component({
     selector: 'tui-scroll-controls',
@@ -22,6 +23,10 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
     styleUrls: ['./scroll-controls.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiFadeIn],
+    providers: [MODE_PROVIDER],
+    host: {
+        '($.data-mode.attr)': 'mode$',
+    },
 })
 export class TuiScrollControlsComponent {
     readonly refresh$ = interval(300).pipe(
@@ -31,20 +36,20 @@ export class TuiScrollControlsComponent {
         tuiZoneOptimized(this.ngZone),
     );
 
+    readonly animation = {
+        value: '',
+        ...this.options,
+    } as const;
+
     constructor(
+        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Optional()
         @Inject(TUI_SCROLL_REF)
         private readonly scrollRef: ElementRef<HTMLElement> | null,
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
     ) {}
-
-    get isLight(): boolean {
-        return !!this.modeDirective && this.modeDirective.mode === 'onDark';
-    }
 
     private get scrollbars(): [boolean, boolean] {
         const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.scrollRef

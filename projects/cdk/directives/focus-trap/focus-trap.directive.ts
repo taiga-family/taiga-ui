@@ -1,6 +1,5 @@
 import {DOCUMENT} from '@angular/common';
 import {
-    AfterViewInit,
     Directive,
     ElementRef,
     HostListener,
@@ -11,7 +10,7 @@ import {
 import {containsOrAfter} from '@taiga-ui/cdk/utils/dom';
 import {
     blurNativeFocused,
-    getClosestKeyboardFocusable,
+    getClosestFocusable,
     getNativeFocused,
     setNativeFocused,
 } from '@taiga-ui/cdk/utils/focus';
@@ -23,7 +22,7 @@ import {
         tabIndex: '0',
     },
 })
-export class TuiFocusTrapDirective implements AfterViewInit, OnDestroy {
+export class TuiFocusTrapDirective implements OnDestroy {
     private readonly activeElement = getNativeFocused(this.documentRef);
 
     constructor(
@@ -32,13 +31,14 @@ export class TuiFocusTrapDirective implements AfterViewInit, OnDestroy {
         private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
     ) {
-        if (this.activeElement instanceof HTMLElement) {
-            setNativeFocused(this.activeElement, false);
-        }
-    }
-
-    ngAfterViewInit() {
-        setNativeFocused(this.elementRef.nativeElement);
+        /**
+         * This would cause currently focused element to lose focus
+         * but it might cause ExpressionChanged error due to potential HostBinding.
+         * Microtask keeps it in the same frame but allows change detection to run
+         */
+        Promise.resolve().then(() => {
+            setNativeFocused(this.elementRef.nativeElement);
+        });
     }
 
     @HostListener('blur')
@@ -52,7 +52,7 @@ export class TuiFocusTrapDirective implements AfterViewInit, OnDestroy {
             return;
         }
 
-        const focusable = getClosestKeyboardFocusable(
+        const focusable = getClosestFocusable(
             this.elementRef.nativeElement,
             false,
             this.elementRef.nativeElement,
@@ -69,7 +69,8 @@ export class TuiFocusTrapDirective implements AfterViewInit, OnDestroy {
         /**
          * HostListeners are triggered even after ngOnDestroy
          * {@link https://github.com/angular/angular/issues/38100}
-         * so we need to delay it but stay in the same sync cycle, so using Promise instead of setTimeout
+         * so we need to delay it but stay in the same sync cycle,
+         * therefore using Promise instead of setTimeout
          */
         Promise.resolve().then(() => {
             if (this.activeElement instanceof HTMLElement) {

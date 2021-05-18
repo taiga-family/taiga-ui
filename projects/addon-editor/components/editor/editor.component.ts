@@ -16,7 +16,7 @@ import {NgControl} from '@angular/forms';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiToolbarComponent} from '@taiga-ui/addon-editor/components/toolbar';
-import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiDesignModeDirective} from '@taiga-ui/addon-editor/directives/design-mode';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {
@@ -25,7 +25,6 @@ import {
     getClosestElement,
     isNativeFocusedIn,
     isNodeIn,
-    px,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAssert,
@@ -35,15 +34,11 @@ import {
     typedFromEvent,
     watch,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DOCUMENT_OR_SHADOW_ROOT,
-    TUI_ELEMENT_REF,
-    TuiScrollbarComponent,
-} from '@taiga-ui/core';
-import {fromEvent, merge, Subscription} from 'rxjs';
-import {filter, map, startWith, takeUntil} from 'rxjs/operators';
+import {TUI_DOCUMENT_OR_SHADOW_ROOT, TUI_ELEMENT_REF} from '@taiga-ui/core';
+import {merge, Subscription} from 'rxjs';
+import {filter, takeUntil} from 'rxjs/operators';
 
-const HEIGHT_OFFSET = 26;
+const TEMP_URL = 'TEMP_URL';
 
 export function documentFactory(editor: TuiEditorComponent): DocumentOrShadowRoot | null {
     return editor.focusableElement ? editor.focusableElement.documentRef : null;
@@ -88,21 +83,14 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
     @tuiDefaultProp()
     tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
 
+    @Input()
+    @tuiDefaultProp()
+    colors: ReadonlyMap<string, string> = defaultEditorColors;
+
     @ViewChild('focusableElement', {read: TuiDesignModeDirective})
     readonly focusableElement?: TuiDesignModeDirective;
 
     linkDropdownEnabled = false;
-
-    // Subscribing to iframe resize once it's ready to handle buttons wrapping
-    @ViewChild(TuiToolbarComponent, {read: ElementRef})
-    set toolbarElementRef(toolbarElementRef: ElementRef<HTMLElement>) {
-        if (toolbarElementRef) {
-            this.initResizeSubscription(toolbarElementRef.nativeElement);
-        }
-    }
-
-    @ViewChild(TuiScrollbarComponent, {read: ElementRef})
-    private readonly scrollbar?: ElementRef<HTMLElement>;
 
     @ViewChild(TuiToolbarComponent)
     private readonly toolbar?: TuiToolbarComponent;
@@ -235,7 +223,21 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
 
     onAddLink(url: string) {
         this.selectClosest('a');
-        this.computedDocument.execCommand('createLink', false, url);
+        this.computedDocument.execCommand('createLink', false, TEMP_URL);
+
+        const link = this.computedDocument.querySelector<HTMLAnchorElement>(
+            `[href="${TEMP_URL}"]`,
+        );
+
+        if (!link) {
+            return;
+        }
+
+        link.target = '_blank';
+        link.rel = '_noopener';
+        link.href = url;
+
+        this.computedDocument.dispatchEvent(new Event('input'));
     }
 
     onRemoveLink() {
@@ -265,28 +267,6 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
 
     private get hasValue(): boolean {
         return !!this.value;
-    }
-
-    private initResizeSubscription(toolbar: HTMLElement) {
-        if (
-            this.resizeSubscription ||
-            !this.focusableElement ||
-            !this.scrollbar ||
-            !this.computedDocument.defaultView
-        ) {
-            return;
-        }
-
-        const {nativeElement} = this.scrollbar;
-
-        this.resizeSubscription = fromEvent(this.computedDocument.defaultView, 'resize')
-            .pipe(
-                map(() => toolbar.offsetHeight + HEIGHT_OFFSET),
-                startWith(toolbar.offsetHeight + HEIGHT_OFFSET),
-            )
-            .subscribe(height => {
-                nativeElement.style.borderTopWidth = px(height);
-            });
     }
 
     private selectClosest(selector: string) {

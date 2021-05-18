@@ -36,7 +36,7 @@ export class ExampleTuiActionComponent {
     readonly iconVariants = [
         'tuiIconPrintLarge',
         'tuiIconLoginLarge',
-        'tuiIconPhoneLarge',
+        'tuiIconCalendarLarge',
     ];
 
     icon = this.iconVariants[0];

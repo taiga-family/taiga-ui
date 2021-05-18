@@ -2,7 +2,7 @@
     *ngFor="let hint of hints"
     role="tooltip"
     [attr.id]="hint.id"
-    [@tuiFadeIn]
+    [@tuiFadeIn]="animation"
     [mode]="hint.mode"
     [direction]="hint.direction"
     [hint]="hint"

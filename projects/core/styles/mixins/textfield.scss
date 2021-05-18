@@ -127,8 +127,8 @@
             color: var(--tui-error-fill);
         }
 
-        :host[data-tui-host-mode='onDark']._invalid:not(._focused) &,
-        :host[data-tui-host-mode='onDark']._invalid:not(._focused)._hovered & {
+        :host[data-mode='onDark']._invalid:not(._focused) &,
+        :host[data-mode='onDark']._invalid:not(._focused)._hovered & {
             color: var(--tui-error-fill-night);
         }
     }
@@ -150,18 +150,20 @@
 
     /* stylelint-disable selector-max-specificity */
     // textfield-light
-    :host[data-tui-host-mode='onDark'] & {
+    :host[data-mode='onDark'] & {
         color: var(--tui-text-02-night);
     }
 
-    :host[data-tui-host-size='m'][data-tui-host-mode='onDark']._focused:not(._label-outside) &,
-    :host[data-tui-host-size='l'][data-tui-host-mode='onDark']._focused:not(._label-outside) & {
+    :host[data-tui-host-size='m'][data-mode='onDark']._focused:not(._label-outside)
+        &,
+    :host[data-tui-host-size='l'][data-mode='onDark']._focused:not(._label-outside)
+        & {
         color: var(--tui-text-01-night);
     }
 
-    :host[data-tui-host-mode='onDark']._focused &,
-    :host[data-tui-host-size='m'][data-tui-host-mode='onDark']._focused._label-outside &,
-    :host[data-tui-host-size='l'][data-tui-host-mode='onDark']._focused._label-outside & {
+    :host[data-mode='onDark']._focused &,
+    :host[data-tui-host-size='m'][data-mode='onDark']._focused._label-outside &,
+    :host[data-tui-host-size='l'][data-mode='onDark']._focused._label-outside & {
         color: var(--tui-text-02-night);
     }
     /* stylelint-enable selector-max-specificity */
@@ -175,7 +177,7 @@
     justify-content: center;
     color: var(--tui-text-03);
 
-    :host[data-tui-host-mode='onDark'] & {
+    :host[data-mode='onDark'] & {
         color: var(--tui-text-03-night);
     }
 }
@@ -197,7 +199,7 @@
         pointer-events: none;
     }
 
-    :host[data-tui-host-mode='onDark'] & {
+    :host[data-mode='onDark'] & {
         color: var(--tui-text-03-night);
 
         &:hover {
@@ -226,7 +228,7 @@
         margin-top: -19px;
     }
 
-    :host[data-tui-host-mode='onDark'] & {
+    :host[data-mode='onDark'] & {
         color: var(--tui-text-03-night);
     }
 }
@@ -272,10 +274,10 @@
         color: var(--tui-text-01);
 
         &_shifted {
-            margin-left: 1ch;
+            margin-left: 0.5ch;
         }
 
-        :host[data-tui-host-mode='onDark'] & {
+        :host[data-mode='onDark'] & {
             color: var(--tui-text-01-night);
         }
     }

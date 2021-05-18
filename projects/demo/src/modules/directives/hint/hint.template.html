@@ -1,4 +1,4 @@
-<tui-doc-page i18n-header header="Hint" package="CORE">
+<tui-doc-page i18n-header header="Hint" package="CORE" type="directives">
     <ng-template pageTab>
         <p i18n>Directive to show a hint by hover of an element</p>
 
@@ -19,6 +19,8 @@
                 [tuiHintMode]="mode"
                 [tuiHintId]="id"
                 [tuiHintDirection]="direction"
+                [tuiHintShowDelay]="showDelay"
+                [tuiHintHideDelay]="hideDelay"
             >
                 Hover it!
             </span>
@@ -44,6 +46,22 @@
                 <code>describeId</code> and use
                 <code>[tuiDescribedBy]="theSameId"</code> directive on focusable
                 element
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiHintShowDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="showDelay"
+            >
+                Show Delay
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiHintHideDelay"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="hideDelay"
+            >
+                Hide Delay
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>

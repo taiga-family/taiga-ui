@@ -2,7 +2,7 @@ import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {Component} from '@angular/core';
-import {tuiCoreIcons, tuiKitIcons} from '@taiga-ui/icons';
+import {tuiKitIcons} from '@taiga-ui/icons';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -18,7 +18,7 @@ export class IconSetComponent {
         HTML: example1Html,
     };
 
-    readonly names = [...Object.keys(tuiCoreIcons), ...Object.keys(tuiKitIcons)];
+    readonly names = Object.keys(tuiKitIcons);
 
     expanded = false;
 

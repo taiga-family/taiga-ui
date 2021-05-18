@@ -1,4 +1,4 @@
-<tui-doc-page header="Badge" package="KIT">
+<tui-doc-page header="Badge" package="KIT" type="components">
     <ng-template pageTab>
         <div i18n class="tui-space_bottom-3">
             Badges show text and number values. Number values may show new
@@ -39,9 +39,9 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="notification"
+            id="icons"
             i18n-heading
-            heading="With notifications"
+            heading="With icon"
             [content]="example4"
         >
             <tui-badge-example-4></tui-badge-example-4>
@@ -50,12 +50,32 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-badge
-                [hoverable]="hoverable"
-                [size]="size"
-                [status]="status"
-                [value]="values[value]"
-            ></tui-badge>
+            <p>
+                <ng-container *ngIf="withIcon; else withoutIcon">
+                    <tui-badge
+                        [hoverable]="hoverable"
+                        [size]="size"
+                        [status]="status"
+                        [value]="values[value]"
+                    >
+                        <tui-svg src="tuiIconTooltip"></tui-svg>
+                    </tui-badge>
+                </ng-container>
+                <ng-template #withoutIcon>
+                    <tui-badge
+                        [hoverable]="hoverable"
+                        [size]="size"
+                        [status]="status"
+                        [value]="values[value]"
+                    ></tui-badge>
+                </ng-template>
+            </p>
+            with icon
+            <tui-toggle
+                class="tui-space_horizontal-2"
+                [singleColor]="true"
+                [(ngModel)]="withIcon"
+            ></tui-toggle>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

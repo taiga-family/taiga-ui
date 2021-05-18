@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     forwardRef,
+    HostListener,
     Inject,
     Injector,
     Input,
@@ -47,6 +48,9 @@ import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellan
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {takeUntil} from 'rxjs/operators';
 
+// TODO: remove in ivy compilation
+export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
+
 @Component({
     selector: 'tui-input-date',
     templateUrl: './input-date.template.html',
@@ -60,7 +64,7 @@ import {takeUntil} from 'rxjs/operators';
         {
             provide: TUI_CALENDAR_DATA_STREAM,
             deps: [[new Optional(), new Self(), NgControl]],
-            useFactory: TuiReplayControlValueChangesFactory,
+            useFactory: DATE_STREAM_FACTORY,
         },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
     ],
@@ -190,13 +194,8 @@ export class TuiInputDateComponent
         return (value && this.items.find(item => item.day.daySame(value))) || null;
     }
 
-    onItemClick({day}: TuiNamedDay) {
-        this.updateValue(day);
-        this.open = false;
-    }
-
-    onClick() {
-        if (!this.isMobile || !this.mobileCalendar) {
+    onMobileClick() {
+        if (!this.mobileCalendar) {
             this.open = !this.open;
 
             return;
@@ -217,6 +216,13 @@ export class TuiInputDateComponent
             .subscribe(value => {
                 this.updateValue(value);
             });
+    }
+
+    @HostListener('click')
+    onClick() {
+        if (!this.isMobile) {
+            this.open = !this.open;
+        }
     }
 
     onValueChange(value: string) {

@@ -17,6 +17,7 @@
             *ngIf="initialized"
             [disabled]="!interactive"
             [tools]="tools"
+            [colors]="colors"
             [attr.aria-labelledby]="id"
             (linkAdded)="onAddLink($event)"
             (texClicked)="onTex()"

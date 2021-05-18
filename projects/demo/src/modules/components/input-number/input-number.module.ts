@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiHintControllerModule,
@@ -31,7 +31,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         TuiLinkModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         InheritedDocumentationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputNumberComponent)),
     ],

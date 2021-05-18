@@ -26,7 +26,7 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_TEXTFIELD_APPEARANCE,
-    TUI_TEXTIFELD_WATCHED_CONTROLLER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiBrightness,
     TuiHintControllerDirective,
     TuiModeDirective,
@@ -82,7 +82,7 @@ export class TuiTextAreaComponent
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
-        @Inject(TUI_TEXTIFELD_WATCHED_CONTROLLER)
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
@@ -90,6 +90,11 @@ export class TuiTextAreaComponent
         super(control, changeDetectorRef);
 
         this.isIOS = isIOS;
+    }
+
+    @HostBinding('class._label-outside')
+    get labelOutside(): boolean {
+        return this.controller.labelOutside;
     }
 
     get nativeFocusableElement(): HTMLTextAreaElement | null {
@@ -139,7 +144,7 @@ export class TuiTextAreaComponent
         return this.expandable ? this.rows * this.lineHeight : null;
     }
 
-    @HostBinding('attr.data-tui-host-mode')
+    @HostBinding('attr.data-mode')
     get hostMode(): TuiBrightness | null {
         return this.modeDirective && this.modeDirective.mode;
     }

@@ -1,8 +1,16 @@
-import {Directive, EventEmitter, HostBinding, Inject, Input, Output} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Directive,
+    EventEmitter,
+    HostBinding,
+    Inject,
+    Input,
+    Output,
+} from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {Controller, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
@@ -13,9 +21,10 @@ import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
     host: {
         '($.data-mode.attr)': 'mode$',
         '($.class._stuck)': 'stuck$',
+        style: 'border-collapse: separate',
     },
 })
-export class TuiTableDirective<T> extends Controller {
+export class TuiTableDirective<T> extends TuiController {
     @Input()
     @tuiDefaultProp()
     columns: ReadonlyArray<keyof T | string> = [];
@@ -27,7 +36,7 @@ export class TuiTableDirective<T> extends Controller {
 
     @Input()
     @tuiDefaultProp()
-    sorter: TuiComparator<T> | null = null;
+    sorter: TuiComparator<T> = () => 0;
 
     @Input()
     @tuiDefaultProp()
@@ -44,6 +53,7 @@ export class TuiTableDirective<T> extends Controller {
         readonly entries$: Observable<IntersectionObserverEntry[]>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_STUCK) readonly stuck$: Observable<boolean>,
+        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
     ) {
         super();
     }
@@ -60,5 +70,9 @@ export class TuiTableDirective<T> extends Controller {
         }
 
         this.change$.next();
+    }
+
+    ngAfterViewInit() {
+        this.changeDetectorRef.detectChanges();
     }
 }

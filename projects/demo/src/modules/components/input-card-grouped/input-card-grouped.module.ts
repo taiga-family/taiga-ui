@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiInputCardGroupedModule} from '@taiga-ui/addon-commerce';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiFieldErrorModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
@@ -17,7 +17,7 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
         TuiFieldErrorModule,
         CommonModule,
         ReactiveFormsModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         InheritedDocumentationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputCardGroupedComponent)),
     ],

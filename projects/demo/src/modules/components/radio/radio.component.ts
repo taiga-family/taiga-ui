@@ -5,6 +5,7 @@ import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
+import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -32,6 +33,7 @@ export class ExampleTuiRadioComponent extends AbstractExampleTuiReactiveField {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
     readonly exampleDeclareForm = exampleDeclareForm;
+    readonly exampleDefineOptions = exampleDefineOptions;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

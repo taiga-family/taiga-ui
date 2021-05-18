@@ -4,7 +4,6 @@ import {
     INTERSECTION_THRESHOLD,
     IntersectionObserverService,
 } from '@ng-web-apis/intersection-observer';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
     TUI_TEXTFIELD_APPEARANCE,
@@ -39,7 +38,6 @@ export const TUI_TABLE_PROVIDERS = [
         useExisting: forwardRef(() => TuiTableDirective),
     },
     IntersectionObserverService,
-    TuiDestroyService,
     MODE_PROVIDER,
     TUI_STUCK_PROVIDER,
 ];

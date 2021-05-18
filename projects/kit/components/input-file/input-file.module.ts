@@ -6,6 +6,7 @@ import {
     TuiFocusedModule,
     TuiFocusVisibleModule,
     TuiHoveredModule,
+    TuiLetModule,
     TuiPressedModule,
     TuiPreventDefaultModule,
 } from '@taiga-ui/cdk';
@@ -25,6 +26,7 @@ import {TuiInputFileComponent} from './input-file.component';
     imports: [
         CommonModule,
         PolymorpheusModule,
+        TuiLetModule,
         TuiFocusedModule,
         TuiFocusVisibleModule,
         TuiPressedModule,

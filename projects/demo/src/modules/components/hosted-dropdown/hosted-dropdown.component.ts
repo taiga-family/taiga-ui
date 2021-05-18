@@ -9,6 +9,9 @@ import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
+import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
+import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
+
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -21,7 +24,6 @@ import {
     TuiVerticalDirection,
 } from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
-import {LogService} from '../../app/log.service';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
@@ -31,7 +33,6 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     styleUrls: ['./hosted-dropdown.style.less'],
     changeDetection,
     providers: [
-        LogService,
         {
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiHostedDropdownComponent),
@@ -57,6 +58,11 @@ export class ExampleTuiHostedDropdownComponent {
         TypeScript: example3Ts,
         HTML: example3Html,
         LESS: example3Less,
+    };
+
+    readonly example4: FrontEndExample = {
+        TypeScript: example4Ts,
+        HTML: example4Html,
     };
 
     minHeight = DEFAULT_MIN_HEIGHT;

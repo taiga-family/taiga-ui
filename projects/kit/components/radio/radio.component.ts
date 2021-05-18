@@ -1,3 +1,4 @@
+import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -22,8 +23,9 @@ import {
     TuiIdentityMatcher,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiAppearance, tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
+import {TUI_ANIMATION_OPTIONS, tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
+import {RadioOptions, TUI_RADIO_OPTIONS} from './radio-options';
 
 // @dynamic
 @Component({
@@ -56,11 +58,16 @@ export class TuiRadioComponent<T>
     @Input()
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = this.options.size;
 
     @Input()
     @tuiDefaultProp()
     pseudoDisabled = false;
+
+    readonly animation = {
+        value: '',
+        ...this.animationOptions,
+    } as const;
 
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
@@ -71,6 +78,10 @@ export class TuiRadioComponent<T>
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TUI_ANIMATION_OPTIONS)
+        private readonly animationOptions: AnimationOptions,
+        @Inject(TUI_RADIO_OPTIONS)
+        private readonly options: RadioOptions,
         @Optional()
         @Inject(TuiRadioGroupComponent)
         private readonly radioGroup: TuiRadioGroupComponent | null,
@@ -78,8 +89,10 @@ export class TuiRadioComponent<T>
         super(control, changeDetectorRef);
     }
 
-    get appearance(): TuiAppearance {
-        return this.checked ? TuiAppearance.Primary : TuiAppearance.Outline;
+    get appearance(): string {
+        return this.checked
+            ? this.options.appearances.checked
+            : this.options.appearances.unchecked;
     }
 
     @HostBinding('class._disabled')

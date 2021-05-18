@@ -1,5 +1,5 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {Controller} from '@taiga-ui/core/abstract';
+import {TuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_EXAMPLE_TEXT = new InjectionToken<TuiTextfieldExampleTextDirective>(
     'tuiTextfieldExampleText',
@@ -15,7 +15,7 @@ export const TUI_TEXTFIELD_EXAMPLE_TEXT = new InjectionToken<TuiTextfieldExample
         },
     ],
 })
-export class TuiTextfieldExampleTextDirective extends Controller {
+export class TuiTextfieldExampleTextDirective extends TuiController {
     @Input('tuiTextfieldExampleText')
     exampleText = '';
 }

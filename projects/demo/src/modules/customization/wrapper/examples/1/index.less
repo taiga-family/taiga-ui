@@ -9,7 +9,7 @@ tui-wrapper[data-appearance='material-textfield'] {
         top: auto;
         border: none;
         transform-origin: bottom;
-        transition: all 0.3s;
+        transition: all var(--tui-duration);
     }
 
     &[data-state='hovered'] {
@@ -54,7 +54,7 @@ tui-wrapper[data-appearance='material-button'] {
     font-weight: bold;
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14%),
         0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-    transition: all 0.3s;
+    transition: all var(--tui-duration);
 
     &[data-state='hovered'] {
         background: #6e14ef;
@@ -90,7 +90,7 @@ tui-wrapper[data-appearance='material-checkbox-off'] {
         bottom: 0;
         border-radius: 2px;
         border: 2px solid rgba(0, 0, 0, 0.54);
-        transition: all 0.3s;
+        transition: all var(--tui-duration);
     }
 
     &:after {
@@ -102,7 +102,7 @@ tui-wrapper[data-appearance='material-checkbox-off'] {
         border-radius: 100%;
         background: #000;
         opacity: 0;
-        transition: opacity 0.3s;
+        transition: opacity var(--tui-duration);
     }
 
     &[data-state='hovered'] {

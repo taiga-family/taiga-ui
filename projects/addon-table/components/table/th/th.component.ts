@@ -30,7 +30,9 @@ import {TuiTableDirective} from '../directives/table.directive';
 export class TuiThComponent<T> {
     @Input()
     @tuiDefaultProp()
-    sorter: TuiComparator<T> | null = (a, b) => defaultSort(a[this.key], b[this.key]);
+    sorter: TuiComparator<T> | null = this.head
+        ? (a, b) => defaultSort(a[this.key], b[this.key])
+        : null;
 
     @Input()
     @tuiDefaultProp()
@@ -45,7 +47,9 @@ export class TuiThComponent<T> {
     width: number | null = null;
 
     constructor(
-        @Optional() @Inject(TuiHeadDirective) readonly head: TuiHeadDirective<T> | null,
+        @Optional()
+        @Inject(TuiHeadDirective)
+        private readonly head: TuiHeadDirective<T> | null,
         @Optional()
         @Inject(forwardRef(() => TuiTableDirective))
         readonly table: TuiTableDirective<T> | null,

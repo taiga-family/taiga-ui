@@ -42,7 +42,7 @@ import {
     TUI_DATA_LIST_HOST,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_TEXTFIELD_APPEARANCE,
-    TUI_TEXTIFELD_WATCHED_CONTROLLER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHintControllerDirective,
@@ -166,6 +166,9 @@ export class TuiInputTagComponent
     @ViewChild('cleaner', {read: ElementRef})
     private readonly cleanerSvg?: ElementRef<HTMLElement>;
 
+    @ViewChild(TuiScrollbarComponent, {read: ElementRef})
+    private readonly scrollBar?: ElementRef<HTMLElement>;
+
     constructor(
         @Optional()
         @Self()
@@ -181,7 +184,7 @@ export class TuiInputTagComponent
         @Inject(TUI_TAG_STATUS) private readonly tagStatus: TuiStatus,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
-        @Inject(TUI_TEXTIFELD_WATCHED_CONTROLLER)
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
     ) {
         super(control, changeDetectorRef);
@@ -266,6 +269,10 @@ export class TuiInputTagComponent
             : this.tagStatus;
     }
 
+    get canOpen(): boolean {
+        return !this.computedDisabled && !this.readOnly && !!this.datalist;
+    }
+
     getLeftContent(tag: string): PolymorpheusContent | null {
         return !this.tagValidator(tag) && this.errorIconTemplate
             ? this.errorIconTemplate
@@ -339,11 +346,7 @@ export class TuiInputTagComponent
             return;
         }
 
-        const tag = this.tags.find((_item, index) => index === currentIndex - 1);
-
-        if (tag) {
-            setNativeFocused(tag.nativeElement);
-        }
+        this.onScrollKeyDown(currentIndex, -1);
     }
 
     onTagKeyDownArrowRight(currentIndex: number) {
@@ -353,11 +356,7 @@ export class TuiInputTagComponent
             return;
         }
 
-        const tag = this.tags.find((_item, index) => index === currentIndex + 1);
-
-        if (tag) {
-            setNativeFocused(tag.nativeElement);
-        }
+        this.onScrollKeyDown(currentIndex, 1);
     }
 
     onTagEdited(value: string, editedTag: string) {
@@ -413,6 +412,26 @@ export class TuiInputTagComponent
     setDisabledState() {
         super.setDisabledState();
         this.open = false;
+    }
+
+    private onScrollKeyDown(currentIndex: number, flag: number) {
+        const tag = this.tags.find((_item, index) => index === currentIndex + flag);
+
+        if (!tag || !this.scrollBar) {
+            return;
+        }
+
+        setNativeFocused(tag.nativeElement);
+
+        if (
+            flag * this.scrollBar.nativeElement.clientWidth -
+                flag * tag.nativeElement.offsetLeft -
+                tag.nativeElement.clientWidth <
+            0
+        ) {
+            this.scrollBar.nativeElement.scrollLeft +=
+                flag * tag.nativeElement.clientWidth;
+        }
     }
 
     private initScrollerSubscrition(scroller: TuiScrollbarComponent | null) {

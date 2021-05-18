@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {TuiBadgeModule} from '@taiga-ui/kit';
 import {TuiLetExample1} from './examples/1';
@@ -13,7 +13,7 @@ import {ExampleTuiLetComponent} from './let.component';
         CommonModule,
         TuiLetModule,
         TuiBadgeModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiLetComponent)),
     ],
     declarations: [ExampleTuiLetComponent, TuiLetExample1, TuiLetExample2],

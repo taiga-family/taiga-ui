@@ -47,6 +47,7 @@
     font: var(--tui-font-text-s);
     padding: 0;
     background: var(--tui-base-02);
+    border-bottom: 1px solid var(--tui-base-04);
     border-color: inherit;
 
     :host-context(table[data-tui-host-size='l']) & {
@@ -73,24 +74,5 @@
 
     &_rotated {
         transform: rotate(180deg);
-    }
-}
-
-.footer {
-    td {
-        position: sticky;
-        bottom: 0;
-        padding: 0;
-        z-index: 15;
-        border: inherit;
-
-        &:after {
-            position: absolute;
-            content: '';
-            width: 100%;
-            bottom: 0;
-            border-top: 1px solid;
-            border-color: inherit;
-        }
     }
 }

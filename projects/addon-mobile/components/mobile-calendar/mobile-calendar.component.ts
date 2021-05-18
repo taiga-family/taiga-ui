@@ -344,6 +344,7 @@ export class TuiMobileCalendarComponent {
         const touchstart$ = typedFromEvent(
             monthsScrollRef.elementRef.nativeElement,
             'touchstart',
+            {passive: true},
         );
         const touchend$ = typedFromEvent(
             monthsScrollRef.elementRef.nativeElement,

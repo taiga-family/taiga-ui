@@ -19,8 +19,10 @@ import {
     isPresent,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TUI_IS_MOBILE,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     formatNumber,
@@ -74,10 +76,10 @@ export class TuiInputCountComponent
     @tuiDefaultProp()
     postfix = '';
 
-    readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: tuiCreateNumberMask(),
-        guide: false,
-    };
+    @tuiPure
+    getMask(allowNegative: boolean): TuiTextMaskOptions {
+        return {mask: tuiCreateNumberMask({allowNegative}), guide: false};
+    }
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
@@ -94,6 +96,7 @@ export class TuiInputCountComponent
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PLUS_MINUS_TEXTS)
         readonly minusTexts$: Observable<[string, string]>,
+        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
     ) {
         super(control, changeDetectorRef);
     }
@@ -143,7 +146,7 @@ export class TuiInputCountComponent
     }
 
     onButtonMouseDown(event: MouseEvent, disabled: boolean = false) {
-        if (disabled || !this.nativeFocusableElement) {
+        if (disabled || !this.nativeFocusableElement || this.isMobile) {
             return;
         }
 

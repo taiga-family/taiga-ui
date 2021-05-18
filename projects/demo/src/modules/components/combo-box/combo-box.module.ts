@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -43,7 +43,7 @@ import {TuiComboBoxExample2} from './examples/2';
         TuiDropdownControllerModule,
         TuiDataListWrapperModule,
         PolymorpheusModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         InheritedDocumentationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiComboBoxComponent)),
     ],

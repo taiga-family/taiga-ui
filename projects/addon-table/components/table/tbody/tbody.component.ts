@@ -66,9 +66,9 @@ export class TuiTbodyComponent<T> {
     @tuiPure
     private sort(
         data: readonly T[],
-        sorter: TuiComparator<T> | null,
+        sorter: TuiComparator<T>,
         direction: -1 | 1,
     ): readonly T[] {
-        return sorter ? [...data].sort((a, b) => direction * sorter(a, b)) : data;
+        return [...data].sort((a, b) => direction * sorter(a, b));
     }
 }

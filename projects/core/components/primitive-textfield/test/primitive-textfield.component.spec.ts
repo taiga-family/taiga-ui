@@ -12,9 +12,7 @@ import {
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {configureTestSuite} from 'ng-bullet';
 import {TuiHintControllerModule} from '../../../directives/hint-controller/hint-controller.module';
-import {TuiModeModule} from '../../../directives/mode/mode.module';
 import {TuiTextfieldControllerModule} from '../../../directives/textfield-controller';
-import {TuiBrightness} from '../../../types/brightness';
 import {TuiSizeL, TuiSizeS} from '../../../types/size';
 import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
 import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
@@ -22,19 +20,17 @@ import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
 describe('PrimitiveTextfield', () => {
     @Component({
         template: `
-            <div [tuiMode]="mode">
-                <tui-primitive-textfield
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldExampleText]="exampleText"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    [readOnly]="readOnly"
-                    [tuiHintContent]="hintContent"
-                    [invalid]="invalid"
-                    [disabled]="disabled"
-                    [(value)]="value"
-                ></tui-primitive-textfield>
-            </div>
+            <tui-primitive-textfield
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldExampleText]="exampleText"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
+                [readOnly]="readOnly"
+                [tuiHintContent]="hintContent"
+                [invalid]="invalid"
+                [disabled]="disabled"
+                [(value)]="value"
+            ></tui-primitive-textfield>
         `,
     })
     class TestComponent {
@@ -61,8 +57,6 @@ describe('PrimitiveTextfield', () => {
         invalid = false;
 
         disabled = false;
-
-        mode: TuiBrightness | null = null;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -95,7 +89,6 @@ describe('PrimitiveTextfield', () => {
                 TuiPrimitiveTextfieldModule,
                 TuiTextfieldControllerModule,
                 TuiHintControllerModule,
-                TuiModeModule,
             ],
             declarations: [TestComponent],
             providers: NG_EVENT_PLUGINS,
@@ -108,22 +101,6 @@ describe('PrimitiveTextfield', () => {
         testComponent = fixture.componentInstance;
 
         inputPO = new NativeInputPO(fixture, `${testContext.prefix}native-input`);
-    });
-
-    describe('background', () => {
-        it('gets light mode correctly', () => {
-            testComponent.mode = 'onDark';
-            fixture.detectChanges();
-
-            expect(testComponent.component.hostMode).toBe('onDark');
-        });
-
-        it('gets dark mode correctly', () => {
-            testComponent.mode = 'onLight';
-            fixture.detectChanges();
-
-            expect(testComponent.component.hostMode).toBe('onLight');
-        });
     });
 
     describe('value decoration', () => {

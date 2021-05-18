@@ -1,5 +1,5 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {Controller} from '@taiga-ui/core/abstract';
+import {TuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_CLEANER = new InjectionToken<TuiTextfieldCleanerDirective>(
     'tuiTextfieldCleaner',
@@ -15,7 +15,7 @@ export const TUI_TEXTFIELD_CLEANER = new InjectionToken<TuiTextfieldCleanerDirec
         },
     ],
 })
-export class TuiTextfieldCleanerDirective extends Controller {
+export class TuiTextfieldCleanerDirective extends TuiController {
     @Input('tuiTextfieldCleaner')
     cleaner = false;
 }

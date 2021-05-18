@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     forwardRef,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -46,6 +47,9 @@ import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellan
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
+// TODO: remove in ivy compilation
+export const TIME_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
+
 // @dynamic
 @Component({
     selector: 'tui-input-date-time',
@@ -60,7 +64,7 @@ import {map} from 'rxjs/operators';
         {
             provide: TUI_CALENDAR_DATA_STREAM,
             deps: [[new Optional(), new Self(), NgControl]],
-            useFactory: TuiReplayControlValueChangesFactory,
+            useFactory: TIME_STREAM_FACTORY,
         },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
     ],
@@ -144,7 +148,7 @@ export class TuiInputDateTimeComponent
 
         if (
             (date && !nativeValue) ||
-            (date && nativeValue.length === this.fillerLength) ||
+            (date && nativeValue.length === this.dateFiller.length) ||
             (date && time)
         ) {
             return `${date.toString()}${DATE_TIME_SEPARATOR}${
@@ -190,12 +194,13 @@ export class TuiInputDateTimeComponent
         );
     }
 
+    @HostListener('click')
     onClick() {
         this.open = !this.open;
     }
 
     onValueChange(value: string) {
-        if (value.length < this.fillerLength) {
+        if (value.length < this.dateFiller.length) {
             this.updateValue([null, null]);
 
             return;
@@ -218,6 +223,7 @@ export class TuiInputDateTimeComponent
 
     onDayClick(day: TuiDay) {
         this.updateValue([day, this.value[1]]);
+        this.updateNativeValue(day);
         this.open = false;
     }
 
@@ -290,6 +296,12 @@ export class TuiInputDateTimeComponent
                 (a, b) => a.toString() === b.toString(),
             )
         );
+    }
+
+    private updateNativeValue(day: TuiDay) {
+        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
+
+        this.nativeValue = `${day.toString()}${DATE_TIME_SEPARATOR}${time}`;
     }
 
     @tuiPure

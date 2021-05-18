@@ -5,7 +5,6 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
-    HostBinding,
     Inject,
     Input,
     Optional,
@@ -36,7 +35,6 @@ import {
     TUI_IS_MOBILE,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
-    TuiDestroyService,
     TuiFocusableElementAccessor,
     tuiPure,
     tuiRequiredSetter,
@@ -65,7 +63,6 @@ const icons = {
     styleUrls: ['./input-card-grouped.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        TuiDestroyService,
         MODE_PROVIDER,
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -73,6 +70,8 @@ const icons = {
         },
     ],
     host: {
+        '($.data-mode.attr)': 'mode$',
+        '[class._mobile]': 'isMobile',
         'data-tui-host-size': 'l',
     },
 })
@@ -114,9 +113,6 @@ export class TuiInputCardGroupedComponent
         guide: false,
     };
 
-    @HostBinding('attr.data-tui-host-mode')
-    mode: TuiBrightness | null = null;
-
     readonly maskCard: TuiTextMaskOptions = {
         mask: TUI_CARD_MASK,
         guide: false,
@@ -135,9 +131,6 @@ export class TuiInputCardGroupedComponent
         guide: false,
     };
 
-    @HostBinding('class._mobile')
-    readonly isMobile: boolean;
-
     @ViewChild('inputCard')
     private readonly inputCard?: ElementRef<HTMLInputElement>;
 
@@ -155,21 +148,15 @@ export class TuiInputCardGroupedComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_IS_MOBILE) isMobile: boolean,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_CARD_NUMBER_TEXTS)
         readonly cardNumberTexts$: Observable<[string, string]>,
         @Inject(TUI_CARD_EXPIRY_TEXTS)
         readonly cardExpiryTexts$: Observable<[string, string]>,
     ) {
         super(control, changeDetectorRef);
-
-        this.isMobile = isMobile;
-
-        mode$.subscribe(mode => {
-            this.mode = mode;
-        });
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

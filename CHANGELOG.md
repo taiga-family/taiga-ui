@@ -2,28 +2,130 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [2.6.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.6.0...v2.6.1) (2021-02-26)
+### [2.9.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.9.0...v2.9.1) (2021-05-15)
 
 
 ### Bug Fixes
 
-* **addon-table:** fix incorrect style minification ([c00cf1b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c00cf1b5bfe61fabba137ab8d41c719a0bf96451))
-* **core:** fix underline pseudo link ([#246](https://github.com/TinkoffCreditSystems/taiga-ui/issues/246)) ([bca9201](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bca9201ffd30463da0b24a70aece4a1f2ac01f5b))
+* **all:** fix duplication of private imports for Webpack 5 ([#399](https://github.com/TinkoffCreditSystems/taiga-ui/issues/399)) ([bb89b2d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bb89b2d70f2da108f2f7bc5daeba93323bc4a68c))
 
-## [2.6.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.5.0...v2.6.0) (2021-02-25)
-
+## [2.9.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.8.2...v2.9.0) (2021-05-14)
 
 ### Features
 
-* **addon-doc:** add "Edit on Online IDE" button support ([5cae178](https://github.com/TinkoffCreditSystems/taiga-ui/commit/5cae178da83d0ab825afa5354d5f3805b02600ad))
-* **addon-table:** `Table` add new module ([9ac0243](https://github.com/TinkoffCreditSystems/taiga-ui/commit/9ac024368168fc19af0a8bb903b7c80d97ef7171))
-* **i18n:** add Ukrainian support ([#231](https://github.com/TinkoffCreditSystems/taiga-ui/issues/231)) ([38b292b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/38b292b2d19ca5d19bb603979f26758ce4d11b09))
-
+-   **core:** `Scrollbar` handle click on bar to scroll to that position ([#368](https://github.com/TinkoffCreditSystems/taiga-ui/issues/368)) ([f792d0c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/f792d0c48bc59c305e30747baa1c96847b8c7f3c))
+-   **core:** `TUI_ANIMATIONS_DURATION` add a new token ([#374](https://github.com/TinkoffCreditSystems/taiga-ui/issues/374)) ([988440c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/988440c57b09a827f0fc5386a426432a791bc54c))
+-   **core, kit:** add show delay / hide delay for all tooltips and hints ([#379](https://github.com/TinkoffCreditSystems/taiga-ui/issues/379)) ([660b5a1](https://github.com/TinkoffCreditSystems/taiga-ui/commit/660b5a12657b297865994033f7afb13677116d89))
+-   **i18n:** improve translations in Spanish ([#389](https://github.com/TinkoffCreditSystems/taiga-ui/issues/389)) ([af7eb3c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/af7eb3c47b5dd37edaaed0816a8af30602f4a6ef))
+-   **kit:** `Badge` allow custom content ([#387](https://github.com/TinkoffCreditSystems/taiga-ui/issues/387)) ([3107b53](https://github.com/TinkoffCreditSystems/taiga-ui/commit/3107b5383102f5c9f89124d57d9fd9c1e3eb0c42))
 
 ### Bug Fixes
 
-* **core:** `Dialog` fix closing non-dismissible dialog by clicking on border ([#240](https://github.com/TinkoffCreditSystems/taiga-ui/issues/240)) ([516dc74](https://github.com/TinkoffCreditSystems/taiga-ui/commit/516dc74a09267024b7154ebad46d36402d3d6625))
-* **core:** `Link` properly handle various modes ([#241](https://github.com/TinkoffCreditSystems/taiga-ui/issues/241)) ([9197895](https://github.com/TinkoffCreditSystems/taiga-ui/commit/919789593d9553f278bee7b1e0552a0665a6c1ef))
+-   **addon-charts:** `Axes` add mode support ([#319](https://github.com/TinkoffCreditSystems/taiga-ui/issues/319)) ([8f20801](https://github.com/TinkoffCreditSystems/taiga-ui/commit/8f208010fc9dfeabfad769eb7f2d95615605e78c))
+-   **cdk:** fix issues with Angular 12 and newer TypeScript ([#395](https://github.com/TinkoffCreditSystems/taiga-ui/issues/395)) ([01f5a48](https://github.com/TinkoffCreditSystems/taiga-ui/commit/01f5a48ac8de7d616c3e3f4b8da517c0e0aaf8b2))
+-   **core:** rename watched controller typo TUI_TEXTIFELD_WATCHED_CONTROLLER -> TUI_TEXTFIELD_WATCHED_CONTROLLER ([#396](https://github.com/TinkoffCreditSystems/taiga-ui/issues/396)) ([a8adb4a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a8adb4ae4702e80d98acc80cc19df5282395aaf3))
+-   **kit:** `InputDateTime` update native value on day click ([#378](https://github.com/TinkoffCreditSystems/taiga-ui/issues/378)) ([ad43348](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ad43348bc2bdbc6516c1748a3c13258f38675a1a))
+
+### [2.8.2](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.8.1...v2.8.2) (2021-05-04)
+
+### Bug Fixes
+
+-   **cdk:** fix components emitting initial `blur` ([#370](https://github.com/TinkoffCreditSystems/taiga-ui/issues/370)) ([36f722b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/36f722b19818335f66e2847e1c0aa1f392950be1))
+
+### [2.8.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.8.0...v2.8.1) (2021-04-30)
+
+### Bug Fixes
+
+-   **core:** `PrimitiveTextfield` fix growing wider than container ([#364](https://github.com/TinkoffCreditSystems/taiga-ui/issues/364)) ([e64fe49](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e64fe4931f22430a4edc260d74a4e5862903e6d5))
+
+## [2.8.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.7.0...v2.8.0) (2021-04-29)
+
+### Features
+
+-   **addon-editor:** `Toolbar` add `ColorPicker` ([#335](https://github.com/TinkoffCreditSystems/taiga-ui/issues/335)) ([67dfd6f](https://github.com/TinkoffCreditSystems/taiga-ui/commit/67dfd6f9ea7b74864cc57aabc9be7aab8759a0f0))
+-   **kit:** `DropdownHover` add new directive ([#361](https://github.com/TinkoffCreditSystems/taiga-ui/pull/361))
+-   **kit:** `TabsWithMore` always show the active tab ([#345](https://github.com/TinkoffCreditSystems/taiga-ui/issues/345)) ([c437871](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c4378719b1a30c8b1ca65671ee2542dbae13c076))
+
+### Bug Fixes
+
+-   **addon-editor:** `Editor` fix scroll jumping on edits ([#323](https://github.com/TinkoffCreditSystems/taiga-ui/issues/323)) ([c4a1e13](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c4a1e13cde7bc6f758b36b4e4989b47714d26a2f))
+-   **addon-editor:** `Editor` fix scrollbar dragging ([#333](https://github.com/TinkoffCreditSystems/taiga-ui/issues/333)) ([a01227e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a01227e55d5c41b6dff082d963b2d975247f4a95))
+-   **addon-editor:** open links in a new tab ([#328](https://github.com/TinkoffCreditSystems/taiga-ui/issues/328)) ([222863f](https://github.com/TinkoffCreditSystems/taiga-ui/commit/222863f965d950d3b28c99a95603e06bfcd95b33))
+-   **cdk:** `ActiveZone` fix emitting `false` on element removal in Chrome ([#362](https://github.com/TinkoffCreditSystems/taiga-ui/issues/362)) ([a424417](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a4244177906cb897fc47e8c65c5c1ff41dfbdadc))
+-   **cdk:** `ScrollService` fix `NullInjectorError` ([#355](https://github.com/TinkoffCreditSystems/taiga-ui/issues/355)) ([c6db6d1](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c6db6d197a382cc1f6f33ee9d4d1bba4b9d580c4))
+-   **cdk:** use passive event listeners ([#344](https://github.com/TinkoffCreditSystems/taiga-ui/issues/344)) ([dbc1188](https://github.com/TinkoffCreditSystems/taiga-ui/commit/dbc1188defa13cd0e5eae219372d3255fccb3f3d))
+-   **core:** `Scrollbar` fix content sticky beyond container height ([#348](https://github.com/TinkoffCreditSystems/taiga-ui/issues/348)) ([173213f](https://github.com/TinkoffCreditSystems/taiga-ui/commit/173213fa013c73ea38e2afbc16c5ba3f3996bae3))
+-   **core:** fix issues with components being used inside `ControlValueAccessor` ([#346](https://github.com/TinkoffCreditSystems/taiga-ui/issues/346)) ([e90a0f7](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e90a0f7f78a58e997b5645631eb6d94fd8416cef))
+-   **kit:** `InputCount` correct work with negative values ([#337](https://github.com/TinkoffCreditSystems/taiga-ui/issues/337)) ([82ceda8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/82ceda86cd7bbfbc15f18b767df7d25d5295e523))
+-   **kit:** `InputDateTime` fix changing date ([#322](https://github.com/TinkoffCreditSystems/taiga-ui/issues/322)) ([3cafe28](https://github.com/TinkoffCreditSystems/taiga-ui/commit/3cafe28cffb1a9c14b4942ad24408043a891c9ec))
+-   **kit:** `InputTime` open dropdown by click ([#322](https://github.com/TinkoffCreditSystems/taiga-ui/issues/322)) ([3cafe28](https://github.com/TinkoffCreditSystems/taiga-ui/commit/3cafe28cffb1a9c14b4942ad24408043a891c9ec))
+-   **kit:** `InputFile` do not reset loading files on new file selection ([#356](https://github.com/TinkoffCreditSystems/taiga-ui/issues/356)) ([bc01ace](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bc01aceeb3e3d403a15ba6f8f7544ab4257011e2))
+-   **kit:** `InputNumber` fix caret for zeroes in decimal part ([#318](https://github.com/TinkoffCreditSystems/taiga-ui/issues/318)) ([1b1dd68](https://github.com/TinkoffCreditSystems/taiga-ui/commit/1b1dd68e60786433cc815cf7f586b2131278a586))
+-   **kit:** `InputTag` fix scrolling with arrows ([#334](https://github.com/TinkoffCreditSystems/taiga-ui/issues/334)) ([436bcaa](https://github.com/TinkoffCreditSystems/taiga-ui/commit/436bcaa4fc71d3a1727c3ffa579665404d815eb1))
+-   **kit:** fix iOS device detection ([#320](https://github.com/TinkoffCreditSystems/taiga-ui/issues/320)) ([6e90cad](https://github.com/TinkoffCreditSystems/taiga-ui/commit/6e90cad33d6eae1a592765fa71f85fb7d8ce0396))
+
+## [2.7.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.6.2...v2.7.0) (2021-03-29)
+
+### Features
+
+-   **addon-mobile:** `Sidebar` add `autoWidth` option ([#299](https://github.com/TinkoffCreditSystems/taiga-ui/issues/299)) ([73f593b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/73f593b0e370dba57b4da1756631e77e7b64115f))
+-   **core:** `NightThemeService` add new service ([#226](https://github.com/TinkoffCreditSystems/taiga-ui/issues/226)) ([bd85236](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bd8523666579048e54ba34cec48f56022f566478))
+-   **core:** `NotificationsService` add `hasIcon` option ([#274](https://github.com/TinkoffCreditSystems/taiga-ui/issues/274)) ([0519af6](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0519af62b8af5dc1df21f52311db318457c97216))
+-   **demo:** Improve documentation (descriptions, unexpected behavior etc.) ([#284](https://github.com/TinkoffCreditSystems/taiga-ui/issues/284)) ([96638d0](https://github.com/TinkoffCreditSystems/taiga-ui/commit/96638d09693bdd023a2a931d6698d04f36ee09f5))
+-   **demo:** added link to source code and fixed routing ([#273](https://github.com/TinkoffCreditSystems/taiga-ui/issues/273)) ([99ede5a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/99ede5a3b52f9686adf8b97191d58c8abeb5290f))
+-   **kit:** `Tabs` update scroll position on active index change ([#268](https://github.com/TinkoffCreditSystems/taiga-ui/issues/268)) ([a753a5e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a753a5e8f7a5fddf1496ac190897a922e48c49f9))
+
+### Bug Fixes
+
+-   **addon-doc:** fix import package ([#291](https://github.com/TinkoffCreditSystems/taiga-ui/issues/291)) ([cdabcd1](https://github.com/TinkoffCreditSystems/taiga-ui/commit/cdabcd1d4f8e33b51d472ee94476165a13a99fa4))
+-   **addon-editor:** fix font & highlight displayed colors ([#311](https://github.com/TinkoffCreditSystems/taiga-ui/issues/311)) ([6375d65](https://github.com/TinkoffCreditSystems/taiga-ui/commit/6375d656aa2cbeef0d8d6f0cee9599e9d76da712))
+-   **addon-table:** `Table` fix dual borders ([#277](https://github.com/TinkoffCreditSystems/taiga-ui/issues/277)) ([52534fc](https://github.com/TinkoffCreditSystems/taiga-ui/commit/52534fcec5ee0786b1d78648b04110c042dbfa69))
+-   **cdk:** `ActiveZone` stay in zone if focused element removed ([#304](https://github.com/TinkoffCreditSystems/taiga-ui/issues/304)) ([30cb717](https://github.com/TinkoffCreditSystems/taiga-ui/commit/30cb717f087393b7aa0eabb7c4605ecf078cd081))
+-   **cdk:** `FocusTrap` fix ExpressionChanged error ([#304](https://github.com/TinkoffCreditSystems/taiga-ui/issues/304)) ([30cb717](https://github.com/TinkoffCreditSystems/taiga-ui/commit/30cb717f087393b7aa0eabb7c4605ecf078cd081))
+-   **kit:** `HoveredService` fix for iOS 12 ([#303](https://github.com/TinkoffCreditSystems/taiga-ui/issues/303)) ([3cbf8f2](https://github.com/TinkoffCreditSystems/taiga-ui/commit/3cbf8f2b07c9c3ec616e8f0b8fe97f2358faed37))
+-   **kit:** `InputTag` error icon layout ([#296](https://github.com/TinkoffCreditSystems/taiga-ui/issues/296)) ([75c2baa](https://github.com/TinkoffCreditSystems/taiga-ui/commit/75c2baa5f17366bfa70e5cfd6a99e1dbf9f2bdd9))
+-   **kit:** `InputRange` prevent emitting same value on blur ([#298](https://github.com/TinkoffCreditSystems/taiga-ui/issues/298)) ([685cc00](https://github.com/TinkoffCreditSystems/taiga-ui/commit/685cc006b6649ed14a297ee4d94559e5180bd1b4))
+-   **kit:** `InputRange` prevent from focusing input field on mobile devices ([#280](https://github.com/TinkoffCreditSystems/taiga-ui/issues/280)) ([c8cf497](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c8cf49785683d969371f3ee1152482e6ba8ae2d0))
+-   **kit:** `Tabs` fix extra change detection ticks ([#314](https://github.com/TinkoffCreditSystems/taiga-ui/issues/314)) ([0f36a06](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0f36a066fb2c0dc1a679c789527a8c912423460c))
+-   **kit:** `TextArea` fix `m` size styles ([#302](https://github.com/TinkoffCreditSystems/taiga-ui/issues/302)) ([39850ef](https://github.com/TinkoffCreditSystems/taiga-ui/commit/39850ef68caa1a8a63ee15f31562305b72d65191))
+-   **kit:** `InputPassword` fix change detection issue ([#300](https://github.com/TinkoffCreditSystems/taiga-ui/issues/300)) ([a32a9dd](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a32a9dd5a82b2672686aadd4b42c542b9c2e3607))
+-   **kit:** `InputCount` prevent buttons from focusing input field on mobile ([#272](https://github.com/TinkoffCreditSystems/taiga-ui/issues/272)) ([17f8d47](https://github.com/TinkoffCreditSystems/taiga-ui/commit/17f8d47fa3bcf5d1c00e790daaa7fd9a428db328))
+
+### [2.6.2](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.6.1...v2.6.2) (2021-03-04)
+
+### Features
+
+-   **cdk:** add `isSafari` util ([e616b53](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e616b53f9535416b960486dd2c7b6e615a9e14ce))
+-   **core:** `TUI_ASSERT_ENABLED` add new token to allow enabling assertions in prod mode ([39af6cb](https://github.com/TinkoffCreditSystems/taiga-ui/commit/39af6cb58687d0edfa398da8525d71fcf391f444))
+-   **kit:** `Radio` add customization through token ([#264](https://github.com/TinkoffCreditSystems/taiga-ui/issues/264)) ([1a6d574](https://github.com/TinkoffCreditSystems/taiga-ui/commit/1a6d57447de0118e87e96848f96d8db4f3dc5b64))
+
+### Bug Fixes
+
+-   **addon-table:** fix not drawing default cells ([61cd807](https://github.com/TinkoffCreditSystems/taiga-ui/commit/61cd8071f8c631f737dd554cfff373da30ccf95a))
+-   **core:** `Loader` fix form freezing in Safari ([#266](https://github.com/TinkoffCreditSystems/taiga-ui/issues/266)) ([0c7330c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0c7330ce0e8d4a3d16dce06d8689f75ce3a96dff))
+-   **kit:** `InoutNumber` fix all problems with caret in Safari ([b4930c9](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b4930c9d59b915b51a0c6aa705f2cff78b9170f3))
+-   **kit:** `InputCount` fix wrong button height for customized height ([#216](https://github.com/TinkoffCreditSystems/taiga-ui/issues/216)) ([4c39f7a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/4c39f7a27dd81c59352cdc3af46114d2ff3184cf))
+-   **kit:** fix loader in toggle size m ([#261](https://github.com/TinkoffCreditSystems/taiga-ui/issues/261)) ([a1eeaa4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a1eeaa417a2aa3b6b68ba32b524eed17d6f2f144))
+
+### [2.6.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.6.0...v2.6.1) (2021-02-26)
+
+### Bug Fixes
+
+-   **addon-table:** fix incorrect style minification ([c00cf1b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c00cf1b5bfe61fabba137ab8d41c719a0bf96451))
+-   **core:** fix underline pseudo link ([#246](https://github.com/TinkoffCreditSystems/taiga-ui/issues/246)) ([bca9201](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bca9201ffd30463da0b24a70aece4a1f2ac01f5b))
+
+## [2.6.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.5.0...v2.6.0) (2021-02-25)
+
+### Features
+
+-   **addon-doc:** add "Edit on Online IDE" button support ([5cae178](https://github.com/TinkoffCreditSystems/taiga-ui/commit/5cae178da83d0ab825afa5354d5f3805b02600ad))
+-   **addon-table:** `Table` add new module ([9ac0243](https://github.com/TinkoffCreditSystems/taiga-ui/commit/9ac024368168fc19af0a8bb903b7c80d97ef7171))
+-   **i18n:** add Ukrainian support ([#231](https://github.com/TinkoffCreditSystems/taiga-ui/issues/231)) ([38b292b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/38b292b2d19ca5d19bb603979f26758ce4d11b09))
+
+### Bug Fixes
+
+-   **core:** `Dialog` fix closing non-dismissible dialog by clicking on border ([#240](https://github.com/TinkoffCreditSystems/taiga-ui/issues/240)) ([516dc74](https://github.com/TinkoffCreditSystems/taiga-ui/commit/516dc74a09267024b7154ebad46d36402d3d6625))
+-   **core:** `Link` properly handle various modes ([#241](https://github.com/TinkoffCreditSystems/taiga-ui/issues/241)) ([9197895](https://github.com/TinkoffCreditSystems/taiga-ui/commit/919789593d9553f278bee7b1e0552a0665a6c1ef))
 
 ## [2.5.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.4.0...v2.5.0) (2021-02-08)
 

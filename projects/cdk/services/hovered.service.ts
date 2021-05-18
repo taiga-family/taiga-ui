@@ -31,9 +31,12 @@ export class TuiHoveredService {
 
     createHovered$(
         target: Element,
-        options: AddEventListenerOptions = {},
+        options: AddEventListenerOptions = {passive: true},
     ): Observable<boolean> {
-        return typedFromEvent(target, 'mouseenter', options).pipe(
+        return merge(
+            typedFromEvent(target, 'mouseenter', options),
+            typedFromEvent(target, 'touchstart', options),
+        ).pipe(
             switchMap(() =>
                 merge(
                     typedFromEvent(target, 'mouseleave', options),

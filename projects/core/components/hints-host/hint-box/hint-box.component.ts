@@ -68,7 +68,7 @@ export class TuiHintBoxComponent {
     direction: TuiDirection = 'bottom-left';
 
     @Input()
-    @HostBinding('attr.data-tui-host-mode')
+    @HostBinding('attr.data-mode')
     @tuiDefaultProp()
     mode: TuiHintMode | null = null;
 
@@ -116,7 +116,7 @@ export class TuiHintBoxComponent {
         }
 
         if (!this.hint) {
-            throw new Error('Hint directive is missing');
+            return;
         }
 
         const hostRect = this.hint.getElementClientRect();

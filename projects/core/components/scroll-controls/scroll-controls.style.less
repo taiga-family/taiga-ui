@@ -8,7 +8,7 @@
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 1;
     min-width: calc(100% - 1px);
     min-height: calc(100% - 1px);
     float: left;
@@ -20,13 +20,16 @@
     position: absolute;
     right: 0;
     bottom: 0;
+    pointer-events: auto;
 
     &_vertical {
         top: 0;
+        width: @scroll-width-large;
     }
 
     &_horizontal {
         left: 0;
+        height: @scroll-width-large;
     }
 
     &_has-horizontal {
@@ -59,7 +62,7 @@
         opacity: 0.48;
     }
 
-    &_light {
+    :host[data-mode='onDark'] & {
         background-color: var(--tui-text-01-night);
     }
 

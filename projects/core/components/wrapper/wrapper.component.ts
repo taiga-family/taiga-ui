@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiInteractiveState} from '@taiga-ui/core/enums';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
@@ -17,7 +17,10 @@ import {Observable} from 'rxjs';
     template: '<ng-content></ng-content>',
     styleUrls: ['./wrapper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService, MODE_PROVIDER],
+    providers: [MODE_PROVIDER],
+    host: {
+        '($.data-mode.attr)': 'mode$',
+    },
 })
 export class TuiWrapperComponent {
     @Input()
@@ -42,17 +45,10 @@ export class TuiWrapperComponent {
     @HostBinding('attr.data-appearance')
     appearance = '';
 
-    @HostBinding('attr.data-mode')
-    mode: TuiBrightness | null = null;
-
     constructor(
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
-    ) {
-        mode$.subscribe(mode => {
-            this.mode = mode;
-        });
-    }
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+    ) {}
 
     @HostBinding('class._invalid')
     get computedInvalid(): boolean {

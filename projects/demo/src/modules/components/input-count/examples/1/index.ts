@@ -13,5 +13,6 @@ export class TuiInputCountExample1 {
     readonly testForm = new FormGroup({
         testValue1: new FormControl(10, Validators.required),
         testValue2: new FormControl(10, Validators.required),
+        testValue3: new FormControl(-10, Validators.required),
     });
 }

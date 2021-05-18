@@ -26,7 +26,7 @@
         content: '';
         box-sizing: border-box;
         border-radius: inherit;
-        border: 1px solid var(--tui-base-05);
+        border: 1px solid var(--tui-base-04);
         pointer-events: none;
 
         :host:not([data-tui-host-borders]) & {
@@ -54,11 +54,11 @@
             border-top-width: 0;
         }
 
-        :host[data-tui-host-mode='onDark'] & {
+        :host[data-mode='onDark'] & {
             border-color: var(--tui-base-03);
         }
 
-        :host[data-tui-host-mode='onLight'] & {
+        :host[data-mode='onLight'] & {
             border-color: var(--tui-text-01);
         }
 
@@ -67,7 +67,7 @@
         }
     }
 
-    :host:not([data-tui-host-mode]) & {
+    :host:not([data-mode]) & {
         background: var(--tui-base-01);
     }
 }
@@ -78,18 +78,18 @@
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    border-bottom: 1px solid var(--tui-base-05);
+    border-bottom: 1px solid var(--tui-base-04);
     min-height: var(--tui-height-l);
     padding: 12px 20px;
     color: var(--tui-text-01);
     cursor: pointer;
 
-    :host[data-tui-host-mode='onDark'] & {
+    :host[data-mode='onDark'] & {
         color: var(--tui-text-01-night);
         border-color: var(--tui-base-03);
     }
 
-    :host[data-tui-host-mode='onLight'] & {
+    :host[data-mode='onLight'] & {
         border-color: var(--tui-text-01);
     }
 
@@ -102,17 +102,17 @@
         padding-right: 12px;
     }
 
-    :host._hovered:not([data-tui-host-mode]) & {
+    :host._hovered:not([data-mode]) & {
         background: var(--tui-base-02);
     }
 
-    :host._hovered[data-tui-host-mode='onDark'] &,
-    :host[data-tui-host-mode='onDark'] &_open {
+    :host._hovered[data-mode='onDark'] &,
+    :host[data-mode='onDark'] &_open {
         background: var(--tui-clear-inverse);
     }
 
-    :host._hovered[data-tui-host-mode='onLight'] &,
-    :host[data-tui-host-mode='onLight'] &_open {
+    :host._hovered[data-mode='onLight'] &,
+    :host[data-mode='onLight'] &_open {
         background: var(--tui-clear);
     }
 
@@ -153,23 +153,23 @@
         transform: rotate(180deg);
     }
 
-    :host[data-tui-host-mode] & {
+    :host[data-mode] & {
         opacity: var(--tui-disabled-opacity);
     }
 
-    :host._hovered[data-tui-host-mode] & {
+    :host._hovered[data-mode] & {
         opacity: 0.8;
     }
 
-    :host[data-tui-host-mode='onDark'] & {
+    :host[data-mode='onDark'] & {
         color: var(--tui-text-01-night);
     }
 
-    :host[data-tui-host-mode='onLight'] & {
+    :host[data-mode='onLight'] & {
         color: var(--tui-text-01);
     }
 
-    :host._hovered:not([data-tui-host-mode]) & {
+    :host._hovered:not([data-mode]) & {
         color: var(--tui-base-07);
     }
 }
