@@ -10,11 +10,11 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    clamp,
     isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
-    clamp,
 } from '@taiga-ui/cdk';
 import {AbstractTuiSlider, SLIDER_KEYBOARD_STEP} from '@taiga-ui/kit/abstract';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
