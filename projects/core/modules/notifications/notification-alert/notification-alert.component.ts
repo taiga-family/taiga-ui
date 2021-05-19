@@ -1,7 +1,13 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    Inject,
+    Input,
+} from '@angular/core';
 import {TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
-import {timer} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {fromEvent, timer} from 'rxjs';
+import {filter, repeatWhen, takeUntil} from 'rxjs/operators';
 
 import {TuiNotificationContentContext} from '../notification-content-context';
 import {NotificationAlert} from './Notification-alert';
@@ -20,16 +26,17 @@ export class TuiNotificationAlertComponent<O, I> {
     item?: NotificationAlert<O, I>;
 
     constructor(
-        @Inject(TuiDestroyService)
-        destroy$: TuiDestroyService,
+        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         timer(ALERT_AUTOCLOSE_TIMEOUT)
-            .pipe(takeUntil(destroy$))
-            .subscribe(() => {
-                if (this.safeItem.autoClose) {
-                    this.closeDialog();
-                }
-            });
+            .pipe(
+                takeUntil(fromEvent(nativeElement, 'mouseenter')),
+                repeatWhen(() => fromEvent(nativeElement, 'mouseleave')),
+                takeUntil(destroy$),
+                filter(() => this.safeItem.autoClose),
+            )
+            .subscribe(() => this.closeNotification());
     }
 
     get safeItem(): NotificationAlert<O, I> {
@@ -44,7 +51,7 @@ export class TuiNotificationAlertComponent<O, I> {
         return this.calculateContext(this.safeItem);
     }
 
-    closeDialog() {
+    closeNotification() {
         this.safeItem.observer.complete();
     }
 
