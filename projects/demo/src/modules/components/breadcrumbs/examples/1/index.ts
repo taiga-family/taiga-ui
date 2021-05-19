@@ -12,19 +12,19 @@ export class TuiBreadcrumbsExample1 {
     items = [
         {
             caption: 'Selects',
-            routerLink: '/tui-select',
+            routerLink: '/components/select',
         },
         {
             caption: 'Multi',
-            routerLink: '/tui-multi-select',
+            routerLink: '/components/multi-select',
         },
         {
             caption: 'With tags',
-            routerLink: '/tui-multi-select',
+            routerLink: '/components/multi-select',
         },
         {
             caption: 'Current',
-            routerLink: '/tui-breadcrumbs',
+            routerLink: '/navigation/breadcrumbs',
             routerLinkActiveOptions: {exact: true},
         },
     ];
