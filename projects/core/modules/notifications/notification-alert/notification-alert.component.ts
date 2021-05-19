@@ -31,11 +31,11 @@ export class TuiNotificationAlertComponent<O, I> {
     ) {
         timer(ALERT_AUTOCLOSE_TIMEOUT)
             .pipe(
-                takeUntil(race(destroy$, fromEvent(nativeElement, 'mouseover'))),
+                takeUntil(race(destroy$, fromEvent(nativeElement, 'mouseenter'))),
                 repeatWhen(() => fromEvent(nativeElement, 'mouseleave')),
                 filter(() => this.safeItem.autoClose),
             )
-            .subscribe(() => this.closeDialog());
+            .subscribe(() => this.closeNotification());
     }
 
     get safeItem(): NotificationAlert<O, I> {
@@ -50,7 +50,7 @@ export class TuiNotificationAlertComponent<O, I> {
         return this.calculateContext(this.safeItem);
     }
 
-    closeDialog() {
+    closeNotification() {
         this.safeItem.observer.complete();
     }
 

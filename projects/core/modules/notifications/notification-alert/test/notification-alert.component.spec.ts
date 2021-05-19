@@ -132,7 +132,7 @@ describe('NotificationAlertComponent', () => {
 
     it('close | Close the Alert and notify the observer', () => {
         fixture.detectChanges();
-        component.closeDialog();
+        component.closeNotification();
 
         expect(nextSpy).not.toHaveBeenCalled();
         expect(completeSpy).toHaveBeenCalled();
