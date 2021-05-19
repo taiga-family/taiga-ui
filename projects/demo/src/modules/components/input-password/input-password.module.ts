@@ -12,6 +12,7 @@ import {
 import {TuiInputPasswordModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputPasswordExample1} from './examples/1';
+import {TuiInputPasswordExample2} from './examples/2';
 import {ExampleTuiInputPasswordComponent} from './input-password.component';
 
 @NgModule({
@@ -28,7 +29,11 @@ import {ExampleTuiInputPasswordComponent} from './input-password.component';
         TuiHintControllerModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputPasswordComponent)),
     ],
-    declarations: [ExampleTuiInputPasswordComponent, TuiInputPasswordExample1],
+    declarations: [
+        ExampleTuiInputPasswordComponent,
+        TuiInputPasswordExample1,
+        TuiInputPasswordExample2,
+    ],
     exports: [ExampleTuiInputPasswordComponent],
 })
 export class ExampleTuiInputPasswordModule {}

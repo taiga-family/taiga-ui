@@ -60,6 +60,6 @@ export class TuiTooltipComponent {
     // TODO: Simplify
     @HostBinding('attr.data-mode')
     get computedMode(): TuiHintMode | TuiBrightness | null {
-        return this.mode || (this.globalMode ? this.globalMode : null);
+        return this.mode || this.globalMode;
     }
 }
