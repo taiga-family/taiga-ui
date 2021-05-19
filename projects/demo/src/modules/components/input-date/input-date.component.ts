@@ -30,8 +30,8 @@ import {
 import {TuiNamedDay} from '@taiga-ui/kit';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
 const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
@@ -47,7 +47,7 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
         },
     ],
 })
-export class ExampleTuiInputDateComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;

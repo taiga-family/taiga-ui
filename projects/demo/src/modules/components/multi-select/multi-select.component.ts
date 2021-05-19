@@ -39,8 +39,8 @@ import {
 import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 class Account {
     constructor(readonly name: string, readonly balance: number) {}
@@ -62,7 +62,7 @@ class Account {
         },
     ],
 })
-export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
     @ViewChild('item')
     content?: PolymorpheusTemplate<{}>;
 

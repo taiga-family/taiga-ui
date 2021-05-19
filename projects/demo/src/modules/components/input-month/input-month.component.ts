@@ -19,8 +19,8 @@ import {
 } from '@taiga-ui/cdk';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-input-month',
@@ -33,7 +33,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleInputMonthComponent extends AbstractExampleTuiReactiveField {
+export class ExampleInputMonthComponent extends AbstractExampleTuiControl {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,

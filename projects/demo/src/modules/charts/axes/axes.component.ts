@@ -45,6 +45,7 @@ export class ExampleTuiAxesComponent {
         TuiLineType.Solid,
         TuiLineType.Dashed,
         TuiLineType.None,
+        TuiLineType.Hidden,
     ];
 
     readonly labelsVariants = [

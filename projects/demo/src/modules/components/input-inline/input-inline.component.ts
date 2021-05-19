@@ -11,14 +11,14 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {FrontEndExample} from '../../interfaces/front-end-example';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
+import {AbstractExampleTuiControl} from '../abstract/control';
 
 @Component({
     selector: 'example-tui-input-inline',
     templateUrl: './input-inline.template.html',
     styleUrls: ['./input-inline.style.less'],
 })
-export class ExampleTuiInputInlineComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputInlineComponent extends AbstractExampleTuiControl {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 

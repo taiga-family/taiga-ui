@@ -18,8 +18,8 @@ import {TuiButtonShape, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
-import {AbstractExampleTuiField} from '../abstract/field';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
     selector: 'example-tui-button',
@@ -33,7 +33,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         },
     ],
 })
-export class ExampleTuiButtonComponent extends AbstractExampleTuiField {
+export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,

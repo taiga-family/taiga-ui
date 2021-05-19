@@ -11,7 +11,7 @@ import {
     TuiSizeS,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
-import {AbstractExampleTuiField} from './field';
+import {AbstractExampleTuiInteractive} from './interactive';
 
 const CUSTOM_SVG = `<svg xmlns="http://www.w3.org/2000/svg"
 width="24px"
@@ -24,7 +24,7 @@ viewBox="0 0 24 24">
 
 type possibleGenericType = any;
 
-export abstract class AbstractExampleTuiReactiveField extends AbstractExampleTuiField {
+export abstract class AbstractExampleTuiControl extends AbstractExampleTuiInteractive {
     abstract readonly control: AbstractControl;
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];

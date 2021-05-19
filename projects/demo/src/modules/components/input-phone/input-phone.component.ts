@@ -23,8 +23,8 @@ import {
 } from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-tui-input-phone',
@@ -38,7 +38,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;

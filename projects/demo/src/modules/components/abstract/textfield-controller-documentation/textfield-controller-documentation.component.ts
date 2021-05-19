@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '../../../../change-detection-strategy';
+import {AbstractExampleTuiControl} from '../control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../reactive-field';
 
 @Component({
     selector: 'textfield-controller-documentation',
@@ -11,6 +11,6 @@ import {AbstractExampleTuiReactiveField} from '../reactive-field';
 export class TextfieldControllerDocumentationComponent {
     constructor(
         @Inject(ABSTRACT_PROPS_ACCESSOR)
-        readonly documentedComponent: AbstractExampleTuiReactiveField,
+        readonly documentedComponent: AbstractExampleTuiControl,
     ) {}
 }

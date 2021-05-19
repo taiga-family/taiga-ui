@@ -36,8 +36,8 @@ import {FormControl, Validators} from '@angular/forms';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-tui-input',
@@ -51,7 +51,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiInputComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
     readonly exampleDeclareForm = exampleDeclareForm;

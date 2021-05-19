@@ -1,8 +1,8 @@
-import {AbstractExampleTuiField} from '../field';
+import {AbstractExampleTuiControl} from '../control';
 import {AbstractExampleTuiHint} from '../hint';
-import {AbstractExampleTuiReactiveField} from '../reactive-field';
+import {AbstractExampleTuiInteractive} from '../interactive';
 
 export type supportingDocumentationComponent =
-    | AbstractExampleTuiField
-    | AbstractExampleTuiReactiveField
+    | AbstractExampleTuiInteractive
+    | AbstractExampleTuiControl
     | AbstractExampleTuiHint;

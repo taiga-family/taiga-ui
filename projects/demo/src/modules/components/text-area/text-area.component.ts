@@ -19,8 +19,8 @@ import {FormControl, Validators} from '@angular/forms';
 import {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-tui-text-area',
@@ -33,7 +33,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiTextAreaComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,

@@ -1,4 +1,4 @@
-export abstract class AbstractExampleTuiField {
+export abstract class AbstractExampleTuiInteractive {
     readonly pseudoVariants: ReadonlyArray<boolean> = [false, true];
 
     focusable = true;

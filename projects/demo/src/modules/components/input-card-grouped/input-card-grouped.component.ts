@@ -1,7 +1,7 @@
 import {Component, forwardRef, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '../../../change-detection-strategy';
-import {AbstractExampleTuiReactiveField} from '../../components/abstract/reactive-field';
+import {AbstractExampleTuiControl} from '../../components/abstract/control';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -24,7 +24,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
         },
     ],
 })
-export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiControl {
     readonly exampleImportModule = exampleImportModule;
 
     readonly exampleInsertTemplate = exampleInsertTemplate;
