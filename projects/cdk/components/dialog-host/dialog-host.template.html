@@ -1,14 +1,16 @@
-<section
-    *ngFor="let item of dialogs$ | async"
-    polymorpheus-outlet
-    tuiFocusTrap
-    tuiOverscroll="all"
-    class="dialog"
-    role="dialog"
-    aria-modal="true"
-    [attr.aria-labelledby]="item.id"
-    [content]="item.component"
-    [context]="item"
-    [@tuiParentAnimation]
-></section>
-<div class="overlay"></div>
+<ng-container *ngIf="dialogs$ | async as dialogs">
+    <section
+        *ngFor="let item of dialogs"
+        polymorpheus-outlet
+        tuiFocusTrap
+        tuiOverscroll="all"
+        class="dialog"
+        role="dialog"
+        aria-modal="true"
+        [attr.aria-labelledby]="item.id"
+        [content]="item.component"
+        [context]="item"
+        [@tuiParentAnimation]
+    ></section>
+    <div class="overlay" [class.overlay_visible]="dialogs.length"></div>
+</ng-container>

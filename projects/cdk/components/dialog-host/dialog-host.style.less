@@ -25,14 +25,12 @@
     opacity: 0;
     transition: opacity var(--tui-duration);
     background: rgba(0, 0, 0, 0.5);
-}
 
-.dialog {
-    & + .overlay {
+    &_visible {
         opacity: 1;
     }
+}
 
-    &:last-of-type {
-        z-index: 1;
-    }
+.dialog:last-of-type {
+    z-index: 1;
 }
