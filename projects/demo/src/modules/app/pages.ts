@@ -985,6 +985,13 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'FilterByInput',
+                keywords:
+                    'filter, совпадения, ngfor, for, match, пайп, pipe, input, combobox',
+                route: '/pipes/filter-by-input',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'FormatNumber',
                 keywords:
                     'format, форматирование, преобразование, пробелы, тысячи, пайп, pipe',

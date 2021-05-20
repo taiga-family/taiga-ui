@@ -1,6 +1,6 @@
-<tui-doc-page header="Mapper" package="CDK" type="pipes">
+<tui-doc-page header="FilterByInput" package="KIT" type="pipes">
     <ng-template i18n pageTab>
-        Pipe to transform a value with a function
+        Pipe for filtering an array by value entered in a textfield
 
         <tui-doc-example
             id="base"
@@ -8,15 +8,7 @@
             heading="Basic"
             [content]="example1"
         >
-            <tui-mapper-example1></tui-mapper-example1>
-        </tui-doc-example>
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="With array"
-            [content]="example2"
-        >
-            <tui-mapper-example2></tui-mapper-example2>
+            <tui-filter-by-input-example1></tui-filter-by-input-example1>
         </tui-doc-example>
     </ng-template>
 
@@ -24,8 +16,8 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Import <code>TuiMapperPipeModule</code> into a module where
-                    you want to use our component
+                    Import <code>TuiFilterByInputPipeModule</code> into a module
+                    where you want to use our component
                 </p>
 
                 <tui-doc-code
@@ -35,9 +27,7 @@
             </li>
 
             <li>
-                <p i18n>
-                    Use pipe in template with function and its arguments:
-                </p>
+                <p i18n>Use pipe in template under Taiga UI control:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -10275,7 +10275,7 @@
       </trans-unit>
       <trans-unit id="daecd9318a412b6e447ed3e701d10a2b79afedc7" datatype="html">
         <source>
-                    Use pipe into template with function and its arguments:
+                    Use pipe in template with function and its arguments:
                 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/pipes/filter/filter.template.html</context>
