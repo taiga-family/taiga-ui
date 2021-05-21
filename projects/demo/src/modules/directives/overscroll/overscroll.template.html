@@ -11,27 +11,30 @@
         </p>
 
         <tui-doc-example
-            id="base"
+            id="none"
             i18n-heading
-            heading="Basic"
+            heading="None"
+            description="Disabled"
             [content]="example1"
         >
             <tui-overscroll-example-1></tui-overscroll-example-1>
         </tui-doc-example>
 
         <tui-doc-example
-            id="withScrolling"
+            id="all"
             i18n-heading
-            heading="With scrolling all page"
+            heading="All"
+            description="Blocks all scrolling"
             [content]="example2"
         >
             <tui-overscroll-example-2></tui-overscroll-example-2>
         </tui-doc-example>
 
         <tui-doc-example
-            id="withScrolling"
+            id="scroll"
             i18n-heading
-            heading="Blocks all scrolling actions"
+            heading="Scroll"
+            description="Blocks scrolling if container is scrollable"
             [content]="example3"
         >
             <tui-overscroll-example-3></tui-overscroll-example-3>

@@ -1,6 +1,3 @@
-<div
-    tuiOverscroll
-    ...
->
+<div tuiOverscroll="all">
     ...
 </div>
