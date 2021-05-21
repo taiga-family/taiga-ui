@@ -45,4 +45,9 @@ describe('BarChart', () => {
     it('Computes percent correctly', () => {
         expect(testComponent.component.getPercent([1, 3])).toBe(50);
     });
+
+    it('Computes percent correctly in collapsed mode', () => {
+        testComponent.component.collapsed = true;
+        expect(testComponent.component.getPercent([8, 1])).toBe(100);
+    });
 });

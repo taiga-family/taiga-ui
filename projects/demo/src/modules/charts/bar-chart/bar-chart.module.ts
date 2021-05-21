@@ -8,6 +8,7 @@ import {TuiColorModule, TuiHintModule, TuiLinkModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {ExampleTuiBarChartComponent} from './bar-chart.component';
 import {TuiBarChartExample1} from './examples/1';
+import {TuiBarChartExample2} from './examples/2';
 
 @NgModule({
     imports: [
@@ -23,7 +24,7 @@ import {TuiBarChartExample1} from './examples/1';
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiBarChartComponent)),
     ],
-    declarations: [ExampleTuiBarChartComponent, TuiBarChartExample1],
+    declarations: [ExampleTuiBarChartComponent, TuiBarChartExample1, TuiBarChartExample2],
     exports: [ExampleTuiBarChartComponent],
 })
 export class ExampleTuiBarChartModule {}

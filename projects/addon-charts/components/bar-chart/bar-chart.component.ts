@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
 import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
 import {
+    sum,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiIdService,
@@ -68,7 +69,9 @@ export class TuiBarChartComponent {
     }
 
     getPercent(set: readonly number[]): number {
-        return (100 * Math.max(...set)) / this.computedMax;
+        return (
+            (100 * (this.collapsed ? sum(...set) : Math.max(...set))) / this.computedMax
+        );
     }
 
     getHint(hint: PolymorpheusContent): PolymorpheusContent {
@@ -87,7 +90,7 @@ export class TuiBarChartComponent {
     }
 
     private get computedMax(): number {
-        return this.max || this.getMax(this.value);
+        return this.max || this.getMax(this.value, this.collapsed);
     }
 
     @tuiPure
@@ -102,7 +105,13 @@ export class TuiBarChartComponent {
     }
 
     @tuiPure
-    private getMax(value: ReadonlyArray<readonly number[]>): number {
-        return value.reduce((max, value) => Math.max(...value, max), 0);
+    private getMax(values: ReadonlyArray<readonly number[]>, collapsed: boolean): number {
+        return collapsed
+            ? Math.max(
+                  ...values.reduce((result, next) =>
+                      result.map((value, index) => value + next[index]),
+                  ),
+              )
+            : values.reduce((max, value) => Math.max(...value, max), 0);
     }
 }
