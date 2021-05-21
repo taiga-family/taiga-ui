@@ -20,11 +20,8 @@ function inspectArray(array: ReadonlyArray<any>, depth: number): string {
 }
 
 function inspectObject(object: {[key: string]: any}, depth: number): string {
-    const prefix =
-        object.constructor.name === 'Object' ? '' : `${object.constructor.name} `;
-
     if (depth === 0) {
-        return `${prefix}{…}`;
+        return `{…}`;
     }
 
     let result = '';
@@ -45,7 +42,7 @@ function inspectObject(object: {[key: string]: any}, depth: number): string {
         result += `${key}: ${inspectAny(object[key], depth - 1)}`;
     }
 
-    return `${prefix}{${result}}`;
+    return `{${result}}`;
 }
 
 // @bad TODO add more types
@@ -78,9 +75,5 @@ export function inspectAny(data: any, depth: number): string {
         return inspectArray(data, depth);
     }
 
-    if (data.constructor.name === 'Object') {
-        return inspectObject(data, depth);
-    }
-
-    return data.constructor.name;
+    return inspectObject(data, depth);
 }

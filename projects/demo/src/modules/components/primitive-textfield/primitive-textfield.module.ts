@@ -43,7 +43,6 @@ import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.compo
         TuiCustomizationModule,
         TuiLabelModule,
         ThemesModule,
-        TuiTextfieldControllerModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiPrimitiveTextfieldComponent)),
     ],
