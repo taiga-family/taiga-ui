@@ -1,21 +1,21 @@
 <tui-tabs-with-more [itemsLimit]="3" [(activeItemIndex)]="activeItemIndex">
-    <button *tuiTab tuiTab type="button" (click)="onClick('Maps')">
+    <button *tuiTab tuiTab (click)="onClick('Maps')">
         <tui-svg src="tuiIconCard" class="tui-space_right-2"></tui-svg>
         Maps
     </button>
-    <button *tuiTab tuiTab type="button" disabled (click)="onClick('Calls')">
+    <button *tuiTab tuiTab disabled (click)="onClick('Calls')">
         <tui-svg src="tuiIconCall" class="tui-space_right-2"></tui-svg>
         Calls
     </button>
-    <button *tuiTab tuiTab type="button" (click)="onClick('Settings')">
+    <button *tuiTab tuiTab (click)="onClick('Settings')">
         <tui-svg src="tuiIconSettings" class="tui-space_right-2"></tui-svg>
         Settings
     </button>
-    <button *tuiTab tuiTab type="button" (click)="onClick('Favorite')">
+    <button *tuiTab tuiTab (click)="onClick('Favorite')">
         <tui-svg src="tuiIconHeart" class="tui-space_right-2"></tui-svg>
         Favorite
     </button>
-    <button *tuiTab tuiTab type="button" (click)="onClick('Trash')">
+    <button *tuiTab tuiTab (click)="onClick('Trash')">
         <tui-svg src="tuiIconTrash" class="tui-space_right-2"></tui-svg>
         Trash
     </button>

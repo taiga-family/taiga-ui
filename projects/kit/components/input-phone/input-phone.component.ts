@@ -160,6 +160,10 @@ export class TuiInputPhoneComponent
         return this.allowText ? TuiInputMode.Text : TuiInputMode.Numeric;
     }
 
+    get canOpen(): boolean {
+        return !this.computedDisabled && !this.readOnly;
+    }
+
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
     }

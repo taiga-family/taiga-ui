@@ -1,6 +1,6 @@
 <tui-tabs-with-more [itemsLimit]="3" [(activeItemIndex)]="activeItemIndex">
     <ng-container *ngFor="let item of items">
-        <button *tuiTab tuiTab type="button" (keydown.delete)="remove(item)">
+        <button *tuiTab tuiTab (keydown.delete)="remove(item)">
             {{item}}
             <tui-svg
                 src="tuiIconCloseLarge"

@@ -1,5 +1,6 @@
 <tui-hosted-dropdown
     class="hosted"
+    [canOpen]="canOpen"
     [content]="datalist || ''"
     [(open)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
