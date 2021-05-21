@@ -34,9 +34,9 @@ export class TuiNotificationsService {
         content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
         options: TuiNotificationOptions | TuiNotificationOptionsWithData<I> = {},
     ): Observable<O> {
-        tuiAssert.assert(!!this.items$.observers.length, NO_HOST);
-
         return new Observable((observer: Observer<O>) => {
+            tuiAssert.assert(!!this.items$.observers.length, NO_HOST);
+
             const notification = new NotificationAlert(observer, content, options);
 
             this.items$.next([...this.items$.value, notification]);
