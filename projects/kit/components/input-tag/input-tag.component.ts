@@ -286,16 +286,11 @@ export class TuiInputTagComponent
     }
 
     onActiveZone(active: boolean) {
-        this.updateFocused(active);
-
-        if (active) {
-            return;
-        }
-
         this.open = false;
         this.addTag();
+        this.updateFocused(active);
 
-        if (!this.pseudoFocused) {
+        if (!this.computedFocused) {
             this.scrollToStart$.next();
         }
     }
