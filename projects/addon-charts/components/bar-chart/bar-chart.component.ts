@@ -6,6 +6,7 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiIdService,
+    TuiMapper,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiHintMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
@@ -56,6 +57,12 @@ export class TuiBarChartComponent {
 
     private readonly autoIdString: string;
 
+    readonly percentMapper: TuiMapper<ReadonlyArray<number>, number> = (
+        set,
+        collapsed: boolean,
+        max: number,
+    ) => (100 * (collapsed ? sum(...set) : Math.max(...set))) / max;
+
     constructor(@Inject(TuiIdService) idService: TuiIdService) {
         this.autoIdString = idService.generate();
     }
@@ -68,10 +75,8 @@ export class TuiBarChartComponent {
         return this.transpose(this.value);
     }
 
-    getPercent(set: readonly number[]): number {
-        return (
-            (100 * (this.collapsed ? sum(...set) : Math.max(...set))) / this.computedMax
-        );
+    get computedMax(): number {
+        return this.max || this.getMax(this.value, this.collapsed);
     }
 
     getHint(hint: PolymorpheusContent): PolymorpheusContent {
@@ -87,10 +92,6 @@ export class TuiBarChartComponent {
         return {
             $implicit: index,
         };
-    }
-
-    private get computedMax(): number {
-        return this.max || this.getMax(this.value, this.collapsed);
     }
 
     @tuiPure
