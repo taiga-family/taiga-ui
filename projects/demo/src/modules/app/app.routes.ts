@@ -1126,6 +1126,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'directives/overscroll',
+        loadChildren: () =>
+            import(`../directives/overscroll/overscroll.module`).then(
+                m => m.ExampleTuiOverscrollModule,
+            ),
+        data: {
+            title: 'Overscroll',
+        },
+    },
+    {
         path: 'directives/present',
         loadChildren: () =>
             import(`../directives/present/present.module`).then(

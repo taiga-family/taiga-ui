@@ -6,7 +6,7 @@ import {changeDetection} from '../../../change-detection-strategy';
     selector: 'example-tui-pure-function',
     template: `
         <tui-input [(ngModel)]="text"
-            >Type a text to start computing/tui-input>
+            >Type a text to start computing/tui-pure>
             <div>Called times: {{ counter.count }}</div>
             <div *ngIf="show">Result: {{ calculate(counter, text) | json }}</div>
             <button tuiButton type="button" (click)="show = !show">Show/hide</button>
