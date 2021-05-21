@@ -39,9 +39,9 @@ You can also use our [StackBlitz starter](https://stackblitz.com/edit/taiga-star
 
 💡 Your ideas are very welcome in Github issues or discussions
 
-🗨 For English live chat [#taiga-ui](https://discord.gg/zrB2EdJjEy) channel in official Angular discord
+🗨 For English live chat join [#taiga-ui](https://discord.gg/zrB2EdJjEy) channel in official Angular discord
 
-💬 For Russian live chat [taiga_ui](https://t.me/taiga_ui) Telegram group
+💬 For Russian live chat join [taiga_ui](https://t.me/taiga_ui) Telegram group
 
 ## Contributing
 
