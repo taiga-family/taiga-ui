@@ -2744,7 +2744,7 @@
       </trans-unit>
       <trans-unit id="aba46f8d7f050d55e83e120bbf1e0160cd692881" datatype="html">
         <source>
-        Right content (e.g. card icon with maximum size 32x32px). If it gets a
+        Right content (e.g. avatar with maximum size 32x32px). If it gets a
         string, it is inserted as <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>src<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/> or as icon name into
         <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>tui-svg<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
     </source>
@@ -2755,7 +2755,7 @@
       </trans-unit>
       <trans-unit id="55171bac95ec7b779b77b3dee62f27149df76f9d" datatype="html">
         <source>
-        Example text of finished field
+        Example text shown on empty focused input
     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/components/abstract/textfield-controller-documentation/textfield-controller-documentation.template.html</context>
@@ -7570,7 +7570,7 @@
       </trans-unit>
       <trans-unit id="5752174792523e23d0a73d2c7a8a41ffe4c39c97" datatype="html">
         <source>
-                Example text of a field
+                Example text shown on empty focused input
             </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/components/editor/editor.template.html</context>
