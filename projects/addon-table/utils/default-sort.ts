@@ -8,5 +8,9 @@ export function defaultSort<T>(x: T, y: T): number {
         return 0;
     }
 
+    if (typeof a === 'string' && typeof b === 'string') {
+        return a.localeCompare(b);
+    }
+
     return a > b ? 1 : -1;
 }
