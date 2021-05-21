@@ -6,6 +6,9 @@ import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
+import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
+import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
+
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -62,6 +65,11 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiReactiveField
         TypeScript: example2Ts,
         HTML: example2Html,
         LESS: example2Less,
+    };
+
+    readonly example3: FrontEndExample = {
+        TypeScript: example3Ts,
+        HTML: example3Html,
     };
 
     readonly items = [new Account('Rubles', 500), new Account('Dollars', 237)];

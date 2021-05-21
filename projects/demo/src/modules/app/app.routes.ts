@@ -1267,6 +1267,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'pipes/filter-by-input',
+        loadChildren: () =>
+            import(`../pipes/filter-by-input/filter-by-input.module`).then(
+                m => m.ExampleTuiFilterByInputModule,
+            ),
+        data: {
+            title: 'FilterByInput',
+        },
+    },
+    {
         path: 'pipes/format-number',
         loadChildren: () =>
             import(`../pipes/format-number/format-number.module`).then(
