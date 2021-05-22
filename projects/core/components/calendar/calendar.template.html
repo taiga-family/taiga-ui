@@ -18,7 +18,7 @@
         automation-id="tui-calendar__pagination"
         [min]="computedMinViewedMonth"
         [max]="computedMaxViewedMonth"
-        [value]="computedMonth"
+        [value]="month"
         (valueChange)="onPaginationValueChange($event)"
         (yearClick)="onPaginationYearClick($event)"
     ></tui-primitive-year-month-pagination>
@@ -26,7 +26,7 @@
         automation-id="tui-calendar__calendar"
         [showAdjacent]="showAdjacent"
         [value]="value"
-        [month]="computedMonth"
+        [month]="month"
         [disabledItemHandler]="disabledItemHandler | tuiMapper : disabledItemHandlerMapper : min : max"
         [markerHandler]="markerHandler"
         [hoveredItem]="hoveredItem"

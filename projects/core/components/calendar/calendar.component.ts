@@ -3,6 +3,7 @@ import {
     Component,
     EventEmitter,
     Input,
+    OnInit,
     Output,
 } from '@angular/core';
 import {
@@ -29,7 +30,7 @@ import {TuiMarkerHandler} from '@taiga-ui/core/types';
     styleUrls: ['./calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
+export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay>, OnInit {
     @Input()
     @tuiDefaultProp()
     month = TuiMonth.currentLocal();
@@ -81,25 +82,21 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
 
     year: TuiYear | null = null;
 
+    ngOnInit(): void {
+        const {month, computedMinViewedMonth, computedMaxViewedMonth} = this;
+
+        if (month.monthBefore(computedMinViewedMonth)) {
+            this.month = computedMinViewedMonth;
+        } else if (month.monthAfter(computedMaxViewedMonth)) {
+            this.month = computedMaxViewedMonth;
+        }
+    }
+
     readonly disabledItemHandlerMapper: TuiMapper<
         TuiBooleanHandler<TuiDay>,
         TuiBooleanHandler<TuiDay>
     > = (disabledItemHandler, min: TuiDay, max: TuiDay) => item =>
         item.dayBefore(min) || item.dayAfter(max) || disabledItemHandler(item);
-
-    get computedMonth(): TuiMonth {
-        const {month, computedMinViewedMonth, computedMaxViewedMonth} = this;
-
-        if (month.monthBefore(computedMinViewedMonth)) {
-            return computedMinViewedMonth;
-        }
-
-        if (month.monthAfter(computedMaxViewedMonth)) {
-            return computedMaxViewedMonth;
-        }
-
-        return month;
-    }
 
     get computedMinViewedMonth(): TuiMonth {
         return this.minViewedMonth.monthSameOrAfter(this.min)
@@ -119,7 +116,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
 
     onPickerYearClick({year}: TuiYear) {
         this.year = null;
-        this.updateViewedMonth(new TuiMonth(year, this.computedMonth.month));
+        this.updateViewedMonth(new TuiMonth(year, this.month.month));
     }
 
     onPaginationValueChange(month: TuiMonth) {
