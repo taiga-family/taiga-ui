@@ -25,6 +25,7 @@ import {Observable} from 'rxjs';
     },
 })
 export class TuiLabelComponent<T> {
+    // TODO: Rename to tuiLabel in 3.0
     @Input()
     @tuiDefaultProp()
     label: PolymorpheusContent = '';

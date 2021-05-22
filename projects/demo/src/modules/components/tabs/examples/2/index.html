@@ -1,10 +1,5 @@
 <tui-tabs [(activeItemIndex)]="activeItemIndex">
-    <button
-        *ngFor="let item of items"
-        tuiTab
-        type="button"
-        (click)="onClick(item.text)"
-    >
+    <button *ngFor="let item of items" tuiTab (click)="onClick(item.text)">
         <tui-svg class="tui-space_right-2" [src]="item.icon"></tui-svg>
         {{item.text}}
     </button>

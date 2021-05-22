@@ -65,19 +65,19 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide
                     href="https://twitter.com/waterplea"
                     title="Twitter"
                     ><img
-                        width="24"
+                        width="16"
                         src="https://raw.githubusercontent.com/feathericons/feather/master/icons/twitter.svg"
                 /></a>
                 <a href="https://github.com/waterplea" title="Github"
                     ><img
-                        width="24"
+                        width="16"
                         src="https://raw.githubusercontent.com/feathericons/feather/master/icons/github.svg"
                 /></a>
                 <a
                     href="https://t.me/waterplea"
                     title="Telegram"
                     ><img
-                        width="24"
+                        width="16"
                         src="https://raw.githubusercontent.com/feathericons/feather/master/icons/send.svg"
                 /></a>
             </div>
@@ -96,21 +96,21 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide
                     href="https://twitter.com/marsibarsi"
                     title="Twitter"
                     ><img
-                        width="24"
+                        width="16"
                         src="https://raw.githubusercontent.com/feathericons/feather/master/icons/twitter.svg"
                 /></a>
                 <a
                     href="https://github.com/marsibarsi"
                     title="GitHub"
                     ><img
-                        width="24"
+                        width="16"
                         src="https://raw.githubusercontent.com/feathericons/feather/master/icons/github.svg"
                 /></a>
                 <a
                     href="https://t.me/marsibarsi"
                     title="Telegram"
                     ><img
-                        width="24"
+                        width="16"
                         src="https://raw.githubusercontent.com/feathericons/feather/master/icons/send.svg"
                 /></a>
             </div>
