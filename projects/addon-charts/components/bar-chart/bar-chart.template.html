@@ -8,7 +8,10 @@
     [tuiHint]="getHint(hint)"
     [tuiHintMode]="hintMode"
 >
-    <div class="container" [style.height.%]="getPercent(set)">
+    <div
+        class="container"
+        [style.height.%]="set | tuiMapper : percentMapper : collapsed : computedMax"
+    >
         <div #hintHost class="host"></div>
         <tui-bar-set
             class="set"

@@ -43,6 +43,23 @@ describe('BarChart', () => {
     });
 
     it('Computes percent correctly', () => {
-        expect(testComponent.component.getPercent([1, 3])).toBe(50);
+        expect(
+            testComponent.component.percentMapper(
+                [1, 3],
+                testComponent.component.collapsed,
+                testComponent.component.computedMax,
+            ),
+        ).toBe(50);
+    });
+
+    it('Computes percent correctly in collapsed mode', () => {
+        testComponent.component.collapsed = true;
+        expect(
+            testComponent.component.percentMapper(
+                [8, 1],
+                testComponent.component.collapsed,
+                testComponent.component.computedMax,
+            ),
+        ).toBe(100);
     });
 });
