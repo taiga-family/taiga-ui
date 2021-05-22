@@ -1,7 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {TuiAccountAutofillName} from '@taiga-ui/cdk';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
+import {AbstractExampleTuiControl} from '../abstract/control';
 
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
 import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
@@ -29,7 +29,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         },
     ],
 })
-export class ExampleTuiInputPasswordComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputPasswordComponent extends AbstractExampleTuiControl {
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;

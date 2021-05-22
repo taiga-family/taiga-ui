@@ -16,8 +16,8 @@ import {
 import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
-import {AbstractExampleTuiField} from '../abstract/field';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 const CUSTOM_SVG = `<svg xmlns="http://www.w3.org/2000/svg"
 width="24px"
@@ -40,7 +40,7 @@ viewBox="0 0 24 24">
         },
     ],
 })
-export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiField {
+export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInteractive {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,

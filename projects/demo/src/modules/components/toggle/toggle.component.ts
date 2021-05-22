@@ -10,8 +10,8 @@ import {FormControl} from '@angular/forms';
 import {TuiSizeL} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
-import {AbstractExampleTuiField} from '../abstract/field';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
     selector: 'example-tui-toggle',
@@ -24,7 +24,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         },
     ],
 })
-export class ExampleTuiToggleComponent extends AbstractExampleTuiField {
+export class ExampleTuiToggleComponent extends AbstractExampleTuiInteractive {
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;

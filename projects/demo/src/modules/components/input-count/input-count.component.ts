@@ -13,8 +13,8 @@ import {FormControl} from '@angular/forms';
 import {TuiSizeL} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-tui-input-count',
@@ -27,7 +27,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiInputCountComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputCountComponent extends AbstractExampleTuiControl {
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;

@@ -17,8 +17,8 @@ import {ALWAYS_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY, TuiMonth} from '@taig
 import {TuiBooleanHandlerWithContext, TuiMonthContext} from '@taiga-ui/kit';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-tui-input-month-range',
@@ -31,7 +31,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiInputMonthRangeComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputMonthRangeComponent extends AbstractExampleTuiControl {
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;

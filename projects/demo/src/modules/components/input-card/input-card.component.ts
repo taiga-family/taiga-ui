@@ -1,6 +1,6 @@
 import {Component, forwardRef, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AbstractExampleTuiReactiveField} from '../../components/abstract/reactive-field';
+import {AbstractExampleTuiControl} from '../../components/abstract/control';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -25,7 +25,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
         },
     ],
 })
-export class ExampleTuiInputCardComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     readonly exampleImportModule = exampleImportModule;
 
     readonly exampleInsertTemplate = exampleInsertTemplate;
