@@ -9,10 +9,15 @@ import {
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TUI_TEXTFIELD_SIZE,
-    TuiAppearance,
 } from '@taiga-ui/core';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_STUCK_PROVIDER} from './stuck.provider';
+
+// TODO: remove in ivy compilation
+export const TABLE_THRESHOLD = [0, 1];
+export const TABLE_LABEL = {
+    labelOutside: true,
+};
 
 export const TUI_TABLE_PROVIDERS = [
     {
@@ -21,17 +26,16 @@ export const TUI_TABLE_PROVIDERS = [
     },
     {
         provide: INTERSECTION_THRESHOLD,
-        useValue: [0, 1],
+        useValue: TABLE_THRESHOLD,
     },
     {
         provide: TUI_TEXTFIELD_APPEARANCE,
-        useValue: TuiAppearance.Table,
+        // TODO: remove in ivy compilation
+        useValue: 'table', // TuiAppearance.Table
     },
     {
         provide: TUI_TEXTFIELD_LABEL_OUTSIDE,
-        useValue: {
-            labelOutside: true,
-        },
+        useValue: TABLE_LABEL,
     },
     {
         provide: TUI_TEXTFIELD_SIZE,

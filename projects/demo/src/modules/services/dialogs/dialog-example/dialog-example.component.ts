@@ -10,18 +10,28 @@ import {changeDetection} from '../../../../change-detection-strategy';
     changeDetection,
 })
 export class DialogExampleComponent {
+    value: number | null = null;
+    name = '';
+    items = [10, 50, 100];
+
     constructor(
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
         @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly context: TuiDialogContext<boolean>,
+        private readonly context: TuiDialogContext<number, number>,
     ) {}
 
-    ok() {
-        this.context.completeWith(true);
+    get hasValue(): boolean {
+        return this.value !== null;
     }
 
-    cancel() {
-        this.context.completeWith(false);
+    get data(): number {
+        return this.context.data;
+    }
+
+    submit() {
+        if (this.value !== null) {
+            this.context.completeWith(this.value);
+        }
     }
 
     showDialog(content: TemplateRef<TuiDialogContext<void>>) {

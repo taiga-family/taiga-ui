@@ -60,11 +60,11 @@
                 Component label
             </tui-primitive-textfield>
         </tui-doc-demo>
-        <ng-template #template="polymorpheus" polymorpheus let-item>
+        <ng-template #template let-item>
             <tui-avatar class="avatar" size="xs" [text]="item"></tui-avatar>
             {{item}}
         </ng-template>
-        <ng-template #tuiIconInteractiveContent="polymorpheus" polymorpheus>
+        <ng-template #interactiveContent>
             <tui-svg
                 class="icon-button"
                 src="tuiIconCalendarLarge"
@@ -204,9 +204,7 @@
                 [items]="themes"
                 [(ngModel)]="theme"
             ></tui-radio-list>
-            <ng-template i18n #label="polymorpheus" polymorpheus>
-                Theming sample
-            </ng-template>
+            <ng-template i18n #label> Theming sample </ng-template>
             <label
                 tuiLabel
                 class="theme-wrapper label"

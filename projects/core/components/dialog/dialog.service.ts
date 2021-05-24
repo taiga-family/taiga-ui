@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {AbstractTuiDialogService} from '@taiga-ui/cdk';
-import {TuiDialogOptions} from '@taiga-ui/core/types';
+import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TuiDialogComponent} from './dialog.component';
 
 const DIALOG = new PolymorpheusComponent(TuiDialogComponent);
-const DEFAULT_OPTIONS: TuiDialogOptions<void> = {
+const DEFAULT_OPTIONS = {
     size: 'm',
     required: false,
     closeable: true,
@@ -19,5 +19,5 @@ const DEFAULT_OPTIONS: TuiDialogOptions<void> = {
 })
 export class TuiDialogService extends AbstractTuiDialogService<TuiDialogOptions<any>> {
     protected readonly component = DIALOG;
-    protected readonly defaultOptions: TuiDialogOptions<any> = DEFAULT_OPTIONS;
+    protected readonly defaultOptions: TuiDialogOptions<any> = DEFAULT_OPTIONS as any;
 }

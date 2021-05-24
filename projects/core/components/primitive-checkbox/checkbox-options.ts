@@ -26,10 +26,12 @@ export const TUI_CHECKBOX_DEFAULT_OPTIONS: CheckboxOptions = {
         indeterminate: TuiAppearance.Primary,
     },
     icons: {
-        checked: ({$implicit}) =>
-            $implicit === 'm' ? 'tuiIconCheck' : 'tuiIconCheckLarge',
-        indeterminate: ({$implicit}) =>
-            $implicit === 'm' ? 'tuiIconMinus' : 'tuiIconMinusLarge',
+        checked({$implicit}: TuiContextWithImplicit<TuiSizeL>): string {
+            return $implicit === 'm' ? 'tuiIconCheck' : 'tuiIconCheckLarge';
+        },
+        indeterminate({$implicit}: TuiContextWithImplicit<TuiSizeL>): string {
+            return $implicit === 'm' ? 'tuiIconMinus' : 'tuiIconMinusLarge';
+        },
     },
 };
 
