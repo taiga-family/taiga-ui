@@ -3,7 +3,6 @@ import {
     Component,
     EventEmitter,
     Input,
-    OnInit,
     Output,
 } from '@angular/core';
 import {
@@ -30,9 +29,19 @@ import {TuiMarkerHandler} from '@taiga-ui/core/types';
     styleUrls: ['./calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay>, OnInit {
-    @Input()
-    @tuiDefaultProp()
+export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
+    @Input('month')
+    set monthSetter(month: TuiMonth) {
+        const {computedMinViewedMonth, computedMaxViewedMonth} = this;
+
+        if (month.monthBefore(computedMinViewedMonth)) {
+            this.month = computedMinViewedMonth;
+        } else if (month.monthAfter(computedMaxViewedMonth)) {
+            this.month = computedMaxViewedMonth;
+        } else {
+            this.month = month;
+        }
+    }
     month = TuiMonth.currentLocal();
 
     @Input()
@@ -81,16 +90,6 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay>, OnIn
     readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
     year: TuiYear | null = null;
-
-    ngOnInit(): void {
-        const {month, computedMinViewedMonth, computedMaxViewedMonth} = this;
-
-        if (month.monthBefore(computedMinViewedMonth)) {
-            this.month = computedMinViewedMonth;
-        } else if (month.monthAfter(computedMaxViewedMonth)) {
-            this.month = computedMaxViewedMonth;
-        }
-    }
 
     readonly disabledItemHandlerMapper: TuiMapper<
         TuiBooleanHandler<TuiDay>,
