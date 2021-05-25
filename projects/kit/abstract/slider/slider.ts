@@ -220,11 +220,11 @@ export abstract class AbstractTuiSlider<T>
     }
 
     decrement(right: boolean) {
-        this.processStep(false, right);
+        this.processStep(false, [this.min, this.max], right);
     }
 
     increment(right: boolean) {
-        this.processStep(true, right);
+        this.processStep(true, [this.min, this.max], right);
     }
 
     getSegmentLabel(segment: number): number {
@@ -257,7 +257,11 @@ export abstract class AbstractTuiSlider<T>
 
     protected abstract processValue(value: number, right?: boolean): void;
 
-    protected abstract processStep(increment: boolean, right?: boolean): void;
+    protected abstract processStep(
+        increment: boolean,
+        [min, max]: [number, number],
+        right?: boolean,
+    ): void;
 
     protected getFractionFromValue(value: number): number {
         const fraction = (value - this.min) / this.length;

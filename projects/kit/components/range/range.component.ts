@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    clamp,
     isNativeFocusedIn,
     round,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -77,14 +78,18 @@ export class TuiRangeComponent
         return [0, 0];
     }
 
-    protected processStep(increment: boolean, right: boolean) {
+    protected processStep(
+        increment: boolean,
+        [min, max]: [number, number],
+        right: boolean,
+    ) {
         const fraction = this.getFractionFromValue(right ? this.value[1] : this.value[0]);
         const step = this.discrete ? 1 / this.steps : SLIDER_KEYBOARD_STEP;
         const value = this.getValueFromFraction(
             increment ? fraction + step : fraction - step,
         );
 
-        this.processValue(value, right);
+        this.processValue(clamp(value, min, max), right);
     }
 
     protected processValue(value: number, right: boolean) {
