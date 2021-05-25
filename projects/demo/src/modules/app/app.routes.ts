@@ -1050,6 +1050,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'directives/described-by',
+        loadChildren: () =>
+            import(`../directives/described-by/described-by.module`).then(
+                m => m.ExampleTuiDescribedByModule,
+            ),
+        data: {
+            title: 'DescribedBy',
+        },
+    },
+    {
         path: 'directives/elastic-sticky',
         loadChildren: () =>
             import(`../directives/elastic-sticky/elastic-sticky.module`).then(
