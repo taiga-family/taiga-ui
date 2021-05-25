@@ -1,6 +1,0 @@
-import { TUI_DIALOGS } from '@taiga-ui/cdk';
-    ...
-constructor(
-    @Inject(TUI_DIALOGS)
-    private readonly dialogs: ReadonlyArray<Observable<ReadonlyArray<T>>>,
-) {}

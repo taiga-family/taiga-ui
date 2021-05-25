@@ -1,5 +1,0 @@
-import { TUI_DEFAULT_RENDERER } from '@taiga-ui/cdk';
-    ...
-constructor(
-    @Inject(TUI_DEFAULT_RENDERER)
-) {}
