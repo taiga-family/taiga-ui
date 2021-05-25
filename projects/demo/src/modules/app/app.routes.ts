@@ -1432,6 +1432,7 @@ export const ROUTES = [
             title: 'RequiredSetter',
         },
     },
+
     // UTILS
     {
         path: 'utils/math',
@@ -1473,6 +1474,14 @@ export const ROUTES = [
             ),
         data: {
             title: 'Miscellaneous',
+        },
+    },
+    {
+        path: 'utils/tokens',
+        loadChildren: () =>
+            import(`../utils/tokens/tokens.module`).then(m => m.ExampleTokensModule),
+        data: {
+            title: 'Tokens',
         },
     },
     {path: '**', redirectTo: ''},

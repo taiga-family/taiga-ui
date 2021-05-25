@@ -219,9 +219,7 @@ export class TuiMultiSelectComponent<T>
         const index = value.findIndex(item => identityMatcher(item, option));
 
         this.updateValue(
-            index === -1
-                ? [...value, option]
-                : [...value.slice(0, index), ...value.slice(index + 1)],
+            index === -1 ? [...value, option] : value.filter((_, i) => i !== index),
         );
         this.updateSearch(null);
     }

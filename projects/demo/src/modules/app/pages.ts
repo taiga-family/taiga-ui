@@ -1100,6 +1100,12 @@ export const pages: TuiDocPages = [
                            getPaymentSystem, syncObject`,
                 route: '/utils/miscellaneous',
             },
+            {
+                section: $localize`Tools`,
+                title: $localize`Tokens`,
+                keywords: `токены tokens`,
+                route: '/utils/tokens',
+            },
         ],
     },
 ];

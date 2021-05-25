@@ -28,6 +28,21 @@ body {
     background: var(--tui-base-01);
 }
 
+code:not(.hljs):not(.exception) {
+    .transition(background);
+    background: var(--tui-base-02);
+    color: var(--tui-text-02);
+    vertical-align: middle;
+    box-shadow: inset 0 -2px var(--tui-secondary);
+    padding: 6px 8px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+:focus code:not(.exception) {
+    background: var(--tui-base-01);
+}
+
 .tui-doc-page {
     .createStackingContext();
     height: 100%;
