@@ -1,5 +1,3 @@
-<div
-    [tuiDescribedBy]="Some text"
->
+<button tuiDescribedBy="id">
     ...
 </div>
