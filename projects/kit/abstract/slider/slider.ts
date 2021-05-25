@@ -259,7 +259,7 @@ export abstract class AbstractTuiSlider<T>
 
     protected abstract processStep(
         increment: boolean,
-        limits: [number, number],
+        [min, max]: [number, number],
         right?: boolean,
     ): void;
 

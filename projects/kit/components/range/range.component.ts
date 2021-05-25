@@ -78,15 +78,18 @@ export class TuiRangeComponent
         return [0, 0];
     }
 
-    protected processStep(increment: boolean, limits: [number, number], right: boolean) {
+    protected processStep(
+        increment: boolean,
+        [min, max]: [number, number],
+        right: boolean,
+    ) {
         const fraction = this.getFractionFromValue(right ? this.value[1] : this.value[0]);
         const step = this.discrete ? 1 / this.steps : SLIDER_KEYBOARD_STEP;
-        let value = this.getValueFromFraction(
+        const value = this.getValueFromFraction(
             increment ? fraction + step : fraction - step,
         );
 
-        value = clamp(value, limits[0], limits[1]);
-        this.processValue(value, right);
+        this.processValue(clamp(value, min, max), right);
     }
 
     protected processValue(value: number, right: boolean) {
