@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/kit",
-    "version": "2.9.1",
+    "version": "2.10.0",
     "description": "Taiga UI Angular main components kit",
     "keywords": [
         "angular",
@@ -19,9 +19,9 @@
         "@angular/router": ">=9.0.0",
         "@ng-web-apis/common": ">=1.6.0",
         "@tinkoff/ng-polymorpheus": ">=3.0.0",
-        "@taiga-ui/cdk": "2.9.1",
-        "@taiga-ui/core": "2.9.1",
-        "@taiga-ui/i18n": "2.9.1",
+        "@taiga-ui/cdk": "2.10.0",
+        "@taiga-ui/core": "2.10.0",
+        "@taiga-ui/i18n": "2.10.0",
         "rxjs": ">=6.0.0"
     },
     "dependencies": {
@@ -29,6 +29,6 @@
         "@ng-web-apis/intersection-observer": "2.0.1"
     },
     "devDependencies": {
-        "@taiga-ui/core": "2.9.1"
+        "@taiga-ui/core": "2.10.0"
     }
 }
