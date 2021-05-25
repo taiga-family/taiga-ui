@@ -1050,54 +1050,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Tools`,
-        title: $localize`Tokens`,
-        subPages: [
-            {
-                section: $localize`Tools`,
-                title: 'TUI_DEFAULT_RENDERER',
-                keywords: 'токен, token',
-                route: '/tokens/default-renderer',
-            },
-            {
-                section: $localize`Tools`,
-                title: 'TUI_DIALOGS',
-                keywords: 'токен, token',
-                route: '/tokens/dialogs',
-            },
-            {
-                section: $localize`Tools`,
-                title: 'TUI_FOCUSABLE_ITEM_ACCESSOR',
-                keywords: 'токен, token',
-                route: '/tokens/focusable-item-accessor',
-            },
-            {
-                section: $localize`Tools`,
-                title: 'TUI_IS_ANDROID',
-                keywords: 'токен, token',
-                route: '/tokens/is-android',
-            },
-            {
-                section: $localize`Tools`,
-                title: 'TUI_IS_IOS',
-                keywords: 'токен, token',
-                route: '/tokens/is-ios',
-            },
-            {
-                section: $localize`Tools`,
-                title: 'TUI_IS_MOBILE',
-                keywords: 'токен, token',
-                route: '/tokens/is-mobile',
-            },
-            {
-                section: $localize`Tools`,
-                title: 'TUI_MONTHS',
-                keywords: 'токен, token',
-                route: '/tokens/months',
-            },
-        ],
-    },
-    {
-        section: $localize`Tools`,
         title: $localize`Utils`,
         subPages: [
             {
@@ -1134,6 +1086,12 @@ export const pages: TuiDocPages = [
                 keywords: `Инструменты, утилиты, miscellaneous, прочие, assert, isNil, isPresent, flatLength,
                            getPaymentSystem, syncObject`,
                 route: '/utils/miscellaneous',
+            },
+            {
+                section: $localize`Tools`,
+                title: $localize`Tokens`,
+                keywords: `токены tokens`,
+                route: '/utils/tokens',
             },
         ],
     },
