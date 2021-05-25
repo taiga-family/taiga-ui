@@ -2090,14 +2090,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="b882634eba653efdcd66effc54a969523e940d4f" datatype="html">
-        <source>Choosen date: <x id="INTERPOLATION" equiv-text="{{value}}"/></source>
+        <source>Chosen date: <x id="INTERPOLATION" equiv-text="{{value}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/components/calendar/examples/1/index.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="25b88ba9104f492b67f6b64722248ef333ec6194" datatype="html">
-        <source>Choosen dates: <x id="INTERPOLATION" equiv-text="{{value}}"/></source>
+        <source>Chosen dates: <x id="INTERPOLATION" equiv-text="{{value}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/components/calendar/examples/2/index.html</context>
           <context context-type="linenumber">31</context>
