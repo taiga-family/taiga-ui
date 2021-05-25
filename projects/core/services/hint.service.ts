@@ -21,7 +21,9 @@ export class TuiHintService extends BehaviorSubject<ReadonlyArray<AbstractTuiHin
     }
 
     remove(directive: AbstractTuiHint) {
-        this.next(this.value.filter(hint => hint !== directive));
+        if (this.value.includes(directive)) {
+            this.next(this.value.filter(hint => hint !== directive));
+        }
     }
 
     /**

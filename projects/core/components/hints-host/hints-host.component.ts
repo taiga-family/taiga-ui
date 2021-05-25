@@ -5,7 +5,6 @@ import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
-import {debounceTime} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-hints-host',
@@ -23,14 +22,10 @@ export class TuiHintsHostComponent {
         ...this.options,
     } as const;
 
-    // Debounce is needed because hints get removed in ngOnDestroy
-    // which causes ExpressionChanged because it's a lifecycle hook
-    readonly hints$ = this.service.pipe(debounceTime(0));
-
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TuiHintService) private readonly service: TuiHintService,
+        @Inject(TuiHintService) readonly hints$: TuiHintService,
     ) {}
 
     get clientRect(): ClientRect {
