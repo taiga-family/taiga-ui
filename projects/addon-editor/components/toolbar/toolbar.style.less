@@ -72,9 +72,13 @@
     }
 }
 
-// TODO: remove when gradient is made optional
+// TODO: remove when color picker is customizable
 .color-picker {
-    ::ng-deep > tui-hosted-dropdown {
-        display: none;
+    ::ng-deep > {
+        & tui-hosted-dropdown,
+        & tui-color-picker,
+        & tui-color-edit {
+            display: none;
+        }
     }
 }
