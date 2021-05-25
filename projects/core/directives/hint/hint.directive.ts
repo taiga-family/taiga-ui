@@ -109,17 +109,12 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
                 distinctUntilChanged(),
                 takeUntil(destroy$),
             )
-            .subscribe({
-                next: visible => {
-                    if (visible) {
-                        this.showTooltip();
-                    } else {
-                        this.hideTooltip();
-                    }
-                },
-                complete: () => {
+            .subscribe(visible => {
+                if (visible) {
+                    this.showTooltip();
+                } else {
                     this.hideTooltip();
-                },
+                }
             });
 
         this.hintService.register(this);
@@ -139,7 +134,6 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
 
     ngOnDestroy() {
         this.hintService.unregister(this);
-        this.hideTooltip();
     }
 
     protected showTooltip() {
