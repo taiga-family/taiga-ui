@@ -1,0 +1,5 @@
+<div
+    [tuiDescribedBy]="Some text"
+>
+    ...
+</div>

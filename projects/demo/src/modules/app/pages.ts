@@ -838,6 +838,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'DescribedBy',
+                keywords: '',
+                route: '/directives/described-by',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'Dropdown',
                 keywords: 'dropdown, контекст, выпадашка, дропдаун, Context',
                 route: '/directives/dropdown',
