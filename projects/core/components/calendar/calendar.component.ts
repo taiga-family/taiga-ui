@@ -30,19 +30,9 @@ import {TuiMarkerHandler} from '@taiga-ui/core/types';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
-    @Input('month')
-    set monthSetter(month: TuiMonth) {
-        const {computedMinViewedMonth, computedMaxViewedMonth} = this;
-
-        if (month.monthBefore(computedMinViewedMonth)) {
-            this.month = computedMinViewedMonth;
-        } else if (month.monthAfter(computedMaxViewedMonth)) {
-            this.month = computedMaxViewedMonth;
-        } else {
-            this.month = month;
-        }
-    }
-    month = TuiMonth.currentLocal();
+    @Input()
+    @tuiDefaultProp()
+    month: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
     @tuiDefaultProp()
