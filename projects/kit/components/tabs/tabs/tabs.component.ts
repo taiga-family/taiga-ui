@@ -1,4 +1,5 @@
 import {
+    AfterContentInit,
     AfterViewChecked,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -28,7 +29,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
-import {filter, mapTo} from 'rxjs/operators';
+import {filter, map, mapTo, take, takeUntil} from 'rxjs/operators';
 import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
 import {TAB_ACTIVE_CLASS} from '../tabs.const';
@@ -44,7 +45,7 @@ import {TAB_ACTIVE_CLASS} from '../tabs.const';
     },
     providers: [TuiDestroyService, TuiResizeService],
 })
-export class TuiTabsComponent implements AfterViewChecked {
+export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
     @Input()
     @HostBinding('class._underline')
     @tuiDefaultProp()
@@ -53,7 +54,10 @@ export class TuiTabsComponent implements AfterViewChecked {
     @Input('activeItemIndex')
     set activeItemIndexSetter(index: number) {
         this.activeItemIndex = index;
-        this.scrollTo(this.tabs[index]);
+
+        this.activeElement$
+            .pipe(take(1), takeUntil(this.destroy$))
+            .subscribe(activeElement => this.scrollTo(activeElement));
     }
 
     @Output()
@@ -66,14 +70,15 @@ export class TuiTabsComponent implements AfterViewChecked {
     readonly isAndroid: boolean;
 
     @ContentChildren(forwardRef(() => TuiTabComponent))
-    private readonly children: QueryList<unknown> = EMPTY_QUERY;
+    private readonly children: QueryList<TuiTabComponent> = EMPTY_QUERY;
 
     activeItemIndex = 0;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) readonly changeDetectorRef: ChangeDetectorRef,
+        @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TuiResizeService) resize$: Observable<void>,
         @Inject(TUI_IS_IOS) isIos: boolean,
         @Inject(TUI_IS_ANDROID) isAndroid: boolean,
@@ -92,24 +97,42 @@ export class TuiTabsComponent implements AfterViewChecked {
         return itemsQueryListObservable(this.children).pipe(mapTo(true));
     }
 
-    get tabs(): ReadonlyArray<HTMLElement> {
-        const tabs = Array.from(
-            this.elementRef.nativeElement.querySelectorAll('[tuiTab]'),
-        );
-
-        return tabs as Array<HTMLElement>;
+    get tabs(): ReadonlyArray<TuiTabComponent> {
+        return this.children.toArray();
     }
 
-    get activeElement(): HTMLElement | null {
-        return this.tabs[this.activeItemIndex] || null;
+    get tabsElements(): ReadonlyArray<HTMLElement> {
+        return this.tabs.map(tab => tab.element.nativeElement);
+    }
+
+    get activeElement$(): Observable<HTMLElement | null> {
+        return itemsQueryListObservable(this.children).pipe(
+            map(tabs => tabs[this.activeItemIndex]),
+            map(activeTab => (activeTab ? activeTab.element.nativeElement : null)),
+        );
+    }
+
+    ngAfterContentInit(): void {
+        this.children.changes
+            .pipe(
+                filter((data: QueryList<TuiTabComponent>) => {
+                    return !data.length || data.some(tab => tab.withRouterLinkActive);
+                }),
+                map(data => data.toArray().findIndex(tab => tab.isActive)),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(index => {
+                this.setActiveIndex(index);
+            });
     }
 
     ngAfterViewChecked() {
-        const {tabs, activeElement} = this;
+        const tabs = this.tabsElements;
+        const activeElement = tabs[this.activeItemIndex];
 
-        tabs.forEach(nativeElement => {
-            this.renderer.removeClass(nativeElement, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(nativeElement, 'tabIndex', '-1');
+        tabs.forEach(tab => {
+            this.renderer.removeClass(tab, TAB_ACTIVE_CLASS);
+            this.renderer.setAttribute(tab, 'tabIndex', '-1');
         });
 
         if (activeElement) {
@@ -120,25 +143,29 @@ export class TuiTabsComponent implements AfterViewChecked {
 
     @HostListener(`${TUI_TAB_ACTIVATE}.stop`, ['$event.target'])
     onActivate(element: HTMLElement) {
-        const index = this.tabs.findIndex(tab => tab === element);
+        const index = this.tabsElements.findIndex(tab => tab === element);
 
+        this.setActiveIndex(index);
+    }
+
+    @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
+    @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
+    onKeyDownArrow(current: HTMLElement, step: number) {
+        moveFocus(this.tabsElements.indexOf(current), this.tabsElements, step);
+    }
+
+    setActiveIndex(index: number) {
         if (index === this.activeItemIndex) {
             return;
         }
 
         this.activeItemIndexSetter = index;
         this.activeItemIndexChange.emit(index);
+
+        this.changeDetectorRef.markForCheck();
     }
 
-    @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
-    @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
-    onKeyDownArrow(current: HTMLElement, step: number) {
-        const {tabs} = this;
-
-        moveFocus(tabs.indexOf(current), tabs, step);
-    }
-
-    private scrollTo(element?: HTMLElement) {
+    private scrollTo(element: HTMLElement | null = null) {
         if (!element) {
             return;
         }

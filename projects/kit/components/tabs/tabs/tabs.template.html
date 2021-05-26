@@ -1,5 +1,5 @@
 <tui-underline
     *ngIf="underline && (refresh$ | async)"
-    [element]="activeElement"
+    [element]="activeElement$ | async"
 ></tui-underline>
 <ng-content></ng-content>

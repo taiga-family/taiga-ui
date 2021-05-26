@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     HostBinding,
     Inject,
     Optional,
@@ -42,6 +43,7 @@ export class TuiTabComponent {
         @Inject(TUI_IS_IOS) isIos: boolean,
         @Inject(TUI_IS_ANDROID) isAndroid: boolean,
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
+        @Inject(ElementRef) public element: ElementRef,
     ) {
         this.isIos = mobileAware && isIos;
         this.isAndroid = mobileAware && isAndroid;
@@ -54,5 +56,9 @@ export class TuiTabComponent {
     @HostBinding('class._active')
     get isActive(): boolean {
         return !!this.routerLinkActive && this.routerLinkActive.isActive;
+    }
+
+    get withRouterLinkActive(): boolean {
+        return !!this.routerLinkActive;
     }
 }
