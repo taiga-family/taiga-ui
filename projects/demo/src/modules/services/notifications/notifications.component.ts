@@ -80,7 +80,9 @@ export class ExampleTuiNotificationsComponent {
 
     content = this.contentVariants[0];
 
-    autoClose = true;
+    readonly autoCloseVariants = [true, false, 5000, 1000, 500];
+
+    autoClose = this.autoCloseVariants[0];
 
     hasCloseButton = true;
 
