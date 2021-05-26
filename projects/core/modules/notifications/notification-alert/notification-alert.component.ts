@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {isNumber, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
 import {fromEvent, timer} from 'rxjs';
-import {filter, repeatWhen, takeUntil} from 'rxjs/operators';
+import {repeatWhen, takeUntil} from 'rxjs/operators';
 import {TuiNotificationContentContext} from '../notification-content-context';
 import {NotificationAlert} from './Notification-alert';
 
@@ -75,6 +75,10 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
     }
 
     private initAutoClose() {
+        if (!this.safeItem.autoClose) {
+            return;
+        }
+
         timer(
             isNumber(this.safeItem.autoClose)
                 ? this.safeItem.autoClose
@@ -84,7 +88,6 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
                 takeUntil(fromEvent(this.elementRef.nativeElement, 'mouseenter')),
                 repeatWhen(() => fromEvent(this.elementRef.nativeElement, 'mouseleave')),
                 takeUntil(this.destroy$),
-                filter(() => !!this.safeItem.autoClose),
             )
             .subscribe(() => this.closeNotification());
     }
