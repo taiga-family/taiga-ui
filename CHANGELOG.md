@@ -2,33 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [2.10.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.9.1...v2.10.1) (2021-05-26)
-
-
-### Features
-
-* **core:** `Dialog` add default template for primitive content ([#409](https://github.com/TinkoffCreditSystems/taiga-ui/issues/409)) ([4fd1ee3](https://github.com/TinkoffCreditSystems/taiga-ui/commit/4fd1ee3c51e4004ad5e7e3f227d7e41e530c80b3))
-* **core:** `Notifications` keep open if hovered ([#420](https://github.com/TinkoffCreditSystems/taiga-ui/issues/420)) ([adfb865](https://github.com/TinkoffCreditSystems/taiga-ui/commit/adfb8655c7ffc852d7741c3f5144068ccc22996f))
-* **core:** switch skeleton animation to opacity to improve performance ([#402](https://github.com/TinkoffCreditSystems/taiga-ui/issues/402)) ([787208b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/787208b4d71ed48736ec955205959fe1999060ad))
-* **kit:** `Breadcrumbs` implement new API exposing the links ([#412](https://github.com/TinkoffCreditSystems/taiga-ui/issues/412)) ([31ae7e7](https://github.com/TinkoffCreditSystems/taiga-ui/commit/31ae7e72775be7e3293da3107e3588290a83fee5))
-* **kit:** `FieldError` support plain strings errors ([#259](https://github.com/TinkoffCreditSystems/taiga-ui/issues/259)) ([6801143](https://github.com/TinkoffCreditSystems/taiga-ui/commit/680114338dc97b0559469530fcabc701130732bf))
-* **kit:** `FilterByInput` add new pipe ([ff41d2e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ff41d2e6639e05d5facc655e00dd8bde40a3702c))
-* **kit:** `FilterByInput` add new pipe ([#425](https://github.com/TinkoffCreditSystems/taiga-ui/issues/425)) ([edfa580](https://github.com/TinkoffCreditSystems/taiga-ui/commit/edfa5808a6fea43b260f04c4e275e9fc4be1dc11))
-* **kit:** `InputPassword` add default configuration through DI token ([#369](https://github.com/TinkoffCreditSystems/taiga-ui/issues/369)) ([f98d8f3](https://github.com/TinkoffCreditSystems/taiga-ui/commit/f98d8f3459c55ef907d27c8b5160ee5e12775eaa))
-
+### [2.10.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.10.0...v2.10.1) (2021-05-26)
 
 ### Bug Fixes
 
-* **addon-charts:** `BarChart` fix height in collapsed mode ([#428](https://github.com/TinkoffCreditSystems/taiga-ui/issues/428)) ([1f7c137](https://github.com/TinkoffCreditSystems/taiga-ui/commit/1f7c137bb9e861d1af08d0da39ac342778ed14c8))
-* **addon-commerce:** `InputCard` react to `readOnly` ([#434](https://github.com/TinkoffCreditSystems/taiga-ui/issues/434)) ([b1771a4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b1771a44cc06c689644d1db53cdd91728590f184))
-* **addon-table:** `defaultSorter` properly sort strings ([#427](https://github.com/TinkoffCreditSystems/taiga-ui/issues/427)) ([ff43170](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ff4317034df547c82cea0e0afec74a0e6325e9ad))
-* **core:** `Link` fix disabled appearance when used on buttons ([#422](https://github.com/TinkoffCreditSystems/taiga-ui/issues/422)) ([68172aa](https://github.com/TinkoffCreditSystems/taiga-ui/commit/68172aa6c3ca8da1b54e533ee77859b8396b88bb))
-* **kit:** `CheckboxBlock` fix styles inside `Accordion` ([#423](https://github.com/TinkoffCreditSystems/taiga-ui/issues/423)) ([11b4539](https://github.com/TinkoffCreditSystems/taiga-ui/commit/11b453999a403cde375b0d9abf6d185d816c9239))
-* **kit:** `InputPhone` fix opening dropdown in readOnly ([a73ff80](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a73ff804e4def48061b7df0e57bccce99749cdea))
-* **kit:** `Slider`, `Range` fix spilling over limits with keyboard ([#408](https://github.com/TinkoffCreditSystems/taiga-ui/issues/408)) ([581f8bb](https://github.com/TinkoffCreditSystems/taiga-ui/commit/581f8bbe896a579719692ee446543cd56a9083e5))
-* **kit:** `Tabs` fix colors for tuiMode="onLight" ([#411](https://github.com/TinkoffCreditSystems/taiga-ui/issues/411)) ([23c3ce8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/23c3ce8f5dc5baac5da10ff29a0bf924691cfee6))
-* **kit:** fix broken imports ([#439](https://github.com/TinkoffCreditSystems/taiga-ui/issues/439)) ([46eacf8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/46eacf833d6d7bed2d0dfd717f81c15e0c77a8de))
-* portal asserts by constructor init ([72f8198](https://github.com/TinkoffCreditSystems/taiga-ui/commit/72f8198191a38ee00dac60e3ea5e774308df569b))
+-   **kit:** fix broken imports ([#439](https://github.com/TinkoffCreditSystems/taiga-ui/issues/439)) ([46eacf8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/46eacf833d6d7bed2d0dfd717f81c15e0c77a8de))
 
 ## [2.10.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.9.1...v2.10.0) (2021-05-25)
 
