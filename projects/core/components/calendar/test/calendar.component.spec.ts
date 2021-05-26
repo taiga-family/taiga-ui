@@ -89,8 +89,9 @@ describe('Calendar', () => {
     });
 
     it('onPaginationValueChange does not update month if it is the same with current', () => {
-        const savedMonth = new TuiMonth(2002, 2);
-        const sameMonth = new TuiMonth(2002, 2);
+        const date = new Date();
+        const savedMonth = new TuiMonth(date.getFullYear(), date.getMonth());
+        const sameMonth = new TuiMonth(date.getFullYear(), date.getMonth());
 
         component.month = savedMonth;
 
@@ -145,21 +146,5 @@ describe('Calendar', () => {
         component.maxViewedMonth = afterMaxDay;
 
         expect(component.computedMaxViewedMonth).toBe(maxDay);
-    });
-
-    it('if set month is less than viewed, it takes computed min viewed', () => {
-        const month = TuiMonth.currentLocal();
-        const monthAfter = month.append({month: 1});
-
-        component.month = month;
-        component.minViewedMonth = monthAfter;
-
-        expect(component.computedMonth).toBe(monthAfter);
-    });
-
-    it('if set month is more than max, it takes max viewed', () => {
-        component.max = TuiDay.currentLocal().append({month: -1});
-
-        expect(component.computedMonth).toBe(component.max);
     });
 });
