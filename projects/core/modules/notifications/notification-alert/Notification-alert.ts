@@ -12,7 +12,7 @@ export class NotificationAlert<O, I> {
 
     readonly hasIcon: boolean;
 
-    readonly autoClose: boolean;
+    readonly autoClose: boolean | number;
 
     readonly hasCloseButton: boolean;
 

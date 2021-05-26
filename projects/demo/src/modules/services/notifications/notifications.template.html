@@ -114,7 +114,8 @@
             <ng-template
                 i18n
                 documentationPropertyName="autoClose"
-                documentationPropertyType="boolean"
+                documentationPropertyType="boolean | number"
+                [documentationPropertyValues]="autoCloseVariants"
                 [(documentationPropertyValue)]="autoClose"
             >
                 Autoclose after 3 seconds

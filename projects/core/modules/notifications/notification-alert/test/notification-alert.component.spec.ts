@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {Component, Inject, NgModule, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {PageObject} from '@taiga-ui/testing';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TuiNotificationContentContext} from '../../notification-content-context';
@@ -137,6 +137,21 @@ describe('NotificationAlertComponent', () => {
         expect(nextSpy).not.toHaveBeenCalled();
         expect(completeSpy).toHaveBeenCalled();
     });
+
+    it('close | Close the Alert after custom autoClose timeout', fakeAsync(() => {
+        const customTimeoutMs = 1000;
+
+        testComponent.alert = new NotificationAlert(
+            observerMock,
+            new PolymorpheusComponent(AlertConstructorMock),
+            {label, data, autoClose: customTimeoutMs},
+        );
+        fixture.detectChanges();
+
+        expect(completeSpy).not.toHaveBeenCalled();
+        tick(customTimeoutMs);
+        expect(completeSpy).toHaveBeenCalled();
+    }));
 
     describe('processComponent | Alert with custom template', () => {
         beforeEach(() => {
