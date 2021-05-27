@@ -1,4 +1,6 @@
 import {
+    AfterContentInit,
+    AfterViewChecked,
     AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -7,10 +9,12 @@ import {
     ElementRef,
     EventEmitter,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     Output,
     QueryList,
+    Renderer2,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
@@ -18,16 +22,19 @@ import {
     EMPTY_QUERY,
     getClosestFocusable,
     isNativeFocused,
+    itemsQueryListObservable,
+    moveFocus,
     setNativeFocused,
     tuiDefaultProp,
+    TuiDestroyService,
 } from '@taiga-ui/cdk';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {delay, filter, map, mergeMap, take, takeUntil} from 'rxjs/operators';
 import {TuiTabDirective} from '../tab.directive';
 import {TuiTabComponent} from '../tab/tab.component';
-import {TAB_MARGIN} from '../tabs.const';
+import {TAB_ACTIVE_CLASS, TAB_MARGIN} from '../tabs.const';
 import {TABS_PROVIDERS, TABS_REFRESH} from './tabs-with-more.providers';
 
 // @dynamic
@@ -38,7 +45,8 @@ import {TABS_PROVIDERS, TABS_REFRESH} from './tabs-with-more.providers';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TABS_PROVIDERS,
 })
-export class TuiTabsWithMoreComponent implements AfterViewInit {
+export class TuiTabsWithMoreComponent
+    implements AfterViewInit, AfterContentInit, AfterViewChecked {
     @Input()
     @tuiDefaultProp()
     moreContent: PolymorpheusContent = '';
@@ -62,6 +70,9 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     @ContentChildren(TuiTabDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<{}>> = EMPTY_QUERY;
 
+    @ContentChildren(TuiTabComponent)
+    readonly children: QueryList<TuiTabComponent> = EMPTY_QUERY;
+
     open = false;
 
     private maxIndex = Infinity;
@@ -74,12 +85,53 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
+        @Inject(Renderer2) private renderer: Renderer2,
+        @Inject(TuiDestroyService) private destroy$: TuiDestroyService,
     ) {}
 
+    ngAfterContentInit(): void {
+        itemsQueryListObservable(this.items)
+            .pipe(
+                mergeMap(() => this.children.changes.pipe(take(1))),
+                delay(0),
+                map(tabs => tabs.toArray()),
+                filter((data: TuiTabComponent[]) => {
+                    return !data.length || data.some(tab => tab.withRouterLinkActive);
+                }),
+                map(data => data.findIndex(tab => tab.isActive)),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(index => {
+                this.updateActiveItemIndex(index);
+            });
+    }
+
+    ngAfterViewChecked() {
+        const tabs: HTMLElement[] = this.children
+            .toArray()
+            .map(tab => tab.element.nativeElement)
+            .filter(tab =>
+                tab.parentElement ? tab.parentElement.classList.contains('tab') : false,
+            );
+
+        const activeTab = this.activeElement;
+
+        tabs.forEach(tab => {
+            this.renderer.removeClass(tab, TAB_ACTIVE_CLASS);
+            this.renderer.setAttribute(tab, 'tabIndex', '-1');
+        });
+
+        if (activeTab) {
+            this.renderer.addClass(activeTab, TAB_ACTIVE_CLASS);
+            this.renderer.setAttribute(activeTab, 'tabIndex', '0');
+        }
+    }
+
     get tabs(): ReadonlyArray<HTMLElement> {
-        return Array.from<HTMLElement>(
-            this.elementRef.nativeElement.querySelectorAll('[tuiTab]'),
-        );
+        return this.children
+            .toArray()
+            .map(tab => tab.element.nativeElement)
+            .concat(this.moreButton?.nativeElement);
     }
 
     get activeElement(): HTMLElement | null {
@@ -116,35 +168,11 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             });
     }
 
-    onActiveItemIndexChange(activeItemIndex: number) {
-        this.updateActiveItemIndex(activeItemIndex);
-    }
-
     onClick(index: number) {
         this.open = false;
         this.focusMore();
         this.updateActiveItemIndex(index);
-    }
-
-    onArrowRight(element: HTMLElement) {
-        if (isNativeFocused(element)) {
-            this.focusMore();
-        }
-    }
-
-    onArrowLeft() {
-        const {tabs} = this;
-        let index = tabs.length - 2;
-
-        while (index >= 0) {
-            setNativeFocused(tabs[index]);
-
-            if (isNativeFocused(tabs[index])) {
-                return;
-            }
-
-            index--;
-        }
+        this.changeDetectorRef.detectChanges();
     }
 
     onWrapperArrow(button: HTMLButtonElement, wrapper: HTMLElement, prev: boolean) {
@@ -153,6 +181,23 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         if (target) {
             setNativeFocused(target);
         }
+    }
+
+    onActivate(index: number) {
+        if (this.open) {
+            this.focusMore();
+        }
+
+        this.open = false;
+        this.updateActiveItemIndex(index);
+    }
+
+    @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
+    @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
+    onKeyDownArrow(current: HTMLElement, step: number) {
+        const tabs = this.tabs;
+
+        moveFocus(tabs.indexOf(current), tabs, step);
     }
 
     private focusMore() {
