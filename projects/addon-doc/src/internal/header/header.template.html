@@ -12,5 +12,9 @@
         class="navigation"
     ></tui-doc-navigation>
 </button>
-<div polymorpheus-outlet class="logo tui-text_h5" [content]="logo"></div>
+<div polymorpheus-outlet class="logo tui-text_h5" [content]="logo">
+    <ng-template let-src>
+        <img class="img" alt="Logo" [src]="src">
+    </ng-template>
+</div>
 <ng-content></ng-content>
