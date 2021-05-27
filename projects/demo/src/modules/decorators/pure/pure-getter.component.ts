@@ -5,7 +5,9 @@ import {changeDetection} from '../../../change-detection-strategy';
 @Component({
     selector: 'example-tui-pure-getter',
     template: `
-        <div *ngIf="show">fibonacci(40) = {{ fibonacci40 }}</div>
+        <div *ngIf="show" class="tui-space_bottom-2">
+            fibonacci(40) = {{ fibonacci40 }}
+        </div>
         <button tuiButton type="button" (click)="show = !show">Show/hide</button>
     `,
     changeDetection,
