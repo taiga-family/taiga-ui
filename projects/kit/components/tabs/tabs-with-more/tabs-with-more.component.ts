@@ -169,7 +169,6 @@ export class TuiTabsWithMoreComponent
         this.open = false;
         this.focusMore();
         this.updateActiveItemIndex(index);
-        this.changeDetectorRef.detectChanges();
     }
 
     onWrapperArrow(button: HTMLButtonElement, wrapper: HTMLElement, prev: boolean) {
