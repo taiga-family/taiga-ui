@@ -20,6 +20,7 @@ describe('Slider', () => {
                 [min]="min"
                 [steps]="steps"
                 [segments]="segments"
+                [quantum]="quantum"
                 [keySteps]="keySteps"
                 [pluralize]="pluralize"
             ></tui-slider>
@@ -35,6 +36,7 @@ describe('Slider', () => {
         min = 1;
         segments = 10;
         steps = 10;
+        quantum = 0;
         pluralize: TuiPluralize | null = null;
         keySteps: TuiKeySteps | null = null;
     }
@@ -204,6 +206,43 @@ describe('Slider', () => {
             fixture.detectChanges();
 
             expect(testComponent.testValue.value).toBe(4);
+        });
+    });
+
+    describe('Quantum', () => {
+        beforeEach(() => {
+            testComponent.min = 0;
+            testComponent.max = 10;
+            testComponent.quantum = 0.1;
+            testComponent.steps = 0;
+            testComponent.testValue.setValue(5);
+            fixture.detectChanges();
+        });
+
+        it('Pressing the right arrow without specified steps increases the value by one quantum', () => {
+            getDot().dispatchEvent(keydownArrowRight);
+            fixture.detectChanges();
+
+            expect(testComponent.testValue.value).toBe(5.1);
+        });
+
+        it('Pressing the left arrow without specified steps decreases the value by one step', () => {
+            getDot().dispatchEvent(keydownArrowLeft);
+            fixture.detectChanges();
+
+            expect(testComponent.testValue.value).toBe(4.9);
+        });
+
+        it('Adds a value to the closest allowed step and round to the closest quantum', () => {
+            testComponent.testValue.setValue(0);
+            testComponent.quantum = 1;
+            testComponent.steps = 3;
+            fixture.detectChanges();
+
+            getDot().dispatchEvent(keydownArrowRight);
+            fixture.detectChanges();
+
+            expect(testComponent.testValue.value).toBe(3);
         });
     });
 });

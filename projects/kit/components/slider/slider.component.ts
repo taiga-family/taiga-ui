@@ -10,13 +10,12 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
-    clamp,
     isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {AbstractTuiSlider, SLIDER_KEYBOARD_STEP} from '@taiga-ui/kit/abstract';
+import {AbstractTuiSlider} from '@taiga-ui/kit/abstract';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 
@@ -68,17 +67,17 @@ export class TuiSliderComponent
         return 0;
     }
 
-    protected processStep(increment: boolean, [min, max]: [number, number]) {
+    protected processStep(increment: boolean) {
         const fraction = this.getFractionFromValue(this.value);
-        const step = this.discrete ? 1 / this.steps : SLIDER_KEYBOARD_STEP;
+        const step = this.computedStep;
         const value = this.getValueFromFraction(
             increment ? fraction + step : fraction - step,
         );
 
-        this.processValue(clamp(value, min, max));
+        this.processValue(value);
     }
 
     protected processValue(value: number) {
-        this.updateValue(value);
+        this.updateValue(this.valueGuard(value));
     }
 }
