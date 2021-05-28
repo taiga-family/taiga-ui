@@ -54,7 +54,6 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
     @Input('activeItemIndex')
     set activeItemIndexSetter(index: number) {
         this.activeItemIndex = index;
-
         this.scrollTo(this.activeElement);
     }
 
