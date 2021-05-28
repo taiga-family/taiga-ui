@@ -107,14 +107,8 @@ export class TuiTabsWithMoreComponent
     }
 
     ngAfterViewChecked() {
-        const tabs: HTMLElement[] = this.children
-            .toArray()
-            .map(tab => tab.element.nativeElement)
-            .filter(tab =>
-                tab.parentElement ? tab.parentElement.classList.contains('tab') : false,
-            );
-
-        const activeTab = this.activeElement;
+        const tabs = this.tabs;
+        const activeTab = tabs[this.activeItemIndex];
 
         tabs.forEach(tab => {
             this.renderer.removeClass(tab, TAB_ACTIVE_CLASS);
@@ -131,6 +125,9 @@ export class TuiTabsWithMoreComponent
         return this.children
             .toArray()
             .map(tab => tab.element.nativeElement)
+            .filter(tab =>
+                tab.parentElement ? tab.parentElement.classList.contains('tab') : false,
+            )
             .concat(this.moreButton?.nativeElement);
     }
 

@@ -77,7 +77,7 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(ChangeDetectorRef) readonly changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) private changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TuiResizeService) resize$: Observable<void>,
         @Inject(TUI_IS_IOS) isIos: boolean,
@@ -130,9 +130,9 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
         const tabs = this.tabsElements;
         const activeElement = tabs[this.activeItemIndex];
 
-        tabs.forEach(tab => {
-            this.renderer.removeClass(tab, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(tab, 'tabIndex', '-1');
+        tabs.forEach(nativeElement => {
+            this.renderer.removeClass(nativeElement, TAB_ACTIVE_CLASS);
+            this.renderer.setAttribute(nativeElement, 'tabIndex', '-1');
         });
 
         if (activeElement) {
