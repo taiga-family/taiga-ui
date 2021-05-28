@@ -156,6 +156,14 @@ export class TuiInputPhoneComponent
             : this.search || '';
     }
 
+    set nativeValue(value: string) {
+        setTimeout(() => {
+            if (this.nativeFocusableElement) {
+                this.nativeFocusableElement.value = value;
+            }
+        });
+    }
+
     get inputMode(): TuiInputMode {
         return this.allowText ? TuiInputMode.Text : TuiInputMode.Numeric;
     }
@@ -184,18 +192,25 @@ export class TuiInputPhoneComponent
     onActiveZone(active: boolean) {
         this.updateFocused(active);
 
+        const valueToCountryCodeEquals = this.nativeValue === this.countryCode;
+
         if (active && !this.nativeValue && !this.readOnly && !this.allowText) {
             this.updateSearch(this.countryCode);
+            this.nativeValue = `${this.countryCode} `;
 
             return;
         }
 
         if (
-            this.nativeValue === this.countryCode ||
+            valueToCountryCodeEquals ||
             (this.search !== null &&
                 isNaN(parseInt(this.search.replace(NON_PLUS_AND_DIGITS_REGEX, ''), 10)))
         ) {
             this.updateSearch('');
+        }
+
+        if (!active && valueToCountryCodeEquals) {
+            this.nativeValue = '';
         }
     }
 
