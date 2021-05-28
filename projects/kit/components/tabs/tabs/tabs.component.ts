@@ -95,16 +95,12 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
         return itemsQueryListObservable(this.children).pipe(mapTo(true));
     }
 
-    get tabs(): ReadonlyArray<TuiTabComponent> {
-        return this.children.toArray();
-    }
-
-    get tabsElements(): ReadonlyArray<HTMLElement> {
-        return this.tabs.map(tab => tab.element.nativeElement);
+    get tabs(): ReadonlyArray<HTMLElement> {
+        return this.children.toArray().map(tab => tab.element.nativeElement);
     }
 
     get activeElement(): HTMLElement | null {
-        return this.tabsElements[this.activeItemIndex] || null;
+        return this.tabs[this.activeItemIndex] || null;
     }
 
     ngAfterContentInit(): void {
@@ -123,8 +119,7 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
     }
 
     ngAfterViewChecked() {
-        const tabs = this.tabsElements;
-        const activeElement = tabs[this.activeItemIndex];
+        const {tabs, activeElement} = this;
 
         tabs.forEach(nativeElement => {
             this.renderer.removeClass(nativeElement, TAB_ACTIVE_CLASS);
@@ -139,7 +134,7 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
 
     @HostListener(`${TUI_TAB_ACTIVATE}.stop`, ['$event.target'])
     onActivate(element: HTMLElement) {
-        const index = this.tabsElements.findIndex(tab => tab === element);
+        const index = this.tabs.findIndex(tab => tab === element);
 
         this.setActiveIndex(index);
     }
@@ -147,7 +142,7 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
     @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
     onKeyDownArrow(current: HTMLElement, step: number) {
-        moveFocus(this.tabsElements.indexOf(current), this.tabsElements, step);
+        moveFocus(this.tabs.indexOf(current), this.tabs, step);
     }
 
     setActiveIndex(index: number) {
