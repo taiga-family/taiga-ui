@@ -29,7 +29,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
-import {filter, map, mapTo, take, takeUntil} from 'rxjs/operators';
+import {delay, filter, map, mapTo, takeUntil} from 'rxjs/operators';
 import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
 import {TAB_ACTIVE_CLASS} from '../tabs.const';
@@ -55,9 +55,7 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
     set activeItemIndexSetter(index: number) {
         this.activeItemIndex = index;
 
-        this.activeElement$
-            .pipe(take(1), takeUntil(this.destroy$))
-            .subscribe(activeElement => this.scrollTo(activeElement));
+        this.scrollTo(this.activeElement);
     }
 
     @Output()
@@ -77,7 +75,7 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(ChangeDetectorRef) private changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TuiResizeService) resize$: Observable<void>,
         @Inject(TUI_IS_IOS) isIos: boolean,
@@ -105,11 +103,8 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
         return this.tabs.map(tab => tab.element.nativeElement);
     }
 
-    get activeElement$(): Observable<HTMLElement | null> {
-        return itemsQueryListObservable(this.children).pipe(
-            map(tabs => tabs[this.activeItemIndex]),
-            map(activeTab => (activeTab ? activeTab.element.nativeElement : null)),
-        );
+    get activeElement(): HTMLElement | null {
+        return this.tabsElements[this.activeItemIndex] || null;
     }
 
     ngAfterContentInit(): void {
@@ -119,6 +114,7 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
                     return !data.length || data.some(tab => tab.withRouterLinkActive);
                 }),
                 map(data => data.toArray().findIndex(tab => tab.isActive)),
+                delay(0),
                 takeUntil(this.destroy$),
             )
             .subscribe(index => {
@@ -161,8 +157,6 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
 
         this.activeItemIndexSetter = index;
         this.activeItemIndexChange.emit(index);
-
-        this.changeDetectorRef.markForCheck();
     }
 
     private scrollTo(element: HTMLElement | null = null) {
