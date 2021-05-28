@@ -24,6 +24,7 @@
                     [pluralize]="pluralize"
                     [keySteps]="keySteps"
                     [size]="size"
+                    [quantum]="quantum"
                 ></tui-range>
             </ng-template>
         </tui-doc-demo>
@@ -105,6 +106,16 @@
                 [(documentationPropertyValue)]="size"
             >
                 Size
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="quantum"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="quantumVariants"
+                [(documentationPropertyValue)]="quantum"
+            >
+                Quantum
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

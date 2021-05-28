@@ -118,7 +118,7 @@ export abstract class AbstractTuiSlider<T>
             return 1 / this.steps;
         }
 
-        return this.quantum ? 1 / (this.length / this.quantum) : SLIDER_KEYBOARD_STEP;
+        return this.quantum ? this.quantum / this.length : SLIDER_KEYBOARD_STEP;
     }
 
     get isLeftFocusable(): boolean {
@@ -233,11 +233,11 @@ export abstract class AbstractTuiSlider<T>
     }
 
     decrement(right: boolean) {
-        this.processStep(false, [this.min, this.max], right);
+        this.processStep(false, right);
     }
 
     increment(right: boolean) {
-        this.processStep(true, [this.min, this.max], right);
+        this.processStep(true, right);
     }
 
     getSegmentLabel(segment: number): number {
@@ -270,11 +270,7 @@ export abstract class AbstractTuiSlider<T>
 
     protected abstract processValue(value: number, right?: boolean): void;
 
-    protected abstract processStep(
-        increment: boolean,
-        [min, max]: [number, number],
-        right?: boolean,
-    ): void;
+    protected abstract processStep(increment: boolean, right?: boolean): void;
 
     protected getFractionFromValue(value: number): number {
         const fraction = (value - this.min) / this.length;
