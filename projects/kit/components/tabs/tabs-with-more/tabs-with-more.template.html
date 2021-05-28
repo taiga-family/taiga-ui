@@ -40,14 +40,15 @@
             (keydown.arrowUp.prevent)="onWrapperArrow($event.target, element, true)"
             (keydown.arrowDown.prevent)="onWrapperArrow($event.target, element, false)"
         >
-            <ng-container *ngFor="let item of items; let index = index">
-                <div (tui-tab-activate)="onClick(index)">
-                    <ng-container
-                        *ngIf="index > lastVisibleIndex && index !== activeItemIndex"
-                        [ngTemplateOutlet]="item"
-                    ></ng-container>
-                </div>
-            </ng-container>
+            <div
+                *ngFor="let item of items; let index = index"
+                (tui-tab-activate)="onClick(index)"
+            >
+                <ng-container
+                    *ngIf="index > lastVisibleIndex && index !== activeItemIndex"
+                    [ngTemplateOutlet]="item"
+                ></ng-container>
+            </div>
         </div>
     </ng-template>
     <tui-underline *ngIf="underline" [element]="activeElement"></tui-underline>
