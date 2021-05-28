@@ -40,6 +40,10 @@
 
 .more_wrapper {
     height: 100%;
+
+    &.tab_hidden {
+        margin-left: -24px;
+    }
 }
 
 .icon {
@@ -56,6 +60,7 @@
     padding: 8px 0;
 
     /* stylelint-disable */
+
     ::ng-deep *[tuiTab] {
         width: 100%;
         height: 44px;
@@ -76,6 +81,7 @@
             background: var(--tui-base-02);
         }
     }
+
     /* stylelint-enable */
 }
 
