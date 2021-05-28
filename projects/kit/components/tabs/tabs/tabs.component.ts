@@ -142,7 +142,9 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
     @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
     onKeyDownArrow(current: HTMLElement, step: number) {
-        moveFocus(this.tabs.indexOf(current), this.tabs, step);
+        const {tabs} = this;
+
+        moveFocus(tabs.indexOf(current), tabs, step);
     }
 
     setActiveIndex(index: number) {
