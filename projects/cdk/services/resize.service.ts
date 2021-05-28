@@ -1,4 +1,5 @@
 import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
+import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {
     RESIZE_OBSERVER_SUPPORT,
     RESIZE_OPTION_BOX,
@@ -6,7 +7,7 @@ import {
 } from '@ng-web-apis/resize-observer';
 import {EMPTY_ARRAY, POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
-import {interval, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {
     catchError,
     debounceTime,
@@ -14,6 +15,7 @@ import {
     map,
     mapTo,
     takeUntil,
+    throttleTime,
 } from 'rxjs/operators';
 import {TuiDestroyService} from './destroy.service';
 
@@ -26,12 +28,14 @@ export class TuiResizeService extends ResizeObserverService {
         @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(RESIZE_OBSERVER_SUPPORT) support: boolean,
         @Inject(RESIZE_OPTION_BOX) box: ResizeObserverOptions['box'],
+        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
     ) {
         super(elementRef, ngZone, support, box);
 
         return this.pipe(
             catchError(() =>
-                interval(POLLING_TIME).pipe(
+                animationFrame$.pipe(
+                    throttleTime(POLLING_TIME),
                     map(
                         () =>
                             `${elementRef.nativeElement.clientWidth} ${elementRef.nativeElement.clientHeight}`,

@@ -9,7 +9,7 @@ import {
     NgZone,
     ViewChild,
 } from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {
     getClosestElement,
     getClosestFocusable,
@@ -30,8 +30,8 @@ import {TuiAnimationOptions, TuiDropdown} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATION_OPTIONS, TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
 import {TuiHorizontalDirection, TuiVerticalDirection} from '@taiga-ui/core/types';
 import {getScreenWidth} from '@taiga-ui/core/utils/dom';
-import {fromEvent, interval, merge} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {fromEvent, merge, Observable} from 'rxjs';
+import {takeUntil, throttleTime} from 'rxjs/operators';
 
 /**
  *  This component is used to show template in a portal using default style of white rounded box with a shadow
@@ -79,9 +79,10 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         @Inject(TuiPortalHostComponent)
         private readonly portalHost: TuiPortalHostComponent,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
+        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
     ) {
         merge(
-            interval(POLLING_TIME),
+            animationFrame$.pipe(throttleTime(POLLING_TIME)),
             this.directive.refresh$,
             fromEvent(this.windowRef, 'resize'),
         )
