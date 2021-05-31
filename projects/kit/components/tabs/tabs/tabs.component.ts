@@ -29,7 +29,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
-import {delay, filter, map, mapTo, takeUntil} from 'rxjs/operators';
+import {filter, map, mapTo, takeUntil} from 'rxjs/operators';
 import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
 import {TAB_ACTIVE_CLASS} from '../tabs.const';
@@ -109,7 +109,6 @@ export class TuiTabsComponent implements AfterViewChecked, AfterContentInit {
                     return !data.length || data.some(tab => tab.withRouterLinkActive);
                 }),
                 map(data => data.toArray().findIndex(tab => tab.isActive)),
-                delay(0),
                 takeUntil(this.destroy$),
             )
             .subscribe(index => {

@@ -22,7 +22,6 @@ import {
     EMPTY_QUERY,
     getClosestFocusable,
     isNativeFocused,
-    itemsQueryListObservable,
     moveFocus,
     setNativeFocused,
     tuiDefaultProp,
@@ -31,7 +30,7 @@ import {
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {delay, filter, map, mergeMap, take, takeUntil} from 'rxjs/operators';
+import {filter, map, mergeMap, take, takeUntil} from 'rxjs/operators';
 import {TuiTabDirective} from '../tab.directive';
 import {TuiTabComponent} from '../tab/tab.component';
 import {TAB_ACTIVE_CLASS, TAB_MARGIN} from '../tabs.const';
@@ -90,10 +89,9 @@ export class TuiTabsWithMoreComponent
     ) {}
 
     ngAfterContentInit(): void {
-        itemsQueryListObservable(this.items)
+        this.items.changes
             .pipe(
                 mergeMap(() => this.children.changes.pipe(take(1))),
-                delay(0),
                 map(tabs => tabs.toArray()),
                 filter((data: TuiTabComponent[]) => {
                     return !data.length || data.some(tab => tab.withRouterLinkActive);
