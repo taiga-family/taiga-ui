@@ -15,6 +15,7 @@ describe('Range', () => {
                 [min]="min"
                 [steps]="steps"
                 [segments]="segments"
+                [quantum]="quantum"
             ></tui-range>
         `,
     })
@@ -27,6 +28,7 @@ describe('Range', () => {
         min = 1;
         segments = 10;
         steps = 10;
+        quantum = 0;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -178,6 +180,43 @@ describe('Range', () => {
                 fixture.detectChanges();
 
                 expect(testComponent.testValue.value[0]).toBe(4);
+            });
+        });
+
+        describe('Quantum', () => {
+            beforeEach(() => {
+                testComponent.min = 0;
+                testComponent.max = 10;
+                testComponent.quantum = 0.1;
+                testComponent.steps = 0;
+                testComponent.testValue.setValue([1, 5]);
+                fixture.detectChanges();
+            });
+
+            it('Pressing the right arrow without specified steps increases the value by one quantum', () => {
+                getLeft().dispatchEvent(keydownArrowRight);
+                fixture.detectChanges();
+
+                expect(testComponent.testValue.value[0]).toBe(1.1);
+            });
+
+            it('Pressing the left arrow without specified steps decreases the value by one step', () => {
+                getRight().dispatchEvent(keydownArrowLeft);
+                fixture.detectChanges();
+
+                expect(testComponent.testValue.value[1]).toBe(4.9);
+            });
+
+            it('Adds a value to the closest allowed step and round to the closest quantum', () => {
+                testComponent.testValue.setValue([0, 10]);
+                testComponent.quantum = 1;
+                testComponent.steps = 3;
+                fixture.detectChanges();
+
+                getLeft().dispatchEvent(keydownArrowRight);
+                fixture.detectChanges();
+
+                expect(testComponent.testValue.value[0]).toBe(3);
             });
         });
     });

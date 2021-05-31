@@ -11,6 +11,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     clamp,
+    nonNegativeFiniteAssertion,
     quantize,
     round,
     setNativeFocused,
@@ -56,6 +57,10 @@ export abstract class AbstractTuiSlider<T>
     @Input()
     @tuiDefaultProp()
     steps = 0;
+
+    @Input()
+    @tuiDefaultProp(nonNegativeFiniteAssertion, 'Quantum must be a non-negative number')
+    quantum = 0;
 
     @Input()
     @tuiDefaultProp()
@@ -106,6 +111,14 @@ export abstract class AbstractTuiSlider<T>
 
     get length(): number {
         return this.max - this.min;
+    }
+
+    get computedStep(): number {
+        if (this.steps) {
+            return 1 / this.steps;
+        }
+
+        return this.quantum ? this.quantum / this.length : SLIDER_KEYBOARD_STEP;
     }
 
     get isLeftFocusable(): boolean {
@@ -220,11 +233,11 @@ export abstract class AbstractTuiSlider<T>
     }
 
     decrement(right: boolean) {
-        this.processStep(false, [this.min, this.max], right);
+        this.processStep(false, right);
     }
 
     increment(right: boolean) {
-        this.processStep(true, [this.min, this.max], right);
+        this.processStep(true, right);
     }
 
     getSegmentLabel(segment: number): number {
@@ -257,11 +270,7 @@ export abstract class AbstractTuiSlider<T>
 
     protected abstract processValue(value: number, right?: boolean): void;
 
-    protected abstract processStep(
-        increment: boolean,
-        [min, max]: [number, number],
-        right?: boolean,
-    ): void;
+    protected abstract processStep(increment: boolean, right?: boolean): void;
 
     protected getFractionFromValue(value: number): number {
         const fraction = (value - this.min) / this.length;
@@ -286,6 +295,19 @@ export abstract class AbstractTuiSlider<T>
         _: boolean,
     ): number {
         return this.getFractionFromEvents(rect, clientX);
+    }
+
+    protected valueGuard(value: number): number {
+        return this.quantum
+            ? clamp(
+                  round(
+                      Math.round(value / this.quantum) * this.quantum,
+                      TUI_FLOATING_PRECISION,
+                  ),
+                  this.min,
+                  this.max,
+              )
+            : clamp(value, this.min, this.max);
     }
 
     private processFocus(right: boolean) {

@@ -32,6 +32,7 @@
                     [segments]="segments"
                     [pluralize]="pluralize"
                     [keySteps]="keySteps"
+                    [quantum]="quantum"
                     [size]="size"
                 ></tui-slider>
             </ng-template>
@@ -114,6 +115,16 @@
                 [(documentationPropertyValue)]="size"
             >
                 Size
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="quantum"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="quantumVariants"
+                [(documentationPropertyValue)]="quantum"
+            >
+                Quantum
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
