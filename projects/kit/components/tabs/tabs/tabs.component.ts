@@ -16,6 +16,10 @@ import {
     Renderer2,
 } from '@angular/core';
 import {
+    MUTATION_OBSERVER_INIT,
+    MutationObserverService,
+} from '@ng-web-apis/mutation-observer';
+import {
     EMPTY_QUERY,
     itemsQueryListObservable,
     moveFocus,
@@ -42,7 +46,17 @@ import {TAB_ACTIVE_CLASS} from '../tabs.const';
     host: {
         class: 'tui-zero-scrollbar',
     },
-    providers: [TuiDestroyService, TuiResizeService],
+    providers: [
+        TuiDestroyService,
+        TuiResizeService,
+        MutationObserverService,
+        {
+            provide: MUTATION_OBSERVER_INIT,
+            useValue: {
+                childList: true,
+            },
+        },
+    ],
 })
 export class TuiTabsComponent implements AfterViewChecked {
     @Input()
