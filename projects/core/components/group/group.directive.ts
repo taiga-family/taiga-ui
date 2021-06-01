@@ -1,7 +1,6 @@
 import {Directive, HostBinding, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiOrientation} from '@taiga-ui/core/enums';
-import {TuiSizeL} from '@taiga-ui/core/types';
+import {TuiOrientationT, TuiSizeL} from '@taiga-ui/core/types';
 
 @Directive({
     selector: '[tuiGroup]:not(ng-container)',
@@ -13,7 +12,7 @@ import {TuiSizeL} from '@taiga-ui/core/types';
 export class TuiGroupDirective {
     @Input()
     @tuiDefaultProp()
-    orientation: TuiOrientation = TuiOrientation.Horizontal;
+    orientation: TuiOrientationT = 'horizontal';
 
     @Input()
     @HostBinding('class.tui-group_adaptive')
@@ -36,12 +35,12 @@ export class TuiGroupDirective {
 
     @HostBinding('class.tui-group_orientation_horizontal')
     get orientationHorizontal(): boolean {
-        return this.orientation === TuiOrientation.Horizontal;
+        return this.orientation === 'horizontal';
     }
 
     @HostBinding('class.tui-group_orientation_vertical')
     get orientationVertical(): boolean {
-        return this.orientation === TuiOrientation.Vertical;
+        return this.orientation === 'vertical';
     }
 
     @HostBinding('class.tui-group_radius_large')

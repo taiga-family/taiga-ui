@@ -4,6 +4,7 @@
  * never — never show sign
  * force-negative — show minus no matter the number, except for zero
  * force-positive — show plus no matter the number, except for zero
+ * @deprecated use join type {@link TuiMoneySignT}
  */
 export const enum TuiMoneySign {
     NegativeOnly = 'negative-only',

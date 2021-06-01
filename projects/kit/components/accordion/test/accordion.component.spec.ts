@@ -8,7 +8,6 @@ import {TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
-import {TuiBorders} from '../../../enums/borders';
 import {TuiInputModule} from '../../input/input.module';
 import {TuiSelectComponent} from '../../select/select.component';
 import {TuiSelectModule} from '../../select/select.module';
@@ -102,7 +101,7 @@ describe('Accordion', () => {
 
         closeOthers = true;
         single = true;
-        borders: TuiBorders = TuiBorders.All;
+        borders = 'all';
         rounded = true;
         showArrow = true;
         open = false;
@@ -177,7 +176,7 @@ describe('Accordion', () => {
     });
 
     it('with borders = top-bottom there are no borders', () => {
-        testComponent.borders = TuiBorders.TopBottom;
+        testComponent.borders = 'top-bottom';
         fixture.detectChanges();
 
         expect(getAccordionItem()!.attributes['data-tui-host-borders']).toBe(

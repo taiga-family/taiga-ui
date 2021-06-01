@@ -6,7 +6,7 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
+import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -27,22 +27,19 @@ export class ExampleTuiTextfieldControllerComponent {
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
 
-    readonly inputModeVariants: ReadonlyArray<TuiInputMode> = [
-        TuiInputMode.Text,
-        TuiInputMode.Numeric,
-    ];
+    readonly inputModeVariants: readonly TuiInputModeT[] = ['text', 'numeric'];
 
     readonly maxLengthVariants: readonly number[] = [10];
 
-    readonly typeVariants: ReadonlyArray<TuiInputType> = [
-        TuiInputType.Text,
-        TuiInputType.Email,
-        TuiInputType.Password,
-        TuiInputType.Tel,
-        TuiInputType.Url,
+    readonly typeVariants: readonly TuiInputTypeT[] = [
+        'text',
+        'email',
+        'password',
+        'tel',
+        'url',
     ];
 
-    type: TuiInputType = this.typeVariants[0];
+    type: TuiInputTypeT = this.typeVariants[0];
 
     readonly customContentVariants = ['Bell'];
 

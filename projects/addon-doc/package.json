@@ -20,7 +20,7 @@
         "@angular/forms": ">=9.0.0",
         "@angular/router": ">=9.0.0",
         "@angular-devkit/schematics": "^9.0.0",
-        "@tinkoff/ng-polymorpheus": ">=3.0.0",
+        "@tinkoff/ng-polymorpheus": "3.1.8",
         "@taiga-ui/cdk": "2.10.1",
         "@taiga-ui/core": "2.10.1",
         "@taiga-ui/kit": "2.10.1",

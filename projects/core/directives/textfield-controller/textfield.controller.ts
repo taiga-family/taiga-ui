@@ -1,4 +1,4 @@
-import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
+import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -42,7 +42,7 @@ export class TuiTextfieldController {
         return this.exampleTextDirective.exampleText;
     }
 
-    get inputMode(): TuiInputMode {
+    get inputMode(): TuiInputModeT {
         return this.inputModeDirective.inputMode;
     }
 
@@ -58,7 +58,7 @@ export class TuiTextfieldController {
         return this.sizeDirective.size;
     }
 
-    get type(): TuiInputType {
+    get type(): TuiInputTypeT {
         return this.typeDirective.type;
     }
 }

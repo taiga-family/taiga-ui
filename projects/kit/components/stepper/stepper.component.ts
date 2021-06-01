@@ -19,7 +19,7 @@ import {
     tuiDefaultProp,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiOrientation} from '@taiga-ui/core';
+import {TuiOrientationT} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 import {TuiStepComponent} from './step/step.component';
@@ -37,7 +37,7 @@ export class TuiStepperComponent {
     @Input()
     @HostBinding('attr.data-orientation')
     @tuiDefaultProp()
-    orientation: TuiOrientation = TuiOrientation.Horizontal;
+    orientation: TuiOrientationT = 'horizontal';
 
     @Input()
     @tuiDefaultProp()
@@ -78,7 +78,7 @@ export class TuiStepperComponent {
     @HostListener('keydown.arrowRight', ['$event', '1'])
     @HostListener('keydown.arrowLeft', ['$event', '-1'])
     onHorizontal(event: Event, step: number) {
-        if (this.orientation !== TuiOrientation.Horizontal || !event.target) {
+        if (this.orientation !== 'horizontal' || !event.target) {
             return;
         }
 
@@ -89,7 +89,7 @@ export class TuiStepperComponent {
     @HostListener('keydown.arrowDown', ['$event', '1'])
     @HostListener('keydown.arrowUp', ['$event', '-1'])
     onVertical(event: Event, step: number) {
-        if (this.orientation !== TuiOrientation.Vertical || !event.target) {
+        if (this.orientation !== 'vertical' || !event.target) {
             return;
         }
 

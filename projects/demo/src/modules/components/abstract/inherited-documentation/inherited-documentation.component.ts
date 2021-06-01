@@ -1,5 +1,5 @@
 import {Component, Inject, Input} from '@angular/core';
-import {TuiDirection, TuiHintMode} from '@taiga-ui/core';
+import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
 import {changeDetection} from '../../../../change-detection-strategy';
 import {AbstractExampleTuiControl} from '../control';
 import {AbstractExampleTuiHint} from '../hint';
@@ -16,7 +16,7 @@ export class InheritedDocumentationComponent {
     @Input()
     dropdown = false;
 
-    readonly booleanVariants: ReadonlyArray<boolean> = [false, true];
+    readonly booleanVariants: readonly boolean[] = [false, true];
 
     readonly directionVariants: ReadonlyArray<TuiDirection> = [
         'left',
@@ -27,10 +27,7 @@ export class InheritedDocumentationComponent {
         'top-right',
     ];
 
-    readonly modeVariants: ReadonlyArray<TuiHintMode> = [
-        TuiHintMode.Error,
-        TuiHintMode.OnDark,
-    ];
+    readonly modeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
 
     constructor(
         @Inject(ABSTRACT_PROPS_ACCESSOR)

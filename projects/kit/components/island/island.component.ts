@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiTextAlign} from '@taiga-ui/kit/enums';
 
 @Component({
     selector: 'tui-island, a[tuiIsland]',
@@ -19,7 +18,7 @@ export class TuiIslandComponent {
 
     @Input()
     @tuiDefaultProp()
-    textAlign: TuiTextAlign = TuiTextAlign.Left;
+    textAlign: 'left' | 'right' | 'center' = 'left';
 
     @Input()
     @HostBinding('class.tui-island_hoverable')

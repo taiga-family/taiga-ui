@@ -21,7 +21,7 @@ import {
     TuiHoveredService,
     watch,
 } from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButtonShape} from '@taiga-ui/core/enums';
+import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -64,7 +64,7 @@ export class TuiButtonComponent
     @Input()
     @HostBinding('attr.data-tui-host-shape')
     @tuiDefaultProp()
-    shape: TuiButtonShape | null = null;
+    shape: 'square' | 'rounded' | null = null;
 
     @Input()
     @HostBinding('class._loading')

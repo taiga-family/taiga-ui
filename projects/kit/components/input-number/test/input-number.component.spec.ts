@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {
-    TuiDecimal,
+    TuiDecimalT,
     TuiHintControllerModule,
     TuiSizeL,
     TuiSizeS,
@@ -45,7 +45,7 @@ describe('InputNumber', () => {
             control: this.control,
         });
         readOnly = false;
-        decimal = TuiDecimal.Never;
+        decimal: TuiDecimalT = 'never';
         cleaner = true;
         defaultValues = false;
         size: TuiSizeS | TuiSizeL = 'm';
@@ -271,7 +271,7 @@ describe('InputNumber', () => {
         });
 
         it(`Doesn't trim zeros if the input is focused`, () => {
-            component.decimal = TuiDecimal.NotZero;
+            component.decimal = 'not-zero';
 
             inputPO.focus();
             inputPO.sendText('10,07');
@@ -281,7 +281,7 @@ describe('InputNumber', () => {
         });
 
         it(`formats a value if the element is out of focus`, () => {
-            component.decimal = TuiDecimal.NotZero;
+            component.decimal = 'not-zero';
 
             inputPO.sendText('10,0');
 
@@ -300,7 +300,7 @@ describe('InputNumber', () => {
             const value = '123';
             const precision = 2;
 
-            component.decimal = TuiDecimal.Always;
+            component.decimal = 'always';
             component.precision = precision;
             component.onValue(value);
 

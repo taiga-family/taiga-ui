@@ -14,7 +14,7 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component, forwardRef, TemplateRef} from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TuiButtonShape, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -84,13 +84,9 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
 
     size: TuiSizeXS | TuiSizeXL = this.sizeVariants[3];
 
-    readonly shapeVariants: ReadonlyArray<TuiButtonShape | null> = [
-        null,
-        TuiButtonShape.Square,
-        TuiButtonShape.Rounded,
-    ];
+    readonly shapeVariants = ['square', 'rounded'] as const;
 
-    shape: TuiButtonShape | null = this.shapeVariants[0];
+    shape = this.shapeVariants[0];
 
     icon: PolymorpheusContent = '';
 

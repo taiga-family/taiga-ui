@@ -18,7 +18,6 @@ import {
     TuiFocusVisibleService,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiLinkMode} from '@taiga-ui/core/enums';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiHorizontalDirection} from '@taiga-ui/core/types';
@@ -66,7 +65,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @Input()
     @HostBinding('attr.data-mode')
     @tuiDefaultProp()
-    mode: TuiLinkMode | null = null;
+    mode: 'positive' | 'negative' | null = null;
 
     @HostBinding('class._focus-visible')
     focusVisible = false;

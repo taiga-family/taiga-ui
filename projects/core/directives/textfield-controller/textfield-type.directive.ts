@@ -1,5 +1,5 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {TuiController, TuiInputType} from '@taiga-ui/cdk';
+import {TuiController, TuiInputTypeT} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_TYPE = new InjectionToken<TuiTextfieldTypeDirective>(
     'tuiTextfieldType',
@@ -17,7 +17,7 @@ export const TUI_TEXTFIELD_TYPE = new InjectionToken<TuiTextfieldTypeDirective>(
 })
 export class TuiTextfieldTypeDirective extends TuiController {
     @Input('tuiTextfieldType')
-    type: TuiInputType = TuiInputType.Text;
+    type: TuiInputTypeT = 'text';
 }
 
 export function typeDirectiveFactory(): TuiTextfieldTypeDirective {

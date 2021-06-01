@@ -14,7 +14,7 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {TuiTransactionAutofillName} from '@taiga-ui/cdk';
-import {TuiDecimal} from '@taiga-ui/core';
+import {TuiDecimalT} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -63,11 +63,7 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     autocomplete: TuiTransactionAutofillName | null = null;
 
-    readonly decimalVariants: ReadonlyArray<TuiDecimal> = [
-        TuiDecimal.NotZero,
-        TuiDecimal.Always,
-        TuiDecimal.Never,
-    ];
+    readonly decimalVariants: readonly TuiDecimalT[] = ['not-zero', 'always', 'never'];
 
     decimal = this.decimalVariants[0];
 

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {isNumber, tuiDefaultProp} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit/enums';
+import {TuiStatusT} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -33,7 +33,7 @@ export class TuiBadgeComponent {
     @Input()
     @HostBinding('attr.data-tui-host-status')
     @tuiDefaultProp()
-    status: TuiStatus = TuiStatus.Default;
+    status: TuiStatusT = 'default';
 
     @Input()
     @HostBinding('class._hoverable')

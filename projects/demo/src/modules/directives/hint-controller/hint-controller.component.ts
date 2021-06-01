@@ -5,7 +5,7 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component} from '@angular/core';
-import {TuiDirection, TuiHintMode} from '@taiga-ui/core';
+import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -23,11 +23,11 @@ export class ExampleTuiHintControllerComponent {
         HTML: example1Html,
     };
 
-    readonly modeVariants: ReadonlyArray<TuiHintMode> = [TuiHintMode.Error];
+    readonly modeVariants: readonly TuiHintModeT[] = ['error'];
 
     tuiHintContent = 'Example hint content';
 
-    tuiHintMode: TuiHintMode | null = null;
+    tuiHintMode: TuiHintModeT | null = null;
 
     readonly directionVariants: ReadonlyArray<TuiDirection> = [
         'left',

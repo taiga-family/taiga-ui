@@ -4,7 +4,7 @@ import {
     clamp,
     round,
     tuiDefaultProp,
-    TuiInputMode,
+    TuiInputModeT,
     TuiMapper,
 } from '@taiga-ui/cdk';
 import {
@@ -96,10 +96,8 @@ export abstract class AbstractTuiInputSlider<T>
         return this.size === 'l';
     }
 
-    get inputMode(): TuiInputMode {
-        return Number.isInteger(this.quantum)
-            ? TuiInputMode.Numeric
-            : TuiInputMode.Decimal;
+    get inputMode(): TuiInputModeT {
+        return Number.isInteger(this.quantum) ? 'numeric' : 'decimal';
     }
 
     get length(): number {

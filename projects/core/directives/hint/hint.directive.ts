@@ -17,7 +17,6 @@ import {
 } from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
 import {DESCRIBED_BY} from '@taiga-ui/core/directives/described-by';
-import {TuiHintMode} from '@taiga-ui/core/enums';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, of, Subject} from 'rxjs';
@@ -99,7 +98,7 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
                     );
                 }),
                 switchMap(visible =>
-                    visible && this.mode !== TuiHintMode.Overflow
+                    visible && this.mode !== 'overflow'
                         ? obscured$.pipe(
                               map(obscured => !obscured),
                               take(2),

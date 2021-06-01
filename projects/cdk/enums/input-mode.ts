@@ -1,3 +1,6 @@
+/**
+ * @deprecated use join type {@link TuiInputModeT}
+ */
 export const enum TuiInputMode {
     None = 'none',
     Text = 'text',

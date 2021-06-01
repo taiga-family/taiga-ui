@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts';
+import {TuiLineHandler} from '@taiga-ui/addon-charts';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -15,5 +15,5 @@ export class TuiAxesExample1 {
     readonly axisYLabels = ['', '25%', '50%', '75%', '100%'];
     readonly axisYSecondaryLabels = ['80 k', '100 k', '120 k'];
     readonly verticalLinesHandler: TuiLineHandler = (index, total) =>
-        index === total - 1 ? TuiLineType.None : TuiLineType.Dashed;
+        index === total - 1 ? 'none' : 'dashed';
 }

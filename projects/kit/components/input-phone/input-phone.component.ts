@@ -24,7 +24,7 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    TuiInputMode,
+    TuiInputModeT,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {
@@ -156,8 +156,8 @@ export class TuiInputPhoneComponent
             : this.search || '';
     }
 
-    get inputMode(): TuiInputMode {
-        return this.allowText ? TuiInputMode.Text : TuiInputMode.Numeric;
+    get inputMode(): TuiInputModeT {
+        return this.allowText ? 'text' : 'numeric';
     }
 
     get canOpen(): boolean {

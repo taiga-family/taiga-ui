@@ -16,7 +16,7 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component} from '@angular/core';
-import {TuiOrientation, TuiSizeL} from '@taiga-ui/core';
+import {TuiOrientationT, TuiSizeL} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -56,12 +56,9 @@ export class ExampleTuiGroupComponent {
     rounded = true;
     collapsed = false;
 
-    readonly orientationVariants: ReadonlyArray<TuiOrientation> = [
-        TuiOrientation.Horizontal,
-        TuiOrientation.Vertical,
-    ];
+    readonly orientationVariants: readonly TuiOrientationT[] = ['horizontal', 'vertical'];
 
-    orientation: TuiOrientation = this.orientationVariants[0];
+    orientation: TuiOrientationT = this.orientationVariants[0];
 
     readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
 

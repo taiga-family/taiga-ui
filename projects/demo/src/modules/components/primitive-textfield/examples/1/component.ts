@@ -15,7 +15,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiDirection,
-    TuiHintMode,
+    TuiHintModeT,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
@@ -48,7 +48,7 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
     hintDirection: TuiDirection = 'bottom-left';
 
     @Input()
-    hintMode: TuiHintMode | null = null;
+    hintMode: TuiHintModeT | null = null;
 
     @Input()
     maxLength: number | null = null;
