@@ -2,10 +2,11 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
+    HostListener,
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiHintMode} from '@taiga-ui/core/enums';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
@@ -51,6 +52,7 @@ export class TuiTooltipComponent {
     constructor(
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
     ) {
         mode$.pipe(takeUntil(destroy$)).subscribe(mode => {
             this.globalMode = mode;
@@ -61,5 +63,14 @@ export class TuiTooltipComponent {
     @HostBinding('attr.data-mode')
     get computedMode(): TuiHintMode | TuiBrightness | null {
         return this.mode || this.globalMode;
+    }
+
+    @HostListener('mousedown', ['$event'])
+    @HostListener('click', ['$event'])
+    stopOnMobile(event: MouseEvent) {
+        if (this.isMobile) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
     }
 }
