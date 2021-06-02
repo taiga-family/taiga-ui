@@ -24,6 +24,7 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TUI_STRICT_MATCHER,
     TuiBooleanHandler,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -32,10 +33,12 @@ import {
     TuiMapper,
     tuiPure,
     TuiStringHandler,
+    TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_ACCESSOR,
     TUI_DATA_LIST_HOST,
+    TUI_OPTION_CONTENT,
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TuiDataListAccessor,
     TuiDataListDirective,
@@ -49,6 +52,10 @@ import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
 import {iconBlank} from '@taiga-ui/kit/constants';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {TUI_SELECT_OPTION} from '../select-option';
+
+// TODO: remove in ivy compilation
+export const MULTISELECT_OPTION: any = TUI_SELECT_OPTION;
 
 @Component({
     selector: 'tui-multi-select',
@@ -63,6 +70,10 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
         {
             provide: TUI_DATA_LIST_HOST,
             useExisting: forwardRef(() => TuiMultiSelectComponent),
+        },
+        {
+            provide: TUI_OPTION_CONTENT,
+            useValue: MULTISELECT_OPTION,
         },
         FIXED_DROPDOWN_CONTROLLER_PROVIDER,
     ],
@@ -90,6 +101,10 @@ export class TuiMultiSelectComponent<T>
     @HostBinding('class._editable')
     @tuiDefaultProp()
     editable = true;
+
+    @Input()
+    @tuiDefaultProp()
+    strictMatcher: TuiStringMatcher<T> = TUI_STRICT_MATCHER;
 
     @Input()
     @tuiDefaultProp()
@@ -224,6 +239,20 @@ export class TuiMultiSelectComponent<T>
         this.updateSearch(null);
     }
 
+    checkOption(option: T) {
+        if (
+            !this.isStrictMatch(option) ||
+            this.value.find(item => this.identityMatcher(item, option))
+        ) {
+            return;
+        }
+
+        this.updateValue([...this.value, option]);
+        this.updateSearch(null);
+        this.setNativeValue('');
+        this.changeDetectorRef.detectChanges();
+    }
+
     onEnter(event: KeyboardEvent) {
         const {value} = this;
         const options = this.accessor ? this.accessor.getOptions() : [];
@@ -264,7 +293,9 @@ export class TuiMultiSelectComponent<T>
 
     onSearch(search: string | null) {
         this.open = true;
+
         this.updateSearch(search);
+        this.checkOptions();
     }
 
     onActiveZone(active: boolean) {
@@ -274,6 +305,14 @@ export class TuiMultiSelectComponent<T>
     setDisabledState() {
         super.setDisabledState();
         this.open = false;
+    }
+
+    private setNativeValue(value: string) {
+        if (!this.nativeFocusableElement) {
+            return;
+        }
+
+        this.nativeFocusableElement.value = value;
     }
 
     private updateSearch(search: string | null) {
@@ -289,6 +328,16 @@ export class TuiMultiSelectComponent<T>
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
         }
+    }
+
+    private isStrictMatch(item: T): boolean {
+        return this.strictMatcher(item, this.search || '', this.stringify);
+    }
+
+    private checkOptions() {
+        this.accessor?.getOptions().forEach(option => {
+            this.checkOption(option);
+        });
     }
 
     @tuiPure
