@@ -49,10 +49,10 @@ import {
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
+import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {iconBlank} from '@taiga-ui/kit/constants';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {TUI_SELECT_OPTION} from '../select-option';
 
 // TODO: remove in ivy compilation
 export const MULTISELECT_OPTION: any = TUI_SELECT_OPTION;
