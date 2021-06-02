@@ -196,6 +196,11 @@
     :host._has-tooltip & {
         max-width: ~'calc(100% - 52px)';
     }
+
+    :host._label-outside & {
+        overflow: initial;
+        height: auto;
+    }
 }
 
 .example-text {
@@ -207,6 +212,14 @@
     :host._has-tooltip._focused &,
     :host._has-tooltip._has-value & {
         max-width: ~'calc(100% - 52px)';
+    }
+
+    :host[data-tui-host-size='m'] & {
+        left: 12px;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        left: 16px;
     }
 }
 
