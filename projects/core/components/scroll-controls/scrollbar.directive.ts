@@ -8,7 +8,7 @@ import {
     Optional,
     Renderer2,
 } from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {
     POLLING_TIME,
     preventDefault,
@@ -19,8 +19,8 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiOrientation} from '@taiga-ui/core/enums';
 import {TUI_ELEMENT_REF, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {fromEvent, interval, merge, Observable} from 'rxjs';
-import {map, switchMap, takeUntil} from 'rxjs/operators';
+import {fromEvent, merge, Observable} from 'rxjs';
+import {map, switchMap, takeUntil, throttleTime} from 'rxjs/operators';
 
 const MIN_WIDTH = 24;
 
@@ -37,6 +37,7 @@ export class TuiScrollbarDirective {
         @Inject(NgZone) ngZone: NgZone,
         @Inject(Renderer2) renderer: Renderer2,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
         @Inject(TUI_ELEMENT_REF) private readonly wrapper: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TUI_SCROLL_REF)
@@ -105,7 +106,7 @@ export class TuiScrollbarDirective {
                 this.container ? this.container.nativeElement : this.windowRef,
                 'scroll',
             ),
-            interval(POLLING_TIME),
+            animationFrame$.pipe(throttleTime(POLLING_TIME)),
         )
             .pipe(takeUntil(destroy$), tuiZonefree(ngZone))
             .subscribe(() => {
