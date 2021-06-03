@@ -28,7 +28,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
-import {filter, mapTo} from 'rxjs/operators';
+import {filter, mapTo, takeUntil} from 'rxjs/operators';
 import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
 import {TAB_ACTIVE_CLASS} from '../tabs.const';
@@ -73,6 +73,8 @@ export class TuiTabsComponent implements AfterViewChecked {
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
+        @Inject(TuiDestroyService)
+        private readonly destroy$: TuiDestroyService,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiResizeService) resize$: Observable<void>,
         @Inject(TUI_IS_IOS) isIos: boolean,
@@ -116,6 +118,12 @@ export class TuiTabsComponent implements AfterViewChecked {
             this.renderer.addClass(activeElement, TAB_ACTIVE_CLASS);
             this.renderer.setAttribute(activeElement, 'tabIndex', '0');
         }
+
+        this.children.changes.pipe(takeUntil(this.destroy$)).subscribe(() => {
+            if (activeElement) {
+                this.onActivate(activeElement);
+            }
+        });
     }
 
     @HostListener(`${TUI_TAB_ACTIVATE}.stop`, ['$event.target'])
