@@ -164,8 +164,8 @@ export class TuiInputTimeComponent
     onValueChange(value: string) {
         this.open = !!this.items.length;
 
-        if (value && this.control) {
-            this.control.updateValueAndValidity();
+        if (this.control) {
+            this.control.updateValueAndValidity({emitEvent: false});
         }
 
         const match = this.getMatch(value);
