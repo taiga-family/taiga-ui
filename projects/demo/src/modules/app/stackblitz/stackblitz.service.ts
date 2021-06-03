@@ -27,7 +27,7 @@ const DEPS: Record<string, string> = {
     '@taiga-ui/addon-tablebars': '*',
     '@taiga-ui/addon-editor': '*',
     '@tinkoff/ng-dompurify': '*',
-    '@tinkoff/ng-polymorpheus': '*',
+    '@tinkoff/ng-polymorpheus': '3.1.8',
     '@ng-web-apis/common': '*',
     '@tinkoff/ng-event-plugins': '*',
     '@ng-web-apis/intersection-observer': '*',
