@@ -14,8 +14,4 @@ export class TuiInputDateExample1 {
     readonly testForm = new FormGroup({
         testValue: new FormControl(new TuiDay(2017, 0, 15)),
     });
-
-    ngOnInit() {
-        this.testForm.controls.testValue.valueChanges.subscribe(console.log);
-    }
 }
