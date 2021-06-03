@@ -38,20 +38,22 @@ const DEPS: Record<string, string> = {
     '@angular/cdk': '*',
 };
 
-const COMPONENT = `@Component({
-    selector: 'my-app',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,`;
+const COMPONENT_SELECTOR = `selector: 'my-app',`;
+const COMPONENT_TEMPLATE = `templateUrl: './app.component.html',`;
+const COMPONENT_STYLES = `styleUrls: ['./app.component.less'],`;
 
-const COMPONENT_NAME = `export class AppComponent {`;
+const COMPONENT_NAME = `
+})
+export class AppComponent {`;
 
 function prepareTs(content: string): string {
     console.log(content);
 
     return content
-        .replace(/@Component\({[A-z:'\n\s\-,.\/0-9})]+,$/gm, COMPONENT)
-        .replace(/^export class [\w ]+{/gm, COMPONENT_NAME);
+        .replace(/selector: \'.+,*$/gm, COMPONENT_SELECTOR)
+        .replace(/templateUrl: \'.+,*$/gm, COMPONENT_TEMPLATE)
+        .replace(/styleUrls: \['.+,*$/gm, COMPONENT_STYLES)
+        .replace(/^}\)\nexport class [\w ]+{/m, COMPONENT_NAME);
 }
 
 function prepareLess(content: string): string {

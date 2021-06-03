@@ -88,6 +88,8 @@ import {
     TuiMultiSelectModule,
     TuiPaginationModule,
     TuiPresentModule,
+    TuiProjectClassModule,
+    TuiFilterByInputPipeModule,
     TuiRadioBlockModule,
     TuiRadioLabeledModule,
     TuiRadioListModule,
@@ -105,6 +107,7 @@ import * as icons from '@taiga-ui/icons';
 
 import {
     TuiAxesModule,
+    TuiBarModule,
     TuiBarChartModule,
     TuiLineChartModule,
     TuiLineDaysChartModule,
@@ -115,6 +118,7 @@ import {
     TuiCardModule,
     TuiInputCardModule,
     TuiInputCVCModule,
+    TuiCurrencyPipeModule,
     TuiInputExpireModule,
     TuiMoneyModule,
 } from '@taiga-ui/addon-commerce';
@@ -263,6 +267,10 @@ import {RouterModule} from '@angular/router';
         TuiFormatPhonePipeModule,
         TuiMapperPipeModule,
         TuiTableModule,
+        TuiBarModule,
+        TuiCurrencyPipeModule,
+        TuiProjectClassModule,
+        TuiFilterByInputPipeModule,
         RouterModule.forRoot([])
     ],
     declarations: [AppComponent],
