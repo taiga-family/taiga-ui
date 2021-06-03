@@ -42,14 +42,23 @@ const COMPONENT = `@Component({
     selector: 'my-app',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class AppComponent `;
+    changeDetection: ChangeDetectionStrategy.OnPush,`;
+
+const COMPONENT_NAME = `export class AppComponent {`;
 
 function prepareTs(content: string): string {
     console.log(content);
 
-    return content.replace(/@Component\({[A-z:'\n\s\-,.\/0-9})]+/gm, COMPONENT);
+    return content
+        .replace(/@Component\({[A-z:'\n\s\-,.\/0-9})]+,$/gm, COMPONENT)
+        .replace(/^export class [\w ]+{/gm, COMPONENT_NAME);
+}
+
+function prepareLess(content: string): string {
+    return content.replace(
+        '~@taiga-ui/core/styles/taiga-ui-local',
+        '@taiga-ui/core/styles/taiga-ui-local.less',
+    );
 }
 
 @Injectable()
@@ -78,7 +87,7 @@ export class StackblitzService implements CodeEditor {
                 'src/app/app.module.ts': appModuleTs,
                 'src/app/app.component.ts': prepareTs(content.TypeScript || ''),
                 'src/app/app.component.html': `<tui-root>\n\n${content.HTML}\n</tui-root>`,
-                'src/app/app.component.less': content.LESS || '',
+                'src/app/app.component.less': prepareLess(content.LESS || ''),
             },
             tags: ['Angular', 'Taiga UI', 'Angular components', 'UI Kit'],
         });

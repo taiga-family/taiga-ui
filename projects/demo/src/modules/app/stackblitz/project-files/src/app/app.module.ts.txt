@@ -137,6 +137,7 @@ import {
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {AppComponent} from './app.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     imports: [
@@ -262,6 +263,7 @@ import {AppComponent} from './app.component';
         TuiFormatPhonePipeModule,
         TuiMapperPipeModule,
         TuiTableModule,
+        RouterModule.forRoot([])
     ],
     declarations: [AppComponent],
     bootstrap: [AppComponent],
