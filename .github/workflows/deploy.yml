@@ -3,7 +3,7 @@ name: Deploy demo to gh-pages
 on:
   push:
     tags:
-      - '*'
+      - 'v*.*.*'
 
 jobs:
   build-and-deploy:
