@@ -253,6 +253,10 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     clear() {
+        if (this.nativeFocusableElement) {
+            this.nativeFocusableElement.value = '';
+        }
+
         this.updateValue('');
     }
 

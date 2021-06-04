@@ -40,5 +40,6 @@ export class TuiValidatorDirective implements Validator, OnChanges, OnDestroy {
 
     ngOnDestroy() {
         this.tuiValidator = EMPTY_VALIDATOR;
+        this.onChange();
     }
 }

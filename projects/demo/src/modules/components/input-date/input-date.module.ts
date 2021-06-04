@@ -11,6 +11,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
+    TuiFieldErrorModule,
     TuiInputDateModule,
     TuiRadioListModule,
     TuiUnfinishedValidatorModule,
@@ -36,6 +37,7 @@ import {ExampleTuiInputDateComponent} from './input-date.component';
         TuiUnfinishedValidatorModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
+        TuiFieldErrorModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputDateComponent)),
     ],
     declarations: [

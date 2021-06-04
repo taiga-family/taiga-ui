@@ -226,8 +226,8 @@ export class TuiInputDateComponent
     }
 
     onValueChange(value: string) {
-        if (value && this.control) {
-            this.control.updateValueAndValidity();
+        if (this.control) {
+            this.control.updateValueAndValidity({emitEvent: false});
         }
 
         this.updateValue(

@@ -280,8 +280,8 @@ export class TuiInputDateRangeComponent
     }
 
     onValueChange(value: string) {
-        if (value && this.control) {
-            this.control.updateValueAndValidity();
+        if (this.control) {
+            this.control.updateValueAndValidity({emitEvent: false});
         }
 
         if (value.length !== this.rangeFiller.length) {
