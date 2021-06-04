@@ -2,12 +2,8 @@ name: Deploy demo to gh-pages
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'projects/**'
-      - 'angular.json'
-      - 'package.json'
+    tags:
+      - 'v*.*.*'
 
 jobs:
   build-and-deploy:
