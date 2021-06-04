@@ -131,7 +131,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 -   **addon-table:** fix not drawing default cells ([61cd807](https://github.com/TinkoffCreditSystems/taiga-ui/commit/61cd8071f8c631f737dd554cfff373da30ccf95a))
 -   **core:** `Loader` fix form freezing in Safari ([#266](https://github.com/TinkoffCreditSystems/taiga-ui/issues/266)) ([0c7330c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0c7330ce0e8d4a3d16dce06d8689f75ce3a96dff))
--   **kit:** `InoutNumber` fix all problems with caret in Safari ([b4930c9](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b4930c9d59b915b51a0c6aa705f2cff78b9170f3))
+-   **kit:** `InputNumber` fix all problems with caret in Safari ([b4930c9](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b4930c9d59b915b51a0c6aa705f2cff78b9170f3))
 -   **kit:** `InputCount` fix wrong button height for customized height ([#216](https://github.com/TinkoffCreditSystems/taiga-ui/issues/216)) ([4c39f7a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/4c39f7a27dd81c59352cdc3af46114d2ff3184cf))
 -   **kit:** fix loader in toggle size m ([#261](https://github.com/TinkoffCreditSystems/taiga-ui/issues/261)) ([a1eeaa4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a1eeaa417a2aa3b6b68ba32b524eed17d6f2f144))
 

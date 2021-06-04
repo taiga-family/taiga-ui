@@ -10,13 +10,14 @@ import {
     Self,
     ViewContainerRef,
 } from '@angular/core';
+import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {getClosestElement} from '@taiga-ui/cdk/utils/dom';
 import {setNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import {interval, race, timer} from 'rxjs';
-import {filter, map, take} from 'rxjs/operators';
+import {Observable, race, timer} from 'rxjs';
+import {filter, map, take, throttleTime} from 'rxjs/operators';
 
 const IOS_TIMEOUT = 1000;
 const NG_ANIMATION_SELECTOR = '.ng-animating';
@@ -42,6 +43,7 @@ export class TuiAutoFocusDirective implements AfterViewInit {
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ViewContainerRef)
         private readonly viewContainerRef: ViewContainerRef,
+        @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
     ) {}
 
     ngAfterViewInit() {
@@ -84,7 +86,8 @@ export class TuiAutoFocusDirective implements AfterViewInit {
 
         race<unknown>(
             timer(IOS_TIMEOUT),
-            interval(POLLING_TIME).pipe(
+            this.animationFrame$.pipe(
+                throttleTime(POLLING_TIME),
                 map(() => getClosestElement(element, NG_ANIMATION_SELECTOR)),
                 filter(element => !element),
                 take(1),

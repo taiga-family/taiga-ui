@@ -8,13 +8,14 @@ import {
     NgZone,
     Optional,
 } from '@angular/core';
+import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiZoneOptimized} from '@taiga-ui/cdk';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_ANIMATION_OPTIONS, TUI_MODE, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
-import {interval, Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {distinctUntilChanged, map, startWith, throttleTime} from 'rxjs/operators';
 
 // @dynamic
 @Component({
@@ -29,7 +30,8 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
     },
 })
 export class TuiScrollControlsComponent {
-    readonly refresh$ = interval(300).pipe(
+    readonly refresh$ = this.animationFrame$.pipe(
+        throttleTime(300),
         map(() => this.scrollbars),
         startWith([false, false]),
         distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
@@ -48,6 +50,7 @@ export class TuiScrollControlsComponent {
         @Optional()
         @Inject(TUI_SCROLL_REF)
         private readonly scrollRef: ElementRef<HTMLElement> | null,
+        @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
     ) {}
 

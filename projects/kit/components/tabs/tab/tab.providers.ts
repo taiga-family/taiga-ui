@@ -1,5 +1,7 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, InjectionToken, Provider} from '@angular/core';
+import {ElementRef, InjectionToken, Optional, Provider} from '@angular/core';
+import {RouterLinkActive} from '@angular/router';
+import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {
     identity,
     tuiCustomEvent,
@@ -21,7 +23,13 @@ export const TUI_TAB_PROVIDERS: Provider[] = [
     TuiRouterLinkActiveService,
     {
         provide: TUI_TAB_EVENT,
-        deps: [ElementRef, DOCUMENT, TuiRouterLinkActiveService],
+        deps: [
+            ElementRef,
+            DOCUMENT,
+            TuiRouterLinkActiveService,
+            MutationObserverService,
+            [new Optional(), RouterLinkActive],
+        ],
         useFactory: tabActiveFactory,
     },
     MODE_PROVIDER,
@@ -31,8 +39,15 @@ export function tabActiveFactory(
     {nativeElement}: ElementRef<HTMLElement>,
     documentRef: Document,
     routerLinkActiveService: Observable<boolean>,
+    mutationObserverService: MutationObserverService,
+    routerLinkActive: RouterLinkActive,
 ): Observable<unknown> {
+    const mutationObserver = routerLinkActive
+        ? mutationObserverService.pipe(filter(() => routerLinkActive.isActive))
+        : EMPTY;
+
     return merge(
+        mutationObserver,
         routerLinkActiveService.pipe(filter(identity)),
         nativeElement.matches('button') ? typedFromEvent(nativeElement, 'click') : EMPTY,
     ).pipe(
