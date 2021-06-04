@@ -16,9 +16,12 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiDropdownBoxComponent} from '@taiga-ui/core/components/dropdown-box';
 import {DEFAULT_MAX_HEIGHT, DEFAULT_MIN_HEIGHT} from '@taiga-ui/core/constants';
-import {TuiDropdownWidth} from '@taiga-ui/core/enums';
 import {TuiDropdown} from '@taiga-ui/core/interfaces';
-import {TuiHorizontalDirection, TuiVerticalDirection} from '@taiga-ui/core/types';
+import {
+    TuiDropdownWidthT,
+    TuiHorizontalDirection,
+    TuiVerticalDirection,
+} from '@taiga-ui/core/types';
 import {checkFixedPosition} from '@taiga-ui/core/utils/dom';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -57,7 +60,7 @@ export abstract class AbstractTuiDropdown
 
     @Input('tuiDropdownLimitWidth')
     @tuiDefaultProp()
-    limitMinWidth = TuiDropdownWidth.Min;
+    limitMinWidth: TuiDropdownWidthT = 'min';
 
     dropdownBoxRef: ComponentRef<TuiDropdownBoxComponent> | null = null;
 

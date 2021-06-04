@@ -1,8 +1,8 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSizeL} from '@taiga-ui/core';
+import {TuiStatusT} from '@taiga-ui/kit/types';
 import {configureTestSuite} from 'ng-bullet';
-import {TuiStatus} from '../../../enums/status';
 import {TuiBadgeComponent} from '../badge.component';
 import {TuiBadgeModule} from '../badge.module';
 
@@ -21,7 +21,7 @@ describe('Badge', () => {
 
         size: TuiSizeL = 'm';
         value: number | string;
-        status = TuiStatus.Default;
+        status: TuiStatusT = 'default';
     }
 
     let fixture: ComponentFixture<TestComponent>;

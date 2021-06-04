@@ -1,12 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CHAR_EN_DASH} from '@taiga-ui/cdk';
+import {TuiDecimalT} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
-import {TuiDecimal} from '../../../../core';
 import {TuiCurrency} from '../../../enums/currency';
 import {TuiCurrencyCode} from '../../../enums/currency-code';
-import {TuiMoneySign} from '../../../enums/money-sign';
+import {TuiMoneySignT} from '../../../types';
 import {TuiCurrencyVariants} from '../../../types/currency-variants';
 import {TuiMoneyComponent} from '../money.component';
 import {TuiMoneyModule} from '../money.module';
@@ -30,9 +30,9 @@ describe('Money', () => {
         component!: TuiMoneyComponent;
 
         value = 237;
-        decimal: TuiDecimal = TuiDecimal.NotZero;
+        decimal: TuiDecimalT = 'not-zero';
         currency: TuiCurrencyVariants = null;
-        sign: TuiMoneySign = TuiMoneySign.NegativeOnly;
+        sign: TuiMoneySignT = 'negative-only';
         colored = false;
         precision = 2;
     }
@@ -150,7 +150,7 @@ describe('Money', () => {
         });
 
         it('if ALWAYS is set, zero decimals are shown', () => {
-            testComponent.decimal = TuiDecimal.Always;
+            testComponent.decimal = 'always';
             fixture.detectChanges();
 
             const fraction = pageObject.getByAutomationId(
@@ -162,7 +162,7 @@ describe('Money', () => {
 
         it('if Never is set, non zero decimals are not shown', () => {
             testComponent.value = 237.123;
-            testComponent.decimal = TuiDecimal.Never;
+            testComponent.decimal = 'never';
             fixture.detectChanges();
 
             const fraction = pageObject.getByAutomationId(
@@ -202,7 +202,7 @@ describe('Money', () => {
         });
 
         it('if set to ALWAYS, plus is shown', () => {
-            testComponent.sign = TuiMoneySign.Always;
+            testComponent.sign = 'always';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
@@ -212,7 +212,7 @@ describe('Money', () => {
 
         it('if set to ALWAYS, minus is shown', () => {
             testComponent.value = -237;
-            testComponent.sign = TuiMoneySign.Always;
+            testComponent.sign = 'always';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
@@ -221,7 +221,7 @@ describe('Money', () => {
         });
 
         it('if set to Never, plus is not shown', () => {
-            testComponent.sign = TuiMoneySign.Never;
+            testComponent.sign = 'never';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
@@ -231,7 +231,7 @@ describe('Money', () => {
 
         it('if set to Never, minus is not shown', () => {
             testComponent.value = -237;
-            testComponent.sign = TuiMoneySign.Never;
+            testComponent.sign = 'never';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
@@ -240,7 +240,7 @@ describe('Money', () => {
         });
 
         it('if set to FORCE_NEGATIVE, minus is shown for positive numbers', () => {
-            testComponent.sign = TuiMoneySign.ForceNegative;
+            testComponent.sign = 'force-negative';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
@@ -250,7 +250,7 @@ describe('Money', () => {
 
         it('if set to FORCE_NEGATIVE, minus is shown for negative numbers', () => {
             testComponent.value = -237;
-            testComponent.sign = TuiMoneySign.ForceNegative;
+            testComponent.sign = 'force-negative';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
@@ -259,7 +259,7 @@ describe('Money', () => {
         });
 
         it('if set to FORCE_POSITIVE, plus is shown for positive numbers', () => {
-            testComponent.sign = TuiMoneySign.ForcePositive;
+            testComponent.sign = 'force-positive';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
@@ -269,7 +269,7 @@ describe('Money', () => {
 
         it('if set to FORCE_POSITIVE, plus is shown for negative numbers', () => {
             testComponent.value = -237;
-            testComponent.sign = TuiMoneySign.ForcePositive;
+            testComponent.sign = 'force-positive';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
@@ -316,7 +316,7 @@ describe('Money', () => {
         it('if set to true, FORCE_POSITIVE numbers are colored in green', () => {
             testComponent.colored = true;
             testComponent.value = -237;
-            testComponent.sign = TuiMoneySign.ForcePositive;
+            testComponent.sign = 'force-positive';
             fixture.detectChanges();
 
             const colored = !component.red && component.green;
@@ -326,7 +326,7 @@ describe('Money', () => {
 
         it('if set to true, FORCE_NEGATIVE numbers are colored in red', () => {
             testComponent.colored = true;
-            testComponent.sign = TuiMoneySign.ForceNegative;
+            testComponent.sign = 'force-negative';
             fixture.detectChanges();
 
             const colored = component.red && !component.green;

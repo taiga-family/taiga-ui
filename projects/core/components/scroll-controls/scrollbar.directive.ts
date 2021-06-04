@@ -17,8 +17,8 @@ import {
     tuiZonefree,
     typedFromEvent,
 } from '@taiga-ui/cdk';
-import {TuiOrientation} from '@taiga-ui/core/enums';
 import {TUI_ELEMENT_REF, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {TuiOrientationT} from '@taiga-ui/core/types';
 import {fromEvent, merge, Observable} from 'rxjs';
 import {map, switchMap, takeUntil, throttleTime} from 'rxjs/operators';
 
@@ -31,7 +31,7 @@ const MIN_WIDTH = 24;
 })
 export class TuiScrollbarDirective {
     @Input()
-    tuiScrollbar: TuiOrientation = TuiOrientation.Vertical;
+    tuiScrollbar: TuiOrientationT = 'vertical';
 
     constructor(
         @Inject(NgZone) ngZone: NgZone,
@@ -79,14 +79,14 @@ export class TuiScrollbarDirective {
 
                 if (!this.container) {
                     this.viewportScroller.scrollToPosition([
-                        this.tuiScrollbar === TuiOrientation.Vertical ? x : scrollLeft,
-                        this.tuiScrollbar === TuiOrientation.Vertical ? scrollTop : y,
+                        this.tuiScrollbar === 'vertical' ? x : scrollLeft,
+                        this.tuiScrollbar === 'vertical' ? scrollTop : y,
                     ]);
 
                     return;
                 }
 
-                if (this.tuiScrollbar === TuiOrientation.Vertical) {
+                if (this.tuiScrollbar === 'vertical') {
                     renderer.setProperty(
                         this.container.nativeElement,
                         'scrollTop',
@@ -110,7 +110,7 @@ export class TuiScrollbarDirective {
         )
             .pipe(takeUntil(destroy$), tuiZonefree(ngZone))
             .subscribe(() => {
-                if (this.tuiScrollbar === TuiOrientation.Vertical) {
+                if (this.tuiScrollbar === 'vertical') {
                     renderer.setStyle(nativeElement, 'top', `${this.thumb * 100}%`);
                     renderer.setStyle(nativeElement, 'height', `${this.view * 100}%`);
                 } else {
@@ -130,7 +130,7 @@ export class TuiScrollbarDirective {
             clientWidth,
         } = this.computedContainer;
 
-        return this.tuiScrollbar === TuiOrientation.Vertical
+        return this.tuiScrollbar === 'vertical'
             ? scrollTop / (scrollHeight - clientHeight)
             : scrollLeft / (scrollWidth - clientWidth);
     }
@@ -145,14 +145,14 @@ export class TuiScrollbarDirective {
 
         if (
             ((clientHeight * clientHeight) / scrollHeight > MIN_WIDTH &&
-                this.tuiScrollbar === TuiOrientation.Vertical) ||
+                this.tuiScrollbar === 'vertical') ||
             ((clientWidth * clientWidth) / scrollWidth > MIN_WIDTH &&
-                this.tuiScrollbar === TuiOrientation.Horizontal)
+                this.tuiScrollbar === 'horizontal')
         ) {
             return 0;
         }
 
-        return this.tuiScrollbar === TuiOrientation.Vertical
+        return this.tuiScrollbar === 'vertical'
             ? MIN_WIDTH / clientHeight
             : MIN_WIDTH / clientWidth;
     }
@@ -171,7 +171,7 @@ export class TuiScrollbarDirective {
             scrollWidth,
         } = this.computedContainer;
 
-        return this.tuiScrollbar === TuiOrientation.Vertical
+        return this.tuiScrollbar === 'vertical'
             ? Math.ceil((clientHeight / scrollHeight) * 100) / 100
             : Math.ceil((clientWidth / scrollWidth) * 100) / 100;
     }

@@ -1,3 +1,6 @@
+/**
+ * @deprecated use join type {@link TuiStatusT}
+ */
 export const enum TuiStatus {
     Default = 'default',
     Primary = 'primary',

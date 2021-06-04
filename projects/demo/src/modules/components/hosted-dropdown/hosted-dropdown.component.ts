@@ -19,7 +19,7 @@ import {Component, forwardRef} from '@angular/core';
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidth,
+    TuiDropdownWidthT,
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
@@ -81,13 +81,9 @@ export class ExampleTuiHostedDropdownComponent {
 
     direction: TuiVerticalDirection | null = this.directionVariants[0];
 
-    readonly limitWidthVariants: ReadonlyArray<TuiDropdownWidth> = [
-        TuiDropdownWidth.Auto,
-        TuiDropdownWidth.Fixed,
-        TuiDropdownWidth.Min,
-    ];
+    readonly limitWidthVariants: readonly TuiDropdownWidthT[] = ['auto', 'fixed', 'min'];
 
-    limitWidth: TuiDropdownWidth | null = this.limitWidthVariants[0];
+    limitWidth: TuiDropdownWidthT | null = this.limitWidthVariants[0];
 
     open = false;
 

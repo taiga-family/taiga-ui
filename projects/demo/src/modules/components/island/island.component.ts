@@ -15,7 +15,6 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component} from '@angular/core';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiTextAlign} from '@taiga-ui/kit';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -49,12 +48,9 @@ export class ExampleTuiIslandComponent {
 
     hoverable = false;
 
-    readonly textAlignVariants: ReadonlyArray<TuiTextAlign> = [
-        TuiTextAlign.Left,
-        TuiTextAlign.Center,
-    ];
+    readonly textAlignVariants = ['left', 'right', 'center'];
 
-    textAlign: TuiTextAlign = this.textAlignVariants[0];
+    textAlign = this.textAlignVariants[0];
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
 

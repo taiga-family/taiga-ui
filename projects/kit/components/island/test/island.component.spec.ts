@@ -3,7 +3,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSizeL} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
-import {TuiTextAlign} from '../../../enums/text-align';
 import {TuiIslandComponent} from '../island.component';
 import {TuiIslandModule} from '../island.module';
 
@@ -25,7 +24,7 @@ describe('Island', () => {
         component: TuiIslandComponent;
 
         hoverable = false;
-        textAlign: TuiTextAlign = TuiTextAlign.Left;
+        textAlign: 'left' | 'right' | 'center' = 'left';
         size: TuiSizeL = 'm';
     }
 
@@ -83,7 +82,7 @@ describe('Island', () => {
         });
 
         it('if you pass center, the text will be centered', () => {
-            testComponent.textAlign = TuiTextAlign.Center;
+            testComponent.textAlign = 'center';
             fixture.detectChanges();
 
             const textAlign = component.textAlignCenter;

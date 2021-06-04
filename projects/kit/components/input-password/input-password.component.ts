@@ -25,7 +25,7 @@ import {
     TUI_TEXTFIELD_SIZE,
     TuiBrightness,
     TuiHintControllerDirective,
-    TuiHintMode,
+    TuiHintModeT,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
@@ -61,7 +61,7 @@ export class TuiInputPasswordComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     readonly computedMode$: Observable<
-        TuiBrightness | TuiHintMode | null
+        TuiBrightness | TuiHintModeT | null
     > = combineLatest([
         this.mode$,
         this.hintController.change$.pipe(

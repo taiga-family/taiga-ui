@@ -16,7 +16,7 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    TuiInputMode,
+    TuiInputModeT,
     TuiMapper,
 } from '@taiga-ui/cdk';
 import {
@@ -25,7 +25,7 @@ import {
     maskedNumberStringToNumber,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
-    TuiDecimal,
+    TuiDecimalT,
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
@@ -58,7 +58,7 @@ export class TuiInputNumberComponent
 
     @Input()
     @tuiDefaultProp()
-    decimal: TuiDecimal = TuiDecimal.NotZero;
+    decimal: TuiDecimalT = 'not-zero';
 
     @Input()
     @tuiDefaultProp()
@@ -70,7 +70,7 @@ export class TuiInputNumberComponent
 
     mask: TuiMapper<boolean, TuiTextMaskOptions> = (
         allowNegative: boolean,
-        decimal: TuiDecimal,
+        decimal: TuiDecimalT,
         precision: number,
         nativeFocusableElement: HTMLInputElement | null,
     ) => ({
@@ -115,14 +115,14 @@ export class TuiInputNumberComponent
         return this.min < 0;
     }
 
-    get inputMode(): TuiInputMode {
-        return this.decimal === 'never' ? TuiInputMode.Numeric : TuiInputMode.Decimal;
+    get inputMode(): TuiInputModeT {
+        return this.decimal === 'never' ? 'numeric' : 'decimal';
     }
 
     get calculatedMaxLength(): number {
         return (
             DEFAULT_MAX_LENGTH +
-            (this.decimal !== TuiDecimal.Never && this.nativeValue.includes(',')
+            (this.decimal !== 'never' && this.nativeValue.includes(',')
                 ? this.precision + 1
                 : 0)
         );

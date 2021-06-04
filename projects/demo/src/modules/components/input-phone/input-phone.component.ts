@@ -17,7 +17,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidth,
+    TuiDropdownWidthT,
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
@@ -68,12 +68,9 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
 
     dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
 
-    readonly dropdownLimitWidthVariants: ReadonlyArray<TuiDropdownWidth> = [
-        TuiDropdownWidth.Fixed,
-        TuiDropdownWidth.Min,
-    ];
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = ['fixed', 'min'];
 
-    dropdownLimitWidth: TuiDropdownWidth | null = this.dropdownLimitWidthVariants[0];
+    dropdownLimitWidth: TuiDropdownWidthT | null = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection> = [
         'top',

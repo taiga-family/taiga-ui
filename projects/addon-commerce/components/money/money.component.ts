@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {TuiCurrency, TuiMoneySign} from '@taiga-ui/addon-commerce/enums';
-import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
+import {TuiCurrency} from '@taiga-ui/addon-commerce/enums';
+import {TuiCurrencyVariants, TuiMoneySignT} from '@taiga-ui/addon-commerce/types';
 import {CHAR_EN_DASH, tuiDefaultProp} from '@taiga-ui/cdk';
-import {formatNumber, TuiDecimal} from '@taiga-ui/core';
+import {formatNumber, TuiDecimalT} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-money',
@@ -17,7 +17,7 @@ export class TuiMoneyComponent {
 
     @Input()
     @tuiDefaultProp()
-    decimal: TuiDecimal = TuiDecimal.NotZero;
+    decimal: TuiDecimalT = 'not-zero';
 
     @Input()
     @tuiDefaultProp()
@@ -25,7 +25,7 @@ export class TuiMoneyComponent {
 
     @Input()
     @tuiDefaultProp()
-    sign: TuiMoneySign = TuiMoneySign.NegativeOnly;
+    sign: TuiMoneySignT = 'negative-only';
 
     @Input()
     @tuiDefaultProp()

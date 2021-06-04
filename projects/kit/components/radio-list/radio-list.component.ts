@@ -25,7 +25,7 @@ import {
     TuiIdentityMatcher,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiOrientation, TuiSizeL, TuiValueContentContext} from '@taiga-ui/core';
+import {TuiOrientationT, TuiSizeL, TuiValueContentContext} from '@taiga-ui/core';
 import {TuiRadioLabeledComponent} from '@taiga-ui/kit/components/radio-labeled';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -58,7 +58,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     @Input()
     @HostBinding('attr.data-tui-host-orientation')
     @tuiDefaultProp()
-    orientation: TuiOrientation = TuiOrientation.Vertical;
+    orientation: TuiOrientationT = 'vertical';
 
     // @bad TODO: Remove & { index: number }
     @Input()

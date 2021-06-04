@@ -1,15 +1,11 @@
 import {Optional, Provider} from '@angular/core';
-import {
-    TUI_DROPDOWN_CONTROLLER,
-    TuiDropdownControllerDirective,
-    TuiDropdownWidth,
-} from '@taiga-ui/core';
+import {TUI_DROPDOWN_CONTROLLER, TuiDropdownControllerDirective} from '@taiga-ui/core';
 
 export function fixedDropdownControllerFactory(
     directive: TuiDropdownControllerDirective | null,
 ): TuiDropdownControllerDirective {
     directive = directive || new TuiDropdownControllerDirective();
-    directive.limitWidth = TuiDropdownWidth.Fixed;
+    directive.limitWidth = 'fixed';
 
     return directive;
 }

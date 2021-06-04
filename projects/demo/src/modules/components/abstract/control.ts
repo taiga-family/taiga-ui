@@ -1,11 +1,11 @@
 import {AbstractControl} from '@angular/forms';
-import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
+import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
     TuiDirection,
-    TuiDropdownWidth,
-    TuiHintMode,
+    TuiDropdownWidthT,
+    TuiHintModeT,
     TuiHorizontalDirection,
     TuiSizeL,
     TuiSizeS,
@@ -40,17 +40,14 @@ export abstract class AbstractExampleTuiControl extends AbstractExampleTuiIntera
         'top-right',
     ];
 
-    readonly hintModeVariants: ReadonlyArray<TuiHintMode> = [
-        TuiHintMode.Error,
-        TuiHintMode.OnDark,
-    ];
+    readonly hintModeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
 
-    readonly typeVariants: ReadonlyArray<TuiInputType> = [
-        TuiInputType.Text,
-        TuiInputType.Email,
-        TuiInputType.Password,
-        TuiInputType.Tel,
-        TuiInputType.Url,
+    readonly typeVariants: readonly TuiInputTypeT[] = [
+        'text',
+        'email',
+        'password',
+        'tel',
+        'url',
     ];
 
     readonly maxLengthVariants: ReadonlyArray<possibleGenericType> = [10];
@@ -72,10 +69,7 @@ export abstract class AbstractExampleTuiControl extends AbstractExampleTuiIntera
         'country-name',
     ];
 
-    readonly inputModeVariants: ReadonlyArray<TuiInputMode> = [
-        TuiInputMode.Text,
-        TuiInputMode.Numeric,
-    ];
+    readonly inputModeVariants: readonly TuiInputModeT[] = ['text', 'numeric'];
 
     readonly customContentVariants = ['Bell'];
 
@@ -87,7 +81,7 @@ export abstract class AbstractExampleTuiControl extends AbstractExampleTuiIntera
 
     maxLength: possibleGenericType | null = null;
 
-    type: TuiInputType = this.typeVariants[0];
+    type: TuiInputTypeT = this.typeVariants[0];
 
     cleaner = false;
 
@@ -107,7 +101,7 @@ export abstract class AbstractExampleTuiControl extends AbstractExampleTuiIntera
 
     hintDirection: TuiDirection = this.hintDirectionVariants[2];
 
-    hintMode: TuiHintMode | null = null;
+    hintMode: TuiHintModeT | null = null;
 
     readonly dropdownAlignVariants: ReadonlyArray<TuiHorizontalDirection> = [
         'left',
@@ -116,12 +110,9 @@ export abstract class AbstractExampleTuiControl extends AbstractExampleTuiIntera
 
     dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
 
-    readonly dropdownLimitWidthVariants: ReadonlyArray<TuiDropdownWidth> = [
-        TuiDropdownWidth.Fixed,
-        TuiDropdownWidth.Min,
-    ];
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = ['fixed', 'min'];
 
-    dropdownLimitWidth: TuiDropdownWidth | null = this.dropdownLimitWidthVariants[0];
+    dropdownLimitWidth: TuiDropdownWidthT | null = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection> = [
         'top',

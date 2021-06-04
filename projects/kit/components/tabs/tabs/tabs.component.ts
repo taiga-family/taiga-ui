@@ -107,11 +107,9 @@ export class TuiTabsComponent implements AfterViewChecked {
     }
 
     get tabs(): ReadonlyArray<HTMLElement> {
-        const tabs = Array.from(
-            this.elementRef.nativeElement.querySelectorAll('[tuiTab]'),
+        return Array.from(
+            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[tuiTab]'),
         );
-
-        return tabs as Array<HTMLElement>;
     }
 
     get activeElement(): HTMLElement | null {

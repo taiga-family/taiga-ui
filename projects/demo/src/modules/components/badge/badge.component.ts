@@ -17,7 +17,7 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component} from '@angular/core';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit';
+import {TuiStatusT} from '@taiga-ui/kit';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -52,13 +52,13 @@ export class ExampleTuiBadgeComponent {
         HTML: example4Html,
     };
 
-    readonly statusVariants: ReadonlyArray<TuiStatus> = [
-        TuiStatus.Default,
-        TuiStatus.Primary,
-        TuiStatus.Success,
-        TuiStatus.Error,
-        TuiStatus.Warning,
-        TuiStatus.Custom,
+    readonly statusVariants: readonly TuiStatusT[] = [
+        'default',
+        'primary',
+        'custom',
+        'success',
+        'error',
+        'warning',
     ];
 
     status = this.statusVariants[0];

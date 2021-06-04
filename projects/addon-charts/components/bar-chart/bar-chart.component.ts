@@ -9,7 +9,7 @@ import {
     TuiMapper,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiHintMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiHintModeT, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
@@ -53,7 +53,7 @@ export class TuiBarChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    hintMode: TuiHintMode | null = null;
+    hintMode: TuiHintModeT | null = null;
 
     private readonly autoIdString: string;
 

@@ -23,7 +23,7 @@ import {
 import {
     TUI_TEXTFIELD_SIZE,
     TuiDirection,
-    TuiHintMode,
+    TuiHintModeT,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
@@ -60,7 +60,7 @@ export class TuiInputCopyComponent
 
     @Input()
     @tuiDefaultProp()
-    messageMode: TuiHintMode | null = null;
+    messageMode: TuiHintModeT | null = null;
 
     private readonly copy$ = new Subject<void>();
 

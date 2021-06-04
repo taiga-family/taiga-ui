@@ -5,10 +5,10 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component, forwardRef, ViewChild} from '@angular/core';
-import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
+import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
 import {
     TuiDirection,
-    TuiHintMode,
+    TuiHintModeT,
     TuiHorizontalDirection,
     TuiSizeL,
     TuiSizeS,
@@ -61,15 +61,15 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
 
-    readonly typeVariants: ReadonlyArray<TuiInputType> = [
-        TuiInputType.Text,
-        TuiInputType.Email,
-        TuiInputType.Password,
-        TuiInputType.Tel,
-        TuiInputType.Url,
+    readonly typeVariants: readonly TuiInputTypeT[] = [
+        'text',
+        'email',
+        'password',
+        'tel',
+        'url',
     ];
 
-    type: TuiInputType = this.typeVariants[0];
+    type = 'text';
 
     cleaner = false;
 
@@ -102,10 +102,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     autocomplete: TuiAutofillFieldName | null = null;
 
-    readonly inputModeVariants: ReadonlyArray<TuiInputMode> = [
-        TuiInputMode.Text,
-        TuiInputMode.Numeric,
-    ];
+    readonly inputModeVariants: readonly TuiInputModeT[] = ['text', 'numeric'];
 
     inputMode = this.inputModeVariants[0];
 
@@ -140,10 +137,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         'top-right',
     ];
 
-    readonly hintModeVariants: ReadonlyArray<TuiHintMode> = [
-        TuiHintMode.Error,
-        TuiHintMode.OnDark,
-    ];
+    readonly hintModeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
 
     invalid = false;
 
@@ -151,7 +145,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     hintDirection: TuiDirection = this.hintDirectionVariants[2];
 
-    hintMode: TuiHintMode | null = null;
+    hintMode: TuiHintModeT | null = null;
 
     @ViewChild('interactiveContent')
     private readonly interactiveIcon?: PolymorpheusTemplate<{}>;

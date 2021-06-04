@@ -18,14 +18,14 @@ import {
     px,
     setNativeFocused,
     TuiDestroyService,
-    TuiOverscrollMode,
+    TuiOverscrollModeT,
     TuiPortalHostComponent,
     tuiPure,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {DEFAULT_MARGIN, DEFAULT_MAX_WIDTH} from '@taiga-ui/core/constants';
-import {TuiDropdownAnimation, TuiDropdownWidth} from '@taiga-ui/core/enums';
+import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
 import {TuiAnimationOptions, TuiDropdown} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATION_OPTIONS, TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
 import {TuiHorizontalDirection, TuiVerticalDirection} from '@taiga-ui/core/types';
@@ -92,8 +92,8 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             });
     }
 
-    get overscroll(): TuiOverscrollMode {
-        return this.inModal ? TuiOverscrollMode.All : TuiOverscrollMode.Scroll;
+    get overscroll(): TuiOverscrollModeT {
+        return this.inModal ? 'all' : 'scroll';
     }
 
     ngAfterViewChecked() {
@@ -331,15 +331,11 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
      */
     private calculateWidth(style: CSSStyleDeclaration, directiveRect: ClientRect) {
         style.width =
-            this.directive.limitMinWidth === TuiDropdownWidth.Fixed &&
-            !this.directive.sided
+            this.directive.limitMinWidth === 'fixed' && !this.directive.sided
                 ? px(directiveRect.width)
                 : '';
 
-        if (
-            this.directive.limitMinWidth === TuiDropdownWidth.Min &&
-            !this.directive.sided
-        ) {
+        if (this.directive.limitMinWidth === 'min' && !this.directive.sided) {
             style.minWidth = px(directiveRect.width);
             style.maxWidth = px(DEFAULT_MAX_WIDTH);
 

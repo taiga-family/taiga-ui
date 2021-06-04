@@ -35,7 +35,6 @@ import {
     TUI_ELEMENT_REF,
     TuiDropdown,
 } from '@taiga-ui/core';
-import {TuiDropdownPosition} from '@taiga-ui/kit/enums';
 import {getWordRange} from '@taiga-ui/kit/utils/dom';
 import {merge} from 'rxjs';
 import {map, switchMapTo, takeUntil} from 'rxjs/operators';
@@ -70,7 +69,7 @@ export class TuiDropdownSelectionDirective
     }
 
     @Input('tuiDropdownSelectionPosition')
-    position = TuiDropdownPosition.Selection;
+    position: 'selection' | 'word' | 'tag' = 'selection';
 
     private range: Range;
 
@@ -196,7 +195,7 @@ export class TuiDropdownSelectionDirective
      */
     private get rangeRect(): ClientRect {
         switch (this.position) {
-            case TuiDropdownPosition.Tag:
+            case 'tag':
                 const {commonAncestorContainer} = this.range;
                 const element =
                     commonAncestorContainer.nodeType === Node.ELEMENT_NODE
@@ -204,7 +203,7 @@ export class TuiDropdownSelectionDirective
                         : commonAncestorContainer.parentNode;
 
                 return (element as Element).getBoundingClientRect();
-            case TuiDropdownPosition.Word:
+            case 'word':
                 return getWordRange(this.range).getBoundingClientRect();
             default:
                 return this.range.getBoundingClientRect();

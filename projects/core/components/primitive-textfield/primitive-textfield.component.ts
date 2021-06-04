@@ -17,7 +17,6 @@ import {
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    TuiInputMode,
 } from '@taiga-ui/cdk';
 import {
     TUI_HINT_WATCHED_CONTROLLER,
@@ -213,8 +212,8 @@ export class TuiPrimitiveTextfieldComponent
     get rightAligned(): boolean {
         return (
             this.appearance === TuiAppearance.Table &&
-            (this.controller.inputMode === TuiInputMode.Numeric ||
-                this.controller.inputMode === TuiInputMode.Decimal)
+            (this.controller.inputMode === 'numeric' ||
+                this.controller.inputMode === 'decimal')
         );
     }
 

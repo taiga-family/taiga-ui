@@ -1,6 +1,9 @@
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiDropdownWidth} from '@taiga-ui/core/enums';
-import {TuiHorizontalDirection, TuiVerticalDirection} from '@taiga-ui/core/types';
+import {
+    TuiDropdownWidthT,
+    TuiHorizontalDirection,
+    TuiVerticalDirection,
+} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -13,7 +16,7 @@ export interface TuiDropdown {
     minHeight: number;
     maxHeight: number;
     direction?: TuiVerticalDirection | null;
-    limitMinWidth?: TuiDropdownWidth;
+    limitMinWidth?: TuiDropdownWidthT;
     sided?: boolean;
     fixed?: boolean;
     activeZone?: TuiActiveZoneDirective | null;

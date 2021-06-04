@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {TuiOverscrollMode} from '@taiga-ui/cdk';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -10,8 +9,4 @@ import {encapsulation} from '../../../../../view-encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiOverscrollExample3 {
-    get overscroll(): TuiOverscrollMode {
-        return TuiOverscrollMode.All;
-    }
-}
+export class TuiOverscrollExample3 {}

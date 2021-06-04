@@ -17,7 +17,7 @@ import {
     ALWAYS_TRUE_HANDLER,
     TuiBooleanHandler,
 } from '@taiga-ui/cdk';
-import {TuiOrientation, TuiSizeL} from '@taiga-ui/core';
+import {TuiOrientationT, TuiSizeL} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -52,11 +52,8 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiInteractive 
         LESS: example2Less,
     };
 
-    readonly orientationVariants: ReadonlyArray<TuiOrientation> = [
-        TuiOrientation.Vertical,
-        TuiOrientation.Horizontal,
-    ];
-    orientation: TuiOrientation = this.orientationVariants[0];
+    readonly orientationVariants: readonly TuiOrientationT[] = ['vertical', 'horizontal'];
+    orientation: TuiOrientationT = this.orientationVariants[0];
 
     readonly items = [
         {

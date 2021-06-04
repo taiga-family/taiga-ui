@@ -1,8 +1,7 @@
 import {Directive, ElementRef, HostBinding, Inject, Input, NgZone} from '@angular/core';
-import {TuiOverscrollMode} from '@taiga-ui/cdk/enums';
 import {tuiZoneOptimized, typedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {TuiEventWith} from '@taiga-ui/cdk/types';
+import {TuiEventWith, TuiOverscrollModeT} from '@taiga-ui/cdk/types';
 import {canScroll, getScrollParent} from '@taiga-ui/cdk/utils/dom';
 import {Observable} from 'rxjs';
 import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
@@ -17,7 +16,7 @@ import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
 })
 export class TuiOverscrollDirective {
     @Input('tuiOverscroll')
-    mode = TuiOverscrollMode.Scroll;
+    mode: TuiOverscrollModeT = 'scroll';
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
@@ -78,7 +77,7 @@ export class TuiOverscrollDirective {
     }
 
     get enabled(): boolean {
-        return this.mode !== TuiOverscrollMode.None;
+        return this.mode !== 'none';
     }
 
     @HostBinding('style.overscrollBehavior')
@@ -99,7 +98,7 @@ export class TuiOverscrollDirective {
 
         // This is all what's needed in Chrome/Firefox thanks to CSS overscroll-behavior
         if (
-            this.mode === TuiOverscrollMode.All &&
+            this.mode === 'all' &&
             ((vertical && !currentTarget.contains(getScrollParent(target))) ||
                 (!vertical && !currentTarget.contains(getScrollParent(target, false))))
         ) {
