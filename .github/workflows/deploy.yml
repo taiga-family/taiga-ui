@@ -2,8 +2,8 @@ name: Deploy demo to gh-pages
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - 'release/**'
 
 jobs:
   build-and-deploy:
