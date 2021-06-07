@@ -37,6 +37,11 @@ import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
 import {TAB_ACTIVE_CLASS} from '../tabs.const';
 
+// TODO: remove in ivy compilation
+export const OBSERVER_INIT = {
+    childList: true,
+};
+
 // @dynamic
 @Component({
     selector: 'tui-tabs, nav[tuiTabs]',
@@ -52,9 +57,7 @@ import {TAB_ACTIVE_CLASS} from '../tabs.const';
         MutationObserverService,
         {
             provide: MUTATION_OBSERVER_INIT,
-            useValue: {
-                childList: true,
-            },
+            useValue: OBSERVER_INIT,
         },
     ],
 })
