@@ -15,7 +15,7 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component, forwardRef} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -66,7 +66,7 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
 
     expandable = false;
 
-    control = new FormControl('aaa', Validators.maxLength(10));
+    control = new FormControl();
 
     readonly sizeVariants: ReadonlyArray<TuiSizeM | TuiSizeL> = ['m', 'l'];
 

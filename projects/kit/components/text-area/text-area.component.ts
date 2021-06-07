@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    forwardRef,
     HostBinding,
     Inject,
     Input,
@@ -16,24 +15,23 @@ import {
     AbstractTuiControl,
     isNativeFocused,
     setNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_IOS,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {
-    HINT_CONTROLLER_PROVIDER,
-    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_HINT_WATCHED_CONTROLLER,
+    TUI_MODE,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiBrightness,
     TuiHintControllerDirective,
-    TuiModeDirective,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldController,
 } from '@taiga-ui/core';
+import {Observable} from 'rxjs';
+import {TUI_TEXT_AREA_PROVIDERS} from './text-area.providers';
 
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;
@@ -44,14 +42,11 @@ export const LINE_HEIGHT_L = 24;
     templateUrl: './text-area.template.html',
     styleUrls: ['./text-area.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiTextAreaComponent),
-        },
-        TEXTFIELD_CONTROLLER_PROVIDER,
-        HINT_CONTROLLER_PROVIDER,
-    ],
+    providers: TUI_TEXT_AREA_PROVIDERS,
+    host: {
+        '($.data-mode.attr)': 'mode$',
+        '[class._ios]': 'isIOS',
+    },
 })
 export class TuiTextAreaComponent
     extends AbstractTuiControl<string>
@@ -65,9 +60,6 @@ export class TuiTextAreaComponent
     @tuiDefaultProp()
     expandable = false;
 
-    @HostBinding('class._ios')
-    readonly isIOS: boolean;
-
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLTextAreaElement>;
 
@@ -78,18 +70,14 @@ export class TuiTextAreaComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
-        @Inject(TUI_IS_IOS) isIOS: boolean,
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_IS_IOS) readonly isIOS: boolean,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
     ) {
         super(control, changeDetectorRef);
-
-        this.isIOS = isIOS;
     }
 
     @HostBinding('class._label-outside')
@@ -142,11 +130,6 @@ export class TuiTextAreaComponent
 
     get computeMaxHeight(): number | null {
         return this.expandable ? this.rows * this.lineHeight : null;
-    }
-
-    @HostBinding('attr.data-mode')
-    get hostMode(): TuiBrightness | null {
-        return this.modeDirective && this.modeDirective.mode;
     }
 
     get placeholderRaised(): boolean {
