@@ -1259,14 +1259,6 @@ export const ROUTES = [
             title: 'AutoFocus',
         },
     },
-    {
-        path: 'directives/color',
-        loadChildren: () =>
-            import(`../directives/color/color.module`).then(m => m.ExampleTuiColorModule),
-        data: {
-            title: 'Color',
-        },
-    },
     // PIPES
     {
         path: 'pipes/currency',

@@ -28,7 +28,7 @@
             tuiHintDirection="top-right"
             [attr.transform]="getTransform(index)"
             [attr.d]="segment"
-            [tuiColor]="colorHandler(index)"
+            [style.color]="getColor(index)"
             [tuiPointerHint]="getHint(hint)"
             (tuiHoveredChange)="onHovered($event, index)"
         >

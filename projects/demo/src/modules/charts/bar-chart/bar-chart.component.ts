@@ -8,16 +8,9 @@ import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 import {Component} from '@angular/core';
-import {TUI_DEFAULT_COLOR_HANDLER, TuiColorHandler} from '@taiga-ui/addon-charts';
 import {getCurrencySymbol, TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {
-    formatNumber,
-    TuiBaseColor,
-    TuiHintModeT,
-    TuiSizeL,
-    TuiSizeS,
-} from '@taiga-ui/core';
+import {formatNumber, TuiHintModeT, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -36,8 +29,6 @@ const MONTHS: readonly string[] = [
     'Nov',
     'Dec',
 ];
-const zebraHandler: TuiColorHandler = index =>
-    index % 2 ? TuiBaseColor.Success : TuiBaseColor.Error;
 
 @Component({
     selector: 'example-tui-bar-chart',
@@ -82,13 +73,6 @@ export class ExampleTuiBarChartComponent {
     ];
 
     value = this.valueVariants[0];
-
-    readonly colorHandlerVariants: ReadonlyArray<TuiColorHandler> = [
-        TUI_DEFAULT_COLOR_HANDLER,
-        zebraHandler,
-    ];
-
-    colorHandler = this.colorHandlerVariants[0];
 
     readonly contentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContextWithImplicit<number>>

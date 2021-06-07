@@ -73,6 +73,7 @@
                     [precision]="precision"
                     [readOnly]="readOnly"
                     [decimal]="decimal"
+                    [postfix]="postfix"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintMode]="hintMode"
@@ -109,6 +110,16 @@
                 [(documentationPropertyValue)]="max"
             >
                 Max value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="postfix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="postfixVariants"
+                [(documentationPropertyValue)]="postfix"
+            >
+                A postfix symbol, like currency
             </ng-template>
             <ng-template
                 i18n

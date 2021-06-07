@@ -1,13 +1,15 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {DomSanitizer, SafeValue} from '@angular/platform-browser';
 import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
 import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
 import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {colorFallback, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 const PERCENT = 100;
 const EMPTY_ARRAY: readonly number[] = [];
 const FILLER_ARRAY: readonly number[] = [1];
 
+// TODO: Remove sanitizer when Angular version is bumped
 @Component({
     selector: 'tui-bar-set',
     templateUrl: './bar-set.template.html',
@@ -31,6 +33,8 @@ export class TuiBarSetComponent {
     @tuiDefaultProp()
     collapsed = false;
 
+    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
+
     get computedValue(): readonly number[] {
         return this.collapsed ? FILLER_ARRAY : this.value;
     }
@@ -45,6 +49,12 @@ export class TuiBarSetComponent {
 
     getHeight(value: number): number {
         return Math.abs((PERCENT * value) / this.getLargest(this.computedValue));
+    }
+
+    getColor(index: number): SafeValue {
+        return this.sanitizer.bypassSecurityTrustStyle(
+            `var(--tui-chart-${index}, ${colorFallback(this.colorHandler(index))})`,
+        );
     }
 
     @tuiPure
