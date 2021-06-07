@@ -10,13 +10,9 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component} from '@angular/core';
-import {TUI_DEFAULT_COLOR_HANDLER, TuiColorHandler} from '@taiga-ui/addon-charts';
-import {TuiBaseColor, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
-
-const zebraHandler: TuiColorHandler = index =>
-    index % 2 ? TuiBaseColor.Success : TuiBaseColor.Error;
 
 @Component({
     selector: 'example-tui-bar',
@@ -50,11 +46,4 @@ export class ExampleTuiBarComponent {
     ];
 
     value = this.valueVariants[0];
-
-    readonly colorHandlerVariants: ReadonlyArray<TuiColorHandler> = [
-        TUI_DEFAULT_COLOR_HANDLER,
-        zebraHandler,
-    ];
-
-    colorHandler = this.colorHandlerVariants[0];
 }

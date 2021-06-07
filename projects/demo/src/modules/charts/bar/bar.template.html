@@ -23,24 +23,9 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-bar
-                class="bar"
-                [size]="size"
-                [value]="value"
-                [colorHandler]="colorHandler"
-            ></tui-bar>
+            <tui-bar class="bar" [size]="size" [value]="value"></tui-bar>
         </tui-doc-demo>
         <tui-doc-documentation>
-            <ng-template
-                i18n
-                documentationPropertyName="colorHandler"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiColorHandler"
-                [documentationPropertyValues]="colorHandlerVariants"
-                [(documentationPropertyValue)]="colorHandler"
-            >
-                A function that gets segment index and returns its color
-            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="size"

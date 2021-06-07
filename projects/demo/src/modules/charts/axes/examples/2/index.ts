@@ -1,11 +1,6 @@
 import {Component} from '@angular/core';
-import {
-    TUI_ALWAYS_DASHED,
-    TUI_ALWAYS_NONE,
-    TUI_DEFAULT_COLOR_HANDLER,
-} from '@taiga-ui/addon-charts';
+import {TUI_ALWAYS_DASHED, TUI_ALWAYS_NONE} from '@taiga-ui/addon-charts';
 import {ceil, tuiPure} from '@taiga-ui/cdk';
-import {TuiColor} from '@taiga-ui/core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -48,8 +43,8 @@ export class TuiAxesExample2 {
         return this.setNames[index];
     }
 
-    getBackground(index: number): TuiColor | string | null {
-        return TUI_DEFAULT_COLOR_HANDLER(index);
+    getBackground(index: number): string {
+        return `var(--tui-chart-${index})`;
     }
 
     @tuiPure

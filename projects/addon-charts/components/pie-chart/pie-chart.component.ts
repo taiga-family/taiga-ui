@@ -8,6 +8,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {DomSanitizer, SafeValue} from '@angular/platform-browser';
 import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
 import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
 import {describeSector} from '@taiga-ui/addon-charts/utils';
@@ -18,7 +19,7 @@ import {
     TuiIdService,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {colorFallback, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const RADII = {
@@ -36,6 +37,7 @@ const TRANSFORM = {
     xl: 1.08,
 };
 
+// TODO: Remove sanitizer when Angular version is bumped
 @Component({
     selector: 'tui-pie-chart',
     templateUrl: './pie-chart.template.html',
@@ -76,6 +78,7 @@ export class TuiPieChartComponent {
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
         @Inject(Location) private readonly locationRef: Location,
+        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
     ) {
         this.autoIdString = idService.generate();
     }
@@ -145,5 +148,11 @@ export class TuiPieChartComponent {
 
         this.activeItemIndex = index;
         this.activeItemIndexChange.next(index);
+    }
+
+    getColor(index: number): SafeValue {
+        return this.sanitizer.bypassSecurityTrustStyle(
+            `var(--tui-chart-${index}, ${colorFallback(this.colorHandler(index))})`,
+        );
     }
 }

@@ -832,12 +832,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
-                title: 'Color',
-                keywords: 'цвет, текст, фон',
-                route: '/directives/color',
-            },
-            {
-                section: $localize`Tools`,
                 title: 'DescribedBy',
                 keywords: '',
                 route: '/directives/described-by',

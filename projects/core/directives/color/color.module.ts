@@ -1,7 +1,9 @@
 import {NgModule} from '@angular/core';
 import {TuiColorDirective} from './color.directive';
 
-// TODO: Consider removing
+/**
+ * @deprecated use CSS custom properties
+ */
 @NgModule({
     declarations: [TuiColorDirective],
     exports: [TuiColorDirective],

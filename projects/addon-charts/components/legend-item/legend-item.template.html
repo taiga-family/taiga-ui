@@ -6,7 +6,7 @@
     class="button"
     [pseudoHovered]="active || null"
 >
-    <span class="dot" [tuiBackground]="color"></span>
+    <span class="dot" [style.background]="computedColor"></span>
     <span class="text">{{text}}</span>
     <ng-content></ng-content>
 </button>

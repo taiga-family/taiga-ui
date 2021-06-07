@@ -1,3 +1,0 @@
-<p tuiColor="primary" tuiBackground="support-feijoa">
-    Text
-</p>

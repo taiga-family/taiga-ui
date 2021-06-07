@@ -15,7 +15,6 @@ import {
 import {
     TuiButtonModule,
     TuiCalendarModule,
-    TuiColorModule,
     TuiDataListModule,
     TuiDialogModule,
     TuiDropdownControllerModule,
@@ -240,7 +239,6 @@ import {RouterModule} from '@angular/router';
         TuiStepperModule,
         TuiTabsModule,
         TuiAutoFocusModule,
-        TuiColorModule,
         TuiDropdownModule,
         TuiDropdownSelectionModule,
         TuiElasticStickyModule,

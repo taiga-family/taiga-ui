@@ -1,5 +1,6 @@
 import {TuiBaseColor, TuiSupportColor} from '@taiga-ui/core/enums';
 
+/** @deprecated */
 export type TuiColor =
     | TuiBaseColor
     | TuiSupportColor

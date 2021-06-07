@@ -73,5 +73,9 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     precision = this.precisionVariants[0];
 
+    readonly postfixVariants: readonly string[] = ['', '$', 'GBP'];
+
+    postfix = this.postfixVariants[0];
+
     readonly control = new FormControl(6432, Validators.required);
 }
