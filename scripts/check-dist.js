@@ -10,6 +10,7 @@ console.log(pathToSearch);
 
 checkIncorrectImports(pathToSearch);
 checkImportWithSrc(pathToSearch);
+checkPrivateExports(pathToSearch);
 
 if (folder !== '') {
     checkRequireWithSrc(pathToSearch);
@@ -43,6 +44,16 @@ function checkImportWithSrc(path) {
     }
 
     throw new Error(`There are problems with require(.../src/...) in:\n\n${result}`);
+}
+
+function checkPrivateExports(path) {
+    const result = grepByPattern('ɵ0', path);
+
+    if (result.length === 0) {
+        return;
+    }
+
+    throw new Error(`There are problems with private exports in:\n\n${result}`);
 }
 
 function grepByPattern(pattern, path) {

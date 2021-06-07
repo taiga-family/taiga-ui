@@ -15,9 +15,6 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
 @Directive({
     selector: 'img[loading="lazy"]',
     providers: [TuiLazyLoadingService, IntersectionObserverService, TuiDestroyService],
-    host: {
-        '[style.background-color]': '"rgba(0, 0, 0, .16)"',
-    },
 })
 export class TuiLazyLoadingDirective {
     @Input('src')
@@ -28,6 +25,9 @@ export class TuiLazyLoadingDirective {
 
     @HostBinding('style.animation')
     animation = 'tuiSkeletonVibe ease-in-out 1s infinite alternate';
+
+    @HostBinding('style.background')
+    background = 'rgba(0, 0, 0, .16)';
 
     @HostBinding('attr.src')
     src: string | null = null;
@@ -44,7 +44,10 @@ export class TuiLazyLoadingDirective {
     ) {
         fromEvent(this.elementRef.nativeElement, 'load')
             .pipe(takeUntil(destroy$), watch(changeDetectorRef))
-            .subscribe(() => (this.animation = ''));
+            .subscribe(() => {
+                this.background = '';
+                this.animation = '';
+            });
 
         if (!this.supported) {
             this.src$.subscribe(src => {
