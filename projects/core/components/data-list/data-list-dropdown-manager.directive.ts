@@ -132,11 +132,11 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                                 this.notInDropdown(relatedTarget, index),
                             ),
                             map(({type}) => (type === 'focus' ? index : NaN)),
-                            debounceTime(300),
                         ),
                     ),
                 ),
             ),
+            debounceTime(300),
         );
     }
 
