@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.11.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.10.1...v2.11.0) (2021-06-07)
+
+### Features
+
+-   **addon-charts:** implement new CSS vars to color charts ([#464](https://github.com/TinkoffCreditSystems/taiga-ui/issues/464)) ([0d96ece](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0d96ecef44d6410e7aeb8cbd92cbe5e15b2e81d9))
+-   **addon-doc:** allow strings as logo img url ([2b4c516](https://github.com/TinkoffCreditSystems/taiga-ui/commit/2b4c51698d0ddbf931737903a3b6aa613d72988c))
+-   **all:** switch from string enums to string join types for inputs ([#455](https://github.com/TinkoffCreditSystems/taiga-ui/issues/455)) ([f5630fc](https://github.com/TinkoffCreditSystems/taiga-ui/commit/f5630fc23d414ef8338062c3a3595b8dd61bde84))
+-   **core:** `NotificationService` make `autoClose` timeout configurable ([#441](https://github.com/TinkoffCreditSystems/taiga-ui/issues/441)) ([bd6e74b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bd6e74b6708dccd0f2a9dc3bf94b2c4b6b78b968))
+-   **core:** `Tooltip` tapping on mobile does not focus inputs ([#453](https://github.com/TinkoffCreditSystems/taiga-ui/issues/453)) ([d9511e9](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d9511e95b5b19abc55043c85e67c140924ff4e4f))
+-   **kit:** `Slider`, `Range` add `quantum` property ([#445](https://github.com/TinkoffCreditSystems/taiga-ui/issues/445)) ([4034983](https://github.com/TinkoffCreditSystems/taiga-ui/commit/4034983d8e229022c4411736a57d721c38806ce3))
+-   **kit:** `TextArea` add multiline placeholder support ([#456](https://github.com/TinkoffCreditSystems/taiga-ui/issues/456)) ([06325bd](https://github.com/TinkoffCreditSystems/taiga-ui/commit/06325bdc0dea6012d4563e2865efe50a5760568a))
+
+### Bug Fixes
+
+-   **cdk:** `ActiveZone` wait for `focusout` event after `mousedown` ([d11da1f](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d11da1f78126e088cc7f6ee43f37de6e62d2a359))
+-   **cdk:** `Validator` update validity state on destroy ([#461](https://github.com/TinkoffCreditSystems/taiga-ui/issues/461)) ([37caf0d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/37caf0df65cd15719f351332d03332ff949fc147))
+-   **core:** `Calendar` remove jumps due to limits ([adf08a8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/adf08a89ce13b8cb2e88be82abfbf096a79f80dc))
+-   **kit:** `LazyLoading` clear background after load event ([#467](https://github.com/TinkoffCreditSystems/taiga-ui/issues/467)) ([54a4334](https://github.com/TinkoffCreditSystems/taiga-ui/commit/54a4334d23862fbd07b47b7918a806cb2c1e272a))
+-   **kit:** `Select`, `ComboBox`, `MultiSelect` cut overflown items with ellipsis ([#446](https://github.com/TinkoffCreditSystems/taiga-ui/issues/446)) ([5a39ec8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/5a39ec880b4193142fbca7e305f45cd4d940d92f))
+-   **kit:** `TextArea` properly react to night mode ([#465](https://github.com/TinkoffCreditSystems/taiga-ui/issues/465)) ([3e60e98](https://github.com/TinkoffCreditSystems/taiga-ui/commit/3e60e98625365b38395bae1382238496fc7ccf3e))
+-   **kit:** `Tabs` fix `activeItemIndex` when `routerLink` tab is removed ([#452](https://github.com/TinkoffCreditSystems/taiga-ui/issues/452)) ([075772b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/075772b41475ee7d99d242ce69f9a565365e8a9d))
+
 ### [2.10.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.10.0...v2.10.1) (2021-05-26)
 
 ### Bug Fixes
