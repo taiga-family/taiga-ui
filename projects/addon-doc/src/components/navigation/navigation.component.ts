@@ -11,6 +11,7 @@ import {TuiDocPages} from '../../types/pages';
 import {transliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
 import {
     NAVIGATION_ITEMS,
+    NAVIGATION_ITEMS_WITHOUT_SECTIONS,
     NAVIGATION_LABELS,
     NAVIGATION_PROVIDERS,
     NAVIGATION_TITLE,
@@ -48,6 +49,8 @@ export class TuiDocNavigationComponent {
         @Inject(NAVIGATION_LABELS) readonly labels: string,
         @Inject(NAVIGATION_ITEMS)
         readonly items: ReadonlyArray<TuiDocPages>,
+        @Inject(NAVIGATION_ITEMS_WITHOUT_SECTIONS)
+        readonly itemsWithoutSections: TuiDocPages,
         @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
     ) {
         // Angular can't navigate no anchor links
@@ -68,7 +71,10 @@ export class TuiDocNavigationComponent {
     }
 
     get filteredItems(): ReadonlyArray<ReadonlyArray<TuiDocPage>> {
-        return this.filterItems(this.flattenSubPages(this.items), this.search);
+        return this.filterItems(
+            this.flattenSubPages(this.items, this.itemsWithoutSections),
+            this.search,
+        );
     }
 
     onGroupClick(index: number) {
@@ -120,8 +126,11 @@ export class TuiDocNavigationComponent {
     @tuiPure
     private flattenSubPages(
         items: ReadonlyArray<TuiDocPages>,
+        itemsWithoutSection: TuiDocPages,
     ): ReadonlyArray<ReadonlyArray<TuiDocPage>> {
-        return items.reduce<ReadonlyArray<ReadonlyArray<TuiDocPage>>>(
+        return [...items, itemsWithoutSection].reduce<
+            ReadonlyArray<ReadonlyArray<TuiDocPage>>
+        >(
             (array, item) => [
                 ...array,
                 item.reduce<ReadonlyArray<TuiDocPage>>(
