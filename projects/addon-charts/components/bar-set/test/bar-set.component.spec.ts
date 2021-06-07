@@ -7,7 +7,7 @@ import {TuiBarSetModule} from '../bar-set.module';
 
 describe('BarSet', () => {
     @Component({
-        template: ` <tui-bar-set [value]="value" [collapsed]="collapsed"></tui-bar-set> `,
+        template: `<tui-bar-set [value]="value" [collapsed]="collapsed"></tui-bar-set>`,
     })
     class TestComponent {
         @ViewChild(TuiBarSetComponent)
