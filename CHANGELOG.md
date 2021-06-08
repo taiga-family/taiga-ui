@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.11.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.11.0...v2.11.1) (2021-06-08)
+
+
+### Bug Fixes
+
+* **kit:** `Tabs` fix provider issue for standalone tab ([#470](https://github.com/TinkoffCreditSystems/taiga-ui/issues/470)) ([3699c09](https://github.com/TinkoffCreditSystems/taiga-ui/commit/3699c093b364dff06514ad6aca804bcfd6dec983))
+
 ## [2.11.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.10.1...v2.11.0) (2021-06-07)
 
 ### Features
