@@ -159,7 +159,7 @@
     },
     "standard-version": {
         "scripts": {
-            "postbump": "node scripts/sync-versions.js && node projects/core/scripts/version.js && git add **/package.json"
+            "postbump": "node scripts/sync-versions.js && node projects/core/scripts/version.js && git add **/package.json && git add projects/core/constants/version.ts"
         }
     },
     "engines": {
