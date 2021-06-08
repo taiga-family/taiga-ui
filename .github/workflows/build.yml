@@ -10,6 +10,8 @@ on:
       - 'angular.json'
       - 'package.json'
       - 'tsconfig*'
+    branches:
+      - '!release/**'  
   push:
     branches:
       - main
