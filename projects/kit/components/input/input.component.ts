@@ -98,6 +98,7 @@ export class TuiInputComponent
     }
 
     handleOption(item: unknown) {
+        this.setNativeValue(String(item));
         this.focusInput();
         this.updateValue(String(item));
         this.open = false;
@@ -110,6 +111,12 @@ export class TuiInputComponent
     private focusInput(preventScroll: boolean = false) {
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
+        }
+    }
+
+    private setNativeValue(value: string) {
+        if (this.nativeFocusableElement) {
+            this.nativeFocusableElement.value = value;
         }
     }
 }
