@@ -167,6 +167,7 @@ export class TuiComboBoxComponent<T>
     }
 
     handleOption(item: T) {
+        this.setNativeValue(this.stringify(item));
         this.focusInput();
         this.close();
         this.updateSearch(null);
@@ -248,6 +249,12 @@ export class TuiComboBoxComponent<T>
 
         this.search = search;
         this.searchChange.emit(search);
+    }
+
+    private setNativeValue(value: string) {
+        if (this.nativeFocusableElement) {
+            this.nativeFocusableElement.value = value;
+        }
     }
 
     private focusInput(preventScroll: boolean = false) {
