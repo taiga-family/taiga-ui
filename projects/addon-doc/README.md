@@ -22,6 +22,8 @@ npm i @taiga-ui/addon-doc
 
 ## How to use
 
+> You can also see [community made guide](https://habr.com/ru/company/europlan/blog/559804/) in Russian
+
 1. Include `TuiDocMainModule` in your App module and use in your template:
 
     ```html
