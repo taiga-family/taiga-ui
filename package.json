@@ -22,6 +22,8 @@
         "typecheck": "tsc --noEmit --skipLibCheck --project tsconfig.spec.json",
         "*** Build **": "",
         "build": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --configuration=production",
+        "build:schematics": "tsc -p ./projects/core/schematics/tsconfig.json",
+        "postbuild:schematics": "cp ./projects/core/schematics/collection.json ./dist/core/schematics/collection.json",
         "postbuild": "node scripts/check-dist.js",
         "build:demo": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod --configuration=production",
         "postbuild:demo": "cp ./dist/demo/browser/index.html ./dist/demo/browser/404.html",
