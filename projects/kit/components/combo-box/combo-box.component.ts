@@ -168,10 +168,10 @@ export class TuiComboBoxComponent<T>
 
     handleOption(item: T) {
         this.setNativeValue(this.stringify(item));
+        this.focusInput();
         this.close();
         this.updateSearch(null);
         this.updateValue(item);
-        this.focusInput();
     }
 
     onFieldKeyDownEnter(event: KeyboardEvent) {
