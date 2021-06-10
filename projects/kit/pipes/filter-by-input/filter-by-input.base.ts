@@ -1,4 +1,3 @@
-import {Directive} from '@angular/core';
 import {
     TuiFocusableElementAccessor,
     tuiPure,
@@ -6,7 +5,6 @@ import {
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
 
-@Directive()
 export abstract class TuiFilterByInputBase {
     protected abstract readonly accessor: TuiFocusableElementAccessor;
 
