@@ -1,7 +1,9 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {
     TUI_DEFAULT_MATCHER,
     TUI_DEFAULT_STRINGIFY,
+    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TuiFocusableElementAccessor,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {TuiFilterByInputBase} from './filter-by-input.base';
@@ -11,6 +13,13 @@ import {TuiFilterByInputBase} from './filter-by-input.base';
     pure: false,
 })
 export class TuiFilterByInputPipe extends TuiFilterByInputBase implements PipeTransform {
+    constructor(
+        @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
+        protected readonly accessor: TuiFocusableElementAccessor,
+    ) {
+        super();
+    }
+
     transform<T>(
         items: readonly T[] | null,
         matcher: TuiStringMatcher<T> = TUI_DEFAULT_MATCHER,

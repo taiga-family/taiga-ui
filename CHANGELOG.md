@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.11.2](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.11.1...v2.11.2) (2021-06-10)
+
+
+### Features
+
+* **kit:** `filterByInputWith` add new pipe to filter with custom stringify ([#479](https://github.com/TinkoffCreditSystems/taiga-ui/issues/479)) ([996e8af](https://github.com/TinkoffCreditSystems/taiga-ui/commit/996e8afe863860b68ad583516bb539a4115b5b71))
+
+
+### Bug Fixes
+
+* **core:** `Dropdown` fix animation retrigger in submenu ([#466](https://github.com/TinkoffCreditSystems/taiga-ui/issues/466)) ([dabb336](https://github.com/TinkoffCreditSystems/taiga-ui/commit/dabb3362c334d5761473c6ffaef5cc2be5f1f974))
+* **kit:** `ComboBox` fix caret outside of visible area upon selection ([#477](https://github.com/TinkoffCreditSystems/taiga-ui/issues/477)) ([a79def4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a79def419c0bab412fd5ebdafcb3b83644cfe7ff))
+
 ### [2.11.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.11.0...v2.11.1) (2021-06-08)
 
 
