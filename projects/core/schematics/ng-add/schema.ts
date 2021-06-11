@@ -1,4 +1,7 @@
 export interface Schema {
-    /** Name of the project to target. */
-    project: string;
+    readonly project: string;
+    readonly addons: ReadonlyArray<string>;
+    readonly addDefaultTheme: boolean;
+    readonly addNotificationsModule: boolean;
+    readonly addDialogsModule: boolean;
 }
