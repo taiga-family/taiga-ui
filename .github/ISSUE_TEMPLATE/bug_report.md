@@ -3,7 +3,7 @@ name: 🐞 Bug report
 about: Create a report to help us improve
 title: '[BUG] '
 labels: ''
-assignees: waterplea, MarsiBarsi
+assignees: waterplea, MarsiBarsi, vladimirpotekhin
 ---
 
 # 🐞 Bug report
