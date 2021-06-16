@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiDestroyService, TuiDialog} from '@taiga-ui/cdk';
 import {TUI_BACKWARD_NAVIGATION_STREAM} from '@taiga-ui/cdk/tokens';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
@@ -8,6 +8,7 @@ import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {TUI_DIALOG_CLOSE_STREAM, TUI_DIALOG_PROVIDERS} from './dialog.providers';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
@@ -49,23 +50,16 @@ export class TuiDialogComponent<O, I> {
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_BACKWARD_NAVIGATION_STREAM)
         backNavigation$: Observable<PopStateEvent>,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         close$.subscribe(() => {
             this.close();
         });
 
-        windowRef.history.pushState(
-            null,
-            windowRef.document.title,
-            windowRef.location.href,
-        );
+        windowRef.history.pushState(null, windowRef.document.title);
 
-        backNavigation$.subscribe(() => {
-            windowRef.history.pushState(
-                null,
-                windowRef.document.title,
-                windowRef.location.href,
-            );
+        backNavigation$.pipe(takeUntil(destroy$)).subscribe(() => {
+            windowRef.history.pushState(null, windowRef.document.title);
             this.close();
         });
     }
@@ -104,11 +98,12 @@ export class TuiDialogComponent<O, I> {
     }
 
     close() {
+        this.windowRef.history.back();
+
         if (this.context.required) {
             this.context.$implicit.error(REQUIRED_ERROR);
         } else {
             this.context.$implicit.complete();
-            this.windowRef.history.back();
         }
     }
 }
