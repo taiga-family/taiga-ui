@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
 import {TUI_IS_MOBILE, TuiDestroyService, TuiDialog} from '@taiga-ui/cdk';
 import {TUI_BACKWARD_NAVIGATION_STREAM} from '@taiga-ui/cdk/tokens';
@@ -51,15 +52,16 @@ export class TuiDialogComponent<O, I> {
         @Inject(TUI_BACKWARD_NAVIGATION_STREAM)
         backNavigation$: Observable<PopStateEvent>,
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Inject(Title) titleService: Title,
     ) {
         close$.subscribe(() => {
             this.close();
         });
 
-        windowRef.history.pushState(null, windowRef.document.title);
+        windowRef.history.pushState(null, titleService.getTitle());
 
         backNavigation$.pipe(takeUntil(destroy$)).subscribe(() => {
-            windowRef.history.pushState(null, windowRef.document.title);
+            windowRef.history.pushState(null, titleService.getTitle());
             this.close();
         });
     }
