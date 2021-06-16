@@ -1,15 +1,10 @@
-import {InjectionToken} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
+import {WINDOW} from '@ng-web-apis/common';
 import {typedFromEvent} from '@taiga-ui/cdk/observables';
 import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 
 export const TUI_BACKWARD_NAVIGATION_STREAM = new InjectionToken<
     Observable<PopStateEvent>
->('Routing backward navigation event stream');
-
-export const backwardNavigationStreamFactory = (
-    windowRef: Window,
-    destroy$: Observable<void>,
-) => {
-    return typedFromEvent(windowRef, 'popstate').pipe(takeUntil(destroy$));
-};
+>('Routing backward navigation event stream', {
+    factory: () => typedFromEvent(inject(WINDOW), 'popstate'),
+});
