@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {WINDOW} from '@ng-web-apis/common';
 import {TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
+import {TUI_BACKWARD_NAVIGATION_STREAM} from '@taiga-ui/cdk/tokens';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
@@ -37,6 +39,7 @@ export class TuiDialogComponent<O, I> {
     } as const;
 
     constructor(
+        @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(POLYMORPHEUS_CONTEXT)
@@ -44,8 +47,25 @@ export class TuiDialogComponent<O, I> {
         @Inject(TUI_DIALOG_CLOSE_STREAM)
         close$: Observable<unknown>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_BACKWARD_NAVIGATION_STREAM)
+        backNavigation$: Observable<PopStateEvent>,
     ) {
         close$.subscribe(() => {
+            this.close();
+        });
+
+        windowRef.history.pushState(
+            null,
+            windowRef.document.title,
+            windowRef.location.href,
+        );
+
+        backNavigation$.subscribe(() => {
+            windowRef.history.pushState(
+                null,
+                windowRef.document.title,
+                windowRef.location.href,
+            );
             this.close();
         });
     }
@@ -88,6 +108,7 @@ export class TuiDialogComponent<O, I> {
             this.context.$implicit.error(REQUIRED_ERROR);
         } else {
             this.context.$implicit.complete();
+            this.windowRef.history.back();
         }
     }
 }

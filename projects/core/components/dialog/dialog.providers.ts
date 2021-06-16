@@ -8,6 +8,10 @@ import {
     TuiDialog,
     typedFromEvent,
 } from '@taiga-ui/cdk';
+import {
+    backwardNavigationStreamFactory,
+    TUI_BACKWARD_NAVIGATION_STREAM,
+} from '@taiga-ui/cdk/tokens';
 import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, merge, Observable} from 'rxjs';
@@ -81,5 +85,10 @@ export const TUI_DIALOG_PROVIDERS: Provider[] = [
             POLYMORPHEUS_CONTEXT,
         ],
         useFactory: dialogCloseStreamFactory,
+    },
+    {
+        provide: TUI_BACKWARD_NAVIGATION_STREAM,
+        deps: [WINDOW, TuiDestroyService],
+        useFactory: backwardNavigationStreamFactory,
     },
 ];
