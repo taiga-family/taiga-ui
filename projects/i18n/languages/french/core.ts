@@ -1,6 +1,6 @@
 import {LanguageCore} from '@taiga-ui/i18n/interfaces';
 
-export const TUI_ENGLISH_LANGUAGE_CORE: LanguageCore = {
+export const TUI_FRENCH_LANGUAGE_CORE: LanguageCore = {
     months: [
         'Janvier',
         'Février',

@@ -1,6 +1,6 @@
 import {LanguageTable} from '@taiga-ui/i18n/interfaces';
 
-export const TUI_ENGLISH_LANGUAGE_ADDON_TABLE: LanguageTable = {
+export const TUI_FRENCH_LANGUAGE_ADDON_TABLE: LanguageTable = {
     showHideText: 'Afficher/Cacher',
     paginationTexts: {
         pages: 'Pages',

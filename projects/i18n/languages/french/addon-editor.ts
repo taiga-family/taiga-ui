@@ -1,6 +1,6 @@
 import {LanguageEditor} from '@taiga-ui/i18n/interfaces';
 
-export const TUI_ENGLISH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
+export const TUI_FRENCH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
     colorSelectorModeNames: ['Couleur unie', 'Dégradé de couleur'],
     toolbarTools: {
         undo: 'Annuler',
