@@ -2,7 +2,7 @@
 @import 'taiga-ui-global';
 @import 'taiga-ui-theme';
 
-@sidebar-width: 248px;
+@sidebar-width: 15.5rem;
 
 body {
     font: var(--tui-font-text-m);
@@ -11,16 +11,16 @@ body {
 
 .b-demo-steps {
     list-style-type: decimal;
-    padding-left: 15px;
-    margin: 16px 0;
+    padding-left: 0.9375rem;
+    margin: 1rem 0;
 
     & li {
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
     }
 }
 
 .b-form {
-    max-width: 320px;
+    max-width: 20rem;
 }
 
 .b-full-width {
@@ -35,7 +35,7 @@ sandbox .demo > * {
 /* stylelint-disable selector-type-no-unknown */
 markdown {
     display: block;
-    max-width: 932px;
+    max-width: 58.25rem;
 
     h1 {
         font: var(--tui-font-heading-1);
@@ -67,12 +67,12 @@ markdown {
     h4,
     h5,
     h6 {
-        margin: 48px 0 16px;
+        margin: 3rem 0 1rem;
     }
 
     img {
-        margin: 10px 48px 24px 0;
-        max-width: 440px;
+        margin: 0.625rem 3rem 1.5rem 0;
+        max-width: 27.5rem;
 
         &:nth-child(2n) {
             margin-right: 0;
@@ -93,9 +93,9 @@ markdown {
             content: '';
             position: absolute;
             left: 0;
-            top: 8px;
-            width: 8px;
-            height: 8px;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
             border-radius: 100%;
             background-color: var(--tui-primary);
         }

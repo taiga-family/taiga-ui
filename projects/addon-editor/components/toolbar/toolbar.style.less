@@ -2,7 +2,7 @@
 
 :host {
     display: flex;
-    padding: 4px 12px;
+    padding: 0.25rem 0.75rem;
     overflow: auto;
 
     &._disabled {
@@ -13,13 +13,13 @@
 
 .block {
     display: flex;
-    padding: 4px 0;
+    padding: 0.25rem 0;
 
     &:not(:last-child):after {
         content: '';
         display: block;
         margin: 0 @space;
-        width: 1px;
+        width: 0.0625rem;
         background: var(--tui-secondary-active);
     }
 }
@@ -37,20 +37,20 @@
 }
 
 .dropdown {
-    padding: 12px;
+    padding: 0.75rem;
 }
 
 .wrapper {
     position: relative;
-    margin: 0 4px;
+    margin: 0 0.25rem;
 }
 
 .plate {
     position: absolute;
-    top: 22px;
-    left: 4px;
-    width: 24px;
-    height: 4px;
+    top: 1.375rem;
+    left: 0.25rem;
+    width: 1.5rem;
+    height: 0.25rem;
     pointer-events: none;
 }
 

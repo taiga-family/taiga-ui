@@ -12,9 +12,9 @@
     color: var(--tui-text-01);
     background: var(--tui-base-01);
     cursor: default;
-    padding: 0 12px;
+    padding: 0 0.75rem;
     box-sizing: border-box;
-    box-shadow: 0 5px rgba(237, 237, 237, 0);
+    box-shadow: 0 0.3125rem rgba(237, 237, 237, 0);
     border: 1px solid var(--tui-base-04);
 
     &:not(:first-child) {
@@ -36,7 +36,7 @@
             top: 0;
             left: 100%;
             bottom: 0;
-            width: 5px;
+            width: 0.3125rem;
             pointer-events: none;
             background: rgba(237, 237, 237, 0.7);
             opacity: 0;
@@ -52,7 +52,7 @@
     height: var(--tui-height-l);
     font: var(--tui-font-text-m);
     font-weight: bold;
-    padding: 0 16px;
+    padding: 0 1rem;
 }
 
 :host-context(thead[tuiThead]) {
@@ -64,7 +64,7 @@
 }
 
 :host-context(thead[tuiThead]._stuck) {
-    box-shadow: 0 5px rgba(237, 237, 237, 0.7);
+    box-shadow: 0 0.3125rem rgba(237, 237, 237, 0.7);
 }
 
 :host-context(table[data-mode='onDark']):after {
@@ -72,11 +72,11 @@
 }
 
 :host-context(table[data-mode='onDark'] thead[tuiThead]._stuck) {
-    box-shadow: 0 5px rgba(60, 60, 60, 0.9);
+    box-shadow: 0 0.3125rem rgba(60, 60, 60, 0.9);
 }
 
 :host-context(table[data-mode='onDark'] thead[tuiThead]._stuck):first-child {
-    box-shadow: 1px 5px rgba(60, 60, 60, 0.9);
+    box-shadow: 0.0625rem 0.3125rem rgba(60, 60, 60, 0.9);
 }
 
 :host-context(table[data-tui-host-size='l'] thead[tuiThead] tr:nth-child(2)) {
@@ -136,8 +136,8 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    right: -1px;
-    width: 3px;
+    right: -0.0625rem;
+    width: 0.1875rem;
     justify-self: flex-end;
     border-left: 2px solid transparent;
     background: var(--tui-support-12);
