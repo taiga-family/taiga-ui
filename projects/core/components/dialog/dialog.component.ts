@@ -1,15 +1,11 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
-import {Title} from '@angular/platform-browser';
-import {WINDOW} from '@ng-web-apis/common';
-import {TUI_IS_MOBILE, TuiDestroyService, TuiDialog} from '@taiga-ui/cdk';
-import {TUI_BACKWARD_NAVIGATION_STREAM} from '@taiga-ui/cdk/tokens';
+import {TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 import {TUI_DIALOG_CLOSE_STREAM, TUI_DIALOG_PROVIDERS} from './dialog.providers';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
@@ -41,7 +37,6 @@ export class TuiDialogComponent<O, I> {
     } as const;
 
     constructor(
-        @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(POLYMORPHEUS_CONTEXT)
@@ -49,19 +44,8 @@ export class TuiDialogComponent<O, I> {
         @Inject(TUI_DIALOG_CLOSE_STREAM)
         close$: Observable<unknown>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
-        @Inject(TUI_BACKWARD_NAVIGATION_STREAM)
-        backNavigation$: Observable<PopStateEvent>,
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        @Inject(Title) titleService: Title,
     ) {
         close$.subscribe(() => {
-            this.close();
-        });
-
-        windowRef.history.pushState(null, titleService.getTitle());
-
-        backNavigation$.pipe(takeUntil(destroy$)).subscribe(() => {
-            windowRef.history.pushState(null, titleService.getTitle());
             this.close();
         });
     }
@@ -100,8 +84,6 @@ export class TuiDialogComponent<O, I> {
     }
 
     close() {
-        this.windowRef.history.back();
-
         if (this.context.required) {
             this.context.$implicit.error(REQUIRED_ERROR);
         } else {
