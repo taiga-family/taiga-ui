@@ -1,6 +1,7 @@
 import {JsonArray, workspaces} from '@angular-devkit/core';
-import {Rule, SchematicsException, Tree} from '@angular-devkit/schematics';
-import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspace';
+import {Rule, Tree} from '@angular-devkit/schematics';
+import {updateWorkspace} from '@schematics/angular/utility/workspace';
+import {getWorkspaceAndProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {Schema} from '../schema';
 
@@ -12,16 +13,7 @@ const ICON_ASSETS = {
 
 export function addTaigaIcons(options: Schema): Rule {
     return async (tree: Tree) => {
-        const workspace = await getWorkspace(tree);
-        const projectName =
-            options.project || workspace.extensions.defaultProject!.toString();
-        const project = workspace.projects.get(projectName);
-
-        if (!project) {
-            throw new SchematicsException(
-                `Unable to find project '${projectName}' in the workspace`,
-            );
-        }
+        const {project, workspace} = await getWorkspaceAndProject(options, tree);
 
         return addTaigaStylesToAngularJson(workspace, project);
     };

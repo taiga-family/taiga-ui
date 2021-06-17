@@ -9,7 +9,6 @@ import {addImportToModule} from '@schematics/angular/utility/ast-utils';
 import {InsertChange} from '@schematics/angular/utility/change';
 import {getAppModulePath} from '@schematics/angular/utility/ng-ast-utils';
 
-import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {
     addProviderToModule,
     createProject,
@@ -17,6 +16,7 @@ import {
     saveActiveProject,
     setActiveProject,
 } from 'ng-morph';
+import {getWorkspaceAndProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {
     DIALOG_MODULES,
@@ -28,22 +28,12 @@ import {Schema} from '../schema';
 
 export function addTaigaModules(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
-        const workspace = await getWorkspace(tree);
-        const projectName =
-            options.project || workspace.extensions.defaultProject!.toString();
-        const project = workspace.projects.get(projectName);
-
-        if (!project) {
-            throw new SchematicsException(
-                `Unable to find project '${projectName}' in the workspace`,
-            );
-        }
-
+        const {project} = await getWorkspaceAndProject(options, tree);
         const buildOptions = getProjectTargetOptions(project, 'build');
         const modulePath = getAppModulePath(tree, buildOptions.main as string);
 
         addModules(tree, modulePath, options);
-        addTuiProviderToModule(tree, modulePath);
+        // addTuiProviderToModule(tree, modulePath);
     };
 }
 
@@ -59,14 +49,14 @@ function addModules(tree: Tree, targetModulePath: string, options: Schema) {
     });
 }
 
-function addTuiProviderToModule(tree: Tree, modulePath: string) {
-    setActiveProject(createProject(tree, '/', ['**/*.ts', '**/*.json']));
+// function addTuiProviderToModule(tree: Tree, modulePath: string) {
+//     setActiveProject(createProject(tree, '/', ['**/*.ts', '**/*.json']));
 
-    const sourse = getMainModule(modulePath);
+//     const mainModule = getMainModule(modulePath);
 
-    addProviderToModule(sourse, '{provide: TUI_SANITIZER}');
-    saveActiveProject();
-}
+//     addProviderToModule(mainModule, '{provide: TUI_SANITIZER, useValue: ngDomPurify}');
+//     saveActiveProject();
+// }
 
 function addModuleImportToModule(
     tree: Tree,
