@@ -20,6 +20,7 @@ Supported languages:
 | Turkish              |  TUI_TURKISH_LANGUAGE  |     100% |
 | Dutch                |   TUI_DUTCH_LANGUAGE   |     100% |
 | Ukrainian            | TUI_UKRAINIAN_LANGUAGE |     100% |
+| French               |  TUI_FRENCH_LANGUAGE   |     100% |
 
 <!-- Do not change next line without i18n demo page -->
 
