@@ -13,7 +13,7 @@ export const TUI_ENGLISH_LANGUAGE_CORE: LanguageCore = {
         'Septembre',
         'Octobre',
         'Novembre',
-        'Decembre',
+        'Décembre',
     ],
     close: 'Fermer',
     nothingFoundMessage: 'Rien trouvé',

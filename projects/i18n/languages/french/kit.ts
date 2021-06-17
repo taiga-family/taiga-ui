@@ -5,7 +5,7 @@ export const TUI_ENGLISH_LANGUAGE_KIT: LanguageKit = {
     done: 'Terminé',
     more: 'Plus',
     otherDate: 'Autre date...',
-    mobileCalendarTexts: ['Choisir jour', 'Choisir intervalle'],
+    mobileCalendarTexts: ['Choisir un jour', 'Choisir un intervalle'],
     range: ['De', 'À'],
     countTexts: ['Plus', 'Moins'],
     time: {
@@ -18,7 +18,7 @@ export const TUI_ENGLISH_LANGUAGE_KIT: LanguageKit = {
     copyTexts: ['Copier', 'Copié'],
     shortCalendarMonths: [
         'Janv',
-        'Fev',
+        'Fév',
         'Mar',
         'Avr',
         'Mai',
