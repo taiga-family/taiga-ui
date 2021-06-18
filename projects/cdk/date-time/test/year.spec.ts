@@ -1,3 +1,4 @@
+import {DAY_OF_WEEK_INDEX} from '@taiga-ui/cdk/enums';
 import {TuiYear} from '../year';
 
 describe('TuiYear', () => {
@@ -175,133 +176,171 @@ describe('TuiYear', () => {
         describe('getYearStartDaysOffset returns', () => {
             it('5 if passed value was 0', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(0, TuiYear.getAbsoluteLeapYears(0)),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 0,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(0),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(5);
             });
 
             it('0 if passed value was 1', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(1, TuiYear.getAbsoluteLeapYears(1)),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 1,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(1),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(0);
             });
 
             it('1 if passed value was 2', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(2, TuiYear.getAbsoluteLeapYears(2)),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 2,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(1);
             });
 
             it('2 if passed value was 3', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(3, TuiYear.getAbsoluteLeapYears(3)),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 3,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(3),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(2);
             });
 
             it('3 if passed value was 4', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(4, TuiYear.getAbsoluteLeapYears(4)),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 4,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(4),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(3);
             });
 
             it('5 if passed value was 5', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(5, TuiYear.getAbsoluteLeapYears(5)),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 5,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(5),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(5);
             });
 
             it('2 if passed value was 20', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(20, TuiYear.getAbsoluteLeapYears(20)),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 20,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(20),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(2);
             });
 
             it('5 if passed value was 1200', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(
-                        1200,
-                        TuiYear.getAbsoluteLeapYears(1200),
-                    ),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 1200,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(1200),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(5);
             });
 
             it('5 if passed value was 2000', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(
-                        2000,
-                        TuiYear.getAbsoluteLeapYears(2000),
-                    ),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 2000,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2000),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(5);
             });
 
             it('0 if passed value was 2001', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(
-                        2001,
-                        TuiYear.getAbsoluteLeapYears(2001),
-                    ),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 2001,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2001),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(0);
             });
 
             it('0 if passed value was 2018', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(
-                        2018,
-                        TuiYear.getAbsoluteLeapYears(2018),
-                    ),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 2018,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2018),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(0);
             });
 
             it('2 if passed value was 2020', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(
-                        2020,
-                        TuiYear.getAbsoluteLeapYears(2020),
-                    ),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 2020,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2020),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(2);
             });
 
             it('4 if passed value was 2100', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(
-                        2100,
-                        TuiYear.getAbsoluteLeapYears(2100),
-                    ),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 2100,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2100),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(4);
             });
 
             it('1 if passed value was 2104', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(
-                        2104,
-                        TuiYear.getAbsoluteLeapYears(2104),
-                    ),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 2104,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2104),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(1);
             });
 
             it('6 if passed value was 1995', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(
-                        1995,
-                        TuiYear.getAbsoluteLeapYears(1995),
-                    ),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 1995,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(1995),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(6);
             });
 
             it('4 if passed value was 1334', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(
-                        1334,
-                        TuiYear.getAbsoluteLeapYears(1334),
-                    ),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 1334,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(1334),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(4);
             });
 
             it('0 if passed value was 3421', () => {
                 expect(
-                    TuiYear.getYearStartDaysOffset(
-                        3421,
-                        TuiYear.getAbsoluteLeapYears(3421),
-                    ),
+                    TuiYear.getYearStartDaysOffset({
+                        year: 3421,
+                        absoluteLeapYears: TuiYear.getAbsoluteLeapYears(3421),
+                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                    }),
                 ).toBe(0);
             });
         });

@@ -1,6 +1,6 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiMonthNumber} from '@taiga-ui/cdk/enums';
-import {TuiMonthLike} from '@taiga-ui/cdk/interfaces';
+import {TuiMonthLike, TuiTimeLocalizationOptions} from '@taiga-ui/cdk/interfaces';
 import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 import {DAYS_IN_WEEK, MAX_MONTH, MIN_MONTH, MONTHS_IN_YEAR} from './date-time';
@@ -13,9 +13,14 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     /**
      * @param year
      * @param month (starting with 0)
+     * @param localizationOptions
      */
-    constructor(year: number, readonly month: number) {
-        super(year);
+    constructor(
+        year: number,
+        readonly month: number,
+        localizationOptions?: TuiTimeLocalizationOptions,
+    ) {
+        super(year, localizationOptions);
         tuiAssert.assert(TuiMonth.isValidMonth(year, month));
     }
 

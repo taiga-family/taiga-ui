@@ -1,6 +1,6 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiMonthNumber} from '@taiga-ui/cdk/enums';
-import {TuiDayLike} from '@taiga-ui/cdk/interfaces';
+import {TuiDayLike, TuiTimeLocalizationOptions} from '@taiga-ui/cdk/interfaces';
 import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 import {DAYS_IN_WEEK, MIN_DAY, MONTHS_IN_YEAR} from './date-time';
@@ -12,8 +12,13 @@ import {TuiYear} from './year';
  * Immutable date object, consisting of day, month and year
  */
 export class TuiDay extends TuiMonth {
-    constructor(year: number, month: number, readonly day: number) {
-        super(year, month);
+    constructor(
+        year: number,
+        month: number,
+        readonly day: number,
+        localizationOptions?: TuiTimeLocalizationOptions,
+    ) {
+        super(year, month, localizationOptions);
         tuiAssert.assert(TuiDay.isValidDay(year, month, day));
     }
 
