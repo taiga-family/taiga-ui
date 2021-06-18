@@ -11,15 +11,6 @@
                 "$source": "projectName"
             }
         },
-        "addDefaultTheme": {
-            "description": "Setting the default theme",
-            "type": "boolean",
-            "default": true,
-            "x-prompt": {
-                "message": "Do you need a default Taiga UI theme?",
-                "type": "confirmation"
-            }
-        },
         "addDialogsModule": {
             "description": "Setting the dialog module",
             "type": "boolean",
@@ -34,7 +25,7 @@
             "type": "boolean",
             "default": true,
             "x-prompt": {
-                "message": "Do you want to use a ng-dompurify as sanitizer for icons?",
+                "message": "Do you plan on using custom SVGs/icons or addon-editor? If `Yes` we will include ng-dompurify as sanitizer, read more.",
                 "type": "confirmation"
             }
         },

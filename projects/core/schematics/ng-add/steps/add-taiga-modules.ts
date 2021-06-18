@@ -33,7 +33,7 @@ export function addTaigaModules(options: Schema): Rule {
         const modulePath = getAppModulePath(tree, buildOptions.main as string);
 
         addModules(tree, modulePath, options);
-        // addTuiProviderToModule(tree, modulePath);
+        addTuiProviderToModule(tree, buildOptions.main as string, options);
     };
 }
 
@@ -49,14 +49,21 @@ function addModules(tree: Tree, targetModulePath: string, options: Schema) {
     });
 }
 
-// function addTuiProviderToModule(tree: Tree, modulePath: string) {
-//     setActiveProject(createProject(tree, '/', ['**/*.ts', '**/*.json']));
+function addTuiProviderToModule(tree: Tree, modulePath: string, options: Schema) {
+    if (!options.addSanitizer) {
+        return;
+    }
 
-//     const mainModule = getMainModule(modulePath);
+    setActiveProject(createProject(tree, '/', ['**/*.ts', '**/*.json']));
 
-//     addProviderToModule(mainModule, '{provide: TUI_SANITIZER, useValue: ngDomPurify}');
-//     saveActiveProject();
-// }
+    const mainModule = getMainModule(modulePath);
+
+    addProviderToModule(
+        mainModule,
+        '{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}',
+    );
+    saveActiveProject();
+}
 
 function addModuleImportToModule(
     tree: Tree,

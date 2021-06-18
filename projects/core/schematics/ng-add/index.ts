@@ -3,8 +3,9 @@ import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schemati
 import {addPackageJsonDependency} from 'ng-morph';
 import {Schema} from './schema';
 
-const MAIN_PACKAGES = ['core', 'cdk', 'kit'];
-const VERSION = '2.11.0';
+const MAIN_PACKAGES = ['core', 'cdk', 'kit', 'icons'];
+const TAIGA_VERSION = '2.11.0';
+const NG_DOMPURIFY_VERSION = '3.0.0';
 
 export function ngAdd(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -24,7 +25,14 @@ function addDependencies(tree: Tree, options: Schema) {
     packages.forEach(pack => {
         addPackageJsonDependency(tree, {
             name: `@taiga-ui/${pack}`,
-            version: VERSION,
+            version: TAIGA_VERSION,
         });
     });
+
+    if (options.addSanitizer) {
+        addPackageJsonDependency(tree, {
+            name: '@tinkoff/ng-dompurify',
+            version: NG_DOMPURIFY_VERSION,
+        });
+    }
 }

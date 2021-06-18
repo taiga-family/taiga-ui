@@ -1,5 +1,4 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {getAppModulePath} from '@schematics/angular/utility/ng-ast-utils';
 import {
     ClassDeclaration,
     createProject,
@@ -19,28 +18,28 @@ export function wrapWithTuiRootComponent(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const {project} = await getWorkspaceAndProject(options, tree);
         const buildOptions = getProjectTargetOptions(project, 'build');
-        const modulePath = getAppModulePath(tree, buildOptions.main as string);
 
-        const app = getAppTemplatePathNew(tree, buildOptions.main as string);
-        // const appTemplatePath = getAppTemplatePath(modulePath);
+        const appTemplatePath = getAppTemplatePath(tree, buildOptions.main as string);
 
-        // addTuiRootComponent(appTemplatePath, context, tree);
+        if (!appTemplatePath) {
+            context.logger.error(
+                'Could not find the default main template file for this project.',
+            );
+            context.logger.info(
+                'Consider manually wrapping content of your app with tui-root',
+            );
+            context.logger.info(
+                'More information at https://taiga-ui.dev/getting-started',
+            );
+
+            return;
+        }
+
+        addTuiRootComponent(appTemplatePath, context, tree);
     };
 }
 
 function addTuiRootComponent(filePath: string, context: SchematicContext, tree: Tree) {
-    if (!filePath) {
-        context.logger.error(
-            'Could not find the default main template file for this project.',
-        );
-        context.logger.info(
-            'Consider manually wrapping content of your app with tui-root',
-        );
-        context.logger.info('More information at https://taiga-ui.dev/getting-started');
-
-        return;
-    }
-
     const buffer = tree.read(filePath);
 
     if (!buffer) {
@@ -68,66 +67,53 @@ function addTuiRootComponent(filePath: string, context: SchematicContext, tree: 
     recorder.insertLeft(htmlContent.length, closeTag);
     tree.commitUpdate(recorder);
     context.logger.info(
-        `Content of the app wad wrapped with tui-root component in ${filePath}`,
+        `Content of the app was wrapped with tui-root component in ${filePath}`,
     );
 }
 
-function getAppTemplatePath(appModulePath: string): string {
-    const pathArray = appModulePath.split('/');
-    const appModuleFileName = pathArray[pathArray.length - 1];
-    const templatePath = `${pathArray.slice(0, -1).join('/')}/${
-        appModuleFileName.split('.')[0]
-    }.template.html`;
-
-    return templatePath;
-}
-
-function getAppTemplatePathNew(tree: Tree, modulePath: string) {
+function getAppTemplatePath(tree: Tree, mainPath: string): string | undefined {
     setActiveProject(createProject(tree, '/', ['**/*.ts', '**/*.json']));
 
-    const mainModule = getMainModule(modulePath);
-    const decorator = mainModule.getDecorator('NgModule');
+    const mainModule = getMainModule(mainPath);
+    const mainInitializer = getInitializer(mainModule, 'NgModule', 'declarations');
+
+    if (!Node.isArrayLiteralExpression(mainInitializer)) {
+        return;
+    }
+
+    const appIdentifier = mainInitializer.getElements()[0] as Identifier;
+    const appComponent = appIdentifier.getDefinitionNodes()[0] as ClassDeclaration;
+
+    const templateInitializer = getInitializer(appComponent, 'Component', 'templateUrl');
+
+    const appComponentPath = appComponent.getSourceFile().getFilePath().split('/');
+
+    const templateUrlPath = `${appComponentPath
+        .splice(0, appComponentPath.length - 1)
+        .join('/')}/${templateInitializer?.getText().replace(/['"]/g, '')}`;
+
+    saveActiveProject();
+
+    return templateUrlPath;
+}
+
+function getInitializer(
+    classDeclaration: ClassDeclaration,
+    decoratorName: string,
+    propertyName: string,
+): Expression<ts.Expression> | undefined {
+    const decorator = classDeclaration.getDecorator(decoratorName);
     const [metadata] = decorator!.getArguments();
 
     if (!Node.isObjectLiteralExpression(metadata)) {
         return;
     }
 
-    const property = metadata.getProperty('declarations');
+    const property = metadata.getProperty(propertyName);
 
     if (!Node.isPropertyAssignment(property)) {
         return;
     }
 
-    const initializer = property.getInitializer();
-
-    if (!Node.isArrayLiteralExpression(initializer)) {
-        return;
-    }
-
-    const identifier = initializer.getElements()[0] as Identifier;
-    const appComponent = identifier.getDefinitionNodes()[0] as ClassDeclaration;
-
-    const appComponentDecorator = appComponent.getDecorator('Component');
-    const [appComponentMetadata] = appComponentDecorator!.getArguments();
-
-    if (!Node.isObjectLiteralExpression(appComponentMetadata)) {
-        return;
-    }
-
-    const appComponentProperty = appComponentMetadata.getProperty('templateUrl');
-
-    if (!Node.isPropertyAssignment(appComponentProperty)) {
-        return;
-    }
-
-    const templateInitializer = appComponentProperty.getInitializer();
-
-    const appComponentPath = appComponent.getSourceFile().getFilePath().split('/');
-
-    const templateUrlPath = `${appComponentPath
-        .splice(0, appComponentPath.length - 1)
-        .join('/')}/${templateInitializer?.getText()}`;
-
-    saveActiveProject();
+    return property.getInitializer();
 }

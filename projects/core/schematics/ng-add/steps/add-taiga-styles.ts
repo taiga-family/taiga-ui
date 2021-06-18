@@ -1,6 +1,6 @@
 import {JsonArray, workspaces} from '@angular-devkit/core';
-import {Rule, SchematicsException, Tree} from '@angular-devkit/schematics';
-import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspace';
+import {Rule, Tree} from '@angular-devkit/schematics';
+import {updateWorkspace} from '@schematics/angular/utility/workspace';
 import {getWorkspaceAndProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {Schema} from '../schema';
@@ -12,21 +12,17 @@ export function addTaigaStyles(options: Schema): Rule {
     return async (tree: Tree) => {
         const {project, workspace} = await getWorkspaceAndProject(options, tree);
 
-        return addTaigaStylesToAngularJson(workspace, project, options.addDefaultTheme);
+        return addTaigaStylesToAngularJson(workspace, project);
     };
 }
 
 export function addTaigaStylesToAngularJson(
     workspace: workspaces.WorkspaceDefinition,
     project: workspaces.ProjectDefinition,
-    addDefaultTheme: boolean,
 ): Rule {
     const targetOptions = getProjectTargetOptions(project, 'build');
     const styles = targetOptions.styles as JsonArray | undefined;
-    const taigaStyles = [
-        TAIGA_GLOBAL_STYLE,
-        ...(addDefaultTheme ? [TAIGA_THEME_STYLE] : []),
-    ];
+    const taigaStyles = [TAIGA_GLOBAL_STYLE, TAIGA_THEME_STYLE];
 
     if (!styles) {
         targetOptions.styles = taigaStyles;

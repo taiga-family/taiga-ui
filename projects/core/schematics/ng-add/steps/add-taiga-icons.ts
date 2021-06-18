@@ -29,7 +29,7 @@ export function addTaigaStylesToAngularJson(
     if (!assets) {
         targetOptions.assets = [ICON_ASSETS];
     } else {
-        targetOptions.assets = [...assets, ...[ICON_ASSETS]];
+        targetOptions.assets = [...assets, ICON_ASSETS];
     }
 
     return updateWorkspace(workspace);

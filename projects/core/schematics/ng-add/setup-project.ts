@@ -7,9 +7,9 @@ import {wrapWithTuiRootComponent} from './steps/wrap-with-tui-root';
 
 export default function ngAddSetupProject(options: Schema): Rule {
     return chain([
-        // addTaigaStyles(options),
-        // addTaigaModules(options),
-        // addTaigaIcons(options),
+        addTaigaStyles(options),
+        addTaigaModules(options),
+        addTaigaIcons(options),
         wrapWithTuiRootComponent(options),
     ]);
 }
