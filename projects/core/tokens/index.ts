@@ -15,3 +15,4 @@ export * from './sanitizer';
 export * from './scroll-ref';
 export * from './textfield-appearance';
 export * from './value-accessor';
+export * from './start-day-of-week-index';
