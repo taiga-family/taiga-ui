@@ -7,6 +7,7 @@ import {
     TuiScrollService,
     watch,
 } from '@taiga-ui/cdk';
+import {TUI_PRIMITIVE_CALENDAR_PROVIDERS} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {EMPTY, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -16,6 +17,7 @@ export const TUI_VALUE_STREAM = new InjectionToken<Observable<TuiDayRange | null
     'Stream for updating value',
 );
 export const TUI_MOBILE_CALENDAR_PROVIDERS: Provider[] = [
+    ...TUI_PRIMITIVE_CALENDAR_PROVIDERS,
     TuiDestroyService,
     TuiScrollService,
     {
