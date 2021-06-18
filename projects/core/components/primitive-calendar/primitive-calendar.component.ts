@@ -20,9 +20,14 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
-import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
+import {TUI_START_DAY_OF_WEEK_INDEX} from '@taiga-ui/core/tokens';
 import {TuiColor, TuiMarkerHandler} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
+import {
+    TUI_ORDERED_SHORT_WEEK_DAYS,
+    TUI_PRIMITIVE_CALENDAR_PROVIDERS,
+    WEEK_DAYS_NAMES,
+} from './primitive-calendar.providers';
 
 const ROWS_COUNT = 6;
 
@@ -31,6 +36,7 @@ const ROWS_COUNT = 6;
     selector: 'tui-primitive-calendar',
     templateUrl: './primitive-calendar.template.html',
     styleUrls: ['./primitive-calendar.style.less'],
+    providers: TUI_PRIMITIVE_CALENDAR_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarComponent {
@@ -67,7 +73,15 @@ export class TuiPrimitiveCalendarComponent {
             const row: Array<TuiDay> = [];
 
             for (let colIndex = 0; colIndex < DAYS_IN_WEEK; colIndex++) {
-                row.push(TuiDay.getDayFromMonthRowCol(month, rowIndex, colIndex));
+                row.push(
+                    TuiDay.getDayFromMonthRowCol(
+                        new TuiMonth(month.year, month.month, {
+                            startWeekDayIndex: this.startWeekDayIndex,
+                        }),
+                        rowIndex,
+                        colIndex,
+                    ),
+                );
             }
 
             sheet.push(row);
@@ -106,10 +120,10 @@ export class TuiPrimitiveCalendarComponent {
     };
 
     constructor(
-        @Inject(TUI_SHORT_WEEK_DAYS)
-        readonly weekDays$: Observable<
-            [string, string, string, string, string, string, string]
-        >,
+        @Inject(TUI_ORDERED_SHORT_WEEK_DAYS)
+        readonly weekDays$: Observable<WEEK_DAYS_NAMES>,
+        @Inject(TUI_START_DAY_OF_WEEK_INDEX)
+        protected readonly startWeekDayIndex: number,
     ) {}
 
     @HostBinding('class._single')
