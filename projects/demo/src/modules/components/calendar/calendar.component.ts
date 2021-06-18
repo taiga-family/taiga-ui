@@ -33,6 +33,16 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
 const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
 
+const START_DAY_OF_WEEK_TOKEN = `
+import {DAY_OF_WEEK_INDEX} from '@taiga-ui/cdk';
+import {TUI_START_DAY_OF_WEEK_INDEX} from '@taiga-ui/core';
+...
+{
+    provide: TUI_START_DAY_OF_WEEK_INDEX,
+    useValue: DAY_OF_WEEK_INDEX.SUNDAY,
+}
+`;
+
 @Component({
     selector: 'example-tui-calendar',
     templateUrl: './calendar.template.html',
@@ -41,6 +51,7 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
 export class ExampleTuiCalendarComponent {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly startDayOfWeekToken = START_DAY_OF_WEEK_TOKEN;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
