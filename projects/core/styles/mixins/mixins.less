@@ -75,7 +75,7 @@
         -webkit-text-fill-color: inherit !important;
         color: inherit !important;
         background-color: transparent !important;
-        -webkit-box-shadow: 0 0 0 62.5rem var(--tui-autofill) inset !important; // to overlay native background
+        -webkit-box-shadow: 0 0 0 1000px var(--tui-autofill) inset !important; // to overlay native background
     }
 }
 
@@ -162,50 +162,50 @@
 
 .inset-border(@direction: bottom, @mode: none) {
     & when (@direction = bottom) {
-        box-shadow: inset 0 -0.0625rem var(--tui-base-03);
+        box-shadow: inset 0 -1px var(--tui-base-03);
 
         & when (@mode = light) {
-            box-shadow: inset 0 -0.0625rem rgba(255, 255, 255, 0.24);
+            box-shadow: inset 0 -1px rgba(255, 255, 255, 0.24);
         }
 
         & when (@mode = dark) {
-            box-shadow: inset 0 -0.0625rem rgba(51, 51, 51, 0.24);
+            box-shadow: inset 0 -1px rgba(51, 51, 51, 0.24);
         }
     }
 
     & when (@direction = top) {
-        box-shadow: inset 0 0.0625rem var(--tui-base-03);
+        box-shadow: inset 0 1px var(--tui-base-03);
 
         & when (@mode = light) {
-            box-shadow: inset 0 0.0625rem rgba(255, 255, 255, 0.24);
+            box-shadow: inset 0 1px rgba(255, 255, 255, 0.24);
         }
 
         & when (@mode = dark) {
-            box-shadow: inset 0 0.0625rem rgba(51, 51, 51, 0.24);
+            box-shadow: inset 0 1px rgba(51, 51, 51, 0.24);
         }
     }
 
     & when (@direction = left) {
-        box-shadow: inset 0.0625rem 0 var(--tui-base-03);
+        box-shadow: inset 1px 0 var(--tui-base-03);
 
         & when (@mode = light) {
-            box-shadow: inset 0.0625rem 0 rgba(255, 255, 255, 0.24);
+            box-shadow: inset 1px 0 rgba(255, 255, 255, 0.24);
         }
 
         & when (@mode = dark) {
-            box-shadow: inset 0.0625rem 0 rgba(51, 51, 51, 0.24);
+            box-shadow: inset 1px 0 rgba(51, 51, 51, 0.24);
         }
     }
 
     & when (@direction = right) {
-        box-shadow: inset -0.0625rem 0 var(--tui-base-03);
+        box-shadow: inset -1px 0 var(--tui-base-03);
 
         & when (@mode = light) {
-            box-shadow: inset -0.0625rem 0 rgba(255, 255, 255, 0.24);
+            box-shadow: inset -1px 0 rgba(255, 255, 255, 0.24);
         }
 
         & when (@mode = dark) {
-            box-shadow: inset -0.0625rem 0 rgba(51, 51, 51, 0.24);
+            box-shadow: inset -1px 0 rgba(51, 51, 51, 0.24);
         }
     }
 }
@@ -223,7 +223,7 @@
     @percentage: (100% / @space * 2);
     background-image: linear-gradient(to right, @color 0%, @color @percentage, transparent @percentage);
     background-position: 0 @alignment;
-    background-size: @size 0.0625rem;
+    background-size: @size 1px;
     background-repeat: repeat-x;
 }
 
