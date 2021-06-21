@@ -13,6 +13,7 @@ import {
     nullableSame,
     TuiBooleanHandler,
     TuiDay,
+    TuiDayOfWeek,
     TuiDayRange,
     tuiDefaultProp,
     TuiMonth,
@@ -20,7 +21,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
-import {TUI_START_DAY_OF_WEEK_INDEX} from '@taiga-ui/core/tokens';
+import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {TuiColor, TuiMarkerHandler} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {
@@ -76,7 +77,7 @@ export class TuiPrimitiveCalendarComponent {
                 row.push(
                     TuiDay.getDayFromMonthRowCol(
                         new TuiMonth(month.year, month.month, {
-                            startWeekDayIndex: this.startWeekDayIndex,
+                            startWeekDayIndex: this.firstDayOfWeek,
                         }),
                         rowIndex,
                         colIndex,
@@ -122,8 +123,8 @@ export class TuiPrimitiveCalendarComponent {
     constructor(
         @Inject(TUI_ORDERED_SHORT_WEEK_DAYS)
         readonly weekDays$: Observable<WEEK_DAYS_NAMES>,
-        @Inject(TUI_START_DAY_OF_WEEK_INDEX)
-        protected readonly startWeekDayIndex: number,
+        @Inject(TUI_FIRST_DAY_OF_WEEK)
+        protected readonly firstDayOfWeek: TuiDayOfWeek,
     ) {}
 
     @HostBinding('class._single')

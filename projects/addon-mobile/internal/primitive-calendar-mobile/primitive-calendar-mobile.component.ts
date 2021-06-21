@@ -9,13 +9,14 @@ import {
     DAYS_IN_WEEK,
     TUI_IS_IOS,
     TuiDay,
+    TuiDayOfWeek,
     TuiMonth,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {
+    TUI_FIRST_DAY_OF_WEEK,
     TUI_ORDERED_SHORT_WEEK_DAYS,
     TUI_PRIMITIVE_CALENDAR_PROVIDERS,
-    TUI_START_DAY_OF_WEEK_INDEX,
     TuiPrimitiveCalendarComponent,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
@@ -39,7 +40,7 @@ export class TuiPrimitiveCalendarMobileComponent extends TuiPrimitiveCalendarCom
     set month(month: TuiMonth) {
         const sheet: Array<ReadonlyArray<TuiDay>> = [];
         const localizedMonth = new TuiMonth(month.year, month.month, {
-            startWeekDayIndex: this.startWeekDayIndex,
+            startWeekDayIndex: this.firstDayOfWeek,
         });
 
         for (let rowIndex = 0; rowIndex < ROWS_COUNT; rowIndex++) {
@@ -76,9 +77,9 @@ export class TuiPrimitiveCalendarMobileComponent extends TuiPrimitiveCalendarCom
         @Inject(TUI_IS_IOS) isIOS: boolean,
         @Inject(TUI_ORDERED_SHORT_WEEK_DAYS)
         weekDays$: Observable<[string, string, string, string, string, string, string]>,
-        @Inject(TUI_START_DAY_OF_WEEK_INDEX) startWeekDayIndex: number,
+        @Inject(TUI_FIRST_DAY_OF_WEEK) firstDayOfWeek: TuiDayOfWeek,
     ) {
-        super(weekDays$, startWeekDayIndex);
+        super(weekDays$, firstDayOfWeek);
         this.isIOS = isIOS;
     }
 }
