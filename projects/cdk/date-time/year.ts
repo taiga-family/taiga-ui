@@ -1,7 +1,5 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {DEFAULT_TIME_LOCALIZATION_OPTIONS} from '@taiga-ui/cdk/constants';
-import {TuiDayOfWeek} from '@taiga-ui/cdk/enums';
-import {TuiTimeLocalizationOptions, TuiYearLike} from '@taiga-ui/cdk/interfaces';
+import {TuiYearLike} from '@taiga-ui/cdk/interfaces';
 import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 import {
@@ -12,31 +10,13 @@ import {
     MIN_YEAR,
 } from './date-time';
 
-interface GetYearStartDaysOffsetArgs {
-    year: number;
-    /**
-     * amount of leap years prior to the passed one
-     */
-    absoluteLeapYears: number;
-    /**
-     * first day of the week index (Sunday - 0, Saturday - 6)
-     */
-    startWeekDayIndex: TuiDayOfWeek;
-}
-
 /**
  * Immutable year object
  * @nosideeffects
  */
 export class TuiYear implements TuiYearLike {
-    localizationOptions: Required<TuiTimeLocalizationOptions>;
-
-    constructor(readonly year: number, localizationOptions?: TuiTimeLocalizationOptions) {
+    constructor(readonly year: number) {
         tuiAssert.assert(TuiYear.isValidYear(year));
-        this.localizationOptions = {
-            ...DEFAULT_TIME_LOCALIZATION_OPTIONS,
-            ...localizationOptions,
-        };
     }
 
     get formattedYear(): string {
@@ -58,11 +38,7 @@ export class TuiYear implements TuiYearLike {
      * Returns day of week offset of the beginning of the current year
      */
     get yearStartDaysOffset(): number {
-        return TuiYear.getYearStartDaysOffset({
-            year: this.year,
-            absoluteLeapYears: this.absoluteLeapYears,
-            startWeekDayIndex: this.localizationOptions.startWeekDayIndex,
-        });
+        return TuiYear.getYearStartDaysOffset(this.year, this.absoluteLeapYears);
     }
 
     /**
@@ -152,50 +128,13 @@ export class TuiYear implements TuiYearLike {
     }
 
     /**
-     * @deprecated pass args as object
-     *
      * Returns day of week offset of the beginning of the passed year
+     *
      * @param year
      * @param absoluteLeapYears amount of leap years prior to the passed one
      * @return offset in days
      */
-    static getYearStartDaysOffset(year: number, absoluteLeapYears: number): number;
-    static getYearStartDaysOffset(args: GetYearStartDaysOffsetArgs): number;
-    /**
-     * Returns day of week offset of the beginning of the passed year
-     * @return offset in days
-     */
-    static getYearStartDaysOffset(
-        argOrObj: GetYearStartDaysOffsetArgs | number,
-        possibleSecondArg?: number,
-    ): number {
-        /* backward compatibility part starts */
-        const isGetYearStartDaysOffsetArgs = (
-            argOrObj: GetYearStartDaysOffsetArgs | number,
-        ): argOrObj is GetYearStartDaysOffsetArgs => {
-            return !!argOrObj && typeof argOrObj === 'object';
-        };
-
-        const {
-            year,
-            absoluteLeapYears = 0,
-            startWeekDayIndex,
-        } = isGetYearStartDaysOffsetArgs(argOrObj)
-            ? argOrObj
-            : {
-                  year: argOrObj,
-                  absoluteLeapYears: possibleSecondArg,
-                  startWeekDayIndex: DEFAULT_TIME_LOCALIZATION_OPTIONS.startWeekDayIndex,
-              };
-        /* backward compatibility part ends */
-
-        // 01.01.0000 (1y B.C.) => Saturday
-        const CALENDAR_START_WEEK_DAY_INDEX = TuiDayOfWeek.Saturday;
-        const calendarStartDaysOffset =
-            CALENDAR_START_WEEK_DAY_INDEX >= startWeekDayIndex
-                ? CALENDAR_START_WEEK_DAY_INDEX - startWeekDayIndex
-                : startWeekDayIndex;
-
+    static getYearStartDaysOffset(year: number, absoluteLeapYears: number): number {
         tuiAssert.assert(TuiYear.isValidYear(year));
         tuiAssert.assert(Number.isInteger(absoluteLeapYears));
         tuiAssert.assert(year >= absoluteLeapYears);
@@ -204,7 +143,7 @@ export class TuiYear implements TuiYearLike {
         return (
             (absoluteLeapYears * DAYS_IN_LEAP_YEAR +
                 (year - absoluteLeapYears) * DAYS_IN_NORMAL_YEAR +
-                calendarStartDaysOffset) %
+                5) %
             DAYS_IN_WEEK
         );
     }
