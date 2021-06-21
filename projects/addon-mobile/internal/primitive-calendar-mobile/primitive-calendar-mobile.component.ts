@@ -1,27 +1,11 @@
+import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {TUI_IS_IOS} from '@taiga-ui/cdk';
 import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    Inject,
-    Input,
-} from '@angular/core';
-import {
-    DAYS_IN_WEEK,
-    TUI_IS_IOS,
-    TuiDay,
-    TuiDayOfWeek,
-    TuiMonth,
-    tuiRequiredSetter,
-} from '@taiga-ui/cdk';
-import {
-    TUI_FIRST_DAY_OF_WEEK,
     TUI_ORDERED_SHORT_WEEK_DAYS,
     TUI_PRIMITIVE_CALENDAR_PROVIDERS,
     TuiPrimitiveCalendarComponent,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
-
-const ROWS_COUNT = 6;
 
 /**
  * @internal
@@ -35,41 +19,6 @@ const ROWS_COUNT = 6;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarMobileComponent extends TuiPrimitiveCalendarComponent {
-    @Input()
-    @tuiRequiredSetter()
-    set month(month: TuiMonth) {
-        const sheet: Array<ReadonlyArray<TuiDay>> = [];
-        const localizedMonth = new TuiMonth(month.year, month.month, {
-            startWeekDayIndex: this.firstDayOfWeek,
-        });
-
-        for (let rowIndex = 0; rowIndex < ROWS_COUNT; rowIndex++) {
-            const row: Array<TuiDay> = [];
-
-            for (let colIndex = 0; colIndex < DAYS_IN_WEEK; colIndex++) {
-                const day = TuiDay.getDayFromMonthRowCol(
-                    localizedMonth,
-                    rowIndex,
-                    colIndex,
-                );
-
-                if (day.month > localizedMonth.month && day.year >= localizedMonth.year) {
-                    break;
-                }
-
-                if (day.month === localizedMonth.month) {
-                    row.push(
-                        TuiDay.getDayFromMonthRowCol(localizedMonth, rowIndex, colIndex),
-                    );
-                }
-            }
-
-            sheet.push(row);
-        }
-
-        this.sheet = sheet.filter(row => row.length);
-    }
-
     @HostBinding('class._ios')
     readonly isIOS: boolean;
 
@@ -77,9 +26,8 @@ export class TuiPrimitiveCalendarMobileComponent extends TuiPrimitiveCalendarCom
         @Inject(TUI_IS_IOS) isIOS: boolean,
         @Inject(TUI_ORDERED_SHORT_WEEK_DAYS)
         weekDays$: Observable<[string, string, string, string, string, string, string]>,
-        @Inject(TUI_FIRST_DAY_OF_WEEK) firstDayOfWeek: TuiDayOfWeek,
     ) {
-        super(weekDays$, firstDayOfWeek);
+        super(weekDays$);
         this.isIOS = isIOS;
     }
 }

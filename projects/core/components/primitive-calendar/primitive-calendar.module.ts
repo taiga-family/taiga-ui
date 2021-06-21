@@ -8,6 +8,7 @@ import {
     TuiRepeatTimesModule,
 } from '@taiga-ui/cdk';
 import {TuiColorModule} from '@taiga-ui/core/directives/color';
+import {TuiConvertToCalendarSheetPipeModule} from './pipes';
 import {TuiPrimitiveCalendarComponent} from './primitive-calendar.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import {TuiPrimitiveCalendarComponent} from './primitive-calendar.component';
         TuiHoveredModule,
         TuiPressedModule,
         TuiColorModule,
+        TuiConvertToCalendarSheetPipeModule,
     ],
     declarations: [TuiPrimitiveCalendarComponent],
     exports: [TuiPrimitiveCalendarComponent],

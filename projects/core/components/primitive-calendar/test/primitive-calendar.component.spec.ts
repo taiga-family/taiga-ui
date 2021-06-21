@@ -5,9 +5,11 @@ import {
     ALWAYS_FALSE_HANDLER,
     TuiBooleanHandler,
     TuiDay,
+    TuiDayOfWeek,
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
+import {TuiConvertToCalendarSheetPipe} from '@taiga-ui/core/components/primitive-calendar/pipes/convert-to-calendar-sheet/convert-to-calendar-sheet.pipe';
 import {
     mockCurrentDate,
     pendingIfNotMoscowTimeZone,
@@ -229,13 +231,11 @@ describe('PrimitiveCalendar', () => {
         const firstlySetMonth = new TuiMonth(2019, 4);
         const candidateToSecondSet = new TuiMonth(2019, 4);
 
-        component.month = firstlySetMonth;
+        const getSheetPipe = new TuiConvertToCalendarSheetPipe(TuiDayOfWeek.Monday);
 
-        const savedSheet = component.sheet;
+        const savedSheet = getSheetPipe.transform(firstlySetMonth);
 
-        component.month = candidateToSecondSet;
-
-        expect(component.sheet).toBe(savedSheet);
+        expect(getSheetPipe.transform(candidateToSecondSet)).toBe(savedSheet);
     });
 
     function getTodayCalendarItem(): DebugElement {

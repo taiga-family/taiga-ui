@@ -9,19 +9,15 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    DAYS_IN_WEEK,
     nullableSame,
     TuiBooleanHandler,
     TuiDay,
-    TuiDayOfWeek,
     TuiDayRange,
     tuiDefaultProp,
     TuiMonth,
-    tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
-import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {TuiColor, TuiMarkerHandler} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {
@@ -29,8 +25,6 @@ import {
     TUI_PRIMITIVE_CALENDAR_PROVIDERS,
     WEEK_DAYS_NAMES,
 } from './primitive-calendar.providers';
-
-const ROWS_COUNT = 6;
 
 // @dynamic
 @Component({
@@ -41,6 +35,9 @@ const ROWS_COUNT = 6;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarComponent {
+    @Input()
+    month!: TuiMonth;
+
     @Input()
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
@@ -61,48 +58,13 @@ export class TuiPrimitiveCalendarComponent {
     @tuiDefaultProp()
     showAdjacent = true;
 
-    @Input()
-    @tuiRequiredSetter()
-    set month(month: TuiMonth) {
-        if (this.currentMonth !== null && this.currentMonth.monthSame(month)) {
-            return;
-        }
-
-        const sheet: Array<ReadonlyArray<TuiDay>> = [];
-
-        for (let rowIndex = 0; rowIndex < ROWS_COUNT; rowIndex++) {
-            const row: Array<TuiDay> = [];
-
-            for (let colIndex = 0; colIndex < DAYS_IN_WEEK; colIndex++) {
-                row.push(
-                    TuiDay.getDayFromMonthRowCol(
-                        new TuiMonth(month.year, month.month, {
-                            startWeekDayIndex: this.firstDayOfWeek,
-                        }),
-                        rowIndex,
-                        colIndex,
-                    ),
-                );
-            }
-
-            sheet.push(row);
-        }
-
-        this.sheet = sheet;
-        this.currentMonth = month;
-    }
-
     @Output()
     readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
     @Output()
     readonly dayClick = new EventEmitter<TuiDay>();
 
-    sheet: ReadonlyArray<ReadonlyArray<TuiDay>> = [];
-
     private pressedItem: TuiDay | null = null;
-
-    private currentMonth: TuiMonth | null = null;
 
     private today = TuiDay.currentLocal();
 
@@ -123,8 +85,6 @@ export class TuiPrimitiveCalendarComponent {
     constructor(
         @Inject(TUI_ORDERED_SHORT_WEEK_DAYS)
         readonly weekDays$: Observable<WEEK_DAYS_NAMES>,
-        @Inject(TUI_FIRST_DAY_OF_WEEK)
-        protected readonly firstDayOfWeek: TuiDayOfWeek,
     ) {}
 
     @HostBinding('class._single')
@@ -208,7 +168,7 @@ export class TuiPrimitiveCalendarComponent {
     }
 
     itemIsUnavailable(item: TuiDay): boolean {
-        return this.currentMonth === null || !this.currentMonth.monthSame(item);
+        return this.month === null || !this.month.monthSame(item);
     }
 
     itemIsInterval(day: TuiDay): boolean {
