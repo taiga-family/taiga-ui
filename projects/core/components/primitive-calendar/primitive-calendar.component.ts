@@ -20,18 +20,13 @@ import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
 import {TuiColor, TuiMarkerHandler} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
-import {
-    TUI_ORDERED_SHORT_WEEK_DAYS,
-    TUI_PRIMITIVE_CALENDAR_PROVIDERS,
-    WEEK_DAYS_NAMES,
-} from './primitive-calendar.providers';
+import {TUI_ORDERED_SHORT_WEEK_DAYS, WEEK_DAYS_NAMES} from './tokens';
 
 // @dynamic
 @Component({
     selector: 'tui-primitive-calendar',
     templateUrl: './primitive-calendar.template.html',
     styleUrls: ['./primitive-calendar.style.less'],
-    providers: TUI_PRIMITIVE_CALENDAR_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarComponent {
