@@ -9,6 +9,15 @@ export const TUI_ORDERED_SHORT_WEEK_DAYS = new InjectionToken<
     Observable<WEEK_DAYS_NAMES>
 >('Ordered calendars i18n texts');
 
+const convertToSundayFirstWeekFormat = (weekDaysNames: WEEK_DAYS_NAMES) => {
+    const sundayIndex = weekDaysNames.length - 1;
+
+    return [
+        weekDaysNames[sundayIndex],
+        ...weekDaysNames.slice(0, sundayIndex),
+    ] as WEEK_DAYS_NAMES;
+};
+
 export const TUI_PRIMITIVE_CALENDAR_PROVIDERS: Provider[] = [
     {
         provide: TUI_ORDERED_SHORT_WEEK_DAYS,
@@ -17,6 +26,7 @@ export const TUI_PRIMITIVE_CALENDAR_PROVIDERS: Provider[] = [
             const firstDayOfWeekIndex = inject(TUI_FIRST_DAY_OF_WEEK);
 
             return inject(TUI_SHORT_WEEK_DAYS).pipe(
+                map(convertToSundayFirstWeekFormat),
                 map(
                     weekDays =>
                         [
