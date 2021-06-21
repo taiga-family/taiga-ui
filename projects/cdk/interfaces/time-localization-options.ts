@@ -1,5 +1,5 @@
-import {DAY_OF_WEEK_INDEX} from '../enums';
+import {TuiDayOfWeek} from '../enums';
 
 export interface TuiTimeLocalizationOptions {
-    startWeekDayIndex?: DAY_OF_WEEK_INDEX;
+    startWeekDayIndex?: TuiDayOfWeek;
 }

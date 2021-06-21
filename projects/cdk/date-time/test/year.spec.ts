@@ -1,4 +1,4 @@
-import {DAY_OF_WEEK_INDEX} from '@taiga-ui/cdk/enums';
+import {TuiDayOfWeek} from '@taiga-ui/cdk/enums';
 import {TuiYear} from '../year';
 
 describe('TuiYear', () => {
@@ -179,7 +179,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 0,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(0),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(5);
             });
@@ -189,7 +189,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 1,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(1),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(0);
             });
@@ -199,7 +199,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 2,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(1);
             });
@@ -209,7 +209,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 3,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(3),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(2);
             });
@@ -219,7 +219,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 4,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(4),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(3);
             });
@@ -229,7 +229,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 5,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(5),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(5);
             });
@@ -239,7 +239,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 20,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(20),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(2);
             });
@@ -249,7 +249,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 1200,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(1200),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(5);
             });
@@ -259,7 +259,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 2000,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2000),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(5);
             });
@@ -269,7 +269,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 2001,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2001),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(0);
             });
@@ -279,7 +279,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 2018,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2018),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(0);
             });
@@ -289,7 +289,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 2020,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2020),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(2);
             });
@@ -299,7 +299,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 2100,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2100),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(4);
             });
@@ -309,7 +309,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 2104,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(2104),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(1);
             });
@@ -319,7 +319,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 1995,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(1995),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(6);
             });
@@ -329,7 +329,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 1334,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(1334),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(4);
             });
@@ -339,7 +339,7 @@ describe('TuiYear', () => {
                     TuiYear.getYearStartDaysOffset({
                         year: 3421,
                         absoluteLeapYears: TuiYear.getAbsoluteLeapYears(3421),
-                        startWeekDayIndex: DAY_OF_WEEK_INDEX.MONDAY,
+                        startWeekDayIndex: TuiDayOfWeek.Monday,
                     }),
                 ).toBe(0);
             });

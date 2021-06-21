@@ -33,13 +33,12 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
 const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
 
-const START_DAY_OF_WEEK_TOKEN = `
-import {DAY_OF_WEEK_INDEX} from '@taiga-ui/cdk';
+const START_DAY_OF_WEEK_TOKEN = `import {TuiDayOfWeek} from '@taiga-ui/cdk';
 import {TUI_START_DAY_OF_WEEK_INDEX} from '@taiga-ui/core';
 ...
 {
     provide: TUI_START_DAY_OF_WEEK_INDEX,
-    useValue: DAY_OF_WEEK_INDEX.SUNDAY,
+    useValue: TuiDayOfWeek.Sunday,
 }
 `;
 

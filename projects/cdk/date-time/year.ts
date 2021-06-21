@@ -1,6 +1,6 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {DEFAULT_TIME_LOCALIZATION_OPTIONS} from '@taiga-ui/cdk/constants';
-import {DAY_OF_WEEK_INDEX} from '@taiga-ui/cdk/enums';
+import {TuiDayOfWeek} from '@taiga-ui/cdk/enums';
 import {TuiTimeLocalizationOptions, TuiYearLike} from '@taiga-ui/cdk/interfaces';
 import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
@@ -19,9 +19,9 @@ interface GetYearStartDaysOffsetArgs {
      */
     absoluteLeapYears: number;
     /**
-     * first day of the week index (monday - 0, sunday - 6)
+     * first day of the week index (Sunday - 0, Saturday - 6)
      */
-    startWeekDayIndex: DAY_OF_WEEK_INDEX;
+    startWeekDayIndex: TuiDayOfWeek;
 }
 
 /**
@@ -190,7 +190,7 @@ export class TuiYear implements TuiYearLike {
         /* backward compatibility part ends */
 
         // 01.01.0000 (1y B.C.) => Saturday
-        const CALENDAR_START_WEEK_DAY_INDEX = DAY_OF_WEEK_INDEX.SATURDAY;
+        const CALENDAR_START_WEEK_DAY_INDEX = TuiDayOfWeek.Saturday;
         const calendarStartDaysOffset =
             CALENDAR_START_WEEK_DAY_INDEX >= startWeekDayIndex
                 ? CALENDAR_START_WEEK_DAY_INDEX - startWeekDayIndex

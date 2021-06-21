@@ -3,4 +3,4 @@ export * from './input-mode';
 export * from './input-type';
 export * from './month-number';
 export * from './overscroll-mode';
-export * from './days-of-week';
+export * from './day-of-week';
