@@ -1,6 +1,7 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {DAYS_IN_WEEK, TuiDay, TuiDayOfWeek, TuiMonth} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
+import {getDayFromMonthRowCol} from './utils';
 
 const CALENDAR_ROWS_COUNT = 6;
 
@@ -31,13 +32,12 @@ export class TuiConvertToCalendarSheetPipe implements PipeTransform {
             const row: Array<TuiDay> = [];
 
             for (let colIndex = 0; colIndex < DAYS_IN_WEEK; colIndex++) {
-                const day = TuiDay.getDayFromMonthRowCol(
-                    new TuiMonth(month.year, month.month, {
-                        startWeekDayIndex: this.firstDayOfWeek,
-                    }),
+                const day = getDayFromMonthRowCol({
+                    month,
                     rowIndex,
                     colIndex,
-                );
+                    firstDayOfWeek: this.firstDayOfWeek,
+                });
 
                 const isPrevMonthDay = (day: TuiDay, relativeToMonth = month) =>
                     day.year < relativeToMonth.year || day.month < relativeToMonth.month;
