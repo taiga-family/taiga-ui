@@ -7,6 +7,7 @@ import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
+import {default as exampleFirstDayOfWeekToken} from '!!raw-loader!./examples/import/first-day-of-week-token.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -33,15 +34,6 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
 const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
 
-const START_DAY_OF_WEEK_TOKEN = `import {TuiDayOfWeek} from '@taiga-ui/cdk';
-import {TUI_START_DAY_OF_WEEK_INDEX} from '@taiga-ui/core';
-...
-{
-    provide: TUI_START_DAY_OF_WEEK_INDEX,
-    useValue: TuiDayOfWeek.Sunday,
-}
-`;
-
 @Component({
     selector: 'example-tui-calendar',
     templateUrl: './calendar.template.html',
@@ -50,7 +42,7 @@ import {TUI_START_DAY_OF_WEEK_INDEX} from '@taiga-ui/core';
 export class ExampleTuiCalendarComponent {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
-    readonly startDayOfWeekToken = START_DAY_OF_WEEK_TOKEN;
+    readonly firstDayOfWeekToken = exampleFirstDayOfWeekToken;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
