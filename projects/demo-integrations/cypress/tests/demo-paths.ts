@@ -79,7 +79,6 @@ export const DEMO_PATHS = [
     'components/resizable-column',
     'components/table-pagination',
     'components/tag',
-    'components/theme-night',
     'components/theme-switcher',
     'components/toggle',
     'components/tooltip',
