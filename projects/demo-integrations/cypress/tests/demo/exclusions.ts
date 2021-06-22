@@ -1,6 +1,7 @@
 const map = new Map([
-    ['tui-select', [5, 6]],
-    ['tui-multi-select', [4]],
+    ['components/select', [5, 6]],
+    ['components/multi-select', [4]],
+    ['components/line-days-chart', [1]],
 ]);
 
 export function excluded(path: string, sample: number): boolean {
