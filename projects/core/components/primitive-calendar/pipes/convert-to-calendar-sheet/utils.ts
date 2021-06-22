@@ -1,41 +1,11 @@
 import {
-    DAYS_IN_LEAP_YEAR,
-    DAYS_IN_NORMAL_YEAR,
     DAYS_IN_WEEK,
     inRange,
     tuiAssert,
     TuiDay,
     TuiDayOfWeek,
     TuiMonth,
-    TuiYear,
 } from '@taiga-ui/cdk';
-
-/**
- * Returns day of week offset of the beginning of the passed year
- */
-const getYearStartDaysOffset = (
-    tuiYear: TuiYear,
-    firstDayOfWeek: TuiDayOfWeek,
-): number => {
-    // 01.01.0000 (1y B.C.) => Saturday
-    const CALENDAR_START_WEEK_DAY_INDEX = TuiDayOfWeek.Saturday;
-    const calendarStartDaysOffset =
-        CALENDAR_START_WEEK_DAY_INDEX >= firstDayOfWeek
-            ? CALENDAR_START_WEEK_DAY_INDEX - firstDayOfWeek
-            : firstDayOfWeek;
-    const absoluteLeapYears = tuiYear.absoluteLeapYears;
-    const year = tuiYear.year;
-
-    tuiAssert.assert(year >= absoluteLeapYears);
-    tuiAssert.assert(absoluteLeapYears >= 0);
-
-    return (
-        (absoluteLeapYears * DAYS_IN_LEAP_YEAR +
-            (year - absoluteLeapYears) * DAYS_IN_NORMAL_YEAR +
-            calendarStartDaysOffset) %
-        DAYS_IN_WEEK
-    );
-};
 
 /**
  * Computes day of week offset of the beginning of the month
@@ -44,13 +14,11 @@ const getMonthStartDaysOffset = (
     month: TuiMonth,
     firstDayOfWeek: TuiDayOfWeek,
 ): number => {
-    let result = getYearStartDaysOffset(new TuiYear(month.year), firstDayOfWeek);
+    const startMonthOffsetFromSunday = new Date(month.year, month.month, 1).getDay();
 
-    for (let currentMonth = 0; currentMonth <= month.month - 1; currentMonth++) {
-        result += TuiMonth.getMonthDaysCount(currentMonth, month.isLeapYear);
-    }
-
-    return result % DAYS_IN_WEEK;
+    return startMonthOffsetFromSunday >= firstDayOfWeek
+        ? startMonthOffsetFromSunday - firstDayOfWeek
+        : DAYS_IN_WEEK - (firstDayOfWeek - startMonthOffsetFromSunday);
 };
 
 /*
