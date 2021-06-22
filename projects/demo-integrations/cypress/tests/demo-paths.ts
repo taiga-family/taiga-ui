@@ -15,7 +15,6 @@ export const DEMO_PATHS = [
     'components/bar-set',
     'components/legend-item',
     'components/line-chart',
-    'components/line-days-chart',
     'components/pie-chart',
     'components/ring-chart',
     'components/checkbox',
