@@ -3,7 +3,7 @@
     "include": ["projects/**/*"],
     "exclude": [
         "projects/**/*.spec.ts",
-        "projects/cypress-testing",
+        "projects/demo-integrations",
         "**/schematics/**/*"
     ],
     "compilerOptions": {

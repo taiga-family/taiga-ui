@@ -1,0 +1,26 @@
+name: Demo-integrations
+
+on:
+    push:
+        paths:
+            - 'projects/**'
+            - '!projects/*testing/**'
+            - '!angular.json'
+            - '!package.json'
+            - '!tsconfig*'
+
+jobs:
+    demo-integrations:
+        runs-on: ubuntu-20.04
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Run screenshot tests
+              uses: cypress-io/github-action@v2
+              with:
+                  build: npm run build:demo
+                  command: npm run demo:integrations:ci
+                  record: true
+              env:
+                  CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
