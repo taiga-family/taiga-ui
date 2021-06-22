@@ -7,4 +7,4 @@ export * from './is-ios';
 export * from './is-mobile';
 export * from './removed-element';
 export * from './sanitizer';
-export * from './is-back-forward-navigation';
+export * from './popstate-stream';
