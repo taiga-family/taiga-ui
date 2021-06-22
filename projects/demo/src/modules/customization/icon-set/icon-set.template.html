@@ -54,17 +54,24 @@
         <h2>Sanitizer</h2>
         <p i18n>
             If you use unsafe icons or have kind of WYSISYG editor in your app
-            you need to provide TUI_SANITIZER token, which is responsible for
-            removing malicious code from the svg. We recommend to use
+            you need to provide <code>TUI_SANITIZER</code> token, which is
+            responsible for removing malicious code from the svg. We recommend
+            to use
             <a
                 tuiLink
                 href="https://github.com/TinkoffCreditSystems/ng-dompurify"
                 target="_blank"
                 >NgDompurify</a
             >
-            as sanitizer. This library implements DOMPurify as Angular Sanitizer
-            or Pipe. It delegates sanitizing to DOMPurify and supports the same
-            configuration.
+            as a sanitizer. This library implements
+            <a
+                tuiLink
+                href="https://github.com/cure53/DOMPurify"
+                target="_blank"
+                >DOMPurify</a
+            >
+            as Angular Sanitizer or Pipe. It delegates sanitizing to DOMPurify
+            and supports the same configuration.
         </p>
 
         <tui-doc-code
