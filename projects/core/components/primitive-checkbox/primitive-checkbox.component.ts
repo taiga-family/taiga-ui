@@ -45,8 +45,16 @@ export class TuiPrimitiveCheckboxComponent {
     @tuiDefaultProp()
     invalid = false;
 
-    @Input()
+    @Input('value')
     @tuiDefaultProp()
+    set valueSetter(value: boolean | null) {
+        if (value !== false) {
+            this.setCurrentIcon(value);
+        }
+
+        this.value = value;
+    }
+
     value: boolean | null = false;
 
     constructor(
@@ -69,7 +77,7 @@ export class TuiPrimitiveCheckboxComponent {
     }
 
     get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
-        return this.computedIcon(this.value);
+        return this.currentIcon;
     }
 
     get context(): TuiContextWithImplicit<TuiSizeL> {
@@ -79,17 +87,6 @@ export class TuiPrimitiveCheckboxComponent {
     @tuiPure
     private getContext($implicit: TuiSizeL): TuiContextWithImplicit<TuiSizeL> {
         return {$implicit};
-    }
-
-    @tuiPure
-    private computedIcon(
-        value: boolean | null,
-    ): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
-        if (!this.empty) {
-            this.setCurrentIcon(value);
-        }
-
-        return this.currentIcon;
     }
 
     private setCurrentIcon(value: null | boolean) {
