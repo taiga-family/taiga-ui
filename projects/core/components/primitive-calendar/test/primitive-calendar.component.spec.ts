@@ -9,7 +9,7 @@ import {
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import {TuiConvertToCalendarSheetPipe} from '@taiga-ui/core/components/primitive-calendar/pipes/convert-to-calendar-sheet/convert-to-calendar-sheet.pipe';
+import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {
     mockCurrentDate,
@@ -232,7 +232,7 @@ describe('PrimitiveCalendar', () => {
         const firstlySetMonth = new TuiMonth(2019, 4);
         const candidateToSecondSet = new TuiMonth(2019, 4);
 
-        const getSheetPipe = new TuiConvertToCalendarSheetPipe(TuiDayOfWeek.Monday);
+        const getSheetPipe = new TuiCalendarSheetPipe(TuiDayOfWeek.Monday);
 
         const savedSheet = getSheetPipe.transform(firstlySetMonth);
 
