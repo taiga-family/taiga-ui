@@ -28,3 +28,4 @@ jobs:
               with:
                   name: cypress-screenshots
                   path: projects/demo-integrations/cypress/snapshots
+                  retention-days: 7
