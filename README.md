@@ -68,7 +68,7 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide
                     title="Twitter"
                     ><img
                         width="16"
-                        src="https://raw.githubusercontent.com/feathericons/feather/master/icons/twitter.svg"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/twitter.svg"
                 /></a>
                 <a href="https://github.com/waterplea" title="Github"
                     ><img
