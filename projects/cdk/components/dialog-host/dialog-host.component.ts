@@ -2,7 +2,8 @@ import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
 import {TuiAriaDialogContext} from '@taiga-ui/cdk/interfaces';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
-import {merge, Observable} from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 // @dynamic
 @Component({
@@ -13,10 +14,12 @@ import {merge, Observable} from 'rxjs';
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiDialogHostComponent<T extends TuiAriaDialogContext> {
-    readonly dialogs$ = merge(...this.dialogs);
+    readonly dialogs$ = combineLatest(this.allTypesDialogs).pipe(
+        map(allTypesDialogs => new Array<T>().concat(...allTypesDialogs)),
+    );
 
     constructor(
         @Inject(TUI_DIALOGS)
-        private readonly dialogs: ReadonlyArray<Observable<ReadonlyArray<T>>>,
+        private readonly allTypesDialogs: Observable<readonly T[]>[],
     ) {}
 }
