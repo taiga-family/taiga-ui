@@ -19,8 +19,7 @@ export class TuiCalendarSheetPipe implements PipeTransform {
 
     transform(
         month: TuiMonth,
-        showPrevMonthDays: boolean = false,
-        showNextMonthDays: boolean = false,
+        showAdjacentDays: boolean = false,
     ): ReadonlyArray<ReadonlyArray<TuiDay>> {
         if (this.currentMonth !== null && this.currentMonth.monthSame(month)) {
             return this.currentSheet;
@@ -45,11 +44,11 @@ export class TuiCalendarSheetPipe implements PipeTransform {
                 const isNextMonthDay = (day: TuiDay, relativeToMonth = month) =>
                     day.year > relativeToMonth.year || day.month > relativeToMonth.month;
 
-                if (isPrevMonthDay(day) && !showPrevMonthDays) {
+                if (isPrevMonthDay(day) && !showAdjacentDays) {
                     continue;
                 }
 
-                if (isNextMonthDay(day) && !showNextMonthDays) {
+                if (isNextMonthDay(day) && !showAdjacentDays) {
                     break;
                 }
 
