@@ -31,7 +31,8 @@ import {TUI_ORDERED_SHORT_WEEK_DAYS, WEEK_DAYS_NAMES} from './tokens';
 })
 export class TuiPrimitiveCalendarComponent {
     @Input()
-    month!: TuiMonth;
+    @tuiDefaultProp()
+    month: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
     @tuiDefaultProp()
@@ -163,7 +164,7 @@ export class TuiPrimitiveCalendarComponent {
     }
 
     itemIsUnavailable(item: TuiDay): boolean {
-        return this.month === null || !this.month.monthSame(item);
+        return !this.month.monthSame(item);
     }
 
     itemIsInterval(day: TuiDay): boolean {
