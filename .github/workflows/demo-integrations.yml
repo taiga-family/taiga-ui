@@ -15,12 +15,16 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v2
+
             - name: Run screenshot tests
               uses: cypress-io/github-action@v2
               with:
                   build: npm run build:demo
                   command: npm run demo:integrations:ci
-                  record: true
-              env:
-                  CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Upload artifact
+              uses: actions/upload-artifact@v1
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: cypress/screenshots
