@@ -22,7 +22,7 @@ const getMonthStartDaysOffset = (
 };
 
 /*
-TODO delete:
+TODO: delete in v3.0:
  * TuiDay.getDayFromMonthRowCol
  * TuiMonth.monthStartDaysOffset
  * TuiMonth.weeksRowsCount
