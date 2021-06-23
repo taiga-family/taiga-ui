@@ -18,9 +18,9 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
+import {TUI_ORDERED_SHORT_WEEK_DAYS, WEEK_DAYS_NAMES} from '@taiga-ui/core/tokens';
 import {TuiColor, TuiMarkerHandler} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
-import {TUI_ORDERED_SHORT_WEEK_DAYS, WEEK_DAYS_NAMES} from './tokens';
 
 // @dynamic
 @Component({

@@ -16,3 +16,4 @@ export * from './scroll-ref';
 export * from './textfield-appearance';
 export * from './value-accessor';
 export * from './first-day-of-week';
+export * from './ordered-short-week-days';
