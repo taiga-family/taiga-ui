@@ -4,7 +4,6 @@ import {TuiDayOfWeek} from '@taiga-ui/cdk';
 export const TUI_FIRST_DAY_OF_WEEK = new InjectionToken<TuiDayOfWeek>(
     'The first day of the week index',
     {
-        providedIn: 'root',
         factory: () => TuiDayOfWeek.Monday,
     },
 );
