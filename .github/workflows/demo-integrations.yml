@@ -27,4 +27,4 @@ jobs:
               if: failure()
               with:
                   name: cypress-screenshots
-                  path: cypress/screenshots
+                  path: projects/demo-integrations/cypress/snapshots
