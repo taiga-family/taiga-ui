@@ -8,6 +8,9 @@ on:
             - '!angular.json'
             - '!package.json'
             - '!tsconfig*'
+        branches:
+            - '!main'
+            - '!release/**'
 
 jobs:
     demo-integrations:
