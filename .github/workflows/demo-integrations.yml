@@ -10,6 +10,7 @@ on:
             - '!tsconfig*'
         branches:
             - '!release/**'
+            - 'main'
 
 jobs:
     demo-integrations:
