@@ -50,6 +50,37 @@
         folder and provide <code>TUI_ICONS_PATH</code> as seen in example below:
     </p>
 
+    <section id="sanitizer">
+        <h2>Sanitizer</h2>
+        <p i18n>
+            If you use unsafe icons or
+            <a tuiLink routerLink="/components/editor">Editor component</a> you
+            need to provide <code>TUI_SANITIZER</code> token, which is
+            responsible for removing malicious code from the svg. We recommend
+            to use
+            <a
+                tuiLink
+                href="https://github.com/TinkoffCreditSystems/ng-dompurify"
+                target="_blank"
+                >NgDompurify</a
+            >
+            as a sanitizer. This library implements
+            <a
+                tuiLink
+                href="https://github.com/cure53/DOMPurify"
+                target="_blank"
+                >DOMPurify</a
+            >
+            as Angular Sanitizer or Pipe. It delegates sanitizing to DOMPurify
+            and supports the same configuration.
+        </p>
+
+        <tui-doc-code
+            filename="app.module.ts"
+            [code]="exampleSanitier"
+        ></tui-doc-code>
+    </section>
+
     <tui-doc-example
         id="material"
         i18n-heading
