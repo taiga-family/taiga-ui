@@ -19,7 +19,7 @@
         [disabled]="disabled"
         [readOnly]="readOnly"
         [textMask]="textMaskOptions"
-        [iconContent]="iconContent"
+        [iconContent]="icon"
         [value]="computedValue"
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
@@ -42,16 +42,4 @@
             {{item}}
         </button>
     </tui-data-list>
-</ng-template>
-
-<ng-template #iconContent="polymorpheus" polymorpheus>
-    <span polymorpheus-outlet [content]="icon" [context]="context">
-        <ng-template let-icon>
-            <tui-svg
-                automation-id="tui-input-time__icon"
-                class="icon"
-                [src]="icon"
-            ></tui-svg>
-        </ng-template>
-    </span>
 </ng-template>

@@ -28,11 +28,9 @@ import {
     TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {
-    TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -94,8 +92,6 @@ export class TuiInputTimeComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_TIME_TEXTS)
         private readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
         @Inject(TUI_INPUT_TIME_OPTIONS)
@@ -146,10 +142,6 @@ export class TuiInputTimeComponent
 
     get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
         return this.options.icon;
-    }
-
-    get context(): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
-        return this.getContext(this.textfieldSize.size);
     }
 
     get nativeValue(): string {
@@ -322,13 +314,6 @@ export class TuiInputTimeComponent
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
             this.close();
         }
-    }
-
-    @tuiPure
-    private getContext(
-        $implicit: TuiSizeS | TuiSizeL,
-    ): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
-        return {$implicit};
     }
 
     @tuiPure
