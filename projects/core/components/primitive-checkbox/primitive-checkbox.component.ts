@@ -18,7 +18,8 @@ import {CheckboxOptions, TUI_CHECKBOX_OPTIONS} from './checkbox-options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCheckboxComponent {
-    private currentIcon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> = '';
+    icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> = this.options.icons
+        .checked;
 
     @Input()
     @HostBinding('attr.data-tui-host-size')
@@ -76,10 +77,6 @@ export class TuiPrimitiveCheckboxComponent {
         return this.value === false;
     }
 
-    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
-        return this.currentIcon;
-    }
-
     get context(): TuiContextWithImplicit<TuiSizeL> {
         return this.getContext(this.size);
     }
@@ -90,7 +87,7 @@ export class TuiPrimitiveCheckboxComponent {
     }
 
     private setCurrentIcon(value: null | boolean) {
-        this.currentIcon =
+        this.icon =
             value === null
                 ? this.options.icons.indeterminate
                 : this.options.icons.checked;
