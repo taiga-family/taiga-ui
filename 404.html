@@ -3,6 +3,7 @@
     <head><base href="/">
         <script>
             if (location.pathname.includes('next')) {
+                localStorage.setItem('env', location.pathname)
                 location.replace('next');
             }
         </script>
