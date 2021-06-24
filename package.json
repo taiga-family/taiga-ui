@@ -24,7 +24,7 @@
         "build": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --configuration=production",
         "postbuild": "node scripts/check-dist.js",
         "build:demo": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod --configuration=production",
-        "build:demo:next": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod --configuration=next",
+        "build:demo:next": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod  --configuration=next",
         "postbuild:demo": "cp ./dist/demo/browser/index.html ./dist/demo/browser/404.html",
         "*** Icons ***": "",
         "prebuild:icons": "ts-node --project ./tsconfig.compiler.json projects/icons/scripts/compile-icons.ts",
