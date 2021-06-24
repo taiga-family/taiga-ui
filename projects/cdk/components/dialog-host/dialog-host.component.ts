@@ -14,7 +14,7 @@ import {map} from 'rxjs/operators';
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiDialogHostComponent<T extends TuiAriaDialogContext> {
-    readonly dialogs$ = combineLatest(this.allTypesDialogs).pipe(
+    readonly dialogs$ = combineLatest(this.dialogsByType).pipe(
         map(allTypesDialogs =>
             new Array<T>()
                 .concat(...allTypesDialogs)
@@ -24,6 +24,6 @@ export class TuiDialogHostComponent<T extends TuiAriaDialogContext> {
 
     constructor(
         @Inject(TUI_DIALOGS)
-        private readonly allTypesDialogs: Observable<readonly T[]>[],
+        private readonly dialogsByType: Observable<readonly T[]>[],
     ) {}
 }
