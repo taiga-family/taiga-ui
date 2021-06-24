@@ -17,6 +17,7 @@ export const TUI_TEXTFIELD_CUSTOM_CONTENT = new InjectionToken<TuiTextfieldCusto
     ],
 })
 export class TuiTextfieldCustomContentDirective extends TuiController {
+    // TODO: Remove null in 3.0
     @Input('tuiTextfieldCustomContent')
     customContent: PolymorpheusContent | null = null;
 }

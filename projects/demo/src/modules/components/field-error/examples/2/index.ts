@@ -7,7 +7,7 @@ import {
     Validators,
 } from '@angular/forms';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -31,10 +31,10 @@ export function innValidator(field: AbstractControl): any {
 })
 export class TuiFieldErrorExample2 implements OnInit {
     @ViewChild('errorContent')
-    errorContent?: PolymorpheusTemplate<{}>;
+    errorContent: PolymorpheusContent = '';
 
     @ViewChild('bigErrorContent')
-    bigErrorContent?: PolymorpheusTemplate<{}>;
+    bigErrorContent: PolymorpheusContent = '';
 
     readonly testValue2 = new FormControl('');
 
@@ -48,7 +48,7 @@ export class TuiFieldErrorExample2 implements OnInit {
     ): ValidationErrors | null =>
         field.value
             ? {
-                  inn: new TuiValidationError(this.bigErrorContent || ''),
+                  inn: new TuiValidationError(this.bigErrorContent),
               }
             : null;
 
@@ -62,7 +62,7 @@ export class TuiFieldErrorExample2 implements OnInit {
             (secretRegexTen.test(field.value) || secretRegexTwelve.test(field.value))
                 ? null
                 : {
-                      secret: new TuiValidationError(this.errorContent || ''),
+                      secret: new TuiValidationError(this.errorContent),
                   };
     }
 }

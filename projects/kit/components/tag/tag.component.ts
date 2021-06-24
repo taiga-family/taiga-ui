@@ -88,6 +88,7 @@ export class TuiTagComponent {
     @tuiDefaultProp()
     autoColor = false;
 
+    // TODO: Remove null in 3.0
     @Input()
     @tuiDefaultProp()
     leftContent: PolymorpheusContent | null = null;

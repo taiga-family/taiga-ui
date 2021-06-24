@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -17,7 +17,7 @@ export class TuiDialogExampleComponent3 {
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     ) {}
 
-    showDialog(content: PolymorpheusTemplate<TuiDialogContext>) {
+    showDialog(content: PolymorpheusContent<TuiDialogContext>) {
         this.dialogService.open(content).subscribe();
     }
 

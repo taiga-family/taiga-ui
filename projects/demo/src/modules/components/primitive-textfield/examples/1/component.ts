@@ -41,6 +41,7 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
     @Input()
     autocomplete: TuiAccountAutofillName | null = null;
 
+    // TODO: Remove null in 3.0
     @Input()
     hintContent: PolymorpheusContent | null = null;
 

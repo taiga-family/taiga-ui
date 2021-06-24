@@ -34,8 +34,8 @@ export class TuiTextfieldController {
         return this.cleanerDirective.cleaner;
     }
 
-    get customContent(): PolymorpheusContent | null {
-        return this.customContentDirective.customContent;
+    get customContent(): PolymorpheusContent {
+        return this.customContentDirective.customContent || '';
     }
 
     get exampleText(): string {

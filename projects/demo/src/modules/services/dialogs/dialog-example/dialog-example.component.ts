@@ -1,4 +1,5 @@
 import {Component, Inject, TemplateRef} from '@angular/core';
+import {TuiMobileDialogService} from '@taiga-ui/addon-mobile';
 import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../../change-detection-strategy';
@@ -15,7 +16,7 @@ export class DialogExampleComponent {
     items = [10, 50, 100];
 
     constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+        @Inject(TuiMobileDialogService) private readonly dialogService: TuiDialogService,
         @Inject(POLYMORPHEUS_CONTEXT)
         private readonly context: TuiDialogContext<number, number>,
     ) {}

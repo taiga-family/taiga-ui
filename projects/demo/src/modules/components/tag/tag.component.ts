@@ -82,14 +82,14 @@ export class ExampleTuiTagComponent {
     @ViewChild('errorIcon')
     errorTemplate?: TemplateRef<{}>;
 
-    readonly leftContentVariants = ['Error icon'];
+    readonly leftContentVariants = ['', 'Error icon'];
 
-    leftContentSelected = null;
+    leftContentSelected = '';
 
-    get leftContent(): PolymorpheusContent | null {
+    get leftContent(): PolymorpheusContent {
         return this.errorTemplate && this.leftContentSelected !== null
             ? this.errorTemplate
-            : null;
+            : '';
     }
 
     editTag(value: string) {

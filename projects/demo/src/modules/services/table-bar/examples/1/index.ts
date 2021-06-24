@@ -1,6 +1,6 @@
 import {Component, Inject, ViewChild} from '@angular/core';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subscription} from 'rxjs';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
@@ -15,8 +15,8 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiTableBarExampleComponent1 {
     subscription = new Subscription();
 
-    @ViewChild('tableBarTemplate', {read: PolymorpheusTemplate})
-    tableBarTemplate?: PolymorpheusTemplate<{}>;
+    @ViewChild('tableBarTemplate')
+    tableBarTemplate: PolymorpheusContent = '';
 
     constructor(
         @Inject(TuiTableBarsService)
