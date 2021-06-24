@@ -5,9 +5,9 @@ const INDEX_PATH = `${DEMO_PATH}/index.html`;
 const NOT_FOUND_PATH = `${DEMO_PATH}/404.html`;
 
 const SMOKER_BALANCER = `<script>
-if (location.pathname.includes('next')) {
+if (!localStorage.getItem('env') && location.pathname.includes('next')) {
     localStorage.setItem('env', location.pathname)
-    location.replace('next');
+    location.replace('/next');
 } else {
     localStorage.removeItem('env');
 }

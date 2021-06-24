@@ -38,6 +38,7 @@ export class AppComponent {
         const env = localStorage.getItem('env');
 
         if (env) {
+            localStorage.removeItem('env');
             router.navigateByUrl(env.replace(/\/[A-z0-9]*\//, ''));
         }
     }
