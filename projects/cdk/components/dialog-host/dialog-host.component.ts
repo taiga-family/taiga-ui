@@ -15,7 +15,11 @@ import {map} from 'rxjs/operators';
 })
 export class TuiDialogHostComponent<T extends TuiAriaDialogContext> {
     readonly dialogs$ = combineLatest(this.allTypesDialogs).pipe(
-        map(allTypesDialogs => new Array<T>().concat(...allTypesDialogs)),
+        map(allTypesDialogs =>
+            new Array<T>()
+                .concat(...allTypesDialogs)
+                .sort((a, b) => a.createdAt - b.createdAt),
+        ),
     );
 
     constructor(
