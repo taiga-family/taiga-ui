@@ -2,7 +2,9 @@
 <html>
     <head><base href="/">
         <script>
-            console.log(JSON.stringify(location));
+            if (location.pathname.includes('next')) {
+                location.replace('next');
+            }
         </script>
         <meta charset="utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
