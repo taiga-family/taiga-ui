@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head><script>
-if (location.pathname.includes('next')) {
+if (!localStorage.getItem('env') && location.pathname.includes('next')) {
     localStorage.setItem('env', location.pathname)
     location.replace('next');
 } else {
