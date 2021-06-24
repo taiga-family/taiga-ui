@@ -40,7 +40,7 @@
         "demo:integrations:ci": "npm run cypress:run:master && npm run demo:integrations",
         "cypress:open": "cypress open --browser chrome --project ./projects/demo-integrations",
         "cypress:run": "cypress run --env ci=true --browser chrome --headless --project ./projects/demo-integrations",
-        "cypress:run:master": "cypress run --env ci=true --browser chrome --headless --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev\"",
+        "cypress:run:master": "cypress run --env ci=true --browser chrome --headless --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\"",
         "cypress:open:master": "cypress open --browser chrome --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\""
     },
     "keywords": [
