@@ -34,3 +34,4 @@ jobs:
               with:
                   branch: test-branch
                   folder: dist/demo/browser/next
+                  target-folder: next
