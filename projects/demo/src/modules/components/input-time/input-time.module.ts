@@ -14,6 +14,7 @@ import {TuiInputTimeModule, TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputTimeExample1} from './examples/1';
 import {TuiInputTimeExample2} from './examples/2';
+import {TuiInputTimeExample3} from './examples/3';
 import {ExampleTuiInputTimeComponent} from './input-time.component';
 
 @NgModule({
@@ -36,6 +37,7 @@ import {ExampleTuiInputTimeComponent} from './input-time.component';
         ExampleTuiInputTimeComponent,
         TuiInputTimeExample1,
         TuiInputTimeExample2,
+        TuiInputTimeExample3,
     ],
     exports: [ExampleTuiInputTimeComponent],
 })
