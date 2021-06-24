@@ -9,7 +9,6 @@ on:
             - '!package.json'
             - '!tsconfig*'
         branches:
-            - '!main'
             - '!release/**'
 
 jobs:
