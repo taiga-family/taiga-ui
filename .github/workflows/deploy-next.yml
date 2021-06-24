@@ -30,8 +30,7 @@ jobs:
                   npm ci
                   npm run build:demo:next
             - name: Deploy
-              uses: JamesIves/github-pages-deploy-action@releases/v3
+              uses: JamesIves/github-pages-deploy-action@4.1.4
               with:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  BRANCH: test-branch
-                  FOLDER: dist/demo/browser
+                  branch: test-branch
+                  folder: dist/demo/browser/next
