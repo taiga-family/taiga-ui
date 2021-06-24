@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <head><base href="/next/">
+    <head><script>
+if (location.pathname.includes('next')) {
+    localStorage.setItem('env', location.pathname)
+    location.replace('next');
+} else {
+    localStorage.removeItem('env');
+}
+</script><base href="/next/">
         <meta charset="utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -68,5 +75,5 @@
     <link rel="stylesheet" href="/next/styles.343d56f793177bbe3db6.css"></head>
     <body>
         <app></app>
-    <script src="/next/runtime-es2015.da3e5bcace0a74daf35e.js" type="module"></script><script src="/next/runtime-es5.da3e5bcace0a74daf35e.js" nomodule defer></script><script src="/next/polyfills-es5.b6ecb8dd32000cea78b8.js" nomodule defer></script><script src="/next/polyfills-es2015.fc8a66fdb50a648ec494.js" type="module"></script><script src="/next/scripts.ef1d66c5a4cb0ac8a43a.js" defer></script><script src="/next/main-es2015.6bbec739eedb871cc179.js" type="module"></script><script src="/next/main-es5.6bbec739eedb871cc179.js" nomodule defer></script></body>
+    <script src="/next/runtime-es2015.da3e5bcace0a74daf35e.js" type="module"></script><script src="/next/runtime-es5.da3e5bcace0a74daf35e.js" nomodule defer></script><script src="/next/polyfills-es5.b6ecb8dd32000cea78b8.js" nomodule defer></script><script src="/next/polyfills-es2015.fc8a66fdb50a648ec494.js" type="module"></script><script src="/next/scripts.ef1d66c5a4cb0ac8a43a.js" defer></script><script src="/next/main-es2015.d56cbe02f53f9c916f1c.js" type="module"></script><script src="/next/main-es5.d56cbe02f53f9c916f1c.js" nomodule defer></script></body>
 </html>
