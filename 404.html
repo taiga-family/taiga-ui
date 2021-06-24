@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <head><base href="/">
-        <script>
-            if (location.pathname.includes('next')) {
-                localStorage.setItem('env', location.pathname)
-                location.replace('next');
-            }
-        </script>
+    <head><script>
+if (location.pathname.includes('next')) {
+    localStorage.setItem('env', location.pathname)
+    location.replace('next');
+} else {
+    localStorage.removeItem('env');
+}
+</script><base href="/">
         <meta charset="utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
