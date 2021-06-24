@@ -577,7 +577,7 @@
                             "optimization": true,
                             "baseHref": "/next/",
                             "deployUrl": "/next/",
-                            "outputPath": "dist/demo/browser/next",
+                            "outputPath": "dist/demo/browser",
                             "outputHashing": "all",
                             "sourceMap": false,
                             "extractCss": true,

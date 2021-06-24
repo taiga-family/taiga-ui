@@ -33,5 +33,5 @@ jobs:
               uses: JamesIves/github-pages-deploy-action@4.1.4
               with:
                   branch: gh-pages
-                  folder: dist/demo/browser/next
+                  folder: dist/demo/browser
                   target-folder: next
