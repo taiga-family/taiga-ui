@@ -34,4 +34,4 @@ jobs:
               with:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   BRANCH: test-branch
-                  FOLDER: dist/demo/browser/next
+                  FOLDER: dist/demo/browser
