@@ -1,4 +1,3 @@
-import {APP_BASE_HREF} from '@angular/common';
 import {ChangeDetectorRef, Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
@@ -25,7 +24,6 @@ export class AppComponent {
         @Inject(Router) router: Router,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(LOCAL_STORAGE) localStorage: Storage,
-        @Inject(APP_BASE_HREF) baseHref: string,
     ) {
         router.events
             .pipe(
@@ -40,7 +38,7 @@ export class AppComponent {
         const env = localStorage.getItem('env');
 
         if (env) {
-            router.navigateByUrl(env.replace(baseHref, ''));
+            router.navigateByUrl(env.replace(/\/[A-z0-9]*\//, ''));
         }
     }
 
