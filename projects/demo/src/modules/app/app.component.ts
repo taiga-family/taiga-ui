@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
+import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure, watch} from '@taiga-ui/cdk';
 import {VERSION} from '@taiga-ui/core';
 import {distinctUntilChanged, map} from 'rxjs/operators';
@@ -22,6 +23,7 @@ export class AppComponent {
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
         @Inject(Router) router: Router,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(LOCAL_STORAGE) localStorage: Storage,
     ) {
         router.events
             .pipe(
@@ -32,6 +34,13 @@ export class AppComponent {
             .subscribe(landing => {
                 this.landing = landing;
             });
+
+        const env = localStorage.getItem('env');
+
+        if (env) {
+            localStorage.removeItem('env');
+            router.navigateByUrl(env.replace(/\/[A-z0-9]*\//, ''));
+        }
     }
 
     @tuiPure
