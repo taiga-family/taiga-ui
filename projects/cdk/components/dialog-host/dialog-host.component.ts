@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TuiBackNavigationBlockService} from '@taiga-ui/cdk/components/dialog-host/tui-back-navigation-block.service';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
-import {TuiDestroyService} from '@taiga-ui/cdk/services';
+import {TuiBackNavigationBlockService, TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {combineLatest, Observable} from 'rxjs';

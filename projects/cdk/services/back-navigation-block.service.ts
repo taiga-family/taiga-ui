@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
-import {TUI_POPSTATE_STREAM} from '@taiga-ui/cdk';
+import {TUI_POPSTATE_STREAM} from '@taiga-ui/cdk/tokens';
 import {Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 
