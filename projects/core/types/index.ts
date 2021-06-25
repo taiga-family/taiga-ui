@@ -7,7 +7,6 @@ export * from './dialog-size';
 export * from './direction';
 export * from './dropdown-width';
 export * from './hint-mode';
-export * from './items';
 export * from './marker-handler';
 export * from './option-role';
 export * from './orientation';

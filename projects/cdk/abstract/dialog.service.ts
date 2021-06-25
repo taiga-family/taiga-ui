@@ -37,6 +37,7 @@ export abstract class AbstractTuiDialogService<T extends {}> extends Observable<
                 completeWith,
                 $implicit: observer,
                 component: this.component,
+                createdAt: Date.now(),
                 id: this.idService.generate(),
             };
 

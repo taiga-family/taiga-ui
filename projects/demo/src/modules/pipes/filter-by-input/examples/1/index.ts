@@ -4,7 +4,7 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
-    selector: 'tui-filter-by-input-example1',
+    selector: 'tui-filter-by-input-example-1',
     templateUrl: './index.html',
     changeDetection,
     encapsulation,

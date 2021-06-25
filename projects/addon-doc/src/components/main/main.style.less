@@ -24,8 +24,17 @@
 
 @sidebar-width: 260px;
 
+html {
+    height: auto;
+}
+
 body {
     background: var(--tui-base-01);
+    height: auto;
+}
+
+tui-doc-main {
+    display: block;
 }
 
 code:not(.hljs):not(.exception) {
@@ -45,9 +54,7 @@ code:not(.hljs):not(.exception) {
 
 .tui-doc-page {
     .createStackingContext();
-    height: 100%;
     padding-top: 64px;
-    box-sizing: border-box;
 }
 
 tui-doc-navigation.tui-doc-navigation {
@@ -63,9 +70,6 @@ tui-doc-navigation.tui-doc-navigation {
 }
 
 .tui-doc-content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
     margin-left: @sidebar-width;
 
     @media @tablet-s {
@@ -74,10 +78,7 @@ tui-doc-navigation.tui-doc-navigation {
 }
 
 .tui-doc-outlet + * {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    flex-grow: 1;
+    display: block;
 }
 
 .tui-doc-animated-example {

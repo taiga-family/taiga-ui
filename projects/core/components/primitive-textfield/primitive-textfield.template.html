@@ -51,6 +51,7 @@
             *ngIf="iconAlignLeft"
             class="icon icon_left"
             [content]="iconContent"
+            [context]="context"
         >
             <ng-template let-iconSrc>
                 <tui-svg [src]="iconSrc"></tui-svg>
@@ -120,6 +121,7 @@
             *ngIf="iconAlignRight"
             class="icon"
             [content]="iconContent"
+            [context]="context"
         >
             <ng-template let-iconSrc>
                 <tui-svg [src]="iconSrc"></tui-svg>

@@ -3,6 +3,7 @@ import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
+import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
@@ -34,6 +35,7 @@ export class ExampleTuiPieChartComponent {
     readonly example2: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,
+        LESS: example2Less,
     };
 
     readonly valueVariants = [

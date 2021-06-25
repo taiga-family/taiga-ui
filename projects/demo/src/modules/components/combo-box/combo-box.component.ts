@@ -72,7 +72,11 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
         HTML: example3Html,
     };
 
-    readonly items = [new Account('Rubles', 500), new Account('Dollars', 237)];
+    readonly items = [
+        new Account('Rubles', 500),
+        new Account('Dollars', 237),
+        new Account('Netherlands Antillean Guilder and Falkland Islands Pound', 700),
+    ];
 
     strict = true;
 

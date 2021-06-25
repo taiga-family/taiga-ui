@@ -27,7 +27,7 @@ export const TUI_TAB_PROVIDERS: Provider[] = [
             ElementRef,
             DOCUMENT,
             TuiRouterLinkActiveService,
-            MutationObserverService,
+            [new Optional(), MutationObserverService],
             [new Optional(), RouterLinkActive],
         ],
         useFactory: tabActiveFactory,
@@ -39,12 +39,13 @@ export function tabActiveFactory(
     {nativeElement}: ElementRef<HTMLElement>,
     documentRef: Document,
     routerLinkActiveService: Observable<boolean>,
-    mutationObserverService: MutationObserverService,
-    routerLinkActive: RouterLinkActive,
+    mutationObserverService: MutationObserverService | null,
+    routerLinkActive: RouterLinkActive | null,
 ): Observable<unknown> {
-    const mutationObserver = routerLinkActive
-        ? mutationObserverService.pipe(filter(() => routerLinkActive.isActive))
-        : EMPTY;
+    const mutationObserver =
+        routerLinkActive && mutationObserverService
+            ? mutationObserverService.pipe(filter(() => routerLinkActive.isActive))
+            : EMPTY;
 
     return merge(
         mutationObserver,
