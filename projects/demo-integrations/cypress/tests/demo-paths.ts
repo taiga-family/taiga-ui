@@ -7,7 +7,7 @@ const EXCLUSION_ROUTES = ['i18n', 'LineDaysChart', 'PrimitiveCheckbox', 'ThemeNi
 
 export const DEMO_PATHS = flatPages(pages)
     .filter(page => !EXCLUSION_SECTIONS.includes(page.section))
-    .filter(page => EXCLUSION_ROUTES.includes(page.title))
+    .filter(page => !EXCLUSION_ROUTES.includes(page.title))
     .map(page => page.route.replace('/', ''));
 
 function flatPages(pages: TuiDocPages): ReadonlyArray<TuiDocPage> {
