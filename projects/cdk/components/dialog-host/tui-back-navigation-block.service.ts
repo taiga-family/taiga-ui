@@ -9,6 +9,8 @@ import {filter, map} from 'rxjs/operators';
 export class TuiBackNavigationBlockService {
     browserNavigationStream$ = this.popstateEvent$.pipe(
         map(event => {
+            this.activeBlockCount = Math.max(0, this.activeBlockCount - 1);
+
             if (this.watchBrowserNavigation) {
                 return event;
             }
@@ -22,6 +24,7 @@ export class TuiBackNavigationBlockService {
 
     private readonly FAKE_IGNORE_HISTORY_STATE = {label: 'ignoreMe'} as const;
     private watchBrowserNavigation = false;
+    private activeBlockCount = 0;
 
     constructor(
         @Inject(WINDOW) private readonly windowRef: Window,
@@ -31,7 +34,9 @@ export class TuiBackNavigationBlockService {
     ) {}
 
     blockOnce(): void {
+        this.activeBlockCount++;
         this.watchBrowserNavigation = true;
+
         this.windowRef.history.pushState(
             this.FAKE_IGNORE_HISTORY_STATE,
             this.titleService.getTitle(),
@@ -39,11 +44,13 @@ export class TuiBackNavigationBlockService {
     }
 
     cancelLastBlock(): void {
-        this.watchBrowserNavigation = false;
-        this.windowRef.history.back();
+        if (this.activeBlockCount) {
+            this.watchBrowserNavigation = false;
+            this.windowRef.history.back();
+        }
     }
 
-    checkAnyBlockActive(history: History = this.windowRef.history): boolean {
-        return history.state?.label === this.FAKE_IGNORE_HISTORY_STATE.label;
+    getActiveBlockCount(): number {
+        return this.activeBlockCount;
     }
 }

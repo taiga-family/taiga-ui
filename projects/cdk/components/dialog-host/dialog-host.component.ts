@@ -54,15 +54,11 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
     ]) {
         const wasNewPopupOpened = currentDialogState.length > prevDialogState.length;
         const wasPopupClosed = currentDialogState.length < prevDialogState.length;
-        const noOpenedPopups = !currentDialogState.length;
+        const activeBlockCount = this.backNavigationBlockService.getActiveBlockCount();
 
         if (wasNewPopupOpened) {
             this.backNavigationBlockService.blockOnce();
-        } else if (
-            wasPopupClosed &&
-            this.backNavigationBlockService.checkAnyBlockActive() &&
-            noOpenedPopups
-        ) {
+        } else if (wasPopupClosed && activeBlockCount > currentDialogState.length) {
             this.backNavigationBlockService.cancelLastBlock();
         }
     }
