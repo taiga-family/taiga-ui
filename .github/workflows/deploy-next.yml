@@ -2,6 +2,8 @@ name: Deploy next version demo to gh-pages
 
 on:
     push:
+        branches:
+            - main
         paths:
             - 'projects/**'
             - 'angular.json'
