@@ -1,5 +1,5 @@
 const map = new Map([
-    ['components/select', [5, 6]],
+    ['components/select', [5]],
     ['components/multi-select', [4]],
 ]);
 
