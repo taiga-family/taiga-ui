@@ -1,14 +1,11 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {Title} from '@angular/platform-browser';
-import {WINDOW} from '@ng-web-apis/common';
+import {TuiBackNavigationBlockService} from '@taiga-ui/cdk/components/dialog-host/tui-back-navigation-block.service';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {TUI_DIALOGS, TUI_POPSTATE_STREAM} from '@taiga-ui/cdk/tokens';
+import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {combineLatest, Observable} from 'rxjs';
 import {map, pairwise, takeUntil, tap} from 'rxjs/operators';
-
-const FAKE_IGNORE_HISTORY_STATE = {label: 'ignoreMe'} as const;
 
 // @dynamic
 @Component({
@@ -20,7 +17,6 @@ const FAKE_IGNORE_HISTORY_STATE = {label: 'ignoreMe'} as const;
 })
 export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
     private lastDialogsStack: T[] = [];
-    private watchBrowserNavigation = false;
 
     readonly dialogs$ = combineLatest(this.dialogsByType).pipe(
         map(allTypesDialogs =>
@@ -29,32 +25,19 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
                 .sort((a, b) => a.createdAt - b.createdAt),
         ),
         pairwise(),
-        tap(dialogsStates => this.mutateBrowserHistory(dialogsStates)),
+        tap(dialogsStates => this.manageBrowserNavigation(dialogsStates)),
         map(([_, currentDialogState]) => currentDialogState),
         tap(dialogs => (this.lastDialogsStack = [...dialogs])),
     );
 
     constructor(
-        @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(TUI_DIALOGS)
-        private readonly dialogsByType: Observable<readonly T[]>[],
-        @Inject(Title) private readonly titleService: Title,
-        @Inject(TUI_POPSTATE_STREAM) browserNavigation$: Observable<PopStateEvent>,
+        @Inject(TUI_DIALOGS) private readonly dialogsByType: Observable<readonly T[]>[],
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        private readonly backNavigationBlockService: TuiBackNavigationBlockService,
     ) {
-        browserNavigation$.pipe(takeUntil(destroy$)).subscribe(() => {
-            if (this.watchBrowserNavigation) {
-                this.closeLastDialog(this.lastDialogsStack);
-            } else {
-                this.watchBrowserNavigation = true;
-            }
-        });
-    }
-
-    private checkIsFakeHistoryStateOnTop(
-        history: History = this.windowRef.history,
-    ): boolean {
-        return history.state?.label === FAKE_IGNORE_HISTORY_STATE.label;
+        backNavigationBlockService.browserNavigationStream$
+            .pipe(takeUntil(destroy$))
+            .subscribe(() => this.closeLastDialog(this.lastDialogsStack));
     }
 
     private closeLastDialog(dialogs: ReadonlyArray<T>) {
@@ -65,26 +48,22 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
         }
     }
 
-    private mutateBrowserHistory([prevDialogState, currentDialogState]: [
+    private manageBrowserNavigation([prevDialogState, currentDialogState]: [
         ReadonlyArray<T>,
         ReadonlyArray<T>,
     ]) {
         const wasNewPopupOpened = currentDialogState.length > prevDialogState.length;
         const wasPopupClosed = currentDialogState.length < prevDialogState.length;
+        const noOpenedPopups = !currentDialogState.length;
 
         if (wasNewPopupOpened) {
-            this.watchBrowserNavigation = true;
-            this.windowRef.history.pushState(
-                FAKE_IGNORE_HISTORY_STATE,
-                this.titleService.getTitle(),
-            );
+            this.backNavigationBlockService.blockOnce();
         } else if (
             wasPopupClosed &&
-            this.checkIsFakeHistoryStateOnTop() &&
-            !currentDialogState.length
+            this.backNavigationBlockService.checkAnyBlockActive() &&
+            noOpenedPopups
         ) {
-            this.watchBrowserNavigation = false;
-            this.windowRef.history.back();
+            this.backNavigationBlockService.cancelLastBlock();
         }
     }
 }
