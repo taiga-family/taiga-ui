@@ -75,10 +75,16 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     @tuiDefaultProp()
     maxLength: TuiDayLike | null = null;
 
+    @Input()
+    @tuiDefaultProp()
+    value: TuiDayRange | null = null;
+
+    @Output()
+    readonly valueChange = new EventEmitter<TuiDayRange | null>();
+
+    /** @deprecated TODO: remove in 3.0 */
     @Output()
     readonly rangeChange = new EventEmitter<TuiDayRange | null>();
-
-    value: TuiDayRange | null = null;
 
     readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
 
@@ -174,6 +180,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     updateValue(value: TuiDayRange | null) {
         this.value = value;
+        this.valueChange.emit(value);
         this.rangeChange.emit(value);
     }
 
