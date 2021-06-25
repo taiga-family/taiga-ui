@@ -13,7 +13,7 @@ import {
     TuiSizeL,
     TuiSizeS,
 } from '@taiga-ui/core';
-import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -53,9 +53,9 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     readonly themes = ['Taiga UI', 'Bootstrap', 'Material'];
     theme = this.themes[0];
 
-    readonly iconVariants: string[] = ['tuiIconSearch', 'Interactive content'];
+    readonly iconVariants = ['', 'tuiIconSearch', 'Interactive content'];
 
-    selectedIcon: 'tuiIconSearch' | 'Interactive content' | null = null;
+    selectedIcon = this.iconVariants[0];
 
     readonly iconAlignVariants: ReadonlyArray<TuiHorizontalDirection> = ['left', 'right'];
 
@@ -148,15 +148,15 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     hintMode: TuiHintModeT | null = null;
 
     @ViewChild('interactiveContent')
-    private readonly interactiveIcon?: PolymorpheusTemplate<{}>;
+    private readonly interactiveIcon: PolymorpheusContent = '';
 
     get customContent(): string | null {
         return this.customContentSelected !== null ? CUSTOM_SVG : null;
     }
 
-    get iconContent(): PolymorpheusContent | null {
-        if (this.selectedIcon === null) {
-            return null;
+    get iconContent(): PolymorpheusContent {
+        if (this.selectedIcon === '') {
+            return '';
         }
 
         return this.interactiveIcon && this.selectedIcon !== 'tuiIconSearch'

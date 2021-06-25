@@ -1,6 +1,6 @@
 import {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TUI_PARENT_ANIMATION, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TUI_ANIMATION_OPTIONS, TuiBrightness, tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
@@ -13,7 +13,7 @@ import {TuiTableBarsService} from '../../services/table-bars.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './table-bars-host.template.html',
     styleUrls: ['./table-bars-host.style.less'],
-    animations: [tuiSlideInTop],
+    animations: [tuiSlideInTop, TUI_PARENT_ANIMATION],
 })
 export class TuiTableBarsHostComponent {
     readonly animation = {

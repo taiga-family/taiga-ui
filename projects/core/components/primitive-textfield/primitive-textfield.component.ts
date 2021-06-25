@@ -69,6 +69,7 @@ export class TuiPrimitiveTextfieldComponent
     @tuiDefaultProp()
     iconAlign: TuiHorizontalDirection = 'right';
 
+    // TODO: Remove null in 3.0
     @Input()
     @tuiDefaultProp()
     iconContent: PolymorpheusContent | null = null;

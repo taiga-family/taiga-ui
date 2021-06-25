@@ -15,12 +15,12 @@
         >
             <p>
                 Simplified version of
-                <a tuiLink routerLink="/components/input-password"
-                    ><code>InputPassword</code></a
-                >:
+                <a tuiLink routerLink="/components/input-password">
+                    <code>InputPassword</code>
+                </a>
             </p>
             <tui-primitive-textfield-example-1
-                hintContent="Additional information"
+                class="b-form"
                 [(ngModel)]="password"
             >
                 Type a password
@@ -103,7 +103,7 @@
                 i18n
                 documentationPropertyName="iconContent"
                 documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent | null"
+                documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="selectedIcon"
             >

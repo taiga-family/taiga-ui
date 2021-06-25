@@ -13,7 +13,7 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component, ViewChild} from '@angular/core';
 import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
-import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -60,23 +60,23 @@ export class ExampleTuiLoaderComponent {
 
     size = this.sizeVariants[2];
 
-    selectedTemplate: string | null = null;
+    selectedTemplate = '';
 
     @ViewChild('textTemplate')
-    readonly textTemplate?: PolymorpheusTemplate<{}>;
+    readonly textTemplate: PolymorpheusContent = '';
 
-    readonly textVariants: string[] = ['template', 'string'];
+    readonly textVariants: string[] = ['', 'template', 'string'];
 
-    get template(): PolymorpheusContent | null {
+    get template(): PolymorpheusContent {
         switch (this.selectedTemplate) {
             case 'template': {
-                return this.textTemplate || null;
+                return this.textTemplate || '';
             }
             case 'string': {
                 return 'string';
             }
             default: {
-                return null;
+                return '';
             }
         }
     }

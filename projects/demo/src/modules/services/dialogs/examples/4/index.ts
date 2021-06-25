@@ -1,7 +1,7 @@
 import {Component, Inject, TemplateRef} from '@angular/core';
 import {TuiPortalService} from '@taiga-ui/cdk';
 import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
@@ -36,7 +36,7 @@ export class TuiDialogExampleComponent4 {
             });
     }
 
-    showDialog(content: PolymorpheusTemplate<TuiDialogContext>, button: TemplateRef<{}>) {
+    showDialog(content: PolymorpheusContent<TuiDialogContext>, button: TemplateRef<{}>) {
         const templateRef = this.portalService.addTemplate(button);
 
         this.dialogService
