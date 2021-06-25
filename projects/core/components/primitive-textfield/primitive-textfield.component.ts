@@ -14,9 +14,11 @@ import {
     AbstractTuiInteractive,
     isNativeFocused,
     setNativeFocused,
+    TuiContextWithImplicit,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TUI_HINT_WATCHED_CONTROLLER,
@@ -67,6 +69,7 @@ export class TuiPrimitiveTextfieldComponent
     @tuiDefaultProp()
     iconAlign: TuiHorizontalDirection = 'right';
 
+    // TODO: Remove null in 3.0
     @Input()
     @tuiDefaultProp()
     iconContent: PolymorpheusContent | null = null;
@@ -252,6 +255,10 @@ export class TuiPrimitiveTextfieldComponent
             : null;
     }
 
+    get context(): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
+        return this.getContext(this.size);
+    }
+
     clear() {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.value = '';
@@ -303,6 +310,13 @@ export class TuiPrimitiveTextfieldComponent
             !this.hasValue &&
             !this.readOnly
         );
+    }
+
+    @tuiPure
+    private getContext(
+        $implicit: TuiSizeS | TuiSizeL,
+    ): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
+        return {$implicit};
     }
 
     private updateAutofilled(autofilled: boolean) {

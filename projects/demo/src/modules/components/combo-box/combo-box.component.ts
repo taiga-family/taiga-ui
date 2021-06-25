@@ -24,7 +24,7 @@ import {
     TuiStringHandler,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -115,12 +115,12 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     readonly control = new FormControl(null, Validators.required);
 
     @ViewChild('valueTemplateContent')
-    private valueTemplateRef?: PolymorpheusTemplate<{}>;
+    private valueTemplateRef: PolymorpheusContent = '';
 
-    get valueContent(): PolymorpheusTemplate<any> | null {
+    get valueContent(): PolymorpheusContent {
         return this.valueTemplateRef && this.selectedValueTemplate
             ? this.valueTemplateRef
-            : null;
+            : '';
     }
 
     @tuiPure

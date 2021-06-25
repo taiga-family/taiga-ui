@@ -31,6 +31,8 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     }
 
     /**
+     * @deprecated DONT USE IT (will be deleted soon)
+     *
      * Calculates number of weeks in a month (counting non-full weeks)
      */
     get weeksRowsCount(): number {
@@ -45,6 +47,8 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     }
 
     /**
+     * @deprecated DONT USE IT (will be deleted soon)
+     *
      * Computes day of week offset of the beginning of the month
      */
     get monthStartDaysOffset(): number {

@@ -1,10 +1,16 @@
 import {DOCUMENT, Location} from '@angular/common';
-import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    HostBinding,
+    Inject,
+} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {tuiPure, uniqBy} from '@taiga-ui/cdk';
 import {getScreenWidth, TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {first, map, startWith} from 'rxjs/operators';
 import {TuiDocPage} from '../../interfaces/page';
 import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
 import {TuiDocPages} from '../../types/pages';
@@ -17,7 +23,8 @@ import {
 } from './navigation.providers';
 
 const SMALL_TABLET_SCREEN = 767;
-const SCROLL_INTO_VIEW_DELAY = 200;
+const SCROLL_TO_ANCHOR_LINK_DELAY = 200;
+const SCROLL_TO_ACTIVE_LINK_DELAY = 750;
 
 // @dynamic
 @Component({
@@ -31,7 +38,8 @@ export class TuiDocNavigationComponent {
     search = '';
     open = false;
     menuOpen = false;
-    openGroupsArr: boolean[] = [];
+    openPagesArr: boolean[] = [];
+    openPagesGroupsArr: boolean[] = [];
 
     readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),
@@ -40,15 +48,16 @@ export class TuiDocNavigationComponent {
 
     constructor(
         @Inject(Title) titleService: Title,
-        @Inject(Location) locationRef: Location,
-        @Inject(NAVIGATION_TITLE) title$: Observable<string>,
+        @Inject(Location) private readonly locationRef: Location,
+        @Inject(NAVIGATION_TITLE) private title$: Observable<string>,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective,
-        @Inject(NAVIGATION_LABELS) readonly labels: string,
+        @Inject(NAVIGATION_LABELS) readonly labels: string[],
         @Inject(NAVIGATION_ITEMS)
         readonly items: ReadonlyArray<TuiDocPages>,
         @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
+        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
     ) {
         // Angular can't navigate no anchor links
         // https://stackoverflow.com/questions/36101756/angular2-routing-with-hashtag-to-page-anchor
@@ -56,6 +65,8 @@ export class TuiDocNavigationComponent {
             titleService.setTitle(title);
             this.handleAnchorLink(locationRef.path(true));
         });
+
+        this.syncNavigationPanel();
     }
 
     @HostBinding('class._open')
@@ -72,7 +83,7 @@ export class TuiDocNavigationComponent {
     }
 
     onGroupClick(index: number) {
-        this.openGroupsArr[index] = !this.openGroupsArr[index];
+        this.openPagesGroupsArr[index] = !this.openPagesGroupsArr[index];
     }
 
     toggleMenu() {
@@ -90,6 +101,7 @@ export class TuiDocNavigationComponent {
         this.open = false;
         this.menuOpen = false;
         this.search = '';
+        this.syncNavigationPanel();
     }
 
     @tuiPure
@@ -136,6 +148,16 @@ export class TuiDocNavigationComponent {
         );
     }
 
+    @tuiPure
+    private isCurrentPathEqualTo(route: string): boolean {
+        return this.normalizeUrl(this.locationRef.path()) === this.normalizeUrl(route);
+    }
+
+    @tuiPure
+    private normalizeUrl(url: string): string {
+        return this.locationRef.normalize(url.replace(/^\/+/, ''));
+    }
+
     private handleAnchorLink(path: string) {
         const lastIndex = path.lastIndexOf('#');
         const hash = lastIndex === -1 ? '' : path.substr(lastIndex);
@@ -147,21 +169,61 @@ export class TuiDocNavigationComponent {
         setTimeout(() => {
             this.navigateToAnchorLink(hash);
             this.animateExample(hash);
-        }, SCROLL_INTO_VIEW_DELAY);
+        }, SCROLL_TO_ANCHOR_LINK_DELAY);
     }
 
-    private navigateToAnchorLink(fragment: string) {
-        const element = this.documentRef.querySelector(fragment);
+    private syncNavigationPanel() {
+        this.title$.pipe(first()).subscribe(() => {
+            this.openActivePageGroup();
+            this.navigateToActiveLink();
+            this.changeDetectorRef.markForCheck();
+        });
+    }
+
+    private openActivePageGroup() {
+        this.items.forEach((pages, pagesIndex) => {
+            pages.forEach((page, pageIndex) => {
+                if ('route' in page && this.isCurrentPathEqualTo(page.route)) {
+                    this.openPagesArr[pagesIndex] = true;
+                }
+
+                if ('subPages' in page) {
+                    page.subPages.forEach(subPage => {
+                        if (this.isCurrentPathEqualTo(subPage.route)) {
+                            this.openPagesArr[pagesIndex] = true;
+                            this.openPagesGroupsArr[pageIndex] = true;
+                        }
+                    });
+                }
+            });
+        });
+    }
+
+    private navigateToAnchorLink(hash: string) {
+        this.scrollTo(hash, {
+            block: 'start',
+            inline: 'nearest',
+            behavior: 'smooth',
+        });
+    }
+
+    private navigateToActiveLink() {
+        setTimeout(() => {
+            this.scrollTo('.sublink_active', {
+                block: 'center',
+                behavior: 'smooth',
+            });
+        }, SCROLL_TO_ACTIVE_LINK_DELAY);
+    }
+
+    private scrollTo(selector: string, options?: ScrollIntoViewOptions) {
+        const element = this.documentRef.querySelector(selector);
 
         if (!element) {
             return;
         }
 
-        element.scrollIntoView({
-            block: 'start',
-            inline: 'nearest',
-            behavior: 'smooth',
-        });
+        element.scrollIntoView(options);
     }
 
     private animateExample(fragment: string) {

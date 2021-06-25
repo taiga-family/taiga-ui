@@ -4,7 +4,7 @@ import {Component, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TUI_DEFAULT_MATCHER, tuiReplayedValueChangesFrom} from '@taiga-ui/cdk';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
@@ -87,8 +87,8 @@ const USERS = [
     encapsulation,
 })
 export class TuiInputExample4 {
-    @ViewChild('avatar', {read: PolymorpheusTemplate})
-    private readonly avatar?: PolymorpheusTemplate<{}>;
+    @ViewChild('avatar')
+    private readonly avatar: PolymorpheusContent = '';
 
     private readonly user = new FormControl('');
 
@@ -151,8 +151,8 @@ export class TuiInputExample4 {
         );
     }
 
-    get content(): PolymorpheusTemplate<{}> | null {
-        return this.avatar && this.isUserSelected ? this.avatar : null;
+    get content(): PolymorpheusContent {
+        return this.avatar && this.isUserSelected ? this.avatar : '';
     }
 
     get accounts(): Account[] {

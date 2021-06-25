@@ -54,6 +54,7 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
     @tuiDefaultProp()
     tuiHintHost: HTMLElement | null = null;
 
+    // TODO: Remove null in 3.0
     @Input()
     @tuiRequiredSetter()
     set tuiHint(value: PolymorpheusContent | null) {

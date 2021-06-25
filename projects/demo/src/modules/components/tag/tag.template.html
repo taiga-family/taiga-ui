@@ -40,7 +40,6 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-tag
-                class="tag"
                 [value]="value"
                 [autoColor]="autoColor"
                 [disabled]="disabled"
@@ -99,7 +98,7 @@
                 i18n
                 documentationPropertyName="leftContent"
                 documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent | null"
+                documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="leftContentVariants"
                 [(documentationPropertyValue)]="leftContentSelected"
             >

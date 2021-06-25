@@ -222,6 +222,8 @@ export class TuiDay extends TuiMonth {
     }
 
     /**
+     * @deprecated DONT USE IT (will be deleted soon)
+     *
      * Calculated day on a calendar grid
      *
      * @param month

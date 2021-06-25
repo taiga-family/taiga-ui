@@ -5,9 +5,12 @@ import {
     ALWAYS_FALSE_HANDLER,
     TuiBooleanHandler,
     TuiDay,
+    TuiDayOfWeek,
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
+import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes';
+import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {
     mockCurrentDate,
     pendingIfNotMoscowTimeZone,
@@ -19,30 +22,30 @@ import {TuiRangeState} from '../../../enums/range-state';
 import {TuiPrimitiveCalendarComponent} from '../primitive-calendar.component';
 import {TuiPrimitiveCalendarModule} from '../primitive-calendar.module';
 
+@Component({
+    template: `
+        <tui-primitive-calendar
+            [month]="month"
+            [disabledItemHandler]="disabledItemHandler"
+            [value]="value"
+            (dayClick)="onDayClick($event)"
+        ></tui-primitive-calendar>
+    `,
+})
+class TestComponent {
+    month = new TuiMonth(2018, 1);
+
+    value: TuiDayRange | null = null;
+
+    disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+
+    @ViewChild(TuiPrimitiveCalendarComponent, {static: true})
+    component!: TuiPrimitiveCalendarComponent;
+
+    onDayClick(_: TuiDay) {}
+}
+
 describe('PrimitiveCalendar', () => {
-    @Component({
-        template: `
-            <tui-primitive-calendar
-                [month]="month"
-                [disabledItemHandler]="disabledItemHandler"
-                [value]="value"
-                (dayClick)="onDayClick($event)"
-            ></tui-primitive-calendar>
-        `,
-    })
-    class TestComponent {
-        month = new TuiMonth(2018, 1);
-
-        value: TuiDayRange | null = null;
-
-        disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
-
-        @ViewChild(TuiPrimitiveCalendarComponent, {static: true})
-        component!: TuiPrimitiveCalendarComponent;
-
-        onDayClick(_: TuiDay) {}
-    }
-
     const TODAY = 23;
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
@@ -229,13 +232,11 @@ describe('PrimitiveCalendar', () => {
         const firstlySetMonth = new TuiMonth(2019, 4);
         const candidateToSecondSet = new TuiMonth(2019, 4);
 
-        component.month = firstlySetMonth;
+        const getSheetPipe = new TuiCalendarSheetPipe(TuiDayOfWeek.Monday);
 
-        const savedSheet = component.sheet;
+        const savedSheet = getSheetPipe.transform(firstlySetMonth);
 
-        component.month = candidateToSecondSet;
-
-        expect(component.sheet).toBe(savedSheet);
+        expect(getSheetPipe.transform(candidateToSecondSet)).toBe(savedSheet);
     });
 
     function getTodayCalendarItem(): DebugElement {
@@ -251,4 +252,144 @@ describe('PrimitiveCalendar', () => {
     afterEach(() => {
         restoreRealDate();
     });
+});
+
+describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
+    let fixture: ComponentFixture<TestComponent>;
+    let testComponent: TestComponent;
+
+    const MOCKED_MONTH = new TuiMonth(2021, 5);
+
+    beforeEach(() => {
+        restoreRealDate();
+
+        fixture = TestBed.createComponent(TestComponent);
+        testComponent = fixture.componentInstance;
+
+        testComponent.month = MOCKED_MONTH;
+        fixture.detectChanges();
+    });
+
+    describe('Week starts with Sunday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Sunday', () => {
+        configureTestSuite(() => {
+            TestBed.configureTestingModule({
+                imports: [TuiPrimitiveCalendarModule],
+                declarations: [TestComponent],
+                providers: [
+                    {
+                        provide: TUI_FIRST_DAY_OF_WEEK,
+                        useValue: TuiDayOfWeek.Sunday,
+                    },
+                ],
+            });
+        });
+
+        it('contains calendar header (with days of week names) which starts with Sunday', () => {
+            expect(getDaysOfWeek()).toEqual([
+                'Sun',
+                'Mon',
+                'Tue',
+                'Wed',
+                'Thu',
+                'Fri',
+                'Sat',
+            ]);
+        });
+
+        it('contains the first column with dates which are actual Sundays', () => {
+            expect(getColumnDates(0)).toEqual(['30', '6', '13', '20', '27', '4']);
+        });
+
+        it('contains the fifth column with dates which are actual Thursday', () => {
+            expect(getColumnDates(4)).toEqual(['3', '10', '17', '24', '1', '8']);
+        });
+    });
+
+    describe('Week starts with Monday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Monday', () => {
+        configureTestSuite(() => {
+            TestBed.configureTestingModule({
+                imports: [TuiPrimitiveCalendarModule],
+                declarations: [TestComponent],
+                providers: [
+                    {
+                        provide: TUI_FIRST_DAY_OF_WEEK,
+                        useValue: TuiDayOfWeek.Monday,
+                    },
+                ],
+            });
+        });
+
+        it('contains calendar header (with days of week names) which starts with Monday', () => {
+            expect(getDaysOfWeek()).toEqual([
+                'Mon',
+                'Tue',
+                'Wed',
+                'Thu',
+                'Fri',
+                'Sat',
+                'Sun',
+            ]);
+        });
+
+        it('contains the first column with dates which are actual Mondays', () => {
+            expect(getColumnDates(0)).toEqual(['31', '7', '14', '21', '28', '5']);
+        });
+
+        it('contains the fifth column with dates which are actual Fridays', () => {
+            expect(getColumnDates(4)).toEqual(['4', '11', '18', '25', '2', '9']);
+        });
+    });
+
+    describe('Week starts with Wednesday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Wednesday', () => {
+        configureTestSuite(() => {
+            TestBed.configureTestingModule({
+                imports: [TuiPrimitiveCalendarModule],
+                declarations: [TestComponent],
+                providers: [
+                    {
+                        provide: TUI_FIRST_DAY_OF_WEEK,
+                        useValue: TuiDayOfWeek.Wednesday,
+                    },
+                ],
+            });
+        });
+
+        it('contains calendar header (with days of week names) which starts with Wednesday', () => {
+            expect(getDaysOfWeek()).toEqual([
+                'Wed',
+                'Thu',
+                'Fri',
+                'Sat',
+                'Sun',
+                'Mon',
+                'Tue',
+            ]);
+        });
+
+        it('contains the first column with dates which are actual Wednesdays', () => {
+            expect(getColumnDates(0)).toEqual(['26', '2', '9', '16', '23', '30']);
+        });
+
+        it('contains the fifth column with dates which are actual Sundays', () => {
+            expect(getColumnDates(4)).toEqual(['30', '6', '13', '20', '27', '4']);
+        });
+    });
+
+    function getDaysOfWeek(): string[] {
+        const daysOfWeekContainers =
+            fixture.debugElement.queryAll(By.css('.row_weekday .cell')) || [];
+
+        return daysOfWeekContainers.map(container => container.nativeElement.textContent);
+    }
+
+    function getColumnDates(columnIndex: number): string[] {
+        const columnDatesContainers =
+            fixture.debugElement.queryAll(
+                By.css(`.row:not(.row_weekday) .cell:nth-child(${columnIndex + 1})`),
+            ) || [];
+
+        return columnDatesContainers.map(container =>
+            container.nativeElement.textContent.trim(),
+        );
+    }
 });

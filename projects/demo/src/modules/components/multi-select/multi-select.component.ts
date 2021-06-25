@@ -18,7 +18,7 @@ import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/decl
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {Component, forwardRef, ViewChild} from '@angular/core';
+import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {
     ALWAYS_FALSE_HANDLER,
@@ -36,7 +36,7 @@ import {
     TuiSizeL,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
-import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -63,9 +63,6 @@ class Account {
     ],
 })
 export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
-    @ViewChild('item')
-    content?: PolymorpheusTemplate<{}>;
-
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
     readonly exampleDeclareForm = exampleDeclareForm;

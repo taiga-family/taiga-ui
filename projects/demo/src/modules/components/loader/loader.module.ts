@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiLoaderModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiLinkModule, TuiLoaderModule} from '@taiga-ui/core';
 import {TuiRadioListModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiLoaderExample1} from './examples/1';
@@ -19,6 +19,7 @@ import {ExampleTuiLoaderComponent} from './loader.component';
         TuiLoaderModule,
         TuiRadioListModule,
         TuiButtonModule,
+        TuiLinkModule,
         RouterModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiLoaderComponent)),

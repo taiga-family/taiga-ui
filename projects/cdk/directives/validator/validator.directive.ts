@@ -5,8 +5,9 @@ import {
     ValidationErrors,
     Validator,
     ValidatorFn,
+    Validators,
 } from '@angular/forms';
-import {EMPTY_FUNCTION, EMPTY_VALIDATOR} from '@taiga-ui/cdk/constants';
+import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 
 @Directive({
@@ -24,7 +25,7 @@ export class TuiValidatorDirective implements Validator, OnChanges, OnDestroy {
 
     @Input()
     @tuiDefaultProp()
-    tuiValidator: ValidatorFn = EMPTY_VALIDATOR;
+    tuiValidator: ValidatorFn = Validators.nullValidator;
 
     validate(control: AbstractControl): ValidationErrors | null {
         return this.tuiValidator(control);
@@ -39,7 +40,7 @@ export class TuiValidatorDirective implements Validator, OnChanges, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.tuiValidator = EMPTY_VALIDATOR;
+        this.tuiValidator = Validators.nullValidator;
         this.onChange();
     }
 }

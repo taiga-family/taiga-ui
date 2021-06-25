@@ -35,6 +35,8 @@ export class TuiYear implements TuiYearLike {
     }
 
     /**
+     * @deprecated DONT USE IT (will be deleted soon)
+     *
      * Returns day of week offset of the beginning of the current year
      */
     get yearStartDaysOffset(): number {
@@ -128,6 +130,8 @@ export class TuiYear implements TuiYearLike {
     }
 
     /**
+     * @deprecated DONT USE IT (will be deleted soon)
+     *
      * Returns day of week offset of the beginning of the passed year
      *
      * @param year

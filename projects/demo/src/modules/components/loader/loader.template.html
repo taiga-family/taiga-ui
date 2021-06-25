@@ -30,7 +30,7 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <p class="example">
+            <div class="example">
                 <tui-loader
                     [showLoader]="showLoader"
                     [inheritColor]="inheritColor"
@@ -57,10 +57,13 @@
                     <div>Loading</div>
                     <div>
                         You can use a template with
-                        <a routerLink="/components/notification">HTML</a> here
+                        <a tuiLink routerLink="/components/notification"
+                            >HTML</a
+                        >
+                        here
                     </div>
                 </ng-template>
-            </p>
+            </div>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
@@ -104,7 +107,7 @@
                 i18n
                 documentationPropertyName="textContent"
                 documentationPropertyMode="input"
-                documentationPropertyType="PolymorpheusContent | null"
+                documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="textVariants"
                 [(documentationPropertyValue)]="selectedTemplate"
             >

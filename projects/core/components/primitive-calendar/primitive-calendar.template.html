@@ -1,7 +1,7 @@
 <div class="row row_weekday">
     <div *ngFor="let day of (weekDays$ | async)" class="cell">{{day}}</div>
 </div>
-<div>
+<div *tuiLet="month | tuiCalendarSheet:true as sheet">
     <div
         *tuiRepeatTimes="let rowIndex of sheet.length"
         automation-id="tui-primitive-calendar__row"

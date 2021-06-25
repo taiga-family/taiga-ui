@@ -6,25 +6,47 @@ import {TuiMultiSelectComponent} from './multi-select.component';
     name: 'tuiHideSelected',
     pure: false,
 })
-export class TuiHideSelectedPipe<T> implements PipeTransform {
+export class TuiHideSelectedPipe implements PipeTransform {
     constructor(
         @Inject(TuiMultiSelectComponent)
-        private readonly component: TuiMultiSelectComponent<T>,
+        private readonly component: TuiMultiSelectComponent<any>,
     ) {}
 
-    transform(
-        items: ReadonlyArray<T> | null,
+    transform<T>(items: T): T;
+    transform<T>(
+        items: readonly T[] | ReadonlyArray<readonly T[]> | null,
         {value, identityMatcher}: TuiMultiSelectComponent<T> = this.component,
-    ): ReadonlyArray<T> | null {
-        return items && this.filter(items, value, identityMatcher);
+    ): readonly T[] | ReadonlyArray<readonly T[]> | null {
+        if (!items) {
+            return null;
+        }
+
+        return this.isFlat(items)
+            ? this.filter(items, value, identityMatcher)
+            : this.filter2d(items, value, identityMatcher);
     }
 
     @tuiPure
-    private filter(
-        items: ReadonlyArray<T>,
-        value: ReadonlyArray<T>,
+    private filter2d<T>(
+        items: ReadonlyArray<readonly T[]>,
+        value: readonly T[],
         matcher: TuiIdentityMatcher<T>,
-    ): ReadonlyArray<T> {
+    ): ReadonlyArray<readonly T[]> {
+        return items.map(subitems => this.filter(subitems, value, matcher));
+    }
+
+    @tuiPure
+    private filter<T>(
+        items: readonly T[],
+        value: readonly T[],
+        matcher: TuiIdentityMatcher<T>,
+    ): readonly T[] {
         return items.filter(item => value.every(selected => !matcher(selected, item)));
+    }
+
+    private isFlat<T>(
+        items: readonly T[] | ReadonlyArray<readonly T[]>,
+    ): items is readonly T[] {
+        return !Array.isArray(items[0]);
     }
 }

@@ -271,10 +271,10 @@ export class TuiInputTagComponent
         return !this.computedDisabled && !this.readOnly && !!this.datalist;
     }
 
-    getLeftContent(tag: string): PolymorpheusContent | null {
+    getLeftContent(tag: string): PolymorpheusContent {
         return !this.tagValidator(tag) && this.errorIconTemplate
             ? this.errorIconTemplate
-            : null;
+            : '';
     }
 
     onCleanerClick() {
