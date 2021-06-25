@@ -8,5 +8,5 @@
         "types": ["cypress", "node"],
         "skipLibCheck": true
     },
-    "include": ["**/*.ts", "../demo"]
+    "include": ["**/*.ts", "../demo/src/modules/app/pages.ts", "../addon-doc"]
 }
