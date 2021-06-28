@@ -19,20 +19,20 @@
     position: relative;
     display: flex;
     align-items: center;
-    height: 56px;
-    padding: 0 16px;
+    height: 3.5rem;
+    padding: 0 1rem;
     border-bottom: 0.5px solid @header-border;
 
     :host._ios & {
-        height: 44px;
+        height: 2.75rem;
         border-bottom: none;
     }
 }
 
 .close {
-    width: 24px;
-    height: 24px;
-    margin-right: 32px;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 2rem;
 
     :host._ios & {
         display: none;
@@ -42,8 +42,8 @@
 .link {
     margin-left: auto;
     flex-shrink: 0;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 0.875rem;
+    line-height: 1rem;
     font-weight: 500;
     text-transform: uppercase;
     color: @accent;
@@ -53,12 +53,12 @@
     }
 
     :host._ios & {
-        min-width: 60px;
+        min-width: 3.75rem;
         text-align: right;
-        font-size: 15px;
-        line-height: 18px;
+        font-size: 0.9375rem;
+        line-height: 1.125rem;
         font-weight: 400;
-        letter-spacing: 0.29px;
+        letter-spacing: 0.018125rem;
         text-transform: none;
 
         &_close {
@@ -73,22 +73,22 @@
     .text-overflow-with-fade();
     flex-grow: 1;
     margin: 0;
-    font-size: 20px;
-    line-height: 56px;
+    font-size: 1.25rem;
+    line-height: 3.5rem;
     font-weight: 500;
-    letter-spacing: -0.2px;
+    letter-spacing: -0.0125rem;
     white-space: nowrap;
 
     :host._ios & {
-        font-size: 17px;
+        font-size: 1.0625rem;
         font-weight: 600;
-        letter-spacing: -0.41px;
+        letter-spacing: -0.025625rem;
         text-align: center;
     }
 }
 
 .years {
-    height: 65px;
+    height: 4.0625rem;
     background-color: @background;
     box-shadow: 0 0.5px @border;
 
@@ -99,7 +99,7 @@
 
 .years-wrapper {
     display: flex;
-    height: 65px;
+    height: 4.0625rem;
 }
 
 .year {
@@ -107,9 +107,9 @@
     outline: none;
     width: 20vw;
     flex-shrink: 0;
-    font-size: 15px;
+    font-size: 0.9375rem;
     font-weight: 700;
-    letter-spacing: 0.25px;
+    letter-spacing: 0.015625rem;
     cursor: pointer;
     opacity: 0.1;
     transform: scale(0.73);
@@ -130,15 +130,15 @@
 .week {
     display: flex;
     align-items: center;
-    height: 30px;
-    width: 332px;
+    height: 1.875rem;
+    width: 20.75rem;
     max-width: 100%;
     margin: 0 auto;
-    font-size: 12px;
+    font-size: 0.75rem;
 
     :host._ios & {
-        width: 362px;
-        font-size: 11px;
+        width: 22.625rem;
+        font-size: 0.6875rem;
         font-weight: 500;
         color: @secondary;
     }
@@ -150,38 +150,38 @@
 }
 
 .months {
-    height: ~'calc(100% - 152px)';
+    height: ~'calc(100% - 9.5rem)';
     box-shadow: 0 -1px @border;
     overflow-x: hidden;
 
     :host._ios & {
-        height: ~'calc(100% - 140px)';
+        height: ~'calc(100% - 8.75rem)';
     }
 }
 
 .month-wrapper {
-    margin: 10px 0 -10px;
+    margin: 0.625rem 0 -0.625rem;
 }
 
 .month {
-    height: 44px;
-    line-height: 44px;
-    padding-left: 16px;
-    font-size: 14px;
+    height: 2.75rem;
+    line-height: 2.75rem;
+    padding-left: 1rem;
+    font-size: 0.875rem;
     font-weight: 500;
     text-transform: uppercase;
-    margin: 0 0 20px 0;
+    margin: 0 0 1.25rem 0;
     box-sizing: border-box;
     border-bottom: 0.5px solid @border;
 
     :host._ios & {
-        height: 50px;
+        height: 3.125rem;
         margin: 0;
         border-bottom: none;
         text-transform: none;
-        font-size: 22px;
-        line-height: 50px;
-        letter-spacing: 0.32px;
+        font-size: 1.375rem;
+        line-height: 3.125rem;
+        letter-spacing: 0.02rem;
         font-weight: 700;
     }
 }
@@ -189,10 +189,10 @@
 .calendar {
     margin: 0 auto;
     font-family: inherit;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: opacity 0.2s;
 
     :host._ios & {
-        font-size: 17px;
+        font-size: 1.0625rem;
     }
 }

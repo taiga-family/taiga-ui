@@ -16,7 +16,7 @@
 
 @keyframes bounce {
     to {
-        transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 0.625rem, 0);
     }
 }
 
@@ -38,11 +38,11 @@
     right: 0;
     bottom: 0;
     display: flex;
-    padding: 44px;
+    padding: 2.75rem;
     pointer-events: none;
 
-    @media all and (max-width: 700px) {
-        padding: 32px;
+    @media all and (max-width: 43.75rem) {
+        padding: 2rem;
     }
 }
 
@@ -53,9 +53,9 @@
 
 .taiga {
     position: fixed;
-    left: 40px;
-    top: 40px;
-    width: 35px;
+    left: 2.5rem;
+    top: 2.5rem;
+    width: 2.1875rem;
     filter: brightness(0) invert(1);
 }
 
@@ -77,7 +77,7 @@
         display: none;
     }
 
-    @media all and (min-width: 600px) {
+    @media all and (min-width: 37.5rem) {
         &_mobile {
             display: none;
         }
@@ -97,13 +97,13 @@
     bottom: 0;
     width: 60vw;
     line-height: initial;
-    padding: 40px;
+    padding: 2.5rem;
     box-sizing: border-box;
     pointer-events: none;
     transform-origin: left;
     transition: transform 0.6s;
 
-    @media all and (max-width: 700px) {
+    @media all and (max-width: 43.75rem) {
         width: 100vw;
     }
 
@@ -124,7 +124,7 @@
     border-bottom-width: 120px;
     overflow: hidden;
 
-    @media all and (min-width: 700px) {
+    @media all and (min-width: 43.75rem) {
         display: none;
     }
 }
@@ -136,11 +136,11 @@
     margin: 0;
     font-size: ~'min(6vw, 10vh)';
 
-    @media all and (max-width: 700px) {
+    @media all and (max-width: 43.75rem) {
         font-size: ~'min(10vw, 10vh)';
     }
 
-    @media all and (max-height: 420px) {
+    @media all and (max-height: 26.25rem) {
         font-size: ~'min(6vw, 8vh)';
     }
 
@@ -171,14 +171,14 @@
 }
 
 .title {
-    font-size: 56px;
-    line-height: 65px;
+    font-size: 3.5rem;
+    line-height: 4.0625rem;
     margin: 0;
 }
 
 .topography {
     position: absolute;
-    top: -50px;
+    top: -3.125rem;
     left: -30vw;
     overflow: hidden;
 }
@@ -186,48 +186,48 @@
 .components {
     position: sticky;
     left: 0;
-    top: 130px;
+    top: 8.125rem;
     transition: transform 0.6s;
     transform: translate3d(100vw, 0, 0);
     transform-origin: top left;
 
-    @media all and (max-width: 700px), all and (max-height: 500px) {
+    @media all and (max-width: 43.75rem), all and (max-height: 31.25rem) {
         transform: scale(0.7) translate3d(100vw, 0, 0);
     }
 
     &_first {
-        transform: translate3d(130px, 0, 0);
+        transform: translate3d(8.125rem, 0, 0);
         transition: transform 0.6s 0.6s;
 
-        @media all and (max-width: 700px), all and (max-height: 500px) {
-            transform: scale(0.7) translate3d(50px, 0, 0);
+        @media all and (max-width: 43.75rem), all and (max-height: 31.25rem) {
+            transform: scale(0.7) translate3d(3.125rem, 0, 0);
         }
     }
 
     &_second {
-        transform: translate3d(calc(100vw - 2400px), 0, 0);
+        transform: translate3d(calc(100vw - 150rem), 0, 0);
 
-        @media all and (max-width: 700px), all and (max-height: 500px) {
-            transform: scale(0.7) translate3d(calc(100vw - 1900px), 0, 0);
+        @media all and (max-width: 43.75rem), all and (max-height: 31.25rem) {
+            transform: scale(0.7) translate3d(calc(100vw - 118.75rem), 0, 0);
         }
     }
 }
 
 .container {
     position: absolute;
-    width: 793px;
-    height: 500px;
+    width: 49.5625rem;
+    height: 31.25rem;
     background: white;
-    border-radius: 60px;
-    padding: 44px 48px;
+    border-radius: 3.75rem;
+    padding: 2.75rem 3rem;
     box-sizing: border-box;
     overflow: hidden;
 
     &_dark {
         top: 0;
-        left: 1606px;
-        width: 858px;
-        padding: 60px 64px;
+        left: 100.375rem;
+        width: 53.625rem;
+        padding: 3.75rem 4rem;
         background: var(--tui-text-01);
         color: #fff;
     }
@@ -238,22 +238,22 @@
 }
 
 .date {
-    width: 288px;
-    margin-right: 45px;
+    width: 18rem;
+    margin-right: 2.8125rem;
 }
 
 .calendar {
     .shadow(2);
     border-radius: var(--tui-radius-m);
     border: 1px solid var(--tui-base-03);
-    margin-top: 4px;
-    width: 288px;
+    margin-top: 0.25rem;
+    width: 18rem;
     box-sizing: border-box;
 }
 
 .controls {
     flex: 1;
-    margin-left: 45px;
+    margin-left: 2.8125rem;
 }
 
 .icons {
@@ -285,13 +285,13 @@
 
 .make {
     position: absolute;
-    left: 744px;
-    top: 53px;
-    width: 752px;
-    height: 132px;
-    border-radius: 132px;
-    font-size: 49px;
-    line-height: 132px;
+    left: 46.5rem;
+    top: 3.3125rem;
+    width: 47rem;
+    height: 8.25rem;
+    border-radius: 8.25rem;
+    font-size: 3.0625rem;
+    line-height: 8.25rem;
     font-weight: bold;
     text-align: center;
     color: #fff;
@@ -307,61 +307,61 @@
 
     &:after {
         content: '';
-        width: 12px;
-        height: 12px;
-        top: -6px;
-        left: -6px;
-        border-radius: 3px;
+        width: 0.75rem;
+        height: 0.75rem;
+        top: -0.375rem;
+        left: -0.375rem;
+        border-radius: 0.1875rem;
         position: absolute;
         background: var(--tui-text-01);
         color: var(--tui-text-01);
-        box-shadow: 0 132px, 372px 0, 372px 132px, 744px 0, 744px 132px;
+        box-shadow: 0 8.25rem, 23.25rem 0, 23.25rem 8.25rem, 46.5rem 0, 46.5rem 8.25rem;
     }
 }
 
 .width {
     position: absolute;
-    left: 4px;
+    left: 0.25rem;
     top: 50%;
-    margin-top: -10px;
+    margin-top: -0.625rem;
 }
 
 .customize {
     position: absolute;
-    left: 957px;
-    top: 283px;
-    width: 400px;
-    font-size: 56px;
+    left: 59.8125rem;
+    top: 17.6875rem;
+    width: 25rem;
+    font-size: 3.5rem;
     font-weight: bold;
-    line-height: 79px;
+    line-height: 4.9375rem;
     color: white;
 }
 
 .arrow {
     position: absolute;
-    left: 329px;
-    bottom: 191px;
+    left: 20.5625rem;
+    bottom: 11.9375rem;
 }
 
 .opensource {
-    width: 300px;
-    font-size: 77px;
-    line-height: 75px;
+    width: 18.75rem;
+    font-size: 4.8125rem;
+    line-height: 4.6875rem;
     font-weight: bold;
     margin: 0;
 }
 
 .contributions {
-    width: 350px;
-    margin-top: 50px;
-    font-size: 17px;
-    line-height: 34px;
+    width: 21.875rem;
+    margin-top: 3.125rem;
+    font-size: 1.0625rem;
+    line-height: 2.125rem;
 }
 
 .os {
     position: absolute;
-    top: 42px;
-    left: 490px;
+    top: 2.625rem;
+    left: 30.625rem;
     overflow: visible;
 }
 
@@ -374,10 +374,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -35px -12px;
-    width: 30px;
-    height: 65px;
-    border-radius: 20px;
+    margin: -2.1875rem -0.75rem;
+    width: 1.875rem;
+    height: 4.0625rem;
+    border-radius: 1.25rem;
     border: 3px solid rgba(0, 0, 0, 0.2);
     cursor: pointer;
     background: none;
@@ -389,10 +389,10 @@
     &:after {
         content: '';
         position: absolute;
-        width: 8px;
-        height: 8px;
-        left: 6.5px;
-        top: 15px;
+        width: 0.5rem;
+        height: 0.5rem;
+        left: 0.40625rem;
+        top: 0.9375rem;
         transform: rotate(-45deg);
         border-bottom: 3px solid;
         border-left: 3px solid;
@@ -402,7 +402,7 @@
     }
 
     &:after {
-        top: 30px;
+        top: 1.875rem;
         animation: scroll 1s var(--tui-duration) infinite;
     }
 

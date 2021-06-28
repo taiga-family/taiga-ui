@@ -80,7 +80,7 @@
     box-sizing: border-box;
     border-bottom: 1px solid var(--tui-base-04);
     min-height: var(--tui-height-l);
-    padding: 12px 20px;
+    padding: 0.75rem 1.25rem;
     color: var(--tui-text-01);
     cursor: pointer;
 
@@ -99,7 +99,7 @@
     }
 
     :host._has-arrow & {
-        padding-right: 12px;
+        padding-right: 0.75rem;
     }
 
     :host._hovered:not([data-mode]) & {
@@ -119,7 +119,7 @@
     :host[data-tui-host-size='s'] & {
         font: var(--tui-font-text-m);
         min-height: var(--tui-height-m);
-        padding: 10px 12px 10px 16px;
+        padding: 0.625rem 0.75rem 0.625rem 1rem;
     }
 
     :host._no-padding & {
@@ -144,8 +144,8 @@
 
 .icon {
     .transition(~'transform, color');
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
     margin-left: auto;
     color: var(--tui-base-06);
 
@@ -176,11 +176,11 @@
 
 .content {
     font: var(--tui-font-text-m);
-    padding: 20px;
+    padding: 1.25rem;
     word-wrap: break-word;
 
     :host[data-tui-host-size='s'] & {
         font: var(--tui-font-text-s);
-        padding: 16px;
+        padding: 1rem;
     }
 }

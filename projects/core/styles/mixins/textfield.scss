@@ -119,7 +119,7 @@
         :host[data-tui-host-size='m'] & {
             width: 118%;
             transform: translateY(-8px) scale(0.85);
-            letter-spacing: 0.4px;
+            letter-spacing: 0.025rem;
         }
 
         :host._invalid:not(._focused) &,
@@ -154,10 +154,8 @@
         color: var(--tui-text-02-night);
     }
 
-    :host[data-tui-host-size='m'][data-mode='onDark']._focused:not(._label-outside)
-        &,
-    :host[data-tui-host-size='l'][data-mode='onDark']._focused:not(._label-outside)
-        & {
+    :host[data-tui-host-size='m'][data-mode='onDark']._focused:not(._label-outside) &,
+    :host[data-tui-host-size='l'][data-mode='onDark']._focused:not(._label-outside) & {
         color: var(--tui-text-01-night);
     }
 

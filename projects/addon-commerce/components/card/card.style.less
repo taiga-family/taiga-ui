@@ -1,10 +1,10 @@
 @import 'taiga-ui-local';
 
-@payment-system-logo-height: 10px;
-@brand-logo-size: 14px;
-@number-height-s: 10px;
-@number-height-m: 14px;
-@space: 2px;
+@payment-system-logo-height: 0.625rem;
+@brand-logo-size: 0.875rem;
+@number-height-s: 0.625rem;
+@number-height-m: 0.875rem;
+@space: 0.125rem;
 
 :host {
     position: relative;
@@ -12,17 +12,17 @@
     color: var(--tui-base-01);
     transform-style: preserve-3d;
     cursor: default;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     background-size: 100%;
 
     &[data-tui-host-size='s'] {
-        width: 32px;
-        height: 24px;
+        width: 2rem;
+        height: 1.5rem;
     }
 
     &[data-tui-host-size='m'] {
-        width: 48px;
-        height: 32px;
+        width: 3rem;
+        height: 2rem;
     }
 
     &._active {
@@ -41,7 +41,7 @@
     position: absolute;
     background-color: inherit;
     opacity: 0.8;
-    border-radius: 2px;
+    border-radius: 0.125rem;
 
     &_brand {
         top: @space * 1.5;
@@ -56,13 +56,13 @@
         :host[data-tui-host-size='s'] & {
             top: @space;
             height: @number-height-s;
-            width: 23px;
+            width: 1.4375rem;
         }
 
         :host[data-tui-host-size='m'] & {
             top: @space * 1.5;
             height: @number-height-m;
-            width: 28px;
+            width: 1.75rem;
         }
     }
 
@@ -91,15 +91,15 @@
     :host[data-tui-host-size='s'] & {
         top: @space;
         height: @number-height-s;
-        width: 19px;
-        font-size: 8px;
+        width: 1.1875rem;
+        font-size: 0.5rem;
     }
 
     :host[data-tui-host-size='m'] & {
         top: @space * 1.5;
         height: @number-height-m;
-        width: 24px;
-        font-size: 10px;
+        width: 1.5rem;
+        font-size: 0.625rem;
     }
 }
 
@@ -111,18 +111,18 @@
 
 .payment-system-logo {
     position: absolute;
-    right: -4px;
-    bottom: -8px;
-    width: 32px;
-    height: 32px;
+    right: -0.25rem;
+    bottom: -0.5rem;
+    width: 2rem;
+    height: 2rem;
     transform: scale(0.5);
 }
 
 .back {
     .fullsize();
     backface-visibility: hidden;
-    transform: rotateY(180deg) translate3d(0, 0, 0.1px);
-    border-radius: 3px;
+    transform: rotateY(180deg) translate3d(0, 0, 0.00625rem);
+    border-radius: 0.1875rem;
     background-color: var(--tui-base-05);
 
     &:after {

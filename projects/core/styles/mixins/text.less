@@ -54,11 +54,11 @@
     font-weight: bold;
 
     & when (@type = 2) {
-        line-height: 20px;
+        line-height: 1.25rem;
     }
 
     & when (@type = 3) {
-        line-height: 28px;
+        line-height: 1.75rem;
     }
 }
 
@@ -67,11 +67,11 @@
     font: var(--tui-font-text-l);
 
     & when (@type = 2) {
-        line-height: 20px;
+        line-height: 1.25rem;
     }
 
     & when (@type = 3) {
-        line-height: 28px;
+        line-height: 1.75rem;
     }
 }
 
@@ -81,7 +81,7 @@
     font-weight: bold;
 
     & when (@type = 2) {
-        line-height: 20px;
+        line-height: 1.25rem;
     }
 }
 
@@ -90,7 +90,7 @@
     font: var(--tui-font-text-m);
 
     & when (@type = 2) {
-        line-height: 20px;
+        line-height: 1.25rem;
     }
 }
 
@@ -100,7 +100,7 @@
     font-weight: bold;
 
     & when (@type = 2) {
-        line-height: 16px;
+        line-height: 1rem;
     }
 }
 
@@ -109,7 +109,7 @@
     font: var(--tui-font-text-s);
 
     & when (@type = 2) {
-        line-height: 16px;
+        line-height: 1rem;
     }
 }
 
@@ -122,29 +122,29 @@
 
 // deprecated
 .text-caption-l-bold() {
-    .font(13px, 20px, bold);
-    letter-spacing: 1px;
+    .font(0.8125rem, 1.25rem, bold);
+    letter-spacing: 0.0625rem;
     text-transform: uppercase;
 }
 
 // deprecated
 .text-caption-l() {
-    .font(13px, 20px, normal);
-    letter-spacing: 1px;
+    .font(0.8125rem, 1.25rem, normal);
+    letter-spacing: 0.0625rem;
     text-transform: uppercase;
 }
 
 // deprecated
 .text-caption-bold() {
-    .font(11px, 16px, bold);
-    letter-spacing: 1px;
+    .font(0.6875rem, 1rem, bold);
+    letter-spacing: 0.0625rem;
     text-transform: uppercase;
 }
 
 // deprecated
 .text-caption() {
-    .font(11px, 16px, normal);
-    letter-spacing: 1px;
+    .font(0.6875rem, 1rem, normal);
+    letter-spacing: 0.0625rem;
     text-transform: uppercase;
 }
 

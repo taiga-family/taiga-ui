@@ -1,14 +1,14 @@
 @import '../../../styles/taiga-ui-local.less';
 
-@arrowSize: 8px;
-@arrowOffset: 14px;
-@arrowCompensation: 3.2px; // 8px * 1.4 - 8px
+@arrowSize: 0.5rem;
+@arrowOffset: 0.875rem;
+@arrowCompensation: 0.2rem; // 8px * 1.4 - 8px ATTENTION
 
 :host {
     position: absolute;
     top: 0;
     left: 0;
-    max-width: 288px;
+    max-width: 18rem;
     min-height: var(--tui-height-m);
     padding: @space * 3 @space * 4;
     background: var(--tui-primary);
@@ -22,7 +22,7 @@
         position: absolute;
         width: @arrowSize;
         height: @arrowSize;
-        border-radius: 2px;
+        border-radius: 0.125rem;
         box-sizing: border-box;
         background-color: inherit;
         transform: rotate(45deg);

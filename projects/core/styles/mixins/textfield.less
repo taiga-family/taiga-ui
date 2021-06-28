@@ -20,7 +20,7 @@
         height: var(--tui-height-l);
         min-height: var(--tui-height-l);
         max-height: var(--tui-height-l);
-        font-size: 15px;
+        font-size: 0.9375rem;
     }
 }
 
@@ -28,17 +28,17 @@
     display: flex;
     height: 100%;
     width: 100%;
-    padding: 0 12px;
+    padding: 0 0.75rem;
     box-sizing: border-box;
     align-items: center;
     overflow: hidden;
 
     :host[data-tui-host-size='s'] & {
-        padding-right: 8px;
+        padding-right: 0.5rem;
     }
 
     :host[data-tui-host-size='l'] & {
-        padding-left: 16px;
+        padding-left: 1rem;
     }
 }
 
@@ -46,18 +46,18 @@
     .text-basic();
     .clearinput();
     .fullsize();
-    padding: 0 12px;
+    padding: 0 0.75rem;
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
     text-transform: inherit;
 
     :host[data-tui-host-size='s'] & {
-        padding: 0 8px 0 12px;
+        padding: 0 0.5rem 0 0.75rem;
     }
 
     :host[data-tui-host-size='l'] & {
-        padding: 0 16px;
+        padding: 0 1rem;
     }
 
     :host._disabled & {
@@ -70,22 +70,22 @@
     }
 
     :host[data-tui-host-size='l']:not(._label-outside) & {
-        padding-top: 20px;
+        padding-top: 1.25rem;
 
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .content .placeholder {
             width: 114%; // compensation of scale(0.87)
-            transform: translateY(-10px) scale(0.87);
+            transform: translateY(-0.625rem) scale(0.87);
         }
     }
 
     :host[data-tui-host-size='m']:not(._label-outside) & {
-        padding-top: 18px;
+        padding-top: 1.125rem;
 
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .content .placeholder {
             width: 118%; // compensation of scale(0.85)
-            transform: translateY(-8px) scale(0.85);
+            transform: translateY(-0.5rem) scale(0.85);
         }
     }
 }
@@ -102,8 +102,8 @@
     .text-overflow();
     display: block;
     width: 100%;
-    height: 20px;
-    font-size: 13px;
+    height: 1.25rem;
+    font-size: 0.8125rem;
     box-sizing: border-box;
     user-select: none;
     pointer-events: none;
@@ -114,12 +114,12 @@
 
     &_raised {
         width: 114%; // compensation of scale(0.87)
-        transform: translateY(-10px) scale(0.87);
+        transform: translateY(-0.625rem) scale(0.87);
 
         :host[data-tui-host-size='m'] & {
             width: 118%;
-            transform: translateY(-8px) scale(0.85);
-            letter-spacing: 0.4px;
+            transform: translateY(-0.5rem) scale(0.85);
+            letter-spacing: 0.025rem;
         }
 
         :host._invalid:not(._focused) &,
@@ -140,7 +140,7 @@
     }
 
     :host[data-tui-host-size='l'] & {
-        font-size: 15px;
+        font-size: 0.9375rem;
     }
 
     :host[data-tui-host-size='m']._focused:not(._label-outside) &,
@@ -169,8 +169,8 @@
 
 .input-icon() {
     display: flex;
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
     align-items: center;
     justify-content: center;
     color: var(--tui-text-03);
@@ -209,9 +209,9 @@
 .example-text() {
     display: flex;
     align-items: center;
-    height: 20px;
-    margin: -20px 0;
-    padding: 10px 0;
+    height: 1.25rem;
+    margin: -1.25rem 0;
+    padding: 0.625rem 0;
     box-sizing: content-box;
     color: var(--tui-text-03);
     letter-spacing: normal;
@@ -223,7 +223,7 @@
     }
 
     :host[data-tui-host-size='m']._label-outside & {
-        margin-top: -19px;
+        margin-top: -1.1875rem;
     }
 
     :host[data-mode='onDark'] & {

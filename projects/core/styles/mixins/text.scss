@@ -123,28 +123,28 @@
 // deprecated
 @mixin text-caption-l-bold() {
     @include font(13px, 20px, bold);
-    letter-spacing: 1px;
+    letter-spacing: 0.0625rem;
     text-transform: uppercase;
 }
 
 // deprecated
 @mixin text-caption-l() {
     @include font(13px, 20px, normal);
-    letter-spacing: 1px;
+    letter-spacing: 0.0625rem;
     text-transform: uppercase;
 }
 
 // deprecated
 @mixin text-caption-bold() {
     @include font(11px, 16px, bold);
-    letter-spacing: 1px;
+    letter-spacing: 0.0625rem;
     text-transform: uppercase;
 }
 
 // deprecated
 @mixin text-caption() {
     @include font(11px, 16px, normal);
-    letter-spacing: 1px;
+    letter-spacing: 0.0625rem;
     text-transform: uppercase;
 }
 

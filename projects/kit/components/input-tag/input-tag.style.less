@@ -25,8 +25,8 @@
 }
 
 .scrollbar {
-    margin: 0 -4px;
-    padding: 0 4px;
+    margin: 0 -0.25rem;
+    padding: 0 0.25rem;
 }
 
 .tags {
@@ -45,20 +45,20 @@
 
     :host[data-tui-host-size='m'] & {
         min-height: var(--tui-height-m);
-        padding: 8px 4px 8px 0;
+        padding: 0.5rem 0.25rem 0.5rem 0;
     }
 
     :host[data-tui-host-size='l'] & {
         min-height: var(--tui-height-l);
-        padding: 10px 4px 10px 0;
+        padding: 0.625rem 0.25rem 0.625rem 0;
     }
 
     :host[data-tui-host-size='m']:not(._label-outside) & {
-        padding: 19px 16px 0 0;
+        padding: 1.1875rem 1rem 0 0;
     }
 
     :host[data-tui-host-size='l']:not(._label-outside) & {
-        padding: 27px 16px 9px 0;
+        padding: 1.6875rem 1rem 0.5625rem 0;
     }
 }
 
@@ -67,24 +67,24 @@
     align-items: flex-start;
 
     :host[data-tui-host-size='m'] & {
-        padding-left: 12px;
+        padding-left: 0.75rem;
     }
 }
 
 .icons {
     display: flex;
     align-items: center;
-    padding: 0 12px;
+    padding: 0 0.75rem;
 
     &_left {
         padding: 0;
-        margin-right: 8px;
-        margin-left: -4px;
+        margin-right: 0.5rem;
+        margin-left: -0.25rem;
     }
 
     &_right {
         :host._expandable & {
-            margin-left: -10px;
+            margin-left: -0.625rem;
         }
     }
 
@@ -118,7 +118,7 @@
 }
 
 .tag {
-    margin: 2px 8px 2px -4px;
+    margin: 0.125rem 0.5rem 0.125rem -0.25rem;
     max-width: 100%;
     flex-shrink: 0;
 }
@@ -149,7 +149,7 @@
     position: relative;
     flex: 1;
     max-width: 100%;
-    min-height: 28px;
+    min-height: 1.75rem;
 
     &_collapsed {
         flex: 0;
@@ -157,19 +157,19 @@
     }
 
     :host[data-tui-host-size='l'] & {
-        min-height: 36px;
+        min-height: 2.25rem;
     }
 
     :host:not(._label-outside) & {
-        min-height: 20px;
+        min-height: 1.25rem;
     }
 }
 
 .ghost {
-    min-width: 2px;
+    min-width: 0.125rem;
 
     :host:not(._expandable) & {
-        min-width: 32px;
+        min-width: 2rem;
     }
 }
 
@@ -191,6 +191,6 @@
 .error-icon {
     display: block;
     color: var(--tui-error-fill);
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
 }

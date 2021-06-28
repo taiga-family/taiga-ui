@@ -22,7 +22,7 @@
     transition-property: color, box-shadow, opacity;
 
     &:not(:last-child) {
-        margin-right: 24px;
+        margin-right: 1.5rem;
     }
 
     &:hover {
@@ -74,7 +74,7 @@
 
     &._android {
         .transition(opacity);
-        height: 48px;
+        height: 3rem;
         flex: 1;
         flex-shrink: 0;
         justify-content: center;
@@ -82,9 +82,9 @@
         text-transform: uppercase;
         color: var(--tui-base-09);
         opacity: 0.5;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 500;
-        letter-spacing: -0.13px;
+        letter-spacing: -0.008125rem;
         font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
 
         &:hover {
@@ -102,16 +102,16 @@
     }
 
     &._ios {
-        height: 28px;
+        height: 1.75rem;
         flex: 1;
         flex-shrink: 0;
         justify-content: center;
         margin: 0;
         color: var(--tui-base-01);
         opacity: 1;
-        font-size: 13px;
+        font-size: 0.8125rem;
         font-weight: 500;
-        letter-spacing: -0.08px;
+        letter-spacing: -0.005rem;
         font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
 
         &:hover {
@@ -119,7 +119,7 @@
         }
 
         &._active {
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 600;
             color: var(--tui-link);
         }
