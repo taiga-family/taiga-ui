@@ -1,10 +1,11 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
+import {VERSION} from '@taiga-ui/core';
 import {addPackageJsonDependency} from 'ng-morph';
 import {Schema} from './schema';
 
 const MAIN_PACKAGES = ['core', 'cdk', 'kit', 'icons'];
-const TAIGA_VERSION = '2.11.0';
+const TAIGA_VERSION = VERSION;
 const NG_DOMPURIFY_VERSION = '3.0.0';
 
 export function ngAdd(options: Schema): Rule {

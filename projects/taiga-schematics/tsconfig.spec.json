@@ -4,7 +4,7 @@
         "outDir": "../../out-tsc/spec",
         "types": ["jasmine", "node"],
         "paths": {
-            "@taiga-ui/core/*": ["./projects/core/*"]
+            "@taiga-ui/core": ["./projects/core/index"]
         }
     },
     "files": ["test.ts"],

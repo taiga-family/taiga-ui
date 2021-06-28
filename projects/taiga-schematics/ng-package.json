@@ -1,6 +1,6 @@
 {
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-    "dest": "../../dist/schematics",
+    "dest": "../../dist/taiga-schematics",
     "lib": {
         "entryFile": "index.ts"
     }

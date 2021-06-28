@@ -107,23 +107,22 @@
             }
         },
         "schematics": {
-            "root": "projects/schematics",
-            "sourceRoot": "projects/schematics",
+            "root": "projects/taiga-schematics",
+            "sourceRoot": "projects/taiga-schematics",
             "projectType": "library",
-            "prefix": "tui",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
                     "options": {
-                        "tsConfig": "projects/schematics/tsconfig.lib.json",
-                        "project": "projects/schematics/ng-package.json"
+                        "tsConfig": "projects/taiga-schematics/tsconfig.lib.json",
+                        "project": "projects/taiga-schematics/ng-package.json"
                     }
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/schematics/test.ts",
-                        "tsConfig": "projects/schematics/tsconfig.spec.json",
+                        "main": "projects/taiga-schematics/test.ts",
+                        "tsConfig": "projects/taiga-schematics/tsconfig.spec.json",
                         "karmaConfig": "karma.config.js"
                     }
                 },
@@ -131,8 +130,8 @@
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
                         "tsConfig": [
-                            "projects/schematics/tsconfig.lib.json",
-                            "projects/schematics/tsconfig.spec.json"
+                            "projects/taiga-schematics/tsconfig.lib.json",
+                            "projects/taiga-schematics/tsconfig.spec.json"
                         ],
                         "exclude": ["**/node_modules/**"]
                     }

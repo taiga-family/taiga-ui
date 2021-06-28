@@ -2,7 +2,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "lib": ["es2018", "dom"],
-        "outDir": "../../dist/schematics",
+        "outDir": "../../dist/taiga-schematics",
         "declaration": true,
         "module": "commonjs",
         "moduleResolution": "node",
@@ -12,7 +12,7 @@
         "noImplicitThis": true,
         "noUnusedParameters": true,
         "noUnusedLocals": true,
-        "rootDir": "schematics",
+        "rootDir": "taiga-schematics",
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,
         "sourceMap": true,
