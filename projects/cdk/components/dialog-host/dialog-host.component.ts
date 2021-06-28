@@ -1,10 +1,17 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {Title} from '@angular/platform-browser';
+import {WINDOW} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
-import {TuiBackNavigationBlockService, TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {combineLatest, Observable} from 'rxjs';
-import {map, pairwise, takeUntil, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
+
+const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
+const isFakeHistoryState = (
+    historyState: Record<string, unknown>,
+): historyState is typeof FAKE_HISTORY_STATE =>
+    historyState?.label === FAKE_HISTORY_STATE.label;
 
 // @dynamic
 @Component({
@@ -15,50 +22,49 @@ import {map, pairwise, takeUntil, tap} from 'rxjs/operators';
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
-    private lastDialogsStack: T[] = [];
-
     readonly dialogs$ = combineLatest(this.dialogsByType).pipe(
         map(allTypesDialogs =>
             new Array<T>()
                 .concat(...allTypesDialogs)
                 .sort((a, b) => a.createdAt - b.createdAt),
         ),
-        pairwise(),
-        tap(dialogsStates => this.manageBrowserNavigation(dialogsStates)),
-        map(([_, currentDialogState]) => currentDialogState),
-        tap(dialogs => (this.lastDialogsStack = [...dialogs])),
     );
 
     constructor(
         @Inject(TUI_DIALOGS) private readonly dialogsByType: Observable<readonly T[]>[],
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        private readonly backNavigationBlockService: TuiBackNavigationBlockService,
-    ) {
-        backNavigationBlockService.browserNavigationStream$
-            .pipe(takeUntil(destroy$))
-            .subscribe(() => this.closeLastDialog(this.lastDialogsStack));
-    }
+        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(Title) private readonly titleService: Title,
+    ) {}
 
-    private closeLastDialog(dialogs: ReadonlyArray<T>) {
+    closeLast(dialogs: readonly T[]) {
         const [last] = dialogs.slice(-1);
 
-        if (last) {
-            last.$implicit.complete();
+        if (!last) {
+            return;
         }
+
+        if (dialogs.length > 1) {
+            this.windowRef.history.pushState(
+                FAKE_HISTORY_STATE,
+                this.titleService.getTitle(),
+            );
+        }
+
+        last.$implicit.complete();
     }
 
-    private manageBrowserNavigation([prevDialogState, currentDialogState]: [
-        ReadonlyArray<T>,
-        ReadonlyArray<T>,
-    ]) {
-        const wasNewPopupOpened = currentDialogState.length > prevDialogState.length;
-        const wasPopupClosed = currentDialogState.length < prevDialogState.length;
-        const activeBlockCount = this.backNavigationBlockService.getActiveBlockCount();
+    onDialog({propertyName}: TransitionEvent, popupOpened: boolean) {
+        if (propertyName !== 'letter-spacing') {
+            return;
+        }
 
-        if (wasNewPopupOpened) {
-            this.backNavigationBlockService.blockOnce();
-        } else if (wasPopupClosed && activeBlockCount > currentDialogState.length) {
-            this.backNavigationBlockService.cancelLastBlock();
+        if (popupOpened) {
+            this.windowRef.history.pushState(
+                FAKE_HISTORY_STATE,
+                this.titleService.getTitle(),
+            );
+        } else if (isFakeHistoryState(this.windowRef.history.state)) {
+            this.windowRef.history.back();
         }
     }
 }
