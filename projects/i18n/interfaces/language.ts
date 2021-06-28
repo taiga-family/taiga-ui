@@ -1,3 +1,5 @@
+import {TuiCountryIsoCode} from '../enums';
+
 // prettier-ignore
 type MONTHS_ARRAY = [string, string, string, string, string, string, string, string, string, string, string, string];
 
@@ -15,6 +17,7 @@ export interface LanguageCore {
      * starts with Mon (Monday)
      */
     shortWeekDays: [string, string, string, string, string, string, string];
+    countries: Record<TuiCountryIsoCode, string>;
 }
 
 export interface LanguageKit {
