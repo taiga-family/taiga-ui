@@ -1,0 +1,12 @@
+{
+    "extends": "../../tsconfig.spec.json",
+    "compilerOptions": {
+        "outDir": "../../out-tsc/spec",
+        "types": ["jasmine", "node"],
+        "paths": {
+            "@taiga-ui/core/*": ["./projects/core/*"]
+        }
+    },
+    "files": ["test.ts"],
+    "include": ["**/*.spec.ts", "**/*.d.ts"]
+}

@@ -1,4 +1,5 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {
     ClassDeclaration,
     createProject,
@@ -10,13 +11,14 @@ import {
     setActiveProject,
     ts,
 } from 'ng-morph';
-import {getWorkspaceAndProject} from '../../utils/get-project';
+import {getProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {Schema} from '../schema';
 
 export function wrapWithTuiRootComponent(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
-        const {project} = await getWorkspaceAndProject(options, tree);
+        const workspace = await getWorkspace(tree);
+        const project = getProject(options, workspace);
         const buildOptions = getProjectTargetOptions(project, 'build');
 
         const appTemplatePath = getAppTemplatePath(tree, buildOptions.main as string);
@@ -103,7 +105,12 @@ function getInitializer(
     propertyName: string,
 ): Expression<ts.Expression> | undefined {
     const decorator = classDeclaration.getDecorator(decoratorName);
-    const [metadata] = decorator!.getArguments();
+
+    if (!decorator) {
+        return;
+    }
+
+    const [metadata] = decorator.getArguments();
 
     if (!Node.isObjectLiteralExpression(metadata)) {
         return;

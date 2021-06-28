@@ -1,16 +1,11 @@
 import {workspaces} from '@angular-devkit/core';
-import {SchematicsException, Tree} from '@angular-devkit/schematics';
-import {getWorkspace} from '@schematics/angular/utility/workspace';
+import {SchematicsException} from '@angular-devkit/schematics';
 import {Schema} from '../ng-add/schema';
 
-export async function getWorkspaceAndProject(
+export function getProject(
     options: Schema,
-    tree: Tree,
-): Promise<{
-    project: workspaces.ProjectDefinition;
-    workspace: workspaces.WorkspaceDefinition;
-}> {
-    const workspace = await getWorkspace(tree);
+    workspace: workspaces.WorkspaceDefinition,
+): workspaces.ProjectDefinition {
     const projectName =
         options.project || workspace.extensions.defaultProject!.toString();
     const project = workspace.projects.get(projectName);
@@ -21,5 +16,5 @@ export async function getWorkspaceAndProject(
         );
     }
 
-    return {project, workspace};
+    return project;
 }

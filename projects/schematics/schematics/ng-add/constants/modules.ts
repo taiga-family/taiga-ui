@@ -27,3 +27,14 @@ export const NOTIFICATION_MODULES: ReadonlyArray<ImportingModule> = [
         packageName: '@taiga-ui/core',
     },
 ];
+
+export const SANITIZER_MODULES: ReadonlyArray<ImportingModule> = [
+    {
+        name: 'TUI_SANITIZER',
+        packageName: '@taiga-ui/core',
+    },
+    {
+        name: 'NgDompurifySanitizer',
+        packageName: '@tinkoff/ng-dompurify',
+    },
+];

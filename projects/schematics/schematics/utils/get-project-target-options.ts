@@ -1,7 +1,7 @@
 import {JsonArray, JsonObject, workspaces} from '@angular-devkit/core';
 import {SchematicsException} from '@angular-devkit/schematics';
 
-export function getProjectTargetOptions<T>(
+export function getProjectTargetOptions(
     project: workspaces.ProjectDefinition,
     buildTarget: string,
 ): Record<string, string | number | boolean | JsonArray | JsonObject | undefined | null> {
