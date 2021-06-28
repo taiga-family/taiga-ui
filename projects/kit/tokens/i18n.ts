@@ -1,5 +1,6 @@
 import {InjectionToken} from '@angular/core';
-import {extractI18n} from '@taiga-ui/i18n';
+import {extractI18n, TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {Observable} from 'rxjs';
 
 export const TUI_CANCEL_WORD = new InjectionToken(`i18n 'cancel' word`, {
     factory: extractI18n('cancel'),
@@ -67,6 +68,8 @@ export const TUI_INPUT_FILE_TEXTS = new InjectionToken('tui-input-file i18n text
     factory: extractI18n('inputFileTexts'),
 });
 
-export const TUI_COUNTRIES = new InjectionToken('Localized countries names', {
+export const TUI_COUNTRIES: InjectionToken<
+    Observable<Record<TuiCountryIsoCode, string>>
+> = new InjectionToken('Localized countries names', {
     factory: extractI18n('countries'),
 });

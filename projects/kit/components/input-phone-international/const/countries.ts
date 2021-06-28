@@ -240,10 +240,16 @@ export const COUNTRIES: Record<string, Country> = {
 
 type PhoneMaskByCountry = Record<TuiCountryIsoCode, string>;
 
-export const COUNTRIES_MASKS = Object.entries<Country>(
-    COUNTRIES,
-).reduce<PhoneMaskByCountry>((acc, [countryIsoCode, {mask}]) => {
+// TODO: remove in ivy compilation
+export function countriesMasksReducer(
+    acc: PhoneMaskByCountry,
+    [countryIsoCode, {mask}]: [string, {mask: string}],
+): PhoneMaskByCountry {
     acc[countryIsoCode as TuiCountryIsoCode] = mask;
 
     return acc;
-}, {} as PhoneMaskByCountry);
+}
+
+export const COUNTRIES_MASKS: PhoneMaskByCountry = Object.entries<Country>(
+    COUNTRIES,
+).reduce<PhoneMaskByCountry>(countriesMasksReducer, {} as PhoneMaskByCountry);
