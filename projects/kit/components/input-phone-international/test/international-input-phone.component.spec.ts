@@ -3,8 +3,8 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TUI_ICONS_PATH, TuiRootModule} from '@taiga-ui/core';
+import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {configureTestSuite} from 'ng-bullet';
-import {TuiCountryIsoCode} from '../country-iso-code';
 import {TuiInputPhoneInternationalComponent} from '../input-phone-international.component';
 import {TuiInputPhoneInternationalModule} from '../input-phone-international.module';
 
