@@ -2,7 +2,13 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {Country} from '../interfaces/country';
 
 /**
- * TODO: remove property `name` in 3.0
+ * @deprecated Dont use it (will be deleted soon).
+ * - Use const `COUNTRIES_MASKS` to get phone mask by country iso code
+ * - Use token `TUI_COUNTRIES` to get localized country name by its iso code
+ * @example
+ * import {TUI_COUNTRIES, COUNTRIES_MASKS} from '@taiga-ui/kit';
+ *
+ * @todo TODO: remove it in 3.0
  */
 export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.AD]: {mask: '+376###-###', name: 'Андорра'},
@@ -231,3 +237,13 @@ export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.ZM]: {mask: '+260##-###-####', name: 'Замбия'},
     [TuiCountryIsoCode.ZW]: {mask: '+263#-######', name: 'Зимбабве'},
 };
+
+type PhoneMaskByCountry = Record<TuiCountryIsoCode, string>;
+
+export const COUNTRIES_MASKS = Object.entries<Country>(
+    COUNTRIES,
+).reduce<PhoneMaskByCountry>((acc, [countryIsoCode, {mask}]) => {
+    acc[countryIsoCode as TuiCountryIsoCode] = mask;
+
+    return acc;
+}, {} as PhoneMaskByCountry);
