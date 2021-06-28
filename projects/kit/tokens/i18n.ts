@@ -66,3 +66,7 @@ export const TUI_PAGINATION_TEXTS = new InjectionToken('pagination i18n texts', 
 export const TUI_INPUT_FILE_TEXTS = new InjectionToken('tui-input-file i18n texts', {
     factory: extractI18n('inputFileTexts'),
 });
+
+export const TUI_COUNTRIES = new InjectionToken('Localized countries names', {
+    factory: extractI18n('countries'),
+});

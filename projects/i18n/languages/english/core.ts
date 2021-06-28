@@ -1,4 +1,5 @@
 import {LanguageCore} from '@taiga-ui/i18n/interfaces';
+import {TUI_ENGLISH_LANGUAGE_COUNTRIES} from './countries';
 
 export const TUI_ENGLISH_LANGUAGE_CORE: LanguageCore = {
     months: [
@@ -20,4 +21,5 @@ export const TUI_ENGLISH_LANGUAGE_CORE: LanguageCore = {
     defaultErrorMessage: 'Value is invalid',
     spinTexts: ['Previous', 'Next'],
     shortWeekDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    countries: TUI_ENGLISH_LANGUAGE_COUNTRIES,
 };

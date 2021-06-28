@@ -1,4 +1,5 @@
 import {LanguageCore} from '@taiga-ui/i18n/interfaces';
+import {TUI_RUSSIAN_LANGUAGE_COUNTRIES} from './countries';
 
 export const TUI_RUSSIAN_LANGUAGE_CORE: LanguageCore = {
     months: [
@@ -20,4 +21,5 @@ export const TUI_RUSSIAN_LANGUAGE_CORE: LanguageCore = {
     defaultErrorMessage: 'Поле заполнено неверно',
     spinTexts: ['Предыдущий', 'Следующий'],
     shortWeekDays: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
+    countries: TUI_RUSSIAN_LANGUAGE_COUNTRIES,
 };

@@ -1,5 +1,5 @@
 import {FormControl, FormGroup} from '@angular/forms';
-import {TuiCountryIsoCode} from '@taiga-ui/kit';
+import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 ...
 

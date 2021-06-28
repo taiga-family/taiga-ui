@@ -1,4 +1,3 @@
-/** @deprecated use `import {TuiCountryIsoCode} from '@taiga-ui/i18n'` */
 export enum TuiCountryIsoCode {
     AD = 'AD',
     AE = 'AE',

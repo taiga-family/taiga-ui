@@ -1,4 +1,5 @@
 <tui-hosted-dropdown
+    *tuiLet="countriesNames$ | async as countriesNames"
     class="hosted-dropdown"
     [content]="dropdown"
     [canOpen]="!readOnly"
@@ -34,26 +35,32 @@
             {{inputPhoneCountryCode}}
         </tui-input-phone>
     </div>
+
+    <ng-template #dropdown>
+        <tui-data-list>
+            <button
+                *ngFor="let item of countries"
+                tuiOption
+                (click)="onItemClick(item)"
+            >
+                <img
+                    class="country-item-flag"
+                    alt=""
+                    [src]="getFlagPath(item)"
+                />
+                <span class="country-item-name">{{countriesNames[item]}}</span>
+                <span class="country-item-code"
+                    >{{isoToCountryCode(item)}}</span
+                >
+            </button>
+        </tui-data-list>
+    </ng-template>
+
+    <ng-template #countryValueContent>
+        <img
+            class="flag"
+            [alt]="countriesNames[countryIsoCode]"
+            [src]="countryFlagPath"
+        />
+    </ng-template>
 </tui-hosted-dropdown>
-
-<ng-template #dropdown>
-    <tui-data-list>
-        <button
-            *ngFor="let item of countries"
-            tuiOption
-            (click)="onItemClick(item)"
-        >
-            <img class="country-item-flag" alt="" [src]="getFlagPath(item)" />
-            <span class="country-item-name">{{getCountryName(item)}}</span>
-            <span class="country-item-code">{{isoToCountryCode(item)}}</span>
-        </button>
-    </tui-data-list>
-</ng-template>
-
-<ng-template #countryValueContent>
-    <img
-        class="flag"
-        [alt]="getCountryName(countryIsoCode)"
-        [src]="countryFlagPath"
-    />
-</ng-template>
