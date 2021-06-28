@@ -5,7 +5,7 @@ import {
     TuiFocusableElementAccessor,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TuiFilterByInputBase} from './filter-by-input.base';
+import {ArrayElement, TuiFilterByInputBase} from './filter-by-input.base';
 
 @Pipe({
     name: 'tuiFilterByInputWith',
@@ -21,10 +21,11 @@ export class TuiFilterByInputWithPipe
         super();
     }
 
+    transform<T>(items: T, matcher?: TuiStringHandler<ArrayElement<T>>): T;
     transform<T>(
-        items: readonly T[] | null,
+        items: readonly T[] | ReadonlyArray<readonly T[]> | null,
         stringify: TuiStringHandler<T>,
-    ): readonly T[] | null {
+    ): readonly T[] | ReadonlyArray<readonly T[]> | null {
         return this.filter(items, TUI_DEFAULT_MATCHER, stringify, this.query);
     }
 }

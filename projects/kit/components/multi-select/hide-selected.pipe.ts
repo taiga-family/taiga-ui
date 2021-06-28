@@ -1,5 +1,6 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiIdentityMatcher, tuiPure} from '@taiga-ui/cdk';
+import {isFlat} from '@taiga-ui/kit/utils';
 import {TuiMultiSelectComponent} from './multi-select.component';
 
 @Pipe({
@@ -21,7 +22,7 @@ export class TuiHideSelectedPipe implements PipeTransform {
             return null;
         }
 
-        return this.isFlat(items)
+        return isFlat(items)
             ? this.filter(items, value, identityMatcher)
             : this.filter2d(items, value, identityMatcher);
     }
@@ -42,11 +43,5 @@ export class TuiHideSelectedPipe implements PipeTransform {
         matcher: TuiIdentityMatcher<T>,
     ): readonly T[] {
         return items.filter(item => value.every(selected => !matcher(selected, item)));
-    }
-
-    private isFlat<T>(
-        items: readonly T[] | ReadonlyArray<readonly T[]>,
-    ): items is readonly T[] {
-        return !Array.isArray(items[0]);
     }
 }
