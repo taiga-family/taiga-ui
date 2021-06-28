@@ -7,10 +7,11 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 
+// TODO: Remove export in ivy compiation
 /**
  * Computes day of week offset of the beginning of the month
  */
-const getMonthStartDaysOffset = (
+export const getMonthStartDaysOffset = (
     month: TuiMonth,
     firstDayOfWeek: TuiDayOfWeek,
 ): number => {
