@@ -5,7 +5,8 @@ import {TUI_FIRST_DAY_OF_WEEK, TUI_SHORT_WEEK_DAYS} from './index';
 
 export type WEEK_DAYS_NAMES = [string, string, string, string, string, string, string];
 
-const convertToSundayFirstWeekFormat = (weekDaysNames: WEEK_DAYS_NAMES) => {
+// TODO: Remove export in ivy compiation
+export const convertToSundayFirstWeekFormat = (weekDaysNames: WEEK_DAYS_NAMES) => {
     const sundayIndex = weekDaysNames.length - 1;
 
     return [
