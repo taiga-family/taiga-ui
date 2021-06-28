@@ -56,7 +56,7 @@
                 <ng-template tuiAccordionItemContent>
                     <div class="section">
                         <ng-container
-                            *ngFor="let item of items[index]; index as index"
+                            *ngFor="let item of items[index]; index as subIndex"
                         >
                             <a
                                 *ngIf="!item.subPages; else subPages"
@@ -64,7 +64,8 @@
                                 class="sublink"
                                 routerLinkActive="sublink_active"
                                 [routerLink]="item.route"
-                                (click)="toggleMenu()"
+                                [scrollIntoView]="isActive(item.route)"
+                                (click)="closeMenu()"
                             >
                                 {{item.title}}
                             </a>
@@ -79,18 +80,18 @@
                                         tuiLink
                                         type="button"
                                         class="sublink sublink_subsection"
-                                        (click)="onGroupClick(index)"
+                                        (click)="onGroupClick(index + subIndex)"
                                     >
                                         <tui-svg
                                             src="tuiIconChevronRight"
                                             class="chevron"
-                                            [class.chevron_active]="!!openPagesGroupsArr[index]"
+                                            [class.chevron_active]="!!openPagesGroupsArr[index + subIndex]"
                                         ></tui-svg>
                                         {{item.title}}
                                     </button>
                                     <tui-expand
                                         class="tui-space_left-1"
-                                        [expanded]="!!openPagesGroupsArr[index]"
+                                        [expanded]="!!openPagesGroupsArr[index + subIndex]"
                                     >
                                         <div class="section section_bordered">
                                             <a
@@ -99,7 +100,8 @@
                                                 class="sublink sublink_small"
                                                 routerLinkActive="sublink_active"
                                                 [routerLink]="subPage.route"
-                                                (click)="toggleMenu()"
+                                                [scrollIntoView]="isActive(subPage.route)"
+                                                (click)="closeMenu()"
                                             >
                                                 {{subPage.title}}
                                             </a>

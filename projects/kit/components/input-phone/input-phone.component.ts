@@ -161,7 +161,7 @@ export class TuiInputPhoneComponent
     }
 
     get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly;
+        return !this.computedDisabled && !this.readOnly && !!this.datalist;
     }
 
     onHovered(hovered: boolean) {
