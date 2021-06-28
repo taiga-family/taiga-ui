@@ -1,41 +1,40 @@
-<ng-container *tuiLet="countriesNames$ | async as countriesNames">
-    <tui-hosted-dropdown
-        class="hosted-dropdown"
-        [content]="dropdown"
-        [canOpen]="!readOnly"
-        [(open)]="open"
-    >
-        <div tuiGroup>
-            <tui-primitive-textfield
-                tuiHostedDropdownHost
-                class="country-select tui-group__auto-width-item"
-                [tuiTextfieldCustomContent]="countryValueContent"
-                [tuiTextfieldLabelOutside]="true"
-                [disabled]="disabled"
-                [focusable]="focusable"
-                [editable]="false"
-                [iconContent]="arrow"
-                [pseudoFocused]="open || null"
-                [readOnly]="readOnly"
-                [tuiHintContent]="null"
-            ></tui-primitive-textfield>
-            <tui-input-phone
-                class="input-phone tui-group__auto-width-item"
-                tuiTextfieldAutocomplete="off"
-                [tuiTextfieldLabelOutside]="true"
-                [formControl]="control"
-                [focusable]="focusable"
-                [countryCode]="inputPhoneCountryCode"
-                [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
-                [readOnly]="readOnly"
-                [pseudoInvalid]="pseudoInvalid"
-                [pseudoFocused]="pseudoFocused"
-                [pseudoHovered]="pseudoHovered"
-            >
-                {{inputPhoneCountryCode}}
-            </tui-input-phone>
-        </div>
-    </tui-hosted-dropdown>
+<tui-hosted-dropdown
+    *tuiLet="countriesNames$ | async as countriesNames"
+    class="hosted-dropdown"
+    [content]="dropdown"
+    [canOpen]="!readOnly"
+    [(open)]="open"
+>
+    <div tuiGroup>
+        <tui-primitive-textfield
+            tuiHostedDropdownHost
+            class="country-select tui-group__auto-width-item"
+            [tuiTextfieldCustomContent]="countryValueContent"
+            [tuiTextfieldLabelOutside]="true"
+            [disabled]="disabled"
+            [focusable]="focusable"
+            [editable]="false"
+            [iconContent]="arrow"
+            [pseudoFocused]="open || null"
+            [readOnly]="readOnly"
+            [tuiHintContent]="null"
+        ></tui-primitive-textfield>
+        <tui-input-phone
+            class="input-phone tui-group__auto-width-item"
+            tuiTextfieldAutocomplete="off"
+            [tuiTextfieldLabelOutside]="true"
+            [formControl]="control"
+            [focusable]="focusable"
+            [countryCode]="inputPhoneCountryCode"
+            [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
+            [readOnly]="readOnly"
+            [pseudoInvalid]="pseudoInvalid"
+            [pseudoFocused]="pseudoFocused"
+            [pseudoHovered]="pseudoHovered"
+        >
+            {{inputPhoneCountryCode}}
+        </tui-input-phone>
+    </div>
 
     <ng-template #dropdown>
         <tui-data-list>
@@ -64,4 +63,4 @@
             [src]="countryFlagPath"
         />
     </ng-template>
-</ng-container>
+</tui-hosted-dropdown>
