@@ -3,7 +3,7 @@
     "version": "2.11.2",
     "description": "Taiga UI package that provides ng add command for Taiga library",
     "scripts": {
-        "publish": "cp ../../README.md ./ && npm punlish && rm README.md"
+        "publish": "cp ../../README.md ./ && npm publish && rm README.md"
     },
     "keywords": [
         "angular",
