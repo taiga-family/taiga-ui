@@ -31,7 +31,7 @@
         "node": ">= 10",
         "npm": ">= 3"
     },
-    "devDdevDependenciesepe": {
+    "devDependenciesepe": {
         "@taiga-ui/core": "2.11.2"
     }
 }

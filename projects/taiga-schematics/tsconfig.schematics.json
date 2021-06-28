@@ -12,7 +12,7 @@
         "noImplicitThis": true,
         "noUnusedParameters": true,
         "noUnusedLocals": true,
-        "rootDir": "taiga-schematics",
+        "rootDir": "schematics",
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,
         "sourceMap": true,

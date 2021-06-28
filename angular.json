@@ -106,7 +106,7 @@
                 }
             }
         },
-        "schematics": {
+        "taiga-schematics": {
             "root": "projects/taiga-schematics",
             "sourceRoot": "projects/taiga-schematics",
             "projectType": "library",
@@ -116,6 +116,11 @@
                     "options": {
                         "tsConfig": "projects/taiga-schematics/tsconfig.lib.json",
                         "project": "projects/taiga-schematics/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/taiga-schematics/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "test": {
