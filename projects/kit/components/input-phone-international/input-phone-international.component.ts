@@ -24,12 +24,14 @@ import {
     TUI_ICONS_PATH,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
+import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
 import {TuiInputPhoneComponent} from '@taiga-ui/kit/components/input-phone';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 import {COUNTRIES} from './const/countries';
-import {TuiCountryIsoCode} from './country-iso-code';
 
 // @dynamic
 @Component({
@@ -75,6 +77,8 @@ export class TuiInputPhoneInternationalComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_ICONS_PATH)
         iconsPath: TuiStringHandler<string>,
+        @Inject(TUI_COUNTRIES)
+        readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>,
     ) {
         super(control, changeDetectorRef);
 
@@ -113,10 +117,6 @@ export class TuiInputPhoneInternationalComponent
 
     getFlagPath(code: TuiCountryIsoCode): string {
         return `${this.staticPath}${code}.png`;
-    }
-
-    getCountryName(isoCode: TuiCountryIsoCode): string {
-        return COUNTRIES[isoCode].name;
     }
 
     onItemClick(isoCode: TuiCountryIsoCode) {

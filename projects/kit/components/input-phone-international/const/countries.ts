@@ -1,7 +1,9 @@
-import {TuiCountryIsoCode} from '../country-iso-code';
+import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {Country} from '../interfaces/country';
 
-// TODO: i18n
+/**
+ * TODO: remove property `name` in 3.0
+ */
 export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.AD]: {mask: '+376###-###', name: 'Андорра'},
     [TuiCountryIsoCode.AE]: {
