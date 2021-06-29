@@ -95,6 +95,10 @@ export class TuiPrimitiveTextfieldComponent
     @tuiDefaultProp()
     value = '';
 
+    @Input()
+    @tuiDefaultProp()
+    canBeCleaned = true;
+
     @Output()
     readonly valueChange = new EventEmitter<string>();
 
@@ -207,7 +211,11 @@ export class TuiPrimitiveTextfieldComponent
 
     get hasCleaner(): boolean {
         return (
-            this.controller.cleaner && this.hasValue && !this.disabled && !this.readOnly
+            this.controller.cleaner &&
+            this.hasValue &&
+            !this.disabled &&
+            !this.readOnly &&
+            this.canBeCleaned
         );
     }
 

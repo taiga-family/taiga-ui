@@ -164,6 +164,10 @@ export class TuiInputPhoneComponent
         return !this.computedDisabled && !this.readOnly && !!this.datalist;
     }
 
+    get canClean(): boolean {
+        return this.nativeValue !== this.countryCode;
+    }
+
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
     }
@@ -209,6 +213,8 @@ export class TuiInputPhoneComponent
     }
 
     onValueChange(value: string) {
+        value = value === '' ? this.countryCode : value;
+
         const parsed = isText(value)
             ? value
             : value.replace(NON_PLUS_AND_DIGITS_REGEX, '');
