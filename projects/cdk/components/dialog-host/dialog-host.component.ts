@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {WINDOW} from '@ng-web-apis/common';
+import {HISTORY} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
@@ -32,7 +32,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
 
     constructor(
         @Inject(TUI_DIALOGS) private readonly dialogsByType: Observable<readonly T[]>[],
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(HISTORY) private readonly historyRef: History,
         @Inject(Title) private readonly titleService: Title,
     ) {}
 
@@ -44,10 +44,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
         }
 
         if (dialogs.length > 1) {
-            this.windowRef.history.pushState(
-                FAKE_HISTORY_STATE,
-                this.titleService.getTitle(),
-            );
+            this.historyRef.pushState(FAKE_HISTORY_STATE, this.titleService.getTitle());
         }
 
         last.$implicit.complete();
@@ -59,12 +56,9 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
         }
 
         if (popupOpened) {
-            this.windowRef.history.pushState(
-                FAKE_HISTORY_STATE,
-                this.titleService.getTitle(),
-            );
-        } else if (isFakeHistoryState(this.windowRef.history.state)) {
-            this.windowRef.history.back();
+            this.historyRef.pushState(FAKE_HISTORY_STATE, this.titleService.getTitle());
+        } else if (isFakeHistoryState(this.historyRef.state)) {
+            this.historyRef.back();
         }
     }
 }
