@@ -1,53 +1,53 @@
 name: Build all packages of Taiga UI
 
 on:
-  pull_request:
-    paths:
-      - 'projects/**'
-      - '!projects/*testing/**'
-      - '!projects/demo/**'
-      - '!projects/icons/**'
-      - 'angular.json'
-      - 'package.json'
-      - 'tsconfig*'
-    branches:
-      - '!release/**'  
-  push:
-    branches:
-      - main
-      - '!release/**'
+    pull_request:
+        paths:
+            - 'projects/**'
+            - '!projects/*testing/**'
+            - '!projects/demo/**'
+            - '!projects/icons/**'
+            - 'angular.json'
+            - 'package.json'
+            - 'tsconfig*'
+        branches:
+            - 'main'
+            - '!release/**'
+    push:
+        branches:
+            - main
+            - '!release/**'
 
 jobs:
-  build:
-    # Setup part
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - name: Cache Node.js modules
-      uses: actions/cache@v2
-      with:
-        path: ~/.npm 
-        key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.OS }}-node-
-          ${{ runner.OS }}-
-    - name: Install dependencies
-      run: npm ci
-    # End of setup
-    - run: |
-        npm run build cdk
-        npm run build i18n
-        npm run build core
-        npm run build kit
-        npm run build addon-charts
-        npm run build addon-commerce
-        npm run build addon-mobile
-        npm run build addon-doc
-        npm run build addon-editor
-        npm run build addon-table
-        npm run build addon-tablebars
-
+    build:
+        # Setup part
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: '12.x'
+            - name: Cache Node.js modules
+              uses: actions/cache@v2
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.OS }}-node-
+                      ${{ runner.OS }}-
+            - name: Install dependencies
+              run: npm ci
+            # End of setup
+            - run: |
+                  npm run build cdk
+                  npm run build i18n
+                  npm run build core
+                  npm run build kit
+                  npm run build addon-charts
+                  npm run build addon-commerce
+                  npm run build addon-mobile
+                  npm run build addon-doc
+                  npm run build addon-editor
+                  npm run build addon-table
+                  npm run build addon-tablebars

@@ -2,25 +2,13 @@ import {
     ChangeDetectorRef,
     Component,
     Inject,
-    Input,
     Optional,
     Self,
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {
-    AbstractTuiControl,
-    TuiAccountAutofillName,
-    TuiNativeFocusableElement,
-} from '@taiga-ui/cdk';
-import {
-    TuiDirection,
-    TuiHintModeT,
-    TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
-} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {AbstractTuiControl, TuiNativeFocusableElement} from '@taiga-ui/cdk';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -32,30 +20,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
-    @Input()
-    exampleText = '';
-
-    @Input()
-    labelOutside = false;
-
-    @Input()
-    autocomplete: TuiAccountAutofillName | null = null;
-
-    @Input()
-    hintContent: PolymorpheusContent | null = null;
-
-    @Input()
-    hintDirection: TuiDirection = 'bottom-left';
-
-    @Input()
-    hintMode: TuiHintModeT | null = null;
-
-    @Input()
-    maxLength: number | null = null;
-
-    @Input()
-    size: TuiSizeS | TuiSizeL = 'l';
-
     private isPasswordHidden = true;
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
@@ -82,10 +46,6 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
     }
 
     get icon(): string {
-        if (this.size === 's') {
-            return this.isPasswordHidden ? 'tuiIconEyeClosed' : 'tuiIconEyeOpen';
-        }
-
         return this.isPasswordHidden ? 'tuiIconHideLarge' : 'tuiIconShowLarge';
     }
 
@@ -94,11 +54,7 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
     }
 
     get inputType(): string {
-        return this.isPasswordHidden || !this.hasEyeIcon ? 'password' : 'text';
-    }
-
-    get hasEyeIcon(): boolean {
-        return !(this.disabled || this.readOnly);
+        return this.isPasswordHidden ? 'password' : 'text';
     }
 
     onValueChange(textValue: string) {

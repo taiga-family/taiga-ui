@@ -1,0 +1,37 @@
+name: Screenshot tests all packages of Taiga UI
+
+on:
+    pull_request:
+        paths:
+            - 'projects/**'
+            - '!projects/*testing/**'
+            - '!projects/demo/**'
+            - '!projects/icons/**'
+            - 'angular.json'
+            - 'package.json'
+            - 'tsconfig*'
+    push:
+        branches:
+            - main
+            - '!release/**'
+
+jobs:
+    demo-integrations:
+        runs-on: ubuntu-20.04
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Run screenshot tests
+              uses: cypress-io/github-action@v2
+              with:
+                  build: npm run build:demo
+                  command: npm run demo:integrations:ci
+
+            - name: Upload artifact
+              uses: actions/upload-artifact@v1
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: projects/demo-integrations/cypress/snapshots
+                  retention-days: 7

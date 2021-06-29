@@ -8,12 +8,12 @@
     position: relative;
     display: block;
     min-width: 100%;
-    margin: 24px 0;
+    margin: 1.5rem 0;
 }
 
 .bg-toggle {
     position: absolute;
-    bottom: ~'calc(100% + 12px)';
+    bottom: ~'calc(100% + 0.75rem)';
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -31,7 +31,7 @@
     border: 1px solid var(--tui-base-03);
     border-radius: var(--tui-radius-m);
     max-width: 100%;
-    min-height: 96px;
+    min-height: 6rem;
     width: 100%;
     background-color: var(--tui-base-01);
     overflow: hidden;
@@ -41,8 +41,8 @@
             linear-gradient(-45deg, var(--tui-base-02) 25%, transparent 25%),
             linear-gradient(45deg, transparent 75%, var(--tui-base-02) 75%),
             linear-gradient(-45deg, transparent 75%, var(--tui-base-02) 75%);
-        background-size: 20px 20px;
-        background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+        background-size: 1.25rem 1.25rem;
+        background-position: 0 0, 0 0.625rem, 0.625rem -0.625rem, -0.625rem 0;
     }
 
     &.wrapper_dark {
@@ -76,12 +76,12 @@
 .content {
     flex: 1 1 0;
     min-width: 0;
-    padding: 24px;
+    padding: 1.5rem;
     box-sizing: border-box;
     overflow: hidden;
 
     @media @mobile {
-        padding: 16px;
+        padding: 1rem;
     }
 }
 
@@ -93,7 +93,7 @@
 
 .input-wrapper {
     width: 100%;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
 }
 
 .expand {
@@ -111,23 +111,23 @@
 .value {
     flex: 1;
     background: var(--tui-clear-inverse);
-    padding: 12px;
-    border-radius: 4px;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
 }
 
 .mode {
-    width: 200px;
+    width: 12.5rem;
 }
 
 .select {
-    max-width: 240px;
+    max-width: 15rem;
 }
 
 .resizer {
     .clearbtn();
     .shadow(2);
     position: relative;
-    width: 56px;
+    width: 3.5rem;
     min-height: inherit;
     flex-shrink: 0;
     border-left: 1px solid var(--tui-base-03);
@@ -140,19 +140,19 @@
     &:after {
         content: '';
         position: absolute;
-        top: 12px;
+        top: 0.75rem;
         left: 50%;
-        bottom: 12px;
-        width: 1px;
+        bottom: 0.75rem;
+        width: 0.0625rem;
         background: var(--tui-base-05);
     }
 
     &:before {
-        transform: translateX(2px);
+        transform: translateX(0.125rem);
     }
 
     &:after {
-        transform: translateX(-3px);
+        transform: translateX(-0.1875rem);
     }
 
     @media @mobile {
@@ -164,7 +164,7 @@
     font: var(--tui-font-text-s);
     position: relative;
     z-index: 1;
-    padding: 12px;
+    padding: 0.75rem;
     background: var(--tui-base-01);
 
     .wrapper_light & {
@@ -173,10 +173,10 @@
 }
 
 @supports (position: sticky) {
-    @media screen and (min-height: 600px) {
+    @media screen and (min-height: 37.5rem) {
         :host {
             position: sticky;
-            top: 74px;
+            top: 4.625rem;
             z-index: 2;
         }
     }

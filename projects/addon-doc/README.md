@@ -50,9 +50,11 @@ npm i @taiga-ui/addon-doc
                 provide: HIGHLIGHT_OPTIONS,
                 useValue: {
                     coreLibraryLoader: () => import('highlight.js/lib/core' as string),
-                    lineNumbersLoader: () => import('highlightjs-line-numbers.js' as string), // Optional, only if you want the line numbers
+                    lineNumbersLoader: () =>
+                        import('highlightjs-line-numbers.js' as string), // Optional, only if you want the line numbers
                     languages: {
-                        typescript: () => import('highlight.js/lib/languages/typescript' as string),
+                        typescript: () =>
+                            import('highlight.js/lib/languages/typescript' as string),
                         less: () => import('highlight.js/lib/languages/less' as string),
                         xml: () => import('highlight.js/lib/languages/xml' as string),
                     },

@@ -11,7 +11,7 @@ import {default as exampleTemplate} from '!!raw-loader!./examples/import/templat
 import {Component, Inject, OnDestroy, ViewChild} from '@angular/core';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 import {TuiBrightness} from '@taiga-ui/core';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {changeDetection} from '../../../change-detection-strategy';
@@ -46,8 +46,8 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
 
     subscription = new Subscription();
 
-    @ViewChild('tableBarTemplate', {read: PolymorpheusTemplate})
-    readonly tableBarTemplate?: PolymorpheusTemplate<{}>;
+    @ViewChild('tableBarTemplate')
+    readonly tableBarTemplate: PolymorpheusContent = '';
 
     private destroy$ = new Subject<void>();
 

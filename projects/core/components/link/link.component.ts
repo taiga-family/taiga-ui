@@ -6,9 +6,7 @@ import {
     HostBinding,
     Inject,
     Input,
-    Optional,
 } from '@angular/core';
-import {RouterLinkActive} from '@angular/router';
 import {
     isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -74,9 +72,6 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<TuiNativeFocusableElement>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Optional()
-        @Inject(RouterLinkActive)
-        private readonly routerLinkActive: RouterLinkActive | null,
         @Inject(TuiFocusVisibleService)
         focusVisible$: TuiFocusVisibleService,
     ) {
@@ -91,11 +86,6 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
 
     get focused(): boolean {
         return isNativeFocused(this.nativeFocusableElement);
-    }
-
-    @HostBinding('class._active')
-    get active(): boolean {
-        return !!this.routerLinkActive && this.routerLinkActive.isActive;
     }
 
     get hasIcon(): boolean {

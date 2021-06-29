@@ -13,16 +13,16 @@
     }
 
     &_nested {
-        margin: 12px 0 12px 20px;
+        margin: 0.75rem 0 0.75rem 1.25rem;
         color: var(--tui-text-02);
 
         .tui-list_large & {
-            margin-left: 12px;
+            margin-left: 0.75rem;
         }
 
         .tui-list_small & {
-            margin-top: 8px;
-            margin-bottom: 8px;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
         }
     }
 
@@ -44,18 +44,18 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 8px;
-            width: 8px;
-            height: 8px;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
             border-radius: 100%;
             background-color: var(--tui-primary);
 
             .tui-list_large > & {
-                top: 8px;
+                top: 0.5rem;
             }
 
             .tui-list_small > & {
-                top: 5px;
+                top: 0.3125rem;
             }
         }
 
@@ -97,7 +97,7 @@
         margin: 0;
 
         .tui-list_small & {
-            line-height: 20px;
+            line-height: 1.25rem;
             font-weight: bold;
         }
     }
@@ -111,7 +111,7 @@
         }
 
         .tui-list_large & {
-            line-height: 28px;
+            line-height: 1.75rem;
             margin-top: @space * 3;
         }
     }

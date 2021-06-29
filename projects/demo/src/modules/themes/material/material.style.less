@@ -7,7 +7,7 @@
     --tui-primary: #6200ee;
     --tui-primary-hover: var(--tui-primary);
     --tui-primary-active: #a56bf5;
-    --tui-radius-m: 4px;
+    --tui-radius-m: 0.25rem;
     --tui-text-03: #6c757d;
     --tui-text-02: rgba(0, 0, 0, 0.6);
 
@@ -20,14 +20,14 @@
         background: #f5f5f5;
         border-width: 0;
         color: rgba(0, 0, 0, 0.87);
-        border-radius: 4px 4px 0 0;
+        border-radius: 0.25rem 0.25rem 0 0;
         box-shadow: inset 0 -1px rgba(0, 0, 0, 0.42);
 
         &:after {
             .transition(transform, 0.2s);
             top: 100%;
-            height: 2px;
-            margin-top: -2px;
+            height: 0.125rem;
+            margin-top: -0.125rem;
             border-radius: 0;
             border-width: 0;
             background-color: var(--tui-primary);
@@ -59,11 +59,12 @@
         .transition(box-shadow);
         text-transform: uppercase;
         font-weight: bold;
-        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 1px 5px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 0.1875rem 0.0625rem -0.125rem rgba(0, 0, 0, 0.2), 0 0.125rem 0.125rem rgba(0, 0, 0, 0.14),
+            0 0.0625rem 0.3125rem rgba(0, 0, 0, 0.12);
 
         &._pressed {
-            box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
-                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 0.3125rem 0.3125rem -0.1875rem rgba(0, 0, 0, 0.2),
+                0 0.5rem 0.625rem 0.0625rem rgba(0, 0, 0, 0.14), 0 0.1875rem 0.875rem 0.125rem rgba(0, 0, 0, 0.12);
         }
     }
 
@@ -76,8 +77,8 @@
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         font-weight: 500 !important;
         text-transform: uppercase;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
         margin-right: 0;
 
         &:hover {

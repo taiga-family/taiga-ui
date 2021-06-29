@@ -17,7 +17,7 @@ import {
     DEFAULT_MIN_HEIGHT,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
-import {TuiCountryIsoCode} from '@taiga-ui/kit';
+import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';

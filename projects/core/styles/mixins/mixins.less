@@ -81,9 +81,9 @@
 
 .visually-hidden() {
     position: absolute;
-    height: 1px;
-    width: 1px;
-    margin: -1px;
+    height: 0.0625rem;
+    width: 0.0625rem;
+    margin: -0.0625rem;
     border: 0;
     padding: 0;
     overflow: hidden;
@@ -97,9 +97,9 @@
     @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
         &::-webkit-scrollbar,
         &::-webkit-scrollbar-thumb {
-            width: 16px;
-            height: 16px;
-            border-radius: 100px;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 6.25rem;
             background-clip: padding-box;
             border: 6px solid transparent;
         }
@@ -126,37 +126,37 @@
 .shadow(@mode: 1) {
     // Default
     & when (@mode = 1) {
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.12);
     }
 
     // Dropdown
     & when (@mode = 2) {
-        box-shadow: 0 8px 16px rgba(51, 51, 51, 0.2);
+        box-shadow: 0 0.5rem 1rem rgba(51, 51, 51, 0.2);
     }
 
     // Modal
     & when (@mode = 3) {
-        box-shadow: 0 18px 30px rgba(51, 51, 51, 0.52);
+        box-shadow: 0 1.125rem 1.875rem rgba(51, 51, 51, 0.52);
     }
 
     // Sidebar
     & when (@mode = 4) {
-        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+        box-shadow: 0.25rem 0 1.5rem rgba(0, 0, 0, 0.12);
     }
 
     // Hover
     & when (@mode = 5) {
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0.75rem 2.25rem rgba(0, 0, 0, 0.2);
     }
 
     // Navigation
     & when (@mode = 6) {
-        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 0.125rem 1rem rgba(0, 0, 0, 0.08);
     }
 
     // Modal mobile
     & when (@mode = 7) {
-        box-shadow: 0 -16px 28px rgba(51, 51, 51, 0.24);
+        box-shadow: 0 -1rem 1.75rem rgba(51, 51, 51, 0.24);
     }
 }
 
@@ -262,7 +262,7 @@
 }
 
 /* stylelint-disable selector-max-specificity */
-.text-overflow-with-fade(@color: rgba(255,255,255,1), @transparentColor: rgba(255,255,255,0), @width: 30px) {
+.text-overflow-with-fade(@color: rgba(255,255,255,1), @transparentColor: rgba(255,255,255,0), @width: 1.875rem) {
     position: relative;
     overflow: hidden;
 
@@ -324,5 +324,5 @@
 
 .blurred-background(@color: #fff) {
     background: fade(@color, 70%);
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(0.4375rem);
 }

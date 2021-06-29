@@ -97,11 +97,11 @@
     @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
         &::-webkit-scrollbar,
         &::-webkit-scrollbar-thumb {
-            width: 16px;
-            height: 16px;
-            border-radius: 100px;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 6.25rem;
             background-clip: padding-box;
-            border: 6px solid transparent;
+            border: 0.375rem solid transparent;
         }
 
         &::-webkit-scrollbar {
@@ -126,37 +126,37 @@
 @mixin shadow($mode: 1) {
     // Default
     @if ($mode == 1) {
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.12);
     }
 
     // Dropdown
     @if ($mode == 2) {
-        box-shadow: 0 8px 16px rgba(51, 51, 51, 0.2);
+        box-shadow: 0 0.5rem 1rem rgba(51, 51, 51, 0.2);
     }
 
     // Modal
     @if ($mode == 3) {
-        box-shadow: 0 18px 30px rgba(51, 51, 51, 0.52);
+        box-shadow: 0 1.125rem 1.875rem rgba(51, 51, 51, 0.52);
     }
 
     // Sidebar
     @if ($mode == 4) {
-        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+        box-shadow: 0.25rem 0 1.5rem rgba(0, 0, 0, 0.12);
     }
 
     // Hover
     @if ($mode == 5) {
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0.75rem 2.25rem rgba(0, 0, 0, 0.2);
     }
 
     // Navigation
     @if ($mode == 6) {
-        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 0.125rem 1rem rgba(0, 0, 0, 0.08);
     }
 
     // Modal mobile
     @if ($mode == 7) {
-        box-shadow: 0 -16px 28px rgba(51, 51, 51, 0.24);
+        box-shadow: 0 -1rem 1.75rem rgba(51, 51, 51, 0.24);
     }
 }
 
@@ -221,7 +221,12 @@
 @mixin dashed-border($color: currentColor, $alignment: bottom, $spacing: 4) {
     $size: $spacing * 1px;
     $percentage: (100% / $spacing * 2);
-    background-image: linear-gradient(to right, $color 0%, $color $percentage, transparent $percentage);
+    background-image: linear-gradient(
+        to right,
+        $color 0%,
+        $color $percentage,
+        transparent $percentage
+    );
     background-position: 0 $alignment;
     background-size: $size 1px;
     background-repeat: repeat-x;
@@ -265,7 +270,7 @@
 @mixin text-overflow-with-fade(
     $color: rgba(255, 255, 255, 1),
     $transparentColor: rgba(255, 255, 255, 0),
-    $width: 30px
+    $width: 1.875rem
 ) {
     position: relative;
     overflow: hidden;
@@ -277,7 +282,12 @@
         right: 0;
         width: $width;
         height: 100%;
-        background-image: linear-gradient(to right, $transparentColor 0%, $color 80%, $color 100%);
+        background-image: linear-gradient(
+            to right,
+            $transparentColor 0%,
+            $color 80%,
+            $color 100%
+        );
         pointer-events: none;
     }
 }
@@ -328,5 +338,5 @@
 
 @mixin blurred-background($color: #fff) {
     background: rgba($color, 70%);
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(0.4375rem);
 }
