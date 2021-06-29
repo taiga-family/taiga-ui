@@ -1,5 +1,5 @@
 import {LanguageCore} from '@taiga-ui/i18n/interfaces';
-import {TUI_ENGLISH_LANGUAGE_COUNTRIES} from '../english/countries';
+import {TUI_ENGLISH_LANGUAGE_COUNTRIES} from '@taiga-ui/i18n/languages/english';
 
 export const TUI_TURKISH_LANGUAGE_CORE: LanguageCore = {
     months: [
