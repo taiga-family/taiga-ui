@@ -7,8 +7,10 @@ import {TuiDialog} from '@taiga-ui/cdk/types';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
-const isFakeHistoryState = (
+// TODO: remove in ivy compilation
+export const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
+// TODO: remove in ivy compilation
+export const isFakeHistoryState = (
     historyState: Record<string, unknown>,
 ): historyState is typeof FAKE_HISTORY_STATE =>
     historyState?.label === FAKE_HISTORY_STATE.label;
