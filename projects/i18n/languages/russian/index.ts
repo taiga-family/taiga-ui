@@ -6,3 +6,5 @@ export * from './addon-editor';
 export * from './addon-table';
 
 export * from './russian';
+
+export * from './countries';
