@@ -10,7 +10,11 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
-import {NG_DOMPURIFY_VERSION, TAIGA_VERSION} from '../constants/versions';
+import {
+    DOMPURIFY_VERSION,
+    NG_DOMPURIFY_VERSION,
+    TAIGA_VERSION,
+} from '../constants/versions';
 import {Schema} from '../schema';
 
 const collectionPath = join(__dirname, '../../collection.json');
@@ -74,7 +78,8 @@ describe('ng-add', () => {
     "@taiga-ui/core": "${TAIGA_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}",
-    "@tinkoff/ng-dompurify": "${NG_DOMPURIFY_VERSION}"
+    "@tinkoff/ng-dompurify": "${NG_DOMPURIFY_VERSION}",
+    "dompurify": "${DOMPURIFY_VERSION}"
   }
 }`,
         );

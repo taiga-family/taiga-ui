@@ -1,7 +1,11 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
 import {addPackageJsonDependency} from 'ng-morph';
-import {NG_DOMPURIFY_VERSION, TAIGA_VERSION} from './constants/versions';
+import {
+    DOMPURIFY_VERSION,
+    NG_DOMPURIFY_VERSION,
+    TAIGA_VERSION,
+} from './constants/versions';
 import {Schema} from './schema';
 
 const MAIN_PACKAGES = ['core', 'cdk', 'kit', 'icons'];
@@ -32,6 +36,10 @@ function addDependencies(tree: Tree, options: Schema) {
         addPackageJsonDependency(tree, {
             name: '@tinkoff/ng-dompurify',
             version: NG_DOMPURIFY_VERSION,
+        });
+        addPackageJsonDependency(tree, {
+            name: 'dompurify',
+            version: DOMPURIFY_VERSION,
         });
     }
 }
