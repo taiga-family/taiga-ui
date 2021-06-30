@@ -23,8 +23,6 @@
         "typecheck": "tsc --noEmit --skipLibCheck --project tsconfig.spec.json",
         "*** Build **": "",
         "build": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --configuration=production",
-        "build:schematics": "tsc -p ./projects/taiga-schematics/tsconfig.schematics.json",
-        "postbuild:schematics": "cp ./projects/taiga-schematics/schematics/collection.json ./dist/taiga-schematics/collection.json && cp ./projects/taiga-schematics/schematics/ng-add/schema.json ./dist/taiga-schematics/ng-add/schema.json",
         "postbuild": "node scripts/check-dist.js",
         "build:demo": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod --configuration=production",
         "build:demo:next": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod --configuration=next",
@@ -45,7 +43,12 @@
         "cypress:open": "cypress open --browser chrome --project ./projects/demo-integrations",
         "cypress:run": "cypress run --env ci=true --browser chrome --headless --project ./projects/demo-integrations",
         "cypress:run:master": "cypress run --env ci=true --browser chrome --headless --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\"",
-        "cypress:open:master": "cypress open --browser chrome --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\""
+        "cypress:open:master": "cypress open --browser chrome --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\"",
+        "*** Schematics ***": "",
+        "taiga-schematics:build": "npm run build taiga-schematics && npm run build:schematics",
+        "build:schematics": "tsc -p ./projects/taiga-schematics/tsconfig.schematics.json",
+        "test:schematics": "tsc -p ./projects/taiga-schematics/tsconfig.spec.json && jasmine ./dist/taiga-schematics/**/*.spec.js",
+        "postbuild:schematics": "cp ./projects/taiga-schematics/schematics/collection.json ./dist/taiga-schematics/collection.json && cp ./projects/taiga-schematics/schematics/ng-add/schema.json ./dist/taiga-schematics/ng-add/schema.json"
     },
     "keywords": [
         "angular",

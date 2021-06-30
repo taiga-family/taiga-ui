@@ -123,14 +123,6 @@
                         }
                     }
                 },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "options": {
-                        "main": "projects/taiga-schematics/test.ts",
-                        "tsConfig": "projects/taiga-schematics/tsconfig.spec.json",
-                        "karmaConfig": "karma.config.js"
-                    }
-                },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
