@@ -16,8 +16,8 @@ export function ngAdd(options: Schema): Rule {
 
         addDependencies(tree, options);
 
-        context.addTask(new RunSchematicTask('ng-add-setup-project', options), [
-            context.addTask(new NodePackageInstallTask()),
+        context.addTask(new NodePackageInstallTask(), [
+            context.addTask(new RunSchematicTask('ng-add-setup-project', options)),
         ]);
     };
 }
