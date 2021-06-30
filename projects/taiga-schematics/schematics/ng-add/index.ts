@@ -1,6 +1,6 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
-import {addPackageJsonDependency} from 'ng-morph';
+import {addPackageJsonDependency, removePackageJsonDependency} from 'ng-morph';
 import {
     DOMPURIFY_VERSION,
     NG_DOMPURIFY_VERSION,
@@ -31,6 +31,8 @@ function addDependencies(tree: Tree, options: Schema) {
             version: TAIGA_VERSION,
         });
     });
+
+    removePackageJsonDependency(tree, 'taiga-ui');
 
     if (options.addSanitizer) {
         addPackageJsonDependency(tree, {
