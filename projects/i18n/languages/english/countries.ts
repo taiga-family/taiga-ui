@@ -1,4 +1,4 @@
-import {TuiCountryIsoCode} from '../../enums/country-iso-code';
+import {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 
 export const TUI_ENGLISH_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> = {
     [TuiCountryIsoCode.AD]: 'Andorra',

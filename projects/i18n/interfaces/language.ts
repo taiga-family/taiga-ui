@@ -1,4 +1,4 @@
-import {TuiCountryIsoCode} from '../enums';
+import {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 
 // prettier-ignore
 type MONTHS_ARRAY = [string, string, string, string, string, string, string, string, string, string, string, string];
