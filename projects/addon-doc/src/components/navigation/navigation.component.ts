@@ -160,7 +160,7 @@ export class TuiDocNavigationComponent {
     }
 
     private openActivePageGroup() {
-        this.items.forEach((pages, pagesIndex) => {
+        [...this.items, this.itemsWithoutSections].forEach((pages, pagesIndex) => {
             pages.forEach((page, pageIndex) => {
                 if ('route' in page && this.isActiveRoute(page.route)) {
                     this.openPagesArr[pagesIndex] = true;

@@ -22,7 +22,7 @@
         <tui-data-list>
             <tui-opt-group
                 *ngFor="let group of filtered; let index = index"
-                [label]="labels[index]"
+                [label]="labels[index] || ''"
             >
                 <a
                     *ngFor="let item of group"
@@ -55,7 +55,7 @@
                             *ngFor="let item of items[index]; index as subIndex"
                         >
                             <ng-container
-                                *ngTemplateOutlet="pages; context: {item: item, index: index, subIndex: subIndex}"
+                                *ngTemplateOutlet="pages; context: {item: item, index: index + subIndex}"
                             >
                             </ng-container>
                         </ng-container>
@@ -68,18 +68,13 @@
                 *ngFor="let item of itemsWithoutSections; let index = index"
             >
                 <ng-container
-                    *ngTemplateOutlet="pages; context: {item: item, index: index}"
+                    *ngTemplateOutlet="pages; context: {item: item, index: items.length + index}"
                 >
                 </ng-container>
             </ng-container>
         </div>
 
-        <ng-template
-            #pages
-            let-item="item"
-            let-index="index"
-            let-subIndex="subIndex"
-        >
+        <ng-template #pages let-item="item" let-index="index">
             <a
                 *ngIf="!item.subPages; else subPages"
                 tuiLink
@@ -102,18 +97,18 @@
                         tuiLink
                         type="button"
                         class="sublink sublink_subsection"
-                        (click)="onGroupClick(index + subIndex)"
+                        (click)="onGroupClick(index)"
                     >
                         <tui-svg
                             src="tuiIconChevronRight"
                             class="chevron"
-                            [class.chevron_active]="!!openPagesGroupsArr[index + subIndex]"
+                            [class.chevron_active]="!!openPagesGroupsArr[index]"
                         ></tui-svg>
                         {{item.title}}
                     </button>
                     <tui-expand
                         class="tui-space_left-1"
-                        [expanded]="!!openPagesGroupsArr[index + subIndex]"
+                        [expanded]="!!openPagesGroupsArr[index]"
                     >
                         <div class="section section_bordered">
                             <a
