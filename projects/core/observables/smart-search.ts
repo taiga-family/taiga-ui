@@ -1,5 +1,4 @@
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
-import {TuiItems} from '@taiga-ui/core/types';
 import {Observable, OperatorFunction} from 'rxjs';
 import {
     debounceTime,
@@ -10,9 +9,9 @@ import {
 } from 'rxjs/operators';
 
 export function smartSearch<T>(
-    getSearchFunction: (search: string) => Observable<Exclude<TuiItems<T>, null>>,
+    getSearchFunction: (search: string) => Observable<readonly T[] | readonly T[][]>,
     searchDebouceTimeMs: number = 400,
-): OperatorFunction<string, TuiItems<T>> {
+): OperatorFunction<string, readonly T[] | readonly T[][] | null> {
     return source =>
         source.pipe(
             debounceTime(searchDebouceTimeMs),

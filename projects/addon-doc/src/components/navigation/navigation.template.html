@@ -44,6 +44,7 @@
                 *ngFor="let label of labels; index as index"
                 size="s"
                 [borders]="null"
+                [(open)]="!!openPagesArr[index]"
             >
                 <span class="tui-space_left-2">
                     <strong>{{label}}</strong>
@@ -51,10 +52,10 @@
                 <ng-template tuiAccordionItemContent>
                     <div class="section">
                         <ng-container
-                            *ngFor="let item of items[index]; index as index"
+                            *ngFor="let item of items[index]; index as subIndex"
                         >
                             <ng-container
-                                *ngTemplateOutlet="pages; context: {item: item, index: index}"
+                                *ngTemplateOutlet="pages; context: {item: item, index: index, subIndex: subIndex}"
                             >
                             </ng-container>
                         </ng-container>
@@ -73,14 +74,20 @@
             </ng-container>
         </div>
 
-        <ng-template #pages let-item="item" let-index="index">
+        <ng-template
+            #pages
+            let-item="item"
+            let-index="index"
+            let-subIndex="subIndex"
+        >
             <a
                 *ngIf="!item.subPages; else subPages"
                 tuiLink
                 class="sublink"
                 routerLinkActive="sublink_active"
                 [routerLink]="item.route"
-                (click)="toggleMenu()"
+                [scrollIntoView]="isActive(item.route)"
+                (click)="closeMenu()"
             >
                 {{item.title}}
             </a>
@@ -95,18 +102,18 @@
                         tuiLink
                         type="button"
                         class="sublink sublink_subsection"
-                        (click)="onGroupClick(index)"
+                        (click)="onGroupClick(index + subIndex)"
                     >
                         <tui-svg
                             src="tuiIconChevronRight"
                             class="chevron"
-                            [class.chevron_active]="!!openGroupsArr[index]"
+                            [class.chevron_active]="!!openPagesGroupsArr[index + subIndex]"
                         ></tui-svg>
                         {{item.title}}
                     </button>
                     <tui-expand
                         class="tui-space_left-1"
-                        [expanded]="!!openGroupsArr[index]"
+                        [expanded]="!!openPagesGroupsArr[index + subIndex]"
                     >
                         <div class="section section_bordered">
                             <a
@@ -115,7 +122,8 @@
                                 class="sublink sublink_small"
                                 routerLinkActive="sublink_active"
                                 [routerLink]="subPage.route"
-                                (click)="toggleMenu()"
+                                [scrollIntoView]="isActive(subPage.route)"
+                                (click)="closeMenu()"
                             >
                                 {{subPage.title}}
                             </a>

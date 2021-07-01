@@ -1,0 +1,39 @@
+name: Deploy next version demo to gh-pages
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - 'projects/**'
+            - 'angular.json'
+            - 'package.json'
+    workflow_dispatch:
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: '12.x'
+            - name: Cache Node.js modules
+              uses: actions/cache@v2
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.OS }}-node-
+                      ${{ runner.OS }}-
+            - name: npm ci and build demo
+              run: |
+                  npm ci
+                  npm run build:demo:next
+            - name: Deploy
+              uses: JamesIves/github-pages-deploy-action@4.1.4
+              with:
+                  branch: gh-pages
+                  folder: dist/demo/browser
+                  target-folder: next

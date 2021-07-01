@@ -2,8 +2,9 @@ name: Deploy demo to gh-pages
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - 'release/**'
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:

@@ -1,6 +1,6 @@
 @import 'taiga-ui-local';
 
-@padding: 12px;
+@padding: 0.75rem;
 
 :host {
     font: var(--tui-font-text-s);
@@ -11,7 +11,7 @@
     justify-content: center;
     box-sizing: border-box;
     color: var(--tui-base-01);
-    border-radius: 100px;
+    border-radius: 6.25rem;
     white-space: nowrap;
     overflow: hidden;
     vertical-align: middle;
@@ -161,22 +161,22 @@
     }
 
     &[data-tui-host-padding='m'] {
-        padding: 0 @padding - 4px;
+        padding: 0 @padding - 0.25rem;
 
         &[data-tui-host-size='s'] {
-            padding: 0 @padding - 6px;
+            padding: 0 @padding - 0.375rem;
         }
 
         &[data-tui-host-size='l'] {
-            padding: 0 @padding - 2px;
+            padding: 0 @padding - 0.125rem;
         }
     }
 
     &[data-tui-host-padding='l'] {
-        padding: 0 @padding - 2px;
+        padding: 0 @padding - 0.125rem;
 
         &[data-tui-host-size='s'] {
-            padding: 0 @padding - 4px;
+            padding: 0 @padding - 0.25rem;
         }
 
         &[data-tui-host-size='l'] {
@@ -186,12 +186,12 @@
 
     &[data-tui-host-size='s'] {
         font: var(--tui-font-text-xs);
-        height: 20px;
-        min-width: 20px;
+        height: 1.25rem;
+        min-width: 1.25rem;
 
         .left-content:before {
-            width: 4px;
-            height: 4px;
+            width: 0.25rem;
+            height: 0.25rem;
         }
     }
 
@@ -207,15 +207,15 @@
         min-width: var(--tui-height-s);
 
         .left-content:before {
-            margin: 0 8px 0 0;
-            width: 8px;
-            height: 8px;
+            margin: 0 0.5rem 0 0;
+            width: 0.5rem;
+            height: 0.5rem;
         }
     }
 
     &._empty-value {
         .left-content {
-            margin: 0 -4px;
+            margin: 0 -0.25rem;
 
             &:before {
                 margin: 0;
@@ -231,7 +231,7 @@
 
     &:not(:empty) {
         display: block;
-        margin-left: -4px;
+        margin-left: -0.25rem;
 
         &:before {
             content: none;
@@ -247,9 +247,9 @@
     &:before {
         display: block;
         background: currentColor;
-        margin: 0 6px 0 0;
-        width: 6px;
-        height: 6px;
+        margin: 0 0.375rem 0 0;
+        width: 0.375rem;
+        height: 0.375rem;
         border-radius: 100%;
         content: '';
     }

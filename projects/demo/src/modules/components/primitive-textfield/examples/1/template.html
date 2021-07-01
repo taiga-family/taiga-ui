@@ -1,12 +1,10 @@
 <tui-primitive-textfield
     [invalid]="computedInvalid"
     [focusable]="focusable"
-    [tuiTextfieldMaxLength]="maxLength"
-    [tuiTextfieldAutocomplete]="autocomplete"
     [tuiTextfieldType]="inputType"
     [disabled]="disabled"
     [readOnly]="readOnly"
-    [iconContent]="hasEyeIcon ? iconContent : null"
+    [iconContent]="iconContent"
     [value]="value"
     (valueChange)="onValueChange($event)"
     (focusedChange)="onFocused($event)"
@@ -14,7 +12,7 @@
     <ng-content></ng-content>
 </tui-primitive-textfield>
 
-<ng-template #iconContent="polymorpheus" polymorpheus>
+<ng-template #iconContent>
     <tui-svg
         class="icon"
         tuiHintId="not_required"
@@ -24,4 +22,4 @@
     ></tui-svg>
 </ng-template>
 
-<ng-template #hintContent="polymorpheus" polymorpheus> {{hint}} </ng-template>
+<ng-template #hintContent>{{hint}}</ng-template>

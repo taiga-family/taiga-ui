@@ -29,7 +29,6 @@
             <tui-ring-chart
                 class="chart"
                 [value]="value"
-                [colorHandler]="colorHandler"
                 [content]="content"
                 [size]="size"
                 [(activeItemIndex)]="activeItemIndex"
@@ -45,16 +44,6 @@
                 [(documentationPropertyValue)]="activeItemIndex"
             >
                 Active fragment
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="colorHandler"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiColorHandler"
-                [documentationPropertyValues]="colorHandlerVariants"
-                [(documentationPropertyValue)]="colorHandler"
-            >
-                A function that gets segment index and returns its color
             </ng-template>
             <ng-template
                 i18n

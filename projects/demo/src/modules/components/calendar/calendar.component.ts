@@ -7,6 +7,7 @@ import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
+import {default as exampleFirstDayOfWeekToken} from '!!raw-loader!./examples/import/first-day-of-week-token.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -41,6 +42,7 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
 export class ExampleTuiCalendarComponent {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly firstDayOfWeekToken = exampleFirstDayOfWeekToken;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

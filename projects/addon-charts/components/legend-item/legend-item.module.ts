@@ -1,10 +1,10 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiButtonModule, TuiColorModule} from '@taiga-ui/core';
+import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiLegendItemComponent} from './legend-item.component';
 
 @NgModule({
-    imports: [CommonModule, TuiColorModule, TuiButtonModule],
+    imports: [CommonModule, TuiButtonModule],
     declarations: [TuiLegendItemComponent],
     exports: [TuiLegendItemComponent],
 })

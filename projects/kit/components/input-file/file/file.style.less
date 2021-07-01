@@ -12,7 +12,7 @@
     }
 
     &:not(._link) {
-        padding: 9px 35px 9px 9px;
+        padding: 0.5625rem 2.1875rem 0.5625rem 0.5625rem;
     }
 
     &:hover .remove {
@@ -28,12 +28,12 @@
 .link {
     display: flex;
     flex: 1;
-    padding: 9px 35px 9px 9px;
+    padding: 0.5625rem 2.1875rem 0.5625rem 0.5625rem;
     text-decoration: none;
     outline: none;
     cursor: pointer;
     color: var(--tui-text-01);
-    max-width: ~'calc(100% - 44px)';
+    max-width: ~'calc(100% - 2.75rem)';
 
     &:hover {
         background-color: var(--tui-base-02);
@@ -46,17 +46,17 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    margin-right: 12px;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.75rem;
     border-radius: var(--tui-radius-m);
     overflow: hidden;
     color: rgba(0, 0, 0, 0.24);
 
     &_big {
-        width: 64px;
-        height: 64px;
-        margin-right: 16px;
+        width: 4rem;
+        height: 4rem;
+        margin-right: 1rem;
 
         &:before {
             .fullsize();
@@ -92,8 +92,8 @@
 .remove {
     .transition(opacity);
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0.625rem;
+    right: 0.625rem;
     opacity: 0;
 
     &:focus,

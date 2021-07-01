@@ -48,7 +48,8 @@
             [markerHandler]="markerHandler"
             [minLength]="minLength"
             [maxLength]="maxLength"
-            (rangeChange)="onRangeChange($event)"
+            [value]="value"
+            (valueChange)="onRangeChange($event)"
         ></tui-calendar-range>
     </ng-template>
 </tui-hosted-dropdown>

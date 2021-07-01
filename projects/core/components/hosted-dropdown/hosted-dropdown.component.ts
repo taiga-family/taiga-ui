@@ -22,7 +22,6 @@ import {
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiEventWith,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
     tuiPure,
@@ -117,8 +116,8 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         );
     }
 
-    @HostListener('focusin', ['$event'])
-    onFocusIn({target}: TuiEventWith<FocusEvent, HTMLElement>) {
+    @HostListener('focusin', ['$event.target'])
+    onFocusIn(target: HTMLElement) {
         const host = this.dropdownHost
             ? this.dropdownHost.nativeElement
             : this.nativeFocusableElement || this.elementRef.nativeElement;
@@ -128,16 +127,12 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         }
     }
 
-    @HostListener('click', ['$event'])
-    onClick({target}: TuiEventWith<MouseEvent, HTMLElement>) {
+    @HostListener('click', ['$event.target'])
+    onClick(target: HTMLElement) {
         const host = this.nativeFocusableElement || this.host;
         const dropdownHost = this.dropdownHost ? this.dropdownHost.nativeElement : host;
 
-        if (
-            !this.hostEditable &&
-            target instanceof Node &&
-            dropdownHost.contains(target)
-        ) {
+        if (!this.hostEditable && dropdownHost.contains(target)) {
             this.updateOpen(!this.open);
         }
     }
@@ -152,14 +147,10 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         this.closeDropdown();
     }
 
-    @HostListener('keydown.arrowDown', ['$event'])
-    onArrowDown(event: TuiEventWith<KeyboardEvent, HTMLElement>) {
-        this.focusDropdown(event, true);
-    }
-
-    @HostListener('keydown.arrowUp', ['$event'])
-    onArrowUp(event: TuiEventWith<KeyboardEvent, HTMLElement>) {
-        this.focusDropdown(event, false);
+    @HostListener('keydown.arrowDown', ['$event', 'true'])
+    @HostListener('keydown.arrowUp', ['$event', 'false'])
+    onArrow(event: KeyboardEvent, down: boolean) {
+        this.focusDropdown(event, down);
     }
 
     onKeydown({key, target, defaultPrevented}: KeyboardEvent) {

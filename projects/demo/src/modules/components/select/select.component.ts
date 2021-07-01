@@ -32,7 +32,7 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
-import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -125,7 +125,7 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
     ];
 
     @ViewChild('valueTemplateContent')
-    private valueTemplateRef?: PolymorpheusTemplate<{}>;
+    private valueTemplateRef: PolymorpheusContent = '';
 
     get valueContent(): PolymorpheusContent {
         return this.valueTemplateRef && this.selectedValueTemplate

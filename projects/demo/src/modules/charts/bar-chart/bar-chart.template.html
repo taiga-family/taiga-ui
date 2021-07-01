@@ -37,7 +37,6 @@
                 [value]="value"
                 [max]="max"
                 [size]="size"
-                [colorHandler]="colorHandler"
                 [hintContent]="hintContent"
                 [hintMode]="hintMode"
             ></tui-bar-chart>
@@ -51,16 +50,6 @@
                 [(documentationPropertyValue)]="collapsed"
             >
                 Shows data set in a single bar
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="colorHandler"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiColorHandler"
-                [documentationPropertyValues]="colorHandlerVariants"
-                [(documentationPropertyValue)]="colorHandler"
-            >
-                A function that gets segment index and returns its color
             </ng-template>
             <ng-template
                 i18n

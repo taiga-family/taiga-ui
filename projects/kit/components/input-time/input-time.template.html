@@ -2,7 +2,7 @@
     class="wrapper"
     [canOpen]="interactive && !!filtered.length"
     [content]="dropdownContent"
-    [open]="open && !!filtered.length"
+    [open]="interactive && open && !!filtered.length"
     (openChange)="onOpen($event)"
     (focusedChange)="onFocused($event)"
 >

@@ -1,3 +1,4 @@
+export * from './color-fallback';
 export * from './get-padding';
 export * from './icons-path-factory';
 export * from './is-editing-key';

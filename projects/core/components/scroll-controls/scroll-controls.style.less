@@ -1,18 +1,18 @@
 @import '../../styles/taiga-ui-local.less';
 
-@scroll-width: 12px;
-@scroll-width-large: 14px;
-@scroll-min-size: 24px;
+@scroll-width: 0.75rem;
+@scroll-width-large: 0.875rem;
+@scroll-min-size: 1.5rem;
 
 :host {
     position: sticky;
     top: 0;
     left: 0;
     z-index: 1;
-    min-width: calc(100% - 1px);
-    min-height: calc(100% - 1px);
+    min-width: calc(100% - 0.0625rem);
+    min-height: calc(100% - 0.0625rem);
     float: left;
-    margin-right: calc(-100% + 1px);
+    margin-right: calc(-100% + 0.0625rem);
     pointer-events: none;
 }
 
@@ -44,7 +44,7 @@
 .thumb {
     .transition(all, 0.15s);
     position: absolute;
-    border-radius: 100px;
+    border-radius: 6.25rem;
     border: @space solid transparent;
     cursor: pointer;
     pointer-events: auto;

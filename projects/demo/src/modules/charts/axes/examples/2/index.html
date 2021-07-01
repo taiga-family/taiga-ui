@@ -17,7 +17,7 @@
 
 <ng-template #hint let-setIndex>
     <p *ngFor="let item of value; let index = index" class="hint">
-        <span class="dot" [tuiBackground]="getBackground(index)"></span>
+        <span class="dot" [style.background]="getBackground(index)"></span>
         <span class="name">{{getSetName(index)}}</span>
         <tui-money
             [singleColor]="true"

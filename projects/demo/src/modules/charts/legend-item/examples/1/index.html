@@ -14,7 +14,7 @@
         <tui-legend-item
             *ngFor="let label of labels; let index = index"
             class="item"
-            [color]="colorHandler(index)"
+            [color]="getColor(index)"
             [text]="label"
             [active]="isItemActive(index)"
             (tuiHoveredChange)="onHover(index, $event)"

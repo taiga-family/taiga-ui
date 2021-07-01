@@ -7,7 +7,7 @@
     flex-direction: column;
     box-sizing: border-box;
     margin: auto;
-    border-radius: 16px;
+    border-radius: 1rem;
     border: 40px solid transparent;
 
     &:after {
@@ -19,30 +19,30 @@
     }
 
     &[data-size='s'] {
-        width: 480px;
+        width: 30rem;
 
         .content {
-            padding: 24px;
+            padding: 1.5rem;
         }
 
         .heading {
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
         }
     }
 
     &[data-size='m'] {
-        width: 680px;
+        width: 42.5rem;
 
         .heading {
-            margin-bottom: 12px;
+            margin-bottom: 0.75rem;
         }
     }
 
     &[data-size='l'] {
-        width: 880px;
+        width: 55rem;
 
         .heading {
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
         }
     }
 
@@ -55,11 +55,11 @@
         background: var(--tui-base-01);
 
         .content {
-            padding: 48px calc(50vw - 720px / 2);
+            padding: 3rem calc(50vw - 45rem / 2);
         }
 
         .heading {
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
         }
     }
 
@@ -83,11 +83,11 @@
             margin: auto 0 0;
 
             .content {
-                padding: 32px 24px;
+                padding: 2rem 1.5rem;
             }
 
             .heading {
-                margin-bottom: 8px;
+                margin-bottom: 0.5rem;
             }
         }
     }
@@ -117,7 +117,7 @@
 
 .content {
     border-radius: inherit;
-    padding: 32px;
+    padding: 2rem;
     background: var(--tui-base-01);
 
     &:not(:first-child) {
@@ -150,8 +150,8 @@
 
     @media @tablet-min {
         position: fixed;
-        top: 24px;
-        right: 24px;
+        top: 1.5rem;
+        right: 1.5rem;
         background: rgba(104, 104, 104, 0.96);
 
         &:hover {
@@ -169,6 +169,6 @@
 }
 
 .buttons {
-    margin-top: 20px;
+    margin-top: 1.25rem;
     text-align: right;
 }

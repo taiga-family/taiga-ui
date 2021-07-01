@@ -130,7 +130,9 @@ export class TuiTableExample4 {
 
     onEnabled(enabled: string[]) {
         this.enabled = enabled;
-        this.columns = enabled.map(column => KEYS[column]);
+        this.columns = this.initial
+            .filter(column => enabled.includes(column))
+            .map(column => KEYS[column]);
     }
 
     onDirection(direction: -1 | 1) {

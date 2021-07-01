@@ -23,6 +23,7 @@ class User {
 const DATA: ReadonlyArray<User> = [
     new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
     new User('Alex', 'Inkin', avatar),
+    new User('Gabriel José', 'de la Concordia «Gabo» García Márquez'),
 ];
 
 @Component({

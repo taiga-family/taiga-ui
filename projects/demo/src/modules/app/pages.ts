@@ -134,7 +134,7 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Customization`,
         title: `Icon set`,
-        keywords: 'icons, svg, theme, custom, style',
+        keywords: 'icons, svg, theme, custom, style, sanitizer',
         route: 'icon-set',
     },
     {
@@ -829,12 +829,6 @@ export const pages: TuiDocPages = [
                 title: 'AutoFocus',
                 keywords: 'focus, blur, фокус, авто',
                 route: '/directives/auto-focus',
-            },
-            {
-                section: $localize`Tools`,
-                title: 'Color',
-                keywords: 'цвет, текст, фон',
-                route: '/directives/color',
             },
             {
                 section: $localize`Tools`,
