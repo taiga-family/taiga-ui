@@ -1,5 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {TuiContextWithImplicit, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiValueContentContext} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Pipe({
@@ -8,7 +9,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export class TuiStringifyContentPipe implements PipeTransform {
     transform<T>(
         stringify: TuiStringHandler<T>,
-    ): PolymorpheusContent<TuiContextWithImplicit<T>> {
+    ): PolymorpheusContent<TuiValueContentContext<T>> {
         return ({$implicit}) => stringify($implicit);
     }
 }
