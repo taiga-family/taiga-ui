@@ -308,7 +308,7 @@ export class TuiInputCardGroupedComponent
         this.updateProperty(parsed, 'card');
 
         if (this.isFullyFocusable && !this.expire && this.inputExpire) {
-            setNativeFocused(this.inputExpire.nativeElement);
+            setNativeFocused(this.inputExpire.nativeElement, true, true);
         }
 
         const newBin = this.bin;
@@ -337,7 +337,7 @@ export class TuiInputCardGroupedComponent
         this.updateProperty(expire, 'expire');
 
         if (expire.length === 5 && this.inputCVC) {
-            setNativeFocused(this.inputCVC.nativeElement, true, true);
+            setNativeFocused(this.inputCVC.nativeElement);
         }
     }
 
