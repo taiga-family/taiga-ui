@@ -5,7 +5,6 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
-    HostListener,
     Inject,
     Input,
     Optional,
@@ -131,11 +130,6 @@ export class TuiInputCardGroupedComponent
         pipe: tuiCreateAutoCorrectedExpirePipe(),
         guide: false,
     };
-
-    @HostListener('scroll')
-    onScroll() {
-        this.elementRef.nativeElement.scrollLeft = 0;
-    }
 
     @ViewChild('inputCard')
     private readonly inputCard?: ElementRef<HTMLInputElement>;
@@ -371,6 +365,10 @@ export class TuiInputCardGroupedComponent
 
     onFocus() {
         // This is needed to trigger change detection only
+    }
+
+    onScroll(element: HTMLElement) {
+        element.scrollLeft = 0;
     }
 
     clear() {
