@@ -5,6 +5,7 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -35,11 +36,9 @@ import {
     TUI_IS_MOBILE,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
-    TuiDestroyService,
     TuiFocusableElementAccessor,
     tuiPure,
     tuiRequiredSetter,
-    typedFromEvent,
 } from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
@@ -49,7 +48,6 @@ import {
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 
 const icons = {
     [TuiPaymentSystem.Mir]: 'tuiIconMir',
@@ -67,7 +65,6 @@ const icons = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         MODE_PROVIDER,
-        TuiDestroyService,
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputCardGroupedComponent),
@@ -135,6 +132,11 @@ export class TuiInputCardGroupedComponent
         guide: false,
     };
 
+    @HostListener('scroll')
+    onScroll() {
+        this.elementRef.nativeElement.scrollLeft = 0;
+    }
+
     @ViewChild('inputCard')
     private readonly inputCard?: ElementRef<HTMLInputElement>;
 
@@ -161,7 +163,6 @@ export class TuiInputCardGroupedComponent
         readonly cardExpiryTexts$: Observable<[string, string]>,
     ) {
         super(control, changeDetectorRef);
-        this.initPreventScrollSubscription();
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -342,7 +343,7 @@ export class TuiInputCardGroupedComponent
         this.updateProperty(expire, 'expire');
 
         if (expire.length === 5 && this.inputCVC) {
-            setNativeFocused(this.inputCVC.nativeElement);
+            setNativeFocused(this.inputCVC.nativeElement, true, true);
         }
     }
 
@@ -425,13 +426,5 @@ export class TuiInputCardGroupedComponent
 
         this.autofilled = autofilled;
         this.autofilledChange.emit(autofilled);
-    }
-
-    private initPreventScrollSubscription() {
-        typedFromEvent(this.elementRef.nativeElement, 'scroll')
-            .pipe(takeUntil(this.destroy$))
-            .subscribe(() => {
-                this.elementRef.nativeElement.scrollLeft = 0;
-            });
     }
 }
