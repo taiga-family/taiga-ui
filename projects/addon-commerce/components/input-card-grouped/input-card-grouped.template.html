@@ -8,11 +8,7 @@
     (tuiHoveredChange)="onHovered($event)"
     (tuiActiveZoneChange)="onActiveZoneChange($event)"
 >
-    <div
-        #commonWrapper
-        class="common-wrapper"
-        (scroll)="onScroll(commonWrapper)"
-    >
+    <div class="common-wrapper" (scroll)="onScroll($event.currentTarget)">
         <tui-svg
             *ngIf="!!icon"
             class="card"
