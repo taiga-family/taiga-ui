@@ -10,23 +10,28 @@ import {
     Input,
     Optional,
 } from '@angular/core';
+import {WINDOW} from '@ng-web-apis/common';
 import {
     getClosestFocusable,
     setNativeFocused,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    TuiDestroyService,
     TuiParentsScrollService,
     TuiPortalService,
 } from '@taiga-ui/cdk';
 import {AbstractTuiDropdown, TUI_DROPDOWN_DIRECTIVE, TuiDropdown} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {fromEvent, merge} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {TuiDropdownContextHostComponent} from './dropdown-context-host.component';
 
 @Directive({
     selector: '[tuiDropdownContext]',
     providers: [
         TuiParentsScrollService,
+        TuiDestroyService,
         {
             provide: TUI_DROPDOWN_DIRECTIVE,
             useExisting: forwardRef(() => TuiDropdownContextDirective),
@@ -52,6 +57,8 @@ export class TuiDropdownContextDirective<C extends object>
 
     constructor(
         protected readonly elementRef: ElementRef,
+        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(TuiDestroyService) readonly destroy$: TuiDestroyService,
         @Inject(ComponentFactoryResolver)
         readonly componentFactoryResolver: ComponentFactoryResolver,
         @Inject(Injector) readonly injector: Injector,
@@ -60,6 +67,10 @@ export class TuiDropdownContextDirective<C extends object>
         @Optional() readonly activeZone: TuiActiveZoneDirective | null,
     ) {
         super(componentFactoryResolver, injector, portalService, elementRef, activeZone);
+
+        merge(refresh$, fromEvent(this.windowRef, 'resize'))
+            .pipe(takeUntil(destroy$))
+            .subscribe(() => this.closeDropdown());
     }
 
     @HostListener('contextmenu', ['$event'])
