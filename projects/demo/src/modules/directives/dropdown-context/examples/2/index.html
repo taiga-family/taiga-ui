@@ -11,7 +11,7 @@
             *ngFor="let item of tableData"
             class="tui-table__tr"
             [tuiDropdownContext]="contextMenu"
-            [context]="item"
+            [tuiDropdownContextData]="item"
         >
             <td
                 *ngFor="let value of getObjectValues(item)"

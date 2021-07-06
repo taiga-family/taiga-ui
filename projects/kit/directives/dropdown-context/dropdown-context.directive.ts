@@ -45,7 +45,7 @@ export class TuiDropdownContextDirective<C extends object>
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
 
-    @Input('context')
+    @Input('tuiDropdownContextData')
     @tuiDefaultProp()
     context: C | null = null;
 
