@@ -27,6 +27,7 @@ import {fromEvent, merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {TuiDropdownContextHostComponent} from './dropdown-context-host.component';
 
+// @dynamic
 @Directive({
     selector: '[tuiDropdownContext]',
     providers: [
