@@ -3,16 +3,27 @@ import {
     Component,
     ElementRef,
     HostBinding,
+    Inject,
     Input,
     ViewChild,
 } from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {TUI_DROPDOWN_DIRECTIVE, TuiDropdown} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'tui-dropdown-context-host',
     template: `
-        <div [tuiDropdownContent]="contentWrapper" [tuiDropdown]="true"></div>
+        <div
+            [tuiDropdownContent]="contentWrapper"
+            [tuiDropdownDirection]="directive.direction"
+            [tuiDropdownAlign]="directive.align"
+            [tuiDropdownSided]="directive.sided"
+            [tuiDropdownMinHeight]="directive.minHeight"
+            [tuiDropdownMaxHeight]="directive.maxHeight"
+            [tuiDropdownLimitWidth]="directive.limitMinWidth"
+            [tuiDropdown]="true"
+        ></div>
 
         <ng-template #contentWrapper>
             <div #contentRef>
@@ -46,4 +57,6 @@ export class TuiDropdownContextHostComponent {
 
     @ViewChild('contentRef')
     contentRef?: ElementRef<HTMLDivElement>;
+
+    constructor(@Inject(TUI_DROPDOWN_DIRECTIVE) readonly directive: TuiDropdown) {}
 }

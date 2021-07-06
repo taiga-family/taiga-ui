@@ -3,23 +3,39 @@ import {
     ComponentRef,
     Directive,
     ElementRef,
+    forwardRef,
     HostListener,
+    Inject,
+    Injector,
     Input,
-    ViewContainerRef,
+    Optional,
 } from '@angular/core';
 import {
     getClosestFocusable,
     setNativeFocused,
+    TuiActiveZoneDirective,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    TuiParentsScrollService,
+    TuiPortalService,
 } from '@taiga-ui/cdk';
+import {AbstractTuiDropdown, TUI_DROPDOWN_DIRECTIVE, TuiDropdown} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TuiDropdownContextHostComponent} from './dropdown-context-host.component';
 
 @Directive({
     selector: '[tuiDropdownContext]',
+    providers: [
+        TuiParentsScrollService,
+        {
+            provide: TUI_DROPDOWN_DIRECTIVE,
+            useExisting: forwardRef(() => TuiDropdownContextDirective),
+        },
+    ],
 })
-export class TuiDropdownContextDirective<C extends object> {
+export class TuiDropdownContextDirective<C extends object>
+    extends AbstractTuiDropdown
+    implements TuiDropdown {
     @Input('tuiDropdownContext')
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
@@ -35,10 +51,16 @@ export class TuiDropdownContextDirective<C extends object> {
     }
 
     constructor(
-        private readonly viewContainerRef: ViewContainerRef,
-        private readonly componentFactoryResolver: ComponentFactoryResolver,
-        private readonly elementRef: ElementRef,
-    ) {}
+        protected readonly elementRef: ElementRef,
+        @Inject(ComponentFactoryResolver)
+        readonly componentFactoryResolver: ComponentFactoryResolver,
+        @Inject(Injector) readonly injector: Injector,
+        @Inject(TuiPortalService) readonly portalService: TuiPortalService,
+        @Inject(TuiParentsScrollService) readonly refresh$: TuiParentsScrollService,
+        @Optional() readonly activeZone: TuiActiveZoneDirective | null,
+    ) {
+        super(componentFactoryResolver, injector, portalService, elementRef, activeZone);
+    }
 
     @HostListener('contextmenu', ['$event'])
     onContextMenu(event: MouseEvent) {
@@ -103,8 +125,10 @@ export class TuiDropdownContextDirective<C extends object> {
     }
 
     private closeDropdown(): void {
-        this.viewContainerRef.clear();
-        this.hostRef = null;
+        if (this.hostRef) {
+            this.portalService.remove(this.hostRef);
+            this.hostRef = null;
+        }
     }
 
     private buildContext(data: C): TuiContextWithImplicit<C> & {close: () => void} {
@@ -123,12 +147,14 @@ export class TuiDropdownContextDirective<C extends object> {
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
             TuiDropdownContextHostComponent,
         );
-        const componentRef = this.viewContainerRef.createComponent(componentFactory);
+        const componentRef = this.portalService.add(componentFactory, this.injector);
 
         componentRef.instance.content = this.content;
         componentRef.instance.context = this.buildContext(this.context || ({} as C));
         componentRef.instance.x = x;
         componentRef.instance.y = y;
+
+        componentRef.changeDetectorRef.detectChanges();
 
         return componentRef;
     }
