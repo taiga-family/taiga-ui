@@ -1,4 +1,11 @@
 import {Component} from '@angular/core';
+import {
+    DEFAULT_MAX_HEIGHT,
+    DEFAULT_MIN_HEIGHT,
+    TuiDropdownWidthT,
+    TuiHorizontalDirection,
+    TuiVerticalDirection,
+} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -37,4 +44,21 @@ export class ExampleTuiDropdownContextComponent {
         TypeScript: example3Ts,
         HTML: example3Html,
     };
+
+    readonly alignVariants: ReadonlyArray<TuiHorizontalDirection> = ['left', 'right'];
+    readonly dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection> = [
+        'bottom',
+        'top',
+    ];
+    readonly tuiDropdownLimitWidthVariants: ReadonlyArray<TuiDropdownWidthT> = [
+        'min',
+        'auto',
+        'fixed',
+    ];
+
+    tuiDropdownAlign = this.alignVariants[0];
+    tuiDropdownDirection: TuiVerticalDirection | null = null;
+    tuiDropdownMinHeight = DEFAULT_MIN_HEIGHT;
+    tuiDropdownMaxHeight = DEFAULT_MAX_HEIGHT;
+    tuiDropdownLimitWidth: TuiDropdownWidthT = this.tuiDropdownLimitWidthVariants[0];
 }

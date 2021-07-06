@@ -18,7 +18,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
             [tuiDropdownContent]="contentWrapper"
             [tuiDropdownDirection]="directive.direction"
             [tuiDropdownAlign]="directive.align"
-            [tuiDropdownSided]="directive.sided"
             [tuiDropdownMinHeight]="directive.minHeight"
             [tuiDropdownMaxHeight]="directive.maxHeight"
             [tuiDropdownLimitWidth]="directive.limitMinWidth"
