@@ -26,4 +26,4 @@ jobs:
     - name: Install dependencies
       run: npm ci
     # End of setup
-    - run: npm run test:schematics
+    - run: npm run taiga-schematics:build && npm run test:schematics
