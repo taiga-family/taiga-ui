@@ -11,6 +11,7 @@
         "noImplicitAny": true,
         "noImplicitThis": true,
         "noUnusedParameters": true,
+        "resolveJsonModule": true,
         "noUnusedLocals": true,
         "rootDir": "schematics",
         "skipDefaultLibCheck": true,

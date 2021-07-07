@@ -107,7 +107,7 @@ describe('ng-add', () => {
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/icons/src",
+                "input": "node_modules/@taiga-ui/icons/src",
                 "output": "assets/taiga-ui/icons"
               }
             ]
