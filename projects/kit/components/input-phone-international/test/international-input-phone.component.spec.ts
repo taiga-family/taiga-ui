@@ -112,9 +112,42 @@ describe('InputPhoneInternational', () => {
         });
 
         it('correct country code in inputPhoneCountryCode', () => {
-            component.countryIsoCode = TuiCountryIsoCode.UA;
+            component.countryIsoCode = TuiCountryIsoCode.DM;
 
-            expect(component.inputPhoneCountryCode).toBe('+380');
+            expect(component.inputPhoneCountryCode).toBe('+1(767)');
+        });
+    });
+
+    describe('value', () => {
+        initializeTestModule();
+
+        it('should truncate value if current mask is shorter then previous', () => {
+            component.onPaste('+71234567890');
+            component.onItemClick(TuiCountryIsoCode.UA);
+
+            expect(testComponent.control.value).toBe('+380123456789');
+        });
+    });
+
+    describe('paste', () => {
+        initializeTestModule();
+
+        it('should set correct country code on paste event', () => {
+            component.onPaste('+380123456789');
+
+            expect(component.countryIsoCode).toBe(TuiCountryIsoCode.UA);
+        });
+
+        it('should update value on paste', () => {
+            component.onPaste('+380 (12) 345-67-89');
+
+            expect(testComponent.control.value).toEqual('+380123456789');
+        });
+
+        it('should not update value on paste if there is no country code in list', () => {
+            component.onPaste('+244 (111)111-111');
+
+            expect(testComponent.control.value).toEqual('+79110330102');
         });
     });
 

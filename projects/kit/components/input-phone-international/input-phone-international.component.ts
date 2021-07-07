@@ -20,8 +20,8 @@ import {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
-    TUI_DIGIT_REGEXP,
     TUI_ICONS_PATH,
+    TUI_NON_DIGITS_REGEXP,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
@@ -32,6 +32,8 @@ import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {COUNTRIES_MASKS} from './const/countries';
+
+const MASK_AFTER_CODE_REGEXP = /\([\#]+\)|[#\- ]/g;
 
 // @dynamic
 @Component({
@@ -125,6 +127,12 @@ export class TuiInputPhoneInternationalComponent
         // recalculates mask inside inputPhone to prevent isoCode conflict
         this.changeDetectorRef.detectChanges();
 
+        const maxLength = this.getMaxAllowedLength(isoCode);
+
+        if (this.value.length > maxLength) {
+            this.updateValue(this.value.slice(0, maxLength));
+        }
+
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement);
         }
@@ -135,15 +143,20 @@ export class TuiInputPhoneInternationalComponent
         this.close();
     }
 
+    onPaste(value: string) {
+        const country = this.countries.find(countryIsoCode =>
+            value.startsWith(this.isoToCountryCode(countryIsoCode)),
+        );
+
+        if (country) {
+            this.countryIsoCode = country;
+            this.updateValue('+' + value.replace(TUI_NON_DIGITS_REGEXP, ''));
+        }
+    }
+
     @tuiPure
     isoToCountryCode(isoCode: TuiCountryIsoCode): string {
-        return (
-            '+' +
-            COUNTRIES_MASKS[isoCode]
-                .split('')
-                .filter(symbol => TUI_DIGIT_REGEXP.test(symbol))
-                .join('')
-        );
+        return COUNTRIES_MASKS[isoCode].replace(MASK_AFTER_CODE_REGEXP, '');
     }
 
     protected getFallbackValue(): string {
@@ -156,6 +169,10 @@ export class TuiInputPhoneInternationalComponent
 
     @tuiPure
     private calculateMaskAfterCountryCode(mask: string, countryCode: string): string {
-        return mask.replace(countryCode, '');
+        return mask.replace(countryCode, '').trim();
+    }
+
+    private getMaxAllowedLength(isoCode: TuiCountryIsoCode): number {
+        return COUNTRIES_MASKS[isoCode].replace(/[()\- ]/g, '').length;
     }
 }

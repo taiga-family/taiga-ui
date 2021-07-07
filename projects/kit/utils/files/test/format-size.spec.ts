@@ -24,6 +24,6 @@ describe('File size formatting', () => {
     });
 
     it('Megabytes are rounded to two decimal places', () => {
-        expect(formatSize(units, 10 * 1000 * 1000 + 220 * 1000)).toBe('10.22 MB');
+        expect(formatSize(units, 10 * 1000 * 1000 + 220 * 1000)).toBe('10,22 MB');
     });
 });
