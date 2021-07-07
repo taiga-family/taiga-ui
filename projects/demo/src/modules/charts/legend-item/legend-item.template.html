@@ -19,7 +19,13 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-legend-item [active]="active" [color]="color" [text]="text">
+            <tui-legend-item
+                [active]="active"
+                [color]="color"
+                [text]="text"
+                [disabled]="disabled"
+                [withBorder]="withBorder"
+            >
                 <tui-money [value]="123456" [singleColor]="true"></tui-money>
             </tui-legend-item>
             <p i18n>
@@ -54,6 +60,26 @@
                 [(documentationPropertyValue)]="text"
             >
                 Text inside
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="disable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="withBorder"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="withBorder"
+            >
+                Show border around item
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

@@ -28,6 +28,8 @@ export class ExampleTuiLegendItemComponent {
     text = 'Text inside';
 
     active = false;
+    disabled = false;
+    withBorder = true;
 
     readonly colorVariants: ReadonlyArray<TuiColor> = [
         TuiSupportColor.Feijoa,
