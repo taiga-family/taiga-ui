@@ -2,9 +2,10 @@
     tuiButton
     type="button"
     size="s"
-    appearance="whiteblock"
     class="button"
+    [appearance]="buttonAppearance"
     [pseudoHovered]="active || null"
+    [disabled]="disabled"
 >
     <span class="dot" [style.background]="computedColor"></span>
     <span class="text">{{text}}</span>
