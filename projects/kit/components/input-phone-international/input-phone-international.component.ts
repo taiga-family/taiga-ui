@@ -12,6 +12,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
+    getClipboardDataText,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
@@ -143,7 +144,8 @@ export class TuiInputPhoneInternationalComponent
         this.close();
     }
 
-    onPaste(value: string) {
+    onPaste(event: ClipboardEvent) {
+        const value = getClipboardDataText(event);
         const country = this.countries.find(countryIsoCode =>
             value.startsWith(this.isoToCountryCode(countryIsoCode)),
         );

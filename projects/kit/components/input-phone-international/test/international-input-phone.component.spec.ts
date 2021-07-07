@@ -122,7 +122,13 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('should truncate value if current mask is shorter then previous', () => {
-            component.onPaste('+71234567890');
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '+71234567890');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
             component.onItemClick(TuiCountryIsoCode.UA);
 
             expect(testComponent.control.value).toBe('+380123456789');
@@ -133,19 +139,37 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('should set correct country code on paste event', () => {
-            component.onPaste('+380123456789');
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '+380123456789');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
 
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.UA);
         });
 
         it('should update value on paste', () => {
-            component.onPaste('+380 (12) 345-67-89');
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '+380 (12) 345-67-89');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
 
             expect(testComponent.control.value).toEqual('+380123456789');
         });
 
         it('should not update value on paste if there is no country code in list', () => {
-            component.onPaste('+244 (111)111-111');
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '+244 (111)111-111');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
 
             expect(testComponent.control.value).toEqual('+79110330102');
         });
