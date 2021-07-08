@@ -1,5 +1,3 @@
-import {goToPage} from '../../../utils/go-to-page';
-
 export function waitKitDialog() {
     cy.get('tui-dialog')
         .last()
@@ -7,7 +5,7 @@ export function waitKitDialog() {
         .should('not.have.class', 'ng-animating');
 }
 
-describe('Dialogs', () => {
+xdescribe('Dialogs', () => {
     before(() => {
         cy.visit('/');
         cy.wait(500);
@@ -15,7 +13,7 @@ describe('Dialogs', () => {
     });
 
     it('A dialog and a nested dialog are open correctly', () => {
-        goToPage('services/dialog-service');
+        cy.visit('services/dialog-service', {failOnStatusCode: false});
 
         cy.wait(500);
 
@@ -31,7 +29,7 @@ describe('Dialogs', () => {
 
     it('Mobile dialog works', () => {
         cy.viewport(720, 900);
-        goToPage('services/dialog-service');
+        cy.visit('services/dialog-service', {failOnStatusCode: false});
         cy.wait(500);
 
         cy.get(`tui-dialog-example-4 button`).first().click();

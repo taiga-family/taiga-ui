@@ -1,4 +1,3 @@
-import {goToPage} from '../../utils/go-to-page';
 import {DEMO_PATHS} from '../demo-paths';
 import {EXAMPLE_ID} from '../shared.entities';
 import {excluded} from './exclusions';
@@ -12,8 +11,7 @@ describe('Demo', () => {
 
     DEMO_PATHS.forEach(path => {
         it(`${path}`, () => {
-            goToPage(path);
-
+            cy.visit(path, {failOnStatusCode: false});
             cy.wait(700);
             cy.viewport(1280, 720);
 
