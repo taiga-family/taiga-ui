@@ -2,7 +2,7 @@
 <html>
     <head><script>
 if (!localStorage.getItem('env') && location.pathname.includes('next')) {
-    localStorage.setItem('env', location.pathname)
+    localStorage.setItem('env', location.pathname + location.search)
     location.replace('/next');
 } else {
     localStorage.removeItem('env');
