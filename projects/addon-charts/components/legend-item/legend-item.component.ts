@@ -37,4 +37,8 @@ export class TuiLegendItemComponent {
     get buttonAppearance(): TuiAppearance | string {
         return this.withBorder ? TuiAppearance.Whiteblock : 'legend-item-no-border';
     }
+
+    get pseudoHovered(): boolean | null {
+        return this.active ?? null;
+    }
 }
