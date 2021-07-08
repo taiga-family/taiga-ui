@@ -1,24 +1,13 @@
+import {goToPage} from '../../utils/go-to-page';
 import {DEMO_PATHS} from '../demo-paths';
 import {EXAMPLE_ID} from '../shared.entities';
 import {excluded} from './exclusions';
-
-function goToPage(path: string) {
-    const a = document.createElement('a');
-
-    a.href = path;
-
-    cy.document().then(docRef => {
-        docRef.body.appendChild(a);
-        a.click();
-        docRef.body.removeChild(a);
-    });
-}
 
 describe('Demo', () => {
     before(() => {
         cy.viewport(1280, 720);
         cy.visit('/');
-        cy.wait(500);
+        cy.wait(600);
     });
 
     DEMO_PATHS.forEach(path => {
