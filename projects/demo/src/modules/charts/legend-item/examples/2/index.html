@@ -19,10 +19,10 @@
                 [withBorder]="itemsWithBorders"
                 (tuiHoveredChange)="onHover(index, $event)"
             >
-                {{getItemPercent(index)}}
+                <span class="item__percent">{{getItemPercent(index)}}</span>
                 <button
                     tuiIconButton
-                    class="close-item"
+                    class="item__close"
                     size="s"
                     icon="tuiIconPlus"
                     [appearance]="closeButtonAppearance"

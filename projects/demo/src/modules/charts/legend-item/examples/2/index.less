@@ -25,6 +25,21 @@
     width: fit-content;
     margin: 0 0.5rem 0.75rem 0;
     padding-right: 0.5rem;
+
+    &__percent {
+        margin-right: -0.5rem;
+    }
+
+    &__close {
+        border-radius: 0 var(--tui-radius-m) var(--tui-radius-m) 0;
+
+        position: relative;
+        left: 0.75rem;
+
+        ::ng-deep & svg {
+            transform: rotate(45deg);
+        }
+    }
 }
 
 .toggle {
@@ -32,15 +47,4 @@
     display: flex;
     justify-content: space-between;
     margin-top: 0.5rem;
-}
-
-.close-item {
-    border-radius: 0 var(--tui-radius-m) var(--tui-radius-m) 0;
-
-    position: relative;
-    left: 0.75rem;
-
-    ::ng-deep & svg {
-        transform: rotate(45deg);
-    }
 }
