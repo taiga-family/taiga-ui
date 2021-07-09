@@ -43,6 +43,7 @@
                 [text]="text"
                 [disabled]="disabled"
                 [withBorder]="withBorder"
+                [customColorContent]="customColorContent"
             >
                 <tui-money [value]="123456" [singleColor]="true"></tui-money>
             </tui-legend-item>
@@ -70,6 +71,18 @@
             >
                 Indicator color
             </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="customColorContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="['', colorCheckbox]"
+                [(documentationPropertyValue)]="customColorContent"
+            >
+                Custom content of color indicator
+            </ng-template>
+
             <ng-template
                 i18n
                 documentationPropertyName="value"
@@ -127,3 +140,10 @@
         </ol>
     </ng-template>
 </tui-doc-page>
+
+<ng-template #colorCheckbox let-color>
+    <tui-primitive-checkbox
+        [color]="color"
+        value="true"
+    ></tui-primitive-checkbox>
+</ng-template>

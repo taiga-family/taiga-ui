@@ -58,4 +58,5 @@ export class ExampleTuiLegendItemComponent {
     ];
 
     color = '';
+    customColorContent = '';
 }
