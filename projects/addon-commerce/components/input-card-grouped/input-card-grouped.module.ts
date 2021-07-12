@@ -6,6 +6,7 @@ import {
     TuiAutofilledModule,
     TuiFocusableModule,
     TuiHoveredModule,
+    TuiLetModule,
 } from '@taiga-ui/cdk';
 import {TuiSvgModule, TuiWrapperModule} from '@taiga-ui/core';
 import {TextMaskModule} from 'angular2-text-mask';
@@ -17,6 +18,7 @@ import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
         FormsModule,
         TextMaskModule,
         TuiFocusableModule,
+        TuiLetModule,
         TuiSvgModule,
         TuiWrapperModule,
         TuiHoveredModule,
