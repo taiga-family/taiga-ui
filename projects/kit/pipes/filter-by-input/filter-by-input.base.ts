@@ -1,4 +1,5 @@
 import {
+    isPresent,
     TuiFocusableElementAccessor,
     tuiPure,
     TuiStringHandler,
@@ -43,7 +44,11 @@ export abstract class TuiFilterByInputBase {
         stringify: TuiStringHandler<T>,
         query: string,
     ): readonly T[] {
-        return items.filter(item => matcher(item, query, stringify));
+        const match = this.getMatch(items, stringify, query);
+
+        return isPresent(match)
+            ? items
+            : items.filter(item => matcher(item, query, stringify));
     }
 
     private filter2d<T>(
@@ -52,6 +57,22 @@ export abstract class TuiFilterByInputBase {
         stringify: TuiStringHandler<T>,
         query: string,
     ): ReadonlyArray<readonly T[]> {
-        return items.map(inner => this.filterFlat(inner, matcher, stringify, query));
+        const match = items.find(item =>
+            isPresent(this.getMatch(item, stringify, query)),
+        );
+
+        return isPresent(match)
+            ? items
+            : items.map(inner => this.filterFlat(inner, matcher, stringify, query));
+    }
+
+    private getMatch<T>(
+        items: readonly T[],
+        stringify: TuiStringHandler<T>,
+        query: string,
+    ): T | undefined {
+        return items.find(
+            item => stringify(item).toLocaleLowerCase() === query.toLocaleLowerCase(),
+        );
     }
 }

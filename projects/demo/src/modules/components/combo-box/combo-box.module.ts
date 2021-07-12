@@ -19,6 +19,7 @@ import {
     TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFilterByInputPipeModule,
+    TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
@@ -26,6 +27,7 @@ import {ExampleTuiComboBoxComponent} from './combo-box.component';
 import {TuiComboBoxExample1} from './examples/1';
 import {TuiComboBoxExample2} from './examples/2';
 import {TuiComboBoxExample3} from './examples/3';
+import {TuiComboBoxExample4} from './examples/4';
 
 @NgModule({
     imports: [
@@ -45,6 +47,7 @@ import {TuiComboBoxExample3} from './examples/3';
         TuiDropdownControllerModule,
         TuiDataListWrapperModule,
         TuiFilterByInputPipeModule,
+        TuiStringifyContentPipeModule,
         PolymorpheusModule,
         TuiAddonDocModule,
         InheritedDocumentationModule,
@@ -55,6 +58,7 @@ import {TuiComboBoxExample3} from './examples/3';
         TuiComboBoxExample1,
         TuiComboBoxExample2,
         TuiComboBoxExample3,
+        TuiComboBoxExample4,
     ],
     exports: [ExampleTuiComboBoxComponent],
 })
