@@ -1,9 +1,12 @@
 import {InjectionToken, Provider} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
+import {
+    TUI_CARD_EXPIRY_TEXTS,
+    TUI_CARD_NUMBER_TEXTS,
+} from '@taiga-ui/addon-commerce/tokens';
+import {typedFromEvent} from '@taiga-ui/cdk';
 import {Observable, of} from 'rxjs';
 import {map, startWith, withLatestFrom} from 'rxjs/operators';
-import {typedFromEvent} from '../../../cdk';
-import {TUI_CARD_EXPIRY_TEXTS, TUI_CARD_NUMBER_TEXTS} from '../../tokens';
 
 const TUI_MOBILE_MEDIA = 'screen and (max-width: 37.4375rem)';
 
