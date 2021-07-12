@@ -1,15 +1,13 @@
 import {
-    ChangeDetectorRef,
     Directive,
     ElementRef,
     HostBinding,
+    HostListener,
     Inject,
     Input,
 } from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {TuiDestroyService, watch} from '@taiga-ui/cdk';
-import {fromEvent} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiLazyLoadingService} from './lazy-loading.service';
 
 @Directive({
@@ -39,20 +37,17 @@ export class TuiLazyLoadingDirective {
         private readonly src$: TuiLazyLoadingService,
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLImageElement>,
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
-        fromEvent(this.elementRef.nativeElement, 'load')
-            .pipe(takeUntil(destroy$), watch(changeDetectorRef))
-            .subscribe(() => {
-                this.background = '';
-                this.animation = '';
-            });
-
         if (!this.supported) {
             this.src$.subscribe(src => {
                 this.src = src;
             });
         }
+    }
+
+    @HostListener('load')
+    onLoad() {
+        this.background = '';
+        this.animation = '';
     }
 }

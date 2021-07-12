@@ -28,7 +28,6 @@ export class TuiDropdownExample3 {
             .pipe(watch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(() => {
                 this.showBigText = !this.showBigText;
-                changeDetectorRef.markForCheck();
             });
     }
 }
