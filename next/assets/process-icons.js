@@ -10,7 +10,8 @@ function processIcons() {
     glob('*.svg', {}, (err, files) => {
         files.forEach(file => {
             const src = String(fs.readFileSync(file));
-            const wrapped = wrapIcon(src, file.replace('.svg', ''));
+            const name = file.replace('.svg', '');
+            const wrapped = wrapIcon(src, name);
             const final =
                 typeof wrapped === 'string'
                     ? wrapped.replace(
