@@ -17,6 +17,7 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    TuiMapper,
     tuiPure,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
@@ -61,6 +62,9 @@ export class TuiInputPhoneInternationalComponent
     countries: ReadonlyArray<TuiCountryIsoCode> = [];
 
     open = false;
+
+    readonly isoToCountryCodeMapper: TuiMapper<TuiCountryIsoCode, string> = item =>
+        this.isoToCountryCode(item);
 
     readonly arrow: PolymorpheusContent = TUI_ARROW;
 
@@ -156,7 +160,6 @@ export class TuiInputPhoneInternationalComponent
         }
     }
 
-    @tuiPure
     isoToCountryCode(isoCode: TuiCountryIsoCode): string {
         return COUNTRIES_MASKS[isoCode].replace(MASK_AFTER_CODE_REGEXP, '');
     }
