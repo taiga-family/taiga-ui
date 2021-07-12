@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     forwardRef,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -76,6 +77,20 @@ export class TuiInputPhoneInternationalComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
 
+    @HostListener('paste.capture.prevent.stop', ['$event'])
+    @HostListener('drop.capture.prevent.stop', ['$event'])
+    onPaste(event: ClipboardEvent | DragEvent) {
+        const value = this.extractValue(event);
+        const country = this.countries.find(countryIsoCode =>
+            value.startsWith(this.isoToCountryCode(countryIsoCode)),
+        );
+
+        if (country) {
+            this.countryIsoCode = country;
+            this.updateValue('+' + value.replace(TUI_NON_DIGITS_REGEXP, ''));
+        }
+    }
+
     constructor(
         @Optional()
         @Self()
@@ -148,18 +163,6 @@ export class TuiInputPhoneInternationalComponent
         this.close();
     }
 
-    onPaste(event: ClipboardEvent) {
-        const value = getClipboardDataText(event);
-        const country = this.countries.find(countryIsoCode =>
-            value.startsWith(this.isoToCountryCode(countryIsoCode)),
-        );
-
-        if (country) {
-            this.countryIsoCode = country;
-            this.updateValue('+' + value.replace(TUI_NON_DIGITS_REGEXP, ''));
-        }
-    }
-
     isoToCountryCode(isoCode: TuiCountryIsoCode): string {
         return COUNTRIES_MASKS[isoCode].replace(MASK_AFTER_CODE_REGEXP, '');
     }
@@ -179,5 +182,11 @@ export class TuiInputPhoneInternationalComponent
 
     private getMaxAllowedLength(isoCode: TuiCountryIsoCode): number {
         return COUNTRIES_MASKS[isoCode].replace(/[()\- ]/g, '').length;
+    }
+
+    private extractValue(event: DragEvent | ClipboardEvent): string {
+        return event instanceof DragEvent
+            ? event.dataTransfer?.getData('text/plain') || ''
+            : getClipboardDataText(event);
     }
 }
