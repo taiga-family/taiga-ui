@@ -15,7 +15,7 @@
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "dependencies": {
-        "@ng-web-apis/common": "1.9.0",
+        "@ng-web-apis/common": "1.11.0",
         "@ng-web-apis/mutation-observer": "1.1.0",
         "@ng-web-apis/resize-observer": "1.0.3",
         "@tinkoff/ng-event-plugins": "2.1.3",
