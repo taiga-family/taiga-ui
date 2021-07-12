@@ -23,11 +23,11 @@
         </span>
         <label>
             <span
-                *ngIf="cardNumberTexts$ | async as texts"
+                *ngIf="cardGroupedTexts$ | async as texts"
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{isMobile ? texts[0] : texts[1]}}
+                {{texts.cardNumberText}}
             </span>
             <span
                 class="collapsed"
@@ -73,11 +73,11 @@
         <span *ngIf="hasExpireExampleText" class="example-text"> 00/00 </span>
         <label>
             <span
-                *ngIf="cardExpiryTexts$ | async as texts"
+                *ngIf="cardGroupedTexts$ | async as texts"
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{isMobile ? texts[0] : texts[1]}}
+                {{texts.expiryText}}
             </span>
             <input
                 #inputExpire
@@ -108,7 +108,7 @@
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{isMobile ? 'CVC' : 'CVC/CVV'}}
+                {{(cardGroupedTexts$ | async)?.cvcText}}
             </span>
             <input
                 #inputCVC
