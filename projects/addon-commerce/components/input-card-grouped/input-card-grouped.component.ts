@@ -367,6 +367,10 @@ export class TuiInputCardGroupedComponent
         // This is needed to trigger change detection only
     }
 
+    onScroll(element: HTMLElement) {
+        element.scrollLeft = 0;
+    }
+
     clear() {
         this.updateValue(null);
     }

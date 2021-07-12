@@ -1,5 +1,6 @@
 <tui-wrapper
     appearance="textfield"
+    class="common-wrapper"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
     [focused]="computedFocused"
@@ -7,9 +8,10 @@
     [invalid]="computedInvalid"
     (tuiHoveredChange)="onHovered($event)"
     (tuiActiveZoneChange)="onActiveZoneChange($event)"
+    (scroll)="onScroll($event.currentTarget)"
 >
     <tui-svg
-        *ngIf="!!icon"
+        *ngIf="icon"
         class="card"
         automation-id="tui-input-card-grouped__icon"
         [class.card_right]="!hasCleaner"
