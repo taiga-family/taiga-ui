@@ -34,13 +34,10 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                     takeUntil(mousedown$),
                     repeatWhen(() => mouseup$),
                     withLatestFrom(removedElement$),
-                    filter(([{target}, removedElement]) => {
-                        if (removedElement) {
-                            return !removedElement.contains(target as Node);
-                        }
-
-                        return true;
-                    }),
+                    filter(
+                        ([{target}, removedElement]) =>
+                            !removedElement || !removedElement.contains(target as Node),
+                    ),
                     map(([{relatedTarget}]) => relatedTarget),
                 ),
                 blur$.pipe(
