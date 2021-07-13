@@ -20,7 +20,7 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
     'Active element on the document for ActiveZone',
     {
         factory: () => {
-            const skip$ = inject(TUI_REMOVED_ELEMENT);
+            const removedElement$ = inject(TUI_REMOVED_ELEMENT);
             const windowRef = inject(WINDOW);
             const {document} = windowRef;
             const focusout$ = typedFromEvent(windowRef, 'focusout');
@@ -33,8 +33,11 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                 focusout$.pipe(
                     takeUntil(mousedown$),
                     repeatWhen(() => mouseup$),
-                    withLatestFrom(skip$),
-                    filter(([{target}, element]) => target !== element),
+                    withLatestFrom(removedElement$),
+                    filter(
+                        ([{target}, removedElement]) =>
+                            !removedElement || !removedElement.contains(target as Node),
+                    ),
                     map(([{relatedTarget}]) => relatedTarget),
                 ),
                 blur$.pipe(
