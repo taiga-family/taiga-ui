@@ -16,7 +16,9 @@ export interface TuiCardGroupedTexts {
     readonly cvcText: string;
 }
 
-export const TUI_INPUT_CARD_GROUPED_TEXTS = new InjectionToken('InputCardGrouped texts', {
+export const TUI_INPUT_CARD_GROUPED_TEXTS = new InjectionToken<
+    Observable<TuiCardGroupedTexts>
+>('InputCardGrouped texts', {
     factory: () =>
         inputGroupedTextsFactory(
             inject(WINDOW),
