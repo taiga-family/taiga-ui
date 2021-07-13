@@ -185,10 +185,13 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             total -= tabs[maxIndex].scrollWidth + TAB_MARGIN;
             maxIndex--;
 
-            const activeOffset =
-                activeItemIndex > maxIndex ? activeWidth + TAB_MARGIN : 0;
+            const activeDisplaced = activeItemIndex > maxIndex;
+            const activeOffset = activeDisplaced ? activeWidth + TAB_MARGIN : 0;
+            const currentWidth = total + activeOffset + moreWidth + TAB_MARGIN;
+            // Needed for different rounding of visible and hidden elements scrollWidth
+            const safetyOffset = this.maxIndex === maxIndex - 1 ? 1 : 0;
 
-            if (total + activeOffset + moreWidth + TAB_MARGIN < clientWidth) {
+            if (currentWidth + safetyOffset < clientWidth) {
                 return maxIndex;
             }
         }
