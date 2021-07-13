@@ -5,9 +5,9 @@ import {
     TUI_CARD_NUMBER_TEXTS,
 } from '@taiga-ui/addon-commerce/tokens';
 import {typedFromEvent} from '@taiga-ui/cdk';
+import {MEDIA} from '@taiga-ui/core';
 import {Observable, of} from 'rxjs';
 import {map, startWith, withLatestFrom} from 'rxjs/operators';
-import {MEDIA} from '../../../core';
 
 export interface TuiCardGroupedTexts {
     readonly cardNumberText: string;
@@ -46,10 +46,10 @@ export function inputGroupedTextsFactory(
         startWith(null),
         map(() => Number(media.matches)),
         withLatestFrom(cardNumberTexts, expiryTexts, cvcTexts),
-        map(([isMobile, cardNumber, expiry, cvcTexts]) => ({
-            cardNumberText: cardNumber[isMobile],
-            expiryText: expiry[isMobile],
-            cvcText: cvcTexts[isMobile],
+        map(([index, cardNumber, expiry, cvcTexts]) => ({
+            cardNumberText: cardNumber[index],
+            expiryText: expiry[index],
+            cvcText: cvcTexts[index],
         })),
     );
 }
