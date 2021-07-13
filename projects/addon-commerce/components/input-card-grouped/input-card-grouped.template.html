@@ -1,4 +1,5 @@
 <tui-wrapper
+    *ngIf="cardGroupedTexts$ | async as texts"
     appearance="textfield"
     class="common-wrapper"
     [readOnly]="readOnly"
@@ -23,11 +24,10 @@
         </span>
         <label>
             <span
-                *ngIf="cardNumberTexts$ | async as texts"
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{isMobile ? texts[0] : texts[1]}}
+                {{texts.cardNumberText}}
             </span>
             <span
                 class="collapsed"
@@ -73,11 +73,10 @@
         <span *ngIf="hasExpireExampleText" class="example-text"> 00/00 </span>
         <label>
             <span
-                *ngIf="cardExpiryTexts$ | async as texts"
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{isMobile ? texts[0] : texts[1]}}
+                {{texts.expiryText}}
             </span>
             <input
                 #inputExpire
@@ -108,7 +107,7 @@
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{isMobile ? 'CVC' : 'CVC/CVV'}}
+                {{texts.cvcText}}
             </span>
             <input
                 #inputCVC
