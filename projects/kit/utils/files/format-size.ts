@@ -19,5 +19,5 @@ export function formatSize(
         return `${(size / BYTES_PER_KB).toFixed()} ${units[1]}`;
     }
 
-    return `${round(size / BYTES_PER_MB, 2).toLocaleString()} ${units[2]}`;
+    return `${round(size / BYTES_PER_MB, 2).toLocaleString('ru-RU')} ${units[2]}`;
 }

@@ -50,7 +50,7 @@
                 />
                 <span class="country-item-name">{{countriesNames[item]}}</span>
                 <span class="country-item-code"
-                    >{{isoToCountryCode(item)}}</span
+                    >{{item | tuiMapper : isoToCountryCodeMapper}}</span
                 >
             </button>
         </tui-data-list>
