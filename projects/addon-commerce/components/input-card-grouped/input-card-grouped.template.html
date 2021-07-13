@@ -1,5 +1,5 @@
 <tui-wrapper
-    *tuiLet="cardGroupedTexts$ | async as texts"
+    *ngIf="cardGroupedTexts$ | async as texts"
     appearance="textfield"
     class="common-wrapper"
     [readOnly]="readOnly"
@@ -24,7 +24,6 @@
         </span>
         <label>
             <span
-                *ngIf="texts"
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
@@ -74,7 +73,6 @@
         <span *ngIf="hasExpireExampleText" class="example-text"> 00/00 </span>
         <label>
             <span
-                *ngIf="texts"
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
@@ -109,7 +107,7 @@
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{texts?.cvcText}}
+                {{texts.cvcText}}
             </span>
             <input
                 #inputCVC

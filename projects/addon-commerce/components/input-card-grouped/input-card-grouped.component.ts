@@ -43,7 +43,6 @@ import {
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {
-    TUI_INPUT_CARD_GROUPED_PROVIDERS,
     TUI_INPUT_CARD_GROUPED_TEXTS,
     TuiCardGroupedTexts,
 } from './input-card-grouped.providers';
@@ -64,7 +63,6 @@ const icons = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         MODE_PROVIDER,
-        TUI_INPUT_CARD_GROUPED_PROVIDERS,
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputCardGroupedComponent),
