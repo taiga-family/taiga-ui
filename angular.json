@@ -420,6 +420,47 @@
                 }
             }
         },
+        "addon-editor-new": {
+            "root": "projects/addon-editor-new",
+            "sourceRoot": "projects/addon-editor-new",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "tsConfig": "projects/addon-editor-new/tsconfig.lib.json",
+                        "project": "projects/addon-editor-new/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/addon-editor-new/tsconfig.lib.prod.json"
+                        }
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/addon-editor-new/test.ts",
+                        "tsConfig": "projects/addon-editor-new/tsconfig.spec.json",
+                        "karmaConfig": "karma.config.js",
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["projects/core/styles"]
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "projects/addon-editor-new/tsconfig.lib.json",
+                            "projects/addon-editor-new/tsconfig.spec.json"
+                        ],
+                        "exclude": ["**/node_modules/**"]
+                    }
+                }
+            }
+        },
         "addon-doc": {
             "root": "projects/addon-doc",
             "sourceRoot": "projects/addon-doc/src",
