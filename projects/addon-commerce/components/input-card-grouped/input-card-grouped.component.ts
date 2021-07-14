@@ -17,10 +17,6 @@ import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
 import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
 import {
-    TUI_CARD_EXPIRY_TEXTS,
-    TUI_CARD_NUMBER_TEXTS,
-} from '@taiga-ui/addon-commerce/tokens';
-import {
     getPaymentSystem,
     isCardLengthValid,
     isCardNumberValid,
@@ -32,7 +28,6 @@ import {
     isNativeFocusedIn,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TUI_IS_MOBILE,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -47,6 +42,10 @@ import {
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+import {
+    TUI_INPUT_CARD_GROUPED_TEXTS,
+    TuiCardGroupedTexts,
+} from './input-card-grouped.providers';
 
 const icons = {
     [TuiPaymentSystem.Mir]: 'tuiIconMir',
@@ -71,7 +70,6 @@ const icons = {
     ],
     host: {
         '($.data-mode.attr)': 'mode$',
-        '[class._mobile]': 'isMobile',
         'data-tui-host-size': 'l',
     },
 })
@@ -149,12 +147,9 @@ export class TuiInputCardGroupedComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_CARD_NUMBER_TEXTS)
-        readonly cardNumberTexts$: Observable<[string, string]>,
-        @Inject(TUI_CARD_EXPIRY_TEXTS)
-        readonly cardExpiryTexts$: Observable<[string, string]>,
+        @Inject(TUI_INPUT_CARD_GROUPED_TEXTS)
+        readonly cardGroupedTexts$: Observable<TuiCardGroupedTexts>,
     ) {
         super(control, changeDetectorRef);
     }
