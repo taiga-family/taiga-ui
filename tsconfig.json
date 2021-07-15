@@ -47,6 +47,8 @@
             "@taiga-ui/addon-table/*": ["projects/addon-table/*"],
             "@taiga-ui/addon-editor": ["projects/addon-editor/index"],
             "@taiga-ui/addon-editor/*": ["projects/addon-editor/*"],
+            "@taiga-ui/addon-editor-new": ["projects/addon-editor-new/index"],
+            "@taiga-ui/addon-editor-new/*": ["projects/addon-editor-new/*"],
             "@taiga-ui/addon-mobile": ["projects/addon-mobile/index"],
             "@taiga-ui/addon-mobile/*": ["projects/addon-mobile/*"]
         }

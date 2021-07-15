@@ -526,6 +526,13 @@ export const pages: TuiDocPages = [
                     'wysiwyg, редактор, текст, html, rich, text, input, инпут, ввод',
                 route: '/components/editor',
             },
+            {
+                section: $localize`Components`,
+                title: 'EditorNew',
+                keywords:
+                    'wysiwygnew, редактор, текст, html, rich, text, input, инпут, ввод',
+                route: '/components/editor-new',
+            },
         ],
     },
     {
