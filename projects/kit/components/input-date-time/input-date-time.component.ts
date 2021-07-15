@@ -147,11 +147,7 @@ export class TuiInputDateTimeComponent
         const [date, time] = value;
         const hasTimeInputChars = nativeValue.length > this.dateFiller.length;
 
-        if (!date) {
-            return nativeValue;
-        }
-
-        if (!time && hasTimeInputChars) {
+        if (!date || (!time && hasTimeInputChars)) {
             return nativeValue;
         }
 
@@ -294,10 +290,9 @@ export class TuiInputDateTimeComponent
     }
 
     private updateNativeValue(day: TuiDay) {
-        const {timeMode, nativeValue} = this;
-        const time = nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
+        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
 
-        this.nativeValue = this.getDateTimeString(day, time, {timeMode});
+        this.nativeValue = this.getDateTimeString(day, time);
     }
 
     @tuiPure
@@ -322,7 +317,7 @@ export class TuiInputDateTimeComponent
     private getDateTimeString(
         date: TuiDay,
         time: TuiTime | string | null,
-        {timeMode}: {timeMode: TuiTimeMode},
+        {timeMode = 'HH:MM'}: {timeMode?: TuiTimeMode} = {},
     ): string {
         const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
 
