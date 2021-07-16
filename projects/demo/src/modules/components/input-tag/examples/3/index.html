@@ -1,12 +1,26 @@
 <form class="b-form" [formGroup]="testForm">
     <tui-input-tag
         formControlName="testValue"
-        tuiTextfieldSize="m"
+        tuiTextfieldSize="s"
         [tuiTextfieldLabelOutside]="true"
+        [tuiTextfieldCleaner]="true"
     >
         I'm a <i>placeholder</i>
     </tui-input-tag>
-    <tui-input-tag formControlName="testValue" class="tui-space_top-2">
+    <tui-input-tag
+        class="tui-space_top-2"
+        formControlName="testValue"
+        tuiTextfieldSize="m"
+        [tuiTextfieldLabelOutside]="true"
+        [tuiTextfieldCleaner]="true"
+    >
+        I'm a <i>placeholder</i>
+    </tui-input-tag>
+    <tui-input-tag
+        formControlName="testValue"
+        class="tui-space_top-2"
+        [tuiTextfieldCleaner]="true"
+    >
         I'm a <i>placeholder</i>
     </tui-input-tag>
 </form>
