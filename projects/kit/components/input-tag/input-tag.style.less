@@ -43,6 +43,11 @@
         pointer-events: none;
     }
 
+    :host[data-tui-host-size='s'] & {
+        min-height: var(--tui-height-s);
+        padding: 0.125rem 0.25rem 0.125rem 0;
+    }
+
     :host[data-tui-host-size='m'] & {
         min-height: var(--tui-height-m);
         padding: 0.5rem 0.25rem 0.5rem 0;
@@ -66,8 +71,13 @@
     padding: 0;
     align-items: flex-start;
 
+    :host[data-tui-host-size='s'] &,
     :host[data-tui-host-size='m'] & {
         padding-left: 0.75rem;
+    }
+
+    :host[data-tui-host-size='s'] & {
+        padding-right: 0;
     }
 }
 
@@ -86,6 +96,10 @@
         :host._expandable & {
             margin-left: -0.625rem;
         }
+    }
+
+    :host[data-tui-host-size='s'] & {
+        height: var(--tui-height-s);
     }
 
     :host[data-tui-host-size='m'] & {
