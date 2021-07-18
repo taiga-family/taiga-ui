@@ -6,3 +6,4 @@ export * from '@taiga-ui/i18n/languages/russian';
 export * from '@taiga-ui/i18n/languages/spanish';
 export * from '@taiga-ui/i18n/languages/turkish';
 export * from '@taiga-ui/i18n/languages/ukrainian';
+export * from '@taiga-ui/i18n/languages/vietnamese';
