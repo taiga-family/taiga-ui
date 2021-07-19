@@ -6,6 +6,5 @@
     "pluginsFile": "cypress/plugins/index.js",
     "fixturesFolder": "cypress/fixtures",
     "baseUrl": "http://localhost:3333",
-    "testFiles": "**/*.spec.ts",
-    "projectId": "x9psbw"
+    "testFiles": "**/*.spec.ts"
 }

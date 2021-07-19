@@ -1,5 +1,7 @@
 <tui-wrapper
+    *ngIf="cardGroupedTexts$ | async as texts"
     appearance="textfield"
+    class="common-wrapper"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
     [focused]="computedFocused"
@@ -7,9 +9,10 @@
     [invalid]="computedInvalid"
     (tuiHoveredChange)="onHovered($event)"
     (tuiActiveZoneChange)="onActiveZoneChange($event)"
+    (scroll)="onScroll($event.currentTarget)"
 >
     <tui-svg
-        *ngIf="!!icon"
+        *ngIf="icon"
         class="card"
         automation-id="tui-input-card-grouped__icon"
         [class.card_right]="!hasCleaner"
@@ -21,11 +24,10 @@
         </span>
         <label>
             <span
-                *ngIf="cardNumberTexts$ | async as texts"
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{isMobile ? texts[0] : texts[1]}}
+                {{texts.cardNumberText}}
             </span>
             <span
                 class="collapsed"
@@ -71,11 +73,10 @@
         <span *ngIf="hasExpireExampleText" class="example-text"> 00/00 </span>
         <label>
             <span
-                *ngIf="cardExpiryTexts$ | async as texts"
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{isMobile ? texts[0] : texts[1]}}
+                {{texts.expiryText}}
             </span>
             <input
                 #inputExpire
@@ -106,7 +107,7 @@
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
             >
-                {{isMobile ? 'CVC' : 'CVC/CVV'}}
+                {{texts.cvcText}}
             </span>
             <input
                 #inputCVC

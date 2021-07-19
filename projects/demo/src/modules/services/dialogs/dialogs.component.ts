@@ -16,6 +16,7 @@ import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
 
 import {default as exampleCustomDialog} from '!!raw-loader!./examples/import/custom-dialog.txt';
+import {default as exampleDialogsCloseToken} from '!!raw-loader!./examples/import/dialogs-close-token.txt';
 import {default as exampleImportModuleComponent} from '!!raw-loader!./examples/import/import-module-component.txt';
 import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
 import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
@@ -32,12 +33,6 @@ import {switchMap} from 'rxjs/operators';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
-const TOKEN = `{
-    provide: TUI_DIALOGS_CLOSE,
-    deps: [Router],
-    useFactory: ({events}) => events,
-}`;
-
 @Component({
     selector: 'example-tui-dialogs',
     templateUrl: './dialogs.template.html',
@@ -45,7 +40,7 @@ const TOKEN = `{
     changeDetection,
 })
 export class ExampleTuiDialogsComponent {
-    readonly token = TOKEN;
+    readonly dialogsCloseToken = exampleDialogsCloseToken;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

@@ -23,11 +23,14 @@
 .overlay {
     pointer-events: none;
     opacity: 0;
-    transition: opacity var(--tui-duration);
+    letter-spacing: normal;
+    /* change of useless property 'letter-spacing' to ensure that transitionend event will fire */
+    transition: opacity var(--tui-duration), letter-spacing 0.01s;
     background: rgba(0, 0, 0, 0.5);
 
     &_visible {
         opacity: 1;
+        letter-spacing: 1px;
     }
 }
 

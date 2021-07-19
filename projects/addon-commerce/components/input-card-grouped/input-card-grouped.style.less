@@ -14,9 +14,8 @@
     height: var(--tui-height-l);
     width: @width-full;
     border-radius: var(--tui-radius-m);
-    overflow: hidden;
 
-    &._mobile {
+    @media @mobile {
         width: @width-mobile;
     }
 }
@@ -24,6 +23,13 @@
 .outline {
     height: 100%;
     width: 100%;
+}
+
+.common-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 .wrapper {
@@ -36,7 +42,7 @@
         margin-left: @offset-full;
         transform: translate3d(100%, 0, 0);
 
-        :host._mobile & {
+        @media @mobile {
             margin-left: @offset-small;
         }
     }
@@ -48,7 +54,7 @@
     &_active {
         transform: translate3d(@wrapper-offset-full, 0, 0);
 
-        :host._mobile & {
+        @media @mobile {
             transform: translate3d(@wrapper-offset-small, 0, 0);
         }
     }

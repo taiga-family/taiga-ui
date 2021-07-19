@@ -12,5 +12,10 @@
         [context]="item"
         [@tuiParentAnimation]
     ></section>
-    <div class="overlay" [class.overlay_visible]="dialogs.length"></div>
+    <div
+        class="overlay"
+        (window:popstate)="closeLast(dialogs)"
+        (transitionend)="onDialog($event, !!dialogs.length)"
+        [class.overlay_visible]="dialogs.length"
+    ></div>
 </ng-container>
