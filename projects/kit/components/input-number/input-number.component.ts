@@ -25,6 +25,7 @@ import {
     maskedNumberStringToNumber,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
+    TuiDecimalSymbol,
     TuiDecimalT,
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
@@ -68,6 +69,10 @@ export class TuiInputNumberComponent
     @tuiDefaultProp()
     postfix = '';
 
+    @Input()
+    @tuiDefaultProp()
+    decimalSeparator: TuiDecimalSymbol = ',';
+
     mask: TuiMapper<boolean, TuiTextMaskOptions> = (
         allowNegative: boolean,
         decimal: TuiDecimalT,
@@ -78,11 +83,12 @@ export class TuiInputNumberComponent
             allowNegative: allowNegative,
             allowDecimal: decimal !== 'never',
             decimalLimit: precision,
+            decimalSymbol: this.decimalSeparator,
             requireDecimal: decimal === 'always',
         }),
         pipe: tuiCreateAutoCorrectedNumberPipe(
             decimal === 'always' ? precision : 0,
-            ',',
+            this.decimalSeparator,
             nativeFocusableElement || undefined,
         ),
         guide: false,
@@ -122,7 +128,7 @@ export class TuiInputNumberComponent
     get calculatedMaxLength(): number {
         return (
             DEFAULT_MAX_LENGTH +
-            (this.decimal !== 'never' && this.nativeValue.includes(',')
+            (this.decimal !== 'never' && this.nativeValue.includes(this.decimalSeparator)
                 ? this.precision + 1
                 : 0)
         );
@@ -142,7 +148,7 @@ export class TuiInputNumberComponent
             limit = fraction.length;
         }
 
-        return formatNumber(value, limit);
+        return formatNumber(value, limit, this.decimalSeparator);
     }
 
     get computedValue(): string {
@@ -192,7 +198,7 @@ export class TuiInputNumberComponent
             return;
         }
 
-        if (this.nativeValue.includes(',')) {
+        if (this.nativeValue.includes(this.decimalSeparator)) {
             event.preventDefault();
             this.setCaretAfterComma();
         }
@@ -229,7 +235,7 @@ export class TuiInputNumberComponent
 
     @HostListener('keydown.0', ['$event'])
     onZero(event: KeyboardEvent) {
-        const decimal = this.nativeValue.split(',')[1] || '';
+        const decimal = this.nativeValue.split(this.decimalSeparator)[1] || '';
         const {nativeFocusableElement} = this;
 
         if (

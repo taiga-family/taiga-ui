@@ -111,6 +111,18 @@ describe('InputNumber', () => {
                 done();
             });
         });
+
+        it('Decimal separator is applied to displayed value', done => {
+            testComponent.component.decimalSeparator = '.';
+            testComponent.control.setValue(12.345);
+            fixture.detectChanges();
+
+            fixture.whenStable().then(() => {
+                fixture.detectChanges();
+                expect(getNativeInput()!.nativeElement.value).toBe('12.34');
+                done();
+            });
+        });
     });
 
     it(`Non-zero pennies are not shown when decimal = 'never'`, done => {
@@ -295,7 +307,7 @@ describe('InputNumber', () => {
         expect(nativeInput.getAttribute('maxlength')).toBe('18');
     });
 
-    describe('При decimal === always', () => {
+    describe('When decimal === always', () => {
         it(`Adds the number of zeros specified by the precision property when updating Value with an integer`, () => {
             const value = '123';
             const precision = 2;
