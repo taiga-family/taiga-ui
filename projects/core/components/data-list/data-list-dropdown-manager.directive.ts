@@ -72,6 +72,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                             }
 
                             setNativeFocused(element.nativeElement);
+                            // TODO: iframe warning
                             dropdown.open = event instanceof MouseEvent;
                         }),
                     );

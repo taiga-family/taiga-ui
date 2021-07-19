@@ -13,6 +13,7 @@ export function tuiCreateUnfinishedValidator(
 
         return value === null &&
             nativeInput &&
+            // TODO: iframe warning
             nativeInput.nativeFocusableElement instanceof HTMLInputElement &&
             nativeInput.nativeFocusableElement.value !== ''
             ? {unfinished: new TuiValidationError(message)}
