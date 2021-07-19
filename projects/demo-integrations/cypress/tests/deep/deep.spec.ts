@@ -15,7 +15,7 @@ const selectExclusions: Record<string, ReadonlyArray<number>> = {
     'components/primitive-textfield': [0, 7, 8, 9, 10],
 };
 
-xdescribe('Deep', () => {
+describe('Deep', () => {
     before(() => {
         cy.viewport(1500, 3200);
         cy.visit('/');
