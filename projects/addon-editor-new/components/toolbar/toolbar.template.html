@@ -189,8 +189,9 @@
                     icon="tuiIconAlignLeftLarge"
                     class="button button_margin"
                     appearance="icon"
+                    [pseudoPressed]="alignLeft"
                     [tuiHint]="texts.justifyLeft"
-                    (click)="onAlign('justifyLeft')"
+                    (click)="onAlign('left')"
                 ></button>
                 <button
                     tuiIconButton
@@ -199,8 +200,9 @@
                     icon="tuiIconAlignCenterLarge"
                     class="button button_margin"
                     appearance="icon"
+                    [pseudoPressed]="alignCenter"
                     [tuiHint]="texts.justifyCenter"
-                    (click)="onAlign('justifyCenter')"
+                    (click)="onAlign('center')"
                 ></button>
                 <button
                     tuiIconButton
@@ -209,8 +211,9 @@
                     icon="tuiIconAlignRightLarge"
                     class="button button_margin"
                     appearance="icon"
+                    [pseudoPressed]="alignRight"
                     [tuiHint]="texts.justifyRight"
-                    (click)="onAlign('justifyRight')"
+                    (click)="onAlign('right')"
                 ></button>
                 <button
                     tuiIconButton
@@ -219,8 +222,9 @@
                     icon="tuiIconAlignJustifyLarge"
                     class="button button_margin"
                     appearance="icon"
+                    [pseudoPressed]="justify"
                     [tuiHint]="texts.justifyFull"
-                    (click)="onAlign('justifyFull')"
+                    (click)="onAlign('justify')"
                 ></button>
             </div>
         </ng-template>
@@ -624,5 +628,25 @@
         (keydown.arrowLeft.prevent)="onArrowLeft()"
         (keydown.arrowRight.prevent)="onArrowRight()"
         (click)="removeFormat()"
+    ></button>
+</div>
+<div *ngIf="true" class="block">
+    <button
+        #button
+        #tableBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconStructureLarge"
+        class="button button_margin"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        [tuiHint]="texts.clear"
+        [tuiHintId]="tableBtn.id"
+        [tuiDescribedBy]="tableBtn.id"
+        [focusable]="false"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+        (keydown.arrowRight.prevent)="onArrowRight()"
+        (click)="addTable()"
     ></button>
 </div>

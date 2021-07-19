@@ -1,6 +1,13 @@
-<tui-wrapper class="outline" appearance="textfield" [focused]="true">
-    <tui-toolbar></tui-toolbar>
-    <button (click)="onBold()">bold</button>
+<tui-wrapper
+    class="outline"
+    appearance="textfield"
+    [readOnly]="readOnly"
+    [disabled]="disabled"
+    [focused]="computedFocused"
+    [hovered]="computedHovered"
+    [invalid]="computedInvalid"
+>
+    <tui-toolbar [teditor]="editor" [tools]="tools"></tui-toolbar>
 
-    <div #editor class="editor"></div>
+    <div #editorRef class="editor"></div>
 </tui-wrapper>

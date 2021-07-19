@@ -1,4 +1,5 @@
 import {DOCUMENT} from '@angular/common';
+
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -39,12 +40,15 @@ import {
     TuiHostedDropdownComponent,
 } from '@taiga-ui/core';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
+import {Editor} from '@tiptap/core';
 import {merge, Observable} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
 
 const DEFAULT_FONT = 'haas, helvetica, arial, sans-serif';
 const MONOSPACE_FONT = 'Courier';
 const IE_TRANSPARENT = 16777215;
+
+import {redoDepth, undoDepth} from 'prosemirror-history';
 
 export function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     return (
@@ -73,6 +77,9 @@ export class TuiToolbarComponent {
     @Input()
     @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = defaultEditorColors;
+
+    @Input()
+    teditor: Editor | null = null;
 
     @Input()
     @tuiDefaultProp()
@@ -198,15 +205,15 @@ export class TuiToolbarComponent {
     }
 
     get bold(): boolean {
-        return this.documentRef.queryCommandState('bold');
+        return !!this.teditor?.isActive('bold');
     }
 
     get italic(): boolean {
-        return this.documentRef.queryCommandState('italic');
+        return !!this.teditor?.isActive('italic');
     }
 
     get underline(): boolean {
-        return this.documentRef.queryCommandState('underline');
+        return !!this.teditor?.isActive('underline');
     }
 
     get strikeThrough(): boolean {
@@ -222,9 +229,7 @@ export class TuiToolbarComponent {
     }
 
     get blockquote(): boolean {
-        const selection = this.documentRef.getSelection();
-
-        return !!selection && isSelectionIn(selection, 'blockquote');
+        return !!this.teditor?.isActive('blockquote');
     }
 
     get a(): boolean {
@@ -250,11 +255,11 @@ export class TuiToolbarComponent {
     }
 
     get undoDisabled(): boolean {
-        return !this.documentRef.queryCommandEnabled('undo');
+        return !this.teditor || undoDepth(this.teditor.state) === 0;
     }
 
     get redoDisabled(): boolean {
-        return !this.documentRef.queryCommandEnabled('redo');
+        return !this.teditor || redoDepth(this.teditor.state) === 0;
     }
 
     get code(): boolean {
@@ -273,11 +278,11 @@ export class TuiToolbarComponent {
     }
 
     get subscript(): boolean {
-        return this.documentRef.queryCommandState('subscript');
+        return !!this.teditor?.isActive('subscript');
     }
 
     get superscript(): boolean {
-        return this.documentRef.queryCommandState('superscript');
+        return !!this.teditor?.isActive('superscript');
     }
 
     get foreColor(): string {
@@ -345,6 +350,22 @@ export class TuiToolbarComponent {
         );
     }
 
+    get alignLeft(): boolean {
+        return !!this.teditor?.isActive({textAlign: 'left'});
+    }
+
+    get alignRight(): boolean {
+        return !!this.teditor?.isActive({textAlign: 'right'});
+    }
+
+    get alignCenter(): boolean {
+        return !!this.teditor?.isActive({textAlign: 'center'});
+    }
+
+    get justify(): boolean {
+        return !!this.teditor?.isActive({textAlign: 'justify'});
+    }
+
     onBottomFocus() {
         this.focusLast();
     }
@@ -391,13 +412,15 @@ export class TuiToolbarComponent {
     }
 
     onFont(size: string) {
-        this.focusEditor();
-        this.documentRef.execCommand('fontSize', false, size);
+        this.teditor
+            ?.chain()
+            .focus()
+            .setHeading({level: +size as any})
+            .run();
     }
 
     onAlign(align: string) {
-        this.focusEditor();
-        this.documentRef.execCommand(align);
+        this.teditor?.chain().focus().setTextAlign(align).run();
     }
 
     onImage(input: HTMLInputElement) {
@@ -447,13 +470,11 @@ export class TuiToolbarComponent {
     }
 
     undo() {
-        this.focusEditor();
-        this.documentRef.execCommand('undo');
+        this.teditor?.chain().undo().run();
     }
 
     redo() {
-        this.focusEditor();
-        this.documentRef.execCommand('redo');
+        this.teditor?.chain().redo().run();
     }
 
     indent() {
@@ -488,51 +509,43 @@ export class TuiToolbarComponent {
     }
 
     toggleBold() {
-        this.focusEditor();
-        this.documentRef.execCommand('bold');
+        this.teditor?.chain().focus().toggleBold().run();
     }
 
     toggleItalic() {
-        this.focusEditor();
-        this.documentRef.execCommand('italic');
+        this.teditor?.chain().focus().toggleItalic().run();
     }
 
     toggleUnderline() {
-        this.focusEditor();
-        this.documentRef.execCommand('underline');
+        this.teditor?.chain().focus().toggleUnderline().run();
     }
 
     toggleStrikeThrough() {
-        this.focusEditor();
-        this.documentRef.execCommand('strikeThrough');
+        this.teditor?.chain().focus().toggleStrike().run();
     }
 
     toggleOrderedList() {
-        this.focusEditor();
-        this.documentRef.execCommand('insertOrderedList');
+        this.teditor?.chain().focus().toggleOrderedList().run();
     }
 
     toggleUnorderedList() {
-        this.focusEditor();
-        this.documentRef.execCommand('insertUnorderedList');
+        this.teditor?.chain().focus().toggleBulletList().run();
     }
 
     toggleQuote() {
-        if (this.blockquote) {
-            this.outdent();
-        } else {
-            this.indent();
-        }
+        this.teditor?.chain().focus().toggleBlockquote().run();
+    }
+
+    addTable() {
+        this.teditor?.chain().insertTable({rows: 3, cols: 3, withHeaderRow: true}).run();
     }
 
     toggleSubscript() {
-        this.focusEditor();
-        this.documentRef.execCommand('subscript');
+        this.teditor?.chain().focus().toggleSubscript().run();
     }
 
     toggleSuperscript() {
-        this.focusEditor();
-        this.documentRef.execCommand('superscript');
+        this.teditor?.chain().focus().toggleSuperscript().run();
     }
 
     private toggleCode() {

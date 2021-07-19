@@ -1,17 +1,131 @@
 @import 'taiga-ui-local';
 
 :host {
-    .createStackingContext();
-    font: var(--tui-font-text-m);
     display: block;
 }
 
 .outline {
-    .fullsize();
     border-radius: var(--tui-radius-m);
-    pointer-events: none;
 }
+
 .editor {
-    height: 100%;
-    width: 100%;
+    border: none;
+    padding: 16px;
+
+    ::ng-deep > {
+        [contenteditable] {
+            width: 100%;
+            height: 100%;
+            outline: none;
+        }
+
+        .ProseMirror {
+            white-space: pre-wrap;
+        }
+
+        blockquote {
+            margin: 0 0 0 40px;
+            border: none;
+            padding: 0px;
+            border-left: 1px solid #cbcfd3;
+            padding-left: 17px;
+        }
+
+        table {
+            border-collapse: collapse;
+            table-layout: fixed;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+
+            td,
+            th {
+                min-width: 1em;
+                border: 2px solid #ced4da;
+                padding: 3px 5px;
+                vertical-align: top;
+                box-sizing: border-box;
+                position: relative;
+
+                > * {
+                    margin-bottom: 0;
+                }
+            }
+
+            th {
+                font-weight: bold;
+                text-align: left;
+                background-color: #f1f3f5;
+            }
+
+            .selectedCell:after {
+                z-index: 2;
+                position: absolute;
+                content: '';
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background: rgba(200, 200, 255, 0.4);
+                pointer-events: none;
+            }
+
+            .column-resize-handle {
+                position: absolute;
+                right: -2px;
+                top: 0;
+                bottom: -2px;
+                width: 4px;
+                background-color: #adf;
+                pointer-events: none;
+            }
+
+            .tableWrapper {
+                overflow-x: auto;
+            }
+
+            .resize-cursor {
+                cursor: ew-resize;
+                cursor: col-resize;
+            }
+        }
+
+        ul,
+        ol {
+            list-style-type: none;
+            margin: 16px 16px 16px 24px;
+            padding: 0;
+        }
+
+        li {
+            margin: 16px 0;
+        }
+
+        li p {
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        ul li:before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 100%;
+            margin: 0 14px 1px -22px;
+            background-color: #ffdd2d;
+        }
+
+        ol {
+            counter-reset: counter;
+        }
+
+        ol li:before {
+            content: counter(counter) '.';
+            width: 24px;
+            margin: 0 12px 0 -24px;
+            counter-increment: counter;
+            color: #909090;
+        }
+    }
 }
