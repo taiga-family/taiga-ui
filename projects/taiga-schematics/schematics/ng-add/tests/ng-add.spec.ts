@@ -1,7 +1,6 @@
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 
-// We can emulate filesystem with ng-morph
 import {
     createProject,
     createSourceFile,
@@ -158,7 +157,6 @@ export class AppModule {}
     });
 
     afterEach(() => {
-        // clear it up
         resetActiveProject();
     });
 });
