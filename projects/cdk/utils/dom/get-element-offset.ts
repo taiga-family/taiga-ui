@@ -15,6 +15,7 @@ export function getElementOffset(
 
     let {offsetTop, offsetLeft, offsetParent} = element;
 
+    // TODO: iframe warning
     while (offsetParent && offsetParent instanceof HTMLElement && offsetParent !== host) {
         offsetTop += offsetParent.offsetTop;
         offsetLeft += offsetParent.offsetLeft;

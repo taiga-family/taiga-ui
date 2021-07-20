@@ -9,6 +9,7 @@ export function isNativeKeyboardFocusable(element: Element): boolean {
         return false;
     }
 
+    // TODO: iframe warning
     if (
         (element instanceof HTMLElement && element.isContentEditable) ||
         element.getAttribute('tabIndex') === '0'

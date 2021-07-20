@@ -92,6 +92,7 @@ export class TuiOverscrollDirective {
     ) {
         const {target, currentTarget, cancelable} = event;
 
+        // TODO: iframe warning
         if (!cancelable || !(target instanceof Element)) {
             return;
         }
