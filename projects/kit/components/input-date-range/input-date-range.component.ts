@@ -19,12 +19,12 @@ import {
     RANGE_SEPARATOR_CHAR,
     setNativeFocused,
     TUI_DATE_FILLER,
-    TUI_DATE_RANGE_FILLER,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiDateMode,
     TuiDay,
     TuiDayLike,
     TuiDayRange,
@@ -32,6 +32,7 @@ import {
     TuiFocusableElementAccessor,
     TuiMapper,
     TuiMonth,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     sizeBigger,
@@ -53,10 +54,15 @@ import {
     TUI_DATE_RANGE_MASK,
 } from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_CALENDAR_DATA_STREAM, TUI_MOBILE_CALENDAR} from '@taiga-ui/kit/tokens';
+import {
+    TUI_CALENDAR_DATA_STREAM,
+    TUI_DATE_TEXTS,
+    TUI_MOBILE_CALENDAR,
+} from '@taiga-ui/kit/tokens';
 import {tuiCreateAutoCorrectedDateRangePipe} from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
@@ -143,10 +149,15 @@ export class TuiInputDateRangeComponent
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_TEXTFIELD_EXAMPLE_TEXT)
         private readonly textfieldExampleText: TuiTextfieldExampleTextDirective,
-        @Inject(TUI_DATE_FILLER) readonly filler: string,
-        @Inject(TUI_DATE_RANGE_FILLER) readonly rangeFiller: string,
+        @Inject(TUI_DATE_FILLER) readonly filler: TuiDateMode,
+        @Inject(TUI_DATE_TEXTS)
+        readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    get rangeFiller(): string {
+        return this.getDateRangeFiller(this.filler);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -173,10 +184,6 @@ export class TuiInputDateRangeComponent
 
     get computedExampleText(): string {
         return this.items.length ? this.textfieldExampleText.exampleText : '';
-    }
-
-    get computedFiller(): string {
-        return this.activePeriod ? '' : this.rangeFiller;
     }
 
     get computedMask(): TuiTextMaskOptions {
@@ -229,6 +236,12 @@ export class TuiInputDateRangeComponent
         }
 
         this.nativeFocusableElement.value = value;
+    }
+
+    getI18nFiller(i18nDateTexts: Record<TuiDateMode, string>): string {
+        return this.activePeriod
+            ? ''
+            : this.getDateRangeFiller(i18nDateTexts[this.filler]);
     }
 
     onMobileClick() {
@@ -391,5 +404,10 @@ export class TuiInputDateRangeComponent
         return clampedBottom.to.dayAfter(availableMax)
             ? new TuiDayRange(clampedBottom.from, availableMax)
             : clampedBottom;
+    }
+
+    @tuiPure
+    private getDateRangeFiller(dateFiller: string): string {
+        return `${dateFiller}${RANGE_SEPARATOR_CHAR}${dateFiller}`;
     }
 }

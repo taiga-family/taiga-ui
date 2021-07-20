@@ -14,6 +14,10 @@ export const TUI_DATE_FILLER = new InjectionToken<TuiDateMode | string>(
     },
 );
 
+/**
+ * @deprecated dont use it
+ * TODO: get rid of this in v3.0
+ */
 export const TUI_DATE_RANGE_FILLER = new InjectionToken<string>(
     'date range filler for Taiga UI',
     {
