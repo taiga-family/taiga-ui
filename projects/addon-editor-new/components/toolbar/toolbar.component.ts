@@ -21,7 +21,7 @@ import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
-import {isSelectionIn, tuiInsertHtml} from '@taiga-ui/addon-editor/utils';
+import {isSelectionIn} from '@taiga-ui/addon-editor/utils';
 import {
     EMPTY_QUERY,
     isFirefox,
@@ -44,7 +44,7 @@ import {Editor} from '@tiptap/core';
 import {merge, Observable} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
 
-const DEFAULT_FONT = 'haas, helvetica, arial, sans-serif';
+// const DEFAULT_FONT = 'haas, helvetica, arial, sans-serif';
 const MONOSPACE_FONT = 'Courier';
 const IE_TRANSPARENT = 16777215;
 
@@ -174,6 +174,10 @@ export class TuiToolbarComponent {
                     changeDetectorRef.markForCheck();
                 });
             });
+
+        this.teditor?.on('transaction', () => {
+            Promise.resolve().then(() => changeDetectorRef.markForCheck());
+        });
     }
 
     get focused(): boolean {
@@ -488,24 +492,20 @@ export class TuiToolbarComponent {
     }
 
     insertHorizontalRule() {
-        this.focusEditor();
-        this.documentRef.execCommand('insertHorizontalRule');
+        this.teditor?.chain().focus().setHorizontalRule().run();
     }
 
     removeFormat() {
-        // @bad TODO: Write our own method to remove PRE etc
-        this.focusEditor();
-        this.documentRef.execCommand('removeFormat');
+        this.teditor?.commands.unsetAllMarks();
+        this.teditor?.commands.clearNodes();
     }
 
     setForeColor(color: string) {
-        this.focusEditor();
-        this.documentRef.execCommand('foreColor', false, color);
+        this.teditor?.chain().focus().setFontColor(color).run();
     }
 
     setHiliteColor(color: string) {
-        this.focusEditor();
-        this.documentRef.execCommand('hiliteColor', false, color);
+        this.teditor?.chain().focus().setFontColor(color).run();
     }
 
     toggleBold() {
@@ -549,50 +549,12 @@ export class TuiToolbarComponent {
     }
 
     private toggleCode() {
-        this.focusEditor();
-        this.documentRef.execCommand(
-            'fontName',
-            false,
-            this.code ? DEFAULT_FONT : MONOSPACE_FONT,
-        );
+        this.teditor?.chain().toggleCode().run();
     }
 
     // @bad TODO: Fix multiple issues with toggling
     private togglePre() {
-        const selection = this.documentRef.getSelection();
-
-        if (!selection || selection.isCollapsed || !this.pre) {
-            this.documentRef.execCommand(
-                'formatBlock',
-                false,
-                this.pre ? '<P>' : '<PRE>',
-            );
-
-            return;
-        }
-
-        const html = Array.prototype.slice
-            .call(selection.getRangeAt(0).cloneContents().childNodes)
-            // Actually a Node, but early return handles text nodes
-            .map((node: Element) => {
-                if (!node.tagName || node.tagName.toLowerCase() !== 'pre') {
-                    return node;
-                }
-
-                const p = this.documentRef.createElement('p');
-
-                p.innerHTML = node.innerHTML;
-
-                return p;
-            })
-            .reduce(
-                (result: string, node: Element) =>
-                    result + (node.outerHTML || node.nodeValue),
-                '',
-            );
-
-        tuiInsertHtml(this.documentRef, html);
-        this.focusEditor();
+        this.teditor?.chain().toggleCodeBlock().run();
     }
 
     private addImage(image: string) {

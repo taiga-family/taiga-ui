@@ -97,6 +97,7 @@
         "@tiptap/extension-table-header": "^2.0.0-beta.15",
         "@tiptap/extension-table-row": "^2.0.0-beta.13",
         "@tiptap/extension-text-align": "^2.0.0-beta.20",
+        "@tiptap/extension-text-style": "^2.0.0-beta.16",
         "@tiptap/extension-underline": "^2.0.0-beta.15",
         "@tiptap/starter-kit": "^2.0.0-beta.82",
         "angular2-text-mask": "9.0.0",

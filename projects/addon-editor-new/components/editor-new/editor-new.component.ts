@@ -19,10 +19,12 @@ import TableCell from '@tiptap/extension-table-cell';
 import TableHeader from '@tiptap/extension-table-header';
 import TableRow from '@tiptap/extension-table-row';
 import TextAlign from '@tiptap/extension-text-align';
+import {TextStyle} from '@tiptap/extension-text-style';
 import Underline from '@tiptap/extension-underline';
 import StarterKit from '@tiptap/starter-kit';
 import {defaultEditorTools} from '../../../addon-editor/constants';
 import {AbstractTuiControl, TUI_FOCUSABLE_ITEM_ACCESSOR} from '../../../cdk';
+import {FontColor} from '../../extensions/font-color';
 
 @Component({
     selector: 'tui-editor-new',
@@ -71,9 +73,11 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
                 TextAlign.configure({
                     types: ['heading', 'paragraph'],
                 }),
+                TextStyle,
                 Underline,
                 Subscript,
                 Superscript,
+                FontColor,
                 Table.configure({
                     resizable: true,
                 }),
@@ -83,8 +87,6 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
             ],
             content: '<p>Hello World!</p>',
         });
-
-        this.editor.on('transaction', () => this.changeDetectorRef.markForCheck());
     }
 
     protected getFallbackValue(): string {
