@@ -505,7 +505,7 @@ export class TuiToolbarComponent {
     }
 
     setHiliteColor(color: string) {
-        this.teditor?.chain().focus().setFontColor(color).run();
+        this.teditor?.chain().focus().setBackgroundColor(color).run();
     }
 
     toggleBold() {

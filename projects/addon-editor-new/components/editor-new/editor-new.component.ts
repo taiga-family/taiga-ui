@@ -24,6 +24,7 @@ import Underline from '@tiptap/extension-underline';
 import StarterKit from '@tiptap/starter-kit';
 import {defaultEditorTools} from '../../../addon-editor/constants';
 import {AbstractTuiControl, TUI_FOCUSABLE_ITEM_ACCESSOR} from '../../../cdk';
+import {BackgroundColor} from '../../extensions/background-color';
 import {FontColor} from '../../extensions/font-color';
 
 @Component({
@@ -78,6 +79,7 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
                 Subscript,
                 Superscript,
                 FontColor,
+                BackgroundColor,
                 Table.configure({
                     resizable: true,
                 }),
