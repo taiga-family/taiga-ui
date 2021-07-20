@@ -151,7 +151,7 @@ export class TuiInputDateTimeComponent
             return nativeValue;
         }
 
-        return this.getDateTimeString(date, time, {timeMode});
+        return this.getDateTimeString(date, time, timeMode);
     }
 
     get calendarValue(): TuiDay | null {
@@ -317,7 +317,7 @@ export class TuiInputDateTimeComponent
     private getDateTimeString(
         date: TuiDay,
         time: TuiTime | string | null,
-        {timeMode = 'HH:MM'}: {timeMode?: TuiTimeMode} = {},
+        timeMode: TuiTimeMode = 'HH:MM',
     ): string {
         const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
 
