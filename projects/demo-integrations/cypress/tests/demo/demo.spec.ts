@@ -1,19 +1,16 @@
 import {DEMO_PATHS} from '../demo-paths';
-import {EXAMPLE_ID} from '../shared.entities';
+import {EXAMPLE_ID, goToDemoPage} from '../shared.entities';
 import {excluded} from './exclusions';
 
 describe('Demo', () => {
-    before(() => {
+    beforeEach(() => {
         cy.viewport(1280, 720);
-        cy.visit('/');
-        cy.wait(600);
     });
 
     DEMO_PATHS.forEach(path => {
         it(`${path}`, () => {
-            cy.visit(path, {failOnStatusCode: false});
+            goToDemoPage(path);
             cy.wait(700);
-            cy.viewport(1280, 720);
 
             cy.get('[tuidocheader]').invoke(
                 'attr',

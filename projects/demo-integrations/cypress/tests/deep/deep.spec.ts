@@ -1,3 +1,5 @@
+import {goToDemoPage} from '../shared.entities';
+
 const DEEP_PATHS = [
     'components/button',
     'components/group',
@@ -16,17 +18,15 @@ const selectExclusions: Record<string, ReadonlyArray<number>> = {
 };
 
 describe('Deep', () => {
-    before(() => {
+    beforeEach(() => {
         cy.viewport(1500, 3200);
-        cy.visit('/');
-        cy.wait(500);
     });
 
     DEEP_PATHS.forEach(path => {
         let counter = 1;
 
         it(path, () => {
-            cy.visit(`/${path}/API`, {failOnStatusCode: false});
+            goToDemoPage(`/${path}/API`);
             cy.wait(600);
 
             cy.get('[tuidocheader]').invoke(
