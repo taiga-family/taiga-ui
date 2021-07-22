@@ -24,7 +24,7 @@ import {
 import {AbstractTuiDropdown, TUI_DROPDOWN_DIRECTIVE, TuiDropdown} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, merge} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {filter, takeUntil} from 'rxjs/operators';
 import {TuiDropdownContextHostComponent} from './dropdown-context-host.component';
 
 // @dynamic
@@ -70,7 +70,10 @@ export class TuiDropdownContextDirective<C extends object>
         super(componentFactoryResolver, injector, portalService, elementRef, activeZone);
 
         merge(refresh$, fromEvent(this.windowRef, 'resize'))
-            .pipe(takeUntil(destroy$))
+            .pipe(
+                filter(() => !!this.dropdownContent),
+                takeUntil(destroy$),
+            )
             .subscribe(() => this.closeDropdown());
     }
 
