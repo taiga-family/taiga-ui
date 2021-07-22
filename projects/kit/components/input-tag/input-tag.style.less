@@ -1,5 +1,7 @@
 @import 'taiga-ui-local';
 
+@tag-vertical-space: 0.125rem;
+
 .textfield();
 
 :host {
@@ -43,6 +45,11 @@
         pointer-events: none;
     }
 
+    :host[data-tui-host-size='s'] & {
+        min-height: var(--tui-height-s);
+        padding: 0.25rem 0.25rem 0.25rem 0;
+    }
+
     :host[data-tui-host-size='m'] & {
         min-height: var(--tui-height-m);
         padding: 0.5rem 0.25rem 0.5rem 0;
@@ -66,8 +73,13 @@
     padding: 0;
     align-items: flex-start;
 
+    :host[data-tui-host-size='s'] &,
     :host[data-tui-host-size='m'] & {
         padding-left: 0.75rem;
+    }
+
+    :host[data-tui-host-size='s'] & {
+        padding-right: 0;
     }
 }
 
@@ -86,6 +98,10 @@
         :host._expandable & {
             margin-left: -0.625rem;
         }
+    }
+
+    :host[data-tui-host-size='s'] & {
+        height: var(--tui-height-s);
     }
 
     :host[data-tui-host-size='m'] & {
@@ -118,7 +134,7 @@
 }
 
 .tag {
-    margin: 0.125rem 0.5rem 0.125rem -0.25rem;
+    margin: @tag-vertical-space 0.5rem @tag-vertical-space -0.25rem;
     max-width: 100%;
     flex-shrink: 0;
 }
@@ -149,15 +165,22 @@
     position: relative;
     flex: 1;
     max-width: 100%;
-    min-height: 1.75rem;
 
     &_collapsed {
         flex: 0;
         margin-left: -2 * @space;
     }
 
+    :host[data-tui-host-size='s'] & {
+        min-height: 1.25rem + 2 * @tag-vertical-space;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        min-height: calc(var(--tui-height-xs) + 2 * @tag-vertical-space);
+    }
+
     :host[data-tui-host-size='l'] & {
-        min-height: 2.25rem;
+        min-height: calc(var(--tui-height-s) + 2 * @tag-vertical-space);
     }
 
     :host:not(._label-outside) & {
