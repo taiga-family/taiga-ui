@@ -212,7 +212,7 @@ export class TuiInputTagComponent
     get labelOutside(): boolean {
         const {size, labelOutside} = this.controller;
 
-        return size !== 's' ? labelOutside : true;
+        return size === 's' || labelOutside;
     }
 
     get hasCleaner(): boolean {
