@@ -1,5 +1,5 @@
 import {DEMO_PATHS} from '../demo-paths';
-import {EXAMPLE_ID, goToDemoPage} from '../shared.entities';
+import {EXAMPLE_ID} from '../shared.entities';
 import {excluded} from './exclusions';
 
 describe('Demo', () => {
@@ -9,7 +9,7 @@ describe('Demo', () => {
 
     DEMO_PATHS.forEach(path => {
         it(`${path}`, () => {
-            goToDemoPage(path);
+            cy.goToDemoPage(path);
             cy.wait(700);
 
             cy.get('[tuidocheader]').invoke(

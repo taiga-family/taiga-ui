@@ -1,5 +1,3 @@
-import {goToDemoPage} from '../shared.entities';
-
 const DEEP_PATHS = [
     'components/button',
     'components/group',
@@ -26,7 +24,7 @@ describe('Deep', () => {
         let counter = 1;
 
         it(path, () => {
-            goToDemoPage(`/${path}/API`);
+            cy.goToDemoPage(`/${path}/API`);
             cy.wait(600);
 
             cy.get('[tuidocheader]').invoke(

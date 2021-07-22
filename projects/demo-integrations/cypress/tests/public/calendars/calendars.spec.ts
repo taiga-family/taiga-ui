@@ -1,11 +1,9 @@
-import {goToDemoPage} from '../../shared.entities';
-
 describe('Calendars', () => {
     beforeEach(() => {
         cy.viewport(720, 700);
     });
     it('Calendar', () => {
-        goToDemoPage(
+        cy.goToDemoPage(
             'components/calendar/API?tuiMode=null&value$=2&maxViewedMonth$=1&max$=0',
         );
 
@@ -15,7 +13,7 @@ describe('Calendars', () => {
     });
 
     it('Month', () => {
-        goToDemoPage('components/calendar-month/API?tuiMode=null&year$=1&value$=2');
+        cy.goToDemoPage('components/calendar-month/API?tuiMode=null&year$=1&value$=2');
 
         cy.get('[tuidocheader]').invoke('attr', 'style', 'position: absolute !important');
 
