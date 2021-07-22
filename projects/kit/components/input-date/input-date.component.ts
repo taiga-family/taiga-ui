@@ -17,7 +17,7 @@ import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     nullableSame,
-    TUI_DATE_FILLER,
+    TUI_DATE_FORMAT,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
@@ -28,7 +28,6 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiMonth,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     sizeBigger,
@@ -104,6 +103,7 @@ export class TuiInputDateComponent
     defaultActiveYearMonth = TuiMonth.currentLocal();
 
     open = false;
+    filler = '';
 
     private month: TuiMonth | null = null;
 
@@ -130,11 +130,14 @@ export class TuiInputDateComponent
         private readonly mobileCalendar: Type<any> | null,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_DATE_FILLER) readonly filler: TuiDateMode,
+        @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
         super(control, changeDetectorRef);
+        this.dateTexts$
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(dateTexts => (this.filler = dateTexts[this.dateFormat]));
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -193,19 +196,14 @@ export class TuiInputDateComponent
         return this.activeItem ? EMPTY_MASK : this.textMaskOptions;
     }
 
+    get computedFiller(): string {
+        return this.activeItem ? '' : this.filler;
+    }
+
     get activeItem(): TuiNamedDay | null {
         const {value} = this;
 
         return (value && this.items.find(item => item.day.daySame(value))) || null;
-    }
-
-    @tuiPure
-    getFiller(
-        dateFiller: TuiDateMode,
-        i18nDateTexts: Record<TuiDateMode, string>,
-        activeItem: TuiNamedDay | null,
-    ): string {
-        return activeItem ? '' : i18nDateTexts[dateFiller];
     }
 
     onMobileClick() {
