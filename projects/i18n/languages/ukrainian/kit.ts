@@ -14,7 +14,9 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: LanguageKit = {
         'HH:MM:SS.MSS': 'ГГ:ХХ:СС.МСС',
     },
     dateTexts: {
-        'dd.mm.yyyy': 'dd.mm.yyyy',
+        DMY: 'dd.mm.yyyy',
+        MDY: 'mm.dd.yyyy',
+        YMD: 'yyyy.mm.dd',
     },
     digitalInformationUnits: ['Б', 'КБ', 'МБ'],
     passwordTexts: ['Показати пароль', 'Приховати пароль'],

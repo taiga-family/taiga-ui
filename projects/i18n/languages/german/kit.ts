@@ -14,7 +14,9 @@ export const TUI_GERMAN_LANGUAGE_KIT: LanguageKit = {
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
     },
     dateTexts: {
-        'dd.mm.yyyy': 'dd.mm.yyyy',
+        DMY: 'dd.mm.yyyy',
+        MDY: 'mm.dd.yyyy',
+        YMD: 'yyyy.mm.dd',
     },
     digitalInformationUnits: ['B', 'KB', 'MB'],
     passwordTexts: ['Passwort anzeigen', 'Passwort ausblenden'],

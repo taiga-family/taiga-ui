@@ -14,7 +14,9 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: LanguageKit = {
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
     },
     dateTexts: {
-        'dd.mm.yyyy': 'dd.mm.yyyy',
+        DMY: 'dd.mm.yyyy',
+        MDY: 'mm.dd.yyyy',
+        YMD: 'yyyy.mm.dd',
     },
     digitalInformationUnits: ['B', 'KB', 'MB'],
     passwordTexts: ['Hiện mật khẩu', 'Ẩn mật khẩu'],
