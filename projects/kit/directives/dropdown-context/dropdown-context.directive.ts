@@ -74,11 +74,10 @@ export class TuiDropdownContextDirective<C extends object>
             .subscribe(() => this.closeDropdown());
     }
 
-    @HostListener('contextmenu', ['$event'])
+    @HostListener('contextmenu.prevent', ['$event'])
     onContextMenu(event: MouseEvent) {
         const {clientX: x, clientY: y} = event;
 
-        event.preventDefault();
         this.closeDropdown();
         this.hostRef = this.openDropdown(x, y);
     }
