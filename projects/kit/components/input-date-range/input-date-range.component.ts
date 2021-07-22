@@ -18,7 +18,7 @@ import {
     nullableSame,
     RANGE_SEPARATOR_CHAR,
     setNativeFocused,
-    TUI_DATE_FILLER,
+    TUI_DATE_FORMAT,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
@@ -121,6 +121,7 @@ export class TuiInputDateRangeComponent
     maxLength: TuiDayLike | null = null;
 
     open = false;
+    filler = '';
 
     readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
 
@@ -149,11 +150,14 @@ export class TuiInputDateRangeComponent
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_TEXTFIELD_EXAMPLE_TEXT)
         private readonly textfieldExampleText: TuiTextfieldExampleTextDirective,
-        @Inject(TUI_DATE_FILLER) readonly filler: TuiDateMode,
+        @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
         super(control, changeDetectorRef);
+        this.dateTexts$
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(dateTexts => (this.filler = dateTexts[this.dateFormat]));
     }
 
     get rangeFiller(): string {
@@ -184,6 +188,10 @@ export class TuiInputDateRangeComponent
 
     get computedExampleText(): string {
         return this.items.length ? this.textfieldExampleText.exampleText : '';
+    }
+
+    get computedRangeFiller(): string {
+        return this.activePeriod ? '' : this.rangeFiller;
     }
 
     get computedMask(): TuiTextMaskOptions {
@@ -236,12 +244,6 @@ export class TuiInputDateRangeComponent
         }
 
         this.nativeFocusableElement.value = value;
-    }
-
-    getI18nFiller(i18nDateTexts: Record<TuiDateMode, string>): string {
-        return this.activePeriod
-            ? ''
-            : this.getDateRangeFiller(i18nDateTexts[this.filler]);
     }
 
     onMobileClick() {
