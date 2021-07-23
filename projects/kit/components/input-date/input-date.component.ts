@@ -158,6 +158,10 @@ export class TuiInputDateComponent
             : 'tuiIconCalendar';
     }
 
+    get computedFiller(): string {
+        return this.activeItem ? '' : this.filler;
+    }
+
     get computedValue(): string {
         const {value, nativeValue, activeItem} = this;
 
@@ -194,10 +198,6 @@ export class TuiInputDateComponent
 
     get computedMask(): TuiTextMaskOptions {
         return this.activeItem ? EMPTY_MASK : this.textMaskOptions;
-    }
-
-    get computedFiller(): string {
-        return this.activeItem ? '' : this.filler;
     }
 
     get activeItem(): TuiNamedDay | null {
