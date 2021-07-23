@@ -15,7 +15,7 @@ import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
     nullableSame,
-    TUI_DATE_FILLER,
+    TUI_DATE_FORMAT,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
@@ -50,7 +50,7 @@ import {
 } from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {combineLatest, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
 export const TIME_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
@@ -98,6 +98,8 @@ export class TuiInputDateTimeComponent
     timeMode: TuiTimeMode = 'HH:MM';
 
     open = false;
+    dateFiller = '';
+    dateTimeFiller = '';
 
     private month: TuiMonth | null = null;
 
@@ -112,13 +114,22 @@ export class TuiInputDateTimeComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_DATE_FILLER) readonly dateFiller: TuiDateMode,
+        @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
         @Inject(TUI_TIME_TEXTS)
         readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
         super(control, changeDetectorRef);
+        combineLatest([this.dateTexts$, this.timeTexts$])
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(([dateTexts, timeTexts]) => {
+                this.dateFiller = dateTexts[this.dateFormat];
+                this.dateTimeFiller = this.getDateTimeString(
+                    this.dateFiller,
+                    timeTexts[this.timeMode],
+                );
+            });
     }
 
     get fillerLength(): number {
@@ -183,16 +194,6 @@ export class TuiInputDateTimeComponent
 
     get canOpen(): boolean {
         return !this.computedDisabled && !this.readOnly;
-    }
-
-    @tuiPure
-    getFiller$(dateFiller: TuiDateMode, timeMode: TuiTimeMode): Observable<string> {
-        return combineLatest([this.dateTexts$, this.timeTexts$]).pipe(
-            map(
-                ([dateTexts, timeTexts]) =>
-                    `${dateTexts[dateFiller]}${DATE_TIME_SEPARATOR}${timeTexts[timeMode]}`,
-            ),
-        );
     }
 
     @HostListener('click')
@@ -325,12 +326,13 @@ export class TuiInputDateTimeComponent
 
     @tuiPure
     private getDateTimeString(
-        date: TuiDay,
+        date: TuiDay | string,
         time: TuiTime | string | null,
         timeMode: TuiTimeMode = 'HH:MM',
     ): string {
+        const dateString = date instanceof TuiDay ? date.toString() : date;
         const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
 
-        return `${date.toString()}${DATE_TIME_SEPARATOR}${timeString}`;
+        return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
     }
 }
