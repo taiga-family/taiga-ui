@@ -27,7 +27,6 @@
                 <tui-input-phone-international
                     [formControl]="control"
                     [focusable]="focusable"
-                    [countryIsoCode]="countryIsoCode"
                     [countries]="countries"
                     [readOnly]="readOnly"
                     [tuiTextfieldCleaner]="cleaner"
@@ -40,6 +39,7 @@
                     [pseudoHovered]="pseudoHovered"
                     [pseudoFocused]="pseudoFocused"
                     [pseudoInvalid]="pseudoInvalid"
+                    [(countryIsoCode)]="countryIsoCode"
                 >
                     Type a phone number
                 </tui-input-phone-international>
@@ -67,7 +67,7 @@
             <ng-template
                 i18n
                 documentationPropertyName="countryIsoCode"
-                documentationPropertyMode="input"
+                documentationPropertyMode="input-output"
                 documentationPropertyType="TuiCountryIsoCode"
                 [documentationPropertyValues]="countryIsoCodeVariants"
                 [(documentationPropertyValue)]="countryIsoCode"
