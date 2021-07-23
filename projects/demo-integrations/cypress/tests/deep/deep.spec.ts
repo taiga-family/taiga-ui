@@ -25,7 +25,6 @@ describe('Deep', () => {
 
         it(path, () => {
             cy.goToDemoPage(`/${path}/API`);
-            cy.wait(600);
 
             cy.get('[tuidocheader]').invoke(
                 'attr',
@@ -41,7 +40,6 @@ describe('Deep', () => {
                 return cy
                     .wrap(sample)
                     .click()
-                    .wait(300)
                     .get(`[tuioption]`)
                     .each((_, index) => {
                         if (index === 0) {
@@ -53,7 +51,6 @@ describe('Deep', () => {
                         return cy
                             .wrap(sample)
                             .click()
-                            .wait(300)
                             .get(`[tuioption]`)
                             .eq(index)
                             .click()
@@ -64,7 +61,6 @@ describe('Deep', () => {
                     })
                     .wrap(sample)
                     .click()
-                    .wait(300)
                     .get(`[tuioption]`)
                     .first()
                     .click();
