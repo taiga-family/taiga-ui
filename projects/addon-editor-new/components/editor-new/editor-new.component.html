@@ -7,7 +7,21 @@
     [hovered]="computedHovered"
     [invalid]="computedInvalid"
 >
-    <tui-toolbar [teditor]="editor" [tools]="tools"></tui-toolbar>
-
-    <div #editorRef class="editor"></div>
 </tui-wrapper>
+<div class="wrapper" (tuiHoveredChange)="onHovered($event)">
+    <div class="toolbar-wrapper">
+        <tui-toolbar [editor]="editor" [tools]="tools"></tui-toolbar>
+        <div
+            class="placeholder"
+            [class.placeholder_raised]="placeholderRaised"
+            [id]="id"
+        >
+            <ng-content></ng-content>
+        </div>
+        <div *ngIf="hasExampleText" class="example-text">{{exampleText}}</div>
+    </div>
+
+    <tui-scrollbar class="scrollbar">
+        <div #editorRef class="editor"></div>
+    </tui-scrollbar>
+</div>

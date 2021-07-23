@@ -59,5 +59,6 @@ export const TUI_EDITOR_TOOLBAR_TEXTS = new InjectionToken<
         insertHorizontalRule: 'Insert horizontal rule',
         superscript: 'Superscript',
         subscript: 'Subscript',
+        insertTable: 'Insert table',
     }),
 });

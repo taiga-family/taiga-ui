@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiEditorNewModule} from '@taiga-ui/addon-editor-new';
 import {TuiButtonModule, TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiEditorSocketModule} from '../../../../../addon-editor';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {ExampleTuiEditorNewComponent} from './editor-new.component';
 import {TuiEditorNewExample1} from './examples/1';
@@ -15,6 +16,7 @@ import {TuiEditorNewExample1} from './examples/1';
         FormsModule,
         ReactiveFormsModule,
         TuiEditorNewModule,
+        TuiEditorSocketModule,
         TuiNotificationModule,
         TuiButtonModule,
         InheritedDocumentationModule,

@@ -1,5 +1,3 @@
-import {DOCUMENT} from '@angular/common';
-
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -9,52 +7,49 @@ import {
     HostBinding,
     Inject,
     Input,
-    NgZone,
     Optional,
     Output,
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import {USER_AGENT} from '@ng-web-apis/common';
-import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
-import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
+import {
+    defaultEditorColors,
+    defaultEditorTools,
+} from '@taiga-ui/addon-editor-new/constants';
+import {TuiEditorTool} from '@taiga-ui/addon-editor-new/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
-import {isSelectionIn} from '@taiga-ui/addon-editor/utils';
 import {
     EMPTY_QUERY,
-    isFirefox,
     isNativeFocusedIn,
-    isNumber,
     setNativeFocused,
     tuiDefaultProp,
     TuiDestroyService,
     TuiHandler,
     TuiNativeFocusableElement,
-    typedFromEvent,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DOCUMENT_OR_SHADOW_ROOT,
-    TuiButtonComponent,
-    TuiHostedDropdownComponent,
-} from '@taiga-ui/core';
+import {TuiButtonComponent, TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {Editor} from '@tiptap/core';
-import {merge, Observable} from 'rxjs';
-import {take, takeUntil} from 'rxjs/operators';
-
-// const DEFAULT_FONT = 'haas, helvetica, arial, sans-serif';
-const MONOSPACE_FONT = 'Courier';
-const IE_TRANSPARENT = 16777215;
-
 import {redoDepth, undoDepth} from 'prosemirror-history';
+import {Observable} from 'rxjs';
+import {take, takeUntil} from 'rxjs/operators';
 
 export function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     return (
         tools.indexOf(TuiEditorTool.Tex) === -1 &&
         tools.indexOf(TuiEditorTool.Attach) === -1
     );
+}
+
+enum TableComands {
+    InsertColumnBefore,
+    InsertColumnAfter,
+    InsertRowBefore,
+    InsertRowAfter,
+    DeleteRow,
+    DeleteColumn,
 }
 
 // @dynamic
@@ -79,11 +74,8 @@ export class TuiToolbarComponent {
     colors: ReadonlyMap<string, string> = defaultEditorColors;
 
     @Input()
-    teditor: Editor | null = null;
-
-    @Input()
     @tuiDefaultProp()
-    editor: HTMLElement | null = null;
+    editor: Editor | null = null;
 
     @Input()
     @HostBinding('class._disabled')
@@ -135,48 +127,46 @@ export class TuiToolbarComponent {
     // TODO: i18n
     readonly codesOptions: readonly string[] = ['Code in the text', 'Code in block'];
 
+    readonly tableCommands = [
+        [
+            {name: 'Add row before', command: TableComands.InsertRowBefore},
+            {name: 'Add row after', command: TableComands.InsertRowAfter},
+        ],
+        [
+            {name: 'Add column before', command: TableComands.InsertColumnBefore},
+            {name: 'Add column after', command: TableComands.InsertColumnAfter},
+        ],
+        [
+            {name: 'Delete row', command: TableComands.DeleteRow},
+            {name: 'Delete column', command: TableComands.DeleteColumn},
+        ],
+    ];
+
+    tableCoordinate = {
+        x: 0,
+        y: 0,
+    };
+
     @ViewChildren('button')
     private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;
 
     @ViewChildren('dropdown', {read: ElementRef})
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly documentRef: Document;
-
-    private range: Range | null = null;
-
     constructor(
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
-        @Inject(NgZone) ngZone: NgZone,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(DOCUMENT) documentRef: Document,
         @Optional()
-        @Inject(TUI_DOCUMENT_OR_SHADOW_ROOT)
-        shadowRootRef: Document | null,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef)
+        private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_IMAGE_LOADER)
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
-        @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts: Record<string, string>,
     ) {
-        this.documentRef = shadowRootRef || documentRef;
-
-        merge(
-            typedFromEvent(this.documentRef, 'selectionchange'),
-            typedFromEvent(this.documentRef, 'input'),
-        )
-            .pipe(takeUntil(destroy$))
-            .subscribe(() => {
-                this.refreshRange();
-                ngZone.run(() => {
-                    changeDetectorRef.markForCheck();
-                });
-            });
-
-        this.teditor?.on('transaction', () => {
-            Promise.resolve().then(() => changeDetectorRef.markForCheck());
+        this.editor?.on('transaction', () => {
+            changeDetectorRef.detectChanges();
         });
     }
 
@@ -209,37 +199,35 @@ export class TuiToolbarComponent {
     }
 
     get bold(): boolean {
-        return !!this.teditor?.isActive('bold');
+        return !!this.editor?.isActive('bold');
     }
 
     get italic(): boolean {
-        return !!this.teditor?.isActive('italic');
+        return !!this.editor?.isActive('italic');
     }
 
     get underline(): boolean {
-        return !!this.teditor?.isActive('underline');
+        return !!this.editor?.isActive('underline');
     }
 
     get strikeThrough(): boolean {
-        return this.documentRef.queryCommandState('strikeThrough');
+        return !!this.editor?.isActive('strike');
     }
 
     get unorderedList(): boolean {
-        return this.documentRef.queryCommandState('insertUnorderedList');
+        return !!this.editor?.isActive('bulletList');
     }
 
     get orderedList(): boolean {
-        return this.documentRef.queryCommandState('insertOrderedList');
+        return !!this.editor?.isActive('orderedList');
     }
 
     get blockquote(): boolean {
-        return !!this.teditor?.isActive('blockquote');
+        return !!this.editor?.isActive('blockquote');
     }
 
     get a(): boolean {
-        const selection = this.documentRef.getSelection();
-
-        return !!selection && isSelectionIn(selection, 'a');
+        return !!this.editor?.isActive('link');
     }
 
     get foreColorBlank(): boolean {
@@ -247,82 +235,41 @@ export class TuiToolbarComponent {
     }
 
     get hiliteColorBlank(): boolean {
-        const {hiliteColor} = this;
-
-        return (
-            !hiliteColor ||
-            String(hiliteColor) === String(IE_TRANSPARENT) ||
-            hiliteColor === 'transparent' ||
-            hiliteColor === 'rgba(0, 0, 0, 0)' ||
-            (hiliteColor === 'rgb(0, 0, 0)' && !this.focused)
-        );
+        return this.hiliteColor === 'rgb(51, 51, 51)';
     }
 
     get undoDisabled(): boolean {
-        return !this.teditor || undoDepth(this.teditor.state) === 0;
+        return !this.editor || undoDepth(this.editor.state) === 0;
     }
 
     get redoDisabled(): boolean {
-        return !this.teditor || redoDepth(this.teditor.state) === 0;
+        return !this.editor || redoDepth(this.editor.state) === 0;
     }
 
     get code(): boolean {
-        // fontName can return null in IE for some reason
-        return (
-            !this.pre &&
-            (this.documentRef.queryCommandValue('fontName') || '').replace(/"/g, '') ===
-                MONOSPACE_FONT
-        );
+        return !!this.editor?.isActive('code');
     }
 
     get pre(): boolean {
-        const selection = this.documentRef.getSelection();
-
-        return !!selection && isSelectionIn(selection, 'pre');
+        return !!this.editor?.isActive('codeBlock');
     }
 
     get subscript(): boolean {
-        return !!this.teditor?.isActive('subscript');
+        return !!this.editor?.isActive('subscript');
     }
 
     get superscript(): boolean {
-        return !!this.teditor?.isActive('superscript');
+        return !!this.editor?.isActive('superscript');
     }
 
     get foreColor(): string {
-        const color: string | number =
-            this.documentRef.queryCommandValue('foreColor') || 'rgb(51, 51, 51)';
-
-        // Number in IE
-        return isNumber(color) ? this.numberToColor(color) : color;
+        return this.editor?.getAttributes('textStyle').fontColor || 'rgb(51, 51, 51)';
     }
 
     get hiliteColor(): string {
-        if (!isFirefox(this.userAgent)) {
-            // Doesn't work in Firefox for more than a decade: https://bugzilla.mozilla.org/show_bug.cgi?id=547848
-            const color = this.documentRef.queryCommandValue('backColor');
-
-            // Number in IE
-            return isNumber(color) && color !== IE_TRANSPARENT
-                ? this.numberToColor(color)
-                : color;
-        }
-
-        const selection = this.documentRef.getSelection();
-        let element =
-            selection && selection.focusNode instanceof HTMLElement
-                ? selection.focusNode
-                : null;
-
-        while (element) {
-            if (element.style && element.style.backgroundColor) {
-                return element.style.backgroundColor;
-            }
-
-            element = element.parentElement;
-        }
-
-        return '';
+        return (
+            this.editor?.getAttributes('textStyle').backgroundColor || 'rgb(51, 51, 51)'
+        );
     }
 
     get formatEnabled(): boolean {
@@ -355,19 +302,31 @@ export class TuiToolbarComponent {
     }
 
     get alignLeft(): boolean {
-        return !!this.teditor?.isActive({textAlign: 'left'});
+        return !!this.editor?.isActive({textAlign: 'left'});
     }
 
     get alignRight(): boolean {
-        return !!this.teditor?.isActive({textAlign: 'right'});
+        return !!this.editor?.isActive({textAlign: 'right'});
     }
 
     get alignCenter(): boolean {
-        return !!this.teditor?.isActive({textAlign: 'center'});
+        return !!this.editor?.isActive({textAlign: 'center'});
     }
 
     get justify(): boolean {
-        return !!this.teditor?.isActive({textAlign: 'justify'});
+        return !!this.editor?.isActive({textAlign: 'justify'});
+    }
+
+    get columnsNumber(): number {
+        return Math.max(3, this.tableCoordinate.y + 2);
+    }
+
+    get rowsNumber(): number {
+        return Math.max(3, this.tableCoordinate.x + 2);
+    }
+
+    tableSelectHovered(x: number, y: number): boolean {
+        return x <= this.tableCoordinate.x && y <= this.tableCoordinate.y;
     }
 
     onBottomFocus() {
@@ -416,7 +375,7 @@ export class TuiToolbarComponent {
     }
 
     onFont(size: string) {
-        this.teditor
+        this.editor
             ?.chain()
             .focus()
             .setHeading({level: +size as any})
@@ -424,7 +383,7 @@ export class TuiToolbarComponent {
     }
 
     onAlign(align: string) {
-        this.teditor?.chain().focus().setTextAlign(align).run();
+        this.editor?.chain().focus().setTextAlign(align).run();
     }
 
     onImage(input: HTMLInputElement) {
@@ -450,14 +409,14 @@ export class TuiToolbarComponent {
     }
 
     onLinkClick() {
-        this.focusEditor();
+        this.editor?.chain().focus();
     }
 
     onLink(hosted: TuiHostedDropdownComponent, url?: string) {
         hosted.open = false;
 
         if (url) {
-            this.linkAdded.emit(url);
+            this.editor?.chain().focus().toggleLink({href: url}).run();
         }
     }
 
@@ -469,97 +428,126 @@ export class TuiToolbarComponent {
         }
     }
 
+    onTableOption(command: TableComands) {
+        ({
+            [TableComands.InsertColumnAfter]: () =>
+                this.editor?.chain().focus().addColumnAfter().run(),
+            [TableComands.InsertColumnBefore]: () =>
+                this.editor?.chain().focus().addColumnBefore().run(),
+            [TableComands.InsertRowAfter]: () =>
+                this.editor?.chain().focus().addRowAfter().run(),
+            [TableComands.InsertRowBefore]: () =>
+                this.editor?.chain().focus().addRowBefore().run(),
+            [TableComands.DeleteColumn]: () =>
+                this.editor?.chain().focus().deleteColumn().run(),
+            [TableComands.DeleteRow]: () =>
+                this.editor?.chain().focus().deleteRow().run(),
+        }[command]());
+    }
+
+    mergeCells() {
+        this.editor?.chain().focus().mergeCells().run();
+    }
+
+    splitCell() {
+        this.editor?.chain().focus().splitCell().run();
+    }
+
     enabled(tool: TuiEditorTool): boolean {
         return this.tools.indexOf(tool) !== -1;
     }
 
     undo() {
-        this.teditor?.chain().undo().run();
+        this.editor?.chain().undo().run();
     }
 
     redo() {
-        this.teditor?.chain().redo().run();
+        this.editor?.chain().redo().run();
     }
 
     indent() {
-        this.focusEditor();
-        this.documentRef.execCommand('indent');
+        // TODO
     }
 
     outdent() {
-        this.focusEditor();
-        this.documentRef.execCommand('outdent');
+        // TODO
     }
 
     insertHorizontalRule() {
-        this.teditor?.chain().focus().setHorizontalRule().run();
+        this.editor?.chain().focus().setHorizontalRule().run();
     }
 
     removeFormat() {
-        this.teditor?.commands.unsetAllMarks();
-        this.teditor?.commands.clearNodes();
+        this.editor?.commands.unsetAllMarks();
+        this.editor?.commands.clearNodes();
     }
 
     setForeColor(color: string) {
-        this.teditor?.chain().focus().setFontColor(color).run();
+        this.editor?.chain().focus().setFontColor(color).run();
     }
 
     setHiliteColor(color: string) {
-        this.teditor?.chain().focus().setBackgroundColor(color).run();
+        this.editor?.chain().focus().setBackgroundColor(color).run();
     }
 
     toggleBold() {
-        this.teditor?.chain().focus().toggleBold().run();
+        this.editor?.chain().focus().toggleBold().run();
     }
 
     toggleItalic() {
-        this.teditor?.chain().focus().toggleItalic().run();
+        this.editor?.chain().focus().toggleItalic().run();
     }
 
     toggleUnderline() {
-        this.teditor?.chain().focus().toggleUnderline().run();
+        this.editor?.chain().focus().toggleUnderline().run();
     }
 
     toggleStrikeThrough() {
-        this.teditor?.chain().focus().toggleStrike().run();
+        this.editor?.chain().focus().toggleStrike().run();
     }
 
     toggleOrderedList() {
-        this.teditor?.chain().focus().toggleOrderedList().run();
+        this.editor?.chain().focus().toggleOrderedList().run();
     }
 
     toggleUnorderedList() {
-        this.teditor?.chain().focus().toggleBulletList().run();
+        this.editor?.chain().focus().toggleBulletList().run();
     }
 
     toggleQuote() {
-        this.teditor?.chain().focus().toggleBlockquote().run();
+        this.editor?.chain().focus().toggleBlockquote().run();
     }
 
-    addTable() {
-        this.teditor?.chain().insertTable({rows: 3, cols: 3, withHeaderRow: true}).run();
+    addTable(rows: number, cols: number) {
+        this.editor
+            ?.chain()
+            .focus()
+            .insertTable({rows, cols, withHeaderRow: false})
+            .run();
     }
 
     toggleSubscript() {
-        this.teditor?.chain().focus().toggleSubscript().run();
+        this.editor?.chain().focus().toggleSubscript().run();
     }
 
     toggleSuperscript() {
-        this.teditor?.chain().focus().toggleSuperscript().run();
+        this.editor?.chain().focus().toggleSuperscript().run();
+    }
+
+    updateCurrent(x: number, y: number) {
+        this.tableCoordinate = {x, y};
     }
 
     private toggleCode() {
-        this.teditor?.chain().toggleCode().run();
+        this.editor?.chain().toggleCode().run();
     }
 
-    // @bad TODO: Fix multiple issues with toggling
     private togglePre() {
-        this.teditor?.chain().toggleCodeBlock().run();
+        this.editor?.chain().toggleCodeBlock().run();
     }
 
     private addImage(image: string) {
-        this.focusEditor();
-        this.documentRef.execCommand('insertImage', false, image);
+        this.editor?.chain().focus().setImage({src: image}).run();
     }
 
     private focusFirst() {
@@ -577,57 +565,4 @@ export class TuiToolbarComponent {
             setNativeFocused(lastButton);
         }
     }
-
-    private refreshRange() {
-        const selection = this.documentRef.defaultView
-            ? this.documentRef.defaultView.getSelection()
-            : null;
-
-        if (
-            selection &&
-            this.editor &&
-            this.editor.contains(selection.anchorNode) &&
-            this.editor.contains(selection.focusNode)
-        ) {
-            this.range = selection.getRangeAt(0);
-        }
-    }
-
-    private restoreRange() {
-        const selection = this.documentRef.defaultView
-            ? this.documentRef.defaultView.getSelection()
-            : null;
-
-        if (
-            !selection ||
-            !this.range ||
-            !this.editor ||
-            this.editor.contains(selection.anchorNode) ||
-            this.editor.contains(selection.focusNode)
-        ) {
-            return;
-        }
-
-        selection.removeAllRanges();
-        selection.addRange(this.range);
-    }
-
-    private focusEditor() {
-        this.restoreRange();
-
-        if (this.editor) {
-            setNativeFocused(this.editor, true, true);
-        } else {
-            setNativeFocused(this.documentRef.body, true, true);
-        }
-    }
-
-    // https://stackoverflow.com/a/11467243/2706426
-    /* tslint:disable: no-bitwise */
-    private numberToColor(color: number): string {
-        return `rgb(${color & 0xff}, ${(color & 0xff00) >> 8}, ${
-            (color & 0xff0000) >> 16
-        })`;
-    }
-    /* tslint:enable: no-bitwise */
 }

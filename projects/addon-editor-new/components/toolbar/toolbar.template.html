@@ -630,10 +630,97 @@
         (click)="removeFormat()"
     ></button>
 </div>
-<div *ngIf="true" class="block">
+<div *ngIf="enabled(TuiEditorTool.Tab)" class="block">
+    <tui-hosted-dropdown
+        #table
+        tuiDropdownAlign="left"
+        tuiDropdownDirection="bottom"
+        [content]="tableDropdown"
+    >
+        <button
+            #button
+            #tableBtn
+            tuiIconButton
+            type="button"
+            size="s"
+            icon="tuiIconStructureLarge"
+            class="button button_margin"
+            appearance="icon"
+            tuiHintDirection="top-left"
+            [tuiHint]="texts.insertTable"
+            [tuiHintId]="tableBtn.id"
+            [tuiDescribedBy]="tableBtn.id"
+            [focusable]="table.open"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
+        ></button>
+    </tui-hosted-dropdown>
+
+    <ng-template #tableDropdown>
+        <div class="dropdown-table">
+            <div *tuiRepeatTimes="let x of rowsNumber">
+                <div
+                    *tuiRepeatTimes="let y of columnsNumber"
+                    tuiIconButton
+                    tuiOption
+                    icon="tuiIconStop"
+                    class="dropdown-table__cell"
+                    size="xs"
+                    appearance="flat"
+                    [class._pseudoHovered]="tableSelectHovered(x, y)"
+                    (mouseenter)="updateCurrent(x, y)"
+                    (click)="addTable(x+1, y+1)"
+                ></div>
+            </div>
+            <div class="dropdown-table__description">
+                {{tableCoordinate.x+1}}x{{tableCoordinate.y+1}}
+            </div>
+        </div>
+    </ng-template>
+
+    <tui-hosted-dropdown
+        #tableCommand
+        tuiDropdownAlign="left"
+        tuiDropdownDirection="bottom"
+        [content]="tableOptionsDropdown"
+    >
+        <button
+            #button
+            #tableCommandsBtn
+            tuiIconButton
+            type="button"
+            size="s"
+            icon="tuiIconStructureLarge"
+            class="button button_margin"
+            appearance="icon"
+            tuiHintDirection="top-left"
+            [tuiHint]="texts.insertTable"
+            [tuiHintId]="tableCommandsBtn.id"
+            [tuiDescribedBy]="tableCommandsBtn.id"
+            [focusable]="tableCommand.open"
+            [disabled]="!editor?.isActive('table')"
+            (keydown.arrowLeft.prevent)="onArrowLeft()"
+            (keydown.arrowRight.prevent)="onArrowRight()"
+        ></button>
+    </tui-hosted-dropdown>
+
+    <ng-template #tableOptionsDropdown>
+        <tui-data-list #dropdown>
+            <tui-opt-group *ngFor="let group of tableCommands">
+                <button
+                    *ngFor="let item of group"
+                    tuiOption
+                    (click)="onTableOption(item.command)"
+                >
+                    {{item.name}}
+                </button>
+            </tui-opt-group>
+        </tui-data-list>
+    </ng-template>
+
     <button
         #button
-        #tableBtn
+        #tableMergeSplitBtn
         tuiIconButton
         type="button"
         size="s"
@@ -641,12 +728,13 @@
         class="button button_margin"
         appearance="icon"
         tuiHintDirection="top-left"
-        [tuiHint]="texts.clear"
-        [tuiHintId]="tableBtn.id"
-        [tuiDescribedBy]="tableBtn.id"
+        [tuiHint]="texts.insertTable"
+        [tuiHintId]="tableMergeSplitBtn.id"
+        [tuiDescribedBy]="tableMergeSplitBtn.id"
         [focusable]="false"
+        [disabled]="false"
         (keydown.arrowLeft.prevent)="onArrowLeft()"
         (keydown.arrowRight.prevent)="onArrowRight()"
-        (click)="addTable()"
+        (click)="editor.can().mergeCells() ? mergeCells() : splitCell()"
     ></button>
 </div>

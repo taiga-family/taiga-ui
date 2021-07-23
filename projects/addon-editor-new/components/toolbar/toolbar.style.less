@@ -82,3 +82,25 @@
         }
     }
 }
+
+.dropdown-table {
+    padding: 12px;
+
+    &__cell {
+        display: inline-block;
+        background-color: var(--tui-base-01);
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        margin: 2px;
+        border: 1px solid var(--tui-base-04);
+    }
+
+    &__cell._pseudoHovered {
+        background-color: var(--tui-base-02);
+    }
+
+    &__description {
+        text-align: center;
+    }
+}

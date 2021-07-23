@@ -1,1 +1,9 @@
-<tui-editor-new class="editor" [formControl]="control"></tui-editor-new>
+<tui-editor-new
+    class="editor"
+    exampleText="exampleText"
+    [formControl]="control"
+>
+    Placeholder
+</tui-editor-new>
+
+<tui-editor-socket [content]="control.value"></tui-editor-socket>
