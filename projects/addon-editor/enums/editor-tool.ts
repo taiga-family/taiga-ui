@@ -19,4 +19,5 @@ export enum TuiEditorTool {
     HR = 'insertHorizontalRule',
     Sup = 'superscript',
     Sub = 'subscript',
+    Table = 'insertTable',
 }

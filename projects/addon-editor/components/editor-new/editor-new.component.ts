@@ -12,22 +12,9 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {BackgroundColor} from '@taiga-ui/addon-editor-new/components/extensions';
-import {FontColor} from '@taiga-ui/addon-editor-new/components/extensions';
-import {TuiToolbarComponent} from '@taiga-ui/addon-editor-new/components/toolbar';
-import {Editor} from '@tiptap/core';
-import Image from '@tiptap/extension-image';
-import {Link} from '@tiptap/extension-link';
-import Subscript from '@tiptap/extension-subscript';
-import Superscript from '@tiptap/extension-superscript';
-import Table from '@tiptap/extension-table';
-import TableCell from '@tiptap/extension-table-cell';
-import TableHeader from '@tiptap/extension-table-header';
-import TableRow from '@tiptap/extension-table-row';
-import {TextAlign} from '@tiptap/extension-text-align';
-import {TextStyle} from '@tiptap/extension-text-style';
-import {Underline} from '@tiptap/extension-underline';
-import StarterKit from '@tiptap/starter-kit';
+import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
+import {Editor, Extensions} from '@tiptap/core';
+
 import {
     AbstractTuiControl,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -35,6 +22,7 @@ import {
     tuiDefaultProp,
 } from '../../../cdk';
 import {defaultEditorTools} from '../../constants';
+import {TUI_EDITOR_EXTENSIONS} from './editor-new.providers';
 
 const EMPTY_PARAGRAPH = '<p></p>';
 
@@ -58,8 +46,8 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
     @ViewChild('editorRef', {static: true})
     elementRef?: ElementRef<HTMLElement>;
 
-    @ViewChild(TuiToolbarComponent)
-    toolbar?: TuiToolbarComponent;
+    @ViewChild(TuiToolbarNewComponent)
+    toolbar?: TuiToolbarNewComponent;
 
     editor: Editor | null = null;
 
@@ -73,6 +61,7 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TUI_EDITOR_EXTENSIONS) private readonly extensions: Extensions,
     ) {
         super(control, changeDetectorRef);
     }
@@ -80,44 +69,16 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
     ngOnInit() {
         this.editor = new Editor({
             element: this.elementRef?.nativeElement,
-            extensions: [
-                StarterKit.configure({
-                    heading: {
-                        levels: [1, 2],
-                    },
-                }),
-                TextAlign.configure({
-                    types: ['heading', 'paragraph'],
-                }),
-                TextStyle,
-                Underline,
-                Subscript,
-                Superscript,
-                FontColor,
-                Image.configure({inline: true}),
-                Link.configure({
-                    openOnClick: false,
-                }),
-                BackgroundColor,
-                Table.configure({
-                    resizable: true,
-                }),
-                TableRow,
-                TableCell,
-                TableHeader,
-            ],
+            extensions: this.extensions,
         });
 
-        this.editor.on('update', () => {
-            if (this.editor?.getHTML() === EMPTY_PARAGRAPH) {
-                this.updateValue('');
-
-                return;
-            }
-
-            this.updateValue(this.editor?.getHTML() || '');
+        this.editor?.on('update', () => {
+            this.onModelChange(this.editor?.getHTML() || '');
         });
-        this.editor.on('transaction', () => this.changeDetectorRef.markForCheck());
+
+        this.editor?.on('transaction', () => {
+            this.changeDetectorRef.markForCheck();
+        });
     }
 
     protected getFallbackValue(): string {
@@ -144,6 +105,10 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
 
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
+    }
+
+    onModelChange(value: string) {
+        this.updateValue(value.trim() === EMPTY_PARAGRAPH ? '' : value);
     }
 
     private get hasValue(): boolean {

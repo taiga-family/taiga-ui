@@ -15,7 +15,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {TuiToolbarComponent} from './toolbar.component';
+import {TuiToolbarNewComponent} from './toolbar-new.component';
 
 @NgModule({
     imports: [
@@ -32,7 +32,7 @@ import {TuiToolbarComponent} from './toolbar.component';
         TuiRepeatTimesModule,
         TuiDropdownControllerModule,
     ],
-    declarations: [TuiToolbarComponent],
-    exports: [TuiToolbarComponent],
+    declarations: [TuiToolbarNewComponent],
+    exports: [TuiToolbarNewComponent],
 })
-export class TuiToolbarModule {}
+export class TuiToolbarNewModule {}

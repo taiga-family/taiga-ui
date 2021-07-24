@@ -7,16 +7,13 @@ import {
     HostBinding,
     Inject,
     Input,
+    OnInit,
     Optional,
     Output,
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import {
-    defaultEditorColors,
-    defaultEditorTools,
-} from '@taiga-ui/addon-editor-new/constants';
-import {TuiEditorTool} from '@taiga-ui/addon-editor-new/enums';
+import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
@@ -35,8 +32,9 @@ import {Editor} from '@tiptap/core';
 import {redoDepth, undoDepth} from 'prosemirror-history';
 import {Observable} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
+import {TuiEditorTool} from '../../enums';
 
-export function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
+function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     return (
         tools.indexOf(TuiEditorTool.Tex) === -1 &&
         tools.indexOf(TuiEditorTool.Attach) === -1
@@ -55,8 +53,8 @@ enum TableComands {
 // @dynamic
 @Component({
     selector: 'tui-toolbar',
-    templateUrl: './toolbar.template.html',
-    styleUrls: ['./toolbar.style.less'],
+    templateUrl: './toolbar-new.template.html',
+    styleUrls: ['./toolbar-new.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
@@ -64,7 +62,7 @@ enum TableComands {
         class: 'tui-zero-scrollbar',
     },
 })
-export class TuiToolbarComponent {
+export class TuiToolbarNewComponent implements OnInit {
     @Input()
     @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
     tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
@@ -156,7 +154,7 @@ export class TuiToolbarComponent {
     constructor(
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) private changeDetectorRef: ChangeDetectorRef,
         @Optional()
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLElement>,
@@ -164,9 +162,11 @@ export class TuiToolbarComponent {
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts: Record<string, string>,
-    ) {
+    ) {}
+
+    ngOnInit() {
         this.editor?.on('transaction', () => {
-            changeDetectorRef.detectChanges();
+            this.changeDetectorRef.markForCheck();
         });
     }
 

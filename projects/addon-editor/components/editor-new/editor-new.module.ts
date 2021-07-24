@@ -3,14 +3,14 @@ import {NgModule} from '@angular/core';
 import {TuiHoveredModule} from '../../../cdk';
 import {TuiScrollbarModule, TuiWrapperModule} from '../../../core';
 import {TuiDropdownSelectionModule} from '../../../kit';
-import {TuiToolbarModule} from '../toolbar';
+import {TuiToolbarNewModule} from '../toolbar-new';
 import {TuiEditorNewComponent} from './editor-new.component';
 
 @NgModule({
     declarations: [TuiEditorNewComponent],
     imports: [
         CommonModule,
-        TuiToolbarModule,
+        TuiToolbarNewModule,
         TuiWrapperModule,
         TuiHoveredModule,
         TuiScrollbarModule,
