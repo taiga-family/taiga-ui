@@ -1,13 +1,13 @@
 import {Subject} from 'rxjs';
 
-export abstract class EditorAdapter {
+export abstract class TuiEditor {
     readonly stateChange$ = new Subject();
 
-    abstract isActive(name: string): boolean;
+    abstract isActive(name: string | Record<string, string>): boolean;
     abstract undoDisabled(): boolean;
     abstract redoDisabled(): boolean;
-    abstract getFontColor(): boolean;
-    abstract getBackgroundColor(): boolean;
+    abstract getFontColor(): string;
+    abstract getBackgroundColor(): string;
     abstract onAlign(align: string): void;
     abstract setImage(src: string): void;
     abstract undo(): void;
@@ -19,9 +19,26 @@ export abstract class EditorAdapter {
     abstract toggleBold(): void;
     abstract toggleItalic(): void;
     abstract toggleUnderline(): void;
+    abstract toggleBlockquote(): void;
     abstract toggleStrike(): void;
     abstract toggleOrderedList(): void;
     abstract toggleUnorderedList(): void;
     abstract toggleCode(): void;
     abstract togglePre(): void;
+    abstract toggleSubscript(): void;
+    abstract toggleSuperscript(): void;
+    abstract toggleCodeBlock(): void;
+    abstract insertTable(rows: number, cols: number): void;
+    abstract addColumnAfter(): void;
+    abstract addColumnBefore(): void;
+    abstract addRowAfter(): void;
+    abstract addRowBefore(): void;
+    abstract deleteColumn(): void;
+    abstract deleteRow(): void;
+    abstract mergeCells(): void;
+    abstract canMergeCells(): void;
+    abstract splitCell(): void;
+    abstract setHeading(level: number): void;
+    abstract setParagraph(): void;
+    abstract toggleLink(href: string): void;
 }

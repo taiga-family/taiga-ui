@@ -10,7 +10,7 @@
 </tui-wrapper>
 <div class="wrapper" (tuiHoveredChange)="onHovered($event)">
     <div class="toolbar-wrapper">
-        <tui-toolbar [editor]="editor" [tools]="tools"></tui-toolbar>
+        <tui-toolbar [editor]="editorAdapter" [tools]="tools"></tui-toolbar>
         <div
             class="placeholder"
             [class.placeholder_raised]="placeholderRaised"

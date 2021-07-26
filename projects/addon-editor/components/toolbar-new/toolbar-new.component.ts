@@ -1,13 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
     EventEmitter,
     HostBinding,
     Inject,
     Input,
-    OnInit,
     Optional,
     Output,
     QueryList,
@@ -28,10 +26,9 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiButtonComponent, TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
-import {Editor} from '@tiptap/core';
-import {redoDepth, undoDepth} from 'prosemirror-history';
 import {Observable} from 'rxjs';
-import {take, takeUntil} from 'rxjs/operators';
+import {take} from 'rxjs/operators';
+import {TuiEditor} from '../../abstract/editor-adapter.abstract';
 import {TuiEditorTool} from '../../enums';
 
 function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
@@ -62,7 +59,7 @@ enum TableComands {
         class: 'tui-zero-scrollbar',
     },
 })
-export class TuiToolbarNewComponent implements OnInit {
+export class TuiToolbarNewComponent {
     @Input()
     @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
     tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
@@ -73,7 +70,7 @@ export class TuiToolbarNewComponent implements OnInit {
 
     @Input()
     @tuiDefaultProp()
-    editor: Editor | null = null;
+    editor!: TuiEditor;
 
     @Input()
     @HostBinding('class._disabled')
@@ -92,33 +89,22 @@ export class TuiToolbarNewComponent implements OnInit {
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
     // TODO: i18n
-    readonly fontsOptions: ReadonlyArray<TuiEditorFontOption> = [
+    readonly fontsOptions: ReadonlyArray<Partial<TuiEditorFontOption>> = [
         {
-            size: '2',
-            px: 13,
-            name: 'Small',
-        },
-        {
-            size: '3',
             px: 15,
             name: 'Normal',
         },
         {
-            size: '4',
-            px: 17,
-            name: 'Large',
-        },
-        {
-            size: '5',
             px: 24,
             family: 'var(--tui-font-heading)',
             name: 'Subtitle',
+            headingLevel: 2,
         },
         {
-            size: '6',
             px: 30,
             family: 'var(--tui-font-heading)',
             name: 'Title',
+            headingLevel: 1,
         },
     ];
 
@@ -152,9 +138,6 @@ export class TuiToolbarNewComponent implements OnInit {
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     constructor(
-        @Inject(TuiDestroyService)
-        private readonly destroy$: TuiDestroyService,
-        @Inject(ChangeDetectorRef) private changeDetectorRef: ChangeDetectorRef,
         @Optional()
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLElement>,
@@ -163,12 +146,6 @@ export class TuiToolbarNewComponent implements OnInit {
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts: Record<string, string>,
     ) {}
-
-    ngOnInit() {
-        this.editor?.on('transaction', () => {
-            this.changeDetectorRef.markForCheck();
-        });
-    }
 
     get focused(): boolean {
         return (
@@ -199,35 +176,35 @@ export class TuiToolbarNewComponent implements OnInit {
     }
 
     get bold(): boolean {
-        return !!this.editor?.isActive('bold');
+        return !!this.editor.isActive('bold');
     }
 
     get italic(): boolean {
-        return !!this.editor?.isActive('italic');
+        return !!this.editor.isActive('italic');
     }
 
     get underline(): boolean {
-        return !!this.editor?.isActive('underline');
+        return !!this.editor.isActive('underline');
     }
 
     get strikeThrough(): boolean {
-        return !!this.editor?.isActive('strike');
+        return !!this.editor.isActive('strike');
     }
 
     get unorderedList(): boolean {
-        return !!this.editor?.isActive('bulletList');
+        return !!this.editor.isActive('bulletList');
     }
 
     get orderedList(): boolean {
-        return !!this.editor?.isActive('orderedList');
+        return !!this.editor.isActive('orderedList');
     }
 
     get blockquote(): boolean {
-        return !!this.editor?.isActive('blockquote');
+        return !!this.editor.isActive('blockquote');
     }
 
     get a(): boolean {
-        return !!this.editor?.isActive('link');
+        return !!this.editor.isActive('link');
     }
 
     get foreColorBlank(): boolean {
@@ -239,37 +216,35 @@ export class TuiToolbarNewComponent implements OnInit {
     }
 
     get undoDisabled(): boolean {
-        return !this.editor || undoDepth(this.editor.state) === 0;
+        return !!this.editor.undoDisabled();
     }
 
     get redoDisabled(): boolean {
-        return !this.editor || redoDepth(this.editor.state) === 0;
+        return !!this.editor.redoDisabled();
     }
 
     get code(): boolean {
-        return !!this.editor?.isActive('code');
+        return !!this.editor.isActive('code');
     }
 
     get pre(): boolean {
-        return !!this.editor?.isActive('codeBlock');
+        return !!this.editor.isActive('codeBlock');
     }
 
     get subscript(): boolean {
-        return !!this.editor?.isActive('subscript');
+        return !!this.editor.isActive('subscript');
     }
 
     get superscript(): boolean {
-        return !!this.editor?.isActive('superscript');
+        return !!this.editor.isActive('superscript');
     }
 
     get foreColor(): string {
-        return this.editor?.getAttributes('textStyle').fontColor || 'rgb(51, 51, 51)';
+        return this.editor.getFontColor() || 'rgb(51, 51, 51)';
     }
 
     get hiliteColor(): string {
-        return (
-            this.editor?.getAttributes('textStyle').backgroundColor || 'rgb(51, 51, 51)'
-        );
+        return this.editor.getBackgroundColor() || 'rgb(51, 51, 51)';
     }
 
     get formatEnabled(): boolean {
@@ -302,19 +277,19 @@ export class TuiToolbarNewComponent implements OnInit {
     }
 
     get alignLeft(): boolean {
-        return !!this.editor?.isActive({textAlign: 'left'});
+        return !!this.editor.isActive({textAlign: 'left'});
     }
 
     get alignRight(): boolean {
-        return !!this.editor?.isActive({textAlign: 'right'});
+        return !!this.editor.isActive({textAlign: 'right'});
     }
 
     get alignCenter(): boolean {
-        return !!this.editor?.isActive({textAlign: 'center'});
+        return !!this.editor.isActive({textAlign: 'center'});
     }
 
     get justify(): boolean {
-        return !!this.editor?.isActive({textAlign: 'justify'});
+        return !!this.editor.isActive({textAlign: 'justify'});
     }
 
     get columnsNumber(): number {
@@ -374,16 +349,18 @@ export class TuiToolbarNewComponent implements OnInit {
         }
     }
 
-    onFont(size: string) {
-        this.editor
-            ?.chain()
-            .focus()
-            .setHeading({level: +size as any})
-            .run();
+    onHeading(item: TuiEditorFontOption) {
+        if (item.headingLevel) {
+            this.editor.setHeading(item.headingLevel);
+
+            return;
+        }
+
+        this.editor.setParagraph();
     }
 
     onAlign(align: string) {
-        this.editor?.chain().focus().setTextAlign(align).run();
+        this.editor.onAlign(align);
     }
 
     onImage(input: HTMLInputElement) {
@@ -391,7 +368,7 @@ export class TuiToolbarNewComponent implements OnInit {
 
         if (file) {
             this.imageLoader(file)
-                .pipe(take(1), takeUntil(this.destroy$))
+                .pipe(take(1))
                 .subscribe(image => {
                     this.addImage(image);
                 });
@@ -409,14 +386,14 @@ export class TuiToolbarNewComponent implements OnInit {
     }
 
     onLinkClick() {
-        this.editor?.chain().focus();
+        // this.editor .chain().focus();
     }
 
     onLink(hosted: TuiHostedDropdownComponent, url?: string) {
         hosted.open = false;
 
         if (url) {
-            this.editor?.chain().focus().toggleLink({href: url}).run();
+            this.editor.toggleLink(url);
         }
     }
 
@@ -430,27 +407,21 @@ export class TuiToolbarNewComponent implements OnInit {
 
     onTableOption(command: TableComands) {
         ({
-            [TableComands.InsertColumnAfter]: () =>
-                this.editor?.chain().focus().addColumnAfter().run(),
-            [TableComands.InsertColumnBefore]: () =>
-                this.editor?.chain().focus().addColumnBefore().run(),
-            [TableComands.InsertRowAfter]: () =>
-                this.editor?.chain().focus().addRowAfter().run(),
-            [TableComands.InsertRowBefore]: () =>
-                this.editor?.chain().focus().addRowBefore().run(),
-            [TableComands.DeleteColumn]: () =>
-                this.editor?.chain().focus().deleteColumn().run(),
-            [TableComands.DeleteRow]: () =>
-                this.editor?.chain().focus().deleteRow().run(),
+            [TableComands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
+            [TableComands.InsertColumnBefore]: () => this.editor.addColumnBefore(),
+            [TableComands.InsertRowAfter]: () => this.editor.addRowAfter(),
+            [TableComands.InsertRowBefore]: () => this.editor.addRowBefore(),
+            [TableComands.DeleteColumn]: () => this.editor.deleteColumn(),
+            [TableComands.DeleteRow]: () => this.editor.deleteRow(),
         }[command]());
     }
 
     mergeCells() {
-        this.editor?.chain().focus().mergeCells().run();
+        this.editor.mergeCells();
     }
 
     splitCell() {
-        this.editor?.chain().focus().splitCell().run();
+        this.editor.splitCell();
     }
 
     enabled(tool: TuiEditorTool): boolean {
@@ -458,11 +429,11 @@ export class TuiToolbarNewComponent implements OnInit {
     }
 
     undo() {
-        this.editor?.chain().undo().run();
+        this.editor.undo();
     }
 
     redo() {
-        this.editor?.chain().redo().run();
+        this.editor.redo();
     }
 
     indent() {
@@ -474,64 +445,59 @@ export class TuiToolbarNewComponent implements OnInit {
     }
 
     insertHorizontalRule() {
-        this.editor?.chain().focus().setHorizontalRule().run();
+        this.editor.setHorizontalRule();
     }
 
     removeFormat() {
-        this.editor?.commands.unsetAllMarks();
-        this.editor?.commands.clearNodes();
+        this.editor.removeFormat();
     }
 
     setForeColor(color: string) {
-        this.editor?.chain().focus().setFontColor(color).run();
+        this.editor.setFontColor(color);
     }
 
     setHiliteColor(color: string) {
-        this.editor?.chain().focus().setBackgroundColor(color).run();
+        this.editor.setBackgroundColor(color);
     }
 
     toggleBold() {
-        this.editor?.chain().focus().toggleBold().run();
+        this.editor.toggleBold();
     }
 
     toggleItalic() {
-        this.editor?.chain().focus().toggleItalic().run();
+        this.editor.toggleItalic();
     }
 
     toggleUnderline() {
-        this.editor?.chain().focus().toggleUnderline().run();
+        this.editor.toggleUnderline();
     }
 
     toggleStrikeThrough() {
-        this.editor?.chain().focus().toggleStrike().run();
+        this.editor.toggleStrike();
     }
 
     toggleOrderedList() {
-        this.editor?.chain().focus().toggleOrderedList().run();
+        this.editor.toggleOrderedList();
     }
 
     toggleUnorderedList() {
-        this.editor?.chain().focus().toggleBulletList().run();
+        this.editor.toggleUnderline();
     }
 
     toggleQuote() {
-        this.editor?.chain().focus().toggleBlockquote().run();
+        this.editor.toggleBlockquote();
     }
 
     addTable(rows: number, cols: number) {
-        this.editor
-            ?.chain()
-            .focus()
-            .insertTable({rows, cols, withHeaderRow: false})
-            .run();
+        this.editor.insertTable(rows, cols);
     }
 
     toggleSubscript() {
-        this.editor?.chain().focus().toggleSubscript().run();
+        this.editor.toggleSubscript();
     }
 
     toggleSuperscript() {
-        this.editor?.chain().focus().toggleSuperscript().run();
+        this.editor.toggleSuperscript();
     }
 
     updateCurrent(x: number, y: number) {
@@ -539,15 +505,15 @@ export class TuiToolbarNewComponent implements OnInit {
     }
 
     private toggleCode() {
-        this.editor?.chain().toggleCode().run();
+        this.editor.toggleCode();
     }
 
     private togglePre() {
-        this.editor?.chain().toggleCodeBlock().run();
+        this.editor.toggleCodeBlock();
     }
 
     private addImage(image: string) {
-        this.editor?.chain().focus().setImage({src: image}).run();
+        this.editor.setImage(image);
     }
 
     private focusFirst() {

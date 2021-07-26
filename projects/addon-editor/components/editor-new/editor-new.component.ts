@@ -14,13 +14,14 @@ import {
 import {NgControl} from '@angular/forms';
 import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
 import {Editor, Extensions} from '@tiptap/core';
-
 import {
     AbstractTuiControl,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     tuiDefaultProp,
 } from '../../../cdk';
+import {TuiEditor} from '../../abstract/editor-adapter.abstract';
+import {TuiTiptapEditor} from '../../abstract/tiptap-editor';
 import {defaultEditorTools} from '../../constants';
 import {TUI_EDITOR_EXTENSIONS} from './editor-new.providers';
 
@@ -46,10 +47,14 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
     @ViewChild('editorRef', {static: true})
     elementRef?: ElementRef<HTMLElement>;
 
+    @ViewChild('bubbleMenu', {static: true})
+    bubbleMenu?: ElementRef<HTMLElement>;
+
     @ViewChild(TuiToolbarNewComponent)
     toolbar?: TuiToolbarNewComponent;
 
     editor: Editor | null = null;
+    editorAdapter!: TuiEditor;
 
     tools = defaultEditorTools;
 
@@ -69,8 +74,10 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
     ngOnInit() {
         this.editor = new Editor({
             element: this.elementRef?.nativeElement,
-            extensions: this.extensions,
+            extensions: [...this.extensions],
         });
+
+        this.editorAdapter = new TuiTiptapEditor(this.editor);
 
         this.editor?.on('update', () => {
             this.onModelChange(this.editor?.getHTML() || '');
@@ -85,12 +92,16 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
         return '';
     }
 
+    onAddLink() {}
+
+    onRemoveLink() {}
+
     get focused(): boolean {
         return !!this.editor?.isFocused || (!!this.toolbar && this.toolbar.focused);
     }
 
     get dropdownSelectionHandler(): TuiBooleanHandler<any> {
-        return () => !!this.editor?.isActive('link');
+        return () => true;
     }
 
     get placeholderRaised(): boolean {

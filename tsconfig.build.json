@@ -35,8 +35,6 @@
             "@taiga-ui/addon-commerce": ["./dist/addon-commerce/index"],
             "@taiga-ui/addon-editor/*": ["./dist/addon-editor/*"],
             "@taiga-ui/addon-editor": ["./dist/addon-editor/index"],
-            "@taiga-ui/addon-editor-new/*": ["./dist/addon-editor-new/*"],
-            "@taiga-ui/addon-editor-new": ["./dist/addon-editor-new/index"],
             "@taiga-ui/addon-tablebars/*": ["./dist/addon-tablebars/*"],
             "@taiga-ui/addon-tablebars": ["./dist/addon-tablebars/index"],
 

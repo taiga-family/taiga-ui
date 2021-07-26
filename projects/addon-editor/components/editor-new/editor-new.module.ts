@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {TuiHoveredModule} from '../../../cdk';
 import {TuiScrollbarModule, TuiWrapperModule} from '../../../core';
 import {TuiDropdownSelectionModule} from '../../../kit';
+import {TuiEditLinkModule} from '../edit-link';
 import {TuiToolbarNewModule} from '../toolbar-new';
 import {TuiEditorNewComponent} from './editor-new.component';
 
@@ -14,6 +15,7 @@ import {TuiEditorNewComponent} from './editor-new.component';
         TuiWrapperModule,
         TuiHoveredModule,
         TuiScrollbarModule,
+        TuiEditLinkModule,
         TuiDropdownSelectionModule,
     ],
     exports: [TuiEditorNewComponent],
