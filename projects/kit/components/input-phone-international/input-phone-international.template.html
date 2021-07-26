@@ -23,7 +23,7 @@
             class="input-phone tui-group__auto-width-item"
             tuiTextfieldAutocomplete="off"
             [tuiTextfieldLabelOutside]="true"
-            [formControl]="control"
+            [ngModel]="value"
             [focusable]="focusable"
             [countryCode]="inputPhoneCountryCode"
             [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
@@ -31,6 +31,7 @@
             [pseudoInvalid]="pseudoInvalid"
             [pseudoFocused]="pseudoFocused"
             [pseudoHovered]="pseudoHovered"
+            (ngModelChange)="onModelChange($event)"
         >
             {{inputPhoneCountryCode}}
         </tui-input-phone>

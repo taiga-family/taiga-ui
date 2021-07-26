@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
@@ -19,7 +19,7 @@ import {TuiInputPhoneInternationalComponent} from './input-phone-international.c
 @NgModule({
     imports: [
         CommonModule,
-        ReactiveFormsModule,
+        FormsModule,
         PolymorpheusModule,
         TuiSvgModule,
         TuiInputPhoneModule,

@@ -172,6 +172,10 @@ export class TuiInputPhoneInternationalComponent
         return COUNTRIES_MASKS[isoCode].replace(MASK_AFTER_CODE_REGEXP, '');
     }
 
+    onModelChange(value: string) {
+        this.updateValue(value);
+    }
+
     protected getFallbackValue(): string {
         return '';
     }
