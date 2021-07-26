@@ -28,10 +28,11 @@
             [countryCode]="inputPhoneCountryCode"
             [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
             [readOnly]="readOnly"
-            [pseudoInvalid]="pseudoInvalid"
+            [pseudoInvalid]="computedInvalid"
             [pseudoFocused]="pseudoFocused"
             [pseudoHovered]="pseudoHovered"
             (ngModelChange)="onModelChange($event)"
+            (focusedChange)="onFocusChange($event)"
         >
             {{inputPhoneCountryCode}}
         </tui-input-phone>

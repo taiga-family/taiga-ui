@@ -176,6 +176,10 @@ export class TuiInputPhoneInternationalComponent
         this.updateValue(value);
     }
 
+    onFocusChange(focused: boolean) {
+        this.updateFocused(focused);
+    }
+
     protected getFallbackValue(): string {
         return '';
     }
