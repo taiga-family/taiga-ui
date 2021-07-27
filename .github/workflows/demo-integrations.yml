@@ -12,7 +12,7 @@ on:
             - 'tsconfig*'
     push:
         branches:
-            - main
+            - '!main'
             - '!release/**'
 
 jobs:
