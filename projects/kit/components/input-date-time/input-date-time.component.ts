@@ -49,7 +49,7 @@ import {
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
-import {combineLatest, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
@@ -99,7 +99,6 @@ export class TuiInputDateTimeComponent
 
     open = false;
     dateFiller = '';
-    dateTimeFiller = '';
 
     private month: TuiMonth | null = null;
 
@@ -121,15 +120,9 @@ export class TuiInputDateTimeComponent
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
         super(control, changeDetectorRef);
-        combineLatest([this.dateTexts$, this.timeTexts$])
-            .pipe(takeUntil(this.destroy$))
-            .subscribe(([dateTexts, timeTexts]) => {
-                this.dateFiller = dateTexts[this.dateFormat];
-                this.dateTimeFiller = this.getDateTimeString(
-                    this.dateFiller,
-                    timeTexts[this.timeMode],
-                );
-            });
+        this.dateTexts$.pipe(takeUntil(this.destroy$)).subscribe(dateTexts => {
+            this.dateFiller = dateTexts[this.dateFormat];
+        });
     }
 
     get fillerLength(): number {
@@ -282,6 +275,18 @@ export class TuiInputDateTimeComponent
         this.nativeValue = value && (value[0] || value[1]) ? this.computedValue : '';
     }
 
+    @tuiPure
+    getDateTimeString(
+        date: TuiDay | string,
+        time: TuiTime | string | null,
+        timeMode: TuiTimeMode = 'HH:MM',
+    ): string {
+        const dateString = date instanceof TuiDay ? date.toString() : date;
+        const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
+
+        return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
+    }
+
     protected getFallbackValue(): [TuiDay | null, TuiTime | null] {
         return [null, null];
     }
@@ -322,17 +327,5 @@ export class TuiInputDateTimeComponent
             ),
             guide: false,
         };
-    }
-
-    @tuiPure
-    private getDateTimeString(
-        date: TuiDay | string,
-        time: TuiTime | string | null,
-        timeMode: TuiTimeMode = 'HH:MM',
-    ): string {
-        const dateString = date instanceof TuiDay ? date.toString() : date;
-        const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
-
-        return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
     }
 }
