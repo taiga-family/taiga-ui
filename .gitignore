@@ -27,3 +27,4 @@ tmp/
 quality-check
 .DS_Store
 dist
+projects/demo-integrations/cypress/snapshots

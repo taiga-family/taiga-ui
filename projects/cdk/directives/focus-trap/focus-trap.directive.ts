@@ -73,6 +73,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
          * therefore using Promise instead of setTimeout
          */
         Promise.resolve().then(() => {
+            // TODO: iframe warning
             if (this.activeElement instanceof HTMLElement) {
                 setNativeFocused(this.activeElement);
             }

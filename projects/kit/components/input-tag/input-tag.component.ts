@@ -210,7 +210,9 @@ export class TuiInputTagComponent
 
     @HostBinding('class._label-outside')
     get labelOutside(): boolean {
-        return this.controller.labelOutside;
+        const {size, labelOutside} = this.controller;
+
+        return size === 's' || labelOutside;
     }
 
     get hasCleaner(): boolean {
@@ -299,6 +301,7 @@ export class TuiInputTagComponent
         if (
             !this.focusableElement ||
             actualTarget === this.focusableElement.nativeElement ||
+            // TODO: iframe warning
             !(event.target instanceof Element) ||
             (this.cleanerSvg && this.cleanerSvg.nativeElement.contains(event.target)) ||
             (this.tagsContainer &&

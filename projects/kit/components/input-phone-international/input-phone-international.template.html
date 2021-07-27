@@ -4,6 +4,7 @@
     [content]="dropdown"
     [canOpen]="!readOnly"
     [(open)]="open"
+    (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div tuiGroup>
         <tui-primitive-textfield
@@ -23,14 +24,15 @@
             class="input-phone tui-group__auto-width-item"
             tuiTextfieldAutocomplete="off"
             [tuiTextfieldLabelOutside]="true"
-            [formControl]="control"
+            [ngModel]="value"
             [focusable]="focusable"
             [countryCode]="inputPhoneCountryCode"
             [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
             [readOnly]="readOnly"
-            [pseudoInvalid]="pseudoInvalid"
+            [pseudoInvalid]="computedInvalid"
             [pseudoFocused]="pseudoFocused"
             [pseudoHovered]="pseudoHovered"
+            (ngModelChange)="onModelChange($event)"
         >
             {{inputPhoneCountryCode}}
         </tui-input-phone>

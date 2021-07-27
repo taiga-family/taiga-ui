@@ -37,7 +37,7 @@ export class TuiMediaDirective {
     @Input()
     @tuiRequiredSetter(nonNegativeFiniteAssertion)
     set currentTime(currentTime: number) {
-        if (Math.abs(currentTime - this.currentTime) > 0.001) {
+        if (Math.abs(currentTime - this.currentTime) > 0.05) {
             this.elementRef.nativeElement.currentTime = currentTime;
         }
     }

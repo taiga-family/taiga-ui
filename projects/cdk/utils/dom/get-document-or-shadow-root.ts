@@ -1,7 +1,5 @@
 export function getDocumentOrShadowRoot(node: Node): DocumentOrShadowRoot {
-    return 'getRootNode' in node &&
-        node.ownerDocument &&
-        node.ownerDocument.body.contains(node)
+    return 'getRootNode' in node && node.isConnected
         ? (node.getRootNode() as Document)
         : node.ownerDocument!;
 }

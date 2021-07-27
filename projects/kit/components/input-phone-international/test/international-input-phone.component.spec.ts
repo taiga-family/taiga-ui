@@ -122,16 +122,8 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('should truncate value if current mask is shorter then previous', () => {
-            const data = new DataTransfer();
-
-            data.setData('text/plain', '+71234567890');
-
-            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
-
-            component.onPaste(pasteEvent);
             component.onItemClick(TuiCountryIsoCode.UA);
-
-            expect(testComponent.control.value).toBe('+380123456789');
+            expect(testComponent.control.value).toBe('+380911033010');
         });
     });
 
