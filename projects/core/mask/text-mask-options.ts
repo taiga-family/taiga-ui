@@ -9,7 +9,7 @@ export interface TuiTextMaskOptions {
     /**
      * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#mask}
      */
-    mask: TuiTextMaskList | TuiTextMaskListHandler;
+    mask: TuiTextMaskList | TuiTextMaskListHandler | false;
 
     /**
      * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#guide}

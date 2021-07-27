@@ -158,6 +158,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
             !defaultPrevented &&
             isEditingKey(key) &&
             this.hostEditable &&
+            // TODO: iframe warning
             target instanceof HTMLElement &&
             !isElementEditable(target)
         ) {
@@ -191,6 +192,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     private get hostEditable(): boolean {
         const host = this.nativeFocusableElement || this.host;
 
+        // TODO: iframe warning
         return host instanceof HTMLElement && isElementEditable(host);
     }
 
@@ -204,6 +206,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     private focusDropdown(event: KeyboardEvent, first: boolean) {
         const host = this.nativeFocusableElement;
 
+        // TODO: iframe warning
         if (
             !host ||
             !(host instanceof HTMLElement) ||
@@ -217,6 +220,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
             !this.wrapper ||
             !this.open ||
             this.dropdown === null ||
+            // TODO: iframe warning
             !(this.wrapper.nativeElement.nextElementSibling instanceof HTMLElement)
         ) {
             this.updateOpen(true);

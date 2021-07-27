@@ -34,6 +34,7 @@ export function dialogCloseStreamFactory(
         ? merge(
               typedFromEvent(nativeElement, 'click').pipe(filter(isCurrentTarget)),
               typedFromEvent(documentRef, 'keydown').pipe(
+                  // TODO: iframe warning
                   filter(
                       ({key, target}) =>
                           key === 'Escape' &&
@@ -43,6 +44,7 @@ export function dialogCloseStreamFactory(
                   ),
               ),
               typedFromEvent(documentRef, 'mousedown').pipe(
+                  // TODO: iframe warning
                   filter(
                       ({target, clientX}) =>
                           target instanceof Element &&
@@ -52,6 +54,7 @@ export function dialogCloseStreamFactory(
                   switchMapTo(
                       typedFromEvent(documentRef, 'mouseup').pipe(
                           take(1),
+                          // TODO: iframe warning
                           filter(
                               ({target}) =>
                                   target instanceof Element &&

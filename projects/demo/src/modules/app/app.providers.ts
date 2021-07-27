@@ -1,4 +1,5 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {inject} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {
     TUI_DOC_CODE_EDITOR,
@@ -10,7 +11,8 @@ import {
     TUI_DOC_TITLE,
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
-import {TUI_SANITIZER} from '@taiga-ui/core';
+import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
+import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
 import {iconsPathFactory, TUI_ICONS_PATH} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
@@ -162,5 +164,9 @@ export const APP_PROVIDERS = [
     {
         provide: TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
         useValue: exampleContentProcessor,
+    },
+    {
+        provide: TUI_ANIMATIONS_DURATION,
+        useFactory: () => (inject(TUI_IS_CYPRESS) ? 0 : 300),
     },
 ];

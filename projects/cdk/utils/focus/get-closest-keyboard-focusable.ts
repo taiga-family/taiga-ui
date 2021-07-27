@@ -35,6 +35,7 @@ export function getClosestFocusable(
     treeWalker.currentNode = initial;
 
     while (prev ? treeWalker.previousNode() : treeWalker.nextNode()) {
+        // TODO: iframe warning
         if (treeWalker.currentNode instanceof HTMLElement) {
             initial = treeWalker.currentNode;
         }

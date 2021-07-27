@@ -269,6 +269,7 @@ export class TuiInputTimeComponent
     private processArrow(event: KeyboardEvent, shift: -1 | 1) {
         const {target} = event;
 
+        // TODO: iframe warning
         if (this.readOnly || !(target instanceof HTMLInputElement)) {
             return;
         }

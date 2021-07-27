@@ -185,6 +185,7 @@ export class TuiInputPhoneInternationalComponent
     }
 
     private extractValue(event: DragEvent | ClipboardEvent): string {
+        // TODO: iframe warning
         return event instanceof DragEvent
             ? event.dataTransfer?.getData('text/plain') || ''
             : getClipboardDataText(event);

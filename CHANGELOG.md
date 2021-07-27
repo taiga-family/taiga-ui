@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.13.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.13.0...v2.13.1) (2021-07-20)
+
+
+### Features
+
+* **i18n:** add Vietnamese translation ([#562](https://github.com/TinkoffCreditSystems/taiga-ui/issues/562)) ([a7ee3c8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a7ee3c809b7118446517a37dbdb94d3e3998dd03))
+
+
+### Bug Fixes
+
+* **cdk:** `getClipboardDataText` return text/plain format as fallback ([#568](https://github.com/TinkoffCreditSystems/taiga-ui/issues/568)) ([0615e20](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0615e20519d909b5b429d36c4e5cb4177eaddddd))
+* **cdk:** fix dropdowns in ShadowDom inside iframe ([#565](https://github.com/TinkoffCreditSystems/taiga-ui/issues/565)) ([d48efa1](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d48efa1913cab9574326834571486030b2db8e25))
+* **kit:** `Breadcrumbs` fix dynamic items ([#560](https://github.com/TinkoffCreditSystems/taiga-ui/issues/560)) ([ab18533](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ab18533f9c65a4553d5bb7df078dc3a8085dcb9d))
+
 ## [2.13.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.12.0...v2.13.0) (2021-07-13)
 
 ### Features

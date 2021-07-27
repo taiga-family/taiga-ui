@@ -15,18 +15,16 @@ const selectExclusions: Record<string, ReadonlyArray<number>> = {
     'components/primitive-textfield': [0, 7, 8, 9, 10],
 };
 
-xdescribe('Deep', () => {
-    before(() => {
+describe('Deep', () => {
+    beforeEach(() => {
         cy.viewport(1500, 3200);
-        cy.visit('/');
-        cy.wait(500);
     });
 
     DEEP_PATHS.forEach(path => {
         let counter = 1;
 
         it(path, () => {
-            cy.visit(`/${path}/API`, {failOnStatusCode: false});
+            cy.goToDemoPage(`/${path}/API`);
             cy.wait(600);
 
             cy.get('[tuidocheader]').invoke(

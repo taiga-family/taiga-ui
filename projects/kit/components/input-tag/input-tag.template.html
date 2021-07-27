@@ -48,9 +48,7 @@
                 </tui-scrollbar>
                 <ng-template #items>
                     <div #tagsContainer class="tags">
-                        <ng-container
-                            *ngIf="controller.labelOutside; else text"
-                        >
+                        <ng-container *ngIf="labelOutside; else text">
                             <tui-tag
                                 *ngFor="let item of value; index as index"
                                 #tag
