@@ -15,6 +15,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+import {TableSizeSelectorModule} from '../table-size-selector';
 import {TuiToolbarNewComponent} from './toolbar-new.component';
 
 @NgModule({
@@ -31,6 +32,7 @@ import {TuiToolbarNewComponent} from './toolbar-new.component';
         TuiActiveZoneModule,
         TuiRepeatTimesModule,
         TuiDropdownControllerModule,
+        TableSizeSelectorModule,
     ],
     declarations: [TuiToolbarNewComponent],
     exports: [TuiToolbarNewComponent],

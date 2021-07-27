@@ -1,0 +1,15 @@
+<div *tuiRepeatTimes="let x of rowsNumber">
+    <div
+        *tuiRepeatTimes="let y of columnsNumber"
+        tuiIconButton
+        tuiOption
+        icon="tuiIconStop"
+        class="cell"
+        size="xs"
+        appearance="flat"
+        [class._pseudoHovered]="tableSelectHovered(x, y)"
+        (mouseenter)="updateCurrent(x+1, y+1)"
+        (click)="onClick(x+1, y+1)"
+    ></div>
+</div>
+<div class="description">{{tableSize.cols}}&#215;{{tableSize.rows}}</div>

@@ -16,6 +16,7 @@ import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-
 import {Editor, Extensions} from '@tiptap/core';
 import {
     AbstractTuiControl,
+    getClosestElement,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     tuiDefaultProp,
@@ -46,9 +47,6 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
 
     @ViewChild('editorRef', {static: true})
     elementRef?: ElementRef<HTMLElement>;
-
-    @ViewChild('bubbleMenu', {static: true})
-    bubbleMenu?: ElementRef<HTMLElement>;
 
     @ViewChild(TuiToolbarNewComponent)
     toolbar?: TuiToolbarNewComponent;
@@ -116,6 +114,19 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
 
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
+    }
+
+    onMouseDown(event: MouseEvent) {
+        if (
+            !(event.target instanceof Element) ||
+            this.editor?.isFocused ||
+            !!getClosestElement(event.target, 'button')
+        ) {
+            return;
+        }
+
+        event.preventDefault();
+        this.editor?.chain().focus().run();
     }
 
     onModelChange(value: string) {

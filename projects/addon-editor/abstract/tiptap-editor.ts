@@ -146,16 +146,16 @@ export class TuiTiptapEditor extends TuiEditor {
         this.editor.chain().focus().deleteRow().run();
     }
 
-    mergeCells(): void {
+    mergeCells() {
         this.editor.chain().focus().mergeCells().run();
     }
 
-    splitCell(): void {
+    splitCell() {
         this.editor.chain().focus().splitCell().run();
     }
 
-    canMergeCells() {
-        this.editor.can().mergeCells();
+    canMergeCells(): boolean {
+        return this.editor.can().mergeCells();
     }
 
     setHeading(level: Level) {

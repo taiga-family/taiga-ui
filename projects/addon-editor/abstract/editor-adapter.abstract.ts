@@ -36,7 +36,7 @@ export abstract class TuiEditor {
     abstract deleteColumn(): void;
     abstract deleteRow(): void;
     abstract mergeCells(): void;
-    abstract canMergeCells(): void;
+    abstract canMergeCells(): boolean;
     abstract splitCell(): void;
     abstract setHeading(level: number): void;
     abstract setParagraph(): void;

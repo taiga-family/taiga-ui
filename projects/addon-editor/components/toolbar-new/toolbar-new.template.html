@@ -658,25 +658,9 @@
     </tui-hosted-dropdown>
 
     <ng-template #tableDropdown>
-        <div class="dropdown-table">
-            <div *tuiRepeatTimes="let x of rowsNumber">
-                <div
-                    *tuiRepeatTimes="let y of columnsNumber"
-                    tuiIconButton
-                    tuiOption
-                    icon="tuiIconStop"
-                    class="dropdown-table__cell"
-                    size="xs"
-                    appearance="flat"
-                    [class._pseudoHovered]="tableSelectHovered(x, y)"
-                    (mouseenter)="updateCurrent(x, y)"
-                    (click)="addTable(x+1, y+1)"
-                ></div>
-            </div>
-            <div class="dropdown-table__description">
-                {{tableCoordinate.x+1}}x{{tableCoordinate.y+1}}
-            </div>
-        </div>
+        <tui-table-size-selector
+            (onSelectSize)="addTable($event)"
+        ></tui-table-size-selector>
     </ng-template>
 
     <tui-hosted-dropdown
@@ -733,7 +717,7 @@
         [tuiHintId]="tableMergeSplitBtn.id"
         [tuiDescribedBy]="tableMergeSplitBtn.id"
         [focusable]="false"
-        [disabled]="false"
+        [disabled]="!editor.isActive('table')"
         (keydown.arrowLeft.prevent)="onArrowLeft()"
         (keydown.arrowRight.prevent)="onArrowRight()"
         (click)="editor.canMergeCells() ? mergeCells() : splitCell()"

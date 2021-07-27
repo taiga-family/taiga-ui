@@ -8,7 +8,11 @@
     [invalid]="computedInvalid"
 >
 </tui-wrapper>
-<div class="wrapper" (tuiHoveredChange)="onHovered($event)">
+<div
+    class="wrapper"
+    (tuiHoveredChange)="onHovered($event)"
+    (mousedown)="onMouseDown($event)"
+>
     <div class="toolbar-wrapper">
         <tui-toolbar [editor]="editorAdapter" [tools]="tools"></tui-toolbar>
         <div

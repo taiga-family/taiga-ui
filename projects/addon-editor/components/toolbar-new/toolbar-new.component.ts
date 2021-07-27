@@ -247,6 +247,10 @@ export class TuiToolbarNewComponent {
         return this.editor.getBackgroundColor() || 'rgb(51, 51, 51)';
     }
 
+    get canMergeCells(): boolean {
+        return this.editor.canMergeCells();
+    }
+
     get formatEnabled(): boolean {
         return (
             this.enabled(TuiEditorTool.Bold) ||
@@ -488,7 +492,7 @@ export class TuiToolbarNewComponent {
         this.editor.toggleBlockquote();
     }
 
-    addTable(rows: number, cols: number) {
+    addTable({rows, cols}: {rows: number; cols: number}) {
         this.editor.insertTable(rows, cols);
     }
 
