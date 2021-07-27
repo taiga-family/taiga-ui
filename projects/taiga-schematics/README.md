@@ -12,7 +12,7 @@ It's a part of [**Taiga UI**](https://github.com/TinkoffCreditSystems/taiga-ui) 
 ## How to use
 
 ```
-npm add taiga-ui
+ng add taiga-ui
 ```
 
 ## Docs
