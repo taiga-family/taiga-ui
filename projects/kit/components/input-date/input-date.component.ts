@@ -28,6 +28,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiMonth,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     sizeBigger,
@@ -52,7 +53,7 @@ import {tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
 export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
@@ -103,18 +104,12 @@ export class TuiInputDateComponent
     defaultActiveYearMonth = TuiMonth.currentLocal();
 
     open = false;
-    filler = '';
+    readonly filler$ = this.dateTexts$.pipe(map(dateTexts => dateTexts[this.dateFormat]));
 
     private month: TuiMonth | null = null;
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
-
-    private readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: TUI_DATE_MASK,
-        pipe: tuiCreateAutoCorrectedDatePipe(this),
-        guide: false,
-    };
 
     constructor(
         @Optional()
@@ -135,9 +130,6 @@ export class TuiInputDateComponent
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
         super(control, changeDetectorRef);
-        this.dateTexts$
-            .pipe(takeUntil(this.destroy$))
-            .subscribe(dateTexts => (this.filler = dateTexts[this.dateFormat]));
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -156,10 +148,6 @@ export class TuiInputDateComponent
         return sizeBigger(this.textfieldSize.size)
             ? 'tuiIconCalendarLarge'
             : 'tuiIconCalendar';
-    }
-
-    get computedFiller(): string {
-        return this.activeItem ? '' : this.filler;
     }
 
     get computedValue(): string {
@@ -196,14 +184,20 @@ export class TuiInputDateComponent
         return !this.computedDisabled && !this.readOnly && !this.computedMobile;
     }
 
-    get computedMask(): TuiTextMaskOptions {
-        return this.activeItem ? EMPTY_MASK : this.textMaskOptions;
-    }
-
     get activeItem(): TuiNamedDay | null {
         const {value} = this;
 
         return (value && this.items.find(item => item.day.daySame(value))) || null;
+    }
+
+    getComputedFiller(filler: string): string {
+        return this.activeItem ? '' : filler;
+    }
+
+    getComputedMask(filler: string): TuiTextMaskOptions {
+        return this.activeItem
+            ? EMPTY_MASK
+            : this.calculateMask(this.value, this.min, this.max, filler);
     }
 
     onMobileClick() {
@@ -237,13 +231,13 @@ export class TuiInputDateComponent
         }
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string, filler: string) {
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
         }
 
         this.updateValue(
-            value.length !== this.filler.length ? null : TuiDay.normalizeParse(value),
+            value.length !== filler.length ? null : TuiDay.normalizeParse(value),
         );
     }
 
@@ -283,5 +277,19 @@ export class TuiInputDateComponent
         newValue: TuiDay | null,
     ): boolean {
         return nullableSame(oldValue, newValue, (a, b) => a.daySame(b));
+    }
+
+    @tuiPure
+    private calculateMask(
+        value: TuiDay | null,
+        min: TuiDay,
+        max: TuiDay,
+        filler: string,
+    ): TuiTextMaskOptions {
+        return {
+            mask: TUI_DATE_MASK,
+            pipe: tuiCreateAutoCorrectedDatePipe({value, min, max, filler}),
+            guide: false,
+        };
     }
 }

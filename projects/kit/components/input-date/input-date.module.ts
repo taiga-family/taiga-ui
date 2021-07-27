@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiPreventDefaultModule} from '@taiga-ui/cdk';
+import {TuiLetModule, TuiPreventDefaultModule} from '@taiga-ui/cdk';
 import {
     TuiCalendarModule,
     TuiHostedDropdownModule,
@@ -25,6 +25,7 @@ import {TuiInputDateComponent} from './input-date.component';
         TuiHostedDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,
+        TuiLetModule,
     ],
     declarations: [TuiInputDateComponent],
     exports: [TuiInputDateComponent],
