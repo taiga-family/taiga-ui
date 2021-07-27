@@ -2,11 +2,13 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    EventEmitter,
     forwardRef,
     HostListener,
     Inject,
     Input,
     Optional,
+    Output,
     Self,
     ViewChild,
 } from '@angular/core';
@@ -62,6 +64,9 @@ export class TuiInputPhoneInternationalComponent
     @Input()
     countries: ReadonlyArray<TuiCountryIsoCode> = [];
 
+    @Output()
+    readonly countryIsoCodeChange = new EventEmitter<TuiCountryIsoCode>();
+
     open = false;
 
     readonly isoToCountryCodeMapper: TuiMapper<TuiCountryIsoCode, string> = item =>
@@ -81,12 +86,12 @@ export class TuiInputPhoneInternationalComponent
     @HostListener('drop.capture.prevent.stop', ['$event'])
     onPaste(event: ClipboardEvent | DragEvent) {
         const value = this.extractValue(event);
-        const country = this.countries.find(countryIsoCode =>
+        const countryIsoCode = this.countries.find(countryIsoCode =>
             value.startsWith(this.isoToCountryCode(countryIsoCode)),
         );
 
-        if (country) {
-            this.countryIsoCode = country;
+        if (countryIsoCode) {
+            this.updateCountryIsoCode(countryIsoCode);
             this.updateValue('+' + value.replace(TUI_NON_DIGITS_REGEXP, ''));
         }
     }
@@ -143,7 +148,7 @@ export class TuiInputPhoneInternationalComponent
 
     onItemClick(isoCode: TuiCountryIsoCode) {
         this.open = false;
-        this.countryIsoCode = isoCode;
+        this.updateCountryIsoCode(isoCode);
         // recalculates mask inside inputPhone to prevent isoCode conflict
         this.changeDetectorRef.detectChanges();
 
@@ -165,6 +170,14 @@ export class TuiInputPhoneInternationalComponent
 
     isoToCountryCode(isoCode: TuiCountryIsoCode): string {
         return COUNTRIES_MASKS[isoCode].replace(MASK_AFTER_CODE_REGEXP, '');
+    }
+
+    onModelChange(value: string) {
+        this.updateValue(value);
+    }
+
+    onActiveZone(active: boolean) {
+        this.updateFocused(active);
     }
 
     protected getFallbackValue(): string {
@@ -189,5 +202,10 @@ export class TuiInputPhoneInternationalComponent
         return event instanceof DragEvent
             ? event.dataTransfer?.getData('text/plain') || ''
             : getClipboardDataText(event);
+    }
+
+    private updateCountryIsoCode(code: TuiCountryIsoCode) {
+        this.countryIsoCode = code;
+        this.countryIsoCodeChange.emit(code);
     }
 }
