@@ -4,6 +4,7 @@
     [content]="dropdown"
     [canOpen]="!readOnly"
     [(open)]="open"
+    (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div tuiGroup>
         <tui-primitive-textfield
@@ -32,7 +33,6 @@
             [pseudoFocused]="pseudoFocused"
             [pseudoHovered]="pseudoHovered"
             (ngModelChange)="onModelChange($event)"
-            (focusedChange)="onFocusChange($event)"
         >
             {{inputPhoneCountryCode}}
         </tui-input-phone>

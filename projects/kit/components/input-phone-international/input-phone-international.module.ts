@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneModule, TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
     TuiGroupModule,
@@ -32,6 +32,7 @@ import {TuiInputPhoneInternationalComponent} from './input-phone-international.c
         TuiArrowModule,
         TuiLetModule,
         TuiMapperPipeModule,
+        TuiActiveZoneModule,
     ],
     declarations: [TuiInputPhoneInternationalComponent],
     exports: [TuiInputPhoneInternationalComponent],

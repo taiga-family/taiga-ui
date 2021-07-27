@@ -176,8 +176,8 @@ export class TuiInputPhoneInternationalComponent
         this.updateValue(value);
     }
 
-    onFocusChange(focused: boolean) {
-        this.updateFocused(focused);
+    onActiveZone(active: boolean) {
+        this.updateFocused(active);
     }
 
     protected getFallbackValue(): string {
