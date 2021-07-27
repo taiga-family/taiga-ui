@@ -32,7 +32,6 @@ import {
     TuiFocusableElementAccessor,
     TuiMapper,
     TuiMonth,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     sizeBigger,
@@ -408,7 +407,6 @@ export class TuiInputDateRangeComponent
             : clampedBottom;
     }
 
-    @tuiPure
     private getDateRangeFiller(dateFiller: string): string {
         return `${dateFiller}${RANGE_SEPARATOR_CHAR}${dateFiller}`;
     }
