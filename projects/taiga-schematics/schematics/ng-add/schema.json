@@ -12,34 +12,34 @@
             }
         },
         "addDialogsModule": {
-            "description": "Setting the dialog module",
+            "description": "Setting up dialog module",
             "type": "boolean",
             "default": true,
             "x-prompt": {
-                "message": "Do you want to use a Taiga UI dialogs?",
+                "message": "Do you want to use Taiga UI dialogs?",
                 "type": "confirmation"
             }
         },
         "addSanitizer": {
-            "description": "Setting the TUI_SANITIZER",
+            "description": "Setting up TUI_SANITIZER",
             "type": "boolean",
             "default": true,
             "x-prompt": {
-                "message": "Do you plan on using custom SVGs/icons or addon-editor? If `Yes` we will include ng-dompurify as sanitizer, read more.",
+                "message": "Do you plan on using custom SVGs/icons or addon-editor? If `Yes` we will include ng-dompurify as sanitizer, read more: https://taiga-ui.dev/icon-set#sanitizer",
                 "type": "confirmation"
             }
         },
         "addNotificationsModule": {
-            "description": "Setting the notifications module",
+            "description": "Setting up notifications module",
             "type": "boolean",
             "default": true,
             "x-prompt": {
-                "message": "Do you want to use a Taiga UI notifications?",
+                "message": "Do you want to use Taiga UI notifications?",
                 "type": "confirmation"
             }
         },
         "addons": {
-            "description": "Setting additional packages",
+            "description": "Setting up additional packages",
             "type": "array",
             "x-prompt": {
                 "message": "Choose additional packages to install",
