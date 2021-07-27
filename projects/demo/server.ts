@@ -39,7 +39,7 @@ export function app(): Express {
         '*.*',
         express.static(distFolder, {
             maxAge: '1y',
-        }),
+        }) as any,
     );
 
     // All regular routes use the Universal engine
