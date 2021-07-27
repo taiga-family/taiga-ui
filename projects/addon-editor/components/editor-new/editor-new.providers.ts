@@ -1,4 +1,7 @@
 import {InjectionToken} from '@angular/core';
+import {BackgroundColor} from '@taiga-ui/addon-editor/extensions';
+import {FontColor} from '@taiga-ui/addon-editor/extensions';
+import {Extension, Mark, Node} from '@tiptap/core';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import Subscript from '@tiptap/extension-subscript';
@@ -11,10 +14,10 @@ import TextAlign from '@tiptap/extension-text-align';
 import TextStyle from '@tiptap/extension-text-style';
 import Underline from '@tiptap/extension-underline';
 import StarterKit from '@tiptap/starter-kit';
-import {BackgroundColor} from '../../extensions';
-import {FontColor} from '../../extensions/font-color';
 
-export const TUI_EDITOR_EXTENSIONS = new InjectionToken('Extensions for editor', {
+export const TUI_EDITOR_EXTENSIONS = new InjectionToken<
+    ReadonlyArray<Extension | Mark | Node>
+>('Extensions for editor', {
     factory: () => [
         StarterKit.configure({
             heading: {

@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiRepeatTimesModule} from '../../../cdk';
+import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {TuiTableSizeSelectorComponent} from './table-size-selector.component';
 
 @NgModule({

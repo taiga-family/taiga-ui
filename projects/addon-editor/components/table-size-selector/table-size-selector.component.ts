@@ -30,11 +30,11 @@ export class TuiTableSizeSelectorComponent {
         return x < this.tableSize.rows && y < this.tableSize.cols;
     }
 
-    updateCurrent(rows: number, cols: number) {
+    updateCurrentSize(rows: number, cols: number) {
         this.tableSize = {rows, cols};
     }
 
-    onClick(rows: number, cols: number) {
-        this.onSelectSize.emit({rows, cols});
+    onClick() {
+        this.onSelectSize.emit(this.tableSize);
     }
 }

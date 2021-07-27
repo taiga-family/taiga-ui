@@ -1,10 +1,10 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiHoveredModule} from '../../../cdk';
-import {TuiScrollbarModule, TuiWrapperModule} from '../../../core';
-import {TuiDropdownSelectionModule} from '../../../kit';
-import {TuiEditLinkModule} from '../edit-link';
-import {TuiToolbarNewModule} from '../toolbar-new';
+import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
+import {TuiToolbarNewModule} from '@taiga-ui/addon-editor/components/toolbar-new';
+import {TuiHoveredModule} from '@taiga-ui/cdk';
+import {TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';
+import {TuiDropdownSelectionModule} from '@taiga-ui/kit';
 import {TuiEditorNewComponent} from './editor-new.component';
 
 @NgModule({

@@ -1,4 +1,34 @@
+// @ts-ignore
+import type {InjectionToken} from '@angular/core';
+// @ts-ignore
+import type {BackgroundColor} from '@taiga-ui/addon-editor/extensions';
+// @ts-ignore
+import type {FontColor} from '@taiga-ui/addon-editor/extensions';
 import {Editor} from '@tiptap/core';
+// @ts-ignore
+import type Image from '@tiptap/extension-image';
+// @ts-ignore
+import type Link from '@tiptap/extension-link';
+// @ts-ignore
+import type Subscript from '@tiptap/extension-subscript';
+// @ts-ignore
+import type Superscript from '@tiptap/extension-superscript';
+// @ts-ignore
+import type Table from '@tiptap/extension-table';
+// @ts-ignore
+import type TableCell from '@tiptap/extension-table-cell';
+// @ts-ignore
+import type TableHeader from '@tiptap/extension-table-header';
+// @ts-ignore
+import type TableRow from '@tiptap/extension-table-row';
+// @ts-ignore
+import type TextAlign from '@tiptap/extension-text-align';
+// @ts-ignore
+import type TextStyle from '@tiptap/extension-text-style';
+// @ts-ignore
+import type Underline from '@tiptap/extension-underline';
+// @ts-ignore
+import type StarterKit from '@tiptap/starter-kit';
 import {redoDepth, undoDepth} from 'prosemirror-history';
 import {TuiEditor} from './editor-adapter.abstract';
 

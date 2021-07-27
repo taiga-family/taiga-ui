@@ -11,7 +11,9 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
+import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
@@ -28,8 +30,6 @@ import {TuiButtonComponent, TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {take} from 'rxjs/operators';
-import {TuiEditor} from '../../abstract/editor-adapter.abstract';
-import {TuiEditorTool} from '../../enums';
 
 function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     return (

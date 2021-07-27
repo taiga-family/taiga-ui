@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiColorSelectorModule} from '@taiga-ui/addon-editor/components/color-selector';
 import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
+import {TableSizeSelectorModule} from '@taiga-ui/addon-editor/components/table-size-selector';
 import {
     TuiActiveZoneModule,
     TuiFocusableModule,
@@ -15,7 +16,6 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {TableSizeSelectorModule} from '../table-size-selector';
 import {TuiToolbarNewComponent} from './toolbar-new.component';
 
 @NgModule({

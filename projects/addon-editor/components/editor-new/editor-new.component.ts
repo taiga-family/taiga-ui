@@ -12,18 +12,19 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {TuiTiptapEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
-import {Editor, Extensions} from '@tiptap/core';
+import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {
     AbstractTuiControl,
     getClosestElement,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     tuiDefaultProp,
-} from '../../../cdk';
-import {TuiEditor} from '../../abstract/editor-adapter.abstract';
-import {TuiTiptapEditor} from '../../abstract/tiptap-editor';
-import {defaultEditorTools} from '../../constants';
+} from '@taiga-ui/cdk';
+import {Editor, Extensions} from '@tiptap/core';
 import {TUI_EDITOR_EXTENSIONS} from './editor-new.providers';
 
 const EMPTY_PARAGRAPH = '<p></p>';
@@ -46,7 +47,7 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
     exampleText = '';
 
     @ViewChild('editorRef', {static: true})
-    elementRef?: ElementRef<HTMLElement>;
+    editorRef?: ElementRef<HTMLElement>;
 
     @ViewChild(TuiToolbarNewComponent)
     toolbar?: TuiToolbarNewComponent;
@@ -54,9 +55,7 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
     editor: Editor | null = null;
     editorAdapter!: TuiEditor;
 
-    tools = defaultEditorTools;
-
-    editorFocused = false;
+    tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
 
     constructor(
         @Optional()
@@ -71,7 +70,7 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
 
     ngOnInit() {
         this.editor = new Editor({
-            element: this.elementRef?.nativeElement,
+            element: this.editorRef?.nativeElement,
             extensions: [...this.extensions],
         });
 
