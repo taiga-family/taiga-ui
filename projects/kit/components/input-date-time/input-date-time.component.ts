@@ -37,7 +37,11 @@ import {
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {DATE_TIME_SEPARATOR, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
+import {
+    DATE_FILLER_LENGTH,
+    DATE_TIME_SEPARATOR,
+    TUI_DATE_MASK,
+} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_CALENDAR_DATA_STREAM,
@@ -49,8 +53,8 @@ import {
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {combineLatest, Observable} from 'rxjs';
+import {map, pluck} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
 export const TIME_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
@@ -98,7 +102,10 @@ export class TuiInputDateTimeComponent
     timeMode: TuiTimeMode = 'HH:MM';
 
     open = false;
-    dateFiller = '';
+    readonly filler$ = combineLatest([
+        this.dateTexts$.pipe(pluck(this.dateFormat)),
+        this.timeTexts$.pipe(pluck(this.timeMode)),
+    ]).pipe(map(fillers => this.getDateTimeString(...fillers)));
 
     private month: TuiMonth | null = null;
 
@@ -120,13 +127,10 @@ export class TuiInputDateTimeComponent
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
         super(control, changeDetectorRef);
-        this.dateTexts$.pipe(takeUntil(this.destroy$)).subscribe(dateTexts => {
-            this.dateFiller = dateTexts[this.dateFormat];
-        });
     }
 
     get fillerLength(): number {
-        return this.dateFiller.length + DATE_TIME_SEPARATOR.length + this.timeMode.length;
+        return DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length + this.timeMode.length;
     }
 
     get textMaskOptions(): TuiTextMaskOptions {
@@ -135,7 +139,7 @@ export class TuiInputDateTimeComponent
             this.min,
             this.max,
             this.timeMode,
-            this.dateFiller,
+            DATE_FILLER_LENGTH,
         );
     }
 
@@ -156,7 +160,7 @@ export class TuiInputDateTimeComponent
     get computedValue(): string {
         const {value, nativeValue, timeMode} = this;
         const [date, time] = value;
-        const hasTimeInputChars = nativeValue.length > this.dateFiller.length;
+        const hasTimeInputChars = nativeValue.length > DATE_FILLER_LENGTH;
 
         if (!date || (!time && hasTimeInputChars)) {
             return nativeValue;
@@ -195,7 +199,7 @@ export class TuiInputDateTimeComponent
     }
 
     onValueChange(value: string) {
-        if (value.length < this.dateFiller.length) {
+        if (value.length < DATE_FILLER_LENGTH) {
             this.updateValue([null, null]);
 
             return;
@@ -317,12 +321,12 @@ export class TuiInputDateTimeComponent
         min: TuiDay,
         max: TuiDay,
         timeMode: TuiTimeMode,
-        filler: string,
+        fillerLength: number,
     ): TuiTextMaskOptions {
         return {
             mask: [...TUI_DATE_MASK, ',', ' ', ...tuiCreateTimeMask(timeMode)],
             pipe: tuiCreateAutoCorrectedDateTimePipe(
-                {value: day, min, max, filler},
+                {value: day, min, max, fillerLength},
                 timeMode,
             ),
             guide: false,

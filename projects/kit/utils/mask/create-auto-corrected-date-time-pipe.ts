@@ -13,7 +13,7 @@ export function tuiCreateAutoCorrectedDateTimePipe(
     const timePipe = tuiCreateAutoCorrectedTimePipe(timeMode);
 
     return value => {
-        if (value.length < config.filler.length) {
+        if (value.length < config.fillerLength) {
             return {value};
         }
 

@@ -53,7 +53,7 @@ import {tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {pluck, takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
 export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
@@ -104,7 +104,7 @@ export class TuiInputDateComponent
     defaultActiveYearMonth = TuiMonth.currentLocal();
 
     open = false;
-    readonly filler$ = this.dateTexts$.pipe(map(dateTexts => dateTexts[this.dateFormat]));
+    readonly filler$ = this.dateTexts$.pipe(pluck(this.dateFormat));
 
     private month: TuiMonth | null = null;
 

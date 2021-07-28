@@ -7,7 +7,7 @@ function parseWithLimit(
     value: string,
     config: WithDateMaskPipeConfig<TuiDayRange | null, TuiDay>,
 ): TuiDay {
-    return TuiDay.normalizeParse(value.slice(0, config.filler.length)).dayLimit(
+    return TuiDay.normalizeParse(value.slice(0, config.fillerLength)).dayLimit(
         config.min,
         config.max,
     );
@@ -17,18 +17,20 @@ function processRawValue(
     value: string,
     config: WithDateMaskPipeConfig<TuiDayRange | null, TuiDay>,
 ): string {
+    const fillerLength = config.fillerLength;
+
     switch (value.length) {
-        case config.filler.length:
+        case fillerLength:
             return parseWithLimit(value, config).toString();
-        case config.filler.length + RANGE_SEPARATOR_CHAR.length:
+        case fillerLength + RANGE_SEPARATOR_CHAR.length:
             return parseWithLimit(value, config).toString() + RANGE_SEPARATOR_CHAR;
-        case config.rangeFiller && config.rangeFiller.length:
+        case config.rangeFillerLength:
             return config.value && config.value.toString() === value
                 ? value
                 : TuiDayRange.sort(
-                      parseWithLimit(value.slice(0, config.filler.length), config),
+                      parseWithLimit(value.slice(0, fillerLength), config),
                       parseWithLimit(
-                          value.slice(config.filler.length + RANGE_SEPARATOR_CHAR.length),
+                          value.slice(fillerLength + RANGE_SEPARATOR_CHAR.length),
                           config,
                       ),
                   ).toString();

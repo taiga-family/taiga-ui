@@ -6,14 +6,13 @@
     (openChange)="onOpenChange($event)"
 >
     <tui-primitive-textfield
-        *tuiLet="timeTexts$ | async as timeTexts"
         class="textfield"
         automation-id="tui-input-date-time__textfield"
         tuiValueAccessor
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
-        [filler]="getDateTimeString(dateFiller, timeTexts[timeMode])"
+        [filler]="filler$ | async"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [iconContent]="calendarIcon"
