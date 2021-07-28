@@ -17,7 +17,7 @@ function wrapper(
         max,
         value,
         fillerLength: filler.length,
-        rangeFiller,
+        rangeFillerLength: rangeFiller.length,
     })(rawString, DUMMY) as TuiTextMaskPipeResult).value;
 }
 
