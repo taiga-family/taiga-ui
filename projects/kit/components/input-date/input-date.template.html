@@ -19,9 +19,9 @@
         [focusable]="computedFocusable"
         [iconContent]="computedMobile ? iconContent : calendarIcon"
         [disabled]="computedDisabled"
-        [textMask]="getComputedMask(filler)"
+        [textMask]="computedMask"
         [value]="computedValue"
-        (valueChange)="onValueChange($event, filler)"
+        (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
         (focusedChange)="onFocused($event)"
     >

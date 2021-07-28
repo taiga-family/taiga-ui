@@ -12,10 +12,13 @@ function wrapper(
     filler: string = 'dd.mm.yyyy',
     rangeFiller: string = `${filler}${RANGE_SEPARATOR_CHAR}${filler}`,
 ): string {
-    return (tuiCreateAutoCorrectedDateRangePipe({min, max, value, filler, rangeFiller})(
-        rawString,
-        DUMMY,
-    ) as TuiTextMaskPipeResult).value;
+    return (tuiCreateAutoCorrectedDateRangePipe({
+        min,
+        max,
+        value,
+        fillerLength: filler.length,
+        rangeFiller,
+    })(rawString, DUMMY) as TuiTextMaskPipeResult).value;
 }
 
 describe('tuiCreateAutoCorrectedDateRangePipe returns', () => {

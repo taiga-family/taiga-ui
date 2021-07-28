@@ -42,7 +42,7 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit/classes';
-import {EMPTY_MASK, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
+import {DATE_FILLER_LENGTH, EMPTY_MASK, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_CALENDAR_DATA_STREAM,
@@ -160,6 +160,12 @@ export class TuiInputDateComponent
         return value ? String(value) : nativeValue;
     }
 
+    get computedMask(): TuiTextMaskOptions {
+        return this.activeItem
+            ? EMPTY_MASK
+            : this.calculateMask(this.value, this.min, this.max, DATE_FILLER_LENGTH);
+    }
+
     get computedActiveYearMonth(): TuiMonth {
         if (this.items[0] && this.value && this.value.daySame(this.items[0].day)) {
             return this.items[0].displayDay;
@@ -194,12 +200,6 @@ export class TuiInputDateComponent
         return this.activeItem ? '' : filler;
     }
 
-    getComputedMask(filler: string): TuiTextMaskOptions {
-        return this.activeItem
-            ? EMPTY_MASK
-            : this.calculateMask(this.value, this.min, this.max, filler);
-    }
-
     onMobileClick() {
         if (!this.mobileCalendar) {
             this.open = !this.open;
@@ -231,13 +231,13 @@ export class TuiInputDateComponent
         }
     }
 
-    onValueChange(value: string, filler: string) {
+    onValueChange(value: string) {
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
         }
 
         this.updateValue(
-            value.length !== filler.length ? null : TuiDay.normalizeParse(value),
+            value.length !== DATE_FILLER_LENGTH ? null : TuiDay.normalizeParse(value),
         );
     }
 
@@ -284,11 +284,11 @@ export class TuiInputDateComponent
         value: TuiDay | null,
         min: TuiDay,
         max: TuiDay,
-        filler: string,
+        fillerLength: number,
     ): TuiTextMaskOptions {
         return {
             mask: TUI_DATE_MASK,
-            pipe: tuiCreateAutoCorrectedDatePipe({value, min, max, filler}),
+            pipe: tuiCreateAutoCorrectedDatePipe({value, min, max, fillerLength}),
             guide: false,
         };
     }
