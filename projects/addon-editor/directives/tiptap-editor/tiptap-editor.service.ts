@@ -31,13 +31,13 @@ import type Underline from '@tiptap/extension-underline';
 // @ts-ignore
 import type StarterKit from '@tiptap/starter-kit';
 import {redoDepth, undoDepth} from 'prosemirror-history';
-import {TIPTAP_EDITOR} from '../../directives/tiptap-editor/tiptap-editor.providers';
+import {TIPTAP_EDITOR} from './tiptap-editor.providers';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
 // @dynamic
 @Injectable({providedIn: 'root'})
-export class TuiTiptapEditor extends TuiEditor {
+export class TuiTiptapEditorService extends TuiEditor {
     get isFocused(): boolean {
         return this.editor.isFocused;
     }

@@ -12,7 +12,7 @@ export const TIPTAP_EDITOR_PROVIDERS: Provider[] = [
     },
 ];
 
-function editorFactory(elementRef: ElementRef, extensions: Extension[]): Editor {
+export function editorFactory(elementRef: ElementRef, extensions: Extension[]): Editor {
     return new Editor({
         element: elementRef.nativeElement,
         extensions: extensions,

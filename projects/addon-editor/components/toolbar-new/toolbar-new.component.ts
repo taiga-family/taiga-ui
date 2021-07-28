@@ -126,11 +126,6 @@ export class TuiToolbarNewComponent {
         ],
     ];
 
-    tableCoordinate = {
-        x: 0,
-        y: 0,
-    };
-
     @ViewChildren('button')
     private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;
 
@@ -294,18 +289,6 @@ export class TuiToolbarNewComponent {
 
     get justify(): boolean {
         return !!this.editor.isActive({textAlign: 'justify'});
-    }
-
-    get columnsNumber(): number {
-        return Math.max(3, this.tableCoordinate.y + 2);
-    }
-
-    get rowsNumber(): number {
-        return Math.max(3, this.tableCoordinate.x + 2);
-    }
-
-    tableSelectHovered(x: number, y: number): boolean {
-        return x <= this.tableCoordinate.x && y <= this.tableCoordinate.y;
     }
 
     onBottomFocus() {
@@ -502,10 +485,6 @@ export class TuiToolbarNewComponent {
 
     toggleSuperscript() {
         this.editor.toggleSuperscript();
-    }
-
-    updateCurrent(x: number, y: number) {
-        this.tableCoordinate = {x, y};
     }
 
     private toggleCode() {

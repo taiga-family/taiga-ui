@@ -14,13 +14,13 @@ import {NgControl} from '@angular/forms';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {TuiTiptapEditorDirective} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {
     AbstractTuiControl,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
-import {TuiTiptapEditorDirective} from '../../directives';
 
 const EMPTY_PARAGRAPH = '<p></p>';
 
