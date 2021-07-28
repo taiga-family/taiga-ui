@@ -59,6 +59,21 @@ export class TuiDayRange extends TuiMonthRange {
     }
 
     /**
+     * @deprecated
+     * TODO rm deprecated version in v3.0
+     */
+    static normalizeParse(
+        rangeString: string,
+        dateFiller: string,
+        dateRangeFiller: string,
+    ): TuiDayRange;
+    static normalizeParse(
+        rangeString: string,
+        dateFillerLength: number,
+        dateRangeFillerLength: number,
+    ): TuiDayRange;
+
+    /**
      * Parse and correct a day range in string format
      *
      * @param rangeString a string of dates in a format dd.mm.yyyy - dd.mm.yyyy
@@ -66,19 +81,28 @@ export class TuiDayRange extends TuiMonthRange {
      */
     static normalizeParse(
         rangeString: string,
-        dateFiller: string,
-        dateRangeFiller: string,
+        dateFillerOrItsLength: string | number,
+        dateRangeFillerOrItsLength: string | number,
     ): TuiDayRange {
-        const leftDay = TuiDay.normalizeParse(rangeString.slice(0, dateFiller.length));
+        const dateFillerLength =
+            typeof dateFillerOrItsLength === 'number'
+                ? dateFillerOrItsLength
+                : dateFillerOrItsLength.length;
+        const dateRangeFillerLength =
+            typeof dateRangeFillerOrItsLength === 'number'
+                ? dateRangeFillerOrItsLength
+                : dateRangeFillerOrItsLength.length;
 
-        if (rangeString.length < dateRangeFiller.length) {
+        const leftDay = TuiDay.normalizeParse(rangeString.slice(0, dateFillerLength));
+
+        if (rangeString.length < dateRangeFillerLength) {
             return new TuiDayRange(leftDay, leftDay);
         }
 
         return TuiDayRange.sort(
             leftDay,
             TuiDay.normalizeParse(
-                rangeString.slice(dateFiller.length + RANGE_SEPARATOR_CHAR.length),
+                rangeString.slice(dateFillerLength + RANGE_SEPARATOR_CHAR.length),
             ),
         );
     }
