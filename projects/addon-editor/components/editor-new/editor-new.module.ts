@@ -5,6 +5,7 @@ import {TuiToolbarNewModule} from '@taiga-ui/addon-editor/components/toolbar-new
 import {TuiHoveredModule} from '@taiga-ui/cdk';
 import {TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';
 import {TuiDropdownSelectionModule} from '@taiga-ui/kit';
+import {TuiTiptapEditorModule} from '../../directives/tiptap-editor/tiptap-editor.module';
 import {TuiEditorNewComponent} from './editor-new.component';
 
 @NgModule({
@@ -17,6 +18,7 @@ import {TuiEditorNewComponent} from './editor-new.component';
         TuiScrollbarModule,
         TuiEditLinkModule,
         TuiDropdownSelectionModule,
+        TuiTiptapEditorModule,
     ],
     exports: [TuiEditorNewComponent],
 })

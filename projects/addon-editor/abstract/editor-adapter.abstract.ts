@@ -1,7 +1,10 @@
+import {Directive} from '@angular/core';
 import {Subject} from 'rxjs';
 
+@Directive()
 export abstract class TuiEditor {
     readonly stateChange$ = new Subject();
+    readonly valueChange$ = new Subject<string>();
 
     abstract isActive(name: string | Record<string, string>): boolean;
     abstract undoDisabled(): boolean;
@@ -41,4 +44,7 @@ export abstract class TuiEditor {
     abstract setHeading(level: number): void;
     abstract setParagraph(): void;
     abstract toggleLink(href: string): void;
+
+    abstract focus(): void;
+    abstract get isFocused(): boolean;
 }

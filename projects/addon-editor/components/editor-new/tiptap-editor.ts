@@ -1,5 +1,6 @@
 // @ts-ignore
-import type {InjectionToken} from '@angular/core';
+import {Inject, Injectable, InjectionToken, Optional} from '@angular/core';
+import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 // @ts-ignore
 import type {BackgroundColor} from '@taiga-ui/addon-editor/extensions';
 // @ts-ignore
@@ -30,19 +31,26 @@ import type Underline from '@tiptap/extension-underline';
 // @ts-ignore
 import type StarterKit from '@tiptap/starter-kit';
 import {redoDepth, undoDepth} from 'prosemirror-history';
-import {TuiEditor} from './editor-adapter.abstract';
+import {TIPTAP_EDITOR} from '../../directives/tiptap-editor/tiptap-editor.providers';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
+// @dynamic
+@Injectable({providedIn: 'root'})
 export class TuiTiptapEditor extends TuiEditor {
-    editor: Editor;
+    get isFocused(): boolean {
+        return this.editor.isFocused;
+    }
 
-    constructor(editor: Editor) {
+    constructor(@Inject(TIPTAP_EDITOR) private readonly editor: Editor) {
         super();
-        this.editor = editor;
 
         editor.on('transaction', () => {
             this.stateChange$.next();
+        });
+
+        editor.on('update', () => {
+            this.valueChange$.next(editor.getHTML());
         });
     }
 
@@ -198,5 +206,9 @@ export class TuiTiptapEditor extends TuiEditor {
 
     toggleLink(href: string) {
         this.editor.chain().focus().toggleLink({href}).run();
+    }
+
+    focus() {
+        this.editor.chain().focus().run();
     }
 }

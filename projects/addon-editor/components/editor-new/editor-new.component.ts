@@ -1,31 +1,26 @@
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ElementRef,
     forwardRef,
     Inject,
     Input,
-    OnInit,
     Optional,
     Self,
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
-import {TuiTiptapEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {
     AbstractTuiControl,
-    getClosestElement,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TuiBooleanHandler,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
-import {Editor, Extensions} from '@tiptap/core';
-import {TUI_EDITOR_EXTENSIONS} from './editor-new.providers';
+import {TuiTiptapEditorDirective} from '../../directives';
 
 const EMPTY_PARAGRAPH = '<p></p>';
 
@@ -41,20 +36,22 @@ const EMPTY_PARAGRAPH = '<p></p>';
         },
     ],
 })
-export class TuiEditorNewComponent extends AbstractTuiControl<string> implements OnInit {
+export class TuiEditorNewComponent
+    extends AbstractTuiControl<string>
+    implements AfterViewInit
+{
     @Input()
     @tuiDefaultProp()
     exampleText = '';
 
-    @ViewChild('editorRef', {static: true})
-    editorRef?: ElementRef<HTMLElement>;
+    @ViewChild('editorRef', {read: TuiTiptapEditorDirective})
+    editorRef?: TuiTiptapEditorDirective;
 
     @ViewChild(TuiToolbarNewComponent)
     toolbar?: TuiToolbarNewComponent;
 
-    editor: Editor | null = null;
-    editorAdapter!: TuiEditor;
-
+    @Input()
+    @tuiDefaultProp()
     tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
 
     constructor(
@@ -63,42 +60,26 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_EDITOR_EXTENSIONS) private readonly extensions: Extensions,
     ) {
         super(control, changeDetectorRef);
     }
 
-    ngOnInit() {
-        this.editor = new Editor({
-            element: this.editorRef?.nativeElement,
-            extensions: [...this.extensions],
-        });
+    get editor(): TuiEditor | undefined {
+        return this.editorRef?.editor;
+    }
 
-        this.editorAdapter = new TuiTiptapEditor(this.editor);
+    ngAfterViewInit() {
+        this.editor?.stateChange$.subscribe(() => this.changeDetectorRef.markForCheck());
 
-        this.editor?.on('update', () => {
-            this.onModelChange(this.editor?.getHTML() || '');
-        });
-
-        this.editor?.on('transaction', () => {
-            this.changeDetectorRef.markForCheck();
-        });
+        this.editor?.valueChange$.subscribe(val => this.onModelChange(val));
     }
 
     protected getFallbackValue(): string {
         return '';
     }
 
-    onAddLink() {}
-
-    onRemoveLink() {}
-
     get focused(): boolean {
         return !!this.editor?.isFocused || (!!this.toolbar && this.toolbar.focused);
-    }
-
-    get dropdownSelectionHandler(): TuiBooleanHandler<any> {
-        return () => true;
     }
 
     get placeholderRaised(): boolean {
@@ -116,16 +97,12 @@ export class TuiEditorNewComponent extends AbstractTuiControl<string> implements
     }
 
     onMouseDown(event: MouseEvent) {
-        if (
-            !(event.target instanceof Element) ||
-            this.editor?.isFocused ||
-            !!getClosestElement(event.target, 'button')
-        ) {
+        if (this.editor?.isFocused) {
             return;
         }
 
         event.preventDefault();
-        this.editor?.chain().focus().run();
+        this.editor?.focus();
     }
 
     onModelChange(value: string) {

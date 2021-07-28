@@ -485,7 +485,7 @@ export class TuiToolbarNewComponent {
     }
 
     toggleUnorderedList() {
-        this.editor.toggleUnderline();
+        this.editor.toggleUnorderedList();
     }
 
     toggleQuote() {

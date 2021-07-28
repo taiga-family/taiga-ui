@@ -14,7 +14,11 @@
     (mousedown)="onMouseDown($event)"
 >
     <div class="toolbar-wrapper">
-        <tui-toolbar [editor]="editorAdapter" [tools]="tools"></tui-toolbar>
+        <tui-toolbar
+            *ngIf="editor"
+            [editor]="editor"
+            [tools]="tools"
+        ></tui-toolbar>
         <div
             class="placeholder"
             [class.placeholder_raised]="placeholderRaised"
@@ -26,6 +30,6 @@
     </div>
 
     <tui-scrollbar class="scrollbar">
-        <div #editorRef class="editor"></div>
+        <div #editorRef tuiTiptapEditor class="editor"></div>
     </tui-scrollbar>
 </div>
