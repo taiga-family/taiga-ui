@@ -1,6 +1,9 @@
 import {TuiWithOptionalMinMaxWithValue} from '@taiga-ui/core';
 
-/** @internal */
+/**
+ * @deprecated
+ * @internal
+ */
 export interface WithDateMaskPipeConfig<T, G>
     extends TuiWithOptionalMinMaxWithValue<T, G> {
     fillerLength: number;

@@ -29,7 +29,6 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiMonth,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     sizeBigger,
@@ -112,6 +111,12 @@ export class TuiInputDateComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
+    private readonly textMaskOptions: TuiTextMaskOptions = {
+        mask: TUI_DATE_MASK,
+        pipe: tuiCreateAutoCorrectedDatePipe(this),
+        guide: false,
+    };
+
     constructor(
         @Optional()
         @Self()
@@ -161,12 +166,6 @@ export class TuiInputDateComponent
         return value ? String(value) : nativeValue;
     }
 
-    get computedMask(): TuiTextMaskOptions {
-        return this.activeItem
-            ? EMPTY_MASK
-            : this.calculateMask(this.value, this.min, this.max, DATE_FILLER_LENGTH);
-    }
-
     get computedActiveYearMonth(): TuiMonth {
         if (this.items[0] && this.value && this.value.daySame(this.items[0].day)) {
             return this.items[0].displayDay;
@@ -189,6 +188,10 @@ export class TuiInputDateComponent
 
     get canOpen(): boolean {
         return !this.computedDisabled && !this.readOnly && !this.computedMobile;
+    }
+
+    get computedMask(): TuiTextMaskOptions {
+        return this.activeItem ? EMPTY_MASK : this.textMaskOptions;
     }
 
     get activeItem(): TuiNamedDay | null {
@@ -278,19 +281,5 @@ export class TuiInputDateComponent
         newValue: TuiDay | null,
     ): boolean {
         return nullableSame(oldValue, newValue, (a, b) => a.daySame(b));
-    }
-
-    @tuiPure
-    private calculateMask(
-        value: TuiDay | null,
-        min: TuiDay,
-        max: TuiDay,
-        fillerLength: number,
-    ): TuiTextMaskOptions {
-        return {
-            mask: TUI_DATE_MASK,
-            pipe: tuiCreateAutoCorrectedDatePipe({value, min, max, fillerLength}),
-            guide: false,
-        };
     }
 }
