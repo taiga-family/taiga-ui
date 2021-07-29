@@ -299,11 +299,7 @@ export class TuiInputDateRangeComponent
             return;
         }
 
-        const parsedValue = TuiDayRange.normalizeParse(
-            value,
-            DATE_FILLER_LENGTH,
-            DATE_RANGE_FILLER_LENGTH,
-        );
+        const parsedValue = TuiDayRange.normalizeParse(value);
 
         this.updateValue(
             !this.minLength && !this.maxLength
@@ -355,13 +351,7 @@ export class TuiInputDateRangeComponent
                 this.nativeValue.length ===
                     DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length)
         ) {
-            this.updateValue(
-                TuiDayRange.normalizeParse(
-                    this.nativeValue,
-                    DATE_FILLER_LENGTH,
-                    DATE_RANGE_FILLER_LENGTH,
-                ),
-            );
+            this.updateValue(TuiDayRange.normalizeParse(this.nativeValue));
         }
     }
 

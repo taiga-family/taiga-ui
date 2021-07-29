@@ -1,4 +1,5 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
+import {DATE_FILLER_LENGTH, DATE_RANGE_FILLER_LENGTH} from '@taiga-ui/cdk/constants';
 import {RANGE_SEPARATOR_CHAR} from './date-time';
 import {TuiDay} from './day';
 import {TuiMonthRange} from './month-range';
@@ -67,11 +68,7 @@ export class TuiDayRange extends TuiMonthRange {
         dateFiller: string,
         dateRangeFiller: string,
     ): TuiDayRange;
-    static normalizeParse(
-        rangeString: string,
-        dateFillerLength: number,
-        dateRangeFillerLength: number,
-    ): TuiDayRange;
+    static normalizeParse(rangeString: string): TuiDayRange;
 
     /**
      * Parse and correct a day range in string format
@@ -79,30 +76,17 @@ export class TuiDayRange extends TuiMonthRange {
      * @param rangeString a string of dates in a format dd.mm.yyyy - dd.mm.yyyy
      * @return normalized day range object
      */
-    static normalizeParse(
-        rangeString: string,
-        dateFillerOrItsLength: string | number,
-        dateRangeFillerOrItsLength: string | number,
-    ): TuiDayRange {
-        const dateFillerLength =
-            typeof dateFillerOrItsLength === 'number'
-                ? dateFillerOrItsLength
-                : dateFillerOrItsLength.length;
-        const dateRangeFillerLength =
-            typeof dateRangeFillerOrItsLength === 'number'
-                ? dateRangeFillerOrItsLength
-                : dateRangeFillerOrItsLength.length;
+    static normalizeParse(rangeString: string): TuiDayRange {
+        const leftDay = TuiDay.normalizeParse(rangeString.slice(0, DATE_FILLER_LENGTH));
 
-        const leftDay = TuiDay.normalizeParse(rangeString.slice(0, dateFillerLength));
-
-        if (rangeString.length < dateRangeFillerLength) {
+        if (rangeString.length < DATE_RANGE_FILLER_LENGTH) {
             return new TuiDayRange(leftDay, leftDay);
         }
 
         return TuiDayRange.sort(
             leftDay,
             TuiDay.normalizeParse(
-                rangeString.slice(dateFillerLength + RANGE_SEPARATOR_CHAR.length),
+                rangeString.slice(DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length),
             ),
         );
     }
