@@ -7,6 +7,7 @@
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-primitive-textfield
+        *tuiLet="dateFiller$ | async as dateFiller"
         automation-id="tui-input-date-range__textfield"
         class="textfield"
         tuiValueAccessor
@@ -16,7 +17,7 @@
         [invalid]="computedInvalid"
         [tuiTextfieldExampleText]="computedExampleText"
         [nativeId]="nativeId"
-        [filler]="computedFiller"
+        [filler]="getComputedRangeFiller(dateFiller)"
         [readOnly]="readOnly"
         [iconContent]="computedMobile ? iconContent : calendarIcon"
         [disabled]="computedDisabled"

@@ -16,13 +16,15 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
+    DATE_FILLER_LENGTH,
     nullableSame,
-    TUI_DATE_FILLER,
+    TUI_DATE_FORMAT,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiDateMode,
     TuiDay,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -42,11 +44,16 @@ import {
 import {TuiNamedDay} from '@taiga-ui/kit/classes';
 import {EMPTY_MASK, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_CALENDAR_DATA_STREAM, TUI_MOBILE_CALENDAR} from '@taiga-ui/kit/tokens';
+import {
+    TUI_CALENDAR_DATA_STREAM,
+    TUI_DATE_TEXTS,
+    TUI_MOBILE_CALENDAR,
+} from '@taiga-ui/kit/tokens';
 import {tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {takeUntil} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {pluck, takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
 export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
@@ -97,6 +104,7 @@ export class TuiInputDateComponent
     defaultActiveYearMonth = TuiMonth.currentLocal();
 
     open = false;
+    readonly filler$ = this.dateTexts$.pipe(pluck(this.dateFormat));
 
     private month: TuiMonth | null = null;
 
@@ -123,7 +131,9 @@ export class TuiInputDateComponent
         private readonly mobileCalendar: Type<any> | null,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_DATE_FILLER) readonly filler: string,
+        @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
+        @Inject(TUI_DATE_TEXTS)
+        readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -144,10 +154,6 @@ export class TuiInputDateComponent
         return sizeBigger(this.textfieldSize.size)
             ? 'tuiIconCalendarLarge'
             : 'tuiIconCalendar';
-    }
-
-    get computedFiller(): string {
-        return this.activeItem ? '' : this.filler;
     }
 
     get computedValue(): string {
@@ -194,6 +200,10 @@ export class TuiInputDateComponent
         return (value && this.items.find(item => item.day.daySame(value))) || null;
     }
 
+    getComputedFiller(filler: string): string {
+        return this.activeItem ? '' : filler;
+    }
+
     onMobileClick() {
         if (!this.mobileCalendar) {
             this.open = !this.open;
@@ -231,7 +241,7 @@ export class TuiInputDateComponent
         }
 
         this.updateValue(
-            value.length !== this.filler.length ? null : TuiDay.normalizeParse(value),
+            value.length !== DATE_FILLER_LENGTH ? null : TuiDay.normalizeParse(value),
         );
     }
 

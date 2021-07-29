@@ -13,6 +13,11 @@ export const TUI_TURKISH_LANGUAGE_KIT: LanguageKit = {
         'HH:MM:SS': 'HH:MM:SS',
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
     },
+    dateTexts: {
+        DMY: 'dd.mm.yyyy',
+        MDY: 'mm.dd.yyyy',
+        YMD: 'yyyy.mm.dd',
+    },
     digitalInformationUnits: ['B', 'KB', 'MB'],
     passwordTexts: ['Göster', 'Gizle'],
     copyTexts: ['Kopyala', 'Kopyalandı'],
