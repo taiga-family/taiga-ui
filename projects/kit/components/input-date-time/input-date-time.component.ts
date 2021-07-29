@@ -270,18 +270,6 @@ export class TuiInputDateTimeComponent
         this.nativeValue = value && (value[0] || value[1]) ? this.computedValue : '';
     }
 
-    @tuiPure
-    getDateTimeString(
-        date: TuiDay | string,
-        time: TuiTime | string | null,
-        timeMode: TuiTimeMode = 'HH:MM',
-    ): string {
-        const dateString = date instanceof TuiDay ? date.toString() : date;
-        const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
-
-        return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
-    }
-
     protected getFallbackValue(): [TuiDay | null, TuiTime | null] {
         return [null, null];
     }
@@ -318,5 +306,17 @@ export class TuiInputDateTimeComponent
             pipe: tuiCreateAutoCorrectedDateTimePipe({value: day, min, max}, timeMode),
             guide: false,
         };
+    }
+
+    @tuiPure
+    private getDateTimeString(
+        date: TuiDay | string,
+        time: TuiTime | string | null,
+        timeMode: TuiTimeMode = 'HH:MM',
+    ): string {
+        const dateString = date instanceof TuiDay ? date.toString() : date;
+        const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
+
+        return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
     }
 }
