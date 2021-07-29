@@ -16,6 +16,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
+    DATE_FILLER_LENGTH,
     nullableSame,
     TUI_DATE_FORMAT,
     TUI_FIRST_DAY,
@@ -42,7 +43,7 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit/classes';
-import {DATE_FILLER_LENGTH, EMPTY_MASK, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
+import {EMPTY_MASK, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_CALENDAR_DATA_STREAM,

@@ -15,6 +15,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
+    DATE_FILLER_LENGTH,
     nullableSame,
     RANGE_SEPARATOR_CHAR,
     setNativeFocused,
@@ -48,7 +49,6 @@ import {
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {
-    DATE_FILLER_LENGTH,
     EMPTY_MASK,
     MAX_DAY_RANGE_LENGTH_MAPPER,
     TUI_DATE_RANGE_MASK,

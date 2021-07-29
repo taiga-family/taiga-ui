@@ -6,4 +6,3 @@ export * from './masks';
 export * from './math';
 export * from './max-day-range-length-mapper';
 export * from './router-link-options';
-export * from './date-filler-length';
