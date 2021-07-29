@@ -1,13 +1,17 @@
-import {RANGE_SEPARATOR_CHAR, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {TuiTextMaskPipeHandler} from '@taiga-ui/core';
-
-import {WithDateMaskPipeConfig} from '@taiga-ui/kit/interfaces';
+import {
+    DATE_FILLER_LENGTH,
+    DATE_RANGE_FILLER_LENGTH,
+    RANGE_SEPARATOR_CHAR,
+    TuiDay,
+    TuiDayRange,
+} from '@taiga-ui/cdk';
+import {TuiTextMaskPipeHandler, TuiWithOptionalMinMaxWithValue} from '@taiga-ui/core';
 
 function parseWithLimit(
     value: string,
-    config: WithDateMaskPipeConfig<TuiDayRange | null, TuiDay>,
+    config: TuiWithOptionalMinMaxWithValue<TuiDayRange | null, TuiDay>,
 ): TuiDay {
-    return TuiDay.normalizeParse(value.slice(0, config.fillerLength)).dayLimit(
+    return TuiDay.normalizeParse(value.slice(0, DATE_FILLER_LENGTH)).dayLimit(
         config.min,
         config.max,
     );
@@ -15,22 +19,20 @@ function parseWithLimit(
 
 function processRawValue(
     value: string,
-    config: WithDateMaskPipeConfig<TuiDayRange | null, TuiDay>,
+    config: TuiWithOptionalMinMaxWithValue<TuiDayRange | null, TuiDay>,
 ): string {
-    const fillerLength = config.fillerLength;
-
     switch (value.length) {
-        case fillerLength:
+        case DATE_FILLER_LENGTH:
             return parseWithLimit(value, config).toString();
-        case fillerLength + RANGE_SEPARATOR_CHAR.length:
+        case DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length:
             return parseWithLimit(value, config).toString() + RANGE_SEPARATOR_CHAR;
-        case config.rangeFillerLength:
+        case DATE_RANGE_FILLER_LENGTH:
             return config.value && config.value.toString() === value
                 ? value
                 : TuiDayRange.sort(
-                      parseWithLimit(value.slice(0, fillerLength), config),
+                      parseWithLimit(value.slice(0, DATE_FILLER_LENGTH), config),
                       parseWithLimit(
-                          value.slice(fillerLength + RANGE_SEPARATOR_CHAR.length),
+                          value.slice(DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length),
                           config,
                       ),
                   ).toString();
@@ -54,7 +56,7 @@ function processRawValue(
  * @return mask pipe handler that handles `min` and `max`
  */
 export function tuiCreateAutoCorrectedDateRangePipe(
-    config: WithDateMaskPipeConfig<TuiDayRange | null, TuiDay>,
+    config: TuiWithOptionalMinMaxWithValue<TuiDayRange | null, TuiDay>,
 ): TuiTextMaskPipeHandler {
     return value => ({value: processRawValue(value, config)});
 }

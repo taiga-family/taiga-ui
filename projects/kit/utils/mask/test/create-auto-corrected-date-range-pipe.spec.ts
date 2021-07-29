@@ -9,15 +9,11 @@ function wrapper(
     min: TuiDay | null = null,
     max: TuiDay | null = null,
     value: TuiDayRange | null = null,
-    filler: string = 'dd.mm.yyyy',
-    rangeFiller: string = `${filler}${RANGE_SEPARATOR_CHAR}${filler}`,
 ): string {
     return (tuiCreateAutoCorrectedDateRangePipe({
         min,
         max,
         value,
-        fillerLength: filler.length,
-        rangeFillerLength: rangeFiller.length,
     })(rawString, DUMMY) as TuiTextMaskPipeResult).value;
 }
 

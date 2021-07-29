@@ -16,6 +16,7 @@ import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     DATE_FILLER_LENGTH,
+    DATE_RANGE_FILLER_LENGTH,
     nullableSame,
     RANGE_SEPARATOR_CHAR,
     setNativeFocused,
@@ -227,14 +228,6 @@ export class TuiInputDateRangeComponent
         return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
     }
 
-    get fillerLength(): number {
-        return DATE_FILLER_LENGTH;
-    }
-
-    get rangeFillerLength(): number {
-        return 2 * this.fillerLength + RANGE_SEPARATOR_CHAR.length;
-    }
-
     set nativeValue(value: string) {
         if (!this.nativeFocusableElement) {
             return;
@@ -300,7 +293,7 @@ export class TuiInputDateRangeComponent
             this.control.updateValueAndValidity({emitEvent: false});
         }
 
-        if (value.length !== this.rangeFillerLength) {
+        if (value.length !== DATE_RANGE_FILLER_LENGTH) {
             this.updateValue(null);
 
             return;
@@ -308,8 +301,8 @@ export class TuiInputDateRangeComponent
 
         const parsedValue = TuiDayRange.normalizeParse(
             value,
-            this.fillerLength,
-            this.rangeFillerLength,
+            DATE_FILLER_LENGTH,
+            DATE_RANGE_FILLER_LENGTH,
         );
 
         this.updateValue(
@@ -358,15 +351,15 @@ export class TuiInputDateRangeComponent
         if (
             !focused &&
             !this.itemSelected &&
-            (this.nativeValue.length === this.fillerLength ||
+            (this.nativeValue.length === DATE_FILLER_LENGTH ||
                 this.nativeValue.length ===
-                    this.fillerLength + RANGE_SEPARATOR_CHAR.length)
+                    DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length)
         ) {
             this.updateValue(
                 TuiDayRange.normalizeParse(
                     this.nativeValue,
-                    this.fillerLength,
-                    this.rangeFillerLength,
+                    DATE_FILLER_LENGTH,
+                    DATE_RANGE_FILLER_LENGTH,
                 ),
             );
         }
