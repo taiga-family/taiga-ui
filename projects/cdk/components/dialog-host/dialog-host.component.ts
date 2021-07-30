@@ -64,7 +64,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
     }
 
     onDialog({propertyName}: TransitionEvent, popupOpened: boolean) {
-        if (this.isCloseOnBackNavDisabled && propertyName !== 'letter-spacing') {
+        if (this.isCloseOnBackNavDisabled || propertyName !== 'letter-spacing') {
             return;
         }
 
