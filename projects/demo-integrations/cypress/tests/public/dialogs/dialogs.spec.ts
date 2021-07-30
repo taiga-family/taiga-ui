@@ -1,21 +1,12 @@
-export function waitKitDialog() {
-    cy.get('tui-dialog')
-        .last()
-        .should('be.visible')
-        .should('not.have.class', 'ng-animating');
-}
+import {DIALOG_PAGE_URL, waitKitDialog} from './utils';
 
-xdescribe('Dialogs', () => {
-    before(() => {
-        cy.visit('/');
-        cy.wait(500);
-        cy.viewport(720, 720);
+describe('Dialogs', () => {
+    beforeEach(() => {
+        cy.viewport(720, 900);
     });
 
     it('A dialog and a nested dialog are open correctly', () => {
-        cy.visit('services/dialog-service', {failOnStatusCode: false});
-
-        cy.wait(500);
+        cy.goToDemoPage(DIALOG_PAGE_URL);
 
         cy.get(`tui-dialog-example-2 button`).first().click();
         waitKitDialog();
@@ -28,9 +19,7 @@ xdescribe('Dialogs', () => {
     });
 
     it('Mobile dialog works', () => {
-        cy.viewport(720, 900);
-        cy.visit('services/dialog-service', {failOnStatusCode: false});
-        cy.wait(500);
+        cy.goToDemoPage(DIALOG_PAGE_URL);
 
         cy.get(`tui-dialog-example-4 button`).first().click();
         waitKitDialog();
