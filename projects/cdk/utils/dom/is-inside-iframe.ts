@@ -2,5 +2,5 @@
  * Checks if an app is running inside <iframe /> tag
  */
 export function isInsideIframe(windowRef: Window): boolean {
-    return windowRef.self !== windowRef.top;
+    return windowRef.parent !== windowRef;
 }
