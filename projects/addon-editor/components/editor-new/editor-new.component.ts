@@ -72,6 +72,8 @@ export class TuiEditorNewComponent
         this.editor?.stateChange$.subscribe(() => this.changeDetectorRef.markForCheck());
 
         this.editor?.valueChange$.subscribe(val => this.onModelChange(val));
+
+        this.editor?.setValue(this.control?.value);
     }
 
     protected getFallbackValue(): string {

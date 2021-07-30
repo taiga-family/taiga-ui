@@ -45,7 +45,7 @@ export const BackgroundColor = Extension.create<BackgroundColorOptions>({
                         },
                         parseHTML: element => {
                             return {
-                                fontColor: element.style.backgroundColor.replace(
+                                backgroundColor: element.style.backgroundColor.replace(
                                     /['"]+/g,
                                     '',
                                 ),
@@ -63,12 +63,16 @@ export const BackgroundColor = Extension.create<BackgroundColorOptions>({
         unsetBackgroundColor?: (() => Command) | undefined;
     } {
         return {
-            setBackgroundColor: backgroundColor => ({chain}) => {
-                return chain().setMark('textStyle', {backgroundColor}).run();
-            },
-            unsetBackgroundColor: () => ({chain}) => {
-                return chain().setMark('textStyle', {backgroundColor: null}).run();
-            },
+            setBackgroundColor:
+                backgroundColor =>
+                ({chain}) => {
+                    return chain().setMark('textStyle', {backgroundColor}).run();
+                },
+            unsetBackgroundColor:
+                () =>
+                ({chain}) => {
+                    return chain().setMark('textStyle', {backgroundColor: null}).run();
+                },
         };
     },
 });

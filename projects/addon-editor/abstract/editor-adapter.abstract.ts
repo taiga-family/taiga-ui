@@ -44,7 +44,10 @@ export abstract class TuiEditor {
     abstract setHeading(level: number): void;
     abstract setParagraph(): void;
     abstract toggleLink(href: string): void;
+    abstract indent(): void;
+    abstract outdent(): void;
 
     abstract focus(): void;
     abstract get isFocused(): boolean;
+    abstract setValue(value: string): void;
 }

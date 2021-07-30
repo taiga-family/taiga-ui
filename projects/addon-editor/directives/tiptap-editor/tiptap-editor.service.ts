@@ -1,5 +1,5 @@
-// @ts-ignore
-import {Inject, Injectable, InjectionToken, Optional} from '@angular/core';
+// tslint:disable:no-unused-vars
+import {Inject, Injectable} from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 // @ts-ignore
 import type {BackgroundColor} from '@taiga-ui/addon-editor/extensions';
@@ -50,7 +50,10 @@ export class TuiTiptapEditorService extends TuiEditor {
         });
 
         editor.on('update', () => {
-            this.valueChange$.next(editor.getHTML());
+            const content = editor.getHTML();
+            const json = editor.getJSON().content;
+
+            this.valueChange$.next(this.isEmptyParagraph(json) ? '' : content);
         });
     }
 
@@ -208,7 +211,25 @@ export class TuiTiptapEditorService extends TuiEditor {
         this.editor.chain().focus().toggleLink({href}).run();
     }
 
+    indent() {
+        this.editor.chain().focus().indent();
+    }
+
+    outdent() {
+        this.editor.chain().focus().outdent();
+    }
+
     focus() {
         this.editor.chain().focus().run();
+    }
+
+    setValue(value: string): void {
+        this.editor.commands.setContent(value);
+    }
+
+    private isEmptyParagraph(json: Object[]): boolean {
+        return (
+            Array.isArray(json) && json.length === 1 && !json[0].hasOwnProperty('content')
+        );
     }
 }

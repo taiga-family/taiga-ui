@@ -424,11 +424,11 @@ export class TuiToolbarNewComponent {
     }
 
     indent() {
-        // TODO
+        this.editor.indent();
     }
 
     outdent() {
-        // TODO
+        this.editor.outdent();
     }
 
     insertHorizontalRule() {
