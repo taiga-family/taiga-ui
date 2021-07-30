@@ -32,6 +32,10 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
                 .sort((a, b) => a.createdAt - b.createdAt),
         ),
     );
+    /**
+     * TODO enable this feature for iframes too
+     * when the legacy frame manager (with an iframe inside) will be removed on all internal projects
+     */
     private isCloseOnBackNavDisabled = isInsideIframe(this.windowRef);
 
     constructor(
