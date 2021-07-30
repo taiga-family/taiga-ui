@@ -3,6 +3,7 @@
     appearance="textfield"
     [readOnly]="readOnly"
     [disabled]="disabled"
+    [invalid]="computedInvalid"
     [focused]="computedFocused"
     [hovered]="computedHovered"
     [invalid]="computedInvalid"
@@ -12,6 +13,7 @@
     class="wrapper"
     (tuiHoveredChange)="onHovered($event)"
     (mousedown)="onMouseDown($event)"
+    (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div class="toolbar-wrapper">
         <tui-toolbar

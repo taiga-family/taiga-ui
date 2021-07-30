@@ -76,10 +76,6 @@ export class TuiEditorNewComponent
         this.editor?.setValue(this.control?.value);
     }
 
-    protected getFallbackValue(): string {
-        return '';
-    }
-
     get focused(): boolean {
         return !!this.editor?.isFocused || (!!this.toolbar && this.toolbar.focused);
     }
@@ -98,6 +94,10 @@ export class TuiEditorNewComponent
         this.updateHovered(hovered);
     }
 
+    onActiveZone(active: boolean) {
+        this.updateFocused(active);
+    }
+
     onMouseDown(event: MouseEvent) {
         if (this.editor?.isFocused) {
             return;
@@ -109,6 +109,10 @@ export class TuiEditorNewComponent
 
     onModelChange(value: string) {
         this.updateValue(value.trim() === EMPTY_PARAGRAPH ? '' : value);
+    }
+
+    protected getFallbackValue(): string {
+        return '';
     }
 
     private get hasValue(): boolean {

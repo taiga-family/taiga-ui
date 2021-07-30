@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {defaultExtensions, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/addon-editor';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
@@ -18,5 +18,5 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiEditorNewExample1 {
-    control = new FormControl('<p>Hello <code>world</code> </p>');
+    control = new FormControl('<p>Hello world</p>', Validators.required);
 }
