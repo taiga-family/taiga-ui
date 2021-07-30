@@ -1,11 +1,12 @@
 import {addMatchImageSnapshotCommand} from 'cypress-image-snapshot/command';
-import {goToDemoPage} from './utils';
+import {goToDemoPage} from './go-to-demo-page.util';
 
 declare global {
     namespace Cypress {
         interface Chainable<Subject = any> {
             getByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
-            goToDemoPage(path: string): void;
+
+            goToDemoPage: typeof goToDemoPage;
         }
     }
 }
