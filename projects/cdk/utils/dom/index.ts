@@ -10,3 +10,4 @@ export * from './get-element-offset';
 export * from './get-scroll-parent';
 export * from './is-current-target';
 export * from './is-node-in';
+export * from './is-inside-iframe';
