@@ -20,7 +20,7 @@ export const TUI_GERMAN_LANGUAGE_CORE: LanguageCore = {
     nothingFoundMessage: 'Keine Ergebnisse',
     defaultErrorMessage: 'Wert ist ungültig',
     spinTexts: ['Zurück', 'Weiter'],
-    shortWeekDays: ['Mon', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+    shortWeekDays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
     // TODO: i18n replace with current language countries list
     countries: TUI_ENGLISH_LANGUAGE_COUNTRIES,
 };
