@@ -1,6 +1,7 @@
 import {inject, InjectionToken} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {typedFromEvent} from '@taiga-ui/cdk/observables';
+import {getActualTarget, getDocumentOrShadowRoot} from '@taiga-ui/cdk/utils';
 import {merge, Observable, of, timer} from 'rxjs';
 import {
     distinctUntilChanged,
@@ -44,16 +45,36 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                     map(() => document.activeElement),
                     filter(element => !!element && element.matches('iframe')),
                 ),
-                focusin$.pipe(map(({target}) => target)),
+                focusin$.pipe(
+                    switchMap(event => {
+                        const target = getActualTarget(event);
+                        const root = getDocumentOrShadowRoot(target);
+
+                        return root === document
+                            ? of(target)
+                            : shadowRootActiveElement(root as Document);
+                    }),
+                ),
                 mousedown$.pipe(
-                    switchMap(({target}) =>
+                    switchMap(event =>
                         !document.activeElement ||
                         document.activeElement === document.body
-                            ? of(target)
-                            : focusout$.pipe(take(1), takeUntil(timer(0)), mapTo(target)),
+                            ? of(getActualTarget(event))
+                            : focusout$.pipe(
+                                  take(1),
+                                  takeUntil(timer(0)),
+                                  mapTo(getActualTarget(event)),
+                              ),
                     ),
                 ),
             ).pipe(distinctUntilChanged(), share());
         },
     },
 );
+
+function shadowRootActiveElement(root: Document): Observable<EventTarget | null> {
+    return merge(
+        typedFromEvent(root, 'focusin').pipe(map(({target}) => target)),
+        typedFromEvent(root, 'focusout').pipe(map(({relatedTarget}) => relatedTarget)),
+    );
+}
