@@ -1,7 +1,12 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiFocusableModule, TuiFocusedModule, TuiHoveredModule} from '@taiga-ui/cdk';
+import {
+    TuiFocusableModule,
+    TuiFocusedModule,
+    TuiHoveredModule,
+    TuiLetModule,
+} from '@taiga-ui/cdk';
 import {TuiScrollbarModule, TuiTooltipModule, TuiWrapperModule} from '@taiga-ui/core';
 import {TuiTextAreaComponent} from './text-area.component';
 
@@ -15,6 +20,7 @@ import {TuiTextAreaComponent} from './text-area.component';
         TuiScrollbarModule,
         TuiTooltipModule,
         TuiWrapperModule,
+        TuiLetModule,
     ],
     declarations: [TuiTextAreaComponent],
     exports: [TuiTextAreaComponent],
