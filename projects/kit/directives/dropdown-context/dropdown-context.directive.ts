@@ -61,12 +61,12 @@ export class TuiDropdownContextDirective<C extends object>
         protected readonly elementRef: ElementRef,
         @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(TuiDestroyService) readonly destroy$: TuiDestroyService,
-        @Inject(ComponentFactoryResolver)
-        readonly componentFactoryResolver: ComponentFactoryResolver,
-        @Inject(Injector) readonly injector: Injector,
-        @Inject(TuiPortalService) readonly portalService: TuiPortalService,
         @Inject(TuiParentsScrollService) readonly refresh$: TuiParentsScrollService,
-        @Optional() readonly activeZone: TuiActiveZoneDirective | null,
+        @Inject(ComponentFactoryResolver)
+        componentFactoryResolver: ComponentFactoryResolver,
+        @Inject(Injector) injector: Injector,
+        @Inject(TuiPortalService) portalService: TuiPortalService,
+        @Optional() activeZone: TuiActiveZoneDirective | null,
     ) {
         super(componentFactoryResolver, injector, portalService, elementRef, activeZone);
 
