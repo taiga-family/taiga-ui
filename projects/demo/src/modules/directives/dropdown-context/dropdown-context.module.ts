@@ -6,7 +6,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiTableModule} from '@taiga-ui/addon-table';
 import {TuiButtonModule, TuiDataListModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiDropdownContextModule, TuiTextAreaModule} from '@taiga-ui/kit';
-import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
+import {DropdownControllerDocumentationModule} from '../../components/abstract/dropdown-controller-documentation/dropdown-controller-documentation.module';
 import {ExampleTuiDropdownContextComponent} from './dropdown-context.component';
 import {TuiDropdownContextExample1} from './examples/1';
 import {TuiDropdownContextExample2} from './examples/2';
@@ -22,9 +22,9 @@ import {TuiDropdownContextExample3} from './examples/3';
         TuiDropdownContextModule,
         TuiTextAreaModule,
         TuiButtonModule,
-        InheritedDocumentationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiDropdownContextComponent)),
         ReactiveFormsModule,
+        DropdownControllerDocumentationModule,
     ],
     declarations: [
         ExampleTuiDropdownContextComponent,
