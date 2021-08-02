@@ -21,11 +21,15 @@ import {
     TuiParentsScrollService,
     TuiPortalService,
 } from '@taiga-ui/cdk';
-import {AbstractTuiDropdown, TUI_DROPDOWN_DIRECTIVE, TuiDropdown} from '@taiga-ui/core';
+import {
+    AbstractTuiDropdown,
+    TUI_DROPDOWN_DIRECTIVE,
+    TuiDropdown,
+    TuiDropdownBoxComponent,
+} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, merge} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
-import {TuiDropdownContextHostComponent} from './dropdown-context-host.component';
 
 // @dynamic
 @Directive({
@@ -48,13 +52,10 @@ export class TuiDropdownContextDirective<C extends object>
 
     @Input('tuiDropdownContextData')
     @tuiDefaultProp()
-    context: C | null = null;
+    contextData: C | null = null;
 
-    private hostRef: ComponentRef<TuiDropdownContextHostComponent> | null = null;
-
-    private get dropdownContent(): HTMLElement | null {
-        return this.hostRef?.instance.contentRef?.nativeElement || null;
-    }
+    private lastClickedClientRect: ClientRect = this.getClientRectFromDot(0, 0);
+    private hostRef: ComponentRef<TuiDropdownBoxComponent> | null = null;
 
     constructor(
         protected readonly elementRef: ElementRef,
@@ -74,14 +75,26 @@ export class TuiDropdownContextDirective<C extends object>
                 filter(() => !!this.dropdownContent),
                 takeUntil(destroy$),
             )
-            .subscribe(() => this.closeDropdown());
+            .subscribe(() => this.closeDropdownBox());
+    }
+
+    get clientRect(): ClientRect {
+        return this.lastClickedClientRect;
+    }
+
+    get context(): (TuiContextWithImplicit<C> & {close: () => void}) | null {
+        return this.buildContext(this.contextData || ({} as C));
+    }
+
+    private get dropdownContent(): HTMLElement | null {
+        return this.hostRef?.instance.contentElementRef?.nativeElement || null;
     }
 
     @HostListener('contextmenu.prevent', ['$event'])
     onContextMenu(event: MouseEvent) {
         const {clientX: x, clientY: y} = event;
 
-        this.closeDropdown();
+        this.closeDropdownBox();
         this.hostRef = this.openDropdown(x, y);
     }
 
@@ -90,7 +103,7 @@ export class TuiDropdownContextDirective<C extends object>
         const clickedInside = this.dropdownContent?.contains(target);
 
         if (!clickedInside) {
-            this.closeDropdown();
+            this.closeDropdownBox();
         }
     }
 
@@ -99,7 +112,7 @@ export class TuiDropdownContextDirective<C extends object>
         const isAnotherContextOpened = !this.elementRef.nativeElement.contains(target);
 
         if (isAnotherContextOpened) {
-            this.closeDropdown();
+            this.closeDropdownBox();
         }
     }
 
@@ -135,18 +148,11 @@ export class TuiDropdownContextDirective<C extends object>
         }
 
         event.stopPropagation();
-        this.closeDropdown();
-    }
-
-    private closeDropdown(): void {
-        if (this.hostRef) {
-            this.portalService.remove(this.hostRef);
-            this.hostRef = null;
-        }
+        this.closeDropdownBox();
     }
 
     private buildContext(data: C): TuiContextWithImplicit<C> & {close: () => void} {
-        const close = this.closeDropdown.bind(this);
+        const close = this.closeDropdownBox.bind(this);
 
         return {
             close,
@@ -157,19 +163,21 @@ export class TuiDropdownContextDirective<C extends object>
     private openDropdown(
         x: number,
         y: number,
-    ): ComponentRef<TuiDropdownContextHostComponent> {
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-            TuiDropdownContextHostComponent,
-        );
-        const componentRef = this.portalService.add(componentFactory, this.injector);
+    ): ComponentRef<TuiDropdownBoxComponent> | null {
+        this.lastClickedClientRect = this.getClientRectFromDot(x, y);
+        this.openDropdownBox();
 
-        componentRef.instance.content = this.content;
-        componentRef.instance.context = this.buildContext(this.context || ({} as C));
-        componentRef.instance.x = x;
-        componentRef.instance.y = y;
+        return this.dropdownBoxRef;
+    }
 
-        componentRef.changeDetectorRef.detectChanges();
-
-        return componentRef;
+    private getClientRectFromDot(x: number, y: number): ClientRect {
+        return {
+            top: y,
+            bottom: y,
+            left: x,
+            right: x,
+            height: 0,
+            width: 0,
+        };
     }
 }
