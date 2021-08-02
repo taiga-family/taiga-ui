@@ -72,10 +72,14 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
     },
 );
 
+// Checks if focusout event should be considered leaving active zone
 function isValidFocusout(target: any, removedElement: Element | null): boolean {
     return (
+        // Not due to switching tabs/going to DevTools
         target.ownerDocument?.activeElement !== target &&
+        // Not due to button/input becoming disabled
         !target.disabled &&
+        // Not due to element being removed from DOM
         (!removedElement || !removedElement.contains(target))
     );
 }
