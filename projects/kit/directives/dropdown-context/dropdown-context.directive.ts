@@ -119,20 +119,16 @@ export class TuiDropdownContextDirective<C extends object>
     @HostListener('document:keydown.arrowDown', ['$event', 'true'])
     @HostListener('document:keydown.arrowUp', ['$event', 'false'])
     onArrow(event: KeyboardEvent, down: boolean) {
-        if (
-            !this.dropdownContent ||
-            !(this.dropdownContent.nextElementSibling instanceof HTMLElement)
-        ) {
+        if (!this.dropdownContent) {
             return;
         }
 
         event.preventDefault();
 
-        const focusable = getClosestFocusable(
-            down ? this.dropdownContent : this.dropdownContent.nextElementSibling,
-            !down,
-            this.dropdownContent,
-        );
+        const nextEl = this.dropdownContent.nextElementSibling;
+        const initial =
+            down || !this.checkIsFocusableElement(nextEl) ? this.dropdownContent : nextEl;
+        const focusable = getClosestFocusable(initial, !down, this.dropdownContent);
 
         if (focusable === null) {
             return;
@@ -179,5 +175,9 @@ export class TuiDropdownContextDirective<C extends object>
             height: 0,
             width: 0,
         };
+    }
+
+    private checkIsFocusableElement(element: Element | null): element is HTMLElement {
+        return !!element && 'focus' in element && 'blur' in element;
     }
 }
