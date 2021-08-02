@@ -20,4 +20,5 @@ export interface TuiDropdown {
     sided?: boolean;
     fixed?: boolean;
     activeZone?: TuiActiveZoneDirective | null;
+    context?: unknown;
 }
