@@ -45,11 +45,11 @@
             <p
                 i18n
                 [tuiDropdownContext]="dropdownContent"
-                [tuiDropdownMinHeight]="tuiDropdownMinHeight"
-                [tuiDropdownMaxHeight]="tuiDropdownMaxHeight"
-                [tuiDropdownAlign]="tuiDropdownAlign"
-                [tuiDropdownDirection]="tuiDropdownDirection"
-                [tuiDropdownLimitWidth]="tuiDropdownLimitWidth"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownAlign]="dropdownAlign"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownLimitWidth]="dropdownLimitWidth"
             >
                 Right click on me to <strong>see a dropdown</strong>
             </p>
@@ -83,57 +83,8 @@
                 <code>context.$implicit</code> to input property
                 <strong>tuiDropdownContext</strong> (PolymorpheusContent)
             </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownAlign"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiHorizontalDirection"
-                [documentationPropertyValues]="alignVariants"
-                [(documentationPropertyValue)]="tuiDropdownAlign"
-            >
-                Align of dropdown (does not work together with
-                <code>limitWidth === 'fixed'</code>)
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownDirection"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiVerticalDirection | null"
-                [documentationPropertyValues]="dropdownDirectionVariants"
-                [(documentationPropertyValue)]="tuiDropdownDirection"
-            >
-                Set a vertical direction of dropdown
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownLimitWidth"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiDropdownWidthT"
-                [documentationPropertyValues]="tuiDropdownLimitWidthVariants"
-                [(documentationPropertyValue)]="tuiDropdownLimitWidth"
-            >
-                Limit dropdown width
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownMinHeight"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="tuiDropdownMinHeight"
-            >
-                Minimum height to calculate that dropdown fits to setted
-                <code>tuiDropdownDirection</code>
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownMaxHeight"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="tuiDropdownMaxHeight"
-            >
-                Maximum height of dropdown
-            </ng-template>
         </tui-doc-documentation>
+        <inherited-documentation [dropdown]="true"></inherited-documentation>
     </ng-template>
 
     <ng-template pageTab>
