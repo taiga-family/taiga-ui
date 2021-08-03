@@ -139,10 +139,12 @@ export class TuiTextAreaComponent
         );
     }
 
-    get pseudoContent(): {fitted: string; extra: string} {
-        const max = this.controller.maxLength || Infinity;
+    get fittedContent(): string {
+        return this.value.slice(0, this.controller.maxLength || Infinity);
+    }
 
-        return {fitted: this.value.slice(0, max), extra: this.value.slice(max)};
+    get extraContent(): string {
+        return this.value.slice(this.controller.maxLength || Infinity);
     }
 
     onFocused(focused: boolean) {

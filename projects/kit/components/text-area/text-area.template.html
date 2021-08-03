@@ -45,18 +45,11 @@
         >
             <div class="input-wrapper">
                 <div class="relative">
-                    <div
-                        class="pseudo-content"
-                        *tuiLet="pseudoContent as content"
-                        aria-hidden="true"
-                    >
-                        <span>{{content.fitted}}</span>
-                        <span
-                            class="pseudo-content__extra"
-                            *ngIf="content.extra"
+                    <div class="pseudo-content" aria-hidden="true">
+                        <span>{{fittedContent}}</span>
+                        <span class="pseudo-content__extra"
+                            >{{extraContent}}</span
                         >
-                            {{content.extra}}
-                        </span>
                         &nbsp;
                     </div>
                     <textarea
