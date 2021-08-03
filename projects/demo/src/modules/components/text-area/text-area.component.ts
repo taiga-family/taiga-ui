@@ -75,7 +75,6 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
     rows: number = this.rowsVariants[0];
 
     expandable = false;
-    extraCharsHighlight = false;
 
     control = new FormControl();
 

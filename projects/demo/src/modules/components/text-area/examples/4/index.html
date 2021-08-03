@@ -1,10 +1,6 @@
 <div i18n class="description">
     To highlight extra characters:
     <ul class="steps">
-        <li>
-            Set input property <code>extraCharsHighlight</code> to
-            <code>true</code>
-        </li>
         <li>Set <code>tuiTextfieldMaxLength</code></li>
         <li class="steps_optional">
             (Optional) Dont forget to set form validator (for example,
@@ -19,7 +15,6 @@
         <tui-text-area
             formControlName="testValue1"
             [expandable]="true"
-            [extraCharsHighlight]="true"
             [tuiTextfieldMaxLength]="maxLength"
             [tuiTextfieldLabelOutside]="true"
         >

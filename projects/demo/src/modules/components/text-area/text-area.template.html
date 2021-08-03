@@ -58,7 +58,6 @@
                 [tuiHintContent]="hintContent"
                 [tuiHintDirection]="hintDirection"
                 [tuiHintMode]="hintMode"
-                [extraCharsHighlight]="extraCharsHighlight"
             >
                 Textfield for multiline input. It can grow with its content.
             </tui-text-area>
@@ -92,18 +91,6 @@
             >
                 A number of visible rows in
                 <code>expandable</code> mode
-            </ng-template>
-
-            <ng-template
-                i18n
-                documentationPropertyName="extraCharsHighlight"
-                documentationPropertyMode="input"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="extraCharsHighlight"
-            >
-                Shows extra characters highlight on on exceeding the characters
-                limit<br />
-                (use with <code>textfieldMaxLength</code>)
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
