@@ -28,7 +28,6 @@ describe('TuiDropdownContext directive', () => {
     });
 
     const rightClickEvent = new MouseEvent('contextmenu');
-    const leftClickEvent = new MouseEvent('click');
     const escButtonEvent = new KeyboardEvent('keydown', {key: 'escape'});
     let fixture: ComponentFixture<TestComponent>;
 
@@ -37,23 +36,27 @@ describe('TuiDropdownContext directive', () => {
         fixture.detectChanges();
     });
 
-    it('dont show dropdown if NO right-click was made', () => {
-        expect(getTextInsideDropdown()).toBeNull();
+    it('does not show dropdown if NO right-click was made', async () => {
+        return fixture.whenStable().then(() => {
+            expect(getTextInsideDropdown()).toBeNull();
+        });
     });
 
-    it('dont show dropdown if left-click was made', () => {
-        dispatchEventFromRoot(leftClickEvent);
+    it('does not show dropdown if left-click was made', async () => {
+        getRootBlock()?.click();
 
-        expect(getTextInsideDropdown()).toBeNull();
+        return fixture.whenStable().then(() => {
+            expect(getTextInsideDropdown()).toBeNull();
+        });
     });
 
-    it('show dropdown if right-click was made', () => {
+    it('shows dropdown if right-click was made', () => {
         dispatchEventFromRoot(rightClickEvent);
 
         expect(getTextInsideDropdown()).toBe('Text inside dropdown');
     });
 
-    it('close dropdown on esc button', done => {
+    it('closes dropdown on esc button', async () => {
         dispatchEventFromRoot(rightClickEvent);
         fixture.detectChanges();
 
@@ -61,17 +64,45 @@ describe('TuiDropdownContext directive', () => {
         document.dispatchEvent(escButtonEvent);
         fixture.detectChanges();
 
-        fixture.whenStable().then(() => {
+        return fixture.whenStable().then(() => {
             expect(getTextInsideDropdown()).toBeNull();
-            done();
         });
     });
 
-    function getTextInsideDropdown(): string | null {
+    it('does not close dropdown on left click inside', async () => {
+        dispatchEventFromRoot(rightClickEvent);
+        fixture.detectChanges();
+
+        expect(getTextInsideDropdown()).not.toBeFalsy();
+        get$Dropdown()?.click();
+        fixture.detectChanges();
+
+        return fixture.whenStable().then(() => {
+            expect(getTextInsideDropdown()).not.toBeFalsy();
+        });
+    });
+
+    it('closes dropdown on left click outside', async () => {
+        dispatchEventFromRoot(rightClickEvent);
+        fixture.detectChanges();
+
+        expect(getTextInsideDropdown()).not.toBeFalsy();
+        document.body.click();
+        fixture.detectChanges();
+
+        return fixture.whenStable().then(() => {
+            expect(getTextInsideDropdown()).toBeFalsy();
+        });
+    });
+
+    function get$Dropdown(): HTMLElement | null {
         return (
-            fixture.debugElement.query(By.css('#insideDropdown'))?.nativeElement
-                ?.textContent || null
+            fixture.debugElement.query(By.css('#insideDropdown'))?.nativeElement || null
         );
+    }
+
+    function getTextInsideDropdown(): string | null {
+        return get$Dropdown()?.textContent || null;
     }
 
     function getRootBlock(): HTMLElement | null {
