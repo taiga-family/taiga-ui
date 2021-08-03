@@ -56,10 +56,6 @@ export class TuiTextAreaComponent
     rows = DEFAULT_ROWS;
 
     @Input()
-    @tuiDefaultProp()
-    extraCharsHighlight = false;
-
-    @Input()
     @HostBinding('class._expandable')
     @tuiDefaultProp()
     expandable = false;
@@ -143,14 +139,10 @@ export class TuiTextAreaComponent
         );
     }
 
-    get pseudoContent(): {fitted: string; extra?: string} {
-        if (this.extraCharsHighlight) {
-            const max = this.controller.maxLength || Infinity;
+    get pseudoContent(): {fitted: string; extra: string} {
+        const max = this.controller.maxLength || Infinity;
 
-            return {fitted: this.value.slice(0, max), extra: this.value.slice(max)};
-        }
-
-        return {fitted: this.value};
+        return {fitted: this.value.slice(0, max), extra: this.value.slice(max)};
     }
 
     onFocused(focused: boolean) {
