@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {TuiDialogService} from '@taiga-ui/core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -27,9 +28,15 @@ export class TuiDropdownContextExample2 {
     ] as const;
     readonly tableColumns = Object.keys(this.tableData[0]);
 
+    constructor(
+        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    ) {}
+
     getObjectValues = (obj: Object) => Object.values(obj);
 
     printToConsole(action: string, contextInfo: unknown) {
-        console.log(`[${action}]: ${JSON.stringify(contextInfo)}`);
+        this.dialogService
+            .open(`[${action}]: ${JSON.stringify(contextInfo)}`)
+            .subscribe();
     }
 }
