@@ -98,6 +98,10 @@ export class TuiDropdownContextDirective<C extends object>
         this.hostRef = this.openDropdown(x, y);
     }
 
+    /**
+     * TODO: Optimize this
+     * (.silent event modifier is not suitable for optimization because it breaks disappearing animation)
+     */
     @HostListener('document:click', ['$event.target'])
     onLeftClickOutside(target: HTMLElement) {
         const clickedInside = this.dropdownContent?.contains(target);
