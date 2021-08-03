@@ -8,30 +8,29 @@
             </th>
         </tr>
         <tr
-            *ngFor="let item of tableData"
+            *ngFor="let rowInfo of tableData"
             class="tui-table__tr"
             [tuiDropdownContext]="contextMenu"
-            [tuiDropdownContextData]="item"
         >
             <td
-                *ngFor="let value of getObjectValues(item)"
+                *ngFor="let value of getObjectValues(rowInfo)"
                 class="tui-table__td"
             >
                 {{value}}
             </td>
+
+            <ng-template #contextMenu let-close>
+                <tui-data-list class="context-menu" role="menu">
+                    <button
+                        *ngFor="let item of menuItems"
+                        tuiOption
+                        (click)="printToConsole(item.title, rowInfo); close()"
+                    >
+                        {{item.title}}
+                        <tui-svg class="icon" [src]="item.iconName"></tui-svg>
+                    </button>
+                </tui-data-list>
+            </ng-template>
         </tr>
     </tbody>
 </table>
-
-<ng-template #contextMenu let-data let-close="close">
-    <tui-data-list class="context-menu" role="menu">
-        <button
-            *ngFor="let item of menuItems"
-            tuiOption
-            (click)="printToConsole(item.title, data); close()"
-        >
-            {{item.title}}
-            <tui-svg class="icon" [src]="item.iconName"></tui-svg>
-        </button>
-    </tui-data-list>
-</ng-template>

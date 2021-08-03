@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {WINDOW} from '@ng-web-apis/common';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -15,7 +16,12 @@ export class TuiDropdownContextExample3 {
         reportText: new FormControl('Misspell HERE!'),
     });
 
-    report(textId: string) {
-        console.log({...this.testForm.value, textId});
+    constructor(@Inject(WINDOW) private readonly windowRef: Window) {}
+
+    report() {
+        console.log({
+            reportText: this.testForm.value.reportText,
+            selectedText: this.windowRef.getSelection()?.anchorNode?.textContent,
+        });
     }
 }

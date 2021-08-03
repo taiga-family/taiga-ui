@@ -5,12 +5,11 @@
     type="directives"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p i18n class="description">
             <code>DropdownContext</code> allows to show custom right click
             context dropdown.
         </p>
-        <p i18n>Use <strong>Arrow Up/Down</strong> to focus closest element.</p>
-        <p i18n>Use <strong>Esc</strong> to close dropdown.</p>
+        <ng-container *ngTemplateOutlet="tips"></ng-container>
 
         <tui-doc-example
             id="basic"
@@ -53,10 +52,9 @@
             >
                 Right click on me to <strong>see a dropdown</strong>
             </p>
-            <ng-template #dropdownContent let-close="close">
-                <div i18n class="dropdown">
-                    <p>Use Arrow Up/Down to navigate to button.</p>
-                    <p>Use Esc to close dropdown.</p>
+            <ng-template #dropdownContent let-close>
+                <div class="dropdown">
+                    <ng-container *ngTemplateOutlet="tips"></ng-container>
 
                     <button tuiButton type="button" (click)="close()">
                         Close me
@@ -72,16 +70,6 @@
                 documentationPropertyType="PolymorpheusContent"
             >
                 Content
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="tuiDropdownContextData"
-                documentationPropertyMode="input"
-                documentationPropertyType="T extends object | null"
-            >
-                Additional data which passed as
-                <code>context.$implicit</code> to input property
-                <strong>tuiDropdownContext</strong> (PolymorpheusContent)
             </ng-template>
         </tui-doc-documentation>
         <dropdown-controller-documentation></dropdown-controller-documentation>
@@ -112,3 +100,34 @@
         </ol>
     </ng-template>
 </tui-doc-page>
+
+<ng-template #tips>
+    <h3 class="tips__title">Tips:</h3>
+    <ol class="tips__list">
+        <li>Use <strong>Arrow Up/Down</strong> to focus closest element.</li>
+        <li>
+            To close dropdown:
+            <ul class="tui-list tui-list_small">
+                <li class="tui-list__item">Use <strong>Esc</strong></li>
+                <li class="tui-list__item">
+                    Make <strong>mouse left click</strong> outside of dropdown
+                    content
+                </li>
+                <li class="tui-list__item">
+                    Open new dropdown via <strong>mouse right click</strong>
+                </li>
+                <li class="tui-list__item">
+                    Use <code>$implicit</code> of
+                    <a
+                        tuiLink
+                        href="https://angular.io/api/common/NgTemplateOutlet#properties"
+                        target="_blank"
+                    >
+                        template context object
+                    </a>
+                    to close dropdown
+                </li>
+            </ul>
+        </li>
+    </ol>
+</ng-template>

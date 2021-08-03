@@ -43,16 +43,12 @@ import {filter, takeUntil} from 'rxjs/operators';
         },
     ],
 })
-export class TuiDropdownContextDirective<C extends object>
+export class TuiDropdownContextDirective
     extends AbstractTuiDropdown
     implements TuiDropdown {
     @Input('tuiDropdownContext')
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
-
-    @Input('tuiDropdownContextData')
-    @tuiDefaultProp()
-    contextData: C | null = null;
 
     private lastClickedClientRect: ClientRect = this.getClientRectFromDot(0, 0);
     private hostRef: ComponentRef<TuiDropdownBoxComponent> | null = null;
@@ -82,8 +78,8 @@ export class TuiDropdownContextDirective<C extends object>
         return this.lastClickedClientRect;
     }
 
-    get context(): (TuiContextWithImplicit<C> & {close: () => void}) | null {
-        return this.buildContext(this.contextData || ({} as C));
+    get context(): TuiContextWithImplicit<() => void> {
+        return {$implicit: this.closeDropdownBox.bind(this)};
     }
 
     private get dropdownContent(): HTMLElement | null {
@@ -149,15 +145,6 @@ export class TuiDropdownContextDirective<C extends object>
 
         event.stopPropagation();
         this.closeDropdownBox();
-    }
-
-    private buildContext(data: C): TuiContextWithImplicit<C> & {close: () => void} {
-        const close = this.closeDropdownBox.bind(this);
-
-        return {
-            close,
-            $implicit: data,
-        };
     }
 
     private openDropdown(

@@ -26,6 +26,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-dropdown-context',
     templateUrl: './dropdown-context.component.html',
+    styleUrls: ['./dropdown-context.component.less'],
     changeDetection,
     providers: [
         {
