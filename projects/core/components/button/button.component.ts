@@ -106,7 +106,7 @@ export class TuiButtonComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.elementRef.nativeElement);
+        return !this.showLoader && isNativeFocused(this.elementRef.nativeElement);
     }
 
     get loaderSize(): TuiSizeS {
