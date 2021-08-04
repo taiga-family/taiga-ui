@@ -45,12 +45,17 @@
         >
             <div class="input-wrapper">
                 <div class="relative">
-                    <div class="pseudo-content">{{value}}&nbsp;</div>
+                    <div class="pseudo-content" aria-hidden="true">
+                        <span>{{fittedContent}}</span>
+                        <span class="pseudo-content__extra"
+                            >{{extraContent}}</span
+                        >
+                        &nbsp;
+                    </div>
                     <textarea
                         #focusableElement
                         automation-id="tui-text-area__native"
                         class="input"
-                        [attr.maxLength]="controller.maxLength"
                         [id]="id"
                         [tuiFocusable]="focusable"
                         [disabled]="disabled"

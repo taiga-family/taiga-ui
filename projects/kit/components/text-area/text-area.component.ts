@@ -139,6 +139,14 @@ export class TuiTextAreaComponent
         );
     }
 
+    get fittedContent(): string {
+        return this.value.slice(0, this.controller.maxLength || Infinity);
+    }
+
+    get extraContent(): string {
+        return this.value.slice(this.controller.maxLength || Infinity);
+    }
+
     onFocused(focused: boolean) {
         this.updateFocused(focused);
     }
