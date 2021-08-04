@@ -10,15 +10,12 @@ import {
     Input,
     Optional,
 } from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
 import {
     getClosestFocusable,
     setNativeFocused,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiDestroyService,
-    TuiParentsScrollService,
     TuiPortalService,
 } from '@taiga-ui/cdk';
 import {
@@ -28,15 +25,12 @@ import {
     TuiDropdownBoxComponent,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {fromEvent, merge} from 'rxjs';
-import {filter, takeUntil} from 'rxjs/operators';
+import {EMPTY} from 'rxjs';
 
 // @dynamic
 @Directive({
     selector: '[tuiDropdownContext]',
     providers: [
-        TuiParentsScrollService,
-        TuiDestroyService,
         {
             provide: TUI_DROPDOWN_DIRECTIVE,
             useExisting: forwardRef(() => TuiDropdownContextDirective),
@@ -50,14 +44,12 @@ export class TuiDropdownContextDirective
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
 
+    readonly refresh$ = EMPTY;
     private lastClickedClientRect: ClientRect = this.getClientRectFromDot(0, 0);
     private hostRef: ComponentRef<TuiDropdownBoxComponent> | null = null;
 
     constructor(
         protected readonly elementRef: ElementRef,
-        @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(TuiDestroyService) readonly destroy$: TuiDestroyService,
-        @Inject(TuiParentsScrollService) readonly refresh$: TuiParentsScrollService,
         @Inject(ComponentFactoryResolver)
         componentFactoryResolver: ComponentFactoryResolver,
         @Inject(Injector) injector: Injector,
@@ -65,13 +57,6 @@ export class TuiDropdownContextDirective
         @Optional() activeZone: TuiActiveZoneDirective | null,
     ) {
         super(componentFactoryResolver, injector, portalService, elementRef, activeZone);
-
-        merge(refresh$, fromEvent(this.windowRef, 'resize'))
-            .pipe(
-                filter(() => !!this.dropdownContent),
-                takeUntil(destroy$),
-            )
-            .subscribe(() => this.closeDropdownBox());
     }
 
     get clientRect(): ClientRect {
@@ -80,6 +65,10 @@ export class TuiDropdownContextDirective
 
     get context(): TuiContextWithImplicit<() => void> {
         return {$implicit: this.closeDropdownBox.bind(this)};
+    }
+
+    get fixed(): boolean {
+        return true;
     }
 
     private get dropdownContent(): HTMLElement | null {
