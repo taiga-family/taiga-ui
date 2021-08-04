@@ -1,10 +1,12 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as exampleLESS} from '!!raw-loader!./examples/1/index.less';
+import {default as example1LESS} from '!!raw-loader!./examples/1/index.less';
 
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
+import {default as example2LESS} from '!!raw-loader!./examples/2/index.less';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
+import {default as example3LESS} from '!!raw-loader!./examples/3/index.less';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
@@ -41,17 +43,19 @@ export class ExampleTuiDropdownContextComponent implements ExampleTuiDropdown {
 
     readonly exampleBasic: FrontEndExample = {
         HTML: example1Html,
-        LESS: exampleLESS,
+        LESS: example1LESS,
     };
 
     readonly exampleContextMenu: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,
+        LESS: example2LESS,
     };
 
     readonly exampleReportMistakeForm: FrontEndExample = {
         TypeScript: example3Ts,
         HTML: example3Html,
+        LESS: example3LESS,
     };
 
     readonly dropdownAlignVariants: ReadonlyArray<TuiHorizontalDirection> = [
