@@ -30,11 +30,16 @@ describe('DropdownContext', () => {
         cy.get('#contextMenu').find('tr').eq(2).rightclick();
 
         cy.get('body').type('{uparrow}');
-        cy.window().wait(100).matchImageSnapshot(`03-arrow-up`, {capture: 'viewport'});
 
-        cy.focused().click();
+        cy.window()
+            // 300ms - debounce time of DataListDropdownManager + 100ms for flaky-free test
+            .wait(400)
+            .matchImageSnapshot(`03-arrow-up`, {capture: 'viewport'});
+
+        cy.get('body').type('{rightarrow}');
+
         cy.window()
             .wait(100)
-            .matchImageSnapshot(`03-arrow-up-clicked`, {capture: 'viewport'});
+            .matchImageSnapshot(`03-arrow-up-right`, {capture: 'viewport'});
     });
 });
