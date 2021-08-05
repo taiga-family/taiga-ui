@@ -12,7 +12,6 @@ import {
     getClosestFocusable,
     setNativeFocused,
     TuiActiveZoneDirective,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiDestroyService,
     TuiPortalService,
@@ -44,8 +43,8 @@ export class TuiDropdownContextDirective
     content: PolymorpheusContent = '';
 
     readonly refresh$ = EMPTY;
-    readonly context: TuiContextWithImplicit<() => void> = {
-        $implicit: () => this.closeDropdownBox(),
+    readonly context = {
+        close: () => this.closeDropdownBox(),
     };
     private lastClickedClientRect: ClientRect = this.getClientRectFromDot(0, 0);
 

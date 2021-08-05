@@ -52,7 +52,7 @@
             >
                 Right click on me to <strong>see a dropdown</strong>
             </p>
-            <ng-template #dropdownContent let-close>
+            <ng-template #dropdownContent let-close="close">
                 <div class="dropdown">
                     <ng-container *ngTemplateOutlet="tips"></ng-container>
 
@@ -117,7 +117,8 @@
                     Open new dropdown via <strong>mouse right click</strong>
                 </li>
                 <li class="tui-list__item">
-                    Use <code>$implicit</code> of
+                    Declare local template variable which access to property
+                    <strong>close</strong> of
                     <a
                         tuiLink
                         href="https://angular.io/api/common/NgTemplateOutlet#properties"
@@ -125,9 +126,28 @@
                     >
                         template context object
                     </a>
-                    to close dropdown
+                    and call it<br />
+                    (for example,
+                    <code
+                        >&lt;ng-template
+                        let-close="close"&gt;&lt;/ng-template&gt;</code
+                    >).
                 </li>
             </ul>
+        </li>
+        <li>
+            To get
+            <a tuiLink routerLink="/directives/active-zone" target="_blank">
+                ActiveZone
+            </a>
+            of opened dropdown you should declare local template variable which
+            access to property <strong>activeZone</strong> of template context
+            object<br />
+            (for example,
+            <code
+                >&lt;ng-template
+                let-activeZone="activeZone"&gt;&lt;/ng-template&gt;</code
+            >).
         </li>
     </ol>
 </ng-template>

@@ -19,7 +19,11 @@
                 {{value}}
             </td>
 
-            <ng-template #contextMenu let-close let-activeZone="activeZone">
+            <ng-template
+                #contextMenu
+                let-close="close"
+                let-activeZone="activeZone"
+            >
                 <tui-data-list
                     class="context-menu"
                     role="menu"

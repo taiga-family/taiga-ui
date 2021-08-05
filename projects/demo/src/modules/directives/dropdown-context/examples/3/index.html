@@ -4,7 +4,7 @@
 
 <p [tuiDropdownContext]="reportForm">Another text</p>
 
-<ng-template #reportForm let-close>
+<ng-template #reportForm let-close="close">
     <form [formGroup]="testForm" class="container">
         <tui-text-area formControlName="reportText">
             Have you found a mistake ? Write about it!
