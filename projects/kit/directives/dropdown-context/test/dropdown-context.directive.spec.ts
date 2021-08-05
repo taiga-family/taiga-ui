@@ -87,7 +87,7 @@ describe('TuiDropdownContext directive', () => {
         fixture.detectChanges();
 
         expect(getTextInsideDropdown()).not.toBeFalsy();
-        document.body.click();
+        getRootBlock()?.click();
         fixture.detectChanges();
 
         return fixture.whenStable().then(() => {
