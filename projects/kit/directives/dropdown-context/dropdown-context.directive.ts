@@ -1,6 +1,5 @@
 import {
     ComponentFactoryResolver,
-    ComponentRef,
     Directive,
     ElementRef,
     forwardRef,
@@ -18,12 +17,7 @@ import {
     tuiDefaultProp,
     TuiPortalService,
 } from '@taiga-ui/cdk';
-import {
-    AbstractTuiDropdown,
-    TUI_DROPDOWN_DIRECTIVE,
-    TuiDropdown,
-    TuiDropdownBoxComponent,
-} from '@taiga-ui/core';
+import {AbstractTuiDropdown, TUI_DROPDOWN_DIRECTIVE, TuiDropdown} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY} from 'rxjs';
 
@@ -45,8 +39,10 @@ export class TuiDropdownContextDirective
     content: PolymorpheusContent = '';
 
     readonly refresh$ = EMPTY;
+    readonly context: TuiContextWithImplicit<() => void> = {
+        $implicit: () => this.closeDropdownBox(),
+    };
     private lastClickedClientRect: ClientRect = this.getClientRectFromDot(0, 0);
-    private hostRef: ComponentRef<TuiDropdownBoxComponent> | null = null;
 
     constructor(
         protected readonly elementRef: ElementRef,
@@ -63,24 +59,18 @@ export class TuiDropdownContextDirective
         return this.lastClickedClientRect;
     }
 
-    get context(): TuiContextWithImplicit<() => void> {
-        return {$implicit: this.closeDropdownBox.bind(this)};
-    }
-
     get fixed(): boolean {
         return true;
     }
 
     private get dropdownContent(): HTMLElement | null {
-        return this.hostRef?.instance.contentElementRef?.nativeElement || null;
+        return this.dropdownBoxRef?.instance.contentElementRef?.nativeElement || null;
     }
 
-    @HostListener('contextmenu.prevent', ['$event'])
-    onContextMenu(event: MouseEvent) {
-        const {clientX: x, clientY: y} = event;
-
+    @HostListener('contextmenu.prevent', ['$event.clientX', '$event.clientY'])
+    onContextMenu(x: number, y: number) {
         this.closeDropdownBox();
-        this.hostRef = this.openDropdown(x, y);
+        this.openDropdown(x, y);
     }
 
     /**
@@ -136,14 +126,9 @@ export class TuiDropdownContextDirective
         this.closeDropdownBox();
     }
 
-    private openDropdown(
-        x: number,
-        y: number,
-    ): ComponentRef<TuiDropdownBoxComponent> | null {
+    private openDropdown(x: number, y: number): void {
         this.lastClickedClientRect = this.getClientRectFromDot(x, y);
         this.openDropdownBox();
-
-        return this.dropdownBoxRef;
     }
 
     private getClientRectFromDot(x: number, y: number): ClientRect {
