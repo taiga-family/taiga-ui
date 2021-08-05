@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {
     ComponentFactoryResolver,
     Directive,
@@ -10,6 +11,7 @@ import {
 } from '@angular/core';
 import {
     getClosestFocusable,
+    getNativeFocused,
     setNativeFocused,
     TuiActiveZoneDirective,
     tuiDefaultProp,
@@ -50,12 +52,13 @@ export class TuiDropdownContextDirective
 
     constructor(
         protected readonly elementRef: ElementRef,
+        @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(ComponentFactoryResolver)
         componentFactoryResolver: ComponentFactoryResolver,
         @Inject(Injector) injector: Injector,
         @Inject(TuiPortalService) portalService: TuiPortalService,
-        activeZone: TuiActiveZoneDirective,
+        readonly activeZone: TuiActiveZoneDirective,
     ) {
         super(componentFactoryResolver, injector, portalService, elementRef, activeZone);
 
@@ -104,7 +107,10 @@ export class TuiDropdownContextDirective
     @HostListener('document:keydown.arrowDown', ['$event', 'true'])
     @HostListener('document:keydown.arrowUp', ['$event', 'false'])
     onArrow(event: KeyboardEvent, down: boolean) {
-        if (!this.dropdownContent) {
+        const activeElement = getNativeFocused(this.documentRef);
+        const focusInside = activeElement && this.activeZone.contains(activeElement);
+
+        if (!this.dropdownContent || focusInside) {
             return;
         }
 
