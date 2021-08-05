@@ -80,6 +80,13 @@ export class TuiDropdownContextDirective
         return this.dropdownBoxRef?.instance.contentElementRef?.nativeElement || null;
     }
 
+    @HostListener('click', ['$event.target'])
+    onHostClick(target: HTMLElement) {
+        if (this.elementRef.nativeElement.contains(target)) {
+            this.closeDropdownBox();
+        }
+    }
+
     @HostListener('contextmenu.prevent', ['$event.clientX', '$event.clientY'])
     onContextMenu(x: number, y: number) {
         this.closeDropdownBox();
