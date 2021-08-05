@@ -19,8 +19,13 @@
                 {{value}}
             </td>
 
-            <ng-template #contextMenu let-close>
-                <tui-data-list class="context-menu" role="menu">
+            <ng-template #contextMenu let-close let-activeZone="activeZone">
+                <tui-data-list
+                    class="context-menu"
+                    role="menu"
+                    tuiDataListDropdownManager
+                    [tuiActiveZoneParent]="activeZone"
+                >
                     <button
                         *ngFor="let item of menuItems"
                         tuiOption
@@ -29,7 +34,28 @@
                         {{item.title}}
                         <tui-svg class="icon" [src]="item.iconName"></tui-svg>
                     </button>
+
+                    <button
+                        tuiOption
+                        tuiDropdown
+                        tuiDropdownAlign="right"
+                        [tuiDropdownContent]="nestedMenu"
+                        [tuiDropdownSided]="true"
+                    >
+                        More
+                    </button>
                 </tui-data-list>
+
+                <ng-template #nestedMenu>
+                    <tui-data-list
+                        tuiDataListDropdownManager
+                        [tuiActiveZoneParent]="activeZone"
+                    >
+                        <button *ngFor="let option of moreOptions" tuiOption>
+                            {{option}}
+                        </button>
+                    </tui-data-list>
+                </ng-template>
             </ng-template>
         </tr>
     </tbody>

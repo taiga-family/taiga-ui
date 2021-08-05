@@ -7,7 +7,6 @@ import {
     Inject,
     Injector,
     Input,
-    Optional,
 } from '@angular/core';
 import {
     getClosestFocusable,
@@ -15,19 +14,25 @@ import {
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    TuiDestroyService,
     TuiPortalService,
 } from '@taiga-ui/cdk';
 import {AbstractTuiDropdown, TUI_DROPDOWN_DIRECTIVE, TuiDropdown} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {EMPTY} from 'rxjs';
+import {EMPTY, Observable} from 'rxjs';
+import {filter, takeUntil} from 'rxjs/operators';
 
 // @dynamic
 @Directive({
     selector: '[tuiDropdownContext]',
     providers: [
+        TuiDestroyService,
         {
             provide: TUI_DROPDOWN_DIRECTIVE,
             useExisting: forwardRef(() => TuiDropdownContextDirective),
+        },
+        {
+            provide: TuiActiveZoneDirective,
         },
     ],
 })
@@ -46,13 +51,21 @@ export class TuiDropdownContextDirective
 
     constructor(
         protected readonly elementRef: ElementRef,
+        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(ComponentFactoryResolver)
         componentFactoryResolver: ComponentFactoryResolver,
         @Inject(Injector) injector: Injector,
         @Inject(TuiPortalService) portalService: TuiPortalService,
-        @Optional() activeZone: TuiActiveZoneDirective | null,
+        activeZone: TuiActiveZoneDirective,
     ) {
         super(componentFactoryResolver, injector, portalService, elementRef, activeZone);
+
+        activeZone.tuiActiveZoneChange
+            .pipe(
+                filter(isActive => !isActive),
+                takeUntil(destroy$),
+            )
+            .subscribe(() => this.closeDropdownBox());
     }
 
     get clientRect(): ClientRect {
@@ -71,19 +84,6 @@ export class TuiDropdownContextDirective
     onContextMenu(x: number, y: number) {
         this.closeDropdownBox();
         this.openDropdown(x, y);
-    }
-
-    /**
-     * TODO: Optimize this
-     * (.silent event modifier is not suitable for optimization because it breaks disappearing animation)
-     */
-    @HostListener('document:click', ['$event.target'])
-    onLeftClickOutside(target: HTMLElement) {
-        const clickedInside = this.dropdownContent?.contains(target);
-
-        if (!clickedInside) {
-            this.closeDropdownBox();
-        }
     }
 
     @HostListener('document:contextmenu', ['$event.target'])

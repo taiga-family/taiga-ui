@@ -28,6 +28,8 @@ export class TuiDropdownContextExample2 {
     ] as const;
     readonly tableColumns = Object.keys(this.tableData[0]);
 
+    readonly moreOptions = ['Option 1', 'Option 2', 'Option 3'];
+
     constructor(
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     ) {}
