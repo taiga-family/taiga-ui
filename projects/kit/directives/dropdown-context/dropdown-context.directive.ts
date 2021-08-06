@@ -28,12 +28,10 @@ import {filter, takeUntil} from 'rxjs/operators';
     selector: '[tuiDropdownContext]',
     providers: [
         TuiDestroyService,
+        TuiActiveZoneDirective,
         {
             provide: TUI_DROPDOWN_DIRECTIVE,
             useExisting: forwardRef(() => TuiDropdownContextDirective),
-        },
-        {
-            provide: TuiActiveZoneDirective,
         },
     ],
 })
