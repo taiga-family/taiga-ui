@@ -7,7 +7,7 @@ import {
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-export interface TuiDropdown {
+export interface TuiDropdown<C = object> {
     refresh$: Observable<any>;
     clientRect: ClientRect;
     content: PolymorpheusContent;
@@ -20,4 +20,5 @@ export interface TuiDropdown {
     sided?: boolean;
     fixed?: boolean;
     activeZone?: TuiActiveZoneDirective | null;
+    context?: C;
 }

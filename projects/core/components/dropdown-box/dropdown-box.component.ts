@@ -17,6 +17,7 @@ import {
     POLLING_TIME,
     px,
     setNativeFocused,
+    TuiActiveZoneDirective,
     TuiDestroyService,
     TuiOverscrollModeT,
     TuiPortalHostComponent,
@@ -50,6 +51,9 @@ import {takeUntil, throttleTime} from 'rxjs/operators';
 export class TuiDropdownBoxComponent implements AfterViewChecked {
     @HostBinding('@tuiDropdownAnimation')
     dropdownAnimation!: TuiAnimationOptions;
+
+    @ViewChild(TuiActiveZoneDirective)
+    readonly activeZone?: TuiActiveZoneDirective;
 
     private readonly animationTop = {
         value: TuiDropdownAnimation.FadeInTop,
@@ -94,6 +98,16 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
 
     get overscroll(): TuiOverscrollModeT {
         return this.inModal ? 'all' : 'scroll';
+    }
+
+    @tuiPure
+    getContext<T extends object>(
+        context?: T,
+        activeZone?: TuiActiveZoneDirective,
+    ):
+        | (T & {activeZone?: TuiActiveZoneDirective})
+        | {activeZone?: TuiActiveZoneDirective} {
+        return {...context, activeZone};
     }
 
     ngAfterViewChecked() {

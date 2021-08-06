@@ -11,6 +11,7 @@ import {
     TuiSizeS,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
+import {ExampleTuiDropdown} from './dropdown-controller-documentation/dropdown-controller-documentation.component';
 import {AbstractExampleTuiInteractive} from './interactive';
 
 const CUSTOM_SVG = `<svg xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +25,9 @@ viewBox="0 0 24 24">
 
 type possibleGenericType = any;
 
-export abstract class AbstractExampleTuiControl extends AbstractExampleTuiInteractive {
+export abstract class AbstractExampleTuiControl
+    extends AbstractExampleTuiInteractive
+    implements ExampleTuiDropdown {
     abstract readonly control: AbstractControl;
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
