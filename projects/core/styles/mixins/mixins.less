@@ -54,8 +54,6 @@
 }
 
 .autofill(@mode:default) {
-    -webkit-text-fill-color: currentColor; // for Safari
-
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
@@ -90,6 +88,7 @@
     outline: none;
     appearance: none;
     word-break: keep-all;
+    -webkit-text-fill-color: currentColor; // for Safari
 }
 
 .visually-hidden() {
