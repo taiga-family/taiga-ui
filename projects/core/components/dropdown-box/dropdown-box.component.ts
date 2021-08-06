@@ -107,7 +107,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
     ):
         | (T & {activeZone?: TuiActiveZoneDirective})
         | {activeZone?: TuiActiveZoneDirective} {
-        return {...context, activeZone: activeZone};
+        return {...context, activeZone};
     }
 
     ngAfterViewChecked() {
