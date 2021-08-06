@@ -86,4 +86,5 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
     ];
 
     countryIsoCode = this.countryIsoCodeVariants[0];
+    labelOutside = true;
 }
