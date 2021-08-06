@@ -53,7 +53,29 @@
     line-height: inherit;
 }
 
-.clearinput() {
+.autofill(@mode:default) {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+        border-radius: inherit;
+        color: inherit !important;
+        background-color: transparent !important;
+
+        & when (@mode = default) {
+            -webkit-text-fill-color: var(--tui-text-01) !important;
+            -webkit-box-shadow: 0 0 0 1000px var(--tui-autofill) inset !important; // to overlay native background
+        }
+
+        & when (@mode = dark) {
+            -webkit-text-fill-color: var(--tui-text-01-night) !important;
+            -webkit-box-shadow: 0 0 0 1000px var(--tui-autofill-night) inset !important;
+        }
+    }
+}
+
+.clearinput(@mode: default) {
+    .autofill(@mode);
+
     padding: 0;
     border: 0;
     border-radius: inherit;
@@ -67,16 +89,6 @@
     appearance: none;
     word-break: keep-all;
     -webkit-text-fill-color: currentColor; // for Safari
-
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus {
-        border-radius: inherit;
-        -webkit-text-fill-color: inherit !important;
-        color: inherit !important;
-        background-color: transparent !important;
-        -webkit-box-shadow: 0 0 0 1000px var(--tui-autofill) inset !important; // to overlay native background
-    }
 }
 
 .visually-hidden() {
