@@ -55,8 +55,6 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
     @ViewChild(TuiActiveZoneDirective)
     readonly activeZone?: TuiActiveZoneDirective;
 
-    readonly context = {...this.directive.context, activeZone: this.activeZone};
-
     private readonly animationTop = {
         value: TuiDropdownAnimation.FadeInTop,
         ...this.options,
@@ -100,6 +98,16 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
 
     get overscroll(): TuiOverscrollModeT {
         return this.inModal ? 'all' : 'scroll';
+    }
+
+    @tuiPure
+    getContext<T extends object>(
+        context?: T,
+        activeZone?: TuiActiveZoneDirective,
+    ):
+        | (T & {activeZone?: TuiActiveZoneDirective})
+        | {activeZone?: TuiActiveZoneDirective} {
+        return {...context, activeZone: activeZone};
     }
 
     ngAfterViewChecked() {
