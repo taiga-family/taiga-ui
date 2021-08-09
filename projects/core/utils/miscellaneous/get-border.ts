@@ -1,32 +1,32 @@
-const PADDING_SMALL = 12;
-const PADDING_LARGE = 16;
+const BORDER_SMALL = 12;
+const BORDER_LARGE = 16;
 const ITEM_SIZE = 24;
 const CONTENT_SIZE = 40;
 
-export function getPadding(
+export function getBorder(
     sizeBig: boolean,
     hasIcon: boolean,
     hasCleaner: boolean = false,
     hasTooltip: boolean = false,
     hasContent: boolean = false,
 ): number {
-    let padding = sizeBig ? PADDING_LARGE : PADDING_SMALL;
+    let border = sizeBig ? BORDER_LARGE : BORDER_SMALL;
 
     if (hasIcon) {
-        padding += ITEM_SIZE;
+        border += ITEM_SIZE;
     }
 
     if (hasCleaner) {
-        padding += ITEM_SIZE;
+        border += ITEM_SIZE;
     }
 
     if (hasTooltip) {
-        padding += ITEM_SIZE;
+        border += ITEM_SIZE;
     }
 
     if (hasContent) {
-        padding += CONTENT_SIZE;
+        border += CONTENT_SIZE;
     }
 
-    return padding;
+    return border;
 }
