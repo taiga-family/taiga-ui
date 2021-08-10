@@ -870,6 +870,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'For',
+                keywords: 'loading, cycle, empty, list, iterate',
+                route: 'directives/for',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'Highlight',
                 keywords: 'поиск, подсветка, search, find, найти',
                 route: '/directives/highlight',
