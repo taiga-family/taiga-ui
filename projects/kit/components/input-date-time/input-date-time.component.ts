@@ -56,6 +56,9 @@ import {map, pluck} from 'rxjs/operators';
 // TODO: remove in ivy compilation
 export const TIME_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
 
+// TODO: remove in ivy compilation
+export type DateTimeLimit = TuiDay | [TuiDay, TuiTime];
+
 // @dynamic
 @Component({
     selector: 'tui-input-date-time',
@@ -77,14 +80,14 @@ export const TIME_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
 })
 export class TuiInputDateTimeComponent
     extends AbstractTuiControl<[TuiDay | null, TuiTime | null]>
-    implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor {
+    implements TuiWithOptionalMinMax<DateTimeLimit>, TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
-    min = TUI_FIRST_DAY;
+    min: DateTimeLimit = TUI_FIRST_DAY;
 
     @Input()
     @tuiDefaultProp()
-    max = TUI_LAST_DAY;
+    max: DateTimeLimit = TUI_LAST_DAY;
 
     @Input()
     @tuiDefaultProp()
@@ -131,7 +134,7 @@ export class TuiInputDateTimeComponent
     }
 
     get textMaskOptions(): TuiTextMaskOptions {
-        return this.calculateMask(this.value[0], this.min, this.max, this.timeMode);
+        return this.calculateMask(this.value, this.min, this.max, this.timeMode);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -162,6 +165,14 @@ export class TuiInputDateTimeComponent
 
     get calendarValue(): TuiDay | null {
         return this.value[0];
+    }
+
+    get calendarMinDay(): TuiDay | null {
+        return Array.isArray(this.min) ? this.min[0] : this.min;
+    }
+
+    get calendarMaxDay(): TuiDay | null {
+        return Array.isArray(this.max) ? this.max[0] : this.max;
     }
 
     get computedActiveYearMonth(): TuiMonth {
@@ -296,14 +307,14 @@ export class TuiInputDateTimeComponent
 
     @tuiPure
     private calculateMask(
-        day: TuiDay | null,
-        min: TuiDay,
-        max: TuiDay,
+        value: [TuiDay | null, TuiTime | null],
+        min: DateTimeLimit,
+        max: DateTimeLimit,
         timeMode: TuiTimeMode,
     ): TuiTextMaskOptions {
         return {
             mask: [...TUI_DATE_MASK, ',', ' ', ...tuiCreateTimeMask(timeMode)],
-            pipe: tuiCreateAutoCorrectedDateTimePipe({value: day, min, max}, timeMode),
+            pipe: tuiCreateAutoCorrectedDateTimePipe({value, min, max}, timeMode),
             guide: false,
         };
     }

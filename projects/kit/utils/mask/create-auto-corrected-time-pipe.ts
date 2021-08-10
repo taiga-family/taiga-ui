@@ -1,5 +1,5 @@
-import {TuiTimeMode} from '@taiga-ui/cdk';
-import {TuiTextMaskPipeHandler} from '@taiga-ui/core';
+import {TuiTime, TuiTimeMode} from '@taiga-ui/cdk';
+import {TuiTextMaskPipeHandler, TuiWithOptionalMinMax} from '@taiga-ui/core';
 
 /**
  * Adjusts the entered time by omitting only suitable values ​​for hours and minutes
@@ -7,9 +7,37 @@ import {TuiTextMaskPipeHandler} from '@taiga-ui/core';
  */
 export function tuiCreateAutoCorrectedTimePipe(
     timeMode: TuiTimeMode = 'HH:MM',
+    configs?: TuiWithOptionalMinMax<TuiTime>,
 ): TuiTextMaskPipeHandler {
-    const timeFormatArray: ['HH', 'MM', 'SS', 'MS'] = ['HH', 'MM', 'SS', 'MS'];
-    const maxValue = {HH: 23, MM: 59, SS: 59, MS: 999};
+    const timeFormatArray = ['HH', 'MM', 'SS', 'MS'] as const;
+    const maxValue: Record<typeof timeFormatArray[number], number> = {
+        HH: 23,
+        MM: 59,
+        SS: 59,
+        MS: 999,
+    };
+    const applyMinMaxRestrictions = (
+        value: string,
+        configs?: TuiWithOptionalMinMax<TuiTime>,
+    ): string => {
+        const {min = null, max = null} = configs || {};
+        const [hours = 0, minutes = 0, s = 0, ms = 0] = timeFormatArray.map(format => {
+            const timePart = value.substr(timeMode.indexOf(format), 2);
+
+            return parseInt(timePart.length === 2 ? timePart : `${timePart}0`, 10) || 0;
+        });
+        let possibleTime = new TuiTime(hours, minutes, s, ms);
+
+        if (min && possibleTime < min) {
+            possibleTime = min;
+        }
+
+        if (max && possibleTime > max) {
+            possibleTime = max;
+        }
+
+        return possibleTime.toString(timeMode).slice(0, value.length);
+    };
 
     return (conformedValue: string) => {
         const indexesOfPipedChars: number[] = [];
@@ -35,7 +63,7 @@ export function tuiCreateAutoCorrectedTimePipe(
         return isInvalid
             ? false
             : {
-                  value: conformedValueArr.join(''),
+                  value: applyMinMaxRestrictions(conformedValueArr.join(''), configs),
                   indexesOfPipedChars,
               };
     };

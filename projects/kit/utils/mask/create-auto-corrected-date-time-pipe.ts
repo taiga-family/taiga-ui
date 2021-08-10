@@ -1,4 +1,4 @@
-import {DATE_FILLER_LENGTH, TuiDay, TuiTimeMode} from '@taiga-ui/cdk';
+import {DATE_FILLER_LENGTH, TuiDay, TuiTime, TuiTimeMode} from '@taiga-ui/cdk';
 import {TuiTextMaskPipeHandler, TuiWithOptionalMinMaxWithValue} from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
 
@@ -6,10 +6,24 @@ import {normalizeDateValue} from './create-auto-corrected-date-pipe';
 import {tuiCreateAutoCorrectedTimePipe} from './create-auto-corrected-time-pipe';
 
 export function tuiCreateAutoCorrectedDateTimePipe(
-    config: TuiWithOptionalMinMaxWithValue<TuiDay | null, TuiDay>,
+    {
+        min,
+        max,
+        value,
+    }: TuiWithOptionalMinMaxWithValue<
+        [TuiDay | null, TuiTime | null],
+        TuiDay | [TuiDay, TuiTime]
+    >,
     timeMode: TuiTimeMode,
 ): TuiTextMaskPipeHandler {
-    const timePipe = tuiCreateAutoCorrectedTimePipe(timeMode);
+    const [selectedDate] = value;
+    const [minDay, minTime] = Array.isArray(min) ? min : [min, null];
+    const [maxDay, maxTime] = Array.isArray(max) ? max : [max, null];
+
+    const timePipe = tuiCreateAutoCorrectedTimePipe(timeMode, {
+        min: selectedDate && minDay && selectedDate.daySame(minDay) ? minTime : null,
+        max: selectedDate && maxDay && selectedDate.daySame(maxDay) ? maxTime : null,
+    });
 
     return value => {
         if (value.length < DATE_FILLER_LENGTH) {
@@ -18,7 +32,11 @@ export function tuiCreateAutoCorrectedDateTimePipe(
 
         const [date, time] = value.split(DATE_TIME_SEPARATOR);
 
-        const formattedDate = normalizeDateValue(date, config);
+        const formattedDate = normalizeDateValue(date, {
+            min: minDay,
+            max: maxDay,
+            value: selectedDate,
+        });
 
         if (!time) {
             return {value: formattedDate};
