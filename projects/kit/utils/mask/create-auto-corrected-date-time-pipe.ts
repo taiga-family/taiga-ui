@@ -16,14 +16,9 @@ export function tuiCreateAutoCorrectedDateTimePipe(
     >,
     timeMode: TuiTimeMode,
 ): TuiTextMaskPipeHandler {
-    const [selectedDate] = value;
+    const [prevSelectedDate] = value;
     const [minDay, minTime] = Array.isArray(min) ? min : [min, null];
     const [maxDay, maxTime] = Array.isArray(max) ? max : [max, null];
-
-    const timePipe = tuiCreateAutoCorrectedTimePipe(timeMode, {
-        min: selectedDate && minDay && selectedDate.daySame(minDay) ? minTime : null,
-        max: selectedDate && maxDay && selectedDate.daySame(maxDay) ? maxTime : null,
-    });
 
     return value => {
         if (value.length < DATE_FILLER_LENGTH) {
@@ -35,12 +30,18 @@ export function tuiCreateAutoCorrectedDateTimePipe(
         const formattedDate = normalizeDateValue(date, {
             min: minDay,
             max: maxDay,
-            value: selectedDate,
+            value: prevSelectedDate,
         });
 
         if (!time) {
             return {value: formattedDate};
         }
+
+        const parsedFormattedDate = TuiDay.normalizeParse(formattedDate);
+        const timePipe = tuiCreateAutoCorrectedTimePipe(timeMode, {
+            min: minDay && minDay.daySame(parsedFormattedDate) ? minTime : null,
+            max: maxDay && maxDay.daySame(parsedFormattedDate) ? maxTime : null,
+        });
 
         const pipedTime = timePipe(time, {} as any);
 
