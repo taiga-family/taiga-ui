@@ -22,9 +22,19 @@ export function tuiCreateAutoCorrectedTimePipe(
     ): string => {
         const {min = null, max = null} = configs || {};
         const [hours = 0, minutes = 0, s = 0, ms = 0] = timeFormatArray.map(format => {
-            const timePart = value.substr(timeMode.indexOf(format), 2);
+            const formatStartIndex = timeMode.indexOf(format);
 
-            return parseInt(timePart.length === 2 ? timePart : `${timePart}0`, 10) || 0;
+            if (formatStartIndex === -1) {
+                return 0;
+            }
+
+            const formatMaxLength = `${maxValue[format]}`.length;
+            const timePart = value.substr(formatStartIndex, formatMaxLength);
+            const paddedByZeroTimePart = `${timePart}${'0'.repeat(
+                formatMaxLength - timePart.length,
+            )}`;
+
+            return parseInt(paddedByZeroTimePart, 10) || 0;
         });
         let possibleTime = new TuiTime(hours, minutes, s, ms);
 
