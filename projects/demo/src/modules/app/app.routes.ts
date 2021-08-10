@@ -1090,6 +1090,14 @@ export const ROUTES = [
         },
     },
     {
+        path: 'directives/for',
+        loadChildren: () =>
+            import(`../directives/for/for.module`).then(m => m.ExampleTuiForModule),
+        data: {
+            title: 'For',
+        },
+    },
+    {
         path: 'directives/highlight',
         loadChildren: () =>
             import(`../directives/highlight/highlight.module`).then(
