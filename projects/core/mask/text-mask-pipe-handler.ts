@@ -3,7 +3,7 @@ import {TuiTextMaskOptions} from './text-mask-options';
 import {TuiTextMaskPipeResult} from './text-mask-pipe-result';
 
 /**
- * {@link https://github.com/text-mask/text-mask/blob/master/component-documentation.md#pipe}
+ * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#pipe}
  */
 export type TuiTextMaskPipeHandler = (
     conformedValue: string,

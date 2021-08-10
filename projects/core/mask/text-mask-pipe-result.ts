@@ -1,5 +1,5 @@
 /**
- * {@link https://github.com/text-mask/text-mask/blob/master/component-documentation.md#pipe}
+ * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#pipe}
  */
 export interface TuiTextMaskPipeResult {
     value: string;
