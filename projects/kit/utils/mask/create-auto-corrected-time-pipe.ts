@@ -7,7 +7,8 @@ import {TuiTextMaskPipeHandler, TuiWithOptionalMinMax} from '@taiga-ui/core';
  */
 export function tuiCreateAutoCorrectedTimePipe(
     timeMode: TuiTimeMode = 'HH:MM',
-    configs?: TuiWithOptionalMinMax<TuiTime>,
+    configs: TuiWithOptionalMinMax<TuiTime> = {min: null, max: null},
+    onValueExplicitChange?: (modifiedValue: string) => void,
 ): TuiTextMaskPipeHandler {
     const timeFormatArray = ['HH', 'MM', 'SS', 'MS'] as const;
     const maxValue: Record<typeof timeFormatArray[number], number> = {
@@ -15,38 +16,6 @@ export function tuiCreateAutoCorrectedTimePipe(
         MM: 59,
         SS: 59,
         MS: 999,
-    };
-    const applyMinMaxRestrictions = (
-        value: string,
-        configs?: TuiWithOptionalMinMax<TuiTime>,
-    ): string => {
-        const {min = null, max = null} = configs || {};
-        const [hours = 0, minutes = 0, s = 0, ms = 0] = timeFormatArray.map(format => {
-            const formatStartIndex = timeMode.indexOf(format);
-
-            if (formatStartIndex === -1) {
-                return 0;
-            }
-
-            const formatMaxLength = `${maxValue[format]}`.length;
-            const timePart = value.substr(formatStartIndex, formatMaxLength);
-            const paddedByZeroTimePart = `${timePart}${'0'.repeat(
-                formatMaxLength - timePart.length,
-            )}`;
-
-            return parseInt(paddedByZeroTimePart, 10) || 0;
-        });
-        let possibleTime = new TuiTime(hours, minutes, s, ms);
-
-        if (min && possibleTime < min) {
-            possibleTime = min;
-        }
-
-        if (max && possibleTime > max) {
-            possibleTime = max;
-        }
-
-        return possibleTime.toString(timeMode).slice(0, value.length);
     };
 
     return (conformedValue: string) => {
@@ -73,8 +42,47 @@ export function tuiCreateAutoCorrectedTimePipe(
         return isInvalid
             ? false
             : {
-                  value: applyMinMaxRestrictions(conformedValueArr.join(''), configs),
+                  value: applyMinMaxRestrictions({
+                      ...configs,
+                      timeMode,
+                      onValueExplicitChange,
+                      value: conformedValueArr.join(''),
+                  }),
                   indexesOfPipedChars,
               };
     };
+}
+
+function applyMinMaxRestrictions({
+    value,
+    min,
+    max,
+    timeMode,
+    onValueExplicitChange,
+}: {
+    value: string;
+    min: TuiTime | null;
+    max: TuiTime | null;
+    timeMode: TuiTimeMode;
+    onValueExplicitChange?: (modifiedValue: string) => void;
+}): string {
+    if (value.length < timeMode.length) {
+        return value;
+    }
+
+    let modifiedTime = TuiTime.fromString(value);
+
+    if (min && modifiedTime < min) {
+        modifiedTime = min;
+    } else if (max && modifiedTime > max) {
+        modifiedTime = max;
+    }
+
+    const modifiedTimeStr = modifiedTime.toString(timeMode).slice(0, value.length);
+
+    if (modifiedTimeStr !== value && onValueExplicitChange) {
+        onValueExplicitChange(modifiedTimeStr);
+    }
+
+    return modifiedTimeStr;
 }

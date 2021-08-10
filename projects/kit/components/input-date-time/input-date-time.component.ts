@@ -134,7 +134,13 @@ export class TuiInputDateTimeComponent
     }
 
     get textMaskOptions(): TuiTextMaskOptions {
-        return this.calculateMask(this.value, this.min, this.max, this.timeMode);
+        return this.calculateMask(
+            this.value,
+            this.min,
+            this.max,
+            this.timeMode,
+            this.nativeFocusableElement,
+        );
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -311,10 +317,15 @@ export class TuiInputDateTimeComponent
         min: DateTimeLimit,
         max: DateTimeLimit,
         timeMode: TuiTimeMode,
+        nativeInput: HTMLInputElement | null,
     ): TuiTextMaskOptions {
         return {
             mask: [...TUI_DATE_MASK, ',', ' ', ...tuiCreateTimeMask(timeMode)],
-            pipe: tuiCreateAutoCorrectedDateTimePipe({value, min, max}, timeMode),
+            pipe: tuiCreateAutoCorrectedDateTimePipe(
+                {value, min, max},
+                timeMode,
+                nativeInput,
+            ),
             guide: false,
         };
     }
