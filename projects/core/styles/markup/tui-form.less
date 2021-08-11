@@ -5,8 +5,18 @@
 
 .tui-form {
     &__header {
-        font: var(--tui-font-heading-5);
-        margin: @fields-space-large 0 @fields-space;
+        margin-top: @fields-space-large;
+
+        @media @mobile {
+            font: var(--tui-font-text-l);
+            font-weight: bold;
+            margin-bottom: @fields-space-mobile;
+        }
+
+        @media @tablet-min {
+            font: var(--tui-font-heading-5);
+            margin-bottom: @fields-space;
+        }
 
         &_margin-top_none {
             margin-top: 0;
@@ -17,17 +27,13 @@
         }
 
         &_margin-bottom_small {
-            margin-bottom: @fields-space - @space;
-
             @media @mobile {
                 margin-bottom: @fields-space-mobile - @space;
             }
-        }
 
-        @media @mobile {
-            font: var(--tui-font-text-l);
-            font-weight: bold;
-            margin-bottom: @fields-space-mobile;
+            @media @tablet-min {
+                margin-bottom: @fields-space - @space;
+            }
         }
     }
 
