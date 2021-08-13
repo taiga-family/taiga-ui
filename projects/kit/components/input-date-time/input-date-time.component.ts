@@ -14,6 +14,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
+    clamp,
     DATE_FILLER_LENGTH,
     nullableSame,
     TUI_DATE_FORMAT,
@@ -56,9 +57,6 @@ import {map, pluck} from 'rxjs/operators';
 // TODO: remove in ivy compilation
 export const TIME_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
 
-// TODO: remove in ivy compilation
-export type DateTimeLimit = TuiDay | [TuiDay, TuiTime];
-
 // @dynamic
 @Component({
     selector: 'tui-input-date-time',
@@ -80,14 +78,16 @@ export type DateTimeLimit = TuiDay | [TuiDay, TuiTime];
 })
 export class TuiInputDateTimeComponent
     extends AbstractTuiControl<[TuiDay | null, TuiTime | null]>
-    implements TuiWithOptionalMinMax<DateTimeLimit>, TuiFocusableElementAccessor {
+    implements
+        TuiWithOptionalMinMax<TuiDay | [TuiDay, TuiTime]>,
+        TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
-    min: DateTimeLimit = TUI_FIRST_DAY;
+    min = TUI_FIRST_DAY;
 
     @Input()
     @tuiDefaultProp()
-    max: DateTimeLimit = TUI_LAST_DAY;
+    max = TUI_LAST_DAY;
 
     @Input()
     @tuiDefaultProp()
@@ -135,11 +135,10 @@ export class TuiInputDateTimeComponent
 
     get textMaskOptions(): TuiTextMaskOptions {
         return this.calculateMask(
-            this.value,
-            this.min,
-            this.max,
+            this.value[0],
+            this.calendarMinDay,
+            this.calendarMaxDay,
             this.timeMode,
-            this.nativeFocusableElement,
         );
     }
 
@@ -173,11 +172,11 @@ export class TuiInputDateTimeComponent
         return this.value[0];
     }
 
-    get calendarMinDay(): TuiDay | null {
+    get calendarMinDay(): TuiDay {
         return Array.isArray(this.min) ? this.min[0] : this.min;
     }
 
-    get calendarMaxDay(): TuiDay | null {
+    get calendarMaxDay(): TuiDay {
         return Array.isArray(this.max) ? this.max[0] : this.max;
     }
 
@@ -218,13 +217,10 @@ export class TuiInputDateTimeComponent
         const parsedDate = TuiDay.normalizeParse(date);
         const parsedTime =
             time && time.length === this.timeMode.length
-                ? TuiTime.fromString(time)
+                ? this.clampTime(TuiTime.fromString(time), parsedDate)
                 : null;
 
-        if (parsedDate !== null) {
-            this.open = false;
-        }
-
+        this.open = false;
         this.updateValue([parsedDate, parsedTime]);
     }
 
@@ -311,21 +307,30 @@ export class TuiInputDateTimeComponent
         this.nativeValue = this.getDateTimeString(day, time);
     }
 
+    private clampTime(time: TuiTime, day: TuiDay): TuiTime {
+        const ms = time.toAbsoluteMilliseconds();
+        const min =
+            Array.isArray(this.min) && day.daySame(this.calendarMinDay)
+                ? this.min[1].toAbsoluteMilliseconds()
+                : -Infinity;
+        const max =
+            Array.isArray(this.max) && day.daySame(this.calendarMaxDay)
+                ? this.max[1].toAbsoluteMilliseconds()
+                : Infinity;
+
+        return TuiTime.fromAbsoluteMilliseconds(clamp(ms, min, max));
+    }
+
     @tuiPure
     private calculateMask(
-        value: [TuiDay | null, TuiTime | null],
-        min: DateTimeLimit,
-        max: DateTimeLimit,
+        day: TuiDay | null,
+        min: TuiDay,
+        max: TuiDay,
         timeMode: TuiTimeMode,
-        nativeInput: HTMLInputElement | null,
     ): TuiTextMaskOptions {
         return {
             mask: [...TUI_DATE_MASK, ',', ' ', ...tuiCreateTimeMask(timeMode)],
-            pipe: tuiCreateAutoCorrectedDateTimePipe(
-                {value, min, max},
-                timeMode,
-                nativeInput,
-            ),
+            pipe: tuiCreateAutoCorrectedDateTimePipe({value: day, min, max}, timeMode),
             guide: false,
         };
     }

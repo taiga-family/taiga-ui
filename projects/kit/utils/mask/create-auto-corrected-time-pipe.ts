@@ -1,5 +1,5 @@
-import {TuiTime, TuiTimeMode} from '@taiga-ui/cdk';
-import {TuiTextMaskPipeHandler, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {TuiTimeMode} from '@taiga-ui/cdk';
+import {TuiTextMaskPipeHandler} from '@taiga-ui/core';
 
 /**
  * Adjusts the entered time by omitting only suitable values ​​for hours and minutes
@@ -7,16 +7,9 @@ import {TuiTextMaskPipeHandler, TuiWithOptionalMinMax} from '@taiga-ui/core';
  */
 export function tuiCreateAutoCorrectedTimePipe(
     timeMode: TuiTimeMode = 'HH:MM',
-    configs: TuiWithOptionalMinMax<TuiTime> = {min: null, max: null},
-    onValueExplicitChange?: (modifiedValue: string) => void,
 ): TuiTextMaskPipeHandler {
-    const timeFormatArray = ['HH', 'MM', 'SS', 'MS'] as const;
-    const maxValue: Record<typeof timeFormatArray[number], number> = {
-        HH: 23,
-        MM: 59,
-        SS: 59,
-        MS: 999,
-    };
+    const timeFormatArray: ['HH', 'MM', 'SS', 'MS'] = ['HH', 'MM', 'SS', 'MS'];
+    const maxValue = {HH: 23, MM: 59, SS: 59, MS: 999};
 
     return (conformedValue: string) => {
         const indexesOfPipedChars: number[] = [];
@@ -42,47 +35,8 @@ export function tuiCreateAutoCorrectedTimePipe(
         return isInvalid
             ? false
             : {
-                  value: applyMinMaxRestrictions({
-                      ...configs,
-                      timeMode,
-                      onValueExplicitChange,
-                      value: conformedValueArr.join(''),
-                  }),
+                  value: conformedValueArr.join(''),
                   indexesOfPipedChars,
               };
     };
-}
-
-function applyMinMaxRestrictions({
-    value,
-    min,
-    max,
-    timeMode,
-    onValueExplicitChange,
-}: {
-    value: string;
-    min: TuiTime | null;
-    max: TuiTime | null;
-    timeMode: TuiTimeMode;
-    onValueExplicitChange?: (modifiedValue: string) => void;
-}): string {
-    if (value.length < timeMode.length) {
-        return value;
-    }
-
-    let modifiedTime = TuiTime.fromString(value);
-
-    if (min && modifiedTime < min) {
-        modifiedTime = min;
-    } else if (max && modifiedTime > max) {
-        modifiedTime = max;
-    }
-
-    const modifiedTimeStr = modifiedTime.toString(timeMode).slice(0, value.length);
-
-    if (modifiedTimeStr !== value && onValueExplicitChange) {
-        onValueExplicitChange(modifiedTimeStr);
-    }
-
-    return modifiedTimeStr;
 }
