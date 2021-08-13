@@ -74,14 +74,6 @@ export class TuiTime implements TuiTimeLike {
         );
     }
 
-    [Symbol.toPrimitive](hint: string): string | number {
-        if (hint === 'number') {
-            return this.toAbsoluteMilliseconds();
-        }
-
-        return this.toString();
-    }
-
     /**
      * Converts TuiTime to milliseconds
      */
