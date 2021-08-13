@@ -2,19 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [2.13.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.13.0...v2.13.1) (2021-07-20)
-
+## [2.14.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.13.1...v2.14.0) (2021-08-13)
 
 ### Features
 
-* **i18n:** add Vietnamese translation ([#562](https://github.com/TinkoffCreditSystems/taiga-ui/issues/562)) ([a7ee3c8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a7ee3c809b7118446517a37dbdb94d3e3998dd03))
-
+-   **cdk:** `For` add new directive ([#615](https://github.com/TinkoffCreditSystems/taiga-ui/issues/615)) ([6165f85](https://github.com/TinkoffCreditSystems/taiga-ui/commit/6165f8591dd7dd9d8b52a26677e58fa329b96488))
+-   **demo:** disable animation if app is running under Cypress (via `TUI_ANIMATIONS_DURATION`) ([#572](https://github.com/TinkoffCreditSystems/taiga-ui/issues/572)) ([165a3d3](https://github.com/TinkoffCreditSystems/taiga-ui/commit/165a3d31d3154887f9251720f740ffcbb439fdb3))
+-   **i18n:** add Spanish translations for countries ([#600](https://github.com/TinkoffCreditSystems/taiga-ui/issues/600)) ([2ed269f](https://github.com/TinkoffCreditSystems/taiga-ui/commit/2ed269f170eb7add37c23eb74fb9182c289cbbbf))
+-   **kit:** `DropdownContext` add new directive ([#527](https://github.com/TinkoffCreditSystems/taiga-ui/issues/527)) ([89bbfcb](https://github.com/TinkoffCreditSystems/taiga-ui/commit/89bbfcb29e81e2fb8cd7521951a5a6f2b760e9de))
+-   **kit:** `InputDateTime` upgrade `min`, `max` inputs (add time constraints) ([#617](https://github.com/TinkoffCreditSystems/taiga-ui/issues/617)) ([7b2a9df](https://github.com/TinkoffCreditSystems/taiga-ui/commit/7b2a9dfef722e109c56bbe9c4bc6e099edf27067))
+-   **kit:** `InputPhoneInternational` add `countryIsoCode` output ([#577](https://github.com/TinkoffCreditSystems/taiga-ui/issues/577)) ([f60d185](https://github.com/TinkoffCreditSystems/taiga-ui/commit/f60d18576025c6209fa1bf91add7702e9a75b34b))
+-   **kit:** `InputPhoneInternational` add label support ([#607](https://github.com/TinkoffCreditSystems/taiga-ui/issues/607)) ([07829a8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/07829a8ce5089dd17ba5458a4c879f48d8274690))
+-   **kit:** `MultiSelect`, `InputTag` add size `s` ([#561](https://github.com/TinkoffCreditSystems/taiga-ui/issues/561)) ([cb621f5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/cb621f589c3b23470629123af14d51822a7d7a29))
+-   **kit:** `TextArea` extra characters highlight ([#593](https://github.com/TinkoffCreditSystems/taiga-ui/issues/593)) ([45b647e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/45b647e93ddd3fa97cf6872b53ab7892ed2745ea))
+-   **kit:** i18n token `TUI_DATE_TEXTS` inside `InputDateTime`, `InputDate`, `InputDateRange` ([#552](https://github.com/TinkoffCreditSystems/taiga-ui/issues/552)) ([354d495](https://github.com/TinkoffCreditSystems/taiga-ui/commit/354d495fa3cd326ad58c3c3bc8f6e0545d81744d))
+-   **schematics:** add ability to use ng add ([#520](https://github.com/TinkoffCreditSystems/taiga-ui/issues/520)) ([8134d06](https://github.com/TinkoffCreditSystems/taiga-ui/commit/8134d060519280286faa41695149f10cb9953724))
 
 ### Bug Fixes
 
-* **cdk:** `getClipboardDataText` return text/plain format as fallback ([#568](https://github.com/TinkoffCreditSystems/taiga-ui/issues/568)) ([0615e20](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0615e20519d909b5b429d36c4e5cb4177eaddddd))
-* **cdk:** fix dropdowns in ShadowDom inside iframe ([#565](https://github.com/TinkoffCreditSystems/taiga-ui/issues/565)) ([d48efa1](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d48efa1913cab9574326834571486030b2db8e25))
-* **kit:** `Breadcrumbs` fix dynamic items ([#560](https://github.com/TinkoffCreditSystems/taiga-ui/issues/560)) ([ab18533](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ab18533f9c65a4553d5bb7df078dc3a8085dcb9d))
+-   **addon-commerce:** `InputCardGroup` fix dynamic localization ([#613](https://github.com/TinkoffCreditSystems/taiga-ui/issues/613)) ([5902f28](https://github.com/TinkoffCreditSystems/taiga-ui/commit/5902f285867fbd7c1c4414cc92ff2125c5316637))
+-   **cdk:** `ActiveZone` fix for shadow DOM ([#587](https://github.com/TinkoffCreditSystems/taiga-ui/issues/587)) ([d872a53](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d872a533b5ffb703b165604f1d9846eafac12aa8))
+-   **cdk:** `ActiveZone` ignore focus loss due to disable ([#595](https://github.com/TinkoffCreditSystems/taiga-ui/issues/595)) ([181e79a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/181e79a16410e49d83be1d2cb7f9ecb0206513d5))
+-   **cdk:** `DialogHost` disable closing dialog on browser `Back` inside iframe ([#588](https://github.com/TinkoffCreditSystems/taiga-ui/issues/588)) ([39b44df](https://github.com/TinkoffCreditSystems/taiga-ui/commit/39b44df9a3329eeb91b58d811937207abcad6b50))
+-   **cdk:** `TuiMediaDirective` fix freezes in mobile safari ([#570](https://github.com/TinkoffCreditSystems/taiga-ui/issues/570)) ([1acad96](https://github.com/TinkoffCreditSystems/taiga-ui/commit/1acad961ce47e4d3b437f3f39f6263dd8d7019c1))
+-   **cdk:** make `markControlAsTouchedAndValidate` work with empty `FormArray` and `FormGroup` ([#586](https://github.com/TinkoffCreditSystems/taiga-ui/issues/586)) ([715dde8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/715dde802ac7fad5b66543619837f303e88526a1))
+-   **core:** `Button` fix expression changed for `showLoader` ([#598](https://github.com/TinkoffCreditSystems/taiga-ui/issues/598)) ([902ea7e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/902ea7e760e7a1c63be1e7e5e7dd48f46b6dbb4b))
+-   **core:** `InputPhone` fix cleaner [#508](https://github.com/TinkoffCreditSystems/taiga-ui/issues/508) ([#519](https://github.com/TinkoffCreditSystems/taiga-ui/issues/519)) ([cd4b974](https://github.com/TinkoffCreditSystems/taiga-ui/commit/cd4b974e4e276ae56cc35967bca4c505cfaf589c))
+-   **core:** fix autofill colors in dark theme ([#605](https://github.com/TinkoffCreditSystems/taiga-ui/issues/605)) ([a285032](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a285032fbcccac92a8f9d2f803effb5e71037ad7))
+-   **kit:** `FieldError` fix change detection for OnPush nesting ([#564](https://github.com/TinkoffCreditSystems/taiga-ui/issues/564)) ([b258dfb](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b258dfb4c7687a3838e8f44a6a4c3ace79d8dafa))
+-   **kit:** `InputDateTime` fix losing unfinished input on the first blur ([#551](https://github.com/TinkoffCreditSystems/taiga-ui/issues/551)) ([28514f6](https://github.com/TinkoffCreditSystems/taiga-ui/commit/28514f6b0ff0aa8d418c46d0d759b5108c18fd3e))
+-   **kit:** `Toggle` fix loader position ([#599](https://github.com/TinkoffCreditSystems/taiga-ui/issues/599)) ([3deade0](https://github.com/TinkoffCreditSystems/taiga-ui/commit/3deade01edd3b2416606d4193c5487336f0bc7e9))
+
+### [2.13.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.13.0...v2.13.1) (2021-07-20)
+
+### Features
+
+-   **i18n:** add Vietnamese translation ([#562](https://github.com/TinkoffCreditSystems/taiga-ui/issues/562)) ([a7ee3c8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a7ee3c809b7118446517a37dbdb94d3e3998dd03))
+
+### Bug Fixes
+
+-   **cdk:** `getClipboardDataText` return text/plain format as fallback ([#568](https://github.com/TinkoffCreditSystems/taiga-ui/issues/568)) ([0615e20](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0615e20519d909b5b429d36c4e5cb4177eaddddd))
+-   **cdk:** fix dropdowns in ShadowDom inside iframe ([#565](https://github.com/TinkoffCreditSystems/taiga-ui/issues/565)) ([d48efa1](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d48efa1913cab9574326834571486030b2db8e25))
+-   **kit:** `Breadcrumbs` fix dynamic items ([#560](https://github.com/TinkoffCreditSystems/taiga-ui/issues/560)) ([ab18533](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ab18533f9c65a4553d5bb7df078dc3a8085dcb9d))
 
 ## [2.13.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.12.0...v2.13.0) (2021-07-13)
 
