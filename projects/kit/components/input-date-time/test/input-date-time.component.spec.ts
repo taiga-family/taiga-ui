@@ -2,7 +2,7 @@ import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiDay} from '@taiga-ui/cdk';
+import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 import {TuiInputDateTimeModule} from '@taiga-ui/kit/components';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
@@ -11,12 +11,19 @@ import {configureTestSuite} from 'ng-bullet';
 @Component({
     template: `
         <tui-root>
-            <tui-input-date-time [formControl]="control"></tui-input-date-time>
+            <tui-input-date-time
+                [formControl]="control"
+                [min]="min"
+                [max]="max"
+            ></tui-input-date-time>
         </tui-root>
     `,
 })
 class TestComponent {
     readonly control = new FormControl([new TuiDay(2021, 6, 12), null]);
+
+    min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
+    max: TuiDay | [TuiDay, TuiTime] = TUI_LAST_DAY;
 }
 
 describe('InputDateTime', () => {
@@ -33,6 +40,7 @@ describe('InputDateTime', () => {
     });
 
     let fixture: ComponentFixture<TestComponent>;
+    let component: TestComponent;
     let inputPO: NativeInputPO;
     let pageObject: PageObject<TestComponent>;
     const testContext = {
@@ -49,6 +57,7 @@ describe('InputDateTime', () => {
 
     beforeEach(done => {
         fixture = TestBed.createComponent(TestComponent);
+        component = fixture.componentInstance;
         pageObject = new PageObject(fixture);
         inputPO = new NativeInputPO(fixture, testContext.nativeInputAutomationId);
 
@@ -135,6 +144,96 @@ describe('InputDateTime', () => {
             .then(() => {
                 expect(inputPO.value).toBe(`27.07.2021, ${TIME_STRING}`);
 
+                done();
+            });
+    });
+
+    it('min day works', done => {
+        component.min = TuiDay.normalizeParse('13.08.2021');
+        fixture.detectChanges();
+        inputPO.sendText('12.08.2021');
+
+        fixture.whenStable().then(() => {
+            expect(inputPO.value).toBe('13.08.2021');
+            done();
+        });
+    });
+
+    it('max day works', done => {
+        component.max = TuiDay.normalizeParse('13.08.2021');
+        fixture.detectChanges();
+        inputPO.sendText('14.08.2021');
+
+        fixture.whenStable().then(() => {
+            expect(inputPO.value).toBe('13.08.2021');
+            done();
+        });
+    });
+
+    it('min day + time work', done => {
+        component.min = [
+            TuiDay.normalizeParse('13.08.2021'),
+            TuiTime.fromString('12:00'),
+        ];
+        fixture.detectChanges();
+        inputPO.sendText('13.08.2021, 10:00');
+
+        fixture.whenStable().then(() => {
+            expect(inputPO.value).toBe('13.08.2021, 12:00');
+            done();
+        });
+    });
+
+    it('min day + time work within min day only', done => {
+        component.min = [
+            TuiDay.normalizeParse('13.08.2021'),
+            TuiTime.fromString('12:00'),
+        ];
+        fixture.detectChanges();
+
+        fixture
+            .whenStable()
+            .then(() => {
+                inputPO.sendText('14.08.2021 10:00');
+
+                return fixture.whenStable();
+            })
+            .then(() => {
+                expect(inputPO.value).toBe('14.08.2021, 10:00');
+                done();
+            });
+    });
+
+    it('max day + time work', done => {
+        component.max = [
+            TuiDay.normalizeParse('13.08.2021'),
+            TuiTime.fromString('12:00'),
+        ];
+        fixture.detectChanges();
+        inputPO.sendText('13.08.2021, 14:00');
+
+        fixture.whenStable().then(() => {
+            expect(inputPO.value).toBe('13.08.2021, 12:00');
+            done();
+        });
+    });
+
+    it('max day + time work within max day only', done => {
+        component.max = [
+            TuiDay.normalizeParse('13.08.2021'),
+            TuiTime.fromString('12:00'),
+        ];
+        fixture.detectChanges();
+
+        fixture
+            .whenStable()
+            .then(() => {
+                inputPO.sendText('12.08.2021, 14:00');
+
+                return fixture.whenStable();
+            })
+            .then(() => {
+                expect(inputPO.value).toBe('12.08.2021, 14:00');
                 done();
             });
     });
