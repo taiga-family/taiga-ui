@@ -190,12 +190,18 @@ describe('InputDateTime', () => {
             TuiTime.fromString('12:00'),
         ];
         fixture.detectChanges();
-        inputPO.sendText('14.08.2021, 10:00');
 
-        fixture.whenStable().then(() => {
-            expect(inputPO.value).toBe('14.08.2021, 10:00');
-            done();
-        });
+        fixture
+            .whenStable()
+            .then(() => {
+                inputPO.sendText('14.08.2021 10:00');
+
+                return fixture.whenStable();
+            })
+            .then(() => {
+                expect(inputPO.value).toBe('14.08.2021, 10:00');
+                done();
+            });
     });
 
     it('max day + time work', done => {
@@ -218,12 +224,18 @@ describe('InputDateTime', () => {
             TuiTime.fromString('12:00'),
         ];
         fixture.detectChanges();
-        inputPO.sendText('12.08.2021, 14:00');
 
-        fixture.whenStable().then(() => {
-            expect(inputPO.value).toBe('12.08.2021, 14:00');
-            done();
-        });
+        fixture
+            .whenStable()
+            .then(() => {
+                inputPO.sendText('12.08.2021, 14:00');
+
+                return fixture.whenStable();
+            })
+            .then(() => {
+                expect(inputPO.value).toBe('12.08.2021, 14:00');
+                done();
+            });
     });
 
     it('keeps finished time string if date was changed using calendar', done => {
