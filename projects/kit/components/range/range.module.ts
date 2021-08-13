@@ -6,7 +6,7 @@ import {
     TuiFocusVisibleModule,
     TuiRepeatTimesModule,
 } from '@taiga-ui/cdk';
-import {TuiFormatNumberPipeModule, TuiPluralizePipeModule} from '@taiga-ui/core';
+import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
 import {TuiRangeComponent} from './range.component';
 
 @NgModule({
@@ -16,7 +16,6 @@ import {TuiRangeComponent} from './range.component';
         TuiFocusableModule,
         TuiActiveZoneModule,
         TuiFocusVisibleModule,
-        TuiPluralizePipeModule,
         TuiFormatNumberPipeModule,
     ],
     declarations: [TuiRangeComponent],

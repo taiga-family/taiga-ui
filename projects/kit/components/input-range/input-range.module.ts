@@ -10,7 +10,7 @@ import {
     TuiMapperPipeModule,
     TuiPressedModule,
 } from '@taiga-ui/cdk';
-import {TuiPluralizePipeModule, TuiWrapperModule} from '@taiga-ui/core';
+import {TuiWrapperModule} from '@taiga-ui/core';
 import {TuiRangeModule} from '@taiga-ui/kit/components/range';
 import {TextMaskModule} from 'angular2-text-mask';
 
@@ -29,7 +29,6 @@ import {TuiInputRangeComponent} from './input-range.component';
         TuiMapperPipeModule,
         TuiInputModeModule,
         TuiActiveZoneModule,
-        TuiPluralizePipeModule,
         TuiRangeModule,
         TuiWrapperModule,
     ],

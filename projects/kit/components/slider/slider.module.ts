@@ -6,7 +6,7 @@ import {
     TuiFocusVisibleModule,
     TuiRepeatTimesModule,
 } from '@taiga-ui/cdk';
-import {TuiFormatNumberPipeModule, TuiPluralizePipeModule} from '@taiga-ui/core';
+import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
 import {TuiSliderComponent} from './slider.component';
 
 @NgModule({
@@ -16,7 +16,6 @@ import {TuiSliderComponent} from './slider.component';
         TuiFocusableModule,
         TuiFocusVisibleModule,
         TuiActiveZoneModule,
-        TuiPluralizePipeModule,
         TuiFormatNumberPipeModule,
     ],
     declarations: [TuiSliderComponent],

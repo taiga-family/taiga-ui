@@ -20,11 +20,16 @@ import {
     TuiNativeFocusableElement,
     typedFromEvent,
 } from '@taiga-ui/cdk';
-import {TuiPluralize, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {
+    TuiPluralize,
+    tuiPluralizeToICU,
+    TuiSizeS,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
-import {Observable, race, Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {map, switchMap, takeUntil} from 'rxjs/operators';
 
 export const SLIDER_KEYBOARD_STEP = 0.05;
@@ -62,9 +67,14 @@ export abstract class AbstractTuiSlider<T>
     @tuiDefaultProp(nonNegativeFiniteAssertion, 'Quantum must be a non-negative number')
     quantum = 0;
 
+    // TODO: remove setter in v3.0:
     @Input()
     @tuiDefaultProp()
-    pluralize: TuiPluralize | null = null;
+    set pluralize(pluralize: TuiPluralize | Record<string, string> | null) {
+        this.pluralizeMap = Array.isArray(pluralize)
+            ? tuiPluralizeToICU(pluralize)
+            : pluralize;
+    }
 
     @Input()
     @HostBinding('attr.data-tui-host-size')
@@ -79,16 +89,15 @@ export abstract class AbstractTuiSlider<T>
 
     focusVisibleRight = false;
 
+    pluralizeMap: Record<string, string> | null = null;
+
     @ViewChild('dotLeft')
     protected dotLeft?: ElementRef<TuiNativeFocusableElement>;
 
     @ViewChild('dotRight')
     protected dotRight?: ElementRef<TuiNativeFocusableElement>;
 
-    // @bad TODO: handle pointer events instead of mouse and touch events
-    private pointerDown$ = new Subject<
-        TuiEventWith<MouseEvent | TouchEvent, HTMLElement>
-    >();
+    private pointerDown$ = new Subject<TuiEventWith<PointerEvent, HTMLElement>>();
 
     protected constructor(
         ngControl: NgControl | null,
@@ -136,20 +145,16 @@ export abstract class AbstractTuiSlider<T>
     ngOnInit() {
         super.ngOnInit();
 
-        const mouseMoves$ = typedFromEvent(this.documentRef, 'mousemove');
-        const mouseUps$ = typedFromEvent(this.documentRef, 'mouseup');
-        const touchMoves$ = typedFromEvent(this.documentRef, 'touchmove');
-        const touchEnds$ = typedFromEvent(this.documentRef, 'touchend');
+        const pointerMoves$ = typedFromEvent(this.documentRef, 'pointermove');
+        const pointerUps$ = typedFromEvent(this.documentRef, 'pointerup');
         let isPointerDownRight: boolean;
 
         this.pointerDown$
             .pipe(
-                map((event: MouseEvent | TouchEvent) => {
+                map((event: PointerEvent) => {
                     const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
-                    const clientX =
-                        event instanceof MouseEvent
-                            ? event.clientX
-                            : event.touches[0].clientX;
+
+                    const clientX = event.clientX;
                     const fraction = clamp(
                         this.getFractionFromEvents(rect, clientX),
                         0,
@@ -182,17 +187,15 @@ export abstract class AbstractTuiSlider<T>
                     return rect;
                 }),
                 switchMap(rect =>
-                    race([touchMoves$, mouseMoves$]).pipe(
-                        map((event: any) =>
+                    pointerMoves$.pipe(
+                        map((event: PointerEvent) =>
                             this.getCalibratedFractionFromEvents(
                                 rect,
-                                event instanceof MouseEvent
-                                    ? event.clientX
-                                    : event.touches[0].clientX,
+                                event.clientX,
                                 isPointerDownRight,
                             ),
                         ),
-                        takeUntil(race([mouseUps$, touchEnds$])),
+                        takeUntil(pointerUps$),
                     ),
                 ),
                 map(fraction => this.fractionGuard(fraction)),
@@ -210,7 +213,7 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$.complete();
     }
 
-    onMouseDown(event: TuiEventWith<MouseEvent, HTMLElement>) {
+    onPointerDown(event: TuiEventWith<PointerEvent, HTMLElement>) {
         if (this.disabled) {
             return;
         }
@@ -219,17 +222,8 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$.next(event);
     }
 
-    onTouchStart(event: TuiEventWith<TouchEvent, HTMLElement>) {
-        if (this.disabled) {
-            return;
-        }
-
-        event.preventDefault();
-        this.pointerDown$.next(event);
-    }
-
-    isPluralized(pluralize: TuiPluralize | null): pluralize is TuiPluralize {
-        return pluralize !== null && pluralize.length === 3;
+    isPluralized(pluralize: Record<string, string> | null): boolean {
+        return pluralize !== null;
     }
 
     decrement(right: boolean) {

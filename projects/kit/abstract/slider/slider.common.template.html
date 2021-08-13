@@ -1,8 +1,7 @@
 <div
     class="event-catcher"
     (tuiActiveZoneChange)="onActiveZone($event)"
-    (mousedown)="onMouseDown($event)"
-    (touchstart)="onTouchStart($event)"
+    (pointerdown)="onPointerDown($event)"
 >
     <div class="wrapper">
         <div *ngIf="segmented" class="segments">
@@ -14,9 +13,9 @@
                 <span *ngIf="fromToTexts$ | async as fromToText" class="number">
                     {{getSegmentPrefix(segmentIndex, fromToText)}}
                     {{getSegmentLabel(segmentIndex) | tuiFormatNumber}}
-                    <span *ngIf="isPluralized(pluralize)">
-                        {{getSegmentLabel(segmentIndex) | tuiPluralize:
-                        pluralize}}
+                    <span *ngIf="isPluralized(pluralizeMap)">
+                        {{getSegmentLabel(segmentIndex) | i18nPlural:
+                        pluralizeMap}}
                     </span>
                 </span>
             </span>

@@ -62,10 +62,16 @@ export class ExampleTuiRangeComponent {
 
     steps = this.stepsVariants[0];
 
-    readonly pluralizeVariants: ReadonlyArray<TuiPluralize> = [
+    readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
         ['year', 'years', 'years'],
         ['thing', 'things', 'things'],
         ['year', 'years', 'years'],
+        {
+            '=0': 'zero',
+            '=1': 'one',
+            '=2': 'two',
+            other: 'other',
+        },
     ];
 
     pluralize = null;
