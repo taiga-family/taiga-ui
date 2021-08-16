@@ -149,6 +149,10 @@ export class TuiPrimitiveTextfieldComponent
         return !!this.content;
     }
 
+    get isContextTable(): boolean {
+        return this.appearance === TuiAppearance.Table;
+    }
+
     get hasTooltip(): boolean {
         return !!this.hintController && !!this.hintController.content && !this.disabled;
     }
