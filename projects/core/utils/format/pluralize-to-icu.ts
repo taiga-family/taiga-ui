@@ -1,4 +1,4 @@
-import {TuiPluralize} from '../../types';
+import {TuiPluralize} from '@taiga-ui/core/types';
 
 // TODO: remove in 3.0
 
