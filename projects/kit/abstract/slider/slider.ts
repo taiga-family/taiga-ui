@@ -222,10 +222,6 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$.next(event);
     }
 
-    isPluralized(pluralize: Record<string, string> | null): boolean {
-        return pluralize !== null;
-    }
-
     decrement(right: boolean) {
         this.processStep(false, right);
     }

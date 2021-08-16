@@ -133,10 +133,6 @@ export abstract class AbstractTuiInputSlider<T>
         this.updateHovered(hovered);
     }
 
-    isPluralized(pluralize: Record<string, string> | null): boolean {
-        return pluralize !== null;
-    }
-
     protected valueGuard(value: number): number {
         return this.quantum
             ? clamp(
