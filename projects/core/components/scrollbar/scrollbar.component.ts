@@ -9,7 +9,7 @@ import {
     Input,
 } from '@angular/core';
 import {CSS, USER_AGENT} from '@ng-web-apis/common';
-import {getElementOffset, isFirefox, tuiDefaultProp, TUI_IS_IOS} from '@taiga-ui/cdk';
+import {getElementOffset, isFirefox, TUI_IS_IOS, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_SCROLL_INTO_VIEW} from '@taiga-ui/core/constants';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {TuiScrollableDirective} from './scrollable.directive';
