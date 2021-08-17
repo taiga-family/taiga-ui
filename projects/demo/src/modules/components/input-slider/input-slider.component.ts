@@ -63,13 +63,12 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
         ['year', 'years', 'years'],
-        ['thing', 'things', 'things'],
-        ['year', 'years', 'years'],
+        {'=1': 'thing', '=2': 'things', other: 'things'},
         {
-            '=0': 'zero',
-            '=1': 'one',
-            '=2': 'two',
-            other: 'other',
+            '=0': 'years',
+            '=1': 'year',
+            '=2': 'years',
+            other: 'years',
         },
     ];
 
