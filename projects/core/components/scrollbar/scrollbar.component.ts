@@ -58,11 +58,7 @@ export class TuiScrollbarComponent {
     ) {}
 
     get showScrollbars(): boolean {
-        return !this.computedHidden && (!this.isLegacy || !!this.scrollable);
-    }
-
-    get computedHidden(): boolean {
-        return this.hidden || this.isIos;
+        return !this.hidden && !this.isIos && (!this.isLegacy || !!this.scrollable);
     }
 
     get browserScrollRef(): ElementRef<HTMLElement> {
