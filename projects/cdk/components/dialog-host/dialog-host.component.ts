@@ -1,9 +1,10 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {HISTORY} from '@ng-web-apis/common';
+import {HISTORY, WINDOW} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
+import {isInsideIframe} from '@taiga-ui/cdk/utils';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -31,14 +32,24 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
                 .sort((a, b) => a.createdAt - b.createdAt),
         ),
     );
+    /**
+     * TODO enable this feature for iframes too
+     * when the legacy frame manager (with an iframe inside) will be removed on all internal projects
+     */
+    private isCloseOnBackNavDisabled = isInsideIframe(this.windowRef);
 
     constructor(
         @Inject(TUI_DIALOGS) private readonly dialogsByType: Observable<readonly T[]>[],
+        @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(HISTORY) private readonly historyRef: History,
         @Inject(Title) private readonly titleService: Title,
     ) {}
 
     closeLast(dialogs: readonly T[]) {
+        if (this.isCloseOnBackNavDisabled) {
+            return;
+        }
+
         const [last] = dialogs.slice(-1);
 
         if (!last) {
@@ -53,7 +64,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
     }
 
     onDialog({propertyName}: TransitionEvent, popupOpened: boolean) {
-        if (propertyName !== 'letter-spacing') {
+        if (this.isCloseOnBackNavDisabled || propertyName !== 'letter-spacing') {
             return;
         }
 

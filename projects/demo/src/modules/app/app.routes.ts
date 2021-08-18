@@ -1050,6 +1050,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'directives/dropdown-context',
+        loadChildren: () =>
+            import('../directives/dropdown-context/dropdown-context.module').then(
+                m => m.ExampleTuiDropdownContextModule,
+            ),
+        data: {
+            title: 'DropdownContext',
+        },
+    },
+    {
         path: 'directives/dropdown-selection',
         loadChildren: () =>
             import(`../directives/dropdown-selection/dropdown-selection.module`).then(
@@ -1087,6 +1097,14 @@ export const ROUTES = [
             ),
         data: {
             title: 'Element',
+        },
+    },
+    {
+        path: 'directives/for',
+        loadChildren: () =>
+            import(`../directives/for/for.module`).then(m => m.ExampleTuiForModule),
+        data: {
+            title: 'For',
         },
     },
     {

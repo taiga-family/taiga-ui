@@ -851,6 +851,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'DropdownContext',
+                keywords: 'dropdown, контекст, выпадашка, дропдаун, Context, right-click',
+                route: '/directives/dropdown-context',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'DropdownSelection',
                 keywords:
                     'dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context',
@@ -868,6 +874,12 @@ export const pages: TuiDocPages = [
                 title: 'Element',
                 keywords: 'element, elementref, nativeelement, tag',
                 route: 'directives/element',
+            },
+            {
+                section: $localize`Tools`,
+                title: 'For',
+                keywords: 'loading, cycle, empty, list, iterate',
+                route: 'directives/for',
             },
             {
                 section: $localize`Tools`,

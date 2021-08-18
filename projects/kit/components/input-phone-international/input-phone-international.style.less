@@ -17,6 +17,16 @@
 
 .country-select {
     width: 5.625rem;
+
+    /* stylelint-disable */
+    &:not(._readonly) ::ng-deep input:not(:disabled) {
+        cursor: pointer;
+    }
+
+    &._readonly ::ng-deep input {
+        cursor: default;
+    }
+    /* stylelint-enable */
 }
 
 .arrow-icon {

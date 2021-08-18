@@ -50,7 +50,8 @@ export const LINE_HEIGHT_L = 24;
 })
 export class TuiTextAreaComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     rows = DEFAULT_ROWS;
@@ -137,6 +138,14 @@ export class TuiTextAreaComponent
             !this.controller.labelOutside &&
             ((this.computedFocused && !this.readOnly) || this.hasValue)
         );
+    }
+
+    get fittedContent(): string {
+        return this.value.slice(0, this.controller.maxLength || Infinity);
+    }
+
+    get extraContent(): string {
+        return this.value.slice(this.controller.maxLength || Infinity);
     }
 
     onFocused(focused: boolean) {

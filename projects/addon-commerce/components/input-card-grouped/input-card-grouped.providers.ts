@@ -7,8 +7,8 @@ import {
 } from '@taiga-ui/addon-commerce/tokens';
 import {typedFromEvent} from '@taiga-ui/cdk';
 import {MEDIA} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
-import {map, startWith, withLatestFrom} from 'rxjs/operators';
+import {combineLatest, Observable, of} from 'rxjs';
+import {map, startWith, switchMap} from 'rxjs/operators';
 
 export interface TuiCardGroupedTexts {
     readonly cardNumberText: string;
@@ -40,8 +40,14 @@ export function inputGroupedTextsFactory(
 
     return typedFromEvent(media, 'change').pipe(
         startWith(null),
-        map(() => Number(media.matches)),
-        withLatestFrom(cardNumberTexts, expiryTexts, cvcTexts),
+        switchMap(() =>
+            combineLatest([
+                of(Number(media.matches)),
+                cardNumberTexts,
+                expiryTexts,
+                cvcTexts,
+            ]),
+        ),
         map(([index, cardNumber, expiry, cvcTexts]) => ({
             cardNumberText: cardNumber[index],
             expiryText: expiry[index],

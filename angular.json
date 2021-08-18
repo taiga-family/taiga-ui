@@ -664,8 +664,8 @@
                             ],
                             "fileReplacements": [
                                 {
-                                    "replace": "public/projects/demo/src/view-encapsulation.ts",
-                                    "with": "public/projects/demo/src/view-encapsulation.shadow.ts"
+                                    "replace": "projects/demo/src/view-encapsulation.ts",
+                                    "with": "projects/demo/src/view-encapsulation.shadow.ts"
                                 }
                             ]
                         },

@@ -14,12 +14,15 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
+    clamp,
+    DATE_FILLER_LENGTH,
     nullableSame,
-    TUI_DATE_FILLER,
+    TUI_DATE_FORMAT,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiDateMode,
     TuiDay,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -38,14 +41,18 @@ import {
 } from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_CALENDAR_DATA_STREAM, TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
+import {
+    TUI_CALENDAR_DATA_STREAM,
+    TUI_DATE_TEXTS,
+    TUI_TIME_TEXTS,
+} from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDateTimePipe,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {combineLatest, Observable} from 'rxjs';
+import {map, pluck} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
 export const TIME_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
@@ -71,7 +78,10 @@ export const TIME_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
 })
 export class TuiInputDateTimeComponent
     extends AbstractTuiControl<[TuiDay | null, TuiTime | null]>
-    implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor {
+    implements
+        TuiWithOptionalMinMax<TuiDay | [TuiDay, TuiTime]>,
+        TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     min = TUI_FIRST_DAY;
@@ -93,6 +103,10 @@ export class TuiInputDateTimeComponent
     timeMode: TuiTimeMode = 'HH:MM';
 
     open = false;
+    readonly filler$ = combineLatest([
+        this.dateTexts$.pipe(pluck(this.dateFormat)),
+        this.timeTexts$.pipe(pluck(this.timeMode)),
+    ]).pipe(map(fillers => this.getDateTimeString(...fillers)));
 
     private month: TuiMonth | null = null;
 
@@ -107,24 +121,25 @@ export class TuiInputDateTimeComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_DATE_FILLER) readonly dateFiller: string,
+        @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
         @Inject(TUI_TIME_TEXTS)
         readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
+        @Inject(TUI_DATE_TEXTS)
+        readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
         super(control, changeDetectorRef);
     }
 
     get fillerLength(): number {
-        return this.dateFiller.length + DATE_TIME_SEPARATOR.length + this.timeMode.length;
+        return DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length + this.timeMode.length;
     }
 
     get textMaskOptions(): TuiTextMaskOptions {
         return this.calculateMask(
             this.value[0],
-            this.min,
-            this.max,
+            this.calendarMinDay,
+            this.calendarMaxDay,
             this.timeMode,
-            this.dateFiller,
         );
     }
 
@@ -145,7 +160,7 @@ export class TuiInputDateTimeComponent
     get computedValue(): string {
         const {value, nativeValue, timeMode} = this;
         const [date, time] = value;
-        const hasTimeInputChars = nativeValue.length > this.dateFiller.length;
+        const hasTimeInputChars = nativeValue.length > DATE_FILLER_LENGTH;
 
         if (!date || (!time && hasTimeInputChars)) {
             return nativeValue;
@@ -156,6 +171,14 @@ export class TuiInputDateTimeComponent
 
     get calendarValue(): TuiDay | null {
         return this.value[0];
+    }
+
+    get calendarMinDay(): TuiDay {
+        return Array.isArray(this.min) ? this.min[0] : this.min;
+    }
+
+    get calendarMaxDay(): TuiDay {
+        return Array.isArray(this.max) ? this.max[0] : this.max;
     }
 
     get computedActiveYearMonth(): TuiMonth {
@@ -178,20 +201,13 @@ export class TuiInputDateTimeComponent
         return !this.computedDisabled && !this.readOnly;
     }
 
-    @tuiPure
-    getFiller$(dateFiller: string, timeMode: TuiTimeMode): Observable<string> {
-        return this.timeTexts$.pipe(
-            map(texts => `${dateFiller}${DATE_TIME_SEPARATOR}${texts[timeMode]}`),
-        );
-    }
-
     @HostListener('click')
     onClick() {
         this.open = !this.open;
     }
 
     onValueChange(value: string) {
-        if (value.length < this.dateFiller.length) {
+        if (value.length < DATE_FILLER_LENGTH) {
             this.updateValue([null, null]);
 
             return;
@@ -202,13 +218,10 @@ export class TuiInputDateTimeComponent
         const parsedDate = TuiDay.normalizeParse(date);
         const parsedTime =
             time && time.length === this.timeMode.length
-                ? TuiTime.fromString(time)
+                ? this.clampTime(TuiTime.fromString(time), parsedDate)
                 : null;
 
-        if (parsedDate !== null) {
-            this.open = false;
-        }
-
+        this.open = false;
         this.updateValue([parsedDate, parsedTime]);
     }
 
@@ -295,32 +308,43 @@ export class TuiInputDateTimeComponent
         this.nativeValue = this.getDateTimeString(day, time);
     }
 
+    private clampTime(time: TuiTime, day: TuiDay): TuiTime {
+        const ms = time.toAbsoluteMilliseconds();
+        const min =
+            Array.isArray(this.min) && day.daySame(this.calendarMinDay)
+                ? this.min[1].toAbsoluteMilliseconds()
+                : -Infinity;
+        const max =
+            Array.isArray(this.max) && day.daySame(this.calendarMaxDay)
+                ? this.max[1].toAbsoluteMilliseconds()
+                : Infinity;
+
+        return TuiTime.fromAbsoluteMilliseconds(clamp(ms, min, max));
+    }
+
     @tuiPure
     private calculateMask(
         day: TuiDay | null,
         min: TuiDay,
         max: TuiDay,
         timeMode: TuiTimeMode,
-        filler: string,
     ): TuiTextMaskOptions {
         return {
             mask: [...TUI_DATE_MASK, ',', ' ', ...tuiCreateTimeMask(timeMode)],
-            pipe: tuiCreateAutoCorrectedDateTimePipe(
-                {value: day, min, max, filler},
-                timeMode,
-            ),
+            pipe: tuiCreateAutoCorrectedDateTimePipe({value: day, min, max}, timeMode),
             guide: false,
         };
     }
 
     @tuiPure
     private getDateTimeString(
-        date: TuiDay,
+        date: TuiDay | string,
         time: TuiTime | string | null,
         timeMode: TuiTimeMode = 'HH:MM',
     ): string {
+        const dateString = date instanceof TuiDay ? date.toString() : date;
         const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
 
-        return `${date.toString()}${DATE_TIME_SEPARATOR}${timeString}`;
+        return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
     }
 }

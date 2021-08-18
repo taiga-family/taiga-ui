@@ -46,6 +46,11 @@
     .text-basic();
     .clearinput();
     .fullsize();
+
+    :host[data-mode='onDark'] & {
+        .autofill(dark);
+    }
+
     padding: 0 0.75rem;
     box-sizing: border-box;
     white-space: nowrap;
