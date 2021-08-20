@@ -16,9 +16,11 @@ import {
     AbstractTuiControl,
     isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TuiAppearance,
@@ -27,6 +29,8 @@ import {
     TuiSizeL,
     TuiSizeXS,
 } from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {ToggleOptions, TUI_TOGGLE_OPTIONS} from './toggle-options';
 
 @Component({
     selector: 'tui-toggle',
@@ -72,8 +76,27 @@ export class TuiToggleComponent
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_TOGGLE_OPTIONS)
+        public readonly options: ToggleOptions,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    get iconOn(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
+        return this.options.icons.toggleOn;
+    }
+
+    get iconOff(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
+        return this.options.icons.toggleOff;
+    }
+
+    get context(): TuiContextWithImplicit<TuiSizeL> {
+        return this.getContext(this.size);
+    }
+
+    @tuiPure
+    private getContext($implicit: TuiSizeL): TuiContextWithImplicit<TuiSizeL> {
+        return {$implicit};
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
@@ -97,14 +120,6 @@ export class TuiToggleComponent
     @HostBinding('class._checked')
     get checked(): boolean {
         return this.value;
-    }
-
-    get iconOn(): string {
-        return this.sizeM ? 'tuiIconToggleOn' : 'tuiIconToggleOnLarge';
-    }
-
-    get iconOff(): string {
-        return this.sizeM ? 'tuiIconToggleOff' : 'tuiIconToggleOffLarge';
     }
 
     get loaderSize(): TuiSizeXS {

@@ -7,33 +7,52 @@
     [invalid]="computedInvalid"
 >
     <div class="toggle">
-        <tui-loader
-            *ngIf="showLoader"
-            class="loader"
-            [size]="loaderSize"
-            [inheritColor]="true"
-            [showLoader]="checked"
-        ></tui-loader>
-        <tui-svg
-            *ngIf="showIcons && !showLoader"
-            class="icon"
-            automation-id="tui-toggle__check-icon"
-            [src]="iconOn"
-        ></tui-svg>
+        <span
+            polymorpheus-outlet
+            class="icon-wrapper"
+            [content]="iconOn"
+            [context]="context"
+        >
+            <ng-template let-icon>
+                <tui-loader
+                    *ngIf="showLoader"
+                    class="loader"
+                    [size]="loaderSize"
+                    [inheritColor]="true"
+                    [showLoader]="checked"
+                ></tui-loader>
+
+                <tui-svg
+                    *ngIf="showIcons && !showLoader"
+                    class="icon"
+                    automation-id="tui-toggle__check-icon"
+                    [src]="icon"
+                ></tui-svg>
+            </ng-template>
+        </span>
         <div class="circle"></div>
-        <tui-loader
-            *ngIf="showLoader"
-            class="loader"
-            [size]="loaderSize"
-            [inheritColor]="true"
-            [showLoader]="!checked"
-        ></tui-loader>
-        <tui-svg
-            *ngIf="showIcons && !showLoader"
-            class="icon icon_off"
-            automation-id="tui-toggle__cancel-icon"
-            [src]="iconOff"
-        ></tui-svg>
+        <span
+            polymorpheus-outlet
+            class="icon-wrapper"
+            [content]="iconOff"
+            [context]="context"
+        >
+            <ng-template let-icon>
+                <tui-loader
+                    *ngIf="showLoader"
+                    class="loader"
+                    [size]="loaderSize"
+                    [inheritColor]="true"
+                    [showLoader]="!checked"
+                ></tui-loader>
+                <tui-svg
+                    *ngIf="showIcons && !showLoader"
+                    class="icon icon_off"
+                    automation-id="tui-toggle__cancel-icon"
+                    [src]="icon"
+                ></tui-svg>
+            </ng-template>
+        </span>
     </div>
 </tui-wrapper>
 <input
