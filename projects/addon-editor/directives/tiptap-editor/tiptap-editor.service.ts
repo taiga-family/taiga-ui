@@ -5,7 +5,7 @@ import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import type {BackgroundColor} from '@taiga-ui/addon-editor/extensions';
 // @ts-ignore
 import type {FontColor} from '@taiga-ui/addon-editor/extensions';
-import {Editor} from '@tiptap/core';
+import {Editor, getMarkRange} from '@tiptap/core';
 // @ts-ignore
 import type Image from '@tiptap/extension-image';
 // @ts-ignore
@@ -211,6 +211,14 @@ export class TuiTiptapEditorService extends TuiEditor {
         this.editor.chain().focus().toggleLink({href}).run();
     }
 
+    setLink(href: string) {
+        this.editor.chain().focus().setLink({href}).run();
+    }
+
+    unsetLink() {
+        this.editor.chain().focus().unsetLink().run();
+    }
+
     indent() {
         this.editor.chain().focus().indent();
     }
@@ -225,6 +233,16 @@ export class TuiTiptapEditorService extends TuiEditor {
 
     setValue(value: string): void {
         this.editor.commands.setContent(value);
+    }
+
+    selectClosest() {
+        const pos = this.editor.state.selection.anchor;
+        const {schema, doc} = this.editor.state;
+        const range = getMarkRange(doc.resolve(pos), schema.marks.link);
+
+        if (range) {
+            this.editor.chain().setTextSelection(range).run();
+        }
     }
 
     private isEmptyParagraph(json: Object[]): boolean {

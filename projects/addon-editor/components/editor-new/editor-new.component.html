@@ -32,6 +32,20 @@
     </div>
 
     <tui-scrollbar class="scrollbar">
-        <div #editorRef tuiTiptapEditor class="editor"></div>
+        <div
+            tuiDropdownLimitWidth="auto"
+            tuiDropdownSelectionPosition="tag"
+            [tuiDropdownSelection]="dropdownSelectionHandler"
+            [tuiDropdownContent]="dropdown"
+        >
+            <div #editorRef tuiTiptapEditor class="editor"></div>
+        </div>
     </tui-scrollbar>
+
+    <ng-template #dropdown>
+        <tui-edit-link
+            (addLink)="addLink($event)"
+            (removeLink)="removeLink($event)"
+        ></tui-edit-link>
+    </ng-template>
 </div>

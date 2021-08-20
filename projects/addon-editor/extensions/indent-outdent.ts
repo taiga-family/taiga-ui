@@ -125,9 +125,11 @@ export const Indent = Extension.create<IndentOptions>({
                     indent: {
                         default: this.options.defaultIndentLevel,
                         renderHTML: attributes => {
-                            return {
-                                style: `margin-left: ${attributes.indent}px;`,
-                            };
+                            return attributes.indent
+                                ? {
+                                      style: `margin-left: ${attributes.indent}px;`,
+                                  }
+                                : {};
                         },
                         parseHTML: element => ({
                             indent:

@@ -18,7 +18,9 @@ import {TuiTiptapEditorDirective} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {
     AbstractTuiControl,
+    ALWAYS_FALSE_HANDLER,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TuiBooleanHandler,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
 
@@ -45,7 +47,7 @@ export class TuiEditorNewComponent
     exampleText = '';
 
     @ViewChild('editorRef', {read: TuiTiptapEditorDirective})
-    editorRef?: TuiTiptapEditorDirective;
+    editorRef!: TuiTiptapEditorDirective;
 
     @ViewChild(TuiToolbarNewComponent)
     toolbar?: TuiToolbarNewComponent;
@@ -53,6 +55,12 @@ export class TuiEditorNewComponent
     @Input()
     @tuiDefaultProp()
     tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
+
+    get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
+        return this.editor?.isActive('link')
+            ? () => !!this.editor?.isActive('link')
+            : ALWAYS_FALSE_HANDLER;
+    }
 
     constructor(
         @Optional()
@@ -64,8 +72,8 @@ export class TuiEditorNewComponent
         super(control, changeDetectorRef);
     }
 
-    get editor(): TuiEditor | undefined {
-        return this.editorRef?.editor;
+    get editor(): TuiEditor | null {
+        return this.editorRef?.editor || null;
     }
 
     ngAfterViewInit() {
@@ -109,6 +117,15 @@ export class TuiEditorNewComponent
 
     onModelChange(value: string) {
         this.updateValue(value.trim() === EMPTY_PARAGRAPH ? '' : value);
+    }
+
+    addLink(link: string) {
+        this.editor?.selectClosest();
+        this.editor?.setLink(link);
+    }
+
+    removeLink() {
+        this.editor?.unsetLink();
     }
 
     protected getFallbackValue(): string {
