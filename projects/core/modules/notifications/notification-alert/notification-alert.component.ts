@@ -6,11 +6,22 @@ import {
     Input,
     OnInit,
 } from '@angular/core';
-import {isNumber, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
+import {
+    isNumber,
+    TuiContextWithImplicit,
+    TuiDestroyService,
+    tuiPure,
+} from '@taiga-ui/cdk';
+import {TuiNotification} from '@taiga-ui/core/enums';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';
 import {TuiNotificationContentContext} from '../notification-content-context';
 import {NotificationAlert} from './Notification-alert';
+import {
+    NotificationAlertOptions,
+    TUI_NOTIFICATION_ALERT_OPTIONS,
+} from './notification-alert-options';
 
 export const DEFAULT_ALERT_AUTOCLOSE_TIMEOUT = 3000;
 
@@ -28,6 +39,8 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+        @Inject(TUI_NOTIFICATION_ALERT_OPTIONS)
+        public readonly options: NotificationAlertOptions,
     ) {}
 
     ngOnInit() {
@@ -44,6 +57,10 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
 
     get context(): TuiNotificationContentContext<O, I> {
         return this.calculateContext(this.safeItem);
+    }
+
+    get label(): PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> {
+        return this.safeItem.label || this.options.label;
     }
 
     closeNotification() {
@@ -75,13 +92,15 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
     }
 
     private initAutoClose() {
-        if (!this.safeItem.autoClose) {
+        if (!this.safeItem.autoClose || !this.options.autoClose) {
             return;
         }
 
         timer(
             isNumber(this.safeItem.autoClose)
                 ? this.safeItem.autoClose
+                : isNumber(this.options.autoClose)
+                ? this.options.autoClose
                 : DEFAULT_ALERT_AUTOCLOSE_TIMEOUT,
         )
             .pipe(

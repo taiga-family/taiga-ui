@@ -11,6 +11,7 @@ import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
 import {default as exampleCustomAlert} from '!!raw-loader!./examples/import/custom-alert.txt';
+import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleImportModuleComponent} from '!!raw-loader!./examples/import/import-module-component.txt';
 import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
 import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
@@ -42,6 +43,7 @@ export class ExampleTuiNotificationsComponent {
     readonly exampleCustomAlert = exampleCustomAlert;
     readonly exampleLazyModule = exampleLazyModule;
     readonly exampleModule = exampleModule;
+    readonly exampleDefineOptions = exampleDefineOptions;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
