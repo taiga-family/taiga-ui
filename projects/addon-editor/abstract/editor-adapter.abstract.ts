@@ -6,6 +6,9 @@ export abstract class TuiEditor {
     readonly stateChange$ = new Subject();
     readonly valueChange$ = new Subject<string>();
 
+    abstract get isFocused(): boolean;
+    abstract get html(): string;
+
     abstract isActive(name: string | Record<string, string>): boolean;
     abstract undoDisabled(): boolean;
     abstract redoDisabled(): boolean;
@@ -48,10 +51,10 @@ export abstract class TuiEditor {
     abstract unsetLink(): void;
     abstract indent(): void;
     abstract outdent(): void;
+    abstract destroy(): void;
 
     abstract selectClosest(): void;
 
     abstract focus(): void;
-    abstract get isFocused(): boolean;
     abstract setValue(value: string): void;
 }

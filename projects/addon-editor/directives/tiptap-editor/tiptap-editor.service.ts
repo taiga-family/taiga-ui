@@ -42,6 +42,10 @@ export class TuiTiptapEditorService extends TuiEditor {
         return this.editor.isFocused;
     }
 
+    get html(): string {
+        return this.editor.getHTML();
+    }
+
     constructor(@Inject(TIPTAP_EDITOR) private readonly editor: Editor) {
         super();
 
@@ -233,6 +237,10 @@ export class TuiTiptapEditorService extends TuiEditor {
 
     setValue(value: string): void {
         this.editor.commands.setContent(value);
+    }
+
+    destroy() {
+        this.editor.destroy();
     }
 
     selectClosest() {

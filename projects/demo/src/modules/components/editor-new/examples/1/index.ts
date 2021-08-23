@@ -19,4 +19,10 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiEditorNewExample1 {
     control = new FormControl('<p>Hello world</p>', Validators.required);
+
+    onClick() {
+        this.control.setValue(
+            '<p>Control</p><h3>is</h3><h2><span style="color: #e01f19">updated!</span></h2>',
+        );
+    }
 }

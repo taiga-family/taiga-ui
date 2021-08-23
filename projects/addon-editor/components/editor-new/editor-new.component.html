@@ -38,7 +38,14 @@
             [tuiDropdownSelection]="dropdownSelectionHandler"
             [tuiDropdownContent]="dropdown"
         >
-            <div #editorRef tuiTiptapEditor class="editor"></div>
+            <div
+                #editorRef
+                tuiTiptapEditor
+                class="editor"
+                [value]="value"
+                (valueChange)="onModelChange($event)"
+                (stateChange)="onStateChange()"
+            ></div>
         </div>
     </tui-scrollbar>
 

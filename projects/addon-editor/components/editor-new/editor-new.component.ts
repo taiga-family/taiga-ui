@@ -1,11 +1,11 @@
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     forwardRef,
     Inject,
     Input,
+    OnDestroy,
     Optional,
     Self,
     ViewChild,
@@ -24,8 +24,6 @@ import {
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
 
-const EMPTY_PARAGRAPH = '<p></p>';
-
 @Component({
     selector: 'tui-editor-new',
     templateUrl: './editor-new.component.html',
@@ -40,7 +38,7 @@ const EMPTY_PARAGRAPH = '<p></p>';
 })
 export class TuiEditorNewComponent
     extends AbstractTuiControl<string>
-    implements AfterViewInit
+    implements OnDestroy
 {
     @Input()
     @tuiDefaultProp()
@@ -76,14 +74,6 @@ export class TuiEditorNewComponent
         return this.editorRef?.editor || null;
     }
 
-    ngAfterViewInit() {
-        this.editor?.stateChange$.subscribe(() => this.changeDetectorRef.markForCheck());
-
-        this.editor?.valueChange$.subscribe(val => this.onModelChange(val));
-
-        this.editor?.setValue(this.control?.value);
-    }
-
     get focused(): boolean {
         return !!this.editor?.isFocused || (!!this.toolbar && this.toolbar.focused);
     }
@@ -116,8 +106,10 @@ export class TuiEditorNewComponent
     }
 
     onModelChange(value: string) {
-        this.updateValue(value.trim() === EMPTY_PARAGRAPH ? '' : value);
+        this.updateValue(value);
     }
+
+    onStateChange() {}
 
     addLink(link: string) {
         this.editor?.selectClosest();
@@ -126,6 +118,10 @@ export class TuiEditorNewComponent
 
     removeLink() {
         this.editor?.unsetLink();
+    }
+
+    ngOnDestroy() {
+        this.editor?.destroy();
     }
 
     protected getFallbackValue(): string {
