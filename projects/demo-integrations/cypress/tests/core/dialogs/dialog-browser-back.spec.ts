@@ -39,9 +39,11 @@ describe('Dialogs + browser back navigation', () => {
                 capture: 'viewport',
             });
             goBack();
-            cy.window().matchImageSnapshot('4-3-after-second-back-nav', {
-                capture: 'viewport',
-            });
+            cy.wait(100) // wait for scrollbar
+                .window()
+                .matchImageSnapshot('4-3-after-second-back-nav', {
+                    capture: 'viewport',
+                });
             cy.url().should('equal', getFullUrl(DIALOG_PAGE_URL));
             goBack();
             cy.url().should('equal', getFullUrl('/'));
