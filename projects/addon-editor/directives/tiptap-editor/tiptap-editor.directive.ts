@@ -16,6 +16,11 @@ export class TuiTiptapEditorDirective {
         }
     }
 
+    @Input()
+    set editable(editable: boolean) {
+        this.editor.editable = editable;
+    }
+
     @Output()
     valueChange = this.editor.valueChange$;
 

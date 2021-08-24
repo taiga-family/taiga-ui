@@ -78,6 +78,10 @@ export class TuiEditorNewComponent
         return !!this.editor?.isFocused || (!!this.toolbar && this.toolbar.focused);
     }
 
+    get interactive(): boolean {
+        return !this.readOnly && !this.computedDisabled;
+    }
+
     get placeholderRaised(): boolean {
         return (this.computedFocused && !this.readOnly) || this.hasValue;
     }

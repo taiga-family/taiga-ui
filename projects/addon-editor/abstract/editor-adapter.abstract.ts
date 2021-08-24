@@ -8,6 +8,8 @@ export abstract class TuiEditor {
 
     abstract get isFocused(): boolean;
     abstract get html(): string;
+    abstract set editable(editable: boolean);
+    abstract get editable(): boolean;
 
     abstract isActive(name: string | Record<string, string>): boolean;
     abstract undoDisabled(): boolean;
@@ -52,9 +54,7 @@ export abstract class TuiEditor {
     abstract indent(): void;
     abstract outdent(): void;
     abstract destroy(): void;
-
     abstract selectClosest(): void;
-
     abstract focus(): void;
     abstract setValue(value: string): void;
 }

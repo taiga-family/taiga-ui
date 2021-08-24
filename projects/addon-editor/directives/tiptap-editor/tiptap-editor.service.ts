@@ -46,6 +46,14 @@ export class TuiTiptapEditorService extends TuiEditor {
         return this.editor.getHTML();
     }
 
+    get editable(): boolean {
+        return this.editor.isEditable;
+    }
+
+    set editable(editable: boolean) {
+        this.editor.setEditable(editable);
+    }
+
     constructor(@Inject(TIPTAP_EDITOR) private readonly editor: Editor) {
         super();
 

@@ -11,6 +11,7 @@
 </tui-wrapper>
 <div
     class="wrapper"
+    [class._disabled]="disabled"
     (tuiHoveredChange)="onHovered($event)"
     (mousedown)="onMouseDown($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
@@ -20,6 +21,7 @@
             *ngIf="editor"
             [editor]="editor"
             [tools]="tools"
+            [disabled]="!interactive"
         ></tui-toolbar>
         <div
             class="placeholder"
@@ -43,6 +45,7 @@
                 tuiTiptapEditor
                 class="editor"
                 [value]="value"
+                [editable]="interactive"
                 (valueChange)="onModelChange($event)"
                 (stateChange)="onStateChange()"
             ></div>
