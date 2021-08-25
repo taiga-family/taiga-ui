@@ -26,9 +26,7 @@ describe('Demo', () => {
         it(`${path}`, () => {
             stubIcons(EXTERNAL_ICONS);
 
-            cy.intercept('*.svg').as('icons');
-
-            cy.goToDemoPage(path);
+            cy.goToDemoPage(path, {waitAllIcons: true});
 
             cy.get('[tuidocheader]').invoke(
                 'attr',
@@ -40,32 +38,6 @@ describe('Demo', () => {
                 if (excluded(path, index + 1)) {
                     return cy.wrap(sample);
                 }
-
-                const getNotLoadedIcons = () =>
-                    cy
-                        .get('@icons.all')
-                        // @ts-ignore
-                        .then(reqs => reqs.filter(req => req.state !== 'Complete'));
-
-                const waitIcons = async () => {
-                    getNotLoadedIcons()
-                        .then(reqs => {
-                            return reqs.length ? cy.wait('@icons') : cy.wait(100);
-                        })
-                        .then(getNotLoadedIcons)
-                        .then(reqs => {
-                            return reqs.length
-                                ? waitIcons()
-                                : cy
-                                      .wait(100)
-                                      .then(getNotLoadedIcons)
-                                      .then(reqs =>
-                                          reqs.length ? waitIcons() : Promise.resolve(),
-                                      );
-                        });
-                };
-
-                waitIcons();
 
                 return cy
                     .wrap(sample)
