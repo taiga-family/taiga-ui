@@ -16,7 +16,7 @@ interface Options {
 
 const setBeforeLoadOptions = (
     windowRef: Window,
-    {inIframe}: Pick<Options, 'inIframe'>,
+    {inIframe}: Pick<Required<Options>, 'inIframe'>,
 ): void => {
     if (!inIframe) {
         // @ts-ignore window.parent is readonly property
