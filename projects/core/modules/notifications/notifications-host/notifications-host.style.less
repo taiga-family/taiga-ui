@@ -12,6 +12,7 @@
     width: 18rem;
     margin-left: auto;
     padding: 2rem 3rem 0 0;
+    pointer-events: none;
 
     @media @tablet {
         padding: 1rem 1rem 0 0;
@@ -22,6 +23,10 @@
     }
 }
 
-.alert:not(:first-child) {
-    margin-top: 0.75rem;
+.alert {
+    pointer-events: auto;
+
+    &:not(:first-child) {
+        margin-top: 0.75rem;
+    }
 }
