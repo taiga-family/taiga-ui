@@ -232,11 +232,11 @@ export class TuiTiptapEditorService extends TuiEditor {
     }
 
     indent() {
-        this.editor.chain().focus().indent();
+        this.editor.commands.indent();
     }
 
     outdent() {
-        this.editor.chain().focus().outdent();
+        this.editor.commands.outdent();
     }
 
     focus() {

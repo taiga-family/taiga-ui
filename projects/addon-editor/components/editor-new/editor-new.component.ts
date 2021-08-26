@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ElementRef,
     forwardRef,
     Inject,
     Input,
@@ -19,10 +20,12 @@ import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
+    isNativeFocusedIn,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
+import {TuiEditLinkComponent} from '../edit-link';
 
 @Component({
     selector: 'tui-editor-new',
@@ -50,14 +53,17 @@ export class TuiEditorNewComponent
     @ViewChild(TuiToolbarNewComponent)
     toolbar?: TuiToolbarNewComponent;
 
+    @ViewChild(TuiEditLinkComponent, {read: ElementRef})
+    private readonly editLink?: ElementRef<HTMLElement>;
+
     @Input()
     @tuiDefaultProp()
     tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
 
+    private readonly isSelectionLink = () => !!this.editor?.isActive('link');
+
     get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        return this.editor?.isActive('link')
-            ? () => !!this.editor?.isActive('link')
-            : ALWAYS_FALSE_HANDLER;
+        return this.focused ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
     }
 
     constructor(
@@ -75,7 +81,11 @@ export class TuiEditorNewComponent
     }
 
     get focused(): boolean {
-        return !!this.editor?.isFocused || (!!this.toolbar && this.toolbar.focused);
+        return (
+            !!this.editor?.isFocused ||
+            (!!this.toolbar && this.toolbar.focused) ||
+            (!!this.editLink && isNativeFocusedIn(this.editLink.nativeElement))
+        );
     }
 
     get interactive(): boolean {

@@ -101,7 +101,7 @@
             margin: 0 auto;
         }
 
-        ul li:before {
+        ul li p:first-child:before {
             content: '';
             display: inline-block;
             width: 8px;
@@ -115,7 +115,7 @@
             counter-reset: counter;
         }
 
-        ol li:before {
+        ol li p:first-child:before {
             content: counter(counter) '.';
             width: 24px;
             margin: 0 12px 0 -24px;

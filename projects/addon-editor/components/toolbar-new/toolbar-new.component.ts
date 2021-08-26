@@ -15,7 +15,12 @@ import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
-import {TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
+import {
+    TUI_EDITOR_CODES_OPTIONS,
+    TUI_EDITOR_FONT_OPTIONS,
+    TUI_EDITOR_TABLE_COMMANDS,
+    TUI_IMAGE_LOADER,
+} from '@taiga-ui/addon-editor/tokens';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {
     EMPTY_QUERY,
@@ -29,7 +34,8 @@ import {
 import {TuiButtonComponent, TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
-import {take} from 'rxjs/operators';
+import {map, take} from 'rxjs/operators';
+import {LanguageEditor} from '../../../i18n';
 
 function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     return (
@@ -43,8 +49,8 @@ enum TableComands {
     InsertColumnAfter,
     InsertRowBefore,
     InsertRowAfter,
-    DeleteRow,
     DeleteColumn,
+    DeleteRow,
 }
 
 // @dynamic
@@ -88,43 +94,27 @@ export class TuiToolbarNewComponent {
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
-    // TODO: i18n
-    readonly fontsOptions: ReadonlyArray<Partial<TuiEditorFontOption>> = [
-        {
-            px: 15,
-            name: 'Normal',
-        },
-        {
-            px: 24,
-            family: 'var(--tui-font-heading)',
-            name: 'Subtitle',
-            headingLevel: 2,
-        },
-        {
-            px: 30,
-            family: 'var(--tui-font-heading)',
-            name: 'Title',
-            headingLevel: 1,
-        },
-    ];
-
-    // TODO: i18n
-    readonly codesOptions: readonly string[] = ['Code in the text', 'Code in block'];
-
-    readonly tableCommands = [
-        [
-            {name: 'Add row before', command: TableComands.InsertRowBefore},
-            {name: 'Add row after', command: TableComands.InsertRowAfter},
-        ],
-        [
-            {name: 'Add column before', command: TableComands.InsertColumnBefore},
-            {name: 'Add column after', command: TableComands.InsertColumnAfter},
-        ],
-        [
-            {name: 'Delete row', command: TableComands.DeleteRow},
-            {name: 'Delete column', command: TableComands.DeleteColumn},
-        ],
-    ];
+    readonly fontsOptions$: Observable<ReadonlyArray<Partial<TuiEditorFontOption>>> =
+        this.fontOptionsTexts$.pipe(
+            map(texts => [
+                {
+                    px: 15,
+                    name: texts.normal,
+                },
+                {
+                    px: 24,
+                    family: 'var(--tui-font-heading)',
+                    name: texts.subtitle,
+                    headingLevel: 2,
+                },
+                {
+                    px: 30,
+                    family: 'var(--tui-font-heading)',
+                    name: texts.title,
+                    headingLevel: 1,
+                },
+            ]),
+        );
 
     @ViewChildren('button')
     private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;
@@ -139,7 +129,15 @@ export class TuiToolbarNewComponent {
         @Inject(TUI_IMAGE_LOADER)
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts: Record<string, string>,
+        readonly texts$: Observable<LanguageEditor['toolbarTools']>,
+        @Inject(TUI_EDITOR_TABLE_COMMANDS)
+        readonly tableCommandTexts$: Observable<LanguageEditor['editorTableCommands']>,
+        @Inject(TUI_EDITOR_CODES_OPTIONS)
+        readonly codesOptionsTexts$: Observable<LanguageEditor['editorCodesOptions']>,
+        @Inject(TUI_EDITOR_FONT_OPTIONS)
+        private readonly fontOptionsTexts$: Observable<
+            LanguageEditor['editorFontOptions']
+        >,
     ) {}
 
     get focused(): boolean {
@@ -372,10 +370,6 @@ export class TuiToolbarNewComponent {
         this.texClicked.emit();
     }
 
-    onLinkClick() {
-        // this.editor .chain().focus();
-    }
-
     onLink(hosted: TuiHostedDropdownComponent, url?: string) {
         hosted.open = false;
 
@@ -384,8 +378,8 @@ export class TuiToolbarNewComponent {
         }
     }
 
-    onCode(code: string) {
-        if (this.codesOptions[0] === code) {
+    onCode(code: number) {
+        if (code === 0) {
             this.toggleCode();
         } else {
             this.togglePre();
