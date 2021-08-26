@@ -152,7 +152,7 @@ export class TuiToolbarComponent {
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts: Record<string, string>,
+        readonly texts$: Observable<Record<string, string>>,
     ) {
         this.documentRef = shadowRootRef || documentRef;
 
