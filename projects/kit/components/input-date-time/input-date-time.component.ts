@@ -83,11 +83,11 @@ export class TuiInputDateTimeComponent
         TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
-    min = TUI_FIRST_DAY;
+    min: TuiDay | [TuiDay, TuiTime] | null = null;
 
     @Input()
     @tuiDefaultProp()
-    max = TUI_LAST_DAY;
+    max: TuiDay | [TuiDay, TuiTime] | null = null;
 
     @Input()
     @tuiDefaultProp()
@@ -173,11 +173,11 @@ export class TuiInputDateTimeComponent
     }
 
     get calendarMinDay(): TuiDay {
-        return Array.isArray(this.min) ? this.min[0] : this.min;
+        return Array.isArray(this.min) ? this.min[0] : this.min || TUI_FIRST_DAY;
     }
 
     get calendarMaxDay(): TuiDay {
-        return Array.isArray(this.max) ? this.max[0] : this.max;
+        return Array.isArray(this.max) ? this.max[0] : this.max || TUI_LAST_DAY;
     }
 
     get computedActiveYearMonth(): TuiMonth {
