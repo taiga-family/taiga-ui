@@ -32,10 +32,10 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TuiButtonComponent, TuiHostedDropdownComponent} from '@taiga-ui/core';
+import {LanguageEditor} from '@taiga-ui/i18n';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {map, take} from 'rxjs/operators';
-import {LanguageEditor} from '../../../i18n';
 
 function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     return (
