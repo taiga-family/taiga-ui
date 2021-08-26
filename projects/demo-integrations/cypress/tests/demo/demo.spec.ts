@@ -2,21 +2,6 @@ import {DEMO_PATHS} from '../demo-paths';
 import {EXAMPLE_ID} from '../shared.entities';
 import {excluded} from './exclusions';
 
-// not taiga ui icons
-const EXTERNAL_ICONS = ['web-api.svg'];
-
-const stubIcons = (icons: string[]): void => {
-    icons.forEach(iconName => {
-        cy.intercept(
-            {
-                method: 'GET',
-                url: new RegExp(`.*${iconName}`),
-            },
-            {fixture: `icons-stubs/${iconName}`},
-        );
-    });
-};
-
 describe('Demo', () => {
     beforeEach(() => {
         cy.viewport(1280, 720);
@@ -24,9 +9,7 @@ describe('Demo', () => {
 
     DEMO_PATHS.forEach(path => {
         it(`${path}`, () => {
-            stubIcons(EXTERNAL_ICONS);
-
-            cy.goToDemoPage(path);
+            cy.goToDemoPage(path, {waitAllIcons: true});
 
             cy.get('[tuidocheader]').invoke(
                 'attr',

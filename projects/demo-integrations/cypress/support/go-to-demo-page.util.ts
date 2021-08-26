@@ -1,3 +1,5 @@
+import {waitAllRequests} from './wait-requests.util';
+
 const NEXT_URL_STORAGE_KEY = 'env';
 const DEFAULT_BASE_HREF = 'next/';
 const REPEATED_SLASH_REG = new RegExp('//', 'g');
@@ -9,16 +11,23 @@ interface Options {
      * This parameter can help to falsify result of {@link isInsideIframe} for certain test run.
      */
     inIframe?: boolean;
+    waitAllIcons?: boolean;
 }
 
-const setOptions = (windowRef: Window, {inIframe = true}: Options = {}): void => {
+const setBeforeLoadOptions = (
+    windowRef: Window,
+    {inIframe}: Pick<Required<Options>, 'inIframe'>,
+): void => {
     if (!inIframe) {
         // @ts-ignore window.parent is readonly property
         windowRef['parent'] = windowRef;
     }
 };
 
-export const goToDemoPage = (path: string, options?: Options) => {
+export const goToDemoPage = (
+    path: string,
+    {inIframe = true, waitAllIcons = false}: Options = {},
+) => {
     cy.visit('/', {
         onBeforeLoad: window => {
             const baseHref =
@@ -26,13 +35,21 @@ export const goToDemoPage = (path: string, options?: Options) => {
                 DEFAULT_BASE_HREF;
             const nextUrl = `/${baseHref}${path}`.replace(REPEATED_SLASH_REG, '/');
 
-            setOptions(window, options);
+            setBeforeLoadOptions(window, {inIframe});
 
             window.localStorage.setItem(NEXT_URL_STORAGE_KEY, nextUrl);
         },
     });
 
+    if (waitAllIcons) {
+        cy.intercept('*.svg').as('icons');
+    }
+
     cy.window().should('have.property', 'Cypress');
     cy.url().should('include', path);
     cy.clearLocalStorage(NEXT_URL_STORAGE_KEY);
+
+    if (waitAllIcons) {
+        waitAllRequests('@icons');
+    }
 };
