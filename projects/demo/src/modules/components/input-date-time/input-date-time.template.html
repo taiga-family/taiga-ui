@@ -27,6 +27,7 @@
                     [focusable]="focusable"
                     [min]="min"
                     [max]="max"
+                    [defaultActiveYearMonth]="defaultActiveYearMonth"
                     [pseudoFocused]="pseudoFocused"
                     [pseudoHovered]="pseudoHovered"
                     [pseudoInvalid]="pseudoInvalid"
@@ -87,6 +88,17 @@
                 [(documentationPropertyValue)]="max"
             >
                 Max date
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="defaultActiveYearMonth"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiMonth"
+                [documentationPropertyValues]="defaultActiveYearMonthVariants"
+                [(documentationPropertyValue)]="defaultActiveYearMonth"
+            >
+                The default active month that is shown when you opens calendar
+                for the first time
             </ng-template>
             <ng-template
                 i18n
