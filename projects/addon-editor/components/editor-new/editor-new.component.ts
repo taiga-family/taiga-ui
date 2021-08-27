@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorDirective} from '@taiga-ui/addon-editor/directives';
@@ -25,7 +26,6 @@ import {
     TuiBooleanHandler,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
-import {TuiEditLinkComponent} from '../edit-link';
 
 @Component({
     selector: 'tui-editor-new',
