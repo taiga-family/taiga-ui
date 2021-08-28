@@ -5,6 +5,7 @@ import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import type {BackgroundColor} from '@taiga-ui/addon-editor/extensions';
 // @ts-ignore
 import type {FontColor} from '@taiga-ui/addon-editor/extensions';
+import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {Editor, getMarkRange} from '@tiptap/core';
 // @ts-ignore
 import type Image from '@tiptap/extension-image';
@@ -31,7 +32,6 @@ import type Underline from '@tiptap/extension-underline';
 // @ts-ignore
 import type StarterKit from '@tiptap/starter-kit';
 import {redoDepth, undoDepth} from 'prosemirror-history';
-import {TIPTAP_EDITOR} from './tiptap-editor.providers';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
