@@ -1,4 +1,4 @@
-:host ::ng-deep .editor {
+:host ::ng-deep .tui-tiptap-editor {
     display: block;
     border: none;
 
@@ -29,60 +29,6 @@
         .resize-cursor {
             cursor: ew-resize;
             cursor: col-resize;
-        }
-
-        table {
-            border-collapse: collapse;
-            table-layout: fixed;
-            width: 100%;
-            margin: 0;
-            overflow: hidden;
-
-            td,
-            th {
-                min-width: 1em;
-                border: 2px solid #ced4da;
-                padding: 3px 5px;
-                vertical-align: top;
-                box-sizing: border-box;
-                position: relative;
-
-                > * {
-                    margin-bottom: 0;
-                }
-            }
-
-            th {
-                font-weight: bold;
-                text-align: left;
-                background-color: #f1f3f5;
-            }
-
-            .selectedCell:after {
-                z-index: 2;
-                position: absolute;
-                content: '';
-                left: 0;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                background: rgba(200, 200, 255, 0.4);
-                pointer-events: none;
-            }
-
-            .column-resize-handle {
-                position: absolute;
-                right: -2px;
-                top: 0;
-                bottom: -2px;
-                width: 4px;
-                background-color: #adf;
-                pointer-events: none;
-            }
-
-            .tableWrapper {
-                overflow-x: auto;
-            }
         }
 
         ul,
@@ -143,6 +89,75 @@
             border: none;
             border-top: 1px solid #e7e8ea;
             margin: 16px 0;
+            height: 1px;
+        }
+
+        a {
+            color: #3d7ab6;
+            text-decoration: none;
+            outline: none;
+
+            &:hover {
+                color: #369;
+            }
+
+            &:active {
+                color: #29527c;
+            }
+        }
+
+        table {
+            border-collapse: collapse;
+            table-layout: fixed;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+
+            td,
+            th {
+                min-width: 1em;
+                border: 2px solid #ced4da;
+                padding: 3px 5px;
+                vertical-align: top;
+                box-sizing: border-box;
+                position: relative;
+
+                > * {
+                    margin-bottom: 0;
+                }
+            }
+
+            th {
+                font-weight: bold;
+                text-align: left;
+                background-color: #f1f3f5;
+            }
+
+            .selectedCell:after {
+                z-index: 2;
+                position: absolute;
+                content: '';
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background: rgba(200, 200, 255, 0.4);
+                pointer-events: none;
+            }
+
+            .column-resize-handle {
+                position: absolute;
+                right: -2px;
+                top: 0;
+                bottom: -2px;
+                width: 4px;
+                background-color: #adf;
+                pointer-events: none;
+            }
+
+            .tableWrapper {
+                overflow-x: auto;
+            }
         }
     }
 }

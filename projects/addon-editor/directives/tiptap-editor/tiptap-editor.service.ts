@@ -164,7 +164,7 @@ export class TuiTiptapEditorService extends TuiEditor {
     }
 
     toggleSuperscript() {
-        this.editor.chain().focus().toggleSubscript().run();
+        this.editor.chain().focus().toggleSuperscript().run();
     }
 
     toggleCodeBlock() {

@@ -1,4 +1,4 @@
-export const defaultEditorStyles = `
+export const tiptapEditorStyles = `
 @import 'https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap';
 
 body.tui-editor-socket {
@@ -7,7 +7,7 @@ body.tui-editor-socket {
     padding: 0 16px;
 }
 
-p:empty:before {
+p:empty:after {
     content: ' ';
     white-space: pre;
 }
@@ -31,7 +31,12 @@ p:empty:before {
     margin: 16px 0;
 }
 
-.tui-editor-socket ul li:before {
+.tui-editor-socket li p {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.tui-editor-socket ul li p:first-child:before {
     content: '';
     display: inline-block;
     width: 8px;
@@ -45,7 +50,7 @@ p:empty:before {
     counter-reset: counter;
 }
 
-.tui-editor-socket ol li:before {
+.tui-editor-socket ol li p:first-child:before {
     content: counter(counter) '.';
     width: 24px;
     margin: 0 12px 0 -24px;
@@ -99,54 +104,52 @@ p:empty:before {
     margin: 16px 0;
 }
 
+.tui-editor-socket table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.tui-editor-socket table td, th {
+        min-width: 1em;
+        height: 2rem;
+        border: 2px solid #ced4da;
+        padding: 3px 5px;
+        vertical-align: top;
+        box-sizing: border-box;
+        position: relative;
+        word-break: break-word;
+}
+
+.tui-editor-socket table td > * {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.tui-editor-socket table th > * {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.tui-editor-socket table  th {
+        font-weight: bold;
+        text-align: left;
+        background-color: #f1f3f5;
+        min-heigth: 2rem
+}
+
+.tui-editor-socket table  .tableWrapper {
+        overflow-x: auto;
+    }
+}
+
 .tui-editor-socket font[face='Courier New'] {
     padding: 4px 8px;
     border-radius: 4px;
     background-color: #ecf1f7;
     display: inline-block;
     word-break: break-word;
-}
-
-.tui-editor-socket font[size='1'] {
-    font-size: 11px;
-    line-height: 16px;
-}
-
-.tui-editor-socket font[size='2'] {
-    font-size: 13px;
-    line-height: 20px;
-}
-
-.tui-editor-socket font[size='3'] {
-    font-size: 15px;
-    line-height: 24px;
-}
-
-.tui-editor-socket font[size='4'] {
-    font-size: 17px;
-    line-height: 24px;
-}
-
-.tui-editor-socket font[size='5'],
-.tui-editor-socket font[size='6'],
-.tui-editor-socket font[size='7'] {
-    display: block;
-    margin: 32px 0 16px;
-    font-family: var(--tui-font-heading);
-}
-
-.tui-editor-socket font[size='5'] {
-    font-size: 24px;
-    line-height: 28px;
-}
-
-.tui-editor-socket font[size='6'] {
-    font-size: 30px;
-    line-height: 36px;
-}
-
-.tui-editor-socket font[size='7'] {
-    font-size: 40px;
-    line-height: 44px;
 }
 `;

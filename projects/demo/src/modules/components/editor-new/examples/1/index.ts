@@ -1,6 +1,11 @@
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {defaultExtensions, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/addon-editor';
+import {
+    defaultExtensions,
+    tiptapEditorStyles,
+    TUI_EDITOR_EXTENSIONS,
+    TUI_EDITOR_STYLES,
+} from '@taiga-ui/addon-editor';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -13,6 +18,10 @@ import {encapsulation} from '../../../../../view-encapsulation';
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: defaultExtensions,
         },
+        {
+            provide: TUI_EDITOR_STYLES,
+            useValue: tiptapEditorStyles,
+        },
     ],
     changeDetection,
     encapsulation,
@@ -22,7 +31,7 @@ export class TuiEditorNewExample1 {
 
     onClick() {
         this.control.setValue(
-            '<p>Control</p><h3>is</h3><h2><span style="color: #e01f19">updated!</span></h2>',
+            '<p>Control</p><h2>is</h2><h1><span style="color: #e01f19">updated!</span></h1>',
         );
     }
 }
