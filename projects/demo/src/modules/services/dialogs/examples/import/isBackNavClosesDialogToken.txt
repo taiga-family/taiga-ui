@@ -1,0 +1,10 @@
+import {of} from 'rxjs';
+import {TUI_IS_BACK_NAV_CLOSES_DIALOG} from '@taiga-ui/cdk';
+
+...
+providers: [
+    {
+        provide: TUI_IS_BACK_NAV_CLOSES_DIALOG,
+        useValue: of(false),
+    }
+]
