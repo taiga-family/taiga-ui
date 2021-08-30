@@ -33,7 +33,7 @@ import {
 import {Observable} from 'rxjs';
 import {TUI_TEXT_AREA_PROVIDERS} from './text-area.providers';
 
-export const DEFAULT_ROWS = 20;
+export const DEFAULT_ROWS = 19;
 export const LINE_HEIGHT_M = 20;
 export const LINE_HEIGHT_L = 24;
 
