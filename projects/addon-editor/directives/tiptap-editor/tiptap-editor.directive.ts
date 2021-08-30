@@ -1,7 +1,7 @@
 import {Directive, Inject, Input, Output} from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
-import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/services';
 import {TIPTAP_EDITOR_PROVIDERS} from './tiptap-editor.providers';
+import {TuiTiptapEditorService} from './tiptap-editor.service';
 
 @Directive({
     selector: '[tuiTiptapEditor]',

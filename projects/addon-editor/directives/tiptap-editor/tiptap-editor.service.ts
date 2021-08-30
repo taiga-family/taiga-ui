@@ -36,7 +36,7 @@ import {redoDepth, undoDepth} from 'prosemirror-history';
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
 // @dynamic
-@Injectable({providedIn: 'root'})
+@Injectable()
 export class TuiTiptapEditorService extends TuiEditor {
     get isFocused(): boolean {
         return this.editor.isFocused;
