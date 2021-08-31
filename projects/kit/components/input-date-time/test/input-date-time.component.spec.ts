@@ -264,6 +264,41 @@ describe('InputDateTime', () => {
             });
     });
 
+    it('changes time if max day was selected (via calendar) and time is more than max time now', done => {
+        const MAX_DAY = TuiDay.normalizeParse('15.08.2021');
+        const MAX_TIME = TuiTime.fromString('16:20');
+
+        const maxDateString = MAX_DAY.toString();
+        const dayBeforeMaxString = MAX_DAY.append({day: -1}).toString();
+
+        const maxTimeString = MAX_TIME.toString();
+        const timeAfterMaxString = MAX_TIME.shift({hours: 3}).toString();
+
+        component.max = [MAX_DAY, MAX_TIME];
+        fixture.detectChanges();
+
+        fixture
+            .whenStable()
+            .then(() => {
+                inputPO.sendText(
+                    `${dayBeforeMaxString}${timeAfterMaxString.replace(':', '')}`,
+                );
+                mouseDownOnTextfield();
+
+                return fixture.whenStable();
+            })
+            .then(() => {
+                clickOnCellInsideCalendar(MAX_DAY.day);
+
+                return fixture.whenStable();
+            })
+            .then(() => {
+                expect(inputPO.value).toBe(`${maxDateString}, ${maxTimeString}`);
+
+                done();
+            });
+    });
+
     function clickOnCellInsideCalendar(dayNumber: number): void {
         const cells = pageObject.getAllByAutomationId(
             testContext.calendarCellAutomationId,

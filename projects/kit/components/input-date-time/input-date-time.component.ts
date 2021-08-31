@@ -225,7 +225,9 @@ export class TuiInputDateTimeComponent
     }
 
     onDayClick(day: TuiDay) {
-        this.updateValue([day, this.value[1]]);
+        const modifiedTime = this.value[1] && this.clampTime(this.value[1], day);
+
+        this.updateValue([day, modifiedTime]);
         this.updateNativeValue(day);
         this.open = false;
     }
