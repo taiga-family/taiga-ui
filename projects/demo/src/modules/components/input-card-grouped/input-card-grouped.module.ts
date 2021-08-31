@@ -2,12 +2,18 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiInputCardGroupedModule} from '@taiga-ui/addon-commerce';
+import {TuiCardModule, TuiInputCardGroupedModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {
+    TuiDataListModule,
+    TuiLabelModule,
+    TuiLinkModule,
+    TuiSvgModule,
+} from '@taiga-ui/core';
 import {TuiFieldErrorModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputCardGroupedExample1} from './examples/1';
+import {TuiInputCardGroupedExample2} from './examples/2';
 import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.component';
 
 @NgModule({
@@ -15,13 +21,21 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
         TuiInputCardGroupedModule,
         TuiLinkModule,
         TuiFieldErrorModule,
+        TuiDataListModule,
+        TuiCardModule,
+        TuiLabelModule,
+        TuiSvgModule,
         CommonModule,
         ReactiveFormsModule,
         TuiAddonDocModule,
         InheritedDocumentationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputCardGroupedComponent)),
     ],
-    declarations: [ExampleTuiInputCardGroupedComponent, TuiInputCardGroupedExample1],
+    declarations: [
+        ExampleTuiInputCardGroupedComponent,
+        TuiInputCardGroupedExample1,
+        TuiInputCardGroupedExample2,
+    ],
     exports: [ExampleTuiInputCardGroupedComponent],
 })
 export class ExampleTuiInputCardGroupedModule {}

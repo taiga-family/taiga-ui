@@ -4,6 +4,7 @@
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "scripts": {
         "start": "ng serve",
+        "start:ssl": "ng serve --ssl",
         "start:ru": "ng serve --configuration ru",
         "start:default": "ng serve --configuration def",
         "start:shadow": "ng serve --configuration shadow",
