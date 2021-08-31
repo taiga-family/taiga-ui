@@ -813,6 +813,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/progress-bar',
+        loadChildren: () =>
+            import(`../components/progress-bar/progress-bar.module`).then(
+                m => m.ExampleTuiProgressBarModule,
+            ),
+        data: {
+            title: 'ProgressBar',
+        },
+    },
+    {
         path: 'components/theme-switcher',
         loadChildren: () =>
             import(`../components/theme-switcher/theme-switcher.module`).then(
