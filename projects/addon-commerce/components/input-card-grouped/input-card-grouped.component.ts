@@ -238,7 +238,9 @@ export class TuiInputCardGroupedComponent
     }
 
     get bin(): string | null {
-        return this.card.length < 6 ? null : this.card.slice(-6);
+        return !this.value || this.value.card.length < 6
+            ? null
+            : this.value.card.substr(0, 6);
     }
 
     get placeholderRaised(): boolean {
