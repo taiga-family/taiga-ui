@@ -70,6 +70,9 @@ describe('ng-add', () => {
 
         expect(tree.readContent('package.json')).toEqual(
             `{
+  "devDependencies": {
+    "@types/dompurify": "2.2.3"
+  },
   "dependencies": {
     "@taiga-ui/addon-doc": "${TAIGA_VERSION}",
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",

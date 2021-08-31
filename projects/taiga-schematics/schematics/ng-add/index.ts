@@ -1,7 +1,12 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
-import {addPackageJsonDependency, removePackageJsonDependency} from 'ng-morph';
 import {
+    addPackageJsonDependency,
+    NodeDependencyType,
+    removePackageJsonDependency,
+} from 'ng-morph';
+import {
+    DOMPURIFY_TYPES_VERSION,
     DOMPURIFY_VERSION,
     NG_DOMPURIFY_VERSION,
     TAIGA_VERSION,
@@ -42,6 +47,11 @@ function addDependencies(tree: Tree, options: Schema) {
         addPackageJsonDependency(tree, {
             name: 'dompurify',
             version: DOMPURIFY_VERSION,
+        });
+        addPackageJsonDependency(tree, {
+            name: '@types/dompurify',
+            version: DOMPURIFY_TYPES_VERSION,
+            type: NodeDependencyType.Dev,
         });
     }
 }
