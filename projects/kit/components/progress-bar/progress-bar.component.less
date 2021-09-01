@@ -1,0 +1,50 @@
+.clearProgress() {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+}
+
+/* Used to style outer progress bar (container) */
+.progressContainer(@property, @value) {
+    @{property}: @value; // IE | Edge | Mozilla
+
+    &::-webkit-progress-bar {
+        @{property}: @value; // Chrome | Opera | Safari
+    }
+}
+
+/* used to style inner value bar */
+.progressValue(@property, @value) {
+    @{property}: @value; // Edge
+
+    &::-webkit-progress-value {
+        @{property}: @value; // Chrome | Opera | Safari
+    }
+
+    &::-moz-progress-bar {
+        @{property}: @value; // Mozilla
+    }
+}
+
+.progressValueColor(@color) {
+    color: @color; // IE | Edge
+
+    &::-webkit-progress-value {
+        background-color: @color; // Chrome | Opera | Safari
+    }
+
+    &::-moz-progress-bar {
+        background-color: @color; // Mozilla
+    }
+}
+
+:host {
+    .clearProgress();
+
+    .progressValueColor(var(--tui-primary));
+    .progressValue(border-radius, var(--tui-radius-xs));
+
+    .progressContainer(background-color, var(--tui-base-03));
+    .progressContainer(border-radius, var(--tui-radius-xs));
+}
