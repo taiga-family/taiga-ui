@@ -11,6 +11,7 @@ export const ROUTES = [
             title: 'A powerful set of open source components for Angular',
         },
     },
+    // Documentation
     {
         path: 'getting-started',
         component: GettingStartedComponent,
@@ -34,6 +35,30 @@ export const ROUTES = [
             title: `Changelog`,
         },
     },
+    {
+        path: 'tui-doc',
+        loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
+        data: {
+            title: `Documentation engine`,
+        },
+    },
+    {
+        path: 'related',
+        loadChildren: () =>
+            import(`../info/related/related.module`).then(m => m.RelatedModule),
+        data: {
+            title: `Friendly libraries`,
+        },
+    },
+    {
+        path: 'testing',
+        loadChildren: () =>
+            import(`../info/testing/testing.module`).then(m => m.TestingModule),
+        data: {
+            title: `Testing`,
+        },
+    },
+    // Customization
     {
         path: 'i18n',
         loadChildren: () =>
@@ -76,21 +101,6 @@ export const ROUTES = [
             ),
         data: {
             title: `Icon set`,
-        },
-    },
-    {
-        path: 'tui-doc',
-        loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
-        data: {
-            title: `Documentation engine`,
-        },
-    },
-    {
-        path: 'related',
-        loadChildren: () =>
-            import(`../info/related/related.module`).then(m => m.RelatedModule),
-        data: {
-            title: `Friendly libraries`,
         },
     },
     // COMPONENTS

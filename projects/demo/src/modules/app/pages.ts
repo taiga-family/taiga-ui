@@ -1,6 +1,7 @@
 import {TuiDocPages} from '@taiga-ui/addon-doc';
 
 export const pages: TuiDocPages = [
+    // Documentation
     {
         section: $localize`Documentation`,
         title: $localize`Getting started`,
@@ -32,6 +33,14 @@ export const pages: TuiDocPages = [
         keywords: 'related, libraries, other, friendly, npm, packages',
         route: 'related',
     },
+    {
+        section: $localize`Documentation`,
+        title: $localize`Testing`,
+        keywords:
+            'test, tests, testing, cypress, тестирование, тесты, тест, story, tips, советы',
+        route: 'testing',
+    },
+    // Common
     {
         section: $localize`Common`,
         title: $localize`Typography`,
@@ -107,6 +116,7 @@ export const pages: TuiDocPages = [
             },
         ],
     },
+    // Customization
     {
         section: $localize`Customization`,
         title: `i18n`,
@@ -137,6 +147,7 @@ export const pages: TuiDocPages = [
         keywords: 'icons, svg, theme, custom, style, sanitizer',
         route: 'icon-set',
     },
+    // Components
     {
         section: $localize`Components`,
         title: 'Accordion',
@@ -762,6 +773,7 @@ export const pages: TuiDocPages = [
         keywords: 'editor, редактор, текст, html, rich, text, input, инпут, ввод',
         route: '/components/toolbar',
     },
+    // Navigation
     {
         section: $localize`Navigation`,
         title: 'Breadcrumbs',
@@ -787,6 +799,7 @@ export const pages: TuiDocPages = [
         keywords: 'mobile, ios, android, шаги, таб, tab, tabs',
         route: '/navigation/tabs',
     },
+    // Tools
     {
         section: $localize`Tools`,
         title: $localize`Decorators`,
