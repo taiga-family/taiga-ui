@@ -14,7 +14,7 @@ import {isInsideIframe} from '@taiga-ui/cdk/utils';
 import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-export const TUI_IS_BACK_NAV_CLOSES_DIALOG = new InjectionToken<Observable<boolean>>(
+export const TUI_DIALOG_CLOSES_ON_BACK = new InjectionToken<Observable<boolean>>(
     'Is closing dialog on browser backward navigation enabled',
     {
         /**
@@ -51,15 +51,15 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
     );
 
     constructor(
-        @Inject(TUI_IS_BACK_NAV_CLOSES_DIALOG)
-        readonly isBackNavClosesDialog$: Observable<boolean>,
+        @Inject(TUI_DIALOG_CLOSES_ON_BACK)
+        readonly isDialogClosesOnBack$: Observable<boolean>,
         @Inject(TUI_DIALOGS) private readonly dialogsByType: Observable<readonly T[]>[],
         @Inject(HISTORY) private readonly historyRef: History,
         @Inject(Title) private readonly titleService: Title,
     ) {}
 
-    closeLast(dialogs: readonly T[], isBackNavClosesDialog: boolean) {
-        if (!isBackNavClosesDialog) {
+    closeLast(dialogs: readonly T[], isDialogClosesOnBack: boolean) {
+        if (!isDialogClosesOnBack) {
             return;
         }
 
@@ -79,9 +79,9 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
     onDialog(
         {propertyName}: TransitionEvent,
         popupOpened: boolean,
-        isBackNavClosesDialog: boolean,
+        isDialogClosesOnBack: boolean,
     ) {
-        if (!isBackNavClosesDialog || propertyName !== 'letter-spacing') {
+        if (!isDialogClosesOnBack || propertyName !== 'letter-spacing') {
             return;
         }
 
