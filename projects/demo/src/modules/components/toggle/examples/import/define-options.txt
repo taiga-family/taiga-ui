@@ -5,7 +5,7 @@ import {
 } from '@taiga-ui/kit';
 
 ...
-const options: ToggleOptions = {
+const options: Partial<ToggleOptions> = {
     icons: {
         toggleOff: ({$implicit}) =>
             $implicit === 'm' ? 'tuiIconChevronRight' : 'tuiIconChevronRightLarge',

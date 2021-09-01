@@ -7,21 +7,20 @@
     [invalid]="computedInvalid"
 >
     <div class="toggle">
+        <tui-loader
+            *ngIf="showLoader"
+            class="loader"
+            [size]="loaderSize"
+            [inheritColor]="true"
+            [showLoader]="checked"
+        ></tui-loader>
         <span
             polymorpheus-outlet
             class="icon-wrapper"
             [content]="iconOn"
-            [context]="context"
+            [context]="{ $implicit: size }"
         >
             <ng-template let-icon>
-                <tui-loader
-                    *ngIf="showLoader"
-                    class="loader"
-                    [size]="loaderSize"
-                    [inheritColor]="true"
-                    [showLoader]="checked"
-                ></tui-loader>
-
                 <tui-svg
                     *ngIf="showIcons && !showLoader"
                     class="icon"
@@ -31,20 +30,20 @@
             </ng-template>
         </span>
         <div class="circle"></div>
+        <tui-loader
+            *ngIf="showLoader"
+            class="loader"
+            [size]="loaderSize"
+            [inheritColor]="true"
+            [showLoader]="!checked"
+        ></tui-loader>
         <span
             polymorpheus-outlet
             class="icon-wrapper"
             [content]="iconOff"
-            [context]="context"
+            [context]="{ $implicit: size }"
         >
             <ng-template let-icon>
-                <tui-loader
-                    *ngIf="showLoader"
-                    class="loader"
-                    [size]="loaderSize"
-                    [inheritColor]="true"
-                    [showLoader]="!checked"
-                ></tui-loader>
                 <tui-svg
                     *ngIf="showIcons && !showLoader"
                     class="icon icon_off"

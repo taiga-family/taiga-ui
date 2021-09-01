@@ -20,7 +20,6 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TuiAppearance,
@@ -49,11 +48,11 @@ export class TuiToggleComponent
     implements TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
-    singleColor = false;
+    singleColor = this.options.singleColor;
 
     @Input()
     @tuiDefaultProp()
-    showIcons = false;
+    showIcons = this.options.showIcons;
 
     @Input()
     @tuiDefaultProp()
@@ -62,7 +61,7 @@ export class TuiToggleComponent
     @Input()
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = this.options.size;
 
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
@@ -88,15 +87,6 @@ export class TuiToggleComponent
 
     get iconOff(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
         return this.options.icons.toggleOff;
-    }
-
-    get context(): TuiContextWithImplicit<TuiSizeL> {
-        return this.getContext(this.size);
-    }
-
-    @tuiPure
-    private getContext($implicit: TuiSizeL): TuiContextWithImplicit<TuiSizeL> {
-        return {$implicit};
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

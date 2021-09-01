@@ -8,7 +8,7 @@ import {
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
-const options: ToggleOptions = {
+const options: Partial<ToggleOptions> = {
     icons: {
         toggleOff: ({$implicit}) =>
             $implicit === 'm' ? 'tuiIconChevronRight' : 'tuiIconChevronRightLarge',
