@@ -37,8 +37,8 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                     takeUntil(mousedown$),
                     repeatWhen(() => mouseup$),
                     withLatestFrom(removedElement$),
-                    filter(([{target}, removedElement]) =>
-                        isValidFocusout(target, removedElement),
+                    filter(([event, removedElement]) =>
+                        isValidFocusout(getActualTarget(event), removedElement),
                     ),
                     map(([{relatedTarget}]) => relatedTarget),
                 ),
@@ -49,13 +49,11 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                 focusin$.pipe(
                     switchMap(event => {
                         const target = getActualTarget(event);
-                        const root = getDocumentOrShadowRoot(target);
+                        const root = getDocumentOrShadowRoot(target) as Document;
 
                         return root === documentRef
                             ? of(target)
-                            : shadowRootActiveElement(root as Document).pipe(
-                                  startWith(target),
-                              );
+                            : shadowRootActiveElement(root).pipe(startWith(target));
                     }),
                 ),
                 mousedown$.pipe(
@@ -90,6 +88,9 @@ function isValidFocusout(target: any, removedElement: Element | null): boolean {
 function shadowRootActiveElement(root: Document): Observable<EventTarget | null> {
     return merge(
         typedFromEvent(root, 'focusin').pipe(map(({target}) => target)),
-        typedFromEvent(root, 'focusout').pipe(map(({relatedTarget}) => relatedTarget)),
+        typedFromEvent(root, 'focusout').pipe(
+            filter(({target}) => isValidFocusout(target, null)),
+            map(({relatedTarget}) => relatedTarget),
+        ),
     );
 }
