@@ -15,6 +15,7 @@ const options: Partial<ToggleOptions> = {
         toggleOn: ({$implicit}) =>
             $implicit === 'm' ? 'tuiIconChevronLeft' : 'tuiIconChevronLeftLarge',
     },
+    showIcons: true,
 };
 
 @Component({
