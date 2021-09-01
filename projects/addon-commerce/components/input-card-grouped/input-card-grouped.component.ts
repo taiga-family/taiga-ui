@@ -439,13 +439,13 @@ export class TuiInputCardGroupedComponent
 
     @tuiPure
     private isFocusable(card: string): boolean {
-        return this.focusable && this.cardValidator(card);
+        return this.focusable && (this.cardValidator(card) || this.cardPrefilled);
     }
 
     private updateBin(oldBin: string | null) {
         const {bin} = this;
 
-        if (bin !== oldBin) {
+        if (bin !== oldBin && !this.cardPrefilled) {
             this.binChange.emit(bin);
         }
     }

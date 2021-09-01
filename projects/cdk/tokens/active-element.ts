@@ -11,6 +11,7 @@ import {
     mapTo,
     repeatWhen,
     share,
+    startWith,
     switchMap,
     take,
     takeUntil,
@@ -52,7 +53,9 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
 
                         return root === documentRef
                             ? of(target)
-                            : shadowRootActiveElement(root as Document);
+                            : shadowRootActiveElement(root as Document).pipe(
+                                  startWith(target),
+                              );
                     }),
                 ),
                 mousedown$.pipe(
