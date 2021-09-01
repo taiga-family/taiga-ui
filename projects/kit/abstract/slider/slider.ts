@@ -158,7 +158,6 @@ export abstract class AbstractTuiSlider<T>
             .pipe(
                 map((event: MouseEvent | TouchEvent) => {
                     const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
-
                     const clientX =
                         event instanceof MouseEvent
                             ? event.clientX

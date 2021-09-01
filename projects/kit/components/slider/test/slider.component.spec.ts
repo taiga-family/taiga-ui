@@ -1,4 +1,5 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
+import '@angular/common/locales/global/ru';
+import {Component, DebugElement, LOCALE_ID, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiPluralize} from '@taiga-ui/core';
@@ -72,7 +73,7 @@ describe('Slider', () => {
         TestBed.configureTestingModule({
             imports: [ReactiveFormsModule, TuiSliderModule],
             declarations: [TestComponent],
-            providers: NG_EVENT_PLUGINS,
+            providers: [NG_EVENT_PLUGINS, {provide: LOCALE_ID, useValue: 'ru-RU'}],
         });
     });
 
