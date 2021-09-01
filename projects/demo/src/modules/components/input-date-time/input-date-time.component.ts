@@ -12,6 +12,7 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {
     ALWAYS_FALSE_HANDLER,
+    TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
     TuiDateAutofillName,
@@ -55,21 +56,23 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
     };
 
     readonly minVariants = [
+        TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),
         new TuiDay(1900, 0, 1),
         [this.today.append({day: -1}), new TuiTime(12, 20)],
     ];
 
-    min = null;
+    min = this.minVariants[0];
 
     readonly maxVariants = [
+        TUI_LAST_DAY,
         new TuiDay(2017, 11, 11),
         new TuiDay(2020, 2, 5),
         new TuiDay(2300, 0, 1),
         [this.today.append({day: +1}), new TuiTime(16, 20)],
     ];
 
-    max = null;
+    max = this.maxVariants[0];
 
     defaultActiveYearMonthVariants = [
         TuiMonth.currentLocal(),
