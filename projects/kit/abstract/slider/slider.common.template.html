@@ -1,7 +1,8 @@
 <div
     class="event-catcher"
     (tuiActiveZoneChange)="onActiveZone($event)"
-    (pointerdown)="onPointerDown($event)"
+    (mousedown)="onMouseDown($event)"
+    (touchstart)="onTouchStart($event)"
 >
     <div class="wrapper">
         <div *ngIf="segmented" class="segments">

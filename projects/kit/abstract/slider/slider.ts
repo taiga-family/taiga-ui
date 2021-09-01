@@ -29,7 +29,7 @@ import {
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
-import {Observable, Subject} from 'rxjs';
+import {Observable, race, Subject} from 'rxjs';
 import {map, switchMap, takeUntil} from 'rxjs/operators';
 
 export const SLIDER_KEYBOARD_STEP = 0.05;
@@ -97,7 +97,10 @@ export abstract class AbstractTuiSlider<T>
     @ViewChild('dotRight')
     protected dotRight?: ElementRef<TuiNativeFocusableElement>;
 
-    private pointerDown$ = new Subject<TuiEventWith<PointerEvent, HTMLElement>>();
+    // @bad TODO: handle pointer events instead of mouse and touch events
+    private pointerDown$ = new Subject<
+        TuiEventWith<MouseEvent | TouchEvent, HTMLElement>
+    >();
 
     protected constructor(
         ngControl: NgControl | null,
@@ -145,16 +148,21 @@ export abstract class AbstractTuiSlider<T>
     ngOnInit() {
         super.ngOnInit();
 
-        const pointerMoves$ = typedFromEvent(this.documentRef, 'pointermove');
-        const pointerUps$ = typedFromEvent(this.documentRef, 'pointerup');
+        const mouseMoves$ = typedFromEvent(this.documentRef, 'mousemove');
+        const mouseUps$ = typedFromEvent(this.documentRef, 'mouseup');
+        const touchMoves$ = typedFromEvent(this.documentRef, 'touchmove');
+        const touchEnds$ = typedFromEvent(this.documentRef, 'touchend');
         let isPointerDownRight: boolean;
 
         this.pointerDown$
             .pipe(
-                map((event: PointerEvent) => {
+                map((event: MouseEvent | TouchEvent) => {
                     const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
 
-                    const clientX = event.clientX;
+                    const clientX =
+                        event instanceof MouseEvent
+                            ? event.clientX
+                            : event.touches[0].clientX;
                     const fraction = clamp(
                         this.getFractionFromEvents(rect, clientX),
                         0,
@@ -187,15 +195,17 @@ export abstract class AbstractTuiSlider<T>
                     return rect;
                 }),
                 switchMap(rect =>
-                    pointerMoves$.pipe(
-                        map((event: PointerEvent) =>
+                    race([touchMoves$, mouseMoves$]).pipe(
+                        map((event: any) =>
                             this.getCalibratedFractionFromEvents(
                                 rect,
-                                event.clientX,
+                                event instanceof MouseEvent
+                                    ? event.clientX
+                                    : event.touches[0].clientX,
                                 isPointerDownRight,
                             ),
                         ),
-                        takeUntil(pointerUps$),
+                        takeUntil(race([mouseUps$, touchEnds$])),
                     ),
                 ),
                 map(fraction => this.fractionGuard(fraction)),
@@ -213,7 +223,16 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$.complete();
     }
 
-    onPointerDown(event: TuiEventWith<PointerEvent, HTMLElement>) {
+    onMouseDown(event: TuiEventWith<MouseEvent, HTMLElement>) {
+        if (this.disabled) {
+            return;
+        }
+
+        event.preventDefault();
+        this.pointerDown$.next(event);
+    }
+
+    onTouchStart(event: TuiEventWith<TouchEvent, HTMLElement>) {
         if (this.disabled) {
             return;
         }

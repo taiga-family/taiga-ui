@@ -7,8 +7,9 @@ import {TuiPluralize} from '@taiga-ui/core/types';
  */
 export function tuiPluralizeToICU(pluralize: TuiPluralize): Record<string, string> {
     return {
-        '=1': pluralize[0],
-        '=2': pluralize[1],
+        one: pluralize[0],
+        few: pluralize[1],
+        many: pluralize[2],
         other: pluralize[2],
     };
 }
