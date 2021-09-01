@@ -17,6 +17,7 @@ import {
     TuiBooleanHandler,
     TuiDateAutofillName,
     TuiDay,
+    TuiMonth,
     TuiTime,
     TuiTimeMode,
 } from '@taiga-ui/cdk';
@@ -72,6 +73,13 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
     ];
 
     max = this.maxVariants[0];
+
+    defaultActiveYearMonthVariants = [
+        TuiMonth.currentLocal(),
+        new TuiMonth(2020, 2),
+        new TuiMonth(2017, 2),
+    ];
+    defaultActiveYearMonth = this.defaultActiveYearMonthVariants[0];
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiDay>> = [
         ALWAYS_FALSE_HANDLER,
