@@ -1,5 +1,11 @@
 @import 'taiga-ui-local';
 
+@sticky-header-height: 4rem;
+
+html {
+    scroll-padding-top: @sticky-header-height;
+}
+
 @keyframes tuiShaking {
     from,
     to {
