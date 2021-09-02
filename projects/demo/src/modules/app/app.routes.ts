@@ -51,11 +51,23 @@ export const ROUTES = [
         },
     },
     {
-        path: 'testing',
+        path: 'testing/disable-animation',
         loadChildren: () =>
-            import(`../info/testing/testing.module`).then(m => m.TestingModule),
+            import(`../info/testing/disable-animation/disable-animation.module`).then(
+                m => m.DisableAnimationModule,
+            ),
         data: {
-            title: `Testing`,
+            title: `Disable animation`,
+        },
+    },
+    {
+        path: 'testing/argus',
+        loadChildren: () =>
+            import(
+                `../info/testing/screenshot-github-bot/screenshot-github-bot.module`
+            ).then(m => m.ScreenshotGithubBotModule),
+        data: {
+            title: `Github App Argus`,
         },
     },
     // Customization

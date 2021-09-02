@@ -36,9 +36,22 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Documentation`,
         title: $localize`Testing`,
-        keywords:
-            'test, tests, testing, cypress, тестирование, тесты, тест, story, tips, советы',
-        route: 'testing',
+        subPages: [
+            {
+                section: $localize`Documentation`,
+                title: $localize`Disable animation`,
+                keywords:
+                    'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы',
+                route: '/testing/disable-animation',
+            },
+            {
+                section: $localize`Documentation`,
+                title: $localize`Github App Argus`,
+                keywords:
+                    'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы, github, github-app, argus, bot, screenshot',
+                route: '/testing/argus',
+            },
+        ],
     },
     // Common
     {
