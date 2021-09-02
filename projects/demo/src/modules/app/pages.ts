@@ -48,7 +48,7 @@ export const pages: TuiDocPages = [
                 section: $localize`Documentation`,
                 title: $localize`Our screenshot bot`,
                 keywords:
-                    'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы, github, github-app, argus, bot, screenshot',
+                    'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы, github, github-app, bot, screenshot',
                 route: `/testing/screenshot-bot`,
             },
         ],
