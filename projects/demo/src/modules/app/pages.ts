@@ -46,10 +46,10 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Documentation`,
-                title: $localize`Github App Argus`,
+                title: $localize`Our screenshot bot`,
                 keywords:
                     'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы, github, github-app, argus, bot, screenshot',
-                route: '/testing/argus',
+                route: `/testing/screenshot-bot`,
             },
         ],
     },

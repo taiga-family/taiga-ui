@@ -5,4 +5,8 @@ import {Component} from '@angular/core';
     templateUrl: './screenshot-github-bot.template.html',
     styleUrls: ['./screenshot-github-bot.style.less'],
 })
-export class ScreenshotGithubBotComponent {}
+export class ScreenshotGithubBotComponent {
+    readonly botName = 'Lumberjack';
+    readonly botLink = 'https://github.com/apps/lumberjack-bot';
+    readonly botRepoLink = 'https://github.com/TinkoffCreditSystems/argus';
+}

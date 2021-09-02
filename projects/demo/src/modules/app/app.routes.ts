@@ -61,13 +61,13 @@ export const ROUTES = [
         },
     },
     {
-        path: 'testing/argus',
+        path: `testing/screenshot-bot`,
         loadChildren: () =>
             import(
                 `../info/testing/screenshot-github-bot/screenshot-github-bot.module`
             ).then(m => m.ScreenshotGithubBotModule),
         data: {
-            title: `Github App Argus`,
+            title: `Our screenshot bot`,
         },
     },
     // Customization

@@ -1,9 +1,7 @@
-<tui-doc-page i18n-header header="Github App Argus">
+<tui-doc-page i18n-header [header]="'Github App ' + botName">
     <strong>
         Try our
-        <a tuiLink target="_blank" href="https://github.com/apps/argus-bot">
-            Github App Argus
-        </a>
+        <a tuiLink target="_blank" [href]="botLink"> Github App {{botName}} </a>
         for your screenshots testing in CI.
     </strong>
 
@@ -33,13 +31,13 @@
     </ul>
 
     <div class="setup">
-        <p>To begin using <strong>Argus bot</strong>:</p>
+        <p>To begin using <strong>{{botName}} bot</strong>:</p>
         <ol class="steps">
             <li>
                 <a
                     tuiLink
                     target="_blank"
-                    href="https://github.com/apps/argus-bot/installations/new"
+                    [href]="botLink + '/installations/new'"
                 >
                     Invite him
                 </a>
@@ -47,12 +45,9 @@
             </li>
             <li>
                 See its configurable params
-                <a
-                    tuiLink
-                    target="_blank"
-                    href="https://github.com/TinkoffCreditSystems/argus"
-                    >in its repo's README</a
-                >
+                <a tuiLink target="_blank" [href]="botRepoLink">
+                    in its repo's README
+                </a>
                 or use default ones.
             </li>
         </ol>
