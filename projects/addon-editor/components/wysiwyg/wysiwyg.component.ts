@@ -120,8 +120,6 @@ export class TuiWysiwygComponent extends AbstractTuiControl<string> implements O
         this.updateValue(value);
     }
 
-    onStateChange() {}
-
     addLink(link: string) {
         this.editor?.selectClosest();
         this.editor?.setLink(link);

@@ -661,12 +661,7 @@
             ></tui-table-size-selector>
         </ng-template>
 
-        <tui-hosted-dropdown
-            #tableCommand
-            tuiDropdownAlign="left"
-            tuiDropdownDirection="bottom"
-            [content]="tableOptionsDropdown"
-        >
+        <tui-hosted-dropdown #tableCommand [content]="tableOptionsDropdown">
             <button
                 #button
                 #tableCommandsBtn

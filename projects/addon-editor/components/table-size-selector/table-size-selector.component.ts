@@ -1,7 +1,15 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Inject,
+    Output,
+} from '@angular/core';
+import {WINDOW} from '@ng-web-apis/common';
 
 const MAX_COLS_NUMBER = 15;
 const MAX_ROWS_NUMBER = 15;
+const MIN_DISTANCE_PX = 50;
 
 @Component({
     selector: 'tui-table-size-selector',
@@ -18,6 +26,8 @@ export class TuiTableSizeSelectorComponent {
         cols: 1,
     };
 
+    constructor(@Inject(WINDOW) private readonly window: Window) {}
+
     get columnsNumber(): number {
         return Math.min(Math.max(3, this.tableSize.cols + 1), MAX_COLS_NUMBER);
     }
@@ -30,7 +40,11 @@ export class TuiTableSizeSelectorComponent {
         return x < this.tableSize.rows && y < this.tableSize.cols;
     }
 
-    updateCurrentSize(rows: number, cols: number) {
+    updateCurrentSize(rows: number, cols: number, event: MouseEvent) {
+        if (this.window.innerWidth - event.clientX < MIN_DISTANCE_PX) {
+            return;
+        }
+
         this.tableSize = {rows, cols};
     }
 
