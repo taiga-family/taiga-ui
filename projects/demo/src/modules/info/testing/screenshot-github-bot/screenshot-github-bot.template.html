@@ -1,7 +1,9 @@
 <tui-doc-page i18n-header [header]="'Github App ' + botName">
     <strong>
         Try our
-        <a tuiLink target="_blank" [href]="botLink"> Github App {{botName}} </a>
+        <a tuiLink target="_blank" [href]="botAppLink">
+            Github App {{botName}}
+        </a>
         for your screenshots testing in CI.
     </strong>
 
@@ -37,7 +39,7 @@
                 <a
                     tuiLink
                     target="_blank"
-                    [href]="botLink + '/installations/new'"
+                    [href]="botAppLink + '/installations/new'"
                 >
                     Invite him
                 </a>
