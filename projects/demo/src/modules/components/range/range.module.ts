@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiRadioListModule, TuiRangeModule} from '@taiga-ui/kit';
 import {TuiRangeExample1} from './examples/1';
 import {ExampleTuiRangeComponent} from './range.component';
@@ -14,6 +15,7 @@ import {ExampleTuiRangeComponent} from './range.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        TuiLinkModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiRangeComponent)),
     ],

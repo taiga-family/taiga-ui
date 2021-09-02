@@ -61,11 +61,14 @@ export class ExampleTuiSliderComponent {
     segments = this.segmentsVariants[0];
     readonly stepsVariants: readonly number[] = [0, 3, 4, 10];
     steps = this.stepsVariants[0];
-    readonly pluralizeVariants: ReadonlyArray<TuiPluralize> = [
-        ['year', 'years', 'years'],
-        ['thing', 'things', 'things'],
+    readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
         ['year', 'years', 'years'],
         ['₽', '₽', '₽'],
+        {one: 'thing', few: 'things', many: 'things', other: 'things'},
+        {
+            one: 'year',
+            other: 'years',
+        },
     ];
     pluralize = null;
     readonly keyStepsVariants: ReadonlyArray<TuiKeySteps> = [
