@@ -309,6 +309,28 @@
                     [code]="exampleLazyModule"
                 ></tui-doc-code>
             </li>
+            <li>
+                <p i18n>
+                    Dialogs has experimental feature with closing dialog on
+                    browser backward navigation. It was achieved through
+                    manipulation of <code><strong>window.history</strong></code
+                    >.
+                </p>
+
+                <p i18n>
+                    If you have some troubles with it, report about this,
+                    please.<br />
+                    In this case, you can disable this feature for your app
+                    using
+                    <code><strong>TUI_DIALOG_CLOSES_ON_BACK</strong></code>
+                    token.
+                </p>
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    [code]="exampleDialogClosesOnBackToken"
+                ></tui-doc-code>
+            </li>
         </ol>
     </ng-template>
 

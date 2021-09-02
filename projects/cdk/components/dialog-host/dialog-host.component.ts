@@ -1,12 +1,29 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Inject,
+    InjectionToken,
+} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {HISTORY, WINDOW} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {isInsideIframe} from '@taiga-ui/cdk/utils';
-import {combineLatest, Observable} from 'rxjs';
+import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
+
+export const TUI_DIALOG_CLOSES_ON_BACK = new InjectionToken<Observable<boolean>>(
+    'Is closing dialog on browser backward navigation enabled',
+    {
+        /**
+         * TODO enable this feature for iframes too
+         * when the legacy frame manager (with an iframe inside) will be removed on all internal projects
+         */
+        factory: () => of(!isInsideIframe(inject(WINDOW))),
+    },
+);
 
 // TODO: remove in ivy compilation
 export const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
@@ -32,21 +49,17 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
                 .sort((a, b) => a.createdAt - b.createdAt),
         ),
     );
-    /**
-     * TODO enable this feature for iframes too
-     * when the legacy frame manager (with an iframe inside) will be removed on all internal projects
-     */
-    private isCloseOnBackNavDisabled = isInsideIframe(this.windowRef);
 
     constructor(
+        @Inject(TUI_DIALOG_CLOSES_ON_BACK)
+        readonly isDialogClosesOnBack$: Observable<boolean>,
         @Inject(TUI_DIALOGS) private readonly dialogsByType: Observable<readonly T[]>[],
-        @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(HISTORY) private readonly historyRef: History,
         @Inject(Title) private readonly titleService: Title,
     ) {}
 
-    closeLast(dialogs: readonly T[]) {
-        if (this.isCloseOnBackNavDisabled) {
+    closeLast(dialogs: readonly T[], isDialogClosesOnBack: boolean) {
+        if (!isDialogClosesOnBack) {
             return;
         }
 
@@ -63,8 +76,12 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
         last.$implicit.complete();
     }
 
-    onDialog({propertyName}: TransitionEvent, popupOpened: boolean) {
-        if (this.isCloseOnBackNavDisabled || propertyName !== 'letter-spacing') {
+    onDialog(
+        {propertyName}: TransitionEvent,
+        popupOpened: boolean,
+        isDialogClosesOnBack: boolean,
+    ) {
+        if (!isDialogClosesOnBack || propertyName !== 'letter-spacing') {
             return;
         }
 
