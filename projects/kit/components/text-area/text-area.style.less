@@ -131,11 +131,6 @@
         padding: 0 1rem;
     }
 
-    :host._focused._has-tooltip &,
-    :host._has-value._has-tooltip & {
-        margin-right: 2.5rem;
-    }
-
     &__extra {
         background-color: var(--tui-error-bg-night);
     }
@@ -164,17 +159,20 @@
         padding: 0 1rem;
     }
 
-    :host._focused._has-tooltip &,
-    :host._has-value._has-tooltip & {
-        padding-right: 2.5rem;
-    }
-
     :host._ios & {
         padding-left: 0.8125rem; // compensation of unkillable padding in mobile safari
     }
 
     :host[data-mode='onDark']._disabled & {
         color: var(--tui-text-03-night);
+    }
+}
+
+.pseudo-content,
+.input {
+    :host._focused._has-tooltip &,
+    :host._has-value._has-tooltip & {
+        padding-right: 2.5rem;
     }
 }
 

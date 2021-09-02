@@ -56,7 +56,8 @@ const ICON_PADDING_S = 24;
 })
 export class TuiPrimitiveTextfieldComponent
     extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     editable = true;
@@ -147,6 +148,10 @@ export class TuiPrimitiveTextfieldComponent
 
     get inputHidden(): boolean {
         return !!this.content;
+    }
+
+    get isContextTable(): boolean {
+        return this.appearance === TuiAppearance.Table;
     }
 
     get hasTooltip(): boolean {

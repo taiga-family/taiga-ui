@@ -16,6 +16,7 @@ import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
 
 import {default as exampleCustomDialog} from '!!raw-loader!./examples/import/custom-dialog.txt';
+import {default as exampleDialogClosesOnBackToken} from '!!raw-loader!./examples/import/dialogClosesOnBackToken.txt';
 import {default as exampleDialogsCloseToken} from '!!raw-loader!./examples/import/dialogs-close-token.txt';
 import {default as exampleImportModuleComponent} from '!!raw-loader!./examples/import/import-module-component.txt';
 import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
@@ -41,6 +42,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 })
 export class ExampleTuiDialogsComponent {
     readonly dialogsCloseToken = exampleDialogsCloseToken;
+    readonly exampleDialogClosesOnBackToken = exampleDialogClosesOnBackToken;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

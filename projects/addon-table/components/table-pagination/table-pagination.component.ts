@@ -36,7 +36,7 @@ export class TuiTablePaginationComponent {
     open = false;
 
     constructor(
-        @Inject(TUI_SPIN_TEXTS) readonly spinTexts: [string, string],
+        @Inject(TUI_SPIN_TEXTS) readonly spinTexts$: Observable<[string, string]>,
         @Inject(TUI_TABLE_PAGINATION_TEXTS)
         readonly texts$: Observable<Record<'pages' | 'linesPerPage' | 'of', string>>,
     ) {}
