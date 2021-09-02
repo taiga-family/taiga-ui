@@ -841,10 +841,10 @@ export const ROUTES = [
         },
     },
     {
-        path: 'components/editor-new',
+        path: 'components/wysiwyg',
         loadChildren: () =>
-            import(`../components/editor-new/editor-new.module`).then(
-                m => m.ExampleTuiEditorNewModule,
+            import(`../components/wysiwyg/wysiwyg.module`).then(
+                m => m.ExampleTuiWysiwygModule,
             ),
         data: {
             title: 'EditorNew',

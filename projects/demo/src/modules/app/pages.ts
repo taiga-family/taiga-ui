@@ -528,10 +528,10 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
-                title: 'EditorNew',
+                title: 'Wysiwyg',
                 keywords:
-                    'wysiwygnew, редактор, текст, html, rich, text, input, инпут, ввод',
-                route: '/components/editor-new',
+                    'wysiwygnew, editor, редактор, текст, html, rich, text, input, инпут, ввод',
+                route: '/components/wysiwyg',
             },
         ],
     },

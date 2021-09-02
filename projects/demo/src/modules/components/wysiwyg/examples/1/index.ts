@@ -26,7 +26,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiEditorNewExample1 {
+export class TuiWysiwygExample1 {
     control = new FormControl('<p>Hello world</p>', Validators.required);
 
     onClick() {

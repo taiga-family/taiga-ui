@@ -35,6 +35,7 @@ export const defaultExtensions = [
     BackgroundColor,
     Table.configure({
         resizable: true,
+        lastColumnResizable: false,
     }),
     TableRow,
     TableCell,

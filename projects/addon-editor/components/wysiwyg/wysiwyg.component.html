@@ -17,12 +17,12 @@
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div class="toolbar-wrapper">
-        <tui-toolbar
+        <tui-wysiwyg-toolbar
             *ngIf="editor"
             [editor]="editor"
             [tools]="tools"
             [disabled]="!interactive"
-        ></tui-toolbar>
+        ></tui-wysiwyg-toolbar>
         <div
             class="placeholder"
             [class.placeholder_raised]="placeholderRaised"

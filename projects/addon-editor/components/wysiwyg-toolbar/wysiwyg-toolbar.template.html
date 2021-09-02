@@ -642,7 +642,7 @@
                 tuiIconButton
                 type="button"
                 size="s"
-                icon="tuiIconStructureLarge"
+                icon="tuiIconTableLarge"
                 class="button button_margin"
                 appearance="icon"
                 tuiHintDirection="top-left"
@@ -673,7 +673,7 @@
                 tuiIconButton
                 type="button"
                 size="s"
-                icon="tuiIconStructureLarge"
+                icon="tuiIconAddRowLarge"
                 class="button button_margin"
                 appearance="icon"
                 tuiHintDirection="top-left"
@@ -709,7 +709,7 @@
             tuiIconButton
             type="button"
             size="s"
-            icon="tuiIconStructureLarge"
+            [icon]="editor.canMergeCells() ? 'tuiIconTableMergeLarge' : 'tuiIconTableSplitLarge'"
             class="button button_margin"
             appearance="icon"
             tuiHintDirection="top-left"

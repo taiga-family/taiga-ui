@@ -1,18 +1,18 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
-import {TuiToolbarNewModule} from '@taiga-ui/addon-editor/components/toolbar-new';
+import {TuiWysiwygToolbarModule} from '@taiga-ui/addon-editor/components/wysiwyg-toolbar';
 import {TuiTiptapEditorModule} from '@taiga-ui/addon-editor/directives';
 import {TuiActiveZoneModule, TuiHoveredModule} from '@taiga-ui/cdk';
 import {TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';
 import {TuiDropdownSelectionModule} from '@taiga-ui/kit';
-import {TuiEditorNewComponent} from './editor-new.component';
+import {TuiWysiwygComponent} from './wysiwyg.component';
 
 @NgModule({
-    declarations: [TuiEditorNewComponent],
+    declarations: [TuiWysiwygComponent],
     imports: [
         CommonModule,
-        TuiToolbarNewModule,
+        TuiWysiwygToolbarModule,
         TuiWrapperModule,
         TuiHoveredModule,
         TuiScrollbarModule,
@@ -21,6 +21,6 @@ import {TuiEditorNewComponent} from './editor-new.component';
         TuiDropdownSelectionModule,
         TuiTiptapEditorModule,
     ],
-    exports: [TuiEditorNewComponent],
+    exports: [TuiWysiwygComponent],
 })
-export class TuiEditorNewModule {}
+export class TuiWysiwygModule {}

@@ -2,13 +2,9 @@
     <button tuiButton type="button" (click)="onClick()">Set value</button>
 </p>
 
-<tui-editor-new
-    class="editor"
-    exampleText="exampleText"
-    [formControl]="control"
->
+<tui-wysiwyg class="editor" exampleText="exampleText" [formControl]="control">
     Placeholder
-</tui-editor-new>
+</tui-wysiwyg>
 
 <h4>HTML:</h4>
 <tui-editor-socket [content]="control.value"></tui-editor-socket>

@@ -14,7 +14,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/edit-link';
-import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
+import {TuiWysiwygToolbarComponent} from '@taiga-ui/addon-editor/components/wysiwyg-toolbar';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorDirective} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
@@ -28,21 +28,18 @@ import {
 } from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-editor-new',
-    templateUrl: './editor-new.component.html',
-    styleUrls: ['./editor-new.style.less'],
+    selector: 'tui-wysiwyg',
+    templateUrl: './wysiwyg.component.html',
+    styleUrls: ['./wysiwyg.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiEditorNewComponent),
+            useExisting: forwardRef(() => TuiWysiwygComponent),
         },
     ],
 })
-export class TuiEditorNewComponent
-    extends AbstractTuiControl<string>
-    implements OnDestroy
-{
+export class TuiWysiwygComponent extends AbstractTuiControl<string> implements OnDestroy {
     @Input()
     @tuiDefaultProp()
     exampleText = '';
@@ -50,8 +47,8 @@ export class TuiEditorNewComponent
     @ViewChild('editorRef', {read: TuiTiptapEditorDirective})
     editorRef!: TuiTiptapEditorDirective;
 
-    @ViewChild(TuiToolbarNewComponent)
-    toolbar?: TuiToolbarNewComponent;
+    @ViewChild(TuiWysiwygToolbarComponent)
+    toolbar?: TuiWysiwygToolbarComponent;
 
     @ViewChild(TuiEditLinkComponent, {read: ElementRef})
     private readonly editLink?: ElementRef<HTMLElement>;

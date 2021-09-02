@@ -14,17 +14,17 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-editor-new',
-    templateUrl: './editor-new.template.html',
+    selector: 'example-tui-wysiwyg',
+    templateUrl: './wysiwyg.template.html',
     changeDetection,
     providers: [
         {
             provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiEditorNewComponent),
+            useExisting: forwardRef(() => ExampleTuiWysiwygComponent),
         },
     ],
 })
-export class ExampleTuiEditorNewComponent extends AbstractExampleTuiControl {
+export class ExampleTuiWysiwygComponent extends AbstractExampleTuiControl {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 

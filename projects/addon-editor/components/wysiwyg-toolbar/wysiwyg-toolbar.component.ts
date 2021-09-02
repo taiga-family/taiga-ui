@@ -55,9 +55,9 @@ enum TableComands {
 
 // @dynamic
 @Component({
-    selector: 'tui-toolbar',
-    templateUrl: './toolbar-new.template.html',
-    styleUrls: ['./toolbar-new.style.less'],
+    selector: 'tui-wysiwyg-toolbar',
+    templateUrl: './wysiwyg-toolbar.template.html',
+    styleUrls: ['./wysiwyg-toolbar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
@@ -65,7 +65,7 @@ enum TableComands {
         class: 'tui-zero-scrollbar',
     },
 })
-export class TuiToolbarNewComponent {
+export class TuiWysiwygToolbarComponent {
     @Input()
     @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
     tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
