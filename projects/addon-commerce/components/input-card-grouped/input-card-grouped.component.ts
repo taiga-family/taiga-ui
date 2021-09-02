@@ -404,7 +404,7 @@ export class TuiInputCardGroupedComponent
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
     onArrow(element: HTMLElement, step: number) {
-        this.open = !!this.dropdown;
+        this.open = this.hasDropdown;
         this.changeDetectorRef.detectChanges();
         this.datalist?.onKeyDownArrow(element, step);
     }
