@@ -9,7 +9,7 @@ import {WINDOW} from '@ng-web-apis/common';
 
 const MAX_COLS_NUMBER = 15;
 const MAX_ROWS_NUMBER = 15;
-const MIN_DISTANCE_PX = 50;
+const MIN_DISTANCE_PX = 70;
 
 @Component({
     selector: 'tui-table-size-selector',

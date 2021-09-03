@@ -7,7 +7,12 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {defaultEditorTools, TuiEditorTool} from '@taiga-ui/addon-editor';
+import {
+    defaultEditorTools,
+    defaultExtensions,
+    TUI_EDITOR_EXTENSIONS,
+    TuiEditorTool,
+} from '@taiga-ui/addon-editor';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -21,6 +26,10 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         {
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiWysiwygComponent),
+        },
+        {
+            provide: TUI_EDITOR_EXTENSIONS,
+            useValue: defaultExtensions,
         },
     ],
 })

@@ -1,11 +1,21 @@
 @import 'taiga-ui-local';
 
-@import './tiptap-editor.style.less';
-
 :host {
     .createStackingContext();
     font: var(--tui-font-text-m);
     display: block;
+
+    & ::ng-deep .tui-editor-socket {
+        display: block;
+        border: none;
+
+        & .ProseMirror {
+            padding: 0 1rem;
+            min-height: 5.375rem;
+            outline: none;
+            white-space: pre-wrap;
+        }
+    }
 }
 
 .outline {

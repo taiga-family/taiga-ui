@@ -7,9 +7,13 @@ body.tui-editor-socket {
     padding: 0 16px;
 }
 
-p:empty:after {
+.tui-editor-socket p:empty:after {
     content: ' ';
     white-space: pre;
+}
+
+.tui-editor-socket p:first-child {
+    margin-top: 0
 }
 
 .tui-editor-socket {
@@ -67,6 +71,10 @@ p:empty:after {
     font-family: 'Courier', monospace;
     color: #666666;
     background-color: #f5f5f6;
+}
+
+.tui-editor-socket pre code {
+    box-shadow: none !important;
 }
 
 .tui-editor-socket pre + pre {
