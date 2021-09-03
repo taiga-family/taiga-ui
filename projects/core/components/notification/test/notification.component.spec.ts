@@ -1,6 +1,10 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {
+    TUI_NOTIFICATION_DEFAULT_OPTIONS,
+    TUI_NOTIFICATION_OPTIONS,
+} from '@taiga-ui/core/tokens';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 import {TuiNotification} from '../../../enums/notification';
@@ -103,6 +107,64 @@ describe('Notification', () => {
             fixture.detectChanges();
 
             expect(getClose()).toBeNull();
+        });
+    });
+});
+
+describe('Notification with TUI_NOTIFICATION_OPTIONS', () => {
+    @Component({
+        template: `
+            <tui-notification>Short simple informational message</tui-notification>
+        `,
+    })
+    class TestComponent {
+        @ViewChild(TuiNotificationComponent, {static: false})
+        component: TuiNotificationComponent;
+    }
+
+    const status = TuiNotification.Error;
+    const hasIcon = false;
+
+    let fixture: ComponentFixture<TestComponent>;
+    let testComponent: TestComponent;
+    let pageObject: PageObject<TestComponent>;
+
+    function getIcon(): DebugElement {
+        return pageObject.getByAutomationId('tui-notification__icon')!;
+    }
+
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            imports: [NoopAnimationsModule, TuiNotificationModule],
+            declarations: [TestComponent],
+            providers: [
+                TuiSvgService,
+                {
+                    provide: TUI_NOTIFICATION_OPTIONS,
+                    useValue: {
+                        ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
+                        status,
+                        hasIcon,
+                    },
+                },
+            ],
+        });
+    });
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(TestComponent);
+        pageObject = new PageObject(fixture);
+        testComponent = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    describe('icon', () => {
+        it('chosen correctly depending on the status', () => {
+            expect(testComponent.component.icon).toBe(STATUS_ICON[status]);
+        });
+
+        it('when hasIcon = false is absent', () => {
+            expect(getIcon()).toBeNull();
         });
     });
 });

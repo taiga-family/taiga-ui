@@ -1,14 +1,14 @@
 import {CommonModule} from '@angular/common';
 import {Component, Inject, NgModule, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {
+    TUI_NOTIFICATION_DEFAULT_OPTIONS,
+    TUI_NOTIFICATION_OPTIONS,
+} from '@taiga-ui/core/tokens';
 import {PageObject} from '@taiga-ui/testing';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TuiNotificationContentContext} from '../../notification-content-context';
 import {NotificationAlert} from '../Notification-alert';
-import {
-    TUI_NOTIFICATION_ALERT_DEFAULT_OPTIONS,
-    TUI_NOTIFICATION_ALERT_OPTIONS,
-} from '../notification-alert-options';
 import {TuiNotificationAlertComponent} from '../notification-alert.component';
 import {TuiNotificationAlertModule} from '../notification-alert.module';
 
@@ -103,11 +103,11 @@ describe('NotificationAlertComponent', () => {
         });
 
         it('Default status', () => {
-            expect(component.item!.status).toBe('info');
+            expect(component.status).toBe('info');
         });
 
         it('Default autoclose', () => {
-            expect(component.item!.autoClose).toBe(true);
+            expect(component.autoClose).toBe(true);
         });
     });
 
@@ -134,16 +134,16 @@ describe('NotificationAlertComponent', () => {
         });
     });
 
-    it('display | Use label from TUI_NOTIFICATION_ALERT_OPTIONS', () => {
+    it('display | Use label from TUI_NOTIFICATION_OPTIONS', () => {
         TestBed.resetTestingModule();
         TestBed.configureTestingModule({
             imports: [TuiNotificationAlertModule, AlertTestModule],
             declarations: [TestComponent],
             providers: [
                 {
-                    provide: TUI_NOTIFICATION_ALERT_OPTIONS,
+                    provide: TUI_NOTIFICATION_OPTIONS,
                     useValue: {
-                        ...TUI_NOTIFICATION_ALERT_DEFAULT_OPTIONS,
+                        ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
                         label,
                     },
                 },
@@ -175,7 +175,7 @@ describe('NotificationAlertComponent', () => {
         expect(completeSpy).toHaveBeenCalled();
     });
 
-    it('close | Close the Alert after custom TUI_NOTIFICATION_ALERT_OPTIONS autoClose timeout', fakeAsync(() => {
+    it('close | Close the Alert after custom TUI_NOTIFICATION_OPTIONS autoClose timeout', fakeAsync(() => {
         const customTimeoutMs = 100;
 
         TestBed.resetTestingModule();
@@ -184,9 +184,9 @@ describe('NotificationAlertComponent', () => {
             declarations: [TestComponent],
             providers: [
                 {
-                    provide: TUI_NOTIFICATION_ALERT_OPTIONS,
+                    provide: TUI_NOTIFICATION_OPTIONS,
                     useValue: {
-                        ...TUI_NOTIFICATION_ALERT_DEFAULT_OPTIONS,
+                        ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
                         autoClose: customTimeoutMs,
                     },
                 },
@@ -219,9 +219,9 @@ describe('NotificationAlertComponent', () => {
             declarations: [TestComponent],
             providers: [
                 {
-                    provide: TUI_NOTIFICATION_ALERT_OPTIONS,
+                    provide: TUI_NOTIFICATION_OPTIONS,
                     useValue: {
-                        ...TUI_NOTIFICATION_ALERT_DEFAULT_OPTIONS,
+                        ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
                         autoClose: customOptionsTimeoutMs,
                     },
                 },
