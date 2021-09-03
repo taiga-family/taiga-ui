@@ -1,4 +1,13 @@
-import {Component} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    HostBinding,
+    Inject,
+    Input,
+} from '@angular/core';
+import {WINDOW} from '@ng-web-apis/common';
+import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 
 @Component({
     selector: '[tuiProgressBar]',
@@ -8,8 +17,56 @@ import {Component} from '@angular/core';
         '[style.--tui-progress-color]': 'color',
         '[style.--tui-progress-color-old-edge]': 'oldEdgeColor',
     },
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressBarComponent {
-    oldEdgeColor = 'var(--tui-primary)';
-    color = 'linear-gradient(to left, lime 25%, red 25% 50%, cyan 50% 75%, yellow 75%)';
+    @Input()
+    @HostBinding('value')
+    @tuiDefaultProp()
+    readonly value: number = 0;
+
+    @Input()
+    @HostBinding('max')
+    @tuiDefaultProp()
+    readonly max: number = 1;
+
+    @Input()
+    @tuiDefaultProp()
+    colors: string | string[] = 'var(--tui-primary)';
+
+    constructor(
+        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+    ) {}
+
+    get width(): number {
+        return parseInt(
+            this.windowRef.getComputedStyle(this.elementRef.nativeElement).width,
+            10,
+        );
+    }
+
+    get color() {
+        if (Array.isArray(this.colors)) {
+            return this.getHardLinesGradientColor(this.colors, this.width);
+        }
+
+        return this.colors;
+    }
+
+    get oldEdgeColor(): string {
+        return Array.isArray(this.colors) ? this.colors[0] : this.colors;
+    }
+
+    @tuiPure
+    private getHardLinesGradientColor(colors: string[], width: number): string {
+        const segmentWidth = width / colors.length;
+        const colorsString = colors.reduce(
+            (acc, color, i) =>
+                `${acc}, ${color} ${i * segmentWidth}px ${(i + 1) * segmentWidth}px`,
+            '',
+        );
+
+        return `linear-gradient(to right ${colorsString})`;
+    }
 }
