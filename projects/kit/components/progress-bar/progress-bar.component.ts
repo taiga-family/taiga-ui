@@ -51,7 +51,7 @@ export class TuiProgressBarComponent {
 
     @tuiPure
     private getHardLinesGradientColor(colors: string[], width: number): string {
-        const segmentWidth = width / colors.length;
+        const segmentWidth = Math.ceil(width / colors.length);
         const colorsString = colors.reduce(
             (acc, color, i) =>
                 `${acc}, ${color} ${i * segmentWidth}px ${(i + 1) * segmentWidth}px`,
