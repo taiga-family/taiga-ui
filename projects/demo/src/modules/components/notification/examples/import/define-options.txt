@@ -11,11 +11,8 @@ import {
         provide: TUI_NOTIFICATION_OPTIONS,
         useValue: {
             ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
-            autocloseTimeout: 7000,
-            label: ({$implicit}: any) => ($implicit === TuiNotification.Error ? 'Error' : 'Info'),
             status: TuiNotification.Error,
             hasIcon: false,
-            hasCloseButton: false,
         },
     }],
 ...

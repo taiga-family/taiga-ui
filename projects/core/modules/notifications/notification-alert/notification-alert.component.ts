@@ -13,15 +13,12 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core/enums';
+import {NotificationTokenOptions, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';
 import {TuiNotificationContentContext} from '../notification-content-context';
 import {NotificationAlert} from './Notification-alert';
-import {
-    NotificationAlertOptions,
-    TUI_NOTIFICATION_ALERT_OPTIONS,
-} from './notification-alert-options';
 
 export const DEFAULT_ALERT_AUTOCLOSE_TIMEOUT = 3000;
 
@@ -39,8 +36,8 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(TUI_NOTIFICATION_ALERT_OPTIONS)
-        public readonly options: NotificationAlertOptions,
+        @Inject(TUI_NOTIFICATION_OPTIONS)
+        public readonly options: NotificationTokenOptions,
     ) {}
 
     ngOnInit() {
@@ -59,8 +56,29 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
         return this.calculateContext(this.safeItem);
     }
 
+    @tuiPure
     get label(): PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> {
-        return this.safeItem.label || this.options.label;
+        return this.safeItem.label ?? this.options.label;
+    }
+
+    @tuiPure
+    get hasCloseButton(): boolean {
+        return this.safeItem.hasCloseButton ?? this.options.hasCloseButton;
+    }
+
+    @tuiPure
+    get status(): TuiNotification {
+        return this.safeItem.status ?? this.options.status;
+    }
+
+    @tuiPure
+    get hasIcon(): boolean {
+        return this.safeItem.hasIcon ?? this.options.hasIcon;
+    }
+
+    @tuiPure
+    get autoClose(): boolean | number {
+        return this.safeItem.autoClose ?? this.options.autoClose;
     }
 
     closeNotification() {
@@ -71,13 +89,12 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
     private calculateContext({
         status,
         data,
-        label,
         observer,
     }: NotificationAlert<O, I>): TuiNotificationContentContext<O, I> {
         return {
-            $implicit: status,
+            $implicit: status || this.options.status,
             data: data,
-            label: label,
+            label: this.label,
             closeHook: () => {
                 observer.complete();
             },
@@ -92,17 +109,11 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
     }
 
     private initAutoClose() {
-        if (!this.safeItem.autoClose || !this.options.autoClose) {
+        if (!this.autoClose) {
             return;
         }
 
-        timer(
-            isNumber(this.safeItem.autoClose)
-                ? this.safeItem.autoClose
-                : isNumber(this.options.autoClose)
-                ? this.options.autoClose
-                : DEFAULT_ALERT_AUTOCLOSE_TIMEOUT,
-        )
+        timer(isNumber(this.autoClose) ? this.autoClose : DEFAULT_ALERT_AUTOCLOSE_TIMEOUT)
             .pipe(
                 takeUntil(fromEvent(this.elementRef.nativeElement, 'mouseenter')),
                 repeatWhen(() => fromEvent(this.elementRef.nativeElement, 'mouseleave')),

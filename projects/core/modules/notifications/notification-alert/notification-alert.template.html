@@ -1,20 +1,18 @@
 <tui-notification
-    *ngIf="safeItem.hasCloseButton else noClose"
-    [status]="safeItem.status"
-    [hasIcon]="safeItem.hasIcon"
+    *ngIf="hasCloseButton else noClose"
+    [status]="status"
+    [hasIcon]="hasIcon"
     (close)="closeNotification()"
 >
-    <span polymorpheus-outlet [content]="label" [context]="context">
-        <ng-template let-label>
-            <label
-                *ngIf="label"
-                automation-id="tui-notification-alert__heading"
-                class="heading"
-            >
-                {{label}}
-            </label>
-        </ng-template>
-    </span>
+    <label
+        *ngIf="label"
+        polymorpheus-outlet
+        [content]="label"
+        [context]="context"
+        automation-id="tui-notification-alert__heading"
+        class="heading"
+    >
+    </label>
     <div
         polymorpheus-outlet
         automation-id="tui-notification-alert__content"
@@ -24,18 +22,16 @@
     ></div>
 </tui-notification>
 <ng-template #noClose>
-    <tui-notification [status]="safeItem.status" [hasIcon]="safeItem.hasIcon">
-        <span polymorpheus-outlet [content]="label" [context]="context">
-            <ng-template let-label>
-                <label
-                    *ngIf="label"
-                    automation-id="tui-notification-alert__heading"
-                    class="heading"
-                >
-                    {{label}}
-                </label>
-            </ng-template>
-        </span>
+    <tui-notification [status]="status" [hasIcon]="hasIcon">
+        <label
+            *ngIf="label"
+            polymorpheus-outlet
+            [content]="label"
+            [context]="context"
+            automation-id="tui-notification-alert__heading"
+            class="heading"
+        >
+        </label>
         <div
             polymorpheus-outlet
             automation-id="tui-notification-alert__content"

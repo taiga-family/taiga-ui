@@ -10,6 +10,9 @@ import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
+import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
+import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
+
 import {default as exampleCustomAlert} from '!!raw-loader!./examples/import/custom-alert.txt';
 import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleImportModuleComponent} from '!!raw-loader!./examples/import/import-module-component.txt';
@@ -63,6 +66,11 @@ export class ExampleTuiNotificationsComponent {
     readonly example4: FrontEndExample = {
         TypeScript: example4Ts,
         HTML: example4Html,
+    };
+
+    readonly example5: FrontEndExample = {
+        TypeScript: example5Ts,
+        HTML: example5Html,
     };
 
     data = 100;
