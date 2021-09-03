@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    HostBinding,
     Inject,
     Input,
 } from '@angular/core';
@@ -21,16 +20,6 @@ import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 })
 export class TuiProgressBarComponent {
     private readonly defaultColor = 'var(--tui-primary)';
-
-    @Input()
-    @HostBinding('value')
-    @tuiDefaultProp()
-    readonly value: number = 0;
-
-    @Input()
-    @HostBinding('max')
-    @tuiDefaultProp()
-    readonly max: number = 1;
 
     @Input()
     @tuiDefaultProp()

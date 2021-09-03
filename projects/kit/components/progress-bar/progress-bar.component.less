@@ -1,3 +1,5 @@
+@import 'taiga-ui-local';
+
 .clearProgress() {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -27,6 +29,17 @@
     }
 }
 
+/*
+* Edge and IE animate the progress bar right out of the box
+* Chrome | Opera | Safari animation is controlled by its mixins
+* No possibility for firefox animation (https://snook.ca/archives/html_and_css/animating-progress)
+*/
+.progressAnimation() {
+    &::-webkit-progress-value {
+        .transition(width);
+    }
+}
+
 .progressValueColor() {
     color: var(--tui-progress-color-old-edge); // IE | Not Chromium Edge
 
@@ -41,6 +54,7 @@
 
 :host {
     .clearProgress();
+    .progressAnimation();
 
     .progressValueColor();
     .progressValue(border-radius, var(--tui-radius-xs));
