@@ -18,15 +18,15 @@ export class TuiDataListExample1 {
             items: [
                 {
                     label: 'Input',
-                    routerLink: '/tui-input',
+                    routerLink: '/components/input',
                 },
                 {
                     label: 'Select',
-                    routerLink: '/tui-select',
+                    routerLink: '/components/select',
                 },
                 {
                     label: 'DataList',
-                    routerLink: '/tui-data-list',
+                    routerLink: '/components/data-list',
                 },
             ],
         },

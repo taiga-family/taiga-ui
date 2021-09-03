@@ -678,7 +678,9 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
                         "browserTarget": "demo:build",
-                        "port": 3333
+                        "port": 3333,
+                        "sslCert": "ssl/localhost.pem",
+                        "sslKey": "ssl/localhost-key.pem"
                     },
                     "configurations": {
                         "production": {
