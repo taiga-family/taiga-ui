@@ -10,7 +10,7 @@ import {WINDOW} from '@ng-web-apis/common';
 import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 
 @Component({
-    selector: '[tuiProgressBar]',
+    selector: 'progress[tuiProgressBar]',
     template: '',
     styleUrls: ['./progress-bar.component.less'],
     host: {
