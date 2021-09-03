@@ -1,5 +1,5 @@
-<tui-editor
+<tui-wysiwyg
     exampleText="Example"
     [(ngModel)]="model">
     Placeholder
-</tui-editor>
+</tui-wysiwyg>

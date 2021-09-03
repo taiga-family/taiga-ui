@@ -1,13 +1,11 @@
 <div *tuiRepeatTimes="let x of columnsNumber" class="column">
     <div
         *tuiRepeatTimes="let y of rowsNumber"
-        tuiIconButton
-        tuiOption
         icon="tuiIconStop"
         class="cell"
         size="xs"
         appearance="flat"
-        [class._pseudoHovered]="tableSelectHovered(y, x)"
+        [class.pseudo-hovered]="tableSelectHovered(y, x)"
         (mouseenter)="updateCurrentSize(y+1, x+1, $event)"
         (click)="onClick()"
     ></div>

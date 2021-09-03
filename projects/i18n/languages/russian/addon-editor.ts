@@ -45,7 +45,7 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         ['Добавить строку сверху', 'Добавить строку снизу'],
         ['Добавить столбец справа', 'Добавить столбец слева'],
     ],
-    editorCodesOptions: ['Код', 'Код в блоке'],
+    editorCodeOptions: ['Код', 'Код в блоке'],
     editorFontOptions: {
         normal: 'Обычный',
         title: 'Заголовок',

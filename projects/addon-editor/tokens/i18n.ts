@@ -35,10 +35,10 @@ export const TUI_EDITOR_TABLE_COMMANDS = new InjectionToken(
     },
 );
 
-export const TUI_EDITOR_CODES_OPTIONS = new InjectionToken(
+export const TUI_EDITOR_CODE_OPTIONS = new InjectionToken(
     'tui-editor-toolbar codes options',
     {
-        factory: extractI18n('editorCodesOptions'),
+        factory: extractI18n('editorCodeOptions'),
     },
 );
 

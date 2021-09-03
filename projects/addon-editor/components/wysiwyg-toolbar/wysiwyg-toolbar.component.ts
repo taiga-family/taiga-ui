@@ -16,7 +16,7 @@ import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/co
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {
-    TUI_EDITOR_CODES_OPTIONS,
+    TUI_EDITOR_CODE_OPTIONS,
     TUI_EDITOR_FONT_OPTIONS,
     TUI_EDITOR_TABLE_COMMANDS,
     TUI_IMAGE_LOADER,
@@ -132,8 +132,8 @@ export class TuiWysiwygToolbarComponent {
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_TABLE_COMMANDS)
         readonly tableCommandTexts$: Observable<LanguageEditor['editorTableCommands']>,
-        @Inject(TUI_EDITOR_CODES_OPTIONS)
-        readonly codesOptionsTexts$: Observable<LanguageEditor['editorCodesOptions']>,
+        @Inject(TUI_EDITOR_CODE_OPTIONS)
+        readonly codeOptionsTexts$: Observable<LanguageEditor['editorCodeOptions']>,
         @Inject(TUI_EDITOR_FONT_OPTIONS)
         private readonly fontOptionsTexts$: Observable<
             LanguageEditor['editorFontOptions']

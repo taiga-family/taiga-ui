@@ -7,7 +7,6 @@ import {TuiTiptapEditorService} from './tiptap-editor.service';
 
 @Directive({
     selector: '[tuiTiptapEditor]',
-    exportAs: 'tuiDesignMode',
     providers: [TIPTAP_EDITOR_PROVIDERS, TuiTiptapEditorService],
 })
 export class TuiTiptapEditorDirective {
@@ -30,7 +29,7 @@ export class TuiTiptapEditorDirective {
     stateChange = this.editor.stateChange$;
 
     constructor(
-        @Inject(TuiTiptapEditorService) public editor: TuiEditor,
+        @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(Renderer2) readonly renderer: Renderer2,
         @Inject(TUI_EDITOR_STYLES) styles: string,
         @Inject(DOCUMENT) {head}: Document,

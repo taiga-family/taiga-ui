@@ -45,7 +45,7 @@ export const TUI_SPANISH_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         ['Insert row before', 'Insert row after'],
         ['Delete column', 'Delete row'],
     ],
-    editorCodesOptions: ['Code in the text', 'Code in block'],
+    editorCodeOptions: ['Code in the text', 'Code in block'],
     editorFontOptions: {
         normal: 'Normal',
         title: 'Title',

@@ -148,7 +148,7 @@ export type LanguageEditor = {
         rowsColumnsManaging: string;
     };
     editorTableCommands: [[string, string], [string, string], [string, string]];
-    editorCodesOptions: [string, string];
+    editorCodeOptions: [string, string];
     editorFontOptions: {
         normal: string;
         title: string;

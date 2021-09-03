@@ -847,7 +847,7 @@ export const ROUTES = [
                 m => m.ExampleTuiWysiwygModule,
             ),
         data: {
-            title: 'EditorNew',
+            title: 'Wysiwyg',
         },
     },
     {

@@ -6,10 +6,9 @@ export abstract class TuiEditor {
     readonly stateChange$ = new Subject();
     readonly valueChange$ = new Subject<string>();
 
-    abstract get isFocused(): boolean;
-    abstract get html(): string;
-    abstract set editable(editable: boolean);
-    abstract get editable(): boolean;
+    abstract readonly isFocused: boolean;
+    abstract readonly html: string;
+    abstract editable: boolean;
 
     abstract isActive(name: string | Record<string, string>): boolean;
     abstract undoDisabled(): boolean;
