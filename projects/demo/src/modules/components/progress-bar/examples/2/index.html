@@ -1,0 +1,25 @@
+<p i18n class="description">Single color</p>
+<progress
+    tuiProgressBar
+    [value]="fastValue$ | async"
+    [colors]="singleColor"
+    max="100"
+    class="progress"
+></progress>
+
+<p i18n class="description">Multicolor segments</p>
+<progress
+    tuiProgressBar
+    [value]="fastValue$ | async"
+    [colors]="colors"
+    max="100"
+    class="progress"
+></progress>
+
+<progress
+    tuiProgressBar
+    [value]="slowValue$ | async"
+    [colors]="colors"
+    [max]="colors.length"
+    class="progress"
+></progress>

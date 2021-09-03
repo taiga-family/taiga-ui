@@ -5,14 +5,23 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
-    selector: 'tui-progress-bar-example-1',
+    selector: 'tui-progress-bar-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
-export class TuiProgressBarExample1 {
-    readonly value$ = this.isCypress ? of(40) : timer(0, 500);
+export class TuiProgressBarExample2 {
+    readonly fastValue$ = this.isCypress ? of(40) : timer(500, 100);
+    readonly slowValue$ = this.isCypress ? of(2) : timer(500, 2000);
+    readonly colors = [
+        'var(--tui-support-01)',
+        'var(--tui-support-21)',
+        'lightskyblue',
+        '#3682db',
+        'var(--tui-support-22)',
+    ];
+    readonly singleColor = 'var(--tui-support-09)';
 
     constructor(@Inject(TUI_IS_CYPRESS) private readonly isCypress: boolean) {}
 }
