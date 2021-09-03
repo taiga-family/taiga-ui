@@ -121,14 +121,24 @@ body.tui-editor-socket {
 }
 
 .tui-editor-socket table td, th {
-        min-width: 1em;
-        height: 2rem;
-        border: 2px solid #ced4da;
-        padding: 3px 5px;
-        vertical-align: top;
-        box-sizing: border-box;
-        position: relative;
-        word-break: break-word;
+    min-width: 1em;
+    height: 2rem;
+    border: 2px solid #ced4da;
+    padding: 3px 5px;
+    vertical-align: top;
+    box-sizing: border-box;
+    position: relative;
+    word-break: break-word;
+}
+
+.tui-editor-socket table .column-resize-handle {
+    position: absolute;
+    right: -2px;
+    top: 0;
+    bottom: -2px;
+    width: 4px;
+    background-color: #adf;
+    pointer-events: none;
 }
 
 .tui-editor-socket table td > * {
@@ -142,15 +152,19 @@ body.tui-editor-socket {
 }
 
 .tui-editor-socket table  th {
-        font-weight: bold;
-        text-align: left;
-        background-color: #f1f3f5;
-        min-heigth: 2rem
+    font-weight: bold;
+    text-align: left;
+    background-color: #f1f3f5;
+    min-heigth: 2rem
+}
+
+.tui-editor-socket .resize-cursor {
+    cursor: ew-resize;
+    cursor: col-resize;
 }
 
 .tui-editor-socket table  .tableWrapper {
-        overflow-x: auto;
-    }
+    overflow-x: auto;
 }
 
 .tui-editor-socket font[face='Courier New'] {
