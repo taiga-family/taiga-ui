@@ -20,6 +20,8 @@ import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressBarComponent {
+    private readonly defaultColor = 'var(--tui-primary)';
+
     @Input()
     @HostBinding('value')
     @tuiDefaultProp()
@@ -32,7 +34,7 @@ export class TuiProgressBarComponent {
 
     @Input()
     @tuiDefaultProp()
-    colors: string | string[] = 'var(--tui-primary)';
+    colors: string | string[] = this.defaultColor;
 
     constructor(
         @Inject(WINDOW) private readonly windowRef: Window,
@@ -55,7 +57,7 @@ export class TuiProgressBarComponent {
     }
 
     get oldEdgeColor(): string {
-        return Array.isArray(this.colors) ? this.colors[0] : this.colors;
+        return Array.isArray(this.colors) ? this.defaultColor : this.colors;
     }
 
     @tuiPure
