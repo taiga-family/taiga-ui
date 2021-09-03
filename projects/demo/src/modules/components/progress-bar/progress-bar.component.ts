@@ -10,6 +10,9 @@ import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
+import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+
 import {Component} from '@angular/core';
 import {TuiSizeS} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
@@ -58,4 +61,7 @@ export class ExampleProgressBarComponent {
         TypeScript: example3Ts,
         LESS: example3Less,
     };
+
+    readonly exampleImportModule = exampleImportModule;
+    readonly exampleInsertTemplate = exampleInsertTemplate;
 }

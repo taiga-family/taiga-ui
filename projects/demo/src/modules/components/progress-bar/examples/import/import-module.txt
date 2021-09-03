@@ -1,0 +1,10 @@
+import {TuiProgressBarModule} from '@taiga-ui/core';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiProgressBarModule
+    ],
+...
