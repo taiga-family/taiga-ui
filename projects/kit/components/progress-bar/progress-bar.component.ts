@@ -6,7 +6,6 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
 import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
@@ -33,15 +32,11 @@ export class TuiProgressBarComponent {
     size: TuiSizeS = 'm';
 
     constructor(
-        @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {}
 
     get width(): number {
-        return parseInt(
-            this.windowRef.getComputedStyle(this.elementRef.nativeElement).width,
-            10,
-        );
+        return this.elementRef.nativeElement.offsetWidth;
     }
 
     get color() {
