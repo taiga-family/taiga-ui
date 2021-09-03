@@ -1,4 +1,4 @@
-import {TuiProgressBarModule} from '@taiga-ui/core';
+import {TuiProgressBarModule} from '@taiga-ui/kit';
 
 ...
 
