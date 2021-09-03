@@ -12,7 +12,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiProgressBarExample1 {
-    value$ = this.isCypress ? of(40) : timer(0, 200);
+    readonly value$ = this.isCypress ? of(40) : timer(0, 200);
 
     constructor(@Inject(TUI_IS_CYPRESS) private readonly isCypress: boolean) {}
 }
