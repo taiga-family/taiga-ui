@@ -36,7 +36,7 @@
 */
 .progressAnimation() {
     &::-webkit-progress-value {
-        .transition(width);
+        transition: width var(--tui-duration) linear;
     }
 }
 
@@ -55,10 +55,18 @@
 :host {
     .clearProgress();
     .progressAnimation();
-
     .progressValueColor();
-    .progressValue(border-radius, var(--tui-radius-xs));
-
     .progressContainer(background-color, var(--tui-base-03));
-    .progressContainer(border-radius, var(--tui-radius-xs));
+
+    border-radius: var(--tui-radius-xs);
+    overflow: hidden;
+
+    &[data-tui-host-size='m'] {
+        height: 1.5rem;
+    }
+
+    &[data-tui-host-size='s'] {
+        height: 0.5rem;
+        .progressValue(border-radius, var(--tui-radius-xs));
+    }
 }

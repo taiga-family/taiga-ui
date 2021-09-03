@@ -2,11 +2,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    HostBinding,
     Inject,
     Input,
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
+import {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'progress[tuiProgressBar]',
@@ -24,6 +26,11 @@ export class TuiProgressBarComponent {
     @Input()
     @tuiDefaultProp()
     colors: string | string[] = this.defaultColor;
+
+    @Input()
+    @HostBinding('attr.data-tui-host-size')
+    @tuiDefaultProp()
+    size: TuiSizeS = 'm';
 
     constructor(
         @Inject(WINDOW) private readonly windowRef: Window,
