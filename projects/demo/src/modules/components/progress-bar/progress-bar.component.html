@@ -39,4 +39,77 @@
             <tui-progress-bar-example-3></tui-progress-bar-example-3>
         </tui-doc-example>
     </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <progress
+                class="api-progress"
+                tuiProgressBar
+                [value]="value"
+                [max]="max"
+                [size]="size"
+                [colors]="colors"
+            ></progress>
+        </tui-doc-demo>
+
+        <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName="value"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="value"
+            >
+                Native attribute
+                <a
+                    tuiLink
+                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attributes"
+                    target="_blank"
+                >
+                    value
+                </a>
+                of <code>&lt;progress /&gt;</code>
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="max"
+            >
+                Native attribute
+                <a
+                    tuiLink
+                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attributes"
+                    target="_blank"
+                >
+                    max
+                </a>
+                of <code>&lt;progress /&gt;</code>
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size of the progress element
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="colors"
+                documentationPropertyMode="input"
+                documentationPropertyType="string | string[]"
+                [documentationPropertyValues]="colorVariants"
+                [(documentationPropertyValue)]="colors"
+            >
+                Colors of the progress indicator
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
 </tui-doc-page>
