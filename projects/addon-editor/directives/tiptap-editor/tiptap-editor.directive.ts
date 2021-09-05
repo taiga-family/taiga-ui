@@ -1,7 +1,7 @@
 import {Directive, Inject, Input, Output} from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {TUI_EDITOR_STYLES} from '@taiga-ui/addon-editor/tokens';
 import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
-import {TUI_EDITOR_STYLES} from '../../tokens';
 import {TIPTAP_EDITOR_PROVIDERS} from './tiptap-editor.providers';
 import {TuiTiptapEditorService} from './tiptap-editor.service';
 
