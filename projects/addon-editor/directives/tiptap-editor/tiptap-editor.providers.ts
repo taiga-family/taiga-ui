@@ -13,10 +13,12 @@ export const TIPTAP_EDITOR_PROVIDERS: Provider[] = [
 
 export function editorFactory(
     {nativeElement}: ElementRef,
-    extensions: Extension[],
-): Editor {
-    return new Editor({
-        element: nativeElement,
-        extensions: extensions,
+    extensions: Promise<Extension>[],
+): Promise<Editor> {
+    return Promise.all(extensions).then(extensions => {
+        return new Editor({
+            element: nativeElement,
+            extensions: extensions,
+        });
     });
 }

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {
-    defaultExtensions,
+    defaultWysiwygExtensions,
     tiptapEditorStyles,
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_STYLES,
@@ -16,7 +16,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useValue: defaultExtensions,
+            useValue: defaultWysiwygExtensions,
         },
         {
             provide: TUI_EDITOR_STYLES,

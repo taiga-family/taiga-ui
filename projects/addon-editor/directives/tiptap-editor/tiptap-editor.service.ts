@@ -54,18 +54,23 @@ export class TuiTiptapEditorService extends TuiEditor {
         this.editor.setEditable(editable);
     }
 
-    constructor(@Inject(TIPTAP_EDITOR) private readonly editor: Editor) {
+    editor!: Editor;
+
+    constructor(@Inject(TIPTAP_EDITOR) private readonly editorRef: Promise<Editor>) {
         super();
 
-        editor.on('transaction', () => {
-            this.stateChange$.next();
-        });
+        this.editorRef.then(editor => {
+            this.editor = editor;
+            editor.on('transaction', () => {
+                this.stateChange$.next();
+            });
 
-        editor.on('update', () => {
-            const content = editor.getHTML();
-            const json = editor.getJSON().content;
+            editor.on('update', () => {
+                const content = editor.getHTML();
+                const json = editor.getJSON().content;
 
-            this.valueChange$.next(this.isEmptyParagraph(json) ? '' : content);
+                this.valueChange$.next(this.isEmptyParagraph(json) ? '' : content);
+            });
         });
     }
 

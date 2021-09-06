@@ -9,7 +9,7 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {
     defaultEditorTools,
-    defaultExtensions,
+    defaultWysiwygExtensions,
     TUI_EDITOR_EXTENSIONS,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
@@ -29,7 +29,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         },
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useValue: defaultExtensions,
+            useValue: defaultWysiwygExtensions,
         },
     ],
 })

@@ -1,44 +1,23 @@
-import {Image} from '@tiptap/extension-image';
-import {Link} from '@tiptap/extension-link';
-import {Subscript} from '@tiptap/extension-subscript';
-import {Superscript} from '@tiptap/extension-superscript';
-import {Table} from '@tiptap/extension-table';
-import {TableCell} from '@tiptap/extension-table-cell';
-import {TableHeader} from '@tiptap/extension-table-header';
-import {TableRow} from '@tiptap/extension-table-row';
-import {TextAlign} from '@tiptap/extension-text-align';
-import {TextStyle} from '@tiptap/extension-text-style';
-import {Underline} from '@tiptap/extension-underline';
-import StarterKit from '@tiptap/starter-kit';
-import {BackgroundColor} from './background-color';
-import {FontColor} from './font-color';
-import {Indent} from './indent-outdent';
-
-export const defaultExtensions = [
-    StarterKit.configure({
-        heading: {
-            levels: [1, 2],
-        },
-    }),
-    TextAlign.configure({
-        types: ['heading', 'paragraph'],
-    }),
-    TextStyle,
-    Underline,
-    Subscript,
-    Superscript,
-    FontColor,
-    Image.configure({inline: true}),
-    Link.configure({
-        openOnClick: false,
-    }),
-    BackgroundColor,
-    Table.configure({
-        resizable: true,
-        lastColumnResizable: false,
-    }),
-    TableRow,
-    TableCell,
-    TableHeader,
-    Indent,
+export const defaultWysiwygExtensions = [
+    import('@tiptap/starter-kit').then(m =>
+        m.default.configure({heading: {levels: [1, 2]}}),
+    ),
+    import('@tiptap/extension-text-align').then(m =>
+        m.default.configure({types: ['heading', 'paragraph']}),
+    ),
+    import('@tiptap/extension-text-style').then(m => m.default),
+    import('@tiptap/extension-underline').then(m => m.default),
+    import('@tiptap/extension-subscript').then(m => m.default),
+    import('@tiptap/extension-superscript').then(m => m.default),
+    import('./font-color').then(m => m.FontColor),
+    import('@tiptap/extension-image').then(m => m.default.configure({inline: true})),
+    import('@tiptap/extension-link').then(m => m.default.configure({openOnClick: false})),
+    import('./background-color').then(m => m.BackgroundColor),
+    import('@tiptap/extension-table').then(m =>
+        m.default.configure({resizable: true, lastColumnResizable: false}),
+    ),
+    import('@tiptap/extension-table-row').then(m => m.default),
+    import('@tiptap/extension-table-cell').then(m => m.default),
+    import('@tiptap/extension-table-header').then(m => m.TableHeader),
+    import('./indent-outdent').then(m => m.Indent),
 ];
