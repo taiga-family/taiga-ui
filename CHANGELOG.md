@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file. See [standa
 -   **demo:** new documentation page `Testing` ([#661](https://github.com/TinkoffCreditSystems/taiga-ui/issues/661)) ([93de6fc](https://github.com/TinkoffCreditSystems/taiga-ui/commit/93de6fc65716e7089653c21133ff02d582fd2be5))
 -   **kit:** switch to angular `i18nPlural` pipe ([#628](https://github.com/TinkoffCreditSystems/taiga-ui/issues/628)) ([a19f53a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a19f53a1d0a8fdd94c8314faf3af566c043609eb))
 -   **kit:** `Toggle` allow configuring default options ([#635](https://github.com/TinkoffCreditSystems/taiga-ui/issues/635)) ([945e2f4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/945e2f4d1148808e78f8a73a7dc7404d26ab72e8))
--   **lang:** add portuguese language ([#642](https://github.com/TinkoffCreditSystems/taiga-ui/issues/642)) ([e360f34](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e360f3495db8727cef90f2aedeae5f887c82a817))
+-   **i18n:** add portuguese language ([#642](https://github.com/TinkoffCreditSystems/taiga-ui/issues/642)) ([e360f34](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e360f3495db8727cef90f2aedeae5f887c82a817))
 
 ### Bug Fixes
 
