@@ -6,6 +6,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiToggleModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiToggleExample1} from './examples/1';
+import {TuiToggleExample2} from './examples/2';
 import {ExampleTuiToggleComponent} from './toggle.component';
 
 @NgModule({
@@ -18,7 +19,7 @@ import {ExampleTuiToggleComponent} from './toggle.component';
         CommonModule,
         RouterModule.forChild(generateRoutes(ExampleTuiToggleComponent)),
     ],
-    declarations: [ExampleTuiToggleComponent, TuiToggleExample1],
+    declarations: [ExampleTuiToggleComponent, TuiToggleExample1, TuiToggleExample2],
     exports: [ExampleTuiToggleComponent],
 })
 export class ExampleTuiToggleModule {}

@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+import {TUI_TOGGLE_DEFAULT_OPTIONS, TUI_TOGGLE_OPTIONS} from '../toggle-options';
 import {TuiToggleModule} from '../toggle.module';
 
 describe('Toggle', () => {
@@ -205,5 +206,100 @@ describe('Toggle', () => {
         } else {
             expect(icon).toBeNull();
         }
+    }
+});
+
+describe('Toggle with TUI_TOGGLE_OPTIONS', () => {
+    @Component({
+        template: `
+            <tui-toggle [formControl]="control" [showLoader]="showLoader"> </tui-toggle>
+        `,
+    })
+    class TestComponent {
+        control = new FormControl();
+        showLoader = false;
+    }
+
+    let fixture: ComponentFixture<TestComponent>;
+    let testComponent: TestComponent;
+    let pageObject: PageObject<TestComponent>;
+    const testContext = {
+        get prefix() {
+            return 'tui-toggle__';
+        },
+    };
+
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            imports: [ReactiveFormsModule, TuiToggleModule],
+            declarations: [TestComponent],
+            providers: [
+                {
+                    provide: TUI_TOGGLE_OPTIONS,
+                    useValue: {
+                        ...TUI_TOGGLE_DEFAULT_OPTIONS,
+                        showIcons: true,
+                    },
+                },
+            ],
+        });
+    });
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(TestComponent);
+        pageObject = new PageObject(fixture);
+        testComponent = fixture.componentInstance;
+    });
+
+    describe('Icons', () => {
+        describe('showIcons === true', () => {
+            it('Icons are shown when toggle is "disabled"', () => {
+                testComponent.control.setValue(false);
+                fixture.detectChanges();
+
+                // If icons are enabled, then both are added to the DOM at once -
+                // implementation feature for smooth animation
+                isIconVisible(`${testContext.prefix}check-icon`);
+                isIconVisible(`${testContext.prefix}cancel-icon`);
+            });
+
+            it('Icons are shown when toggle is "on"', () => {
+                testComponent.control.setValue(true);
+                fixture.detectChanges();
+
+                isIconVisible(`${testContext.prefix}check-icon`);
+                isIconVisible(`${testContext.prefix}cancel-icon`);
+            });
+        });
+    });
+
+    describe('Loader', () => {
+        describe('showLoader === false', () => {
+            beforeEach(() => {
+                testComponent.showLoader = false;
+            });
+
+            it('Icons are shown when toggle is "disabled"', () => {
+                testComponent.control.setValue(false);
+                fixture.detectChanges();
+
+                isIconVisible(`${testContext.prefix}check-icon`);
+                isIconVisible(`${testContext.prefix}cancel-icon`);
+            });
+
+            it('Icons are shown when toggle is "on"', () => {
+                testComponent.control.setValue(true);
+                fixture.detectChanges();
+
+                isIconVisible(`${testContext.prefix}check-icon`);
+                isIconVisible(`${testContext.prefix}cancel-icon`);
+            });
+        });
+    });
+
+    function isIconVisible(tuiIconAutomationId: string) {
+        const icon = pageObject.getByAutomationId(tuiIconAutomationId);
+
+        expect(icon).not.toBeNull();
     }
 });
