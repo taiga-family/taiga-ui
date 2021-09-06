@@ -1,5 +1,11 @@
 import {AnimationOptions} from '@angular/animations';
-import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DoCheck,
+    HostBinding,
+    Inject,
+} from '@angular/core';
 import {
     TUI_ANIMATION_OPTIONS,
     TuiAnimationOptions,
@@ -17,7 +23,7 @@ import {TuiSidebarDirective} from './sidebar.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideIn],
 })
-export class TuiSidebarComponent {
+export class TuiSidebarComponent implements DoCheck {
     private readonly left = {
         value: 'left',
         ...this.options,
@@ -49,5 +55,9 @@ export class TuiSidebarComponent {
 
     get autoWidth(): boolean {
         return this.directive.autoWidth;
+    }
+
+    ngDoCheck() {
+        this.directive.check();
     }
 }

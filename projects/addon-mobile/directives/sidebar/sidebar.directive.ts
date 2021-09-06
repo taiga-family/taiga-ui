@@ -1,4 +1,5 @@
 import {
+    ChangeDetectorRef,
     ComponentFactoryResolver,
     ComponentRef,
     Directive,
@@ -10,12 +11,13 @@ import {
 } from '@angular/core';
 import {TuiPortalService} from '@taiga-ui/cdk';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
+import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {TuiSidebarComponent} from './sidebar.component';
 
 @Directive({
     selector: '[tuiSidebar]',
 })
-export class TuiSidebarDirective implements OnDestroy {
+export class TuiSidebarDirective extends PolymorpheusTemplate<{}> implements OnDestroy {
     @Input('tuiSidebarDirection')
     direction: TuiHorizontalDirection = 'left';
 
@@ -39,7 +41,10 @@ export class TuiSidebarDirective implements OnDestroy {
         @Inject(ComponentFactoryResolver)
         private readonly componentFactoryResolver: ComponentFactoryResolver,
         @Inject(TuiPortalService) private readonly portalService: TuiPortalService,
-    ) {}
+        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+    ) {
+        super(content, changeDetectorRef);
+    }
 
     ngOnDestroy() {
         this.hide();
