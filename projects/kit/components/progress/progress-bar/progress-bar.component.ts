@@ -20,14 +20,12 @@ import {TuiSizeS} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressBarComponent {
-    private readonly defaultColor = 'var(--tui-primary)';
-
     @Input()
     @tuiDefaultProp()
-    colors: string | string[] = this.defaultColor;
+    colors: string | string[] = 'var(--tui-primary)';
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeS = 'm';
 
@@ -40,19 +38,17 @@ export class TuiProgressBarComponent {
     }
 
     get color() {
-        if (Array.isArray(this.colors)) {
-            return this.getHardLinesGradientColor(this.colors, this.width);
-        }
-
-        return this.colors;
+        return Array.isArray(this.colors)
+            ? this.computeGradient(this.colors, this.width)
+            : this.colors;
     }
 
     get oldEdgeColor(): string {
-        return Array.isArray(this.colors) ? this.defaultColor : this.colors;
+        return Array.isArray(this.colors) ? this.colors[0] : this.colors;
     }
 
     @tuiPure
-    private getHardLinesGradientColor(colors: string[], width: number): string {
+    private computeGradient(colors: string[], width: number): string {
         const segmentWidth = Math.ceil(width / colors.length);
         const colorsString = colors.reduce(
             (acc, color, i) =>
