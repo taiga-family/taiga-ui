@@ -12,6 +12,7 @@ import {TuiInputCountModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputCountExample1} from './examples/1';
 import {TuiInputCountExample2} from './examples/2';
+import {TuiInputCountExample3} from './examples/3';
 import {ExampleTuiInputCountComponent} from './input-count.component';
 
 @NgModule({
@@ -31,6 +32,7 @@ import {ExampleTuiInputCountComponent} from './input-count.component';
         ExampleTuiInputCountComponent,
         TuiInputCountExample1,
         TuiInputCountExample2,
+        TuiInputCountExample3,
     ],
     exports: [ExampleTuiInputCountComponent],
 })

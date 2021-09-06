@@ -20,6 +20,7 @@ import {
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiPure,
@@ -38,7 +39,9 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
+import {InputCountOptions, TUI_INPUT_COUNT_OPTIONS} from './input-count-options';
 
 // @dynamic
 @Component({
@@ -58,23 +61,23 @@ export class TuiInputCountComponent
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
-    step = 1;
+    step = this.options.step;
 
     @Input()
     @tuiDefaultProp()
-    min = 0;
+    min = this.options.min;
 
     @Input()
     @tuiDefaultProp()
-    max = Infinity;
+    max = this.options.max;
 
     @Input()
     @tuiDefaultProp()
-    hideButtons = false;
+    hideButtons = this.options.hideButtons;
 
     @Input()
     @tuiDefaultProp()
-    postfix = '';
+    postfix = this.options.postfix;
 
     @tuiPure
     getMask(allowNegative: boolean): TuiTextMaskOptions {
@@ -97,8 +100,18 @@ export class TuiInputCountComponent
         @Inject(TUI_PLUS_MINUS_TEXTS)
         readonly minusTexts$: Observable<[string, string]>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
+        @Inject(TUI_INPUT_COUNT_OPTIONS)
+        public readonly options: InputCountOptions,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    get iconUp(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
+        return this.options.icons.up;
+    }
+
+    get iconDown(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
+        return this.options.icons.down;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
