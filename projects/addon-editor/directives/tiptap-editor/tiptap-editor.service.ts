@@ -32,6 +32,7 @@ import type Underline from '@tiptap/extension-underline';
 // @ts-ignore
 import type StarterKit from '@tiptap/starter-kit';
 import {redoDepth, undoDepth} from 'prosemirror-history';
+import {Observable} from 'rxjs';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -56,11 +57,12 @@ export class TuiTiptapEditorService extends TuiEditor {
 
     editor!: Editor;
 
-    constructor(@Inject(TIPTAP_EDITOR) private readonly editorRef: Promise<Editor>) {
+    constructor(@Inject(TIPTAP_EDITOR) private readonly editorRef: Observable<Editor>) {
         super();
 
-        this.editorRef.then(editor => {
+        this.editorRef.subscribe(editor => {
             this.editor = editor;
+
             editor.on('transaction', () => {
                 this.stateChange$.next();
             });

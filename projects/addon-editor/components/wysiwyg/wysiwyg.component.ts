@@ -18,6 +18,7 @@ import {TuiWysiwygToolbarComponent} from '@taiga-ui/addon-editor/components/wysi
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorDirective} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
+import {WYSIWYG_LAZY_EXTENSIONS} from '@taiga-ui/addon-editor/tokens';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
@@ -26,6 +27,8 @@ import {
     TuiBooleanHandler,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
+import {Observable} from 'rxjs';
+import {TUI_WYSIWYG_PROVIDERS} from './wysiwyg.providers';
 
 @Component({
     selector: 'tui-wysiwyg',
@@ -37,6 +40,7 @@ import {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiWysiwygComponent),
         },
+        TUI_WYSIWYG_PROVIDERS,
     ],
 })
 export class TuiWysiwygComponent extends AbstractTuiControl<string> implements OnDestroy {
@@ -69,6 +73,7 @@ export class TuiWysiwygComponent extends AbstractTuiControl<string> implements O
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(WYSIWYG_LAZY_EXTENSIONS) public extensionsLoaded$: Observable<unknown>,
     ) {
         super(control, changeDetectorRef);
     }
