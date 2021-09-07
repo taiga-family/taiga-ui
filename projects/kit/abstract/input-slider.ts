@@ -14,6 +14,7 @@ import {
     tuiCreateNumberMask,
     TuiModeDirective,
     TuiPluralize,
+    tuiPluralizeToICU,
     TuiSizeL,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
@@ -31,7 +32,8 @@ export function quantumAssertion(quantum: number): boolean {
 @Directive()
 export abstract class AbstractTuiInputSlider<T>
     extends AbstractTuiControl<T>
-    implements TuiWithOptionalMinMax<number> {
+    implements TuiWithOptionalMinMax<number>
+{
     @Input()
     @tuiDefaultProp()
     min = 0;
@@ -48,9 +50,14 @@ export abstract class AbstractTuiInputSlider<T>
     @tuiDefaultProp()
     maxLabel = '';
 
+    // TODO: remove setter in v3.0:
     @Input()
     @tuiDefaultProp()
-    pluralize: TuiPluralize | null = null;
+    set pluralize(pluralize: TuiPluralize | Record<string, string> | null) {
+        this.pluralizeMap = Array.isArray(pluralize)
+            ? tuiPluralizeToICU(pluralize)
+            : pluralize;
+    }
 
     @Input()
     @tuiDefaultProp()
@@ -84,6 +91,8 @@ export abstract class AbstractTuiInputSlider<T>
         pipe: tuiCreateAutoCorrectedNumberPipe(),
         guide: false,
     });
+
+    pluralizeMap: Record<string, string> | null = null;
 
     protected abstract readonly modeDirective: TuiModeDirective | null;
 
@@ -123,10 +132,6 @@ export abstract class AbstractTuiInputSlider<T>
 
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
-    }
-
-    isPluralized(pluralize: TuiPluralize | null): pluralize is TuiPluralize {
-        return pluralize !== null && pluralize.length === 3;
     }
 
     protected valueGuard(value: number): number {

@@ -70,11 +70,18 @@
                 i18n
                 documentationPropertyName="pluralize"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiPluralize"
+                documentationPropertyType="TuiPluralize | Record<string, string>"
                 [documentationPropertyValues]="pluralizeVariants"
                 [(documentationPropertyValue)]="pluralize"
             >
-                Plural forms for labels
+                Plural forms for labels. TuiPluralize array is deprecated. Use
+                object that mimics the
+                <a
+                    tuiLink
+                    href="https://unicode-org.github.io/icu/userguide/format_parse/messages/"
+                    >ICU format</a
+                >
+                for i18nPlural
             </ng-template>
             <ng-template
                 i18n

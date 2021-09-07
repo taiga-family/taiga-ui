@@ -3,7 +3,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NativeInputPO} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
-import {TuiPaymentSystem} from '../../../enums/payment-system';
 import {TuiInputCardGroupedComponent} from '../input-card-grouped.component';
 import {TuiInputCardGroupedModule} from '../input-card-grouped.module';
 
@@ -98,44 +97,6 @@ describe('InputCardGrouped', () => {
                 setCard('123');
 
                 expect(testComponent.onBinChange).toHaveBeenCalledWith(null);
-            });
-        });
-
-        describe('paymentSystem', () => {
-            it('visa', () => {
-                setCard('4111 1111 1111 1111');
-
-                expect(testComponent.component.paymentSystem).toBe(TuiPaymentSystem.Visa);
-            });
-
-            it('electron', () => {
-                setCard('4917300800000000');
-
-                expect(testComponent.component.paymentSystem).toBe(
-                    TuiPaymentSystem.Electron,
-                );
-            });
-
-            it('mir', () => {
-                setCard('2200654321000000');
-
-                expect(testComponent.component.paymentSystem).toBe(TuiPaymentSystem.Mir);
-            });
-
-            it('mastercard', () => {
-                setCard('5500 0000 0000 0004');
-
-                expect(testComponent.component.paymentSystem).toBe(
-                    TuiPaymentSystem.Mastercard,
-                );
-            });
-
-            it('maestro', () => {
-                setCard('6759649826438453');
-
-                expect(testComponent.component.paymentSystem).toBe(
-                    TuiPaymentSystem.Maestro,
-                );
             });
         });
 

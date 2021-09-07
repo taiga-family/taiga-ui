@@ -11,6 +11,7 @@ export const ROUTES = [
             title: 'A powerful set of open source components for Angular',
         },
     },
+    // Documentation
     {
         path: 'getting-started',
         component: GettingStartedComponent,
@@ -34,6 +35,42 @@ export const ROUTES = [
             title: `Changelog`,
         },
     },
+    {
+        path: 'tui-doc',
+        loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
+        data: {
+            title: `Documentation engine`,
+        },
+    },
+    {
+        path: 'related',
+        loadChildren: () =>
+            import(`../info/related/related.module`).then(m => m.RelatedModule),
+        data: {
+            title: `Friendly libraries`,
+        },
+    },
+    {
+        path: 'testing/disable-animation',
+        loadChildren: () =>
+            import(`../info/testing/disable-animation/disable-animation.module`).then(
+                m => m.DisableAnimationModule,
+            ),
+        data: {
+            title: `Disable animation`,
+        },
+    },
+    {
+        path: `testing/screenshot-bot`,
+        loadChildren: () =>
+            import(
+                `../info/testing/screenshot-github-bot/screenshot-github-bot.module`
+            ).then(m => m.ScreenshotGithubBotModule),
+        data: {
+            title: `Our screenshot bot`,
+        },
+    },
+    // Customization
     {
         path: 'i18n',
         loadChildren: () =>
@@ -76,21 +113,6 @@ export const ROUTES = [
             ),
         data: {
             title: `Icon set`,
-        },
-    },
-    {
-        path: 'tui-doc',
-        loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
-        data: {
-            title: `Documentation engine`,
-        },
-    },
-    {
-        path: 'related',
-        loadChildren: () =>
-            import(`../info/related/related.module`).then(m => m.RelatedModule),
-        data: {
-            title: `Friendly libraries`,
         },
     },
     // COMPONENTS

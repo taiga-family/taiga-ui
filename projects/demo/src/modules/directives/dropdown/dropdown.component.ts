@@ -69,8 +69,8 @@ export class ExampleTuiDropdownComponent {
         'auto',
     ];
 
-    tuiDropdownLimitWidth: TuiDropdownWidthT | null = this
-        .tuiDropdownLimitWidthVariants[0];
+    tuiDropdownLimitWidth: TuiDropdownWidthT | null =
+        this.tuiDropdownLimitWidthVariants[0];
 
     open = false;
 
@@ -85,8 +85,6 @@ export class ExampleTuiDropdownComponent {
     }
 
     onActiveZone(active: boolean) {
-        if (!active) {
-            this.open = false;
-        }
+        this.open = active && this.open;
     }
 }

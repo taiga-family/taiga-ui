@@ -18,11 +18,11 @@
             <span *ngIf="!showMinLabel" class="label">
                 <span class="value">{{inputValueLeft}}</span>
                 <span
-                    *ngIf="isPluralized(pluralize)"
+                    *ngIf="pluralizeMap"
                     class="pluralize"
                     automation-id="tui-input-range__pluralize-left"
                 >
-                    {{value[0] | tuiPluralize: pluralize}}
+                    {{value[0] | i18nPlural: pluralizeMap}}
                 </span>
             </span>
             <span
@@ -90,12 +90,12 @@
             (keydown.arrowDown)="onKeyDownArrowDownRight($event)"
         />
         <span
-            *ngIf="isPluralized(pluralize) && !showMaxLabel"
+            *ngIf="pluralizeMap && !showMaxLabel"
             class="pluralize pluralize_right"
             automation-id="tui-input-range__pluralize-right"
             (mousedown)="onMouseDown()"
         >
-            {{value[1] | tuiPluralize: pluralize}}
+            {{value[1] | i18nPlural: pluralizeMap}}
         </span>
     </div>
 </div>

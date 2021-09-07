@@ -1,6 +1,6 @@
 @import 'taiga-ui-local';
 
-@width-full: 24.5rem;
+@width-full: 472 / 16rem;
 @width-mobile: 18rem;
 @offset-full: 7.1875rem;
 @offset-small: 4.0625rem;
@@ -14,6 +14,10 @@
     height: var(--tui-height-l);
     width: @width-full;
     border-radius: var(--tui-radius-m);
+
+    &[data-mode='onDark'] {
+        --tui-autofill: var(--tui-autofill-night);
+    }
 
     @media @mobile {
         width: @width-mobile;
@@ -61,29 +65,34 @@
 }
 
 .card {
-    .center-top();
-    right: 2.75rem;
     width: 2rem;
     height: 2rem;
-
-    &_right {
-        right: 0.75rem;
-    }
+    margin-right: 0.625rem;
 }
 
 .collapsed {
     .textfield-input();
     line-height: 2.25rem;
-    transition: color 0s;
+    pointer-events: none;
 
     &:before {
-        content: '*';
+        content: attr(data-before);
     }
 
+    :-webkit-autofill ~ & {
+        background: var(--tui-autofill);
+    }
+
+    :-webkit-autofill ~ &_inactive,
     &_inactive,
     :host._disabled &_inactive {
         color: transparent;
-        transition: color 0s var(--tui-duration);
+        background: transparent;
+        transition: color 0s var(--tui-duration), background 0s var(--tui-duration);
+
+        &:before {
+            color: transparent;
+        }
     }
 }
 
@@ -118,18 +127,39 @@
         }
     }
 
+    &_inert {
+        pointer-events: none;
+    }
+
     &_hidden,
     :host._disabled &_hidden {
         color: transparent;
         transition: color 0s;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus {
+            color: transparent !important;
+            -webkit-text-fill-color: transparent !important;
+        }
     }
 }
 
-.cleaner {
-    .icon-button();
+.icons {
     position: absolute;
+    display: flex;
+    align-items: center;
+    height: 100%;
     right: 0.75rem;
-    top: 1rem;
+}
+
+.icon {
+    .transition(transform);
+    .icon-button();
+
+    &_rotated {
+        transform: rotate(180deg);
+    }
 }
 
 .placeholder {

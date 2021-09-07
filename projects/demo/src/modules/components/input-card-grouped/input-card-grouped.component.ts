@@ -1,16 +1,17 @@
-import {Component, forwardRef, Inject} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {changeDetection} from '../../../change-detection-strategy';
-import {AbstractExampleTuiControl} from '../../components/abstract/control';
-
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
+import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
+import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
+import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
+import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {Component, forwardRef, Inject} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {TuiNotificationsService} from '@taiga-ui/core';
+import {changeDetection} from '../../../change-detection-strategy';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
     selector: 'example-input-card-grouped',
@@ -24,7 +25,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
         },
     ],
 })
-export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiControl {
+export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInteractive {
     readonly exampleImportModule = exampleImportModule;
 
     readonly exampleInsertTemplate = exampleInsertTemplate;
@@ -32,6 +33,12 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiContr
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
+    };
+
+    readonly example2: FrontEndExample = {
+        TypeScript: example2Ts,
+        HTML: example2Html,
+        LESS: example2Less,
     };
 
     readonly cards = {
@@ -55,6 +62,10 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiContr
 
     codeLength = this.codeLengthVariants[0];
 
+    pseudoInvalid: boolean | null = null;
+
+    readOnly = false;
+
     control = new FormControl();
 
     constructor(
@@ -68,6 +79,18 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiContr
         return this.cardSrcSelected === null
             ? null
             : (this.cards as any)[this.cardSrcSelected];
+    }
+
+    get disabled(): boolean {
+        return this.control.disabled;
+    }
+
+    set disabled(value: boolean) {
+        if (value) {
+            this.control.disable();
+        } else {
+            this.control.enable();
+        }
     }
 
     onBinChange(bin: string) {

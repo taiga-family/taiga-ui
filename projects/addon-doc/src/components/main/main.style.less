@@ -1,5 +1,11 @@
 @import 'taiga-ui-local';
 
+@sticky-header-height: 4rem;
+
+html {
+    scroll-padding-top: @sticky-header-height;
+}
+
 @keyframes tuiShaking {
     from,
     to {
@@ -83,6 +89,10 @@ tui-doc-navigation.tui-doc-navigation {
 
 .tui-doc-animated-example {
     animation: 1s 300ms tuiShaking;
+}
+
+label.night-mode {
+    cursor: pointer;
 }
 
 // highlightjs custom theme

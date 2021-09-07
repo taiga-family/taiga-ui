@@ -23,8 +23,6 @@ export class TuiDropdownExample1 {
     }
 
     onActiveZone(active: boolean) {
-        if (!active) {
-            this.open = false;
-        }
+        this.open = active && this.open;
     }
 }

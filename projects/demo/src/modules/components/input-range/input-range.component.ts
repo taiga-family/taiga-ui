@@ -61,10 +61,13 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     size = this.sizeVariants[1];
 
-    readonly pluralizeVariants: ReadonlyArray<TuiPluralize> = [
+    readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
         ['year', 'years', 'years'],
-        ['thing', 'things', 'things'],
-        ['year', 'years', 'years'],
+        {one: 'thing', few: 'things', many: 'things', other: 'things'},
+        {
+            one: 'year',
+            other: 'years',
+        },
     ];
 
     pluralize = null;
