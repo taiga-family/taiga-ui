@@ -1,7 +1,8 @@
+import {Extension} from '@tiptap/core';
+import {StarterKitOptions} from '@tiptap/starter-kit';
+
 export const defaultWysiwygExtensions = [
-    import('@tiptap/starter-kit').then(m =>
-        m.default.configure({heading: {levels: [1, 2]}}),
-    ),
+    import('@tiptap/starter-kit').then(defaultExtractor).then(starterKitConfigurator),
     import('@tiptap/extension-text-align').then(m =>
         m.default.configure({types: ['heading', 'paragraph']}),
     ),
@@ -21,3 +22,17 @@ export const defaultWysiwygExtensions = [
     import('@tiptap/extension-table-header').then(m => m.TableHeader),
     import('./indent-outdent').then(m => m.Indent),
 ];
+
+// TODO: remove in ivy compilation
+export function defaultExtractor<T>(importedExtension: {
+    default: Extension<T>;
+}): Extension<T> {
+    return importedExtension.default;
+}
+
+// TODO: remove in ivy compilation
+export function starterKitConfigurator(
+    extension: Extension<StarterKitOptions>,
+): Extension<StarterKitOptions> {
+    return extension.configure({heading: {levels: [1, 2]}});
+}
