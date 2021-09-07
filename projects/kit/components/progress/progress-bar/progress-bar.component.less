@@ -40,22 +40,22 @@
     }
 }
 
-.progressValueColor() {
-    color: var(--tui-progress-color-old-edge); // IE | Not Chromium Edge
+.progressValueColor(@color) {
+    color: @color; // IE | Not Chromium Edge
 
     &::-webkit-progress-value {
-        background: var(--tui-progress-color); // Chromium Edge | Chrome | Opera | Safari
+        background: @color; // Chromium Edge | Chrome | Opera | Safari
     }
 
     &::-moz-progress-bar {
-        background: var(--tui-progress-color); // Mozilla
+        background: @color; // Mozilla
     }
 }
 
 :host {
     .clearProgress();
     .progressAnimation();
-    .progressValueColor();
+    .progressValueColor(var(--tui-progress-color));
     .progressContainer(background-color, var(--tui-base-03));
 
     border-radius: var(--tui-radius-xs);

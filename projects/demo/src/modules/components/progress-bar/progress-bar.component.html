@@ -57,7 +57,7 @@
                 [value]="value"
                 [max]="max"
                 [size]="size"
-                [colors]="colors"
+                [color]="color"
             ></progress>
         </tui-doc-demo>
 
@@ -111,13 +111,13 @@
 
             <ng-template
                 i18n
-                documentationPropertyName="colors"
+                documentationPropertyName="color"
                 documentationPropertyMode="input"
-                documentationPropertyType="string | string[]"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="colorVariants"
-                [(documentationPropertyValue)]="colors"
+                [(documentationPropertyValue)]="color"
             >
-                Colors of the progress indicator
+                Color of the progress indicator
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

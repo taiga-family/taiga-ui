@@ -35,18 +35,14 @@ export class ExampleProgressBarComponent {
     readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['m', 's'];
     size: TuiSizeS = this.sizeVariants[0];
 
-    readonly colorVariants: ReadonlyArray<string | string[]> = [
+    readonly colorVariants: ReadonlyArray<string> = [
         'var(--tui-primary)',
         'var(--tui-support-09)',
-        [
-            'var(--tui-support-01)',
-            'var(--tui-support-21)',
-            'lightskyblue',
-            '#3682db',
-            'var(--tui-support-22)',
-        ],
+        'lightskyblue',
+        '#3682db',
+        'rgba(74, 201, 155, 1)',
     ];
-    colors = this.colorVariants[0];
+    color = this.colorVariants[0];
 
     readonly basicExample: FrontEndExample = {
         HTML: example1Html,
