@@ -7,6 +7,7 @@ import {TuiProgressModule} from '@taiga-ui/kit';
 import {TuiProgressBarExample1} from './examples/1';
 import {TuiProgressBarExample2} from './examples/2';
 import {TuiProgressBarExample3} from './examples/3';
+import {TuiProgressBarExample4} from './examples/4';
 import {ExampleProgressBarComponent} from './progress-bar.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import {ExampleProgressBarComponent} from './progress-bar.component';
         TuiProgressBarExample1,
         TuiProgressBarExample2,
         TuiProgressBarExample3,
+        TuiProgressBarExample4,
     ],
     exports: [ExampleProgressBarComponent],
 })
