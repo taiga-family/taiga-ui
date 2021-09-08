@@ -20,16 +20,13 @@ import {
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
     formatNumber,
-    TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_SIZE,
-    TuiAppearance,
     tuiCreateNumberMask,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
@@ -93,8 +90,6 @@ export class TuiInputCountComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_APPEARANCE)
-        private readonly appearance: string,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PLUS_MINUS_TEXTS)
@@ -106,11 +101,11 @@ export class TuiInputCountComponent
         super(control, changeDetectorRef);
     }
 
-    get iconUp(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
+    get iconUp(): PolymorpheusContent<{}> {
         return this.options.icons.up;
     }
 
-    get iconDown(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
+    get iconDown(): PolymorpheusContent<{}> {
         return this.options.icons.down;
     }
 
@@ -131,7 +126,7 @@ export class TuiInputCountComponent
 
     @HostBinding('class._has-buttons')
     get hasButtons(): boolean {
-        return !this.hideButtons && this.appearance !== TuiAppearance.Table;
+        return !this.hideButtons;
     }
 
     get exampleText(): string {

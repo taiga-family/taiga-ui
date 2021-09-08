@@ -443,14 +443,8 @@ describe('InputCount with TUI_INPUT_COUNT_OPTIONS', () => {
                     useValue: {
                         ...TUI_INPUT_COUNT_DEFAULT_OPTIONS,
                         icons: {
-                            up: ({$implicit}: any) =>
-                                $implicit === 'm'
-                                    ? 'tuiIconChevronUp'
-                                    : 'tuiIconChevronUpLarge',
-                            down: ({$implicit}: any) =>
-                                $implicit === 'm'
-                                    ? 'tuiIconChevronDown'
-                                    : 'tuiIconChevronDownLarge',
+                            up: 'tuiIconChevronUp',
+                            down: 'tuiIconChevronDown',
                         },
                         step,
                         min,

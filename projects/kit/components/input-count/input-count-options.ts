@@ -1,19 +1,17 @@
 import {InjectionToken} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface InputCountOptions {
     readonly icons: Readonly<{
-        up: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
-        down: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
+        up: PolymorpheusContent<{}>;
+        down: PolymorpheusContent<{}>;
     }>;
-    appearance: string;
-    hideButtons: boolean;
-    min: number;
-    max: number;
-    step: number;
-    postfix: string;
+    readonly appearance: string;
+    readonly hideButtons: boolean;
+    readonly min: number;
+    readonly max: number;
+    readonly step: number;
+    readonly postfix: string;
 }
 
 // TODO: remove in ivy compilation

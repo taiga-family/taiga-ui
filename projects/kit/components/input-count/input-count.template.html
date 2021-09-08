@@ -25,51 +25,33 @@
 </tui-primitive-textfield>
 <ng-container *ngIf="hasButtons && (minusTexts$ | async) as texts">
     <section class="buttons">
-        <span
-            class="button-wrapper button-wrapper_plus"
-            polymorpheus-outlet
-            [content]="iconUp"
-            [context]="{ $implicit: size }"
-        >
-            <ng-template let-icon>
-                <button
-                    tuiIconButton
-                    type="button"
-                    automation-id="tui-input-count__plus-button"
-                    size="s"
-                    [icon]="icon"
-                    class="button button_plus"
-                    [appearance]="options.appearance"
-                    [title]="texts[0]"
-                    [disabled]="plusButtonDisabled"
-                    [focusable]="false"
-                    (mousedown)="onButtonMouseDown($event, plusButtonDisabled)"
-                    (click)="increaseValue()"
-                ></button>
-            </ng-template>
-        </span>
-        <span
-            class="button-wrapper"
-            polymorpheus-outlet
-            [content]="iconDown"
-            [context]="{ $implicit: size }"
-        >
-            <ng-template let-icon>
-                <button
-                    tuiIconButton
-                    type="button"
-                    automation-id="tui-input-count__minus-button"
-                    size="s"
-                    [icon]="icon"
-                    class="button button_minus"
-                    [appearance]="options.appearance"
-                    [disabled]="minusButtonDisabled"
-                    [focusable]="false"
-                    [title]="texts[1]"
-                    (mousedown)="onButtonMouseDown($event, minusButtonDisabled)"
-                    (click)="decreaseValue()"
-                ></button>
-            </ng-template>
-        </span>
+        <button
+            tuiIconButton
+            type="button"
+            automation-id="tui-input-count__plus-button"
+            size="s"
+            [icon]="iconUp"
+            class="button button_plus"
+            [appearance]="options.appearance"
+            [title]="texts[0]"
+            [disabled]="plusButtonDisabled"
+            [focusable]="false"
+            (mousedown)="onButtonMouseDown($event, plusButtonDisabled)"
+            (click)="increaseValue()"
+        ></button>
+        <button
+            tuiIconButton
+            type="button"
+            automation-id="tui-input-count__minus-button"
+            size="s"
+            [icon]="iconDown"
+            class="button button_minus"
+            [appearance]="options.appearance"
+            [disabled]="minusButtonDisabled"
+            [focusable]="false"
+            [title]="texts[1]"
+            (mousedown)="onButtonMouseDown($event, minusButtonDisabled)"
+            (click)="decreaseValue()"
+        ></button>
     </section>
 </ng-container>
