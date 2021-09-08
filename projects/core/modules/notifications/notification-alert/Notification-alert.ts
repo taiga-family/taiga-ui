@@ -9,17 +9,15 @@ import {
 } from '../notification-options';
 
 export class NotificationAlert<O, I> {
-    readonly status: TuiNotification | undefined;
+    readonly status?: TuiNotification;
 
-    readonly hasIcon: boolean | undefined;
+    readonly hasIcon?: boolean;
 
-    readonly autoClose: boolean | number | undefined;
+    readonly autoClose?: boolean | number;
 
-    readonly hasCloseButton: boolean | undefined;
+    readonly hasCloseButton?: boolean;
 
-    readonly label:
-        | PolymorpheusContent<TuiContextWithImplicit<TuiNotification>>
-        | undefined;
+    readonly label?: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>>;
 
     readonly data!: I;
 
