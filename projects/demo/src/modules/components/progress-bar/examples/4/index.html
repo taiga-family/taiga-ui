@@ -1,7 +1,4 @@
-<label
-    *ngIf="value$ | async as value"
-    class="label-wrapper"
-    [tuiProgressLabel]="value + '%'"
->
+<label *ngIf="value$ | async as value" tuiProgressLabel class="label-wrapper">
+    {{value}}%
     <progress tuiProgressBar [max]="max" [value]="value"></progress>
 </label>

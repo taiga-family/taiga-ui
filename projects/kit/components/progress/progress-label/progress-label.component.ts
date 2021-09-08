@@ -1,6 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
     selector: 'label[tuiProgressLabel]',
@@ -8,8 +6,4 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     styleUrls: ['./progress-label.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiProgressLabelComponent {
-    @Input('tuiProgressLabel')
-    @tuiDefaultProp()
-    label: PolymorpheusContent = '';
-}
+export class TuiProgressLabelComponent {}
