@@ -1,14 +1,14 @@
 import {ElementRef, Inject, Pipe, PipeTransform} from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
-import {isEdgeOlderThan, isIE} from '@taiga-ui/cdk';
+import {CHROMIUM_EDGE_START_VERSION, isEdgeOlderThan, isIE} from '@taiga-ui/cdk';
 
 @Pipe({
     name: 'tuiProgressGradient',
 })
 export class TuiProgressGradientPipe implements PipeTransform {
-    private chromiumEdgeBegins = 79;
     private readonly isOldBrowsers =
-        isEdgeOlderThan(this.chromiumEdgeBegins, this.userAgent) || isIE(this.userAgent);
+        isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent) ||
+        isIE(this.userAgent);
 
     constructor(
         @Inject(USER_AGENT) private readonly userAgent: string,
