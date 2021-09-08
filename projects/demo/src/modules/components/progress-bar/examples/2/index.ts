@@ -21,7 +21,6 @@ export class TuiProgressBarExample2 {
         '#3682db',
         'var(--tui-support-22)',
     ];
-    readonly singleColor = 'var(--tui-support-09)';
 
     constructor(@Inject(TUI_IS_CYPRESS) private readonly isCypress: boolean) {}
 }

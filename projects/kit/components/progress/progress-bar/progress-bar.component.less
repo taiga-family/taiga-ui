@@ -55,9 +55,10 @@
 :host {
     .clearProgress();
     .progressAnimation();
-    .progressValueColor(var(--tui-progress-color));
+    .progressValueColor(var(--tui-progress-color, currentColor));
     .progressContainer(background-color, var(--tui-base-03));
 
+    color: var(--tui-primary);
     border-radius: var(--tui-radius-xs);
     overflow: hidden;
 

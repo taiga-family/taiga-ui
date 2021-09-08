@@ -14,6 +14,7 @@ import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
+import {default as exampleColorCssVar} from '!!raw-loader!./examples/import/color-css-variable.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -29,20 +30,11 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleProgressBarComponent {
-    value = 60;
-    max = 100;
+    value = 6;
+    max = 10;
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['m', 's'];
     size: TuiSizeS = this.sizeVariants[0];
-
-    readonly colorVariants: ReadonlyArray<string> = [
-        'var(--tui-primary)',
-        'var(--tui-support-09)',
-        'lightskyblue',
-        '#3682db',
-        'rgba(74, 201, 155, 1)',
-    ];
-    color = this.colorVariants[0];
 
     readonly basicExample: FrontEndExample = {
         HTML: example1Html,
@@ -70,4 +62,5 @@ export class ExampleProgressBarComponent {
 
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleProgressColorCssVar = exampleColorCssVar;
 }
