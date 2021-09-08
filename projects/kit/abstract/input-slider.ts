@@ -19,6 +19,7 @@ import {
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
+import {NumberFormatSettings} from '@taiga-ui/core/interfaces/number-format-settings';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 
@@ -86,14 +87,22 @@ export abstract class AbstractTuiInputSlider<T>
         mask: tuiCreateNumberMask({
             allowNegative: min < 0,
             allowDecimal: !Number.isInteger(quantum),
+            decimalSymbol: this.numberFormatSettings.decimalSeparator,
+            thousandSymbol: this.numberFormatSettings.thousandSeparator,
         }),
-        pipe: tuiCreateAutoCorrectedNumberPipe(),
+        pipe: tuiCreateAutoCorrectedNumberPipe(
+            0,
+            this.numberFormatSettings.decimalSeparator,
+            this.numberFormatSettings.thousandSeparator,
+        ),
         guide: false,
     });
 
     pluralizeMap: Record<string, string> | null = null;
 
     protected abstract readonly modeDirective: TuiModeDirective | null;
+
+    protected abstract readonly numberFormatSettings: NumberFormatSettings;
 
     @HostBinding('class._segmented')
     get segmented(): boolean {
@@ -147,7 +156,14 @@ export abstract class AbstractTuiInputSlider<T>
     }
 
     protected capInputValue(value: string, max: number = this.max): number | null {
-        const capped = Math.min(maskedNumberStringToNumber(value), max);
+        const capped = Math.min(
+            maskedNumberStringToNumber(
+                value,
+                this.numberFormatSettings.decimalSeparator,
+                this.numberFormatSettings.thousandSeparator,
+            ),
+            max,
+        );
 
         if (this.min < 0 && capped < this.min) {
             return this.min;

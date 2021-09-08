@@ -29,6 +29,8 @@ import {
     TuiHintControllerDirective,
     TuiModeDirective,
 } from '@taiga-ui/core';
+import {NumberFormatSettings} from '@taiga-ui/core/interfaces/number-format-settings';
+import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens/number-format';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
 
 // @dynamic
@@ -66,6 +68,8 @@ export class TuiInputSliderComponent
         protected readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
+        @Inject(TUI_NUMBER_FORMAT)
+        protected readonly numberFormatSettings: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
     }
@@ -150,7 +154,11 @@ export class TuiInputSliderComponent
             return;
         }
 
-        const inputValue = maskedNumberStringToNumber(this.computedValue);
+        const inputValue = maskedNumberStringToNumber(
+            this.computedValue,
+            this.numberFormatSettings.decimalSeparator,
+            this.numberFormatSettings.thousandSeparator,
+        );
         const value = isNaN(inputValue) ? this.min : this.valueGuard(inputValue);
 
         this.updateValue(value);
@@ -184,7 +192,12 @@ export class TuiInputSliderComponent
     }
 
     private get formattedValue(): string {
-        return formatNumber(this.value);
+        return formatNumber(
+            this.value,
+            null,
+            this.numberFormatSettings.decimalSeparator,
+            this.numberFormatSettings.thousandSeparator,
+        );
     }
 
     private get isInputValueNotFinished(): boolean {
@@ -192,7 +205,11 @@ export class TuiInputSliderComponent
             return true;
         }
 
-        const nativeNumberValue = maskedNumberStringToNumber(this.inputValue);
+        const nativeNumberValue = maskedNumberStringToNumber(
+            this.inputValue,
+            this.numberFormatSettings.decimalSeparator,
+            this.numberFormatSettings.thousandSeparator,
+        );
 
         return nativeNumberValue < 0
             ? nativeNumberValue > this.max
