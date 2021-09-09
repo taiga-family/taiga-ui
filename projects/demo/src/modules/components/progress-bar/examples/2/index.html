@@ -1,7 +1,7 @@
 <h6 i18n class="description">Single color</h6>
 <p>
     Use <code>&lt;progress /&gt;</code>'s CSS-property <code>color</code> to set
-    fill color of progress indicator.
+    solid color of progress indicator.
 </p>
 
 <progress
@@ -21,8 +21,8 @@
     tuiProgressBar
     class="progress"
     max="100"
+    color="linear-gradient(to right, var(--tui-support-02), var(--tui-support-14), var(--tui-support-12))"
     [value]="fastValue$ | async"
-    [color]="gradient"
 ></progress>
 
 <h6 i18n class="description">Multicolor segments</h6>

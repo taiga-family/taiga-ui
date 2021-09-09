@@ -6,13 +6,11 @@ import {TuiSizeS} from '@taiga-ui/core';
     selector: 'progress[tuiProgressBar]',
     template: '',
     styleUrls: ['./progress-bar.component.less'],
-    host: {
-        '[style.--tui-progress-color]': 'color',
-    },
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressBarComponent {
     @Input()
+    @HostBinding('style.--tui-progress-color')
     color?: string;
 
     @Input()

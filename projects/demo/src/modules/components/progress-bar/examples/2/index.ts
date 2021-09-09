@@ -21,8 +21,6 @@ export class TuiProgressBarExample2 {
         '#3682db',
         'var(--tui-support-22)',
     ];
-    readonly gradient =
-        'linear-gradient(to right, var(--tui-support-02), var(--tui-support-14), var(--tui-support-12))';
 
     constructor(@Inject(TUI_IS_CYPRESS) private readonly isCypress: boolean) {}
 }
