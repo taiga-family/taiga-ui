@@ -152,13 +152,11 @@ export class TuiWysiwygToolbarComponent {
     }
 
     get firstButton(): TuiNativeFocusableElement | null {
-        const first = this.buttons.find(
-            ({nativeFocusableElement}) => !!nativeFocusableElement,
-        );
+        const first =
+            this.buttons.find(({nativeFocusableElement}) => !!nativeFocusableElement) ||
+            null;
 
-        return first && first.nativeFocusableElement
-            ? first.nativeFocusableElement
-            : null;
+        return first && first.nativeFocusableElement;
     }
 
     get lastButton(): TuiNativeFocusableElement | null {
@@ -349,15 +347,17 @@ export class TuiWysiwygToolbarComponent {
     onImage(input: HTMLInputElement) {
         const file = input.files && input.files[0];
 
-        if (file) {
-            this.imageLoader(file)
-                .pipe(take(1))
-                .subscribe(image => {
-                    this.addImage(image);
-                });
+        input.value = '';
+
+        if (!file) {
+            return;
         }
 
-        input.value = '';
+        this.imageLoader(file)
+            .pipe(take(1))
+            .subscribe(image => {
+                this.addImage(image);
+            });
     }
 
     onAttach() {

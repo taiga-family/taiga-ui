@@ -37,7 +37,7 @@ import {Observable} from 'rxjs';
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
 // @dynamic
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class TuiTiptapEditorService extends TuiEditor {
     get isFocused(): boolean {
         return this.editor.isFocused;
@@ -77,11 +77,11 @@ export class TuiTiptapEditorService extends TuiEditor {
     }
 
     undoDisabled(): boolean {
-        return undoDepth(this.editor.state) === 0;
+        return !undoDepth(this.editor.state);
     }
 
     redoDisabled(): boolean {
-        return redoDepth(this.editor.state) === 0;
+        return !redoDepth(this.editor.state);
     }
 
     getFontColor(): string {
@@ -130,6 +130,7 @@ export class TuiTiptapEditorService extends TuiEditor {
     toggleUnderline() {
         this.editor.chain().focus().toggleUnderline().run();
     }
+
     toggleStrike() {
         this.editor.chain().focus().toggleStrike().run();
     }

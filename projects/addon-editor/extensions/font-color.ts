@@ -34,20 +34,17 @@ export const FontColor = Extension.create<FontColorOptions>({
                 attributes: {
                     fontColor: {
                         default: null,
-                        renderHTML: attributes => {
-                            if (!attributes.fontColor) {
-                                return {};
-                            }
+                        renderHTML: ({fontColor}) => {
+                            return fontColor
+                                ? {
+                                      style: `color: ${fontColor}`,
+                                  }
+                                : {};
+                        },
+                        parseHTML: ({style}) => ({
+                            fontColor: style.color.replace(/['"]+/g, ''),
+                        }),
 
-                            return {
-                                style: `color: ${attributes.fontColor}`,
-                            };
-                        },
-                        parseHTML: element => {
-                            return {
-                                fontColor: element.style.color.replace(/['"]+/g, ''),
-                            };
-                        },
                         keepOnSplit: false,
                     },
                 },
@@ -56,16 +53,18 @@ export const FontColor = Extension.create<FontColorOptions>({
     },
 
     addCommands(): {
-        setFontColor?: ((fontColor: string) => Command) | undefined;
-        unsetFontColor?: (() => Command) | undefined;
+        setFontColor?: (fontColor: string) => Command;
+        unsetFontColor?: () => Command;
     } {
         return {
-            setFontColor: fontColor => ({chain}) => {
-                return chain().setMark('textStyle', {fontColor}).run();
-            },
-            unsetFontColor: () => ({chain}) => {
-                return chain().setMark('textStyle', {fontColor: null}).run();
-            },
+            setFontColor:
+                fontColor =>
+                ({chain}) =>
+                    chain().setMark('textStyle', {fontColor}).run(),
+            unsetFontColor:
+                () =>
+                ({chain}) =>
+                    chain().setMark('textStyle', {fontColor: null}).run(),
         };
     },
 });

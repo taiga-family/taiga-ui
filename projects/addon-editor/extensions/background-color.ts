@@ -34,23 +34,16 @@ export const BackgroundColor = Extension.create<BackgroundColorOptions>({
                 attributes: {
                     backgroundColor: {
                         default: null,
-                        renderHTML: attributes => {
-                            if (!attributes.backgroundColor) {
-                                return {};
-                            }
-
-                            return {
-                                style: `background-color: ${attributes.backgroundColor}`,
-                            };
+                        renderHTML: ({backgroundColor}) => {
+                            return backgroundColor
+                                ? {
+                                      style: `background-color: ${backgroundColor}`,
+                                  }
+                                : {};
                         },
-                        parseHTML: element => {
-                            return {
-                                backgroundColor: element.style.backgroundColor.replace(
-                                    /['"]+/g,
-                                    '',
-                                ),
-                            };
-                        },
+                        parseHTML: ({style}) => ({
+                            backgroundColor: style.backgroundColor.replace(/['"]+/g, ''),
+                        }),
                         keepOnSplit: false,
                     },
                 },
@@ -59,20 +52,18 @@ export const BackgroundColor = Extension.create<BackgroundColorOptions>({
     },
 
     addCommands(): {
-        setBackgroundColor?: ((backgroundColor: string) => Command) | undefined;
-        unsetBackgroundColor?: (() => Command) | undefined;
+        setBackgroundColor?: (backgroundColor: string) => Command;
+        unsetBackgroundColor?: () => Command;
     } {
         return {
             setBackgroundColor:
                 backgroundColor =>
-                ({chain}) => {
-                    return chain().setMark('textStyle', {backgroundColor}).run();
-                },
+                ({chain}) =>
+                    chain().setMark('textStyle', {backgroundColor}).run(),
             unsetBackgroundColor:
                 () =>
-                ({chain}) => {
-                    return chain().setMark('textStyle', {backgroundColor: null}).run();
-                },
+                ({chain}) =>
+                    chain().setMark('textStyle', {backgroundColor: null}).run(),
         };
     },
 });

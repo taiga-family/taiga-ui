@@ -32,16 +32,16 @@ export enum IndentProps {
     less = -30,
 }
 
-export function isBulletListNode(node: Node): boolean {
-    return node.type.name === 'bullet_list';
+export function isBulletListNode({type}: Node): boolean {
+    return type.name === 'bullet_list';
 }
 
-export function isOrderedListNode(node: Node): boolean {
-    return node.type.name === 'order_list';
+export function isOrderedListNode({type}: Node): boolean {
+    return type.name === 'order_list';
 }
 
-export function isTodoListNode(node: Node): boolean {
-    return node.type.name === 'todo_list';
+export function isTodoListNode({type}: Node): boolean {
+    return type.name === 'todo_list';
 }
 
 export function isListNode(node: Node): boolean {
@@ -90,19 +90,15 @@ function updateIndentLevel(tr: Transaction, delta: number): Transaction {
     const {from, to} = selection;
 
     doc.nodesBetween(from, to, (node, pos) => {
-        const nodeType = node.type;
+        const {name} = node.type;
 
-        if (nodeType.name === 'paragraph' || nodeType.name === 'heading') {
+        if (name === 'paragraph' || name === 'heading') {
             tr = setNodeIndentMarkup(tr, pos, delta);
 
             return false;
         }
 
-        if (isListNode(node)) {
-            return false;
-        }
-
-        return true;
+        return !isListNode(node);
     });
 
     return tr;
@@ -124,16 +120,16 @@ export const Indent = Extension.create<IndentOptions>({
                 attributes: {
                     indent: {
                         default: this.options.defaultIndentLevel,
-                        renderHTML: attributes => {
-                            return attributes.indent
+                        renderHTML: ({indent}) => {
+                            return indent
                                 ? {
-                                      style: `margin-left: ${attributes.indent}px;`,
+                                      style: `margin-left: ${indent}px;`,
                                   }
                                 : {};
                         },
-                        parseHTML: element => ({
+                        parseHTML: ({style}) => ({
                             indent:
-                                parseInt(element.style.marginLeft, 10) ||
+                                parseInt(style.marginLeft, 10) ||
                                 this.options.defaultIndentLevel,
                         }),
                         keepOnSplit: false,

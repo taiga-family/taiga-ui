@@ -46,20 +46,20 @@ import {TUI_WYSIWYG_PROVIDERS} from './wysiwyg.providers';
 export class TuiWysiwygComponent extends AbstractTuiControl<string> implements OnDestroy {
     @Input()
     @tuiDefaultProp()
-    exampleText = '';
-
-    @ViewChild('editorRef', {read: TuiTiptapEditorDirective})
-    editorRef!: TuiTiptapEditorDirective;
-
-    @ViewChild(TuiWysiwygToolbarComponent)
-    toolbar?: TuiWysiwygToolbarComponent;
-
-    @ViewChild(TuiEditLinkComponent, {read: ElementRef})
-    private readonly editLink?: ElementRef<HTMLElement>;
+    readonly exampleText = '';
 
     @Input()
     @tuiDefaultProp()
-    tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
+    readonly tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
+
+    @ViewChild(TuiTiptapEditorDirective)
+    readonly editorRef!: TuiTiptapEditorDirective;
+
+    @ViewChild(TuiWysiwygToolbarComponent)
+    readonly toolbar?: TuiWysiwygToolbarComponent;
+
+    @ViewChild(TuiEditLinkComponent, {read: ElementRef})
+    private readonly editLink?: ElementRef<HTMLElement>;
 
     private readonly isSelectionLink = () => !!this.editor?.isActive('link');
 

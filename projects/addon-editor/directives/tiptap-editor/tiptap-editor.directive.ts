@@ -7,7 +7,7 @@ import {TuiTiptapEditorService} from './tiptap-editor.service';
 
 @Directive({
     selector: '[tuiTiptapEditor]',
-    providers: [TIPTAP_EDITOR_PROVIDERS, TuiTiptapEditorService],
+    providers: [TIPTAP_EDITOR_PROVIDERS],
 })
 export class TuiTiptapEditorDirective {
     @Input()
