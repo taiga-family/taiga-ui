@@ -19,7 +19,7 @@
         --tui-autofill: var(--tui-autofill-night);
     }
 
-    @media @mobile {
+    @media @mobile-m {
         width: @width-mobile;
     }
 }
@@ -46,7 +46,7 @@
         margin-left: @offset-full;
         transform: translate3d(100%, 0, 0);
 
-        @media @mobile {
+        @media @mobile-m {
             margin-left: @offset-small;
         }
     }
@@ -58,7 +58,7 @@
     &_active {
         transform: translate3d(@wrapper-offset-full, 0, 0);
 
-        @media @mobile {
+        @media @mobile-m {
             transform: translate3d(@wrapper-offset-small, 0, 0);
         }
     }
