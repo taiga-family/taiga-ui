@@ -1,6 +1,0 @@
-<progress
-    tuiProgressBar
-    max="100"
-    value="60"
-    [style.--tui-progress-color]="['#fcbb14', '#3682db'] | tuiProgressGradient"
-></progress>

@@ -3,9 +3,9 @@ import {USER_AGENT} from '@ng-web-apis/common';
 import {CHROMIUM_EDGE_START_VERSION, isEdgeOlderThan, isIE} from '@taiga-ui/cdk';
 
 @Pipe({
-    name: 'tuiProgressGradient',
+    name: 'tuiProgressColorSegments',
 })
-export class TuiProgressGradientPipe implements PipeTransform {
+export class TuiProgressColorSegmentsPipe implements PipeTransform {
     private readonly isOldBrowsers =
         isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent) ||
         isIE(this.userAgent);

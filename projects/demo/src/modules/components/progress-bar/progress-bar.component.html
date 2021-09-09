@@ -61,11 +61,12 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <progress
-                class="api-progress"
                 tuiProgressBar
+                class="api-progress"
                 [value]="value"
                 [max]="max"
                 [size]="size"
+                [color]="color"
             ></progress>
         </tui-doc-demo>
 
@@ -116,20 +117,24 @@
             >
                 Size of the progress element
             </ng-template>
-        </tui-doc-documentation>
 
-        <tui-notification i18n class="tui-space_vertical-4">
-            Set CSS-variable <code>--tui-progress-color</code> to get more
-            complex color combinations.<br />
-            For example, set it using our <code>tuiProgressGradient</code> pipe,
-            to get multicolor segments.
-            <p>
-                <tui-doc-code
-                    filename="myComponent.template.html"
-                    [code]="exampleProgressColorCssVar"
-                ></tui-doc-code>
-            </p>
-        </tui-notification>
+            <ng-template
+                i18n
+                documentationPropertyName="color"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="colorVariants"
+                [(documentationPropertyValue)]="color"
+            >
+                Color of the progress indicator
+                <p>
+                    We recommend set one-color option via
+                    <code>&lt;progress /&gt;</code>'s CSS-property
+                    <code>color</code>
+                    (especially, if you support old not-chromium based Edge)
+                </p>
+            </ng-template>
+        </tui-doc-documentation>
     </ng-template>
 
     <ng-template pageTab>
