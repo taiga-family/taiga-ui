@@ -16,6 +16,7 @@ const NON_ZERO_DIGIT = /[1-9]/;
 export function tuiCreateNumberMask({
     allowDecimal = false,
     decimalSymbol = ',',
+    thousandSymbol = CHAR_NO_BREAK_SPACE,
     autoCorrectDecimalSymbol = true,
     decimalLimit = 2,
     requireDecimal = false,
@@ -29,13 +30,11 @@ export function tuiCreateNumberMask({
 
     return (rawValue, {previousConformedValue}) => {
         if (previousConformedValue && requireDecimal) {
-            const conformedWithoutSeparator = rawValue
-                .split(CHAR_NO_BREAK_SPACE)
-                .join('');
+            const conformedWithoutSeparator = rawValue.split(thousandSymbol).join('');
             const previousConformedValueWithoutDecimalSymbolAndSeparator = previousConformedValue
-                .split(CHAR_NO_BREAK_SPACE)
+                .split(thousandSymbol)
                 .join('')
-                .split(',')
+                .split(decimalSymbol)
                 .join('');
 
             // Forbid removal of decimal separator if decimal part is required
@@ -68,15 +67,14 @@ export function tuiCreateNumberMask({
         );
         const hasDecimal = decimalIndex !== -1;
         const integer = hasDecimal ? rawValue.slice(0, decimalIndex) : rawValue;
-        const thousandSeparators =
-            integer.match(new RegExp(CHAR_NO_BREAK_SPACE, 'g')) || [];
+        const thousandSeparators = integer.match(new RegExp(thousandSymbol, 'g')) || [];
         const integerCapped = integerLimit
             ? integer.slice(0, integerLimit + thousandSeparators.length)
             : integer;
         const integerCappedClean = integerCapped
             .replace(TUI_NON_DIGITS_REGEXP, '')
             .replace(/^0+(?!\.|$)/, '0');
-        const withSeparator = addThousandsSeparator(integerCappedClean);
+        const withSeparator = addThousandsSeparator(integerCappedClean, thousandSymbol);
         const mask = convertToMask(withSeparator);
 
         if ((hasDecimal && allowDecimal) || requireDecimal) {
@@ -155,8 +153,8 @@ function convertToMask(strNumber: string): Array<string | RegExp> {
         .map(char => (TUI_DIGIT_REGEXP.test(char) ? TUI_DIGIT_REGEXP : char));
 }
 
-function addThousandsSeparator(strNumber: string): string {
+function addThousandsSeparator(strNumber: string, thousandSymbol: string): string {
     return strNumber.length > 3
-        ? strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, CHAR_NO_BREAK_SPACE)
+        ? strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, thousandSymbol)
         : strNumber;
 }

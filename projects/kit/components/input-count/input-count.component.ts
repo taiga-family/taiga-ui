@@ -13,7 +13,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    CHAR_NO_BREAK_SPACE,
     clamp,
     isNativeFocused,
     isPresent,
@@ -26,6 +25,9 @@ import {
 } from '@taiga-ui/cdk';
 import {
     formatNumber,
+    NumberFormatSettings,
+    TUI_NUMBER_FORMAT,
+    TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_SIZE,
     tuiCreateNumberMask,
     TuiPrimitiveTextfieldComponent,
@@ -79,7 +81,14 @@ export class TuiInputCountComponent
 
     @tuiPure
     getMask(allowNegative: boolean): TuiTextMaskOptions {
-        return {mask: tuiCreateNumberMask({allowNegative}), guide: false};
+        return {
+            mask: tuiCreateNumberMask({
+                allowNegative,
+                decimalSymbol: this.numberFormat.decimalSeparator,
+                thousandSymbol: this.numberFormat.thousandSeparator,
+            }),
+            guide: false,
+        };
     }
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
@@ -98,6 +107,8 @@ export class TuiInputCountComponent
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_INPUT_COUNT_OPTIONS)
         public readonly options: InputCountOptions,
+        @Inject(TUI_NUMBER_FORMAT)
+        private readonly numberFormat: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
     }
@@ -130,7 +141,7 @@ export class TuiInputCountComponent
     }
 
     get computedValue(): string {
-        return formatNumber(this.value);
+        return this.formatNumber(this.value);
     }
 
     get minusButtonDisabled(): boolean {
@@ -181,7 +192,7 @@ export class TuiInputCountComponent
             return;
         }
 
-        const newValue = formatNumber(capped);
+        const newValue = this.formatNumber(capped);
 
         if (this.nativeValue !== newValue) {
             this.nativeValue = newValue;
@@ -232,7 +243,10 @@ export class TuiInputCountComponent
     }
 
     private get nativeNumberValue(): number {
-        return parseInt(this.nativeValue.split(CHAR_NO_BREAK_SPACE).join(''), 10);
+        return parseInt(
+            this.nativeValue.split(this.numberFormat.thousandSeparator).join(''),
+            10,
+        );
     }
 
     private get nativeValue(): string {
@@ -251,7 +265,7 @@ export class TuiInputCountComponent
         const value = clamp(newValue, this.min, this.max);
 
         this.updateValue(value);
-        this.nativeValue = formatNumber(value);
+        this.nativeValue = this.formatNumber(value);
     }
 
     private capValue(value: number): number | null {
@@ -262,7 +276,7 @@ export class TuiInputCountComponent
 
     private onBlur() {
         const value = Math.max(this.nativeNumberValue || 0, this.min);
-        const formattedValue = formatNumber(value);
+        const formattedValue = this.formatNumber(value);
 
         this.nativeValue = formattedValue;
         this.updateValue(value);
@@ -270,5 +284,14 @@ export class TuiInputCountComponent
         if (this.primitiveTextfield) {
             this.primitiveTextfield.value = formattedValue;
         }
+    }
+
+    private formatNumber(value: number): string {
+        return formatNumber(
+            value,
+            null,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
     }
 }

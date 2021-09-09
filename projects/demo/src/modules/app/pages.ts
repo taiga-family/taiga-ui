@@ -624,6 +624,19 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: 'Progress',
+        subPages: [
+            {
+                section: $localize`Components`,
+                title: 'ProgressBar',
+                keywords:
+                    'progress, bar, progress-bar, индикатор, загрузка, прогресс, бар',
+                route: '/components/progress-bar',
+            },
+        ],
+    },
+    {
+        section: $localize`Components`,
         title: 'Radio',
         subPages: [
             {
