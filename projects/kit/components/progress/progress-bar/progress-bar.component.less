@@ -73,3 +73,8 @@
         height: 0.5rem;
     }
 }
+
+:host-context(label[tuiProgressLabel]):not(:first-child) {
+    .fullsize();
+    .progressContainer(background-color, transparent);
+}

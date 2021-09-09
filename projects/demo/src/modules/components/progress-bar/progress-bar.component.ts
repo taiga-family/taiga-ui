@@ -14,6 +14,10 @@ import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
+import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
+import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
+import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
+
 import {default as exampleColorCssVar} from '!!raw-loader!./examples/import/color-css-variable.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -58,6 +62,12 @@ export class ExampleProgressBarComponent {
         HTML: example4Html,
         TypeScript: example4Ts,
         LESS: example4Less,
+    };
+
+    readonly stackedExample: FrontEndExample = {
+        HTML: example5Html,
+        TypeScript: example5Ts,
+        LESS: example5Less,
     };
 
     readonly exampleImportModule = exampleImportModule;
