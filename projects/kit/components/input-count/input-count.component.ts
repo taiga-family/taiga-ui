@@ -69,6 +69,7 @@ export class TuiInputCountComponent
     max = this.options.max;
 
     @Input()
+    @HostBinding('class._hide-buttons')
     @tuiDefaultProp()
     hideButtons = this.options.hideButtons;
 
@@ -122,11 +123,6 @@ export class TuiInputCountComponent
 
     get focused(): boolean {
         return isNativeFocused(this.nativeFocusableElement);
-    }
-
-    @HostBinding('class._has-buttons')
-    get hasButtons(): boolean {
-        return !this.hideButtons;
     }
 
     get exampleText(): string {

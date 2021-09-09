@@ -18,7 +18,7 @@ export interface InputCountOptions {
 export const PASSWORD_ICON_UP = 'tuiIconPlus';
 export const PASSWORD_ICON_DOWN = 'tuiIconMinus';
 
-/** Default values for the input password options. */
+/** Default values for the input count options. */
 export const TUI_INPUT_COUNT_DEFAULT_OPTIONS: InputCountOptions = {
     icons: {
         up: PASSWORD_ICON_UP,
