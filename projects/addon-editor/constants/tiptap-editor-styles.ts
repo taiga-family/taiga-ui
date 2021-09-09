@@ -1,7 +1,7 @@
 export const tiptapEditorStyles = `
 @import 'https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap';
 
-body.tui-editor-socket {
+.tui-editor-socket {
     margin: 0;
     overflow: hidden;
     padding: 0 16px;
@@ -120,7 +120,18 @@ body.tui-editor-socket {
     overflow: hidden;
 }
 
-.tui-editor-socket table td, th {
+.tui-editor-socket table td {
+    min-width: 1em;
+    height: 2rem;
+    border: 2px solid #ced4da;
+    padding: 3px 5px;
+    vertical-align: top;
+    box-sizing: border-box;
+    position: relative;
+    word-break: break-word;
+}
+
+.tui-editor-socket table th {
     min-width: 1em;
     height: 2rem;
     border: 2px solid #ced4da;

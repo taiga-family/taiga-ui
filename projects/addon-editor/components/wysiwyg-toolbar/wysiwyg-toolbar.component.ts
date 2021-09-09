@@ -337,11 +337,9 @@ export class TuiWysiwygToolbarComponent {
     onHeading(item: TuiEditorFontOption) {
         if (item.headingLevel) {
             this.editor.setHeading(item.headingLevel);
-
-            return;
+        } else {
+            this.editor.setParagraph();
         }
-
-        this.editor.setParagraph();
     }
 
     onAlign(align: string) {

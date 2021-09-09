@@ -18,11 +18,12 @@ export function editorFactory(
     extensions: Observable<(Extension | Mark | Node)[]>,
 ): Observable<Editor> {
     return extensions.pipe(
-        map(extensions => {
-            return new Editor({
-                element: nativeElement,
-                extensions: extensions,
-            });
-        }),
+        map(
+            extensions =>
+                new Editor({
+                    element: nativeElement,
+                    extensions,
+                }),
+        ),
     );
 }

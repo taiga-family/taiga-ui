@@ -73,7 +73,7 @@ export class TuiWysiwygComponent extends AbstractTuiControl<string> implements O
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(WYSIWYG_LAZY_EXTENSIONS) public extensionsLoaded$: Observable<unknown>,
+        @Inject(WYSIWYG_LAZY_EXTENSIONS) readonly extensionsLoaded$: Observable<unknown>,
     ) {
         super(control, changeDetectorRef);
     }
