@@ -6,6 +6,6 @@ import {TuiDecimalSymbol} from '@taiga-ui/core/types';
  * thousandSeparator - example: 360 000 (' ' by default)
  */
 export interface NumberFormatSettings {
-    decimalSeparator: TuiDecimalSymbol;
-    thousandSeparator: string;
+    readonly decimalSeparator: TuiDecimalSymbol;
+    readonly thousandSeparator: string;
 }

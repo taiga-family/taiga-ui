@@ -23,10 +23,10 @@ import {
     formatNumber,
     maskedMoneyValueIsEmpty,
     maskedNumberStringToNumber,
+    NumberFormatSettings,
+    TUI_NUMBER_FORMAT,
     TuiModeDirective,
 } from '@taiga-ui/core';
-import {NumberFormatSettings} from '@taiga-ui/core/interfaces/number-format-settings';
-import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens/number-format';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
 
 // @dynamic
@@ -63,7 +63,7 @@ export class TuiInputRangeComponent
         @Inject(TUI_IS_MOBILE)
         private readonly isMobile: boolean,
         @Inject(TUI_NUMBER_FORMAT)
-        protected readonly numberFormatSettings: NumberFormatSettings,
+        protected readonly numberFormat: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
     }
@@ -225,8 +225,8 @@ export class TuiInputRangeComponent
 
         const inputValue = maskedNumberStringToNumber(
             this.computedValueLeft,
-            this.numberFormatSettings.decimalSeparator,
-            this.numberFormatSettings.thousandSeparator,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
         );
         const value = isNaN(inputValue) ? this.min : this.valueGuard(inputValue);
 
@@ -244,8 +244,8 @@ export class TuiInputRangeComponent
 
         const inputValue = maskedNumberStringToNumber(
             this.computedValueRight,
-            this.numberFormatSettings.decimalSeparator,
-            this.numberFormatSettings.thousandSeparator,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
         );
 
         const value = isNaN(inputValue)
@@ -267,8 +267,8 @@ export class TuiInputRangeComponent
         return formatNumber(
             value,
             null,
-            this.numberFormatSettings.decimalSeparator,
-            this.numberFormatSettings.thousandSeparator,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
         );
     }
 

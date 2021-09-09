@@ -25,6 +25,8 @@ import {
 } from '@taiga-ui/cdk';
 import {
     formatNumber,
+    NumberFormatSettings,
+    TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_SIZE,
     TuiAppearance,
@@ -36,8 +38,6 @@ import {
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {NumberFormatSettings} from '@taiga-ui/core/interfaces/number-format-settings';
-import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens/number-format';
 import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 
@@ -82,8 +82,8 @@ export class TuiInputCountComponent
         return {
             mask: tuiCreateNumberMask({
                 allowNegative,
-                decimalSymbol: this.numberFormatSettings.decimalSeparator,
-                thousandSymbol: this.numberFormatSettings.thousandSeparator,
+                decimalSymbol: this.numberFormat.decimalSeparator,
+                thousandSymbol: this.numberFormat.thousandSeparator,
             }),
             guide: false,
         };
@@ -106,7 +106,7 @@ export class TuiInputCountComponent
         readonly minusTexts$: Observable<[string, string]>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_NUMBER_FORMAT)
-        protected readonly numberFormatSettings: NumberFormatSettings,
+        private readonly numberFormat: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
     }
@@ -239,7 +239,7 @@ export class TuiInputCountComponent
 
     private get nativeNumberValue(): number {
         return parseInt(
-            this.nativeValue.split(this.numberFormatSettings.thousandSeparator).join(''),
+            this.nativeValue.split(this.numberFormat.thousandSeparator).join(''),
             10,
         );
     }
@@ -285,8 +285,8 @@ export class TuiInputCountComponent
         return formatNumber(
             value,
             null,
-            this.numberFormatSettings.decimalSeparator,
-            this.numberFormatSettings.thousandSeparator,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
         );
     }
 }

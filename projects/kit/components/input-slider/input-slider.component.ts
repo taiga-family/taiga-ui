@@ -25,12 +25,12 @@ import {
     HINT_CONTROLLER_PROVIDER,
     maskedMoneyValueIsEmpty,
     maskedNumberStringToNumber,
+    NumberFormatSettings,
     TUI_HINT_WATCHED_CONTROLLER,
+    TUI_NUMBER_FORMAT,
     TuiHintControllerDirective,
     TuiModeDirective,
 } from '@taiga-ui/core';
-import {NumberFormatSettings} from '@taiga-ui/core/interfaces/number-format-settings';
-import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens/number-format';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
 
 // @dynamic
@@ -69,7 +69,7 @@ export class TuiInputSliderComponent
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_NUMBER_FORMAT)
-        protected readonly numberFormatSettings: NumberFormatSettings,
+        protected readonly numberFormat: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
     }
@@ -156,8 +156,8 @@ export class TuiInputSliderComponent
 
         const inputValue = maskedNumberStringToNumber(
             this.computedValue,
-            this.numberFormatSettings.decimalSeparator,
-            this.numberFormatSettings.thousandSeparator,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
         );
         const value = isNaN(inputValue) ? this.min : this.valueGuard(inputValue);
 
@@ -173,7 +173,7 @@ export class TuiInputSliderComponent
             return;
         }
 
-        const newValue = formatNumber(capped) + postfix;
+        const newValue = this.formatNumber(capped) + postfix;
 
         if (value !== newValue) {
             this.inputValue = newValue;
@@ -192,12 +192,7 @@ export class TuiInputSliderComponent
     }
 
     private get formattedValue(): string {
-        return formatNumber(
-            this.value,
-            null,
-            this.numberFormatSettings.decimalSeparator,
-            this.numberFormatSettings.thousandSeparator,
-        );
+        return this.formatNumber(this.value);
     }
 
     private get isInputValueNotFinished(): boolean {
@@ -207,8 +202,8 @@ export class TuiInputSliderComponent
 
         const nativeNumberValue = maskedNumberStringToNumber(
             this.inputValue,
-            this.numberFormatSettings.decimalSeparator,
-            this.numberFormatSettings.thousandSeparator,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
         );
 
         return nativeNumberValue < 0
@@ -224,5 +219,14 @@ export class TuiInputSliderComponent
         if (value !== this.value) {
             this.updateValue(value);
         }
+    }
+
+    private formatNumber(value: number): string {
+        return formatNumber(
+            value,
+            null,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
     }
 }

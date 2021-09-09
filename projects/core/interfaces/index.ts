@@ -5,5 +5,6 @@ export * from './dialog-context';
 export * from './dialog-options';
 export * from './dropdown-directive';
 export * from './icon-error';
+export * from './number-format-settings';
 export * from './value-content-context';
 export * from './with-optional-min-max';

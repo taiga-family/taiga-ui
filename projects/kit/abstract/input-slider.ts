@@ -9,6 +9,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     maskedNumberStringToNumber,
+    NumberFormatSettings,
     TuiBrightness,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
@@ -19,7 +20,6 @@ import {
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {NumberFormatSettings} from '@taiga-ui/core/interfaces/number-format-settings';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 
@@ -87,13 +87,13 @@ export abstract class AbstractTuiInputSlider<T>
         mask: tuiCreateNumberMask({
             allowNegative: min < 0,
             allowDecimal: !Number.isInteger(quantum),
-            decimalSymbol: this.numberFormatSettings.decimalSeparator,
-            thousandSymbol: this.numberFormatSettings.thousandSeparator,
+            decimalSymbol: this.numberFormat.decimalSeparator,
+            thousandSymbol: this.numberFormat.thousandSeparator,
         }),
         pipe: tuiCreateAutoCorrectedNumberPipe(
             0,
-            this.numberFormatSettings.decimalSeparator,
-            this.numberFormatSettings.thousandSeparator,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
         ),
         guide: false,
     });
@@ -102,7 +102,7 @@ export abstract class AbstractTuiInputSlider<T>
 
     protected abstract readonly modeDirective: TuiModeDirective | null;
 
-    protected abstract readonly numberFormatSettings: NumberFormatSettings;
+    protected abstract readonly numberFormat: NumberFormatSettings;
 
     @HostBinding('class._segmented')
     get segmented(): boolean {
@@ -159,8 +159,8 @@ export abstract class AbstractTuiInputSlider<T>
         const capped = Math.min(
             maskedNumberStringToNumber(
                 value,
-                this.numberFormatSettings.decimalSeparator,
-                this.numberFormatSettings.thousandSeparator,
+                this.numberFormat.decimalSeparator,
+                this.numberFormat.thousandSeparator,
             ),
             max,
         );

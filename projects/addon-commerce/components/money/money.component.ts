@@ -8,9 +8,12 @@ import {
 import {TuiCurrency} from '@taiga-ui/addon-commerce/enums';
 import {TuiCurrencyVariants, TuiMoneySignT} from '@taiga-ui/addon-commerce/types';
 import {CHAR_EN_DASH, tuiDefaultProp} from '@taiga-ui/cdk';
-import {formatNumber, TuiDecimalT} from '@taiga-ui/core';
-import {NumberFormatSettings} from '@taiga-ui/core/interfaces/number-format-settings';
-import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens/number-format';
+import {
+    formatNumber,
+    NumberFormatSettings,
+    TUI_NUMBER_FORMAT,
+    TuiDecimalT,
+} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-money',
@@ -51,8 +54,8 @@ export class TuiMoneyComponent {
         return formatNumber(
             Math.floor(Math.abs(this.value)),
             null,
-            this.numberFormatSettings.decimalSeparator,
-            this.numberFormatSettings.thousandSeparator,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
         );
     }
 
@@ -63,7 +66,7 @@ export class TuiMoneyComponent {
         return decimal === 'never' ||
             (parseInt(fraction, 10) === 0 && decimal !== 'always')
             ? ''
-            : this.numberFormatSettings.decimalSeparator + fraction;
+            : this.numberFormat.decimalSeparator + fraction;
     }
 
     get signSymbol(): '' | typeof CHAR_EN_DASH | '+' {
@@ -105,6 +108,6 @@ export class TuiMoneyComponent {
 
     constructor(
         @Inject(TUI_NUMBER_FORMAT)
-        private numberFormatSettings: NumberFormatSettings,
+        private readonly numberFormat: NumberFormatSettings,
     ) {}
 }
