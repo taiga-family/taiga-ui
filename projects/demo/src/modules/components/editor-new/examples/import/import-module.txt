@@ -1,12 +1,12 @@
 import {FormsModule} from '@angular/forms';
-import {TuiWysiwygModule} from '@taiga-ui/addon-editor';
+import {TuiEditorModule} from '@taiga-ui/addon-editor';
 
 ...
 
 @NgModule({
     imports: [
         ...
-        TuiWysiwygModule,
+        TuiEditorModule,
         FormsModule,
     ],
 ...

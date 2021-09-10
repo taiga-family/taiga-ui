@@ -16,7 +16,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {TuiWysiwygToolbarComponent} from './wysiwyg-toolbar.component';
+import {TuiToolbarNewComponent} from './toolbar-new.component';
 
 @NgModule({
     imports: [
@@ -34,7 +34,7 @@ import {TuiWysiwygToolbarComponent} from './wysiwyg-toolbar.component';
         TuiDropdownControllerModule,
         TableSizeSelectorModule,
     ],
-    declarations: [TuiWysiwygToolbarComponent],
-    exports: [TuiWysiwygToolbarComponent],
+    declarations: [TuiToolbarNewComponent],
+    exports: [TuiToolbarNewComponent],
 })
-export class TuiWysiwygToolbarModule {}
+export class TuiToolbarNewModule {}

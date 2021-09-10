@@ -1,14 +1,14 @@
 import {ElementRef, Provider} from '@angular/core';
-import {WYSIWYG_LAZY_EXTENSIONS} from '@taiga-ui/addon-editor/tokens';
+import {LAZY_EDITOR_EXTENSIONS, LAZY_TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
-import {Editor, Extension, Mark, Node} from '@tiptap/core';
-import {Observable} from 'rxjs';
+import type {Editor, Extension, Mark, Node} from '@tiptap/core';
+import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export const TIPTAP_EDITOR_PROVIDERS: Provider[] = [
     {
         provide: TIPTAP_EDITOR,
-        deps: [ElementRef, WYSIWYG_LAZY_EXTENSIONS],
+        deps: [ElementRef, LAZY_EDITOR_EXTENSIONS, LAZY_TIPTAP_EDITOR],
         useFactory: editorFactory,
     },
 ];
@@ -16,11 +16,12 @@ export const TIPTAP_EDITOR_PROVIDERS: Provider[] = [
 export function editorFactory(
     {nativeElement}: ElementRef,
     extensions: Observable<(Extension | Mark | Node)[]>,
+    editor: Observable<typeof Editor>,
 ): Observable<Editor> {
-    return extensions.pipe(
+    return combineLatest(editor, extensions).pipe(
         map(
-            extensions =>
-                new Editor({
+            ([LazyEditor, extensions]) =>
+                new LazyEditor({
                     element: nativeElement,
                     extensions,
                 }),

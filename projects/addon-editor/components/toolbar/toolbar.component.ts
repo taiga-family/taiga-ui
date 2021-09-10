@@ -55,7 +55,7 @@ export function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
 
 // @dynamic
 @Component({
-    selector: 'tui-toolbar',
+    selector: 'tui-toolbar:not([new])',
     templateUrl: './toolbar.template.html',
     styleUrls: ['./toolbar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

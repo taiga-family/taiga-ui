@@ -44,6 +44,7 @@ export abstract class TuiEditor {
     abstract deleteRow(): void;
     abstract mergeCells(): void;
     abstract canMergeCells(): boolean;
+    abstract canSplitCells(): boolean;
     abstract splitCell(): void;
     abstract setHeading(level: number): void;
     abstract setParagraph(): void;

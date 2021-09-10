@@ -77,6 +77,10 @@ export const tiptapEditorStyles = `
     box-shadow: none !important;
 }
 
+.tui-editor-socket :focus code {
+    background-color: #f5f5f6;
+}
+
 .tui-editor-socket pre + pre {
     margin-top: -29px;
     padding-top: 0;
@@ -174,8 +178,16 @@ export const tiptapEditorStyles = `
     cursor: col-resize;
 }
 
-.tui-editor-socket table  .tableWrapper {
+.tui-editor-socket table .tableWrapper {
     overflow-x: auto;
+}
+
+.tui-editor-socket .selectedCell:after {
+    position: absolute;
+    content: "";
+    left: 0; right: 0; top: 0; bottom: 0;
+    background: rgba(200, 200, 255, 0.4);
+    pointer-events: none;
 }
 
 .tui-editor-socket font[face='Courier New'] {

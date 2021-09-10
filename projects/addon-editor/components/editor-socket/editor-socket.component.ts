@@ -16,7 +16,7 @@ import {TUI_SANITIZER} from '@taiga-ui/core';
 
 // @dynamic
 @Component({
-    selector: 'tui-editor-socket, tui-wysiwyg-socket',
+    selector: 'tui-editor-socket',
     template: '',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,

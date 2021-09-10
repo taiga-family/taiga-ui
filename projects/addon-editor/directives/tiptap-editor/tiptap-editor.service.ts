@@ -6,7 +6,8 @@ import type {BackgroundColor} from '@taiga-ui/addon-editor/extensions';
 // @ts-ignore
 import type {FontColor} from '@taiga-ui/addon-editor/extensions';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
-import {Editor, getMarkRange} from '@tiptap/core';
+import {getMarkRange} from '@taiga-ui/addon-editor/utils';
+import type {Editor} from '@tiptap/core';
 // @ts-ignore
 import type Image from '@tiptap/extension-image';
 // @ts-ignore
@@ -31,7 +32,6 @@ import type TextStyle from '@tiptap/extension-text-style';
 import type Underline from '@tiptap/extension-underline';
 // @ts-ignore
 import type StarterKit from '@tiptap/starter-kit';
-import {redoDepth, undoDepth} from 'prosemirror-history';
 import {Observable} from 'rxjs';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
@@ -77,11 +77,11 @@ export class TuiTiptapEditorService extends TuiEditor {
     }
 
     undoDisabled(): boolean {
-        return !undoDepth(this.editor.state);
+        return !this.editor.can().undo();
     }
 
     redoDisabled(): boolean {
-        return !redoDepth(this.editor.state);
+        return !this.editor.can().redo();
     }
 
     getFontColor(): string {
@@ -217,6 +217,10 @@ export class TuiTiptapEditorService extends TuiEditor {
 
     canMergeCells(): boolean {
         return this.editor.can().mergeCells();
+    }
+
+    canSplitCells(): boolean {
+        return this.editor.can().splitCell();
     }
 
     setHeading(level: Level) {

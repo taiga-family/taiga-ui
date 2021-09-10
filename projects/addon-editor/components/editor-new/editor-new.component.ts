@@ -14,11 +14,11 @@ import {
 import {NgControl} from '@angular/forms';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/edit-link';
-import {TuiWysiwygToolbarComponent} from '@taiga-ui/addon-editor/components/wysiwyg-toolbar';
+import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorDirective} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
-import {WYSIWYG_LAZY_EXTENSIONS} from '@taiga-ui/addon-editor/tokens';
+import {LAZY_EDITOR_EXTENSIONS, LAZY_TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
@@ -28,22 +28,25 @@ import {
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
-import {TUI_WYSIWYG_PROVIDERS} from './wysiwyg.providers';
+import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 
 @Component({
-    selector: 'tui-wysiwyg',
-    templateUrl: './wysiwyg.component.html',
-    styleUrls: ['./wysiwyg.style.less'],
+    selector: 'tui-editor[new]',
+    templateUrl: './editor-new.component.html',
+    styleUrls: ['./editor-new.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiWysiwygComponent),
+            useExisting: forwardRef(() => TuiEditorNewComponent),
         },
-        TUI_WYSIWYG_PROVIDERS,
+        TUI_EDITOR_NEW_PROVIDERS,
     ],
 })
-export class TuiWysiwygComponent extends AbstractTuiControl<string> implements OnDestroy {
+export class TuiEditorNewComponent
+    extends AbstractTuiControl<string>
+    implements OnDestroy
+{
     @Input()
     @tuiDefaultProp()
     readonly exampleText = '';
@@ -55,17 +58,13 @@ export class TuiWysiwygComponent extends AbstractTuiControl<string> implements O
     @ViewChild(TuiTiptapEditorDirective)
     readonly editorRef!: TuiTiptapEditorDirective;
 
-    @ViewChild(TuiWysiwygToolbarComponent)
-    readonly toolbar?: TuiWysiwygToolbarComponent;
+    @ViewChild(TuiToolbarNewComponent)
+    readonly toolbar?: TuiToolbarNewComponent;
 
     @ViewChild(TuiEditLinkComponent, {read: ElementRef})
     private readonly editLink?: ElementRef<HTMLElement>;
 
     private readonly isSelectionLink = () => !!this.editor?.isActive('link');
-
-    get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        return this.focused ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
-    }
 
     constructor(
         @Optional()
@@ -73,9 +72,14 @@ export class TuiWysiwygComponent extends AbstractTuiControl<string> implements O
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(WYSIWYG_LAZY_EXTENSIONS) readonly extensionsLoaded$: Observable<unknown>,
+        @Inject(LAZY_EDITOR_EXTENSIONS) readonly extensionsLoaded$: Observable<unknown>,
+        @Inject(LAZY_TIPTAP_EDITOR) readonly editorLoaded$: Observable<unknown>,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
+        return this.focused ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
     }
 
     get editor(): TuiEditor | null {

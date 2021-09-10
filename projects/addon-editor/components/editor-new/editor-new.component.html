@@ -17,12 +17,13 @@
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div class="toolbar-wrapper">
-        <tui-wysiwyg-toolbar
+        <tui-toolbar
             *ngIf="editor"
+            new
             [editor]="editor"
             [tools]="tools"
             [disabled]="!interactive"
-        ></tui-wysiwyg-toolbar>
+        ></tui-toolbar>
         <div class="placeholder" [class.placeholder_raised]="placeholderRaised">
             <ng-content></ng-content>
         </div>
@@ -37,7 +38,7 @@
             [tuiDropdownContent]="dropdown"
         >
             <div
-                *ngIf="extensionsLoaded$ | async"
+                *ngIf="(extensionsLoaded$ | async) && (editorLoaded$ | async)"
                 #editorRef
                 tuiTiptapEditor
                 class="tui-editor-socket"

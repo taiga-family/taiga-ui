@@ -55,9 +55,9 @@ enum TableComands {
 
 // @dynamic
 @Component({
-    selector: 'tui-wysiwyg-toolbar',
-    templateUrl: './wysiwyg-toolbar.template.html',
-    styleUrls: ['./wysiwyg-toolbar.style.less'],
+    selector: 'tui-toolbar[new]',
+    templateUrl: './toolbar-new.template.html',
+    styleUrls: ['./toolbar-new.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
@@ -65,7 +65,7 @@ enum TableComands {
         class: 'tui-zero-scrollbar',
     },
 })
-export class TuiWysiwygToolbarComponent {
+export class TuiToolbarNewComponent {
     @Input()
     @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
     tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
@@ -156,7 +156,7 @@ export class TuiWysiwygToolbarComponent {
             this.buttons.find(({nativeFocusableElement}) => !!nativeFocusableElement) ||
             null;
 
-        return first && first.nativeFocusableElement;
+        return first?.nativeFocusableElement || null;
     }
 
     get lastButton(): TuiNativeFocusableElement | null {
@@ -297,7 +297,7 @@ export class TuiWysiwygToolbarComponent {
 
     onArrowLeft() {
         const focusedIndex = this.buttons.reduce(
-            (focusedIndex, button, index) => (button.focused ? index : focusedIndex),
+            (focusedIndex, {focused}, index) => (focused ? index : focusedIndex),
             -1,
         );
         const previous = this.buttons.reduce<TuiNativeFocusableElement | null>(
@@ -317,7 +317,7 @@ export class TuiWysiwygToolbarComponent {
 
     onArrowRight() {
         const focusedIndex = this.buttons.reduce(
-            (focusedIndex, button, index) => (button.focused ? index : focusedIndex),
+            (focusedIndex, {focused}, index) => (focused ? index : focusedIndex),
             -1,
         );
         const nextButton = this.buttons.find(
@@ -325,16 +325,16 @@ export class TuiWysiwygToolbarComponent {
                 index > focusedIndex && !!nativeFocusableElement,
         );
 
-        if (nextButton && nextButton.nativeFocusableElement) {
+        if (nextButton?.nativeFocusableElement) {
             setNativeFocused(nextButton.nativeFocusableElement);
         } else {
             this.focusFirst();
         }
     }
 
-    onHeading(item: TuiEditorFontOption) {
-        if (item.headingLevel) {
-            this.editor.setHeading(item.headingLevel);
+    onHeading({headingLevel}: TuiEditorFontOption) {
+        if (headingLevel) {
+            this.editor.setHeading(headingLevel);
         } else {
             this.editor.setParagraph();
         }

@@ -1,7 +1,7 @@
-import {Extension} from '@tiptap/core';
-import {StarterKitOptions} from '@tiptap/starter-kit';
+import type {Extension} from '@tiptap/core';
+import type {StarterKitOptions} from '@tiptap/starter-kit';
 
-export const defaultWysiwygExtensions = [
+export const defaultEditorExtensions = [
     import('@tiptap/starter-kit').then(defaultExtractor).then(starterKitConfigurator),
     import('@tiptap/extension-text-align').then(m =>
         m.default.configure({types: ['heading', 'paragraph']}),

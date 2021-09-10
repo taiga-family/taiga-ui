@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {
-    defaultWysiwygExtensions,
+    defaultEditorExtensions,
     tiptapEditorStyles,
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_STYLES,
@@ -16,7 +16,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useValue: defaultWysiwygExtensions,
+            useValue: defaultEditorExtensions,
         },
         {
             provide: TUI_EDITOR_STYLES,
@@ -26,7 +26,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiWysiwygExample1 {
+export class TuiEditorNewExample1 {
     control = new FormControl('<p>Hello world</p>', Validators.required);
 
     onClick() {

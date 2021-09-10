@@ -34,13 +34,12 @@ export const FontColor = Extension.create<FontColorOptions>({
                 attributes: {
                     fontColor: {
                         default: null,
-                        renderHTML: ({fontColor}) => {
-                            return fontColor
+                        renderHTML: ({fontColor}) =>
+                            fontColor
                                 ? {
                                       style: `color: ${fontColor}`,
                                   }
-                                : {};
-                        },
+                                : {},
                         parseHTML: ({style}) => ({
                             fontColor: style.color.replace(/['"]+/g, ''),
                         }),

@@ -1,4 +1,4 @@
-<tui-doc-page header="Wysiwyg" package="ADDON-EDITOR" type="components">
+<tui-doc-page header="Editor[new]" package="ADDON-EDITOR" type="components">
     <ng-template pageTab>
         <p i18n>
             Rich Text Editor based on
@@ -24,7 +24,8 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-wysiwyg
+            <tui-editor
+                new
                 [formControl]="control"
                 [focusable]="focusable"
                 [exampleText]="exampleText"
@@ -35,7 +36,7 @@
                 [pseudoHovered]="pseudoHovered"
             >
                 Start typing
-            </tui-wysiwyg>
+            </tui-editor>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

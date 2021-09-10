@@ -1,13 +1,13 @@
 import {
+    LAZY_EDITOR_EXTENSIONS,
     TUI_EDITOR_EXTENSIONS,
-    WYSIWYG_LAZY_EXTENSIONS,
 } from '@taiga-ui/addon-editor/tokens';
-import {Extension, Mark, Node} from '@tiptap/core';
+import type {Extension, Mark, Node} from '@tiptap/core';
 import {Observable, ReplaySubject} from 'rxjs';
 
-export const TUI_WYSIWYG_PROVIDERS = [
+export const TUI_EDITOR_NEW_PROVIDERS = [
     {
-        provide: WYSIWYG_LAZY_EXTENSIONS,
+        provide: LAZY_EDITOR_EXTENSIONS,
         deps: [TUI_EDITOR_EXTENSIONS],
         useFactory: extensionsFactory,
     },

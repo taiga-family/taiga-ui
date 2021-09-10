@@ -34,13 +34,12 @@ export const BackgroundColor = Extension.create<BackgroundColorOptions>({
                 attributes: {
                     backgroundColor: {
                         default: null,
-                        renderHTML: ({backgroundColor}) => {
-                            return backgroundColor
+                        renderHTML: ({backgroundColor}) =>
+                            backgroundColor
                                 ? {
                                       style: `background-color: ${backgroundColor}`,
                                   }
-                                : {};
-                        },
+                                : {},
                         parseHTML: ({style}) => ({
                             backgroundColor: style.backgroundColor.replace(/['"]+/g, ''),
                         }),

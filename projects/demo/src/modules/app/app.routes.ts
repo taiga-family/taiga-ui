@@ -863,13 +863,13 @@ export const ROUTES = [
         },
     },
     {
-        path: 'components/wysiwyg',
+        path: 'components/editor-new',
         loadChildren: () =>
-            import(`../components/wysiwyg/wysiwyg.module`).then(
-                m => m.ExampleTuiWysiwygModule,
+            import(`../components/editor-new/editor-new.module`).then(
+                m => m.ExampleTuiEditorNewModule,
             ),
         data: {
-            title: 'Wysiwyg',
+            title: 'Editor[new]',
         },
     },
     {

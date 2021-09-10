@@ -8,8 +8,8 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {
+    defaultEditorExtensions,
     defaultEditorTools,
-    defaultWysiwygExtensions,
     TUI_EDITOR_EXTENSIONS,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
@@ -19,21 +19,21 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-wysiwyg',
-    templateUrl: './wysiwyg.template.html',
+    selector: 'example-tui-editor-new',
+    templateUrl: './editor-new.template.html',
     changeDetection,
     providers: [
         {
             provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiWysiwygComponent),
+            useExisting: forwardRef(() => ExampleEditorNewComponent),
         },
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useValue: defaultWysiwygExtensions,
+            useValue: defaultEditorExtensions,
         },
     ],
 })
-export class ExampleTuiWysiwygComponent extends AbstractExampleTuiControl {
+export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
