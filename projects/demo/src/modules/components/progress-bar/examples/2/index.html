@@ -1,0 +1,48 @@
+<h6 i18n class="description">Single color</h6>
+<p>
+    Use <code>&lt;progress /&gt;</code>'s CSS-property <code>color</code> to set
+    solid color of progress indicator.
+</p>
+
+<progress
+    tuiProgressBar
+    class="progress"
+    max="100"
+    [value]="fastValue$ | async"
+></progress>
+
+<h6 i18n class="description">With fancy color gradient</h6>
+<p>
+    Set component's input property <code>color</code> to get more complex color
+    combinations.
+</p>
+
+<progress
+    tuiProgressBar
+    class="progress"
+    max="100"
+    color="linear-gradient(to right, var(--tui-support-02), var(--tui-support-14), var(--tui-support-12))"
+    [value]="fastValue$ | async"
+></progress>
+
+<h6 i18n class="description">Multicolor segments</h6>
+<p>
+    Set component's input property <code>color</code> via
+    <code>tuiProgressColorSegments</code> pipe to to get multicolor segments.
+</p>
+
+<progress
+    tuiProgressBar
+    class="progress"
+    max="100"
+    [value]="fastValue$ | async"
+    [color]="colors | tuiProgressColorSegments"
+></progress>
+
+<progress
+    tuiProgressBar
+    class="progress"
+    [value]="slowValue$ | async"
+    [max]="colors.length"
+    [color]="colors | tuiProgressColorSegments"
+></progress>

@@ -23,6 +23,9 @@ import {
     formatNumber,
     maskedMoneyValueIsEmpty,
     maskedNumberStringToNumber,
+    NumberFormatSettings,
+    TUI_DECIMAL_SYMBOLS,
+    TUI_NUMBER_FORMAT,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
     TuiDecimalT,
@@ -79,10 +82,13 @@ export class TuiInputNumberComponent
             allowDecimal: decimal !== 'never',
             decimalLimit: precision,
             requireDecimal: decimal === 'always',
+            decimalSymbol: this.numberFormat.decimalSeparator,
+            thousandSymbol: this.numberFormat.thousandSeparator,
         }),
         pipe: tuiCreateAutoCorrectedNumberPipe(
             decimal === 'always' ? precision : 0,
-            ',',
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
             nativeFocusableElement || undefined,
         ),
         guide: false,
@@ -96,7 +102,10 @@ export class TuiInputNumberComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef)
+        changeDetectorRef: ChangeDetectorRef,
+        @Inject(TUI_NUMBER_FORMAT)
+        private readonly numberFormat: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
     }
@@ -122,7 +131,8 @@ export class TuiInputNumberComponent
     get calculatedMaxLength(): number {
         return (
             DEFAULT_MAX_LENGTH +
-            (this.decimal !== 'never' && this.nativeValue.includes(',')
+            (this.decimal !== 'never' &&
+            this.nativeValue.includes(this.numberFormat.decimalSeparator)
                 ? this.precision + 1
                 : 0)
         );
@@ -142,7 +152,12 @@ export class TuiInputNumberComponent
             limit = fraction.length;
         }
 
-        return formatNumber(value, limit);
+        return formatNumber(
+            value,
+            limit,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
     }
 
     get computedValue(): string {
@@ -176,13 +191,20 @@ export class TuiInputNumberComponent
 
         this.updateValue(capped);
 
-        if (capped !== maskedNumberStringToNumber(value)) {
+        if (
+            capped !==
+            maskedNumberStringToNumber(
+                value,
+                this.numberFormat.decimalSeparator,
+                this.numberFormat.thousandSeparator,
+            )
+        ) {
             this.nativeValue = this.formattedValue;
         }
     }
 
     onKeyDown(event: KeyboardEvent) {
-        if (event.key !== ',' && event.key !== '.') {
+        if (TUI_DECIMAL_SYMBOLS.indexOf(event.key) === -1) {
             return;
         }
 
@@ -192,7 +214,7 @@ export class TuiInputNumberComponent
             return;
         }
 
-        if (this.nativeValue.includes(',')) {
+        if (this.nativeValue.includes(this.numberFormat.decimalSeparator)) {
             event.preventDefault();
             this.setCaretAfterComma();
         }
@@ -205,7 +227,7 @@ export class TuiInputNumberComponent
             return;
         }
 
-        const nativeNumberValue = maskedNumberStringToNumber(this.nativeValue);
+        const nativeNumberValue = this.nativeNumberValue;
 
         if (isNaN(nativeNumberValue)) {
             this.clear();
@@ -229,7 +251,8 @@ export class TuiInputNumberComponent
 
     @HostListener('keydown.0', ['$event'])
     onZero(event: KeyboardEvent) {
-        const decimal = this.nativeValue.split(',')[1] || '';
+        const decimal =
+            this.nativeValue.split(this.numberFormat.decimalSeparator)[1] || '';
         const {nativeFocusableElement} = this;
 
         if (
@@ -250,13 +273,13 @@ export class TuiInputNumberComponent
             return true;
         }
 
-        const nativeNumberValue = maskedNumberStringToNumber(this.nativeValue);
+        const nativeNumberValue = this.nativeNumberValue;
 
         return nativeNumberValue >= this.min && nativeNumberValue <= this.max;
     }
 
     private get isNativeValueNotFinished(): boolean {
-        const nativeNumberValue = maskedNumberStringToNumber(this.nativeValue);
+        const nativeNumberValue = this.nativeNumberValue;
 
         return nativeNumberValue < 0
             ? nativeNumberValue > this.max
@@ -265,6 +288,14 @@ export class TuiInputNumberComponent
 
     private get nativeValue(): string {
         return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
+    }
+
+    private get nativeNumberValue(): number {
+        return maskedNumberStringToNumber(
+            this.nativeValue,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
     }
 
     private set nativeValue(value: string) {
@@ -282,7 +313,11 @@ export class TuiInputNumberComponent
     }
 
     private absoluteCapInputValue(inputValue: string): number | null {
-        const value = maskedNumberStringToNumber(inputValue);
+        const value = maskedNumberStringToNumber(
+            inputValue,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
         const capped = value < 0 ? Math.max(this.min, value) : Math.min(value, this.max);
         const ineligibleValue = isNaN(capped) || capped < this.min || capped > this.max;
 
