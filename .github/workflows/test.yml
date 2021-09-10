@@ -19,6 +19,8 @@ jobs:
   test:
     # Setup part
     runs-on: ubuntu-latest
+    env:
+      NX_CLOUD_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js
