@@ -23,11 +23,7 @@
             [tools]="tools"
             [disabled]="!interactive"
         ></tui-wysiwyg-toolbar>
-        <div
-            class="placeholder"
-            [class.placeholder_raised]="placeholderRaised"
-            [id]="id"
-        >
+        <div class="placeholder" [class.placeholder_raised]="placeholderRaised">
             <ng-content></ng-content>
         </div>
         <div *ngIf="hasExampleText" class="example-text">{{exampleText}}</div>
