@@ -116,6 +116,18 @@
             "sourceRoot": "projects/taiga-schematics",
             "projectType": "library",
             "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "tsConfig": "projects/taiga-schematics/tsconfig.lib.json",
+                        "project": "projects/taiga-schematics/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/taiga-schematics/tsconfig.lib.prod.json"
+                        }
+                    }
+                },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
