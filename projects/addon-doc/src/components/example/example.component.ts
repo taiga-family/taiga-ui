@@ -29,10 +29,10 @@ import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 })
 export class TuiDocExampleComponent {
     @Input()
-    heading: PolymorpheusContent | null = null;
+    heading: PolymorpheusContent = '';
 
     @Input()
-    description: PolymorpheusContent | null = null;
+    description: PolymorpheusContent = '';
 
     @Input()
     set content(content: Record<string, string>) {
