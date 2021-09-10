@@ -27,7 +27,6 @@ import {
     formatNumber,
     NumberFormatSettings,
     TUI_NUMBER_FORMAT,
-    TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_SIZE,
     tuiCreateNumberMask,
     TuiPrimitiveTextfieldComponent,
