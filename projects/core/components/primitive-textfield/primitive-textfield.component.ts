@@ -41,8 +41,8 @@ import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-poly
 import {Observable} from 'rxjs';
 import {TUI_PRIMITIVE_TEXTFIELD_PROVIDERS} from './primitive-textfield.providers';
 
-const ICON_PADDING = 28;
-const ICON_PADDING_S = 24;
+const ICON_PADDING = 1.75;
+const ICON_PADDING_S = 1.5;
 
 @Component({
     selector: 'tui-primitive-textfield',
