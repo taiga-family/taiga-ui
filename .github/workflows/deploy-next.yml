@@ -10,6 +10,9 @@ on:
             - 'package.json'
     workflow_dispatch:
 
+env:
+    NX_BRANCH: ${{ github.event.number }}
+
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest

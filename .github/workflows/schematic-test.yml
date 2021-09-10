@@ -5,6 +5,9 @@ on:
     paths:
       - 'projects/taiga-schematics/**'
 
+env:
+    NX_BRANCH: ${{ github.event.number }}
+
 jobs:
   test:
     # Setup part

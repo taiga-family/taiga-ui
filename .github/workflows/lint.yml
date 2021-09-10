@@ -9,6 +9,9 @@ on:
       - main
       - '!release/**'
 
+env:
+    NX_BRANCH: ${{ github.event.number }}
+
 jobs:
   lint:
     # Setup part

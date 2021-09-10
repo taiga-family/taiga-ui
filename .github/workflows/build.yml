@@ -17,6 +17,8 @@ on:
         branches:
             - main
             - '!release/**'
+env:
+    NX_BRANCH: ${{ github.event.number }}
 
 jobs:
     build:
