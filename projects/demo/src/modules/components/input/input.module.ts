@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiInputCardModule, TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiTableModule} from '@taiga-ui/addon-table';
 import {TuiLetModule, TuiMapperPipeModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -16,7 +17,6 @@ import {
     TuiNotificationModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
-    TuiTableModeModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -58,7 +58,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiMoneyModule,
         TuiLinkModule,
         TuiModeModule,
-        TuiTableModeModule,
+        TuiTableModule,
         TuiInputDateModule,
         TuiNotificationModule,
         TuiRepeatTimesModule,

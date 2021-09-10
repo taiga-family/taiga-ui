@@ -27,6 +27,7 @@ import {
     formatNumber,
     NumberFormatSettings,
     TUI_NUMBER_FORMAT,
+    TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_SIZE,
     tuiCreateNumberMask,
     TuiPrimitiveTextfieldComponent,
@@ -70,7 +71,6 @@ export class TuiInputCountComponent
     max = this.options.max;
 
     @Input()
-    @HostBinding('class._hide-buttons')
     @tuiDefaultProp()
     hideButtons = this.options.hideButtons;
 
@@ -99,6 +99,8 @@ export class TuiInputCountComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TUI_TEXTFIELD_APPEARANCE)
+        private readonly appearance: string,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PLUS_MINUS_TEXTS)
@@ -110,6 +112,12 @@ export class TuiInputCountComponent
         private readonly numberFormat: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    // TODO: Remove in v.3
+    @HostBinding('class._has-buttons')
+    get buttonsHidden(): boolean {
+        return !this.hideButtons && this.appearance !== 'table';
     }
 
     get iconUp(): PolymorpheusContent<{}> {

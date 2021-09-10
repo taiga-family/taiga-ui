@@ -23,7 +23,7 @@
 >
     <ng-content></ng-content>
 </tui-primitive-textfield>
-<ng-container *ngIf="!hideButtons && (minusTexts$ | async) as texts">
+<ng-container *ngIf="buttonsHidden && (minusTexts$ | async) as texts">
     <section class="buttons">
         <button
             tuiIconButton
