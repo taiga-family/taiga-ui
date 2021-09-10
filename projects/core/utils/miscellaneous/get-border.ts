@@ -1,7 +1,7 @@
-const BORDER_SMALL = 12;
-const BORDER_LARGE = 16;
-const ITEM_SIZE = 24;
-const CONTENT_SIZE = 40;
+const BORDER_SMALL = 0.75;
+const BORDER_LARGE = 1;
+const ITEM_SIZE = 1.5;
+const CONTENT_SIZE = 2.5;
 
 export function getBorder(
     sizeBig: boolean,
