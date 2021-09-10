@@ -117,7 +117,7 @@ export class TuiInputCountComponent
     // TODO: Remove in v.3
     @HostBinding('class._hide-buttons')
     get buttonsHidden(): boolean {
-        return this.hideButtons || this.appearance !== 'table';
+        return this.hideButtons || this.appearance === 'table';
     }
 
     get iconUp(): PolymorpheusContent<{}> {
