@@ -29,7 +29,6 @@ import {
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_SIZE,
-    TuiAppearance,
     tuiCreateNumberMask,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
@@ -39,7 +38,9 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
+import {InputCountOptions, TUI_INPUT_COUNT_OPTIONS} from './input-count-options';
 
 // @dynamic
 @Component({
@@ -59,23 +60,23 @@ export class TuiInputCountComponent
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
-    step = 1;
+    step = this.options.step;
 
     @Input()
     @tuiDefaultProp()
-    min = 0;
+    min = this.options.min;
 
     @Input()
     @tuiDefaultProp()
-    max = Infinity;
+    max = this.options.max;
 
     @Input()
     @tuiDefaultProp()
-    hideButtons = false;
+    hideButtons = this.options.hideButtons;
 
     @Input()
     @tuiDefaultProp()
-    postfix = '';
+    postfix = this.options.postfix;
 
     @tuiPure
     getMask(allowNegative: boolean): TuiTextMaskOptions {
@@ -105,10 +106,26 @@ export class TuiInputCountComponent
         @Inject(TUI_PLUS_MINUS_TEXTS)
         readonly minusTexts$: Observable<[string, string]>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
+        @Inject(TUI_INPUT_COUNT_OPTIONS)
+        public readonly options: InputCountOptions,
         @Inject(TUI_NUMBER_FORMAT)
         private readonly numberFormat: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    // TODO: Remove in v.3
+    @HostBinding('class._hide-buttons')
+    get buttonsHidden(): boolean {
+        return this.hideButtons || this.appearance === 'table';
+    }
+
+    get iconUp(): PolymorpheusContent<{}> {
+        return this.options.icons.up;
+    }
+
+    get iconDown(): PolymorpheusContent<{}> {
+        return this.options.icons.down;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -124,11 +141,6 @@ export class TuiInputCountComponent
 
     get focused(): boolean {
         return isNativeFocused(this.nativeFocusableElement);
-    }
-
-    @HostBinding('class._has-buttons')
-    get hasButtons(): boolean {
-        return !this.hideButtons && this.appearance !== TuiAppearance.Table;
     }
 
     get exampleText(): string {
