@@ -98,11 +98,11 @@ export class TuiPrimitiveCalendarComponent {
             return TuiInteractiveState.Disabled;
         }
 
-        if (pressedItem !== null && pressedItem.daySame(item)) {
+        if (pressedItem && pressedItem.daySame(item)) {
             return TuiInteractiveState.Pressed;
         }
 
-        if (hoveredItem !== null && hoveredItem.daySame(item)) {
+        if (hoveredItem && hoveredItem.daySame(item)) {
             return TuiInteractiveState.Hovered;
         }
 
@@ -112,7 +112,7 @@ export class TuiPrimitiveCalendarComponent {
     getItemRange(item: TuiDay): TuiRangeState | null {
         const {value, hoveredItem} = this;
 
-        if (value === null) {
+        if (!value) {
             return null;
         }
 
@@ -122,11 +122,11 @@ export class TuiPrimitiveCalendarComponent {
 
         if (
             (value.from.daySame(item) && !value.isSingleDay) ||
-            (hoveredItem !== null &&
+            (hoveredItem &&
                 hoveredItem.dayAfter(value.from) &&
                 value.from.daySame(item) &&
                 value.isSingleDay) ||
-            (hoveredItem !== null &&
+            (hoveredItem &&
                 hoveredItem.daySame(item) &&
                 hoveredItem.dayBefore(value.from) &&
                 value.isSingleDay)
@@ -136,11 +136,11 @@ export class TuiPrimitiveCalendarComponent {
 
         if (
             (value.to.daySame(item) && !value.isSingleDay) ||
-            (hoveredItem !== null &&
+            (hoveredItem &&
                 hoveredItem.dayBefore(value.from) &&
                 value.from.daySame(item) &&
                 value.isSingleDay) ||
-            (hoveredItem !== null &&
+            (hoveredItem &&
                 hoveredItem.daySame(item) &&
                 hoveredItem.dayAfter(value.from) &&
                 value.isSingleDay)
@@ -187,20 +187,15 @@ export class TuiPrimitiveCalendarComponent {
         return range.from.daySameOrBefore(day) && range.to.dayAfter(day);
     }
 
-    onItemHovered(hovered: boolean, item: TuiDay) {
-        this.updateHoveredItem(hovered ? item : null);
+    onItemHovered(item: TuiDay | false) {
+        this.updateHoveredItem(item || null);
     }
 
-    onItemPressed(pressed: boolean, item: TuiDay) {
-        this.updatePressedItem(pressed, item);
+    onItemPressed(item: TuiDay | false) {
+        this.pressedItem = item || null;
     }
 
-    onItemClick(event: MouseEvent, item: TuiDay) {
-        if (this.disabledItemHandler(item)) {
-            return;
-        }
-
-        event.preventDefault();
+    onItemClick(item: TuiDay) {
         this.dayClick.emit(item);
     }
 
@@ -211,9 +206,5 @@ export class TuiPrimitiveCalendarComponent {
 
         this.hoveredItem = day;
         this.hoveredItemChange.emit(day);
-    }
-
-    private updatePressedItem(pressed: boolean, item: TuiDay) {
-        this.pressedItem = pressed ? item : null;
     }
 }

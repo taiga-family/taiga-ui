@@ -21,14 +21,14 @@ export class TuiCalendarSheetPipe implements PipeTransform {
         month: TuiMonth,
         showAdjacentDays: boolean = false,
     ): ReadonlyArray<ReadonlyArray<TuiDay>> {
-        if (this.currentMonth !== null && this.currentMonth.monthSame(month)) {
+        if (this.currentMonth && this.currentMonth.monthSame(month)) {
             return this.currentSheet;
         }
 
-        const sheet: Array<ReadonlyArray<TuiDay>> = [];
+        const sheet: Array<readonly TuiDay[]> = [];
 
         for (let rowIndex = 0; rowIndex < CALENDAR_ROWS_COUNT; rowIndex++) {
-            const row: Array<TuiDay> = [];
+            const row: TuiDay[] = [];
 
             for (let colIndex = 0; colIndex < DAYS_IN_WEEK; colIndex++) {
                 const day = getDayFromMonthRowCol({
