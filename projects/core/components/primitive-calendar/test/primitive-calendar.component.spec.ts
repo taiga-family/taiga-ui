@@ -135,7 +135,7 @@ describe('PrimitiveCalendar', () => {
         it('returns pressed state if it is not disabled', () => {
             const dayToPress = new TuiDay(2019, 4, 16);
 
-            component.onItemPressed(true, dayToPress);
+            component.onItemPressed(dayToPress);
 
             expect(component.getItemState(dayToPress)).toBe(TuiInteractiveState.Pressed);
         });
@@ -143,7 +143,7 @@ describe('PrimitiveCalendar', () => {
         it('returns hovered state if it is not disabled and pressed', () => {
             const dayToHover = new TuiDay(2019, 4, 16);
 
-            component.onItemHovered(true, dayToHover);
+            component.onItemHovered(dayToHover);
 
             expect(component.getItemState(dayToHover)).toBe(TuiInteractiveState.Hovered);
         });
@@ -199,7 +199,7 @@ describe('PrimitiveCalendar', () => {
             const hoveredDay = new TuiDay(2019, 4, 18);
 
             component.value = singleDayRangeValue;
-            component.onItemHovered(true, hoveredDay);
+            component.onItemHovered(hoveredDay);
 
             expect(component.itemIsInterval(day)).toBe(true);
         });
@@ -225,7 +225,7 @@ describe('PrimitiveCalendar', () => {
             done();
         });
 
-        component.onItemHovered(true, day);
+        component.onItemHovered(day);
     });
 
     it('does not recalculate month and sheet if it has already been set with the same month', () => {

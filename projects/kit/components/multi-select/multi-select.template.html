@@ -28,7 +28,7 @@
         (searchChange)="onSearch($event)"
         (keydown.space)="onSpace($event)"
         (keydown.enter)="onEnter($event)"
-        (click.stop)="onClick(inputTag)"
+        (click.prevent)="onClick(inputTag)"
     >
         <ng-content></ng-content>
     </tui-input-tag>
