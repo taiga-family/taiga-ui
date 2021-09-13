@@ -10,11 +10,13 @@ function wrapper(
     max: TuiDay | null = null,
     value: TuiDayRange | null = null,
 ): string {
-    return (tuiCreateAutoCorrectedDateRangePipe({
-        min,
-        max,
-        value,
-    })(rawString, DUMMY) as TuiTextMaskPipeResult).value;
+    return (
+        tuiCreateAutoCorrectedDateRangePipe({
+            min,
+            max,
+            value,
+        })(rawString, DUMMY) as TuiTextMaskPipeResult
+    ).value;
 }
 
 describe('tuiCreateAutoCorrectedDateRangePipe returns', () => {

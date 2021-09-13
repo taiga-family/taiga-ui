@@ -88,7 +88,8 @@ export const RANGE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
 })
 export class TuiInputDateRangeComponent
     extends AbstractTuiNullableControl<TuiDayRange>
-    implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor {
+    implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;

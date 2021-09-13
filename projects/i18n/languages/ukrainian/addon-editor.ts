@@ -35,5 +35,20 @@ export const TUI_UKRAINIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         insertHorizontalRule: 'Розділювач',
         superscript: 'Надрядковий',
         subscript: 'Підрядковий',
+        insertTable: 'Insert table',
+        mergeCells: 'Merge cells',
+        splitCells: 'Split cells',
+        rowsColumnsManaging: 'Managing rows and columns',
     },
-} as const;
+    editorTableCommands: [
+        ['Insert column before', 'Insert column after'],
+        ['Insert row before', 'Insert row after'],
+        ['Delete column', 'Delete row'],
+    ],
+    editorCodeOptions: ['Code in the text', 'Code in block'],
+    editorFontOptions: {
+        normal: 'Normal',
+        title: 'Title',
+        subtitle: 'Subtitle',
+    },
+};

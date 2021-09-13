@@ -10,3 +10,5 @@ export * from '@taiga-ui/addon-editor/components/linear-multi-picker';
 export * from '@taiga-ui/addon-editor/components/linear-picker';
 export * from '@taiga-ui/addon-editor/components/palette';
 export * from '@taiga-ui/addon-editor/components/toolbar';
+export * from '@taiga-ui/addon-editor/components/editor-new';
+export * from '@taiga-ui/addon-editor/components/toolbar-new';

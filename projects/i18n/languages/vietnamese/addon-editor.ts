@@ -35,5 +35,20 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         insertHorizontalRule: 'Chèn thước ngang',
         superscript: 'Chỉ số trên',
         subscript: 'Chỉ số dưới',
+        insertTable: 'Insert table',
+        mergeCells: 'Merge cells',
+        splitCells: 'Split cells',
+        rowsColumnsManaging: 'Managing rows and columns',
+    },
+    editorTableCommands: [
+        ['Insert column before', 'Insert column after'],
+        ['Insert row before', 'Insert row after'],
+        ['Delete column', 'Delete row'],
+    ],
+    editorCodeOptions: ['Code in the text', 'Code in block'],
+    editorFontOptions: {
+        normal: 'Normal',
+        title: 'Title',
+        subtitle: 'Subtitle',
     },
 };

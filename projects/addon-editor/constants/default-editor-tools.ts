@@ -19,4 +19,5 @@ export const defaultEditorTools = [
     TuiEditorTool.HR,
     TuiEditorTool.Sup,
     TuiEditorTool.Sub,
+    TuiEditorTool.Table,
 ];

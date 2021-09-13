@@ -107,11 +107,58 @@ export interface LanguageTable {
     };
 }
 
-// TODO: fix it after Editor 1.0
-export type LanguageEditor = Record<string, any>;
+export type LanguageEditor = {
+    colorSelectorModeNames: [string, string];
+    toolbarTools: {
+        undo: string;
+        redo: string;
+        font: string;
+        fontStyle: string;
+        fontSize: string;
+        bold: string;
+        italic: string;
+        underline: string;
+        strikeThrough: string;
+        justify: string;
+        justifyLeft: string;
+        justifyCenter: string;
+        justifyRight: string;
+        justifyFull: string;
+        list: string;
+        indent: string;
+        outdent: string;
+        unorderedList: string;
+        orderedList: string;
+        quote: string;
+        foreColor: string;
+        hiliteColor: string;
+        backColor: string;
+        clear: string;
+        link: string;
+        attach: string;
+        tex: string;
+        code: string;
+        image: string;
+        insertHorizontalRule: string;
+        superscript: string;
+        subscript: string;
+        insertTable: string;
+        mergeCells: string;
+        splitCells: string;
+        rowsColumnsManaging: string;
+    };
+    editorTableCommands: [[string, string], [string, string], [string, string]];
+    editorCodeOptions: [string, string];
+    editorFontOptions: {
+        normal: string;
+        title: string;
+        subtitle: string;
+    };
+};
 
 export interface Language
     extends LanguageCore,
         LanguageKit,
         LanguageCommerce,
-        LanguageTable {}
+        LanguageTable,
+        LanguageEditor {}

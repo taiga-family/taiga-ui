@@ -873,6 +873,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/editor-new',
+        loadChildren: () =>
+            import(`../components/editor-new/editor-new.module`).then(
+                m => m.ExampleTuiEditorNewModule,
+            ),
+        data: {
+            title: 'Editor[new]',
+        },
+    },
+    {
         path: 'components/filter',
         loadChildren: () =>
             import(`../components/filter/filter.module`).then(

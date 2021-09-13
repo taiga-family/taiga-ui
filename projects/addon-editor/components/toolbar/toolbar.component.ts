@@ -55,7 +55,7 @@ export function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
 
 // @dynamic
 @Component({
-    selector: 'tui-toolbar',
+    selector: 'tui-toolbar:not([new])',
     templateUrl: './toolbar.template.html',
     styleUrls: ['./toolbar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -126,7 +126,7 @@ export class TuiToolbarComponent {
     ];
 
     // TODO: i18n
-    readonly codesOptions: readonly string[] = ['Code in the text', 'Code in block'];
+    readonly codeOptions: readonly string[] = ['Code in the text', 'Code in block'];
 
     @ViewChildren('button')
     private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;
@@ -152,7 +152,7 @@ export class TuiToolbarComponent {
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts: Record<string, string>,
+        readonly texts$: Observable<Record<string, string>>,
     ) {
         this.documentRef = shadowRootRef || documentRef;
 
@@ -435,7 +435,7 @@ export class TuiToolbarComponent {
     }
 
     onCode(code: string) {
-        if (this.codesOptions[0] === code) {
+        if (this.codeOptions[0] === code) {
             this.toggleCode();
         } else {
             this.togglePre();

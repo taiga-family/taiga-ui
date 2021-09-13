@@ -54,6 +54,7 @@ export class TuiInputExample8 {
                 }),
             ),
         ),
+        startWith(DATA),
     );
 
     onClick({lastName, firstName}: User) {
