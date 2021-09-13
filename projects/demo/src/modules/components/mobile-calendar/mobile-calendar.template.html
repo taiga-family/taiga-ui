@@ -7,7 +7,9 @@
             <a tuiLink [routerLink]="['/components/input-date-range']"
                 >InputDateRange</a
             >
-            if <code>TuiMobileCalendarDialogModule</code> is imported
+            if <code>TuiMobileCalendarDialogModule</code> and
+            <code>TuiDialogModule</code>
+            are both imported once in the main module
         </p>
         <p i18n>
             You can use <code>TUI_CALENDAR_DATA_STREAM</code> token to set value
@@ -106,8 +108,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Import <code>TuiMobileCalendarModule</code> into a module
-                    where you want to use our component
+                    Import <code>TuiDialogModule</code> and
+                    <code>TuiMobileCalendarModule</code>
+                    once into the main module
                 </p>
 
                 <tui-doc-code
