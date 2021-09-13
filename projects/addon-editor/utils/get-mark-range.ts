@@ -1,66 +1,57 @@
+import type {Range} from '@tiptap/core';
 import type {Mark as ProseMirrorMark, MarkType, ResolvedPos} from 'prosemirror-model';
 
-export type Range = {
-    from: number;
-    to: number;
-};
-
-function objectIncludes(
-    object1: Record<string, unknown>,
-    object2: Record<string, unknown>,
+function hasAttributes(
+    markAttributes: Record<string, unknown>,
+    attributes: Record<string, unknown>,
 ): boolean {
-    const keys = Object.keys(object2);
+    const keys = Object.keys(attributes);
 
-    return !keys.length || !!keys.filter(key => object2[key] === object1[key]).length;
+    return (
+        !keys.length ||
+        !!keys.filter(key => attributes[key] === markAttributes[key]).length
+    );
 }
 
 function findMarkInSet(
     marks: ProseMirrorMark[],
-    type: MarkType,
+    markType: MarkType,
     attributes: Record<string, unknown> = {},
 ): ProseMirrorMark | null {
     return (
         marks.find(
-            item => item.type === type && objectIncludes(item.attrs, attributes),
+            ({attrs, type}) => type === markType && hasAttributes(attrs, attributes),
         ) || null
     );
 }
 
-function isMarkInSet(
-    marks: ProseMirrorMark[],
-    type: MarkType,
-    attributes: Record<string, unknown> = {},
-): boolean {
-    return !!findMarkInSet(marks, type, attributes);
-}
-
 export function getMarkRange(
-    pos: ResolvedPos,
-    type: MarkType,
+    pos?: ResolvedPos,
+    type?: MarkType,
     attributes: Record<string, unknown> = {},
-): Range | void {
+): Range | null {
     if (!pos || !type) {
-        return;
+        return null;
     }
 
-    const start = pos.parent.childAfter(pos.parentOffset);
+    const {node, offset} = pos.parent.childAfter(pos.parentOffset);
 
-    if (!start.node) {
-        return;
+    if (!node) {
+        return null;
     }
 
-    const mark = findMarkInSet(start.node.marks, type, attributes);
+    const mark = findMarkInSet(node.marks, type, attributes);
 
     if (!mark) {
-        return;
+        return null;
     }
 
     let startIndex = pos.index();
-    let startPos = pos.start() + start.offset;
+    let startPos = pos.start() + offset;
     let endIndex = startIndex + 1;
-    let endPos = startPos + start.node.nodeSize;
+    let endPos = startPos + node.nodeSize;
 
-    findMarkInSet(start.node.marks, type, attributes);
+    findMarkInSet(node.marks, type, attributes);
 
     while (startIndex > 0 && mark.isInSet(pos.parent.child(startIndex - 1).marks)) {
         startIndex -= 1;
@@ -69,7 +60,7 @@ export function getMarkRange(
 
     while (
         endIndex < pos.parent.childCount &&
-        isMarkInSet(pos.parent.child(endIndex).marks, type, attributes)
+        !!findMarkInSet(pos.parent.child(endIndex).marks, type, attributes)
     ) {
         endPos += pos.parent.child(endIndex).nodeSize;
         endIndex += 1;
