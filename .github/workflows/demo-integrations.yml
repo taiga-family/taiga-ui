@@ -15,9 +15,14 @@ on:
             - '!main'
             - '!release/**'
 
+env:
+    NX_BRANCH: ${{ github.event.number }}
+
 jobs:
     demo-integrations:
         runs-on: ubuntu-20.04
+        env:
+            NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
         steps:
             - name: Checkout
               uses: actions/checkout@v2

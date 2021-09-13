@@ -1,5 +1,5 @@
-const base = require('../../karma.conf');
+const base = require('../../karma.config');
 
 module.exports = function (config) {
-    base(config);
+    base(config, 'addon-charts');
 };

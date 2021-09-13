@@ -11,6 +11,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/cdk"],
                     "options": {
                         "tsConfig": "projects/cdk/tsconfig.lib.json",
                         "project": "projects/cdk/ng-package.json"
@@ -23,10 +24,11 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/cdk"],
                     "options": {
                         "main": "projects/cdk/test.ts",
                         "tsConfig": "projects/cdk/tsconfig.spec.json",
-                        "karmaConfig": "karma.config.js"
+                        "karmaConfig": "projects/cdk/karma.conf.js"
                     }
                 },
                 "lint": {
@@ -49,6 +51,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/i18n"],
                     "options": {
                         "tsConfig": "projects/i18n/tsconfig.lib.json",
                         "project": "projects/i18n/ng-package.json"
@@ -76,6 +79,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/core"],
                     "options": {
                         "tsConfig": "projects/core/tsconfig.lib.json",
                         "project": "projects/core/ng-package.json"
@@ -88,10 +92,11 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/core"],
                     "options": {
                         "main": "projects/core/test.ts",
                         "tsConfig": "projects/core/tsconfig.spec.json",
-                        "karmaConfig": "karma.config.js"
+                        "karmaConfig": "projects/core/karma.conf.js"
                     }
                 },
                 "lint": {
@@ -143,6 +148,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/kit"],
                     "options": {
                         "tsConfig": "projects/kit/tsconfig.lib.json",
                         "project": "projects/kit/ng-package.json"
@@ -155,10 +161,11 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/kit"],
                     "options": {
                         "main": "projects/kit/test.ts",
                         "tsConfig": "projects/kit/tsconfig.spec.json",
-                        "karmaConfig": "karma.config.js",
+                        "karmaConfig": "projects/kit/karma.conf.js",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
@@ -184,6 +191,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/icons"],
                     "options": {
                         "tsConfig": "projects/icons/tsconfig.lib.json",
                         "project": "projects/icons/ng-package.json"
@@ -211,6 +219,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/addon-charts"],
                     "options": {
                         "tsConfig": "projects/addon-charts/tsconfig.lib.json",
                         "project": "projects/addon-charts/ng-package.json"
@@ -223,10 +232,11 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/addon-charts"],
                     "options": {
                         "main": "projects/addon-charts/test.ts",
                         "tsConfig": "projects/addon-charts/tsconfig.spec.json",
-                        "karmaConfig": "karma.config.js",
+                        "karmaConfig": "projects/addon-charts/karma.conf.js",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
@@ -252,6 +262,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/addon-commerce"],
                     "options": {
                         "tsConfig": "projects/addon-commerce/tsconfig.lib.json",
                         "project": "projects/addon-commerce/ng-package.json"
@@ -264,10 +275,11 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/addon-commerce"],
                     "options": {
                         "main": "projects/addon-commerce/test.ts",
                         "tsConfig": "projects/addon-commerce/tsconfig.spec.json",
-                        "karmaConfig": "karma.config.js",
+                        "karmaConfig": "projects/addon-commerce/karma.conf.js",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
@@ -293,6 +305,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/addon-mobile"],
                     "options": {
                         "tsConfig": "projects/addon-mobile/tsconfig.lib.json",
                         "project": "projects/addon-mobile/ng-package.json"
@@ -305,10 +318,11 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/addon-mobile"],
                     "options": {
                         "main": "projects/addon-mobile/test.ts",
                         "tsConfig": "projects/addon-mobile/tsconfig.spec.json",
-                        "karmaConfig": "karma.config.js",
+                        "karmaConfig": "projects/addon-mobile/karma.conf.js",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
@@ -334,6 +348,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/addon-tablebars"],
                     "options": {
                         "tsConfig": "projects/addon-tablebars/tsconfig.lib.json",
                         "project": "projects/addon-tablebars/ng-package.json"
@@ -346,10 +361,11 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/addon-tablebars"],
                     "options": {
                         "main": "projects/addon-tablebars/test.ts",
                         "tsConfig": "projects/addon-tablebars/tsconfig.spec.json",
-                        "karmaConfig": "karma.config.js",
+                        "karmaConfig": "projects/addon-tablebars/karma.conf.js",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
@@ -375,6 +391,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/addon-table"],
                     "options": {
                         "tsConfig": "projects/addon-table/tsconfig.lib.json",
                         "project": "projects/addon-table/ng-package.json"
@@ -387,10 +404,11 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/addon-table"],
                     "options": {
                         "main": "projects/addon-table/test.ts",
                         "tsConfig": "projects/addon-table/tsconfig.spec.json",
-                        "karmaConfig": "karma.config.js",
+                        "karmaConfig": "projects/addon-table/karma.conf.js",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
@@ -416,6 +434,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/addon-editor"],
                     "options": {
                         "tsConfig": "projects/addon-editor/tsconfig.lib.json",
                         "project": "projects/addon-editor/ng-package.json"
@@ -428,10 +447,11 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/addon-editor"],
                     "options": {
                         "main": "projects/addon-editor/test.ts",
                         "tsConfig": "projects/addon-editor/tsconfig.spec.json",
-                        "karmaConfig": "karma.config.js",
+                        "karmaConfig": "projects/addon-editor/karma.conf.js",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
@@ -457,6 +477,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/addon-doc"],
                     "options": {
                         "tsConfig": "projects/addon-doc/tsconfig.lib.json",
                         "project": "projects/addon-doc/ng-package.json"
@@ -469,10 +490,11 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/addon-doc"],
                     "options": {
                         "main": "projects/addon-doc/src/test.ts",
                         "tsConfig": "projects/addon-doc/tsconfig.spec.json",
-                        "karmaConfig": "karma.config.js",
+                        "karmaConfig": "projects/addon-doc/karma.conf.js",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
@@ -496,18 +518,6 @@
             "projectType": "library",
             "prefix": "tui",
             "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "options": {
-                        "tsConfig": "projects/testing/tsconfig.lib.json",
-                        "project": "projects/testing/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/testing/tsconfig.lib.prod.json"
-                        }
-                    }
-                },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
@@ -532,6 +542,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
+                    "outputs": ["dist/demo"],
                     "options": {
                         "aot": true,
                         "outputPath": "dist/demo/browser",
