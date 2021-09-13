@@ -118,6 +118,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/taiga-schematics"],
                     "options": {
                         "tsConfig": "projects/taiga-schematics/tsconfig.lib.json",
                         "project": "projects/taiga-schematics/ng-package.json"
