@@ -17,11 +17,15 @@ on:
         branches:
             - main
             - '!release/**'
+env:
+    NX_BRANCH: ${{ github.event.number }}
 
 jobs:
     build:
         # Setup part
         runs-on: ubuntu-latest
+        env:
+            NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
         steps:
             - uses: actions/checkout@v2
             - name: Use Node.js

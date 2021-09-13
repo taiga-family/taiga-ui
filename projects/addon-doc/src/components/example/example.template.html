@@ -1,5 +1,5 @@
 <h3 *ngIf="heading" class="title">
-    {{heading}}
+    <span polymorpheus-outlet [content]="heading"></span>
     <button
         *ngIf="id"
         tuiIconButton
@@ -12,7 +12,12 @@
         (click)="copyExampleLink()"
     ></button>
 </h3>
-<h4 *ngIf="description" class="description">{{description}}</h4>
+<h4
+    *ngIf="description"
+    class="description"
+    polymorpheus-outlet
+    [content]="description"
+></h4>
 <div class="example">
     <div class="tabs">
         <tui-tabs [(activeItemIndex)]="activeItemIndex">

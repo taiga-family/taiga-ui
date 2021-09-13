@@ -5,10 +5,15 @@ on:
     branches:
       - 'release/**'
 
+env:
+    NX_BRANCH: ${{ github.event.number }}
+
 jobs:
   build:
     # Setup part
     runs-on: ubuntu-latest
+    env:
+      NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js
@@ -19,7 +24,7 @@ jobs:
     - name: Cache Node.js modules
       uses: actions/cache@v2
       with:
-        path: ~/.npm 
+        path: ~/.npm
         key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.OS }}-node-

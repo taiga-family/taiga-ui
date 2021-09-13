@@ -40,9 +40,8 @@ export const BackgroundColor = Extension.create<BackgroundColorOptions>({
                                       style: `background-color: ${backgroundColor}`,
                                   }
                                 : {},
-                        parseHTML: ({style}) => ({
-                            backgroundColor: style.backgroundColor.replace(/['"]+/g, ''),
-                        }),
+                        parseHTML: ({style}) =>
+                            style.backgroundColor.replace(/['"]+/g, ''),
                         keepOnSplit: false,
                     },
                 },
@@ -55,14 +54,10 @@ export const BackgroundColor = Extension.create<BackgroundColorOptions>({
         unsetBackgroundColor?: () => Command;
     } {
         return {
-            setBackgroundColor:
-                backgroundColor =>
-                ({chain}) =>
-                    chain().setMark('textStyle', {backgroundColor}).run(),
-            unsetBackgroundColor:
-                () =>
-                ({chain}) =>
-                    chain().setMark('textStyle', {backgroundColor: null}).run(),
+            setBackgroundColor: backgroundColor => ({chain}) =>
+                chain().setMark('textStyle', {backgroundColor}).run(),
+            unsetBackgroundColor: () => ({chain}) =>
+                chain().setMark('textStyle', {backgroundColor: null}).run(),
         };
     },
 });

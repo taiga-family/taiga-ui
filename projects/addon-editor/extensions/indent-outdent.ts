@@ -126,11 +126,9 @@ export const Indent = Extension.create<IndentOptions>({
                                       style: `margin-left: ${indent}px;`,
                                   }
                                 : {},
-                        parseHTML: ({style}) => ({
-                            indent:
-                                parseInt(style.marginLeft, 10) ||
-                                this.options.defaultIndentLevel,
-                        }),
+                        parseHTML: ({style}) =>
+                            parseInt(style.marginLeft, 10) ||
+                            this.options.defaultIndentLevel,
                         keepOnSplit: false,
                     },
                 },
@@ -140,38 +138,34 @@ export const Indent = Extension.create<IndentOptions>({
 
     addCommands(): {indent: () => Command; outdent: () => Command} {
         return {
-            indent:
-                () =>
-                ({tr, state, dispatch}) => {
-                    const {selection} = state;
+            indent: () => ({tr, state, dispatch}) => {
+                const {selection} = state;
 
-                    tr = tr.setSelection(selection);
-                    tr = updateIndentLevel(tr, IndentProps.more);
+                tr = tr.setSelection(selection);
+                tr = updateIndentLevel(tr, IndentProps.more);
 
-                    if (tr.docChanged && dispatch) {
-                        dispatch(tr);
+                if (tr.docChanged && dispatch) {
+                    dispatch(tr);
 
-                        return true;
-                    }
+                    return true;
+                }
 
-                    return false;
-                },
-            outdent:
-                () =>
-                ({tr, state, dispatch}) => {
-                    const {selection} = state;
+                return false;
+            },
+            outdent: () => ({tr, state, dispatch}) => {
+                const {selection} = state;
 
-                    tr = tr.setSelection(selection);
-                    tr = updateIndentLevel(tr, IndentProps.less);
+                tr = tr.setSelection(selection);
+                tr = updateIndentLevel(tr, IndentProps.less);
 
-                    if (tr.docChanged && dispatch) {
-                        dispatch(tr);
+                if (tr.docChanged && dispatch) {
+                    dispatch(tr);
 
-                        return true;
-                    }
+                    return true;
+                }
 
-                    return false;
-                },
+                return false;
+            },
         };
     },
 

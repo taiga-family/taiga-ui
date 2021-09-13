@@ -1,8 +1,8 @@
 @import 'taiga-ui-local';
 
 :host {
-    font: var(--tui-font-text-s);
     display: flex;
+    font: var(--tui-font-text-s);
     border-radius: var(--tui-radius-m);
     height: var(--tui-height-m);
     color: var(--tui-text-01);
@@ -23,7 +23,7 @@
     flex-grow: 1;
     min-width: 0;
 
-    :host._has-buttons & {
+    :host:not(._hide-buttons) & {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }

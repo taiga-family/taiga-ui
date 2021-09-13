@@ -1,4 +1,4 @@
-module.exports = function (config) {
+module.exports = function (config, path = '') {
     config.set({
         basePath: '',
         frameworks: ['jasmine-ajax', 'jasmine', '@angular-devkit/build-angular'],
@@ -14,7 +14,7 @@ module.exports = function (config) {
             clearContext: false,
         },
         coverageIstanbulReporter: {
-            dir: require('path').join(__dirname, './coverage'),
+            dir: require('path').join(__dirname, './coverage', path),
             reports: ['html', 'lcovonly'],
             fixWebpackSourcePaths: true,
         },

@@ -17,8 +17,8 @@
         automation-id="tui-primitive-textfield__native-input"
         class="input"
         [class.input_hidden]="inputHidden"
-        [style.paddingLeft.px]="paddingLeft"
-        [style.paddingRight.px]="paddingRight"
+        [style.borderLeftWidth.rem]="borderLeft"
+        [style.borderRightWidth.rem]="borderRight"
         [attr.disabled]="computedDisabled || null"
         [attr.maxLength]="controller.maxLength"
         [attr.name]="name"
@@ -40,8 +40,8 @@
         *ngIf="inputHidden"
         automation-id="tui-primitive-textfield__value"
         class="input input_template"
-        [style.paddingLeft.px]="paddingLeft"
-        [style.borderRightWidth.px]="paddingRight"
+        [style.borderLeftWidth.rem]="borderLeft"
+        [style.borderRightWidth.rem]="borderRight"
     >
         <ng-content select="[polymorpheus-outlet]"></ng-content>
     </div>

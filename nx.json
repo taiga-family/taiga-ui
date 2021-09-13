@@ -1,0 +1,75 @@
+{
+    "implicitDependencies": {
+        "angular.json": "*",
+        "package.json": {
+            "dependencies": "*",
+            "devDependencies": "*"
+        },
+        "tslint.json": "*",
+        "nx.json": "*",
+        "tsconfig.json": "*"
+    },
+    "npmScope": "taiga-ui",
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "@nrwl/nx-cloud",
+            "options": {
+                "cacheableOperations": ["build", "test", "lint"]
+            }
+        }
+    },
+    "projects": {
+        "addon-charts": {
+            "implicitDependencies": []
+        },
+        "addon-commerce": {
+            "implicitDependencies": []
+        },
+        "addon-doc": {
+            "implicitDependencies": []
+        },
+        "addon-editor": {
+            "implicitDependencies": []
+        },
+        "addon-mobile": {
+            "implicitDependencies": []
+        },
+        "addon-table": {
+            "implicitDependencies": []
+        },
+        "addon-tablebars": {
+            "implicitDependencies": []
+        },
+        "cdk": {
+            "implicitDependencies": []
+        },
+        "core": {
+            "implicitDependencies": []
+        },
+        "i18n": {
+            "implicitDependencies": []
+        },
+        "icons": {
+            "implicitDependencies": []
+        },
+        "kit": {
+            "implicitDependencies": []
+        },
+        "taiga-schematics": {
+            "implicitDependencies": []
+        },
+        "testing": {
+            "implicitDependencies": []
+        },
+        "demo": {
+            "implicitDependencies": []
+        }
+    },
+    "affected": {
+        "defaultBase": "main"
+    },
+    "workspaceLayout": {
+        "libsDir": "projects",
+        "appsDir": "projects"
+    }
+}

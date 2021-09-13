@@ -1,8 +1,19 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Input,
+} from '@angular/core';
 import {TuiCurrency} from '@taiga-ui/addon-commerce/enums';
 import {TuiCurrencyVariants, TuiMoneySignT} from '@taiga-ui/addon-commerce/types';
 import {CHAR_EN_DASH, tuiDefaultProp} from '@taiga-ui/cdk';
-import {formatNumber, TuiDecimalT} from '@taiga-ui/core';
+import {
+    formatNumber,
+    NumberFormatSettings,
+    TUI_NUMBER_FORMAT,
+    TuiDecimalT,
+} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-money',
@@ -40,7 +51,12 @@ export class TuiMoneyComponent {
     singleColor = false;
 
     get integerPart(): string {
-        return formatNumber(Math.floor(Math.abs(this.value)));
+        return formatNumber(
+            Math.floor(Math.abs(this.value)),
+            null,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
     }
 
     get fractionPart(): string {
@@ -50,7 +66,7 @@ export class TuiMoneyComponent {
         return decimal === 'never' ||
             (parseInt(fraction, 10) === 0 && decimal !== 'always')
             ? ''
-            : ',' + fraction;
+            : this.numberFormat.decimalSeparator + fraction;
     }
 
     get signSymbol(): '' | typeof CHAR_EN_DASH | '+' {
@@ -89,4 +105,9 @@ export class TuiMoneyComponent {
     get inheritColor(): boolean {
         return this.singleColor || (this.value === 0 && this.colored);
     }
+
+    constructor(
+        @Inject(TUI_NUMBER_FORMAT)
+        private readonly numberFormat: NumberFormatSettings,
+    ) {}
 }
