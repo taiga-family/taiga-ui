@@ -36,13 +36,13 @@ import {
     TuiSizeL,
     TuiSizeS,
 } from '@taiga-ui/core/types';
-import {getPadding, sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
+import {getBorder, sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {TUI_PRIMITIVE_TEXTFIELD_PROVIDERS} from './primitive-textfield.providers';
 
-const ICON_PADDING = 28;
-const ICON_PADDING_S = 24;
+const ICON_PADDING = 1.75;
+const ICON_PADDING_S = 1.5;
 
 @Component({
     selector: 'tui-primitive-textfield',
@@ -165,15 +165,15 @@ export class TuiPrimitiveTextfieldComponent
         return this.size === 's' ? ICON_PADDING_S : ICON_PADDING;
     }
 
-    get paddingLeft(): number {
+    get borderLeft(): number {
         return (
             (this.iconAlignLeft ? this.iconPaddingLeft : 0) +
-            getPadding(sizeBigger(this.size, 'm'), false)
+            getBorder(sizeBigger(this.size, 'm'), false)
         );
     }
 
-    get paddingRight(): number {
-        return getPadding(
+    get borderRight(): number {
+        return getBorder(
             sizeBigger(this.size, 'm'),
             this.iconAlignRight,
             this.hasCleaner,
