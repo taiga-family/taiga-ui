@@ -4,20 +4,18 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.16.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.15.0...v2.16.0) (2021-09-13)
 
-
 ### Features
 
-* **addon-doc:** add polymorpheus to heading and description of examples ([#677](https://github.com/TinkoffCreditSystems/taiga-ui/issues/677)) ([02bc696](https://github.com/TinkoffCreditSystems/taiga-ui/commit/02bc6965ad9b7b9165f2d9f6aa1d27bd4c1ca5b0))
-* **addon-editor:** add new  `Editor` component ([#583](https://github.com/TinkoffCreditSystems/taiga-ui/issues/583)) ([ba602df](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ba602df0946aaba5f1b14b5f7cefe0b7742e47de))
-* **kit:** `InputCount` allow configuration of default options ([#675](https://github.com/TinkoffCreditSystems/taiga-ui/issues/675)) ([fab225b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/fab225bac43a6ad39c50c256c94fe5503e994755))
-* **kit:** new attribute component `ProgressBar` ([#665](https://github.com/TinkoffCreditSystems/taiga-ui/issues/665)) ([780b120](https://github.com/TinkoffCreditSystems/taiga-ui/commit/780b1201a468e0801b42796a6b6f447243dfb46f))
-* `TUI_NUMBER_FORMAT` token to configure decimals and thousand symbols in number formatting ([9748ba4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/9748ba46ff99aa7f7c01d0abc02cd07f894312bc))
-
+-   **addon-doc:** add polymorpheus to heading and description of examples ([#677](https://github.com/TinkoffCreditSystems/taiga-ui/issues/677)) ([02bc696](https://github.com/TinkoffCreditSystems/taiga-ui/commit/02bc6965ad9b7b9165f2d9f6aa1d27bd4c1ca5b0))
+-   **addon-editor:** add new `Editor` component ([#583](https://github.com/TinkoffCreditSystems/taiga-ui/issues/583)) ([ba602df](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ba602df0946aaba5f1b14b5f7cefe0b7742e47de))
+-   **kit:** `InputCount` allow configuration of default options ([#675](https://github.com/TinkoffCreditSystems/taiga-ui/issues/675)) ([fab225b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/fab225bac43a6ad39c50c256c94fe5503e994755))
+-   **kit:** new attribute component `ProgressBar` ([#665](https://github.com/TinkoffCreditSystems/taiga-ui/issues/665)) ([780b120](https://github.com/TinkoffCreditSystems/taiga-ui/commit/780b1201a468e0801b42796a6b6f447243dfb46f))
+-   **core:** `TUI_NUMBER_FORMAT` token to configure decimals and thousand symbols in number formatting ([9748ba4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/9748ba46ff99aa7f7c01d0abc02cd07f894312bc))
 
 ### Bug Fixes
 
-* **core:** fix Firefox input issue with caret outside visible area ([#612](https://github.com/TinkoffCreditSystems/taiga-ui/issues/612)) ([ecf6b25](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ecf6b25ee096c37e9073981fd6bcdc47d480f462))
-* **kit:** `MultiSelect` fix dropdown when wrapped in label ([#685](https://github.com/TinkoffCreditSystems/taiga-ui/issues/685)) ([a63b04d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a63b04d2d1c24065926f37a1b564ca4f50a8b9c6))
+-   **core:** fix Firefox input issue with caret outside visible area ([#612](https://github.com/TinkoffCreditSystems/taiga-ui/issues/612)) ([ecf6b25](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ecf6b25ee096c37e9073981fd6bcdc47d480f462))
+-   **kit:** `MultiSelect` fix dropdown when wrapped in label ([#685](https://github.com/TinkoffCreditSystems/taiga-ui/issues/685)) ([a63b04d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a63b04d2d1c24065926f37a1b564ca4f50a8b9c6))
 
 ## [2.15.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.14.0...v2.15.0) (2021-09-06)
 
