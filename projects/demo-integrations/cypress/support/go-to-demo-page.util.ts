@@ -1,3 +1,4 @@
+import {stubExternalIcons} from './stub-external-icons.util';
 import {waitAllRequests} from './wait-requests.util';
 
 const NEXT_URL_STORAGE_KEY = 'env';
@@ -28,6 +29,7 @@ export const goToDemoPage = (
     path: string,
     {inIframe = true, waitAllIcons = false}: Options = {},
 ) => {
+    stubExternalIcons();
     cy.visit('/', {
         onBeforeLoad: window => {
             const baseHref =
