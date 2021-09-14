@@ -10,10 +10,13 @@ body {
     outline: none;
     scrollbar-width: none;
     -webkit-tap-highlight-color: transparent;
+    user-select: none !important;
 }
 
-*:not(input):not(textarea) {
-    user-select: none !important;
+input,
+textarea,
+[contenteditable] * {
+    user-select: auto !important;
 }
 
 ::selection {
