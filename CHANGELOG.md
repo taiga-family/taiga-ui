@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.16.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.16.0...v2.16.1) (2021-09-14)
+
+### Features
+
+-   **core:** update media breakpoints ([#678](https://github.com/TinkoffCreditSystems/taiga-ui/issues/678)) ([db84b43](https://github.com/TinkoffCreditSystems/taiga-ui/commit/db84b4362d4bead3ca2e915993f9d42d91aff5bc))
+
+### Bug Fixes
+
+-   **addon-mobile:** fix user-select for contenteditable ([#689](https://github.com/TinkoffCreditSystems/taiga-ui/issues/689)) ([381365d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/381365d6b42aa4f94ef90bef7ee6649e28f42d9f))
+
 ## [2.16.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.15.0...v2.16.0) (2021-09-13)
 
 ### Features
