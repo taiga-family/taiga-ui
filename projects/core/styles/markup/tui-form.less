@@ -7,13 +7,13 @@
     &__header {
         margin-top: @fields-space-large;
 
-        @media @mobile {
+        @media @mobile-m {
             font: var(--tui-font-text-l);
             font-weight: bold;
             margin-bottom: @fields-space-mobile;
         }
 
-        @media @tablet-min {
+        @media @desktop-s-min {
             font: var(--tui-font-heading-5);
             margin-bottom: @fields-space;
         }
@@ -27,11 +27,11 @@
         }
 
         &_margin-bottom_small {
-            @media @mobile {
+            @media @mobile-m {
                 margin-bottom: @fields-space-mobile - @space;
             }
 
-            @media @tablet-min {
+            @media @desktop-s-min {
                 margin-bottom: @fields-space - @space;
             }
         }
@@ -47,7 +47,7 @@
         &_multi-fields {
             display: flex;
 
-            @media @mobile {
+            @media @mobile-m {
                 flex-wrap: wrap;
             }
         }
@@ -55,7 +55,7 @@
         &_half-width {
             width: ~'calc(50% - @{fields-space} / 2)';
 
-            @media @mobile {
+            @media @mobile-m {
                 width: 100%;
             }
         }
@@ -65,7 +65,7 @@
             flex-wrap: wrap;
         }
 
-        @media @mobile {
+        @media @mobile-m {
             margin-top: @fields-space-mobile;
         }
     }
@@ -79,7 +79,7 @@
             margin-left: 0;
         }
 
-        @media @mobile {
+        @media @mobile-m {
             flex-basis: 100%;
             margin-top: @fields-space-mobile;
             margin-left: 0;
@@ -120,7 +120,7 @@
             justify-content: flex-end;
         }
 
-        @media @mobile {
+        @media @mobile-m {
             flex-direction: column;
             margin-top: @fields-space-large-mobile;
         }
@@ -133,7 +133,7 @@
             margin-left: 0;
         }
 
-        @media @mobile {
+        @media @mobile-m {
             margin-top: @space * 2;
             margin-left: 0;
         }

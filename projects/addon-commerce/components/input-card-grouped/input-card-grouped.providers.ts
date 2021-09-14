@@ -35,7 +35,7 @@ export function inputGroupedTextsFactory(
     cvcTexts: Observable<[string, string]>,
 ): Observable<TuiCardGroupedTexts> {
     const media = windowRef.matchMedia(
-        `screen and (min-width: ${(MEDIA.tablet - 1) / 16}em)`,
+        `screen and (min-width: ${(MEDIA.desktopSmall - 1) / 16}em)`,
     );
 
     return typedFromEvent(media, 'change').pipe(

@@ -5,5 +5,5 @@ export const MEDIA = {
     mobile: 320,
     tablet: 600,
     desktopSmall: 1024,
-    desktopLarge: 1360,
+    desktopLarge: 1280,
 };

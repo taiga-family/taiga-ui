@@ -59,22 +59,17 @@
     }
 
     &_adaptive.tui-row {
-        @media @desktop-lg-min {
+        @media @desktop-m-min {
             margin-left: -@space-large;
             margin-right: -@space-large;
         }
 
-        @media @desktop {
+        @media @desktop-s {
             margin-left: -@space-normal;
             margin-right: -@space-normal;
         }
 
-        @media @tablet {
-            margin-left: -@space-small;
-            margin-right: -@space-small;
-        }
-
-        @media @mobile {
+        @media @mobile-m {
             margin-left: -@space-small;
             margin-right: -@space-small;
         }
@@ -85,12 +80,12 @@
         margin-right: -@space-normal;
     }
 
-    @media @desktop-lg-min {
+    @media @desktop-m-min {
         margin-left: -@space-large;
         margin-right: -@space-large;
     }
 
-    @media @desktop {
+    @media @desktop-s {
         margin-left: -@space-normal;
         margin-right: -@space-normal;
     }
@@ -105,23 +100,15 @@
     }
 
     .tui-row_adaptive & {
-        @media @desktop-lg-min {
+        @media @desktop-m-min {
             .generate-columns(lg, 12, @space-large);
         }
 
-        @media @desktop {
+        @media @desktop-s {
             .generate-columns(md, 12, @space-normal);
         }
 
-        @media @tablet {
-            .generate-columns(sm, 12, @space-small);
-        }
-
-        @media @tablet-s {
-            .generate-columns(s, 12, @space-small);
-        }
-
-        @media @mobile {
+        @media @mobile-m {
             .generate-columns(xs, 12, @space-small);
         }
     }
@@ -130,7 +117,7 @@
         .generate-sme-columns(12, @space-normal);
     }
 
-    @media @desktop-lg-min {
+    @media @desktop-m-min {
         .generate-sme-columns(12, @space-large);
     }
 }
@@ -138,20 +125,15 @@
 .tui-col-offset {
     .generate-sme-offset-columns(12);
 
-    @media @mobile-interval {
+    @media @mobile-m-interval {
         .generate-offset-columns(xs, 12);
     }
 
-    @media @tablet-interval {
-        .generate-offset-columns(sm, 12);
-        .generate-offset-columns(s, 12);
-    }
-
-    @media @desktop-interval {
+    @media @desktop-s {
         .generate-offset-columns(md, 12);
     }
 
-    @media @desktop-lg-min {
+    @media @desktop-m-min {
         .generate-offset-columns(lg, 12);
     }
 }
