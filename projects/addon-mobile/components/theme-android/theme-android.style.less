@@ -12,8 +12,12 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
-*:not(input):not(textarea) {
+*:not(input):not(textarea):not([contenteditable *]) {
     user-select: none !important;
+}
+
+[contenteditable] > * {
+    user-select: auto !important;
 }
 
 ::selection {
