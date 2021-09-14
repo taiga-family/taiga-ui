@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.16.2](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.16.1...v2.16.2) (2021-09-14)
+
+
+### Bug Fixes
+
+* **core:** autofill border color ([e80c8ed](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e80c8ed3707fe152383aaa434c4700647d479ce6))
+
 ### [2.16.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.16.0...v2.16.1) (2021-09-14)
 
 ### Features
