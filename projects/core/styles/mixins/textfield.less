@@ -47,16 +47,17 @@
     .clearinput();
     .fullsize();
 
-    :host[data-mode='onDark'] & {
-        .autofill(dark);
-    }
-
     padding: 0;
+    border: solid transparent;
     border-width: 0 0.75rem;
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
     text-transform: inherit;
+
+    :host[data-mode='onDark'] & {
+        .autofill(dark);
+    }
 
     :host[data-tui-host-size='s'] & {
         border-width: 0 5rem 0 0.75rem;
