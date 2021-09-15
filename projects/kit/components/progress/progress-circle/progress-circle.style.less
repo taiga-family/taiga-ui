@@ -1,0 +1,79 @@
+/* Safari doesn't support rem units inside svg */
+@width: {
+    @s: 32px;
+    @m: 48px;
+    @l: 64px;
+    @xl: 128px;
+};
+
+@track-stroke: {
+    @s: 8px;
+    @m: 4px;
+    @l: 4px;
+    @xl: 4px;
+};
+
+@progress-stroke: {
+    @s: 8px;
+    @m: 6px;
+    @l: 6px;
+    @xl: 6px;
+};
+
+.circle-params(@size) {
+    width: @width[ @@size];
+    height: @width[ @@size];
+
+    .track {
+        r: (@width[ @@size] - @track-stroke[ @@size]) / 2;
+        stroke-width: @track-stroke[ @@size];
+    }
+
+    .progress {
+        @radius: (@width[ @@size] - @progress-stroke[ @@size]) / 2;
+        @circumference: 2 * pi() * @radius;
+
+        r: @radius;
+        stroke-width: @progress-stroke[ @@size];
+        stroke-dasharray: @circumference;
+        stroke-dashoffset: calc(@circumference - var(--progress-percentage) * @circumference);
+    }
+}
+
+:host {
+    display: block;
+    color: var(--tui-primary);
+    transform: rotate(-90deg);
+    transform-origin: center;
+
+    &[data-size='s'] {
+        .circle-params(s);
+    }
+
+    &[data-size='m'] {
+        .circle-params(m);
+    }
+
+    &[data-size='l'] {
+        .circle-params(l);
+    }
+
+    &[data-size='xl'] {
+        .circle-params(xl);
+    }
+}
+
+.track {
+    fill: transparent;
+    stroke: var(--tui-base-03);
+}
+
+.progress {
+    fill: transparent;
+    stroke: var(--tui-progress-color, currentColor);
+    transition: stroke-dashoffset var(--tui-duration) linear;
+}
+
+.hidden-progress {
+    display: none;
+}

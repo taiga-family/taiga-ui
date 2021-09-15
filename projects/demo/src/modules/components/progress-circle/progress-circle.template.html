@@ -1,23 +1,17 @@
 <tui-doc-page
-    header="ProgressBar"
+    header="ProgressCircle"
     package="KIT"
-    path="kit/components/progress/progress-bar"
+    path="kit/components/progress/progress-circle"
 >
     <ng-template pageTab>
         <dl i18n>
-            <dt><code>tuiProgressBar</code></dt>
+            <dt><code>&lt;tui-progress-circle /&gt;</code></dt>
             <dd>
-                – attribute component for native html tag
-                <code>&lt;progress /&gt;</code>.
+                is a component to visually represent the completion of a process
+                or operation (as a partially filled circle/ring). It shows how
+                much has been completed and how much remains.
             </dd>
         </dl>
-        <p i18n>
-            <strong>Usage:</strong>
-            <code
-                >&lt;progress tuiProgressBar value="40"
-                max="100"&gt;&lt;/progress&gt;</code
-            >.
-        </p>
 
         <tui-doc-example
             id="basic"
@@ -25,25 +19,16 @@
             heading="Basic"
             [content]="basicExample"
         >
-            <tui-progress-bar-example-1></tui-progress-bar-example-1>
+            <tui-progress-circle-example-1></tui-progress-circle-example-1>
         </tui-doc-example>
 
         <tui-doc-example
-            id="multicolor"
-            i18n-heading
-            heading="Multicolor"
-            [content]="multiColorExample"
-        >
-            <tui-progress-bar-example-2></tui-progress-bar-example-2>
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="sizes"
+            id="size"
             i18n-heading
             heading="Sizes"
             [content]="sizesExample"
         >
-            <tui-progress-bar-example-3></tui-progress-bar-example-3>
+            <tui-progress-circle-example-2></tui-progress-circle-example-2>
         </tui-doc-example>
 
         <tui-doc-example
@@ -52,29 +37,27 @@
             heading="With label"
             [content]="labelExample"
         >
-            <tui-progress-bar-example-4></tui-progress-bar-example-4>
+            <tui-progress-circle-example-3></tui-progress-circle-example-3>
         </tui-doc-example>
 
         <tui-doc-example
-            id="stacked"
+            id="colors"
             i18n-heading
-            heading="Stacked progress bars"
-            [content]="stackedExample"
+            heading="Colors"
+            [content]="colorsExample"
         >
-            <tui-progress-bar-example-5></tui-progress-bar-example-5>
+            <tui-progress-circle-example-4></tui-progress-circle-example-4>
         </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <progress
-                tuiProgressBar
-                class="api-progress"
+            <tui-progress-circle
                 [value]="value"
                 [max]="max"
                 [size]="size"
                 [color]="color"
-            ></progress>
+            ></tui-progress-circle>
         </tui-doc-demo>
 
         <tui-doc-documentation>
@@ -85,15 +68,10 @@
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="value"
             >
-                Native attribute
-                <a
-                    tuiLink
-                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attributes"
-                    target="_blank"
-                >
-                    value
-                </a>
-                of <code>&lt;progress /&gt;</code>
+                This property specifies how much of the task that has been
+                completed. It must be a valid floating point number between 0
+                and <code>max</code>, or between 0 and 1 if <code>max</code> is
+                omitted.
             </ng-template>
 
             <ng-template
@@ -103,15 +81,11 @@
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="max"
             >
-                Native attribute
-                <a
-                    tuiLink
-                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attributes"
-                    target="_blank"
-                >
-                    max
-                </a>
-                of <code>&lt;progress /&gt;</code>
+                <p>
+                    This property describes how much work the task indicated by
+                    the progress element requires.
+                </p>
+                <p>The default value is <code>1</code>.</p>
             </ng-template>
 
             <ng-template
@@ -122,7 +96,7 @@
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
-                Size of the progress element
+                Size of the circle.
             </ng-template>
 
             <ng-template
@@ -133,12 +107,10 @@
                 [documentationPropertyValues]="colorVariants"
                 [(documentationPropertyValue)]="color"
             >
-                Color of the progress indicator
+                Color of the progress indicator.
                 <p>
-                    We recommend set solid color via
-                    <code>&lt;progress /&gt;</code>'s CSS-property
-                    <code>color</code>
-                    (especially, if you support old not-chromium based Edge)
+                    We recommend set solid color via CSS-property
+                    <code>color</code>.
                 </p>
             </ng-template>
         </tui-doc-documentation>
@@ -149,7 +121,7 @@
             <li>
                 <p i18n>
                     Import <code>TuiProgressModule</code> into a module where
-                    you want to use our attribute component
+                    you want to use our component
                 </p>
 
                 <tui-doc-code
@@ -169,3 +141,13 @@
         </ol>
     </ng-template>
 </tui-doc-page>
+
+<svg width="0" height="0">
+    <defs>
+        <linearGradient id="gradient" gradientTransform="rotate(95)">
+            <stop offset="0%" stop-color="var(--tui-support-02)"></stop>
+            <stop offset="45%" stop-color="var(--tui-support-14) "></stop>
+            <stop offset="100%" stop-color="var(--tui-support-12)"></stop>
+        </linearGradient>
+    </defs>
+</svg>

@@ -2,19 +2,22 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiProgressColorSegmentsPipe} from './pipes/progress-color-segments.pipe';
 import {TuiProgressBarComponent} from './progress-bar/progress-bar.component';
+import {TuiProgressCircleComponent} from './progress-circle/progress-circle.component';
 import {TuiProgressLabelComponent} from './progress-label/progress-label.component';
 
 @NgModule({
     imports: [CommonModule],
     declarations: [
         TuiProgressBarComponent,
-        TuiProgressLabelComponent,
         TuiProgressColorSegmentsPipe,
+        TuiProgressCircleComponent,
+        TuiProgressLabelComponent,
     ],
     exports: [
         TuiProgressBarComponent,
-        TuiProgressLabelComponent,
+        TuiProgressCircleComponent,
         TuiProgressColorSegmentsPipe,
+        TuiProgressLabelComponent,
     ],
 })
 export class TuiProgressModule {}
