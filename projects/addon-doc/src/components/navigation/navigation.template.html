@@ -68,7 +68,7 @@
                 *ngFor="let item of itemsWithoutSections; let index = index"
             >
                 <ng-container
-                    *ngTemplateOutlet="pages; context: {item: item, index: items.length + index}"
+                    *ngTemplateOutlet="pages; context: {item: item, index: (items.length - 1) + index}"
                 >
                 </ng-container>
             </ng-container>

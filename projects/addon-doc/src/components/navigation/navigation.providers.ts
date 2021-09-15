@@ -15,10 +15,6 @@ export const NAVIGATION_ITEMS: InjectionToken<
     ReadonlyArray<TuiDocPages>
 > = new InjectionToken<ReadonlyArray<TuiDocPages>>('Navigation pages');
 
-export const NAVIGATION_ITEMS_WITHOUT_SECTIONS = new InjectionToken<
-    ReadonlyArray<TuiDocPages>
->('Navigation pages without sections');
-
 export const NAVIGATION_PROVIDERS: Provider[] = [
     TuiDestroyService,
     {
@@ -35,11 +31,6 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
         provide: NAVIGATION_ITEMS,
         deps: [TUI_DOC_PAGES],
         useFactory: itemsProviderFactory,
-    },
-    {
-        provide: NAVIGATION_ITEMS_WITHOUT_SECTIONS,
-        deps: [TUI_DOC_PAGES],
-        useFactory: itemsWithoutSections,
     },
 ];
 
@@ -69,9 +60,8 @@ export function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
 export function itemsProviderFactory(pages: TuiDocPages): ReadonlyArray<TuiDocPages> {
     const labels = labelsProviderFactory(pages);
 
-    return labels.map(label => pages.filter(({section}) => section === label));
-}
-
-export function itemsWithoutSections(pages: TuiDocPages): TuiDocPages {
-    return pages.filter(page => !page.section);
+    return [
+        ...labels.map(label => pages.filter(({section}) => section === label)),
+        pages.filter(page => !page.section),
+    ];
 }

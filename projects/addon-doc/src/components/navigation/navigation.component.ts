@@ -12,7 +12,6 @@ import {TuiDocPages} from '../../types/pages';
 import {transliterateKeyboardLayout} from '../../utils/transliterate-keyboard-layout';
 import {
     NAVIGATION_ITEMS,
-    NAVIGATION_ITEMS_WITHOUT_SECTIONS,
     NAVIGATION_LABELS,
     NAVIGATION_PROVIDERS,
     NAVIGATION_TITLE,
@@ -52,8 +51,6 @@ export class TuiDocNavigationComponent {
         @Inject(NAVIGATION_LABELS) readonly labels: string[],
         @Inject(NAVIGATION_ITEMS)
         readonly items: ReadonlyArray<TuiDocPages>,
-        @Inject(NAVIGATION_ITEMS_WITHOUT_SECTIONS)
-        readonly itemsWithoutSections: TuiDocPages,
         @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
@@ -72,10 +69,11 @@ export class TuiDocNavigationComponent {
     }
 
     get filteredItems(): ReadonlyArray<ReadonlyArray<TuiDocPage>> {
-        return this.filterItems(
-            this.flattenSubPages(this.items, this.itemsWithoutSections),
-            this.search,
-        );
+        return this.filterItems(this.flattenSubPages(this.items), this.search);
+    }
+
+    get itemsWithoutSections() {
+        return this.items[this.items.length - 1];
     }
 
     isActive(route: string): boolean {
@@ -130,11 +128,8 @@ export class TuiDocNavigationComponent {
     @tuiPure
     private flattenSubPages(
         items: ReadonlyArray<TuiDocPages>,
-        itemsWithoutSection: TuiDocPages,
     ): ReadonlyArray<ReadonlyArray<TuiDocPage>> {
-        return [...items, itemsWithoutSection].reduce<
-            ReadonlyArray<ReadonlyArray<TuiDocPage>>
-        >(
+        return items.reduce<ReadonlyArray<ReadonlyArray<TuiDocPage>>>(
             (array, item) => [
                 ...array,
                 item.reduce<ReadonlyArray<TuiDocPage>>(
@@ -160,7 +155,7 @@ export class TuiDocNavigationComponent {
     }
 
     private openActivePageGroup() {
-        [...this.items, this.itemsWithoutSections].forEach((pages, pagesIndex) => {
+        this.items.forEach((pages, pagesIndex) => {
             pages.forEach((page, pageIndex) => {
                 if ('route' in page && this.isActiveRoute(page.route)) {
                     this.openPagesArr[pagesIndex] = true;
