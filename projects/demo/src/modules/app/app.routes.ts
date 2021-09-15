@@ -11,6 +11,7 @@ export const ROUTES = [
             title: 'A powerful set of open source components for Angular',
         },
     },
+    // Documentation
     {
         path: 'getting-started',
         component: GettingStartedComponent,
@@ -34,6 +35,42 @@ export const ROUTES = [
             title: `Changelog`,
         },
     },
+    {
+        path: 'tui-doc',
+        loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
+        data: {
+            title: `Documentation engine`,
+        },
+    },
+    {
+        path: 'related',
+        loadChildren: () =>
+            import(`../info/related/related.module`).then(m => m.RelatedModule),
+        data: {
+            title: `Friendly libraries`,
+        },
+    },
+    {
+        path: 'testing/disable-animation',
+        loadChildren: () =>
+            import(`../info/testing/disable-animation/disable-animation.module`).then(
+                m => m.DisableAnimationModule,
+            ),
+        data: {
+            title: `Disable animation`,
+        },
+    },
+    {
+        path: `testing/screenshot-bot`,
+        loadChildren: () =>
+            import(
+                `../info/testing/screenshot-github-bot/screenshot-github-bot.module`
+            ).then(m => m.ScreenshotGithubBotModule),
+        data: {
+            title: `Our screenshot bot`,
+        },
+    },
+    // Customization
     {
         path: 'i18n',
         loadChildren: () =>
@@ -76,21 +113,6 @@ export const ROUTES = [
             ),
         data: {
             title: `Icon set`,
-        },
-    },
-    {
-        path: 'tui-doc',
-        loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
-        data: {
-            title: `Documentation engine`,
-        },
-    },
-    {
-        path: 'related',
-        loadChildren: () =>
-            import(`../info/related/related.module`).then(m => m.RelatedModule),
-        data: {
-            title: `Friendly libraries`,
         },
     },
     // COMPONENTS
@@ -791,6 +813,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/progress-bar',
+        loadChildren: () =>
+            import(`../components/progress-bar/progress-bar.module`).then(
+                m => m.ExampleTuiProgressBarModule,
+            ),
+        data: {
+            title: 'ProgressBar',
+        },
+    },
+    {
         path: 'components/theme-switcher',
         loadChildren: () =>
             import(`../components/theme-switcher/theme-switcher.module`).then(
@@ -838,6 +870,16 @@ export const ROUTES = [
             ),
         data: {
             title: 'Editor',
+        },
+    },
+    {
+        path: 'components/editor-new',
+        loadChildren: () =>
+            import(`../components/editor-new/editor-new.module`).then(
+                m => m.ExampleTuiEditorNewModule,
+            ),
+        data: {
+            title: 'Editor[new]',
         },
     },
     {
@@ -1040,6 +1082,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'directives/dropdown-context',
+        loadChildren: () =>
+            import('../directives/dropdown-context/dropdown-context.module').then(
+                m => m.ExampleTuiDropdownContextModule,
+            ),
+        data: {
+            title: 'DropdownContext',
+        },
+    },
+    {
         path: 'directives/dropdown-selection',
         loadChildren: () =>
             import(`../directives/dropdown-selection/dropdown-selection.module`).then(
@@ -1077,6 +1129,14 @@ export const ROUTES = [
             ),
         data: {
             title: 'Element',
+        },
+    },
+    {
+        path: 'directives/for',
+        loadChildren: () =>
+            import(`../directives/for/for.module`).then(m => m.ExampleTuiForModule),
+        data: {
+            title: 'For',
         },
     },
     {

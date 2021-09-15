@@ -33,10 +33,10 @@
         <span *ngIf="showValue" class="label">
             <span class="value">{{computedValue}}</span>
             <span
-                *ngIf="isPluralized(pluralize)"
+                *ngIf="pluralizeMap"
                 automation-id="tui-input-slider__pluralize"
             >
-                {{value | tuiPluralize: pluralize}}
+                {{value | i18nPlural: pluralizeMap}}
             </span>
         </span>
         <span

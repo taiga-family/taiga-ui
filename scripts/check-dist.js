@@ -53,6 +53,15 @@ function checkPrivateExports(path) {
         return;
     }
 
+    if (
+        result
+            .trim()
+            .split('\n')
+            .every(path => path.indexOf('icons') !== -1)
+    ) {
+        return;
+    }
+
     throw new Error(`There are problems with private exports in:\n\n${result}`);
 }
 

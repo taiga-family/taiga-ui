@@ -9,8 +9,8 @@
         <tui-notification i18n class="tui-space_vertical-4">
             Use <code><strong>TUI_DIALOGS_CLOSE</strong></code> token if you
             need to close dialog with from a stream. For example, this way you
-            can close dialogs by routing:
-            <p><tui-doc-code [code]="token"></tui-doc-code></p>
+            can close dialogs by logout:
+            <p><tui-doc-code [code]="dialogsCloseToken"></tui-doc-code></p>
         </tui-notification>
 
         <tui-notification class="tui-space_vertical-4" status="warning">
@@ -248,7 +248,7 @@
             </li>
             <li>
                 <p i18n>
-                    Use <code>open</code> mothod to show a dialog, subscribe to
+                    Use <code>open</code> method to show a dialog, subscribe to
                     an <code>Observable</code>:
                 </p>
 
@@ -307,6 +307,28 @@
                 <tui-doc-code
                     filename="myDialog.component.ts"
                     [code]="exampleLazyModule"
+                ></tui-doc-code>
+            </li>
+            <li>
+                <p i18n>
+                    Dialogs have experimental feature with closing them on
+                    browser backward navigation. It was achieved through
+                    manipulation of <code><strong>window.history</strong></code
+                    >.
+                </p>
+
+                <p i18n>
+                    If you have some troubles with it, report about this,
+                    please.<br />
+                    In this case, you can disable this feature for your app
+                    using
+                    <code><strong>TUI_DIALOG_CLOSES_ON_BACK</strong></code>
+                    token.
+                </p>
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    [code]="exampleDialogClosesOnBackToken"
                 ></tui-doc-code>
             </li>
         </ol>

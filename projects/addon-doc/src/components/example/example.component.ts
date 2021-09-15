@@ -11,6 +11,7 @@ import {LOCATION} from '@ng-web-apis/common';
 import {TuiHandler, tuiPure} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {CodeEditor} from '../../interfaces/code-editor';
@@ -28,10 +29,10 @@ import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 })
 export class TuiDocExampleComponent {
     @Input()
-    heading: string | null = null;
+    heading: PolymorpheusContent = '';
 
     @Input()
-    description: string | null = null;
+    description: PolymorpheusContent = '';
 
     @Input()
     set content(content: Record<string, string>) {

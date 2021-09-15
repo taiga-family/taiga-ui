@@ -23,16 +23,16 @@
 >
     <ng-content></ng-content>
 </tui-primitive-textfield>
-<ng-container *ngIf="hasButtons && (minusTexts$ | async) as texts">
+<ng-container *ngIf="!buttonsHidden && (minusTexts$ | async) as texts">
     <section class="buttons">
         <button
             tuiIconButton
             type="button"
             automation-id="tui-input-count__plus-button"
             size="s"
-            icon="tuiIconPlus"
+            [icon]="iconUp"
             class="button button_plus"
-            appearance="textfield"
+            [appearance]="options.appearance"
             [title]="texts[0]"
             [disabled]="plusButtonDisabled"
             [focusable]="false"
@@ -44,9 +44,9 @@
             type="button"
             automation-id="tui-input-count__minus-button"
             size="s"
-            icon="tuiIconMinus"
+            [icon]="iconDown"
             class="button button_minus"
-            appearance="textfield"
+            [appearance]="options.appearance"
             [disabled]="minusButtonDisabled"
             [focusable]="false"
             [title]="texts[1]"

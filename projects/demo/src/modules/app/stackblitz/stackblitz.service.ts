@@ -15,6 +15,15 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 import stackblitz from '@stackblitz/sdk';
 
 const DEPS: Record<string, string> = {
+    '@angular/cdk': '*',
+    '@angular/core': '*',
+    '@angular/common': '*',
+    '@angular/compiler': '*',
+    '@angular/forms': '*',
+    '@angular/platform-browser': '*',
+    '@angular/platform-browser-dynamic': '*',
+    '@angular/animations': '*',
+    '@angular/router': '*',
     '@taiga-ui/cdk': '*',
     '@taiga-ui/i18n': '*',
     '@taiga-ui/core': '*',
@@ -35,7 +44,6 @@ const DEPS: Record<string, string> = {
     'angular2-text-mask': '*',
     dompurify: '*',
     '@types/dompurify': '*',
-    '@angular/cdk': '*',
 };
 
 const COMPONENT_SELECTOR = `selector: 'my-app',`;

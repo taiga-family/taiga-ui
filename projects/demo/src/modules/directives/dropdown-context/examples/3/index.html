@@ -1,0 +1,22 @@
+<p [tuiDropdownContext]="reportForm">
+    Some text with mistake. Make right click on it.
+</p>
+
+<p [tuiDropdownContext]="reportForm">Another text</p>
+
+<ng-template #reportForm let-close="close">
+    <form [formGroup]="testForm" class="container">
+        <tui-text-area formControlName="reportText">
+            Have you found a mistake ? Write about it!
+        </tui-text-area>
+
+        <button
+            class="button"
+            type="button"
+            tuiButton
+            (click)="report(); close()"
+        >
+            SEND IT
+        </button>
+    </form>
+</ng-template>

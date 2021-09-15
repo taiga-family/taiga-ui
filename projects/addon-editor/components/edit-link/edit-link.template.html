@@ -9,7 +9,7 @@
                 [class.input_filled]="hasUrl"
                 [ngModel]="url"
                 (ngModelChange)="onChange($event)"
-                (keydown.enter)="onSave()"
+                (keydown.prevent.enter)="onSave()"
                 (keydown.backspace)="onBackspace()"
             >
                 example.com

@@ -131,6 +131,7 @@ export class TuiDropdownSelectionDirective
                     const active = getNativeFocused(this.documentRef);
                     const selection = this.documentRef.getSelection();
 
+                    // TODO: iframe warning
                     if (
                         (active instanceof HTMLInputElement ||
                             active instanceof HTMLTextAreaElement) &&

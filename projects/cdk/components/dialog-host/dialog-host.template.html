@@ -12,5 +12,11 @@
         [context]="item"
         [@tuiParentAnimation]
     ></section>
-    <div class="overlay" [class.overlay_visible]="dialogs.length"></div>
+    <div
+        *tuiLet="isDialogClosesOnBack$ | async as isDialogClosesOnBack"
+        class="overlay"
+        (window:popstate)="closeLast(dialogs, isDialogClosesOnBack)"
+        (transitionend)="onDialog($event, !!dialogs.length, isDialogClosesOnBack)"
+        [class.overlay_visible]="dialogs.length"
+    ></div>
 </ng-container>

@@ -18,6 +18,8 @@ export function formatPhone(
 
     let result = countryCode;
 
+    countryCode = countryCode.replace(/[()]/g, '');
+
     if (!value.startsWith(countryCode)) {
         value = countryCode + value.replace('+', '');
     }

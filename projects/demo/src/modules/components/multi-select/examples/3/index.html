@@ -1,5 +1,18 @@
 <form class="b-form">
     <tui-multi-select
+        tuiTextfieldSize="s"
+        [formControl]="control"
+        [stringify]="stringify"
+        [identityMatcher]="identityMatcher"
+    >
+        Choose your heroes
+        <tui-data-list *tuiDataList tuiMultiSelectGroup>
+            <button *ngFor="let item of items" tuiOption [value]="item">
+                {{item.name}}
+            </button>
+        </tui-data-list>
+    </tui-multi-select>
+    <tui-multi-select
         class="tui-space_top-2"
         tuiTextfieldSize="m"
         [editable]="false"

@@ -35,5 +35,20 @@ export const TUI_GERMAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         insertHorizontalRule: 'Horizontale Linie einfügen',
         superscript: 'Hochgestellt',
         subscript: 'Tiefgestellt',
+        insertTable: 'Insert table',
+        mergeCells: 'Merge cells',
+        splitCells: 'Split cells',
+        rowsColumnsManaging: 'Managing rows and columns',
+    },
+    editorTableCommands: [
+        ['Insert column before', 'Insert column after'],
+        ['Insert row before', 'Insert row after'],
+        ['Delete column', 'Delete row'],
+    ],
+    editorCodeOptions: ['Code in the text', 'Code in block'],
+    editorFontOptions: {
+        normal: 'Normal',
+        title: 'Title',
+        subtitle: 'Subtitle',
     },
 };

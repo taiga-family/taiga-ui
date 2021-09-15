@@ -6,46 +6,39 @@
     box-sizing: border-box;
 
     &.tui-container_adaptive {
-        @media @desktop-lg-min {
+        @media @desktop-m-min {
             width: 69rem;
         }
 
-        @media @desktop {
+        @media @desktop-s {
             width: 51.5rem;
         }
 
-        @media @tablet-lg {
-            width: 38rem;
-        }
-
-        @media @tablet-s {
-            width: 32rem;
-        }
-
-        @media @mobile {
+        @media @mobile-m {
             width: 100%;
             padding: 0 1rem;
         }
     }
 
-    @media @desktop-lg-min {
+    @media @desktop-m-min {
         width: 69rem;
     }
 
-    @media @desktop {
+    @media @desktop-s {
         width: 51.5rem;
+        padding: 0 3rem;
     }
 
     &_menu {
-        @media @desktop-lg-min {
+        @media @desktop-m-min {
             width: 69rem;
         }
 
-        @media @desktop-interval {
+        @media @desktop-s-interval {
             width: 51.5rem;
         }
 
-        @media @tablet {
+        @media @mobile-m {
             width: auto;
             padding: 0 1rem;
         }
@@ -55,13 +48,13 @@
         width: auto;
         padding: 0 1.5rem;
 
-        @media @tablet {
+        @media @mobile-m {
             padding: 0 1rem;
         }
     }
 
     &_fixed {
-        @media @desktop {
+        @media @desktop-s {
             width: 69rem;
         }
     }

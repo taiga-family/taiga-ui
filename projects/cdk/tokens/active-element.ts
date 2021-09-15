@@ -1,6 +1,8 @@
+import {DOCUMENT} from '@angular/common';
 import {inject, InjectionToken} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {typedFromEvent} from '@taiga-ui/cdk/observables';
+import {getActualTarget, getDocumentOrShadowRoot} from '@taiga-ui/cdk/utils';
 import {merge, Observable, of, timer} from 'rxjs';
 import {
     distinctUntilChanged,
@@ -9,6 +11,7 @@ import {
     mapTo,
     repeatWhen,
     share,
+    startWith,
     switchMap,
     take,
     takeUntil,
@@ -20,9 +23,9 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
     'Active element on the document for ActiveZone',
     {
         factory: () => {
-            const skip$ = inject(TUI_REMOVED_ELEMENT);
+            const removedElement$ = inject(TUI_REMOVED_ELEMENT);
             const windowRef = inject(WINDOW);
-            const {document} = windowRef;
+            const documentRef = inject(DOCUMENT);
             const focusout$ = typedFromEvent(windowRef, 'focusout');
             const focusin$ = typedFromEvent(windowRef, 'focusin');
             const blur$ = typedFromEvent(windowRef, 'blur');
@@ -33,24 +36,61 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                 focusout$.pipe(
                     takeUntil(mousedown$),
                     repeatWhen(() => mouseup$),
-                    withLatestFrom(skip$),
-                    filter(([{target}, element]) => target !== element),
+                    withLatestFrom(removedElement$),
+                    filter(([event, removedElement]) =>
+                        isValidFocusout(getActualTarget(event), removedElement),
+                    ),
                     map(([{relatedTarget}]) => relatedTarget),
                 ),
                 blur$.pipe(
-                    map(() => document.activeElement),
+                    map(() => documentRef.activeElement),
                     filter(element => !!element && element.matches('iframe')),
                 ),
-                focusin$.pipe(map(({target}) => target)),
-                mousedown$.pipe(
-                    switchMap(({target}) =>
-                        !document.activeElement ||
-                        document.activeElement === document.body
+                focusin$.pipe(
+                    switchMap(event => {
+                        const target = getActualTarget(event);
+                        const root = getDocumentOrShadowRoot(target) as Document;
+
+                        return root === documentRef
                             ? of(target)
-                            : focusout$.pipe(take(1), takeUntil(timer(0)), mapTo(target)),
+                            : shadowRootActiveElement(root).pipe(startWith(target));
+                    }),
+                ),
+                mousedown$.pipe(
+                    switchMap(event =>
+                        !documentRef.activeElement ||
+                        documentRef.activeElement === documentRef.body
+                            ? of(getActualTarget(event))
+                            : focusout$.pipe(
+                                  take(1),
+                                  takeUntil(timer(0)),
+                                  mapTo(getActualTarget(event)),
+                              ),
                     ),
                 ),
             ).pipe(distinctUntilChanged(), share());
         },
     },
 );
+
+// Checks if focusout event should be considered leaving active zone
+function isValidFocusout(target: any, removedElement: Element | null): boolean {
+    return (
+        // Not due to switching tabs/going to DevTools
+        target.ownerDocument?.activeElement !== target &&
+        // Not due to button/input becoming disabled
+        !target.disabled &&
+        // Not due to element being removed from DOM
+        (!removedElement || !removedElement.contains(target))
+    );
+}
+
+function shadowRootActiveElement(root: Document): Observable<EventTarget | null> {
+    return merge(
+        typedFromEvent(root, 'focusin').pipe(map(({target}) => target)),
+        typedFromEvent(root, 'focusout').pipe(
+            filter(({target}) => isValidFocusout(target, null)),
+            map(({relatedTarget}) => relatedTarget),
+        ),
+    );
+}

@@ -1,9 +1,37 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Inject,
+    InjectionToken,
+} from '@angular/core';
+import {Title} from '@angular/platform-browser';
+import {HISTORY, WINDOW} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
-import {TuiAriaDialogContext} from '@taiga-ui/cdk/interfaces';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
-import {combineLatest, Observable} from 'rxjs';
+import {TuiDialog} from '@taiga-ui/cdk/types';
+import {isInsideIframe} from '@taiga-ui/cdk/utils';
+import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
+
+export const TUI_DIALOG_CLOSES_ON_BACK = new InjectionToken<Observable<boolean>>(
+    'Is closing dialog on browser backward navigation enabled',
+    {
+        /**
+         * TODO enable this feature for iframes too
+         * when the legacy frame manager (with an iframe inside) will be removed on all internal projects
+         */
+        factory: () => of(!isInsideIframe(inject(WINDOW))),
+    },
+);
+
+// TODO: remove in ivy compilation
+export const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
+// TODO: remove in ivy compilation
+export const isFakeHistoryState = (
+    historyState: Record<string, unknown>,
+): historyState is typeof FAKE_HISTORY_STATE =>
+    historyState?.label === FAKE_HISTORY_STATE.label;
 
 // @dynamic
 @Component({
@@ -13,7 +41,7 @@ import {map} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [TUI_PARENT_ANIMATION],
 })
-export class TuiDialogHostComponent<T extends TuiAriaDialogContext> {
+export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
     readonly dialogs$ = combineLatest(this.dialogsByType).pipe(
         map(allTypesDialogs =>
             new Array<T>()
@@ -23,7 +51,44 @@ export class TuiDialogHostComponent<T extends TuiAriaDialogContext> {
     );
 
     constructor(
-        @Inject(TUI_DIALOGS)
-        private readonly dialogsByType: Observable<readonly T[]>[],
+        @Inject(TUI_DIALOG_CLOSES_ON_BACK)
+        readonly isDialogClosesOnBack$: Observable<boolean>,
+        @Inject(TUI_DIALOGS) private readonly dialogsByType: Observable<readonly T[]>[],
+        @Inject(HISTORY) private readonly historyRef: History,
+        @Inject(Title) private readonly titleService: Title,
     ) {}
+
+    closeLast(dialogs: readonly T[], isDialogClosesOnBack: boolean) {
+        if (!isDialogClosesOnBack) {
+            return;
+        }
+
+        const [last] = dialogs.slice(-1);
+
+        if (!last) {
+            return;
+        }
+
+        if (dialogs.length > 1) {
+            this.historyRef.pushState(FAKE_HISTORY_STATE, this.titleService.getTitle());
+        }
+
+        last.$implicit.complete();
+    }
+
+    onDialog(
+        {propertyName}: TransitionEvent,
+        popupOpened: boolean,
+        isDialogClosesOnBack: boolean,
+    ) {
+        if (!isDialogClosesOnBack || propertyName !== 'letter-spacing') {
+            return;
+        }
+
+        if (popupOpened) {
+            this.historyRef.pushState(FAKE_HISTORY_STATE, this.titleService.getTitle());
+        } else if (isFakeHistoryState(this.historyRef.state)) {
+            this.historyRef.back();
+        }
+    }
 }

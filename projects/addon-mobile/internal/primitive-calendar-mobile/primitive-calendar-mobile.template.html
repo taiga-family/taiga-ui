@@ -13,7 +13,7 @@
             [class.cell_interval]="itemIsInterval(sheet[rowIndex][colIndex])"
             [class.cell_disabled]="itemIsDisabled(sheet[rowIndex][colIndex])"
             [attr.data-tui-element-range]="getItemRange(sheet[rowIndex][colIndex])"
-            (click)="onItemClick($event, sheet[rowIndex][colIndex])"
+            (click)="onItemClick(sheet[rowIndex][colIndex])"
         >
             {{sheet[rowIndex][colIndex].day}}
         </div>

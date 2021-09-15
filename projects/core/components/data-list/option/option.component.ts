@@ -99,7 +99,7 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     @HostListener('init.onMouseMove', ['$event'])
     @HostListener('mousemove.silent', ['$event'])
     onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>) {
-        setNativeFocused(currentTarget);
+        setNativeFocused(currentTarget, true, true);
     }
 
     // Preventing focus loss upon focused option removal

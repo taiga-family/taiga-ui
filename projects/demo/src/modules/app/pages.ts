@@ -1,6 +1,7 @@
 import {TuiDocPages} from '@taiga-ui/addon-doc';
 
 export const pages: TuiDocPages = [
+    // Documentation
     {
         section: $localize`Documentation`,
         title: $localize`Getting started`,
@@ -32,6 +33,27 @@ export const pages: TuiDocPages = [
         keywords: 'related, libraries, other, friendly, npm, packages',
         route: 'related',
     },
+    {
+        section: $localize`Documentation`,
+        title: $localize`Testing`,
+        subPages: [
+            {
+                section: $localize`Documentation`,
+                title: $localize`Disable animation`,
+                keywords:
+                    'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы',
+                route: '/testing/disable-animation',
+            },
+            {
+                section: $localize`Documentation`,
+                title: $localize`Our screenshot bot`,
+                keywords:
+                    'test, tests, testing, cypress, тестирование, тесты, тест, tips, советы, github, github-app, bot, screenshot',
+                route: `/testing/screenshot-bot`,
+            },
+        ],
+    },
+    // Common
     {
         section: $localize`Common`,
         title: $localize`Typography`,
@@ -107,6 +129,7 @@ export const pages: TuiDocPages = [
             },
         ],
     },
+    // Customization
     {
         section: $localize`Customization`,
         title: `i18n`,
@@ -137,6 +160,7 @@ export const pages: TuiDocPages = [
         keywords: 'icons, svg, theme, custom, style, sanitizer',
         route: 'icon-set',
     },
+    // Components
     {
         section: $localize`Components`,
         title: 'Accordion',
@@ -526,6 +550,13 @@ export const pages: TuiDocPages = [
                     'wysiwyg, редактор, текст, html, rich, text, input, инпут, ввод',
                 route: '/components/editor',
             },
+            {
+                section: $localize`Components`,
+                title: 'Editor[new]',
+                keywords:
+                    'wysiwyg, editor, редактор, текст, html, rich, text, input, инпут, ввод',
+                route: '/components/editor-new',
+            },
         ],
     },
     {
@@ -595,6 +626,19 @@ export const pages: TuiDocPages = [
                 keywords:
                     'mobile, потянуть, обновление, лоадер, loader, крутилка, загрузка',
                 route: '/components/pull-to-refresh',
+            },
+        ],
+    },
+    {
+        section: $localize`Components`,
+        title: 'Progress',
+        subPages: [
+            {
+                section: $localize`Components`,
+                title: 'ProgressBar',
+                keywords:
+                    'progress, bar, progress-bar, индикатор, загрузка, прогресс, бар',
+                route: '/components/progress-bar',
             },
         ],
     },
@@ -762,6 +806,7 @@ export const pages: TuiDocPages = [
         keywords: 'editor, редактор, текст, html, rich, text, input, инпут, ввод',
         route: '/components/toolbar',
     },
+    // Navigation
     {
         section: $localize`Navigation`,
         title: 'Breadcrumbs',
@@ -787,6 +832,7 @@ export const pages: TuiDocPages = [
         keywords: 'mobile, ios, android, шаги, таб, tab, tabs',
         route: '/navigation/tabs',
     },
+    // Tools
     {
         section: $localize`Tools`,
         title: $localize`Decorators`,
@@ -844,6 +890,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'DropdownContext',
+                keywords: 'dropdown, контекст, выпадашка, дропдаун, Context, right-click',
+                route: '/directives/dropdown-context',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'DropdownSelection',
                 keywords:
                     'dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context',
@@ -861,6 +913,12 @@ export const pages: TuiDocPages = [
                 title: 'Element',
                 keywords: 'element, elementref, nativeelement, tag',
                 route: 'directives/element',
+            },
+            {
+                section: $localize`Tools`,
+                title: 'For',
+                keywords: 'loading, cycle, empty, list, iterate',
+                route: 'directives/for',
             },
             {
                 section: $localize`Tools`,

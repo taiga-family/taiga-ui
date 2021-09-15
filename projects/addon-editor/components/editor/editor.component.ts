@@ -52,7 +52,7 @@ export function elementFactory(editor: TuiEditorComponent): ElementRef | null {
 
 // @dynamic
 @Component({
-    selector: 'tui-editor',
+    selector: 'tui-editor:not([new])',
     templateUrl: './editor.template.html',
     styleUrls: ['./editor.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

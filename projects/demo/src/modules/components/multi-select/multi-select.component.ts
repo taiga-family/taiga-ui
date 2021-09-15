@@ -34,6 +34,7 @@ import {
     TuiDropdownWidthT,
     TuiHorizontalDirection,
     TuiSizeL,
+    TuiSizeS,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -117,9 +118,9 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     search = '';
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    size: TuiSizeL = this.sizeVariants[1];
+    size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
 
     stringifyVariants: TuiStringHandler<Account | string>[] = [
         TUI_DEFAULT_STRINGIFY,

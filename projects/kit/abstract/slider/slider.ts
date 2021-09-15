@@ -20,7 +20,12 @@ import {
     TuiNativeFocusableElement,
     typedFromEvent,
 } from '@taiga-ui/cdk';
-import {TuiPluralize, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {
+    TuiPluralize,
+    tuiPluralizeToICU,
+    TuiSizeS,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
@@ -41,7 +46,8 @@ export const DOT_WIDTH: {[key: string]: number} = {
 @Directive()
 export abstract class AbstractTuiSlider<T>
     extends AbstractTuiControl<T>
-    implements TuiWithOptionalMinMax<number> {
+    implements TuiWithOptionalMinMax<number>
+{
     @Input()
     @tuiDefaultProp()
     min = 0;
@@ -62,9 +68,14 @@ export abstract class AbstractTuiSlider<T>
     @tuiDefaultProp(nonNegativeFiniteAssertion, 'Quantum must be a non-negative number')
     quantum = 0;
 
+    // TODO: remove setter in v3.0:
     @Input()
     @tuiDefaultProp()
-    pluralize: TuiPluralize | null = null;
+    set pluralize(pluralize: TuiPluralize | Record<string, string> | null) {
+        this.pluralizeMap = Array.isArray(pluralize)
+            ? tuiPluralizeToICU(pluralize)
+            : pluralize;
+    }
 
     @Input()
     @HostBinding('attr.data-tui-host-size')
@@ -78,6 +89,8 @@ export abstract class AbstractTuiSlider<T>
     focusVisibleLeft = false;
 
     focusVisibleRight = false;
+
+    pluralizeMap: Record<string, string> | null = null;
 
     @ViewChild('dotLeft')
     protected dotLeft?: ElementRef<TuiNativeFocusableElement>;
@@ -145,7 +158,9 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$
             .pipe(
                 map((event: MouseEvent | TouchEvent) => {
-                    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+                    const rect = (
+                        event.currentTarget as HTMLElement
+                    ).getBoundingClientRect();
                     const clientX =
                         event instanceof MouseEvent
                             ? event.clientX
@@ -226,10 +241,6 @@ export abstract class AbstractTuiSlider<T>
 
         event.preventDefault();
         this.pointerDown$.next(event);
-    }
-
-    isPluralized(pluralize: TuiPluralize | null): pluralize is TuiPluralize {
-        return pluralize !== null && pluralize.length === 3;
     }
 
     decrement(right: boolean) {

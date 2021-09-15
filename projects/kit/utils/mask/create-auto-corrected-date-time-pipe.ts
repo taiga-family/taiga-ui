@@ -1,19 +1,18 @@
-import {TuiDay, TuiTimeMode} from '@taiga-ui/cdk';
-import {TuiTextMaskPipeHandler} from '@taiga-ui/core';
+import {DATE_FILLER_LENGTH, TuiDay, TuiTimeMode} from '@taiga-ui/cdk';
+import {TuiTextMaskPipeHandler, TuiWithOptionalMinMaxWithValue} from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
-import {WithDateMaskPipeConfig} from '@taiga-ui/kit/interfaces';
 
 import {normalizeDateValue} from './create-auto-corrected-date-pipe';
 import {tuiCreateAutoCorrectedTimePipe} from './create-auto-corrected-time-pipe';
 
 export function tuiCreateAutoCorrectedDateTimePipe(
-    config: WithDateMaskPipeConfig<TuiDay | null, TuiDay>,
+    config: TuiWithOptionalMinMaxWithValue<TuiDay | null, TuiDay>,
     timeMode: TuiTimeMode,
 ): TuiTextMaskPipeHandler {
     const timePipe = tuiCreateAutoCorrectedTimePipe(timeMode);
 
     return value => {
-        if (value.length < config.filler.length) {
+        if (value.length < DATE_FILLER_LENGTH) {
             return {value};
         }
 

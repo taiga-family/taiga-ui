@@ -9,11 +9,13 @@ import {
 } from '@taiga-ui/cdk';
 import {
     maskedNumberStringToNumber,
+    NumberFormatSettings,
     TuiBrightness,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
     TuiModeDirective,
     TuiPluralize,
+    tuiPluralizeToICU,
     TuiSizeL,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
@@ -48,9 +50,14 @@ export abstract class AbstractTuiInputSlider<T>
     @tuiDefaultProp()
     maxLabel = '';
 
+    // TODO: remove setter in v3.0:
     @Input()
     @tuiDefaultProp()
-    pluralize: TuiPluralize | null = null;
+    set pluralize(pluralize: TuiPluralize | Record<string, string> | null) {
+        this.pluralizeMap = Array.isArray(pluralize)
+            ? tuiPluralizeToICU(pluralize)
+            : pluralize;
+    }
 
     @Input()
     @tuiDefaultProp()
@@ -80,12 +87,22 @@ export abstract class AbstractTuiInputSlider<T>
         mask: tuiCreateNumberMask({
             allowNegative: min < 0,
             allowDecimal: !Number.isInteger(quantum),
+            decimalSymbol: this.numberFormat.decimalSeparator,
+            thousandSymbol: this.numberFormat.thousandSeparator,
         }),
-        pipe: tuiCreateAutoCorrectedNumberPipe(),
+        pipe: tuiCreateAutoCorrectedNumberPipe(
+            0,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        ),
         guide: false,
     });
 
+    pluralizeMap: Record<string, string> | null = null;
+
     protected abstract readonly modeDirective: TuiModeDirective | null;
+
+    protected abstract readonly numberFormat: NumberFormatSettings;
 
     @HostBinding('class._segmented')
     get segmented(): boolean {
@@ -125,10 +142,6 @@ export abstract class AbstractTuiInputSlider<T>
         this.updateHovered(hovered);
     }
 
-    isPluralized(pluralize: TuiPluralize | null): pluralize is TuiPluralize {
-        return pluralize !== null && pluralize.length === 3;
-    }
-
     protected valueGuard(value: number): number {
         return this.quantum
             ? clamp(
@@ -143,7 +156,14 @@ export abstract class AbstractTuiInputSlider<T>
     }
 
     protected capInputValue(value: string, max: number = this.max): number | null {
-        const capped = Math.min(maskedNumberStringToNumber(value), max);
+        const capped = Math.min(
+            maskedNumberStringToNumber(
+                value,
+                this.numberFormat.decimalSeparator,
+                this.numberFormat.thousandSeparator,
+            ),
+            max,
+        );
 
         if (this.min < 0 && capped < this.min) {
             return this.min;

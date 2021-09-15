@@ -43,7 +43,8 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class TuiButtonComponent
     extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @HostBinding('attr.data-appearance')
     @tuiDefaultProp()
@@ -106,7 +107,7 @@ export class TuiButtonComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.elementRef.nativeElement);
+        return !this.showLoader && isNativeFocused(this.elementRef.nativeElement);
     }
 
     get loaderSize(): TuiSizeS {

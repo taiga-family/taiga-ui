@@ -3,6 +3,8 @@
         class="input"
         formControlName="testValue"
         [countries]="countries"
-        [countryIsoCode]="countryIsoCode"
-    ></tui-input-phone-international>
+        [(countryIsoCode)]="countryIsoCode"
+    >
+        Type your number
+    </tui-input-phone-international>
 </form>

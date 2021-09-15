@@ -1,5 +1,6 @@
 import {InjectionToken} from '@angular/core';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
+import {extractI18n} from '@taiga-ui/i18n';
 
 export const TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, string]>(
     `tui-color-selector i18n`,
@@ -23,41 +24,27 @@ export type EditorToolbarTexts =
     | 'outdent'
     | 'backColor';
 
-export const TUI_EDITOR_TOOLBAR_TEXTS = new InjectionToken<
-    Record<EditorToolbarTexts, string>
->(`tui-color-selector i18n`, {
-    factory: () => ({
-        undo: 'Undo',
-        redo: 'Redo',
-        font: 'Font',
-        fontStyle: 'Font style',
-        fontSize: 'fontSize',
-        bold: 'Bold',
-        italic: 'Italic',
-        underline: 'Underline',
-        strikeThrough: 'Strike Through',
-        justify: 'Justify',
-        justifyLeft: 'Justify left',
-        justifyCenter: 'Justify center',
-        justifyRight: 'Justify right',
-        justifyFull: 'Justify full',
-        list: 'List',
-        indent: 'Indent',
-        outdent: 'Outdent',
-        unorderedList: 'Unordered list',
-        orderedList: 'Ordered list',
-        quote: 'Quote',
-        foreColor: 'Color',
-        backColor: 'Background color',
-        hiliteColor: 'hiliteColor',
-        clear: 'Clear',
-        link: 'Link',
-        attach: 'Attach file',
-        tex: 'Insert TeX',
-        code: 'Code',
-        image: 'Insert image',
-        insertHorizontalRule: 'Insert horizontal rule',
-        superscript: 'Superscript',
-        subscript: 'Subscript',
-    }),
+export const TUI_EDITOR_TOOLBAR_TEXTS = new InjectionToken(`tui-editor-toolbar i18n`, {
+    factory: extractI18n('toolbarTools'),
 });
+
+export const TUI_EDITOR_TABLE_COMMANDS = new InjectionToken(
+    'tui-editor-toolbar table i18n',
+    {
+        factory: extractI18n('editorTableCommands'),
+    },
+);
+
+export const TUI_EDITOR_CODE_OPTIONS = new InjectionToken(
+    'tui-editor-toolbar codes options',
+    {
+        factory: extractI18n('editorCodeOptions'),
+    },
+);
+
+export const TUI_EDITOR_FONT_OPTIONS = new InjectionToken(
+    'tui-editor-toolbar font options',
+    {
+        factory: extractI18n('editorFontOptions'),
+    },
+);

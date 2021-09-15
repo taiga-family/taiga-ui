@@ -73,7 +73,7 @@
         text-align: center;
     }
 
-    @media @mobile {
+    @media @mobile-m {
         &[data-size] {
             min-width: 100vw;
             width: 100vw;
@@ -108,7 +108,7 @@
     border-top-right-radius: inherit;
     overflow: hidden;
 
-    @media @mobile {
+    @media @mobile-m {
         :host[data-size='fullscreen'] & {
             flex: 1;
         }
@@ -134,36 +134,33 @@
 
 .close {
     .transition(background);
-    position: absolute;
-    top: 0;
-    right: 0;
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
     color: var(--tui-base-01);
+    background: rgba(104, 104, 104, 0.96);
 
-    @media @mobile {
+    &:hover {
+        background: rgba(159, 159, 159, 0.86);
+    }
+
+    :host:not([data-size='fullscreen']) & {
+        animation: tuiFadeIn var(--tui-duration);
+    }
+
+    :host:not([data-size='fullscreen']).ng-animating & {
+        display: none;
+    }
+
+    @media @mobile-m {
+        position: absolute;
+        top: 0;
+        right: 0;
         background: transparent;
         color: var(--tui-base-06);
 
         &:hover {
             color: var(--tui-base-07);
-        }
-    }
-
-    @media @tablet-min {
-        position: fixed;
-        top: 1.5rem;
-        right: 1.5rem;
-        background: rgba(104, 104, 104, 0.96);
-
-        &:hover {
-            background: rgba(159, 159, 159, 0.86);
-        }
-
-        :host:not([data-size='fullscreen']) & {
-            animation: tuiFadeIn var(--tui-duration);
-        }
-
-        :host:not([data-size='fullscreen']).ng-animating & {
-            display: none;
         }
     }
 }

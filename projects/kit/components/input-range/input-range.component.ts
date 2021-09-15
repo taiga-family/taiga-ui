@@ -23,6 +23,8 @@ import {
     formatNumber,
     maskedMoneyValueIsEmpty,
     maskedNumberStringToNumber,
+    NumberFormatSettings,
+    TUI_NUMBER_FORMAT,
     TuiModeDirective,
 } from '@taiga-ui/core';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
@@ -58,7 +60,10 @@ export class TuiInputRangeComponent
         @Optional()
         @Inject(TuiModeDirective)
         protected readonly modeDirective: TuiModeDirective | null,
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
+        @Inject(TUI_IS_MOBILE)
+        private readonly isMobile: boolean,
+        @Inject(TUI_NUMBER_FORMAT)
+        protected readonly numberFormat: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
     }
@@ -98,11 +103,11 @@ export class TuiInputRangeComponent
     }
 
     get computedValueLeft(): string {
-        return formatNumber(this.value[0]);
+        return this.formatNumber(this.value[0]);
     }
 
     get computedValueRight(): string {
-        return formatNumber(this.value[1]);
+        return this.formatNumber(this.value[1]);
     }
 
     onActiveZone(active: boolean) {
@@ -160,7 +165,7 @@ export class TuiInputRangeComponent
             return;
         }
 
-        const newValue = formatNumber(capped) + postfix;
+        const newValue = this.formatNumber(capped) + postfix;
 
         if (this.nativeLeft && this.inputValueLeft !== newValue) {
             this.nativeLeft.nativeElement.value = newValue;
@@ -178,7 +183,7 @@ export class TuiInputRangeComponent
             return;
         }
 
-        const newValue = formatNumber(capped) + postfix;
+        const newValue = this.formatNumber(capped) + postfix;
 
         if (this.nativeRight && this.inputValueRight !== newValue) {
             this.nativeRight.nativeElement.value = newValue;
@@ -210,7 +215,7 @@ export class TuiInputRangeComponent
         }
 
         this.updateValue(guardedValue);
-        this.nativeLeft.nativeElement.value = formatNumber(guardedValue[0]);
+        this.nativeLeft.nativeElement.value = this.formatNumber(guardedValue[0]);
     }
 
     onLeftFocused(focused: boolean) {
@@ -218,10 +223,14 @@ export class TuiInputRangeComponent
             return;
         }
 
-        const inputValue = maskedNumberStringToNumber(this.computedValueLeft);
+        const inputValue = maskedNumberStringToNumber(
+            this.computedValueLeft,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
         const value = isNaN(inputValue) ? this.min : this.valueGuard(inputValue);
 
-        this.nativeLeft.nativeElement.value = formatNumber(value);
+        this.nativeLeft.nativeElement.value = this.formatNumber(value);
 
         if (value !== this.value[0]) {
             this.updateValue([value, this.value[1]]);
@@ -233,12 +242,17 @@ export class TuiInputRangeComponent
             return;
         }
 
-        const inputValue = maskedNumberStringToNumber(this.computedValueRight);
+        const inputValue = maskedNumberStringToNumber(
+            this.computedValueRight,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
+
         const value = isNaN(inputValue)
             ? this.value[0]
             : this.valueGuard(Math.max(inputValue, this.value[0]));
 
-        this.nativeRight.nativeElement.value = formatNumber(value);
+        this.nativeRight.nativeElement.value = this.formatNumber(value);
 
         if (value !== this.value[1]) {
             this.updateValue([this.value[0], value]);
@@ -247,6 +261,15 @@ export class TuiInputRangeComponent
 
     protected getFallbackValue(): [number, number] {
         return [0, 0];
+    }
+
+    private formatNumber(value: number): string {
+        return formatNumber(
+            value,
+            null,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
     }
 
     private processStep(increment: boolean, right: boolean) {

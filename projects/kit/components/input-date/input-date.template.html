@@ -6,13 +6,14 @@
     (openChange)="onOpenChange($event)"
 >
     <tui-primitive-textfield
+        *tuiLet="filler$ | async as filler"
         automation-id="tui-input-date-range__textfield"
         class="textfield"
         tuiValueAccessor
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
-        [filler]="computedFiller"
+        [filler]="getComputedFiller(filler)"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [focusable]="computedFocusable"

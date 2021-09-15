@@ -4,6 +4,7 @@
     [content]="dropdown"
     [canOpen]="!readOnly"
     [(open)]="open"
+    (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div tuiGroup>
         <tui-primitive-textfield
@@ -22,17 +23,17 @@
         <tui-input-phone
             class="input-phone tui-group__auto-width-item"
             tuiTextfieldAutocomplete="off"
-            [tuiTextfieldLabelOutside]="true"
-            [formControl]="control"
+            [ngModel]="value"
             [focusable]="focusable"
             [countryCode]="inputPhoneCountryCode"
             [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
             [readOnly]="readOnly"
-            [pseudoInvalid]="pseudoInvalid"
+            [pseudoInvalid]="computedInvalid"
             [pseudoFocused]="pseudoFocused"
             [pseudoHovered]="pseudoHovered"
+            (ngModelChange)="onModelChange($event)"
         >
-            {{inputPhoneCountryCode}}
+            <ng-content></ng-content>
         </tui-input-phone>
     </div>
 
@@ -50,7 +51,7 @@
                 />
                 <span class="country-item-name">{{countriesNames[item]}}</span>
                 <span class="country-item-code"
-                    >{{isoToCountryCode(item)}}</span
+                    >{{item | tuiMapper : isoToCountryCodeMapper}}</span
                 >
             </button>
         </tui-data-list>

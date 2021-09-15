@@ -38,6 +38,7 @@ export * from '@taiga-ui/kit/components/marker-icon';
 export * from '@taiga-ui/kit/components/multi-select';
 export * from '@taiga-ui/kit/components/multi-select-option';
 export * from '@taiga-ui/kit/components/pagination';
+export * from '@taiga-ui/kit/components/progress';
 export * from '@taiga-ui/kit/components/radio';
 export * from '@taiga-ui/kit/components/radio-block';
 export * from '@taiga-ui/kit/components/radio-group';

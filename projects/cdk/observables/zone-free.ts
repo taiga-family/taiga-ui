@@ -1,20 +1,5 @@
 import {NgZone} from '@angular/core';
-import {
-    MonoTypeOperatorFunction,
-    Observable,
-    Observer,
-    Operator,
-    pipe,
-    TeardownLogic,
-} from 'rxjs';
-
-class TuiZonefreeOperator<T> implements Operator<T, T> {
-    constructor(private readonly ngZone: NgZone) {}
-
-    call(observer: Observer<T>, source: Observable<T>): TeardownLogic {
-        return this.ngZone.runOutsideAngular(() => source.subscribe(observer));
-    }
-}
+import {MonoTypeOperatorFunction, Observable, pipe} from 'rxjs';
 
 export function tuiZonefull<T>(ngZone: NgZone): MonoTypeOperatorFunction<T> {
     return source =>
@@ -28,7 +13,10 @@ export function tuiZonefull<T>(ngZone: NgZone): MonoTypeOperatorFunction<T> {
 }
 
 export function tuiZonefree<T>(ngZone: NgZone): MonoTypeOperatorFunction<T> {
-    return source => source.lift(new TuiZonefreeOperator<T>(ngZone));
+    return source =>
+        new Observable(subscriber =>
+            ngZone.runOutsideAngular(() => source.subscribe(subscriber)),
+        );
 }
 
 export function tuiZoneOptimized<T>(ngZone: NgZone): MonoTypeOperatorFunction<T> {

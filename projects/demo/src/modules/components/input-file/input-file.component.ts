@@ -60,7 +60,7 @@ export class ExampleTuiInputFileComponent extends AbstractExampleTuiControl {
     multiple = false;
     showSize = true;
     accept = '';
-    acceptVariants = ['image/*', 'application/pdf'];
+    acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
     readonly maxFileSizeVariants = [100, 512000, 30 * 1000 * 1000, 2.2 * 1000 * 1000];
     readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
     readonly rejectedFilesVariants: ReadonlyArray<ReadonlyArray<TuiFileLike>> = [

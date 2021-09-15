@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {TuiDialogService} from '@taiga-ui/core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -9,7 +10,17 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiDataListExample2 {
-    readonly burgers = ['Classic', 'Cheeseburger', 'Royal Cheeseburger'];
+    dropdownOpen = false;
 
+    readonly burgers = ['Classic', 'Cheeseburger', 'Royal Cheeseburger'];
     readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
+
+    constructor(
+        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    ) {}
+
+    selectOption(item: string) {
+        this.dropdownOpen = false;
+        this.dialogService.open(`You selected ${item}`).subscribe();
+    }
 }

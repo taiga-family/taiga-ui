@@ -56,6 +56,7 @@ export class TuiAutoFocusDirective implements AfterViewInit {
                 ? this.elementRef.nativeElement
                 : this.tuiFocusableComponent.nativeFocusableElement;
 
+        // TODO: iframe warning
         if (!(element instanceof HTMLElement)) {
             return;
         }

@@ -5,16 +5,12 @@ export function markControlAsTouchedAndValidate(control: AbstractControl) {
         control.controls.forEach(nestedControl => {
             markControlAsTouchedAndValidate(nestedControl);
         });
-
-        return;
     }
 
     if (control instanceof FormGroup) {
         Object.values(control.controls).forEach(nestedControl => {
             markControlAsTouchedAndValidate(nestedControl);
         });
-
-        return;
     }
 
     control.markAsTouched();

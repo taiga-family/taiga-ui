@@ -7,6 +7,11 @@ body.tui-editor-socket {
     padding: 0 16px;
 }
 
+p:empty:before {
+    content: ' ';
+    white-space: pre;
+}
+
 .tui-editor-socket {
     display: block;
     color: #333;

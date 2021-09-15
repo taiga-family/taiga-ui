@@ -16,6 +16,7 @@ import {
 import {tuiDefaultProp, tuiPure, TuiValidationError} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {EMPTY, merge, Observable} from 'rxjs';
 
 const EMPTY_RECORD = {};
 
@@ -56,6 +57,14 @@ export class TuiFieldErrorComponent {
         if (this.ngControl) {
             this.ngControl.valueAccessor = this;
         }
+    }
+
+    @tuiPure
+    get change$(): Observable<unknown> {
+        return merge(
+            this.control?.valueChanges || EMPTY,
+            this.control?.statusChanges || EMPTY,
+        );
     }
 
     get computedError(): TuiValidationError | null {

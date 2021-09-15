@@ -13,18 +13,18 @@
                     *ngIf="!itemIsUnavailable(item) || showAdjacent"
                     automation-id="tui-primitive-calendar__cell"
                     class="cell"
+                    [class.cell_weekend]="colIndex > 4"
                     [class.cell_today]="itemIsToday(item)"
                     [class.cell_interval]="itemIsInterval(item)"
                     [attr.data-tui-element-range]="getItemRange(item)"
                     [attr.data-tui-element-state]="getItemState(item)"
-                    (tuiHoveredChange)="onItemHovered($event, item)"
-                    (tuiPressedChange)="onItemPressed($event, item)"
-                    (click)="onItemClick($event, item)"
+                    (tuiHoveredChange)="onItemHovered($event && item)"
+                    (tuiPressedChange)="onItemPressed($event && item)"
+                    (click)="onItemClick(item)"
                 >
                     <div
                         automation-id="tui-primitive-calendar__item"
                         class="item"
-                        [class.item_weekend]="colIndex > 4"
                         [class.item_unavailable]="itemIsUnavailable(item)"
                     >
                         {{item.day}}
