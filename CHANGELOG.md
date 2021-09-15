@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [2.16.3](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.16.2...v2.16.3) (2021-09-15)
 
-
 ### Bug Fixes
 
-* **core:** fix primitive-texfield padding ([#695](https://github.com/TinkoffCreditSystems/taiga-ui/issues/695)) ([fc7ae56](https://github.com/TinkoffCreditSystems/taiga-ui/commit/fc7ae56b89bfa2e39b9f95467fea5857989ade62))
+-   **core:** fix primitive-texfield padding ([#695](https://github.com/TinkoffCreditSystems/taiga-ui/issues/695)) ([fc7ae56](https://github.com/TinkoffCreditSystems/taiga-ui/commit/fc7ae56b89bfa2e39b9f95467fea5857989ade62))
 
 ### [2.16.2](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.16.1...v2.16.2) (2021-09-14)
 
