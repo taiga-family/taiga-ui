@@ -1,8 +1,8 @@
-<progress class="hidden-progress" [value]="value" [max]="max"></progress>
+<progress class="t-hidden-progress" [value]="value" [max]="max"></progress>
 
-<svg class="svg" height="100%" width="100%" aria-hidden="true">
+<svg class="t-svg" height="100%" width="100%" aria-hidden="true">
     <circle
-        class="track"
+        class="t-track"
         cx="50%"
         cy="50%"
         [attr.r]="oldEdgeRadiusFallback"
@@ -10,7 +10,7 @@
 
     <circle
         #progressCircle
-        class="progress"
+        class="t-progress"
         cx="50%"
         cy="50%"
         [attr.r]="oldEdgeRadiusFallback"

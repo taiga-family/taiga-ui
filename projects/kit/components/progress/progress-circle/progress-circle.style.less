@@ -24,12 +24,12 @@
     width: @width[ @@size];
     height: @width[ @@size];
 
-    .track {
+    .t-track {
         r: (@width[ @@size] - @track-stroke[ @@size]) / 2;
         stroke-width: @track-stroke[ @@size];
     }
 
-    .progress {
+    .t-progress {
         @radius: (@width[ @@size] - @progress-stroke[ @@size]) / 2;
         @circumference: 2 * pi() * @radius;
 
@@ -65,18 +65,18 @@
     }
 }
 
-.track {
+.t-track {
     fill: transparent;
     stroke: var(--tui-base-03);
 }
 
-.progress {
+.t-progress {
     fill: transparent;
     stroke: var(--tui-progress-color, currentColor);
     transition: stroke-dashoffset var(--tui-duration) linear;
 }
 
-.hidden-progress {
+.t-hidden-progress {
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);
     height: 1px;
@@ -89,7 +89,7 @@
     left: 50%;
 }
 
-.svg {
+.t-svg {
     overflow-x: unset;
     overflow-y: unset;
 }
