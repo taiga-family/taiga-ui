@@ -1,23 +1,23 @@
-/* Safari doesn't support rem units inside svg */
+/* Safari doesn't support rem units inside svg (but supports em units) */
 @width: {
-    @s: 32px;
-    @m: 48px;
-    @l: 64px;
-    @xl: 128px;
+    @s: 2em;
+    @m: 3em;
+    @l: 4em;
+    @xl: 7em;
 };
 
 @track-stroke: {
-    @s: 8px;
-    @m: 4px;
-    @l: 4px;
-    @xl: 4px;
+    @s: 0.5em;
+    @m: 0.25em;
+    @l: 0.25em;
+    @xl: 0.25em;
 };
 
 @progress-stroke: {
-    @s: 8px;
-    @m: 6px;
-    @l: 6px;
-    @xl: 6px;
+    @s: 0.5em;
+    @m: 0.375em;
+    @l: 0.375em;
+    @xl: 0.375em;
 };
 
 .circle-params(@size) {
@@ -45,6 +45,7 @@
     color: var(--tui-primary);
     transform: rotate(-90deg);
     transform-origin: center;
+    font-size: 1rem;
 
     &[data-size='s'] {
         .circle-params(s);
