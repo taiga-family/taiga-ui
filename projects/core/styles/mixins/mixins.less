@@ -343,13 +343,12 @@
 
 // hide an element visually without hiding it from screen readers
 .sr-only() {
-    position: absolute;
-    width: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
     height: 1px;
-    padding: 0;
+    width: 1px;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+    padding: 0;
+    position: absolute;
 }
