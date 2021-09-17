@@ -10,13 +10,13 @@ import {changeDetection} from '../../../../../change-detection-strategy';
     changeDetection,
 })
 export class TuiInputCardGroupedExample2 {
-    readonly control = new FormControl();
-
     readonly items = [
         {card: '4321***1234', expire: '12/21', name: 'Salary', bank: 'Tinkoff'},
         {card: '8765***5678', expire: '03/42', name: 'Tips', bank: 'Bank of America'},
         {card: '4200***9000', name: 'Dogecoins', bank: 'Crypto'},
     ];
+
+    readonly control = new FormControl(this.items[0]);
 
     onClick(component: TuiInputCardGroupedComponent) {
         this.control.setValue(null);
