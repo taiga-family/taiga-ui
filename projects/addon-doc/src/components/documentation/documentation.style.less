@@ -7,7 +7,7 @@
     min-width: 100%;
 }
 
-.row {
+.t-row {
     @media @mobile-m {
         display: flex;
         flex-wrap: wrap;
@@ -18,7 +18,7 @@
     }
 }
 
-.cell {
+.t-cell {
     &_prop {
         width: 40%;
     }
@@ -39,22 +39,22 @@
     }
 }
 
-.property {
+.t-property {
     font: var(--tui-font-text-m);
     margin-bottom: @space;
     font-family: monospace;
     color: @color-property;
 }
 
-.type {
+.t-type {
     font-family: monospace;
 }
 
-.deprecated {
+.t-deprecated {
     background-color: var(--tui-error-bg);
 }
 
-.deprecated-label {
+.t-deprecated-label {
     margin-right: 0.125rem;
     color: var(--tui-error-fill);
 }

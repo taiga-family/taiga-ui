@@ -1,11 +1,11 @@
-<h3 *ngIf="heading" class="title">
+<h3 *ngIf="heading" class="t-title">
     <span polymorpheus-outlet [content]="heading"></span>
     <button
         *ngIf="id"
         tuiIconButton
         type="button"
         size="xs"
-        class="link-icon"
+        class="t-link-icon"
         icon="tuiIconLinkLarge"
         appearance="icon"
         [title]="copy$ | async"
@@ -14,12 +14,12 @@
 </h3>
 <h4
     *ngIf="description"
-    class="description"
+    class="t-description"
     polymorpheus-outlet
     [content]="description"
 ></h4>
-<div class="example">
-    <div class="tabs">
+<div class="t-example">
+    <div class="t-tabs">
         <tui-tabs [(activeItemIndex)]="activeItemIndex">
             <button *ngFor="let tab of tabs" tuiTab>{{tab}}</button>
         </tui-tabs>
@@ -37,14 +37,14 @@
     <ng-container [ngSwitch]="activeItem">
         <div
             *ngIf="isDefaultItem; else codeTab"
-            class="demo"
+            class="t-demo"
             automation-id="tui-doc-example"
         >
             <ng-content></ng-content>
         </div>
         <ng-template #codeTab>
             <tui-doc-copy
-                class="copy-code"
+                class="t-copy-code"
                 [cdkCopyToClipboard]="code"
             ></tui-doc-copy>
             <tui-doc-code [code]="code"></tui-doc-code>
