@@ -1,3 +1,5 @@
+@import 'taiga-ui-local';
+
 /* Safari doesn't support rem units inside svg (but supports em units) */
 @width: {
     @s: 2em;
@@ -77,16 +79,7 @@
 }
 
 .t-hidden-progress {
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path: inset(50%);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    .sr-only();
 }
 
 .t-svg {
