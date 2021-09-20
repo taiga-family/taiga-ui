@@ -16,6 +16,8 @@
         "prerender": "nx run demo:prerender",
         "i18n": "nx xi18n --output-path src/locale",
         "*** Workflow ***": "",
+        "many": "npm run-script env -- nx run-many --parallel",
+        "affected": "npm run-script env -- nx affected --parallel",
         "test": "nx test --browsers=ChromeHeadless --code-coverage=true --",
         "lint": "nx lint",
         "lint:less": "stylelint '**/*.less'",
