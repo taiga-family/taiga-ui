@@ -647,6 +647,13 @@ export const pages: TuiDocPages = [
                     'progress, circle, ring, progress-circle, progress-ring, индикатор, загрузка, прогресс',
                 route: '/components/progress-circle',
             },
+            {
+                section: $localize`Components`,
+                title: 'ProgressSegmented',
+                keywords:
+                    'progress, progress-segmented, индикатор, загрузка, прогресс, segment, segments, segmented',
+                route: '/components/progress-segmented',
+            },
         ],
     },
     {
