@@ -16,7 +16,7 @@
     <tr
         *ngFor="let propertyConnector of propertiesConnectors; last as lastItem"
         class="tui-table__tr tui-table__tr_hover_disabled t-row"
-        [class.deprecated]="propertyConnector.documentationPropertyDeprecated"
+        [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
         [class.tui-table__tr_border_none]="lastItem"
     >
         <td

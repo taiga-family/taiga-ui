@@ -15,7 +15,7 @@
 <ng-template #angroidLoader>
     <tui-mobile-android-loader
         class="t-android-loader"
-        [class.drop-animation]="dropped$ | async"
+        [class.t-drop-animation]="dropped$ | async"
         [style.transform]="loaderTransform$ | async"
         [pulled]="pulledInPercent$ | async"
     ></tui-mobile-android-loader>

@@ -11,7 +11,7 @@
 </tui-wrapper>
 <div
     class="t-wrapper"
-    [class._disabled]="disabled"
+    [class.t-wrapper_disabled]="disabled"
     (tuiHoveredChange)="onHovered($event)"
     (mousedown)="onMouseDown($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
@@ -26,7 +26,7 @@
         ></tui-toolbar>
         <div
             class="t-placeholder"
-            [class.placeholder_raised]="placeholderRaised"
+            [class.t-placeholder_raised]="placeholderRaised"
         >
             <ng-content></ng-content>
         </div>

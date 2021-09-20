@@ -25,8 +25,8 @@
                 class="t-input t-input_card"
                 automation-id="tui-input-card-grouped__card"
                 tuiInputMode="numeric"
-                [class.input_inert]="cardPrefilled"
-                [class.input_hidden]="isCardCollapsed"
+                [class.t-input_inert]="cardPrefilled"
+                [class.t-input_hidden]="isCardCollapsed"
                 [attr.id]="idCard"
                 [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper : cardValidator)"
                 [attr.aria-placeholder]="exampleText"
@@ -42,14 +42,14 @@
             <span
                 aria-hidden="true"
                 class="t-collapsed"
-                [class.collapsed_inactive]="!isCardCollapsed"
+                [class.t-collapsed_inactive]="!isCardCollapsed"
                 [attr.data-before]="masked"
             >
                 <span class="t-collapsed-wrapper">
                     <span
                         class="t-value"
-                        [class.value_collapsed]="isCardCollapsed"
-                        [class.value_small]="isCardSmall"
+                        [class.t-value_collapsed]="isCardCollapsed"
+                        [class.t-value_small]="isCardSmall"
                     >
                         {{formattedCard}}
                     </span>
@@ -57,7 +57,7 @@
             </span>
             <span
                 class="t-placeholder"
-                [class.placeholder_raised]="placeholderRaised"
+                [class.t-placeholder_raised]="placeholderRaised"
             >
                 {{texts.cardNumberText}}
             </span>
@@ -65,7 +65,7 @@
     </div>
     <div
         class="t-wrapper t-wrapper_expire"
-        [class.wrapper_active]="isCardCollapsed"
+        [class.t-wrapper_active]="isCardCollapsed"
     >
         <span *ngIf="hasExpireExampleText" class="t-example-text"> 00/00 </span>
         <label tuiPreventDefault="click">
@@ -75,7 +75,7 @@
                 class="t-input"
                 automation-id="tui-input-card-grouped__expire"
                 tuiInputMode="numeric"
-                [class.input_inert]="!expireFocusable"
+                [class.t-input_inert]="!expireFocusable"
                 [attr.id]="idExpire"
                 [attr.name]="name"
                 [autocomplete]="autocompleteExpire"
@@ -89,7 +89,7 @@
             />
             <span
                 class="t-placeholder"
-                [class.placeholder_raised]="placeholderRaised"
+                [class.t-placeholder_raised]="placeholderRaised"
             >
                 {{texts.expiryText}}
             </span>
@@ -97,7 +97,7 @@
     </div>
     <div
         class="t-wrapper t-wrapper_cvc"
-        [class.wrapper_active]="isCardCollapsed"
+        [class.t-wrapper_active]="isCardCollapsed"
     >
         <span *ngIf="hasCVCExampleText" class="t-example-text">
             {{exampleTextCVC}}
@@ -121,7 +121,7 @@
             />
             <span
                 class="t-placeholder"
-                [class.placeholder_raised]="placeholderRaised"
+                [class.t-placeholder_raised]="placeholderRaised"
             >
                 {{texts.cvcText}}
             </span>
@@ -144,7 +144,7 @@
             *ngIf="hasDropdown"
             src="tuiIconChevronDownLarge"
             class="t-icon"
-            [class.icon_rotated]="open"
+            [class.t-icon_rotated]="open"
             (click)="toggle()"
         ></tui-svg>
     </div>

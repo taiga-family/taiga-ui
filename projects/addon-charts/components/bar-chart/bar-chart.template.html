@@ -2,7 +2,7 @@
     *ngFor="let set of transposed; let index = index"
     tuiHintDirection="top-left"
     class="t-wrapper"
-    [class.wrapper_hoverable]="hasHint"
+    [class.t-wrapper_hoverable]="hasHint"
     [tuiHintHost]="hintHost"
     [tuiHintId]="getHintId(index)"
     [tuiHint]="getHint(hint)"

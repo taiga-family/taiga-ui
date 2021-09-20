@@ -19,8 +19,8 @@
     <tui-bar
         class="t-bar"
         automation-id="tui-bar-set__bar"
-        [class.bar_flexible]="flexible"
-        [class.bar_negative]="item < 0"
+        [class.t-bar_flexible]="flexible"
+        [class.t-bar_negative]="item < 0"
         [style.height.%]="getHeight(item)"
         [style.background]="getColor(index)"
         [value]="computedSegments"

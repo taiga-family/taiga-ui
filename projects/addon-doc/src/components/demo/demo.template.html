@@ -67,9 +67,9 @@
 <div
     #wrapper
     class="t-wrapper"
-    [class.wrapper_dark]="modeControl.value === 'onDark'"
-    [class.wrapper_gray]="modeControl.value === 'onLight'"
-    [class.wrapper_transparent]="!opaque"
+    [class.t-wrapper_dark]="modeControl.value === 'onDark'"
+    [class.t-wrapper_gray]="modeControl.value === 'onLight'"
+    [class.t-wrapper_transparent]="!opaque"
 >
     <div #content id="demoContent" class="t-content">
         <form *ngIf="testForm" class="t-form" [formGroup]="testForm">
@@ -90,7 +90,7 @@
                 <tui-svg
                     src="tuiIconChevronDown"
                     class="t-icon"
-                    [class.icon_rotated]="expanded"
+                    [class.t-icon_rotated]="expanded"
                 ></tui-svg>
             </ng-template>
             <tui-expand class="t-expand" [expanded]="expanded">

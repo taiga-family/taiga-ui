@@ -6,7 +6,7 @@
         <tui-svg
             src="tuiIconChevronDown"
             class="t-arrow"
-            [class.arrow_rotated]="dropdown.open"
+            [class.t-arrow_rotated]="dropdown.open"
         ></tui-svg>
     </ng-template>
     <ng-template #menu>
@@ -50,7 +50,7 @@
             size="xs"
             appearance=""
             class="t-direction"
-            [class.direction_active]="isDirectionActive(button)"
+            [class.t-direction_active]="isDirectionActive(button)"
             [icon]="getIcon(button)"
             [tuiHint]="button"
             [tuiHintId]="directionBtn.id"

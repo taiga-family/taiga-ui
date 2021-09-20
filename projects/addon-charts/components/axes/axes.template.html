@@ -1,4 +1,4 @@
-<div *ngIf="hasYLabels" class="t-side" [class.side_padding]="hasXLabels">
+<div *ngIf="hasYLabels" class="t-side" [class.t-side_padding]="hasXLabels">
     <div
         *ngIf="axisYName"
         automation-id="tui-axex__axis-y-name"
@@ -68,7 +68,7 @@
             *ngFor="let label of axisXLabels"
             automation-id="tui-axex__axis-x-label"
             class="t-label-x"
-            [class.label-x_transparent]="label === null"
+            [class.t-label-x_transparent]="label === null"
         >
             {{fallback(label)}}
         </div>
@@ -77,7 +77,7 @@
 <div
     *ngIf="hasYSecondaryLabels"
     class="t-side"
-    [class.side_padding]="hasXLabels"
+    [class.t-side_padding]="hasXLabels"
 >
     <div *ngIf="!axisYSecondaryInset" class="t-labels-y t-labels-y_secondary">
         <div

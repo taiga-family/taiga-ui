@@ -6,7 +6,7 @@
             <tui-input-inline
                 tuiAutoFocus
                 class="t-input"
-                [class.input_filled]="hasUrl"
+                [class.t-input_filled]="hasUrl"
                 [ngModel]="url"
                 (ngModelChange)="onChange($event)"
                 (keydown.prevent.enter)="onSave()"
@@ -19,7 +19,7 @@
     <tui-svg
         src="tuiIconCloseLarge"
         class="t-cleaner"
-        [class.cleaner_hidden]="!hasUrl"
+        [class.t-cleaner_hidden]="!hasUrl"
         (click)="onClear()"
     ></tui-svg>
     <button
