@@ -12,9 +12,8 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiSelectExample4 {
-    value = null;
-
     readonly pythons = [
+        'de la Concordia «Gabo» García Márquez',
         'John Cleese',
         'Eric Idle',
         'Michael Palin',
@@ -22,6 +21,8 @@ export class TuiSelectExample4 {
         'Terry Jones',
         'Graham Chapman',
     ];
+
+    value = this.pythons[0];
 
     constructor(
         @Inject(TuiNotificationsService)
