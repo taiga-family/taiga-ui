@@ -34,10 +34,8 @@ export class TuiProgressSegmentedComponent {
     colors: string | ReadonlyArray<string> = 'var(--tui-primary)';
 
     getActiveColor(index: number = 0): string | null {
-        if (typeof this.colors === 'string') {
-            return this.colors;
-        }
-
-        return this.colors[index] || this.colors[this.colors.length - 1];
+        return typeof this.colors === 'string'
+            ? this.colors
+            : this.colors[index] || this.colors[this.colors.length - 1];
     }
 }
