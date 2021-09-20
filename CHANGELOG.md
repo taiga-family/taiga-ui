@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.16.0-fixed.2](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.16.0-fixed...v2.16.0-fixed.2) (2021-09-20)
+
+
+### Bug Fixes
+
+* **core:** fix primitive-texfield template ([#715](https://github.com/TinkoffCreditSystems/taiga-ui/issues/715)) ([a4bcc6f](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a4bcc6f2ba02735f76dc1f29b0a51b724ce75079))
+
 ## [2.16.0-fixed](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.16.0...v2.16.0-fixed) (2021-09-20)
 
 
