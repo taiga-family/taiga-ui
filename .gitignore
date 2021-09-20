@@ -21,6 +21,7 @@ tmp/
 *.ngsummary.json
 *.shim.ngstyle.ts
 .idea
+*.iml
 */tmp
 .rpt2_cache
 .vscode
