@@ -835,9 +835,9 @@ export const ROUTES = [
     {
         path: 'components/progress-segmented',
         loadChildren: () =>
-            import(
-                `projects/demo/src/modules/components/progress-segmented/progress-segmented.module`
-                ).then(m => m.ExampleTuiProgressSegmentedModule),
+            import(`../components/progress-segmented/progress-segmented.module`).then(
+                m => m.ExampleTuiProgressSegmentedModule,
+            ),
         data: {
             title: 'ProgressSegmented',
         },

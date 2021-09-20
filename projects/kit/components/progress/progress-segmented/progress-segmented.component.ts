@@ -2,10 +2,13 @@ import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/c
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
-export const nonNegativeInt = (value: number | string) =>
-    Number.isInteger(+value) && value >= 0;
-export const positiveInt = (value: number | string) =>
-    Number.isInteger(+value) && value > 0;
+export function nonNegativeInt(value: number): boolean {
+    return Number.isInteger(value) && value >= 0;
+}
+
+export function positiveInt(value: number): boolean {
+    return Number.isInteger(value) && value > 0;
+}
 
 @Component({
     selector: 'tui-progress-segmented',
@@ -28,13 +31,9 @@ export class TuiProgressSegmentedComponent {
 
     @Input()
     @tuiDefaultProp()
-    colors: string | ReadonlyArray<string> | null = null;
+    colors: string | ReadonlyArray<string> = 'var(--tui-primary)';
 
     getActiveColor(index: number = 0): string | null {
-        if (!this.colors) {
-            return null;
-        }
-
         if (typeof this.colors === 'string') {
             return this.colors;
         }
