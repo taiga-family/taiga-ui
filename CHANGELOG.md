@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.16.0-fixed](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.16.0...v2.16.0-fixed) (2021-09-20)
+
+
+### Bug Fixes
+
+* **core:** autofill border color ([0ee125c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0ee125cfd4c96edb704accba80ed8a69cd07c09c))
+* **core:** fix primitive-texfield padding ([#695](https://github.com/TinkoffCreditSystems/taiga-ui/issues/695)) ([ed59167](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ed59167271c20e143e52078eab272bf9807823d2))
+
 ## [2.16.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.15.0...v2.16.0) (2021-09-13)
 
 ### Features
