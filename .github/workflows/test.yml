@@ -24,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+      NX_MAX_PARALLEL: 3
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js
@@ -41,65 +42,70 @@ jobs:
     - name: Install dependencies
       run: npm ci
     # End of setup
-    - run: npm run test cdk
-    - name: Coveralls
+    - name: Run parallel tests
+      run: |
+          # TODO(splincode): need change to `affected` for improve pipeline time
+          npm run many -- \
+                      --target=test \
+                      --maxParallel=${{ env.NX_MAX_PARALLEL }} \
+                      --browsers=ChromeHeadless --code-coverage=true \
+                      --projects=core,kit,addon-charts,addon-commerce,addon-editor,addon-mobile,addon-table
+    - name: Coveralls(cdk)
+      continue-on-error: true
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ./coverage/cdk/lcov.info
         parallel: true
-    - run: npm run test core
-    - name: Coveralls
+    - name: Coveralls(core)
+      continue-on-error: true
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ./coverage/core/lcov.info
         parallel: true
-    - run: npm run test kit
-    - name: Coveralls
+    - name: Coveralls(kit)
+      continue-on-error: true
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ./coverage/kit/lcov.info
         parallel: true
-    - run: npm run test addon-charts
-    - name: Coveralls
+    - name: Coveralls(addon-charts)
+      continue-on-error: true
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ./coverage/addon-charts/lcov.info
         parallel: true
-    - run: npm run test addon-commerce
-    - name: Coveralls
+    - name: Coveralls(addon-commerce)
+      continue-on-error: true
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ./coverage/addon-commerce/lcov.info
         parallel: true
-    - run: npm run test addon-editor
-    - name: Coveralls
+    - name: Coveralls(addon-editor)
+      continue-on-error: true
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ./coverage/addon-editor/lcov.info
         parallel: true
-    - run: npm run test addon-mobile
-      # Find out more about empty lcov generation
-    - run: npm run test addon-table
-    - name: Coveralls
+    - name: Coveralls(addon-table)
+      continue-on-error: true
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ./coverage/addon-table/lcov.info
         parallel: true
-    - run: npm run test addon-tablebars
-      # Find out more about empty lcov generation
 
   finish:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls Finished
+        continue-on-error: true
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

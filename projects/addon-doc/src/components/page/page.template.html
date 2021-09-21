@@ -1,15 +1,15 @@
-<header class="header">
-    <h1 class="title">
+<header class="t-header">
+    <h1 class="t-title">
         {{header}}
         <tui-tag
             *ngIf="deprecated !== null"
-            class="tag tag_deprecated"
+            class="t-tag t-tag_deprecated"
             value="deprecated"
             status="custom"
         ></tui-tag>
         <tui-tag
             *ngIf="package"
-            class="tag tag_package"
+            class="t-tag t-tag_package"
             status="custom"
             [value]="package"
             [autoColor]="true"
@@ -17,7 +17,7 @@
     </h1>
     <tui-tabs-with-more
         *ngIf="tabConnectors.length"
-        class="tabs"
+        class="t-tabs"
         [(activeItemIndex)]="activeItemIndex"
     >
         <ng-container
@@ -47,18 +47,18 @@
         </ng-container>
     </tui-tabs-with-more>
     <tui-doc-source-code
-        class="source-code"
+        class="t-source-code"
         [header]="header"
         [package]="package"
         [type]="type"
         [path]="path"
     ></tui-doc-source-code>
 </header>
-<div class="content">
+<div class="t-content">
     <ng-content></ng-content>
     <tui-doc-see-also
         *ngIf="showSeeAlso"
-        class="see-also"
+        class="t-see-also"
         [seeAlso]="seeAlso"
     ></tui-doc-see-also>
     <ng-container *ngFor="let tab of tabConnectors; index as index">

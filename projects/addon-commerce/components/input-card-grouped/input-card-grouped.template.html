@@ -1,7 +1,7 @@
 <tui-wrapper
     *ngIf="cardGroupedTexts$ | async as texts"
     appearance="textfield"
-    class="common-wrapper"
+    class="t-common-wrapper"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
     [focused]="computedFocused"
@@ -14,19 +14,19 @@
     (scroll)="onScroll($event.currentTarget)"
     (mousedown)="onMouseDown($event)"
 >
-    <div class="wrapper">
-        <span *ngIf="hasCardExampleText" class="example-text">
+    <div class="t-wrapper">
+        <span *ngIf="hasCardExampleText" class="t-example-text">
             {{exampleText}}
         </span>
         <label tuiPreventDefault="click">
             <input
                 #inputCard
                 type="text"
-                class="input input_card"
+                class="t-input t-input_card"
                 automation-id="tui-input-card-grouped__card"
                 tuiInputMode="numeric"
-                [class.input_inert]="cardPrefilled"
-                [class.input_hidden]="isCardCollapsed"
+                [class.t-input_inert]="cardPrefilled"
+                [class.t-input_hidden]="isCardCollapsed"
                 [attr.id]="idCard"
                 [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper : cardValidator)"
                 [attr.aria-placeholder]="exampleText"
@@ -41,41 +41,41 @@
             />
             <span
                 aria-hidden="true"
-                class="collapsed"
-                [class.collapsed_inactive]="!isCardCollapsed"
+                class="t-collapsed"
+                [class.t-collapsed_inactive]="!isCardCollapsed"
                 [attr.data-before]="masked"
             >
-                <span class="collapsed-wrapper">
+                <span class="t-collapsed-wrapper">
                     <span
-                        class="value"
-                        [class.value_collapsed]="isCardCollapsed"
-                        [class.value_small]="isCardSmall"
+                        class="t-value"
+                        [class.t-value_collapsed]="isCardCollapsed"
+                        [class.t-value_small]="isCardSmall"
                     >
                         {{formattedCard}}
                     </span>
                 </span>
             </span>
             <span
-                class="placeholder"
-                [class.placeholder_raised]="placeholderRaised"
+                class="t-placeholder"
+                [class.t-placeholder_raised]="placeholderRaised"
             >
                 {{texts.cardNumberText}}
             </span>
         </label>
     </div>
     <div
-        class="wrapper wrapper_expire"
-        [class.wrapper_active]="isCardCollapsed"
+        class="t-wrapper t-wrapper_expire"
+        [class.t-wrapper_active]="isCardCollapsed"
     >
-        <span *ngIf="hasExpireExampleText" class="example-text"> 00/00 </span>
+        <span *ngIf="hasExpireExampleText" class="t-example-text"> 00/00 </span>
         <label tuiPreventDefault="click">
             <input
                 #inputExpire
                 type="text"
-                class="input"
+                class="t-input"
                 automation-id="tui-input-card-grouped__expire"
                 tuiInputMode="numeric"
-                [class.input_inert]="!expireFocusable"
+                [class.t-input_inert]="!expireFocusable"
                 [attr.id]="idExpire"
                 [attr.name]="name"
                 [autocomplete]="autocompleteExpire"
@@ -88,22 +88,25 @@
                 (focus)="0"
             />
             <span
-                class="placeholder"
-                [class.placeholder_raised]="placeholderRaised"
+                class="t-placeholder"
+                [class.t-placeholder_raised]="placeholderRaised"
             >
                 {{texts.expiryText}}
             </span>
         </label>
     </div>
-    <div class="wrapper wrapper_cvc" [class.wrapper_active]="isCardCollapsed">
-        <span *ngIf="hasCVCExampleText" class="example-text">
+    <div
+        class="t-wrapper t-wrapper_cvc"
+        [class.t-wrapper_active]="isCardCollapsed"
+    >
+        <span *ngIf="hasCVCExampleText" class="t-example-text">
             {{exampleTextCVC}}
         </span>
         <label tuiPreventDefault="click">
             <input
                 #inputCVC
                 type="text"
-                class="input"
+                class="t-input"
                 automation-id="tui-input-card-grouped__cvc"
                 tuiInputMode="numeric"
                 [attr.id]="idCVC"
@@ -117,31 +120,31 @@
                 (focus)="0"
             />
             <span
-                class="placeholder"
-                [class.placeholder_raised]="placeholderRaised"
+                class="t-placeholder"
+                [class.t-placeholder_raised]="placeholderRaised"
             >
                 {{texts.cvcText}}
             </span>
         </label>
     </div>
-    <div class="icons">
+    <div class="t-icons">
         <tui-svg
             *ngIf="icon"
-            class="card"
+            class="t-card"
             automation-id="tui-input-card-grouped__icon"
             [src]="icon"
         ></tui-svg>
         <tui-svg
             *ngIf="hasCleaner"
-            class="icon"
+            class="t-icon"
             src="tuiIconCloseLarge"
             (click)="clear()"
         ></tui-svg>
         <tui-svg
             *ngIf="hasDropdown"
             src="tuiIconChevronDownLarge"
-            class="icon"
-            [class.icon_rotated]="open"
+            class="t-icon"
+            [class.t-icon_rotated]="open"
             (click)="toggle()"
         ></tui-svg>
     </div>

@@ -1,5 +1,5 @@
 <tui-wrapper
-    class="outline"
+    class="t-outline"
     appearance="textfield"
     [readOnly]="readOnly"
     [disabled]="disabled"
@@ -8,11 +8,11 @@
     [invalid]="computedInvalid"
 ></tui-wrapper>
 <div
-    class="wrapper"
+    class="t-wrapper"
     (tuiHoveredChange)="onHovered($event)"
     (mousedown)="onMouseDown($event)"
 >
-    <div class="toolbar-wrapper">
+    <div class="t-toolbar-wrapper">
         <tui-toolbar
             *ngIf="initialized"
             [disabled]="!interactive"
@@ -24,15 +24,15 @@
             (attachClicked)="onAttach()"
         ></tui-toolbar>
         <div
-            class="placeholder"
-            [class.placeholder_raised]="placeholderRaised"
+            class="t-placeholder"
+            [class.t-placeholder_raised]="placeholderRaised"
             [id]="id"
         >
             <ng-content></ng-content>
         </div>
-        <div *ngIf="hasExampleText" class="example-text">{{exampleText}}</div>
+        <div *ngIf="hasExampleText" class="t-example-text">{{exampleText}}</div>
     </div>
-    <tui-scrollbar class="scrollbar">
+    <tui-scrollbar class="t-scrollbar">
         <div
             *ngIf="initialized"
             tuiDropdownLimitWidth="auto"
@@ -43,7 +43,7 @@
         <iframe
             #focusableElement="tuiDesignMode"
             tuiDesignMode
-            class="editor"
+            class="t-editor"
             [attr.aria-labelledby]="id"
             [exampleText]="exampleText"
             [disabled]="!interactive"

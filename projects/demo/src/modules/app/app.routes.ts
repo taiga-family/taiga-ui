@@ -823,6 +823,26 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/progress-circle',
+        loadChildren: () =>
+            import(`../components/progress-circle/progress-circle.module`).then(
+                m => m.ExampleTuiProgressCircleModule,
+            ),
+        data: {
+            title: 'ProgressCircle',
+        },
+    },
+    {
+        path: 'components/progress-segmented',
+        loadChildren: () =>
+            import(`../components/progress-segmented/progress-segmented.module`).then(
+                m => m.ExampleTuiProgressSegmentedModule,
+            ),
+        data: {
+            title: 'ProgressSegmented',
+        },
+    },
+    {
         path: 'components/theme-switcher',
         loadChildren: () =>
             import(`../components/theme-switcher/theme-switcher.module`).then(

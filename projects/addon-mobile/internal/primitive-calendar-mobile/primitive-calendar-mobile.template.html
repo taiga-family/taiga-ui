@@ -2,16 +2,16 @@
     <div
         *tuiRepeatTimes="let rowIndex of sheet.length"
         automation-id="tui-primitive-calendar-mobile__row"
-        class="row"
+        class="t-row"
     >
         <div
             *tuiRepeatTimes="let colIndex of sheet[rowIndex].length"
             automation-id="tui-primitive-calendar-mobile__cell"
             tuiRipple
-            class="cell"
-            [class.cell_today]="itemIsToday(sheet[rowIndex][colIndex])"
-            [class.cell_interval]="itemIsInterval(sheet[rowIndex][colIndex])"
-            [class.cell_disabled]="itemIsDisabled(sheet[rowIndex][colIndex])"
+            class="t-cell"
+            [class.t-cell_today]="itemIsToday(sheet[rowIndex][colIndex])"
+            [class.t-cell_interval]="itemIsInterval(sheet[rowIndex][colIndex])"
+            [class.t-cell_disabled]="itemIsDisabled(sheet[rowIndex][colIndex])"
             [attr.data-tui-element-range]="getItemRange(sheet[rowIndex][colIndex])"
             (click)="onItemClick(sheet[rowIndex][colIndex])"
         >

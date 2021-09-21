@@ -1,12 +1,12 @@
 <ng-container *ngIf="edit; else view">
-    <label class="label">
+    <label class="t-label">
         URL
-        <span class="url">
+        <span class="t-url">
             {{prefix}}
             <tui-input-inline
                 tuiAutoFocus
-                class="input"
-                [class.input_filled]="hasUrl"
+                class="t-input"
+                [class.t-input_filled]="hasUrl"
                 [ngModel]="url"
                 (ngModelChange)="onChange($event)"
                 (keydown.prevent.enter)="onSave()"
@@ -18,8 +18,8 @@
     </label>
     <tui-svg
         src="tuiIconCloseLarge"
-        class="cleaner"
-        [class.cleaner_hidden]="!hasUrl"
+        class="t-cleaner"
+        [class.t-cleaner_hidden]="!hasUrl"
         (click)="onClear()"
     ></tui-svg>
     <button
@@ -28,21 +28,21 @@
         size="s"
         title="Insert link"
         icon="tuiIconCheckCircleLarge"
-        class="button"
+        class="t-button"
         shape="rounded"
         appearance="icon"
         (click)="onSave()"
     ></button>
 </ng-container>
 <ng-template #view>
-    <a tuiLink [href]="href" target="_blank" class="link"> {{shortUrl}} </a>
+    <a tuiLink [href]="href" target="_blank" class="t-link"> {{shortUrl}} </a>
     <button
         tuiIconButton
         type="button"
         size="s"
         title="Change link"
         icon="tuiIconEditLarge"
-        class="button"
+        class="t-button"
         shape="rounded"
         appearance="icon"
         (click)="onEdit()"
@@ -53,7 +53,7 @@
         size="s"
         title="Remove link"
         icon="tuiIconTrashLarge"
-        class="button"
+        class="t-button"
         shape="rounded"
         appearance="icon"
         (click)="onRemove()"

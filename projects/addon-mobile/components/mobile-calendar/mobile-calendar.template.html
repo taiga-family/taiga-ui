@@ -1,8 +1,8 @@
-<header class="header">
+<header class="t-header">
     <button
         tuiIconButton
         type="button"
-        class="close"
+        class="t-close"
         automation-id="tui-mobile-calendar__cancel"
         icon="tuiIconRemoveLarge"
         shape="rounded"
@@ -15,14 +15,14 @@
         tuiLink
         tuiTouchable="opacity"
         type="button"
-        class="link link_close"
+        class="t-link t-link_close"
         (click)="onClose()"
     >
         {{cancelWord$ | async}}
     </button>
     <h2
         *ngIf="chooseDayOrRangeTexts$ | async as texts"
-        class="label"
+        class="t-label"
         automation-id="tui-mobile-calendar__label"
     >
         {{single ? texts[0] : texts[1]}}
@@ -32,7 +32,7 @@
         tuiTouchable="opacity"
         type="button"
         automation-id="tui-mobile-calendar__confirm"
-        class="link"
+        class="t-link"
         (click)="onConfirm()"
     >
         {{doneWord$ | async}}
@@ -40,14 +40,14 @@
 </header>
 <cdk-virtual-scroll-viewport
     #yearsScrollRef
-    class="years tui-zero-scrollbar"
+    class="t-years tui-zero-scrollbar"
     orientation="horizontal"
     [itemSize]="yearWidth"
 >
-    <div class="years-wrapper">
+    <div class="t-years-wrapper">
         <button
             *cdkVirtualFor="let index of years"
-            class="year"
+            class="t-year"
             [attr.data-tui-element-state]="getState(index)"
             (click)="setYear(index)"
         >
@@ -55,21 +55,21 @@
         </button>
     </div>
 </cdk-virtual-scroll-viewport>
-<div class="week">
-    <div *ngFor="let day of weekDays$ | async" class="day">{{day}}</div>
+<div class="t-week">
+    <div *ngFor="let day of weekDays$ | async" class="t-day">{{day}}</div>
 </div>
 <cdk-virtual-scroll-viewport
     #monthsScrollRef
-    class="months tui-zero-scrollbar"
+    class="t-months tui-zero-scrollbar"
     (scrolledIndexChange)="onMonthChange($event)"
 >
     <section
         *cdkVirtualFor="let month of months; templateCacheSize: 10"
-        class="month-wrapper"
+        class="t-month-wrapper"
     >
-        <h2 class="month">{{month | tuiMonth | async}}</h2>
+        <h2 class="t-month">{{month | tuiMonth | async}}</h2>
         <tui-primitive-calendar-mobile
-            class="calendar"
+            class="t-calendar"
             [month]="month"
             [value]="value"
             [disabledItemHandler]="disabledItemHandler | tuiMapper : disabledItemHandlerMapper : min : max"
