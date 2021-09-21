@@ -66,4 +66,22 @@ describe('isCardLengthValid', () => {
             expect(isCardLengthValid('2200000000000000000')).toBe(true);
         });
     });
+
+    describe('Unknown', () => {
+        it('cannot be 7 digits long', () => {
+            expect(isCardLengthValid('3566002')).toBe(false);
+        });
+
+        it('can be 16 digits long', () => {
+            expect(isCardLengthValid('3566002020360505')).toBe(true);
+        });
+
+        it('can be 19 digits long', () => {
+            expect(isCardLengthValid('3566002020360505000')).toBe(true);
+        });
+
+        it('cannot be 20 digits long', () => {
+            expect(isCardLengthValid('35660020203605050000')).toBe(false);
+        });
+    });
 });
