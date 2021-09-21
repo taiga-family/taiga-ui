@@ -1,0 +1,18 @@
+name: Auto updates pull requests with changes from main branch
+
+on: [push]
+
+jobs:
+    autoupdate:
+        name: autoupdate
+        runs-on: ubuntu-18.04
+        steps:
+            - uses: docker://chinthakagodawita/autoupdate-action:v1
+              env:
+                  GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+                  DRY_RUN: 'false'
+                  MERGE_MSG: 'chore: branch was auto updated'
+                  EXCLUDED_LABELS: 'renovate'
+                  RETRY_COUNT: '5'
+                  RETRY_SLEEP: '300'
+                  MERGE_CONFLICT_ACTION: 'ignore'
