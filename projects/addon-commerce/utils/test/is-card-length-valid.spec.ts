@@ -79,5 +79,9 @@ describe('isCardLengthValid', () => {
         it('can be 19 digits long', () => {
             expect(isCardLengthValid('3566002020360505000')).toBe(true);
         });
+
+        it('cannot be 20 digits long', () => {
+            expect(isCardLengthValid('35660020203605050000')).toBe(false);
+        });
     });
 });
