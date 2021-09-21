@@ -1,7 +1,10 @@
 name: Screenshot tests all packages of Taiga UI
 
 on:
-    pull_request:
+    push:
+        branches:
+            - '!main'
+            - '!release/**'
         paths:
             - 'projects/**'
             - '!projects/*testing/**'
@@ -10,10 +13,6 @@ on:
             - 'angular.json'
             - 'package.json'
             - 'tsconfig*'
-    push:
-        branches:
-            - '!main'
-            - '!release/**'
 
 env:
     NX_BRANCH: ${{ github.event.number }}
