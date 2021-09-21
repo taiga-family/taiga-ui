@@ -1,19 +1,18 @@
 name: Test all packages of Taiga UI and check coverage with Coveralls
 
 on:
-  pull_request:
-    paths:
-      - 'projects/**'
-      - '!projects/*testing/**'
-      - '!projects/demo/**'
-      - '!projects/icons/**'
-      - 'angular.json'
-      - 'package.json'
-      - 'tsconfig*'
   push:
     branches:
       - main
       - '!release/**'
+    paths:
+        - 'projects/**'
+        - '!projects/*testing/**'
+        - '!projects/demo/**'
+        - '!projects/icons/**'
+        - 'angular.json'
+        - 'package.json'
+        - 'tsconfig*'
 
 env:
     NX_BRANCH: ${{ github.event.number }}
