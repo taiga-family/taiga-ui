@@ -1,7 +1,7 @@
 <ng-container *tuiLet="hovered$ | async as hovered">
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="svg"
+        class="t-svg"
         focusable="false"
         preserveAspectRatio="none"
         width="100%"
@@ -34,7 +34,7 @@
     <ng-container *ngIf="dots">
         <div
             *ngFor="let point of value"
-            class="dot"
+            class="t-dot"
             [style.left.%]="getLeft(point[0])"
             [style.bottom.%]="getBottom(point[1])"
         ></div>
@@ -43,9 +43,9 @@
         <ng-container *ngFor="let point of value; let index = index">
             <div
                 *ngIf="value.length > 1"
-                class="column"
+                class="t-column"
                 tuiHintDirection="top-left"
-                [class.column_hovered]="hovered === index"
+                [class.t-column_hovered]="hovered === index"
                 [tuiHintHost]="hintHost"
                 [tuiHint]="computedHint && hint"
                 [tuiHintId]="getHintId(index)"
@@ -54,12 +54,12 @@
                 (mouseenter)="onMouseEnter(index)"
             >
                 <div
-                    class="line line_vertical"
+                    class="t-line t-line_vertical"
                     [style.left.%]="getOffset(index)"
                 ></div>
                 <div
                     #hintHost
-                    class="host"
+                    class="t-host"
                     [style.left.%]="getOffset(index)"
                     [style.bottom.%]="getBottom(point[1])"
                     [tuiFocusable]="isFocusable"
@@ -68,13 +68,13 @@
             </div>
             <div
                 *ngIf="isFocusable"
-                class="line line_horizontal"
+                class="t-line t-line_horizontal"
                 [style.bottom.%]="getBottom(point[1])"
             ></div>
             <ng-template #hint>
                 <div
                     polymorpheus-outlet
-                    class="text"
+                    class="t-text"
                     [content]="computedHint"
                     [context]="getContentContext(point)"
                 ></div>
@@ -84,14 +84,14 @@
     <ng-container *ngIf="getHovered(hovered) as point">
         <div
             *ngIf="xStringify"
-            class="hint hint_x"
+            class="t-hint t-hint_x"
             [style.left.%]="getLeft(point[0])"
         >
             {{xStringify(point[0])}}
         </div>
         <div
             *ngIf="yStringify"
-            class="hint hint_y"
+            class="t-hint t-hint_y"
             [style.bottom.%]="getBottom(point[1])"
         >
             {{yStringify(point[1])}}

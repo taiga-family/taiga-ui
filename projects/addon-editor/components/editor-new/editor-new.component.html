@@ -1,5 +1,5 @@
 <tui-wrapper
-    class="outline"
+    class="t-outline"
     appearance="textfield"
     [readOnly]="readOnly"
     [disabled]="disabled"
@@ -10,13 +10,13 @@
 >
 </tui-wrapper>
 <div
-    class="wrapper"
-    [class._disabled]="disabled"
+    class="t-wrapper"
+    [class.t-wrapper_disabled]="disabled"
     (tuiHoveredChange)="onHovered($event)"
     (mousedown)="onMouseDown($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
-    <div class="toolbar-wrapper">
+    <div class="t-toolbar-wrapper">
         <tui-toolbar
             *ngIf="editor"
             new
@@ -24,13 +24,16 @@
             [tools]="tools"
             [disabled]="!interactive"
         ></tui-toolbar>
-        <div class="placeholder" [class.placeholder_raised]="placeholderRaised">
+        <div
+            class="t-placeholder"
+            [class.t-placeholder_raised]="placeholderRaised"
+        >
             <ng-content></ng-content>
         </div>
-        <div *ngIf="hasExampleText" class="example-text">{{exampleText}}</div>
+        <div *ngIf="hasExampleText" class="t-example-text">{{exampleText}}</div>
     </div>
 
-    <tui-scrollbar class="scrollbar">
+    <tui-scrollbar class="t-scrollbar">
         <div
             tuiDropdownLimitWidth="auto"
             tuiDropdownSelectionPosition="tag"

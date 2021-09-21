@@ -6,7 +6,10 @@
     </ng-container>
 </ng-container>
 <ng-template #flexible>
-    <div *ngFor="let item of computedValue; let index = index" class="wrapper">
+    <div
+        *ngFor="let item of computedValue; let index = index"
+        class="t-wrapper"
+    >
         <ng-container
             *ngTemplateOutlet="bar; context: {$implicit: item, index: index, flexible: true}"
         ></ng-container>
@@ -14,10 +17,10 @@
 </ng-template>
 <ng-template #bar let-item let-index="index" let-flexible="flexible">
     <tui-bar
-        class="bar"
+        class="t-bar"
         automation-id="tui-bar-set__bar"
-        [class.bar_flexible]="flexible"
-        [class.bar_negative]="item < 0"
+        [class.t-bar_flexible]="flexible"
+        [class.t-bar_negative]="item < 0"
         [style.height.%]="getHeight(item)"
         [style.background]="getColor(index)"
         [value]="computedSegments"

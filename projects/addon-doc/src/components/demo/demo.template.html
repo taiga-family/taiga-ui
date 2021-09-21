@@ -1,4 +1,4 @@
-<div class="bg-toggle" [tuiMode]="null">
+<div class="t-bg-toggle" [tuiMode]="null">
     <ng-template #tooltip>
         {{texts[0]}}
         <a tuiLink tuiMode="onDark" routerLink="/directives/mode">
@@ -7,7 +7,7 @@
     </ng-template>
     <ng-container *ngIf="isMobile else desktop">
         <tui-select
-            class="mode"
+            class="t-mode"
             tuiTextfieldSize="s"
             [tuiTextfieldCleaner]="true"
             [tuiHintContent]="tooltip"
@@ -66,14 +66,14 @@
 </div>
 <div
     #wrapper
-    class="wrapper"
-    [class.wrapper_dark]="modeControl.value === 'onDark'"
-    [class.wrapper_gray]="modeControl.value === 'onLight'"
-    [class.wrapper_transparent]="!opaque"
+    class="t-wrapper"
+    [class.t-wrapper_dark]="modeControl.value === 'onDark'"
+    [class.t-wrapper_gray]="modeControl.value === 'onLight'"
+    [class.t-wrapper_transparent]="!opaque"
 >
-    <div #content id="demoContent" class="content">
-        <form *ngIf="testForm" class="form" [formGroup]="testForm">
-            <div class="input-wrapper">
+    <div #content id="demoContent" class="t-content">
+        <form *ngIf="testForm" class="t-form" [formGroup]="testForm">
+            <div class="t-input-wrapper">
                 <ng-container *ngTemplateOutlet="template"></ng-container>
             </div>
             <button
@@ -89,18 +89,18 @@
             <ng-template #icon>
                 <tui-svg
                     src="tuiIconChevronDown"
-                    class="icon"
-                    [class.icon_rotated]="expanded"
+                    class="t-icon"
+                    [class.t-icon_rotated]="expanded"
                 ></tui-svg>
             </ng-template>
-            <tui-expand class="expand" [expanded]="expanded">
+            <tui-expand class="t-expand" [expanded]="expanded">
                 <ng-template tuiExpandContent>
-                    <pre class="value">
+                    <pre class="t-value">
 Form data: {{testForm.value | json}}</pre
                     >
                     <div tuiGroup class="tui-space_top-3">
                         <tui-select
-                            class="select"
+                            class="t-select"
                             tuiTextfieldSize="s"
                             [ngModel]="updateOn"
                             [ngModelOptions]="{standalone: true}"
@@ -135,12 +135,12 @@ Form data: {{testForm.value | json}}</pre
         <ng-content></ng-content>
     </div>
     <button
-        class="resizer"
+        class="t-resizer"
         tabindex="-1"
         (tuiDragStart)="onDragStart($event)"
         (tuiDragContinues)="onDragContinues($event)"
         (tuiDragEnd)="onDragEnd()"
     >
-        <span #resizerText class="resizer-text"></span>
+        <span #resizerText class="t-resizer-text"></span>
     </button>
 </div>

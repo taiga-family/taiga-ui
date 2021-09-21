@@ -1,16 +1,16 @@
-<tui-hosted-dropdown #dropdown class="select" [content]="menu">
+<tui-hosted-dropdown #dropdown class="t-select" [content]="menu">
     <button tuiButton appearance="" size="s" type="button" [iconRight]="arrow">
         {{currentMode}}
     </button>
     <ng-template #arrow>
         <tui-svg
             src="tuiIconChevronDown"
-            class="arrow"
-            [class.arrow_rotated]="dropdown.open"
+            class="t-arrow"
+            [class.t-arrow_rotated]="dropdown.open"
         ></tui-svg>
     </ng-template>
     <ng-template #menu>
-        <tui-data-list role="menu" class="menu">
+        <tui-data-list role="menu" class="t-menu">
             <button
                 *ngFor="let mode of modes"
                 tuiOption
@@ -24,7 +24,7 @@
                 {{mode}}
                 <tui-svg
                     *ngIf="isModeActive(mode)"
-                    class="checkmark"
+                    class="t-checkmark"
                     src="tuiIconCheck"
                 ></tui-svg>
             </button>
@@ -32,16 +32,16 @@
     </ng-template>
 </tui-hosted-dropdown>
 <ng-container *ngIf="isGradient">
-    <hr class="hr" />
-    <div class="wrapper" [style.background]="gradient">
+    <hr class="t-hr" />
+    <div class="t-wrapper" [style.background]="gradient">
         <tui-linear-multi-picker
-            class="gradient"
+            class="t-gradient"
             [value]="stopsKeys"
             (valueChange)="onStopsChange($event)"
             (indexChange)="onIndexChange($event)"
         ></tui-linear-multi-picker>
     </div>
-    <div class="buttons">
+    <div class="t-buttons">
         <button
             *ngFor="let button of buttons"
             #directionBtn
@@ -49,8 +49,8 @@
             type="button"
             size="xs"
             appearance=""
-            class="direction"
-            [class.direction_active]="isDirectionActive(button)"
+            class="t-direction"
+            [class.t-direction_active]="isDirectionActive(button)"
             [icon]="getIcon(button)"
             [tuiHint]="button"
             [tuiHintId]="directionBtn.id"
@@ -66,13 +66,13 @@
 <tui-color-edit
     *ngIf="!isGradient"
     tuiGroup
-    class="edit"
+    class="t-edit"
     [color]="color"
     (colorChange)="onColorChange($event)"
 ></tui-color-edit>
 <tui-palette
     *ngIf="palette.size"
-    class="palette"
+    class="t-palette"
     [colors]="palette"
     (selectedColor)="onPalettePick($event)"
 ></tui-palette>

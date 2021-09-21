@@ -30,14 +30,14 @@
     }
 }
 
-.front {
+.t-front {
     .fullsize();
     backface-visibility: hidden;
     background: inherit;
     border-radius: var(--tui-radius-m);
 }
 
-.box {
+.t-box {
     position: absolute;
     background-color: inherit;
     opacity: 0.8;
@@ -73,7 +73,7 @@
     }
 }
 
-.brand-logo {
+.t-brand-logo {
     position: absolute;
     top: @space * 1.5;
     left: @space;
@@ -81,7 +81,7 @@
     width: @brand-logo-size;
 }
 
-.number {
+.t-number {
     position: absolute;
     right: @space * 2;
     display: flex;
@@ -103,13 +103,13 @@
     }
 }
 
-.secret-payment-system-logo {
+.t-secret-payment-system-logo {
     height: @payment-system-logo-height;
     padding: 0 @space;
     visibility: hidden;
 }
 
-.payment-system-logo {
+.t-payment-system-logo {
     position: absolute;
     right: -0.25rem;
     bottom: -0.5rem;
@@ -118,7 +118,7 @@
     transform: scale(0.5);
 }
 
-.back {
+.t-back {
     .fullsize();
     backface-visibility: hidden;
     transform: rotateY(180deg) translate3d(0, 0, 0.00625rem);

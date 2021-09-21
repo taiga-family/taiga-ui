@@ -1,6 +1,6 @@
 <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="svg"
+    class="t-svg"
     height="100%"
     width="100%"
     viewBox="-100 -100 200 200"
@@ -23,7 +23,7 @@
             *ngFor="let segment of segments; let index = index"
             fill="currentColor"
             automation-id="tui-pie-chart__segment"
-            class="segment"
+            class="t-segment"
             tuiHintMode="onDark"
             tuiHintDirection="top-right"
             [attr.transform]="getTransform(index)"
@@ -43,7 +43,7 @@
 <ng-template #template let-index>
     <div
         polymorpheus-outlet
-        class="text"
+        class="t-text"
         [content]="hintContent"
         [context]="getContentContext(index)"
     ></div>

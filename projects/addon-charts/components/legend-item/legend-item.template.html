@@ -3,10 +3,10 @@
     type="button"
     size="s"
     appearance="whiteblock"
-    class="button"
+    class="t-button"
     [pseudoHovered]="active || null"
 >
-    <span class="dot" [style.background]="computedColor"></span>
-    <span class="text">{{text}}</span>
+    <span class="t-dot" [style.background]="computedColor"></span>
+    <span class="t-text">{{text}}</span>
     <ng-content></ng-content>
 </button>

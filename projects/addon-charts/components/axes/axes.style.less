@@ -4,14 +4,14 @@
     display: flex;
 }
 
-.wrapper {
+.t-wrapper {
     display: flex;
     flex: 1;
     height: 100%;
     flex-direction: column;
 }
 
-.grid {
+.t-grid {
     .createStackingContext();
     display: flex;
     flex: 1;
@@ -29,13 +29,13 @@
     }
 }
 
-.horizontal {
+.t-horizontal {
     .fullsize();
     display: flex;
     flex-direction: column;
 }
 
-.vertical {
+.t-vertical {
     .fullsize();
     display: flex;
 
@@ -46,7 +46,7 @@
     }
 }
 
-.line {
+.t-line {
     flex: 2 0 1px;
     box-sizing: border-box;
     border-width: 1px;
@@ -68,7 +68,7 @@
     }
 }
 
-.side {
+.t-side {
     display: flex;
     align-items: stretch;
 
@@ -77,7 +77,7 @@
     }
 }
 
-.name {
+.t-name {
     font: var(--tui-font-text-xs);
     writing-mode: tb;
     text-align: center;
@@ -93,7 +93,7 @@
     }
 }
 
-.labels-y {
+.t-labels-y {
     font: var(--tui-font-text-xs);
     display: flex;
     flex-direction: column-reverse;
@@ -132,14 +132,14 @@
     }
 }
 
-.labels-x {
+.t-labels-x {
     font: var(--tui-font-text-xs);
     display: flex;
     border-right: 1px solid transparent;
     color: var(--tui-text-02);
 }
 
-.label-x {
+.t-label-x {
     height: 0.4375rem;
     border-left: 1px solid var(--tui-base-03);
     flex: 1;
@@ -171,7 +171,7 @@
     }
 }
 
-.label-y {
+.t-label-y {
     &:first-child {
         margin-bottom: -0.375rem;
     }
@@ -181,7 +181,7 @@
     }
 }
 
-.content {
+.t-content {
     position: absolute;
     top: 0;
     left: -0.0625rem;
