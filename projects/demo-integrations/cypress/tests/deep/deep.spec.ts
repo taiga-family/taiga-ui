@@ -1,18 +1,50 @@
 const DEEP_PATHS = [
+    /* CORE */
     'components/button',
+    'components/calendar',
     'components/group',
     'components/link',
-    'components/primitive-textfield',
     'components/notification',
-    'components/primitive-checkbox',
+    /* KIT */
+    'components/avatar',
+    'components/badge',
+    'components/badged-content',
+    'components/calendar-month',
+    'components/filter',
+    'components/island',
+    'components/marker-icon',
+    'navigation/stepper',
+    'components/toggle',
 ];
 
 const toggleExclusions: Record<string, ReadonlyArray<number>> = {
     'components/button': [1],
+    'components/group': [0], // [adaptive]
+    'components/toggle': [2, 4], // [showLoader], [focusable]
 };
 
 const selectExclusions: Record<string, ReadonlyArray<number>> = {
-    'components/primitive-textfield': [0, 7, 8, 9, 10],
+    'components/calendar': [4, 5], // not visible for test props: [min], [minViewedMonth]
+    'components/calendar-month': [2], // not visible for test props: [min]
+};
+
+const makeDemoSnapshot = (
+    path: string,
+    stepIndex: number,
+    $input: JQuery<HTMLElement>,
+    optionIndex: number,
+) => {
+    cy.wrap($input)
+        .parents('.tui-table tr')
+        .find('.t-property')
+        .then(propertyName$ => propertyName$.text().trim())
+        .then(property => {
+            return cy
+                .get(`#demoContent`)
+                .first()
+                .wait(200)
+                .matchImageSnapshot(`${path}/${stepIndex}-${property}-${optionIndex}`);
+        });
 };
 
 describe('Deep', () => {
@@ -21,64 +53,64 @@ describe('Deep', () => {
     });
 
     DEEP_PATHS.forEach(path => {
-        let counter = 1;
-
         it(path, () => {
+            let counter = 1;
+
             cy.goToDemoPage(`/${path}/API`);
+            cy.hideHeader();
 
-            cy.get('[tuidocheader]').invoke(
-                'attr',
-                'style',
-                'position: absolute !important',
-            );
-
-            cy.get(`.tui-table tui-select`).each((sample, index) => {
-                if (selectExclusions[path] && selectExclusions[path].includes(index)) {
-                    return cy.wrap(sample);
+            cy.get(`.tui-table tui-select`).each(($select, selectIndex) => {
+                if (
+                    selectExclusions[path] &&
+                    selectExclusions[path].includes(selectIndex)
+                ) {
+                    return cy.wrap($select);
                 }
 
                 return cy
-                    .wrap(sample)
+                    .wrap($select)
                     .click()
                     .get(`[tuioption]`)
-                    .each((_, index) => {
-                        if (index === 0) {
-                            cy.wrap(sample).click();
+                    .each((_, optionIndex) => {
+                        if (optionIndex === 0) {
+                            cy.wrap($select).click();
 
                             return;
                         }
 
-                        return cy
-                            .wrap(sample)
+                        cy.wrap($select)
                             .click()
                             .get(`[tuioption]`)
-                            .eq(index)
-                            .click()
-                            .get(`#demoContent`)
-                            .first()
-                            .wait(200)
-                            .matchImageSnapshot(`${path}/${counter++}`);
+                            .eq(optionIndex)
+                            .click();
+
+                        return makeDemoSnapshot(path, counter++, $select, optionIndex);
                     })
-                    .wrap(sample)
+                    .wrap($select)
                     .click()
                     .get(`[tuioption]`)
                     .first()
                     .click();
             });
 
-            cy.get(`.tui-table tui-toggle`).each((sample, index) => {
-                if (toggleExclusions[path] && toggleExclusions[path].includes(index)) {
-                    return cy.wrap(sample);
-                }
+            cy.get('.tui-table')
+                .then($table =>
+                    $table.find('tui-toggle').length
+                        ? cy.get('.tui-table tui-toggle')
+                        : [],
+                )
+                .each((toggle$, index) => {
+                    if (
+                        toggleExclusions[path] &&
+                        toggleExclusions[path].includes(index)
+                    ) {
+                        return cy.wrap(toggle$);
+                    }
 
-                return cy
-                    .wrap(sample)
-                    .click()
-                    .get(`#demoContent`)
-                    .first()
-                    .wait(200)
-                    .matchImageSnapshot(`${path}/${counter++}`);
-            });
+                    cy.wrap(toggle$).click();
+
+                    return makeDemoSnapshot(path, counter++, toggle$, 0);
+                });
         });
     });
 });
