@@ -1,9 +1,6 @@
 name: Lint all packages of Taiga UI
 
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
