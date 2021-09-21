@@ -20,6 +20,6 @@ export function isCardLengthValid(cardNumber: string): boolean {
         case TuiPaymentSystem.Visa:
             return length > 12 && length < 20;
         default:
-            return false;
+            return length > 8 && length < 20;
     }
 }
