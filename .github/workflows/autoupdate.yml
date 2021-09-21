@@ -10,8 +10,9 @@ jobs:
             - uses: docker://chinthakagodawita/autoupdate-action:v1
               env:
                   GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-                  DRY_RUN: 'false'
+                  DRY_RUN: 'true' # for debug now
                   MERGE_MSG: 'chore: branch was auto updated'
-                  RETRY_COUNT: '10'
-                  RETRY_SLEEP: '1000'
+                  EXCLUDED_LABELS: 'renovate'
+                  RETRY_COUNT: '5'
+                  RETRY_SLEEP: '300'
                   MERGE_CONFLICT_ACTION: 'ignore'
