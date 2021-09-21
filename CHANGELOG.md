@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.17.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.16.3...v2.17.0) (2021-09-20)
+
+### Features
+
+-   **icons:** add new icons `tuiIconBellOff` ([#698](https://github.com/TinkoffCreditSystems/taiga-ui/issues/698)) ([fd15a54](https://github.com/TinkoffCreditSystems/taiga-ui/commit/fd15a544ecc818e209718bdc6c5ced4bd34f9922))
+-   **kit:** new component `ProgressCircle` ([#697](https://github.com/TinkoffCreditSystems/taiga-ui/issues/697)) ([094c14d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/094c14d06c12fd87a17135e3cd6f23891ffa966f))
+-   **kit:** new component `ProgressSegmented` ([#714](https://github.com/TinkoffCreditSystems/taiga-ui/issues/714)) ([66dceff](https://github.com/TinkoffCreditSystems/taiga-ui/commit/66dcefffbe4f86cfff788af26921fe87e493d9f3))
+
+### Bug Fixes
+
+-   **core:** fix primitive-texfield template ([#715](https://github.com/TinkoffCreditSystems/taiga-ui/issues/715)) ([eca780a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/eca780a3baad5a67dcc2ae1af167302c1a50fa79))
+
 ### [2.16.3](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.16.2...v2.16.3) (2021-09-15)
 
 ### Bug Fixes
