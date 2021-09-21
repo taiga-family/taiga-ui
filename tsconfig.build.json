@@ -14,6 +14,7 @@
         "target": "es2015",
         "declaration": true,
         "inlineSources": true,
+        "preserveConstEnums": true,
         "outDir": "./dist/out-tsc/lib",
         "types": [],
         "paths": {
