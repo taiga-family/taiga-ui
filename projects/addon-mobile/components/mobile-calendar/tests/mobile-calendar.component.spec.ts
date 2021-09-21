@@ -74,7 +74,7 @@ describe('MobileCalendar', () => {
     function getToday(): HTMLElement {
         return pageObject
             .getAllByAutomationId('tui-primitive-calendar-mobile__cell')
-            .find(item => item.classes['cell_today'])!.nativeElement;
+            .find(item => item.classes['t-cell_today'])!.nativeElement;
     }
 
     it('the back button emits a cancel event', () => {
