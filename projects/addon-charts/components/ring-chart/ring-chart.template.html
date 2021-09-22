@@ -1,7 +1,7 @@
-<div *ngIf="hasContent" class="content">
+<div *ngIf="hasContent" class="t-content">
     <div
         polymorpheus-outlet
-        class="wrapper"
+        class="t-wrapper"
         automation-id="tui-ring-chart__content"
         [content]="content"
         [context]="contentContext"
@@ -17,4 +17,4 @@
     (activeItemIndexChange)="onActiveItemIndexChange($event)"
 ></tui-pie-chart>
 
-<div class="shield"></div>
+<div class="t-shield"></div>

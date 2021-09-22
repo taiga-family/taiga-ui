@@ -1,28 +1,28 @@
 <h1 *ngIf="heading" class="tui-text_h4">{{heading}}</h1>
 <ng-content></ng-content>
 <table class="tui-table tui-table_layout_fixed tui-table_font-size_s">
-    <tr class="tui-table__tr tui-table__tr_hover_disabled row row_header">
-        <th class="tui-table__th tui-table__th_first cell cell_prop">
+    <tr class="tui-table__tr tui-table__tr_hover_disabled t-row t-row_header">
+        <th class="tui-table__th tui-table__th_first t-cell t-cell_prop">
             {{texts[2]}}
         </th>
         <td class="tui-table__th">{{type}}</td>
         <td
             *ngIf="showValues && !isAPI"
-            class="tui-table__th tui-table__th_last tui-table__th_text_right cell cell_value"
+            class="tui-table__th tui-table__th_last tui-table__th_text_right t-cell t-cell_value"
         >
             {{texts[3]}}
         </td>
     </tr>
     <tr
         *ngFor="let propertyConnector of propertiesConnectors; last as lastItem"
-        class="tui-table__tr tui-table__tr_hover_disabled row"
-        [class.deprecated]="propertyConnector.documentationPropertyDeprecated"
+        class="tui-table__tr tui-table__tr_hover_disabled t-row"
+        [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
         [class.tui-table__tr_border_none]="lastItem"
     >
         <td
-            class="tui-table__td tui-table__td_first tui-table__td_align_center cell"
+            class="tui-table__td tui-table__td_first tui-table__td_align_center t-cell"
         >
-            <div class="property cell">
+            <div class="t-property t-cell">
                 {{stripOptional(propertyConnector.attrName)}}
                 <tui-badge
                     *ngIf="isOptional(propertyConnector.attrName)"
@@ -32,14 +32,14 @@
             </div>
             <span
                 *ngIf="propertyConnector.documentationPropertyDeprecated"
-                class="deprecated-label"
+                class="t-deprecated-label"
                 >deprecated</span
             >
             <ng-container
                 *ngTemplateOutlet="propertyConnector.template"
             ></ng-container>
         </td>
-        <td class="tui-table__td tui-table__td_align_center cell">
+        <td class="tui-table__td tui-table__td_align_center t-cell">
             <span class="type">
                 {{propertyConnector.documentationPropertyType}}
                 <tui-tooltip
@@ -62,7 +62,7 @@
         </td>
         <td
             *ngIf="showValues"
-            class="tui-table__td tui-table__td_align_center tui-table__td_last tui-table__td_text_right cell"
+            class="tui-table__td tui-table__td_align_center tui-table__td_last tui-table__td_text_right t-cell"
         >
             <ng-container *ngIf="propertyConnector.shouldShowValues">
                 <tui-select
@@ -76,7 +76,7 @@
                     [ngModel]="propertyConnector.documentationPropertyValue"
                     (ngModelChange)="propertyConnector.onValueChange($event)"
                 >
-                    <code class="exception">null</code>
+                    <code class="t-exception">null</code>
                     <tui-data-list-wrapper
                         *tuiDataList
                         [items]="propertyConnector.documentationPropertyValues"

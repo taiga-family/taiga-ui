@@ -15,7 +15,7 @@
     }
 }
 
-.row {
+.t-row {
     height: 3rem;
     justify-content: flex-start;
 
@@ -28,7 +28,7 @@
     }
 }
 
-.cell {
+.t-cell {
     height: @itemSize;
     border-radius: 100%;
     margin-right: 0.25rem;
@@ -110,13 +110,13 @@
 }
 
 @media screen and (max-width: 22.4375rem) {
-    .cell,
-    :host._ios .cell {
+    .t-cell,
+    :host._ios .t-cell {
         margin-right: 0.125rem;
     }
 
-    .cell:last-child,
-    :host._ios .cell:last-child {
+    .t-cell:last-child,
+    :host._ios .t-cell:last-child {
         margin-right: 0;
     }
 }

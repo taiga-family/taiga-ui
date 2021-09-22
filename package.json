@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "2.16.2",
+    "version": "2.17.0",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "scripts": {
         "start": "nx serve",
@@ -16,6 +16,8 @@
         "prerender": "nx run demo:prerender",
         "i18n": "nx xi18n --output-path src/locale",
         "*** Workflow ***": "",
+        "many": "npm run-script env -- nx run-many --parallel",
+        "affected": "npm run-script env -- nx affected --parallel",
         "test": "nx test --browsers=ChromeHeadless --code-coverage=true --",
         "lint": "nx lint",
         "lint:less": "stylelint '**/*.less'",
@@ -27,8 +29,8 @@
         "postbuild": "node scripts/check-dist.js",
         "build:demo": "node --max_old_space_size=8192 node_modules/.bin/nx build --prod --configuration=production",
         "build:demo:next": "node --max_old_space_size=8192 node_modules/.bin/nx build --prod --configuration=next",
-        "postbuild:demo": "node scripts/postbuild-demo.js",
-        "postbuild:demo:next": "npm run postbuild:demo",
+        "postbuild:demo": "DEMO_PATH='./dist/demo/browser' node scripts/postbuild-demo.js",
+        "postbuild:demo:next": "DEMO_PATH='./dist/demo/browser/next' node scripts/postbuild-demo.js",
         "*** Icons ***": "",
         "prebuild:icons": "ts-node --project ./tsconfig.compiler.json projects/icons/scripts/compile-icons.ts",
         "build:icons": "nx run icons:build --configuration=production",
@@ -153,6 +155,7 @@
         "cypress": "^7.5.0",
         "cypress-image-snapshot": "^4.0.1",
         "find-in-files": "0.5.0",
+        "firebase-tools": "^9.18.0",
         "http-server": "^0.12.3",
         "husky": "^3.0.9",
         "jasmine-core": "^3.4.0",
@@ -204,6 +207,6 @@
     },
     "engines": {
         "node": ">= 10",
-        "npm": ">= 3"
+        "npm": ">= 3 < 7"
     }
 }

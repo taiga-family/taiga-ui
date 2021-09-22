@@ -68,7 +68,7 @@ export class Service {
 export class TuiComboBoxExample2 {
     search = '';
 
-    readonly control = new FormControl();
+    readonly control = new FormControl(databaseMockData[0]);
 
     constructor(@Inject(Service) readonly service: Service) {}
 }
