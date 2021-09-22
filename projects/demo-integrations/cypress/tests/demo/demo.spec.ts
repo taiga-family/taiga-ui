@@ -10,12 +10,7 @@ describe('Demo', () => {
     DEMO_PATHS.forEach(path => {
         it(`${path}`, () => {
             cy.goToDemoPage(path, {waitAllIcons: true});
-
-            cy.get('[tuidocheader]').invoke(
-                'attr',
-                'style',
-                'position: absolute !important',
-            );
+            cy.hideHeader();
 
             cy.getByAutomationId(EXAMPLE_ID).each((sample, index) => {
                 if (excluded(path, index + 1)) {
