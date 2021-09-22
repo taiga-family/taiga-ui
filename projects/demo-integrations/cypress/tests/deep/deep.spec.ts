@@ -36,7 +36,8 @@ const makeDemoSnapshot = (
 ) => {
     cy.wrap($input)
         .parents('.tui-table tr')
-        .find('.t-property')
+        // .find('[automation-id="tui-documentation__property-name"]')
+        .find('[class*="property"]') // TODO: replace with the line above (when proprietary demo will have this id)
         .then(propertyName$ => propertyName$.text().trim())
         .then(property => {
             return cy

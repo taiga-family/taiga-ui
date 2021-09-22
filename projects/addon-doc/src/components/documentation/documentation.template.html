@@ -22,7 +22,10 @@
         <td
             class="tui-table__td tui-table__td_first tui-table__td_align_center t-cell"
         >
-            <div class="t-property t-cell">
+            <div
+                class="t-property t-cell"
+                automation-id="tui-documentation__property-name"
+            >
                 {{stripOptional(propertyConnector.attrName)}}
                 <tui-badge
                     *ngIf="isOptional(propertyConnector.attrName)"
