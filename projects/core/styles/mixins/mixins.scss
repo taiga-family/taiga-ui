@@ -340,3 +340,17 @@
     background: rgba($color, 70%);
     backdrop-filter: blur(0.4375rem);
 }
+
+@mixin scrollbar-hidden() {
+    /* stylelint-disable*/
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* stylelint-enable*/
+
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+        background: transparent;
+        width: 0;
+        height: 0;
+    }
+}

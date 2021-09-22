@@ -29,9 +29,6 @@ import {TuiStepComponent} from './step/step.component';
     templateUrl: './stepper.template.html',
     styleUrls: ['./stepper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-zero-scrollbar',
-    },
 })
 export class TuiStepperComponent {
     @Input()

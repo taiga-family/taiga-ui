@@ -176,10 +176,10 @@ export class TuiScrollbarDirective {
             : Math.ceil((clientWidth / scrollWidth) * 100) / 100;
     }
 
-    private get computedContainer(): HTMLElement {
+    private get computedContainer(): Element {
         return this.container
             ? this.container.nativeElement
-            : this.documentRef.documentElement;
+            : this.documentRef.scrollingElement!;
     }
 
     private getScrolled(
