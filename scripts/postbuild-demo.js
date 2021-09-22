@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const DEMO_PATH = './dist/demo/browser';
+const DEMO_PATH = process.env.DEMO_PATH;
 const INDEX_PATH = `${DEMO_PATH}/index.html`;
 const NOT_FOUND_PATH = `${DEMO_PATH}/404.html`;
 
