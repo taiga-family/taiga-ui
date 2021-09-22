@@ -46,8 +46,7 @@ export const DOT_WIDTH: {[key: string]: number} = {
 @Directive()
 export abstract class AbstractTuiSlider<T>
     extends AbstractTuiControl<T>
-    implements TuiWithOptionalMinMax<number>
-{
+    implements TuiWithOptionalMinMax<number> {
     @Input()
     @tuiDefaultProp()
     min = 0;
@@ -158,9 +157,7 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$
             .pipe(
                 map((event: MouseEvent | TouchEvent) => {
-                    const rect = (
-                        event.currentTarget as HTMLElement
-                    ).getBoundingClientRect();
+                    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
                     const clientX =
                         event instanceof MouseEvent
                             ? event.clientX

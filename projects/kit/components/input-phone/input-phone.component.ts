@@ -63,8 +63,7 @@ const NON_PLUS_AND_DIGITS_REGEX = /[ \-_\(\)]/g;
 })
 export class TuiInputPhoneComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor, TuiDataListHost<string>
-{
+    implements TuiFocusableElementAccessor, TuiDataListHost<string> {
     @Input('countryCode')
     @tuiRequiredSetter()
     set countryCodeSetter(countryCode: string) {

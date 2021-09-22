@@ -94,27 +94,28 @@ export class TuiToolbarNewComponent {
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
-    readonly fontsOptions$: Observable<ReadonlyArray<Partial<TuiEditorFontOption>>> =
-        this.fontOptionsTexts$.pipe(
-            map(texts => [
-                {
-                    px: 15,
-                    name: texts.normal,
-                },
-                {
-                    px: 24,
-                    family: 'var(--tui-font-heading)',
-                    name: texts.subtitle,
-                    headingLevel: 2,
-                },
-                {
-                    px: 30,
-                    family: 'var(--tui-font-heading)',
-                    name: texts.title,
-                    headingLevel: 1,
-                },
-            ]),
-        );
+    readonly fontsOptions$: Observable<
+        ReadonlyArray<Partial<TuiEditorFontOption>>
+    > = this.fontOptionsTexts$.pipe(
+        map(texts => [
+            {
+                px: 15,
+                name: texts.normal,
+            },
+            {
+                px: 24,
+                family: 'var(--tui-font-heading)',
+                name: texts.subtitle,
+                headingLevel: 2,
+            },
+            {
+                px: 30,
+                family: 'var(--tui-font-heading)',
+                name: texts.title,
+                headingLevel: 1,
+            },
+        ]),
+    );
 
     @ViewChildren('button')
     private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;

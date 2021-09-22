@@ -12,14 +12,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiSidebarExample1 {
     open = false;
 
-    readonly webApis = [
-        'Common',
-        'Audio',
-        'Canvas',
-        'Geolocation',
-        'MIDI',
-        'Workers',
-    ];
+    readonly webApis = ['Common', 'Audio', 'Canvas', 'Geolocation', 'MIDI', 'Workers'];
 
     readonly tinkoff = [
         'Taiga-UI',

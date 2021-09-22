@@ -45,8 +45,7 @@ import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 })
 export class TuiEditorNewComponent
     extends AbstractTuiControl<string>
-    implements OnDestroy
-{
+    implements OnDestroy {
     @Input()
     @tuiDefaultProp()
     readonly exampleText = '';

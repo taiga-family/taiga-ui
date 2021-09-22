@@ -37,8 +37,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 })
 export class TuiDropdownContextDirective
     extends AbstractTuiDropdown
-    implements TuiDropdown
-{
+    implements TuiDropdown {
     @Input('tuiDropdownContext')
     @tuiDefaultProp()
     content: PolymorpheusContent = '';

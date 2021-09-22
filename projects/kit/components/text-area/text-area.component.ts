@@ -50,8 +50,7 @@ export const LINE_HEIGHT_L = 24;
 })
 export class TuiTextAreaComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor
-{
+    implements TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
     rows = DEFAULT_ROWS;
