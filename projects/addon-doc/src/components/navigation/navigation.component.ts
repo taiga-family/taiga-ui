@@ -72,6 +72,10 @@ export class TuiDocNavigationComponent {
         return this.filterItems(this.flattenSubPages(this.items), this.search);
     }
 
+    get itemsWithoutSections() {
+        return this.items[this.items.length - 1];
+    }
+
     isActive(route: string): boolean {
         return route === this.active;
     }

@@ -53,11 +53,15 @@ export function titleProviderFactory(
 export function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
     return pages
         .map(({section}) => section)
+        .filter(isPresent)
         .filter((item, index, array) => array.indexOf(item) === index);
 }
 
 export function itemsProviderFactory(pages: TuiDocPages): ReadonlyArray<TuiDocPages> {
     const labels = labelsProviderFactory(pages);
 
-    return labels.map(label => pages.filter(({section}) => section === label));
+    return [
+        ...labels.map(label => pages.filter(({section}) => section === label)),
+        pages.filter(page => !page.section),
+    ];
 }
