@@ -77,6 +77,14 @@ export class TuiBadgedContentComponent {
         return `0 0 0 ${borderWidth}px`;
     }
 
+    get computedColorTop(): string {
+        return this.colorTop || 'var(--tui-success-fill)';
+    }
+
+    get computedColorBottom(): string {
+        return this.colorBottom || 'var(--tui-success-fill)';
+    }
+
     contentIsNumber(content: PolymorpheusContent): boolean {
         return isNumber(content.valueOf());
     }
