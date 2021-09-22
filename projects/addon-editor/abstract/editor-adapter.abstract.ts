@@ -57,4 +57,5 @@ export abstract class TuiEditor {
     abstract selectClosest(): void;
     abstract focus(): void;
     abstract setValue(value: string): void;
+    abstract setCellColor(): void;
 }

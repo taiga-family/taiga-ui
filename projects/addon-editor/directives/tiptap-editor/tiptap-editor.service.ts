@@ -263,6 +263,11 @@ export class TuiTiptapEditorService extends TuiEditor {
         this.editor.destroy();
     }
 
+    setCellColor() {
+        this.editor.chain().focus().setBackground('red').run();
+        // this.editor.chain().focus().setCellAttribute('style', 'background:red').run();
+    }
+
     selectClosest() {
         const pos = this.editor.state.selection.anchor;
         const {schema, doc} = this.editor.state;
