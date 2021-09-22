@@ -7,6 +7,7 @@ on:
             - '!projects/*testing/**'
             - '!projects/demo/**'
             - '!projects/icons/**'
+            - '.github/workflows/test.yml'
             - 'angular.json'
             - 'package.json'
             - 'tsconfig*'
@@ -45,11 +46,12 @@ jobs:
             - name: Run parallel tests
               run: |
                   # TODO(splincode): need change to `affected` for improve pipeline time
+                  ALL_LIBS=$( node -e "console.log(Object.entries(require(require('path').join(process.cwd(), process.env.ANGULAR_JSON_PATH || 'angular.json')).projects).filter(([, value]) => value.projectType === 'library').map(([key]) => key).join(','))" )
                   npm run many -- \
                               --target=test \
                               --maxParallel=${{ env.NX_MAX_PARALLEL }} \
                               --browsers=ChromeHeadless --code-coverage=true \
-                              --projects=core,kit,addon-charts,addon-commerce,addon-editor,addon-mobile,addon-table
+                              --projects=$ALL_LIBS
             - name: Coveralls(cdk)
               continue-on-error: true
               uses: coverallsapp/github-action@master
