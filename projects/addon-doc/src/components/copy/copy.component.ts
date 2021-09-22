@@ -17,9 +17,7 @@ const COPIED_TIMEOUT = 1500;
 export class TuiDocCopyComponent {
     private readonly copy$ = new Subject();
 
-    constructor(
-        @Inject(TUI_COPY_TEXTS) readonly texts$: Observable<[string, string]>,
-    ) {}
+    constructor(@Inject(TUI_COPY_TEXTS) readonly texts$: Observable<[string, string]>) {}
 
     @tuiPure
     get copied$(): Observable<boolean> {

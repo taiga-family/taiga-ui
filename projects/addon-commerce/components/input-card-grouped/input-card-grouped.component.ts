@@ -92,8 +92,7 @@ const ICONS = {
 })
 export class TuiInputCardGroupedComponent
     extends AbstractTuiNullableControl<TuiCard>
-    implements TuiFocusableElementAccessor, TuiDataListHost<Partial<TuiCard>>
-{
+    implements TuiFocusableElementAccessor, TuiDataListHost<Partial<TuiCard>> {
     @Input()
     @tuiDefaultProp()
     autocompleteEnabled = false;
