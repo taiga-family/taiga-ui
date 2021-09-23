@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {
     TUI_SANITIZER,
+    TuiActiveZoneModule,
     TuiAutoFocusModule,
     TuiElementModule,
     TuiFilterPipeModule,
@@ -58,6 +59,7 @@ import {
     TuiCheckboxModule,
     TuiComboBoxModule,
     TuiDataListWrapperModule,
+    TuiDropdownContextModule,
     TuiDropdownSelectionModule,
     TuiFieldErrorModule,
     TuiFilterModule,
@@ -87,6 +89,7 @@ import {
     TuiMultiSelectModule,
     TuiPaginationModule,
     TuiPresentModule,
+    TuiProgressModule,
     TuiProjectClassModule,
     TuiFilterByInputPipeModule,
     TuiRadioBlockModule,
@@ -121,7 +124,7 @@ import {
     TuiInputExpireModule,
     TuiMoneyModule,
 } from '@taiga-ui/addon-commerce';
-import {TuiColorPickerModule} from '@taiga-ui/addon-editor';
+import {TuiColorPickerModule, TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
 import {
     TuiElasticStickyModule,
     TuiMobileCalendarModule,
@@ -155,6 +158,7 @@ import {RouterModule} from '@angular/router';
         // Modules for your app modules where you use our components
         TuiAccordionModule,
         TuiActionModule,
+        TuiActiveZoneModule,
         TuiAvatarModule,
         TuiBadgeModule,
         TuiBadgedContentModule,
@@ -176,10 +180,13 @@ import {RouterModule} from '@angular/router';
         TuiColorPickerModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
+        TuiDropdownContextModule,
         TuiHostedDropdownModule,
         TuiErrorModule,
-        TuiFieldErrorModule,
+        TuiEditorModule,
+        TuiEditorSocketModule,
         TuiExpandModule,
+        TuiFieldErrorModule,
         TuiFilterModule,
         TuiGroupModule,
         TuiMarkerIconModule,
@@ -252,6 +259,7 @@ import {RouterModule} from '@angular/router';
         TuiMediaModule,
         TuiModeModule,
         TuiPresentModule,
+        TuiProgressModule,
         TuiRippleModule,
         TuiSidebarModule,
         TuiDropdownControllerModule,
