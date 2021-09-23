@@ -8,7 +8,9 @@ jobs:
     rebase:
         runs-on: ubuntu-latest
         steps:
-            - uses: peter-evans/rebase@v1
+            - name: Autorebase
+              continue-on-error: true
+              uses: peter-evans/rebase@v1.0.5
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   base: main
