@@ -1,0 +1,14 @@
+name: Rebase all pull requests on push to the base branch
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    rebase:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: peter-evans/rebase@v1
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  base: main
