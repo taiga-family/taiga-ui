@@ -1,5 +1,9 @@
 // not taiga ui icons
-export const EXTERNAL_ICONS = ['web-api.svg'];
+export const EXTERNAL_ICONS = [
+    'web-api.svg',
+    'marsibarsi.*1x1small.jpg',
+    'bf2e94ae58ee713717faf397958a8e3d.jpg', // filename - MD5 hash value of file content (waterplea avatar)
+];
 
 export const stubExternalIcons = (icons: string[] = EXTERNAL_ICONS): void => {
     icons.forEach(iconName => {
@@ -8,7 +12,7 @@ export const stubExternalIcons = (icons: string[] = EXTERNAL_ICONS): void => {
                 method: 'GET',
                 url: new RegExp(`.*${iconName}`),
             },
-            {fixture: `stubs/${iconName}`},
+            {fixture: `stubs/web-api.svg`},
         );
     });
 };

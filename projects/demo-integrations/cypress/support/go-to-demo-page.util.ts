@@ -50,6 +50,7 @@ export const goToDemoPage = (
     cy.window().should('have.property', 'Cypress');
     cy.url().should('include', path);
     cy.clearLocalStorage(NEXT_URL_STORAGE_KEY);
+    cy.document().its('fonts.status').should('equal', 'loaded');
 
     if (waitAllIcons) {
         waitAllRequests('@icons');

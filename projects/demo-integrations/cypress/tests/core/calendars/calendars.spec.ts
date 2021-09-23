@@ -8,13 +8,13 @@ describe('Calendars', () => {
         );
         cy.hideHeader();
 
-        cy.get('tui-calendar').first().matchImageSnapshot('calendar');
+        cy.get('tui-calendar').first().wait(100).matchImageSnapshot('calendar');
     });
 
     it('Month', () => {
         cy.goToDemoPage('components/calendar-month/API?tuiMode=null&year$=1&value$=2');
         cy.hideHeader();
 
-        cy.get('tui-calendar-month').first().matchImageSnapshot('month');
+        cy.get('tui-calendar-month').first().wait(100).matchImageSnapshot('month');
     });
 });
