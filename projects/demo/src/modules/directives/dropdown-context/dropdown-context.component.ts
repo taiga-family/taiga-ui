@@ -79,4 +79,5 @@ export class ExampleTuiDropdownContextComponent implements ExampleTuiDropdown {
     dropdownMinHeight = DEFAULT_MIN_HEIGHT;
     dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
     dropdownLimitWidth: TuiDropdownWidthT = this.dropdownLimitWidthVariants[0];
+    dropdownSided = false;
 }

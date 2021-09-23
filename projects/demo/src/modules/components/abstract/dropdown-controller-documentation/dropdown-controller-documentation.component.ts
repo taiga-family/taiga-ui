@@ -16,6 +16,7 @@ export interface ExampleTuiDropdown {
     dropdownAlign: TuiHorizontalDirection;
     dropdownMinHeight: number;
     dropdownMaxHeight: number;
+    dropdownSided: boolean;
 }
 
 @Component({

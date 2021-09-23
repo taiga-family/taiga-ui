@@ -124,6 +124,8 @@ export abstract class AbstractExampleTuiControl
 
     dropdownDirection: TuiVerticalDirection | null = null;
 
+    dropdownSided = false;
+
     dropdownMinHeight = DEFAULT_MIN_HEIGHT;
 
     dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
