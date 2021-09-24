@@ -42,7 +42,7 @@
         "publish": "npm run build:cdk && npm publish ./dist/cdk",
         "*** Cypress ***": "",
         "demo:integrations": "concurrently -k --success first \"npm run serve:compiled\" \"npm run cypress:run\"",
-        "demo:integrations:ci": "npm run cypress:run:master && npm run demo:integrations",
+        "demo:integrations:ci": "npm run demo:integrations && npm run cypress:run:master",
         "cypress:open": "cypress open --browser chrome --project ./projects/demo-integrations",
         "cypress:run": "cypress run --env ci=true --browser chrome --headless --project ./projects/demo-integrations",
         "cypress:run:master": "cypress run --env ci=true --browser chrome --headless --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\"",
