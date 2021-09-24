@@ -26,6 +26,15 @@ module.exports = function (config, path = '') {
         browsers: ['ChromeHeadless'],
         singleRun: true,
         customLaunchers: {
+            /**
+             * @description:
+             * browsers: ['ChromeNoHeadless']
+             * use for visual debugging
+             */
+            ChromeNoHeadless: {
+                base: 'Chrome',
+                flags: ['--disable-web-security', '--remote-debugging-port=9222'],
+            },
             ChromeHeadless: {
                 base: 'Chrome',
                 flags: [
