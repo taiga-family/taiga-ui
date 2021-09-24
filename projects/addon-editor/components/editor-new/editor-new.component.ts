@@ -116,12 +116,7 @@ export class TuiEditorNewComponent
     }
 
     onMouseDown(event: MouseEvent) {
-        if (
-            this.editor?.isFocused &&
-            event.target instanceof HTMLElement &&
-            this.editorRef.elementRef.nativeElement.contains(event.target) &&
-            this.editorRef.elementRef.nativeElement !== event.target
-        ) {
+        if (this.editor?.isFocused) {
             return;
         }
 

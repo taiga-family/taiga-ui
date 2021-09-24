@@ -738,6 +738,7 @@
                 [tuiDescribedBy]="cellColorBtn.id"
                 [pseudoPressed]="cellColorSelect.open"
                 [focusable]="cellColorSelect.open"
+                [disabled]="!editor?.isActive('table')"
                 (keydown.arrowLeft.prevent)="onArrowLeft()"
                 (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
