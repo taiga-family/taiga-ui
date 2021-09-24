@@ -1,4 +1,4 @@
-import {Directive, Inject, Input, Output} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, Output} from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TUI_EDITOR_STYLES} from '@taiga-ui/addon-editor/tokens';
 import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
@@ -29,6 +29,7 @@ export class TuiTiptapEditorDirective {
     stateChange = this.editor.stateChange$;
 
     constructor(
+        @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(TUI_EDITOR_STYLES) styles: string,
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,

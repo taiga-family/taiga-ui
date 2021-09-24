@@ -146,6 +146,7 @@ export type LanguageEditor = {
         mergeCells: string;
         splitCells: string;
         rowsColumnsManaging: string;
+        cellColor: string;
     };
     editorTableCommands: [[string, string], [string, string], [string, string]];
     editorCodeOptions: [string, string];

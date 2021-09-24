@@ -21,7 +21,7 @@ export const defaultEditorExtensions = [
     import('@tiptap/extension-table-cell').then(m => m.default),
     import('@tiptap/extension-table-header').then(m => m.TableHeader),
     import('./indent-outdent').then(m => m.Indent),
-    import('./custom-table-cell').then(m => m.CustomTableCell),
+    import('./table-cell-background').then(m => m.TableCellBackground),
 ];
 
 // TODO: remove in ivy compilation

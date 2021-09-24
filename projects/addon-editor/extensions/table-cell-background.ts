@@ -1,26 +1,19 @@
 import {Command, Extension, GlobalAttributes} from '@tiptap/core';
-// import {TableCell} from '@tiptap/extension-table-cell';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         cellBackground: {
-            /**
-             * Set the background color
-             */
-            setBackground: (backgrund: string) => ReturnType;
-            /**
-             * Unset the background color
-             */
-            unsetBackground: () => ReturnType;
+            setCellBackground: (backgrund: string) => ReturnType;
+            unsetCellBackground: () => ReturnType;
         };
     }
 }
 
-export const CustomTableCell = Extension.create({
+export const TableCellBackground = Extension.create({
     addGlobalAttributes(): GlobalAttributes {
         return [
             {
-                types: ['tableCell'],
+                types: ['tableCell', 'tableHeader'],
                 attributes: {
                     background: {
                         default: null,
@@ -39,16 +32,16 @@ export const CustomTableCell = Extension.create({
     },
 
     addCommands(): {
-        setBackground?: (background: string) => Command;
-        unsetBackground?: () => Command;
+        setCellBackground: (background: string) => Command;
+        unsetCellBackground: () => Command;
     } {
         return {
-            setBackground: background => ({chain}) =>
+            setCellBackground: background => ({chain}) =>
                 chain()
                     .updateAttributes('tableCell', {background})
                     .updateAttributes('tableHeader', {background})
                     .run(),
-            unsetBackground: () => ({chain}) =>
+            unsetCellBackground: () => ({chain}) =>
                 chain()
                     .updateAttributes('tableCell', {background: null})
                     .updateAttributes('tableHeader', {background: null})

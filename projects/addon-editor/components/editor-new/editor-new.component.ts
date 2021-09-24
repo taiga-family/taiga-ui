@@ -45,8 +45,7 @@ import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 })
 export class TuiEditorNewComponent
     extends AbstractTuiControl<string>
-    implements OnDestroy
-{
+    implements OnDestroy {
     @Input()
     @tuiDefaultProp()
     readonly exampleText = '';
@@ -117,7 +116,12 @@ export class TuiEditorNewComponent
     }
 
     onMouseDown(event: MouseEvent) {
-        if (this.editor?.isFocused) {
+        if (
+            this.editor?.isFocused &&
+            event.target instanceof HTMLElement &&
+            this.editorRef.elementRef.nativeElement.contains(event.target) &&
+            this.editorRef.elementRef.nativeElement !== event.target
+        ) {
             return;
         }
 
