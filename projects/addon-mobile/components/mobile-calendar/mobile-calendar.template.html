@@ -40,7 +40,7 @@
 </header>
 <cdk-virtual-scroll-viewport
     #yearsScrollRef
-    class="t-years tui-zero-scrollbar"
+    class="t-years"
     orientation="horizontal"
     [itemSize]="yearWidth"
 >
@@ -60,7 +60,7 @@
 </div>
 <cdk-virtual-scroll-viewport
     #monthsScrollRef
-    class="t-months tui-zero-scrollbar"
+    class="t-months"
     (scrolledIndexChange)="onMonthChange($event)"
 >
     <section

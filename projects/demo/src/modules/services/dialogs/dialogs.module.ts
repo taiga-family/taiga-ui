@@ -7,6 +7,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiPreventDefaultModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
+    TuiDialogModule,
     TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -26,15 +27,17 @@ import {TuiDialogExampleComponent2} from './examples/2';
 import {TuiDialogExampleComponent3} from './examples/3';
 import {TuiDialogExampleComponent4} from './examples/4';
 import {TuiDialogExampleComponent5} from './examples/5';
+import {TuiDialogExampleComponent6} from './examples/6';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        PolymorpheusModule,
+        TuiDialogModule,
         TuiAccordionModule,
         TuiButtonModule,
         TuiMoneyModule,
-        PolymorpheusModule,
         TuiRadioListModule,
         TuiInputModule,
         TuiHintModule,
@@ -42,8 +45,8 @@ import {TuiDialogExampleComponent5} from './examples/5';
         TuiMarkerIconModule,
         TuiPreventDefaultModule,
         TuiNotificationModule,
-        DialogExampleModule,
         TuiAddonDocModule,
+        DialogExampleModule,
         RouterModule.forChild(generateRoutes(ExampleTuiDialogsComponent)),
     ],
     declarations: [
@@ -53,6 +56,7 @@ import {TuiDialogExampleComponent5} from './examples/5';
         TuiDialogExampleComponent3,
         TuiDialogExampleComponent4,
         TuiDialogExampleComponent5,
+        TuiDialogExampleComponent6,
     ],
     entryComponents: [DialogExampleComponent],
     exports: [ExampleTuiDialogsComponent],

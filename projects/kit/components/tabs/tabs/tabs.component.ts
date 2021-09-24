@@ -48,9 +48,6 @@ export const OBSERVER_INIT = {
     templateUrl: './tabs.template.html',
     styleUrls: ['./tabs.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-zero-scrollbar',
-    },
     providers: [
         TuiDestroyService,
         TuiResizeService,

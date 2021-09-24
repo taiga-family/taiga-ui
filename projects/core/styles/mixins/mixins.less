@@ -341,6 +341,20 @@
     backdrop-filter: blur(0.4375rem);
 }
 
+.scrollbar-hidden() {
+    /* stylelint-disable*/
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* stylelint-enable*/
+
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+        background: transparent;
+        width: 0;
+        height: 0;
+    }
+}
+
 // hide an element visually without hiding it from screen readers
 .sr-only() {
     clip: rect(1px, 1px, 1px, 1px);

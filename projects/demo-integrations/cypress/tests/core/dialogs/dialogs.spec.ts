@@ -25,4 +25,12 @@ describe('Dialogs', () => {
         waitKitDialog();
         cy.get('tui-dialog').matchImageSnapshot('3');
     });
+
+    it('Dialog with directive works', () => {
+        cy.goToDemoPage(DIALOG_PAGE_URL);
+
+        cy.get(`tui-dialog-example-6 button`).first().click();
+        waitKitDialog();
+        cy.get('tui-dialog').matchImageSnapshot('dialog-directive');
+    });
 });

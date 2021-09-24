@@ -62,7 +62,6 @@ enum TableComands {
     providers: [TuiDestroyService, LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
         role: 'toolbar',
-        class: 'tui-zero-scrollbar',
     },
 })
 export class TuiToolbarNewComponent {
