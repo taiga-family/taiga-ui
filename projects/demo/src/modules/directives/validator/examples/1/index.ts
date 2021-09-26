@@ -12,8 +12,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiValidatorExample1 {
     readonly items = ['Email', 'Phone'];
 
-    readonly options = {standalone: true};
-
     type = this.items[0];
 
     readonly group = new FormGroup({

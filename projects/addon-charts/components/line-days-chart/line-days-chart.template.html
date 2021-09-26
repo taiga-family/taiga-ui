@@ -1,6 +1,6 @@
 <tui-line-chart
     *ngFor="let month of months; let first = first"
-    class="chart"
+    class="t-chart"
     [style.zIndex]="zIndex"
     [dots]="dots"
     [x]="first ? 0 : getX(month[0][0])"

@@ -1,7 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {configureTestSuite} from 'ng-bullet';
-import {TuiInputMode} from '../../../enums/input-mode';
+import {TuiInputModeT} from '../../../types/input-mode';
 import {TuiInputModeModule} from '../input-mode.module';
 
 describe('TuiInputMode directive', () => {
@@ -20,7 +20,7 @@ describe('TuiInputMode directive', () => {
         @ViewChild('inputWithPattern')
         inputWithPattern!: ElementRef<HTMLInputElement>;
 
-        inputMode: TuiInputMode = TuiInputMode.Decimal;
+        inputMode: TuiInputModeT = 'decimal';
 
         default = true;
     }
@@ -70,7 +70,7 @@ describe('TuiInputMode directive', () => {
 
         // Only does so on iOS
         it('does not add pattern for numeric', () => {
-            testComponent.inputMode = TuiInputMode.Numeric;
+            testComponent.inputMode = 'numeric';
             fixture.detectChanges();
 
             expect(custom().getAttribute('pattern')).toBeNull();

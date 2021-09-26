@@ -6,7 +6,7 @@
     [pressed]="computedPressed"
     [invalid]="computedInvalid"
 >
-    <div *ngIf="checked" class="mark" [@tuiScaleIn]></div>
+    <div *ngIf="checked" class="mark" [@tuiScaleIn]="animation"></div>
 </tui-wrapper>
 <input
     #focusableElement

@@ -1,11 +1,13 @@
 <tui-hosted-dropdown
     class="hosted"
+    [canOpen]="canOpen"
     [content]="datalist || ''"
     [(open)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-primitive-textfield
         class="textfield"
+        tuiValueAccessor
         tuiTextfieldType="tel"
         [tuiTextfieldInputMode]="inputMode"
         [pseudoHovered]="pseudoHovered"
@@ -22,6 +24,7 @@
         (drop)="onDrop($event)"
         (keydown.backspace)="onBackspace($event)"
         (paste.prevent)="onPaste($event)"
+        [tuiTextfieldCleaner]="canClean"
     >
         <ng-content></ng-content>
     </tui-primitive-textfield>

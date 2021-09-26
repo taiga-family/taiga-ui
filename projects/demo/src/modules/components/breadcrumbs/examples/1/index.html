@@ -1,6 +1,15 @@
-<tui-breadcrumbs [items]="items"></tui-breadcrumbs>
-<tui-breadcrumbs
-    class="tui-space_top-2"
-    size="l"
-    [items]="items"
-></tui-breadcrumbs>
+<tui-breadcrumbs>
+    <ng-container *ngFor="let item of items">
+        <a *tuiBreadcrumb tuiLink [routerLink]="item.routerLink">
+            {{ item.caption }}
+        </a>
+    </ng-container>
+</tui-breadcrumbs>
+
+<tui-breadcrumbs class="tui-space_top-2" size="l">
+    <ng-container *ngFor="let item of items">
+        <a *tuiBreadcrumb tuiLink [routerLink]="item.routerLink">
+            {{ item.caption }}
+        </a>
+    </ng-container>
+</tui-breadcrumbs>

@@ -1,9 +1,7 @@
-import {Component, Inject, Injector} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {TuiDialogService} from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
-import {DialogExampleComponent} from '../../dialog-example/dialog-example.component';
 
 @Component({
     selector: 'tui-dialog-example-1',
@@ -12,24 +10,13 @@ import {DialogExampleComponent} from '../../dialog-example/dialog-example.compon
     encapsulation,
 })
 export class TuiDialogExampleComponent1 {
-    private readonly dialog = this.dialogService.open<boolean>(
-        new PolymorpheusComponent(DialogExampleComponent, this.injector),
-        {dismissible: true, label: 'Yes?'},
-    );
-
     constructor(
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-        @Inject(Injector) private readonly injector: Injector,
     ) {}
 
     showDialog() {
-        this.dialog.subscribe({
-            next: data => {
-                console.log('Dialog emitted data = ' + data);
-            },
-            complete: () => {
-                console.log('Dialog closed');
-            },
-        });
+        this.dialogService
+            .open('This is a plain string dialog', {label: 'Heading', size: 's'})
+            .subscribe();
     }
 }

@@ -1,5 +1,6 @@
 <tui-wrapper
     automation-id="tui-primitive-textfield__wrapper"
+    tuiPreventDefault="click"
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="disabled"
@@ -16,8 +17,8 @@
         automation-id="tui-primitive-textfield__native-input"
         class="input"
         [class.input_hidden]="inputHidden"
-        [style.paddingLeft.px]="paddingLeft"
-        [style.paddingRight.px]="paddingRight"
+        [style.borderLeftWidth.rem]="borderLeft"
+        [style.borderRightWidth.rem]="borderRight"
         [attr.disabled]="computedDisabled || null"
         [attr.maxLength]="controller.maxLength"
         [attr.name]="name"
@@ -39,24 +40,31 @@
         *ngIf="inputHidden"
         automation-id="tui-primitive-textfield__value"
         class="input input_template"
-        [style.paddingLeft.px]="paddingLeft"
-        [style.borderRightWidth.px]="paddingRight"
+        [style.paddingLeft.rem]="borderLeft"
+        [style.borderRightWidth.rem]="borderRight"
     >
         <ng-content select="[polymorpheus-outlet]"></ng-content>
     </div>
-    <div class="content" tuiPreventDefault="click">
+    <div class="content">
         <div
             polymorpheus-outlet
             *ngIf="iconAlignLeft"
             class="icon icon_left"
             [content]="iconContent"
+            [context]="context"
         >
             <ng-template let-iconSrc>
                 <tui-svg [src]="iconSrc"></tui-svg>
             </ng-template>
         </div>
         <div class="wrapper">
-            <span aria-hidden="true" class="value">{{value}}</span>
+            <span
+                [class.value_visible]="isContextTable"
+                aria-hidden="true"
+                class="value"
+            >
+                {{value}}
+            </span>
             <label
                 *ngIf="hasPlaceholder"
                 automation-id="tui-primitive-textfield__placeholder"
@@ -111,12 +119,15 @@
             [content]="hintController.content"
             [direction]="hintController.direction"
             [mode]="hintController.mode"
+            [showDelay]="hintController.showDelay"
+            [hideDelay]="hintController.hideDelay"
         ></tui-tooltip>
         <div
             polymorpheus-outlet
             *ngIf="iconAlignRight"
             class="icon"
             [content]="iconContent"
+            [context]="context"
         >
             <ng-template let-iconSrc>
                 <tui-svg [src]="iconSrc"></tui-svg>

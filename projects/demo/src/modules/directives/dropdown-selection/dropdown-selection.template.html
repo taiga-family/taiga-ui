@@ -1,4 +1,9 @@
-<tui-doc-page i18n-header header="DropdownSelection" package="KIT">
+<tui-doc-page
+    i18n-header
+    header="DropdownSelection"
+    package="KIT"
+    type="directives"
+>
     <ng-template pageTab>
         <p i18n>
             <code>tuiDropdownSelection</code> shows dropdown with custom
@@ -35,7 +40,7 @@
             >
                 Select a text to <strong>see a dropdown</strong>
             </p>
-            <ng-template #dropdownContent="polymorpheus" polymorpheus>
+            <ng-template #dropdownContent>
                 <div i18n class="dropdown">
                     Here you can have any content
                     <p>
@@ -90,7 +95,7 @@
                 i18n
                 documentationPropertyName="tuiDropdownLimitWidth"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiDropdownWidth"
+                documentationPropertyType="TuiDropdownWidthT"
                 [documentationPropertyValues]="tuiDropdownLimitWidthVariants"
                 [(documentationPropertyValue)]="tuiDropdownLimitWidth"
             >
@@ -129,7 +134,7 @@
                 i18n
                 documentationPropertyName="tuiDropdownSelectionPosition"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiDropdownPosition"
+                documentationPropertyType="'selection' | 'word' | 'tag'"
                 [documentationPropertyValues]="positionVariants"
                 [(documentationPropertyValue)]="position"
             >

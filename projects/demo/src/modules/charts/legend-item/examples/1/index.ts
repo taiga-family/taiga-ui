@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts';
 import {sum} from '@taiga-ui/cdk';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
@@ -16,7 +15,6 @@ export class TuiLegendItemExample1 {
 
     readonly value = [13769, 12367, 10172, 3018, 2592];
     readonly sum = sum(...this.value);
-    readonly colorHandler = TUI_DEFAULT_COLOR_HANDLER;
     readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'Other'];
 
     isItemActive(index: number): boolean {
@@ -25,5 +23,9 @@ export class TuiLegendItemExample1 {
 
     onHover(index: number, hovered: boolean) {
         this.activeItemIndex = hovered ? index : null;
+    }
+
+    getColor(index: number): string {
+        return `var(--tui-chart-${index})`;
     }
 }

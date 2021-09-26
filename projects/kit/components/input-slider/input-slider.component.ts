@@ -25,7 +25,9 @@ import {
     HINT_CONTROLLER_PROVIDER,
     maskedMoneyValueIsEmpty,
     maskedNumberStringToNumber,
+    NumberFormatSettings,
     TUI_HINT_WATCHED_CONTROLLER,
+    TUI_NUMBER_FORMAT,
     TuiHintControllerDirective,
     TuiModeDirective,
 } from '@taiga-ui/core';
@@ -66,6 +68,8 @@ export class TuiInputSliderComponent
         protected readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
+        @Inject(TUI_NUMBER_FORMAT)
+        protected readonly numberFormat: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
     }
@@ -150,7 +154,11 @@ export class TuiInputSliderComponent
             return;
         }
 
-        const inputValue = maskedNumberStringToNumber(this.computedValue);
+        const inputValue = maskedNumberStringToNumber(
+            this.computedValue,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
         const value = isNaN(inputValue) ? this.min : this.valueGuard(inputValue);
 
         this.updateValue(value);
@@ -165,7 +173,7 @@ export class TuiInputSliderComponent
             return;
         }
 
-        const newValue = formatNumber(capped) + postfix;
+        const newValue = this.formatNumber(capped) + postfix;
 
         if (value !== newValue) {
             this.inputValue = newValue;
@@ -184,7 +192,7 @@ export class TuiInputSliderComponent
     }
 
     private get formattedValue(): string {
-        return formatNumber(this.value);
+        return this.formatNumber(this.value);
     }
 
     private get isInputValueNotFinished(): boolean {
@@ -192,7 +200,11 @@ export class TuiInputSliderComponent
             return true;
         }
 
-        const nativeNumberValue = maskedNumberStringToNumber(this.inputValue);
+        const nativeNumberValue = maskedNumberStringToNumber(
+            this.inputValue,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
 
         return nativeNumberValue < 0
             ? nativeNumberValue > this.max
@@ -207,5 +219,14 @@ export class TuiInputSliderComponent
         if (value !== this.value) {
             this.updateValue(value);
         }
+    }
+
+    private formatNumber(value: number): string {
+        return formatNumber(
+            value,
+            null,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+        );
     }
 }

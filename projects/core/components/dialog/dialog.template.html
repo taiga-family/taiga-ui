@@ -11,7 +11,20 @@
         polymorpheus-outlet
         [context]="context"
         [content]="context.content"
-    ></section>
+    >
+        <ng-template let-text>
+            {{text}}
+            <div class="buttons">
+                <button
+                    tuiButton
+                    size="m"
+                    (click)="context.$implicit.complete()"
+                >
+                    OK
+                </button>
+            </div>
+        </ng-template>
+    </section>
 </div>
 <div *ngIf="context.closeable" class="wrapper">
     <button

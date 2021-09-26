@@ -17,11 +17,11 @@ import {
     ALWAYS_TRUE_HANDLER,
     TuiBooleanHandler,
 } from '@taiga-ui/cdk';
-import {TuiOrientation, TuiSizeL} from '@taiga-ui/core';
+import {TuiOrientationT, TuiSizeL} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
+import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
     selector: 'example-tui-radio-list',
@@ -35,7 +35,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiRadioListComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiRadioListComponent extends AbstractExampleTuiInteractive {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
     readonly exampleDeclareForm = exampleDeclareForm;
@@ -52,11 +52,8 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiReactiveFiel
         LESS: example2Less,
     };
 
-    readonly orientationVariants: ReadonlyArray<TuiOrientation> = [
-        TuiOrientation.Vertical,
-        TuiOrientation.Horizontal,
-    ];
-    orientation: TuiOrientation = this.orientationVariants[0];
+    readonly orientationVariants: readonly TuiOrientationT[] = ['vertical', 'horizontal'];
+    orientation: TuiOrientationT = this.orientationVariants[0];
 
     readonly items = [
         {

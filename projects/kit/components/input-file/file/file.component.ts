@@ -152,6 +152,7 @@ export class TuiFileComponent {
             return file.src;
         }
 
+        // TODO: iframe warning
         if (file instanceof File && file.type && file.type.startsWith('image/')) {
             return sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
         }

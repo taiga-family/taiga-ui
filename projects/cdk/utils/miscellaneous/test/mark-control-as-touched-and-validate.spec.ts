@@ -22,6 +22,14 @@ describe('markControlAsTouchedAndValidate', () => {
         expect(group.get('control2')!.touched).toBe(true);
     });
 
+    it('With empty form group', () => {
+        const group = new FormGroup({});
+
+        markControlAsTouchedAndValidate(group);
+
+        expect(group.touched).toBe(true);
+    });
+
     it('FormArray', () => {
         const array = new FormArray([new FormControl(), new FormControl()]);
 
@@ -29,6 +37,14 @@ describe('markControlAsTouchedAndValidate', () => {
 
         expect(array.at(0).touched).toBe(true);
         expect(array.at(1).touched).toBe(true);
+    });
+
+    it('With empty form array', () => {
+        const array = new FormArray([]);
+
+        markControlAsTouchedAndValidate(array);
+
+        expect(array.touched).toBe(true);
     });
 
     it('With nested form arrays', () => {

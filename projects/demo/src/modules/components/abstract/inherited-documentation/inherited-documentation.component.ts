@@ -1,9 +1,9 @@
 import {Component, Inject, Input} from '@angular/core';
-import {TuiDirection, TuiHintMode} from '@taiga-ui/core';
+import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
 import {changeDetection} from '../../../../change-detection-strategy';
-import {AbstractExampleTuiField} from '../field';
+import {AbstractExampleTuiControl} from '../control';
 import {AbstractExampleTuiHint} from '../hint';
-import {AbstractExampleTuiReactiveField} from '../reactive-field';
+import {AbstractExampleTuiInteractive} from '../interactive';
 import {ABSTRACT_PROPS_ACCESSOR} from './abstract-props-accessor';
 import {supportingDocumentationComponent} from './supporting-documentation-component';
 
@@ -16,7 +16,7 @@ export class InheritedDocumentationComponent {
     @Input()
     dropdown = false;
 
-    readonly booleanVariants: ReadonlyArray<boolean> = [false, true];
+    readonly booleanVariants: readonly boolean[] = [false, true];
 
     readonly directionVariants: ReadonlyArray<TuiDirection> = [
         'left',
@@ -27,10 +27,7 @@ export class InheritedDocumentationComponent {
         'top-right',
     ];
 
-    readonly modeVariants: ReadonlyArray<TuiHintMode> = [
-        TuiHintMode.Error,
-        TuiHintMode.OnDark,
-    ];
+    readonly modeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
 
     constructor(
         @Inject(ABSTRACT_PROPS_ACCESSOR)
@@ -39,14 +36,14 @@ export class InheritedDocumentationComponent {
 
     isTuiReactiveControl(
         documentedComponent: supportingDocumentationComponent,
-    ): documentedComponent is AbstractExampleTuiReactiveField {
-        return documentedComponent instanceof AbstractExampleTuiReactiveField;
+    ): documentedComponent is AbstractExampleTuiControl {
+        return documentedComponent instanceof AbstractExampleTuiControl;
     }
 
     isTuiInteractive(
         documentedComponent: supportingDocumentationComponent,
-    ): documentedComponent is AbstractExampleTuiField {
-        return documentedComponent instanceof AbstractExampleTuiField;
+    ): documentedComponent is AbstractExampleTuiInteractive {
+        return documentedComponent instanceof AbstractExampleTuiInteractive;
     }
 
     isTuiHint(

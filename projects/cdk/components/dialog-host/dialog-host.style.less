@@ -23,16 +23,17 @@
 .overlay {
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.3s;
-    background: rgba(0, 0, 0, 0.5);
+    letter-spacing: normal;
+    /* change of useless property 'letter-spacing' to ensure that transitionend event will fire */
+    transition: opacity var(--tui-duration), letter-spacing 0.01s;
+    background: rgba(0, 0, 0, 0.75);
+
+    &_visible {
+        opacity: 1;
+        letter-spacing: 1px;
+    }
 }
 
-.dialog {
-    & + .overlay {
-        opacity: 1;
-    }
-
-    &:last-of-type {
-        z-index: 1;
-    }
+.dialog:last-of-type {
+    z-index: 1;
 }

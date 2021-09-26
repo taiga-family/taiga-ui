@@ -32,7 +32,7 @@ import {TuiMarkerHandler} from '@taiga-ui/core/types';
 export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     @Input()
     @tuiDefaultProp()
-    month = TuiMonth.currentLocal();
+    month: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
     @tuiDefaultProp()
@@ -87,20 +87,6 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     > = (disabledItemHandler, min: TuiDay, max: TuiDay) => item =>
         item.dayBefore(min) || item.dayAfter(max) || disabledItemHandler(item);
 
-    get computedMonth(): TuiMonth {
-        const {month, computedMinViewedMonth, computedMaxViewedMonth} = this;
-
-        if (month.monthBefore(computedMinViewedMonth)) {
-            return computedMinViewedMonth;
-        }
-
-        if (month.monthAfter(computedMaxViewedMonth)) {
-            return computedMaxViewedMonth;
-        }
-
-        return month;
-    }
-
     get computedMinViewedMonth(): TuiMonth {
         return this.minViewedMonth.monthSameOrAfter(this.min)
             ? this.minViewedMonth
@@ -119,7 +105,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
 
     onPickerYearClick({year}: TuiYear) {
         this.year = null;
-        this.updateViewedMonth(new TuiMonth(year, this.computedMonth.month));
+        this.updateViewedMonth(new TuiMonth(year, this.month.month));
     }
 
     onPaginationValueChange(month: TuiMonth) {

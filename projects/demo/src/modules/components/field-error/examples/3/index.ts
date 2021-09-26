@@ -9,7 +9,7 @@ import {
     Validators,
 } from '@angular/forms';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -22,7 +22,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiFieldErrorExample3 {
     @ViewChild('phoneErrorContent')
-    phoneErrorContent?: PolymorpheusTemplate<{}>;
+    phoneErrorContent: PolymorpheusContent = '';
 
     getPhoneArrayValidator = (array: FormArray): ValidationErrors | null => {
         return array.controls.length < 2 ||
@@ -72,7 +72,7 @@ export class TuiFieldErrorExample3 {
         return (field: AbstractControl): ValidationErrors | null =>
             field.value.length !== 12
                 ? {
-                      lenght: new TuiValidationError(this.phoneErrorContent || ''),
+                      lenght: new TuiValidationError(this.phoneErrorContent),
                   }
                 : null;
     }

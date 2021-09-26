@@ -1,3 +1,6 @@
+/**
+ * @deprecated use join type {@link TuiInputTypeT}
+ */
 export const enum TuiInputType {
     Text = 'text',
     Tel = 'tel',

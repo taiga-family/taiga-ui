@@ -1,3 +1,3 @@
-import {TuiLineType} from '@taiga-ui/addon-charts/enums';
+import {TuiLineTypeT} from './line-type';
 
-export type TuiLineHandler = (index: number, total: number) => TuiLineType;
+export type TuiLineHandler = (index: number, total: number) => TuiLineTypeT;

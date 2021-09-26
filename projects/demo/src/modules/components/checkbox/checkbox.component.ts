@@ -16,7 +16,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
+import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
     selector: 'example-tui-checkbox',
@@ -29,7 +29,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiCheckboxComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiCheckboxComponent extends AbstractExampleTuiInteractive {
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleDefineOptions = exampleDefineOptions;
     readonly exampleImportModule = exampleImportModule;

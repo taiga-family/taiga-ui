@@ -1,3 +1,4 @@
+import {AnimationOptions} from '@angular/animations';
 import {
     AfterViewChecked,
     ChangeDetectionStrategy,
@@ -8,30 +9,30 @@ import {
     NgZone,
     ViewChild,
 } from '@angular/core';
-import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
+import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {
     getClosestElement,
-    getClosestKeyboardFocusable,
+    getClosestFocusable,
     inRange,
-    isIE,
     POLLING_TIME,
     px,
     setNativeFocused,
+    TuiActiveZoneDirective,
     TuiDestroyService,
-    TuiOverscrollMode,
+    TuiOverscrollModeT,
     TuiPortalHostComponent,
     tuiPure,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {DEFAULT_MARGIN, DEFAULT_MAX_WIDTH} from '@taiga-ui/core/constants';
-import {TuiDropdownAnimation, TuiDropdownWidth} from '@taiga-ui/core/enums';
-import {TuiDropdown} from '@taiga-ui/core/interfaces';
-import {TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
+import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
+import {TuiAnimationOptions, TuiDropdown} from '@taiga-ui/core/interfaces';
+import {TUI_ANIMATION_OPTIONS, TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
 import {TuiHorizontalDirection, TuiVerticalDirection} from '@taiga-ui/core/types';
 import {getScreenWidth} from '@taiga-ui/core/utils/dom';
-import {fromEvent, interval, merge} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {fromEvent, merge, Observable} from 'rxjs';
+import {takeUntil, throttleTime} from 'rxjs/operators';
 
 /**
  *  This component is used to show template in a portal using default style of white rounded box with a shadow
@@ -49,7 +50,20 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class TuiDropdownBoxComponent implements AfterViewChecked {
     @HostBinding('@tuiDropdownAnimation')
-    dropdownAnimation!: TuiDropdownAnimation;
+    dropdownAnimation!: TuiAnimationOptions;
+
+    @ViewChild(TuiActiveZoneDirective)
+    readonly activeZone?: TuiActiveZoneDirective;
+
+    private readonly animationTop = {
+        value: TuiDropdownAnimation.FadeInTop,
+        ...this.options,
+    };
+
+    private readonly animationBottom = {
+        value: TuiDropdownAnimation.FadeInBottom,
+        ...this.options,
+    };
 
     /**
      * Is previous position on top (to prevent jumping up and down on scroll)
@@ -68,10 +82,11 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiPortalHostComponent)
         private readonly portalHost: TuiPortalHostComponent,
-        @Inject(USER_AGENT) private readonly userAgent: string,
+        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
+        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
     ) {
         merge(
-            interval(POLLING_TIME),
+            animationFrame$.pipe(throttleTime(POLLING_TIME)),
             this.directive.refresh$,
             fromEvent(this.windowRef, 'resize'),
         )
@@ -79,6 +94,20 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
             .subscribe(() => {
                 this.calculatePositionAndSize();
             });
+    }
+
+    get overscroll(): TuiOverscrollModeT {
+        return this.inModal ? 'all' : 'scroll';
+    }
+
+    @tuiPure
+    getContext<T extends object>(
+        context?: T,
+        activeZone?: TuiActiveZoneDirective,
+    ):
+        | (T & {activeZone?: TuiActiveZoneDirective})
+        | {activeZone?: TuiActiveZoneDirective} {
+        return {...context, activeZone};
     }
 
     ngAfterViewChecked() {
@@ -91,10 +120,6 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
 
     onBottomFocus() {
         this.moveFocusOutside(false);
-    }
-
-    get overscroll(): TuiOverscrollMode {
-        return this.inModal ? TuiOverscrollMode.All : TuiOverscrollMode.Scroll;
     }
 
     @tuiPure
@@ -236,7 +261,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         this.prevDirectionIsTop = finalDirection === 'top';
 
         if (finalDirection === 'top') {
-            this.dropdownAnimation = TuiDropdownAnimation.FadeInBottom;
+            this.dropdownAnimation = this.animationBottom;
 
             style.maxHeight = px(Math.min(boxHeightLimit, topAvailableHeight));
             style.top = 'auto';
@@ -244,7 +269,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
                 hostRect.bottom - directiveRect.top - DEFAULT_MARGIN + offset,
             );
         } else {
-            this.dropdownAnimation = TuiDropdownAnimation.FadeInTop;
+            this.dropdownAnimation = this.animationTop;
 
             style.maxHeight = px(Math.min(boxHeightLimit, bottomAvailableHeight));
             style.top = px(directiveRect.bottom - hostRect.top - DEFAULT_MARGIN + offset);
@@ -320,25 +345,11 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
      */
     private calculateWidth(style: CSSStyleDeclaration, directiveRect: ClientRect) {
         style.width =
-            this.directive.limitMinWidth === TuiDropdownWidth.Fixed &&
-            !this.directive.sided
+            this.directive.limitMinWidth === 'fixed' && !this.directive.sided
                 ? px(directiveRect.width)
                 : '';
 
-        if (
-            isIE(this.userAgent) &&
-            this.directive.limitMinWidth === TuiDropdownWidth.Min &&
-            !this.directive.sided
-        ) {
-            style.width = px(DEFAULT_MAX_WIDTH);
-
-            return;
-        }
-
-        if (
-            this.directive.limitMinWidth === TuiDropdownWidth.Min &&
-            !this.directive.sided
-        ) {
+        if (this.directive.limitMinWidth === 'min' && !this.directive.sided) {
             style.minWidth = px(directiveRect.width);
             style.maxWidth = px(DEFAULT_MAX_WIDTH);
 
@@ -354,10 +365,10 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         const {ownerDocument} = host;
         const root = ownerDocument ? ownerDocument.body : host;
 
-        let focusable = getClosestKeyboardFocusable(host, previous, root);
+        let focusable = getClosestFocusable(host, previous, root);
 
         while (focusable !== null && host.contains(focusable)) {
-            focusable = getClosestKeyboardFocusable(focusable, previous, root);
+            focusable = getClosestFocusable(focusable, previous, root);
         }
 
         if (focusable === null) {

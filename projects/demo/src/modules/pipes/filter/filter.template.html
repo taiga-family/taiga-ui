@@ -1,44 +1,18 @@
-<tui-doc-page header="Filter" package="CDK">
-    <ng-template i18n pageTab> Pipe for filtering array </ng-template>
+<tui-doc-page header="Filter" package="CDK" type="pipes">
+    <ng-template i18n pageTab>
+        Pipe for filtering an array
 
-    <ng-template pageTab>
-        <table class="table">
-            <tr
-                *ngFor="let item of items | tuiFilter: matcher: args"
-                class="row"
-            >
-                <td class="cell">
-                    <tui-money [value]="item.price"></tui-money>
-                </td>
-                <td class="cell">{{item.name}}</td>
-            </tr>
-        </table>
-
-        <tui-doc-documentation>
-            <ng-template
-                i18n
-                documentationPropertyName="matcher"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiMatcher"
-                [documentationPropertyValues]="matcherVariants"
-                [(documentationPropertyValue)]="matcher"
-            >
-                Matcher function
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="args"
-                documentationPropertyMode="input"
-                documentationPropertyType="any"
-                [documentationPropertyValues]="argsVariants"
-                [(documentationPropertyValue)]="args"
-            >
-                Arguments for matcher function
-            </ng-template>
-        </tui-doc-documentation>
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-filter-example1></tui-filter-example1>
+        </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
@@ -54,7 +28,7 @@
 
             <li>
                 <p i18n>
-                    Use pipe into template with function and its arguments:
+                    Use pipe in template with function and its arguments:
                 </p>
 
                 <tui-doc-code

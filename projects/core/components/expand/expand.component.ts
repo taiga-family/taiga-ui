@@ -8,11 +8,11 @@ import {
     HostListener,
     Inject,
     Input,
+    TemplateRef,
     ViewChild,
 } from '@angular/core';
 import {isCurrentTarget, tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
-
 import {TuiExpandContentDirective} from './expand-content.directive';
 
 enum State {
@@ -55,8 +55,8 @@ export class TuiExpandComponent {
         this.retrigger(this.async && expanded ? State.Loading : State.Animated);
     }
 
-    @ContentChild(TuiExpandContentDirective)
-    content?: TuiExpandContentDirective;
+    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
+    content?: TemplateRef<{}>;
 
     @HostBinding('class._expanded')
     expanded: boolean | null = null;

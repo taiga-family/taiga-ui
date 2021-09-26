@@ -21,7 +21,6 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeS} from '@taiga-ui/core';
-import {TuiBorders} from '@taiga-ui/kit/enums';
 import {Observable} from 'rxjs';
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
 
@@ -57,7 +56,7 @@ export class TuiAccordionItemComponent
     @Input()
     @HostBinding('attr.data-tui-host-borders')
     @tuiDefaultProp()
-    borders: TuiBorders | null = TuiBorders.All;
+    borders: 'all' | 'top-bottom' | null = 'all';
 
     @Input()
     @HostBinding('attr.data-tui-host-size')

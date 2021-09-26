@@ -27,6 +27,7 @@ import {
     tap,
 } from 'rxjs/operators';
 
+// TODO: Move into separate module in 3.0
 @Directive({
     selector: 'tui-data-list[tuiDataListDropdownManager]',
 })
@@ -72,6 +73,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                             }
 
                             setNativeFocused(element.nativeElement);
+                            // TODO: iframe warning
                             dropdown.open = event instanceof MouseEvent;
                         }),
                     );
@@ -132,11 +134,11 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                                 this.notInDropdown(relatedTarget, index),
                             ),
                             map(({type}) => (type === 'focus' ? index : NaN)),
-                            debounceTime(300),
                         ),
                     ),
                 ),
             ),
+            debounceTime(300),
         );
     }
 

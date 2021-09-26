@@ -5,7 +5,7 @@
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 [![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/TinkoffCreditSystems/angular-open-source-starter)
 
-[Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki) • [Core team](#core-team)
+[Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki) • [Core team](#core-team) • [Figma](https://www.figma.com/community/file/966347242613098831)
 
 **Taiga UI** is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons.
 
@@ -23,6 +23,8 @@ It is based on [ng-polymorpheus](https://github.com/TinkoffCreditSystems/ng-poly
 
 📦 **It's big!** We have 130+ components, 100+ directives, dozens of tokens, utils and tools. And it isn't over yet 🚀
 
+🏗 **Maintained!** The library started as an internal product in our company. It is used by 50+ projects in production now and it is here to stay.
+
 Read more about Taiga UI main features in [this article](https://indepth.dev/posts/1413/taiga-ui) on inDepth
 
 ## How to start
@@ -33,11 +35,15 @@ See our [Getting started](https://taiga-ui.dev/getting-started) page to start wo
 
 You can also use our [StackBlitz starter](https://stackblitz.com/edit/taiga-starter?file=src%2Fapp%2Fapp.component.html) to create a quick sample with Taiga UI
 
+🎨 Check out [Taiga UI Figma library](https://www.figma.com/community/file/966347242613098831/Taiga-UI) which you can use to design your app with Taiga UI components.
+
 ## Community
 
 💡 Your ideas are very welcome in Github issues or discussions
 
-🅰️ For live communication join [#taiga-ui](https://discord.gg/zrB2EdJjEy) channel in official Angular
+🗨 For English live chat join [#taiga-ui](https://discord.gg/zrB2EdJjEy) channel in official Angular discord
+
+💬 For Russian live chat join [taiga_ui](https://t.me/taiga_ui) Telegram group
 
 ## Contributing
 
@@ -54,30 +60,27 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Alex Inkin"
-                /><br /><sub><b>Alex Inkin</b></sub></a
+                /><br /><b>Alex Inkin</b></a
             >
             <div style="margin-top: 4px">
                 <a
-                    style="margin-left: 8px"
                     href="https://twitter.com/waterplea"
                     title="Twitter"
                     ><img
-                        style="width: 16px;"
                         width="16"
-                        src="https://image.flaticon.com/icons/svg/733/733579.svg"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/twitter.svg"
                 /></a>
                 <a href="https://github.com/waterplea" title="Github"
                     ><img
                         width="16"
-                        src="https://image.flaticon.com/icons/svg/2111/2111425.svg"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
                 /></a>
                 <a
-                    style="margin-left: 8px"
                     href="https://t.me/waterplea"
                     title="Telegram"
                     ><img
                         width="16"
-                        src="https://image.flaticon.com/icons/svg/2111/2111644.svg"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
                 /></a>
             </div>
         </td>
@@ -88,29 +91,29 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Roman Sedov"
-                /><br /><sub><b>Roman Sedov</b></sub></a
+                /><br /><b>Roman Sedov</b></a
             >
             <div style="margin-top: 4px">
                 <a
-                    style="margin-left: 8px"
                     href="https://twitter.com/marsibarsi"
                     title="Twitter"
                     ><img
                         width="16"
-                        src="https://image.flaticon.com/icons/svg/733/733579.svg"
-                /></a>
-                <a href="https://github.com/marsibarsi" title="Github"
-                    ><img
-                        width="16"
-                        src="https://image.flaticon.com/icons/svg/2111/2111425.svg"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/twitter.svg"
                 /></a>
                 <a
-                    style="margin-left: 8px"
+                    href="https://github.com/marsibarsi"
+                    title="GitHub"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
+                /></a>
+                <a
                     href="https://t.me/marsibarsi"
                     title="Telegram"
                     ><img
                         width="16"
-                        src="https://image.flaticon.com/icons/svg/2111/2111644.svg"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
                 /></a>
             </div>
         </td>

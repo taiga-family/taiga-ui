@@ -1,4 +1,4 @@
-<tui-doc-page header="ComboBox" package="KIT">
+<tui-doc-page header="ComboBox" package="KIT" type="components">
     <ng-template pageTab>
         <div i18n class="tui-space_bottom-3">
             <code>ComboBox</code> is a textfield with a dropdown with items. You
@@ -16,6 +16,24 @@
 
         <tui-doc-example id="datalist" heading="DataList" [content]="example2">
             <tui-combo-box-example-2></tui-combo-box-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="wrapper"
+            heading="DataListWrapper"
+            description="With filtering through tuiFilterByInput pipe"
+            [content]="example3"
+        >
+            <tui-combo-box-example-3></tui-combo-box-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="stringify"
+            heading="Stringify"
+            description="With filtering through tuiFilterByInputWith pipe using custom stringify handler"
+            [content]="example4"
+        >
+            <tui-combo-box-example-4></tui-combo-box-example-4>
         </tui-doc-example>
     </ng-template>
 
@@ -58,7 +76,7 @@
                 </tui-combo-box>
             </ng-template>
         </tui-doc-demo>
-        <ng-template #valueTemplateContent="polymorpheus" polymorpheus let-item>
+        <ng-template #valueTemplateContent let-item>
             <div class="item-template">
                 <tui-svg
                     class="item-template-icon"

@@ -7,6 +7,7 @@ import {setNativeFocused} from './set-native-focused';
 export function blurNativeFocused(documentRef: Document) {
     const activeElement = getNativeFocused(documentRef);
 
+    // TODO: iframe warning
     if (activeElement instanceof HTMLElement) {
         setNativeFocused(activeElement, false);
     }

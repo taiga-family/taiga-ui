@@ -1,12 +1,18 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
-import {timer} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
-
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    Inject,
+    Input,
+    OnInit,
+} from '@angular/core';
+import {isNumber, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
+import {fromEvent, timer} from 'rxjs';
+import {repeatWhen, takeUntil} from 'rxjs/operators';
 import {TuiNotificationContentContext} from '../notification-content-context';
 import {NotificationAlert} from './Notification-alert';
 
-export const ALERT_AUTOCLOSE_TIMEOUT = 3000;
+export const DEFAULT_ALERT_AUTOCLOSE_TIMEOUT = 3000;
 
 @Component({
     selector: 'tui-notification-alert',
@@ -15,21 +21,17 @@ export const ALERT_AUTOCLOSE_TIMEOUT = 3000;
     styleUrls: ['./notification-alert.style.less'],
     providers: [TuiDestroyService],
 })
-export class TuiNotificationAlertComponent<O, I> {
+export class TuiNotificationAlertComponent<O, I> implements OnInit {
     @Input()
     item?: NotificationAlert<O, I>;
 
     constructor(
-        @Inject(TuiDestroyService)
-        destroy$: TuiDestroyService,
-    ) {
-        timer(ALERT_AUTOCLOSE_TIMEOUT)
-            .pipe(takeUntil(destroy$))
-            .subscribe(() => {
-                if (this.safeItem.autoClose) {
-                    this.closeDialog();
-                }
-            });
+        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+    ) {}
+
+    ngOnInit() {
+        this.initAutoClose();
     }
 
     get safeItem(): NotificationAlert<O, I> {
@@ -44,7 +46,7 @@ export class TuiNotificationAlertComponent<O, I> {
         return this.calculateContext(this.safeItem);
     }
 
-    closeDialog() {
+    closeNotification() {
         this.safeItem.observer.complete();
     }
 
@@ -70,5 +72,23 @@ export class TuiNotificationAlertComponent<O, I> {
                 observer.complete();
             },
         };
+    }
+
+    private initAutoClose() {
+        if (!this.safeItem.autoClose) {
+            return;
+        }
+
+        timer(
+            isNumber(this.safeItem.autoClose)
+                ? this.safeItem.autoClose
+                : DEFAULT_ALERT_AUTOCLOSE_TIMEOUT,
+        )
+            .pipe(
+                takeUntil(fromEvent(this.elementRef.nativeElement, 'mouseenter')),
+                repeatWhen(() => fromEvent(this.elementRef.nativeElement, 'mouseleave')),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(() => this.closeNotification());
     }
 }

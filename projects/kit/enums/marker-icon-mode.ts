@@ -1,3 +1,6 @@
+/**
+ * @deprecated use join type {@link TuiMarkerIconModeT}
+ */
 export const enum TuiMarkerIconMode {
     Link = 'link',
     Primary = 'primary',

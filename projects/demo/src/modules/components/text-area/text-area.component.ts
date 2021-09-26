@@ -10,17 +10,21 @@ import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
+import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
+import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
+import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
+
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component, forwardRef} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-tui-text-area',
@@ -33,7 +37,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiTextAreaComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
@@ -52,6 +56,12 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiReactiveField
         LESS: example3Less,
     };
 
+    readonly example4: FrontEndExample = {
+        TypeScript: example4Ts,
+        HTML: example4Html,
+        LESS: example4Less,
+    };
+
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
     exampleDeclareForm = exampleDeclareForm;
@@ -66,7 +76,7 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiReactiveField
 
     expandable = false;
 
-    control = new FormControl('aaa', Validators.maxLength(10));
+    control = new FormControl();
 
     readonly sizeVariants: ReadonlyArray<TuiSizeM | TuiSizeL> = ['m', 'l'];
 

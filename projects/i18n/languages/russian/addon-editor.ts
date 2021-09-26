@@ -35,5 +35,20 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         insertHorizontalRule: 'Разделитель',
         superscript: 'Надстрочный',
         subscript: 'Подстрочный',
+        insertTable: 'Добавить таблицу',
+        mergeCells: 'Объединить ячейки',
+        splitCells: 'Разъединить ячейки',
+        rowsColumnsManaging: 'Управление строками и столбцами',
     },
-} as const;
+    editorTableCommands: [
+        ['Добавить столбец слева', 'Добавить столбец справа'],
+        ['Добавить строку сверху', 'Добавить строку снизу'],
+        ['Удалить столбец', 'Удалить строку'],
+    ],
+    editorCodeOptions: ['Код', 'Код в блоке'],
+    editorFontOptions: {
+        normal: 'Обычный',
+        title: 'Заголовок',
+        subtitle: 'Подзаголовок',
+    },
+};

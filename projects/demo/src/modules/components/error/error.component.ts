@@ -33,16 +33,15 @@ export class ExampleTuiErrorComponent {
 
     selectedError = this.errorVariants[0];
 
-    get error(): TuiValidationError | null {
+    get error(): TuiValidationError | string | null {
         if (this.selectedError === null) {
             return null;
         }
 
-        const content =
-            this.selectedError === this.errorVariants[0]
-                ? 'Error as string'
-                : this.errorContent || '';
+        if (this.selectedError === this.errorVariants[0]) {
+            return this.selectedError;
+        }
 
-        return new TuiValidationError(content);
+        return new TuiValidationError(this.errorContent || '');
     }
 }

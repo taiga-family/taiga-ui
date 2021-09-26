@@ -4,7 +4,12 @@ export const defaultEditorStyles = `
 body.tui-editor-socket {
     margin: 0;
     overflow: hidden;
-    padding: 0 16px 27px;
+    padding: 0 16px;
+}
+
+p:empty:before {
+    content: ' ';
+    white-space: pre;
 }
 
 .tui-editor-socket {

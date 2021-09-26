@@ -1,6 +1,7 @@
 @import 'taiga-ui-local';
 
 :host {
+    .scrollbar-hidden();
     font: var(--tui-font-text-m);
     position: relative;
     display: flex;
@@ -16,7 +17,7 @@
     &._ios {
         height: auto;
         border: 2px solid transparent;
-        border-radius: 9px;
+        border-radius: 0.5625rem;
         background: var(--tui-link);
         box-shadow: none;
     }

@@ -1,4 +1,4 @@
-@height-cell-large: 80px;
+@height-cell-large: 5rem;
 
 .tui-table {
     width: 100%;
@@ -31,9 +31,9 @@
     &__th {
         font: var(--tui-font-text-s);
         .text-overflow();
-        padding: 8px 16px;
+        padding: 0.5rem 1rem;
         vertical-align: middle;
-        height: 40px;
+        height: 2.5rem;
         color: var(--tui-text-02);
 
         &_font-size_l,
@@ -44,15 +44,15 @@
 
     &__td {
         font: var(--tui-font-text-m);
-        padding: 16px 16px 14px;
+        padding: 1rem 1rem 0.875rem;
         vertical-align: top;
         word-wrap: break-word;
-        height: 55px;
+        height: 3.4375rem;
         color: var(--tui-text-01);
 
         &_size_l,
         .tui-table_size_l & {
-            height: @height-cell-large - 1px;
+            height: @height-cell-large - 0.0625rem;
         }
 
         &_font-size_l,
@@ -128,8 +128,8 @@
         .center-top();
         left: 100%;
         margin-left: @space / 2;
-        width: 16px;
-        height: 16px;
+        width: 1rem;
+        height: 1rem;
         flex-shrink: 0;
         opacity: 0;
 

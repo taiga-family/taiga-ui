@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLazyLoadingModule} from '@taiga-ui/kit/directives/lazy-loading';
 import {TuiLazyLoadingExample1} from './examples/1';
 import {ExampleTuiLazyLoadingComponent} from './lazy-loading.component';
@@ -10,7 +10,7 @@ import {ExampleTuiLazyLoadingComponent} from './lazy-loading.component';
     imports: [
         CommonModule,
         TuiLazyLoadingModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiLazyLoadingComponent)),
     ],
     declarations: [ExampleTuiLazyLoadingComponent, TuiLazyLoadingExample1],

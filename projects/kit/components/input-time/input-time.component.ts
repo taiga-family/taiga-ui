@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     forwardRef,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -18,6 +19,7 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_STRICT_MATCHER,
     TuiBooleanHandler,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiPure,
@@ -26,12 +28,9 @@ import {
     TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {
-    sizeBigger,
-    TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -40,8 +39,10 @@ import {
     tuiCreateAutoCorrectedTimePipe,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {InputTimeOptions, TUI_INPUT_TIME_OPTIONS} from './input-time-options';
 
 // @dynamic
 @Component({
@@ -59,7 +60,7 @@ import {map} from 'rxjs/operators';
 })
 export class TuiInputTimeComponent
     extends AbstractTuiNullableControl<TuiTime>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor, InputTimeOptions {
     @Input()
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiTime> = ALWAYS_FALSE_HANDLER;
@@ -70,7 +71,7 @@ export class TuiInputTimeComponent
 
     @Input()
     @tuiDefaultProp()
-    itemSize: TuiSizeS | TuiSizeL = 'm';
+    itemSize = this.options.itemSize;
 
     @Input()
     @tuiDefaultProp()
@@ -78,7 +79,7 @@ export class TuiInputTimeComponent
 
     @Input()
     @tuiDefaultProp()
-    mode: TuiTimeMode = 'HH:MM';
+    mode = this.options.mode;
 
     open = false;
 
@@ -91,10 +92,10 @@ export class TuiInputTimeComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_TIME_TEXTS)
         private readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
+        @Inject(TUI_INPUT_TIME_OPTIONS)
+        private readonly options: InputTimeOptions,
     ) {
         super(control, changeDetectorRef);
     }
@@ -139,8 +140,8 @@ export class TuiInputTimeComponent
         return null;
     }
 
-    get icon(): string {
-        return sizeBigger(this.textfieldSize.size) ? 'tuiIconTimeLarge' : 'tuiIconTime';
+    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+        return this.options.icon;
     }
 
     get nativeValue(): string {
@@ -163,8 +164,8 @@ export class TuiInputTimeComponent
     onValueChange(value: string) {
         this.open = !!this.items.length;
 
-        if (value && this.control) {
-            this.control.updateValueAndValidity();
+        if (this.control) {
+            this.control.updateValueAndValidity({emitEvent: false});
         }
 
         const match = this.getMatch(value);
@@ -229,6 +230,11 @@ export class TuiInputTimeComponent
         this.processArrow(event, -1);
     }
 
+    @HostListener('click')
+    onClick() {
+        this.open = !this.open;
+    }
+
     onMenuClick(item: TuiTime) {
         this.focusInput();
         this.updateValue(item);
@@ -263,6 +269,7 @@ export class TuiInputTimeComponent
     private processArrow(event: KeyboardEvent, shift: -1 | 1) {
         const {target} = event;
 
+        // TODO: iframe warning
         if (this.readOnly || !(target instanceof HTMLInputElement)) {
             return;
         }

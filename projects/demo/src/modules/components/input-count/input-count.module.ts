@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiLabelModule,
     TuiLinkModule,
@@ -12,6 +12,7 @@ import {TuiInputCountModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputCountExample1} from './examples/1';
 import {TuiInputCountExample2} from './examples/2';
+import {TuiInputCountExample3} from './examples/3';
 import {ExampleTuiInputCountComponent} from './input-count.component';
 
 @NgModule({
@@ -22,7 +23,7 @@ import {ExampleTuiInputCountComponent} from './input-count.component';
         TuiInputCountModule,
         TuiLabelModule,
         TuiLinkModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         TuiTextfieldControllerModule,
         InheritedDocumentationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputCountComponent)),
@@ -31,6 +32,7 @@ import {ExampleTuiInputCountComponent} from './input-count.component';
         ExampleTuiInputCountComponent,
         TuiInputCountExample1,
         TuiInputCountExample2,
+        TuiInputCountExample3,
     ],
     exports: [ExampleTuiInputCountComponent],
 })

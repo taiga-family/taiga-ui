@@ -1,4 +1,11 @@
-import {Directive, ElementRef, HostBinding, Inject, Input} from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    HostBinding,
+    HostListener,
+    Inject,
+    Input,
+} from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiLazyLoadingService} from './lazy-loading.service';
@@ -6,10 +13,6 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
 @Directive({
     selector: 'img[loading="lazy"]',
     providers: [TuiLazyLoadingService, IntersectionObserverService, TuiDestroyService],
-    host: {
-        '[style.animation]':
-            '"tuiSkeletonBackgroundVibe ease-in-out 1s infinite alternate"',
-    },
 })
 export class TuiLazyLoadingDirective {
     @Input('src')
@@ -17,6 +20,12 @@ export class TuiLazyLoadingDirective {
         this.src = this.supported ? src : null;
         this.src$.next(src);
     }
+
+    @HostBinding('style.animation')
+    animation = 'tuiSkeletonVibe ease-in-out 1s infinite alternate';
+
+    @HostBinding('style.background')
+    background = 'rgba(0, 0, 0, .16)';
 
     @HostBinding('attr.src')
     src: string | null = null;
@@ -34,5 +43,11 @@ export class TuiLazyLoadingDirective {
                 this.src = src;
             });
         }
+    }
+
+    @HostListener('load')
+    onLoad() {
+        this.background = '';
+        this.animation = '';
     }
 }

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, Subject} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 import {TableBar} from '../classes/table-bar';
 import {TuiTableBarOptions} from '../interfaces/table-bar-options';
 
@@ -13,12 +13,12 @@ const NO_HOST =
     providedIn: 'root',
 })
 export class TuiTableBarsService {
-    readonly bar$ = new Subject<TableBar | null>();
+    readonly bar$ = new ReplaySubject<TableBar | null>(1);
 
     open(content: PolymorpheusContent, options?: TuiTableBarOptions): Observable<never> {
-        tuiAssert.assert(!!this.bar$.observers.length, NO_HOST);
-
         return new Observable(observer => {
+            tuiAssert.assert(!!this.bar$.observers.length, NO_HOST);
+
             const tableBar = new TableBar(observer, content, options);
 
             this.bar$.next(tableBar);

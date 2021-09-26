@@ -8,8 +8,7 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component} from '@angular/core';
-import {TuiOrientation} from '@taiga-ui/core';
-import {TuiStepState} from '@taiga-ui/kit';
+import {TuiOrientationT} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -34,22 +33,15 @@ export class ExampleTuiStepperComponent {
 
     activeItemIndex = 0;
 
-    readonly orientationVariants: ReadonlyArray<TuiOrientation> = [
-        TuiOrientation.Horizontal,
-        TuiOrientation.Vertical,
-    ];
+    readonly orientationVariants: readonly TuiOrientationT[] = ['horizontal', 'vertical'];
 
-    orientation: TuiOrientation = this.orientationVariants[0];
+    orientation: TuiOrientationT = this.orientationVariants[0];
 
     readonly iconVariants = ['', 'tuiIconTimeLarge', 'tuiIconHeart'];
 
     icon = this.iconVariants[0];
 
-    readonly stateVariants: ReadonlyArray<TuiStepState> = [
-        TuiStepState.Normal,
-        TuiStepState.Pass,
-        TuiStepState.Error,
-    ];
+    readonly stateVariants = ['normal', 'pass', 'error'];
 
     state = this.stateVariants[0];
 }

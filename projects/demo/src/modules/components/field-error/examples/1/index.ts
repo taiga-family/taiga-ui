@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {TuiValidationError} from '@taiga-ui/cdk';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -10,7 +9,7 @@ export function passwordValidator(field: AbstractControl): Validators | null {
     return field.value && latinChars.test(field.value)
         ? null
         : {
-              other: new TuiValidationError('Only latin letters are allowed'),
+              other: 'Only latin letters are allowed',
           };
 }
 
@@ -18,7 +17,7 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
     return field.value === '42'
         ? null
         : {
-              other: new TuiValidationError('Wrong'),
+              other: 'Wrong',
           };
 }
 

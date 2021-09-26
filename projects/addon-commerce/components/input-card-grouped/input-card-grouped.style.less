@@ -1,32 +1,42 @@
 @import 'taiga-ui-local';
 
-@width-full: 392px;
-@width-mobile: 288px;
-@offset-full: 115px;
-@offset-small: 65px;
-@wrapper-offset-full: 105px;
-@wrapper-offset-small: 66px;
-@value-offset-full: -105px;
-@value-offset-small: -68px;
+@width-full: 472 / 16rem;
+@width-mobile: 18rem;
+@offset-full: 7.1875rem;
+@offset-small: 4.0625rem;
+@wrapper-offset-full: 6.5625rem;
+@wrapper-offset-small: 4.125rem;
+@value-offset-full: -6.5625rem;
+@value-offset-small: -4.25rem;
 
 :host {
     display: block;
     height: var(--tui-height-l);
     width: @width-full;
     border-radius: var(--tui-radius-m);
-    overflow: hidden;
 
-    &._mobile {
+    &[data-mode='onDark'] {
+        --tui-autofill: var(--tui-autofill-night);
+    }
+
+    @media @mobile-m {
         width: @width-mobile;
     }
 }
 
-.outline {
+.t-outline {
     height: 100%;
     width: 100%;
 }
 
-.wrapper {
+.t-common-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.t-wrapper {
     .transition(transform);
     position: absolute;
     width: 100%;
@@ -36,7 +46,7 @@
         margin-left: @offset-full;
         transform: translate3d(100%, 0, 0);
 
-        :host._mobile & {
+        @media @mobile-m {
             margin-left: @offset-small;
         }
     }
@@ -48,49 +58,56 @@
     &_active {
         transform: translate3d(@wrapper-offset-full, 0, 0);
 
-        :host._mobile & {
+        @media @mobile-m {
             transform: translate3d(@wrapper-offset-small, 0, 0);
         }
     }
 }
 
-.card {
-    .center-top();
-    right: 44px;
-    width: 32px;
-    height: 32px;
-
-    &_right {
-        right: 12px;
-    }
+.t-card {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.625rem;
 }
 
-.collapsed {
+.t-collapsed {
     .textfield-input();
-    line-height: 36px;
-    transition: color 0s;
+    border: 0;
+    padding-left: 1rem;
+    line-height: 2.25rem;
+    pointer-events: none;
 
     &:before {
-        content: '*';
+        content: attr(data-before);
     }
 
+    :-webkit-autofill ~ & {
+        background: var(--tui-autofill);
+    }
+
+    :-webkit-autofill ~ &_inactive,
     &_inactive,
     :host._disabled &_inactive {
         color: transparent;
-        transition: color 0s 0.3s;
+        background: transparent;
+        transition: color 0s var(--tui-duration), background 0s var(--tui-duration);
+
+        &:before {
+            color: transparent;
+        }
     }
 }
 
-.collapsed-wrapper {
+.t-collapsed-wrapper {
     position: absolute;
-    left: 22px;
+    left: 1.375rem;
     overflow: hidden;
 }
 
-.value {
+.t-value {
     .transition(transform);
     display: block;
-    text-indent: -6px;
+    text-indent: -0.375rem;
 
     &_collapsed {
         transform: translate3d(@value-offset-full, 0, 0);
@@ -101,39 +118,60 @@
     }
 }
 
-.input {
+.t-input {
     .textfield-input();
 
     &_card {
-        transition: color 0s 0.3s;
+        transition: color 0s var(--tui-duration);
 
         :host._disabled & {
             transition: color 0s;
         }
     }
 
+    &_inert {
+        pointer-events: none;
+    }
+
     &_hidden,
     :host._disabled &_hidden {
         color: transparent;
         transition: color 0s;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus {
+            color: transparent !important;
+            -webkit-text-fill-color: transparent !important;
+        }
     }
 }
 
-.cleaner {
-    .icon-button();
+.t-icons {
     position: absolute;
-    right: 12px;
-    top: 16px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    right: 0.75rem;
 }
 
-.placeholder {
+.t-icon {
+    .transition(transform);
+    .icon-button();
+
+    &_rotated {
+        transform: rotate(180deg);
+    }
+}
+
+.t-placeholder {
     .textfield-placeholder();
-    margin: 18px 16px;
-    line-height: 20px;
+    margin: 1.125rem 1rem;
+    line-height: 1.25rem;
 }
 
-.example-text {
+.t-example-text {
     .example-text();
     position: absolute;
-    margin: 18px 16px;
+    margin: 1.125rem 1rem;
 }

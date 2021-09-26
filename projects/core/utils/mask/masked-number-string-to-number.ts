@@ -1,5 +1,11 @@
-import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
+import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
-export function maskedNumberStringToNumber(value: string): number {
-    return parseFloat(value.split(CHAR_NO_BREAK_SPACE).join('').split(',').join('.'));
+export function maskedNumberStringToNumber(
+    value: string,
+    decimalsSymbol: TuiDecimalSymbol,
+    thousandSymbol: string,
+): number {
+    return parseFloat(
+        value.split(thousandSymbol).join('').split(decimalsSymbol).join('.'),
+    );
 }

@@ -1,4 +1,4 @@
-<tui-doc-page header="InputCard" package="ADDON-COMMERCE">
+<tui-doc-page header="InputCard" package="ADDON-COMMERCE" type="components">
     <ng-template pageTab>
         <p i18n>
             <code>InputCard</code> can be used with <code>InputExpire</code> and
@@ -20,6 +20,7 @@
                         [autocompleteEnabled]="autocompleteEnabledCard"
                         [cardSrc]="cardSrc"
                         [focusable]="focusable"
+                        [readOnly]="readOnly"
                         [tuiTextfieldSize]="sizeCard"
                         [tuiTextfieldCleaner]="cleaner"
                         [tuiTextfieldLabelOutside]="labelOutsideCard"
@@ -39,6 +40,7 @@
                         formControlName="expire"
                         [autocompleteEnabled]="autocompleteEnabledExpire"
                         [focusable]="focusable"
+                        [readOnly]="readOnly"
                         [tuiTextfieldSize]="sizeExpire"
                         [tuiTextfieldLabelOutside]="labelOutsideExpire"
                         [pseudoInvalid]="pseudoInvalid"
@@ -54,6 +56,7 @@
                         [autocompleteEnabled]="autocompleteEnabledCVC"
                         [focusable]="focusable"
                         [length]="length"
+                        [readOnly]="readOnly"
                         [tuiTextfieldSize]="sizeCVC"
                         [tuiTextfieldLabelOutside]="labelOutsideCVC"
                         [pseudoInvalid]="pseudoInvalid"

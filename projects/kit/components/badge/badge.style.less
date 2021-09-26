@@ -1,6 +1,6 @@
 @import 'taiga-ui-local';
 
-@padding: 12px;
+@padding: 0.75rem;
 
 :host {
     font: var(--tui-font-text-s);
@@ -11,9 +11,12 @@
     justify-content: center;
     box-sizing: border-box;
     color: var(--tui-base-01);
-    border-radius: 100px;
+    border-radius: 6.25rem;
     white-space: nowrap;
     overflow: hidden;
+    vertical-align: middle;
+
+    --left-content-color: currentColor;
 
     &:after {
         .transition(background);
@@ -48,10 +51,7 @@
         background-color: var(--tui-error-bg);
         color: var(--tui-text-01);
 
-        &:before {
-            content: '';
-            color: var(--tui-error-fill);
-        }
+        --left-content-color: var(--tui-error-fill);
 
         &._hoverable:hover,
         &._hoverable:active {
@@ -73,10 +73,7 @@
         background-color: var(--tui-success-bg);
         color: var(--tui-text-01);
 
-        &:before {
-            content: '';
-            color: var(--tui-success-fill);
-        }
+        --left-content-color: var(--tui-success-fill);
 
         &._hoverable:hover,
         &._hoverable:active {
@@ -98,10 +95,7 @@
         background-color: var(--tui-warning-bg);
         color: var(--tui-text-01);
 
-        &:before {
-            content: '';
-            color: var(--tui-warning-fill);
-        }
+        --left-content-color: var(--tui-warning-fill);
 
         &._hoverable:hover,
         &._hoverable:active {
@@ -133,10 +127,10 @@
         }
 
         &[data-mode='onDark'] {
-            background-color: var(--tui-clear-inverse);
+            background-color: var(--tui-clear-inverse-hover);
 
             &._hoverable:hover {
-                background-color: var(--tui-clear-inverse-hover);
+                background-color: var(--tui-clear-inverse-active);
             }
 
             &._hoverable:active {
@@ -167,29 +161,38 @@
     }
 
     &[data-tui-host-padding='m'] {
-        padding: 0 @padding - 4px;
+        padding: 0 @padding - 0.25rem;
 
         &[data-tui-host-size='s'] {
-            padding: 0 @padding - 6px;
+            padding: 0 @padding - 0.375rem;
         }
 
         &[data-tui-host-size='l'] {
-            padding: 0 @padding - 2px;
+            padding: 0 @padding - 0.125rem;
         }
     }
 
     &[data-tui-host-padding='l'] {
-        padding: 0 @padding;
+        padding: 0 @padding - 0.125rem;
 
         &[data-tui-host-size='s'] {
-            padding: 0 @padding - 2px;
+            padding: 0 @padding - 0.25rem;
+        }
+
+        &[data-tui-host-size='l'] {
+            padding: 0 @padding;
         }
     }
 
     &[data-tui-host-size='s'] {
         font: var(--tui-font-text-xs);
-        height: 20px;
-        min-width: 20px;
+        height: 1.25rem;
+        min-width: 1.25rem;
+
+        .left-content:before {
+            width: 0.25rem;
+            height: 0.25rem;
+        }
     }
 
     &[data-tui-host-size='m'] {
@@ -202,25 +205,52 @@
         height: var(--tui-height-s);
         line-height: var(--tui-height-s);
         min-width: var(--tui-height-s);
+
+        .left-content:before {
+            margin: 0 0.5rem 0 0;
+            width: 0.5rem;
+            height: 0.5rem;
+        }
+    }
+
+    &._empty-value {
+        .left-content {
+            margin: 0 -0.25rem;
+
+            &:before {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.left-content {
+    display: none;
+    color: var(--left-content-color);
+    line-height: 0;
+
+    &:not(:empty) {
+        display: block;
+        margin-left: -0.25rem;
+
+        &:before {
+            content: none;
+        }
+    }
+
+    :host[data-tui-host-status='error'] &,
+    :host[data-tui-host-status='success'] &,
+    :host[data-tui-host-status='warning'] & {
+        display: block;
     }
 
     &:before {
         display: block;
         background: currentColor;
-        margin: 0 6px 0 -2px;
-        width: 6px;
-        height: 6px;
+        margin: 0 0.375rem 0 0;
+        width: 0.375rem;
+        height: 0.375rem;
         border-radius: 100%;
-
-        :host[data-tui-host-size='s'] & {
-            width: 4px;
-            height: 4px;
-        }
-
-        :host[data-tui-host-size='l'] & {
-            margin: 0 8px 0 0;
-            width: 8px;
-            height: 8px;
-        }
+        content: '';
     }
 }

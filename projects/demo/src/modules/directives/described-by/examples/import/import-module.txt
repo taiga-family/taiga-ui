@@ -1,0 +1,10 @@
+import {TuiDescribedByModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiDescribedByModule
+    ],
+...

@@ -10,9 +10,9 @@ export function cardNumberAssertion(cardNumber: string): boolean {
 export const cardNumberAssertionMessage = 'cardNumber should contain 4 symbols';
 
 const icons = {
-    [TuiPaymentSystem.Mir]: 'tuiIconMir',
-    [TuiPaymentSystem.Visa]: 'tuiIconVisa',
-    [TuiPaymentSystem.Electron]: 'tuiIconVisa',
+    [TuiPaymentSystem.Mir]: 'tuiIconMirMono',
+    [TuiPaymentSystem.Visa]: 'tuiIconVisaMono',
+    [TuiPaymentSystem.Electron]: 'tuiIconElectronMono',
     [TuiPaymentSystem.Mastercard]: 'tuiIconMastercard',
     [TuiPaymentSystem.Maestro]: 'tuiIconMaestro',
 };

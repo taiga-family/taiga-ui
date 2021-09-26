@@ -1,4 +1,4 @@
-<tui-doc-page header="InputTime" package="KIT">
+<tui-doc-page header="InputTime" package="KIT" type="components">
     <ng-template pageTab>
         <p i18n><code>InputTime</code> allows input time in HH:MM format</p>
 
@@ -20,6 +20,15 @@
             [content]="example2"
         >
             <tui-input-time-example-2></tui-input-time-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="options"
+            i18n-heading
+            heading="options"
+            [content]="example3"
+        >
+            <tui-input-time-example-3></tui-input-time-example-3>
         </tui-doc-example>
     </ng-template>
 
@@ -149,6 +158,19 @@
                 <tui-doc-code
                     filename="myComponent.template.html"
                     [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Optionally use the
+                    <code>TUI_INPUT_TIME_OPTIONS</code> injection token to
+                    override the default options for the component.
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleDefineOptions"
                 ></tui-doc-code>
             </li>
         </ol>

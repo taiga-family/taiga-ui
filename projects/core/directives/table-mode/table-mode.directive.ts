@@ -1,13 +1,17 @@
 import {Directive} from '@angular/core';
-import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
 
+/**
+ * TODO: Remove in v.3
+ * @deprecated use @taiga-ui/addon-table
+ */
 @Directive({
     selector: '[tuiTableMode]',
     providers: [
         {
             provide: TUI_TEXTFIELD_APPEARANCE,
-            useValue: TuiAppearance.Table,
+            // TODO: remove in ivy compilation
+            useValue: 'table', // TuiAppearance.Table
         },
     ],
 })

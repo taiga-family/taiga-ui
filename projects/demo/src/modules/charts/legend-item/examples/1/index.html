@@ -5,7 +5,7 @@
         [(activeItemIndex)]="activeItemIndex"
     ></tui-ring-chart>
 
-    <ng-template #content="polymorpheus" polymorpheus>
+    <ng-template #content>
         <tui-money [singleColor]="true" [value]="sum"></tui-money>
         <div>Total</div>
     </ng-template>
@@ -14,7 +14,7 @@
         <tui-legend-item
             *ngFor="let label of labels; let index = index"
             class="item"
-            [color]="colorHandler(index)"
+            [color]="getColor(index)"
             [text]="label"
             [active]="isItemActive(index)"
             (tuiHoveredChange)="onHover(index, $event)"

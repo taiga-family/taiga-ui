@@ -42,7 +42,7 @@ import {
     TUI_DATA_LIST_HOST,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_TEXTFIELD_APPEARANCE,
-    TUI_TEXTIFELD_WATCHED_CONTROLLER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHintControllerDirective,
@@ -55,9 +55,9 @@ import {
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {ALLOWED_SPACE_REGEXP} from '@taiga-ui/kit/components/tag';
-import {TuiStatus} from '@taiga-ui/kit/enums';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TAG_STATUS} from '@taiga-ui/kit/tokens';
+import {TuiStatusT} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Subject} from 'rxjs';
 import {filter, map, mapTo, switchMap, takeUntil} from 'rxjs/operators';
@@ -166,6 +166,9 @@ export class TuiInputTagComponent
     @ViewChild('cleaner', {read: ElementRef})
     private readonly cleanerSvg?: ElementRef<HTMLElement>;
 
+    @ViewChild(TuiScrollbarComponent, {read: ElementRef})
+    private readonly scrollBar?: ElementRef<HTMLElement>;
+
     constructor(
         @Optional()
         @Self()
@@ -178,10 +181,10 @@ export class TuiInputTagComponent
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
-        @Inject(TUI_TAG_STATUS) private readonly tagStatus: TuiStatus,
+        @Inject(TUI_TAG_STATUS) private readonly tagStatus: TuiStatusT,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
-        @Inject(TUI_TEXTIFELD_WATCHED_CONTROLLER)
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
     ) {
         super(control, changeDetectorRef);
@@ -207,7 +210,9 @@ export class TuiInputTagComponent
 
     @HostBinding('class._label-outside')
     get labelOutside(): boolean {
-        return this.controller.labelOutside;
+        const {size, labelOutside} = this.controller;
+
+        return size === 's' || labelOutside;
     }
 
     get hasCleaner(): boolean {
@@ -260,16 +265,18 @@ export class TuiInputTagComponent
         return this.hasCleaner || this.hasTooltip || this.iconAlignRight;
     }
 
-    get status(): TuiStatus {
-        return this.modeDirective && this.modeDirective.mode
-            ? TuiStatus.Default
-            : this.tagStatus;
+    get status(): TuiStatusT {
+        return this.modeDirective && this.modeDirective.mode ? 'default' : this.tagStatus;
     }
 
-    getLeftContent(tag: string): PolymorpheusContent | null {
+    get canOpen(): boolean {
+        return !this.computedDisabled && !this.readOnly && !!this.datalist;
+    }
+
+    getLeftContent(tag: string): PolymorpheusContent {
         return !this.tagValidator(tag) && this.errorIconTemplate
             ? this.errorIconTemplate
-            : null;
+            : '';
     }
 
     onCleanerClick() {
@@ -279,16 +286,11 @@ export class TuiInputTagComponent
     }
 
     onActiveZone(active: boolean) {
-        this.updateFocused(active);
-
-        if (active) {
-            return;
-        }
-
         this.open = false;
         this.addTag();
+        this.updateFocused(active);
 
-        if (!this.pseudoFocused) {
+        if (!this.computedFocused) {
             this.scrollToStart$.next();
         }
     }
@@ -299,6 +301,7 @@ export class TuiInputTagComponent
         if (
             !this.focusableElement ||
             actualTarget === this.focusableElement.nativeElement ||
+            // TODO: iframe warning
             !(event.target instanceof Element) ||
             (this.cleanerSvg && this.cleanerSvg.nativeElement.contains(event.target)) ||
             (this.tagsContainer &&
@@ -339,11 +342,7 @@ export class TuiInputTagComponent
             return;
         }
 
-        const tag = this.tags.find((_item, index) => index === currentIndex - 1);
-
-        if (tag) {
-            setNativeFocused(tag.nativeElement);
-        }
+        this.onScrollKeyDown(currentIndex, -1);
     }
 
     onTagKeyDownArrowRight(currentIndex: number) {
@@ -353,11 +352,7 @@ export class TuiInputTagComponent
             return;
         }
 
-        const tag = this.tags.find((_item, index) => index === currentIndex + 1);
-
-        if (tag) {
-            setNativeFocused(tag.nativeElement);
-        }
+        this.onScrollKeyDown(currentIndex, 1);
     }
 
     onTagEdited(value: string, editedTag: string) {
@@ -413,6 +408,26 @@ export class TuiInputTagComponent
     setDisabledState() {
         super.setDisabledState();
         this.open = false;
+    }
+
+    private onScrollKeyDown(currentIndex: number, flag: number) {
+        const tag = this.tags.find((_item, index) => index === currentIndex + flag);
+
+        if (!tag || !this.scrollBar) {
+            return;
+        }
+
+        setNativeFocused(tag.nativeElement);
+
+        if (
+            flag * this.scrollBar.nativeElement.clientWidth -
+                flag * tag.nativeElement.offsetLeft -
+                tag.nativeElement.clientWidth <
+            0
+        ) {
+            this.scrollBar.nativeElement.scrollLeft +=
+                flag * tag.nativeElement.clientWidth;
+        }
     }
 
     private initScrollerSubscrition(scroller: TuiScrollbarComponent | null) {

@@ -2,6 +2,7 @@ import {
     ChangeDetectorRef,
     Component,
     forwardRef,
+    HostListener,
     Inject,
     Injector,
     Input,
@@ -14,16 +15,18 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
+    DATE_FILLER_LENGTH,
+    DATE_RANGE_FILLER_LENGTH,
     nullableSame,
     RANGE_SEPARATOR_CHAR,
     setNativeFocused,
-    TUI_DATE_FILLER,
-    TUI_DATE_RANGE_FILLER,
+    TUI_DATE_FORMAT,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiDateMode,
     TuiDay,
     TuiDayLike,
     TuiDayRange,
@@ -52,11 +55,19 @@ import {
     TUI_DATE_RANGE_MASK,
 } from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_CALENDAR_DATA_STREAM, TUI_MOBILE_CALENDAR} from '@taiga-ui/kit/tokens';
+import {
+    TUI_CALENDAR_DATA_STREAM,
+    TUI_DATE_TEXTS,
+    TUI_MOBILE_CALENDAR,
+} from '@taiga-ui/kit/tokens';
 import {tuiCreateAutoCorrectedDateRangePipe} from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {takeUntil} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {pluck, takeUntil} from 'rxjs/operators';
+
+// TODO: remove in ivy compilation
+export const RANGE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
 
 @Component({
     selector: 'tui-input-date-range',
@@ -70,7 +81,7 @@ import {takeUntil} from 'rxjs/operators';
         {
             provide: TUI_CALENDAR_DATA_STREAM,
             deps: [[new Optional(), new Self(), NgControl]],
-            useFactory: TuiReplayControlValueChangesFactory,
+            useFactory: RANGE_STREAM_FACTORY,
         },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
     ],
@@ -113,6 +124,7 @@ export class TuiInputDateRangeComponent
     open = false;
 
     readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
+    readonly dateFiller$ = this.dateTexts$.pipe(pluck(this.dateFormat));
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
@@ -139,8 +151,9 @@ export class TuiInputDateRangeComponent
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_TEXTFIELD_EXAMPLE_TEXT)
         private readonly textfieldExampleText: TuiTextfieldExampleTextDirective,
-        @Inject(TUI_DATE_FILLER) readonly filler: string,
-        @Inject(TUI_DATE_RANGE_FILLER) readonly rangeFiller: string,
+        @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
+        @Inject(TUI_DATE_TEXTS)
+        readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -169,10 +182,6 @@ export class TuiInputDateRangeComponent
 
     get computedExampleText(): string {
         return this.items.length ? this.textfieldExampleText.exampleText : '';
-    }
-
-    get computedFiller(): string {
-        return this.activePeriod ? '' : this.rangeFiller;
     }
 
     get computedMask(): TuiTextMaskOptions {
@@ -227,8 +236,12 @@ export class TuiInputDateRangeComponent
         this.nativeFocusableElement.value = value;
     }
 
-    onClick() {
-        if (!this.isMobile || !this.mobileCalendar) {
+    getComputedRangeFiller(dateFiller: string): string {
+        return this.activePeriod ? '' : this.getDateRangeFiller(dateFiller);
+    }
+
+    onMobileClick() {
+        if (!this.mobileCalendar) {
             this.toggle();
 
             return;
@@ -264,26 +277,29 @@ export class TuiInputDateRangeComponent
             });
     }
 
+    @HostListener('click')
+    onClick() {
+        if (!this.isMobile) {
+            this.toggle();
+        }
+    }
+
     onOpenChange(open: boolean) {
         this.open = open;
     }
 
     onValueChange(value: string) {
-        if (value && this.control) {
-            this.control.updateValueAndValidity();
+        if (this.control) {
+            this.control.updateValueAndValidity({emitEvent: false});
         }
 
-        if (value.length !== this.rangeFiller.length) {
+        if (value.length !== DATE_RANGE_FILLER_LENGTH) {
             this.updateValue(null);
 
             return;
         }
 
-        const parsedValue = TuiDayRange.normalizeParse(
-            value,
-            this.filler,
-            this.rangeFiller,
-        );
+        const parsedValue = TuiDayRange.normalizeParse(value);
 
         this.updateValue(
             !this.minLength && !this.maxLength
@@ -331,17 +347,11 @@ export class TuiInputDateRangeComponent
         if (
             !focused &&
             !this.itemSelected &&
-            (this.nativeValue.length === this.filler.length ||
+            (this.nativeValue.length === DATE_FILLER_LENGTH ||
                 this.nativeValue.length ===
-                    this.filler.length + RANGE_SEPARATOR_CHAR.length)
+                    DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length)
         ) {
-            this.updateValue(
-                TuiDayRange.normalizeParse(
-                    this.nativeValue,
-                    this.filler,
-                    this.rangeFiller,
-                ),
-            );
+            this.updateValue(TuiDayRange.normalizeParse(this.nativeValue));
         }
     }
 
@@ -380,5 +390,9 @@ export class TuiInputDateRangeComponent
         return clampedBottom.to.dayAfter(availableMax)
             ? new TuiDayRange(clampedBottom.from, availableMax)
             : clampedBottom;
+    }
+
+    private getDateRangeFiller(dateFiller: string): string {
+        return `${dateFiller}${RANGE_SEPARATOR_CHAR}${dateFiller}`;
     }
 }

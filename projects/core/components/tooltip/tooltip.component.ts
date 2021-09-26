@@ -2,14 +2,14 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
+    HostListener,
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
-import {TuiHintMode} from '@taiga-ui/core/enums';
+import {TUI_IS_MOBILE, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness, TuiDirection} from '@taiga-ui/core/types';
+import {TuiBrightness, TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -28,11 +28,19 @@ export class TuiTooltipComponent {
 
     @Input()
     @tuiDefaultProp()
-    mode: TuiHintMode | null = null;
+    mode: TuiHintModeT | null = null;
 
     @Input()
     @tuiDefaultProp()
     direction: TuiDirection = 'bottom-left';
+
+    @Input()
+    @tuiDefaultProp()
+    showDelay = 500;
+
+    @Input()
+    @tuiDefaultProp()
+    hideDelay = 200;
 
     @Input()
     @tuiDefaultProp()
@@ -43,6 +51,7 @@ export class TuiTooltipComponent {
     constructor(
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
     ) {
         mode$.pipe(takeUntil(destroy$)).subscribe(mode => {
             this.globalMode = mode;
@@ -51,7 +60,16 @@ export class TuiTooltipComponent {
 
     // TODO: Simplify
     @HostBinding('attr.data-mode')
-    get computedMode(): TuiHintMode | TuiBrightness | null {
-        return this.mode || (this.globalMode ? this.globalMode : null);
+    get computedMode(): TuiHintModeT | TuiBrightness | null {
+        return this.mode || this.globalMode;
+    }
+
+    @HostListener('mousedown', ['$event'])
+    @HostListener('click', ['$event'])
+    stopOnMobile(event: MouseEvent) {
+        if (this.isMobile) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
     }
 }

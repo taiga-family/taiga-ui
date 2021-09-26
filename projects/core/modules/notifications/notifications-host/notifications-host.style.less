@@ -9,19 +9,24 @@
 }
 
 .wrapper {
-    width: 288px;
+    width: 18rem;
     margin-left: auto;
-    padding: 32px 48px 0 0;
+    padding: 2rem 3rem 0 0;
+    pointer-events: none;
 
-    @media @tablet {
-        padding: 16px 16px 0 0;
+    @media @mobile-m {
+        padding: 1rem 1rem 0 0;
     }
 
-    @media @desktop-lg-min {
-        width: 368px;
+    @media @desktop-m-min {
+        width: 23rem;
     }
 }
 
-.alert:not(:first-child) {
-    margin-top: 12px;
+.alert {
+    pointer-events: auto;
+
+    &:not(:first-child) {
+        margin-top: 0.75rem;
+    }
 }

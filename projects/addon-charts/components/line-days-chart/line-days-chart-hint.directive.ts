@@ -8,6 +8,7 @@ import {
     NgZone,
     QueryList,
 } from '@angular/core';
+import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {
     EMPTY_QUERY,
     TuiContextWithImplicit,
@@ -19,8 +20,15 @@ import {
 } from '@taiga-ui/cdk';
 import {HINT_HOVERED_CLASS, TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {interval} from 'rxjs';
-import {distinctUntilChanged, filter, map, startWith, takeUntil} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {
+    distinctUntilChanged,
+    filter,
+    map,
+    startWith,
+    takeUntil,
+    throttleTime,
+} from 'rxjs/operators';
 import {TuiLineDaysChartComponent} from './line-days-chart.component';
 
 @Directive({
@@ -39,9 +47,11 @@ export class TuiLineDaysChartHintDirective {
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
+        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
     ) {
-        interval(200)
+        animationFrame$
             .pipe(
+                throttleTime(200),
                 map(() => !!nativeElement.querySelector(`.${HINT_HOVERED_CLASS}`)),
                 startWith(false),
                 distinctUntilChanged(),

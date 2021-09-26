@@ -1,26 +1,31 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiHintControllerModule,
     TuiLinkModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiInputModule} from '@taiga-ui/kit';
+import {TextfieldControllerDocumentationModule} from '../../components/abstract/textfield-controller-documentation/textfield-controller-documentation.module';
 import {TuiTextfieldControllerExample1} from './examples/1';
 import {ExampleTuiTextfieldControllerComponent} from './textfield-controller.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule,
+        ReactiveFormsModule,
         TuiLinkModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
+        TuiInputModule,
+        TextfieldControllerDocumentationModule,
+        FormsModule,
         RouterModule.forChild(generateRoutes(ExampleTuiTextfieldControllerComponent)),
     ],
     declarations: [

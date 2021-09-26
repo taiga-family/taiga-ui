@@ -11,6 +11,7 @@
             #content
             class="content"
             [content]="directive.content"
+            [context]="getContext(directive.context, activeZone)"
         ></div>
         <div tabindex="0" (focus)="onBottomFocus()"></div>
     </tui-scrollbar>

@@ -18,7 +18,7 @@ import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/decl
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {Component, forwardRef, ViewChild} from '@angular/core';
+import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {
     ALWAYS_FALSE_HANDLER,
@@ -31,16 +31,17 @@ import {
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidth,
+    TuiDropdownWidthT,
     TuiHorizontalDirection,
     TuiSizeL,
+    TuiSizeS,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
-import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 class Account {
     constructor(readonly name: string, readonly balance: number) {}
@@ -62,10 +63,7 @@ class Account {
         },
     ],
 })
-export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiReactiveField {
-    @ViewChild('item')
-    content?: PolymorpheusTemplate<{}>;
-
+export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
     readonly exampleDeclareForm = exampleDeclareForm;
@@ -114,18 +112,15 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiReactiveFi
 
     editable = true;
 
-    readonly dropdownLimitWidthVariants: ReadonlyArray<TuiDropdownWidth> = [
-        TuiDropdownWidth.Fixed,
-        TuiDropdownWidth.Min,
-    ];
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = ['fixed', 'min'];
 
-    dropdownLimitWidth: TuiDropdownWidth | null = this.dropdownLimitWidthVariants[0];
+    dropdownLimitWidth: TuiDropdownWidthT | null = this.dropdownLimitWidthVariants[0];
 
     search = '';
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    size: TuiSizeL = this.sizeVariants[1];
+    size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
 
     stringifyVariants: TuiStringHandler<Account | string>[] = [
         TUI_DEFAULT_STRINGIFY,

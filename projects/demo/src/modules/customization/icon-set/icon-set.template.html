@@ -1,8 +1,8 @@
 <tui-doc-page i18n-header header="Icons set">
     <p i18n>
         Taiga UI uses
-        <a tuiLink routerLink="/tui-svg"><code>tui-svg</code></a> component to
-        display SVG icons. It can show icons by name, link or
+        <a tuiLink routerLink="/components/svg"><code>tui-svg</code></a>
+        component to display SVG icons. It can show icons by name, link or
         source code. Several icon names are hardcoded into kit components so if
         you want to switch to a different icon set you would need to provide a
         mapping.
@@ -43,11 +43,43 @@
         If you want to bundle your icons, you need to provide
         <code>TUI_ICONS</code> token with a dictionary of name to source code.
         If you want to move your icons to assets you need to process them with
-        <a tuiLink download="process-icons.js" href="assets/process-icons.js">this script</a>. Drop it to the folder
-        with your icons and run <code>node process-icons.js</code>. Then move
-        your icons to the assets folder and provide
-        <code>TUI_ICONS_PATH</code> as seen in example below:
+        <a tuiLink download="process-icons.js" href="assets/process-icons.js"
+            >this script</a
+        >. Drop it to the folder with your icons and run
+        <code>node process-icons.js</code>. Then move your icons to the assets
+        folder and provide <code>TUI_ICONS_PATH</code> as seen in example below:
     </p>
+
+    <section id="sanitizer">
+        <h2>Sanitizer</h2>
+        <p i18n>
+            If you use unsafe icons or
+            <a tuiLink routerLink="/components/editor">Editor component</a> you
+            need to provide <code>TUI_SANITIZER</code> token, which is
+            responsible for removing malicious code from the svg. We recommend
+            to use
+            <a
+                tuiLink
+                href="https://github.com/TinkoffCreditSystems/ng-dompurify"
+                target="_blank"
+                >NgDompurify</a
+            >
+            as a sanitizer. This library implements
+            <a
+                tuiLink
+                href="https://github.com/cure53/DOMPurify"
+                target="_blank"
+                >DOMPurify</a
+            >
+            as Angular Sanitizer or Pipe. It delegates sanitizing to DOMPurify
+            and supports the same configuration.
+        </p>
+
+        <tui-doc-code
+            filename="app.module.ts"
+            [code]="exampleSanitier"
+        ></tui-doc-code>
+    </section>
 
     <tui-doc-example
         id="material"

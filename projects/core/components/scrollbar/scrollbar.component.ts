@@ -9,7 +9,7 @@ import {
     Input,
 } from '@angular/core';
 import {CSS, USER_AGENT} from '@ng-web-apis/common';
-import {getElementOffset, isFirefox, tuiDefaultProp} from '@taiga-ui/cdk';
+import {getElementOffset, isFirefox, TUI_IS_IOS, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_SCROLL_INTO_VIEW} from '@taiga-ui/core/constants';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {TuiScrollableDirective} from './scrollable.directive';
@@ -54,10 +54,11 @@ export class TuiScrollbarComponent {
         @Inject(CSS) private readonly cssRef: any,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
+        @Inject(TUI_IS_IOS) private readonly isIos: boolean,
     ) {}
 
     get showScrollbars(): boolean {
-        return !this.hidden && (!this.isLegacy || !!this.scrollable);
+        return !this.hidden && !this.isIos && (!this.isLegacy || !!this.scrollable);
     }
 
     get browserScrollRef(): ElementRef<HTMLElement> {

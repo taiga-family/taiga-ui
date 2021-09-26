@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
-import {generateRoutes, TUI_DOC_PAGE_MODULES,
+import {generateRoutes, TuiAddonDocModule,
     TuiDocExampleModule,
     TuiDocPageModule,
     TuiDocDocumentationModule,
@@ -16,7 +16,7 @@ import {<%= classify(name) %>Example<%=i%>} from './examples/<%=i%>'; <%}%>
 @NgModule({
     imports: [
         CommonModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         TuiDocExampleModule,
         TuiDocPageModule,
         TuiDocDocumentationModule,

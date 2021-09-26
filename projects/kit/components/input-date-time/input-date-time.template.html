@@ -7,10 +7,12 @@
 >
     <tui-primitive-textfield
         class="textfield"
+        automation-id="tui-input-date-time__textfield"
+        tuiValueAccessor
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
-        [filler]="getFiller$(dateFiller, timeMode) | async"
+        [filler]="filler$ | async"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [iconContent]="calendarIcon"
@@ -20,7 +22,6 @@
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
         (focusedChange)="onFocused($event)"
-        (click.prevent)="onClick()"
     >
         <ng-content></ng-content>
     </tui-primitive-textfield>
@@ -28,8 +29,9 @@
     <ng-template #dropdown="polymorpheus" polymorpheus>
         <tui-calendar
             tuiPreventDefault="mousedown"
-            [min]="min"
-            [max]="max"
+            automation-id="tui-input-date-time__calendar"
+            [min]="calendarMinDay"
+            [max]="calendarMaxDay"
             [disabledItemHandler]="disabledItemHandler"
             [month]="computedActiveYearMonth"
             [value]="calendarValue"

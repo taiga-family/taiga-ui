@@ -47,6 +47,7 @@ describe('TableBarsHost', () => {
         fixture.detectChanges();
         component = testComponent.component;
         service = TestBed.inject(TuiTableBarsService);
+        service.bar$['_events'] = [];
     });
 
     function getBar(): DebugElement {

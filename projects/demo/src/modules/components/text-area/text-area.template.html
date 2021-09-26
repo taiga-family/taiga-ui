@@ -1,8 +1,6 @@
-<tui-doc-page i18n-header header="TextArea" package="KIT">
+<tui-doc-page i18n-header header="TextArea" package="KIT" type="components">
     <ng-template pageTab>
-        <p i18n>
-            Textfield for multiline input. It can be expanded from its content.
-        </p>
+        <p i18n>Textfield for multiline input. It can grow with its content.</p>
 
         <tui-doc-example
             id="base"
@@ -23,12 +21,21 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="large"
+            id="label-outside"
             i18n-heading
             heading="With label outside"
             [content]="example3"
         >
             <tui-text-area-example-3></tui-text-area-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="extra-chars-highlight"
+            i18n-heading
+            heading="With extra characters highlight"
+            [content]="example4"
+        >
+            <tui-text-area-example-4></tui-text-area-example-4>
         </tui-doc-example>
     </ng-template>
 
@@ -52,8 +59,7 @@
                 [tuiHintDirection]="hintDirection"
                 [tuiHintMode]="hintMode"
             >
-                placeholder
-                <strong>strong text</strong>
+                Textfield for multiline input. It can grow with its content.
             </tui-text-area>
         </tui-doc-demo>
         <tui-doc-documentation>

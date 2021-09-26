@@ -2,10 +2,12 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {TuiAutoFocusModule} from '@taiga-ui/cdk';
-import {TuiButtonModule} from '@taiga-ui/core';
-import {TuiSelectModule} from '@taiga-ui/kit';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {
+    TuiButtonModule,
+    TuiDataListModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiDataListWrapperModule, TuiInputModule, TuiSelectModule} from '@taiga-ui/kit';
 import {DialogExampleComponent} from './dialog-example.component';
 
 @NgModule({
@@ -14,9 +16,11 @@ import {DialogExampleComponent} from './dialog-example.component';
         FormsModule,
         TuiButtonModule,
         TuiSelectModule,
+        TuiInputModule,
         TuiMoneyModule,
-        PolymorpheusModule,
-        TuiAutoFocusModule,
+        TuiTextfieldControllerModule,
+        TuiDataListModule,
+        TuiDataListWrapperModule,
     ],
     declarations: [DialogExampleComponent],
     exports: [DialogExampleComponent],

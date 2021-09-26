@@ -13,7 +13,7 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component} from '@angular/core';
 import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiMarkerIconMode} from '@taiga-ui/kit';
+import {TuiMarkerIconModeT} from '@taiga-ui/kit';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -57,15 +57,15 @@ export class ExampleTuiMarkerIconComponent {
 
     size: TuiSizeXS | TuiSizeXL = this.sizeVariants[2];
 
-    readonly modeVariants: ReadonlyArray<TuiMarkerIconMode> = [
-        TuiMarkerIconMode.Link,
-        TuiMarkerIconMode.Primary,
-        TuiMarkerIconMode.White,
-        TuiMarkerIconMode.Secondary,
-        TuiMarkerIconMode.Success,
-        TuiMarkerIconMode.Error,
-        TuiMarkerIconMode.Warning,
+    readonly modeVariants: readonly TuiMarkerIconModeT[] = [
+        'link',
+        'primary',
+        'warning',
+        'white',
+        'secondary',
+        'success',
+        'error',
     ];
 
-    mode: TuiMarkerIconMode | null = null;
+    mode: TuiMarkerIconModeT | null = null;
 }

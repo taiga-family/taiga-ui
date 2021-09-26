@@ -14,7 +14,7 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit';
+import {TuiStatusT} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -64,13 +64,13 @@ export class ExampleTuiTagComponent {
 
     maxLength = null;
 
-    readonly statusVariants: ReadonlyArray<TuiStatus> = [
-        TuiStatus.Default,
-        TuiStatus.Primary,
-        TuiStatus.Success,
-        TuiStatus.Error,
-        TuiStatus.Warning,
-        TuiStatus.Custom,
+    readonly statusVariants: readonly TuiStatusT[] = [
+        'default',
+        'primary',
+        'custom',
+        'success',
+        'error',
+        'warning',
     ];
 
     status = this.statusVariants[0];
@@ -82,14 +82,14 @@ export class ExampleTuiTagComponent {
     @ViewChild('errorIcon')
     errorTemplate?: TemplateRef<{}>;
 
-    readonly leftContentVariants = ['Error icon'];
+    readonly leftContentVariants = ['', 'Error icon'];
 
-    leftContentSelected = null;
+    leftContentSelected = '';
 
-    get leftContent(): PolymorpheusContent | null {
+    get leftContent(): PolymorpheusContent {
         return this.errorTemplate && this.leftContentSelected !== null
             ? this.errorTemplate
-            : null;
+            : '';
     }
 
     editTag(value: string) {

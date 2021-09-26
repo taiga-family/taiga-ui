@@ -16,7 +16,7 @@ import {changeDetection} from '../../../change-detection-strategy';
 import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
+import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
     selector: 'example-tui-checkbox-labeled',
@@ -29,7 +29,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiInteractive {
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
@@ -59,5 +59,11 @@ export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiReacti
         @Inject(HOW_TO_PATH_RESOLVER) readonly howToResolver: (path: string) => string,
     ) {
         super();
+
+        this.control.get('testValue1')!.valueChanges.subscribe(value => {
+            if (value) {
+                this.control.get('testValue1')!.setValue(false);
+            }
+        });
     }
 }

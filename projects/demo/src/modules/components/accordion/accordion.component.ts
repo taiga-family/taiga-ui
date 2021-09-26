@@ -2,7 +2,6 @@ import {DOCUMENT} from '@angular/common';
 import {Component, ElementRef, Inject, ViewChild} from '@angular/core';
 import {tuiCustomEvent} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiSizeS} from '@taiga-ui/core';
-import {TuiBorders} from '@taiga-ui/kit';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -56,12 +55,9 @@ export class ExampleTuiAccordionComponent {
         LESS: example3Less,
     };
 
-    readonly bordersVariants: ReadonlyArray<TuiBorders | null> = [
-        TuiBorders.All,
-        TuiBorders.TopBottom,
-    ];
+    readonly bordersVariants = ['all', 'top-bottom'];
 
-    borders: TuiBorders | null = this.bordersVariants[0];
+    borders = this.bordersVariants[0];
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
 

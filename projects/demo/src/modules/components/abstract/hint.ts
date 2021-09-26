@@ -1,12 +1,9 @@
-import {TuiDirection, TuiHintMode} from '@taiga-ui/core';
+import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
 
 export abstract class AbstractExampleTuiHint {
-    readonly modeVariants: ReadonlyArray<TuiHintMode> = [
-        TuiHintMode.Error,
-        TuiHintMode.OnDark,
-    ];
+    readonly modeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
 
-    mode: TuiHintMode | null = null;
+    mode: TuiHintModeT | null = null;
 
     readonly directionVariants: ReadonlyArray<TuiDirection> = [
         'left',

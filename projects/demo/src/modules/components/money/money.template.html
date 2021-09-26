@@ -1,4 +1,4 @@
-<tui-doc-page header="Money" package="ADDON-COMMERCE">
+<tui-doc-page header="Money" package="ADDON-COMMERCE" type="components">
     <ng-template pageTab>
         <div i18n class="tui-space_bottom-3">
             <code>Money</code> transforms and shows money sum. There are some
@@ -8,6 +8,11 @@
         <p i18n>
             Set <code>singleColor</code> to <code>true</code> if component is
             used in a text
+        </p>
+
+        <p i18n>
+            Number formatting can be customized by using
+            <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a>
         </p>
 
         <tui-doc-example
@@ -81,7 +86,7 @@
                 i18n
                 documentationPropertyName="decimal"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiDecimal"
+                documentationPropertyType="TuiDecimalT"
                 [documentationPropertyValues]="decimalVariants"
                 [(documentationPropertyValue)]="decimal"
             >
@@ -113,7 +118,7 @@
                 i18n
                 documentationPropertyName="sign"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiMoneySign"
+                documentationPropertyType="TuiMoneySignT"
                 [documentationPropertyValues]="signVariants"
                 [(documentationPropertyValue)]="sign"
             >

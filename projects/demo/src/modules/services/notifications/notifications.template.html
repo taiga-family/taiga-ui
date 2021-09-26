@@ -1,4 +1,8 @@
-<tui-doc-page header="NotificationsService" package="CORE">
+<tui-doc-page
+    header="NotificationsService"
+    package="CORE"
+    path="core/modules/notifications/notifications.service.ts"
+>
     <ng-template pageTab>
         <p i18n>Service to show notifications</p>
         <p i18n>
@@ -110,7 +114,8 @@
             <ng-template
                 i18n
                 documentationPropertyName="autoClose"
-                documentationPropertyType="boolean"
+                documentationPropertyType="boolean | number"
+                [documentationPropertyValues]="autoCloseVariants"
                 [(documentationPropertyValue)]="autoClose"
             >
                 Autoclose after 3 seconds
@@ -161,7 +166,7 @@
             <li i18n>
                 To pass notification with custom content, you can use
                 <a
-                    routerLink="/tui-notifications-service"
+                    routerLink="/services/notifications-service"
                     fragment="example-template"
                     tuiLink
                 >

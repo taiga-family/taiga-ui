@@ -1,5 +1,5 @@
 import {Directive, ElementRef, Inject, Input, Optional, Renderer2} from '@angular/core';
-import {TuiTouchMode} from '@taiga-ui/addon-mobile/enums';
+import {TuiTouchModeT} from '@taiga-ui/addon-mobile/types';
 import {findTouchIndex} from '@taiga-ui/addon-mobile/utils';
 import {
     TUI_IS_IOS,
@@ -11,11 +11,11 @@ import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {race} from 'rxjs';
 import {filter, map, switchMap, take, takeUntil, tap} from 'rxjs/operators';
 
-const STYLE: {[key in TuiTouchMode]: string} = {
+const STYLE = {
     transform: 'scale(0.95)',
     opacity: '0.6',
     background: 'rgba(146, 153, 162, 0.12)',
-};
+} as const;
 
 @Directive({
     selector: '[tuiTouchable]',
@@ -24,7 +24,7 @@ const STYLE: {[key in TuiTouchMode]: string} = {
 export class TuiTouchableDirective {
     @Input()
     @tuiDefaultProp()
-    tuiTouchable = TuiTouchMode.Transform;
+    tuiTouchable: TuiTouchModeT | '' = '';
 
     constructor(
         @Optional() @Inject(TUI_ELEMENT_REF) elementRef: ElementRef<HTMLElement> | null,
@@ -39,7 +39,7 @@ export class TuiTouchableDirective {
 
         const element = elementRef ? elementRef.nativeElement : nativeElement;
 
-        typedFromEvent(element, 'touchstart')
+        typedFromEvent(element, 'touchstart', {passive: true})
             .pipe(
                 tap(() => {
                     this.onTouchStart(renderer, element);
@@ -47,7 +47,7 @@ export class TuiTouchableDirective {
                 map(({touches}) => touches[touches.length - 1].identifier),
                 switchMap(identifier =>
                     race(
-                        typedFromEvent(element, 'touchmove').pipe(
+                        typedFromEvent(element, 'touchmove', {passive: true}).pipe(
                             filter(({touches}) =>
                                 this.hasTouchLeft(element, touches, identifier),
                             ),
@@ -64,8 +64,8 @@ export class TuiTouchableDirective {
             });
     }
 
-    get style(): TuiTouchMode {
-        return this.tuiTouchable || TuiTouchMode.Transform;
+    get style(): TuiTouchModeT {
+        return this.tuiTouchable || 'transform';
     }
 
     private hasTouchLeft(
@@ -86,7 +86,7 @@ export class TuiTouchableDirective {
     }
 
     private onTouchStart(renderer: Renderer2, element: HTMLElement) {
-        if (this.style !== TuiTouchMode.Transform) {
+        if (this.style !== 'transform') {
             renderer.removeStyle(element, 'transition');
         } else {
             renderer.setStyle(element, 'transition', 'transform 0.2s');

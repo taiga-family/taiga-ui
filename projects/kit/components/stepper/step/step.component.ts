@@ -13,8 +13,7 @@ import {
     TuiDestroyService,
     TuiFocusVisibleService,
 } from '@taiga-ui/cdk';
-import {TuiOrientation, TuiRouterLinkActiveService} from '@taiga-ui/core';
-import {TuiStepState} from '@taiga-ui/kit/enums';
+import {TuiRouterLinkActiveService} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 import {TuiStepperComponent} from '../stepper.component';
@@ -34,7 +33,7 @@ export class TuiStepComponent {
     @Input()
     @HostBinding('attr.data-state')
     @tuiDefaultProp()
-    state = TuiStepState.Normal;
+    state: 'normal' | 'pass' | 'error' = 'normal';
 
     @Input()
     @tuiDefaultProp()
@@ -65,7 +64,7 @@ export class TuiStepComponent {
 
     @HostBinding('class._vertical')
     get isVertical(): boolean {
-        return this.stepper.orientation === TuiOrientation.Vertical;
+        return this.stepper.orientation === 'vertical';
     }
 
     @HostBinding('tabIndex')

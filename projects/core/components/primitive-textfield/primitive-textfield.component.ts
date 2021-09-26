@@ -14,17 +14,18 @@ import {
     AbstractTuiInteractive,
     isNativeFocused,
     setNativeFocused,
+    TuiContextWithImplicit,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    TuiInputMode,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TUI_HINT_WATCHED_CONTROLLER,
     TuiHintControllerDirective,
 } from '@taiga-ui/core/directives/hint-controller';
 import {
-    TUI_TEXTIFELD_WATCHED_CONTROLLER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives/textfield-controller';
 import {TuiAppearance} from '@taiga-ui/core/enums';
@@ -35,13 +36,13 @@ import {
     TuiSizeL,
     TuiSizeS,
 } from '@taiga-ui/core/types';
-import {getPadding, sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
+import {getBorder, sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {TUI_PRIMITIVE_TEXTFIELD_PROVIDERS} from './primitive-textfield.providers';
 
-const ICON_PADDING = 28;
-const ICON_PADDING_S = 24;
+const ICON_PADDING = 1.75;
+const ICON_PADDING_S = 1.5;
 
 @Component({
     selector: 'tui-primitive-textfield',
@@ -68,6 +69,7 @@ export class TuiPrimitiveTextfieldComponent
     @tuiDefaultProp()
     iconAlign: TuiHorizontalDirection = 'right';
 
+    // TODO: Remove null in 3.0
     @Input()
     @tuiDefaultProp()
     iconContent: PolymorpheusContent | null = null;
@@ -110,7 +112,7 @@ export class TuiPrimitiveTextfieldComponent
     constructor(
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
-        @Inject(TUI_TEXTIFELD_WATCHED_CONTROLLER)
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
@@ -147,6 +149,10 @@ export class TuiPrimitiveTextfieldComponent
         return !!this.content;
     }
 
+    get isContextTable(): boolean {
+        return this.appearance === TuiAppearance.Table;
+    }
+
     get hasTooltip(): boolean {
         return !!this.hintController && !!this.hintController.content && !this.disabled;
     }
@@ -159,15 +165,15 @@ export class TuiPrimitiveTextfieldComponent
         return this.size === 's' ? ICON_PADDING_S : ICON_PADDING;
     }
 
-    get paddingLeft(): number {
+    get borderLeft(): number {
         return (
             (this.iconAlignLeft ? this.iconPaddingLeft : 0) +
-            getPadding(sizeBigger(this.size, 'm'), false)
+            getBorder(sizeBigger(this.size, 'm'), false)
         );
     }
 
-    get paddingRight(): number {
-        return getPadding(
+    get borderRight(): number {
+        return getBorder(
             sizeBigger(this.size, 'm'),
             this.iconAlignRight,
             this.hasCleaner,
@@ -213,8 +219,8 @@ export class TuiPrimitiveTextfieldComponent
     get rightAligned(): boolean {
         return (
             this.appearance === TuiAppearance.Table &&
-            (this.controller.inputMode === TuiInputMode.Numeric ||
-                this.controller.inputMode === TuiInputMode.Decimal)
+            (this.controller.inputMode === 'numeric' ||
+                this.controller.inputMode === 'decimal')
         );
     }
 
@@ -253,7 +259,15 @@ export class TuiPrimitiveTextfieldComponent
             : null;
     }
 
+    get context(): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
+        return this.getContext(this.size);
+    }
+
     clear() {
+        if (this.nativeFocusableElement) {
+            this.nativeFocusableElement.value = '';
+        }
+
         this.updateValue('');
     }
 
@@ -300,6 +314,13 @@ export class TuiPrimitiveTextfieldComponent
             !this.hasValue &&
             !this.readOnly
         );
+    }
+
+    @tuiPure
+    private getContext(
+        $implicit: TuiSizeS | TuiSizeL,
+    ): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
+        return {$implicit};
     }
 
     private updateAutofilled(autofilled: boolean) {

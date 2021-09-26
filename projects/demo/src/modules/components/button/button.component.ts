@@ -14,12 +14,12 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 
 import {Component, forwardRef, TemplateRef} from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TuiButtonShape, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
-import {AbstractExampleTuiField} from '../abstract/field';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
     selector: 'example-tui-button',
@@ -33,7 +33,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         },
     ],
 })
-export class ExampleTuiButtonComponent extends AbstractExampleTuiField {
+export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
@@ -84,13 +84,9 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiField {
 
     size: TuiSizeXS | TuiSizeXL = this.sizeVariants[3];
 
-    readonly shapeVariants: ReadonlyArray<TuiButtonShape | null> = [
-        null,
-        TuiButtonShape.Square,
-        TuiButtonShape.Rounded,
-    ];
+    readonly shapeVariants = ['square', 'rounded'] as const;
 
-    shape: TuiButtonShape | null = this.shapeVariants[0];
+    shape = null;
 
     icon: PolymorpheusContent = '';
 

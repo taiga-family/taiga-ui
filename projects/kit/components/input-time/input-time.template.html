@@ -2,12 +2,13 @@
     class="wrapper"
     [canOpen]="interactive && !!filtered.length"
     [content]="dropdownContent"
-    [open]="open && !!filtered.length"
+    [open]="interactive && open && !!filtered.length"
     (openChange)="onOpen($event)"
     (focusedChange)="onFocused($event)"
 >
     <tui-primitive-textfield
         class="textfield"
+        tuiValueAccessor
         [filler]="getFiller$(mode) | async"
         [nativeId]="nativeId"
         [pseudoFocused]="innerPseudoFocused"

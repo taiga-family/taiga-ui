@@ -3,17 +3,18 @@
 :host {
     font: var(--tui-font-text-s);
     display: block;
-    padding: 8px 0;
+    padding: 0.5rem 0;
 }
 
 .item {
     .transition(background);
     display: flex;
-    height: 32px;
+    height: 2rem;
     align-items: center;
-    padding: 0 12px;
+    padding: 0 0.75rem;
     cursor: ns-resize;
     background: var(--tui-base-01);
+    outline: none;
 
     &:hover {
         background: var(--tui-base-02);
@@ -25,7 +26,7 @@
 }
 
 .icon {
-    margin-right: 8px;
+    margin-right: 0.5rem;
     color: var(--tui-base-05);
 }
 
@@ -33,6 +34,10 @@
     .transition(opacity);
     margin-left: auto;
     opacity: 0;
+
+    &_hidden {
+        opacity: 1;
+    }
 }
 
 .cdk-drag-placeholder {

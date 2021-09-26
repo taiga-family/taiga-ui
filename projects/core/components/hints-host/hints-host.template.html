@@ -1,10 +1,8 @@
 <tui-hint-box
-    *ngFor="let hint of hints"
+    *ngFor="let hint of hints$ | async"
     role="tooltip"
     [attr.id]="hint.id"
-    [@tuiFadeIn]
-    [mode]="hint.mode"
-    [direction]="hint.direction"
+    [@tuiFadeIn]="animation"
     [hint]="hint"
     (tuiHoveredChange)="onHovered($event, hint)"
 >

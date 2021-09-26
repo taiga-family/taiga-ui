@@ -9,22 +9,18 @@ import {
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
-    DAYS_IN_WEEK,
     nullableSame,
     TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
     tuiDefaultProp,
     TuiMonth,
-    tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
-import {TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
+import {TUI_ORDERED_SHORT_WEEK_DAYS, WEEK_DAYS_NAMES} from '@taiga-ui/core/tokens';
 import {TuiColor, TuiMarkerHandler} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
-
-const ROWS_COUNT = 6;
 
 // @dynamic
 @Component({
@@ -34,6 +30,10 @@ const ROWS_COUNT = 6;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarComponent {
+    @Input()
+    @tuiDefaultProp()
+    month: TuiMonth = TuiMonth.currentLocal();
+
     @Input()
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
@@ -54,40 +54,13 @@ export class TuiPrimitiveCalendarComponent {
     @tuiDefaultProp()
     showAdjacent = true;
 
-    @Input()
-    @tuiRequiredSetter()
-    set month(month: TuiMonth) {
-        if (this.currentMonth !== null && this.currentMonth.monthSame(month)) {
-            return;
-        }
-
-        const sheet: Array<ReadonlyArray<TuiDay>> = [];
-
-        for (let rowIndex = 0; rowIndex < ROWS_COUNT; rowIndex++) {
-            const row: Array<TuiDay> = [];
-
-            for (let colIndex = 0; colIndex < DAYS_IN_WEEK; colIndex++) {
-                row.push(TuiDay.getDayFromMonthRowCol(month, rowIndex, colIndex));
-            }
-
-            sheet.push(row);
-        }
-
-        this.sheet = sheet;
-        this.currentMonth = month;
-    }
-
     @Output()
     readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
     @Output()
     readonly dayClick = new EventEmitter<TuiDay>();
 
-    sheet: ReadonlyArray<ReadonlyArray<TuiDay>> = [];
-
     private pressedItem: TuiDay | null = null;
-
-    private currentMonth: TuiMonth | null = null;
 
     private today = TuiDay.currentLocal();
 
@@ -106,10 +79,8 @@ export class TuiPrimitiveCalendarComponent {
     };
 
     constructor(
-        @Inject(TUI_SHORT_WEEK_DAYS)
-        readonly weekDays$: Observable<
-            [string, string, string, string, string, string, string]
-        >,
+        @Inject(TUI_ORDERED_SHORT_WEEK_DAYS)
+        readonly weekDays$: Observable<WEEK_DAYS_NAMES>,
     ) {}
 
     @HostBinding('class._single')
@@ -127,11 +98,11 @@ export class TuiPrimitiveCalendarComponent {
             return TuiInteractiveState.Disabled;
         }
 
-        if (pressedItem !== null && pressedItem.daySame(item)) {
+        if (pressedItem && pressedItem.daySame(item)) {
             return TuiInteractiveState.Pressed;
         }
 
-        if (hoveredItem !== null && hoveredItem.daySame(item)) {
+        if (hoveredItem && hoveredItem.daySame(item)) {
             return TuiInteractiveState.Hovered;
         }
 
@@ -141,7 +112,7 @@ export class TuiPrimitiveCalendarComponent {
     getItemRange(item: TuiDay): TuiRangeState | null {
         const {value, hoveredItem} = this;
 
-        if (value === null) {
+        if (!value) {
             return null;
         }
 
@@ -151,11 +122,11 @@ export class TuiPrimitiveCalendarComponent {
 
         if (
             (value.from.daySame(item) && !value.isSingleDay) ||
-            (hoveredItem !== null &&
+            (hoveredItem &&
                 hoveredItem.dayAfter(value.from) &&
                 value.from.daySame(item) &&
                 value.isSingleDay) ||
-            (hoveredItem !== null &&
+            (hoveredItem &&
                 hoveredItem.daySame(item) &&
                 hoveredItem.dayBefore(value.from) &&
                 value.isSingleDay)
@@ -165,11 +136,11 @@ export class TuiPrimitiveCalendarComponent {
 
         if (
             (value.to.daySame(item) && !value.isSingleDay) ||
-            (hoveredItem !== null &&
+            (hoveredItem &&
                 hoveredItem.dayBefore(value.from) &&
                 value.from.daySame(item) &&
                 value.isSingleDay) ||
-            (hoveredItem !== null &&
+            (hoveredItem &&
                 hoveredItem.daySame(item) &&
                 hoveredItem.dayAfter(value.from) &&
                 value.isSingleDay)
@@ -193,7 +164,7 @@ export class TuiPrimitiveCalendarComponent {
     }
 
     itemIsUnavailable(item: TuiDay): boolean {
-        return this.currentMonth === null || !this.currentMonth.monthSame(item);
+        return !this.month.monthSame(item);
     }
 
     itemIsInterval(day: TuiDay): boolean {
@@ -216,20 +187,15 @@ export class TuiPrimitiveCalendarComponent {
         return range.from.daySameOrBefore(day) && range.to.dayAfter(day);
     }
 
-    onItemHovered(hovered: boolean, item: TuiDay) {
-        this.updateHoveredItem(hovered ? item : null);
+    onItemHovered(item: TuiDay | false) {
+        this.updateHoveredItem(item || null);
     }
 
-    onItemPressed(pressed: boolean, item: TuiDay) {
-        this.updatePressedItem(pressed, item);
+    onItemPressed(item: TuiDay | false) {
+        this.pressedItem = item || null;
     }
 
-    onItemClick(event: MouseEvent, item: TuiDay) {
-        if (this.disabledItemHandler(item)) {
-            return;
-        }
-
-        event.preventDefault();
+    onItemClick(item: TuiDay) {
         this.dayClick.emit(item);
     }
 
@@ -240,9 +206,5 @@ export class TuiPrimitiveCalendarComponent {
 
         this.hoveredItem = day;
         this.hoveredItemChange.emit(day);
-    }
-
-    private updatePressedItem(pressed: boolean, item: TuiDay) {
-        this.pressedItem = pressed ? item : null;
     }
 }

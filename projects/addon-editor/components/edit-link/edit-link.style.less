@@ -4,25 +4,25 @@
     display: flex;
     height: var(--tui-height-l);
     align-items: center;
-    padding-right: 12px;
+    padding-right: 0.75rem;
 }
 
-.label {
+.t-label {
     font: var(--tui-font-text-s);
     height: var(--tui-height-l);
     box-sizing: border-box;
-    padding: 7px 16px;
-    min-width: 200px;
-    max-width: 400px;
+    padding: 0.4375rem 1rem;
+    min-width: 12.5rem;
+    max-width: 25rem;
 }
 
-.url {
+.t-url {
     font: var(--tui-font-text-m);
     display: flex;
     color: var(--tui-text-02);
 }
 
-.input {
+.t-input {
     flex: 1;
 
     &_filled {
@@ -30,18 +30,18 @@
     }
 }
 
-.button {
-    width: 32px;
-    height: 32px;
+.t-button {
+    width: 2rem;
+    height: 2rem;
     margin: 0 @space;
     transition: background 0.2s;
 }
 
-.link {
-    margin: 0 16px;
+.t-link {
+    margin: 0 1rem;
 }
 
-.cleaner {
+.t-cleaner {
     .transition(color);
     color: var(--tui-base-06);
     cursor: pointer;

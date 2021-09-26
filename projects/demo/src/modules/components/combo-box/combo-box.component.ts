@@ -6,6 +6,12 @@ import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
+import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
+import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
+
+import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
+import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
+
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -21,11 +27,11 @@ import {
     TuiStringHandler,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
-import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 class Account {
     constructor(readonly name: string, readonly balance: number) {}
@@ -47,7 +53,7 @@ class Account {
         },
     ],
 })
-export class ExampleTuiComboBoxComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
@@ -64,7 +70,21 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiReactiveField
         LESS: example2Less,
     };
 
-    readonly items = [new Account('Rubles', 500), new Account('Dollars', 237)];
+    readonly example3: FrontEndExample = {
+        TypeScript: example3Ts,
+        HTML: example3Html,
+    };
+
+    readonly example4: FrontEndExample = {
+        TypeScript: example4Ts,
+        HTML: example4Html,
+    };
+
+    readonly items = [
+        new Account('Rubles', 500),
+        new Account('Dollars', 237),
+        new Account('Netherlands Antillean Guilder and Falkland Islands Pound', 700),
+    ];
 
     strict = true;
 
@@ -103,12 +123,12 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiReactiveField
     readonly control = new FormControl(null, Validators.required);
 
     @ViewChild('valueTemplateContent')
-    private valueTemplateRef?: PolymorpheusTemplate<{}>;
+    private valueTemplateRef: PolymorpheusContent = '';
 
-    get valueContent(): PolymorpheusTemplate<any> | null {
+    get valueContent(): PolymorpheusContent {
         return this.valueTemplateRef && this.selectedValueTemplate
             ? this.valueTemplateRef
-            : null;
+            : '';
     }
 
     @tuiPure

@@ -5,6 +5,7 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component} from '@angular/core';
+import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -21,4 +22,25 @@ export class ExampleTuiHintControllerComponent {
         TypeScript: example1Ts,
         HTML: example1Html,
     };
+
+    readonly modeVariants: readonly TuiHintModeT[] = ['error'];
+
+    tuiHintContent = 'Example hint content';
+
+    tuiHintMode: TuiHintModeT | null = null;
+
+    readonly directionVariants: ReadonlyArray<TuiDirection> = [
+        'left',
+        'right',
+        'bottom-left',
+        'bottom-right',
+        'top-left',
+        'top-right',
+    ];
+
+    tuiHintDirection: TuiDirection = this.directionVariants[2];
+
+    tuiHintShowDelay = 500;
+
+    tuiHintHideDelay = 200;
 }

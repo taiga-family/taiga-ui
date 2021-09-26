@@ -4,14 +4,14 @@
     display: flex;
 }
 
-.wrapper {
+.t-wrapper {
     display: flex;
     flex: 1;
     height: 100%;
     flex-direction: column;
 }
 
-.grid {
+.t-grid {
     .createStackingContext();
     display: flex;
     flex: 1;
@@ -19,15 +19,23 @@
     align-items: flex-end;
     border-width: 1px;
     border-color: var(--tui-base-03);
+
+    :host[data-mode='onDark'] & {
+        border-color: rgba(255, 255, 255, 0.48);
+    }
+
+    :host[data-mode='onLight'] & {
+        border-color: rgba(0, 0, 0, 0.48);
+    }
 }
 
-.horizontal {
+.t-horizontal {
     .fullsize();
     display: flex;
     flex-direction: column;
 }
 
-.vertical {
+.t-vertical {
     .fullsize();
     display: flex;
 
@@ -38,11 +46,19 @@
     }
 }
 
-.line {
+.t-line {
     flex: 2 0 1px;
     box-sizing: border-box;
     border-width: 1px;
     border-color: var(--tui-base-03);
+
+    :host[data-mode='onDark'] & {
+        border-color: rgba(255, 255, 255, 0.48);
+    }
+
+    :host[data-mode='onLight'] & {
+        border-color: rgba(0, 0, 0, 0.48);
+    }
 
     &_vertical {
         :host._centered &:first-child {
@@ -52,41 +68,49 @@
     }
 }
 
-.side {
+.t-side {
     display: flex;
     align-items: stretch;
 
     &_padding {
-        padding-bottom: 32px;
+        padding-bottom: 2rem;
     }
 }
 
-.name {
+.t-name {
     font: var(--tui-font-text-xs);
     writing-mode: tb;
     text-align: center;
-    padding-left: 12px;
+    padding-left: 0.75rem;
     color: var(--tui-text-02);
 
     &_primary {
         transform: rotate(180deg);
     }
+
+    :host[data-mode='onDark'] & {
+        color: var(--tui-text-02-night);
+    }
 }
 
-.labels-y {
+.t-labels-y {
     font: var(--tui-font-text-xs);
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
     color: var(--tui-text-02);
 
+    :host[data-mode='onDark'] & {
+        color: var(--tui-text-02-night);
+    }
+
     &_primary {
         text-align: right;
-        padding-right: 12px;
+        padding-right: 0.75rem;
     }
 
     &_secondary {
-        padding-left: 12px;
+        padding-left: 0.75rem;
     }
 
     &_transparent {
@@ -95,36 +119,44 @@
 
     &_inset {
         position: absolute;
-        top: 9px;
-        left: 4px;
-        bottom: -12px;
+        top: 0.5625rem;
+        left: 0.25rem;
+        bottom: -0.75rem;
         pointer-events: none;
 
         &_secondary {
             left: auto;
-            right: 4px;
+            right: 0.25rem;
             text-align: right;
         }
     }
 }
 
-.labels-x {
+.t-labels-x {
     font: var(--tui-font-text-xs);
     display: flex;
     border-right: 1px solid transparent;
     color: var(--tui-text-02);
 }
 
-.label-x {
-    height: 7px;
+.t-label-x {
+    height: 0.4375rem;
     border-left: 1px solid var(--tui-base-03);
     flex: 1;
-    margin-bottom: 25px;
+    margin-bottom: 1.5625rem;
+
+    :host[data-mode='onDark'] & {
+        border-color: rgba(255, 255, 255, 0.48);
+    }
+
+    :host[data-mode='onLight'] & {
+        border-color: rgba(0, 0, 0, 0.48);
+    }
 
     &:before {
         content: '';
         display: block;
-        height: 9px;
+        height: 0.5625rem;
     }
 
     &_transparent {
@@ -132,29 +164,29 @@
     }
 
     :host._centered & {
-        height: 32px;
+        height: 2rem;
         text-align: center;
         border: none;
         margin: 0;
     }
 }
 
-.label-y {
+.t-label-y {
     &:first-child {
-        margin-bottom: -6px;
+        margin-bottom: -0.375rem;
     }
 
     &:last-child {
-        margin-top: -6px;
+        margin-top: -0.375rem;
     }
 }
 
-.content {
+.t-content {
     position: absolute;
     top: 0;
-    left: -1px;
+    left: -0.0625rem;
     right: 0;
-    bottom: -1px;
+    bottom: -0.0625rem;
     display: flex;
     align-items: flex-end;
 }

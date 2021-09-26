@@ -1,6 +1,10 @@
 <p class="tui-space_top-0" i18n>
-    This guide will help you correctly install Taiga UI
+    You can easily install Taiga UI using Angular CLI by running the following
+    command:
 </p>
+<tui-doc-code code="ng add taiga-ui"></tui-doc-code>
+
+<p class="tui-space_top-5" i18n>Use this guide to install Taiga UI manually:</p>
 
 <div class="tui-space_top-5">
     <ol class="steps">
@@ -52,7 +56,7 @@
             ></tui-doc-code>
 
             <tui-notification class="tui-space_top-3">
-                You can use it with your pure CSS, SCSS and etc. projects.
+                You can use it with your pure CSS, SCSS and other projects.
                 Angular resolves this less files automatically
             </tui-notification>
 
@@ -98,24 +102,13 @@
         </li>
 
         <li id="icons" i18n>
-            Icons are not included in the bundle. To add icons provide
-            <code>TUI_ICONS_PATH</code> token with a function that gets icon
-            name and returns path to it.
-
-            <p>First of all, add icons into assets of your app:</p>
+            Icons are not included in the bundle. They go into your app's
+            assets:
 
             <tui-doc-code
                 class="tui-space_bottom-4"
                 filename="angular.json"
                 [code]="examples.assets"
-            ></tui-doc-code>
-
-            <p>Then you should provide path with a token:</p>
-
-            <tui-doc-code
-                class="tui-space_bottom-4"
-                filename="app.module.ts"
-                [code]="examples.appModuleIcons"
             ></tui-doc-code>
         </li>
     </ol>

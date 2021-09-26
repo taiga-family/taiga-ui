@@ -14,12 +14,21 @@
             [inheritColor]="true"
             [showLoader]="checked"
         ></tui-loader>
-        <tui-svg
-            *ngIf="showIcons && !showLoader"
-            class="icon"
-            automation-id="tui-toggle__check-icon"
-            [src]="iconOn"
-        ></tui-svg>
+        <span
+            polymorpheus-outlet
+            class="icon-wrapper"
+            [content]="iconOn"
+            [context]="{ $implicit: size }"
+        >
+            <ng-template let-icon>
+                <tui-svg
+                    *ngIf="showIcons && !showLoader"
+                    class="icon"
+                    automation-id="tui-toggle__check-icon"
+                    [src]="icon"
+                ></tui-svg>
+            </ng-template>
+        </span>
         <div class="circle"></div>
         <tui-loader
             *ngIf="showLoader"
@@ -28,12 +37,21 @@
             [inheritColor]="true"
             [showLoader]="!checked"
         ></tui-loader>
-        <tui-svg
-            *ngIf="showIcons && !showLoader"
-            class="icon icon_off"
-            automation-id="tui-toggle__cancel-icon"
-            [src]="iconOff"
-        ></tui-svg>
+        <span
+            polymorpheus-outlet
+            class="icon-wrapper"
+            [content]="iconOff"
+            [context]="{ $implicit: size }"
+        >
+            <ng-template let-icon>
+                <tui-svg
+                    *ngIf="showIcons && !showLoader"
+                    class="icon icon_off"
+                    automation-id="tui-toggle__cancel-icon"
+                    [src]="icon"
+                ></tui-svg>
+            </ng-template>
+        </span>
     </div>
 </tui-wrapper>
 <input

@@ -14,7 +14,7 @@ import {
     TUI_ALWAYS_DASHED,
     TUI_ALWAYS_SOLID,
     TuiLineHandler,
-    TuiLineType,
+    TuiLineTypeT,
 } from '@taiga-ui/addon-charts';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -41,10 +41,11 @@ export class ExampleTuiAxesComponent {
         LESS: example2Less,
     };
 
-    readonly lineVariants: ReadonlyArray<TuiLineType> = [
-        TuiLineType.Solid,
-        TuiLineType.Dashed,
-        TuiLineType.None,
+    readonly lineVariants: ReadonlyArray<TuiLineTypeT> = [
+        'solid',
+        'dashed',
+        'none',
+        'hidden',
     ];
 
     readonly labelsVariants = [
@@ -57,7 +58,7 @@ export class ExampleTuiAxesComponent {
     readonly handlerVariants: ReadonlyArray<TuiLineHandler> = [
         TUI_ALWAYS_SOLID,
         TUI_ALWAYS_DASHED,
-        index => (index % 2 ? TuiLineType.Dashed : TuiLineType.Solid),
+        index => (index % 2 ? 'dashed' : 'solid'),
     ];
 
     axisX = this.lineVariants[0];

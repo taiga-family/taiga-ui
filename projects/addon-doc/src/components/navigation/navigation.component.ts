@@ -1,8 +1,9 @@
-import {DOCUMENT, Location} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
 import {Title} from '@angular/platform-browser';
+import {ActivatedRoute, Router} from '@angular/router';
 import {tuiPure, uniqBy} from '@taiga-ui/cdk';
-import {getScreenWidth, TuiModeDirective} from '@taiga-ui/core';
+import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {TuiDocPage} from '../../interfaces/page';
@@ -16,7 +17,6 @@ import {
     NAVIGATION_TITLE,
 } from './navigation.providers';
 
-const SMALL_TABLET_SCREEN = 767;
 const SCROLL_INTO_VIEW_DELAY = 200;
 
 // @dynamic
@@ -30,37 +30,38 @@ const SCROLL_INTO_VIEW_DELAY = 200;
 export class TuiDocNavigationComponent {
     search = '';
     open = false;
-    menuOpen = false;
-    openGroupsArr: boolean[] = [];
+    openPagesArr: boolean[] = [];
+    openPagesGroupsArr: boolean[] = [];
+    active = '';
 
-    readonly mode$ = this.mode.change$.pipe(
+    @HostBinding('class._open')
+    menuOpen = false;
+
+    readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),
         map(() => this.mode.mode || 'onLight'),
     );
 
     constructor(
         @Inject(Title) titleService: Title,
-        @Inject(Location) locationRef: Location,
         @Inject(NAVIGATION_TITLE) title$: Observable<string>,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective,
-        @Inject(NAVIGATION_LABELS) readonly labels: string,
+        @Inject(NAVIGATION_LABELS) readonly labels: string[],
         @Inject(NAVIGATION_ITEMS)
         readonly items: ReadonlyArray<TuiDocPages>,
         @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
+        @Inject(Router) private readonly router: Router,
+        @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
     ) {
         // Angular can't navigate no anchor links
         // https://stackoverflow.com/questions/36101756/angular2-routing-with-hashtag-to-page-anchor
         title$.subscribe(title => {
             titleService.setTitle(title);
-            this.handleAnchorLink(locationRef.path(true));
+            this.openActivePageGroup();
+            this.handleAnchorLink(this.activatedRoute.snapshot.fragment);
         });
-    }
-
-    @HostBinding('class._open')
-    get openMenu(): boolean {
-        return this.menuOpen;
     }
 
     get canOpen(): boolean {
@@ -71,14 +72,20 @@ export class TuiDocNavigationComponent {
         return this.filterItems(this.flattenSubPages(this.items), this.search);
     }
 
-    onGroupClick(index: number) {
-        this.openGroupsArr[index] = !this.openGroupsArr[index];
+    get itemsWithoutSections() {
+        return this.items[this.items.length - 1];
     }
 
-    toggleMenu() {
-        if (getScreenWidth(this.documentRef) <= SMALL_TABLET_SCREEN) {
-            this.menuOpen = !this.menuOpen;
-        }
+    isActive(route: string): boolean {
+        return route === this.active;
+    }
+
+    onGroupClick(index: number) {
+        this.openPagesGroupsArr[index] = !this.openPagesGroupsArr[index];
+    }
+
+    closeMenu() {
+        this.menuOpen = false;
     }
 
     onSearchChange(search: string) {
@@ -90,6 +97,7 @@ export class TuiDocNavigationComponent {
         this.open = false;
         this.menuOpen = false;
         this.search = '';
+        this.openActivePageGroup();
     }
 
     @tuiPure
@@ -136,39 +144,49 @@ export class TuiDocNavigationComponent {
         );
     }
 
-    private handleAnchorLink(path: string) {
-        const lastIndex = path.lastIndexOf('#');
-        const hash = lastIndex === -1 ? '' : path.substr(lastIndex);
+    private isActiveRoute(route: string): boolean {
+        return this.router.isActive(route, false);
+    }
 
-        if (!hash) {
-            return;
-        }
-
+    private handleAnchorLink(hash: string) {
         setTimeout(() => {
             this.navigateToAnchorLink(hash);
-            this.animateExample(hash);
         }, SCROLL_INTO_VIEW_DELAY);
     }
 
+    private openActivePageGroup() {
+        this.items.forEach((pages, pagesIndex) => {
+            pages.forEach((page, pageIndex) => {
+                if ('route' in page && this.isActiveRoute(page.route)) {
+                    this.openPagesArr[pagesIndex] = true;
+                    this.active = page.route;
+                }
+
+                if ('subPages' in page) {
+                    page.subPages.forEach(subPage => {
+                        if (this.isActiveRoute(subPage.route)) {
+                            this.openPagesArr[pagesIndex] = true;
+                            this.openPagesGroupsArr[pagesIndex + pageIndex] = true;
+                            this.active = subPage.route;
+                        }
+                    });
+                }
+            });
+        });
+    }
+
     private navigateToAnchorLink(fragment: string) {
-        const element = this.documentRef.querySelector(fragment);
+        const element = fragment && this.documentRef.querySelector(`#${fragment}`);
 
         if (!element) {
             return;
         }
 
+        element.classList.add('tui-doc-animated-example');
         element.scrollIntoView({
             block: 'start',
             inline: 'nearest',
             behavior: 'smooth',
         });
-    }
-
-    private animateExample(fragment: string) {
-        const element = this.documentRef.querySelector(fragment);
-
-        if (element) {
-            element.classList.add('tui-doc-animated-example');
-        }
     }
 }

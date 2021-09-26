@@ -2,7 +2,7 @@
     *ngIf="safeItem.hasCloseButton else noClose"
     [status]="safeItem.status"
     [hasIcon]="safeItem.hasIcon"
-    (close)="closeDialog()"
+    (close)="closeNotification()"
 >
     <label
         *ngIf="safeItem.label"

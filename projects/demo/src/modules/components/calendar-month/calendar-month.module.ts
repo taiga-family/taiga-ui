@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiCalendarMonthModule} from '@taiga-ui/kit';
 import {ExampleTuiCalendarMonthComponent} from './calendar-month.component';
@@ -14,7 +14,7 @@ import {TuiMonthExample2} from './examples/2';
         RouterModule,
         TuiLinkModule,
         TuiCalendarMonthModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiCalendarMonthComponent)),
     ],
     declarations: [ExampleTuiCalendarMonthComponent, TuiMonthExample1, TuiMonthExample2],

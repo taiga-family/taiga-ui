@@ -32,11 +32,11 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
-import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 class Account {
     constructor(readonly name: string, readonly balance: number) {}
@@ -58,7 +58,7 @@ class Account {
         },
     ],
 })
-export class ExampleTuiSelectComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
     readonly exampleDeclareForm = exampleDeclareForm;
@@ -125,7 +125,7 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiReactiveField {
     ];
 
     @ViewChild('valueTemplateContent')
-    private valueTemplateRef?: PolymorpheusTemplate<{}>;
+    private valueTemplateRef: PolymorpheusContent = '';
 
     get valueContent(): PolymorpheusContent {
         return this.valueTemplateRef && this.selectedValueTemplate

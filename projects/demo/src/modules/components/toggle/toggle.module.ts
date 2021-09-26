@@ -2,10 +2,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiToggleModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiToggleExample1} from './examples/1';
+import {TuiToggleExample2} from './examples/2';
 import {ExampleTuiToggleComponent} from './toggle.component';
 
 @NgModule({
@@ -13,12 +14,12 @@ import {ExampleTuiToggleComponent} from './toggle.component';
         FormsModule,
         ReactiveFormsModule,
         TuiToggleModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         InheritedDocumentationModule,
         CommonModule,
         RouterModule.forChild(generateRoutes(ExampleTuiToggleComponent)),
     ],
-    declarations: [ExampleTuiToggleComponent, TuiToggleExample1],
+    declarations: [ExampleTuiToggleComponent, TuiToggleExample1, TuiToggleExample2],
     exports: [ExampleTuiToggleComponent],
 })
 export class ExampleTuiToggleModule {}

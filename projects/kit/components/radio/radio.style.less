@@ -1,9 +1,9 @@
 @import 'taiga-ui-local';
 
-@sizeM: 16px;
-@sizeL: 24px;
-@dotSizeM: 8px;
-@dotSizeL: 10px;
+@sizeM: 1rem;
+@sizeL: 1.5rem;
+@dotSizeM: 0.5rem;
+@dotSizeL: 0.625rem;
 
 :host {
     .text-basic();
@@ -33,13 +33,13 @@
     border-radius: 100%;
 
     :host[data-tui-host-size='m'] & {
-        margin: 4px;
+        margin: 0.25rem;
         width: @dotSizeM;
         height: @dotSizeM;
     }
 
     :host[data-tui-host-size='l'] & {
-        margin: 7px;
+        margin: 0.4375rem;
         width: @dotSizeL;
         height: @dotSizeL;
     }

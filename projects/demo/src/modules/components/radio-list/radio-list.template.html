@@ -1,4 +1,4 @@
-<tui-doc-page header="RadioList" package="KIT">
+<tui-doc-page header="RadioList" package="KIT" type="components">
     <ng-template pageTab>
         <p i18n>
             Component for fast showing many radio buttons. It supports also
@@ -44,7 +44,7 @@
                 ></tui-radio-list>
             </ng-template>
         </tui-doc-demo>
-        <ng-template #itemContent="polymorpheus" polymorpheus let-data>
+        <ng-template #itemContent let-data>
             <div>Option &laquo;{{data.name}}&raquo;.</div>
             <div class="description">{{data.description}}</div>
         </ng-template>
@@ -76,7 +76,7 @@
                 i18n
                 documentationPropertyName="orientation"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiOrientation"
+                documentationPropertyType="TuiOrientationT"
                 [documentationPropertyValues]="orientationVariants"
                 [(documentationPropertyValue)]="orientation"
             >

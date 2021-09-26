@@ -1,35 +1,26 @@
-<tui-doc-page header="Mapper" package="CDK">
+<tui-doc-page header="Mapper" package="CDK" type="pipes">
     <ng-template i18n pageTab>
         Pipe to transform a value with a function
+
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-mapper-example1></tui-mapper-example1>
+        </tui-doc-example>
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="With array"
+            [content]="example2"
+        >
+            <tui-mapper-example2></tui-mapper-example2>
+        </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
-        <p i18n class="text">Transform: {{value | tuiMapper: mapper: args}}</p>
-        <tui-doc-documentation>
-            <ng-template
-                i18n
-                documentationPropertyName="mapper"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiMapper"
-                [documentationPropertyValues]="mapperVariants"
-                [(documentationPropertyValue)]="mapper"
-            >
-                Mapper function
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="args"
-                documentationPropertyMode="input"
-                documentationPropertyType="any"
-                [documentationPropertyValues]="argsVariants"
-                [(documentationPropertyValue)]="args"
-            >
-                Arguments for mapper function
-            </ng-template>
-        </tui-doc-documentation>
-    </ng-template>
-
-    <ng-template pageTab>
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
@@ -45,7 +36,7 @@
 
             <li>
                 <p i18n>
-                    Use pipe into template with function and its arguments:
+                    Use pipe in template with function and its arguments:
                 </p>
 
                 <tui-doc-code

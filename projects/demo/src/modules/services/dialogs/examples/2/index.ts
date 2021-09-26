@@ -3,7 +3,7 @@ import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
-import {DialogExampleWithDataComponent} from '../../dialog-example-with-data/dialog-example-with-data.component';
+import {DialogExampleComponent} from '../../dialog-example/dialog-example.component';
 
 @Component({
     selector: 'tui-dialog-example-2',
@@ -13,7 +13,7 @@ import {DialogExampleWithDataComponent} from '../../dialog-example-with-data/dia
 })
 export class TuiDialogExampleComponent2 {
     private readonly dialog = this.dialogService.open<number>(
-        new PolymorpheusComponent(DialogExampleWithDataComponent, this.injector),
+        new PolymorpheusComponent(DialogExampleComponent, this.injector),
         {
             data: 237,
             dismissible: true,

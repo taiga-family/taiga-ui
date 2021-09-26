@@ -1,12 +1,16 @@
-<tui-doc-page header="DialogService" package="CORE">
+<tui-doc-page
+    header="DialogService"
+    package="CORE"
+    path="core/components/dialog/dialog.service.ts"
+>
     <ng-template pageTab>
         <p i18n>Optional service to show modal windows</p>
 
         <tui-notification i18n class="tui-space_vertical-4">
             Use <code><strong>TUI_DIALOGS_CLOSE</strong></code> token if you
             need to close dialog with from a stream. For example, this way you
-            can close dialogs by routing:
-            <p><tui-doc-code [code]="token"></tui-doc-code></p>
+            can close dialogs by logout:
+            <p><tui-doc-code [code]="dialogsCloseToken"></tui-doc-code></p>
         </tui-notification>
 
         <tui-notification class="tui-space_vertical-4" status="warning">
@@ -17,8 +21,8 @@
 
         <tui-doc-example
             i18n-heading
-            heading="Dialog from component"
-            id="component"
+            heading="Dialog from string"
+            id="string"
             [content]="example1"
         >
             <tui-dialog-example-1></tui-dialog-example-1>
@@ -26,7 +30,17 @@
 
         <tui-doc-example
             i18n-heading
-            heading="Dialog with data transfer"
+            heading="Dialog with directive"
+            id="directive"
+            [content]="example6"
+        >
+            <tui-dialog-example-6></tui-dialog-example-6>
+        </tui-doc-example>
+
+        <tui-doc-example
+            i18n-heading
+            heading="Component dialog"
+            description="Using two-way data transfer"
             id="data"
             [content]="example2"
         >
@@ -243,7 +257,7 @@
             </li>
             <li>
                 <p i18n>
-                    Use <code>open</code> mothod to show a dialog, subscribe to
+                    Use <code>open</code> method to show a dialog, subscribe to
                     an <code>Observable</code>:
                 </p>
 
@@ -274,7 +288,7 @@
 
             <li i18n>
                 You can also use a
-                <a routerLink="/tui-dialog" fragment="example-template" tuiLink>
+                <a routerLink="/dialogs" fragment="example-template" tuiLink>
                     template
                 </a>
             </li>
@@ -302,6 +316,28 @@
                 <tui-doc-code
                     filename="myDialog.component.ts"
                     [code]="exampleLazyModule"
+                ></tui-doc-code>
+            </li>
+            <li>
+                <p i18n>
+                    Dialogs have experimental feature with closing them on
+                    browser backward navigation. It was achieved through
+                    manipulation of <code><strong>window.history</strong></code
+                    >.
+                </p>
+
+                <p i18n>
+                    If you have some troubles with it, report about this,
+                    please.<br />
+                    In this case, you can disable this feature for your app
+                    using
+                    <code><strong>TUI_DIALOG_CLOSES_ON_BACK</strong></code>
+                    token.
+                </p>
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    [code]="exampleDialogClosesOnBackToken"
                 ></tui-doc-code>
             </li>
         </ol>

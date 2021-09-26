@@ -31,7 +31,10 @@ export class TuiEditorSocketComponent {
             this.elementRef.nativeElement,
             'innerHTML',
             this.tuiSanitizer
-                ? this.tuiSanitizer.sanitize(SecurityContext.HTML, content)
+                ? this.tuiSanitizer.sanitize(
+                      SecurityContext.HTML,
+                      content.replace(/colwidth/g, 'width'),
+                  )
                 : this.sanitizer.sanitize(SecurityContext.HTML, content),
         );
     }

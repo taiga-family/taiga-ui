@@ -1,8 +1,7 @@
-<div tuiDropdownSelection [tuiDropdownContent]="dropdownContent">
+<div tuiDropdownSelection [tuiDropdownContent]="content">
     Host element
 </div>
 
-<ng-template #dropdownContent="polymorpheus"
-             polymorpheus>
+<ng-template #content>
     Dropdown content
 </ng-template>

@@ -46,6 +46,9 @@ import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+// TODO: remove in ivy compilation
+export const COMBOBOX_OPTION: any = TUI_SELECT_OPTION;
+
 @Component({
     selector: 'tui-combo-box',
     templateUrl: './combo-box.template.html',
@@ -62,7 +65,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
         },
         {
             provide: TUI_OPTION_CONTENT,
-            useValue: TUI_SELECT_OPTION,
+            useValue: COMBOBOX_OPTION,
         },
         FIXED_DROPDOWN_CONTROLLER_PROVIDER,
     ],
@@ -164,6 +167,7 @@ export class TuiComboBoxComponent<T>
     }
 
     handleOption(item: T) {
+        this.setNativeValue(this.stringify(item));
         this.focusInput();
         this.close();
         this.updateSearch(null);
@@ -245,6 +249,12 @@ export class TuiComboBoxComponent<T>
 
         this.search = search;
         this.searchChange.emit(search);
+    }
+
+    private setNativeValue(value: string) {
+        if (this.nativeFocusableElement) {
+            this.nativeFocusableElement.value = value;
+        }
     }
 
     private focusInput(preventScroll: boolean = false) {

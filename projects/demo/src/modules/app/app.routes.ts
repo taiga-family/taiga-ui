@@ -11,6 +11,7 @@ export const ROUTES = [
             title: 'A powerful set of open source components for Angular',
         },
     },
+    // Documentation
     {
         path: 'getting-started',
         component: GettingStartedComponent,
@@ -34,6 +35,42 @@ export const ROUTES = [
             title: `Changelog`,
         },
     },
+    {
+        path: 'tui-doc',
+        loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
+        data: {
+            title: `Documentation engine`,
+        },
+    },
+    {
+        path: 'related',
+        loadChildren: () =>
+            import(`../info/related/related.module`).then(m => m.RelatedModule),
+        data: {
+            title: `Friendly libraries`,
+        },
+    },
+    {
+        path: 'testing/disable-animation',
+        loadChildren: () =>
+            import(`../info/testing/disable-animation/disable-animation.module`).then(
+                m => m.DisableAnimationModule,
+            ),
+        data: {
+            title: `Disable animation`,
+        },
+    },
+    {
+        path: `testing/screenshot-bot`,
+        loadChildren: () =>
+            import(
+                `../info/testing/screenshot-github-bot/screenshot-github-bot.module`
+            ).then(m => m.ScreenshotGithubBotModule),
+        data: {
+            title: `Our screenshot bot`,
+        },
+    },
+    // Customization
     {
         path: 'i18n',
         loadChildren: () =>
@@ -78,24 +115,9 @@ export const ROUTES = [
             title: `Icon set`,
         },
     },
-    {
-        path: 'tui-doc',
-        loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
-        data: {
-            title: `Documentation engine`,
-        },
-    },
-    {
-        path: 'related',
-        loadChildren: () =>
-            import(`../info/related/related.module`).then(m => m.RelatedModule),
-        data: {
-            title: `Friendly libraries`,
-        },
-    },
     // COMPONENTS
     {
-        path: 'tui-accordion',
+        path: 'components/accordion',
         loadChildren: () =>
             import(`../components/accordion/accordion.module`).then(
                 m => m.ExampleTuiAccordionModule,
@@ -105,7 +127,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-action',
+        path: 'components/action',
         loadChildren: () =>
             import(`../components/action/action.module`).then(
                 m => m.ExampleTuiActionModule,
@@ -115,7 +137,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-avatar',
+        path: 'components/avatar',
         loadChildren: () =>
             import(`../components/avatar/avatar.module`).then(
                 m => m.ExampleTuiAvatarModule,
@@ -125,7 +147,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-badge',
+        path: 'components/badge',
         loadChildren: () =>
             import(`../components/badge/badge.module`).then(m => m.ExampleTuiBadgeModule),
         data: {
@@ -133,7 +155,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-badged-content',
+        path: 'components/badged-content',
         loadChildren: () =>
             import(`../components/badged-content/badged-content.module`).then(
                 m => m.ExampleTuiBadgedContentModule,
@@ -143,7 +165,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-breadcrumbs',
+        path: 'navigation/breadcrumbs',
         loadChildren: () =>
             import(`../components/breadcrumbs/breadcrumbs.module`).then(
                 m => m.ExampleTuiBreadcrumbsModule,
@@ -153,7 +175,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-button',
+        path: 'components/button',
         loadChildren: () =>
             import(`../components/button/button.module`).then(
                 m => m.ExampleTuiButtonModule,
@@ -163,7 +185,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-calendar',
+        path: 'components/calendar',
         loadChildren: () =>
             import(`../components/calendar/calendar.module`).then(
                 m => m.ExampleTuiCalendarModule,
@@ -173,7 +195,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-card',
+        path: 'components/card',
         loadChildren: () =>
             import(`../components/card/card.module`).then(m => m.ExampleTuiCardModule),
         data: {
@@ -181,7 +203,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-checkbox',
+        path: 'components/checkbox',
         loadChildren: () =>
             import(`../components/checkbox/checkbox.module`).then(
                 m => m.ExampleTuiCheckboxModule,
@@ -191,7 +213,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-checkbox-block',
+        path: 'components/checkbox-block',
         loadChildren: () =>
             import(`../components/checkbox-block/checkbox-block.module`).then(
                 m => m.ExampleTuiCheckboxBlockModule,
@@ -201,7 +223,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-checkbox-labeled',
+        path: 'components/checkbox-labeled',
         loadChildren: () =>
             import(`../components/checkbox-labeled/checkbox-labeled.module`).then(
                 m => m.ExampleTuiCheckboxLabeledModule,
@@ -211,7 +233,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-color-picker',
+        path: 'components/color-picker',
         loadChildren: () =>
             import(`../components/color-picker/color-picker.module`).then(
                 m => m.ExampleTuiColorPickerModule,
@@ -221,7 +243,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-primitive-checkbox',
+        path: 'components/primitive-checkbox',
         loadChildren: () =>
             import(`../components/primitive-checkbox/primitive-checkbox.module`).then(
                 m => m.ExampleTuiPrimitiveCheckboxModule,
@@ -231,7 +253,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-combo-box',
+        path: 'components/combo-box',
         loadChildren: () =>
             import(`../components/combo-box/combo-box.module`).then(
                 m => m.ExampleTuiComboBoxModule,
@@ -241,7 +263,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-data-list',
+        path: 'components/data-list',
         loadChildren: () =>
             import(`../components/data-list/data-list.module`).then(
                 m => m.ExampleTuiDataListModule,
@@ -251,7 +273,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-error',
+        path: 'components/error',
         loadChildren: () =>
             import(`../components/error/error.module`).then(m => m.ExampleTuiErrorModule),
         data: {
@@ -259,7 +281,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-expand',
+        path: 'components/expand',
         loadChildren: () =>
             import(`../components/expand/expand.module`).then(
                 m => m.ExampleTuiExpandModule,
@@ -269,7 +291,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-field-error',
+        path: 'components/field-error',
         loadChildren: () =>
             import(`../components/field-error/field-error.module`).then(
                 m => m.ExampleTuiFieldErrorModule,
@@ -279,7 +301,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-group',
+        path: 'components/group',
         loadChildren: () =>
             import(`../components/group/group.module`).then(m => m.ExampleTuiGroupModule),
         data: {
@@ -288,7 +310,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-hosted-dropdown',
+        path: 'components/hosted-dropdown',
         loadChildren: () =>
             import(`../components/hosted-dropdown/hosted-dropdown.module`).then(
                 m => m.ExampleTuiHostedDropdownModule,
@@ -298,7 +320,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-inline',
+        path: 'components/input-inline',
         loadChildren: () =>
             import(`../components/input-inline/input-inline.module`).then(
                 m => m.ExampleTuiInputInlineModule,
@@ -308,7 +330,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input',
+        path: 'components/input',
         loadChildren: () =>
             import(`../components/input/input.module`).then(m => m.ExampleTuiInputModule),
         data: {
@@ -316,7 +338,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-date',
+        path: 'components/input-date',
         loadChildren: () =>
             import(`../components/input-date/input-date.module`).then(
                 m => m.ExampleTuiInputDateModule,
@@ -326,7 +348,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-card',
+        path: 'components/input-card',
         loadChildren: () =>
             import(`../components/input-card/input-card.module`).then(
                 m => m.ExampleTuiInputCardModule,
@@ -336,7 +358,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-card-grouped',
+        path: 'components/input-card-grouped',
         loadChildren: () =>
             import(`../components/input-card-grouped/input-card-grouped.module`).then(
                 m => m.ExampleTuiInputCardGroupedModule,
@@ -346,7 +368,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-copy',
+        path: 'components/input-copy',
         loadChildren: () =>
             import(`../components/input-copy/input-copy.module`).then(
                 m => m.ExampleTuiInputCopyModule,
@@ -356,7 +378,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-count',
+        path: 'components/input-count',
         loadChildren: () =>
             import(`../components/input-count/input-count.module`).then(
                 m => m.ExampleTuiInputCountModule,
@@ -366,7 +388,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-date-time',
+        path: 'components/input-date-time',
         loadChildren: () =>
             import(`../components/input-date-time/input-date-time.module`).then(
                 m => m.ExampleTuiInputDateTimeModule,
@@ -376,7 +398,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-file',
+        path: 'components/input-file',
         loadChildren: () =>
             import(`../components/input-file/input-file.module`).then(
                 m => m.ExampleTuiInputFileModule,
@@ -386,7 +408,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-month',
+        path: 'components/input-month',
         loadChildren: () =>
             import(`../components/input-month/input-month.module`).then(
                 m => m.ExampleInputMonthModule,
@@ -396,7 +418,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-month-range',
+        path: 'components/input-month-range',
         loadChildren: () =>
             import(`../components/input-month-range/input-month-range.module`).then(
                 m => m.ExampleTuiInputMonthRangeModule,
@@ -406,7 +428,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-number',
+        path: 'components/input-number',
         loadChildren: () =>
             import(`../components/input-number/input-number.module`).then(
                 m => m.ExampleTuiInputNumberModule,
@@ -416,7 +438,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-password',
+        path: 'components/input-password',
         loadChildren: () =>
             import(`../components/input-password/input-password.module`).then(
                 m => m.ExampleTuiInputPasswordModule,
@@ -426,7 +448,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-phone',
+        path: 'components/input-phone',
         loadChildren: () =>
             import(`../components/input-phone/input-phone.module`).then(
                 m => m.ExampleTuiInputPhoneModule,
@@ -436,7 +458,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-range',
+        path: 'components/input-range',
         loadChildren: () =>
             import(`../components/input-range/input-range.module`).then(
                 m => m.ExampleTuiInputRangeModule,
@@ -446,7 +468,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-date-range',
+        path: 'components/input-date-range',
         loadChildren: () =>
             import(`../components/input-date-range/input-date-range.module`).then(
                 m => m.ExampleTuiInputDateRangeModule,
@@ -456,7 +478,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-slider',
+        path: 'components/input-slider',
         loadChildren: () =>
             import(`../components/input-slider/input-slider.module`).then(
                 m => m.ExampleTuiInputSliderModule,
@@ -466,7 +488,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-tag',
+        path: 'components/input-tag',
         loadChildren: () =>
             import(`../components/input-tag/input-tag.module`).then(
                 m => m.ExampleTuiInputTagModule,
@@ -476,7 +498,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-time',
+        path: 'components/input-time',
         loadChildren: () =>
             import(`../components/input-time/input-time.module`).then(
                 m => m.ExampleTuiInputTimeModule,
@@ -486,7 +508,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-input-phone-international',
+        path: 'components/input-phone-international',
         loadChildren: () =>
             import(
                 `../components/input-phone-international/input-phone-international.module`
@@ -496,7 +518,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-island',
+        path: 'components/island',
         loadChildren: () =>
             import(`../components/island/island.module`).then(
                 m => m.ExampleTuiIslandModule,
@@ -506,7 +528,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-label',
+        path: 'components/label',
         loadChildren: () =>
             import(`../components/label/label.module`).then(m => m.ExampleTuiLabelModule),
         data: {
@@ -514,7 +536,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-line-clamp',
+        path: 'components/line-clamp',
         loadChildren: () =>
             import(`../components/line-clamp/line-clamp.module`).then(
                 m => m.ExampleTuiLineClampModule,
@@ -524,7 +546,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-link',
+        path: 'components/link',
         loadChildren: () =>
             import(`../components/link/link.module`).then(m => m.ExampleTuiLinkModule),
         data: {
@@ -532,7 +554,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-loader',
+        path: 'components/loader',
         loadChildren: () =>
             import(`../components/loader/loader.module`).then(
                 m => m.ExampleTuiLoaderModule,
@@ -542,7 +564,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-marker-icon',
+        path: 'components/marker-icon',
         loadChildren: () =>
             import(`../components/marker-icon/marker-icon.module`).then(
                 m => m.ExampleTuiMarkerIconModule,
@@ -563,7 +585,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-notification',
+        path: 'components/notification',
         loadChildren: () =>
             import(`../components/notification/notification.module`).then(
                 m => m.ExampleTuiNotificationModule,
@@ -573,7 +595,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-mobile-dialog',
+        path: 'components/mobile-dialog',
         loadChildren: () =>
             import(`../components/mobile-dialog/mobile-dialog.module`).then(
                 m => m.ExampleTuiMobileDialogModule,
@@ -583,7 +605,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-mobile-calendar',
+        path: 'components/mobile-calendar',
         loadChildren: () =>
             import(`../components/mobile-calendar/mobile-calendar.module`).then(
                 m => m.ExampleTuiMobileCalendarModule,
@@ -593,7 +615,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-pull-to-refresh',
+        path: 'components/pull-to-refresh',
         loadChildren: () =>
             import(`../components/pull-to-refresh/pull-to-refresh.module`).then(
                 m => m.ExampleTuiPullToRefreshModule,
@@ -603,7 +625,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-money',
+        path: 'components/money',
         loadChildren: () =>
             import(`../components/money/money.module`).then(m => m.ExampleTuiMoneyModule),
         data: {
@@ -611,7 +633,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-calendar-month',
+        path: 'components/calendar-month',
         loadChildren: () =>
             import(`../components/calendar-month/calendar-month.module`).then(
                 m => m.ExampleTuiCalendarMonthModule,
@@ -621,7 +643,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-multi-select',
+        path: 'components/multi-select',
         loadChildren: () =>
             import(`../components/multi-select/multi-select.module`).then(
                 m => m.ExampleTuiMultiSelectModule,
@@ -631,7 +653,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-pagination',
+        path: 'navigation/pagination',
         loadChildren: () =>
             import(`../components/pagination/pagination.module`).then(
                 m => m.ExampleTuiPaginationModule,
@@ -641,7 +663,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-radio',
+        path: 'components/radio',
         loadChildren: () =>
             import(`../components/radio/radio.module`).then(m => m.ExampleTuiRadioModule),
         data: {
@@ -649,7 +671,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-radio-block',
+        path: 'components/radio-block',
         loadChildren: () =>
             import(`../components/radio-block/radio-block.module`).then(
                 m => m.ExampleTuiRadioBlockModule,
@@ -659,7 +681,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-radio-labeled',
+        path: 'components/radio-labeled',
         loadChildren: () =>
             import(`../components/radio-labeled/radio-labeled.module`).then(
                 m => m.ExampleTuiRadioLabeledModule,
@@ -669,7 +691,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-radio-list',
+        path: 'components/radio-list',
         loadChildren: () =>
             import(`../components/radio-list/radio-list.module`).then(
                 m => m.ExampleTuiRadioListModule,
@@ -679,7 +701,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-range',
+        path: 'components/range',
         loadChildren: () =>
             import(`../components/range/range.module`).then(m => m.ExampleTuiRangeModule),
         data: {
@@ -687,7 +709,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-calendar-range',
+        path: 'components/calendar-range',
         loadChildren: () =>
             import(`../components/calendar-range/calendar-range.module`).then(
                 m => m.ExampleTuiCalendarRangeModule,
@@ -697,7 +719,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-select',
+        path: 'components/select',
         loadChildren: () =>
             import(`../components/select/select.module`).then(
                 m => m.ExampleTuiSelectModule,
@@ -707,7 +729,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-scrollbar',
+        path: 'components/scrollbar',
         loadChildren: () =>
             import(`../components/scrollbar/scrollbar.module`).then(
                 m => m.ExampleTuiScrollbarModule,
@@ -717,7 +739,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-slider',
+        path: 'components/slider',
         loadChildren: () =>
             import(`../components/slider/slider.module`).then(
                 m => m.ExampleTuiSliderModule,
@@ -727,7 +749,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-stepper',
+        path: 'navigation/stepper',
         loadChildren: () =>
             import(`../components/stepper/stepper.module`).then(
                 m => m.ExampleTuiStepperModule,
@@ -737,7 +759,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-svg',
+        path: 'components/svg',
         loadChildren: () =>
             import(`../components/svg/svg.module`).then(m => m.ExampleTuiSvgModule),
         data: {
@@ -745,7 +767,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-tabs',
+        path: 'navigation/tabs',
         loadChildren: () =>
             import(`../components/tabs/tabs.module`).then(m => m.ExampleTuiTabsModule),
         data: {
@@ -753,7 +775,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-tag',
+        path: 'components/tag',
         loadChildren: () =>
             import(`../components/tag/tag.module`).then(m => m.ExampleTuiTagModule),
         data: {
@@ -761,7 +783,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-theme-night',
+        path: 'components/theme-night',
         loadChildren: () =>
             import(`../components/theme-night/theme-night.module`).then(
                 m => m.ExampleTuiThemeNightModule,
@@ -771,7 +793,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-text-area',
+        path: 'components/text-area',
         loadChildren: () =>
             import(`../components/text-area/text-area.module`).then(
                 m => m.ExampleTuiTextAreaModule,
@@ -781,7 +803,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-primitive-textfield',
+        path: 'components/primitive-textfield',
         loadChildren: () =>
             import(`../components/primitive-textfield/primitive-textfield.module`).then(
                 m => m.ExampleTuiPrimitiveTextfieldModule,
@@ -791,7 +813,37 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-theme-switcher',
+        path: 'components/progress-bar',
+        loadChildren: () =>
+            import(`../components/progress-bar/progress-bar.module`).then(
+                m => m.ExampleTuiProgressBarModule,
+            ),
+        data: {
+            title: 'ProgressBar',
+        },
+    },
+    {
+        path: 'components/progress-circle',
+        loadChildren: () =>
+            import(`../components/progress-circle/progress-circle.module`).then(
+                m => m.ExampleTuiProgressCircleModule,
+            ),
+        data: {
+            title: 'ProgressCircle',
+        },
+    },
+    {
+        path: 'components/progress-segmented',
+        loadChildren: () =>
+            import(`../components/progress-segmented/progress-segmented.module`).then(
+                m => m.ExampleTuiProgressSegmentedModule,
+            ),
+        data: {
+            title: 'ProgressSegmented',
+        },
+    },
+    {
+        path: 'components/theme-switcher',
         loadChildren: () =>
             import(`../components/theme-switcher/theme-switcher.module`).then(
                 m => m.ExampleTuiThemeSwitcherModule,
@@ -801,7 +853,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-toggle',
+        path: 'components/toggle',
         loadChildren: () =>
             import(`../components/toggle/toggle.module`).then(
                 m => m.ExampleTuiToggleModule,
@@ -811,7 +863,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-tooltip',
+        path: 'components/tooltip',
         loadChildren: () =>
             import(`../components/tooltip/tooltip.module`).then(
                 m => m.ExampleTuiTooltipModule,
@@ -821,7 +873,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-toolbar',
+        path: 'components/toolbar',
         loadChildren: () =>
             import(`../components/toolbar/toolbar.module`).then(
                 m => m.ExampleTuiToolbarModule,
@@ -831,7 +883,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-editor',
+        path: 'components/editor',
         loadChildren: () =>
             import(`../components/editor/editor.module`).then(
                 m => m.ExampleTuiEditorModule,
@@ -841,7 +893,17 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-filter',
+        path: 'components/editor-new',
+        loadChildren: () =>
+            import(`../components/editor-new/editor-new.module`).then(
+                m => m.ExampleTuiEditorNewModule,
+            ),
+        data: {
+            title: 'Editor[new]',
+        },
+    },
+    {
+        path: 'components/filter',
         loadChildren: () =>
             import(`../components/filter/filter.module`).then(
                 m => m.ExampleTuiFilterModule,
@@ -852,7 +914,7 @@ export const ROUTES = [
     },
     // CHARTS
     {
-        path: 'tui-axes',
+        path: 'components/axes',
         loadChildren: () =>
             import(`../charts/axes/axes.module`).then(m => m.ExampleTuiAxesModule),
         data: {
@@ -860,7 +922,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-bar',
+        path: 'components/bar',
         loadChildren: () =>
             import(`../charts/bar/bar.module`).then(m => m.ExampleTuiBarModule),
         data: {
@@ -868,7 +930,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-bar-chart',
+        path: 'components/bar-chart',
         loadChildren: () =>
             import(`../charts/bar-chart/bar-chart.module`).then(
                 m => m.ExampleTuiBarChartModule,
@@ -878,7 +940,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-bar-set',
+        path: 'components/bar-set',
         loadChildren: () =>
             import(`../charts/bar-set/bar-set.module`).then(
                 m => m.ExampleTuiBarSetModule,
@@ -888,7 +950,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-legend-item',
+        path: 'components/legend-item',
         loadChildren: () =>
             import(`../charts/legend-item/legend-item.module`).then(
                 m => m.ExampleTuiLegendItemModule,
@@ -898,7 +960,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-line-chart',
+        path: 'components/line-chart',
         loadChildren: () =>
             import(`../charts/line-chart/line-chart.module`).then(
                 m => m.ExampleTuiLineChartModule,
@@ -908,7 +970,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-line-days-chart',
+        path: 'components/line-days-chart',
         loadChildren: () =>
             import(`../charts/line-days-chart/line-days-chart.module`).then(
                 m => m.ExampleTuiLineDaysChartModule,
@@ -918,7 +980,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-pie-chart',
+        path: 'components/pie-chart',
         loadChildren: () =>
             import(`../charts/pie-chart/pie-chart.module`).then(
                 m => m.ExampleTuiPieChartModule,
@@ -928,7 +990,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-ring-chart',
+        path: 'components/ring-chart',
         loadChildren: () =>
             import(`../charts/ring-chart/ring-chart.module`).then(
                 m => m.ExampleTuiRingChartModule,
@@ -1020,7 +1082,7 @@ export const ROUTES = [
     },
     // DIRECTIVES
     {
-        path: 'tui-active-zone',
+        path: 'directives/active-zone',
         loadChildren: () =>
             import(`../directives/active-zone/active-zone.module`).then(
                 m => m.ExampleTuiActiveZoneModule,
@@ -1030,7 +1092,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-dropdown',
+        path: 'directives/dropdown',
         loadChildren: () =>
             import(`../directives/dropdown/dropdown.module`).then(
                 m => m.ExampleTuiDropdownModule,
@@ -1040,7 +1102,17 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-dropdown-selection',
+        path: 'directives/dropdown-context',
+        loadChildren: () =>
+            import('../directives/dropdown-context/dropdown-context.module').then(
+                m => m.ExampleTuiDropdownContextModule,
+            ),
+        data: {
+            title: 'DropdownContext',
+        },
+    },
+    {
+        path: 'directives/dropdown-selection',
         loadChildren: () =>
             import(`../directives/dropdown-selection/dropdown-selection.module`).then(
                 m => m.ExampleTuiDropdownSelectionModule,
@@ -1050,7 +1122,17 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-elastic-sticky',
+        path: 'directives/described-by',
+        loadChildren: () =>
+            import(`../directives/described-by/described-by.module`).then(
+                m => m.ExampleTuiDescribedByModule,
+            ),
+        data: {
+            title: 'DescribedBy',
+        },
+    },
+    {
+        path: 'directives/elastic-sticky',
         loadChildren: () =>
             import(`../directives/elastic-sticky/elastic-sticky.module`).then(
                 m => m.ExampleTuiElasticStickyModule,
@@ -1060,7 +1142,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-element',
+        path: 'directives/element',
         loadChildren: () =>
             import(`../directives/element/element.module`).then(
                 m => m.ExampleTuiElementModule,
@@ -1070,7 +1152,15 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-highlight',
+        path: 'directives/for',
+        loadChildren: () =>
+            import(`../directives/for/for.module`).then(m => m.ExampleTuiForModule),
+        data: {
+            title: 'For',
+        },
+    },
+    {
+        path: 'directives/highlight',
         loadChildren: () =>
             import(`../directives/highlight/highlight.module`).then(
                 m => m.ExampleTuiHighlightModule,
@@ -1080,7 +1170,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-hint',
+        path: 'directives/hint',
         loadChildren: () =>
             import(`../directives/hint/hint.module`).then(m => m.ExampleTuiHintModule),
         data: {
@@ -1088,7 +1178,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-lazy-loading',
+        path: 'directives/lazy-loading',
         loadChildren: () =>
             import(`../directives/lazy-loading/lazy-loading.module`).then(
                 m => m.ExampleTuiLazyLoadingModule,
@@ -1098,7 +1188,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-manual-hint',
+        path: 'directives/manual-hint',
         loadChildren: () =>
             import(`../directives/manual-hint/manual-hint.module`).then(
                 m => m.ExampleTuiManualHintModule,
@@ -1108,7 +1198,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-pointer-hint',
+        path: 'directives/pointer-hint',
         loadChildren: () =>
             import(`../directives/pointer-hint/pointer-hint.module`).then(
                 m => m.ExampleTuiPointerHintModule,
@@ -1118,7 +1208,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-let',
+        path: 'directives/let',
         loadChildren: () =>
             import(`../directives/let/let.module`).then(m => m.ExampleTuiLetModule),
         data: {
@@ -1126,7 +1216,17 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-present',
+        path: 'directives/overscroll',
+        loadChildren: () =>
+            import(`../directives/overscroll/overscroll.module`).then(
+                m => m.ExampleTuiOverscrollModule,
+            ),
+        data: {
+            title: 'Overscroll',
+        },
+    },
+    {
+        path: 'directives/present',
         loadChildren: () =>
             import(`../directives/present/present.module`).then(
                 m => m.ExampleTuiPresentModule,
@@ -1136,7 +1236,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-resizable-column',
+        path: 'components/resizable-column',
         loadChildren: () =>
             import(`../tables/resizable-column/resizable-column.module`).then(
                 m => m.ExampleTuiResizableColumnModule,
@@ -1146,7 +1246,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-reorder',
+        path: 'components/reorder',
         loadChildren: () =>
             import(`../tables/reorder/reorder.module`).then(
                 m => m.ExampleTuiReorderModule,
@@ -1156,17 +1256,15 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-table',
+        path: 'components/table',
         loadChildren: () =>
-            import(`../tables/table/table.module`).then(
-                m => m.ExampleTuiTableModule,
-            ),
+            import(`../tables/table/table.module`).then(m => m.ExampleTuiTableModule),
         data: {
             title: 'Table',
         },
     },
     {
-        path: 'tui-table-pagination',
+        path: 'components/table-pagination',
         loadChildren: () =>
             import(`../tables/table-pagination/table-pagination.module`).then(
                 m => m.ExampleTuiTablePaginationModule,
@@ -1176,7 +1274,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-ripple',
+        path: 'directives/ripple',
         loadChildren: () =>
             import(`../directives/ripple/ripple.module`).then(
                 m => m.ExampleTuiRippleModule,
@@ -1186,7 +1284,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-sidebar',
+        path: 'directives/sidebar',
         loadChildren: () =>
             import(`../directives/sidebar/sidebar.module`).then(
                 m => m.ExampleTuiSidebarModule,
@@ -1196,7 +1294,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-touchable',
+        path: 'directives/touchable',
         loadChildren: () =>
             import(`../directives/touchable/touchable.module`).then(
                 m => m.ExampleTuiTouchableModule,
@@ -1206,7 +1304,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-validator',
+        path: 'directives/validator',
         loadChildren: () =>
             import(`../directives/validator/validator.module`).then(
                 m => m.ExampleTuiValidatorModule,
@@ -1216,7 +1314,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-media',
+        path: 'directives/media',
         loadChildren: () =>
             import(`../directives/media/media.module`).then(m => m.ExampleTuiMediaModule),
         data: {
@@ -1224,7 +1322,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-mode',
+        path: 'directives/mode',
         loadChildren: () =>
             import(`../directives/mode/mode.module`).then(m => m.ExampleTuiModeModule),
         data: {
@@ -1232,7 +1330,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-auto-focus',
+        path: 'directives/auto-focus',
         loadChildren: () =>
             import(`../directives/auto-focus/auto-focus.module`).then(
                 m => m.ExampleTuiAutoFocusModule,
@@ -1241,17 +1339,19 @@ export const ROUTES = [
             title: 'AutoFocus',
         },
     },
-    {
-        path: 'tui-color',
-        loadChildren: () =>
-            import(`../directives/color/color.module`).then(m => m.ExampleTuiColorModule),
-        data: {
-            title: 'Color',
-        },
-    },
     // PIPES
     {
-        path: 'filter',
+        path: 'pipes/currency',
+        loadChildren: () =>
+            import(`../pipes/currency/currency.module`).then(
+                m => m.ExampleTuiCurrencyModule,
+            ),
+        data: {
+            title: 'Currency',
+        },
+    },
+    {
+        path: 'pipes/filter',
         loadChildren: () =>
             import(`../pipes/filter/filter.module`).then(m => m.ExampleTuiFilterModule),
         data: {
@@ -1259,7 +1359,17 @@ export const ROUTES = [
         },
     },
     {
-        path: 'format-number',
+        path: 'pipes/filter-by-input',
+        loadChildren: () =>
+            import(`../pipes/filter-by-input/filter-by-input.module`).then(
+                m => m.ExampleTuiFilterByInputModule,
+            ),
+        data: {
+            title: 'FilterByInput',
+        },
+    },
+    {
+        path: 'pipes/format-number',
         loadChildren: () =>
             import(`../pipes/format-number/format-number.module`).then(
                 m => m.ExampleTuiFormatNumberModule,
@@ -1269,7 +1379,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'format-phone',
+        path: 'pipes/format-phone',
         loadChildren: () =>
             import(`../pipes/format-phone/format-phone.module`).then(
                 m => m.ExampleTuiFormatPhoneModule,
@@ -1279,7 +1389,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'mapper',
+        path: 'pipes/mapper',
         loadChildren: () =>
             import(`../pipes/mapper/mapper.module`).then(m => m.ExampleTuiMapperModule),
         data: {
@@ -1288,7 +1398,7 @@ export const ROUTES = [
     },
     // SERVICES
     {
-        path: 'tui-notifications-service',
+        path: 'services/notifications-service',
         loadChildren: () =>
             import(`../services/notifications/notifications.module`).then(
                 m => m.ExampleTuiNotificationsModule,
@@ -1298,7 +1408,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-dialog-service',
+        path: 'services/dialog-service',
         loadChildren: () =>
             import(`../services/dialogs/dialogs.module`).then(
                 m => m.ExampleTuiDialogsModule,
@@ -1308,7 +1418,17 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-scroll-service',
+        path: 'services/destroy-service',
+        loadChildren: () =>
+            import(`../services/destroy/destroy.module`).then(
+                m => m.ExampleTuiDestroyModule,
+            ),
+        data: {
+            title: 'DestroyService',
+        },
+    },
+    {
+        path: 'services/scroll-service',
         loadChildren: () =>
             import(`../services/scroll/scroll.module`).then(
                 m => m.ExampleTuiScrollModule,
@@ -1318,7 +1438,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-svg-service',
+        path: 'services/svg-service',
         loadChildren: () =>
             import(`../services/svg/svg.module`).then(m => m.ExampleTuiSvgModule),
         data: {
@@ -1326,7 +1446,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-table-bars-service',
+        path: 'services/table-bars-service',
         loadChildren: () =>
             import(`../services/table-bar/table-bar.module`).then(
                 m => m.ExampleTuiTableBarModule,
@@ -1336,7 +1456,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-dropdown-controller',
+        path: 'directives/dropdown-controller',
         loadChildren: () =>
             import(`../directives/dropdown-controller/dropdown-controller.module`).then(
                 m => m.ExampleTuiDropdownControllerModule,
@@ -1346,7 +1466,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-hint-controller',
+        path: 'directives/hint-controller',
         loadChildren: () =>
             import(`../directives/hint-controller/hint-controller.module`).then(
                 m => m.ExampleTuiHintControllerModule,
@@ -1356,7 +1476,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-textfield-controller',
+        path: 'directives/textfield-controller',
         loadChildren: () =>
             import(`../directives/textfield-controller/textfield-controller.module`).then(
                 m => m.ExampleTuiTextfieldControllerModule,
@@ -1367,7 +1487,7 @@ export const ROUTES = [
     },
     // DECORATORS
     {
-        path: 'tui-default-prop',
+        path: 'decorators/default-prop',
         loadChildren: () =>
             import(`../decorators/default-prop/default-prop.module`).then(
                 m => m.ExampleTuiDefaultPropModule,
@@ -1377,7 +1497,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-pure',
+        path: 'decorators/pure',
         loadChildren: () =>
             import(`../decorators/pure/pure.module`).then(m => m.ExampleTuiPureModule),
         data: {
@@ -1385,7 +1505,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'tui-required-setter',
+        path: 'decorators/required-setter',
         loadChildren: () =>
             import(`../decorators/required-setter/required-setter.module`).then(
                 m => m.ExampleTuiRequiredSetterModule,
@@ -1394,9 +1514,10 @@ export const ROUTES = [
             title: 'RequiredSetter',
         },
     },
+
     // UTILS
     {
-        path: 'math',
+        path: 'utils/math',
         loadChildren: () =>
             import(`../utils/math/math.module`).then(m => m.ExampleMathModule),
         data: {
@@ -1404,7 +1525,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'format',
+        path: 'utils/format',
         loadChildren: () =>
             import(`../utils/format/format.module`).then(m => m.ExampleFormatModule),
         data: {
@@ -1412,7 +1533,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'dom',
+        path: 'utils/dom',
         loadChildren: () =>
             import(`../utils/dom/dom.module`).then(m => m.ExampleDomModule),
         data: {
@@ -1420,7 +1541,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'browser',
+        path: 'utils/browser',
         loadChildren: () =>
             import(`../utils/browser/browser.module`).then(m => m.ExampleBrowserModule),
         data: {
@@ -1428,13 +1549,21 @@ export const ROUTES = [
         },
     },
     {
-        path: 'miscellaneous',
+        path: 'utils/miscellaneous',
         loadChildren: () =>
             import(`../utils/miscellaneous/miscellaneous.module`).then(
                 m => m.ExampleMiscellaneousModule,
             ),
         data: {
             title: 'Miscellaneous',
+        },
+    },
+    {
+        path: 'utils/tokens',
+        loadChildren: () =>
+            import(`../utils/tokens/tokens.module`).then(m => m.ExampleTokensModule),
+        data: {
+            title: 'Tokens',
         },
     },
     {path: '**', redirectTo: ''},

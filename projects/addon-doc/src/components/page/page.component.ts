@@ -28,6 +28,12 @@ export class TuiDocPageComponent {
     @Input()
     package = '';
 
+    @Input()
+    type = '';
+
+    @Input()
+    path = '';
+
     activeItemIndex = NaN;
 
     @ContentChildren(TuiDocPageTabConnectorDirective)

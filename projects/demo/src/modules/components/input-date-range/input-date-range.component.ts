@@ -28,8 +28,8 @@ import {
 import {tuiCreateDefaultDayRangePeriods, TuiDayRangePeriod} from '@taiga-ui/kit';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];
 const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
@@ -45,7 +45,7 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
         },
     ],
 })
-export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
     readonly exampleDeclareForm = exampleDeclareForm;
@@ -60,26 +60,29 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiReactiv
         HTML: example2Html,
     };
 
-    minVariants = [TUI_FIRST_DAY, new TuiDay(2021, 2, 5), new TuiDay(1900, 0, 1)];
+    readonly dayVariants = [
+        TUI_FIRST_DAY,
+        new TuiDay(2021, 2, 5),
+        new TuiDay(1900, 0, 1),
+        new TuiDay(2300, 0, 1),
+        TUI_LAST_DAY,
+    ];
 
-    min: TuiDay = this.minVariants[0];
+    min: TuiDay = this.dayVariants[0];
 
     readonly minLengthVariants: ReadonlyArray<TuiDayLike> = [{day: 3}, {day: 15}];
 
     minLength: TuiDayLike | null = null;
 
-    maxLengthVariants: ReadonlyArray<TuiDayLike> = [{day: 5}, {month: 1}, {year: 1}];
+    readonly maxLengthVariants: ReadonlyArray<TuiDayLike> = [
+        {day: 5},
+        {month: 1},
+        {year: 1},
+    ];
 
     maxLength: TuiDayLike | null = null;
 
-    maxVariants = [
-        TUI_LAST_DAY,
-        new TuiDay(2018, 9, 30),
-        new TuiDay(2020, 2, 5),
-        new TuiDay(2300, 0, 1),
-    ];
-
-    max = this.maxVariants[0];
+    max = this.dayVariants[this.dayVariants.length - 1];
 
     readonly markerHandlerVariants: ReadonlyArray<TuiMarkerHandler> = [
         TUI_DEFAULT_MARKER_HANDLER,

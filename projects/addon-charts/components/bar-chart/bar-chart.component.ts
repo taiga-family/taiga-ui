@@ -2,12 +2,14 @@ import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
 import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
 import {
+    sum,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiIdService,
+    TuiMapper,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiHintMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiHintModeT, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
@@ -51,9 +53,15 @@ export class TuiBarChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    hintMode: TuiHintMode | null = null;
+    hintMode: TuiHintModeT | null = null;
 
     private readonly autoIdString: string;
+
+    readonly percentMapper: TuiMapper<ReadonlyArray<number>, number> = (
+        set,
+        collapsed: boolean,
+        max: number,
+    ) => (100 * (collapsed ? sum(...set) : Math.max(...set))) / max;
 
     constructor(@Inject(TuiIdService) idService: TuiIdService) {
         this.autoIdString = idService.generate();
@@ -67,8 +75,8 @@ export class TuiBarChartComponent {
         return this.transpose(this.value);
     }
 
-    getPercent(set: readonly number[]): number {
-        return (100 * Math.max(...set)) / this.computedMax;
+    get computedMax(): number {
+        return this.max || this.getMax(this.value, this.collapsed);
     }
 
     getHint(hint: PolymorpheusContent): PolymorpheusContent {
@@ -86,10 +94,6 @@ export class TuiBarChartComponent {
         };
     }
 
-    private get computedMax(): number {
-        return this.max || this.getMax(this.value);
-    }
-
     @tuiPure
     private transpose(
         value: ReadonlyArray<readonly number[]>,
@@ -102,7 +106,13 @@ export class TuiBarChartComponent {
     }
 
     @tuiPure
-    private getMax(value: ReadonlyArray<readonly number[]>): number {
-        return value.reduce((max, value) => Math.max(...value, max), 0);
+    private getMax(values: ReadonlyArray<readonly number[]>, collapsed: boolean): number {
+        return collapsed
+            ? Math.max(
+                  ...values.reduce((result, next) =>
+                      result.map((value, index) => value + next[index]),
+                  ),
+              )
+            : values.reduce((max, value) => Math.max(...value, max), 0);
     }
 }

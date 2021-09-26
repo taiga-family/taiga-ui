@@ -9,18 +9,10 @@ import {
     ViewChild,
 } from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
-import {
-    px,
-    TUI_IS_MOBILE,
-    tuiDefaultProp,
-    TuiDestroyService,
-    tuiPure,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
+import {px, TUI_IS_MOBILE, TuiDestroyService, tuiPure, tuiZonefree} from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
 import {TuiPointerHintDirective} from '@taiga-ui/core/directives/pointer-hint';
-import {TuiHintMode} from '@taiga-ui/core/enums';
-import {TuiDirection} from '@taiga-ui/core/types';
+import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {TuiHintsHostComponent} from '../hints-host.component';
@@ -49,11 +41,11 @@ const reverseDirectionsHorizontal: {[key in TuiDirection]: TuiDirection} = {
     right: 'left',
 };
 
-// TODO: consider abstracting UI and move to CDK
+// TODO: consider abstracting UI and move to CDK, split hint and overflow
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
 // @dynamic
 @Component({
-    selector: 'tui-hint-box',
+    selector: 'tui-hint-box[hint]',
     templateUrl: './hint-box.template.html',
     styleUrls: ['./hint-box.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -61,16 +53,7 @@ const reverseDirectionsHorizontal: {[key in TuiDirection]: TuiDirection} = {
 })
 export class TuiHintBoxComponent {
     @Input()
-    hint?: AbstractTuiHint;
-
-    @Input()
-    @tuiDefaultProp()
-    direction: TuiDirection = 'bottom-left';
-
-    @Input()
-    @HostBinding('attr.data-mode')
-    @tuiDefaultProp()
-    mode: TuiHintMode | null = null;
+    hint!: AbstractTuiHint;
 
     @ViewChild('arrow')
     private readonly arrow?: ElementRef<HTMLElement>;
@@ -96,12 +79,17 @@ export class TuiHintBoxComponent {
         return this.hint instanceof TuiPointerHintDirective;
     }
 
+    @HostBinding('attr.data-mode')
+    get mode(): TuiHintModeT | null {
+        return this.hint.mode;
+    }
+
     /**
      * Calculates wrapper position.
      * Styles are set directly to avoid visual shake of element
      */
     private calculatePosition() {
-        if (this.mode !== TuiHintMode.Overflow) {
+        if (this.mode !== 'overflow') {
             this.calculateCoordinates();
         } else {
             this.setOverflowStyles();
@@ -113,10 +101,6 @@ export class TuiHintBoxComponent {
             this.calculateMobileCoordinates();
 
             return;
-        }
-
-        if (!this.hint) {
-            throw new Error('Hint directive is missing');
         }
 
         const hostRect = this.hint.getElementClientRect();
@@ -136,7 +120,7 @@ export class TuiHintBoxComponent {
 
         let top = 0;
         let left = 0;
-        let {direction} = this;
+        let {direction} = this.hint;
 
         const horizontalTop =
             hostRect.top + hostRect.height / 2 - tooltipRect.height / 2 - portalRect.top;
@@ -212,10 +196,6 @@ export class TuiHintBoxComponent {
     }
 
     private calculateMobileCoordinates() {
-        if (!this.hint) {
-            throw new Error('Hint directive is missing');
-        }
-
         const hostRect = this.hint.getElementClientRect();
         const portalRect = this.hintsHost.clientRect;
         const tooltip = this.elementRef.nativeElement;
@@ -230,7 +210,7 @@ export class TuiHintBoxComponent {
             hostRect.bottom > 0 &&
             hostRect.bottom + 2 * SPACE + tooltipRect.height < this.windowRef.innerHeight;
         const direction =
-            (this.direction.includes('top') && verticalTopFit) || !verticalBottomFit
+            (this.hint.direction.includes('top') && verticalTopFit) || !verticalBottomFit
                 ? 'top'
                 : 'bottom';
         const attemptedLeft =
@@ -257,10 +237,6 @@ export class TuiHintBoxComponent {
     }
 
     private setOverflowStyles() {
-        if (!this.hint) {
-            throw new Error('Hint directive is missing');
-        }
-
         const hostRect = this.hint.getElementClientRect();
         const {style} = this.elementRef.nativeElement;
 

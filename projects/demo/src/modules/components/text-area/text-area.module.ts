@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiHintControllerModule,
@@ -11,17 +11,18 @@ import {
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiRadioListModule, TuiTextAreaModule} from '@taiga-ui/kit';
+import {TuiFieldErrorModule, TuiRadioListModule, TuiTextAreaModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiTextAreaExample1} from './examples/1';
 import {TuiTextAreaExample2} from './examples/2';
 import {TuiTextAreaExample3} from './examples/3';
+import {TuiTextAreaExample4} from './examples/4';
 import {ExampleTuiTextAreaComponent} from './text-area.component';
 
 @NgModule({
     imports: [
         TuiTextAreaModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         InheritedDocumentationModule,
         ReactiveFormsModule,
         FormsModule,
@@ -33,6 +34,7 @@ import {ExampleTuiTextAreaComponent} from './text-area.component';
         TuiLabelModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
+        TuiFieldErrorModule,
         RouterModule.forChild(generateRoutes(ExampleTuiTextAreaComponent)),
     ],
     declarations: [
@@ -40,6 +42,7 @@ import {ExampleTuiTextAreaComponent} from './text-area.component';
         TuiTextAreaExample1,
         TuiTextAreaExample2,
         TuiTextAreaExample3,
+        TuiTextAreaExample4,
     ],
     exports: [ExampleTuiTextAreaComponent],
 })

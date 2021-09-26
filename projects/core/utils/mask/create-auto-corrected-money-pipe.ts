@@ -14,6 +14,7 @@ import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 export function tuiCreateAutoCorrectedNumberPipe(
     decimalLimit: number = 0,
     decimalSymbol: TuiDecimalSymbol = ',',
+    thousandSymbol: string = CHAR_NO_BREAK_SPACE,
     nativeInput?: HTMLInputElement,
 ): TuiTextMaskPipeHandler {
     tuiAssert.assert(Number.isInteger(decimalLimit));
@@ -52,7 +53,11 @@ export function tuiCreateAutoCorrectedNumberPipe(
         ) {
             const realCaretPosition =
                 config.currentCaretPosition +
-                calculateCaretGap(config.previousConformedValue, conformedValue);
+                calculateCaretGap(
+                    config.previousConformedValue,
+                    conformedValue,
+                    thousandSymbol,
+                );
 
             setTimeout(() => {
                 nativeInput.setSelectionRange(realCaretPosition, realCaretPosition);
@@ -126,15 +131,19 @@ function calculateChangedTailIndex(previous: string, current: string): number {
     return current.length;
 }
 
-function calculateCaretGap(previousValue: string = '', current: string): number {
+function calculateCaretGap(
+    previousValue: string = '',
+    current: string,
+    thousandSymbol: string,
+): number {
     const pasteOrCutOperation = Math.abs(previousValue.length - current.length) > 2;
 
     if (pasteOrCutOperation) {
         return 0;
     }
 
-    const wereSpaces = previousValue.split(CHAR_NO_BREAK_SPACE).length;
-    const nowSpaces = current.split(CHAR_NO_BREAK_SPACE).length;
+    const wereSpaces = previousValue.split(thousandSymbol).length;
+    const nowSpaces = current.split(thousandSymbol).length;
 
     return nowSpaces - wereSpaces;
 }

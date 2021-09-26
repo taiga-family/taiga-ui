@@ -14,7 +14,7 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {Component} from '@angular/core';
-import {TuiDirection, TuiHintMode} from '@taiga-ui/core';
+import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -45,9 +45,9 @@ export class ExampleTuiTooltipComponent {
 
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
-    readonly modeVariants: ReadonlyArray<TuiHintMode> = [TuiHintMode.Error];
+    readonly modeVariants: readonly TuiHintModeT[] = ['error'];
 
-    mode: TuiHintMode | null = null;
+    mode: TuiHintModeT | null = null;
 
     directionVariants: ReadonlyArray<TuiDirection> = [
         'left',
@@ -61,4 +61,8 @@ export class ExampleTuiTooltipComponent {
     direction: TuiDirection = this.directionVariants[2];
 
     describeId = '';
+
+    showDelay = 500;
+
+    hideDelay = 200;
 }

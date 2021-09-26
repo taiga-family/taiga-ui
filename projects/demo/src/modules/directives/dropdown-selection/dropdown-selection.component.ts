@@ -12,11 +12,10 @@ import {Component} from '@angular/core';
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidth,
+    TuiDropdownWidthT,
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
-import {TuiDropdownPosition} from '@taiga-ui/kit';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -41,15 +40,11 @@ export class ExampleTuiDropdownSelectionComponent {
         LESS: example2Less,
     };
 
-    positionVariants = [
-        TuiDropdownPosition.Selection,
-        TuiDropdownPosition.Word,
-        TuiDropdownPosition.Tag,
-    ];
+    positionVariants = ['selection', 'word', 'tag'];
 
     open = false;
 
-    position = TuiDropdownPosition.Selection;
+    position = 'selection';
 
     tuiDropdownMinHeight = DEFAULT_MIN_HEIGHT;
 
@@ -68,12 +63,12 @@ export class ExampleTuiDropdownSelectionComponent {
 
     tuiDropdownDirection: TuiVerticalDirection | null = null;
 
-    readonly tuiDropdownLimitWidthVariants: ReadonlyArray<TuiDropdownWidth> = [
-        TuiDropdownWidth.Fixed,
-        TuiDropdownWidth.Min,
-        TuiDropdownWidth.Auto,
+    readonly tuiDropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = [
+        'fixed',
+        'min',
+        'auto',
     ];
 
-    tuiDropdownLimitWidth: TuiDropdownWidth | null = this
+    tuiDropdownLimitWidth: TuiDropdownWidthT | null = this
         .tuiDropdownLimitWidthVariants[0];
 }

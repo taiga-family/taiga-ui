@@ -1,8 +1,13 @@
-<tui-doc-page i18n-header header="BarChart" package="ADDON-CHARTS">
+<tui-doc-page
+    i18n-header
+    header="BarChart"
+    package="ADDON-CHARTS"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             Bar chart that can be used as a content to
-            <a tuiLink [routerLink]="['/tui-axes']">axes</a>.
+            <a tuiLink [routerLink]="['/components/axes']">axes</a>.
         </p>
 
         <tui-doc-example
@@ -12,6 +17,15 @@
             [content]="example1"
         >
             <tui-bar-chart-example-1></tui-bar-chart-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="collapsed"
+            i18n-heading
+            heading="Same values with collapsed mode"
+            [content]="example2"
+        >
+            <tui-bar-chart-example-2></tui-bar-chart-example-2>
         </tui-doc-example>
     </ng-template>
 
@@ -23,7 +37,6 @@
                 [value]="value"
                 [max]="max"
                 [size]="size"
-                [colorHandler]="colorHandler"
                 [hintContent]="hintContent"
                 [hintMode]="hintMode"
             ></tui-bar-chart>
@@ -40,16 +53,6 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="colorHandler"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiColorHandler"
-                [documentationPropertyValues]="colorHandlerVariants"
-                [(documentationPropertyValue)]="colorHandler"
-            >
-                A function that gets segment index and returns its color
-            </ng-template>
-            <ng-template
-                i18n
                 documentationPropertyName="hintContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -62,7 +65,7 @@
                 i18n
                 documentationPropertyName="hintMode"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiHintMode"
+                documentationPropertyType="TuiHintModeT | null"
                 [documentationPropertyValues]="hintModeVariants"
                 [(documentationPropertyValue)]="hintMode"
             >

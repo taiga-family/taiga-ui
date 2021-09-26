@@ -1,6 +1,6 @@
 <h6 i18n class="tui-text_h6">
     Can be expanded with
-    <a tuiLink target="_blank" routerLink="/tui-dropdown-controller"
+    <a tuiLink target="_blank" routerLink="/directives/dropdown-controller"
         >TuiDropdownController</a
     >:
 </h6>
@@ -27,11 +27,23 @@
     >
         Set a vertical direction of dropdown
     </ng-template>
+
+    <ng-template
+        i18n
+        documentationPropertyName="tuiDropdownSided"
+        documentationPropertyMode="input"
+        documentationPropertyType="boolean"
+        [(documentationPropertyValue)]="documentedComponent.dropdownDirection"
+    >
+        Put dropdown to the side, instead of top or bottom. Use in combination
+        with <code>tuiDropdownAlign</code>
+    </ng-template>
+
     <ng-template
         i18n
         documentationPropertyName="tuiDropdownLimitWidth"
         documentationPropertyMode="input"
-        documentationPropertyType="TuiDropdownWidth"
+        documentationPropertyType="TuiDropdownWidthT"
         [documentationPropertyValues]="documentedComponent.dropdownLimitWidthVariants"
         [(documentationPropertyValue)]="documentedComponent.dropdownLimitWidth"
     >

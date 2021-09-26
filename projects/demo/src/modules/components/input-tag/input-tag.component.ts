@@ -20,11 +20,11 @@ import {
     ALWAYS_TRUE_HANDLER,
     TuiBooleanHandler,
 } from '@taiga-ui/cdk';
-import {TuiHorizontalDirection, TuiSizeL} from '@taiga-ui/core';
+import {TuiHorizontalDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-input-tag',
@@ -37,7 +37,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiInputTagComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
@@ -86,9 +86,9 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiReactiveField
 
     search = '';
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
 
-    size: TuiSizeL = this.sizeVariants[1];
+    size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
 
     tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<string>> = [
         ALWAYS_TRUE_HANDLER,

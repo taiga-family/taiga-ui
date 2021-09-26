@@ -1,8 +1,8 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSizeL} from '@taiga-ui/core';
+import {TuiStatusT} from '@taiga-ui/kit/types';
 import {configureTestSuite} from 'ng-bullet';
-import {TuiStatus} from '../../../enums/status';
 import {TuiBadgeComponent} from '../badge.component';
 import {TuiBadgeModule} from '../badge.module';
 
@@ -21,7 +21,7 @@ describe('Badge', () => {
 
         size: TuiSizeL = 'm';
         value: number | string;
-        status = TuiStatus.Default;
+        status: TuiStatusT = 'default';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -47,28 +47,34 @@ describe('Badge', () => {
             testComponent.value = 99;
             fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent).toEqual('99');
+            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual('99');
         });
 
         it('if it takes three digits or more, it displays the abbreviation 99+', () => {
             testComponent.value = 999;
             fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent).toEqual('99+');
+            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
+                '99+',
+            );
         });
 
         it('if it accepts a string, it outputs it', () => {
             testComponent.value = 'Text';
             fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent).toEqual('Text');
+            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
+                'Text',
+            );
         });
 
         it('if it accepts a string containing a number, it outputs it unchanged', () => {
             testComponent.value = '125';
             fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent).toEqual('125');
+            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
+                '125',
+            );
         });
     });
 
@@ -85,6 +91,22 @@ describe('Badge', () => {
             fixture.detectChanges();
 
             expect(component.padding).toBe('l');
+        });
+
+        it('if value is empty, padding is none', () => {
+            expect(component.padding).toBe('none');
+        });
+    });
+
+    describe('states: ', () => {
+        it('if value is empty, add appropriate css class', () => {
+            testComponent.value = '';
+
+            fixture.detectChanges();
+
+            expect(
+                testComponent.element.nativeElement.classList.contains('_empty-value'),
+            ).toBeTruthy();
         });
     });
 });

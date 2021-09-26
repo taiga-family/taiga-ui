@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiTabsModule} from '@taiga-ui/kit';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiDocCodeModule} from '../code/code.module';
 import {TuiDocCopyModule} from '../copy/copy.module';
 import {TuiDocExampleComponent} from './example.component';
@@ -15,6 +16,7 @@ import {TuiDocExampleComponent} from './example.component';
         TuiButtonModule,
         TuiDocCopyModule,
         TuiDocCodeModule,
+        PolymorpheusModule,
     ],
     declarations: [TuiDocExampleComponent],
     exports: [TuiDocExampleComponent],

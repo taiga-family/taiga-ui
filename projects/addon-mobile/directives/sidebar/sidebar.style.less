@@ -9,7 +9,7 @@
         .fullsize();
         content: '';
         background: fade(#000, 38%);
-        animation: tuiFadeIn 0.3s;
+        animation: tuiFadeIn var(--tui-duration);
     }
 
     &:before {
@@ -24,7 +24,7 @@
     &.ng-animating:before,
     &.ng-animating:after {
         opacity: 0;
-        transition: opacity 0.3s;
+        transition: opacity var(--tui-duration);
     }
 
     &.right {
@@ -36,10 +36,14 @@
     }
 }
 
-.wrapper {
+.t-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
     background: var(--tui-base-01);
-    width: 276px;
+    width: 17.25rem;
+
+    &_auto-width {
+        width: auto;
+    }
 }

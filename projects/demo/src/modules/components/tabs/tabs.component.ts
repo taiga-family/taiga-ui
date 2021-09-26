@@ -12,6 +12,8 @@ import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
 import {default as example6Html} from '!!raw-loader!./examples/6/index.html';
 import {default as example6Less} from '!!raw-loader!./examples/6/index.less';
 import {default as example6Ts} from '!!raw-loader!./examples/6/index.ts';
+import {default as example7Html} from '!!raw-loader!./examples/7/index.html';
+import {default as example7Ts} from '!!raw-loader!./examples/7/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -56,6 +58,11 @@ export class ExampleTuiTabsComponent {
         TypeScript: example6Ts,
         HTML: example6Html,
         LESS: example6Less,
+    };
+
+    readonly example7: FrontEndExample = {
+        TypeScript: example7Ts,
+        HTML: example7Html,
     };
 
     readonly exampleImportModule = exampleImportModule;

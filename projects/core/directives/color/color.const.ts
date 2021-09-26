@@ -1,4 +1,6 @@
-// @bad TODO add numbered support colors
+/**
+ * @deprecated use CSS custom properties
+ */
 export const COLOR = `[data-tui-background='primary'] {
     background-color: var(--tui-primary);
 }

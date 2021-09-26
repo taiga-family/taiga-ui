@@ -6,9 +6,7 @@ import {
     HostBinding,
     Inject,
     Input,
-    Optional,
 } from '@angular/core';
-import {RouterLinkActive} from '@angular/router';
 import {
     isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -18,7 +16,6 @@ import {
     TuiFocusVisibleService,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiLinkMode} from '@taiga-ui/core/enums';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiHorizontalDirection} from '@taiga-ui/core/types';
@@ -64,9 +61,9 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     iconRotated = false;
 
     @Input()
-    @HostBinding('attr.data-mode')
+    @HostBinding('attr.data-host-mode')
     @tuiDefaultProp()
-    mode: TuiLinkMode | null = null;
+    mode: 'positive' | 'negative' | null = null;
 
     @HostBinding('class._focus-visible')
     focusVisible = false;
@@ -75,9 +72,6 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<TuiNativeFocusableElement>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Optional()
-        @Inject(RouterLinkActive)
-        private readonly routerLinkActive: RouterLinkActive | null,
         @Inject(TuiFocusVisibleService)
         focusVisible$: TuiFocusVisibleService,
     ) {
@@ -92,11 +86,6 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
 
     get focused(): boolean {
         return isNativeFocused(this.nativeFocusableElement);
-    }
-
-    @HostBinding('class._active')
-    get active(): boolean {
-        return !!this.routerLinkActive && this.routerLinkActive.isActive;
     }
 
     get hasIcon(): boolean {

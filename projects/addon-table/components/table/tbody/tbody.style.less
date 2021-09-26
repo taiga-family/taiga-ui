@@ -47,6 +47,7 @@
     font: var(--tui-font-text-s);
     padding: 0;
     background: var(--tui-base-02);
+    border-bottom: 1px solid var(--tui-base-04);
     border-color: inherit;
 
     :host-context(table[data-tui-host-size='l']) & {
@@ -58,39 +59,20 @@
 .name {
     position: sticky;
     display: inline-block;
-    left: 12px;
+    left: 0.75rem;
 
     :host-context(table[data-tui-host-size='l']) & {
-        left: 16px;
+        left: 1rem;
     }
 }
 
 .chevron {
     .transition(transform);
     position: sticky;
-    right: 12px;
-    margin: 0 11px 0 auto;
+    right: 0.75rem;
+    margin: 0 0.6875rem 0 auto;
 
     &_rotated {
         transform: rotate(180deg);
-    }
-}
-
-.footer {
-    td {
-        position: sticky;
-        bottom: 0;
-        padding: 0;
-        z-index: 15;
-        border: inherit;
-
-        &:after {
-            position: absolute;
-            content: '';
-            width: 100%;
-            bottom: 0;
-            border-top: 1px solid;
-            border-color: inherit;
-        }
     }
 }

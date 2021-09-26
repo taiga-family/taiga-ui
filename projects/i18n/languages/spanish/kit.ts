@@ -13,8 +13,13 @@ export const TUI_SPANISH_LANGUAGE_KIT: LanguageKit = {
         'HH:MM:SS': 'HH:MM:SS',
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
     },
+    dateTexts: {
+        DMY: 'dd.mm.yyyy',
+        MDY: 'mm.dd.yyyy',
+        YMD: 'yyyy.mm.dd',
+    },
     digitalInformationUnits: ['B', 'KB', 'MB'],
-    passwordTexts: ['Muetra clave', 'Oculta clave'],
+    passwordTexts: ['Mostrar contraseña', 'Ocultar contraseña'],
     copyTexts: ['Copiar', 'Copiado'],
     shortCalendarMonths: [
         'Ene',
@@ -32,8 +37,8 @@ export const TUI_SPANISH_LANGUAGE_KIT: LanguageKit = {
     ],
     pagination: ['Página anterior', 'Página siguiente'],
     fileTexts: {
-        loadingError: 'Error de lectura',
-        preview: 'Previo',
+        loadingError: 'Error de carga',
+        preview: 'Previsualizar',
         remove: 'Remover',
     },
     inputFileTexts: {
@@ -42,7 +47,7 @@ export const TUI_SPANISH_LANGUAGE_KIT: LanguageKit = {
         defaultLinkSingle: 'Seleccione un archivo',
         defaultLinkMultiple: 'Seleccione archivos',
         maxSizeRejectionReason: 'Archivo demasiado grande ',
-        formatRejectionReason: 'Formato de fila erróneo',
+        formatRejectionReason: 'Formato de archivo inválido',
         drop: 'Suelte el archivo aquí',
         dropMultiple: 'Suelte los archivos aquí',
     },

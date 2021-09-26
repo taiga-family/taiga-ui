@@ -1,9 +1,7 @@
-@import '../../styles/taiga-ui-local.less';
-
 :host {
     display: block;
     transition-property: opacity, height, visibility;
-    transition-duration: 0.3s, 0.3s;
+    transition-duration: var(--tui-duration, 300ms);
     opacity: 0;
 
     &._overflow {

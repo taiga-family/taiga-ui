@@ -10,9 +10,9 @@ import {default as exampleImportModule} from '!!raw-loader!./examples/import/imp
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 import {FormControl, Validators} from '@angular/forms';
 import {TuiAccountAutofillName} from '@taiga-ui/cdk';
-import {PolymorpheusContent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-input-copy',
@@ -25,7 +25,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiInputCopyComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
@@ -60,7 +60,7 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiReactiveFiel
 
     readonly maxLength = null;
 
-    @ViewChild('customTemplate', {read: PolymorpheusTemplate})
+    @ViewChild('customTemplate')
     customTemplate: PolymorpheusContent = '';
 
     readonly successMessageVariants = ['Copied', 'Template'];

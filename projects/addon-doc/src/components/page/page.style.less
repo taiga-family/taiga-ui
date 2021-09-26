@@ -8,36 +8,36 @@
     flex-grow: 1;
 }
 
-.header {
+.t-header {
     font: var(--tui-font-heading-3);
     display: flex;
     flex-wrap: wrap;
-    min-height: 116px;
+    min-height: 7.25rem;
     color: var(--tui-text-01);
     box-shadow: inset 0 -1px 0 0 var(--tui-base-03);
-    padding: 60px 0 0;
+    padding: 3.75rem 0 0;
     box-sizing: border-box;
     flex-shrink: 0;
-    margin: 0 ~'min(10vw, 140px)';
+    margin: 0 ~'min(10vw, 8.75rem)';
 
-    @media @tablet-s {
+    @media @mobile-m {
         font: var(--tui-font-heading-4);
-        min-height: 72px;
-        padding: 20px 20px 0;
+        min-height: 4.5rem;
+        padding: 1.25rem 1.25rem 0;
         margin: 0;
     }
 }
 
-.title {
+.t-title {
     min-width: 100%;
     font-size: inherit;
     margin: 0;
 }
 
-.tag {
+.t-tag {
     vertical-align: middle;
     text-transform: uppercase;
-    margin-right: 8px;
+    margin-right: 0.5rem;
 
     &_deprecated {
         background-color: var(--tui-error-fill);
@@ -48,47 +48,39 @@
     }
 }
 
-.tabs {
+.t-tabs {
     flex: 1;
-    margin: 18px 5px 0 0;
+    margin: 1.125rem 0.3125rem 0 0;
 
-    @media @tablet-s {
-        margin-top: 4px;
+    @media @mobile-m {
+        margin-top: 0.25rem;
     }
 }
 
-.content {
-    padding: 32px 0;
-    margin: 0 ~'min(10vw, 140px)';
+.t-content {
+    padding: 2rem 0;
+    margin: 0 ~'min(10vw, 8.75rem)';
 
-    @media @tablet-s {
-        padding: 32px 20px;
+    @media @mobile-m {
+        padding: 2rem 1.25rem;
         margin: 0;
     }
 }
 
-.see-also {
-    min-width: 300px;
+.t-see-also {
+    min-width: 18.75rem;
     width: 30%;
     float: right;
-    margin-left: 24px;
+    margin-left: 1.5rem;
 
-    @media @tablet {
+    @media @mobile-m {
         float: none;
         width: 100%;
-        margin: 0 0 24px;
+        margin: 0 0 1.5rem;
     }
 }
 
-.screenshots-skip-usage {
-    margin-top: 56px;
-
-    @media @mobile {
-        margin-top: 32px;
-    }
-}
-
-.source-code {
+.t-source-code {
     align-self: flex-end;
-    line-height: 44px;
+    line-height: 2.75rem;
 }

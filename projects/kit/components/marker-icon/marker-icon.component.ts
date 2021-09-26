@@ -13,7 +13,7 @@ import {
     TuiSizeXL,
     TuiSizeXS,
 } from '@taiga-ui/core';
-import {TuiMarkerIconMode} from '@taiga-ui/kit/enums';
+import {TuiMarkerIconModeT} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -27,7 +27,7 @@ import {takeUntil} from 'rxjs/operators';
 export class TuiMarkerIconComponent {
     @Input()
     @tuiDefaultProp()
-    mode: TuiMarkerIconMode | null = null;
+    mode: TuiMarkerIconModeT | null = null;
 
     @Input()
     @HostBinding('attr.data-tui-host-size')
@@ -51,9 +51,7 @@ export class TuiMarkerIconComponent {
 
     // TODO: Simplify
     @HostBinding('attr.data-mode')
-    get computedMode(): TuiMarkerIconMode | null {
-        return this.globalMode === 'onDark' && !this.mode
-            ? TuiMarkerIconMode.OnDark
-            : this.mode;
+    get computedMode(): TuiMarkerIconModeT | 'onDark' | null {
+        return this.globalMode === 'onDark' && !this.mode ? 'onDark' : this.mode;
     }
 }

@@ -1,4 +1,6 @@
-// TODO: Consider removing
+/**
+ * @deprecated
+ */
 export const enum TuiSupportColor {
     Mustard = 'support-01',
     Texas = 'support-02',

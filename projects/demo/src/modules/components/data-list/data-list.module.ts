@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneModule, TuiFilterPipeModule, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -39,7 +39,7 @@ import {CustomListComponent} from './examples/4/custom-list/custom-list.componen
         TuiButtonModule,
         TuiDropdownModule,
         TuiActiveZoneModule,
-        TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiDataListComponent)),
         TuiFilterPipeModule,
     ],

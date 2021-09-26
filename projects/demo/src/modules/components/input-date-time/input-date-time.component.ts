@@ -17,13 +17,15 @@ import {
     TuiBooleanHandler,
     TuiDateAutofillName,
     TuiDay,
+    TuiMonth,
+    TuiTime,
     TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {TuiNamedDay} from '@taiga-ui/kit';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-tui-input-date-time',
@@ -36,7 +38,9 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl {
+    private readonly today = TuiDay.currentLocal();
+
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
@@ -55,6 +59,7 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiReactive
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),
         new TuiDay(1900, 0, 1),
+        [this.today.append({day: -1}), new TuiTime(12, 20)],
     ];
 
     min = this.minVariants[0];
@@ -64,9 +69,17 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiReactive
         new TuiDay(2017, 11, 11),
         new TuiDay(2020, 2, 5),
         new TuiDay(2300, 0, 1),
+        [this.today.append({day: +1}), new TuiTime(16, 20)],
     ];
 
     max = this.maxVariants[0];
+
+    defaultActiveYearMonthVariants = [
+        TuiMonth.currentLocal(),
+        new TuiMonth(2020, 2),
+        new TuiMonth(2017, 2),
+    ];
+    defaultActiveYearMonth = this.defaultActiveYearMonthVariants[0];
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiDay>> = [
         ALWAYS_FALSE_HANDLER,

@@ -23,10 +23,11 @@ import {
 import {
     TUI_TEXTFIELD_SIZE,
     TuiDirection,
-    TuiHintMode,
+    TuiHintModeT,
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
+import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, of, Subject, timer} from 'rxjs';
@@ -39,6 +40,7 @@ import {mapTo, startWith, switchMap} from 'rxjs/operators';
     styleUrls: ['./input-copy.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        TUI_VALUE_ACCESSOR_PROVIDER,
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputCopyComponent),
@@ -58,7 +60,7 @@ export class TuiInputCopyComponent
 
     @Input()
     @tuiDefaultProp()
-    messageMode: TuiHintMode | null = null;
+    messageMode: TuiHintModeT | null = null;
 
     private readonly copy$ = new Subject<void>();
 

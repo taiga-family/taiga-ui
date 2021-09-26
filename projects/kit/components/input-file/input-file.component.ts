@@ -346,7 +346,7 @@ export class TuiInputFileComponent
         ]);
         this.updateValue(
             this.multiple
-                ? [...this.readyFiles, ...acceptedFiles]
+                ? [...this.arrayValue, ...acceptedFiles]
                 : acceptedFiles[0] || null,
         );
     }

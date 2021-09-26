@@ -1,12 +1,12 @@
 import {TuiBaseColor, TuiColor, TuiSupportColor} from '@taiga-ui/core';
 
-// TODO: Consider removing
-export const DEFAULT_COLORS: ReadonlyArray<TuiColor | string | null> = [
+// TODO: Replace with actual variables
+export const DEFAULT_COLORS: ReadonlyArray<TuiColor | string> = [
     TuiBaseColor.Primary,
     TuiSupportColor.Havelock,
     TuiSupportColor.Feijoa,
     TuiSupportColor.Lilac,
-    null,
+    'base-05',
     TuiSupportColor.Mustard,
     TuiSupportColor.Texas,
     TuiSupportColor.Tan,

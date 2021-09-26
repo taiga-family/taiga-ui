@@ -1,0 +1,63 @@
+<tui-wrapper
+    class="t-outline"
+    appearance="textfield"
+    [readOnly]="readOnly"
+    [disabled]="disabled"
+    [invalid]="computedInvalid"
+    [focused]="computedFocused"
+    [hovered]="computedHovered"
+    [invalid]="computedInvalid"
+>
+</tui-wrapper>
+<div
+    class="t-wrapper"
+    [class.t-wrapper_disabled]="disabled"
+    (tuiHoveredChange)="onHovered($event)"
+    (mousedown)="onMouseDown($event)"
+    (tuiActiveZoneChange)="onActiveZone($event)"
+>
+    <div class="t-toolbar-wrapper">
+        <tui-toolbar
+            *ngIf="editor"
+            new
+            [editor]="editor"
+            [tools]="tools"
+            [disabled]="!interactive"
+        ></tui-toolbar>
+        <div
+            class="t-placeholder"
+            [class.t-placeholder_raised]="placeholderRaised"
+        >
+            <ng-content></ng-content>
+        </div>
+        <div *ngIf="hasExampleText" class="t-example-text">{{exampleText}}</div>
+    </div>
+
+    <tui-scrollbar class="t-scrollbar">
+        <div
+            tuiDropdownLimitWidth="auto"
+            tuiDropdownSelectionPosition="tag"
+            [tuiDropdownSelection]="dropdownSelectionHandler"
+            [tuiDropdownContent]="dropdown"
+        >
+            <div
+                *ngIf="(extensionsLoaded$ | async) && (editorLoaded$ | async)"
+                #editorRef
+                tuiTiptapEditor
+                class="tui-editor-socket"
+                [value]="value"
+                [editable]="interactive"
+                (valueChange)="onModelChange($event)"
+                (stateChange)="0"
+            ></div>
+        </div>
+    </tui-scrollbar>
+
+    <ng-template #dropdown>
+        <tui-edit-link
+            #editLinkDropdown
+            (addLink)="addLink($event)"
+            (removeLink)="removeLink()"
+        ></tui-edit-link>
+    </ng-template>
+</div>

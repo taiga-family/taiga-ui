@@ -14,7 +14,7 @@ function getText({section, name, route, keywords}: Schema): string {
     },`;
 }
 
-function prittierFiles(options: Schema): Rule {
+function prettierFiles(options: Schema): Rule {
     exec(
         `prettier --write ${path.join(options.root, options.pathToTuiDocPages)}`,
         () => {},
@@ -42,5 +42,5 @@ export function addFieldDocPage(options: Schema): Rule {
         return noop();
     }
 
-    return chain([changeTuiDocPagesArray(options), prittierFiles(options)]);
+    return chain([changeTuiDocPagesArray(options), prettierFiles(options)]);
 }

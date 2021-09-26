@@ -2090,14 +2090,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="b882634eba653efdcd66effc54a969523e940d4f" datatype="html">
-        <source>Choosen date: <x id="INTERPOLATION" equiv-text="{{value}}"/></source>
+        <source>Chosen date: <x id="INTERPOLATION" equiv-text="{{value}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/components/calendar/examples/1/index.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="25b88ba9104f492b67f6b64722248ef333ec6194" datatype="html">
-        <source>Choosen dates: <x id="INTERPOLATION" equiv-text="{{value}}"/></source>
+        <source>Chosen dates: <x id="INTERPOLATION" equiv-text="{{value}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/components/calendar/examples/2/index.html</context>
           <context context-type="linenumber">31</context>
@@ -2744,7 +2744,7 @@
       </trans-unit>
       <trans-unit id="aba46f8d7f050d55e83e120bbf1e0160cd692881" datatype="html">
         <source>
-        Right content (e.g. card icon with maximum size 32x32px). If it gets a
+        Right content (e.g. avatar with maximum size 32x32px). If it gets a
         string, it is inserted as <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>src<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/> or as icon name into
         <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>tui-svg<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
     </source>
@@ -2755,7 +2755,7 @@
       </trans-unit>
       <trans-unit id="55171bac95ec7b779b77b3dee62f27149df76f9d" datatype="html">
         <source>
-        Example text of finished field
+        Example text shown on empty focused input
     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/components/abstract/textfield-controller-documentation/textfield-controller-documentation.template.html</context>
@@ -4835,7 +4835,7 @@
       </trans-unit>
       <trans-unit id="134e4e36c9b1796301b1b7d1d6f8cd006f4ed044" datatype="html">
         <source>
-            InputNumber — is a component to inout numbers. Inputed
+            InputNumber — is a component to input numbers. Inputed
             value is formatted: thousands are separated with space. A control
             value of the component is a number.
         </source>
@@ -4863,7 +4863,7 @@
             <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/><x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>Slider<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
             and
             <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;"/><x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>InputSlider<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
-            for inputing with a slider
+            for inputting with a slider
         </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/components/input-number/input-number.template.html</context>
@@ -7570,7 +7570,7 @@
       </trans-unit>
       <trans-unit id="5752174792523e23d0a73d2c7a8a41ffe4c39c97" datatype="html">
         <source>
-                Example text of a field
+                Example text shown on empty focused input
             </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/components/editor/editor.template.html</context>
@@ -10275,7 +10275,7 @@
       </trans-unit>
       <trans-unit id="daecd9318a412b6e447ed3e701d10a2b79afedc7" datatype="html">
         <source>
-                    Use pipe into template with function and its arguments:
+                    Use pipe in template with function and its arguments:
                 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/modules/pipes/filter/filter.template.html</context>

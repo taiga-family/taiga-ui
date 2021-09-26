@@ -1,19 +1,32 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Input,
+} from '@angular/core';
 import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID} from '@taiga-ui/addon-charts/constants';
-import {TuiLineType} from '@taiga-ui/addon-charts/enums';
-import {TuiLineHandler} from '@taiga-ui/addon-charts/types';
+import {TuiLineHandler, TuiLineTypeT} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE, tuiDefaultProp} from '@taiga-ui/cdk';
+import {MODE_PROVIDER} from '@taiga-ui/core/providers';
+import {TUI_MODE} from '@taiga-ui/core/tokens';
+import {TuiBrightness} from '@taiga-ui/core/types';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-axes',
     templateUrl: './axes.template.html',
     styleUrls: ['./axes.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [MODE_PROVIDER],
+    host: {
+        '($.data-mode.attr)': 'mode$',
+    },
 })
 export class TuiAxesComponent {
     @Input()
     @tuiDefaultProp()
-    axisX: TuiLineType = TuiLineType.Solid;
+    axisX: TuiLineTypeT = 'solid';
 
     @Input()
     @tuiDefaultProp()
@@ -21,7 +34,7 @@ export class TuiAxesComponent {
 
     @Input()
     @tuiDefaultProp()
-    axisY: TuiLineType = TuiLineType.Solid;
+    axisY: TuiLineTypeT = 'solid';
 
     @Input()
     @tuiDefaultProp()
@@ -65,8 +78,10 @@ export class TuiAxesComponent {
 
     @HostBinding('class._centered')
     get centeredXLabels(): boolean {
-        return this.axisY === TuiLineType.None;
+        return this.axisY === 'none';
     }
+
+    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 
     get hasXLabels(): boolean {
         return !!this.axisXLabels.length;

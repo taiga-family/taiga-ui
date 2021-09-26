@@ -1,4 +1,4 @@
-<tui-doc-page header="MultiSelect" package="KIT">
+<tui-doc-page header="MultiSelect" package="KIT" type="components">
     <ng-template pageTab>
         <div i18n class="tui-space_bottom-3">
             <code>MultiSelect</code> is a textfield with a dropdown for choosing
@@ -87,16 +87,6 @@
                 </tui-multi-select>
             </ng-template>
         </tui-doc-demo>
-        <ng-template #item="polymorpheus" polymorpheus let-item>
-            <div class="content">
-                <tui-avatar
-                    class="avatar"
-                    size="s"
-                    [text]="item.toString()"
-                ></tui-avatar>
-                {{item}}
-            </div>
-        </ng-template>
         <div i18n>
             <p>
                 Set a value with copied object from items to check

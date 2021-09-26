@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {isPresent, tuiReplayedValueChangesFrom} from '@taiga-ui/cdk';
 import {sizeBigger, TuiSizeL} from '@taiga-ui/core';
 import {TuiSelectOptionComponent} from '@taiga-ui/kit/components/select-option';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs/operators';
 
 @Component({
@@ -25,7 +24,3 @@ export class TuiMultiSelectOptionComponent<T> extends TuiSelectOptionComponent<T
         return sizeBigger(this.option.size) ? 'l' : 'm';
     }
 }
-
-export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
-    TuiMultiSelectOptionComponent,
-);

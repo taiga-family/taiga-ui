@@ -7,13 +7,13 @@ import {
 } from '@angular/core';
 import {isNumber, tuiDefaultProp} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit/enums';
+import {TuiStatusT} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-badge',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '{{outputValue}}',
+    templateUrl: './badge.template.html',
     styleUrls: ['./badge.style.less'],
     providers: [MODE_PROVIDER],
     host: {
@@ -33,7 +33,7 @@ export class TuiBadgeComponent {
     @Input()
     @HostBinding('attr.data-tui-host-status')
     @tuiDefaultProp()
-    status: TuiStatus = TuiStatus.Default;
+    status: TuiStatusT = 'default';
 
     @Input()
     @HostBinding('class._hoverable')
@@ -44,6 +44,10 @@ export class TuiBadgeComponent {
 
     @HostBinding('attr.data-tui-host-padding')
     get padding(): string {
+        if (this.isEmpty) {
+            return 'none';
+        }
+
         return isNumber(this.value.valueOf()) ? 'm' : 'l';
     }
 
@@ -53,5 +57,10 @@ export class TuiBadgeComponent {
         } else {
             return String(this.value);
         }
+    }
+
+    @HostBinding('class._empty-value')
+    get isEmpty(): boolean {
+        return this.value === '';
     }
 }

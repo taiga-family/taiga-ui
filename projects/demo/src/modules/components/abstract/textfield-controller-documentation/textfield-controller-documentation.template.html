@@ -1,6 +1,6 @@
 <h6 i18n class="tui-text_h6">
     Can be expanded with
-    <a tuiLink target="_blank" routerLink="/tui-textfield-controller"
+    <a tuiLink target="_blank" routerLink="/directives/textfield-controller"
         >TuiTextfieldController</a
     >:
 </h6>
@@ -33,13 +33,13 @@
         i18n
         documentationPropertyName="tuiTextfieldCustomContent"
         documentationPropertyMode="input"
-        documentationPropertyType="PolymorpheusContent | null"
+        documentationPropertyType="PolymorpheusContent"
         [documentationPropertyValues]="documentedComponent.customContentVariants"
         [(documentationPropertyValue)]="documentedComponent.customContentSelected"
     >
-        Right content (e.g. card icon with maximum size 32x32px). If it gets a
+        Right content (e.g. avatar with maximum size 32x32px). If it gets a
         string, it is inserted as <code>src</code> or as icon name into
-        <a routerLink="/tui-svg" tuiLink>tui-svg</a>
+        <a routerLink="/components/svg" tuiLink>tui-svg</a>
     </ng-template>
     <ng-template
         i18n
@@ -48,13 +48,13 @@
         documentationPropertyType="string"
         [(documentationPropertyValue)]="documentedComponent.exampleText"
     >
-        Example text of finished field
+        Example text shown on empty focused input
     </ng-template>
     <ng-template
         i18n
         documentationPropertyName="tuiTextfieldInputMode"
         documentationPropertyMode="input"
-        documentationPropertyType="TuiInputMode"
+        documentationPropertyType="TuiInputModeT"
         [documentationPropertyValues]="documentedComponent.inputModeVariants"
         [(documentationPropertyValue)]="documentedComponent.inputMode"
     >
@@ -69,7 +69,12 @@
         [(documentationPropertyValue)]="documentedComponent.labelOutside"
     >
         Label is outside a component and made with
-        <a tuiLink routerLink="/tui-label"><code>Label</code></a>
+        <a tuiLink routerLink="/components/label"><code>Label</code></a>
+        <p>
+            (<code>labelOutside = false</code> does not work together with
+            <code>size === 's'</code>: for s-size inputs use only outside
+            labels)
+        </p>
     </ng-template>
     <ng-template
         i18n
@@ -95,7 +100,7 @@
         i18n
         documentationPropertyName="tuiTextfieldType"
         documentationPropertyMode="input"
-        documentationPropertyType="TuiInputType"
+        documentationPropertyType="TuiInputTypeT"
         [documentationPropertyValues]="documentedComponent.typeVariants"
         [(documentationPropertyValue)]="documentedComponent.type"
     >

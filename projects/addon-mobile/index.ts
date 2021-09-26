@@ -4,4 +4,5 @@ export * from '@taiga-ui/addon-mobile/interfaces';
 export * from '@taiga-ui/addon-mobile/directives';
 export * from '@taiga-ui/addon-mobile/enums';
 export * from '@taiga-ui/addon-mobile/tokens';
+export * from '@taiga-ui/addon-mobile/types';
 export * from '@taiga-ui/addon-mobile/utils';

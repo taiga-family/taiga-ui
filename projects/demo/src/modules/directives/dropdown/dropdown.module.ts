@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneModule, TuiObscuredModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiDropdownModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiAvatarModule, TuiSelectModule, TuiToggleModule} from '@taiga-ui/kit';
@@ -23,7 +23,7 @@ import {TuiDropdownExample3} from './examples/3';
         TuiSelectModule,
         TuiObscuredModule,
         TuiActiveZoneModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiDropdownComponent)),
         PolymorpheusModule,
         TuiToggleModule,

@@ -1,4 +1,4 @@
-<tui-doc-page i18n-header header="Stepper" package="KIT">
+<tui-doc-page i18n-header header="Stepper" package="KIT" type="components">
     <ng-template pageTab>
         <p i18n>Stepper makes visual step navigation</p>
 
@@ -34,7 +34,7 @@
                 i18n
                 documentationPropertyName="orientation"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiOrientation | 'none'"
+                documentationPropertyType="TuiOrientationT"
                 [documentationPropertyValues]="orientationVariants"
                 [(documentationPropertyValue)]="orientation"
             >
@@ -55,7 +55,7 @@
                 i18n
                 documentationPropertyName="state"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiStepState"
+                documentationPropertyType="'normal' | 'pass' | 'error'"
                 [documentationPropertyValues]="stateVariants"
                 [(documentationPropertyValue)]="state"
             >

@@ -1,11 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {PageObject} from '@taiga-ui/testing';
-import {
-    PolymorpheusContent,
-    PolymorpheusModule,
-    PolymorpheusTemplate,
-} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {configureTestSuite} from 'ng-bullet';
 import {TuiSizeXL, TuiSizeXS} from '../../../types/size';
 import {TuiLoaderComponent} from '../loader.component';
@@ -21,9 +17,7 @@ describe('Loader', () => {
                 [textContent]="textContent"
             >
             </tui-loader>
-            <ng-template #textTemplate="polymorpheus" polymorpheus>
-                Loading...
-            </ng-template>
+            <ng-template #textTemplate> Loading... </ng-template>
         `,
     })
     class TestComponent {
@@ -34,10 +28,10 @@ describe('Loader', () => {
         showLoader = false;
         inheritColor = false;
         overlay = false;
-        textContent: PolymorpheusContent | null = null;
+        textContent: PolymorpheusContent = '';
 
         @ViewChild('textTemplate', {static: true})
-        textTemplate!: PolymorpheusTemplate<{}>;
+        textTemplate: PolymorpheusContent = '';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -52,7 +46,7 @@ describe('Loader', () => {
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
-            imports: [TuiLoaderModule, PolymorpheusModule],
+            imports: [TuiLoaderModule],
             declarations: [TestComponent],
         });
     });

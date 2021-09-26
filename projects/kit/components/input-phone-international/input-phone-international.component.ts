@@ -2,34 +2,43 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    EventEmitter,
     forwardRef,
+    HostListener,
     Inject,
     Input,
     Optional,
+    Output,
     Self,
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
+    getClipboardDataText,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    TuiMapper,
     tuiPure,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
-    TUI_DIGIT_REGEXP,
     TUI_ICONS_PATH,
+    TUI_NON_DIGITS_REGEXP,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
+import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
 import {TuiInputPhoneComponent} from '@taiga-ui/kit/components/input-phone';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {COUNTRIES} from './const/countries';
-import {TuiCountryIsoCode} from './country-iso-code';
+import {Observable} from 'rxjs';
+import {COUNTRIES_MASKS} from './const/countries';
+
+const MASK_AFTER_CODE_REGEXP = /\([\#]+\)|[#\- ]/g;
 
 // @dynamic
 @Component({
@@ -55,7 +64,13 @@ export class TuiInputPhoneInternationalComponent
     @Input()
     countries: ReadonlyArray<TuiCountryIsoCode> = [];
 
+    @Output()
+    readonly countryIsoCodeChange = new EventEmitter<TuiCountryIsoCode>();
+
     open = false;
+
+    readonly isoToCountryCodeMapper: TuiMapper<TuiCountryIsoCode, string> = item =>
+        this.isoToCountryCode(item);
 
     readonly arrow: PolymorpheusContent = TUI_ARROW;
 
@@ -67,6 +82,20 @@ export class TuiInputPhoneInternationalComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
 
+    @HostListener('paste.capture.prevent.stop', ['$event'])
+    @HostListener('drop.capture.prevent.stop', ['$event'])
+    onPaste(event: ClipboardEvent | DragEvent) {
+        const value = this.extractValue(event);
+        const countryIsoCode = this.countries.find(countryIsoCode =>
+            value.startsWith(this.isoToCountryCode(countryIsoCode)),
+        );
+
+        if (countryIsoCode) {
+            this.updateCountryIsoCode(countryIsoCode);
+            this.updateValue('+' + value.replace(TUI_NON_DIGITS_REGEXP, ''));
+        }
+    }
+
     constructor(
         @Optional()
         @Self()
@@ -75,6 +104,8 @@ export class TuiInputPhoneInternationalComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_ICONS_PATH)
         iconsPath: TuiStringHandler<string>,
+        @Inject(TUI_COUNTRIES)
+        readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>,
     ) {
         super(control, changeDetectorRef);
 
@@ -102,7 +133,7 @@ export class TuiInputPhoneInternationalComponent
         const countryCode = this.isoToCountryCode(this.countryIsoCode);
 
         return this.calculateMaskAfterCountryCode(
-            COUNTRIES[this.countryIsoCode].mask,
+            COUNTRIES_MASKS[this.countryIsoCode],
             countryCode,
         );
     }
@@ -115,15 +146,17 @@ export class TuiInputPhoneInternationalComponent
         return `${this.staticPath}${code}.png`;
     }
 
-    getCountryName(isoCode: TuiCountryIsoCode): string {
-        return COUNTRIES[isoCode].name;
-    }
-
     onItemClick(isoCode: TuiCountryIsoCode) {
         this.open = false;
-        this.countryIsoCode = isoCode;
+        this.updateCountryIsoCode(isoCode);
         // recalculates mask inside inputPhone to prevent isoCode conflict
         this.changeDetectorRef.detectChanges();
+
+        const maxLength = this.getMaxAllowedLength(isoCode);
+
+        if (this.value.length > maxLength) {
+            this.updateValue(this.value.slice(0, maxLength));
+        }
 
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement);
@@ -135,15 +168,16 @@ export class TuiInputPhoneInternationalComponent
         this.close();
     }
 
-    @tuiPure
     isoToCountryCode(isoCode: TuiCountryIsoCode): string {
-        return (
-            '+' +
-            COUNTRIES[isoCode].mask
-                .split('')
-                .filter(symbol => TUI_DIGIT_REGEXP.test(symbol))
-                .join('')
-        );
+        return COUNTRIES_MASKS[isoCode].replace(MASK_AFTER_CODE_REGEXP, '');
+    }
+
+    onModelChange(value: string) {
+        this.updateValue(value);
+    }
+
+    onActiveZone(active: boolean) {
+        this.updateFocused(active);
     }
 
     protected getFallbackValue(): string {
@@ -156,6 +190,22 @@ export class TuiInputPhoneInternationalComponent
 
     @tuiPure
     private calculateMaskAfterCountryCode(mask: string, countryCode: string): string {
-        return mask.replace(countryCode, '');
+        return mask.replace(countryCode, '').trim();
+    }
+
+    private getMaxAllowedLength(isoCode: TuiCountryIsoCode): number {
+        return COUNTRIES_MASKS[isoCode].replace(/[()\- ]/g, '').length;
+    }
+
+    private extractValue(event: DragEvent | ClipboardEvent): string {
+        // TODO: iframe warning
+        return event instanceof DragEvent
+            ? event.dataTransfer?.getData('text/plain') || ''
+            : getClipboardDataText(event);
+    }
+
+    private updateCountryIsoCode(code: TuiCountryIsoCode) {
+        this.countryIsoCode = code;
+        this.countryIsoCodeChange.emit(code);
     }
 }

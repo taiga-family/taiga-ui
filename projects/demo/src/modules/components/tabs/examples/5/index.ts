@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -9,16 +8,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
     styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
-    providers: [
-        {
-            provide: TUI_IS_IOS,
-            useValue: false,
-        },
-        {
-            provide: TUI_IS_ANDROID,
-            useValue: false,
-        },
-    ],
 })
 export class TuiTabsExample5 {
     readonly collaborators = ['Carol Cleveland', 'Neil Innes'];

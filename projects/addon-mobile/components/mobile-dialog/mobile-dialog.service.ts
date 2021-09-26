@@ -6,11 +6,10 @@ import {TuiMobileDialogOptions} from './mobile-dialog-options';
 import {TuiMobileDialogComponent} from './mobile-dialog.component';
 
 const DIALOG = new PolymorpheusComponent(TuiMobileDialogComponent);
-const DEFAULT_OPTIONS: TuiMobileDialogOptions<undefined> = {
+const DEFAULT_OPTIONS = {
     label: '',
-    data: undefined,
     actions: ['OK'],
-};
+} as const;
 
 @Injectable({
     providedIn: 'root',
@@ -19,7 +18,7 @@ export class TuiMobileDialogService extends AbstractTuiDialogService<
     TuiMobileDialogOptions<any>
 > {
     protected readonly component = DIALOG;
-    protected readonly defaultOptions = DEFAULT_OPTIONS;
+    protected readonly defaultOptions: TuiMobileDialogOptions<any> = DEFAULT_OPTIONS as any;
 
     open<I, O = number>(
         content: PolymorpheusContent<TuiBaseDialogContext<O> & TuiMobileDialogOptions<I>>,

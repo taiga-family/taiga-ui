@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 // TODO: remove after v2.0 separating. It prevents seps cycling.
 type TuiHintDirective = any;
@@ -11,19 +11,19 @@ type AbstractTuiHint = any;
 @Injectable({
     providedIn: 'root',
 })
-export class TuiHintService extends Observable<ReadonlyArray<AbstractTuiHint>> {
-    private readonly hints$ = new BehaviorSubject<ReadonlyArray<AbstractTuiHint>>([]);
-
+export class TuiHintService extends BehaviorSubject<ReadonlyArray<AbstractTuiHint>> {
     constructor() {
-        super(observer => this.hints$.subscribe(observer));
+        super([]);
     }
 
     add(directive: AbstractTuiHint) {
-        this.hints$.next([...this.hints$.value, directive]);
+        this.next(this.value.concat(directive));
     }
 
     remove(directive: AbstractTuiHint) {
-        this.hints$.next(this.hints$.value.filter(hint => hint !== directive));
+        if (this.value.includes(directive)) {
+            this.next(this.value.filter(hint => hint !== directive));
+        }
     }
 
     /**

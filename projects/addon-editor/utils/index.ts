@@ -10,3 +10,4 @@ export * from './parse-gradient';
 export * from './rgb-to-hex';
 export * from './rgb-to-hsv';
 export * from './to-gradient';
+export * from './get-mark-range';

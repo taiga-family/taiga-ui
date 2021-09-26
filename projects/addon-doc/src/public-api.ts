@@ -22,8 +22,9 @@ export * from './components/page/page.component';
 export * from './components/page/page.module';
 export * from './components/page/page-tab.directive';
 
-/* Constants */
-export * from './constants/page-modules';
+/* Directives */
+export * from './directives/scroll-into-view/scroll-into-view.directive';
+export * from './directives/scroll-into-view/scroll-into-view.module';
 
 /* Interfaces */
 export * from './interfaces/code-editor';
@@ -49,3 +50,5 @@ export * from './types/pages';
 
 /* Utils */
 export * from './utils/generate-routes';
+
+export * from './addon-doc.module';

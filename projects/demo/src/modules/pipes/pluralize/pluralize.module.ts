@@ -2,8 +2,8 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {generateRoutes, TUI_DOC_PAGE_MODULES} from '@taiga-ui/addon-doc';
-import {TuiPluralizePipeModule} from '@taiga-ui/core';
+import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiNotificationModule, TuiPluralizePipeModule} from '@taiga-ui/core';
 import {TuiInputSliderModule} from '@taiga-ui/kit';
 import {ExampleTuiPluralizeComponent} from './pluralize.component';
 
@@ -14,7 +14,8 @@ import {ExampleTuiPluralizeComponent} from './pluralize.component';
         ReactiveFormsModule,
         FormsModule,
         CommonModule,
-        ...TUI_DOC_PAGE_MODULES,
+        TuiNotificationModule,
+        TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiPluralizeComponent)),
     ],
     declarations: [ExampleTuiPluralizeComponent],

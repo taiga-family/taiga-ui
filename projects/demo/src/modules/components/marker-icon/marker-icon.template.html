@@ -1,7 +1,7 @@
-<tui-doc-page header="MarkerIcon" package="KIT">
+<tui-doc-page header="MarkerIcon" package="KIT" type="components">
     <ng-template pageTab>
         <p i18n>
-            <code>MarkerIcon</code> is a SVG icon in a circle. Use
+            <code>MarkerIcon</code> is an SVG icon in a circle. Use
             <code>mode</code> param to choose appearance or set it with custom
             styles
         </p>
@@ -53,7 +53,7 @@
                 i18n
                 documentationPropertyName="mode"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiMarkerIconMode | null"
+                documentationPropertyType="TuiMarkerIconModeT | null"
                 [documentationPropertyValues]="modeVariants"
                 [(documentationPropertyValue)]="mode"
             >
@@ -79,7 +79,7 @@
             >
                 An icon. It can be stringified svg or a name of icon registered
                 in
-                <a tuiLink routerLink="/tui-svg-service"
+                <a tuiLink routerLink="/services/svg-service"
                     ><code>SvgService</code></a
                 >
             </ng-template>

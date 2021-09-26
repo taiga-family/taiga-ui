@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {TuiColorHandler} from '@taiga-ui/addon-charts';
-import {TuiBaseColor} from '@taiga-ui/core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -13,6 +11,4 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiBarSetExample3 {
     readonly value = [30, -15];
-
-    readonly solidColor: TuiColorHandler = () => TuiBaseColor.Primary;
 }

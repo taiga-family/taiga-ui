@@ -21,9 +21,11 @@ tmp/
 *.ngsummary.json
 *.shim.ngstyle.ts
 .idea
+*.iml
 */tmp
 .rpt2_cache
 .vscode
 quality-check
 .DS_Store
 dist
+projects/demo-integrations/cypress/snapshots

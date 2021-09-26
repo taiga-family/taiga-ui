@@ -7,15 +7,17 @@
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-primitive-textfield
+        *tuiLet="dateFiller$ | async as dateFiller"
         automation-id="tui-input-date-range__textfield"
         class="textfield"
+        tuiValueAccessor
         [pseudoFocused]="innerPseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [pseudoPressed]="pseudoPressed"
         [invalid]="computedInvalid"
         [tuiTextfieldExampleText]="computedExampleText"
         [nativeId]="nativeId"
-        [filler]="computedFiller"
+        [filler]="getComputedRangeFiller(dateFiller)"
         [readOnly]="readOnly"
         [iconContent]="computedMobile ? iconContent : calendarIcon"
         [disabled]="computedDisabled"
@@ -24,7 +26,6 @@
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
         (pressedChange)="onPressed($event)"
-        (click.prevent)="onClick()"
     >
         <ng-content></ng-content>
     </tui-primitive-textfield>
@@ -32,9 +33,9 @@
     <ng-template #iconContent>
         <tui-svg
             automation-id="tui-input-date-range__icon"
-            class="icon"
+            [class.icon]="!computedDisabled"
             [src]="calendarIcon"
-            (click.prevent)="onClick()"
+            (click)="onMobileClick()"
         ></tui-svg>
     </ng-template>
 
@@ -48,7 +49,8 @@
             [markerHandler]="markerHandler"
             [minLength]="minLength"
             [maxLength]="maxLength"
-            (rangeChange)="onRangeChange($event)"
+            [value]="value"
+            (valueChange)="onRangeChange($event)"
         ></tui-calendar-range>
     </ng-template>
 </tui-hosted-dropdown>

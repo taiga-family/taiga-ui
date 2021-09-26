@@ -1,7 +1,6 @@
 import {Directive, forwardRef, Input} from '@angular/core';
 import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiHintMode} from '@taiga-ui/core/enums';
-import {TuiDirection} from '@taiga-ui/core/types';
+import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TUI_HINT_CONTROLLER} from './hint-controller.token';
 
@@ -16,6 +15,7 @@ import {TUI_HINT_CONTROLLER} from './hint-controller.token';
     ],
 })
 export class TuiHintControllerDirective extends TuiController {
+    // TODO: Remove null in 3.0
     @Input('tuiHintContent')
     @tuiDefaultProp()
     content: PolymorpheusContent | null = null;
@@ -26,5 +26,13 @@ export class TuiHintControllerDirective extends TuiController {
 
     @Input('tuiHintMode')
     @tuiDefaultProp()
-    mode: TuiHintMode | null = null;
+    mode: TuiHintModeT | null = null;
+
+    @Input('tuiHintShowDelay')
+    @tuiDefaultProp()
+    showDelay = 500;
+
+    @Input('tuiHintHideDelay')
+    @tuiDefaultProp()
+    hideDelay = 200;
 }

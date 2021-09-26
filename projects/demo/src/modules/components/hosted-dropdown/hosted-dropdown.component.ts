@@ -9,6 +9,9 @@ import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
+import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
+import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
+
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -16,7 +19,7 @@ import {Component, forwardRef} from '@angular/core';
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
-    TuiDropdownWidth,
+    TuiDropdownWidthT,
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
@@ -57,6 +60,11 @@ export class ExampleTuiHostedDropdownComponent {
         LESS: example3Less,
     };
 
+    readonly example4: FrontEndExample = {
+        TypeScript: example4Ts,
+        HTML: example4Html,
+    };
+
     minHeight = DEFAULT_MIN_HEIGHT;
 
     maxHeight = DEFAULT_MAX_HEIGHT;
@@ -73,13 +81,9 @@ export class ExampleTuiHostedDropdownComponent {
 
     direction: TuiVerticalDirection | null = this.directionVariants[0];
 
-    readonly limitWidthVariants: ReadonlyArray<TuiDropdownWidth> = [
-        TuiDropdownWidth.Auto,
-        TuiDropdownWidth.Fixed,
-        TuiDropdownWidth.Min,
-    ];
+    readonly limitWidthVariants: readonly TuiDropdownWidthT[] = ['auto', 'fixed', 'min'];
 
-    limitWidth: TuiDropdownWidth | null = this.limitWidthVariants[0];
+    limitWidth: TuiDropdownWidthT | null = this.limitWidthVariants[0];
 
     open = false;
 

@@ -17,7 +17,6 @@ import {
 } from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
 import {DESCRIBED_BY} from '@taiga-ui/core/directives/described-by';
-import {TuiHintMode} from '@taiga-ui/core/enums';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, of, Subject} from 'rxjs';
@@ -32,8 +31,6 @@ import {
 } from 'rxjs/operators';
 
 export const HINT_HOVERED_CLASS = '_hint_hovered';
-const SHOW_DELAY = 500;
-const HIDE_DELAY = 200;
 
 @Directive({
     selector: '[tuiHint]:not(ng-container)',
@@ -47,8 +44,17 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
 
     @Input()
     @tuiDefaultProp()
+    tuiHintShowDelay = 500;
+
+    @Input()
+    @tuiDefaultProp()
+    tuiHintHideDelay = 200;
+
+    @Input()
+    @tuiDefaultProp()
     tuiHintHost: HTMLElement | null = null;
 
+    // TODO: Remove null in 3.0
     @Input()
     @tuiRequiredSetter()
     set tuiHint(value: PolymorpheusContent | null) {
@@ -88,10 +94,12 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
                 switchMap(visible => {
                     this.toggleClass(visible);
 
-                    return of(visible).pipe(delay(visible ? SHOW_DELAY : HIDE_DELAY));
+                    return of(visible).pipe(
+                        delay(visible ? this.tuiHintShowDelay : this.tuiHintHideDelay),
+                    );
                 }),
                 switchMap(visible =>
-                    visible && this.mode !== TuiHintMode.Overflow
+                    visible && this.mode !== 'overflow'
                         ? obscured$.pipe(
                               map(obscured => !obscured),
                               take(2),
@@ -101,17 +109,12 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
                 distinctUntilChanged(),
                 takeUntil(destroy$),
             )
-            .subscribe({
-                next: visible => {
-                    if (visible) {
-                        this.showTooltip();
-                    } else {
-                        this.hideTooltip();
-                    }
-                },
-                complete: () => {
+            .subscribe(visible => {
+                if (visible) {
+                    this.showTooltip();
+                } else {
                     this.hideTooltip();
-                },
+                }
             });
 
         this.hintService.register(this);
@@ -131,7 +134,6 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
 
     ngOnDestroy() {
         this.hintService.unregister(this);
-        this.hideTooltip();
     }
 
     protected showTooltip() {

@@ -1,78 +1,114 @@
 name: Test all packages of Taiga UI and check coverage with Coveralls
 
 on:
-  pull_request:
-    paths:
-      - 'projects/**'
-      - '!projects/*testing/**'
-      - '!projects/demo/**'
-      - '!projects/icons/**'
-      - 'angular.json'
-      - 'package.json'
-      - 'tsconfig*'
-  push:
-    branches:
-      - main
-      - '!release/**'
+    pull_request:
+        paths:
+            - 'projects/**'
+            - '!projects/*testing/**'
+            - '!projects/demo/**'
+            - '!projects/icons/**'
+            - '.github/workflows/test.yml'
+            - 'angular.json'
+            - 'package.json'
+            - 'tsconfig*'
+    push:
+        branches:
+            - main
+            - '!release/**'
+
+env:
+    NX_BRANCH: ${{ github.event.number }}
 
 jobs:
-  test:
-    # Setup part
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - name: Cache Node.js modules
-      uses: actions/cache@v2
-      with:
-        path: ~/.npm 
-        key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.OS }}-node-
-          ${{ runner.OS }}-
-    - name: Install dependencies
-      run: npm ci
-    # End of setup
-    - run: npm run test cdk
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    - run: npm run test core
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    - run: npm run test kit
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    - run: npm run test addon-charts
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    - run: npm run test addon-commerce
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    - run: npm run test addon-editor
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    - run: npm run test addon-mobile
-      # Find out more about empty lcov generation
-    - run: npm run test addon-table
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    - run: npm run test addon-tablebars
-      # Find out more about empty lcov generation
+    test:
+        # Setup part
+        runs-on: ubuntu-latest
+        env:
+            NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+            NX_MAX_PARALLEL: 3
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: '12.x'
+            - name: Cache Node.js modules
+              uses: actions/cache@v2
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.OS }}-node-
+                      ${{ runner.OS }}-
+            - name: Install dependencies
+              run: npm ci
+            # End of setup
+            - name: Run parallel tests
+              run: |
+                  # TODO(splincode): need change to `affected` for improve pipeline time
+                  ALL_LIBS=$( node -e "console.log(Object.entries(require(require('path').join(process.cwd(), process.env.ANGULAR_JSON_PATH || 'angular.json')).projects).filter(([, value]) => value.projectType === 'library').map(([key]) => key).join(','))" )
+                  npm run many -- \
+                              --target=test \
+                              --maxParallel=${{ env.NX_MAX_PARALLEL }} \
+                              --browsers=ChromeHeadless --code-coverage=true \
+                              --projects=$ALL_LIBS
+            - name: Coveralls(cdk)
+              continue-on-error: true
+              uses: coverallsapp/github-action@master
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  path-to-lcov: ./coverage/cdk/lcov.info
+                  parallel: true
+            - name: Coveralls(core)
+              continue-on-error: true
+              uses: coverallsapp/github-action@master
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  path-to-lcov: ./coverage/core/lcov.info
+                  parallel: true
+            - name: Coveralls(kit)
+              continue-on-error: true
+              uses: coverallsapp/github-action@master
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  path-to-lcov: ./coverage/kit/lcov.info
+                  parallel: true
+            - name: Coveralls(addon-charts)
+              continue-on-error: true
+              uses: coverallsapp/github-action@master
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  path-to-lcov: ./coverage/addon-charts/lcov.info
+                  parallel: true
+            - name: Coveralls(addon-commerce)
+              continue-on-error: true
+              uses: coverallsapp/github-action@master
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  path-to-lcov: ./coverage/addon-commerce/lcov.info
+                  parallel: true
+            - name: Coveralls(addon-editor)
+              continue-on-error: true
+              uses: coverallsapp/github-action@master
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  path-to-lcov: ./coverage/addon-editor/lcov.info
+                  parallel: true
+            - name: Coveralls(addon-table)
+              continue-on-error: true
+              uses: coverallsapp/github-action@master
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  path-to-lcov: ./coverage/addon-table/lcov.info
+                  parallel: true
 
+    finish:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Coveralls Finished
+              continue-on-error: true
+              uses: coverallsapp/github-action@master
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  parallel-finished: true

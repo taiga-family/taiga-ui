@@ -7,9 +7,7 @@
     >
         <ng-container *ngFor="let tab of tabs">
             <ng-container *ngIf="isString(tab); else submenu">
-                <button *tuiTab tuiTab type="button" (click)="onClick(tab)">
-                    {{tab}}
-                </button>
+                <button *tuiTab tuiTab (click)="onClick(tab)">{{tab}}</button>
             </ng-container>
             <ng-template #submenu>
                 <tui-hosted-dropdown
@@ -18,12 +16,7 @@
                     [content]="dropdown"
                     [(open)]="open"
                 >
-                    <button
-                        class="collaborators"
-                        tuiTab
-                        type="button"
-                        (tui-tab-activate)="stop($event)"
-                    >
+                    <button tuiTab (tui-tab-activate)="stop($event)">
                         Collaborators
                         <tui-svg
                             src="tuiIconChevronDown"

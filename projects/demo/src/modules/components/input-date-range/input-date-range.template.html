@@ -1,4 +1,4 @@
-<tui-doc-page header="InputDateRange" package="KIT">
+<tui-doc-page header="InputDateRange" package="KIT" type="components">
     <ng-template pageTab>
         <p i18n>A field to input a range of dates</p>
 
@@ -112,7 +112,7 @@
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
-                [documentationPropertyValues]="minVariants"
+                [documentationPropertyValues]="dayVariants"
                 [(documentationPropertyValue)]="min"
             >
                 Min date
@@ -122,7 +122,7 @@
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
-                [documentationPropertyValues]="maxVariants"
+                [documentationPropertyValues]="dayVariants"
                 [(documentationPropertyValue)]="max"
             >
                 Max date

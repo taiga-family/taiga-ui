@@ -260,7 +260,7 @@ export const SUPPORT: readonly string[] = [
 export const TEXT: ReadonlyArray<Color> = [
     {
         name: '--tui-text-01',
-        desc: $localize`Primary text and hedings`,
+        desc: $localize`Primary text and headings`,
     },
     {
         name: '--tui-text-02',
@@ -299,7 +299,7 @@ export const TEXT: ReadonlyArray<Color> = [
 export const TEXT_NIGHT: ReadonlyArray<Color> = [
     {
         name: '--tui-text-01-night',
-        desc: $localize`Primary text and hedings`,
+        desc: $localize`Primary text and headings`,
     },
     {
         name: '--tui-text-02-night',

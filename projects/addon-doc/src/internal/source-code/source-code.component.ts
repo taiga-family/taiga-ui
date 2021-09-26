@@ -17,6 +17,12 @@ export class TuiDocSourceCodeComponent {
     @Input()
     package = '';
 
+    @Input()
+    type = '';
+
+    @Input()
+    path = '';
+
     constructor(
         @Inject(TUI_DOC_SOURCE_CODE)
         readonly sourceCode: PolymorpheusContent<TuiDocSourceCodePathOptions>,
@@ -24,17 +30,21 @@ export class TuiDocSourceCodeComponent {
     ) {}
 
     get pathOptions(): TuiDocSourceCodePathOptions {
-        return this.getPathOptions(this.header, this.package);
+        return this.getPathOptions(this.header, this.package, this.type, this.path);
     }
 
     @tuiPure
     private getPathOptions(
         header: string,
         packageName: string,
+        type: string,
+        path: string,
     ): TuiDocSourceCodePathOptions {
         return {
             header,
             package: packageName,
+            type,
+            path,
         };
     }
 }

@@ -4,6 +4,7 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
+    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -20,7 +21,7 @@ import {tuiInsertHtml} from '@taiga-ui/addon-editor/utils';
 import {
     EMPTY_FUNCTION,
     getClipboardDataText,
-    getClosestKeyboardFocusable,
+    getClosestFocusable,
     isNativeFocused,
     preventDefault,
     setNativeFocused,
@@ -35,6 +36,8 @@ import {
 import {TUI_SANITIZER} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
 import {filter, map, mapTo, take, takeUntil} from 'rxjs/operators';
+
+const PADDING = 26;
 
 @Directive({
     selector: 'iframe[tuiDesignMode]',
@@ -62,6 +65,9 @@ export class TuiDesignModeDirective
 
     @Output()
     readonly focusedChange = new EventEmitter<boolean>();
+
+    @HostBinding('style.pointerEvents')
+    pointerEvents = 'all';
 
     private onTouched = EMPTY_FUNCTION;
 
@@ -126,6 +132,12 @@ export class TuiDesignModeDirective
         this.initDOM();
         this.initObserver();
         this.initSubscriptions();
+    }
+
+    @HostListener('document:mousedown', ['"none"'])
+    @HostListener('document:mouseup', ['"all"'])
+    onPointer(pointerEvents: 'all' | 'none') {
+        this.pointerEvents = pointerEvents;
     }
 
     writeValue(value: string) {
@@ -212,7 +224,7 @@ export class TuiDesignModeDirective
 
                 event.preventDefault();
 
-                const element = getClosestKeyboardFocusable(
+                const element = getClosestFocusable(
                     this.elementRef.nativeElement,
                     event.shiftKey,
                     this.elementRef.nativeElement.ownerDocument.body,
@@ -342,11 +354,18 @@ export class TuiDesignModeDirective
     }
 
     private updateHeight() {
-        this.renderer.setAttribute(this.elementRef.nativeElement, 'height', '0');
+        if (!this.documentRef) {
+            return;
+        }
+
+        const range = this.documentRef.createRange();
+
+        range.selectNodeContents(this.documentRef.body);
+
         this.renderer.setAttribute(
             this.elementRef.nativeElement,
             'height',
-            this.documentRef ? String(this.documentRef.body.offsetHeight) : '',
+            String(range.getBoundingClientRect().height + PADDING),
         );
     }
 

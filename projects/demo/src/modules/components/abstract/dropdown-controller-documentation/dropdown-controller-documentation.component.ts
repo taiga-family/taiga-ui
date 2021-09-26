@@ -1,7 +1,23 @@
 import {Component, Inject} from '@angular/core';
+import {
+    TuiDropdownWidthT,
+    TuiHorizontalDirection,
+    TuiVerticalDirection,
+} from '@taiga-ui/core';
 import {changeDetection} from '../../../../change-detection-strategy';
 import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../reactive-field';
+
+export interface ExampleTuiDropdown {
+    dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection>;
+    dropdownDirection: TuiVerticalDirection | null;
+    dropdownLimitWidthVariants: readonly TuiDropdownWidthT[];
+    dropdownLimitWidth: TuiDropdownWidthT | null;
+    dropdownAlignVariants: ReadonlyArray<TuiHorizontalDirection>;
+    dropdownAlign: TuiHorizontalDirection;
+    dropdownMinHeight: number;
+    dropdownMaxHeight: number;
+    dropdownSided: boolean;
+}
 
 @Component({
     selector: 'dropdown-controller-documentation',
@@ -10,7 +26,6 @@ import {AbstractExampleTuiReactiveField} from '../reactive-field';
 })
 export class DropdownControllerDocumentationComponent {
     constructor(
-        @Inject(ABSTRACT_PROPS_ACCESSOR)
-        readonly documentedComponent: AbstractExampleTuiReactiveField,
+        @Inject(ABSTRACT_PROPS_ACCESSOR) readonly documentedComponent: ExampleTuiDropdown,
     ) {}
 }

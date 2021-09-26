@@ -9,7 +9,7 @@
         </div>
     </div>
     <header tuiDocHeader>
-        <label>
+        <label class="night-mode">
             Night mode
             <tui-toggle
                 class="tui-space_left-2"
@@ -19,6 +19,9 @@
         </label>
         <ng-content select="tuiDocHeader"></ng-content>
     </header>
+    <ng-container ngProjectAs="tuiOverContent">
+        <ng-content select="tuiOverContent"></ng-content>
+    </ng-container>
     <ng-container ngProjectAs="tuiOverDialogs">
         <ng-content select="tuiOverDialogs"></ng-content>
     </ng-container>

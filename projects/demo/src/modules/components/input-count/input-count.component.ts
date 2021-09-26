@@ -4,7 +4,11 @@ import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 
+import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
+import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
+
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
+import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -13,8 +17,8 @@ import {FormControl} from '@angular/forms';
 import {TuiSizeL} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-tui-input-count',
@@ -27,10 +31,11 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiInputCountComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputCountComponent extends AbstractExampleTuiControl {
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleDefineOptions = exampleDefineOptions;
 
     readonly example1: FrontEndExample = {
         HTML: example1Html,
@@ -40,6 +45,11 @@ export class ExampleTuiInputCountComponent extends AbstractExampleTuiReactiveFie
     readonly example2: FrontEndExample = {
         HTML: example2Html,
         TypeScript: example2Ts,
+    };
+
+    readonly example3: FrontEndExample = {
+        HTML: example3Html,
+        TypeScript: example3Ts,
     };
 
     min = 0;

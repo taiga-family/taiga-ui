@@ -11,6 +11,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     clamp,
+    nonNegativeFiniteAssertion,
     quantize,
     round,
     setNativeFocused,
@@ -19,7 +20,12 @@ import {
     TuiNativeFocusableElement,
     typedFromEvent,
 } from '@taiga-ui/cdk';
-import {TuiPluralize, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {
+    TuiPluralize,
+    tuiPluralizeToICU,
+    TuiSizeS,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
@@ -58,8 +64,17 @@ export abstract class AbstractTuiSlider<T>
     steps = 0;
 
     @Input()
+    @tuiDefaultProp(nonNegativeFiniteAssertion, 'Quantum must be a non-negative number')
+    quantum = 0;
+
+    // TODO: remove setter in v3.0:
+    @Input()
     @tuiDefaultProp()
-    pluralize: TuiPluralize | null = null;
+    set pluralize(pluralize: TuiPluralize | Record<string, string> | null) {
+        this.pluralizeMap = Array.isArray(pluralize)
+            ? tuiPluralizeToICU(pluralize)
+            : pluralize;
+    }
 
     @Input()
     @HostBinding('attr.data-tui-host-size')
@@ -73,6 +88,8 @@ export abstract class AbstractTuiSlider<T>
     focusVisibleLeft = false;
 
     focusVisibleRight = false;
+
+    pluralizeMap: Record<string, string> | null = null;
 
     @ViewChild('dotLeft')
     protected dotLeft?: ElementRef<TuiNativeFocusableElement>;
@@ -106,6 +123,14 @@ export abstract class AbstractTuiSlider<T>
 
     get length(): number {
         return this.max - this.min;
+    }
+
+    get computedStep(): number {
+        if (this.steps) {
+            return 1 / this.steps;
+        }
+
+        return this.quantum ? this.quantum / this.length : SLIDER_KEYBOARD_STEP;
     }
 
     get isLeftFocusable(): boolean {
@@ -215,10 +240,6 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$.next(event);
     }
 
-    isPluralized(pluralize: TuiPluralize | null): pluralize is TuiPluralize {
-        return pluralize !== null && pluralize.length === 3;
-    }
-
     decrement(right: boolean) {
         this.processStep(false, right);
     }
@@ -282,6 +303,19 @@ export abstract class AbstractTuiSlider<T>
         _: boolean,
     ): number {
         return this.getFractionFromEvents(rect, clientX);
+    }
+
+    protected valueGuard(value: number): number {
+        return this.quantum
+            ? clamp(
+                  round(
+                      Math.round(value / this.quantum) * this.quantum,
+                      TUI_FLOATING_PRECISION,
+                  ),
+                  this.min,
+                  this.max,
+              )
+            : clamp(value, this.min, this.max);
     }
 
     private processFocus(right: boolean) {

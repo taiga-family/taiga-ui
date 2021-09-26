@@ -1,4 +1,4 @@
-<tui-doc-page i18n-header header="Tabs" package="KIT">
+<tui-doc-page i18n-header header="Tabs" package="KIT" type="components">
     <ng-template pageTab>
         <p i18n>
             Component for creating tabs. It emulates appearance and behaviour of
@@ -10,14 +10,6 @@
             If you use <code>routerLink</code>, add also
             <code>routerLinkActive</code> directive.
         </tui-notification>
-
-        <tui-doc-example id="android" heading="Android" [content]="example1">
-            <tui-tabs-example-1></tui-tabs-example-1>
-        </tui-doc-example>
-
-        <tui-doc-example id="ios" heading="iOS" [content]="example2">
-            <tui-tabs-example-2></tui-tabs-example-2>
-        </tui-doc-example>
 
         <tui-doc-example id="desktop" heading="Desktop" [content]="example3">
             <tui-tabs-example-3></tui-tabs-example-3>
@@ -39,6 +31,18 @@
         <tui-doc-example id="stepper" heading="Stepper" [content]="example6">
             <tui-tabs-example-6></tui-tabs-example-6>
         </tui-doc-example>
+
+        <tui-doc-example id="closing" heading="Closing" [content]="example7">
+            <tui-tabs-example-7></tui-tabs-example-7>
+        </tui-doc-example>
+
+        <tui-doc-example id="android" heading="Android" [content]="example1">
+            <tui-tabs-example-1></tui-tabs-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example id="ios" heading="iOS" [content]="example2">
+            <tui-tabs-example-2></tui-tabs-example-2>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -50,7 +54,7 @@
                 [(activeItemIndex)]="activeItemIndex"
             >
                 <ng-container *ngFor="let button of buttons">
-                    <button *tuiTab tuiTab type="button">{{ button}}</button>
+                    <button *tuiTab tuiTab>{{ button}}</button>
                 </ng-container>
             </tui-tabs-with-more>
         </tui-doc-demo>

@@ -19,9 +19,9 @@ import {
     TuiCurrency,
     TuiCurrencyCode,
     TuiCurrencyVariants,
-    TuiMoneySign,
+    TuiMoneySignT,
 } from '@taiga-ui/addon-commerce';
-import {TuiDecimal} from '@taiga-ui/core';
+import {TuiDecimalT} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -55,11 +55,7 @@ export class ExampleTuiMoneyComponent {
         HTML: example4Html,
     };
 
-    readonly decimalVariants: ReadonlyArray<TuiDecimal> = [
-        TuiDecimal.NotZero,
-        TuiDecimal.Always,
-        TuiDecimal.Never,
-    ];
+    readonly decimalVariants: readonly TuiDecimalT[] = ['not-zero', 'always', 'never'];
 
     decimal = this.decimalVariants[0];
 
@@ -80,12 +76,12 @@ export class ExampleTuiMoneyComponent {
 
     colored = false;
 
-    readonly signVariants: ReadonlyArray<TuiMoneySign> = [
-        TuiMoneySign.NegativeOnly,
-        TuiMoneySign.Always,
-        TuiMoneySign.Never,
-        TuiMoneySign.ForceNegative,
-        TuiMoneySign.ForcePositive,
+    readonly signVariants: readonly TuiMoneySignT[] = [
+        'negative-only',
+        'always',
+        'never',
+        'force-negative',
+        'force-positive',
     ];
 
     sign = this.signVariants[0];

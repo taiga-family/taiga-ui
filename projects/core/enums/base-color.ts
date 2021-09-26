@@ -1,4 +1,6 @@
-// TODO: Consider removing
+/**
+ * @deprecated
+ */
 export const enum TuiBaseColor {
     Primary = 'primary',
     Secondary = 'secondary',

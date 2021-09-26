@@ -11,7 +11,7 @@ import {TuiInputInlineComponent} from './input-inline.component';
         FormsModule,
         TuiFocusableModule,
         TuiFocusedModule,
-        TuiMaskAccessorModule
+        TuiMaskAccessorModule,
     ],
     declarations: [TuiInputInlineComponent],
     exports: [TuiInputInlineComponent],

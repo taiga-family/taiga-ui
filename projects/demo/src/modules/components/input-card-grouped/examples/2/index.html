@@ -1,0 +1,24 @@
+<tui-input-card-grouped #component [formControl]="control">
+    <tui-data-list *tuiDataList (keydown.escape)="onEsc(component)">
+        <button tuiOption size="l" (click)="onClick(component)">
+            <tui-svg class="new" src="tuiIconPlus"></tui-svg>
+            <span class="label">New card</span>
+        </button>
+        <button
+            *ngFor="let item of items; let index = index"
+            tuiOption
+            size="l"
+            [value]="item"
+        >
+            <tui-card
+                size="s"
+                class="card"
+                [cardNumber]="item.card.slice(-4)"
+            ></tui-card>
+            <label tuiLabel class="label" [label]="item.bank">
+                {{item.name}}
+            </label>
+            <span>{{item.card.slice(-5)}}</span>
+        </button>
+    </tui-data-list>
+</tui-input-card-grouped>

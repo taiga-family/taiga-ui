@@ -1,4 +1,5 @@
 import {LanguageCore} from '@taiga-ui/i18n/interfaces';
+import {TUI_ENGLISH_LANGUAGE_COUNTRIES} from '@taiga-ui/i18n/languages/english';
 
 export const TUI_GERMAN_LANGUAGE_CORE: LanguageCore = {
     months: [
@@ -19,5 +20,7 @@ export const TUI_GERMAN_LANGUAGE_CORE: LanguageCore = {
     nothingFoundMessage: 'Keine Ergebnisse',
     defaultErrorMessage: 'Wert ist ungültig',
     spinTexts: ['Zurück', 'Weiter'],
-    shortWeekDays: ['Mon', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+    shortWeekDays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+    // TODO: i18n replace with current language countries list
+    countries: TUI_ENGLISH_LANGUAGE_COUNTRIES,
 };

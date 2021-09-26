@@ -1,4 +1,4 @@
-<tui-doc-page header="HostedDropdown" package="CORE">
+<tui-doc-page header="HostedDropdown" package="CORE" type="components">
     <ng-template pageTab>
         <p i18n>
             <code>tui-hosted-dropdown</code> is a wrapper for focusable elements
@@ -39,6 +39,19 @@
         >
             <tui-hosted-dropdown-example-3></tui-hosted-dropdown-example-3>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="hover"
+            i18n-heading
+            heading="On hover"
+            [content]="example4"
+        >
+            <tui-notification
+                >Add <code>TuiDropdownHoverModule</code> to use
+                it</tui-notification
+            >
+            <tui-hosted-dropdown-example-4></tui-hosted-dropdown-example-4>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -62,7 +75,7 @@
                 </tui-input>
             </tui-hosted-dropdown>
         </tui-doc-demo>
-        <ng-template #dropdown="polymorpheus" polymorpheus>
+        <ng-template #dropdown>
             <div class="dropdown">
                 <div i18n>Do you like using Taiga UI?</div>
                 <p class="buttons">

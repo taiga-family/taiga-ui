@@ -1,9 +1,9 @@
 import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {TUI_DEFAULT_MATCHER, tuiReplayedValueChangesFrom} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {Observable, of} from 'rxjs';
-import {map, switchMap} from 'rxjs/operators';
+import {map, startWith, switchMap} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -23,6 +23,7 @@ class User {
 const DATA: ReadonlyArray<User> = [
     new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
     new User('Alex', 'Inkin', avatar),
+    new User('Gabriel José', 'de la Concordia «Gabo» García Márquez'),
 ];
 
 @Component({
@@ -38,7 +39,8 @@ export class TuiInputExample8 {
     firstName = '';
     lastName = '';
 
-    readonly items$ = tuiReplayedValueChangesFrom<string>(this.control).pipe(
+    readonly items$ = this.control.valueChanges.pipe(
+        startWith(''),
         switchMap(value =>
             this.request(value).pipe(
                 map(response => {
@@ -52,6 +54,7 @@ export class TuiInputExample8 {
                 }),
             ),
         ),
+        startWith(DATA),
     );
 
     onClick({lastName, firstName}: User) {

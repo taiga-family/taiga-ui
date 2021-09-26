@@ -14,11 +14,11 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {TuiTransactionAutofillName} from '@taiga-ui/cdk';
-import {TuiDecimal} from '@taiga-ui/core';
+import {TuiDecimalT} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
 
 @Component({
     selector: 'example-tui-input-number',
@@ -31,7 +31,7 @@ import {AbstractExampleTuiReactiveField} from '../abstract/reactive-field';
         },
     ],
 })
-export class ExampleTuiInputNumberComponent extends AbstractExampleTuiReactiveField {
+export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
@@ -63,11 +63,7 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiReactiveFi
 
     autocomplete: TuiTransactionAutofillName | null = null;
 
-    readonly decimalVariants: ReadonlyArray<TuiDecimal> = [
-        TuiDecimal.NotZero,
-        TuiDecimal.Always,
-        TuiDecimal.Never,
-    ];
+    readonly decimalVariants: readonly TuiDecimalT[] = ['not-zero', 'always', 'never'];
 
     decimal = this.decimalVariants[0];
 
@@ -76,6 +72,10 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiReactiveFi
     readonly precisionVariants: readonly number[] = [2, 3, 4];
 
     precision = this.precisionVariants[0];
+
+    readonly postfixVariants: readonly string[] = ['', '$', 'GBP'];
+
+    postfix = this.postfixVariants[0];
 
     readonly control = new FormControl(6432, Validators.required);
 }
