@@ -1396,6 +1396,26 @@ export const ROUTES = [
             title: 'Mapper',
         },
     },
+    {
+        path: 'pipes/stringify',
+        loadChildren: () =>
+            import(`../pipes/stringify/stringify.module`).then(
+                m => m.ExampleTuiStringifyModule,
+            ),
+        data: {
+            title: 'Stringify',
+        },
+    },
+    {
+        path: 'pipes/stringify-content',
+        loadChildren: () =>
+            import(`../pipes/stringify-content/stringify-content.module`).then(
+                m => m.ExampleTuiStringifyContentModule,
+            ),
+        data: {
+            title: 'StringifyContent',
+        },
+    },
     // SERVICES
     {
         path: 'services/notifications-service',

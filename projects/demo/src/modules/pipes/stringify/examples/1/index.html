@@ -1,0 +1,25 @@
+<tui-combo-box
+    class="b-form"
+    [stringify]="'name' | tuiStringify"
+    [(ngModel)]="value"
+>
+    Pick your guy
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items | tuiFilterByInputWith : ('name' | tuiStringify)"
+        [itemContent]="'name' | tuiStringify | tuiStringifyContent"
+    ></tui-data-list-wrapper>
+</tui-combo-box>
+<p>
+    <tui-notification>
+        With
+        <a tuiLink routerLink="/pipes/filter-by-input">
+            <code>FilterByInput</code>
+        </a>
+        and
+        <a tuiLink routerLink="/pipes/stringify-content">
+            <code>StringifyContent</code>
+        </a>
+        pipes.
+    </tui-notification>
+</p>
