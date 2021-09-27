@@ -8,7 +8,7 @@ import {TuiValueContentContext} from '@taiga-ui/core';
 export class TuiStringifyContentPipe implements PipeTransform {
     transform<T>(
         stringify: TuiStringHandler<T>,
-    ): (value: TuiValueContentContext<T>) => string {
+    ): TuiStringHandler<TuiValueContentContext<T>> {
         return ({$implicit}) => stringify($implicit);
     }
 }

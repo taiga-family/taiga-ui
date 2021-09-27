@@ -2,11 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
-interface User {
-    name: string;
-    role: string;
-}
-
 @Component({
     selector: 'tui-stringify-example1',
     templateUrl: './index.html',
@@ -16,7 +11,7 @@ interface User {
 export class TuiStringifyExample1 {
     value = null;
 
-    readonly items: readonly User[] = [
+    readonly items = [
         {
             name: 'John Cleese',
             role: 'Black Knight',
@@ -25,5 +20,5 @@ export class TuiStringifyExample1 {
             name: 'Eric Idle',
             role: 'Dead collector',
         },
-    ];
+    ] as const;
 }
