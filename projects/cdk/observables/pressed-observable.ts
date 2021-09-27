@@ -3,7 +3,14 @@ import {filter, mapTo, startWith, switchMapTo, take} from 'rxjs/operators';
 import {mouseDragFinishFrom} from './mouse-drag-finish-from';
 import {typedFromEvent} from './typed-from-event';
 
-export function pressedObservable(element: Element): Observable<boolean> {
+export interface TuiPressedObservableOptions {
+    onlyTrusted: boolean;
+}
+
+export function pressedObservable(
+    element: Element,
+    {onlyTrusted}: TuiPressedObservableOptions = {onlyTrusted: true},
+): Observable<boolean> {
     const {ownerDocument} = element;
 
     if (!ownerDocument) {
@@ -11,7 +18,7 @@ export function pressedObservable(element: Element): Observable<boolean> {
     }
 
     return typedFromEvent(element, 'mousedown').pipe(
-        filter(({isTrusted}) => isTrusted),
+        filter(({isTrusted}) => isTrusted || !onlyTrusted),
         switchMapTo(
             mouseDragFinishFrom(ownerDocument).pipe(
                 mapTo(false),

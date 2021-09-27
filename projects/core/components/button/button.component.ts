@@ -14,6 +14,7 @@ import {
     isNativeFocused,
     pressedObservable,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TUI_TAKE_ONLY_TRUSTED_EVENTS,
     tuiDefaultProp,
     TuiDestroyService,
     TuiFocusableElementAccessor,
@@ -82,6 +83,8 @@ export class TuiButtonComponent
         @Inject(TuiHoveredService) hoveredService: TuiHoveredService,
         @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TUI_TAKE_ONLY_TRUSTED_EVENTS)
+        private readonly takeOnlyTrustedEvents: boolean,
     ) {
         super();
 
@@ -91,7 +94,9 @@ export class TuiButtonComponent
             .subscribe(hovered => {
                 this.updateHovered(hovered);
             });
-        pressedObservable(elementRef.nativeElement)
+        pressedObservable(elementRef.nativeElement, {
+            onlyTrusted: this.takeOnlyTrustedEvents,
+        })
             .pipe(watch(changeDetectorRef), takeUntil(destroy$))
             .subscribe(pressed => {
                 this.updatePressed(pressed);
