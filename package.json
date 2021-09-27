@@ -3,6 +3,7 @@
     "version": "2.18.0",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "scripts": {
+        "postinstall": "husky install",
         "start": "nx serve",
         "start:ssl": "nx serve --ssl",
         "start:ru": "nx serve --configuration ru",
@@ -157,7 +158,7 @@
         "find-in-files": "0.5.0",
         "firebase-tools": "^9.18.0",
         "http-server": "^0.12.3",
-        "husky": "^3.0.9",
+        "husky": "7.0.2",
         "jasmine-core": "^3.4.0",
         "jasmine-spec-reporter": "^4.2.1",
         "karma": "^4.0.1",
@@ -186,12 +187,6 @@
         "ts-node": "~7.0.0",
         "tslint": "~5.15.0",
         "typescript": "~3.8.3"
-    },
-    "husky": {
-        "hooks": {
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-            "pre-commit": "lint-staged && npm run typecheck"
-        }
     },
     "lint-staged": {
         "*.{js,ts,html,md,less,json}": [
