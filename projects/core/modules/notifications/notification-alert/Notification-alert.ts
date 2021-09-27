@@ -1,5 +1,3 @@
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiNotification} from '@taiga-ui/core/enums';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observer} from 'rxjs';
 import {TuiNotificationContentContext} from '../notification-content-context';
@@ -9,15 +7,15 @@ import {
 } from '../notification-options';
 
 export class NotificationAlert<O, I> {
-    readonly status?: TuiNotification;
+    readonly status = this.options.status;
 
-    readonly hasIcon?: boolean;
+    readonly hasIcon = this.options.hasIcon;
 
-    readonly autoClose?: boolean | number;
+    readonly autoClose = this.options.autoClose;
 
-    readonly hasCloseButton?: boolean;
+    readonly hasCloseButton = this.options.hasCloseButton;
 
-    readonly label?: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>>;
+    readonly label = this.options.label;
 
     readonly data!: I;
 
@@ -28,18 +26,12 @@ export class NotificationAlert<O, I> {
     constructor(
         observer: Observer<O>,
         content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
-        options: TuiNotificationOptions | TuiNotificationOptionsWithData<I>,
+        private readonly options: Required<
+            TuiNotificationOptions | TuiNotificationOptionsWithData<I>
+        >,
     ) {
-        const {label, status, hasIcon, autoClose, hasCloseButton} = options;
-
         this.observer = observer;
         this.content = content;
-
-        this.label = label;
-        this.status = status;
-        this.hasIcon = hasIcon;
-        this.autoClose = autoClose;
-        this.hasCloseButton = hasCloseButton;
 
         if (options && this.withData(options)) {
             this.data = options.data;

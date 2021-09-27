@@ -1,5 +1,6 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk';
+import {NotificationTokenOptions, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, Observer} from 'rxjs';
 import {NotificationAlert} from './notification-alert/Notification-alert';
@@ -19,6 +20,11 @@ export class TuiNotificationsService {
     /** @internal */
     readonly items$ = new BehaviorSubject<ReadonlyArray<NotificationAlert<any, any>>>([]);
 
+    constructor(
+        @Inject(TUI_NOTIFICATION_OPTIONS)
+        public readonly options: NotificationTokenOptions,
+    ) {}
+
     show<O = void>(
         content: PolymorpheusContent<TuiNotificationContentContext<O>>,
     ): Observable<O>;
@@ -37,7 +43,10 @@ export class TuiNotificationsService {
         return new Observable((observer: Observer<O>) => {
             tuiAssert.assert(!!this.items$.observers.length, NO_HOST);
 
-            const notification = new NotificationAlert(observer, content, options);
+            const notification = new NotificationAlert(observer, content, {
+                ...this.options,
+                ...options,
+            });
 
             this.items$.next([...this.items$.value, notification]);
 
