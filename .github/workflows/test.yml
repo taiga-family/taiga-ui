@@ -18,14 +18,13 @@ on:
 
 env:
     NX_BRANCH: ${{ github.event.number }}
+    NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+    NX_MAX_PARALLEL: 3
 
 jobs:
     test:
         # Setup part
         runs-on: ubuntu-latest
-        env:
-            NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-            NX_MAX_PARALLEL: 3
         steps:
             - uses: actions/checkout@v2
             - name: Use Node.js
@@ -101,11 +100,6 @@ jobs:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/addon-table/lcov.info
                   parallel: true
-
-    finish:
-        needs: test
-        runs-on: ubuntu-latest
-        steps:
             - name: Coveralls Finished
               continue-on-error: true
               uses: coverallsapp/github-action@master
