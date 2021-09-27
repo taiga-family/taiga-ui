@@ -51,58 +51,13 @@ jobs:
                               --maxParallel=${{ env.NX_MAX_PARALLEL }} \
                               --browsers=ChromeHeadless --code-coverage=true \
                               --projects=$ALL_LIBS
-            - name: Coveralls(cdk)
-              continue-on-error: true
+
+            - name: Get path to lcov file
+              id: get_lcov_path
+              shell: bash
+              run: printf '::set-output name=lcov_path::%s\n' coverage/*/lcov.info
+            - name: Upload coverage to Coveralls
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/cdk/lcov.info
-                  parallel: true
-            - name: Coveralls(core)
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/core/lcov.info
-                  parallel: true
-            - name: Coveralls(kit)
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/kit/lcov.info
-                  parallel: true
-            - name: Coveralls(addon-charts)
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/addon-charts/lcov.info
-                  parallel: true
-            - name: Coveralls(addon-commerce)
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/addon-commerce/lcov.info
-                  parallel: true
-            - name: Coveralls(addon-editor)
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/addon-editor/lcov.info
-                  parallel: true
-            - name: Coveralls(addon-table)
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/addon-table/lcov.info
-                  parallel: true
-            - name: Coveralls Finished
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  parallel-finished: true
+                  path-to-lcov: ${{ steps.get_lcov_path.outputs.lcov_path }}
