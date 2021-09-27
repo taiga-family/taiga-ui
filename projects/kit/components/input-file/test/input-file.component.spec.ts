@@ -13,7 +13,7 @@ describe('InputFile', () => {
     @Component({
         template: `
             <tui-input-file
-                accept="image/*,.txt"
+                [accept]="accept"
                 [(ngModel)]="files"
                 [multiple]="true"
                 [loadingFiles]="loadingFiles"
@@ -42,6 +42,7 @@ describe('InputFile', () => {
         readOnly = false;
         disabled = false;
         size: TuiSizeL = 'm';
+        accept = 'image/*,.txt';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -177,6 +178,32 @@ describe('InputFile', () => {
 
         expect(testComponent.rejectedFiles.length).toBe(1);
         expect(testComponent.files).toEqual([text, image]);
+    });
+
+    it('does not rejects formats with whitespaces', () => {
+        fixture.componentInstance.files = [];
+        fixture.componentInstance.accept =
+            'application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf';
+        fixture.detectChanges();
+
+        const text: TuiFileLike = {
+            name: 'test.pdf',
+            type: 'application/pdf',
+        };
+
+        const files: FileList = [text] as any;
+
+        testComponent.component.onDropped(
+            {files: files} as any,
+            {
+                maxSizeRejectionReason: 'File exceeds size ',
+                formatRejectionReason: 'Wrong file format',
+            },
+            ['B', 'KB', 'MB'],
+        );
+        fixture.detectChanges();
+
+        expect(testComponent.rejectedFiles.length).toBe(0);
     });
 
     it('if no files in control, not drawing files', () => {

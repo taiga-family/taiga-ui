@@ -306,7 +306,10 @@ export class TuiInputFileComponent
 
     @tuiPure
     private getAcceptArray(accept: string): readonly string[] {
-        return accept.toLowerCase().split(',');
+        return accept
+            .toLowerCase()
+            .split(',')
+            .map(format => format.trim());
     }
 
     private processSelectedFiles(
