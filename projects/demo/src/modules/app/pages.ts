@@ -1088,6 +1088,19 @@ export const pages: TuiDocPages = [
                 keywords: 'mapper, мап, преобразование, пайп, pipe',
                 route: '/pipes/mapper',
             },
+            {
+                section: $localize`Tools`,
+                title: 'Stringify',
+                keywords: 'string, tostring, мап, преобразование, пайп, pipe',
+                route: '/pipes/stringify',
+            },
+            {
+                section: $localize`Tools`,
+                title: 'StringifyContent',
+                keywords:
+                    'string, tostring, content, polymorpheus, мап, преобразование, пайп, pipe',
+                route: '/pipes/stringify-content',
+            },
         ],
     },
     {

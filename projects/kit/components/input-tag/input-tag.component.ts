@@ -338,21 +338,17 @@ export class TuiInputTagComponent
     }
 
     onTagKeyDownArrowLeft(currentIndex: number) {
-        if (currentIndex <= 0) {
-            return;
+        if (currentIndex > 0) {
+            this.onScrollKeyDown(currentIndex, -1);
         }
-
-        this.onScrollKeyDown(currentIndex, -1);
     }
 
     onTagKeyDownArrowRight(currentIndex: number) {
         if (currentIndex === this.value.length - 1) {
             this.focusInput();
-
-            return;
+        } else {
+            this.onScrollKeyDown(currentIndex, 1);
         }
-
-        this.onScrollKeyDown(currentIndex, 1);
     }
 
     onTagEdited(value: string, editedTag: string) {
