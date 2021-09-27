@@ -53,6 +53,8 @@ enum TableComands {
     DeleteRow,
 }
 
+const EDITOR_BLANK_COLOR = 'rgb(51, 51, 51)';
+
 // @dynamic
 @Component({
     selector: 'tui-toolbar[new]',
@@ -199,11 +201,15 @@ export class TuiToolbarNewComponent {
     }
 
     get foreColorBlank(): boolean {
-        return this.foreColor === 'rgb(51, 51, 51)';
+        return this.isBlankColor(this.foreColor);
     }
 
     get hiliteColorBlank(): boolean {
-        return this.hiliteColor === 'rgb(51, 51, 51)';
+        return this.isBlankColor(this.hiliteColor);
+    }
+
+    get cellColorBlank(): boolean {
+        return this.isBlankColor(this.cellColor);
     }
 
     get undoDisabled(): boolean {
@@ -231,11 +237,15 @@ export class TuiToolbarNewComponent {
     }
 
     get foreColor(): string {
-        return this.editor.getFontColor() || 'rgb(51, 51, 51)';
+        return this.editor.getFontColor() || EDITOR_BLANK_COLOR;
     }
 
     get hiliteColor(): string {
-        return this.editor.getBackgroundColor() || 'rgb(51, 51, 51)';
+        return this.editor.getBackgroundColor() || EDITOR_BLANK_COLOR;
+    }
+
+    get cellColor(): string {
+        return this.editor.getCellColor() || EDITOR_BLANK_COLOR;
     }
 
     get canMergeCells(): boolean {
@@ -439,6 +449,10 @@ export class TuiToolbarNewComponent {
         this.editor.setBackgroundColor(color);
     }
 
+    setCellColor(color: string) {
+        this.editor.setCellColor(color);
+    }
+
     toggleBold() {
         this.editor.toggleBold();
     }
@@ -489,6 +503,10 @@ export class TuiToolbarNewComponent {
 
     private addImage(image: string) {
         this.editor.setImage(image);
+    }
+
+    private isBlankColor(color: string): boolean {
+        return color === EDITOR_BLANK_COLOR;
     }
 
     private focusFirst() {

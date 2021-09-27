@@ -16,7 +16,7 @@
     (mousedown)="onMouseDown($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
-    <div class="t-toolbar-wrapper">
+    <div class="t-toolbar-wrapper" (mousedown.prevent)="0">
         <tui-toolbar
             *ngIf="editor"
             new

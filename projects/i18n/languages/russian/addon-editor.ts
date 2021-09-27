@@ -39,6 +39,7 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         mergeCells: 'Объединить ячейки',
         splitCells: 'Разъединить ячейки',
         rowsColumnsManaging: 'Управление строками и столбцами',
+        cellColor: 'Цвет ячейки',
     },
     editorTableCommands: [
         ['Добавить столбец слева', 'Добавить столбец справа'],
