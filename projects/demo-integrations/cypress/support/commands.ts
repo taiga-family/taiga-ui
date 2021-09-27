@@ -7,6 +7,8 @@ declare global {
         interface Chainable<Subject = any> {
             getByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
 
+            findByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
+
             goToDemoPage: typeof goToDemoPage;
             hideHeader: typeof hideHeader;
         }
@@ -14,6 +16,9 @@ declare global {
 }
 
 Cypress.Commands.add('getByAutomationId', id => cy.get(`[automation-id=${id}]`));
+Cypress.Commands.add('findByAutomationId', {prevSubject: true}, (subject, id) =>
+    subject.find(`[automation-id=${id}]`),
+);
 Cypress.Commands.add('goToDemoPage', goToDemoPage);
 Cypress.Commands.add('hideHeader', hideHeader);
 

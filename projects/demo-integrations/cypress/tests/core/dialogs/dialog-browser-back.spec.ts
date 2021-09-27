@@ -15,7 +15,7 @@ describe('Dialogs + browser back navigation', () => {
         );
 
     beforeEach(() => {
-        cy.viewport(720, 900);
+        cy.viewport(1280, 720);
         cy.visit('/'); // need to check that browser back navigation is not broken after closing all dialogs
     });
 
@@ -25,7 +25,11 @@ describe('Dialogs + browser back navigation', () => {
         });
 
         it('closes dialog on browser back navigation', () => {
-            cy.getByAutomationId('tui-doc-example').eq(1).find('button').first().click();
+            cy.get('#data')
+                .findByAutomationId('tui-doc-example')
+                .find('button')
+                .first()
+                .click();
             waitKitDialog();
 
             cy.get('tui-dialog').get('button').contains('Show one more dialog').click();
