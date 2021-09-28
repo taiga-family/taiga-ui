@@ -1,0 +1,26 @@
+<div
+    #parent
+    role="img"
+    class="tui-rating"
+    [class.tui-rating--touched]="touched"
+    [class.tui-rating--disable]="disabled"
+    [class.tui-rating--readonly]="tuiRateReadonly"
+    [attr.aria-label]="ratingState.selectedRate + ' Stars'"
+    [attr.tabindex]="ratingState.selectedRate === 0 && enabled ? 0 : -1"
+    (mouseleave)="ratesMouseLeave(parent)"
+>
+    <ng-container *tuiRepeatTimes="let index of tuiRateMax">
+        <tui-svg
+            *ngIf="{ rate: index + 1, selected: ratingState.selectedRate } as state"
+            class="tui-rating__rate"
+            [attr.tabindex]="state.selected === state.rate && enabled ? 0 : -1"
+            [style.color]="tuiRateColor"
+            [src]="state.selected >= state.rate ? this.tuiRateSelectedIcon : this.tuiRateEmptyIcon"
+            (mouseenter)="rateMouseEnter(parent, state.rate)"
+            (click)="ratesSetActive(state.rate)"
+            (keydown.enter)="ratesSetActive(state.rate)"
+            (focus)="rateOnFocus(state.rate)"
+            (blur)="rateOnBlur()"
+        ></tui-svg>
+    </ng-container>
+</div>

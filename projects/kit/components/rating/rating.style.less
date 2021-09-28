@@ -1,0 +1,23 @@
+@import 'taiga-ui-local';
+
+.tui-rating {
+    display: inline-flex;
+
+    &--disable {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    &__rate {
+        cursor: pointer;
+    }
+
+    &:not(&--readonly) &__rate {
+        transition: all 0.2s ease-in-out;
+        backface-visibility: hidden;
+
+        &:hover {
+            transform: scale(1.2) translateZ(0);
+        }
+    }
+}

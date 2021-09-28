@@ -1,0 +1,151 @@
+<tui-doc-page header="Rating" package="KIT" type="components">
+    <ng-template pageTab>
+        <p i18n>A rating indicates user interest in content</p>
+
+        <br />
+        <h2 i18n>ARIA</h2>
+
+        <p i18n>
+            The read only rating has a role of "img", and an aria-label that
+            describes the displayed rating.
+        </p>
+
+        <br />
+        <h2 i18n>Keyboard</h2>
+
+        <p i18n>
+            Tab will focus the current rating, and cursor keys control the
+            selected rating. The read only rating is not focusable.
+        </p>
+
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-rating-example-1></tui-rating-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="colors"
+            i18n-heading
+            heading="Customization"
+            [content]="example2"
+        >
+            <tui-rating-example-2></tui-rating-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-rating
+                [tuiRateMax]="tuiRateMax"
+                [tuiRateDisable]="tuiRateDisable"
+                [tuiRateColor]="tuiRateColor"
+                [tuiRateReadonly]="tuiRateReadonly"
+                [tuiRateEmptyIcon]="tuiRateEmptyIcon"
+                [tuiRateSelectedIcon]="tuiRateSelectedIcon"
+                [(tuiRateActive)]="tuiRateActive"
+            ></tui-rating>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyType="number"
+                documentationPropertyMode="input-output"
+                documentationPropertyName="tuiRateMax"
+                [documentationPropertyValue]="tuiRateMax"
+                (documentationPropertyValueChange)="tuiRateMax = $event"
+            ></ng-template>
+            <ng-template
+                i18n
+                documentationPropertyType="number"
+                documentationPropertyMode="input-output"
+                documentationPropertyName="tuiRateActive"
+                [documentationPropertyValue]="tuiRateActive"
+                (documentationPropertyValueChange)="tuiRateActive = $event"
+            ></ng-template>
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                documentationPropertyName="tuiRateReadonly"
+                [documentationPropertyValue]="tuiRateReadonly"
+                (documentationPropertyValueChange)="tuiRateReadonly = $event"
+            ></ng-template>
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                documentationPropertyName="tuiRateDisable"
+                [documentationPropertyValue]="tuiRateDisable"
+                (documentationPropertyValueChange)="tuiRateDisable = $event"
+            ></ng-template>
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="tuiRateColor"
+                [documentationPropertyValues]="tuiRateColors"
+                (documentationPropertyValueChange)="tuiRateColor = $event"
+            ></ng-template>
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="tuiRateEmptyIcon"
+                [documentationPropertyValues]="tuiRateEmptyIcons"
+                (documentationPropertyValueChange)="tuiRateEmptyIcon = $event"
+            ></ng-template>
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="tuiRateSelectedIcon"
+                [documentationPropertyValues]="tuiRateSelectedIcons"
+                (documentationPropertyValueChange)="tuiRateSelectedIcon = $event"
+            ></ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import
+                    <code>TuiRatingModule</code>
+                    into a module where you want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Optionally use the
+                    <code>TUI_RATING_OPTIONS</code>
+                    injection token to override the default options for the
+                    component.
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleDefineOptions"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,1 @@
+<tui-rating [(tuiRateActive)]="value"></tui-avatar>

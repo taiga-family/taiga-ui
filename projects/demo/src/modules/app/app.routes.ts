@@ -722,6 +722,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/rating',
+        loadChildren: () =>
+            import(`../components/rating/rating.module`).then(
+                m => m.ExampleTuiRatingModule,
+            ),
+        data: {
+            title: 'Rating',
+        },
+    },
+    {
         path: 'components/range',
         loadChildren: () =>
             import(`../components/range/range.module`).then(m => m.ExampleTuiRangeModule),

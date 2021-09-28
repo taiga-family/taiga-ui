@@ -1,0 +1,28 @@
+<div>
+    <p><b>Custom colors</b></p>
+
+    <p>Yellow</p>
+    <tui-rating
+        tuiRateColor="#faaf00"
+        [(tuiRateActive)]="firstRate"
+    ></tui-rating>
+
+    <p>10 stars</p>
+    <tui-rating
+        tuiRateColor="pink"
+        [tuiRateMax]="10"
+        [(tuiRateActive)]="secondRate"
+    ></tui-rating>
+</div>
+
+<div>
+    <p><b>Custom icons</b></p>
+
+    <p>
+        <tui-rating
+            tuiRateEmptyIcon="tuiIconHeartLarge"
+            tuiRateSelectedIcon="tuiIconHeartFilledLarge"
+            [(tuiRateActive)]="thirdRate"
+        ></tui-rating>
+    </p>
+</div>

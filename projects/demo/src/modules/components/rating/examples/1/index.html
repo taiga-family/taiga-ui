@@ -1,0 +1,40 @@
+<div>
+    <h2>Template Driven</h2>
+
+    <p><b>Controlled</b></p>
+    <tui-rating [(tuiRateActive)]="rateValue"></tui-rating>
+
+    <p><b>Read only</b></p>
+    <tui-rating
+        [tuiRateReadonly]="true"
+        [(tuiRateActive)]="rateValue"
+    ></tui-rating>
+
+    <p><b>Disabled</b></p>
+    <tui-rating
+        [tuiRateDisable]="true"
+        [(tuiRateActive)]="rateValue"
+    ></tui-rating>
+</div>
+
+<br />
+<br />
+
+<div [formGroup]="form">
+    <h2>Reactive Forms</h2>
+
+    <p><b>Controlled</b></p>
+    <tui-rating formControlName="rateControl"></tui-rating>
+
+    <ul>
+        <li>Value - {{ rateControl?.value }}</li>
+        <li>Touched - {{ rateControl?.touched }}</li>
+        <li>Disabled - {{ rateControl?.disabled }}</li>
+    </ul>
+
+    <br />
+
+    <button tuiButton type="button" size="xs" (click)="enableOrDisable()">
+        {{ rateControl?.disabled ? 'enable' : 'disable' }} form control
+    </button>
+</div>
