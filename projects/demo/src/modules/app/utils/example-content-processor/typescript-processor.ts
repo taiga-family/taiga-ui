@@ -1,13 +1,12 @@
-import {addImport} from '../../stackblitz/utils';
+import {TsFileParser} from '../../classes';
 
 export function processTs(fileContent: string): string {
-    const withChangeDetectionImport = addImport(
-        fileContent,
-        'ChangeDetectionStrategy',
-        '@angular/core',
-    );
+    const tsFileContent = new TsFileParser(fileContent);
 
-    return withChangeDetectionImport
+    tsFileContent.addImport('ChangeDetectionStrategy', '@angular/core');
+
+    return tsFileContent
+        .toString()
         .replace(/import {encapsulation} from '..\/.*';\n/gm, '')
         .replace(/import {changeDetection} from '..\/.*';\n/gm, '')
         .replace(/\n +encapsulation,/gm, '')

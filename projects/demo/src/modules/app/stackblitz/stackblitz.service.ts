@@ -10,60 +10,16 @@ import {Injectable} from '@angular/core';
 import stackblitz from '@stackblitz/sdk';
 import {CodeEditor} from '@taiga-ui/addon-doc';
 import {FrontEndExample} from '../../interfaces/front-end-example';
-import {isMainComponentFile, isTS} from '../utils';
+import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';
-import {addImport} from './utils';
+import {getComponentsClassNames, getSupportFiles, prepareLess} from './utils';
 
-const COMPONENT_SELECTOR = `selector: 'my-app',`;
-const COMPONENT_TEMPLATE = `templateUrl: './app.component.html',`;
-const COMPONENT_STYLES = `styleUrls: ['./app.component.less'],`;
-
-const COMPONENT_NAME = `
-})
-export class AppComponent {`;
-
-function prepareAppTsMeta(content: string): string {
-    return content
-        .replace(/selector: \'.+,*$/gm, COMPONENT_SELECTOR)
-        .replace(/templateUrl: \'.+,*$/gm, COMPONENT_TEMPLATE)
-        .replace(/styleUrls: \['.+,*$/gm, COMPONENT_STYLES)
-        .replace(/^}\)\nexport class [\w ]+{/m, COMPONENT_NAME);
-}
-
-function prepareLess(content: string): string {
-    return content.replace(
-        '~@taiga-ui/core/styles/taiga-ui-local',
-        '@taiga-ui/core/styles/taiga-ui-local.less',
-    );
-}
-
-const getSupportFiles = <T extends FrontEndExample>(files: T): Record<string, string> => {
-    return Object.entries(files)
-        .filter(([fileName]) => !isMainComponentFile(fileName))
-        .reduce(
-            (acc, [fileName, fileContent]) => ({
-                ...acc,
-                [fileName]: fileContent,
-            }),
-            {},
-        );
-};
-
-const addDeclaration = (moduleFileContent: string, entity: string): string => {
-    return moduleFileContent.replace('declarations: [', `declarations: [${entity},`);
-};
-
-export const getComponentsClassNames = (
-    files: Record<string, string>,
-): Array<[string, string]> => {
-    return Object.entries(files).reduce((acc, [fileName, fileContent]) => {
-        const className = isTS(fileName)
-            ? (fileContent.match(/export class (\w*)/i) || [])[1]
-            : '';
-
-        return className ? [...acc, [fileName, className]] : acc;
-    }, [] as [string, string][]);
-};
+const APP_COMP_META = {
+    SELECTOR: 'my-app',
+    TEMPLATE_URL: './app.component.html',
+    STYLE_URLS: ['./app.component.less'],
+    CLASS_NAME: 'AppComponent',
+} as const;
 
 const appPrefix = (stringsPart: TemplateStringsArray, path: string = '') =>
     `src/app/${stringsPart.join('')}${path}`;
@@ -77,6 +33,9 @@ export class StackblitzService implements CodeEditor {
             return;
         }
 
+        const appModule = new TsFileModuleParser(appModuleTs);
+        const appCompTs = new TsFileComponentParser(content.TypeScript);
+
         const supportFiles = getSupportFiles(content);
         const supportClassNames = getComponentsClassNames(supportFiles);
         const prefixedSupportFiles = Object.entries(supportFiles).reduce(
@@ -86,14 +45,16 @@ export class StackblitzService implements CodeEditor {
             }),
             {},
         );
-        const modifiedAppModule = supportClassNames.reduce(
-            (importModule, [fileName, className]) =>
-                addDeclaration(
-                    addImport(importModule, className, `./${fileName}`),
-                    className,
-                ),
-            appModuleTs,
-        );
+
+        supportClassNames.forEach(([fileName, className]) => {
+            appModule.addImport(className, `./${fileName}`);
+            appModule.addDeclaration(className);
+        });
+
+        appCompTs.selector = APP_COMP_META.SELECTOR;
+        appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
+        appCompTs.styleUrls = APP_COMP_META.STYLE_URLS;
+        appCompTs.className = APP_COMP_META.CLASS_NAME;
 
         stackblitz.openProject({
             title: `${component}-${sampleId}`,
@@ -108,8 +69,8 @@ export class StackblitzService implements CodeEditor {
                 'src/main.ts': mainTs,
                 'src/polyfills.ts': polyfills,
                 'src/styles.less': styles,
-                [appPrefix`app.module.ts`]: modifiedAppModule,
-                [appPrefix`app.component.ts`]: prepareAppTsMeta(content.TypeScript || ''),
+                [appPrefix`app.module.ts`]: appModule.toString(),
+                [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
                 [appPrefix`app.component.less`]: prepareLess(content.LESS || ''),
             },
