@@ -11,7 +11,7 @@ export class NotificationAlert<O, I> {
 
     readonly hasIcon = this.options.hasIcon;
 
-    readonly autoClose = this.options.autoClose;
+    readonly autoClose: boolean | number;
 
     readonly hasCloseButton = this.options.hasCloseButton;
 
@@ -19,19 +19,17 @@ export class NotificationAlert<O, I> {
 
     readonly data!: I;
 
-    readonly observer: Observer<O>;
-
-    readonly content: PolymorpheusContent<TuiNotificationContentContext<O, I>>;
-
     constructor(
-        observer: Observer<O>,
-        content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
+        readonly observer: Observer<O>,
+        readonly content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
         private readonly options: Required<
             TuiNotificationOptions | TuiNotificationOptionsWithData<I>
         >,
     ) {
-        this.observer = observer;
-        this.content = content;
+        this.autoClose =
+            typeof this.options.autoClose === 'function'
+                ? this.options.autoClose(this.options.status)
+                : this.options.autoClose;
 
         if (options && this.withData(options)) {
             this.data = options.data;
