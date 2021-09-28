@@ -46,7 +46,7 @@ export class ExampleTuiDataListComponent {
     readonly example4 = {
         TypeScript: example4Ts,
         HTML: example4Html,
-        Component: example4Component,
-        Template: example4Template,
+        'custom-list.component.ts': example4Component,
+        'custom-list.template.html': example4Template,
     };
 }

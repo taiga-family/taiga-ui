@@ -12,17 +12,21 @@ import {
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
-import {iconsPathFactory, TUI_ICONS_PATH} from '@taiga-ui/core';
+import {
+    iconsPathFactory,
+    TUI_ANIMATIONS_DURATION,
+    TUI_ICONS_PATH,
+    TUI_SANITIZER,
+} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../../../addon-doc/src/tokens/example-content-processor';
 import {PROMPT_PROVIDER} from '../customization/dialogs/examples/prompt/prompt.component';
-import {FrontEndExample} from '../interfaces/front-end-example';
 import {SEE_ALSO_GROUPS} from './app.const';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {pages} from './pages';
 import {StackblitzService} from './stackblitz/stackblitz.service';
+import {exampleContentProcessor} from './utils';
 
 export const DEFAULT_TABS = [
     $localize`Description and examples`,
@@ -41,61 +45,6 @@ export const HIGHLIGHT_OPTIONS_VALUE = {
         xml: () => import('highlight.js/lib/languages/xml'),
     },
 };
-
-export function exampleContentProcessor(content: FrontEndExample): FrontEndExample {
-    return processLess(processTs(content));
-}
-
-function processTs(content: FrontEndExample): FrontEndExample {
-    if (!content.TypeScript) {
-        return content;
-    }
-
-    const withChangeDetectionImport = addIntoExistingImport(
-        content.TypeScript,
-        'ChangeDetectionStrategy',
-        '@angular/core',
-    );
-
-    return {
-        ...content,
-        TypeScript: withChangeDetectionImport
-            .replace(/import {encapsulation} from '..\/.*';\n/gm, '')
-            .replace(/import {changeDetection} from '..\/.*';\n/gm, '')
-            .replace(/\n +encapsulation,/gm, '')
-            .replace(
-                /changeDetection,/gm,
-                'changeDetection: ChangeDetectionStrategy.OnPush,',
-            ),
-    };
-}
-
-function processLess(content: FrontEndExample): FrontEndExample {
-    return content.LESS
-        ? {
-              ...content,
-              LESS: content.LESS.replace(
-                  "@import 'taiga-ui-local';",
-                  "@import '~@taiga-ui/core/styles/taiga-ui-local';",
-              ),
-          }
-        : content;
-}
-
-export function addIntoExistingImport(
-    data: string = '',
-    entity: string = '',
-    packageName: string = '',
-): string {
-    const packageImportsRegex = new RegExp(
-        `(?:import\\s?\\{\\r?\\n?)(?:(?:.*),\\r?\\n?)*?(?:.*?)\\r?\\n?} from (?:'|")${packageName}(?:'|");`,
-        'gm',
-    );
-
-    return data.replace(packageImportsRegex, parsed => {
-        return parsed.replace('{', `{${entity}, `);
-    });
-}
 
 export const ICONS_PATH = iconsPathFactory('assets/taiga-ui/icons/');
 
