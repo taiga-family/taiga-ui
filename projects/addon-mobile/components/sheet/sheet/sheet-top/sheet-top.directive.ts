@@ -5,6 +5,9 @@ import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 import {TUI_SHEET_SCROLL} from '../sheet.providers';
 
+// So that borders get rounded when image is visible for at least 10px
+const OFFSET = 10;
+
 @Directive({
     selector: '[tuiSheetTop]',
     host: {
@@ -15,18 +18,18 @@ import {TUI_SHEET_SCROLL} from '../sheet.providers';
     },
 })
 export class TuiSheetTopDirective {
-    @Input()
+    @Input('tuiSheetTop')
     @tuiDefaultProp()
-    tuiSheetTop = 0;
+    stop = 0;
 
     readonly transform$ = this.scroll$.pipe(
-        filter(() => !!this.tuiSheetTop),
+        filter(() => !!this.stop),
         tuiZonefulMap(y => `translate3d(0, ${this.getTransform(y)}%, 0)`, this.ngZone),
     );
 
     readonly rounded$ = this.scroll$.pipe(
-        filter(() => !!this.tuiSheetTop),
-        tuiZonefulMap(y => y < this.tuiSheetTop + 10, this.ngZone),
+        filter(() => !!this.stop),
+        tuiZonefulMap(y => y < this.stop + OFFSET, this.ngZone),
     );
 
     constructor(
@@ -36,9 +39,8 @@ export class TuiSheetTopDirective {
     ) {}
 
     private getTransform(scrollTop: number): number {
-        const stop = this.tuiSheetTop;
-        const value = scrollTop - stop;
-        const total = this.elementRef.nativeElement.offsetTop - stop;
+        const value = scrollTop - this.stop;
+        const total = this.elementRef.nativeElement.offsetTop - this.stop;
 
         return clamp(100 - (value / total) * 100, 0, 100);
     }

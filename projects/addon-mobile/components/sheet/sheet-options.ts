@@ -11,17 +11,16 @@ export interface TuiSheetOptions<I = undefined> {
     readonly data: I;
 }
 
-export const TUI_SHEET_DEFAULT_OPTIONS: TuiSheetOptions = {
+export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
     image: '',
     imageSlide: true,
     stops: [],
     initial: 0,
     closeable: true,
     overlay: false,
-    data: undefined,
 };
 
-export const TUI_SHEET_OPTIONS = new InjectionToken<TuiSheetOptions>(
+export const TUI_SHEET_OPTIONS = new InjectionToken<Omit<TuiSheetOptions, 'data'>>(
     'Default parameters for sheet component',
     {
         factory: () => TUI_SHEET_DEFAULT_OPTIONS,

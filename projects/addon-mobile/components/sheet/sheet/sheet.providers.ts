@@ -1,5 +1,5 @@
 import {ElementRef, InjectionToken, NgZone, Provider} from '@angular/core';
-import {TuiDestroyService, tuiZonefree, typedFromEvent} from '@taiga-ui/cdk';
+import {tuiZonefree, typedFromEvent} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {map, share} from 'rxjs/operators';
 
@@ -13,7 +13,6 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
         deps: [ElementRef, NgZone],
         useFactory: sheetScrollFactory,
     },
-    TuiDestroyService,
 ];
 
 export function sheetScrollFactory(
