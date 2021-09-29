@@ -47,7 +47,12 @@ export function processIcon(source: string, name: string): string {
 
     const width = parseInt(widthString, 10);
     const height = parseInt(heightString, 10);
-    const transform = `translate(-${width / 2},-${height / 2})`;
 
-    return `<g id="${name}" xmlns="http://www.w3.org/2000/svg" transform="${transform}"><svg x="50%" y="50%">${src}</svg></g>`;
+    return `<g id="${name}" xmlns="http://www.w3.org/2000/svg"><svg  x="50%" y="50%" width="${
+        width / 16
+    }em" height="${
+        height / 16
+    }em" overflow="visible" viewBox="0 0 ${width} ${height}"><svg x="${-width / 2}" y="${
+        -width / 2
+    }">${src}</svg></svg></g>`;
 }
