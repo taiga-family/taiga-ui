@@ -21,8 +21,8 @@ export class TuiSheetsHostComponent {
         @Inject(TuiSheetService) readonly service: TuiSheetService,
     ) {}
 
-    onOverlay([item]: TuiSheet<unknown>[]) {
-        if (item && item.closeable) {
+    close(item: TuiSheet<unknown>) {
+        if (item.closeable) {
             item.$implicit.complete();
         }
     }

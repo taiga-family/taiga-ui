@@ -6,11 +6,12 @@
         [tuiOverscroll]="item.overlay ? 'all' : 'none'"
         [@tuiSlideInTop]="animation"
         [@tuiFadeIn]="animation"
+        (close)="close(item)"
     ></tui-sheet>
     <div
         tuiOverscroll="all"
         class="t-overlay"
         [class.t-overlay_possible]="items.length"
-        (click)="onOverlay(items)"
+        (click)="close(items[0])"
     ></div>
 </ng-container>

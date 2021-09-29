@@ -7,15 +7,16 @@ import {
     Inject,
     Input,
     NgZone,
+    Output,
     QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, TuiDestroyService, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiPure, tuiZonefull, typedFromEvent} from '@taiga-ui/cdk';
 import {tuiSlideInTop, tuiZonefulMap} from '@taiga-ui/core';
 import {asCallable} from '@tinkoff/ng-event-plugins';
-import {Observable} from 'rxjs';
-import {filter, takeUntil} from 'rxjs/operators';
+import {merge, Observable} from 'rxjs';
+import {filter} from 'rxjs/operators';
 import {TuiSheet} from '../sheet';
 import {TUI_SHEET_CLOSE} from './sheet-heading/sheet-heading.component';
 import {TUI_SHEET_PROVIDERS, TUI_SHEET_SCROLL} from './sheet.providers';
@@ -29,10 +30,22 @@ const OFFSET = 16;
     styleUrls: ['sheet.style.less'],
     providers: TUI_SHEET_PROVIDERS,
     animations: [tuiSlideInTop],
+    host: {
+        '[class._closeable]': 'item.closeable',
+    },
 })
 export class TuiSheetComponent<T> implements AfterViewInit {
     @Input()
     item!: TuiSheet<T>;
+
+    @Output()
+    readonly close = merge(
+        typedFromEvent(this.elementRef.nativeElement, TUI_SHEET_CLOSE),
+        this.scroll$.pipe(
+            filter(y => this.clickthrough && this.item.closeable && this.shouldClose(y)),
+            tuiZonefull(this.ngZone),
+        ),
+    );
 
     @HostBinding('class._clickthrough')
     clickthrough = true;
@@ -63,23 +76,7 @@ export class TuiSheetComponent<T> implements AfterViewInit {
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-    ) {
-        this.scroll$
-            .pipe(
-                filter(y => this.clickthrough && this.closeable && this.shouldClose(y)),
-                tuiZonefull(ngZone),
-                takeUntil(destroy$),
-            )
-            .subscribe(() => {
-                this.item.$implicit.complete();
-            });
-    }
-
-    @HostBinding('class._closeable')
-    get closeable(): boolean {
-        return this.item.closeable;
-    }
+    ) {}
 
     get stops(): readonly number[] {
         return this.getStops(this.stopsRefs);
@@ -95,11 +92,6 @@ export class TuiSheetComponent<T> implements AfterViewInit {
         this.elementRef.nativeElement.scrollTop = stops[this.item.initial];
     }
 
-    @HostListener(TUI_SHEET_CLOSE)
-    onClose() {
-        this.item.$implicit.complete();
-    }
-
     onTouched(clickthrough: boolean) {
         this.clickthrough = clickthrough;
     }
@@ -109,11 +101,11 @@ export class TuiSheetComponent<T> implements AfterViewInit {
     }
 
     private get contentTop(): number {
-        return this.content?.nativeElement.offsetTop || Infinity;
+        return this.content?.nativeElement.offsetTop ?? Infinity;
     }
 
     private get sheetTop(): number {
-        return this.sheet?.nativeElement.offsetTop || Infinity;
+        return this.sheet?.nativeElement.offsetTop ?? Infinity;
     }
 
     private isOverlayVisible(scrollTop: number): boolean {
