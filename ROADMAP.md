@@ -11,20 +11,29 @@
 
 ### Q2
 
--   [ ] Expand components customization with DI tokens
--   [ ] Progress component
--   [ ] addon-editor (WYSIWYG) improvements
--   [ ] Investigate localization such as date, number formatting, rtl languages
+-   [x] Expand components customization with DI tokens
+-   [x] Progress component
+-   [x] addon-editor (WYSIWYG) improvements
+-   [x] Investigate localization such as date, number formatting, rtl languages
 
 ### Q3
 
--   [ ] Switch to built in Angular pluralize
+-   [x] Switch to built in Angular pluralize
+-   [ ] Sheet component
+-   [x] Switch to REM units
+
+### Q4
+
 -   [ ] Carousel component
--   [ ] Switch to REM units
+-   [ ] Investigate exposing native input from controls
 -   [ ] Generic notifications mechanism similar to dialogs
+-   [ ] Create testing package with Component Harnesses for components
+-   [ ] Continue customization with DI tokens
+-   [ ] Continue localization improvements
+-   [ ] Start bugfix weeks to keep bug numbers at bay
 
 ### Other
 
--   [ ] Screenshot testing on CI
+-   [x] Screenshot testing on CI
 -   [ ] Investigate other Text Mask options
 -   [ ] Dashboard project that shows the power of Taiga
