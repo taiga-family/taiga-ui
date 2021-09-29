@@ -13,7 +13,7 @@
                     *ngIf="!itemIsUnavailable(item) || showAdjacent"
                     automation-id="tui-primitive-calendar__cell"
                     class="cell"
-                    [class.cell_weekend]="colIndex > 4"
+                    [class.cell_weekend]="item.isWeekend"
                     [class.cell_today]="itemIsToday(item)"
                     [class.cell_interval]="itemIsInterval(item)"
                     [attr.data-tui-element-range]="getItemRange(item)"
