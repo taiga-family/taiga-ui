@@ -12,7 +12,14 @@ import {CodeEditor} from '@taiga-ui/addon-doc';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';
-import {getComponentsClassNames, getSupportFiles, prepareLess} from './utils';
+import {
+    appPrefix,
+    getComponentsClassNames,
+    getSupportFiles,
+    getSupportModules,
+    prepareLess,
+    prepareSupportFiles,
+} from './utils';
 
 const APP_COMP_META = {
     SELECTOR: 'my-app',
@@ -20,9 +27,6 @@ const APP_COMP_META = {
     STYLE_URLS: ['./app.component.less'],
     CLASS_NAME: 'AppComponent',
 } as const;
-
-const appPrefix = (stringsPart: TemplateStringsArray, path: string = '') =>
-    `src/app/${stringsPart.join('')}${path}`;
 
 @Injectable()
 export class StackblitzService implements CodeEditor {
@@ -36,19 +40,27 @@ export class StackblitzService implements CodeEditor {
         const appModule = new TsFileModuleParser(appModuleTs);
         const appCompTs = new TsFileComponentParser(content.TypeScript);
 
-        const supportFiles = getSupportFiles(content);
-        const supportClassNames = getComponentsClassNames(supportFiles);
-        const prefixedSupportFiles = Object.entries(supportFiles).reduce(
-            (acc, [fileName, fileContent]) => ({
-                ...acc,
-                [appPrefix`${fileName}`]: fileContent,
-            }),
-            {},
-        );
+        const supportFilesTuples = getSupportFiles(content);
+        const supportModulesTuples = getSupportModules(supportFilesTuples);
+        const supportCompClassNames = getComponentsClassNames(supportFilesTuples);
+        const modifiedSupportFiles = prepareSupportFiles(supportFilesTuples);
 
-        supportClassNames.forEach(([fileName, className]) => {
+        supportCompClassNames.forEach(([fileName, className]) => {
+            const insideAnotherModule = supportModulesTuples.some(([_, module]) =>
+                module.hasDeclarationEntity(className),
+            );
+
+            if (insideAnotherModule) {
+                return;
+            }
+
             appModule.addImport(className, `./${fileName}`);
             appModule.addDeclaration(className);
+        });
+
+        supportModulesTuples.forEach(([fileName, {className}]) => {
+            appModule.addImport(className, `./${fileName}`);
+            appModule.addModuleImport(className);
         });
 
         appCompTs.selector = APP_COMP_META.SELECTOR;
@@ -62,7 +74,7 @@ export class StackblitzService implements CodeEditor {
             template: 'angular-cli',
             dependencies: STACKBLITZ_DEPS,
             files: {
-                ...prefixedSupportFiles,
+                ...modifiedSupportFiles,
                 'tsconfig.json': tsconfig,
                 'angular.json': angularJson,
                 'src/index.html': indexHtml,

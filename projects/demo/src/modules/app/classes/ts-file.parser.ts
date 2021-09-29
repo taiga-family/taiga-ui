@@ -1,4 +1,27 @@
+const CLASS_NAME_REGEXP = /(?<=export class\s)(\w*)/gi;
+
 export class TsFileParser {
+    get className(): string {
+        const [className] = this.rawFileContent.match(CLASS_NAME_REGEXP) || [''];
+
+        return className;
+    }
+
+    set className(newClassName: string) {
+        this.rawFileContent = this.rawFileContent.replace(
+            CLASS_NAME_REGEXP,
+            newClassName,
+        );
+    }
+
+    get isNgModule(): boolean {
+        return this.rawFileContent.includes('@NgModule');
+    }
+
+    get isNgComponent(): boolean {
+        return this.rawFileContent.includes('@Component');
+    }
+
     constructor(protected rawFileContent: string) {}
 
     addImport(entity: string, packageOrPath: string): void {
