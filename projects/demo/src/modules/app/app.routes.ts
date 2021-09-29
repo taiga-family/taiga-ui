@@ -749,6 +749,14 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/sheet',
+        loadChildren: () =>
+            import(`../components/sheet/sheet.module`).then(m => m.ExampleTuiSheetModule),
+        data: {
+            title: 'Sheet',
+        },
+    },
+    {
         path: 'components/slider',
         loadChildren: () =>
             import(`../components/slider/slider.module`).then(

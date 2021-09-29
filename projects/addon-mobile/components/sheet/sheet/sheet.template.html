@@ -1,0 +1,45 @@
+<div class="t-bumpers">
+    <div
+        *ngFor="let stop of item.stops"
+        #stops
+        class="t-bumper"
+        [style.height]="stop"
+        [style.marginBottom]="'-' + stop"
+        [style.scrollMarginTop]="'-' +stop"
+    ></div>
+</div>
+<div
+    #sheet
+    class="t-wrapper"
+    [class.t-wrapper_shadow]="!item.image"
+    (touchstart)="onTouched(false)"
+    (touchend)="onTouched(true)"
+>
+    <header
+        *ngIf="item.image"
+        polymorpheus-outlet
+        class="t-top"
+        [tuiSheetTop]="imageStop"
+        [content]="item.image"
+        [context]="item"
+    >
+        <ng-template let-content>
+            <img [src]="content" alt="" class="t-image" />
+        </ng-template>
+    </header>
+    <section #content class="t-sheet" [class.t-sheet_stuck]="stuck$ | async">
+        <tui-sheet-bar [stop]="stops[0] || 0">
+            <button class="t-bar" (click)="scrollTo(stops[1])"></button>
+        </tui-sheet-bar>
+        <div
+            polymorpheus-outlet
+            class="t-content"
+            [content]="item.content"
+            [context]="item"
+        >
+            <ng-template let-content>
+                <h2 tuiSheetHeading class="t-heading">{{content}}</h2>
+            </ng-template>
+        </div>
+    </section>
+</div>

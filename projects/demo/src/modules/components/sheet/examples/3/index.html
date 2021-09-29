@@ -1,0 +1,50 @@
+<button tuiButton (click)="toggle()">Show/Hide</button>
+<ng-template [tuiSheetOptions]="options" [(tuiSheet)]="open">
+    <h2 tuiSheetHeading>
+        <label tuiLabel label="Monty Python">And the Holy Grail</label>
+    </h2>
+    <p class="buttons">
+        <button
+            tuiButton
+            size="m"
+            appearance="secondary"
+            class="tui-space_right-2"
+        >
+            Buy
+            <tui-money
+                class="tui-space_left-1"
+                currency="USD"
+                [value]="12.99"
+            ></tui-money>
+        </button>
+        <button tuiButton size="m" appearance="secondary">
+            Rent
+            <tui-money
+                class="tui-space_left-1"
+                currency="USD"
+                [value]="4.99"
+            ></tui-money>
+        </button>
+    </p>
+    <button tuiButton size="m" class="action">Add to Watch List</button>
+    <h3 class="cast">Cast:</h3>
+    <p>John Cleese</p>
+    <p>Eric Idle</p>
+    <p>Michael Palin</p>
+    <p>Graham Chapman</p>
+    <p>Terry Gilliam</p>
+    <p>Terry Jones</p>
+    <p>Carol Cleveland</p>
+    <hr />
+    <h3>Directed by:</h3>
+    <p>Terry Gilliam</p>
+    <p>Terry Jones</p>
+    <hr />
+    <h3>Written by:</h3>
+    <p>John Cleese</p>
+    <p>Eric Idle</p>
+    <p>Michael Palin</p>
+    <p>Graham Chapman</p>
+    <p>Terry Gilliam</p>
+    <p class="tui-space_bottom-16">Terry Jones</p>
+</ng-template>

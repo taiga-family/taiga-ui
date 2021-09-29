@@ -1,0 +1,90 @@
+@import 'taiga-ui-local';
+
+:host {
+    .fullsize(fixed, inset);
+    .scrollbar-hidden();
+    top: 1rem;
+    border-radius: 0.75rem 0.75rem 0 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+
+    &._clickthrough {
+        pointer-events: none;
+    }
+}
+
+.t-bumpers {
+    height: 100vh;
+
+    :host(._closeable) & {
+        scroll-snap-stop: always;
+        scroll-snap-align: start;
+    }
+}
+
+.t-bumper {
+    scroll-snap-stop: always;
+    scroll-snap-align: start;
+}
+
+.t-wrapper {
+    border-radius: 0.75rem 0.75rem 0 0;
+    pointer-events: auto;
+    scroll-snap-stop: always;
+    scroll-snap-align: start;
+
+    &_shadow {
+        .shadow();
+    }
+}
+
+.t-top {
+    .shadow();
+    position: sticky;
+    top: 0;
+    pointer-events: auto;
+    border-radius: 0.8rem 0.8rem 0 0;
+    overflow: hidden;
+
+    &_animated {
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+.t-image {
+    width: 100%;
+    display: block;
+}
+
+.t-sheet {
+    position: relative;
+    min-width: calc(100% + 1rem);
+    padding-right: 1rem;
+    box-sizing: border-box;
+    scroll-snap-stop: always;
+    scroll-snap-align: start;
+
+    .t-top:not(._rounded) ~ & tui-sheet-bar {
+        border-radius: 0;
+    }
+}
+
+.t-bar {
+    position: absolute;
+    top: 0;
+    height: 1.5rem;
+    width: 3rem;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+}
+
+.t-content {
+    padding: 0 1rem 1rem;
+    background: var(--tui-base-01);
+}
+
+.t-heading {
+    padding-bottom: 0.5rem;
+}

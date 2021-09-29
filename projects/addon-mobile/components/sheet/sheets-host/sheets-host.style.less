@@ -1,0 +1,19 @@
+@import 'taiga-ui-local';
+
+:host {
+    .createStackingContext();
+}
+
+.t-overlay {
+    .transition(opacity);
+    .fullsize(fixed);
+    background: #000;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    ._overlay ~ &_possible {
+        opacity: 0.8;
+        pointer-events: auto;
+    }
+}
