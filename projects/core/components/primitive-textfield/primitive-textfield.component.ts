@@ -1,13 +1,14 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
+    ContentChildren,
     ElementRef,
     EventEmitter,
     HostBinding,
     Inject,
     Input,
     Output,
+    QueryList,
     ViewChild,
 } from '@angular/core';
 import {
@@ -104,8 +105,8 @@ export class TuiPrimitiveTextfieldComponent
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
-    @ContentChild(PolymorpheusOutletComponent)
-    private readonly content?: unknown;
+    @ContentChildren(PolymorpheusOutletComponent)
+    readonly content?: QueryList<unknown>;
 
     private autofilled = false;
 
@@ -146,7 +147,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     get inputHidden(): boolean {
-        return !!this.content;
+        return !!this.content?.length;
     }
 
     get isContextTable(): boolean {
