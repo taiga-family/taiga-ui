@@ -4,9 +4,13 @@
 name: Deploy on PR
 on: [pull_request_target]
 
+permissions: read-all
+
 jobs:
     build_and_preview:
         runs-on: ubuntu-latest
+        permissions:
+            pull-requests: write
         steps:
             - uses: actions/checkout@v2
               with:
