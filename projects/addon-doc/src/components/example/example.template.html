@@ -19,10 +19,15 @@
     [content]="description"
 ></h4>
 <div class="t-example">
-    <div class="t-tabs">
-        <tui-tabs [(activeItemIndex)]="activeItemIndex">
-            <button *ngFor="let tab of tabs" tuiTab>{{tab}}</button>
-        </tui-tabs>
+    <div class="t-tabs-wrapper">
+        <tui-tabs-with-more
+            class="t-tabs-wrapper__tabs"
+            [(activeItemIndex)]="activeItemIndex"
+        >
+            <ng-container *ngFor="let tab of tabs">
+                <button *tuiTab tuiTab>{{tab}}</button>
+            </ng-container>
+        </tui-tabs-with-more>
 
         <button
             *ngIf="codeEditor"
