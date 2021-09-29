@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
-import {TuiSheet} from '@taiga-ui/addon-mobile/components';
 import {TUI_ANIMATIONS_DURATION, tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core';
+import {TuiSheet} from '../sheet';
 import {TuiSheetService} from '../sheet.service';
 
 @Component({
