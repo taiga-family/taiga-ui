@@ -1,0 +1,10 @@
+<button
+    tuiIconButton
+    size="xs"
+    appearance="icon"
+    icon="tuiIconCloseLarge"
+    class="t-close"
+    [title]="closeWord$ | async"
+    (click)="onClick()"
+></button>
+<ng-content></ng-content>

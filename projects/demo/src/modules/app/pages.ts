@@ -695,6 +695,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: 'Sheet',
+        keywords: 'mobile, dialog, popup, map, details, шторка',
+        route: '/components/sheet',
+    },
+    {
+        section: $localize`Components`,
         title: 'Sliders',
         subPages: [
             {

@@ -1,0 +1,38 @@
+:host {
+    position: sticky;
+    top: 1.5rem;
+    min-height: 2rem;
+    box-sizing: border-box;
+    margin: 0 -1rem;
+    padding: 0 1rem 1rem;
+    z-index: 1;
+    background: var(--tui-base-01);
+    font: var(--tui-font-heading-6);
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--tui-base-03);
+        opacity: 0;
+    }
+
+    :host-context(.t-sheet_stuck) {
+        &:after {
+            opacity: 1;
+        }
+    }
+}
+
+.t-close {
+    display: none;
+    float: right;
+    margin-right: -0.25rem;
+
+    :host-context(tui-sheet._closeable) & {
+        display: block;
+    }
+}
