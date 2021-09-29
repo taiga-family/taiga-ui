@@ -4,6 +4,7 @@ export const STACKBLITZ_DEPS: Record<string, string> = {
     '@angular/common': '*',
     '@angular/compiler': '*',
     '@angular/forms': '*',
+    '@angular/localize': '*',
     '@angular/platform-browser': '*',
     '@angular/platform-browser-dynamic': '*',
     '@angular/animations': '*',
