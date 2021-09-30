@@ -2,14 +2,18 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy on PR
-on: [pull_request_target]
+on:
+    pull_request_target:
+        types: [labeled]
 
 permissions: read-all
 
 jobs:
     build_and_preview:
         runs-on: ubuntu-latest
+        if: contains(github.event.pull_request.labels.*.name, 'deploy')
         permissions:
+            checks: write
             pull-requests: write
         steps:
             - uses: actions/checkout@v2
