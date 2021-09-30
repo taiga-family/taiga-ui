@@ -9,6 +9,13 @@ module.exports = {
             },
         },
         {
+            files: '*.svg',
+            options: {
+                printWidth: 120,
+                parser: 'html',
+            },
+        },
+        {
             files: '*.less',
             options: {
                 printWidth: 120,
