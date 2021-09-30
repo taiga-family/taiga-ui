@@ -1,0 +1,59 @@
+name: Bug Report
+description: Report a bug in the Taiga UI
+labels: ['bug']
+
+body:
+    - type: dropdown
+      id: affected-packages
+      attributes:
+          label: Which @taiga-ui/* package(s) are the source of the bug?
+          options:
+              - core
+              - kit
+              - cdk
+              - i18n
+              - icons
+              - taiga-schematics
+              - testing
+              - addon-charts
+              - addon-commerce
+              - addon-doc
+              - addon-editor
+              - addon-mobile
+              - addon-table
+              - addon-tablebars
+              - Don't known / other
+          multiple: true
+      validations:
+          required: true
+
+    - type: dropdown
+      id: is-regression
+      attributes:
+          label: Is this a regression?
+          options:
+              - 'Yes'
+              - 'No'
+      validations:
+          required: true
+
+    - type: input
+      id: reproduction-url
+      attributes:
+          label: Please provide a link to a minimal reproduction of the bug
+          value: https://stackblitz.com/edit/taiga-starter
+
+    - type: textarea
+      id: description
+      attributes:
+          label: Description
+          placeholder: |
+              Please provide the exception or error you saw.
+              Please provide the environment you discovered this bug in:
+              * Angular CLI: x.y.z
+              * Taiga: x.y.z
+              * Node: x.y.z
+              * Package Manager: npm x.y.z
+              * OS: linux x64
+      validations:
+          required: true
