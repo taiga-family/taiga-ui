@@ -42,7 +42,7 @@
     <ng-container *ngIf="hasHints">
         <ng-container *ngFor="let point of value; let index = index">
             <div
-                *ngIf="value.length > 1"
+                *ngIf="value.length > 1 || dots"
                 class="t-column"
                 tuiHintDirection="top-left"
                 [class.t-column_hovered]="hovered === index"

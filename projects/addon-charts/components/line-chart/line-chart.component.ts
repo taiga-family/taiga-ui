@@ -146,6 +146,10 @@ export class TuiLineChartComponent {
     }
 
     getX(index: number): number {
+        if (this.isSinglePoint) {
+            return this.value[0][0] / 2;
+        }
+
         return index
             ? (this.value[index - 1][0] + this.value[index][0]) / 2
             : 2 * this.value[0][0] - this.getX(1);
@@ -203,6 +207,10 @@ export class TuiLineChartComponent {
         if (!this.hintDirective) {
             this.onHovered(NaN);
         }
+    }
+
+    private get isSinglePoint(): boolean {
+        return this.value.length === 1;
     }
 
     @tuiPure
