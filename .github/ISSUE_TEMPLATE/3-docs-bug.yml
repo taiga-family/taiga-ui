@@ -1,26 +1,41 @@
 name: 'Docs or taiga-ui.dev Bug Report'
 description: Report an issue in Taiga's documentation or taiga-ui.dev application
+labels: ['documentation']
 
 body:
-    - type: textarea
-      id: description
-      attributes:
-          label: Description
-      validations:
-          required: true
-
     - type: input
       id: affected-url
       attributes:
           label: What is the affected URL?
 
     - type: textarea
-      id: screenshot
+      id: description
       attributes:
-          label: Please provide a screenshot if possible
+          label: Description
+          placeholder: |
+              How do you trigger this bug?
+              Please walk us through it step by step.
+              Please provide a screenshot if possible.
+      validations:
+          required: true
 
-    - type: textarea
-      id: browser-info
+    - type: checkboxes
+      id: browser-specific
       attributes:
-          label: Is this a browser-specific issue? If so, please specify the device, browser, and version.
-          render: true
+          label: Which browsers have you used?
+          description: You may select more than one.
+          options:
+              - label: Chrome
+              - label: Firefox
+              - label: Safari
+              - label: Edge
+
+    - type: checkboxes
+      id: operating-systems
+      attributes:
+          label: Which operating systems have you used?
+          description: You may select more than one.
+          options:
+              - label: macOS
+              - label: Windows
+              - label: Linux
