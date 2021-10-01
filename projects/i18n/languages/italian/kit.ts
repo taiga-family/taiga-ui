@@ -14,7 +14,7 @@ export const TUI_ITALIAN_LANGUAGE_KIT: LanguageKit = {
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
     },
     dateTexts: {
-        DMY: 'gg.mm.aaa',
+        DMY: 'gg.mm.aaaa',
         MDY: 'mm.gg.aaaa',
         YMD: 'aaaa.mm.gg',
     },
