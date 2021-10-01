@@ -23,6 +23,7 @@ Supported languages:
 | French               |   TUI_FRENCH_LANGUAGE   |     100% |
 | Vietnamese           | TUI_VIETNAMESE_LANGUAGE |     100% |
 | Portuguese           | TUI_PORTUGUESE_LANGUAGE |     100% |
+| Italian              |  TUI_ITALIAN_LANGUAGE   |     100% |
 
 <!-- Do not change next line without i18n demo page -->
 
