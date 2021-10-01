@@ -1,14 +1,14 @@
 import {Inject, Injectable} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk';
+import {
+    TuiNotificationOptions,
+    TuiNotificationOptionsWithData,
+} from '@taiga-ui/core/interfaces';
 import {NotificationTokenOptions, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, Observer} from 'rxjs';
 import {NotificationAlert} from './notification-alert/Notification-alert';
 import {TuiNotificationContentContext} from './notification-content-context';
-import {
-    TuiNotificationOptions,
-    TuiNotificationOptionsWithData,
-} from './notification-options';
 
 const NO_HOST =
     'Notifications are disabled, enable support by adding TuiNotificationsModule to your main app module';
