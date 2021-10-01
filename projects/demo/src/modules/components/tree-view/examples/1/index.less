@@ -3,7 +3,7 @@ tui-tree-view.custom tui-tree-view {
     &._array:not(:last-child):not(:first-of-type)::before {
         content: '';
         position: absolute;
-        top: -1.2em;
+        top: -1em;
         left: -20px;
         width: 10px;
         bottom: 0.6em;
@@ -15,10 +15,14 @@ tui-tree-view.custom tui-tree-view {
         position: absolute;
         left: -20px;
         width: 10px;
-        bottom: 0.6em;
+        bottom: 0.8em;
         height: 100%;
         border-left: 1px solid;
         border-bottom: 1px solid;
+    }
+
+    &:not(._array):first-child::before {
+        height: 50%;
     }
 }
 

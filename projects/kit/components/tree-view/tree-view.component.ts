@@ -19,6 +19,10 @@ export class TuiTreeViewComponent<T> {
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
 
+    @Input()
+    @tuiDefaultProp()
+    expanded = true;
+
     @HostBinding('class._array')
     get isArray(): boolean {
         return Array.isArray(this.value);
@@ -29,5 +33,15 @@ export class TuiTreeViewComponent<T> {
         value: TuiMultidimensionalArray<T>,
     ): TuiContextWithImplicit<TuiMultidimensionalArray<T>> {
         return {$implicit: value};
+    }
+
+    readonly map = new Map<T, boolean>();
+
+    isOpen(item: T): boolean {
+        return !this.map.has(item) || !!this.map.get(item);
+    }
+
+    toggleOpen(item: T) {
+        this.map.set(item, !this.map.get(item));
     }
 }
