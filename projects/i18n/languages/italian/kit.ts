@@ -14,9 +14,9 @@ export const TUI_ITALIAN_LANGUAGE_KIT: LanguageKit = {
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
     },
     dateTexts: {
-        DMY: 'dd/mm/yyyy',
-        MDY: 'mm/dd/yyyy',
-        YMD: 'yyyy/mm/dd',
+        DMY: 'gg.mm.aaa',
+        MDY: 'mm.gg.aaaa',
+        YMD: 'aaaa.mm.gg',
     },
     digitalInformationUnits: ['B', 'KB', 'MB'],
     passwordTexts: ['Mostra password', 'Nascondi password'],
