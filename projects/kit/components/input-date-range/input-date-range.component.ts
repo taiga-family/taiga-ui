@@ -312,6 +312,10 @@ export class TuiInputDateRangeComponent
         this.toggle();
         this.focusInput();
 
+        if (!range) {
+            this.nativeValue = '';
+        }
+
         if (!nullableSame<TuiDayRange>(this.value, range, (a, b) => a.daySame(b))) {
             this.updateValue(range);
         }
