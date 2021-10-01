@@ -43,7 +43,7 @@ export const TUI_ITALIAN_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
     },
     editorTableCommands: [
         ['Inserisci colonna prima', 'Inserisci colonna dopo'],
-        ['Inserisci colonna prima', 'Inserisci colonna dopo'],
+        ['Inserisci riga prima', 'Inserisci riga dopo'],
         ['Cancella colonna', 'Cancella riga'],
     ],
     editorCodeOptions: ['Codice nel testo', 'Codice nel blocco'],
