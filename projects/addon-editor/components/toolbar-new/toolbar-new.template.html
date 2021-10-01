@@ -716,5 +716,46 @@
             (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="editor.canMergeCells() ? mergeCells() : splitCell()"
         ></button>
+
+        <tui-hosted-dropdown
+            #cellColorSelect
+            class="t-wrapper"
+            [content]="cellColorDropdown"
+            [tuiDropdownMaxHeight]="999"
+        >
+            <button
+                #button
+                #cellColorBtn
+                tuiIconButton
+                type="button"
+                size="s"
+                tuiHintDirection="top-left"
+                appearance="icon"
+                class="t-button"
+                icon="tuiIconPaintLarge"
+                [tuiHint]="texts.cellColor"
+                [tuiHintId]="cellColorBtn.id"
+                [tuiDescribedBy]="cellColorBtn.id"
+                [pseudoPressed]="cellColorSelect.open"
+                [focusable]="cellColorSelect.open"
+                [disabled]="!editor?.isActive('table')"
+                (keydown.arrowLeft.prevent)="onArrowLeft()"
+                (keydown.arrowRight.prevent)="onArrowRight()"
+            ></button>
+            <div
+                *ngIf="!cellColorBlank"
+                class="t-plate t-plate_paint"
+                [style.background]="cellColor"
+            ></div>
+            <ng-template #cellColorDropdown let-activeZone>
+                <tui-color-selector
+                    class="t-color-picker"
+                    [tuiActiveZoneParent]="activeZone"
+                    [colors]="colors"
+                    [color]="cellColor"
+                    (colorChange)="setCellColor($event)"
+                ></tui-color-selector>
+            </ng-template>
+        </tui-hosted-dropdown>
     </div>
 </ng-container>

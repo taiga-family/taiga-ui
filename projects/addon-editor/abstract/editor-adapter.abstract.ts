@@ -15,6 +15,7 @@ export abstract class TuiEditor {
     abstract redoDisabled(): boolean;
     abstract getFontColor(): string;
     abstract getBackgroundColor(): string;
+    abstract getCellColor(): string;
     abstract onAlign(align: string): void;
     abstract setImage(src: string): void;
     abstract undo(): void;
@@ -57,4 +58,5 @@ export abstract class TuiEditor {
     abstract selectClosest(): void;
     abstract focus(): void;
     abstract setValue(value: string): void;
+    abstract setCellColor(color: string): void;
 }

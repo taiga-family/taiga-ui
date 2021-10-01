@@ -39,6 +39,7 @@ export const TUI_PORTUGUESE_LANGUAGE_ADDON_EDITOR: LanguageEditor = {
         mergeCells: 'Merge cells',
         splitCells: 'Split cells',
         rowsColumnsManaging: 'Managing rows and columns',
+        cellColor: 'Cell color',
     },
     editorTableCommands: [
         ['Insert column before', 'Insert column after'],

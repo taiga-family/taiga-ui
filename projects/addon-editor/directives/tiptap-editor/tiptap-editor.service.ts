@@ -94,6 +94,13 @@ export class TuiTiptapEditorService extends TuiEditor {
         );
     }
 
+    getCellColor(): string {
+        return (
+            this.editor.getAttributes('tableCell').background ||
+            this.editor.getAttributes('tableHeader').background
+        );
+    }
+
     onAlign(align: string) {
         this.editor.chain().focus().setTextAlign(align).run();
     }
@@ -261,6 +268,10 @@ export class TuiTiptapEditorService extends TuiEditor {
 
     destroy() {
         this.editor.destroy();
+    }
+
+    setCellColor(color: string) {
+        this.editor.chain().focus().setCellBackground(color).run();
     }
 
     selectClosest() {

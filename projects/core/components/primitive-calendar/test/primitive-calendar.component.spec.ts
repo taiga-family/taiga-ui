@@ -303,6 +303,25 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
         it('contains the fifth column with dates which are actual Thursday', () => {
             expect(getColumnDates(4)).toEqual(['3', '10', '17', '24', '1', '8']);
         });
+
+        it('sets red color only for weekends', () => {
+            expect(isAllWeekdays(getColumnCells(0))).toBe(
+                true,
+                'Sunday column should be red',
+            );
+
+            [1, 2, 3, 4, 5].forEach(index => {
+                expect(isAllWeekdays(getColumnCells(index))).toBe(
+                    false,
+                    'Monday-Friday should not be red',
+                );
+            });
+
+            expect(isAllWeekdays(getColumnCells(6))).toBe(
+                true,
+                'Saturday column should be red',
+            );
+        });
     });
 
     describe('Week starts with Monday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Monday', () => {
@@ -337,6 +356,25 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
 
         it('contains the fifth column with dates which are actual Fridays', () => {
             expect(getColumnDates(4)).toEqual(['4', '11', '18', '25', '2', '9']);
+        });
+
+        it('sets red color only for weekends', () => {
+            [0, 1, 2, 3, 4].forEach(index => {
+                expect(isAllWeekdays(getColumnCells(index))).toBe(
+                    false,
+                    'Monday-Friday should not be red',
+                );
+            });
+
+            expect(isAllWeekdays(getColumnCells(5))).toBe(
+                true,
+                'Saturday column should be red',
+            );
+
+            expect(isAllWeekdays(getColumnCells(6))).toBe(
+                true,
+                'Sunday column should be red',
+            );
         });
     });
 
@@ -373,6 +411,25 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
         it('contains the fifth column with dates which are actual Sundays', () => {
             expect(getColumnDates(4)).toEqual(['30', '6', '13', '20', '27', '4']);
         });
+
+        it('sets red color only for weekends', () => {
+            [0, 1, 2, 5, 6].forEach(index => {
+                expect(isAllWeekdays(getColumnCells(index))).toBe(
+                    false,
+                    'Monday-Friday should not be red',
+                );
+            });
+
+            expect(isAllWeekdays(getColumnCells(3))).toBe(
+                true,
+                'Saturday column should be red',
+            );
+
+            expect(isAllWeekdays(getColumnCells(4))).toBe(
+                true,
+                'Sunday column should be red',
+            );
+        });
     });
 
     function getDaysOfWeek(): string[] {
@@ -382,11 +439,20 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
         return daysOfWeekContainers.map(container => container.nativeElement.textContent);
     }
 
-    function getColumnDates(columnIndex: number): string[] {
-        const columnDatesContainers =
+    function getColumnCells(columnIndex: number): DebugElement[] {
+        return (
             fixture.debugElement.queryAll(
                 By.css(`.row:not(.row_weekday) .cell:nth-child(${columnIndex + 1})`),
-            ) || [];
+            ) || []
+        );
+    }
+
+    function isAllWeekdays($cells: DebugElement[]): boolean {
+        return $cells.every(cell => cell.classes['cell_weekend']);
+    }
+
+    function getColumnDates(columnIndex: number): string[] {
+        const columnDatesContainers = getColumnCells(columnIndex);
 
         return columnDatesContainers.map(container =>
             container.nativeElement.textContent.trim(),

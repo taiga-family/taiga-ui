@@ -11,7 +11,6 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-tui-filter',
     templateUrl: './filter.template.html',
-    styleUrls: ['./filter.style.less'],
     changeDetection,
 })
 export class ExampleTuiFilterComponent {

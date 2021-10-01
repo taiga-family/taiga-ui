@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.18.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.17.0...v2.18.0) (2021-09-27)
+
+### Features
+
+-   **addon-doc:** support left menu items without sections ([#463](https://github.com/TinkoffCreditSystems/taiga-ui/issues/463)) ([8f3e1cf](https://github.com/TinkoffCreditSystems/taiga-ui/commit/8f3e1cfcc64e00fb7a618704d685fb984e1b3cd0))
+-   **addon-editor:** add ability to color cells ([#766](https://github.com/TinkoffCreditSystems/taiga-ui/issues/766)) ([c008bfe](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c008bfed0cdbdcdc3b4a57d883ecf6439d9f62c0))
+-   **all:** add prefix t- to internal classes to avoid clashed ([#704](https://github.com/TinkoffCreditSystems/taiga-ui/issues/704)) ([8522c88](https://github.com/TinkoffCreditSystems/taiga-ui/commit/8522c8859956bfcf133587d118e202b411c27c0e))
+-   **all:** preserve const enums [[#495](https://github.com/TinkoffCreditSystems/taiga-ui/issues/495)] ([6ac8e00](https://github.com/TinkoffCreditSystems/taiga-ui/commit/6ac8e004f0d6a22787bcc4c8ba6dcf1979079074))
+-   **core:** `Dialog` add directive for declarative dialogs ([#745](https://github.com/TinkoffCreditSystems/taiga-ui/issues/745)) ([cbd1a90](https://github.com/TinkoffCreditSystems/taiga-ui/commit/cbd1a906c8fb62ce4c828548ab12d2be0e756c29))
+-   **kit:** `Stringify` add new pipe ([#775](https://github.com/TinkoffCreditSystems/taiga-ui/issues/775)) ([39e4766](https://github.com/TinkoffCreditSystems/taiga-ui/commit/39e47660eb09995019fd01d73404ff58d8badf4d))
+
+### Bug Fixes
+
+-   **addon-commerce:** fix card length check for unknown payment systems ([#728](https://github.com/TinkoffCreditSystems/taiga-ui/issues/728)) ([271b3db](https://github.com/TinkoffCreditSystems/taiga-ui/commit/271b3db782182c4e3d9682c0d4a4921ee4160e4f))
+-   **demo:** add `Progress`, `DropdownContext`, `Editor` modules to stackblitz starter ([7515fcc](https://github.com/TinkoffCreditSystems/taiga-ui/commit/7515fcced13c87701c6988db111fe410754b58f2))
+-   **i18n:** fix russian i18n for editor ([#757](https://github.com/TinkoffCreditSystems/taiga-ui/issues/757)) ([55dd5d6](https://github.com/TinkoffCreditSystems/taiga-ui/commit/55dd5d6ff6ec30ded00a828212984b40b292ffb2))
+-   **kit:** `BadgedContent` fix icons color ([#749](https://github.com/TinkoffCreditSystems/taiga-ui/issues/749)) ([add85a4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/add85a4e9f6365421567707ee30e4aac907db4d2))
+-   **kit:** `InputPhoneInternational` correction of disabled state ([0591eca](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0591eca5d3bec3f5f2ddf9ade7cdaba52a4494c2))
+-   **kit:** `ProgressCircle` keeps css-property `r` while --prod build ([e60acf4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e60acf4776063ff325c4bf1080c74f78d771f152)), closes [issue#1021](https://github.com/TinkoffCreditSystems/issue/issues/1021)
+
 ## [2.17.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.16.3...v2.17.0) (2021-09-20)
 
 ### Features
