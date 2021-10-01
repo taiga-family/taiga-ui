@@ -39,3 +39,7 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   BRANCH: gh-pages
                   FOLDER: dist/demo/browser
+
+concurrency:
+    group: deploy-${{ github.head_ref }}
+    cancel-in-progress: true

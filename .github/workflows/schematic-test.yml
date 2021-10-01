@@ -32,3 +32,7 @@ jobs:
               run: npm ci
             # End of setup
             - run: npm run taiga-schematics:build && npm run test:schematics
+
+concurrency:
+    group: schematics-test-${{ github.head_ref }}
+    cancel-in-progress: true

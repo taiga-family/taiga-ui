@@ -38,3 +38,7 @@ jobs:
             - run: |
                   npm run prettier -- --check
                   npm run lint
+
+concurrency:
+    group: lint-${{ github.head_ref }}
+    cancel-in-progress: true

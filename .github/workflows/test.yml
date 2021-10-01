@@ -23,6 +23,10 @@ env:
 
 jobs:
     test:
+        name: all
+        concurrency:
+            group: test-all-${{ github.head_ref }}
+            cancel-in-progress: true
         # Setup part
         runs-on: ubuntu-latest
         steps:
@@ -102,6 +106,10 @@ jobs:
                   parallel: true
 
     finish:
+        name: finish
+        concurrency:
+            group: test-finish-${{ github.head_ref }}
+            cancel-in-progress: true
         needs: test
         runs-on: ubuntu-latest
         steps:
