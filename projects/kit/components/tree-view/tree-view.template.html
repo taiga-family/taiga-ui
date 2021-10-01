@@ -1,10 +1,14 @@
-<ng-container *ngIf="isArray; else itemView">
-    <tui-tree-view
-        *ngFor="let item of value"
-        [content]="content"
-        [value]="item"
-    ></tui-tree-view>
-</ng-container>
+<tui-expand *ngIf="isArray; else itemView" [expanded]="expanded">
+    <div>
+        <tui-tree-view
+            *ngFor="let item of value; let index = index"
+            [content]="content"
+            [value]="item"
+            [expanded]="isOpen(value[index + 1])"
+            (click)="toggleOpen(value[index + 1])"
+        ></tui-tree-view>
+    </div>
+</tui-expand>
 <ng-template #itemView>
     <div
         polymorpheus-outlet
