@@ -1,13 +1,11 @@
 import {InjectionToken} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core/enums';
+import {TuiNotificationAutoClose} from '@taiga-ui/core/interfaces';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface NotificationTokenOptions {
-    readonly autoClose:
-        | boolean
-        | number
-        | ((status: TuiNotification) => number | boolean);
+    readonly autoClose: TuiNotificationAutoClose;
     readonly label: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>>;
     readonly status: TuiNotification;
     readonly hasIcon: boolean;

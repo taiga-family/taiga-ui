@@ -2,9 +2,13 @@ import {CommonModule} from '@angular/common';
 import {Component, Inject, NgModule, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {
+    TuiNotificationOptions,
+    TuiNotificationOptionsWithData,
+} from '@taiga-ui/core/interfaces';
+import {
+    NotificationTokenOptions,
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
-    NotificationTokenOptions,
 } from '@taiga-ui/core/tokens';
 import {PageObject} from '@taiga-ui/testing';
 import {
@@ -13,10 +17,6 @@ import {
     PolymorpheusContent,
 } from '@tinkoff/ng-polymorpheus';
 import {TuiNotificationContentContext} from '../../notification-content-context';
-import {
-    TuiNotificationOptions,
-    TuiNotificationOptionsWithData,
-} from '../../notification-options';
 import {NotificationAlert} from '../Notification-alert';
 import {TuiNotificationAlertComponent} from '../notification-alert.component';
 import {TuiNotificationAlertModule} from '../notification-alert.module';
