@@ -38,12 +38,12 @@ import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
-    selector: 'example-tui-dialogs',
-    templateUrl: './dialogs.template.html',
-    styleUrls: ['./dialogs.style.less'],
+    selector: 'example-tui-dialog',
+    templateUrl: './dialog.template.html',
+    styleUrls: ['./dialog.style.less'],
     changeDetection,
 })
-export class ExampleTuiDialogsComponent {
+export class ExampleTuiDialogComponent {
     readonly dialogsCloseToken = exampleDialogsCloseToken;
     readonly exampleDialogClosesOnBackToken = exampleDialogClosesOnBackToken;
 

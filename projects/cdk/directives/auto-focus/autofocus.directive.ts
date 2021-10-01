@@ -23,6 +23,7 @@ const IOS_TIMEOUT = 1000;
 const NG_ANIMATION_SELECTOR = '.ng-animating';
 
 // @bad TODO: Consider removing iOS hacks
+// TODO: in 3.0 change input name to tuiAutoFocus and handle empty string
 @Directive({
     selector: '[tuiAutoFocus]',
 })

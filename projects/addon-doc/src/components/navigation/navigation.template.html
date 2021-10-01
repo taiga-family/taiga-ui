@@ -1,7 +1,9 @@
 <tui-hosted-dropdown
     *tuiLet="filteredItems as filtered"
     class="input"
+    tuiAutoFocus
     tuiDropdownLimitWidth="fixed"
+    [autoFocus]="!!sidebar"
     [content]="dropdown"
     [canOpen]="canOpen"
     [(open)]="open"

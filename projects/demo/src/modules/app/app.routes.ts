@@ -102,7 +102,7 @@ export const ROUTES = [
         loadChildren: () =>
             import(`../customization/dialogs/dialogs.module`).then(m => m.DialogsModule),
         data: {
-            title: `Dialogs`,
+            title: `Custom dialogs`,
         },
     },
     {
@@ -270,6 +270,16 @@ export const ROUTES = [
             ),
         data: {
             title: 'DataList',
+        },
+    },
+    {
+        path: 'components/dialog',
+        loadChildren: () =>
+            import(`../components/dialog/dialog.module`).then(
+                m => m.ExampleTuiDialogModule,
+            ),
+        data: {
+            title: 'Dialog',
         },
     },
     {
@@ -1425,16 +1435,6 @@ export const ROUTES = [
             ),
         data: {
             title: 'NotificationsService',
-        },
-    },
-    {
-        path: 'services/dialog-service',
-        loadChildren: () =>
-            import(`../services/dialogs/dialogs.module`).then(
-                m => m.ExampleTuiDialogsModule,
-            ),
-        data: {
-            title: 'DialogService',
         },
     },
     {
