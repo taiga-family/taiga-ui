@@ -12,12 +12,7 @@ import {
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
-import {
-    iconsPathFactory,
-    TUI_ANIMATIONS_DURATION,
-    TUI_ICONS_PATH,
-    TUI_SANITIZER,
-} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../../../addon-doc/src/tokens/example-content-processor';
@@ -46,8 +41,6 @@ export const HIGHLIGHT_OPTIONS_VALUE = {
     },
 };
 
-export const ICONS_PATH = iconsPathFactory('assets/taiga-ui/icons/');
-
 export const APP_PROVIDERS = [
     Title,
     PROMPT_PROVIDER,
@@ -58,10 +51,6 @@ export const APP_PROVIDERS = [
     {
         provide: TUI_SANITIZER,
         useClass: NgDompurifySanitizer,
-    },
-    {
-        provide: TUI_ICONS_PATH,
-        useValue: ICONS_PATH,
     },
     {
         provide: TUI_DOC_SOURCE_CODE,
