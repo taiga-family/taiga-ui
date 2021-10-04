@@ -308,7 +308,7 @@ export class TuiInputDateRangeComponent
         );
     }
 
-    onRangeChange(range: TuiDayRange) {
+    onRangeChange(range: TuiDayRange | null) {
         this.toggle();
         this.focusInput();
 
