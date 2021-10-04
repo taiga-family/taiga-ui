@@ -1,5 +1,6 @@
 name: Deploy on PR
 on: pull_request
+
 jobs:
     build_and_preview:
         runs-on: ubuntu-latest
@@ -14,3 +15,7 @@ jobs:
                   firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TAIGA_UI }}'
                   projectId: taiga-ui
                   expires: 1d
+
+concurrency:
+    group: firebase-${{ github.head_ref }}
+    cancel-in-progress: true

@@ -40,3 +40,7 @@ jobs:
                   name: cypress-screenshots
                   path: projects/demo-integrations/cypress/snapshots
                   retention-days: 7
+
+concurrency:
+    group: demo-integrations-${{ github.head_ref }}
+    cancel-in-progress: true

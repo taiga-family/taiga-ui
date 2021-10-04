@@ -55,3 +55,7 @@ jobs:
                   npm run build addon-editor
                   npm run build addon-table
                   npm run build addon-tablebars
+
+concurrency:
+    group: build-${{ github.head_ref }}
+    cancel-in-progress: true

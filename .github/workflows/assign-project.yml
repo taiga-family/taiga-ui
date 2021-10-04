@@ -21,3 +21,7 @@ jobs:
               if: contains(github.event.issue.labels.*.name, env.LABEL_FOR_ASSIGN)
               with:
                   project: '${{ env.PROJECTS_BASE_URL }}/${{ env.PROJECT_ID }}'
+
+concurrency:
+    group: assign-project-${{ github.head_ref }}
+    cancel-in-progress: true
