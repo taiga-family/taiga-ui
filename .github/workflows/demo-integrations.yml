@@ -21,7 +21,7 @@ env:
 jobs:
     demo-integrations:
         name: Cypress
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         env:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
         steps:
