@@ -240,7 +240,7 @@ describe('PrimitiveCalendar', () => {
     });
 
     function getTodayCalendarItem(): DebugElement {
-        return fixture.debugElement.query(By.css('.cell_today'));
+        return fixture.debugElement.query(By.css('.t-cell_today'));
     }
 
     function getDisabledCalendarItems(): DebugElement[] {
@@ -434,7 +434,7 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
 
     function getDaysOfWeek(): string[] {
         const daysOfWeekContainers =
-            fixture.debugElement.queryAll(By.css('.row_weekday .cell')) || [];
+            fixture.debugElement.queryAll(By.css('.t-row_weekday .t-cell')) || [];
 
         return daysOfWeekContainers.map(container => container.nativeElement.textContent);
     }
@@ -442,13 +442,15 @@ describe('integration with TUI_FIRST_DAY_OF_WEEK token', () => {
     function getColumnCells(columnIndex: number): DebugElement[] {
         return (
             fixture.debugElement.queryAll(
-                By.css(`.row:not(.row_weekday) .cell:nth-child(${columnIndex + 1})`),
+                By.css(
+                    `.t-row:not(.t-row_weekday) .t-cell:nth-child(${columnIndex + 1})`,
+                ),
             ) || []
         );
     }
 
     function isAllWeekdays($cells: DebugElement[]): boolean {
-        return $cells.every(cell => cell.classes['cell_weekend']);
+        return $cells.every(cell => cell.classes['t-cell_weekend']);
     }
 
     function getColumnDates(columnIndex: number): string[] {
