@@ -1,4 +1,4 @@
-name: Unit tests / Karma
+name: Unit tests
 
 on:
     pull_request:
@@ -23,6 +23,7 @@ env:
 
 jobs:
     test:
+        name: Karma
         # Setup part
         runs-on: ubuntu-latest
         steps:

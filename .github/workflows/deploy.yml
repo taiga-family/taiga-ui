@@ -1,4 +1,4 @@
-name: Deploy demo to gh-pages
+name: Deploy
 
 on:
     push:
@@ -11,6 +11,7 @@ env:
 
 jobs:
     build-and-deploy:
+        name: Demo
         runs-on: ubuntu-latest
         env:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
