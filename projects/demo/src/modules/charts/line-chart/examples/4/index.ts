@@ -24,4 +24,6 @@ export class TuiLineChartExample4 {
         [300, 190],
         [350, 90],
     ];
+
+    readonly singleValue = [[200, 150]];
 }
