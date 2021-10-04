@@ -102,7 +102,7 @@ export const ROUTES = [
         loadChildren: () =>
             import(`../customization/dialogs/dialogs.module`).then(m => m.DialogsModule),
         data: {
-            title: `Custom dialogs`,
+            title: `Dialogs`,
         },
     },
     {
