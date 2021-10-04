@@ -4,24 +4,22 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.19.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.18.0...v2.19.0) (2021-10-04)
 
-
 ### Features
 
-* **addon-commerce:** `InputCardGroup` make prefilled CVC readonly ([#812](https://github.com/TinkoffCreditSystems/taiga-ui/issues/812)) ([ce5c4c5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ce5c4c511eb37bb793fd141fee9b1de7127414f3))
-* **i18n:** add italian language ([#807](https://github.com/TinkoffCreditSystems/taiga-ui/issues/807)) ([dc720fe](https://github.com/TinkoffCreditSystems/taiga-ui/commit/dc720fe90076da41647ad6515c0726df9c55a85c))
-* **icons:** add new icons ([#820](https://github.com/TinkoffCreditSystems/taiga-ui/issues/820)) ([65c3131](https://github.com/TinkoffCreditSystems/taiga-ui/commit/65c31317a5df36cce7bea3984a4baa385e213d84))
-
+-   **addon-commerce:** `InputCardGroup` make prefilled CVC readonly ([#812](https://github.com/TinkoffCreditSystems/taiga-ui/issues/812)) ([ce5c4c5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ce5c4c511eb37bb793fd141fee9b1de7127414f3))
+-   **i18n:** add italian language ([#807](https://github.com/TinkoffCreditSystems/taiga-ui/issues/807)) ([dc720fe](https://github.com/TinkoffCreditSystems/taiga-ui/commit/dc720fe90076da41647ad6515c0726df9c55a85c))
+-   **icons:** add new icons ([#820](https://github.com/TinkoffCreditSystems/taiga-ui/issues/820)) ([65c3131](https://github.com/TinkoffCreditSystems/taiga-ui/commit/65c31317a5df36cce7bea3984a4baa385e213d84))
 
 ### Bug Fixes
 
-* **addon-charts:** show hint on single point ([#806](https://github.com/TinkoffCreditSystems/taiga-ui/issues/806)) ([475709e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/475709e529993ce62f30b10d8dff37be5f95ab9a))
-* **addon-mobile:** `MobileCalendar` fix styles ([#809](https://github.com/TinkoffCreditSystems/taiga-ui/issues/809)) ([953cd3a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/953cd3a79316e0f551bef827fdcbd437778caac7))
-* **core:** `PrimitiveCalendar` red color for weekends (with custom `TUI_FIRST_DAY_OF_WEEK`) ([#795](https://github.com/TinkoffCreditSystems/taiga-ui/issues/795)) ([81d0d21](https://github.com/TinkoffCreditSystems/taiga-ui/commit/81d0d21430f62c3204c289a8eca4b83e1e08a3a4))
-* **core:** change min-height of `ScrollControls`'s bar to fix `TextArea` ([#664](https://github.com/TinkoffCreditSystems/taiga-ui/issues/664)) ([313127f](https://github.com/TinkoffCreditSystems/taiga-ui/commit/313127f57bcd538521a81ee8d1f22682e0b15a0c))
-* **core:** fix updating dynamic ng-content in `TuiPrimitiveTextfield` ([#789](https://github.com/TinkoffCreditSystems/taiga-ui/issues/789)) ([bfcaccd](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bfcaccddfbfa80ca153501c6b4631d4c2555ed4f))
-* **icons:** make icon size dependent on font size ([#792](https://github.com/TinkoffCreditSystems/taiga-ui/issues/792)) ([cfaedf2](https://github.com/TinkoffCreditSystems/taiga-ui/commit/cfaedf2ab07739261636327a79f8ee0f2548ec24))
-* **kit:** `InputDateRange` fix filler appearing on custom date ([#813](https://github.com/TinkoffCreditSystems/taiga-ui/issues/813)) ([24f95ef](https://github.com/TinkoffCreditSystems/taiga-ui/commit/24f95efbc3032d8f2b4588f9874cd5f266ff25db))
-* **kit:** `InputFile`  trim whitespaces in accept list ([#786](https://github.com/TinkoffCreditSystems/taiga-ui/issues/786)) ([a59b92e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a59b92e94bace51ace013a188b0bbc7e6b5b3b95))
+-   **addon-charts:** show hint on single point ([#806](https://github.com/TinkoffCreditSystems/taiga-ui/issues/806)) ([475709e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/475709e529993ce62f30b10d8dff37be5f95ab9a))
+-   **addon-mobile:** `MobileCalendar` fix styles ([#809](https://github.com/TinkoffCreditSystems/taiga-ui/issues/809)) ([953cd3a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/953cd3a79316e0f551bef827fdcbd437778caac7))
+-   **core:** `PrimitiveCalendar` red color for weekends (with custom `TUI_FIRST_DAY_OF_WEEK`) ([#795](https://github.com/TinkoffCreditSystems/taiga-ui/issues/795)) ([81d0d21](https://github.com/TinkoffCreditSystems/taiga-ui/commit/81d0d21430f62c3204c289a8eca4b83e1e08a3a4))
+-   **core:** change min-height of `ScrollControls`'s bar to fix `TextArea` ([#664](https://github.com/TinkoffCreditSystems/taiga-ui/issues/664)) ([313127f](https://github.com/TinkoffCreditSystems/taiga-ui/commit/313127f57bcd538521a81ee8d1f22682e0b15a0c))
+-   **core:** fix updating dynamic ng-content in `TuiPrimitiveTextfield` ([#789](https://github.com/TinkoffCreditSystems/taiga-ui/issues/789)) ([bfcaccd](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bfcaccddfbfa80ca153501c6b4631d4c2555ed4f))
+-   **icons:** make icon size dependent on font size ([#792](https://github.com/TinkoffCreditSystems/taiga-ui/issues/792)) ([cfaedf2](https://github.com/TinkoffCreditSystems/taiga-ui/commit/cfaedf2ab07739261636327a79f8ee0f2548ec24))
+-   **kit:** `InputDateRange` fix filler appearing on custom date ([#813](https://github.com/TinkoffCreditSystems/taiga-ui/issues/813)) ([24f95ef](https://github.com/TinkoffCreditSystems/taiga-ui/commit/24f95efbc3032d8f2b4588f9874cd5f266ff25db))
+-   **kit:** `InputFile` trim whitespaces in accept list ([#786](https://github.com/TinkoffCreditSystems/taiga-ui/issues/786)) ([a59b92e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a59b92e94bace51ace013a188b0bbc7e6b5b3b95))
 
 ## [2.18.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.17.0...v2.18.0) (2021-09-27)
 
