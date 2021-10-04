@@ -1,14 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" focusable="false" height="32">
-    <g id="tuiIconMastercard" xmlns="http://www.w3.org/2000/svg" transform="translate(-16,-16)">
-        <svg x="50%" y="50%">
-            <svg
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-            >
+<svg xmlns="http://www.w3.org/2000/svg" width="2em" focusable="false" height="2em">
+    <g id="tuiIconMastercard" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            width="2em"
+            height="2em"
+            overflow="visible"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+            <svg x="-16" y="-16">
                 <g transform="translate(3, 8)">
                     <path
                         d="M12.8333333,14.9858645 C15.0443072,13.5181166 16.5,11.0185601 16.5,8.18181818 C16.5,5.34507627 15.0443072,2.84551975 12.8333333,1.37777185 C14.1442565,0.50751969 15.7206989,0 17.4166667,0 C21.9730159,0 25.6666667,3.66312477 25.6666667,8.18181818 C25.6666667,12.7005116 21.9730159,16.3636364 17.4166667,16.3636364 C15.7206989,16.3636364 14.1442565,15.8561167 12.8333333,14.9858645 Z"

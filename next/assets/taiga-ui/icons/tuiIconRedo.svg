@@ -1,7 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false">
-    <g id="tuiIconRedo" xmlns="http://www.w3.org/2000/svg" transform="translate(-8,-8)">
-        <svg x="50%" y="50%">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false">
+    <g id="tuiIconRedo" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            width="1em"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <svg x="-8" y="-8">
                 <g
                     clip-path="url(#a)"
                     stroke="currentColor"
@@ -13,7 +22,9 @@
                     <path d="M13.66 10a6 6 0 1 1-1.413-6.24l3.086 2.907" />
                 </g>
                 <defs>
-                    <clipPath><path fill="#fff" d="M0 0h16v16H0z" /></clipPath>
+                    <clipPath>
+                        <path fill="#fff" d="M0 0h16v16H0z" />
+                    </clipPath>
                 </defs>
             </svg>
         </svg>
