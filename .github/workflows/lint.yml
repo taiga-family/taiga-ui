@@ -1,4 +1,4 @@
-name: Lint all packages of Taiga UI
+name: Lint
 
 on:
     pull_request:

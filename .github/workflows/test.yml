@@ -1,4 +1,4 @@
-name: Test all packages of Taiga UI and check coverage with Coveralls
+name: Unit tests
 
 on:
     pull_request:

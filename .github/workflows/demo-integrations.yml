@@ -1,4 +1,4 @@
-name: Screenshot tests all packages of Taiga UI
+name: Screenshot tests
 
 on:
     pull_request:
@@ -20,6 +20,7 @@ env:
 
 jobs:
     demo-integrations:
+        name: Cypress
         runs-on: ubuntu-20.04
         env:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
