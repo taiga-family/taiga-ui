@@ -1,4 +1,4 @@
-name: Auto Assign to Project(s) of Taiga UI
+name: Auto assign
 
 on:
     issues:
@@ -10,8 +10,8 @@ env:
 
 jobs:
     assign-one-project:
+        name: To project(s)
         runs-on: ubuntu-latest
-        name: Assign to one project
         env:
             PROJECT_ID: 2
             LABEL_FOR_ASSIGN: 'documentation'

@@ -1,4 +1,4 @@
-name: Build all packages of Taiga UI
+name: Build
 
 on:
     pull_request:
@@ -23,6 +23,7 @@ env:
 jobs:
     build:
         # Setup part
+        name: Packages
         runs-on: ubuntu-latest
         env:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}

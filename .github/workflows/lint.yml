@@ -1,4 +1,4 @@
-name: Lint all packages of Taiga UI
+name: Lint
 
 on:
     pull_request:
@@ -14,6 +14,7 @@ env:
 
 jobs:
     lint:
+        name: Format
         # Setup part
         runs-on: ubuntu-latest
         env:

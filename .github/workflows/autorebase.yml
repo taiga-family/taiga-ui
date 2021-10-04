@@ -1,4 +1,4 @@
-name: Rebase all pull requests on push to the base branch
+name: Rebase onto main
 
 on:
     push:

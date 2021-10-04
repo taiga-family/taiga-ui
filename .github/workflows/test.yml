@@ -1,4 +1,4 @@
-name: Test all packages of Taiga UI and check coverage with Coveralls
+name: Unit tests
 
 on:
     pull_request:
@@ -23,10 +23,7 @@ env:
 
 jobs:
     test:
-        name: all
-        concurrency:
-            group: test-all-${{ github.head_ref }}
-            cancel-in-progress: true
+        name: Karma
         # Setup part
         runs-on: ubuntu-latest
         steps:
@@ -61,61 +58,49 @@ jobs:
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/cdk/lcov.info
-                  parallel: true
             - name: Coveralls(core)
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/core/lcov.info
-                  parallel: true
             - name: Coveralls(kit)
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/kit/lcov.info
-                  parallel: true
             - name: Coveralls(addon-charts)
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/addon-charts/lcov.info
-                  parallel: true
             - name: Coveralls(addon-commerce)
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/addon-commerce/lcov.info
-                  parallel: true
             - name: Coveralls(addon-editor)
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/addon-editor/lcov.info
-                  parallel: true
             - name: Coveralls(addon-table)
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/addon-table/lcov.info
-                  parallel: true
-
-    finish:
-        name: finish
-        concurrency:
-            group: test-finish-${{ github.head_ref }}
-            cancel-in-progress: true
-        needs: test
-        runs-on: ubuntu-latest
-        steps:
             - name: Coveralls Finished
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel-finished: true
+
+concurrency:
+    group: test-${{ github.head_ref }}
+    cancel-in-progress: true

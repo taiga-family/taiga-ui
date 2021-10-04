@@ -1,8 +1,9 @@
-name: Deploy on PR
+name: Deploy
 on: pull_request
 
 jobs:
     build_and_preview:
+        name: Firebase
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
