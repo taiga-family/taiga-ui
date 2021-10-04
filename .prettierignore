@@ -1,5 +1,4 @@
 dist
 **/coverage/**
-**/icons/all.ts
 */import/
 **/schematics/*/files/**/*
