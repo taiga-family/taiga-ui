@@ -1707,6 +1707,19 @@ export const ROUTES = [
             title: 'Tokens',
         },
     },
+
+    // ANIMATIONS
+    {
+        path: 'animations',
+        loadChildren: () =>
+            import(`../animations/animations.module`).then(
+                m => m.ExampleAnimationsModule,
+            ),
+        data: {
+            title: 'Animations',
+        },
+    },
+
     {path: '**', redirectTo: ''},
 ];
 

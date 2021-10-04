@@ -1,0 +1,11 @@
+<button
+    tuiButton
+    appearance="outline"
+    size="xs"
+    class="switch"
+    (click)="isOpen = !isOpen"
+>
+    {{isOpen ? 'ON' : 'OFF'}}
+</button>
+
+<div *ngIf="isOpen" class="plasma" [@tuiWidthCollapse]="animation"></div>
