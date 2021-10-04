@@ -21,7 +21,7 @@ import {
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {DialogExampleComponent} from './dialog-example/dialog-example.component';
 import {DialogExampleModule} from './dialog-example/dialog-example.module';
-import {ExampleTuiDialogsComponent} from './dialogs.component';
+import {ExampleTuiDialogComponent} from './dialog.component';
 import {TuiDialogExampleComponent1} from './examples/1';
 import {TuiDialogExampleComponent2} from './examples/2';
 import {TuiDialogExampleComponent3} from './examples/3';
@@ -47,10 +47,10 @@ import {TuiDialogExampleComponent6} from './examples/6';
         TuiNotificationModule,
         TuiAddonDocModule,
         DialogExampleModule,
-        RouterModule.forChild(generateRoutes(ExampleTuiDialogsComponent)),
+        RouterModule.forChild(generateRoutes(ExampleTuiDialogComponent)),
     ],
     declarations: [
-        ExampleTuiDialogsComponent,
+        ExampleTuiDialogComponent,
         TuiDialogExampleComponent1,
         TuiDialogExampleComponent2,
         TuiDialogExampleComponent3,
@@ -59,6 +59,6 @@ import {TuiDialogExampleComponent6} from './examples/6';
         TuiDialogExampleComponent6,
     ],
     entryComponents: [DialogExampleComponent],
-    exports: [ExampleTuiDialogsComponent],
+    exports: [ExampleTuiDialogComponent],
 })
-export class ExampleTuiDialogsModule {}
+export class ExampleTuiDialogModule {}

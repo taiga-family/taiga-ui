@@ -273,6 +273,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/dialog',
+        loadChildren: () =>
+            import(`../components/dialog/dialog.module`).then(
+                m => m.ExampleTuiDialogModule,
+            ),
+        data: {
+            title: 'Dialog',
+        },
+    },
+    {
         path: 'components/error',
         loadChildren: () =>
             import(`../components/error/error.module`).then(m => m.ExampleTuiErrorModule),
@@ -1425,16 +1435,6 @@ export const ROUTES = [
             ),
         data: {
             title: 'NotificationsService',
-        },
-    },
-    {
-        path: 'services/dialog-service',
-        loadChildren: () =>
-            import(`../services/dialogs/dialogs.module`).then(
-                m => m.ExampleTuiDialogsModule,
-            ),
-        data: {
-            title: 'DialogService',
         },
     },
     {

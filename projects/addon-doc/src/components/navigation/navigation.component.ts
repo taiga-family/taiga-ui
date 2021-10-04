@@ -1,7 +1,14 @@
 import {DOCUMENT} from '@angular/common';
-import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Optional,
+} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
+import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
 import {tuiPure, uniqBy} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
@@ -48,6 +55,9 @@ export class TuiDocNavigationComponent {
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective,
+        @Optional()
+        @Inject(TuiSidebarDirective)
+        readonly sidebar: unknown,
         @Inject(NAVIGATION_LABELS) readonly labels: string[],
         @Inject(NAVIGATION_ITEMS)
         readonly items: ReadonlyArray<TuiDocPages>,

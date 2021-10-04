@@ -7,6 +7,7 @@
     &:before,
     &:after {
         .fullsize();
+        height: 100vh;
         content: '';
         background: fade(#000, 38%);
         animation: tuiFadeIn var(--tui-duration);
@@ -41,6 +42,7 @@
     display: flex;
     flex-direction: column;
     background: var(--tui-base-01);
+    box-shadow: 0 10rem var(--tui-base-01);
     width: 17.25rem;
 
     &_auto-width {
