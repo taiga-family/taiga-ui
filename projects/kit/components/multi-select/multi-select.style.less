@@ -1,0 +1,59 @@
+@import 'taiga-ui-local';
+
+:host {
+    position: relative;
+    display: block;
+
+    &._disabled {
+        pointer-events: none;
+    }
+}
+
+.wrapper {
+    display: block;
+}
+
+.input {
+    :host:not(._editable):not(._readonly) & {
+        cursor: pointer;
+    }
+}
+
+.arrow {
+    .transition(transform);
+    .icon-button();
+    .center-top();
+    right: 0.75rem;
+    height: 1.5rem;
+    box-sizing: content-box;
+    cursor: pointer;
+
+    &_open {
+        transform: rotate(-180deg) translate(0, 50%);
+    }
+}
+
+.group {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 1.6875rem 1rem 0.5625rem;
+    pointer-events: none;
+
+    &_fullsize {
+        padding-top: 0.0625rem;
+        padding-bottom: 0;
+
+        :host[data-tui-host-size='m'] && {
+            padding-top: 0;
+        }
+    }
+
+    :host[data-tui-host-size='m'] & {
+        padding: 1.1875rem 0.75rem 0;
+        font-size: 0.8125rem;
+    }
+}

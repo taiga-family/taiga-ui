@@ -1,0 +1,30 @@
+import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
+
+/**
+ * @internal
+ */
+export const TUI_CARD_MASK = [
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    ' ',
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    ' ',
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    ' ',
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    ' ',
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+    TUI_DIGIT_REGEXP,
+];

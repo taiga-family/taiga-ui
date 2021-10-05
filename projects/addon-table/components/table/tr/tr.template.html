@@ -1,0 +1,10 @@
+<ng-container *ngIf="cells$ | async as items">
+    <ng-container
+        *ngFor="let key of table.columns"
+        [ngTemplateOutlet]="items[key]?.template || plain"
+    >
+        <ng-template #plain>
+            <td *ngIf="item$ | async as item" tuiTd>{{item[key]}}</td>
+        </ng-template>
+    </ng-container>
+</ng-container>

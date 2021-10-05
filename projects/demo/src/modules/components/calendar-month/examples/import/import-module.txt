@@ -1,0 +1,10 @@
+import {TuiCalendarMonthModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiCalendarMonthModule
+    ],
+...

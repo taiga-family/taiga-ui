@@ -1,0 +1,10 @@
+import {TuiMapperPipeModule} from '@taiga-ui/cdk';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiMapperPipeModule
+    ],
+...

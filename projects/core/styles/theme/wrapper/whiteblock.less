@@ -1,0 +1,37 @@
+tui-wrapper[data-appearance='whiteblock'],
+tui-wrapper[data-appearance='whiteblock-active'] {
+    background: var(--tui-base-01);
+    color: var(--tui-text-01);
+
+    &:after {
+        color: var(--tui-base-03);
+    }
+
+    &[data-state='hovered'],
+    &[data-state='pressed'] {
+        background: var(--tui-base-02);
+
+        &:after {
+            color: var(--tui-base-04);
+        }
+    }
+
+    &[data-state='disabled'] {
+        opacity: var(--tui-disabled-opacity);
+    }
+}
+
+tui-wrapper[data-appearance='whiteblock-active'] {
+    &:after {
+        color: var(--tui-primary);
+        border-width: 2px;
+    }
+
+    &[data-state='hovered']:after {
+        color: var(--tui-primary-hover);
+    }
+
+    &[data-state='pressed']:after {
+        color: var(--tui-primary-active);
+    }
+}

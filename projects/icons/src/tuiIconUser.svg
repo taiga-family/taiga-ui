@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false">
+    <g id="tuiIconUser" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            width="1em"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <svg x="-8" y="-8">
+                <path
+                    d="M13 14v-1.333a2.76 2.76 0 0 0-.732-1.886A2.424 2.424 0 0 0 10.5 10h-5c-.663 0-1.299.281-1.768.781A2.76 2.76 0 0 0 3 12.667V14M8 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

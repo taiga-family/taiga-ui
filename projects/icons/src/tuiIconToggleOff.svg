@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" focusable="false" height="1em">
+    <g id="tuiIconToggleOff" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            x="50%"
+            y="50%"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            enable-background="new 0 0 16 16"
+            xml:space="preserve"
+        >
+            <svg x="-8" y="-8">
+                <circle cx="8" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+        </svg>
+    </g>
+</svg>

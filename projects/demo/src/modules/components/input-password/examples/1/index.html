@@ -1,0 +1,16 @@
+<form class="b-form" [formGroup]="testForm">
+    <tui-input-password formControlName="testValue" tuiTextfieldSize="s">
+        Type a password
+    </tui-input-password>
+    <tui-input-password
+        class="tui-space_top-2"
+        formControlName="testValue"
+        tuiTextfieldSize="m"
+        [tuiTextfieldLabelOutside]="true"
+    >
+        Type a password
+    </tui-input-password>
+    <tui-input-password class="tui-space_top-2" formControlName="testValue">
+        Type a password
+    </tui-input-password>
+</form>

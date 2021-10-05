@@ -1,0 +1,48 @@
+<form [formGroup]="testForm">
+    <label
+        tuiLabel
+        *ngFor="let phone of formData.controls; let i = index"
+        class="tui-space_bottom-4"
+        label="Phone number {{i + 1}}"
+        formArrayName="phones"
+    >
+        <span class="row">
+            <tui-input-phone
+                class="input"
+                formControlName="{{i}}"
+                tuiTextfieldAutocomplete="off"
+                tuiTextfieldSize="m"
+                [tuiTextfieldLabelOutside]="true"
+            ></tui-input-phone>
+            <button
+                tuiIconButton
+                type="button"
+                class="tui-space_left-2 icon"
+                size="m"
+                title="Delete phone number"
+                appearance="icon"
+                icon="tuiIconTrash"
+                (click)="removePhone(i)"
+            ></button>
+        </span>
+        <ng-template #phoneErrorContent>
+            Invalid phone number length
+        </ng-template>
+        <tui-field-error formControlName="{{i}}"></tui-field-error>
+    </label>
+
+    <tui-field-error
+        class="form-array-error"
+        formArrayName="phones"
+    ></tui-field-error>
+
+    <button
+        tuiButton
+        type="button"
+        class="tui-space_top-4"
+        size="s"
+        (click)="addPhone()"
+    >
+        Add a phone number
+    </button>
+</form>

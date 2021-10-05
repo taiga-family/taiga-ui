@@ -1,0 +1,29 @@
+<button tuiButton type="button" size="m" (click)="showTableBar()">
+    Show TableBar
+</button>
+
+<ng-template #tableBarTemplate let-close>
+    <div class="content" tuiMode="onDark">
+        <button tuiButton type="button" size="m">Save</button>
+        <button
+            tuiButton
+            type="button"
+            class="tui-space_left-3"
+            appearance="flat"
+            size="m"
+            (click)="close()"
+        >
+            Cancel
+        </button>
+        <button
+            tuiButton
+            type="button"
+            class="delete-button"
+            appearance="outline"
+            size="m"
+            icon="tuiIconTrashLarge"
+        >
+            Delete
+        </button>
+    </div>
+</ng-template>

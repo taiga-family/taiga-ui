@@ -1,0 +1,22 @@
+<form class="b-form" [formGroup]="testForm">
+    <label tuiLabel class="tui-space_bottom-4" label="Enter an email">
+        <tui-input
+            i18n
+            formControlName="testValue2"
+            tuiTextfieldSize="m"
+            [tuiTextfieldLabelOutside]="true"
+        >
+            Required
+        </tui-input>
+
+        <tui-field-error formControlName="testValue2"></tui-field-error>
+    </label>
+
+    <label tuiLabel label="Minimum and maximum length">
+        <tui-input formControlName="testValue1" tuiTextfieldSize="m">
+            4 letters word...
+        </tui-input>
+
+        <tui-field-error formControlName="testValue1"></tui-field-error>
+    </label>
+</form>

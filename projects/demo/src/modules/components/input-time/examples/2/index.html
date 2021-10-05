@@ -1,0 +1,13 @@
+<form class="b-form" [formGroup]="testForm">
+    <tui-input-time formControlName="testValue" [items]="items1">
+        Input time
+    </tui-input-time>
+    <tui-input-time
+        class="tui-space_top-4"
+        formControlName="testValue"
+        [items]="items2"
+        [strict]="true"
+    >
+        Input time
+    </tui-input-time>
+</form>

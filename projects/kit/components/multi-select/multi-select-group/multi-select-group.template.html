@@ -1,0 +1,18 @@
+<ng-container *tuiLet="value$ | async as value">
+    <button
+        *ngIf="label && !(empty$ | async)"
+        tuiMultiSelectGroupReset
+        tuiOption
+        [size]="size"
+        [disabled]="disabled$ | async"
+        (click)="onClick(value)"
+    >
+        <tui-primitive-checkbox
+            class="tui-space_right-3"
+            [size]="checkboxSize"
+            [value]="value"
+        ></tui-primitive-checkbox>
+        <span class="label">{{label}}</span>
+    </button>
+</ng-container>
+<ng-content></ng-content>

@@ -1,0 +1,22 @@
+<ng-template #tooltip> Allowed symbols: ♠ ♣ ♦ ♥ </ng-template>
+
+<tui-input
+    class="input"
+    tuiTextfieldSize="m"
+    [tuiTextfieldLabelOutside]="true"
+></tui-input>
+<tui-tooltip [content]="tooltip" direction="right"></tui-tooltip>
+
+<tui-input
+    class="input"
+    tuiTextfieldSize="m"
+    [tuiTextfieldLabelOutside]="true"
+></tui-input>
+<tui-tooltip
+    class="primary"
+    content="Set icon color with 'color'"
+    direction="right"
+></tui-tooltip>
+
+<tui-input class="input" tuiTextfieldSize="m"></tui-input>
+<tui-tooltip [content]="tooltip" direction="right"></tui-tooltip>

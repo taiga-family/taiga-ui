@@ -1,0 +1,7 @@
+...
+
+@NgModule({
+    entryComponents: [
+        MyDialogComponent,
+    ]
+...

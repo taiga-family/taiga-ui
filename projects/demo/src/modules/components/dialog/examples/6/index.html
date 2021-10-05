@@ -1,0 +1,9 @@
+<button tuiButton type="button" size="m" (click)="showDialog()">Show</button>
+<ng-template
+    let-observer
+    [tuiDialogOptions]="{ label: 'Declarative directive' }"
+    [(tuiDialog)]="open"
+>
+    <p>This approach abstracts away service and subscription</p>
+    <button tuiButton (click)="observer.complete()">Ok</button>
+</ng-template>

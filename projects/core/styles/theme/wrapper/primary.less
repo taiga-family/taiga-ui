@@ -1,0 +1,30 @@
+tui-wrapper[data-appearance='primary'] {
+    background: var(--tui-primary);
+    color: var(--tui-primary-text);
+
+    &[data-state='hovered'] {
+        background: var(--tui-primary-hover);
+    }
+
+    &[data-state='pressed'] {
+        background: var(--tui-primary-active);
+    }
+
+    &[data-state='disabled'] {
+        opacity: var(--tui-disabled-opacity);
+    }
+
+    &._invalid {
+        color: var(--tui-negative-night);
+        background: var(--tui-error-bg);
+
+        &[data-state='hovered'],
+        &[data-state='pressed'] {
+            background: var(--tui-error-bg-hover);
+        }
+
+        &._focused:after {
+            color: var(--tui-error-fill);
+        }
+    }
+}

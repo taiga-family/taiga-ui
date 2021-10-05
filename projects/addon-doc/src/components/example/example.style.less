@@ -1,0 +1,79 @@
+@import 'taiga-ui-local';
+
+:host {
+    position: relative;
+    display: block;
+    padding-top: 3.5rem;
+    clear: right;
+
+    @media @mobile-m {
+        padding-top: 2rem;
+    }
+}
+
+.t-title {
+    font: var(--tui-font-heading-5);
+    margin: 0 0 0.5rem;
+
+    @media @mobile-m {
+        font: var(--tui-font-heading-6);
+    }
+}
+
+.t-description {
+    font: var(--tui-font-text-m);
+    font-weight: normal;
+    margin: 0;
+}
+
+.t-title,
+.t-description {
+    &:first-letter {
+        text-transform: capitalize;
+    }
+}
+
+.t-example {
+    position: relative;
+    margin-top: 1.5rem;
+    border: 1px solid var(--tui-base-03);
+    border-radius: var(--tui-radius-m);
+    box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+
+    @media @mobile-m {
+        margin-top: 0.75rem;
+    }
+}
+
+.t-tabs {
+    padding: 0 2rem;
+    box-shadow: inset 0 -1px var(--tui-base-03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media @mobile-m {
+        padding: 0 1rem;
+    }
+}
+
+.t-demo {
+    .customize-scroll();
+    padding: 2rem;
+    overflow-x: auto;
+
+    @media @mobile-m {
+        padding: 1rem;
+    }
+}
+
+.t-copy-code {
+    position: absolute;
+    top: 4.375rem;
+    right: 1rem;
+}
+
+.t-link-icon {
+    margin-left: 0.3rem;
+    vertical-align: baseline;
+}

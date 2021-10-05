@@ -1,0 +1,14 @@
+<p i18n>
+    A sample with <code>disabledItemHandler</code> when selecting a left value
+    of range changes available right value: a range no more than one month
+</p>
+
+<form class="b-form" [formGroup]="testForm">
+    <tui-input-month-range
+        class="tui-space_bottom-2"
+        formControlName="testValue"
+        [disabledItemHandler]="disabledItemHandler"
+    >
+        Choose a range of months
+    </tui-input-month-range>
+</form>

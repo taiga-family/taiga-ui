@@ -1,0 +1,219 @@
+@import 'taiga-ui-local';
+
+@tag-vertical-space: 0.125rem;
+
+.textfield();
+
+:host {
+    cursor: text;
+
+    &._expandable {
+        height: auto;
+        max-height: none;
+    }
+
+    &._disabled {
+        pointer-events: none;
+    }
+
+    &._readonly {
+        cursor: default;
+    }
+}
+
+.hosted {
+    display: block;
+    border-radius: inherit;
+}
+
+.scrollbar {
+    margin: 0 -0.25rem;
+    padding: 0 0.25rem;
+}
+
+.tags {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+
+    :host._expandable & {
+        flex-wrap: wrap;
+        white-space: normal;
+    }
+
+    :host._readonly & {
+        pointer-events: none;
+    }
+
+    :host[data-tui-host-size='s'] & {
+        min-height: var(--tui-height-s);
+        padding: 0.25rem 0.25rem 0.25rem 0;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        min-height: var(--tui-height-m);
+        padding: 0.5rem 0.25rem 0.5rem 0;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        min-height: var(--tui-height-l);
+        padding: 0.625rem 0.25rem 0.625rem 0;
+    }
+
+    :host[data-tui-host-size='m']:not(._label-outside) & {
+        padding: 1.1875rem 1rem 0 0;
+    }
+
+    :host[data-tui-host-size='l']:not(._label-outside) & {
+        padding: 1.6875rem 1rem 0.5625rem 0;
+    }
+}
+
+.content {
+    padding: 0;
+    align-items: flex-start;
+
+    :host[data-tui-host-size='s'] &,
+    :host[data-tui-host-size='m'] & {
+        padding-left: 0.75rem;
+    }
+
+    :host[data-tui-host-size='s'] & {
+        padding-right: 0;
+    }
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+
+    &_left {
+        padding: 0;
+        margin-right: 0.5rem;
+        margin-left: -0.25rem;
+    }
+
+    &_right {
+        :host._expandable & {
+            margin-left: -0.625rem;
+        }
+    }
+
+    :host[data-tui-host-size='s'] & {
+        height: var(--tui-height-s);
+    }
+
+    :host[data-tui-host-size='m'] & {
+        height: var(--tui-height-m);
+    }
+
+    :host[data-tui-host-size='l'] & {
+        height: var(--tui-height-l);
+    }
+}
+
+.absolute-wrapper {
+    .fullsize();
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    :host[data-tui-host-size='m'] & {
+        height: var(--tui-height-m);
+    }
+
+    :host[data-tui-host-size='l'] & {
+        height: var(--tui-height-l);
+    }
+}
+
+.wrapper {
+    position: relative;
+    padding: 0;
+}
+
+.tag {
+    margin: @tag-vertical-space 0.5rem @tag-vertical-space -0.25rem;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+.text {
+    &:after {
+        content: ',\00a0';
+    }
+
+    &_disabled {
+        color: var(--tui-text-03);
+    }
+
+    &_error {
+        color: var(--tui-negative);
+    }
+
+    :host:not(._expandable) & {
+        white-space: nowrap;
+    }
+
+    :host:not(:focus-within) &:last-of-type:after {
+        content: '';
+    }
+}
+
+.input-wrapper {
+    position: relative;
+    flex: 1;
+    max-width: 100%;
+
+    &_collapsed {
+        flex: 0;
+        margin-left: -2 * @space;
+    }
+
+    :host[data-tui-host-size='s'] & {
+        min-height: 1.25rem + 2 * @tag-vertical-space;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        min-height: calc(var(--tui-height-xs) + 2 * @tag-vertical-space);
+    }
+
+    :host[data-tui-host-size='l'] & {
+        min-height: calc(var(--tui-height-s) + 2 * @tag-vertical-space);
+    }
+
+    :host:not(._label-outside) & {
+        min-height: 1.25rem;
+    }
+}
+
+.ghost {
+    min-width: 0.125rem;
+
+    :host:not(._expandable) & {
+        min-width: 2rem;
+    }
+}
+
+.native {
+    .clearinput();
+    .fullsize();
+    .text-overflow();
+    box-sizing: border-box;
+    padding: 0;
+    cursor: inherit;
+
+    // Hide blinking caret even in IE
+    &_hidden {
+        opacity: 0;
+        text-indent: -10em;
+    }
+}
+
+.error-icon {
+    display: block;
+    color: var(--tui-error-fill);
+    width: 1rem;
+    height: 1rem;
+}

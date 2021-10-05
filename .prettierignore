@@ -1,0 +1,4 @@
+dist
+**/coverage/**
+*/import/
+**/schematics/*/files/**/*

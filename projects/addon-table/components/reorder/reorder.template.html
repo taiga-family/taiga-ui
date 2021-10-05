@@ -1,0 +1,18 @@
+<div cdkDropList class="wrapper" (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let item of items" class="item" tabindex="-1" cdkDrag>
+        <tui-svg src="tuiIconDrag" class="icon"></tui-svg>
+        {{item}}
+        <button
+            type="button"
+            tuiIconButton
+            appearance="icon"
+            size="xs"
+            tuiPreventDefault="mousedown"
+            class="button"
+            [class.button_hidden]="!isEnabled(item)"
+            [title]="showHideText$ | async"
+            [icon]="getIcon(item)"
+            (click)="toggle(item)"
+        ></button>
+    </div>
+</div>

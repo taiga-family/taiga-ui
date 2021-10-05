@@ -1,0 +1,11 @@
+<tui-combo-box
+    class="b-form"
+    tuiTextfieldExampleText="Type a name"
+    [(ngModel)]="value"
+>
+    Find the best employees
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items | tuiFilterByInput"
+    ></tui-data-list-wrapper>
+</tui-combo-box>

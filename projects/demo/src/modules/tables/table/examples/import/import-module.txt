@@ -1,0 +1,10 @@
+import {TuiTableModule} from '@taiga-ui/addon-table';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiTableModule,
+    ],
+...

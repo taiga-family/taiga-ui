@@ -1,0 +1,40 @@
+<tui-doc-page header="TablePagination" package="ADDON-TABLE" type="components">
+    <ng-template pageTab>
+        <p i18n>Component to show pagination in table footer</p>
+
+        <tui-doc-example
+            id="usage"
+            i18n-heading
+            heading="Usage"
+            [content]="example1"
+        >
+            <tui-table-pagination-example-1></tui-table-pagination-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template i18n-pageTab pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import an Angular module for forms and
+                    <code>TuiTablePaginationModule</code> in the same module
+                    where you want to use our component:
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

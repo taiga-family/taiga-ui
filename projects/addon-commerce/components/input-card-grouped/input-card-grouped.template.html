@@ -1,0 +1,152 @@
+<tui-wrapper
+    *ngIf="cardGroupedTexts$ | async as texts"
+    appearance="textfield"
+    class="t-common-wrapper"
+    [readOnly]="readOnly"
+    [disabled]="computedDisabled"
+    [focused]="computedFocused"
+    [hovered]="computedHovered"
+    [invalid]="computedInvalid"
+    [tuiDropdown]="open"
+    [tuiDropdownContent]="dropdown || ''"
+    (tuiHoveredChange)="onHovered($event)"
+    (tuiActiveZoneChange)="onActiveZoneChange($event)"
+    (scroll)="onScroll($event.currentTarget)"
+    (mousedown)="onMouseDown($event)"
+>
+    <div class="t-wrapper">
+        <span *ngIf="hasCardExampleText" class="t-example-text">
+            {{exampleText}}
+        </span>
+        <label tuiPreventDefault="click">
+            <input
+                #inputCard
+                type="text"
+                class="t-input t-input_card"
+                automation-id="tui-input-card-grouped__card"
+                tuiInputMode="numeric"
+                [class.t-input_inert]="cardPrefilled"
+                [class.t-input_hidden]="isCardCollapsed"
+                [attr.id]="idCard"
+                [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper : cardValidator)"
+                [attr.aria-placeholder]="exampleText"
+                [autocomplete]="autocompleteCard"
+                [disabled]="computedDisabled"
+                [readOnly]="readOnly"
+                [textMask]="maskCard"
+                [tuiFocusable]="cardFocusable"
+                [ngModel]="formattedCard"
+                (ngModelChange)="onCardChange($event)"
+                (focus)="0"
+            />
+            <span
+                aria-hidden="true"
+                class="t-collapsed"
+                [class.t-collapsed_inactive]="!isCardCollapsed"
+                [attr.data-before]="masked"
+            >
+                <span class="t-collapsed-wrapper">
+                    <span
+                        class="t-value"
+                        [class.t-value_collapsed]="isCardCollapsed"
+                        [class.t-value_small]="isCardSmall"
+                    >
+                        {{formattedCard}}
+                    </span>
+                </span>
+            </span>
+            <span
+                class="t-placeholder"
+                [class.t-placeholder_raised]="placeholderRaised"
+            >
+                {{texts.cardNumberText}}
+            </span>
+        </label>
+    </div>
+    <div
+        class="t-wrapper t-wrapper_expire"
+        [class.t-wrapper_active]="isCardCollapsed"
+    >
+        <span *ngIf="hasExpireExampleText" class="t-example-text"> 00/00 </span>
+        <label tuiPreventDefault="click">
+            <input
+                #inputExpire
+                type="text"
+                class="t-input"
+                automation-id="tui-input-card-grouped__expire"
+                tuiInputMode="numeric"
+                [class.t-input_inert]="!expireFocusable"
+                [attr.id]="idExpire"
+                [attr.name]="name"
+                [autocomplete]="autocompleteExpire"
+                [disabled]="computedDisabled"
+                [readOnly]="readOnly"
+                [tuiFocusable]="expireFocusable"
+                [textMask]="maskExpire"
+                [ngModel]="expire"
+                (ngModelChange)="onExpireChange($event)"
+                (focus)="0"
+            />
+            <span
+                class="t-placeholder"
+                [class.t-placeholder_raised]="placeholderRaised"
+            >
+                {{texts.expiryText}}
+            </span>
+        </label>
+    </div>
+    <div
+        class="t-wrapper t-wrapper_cvc"
+        [class.t-wrapper_active]="isCardCollapsed"
+    >
+        <span *ngIf="hasCVCExampleText" class="t-example-text">
+            {{exampleTextCVC}}
+        </span>
+        <label tuiPreventDefault="click">
+            <input
+                #inputCVC
+                type="text"
+                class="t-input"
+                automation-id="tui-input-card-grouped__cvc"
+                tuiInputMode="numeric"
+                [placeholder]="cvcPrefilled ? '•••' : ''"
+                [attr.id]="idCVC"
+                [disabled]="computedDisabled"
+                [readOnly]="readOnly || cvcPrefilled"
+                [autocomplete]="autocompleteCVC"
+                [textMask]="maskCVC"
+                [tuiFocusable]="cvcFocusable"
+                [ngModel]="cvc"
+                (ngModelChange)="onCVCChange($event)"
+                (focus)="0"
+            />
+            <span
+                class="t-placeholder"
+                [class.t-placeholder_raised]="placeholderRaised"
+            >
+                {{texts.cvcText}}
+            </span>
+        </label>
+    </div>
+    <div class="t-icons">
+        <tui-svg
+            *ngIf="icon"
+            class="t-card"
+            automation-id="tui-input-card-grouped__icon"
+            [src]="icon"
+        ></tui-svg>
+        <tui-svg
+            *ngIf="hasCleaner"
+            class="t-icon"
+            src="tuiIconCloseLarge"
+            (click)="clear()"
+        ></tui-svg>
+        <tui-svg
+            *ngIf="hasDropdown"
+            src="tuiIconChevronDownLarge"
+            class="t-icon"
+            [class.t-icon_rotated]="open"
+            (click)="toggle()"
+        ></tui-svg>
+    </div>
+</tui-wrapper>

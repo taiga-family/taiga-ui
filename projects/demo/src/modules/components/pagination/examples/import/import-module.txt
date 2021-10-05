@@ -1,0 +1,10 @@
+import {TuiPaginationModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiPaginationModule
+    ],
+...

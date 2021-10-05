@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false">
+    <g id="tuiIconCollapse" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            width="1em"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <svg x="-8" y="-8">
+                <g clip-path="url(#a)">
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M15.708.307a1.04 1.04 0 0 1-.026 1.437l-3.468 3.468 1.086 1.08c.632.63.186 1.71-.706 1.71H9a1 1 0 0 1-1-1v-3.58c0-.889 1.075-1.336 1.706-.708l1.094 1.09L14.318.286a.961.961 0 0 1 1.39.02zM.278 15.708a1.04 1.04 0 0 1 .026-1.437l3.482-3.481L2.7 9.709C2.068 9.079 2.513 8 3.405 8H7a1 1 0 0 1 1 1v3.579c0 .89-1.075 1.336-1.706.708L5.2 12.197 1.669 15.73a.961.961 0 0 1-1.39-.02z"
+                        fill="currentColor"
+                    />
+                </g>
+                <defs>
+                    <clipPath>
+                        <path fill="#fff" d="M0 0h16v16H0z" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </svg>
+    </g>
+</svg>

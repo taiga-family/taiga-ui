@@ -1,0 +1,22 @@
+<tui-primitive-textfield
+    class="t-input"
+    tuiValueAccessor
+    tuiTextfieldInputMode="numeric"
+    [tuiTextfieldAutocomplete]="autocomplete"
+    [tuiTextfieldCustomContent]="icon"
+    [readOnly]="readOnly"
+    [disabled]="disabled"
+    [focusable]="focusable"
+    [nativeId]="nativeId"
+    [invalid]="computedInvalid"
+    [pseudoHovered]="pseudoHovered"
+    [pseudoPressed]="pseudoPressed"
+    [pseudoFocused]="pseudoFocused"
+    [textMask]="textMaskOptions"
+    [value]="formattedCard"
+    (valueChange)="onValueChange($event)"
+    (focusedChange)="onFocused($event)"
+    (hoveredChange)="onHovered($event)"
+>
+    <ng-content></ng-content>
+</tui-primitive-textfield>

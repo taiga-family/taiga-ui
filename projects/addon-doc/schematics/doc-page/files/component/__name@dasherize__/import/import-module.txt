@@ -1,0 +1,10 @@
+import {<%= classify(name) %>} from 'packageName';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        <%= classify(name) %>
+    ],
+...

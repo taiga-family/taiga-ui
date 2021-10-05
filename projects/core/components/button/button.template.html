@@ -1,0 +1,33 @@
+<tui-wrapper
+    class="wrapper"
+    [appearance]="appearance"
+    [hovered]="computedHovered"
+    [pressed]="computedPressed"
+    [disabled]="computedDisabled"
+    [focused]="computedFocusVisible"
+>
+    <span class="content">
+        <span *ngIf="icon" class="left" polymorpheus-outlet [content]="icon">
+            <ng-template let-icon>
+                <tui-svg class="icon" [src]="icon"></tui-svg>
+            </ng-template>
+        </span>
+        <ng-content></ng-content>
+        <span
+            *ngIf="iconRight"
+            class="right"
+            polymorpheus-outlet
+            [content]="iconRight"
+        >
+            <ng-template let-icon>
+                <tui-svg class="icon" [src]="icon"></tui-svg>
+            </ng-template>
+        </span>
+    </span>
+    <tui-loader
+        *ngIf="showLoader"
+        class="loader"
+        [size]="loaderSize"
+        [inheritColor]="true"
+    ></tui-loader>
+</tui-wrapper>

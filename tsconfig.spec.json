@@ -1,0 +1,7 @@
+{
+    "extends": "./tsconfig.json",
+    "exclude": ["**/schematics/**/*", "projects/demo-integrations"],
+    "compilerOptions": {
+        "strictPropertyInitialization": false
+    }
+}

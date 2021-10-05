@@ -1,0 +1,10 @@
+import {TuiValidatorModule} from '@taiga-ui/cdk';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiValidatorModule,
+    ],
+...
