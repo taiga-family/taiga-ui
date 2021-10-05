@@ -1,6 +1,6 @@
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {TsFileComponentParser, TsFileModuleParser, TsFileParser} from '../classes';
-import {isLess, isMainComponentFile, isTS} from '../utils';
+import {isLess, isPrimaryComponentFile, isTS} from '../utils';
 
 export const prepareLess = (content: string): string => {
     return content.replace(
@@ -19,7 +19,7 @@ export const getSupportFiles = <T extends FrontEndExample>(
     files: T,
 ): Array<[FileName, FileContent]> => {
     return Object.entries(files).filter(
-        ([fileName, content]) => content && !isMainComponentFile(fileName),
+        ([fileName, content]) => content && !isPrimaryComponentFile(fileName),
     );
 };
 
