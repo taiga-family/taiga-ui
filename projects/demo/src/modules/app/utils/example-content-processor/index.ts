@@ -1,27 +1,26 @@
 import {identity} from '@taiga-ui/cdk';
-import {FrontEndExample} from '../../../interfaces/front-end-example';
 import {isLess, isTS} from '../index';
 import {processLess} from './less-processor';
 import {processTs} from './typescript-processor';
 
 function getProcessor(fileName: string): (item: string) => string {
-    switch (true) {
-        case isTS(fileName):
-            return processTs;
-        case isLess(fileName):
-            return processLess;
-        default:
-            return identity;
+    if (isTS(fileName)) {
+        return processTs;
+    } else if (isLess(fileName)) {
+        return processLess;
+    } else {
+        return identity;
     }
 }
 
-export function exampleContentProcessor<T extends FrontEndExample>(content: T): T {
-    return (Object.entries(content) as [keyof T, string][]).reduce(
-        (acc, [fileName, fileContent]) => {
-            const processor = getProcessor(fileName.toString());
+export function exampleContentProcessor<T extends object>(content: T): T {
+    const processedContent: Record<string, string> = {};
 
-            return {...acc, [fileName]: processor(fileContent)};
-        },
-        {} as T,
-    );
+    for (const [fileName, fileContent] of Object.entries(content)) {
+        const processor = getProcessor(fileName);
+
+        processedContent[fileName] = processor(fileContent);
+    }
+
+    return processedContent as T;
 }

@@ -14,15 +14,21 @@ export class TsFileParser {
         );
     }
 
-    get isNgModule(): boolean {
+    get hasNgModule(): boolean {
         return this.rawFileContent.includes('@NgModule');
     }
 
-    get isNgComponent(): boolean {
+    get hasNgComponent(): boolean {
         return this.rawFileContent.includes('@Component');
     }
 
-    constructor(protected rawFileContent: string) {}
+    constructor(protected rawFileContent: string) {
+        const classesInside = rawFileContent.match(CLASS_NAME_REGEXP) || [];
+
+        if (classesInside.length > 1) {
+            throw new Error('TsFileParser: 1 component/module per ts-file');
+        }
+    }
 
     addImport(entity: string, packageOrPath: string): void {
         const fromName = packageOrPath.replace('.ts', '');

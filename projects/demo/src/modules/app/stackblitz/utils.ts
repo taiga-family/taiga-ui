@@ -26,18 +26,17 @@ export const getSupportFiles = <T extends FrontEndExample>(
 export const prepareSupportFiles = (
     files: Array<[FileName, FileContent]>,
 ): Record<FileName, FileContent> => {
-    return files
-        .map(([fileName, fileContent]) => [
-            fileName,
-            isLess(fileName) ? prepareLess(fileContent) : fileContent,
-        ])
-        .reduce(
-            (acc, [fileName, fileContent]) => ({
-                ...acc,
-                [appPrefix`${fileName}`]: fileContent,
-            }),
-            {},
-        );
+    const processedContent: Record<FileName, FileContent> = {};
+
+    for (const [fileName, fileContent] of files) {
+        const prefixedFileName = appPrefix`${fileName}`;
+
+        processedContent[prefixedFileName] = isLess(fileName)
+            ? prepareLess(fileContent)
+            : fileContent;
+    }
+
+    return processedContent;
 };
 
 export const getComponentsClassNames = (
@@ -46,7 +45,7 @@ export const getComponentsClassNames = (
     return files
         .filter(
             ([fileName, fileContent]) =>
-                isTS(fileName) && new TsFileParser(fileContent).isNgComponent,
+                isTS(fileName) && new TsFileParser(fileContent).hasNgComponent,
         )
         .map(([fileName, fileContent]) => [
             fileName,
@@ -58,7 +57,7 @@ export const getSupportModules = (
     files: Array<[FileName, FileContent]>,
 ): Array<[FileName, TsFileModuleParser]> => {
     return files
-        .filter(([name, content]) => isTS(name) && new TsFileParser(content).isNgModule)
+        .filter(([name, content]) => isTS(name) && new TsFileParser(content).hasNgModule)
         .map(([fileName, fileContent]) => [
             fileName,
             new TsFileModuleParser(fileContent),
