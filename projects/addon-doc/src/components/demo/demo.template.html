@@ -1,0 +1,146 @@
+<div class="t-bg-toggle" [tuiMode]="null">
+    <ng-template #tooltip>
+        {{texts[0]}}
+        <a tuiLink tuiMode="onDark" routerLink="/directives/mode">
+            <code>tuiMode</code>
+        </a>
+    </ng-template>
+    <ng-container *ngIf="isMobile else desktop">
+        <tui-select
+            class="t-mode"
+            tuiTextfieldSize="s"
+            [tuiTextfieldCleaner]="true"
+            [tuiHintContent]="tooltip"
+            [formControl]="modeControl"
+        >
+            tuiMode
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="items"
+            ></tui-data-list-wrapper>
+        </tui-select>
+    </ng-container>
+    <ng-template #desktop>
+        tuiMode:
+        <tui-tooltip describeId="form" [content]="tooltip"></tui-tooltip>
+        <div tuiGroup class="tui-space_left-3" [collapsed]="true">
+            <tui-radio-block
+                class="tui-group__auto-width-item"
+                size="s"
+                nativeId="form"
+                [item]="null"
+                [hideRadio]="true"
+                [formControl]="modeControl"
+            >
+                null
+            </tui-radio-block>
+            <tui-radio-block
+                class="tui-group__auto-width-item"
+                item="onDark"
+                size="s"
+                nativeId="form"
+                [hideRadio]="true"
+                [formControl]="modeControl"
+            >
+                onDark
+            </tui-radio-block>
+            <tui-radio-block
+                class="tui-group__auto-width-item"
+                item="onLight"
+                size="s"
+                nativeId="form"
+                [hideRadio]="true"
+                [formControl]="modeControl"
+            >
+                onLight
+            </tui-radio-block>
+        </div>
+    </ng-template>
+    <tui-checkbox-labeled
+        class="tui-space_left-3"
+        size="m"
+        [(ngModel)]="opaque"
+    >
+        {{texts[1]}}
+    </tui-checkbox-labeled>
+</div>
+<div
+    #wrapper
+    class="t-wrapper"
+    [class.t-wrapper_dark]="modeControl.value === 'onDark'"
+    [class.t-wrapper_gray]="modeControl.value === 'onLight'"
+    [class.t-wrapper_transparent]="!opaque"
+>
+    <div #content id="demoContent" class="t-content">
+        <form *ngIf="testForm" class="t-form" [formGroup]="testForm">
+            <div class="t-input-wrapper">
+                <ng-container *ngTemplateOutlet="template"></ng-container>
+            </div>
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_top-3"
+                size="s"
+                [iconRight]="icon"
+                (click)="toggleDetails()"
+            >
+                {{texts[2]}}
+            </button>
+            <ng-template #icon>
+                <tui-svg
+                    src="tuiIconChevronDown"
+                    class="t-icon"
+                    [class.t-icon_rotated]="expanded"
+                ></tui-svg>
+            </ng-template>
+            <tui-expand class="t-expand" [expanded]="expanded">
+                <ng-template tuiExpandContent>
+                    <pre class="t-value">
+Form data: {{testForm.value | json}}</pre
+                    >
+                    <div tuiGroup class="tui-space_top-3">
+                        <tui-select
+                            class="t-select"
+                            tuiTextfieldSize="s"
+                            [ngModel]="updateOn"
+                            [ngModelOptions]="{standalone: true}"
+                            (ngModelChange)="updateOnChange($event)"
+                        >
+                            updateOn
+                            <tui-data-list-wrapper
+                                *tuiDataList
+                                [items]="updateOnVariants"
+                            ></tui-data-list-wrapper>
+                        </tui-select>
+                        <button
+                            tuiButton
+                            class="tui-group__auto-width-item"
+                            type="reset"
+                            size="s"
+                        >
+                            Reset
+                        </button>
+                        <button
+                            tuiButton
+                            class="tui-group__auto-width-item"
+                            type="submit"
+                            size="s"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </ng-template>
+            </tui-expand>
+        </form>
+        <ng-content></ng-content>
+    </div>
+    <button
+        class="t-resizer"
+        tabindex="-1"
+        (tuiDragStart)="onDragStart($event)"
+        (tuiDragContinues)="onDragContinues($event)"
+        (tuiDragEnd)="onDragEnd()"
+    >
+        <span #resizerText class="t-resizer-text"></span>
+    </button>
+</div>

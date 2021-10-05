@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false">
+    <g id="tuiIconSubitem" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            width="1em"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <svg x="-8" y="-8">
+                <path
+                    d="M10 6.667L13.333 10 10 13.333"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+                <path
+                    d="M3 3v4.455c0 .675.263 1.322.732 1.8A2.478 2.478 0 0 0 5.5 10H13"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

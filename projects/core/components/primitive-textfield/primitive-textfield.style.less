@@ -1,0 +1,98 @@
+@import '../../styles/taiga-ui-local.less';
+
+.textfield();
+
+.value {
+    height: 0;
+    display: none;
+    visibility: hidden;
+    white-space: pre;
+}
+
+.value_visible {
+    display: block;
+}
+
+.custom-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    margin-right: @space;
+    pointer-events: none;
+}
+
+.custom-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.icon {
+    .icon-button();
+    position: relative;
+    pointer-events: none;
+
+    :host._hovered:not(._readonly) & {
+        color: var(--tui-text-02);
+    }
+
+    :host[data-mode='onDark']._hovered:not(._readonly) & {
+        color: var(--tui-text-01-night);
+    }
+
+    :host[data-mode='onLight']._hovered:not(._readonly) & {
+        color: var(--tui-text-01);
+    }
+}
+
+.input {
+    &_hidden {
+        opacity: 0;
+        text-indent: -10em; // Hide blinking caret even in IE
+        -webkit-user-select: none; // Hide blinking caret in mobile safari
+    }
+
+    :host[data-tui-host-size] &_template {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
+        padding-right: 0;
+        border: 0 solid transparent;
+        pointer-events: none;
+    }
+
+    /* stylelint-disable */
+    /* Safari autofill icons */
+    &::-webkit-caps-lock-indicator {
+        margin-right: 0.375rem;
+        align-self: center;
+
+        :host[data-tui-host-size='l']:not(._label-outside) & {
+            margin-top: -1.25rem;
+        }
+    }
+
+    &::-webkit-credentials-auto-fill-button,
+    &::-webkit-contacts-auto-fill-button,
+    &::-webkit-credit-card-auto-fill-button {
+        background-color: var(--tui-text-03);
+
+        :host[data-tui-host-size='l']:not(._label-outside) & {
+            margin-top: -1.25rem;
+        }
+    }
+
+    &::-webkit-credentials-auto-fill-button:hover,
+    &::-webkit-contacts-auto-fill-button:hover,
+    &::-webkit-credit-card-auto-fill-button:hover {
+        background-color: var(--tui-text-02);
+    }
+    /* stylelint-enable */
+}
+
+.text-template {
+    .text-overflow();
+}

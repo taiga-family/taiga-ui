@@ -1,0 +1,15 @@
+<table tuiTable class="table" [columns]="columns">
+    <thead>
+        <tr tuiThGroup>
+            <th tuiTh [resizable]="true">Name</th>
+            <th tuiTh>Balance</th>
+        </tr>
+    </thead>
+    <tbody tuiTbody [data]="data">
+        <tr *tuiRow="let item of data" tuiTr>
+            <td *tuiCell="'balance'" tuiTd>
+                {{item.balance | tuiFormatNumber}}
+            </td>
+        </tr>
+    </tbody>
+</table>

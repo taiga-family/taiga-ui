@@ -1,0 +1,10 @@
+import {TuiLazyLoadingModule} from '@taiga-ui/kit/directives/lazyLoading';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiLazyLoadingModule,
+    ],
+...

@@ -1,0 +1,29 @@
+@import 'taiga-ui-local';
+
+:host {
+    position: relative;
+
+    &:last-child .bar {
+        display: none;
+    }
+}
+
+.bar {
+    .transition(opacity);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -0.0625rem;
+    width: 0.1875rem;
+    justify-self: flex-end;
+    border-left: 2px solid transparent;
+    background: var(--tui-support-12);
+    background-clip: content-box;
+    cursor: ew-resize;
+    opacity: 0;
+
+    &:hover,
+    &:active {
+        opacity: 1;
+    }
+}

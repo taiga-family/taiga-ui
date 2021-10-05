@@ -1,0 +1,10 @@
+import {TuiFilterModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiFilterModule
+    ],
+...

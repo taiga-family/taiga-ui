@@ -1,0 +1,18 @@
+<tui-wrapper
+    [appearance]="appearance"
+    [disabled]="disabled"
+    [focused]="focused"
+    [hovered]="hovered"
+    [pressed]="pressed"
+    [invalid]="invalid"
+>
+    <span polymorpheus-outlet [content]="icon" [context]="context">
+        <ng-template let-icon>
+            <tui-svg
+                class="mark"
+                [class.mark_on]="!empty"
+                [src]="icon"
+            ></tui-svg>
+        </ng-template>
+    </span>
+</tui-wrapper>

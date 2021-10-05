@@ -1,0 +1,37 @@
+<tui-hosted-dropdown
+    class="hosted"
+    [canOpen]="canOpen"
+    [content]="dropdown"
+    [open]="open && canOpen"
+    (openChange)="onOpenChange($event)"
+    (tuiActiveZoneChange)="onActiveZone($event)"
+>
+    <tui-primitive-textfield
+        *ngIf="months$ | async as months"
+        class="textfield"
+        [editable]="false"
+        [disabled]="disabled"
+        [nativeId]="nativeId"
+        [readOnly]="readOnly"
+        [iconContent]="calendarIcon"
+        [pseudoFocused]="pseudoFocused"
+        [pseudoHovered]="pseudoHovered"
+        [invalid]="computedInvalid"
+        [value]="computeValue(value, focused, months)"
+        (valueChange)="onValueChange($event)"
+        (hoveredChange)="onHovered($event)"
+    >
+        <ng-content></ng-content>
+    </tui-primitive-textfield>
+
+    <ng-template #dropdown>
+        <tui-calendar-month
+            tuiPreventDefault="mousedown"
+            [disabledItemHandler]="disabledItemHandler"
+            [min]="min"
+            [max]="max"
+            [value]="value"
+            (monthClick)="onMonthClick($event)"
+        ></tui-calendar-month>
+    </ng-template>
+</tui-hosted-dropdown>

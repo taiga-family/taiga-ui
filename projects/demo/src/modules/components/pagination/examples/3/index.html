@@ -1,0 +1,14 @@
+<tui-input-slider
+    class="slider"
+    secondary="sidePadding"
+    size="m"
+    [max]="6"
+    [quantum]="1"
+    [(ngModel)]="sidePadding"
+></tui-input-slider>
+
+<tui-pagination
+    [sidePadding]="sidePadding"
+    [length]="64"
+    [index]="10"
+></tui-pagination>

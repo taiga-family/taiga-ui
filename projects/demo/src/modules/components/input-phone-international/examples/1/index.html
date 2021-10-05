@@ -1,0 +1,9 @@
+<form [formGroup]="testForm">
+    <tui-input-phone-international
+        class="input"
+        formControlName="testValue"
+        [countries]="countries"
+        [(countryIsoCode)]="countryIsoCode"
+        [tuiTextfieldLabelOutside]="true"
+    ></tui-input-phone-international>
+</form>

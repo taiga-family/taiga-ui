@@ -1,0 +1,61 @@
+@import '../../styles/taiga-ui-local.less';
+
+tui-data-list {
+    font: var(--tui-font-text-m);
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    color: var(--tui-text-03);
+
+    &:focus-within {
+        .trap {
+            display: none;
+        }
+
+        [tuiOption]._with-dropdown:not(:focus) {
+            background-color: transparent;
+        }
+    }
+
+    & > .empty {
+        margin: 0.75rem 1rem;
+    }
+}
+
+tui-opt-group {
+    font: var(--tui-font-text-xs);
+    .text-overflow();
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    line-height: 2rem;
+    padding: 0.5rem 0;
+    margin: -0.5rem 0;
+
+    &:empty:before,
+    &:empty:after {
+        display: none;
+    }
+
+    &:before {
+        content: attr(data-label);
+        padding: 0 1rem;
+        color: var(--tui-text-02);
+    }
+
+    &:not(:empty) ~ & {
+        &:before {
+            padding-top: 1rem;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0.4375rem;
+            height: 0.0625rem;
+            background: var(--tui-base-03);
+        }
+    }
+}

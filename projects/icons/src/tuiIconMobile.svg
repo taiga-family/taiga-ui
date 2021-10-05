@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false">
+    <g id="tuiIconMobile" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            width="1em"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <svg x="-8" y="-8">
+                <path
+                    d="M11.571 1H4.43C3.639 1 3 1.627 3 2.4v11.2c0 .773.64 1.4 1.429 1.4h7.142c.79 0 1.429-.627 1.429-1.4V2.4c0-.773-.64-1.4-1.429-1.4zM8 12h.007"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

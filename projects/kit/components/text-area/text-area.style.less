@@ -1,0 +1,248 @@
+@import 'taiga-ui-local';
+
+@height: 6.75rem;
+@heightCounter: 7.875rem;
+@margin: 0.4375rem;
+
+:host {
+    font: var(--tui-font-text-m);
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: @height;
+    border-radius: var(--tui-radius-m);
+    color: var(--tui-text-01);
+
+    &[data-mode='onDark'] {
+        color: var(--tui-text-01-night);
+    }
+
+    &[data-tui-host-size='m'] {
+        font: var(--tui-font-text-s);
+        min-height: @height - 1.25rem;
+    }
+
+    &[data-tui-host-size='m']._has-counter {
+        min-height: @heightCounter - 1.25rem;
+    }
+
+    &[data-tui-host-size='l']._has-counter {
+        min-height: @heightCounter;
+    }
+}
+
+.outline {
+    .fullsize();
+    z-index: -1;
+}
+
+.content {
+    .customize-scroll();
+    margin-top: 0;
+    margin-bottom: 0;
+    min-height: inherit;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: text;
+
+    :host._disabled & {
+        cursor: auto;
+        opacity: var(--tui-disabled-opacity);
+    }
+
+    :host:not(._expandable) & {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0.0625rem;
+        right: 0;
+        min-height: auto;
+    }
+
+    :host._has-counter:not(._expandable) & {
+        bottom: 1.6875rem;
+    }
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    padding-bottom: @margin;
+    box-sizing: border-box;
+
+    :host[data-tui-host-size='m']._label-outside & {
+        padding-top: 0.75rem;
+    }
+
+    :host[data-tui-host-size='l']._label-outside & {
+        padding-top: 1rem;
+    }
+
+    :host[data-tui-host-size='m']:not(._label-outside) & {
+        padding-top: 1.375rem;
+    }
+
+    :host[data-tui-host-size='l']:not(._label-outside) & {
+        padding-top: 1.625rem;
+    }
+}
+
+.input-wrapper {
+    min-height: inherit;
+    width: 100%;
+    flex: 1;
+}
+
+.relative {
+    position: relative;
+    min-height: inherit;
+}
+
+.box {
+    display: flex;
+    min-height: 100%;
+    width: 100%;
+
+    :host:not(._expandable) & {
+        height: 100%;
+    }
+
+    :host._has-counter._expandable & {
+        margin-bottom: 1.25rem;
+    }
+}
+
+.pseudo-content {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    pointer-events: none;
+    color: transparent;
+    overflow: hidden;
+
+    :host[data-tui-host-size='m'] & {
+        padding: 0 0.75rem;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        padding: 0 1rem;
+    }
+
+    &__extra {
+        background-color: var(--tui-error-bg-night);
+    }
+}
+
+.input {
+    .clearinput();
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    resize: none;
+    overflow: hidden;
+
+    &:focus {
+        outline: none;
+    }
+
+    :host[data-tui-host-size='m'] & {
+        padding: 0 0.75rem;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        padding: 0 1rem;
+    }
+
+    :host._ios & {
+        padding-left: 0.8125rem; // compensation of unkillable padding in mobile safari
+    }
+
+    :host[data-mode='onDark']._disabled & {
+        color: var(--tui-text-03-night);
+    }
+}
+
+.pseudo-content,
+.input {
+    :host._focused._has-tooltip &,
+    :host._has-value._has-tooltip & {
+        padding-right: 2.5rem;
+    }
+}
+
+.placeholder {
+    .textfield-placeholder();
+    position: absolute;
+    max-width: ~'calc(100% - 1.5rem)';
+
+    &_raised {
+        max-width: ~'calc(113% - 2rem)';
+    }
+
+    :host[data-tui-host-size='m'] & {
+        top: 0.75rem;
+        left: 0.75rem;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        top: 1rem;
+        left: 1rem;
+    }
+
+    :host._has-tooltip & {
+        max-width: ~'calc(100% - 3.25rem)';
+    }
+
+    :host._label-outside & {
+        overflow: initial;
+        height: auto;
+        white-space: initial;
+    }
+}
+
+.example-text {
+    position: absolute;
+    max-width: ~'calc(100% - 1.5rem)';
+    color: var(--tui-text-03);
+    user-select: none;
+
+    :host._has-tooltip._focused &,
+    :host._has-tooltip._has-value & {
+        max-width: ~'calc(100% - 3.25rem)';
+    }
+
+    :host[data-tui-host-size='m'] & {
+        left: 0.75rem;
+    }
+
+    :host[data-tui-host-size='l'] & {
+        left: 1rem;
+    }
+}
+
+.tooltip {
+    position: absolute;
+    top: 1rem;
+    right: 0.75rem;
+}
+
+.counter {
+    font: var(--tui-font-text-s);
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.75rem;
+    pointer-events: none;
+    margin-top: auto;
+    text-align: right;
+    color: var(--tui-text-03);
+
+    :host[data-mode='onDark'] & {
+        color: var(--tui-text-03-night);
+    }
+}

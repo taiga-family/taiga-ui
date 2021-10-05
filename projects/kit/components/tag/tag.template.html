@@ -1,0 +1,39 @@
+<div
+    class="tag"
+    [style.backgroundColor]="backgroundColor"
+    (dblclick)="edit($event)"
+>
+    <div
+        *ngIf="leftContent"
+        polymorpheus-outlet
+        class="left-content"
+        [content]="leftContent"
+    ></div>
+    <span automation-id="tui-tag__text" class="text">{{displayText}}</span>
+    <tui-loader
+        *ngIf="showLoader"
+        class="icon icon_loader"
+        [inheritColor]="true"
+        [size]="loaderSize"
+    ></tui-loader>
+    <tui-svg
+        *ngIf="canRemove"
+        tuiPreventDefault="mousedown"
+        automation-id="tui-tag__remove"
+        class="icon"
+        src="tuiIconCloseLarge"
+        (click)="remove($event)"
+    ></tui-svg>
+</div>
+<input
+    *ngIf="editing"
+    #input
+    automation-id="tui-tag__edit"
+    class="edit"
+    type="text"
+    [attr.maxLength]="maxLength"
+    [ngModel]="editedText"
+    (ngModelChange)="onInput($event)"
+    (blur)="onBlur()"
+    (keydown)="onKeyDown($event)"
+/>

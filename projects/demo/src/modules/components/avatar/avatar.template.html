@@ -1,0 +1,116 @@
+<tui-doc-page header="Avatar" package="KIT" type="components">
+    <ng-template pageTab>
+        <p i18n>
+            Use Avatar to view person or company. It can be photo, icon or first
+            letters of name.
+        </p>
+
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-avatar-example-1></tui-avatar-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="autocolor"
+            i18n-heading
+            heading="Colors"
+            [content]="example2"
+        >
+            <tui-avatar-example-2></tui-avatar-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-avatar
+                [avatarUrl]="avatarUrl"
+                [text]="text"
+                [rounded]="rounded"
+                [size]="size"
+                [autoColor]="autoColor"
+            ></tui-avatar>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName="autoColor"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="autoColor"
+            >
+                Autocolor if there is no image
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="avatarUrl"
+                documentationPropertyType="string | null"
+                documentationPropertyMode="input"
+                [documentationPropertyValues]="avatarUrlVariants"
+                [(documentationPropertyValue)]="avatarUrl"
+            >
+                Avatar URL
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="rounded"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="rounded"
+            >
+                Rounded mode
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="size"
+                documentationPropertyType="TuiSizeXS | TuiSizeXXL"
+                documentationPropertyMode="input"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="text"
+                documentationPropertyType="string"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="text"
+            >
+                Name (Avatar shows first letters of name if there is no image)
+            </ng-template>
+        </tui-doc-documentation>
+        <i i18n>
+            Better do not use big images with Avatar. Some browsers like IE or
+            Firefox work with resized image not so good.
+        </i>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import <code>TuiAvatarModule</code> into a module where you
+                    want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

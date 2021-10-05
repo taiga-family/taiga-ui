@@ -1,0 +1,62 @@
+<p>Your balance: <tui-money [value]="money"></tui-money></p>
+<button
+    tuiButton
+    type="button"
+    class="tui-space_right-3"
+    size="m"
+    (click)="showWithdrawAlert()"
+>
+    Withdraw
+</button>
+<button
+    tuiButton
+    type="button"
+    class="tui-space_right-3"
+    size="m"
+    (click)="showDepositAlert()"
+>
+    Add
+</button>
+<button
+    tuiButton
+    type="button"
+    class="tui-space_right-3"
+    size="m"
+    (click)="withdraw()"
+>
+    Withdraw&nbsp;<tui-money [value]="100"></tui-money>
+</button>
+
+<ng-template #withdrawTemplate>
+    <p i18n>Notifications can be shown with template</p>
+    <p>Your balance: <tui-money [value]="money"></tui-money></p>
+    <button
+        tuiButton
+        type="button"
+        tuiMode="onLight"
+        appearance="outline"
+        size="m"
+        (click)="withdraw()"
+    >
+        Withdraw&nbsp;<tui-money [value]="100"></tui-money>
+    </button>
+</ng-template>
+
+<ng-template #depositTemplate>
+    <p i18n>
+        If there are many templates, you can use
+        <code>ViewChildren</code> instead of <code>ViewChild</code> or set them
+        IDs with "#" (see code of this sample)
+    </p>
+    <p>Your balance: <tui-money [value]="money"></tui-money></p>
+    <button
+        tuiButton
+        type="button"
+        tuiMode="onLight"
+        appearance="outline"
+        size="m"
+        (click)="deposit()"
+    >
+        Add&nbsp;<tui-money [value]="100"></tui-money>
+    </button>
+</ng-template>

@@ -1,0 +1,12 @@
+@import 'taiga-ui-local';
+
+:host {
+    .scrollbar-hidden();
+    display: flex;
+    overflow: auto;
+    counter-reset: steps;
+
+    &[data-orientation='vertical'] {
+        flex-direction: column;
+    }
+}

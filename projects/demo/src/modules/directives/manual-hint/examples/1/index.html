@@ -1,0 +1,15 @@
+<button
+    tuiButton
+    type="button"
+    [tuiManualHint]="template"
+    [tuiManualHintShow]="hintShown"
+    (click)="toggleHint()"
+>
+    Hint
+</button>
+
+<ng-template #template>
+    <div tuiMode="onDark">
+        Use <a tuiLink class="link" routerLink="hint">Hint</a>
+    </div>
+</ng-template>

@@ -1,0 +1,12 @@
+<tui-input
+    class="b-form"
+    tuiHintContent="Type 5 letters or more"
+    [tuiTextfieldCleaner]="true"
+    [tuiTextfieldCustomContent]="control.valid ? success : ''"
+    [formControl]="control"
+>
+    Hello
+</tui-input>
+<ng-template #success>
+    <tui-svg class="success tui-space_left-3" src="tuiIconCheckLarge"></tui-svg>
+</ng-template>

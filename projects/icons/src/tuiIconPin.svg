@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false">
+    <g id="tuiIconPin" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            width="1em"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <svg x="-8" y="-8">
+                <path
+                    d="M14 6.727C14 11.182 8 15 8 15s-6-3.818-6-8.273c0-1.519.632-2.975 1.757-4.05A6.148 6.148 0 0 1 8 1c1.591 0 3.117.603 4.243 1.677A5.598 5.598 0 0 1 14 6.727z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+                <path
+                    d="M8 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

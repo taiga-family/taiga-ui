@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" focusable="false" height="1em">
+    <g id="tuiIconPlus" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+        >
+            <svg x="-8" y="-8">
+                <path
+                    d="M7 7V3a1 1 0 0 1 2 0v4h4a1 1 0 1 1 0 2H9v4a1 1 0 1 1-2 0V9H3a1 1 0 0 1 0-2h4z"
+                    fill="currentColor"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

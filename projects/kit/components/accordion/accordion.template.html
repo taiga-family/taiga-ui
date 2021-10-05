@@ -1,0 +1,12 @@
+<!--TODO: Unnecessary nesting, probably accordion can be a directive-->
+<div
+    tuiGroup
+    automation-id="tui-accordion__group"
+    class="group"
+    orientation="vertical"
+    size="l"
+    [collapsed]="true"
+    [rounded]="rounded"
+>
+    <ng-content select="tui-accordion-item"></ng-content>
+</div>

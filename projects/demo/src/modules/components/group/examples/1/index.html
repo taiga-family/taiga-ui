@@ -1,0 +1,37 @@
+<form class="input-wrapper" [formGroup]="testForm">
+    <div tuiGroup class="group">
+        <div>
+            <tui-input
+                class="tui-group__inherit-item"
+                formControlName="testValue"
+                tuiTextfieldExampleText="House"
+                tuiHintContent="Write a number"
+            >
+                House
+            </tui-input>
+            <tui-field-error formControlName="testValue"></tui-field-error>
+        </div>
+        <div>
+            <tui-input
+                class="tui-group__inherit-item"
+                formControlName="testValue2"
+                tuiTextfieldExampleText="House building"
+                tuiHintContent="Write house building"
+            >
+                Building
+            </tui-input>
+            <tui-field-error formControlName="testValue2"></tui-field-error>
+        </div>
+        <div>
+            <tui-input
+                class="tui-group__inherit-item"
+                formControlName="testValue3"
+                tuiTextfieldExampleText="Apartment number"
+                tuiHintContent="Write an apartment number only"
+            >
+                Apartment
+            </tui-input>
+            <tui-field-error formControlName="testValue3"></tui-field-error>
+        </div>
+    </div>
+</form>

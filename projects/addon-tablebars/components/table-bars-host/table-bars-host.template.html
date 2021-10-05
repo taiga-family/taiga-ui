@@ -1,0 +1,36 @@
+<div *ngIf="service.bar$ | async as item" class="wrapper" [@tuiParentAnimation]>
+    <div
+        automation-id="tui-table-bar__bar"
+        class="bar"
+        [class.bar_light]="item.mode === 'onDark'"
+        [@tuiSlideInTop]="animation"
+    >
+        <div
+            class="tui-container"
+            [class.tui-container_adaptive]="item.adaptive"
+        >
+            <div class="inner">
+                <div
+                    polymorpheus-outlet
+                    class="content"
+                    [content]="item.content"
+                    [context]="getItemContext(item)"
+                ></div>
+
+                <button
+                    *ngIf="item.hasCloseButton"
+                    tuiIconButton
+                    type="button"
+                    automation-id="tui-table-bar__close-button"
+                    class="close-button tui-space_left-6"
+                    size="xs"
+                    icon="tuiIconRemoveLarge"
+                    appearance="icon"
+                    [tuiMode]="getMode(item.mode)"
+                    [title]="closeWord$ | async"
+                    (click)="onCloseClick(item)"
+                ></button>
+            </div>
+        </div>
+    </div>
+</div>

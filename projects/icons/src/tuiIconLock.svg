@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false">
+    <g id="tuiIconLock" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            width="1em"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <svg x="-8" y="-8">
+                <path
+                    d="M12.667 7H3.333C2.597 7 2 7.651 2 8.455v5.09C2 14.35 2.597 15 3.333 15h9.334c.736 0 1.333-.651 1.333-1.454V8.454C14 7.65 13.403 7 12.667 7zM4 7V4.333c0-.884.421-1.732 1.172-2.357C5.922 1.351 6.939 1 8 1c1.06 0 2.078.351 2.828.976S12 3.45 12 4.333V7"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

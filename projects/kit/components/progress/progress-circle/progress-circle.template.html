@@ -1,0 +1,18 @@
+<progress class="t-hidden-progress" [value]="value" [max]="max"></progress>
+
+<svg class="t-svg" height="100%" width="100%" aria-hidden="true">
+    <circle
+        class="t-track"
+        cx="50%"
+        cy="50%"
+        [attr.r]="oldEdgeRadiusFallback"
+    ></circle>
+
+    <circle
+        #progressCircle
+        class="t-progress"
+        cx="50%"
+        cy="50%"
+        [attr.r]="oldEdgeRadiusFallback"
+    ></circle>
+</svg>

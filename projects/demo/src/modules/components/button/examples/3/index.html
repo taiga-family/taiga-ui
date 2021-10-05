@@ -1,0 +1,15 @@
+<tui-hosted-dropdown
+    tuiDropdownLimitWidth="fixed"
+    [open]="open"
+    [content]="dropdown"
+>
+    <button tuiButton type="button" [iconRight]="arrow" (click)="onClick()">
+        Where could I find such an arrow...?
+    </button>
+</tui-hosted-dropdown>
+<ng-template #dropdown>
+    <div class="content">
+        Use <code>TuiArrowModule</code> from
+        <code>@taiga-ui/kit</code>
+    </div>
+</ng-template>

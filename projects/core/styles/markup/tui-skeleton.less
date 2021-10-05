@@ -1,0 +1,40 @@
+.tui-skeleton {
+    position: relative;
+    color: transparent !important;
+    background: transparent !important;
+    pointer-events: none;
+    user-select: none;
+
+    &:after {
+        .fullsize();
+        content: '';
+        background-color: fade(#000, 16%);
+        animation: tuiSkeletonVibe ease-in-out 1s infinite alternate;
+    }
+
+    &_light:after {
+        background-color: fade(#fff, 24%);
+    }
+
+    &_rounded:after {
+        border-radius: inherit;
+    }
+
+    &_short:after {
+        width: 40%;
+    }
+
+    &_center:after {
+        .center-left();
+        width: 40%;
+    }
+
+    &_text:before {
+        content: '\a0';
+    }
+
+    & * {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,10 @@
+import {TuiDialogModule, TuiRootModule} from '@taiga-ui/core';
+...
+
+@NgModule({
+    imports: [
+        TuiRootModule,
+        TuiDialogModule,
+        ...
+    ]
+...

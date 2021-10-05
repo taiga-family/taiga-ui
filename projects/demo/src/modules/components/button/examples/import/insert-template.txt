@@ -1,0 +1,3 @@
+<button tuiButton type="button" icon="tuiIconSettings">
+    Button
+</button>

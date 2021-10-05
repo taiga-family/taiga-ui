@@ -1,0 +1,211 @@
+<tui-doc-page header="InputSlider" package="KIT" type="components">
+    <ng-template pageTab>
+        <p i18n>Component to input a limited range</p>
+
+        <p i18n>
+            Number formatting can be customized by using
+            <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a>
+        </p>
+
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-input-slider-example-1></tui-input-slider-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-slider
+                    [formControl]="control"
+                    [focusable]="focusable"
+                    [min]="min"
+                    [max]="max"
+                    [minLabel]="minLabel"
+                    [maxLabel]="maxLabel"
+                    [segments]="segments"
+                    [size]="size"
+                    [keySteps]="keySteps"
+                    [pluralize]="pluralize"
+                    [segmentsPluralize]="segmentsPluralize"
+                    [steps]="steps"
+                    [quantum]="quantum"
+                    [readOnly]="readOnly"
+                    [secondary]="secondary"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiHintMode]="hintMode"
+                >
+                    Range
+                </tui-input-slider>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName=""
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state (use <code>formControl.disable()</code>)
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="keySteps"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiKeySteps"
+                [documentationPropertyValues]="keyStepsVariants"
+                [(documentationPropertyValue)]="keySteps"
+            >
+                Key steps to bind slider position and value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Min value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Max value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="minLabel"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="minLabelVariants"
+                [(documentationPropertyValue)]="minLabel"
+            >
+                Label for min value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="maxLabel"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="maxLabelVariants"
+                [(documentationPropertyValue)]="maxLabel"
+            >
+                Label for max value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="pluralize"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiPluralize | Record<string, string>"
+                [documentationPropertyValues]="pluralizeVariants"
+                [(documentationPropertyValue)]="pluralize"
+            >
+                Plural forms for labels. TuiPluralize array is deprecated. Use
+                object that mimics the
+                <a
+                    tuiLink
+                    href="https://unicode-org.github.io/icu/userguide/format_parse/messages/"
+                    >ICU format</a
+                >
+                for i18nPlural
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="quantum"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="quantumVariants"
+                [(documentationPropertyValue)]="quantum"
+            >
+                Minimum indivisible value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="secondary"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="secondaryVariants"
+                [(documentationPropertyValue)]="secondarySelected"
+            >
+                Right label
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="segments"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="segmentsVariants"
+                [(documentationPropertyValue)]="segments"
+            >
+                A number of visual segments
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="segmentsPluralize"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiPluralize"
+                [documentationPropertyValues]="pluralizeVariants"
+                [(documentationPropertyValue)]="segmentsPluralize"
+            >
+                Plural forms for <code>segments</code>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="steps"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="stepsVariants"
+                [(documentationPropertyValue)]="steps"
+            >
+                Number of actual discrete slider steps
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation></inherited-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import <code>TuiInputSliderModule</code> into a module where
+                    you want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

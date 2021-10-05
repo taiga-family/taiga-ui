@@ -1,0 +1,10 @@
+import {TuiLineChartModule} from '@taiga-ui/addon-charts';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiLineChartModule,
+    ],
+...

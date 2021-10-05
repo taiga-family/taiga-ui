@@ -1,0 +1,10 @@
+import {TuiReorderModule} from '@taiga-ui/addon-table/components/reorder';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiReorderModule,
+    ],
+...

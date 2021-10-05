@@ -1,0 +1,8 @@
+<progress class="t-hidden-progress" [value]="value" [max]="max"></progress>
+
+<span
+    *tuiRepeatTimes="let index of max"
+    class="t-segment"
+    aria-hidden="true"
+    [style.background]="index < value ? getActiveColor(index) : null"
+></span>

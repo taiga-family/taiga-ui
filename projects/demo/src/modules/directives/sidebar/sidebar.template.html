@@ -1,0 +1,57 @@
+<tui-doc-page
+    i18n-header
+    header="Sidebar"
+    package="ADDON-MOBILE"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p i18n>
+            Directive allows to show arbitrary content in a sidebar above all
+            content. A darkening overlay is shown under the sidebar.
+        </p>
+
+        <tui-doc-example
+            id="basic"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-sidebar-example-1></tui-sidebar-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template i18n-pageTab pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import <code>TuiSidevarModule</code> into your component
+                    module. Also add <code>TuiActiveZoneModule</code> if you
+                    want to close sidebar when user clicked outside:
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Control sidebar in component</p>
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleComponent"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

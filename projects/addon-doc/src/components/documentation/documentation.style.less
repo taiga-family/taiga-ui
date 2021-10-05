@@ -1,0 +1,60 @@
+@import 'taiga-ui-local';
+
+@color-property: #8f75d1;
+
+:host {
+    display: block;
+    min-width: 100%;
+}
+
+.t-row {
+    @media @mobile-m {
+        display: flex;
+        flex-wrap: wrap;
+
+        &_header {
+            display: none;
+        }
+    }
+}
+
+.t-cell {
+    &_prop {
+        width: 40%;
+    }
+
+    &_value {
+        max-width: 20rem;
+
+        @media @mobile-m {
+            width: 9.375rem;
+        }
+    }
+
+    @media @mobile-m {
+        width: 100%;
+        height: auto;
+        padding: 0.5rem 0;
+        text-align: left;
+    }
+}
+
+.t-property {
+    font: var(--tui-font-text-m);
+    margin-bottom: @space;
+    font-family: monospace;
+    color: @color-property;
+}
+
+.t-type {
+    font-family: monospace;
+}
+
+.t-deprecated {
+    background-color: var(--tui-error-bg);
+}
+
+.t-deprecated-label {
+    margin-right: 0.125rem;
+    color: var(--tui-error-fill);
+}

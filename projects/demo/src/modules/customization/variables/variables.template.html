@@ -1,0 +1,40 @@
+<tui-doc-page i18n-header header="Variables">
+    <p i18n>
+        Taiga UI uses CSS custom properties for many of its visual aspects. You
+        can see
+        <a tuiLink routerLink="/colors">colors</a>
+        for the full list of color variables.
+    </p>
+    <p i18n>
+        Besides colors there are also following variables that can be adjusted
+        at any level of DOM structure:
+    </p>
+    <ul>
+        <li *ngFor="let item of vars | keyvalue">
+            <tui-doc-copy class="var" [cdkCopyToClipboard]="item.key">
+                <code>{{item.key}}</code>
+            </tui-doc-copy>
+            — {{item.value}}
+        </li>
+    </ul>
+
+    <p i18n>
+        An easy way to dynamically override variables is to use a
+        <a tuiLink routerLink="/components/theme-switcher">
+            <code>ThemeSwitcher</code> </a
+        >. This is how
+        <a tuiLink routerLink="/components/theme-night">
+            <code>ThemeNight</code>
+        </a>
+        does it.
+    </p>
+
+    <tui-doc-example
+        id="override"
+        i18n-heading
+        heading="Override example"
+        [content]="example1"
+    >
+        <tui-variables-example-1></tui-variables-example-1>
+    </tui-doc-example>
+</tui-doc-page>

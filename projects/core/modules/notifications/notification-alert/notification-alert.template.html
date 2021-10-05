@@ -1,0 +1,39 @@
+<tui-notification
+    *ngIf="safeItem.hasCloseButton else noClose"
+    [status]="safeItem.status"
+    [hasIcon]="safeItem.hasIcon"
+    (close)="closeNotification()"
+>
+    <label
+        *ngIf="safeItem.label"
+        automation-id="tui-notification-alert__heading"
+        class="heading"
+    >
+        {{safeItem.label}}
+    </label>
+    <div
+        polymorpheus-outlet
+        automation-id="tui-notification-alert__content"
+        class="content"
+        [content]="safeItem.content"
+        [context]="context"
+    ></div>
+</tui-notification>
+<ng-template #noClose>
+    <tui-notification [status]="safeItem.status" [hasIcon]="safeItem.hasIcon">
+        <label
+            *ngIf="safeItem.label"
+            automation-id="tui-notification-alert__heading"
+            class="heading"
+        >
+            {{safeItem.label}}
+        </label>
+        <div
+            polymorpheus-outlet
+            automation-id="tui-notification-alert__content"
+            class="content"
+            [content]="safeItem.content"
+            [context]="context"
+        ></div>
+    </tui-notification>
+</ng-template>

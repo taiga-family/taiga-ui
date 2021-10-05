@@ -1,0 +1,19 @@
+@import 'taiga-ui-local';
+
+.dummy {
+    height: 12.5rem;
+    background-color: rgba(208, 2, 27, 0.3);
+
+    &:not(&_fixed) {
+        @media @mobile-m {
+            margin-bottom: 0.75rem;
+            height: 1.25rem;
+        }
+    }
+}
+
+.tui-container {
+    &_example {
+        background-color: rgba(204, 228, 255, 0.3);
+    }
+}

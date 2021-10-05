@@ -1,0 +1,10 @@
+import {TuiResizableColumnModule} from '@taiga-ui/addon-table/components/resizableColumn';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiResizableColumnModule,
+    ],
+...

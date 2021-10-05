@@ -1,0 +1,61 @@
+name: Lint
+
+on:
+    pull_request:
+        branches:
+            - main
+    push:
+        branches:
+            - main
+            - '!release/**'
+
+env:
+    NX_BRANCH: ${{ github.event.number }}
+
+jobs:
+    lint:
+        name: Format
+        # Setup part
+        runs-on: ubuntu-latest
+        env:
+            NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: '12.x'
+            - name: Cache Node.js modules
+              uses: actions/cache@v2
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.OS }}-node-
+                      ${{ runner.OS }}-
+            - name: Install dependencies
+              run: npm ci
+            # End of setup
+            - name: Format
+              run: |
+                  npm run typecheck
+                  npm run format:prettier
+                  npm run format:tslint
+
+            - name: Get last commit message
+              if: ${{ github.ref != 'refs/heads/main' }}
+              id: last-commit-message
+              run: echo "::set-output name=msg::$(git log -1 --pretty=%s)"
+
+            - name: Git auto commit
+              uses: stefanzweifel/git-auto-commit-action@v4.12.0
+              if: ${{ github.ref != 'refs/heads/main' }}
+              with:
+                  commit_message: ${{ steps.last-commit-message.outputs.msg }}
+                  commit_options: '--no-verify --amend --no-edit'
+                  push_options: '--force'
+                  skip_fetch: false
+
+concurrency:
+    group: lint-${{ github.head_ref }}
+    cancel-in-progress: true

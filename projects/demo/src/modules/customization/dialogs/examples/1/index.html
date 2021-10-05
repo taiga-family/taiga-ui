@@ -1,0 +1,32 @@
+<button tuiButton (click)="onClick(choose, poorly, wisely)">Show prompt</button>
+<ng-template #choose>
+    <div class="wrapper">
+        <tui-avatar
+            class="tui-space_right-2"
+            avatarUrl="assets/images/choose.png"
+            size="l"
+            [rounded]="true"
+        ></tui-avatar>
+        «Choose wisely»
+    </div>
+</ng-template>
+<ng-template #poorly>
+    <div class="wrapper">
+        <tui-avatar
+            class="tui-space_right-2"
+            avatarUrl="assets/images/poorly.png"
+            [rounded]="true"
+        ></tui-avatar>
+        «You chose poorly»
+    </div>
+</ng-template>
+<ng-template #wisely>
+    <div class="wrapper">
+        «You have chosen wisely»
+        <tui-avatar
+            class="tui-space_left-1"
+            avatarUrl="assets/images/wisely.png"
+            [rounded]="true"
+        ></tui-avatar>
+    </div>
+</ng-template>
