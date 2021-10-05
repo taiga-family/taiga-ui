@@ -17,9 +17,7 @@ export class TsFileModuleParser extends TsFileParser {
         );
     }
 
-    hasDeclarationEntity(entityName: string): boolean {
-        return (this.rawFileContent.match(DECLARATIONS_REG_EXP) || '').includes(
-            entityName,
-        );
+    hasDeclarationEntity(entity: string): boolean {
+        return (this.rawFileContent.match(DECLARATIONS_REG_EXP) || '').includes(entity);
     }
 }
