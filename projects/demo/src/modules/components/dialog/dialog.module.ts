@@ -19,11 +19,10 @@ import {
     TuiRadioListModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {DialogExampleComponent} from './dialog-example/dialog-example.component';
-import {DialogExampleModule} from './dialog-example/dialog-example.module';
 import {ExampleTuiDialogComponent} from './dialog.component';
 import {TuiDialogExampleComponent1} from './examples/1';
 import {TuiDialogExampleComponent2} from './examples/2';
+import {DialogExampleModule} from './examples/2/dialog-example/dialog-example.module';
 import {TuiDialogExampleComponent3} from './examples/3';
 import {TuiDialogExampleComponent4} from './examples/4';
 import {TuiDialogExampleComponent5} from './examples/5';
@@ -58,7 +57,6 @@ import {TuiDialogExampleComponent6} from './examples/6';
         TuiDialogExampleComponent5,
         TuiDialogExampleComponent6,
     ],
-    entryComponents: [DialogExampleComponent],
     exports: [ExampleTuiDialogComponent],
 })
 export class ExampleTuiDialogModule {}
