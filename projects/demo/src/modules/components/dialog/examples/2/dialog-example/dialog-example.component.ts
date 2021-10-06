@@ -1,7 +1,7 @@
 import {Component, Inject, TemplateRef} from '@angular/core';
 import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {changeDetection} from '../../../../change-detection-strategy';
+import {changeDetection} from '../../../../../../change-detection-strategy';
 
 @Component({
     selector: 'dialog-example',
