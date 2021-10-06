@@ -7,4 +7,6 @@
     [title]="closeWord$ | async"
     (click)="onClick()"
 ></button>
-<ng-content></ng-content>
+<span [id]="id">
+    <ng-content></ng-content>
+</span>

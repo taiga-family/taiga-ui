@@ -1,5 +1,6 @@
 import {
     AfterViewInit,
+    ChangeDetectionStrategy,
     Component,
     ElementRef,
     HostBinding,
@@ -12,17 +13,20 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiPure, tuiZonefull, typedFromEvent} from '@taiga-ui/cdk';
-import {tuiSlideInTop, tuiZonefulMap} from '@taiga-ui/core';
-import {asCallable} from '@tinkoff/ng-event-plugins';
+import {
+    EMPTY_QUERY,
+    TUI_IS_IOS,
+    tuiPure,
+    tuiZonefull,
+    typedFromEvent,
+} from '@taiga-ui/cdk';
+import {tuiSlideInTop} from '@taiga-ui/core';
+import {TUI_MORE_WORD} from '@taiga-ui/kit';
 import {merge, Observable} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import {filter, map} from 'rxjs/operators';
 import {TuiSheet} from '../sheet';
-import {TUI_SHEET_CLOSE} from './sheet-heading/sheet-heading.component';
+import {TUI_SHEET_CLOSE, TUI_SHEET_ID} from './sheet-heading/sheet-heading.component';
 import {TUI_SHEET_PROVIDERS, TUI_SHEET_SCROLL} from './sheet.providers';
-
-// So that overlay appears a little ahead of time
-const OFFSET = 16;
 
 @Component({
     selector: 'tui-sheet',
@@ -30,13 +34,21 @@ const OFFSET = 16;
     styleUrls: ['sheet.style.less'],
     providers: TUI_SHEET_PROVIDERS,
     animations: [tuiSlideInTop],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        role: 'dialog',
+        '[attr.aria-labelledby]': 'id',
         '[class._closeable]': 'item.closeable',
+        '[class._ios]': 'isIos',
+        '[$.class._stuck]': 'stuck$',
+        '($.class._stuck)': 'stuck$',
     },
 })
 export class TuiSheetComponent<T> implements AfterViewInit {
     @Input()
     item!: TuiSheet<T>;
+
+    id = '';
 
     @Output()
     readonly close = merge(
@@ -50,18 +62,7 @@ export class TuiSheetComponent<T> implements AfterViewInit {
     @HostBinding('class._clickthrough')
     clickthrough = true;
 
-    @HostBinding('$.class._overlay')
-    @HostListener('$.class._overlay')
-    readonly overlay$ = asCallable(
-        this.scroll$.pipe(
-            filter(() => !this.item.overlay),
-            tuiZonefulMap(scrollTop => this.isOverlayVisible(scrollTop), this.ngZone),
-        ),
-    );
-
-    readonly stuck$ = this.scroll$.pipe(
-        tuiZonefulMap(scrollTop => scrollTop > this.contentTop, this.ngZone),
-    );
+    readonly stuck$ = this.scroll$.pipe(map(y => y > this.contentTop));
 
     @ViewChild('sheet')
     private readonly sheet?: ElementRef<HTMLElement>;
@@ -76,6 +77,8 @@ export class TuiSheetComponent<T> implements AfterViewInit {
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(TUI_IS_IOS) readonly isIos: boolean,
+        @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
     ) {}
 
     get stops(): readonly number[] {
@@ -86,10 +89,19 @@ export class TuiSheetComponent<T> implements AfterViewInit {
         return (this.item.imageSlide && this.stops[this.stops.length - 1]) || 0;
     }
 
+    get imageHeight(): number {
+        return this.contentTop - this.sheetTop;
+    }
+
     ngAfterViewInit() {
         const stops = [...this.stops, this.sheetTop, this.contentTop];
 
         this.elementRef.nativeElement.scrollTop = stops[this.item.initial];
+    }
+
+    @HostListener(TUI_SHEET_ID, ['$event.detail'])
+    onId(id: string) {
+        this.id = id;
     }
 
     onTouched(clickthrough: boolean) {
@@ -106,10 +118,6 @@ export class TuiSheetComponent<T> implements AfterViewInit {
 
     private get sheetTop(): number {
         return this.sheet?.nativeElement.offsetTop ?? Infinity;
-    }
-
-    private isOverlayVisible(scrollTop: number): boolean {
-        return scrollTop + OFFSET > this.sheetTop;
     }
 
     private shouldClose(scrollTop: number): boolean {

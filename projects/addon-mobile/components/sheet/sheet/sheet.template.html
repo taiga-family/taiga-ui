@@ -3,9 +3,7 @@
         *ngFor="let stop of item.stops"
         #stops
         class="t-bumper"
-        [style.height]="stop"
-        [style.marginBottom]="'-' + stop"
-        [style.scrollMarginTop]="'-' +stop"
+        [style.marginTop]="stop"
     ></div>
 </div>
 <div
@@ -28,8 +26,12 @@
         </ng-template>
     </header>
     <section #content class="t-sheet" [class.t-sheet_stuck]="stuck$ | async">
-        <tui-sheet-bar [stop]="stops[0] || 0">
-            <button class="t-bar" (click)="scrollTo(stops[1])"></button>
+        <tui-sheet-bar>
+            <button
+                class="t-bar"
+                [title]="moreWord$ | async"
+                (click)="scrollTo(stops[1])"
+            ></button>
         </tui-sheet-bar>
         <div
             polymorpheus-outlet
