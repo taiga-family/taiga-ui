@@ -12,6 +12,7 @@
     border-radius: 0.75rem 0.75rem 0 0;
     background: var(--tui-base-01);
     border-bottom: 0.25rem solid var(--tui-base-01);
+    box-shadow: inset 0 1px fade(#fff, 50%);
 }
 
 .t-bar {
@@ -20,6 +21,10 @@
     width: 1rem;
     background: var(--tui-base-05);
     pointer-events: none;
+
+    :host-context(._ios) {
+        .transition(transform);
+    }
 
     &:first-child {
         border-radius: 1rem 0 0 1rem;

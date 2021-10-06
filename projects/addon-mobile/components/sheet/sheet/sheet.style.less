@@ -1,21 +1,26 @@
 @import 'taiga-ui-local';
 
 :host {
-    .fullsize(fixed, inset);
     .scrollbar-hidden();
-    top: 1rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
     border-radius: 0.75rem 0.75rem 0 0;
     overflow-y: auto;
     overflow-x: hidden;
     scroll-snap-type: y mandatory;
+    box-shadow: 0 4rem var(--tui-base-01);
 
-    &._clickthrough {
-        pointer-events: none;
+    &._ios._stuck {
+        scroll-snap-type: y proximity;
     }
 }
 
 .t-bumpers {
-    height: 100vh;
+    height: 100%;
+    display: flex;
 
     :host(._closeable) & {
         scroll-snap-stop: always;
@@ -26,6 +31,8 @@
 .t-bumper {
     scroll-snap-stop: always;
     scroll-snap-align: start;
+    height: 1rem;
+    scroll-margin-top: -1rem;
 }
 
 .t-wrapper {
@@ -47,8 +54,8 @@
     border-radius: 0.8rem 0.8rem 0 0;
     overflow: hidden;
 
-    &_animated {
-        transform: translate3d(0, 100%, 0);
+    &._clickthrough {
+        pointer-events: none;
     }
 }
 
@@ -64,6 +71,7 @@
     box-sizing: border-box;
     scroll-snap-stop: always;
     scroll-snap-align: start;
+    box-shadow: 0 4rem var(--tui-base-01);
 
     .t-top:not(._rounded) ~ & tui-sheet-bar {
         border-radius: 0;

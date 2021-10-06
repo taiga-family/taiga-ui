@@ -1,7 +1,7 @@
 <button tuiButton (click)="toggle()">Show/Hide</button>
 <ng-template [tuiSheetOptions]="options" [(tuiSheet)]="open">
     <h2 tuiSheetHeading>Alexander Inkin</h2>
-    <p class="buttons">
+    <div class="tui-space_top-4">
         <a
             tuiIconButton
             size="m"
@@ -28,5 +28,5 @@
             title="Music"
             href="https://waterplea.bandcamp.com/"
         ></a>
-    </p>
+    </div>
 </ng-template>
