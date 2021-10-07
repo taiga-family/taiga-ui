@@ -35,18 +35,20 @@ describe('Dialogs + browser back navigation', () => {
             cy.get('tui-dialog').get('button').contains('Show one more dialog').click();
             waitKitDialog();
 
-            cy.window().matchImageSnapshot('4-1-opened-all-dialogs', {
+            cy.matchImageSnapshot('4-1-opened-all-dialogs', {
                 capture: 'viewport',
+                blackout: ['tui-doc-navigation'],
             });
             goBack();
-            cy.window().matchImageSnapshot('4-2-after-first-back-nav', {
+            cy.matchImageSnapshot('4-2-after-first-back-nav', {
                 capture: 'viewport',
+                blackout: ['tui-doc-navigation'],
             });
             goBack();
             cy.wait(100) // wait for scrollbar
-                .window()
                 .matchImageSnapshot('4-3-after-second-back-nav', {
                     capture: 'viewport',
+                    blackout: ['tui-doc-navigation'],
                 });
             cy.url().should('equal', getFullUrl(DIALOG_PAGE_URL));
             goBack();
