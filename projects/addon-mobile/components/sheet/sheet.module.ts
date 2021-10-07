@@ -3,13 +3,14 @@ import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {TuiLetModule, TuiOverscrollModule} from '@taiga-ui/cdk';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {TuiSheetBarComponent} from './components/sheet-bar/sheet-bar.component';
+import {TuiSheetHeadingComponent} from './components/sheet-heading/sheet-heading.component';
+import {TuiSheetComponent} from './components/sheet/sheet.component';
+import {TuiSheetsHostComponent} from './components/sheets-host/sheets-host.component';
+import {TuiSheetCloseDirective} from './directives/sheet-close/sheet-close.directive';
+import {TuiSheetTopDirective} from './directives/sheet-top/sheet-top.directive';
+import {TuiSheetWrapperDirective} from './directives/sheet-wrapper/sheet-wrapper.directive';
 import {TuiSheetDirective} from './sheet.directive';
-import {TuiSheetBarComponent} from './sheet/sheet-bar/sheet-bar.component';
-import {TuiSheetHeadingComponent} from './sheet/sheet-heading/sheet-heading.component';
-import {TuiSheetTopDirective} from './sheet/sheet-top/sheet-top.directive';
-import {TuiSheetWrapperDirective} from './sheet/sheet-wrapper/sheet-wrapper.directive';
-import {TuiSheetComponent} from './sheet/sheet.component';
-import {TuiSheetsHostComponent} from './sheets-host/sheets-host.component';
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import {TuiSheetsHostComponent} from './sheets-host/sheets-host.component';
         TuiSheetTopDirective,
         TuiSheetDirective,
         TuiSheetWrapperDirective,
+        TuiSheetCloseDirective,
     ],
     exports: [
         TuiSheetsHostComponent,

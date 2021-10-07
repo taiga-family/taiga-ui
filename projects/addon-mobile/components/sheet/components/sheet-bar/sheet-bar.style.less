@@ -22,7 +22,7 @@
     background: var(--tui-base-05);
     pointer-events: none;
 
-    :host-context(._ios) {
+    :host-context(._ios:not(._dragged)) {
         .transition(transform);
     }
 

@@ -8,6 +8,7 @@ export function isoScrollFactory(
     documentRef: Document,
     ngZone: NgZone,
 ): Observable<number> {
+    // TODO: loading event
     const touchstart$ = typedFromEvent(element, 'touchstart', {passive: true});
     const touchmove$ = typedFromEvent(documentRef, 'touchmove', {passive: true});
     const touchend$ = typedFromEvent(documentRef, 'touchend');

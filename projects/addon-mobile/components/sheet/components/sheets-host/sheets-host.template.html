@@ -4,11 +4,13 @@
         tuiSheetWrapper
         class="t-wrapper"
         [class.t-wrapper_overlay]="item.overlay"
+        [class.t-wrapper_closeable]="item.closeable"
         [style.maxHeight.px]="(height$ | async) - 16"
         [@tuiSlideInTop]="animation"
         [@tuiFadeIn]="animation"
     >
         <tui-sheet
+            tuiOverscroll="all"
             [style.height.px]="(height$ | async) - 16"
             [item]="item"
             (close)="close(item)"

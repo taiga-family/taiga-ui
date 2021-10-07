@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TUI_WINDOW_HEIGHT} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION, tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
-import {TuiSheet} from '../sheet';
-import {TuiSheetService} from '../sheet.service';
+import {TuiSheet} from '../../sheet';
+import {TuiSheetService} from '../../sheet.service';
 
 @Component({
     selector: 'tui-sheets-host',

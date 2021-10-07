@@ -3,29 +3,20 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    HostBinding,
     HostListener,
     Inject,
     Input,
-    NgZone,
-    Output,
     QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {
-    EMPTY_QUERY,
-    TUI_IS_IOS,
-    tuiPure,
-    tuiZonefull,
-    typedFromEvent,
-} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
-import {merge, Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
-import {TuiSheet} from '../sheet';
-import {TUI_SHEET_CLOSE, TUI_SHEET_ID} from './sheet-heading/sheet-heading.component';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {TuiSheet} from '../../sheet';
+import {TUI_SHEET_ID} from '../sheet-heading/sheet-heading.component';
 import {TUI_SHEET_PROVIDERS, TUI_SHEET_SCROLL} from './sheet.providers';
 
 @Component({
@@ -38,7 +29,6 @@ import {TUI_SHEET_PROVIDERS, TUI_SHEET_SCROLL} from './sheet.providers';
     host: {
         role: 'dialog',
         '[attr.aria-labelledby]': 'id',
-        '[class._closeable]': 'item.closeable',
         '[class._ios]': 'isIos',
         '[$.class._stuck]': 'stuck$',
         '($.class._stuck)': 'stuck$',
@@ -50,19 +40,7 @@ export class TuiSheetComponent<T> implements AfterViewInit {
 
     id = '';
 
-    @Output()
-    readonly close = merge(
-        typedFromEvent(this.elementRef.nativeElement, TUI_SHEET_CLOSE),
-        this.scroll$.pipe(
-            filter(y => this.clickthrough && this.item.closeable && this.shouldClose(y)),
-            tuiZonefull(this.ngZone),
-        ),
-    );
-
-    @HostBinding('class._clickthrough')
-    clickthrough = true;
-
-    readonly stuck$ = this.scroll$.pipe(map(y => y > this.contentTop));
+    readonly stuck$ = this.scroll$.pipe(map(y => Math.floor(y) > this.contentTop));
 
     @ViewChild('sheet')
     private readonly sheet?: ElementRef<HTMLElement>;
@@ -76,7 +54,6 @@ export class TuiSheetComponent<T> implements AfterViewInit {
     constructor(
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
     ) {}
@@ -104,10 +81,6 @@ export class TuiSheetComponent<T> implements AfterViewInit {
         this.id = id;
     }
 
-    onTouched(clickthrough: boolean) {
-        this.clickthrough = clickthrough;
-    }
-
     scrollTo(top: number = this.sheetTop) {
         this.elementRef.nativeElement.scrollTo({top, behavior: 'smooth'});
     }
@@ -118,16 +91,6 @@ export class TuiSheetComponent<T> implements AfterViewInit {
 
     private get sheetTop(): number {
         return this.sheet?.nativeElement.offsetTop ?? Infinity;
-    }
-
-    private shouldClose(scrollTop: number): boolean {
-        const min = Math.min(
-            this.elementRef.nativeElement.clientHeight,
-            this.sheet?.nativeElement.clientHeight || Infinity,
-            this.stops[0] || Infinity,
-        );
-
-        return scrollTop < min / 2;
     }
 
     @tuiPure
