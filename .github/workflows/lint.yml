@@ -21,6 +21,10 @@ jobs:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
         steps:
             - uses: actions/checkout@v2
+              with:
+                  ref: ${{ github.head_ref }}
+                  token: ${{ secrets.TINKOFF_BOT_PAT }}
+                  fetch-depth: 2
             - name: Use Node.js
               uses: actions/setup-node@v1
               with:
@@ -36,9 +40,28 @@ jobs:
             - name: Install dependencies
               run: npm ci
             # End of setup
-            - run: |
-                  npm run prettier -- --check
-                  npm run lint
+            - name: Format
+              run: |
+                  npm run typecheck
+                  npm run format:prettier
+                  npm run format:tslint
+
+            - name: Get last commit message
+              if: ${{ github.ref != 'refs/heads/main' }}
+              id: last-commit-message
+              run: |
+                  git config user.name "tinkoff-bot"
+                  echo "::set-output name=msg::$(git log -1 --pretty=%s)"
+
+            - name: Apply changes after linting
+              uses: stefanzweifel/git-auto-commit-action@v4.12.0
+              if: ${{ github.ref != 'refs/heads/main' }}
+              with:
+                  commit_message: ${{ steps.last-commit-message.outputs.msg }}
+                  status_options: '--untracked-files=no'
+                  commit_options: '--amend --no-edit --no-verify'
+                  push_options: '--force-with-lease'
+                  skip_fetch: true
 
 concurrency:
     group: lint-${{ github.head_ref }}
