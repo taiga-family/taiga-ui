@@ -10,6 +10,10 @@ In Clojure: everything is a list.
 In JavaScript: everything is a terrible mistake.
 `;
 
+export function maxLengthMessageFactory(context: {requiredLength: string}): string {
+    return `Maximum length — ${context.requiredLength}`;
+}
+
 @Component({
     selector: 'tui-text-area-example-4',
     templateUrl: './index.html',
@@ -21,8 +25,7 @@ In JavaScript: everything is a terrible mistake.
             provide: TUI_VALIDATION_ERRORS,
             useValue: {
                 required: 'Enter this!',
-                maxlength: (context: {requiredLength: string}) =>
-                    `Maximum length — ${context.requiredLength}`,
+                maxlength: maxLengthMessageFactory,
             },
         },
     ],
