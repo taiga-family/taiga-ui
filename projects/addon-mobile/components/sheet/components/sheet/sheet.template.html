@@ -6,13 +6,7 @@
         [style.marginTop]="stop"
     ></div>
 </div>
-<div
-    #sheet
-    class="t-wrapper"
-    [class.t-wrapper_shadow]="!item.image"
-    (touchstart)="onTouched(false)"
-    (touchend)="onTouched(true)"
->
+<div #sheet class="t-wrapper" [class.t-wrapper_shadow]="!item.image">
     <header
         *ngIf="item.image"
         polymorpheus-outlet
@@ -25,7 +19,7 @@
             <img [src]="content" alt="" class="t-image" />
         </ng-template>
     </header>
-    <section #content class="t-sheet" [class.t-sheet_stuck]="stuck$ | async">
+    <section #content class="t-sheet">
         <tui-sheet-bar>
             <button
                 class="t-bar"

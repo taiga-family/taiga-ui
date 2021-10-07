@@ -22,7 +22,7 @@
     height: 100%;
     display: flex;
 
-    :host(._closeable) & {
+    :host-context(.t-wrapper_closeable) & {
         scroll-snap-stop: always;
         scroll-snap-align: start;
     }
