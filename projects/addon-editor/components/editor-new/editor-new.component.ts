@@ -115,15 +115,6 @@ export class TuiEditorNewComponent
         this.updateFocused(active);
     }
 
-    onMouseDown(event: MouseEvent) {
-        if (this.editor?.isFocused) {
-            return;
-        }
-
-        event.preventDefault();
-        this.editor?.focus();
-    }
-
     onModelChange(value: string) {
         this.updateValue(value);
     }
