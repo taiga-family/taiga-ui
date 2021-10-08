@@ -1,6 +1,6 @@
-import {DEMO_PATHS} from '../demo-paths';
-import {EXAMPLE_ID} from '../shared.entities';
-import {excluded} from './exclusions';
+import {DEMO_PATHS} from '../../support/demo-paths';
+import {excluded} from '../../support/exclusions';
+import {EXAMPLE_ID} from '../../support/shared.entities';
 
 describe('Demo', () => {
     beforeEach(() => {

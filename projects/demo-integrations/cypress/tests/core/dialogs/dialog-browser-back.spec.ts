@@ -1,4 +1,4 @@
-import {DIALOG_PAGE_URL, waitKitDialog} from './utils';
+import {DIALOG_PAGE_URL} from '../../../support/shared.entities';
 
 describe('Dialogs + browser back navigation', () => {
     /**
@@ -30,10 +30,10 @@ describe('Dialogs + browser back navigation', () => {
                 .find('button')
                 .first()
                 .click();
-            waitKitDialog();
+            cy.waitKitDialog();
 
             cy.get('tui-dialog').get('button').contains('Show one more dialog').click();
-            waitKitDialog();
+            cy.waitKitDialog();
 
             cy.matchImageSnapshot('4-1-opened-all-dialogs', {
                 capture: 'viewport',
@@ -63,7 +63,7 @@ describe('Dialogs + browser back navigation', () => {
                 .first()
                 .click();
 
-            waitKitDialog();
+            cy.waitKitDialog();
 
             /* close dialog */
             cy.get('tui-dialog').find('button').first().click();
@@ -87,7 +87,7 @@ describe('Dialogs + browser back navigation', () => {
                 .first()
                 .click();
 
-            waitKitDialog();
+            cy.waitKitDialog();
 
             cy.url().should('equal', getFullUrl(DIALOG_PAGE_URL));
             goBack();

@@ -1,4 +1,4 @@
-import {EXAMPLE_ID} from '../../shared.entities';
+import {EXAMPLE_ID} from '../../../support/shared.entities';
 
 describe('TuiFieldError', () => {
     it('Errors of invalid control are shown correctly', () => {

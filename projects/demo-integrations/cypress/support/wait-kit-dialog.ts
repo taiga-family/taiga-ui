@@ -1,5 +1,3 @@
-export const DIALOG_PAGE_URL = 'components/dialog';
-
 export function waitKitDialog() {
     cy.get('tui-dialog')
         .last()
