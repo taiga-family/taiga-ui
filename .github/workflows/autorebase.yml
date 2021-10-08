@@ -12,8 +12,13 @@ jobs:
               continue-on-error: true
               uses: peter-evans/rebase@v1.1.0
               with:
-                  token: ${{ secrets.TINKOFF_BOT_PAT }}
                   base: main
+                  exclude-drafts: true
+                  token: ${{ secrets.TINKOFF_BOT_PAT }}
+                  head: 'TinkoffCreditSystems:*' # skip rebase for fork branches
+                  exclude-labels: |
+                      no-rebase
+                      dependencies
 
 concurrency:
     group: autorebase-${{ github.head_ref }}
