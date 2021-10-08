@@ -9,6 +9,7 @@ import {
     TUI_SHEET_SCROLL,
 } from '../../components/sheet/sheet.providers';
 
+// @dynamic
 @Directive({
     selector: '[tuiSheetWrapper]',
     host: {
