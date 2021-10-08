@@ -1,6 +1,5 @@
 @import 'taiga-ui-local';
 
-@color-mobile-header: #6ab5df;
 @color-mobile-background: #f6f7f8;
 @color-mobile-gray: #9299a2;
 
@@ -16,12 +15,6 @@
     animation-fill-mode: backwards;
 }
 
-.close {
-    position: fixed;
-    top: 0.75rem;
-    right: 0.75rem;
-}
-
 .header {
     position: sticky;
     top: 0;
@@ -30,9 +23,9 @@
     margin-left: -2rem;
     text-align: center;
     word-wrap: break-word;
-    background: @color-mobile-header;
+    background: var(--tui-support-20);
     border-radius: 1rem 1rem 0 0;
-    transform-origin: top center;
+    transform-origin: top left;
 }
 
 .background {
@@ -41,7 +34,7 @@
     height: 2rem;
     width: calc(100% + 4rem);
     margin: -2rem 0 -2rem -2rem;
-    background: @color-mobile-header;
+    background: var(--tui-support-20);
     border-radius: 1rem 1rem 0 0;
 }
 
@@ -70,7 +63,7 @@
     height: 5rem;
     box-shadow: 0 0 0 2px @color-mobile-background;
     color: @color-mobile-background;
-    background: @color-mobile-header;
+    background: var(--tui-support-20);
 }
 
 .description {
