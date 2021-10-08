@@ -1,16 +1,14 @@
-const CLASS_NAME_REGEXP = /(?<=export class\s)(\w*)/gi;
-
 export class TsFileParser {
     get className(): string {
-        const [className] = this.rawFileContent.match(CLASS_NAME_REGEXP) || [''];
+        const [, className] = this.rawFileContent.match(/(?:export class\s)(\w*)/i) || [];
 
-        return className;
+        return className || '';
     }
 
     set className(newClassName: string) {
         this.rawFileContent = this.rawFileContent.replace(
-            CLASS_NAME_REGEXP,
-            newClassName,
+            /(export class\s)(\w*)/i,
+            '$1' + newClassName,
         );
     }
 
@@ -23,7 +21,7 @@ export class TsFileParser {
     }
 
     constructor(protected rawFileContent: string) {
-        const classesInside = rawFileContent.match(CLASS_NAME_REGEXP) || [];
+        const classesInside = rawFileContent.match(/export class/gi) || [];
 
         if (classesInside.length > 1) {
             throw new Error('TsFileParser: 1 component/module per ts-file');
