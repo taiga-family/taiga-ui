@@ -2,7 +2,7 @@ import {Directive, Inject, Input, Output, TemplateRef} from '@angular/core';
 import {TuiBaseDialogContext} from '@taiga-ui/cdk';
 import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {EMPTY, Subject} from 'rxjs';
-import {endWith, switchMap} from 'rxjs/operators';
+import {endWith, ignoreElements, switchMap} from 'rxjs/operators';
 import {TuiDialogService} from './dialog.service';
 
 @Directive({
@@ -23,7 +23,9 @@ export class TuiDialogDirective<T> {
     tuiDialogChange = this.open$.pipe(
         switchMap(open =>
             open
-                ? this.service.open(this.templateRef, this.options).pipe(endWith(false))
+                ? this.service
+                      .open(this.templateRef, this.options)
+                      .pipe(ignoreElements(), endWith(false))
                 : EMPTY,
         ),
     );
