@@ -1,4 +1,4 @@
-import {toRadians} from '@taiga-ui/cdk';
+import {toInt, toRadians} from '@taiga-ui/cdk';
 
 /**
  * Describes a normalized sector by angles. Normalized meaning it supposed to work with
@@ -16,7 +16,7 @@ export function describeSector(startAngle: number, endAngle: number): string {
     const startY = Math.sin(startRad) * 100;
     const endX = Math.cos(endRad) * 100;
     const endY = Math.sin(endRad) * 100;
-    const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
+    const largeArcFlag = toInt(endAngle - startAngle > 180);
 
     return [
         'M',

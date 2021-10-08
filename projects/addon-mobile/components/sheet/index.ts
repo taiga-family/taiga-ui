@@ -4,6 +4,7 @@ export * from './components/sheet-bar/sheet-bar.component';
 export * from './components/sheet-heading/sheet-heading.component';
 export * from './components/sheets-host/sheets-host.component';
 export * from './directives/sheet-close/sheet-close.directive';
+export * from './directives/sheet-stop/sheet-stop.directive';
 export * from './directives/sheet-top/sheet-top.directive';
 export * from './directives/sheet-wrapper/sheet-wrapper.directive';
 export * from './sheet';
