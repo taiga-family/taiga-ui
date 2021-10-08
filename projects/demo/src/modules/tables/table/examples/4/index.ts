@@ -3,6 +3,7 @@ import {FormControl} from '@angular/forms';
 import {defaultSort, TuiComparator} from '@taiga-ui/addon-table';
 import {
     isPresent,
+    toInt,
     TUI_DEFAULT_MATCHER,
     TuiDay,
     tuiReplayedValueChangesFrom,
@@ -198,7 +199,7 @@ function getAge({dob}: User): number {
     const years = TODAY.year - dob.year;
     const months = TODAY.month - dob.month;
     const days = TODAY.day - dob.day;
-    const offset = months > 0 || (!months && days > 9) ? 1 : 0;
+    const offset = toInt(months > 0 || (!months && days > 9));
 
     return years + offset;
 }

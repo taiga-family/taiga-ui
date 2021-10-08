@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {ElementRef, InjectionToken, NgZone, Provider} from '@angular/core';
 import {TUI_IS_IOS, tuiZonefree, typedFromEvent} from '@taiga-ui/cdk';
+import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
 import {map, mapTo, share} from 'rxjs/operators';
 import {isoScrollFactory} from '../../ios.hacks';
@@ -23,6 +24,10 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
         provide: TUI_SHEET_SCROLL,
         deps: [ElementRef, NgZone, DOCUMENT, TUI_IS_IOS],
         useFactory: sheetScrollFactory,
+    },
+    {
+        provide: TUI_SCROLL_REF,
+        useExisting: ElementRef,
     },
 ];
 

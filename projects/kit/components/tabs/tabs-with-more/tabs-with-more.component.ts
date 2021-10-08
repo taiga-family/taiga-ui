@@ -19,6 +19,7 @@ import {
     getClosestFocusable,
     isNativeFocused,
     setNativeFocused,
+    toInt,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
@@ -189,7 +190,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             const activeOffset = activeDisplaced ? activeWidth + TAB_MARGIN : 0;
             const currentWidth = total + activeOffset + moreWidth + TAB_MARGIN;
             // Needed for different rounding of visible and hidden elements scrollWidth
-            const safetyOffset = this.maxIndex === maxIndex - 1 ? 1 : 0;
+            const safetyOffset = toInt(this.maxIndex === maxIndex - 1);
 
             if (currentWidth + safetyOffset < clientWidth) {
                 return maxIndex;
