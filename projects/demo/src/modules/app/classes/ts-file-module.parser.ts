@@ -1,7 +1,5 @@
 import {TsFileParser} from './ts-file.parser';
 
-const DECLARATIONS_REG_EXP = /(?<=declarations:\s\[)(.*)(?=\])/gi;
-
 export class TsFileModuleParser extends TsFileParser {
     addDeclaration(entity: string): void {
         this.rawFileContent = this.rawFileContent.replace(
@@ -18,6 +16,9 @@ export class TsFileModuleParser extends TsFileParser {
     }
 
     hasDeclarationEntity(entity: string): boolean {
-        return (this.rawFileContent.match(DECLARATIONS_REG_EXP) || '').includes(entity);
+        const [, declarations = ''] =
+            this.rawFileContent.match(/(?:declarations:\s\[)(.*)(?:\])/i) || [];
+
+        return declarations.includes(entity);
     }
 }

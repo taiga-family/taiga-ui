@@ -1,22 +1,24 @@
 import {TsFileParser} from './ts-file.parser';
 
-const SELECTOR_REGEXP = /(?<=selector:\s['"])(.*)(?=['"])/gi;
-const TEMPLATE_URL_REGEXP = /(?<=templateUrl:\s['"])(.*)(?=['"])/gi;
-const STYLE_URLS_REGEXP = /(?<=styleUrls:\s)(\[.*\])/gi;
-
 export class TsFileComponentParser extends TsFileParser {
     set selector(newSelector: string) {
-        this.rawFileContent = this.rawFileContent.replace(SELECTOR_REGEXP, newSelector);
+        this.rawFileContent = this.rawFileContent.replace(
+            /(selector:\s['"])(.*)(['"])/gi,
+            `$1${newSelector}$3`,
+        );
     }
 
     set templateUrl(newUrl: string) {
-        this.rawFileContent = this.rawFileContent.replace(TEMPLATE_URL_REGEXP, newUrl);
+        this.rawFileContent = this.rawFileContent.replace(
+            /(templateUrl:\s['"])(.*)(['"])/gi,
+            `$1${newUrl}$3`,
+        );
     }
 
     set styleUrls(newUrls: string[] | readonly string[]) {
         this.rawFileContent = this.rawFileContent.replace(
-            STYLE_URLS_REGEXP,
-            JSON.stringify(newUrls),
+            /(styleUrls:\s)(\[.*\])/gi,
+            `$1${JSON.stringify(newUrls)}`,
         );
     }
 }
