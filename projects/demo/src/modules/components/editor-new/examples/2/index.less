@@ -1,0 +1,37 @@
+@import 'taiga-ui-local';
+
+.tool-button {
+    .transition(background);
+
+    &:hover {
+        background: var(--tui-secondary-hover);
+    }
+}
+
+.smiles {
+    max-width: 20rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.smile {
+    .clearbtn();
+    .transition(background);
+    cursor: pointer;
+    border-radius: var(--tui-radius-s);
+    font: var(--tui-font-text-l);
+    padding: 1rem;
+
+    &:hover {
+        background: var(--tui-secondary-hover);
+    }
+}
+
+.hint {
+    color: var(--tui-base-05);
+    height: 100%;
+    display: flex;
+    align-items: center;
+}

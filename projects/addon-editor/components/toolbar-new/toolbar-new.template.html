@@ -760,4 +760,12 @@
             </ng-template>
         </tui-hosted-dropdown>
     </div>
+    <div *ngIf="customTools.length" class="t-block">
+        <span
+            *ngFor="let tool of customTools"
+            polymorpheus-outlet
+            [content]="tool"
+            [context]="{ $implicit: editor }"
+        ></span>
+    </div>
 </ng-container>

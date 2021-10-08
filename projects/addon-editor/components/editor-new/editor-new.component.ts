@@ -27,6 +27,7 @@ import {
     TuiBooleanHandler,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 
@@ -53,7 +54,9 @@ export class TuiEditorNewComponent
 
     @Input()
     @tuiDefaultProp()
-    readonly tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
+    readonly tools: ReadonlyArray<
+        TuiEditorTool | PolymorpheusContent
+    > = defaultEditorTools;
 
     @ViewChild(TuiTiptapEditorDirective)
     readonly editorRef!: TuiTiptapEditorDirective;

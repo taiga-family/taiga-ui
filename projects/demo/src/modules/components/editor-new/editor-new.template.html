@@ -21,6 +21,41 @@
         >
             <tui-editor-example-1></tui-editor-example-1>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="custom-tool"
+            i18n-heading
+            heading="With custom tool"
+            [content]="example2"
+        >
+            <ul i18n class="tui-list tui-space_bottom-6">
+                <li class="tui-list__item">
+                    Use <code>TuiEditorTool</code> to create an array of
+                    built-in tools. Pass this array to editor's property
+                    <code>tools</code>.
+                </li>
+                <li class="tui-list__item">
+                    Also, you can create your own tool. You can get access to
+                    <a
+                        tuiLink
+                        target="_blank"
+                        href="https://tiptap.dev/api/introduction"
+                    >
+                        original TipTap editor API
+                    </a>
+                    via <code>$implicit</code> of
+                    <a
+                        tuiLink
+                        href="https://angular.io/api/common/NgTemplateOutlet#properties"
+                        target="_blank"
+                    >
+                        template context object </a
+                    >. Add it to array passed as the editor's property
+                    <code>tools</code>.
+                </li>
+            </ul>
+            <tui-editor-example-2></tui-editor-example-2>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -61,7 +96,7 @@
                 i18n
                 documentationPropertyName="tools"
                 documentationPropertyMode="input"
-                documentationPropertyType="ReadonlyArray<TuiEditorTool>"
+                documentationPropertyType="ReadonlyArray<TuiEditorTool | PolymorpheusContent>"
                 [documentationPropertyValues]="toolsVariants"
                 [(documentationPropertyValue)]="tools"
             >
