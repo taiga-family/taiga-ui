@@ -55,7 +55,69 @@ import {TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
 export class AppModule {}
 ```
 
-You can also switch languages on the fly. Use `useFactory` or `useClass` with a service to make a stream of dictionaries.
+You can also switch languages on the fly. Use `useFactory` or `useClass` with a service to make a stream of dictionaries:
+
+```ts
+// language.service.ts
+import {Language} from '@taiga-ui/i18n/interfaces';
+import {TUI_ENGLISH_LANGUAGE} from '@taiga-ui/i18n';
+
+const DEFAULT_LANGUAGE = TUI_ENGLISH_LANGUAGE;
+
+@Injectable({
+    providedIn: 'root',
+})
+export class LanguageService {
+    private _language$: BehaviorSubject<Language> = new BehaviorSubject<Language>(
+        DEFAULT_LANGUAGE,
+    );
+    public language$ = this._language$.asObservable();
+    setLanguage(Language: Language) {
+        this._language$.next(Language);
+    }
+}
+```
+
+In your app.module, you should provide `TUI_LANGUAGE` using `useFactory`:
+
+```ts
+// app.module
+
+const languageFactory = (languageService: LanguageService) => {
+    return languageService.language$;
+};
+
+@NgModule({
+    // ...
+    providers: [
+        {
+            provide: TUI_LANGUAGE,
+            useFactory: languageFactory,
+            deps: [LanguageService],
+        },
+    ],
+})
+export class AppModule {}
+```
+
+An example of using the service in a component:
+
+```ts
+import {Language} from '@taiga-ui/i18n/interfaces';
+
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+})
+export class AppComponent {
+    constructor(public languageService: LanguageService) {}
+
+    setLanguage(language: Language) {
+        this.languageService.setLanguage(language);
+    }
+}
+```
 
 If you extremely struggle against every byte of your app, you can build a custom language dictionary with constants:
 
