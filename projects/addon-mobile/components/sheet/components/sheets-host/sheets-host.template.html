@@ -1,24 +1,26 @@
 <ng-container *ngIf="service.sheets$ | async as items">
-    <div
-        *ngFor="let item of items"
-        tuiSheetWrapper
-        class="t-wrapper"
-        [class.t-wrapper_overlay]="item.overlay"
-        [class.t-wrapper_closeable]="item.closeable"
-        [style.maxHeight.px]="(height$ | async) - 16"
-        [@tuiSlideInTop]="options"
-        [@tuiFadeIn]="options"
-    >
-        <tui-sheet
-            tuiOverscroll="all"
-            [style.height.px]="(height$ | async) - 16"
-            [item]="item"
-            (close)="close(item)"
-        ></tui-sheet>
-    </div>
-    <div
-        class="t-overlay"
-        [class.t-overlay_possible]="items.length"
-        (click)="close(items[0])"
-    ></div>
+    <ng-container *ngIf="(height$ | async) as height">
+        <div
+            *ngFor="let item of items"
+            tuiSheetWrapper
+            class="t-wrapper"
+            [class.t-wrapper_overlay]="item.overlay"
+            [class.t-wrapper_closeable]="item.closeable"
+            [style.maxHeight.px]="height - 16"
+            [@tuiSlideInTop]="options"
+            [@tuiFadeIn]="options"
+        >
+            <tui-sheet
+                tuiOverscroll="all"
+                [style.height.px]="height - 16"
+                [item]="item"
+                (close)="close(item)"
+            ></tui-sheet>
+        </div>
+        <div
+            class="t-overlay"
+            [class.t-overlay_possible]="items.length"
+            (click)="close(items[0])"
+        ></div>
+    </ng-container>
 </ng-container>
