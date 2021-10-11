@@ -1,6 +1,6 @@
 import {NgZone} from '@angular/core';
 import {tuiZonefree, typedFromEvent} from '@taiga-ui/cdk';
-import {concat, merge, Observable, race, timer} from 'rxjs';
+import {concat, merge, Observable, race, timer, zip} from 'rxjs';
 import {
     debounceTime,
     filter,
@@ -32,8 +32,9 @@ export function isoScrollFactory(
                 const {scrollTop} = element;
 
                 return concat(
-                    touchmove$.pipe(
-                        map(({touches}) => scrollTop + screenY - touches[0].screenY),
+                    // Sometimes touch is triggered without scroll in iOS, filter that
+                    zip(touchmove$, scroll$).pipe(
+                        map(([{touches}]) => scrollTop + screenY - touches[0].screenY),
                         takeUntil(touchend$),
                     ),
                     scroll$,

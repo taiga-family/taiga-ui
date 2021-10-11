@@ -14,7 +14,7 @@ import {processDragged} from '../../ios.hacks';
 @Directive({
     selector: '[tuiSheetWrapper]',
     host: {
-        'class._touched': 'touched',
+        '[class._touched]': 'touched',
         '[$.class._overlay]': 'overlay$',
         '($.class._overlay)': 'overlay$',
         '[$.class._visible]': 'visible$',

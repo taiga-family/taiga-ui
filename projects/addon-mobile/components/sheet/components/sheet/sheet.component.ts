@@ -83,6 +83,7 @@ export class TuiSheetComponent<T> implements AfterViewInit {
     }
 
     scrollTo(top: number = this.sheetTop) {
+        // TODO: Smooth scroll on iOS
         this.elementRef.nativeElement.scrollTo({top, behavior: 'smooth'});
     }
 
