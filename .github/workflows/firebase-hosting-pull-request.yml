@@ -1,6 +1,9 @@
 name: Deploy
 on: pull_request
 
+env:
+    IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+
 jobs:
     build_and_preview:
         name: Firebase
@@ -11,9 +14,10 @@ jobs:
                   npm ci
                   npm run build:demo
             - uses: FirebaseExtended/action-hosting-deploy@v0
+              if: ${{ env.IS_FORK == 'false' }}
               with:
-                  repoToken: '${{ secrets.GITHUB_TOKEN }}'
-                  firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TAIGA_UI }}'
+                  repoToken: ${{ secrets.GITHUB_TOKEN }}
+                  firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TAIGA_UI }}
                   projectId: taiga-ui
                   expires: 1d
 

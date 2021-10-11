@@ -11,6 +11,8 @@ on:
 
 env:
     NX_BRANCH: ${{ github.event.number }}
+    IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+    IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
 
 jobs:
     lint:
@@ -20,10 +22,17 @@ jobs:
         env:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
         steps:
-            - uses: actions/checkout@v2
+            - name: Fetch from origin repo
+              if: ${{ env.IS_FORK == 'false' }}
+              uses: actions/checkout@v2
               with:
                   ref: ${{ github.head_ref }}
                   token: ${{ secrets.TINKOFF_BOT_PAT }}
+                  fetch-depth: 2
+            - name: Fetch from forked repo
+              if: ${{ env.IS_FORK == 'true' }}
+              uses: actions/checkout@v2
+              with:
                   fetch-depth: 2
             - name: Use Node.js
               uses: actions/setup-node@v1
@@ -47,7 +56,7 @@ jobs:
                   npm run format:tslint
 
             - name: Get last commit message
-              if: ${{ github.ref != 'refs/heads/main' }}
+              if: ${{ env.IS_MAIN_BRANCH == 'false' && env.IS_FORK == 'false' }}
               id: last-commit-message
               run: |
                   git config user.name "tinkoff-bot"
@@ -55,7 +64,7 @@ jobs:
 
             - name: Apply changes after linting
               uses: stefanzweifel/git-auto-commit-action@v4.12.0
-              if: ${{ github.ref != 'refs/heads/main' }}
+              if: ${{ env.IS_MAIN_BRANCH == 'false' && env.IS_FORK == 'false' }}
               with:
                   commit_message: ${{ steps.last-commit-message.outputs.msg }}
                   status_options: '--untracked-files=no'
