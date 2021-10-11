@@ -1,4 +1,4 @@
-import {ContentChild, Directive, Inject} from '@angular/core';
+import {ContentChild, Directive, HostListener, Inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
@@ -14,6 +14,7 @@ import {processDragged} from '../../ios.hacks';
 @Directive({
     selector: '[tuiSheetWrapper]',
     host: {
+        'class._touched': 'touched',
         '[$.class._overlay]': 'overlay$',
         '($.class._overlay)': 'overlay$',
         '[$.class._visible]': 'visible$',
@@ -23,6 +24,9 @@ import {processDragged} from '../../ios.hacks';
     },
 })
 export class TuiSheetWrapperDirective {
+    // Trying to get overflow: visible as early as possible for Safari
+    touched = false;
+
     @ContentChild(TuiSheetComponent)
     private readonly sheet?: TuiSheetComponent<unknown>;
 
@@ -47,6 +51,12 @@ export class TuiSheetWrapperDirective {
     @tuiPure
     get height$(): Observable<number> {
         return this.scroll$.pipe(map(this.getHeight.bind(this)));
+    }
+
+    @HostListener('touchstart', ['true'])
+    @HostListener('touchend', ['false'])
+    onTouch(touched: boolean) {
+        this.touched = touched;
     }
 
     private getHeight(value: number): number {

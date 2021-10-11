@@ -17,10 +17,6 @@
                 (close)="close(item)"
             ></tui-sheet>
         </div>
-        <div
-            class="t-overlay"
-            [class.t-overlay_possible]="items.length"
-            (click)="close(items[0])"
-        ></div>
+        <div class="t-overlay" (click)="close(items[0])"></div>
     </ng-container>
 </ng-container>

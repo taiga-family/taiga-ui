@@ -57,6 +57,11 @@
     &._clickthrough {
         pointer-events: none;
     }
+
+    :host-context(._overlay:not(._visible)) & {
+        .transition(transform);
+        transform: none !important;
+    }
 }
 
 .t-image {

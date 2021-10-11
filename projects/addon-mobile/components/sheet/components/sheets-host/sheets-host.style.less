@@ -16,8 +16,8 @@
     z-index: -1;
     pointer-events: none;
 
-    ._overlay ~ &_possible,
-    .t-wrapper_overlay ~ &_possible {
+    ._overlay ~ &,
+    .t-wrapper_overlay ~ & {
         opacity: 0.8;
         pointer-events: auto;
         touch-action: none;
@@ -30,8 +30,11 @@
     height: 100vh;
     bottom: 0;
     z-index: 0;
+    overflow: hidden;
 
-    &:not(._visible) {
-        overflow: hidden;
+    &._visible,
+    &._overlay,
+    &._touched {
+        overflow: visible;
     }
 }
