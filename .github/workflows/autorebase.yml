@@ -9,8 +9,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Autorebase
-              continue-on-error: true
-              uses: peter-evans/rebase@v1.1.0
+              uses: peter-evans/rebase@v1.2.0
               with:
                   base: main
                   exclude-drafts: true
