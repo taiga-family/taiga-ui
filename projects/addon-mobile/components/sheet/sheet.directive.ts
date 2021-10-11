@@ -9,7 +9,7 @@ import {
 import {tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, Subject} from 'rxjs';
-import {endWith, switchMap} from 'rxjs/operators';
+import {endWith, ignoreElements, switchMap} from 'rxjs/operators';
 import {TuiSheetOptions} from './sheet-options';
 import {TuiSheetService} from './sheet.service';
 
@@ -32,7 +32,11 @@ export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheetOptions> {
     @Output()
     tuiSheetChange = this.open$.pipe(
         switchMap(open =>
-            open ? this.service.open(this, this.options).pipe(endWith(false)) : EMPTY,
+            open
+                ? this.service
+                      .open(this, this.options)
+                      .pipe(ignoreElements(), endWith(false))
+                : EMPTY,
         ),
     );
 
