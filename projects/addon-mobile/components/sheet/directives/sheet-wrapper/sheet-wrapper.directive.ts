@@ -8,6 +8,7 @@ import {
     TUI_SHEET_DRAGGED,
     TUI_SHEET_SCROLL,
 } from '../../components/sheet/sheet.providers';
+import {processDragged} from '../../ios.hacks';
 
 // @dynamic
 @Directive({
@@ -15,18 +16,18 @@ import {
     host: {
         '[$.class._overlay]': 'overlay$',
         '($.class._overlay)': 'overlay$',
-        '[$.class._dragged]': 'dragged$',
-        '($.class._dragged)': 'dragged$',
+        '[$.class._visible]': 'visible$',
+        '($.class._visible)': 'visible$',
         '[$.style.height.px]': 'height$',
         '($.style.height.px)': 'height$',
     },
 })
 export class TuiSheetWrapperDirective {
     @ContentChild(TuiSheetComponent)
-    readonly sheet?: TuiSheetComponent<unknown>;
+    private readonly sheet?: TuiSheetComponent<unknown>;
 
     @ContentChild(TuiSheetComponent, {read: TUI_SHEET_DRAGGED})
-    readonly dragged$!: Observable<boolean>;
+    private readonly dragged$!: Observable<boolean>;
 
     @ContentChild(TuiSheetComponent, {read: TUI_SHEET_SCROLL})
     private readonly scroll$!: Observable<number>;
@@ -36,6 +37,11 @@ export class TuiSheetWrapperDirective {
     @tuiPure
     get overlay$(): Observable<boolean> {
         return this.scroll$.pipe(map(y => y + 16 > this.windowRef.innerHeight - 16));
+    }
+
+    @tuiPure
+    get visible$(): Observable<boolean> {
+        return processDragged(this.dragged$, this.scroll$);
     }
 
     @tuiPure
