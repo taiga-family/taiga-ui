@@ -71,6 +71,10 @@ export class TuiInputNumberComponent
     @tuiDefaultProp()
     postfix = '';
 
+    @Input()
+    @tuiDefaultProp()
+    disableZeroPadding = false;
+
     mask: TuiMapper<boolean, TuiTextMaskOptions> = (
         allowNegative: boolean,
         decimal: TuiDecimalT,
@@ -157,6 +161,7 @@ export class TuiInputNumberComponent
             limit,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
+            this.disableZeroPadding,
         );
     }
 

@@ -77,5 +77,7 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     postfix = this.postfixVariants[0];
 
+    disableZeroPadding = false;
+
     readonly control = new FormControl(6432, Validators.required);
 }

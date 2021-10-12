@@ -82,6 +82,7 @@
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintMode]="hintMode"
+                    [disableZeroPadding]="disableZeroPadding"
                 >
                     Type a sum
                 </tui-input-number>
@@ -145,6 +146,16 @@
                 [(documentationPropertyValue)]="decimal"
             >
                 Show/hide decimal
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="disableZeroPadding"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disableZeroPadding"
+            >
+                Disable zeros at the end of decimal part
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
