@@ -3,7 +3,7 @@
 :host {
     .scrollbar-hidden();
     position: absolute;
-    left: 0;
+    left: -1rem;
     right: 0;
     bottom: 0;
     height: 100%;
@@ -12,6 +12,10 @@
     overflow-x: hidden;
     scroll-snap-type: y mandatory;
     box-shadow: 0 4rem var(--tui-base-01);
+    padding-left: 1rem;
+    margin-left: -1rem;
+    direction: rtl;
+    clip-path: inset(0 0 0 1rem round 0.75rem 0.75rem 0 0);
 
     &._stuck {
         scroll-snap-type: y proximity;
@@ -37,6 +41,7 @@
 
 .t-wrapper {
     border-radius: 0.75rem 0.75rem 0 0;
+    direction: ltr;
     pointer-events: auto;
     scroll-snap-stop: always;
     scroll-snap-align: start;
