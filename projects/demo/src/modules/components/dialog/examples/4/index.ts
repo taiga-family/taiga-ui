@@ -1,9 +1,7 @@
 import {Component, Inject, TemplateRef} from '@angular/core';
-import {TuiPortalService} from '@taiga-ui/cdk';
+import {clamp, TuiPortalService} from '@taiga-ui/cdk';
 import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -17,38 +15,41 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiDialogExampleComponent4 {
     filters = false;
 
-    readonly close$ = new Subject<void>();
+    scale = 1;
 
     constructor(
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
         @Inject(TuiPortalService) private readonly portalService: TuiPortalService,
     ) {}
 
+    get transform(): string {
+        return `scale(${this.scale})`;
+    }
+
+    get width(): string {
+        return `calc((100% + 4rem) * ${1 / this.scale})`;
+    }
+
+    onElastic(value: number) {
+        this.scale = clamp(value, 0.5, 1);
+    }
+
     onFilterClick() {
         this.filters = true;
-        this.dialogService
-            .open('Dialog with filters')
-            .pipe(takeUntil(this.close$))
-            .subscribe({
-                complete: () => {
-                    this.filters = false;
-                },
-            });
+        this.dialogService.open('Dialog with filters').subscribe({
+            complete: () => {
+                this.filters = false;
+            },
+        });
     }
 
     showDialog(content: PolymorpheusContent<TuiDialogContext>, button: TemplateRef<{}>) {
         const templateRef = this.portalService.addTemplate(button);
 
-        this.dialogService
-            .open(content, {
-                closeable: false,
-                dismissible: true,
-            })
-            .pipe(takeUntil(this.close$))
-            .subscribe({
-                complete: () => {
-                    this.portalService.removeTemplate(templateRef);
-                },
-            });
+        this.dialogService.open(content).subscribe({
+            complete: () => {
+                this.portalService.removeTemplate(templateRef);
+            },
+        });
     }
 }
