@@ -26,8 +26,16 @@
         >
             <tui-input-card-grouped-example-2></tui-input-card-grouped-example-2>
         </tui-doc-example>
-    </ng-template>
 
+        <tui-doc-example
+            id="cardSrc"
+            i18n-heading
+            heading="With custom card template"
+            [content]="example3"
+        >
+            <tui-input-card-grouped-example-3></tui-input-card-grouped-example-3>
+        </tui-doc-example>
+    </ng-template>
     <ng-template pageTab>
         <tui-doc-demo [control]="control">
             <ng-template>
@@ -53,6 +61,16 @@
                 control validators to validate it with Luhn algorithm
             </p>
         </div>
+
+        <ng-template #template>
+            <tui-card
+                class="card"
+                cardNumber="1234"
+                paymentSystem="maestro"
+                size="s"
+            ></tui-card>
+        </ng-template>
+
         <tui-doc-documentation>
             <ng-template
                 i18n
@@ -75,8 +93,8 @@
                 i18n
                 documentationPropertyName="cardSrc"
                 documentationPropertyMode="input"
-                documentationPropertyType="string | null"
-                [documentationPropertyValues]="cardSrcVariants"
+                documentationPropertyType="PolymorpheusContent | null"
+                [documentationPropertyValues]="getContentVariants(template)"
                 [(documentationPropertyValue)]="cardSrcSelected"
             >
                 SVG card icon

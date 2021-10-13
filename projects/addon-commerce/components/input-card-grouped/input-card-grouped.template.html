@@ -129,12 +129,20 @@
         </label>
     </div>
     <div class="t-icons">
-        <tui-svg
+        <div
             *ngIf="icon"
-            class="t-card"
-            automation-id="tui-input-card-grouped__icon"
-            [src]="icon"
-        ></tui-svg>
+            class="t-icon-outlet"
+            polymorpheus-outlet
+            [content]="icon"
+        >
+            <ng-template let-icon>
+                <tui-svg
+                    class="t-card"
+                    automation-id="tui-input-card-grouped__icon"
+                    [src]="icon"
+                ></tui-svg>
+            </ng-template>
+        </div>
         <tui-svg
             *ngIf="hasCleaner"
             class="t-icon"
