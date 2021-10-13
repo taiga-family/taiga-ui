@@ -56,10 +56,6 @@ describe('Number formatting', () => {
         expect(formatNumber(12345.6, 2, ',', '.', false)).toBe('12.345,6');
     });
 
-    it('cut zeros when disable zero padding flag', () => {
-        expect(formatNumber(12345.6, 2, ',', '.', false)).toBe('12.345,6');
-    });
-
     it('add zeros with default behavior', () => {
         expect(formatNumber(12345.6, 2, ',', '.')).toBe('12.345,60');
     });
