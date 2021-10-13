@@ -42,8 +42,9 @@
                     [icon]="icon"
                     [iconAlign]="iconAlign"
                     [iconRotated]="iconRotated"
-                    >Link example</a
                 >
+                    Link example
+                </a>
             </ng-container>
             <ng-template #pseudoLink>
                 <button
@@ -79,9 +80,9 @@
             >
                 An icon. It can be stringified svg or a name of icon registered
                 in
-                <a tuiLink routerLink="/services/svg-service"
-                    ><code>SvgService</code></a
-                >
+                <a tuiLink routerLink="/services/svg-service">
+                    <code>SvgService</code>
+                </a>
             </ng-template>
             <ng-template
                 i18n
@@ -91,7 +92,9 @@
                 [documentationPropertyValues]="iconAlignValues"
                 [(documentationPropertyValue)]="iconAlign"
             >
-                Icon align to text, <code>right</code> by default
+                Icon align to text,
+                <code>right</code>
+                by default
             </ng-template>
             <ng-template
                 i18n
@@ -118,8 +121,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Import <code>TuiLinkModule</code> into a module where you
-                    want to use our component
+                    Import
+                    <code>TuiLinkModule</code>
+                    into a module where you want to use our component
                 </p>
 
                 <tui-doc-code

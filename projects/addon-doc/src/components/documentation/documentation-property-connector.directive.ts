@@ -21,7 +21,8 @@ export type DocumentationPropertyType = 'input' | 'output' | 'input-output' | nu
     selector: 'ng-template[documentationPropertyName]',
 })
 export class TuiDocDocumentationPropertyConnectorDirective<T>
-    implements OnInit, OnChanges {
+    implements OnInit, OnChanges
+{
     @Input()
     documentationPropertyName = '';
 
@@ -95,9 +96,8 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
             return;
         }
 
-        const isValueAvailableByKey = !!params[
-            this.documentationPropertyName + SERIALIZED_SUFFIX
-        ];
+        const isValueAvailableByKey =
+            !!params[this.documentationPropertyName + SERIALIZED_SUFFIX];
 
         if (isValueAvailableByKey && this.documentationPropertyValues) {
             this.onValueChange(

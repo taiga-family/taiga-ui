@@ -39,9 +39,11 @@ describe('InputPassword', () => {
     }
 
     function getIconScr(): string {
-        return (component.icon as PolymorpheusHandler<
-            TuiContextWithImplicit<TuiSizeS | TuiSizeL>
-        >)(component.context) as string;
+        return (
+            component.icon as PolymorpheusHandler<
+                TuiContextWithImplicit<TuiSizeS | TuiSizeL>
+            >
+        )(component.context) as string;
     }
 
     configureTestSuite(() => {

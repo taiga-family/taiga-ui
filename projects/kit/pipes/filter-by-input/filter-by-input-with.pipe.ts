@@ -13,7 +13,8 @@ import {ArrayElement, TuiFilterByInputBase} from './filter-by-input.base';
 })
 export class TuiFilterByInputWithPipe
     extends TuiFilterByInputBase
-    implements PipeTransform {
+    implements PipeTransform
+{
     constructor(
         @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
         protected readonly accessor: TuiFocusableElementAccessor,

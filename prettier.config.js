@@ -6,6 +6,7 @@ module.exports = {
             options: {
                 printWidth: 80,
                 parser: 'html',
+                htmlWhitespaceSensitivity: 'ignore',
             },
         },
         {

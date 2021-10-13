@@ -29,7 +29,8 @@ import {Observable} from 'rxjs';
 // @bad TODO: Possibly refactor to make more abstract
 @Directive()
 export abstract class AbstractTuiDropdown
-    implements TuiDropdown, AfterViewChecked, OnDestroy {
+    implements TuiDropdown, AfterViewChecked, OnDestroy
+{
     @Input('tuiDropdownContent')
     @tuiDefaultProp()
     content: PolymorpheusContent = '';

@@ -57,7 +57,8 @@ import {InputCountOptions, TUI_INPUT_COUNT_OPTIONS} from './input-count-options'
 })
 export class TuiInputCountComponent
     extends AbstractTuiControl<number>
-    implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor {
+    implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     step = this.options.step;

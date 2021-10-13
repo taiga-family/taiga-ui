@@ -29,8 +29,10 @@ export function innerHTML(documentRef: Document): void {
             }
 
             try {
-                const svgDocElement = parser.parseFromString(text, 'image/svg+xml')
-                    .documentElement;
+                const svgDocElement = parser.parseFromString(
+                    text,
+                    'image/svg+xml',
+                ).documentElement;
 
                 if (this.ownerDocument) {
                     this.appendChild(this.ownerDocument.importNode(svgDocElement, true));

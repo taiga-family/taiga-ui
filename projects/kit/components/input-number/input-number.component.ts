@@ -50,7 +50,8 @@ const DEFAULT_MAX_LENGTH = 18;
 })
 export class TuiInputNumberComponent
     extends AbstractTuiNullableControl<number>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     min = -Infinity;

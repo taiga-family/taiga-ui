@@ -1,8 +1,9 @@
 <tui-doc-page header="ComboBox" package="KIT" type="components">
     <ng-template pageTab>
         <div i18n class="tui-space_bottom-3">
-            <code>ComboBox</code> is a textfield with a dropdown with items. You
-            can choose one of available options or input a value manually.
+            <code>ComboBox</code>
+            is a textfield with a dropdown with items. You can choose one of
+            available options or input a value manually.
         </div>
 
         <tui-doc-example
@@ -88,7 +89,8 @@
         <div i18n>
             <p>
                 Set a value with copied object from items to check
-                <code>identityMatcher</code>:
+                <code>identityMatcher</code>
+                :
             </p>
 
             <button tuiButton type="button" size="m" (click)="setValue()">
@@ -103,7 +105,9 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Disabled state (use <code>formControl.disable()</code>)
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
             </ng-template>
             <ng-template
                 i18n
@@ -113,7 +117,9 @@
                 [(documentationPropertyValue)]="search"
             >
                 Textfield value to subscribe on input or setting it from the
-                outside (emits <code>null</code> when item from list selected)
+                outside (emits
+                <code>null</code>
+                when item from list selected)
             </ng-template>
             <ng-template
                 i18n
@@ -157,7 +163,8 @@
                 [(documentationPropertyValue)]="stringify"
             >
                 A function that transforms object into a string.
-                <code>String(value)</code> by default.
+                <code>String(value)</code>
+                by default.
                 <strong>Should be a pure function</strong>
             </ng-template>
             <ng-template
@@ -178,8 +185,8 @@
             <li>
                 <p i18n>
                     Import an Angular module for forms and
-                    <code>TuiComboBoxModule</code> in the same module where you
-                    want to use our component:
+                    <code>TuiComboBoxModule</code>
+                    in the same module where you want to use our component:
                 </p>
 
                 <tui-doc-code
@@ -189,14 +196,18 @@
 
                 <p i18n>
                     See samples to learn more about working with
-                    <code>tui-data-list-wrapper</code> or without them
+                    <code>tui-data-list-wrapper</code>
+                    or without them
                 </p>
             </li>
 
             <li>
                 <p i18n>
-                    Declare a form (<code>FormGroup</code>) or a control
-                    (<code>FormControl</code>) in your component:
+                    Declare a form (
+                    <code>FormGroup</code>
+                    ) or a control (
+                    <code>FormControl</code>
+                    ) in your component:
                 </p>
 
                 <tui-doc-code

@@ -174,7 +174,7 @@
         "ng-bullet": "^1.0.3",
         "ng-morph": "^2.0.0",
         "ng-packagr": "^9.1.5",
-        "prettier": "^2.1.1",
+        "prettier": "^2.4.1",
         "protractor": "~5.4.0",
         "raw-loader": "^4.0.2",
         "rollup": "^1.10.0",

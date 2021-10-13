@@ -18,7 +18,7 @@ export function typedFromEvent<T extends Element, E extends keyof HTMLElementEve
 ): Observable<TuiEventWith<HTMLElementEventMap[E], typeof target>>;
 export function typedFromEvent<
     E extends Event,
-    T extends TuiTypedEventTarget<TuiEventWith<E, T>>
+    T extends TuiTypedEventTarget<TuiEventWith<E, T>>,
 >(
     target: T,
     event: string,
