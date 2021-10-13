@@ -95,8 +95,8 @@ export class TuiToolbarNewComponent {
     @Output()
     readonly attachClicked = new EventEmitter<void>();
 
-    @HostListener('click', ['$event', '$event.target'])
-    onEmptyToolbarClick(event: MouseEvent, target: HTMLElement) {
+    @HostListener('mousedown', ['$event', '$event.target'])
+    onMouseDown(event: MouseEvent, target: HTMLElement) {
         if (getClosestElement(target, 'button')) {
             return;
         }
