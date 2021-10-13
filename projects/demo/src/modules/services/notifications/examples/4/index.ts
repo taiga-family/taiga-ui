@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
-import {AlertExampleWithDataComponent} from '../../alert-example-with-data/alert-example-with-data.component';
+import {AlertExampleWithDataComponent} from './alert-example-with-data/alert-example-with-data.component';
 
 @Component({
     selector: 'tui-notifications-example-4',

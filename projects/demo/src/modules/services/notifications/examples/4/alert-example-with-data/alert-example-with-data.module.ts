@@ -16,5 +16,6 @@ import {AlertExampleWithDataComponent} from './alert-example-with-data.component
     ],
     declarations: [AlertExampleWithDataComponent],
     exports: [AlertExampleWithDataComponent],
+    entryComponents: [AlertExampleWithDataComponent], // for stackblitz
 })
 export class AlertExampleWithDataModule {}
