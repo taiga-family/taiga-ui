@@ -4,6 +4,7 @@ import {
     ElementRef,
     EventEmitter,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -19,11 +20,12 @@ import {
     TUI_EDITOR_CODE_OPTIONS,
     TUI_EDITOR_FONT_OPTIONS,
     TUI_EDITOR_TABLE_COMMANDS,
+    TUI_EDITOR_TOOLBAR_TEXTS,
     TUI_IMAGE_LOADER,
 } from '@taiga-ui/addon-editor/tokens';
-import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {
     EMPTY_QUERY,
+    getClosestElement,
     isNativeFocusedIn,
     setNativeFocused,
     tuiDefaultProp,
@@ -92,6 +94,16 @@ export class TuiToolbarNewComponent {
 
     @Output()
     readonly attachClicked = new EventEmitter<void>();
+
+    @HostListener('mousedown', ['$event', '$event.target'])
+    onMouseDown(event: MouseEvent, target: HTMLElement) {
+        if (getClosestElement(target, 'button')) {
+            return;
+        }
+
+        event.preventDefault();
+        this.editor.focus();
+    }
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 

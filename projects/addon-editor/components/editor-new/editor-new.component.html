@@ -3,7 +3,6 @@
     appearance="textfield"
     [readOnly]="readOnly"
     [disabled]="disabled"
-    [invalid]="computedInvalid"
     [focused]="computedFocused"
     [hovered]="computedHovered"
     [invalid]="computedInvalid"
@@ -13,10 +12,9 @@
     class="t-wrapper"
     [class.t-wrapper_disabled]="disabled"
     (tuiHoveredChange)="onHovered($event)"
-    (mousedown)="onMouseDown($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
-    <div class="t-toolbar-wrapper" (mousedown.prevent)="0">
+    <div class="t-toolbar-wrapper">
         <tui-toolbar
             *ngIf="editor"
             new
