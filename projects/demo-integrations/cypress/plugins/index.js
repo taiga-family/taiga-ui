@@ -6,6 +6,7 @@ module.exports = (on, config) => {
         if (browser.name === 'chrome') {
             launchOptions.args.push('--disable-dev-shm-usage');
             launchOptions.args.push('--force-device-scale-factor=1');
+            launchOptions.args.push('--start-fullscreen');
         }
 
         return launchOptions;

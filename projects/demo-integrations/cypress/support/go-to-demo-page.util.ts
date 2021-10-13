@@ -1,3 +1,4 @@
+import {NIGHT_THEME_KEY} from './shared.entities';
 import {stubExternalIcons} from './stub-external-icons.util';
 import {waitAllRequests} from './wait-requests.util';
 
@@ -13,6 +14,7 @@ interface Options {
      */
     inIframe?: boolean;
     waitAllIcons?: boolean;
+    enableNightMode?: boolean;
 }
 
 const setBeforeLoadOptions = (
@@ -25,10 +27,9 @@ const setBeforeLoadOptions = (
     }
 };
 
-export const goToDemoPage = (
-    path: string,
-    {inIframe = true, waitAllIcons = false}: Options = {},
-) => {
+export const goToDemoPage = (path: string, options: Options = {}) => {
+    const {inIframe = true, waitAllIcons = false, enableNightMode = false} = options;
+
     stubExternalIcons();
     cy.visit('/', {
         onBeforeLoad: window => {
@@ -40,6 +41,7 @@ export const goToDemoPage = (
             setBeforeLoadOptions(window, {inIframe});
 
             window.localStorage.setItem(NEXT_URL_STORAGE_KEY, nextUrl);
+            window.localStorage.setItem(NIGHT_THEME_KEY, enableNightMode.toString());
         },
     });
 
