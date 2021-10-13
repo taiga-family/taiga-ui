@@ -1,0 +1,16 @@
+name: Auto author assign for PR
+
+on:
+    # for forks or origin pull requests
+    pull_request_target:
+        types: [opened, reopened]
+
+permissions:
+    pull-requests: write
+
+jobs:
+    assign-author:
+        runs-on: ubuntu-latest
+        steps:
+            # This action automatically assigns PR author as an assignee.
+            - uses: toshimaru/auto-author-assign@v1.3.7
