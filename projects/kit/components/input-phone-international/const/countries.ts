@@ -13,7 +13,7 @@ import {Country} from '../interfaces/country';
 export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.AD]: {mask: '+376###-###', name: 'Андорра'},
     [TuiCountryIsoCode.AE]: {
-        mask: '+971-#-###-####',
+        mask: '+971-##-###-####',
         name: 'Объединенные Арабские Эмираты',
     },
     [TuiCountryIsoCode.AF]: {mask: '+93##-###-####', name: 'Афганистан'},
