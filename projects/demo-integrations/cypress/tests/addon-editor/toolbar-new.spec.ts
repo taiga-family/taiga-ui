@@ -14,7 +14,10 @@ describe("Editor's toolbar", () => {
         cy.get('@wrapper').scrollIntoView().find('tui-editor').click();
 
         cy.get('@wrapper').findByAutomationId('toolbar__color-button').click();
-        cy.get('@wrapper').findByAutomationId('toolbar__hilite-button').click();
+        cy.get('@wrapper')
+            .findByAutomationId('toolbar__hilite-button')
+            .click()
+            .trigger('mouseleave');
 
         cy.get('@wrapper')
             .wait(WAIT_BEFORE_SCREENSHOT)
