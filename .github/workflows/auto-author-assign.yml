@@ -1,13 +1,18 @@
-name: Automatically assigns PR author as an assignee
+name: Auto Assign
 
 on:
     pull_request:
         types: [opened, reopened]
 
+env:
+    IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+
 jobs:
     assign-author:
+        name: PR author as an assignee
         runs-on: ubuntu-latest
         steps:
             - uses: toshimaru/auto-author-assign@v1.3.7
+              if: ${{ env.IS_FORK == 'false' }}
               with:
                   repo-token: ${{ secrets.TINKOFF_BOT_PAT }}
