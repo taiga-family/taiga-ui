@@ -1,4 +1,5 @@
-const EDITOR_PAGE_URL = 'components/editor-new';
+import {EDITOR_PAGE_URL} from '../../support/shared.entities';
+
 const WAIT_BEFORE_SCREENSHOT = 1000; // editor has a huge number of icons (that is why we wait so long)
 
 describe("Editor's toolbar", () => {
