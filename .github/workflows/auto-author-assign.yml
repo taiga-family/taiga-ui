@@ -1,0 +1,13 @@
+name: Automatically assigns PR author as an assignee
+
+on:
+    pull_request:
+        types: [opened, reopened]
+
+jobs:
+    assign-author:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: toshimaru/auto-author-assign@v1.3.7
+              with:
+                  repo-token: ${{ secrets.TINKOFF_BOT_PAT }}

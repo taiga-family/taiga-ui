@@ -1,4 +1,4 @@
-const DROPDOWN_CONTEXT_PAGE_URL = 'directives/dropdown-context';
+import {DROPDOWN_CONTEXT_PAGE_URL} from '../../../support/shared.entities';
 
 describe('DropdownContext', () => {
     beforeEach(() => {

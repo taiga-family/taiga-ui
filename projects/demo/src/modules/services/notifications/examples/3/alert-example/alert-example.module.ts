@@ -17,5 +17,6 @@ import {AlertExampleComponent} from './alert-example.component';
     ],
     declarations: [AlertExampleComponent],
     exports: [AlertExampleComponent],
+    entryComponents: [AlertExampleComponent], // for stackblitz
 })
 export class AlertExampleModule {}

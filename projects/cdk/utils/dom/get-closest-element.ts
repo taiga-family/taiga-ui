@@ -1,5 +1,6 @@
 /**
  * Gets closest element by selector i.e. {@link Element.closest}
+ * @deprecated only needed for IE, remove in 3.0
  */
 export function getClosestElement(element: Element, selector: string): Element | null {
     const closest = Element.prototype.closest;

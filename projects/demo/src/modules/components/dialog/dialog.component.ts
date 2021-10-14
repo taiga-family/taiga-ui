@@ -41,6 +41,11 @@ import {switchMap} from 'rxjs/operators';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
+const METHOD = `open<O>(
+  content: PolymorpheusContent<TuiDialogContext<O, I>,
+  options: Partial<TuiDialogOptions<I>>,
+): Observable<O>`;
+
 @Component({
     selector: 'example-tui-dialog',
     templateUrl: './dialog.template.html',
@@ -50,6 +55,8 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 export class ExampleTuiDialogComponent {
     readonly dialogsCloseToken = exampleDialogsCloseToken;
     readonly exampleDialogClosesOnBackToken = exampleDialogClosesOnBackToken;
+
+    readonly method = METHOD;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

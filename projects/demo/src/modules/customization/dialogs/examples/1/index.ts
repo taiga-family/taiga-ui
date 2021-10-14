@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs/operators';
-import {PromptService} from '../prompt/prompt.component';
+import {PromptService} from '../prompt/prompt.service';
 
 @Component({
     selector: 'tui-dialogs-example-1',

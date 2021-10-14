@@ -18,8 +18,10 @@ import {CustomLabelModule} from './custom-label/custom-label.module';
 import {TuiNotificationsExampleComponent1} from './examples/1';
 import {TuiNotificationsExampleComponent2} from './examples/2';
 import {TuiNotificationsExampleComponent3} from './examples/3';
+import {AlertExampleModule} from './examples/3/alert-example/alert-example.module';
 import {TuiNotificationsExampleComponent4} from './examples/4';
 import {TuiNotificationsExampleComponent5} from './examples/5';
+import {AlertExampleWithDataModule} from './examples/4/alert-example-with-data/alert-example-with-data.module';
 import {ExampleTuiNotificationsComponent} from './notifications.component';
 
 @NgModule({
