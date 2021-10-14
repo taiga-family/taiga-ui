@@ -26,10 +26,10 @@ export function formatNumber(
         const zeroPaddingSize: number = zeroPadding
             ? Math.max(decimalLimit - fractionPartString.length, 0)
             : 0;
+        const basePartString = fractionPartString.substr(0, decimalLimit);
+        const zeroPartString = '0'.repeat(zeroPaddingSize);
 
-        fractionPartPadded = `${fractionPartString.substr(0, decimalLimit)}${'0'.repeat(
-            zeroPaddingSize,
-        )}`;
+        fractionPartPadded = `${basePartString}${zeroPartString}`;
     }
 
     const remainder = integerPartString.length % 3;
