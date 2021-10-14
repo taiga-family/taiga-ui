@@ -37,7 +37,7 @@ export class TuiOverscrollDirective {
                 );
             });
 
-        typedFromEvent(nativeElement, 'touchstart', {passive: true})
+        typedFromEvent(nativeElement, 'touchstart', {passive: false})
             .pipe(
                 switchMap(({touches}) => {
                     let {clientX, clientY} = touches[0];
