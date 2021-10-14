@@ -1,4 +1,5 @@
 <button tuiButton (click)="toggle()">Show/Hide</button>
+<img class="preload" src="assets/images/earth.jpg" alt="" />
 <ng-template
     [tuiSheetOptions]="options"
     [(tuiSheet)]="open"
@@ -6,11 +7,14 @@
 >
     <div class="wrapper">
         <h2 tuiSheetHeading class="heading">Planet Earth</h2>
-        <video
-            class="earth"
-            src="assets/media/earth.mp4"
-            [currentTime]="(scroll$ | async) / 100"
-        ></video>
+        <div class="earth">
+            <img
+                class="image"
+                src="assets/images/earth.jpg"
+                alt=""
+                [style.transform]="getTransform(scroll$ | async)"
+            />
+        </div>
         <p>
             Earth is the third planet from the Sun and the only astronomical
             object known to harbour and support life. About 29.2% of Earth's
