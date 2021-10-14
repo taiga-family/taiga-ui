@@ -1,8 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
-import {LOCAL_STORAGE, LOCATION} from '@ng-web-apis/common';
+import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
-import {VERSION} from '@taiga-ui/core';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {changeDetection} from '../../change-detection-strategy';
 
@@ -19,12 +18,9 @@ export class AppComponent {
         distinctUntilChanged(),
     );
 
-    readonly version = VERSION;
-
     constructor(
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
-        @Inject(LOCATION) private readonly locationRef: Location,
         @Inject(Router) private readonly router: Router,
         @Inject(LOCAL_STORAGE) localStorage: Storage,
     ) {
@@ -34,12 +30,6 @@ export class AppComponent {
             localStorage.removeItem('env');
             router.navigateByUrl(env.replace(/\/[A-z0-9]*\//, ''));
         }
-    }
-
-    get nextDemoAppHref(): string {
-        const {origin, pathname} = this.locationRef;
-
-        return origin + '/next' + pathname;
     }
 
     @tuiPure

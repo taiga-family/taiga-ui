@@ -1,0 +1,21 @@
+<tui-select
+    class="select"
+    tuiTextfieldSize="s"
+    tuiDropdownDirection="top"
+    tuiDropdownLimitWidth="min"
+    [ngModel]="initialVersion"
+    [valueContent]="selectedTemplate"
+>
+    <tui-data-list *tuiDataList>
+        <a
+            *ngFor="let version of versions"
+            tuiOption
+            [value]="version"
+            [href]="getVersionHref(version)"
+        >
+            {{version.label}}
+        </a>
+    </tui-data-list>
+</tui-select>
+
+<ng-template #selectedTemplate let-version> {{version.label}} </ng-template>
