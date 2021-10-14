@@ -49,11 +49,21 @@ jobs:
             - name: Install dependencies
               run: npm ci
             # End of setup
-            - name: Format
+
+            - name: Typecheck
+              run: npm run typecheck
+
+            - name: Auto format files only in PR of maintainers
+              if: ${{ env.IS_FORK == 'false' && env.IS_MAIN_BRANCH == 'false' }}
               run: |
-                  npm run typecheck
-                  npm run format:prettier
-                  npm run format:tslint
+                  npm run prettier -- --write
+                  npm run tslint -- --fix
+
+            - name: Only linting files in fork or main branch
+              if: ${{ env.IS_FORK == 'true' || env.IS_MAIN_BRANCH == 'true' }}
+              run: |
+                  npm run prettier -- --check
+                  npm run tslint
 
             - name: Get last commit message
               if: ${{ env.IS_MAIN_BRANCH == 'false' && env.IS_FORK == 'false' }}
