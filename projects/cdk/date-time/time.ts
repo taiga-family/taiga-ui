@@ -173,7 +173,7 @@ export class TuiTime implements TuiTimeLike {
             date.getHours(),
             date.getMinutes(),
             date.getSeconds(),
-            date.getMilliseconds()
+            date.getMilliseconds(),
         )
     }
 
