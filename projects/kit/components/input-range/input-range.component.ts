@@ -44,7 +44,8 @@ import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
 })
 export class TuiInputRangeComponent
     extends AbstractTuiInputSlider<[number, number]>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @ViewChild('nativeLeft')
     private readonly nativeLeft?: ElementRef<HTMLInputElement>;
 

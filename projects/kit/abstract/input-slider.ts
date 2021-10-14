@@ -33,7 +33,8 @@ export function quantumAssertion(quantum: number): boolean {
 @Directive()
 export abstract class AbstractTuiInputSlider<T>
     extends AbstractTuiControl<T>
-    implements TuiWithOptionalMinMax<number> {
+    implements TuiWithOptionalMinMax<number>
+{
     @Input()
     @tuiDefaultProp()
     min = 0;

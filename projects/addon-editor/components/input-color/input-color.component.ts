@@ -50,7 +50,8 @@ export function longDropdownControllerFactory(
 })
 export class TuiInputColorComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = new Map<string, string>();

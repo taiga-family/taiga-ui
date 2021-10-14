@@ -5,5 +5,5 @@ export type TuiHandlerWithContext<I, O, C extends Object = {}> = (
 
 export type TuiBooleanHandlerWithContext<
     I,
-    C extends Object = {}
+    C extends Object = {},
 > = TuiHandlerWithContext<I, boolean, C>;

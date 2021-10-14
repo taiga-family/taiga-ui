@@ -60,7 +60,8 @@ import {InputTimeOptions, TUI_INPUT_TIME_OPTIONS} from './input-time-options';
 })
 export class TuiInputTimeComponent
     extends AbstractTuiNullableControl<TuiTime>
-    implements TuiFocusableElementAccessor, InputTimeOptions {
+    implements TuiFocusableElementAccessor, InputTimeOptions
+{
     @Input()
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiTime> = ALWAYS_FALSE_HANDLER;

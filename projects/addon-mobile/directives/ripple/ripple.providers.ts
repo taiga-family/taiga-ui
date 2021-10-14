@@ -40,12 +40,8 @@ export function rippleStartFactory(
         : typedFromEvent(nativeElement, 'touchstart').pipe(
               map(({touches}) => {
                   const {clientX, clientY} = touches[touches.length - 1];
-                  const {
-                      width,
-                      height,
-                      top,
-                      left,
-                  } = nativeElement.getBoundingClientRect();
+                  const {width, height, top, left} =
+                      nativeElement.getBoundingClientRect();
                   const radius = Math.sqrt(width * width + height * height);
                   const dimension = radius * 2;
                   const x = clientX - left - radius;

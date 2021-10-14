@@ -36,16 +36,20 @@ export const TableCellBackground = Extension.create({
         unsetCellBackground: () => Command;
     } {
         return {
-            setCellBackground: background => ({chain}) =>
-                chain()
-                    .updateAttributes('tableCell', {background})
-                    .updateAttributes('tableHeader', {background})
-                    .run(),
-            unsetCellBackground: () => ({chain}) =>
-                chain()
-                    .updateAttributes('tableCell', {background: null})
-                    .updateAttributes('tableHeader', {background: null})
-                    .run(),
+            setCellBackground:
+                background =>
+                ({chain}) =>
+                    chain()
+                        .updateAttributes('tableCell', {background})
+                        .updateAttributes('tableHeader', {background})
+                        .run(),
+            unsetCellBackground:
+                () =>
+                ({chain}) =>
+                    chain()
+                        .updateAttributes('tableCell', {background: null})
+                        .updateAttributes('tableHeader', {background: null})
+                        .run(),
         };
     },
 });

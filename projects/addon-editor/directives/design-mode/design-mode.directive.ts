@@ -56,7 +56,8 @@ const PADDING = 26;
     ],
 })
 export class TuiDesignModeDirective
-    implements ControlValueAccessor, TuiFocusableElementAccessor {
+    implements ControlValueAccessor, TuiFocusableElementAccessor
+{
     @Input()
     @tuiRequiredSetter()
     set exampleText(exampleText: string) {
@@ -375,9 +376,11 @@ export class TuiDesignModeDirective
             !this.computedDocument.caretRangeFromPoint &&
             !(this.computedDocument as any).caretPositionFromPoint
         ) {
-            const range = (this.computedDocument.body as HTMLBodyElement & {
-                createTextRange(): any;
-            }).createTextRange();
+            const range = (
+                this.computedDocument.body as HTMLBodyElement & {
+                    createTextRange(): any;
+                }
+            ).createTextRange();
 
             range.moveToPoint(x, y);
             range.select();

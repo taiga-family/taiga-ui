@@ -21,9 +21,7 @@ describe('fallbackValue', () => {
         it('value === []', () => {
             const value: Array<number> = [];
 
-            expect(
-                fallbackValue<Array<number>>(value, [1]),
-            ).toBe(value);
+            expect(fallbackValue<Array<number>>(value, [1])).toBe(value);
         });
     });
 

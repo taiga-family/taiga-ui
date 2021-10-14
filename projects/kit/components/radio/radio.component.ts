@@ -43,7 +43,8 @@ import {RadioOptions, TUI_RADIO_OPTIONS} from './radio-options';
 })
 export class TuiRadioComponent<T>
     extends AbstractTuiNullableControl<T>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     item?: T;
 

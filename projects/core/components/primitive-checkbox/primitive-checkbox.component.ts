@@ -18,8 +18,8 @@ import {CheckboxOptions, TUI_CHECKBOX_OPTIONS} from './checkbox-options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCheckboxComponent {
-    icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> = this.options.icons
-        .checked;
+    icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> =
+        this.options.icons.checked;
 
     @Input()
     @HostBinding('attr.data-tui-host-size')

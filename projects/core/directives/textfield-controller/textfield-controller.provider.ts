@@ -34,9 +34,8 @@ import {TUI_TEXTFIELD_SIZE, TuiTextfieldSizeDirective} from './textfield-size.di
 import {TUI_TEXTFIELD_TYPE, TuiTextfieldTypeDirective} from './textfield-type.directive';
 import {TuiTextfieldController} from './textfield.controller';
 
-export const TUI_TEXTFIELD_WATCHED_CONTROLLER = new InjectionToken<TuiTextfieldController>(
-    'watched textfield controller',
-);
+export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
+    new InjectionToken<TuiTextfieldController>('watched textfield controller');
 
 export function textfieldWatchedControllerFactory(
     changeDetectorRef: ChangeDetectorRef,

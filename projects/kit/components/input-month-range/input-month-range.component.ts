@@ -50,7 +50,8 @@ import {Observable} from 'rxjs';
 })
 export class TuiInputMonthRangeComponent
     extends AbstractTuiNullableControl<TuiMonthRange>
-    implements TuiWithOptionalMinMax<TuiMonth>, TuiFocusableElementAccessor {
+    implements TuiWithOptionalMinMax<TuiMonth>, TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     min: TuiMonth = TUI_FIRST_DAY;
@@ -61,10 +62,8 @@ export class TuiInputMonthRangeComponent
 
     @Input()
     @tuiDefaultProp()
-    disabledItemHandler: TuiBooleanHandlerWithContext<
-        TuiMonth,
-        TuiMonthContext
-    > = ALWAYS_FALSE_HANDLER;
+    disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> =
+        ALWAYS_FALSE_HANDLER;
 
     open = false;
 

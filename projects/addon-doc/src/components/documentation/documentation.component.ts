@@ -36,9 +36,8 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     isAPI = false;
 
     @ContentChildren(TuiDocDocumentationPropertyConnectorDirective)
-    propertiesConnectors: QueryList<
-        TuiDocDocumentationPropertyConnectorDirective<any>
-    > = EMPTY_QUERY;
+    propertiesConnectors: QueryList<TuiDocDocumentationPropertyConnectorDirective<any>> =
+        EMPTY_QUERY;
 
     activeItemIndex = 0;
 
