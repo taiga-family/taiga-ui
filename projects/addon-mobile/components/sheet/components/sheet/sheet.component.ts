@@ -6,11 +6,12 @@ import {
     HostListener,
     Inject,
     Input,
+    NgZone,
     QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TUI_IS_IOS, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
@@ -55,6 +56,7 @@ export class TuiSheetComponent<T> implements AfterViewInit {
     constructor(
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
     ) {}
@@ -69,6 +71,14 @@ export class TuiSheetComponent<T> implements AfterViewInit {
 
     get imageHeight(): number {
         return this.contentTop - this.sheetTop;
+    }
+
+    @tuiPure
+    get context(): TuiSheet<T> {
+        return {
+            ...this.item,
+            scroll$: this.scroll$.pipe(tuiZonefull(this.ngZone)),
+        };
     }
 
     ngAfterViewInit() {

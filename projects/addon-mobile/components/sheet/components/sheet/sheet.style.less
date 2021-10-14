@@ -33,11 +33,10 @@
     scroll-snap-stop: always;
     scroll-snap-align: start;
     height: 1rem;
-    scroll-margin-top: -1rem;
 }
 
 .t-wrapper {
-    border-radius: 0.75rem 0.75rem 0 0;
+    border-radius: inherit;
     pointer-events: auto;
     scroll-snap-stop: always;
     scroll-snap-align: start;
@@ -62,7 +61,7 @@
 
     :host-context(._overlay:not(._visible)) & {
         .transition(transform);
-        transform: none !important;
+        transform: scaleX(-1) !important;
     }
 }
 
@@ -73,20 +72,30 @@
 
 .t-sheet {
     position: relative;
-    min-width: calc(100% + 1rem);
-    padding-left: 1rem;
-    box-sizing: border-box;
+    border-radius: inherit;
     scroll-snap-stop: always;
     scroll-snap-align: start;
     transform: scaleX(-1);
     box-shadow: 0 4rem var(--tui-base-01);
 
-    .t-top:not(._rounded) ~ & tui-sheet-bar {
+    .t-top:not(._rounded) ~ & .t-bar {
         border-radius: 0;
     }
 }
 
 .t-bar {
+    .transition(border-radius);
+    position: sticky;
+    top: 0;
+    height: 1.5rem;
+    z-index: 1;
+    margin-bottom: -1.5rem;
+    border-radius: inherit;
+    background: var(--tui-base-01);
+    box-shadow: inset 0 1px fade(#fff, 25%);
+}
+
+.t-button {
     position: absolute;
     top: 0;
     height: 1.5rem;
@@ -98,6 +107,7 @@
 
 .t-content {
     padding: 0 1rem 1rem;
+    border-radius: inherit;
     background: var(--tui-base-01);
 }
 

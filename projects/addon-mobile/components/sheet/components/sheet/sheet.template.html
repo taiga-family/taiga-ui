@@ -13,16 +13,17 @@
         class="t-top"
         [tuiSheetTop]="imageStop"
         [content]="item.image"
-        [context]="item"
+        [context]="context"
     >
         <ng-template let-content>
             <img [src]="content" alt="" class="t-image" />
         </ng-template>
     </header>
     <section #content tuiSheetStop class="t-sheet">
+        <div class="t-bar"></div>
         <tui-sheet-bar>
             <button
-                class="t-bar"
+                class="t-button"
                 [title]="moreWord$ | async"
                 (click)="scrollTo(stops[1])"
             ></button>
@@ -31,7 +32,7 @@
             polymorpheus-outlet
             class="t-content"
             [content]="item.content"
-            [context]="item"
+            [context]="context"
         >
             <ng-template let-content>
                 <h2 tuiSheetHeading class="t-heading">{{content}}</h2>

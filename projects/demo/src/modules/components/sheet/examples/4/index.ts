@@ -4,22 +4,31 @@ import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
-    selector: 'tui-sheet-example-3',
+    selector: 'tui-sheet-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
-export class TuiSheetExample3 {
+export class TuiSheetExample4 {
     open = false;
 
+    elastic = 1;
+
     readonly options: Partial<TuiSheetOptions> = {
-        stops: ['calc(5rem + 74vw)', 'calc(9rem + 74vw)'],
-        image:
-            'https://www.vintagemovieposters.co.uk/wp-content/uploads/2020/10/IMG_0323-1024x756.jpeg',
+        stops: ['12rem'],
     };
 
+    get transform(): string {
+        return `scale(${this.elastic * this.elastic})`;
+    }
+
     toggle() {
+        this.elastic = 1;
         this.open = !this.open;
+    }
+
+    onElastic(elastic: number) {
+        this.elastic = elastic;
     }
 }

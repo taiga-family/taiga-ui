@@ -1,8 +1,9 @@
 import {InjectionToken} from '@angular/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {TuiSheet} from './sheet';
 
-export interface TuiSheetOptions<I = undefined> {
-    readonly image: PolymorpheusContent<TuiSheetOptions<I>>;
+export interface TuiSheetOptions<I = undefined, O = unknown> {
+    readonly image: PolymorpheusContent<TuiSheet<O, I>>;
     readonly imageSlide: boolean;
     readonly stops: readonly string[];
     readonly initial: number;

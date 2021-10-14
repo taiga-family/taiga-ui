@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
 import {TuiSheet} from './sheet';
 import {TUI_SHEET_OPTIONS, TuiSheetOptions} from './sheet-options';
 
@@ -13,7 +13,7 @@ export class TuiSheetService {
     constructor(@Inject(TUI_SHEET_OPTIONS) private readonly options: TuiSheetOptions) {}
 
     open<G>(
-        content: PolymorpheusContent<TuiSheetOptions>,
+        content: PolymorpheusContent<TuiSheet<G>>,
         options: Partial<TuiSheetOptions> = {},
     ): Observable<G> {
         return new Observable($implicit => {
@@ -21,12 +21,13 @@ export class TuiSheetService {
                 $implicit.next(result);
                 $implicit.complete();
             };
-            const sheet = {
+            const sheet: TuiSheet<any> = {
                 ...this.options,
                 ...options,
                 content,
                 completeWith,
                 $implicit,
+                scroll$: EMPTY,
             };
 
             this.sheets$.next([...this.sheets$.value, sheet]);

@@ -1,5 +1,3 @@
-import {Component, Inject, ViewChild} from '@angular/core';
-
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -12,10 +10,27 @@ import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {TUI_SHEET_DEFAULT_OPTIONS, TuiSheetOptions} from '@taiga-ui/addon-mobile';
+
+import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
+import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
+import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
+
+import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
+import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
+import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
+
+import {default as example6Html} from '!!raw-loader!./examples/6/index.html';
+import {default as example6Less} from '!!raw-loader!./examples/6/index.less';
+import {default as example6Ts} from '!!raw-loader!./examples/6/index.ts';
+
+import {Component, Inject, ViewChild} from '@angular/core';
+import {
+    TUI_SHEET_DEFAULT_OPTIONS,
+    TuiSheet,
+    TuiSheetOptions,
+} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -43,6 +58,24 @@ export class ExampleTuiSheetComponent {
         LESS: example3Less,
     };
 
+    readonly example4: FrontEndExample = {
+        TypeScript: example4Ts,
+        HTML: example4Html,
+        LESS: example4Less,
+    };
+
+    readonly example5: FrontEndExample = {
+        TypeScript: example5Ts,
+        HTML: example5Html,
+        LESS: example5Less,
+    };
+
+    readonly example6: FrontEndExample = {
+        TypeScript: example6Ts,
+        HTML: example6Html,
+        LESS: example6Less,
+    };
+
     readonly exampleImportModule = exampleImportModule;
 
     readonly exampleInsertTemplate = exampleInsertTemplate;
@@ -61,11 +94,11 @@ export class ExampleTuiSheetComponent {
     readonly stopsVariants = [this.stops, ['100px'], ['10rem', '20rem']];
 
     @ViewChild('template')
-    readonly templateRef: PolymorpheusContent<TuiSheetOptions> = '';
+    readonly templateRef: PolymorpheusContent<TuiSheet<any>> = '';
 
     constructor(@Inject(TUI_IS_MOBILE) readonly isMobile: boolean) {}
 
-    get computedImage(): PolymorpheusContent<TuiSheetOptions> {
+    get computedImage(): PolymorpheusContent<TuiSheet<any>> {
         return this.image === 'Template' ? this.templateRef : this.image;
     }
 

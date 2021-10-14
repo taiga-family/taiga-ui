@@ -35,10 +35,7 @@ export class TuiElasticStickyService extends Observable<number> {
                 .pipe(
                     take(1),
                     switchMap(() => {
-                        // TODO: Consider another options for dialogs
-                        const closest =
-                            nativeElement.closest(SCROLL_REF_SELECTOR) ||
-                            nativeElement.closest('tui-dialog-host [role="dialog"]');
+                        const closest = nativeElement.closest(SCROLL_REF_SELECTOR);
                         const host = scrollRef?.nativeElement ?? closest;
                         const {offsetHeight} = nativeElement;
                         const offsetTop = this.getInitialOffset(

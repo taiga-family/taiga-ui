@@ -25,7 +25,9 @@ export class TuiSheetTopDirective {
     @tuiDefaultProp()
     stop = 0;
 
-    readonly transform$ = this.scroll$.pipe(map(y => `translateY(${this.getY(y)}%)`));
+    readonly transform$ = this.scroll$.pipe(
+        map(y => `translateY(${this.getY(y)}%) scaleX(-1)`),
+    );
 
     readonly rounded$ = this.scroll$.pipe(map(y => y < this.stop + OFFSET));
 

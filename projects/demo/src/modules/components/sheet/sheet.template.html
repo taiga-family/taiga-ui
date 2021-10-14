@@ -24,8 +24,10 @@
         >
             <tui-sheet-example-2></tui-sheet-example-2>
             <tui-notification class="tui-space_top-4">
-                Note <code>tuiSheetHeading</code> component that styles the
-                heading and adds close button if sheet is closeable.
+                Note
+                <code>SheetHeading</code>
+                component that styles the heading and adds close button if sheet
+                is closeable.
             </tui-notification>
         </tui-doc-example>
 
@@ -36,6 +38,42 @@
             [content]="example3"
         >
             <tui-sheet-example-3></tui-sheet-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="elastic"
+            i18n-heading
+            heading="Elastic sticky"
+            [content]="example4"
+        >
+            <tui-sheet-example-4></tui-sheet-example-4>
+            <tui-notification class="tui-space_top-4">
+                Using
+                <a tuiLink routerLink="directives/elastic-sticky">
+                    <code>ElasticSticky</code>
+                </a>
+                directive.
+            </tui-notification>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="scroll"
+            i18n-heading
+            heading="Scroll"
+            description="Modifying content using scroll stream from the context"
+            [content]="example5"
+        >
+            <tui-sheet-example-5></tui-sheet-example-5>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="intersection"
+            i18n-heading
+            heading="IntersectionObserver"
+            description="Modifying content with IntersectionObserver"
+            [content]="example6"
+        >
+            <tui-sheet-example-6></tui-sheet-example-6>
         </tui-doc-example>
     </ng-template>
 
@@ -113,8 +151,9 @@
                 [(documentationPropertyValue)]="initial"
             >
                 Initial stop index to open on. Indices exceeding
-                <code>stops</code> are treated as stop on image then stop on top
-                of the sheet's content.
+                <code>stops</code>
+                are treated as stop on image then stop on top of the sheet's
+                content.
             </ng-template>
             <ng-template
                 i18n
@@ -131,8 +170,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Import <code>TuiSheetModule</code> into main module of your
-                    app
+                    Import
+                    <code>TuiSheetModule</code>
+                    into main module of your app
                 </p>
 
                 <tui-doc-code
@@ -143,8 +183,9 @@
 
             <li>
                 <p i18n>
-                    Add <code>tui-sheets-host</code> to the main template like
-                    this:
+                    Add
+                    <code>tui-sheets-host</code>
+                    to the main template like this:
                 </p>
 
                 <tui-doc-code
