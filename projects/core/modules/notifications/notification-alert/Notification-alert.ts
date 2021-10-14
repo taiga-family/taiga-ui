@@ -1,3 +1,5 @@
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiNotification} from '@taiga-ui/core/enums';
 import {
     TuiNotificationOptions,
     TuiNotificationOptionsWithData,
@@ -15,7 +17,8 @@ export class NotificationAlert<O, I> {
 
     readonly hasCloseButton = this.options.hasCloseButton;
 
-    readonly label = this.options.label;
+    readonly label: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> = this
+        .options.label;
 
     readonly data!: I;
 
