@@ -299,6 +299,10 @@ export class TuiInputCardGroupedComponent
         return !!this.card.match(TUI_NON_DIGIT_REGEXP);
     }
 
+    get cvcPrefilled(): boolean {
+        return !!this.cvc.match(TUI_NON_DIGIT_REGEXP);
+    }
+
     get cardFocusable(): boolean {
         return this.focusable && !this.cardPrefilled;
     }

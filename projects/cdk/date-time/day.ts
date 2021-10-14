@@ -1,5 +1,5 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {TuiMonthNumber} from '@taiga-ui/cdk/enums';
+import {TuiDayOfWeek, TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {TuiDayLike} from '@taiga-ui/cdk/interfaces';
 import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
@@ -26,6 +26,12 @@ export class TuiDay extends TuiMonth {
      */
     get formattedDay(): string {
         return `${this.formattedDayPart}.${this.formattedMonth}`;
+    }
+
+    get isWeekend(): boolean {
+        const dayOfWeek = this.dayOfWeek(false);
+
+        return dayOfWeek === TuiDayOfWeek.Saturday || dayOfWeek === TuiDayOfWeek.Sunday;
     }
 
     /**

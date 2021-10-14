@@ -7,6 +7,7 @@ import {TUI_MONTHS} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
+import {map, startWith, withLatestFrom} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -19,14 +20,20 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiMobileCalendarExample1 {
-    private readonly control = new FormControl();
+    private readonly control = new FormControl(new TuiDay(2020, 9, 3));
 
     private readonly dialog$: Observable<TuiDay>;
+
+    readonly date$ = this.control.valueChanges.pipe(
+        startWith(this.control.value),
+        withLatestFrom(this.months),
+        map(([value, months]) => this.getParsed(value, months)),
+    );
 
     constructor(
         @Inject(TuiDialogService) dialogService: TuiDialogService,
         @Inject(Injector) injector: Injector,
-        @Inject(TUI_MONTHS) private readonly months: readonly string[],
+        @Inject(TUI_MONTHS) private readonly months: Observable<string[]>,
     ) {
         const dataStream = tuiReplayedValueChangesFrom(this.control);
         const computedInjector = Injector.create({
@@ -56,18 +63,14 @@ export class TuiMobileCalendarExample1 {
         return !this.control.value;
     }
 
-    get date(): string {
-        return this.parsed || 'Choose a date';
-    }
-
-    get parsed(): string {
-        if (!this.control.value) {
-            return '';
+    getParsed(value: TuiDay, months: string[]): string {
+        if (!value) {
+            return 'Choose a date';
         }
 
-        const {month, day, year} = this.control.value as TuiDay;
+        const {month, day, year} = value as TuiDay;
 
-        return `${this.months[month]} ${day}, ${year}`;
+        return `${months[month]} ${day}, ${year}`;
     }
 
     onClick() {

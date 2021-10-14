@@ -1,4 +1,4 @@
-name: Rebase all pull requests on push to the base branch
+name: Rebase onto main
 
 on:
     push:
@@ -10,7 +10,11 @@ jobs:
         steps:
             - name: Autorebase
               continue-on-error: true
-              uses: peter-evans/rebase@v1.0.5
+              uses: peter-evans/rebase@v1.1.0
               with:
-                  token: ${{ secrets.GITHUB_TOKEN }}
+                  token: ${{ secrets.TINKOFF_BOT_PAT }}
                   base: main
+
+concurrency:
+    group: autorebase-${{ github.head_ref }}
+    cancel-in-progress: true

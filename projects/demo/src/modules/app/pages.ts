@@ -129,37 +129,6 @@ export const pages: TuiDocPages = [
             },
         ],
     },
-    // Customization
-    {
-        section: $localize`Customization`,
-        title: `i18n`,
-        keywords: 'i18n, internationalization, local, translate, language',
-        route: 'i18n',
-    },
-    {
-        section: $localize`Customization`,
-        title: `Variables`,
-        keywords: 'colors, css, vars, custom, properties, style',
-        route: 'variables',
-    },
-    {
-        section: $localize`Customization`,
-        title: `Wrapper`,
-        keywords: 'colors, css, theme, custom, style',
-        route: 'wrapper',
-    },
-    {
-        section: $localize`Customization`,
-        title: `Dialogs`,
-        keywords: 'dialog, modal, popup, theme, custom, style',
-        route: 'dialogs',
-    },
-    {
-        section: $localize`Customization`,
-        title: `Icon set`,
-        keywords: 'icons, svg, theme, custom, style, sanitizer',
-        route: 'icon-set',
-    },
     // Components
     {
         section: $localize`Components`,
@@ -333,6 +302,12 @@ export const pages: TuiDocPages = [
         title: 'ColorPicker',
         keywords: 'цвет, выбор, градиент, gradient, палитра, input, inputcolor',
         route: '/components/color-picker',
+    },
+    {
+        section: $localize`Components`,
+        title: 'Dialog',
+        keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
+        route: '/components/dialog',
     },
     {
         section: $localize`Components`,
@@ -846,6 +821,37 @@ export const pages: TuiDocPages = [
         keywords: 'mobile, ios, android, шаги, таб, tab, tabs',
         route: '/navigation/tabs',
     },
+    // Customization
+    {
+        section: $localize`Customization`,
+        title: `i18n`,
+        keywords: 'i18n, internationalization, local, translate, language',
+        route: 'i18n',
+    },
+    {
+        section: $localize`Customization`,
+        title: `Variables`,
+        keywords: 'colors, css, vars, custom, properties, style',
+        route: 'variables',
+    },
+    {
+        section: $localize`Customization`,
+        title: `Wrapper`,
+        keywords: 'colors, css, theme, custom, style',
+        route: 'wrapper',
+    },
+    {
+        section: $localize`Customization`,
+        title: `Dialogs`,
+        keywords: 'dialog, modal, popup, theme, custom, style',
+        route: 'dialogs',
+    },
+    {
+        section: $localize`Customization`,
+        title: `Icon set`,
+        keywords: 'icons, svg, theme, custom, style, sanitizer',
+        route: 'icon-set',
+    },
     // Tools
     {
         section: $localize`Tools`,
@@ -1112,12 +1118,6 @@ export const pages: TuiDocPages = [
                 title: 'NotificationsService',
                 keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
                 route: '/services/notifications-service',
-            },
-            {
-                section: $localize`Tools`,
-                title: 'DialogService',
-                keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
-                route: '/services/dialog-service',
             },
             {
                 section: $localize`Tools`,

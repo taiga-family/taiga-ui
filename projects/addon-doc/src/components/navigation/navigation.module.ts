@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiActiveZoneModule, TuiLetModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneModule, TuiAutoFocusModule, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -40,6 +40,7 @@ import {TuiDocNavigationComponent} from './navigation.component';
         TuiScrollbarModule,
         TuiSvgModule,
         TuiDataListModule,
+        TuiAutoFocusModule,
     ],
     declarations: [TuiDocNavigationComponent],
     exports: [TuiDocNavigationComponent],

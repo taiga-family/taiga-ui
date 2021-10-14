@@ -1,4 +1,4 @@
-name: Deploy next version demo to gh-pages
+name: Deploy
 
 on:
     push:
@@ -15,6 +15,7 @@ env:
 
 jobs:
     build-and-deploy:
+        name: Next
         runs-on: ubuntu-latest
         env:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
@@ -42,3 +43,7 @@ jobs:
                   branch: gh-pages
                   folder: dist/demo/browser/next
                   target-folder: next
+
+concurrency:
+    group: deploy-next-${{ github.head_ref }}
+    cancel-in-progress: true
