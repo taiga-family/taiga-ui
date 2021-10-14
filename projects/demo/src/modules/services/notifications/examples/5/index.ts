@@ -6,8 +6,8 @@ import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
-import {AlertExampleWithCustomLabelComponent} from '../../alert-example-with-custom-label/alert-example-with-custom-label.component';
-import {CustomLabelComponent} from '../../custom-label/custom-label.component';
+import {AlertExampleWithCustomLabelComponent} from './alert-example-with-custom-label/alert-example-with-custom-label.component';
+import {CustomLabelComponent} from './custom-label/custom-label.component';
 
 @Component({
     selector: 'tui-notifications-example-5',

@@ -17,6 +17,15 @@ import {default as example4AlertDataTemplate} from '!!raw-loader!./examples/4/al
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
+import {default as example5CustomLabelComponent} from '!!raw-loader!./examples/5/custom-label/custom-label.component.ts';
+import {default as example5CustomLabelModule} from '!!raw-loader!./examples/5/custom-label/custom-label.module.ts';
+import {default as example5CustomLabelStyle} from '!!raw-loader!./examples/5/custom-label/custom-label.style.less';
+import {default as example5CustomLabelTemplate} from '!!raw-loader!./examples/5/custom-label/custom-label.template.html';
+
+import {default as example5AlertExampleComponent} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.component.ts';
+import {default as example5AlertExampleModule} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module.ts';
+import {default as example5AlertExampleTemplate} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.template.html';
+
 import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
 
@@ -82,9 +91,16 @@ export class ExampleTuiNotificationsComponent {
         'alert-example-with-data/alert-example-with-data.module.ts': example4AlertDataModule,
     };
 
-    readonly example5: FrontEndExample = {
+    readonly example5 = {
         TypeScript: example5Ts,
         HTML: example5Html,
+        'custom-label/custom-label.module.ts': example5CustomLabelModule,
+        'custom-label/custom-label.component.ts': example5CustomLabelComponent,
+        'custom-label/custom-label.style.less': example5CustomLabelStyle,
+        'custom-label/custom-label.template.html': example5CustomLabelTemplate,
+        'alert-example-with-custom-label/alert-example-with-custom-label.module.ts': example5AlertExampleModule,
+        'alert-example-with-custom-label/alert-example-with-custom-label.component.ts': example5AlertExampleComponent,
+        'alert-example-with-custom-label/alert-example-with-custom-label.template.html': example5AlertExampleTemplate,
     };
 
     data = 100;
