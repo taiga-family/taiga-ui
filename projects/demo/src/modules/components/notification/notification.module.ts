@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {TuiNotificationExample1} from './examples/1';
+import {TuiNotificationExample2} from './examples/2';
 import {ExampleTuiNotificationComponent} from './notification.component';
 
 @NgModule({
@@ -16,7 +17,11 @@ import {ExampleTuiNotificationComponent} from './notification.component';
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiNotificationComponent)),
     ],
-    declarations: [ExampleTuiNotificationComponent, TuiNotificationExample1],
+    declarations: [
+        ExampleTuiNotificationComponent,
+        TuiNotificationExample1,
+        TuiNotificationExample2,
+    ],
     exports: [ExampleTuiNotificationComponent],
 })
 export class ExampleTuiNotificationModule {}

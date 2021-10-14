@@ -11,6 +11,7 @@ export * from './icons';
 export * from './icons-path';
 export * from './mode';
 export * from './number-format';
+export * from './notification-options';
 export * from './option-content';
 export * from './sanitizer';
 export * from './scroll-ref';

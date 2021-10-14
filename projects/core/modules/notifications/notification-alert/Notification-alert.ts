@@ -1,50 +1,38 @@
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core/enums';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observer} from 'rxjs';
-import {TuiNotificationContentContext} from '../notification-content-context';
 import {
     TuiNotificationOptions,
     TuiNotificationOptionsWithData,
-} from '../notification-options';
+} from '@taiga-ui/core/interfaces';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observer} from 'rxjs';
+import {TuiNotificationContentContext} from '../notification-content-context';
 
 export class NotificationAlert<O, I> {
-    readonly status: TuiNotification;
+    readonly status = this.options.status;
 
-    readonly hasIcon: boolean;
+    readonly hasIcon = this.options.hasIcon;
 
     readonly autoClose: boolean | number;
 
-    readonly hasCloseButton: boolean;
+    readonly hasCloseButton = this.options.hasCloseButton;
 
-    readonly label: string;
+    readonly label: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> = this
+        .options.label;
 
     readonly data!: I;
 
-    readonly observer: Observer<O>;
-
-    readonly content: PolymorpheusContent<TuiNotificationContentContext<O, I>>;
-
     constructor(
-        observer: Observer<O>,
-        content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
-        options: TuiNotificationOptions | TuiNotificationOptionsWithData<I>,
+        readonly observer: Observer<O>,
+        readonly content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,
+        private readonly options: Required<
+            TuiNotificationOptions | TuiNotificationOptionsWithData<I>
+        >,
     ) {
-        const {
-            label = '',
-            status = TuiNotification.Info,
-            hasIcon = true,
-            autoClose = true,
-            hasCloseButton = true,
-        } = options;
-
-        this.observer = observer;
-        this.content = content;
-
-        this.label = label;
-        this.status = status;
-        this.hasIcon = hasIcon;
-        this.autoClose = autoClose;
-        this.hasCloseButton = hasCloseButton;
+        this.autoClose =
+            typeof this.options.autoClose === 'function'
+                ? this.options.autoClose(this.options.status)
+                : this.options.autoClose;
 
         if (options && this.withData(options)) {
             this.data = options.data;

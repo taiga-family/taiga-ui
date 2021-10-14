@@ -17,7 +17,20 @@ import {default as example4AlertDataTemplate} from '!!raw-loader!./examples/4/al
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
+import {default as example5CustomLabelComponent} from '!!raw-loader!./examples/5/custom-label/custom-label.component.ts';
+import {default as example5CustomLabelModule} from '!!raw-loader!./examples/5/custom-label/custom-label.module.ts';
+import {default as example5CustomLabelStyle} from '!!raw-loader!./examples/5/custom-label/custom-label.style.less';
+import {default as example5CustomLabelTemplate} from '!!raw-loader!./examples/5/custom-label/custom-label.template.html';
+
+import {default as example5AlertExampleComponent} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.component.ts';
+import {default as example5AlertExampleModule} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module.ts';
+import {default as example5AlertExampleTemplate} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.template.html';
+
+import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
+import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
+
 import {default as exampleCustomAlert} from '!!raw-loader!./examples/import/custom-alert.txt';
+import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleImportModuleComponent} from '!!raw-loader!./examples/import/import-module-component.txt';
 import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
 import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
@@ -49,6 +62,7 @@ export class ExampleTuiNotificationsComponent {
     readonly exampleCustomAlert = exampleCustomAlert;
     readonly exampleLazyModule = exampleLazyModule;
     readonly exampleModule = exampleModule;
+    readonly exampleDefineOptions = exampleDefineOptions;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
@@ -75,6 +89,18 @@ export class ExampleTuiNotificationsComponent {
         'alert-example-with-data/alert-example-with-data.template.html': example4AlertDataTemplate,
         'alert-example-with-data/alert-example-with-data.style.less': example4AlertDataStyle,
         'alert-example-with-data/alert-example-with-data.module.ts': example4AlertDataModule,
+    };
+
+    readonly example5 = {
+        TypeScript: example5Ts,
+        HTML: example5Html,
+        'custom-label/custom-label.module.ts': example5CustomLabelModule,
+        'custom-label/custom-label.component.ts': example5CustomLabelComponent,
+        'custom-label/custom-label.style.less': example5CustomLabelStyle,
+        'custom-label/custom-label.template.html': example5CustomLabelTemplate,
+        'alert-example-with-custom-label/alert-example-with-custom-label.module.ts': example5AlertExampleModule,
+        'alert-example-with-custom-label/alert-example-with-custom-label.component.ts': example5AlertExampleComponent,
+        'alert-example-with-custom-label/alert-example-with-custom-label.template.html': example5AlertExampleTemplate,
     };
 
     data = 100;

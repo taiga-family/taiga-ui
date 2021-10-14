@@ -8,8 +8,11 @@ import {
     Output,
 } from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiNotification} from '@taiga-ui/core/enums';
-import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
+import {
+    NotificationTokenOptions,
+    TUI_CLOSE_WORD,
+    TUI_NOTIFICATION_OPTIONS,
+} from '@taiga-ui/core/tokens';
 import {Observable} from 'rxjs';
 
 export const STATUS_ICON = {
@@ -30,17 +33,21 @@ export class TuiNotificationComponent {
     @Input()
     @HostBinding('class._has-icon')
     @tuiDefaultProp()
-    hasIcon = true;
+    hasIcon = this.options.hasIcon;
 
     @Input()
     @HostBinding('attr.data-tui-host-status')
     @tuiDefaultProp()
-    status: 'info' | 'error' | 'warning' | 'success' = TuiNotification.Info;
+    status: 'info' | 'error' | 'warning' | 'success' = this.options.status;
 
     @Output()
     readonly close = new EventEmitter<void>();
 
-    constructor(@Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>) {}
+    constructor(
+        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_NOTIFICATION_OPTIONS)
+        public readonly options: NotificationTokenOptions,
+    ) {}
 
     get icon(): string {
         return STATUS_ICON[this.status];
