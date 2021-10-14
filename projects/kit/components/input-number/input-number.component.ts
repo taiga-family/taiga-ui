@@ -157,6 +157,7 @@ export class TuiInputNumberComponent
             limit,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
+            this.numberFormat.zeroPadding,
         );
     }
 
