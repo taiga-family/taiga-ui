@@ -8,6 +8,7 @@ import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
  * @param decimalLimit number of digits of decimal part, null to keep untouched
  * @param decimalSeparator separator between the integer and the decimal part
  * @param thousandSeparator separator between thousands
+ * @param zeroPadding enable zeros at the end of decimal part
  * @return the formatted string
  */
 export function formatNumber(
@@ -15,14 +16,22 @@ export function formatNumber(
     decimalLimit: number | null = null,
     decimalSeparator: string = ',',
     thousandSeparator: string = CHAR_NO_BREAK_SPACE,
+    zeroPadding: boolean = true,
 ): string {
     const integerPartString = Math.floor(Math.abs(value)).toString();
     const fractionPartString = value.toString().split('.')[1] || '';
-    const fractionPartPadded =
-        decimalLimit === null
-            ? fractionPartString
-            : fractionPartString.substr(0, decimalLimit) +
-              '0'.repeat(Math.max(decimalLimit - fractionPartString.length, 0));
+    let fractionPartPadded = fractionPartString;
+
+    if (decimalLimit !== null) {
+        const zeroPaddingSize: number = zeroPadding
+            ? Math.max(decimalLimit - fractionPartString.length, 0)
+            : 0;
+        const basePartString = fractionPartString.substr(0, decimalLimit);
+        const zeroPartString = '0'.repeat(zeroPaddingSize);
+
+        fractionPartPadded = `${basePartString}${zeroPartString}`;
+    }
+
     const remainder = integerPartString.length % 3;
     const sign = value < 0 ? '-' : '';
     let result = sign + integerPartString.charAt(0);
