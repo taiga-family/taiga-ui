@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {
@@ -36,7 +37,6 @@ import {
 import {TuiButtonComponent, TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, take} from 'rxjs/operators';
 
@@ -72,15 +72,11 @@ const EDITOR_BLANK_COLOR = 'rgb(51, 51, 51)';
 export class TuiToolbarNewComponent {
     @Input()
     @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
-    tools: ReadonlyArray<TuiEditorTool | PolymorpheusContent> = defaultEditorTools;
+    tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
 
     @Input()
     @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = defaultEditorColors;
-
-    @Input()
-    @tuiDefaultProp()
-    editor!: TuiEditor;
 
     @Input()
     @HostBinding('class._disabled')
@@ -140,6 +136,7 @@ export class TuiToolbarNewComponent {
         @Optional()
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(TUI_IMAGE_LOADER)
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
@@ -153,14 +150,6 @@ export class TuiToolbarNewComponent {
             LanguageEditor['editorFontOptions']
         >,
     ) {}
-
-    get customTools(): PolymorpheusContent[] {
-        return this.tools.filter(
-            tool =>
-                typeof tool !== 'string' ||
-                !Object.values<string>(TuiEditorTool).includes(tool),
-        );
-    }
 
     get focused(): boolean {
         return (

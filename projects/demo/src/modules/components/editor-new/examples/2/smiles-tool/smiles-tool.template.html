@@ -1,0 +1,28 @@
+<tui-hosted-dropdown
+    #dropdown
+    class="t-wrapper"
+    tuiDropdownAlign="left"
+    [content]="smileDropdown"
+>
+    <button
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconStarLarge"
+        appearance="icon"
+        class="tool-button"
+        automation-id="smiles-tool__button"
+        [pseudoPressed]="dropdown.open"
+        [focusable]="dropdown.open"
+    ></button>
+    <ng-template #smileDropdown let-activeZone>
+        <div [tuiActiveZoneParent]="activeZone" class="smiles">
+            <button
+                *ngFor="let smile of smiles"
+                class="smile"
+                [innerHTML]="smile"
+                (click)="insertSmile(smile)"
+            ></button>
+        </div>
+    </ng-template>
+</tui-hosted-dropdown>

@@ -1,46 +1,10 @@
-<tui-editor
-    new
-    class="editor"
-    [formControl]="control"
-    [tools]="getTools(builtInTools, smilesTool, hint)"
->
+<tui-editor new class="editor" [formControl]="control" [tools]="builtInTools">
     Smiles are custom tool. Try it.
-</tui-editor>
 
-<ng-template #smilesTool let-editor>
-    <tui-hosted-dropdown
-        #dropdown
-        class="t-wrapper"
-        tuiDropdownAlign="left"
-        [content]="smileDropdown"
-    >
-        <button
-            tuiIconButton
-            type="button"
-            size="s"
-            icon="tuiIconStarLarge"
-            appearance="icon"
-            class="tool-button"
-            automation-id="smiles-tool__button"
-            [pseudoPressed]="dropdown.open"
-            [focusable]="dropdown.open"
-        ></button>
-        <ng-template #smileDropdown let-activeZone>
-            <div [tuiActiveZoneParent]="activeZone" class="smiles">
-                <button
-                    *ngFor="let smile of smiles"
-                    class="smile"
-                    [innerHTML]="smile"
-                    (click)="insertSmile(editor, smile)"
-                ></button>
-            </div>
-        </ng-template>
-    </tui-hosted-dropdown>
-</ng-template>
+    <smiles-tool ngProjectAs="tool"></smiles-tool>
 
-<ng-template #hint>
-    <span class="hint">
+    <span class="hint" ngProjectAs="tool">
         <tui-svg src="tuiIconArrowLeft"></tui-svg>
         click it
     </span>
-</ng-template>
+</tui-editor>

@@ -1,9 +1,16 @@
+import {Renderer2} from '@angular/core';
+import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {
+    INITIALIZATION_TIPTAP_CONTAINER,
     LAZY_EDITOR_EXTENSIONS,
+    LAZY_TIPTAP_EDITOR,
+    TIPTAP_EDITOR,
     TUI_EDITOR_EXTENSIONS,
 } from '@taiga-ui/addon-editor/tokens';
 import type {Extension, Mark, Node} from '@tiptap/core';
-import {Observable, ReplaySubject} from 'rxjs';
+import {Editor} from '@tiptap/core';
+import {combineLatest, Observable, ReplaySubject} from 'rxjs';
+import {map, shareReplay, take} from 'rxjs/operators';
 
 export const TUI_EDITOR_NEW_PROVIDERS = [
     {
@@ -11,6 +18,21 @@ export const TUI_EDITOR_NEW_PROVIDERS = [
         deps: [TUI_EDITOR_EXTENSIONS],
         useFactory: extensionsFactory,
     },
+    {
+        provide: INITIALIZATION_TIPTAP_CONTAINER,
+        deps: [Renderer2],
+        useFactory: initializationTipTapContainer,
+    },
+    {
+        provide: TIPTAP_EDITOR,
+        deps: [
+            INITIALIZATION_TIPTAP_CONTAINER,
+            LAZY_EDITOR_EXTENSIONS,
+            LAZY_TIPTAP_EDITOR,
+        ],
+        useFactory: editorFactory,
+    },
+    TuiTiptapEditorService,
 ];
 
 export function extensionsFactory(
@@ -21,4 +43,26 @@ export function extensionsFactory(
     Promise.all(extensions).then(extensions => extensions$.next(extensions));
 
     return extensions$;
+}
+
+export function initializationTipTapContainer(renderer: Renderer2): HTMLElement {
+    return renderer.createElement('div');
+}
+
+export function editorFactory(
+    element: HTMLElement,
+    extensions: Observable<(Extension | Mark | Node)[]>,
+    editor: Observable<typeof Editor>,
+): Observable<Editor> {
+    return combineLatest([editor, extensions]).pipe(
+        take(1),
+        map(
+            ([LazyEditor, extensions]) =>
+                new LazyEditor({
+                    element,
+                    extensions,
+                }),
+        ),
+        shareReplay(),
+    );
 }

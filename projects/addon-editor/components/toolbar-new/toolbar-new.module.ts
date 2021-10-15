@@ -16,7 +16,6 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiToolbarNewComponent} from './toolbar-new.component';
 
 @NgModule({
@@ -34,7 +33,6 @@ import {TuiToolbarNewComponent} from './toolbar-new.component';
         TuiRepeatTimesModule,
         TuiDropdownControllerModule,
         TableSizeSelectorModule,
-        PolymorpheusModule,
     ],
     declarations: [TuiToolbarNewComponent],
     exports: [TuiToolbarNewComponent],

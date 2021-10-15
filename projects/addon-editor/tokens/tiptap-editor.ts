@@ -1,8 +1,10 @@
 import {InjectionToken} from '@angular/core';
 import type {Editor} from '@tiptap/core';
-import {ReplaySubject} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 
-export const TIPTAP_EDITOR = new InjectionToken<Editor>('Token for Tiptap Editor');
+export const TIPTAP_EDITOR = new InjectionToken<Observable<Editor>>(
+    'Token for Tiptap Editor',
+);
 
 export const LAZY_TIPTAP_EDITOR = new InjectionToken('Lazy loaded Editor', {
     factory: () => {
@@ -13,3 +15,7 @@ export const LAZY_TIPTAP_EDITOR = new InjectionToken('Lazy loaded Editor', {
         return editor$;
     },
 });
+
+export const INITIALIZATION_TIPTAP_CONTAINER = new InjectionToken(
+    'The container in which the tip-tap editor is initialized',
+);
