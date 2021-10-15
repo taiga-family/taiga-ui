@@ -18,14 +18,12 @@ export class VersionManagerComponent {
     readonly versions = TAIGA_VERSIONS_META;
 
     constructor(
-        @Inject(SELECTED_VERSION_META) readonly initialVersion: TaigaVersionMeta,
+        @Inject(SELECTED_VERSION_META) readonly initialVersion: TaigaVersionMeta | null,
         @Inject(LOCATION) private readonly locationRef: Location,
         @Inject(Router) private readonly router: Router,
     ) {}
 
     getVersionHref(version: TaigaVersionMeta): string {
-        const baseHref = version.baseHref ? `/${version.baseHref}` : '';
-
-        return `${this.locationRef.origin}${baseHref}${this.router.url}${this.locationRef.search}`;
+        return `${this.locationRef.origin}/${version.baseHref}${this.router.url}${this.locationRef.search}`;
     }
 }
