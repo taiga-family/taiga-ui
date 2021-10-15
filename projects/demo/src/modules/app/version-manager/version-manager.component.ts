@@ -5,7 +5,7 @@ import {
     SELECTED_VERSION_META,
     VERSION_MANAGER_PROVIDERS,
 } from './version-manager.providers';
-import {TAIGA_VERSION_META, TaigaVersionMeta} from './versions.constants';
+import {TAIGA_VERSIONS_META, TaigaVersionMeta} from './versions.constants';
 
 @Component({
     selector: 'version-manager',
@@ -15,7 +15,7 @@ import {TAIGA_VERSION_META, TaigaVersionMeta} from './versions.constants';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VersionManagerComponent {
-    readonly versions = TAIGA_VERSION_META;
+    readonly versions = TAIGA_VERSIONS_META;
 
     constructor(
         @Inject(SELECTED_VERSION_META) readonly initialVersion: TaigaVersionMeta,

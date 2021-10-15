@@ -5,13 +5,13 @@ export interface TaigaVersionMeta {
     baseHref: string;
 }
 
-export const TAIGA_VERSION_META: ReadonlyArray<TaigaVersionMeta> = [
-    {
-        label: `latest (v${VERSION})`,
-        baseHref: '',
-    },
+export const TAIGA_VERSIONS_META: ReadonlyArray<TaigaVersionMeta> = [
     {
         label: 'next',
         baseHref: 'next',
+    },
+    {
+        label: `latest (v${VERSION})`,
+        baseHref: '',
     },
 ];
