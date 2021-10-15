@@ -5,12 +5,10 @@ import {
     Inject,
     Optional,
 } from '@angular/core';
-import {EVENT_MANAGER_PLUGINS} from '@angular/platform-browser';
 import {TUI_DIALOGS, TUI_IS_MOBILE, tuiAssert} from '@taiga-ui/cdk';
 import {VERSION} from '@taiga-ui/core/constants';
 import {TuiNotificationsHostComponent} from '@taiga-ui/core/modules/notifications';
 import {TUI_ANIMATIONS_DURATION, TUI_ASSERT_ENABLED} from '@taiga-ui/core/tokens';
-import {SilentEventPlugin} from '@tinkoff/ng-event-plugins';
 import {merge, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -41,13 +39,8 @@ export class TuiRootComponent {
         @Inject(TuiNotificationsHostComponent)
         readonly notificationsHost: TuiNotificationsHostComponent,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(EVENT_MANAGER_PLUGINS) plugins: readonly unknown[],
         @Inject(TUI_ASSERT_ENABLED) enabled: boolean,
     ) {
         tuiAssert.enabled = enabled;
-        tuiAssert.assert(
-            !(plugins[0] instanceof SilentEventPlugin),
-            'PlatformBrowser or PlatformServer modules must come before TuiRootModule in your main module',
-        );
     }
 }

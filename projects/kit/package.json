@@ -18,7 +18,7 @@
         "@angular/forms": ">=9.0.0",
         "@angular/router": ">=9.0.0",
         "@ng-web-apis/common": ">=1.11.0",
-        "@tinkoff/ng-polymorpheus": "3.1.8",
+        "@tinkoff/ng-polymorpheus": "3.1.9",
         "@taiga-ui/cdk": "2.19.0",
         "@taiga-ui/core": "2.19.0",
         "@taiga-ui/i18n": "2.19.0",
