@@ -1,6 +1,6 @@
-import {Directive, ElementRef, Inject, NgZone, Output} from '@angular/core';
+import {Directive, ElementRef, Inject, Output} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiZonefull, typedFromEvent} from '@taiga-ui/cdk';
+import {typedFromEvent} from '@taiga-ui/cdk';
 import {EMPTY, merge, Observable} from 'rxjs';
 import {filter, switchMap} from 'rxjs/operators';
 import {TUI_SHEET_CLOSE} from '../../components/sheet-heading/sheet-heading.component';
@@ -16,12 +16,14 @@ import {
 })
 export class TuiSheetCloseDirective {
     @Output()
-    readonly close = merge(
+    readonly close: Observable<unknown> = merge(
         typedFromEvent(this.elementRef.nativeElement, TUI_SHEET_CLOSE),
         this.dragged$.pipe(
+            filter(dragged => !dragged && !this.elementRef.nativeElement.scrollTop),
+        ),
+        this.dragged$.pipe(
             switchMap(dragged => (dragged ? EMPTY : this.scroll$)),
-            filter(y => this.sheet.item.closeable && this.shouldClose(y)),
-            tuiZonefull(this.ngZone),
+            filter(y => !!y && this.sheet.item.closeable && this.shouldClose(y)),
         ),
     );
 
@@ -30,7 +32,6 @@ export class TuiSheetCloseDirective {
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
         @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(TuiSheetComponent) private readonly sheet: TuiSheetComponent<unknown>,
     ) {}
 
