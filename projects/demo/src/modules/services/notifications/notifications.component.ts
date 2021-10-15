@@ -102,9 +102,12 @@ export class ExampleTuiNotificationsComponent {
         'custom-label/custom-label.component.ts': example5CustomLabelComponent,
         'custom-label/custom-label.style.less': example5CustomLabelStyle,
         'custom-label/custom-label.template.html': example5CustomLabelTemplate,
-        'alert-example-with-custom-label/alert-example-with-custom-label.module.ts': example5AlertExampleModule,
-        'alert-example-with-custom-label/alert-example-with-custom-label.component.ts': example5AlertExampleComponent,
-        'alert-example-with-custom-label/alert-example-with-custom-label.template.html': example5AlertExampleTemplate,
+        'alert-example-with-custom-label/alert-example-with-custom-label.module.ts':
+            example5AlertExampleModule,
+        'alert-example-with-custom-label/alert-example-with-custom-label.component.ts':
+            example5AlertExampleComponent,
+        'alert-example-with-custom-label/alert-example-with-custom-label.template.html':
+            example5AlertExampleTemplate,
     };
 
     data = 100;

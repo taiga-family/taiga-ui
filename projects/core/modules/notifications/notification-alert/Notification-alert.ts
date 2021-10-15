@@ -17,8 +17,8 @@ export class NotificationAlert<O, I> {
 
     readonly hasCloseButton = this.options.hasCloseButton;
 
-    readonly label: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> = this
-        .options.label;
+    readonly label: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> =
+        this.options.label;
 
     readonly data!: I;
 
