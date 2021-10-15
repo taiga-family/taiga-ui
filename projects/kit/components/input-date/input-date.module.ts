@@ -7,6 +7,7 @@ import {
     TuiLinkModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -26,6 +27,7 @@ import {TuiInputDateComponent} from './input-date.component';
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,
         TuiLetModule,
+        TuiTextfieldControllerModule,
     ],
     declarations: [TuiInputDateComponent],
     exports: [TuiInputDateComponent],
