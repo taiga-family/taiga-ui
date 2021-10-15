@@ -18,6 +18,7 @@ import {GettingStartedModule} from './getting-started/getting-started.module';
 import {HomeModule} from './home/home.module';
 import {LandingModule} from './landing/landing.module';
 import {LogoModule} from './logo/logo.module';
+import {VersionManagerModule} from './version-manager/version-manager.module';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -38,6 +39,7 @@ import {LogoModule} from './logo/logo.module';
         HomeModule,
         LandingModule,
         LogoModule,
+        VersionManagerModule,
         HttpClientModule,
         MarkdownModule.forRoot({
             loader: HttpClient,

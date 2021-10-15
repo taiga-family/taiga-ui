@@ -1,4 +1,4 @@
-<router-outlet *ngIf="landing else portal"></router-outlet>
+<router-outlet *ngIf="isLanding$ | async else portal"></router-outlet>
 <ng-template #portal>
     <tui-doc-main>
         <ng-container ngProjectAs="tuiDocHeader">
@@ -19,9 +19,10 @@
                 GitHub
             </a>
         </ng-container>
-        <small class="version" ngProjectAs="tuiDocNavigation"
-            >v{{version}}</small
-        >
+        <version-manager
+            class="version"
+            ngProjectAs="tuiDocNavigation"
+        ></version-manager>
         <tui-table-bars-host
             ngProjectAs="tuiOverNotifications"
         ></tui-table-bars-host>
