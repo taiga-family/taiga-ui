@@ -49,7 +49,8 @@ import {mapTo, startWith, switchMap} from 'rxjs/operators';
 })
 export class TuiInputCopyComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     successMessage: PolymorpheusContent = '';

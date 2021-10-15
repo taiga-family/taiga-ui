@@ -27,7 +27,8 @@ type possibleGenericType = any;
 
 export abstract class AbstractExampleTuiControl
     extends AbstractExampleTuiInteractive
-    implements ExampleTuiDropdown {
+    implements ExampleTuiDropdown
+{
     abstract readonly control: AbstractControl;
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];

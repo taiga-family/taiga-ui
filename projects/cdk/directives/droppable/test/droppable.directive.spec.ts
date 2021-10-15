@@ -35,8 +35,9 @@ describe('TuiDroppable Directive', () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
 
-        directiveElement = fixture.debugElement.query(By.directive(TuiDroppableDirective))
-            .nativeElement;
+        directiveElement = fixture.debugElement.query(
+            By.directive(TuiDroppableDirective),
+        ).nativeElement;
         fixture.detectChanges();
     });
 

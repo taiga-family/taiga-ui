@@ -57,7 +57,8 @@ const ICON_PADDING_S = 1.5;
 })
 export class TuiPrimitiveTextfieldComponent
     extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     editable = true;

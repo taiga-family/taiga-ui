@@ -31,11 +31,12 @@ export function tuiCreateNumberMask({
     return (rawValue, {previousConformedValue}) => {
         if (previousConformedValue && requireDecimal) {
             const conformedWithoutSeparator = rawValue.split(thousandSymbol).join('');
-            const previousConformedValueWithoutDecimalSymbolAndSeparator = previousConformedValue
-                .split(thousandSymbol)
-                .join('')
-                .split(decimalSymbol)
-                .join('');
+            const previousConformedValueWithoutDecimalSymbolAndSeparator =
+                previousConformedValue
+                    .split(thousandSymbol)
+                    .join('')
+                    .split(decimalSymbol)
+                    .join('');
 
             // Forbid removal of decimal separator if decimal part is required
             if (

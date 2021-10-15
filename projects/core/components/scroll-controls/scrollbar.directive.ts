@@ -136,12 +136,8 @@ export class TuiScrollbarDirective {
     }
 
     private get compensation(): number {
-        const {
-            clientHeight,
-            scrollHeight,
-            clientWidth,
-            scrollWidth,
-        } = this.computedContainer;
+        const {clientHeight, scrollHeight, clientWidth, scrollWidth} =
+            this.computedContainer;
 
         if (
             ((clientHeight * clientHeight) / scrollHeight > MIN_WIDTH &&
@@ -164,12 +160,8 @@ export class TuiScrollbarDirective {
     }
 
     private get view(): number {
-        const {
-            clientHeight,
-            scrollHeight,
-            clientWidth,
-            scrollWidth,
-        } = this.computedContainer;
+        const {clientHeight, scrollHeight, clientWidth, scrollWidth} =
+            this.computedContainer;
 
         return this.tuiScrollbar === 'vertical'
             ? Math.ceil((clientHeight / scrollHeight) * 100) / 100
@@ -188,12 +180,8 @@ export class TuiScrollbarDirective {
         offsetHorizontal: number,
     ): [number, number] {
         const {offsetHeight, offsetWidth} = this.elementRef.nativeElement;
-        const {
-            top,
-            left,
-            width,
-            height,
-        } = this.wrapper.nativeElement.getBoundingClientRect();
+        const {top, left, width, height} =
+            this.wrapper.nativeElement.getBoundingClientRect();
 
         const maxTop = this.computedContainer.scrollHeight - height;
         const maxLeft = this.computedContainer.scrollWidth - width;

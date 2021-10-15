@@ -11,9 +11,8 @@ export const NAVIGATION_TITLE = new InjectionToken<Observable<string>>('Page tit
 export const NAVIGATION_LABELS = new InjectionToken<readonly string[]>(
     'Navigation sections labels for search',
 );
-export const NAVIGATION_ITEMS: InjectionToken<
-    ReadonlyArray<TuiDocPages>
-> = new InjectionToken<ReadonlyArray<TuiDocPages>>('Navigation pages');
+export const NAVIGATION_ITEMS: InjectionToken<ReadonlyArray<TuiDocPages>> =
+    new InjectionToken<ReadonlyArray<TuiDocPages>>('Navigation pages');
 
 export const NAVIGATION_PROVIDERS: Provider[] = [
     TuiDestroyService,

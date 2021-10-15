@@ -46,7 +46,8 @@ import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers
 })
 export class TuiInputMonthComponent
     extends AbstractTuiNullableControl<TuiMonth>
-    implements TuiWithOptionalMinMax<TuiMonth>, TuiFocusableElementAccessor {
+    implements TuiWithOptionalMinMax<TuiMonth>, TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     min: TuiMonth = TUI_FIRST_DAY;

@@ -85,10 +85,14 @@ export class ExampleTuiNotificationsComponent {
     readonly example4 = {
         TypeScript: example4Ts,
         HTML: example4Html,
-        'alert-example-with-data/alert-example-with-data.component.ts': example4AlertDataComponent,
-        'alert-example-with-data/alert-example-with-data.template.html': example4AlertDataTemplate,
-        'alert-example-with-data/alert-example-with-data.style.less': example4AlertDataStyle,
-        'alert-example-with-data/alert-example-with-data.module.ts': example4AlertDataModule,
+        'alert-example-with-data/alert-example-with-data.component.ts':
+            example4AlertDataComponent,
+        'alert-example-with-data/alert-example-with-data.template.html':
+            example4AlertDataTemplate,
+        'alert-example-with-data/alert-example-with-data.style.less':
+            example4AlertDataStyle,
+        'alert-example-with-data/alert-example-with-data.module.ts':
+            example4AlertDataModule,
     };
 
     readonly example5 = {

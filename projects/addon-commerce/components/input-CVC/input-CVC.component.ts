@@ -41,7 +41,8 @@ import {
 })
 export class TuiInputCVCComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     autocompleteEnabled = false;

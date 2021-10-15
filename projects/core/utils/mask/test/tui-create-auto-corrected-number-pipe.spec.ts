@@ -8,10 +8,12 @@ function wrapper(
     decimalLimit?: number,
     decimalSymbol?: ',' | '.',
 ): string {
-    return (tuiCreateAutoCorrectedNumberPipe(decimalLimit, decimalSymbol)(
-        rawString,
-        DUMMY,
-    ) as TuiTextMaskPipeResult).value;
+    return (
+        tuiCreateAutoCorrectedNumberPipe(decimalLimit, decimalSymbol)(
+            rawString,
+            DUMMY,
+        ) as TuiTextMaskPipeResult
+    ).value;
 }
 
 describe('tuiCreateAutoCorrectedNumberPipe returns', () => {

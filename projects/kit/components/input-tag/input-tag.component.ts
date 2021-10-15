@@ -85,7 +85,8 @@ const EVENT_Y_TO_X_COEFFICENT = 3;
 })
 export class TuiInputTagComponent
     extends AbstractTuiMultipleControl<string>
-    implements TuiFocusableElementAccessor, TuiDataListHost<string> {
+    implements TuiFocusableElementAccessor, TuiDataListHost<string>
+{
     @Input()
     @tuiDefaultProp()
     allowSpaces = true;

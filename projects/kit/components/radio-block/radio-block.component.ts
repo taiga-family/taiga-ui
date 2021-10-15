@@ -43,7 +43,8 @@ import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 })
 export class TuiRadioBlockComponent<T>
     extends AbstractTuiNullableControl<T>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     item?: T;
 

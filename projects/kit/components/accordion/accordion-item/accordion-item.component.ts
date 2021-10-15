@@ -42,7 +42,8 @@ import {TuiAccordionItemContentDirective} from './accordion-item-content.directi
 })
 export class TuiAccordionItemComponent
     extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @HostBinding('class._no-padding')
     @tuiDefaultProp()

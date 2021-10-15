@@ -46,10 +46,8 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
 
     @Input()
     @tuiDefaultProp()
-    disabledItemHandler: TuiBooleanHandlerWithContext<
-        TuiMonth,
-        TuiMonthContext
-    > = ALWAYS_FALSE_HANDLER;
+    disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> =
+        ALWAYS_FALSE_HANDLER;
 
     @Input()
     @tuiDefaultProp()

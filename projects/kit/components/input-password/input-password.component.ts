@@ -54,24 +54,24 @@ import {InputPasswordOptions, TUI_INPUT_PASSWORD_OPTIONS} from './input-password
 })
 export class TuiInputPasswordComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     isPasswordHidden = true;
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    readonly computedMode$: Observable<
-        TuiBrightness | TuiHintModeT | null
-    > = combineLatest([
-        this.mode$,
-        this.hintController.change$.pipe(
+    readonly computedMode$: Observable<TuiBrightness | TuiHintModeT | null> =
+        combineLatest([
+            this.mode$,
+            this.hintController.change$.pipe(
+                startWith(null),
+                map(() => this.hintController.mode),
+            ),
+        ]).pipe(
+            map(([mode, controller]) => controller || mode),
             startWith(null),
-            map(() => this.hintController.mode),
-        ),
-    ]).pipe(
-        map(([mode, controller]) => controller || mode),
-        startWith(null),
-    );
+        );
 
     constructor(
         @Optional()

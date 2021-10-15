@@ -55,9 +55,8 @@ export class TuiSidebarDirective extends PolymorpheusTemplate<{}> implements OnD
             return;
         }
 
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-            TuiSidebarComponent,
-        );
+        const componentFactory =
+            this.componentFactoryResolver.resolveComponentFactory(TuiSidebarComponent);
 
         this.sidebarRef = this.portalService.add(componentFactory, this.injector);
         this.sidebarRef.changeDetectorRef.detectChanges();
