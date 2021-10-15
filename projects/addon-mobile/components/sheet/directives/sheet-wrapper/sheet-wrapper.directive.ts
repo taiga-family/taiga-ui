@@ -1,14 +1,18 @@
 import {ContentChild, Directive, HostListener, Inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiPure} from '@taiga-ui/cdk';
+import {clamp, tuiPure} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
 import {
     TUI_SHEET_DRAGGED,
+    TUI_SHEET_OFFSET,
     TUI_SHEET_SCROLL,
 } from '../../components/sheet/sheet.providers';
 import {processDragged} from '../../ios.hacks';
+
+// Safety offset for shadow
+const OFFSET = 16;
 
 // @dynamic
 @Directive({
@@ -36,11 +40,16 @@ export class TuiSheetWrapperDirective {
     @ContentChild(TuiSheetComponent, {read: TUI_SHEET_SCROLL})
     private readonly scroll$!: Observable<number>;
 
-    constructor(@Inject(WINDOW) private readonly windowRef: Window) {}
+    constructor(
+        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(TUI_SHEET_OFFSET) private readonly offset: number,
+    ) {}
 
     @tuiPure
     get overlay$(): Observable<boolean> {
-        return this.scroll$.pipe(map(y => y + 16 > this.windowRef.innerHeight - 16));
+        return this.scroll$.pipe(
+            map(y => y + 16 > this.windowRef.innerHeight - this.offset),
+        );
     }
 
     @tuiPure
@@ -60,7 +69,11 @@ export class TuiSheetWrapperDirective {
     }
 
     private getHeight(value: number): number {
-        return Math.min(this.withImage(value) + 16, this.windowRef.innerHeight - 16);
+        return clamp(
+            this.withImage(value) + OFFSET,
+            OFFSET,
+            this.windowRef.innerHeight - this.offset,
+        );
     }
 
     private withImage(value: number): number {

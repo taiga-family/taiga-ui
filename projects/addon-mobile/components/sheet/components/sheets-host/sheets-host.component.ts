@@ -5,7 +5,9 @@ import {TUI_ANIMATION_OPTIONS, tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {TuiSheet} from '../../sheet';
 import {TuiSheetService} from '../../sheet.service';
+import {TUI_SHEET_OFFSET} from '../sheet/sheet.providers';
 
+// @dynamic
 @Component({
     selector: 'tui-sheets-host',
     templateUrl: 'sheets-host.template.html',
@@ -16,6 +18,7 @@ import {TuiSheetService} from '../../sheet.service';
 export class TuiSheetsHostComponent {
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) readonly options: AnimationOptions,
+        @Inject(TUI_SHEET_OFFSET) readonly offset: number,
         @Inject(TuiSheetService) readonly service: TuiSheetService,
         @Inject(TUI_WINDOW_HEIGHT) readonly height$: Observable<number>,
     ) {}

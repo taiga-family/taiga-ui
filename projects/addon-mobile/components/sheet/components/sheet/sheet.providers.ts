@@ -14,6 +14,13 @@ export const TUI_SHEET_DRAGGED = new InjectionToken<boolean>(
     'The sheet is being dragged',
 );
 
+export const TUI_SHEET_OFFSET = new InjectionToken<number>(
+    'Offset from the top at which the sheet stops',
+    {
+        factory: () => 16,
+    },
+);
+
 export const TUI_SHEET_PROVIDERS: Provider[] = [
     {
         provide: TUI_SHEET_DRAGGED,
