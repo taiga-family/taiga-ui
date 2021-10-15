@@ -55,8 +55,9 @@ describe('PrimitiveRangeCalendar component', () => {
         });
 
         it('When initialized without value and defaultViewedMonthSecond shows the next local date after month', () => {
-            const formattedNextMonth = TuiMonth.currentLocal().append({month: 1})
-                .formattedMonth;
+            const formattedNextMonth = TuiMonth.currentLocal().append({
+                month: 1,
+            }).formattedMonth;
 
             expect(component.userViewedMonthSecond.formattedMonth).toBe(
                 formattedNextMonth,

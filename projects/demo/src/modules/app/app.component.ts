@@ -1,8 +1,7 @@
-import {ChangeDetectorRef, Component, Inject} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
-import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure, watch} from '@taiga-ui/cdk';
-import {VERSION} from '@taiga-ui/core';
+import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {changeDetection} from '../../change-detection-strategy';
 
@@ -14,27 +13,17 @@ import {changeDetection} from '../../change-detection-strategy';
     changeDetection,
 })
 export class AppComponent {
-    landing = false;
-
-    readonly version = VERSION;
+    readonly isLanding$ = this.router.events.pipe(
+        map(() => this.router.routerState.snapshot.url === '/'),
+        distinctUntilChanged(),
+    );
 
     constructor(
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
-        @Inject(Router) router: Router,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(Router) private readonly router: Router,
         @Inject(LOCAL_STORAGE) localStorage: Storage,
     ) {
-        router.events
-            .pipe(
-                map(() => router.routerState.snapshot.url === '/'),
-                distinctUntilChanged(),
-                watch(changeDetectorRef),
-            )
-            .subscribe(landing => {
-                this.landing = landing;
-            });
-
         const env = localStorage.getItem('env');
 
         if (env) {

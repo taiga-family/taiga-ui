@@ -56,7 +56,8 @@ const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
 })
 export class TuiInputFileComponent
     extends AbstractTuiNullableControl<TuiFileLike | ReadonlyArray<TuiFileLike>>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     link: PolymorpheusContent = '';

@@ -37,7 +37,8 @@ import {TUI_INPUT_PROVIDERS} from './input.providers';
 })
 export class TuiInputComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor, TuiDataListHost<string> {
+    implements TuiFocusableElementAccessor, TuiDataListHost<string>
+{
     @Input()
     @tuiDefaultProp()
     icon: string | null = null;

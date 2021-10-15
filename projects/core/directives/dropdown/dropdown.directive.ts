@@ -31,7 +31,8 @@ import {TUI_DROPDOWN_DIRECTIVE} from '@taiga-ui/core/tokens';
 })
 export class TuiDropdownDirective
     extends AbstractTuiDropdown
-    implements TuiDropdown, AfterViewChecked, OnDestroy {
+    implements TuiDropdown, AfterViewChecked, OnDestroy
+{
     @Input('tuiDropdown')
     set open(value: boolean) {
         if (value) {

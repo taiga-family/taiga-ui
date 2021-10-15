@@ -20,12 +20,8 @@ export class TuiFormatExample6 {
     });
 
     get formattedNumber(): string {
-        const {
-            value,
-            decimalLimit,
-            decimalSeparator,
-            thousandSeparator,
-        } = this.parametersForm.value;
+        const {value, decimalLimit, decimalSeparator, thousandSeparator} =
+            this.parametersForm.value;
 
         return formatNumber(value, decimalLimit, decimalSeparator, thousandSeparator);
     }

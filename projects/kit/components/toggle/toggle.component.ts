@@ -45,7 +45,8 @@ import {ToggleOptions, TUI_TOGGLE_OPTIONS} from './toggle-options';
 })
 export class TuiToggleComponent
     extends AbstractTuiControl<boolean>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     singleColor = this.options.singleColor;

@@ -55,7 +55,6 @@ export class TuiSelectExample7 {
     readonly bank = BANK;
     readonly others = OTHERS;
 
-    readonly content: TuiStringHandler<
-        TuiValueContentContext<ReadonlyArray<unknown>>
-    > = ({$implicit: {length}}) => (length ? `${length} accounts` : 'All');
+    readonly content: TuiStringHandler<TuiValueContentContext<ReadonlyArray<unknown>>> =
+        ({$implicit: {length}}) => (length ? `${length} accounts` : 'All');
 }

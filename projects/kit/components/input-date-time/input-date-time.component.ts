@@ -80,7 +80,8 @@ export class TuiInputDateTimeComponent
     extends AbstractTuiControl<[TuiDay | null, TuiTime | null]>
     implements
         TuiWithOptionalMinMax<TuiDay | [TuiDay, TuiTime]>,
-        TuiFocusableElementAccessor {
+        TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     min = TUI_FIRST_DAY;

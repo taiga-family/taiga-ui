@@ -15,7 +15,8 @@ import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
     styleUrls: ['./primitive-year-month-pagination.style.less'],
 })
 export class TuiPrimitiveYearMonthPaginationComponent
-    implements TuiWithOptionalMinMax<TuiMonth> {
+    implements TuiWithOptionalMinMax<TuiMonth>
+{
     @Input()
     @tuiDefaultProp()
     value = TuiMonth.currentLocal();

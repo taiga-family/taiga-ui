@@ -48,8 +48,7 @@ export class TuiInputFileExample3 {
             name: 'Loading file.txt',
         },
         {
-            name:
-                'A file with a very very long title to check that it can be cut correctly.txt',
+            name: 'A file with a very very long title to check that it can be cut correctly.txt',
             src: 'https://tools.ietf.org/html/rfc675',
         },
     ];

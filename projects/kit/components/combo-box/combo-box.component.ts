@@ -72,7 +72,8 @@ export const COMBOBOX_OPTION: any = TUI_SELECT_OPTION;
 })
 export class TuiComboBoxComponent<T>
     extends AbstractTuiNullableControl<T | string>
-    implements TuiFocusableElementAccessor, TuiDataListHost<T> {
+    implements TuiFocusableElementAccessor, TuiDataListHost<T>
+{
     @Input()
     @tuiDefaultProp()
     stringify: TuiStringHandler<T | string> = TUI_DEFAULT_STRINGIFY;

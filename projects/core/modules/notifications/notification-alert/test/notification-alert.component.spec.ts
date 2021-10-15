@@ -1,8 +1,21 @@
 import {CommonModule} from '@angular/common';
 import {Component, Inject, NgModule, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {
+    TuiNotificationOptions,
+    TuiNotificationOptionsWithData,
+} from '@taiga-ui/core/interfaces';
+import {
+    NotificationTokenOptions,
+    TUI_NOTIFICATION_DEFAULT_OPTIONS,
+    TUI_NOTIFICATION_OPTIONS,
+} from '@taiga-ui/core/tokens';
 import {PageObject} from '@taiga-ui/testing';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {
+    POLYMORPHEUS_CONTEXT,
+    PolymorpheusComponent,
+    PolymorpheusContent,
+} from '@tinkoff/ng-polymorpheus';
 import {TuiNotificationContentContext} from '../../notification-content-context';
 import {NotificationAlert} from '../Notification-alert';
 import {TuiNotificationAlertComponent} from '../notification-alert.component';
@@ -74,7 +87,24 @@ describe('NotificationAlertComponent', () => {
         @ViewChild(TuiNotificationAlertComponent, {static: true})
         component: TuiNotificationAlertComponent<string, string>;
 
-        alert = new NotificationAlert(observerMock, content, {label});
+        constructor(
+            @Inject(TUI_NOTIFICATION_OPTIONS)
+            public readonly options: NotificationTokenOptions,
+        ) {
+            this.setAlert(content, {label});
+        }
+
+        alert: NotificationAlert<string, string>;
+
+        setAlert(
+            content: PolymorpheusContent<TuiNotificationContentContext<string, string>>,
+            params: TuiNotificationOptions | TuiNotificationOptionsWithData<string>,
+        ) {
+            this.alert = new NotificationAlert(observerMock, content, {
+                ...this.options,
+                ...params,
+            });
+        }
     }
 
     beforeEach(() => {
@@ -109,7 +139,7 @@ describe('NotificationAlertComponent', () => {
 
     describe('Display', () => {
         beforeEach(() => {
-            testComponent.alert = new NotificationAlert(observerMock, content, {label});
+            testComponent.setAlert(content, {label});
             fixture.detectChanges();
         });
 
@@ -130,6 +160,35 @@ describe('NotificationAlertComponent', () => {
         });
     });
 
+    it('display | Use label from TUI_NOTIFICATION_OPTIONS', () => {
+        TestBed.resetTestingModule();
+        TestBed.configureTestingModule({
+            imports: [TuiNotificationAlertModule, AlertTestModule],
+            declarations: [TestComponent],
+            providers: [
+                {
+                    provide: TUI_NOTIFICATION_OPTIONS,
+                    useValue: {
+                        ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
+                        label,
+                    },
+                },
+            ],
+        });
+        fixture = TestBed.createComponent(TestComponent);
+        testComponent = fixture.componentInstance;
+        pageObject = new PageObject(fixture);
+
+        testComponent.setAlert(new PolymorpheusComponent(AlertConstructorMock), {data});
+        fixture.detectChanges();
+
+        expect(
+            pageObject
+                .getByAutomationId(`${testContext.prefix}heading`)!
+                .nativeElement.textContent.trim(),
+        ).toBe(label);
+    });
+
     it('close | Close the Alert and notify the observer', () => {
         fixture.detectChanges();
         component.closeNotification();
@@ -138,28 +197,98 @@ describe('NotificationAlertComponent', () => {
         expect(completeSpy).toHaveBeenCalled();
     });
 
-    it('close | Close the Alert after custom autoClose timeout', fakeAsync(() => {
-        const customTimeoutMs = 1000;
+    it('close | Close the Alert after custom TUI_NOTIFICATION_OPTIONS autoClose timeout', fakeAsync(() => {
+        const customTimeoutMs = 100;
 
-        testComponent.alert = new NotificationAlert(
-            observerMock,
-            new PolymorpheusComponent(AlertConstructorMock),
-            {label, data, autoClose: customTimeoutMs},
-        );
+        TestBed.resetTestingModule();
+        TestBed.configureTestingModule({
+            imports: [TuiNotificationAlertModule, AlertTestModule],
+            declarations: [TestComponent],
+            providers: [
+                {
+                    provide: TUI_NOTIFICATION_OPTIONS,
+                    useValue: {
+                        ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
+                        autoClose: customTimeoutMs,
+                    },
+                },
+            ],
+        });
+        fixture = TestBed.createComponent(TestComponent);
+        testComponent = fixture.componentInstance;
+
+        testComponent.setAlert(new PolymorpheusComponent(AlertConstructorMock), {
+            label,
+            data,
+        });
         fixture.detectChanges();
 
         expect(completeSpy).not.toHaveBeenCalled();
-        tick(customTimeoutMs);
+        tick(customTimeoutMs / 2);
+        expect(completeSpy).not.toHaveBeenCalled();
+        tick(customTimeoutMs / 2);
+        expect(completeSpy).toHaveBeenCalled();
+    }));
+
+    it('close | Use autoClose timeout from NotificationAlert params', fakeAsync(() => {
+        const customOptionsTimeoutMs = 100;
+        const customTimeoutMs = 300;
+
+        TestBed.resetTestingModule();
+        TestBed.configureTestingModule({
+            imports: [TuiNotificationAlertModule, AlertTestModule],
+            declarations: [TestComponent],
+            providers: [
+                {
+                    provide: TUI_NOTIFICATION_OPTIONS,
+                    useValue: {
+                        ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
+                        autoClose: customOptionsTimeoutMs,
+                    },
+                },
+            ],
+        });
+        fixture = TestBed.createComponent(TestComponent);
+        testComponent = fixture.componentInstance;
+
+        testComponent.setAlert(new PolymorpheusComponent(AlertConstructorMock), {
+            label,
+            data,
+            autoClose: customTimeoutMs,
+        });
+        fixture.detectChanges();
+
+        expect(completeSpy).not.toHaveBeenCalled();
+        tick(customTimeoutMs / 2);
+        expect(completeSpy).not.toHaveBeenCalled();
+        tick(customTimeoutMs / 2);
+        expect(completeSpy).toHaveBeenCalled();
+    }));
+
+    it('close | Close the Alert after custom autoClose timeout', fakeAsync(() => {
+        const customTimeoutMs = 500;
+
+        testComponent.setAlert(new PolymorpheusComponent(AlertConstructorMock), {
+            label,
+            data,
+            autoClose: customTimeoutMs,
+        });
+        fixture.detectChanges();
+
+        expect(completeSpy).not.toHaveBeenCalled();
+        tick(customTimeoutMs / 2);
+        expect(completeSpy).not.toHaveBeenCalled();
+        tick(customTimeoutMs / 2);
         expect(completeSpy).toHaveBeenCalled();
     }));
 
     describe('processComponent | Alert with custom template', () => {
         beforeEach(() => {
-            testComponent.alert = new NotificationAlert(
-                observerMock,
-                new PolymorpheusComponent(AlertConstructorMock),
-                {label, data, autoClose: false},
-            );
+            testComponent.setAlert(new PolymorpheusComponent(AlertConstructorMock), {
+                label,
+                data,
+                autoClose: false,
+            });
             fixture.detectChanges();
         });
 

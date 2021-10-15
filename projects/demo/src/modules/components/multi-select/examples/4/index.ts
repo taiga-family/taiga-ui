@@ -45,15 +45,11 @@ export class TuiMultiSelectExample4 {
 
     // Stringify mapper that turns IDs to names
     readonly stringify$ = this.server$.pipe(
-        map(
-            items =>
-                new Map(
-                    items.map<[number, string]>(({id, name}) => [id, name]),
-                ),
-        ),
+        map(items => new Map(items.map<[number, string]>(({id, name}) => [id, name]))),
         startWith(new Map()),
-        map(map => (id: number | TuiContextWithImplicit<number>) =>
-            (isNumber(id) ? map.get(id) : map.get(id.$implicit)) || '',
+        map(
+            map => (id: number | TuiContextWithImplicit<number>) =>
+                (isNumber(id) ? map.get(id) : map.get(id.$implicit)) || '',
         ),
     );
 

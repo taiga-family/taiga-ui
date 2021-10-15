@@ -66,7 +66,8 @@ export function cardTextfieldControllerFactory(
 })
 export class TuiInputCardComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     cardSrc: string | null = null;

@@ -48,17 +48,16 @@ export class TuiDataListExample4 {
         items1.length === items2.length &&
         items1.every(item => items2.indexOf(item) !== -1);
 
-    readonly valueContent: TuiStringHandler<
-        TuiContextWithImplicit<readonly string[]>
-    > = ({$implicit}) => {
-        if (!$implicit.length) {
-            return 'All';
-        }
+    readonly valueContent: TuiStringHandler<TuiContextWithImplicit<readonly string[]>> =
+        ({$implicit}) => {
+            if (!$implicit.length) {
+                return 'All';
+            }
 
-        const selected = this.items.find(({items}) =>
-            this.identityMatcher($implicit, items),
-        );
+            const selected = this.items.find(({items}) =>
+                this.identityMatcher($implicit, items),
+            );
 
-        return selected ? `${selected.name} only` : `Selected: ${$implicit.length}`;
-    };
+            return selected ? `${selected.name} only` : `Selected: ${$implicit.length}`;
+        };
 }

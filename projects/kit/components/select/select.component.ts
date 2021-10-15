@@ -65,7 +65,8 @@ export const SELECT_OPTION: unknown = TUI_SELECT_OPTION;
 })
 export class TuiSelectComponent<T>
     extends AbstractTuiNullableControl<T>
-    implements TuiFocusableElementAccessor, TuiDataListHost<T> {
+    implements TuiFocusableElementAccessor, TuiDataListHost<T>
+{
     @Input()
     @tuiDefaultProp()
     identityMatcher: TuiIdentityMatcher<T | string> = TUI_DEFAULT_IDENTITY_MATCHER;
