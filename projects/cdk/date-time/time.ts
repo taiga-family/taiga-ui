@@ -164,6 +164,19 @@ export class TuiTime implements TuiTimeLike {
         return new TuiTime(hours, minutes, seconds, ms);
     }
 
+    /**
+     * Converts Date object into TuiTime
+     * @param date
+     */
+    static fromLocalNativeDate(date: Date): TuiTime {
+        return new TuiTime(
+            date.getHours(),
+            date.getMinutes(),
+            date.getSeconds(),
+            date.getMilliseconds(),
+        )
+    }
+
     private formatTime(time: number, digits: number = 2): string {
         return padStart(time.toString(), digits, '0');
     }
