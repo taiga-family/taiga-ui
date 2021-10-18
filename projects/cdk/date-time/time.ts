@@ -174,7 +174,7 @@ export class TuiTime implements TuiTimeLike {
             date.getMinutes(),
             date.getSeconds(),
             date.getMilliseconds(),
-        )
+        );
     }
 
     private formatTime(time: number, digits: number = 2): string {
