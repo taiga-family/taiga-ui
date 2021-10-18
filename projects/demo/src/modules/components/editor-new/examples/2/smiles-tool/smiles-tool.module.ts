@@ -5,7 +5,6 @@ import {
     TuiButtonModule,
     TuiDropdownControllerModule,
     TuiHostedDropdownModule,
-    TuiSvgModule,
 } from '@taiga-ui/core';
 import {ExampleSmilesToolComponent} from './smiles-tool.component';
 
@@ -15,7 +14,6 @@ import {ExampleSmilesToolComponent} from './smiles-tool.component';
         TuiButtonModule,
         TuiHostedDropdownModule,
         TuiActiveZoneModule,
-        TuiSvgModule,
         TuiDropdownControllerModule,
     ],
     declarations: [ExampleSmilesToolComponent],
