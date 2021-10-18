@@ -1,10 +1,12 @@
 <tui-editor new class="editor" [formControl]="control" [tools]="builtInTools">
     Smiles are custom tool. Try it.
 
-    <smiles-tool ngProjectAs="tool"></smiles-tool>
+    <ng-container ngProjectAs="tools">
+        <smiles-tool></smiles-tool>
 
-    <span class="hint" ngProjectAs="tool">
-        <tui-svg src="tuiIconArrowLeft"></tui-svg>
-        click it
-    </span>
+        <span class="hint">
+            <tui-svg src="tuiIconArrowLeft"></tui-svg>
+            click it
+        </span>
+    </ng-container>
 </tui-editor>
