@@ -17,8 +17,8 @@ import {TUI_SHEET_OFFSET} from '../sheet/sheet.providers';
 })
 export class TuiSheetsHostComponent {
     constructor(
+        @Inject(TUI_SHEET_OFFSET) private readonly offset: number,
         @Inject(TUI_ANIMATION_OPTIONS) readonly options: AnimationOptions,
-        @Inject(TUI_SHEET_OFFSET) readonly offset: number,
         @Inject(TuiSheetService) readonly service: TuiSheetService,
         @Inject(TUI_WINDOW_HEIGHT) readonly height$: Observable<number>,
     ) {}
@@ -27,5 +27,9 @@ export class TuiSheetsHostComponent {
         if (closeable) {
             $implicit.complete();
         }
+    }
+
+    getHeight(height: number | null): number {
+        return height ?? 0 - this.offset;
     }
 }

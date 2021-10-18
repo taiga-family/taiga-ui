@@ -11,7 +11,7 @@
         <tui-sheet
             tuiScrollRef
             tuiOverscroll="all"
-            [style.height.px]="(height$ | async) - offset"
+            [style.height.px]="getHeight(height$ | async)"
             [item]="item"
             (close)="close(item)"
         ></tui-sheet>
