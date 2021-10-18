@@ -39,6 +39,7 @@ export class TuiSheetStopDirective {
             )
             .subscribe(() => {
                 nativeElement.style.overflow = 'hidden';
+                nativeElement.classList.remove('_stuck'); // iOS
                 nativeElement.scrollTop = elementRef.nativeElement.offsetTop;
 
                 setTimeout(() => {
