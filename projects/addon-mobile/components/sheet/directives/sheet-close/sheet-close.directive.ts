@@ -2,7 +2,7 @@ import {Directive, ElementRef, Inject, Output} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {typedFromEvent} from '@taiga-ui/cdk';
 import {EMPTY, merge, Observable} from 'rxjs';
-import {filter, switchMap} from 'rxjs/operators';
+import {filter, startWith, switchMap} from 'rxjs/operators';
 import {TUI_SHEET_CLOSE} from '../../components/sheet-heading/sheet-heading.component';
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
 import {
@@ -19,11 +19,15 @@ export class TuiSheetCloseDirective {
     readonly close: Observable<unknown> = merge(
         typedFromEvent(this.elementRef.nativeElement, TUI_SHEET_CLOSE),
         this.dragged$.pipe(
-            filter(dragged => !dragged && !this.elementRef.nativeElement.scrollTop),
-        ),
-        this.dragged$.pipe(
-            switchMap(dragged => (dragged ? EMPTY : this.scroll$)),
-            filter(y => !!y && this.sheet.item.closeable && this.shouldClose(y)),
+            startWith(false),
+            switchMap(dragged =>
+                dragged
+                    ? EMPTY
+                    : this.scroll$.pipe(
+                          startWith(this.elementRef.nativeElement.scrollTop),
+                      ),
+            ),
+            filter(y => this.sheet.item?.closeable && this.shouldClose(y)),
         ),
     );
 
