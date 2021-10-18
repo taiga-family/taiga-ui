@@ -1,4 +1,4 @@
-import {ContentChild, Directive, HostListener, Inject} from '@angular/core';
+import {ContentChild, Directive, Inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {clamp, tuiPure} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
@@ -18,7 +18,6 @@ const OFFSET = 16;
 @Directive({
     selector: '[tuiSheetWrapper]',
     host: {
-        '[class._touched]': 'touched',
         '[$.class._overlay]': 'overlay$',
         '($.class._overlay)': 'overlay$',
         '[$.class._visible]': 'visible$',
@@ -62,18 +61,8 @@ export class TuiSheetWrapperDirective {
         return this.scroll$.pipe(map(this.getHeight.bind(this)));
     }
 
-    @HostListener('touchstart', ['true'])
-    @HostListener('touchend', ['false'])
-    onTouch(touched: boolean) {
-        this.touched = touched;
-    }
-
     private getHeight(value: number): number {
-        return clamp(
-            this.withImage(value) + OFFSET,
-            OFFSET,
-            this.windowRef.innerHeight - this.offset,
-        );
+        return clamp(this.withImage(value) + OFFSET, OFFSET, this.windowRef.innerHeight);
     }
 
     private withImage(value: number): number {

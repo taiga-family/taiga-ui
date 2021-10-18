@@ -30,6 +30,6 @@ export class TuiSheetsHostComponent {
     }
 
     getHeight(height: number | null): number {
-        return height ?? 0 - this.offset;
+        return (height ?? 0) - this.offset;
     }
 }

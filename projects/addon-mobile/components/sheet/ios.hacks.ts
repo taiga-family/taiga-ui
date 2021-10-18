@@ -3,6 +3,7 @@ import {tuiZonefree, typedFromEvent} from '@taiga-ui/cdk';
 import {concat, merge, Observable, race, timer, zip} from 'rxjs';
 import {
     debounceTime,
+    delay,
     filter,
     map,
     mapTo,
@@ -25,7 +26,10 @@ export function iosScrollFactory(
     const touchend$ = typedFromEvent(documentRef, 'touchend');
     const scroll$ = typedFromEvent(element, 'scroll').pipe(map(() => element.scrollTop));
     const result$ = merge(
-        load$.pipe(map(() => element.scrollTop)),
+        load$.pipe(
+            delay(0),
+            map(() => element.scrollTop),
+        ),
         touchstart$.pipe(
             switchMap(({touches}) => {
                 const {screenY} = touches[0];
@@ -52,15 +56,16 @@ export function processDragged(
 ): Observable<boolean> {
     const touchstart$ = dragged$.pipe(filter(Boolean));
     const touchend$ = dragged$.pipe(filter(v => !v));
+    const race$ = race(scroll$, timer(100)).pipe(
+        debounceTime(200),
+        take(1),
+        mapTo(false),
+    );
 
-    return merge(
-        touchstart$.pipe(mapTo(true)),
-        touchend$.pipe(
-            switchMapTo(
-                race(scroll$, timer(100)).pipe(debounceTime(200), take(1), mapTo(false)),
-            ),
-        ),
-    ).pipe(startWith(false));
+    return touchstart$.pipe(
+        switchMapTo(touchend$.pipe(switchMapTo(race$), startWith(true))),
+        startWith(false),
+    );
 }
 
 export function fakeSmoothScroll({style}: HTMLElement, offset: number) {
