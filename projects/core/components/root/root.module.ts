@@ -4,12 +4,13 @@ import {TuiDialogHostModule, TuiDragModule, TuiPortalHostModule} from '@taiga-ui
 import {TuiHintsHostModule} from '@taiga-ui/core/components/hints-host';
 import {TuiScrollControlsModule} from '@taiga-ui/core/components/scroll-controls';
 import {TuiSvgDefsHostModule} from '@taiga-ui/core/internal/svg-defs-host';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {EventPluginsModule} from '@tinkoff/ng-event-plugins';
 import {TuiRootComponent} from './root.component';
 
 @NgModule({
     imports: [
         CommonModule,
+        EventPluginsModule,
         TuiDragModule,
         TuiPortalHostModule,
         TuiSvgDefsHostModule,
@@ -19,6 +20,5 @@ import {TuiRootComponent} from './root.component';
     ],
     declarations: [TuiRootComponent],
     exports: [TuiRootComponent],
-    providers: [NG_EVENT_PLUGINS],
 })
 export class TuiRootModule {}
