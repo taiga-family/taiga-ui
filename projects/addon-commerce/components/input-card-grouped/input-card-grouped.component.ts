@@ -19,12 +19,14 @@ import {NgControl} from '@angular/forms';
 import {TUI_CARD_MASK, tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
 import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
+import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {
     getPaymentSystem,
     tuiCreateAutoCorrectedExpirePipe,
 } from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiNullableControl,
+    fallbackValue,
     isNativeFocused,
     isNativeFocusedIn,
     setNativeFocused,
@@ -100,7 +102,7 @@ export class TuiInputCardGroupedComponent
 
     @Input()
     @tuiDefaultProp()
-    cardSrc: string | null = null;
+    cardSrc: PolymorpheusContent | null = null; // TODO(splincode): will be deleted `null` in v3.0
 
     @Input()
     @tuiDefaultProp()
@@ -112,7 +114,7 @@ export class TuiInputCardGroupedComponent
 
     @Input()
     @tuiRequiredSetter()
-    set codeLength(length: 3 | 4) {
+    set codeLength(length: TuiCodeCVCLength) {
         this.exampleTextCVC = '0'.repeat(length);
         this.maskCVC = {
             mask: new Array(length).fill(TUI_DIGIT_REGEXP),
@@ -228,14 +230,14 @@ export class TuiInputCardGroupedComponent
         return this.card.length < 16;
     }
 
-    get icon(): string | null {
-        if (this.cardSrc !== null) {
-            return this.cardSrc;
-        }
-
+    get defaultIcon(): string | null {
         const {paymentSystem} = this;
 
         return paymentSystem && ICONS[paymentSystem];
+    }
+
+    get icon(): PolymorpheusContent | null {
+        return fallbackValue(this.cardSrc, this.defaultIcon);
     }
 
     get bin(): string | null {

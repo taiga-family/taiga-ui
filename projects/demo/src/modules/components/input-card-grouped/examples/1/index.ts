@@ -1,24 +1,7 @@
 import {Component} from '@angular/core';
-import {AbstractControl, FormControl, ValidationErrors} from '@angular/forms';
-import {isCardNumberValid, isExpireValid} from '@taiga-ui/addon-commerce';
-import {TuiValidationError} from '@taiga-ui/cdk';
+import {FormControl} from '@angular/forms';
+import {tuiCardExpireValidator, tuiCardNumberValidator} from '@taiga-ui/addon-commerce';
 import {changeDetection} from '../../../../../change-detection-strategy';
-
-function cardNumberValidator({value}: AbstractControl): ValidationErrors | null {
-    return value && value.card && !isCardNumberValid(value.card)
-        ? {
-              card: new TuiValidationError('Invalid card number'),
-          }
-        : null;
-}
-
-function cardExpireValidator({value}: AbstractControl): ValidationErrors | null {
-    return value && value.expire.length === 5 && !isExpireValid(value.expire)
-        ? {
-              expire: new TuiValidationError('Expire date'),
-          }
-        : null;
-}
 
 @Component({
     selector: 'tui-input-card-grouped-example-1',
@@ -26,7 +9,10 @@ function cardExpireValidator({value}: AbstractControl): ValidationErrors | null 
     changeDetection,
 })
 export class TuiInputCardGroupedExample1 {
-    readonly control = new FormControl(null, [cardNumberValidator, cardExpireValidator]);
+    readonly control = new FormControl(null, [
+        tuiCardNumberValidator,
+        tuiCardExpireValidator,
+    ]);
 
     get card(): string | null {
         const value = this.control.value ? this.control.value.card : '';
