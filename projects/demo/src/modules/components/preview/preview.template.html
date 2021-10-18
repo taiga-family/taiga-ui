@@ -5,19 +5,16 @@
             to work with it (download, zoom, rotate and etc)
         </p>
 
-        <p>
-            В качестве документа можно передать как изображение, так и
-            совершенно любой контент
-        </p>
+        <p>As a document you can provide any content like images,</p>
 
         <tui-notification class="tui-space_bottom-4">
-            Компонент автоматически подстраивается под мобильное устройство
+            The component automatically adjusts to the mobile device
         </tui-notification>
 
         <tui-notification status="warning">
-            Перед использованием не забудьте добавить
-            <code>tui-preview-host</code> в <code>tui-root</code> вашего
-            приложения (подробнее в разделе "Подключение")
+            Don't forget to add
+            <code>tui-preview-host</code> to the <code>tui-root</code> of your
+            application (more details on the "Setup" tab)
         </tui-notification>
 
         <tui-doc-example
@@ -51,8 +48,7 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Добавьте <code>TuiPreviewHostModule</code> в главный модуль
-                вашего приложения:
+                Add <code>TuiPreviewHostModule</code> to main module:
 
                 <tui-doc-code
                     filename="app.module.ts"
@@ -61,8 +57,7 @@
             </li>
 
             <li>
-                Добавьте <code>tui-preview-host</code> в
-                <code>tui-root</code> вашего приложения:
+                Add <code>tui-preview-host</code> to the <code>tui-root</code>:
 
                 <tui-doc-code
                     filename="app.component.html"
@@ -71,8 +66,8 @@
             </li>
 
             <li>
-                Импортируйте <code>TuiPreviewModule</code> в модуль, откуда
-                будет вызываться превью
+                Import <code>TuiPreviewModule</code> to the module, witch will
+                call the preview
 
                 <tui-doc-code
                     filename="some.module.ts"
@@ -81,8 +76,7 @@
             </li>
 
             <li>
-                Создайте в шаблоне компонента template с tui-preview, заполняйте
-                его необходимым содержимым
+                Create a template with tui-preview
 
                 <tui-doc-code
                     filename="some.component.html"
@@ -91,8 +85,8 @@
             </li>
 
             <li>
-                Запускайте компонент из <code>TuiPreviewService</code>, как в
-                примерах
+                Open the component from the <code>TuiPreviewService</code> as in
+                the example
 
                 <tui-doc-code
                     filename="some.component.ts"

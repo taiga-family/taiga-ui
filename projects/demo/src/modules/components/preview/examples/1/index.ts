@@ -25,7 +25,7 @@ export class TuiPreviewExample1 {
     ) {}
 
     get title(): string {
-        return this.index === 0 ? 'Справка об операции.jpg' : 'Мое лицо.jpg';
+        return this.index === 0 ? 'Transaction cert.jpg' : 'My face.jpg';
     }
 
     get previewContent(): PolymorpheusContent {

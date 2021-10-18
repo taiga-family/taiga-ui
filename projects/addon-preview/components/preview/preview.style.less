@@ -10,32 +10,32 @@
     user-select: none;
 }
 
-.header {
-    position: absolute;
-    top: 16px;
+.t-header {
+    position: fixed;
+    top: 1rem;
     display: flex;
     width: 100%;
-    padding: 0 16px;
+    padding: 0 1rem;
     box-sizing: border-box;
 }
 
-.footer {
+.t-footer {
     position: absolute;
-    bottom: 16px;
+    bottom: 1rem;
     display: flex;
     width: 100%;
-    padding: 0 16px;
+    padding: 0 1rem;
     box-sizing: border-box;
     justify-content: center;
 }
 
-.actions {
+.t-actions {
     display: flex;
     flex: 1;
     justify-content: flex-end;
 }
 
-.title {
+.t-title {
     flex: 1;
 
     @media @mobile {
@@ -43,11 +43,11 @@
     }
 }
 
-.close-button {
+.t-close-button {
     margin-right: 0;
 }
 
-.not-interactive-content {
+.t-not-interactive-content {
     /* stylelint-disable */
     ::ng-deep > * {
         pointer-events: none;
@@ -57,8 +57,9 @@
 
 .wrapper {
     will-change: transform;
+    touch-action: none;
 }
 
-.transitive {
+.t-transitive {
     transition-duration: 0.3s;
 }

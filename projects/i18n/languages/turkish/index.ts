@@ -3,4 +3,6 @@ export * from './addon-editor';
 export * from './addon-table';
 export * from './core';
 export * from './kit';
+export * from './addon-preview';
+
 export * from './turkish';

@@ -3,10 +3,14 @@ import {
     Component,
     EventEmitter,
     HostListener,
+    Inject,
     Input,
     Output,
 } from '@angular/core';
+import {TUI_PREVIEW_PAGINATION_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {clamp, tuiDefaultProp} from '@taiga-ui/cdk';
+import {LanguagePreview} from '@taiga-ui/i18n';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-preview-pagination',
@@ -25,6 +29,11 @@ export class TuiPreviewPaginationComponent {
 
     @Output()
     readonly indexChange = new EventEmitter<number>();
+
+    constructor(
+        @Inject(TUI_PREVIEW_PAGINATION_TEXTS)
+        readonly texts$: Observable<LanguagePreview['previewPagination']>,
+    ) {}
 
     get leftButtonDisabled(): boolean {
         return this.index === 0;

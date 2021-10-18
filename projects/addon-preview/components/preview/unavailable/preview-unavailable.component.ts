@@ -11,5 +11,5 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export class TuiPreviewUnavailableComponent {
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent = 'Предпросмотр недоступен';
+    content: PolymorpheusContent = 'No preview available';
 }

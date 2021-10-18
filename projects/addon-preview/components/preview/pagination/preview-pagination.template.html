@@ -1,23 +1,25 @@
-<button
-    tuiIconButton
-    title="Назад"
-    class="arrow arrow_left"
-    size="s"
-    appearance=""
-    icon="tuiIconArrowLeft"
-    shape="rounded"
-    [disabled]="leftButtonDisabled"
-    (click)="onArrowClick(-1)"
-></button>
-{{index + 1}}/{{lastIndex + 1}}
-<button
-    tuiIconButton
-    title="Вперед"
-    class="arrow arrow_right"
-    size="s"
-    appearance=""
-    icon="tuiIconArrowRight"
-    shape="rounded"
-    [disabled]="rightButtonDisabled"
-    (click)="onArrowClick(1)"
-></button>
+<ng-container *ngIf="texts$ | async as texts">
+    <button
+        tuiIconButton
+        class="t-arrow t-arrow_left"
+        size="s"
+        appearance=""
+        icon="tuiIconArrowLeft"
+        shape="rounded"
+        [title]="texts.previous"
+        [disabled]="leftButtonDisabled"
+        (click)="onArrowClick(-1)"
+    ></button>
+    {{index + 1}}/{{lastIndex + 1}}
+    <button
+        tuiIconButton
+        class="t-arrow t-arrow_right"
+        size="s"
+        appearance=""
+        icon="tuiIconArrowRight"
+        shape="rounded"
+        [title]="texts.next"
+        [disabled]="rightButtonDisabled"
+        (click)="onArrowClick(1)"
+    ></button>
+</ng-container>

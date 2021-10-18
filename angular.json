@@ -366,6 +366,49 @@
                 }
             }
         },
+        "addon-preview": {
+            "root": "projects/addon-preview",
+            "sourceRoot": "projects/addon-preview/src",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/addon-preview"],
+                    "options": {
+                        "tsConfig": "projects/addon-preview/tsconfig.lib.json",
+                        "project": "projects/addon-preview/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/addon-preview/tsconfig.lib.prod.json"
+                        }
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/addon-preview"],
+                    "options": {
+                        "main": "projects/addon-preview/test.ts",
+                        "tsConfig": "projects/addon-preview/tsconfig.spec.json",
+                        "karmaConfig": "projects/addon-preview/karma.conf.js",
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["projects/core/styles"]
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "projects/addon-preview/tsconfig.lib.json",
+                            "projects/addon-preview/tsconfig.spec.json"
+                        ],
+                        "exclude": ["**/node_modules/**"]
+                    }
+                }
+            }
+        },
         "addon-tablebars": {
             "root": "projects/addon-tablebars",
             "sourceRoot": "projects/addon-tablebars/src",

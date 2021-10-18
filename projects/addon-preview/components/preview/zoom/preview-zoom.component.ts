@@ -2,11 +2,14 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
+    Inject,
     Input,
     Output,
 } from '@angular/core';
+import {TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {clamp, tuiDefaultProp} from '@taiga-ui/cdk';
-import {merge, of, timer} from 'rxjs';
+import {LanguagePreview} from '@taiga-ui/i18n';
+import {merge, Observable, of, timer} from 'rxjs';
 import {mapTo, startWith, switchMap} from 'rxjs/operators';
 
 const STEP = 0.5;
@@ -36,10 +39,18 @@ export class TuiPreviewZoomComponent {
     @Output()
     readonly valueChange = new EventEmitter<number>();
 
+    @Output()
+    readonly reset = new EventEmitter();
+
     readonly hintShow$ = this.valueChange.pipe(
         switchMap(() => merge(of(true), timer(1000).pipe(mapTo(false)))),
         startWith(false),
     );
+
+    constructor(
+        @Inject(TUI_PREVIEW_ZOOM_TEXTS)
+        readonly zoomTexts$: Observable<LanguagePreview['zoomTexts']>,
+    ) {}
 
     get ghostLeft(): number {
         const position = (this.value - this.min) * SLIDER_SIZE;
@@ -73,6 +84,10 @@ export class TuiPreviewZoomComponent {
 
         this.value = clamped;
         this.valueChange.emit(clamped);
+    }
+
+    onReset() {
+        this.reset.emit();
     }
 
     onMinus() {

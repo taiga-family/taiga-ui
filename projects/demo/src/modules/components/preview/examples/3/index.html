@@ -5,13 +5,13 @@
     class="tui-space_bottom-4"
     (click)="show()"
 >
-    Показать превью
+    Show preview
 </button>
 
 <ng-template #preview>
     <tui-preview
         [rotatable]="!(contentUnavailable$ | async)"
-        [zoomable]="!(contentUnavailable$ | async)"
+        [zoomable]="!(contentUnavailable$ | async) && !(loading$ | async)"
     >
         <tui-preview-title>{{title$ | async}}</tui-preview-title>
         <tui-preview-pagination
@@ -22,7 +22,7 @@
 
         <tui-preview-action
             icon="tuiIconDownload"
-            title="Скачать"
+            title="Download"
             (click)="download()"
         ></tui-preview-action>
 

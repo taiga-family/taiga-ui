@@ -741,7 +741,7 @@ export const pages: TuiDocPages = [
         keywords:
             'popup, dialog, диалог, попап, модалка, modal, просмотр, превью, предпросмотр, ' +
             'предпоказ, показ, pdf, jpg, png, viewer, файл',
-        route: '/componets/preview',
+        route: '/components/preview',
     },
     {
         section: $localize`Components`,
