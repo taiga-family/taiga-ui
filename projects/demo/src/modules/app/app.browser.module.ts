@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDocMainModule} from '@taiga-ui/addon-doc';
 import {
     TuiMobileDialogModule,
+    TuiSheetModule,
     TuiThemeAndroidModule,
     TuiThemeIosModule,
 } from '@taiga-ui/addon-mobile';
@@ -32,6 +33,7 @@ import {VersionManagerModule} from './version-manager/version-manager.module';
         TuiThemeAndroidModule,
         TuiThemeIosModule,
         TuiDialogModule,
+        TuiSheetModule,
         TuiMobileDialogModule,
         TuiModeModule,
         TuiLinkModule,

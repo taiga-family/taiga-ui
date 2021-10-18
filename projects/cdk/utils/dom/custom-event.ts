@@ -1,3 +1,4 @@
+/** @deprecated only needed for IE, remove in 3.0 */
 export function tuiCustomEvent<T = null>(
     name: string,
     {bubbles = false, cancelable = false, detail = null}: CustomEventInit<T | null> = {},
