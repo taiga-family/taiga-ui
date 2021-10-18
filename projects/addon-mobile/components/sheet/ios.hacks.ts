@@ -14,7 +14,7 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
-export function isoScrollFactory(
+export function iosScrollFactory(
     element: HTMLElement,
     documentRef: Document,
     ngZone: NgZone,

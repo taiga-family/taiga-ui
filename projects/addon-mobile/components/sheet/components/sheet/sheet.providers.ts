@@ -4,7 +4,7 @@ import {TUI_IS_IOS, tuiZonefree, typedFromEvent} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
 import {map, mapTo, share} from 'rxjs/operators';
-import {isoScrollFactory} from '../../ios.hacks';
+import {iosScrollFactory} from '../../ios.hacks';
 
 export const TUI_SHEET_SCROLL = new InjectionToken<number>(
     'Current scrollTop of a sheet',
@@ -54,7 +54,7 @@ export function sheetScrollFactory(
     isIos: boolean,
 ): Observable<number> {
     return isIos
-        ? isoScrollFactory(nativeElement, documentRef, ngZone)
+        ? iosScrollFactory(nativeElement, documentRef, ngZone)
         : merge(
               typedFromEvent(nativeElement, 'scroll'),
               typedFromEvent(nativeElement, 'load', {capture: true}),
