@@ -13,8 +13,8 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
-import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
+import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/toolbar-tools';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';

@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiFlatPickerModule} from '@taiga-ui/addon-editor/components/flat-picker';
-import {TuiLinearPickerModule} from '@taiga-ui/addon-editor/components/linear-picker';
+import {TuiFlatPickerModule} from '@taiga-ui/addon-editor/components/toolbar-tools/flat-picker';
+import {TuiLinearPickerModule} from '@taiga-ui/addon-editor/components/toolbar-tools/linear-picker';
 
 import {TuiColorPickerComponent} from './color-picker.component';
 

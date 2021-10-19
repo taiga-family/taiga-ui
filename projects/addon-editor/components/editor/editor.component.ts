@@ -14,8 +14,8 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {WINDOW} from '@ng-web-apis/common';
-import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiToolbarComponent} from '@taiga-ui/addon-editor/components/toolbar';
+import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/toolbar-tools/edit-link';
 import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiDesignModeDirective} from '@taiga-ui/addon-editor/directives/design-mode';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';

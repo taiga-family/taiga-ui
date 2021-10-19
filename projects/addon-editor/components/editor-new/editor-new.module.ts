@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiToolbarNewModule} from '@taiga-ui/addon-editor/components/toolbar-new';
+import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/toolbar-tools';
 import {TuiTiptapEditorModule} from '@taiga-ui/addon-editor/directives';
 import {TuiActiveZoneModule, TuiHoveredModule, TuiLetModule} from '@taiga-ui/cdk';
 import {TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';

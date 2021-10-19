@@ -8,4 +8,4 @@ import {TuiTableSizeSelectorComponent} from './table-size-selector.component';
     declarations: [TuiTableSizeSelectorComponent],
     exports: [TuiTableSizeSelectorComponent],
 })
-export class TableSizeSelectorModule {}
+export class TuiTableSizeSelectorModule {}

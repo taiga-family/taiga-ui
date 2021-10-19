@@ -1,13 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
 import {
     TuiEditorNewComponent,
     TuiEditorNewModule,
 } from '@taiga-ui/addon-editor/components/editor-new';
 import {TuiToolbarModule} from '@taiga-ui/addon-editor/components/toolbar';
 import {TuiToolbarNewModule} from '@taiga-ui/addon-editor/components/toolbar-new';
+import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/toolbar-tools/edit-link';
 import {TuiDesignModeModule} from '@taiga-ui/addon-editor/directives/design-mode';
 import {TuiActiveZoneModule, TuiHoveredModule, TuiLetModule} from '@taiga-ui/cdk';
 import {

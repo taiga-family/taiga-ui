@@ -1,9 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiColorEditModule} from '@taiga-ui/addon-editor/components/color-edit';
-import {TuiColorPickerModule} from '@taiga-ui/addon-editor/components/color-picker';
-import {TuiLinearMultiPickerModule} from '@taiga-ui/addon-editor/components/linear-multi-picker';
-import {TuiPaletteModule} from '@taiga-ui/addon-editor/components/palette';
+import {TuiColorEditModule} from '@taiga-ui/addon-editor/components/toolbar-tools/color-edit';
+import {TuiColorPickerModule} from '@taiga-ui/addon-editor/components/toolbar-tools/color-picker';
+import {TuiLinearMultiPickerModule} from '@taiga-ui/addon-editor/components/toolbar-tools/linear-multi-picker';
+import {TuiPaletteModule} from '@taiga-ui/addon-editor/components/toolbar-tools/palette';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
