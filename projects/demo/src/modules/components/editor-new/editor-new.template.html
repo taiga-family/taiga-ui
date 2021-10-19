@@ -21,6 +21,35 @@
         >
             <tui-editor-example-1></tui-editor-example-1>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="custom-tool"
+            i18n-heading
+            heading="With custom tool"
+            [content]="example2"
+        >
+            You can create your own tool:
+            <ul i18n class="tui-list tui-space_bottom-6">
+                <li class="tui-list__item">
+                    Create component with tool button (which can get access to
+                    <a
+                        tuiLink
+                        target="_blank"
+                        href="https://tiptap.dev/api/introduction"
+                    >
+                        original TipTap editor API
+                    </a>
+                    via <code>TuiTiptapEditorService</code> from
+                    <code>@taiga-ui/addon-editor</code>).
+                </li>
+                <li class="tui-list__item">
+                    Pass the component as content projection (with
+                    <code>ngProjectAs="tools"</code>) to
+                    <code>&lt;tui-editor&gt;</code>.
+                </li>
+            </ul>
+            <tui-editor-example-2></tui-editor-example-2>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>

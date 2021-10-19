@@ -16,9 +16,9 @@ import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-new';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
-import {TuiTiptapEditorDirective} from '@taiga-ui/addon-editor/directives';
+import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
-import {LAZY_EDITOR_EXTENSIONS, LAZY_TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
+import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
@@ -27,6 +27,7 @@ import {
     TuiBooleanHandler,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
+import {Editor} from '@tiptap/core';
 import {Observable} from 'rxjs';
 import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 
@@ -55,9 +56,6 @@ export class TuiEditorNewComponent
     @tuiDefaultProp()
     readonly tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
 
-    @ViewChild(TuiTiptapEditorDirective)
-    readonly editorRef!: TuiTiptapEditorDirective;
-
     @ViewChild(TuiToolbarNewComponent)
     readonly toolbar?: TuiToolbarNewComponent;
 
@@ -72,8 +70,8 @@ export class TuiEditorNewComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(LAZY_EDITOR_EXTENSIONS) readonly extensionsLoaded$: Observable<unknown>,
-        @Inject(LAZY_TIPTAP_EDITOR) readonly editorLoaded$: Observable<unknown>,
+        @Inject(TIPTAP_EDITOR) readonly editorLoaded$: Observable<Editor | null>,
+        @Inject(TuiTiptapEditorService) readonly editorService: TuiEditor,
     ) {
         super(control, changeDetectorRef);
     }
@@ -83,7 +81,7 @@ export class TuiEditorNewComponent
     }
 
     get editor(): TuiEditor | null {
-        return this.editorRef?.editor || null;
+        return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
     }
 
     get focused(): boolean {

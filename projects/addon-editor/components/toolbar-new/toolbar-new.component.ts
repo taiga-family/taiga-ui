@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {
@@ -78,10 +79,6 @@ export class TuiToolbarNewComponent {
     colors: ReadonlyMap<string, string> = defaultEditorColors;
 
     @Input()
-    @tuiDefaultProp()
-    editor!: TuiEditor;
-
-    @Input()
     @HostBinding('class._disabled')
     @tuiDefaultProp()
     disabled = false;
@@ -139,6 +136,7 @@ export class TuiToolbarNewComponent {
         @Optional()
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(TUI_IMAGE_LOADER)
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)

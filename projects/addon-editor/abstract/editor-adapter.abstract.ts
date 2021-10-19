@@ -1,4 +1,5 @@
 import {Directive} from '@angular/core';
+import type {Editor} from '@tiptap/core';
 import {Subject} from 'rxjs';
 
 @Directive()
@@ -59,4 +60,5 @@ export abstract class TuiEditor {
     abstract focus(): void;
     abstract setValue(value: string): void;
     abstract setCellColor(color: string): void;
+    abstract getOriginTiptapEditor(): Editor;
 }

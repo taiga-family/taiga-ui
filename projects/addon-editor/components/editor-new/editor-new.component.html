@@ -9,6 +9,7 @@
 >
 </tui-wrapper>
 <div
+    *tuiLet="editorLoaded$ | async as editorLoaded"
     class="t-wrapper"
     [class.t-wrapper_disabled]="disabled"
     (tuiHoveredChange)="onHovered($event)"
@@ -16,12 +17,13 @@
 >
     <div class="t-toolbar-wrapper">
         <tui-toolbar
-            *ngIf="editor"
+            *ngIf="editorLoaded"
             new
-            [editor]="editor"
             [tools]="tools"
             [disabled]="!interactive"
-        ></tui-toolbar>
+        >
+            <ng-content select="tools"></ng-content>
+        </tui-toolbar>
         <div
             class="t-placeholder"
             [class.t-placeholder_raised]="placeholderRaised"
@@ -39,8 +41,7 @@
             [tuiDropdownContent]="dropdown"
         >
             <div
-                *ngIf="(extensionsLoaded$ | async) && (editorLoaded$ | async)"
-                #editorRef
+                *ngIf="editorLoaded"
                 tuiTiptapEditor
                 class="tui-editor-socket"
                 [value]="value"
