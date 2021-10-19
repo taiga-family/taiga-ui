@@ -28,6 +28,8 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
             - name: Use Node.js
               uses: actions/setup-node@v1
               with:
@@ -43,15 +45,9 @@ jobs:
             - name: Install dependencies
               run: npm ci
             # End of setup
-            - name: Run parallel tests
-              run: |
-                  # TODO(splincode): need change to `affected` for improve pipeline time
-                  ALL_LIBS=$( node -e "console.log(Object.entries(require(require('path').join(process.cwd(), process.env.ANGULAR_JSON_PATH || 'angular.json')).projects).filter(([, value]) => value.projectType === 'library').map(([key]) => key).join(','))" )
-                  npm run many -- \
-                              --target=test \
-                              --maxParallel=${{ env.NX_MAX_PARALLEL }} \
-                              --browsers=ChromeHeadless --code-coverage=true \
-                              --projects=$ALL_LIBS
+            - name: Run affected tests
+              run: npm run task scripts/affected/affected-tests.ts
+            # Coveralls part
             - name: Coveralls(cdk)
               continue-on-error: true
               uses: coverallsapp/github-action@master
@@ -100,6 +96,7 @@ jobs:
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel-finished: true
+            # End of Coveralls
 
 concurrency:
     group: test-${{ github.head_ref }}

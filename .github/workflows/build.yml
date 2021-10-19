@@ -11,7 +11,7 @@ on:
             - 'package.json'
             - 'tsconfig*'
         branches:
-            - 'main'
+            - main
             - '!release/**'
     push:
         branches:
@@ -19,6 +19,7 @@ on:
             - '!release/**'
 env:
     NX_BRANCH: ${{ github.event.number }}
+    IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
 
 jobs:
     build:
@@ -29,6 +30,8 @@ jobs:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
         steps:
             - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
             - name: Use Node.js
               uses: actions/setup-node@v1
               with:
@@ -44,18 +47,12 @@ jobs:
             - name: Install dependencies
               run: npm ci
             # End of setup
-            - run: |
-                  npm run build cdk
-                  npm run build i18n
-                  npm run build core
-                  npm run build kit
-                  npm run build addon-charts
-                  npm run build addon-commerce
-                  npm run build addon-mobile
-                  npm run build addon-doc
-                  npm run build addon-editor
-                  npm run build addon-table
-                  npm run build addon-tablebars
+            - name: Run affected builds based on main branch
+              if: ${{ env.IS_MAIN_BRANCH == 'false' }}
+              run: npm run task scripts/affected/affected-build-all-libs.ts
+            - name: Build packages only in main branch
+              if: ${{ env.IS_MAIN_BRANCH == 'true' }}
+              run: npm run task scripts/build/build-all-libs.ts
 
 concurrency:
     group: build-${{ github.head_ref }}

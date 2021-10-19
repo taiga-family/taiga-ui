@@ -67,10 +67,18 @@
         }
     },
     "affected": {
-        "defaultBase": "main"
+        "defaultBase": "origin/main"
     },
     "workspaceLayout": {
         "libsDir": "projects",
         "appsDir": "projects"
+    },
+    "targetDependencies": {
+        "build": [
+            {
+                "target": "build",
+                "projects": "dependencies"
+            }
+        ]
     }
 }

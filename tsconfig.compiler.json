@@ -1,9 +1,7 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
+        "types": ["node"],
         "module": "commonjs"
-    },
-    "angularCompilerOptions": {
-        "fullTemplateTypeCheck": true
     }
 }
