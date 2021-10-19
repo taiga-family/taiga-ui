@@ -1,15 +1,18 @@
-import {OnDestroy} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
+import {Directive, Inject, OnDestroy} from '@angular/core';
 
 /**
  * Use this abstract class to create your own toggleable themes.
  * A component extending this class must have CSS variables definitions
  * and have ViewEncapsulation set to NONE. A boolean input allows to
  * switch theme on or off.
+ * @dynamic
  */
+@Directive()
 export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
     static style: HTMLStyleElement | null = null;
 
-    protected constructor(private readonly documentRef: Document) {
+    constructor(@Inject(DOCUMENT) private readonly documentRef: Document) {
         if (this.style !== null) {
             this.addTheme();
 
@@ -31,11 +34,7 @@ export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
     }
 
     private addTheme() {
-        if (this.style && !this.documentRef.head.contains(this.style)) {
-            for (let i = this.style.attributes.length - 1; i >= 0; i--) {
-                this.style.removeAttribute(this.style.attributes[i].name);
-            }
-
+        if (this.style) {
             this.documentRef.head.appendChild(this.style);
         }
     }

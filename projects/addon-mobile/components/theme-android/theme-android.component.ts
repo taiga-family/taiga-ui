@@ -1,10 +1,4 @@
-import {DOCUMENT} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Inject,
-    ViewEncapsulation,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
 // @dynamic
@@ -15,8 +9,4 @@ import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiThemeAndroidComponent extends AbstractTuiThemeSwitcher {
-    constructor(@Inject(DOCUMENT) documentRef: Document) {
-        super(documentRef);
-    }
-}
+export class TuiThemeAndroidComponent extends AbstractTuiThemeSwitcher {}
