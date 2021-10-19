@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiColorSelectorModule} from '@taiga-ui/addon-editor/components/toolbar-tools';
+import {TuiColorSelectorModule} from '@taiga-ui/addon-editor/components/toolbar-tools/color-selector';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiHintControllerModule,
