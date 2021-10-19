@@ -1,7 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
-    <g id="tuiIconMirMono" xmlns="http://www.w3.org/2000/svg" transform="translate(-16,-16)">
-        <svg x="50%" y="50%">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em">
+    <g id="tuiIconMirMono" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            width="2em"
+            height="2em"
+            overflow="visible"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <svg x="-16" y="-16">
                 <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"

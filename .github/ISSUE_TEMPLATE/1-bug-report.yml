@@ -1,4 +1,5 @@
-name: Bug Report
+name: '🐞 - Bug Report'
+title: '🐞 - '
 description: Report a bug in the Taiga UI
 labels: ['bug']
 
@@ -27,16 +28,6 @@ body:
       validations:
           required: true
 
-    - type: dropdown
-      id: is-regression
-      attributes:
-          label: Is this a regression?
-          options:
-              - 'Yes'
-              - 'No'
-      validations:
-          required: true
-
     - type: input
       id: reproduction-url
       attributes:
@@ -52,8 +43,28 @@ body:
               Please provide the environment you discovered this bug in:
               * Angular CLI: x.y.z
               * Taiga: x.y.z
-              * Node: x.y.z
-              * Package Manager: npm x.y.z
-              * OS: linux x64
       validations:
           required: true
+
+    - type: checkboxes
+      id: browser-specific
+      attributes:
+          label: Which browsers have you used?
+          description: You may select more than one.
+          options:
+              - label: Chrome
+              - label: Firefox
+              - label: Safari
+              - label: Edge
+
+    - type: checkboxes
+      id: operating-systems
+      attributes:
+          label: Which operating systems have you used?
+          description: You may select more than one.
+          options:
+              - label: macOS
+              - label: Windows
+              - label: Linux
+              - label: iOS
+              - label: Android

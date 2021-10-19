@@ -1,4 +1,4 @@
-name: 'CodeQL'
+name: CodeQL
 
 on:
     push:
@@ -28,3 +28,7 @@ jobs:
 
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v1
+
+concurrency:
+    group: codeql-${{ github.head_ref }}
+    cancel-in-progress: true

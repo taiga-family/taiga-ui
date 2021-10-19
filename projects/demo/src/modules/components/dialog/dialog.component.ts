@@ -1,5 +1,9 @@
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
+import {default as dialogExampleComponent} from '!!raw-loader!./examples/2/dialog-example/dialog-example.component.ts';
+import {default as dialogExampleModule} from '!!raw-loader!./examples/2/dialog-example/dialog-example.module.ts';
+import {default as dialogExampleStyle} from '!!raw-loader!./examples/2/dialog-example/dialog-example.style.less';
+import {default as dialogExampleTemplate} from '!!raw-loader!./examples/2/dialog-example/dialog-example.template.html';
 
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
@@ -38,12 +42,12 @@ import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
-    selector: 'example-tui-dialogs',
-    templateUrl: './dialogs.template.html',
-    styleUrls: ['./dialogs.style.less'],
+    selector: 'example-tui-dialog',
+    templateUrl: './dialog.template.html',
+    styleUrls: ['./dialog.style.less'],
     changeDetection,
 })
-export class ExampleTuiDialogsComponent {
+export class ExampleTuiDialogComponent {
     readonly dialogsCloseToken = exampleDialogsCloseToken;
     readonly exampleDialogClosesOnBackToken = exampleDialogClosesOnBackToken;
 
@@ -52,9 +56,13 @@ export class ExampleTuiDialogsComponent {
         HTML: example1Html,
     };
 
-    readonly example2: FrontEndExample = {
+    readonly example2 = {
         TypeScript: example2Ts,
         HTML: example2Html,
+        'dialog-example/dialog-example.module.ts': dialogExampleModule,
+        'dialog-example/dialog-example.component.ts': dialogExampleComponent,
+        'dialog-example/dialog-example.style.less': dialogExampleStyle,
+        'dialog-example/dialog-example.template.html': dialogExampleTemplate,
     };
 
     readonly example3: FrontEndExample = {

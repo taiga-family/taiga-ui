@@ -1,4 +1,4 @@
-name: Screenshot tests all packages of Taiga UI
+name: Screenshot tests
 
 on:
     pull_request:
@@ -20,7 +20,8 @@ env:
 
 jobs:
     demo-integrations:
-        runs-on: ubuntu-20.04
+        name: Cypress
+        runs-on: ubuntu-latest
         env:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
         steps:
@@ -40,3 +41,7 @@ jobs:
                   name: cypress-screenshots
                   path: projects/demo-integrations/cypress/snapshots
                   retention-days: 7
+
+concurrency:
+    group: demo-integrations-${{ github.head_ref }}
+    cancel-in-progress: true
