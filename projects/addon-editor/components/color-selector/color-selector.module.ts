@@ -1,9 +1,5 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiColorEditModule} from '@taiga-ui/addon-editor/components/color-edit';
-import {TuiColorPickerModule} from '@taiga-ui/addon-editor/components/color-picker';
-import {TuiLinearMultiPickerModule} from '@taiga-ui/addon-editor/components/linear-multi-picker';
-import {TuiPaletteModule} from '@taiga-ui/addon-editor/components/palette';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -14,8 +10,11 @@ import {
     TuiHostedDropdownModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-
+import {TuiColorEditModule} from './color-edit/color-edit.module';
+import {TuiColorPickerModule} from './color-picker/color-picker.module';
 import {TuiColorSelectorComponent} from './color-selector.component';
+import {TuiLinearMultiPickerModule} from './linear-multi-picker/linear-multi-picker.module';
+import {TuiPaletteModule} from './palette/palette.module';
 
 @NgModule({
     imports: [

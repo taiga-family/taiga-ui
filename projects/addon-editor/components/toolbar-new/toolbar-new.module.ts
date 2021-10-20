@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiColorSelectorModule} from '@taiga-ui/addon-editor/components/color-selector';
 import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
-import {TableSizeSelectorModule} from '@taiga-ui/addon-editor/components/table-size-selector';
+import {TuiTableSizeSelectorModule} from '@taiga-ui/addon-editor/components/toolbar-tools';
 import {
     TuiActiveZoneModule,
     TuiFocusableModule,
@@ -32,7 +32,7 @@ import {TuiToolbarNewComponent} from './toolbar-new.component';
         TuiActiveZoneModule,
         TuiRepeatTimesModule,
         TuiDropdownControllerModule,
-        TableSizeSelectorModule,
+        TuiTableSizeSelectorModule,
     ],
     declarations: [TuiToolbarNewComponent],
     exports: [TuiToolbarNewComponent],
