@@ -193,7 +193,10 @@
             "prettier --write",
             "git add"
         ],
-        "*.ts": "tslint --fix"
+        "*.ts": [
+            "tslint --fix",
+            "git add"
+        ]
     },
     "standard-version": {
         "scripts": {
