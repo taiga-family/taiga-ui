@@ -1234,6 +1234,14 @@ export const ROUTES = [
         },
     },
     {
+        path: 'directives/swipe',
+        loadChildren: () =>
+            import(`../directives/swipe/swipe.module`).then(m => m.ExampleTuiSwipeModule),
+        data: {
+            title: 'Swipe',
+        },
+    },
+    {
         path: 'directives/let',
         loadChildren: () =>
             import(`../directives/let/let.module`).then(m => m.ExampleTuiLetModule),

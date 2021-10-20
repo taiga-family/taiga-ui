@@ -1,0 +1,10 @@
+import {TuiSwipeModule} from '@taiga-ui/cdk';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiSwipeModule,
+    ],
+...
