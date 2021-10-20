@@ -1,5 +1,5 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
-import {TuiPreviewService} from '@taiga-ui/addon-preview';
+import {PreviewDialogService} from '@taiga-ui/addon-preview';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
@@ -21,7 +21,8 @@ export class TuiPreviewExample1 {
     readonly contentSample?: TemplateRef<{}>;
 
     constructor(
-        @Inject(TuiPreviewService) private readonly previewService: TuiPreviewService,
+        @Inject(PreviewDialogService)
+        private readonly previewService: PreviewDialogService,
     ) {}
 
     get title(): string {
@@ -35,7 +36,7 @@ export class TuiPreviewExample1 {
     }
 
     show() {
-        this.previewService.open(this.preview || '').subscribe({
+        this.previewService.open(this.preview || ('' as any)).subscribe({
             complete: () => console.log('complete'),
         });
     }

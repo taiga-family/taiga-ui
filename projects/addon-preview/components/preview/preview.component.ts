@@ -7,7 +7,6 @@ import {
     ViewChild,
 } from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
-import {TuiPreviewService} from '@taiga-ui/addon-preview/components/preview-host';
 import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {
     clamp,
@@ -163,7 +162,6 @@ export class TuiPreviewComponent {
     }
 
     constructor(
-        @Inject(TuiPreviewService) private readonly previewService: TuiPreviewService,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) readonly destroy$: Observable<void>,
@@ -174,9 +172,7 @@ export class TuiPreviewComponent {
         this.initWrapperTranslateSubscription();
     }
 
-    close() {
-        this.previewService.preview$.next(null);
-    }
+    close() {}
 
     rotate() {
         this.rotation$.next(this.rotation$.value - 90);

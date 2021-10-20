@@ -11,6 +11,7 @@ import {
     TUI_DOC_TITLE,
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
+import {PREVIEW_DIALOG_PROVIDER} from '@taiga-ui/addon-preview';
 import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
@@ -45,6 +46,7 @@ export const HIGHLIGHT_OPTIONS_VALUE = {
 export const APP_PROVIDERS = [
     Title,
     PROMPT_PROVIDER,
+    PREVIEW_DIALOG_PROVIDER,
     {
         provide: HIGHLIGHT_OPTIONS,
         useValue: HIGHLIGHT_OPTIONS_VALUE,
