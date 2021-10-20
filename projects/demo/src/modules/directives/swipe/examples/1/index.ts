@@ -1,5 +1,5 @@
 import {Component, HostBinding} from '@angular/core';
-import {TuiSwipe} from '../../../../../../../cdk/interfaces/swipe';
+import {TuiSwipe} from '@taiga-ui/cdk/interfaces/swipe';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

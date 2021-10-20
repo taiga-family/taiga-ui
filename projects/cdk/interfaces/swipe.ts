@@ -1,9 +1,7 @@
-import {TuiEventWith} from '../types';
-
 export interface TuiSwipe {
     readonly direction: TuiSwipeDirection;
-    readonly start: TuiEventWith<TouchEvent, Element | Document>;
-    readonly end: TuiEventWith<TouchEvent, Element | Document>;
+    readonly start: TouchEvent;
+    readonly end: TouchEvent;
 }
 
 export type TuiSwipeDirection = 'left' | 'right' | 'top' | 'bottom';

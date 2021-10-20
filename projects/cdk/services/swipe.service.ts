@@ -1,11 +1,11 @@
 import {ElementRef, Inject, Injectable} from '@angular/core';
+import {TuiSwipe, TuiSwipeOptions} from '@taiga-ui/cdk/interfaces';
 import {typedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_SWIPE_OPTIONS} from '@taiga-ui/cdk/tokens';
 import {isPresent} from '@taiga-ui/cdk/utils';
 import {getSwipeDirection} from '@taiga-ui/cdk/utils/miscellaneous';
 import {merge, Observable} from 'rxjs';
 import {filter, map, pairwise, takeUntil} from 'rxjs/operators';
-import {TuiSwipe, TuiSwipeOptions} from '../interfaces/swipe';
 import {TuiDestroyService} from './destroy.service';
 
 /**

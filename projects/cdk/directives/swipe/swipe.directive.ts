@@ -1,6 +1,6 @@
 import {Directive, Inject} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {TuiSwipeService} from '../../services/swipe.service';
+import {TuiSwipeService} from '@taiga-ui/cdk/services';
 
 // @dynamic
 @Directive({

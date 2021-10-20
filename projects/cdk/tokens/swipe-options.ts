@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {TuiSwipeOptions} from '../interfaces/swipe';
+import {TuiSwipeOptions} from '@taiga-ui/cdk/interfaces';
 
 export const TUI_SWIPE_OPTIONS = new InjectionToken<TuiSwipeOptions>('Swipe options', {
     factory: () => ({timeout: 500, treshold: 30}),
