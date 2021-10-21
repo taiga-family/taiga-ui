@@ -9,7 +9,6 @@ import {
     TuiThemeAndroidModule,
     TuiThemeIosModule,
 } from '@taiga-ui/addon-mobile';
-import {TuiPreviewHostModule} from '@taiga-ui/addon-preview';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
 import {TuiDialogModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {TuiPdfViewerModule} from '@taiga-ui/kit';
@@ -41,7 +40,6 @@ import {VersionManagerModule} from './version-manager/version-manager.module';
         TuiMobileDialogModule,
         TuiModeModule,
         TuiLinkModule,
-        TuiPreviewHostModule,
         GettingStartedModule,
         HomeModule,
         LandingModule,

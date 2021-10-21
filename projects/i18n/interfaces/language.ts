@@ -159,7 +159,6 @@ export type LanguageEditor = {
 
 export type LanguagePreview = {
     previewTexts: {
-        close: string;
         rotate: string;
     };
     previewPagination: {

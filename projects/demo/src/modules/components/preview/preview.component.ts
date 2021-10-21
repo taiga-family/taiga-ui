@@ -4,7 +4,6 @@ import {default as exampleComponent} from '!!raw-loader!./examples/import/compon
 import {default as exampleImportHostModule} from '!!raw-loader!./examples/import/import-host-module.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleTemplate} from '!!raw-loader!./examples/import/template.txt';
-import {default as exampleTuiRoot} from '!!raw-loader!./examples/import/tui-root.txt';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
@@ -27,7 +26,6 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiPreviewComponent {
-    readonly exampleTuiRoot = exampleTuiRoot;
     readonly exampleImportHostModule = exampleImportHostModule;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleComponent = exampleComponent;

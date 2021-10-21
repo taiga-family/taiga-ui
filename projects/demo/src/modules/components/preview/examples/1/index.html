@@ -10,7 +10,7 @@
     Show preview
 </button>
 
-<ng-template #preview>
+<ng-template #preview let-preview>
     <tui-preview [rotatable]="true">
         <tui-preview-title>{{title}}</tui-preview-title>
         <tui-preview-pagination
@@ -27,6 +27,12 @@
             icon="tuiIconDownload"
             title="Download"
             (click)="download()"
+        ></tui-preview-action>
+        <tui-preview-action
+            class="t-close-button"
+            icon="tuiIconCloseLarge"
+            title="Close"
+            (click)="preview.complete()"
         ></tui-preview-action>
 
         <div polymorpheus-outlet [content]="previewContent">

@@ -1,6 +1,7 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
-import {TuiPreviewService} from '@taiga-ui/addon-preview';
+import {PreviewDialogService} from '@taiga-ui/addon-preview';
 import {isPresent} from '@taiga-ui/cdk';
+import {TuiDialogContext} from '@taiga-ui/core';
 import {BehaviorSubject, Observable, of, timer} from 'rxjs';
 import {filter, map, mapTo, startWith, switchMap} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
@@ -15,7 +16,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiPreviewExample3 {
     @ViewChild('preview')
-    readonly preview?: TemplateRef<{}>;
+    readonly preview?: TemplateRef<TuiDialogContext<void>>;
 
     readonly items = [
         {
@@ -48,11 +49,12 @@ export class TuiPreviewExample3 {
     readonly loading$ = this.imageSrc$.pipe(map(src => src === ''));
 
     constructor(
-        @Inject(TuiPreviewService) private readonly previewService: TuiPreviewService,
+        @Inject(PreviewDialogService)
+        private readonly previewDialogService: PreviewDialogService,
     ) {}
 
     show() {
-        this.previewService.open(this.preview || '').subscribe();
+        this.previewDialogService.open(this.preview || '').subscribe();
     }
 
     download() {

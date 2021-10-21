@@ -1,6 +1,7 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
 import {PreviewDialogService} from '@taiga-ui/addon-preview';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {TuiDialogContext, TuiNotificationsService} from '../../../../../../../core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -15,7 +16,7 @@ export class TuiPreviewExample1 {
     index = 0;
 
     @ViewChild('preview')
-    readonly preview?: TemplateRef<{}>;
+    readonly preview?: TemplateRef<TuiDialogContext<void>>;
 
     @ViewChild('contentSample')
     readonly contentSample?: TemplateRef<{}>;
@@ -23,6 +24,8 @@ export class TuiPreviewExample1 {
     constructor(
         @Inject(PreviewDialogService)
         private readonly previewService: PreviewDialogService,
+        @Inject(TuiNotificationsService)
+        private readonly notificationsService: TuiNotificationsService,
     ) {}
 
     get title(): string {
@@ -36,16 +39,16 @@ export class TuiPreviewExample1 {
     }
 
     show() {
-        this.previewService.open(this.preview || ('' as any)).subscribe({
+        this.previewService.open(this.preview || '').subscribe({
             complete: () => console.log('complete'),
         });
     }
 
     download() {
-        console.log('Downloading...');
+        this.notificationsService.show('Downloading...').subscribe();
     }
 
     delete() {
-        console.log('Deleting...');
+        this.notificationsService.show('Deleting...').subscribe();
     }
 }

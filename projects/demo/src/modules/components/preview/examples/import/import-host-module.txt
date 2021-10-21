@@ -1,9 +1,9 @@
-import {TuiPreviewHostModule} from '@taiga-ui/addon-preview';
+import {TuiDialogModule} from '@taiga-ui/core';
 
 @NgModule({
     imports: [
         ...
-        TuiPreviewHostModule
+        TuiDialogModule
     ],
     ...
 })

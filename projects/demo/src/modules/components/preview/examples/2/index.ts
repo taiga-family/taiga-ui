@@ -1,5 +1,6 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
-import {TuiPreviewService} from '@taiga-ui/addon-preview';
+import {PreviewDialogService} from '@taiga-ui/addon-preview';
+import {TuiDialogContext} from '@taiga-ui/core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -12,13 +13,14 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiPreviewExample2 {
     @ViewChild('preview')
-    readonly preview?: TemplateRef<{}>;
+    readonly preview?: TemplateRef<TuiDialogContext<void>>;
 
     constructor(
-        @Inject(TuiPreviewService) private readonly previewService: TuiPreviewService,
+        @Inject(PreviewDialogService)
+        private readonly previewDialogService: PreviewDialogService,
     ) {}
 
     show() {
-        this.previewService.open(this.preview || '').subscribe();
+        this.previewDialogService.open(this.preview || '').subscribe();
     }
 }

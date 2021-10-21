@@ -12,9 +12,8 @@
         </tui-notification>
 
         <tui-notification status="warning">
-            Don't forget to add
-            <code>tui-preview-host</code> to the <code>tui-root</code> of your
-            application (more details on the "Setup" tab)
+            Do not forget to add <code>TuiDialogModule</code> into your
+            app.module
         </tui-notification>
 
         <tui-doc-example
@@ -48,20 +47,11 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                Add <code>TuiPreviewHostModule</code> to main module:
+                Add <code>TuiDialogModule</code> to main module:
 
                 <tui-doc-code
                     filename="app.module.ts"
                     [code]="exampleImportHostModule"
-                ></tui-doc-code>
-            </li>
-
-            <li>
-                Add <code>tui-preview-host</code> to the <code>tui-root</code>:
-
-                <tui-doc-code
-                    filename="app.component.html"
-                    [code]="exampleTuiRoot"
                 ></tui-doc-code>
             </li>
 
@@ -85,8 +75,8 @@
             </li>
 
             <li>
-                Open the component from the <code>TuiPreviewService</code> as in
-                the example
+                Open the component from the
+                <code>TuiPreviewDialogService</code> as in the example
 
                 <tui-doc-code
                     filename="some.component.ts"

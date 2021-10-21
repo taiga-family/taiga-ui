@@ -172,8 +172,6 @@ export class TuiPreviewComponent {
         this.initWrapperTranslateSubscription();
     }
 
-    close() {}
-
     rotate() {
         this.rotation$.next(this.rotation$.value - 90);
     }
