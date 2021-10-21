@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    Directive,
     ElementRef,
     EventEmitter,
     HostBinding,
@@ -13,28 +14,34 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
-import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {
+    defaultEditorColors,
+    defaultEditorTools,
+    EDITOR_BLANK_COLOR,
+} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {
     TUI_EDITOR_CODE_OPTIONS,
     TUI_EDITOR_FONT_OPTIONS,
-    TUI_EDITOR_TABLE_COMMANDS,
     TUI_EDITOR_TOOLBAR_TEXTS,
     TUI_IMAGE_LOADER,
 } from '@taiga-ui/addon-editor/tokens';
 import {
+    clamp,
     EMPTY_QUERY,
     getClosestElement,
+    getClosestFocusable,
     isNativeFocusedIn,
+    isNativeMouseFocusable,
     setNativeFocused,
     tuiDefaultProp,
     TuiDestroyService,
     TuiHandler,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiButtonComponent, TuiHostedDropdownComponent} from '@taiga-ui/core';
+import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
@@ -47,16 +54,10 @@ function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     );
 }
 
-enum TableComands {
-    InsertColumnBefore,
-    InsertColumnAfter,
-    InsertRowBefore,
-    InsertRowAfter,
-    DeleteColumn,
-    DeleteRow,
-}
-
-const EDITOR_BLANK_COLOR = 'rgb(51, 51, 51)';
+@Directive({
+    selector: '[toolbarTool]',
+})
+export class TuiToolbarToolDirective {}
 
 // @dynamic
 @Component({
@@ -126,11 +127,41 @@ export class TuiToolbarNewComponent {
             ]),
         );
 
-    @ViewChildren('button')
-    private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;
+    @ViewChildren(TuiToolbarToolDirective, {read: ElementRef})
+    private readonly toolsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @ViewChildren('dropdown', {read: ElementRef})
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
+    get toolsContainers(): ReadonlyArray<HTMLElement> {
+        return this.toolsRefs.map(({nativeElement}) => nativeElement);
+
+        return Array.from(
+            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[toolbarTool]'),
+        );
+    }
+
+    @HostListener('keydown.arrowRight.prevent', ['false'])
+    @HostListener('keydown.arrowLeft.prevent', ['true'])
+    onHorizontalNavigation(toPrevious: boolean) {
+        const focusedToolIndex = this.toolsContainers.findIndex(tool =>
+            isNativeFocusedIn(tool),
+        );
+
+        const targetToolIndex = clamp(
+            focusedToolIndex + (toPrevious ? -1 : 1),
+            0,
+            this.toolsContainers.length - 1,
+        );
+        const targetToolWrapper = this.toolsContainers[targetToolIndex];
+        const targetTool = toPrevious
+            ? this.findPreviousTool(targetToolWrapper)
+            : this.findNextTool(targetToolWrapper);
+
+        if (targetTool) {
+            setNativeFocused(targetTool);
+        }
+    }
 
     constructor(
         @Optional()
@@ -141,8 +172,6 @@ export class TuiToolbarNewComponent {
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
-        @Inject(TUI_EDITOR_TABLE_COMMANDS)
-        readonly tableCommandTexts$: Observable<LanguageEditor['editorTableCommands']>,
         @Inject(TUI_EDITOR_CODE_OPTIONS)
         readonly codeOptionsTexts$: Observable<LanguageEditor['editorCodeOptions']>,
         @Inject(TUI_EDITOR_FONT_OPTIONS)
@@ -163,17 +192,15 @@ export class TuiToolbarNewComponent {
     }
 
     get firstButton(): TuiNativeFocusableElement | null {
-        const first =
-            this.buttons.find(({nativeFocusableElement}) => !!nativeFocusableElement) ||
-            null;
-
-        return first?.nativeFocusableElement || null;
+        return this.toolsContainers.find(tool => isNativeMouseFocusable(tool)) || null;
     }
 
     get lastButton(): TuiNativeFocusableElement | null {
-        return this.buttons.reduce<TuiNativeFocusableElement | null>(
-            (last, {nativeFocusableElement}) => nativeFocusableElement || last,
-            null,
+        return (
+            this.toolsContainers
+                .slice()
+                .reverse()
+                .find(tool => isNativeMouseFocusable(tool)) || null
         );
     }
 
@@ -215,10 +242,6 @@ export class TuiToolbarNewComponent {
 
     get hiliteColorBlank(): boolean {
         return this.isBlankColor(this.hiliteColor);
-    }
-
-    get cellColorBlank(): boolean {
-        return this.isBlankColor(this.cellColor);
     }
 
     get undoDisabled(): boolean {
@@ -314,43 +337,6 @@ export class TuiToolbarNewComponent {
         this.focusFirst();
     }
 
-    onArrowLeft() {
-        const focusedIndex = this.buttons.reduce(
-            (focusedIndex, {focused}, index) => (focused ? index : focusedIndex),
-            -1,
-        );
-        const previous = this.buttons.reduce<TuiNativeFocusableElement | null>(
-            (last, {nativeFocusableElement}, index) =>
-                index < focusedIndex && nativeFocusableElement
-                    ? nativeFocusableElement
-                    : last,
-            null,
-        );
-
-        if (previous) {
-            setNativeFocused(previous);
-        } else {
-            this.focusLast();
-        }
-    }
-
-    onArrowRight() {
-        const focusedIndex = this.buttons.reduce(
-            (focusedIndex, {focused}, index) => (focused ? index : focusedIndex),
-            -1,
-        );
-        const nextButton = this.buttons.find(
-            ({nativeFocusableElement}, index) =>
-                index > focusedIndex && !!nativeFocusableElement,
-        );
-
-        if (nextButton?.nativeFocusableElement) {
-            setNativeFocused(nextButton.nativeFocusableElement);
-        } else {
-            this.focusFirst();
-        }
-    }
-
     onHeading({headingLevel}: TuiEditorFontOption) {
         if (headingLevel) {
             this.editor.setHeading(headingLevel);
@@ -403,25 +389,6 @@ export class TuiToolbarNewComponent {
         }
     }
 
-    onTableOption(command: TableComands) {
-        ({
-            [TableComands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
-            [TableComands.InsertColumnBefore]: () => this.editor.addColumnBefore(),
-            [TableComands.InsertRowAfter]: () => this.editor.addRowAfter(),
-            [TableComands.InsertRowBefore]: () => this.editor.addRowBefore(),
-            [TableComands.DeleteColumn]: () => this.editor.deleteColumn(),
-            [TableComands.DeleteRow]: () => this.editor.deleteRow(),
-        }[command]());
-    }
-
-    mergeCells() {
-        this.editor.mergeCells();
-    }
-
-    splitCell() {
-        this.editor.splitCell();
-    }
-
     enabled(tool: TuiEditorTool): boolean {
         return this.tools.indexOf(tool) !== -1;
     }
@@ -458,10 +425,6 @@ export class TuiToolbarNewComponent {
         this.editor.setBackgroundColor(color);
     }
 
-    setCellColor(color: string) {
-        this.editor.setCellColor(color);
-    }
-
     toggleBold() {
         this.editor.toggleBold();
     }
@@ -490,10 +453,6 @@ export class TuiToolbarNewComponent {
         this.editor.toggleBlockquote();
     }
 
-    addTable({rows, cols}: {rows: number; cols: number}) {
-        this.editor.insertTable(rows, cols);
-    }
-
     toggleSubscript() {
         this.editor.toggleSubscript();
     }
@@ -516,6 +475,28 @@ export class TuiToolbarNewComponent {
 
     private isBlankColor(color: string): boolean {
         return color === EDITOR_BLANK_COLOR;
+    }
+
+    private findPreviousTool(wrapper: HTMLElement): HTMLElement | null {
+        if (isNativeMouseFocusable(wrapper)) {
+            return wrapper;
+        }
+
+        const lookedInside = getClosestFocusable(wrapper, false, wrapper, false);
+
+        if (lookedInside) {
+            return lookedInside;
+        }
+
+        return getClosestFocusable(wrapper, true, this.elementRef.nativeElement, false);
+    }
+
+    private findNextTool(wrapper: HTMLElement): HTMLElement | null {
+        if (isNativeMouseFocusable(wrapper)) {
+            return wrapper;
+        }
+
+        return getClosestFocusable(wrapper, false, this.elementRef.nativeElement, false);
     }
 
     private focusFirst() {

@@ -6,6 +6,7 @@
         <button
             #button
             #undoBtn
+            toolbarTool
             tuiIconButton
             type="button"
             size="s"
@@ -18,14 +19,12 @@
             [tuiDescribedBy]="undoBtn.id"
             [disabled]="undoDisabled"
             [focusable]="false"
-            (keydown.arrowLeft.prevent)="onArrowLeft()"
-            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="undo()"
         ></button>
         <button
-            #button
             #redoBtn
             tuiIconButton
+            toolbarTool
             type="button"
             size="s"
             icon="tuiIconRedoLarge"
@@ -37,13 +36,16 @@
             [tuiDescribedBy]="redoBtn.id"
             [disabled]="redoDisabled"
             [focusable]="false"
-            (keydown.arrowLeft.prevent)="onArrowLeft()"
-            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="redo()"
         ></button>
     </div>
     <div *ngIf="enabled(TuiEditorTool.Size)" class="t-block">
-        <tui-hosted-dropdown #fonts class="t-wrapper" [content]="fontsDropdown">
+        <tui-hosted-dropdown
+            #fonts
+            toolbarTool
+            class="t-wrapper"
+            [content]="fontsDropdown"
+        >
             <button
                 #button
                 #fontsBtn
@@ -59,8 +61,6 @@
                 [tuiDescribedBy]="fontsBtn.id"
                 [pseudoPressed]="fonts.open"
                 [focusable]="fonts.open"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
             <ng-template #fontsDropdown>
                 <tui-data-list #dropdown>
@@ -81,6 +81,7 @@
         <!-- @bad TODO: Keyboard navigation-->
         <tui-hosted-dropdown
             *ngIf="formatEnabled"
+            toolbarTool
             #format
             class="t-wrapper"
             [content]="formatDropdown"
@@ -100,8 +101,6 @@
                 [tuiDescribedBy]="formatBtn.id"
                 [pseudoPressed]="format.open || bold || italic || underline || strikeThrough"
                 [focusable]="format.open"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
             <ng-template #formatDropdown>
                 <div #dropdown class="t-dropdown">
@@ -160,6 +159,7 @@
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Align)"
             #align
+            toolbarTool
             class="t-wrapper"
             [content]="alignDropdown"
         >
@@ -178,8 +178,6 @@
                 [tuiDescribedBy]="alignBtn.id"
                 [pseudoPressed]="align.open"
                 [focusable]="align.open"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
             <ng-template #alignDropdown>
                 <div #dropdown class="t-dropdown">
@@ -234,6 +232,7 @@
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.List)"
             #list
+            toolbarTool
             class="t-wrapper"
             [content]="listDropdown"
         >
@@ -252,8 +251,6 @@
                 [tuiDescribedBy]="listBtn.id"
                 [pseudoPressed]="list.open || unorderedList || orderedList"
                 [focusable]="list.open"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
             <ng-template #listDropdown>
                 <div #dropdown class="t-dropdown">
@@ -307,6 +304,7 @@
             #button
             #quoteBtn
             tuiIconButton
+            toolbarTool
             type="button"
             size="s"
             icon="tuiIconQuoteLarge"
@@ -319,12 +317,11 @@
             [pseudoPressed]="blockquote"
             [disabled]="unorderedList || orderedList"
             [focusable]="false"
-            (keydown.arrowLeft.prevent)="onArrowLeft()"
-            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="toggleQuote()"
         ></button>
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Link)"
+            toolbarTool
             #link
             class="t-wrapper"
             [canOpen]="!a"
@@ -345,8 +342,6 @@
                 [tuiDescribedBy]="linkBtn.id"
                 [pseudoPressed]="link.open || a"
                 [focusable]="link.open"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
             <ng-template #linkDropdown>
                 <tui-edit-link
@@ -361,6 +356,7 @@
             #button
             #attachBtn
             tuiIconButton
+            toolbarTool
             type="button"
             size="s"
             icon="tuiIconAttachLarge"
@@ -371,8 +367,6 @@
             [tuiHintId]="attachBtn.id"
             [tuiDescribedBy]="attachBtn.id"
             [focusable]="false"
-            (keydown.arrowLeft.prevent)="onArrowLeft()"
-            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="onAttach()"
         ></button>
     </div>
@@ -385,6 +379,7 @@
             #button
             #subBtn
             tuiIconButton
+            toolbarTool
             type="button"
             size="s"
             icon="tuiIconSubscriptLarge"
@@ -396,8 +391,6 @@
             [tuiDescribedBy]="subBtn.id"
             [pseudoPressed]="subscript"
             [focusable]="false"
-            (keydown.arrowLeft.prevent)="onArrowLeft()"
-            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="toggleSubscript()"
         ></button>
         <button
@@ -405,6 +398,7 @@
             #button
             #supBtn
             tuiIconButton
+            toolbarTool
             type="button"
             size="s"
             icon="tuiIconSuperscriptLarge"
@@ -416,8 +410,6 @@
             [tuiDescribedBy]="supBtn.id"
             [pseudoPressed]="superscript"
             [focusable]="false"
-            (keydown.arrowLeft.prevent)="onArrowLeft()"
-            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="toggleSuperscript()"
         ></button>
     </div>
@@ -430,6 +422,7 @@
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Color)"
             #color
+            toolbarTool
             class="t-wrapper"
             [content]="colorDropdown"
             [tuiDropdownMaxHeight]="999"
@@ -450,8 +443,6 @@
                 [tuiDescribedBy]="colorBtn.id"
                 [pseudoPressed]="color.open"
                 [focusable]="color.open"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
             <div class="t-plate" [style.background]="foreColor"></div>
             <ng-template #colorDropdown let-activeZone>
@@ -468,6 +459,7 @@
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Hilite)"
             #hilite
+            toolbarTool
             class="t-wrapper"
             [content]="hiliteDropdown"
             [tuiDropdownMaxHeight]="999"
@@ -488,8 +480,6 @@
                 [tuiDescribedBy]="hiliteBtn.id"
                 [pseudoPressed]="hilite.open"
                 [focusable]="hilite.open"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
             <div
                 *ngIf="!hiliteColorBlank"
@@ -511,6 +501,7 @@
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Code)"
             #codes
+            toolbarTool
             class="t-wrapper"
             [content]="codesDropdown"
         >
@@ -529,8 +520,6 @@
                 [tuiDescribedBy]="codeBtn.id"
                 [pseudoPressed]="codes.open || code || pre"
                 [focusable]="codes.open"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
             <ng-template #codesDropdown>
                 <tui-data-list #dropdown>
@@ -549,6 +538,7 @@
             #button
             #texBtn
             tuiIconButton
+            toolbarTool
             type="button"
             size="s"
             icon="tuiIconTeXLarge"
@@ -559,8 +549,6 @@
             [tuiHintId]="texBtn.id"
             [tuiDescribedBy]="texBtn.id"
             [focusable]="false"
-            (keydown.arrowLeft.prevent)="onArrowLeft()"
-            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="onTeX()"
         ></button>
         <div *ngIf="enabled(TuiEditorTool.Img)" class="t-wrapper">
@@ -575,6 +563,7 @@
             <button
                 #button
                 tuiIconButton
+                toolbarTool
                 type="button"
                 size="s"
                 icon="tuiIconImgLarge"
@@ -585,8 +574,6 @@
                 [id]="button.id"
                 [tuiHintId]="button.id"
                 [focusable]="false"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
                 (click)="image.click()"
             ></button>
         </div>
@@ -595,6 +582,7 @@
             #button
             #hrBtn
             tuiIconButton
+            toolbarTool
             type="button"
             size="s"
             icon="tuiIconHrLarge"
@@ -605,8 +593,6 @@
             [tuiHintId]="hrBtn.id"
             [tuiDescribedBy]="hrBtn.id"
             [focusable]="false"
-            (keydown.arrowLeft.prevent)="onArrowLeft()"
-            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="insertHorizontalRule()"
         ></button>
     </div>
@@ -615,6 +601,7 @@
             #button
             #clearBtn
             tuiIconButton
+            toolbarTool
             type="button"
             size="s"
             icon="tuiIconClearFormatLarge"
@@ -625,140 +612,26 @@
             [tuiHintId]="clearBtn.id"
             [tuiDescribedBy]="clearBtn.id"
             [focusable]="false"
-            (keydown.arrowLeft.prevent)="onArrowLeft()"
-            (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="removeFormat()"
         ></button>
     </div>
     <div *ngIf="enabled(TuiEditorTool.Table)" class="t-block">
-        <tui-hosted-dropdown
-            #table
-            tuiDropdownAlign="left"
-            tuiDropdownDirection="bottom"
-            [content]="tableDropdown"
-        >
-            <button
-                #button
-                #tableBtn
-                tuiIconButton
-                type="button"
-                size="s"
-                icon="tuiIconTableLarge"
-                class="t-button t-button_margin"
-                appearance="icon"
-                tuiHintDirection="top-left"
-                [tuiHint]="texts.insertTable"
-                [tuiHintId]="tableBtn.id"
-                [tuiDescribedBy]="tableBtn.id"
-                [focusable]="table.open"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
-            ></button>
-        </tui-hosted-dropdown>
+        <tui-table-create toolbarTool></tui-table-create>
 
-        <ng-template #tableDropdown>
-            <tui-table-size-selector
-                (onSelectSize)="addTable($event)"
-            ></tui-table-size-selector>
-        </ng-template>
+        <tui-table-row-column-manager
+            toolbarTool
+            [isActive]="editor?.isActive('table')"
+        ></tui-table-row-column-manager>
 
-        <tui-hosted-dropdown #tableCommand [content]="tableOptionsDropdown">
-            <button
-                #button
-                #tableCommandsBtn
-                tuiIconButton
-                type="button"
-                size="s"
-                icon="tuiIconAddRowLarge"
-                class="t-button t-button_margin"
-                appearance="icon"
-                tuiHintDirection="top-left"
-                [tuiHint]="texts.rowsColumnsManaging"
-                [tuiHintId]="tableCommandsBtn.id"
-                [tuiDescribedBy]="tableCommandsBtn.id"
-                [focusable]="tableCommand.open"
-                [disabled]="!editor?.isActive('table')"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
-            ></button>
-        </tui-hosted-dropdown>
+        <tui-table-merge-cells toolbarTool></tui-table-merge-cells>
 
-        <ng-template #tableOptionsDropdown>
-            <tui-data-list #dropdown>
-                <tui-opt-group
-                    *ngFor="let group of tableCommandTexts$ | async; let i = index"
-                >
-                    <button
-                        *ngFor="let item of group, let j = index"
-                        tuiOption
-                        (click)="onTableOption(i*2+j)"
-                    >
-                        {{item}}
-                    </button>
-                </tui-opt-group>
-            </tui-data-list>
-        </ng-template>
-
-        <button
-            #button
-            #tableMergeSplitBtn
-            tuiIconButton
-            type="button"
-            size="s"
-            [icon]="editor.canMergeCells() ? 'tuiIconTableMergeLarge' : 'tuiIconTableSplitLarge'"
-            class="t-button t-button_margin"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            [tuiHint]="editor.canMergeCells() ? texts.mergeCells : texts.splitCells"
-            [tuiHintId]="tableMergeSplitBtn.id"
-            [tuiDescribedBy]="tableMergeSplitBtn.id"
-            [focusable]="false"
-            [disabled]="!editor.canMergeCells() && !editor.canSplitCells()"
-            (keydown.arrowLeft.prevent)="onArrowLeft()"
-            (keydown.arrowRight.prevent)="onArrowRight()"
-            (click)="editor.canMergeCells() ? mergeCells() : splitCell()"
-        ></button>
-
-        <tui-hosted-dropdown
-            #cellColorSelect
+        <tui-table-cell-color
+            toolbarTool
             class="t-wrapper"
-            [content]="cellColorDropdown"
-            [tuiDropdownMaxHeight]="999"
-        >
-            <button
-                #button
-                #cellColorBtn
-                tuiIconButton
-                type="button"
-                size="s"
-                tuiHintDirection="top-left"
-                appearance="icon"
-                class="t-button"
-                icon="tuiIconPaintLarge"
-                [tuiHint]="texts.cellColor"
-                [tuiHintId]="cellColorBtn.id"
-                [tuiDescribedBy]="cellColorBtn.id"
-                [pseudoPressed]="cellColorSelect.open"
-                [focusable]="cellColorSelect.open"
-                [disabled]="!editor?.isActive('table')"
-                (keydown.arrowLeft.prevent)="onArrowLeft()"
-                (keydown.arrowRight.prevent)="onArrowRight()"
-            ></button>
-            <div
-                *ngIf="!cellColorBlank"
-                class="t-plate t-plate_paint"
-                [style.background]="cellColor"
-            ></div>
-            <ng-template #cellColorDropdown let-activeZone>
-                <tui-color-selector
-                    class="t-color-picker"
-                    [tuiActiveZoneParent]="activeZone"
-                    [colors]="colors"
-                    [color]="cellColor"
-                    (colorChange)="setCellColor($event)"
-                ></tui-color-selector>
-            </ng-template>
-        </tui-hosted-dropdown>
+            [colors]="colors"
+            [isActive]="editor?.isActive('table')"
+            [cellColor]="cellColor"
+        ></tui-table-cell-color>
     </div>
     <div class="t-block">
         <ng-content></ng-content>

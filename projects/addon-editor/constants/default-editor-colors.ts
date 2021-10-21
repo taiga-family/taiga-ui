@@ -24,3 +24,5 @@ export const defaultEditorColors = new Map([
     ['color-red-200', '#d3120e'],
     ['color-red-300', '#c40b08'],
 ]);
+
+export const EDITOR_BLANK_COLOR = 'rgb(51, 51, 51)';

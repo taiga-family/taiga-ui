@@ -1,0 +1,36 @@
+<tui-hosted-dropdown
+    #cellColorSelect
+    [content]="cellColorDropdown"
+    [tuiDropdownMaxHeight]="999"
+>
+    <button
+        #cellColorBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        tuiHintDirection="top-left"
+        appearance="icon"
+        class="t-button"
+        icon="tuiIconPaintLarge"
+        [tuiHint]="cellColorText$ | async"
+        [tuiHintId]="cellColorBtn.id"
+        [tuiDescribedBy]="cellColorBtn.id"
+        [pseudoPressed]="cellColorSelect.open"
+        [focusable]="cellColorSelect.open"
+        [disabled]="!isActive"
+    ></button>
+    <div
+        *ngIf="!cellColorBlank"
+        class="t-plate t-plate_paint"
+        [style.background]="cellColor"
+    ></div>
+    <ng-template #cellColorDropdown let-activeZone>
+        <tui-color-selector
+            class="t-color-picker"
+            [tuiActiveZoneParent]="activeZone"
+            [colors]="colors"
+            [color]="cellColor"
+            (colorChange)="setCellColor($event)"
+        ></tui-color-selector>
+    </ng-template>
+</tui-hosted-dropdown>
