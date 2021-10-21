@@ -15,7 +15,7 @@ import {TuiDestroyService} from './destroy.service';
 export class TuiSwipeService extends Observable<TuiSwipe> {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
-        @Inject(TUI_SWIPE_OPTIONS) {timeout, treshold}: TuiSwipeOptions,
+        @Inject(TUI_SWIPE_OPTIONS) {timeout, threshold}: TuiSwipeOptions,
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         const {ownerDocument} = nativeElement;
@@ -38,19 +38,20 @@ export class TuiSwipeService extends Observable<TuiSwipe> {
                         const endX = second.changedTouches[0].clientX;
                         const endY = second.changedTouches[0].clientY;
 
-                        const deltaTime = second.timeStamp - first.timeStamp;
+                        const duration = second.timeStamp - first.timeStamp;
                         const deltaX = startX - endX;
                         const deltaY = startY - endY;
 
                         if (
-                            (Math.abs(deltaX) > treshold ||
-                                Math.abs(deltaY) > treshold) &&
-                            deltaTime < timeout
+                            (Math.abs(deltaX) > threshold ||
+                                Math.abs(deltaY) > threshold) &&
+                            duration < timeout
                         ) {
                             return {
                                 direction: getSwipeDirection(deltaX, deltaY),
                                 start: first,
                                 end: second,
+                                duration,
                             };
                         }
 

@@ -54,7 +54,7 @@ describe('TuiSwipe directive', () => {
         expect(testComponent.swiped).toBe('right');
     });
 
-    it('does not emits events due to treshold', () => {
+    it('does not emits events due to threshold', () => {
         sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart');
         sendTouchEvent(0, 20, testElement.nativeElement, 'touchend');
 
