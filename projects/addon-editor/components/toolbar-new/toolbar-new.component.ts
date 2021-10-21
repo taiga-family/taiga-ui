@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    Directive,
     ElementRef,
     EventEmitter,
     HostBinding,
@@ -14,6 +13,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {TuiToolbarToolDirective} from '@taiga-ui/addon-editor/components/toolbar-new/tools-keyboard-navigation.directive';
 import {
     defaultEditorColors,
     defaultEditorTools,
@@ -29,10 +29,8 @@ import {
     TUI_IMAGE_LOADER,
 } from '@taiga-ui/addon-editor/tokens';
 import {
-    clamp,
     EMPTY_QUERY,
     getClosestElement,
-    getClosestFocusable,
     isNativeFocusedIn,
     isNativeMouseFocusable,
     setNativeFocused,
@@ -53,11 +51,6 @@ function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
         tools.indexOf(TuiEditorTool.Attach) === -1
     );
 }
-
-@Directive({
-    selector: '[toolbarTool]',
-})
-export class TuiToolbarToolDirective {}
 
 // @dynamic
 @Component({
@@ -133,36 +126,6 @@ export class TuiToolbarNewComponent {
     @ViewChildren('dropdown', {read: ElementRef})
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    get toolsContainers(): ReadonlyArray<HTMLElement> {
-        return this.toolsRefs.map(({nativeElement}) => nativeElement);
-
-        return Array.from(
-            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[toolbarTool]'),
-        );
-    }
-
-    @HostListener('keydown.arrowRight.prevent', ['false'])
-    @HostListener('keydown.arrowLeft.prevent', ['true'])
-    onHorizontalNavigation(toPrevious: boolean) {
-        const focusedToolIndex = this.toolsContainers.findIndex(tool =>
-            isNativeFocusedIn(tool),
-        );
-
-        const targetToolIndex = clamp(
-            focusedToolIndex + (toPrevious ? -1 : 1),
-            0,
-            this.toolsContainers.length - 1,
-        );
-        const targetToolWrapper = this.toolsContainers[targetToolIndex];
-        const targetTool = toPrevious
-            ? this.findPreviousTool(targetToolWrapper)
-            : this.findNextTool(targetToolWrapper);
-
-        if (targetTool) {
-            setNativeFocused(targetTool);
-        }
-    }
-
     constructor(
         @Optional()
         @Inject(ElementRef)
@@ -192,12 +155,17 @@ export class TuiToolbarNewComponent {
     }
 
     get firstButton(): TuiNativeFocusableElement | null {
-        return this.toolsContainers.find(tool => isNativeMouseFocusable(tool)) || null;
+        return (
+            this.toolsRefs
+                .map(({nativeElement}) => nativeElement)
+                .find(el => isNativeMouseFocusable(el)) || null
+        );
     }
 
     get lastButton(): TuiNativeFocusableElement | null {
         return (
-            this.toolsContainers
+            this.toolsRefs
+                .map(({nativeElement}) => nativeElement)
                 .slice()
                 .reverse()
                 .find(tool => isNativeMouseFocusable(tool)) || null
@@ -475,28 +443,6 @@ export class TuiToolbarNewComponent {
 
     private isBlankColor(color: string): boolean {
         return color === EDITOR_BLANK_COLOR;
-    }
-
-    private findPreviousTool(wrapper: HTMLElement): HTMLElement | null {
-        if (isNativeMouseFocusable(wrapper)) {
-            return wrapper;
-        }
-
-        const lookedInside = getClosestFocusable(wrapper, false, wrapper, false);
-
-        if (lookedInside) {
-            return lookedInside;
-        }
-
-        return getClosestFocusable(wrapper, true, this.elementRef.nativeElement, false);
-    }
-
-    private findNextTool(wrapper: HTMLElement): HTMLElement | null {
-        if (isNativeMouseFocusable(wrapper)) {
-            return wrapper;
-        }
-
-        return getClosestFocusable(wrapper, false, this.elementRef.nativeElement, false);
     }
 
     private focusFirst() {

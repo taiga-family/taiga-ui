@@ -1,7 +1,11 @@
 <ng-container *ngIf="editor.stateChange$ | async"></ng-container>
 <div [tuiFocusable]="focusable" (focus)="onTopFocus()"></div>
 <div [tuiFocusable]="focusable" (focus)="onBottomFocus()"></div>
-<ng-container *ngIf="texts$ | async as texts">
+<section
+    *ngIf="texts$ | async as texts"
+    class="wrapper"
+    toolbarNavigationManager
+>
     <div *ngIf="enabled(TuiEditorTool.Undo)" class="t-block">
         <button
             #button
@@ -636,4 +640,4 @@
     <div class="t-block">
         <ng-content></ng-content>
     </div>
-</ng-container>
+</section>
