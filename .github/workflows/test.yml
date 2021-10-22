@@ -47,48 +47,98 @@ jobs:
             - name: Run affected tests
               run: npm run task scripts/affected/affected-tests.ts
             # Coveralls part
+
+            - name: Check file existence cdk_lcov_info
+              id: cdk_lcov_info
+              uses: andstor/file-existence-action@v1
+              with:
+                  files: ./coverage/cdk/lcov.info
             - name: Coveralls(cdk)
+              if: steps.cdk_lcov_info.outputs.files_exists == 'true'
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/cdk/lcov.info
+
+            - name: Check file existence core_lcov_info
+              id: core_lcov_info
+              uses: andstor/file-existence-action@v1
+              with:
+                  files: ./coverage/core/lcov.info
             - name: Coveralls(core)
+              if: steps.core_lcov_info.outputs.files_exists == 'true'
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/core/lcov.info
+
+            - name: Check file existence kit_lcov_info
+              id: kit_lcov_info
+              uses: andstor/file-existence-action@v1
+              with:
+                  files: ./coverage/kit/lcov.info
             - name: Coveralls(kit)
+              if: steps.kit_lcov_info.outputs.files_exists == 'true'
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/kit/lcov.info
+
+            - name: Check file existence addon_charts_lcov_info
+              id: addon_charts_lcov_info
+              uses: andstor/file-existence-action@v1
+              with:
+                  files: ./coverage/addon-charts/lcov.info
             - name: Coveralls(addon-charts)
+              if: steps.addon_charts_lcov_info.outputs.files_exists == 'true'
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/addon-charts/lcov.info
+
+            - name: Check file existence addon_commerce_lcov_info
+              id: addon_commerce_lcov_info
+              uses: andstor/file-existence-action@v1
+              with:
+                  files: ./coverage/addon-commerce/lcov.info
             - name: Coveralls(addon-commerce)
+              if: steps.addon_commerce_lcov_info.outputs.files_exists == 'true'
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/addon-commerce/lcov.info
+
+            - name: Check file existence addon_editor_lcov_info
+              id: addon_editor_lcov_info
+              uses: andstor/file-existence-action@v1
+              with:
+                  files: ./coverage/addon-editor/lcov.info
             - name: Coveralls(addon-editor)
+              if: steps.addon_editor_lcov_info.outputs.files_exists == 'true'
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/addon-editor/lcov.info
+
+            - name: Check file existence addon_table_lcov_info
+              id: addon_table_lcov_info
+              uses: andstor/file-existence-action@v1
+              with:
+                  files: ./coverage/addon-table/lcov.info
             - name: Coveralls(addon-table)
+              if: steps.addon_table_lcov_info.outputs.files_exists == 'true'
               continue-on-error: true
               uses: coverallsapp/github-action@master
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   path-to-lcov: ./coverage/addon-table/lcov.info
+
             - name: Coveralls Finished
               continue-on-error: true
               uses: coverallsapp/github-action@master
