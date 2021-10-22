@@ -51,6 +51,6 @@ import {
         TuiToolbarToolDirective,
         TuiToolbarNavigationManager,
     ],
-    exports: [TuiToolbarNewComponent],
+    exports: [TuiToolbarNewComponent, TuiToolbarToolDirective],
 })
 export class TuiToolbarNewModule {}

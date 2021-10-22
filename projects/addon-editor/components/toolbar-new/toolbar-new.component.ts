@@ -31,6 +31,7 @@ import {
 import {
     EMPTY_QUERY,
     getClosestElement,
+    getClosestFocusable,
     isNativeFocusedIn,
     isNativeMouseFocusable,
     setNativeFocused,
@@ -121,7 +122,7 @@ export class TuiToolbarNewComponent {
         );
 
     @ViewChildren(TuiToolbarToolDirective, {read: ElementRef})
-    private readonly toolsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly toolsWrapperRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @ViewChildren('dropdown', {read: ElementRef})
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
@@ -143,6 +144,10 @@ export class TuiToolbarNewComponent {
         >,
     ) {}
 
+    get toolsWrappers(): HTMLElement[] {
+        return this.toolsWrapperRefs.map(({nativeElement}) => nativeElement);
+    }
+
     get focused(): boolean {
         return (
             isNativeFocusedIn(this.elementRef.nativeElement) ||
@@ -152,24 +157,6 @@ export class TuiToolbarNewComponent {
 
     get focusable(): boolean {
         return !this.focused && !this.disabled;
-    }
-
-    get firstButton(): TuiNativeFocusableElement | null {
-        return (
-            this.toolsRefs
-                .map(({nativeElement}) => nativeElement)
-                .find(el => isNativeMouseFocusable(el)) || null
-        );
-    }
-
-    get lastButton(): TuiNativeFocusableElement | null {
-        return (
-            this.toolsRefs
-                .map(({nativeElement}) => nativeElement)
-                .slice()
-                .reverse()
-                .find(tool => isNativeMouseFocusable(tool)) || null
-        );
     }
 
     get bold(): boolean {
@@ -445,8 +432,24 @@ export class TuiToolbarNewComponent {
         return color === EDITOR_BLANK_COLOR;
     }
 
+    private findFirstFocusable(
+        elements: HTMLElement[],
+    ): TuiNativeFocusableElement | null {
+        for (const el of elements) {
+            const focusableElement = isNativeMouseFocusable(el)
+                ? el
+                : getClosestFocusable(el, false, el, false);
+
+            if (focusableElement) {
+                return focusableElement;
+            }
+        }
+
+        return null;
+    }
+
     private focusFirst() {
-        const {firstButton} = this;
+        const firstButton = this.findFirstFocusable(this.toolsWrappers);
 
         if (firstButton) {
             setNativeFocused(firstButton);
@@ -454,7 +457,7 @@ export class TuiToolbarNewComponent {
     }
 
     private focusLast() {
-        const {lastButton} = this;
+        const lastButton = this.findFirstFocusable(this.toolsWrappers.slice().reverse());
 
         if (lastButton) {
             setNativeFocused(lastButton);
