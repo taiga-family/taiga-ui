@@ -627,7 +627,11 @@
             [isActive]="editor?.isActive('table')"
         ></tui-table-row-column-manager>
 
-        <tui-table-merge-cells toolbarTool></tui-table-merge-cells>
+        <tui-table-merge-cells
+            toolbarTool
+            [canMergeCells]="editor.canMergeCells()"
+            [canSplitCells]="editor.canSplitCells()"
+        ></tui-table-merge-cells>
 
         <tui-table-cell-color
             toolbarTool

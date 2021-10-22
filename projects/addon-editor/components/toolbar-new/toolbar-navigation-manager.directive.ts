@@ -20,9 +20,7 @@ export class TuiToolbarNavigationManagerDirective {
     @HostListener('keydown.arrowRight.prevent', ['false'])
     @HostListener('keydown.arrowLeft.prevent', ['true'])
     onHorizontalNavigation(toPrevious: boolean) {
-        const focusedToolIndex = this.toolsContainers.findIndex(tool =>
-            isNativeFocusedIn(tool),
-        );
+        const focusedToolIndex = this.toolsContainers.findIndex(isNativeFocusedIn);
 
         const targetToolIndex = clamp(
             focusedToolIndex + (toPrevious ? -1 : 1),

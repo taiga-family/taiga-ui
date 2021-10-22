@@ -4,14 +4,14 @@
     tuiIconButton
     type="button"
     size="s"
-    [icon]="editor.canMergeCells() ? 'tuiIconTableMergeLarge' : 'tuiIconTableSplitLarge'"
+    [icon]="canMergeCells ? 'tuiIconTableMergeLarge' : 'tuiIconTableSplitLarge'"
     class="t-button t-button_margin"
     appearance="icon"
     tuiHintDirection="top-left"
-    [tuiHint]="editor.canMergeCells() ? texts.mergeCells : texts.splitCells"
+    [tuiHint]="canMergeCells ? texts.mergeCells : texts.splitCells"
     [tuiHintId]="tableMergeSplitBtn.id"
     [tuiDescribedBy]="tableMergeSplitBtn.id"
     [focusable]="false"
-    [disabled]="!editor.canMergeCells() && !editor.canSplitCells()"
-    (click)="editor.canMergeCells() ? mergeCells() : splitCell()"
+    [disabled]="!canMergeCells && !canSplitCells"
+    (click)="canMergeCells ? mergeCells() : splitCell()"
 ></button>

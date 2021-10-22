@@ -1,7 +1,8 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 
@@ -12,6 +13,14 @@ import {Observable} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableMergeCellsComponent {
+    @Input()
+    @tuiDefaultProp()
+    canMergeCells = false;
+
+    @Input()
+    @tuiDefaultProp()
+    canSplitCells = false;
+
     constructor(
         @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
