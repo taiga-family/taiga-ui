@@ -1,8 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {ElementRef, Inject, Injectable} from '@angular/core';
+import {typedFromEvent} from '@taiga-ui/cdk/observables';
 import {merge, Observable} from 'rxjs';
 import {filter, map, pairwise, repeat, switchMapTo, takeUntil} from 'rxjs/operators';
-import {typedFromEvent} from '../observables';
 
 /**
  * @dynamic
