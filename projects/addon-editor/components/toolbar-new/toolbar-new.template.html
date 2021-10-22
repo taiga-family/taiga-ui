@@ -3,8 +3,8 @@
 <div [tuiFocusable]="focusable" (focus)="onBottomFocus()"></div>
 <section
     *ngIf="texts$ | async as texts"
-    class="wrapper"
     toolbarNavigationManager
+    class="wrapper"
 >
     <div *ngIf="enabled(TuiEditorTool.Undo)" class="t-block">
         <button

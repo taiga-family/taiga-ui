@@ -3,7 +3,11 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
+import {
+    TuiEditorModule,
+    TuiEditorSocketModule,
+    TuiToolbarToolModule,
+} from '@taiga-ui/addon-editor';
 import {
     TuiButtonModule,
     TuiLinkModule,
@@ -29,6 +33,7 @@ import {ExampleSmilesToolModule} from './examples/2/smiles-tool/smiles-tool.modu
         TuiAddonDocModule,
         TuiLinkModule,
         TuiSvgModule,
+        TuiToolbarToolModule,
         ExampleSmilesToolModule,
         RouterModule.forChild(generateRoutes(ExampleEditorNewComponent)),
     ],

@@ -1,14 +1,6 @@
-import {
-    ContentChildren,
-    Directive,
-    ElementRef,
-    HostListener,
-    Inject,
-    QueryList,
-} from '@angular/core';
+import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
 import {
     clamp,
-    EMPTY_QUERY,
     getClosestFocusable,
     isNativeFocusedIn,
     isNativeMouseFocusable,
@@ -16,19 +8,13 @@ import {
 } from '@taiga-ui/cdk';
 
 @Directive({
-    selector: '[toolbarTool]',
-})
-export class TuiToolbarToolDirective {}
-
-@Directive({
     selector: '[toolbarNavigationManager]',
 })
 export class TuiToolbarNavigationManager {
-    @ContentChildren(TuiToolbarToolDirective, {read: ElementRef, descendants: true})
-    private readonly toolsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
     get toolsContainers(): ReadonlyArray<HTMLElement> {
-        return this.toolsRefs.map(({nativeElement}) => nativeElement);
+        return Array.from(
+            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[toolbarTool]'),
+        );
     }
 
     @HostListener('keydown.arrowRight.prevent', ['false'])

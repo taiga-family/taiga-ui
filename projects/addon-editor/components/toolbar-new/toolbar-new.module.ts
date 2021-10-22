@@ -21,15 +21,14 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directive';
 import {TuiToolbarNewComponent} from './toolbar-new.component';
-import {
-    TuiToolbarNavigationManager,
-    TuiToolbarToolDirective,
-} from './tools-keyboard-navigation.directive';
+import {TuiToolbarToolModule} from './toolbar-tool/toolbar-tool.module';
 
 @NgModule({
     imports: [
         CommonModule,
+        TuiToolbarToolModule,
         TuiHintModule,
         TuiFocusableModule,
         TuiButtonModule,
@@ -46,11 +45,7 @@ import {
         TuiTableRowColumnManagerModule,
         TuiTableCreateModule,
     ],
-    declarations: [
-        TuiToolbarNewComponent,
-        TuiToolbarToolDirective,
-        TuiToolbarNavigationManager,
-    ],
-    exports: [TuiToolbarNewComponent, TuiToolbarToolDirective],
+    declarations: [TuiToolbarNewComponent, TuiToolbarNavigationManager],
+    exports: [TuiToolbarNewComponent],
 })
 export class TuiToolbarNewModule {}

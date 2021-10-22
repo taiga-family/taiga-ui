@@ -13,7 +13,6 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
-import {TuiToolbarToolDirective} from '@taiga-ui/addon-editor/components/toolbar-new/tools-keyboard-navigation.directive';
 import {
     defaultEditorColors,
     defaultEditorTools,
@@ -121,9 +120,6 @@ export class TuiToolbarNewComponent {
             ]),
         );
 
-    @ViewChildren(TuiToolbarToolDirective, {read: ElementRef})
-    private readonly toolsWrapperRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
     @ViewChildren('dropdown', {read: ElementRef})
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
@@ -145,7 +141,9 @@ export class TuiToolbarNewComponent {
     ) {}
 
     get toolsWrappers(): HTMLElement[] {
-        return this.toolsWrapperRefs.map(({nativeElement}) => nativeElement);
+        return Array.from(
+            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[toolbarTool]'),
+        );
     }
 
     get focused(): boolean {
