@@ -1,11 +1,8 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {
-    defaultEditorColors,
-    EDITOR_BLANK_COLOR,
-    TUI_EDITOR_TOOLBAR_TEXTS,
-    TuiTiptapEditorService,
-} from '@taiga-ui/addon-editor';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {defaultEditorColors, EDITOR_BLANK_COLOR} from '@taiga-ui/addon-editor/constants';
+import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
+import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';

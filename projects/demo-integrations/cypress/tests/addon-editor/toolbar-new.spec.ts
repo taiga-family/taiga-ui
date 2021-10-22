@@ -72,7 +72,7 @@ describe("Editor's toolbar", () => {
     });
 
     describe('has keyboard horizontal navigation between tool-buttons', () => {
-        it('focus nearest left/right active tool on "Arrow Right"/"Arrow Left"', () => {
+        it('focuses nearest left/right active tool on "Arrow Right"/"Arrow Left"', () => {
             cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
             cy.get('@wrapper')
                 .find('button[icon="tuiIconAlignLeftLarge"]')

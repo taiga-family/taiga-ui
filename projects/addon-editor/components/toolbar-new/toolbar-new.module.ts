@@ -21,7 +21,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directive';
+import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 import {TuiToolbarNewComponent} from './toolbar-new.component';
 import {TuiToolbarToolModule} from './toolbar-tool/toolbar-tool.module';
 
@@ -45,7 +45,7 @@ import {TuiToolbarToolModule} from './toolbar-tool/toolbar-tool.module';
         TuiTableRowColumnManagerModule,
         TuiTableCreateModule,
     ],
-    declarations: [TuiToolbarNewComponent, TuiToolbarNavigationManager],
+    declarations: [TuiToolbarNewComponent, TuiToolbarNavigationManagerDirective],
     exports: [TuiToolbarNewComponent],
 })
 export class TuiToolbarNewModule {}

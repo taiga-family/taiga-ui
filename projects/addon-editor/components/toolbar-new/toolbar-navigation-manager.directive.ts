@@ -10,7 +10,7 @@ import {
 @Directive({
     selector: '[toolbarNavigationManager]',
 })
-export class TuiToolbarNavigationManager {
+export class TuiToolbarNavigationManagerDirective {
     get toolsContainers(): ReadonlyArray<HTMLElement> {
         return Array.from(
             this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[toolbarTool]'),
