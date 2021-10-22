@@ -37,8 +37,8 @@ describe('TuiSwipe directive', () => {
     });
 
     it('emits events bottom', () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart');
-        sendTouchEvent(0, 100, testElement.nativeElement, 'touchend');
+        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart', 1);
+        sendTouchEvent(0, 100, testElement.nativeElement, 'touchend', 1);
 
         fixture.detectChanges();
 
@@ -46,8 +46,8 @@ describe('TuiSwipe directive', () => {
     });
 
     it('emits events right', () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart');
-        sendTouchEvent(100, 0, testElement.nativeElement, 'touchend');
+        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart', 1);
+        sendTouchEvent(100, 0, testElement.nativeElement, 'touchend', 1);
 
         fixture.detectChanges();
 
@@ -55,8 +55,8 @@ describe('TuiSwipe directive', () => {
     });
 
     it('does not emits events due to threshold', () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart');
-        sendTouchEvent(0, 20, testElement.nativeElement, 'touchend');
+        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart', 1);
+        sendTouchEvent(0, 20, testElement.nativeElement, 'touchend', 1);
 
         fixture.detectChanges();
 
@@ -68,9 +68,10 @@ describe('TuiSwipe directive', () => {
         y: number,
         element: HTMLElement,
         eventType: 'touchstart' | 'touchend',
+        identifier: number,
     ) {
         const touchObj = new Touch({
-            identifier: Date.now(),
+            identifier: identifier,
             target: element,
             clientX: x,
             clientY: y,
