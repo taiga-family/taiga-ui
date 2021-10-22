@@ -34,6 +34,15 @@ export class TuiTableRowColumnManagerComponent {
         map(texts => texts.rowsColumnsManaging),
     );
 
+    private commandsRegistry: Record<TableComands, () => void> = {
+        [TableComands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
+        [TableComands.InsertColumnBefore]: () => this.editor.addColumnBefore(),
+        [TableComands.InsertRowAfter]: () => this.editor.addRowAfter(),
+        [TableComands.InsertRowBefore]: () => this.editor.addRowBefore(),
+        [TableComands.DeleteColumn]: () => this.editor.deleteColumn(),
+        [TableComands.DeleteRow]: () => this.editor.deleteRow(),
+    };
+
     constructor(
         @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
@@ -43,13 +52,6 @@ export class TuiTableRowColumnManagerComponent {
     ) {}
 
     onTableOption(command: TableComands) {
-        ({
-            [TableComands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
-            [TableComands.InsertColumnBefore]: () => this.editor.addColumnBefore(),
-            [TableComands.InsertRowAfter]: () => this.editor.addRowAfter(),
-            [TableComands.InsertRowBefore]: () => this.editor.addRowBefore(),
-            [TableComands.DeleteColumn]: () => this.editor.deleteColumn(),
-            [TableComands.DeleteRow]: () => this.editor.deleteRow(),
-        }[command]());
+        this.commandsRegistry[command]();
     }
 }
