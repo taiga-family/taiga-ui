@@ -6,7 +6,7 @@ import {getLibsList} from '../shared/get-libs-list';
     const MAX_PARALLEL = process.env.NX_MAX_PARALLEL ?? DEFAULT_NX_MAX_PARALLEL;
 
     /**
-     * @note:
+     * @note(splincode):
      * Why we don't use `nx affected:libs --plain` instead?
      * Because when we checkout to the main branch and
      * run `nx affected:libs` and `nx affected:apps` they are return empty list.

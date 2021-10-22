@@ -7,7 +7,8 @@ export function grepByPattern(pattern: string, path: string): Promise<string> {
     console.info(`[TASK]: $ ${grep}`);
 
     /**
-     * @note: If `grep` didn't find anything, then it throws an error
+     * @note(splincode):
+     * If `grep` didn't find anything, then it throws an error
      */
     return asyncExec(`${grep} || true`);
 }

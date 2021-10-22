@@ -19,7 +19,6 @@ on:
 env:
     NX_BRANCH: ${{ github.event.number }}
     NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-    NX_MAX_PARALLEL: 3
 
 jobs:
     test:

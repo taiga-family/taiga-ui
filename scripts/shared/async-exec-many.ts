@@ -1,7 +1,7 @@
 import {asyncExec} from './async-exec';
 
 /**
- * @note:
+ * @note(splincode):
  * Safer execution of sequential shell commands
  * that are interrupted at the first error in the stderr
  */
