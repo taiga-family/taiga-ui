@@ -1,9 +1,11 @@
+import {TUI_LANGUAGE_CODE} from '@taiga-ui/i18n/constants';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 
 // prettier-ignore
 type MONTHS_ARRAY = [string, string, string, string, string, string, string, string, string, string, string, string];
 
 export interface LanguageCore {
+    code: TUI_LANGUAGE_CODE;
     months: MONTHS_ARRAY;
     close: string;
     nothingFoundMessage: string;
