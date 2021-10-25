@@ -17,7 +17,7 @@
         "prerender": "nx run demo:prerender",
         "i18n": "nx xi18n --output-path src/locale",
         "*** Workflow ***": "",
-        "task": "ts-node --project tsconfig.compiler.json",
+        "task": "ts-node --project tsconfig.tools.json",
         "test": "nx test --browsers=ChromeHeadless --code-coverage=true --",
         "lint": "nx lint",
         "lint:less": "stylelint '**/*.less'",
