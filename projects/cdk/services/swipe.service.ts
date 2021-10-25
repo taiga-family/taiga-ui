@@ -47,8 +47,7 @@ export class TuiSwipeService extends Observable<TuiSwipe> {
                         ) {
                             return {
                                 direction: getSwipeDirection(distanceX, distanceY),
-                                start,
-                                end,
+                                events: [start, end] as [TouchEvent, TouchEvent],
                             };
                         }
 

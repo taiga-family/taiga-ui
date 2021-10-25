@@ -1,7 +1,6 @@
 export interface TuiSwipe {
     readonly direction: TuiSwipeDirection;
-    readonly start: TouchEvent;
-    readonly end: TouchEvent;
+    readonly events: [TouchEvent, TouchEvent];
 }
 
 export type TuiSwipeDirection = 'left' | 'right' | 'top' | 'bottom';
