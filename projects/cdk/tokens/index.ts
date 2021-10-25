@@ -10,3 +10,4 @@ export * from './sanitizer';
 export * from './is-cypress';
 export * from './take-only-trusted-events';
 export * from './window-height';
+export * from './swipe-options';

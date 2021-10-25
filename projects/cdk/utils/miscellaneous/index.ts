@@ -9,3 +9,4 @@ export * from './is-present';
 export * from './mark-control-as-touched-and-validate';
 export * from './nullable-same';
 export * from './uniq-by';
+export * from './get-swipe-direction';

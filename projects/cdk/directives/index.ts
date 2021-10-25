@@ -23,3 +23,4 @@ export * from '@taiga-ui/cdk/directives/prevent-default';
 export * from '@taiga-ui/cdk/directives/repeat-times';
 export * from '@taiga-ui/cdk/directives/validator';
 export * from '@taiga-ui/cdk/directives/pan';
+export * from '@taiga-ui/cdk/directives/swipe';

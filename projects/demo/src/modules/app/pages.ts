@@ -991,6 +991,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'Swipe',
+                keywords: 'swipe, свайп',
+                route: '/directives/swipe',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'Let',
                 keywords:
                     'let, переменная, шаблон, геттер, getter, pipe, пайп, async, подписка',
