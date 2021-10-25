@@ -18,6 +18,8 @@ jobs:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
         steps:
             - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
             - name: Use Node.js
               uses: actions/setup-node@v1
               with:
@@ -34,8 +36,8 @@ jobs:
               run: npm ci
             # End of setup
             - run: |
-                  npm run taiga-schematics:build
-                  npm run test:schematics
+                  npm run task scripts/build/build-schematics.ts
+                  npm run task scripts/affected/affected-schematics.ts
 
 concurrency:
     group: schematics-test-${{ github.head_ref }}

@@ -129,6 +129,27 @@
                         }
                     }
                 },
+                "postbuild": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "parallel": false,
+                        "commands": [
+                            "tsc -p ./projects/taiga-schematics/tsconfig.schematics.json",
+                            "cp ./projects/taiga-schematics/schematics/collection.json ./dist/taiga-schematics/collection.json",
+                            "cp ./projects/taiga-schematics/schematics/ng-add/schema.json ./dist/taiga-schematics/ng-add/schema.json"
+                        ]
+                    }
+                },
+                "schematics": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "parallel": false,
+                        "commands": [
+                            "tsc -p ./projects/taiga-schematics/tsconfig.spec.json",
+                            "jasmine ./dist/taiga-schematics/**/*.spec.js"
+                        ]
+                    }
+                },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
@@ -190,6 +211,12 @@
             "projectType": "library",
             "prefix": "tui",
             "architect": {
+                "prebuild": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm run task ./projects/icons/scripts/compile-icons.ts"
+                    }
+                },
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
                     "outputs": ["dist/icons"],
