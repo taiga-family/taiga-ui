@@ -8,7 +8,7 @@ import {filter, map, pairwise, repeat, switchMapTo, takeUntil} from 'rxjs/operat
  * @dynamic
  */
 @Injectable()
-export class TuiPanService extends Observable<[number, number]> {
+export class TuiPanService extends Observable<readonly [number, number]> {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
         @Inject(DOCUMENT) documentRef: Document,

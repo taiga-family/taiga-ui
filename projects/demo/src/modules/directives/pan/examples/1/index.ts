@@ -15,7 +15,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiPanExample1 {
     readonly coordinates$ = new BehaviorSubject([0, 0]);
 
-    transform$ = this.coordinates$.pipe(
+    readonly transform$ = this.coordinates$.pipe(
         tap(console.log),
         map(coords =>
             this.sanitizer.bypassSecurityTrustStyle(
