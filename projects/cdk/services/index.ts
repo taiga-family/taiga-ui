@@ -8,3 +8,4 @@ export * from './parents-scroll.service';
 export * from './resize.service';
 export * from './scroll.service';
 export * from './static-request.service';
+export * from './pan.service';

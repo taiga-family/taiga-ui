@@ -1226,6 +1226,14 @@ export const ROUTES = [
         },
     },
     {
+        path: 'directives/pan',
+        loadChildren: () =>
+            import(`../directives/pan/pan.module`).then(m => m.ExampleTuiPanModule),
+        data: {
+            title: 'Pan',
+        },
+    },
+    {
         path: 'directives/let',
         loadChildren: () =>
             import(`../directives/let/let.module`).then(m => m.ExampleTuiLetModule),

@@ -1,0 +1,10 @@
+import {TuiPanModule} from '@taiga-ui/cdk';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiPanModule,
+    ],
+...
