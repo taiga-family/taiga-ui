@@ -12,8 +12,8 @@ describe('TuiSwipe directive', () => {
     class TestComponent {
         swiped = '';
 
-        onSwipe(focused: TuiSwipe) {
-            this.swiped = focused.direction;
+        onSwipe(swipe: TuiSwipe) {
+            this.swiped = swipe.direction;
         }
     }
 

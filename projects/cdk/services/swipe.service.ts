@@ -3,7 +3,7 @@ import {ElementRef, Inject, Injectable} from '@angular/core';
 import {TuiSwipe, TuiSwipeOptions} from '@taiga-ui/cdk/interfaces';
 import {typedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_SWIPE_OPTIONS} from '@taiga-ui/cdk/tokens';
-import {getSwipeDirection} from '@taiga-ui/cdk/utils/miscellaneous';
+import {getSwipeDirection, isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {merge, Observable} from 'rxjs';
 import {filter, map, pairwise} from 'rxjs/operators';
 
@@ -38,22 +38,23 @@ export class TuiSwipeService extends Observable<TuiSwipe> {
 
                         const distanceX = startX - endX;
                         const distanceY = startY - endY;
+                        const duration = end.timeStamp - start.timeStamp;
 
-                        return {
-                            direction: getSwipeDirection(distanceX, distanceY),
-                            start,
-                            end,
-                            duration: end.timeStamp - start.timeStamp,
-                            distanceX,
-                            distanceY,
-                        };
-                    }),
-                    filter(
-                        ({distanceX, distanceY, duration}) =>
+                        if (
                             (Math.abs(distanceX) > threshold ||
                                 Math.abs(distanceY) > threshold) &&
-                            duration < timeout,
-                    ),
+                            duration < timeout
+                        ) {
+                            return {
+                                direction: getSwipeDirection(distanceX, distanceY),
+                                start,
+                                end,
+                            };
+                        }
+
+                        return null;
+                    }),
+                    filter(isPresent),
                 )
                 .subscribe(subscriber);
         });
