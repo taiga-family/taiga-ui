@@ -19,6 +19,7 @@ on:
 env:
     NX_BRANCH: ${{ github.event.number }}
     NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+    IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
 
 jobs:
     test:
@@ -44,8 +45,12 @@ jobs:
             - name: Install dependencies
               run: npm ci
             # End of setup
-            - name: Run affected tests
-              run: npm run task scripts/affected/affected-tests.ts
+            - name: Run affected tests for libraries based on main branch
+              if: ${{ env.IS_MAIN_BRANCH == 'false' }}
+              run: npm run affected:test:libs
+            - name: Run all tests for libraries only in main branch
+              if: ${{ env.IS_MAIN_BRANCH == 'true' }}
+              run: npm run run-many:test:libs
             # Coveralls part
 
             - name: Check file existence cdk_lcov_info
