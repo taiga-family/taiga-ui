@@ -1,0 +1,5 @@
+<div class="container" (tuiZoom)="onZoom($event)" (wheel.prevent)="0">
+    <div class="zoomable" [style.transform]="transform$ | async">
+        <span>{{scale$ | async | number: '1.0-3'}}</span>
+    </div>
+</div>

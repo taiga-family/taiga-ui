@@ -10,3 +10,4 @@ export * from './scroll.service';
 export * from './static-request.service';
 export * from './pan.service';
 export * from './swipe.service';
+export * from './zoom.service';

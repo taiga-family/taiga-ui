@@ -1250,6 +1250,14 @@ export const ROUTES = [
         },
     },
     {
+        path: 'directives/zoom',
+        loadChildren: () =>
+            import(`../directives/zoom/zoom.module`).then(m => m.ExampleTuiZoomModule),
+        data: {
+            title: 'Zoom',
+        },
+    },
+    {
         path: 'directives/overscroll',
         loadChildren: () =>
             import(`../directives/overscroll/overscroll.module`).then(

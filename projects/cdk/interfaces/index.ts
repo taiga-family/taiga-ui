@@ -8,3 +8,4 @@ export * from './month-like';
 export * from './time-like';
 export * from './year-like';
 export * from './swipe';
+export * from './zoom';
