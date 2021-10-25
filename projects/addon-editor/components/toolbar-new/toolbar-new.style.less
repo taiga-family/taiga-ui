@@ -25,10 +25,11 @@
     }
 }
 
-.t-button {
+.t-tool {
     .transition(background);
 
-    &:hover {
+    button&:hover,
+    & ::ng-deep button:hover {
         background: var(--tui-secondary-hover);
     }
 

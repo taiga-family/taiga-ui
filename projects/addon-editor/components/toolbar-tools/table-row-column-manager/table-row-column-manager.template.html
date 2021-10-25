@@ -5,14 +5,13 @@
         type="button"
         size="s"
         icon="tuiIconAddRowLarge"
-        class="t-button t-button_margin"
         appearance="icon"
         tuiHintDirection="top-left"
         [tuiHint]="rowsColumnsManagingText$ | async"
         [tuiHintId]="tableCommandsBtn.id"
         [tuiDescribedBy]="tableCommandsBtn.id"
         [focusable]="tableCommand.open"
-        [disabled]="!isActive"
+        [disabled]="isDisabled$ | async"
     ></button>
 </tui-hosted-dropdown>
 

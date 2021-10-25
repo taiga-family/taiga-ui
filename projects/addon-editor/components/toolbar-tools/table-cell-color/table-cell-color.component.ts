@@ -6,7 +6,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-table-cell-color',
@@ -19,18 +19,18 @@ export class TuiTableCellColorComponent {
     @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = defaultEditorColors;
 
-    @Input()
-    @tuiDefaultProp()
-    isActive = false;
-
-    @Input()
-    @tuiDefaultProp()
-    cellColor = EDITOR_BLANK_COLOR;
-
     readonly cellColorText$ = this.texts$.pipe(map(texts => texts.cellColor));
+    readonly isActive$ = this.editor.stateChange$.pipe(
+        map(() => this.editor.isActive('table')),
+        distinctUntilChanged(),
+    );
+    readonly cellColor$ = this.editor.stateChange$.pipe(
+        map(() => this.editor.getCellColor() || EDITOR_BLANK_COLOR),
+        distinctUntilChanged(),
+    );
 
-    get cellColorBlank(): boolean {
-        return this.cellColor === EDITOR_BLANK_COLOR;
+    isBlankColor(color: string): boolean {
+        return color === EDITOR_BLANK_COLOR;
     }
 
     setCellColor(color: string) {

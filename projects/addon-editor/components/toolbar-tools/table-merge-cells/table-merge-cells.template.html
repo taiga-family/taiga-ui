@@ -1,17 +1,20 @@
-<button
-    *tuiLet="texts$ | async as texts"
-    #tableMergeSplitBtn
-    tuiIconButton
-    type="button"
-    size="s"
-    [icon]="canMergeCells ? 'tuiIconTableMergeLarge' : 'tuiIconTableSplitLarge'"
-    class="t-button t-button_margin"
-    appearance="icon"
-    tuiHintDirection="top-left"
-    [tuiHint]="canMergeCells ? texts.mergeCells : texts.splitCells"
-    [tuiHintId]="tableMergeSplitBtn.id"
-    [tuiDescribedBy]="tableMergeSplitBtn.id"
-    [focusable]="false"
-    [disabled]="!canMergeCells && !canSplitCells"
-    (click)="canMergeCells ? mergeCells() : splitCell()"
-></button>
+<ng-container
+    *tuiLet="{mergeCells: canMergeCells$ | async, splitCells: canSplitCells$ | async} as can"
+>
+    <button
+        *tuiLet="texts$ | async as texts"
+        #tableMergeSplitBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        [icon]="can.mergeCells ? 'tuiIconTableMergeLarge' : 'tuiIconTableSplitLarge'"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        [tuiHint]="can.mergeCells ? texts.mergeCells : texts.splitCells"
+        [tuiHintId]="tableMergeSplitBtn.id"
+        [tuiDescribedBy]="tableMergeSplitBtn.id"
+        [focusable]="false"
+        [disabled]="!can.mergeCells && !can.splitCells"
+        (click)="can.mergeCells ? mergeCells() : splitCell()"
+    ></button>
+</ng-container>

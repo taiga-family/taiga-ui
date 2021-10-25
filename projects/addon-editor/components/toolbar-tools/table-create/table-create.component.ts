@@ -9,7 +9,6 @@ import {map} from 'rxjs/operators';
 @Component({
     selector: 'tui-table-create',
     templateUrl: './table-create.template.html',
-    styleUrls: ['./table-create.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableCreateComponent {
