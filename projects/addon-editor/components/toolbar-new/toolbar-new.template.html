@@ -1,16 +1,12 @@
 <ng-container *ngIf="editor.stateChange$ | async"></ng-container>
 <div [tuiFocusable]="focusable" (focus)="onTopFocus()"></div>
 <div [tuiFocusable]="focusable" (focus)="onBottomFocus()"></div>
-<section
-    *ngIf="texts$ | async as texts"
-    toolbarNavigationManager
-    class="wrapper"
->
+<ng-container *ngIf="texts$ | async as texts">
     <div *ngIf="enabled(TuiEditorTool.Undo)" class="t-block">
         <button
             #button
             #undoBtn
-            toolbarTool
+            tuiToolbarTool
             tuiIconButton
             type="button"
             size="s"
@@ -28,7 +24,7 @@
         <button
             #redoBtn
             tuiIconButton
-            toolbarTool
+            tuiToolbarTool
             type="button"
             size="s"
             icon="tuiIconRedoLarge"
@@ -46,7 +42,7 @@
     <div *ngIf="enabled(TuiEditorTool.Size)" class="t-block">
         <tui-hosted-dropdown
             #fonts
-            toolbarTool
+            tuiToolbarTool
             class="t-wrapper"
             [content]="fontsDropdown"
         >
@@ -85,7 +81,7 @@
         <!-- @bad TODO: Keyboard navigation-->
         <tui-hosted-dropdown
             *ngIf="formatEnabled"
-            toolbarTool
+            tuiToolbarTool
             #format
             class="t-wrapper"
             [content]="formatDropdown"
@@ -163,7 +159,7 @@
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Align)"
             #align
-            toolbarTool
+            tuiToolbarTool
             class="t-wrapper"
             [content]="alignDropdown"
         >
@@ -236,7 +232,7 @@
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.List)"
             #list
-            toolbarTool
+            tuiToolbarTool
             class="t-wrapper"
             [content]="listDropdown"
         >
@@ -308,7 +304,7 @@
             #button
             #quoteBtn
             tuiIconButton
-            toolbarTool
+            tuiToolbarTool
             type="button"
             size="s"
             icon="tuiIconQuoteLarge"
@@ -325,7 +321,7 @@
         ></button>
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Link)"
-            toolbarTool
+            tuiToolbarTool
             #link
             class="t-wrapper"
             [canOpen]="!a"
@@ -360,7 +356,7 @@
             #button
             #attachBtn
             tuiIconButton
-            toolbarTool
+            tuiToolbarTool
             type="button"
             size="s"
             icon="tuiIconAttachLarge"
@@ -383,7 +379,7 @@
             #button
             #subBtn
             tuiIconButton
-            toolbarTool
+            tuiToolbarTool
             type="button"
             size="s"
             icon="tuiIconSubscriptLarge"
@@ -402,7 +398,7 @@
             #button
             #supBtn
             tuiIconButton
-            toolbarTool
+            tuiToolbarTool
             type="button"
             size="s"
             icon="tuiIconSuperscriptLarge"
@@ -426,7 +422,7 @@
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Color)"
             #color
-            toolbarTool
+            tuiToolbarTool
             class="t-wrapper"
             [content]="colorDropdown"
             [tuiDropdownMaxHeight]="999"
@@ -463,7 +459,7 @@
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Hilite)"
             #hilite
-            toolbarTool
+            tuiToolbarTool
             class="t-wrapper"
             [content]="hiliteDropdown"
             [tuiDropdownMaxHeight]="999"
@@ -505,7 +501,7 @@
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Code)"
             #codes
-            toolbarTool
+            tuiToolbarTool
             class="t-wrapper"
             [content]="codesDropdown"
         >
@@ -542,7 +538,7 @@
             #button
             #texBtn
             tuiIconButton
-            toolbarTool
+            tuiToolbarTool
             type="button"
             size="s"
             icon="tuiIconTeXLarge"
@@ -567,7 +563,7 @@
             <button
                 #button
                 tuiIconButton
-                toolbarTool
+                tuiToolbarTool
                 type="button"
                 size="s"
                 icon="tuiIconImgLarge"
@@ -586,7 +582,7 @@
             #button
             #hrBtn
             tuiIconButton
-            toolbarTool
+            tuiToolbarTool
             type="button"
             size="s"
             icon="tuiIconHrLarge"
@@ -605,7 +601,7 @@
             #button
             #clearBtn
             tuiIconButton
-            toolbarTool
+            tuiToolbarTool
             type="button"
             size="s"
             icon="tuiIconClearFormatLarge"
@@ -620,21 +616,21 @@
         ></button>
     </div>
     <div *ngIf="enabled(TuiEditorTool.Table)" class="t-block">
-        <tui-table-create toolbarTool></tui-table-create>
+        <tui-table-create tuiToolbarTool></tui-table-create>
 
         <tui-table-row-column-manager
-            toolbarTool
+            tuiToolbarTool
             [isActive]="editor?.isActive('table')"
         ></tui-table-row-column-manager>
 
         <tui-table-merge-cells
-            toolbarTool
+            tuiToolbarTool
             [canMergeCells]="editor.canMergeCells()"
             [canSplitCells]="editor.canSplitCells()"
         ></tui-table-merge-cells>
 
         <tui-table-cell-color
-            toolbarTool
+            tuiToolbarTool
             class="t-wrapper"
             [colors]="colors"
             [isActive]="editor?.isActive('table')"
@@ -644,4 +640,4 @@
     <div class="t-block">
         <ng-content></ng-content>
     </div>
-</section>
+</ng-container>

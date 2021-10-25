@@ -30,20 +30,18 @@ import {
 import {
     EMPTY_QUERY,
     getClosestElement,
-    getClosestFocusable,
     isNativeFocusedIn,
-    isNativeMouseFocusable,
     setNativeFocused,
     tuiDefaultProp,
     TuiDestroyService,
     TuiHandler,
-    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
-import {map, take} from 'rxjs/operators';
+import {map, take, takeUntil} from 'rxjs/operators';
+import {TuiToolbarNavigationService} from './toolbar-navigation.service';
 
 function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     return (
@@ -58,7 +56,11 @@ function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     templateUrl: './toolbar-new.template.html',
     styleUrls: ['./toolbar-new.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService, LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
+    providers: [
+        TuiDestroyService,
+        TuiToolbarNavigationService,
+        LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
+    ],
     host: {
         role: 'toolbar',
     },
@@ -138,12 +140,14 @@ export class TuiToolbarNewComponent {
         private readonly fontOptionsTexts$: Observable<
             LanguageEditor['editorFontOptions']
         >,
-    ) {}
-
-    get toolsWrappers(): HTMLElement[] {
-        return Array.from(
-            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[toolbarTool]'),
-        );
+        @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+        @Inject(TuiToolbarNavigationService)
+        private readonly navigationManager: TuiToolbarNavigationService,
+    ) {
+        this.navigationManager
+            .enableHorizontalNavigation$()
+            .pipe(takeUntil(this.destroy$))
+            .subscribe();
     }
 
     get focused(): boolean {
@@ -430,24 +434,8 @@ export class TuiToolbarNewComponent {
         return color === EDITOR_BLANK_COLOR;
     }
 
-    private findFirstFocusable(
-        elements: HTMLElement[],
-    ): TuiNativeFocusableElement | null {
-        for (const el of elements) {
-            const focusableElement = isNativeMouseFocusable(el)
-                ? el
-                : getClosestFocusable(el, false, el, false);
-
-            if (focusableElement) {
-                return focusableElement;
-            }
-        }
-
-        return null;
-    }
-
     private focusFirst() {
-        const firstButton = this.findFirstFocusable(this.toolsWrappers);
+        const firstButton = this.navigationManager.findFirstFocusableTool();
 
         if (firstButton) {
             setNativeFocused(firstButton);
@@ -455,7 +443,7 @@ export class TuiToolbarNewComponent {
     }
 
     private focusLast() {
-        const lastButton = this.findFirstFocusable(this.toolsWrappers.slice().reverse());
+        const lastButton = this.navigationManager.findFirstFocusableTool(true);
 
         if (lastButton) {
             setNativeFocused(lastButton);
