@@ -18,8 +18,7 @@ import {DEFAULT_NX_MAX_PARALLEL} from '../shared/default-nx-max-parallel';
                     --target=build \
                     --parallel \
                     --maxParallel=${MAX_PARALLEL} \
-                    --exclude=${apps} \
-                    --configuration=production`,
+                    --exclude=${apps}`,
             `npx nx affected \
                     --target=postbuild \
                     --parallel \

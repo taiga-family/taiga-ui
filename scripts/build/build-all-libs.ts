@@ -25,8 +25,7 @@ import {getLibsList} from '../shared/get-libs-list';
                 --target=build \
                 --projects=${ALL_LIBS} \
                 --parallel \
-                --maxParallel=${MAX_PARALLEL} \
-                --configuration=production`,
+                --maxParallel=${MAX_PARALLEL}`,
             `npx nx run-many \
                 --target=postbuild \
                 --projects=${ALL_LIBS} \
