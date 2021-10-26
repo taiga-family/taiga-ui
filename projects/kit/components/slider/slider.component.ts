@@ -34,7 +34,8 @@ import {Observable} from 'rxjs';
 })
 export class TuiSliderComponent
     extends AbstractTuiSlider<number>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     constructor(
         @Optional()
         @Self()

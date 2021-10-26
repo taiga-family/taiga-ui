@@ -4,6 +4,7 @@ import {
     ElementRef,
     EventEmitter,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -13,17 +14,19 @@ import {
 } from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {
     TUI_EDITOR_CODE_OPTIONS,
     TUI_EDITOR_FONT_OPTIONS,
     TUI_EDITOR_TABLE_COMMANDS,
+    TUI_EDITOR_TOOLBAR_TEXTS,
     TUI_IMAGE_LOADER,
 } from '@taiga-ui/addon-editor/tokens';
-import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {
     EMPTY_QUERY,
+    getClosestElement,
     isNativeFocusedIn,
     setNativeFocused,
     tuiDefaultProp,
@@ -76,10 +79,6 @@ export class TuiToolbarNewComponent {
     colors: ReadonlyMap<string, string> = defaultEditorColors;
 
     @Input()
-    @tuiDefaultProp()
-    editor!: TuiEditor;
-
-    @Input()
     @HostBinding('class._disabled')
     @tuiDefaultProp()
     disabled = false;
@@ -93,30 +92,39 @@ export class TuiToolbarNewComponent {
     @Output()
     readonly attachClicked = new EventEmitter<void>();
 
+    @HostListener('mousedown', ['$event', '$event.target'])
+    onMouseDown(event: MouseEvent, target: HTMLElement) {
+        if (getClosestElement(target, 'button')) {
+            return;
+        }
+
+        event.preventDefault();
+        this.editor.focus();
+    }
+
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
-    readonly fontsOptions$: Observable<
-        ReadonlyArray<Partial<TuiEditorFontOption>>
-    > = this.fontOptionsTexts$.pipe(
-        map(texts => [
-            {
-                px: 15,
-                name: texts.normal,
-            },
-            {
-                px: 24,
-                family: 'var(--tui-font-heading)',
-                name: texts.subtitle,
-                headingLevel: 2,
-            },
-            {
-                px: 30,
-                family: 'var(--tui-font-heading)',
-                name: texts.title,
-                headingLevel: 1,
-            },
-        ]),
-    );
+    readonly fontsOptions$: Observable<ReadonlyArray<Partial<TuiEditorFontOption>>> =
+        this.fontOptionsTexts$.pipe(
+            map(texts => [
+                {
+                    px: 15,
+                    name: texts.normal,
+                },
+                {
+                    px: 24,
+                    family: 'var(--tui-font-heading)',
+                    name: texts.subtitle,
+                    headingLevel: 2,
+                },
+                {
+                    px: 30,
+                    family: 'var(--tui-font-heading)',
+                    name: texts.title,
+                    headingLevel: 1,
+                },
+            ]),
+        );
 
     @ViewChildren('button')
     private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;
@@ -128,6 +136,7 @@ export class TuiToolbarNewComponent {
         @Optional()
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(TUI_IMAGE_LOADER)
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)

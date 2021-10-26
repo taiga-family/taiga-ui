@@ -21,7 +21,8 @@ import {AbstractTuiInteractive} from './interactive';
 @Directive()
 export abstract class AbstractTuiControl<T>
     extends AbstractTuiInteractive
-    implements OnDestroy, OnInit, ControlValueAccessor {
+    implements OnDestroy, OnInit, ControlValueAccessor
+{
     private previousInternalValue?: T | null;
 
     private onTouched = EMPTY_FUNCTION;

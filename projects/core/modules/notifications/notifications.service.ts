@@ -1,13 +1,14 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk';
+import {
+    TuiNotificationOptions,
+    TuiNotificationOptionsWithData,
+} from '@taiga-ui/core/interfaces';
+import {NotificationTokenOptions, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, Observer} from 'rxjs';
 import {NotificationAlert} from './notification-alert/Notification-alert';
 import {TuiNotificationContentContext} from './notification-content-context';
-import {
-    TuiNotificationOptions,
-    TuiNotificationOptionsWithData,
-} from './notification-options';
 
 const NO_HOST =
     'Notifications are disabled, enable support by adding TuiNotificationsModule to your main app module';
@@ -18,6 +19,11 @@ const NO_HOST =
 export class TuiNotificationsService {
     /** @internal */
     readonly items$ = new BehaviorSubject<ReadonlyArray<NotificationAlert<any, any>>>([]);
+
+    constructor(
+        @Inject(TUI_NOTIFICATION_OPTIONS)
+        public readonly options: NotificationTokenOptions,
+    ) {}
 
     show<O = void>(
         content: PolymorpheusContent<TuiNotificationContentContext<O>>,
@@ -37,7 +43,10 @@ export class TuiNotificationsService {
         return new Observable((observer: Observer<O>) => {
             tuiAssert.assert(!!this.items$.observers.length, NO_HOST);
 
-            const notification = new NotificationAlert(observer, content, options);
+            const notification = new NotificationAlert(observer, content, {
+                ...this.options,
+                ...options,
+            });
 
             this.items$.next([...this.items$.value, notification]);
 

@@ -117,6 +117,65 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide
                 /></a>
             </div>
         </td>
+        <td align="center">
+            <a href="https://github.com/vladimirpotekhin"
+                ><img
+                    src="./.github/team/vova.jpg"
+                    width="100"
+                    style="margin-bottom: -4px; border-radius: 8px;"
+                    alt="Vladimir Potekhin"
+                /><br /><b>Vladimir Potekhin</b></a
+            >
+            <div style="margin-top: 4px">
+                <a
+                    href="https://twitter.com/v_potekhin"
+                    title="Twitter"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/twitter.svg"
+                /></a>
+                <a
+                    href="https://github.com/vladimirpotekhin"
+                    title="GitHub"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
+                /></a>
+                <a
+                    href="https://t.me/v_potekhin"
+                    title="Telegram"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
+                /></a>
+            </div>
+        </td>
+        <td align="center">
+            <a href="https://www.linkedin.com/in/nsbarsukov/"
+                ><img
+                    src="./.github/team/nikita.jpg"
+                    width="100"
+                    style="margin-bottom: -4px; border-radius: 8px;"
+                    alt="Nikita Barsukov"
+                /><br /><b>Nikita Barsukov</b></a
+            >
+            <div style="margin-top: 4px">
+                <a
+                    href="https://github.com/nsbarsukov"
+                    title="GitHub"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
+                /></a>
+                <a
+                    href="https://t.me/nsbarsukov"
+                    title="Telegram"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
+                /></a>
+            </div>
+        </td>
     </tr>
 </table>
 

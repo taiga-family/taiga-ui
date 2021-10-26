@@ -49,7 +49,8 @@ import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
 })
 export class TuiInputSliderComponent
     extends AbstractTuiInputSlider<number>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     secondary = '';

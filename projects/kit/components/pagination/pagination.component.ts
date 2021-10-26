@@ -58,7 +58,8 @@ export function nonNegativeInteger(length: number): boolean {
 })
 export class TuiPaginationComponent
     extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp(nonNegativeInteger, 'Must be non-negative integer')
     length = 1;

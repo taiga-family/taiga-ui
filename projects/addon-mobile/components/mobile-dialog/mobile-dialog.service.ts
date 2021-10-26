@@ -18,7 +18,8 @@ export class TuiMobileDialogService extends AbstractTuiDialogService<
     TuiMobileDialogOptions<any>
 > {
     protected readonly component = DIALOG;
-    protected readonly defaultOptions: TuiMobileDialogOptions<any> = DEFAULT_OPTIONS as any;
+    protected readonly defaultOptions: TuiMobileDialogOptions<any> =
+        DEFAULT_OPTIONS as any;
 
     open<I, O = number>(
         content: PolymorpheusContent<TuiBaseDialogContext<O> & TuiMobileDialogOptions<I>>,

@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.20.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.19.0...v2.20.0) (2021-10-18)
+
+### Features
+
+-   **addon-commerce:** support `PolymorpheusContent` in the `cardSrc` input parameter ([#866](https://github.com/TinkoffCreditSystems/taiga-ui/issues/866)) ([353bb04](https://github.com/TinkoffCreditSystems/taiga-ui/commit/353bb04d604ebfface94a122d75f11f1cbce083e))
+-   **addon-mobile:** `Sheet` add new component ([#850](https://github.com/TinkoffCreditSystems/taiga-ui/issues/850)) ([2707391](https://github.com/TinkoffCreditSystems/taiga-ui/commit/27073912e5056070926fe98507139c09ecc8c922))
+-   **cdk:** `Time` add conversion from Date method ([#877](https://github.com/TinkoffCreditSystems/taiga-ui/issues/877)) ([7b47bcc](https://github.com/TinkoffCreditSystems/taiga-ui/commit/7b47bcc0aba6f59c7fa3993c00e29b53d242632f))
+-   **core:** add configuration of trailing zeroes ([#859](https://github.com/TinkoffCreditSystems/taiga-ui/issues/859)) ([c765088](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c7650887c5a044a83845c7bca7a32bb7c8119b50))
+-   **core:** update shadow color ([#895](https://github.com/TinkoffCreditSystems/taiga-ui/issues/895)) ([26219e5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/26219e5d59f30eafa6e5732a676cf09079becf97))
+-   **i18n:** add Polish support ([#828](https://github.com/TinkoffCreditSystems/taiga-ui/issues/828)) ([8f8893e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/8f8893e1c80545376a8f9c9091d35f9ba73723fe))
+-   **notification:** allow configuration of default options ([#636](https://github.com/TinkoffCreditSystems/taiga-ui/issues/636)) ([d89e523](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d89e523cda8d9e45f52926afe3f7a286c605dca0))
+
+### Bug Fixes
+
+-   **addon-editor:** `Editor[new]` broken `ActiveZone` inside toolbar buttons ([#845](https://github.com/TinkoffCreditSystems/taiga-ui/issues/845)) ([e682646](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e682646c6b7202fc90628ac238aa132029b6a87f))
+-   **cdk:** fix component content recreating on context change ([#896](https://github.com/TinkoffCreditSystems/taiga-ui/issues/896)) ([6932e9c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/6932e9c5a05ea8865f91f1c494c01e38f68e1f63))
+-   **core:** fix neutral-bg color ([#893](https://github.com/TinkoffCreditSystems/taiga-ui/issues/893)) ([d5a933c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d5a933c430988002553ccaeb8fa59c80f29b7b3a))
+-   **kit:** use proper screen keyboard on date components ([#878](https://github.com/TinkoffCreditSystems/taiga-ui/issues/878)) ([218728a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/218728a8463b0aff71015d8f3e72eb34b1f3caaf))
+-   **demo:** handle only one component/module per ts-file ([e0dcea0](https://github.com/TinkoffCreditSystems/taiga-ui/commit/e0dcea05fdfb457832243f17c41b5b4e26ad74c1))
+
 ## [2.19.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.18.0...v2.19.0) (2021-10-04)
 
 ### Features

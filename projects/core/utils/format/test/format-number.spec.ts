@@ -51,4 +51,12 @@ describe('Number formatting', () => {
     it('accepts custom thousands separator', () => {
         expect(formatNumber(12345.67, 2, ',', '.')).toBe('12.345,67');
     });
+
+    it('do not add zeros when disable zero padding flag', () => {
+        expect(formatNumber(12345.6, 2, ',', '.', false)).toBe('12.345,6');
+    });
+
+    it('add zeros with default behavior', () => {
+        expect(formatNumber(12345.6, 2, ',', '.')).toBe('12.345,60');
+    });
 });

@@ -8,3 +8,4 @@ export * from './icon-error';
 export * from './number-format-settings';
 export * from './value-content-context';
 export * from './with-optional-min-max';
+export * from './notification-options';

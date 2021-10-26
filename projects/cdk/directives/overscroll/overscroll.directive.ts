@@ -1,5 +1,5 @@
 import {Directive, ElementRef, HostBinding, Inject, Input, NgZone} from '@angular/core';
-import {tuiZoneOptimized, typedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiZonefree, typedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TuiEventWith, TuiOverscrollModeT} from '@taiga-ui/cdk/types';
 import {canScroll, getScrollParent} from '@taiga-ui/cdk/utils/dom';
@@ -27,7 +27,7 @@ export class TuiOverscrollDirective {
             .pipe(
                 filter(() => this.enabled),
                 takeUntil(destroy$),
-                tuiZoneOptimized(ngZone),
+                tuiZonefree(ngZone),
             )
             .subscribe(event => {
                 this.processEvent(
@@ -49,7 +49,6 @@ export class TuiOverscrollDirective {
                         passive: false,
                     }).pipe(
                         filter(() => this.enabled),
-                        tuiZoneOptimized(ngZone),
                         tap(event => {
                             // We have to have it in tap instead of subscribe due to variables in closure
                             const changedTouch = event.changedTouches[0];
@@ -72,6 +71,7 @@ export class TuiOverscrollDirective {
                     );
                 }),
                 takeUntil(destroy$),
+                tuiZonefree(ngZone),
             )
             .subscribe();
     }

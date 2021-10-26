@@ -39,6 +39,15 @@
         >
             <tui-notifications-example-4></tui-notifications-example-4>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="label"
+            i18n-heading
+            heading="Component with custom label"
+            [content]="example5"
+        >
+            <tui-notifications-example-5></tui-notifications-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -190,7 +199,10 @@
                         <div>
                             &nbsp;&nbsp;&nbsp;&nbsp;$implicit: TuiNotification;
                         </div>
-                        <div>&nbsp;&nbsp;&nbsp;&nbsp;label: string;</div>
+                        <div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;label:
+                            PolymorpheusContent&lt;TuiContextWithImplicit&lt;TuiNotification&gt;&gt;;
+                        </div>
                         <div>&nbsp;&nbsp;&nbsp;&nbsp;data: I;</div>
                         <div>
                             &nbsp;&nbsp;&nbsp;&nbsp;closeHook: () => void;
@@ -257,6 +269,19 @@
                 <tui-doc-code
                     filename="customNotification.component.ts"
                     [code]="exampleLazyModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Optionally use the
+                    <code>TUI_NOTIFICATION_OPTIONS</code> injection token to
+                    override the default options (works only in app.module.ts).
+                </p>
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    [code]="exampleDefineOptions"
                 ></tui-doc-code>
             </li>
         </ol>

@@ -3,11 +3,15 @@ import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
+import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
+import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 import {Component, forwardRef, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {TuiNotificationsService} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -41,26 +45,29 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
         LESS: example2Less,
     };
 
+    readonly example3: FrontEndExample = {
+        TypeScript: example3Ts,
+        HTML: example3Html,
+    };
+
     readonly cards = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
         universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
-        intersection:
-            'https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg',
         mutation:
             'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
     };
 
-    cardSrcVariants = Object.keys(this.cards);
+    cardSrcVariants: readonly string[] = Object.keys(this.cards);
 
-    cardSrcSelected: string | null = null;
+    cardSrcSelected: PolymorpheusContent | null = null;
 
     autocompleteEnabled = false;
 
     exampleText = '0000 0000 0000 0000';
 
-    readonly codeLengthVariants = [3, 4];
+    readonly codeLengthVariants: TuiCodeCVCLength[] = [3, 4];
 
-    codeLength = this.codeLengthVariants[0];
+    codeLength: TuiCodeCVCLength = this.codeLengthVariants[0];
 
     pseudoInvalid: boolean | null = null;
 
@@ -75,10 +82,10 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
         super();
     }
 
-    get cardSrc(): string | null {
-        return this.cardSrcSelected === null
-            ? null
-            : (this.cards as any)[this.cardSrcSelected];
+    get cardSrc(): PolymorpheusContent | null {
+        return typeof this.cardSrcSelected === 'string'
+            ? (this.cards as any)[this.cardSrcSelected]
+            : this.cardSrcSelected;
     }
 
     get disabled(): boolean {
@@ -95,5 +102,11 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
 
     onBinChange(bin: string) {
         this.notifications.show(`bin: ${bin}`).subscribe();
+    }
+
+    getContentVariants(
+        template: PolymorpheusContent,
+    ): ReadonlyArray<PolymorpheusContent> | null {
+        return [...this.cardSrcVariants, template];
     }
 }

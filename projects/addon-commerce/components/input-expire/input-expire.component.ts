@@ -38,7 +38,8 @@ import {
 })
 export class TuiInputExpireComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     autocompleteEnabled = false;

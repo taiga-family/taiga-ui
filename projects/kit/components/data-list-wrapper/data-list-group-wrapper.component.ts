@@ -17,7 +17,8 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 })
 export class TuiDataListGroupWrapperComponent<T>
     extends TuiDataListWrapperComponent<T>
-    implements TuiDataListAccessor<T> {
+    implements TuiDataListAccessor<T>
+{
     @Input()
     @tuiDefaultProp()
     items: ReadonlyArray<ReadonlyArray<T>> | null = [];

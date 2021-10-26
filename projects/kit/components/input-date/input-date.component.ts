@@ -78,7 +78,8 @@ export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
 })
 export class TuiInputDateComponent
     extends AbstractTuiNullableControl<TuiDay>
-    implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor {
+    implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     min = TUI_FIRST_DAY;

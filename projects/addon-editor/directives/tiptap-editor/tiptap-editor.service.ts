@@ -2,9 +2,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 // @ts-ignore
-import type {BackgroundColor} from '@taiga-ui/addon-editor/extensions';
-// @ts-ignore
-import type {FontColor} from '@taiga-ui/addon-editor/extensions';
+import type {BackgroundColor, FontColor} from '@taiga-ui/addon-editor/extensions';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {getMarkRange} from '@taiga-ui/addon-editor/utils';
 import type {Editor} from '@tiptap/core';
@@ -74,6 +72,10 @@ export class TuiTiptapEditorService extends TuiEditor {
                 this.valueChange$.next(this.isEmptyParagraph(json) ? '' : content);
             });
         });
+    }
+
+    getOriginTiptapEditor(): Editor {
+        return this.editor;
     }
 
     undoDisabled(): boolean {

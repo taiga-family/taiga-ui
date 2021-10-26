@@ -1,7 +1,6 @@
 import {ElementRef, Inject, Injectable, NgZone, Optional} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
-    getClosestElement,
     getElementOffset,
     TuiDestroyService,
     tuiZoneOptimized,
@@ -36,14 +35,8 @@ export class TuiElasticStickyService extends Observable<number> {
                 .pipe(
                     take(1),
                     switchMap(() => {
-                        const closest = getClosestElement(
-                            nativeElement,
-                            SCROLL_REF_SELECTOR,
-                        );
-                        const host =
-                            scrollRef && scrollRef.nativeElement.contains(closest)
-                                ? closest
-                                : scrollRef && scrollRef.nativeElement;
+                        const closest = nativeElement.closest(SCROLL_REF_SELECTOR);
+                        const host = scrollRef?.nativeElement ?? closest;
                         const {offsetHeight} = nativeElement;
                         const offsetTop = this.getInitialOffset(
                             host || windowRef,

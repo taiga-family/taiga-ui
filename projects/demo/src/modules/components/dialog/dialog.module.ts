@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
 import {TuiPreventDefaultModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -44,6 +45,7 @@ import {TuiDialogExampleComponent6} from './examples/6';
         TuiMarkerIconModule,
         TuiPreventDefaultModule,
         TuiNotificationModule,
+        TuiElasticStickyModule,
         TuiAddonDocModule,
         DialogExampleModule,
         RouterModule.forChild(generateRoutes(ExampleTuiDialogComponent)),

@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDocMainModule} from '@taiga-ui/addon-doc';
 import {
     TuiMobileDialogModule,
+    TuiSheetModule,
     TuiThemeAndroidModule,
     TuiThemeIosModule,
 } from '@taiga-ui/addon-mobile';
@@ -18,6 +19,7 @@ import {GettingStartedModule} from './getting-started/getting-started.module';
 import {HomeModule} from './home/home.module';
 import {LandingModule} from './landing/landing.module';
 import {LogoModule} from './logo/logo.module';
+import {VersionManagerModule} from './version-manager/version-manager.module';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -31,6 +33,7 @@ import {LogoModule} from './logo/logo.module';
         TuiThemeAndroidModule,
         TuiThemeIosModule,
         TuiDialogModule,
+        TuiSheetModule,
         TuiMobileDialogModule,
         TuiModeModule,
         TuiLinkModule,
@@ -38,6 +41,7 @@ import {LogoModule} from './logo/logo.module';
         HomeModule,
         LandingModule,
         LogoModule,
+        VersionManagerModule,
         HttpClientModule,
         MarkdownModule.forRoot({
             loader: HttpClient,

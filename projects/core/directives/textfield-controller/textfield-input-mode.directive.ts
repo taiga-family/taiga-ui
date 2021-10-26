@@ -1,10 +1,10 @@
 import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
 import {TuiController, TuiInputModeT} from '@taiga-ui/cdk';
 
-export const TUI_TEXTFIELD_INPUT_MODE = new InjectionToken<TuiTextfieldInputModeDirective>(
-    'tuiTextfieldInputMode',
-    {factory: inputModeDirectiveFactory},
-);
+export const TUI_TEXTFIELD_INPUT_MODE =
+    new InjectionToken<TuiTextfieldInputModeDirective>('tuiTextfieldInputMode', {
+        factory: inputModeDirectiveFactory,
+    });
 
 @Directive({
     selector: '[tuiTextfieldInputMode]',

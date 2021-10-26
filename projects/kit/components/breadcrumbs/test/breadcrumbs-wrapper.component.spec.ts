@@ -90,8 +90,9 @@ describe('Breadcrumbs Wrapper', () => {
     describe('icon:', () => {
         it('the last element is missing ', () => {
             const itemsArrayLength = ITEMS.length;
-            const iconsArrayLength = fixture.debugElement.queryAll(By.css('.icon'))
-                .length;
+            const iconsArrayLength = fixture.debugElement.queryAll(
+                By.css('.icon'),
+            ).length;
 
             expect(iconsArrayLength).toBe(itemsArrayLength - 1);
         });

@@ -36,7 +36,8 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 })
 export class TuiCheckboxLabeledComponent
     extends AbstractTuiNullableControl<boolean>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()

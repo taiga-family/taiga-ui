@@ -56,7 +56,8 @@ const MASK_AFTER_CODE_REGEXP = /\([\#]+\)|[#\- ]/g;
 })
 export class TuiInputPhoneInternationalComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     countryIsoCode: TuiCountryIsoCode = TuiCountryIsoCode.RU;

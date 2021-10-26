@@ -7,6 +7,7 @@ import {
     OnInit,
 } from '@angular/core';
 import {isNumber, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
+import {NotificationTokenOptions, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';
 import {TuiNotificationContentContext} from '../notification-content-context';
@@ -23,31 +24,25 @@ export const DEFAULT_ALERT_AUTOCLOSE_TIMEOUT = 3000;
 })
 export class TuiNotificationAlertComponent<O, I> implements OnInit {
     @Input()
-    item?: NotificationAlert<O, I>;
+    item!: NotificationAlert<O, I>;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+        @Inject(TUI_NOTIFICATION_OPTIONS)
+        public readonly options: NotificationTokenOptions,
     ) {}
 
     ngOnInit() {
         this.initAutoClose();
     }
 
-    get safeItem(): NotificationAlert<O, I> {
-        if (!this.item) {
-            throw new Error('Notification was created as undefined');
-        }
-
-        return this.item;
-    }
-
     get context(): TuiNotificationContentContext<O, I> {
-        return this.calculateContext(this.safeItem);
+        return this.calculateContext(this.item);
     }
 
     closeNotification() {
-        this.safeItem.observer.complete();
+        this.item.observer.complete();
     }
 
     @tuiPure
@@ -75,13 +70,13 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
     }
 
     private initAutoClose() {
-        if (!this.safeItem.autoClose) {
+        if (!this.item.autoClose) {
             return;
         }
 
         timer(
-            isNumber(this.safeItem.autoClose)
-                ? this.safeItem.autoClose
+            isNumber(this.item.autoClose)
+                ? this.item.autoClose
                 : DEFAULT_ALERT_AUTOCLOSE_TIMEOUT,
         )
             .pipe(

@@ -8,4 +8,5 @@ import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 export interface NumberFormatSettings {
     readonly decimalSeparator: TuiDecimalSymbol;
     readonly thousandSeparator: string;
+    readonly zeroPadding: boolean;
 }

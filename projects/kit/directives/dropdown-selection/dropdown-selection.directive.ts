@@ -53,7 +53,8 @@ import {map, switchMapTo, takeUntil} from 'rxjs/operators';
 })
 export class TuiDropdownSelectionDirective
     extends AbstractTuiDropdown
-    implements TuiDropdown, OnDestroy {
+    implements TuiDropdown, OnDestroy
+{
     @Input()
     set tuiDropdownSelection(handler: TuiBooleanHandler<Range> | undefined) {
         if (!handler) {

@@ -12,7 +12,7 @@ import {
 })
 export class TuiForDirective implements OnChanges {
     @Input()
-    ngForOf = [];
+    ngForOf: unknown[] | null = [];
 
     @Input()
     ngForElse?: TemplateRef<{}>;

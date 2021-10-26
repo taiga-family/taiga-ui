@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
-import {AlertExampleWithDataComponent} from '../../alert-example-with-data/alert-example-with-data.component';
+import {AlertExampleWithDataComponent} from './alert-example-with-data/alert-example-with-data.component';
 
 @Component({
     selector: 'tui-notifications-example-4',
@@ -26,8 +26,7 @@ export class TuiNotificationsExampleComponent4 {
             .show<number, number>(
                 new PolymorpheusComponent(AlertExampleWithDataComponent, this.injector),
                 {
-                    label:
-                        'Heading is so long that it should be shown in two lines of text',
+                    label: 'Heading is so long that it should be shown in two lines of text',
                     data: 237,
                     status: TuiNotification.Warning,
                     autoClose: false,

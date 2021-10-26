@@ -8,7 +8,10 @@
         <td class="tui-table__th">{{type}}</td>
         <td
             *ngIf="showValues && !isAPI"
-            class="tui-table__th tui-table__th_last tui-table__th_text_right t-cell t-cell_value"
+            class="
+                tui-table__th tui-table__th_last tui-table__th_text_right
+                t-cell t-cell_value
+            "
         >
             {{texts[3]}}
         </td>
@@ -20,7 +23,10 @@
         [class.tui-table__tr_border_none]="lastItem"
     >
         <td
-            class="tui-table__td tui-table__td_first tui-table__td_align_center t-cell"
+            class="
+                tui-table__td tui-table__td_first tui-table__td_align_center
+                t-cell
+            "
         >
             <div
                 class="t-property t-cell"
@@ -65,7 +71,13 @@
         </td>
         <td
             *ngIf="showValues"
-            class="tui-table__td tui-table__td_align_center tui-table__td_last tui-table__td_text_right t-cell"
+            class="
+                tui-table__td
+                tui-table__td_align_center
+                tui-table__td_last
+                tui-table__td_text_right
+                t-cell
+            "
         >
             <ng-container *ngIf="propertyConnector.shouldShowValues">
                 <tui-select

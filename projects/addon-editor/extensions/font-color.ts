@@ -53,10 +53,14 @@ export const FontColor = Extension.create<FontColorOptions>({
         unsetFontColor?: () => Command;
     } {
         return {
-            setFontColor: fontColor => ({chain}) =>
-                chain().setMark('textStyle', {fontColor}).run(),
-            unsetFontColor: () => ({chain}) =>
-                chain().setMark('textStyle', {fontColor: null}).run(),
+            setFontColor:
+                fontColor =>
+                ({chain}) =>
+                    chain().setMark('textStyle', {fontColor}).run(),
+            unsetFontColor:
+                () =>
+                ({chain}) =>
+                    chain().setMark('textStyle', {fontColor: null}).run(),
         };
     },
 });

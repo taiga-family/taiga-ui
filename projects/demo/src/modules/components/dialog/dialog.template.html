@@ -4,7 +4,7 @@
 
         <p i18n>
             If you want custom dialogs see
-            <a routerLink="/dialogs">this link</a> on creating your own
+            <a tuiLink routerLink="/dialogs">this link</a> on creating your own
             implementation
         </p>
 
@@ -158,18 +158,7 @@
         <div i18n class="b-full-width">
             <p>
                 To show a dialog, use method
-                <code>
-                    <div>open&lt;O&gt;(</div>
-                    <div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;content:
-                        PolymorpheusContent&lt;TuiDialogContext&lt;O, I&gt;&gt;
-                    </div>
-                    <div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;options:
-                        Partial&lt;TuiDialogOptions&lt;I&gt;&gt;
-                    </div>
-                    <div>): Observable&lt;O&gt;</div>
-                </code>
+                <tui-doc-code [code]="method"></tui-doc-code>
             </p>
             of <code>TuiDialogService</code>, where <code>O</code> is output
             data type and <code>I</code> input data type. In this sample, input

@@ -73,7 +73,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class TuiMultiSelectComponent<T>
     extends AbstractTuiMultipleControl<T>
-    implements TuiFocusableElementAccessor, TuiDataListHost<T> {
+    implements TuiFocusableElementAccessor, TuiDataListHost<T>
+{
     @Input()
     @tuiDefaultProp()
     stringify: TuiStringHandler<T> = TUI_DEFAULT_STRINGIFY;

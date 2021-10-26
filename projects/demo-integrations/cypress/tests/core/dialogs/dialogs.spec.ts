@@ -1,4 +1,4 @@
-import {DIALOG_PAGE_URL, waitKitDialog} from './utils';
+import {DIALOG_PAGE_URL} from '../../../support/shared.entities';
 
 describe('Dialogs', () => {
     beforeEach(() => {
@@ -9,11 +9,11 @@ describe('Dialogs', () => {
         cy.goToDemoPage(DIALOG_PAGE_URL, {waitAllIcons: true});
 
         cy.get(`tui-dialog-example-2 button`).first().click();
-        waitKitDialog();
+        cy.waitKitDialog();
         cy.get('tui-dialog').matchImageSnapshot('1');
 
         cy.get('dialog-example button').eq(1).click();
-        waitKitDialog();
+        cy.waitKitDialog();
 
         cy.get('tui-dialog').eq(1).matchImageSnapshot('2');
     });
@@ -22,7 +22,7 @@ describe('Dialogs', () => {
         cy.goToDemoPage(DIALOG_PAGE_URL, {waitAllIcons: true});
 
         cy.get(`tui-dialog-example-4 button`).first().click();
-        waitKitDialog();
+        cy.waitKitDialog();
         cy.get('tui-dialog').matchImageSnapshot('3');
     });
 
@@ -30,7 +30,7 @@ describe('Dialogs', () => {
         cy.goToDemoPage(DIALOG_PAGE_URL);
 
         cy.get(`tui-dialog-example-6 button`).first().click();
-        waitKitDialog();
+        cy.waitKitDialog();
         cy.get('tui-dialog').matchImageSnapshot('dialog-directive');
     });
 });

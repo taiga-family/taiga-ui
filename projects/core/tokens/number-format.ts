@@ -8,6 +8,7 @@ export const TUI_NUMBER_FORMAT = new InjectionToken<NumberFormatSettings>(
         factory: () => ({
             decimalSeparator: ',',
             thousandSeparator: CHAR_NO_BREAK_SPACE,
+            zeroPadding: true,
         }),
     },
 );

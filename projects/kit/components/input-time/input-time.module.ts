@@ -4,6 +4,7 @@ import {
     TuiDataListModule,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 import {TextMaskModule} from 'angular2-text-mask';
@@ -17,6 +18,7 @@ import {TuiInputTimeComponent} from './input-time.component';
         TuiHostedDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,
+        TuiTextfieldControllerModule,
     ],
     declarations: [TuiInputTimeComponent],
     exports: [TuiInputTimeComponent],

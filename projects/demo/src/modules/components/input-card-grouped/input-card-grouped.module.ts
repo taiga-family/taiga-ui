@@ -11,9 +11,11 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiFieldErrorModule} from '@taiga-ui/kit';
-import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputCardGroupedExample1} from './examples/1';
 import {TuiInputCardGroupedExample2} from './examples/2';
+import {TuiInputCardGroupedExample3} from './examples/3';
 import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.component';
 
 @NgModule({
@@ -30,11 +32,13 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
         TuiAddonDocModule,
         InheritedDocumentationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputCardGroupedComponent)),
+        PolymorpheusModule,
     ],
     declarations: [
         ExampleTuiInputCardGroupedComponent,
         TuiInputCardGroupedExample1,
         TuiInputCardGroupedExample2,
+        TuiInputCardGroupedExample3,
     ],
     exports: [ExampleTuiInputCardGroupedComponent],
 })

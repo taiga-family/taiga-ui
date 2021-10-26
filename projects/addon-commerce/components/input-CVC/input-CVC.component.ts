@@ -10,6 +10,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {
     AbstractTuiControl,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
@@ -41,14 +42,15 @@ import {
 })
 export class TuiInputCVCComponent
     extends AbstractTuiControl<string>
-    implements TuiFocusableElementAccessor {
+    implements TuiFocusableElementAccessor
+{
     @Input()
     @tuiDefaultProp()
     autocompleteEnabled = false;
 
     @Input()
     @tuiRequiredSetter()
-    set length(length: 3 | 4) {
+    set length(length: TuiCodeCVCLength) {
         this.exampleText = '0'.repeat(length);
         this.textMaskOptions = {
             mask: new Array(length).fill(TUI_DIGIT_REGEXP),
