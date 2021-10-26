@@ -10,6 +10,7 @@ import {
     Optional,
     Output,
     QueryList,
+    ViewChild,
     ViewChildren,
 } from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
@@ -33,15 +34,14 @@ import {
     isNativeFocusedIn,
     setNativeFocused,
     tuiDefaultProp,
-    TuiDestroyService,
     TuiHandler,
 } from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
-import {map, take, takeUntil} from 'rxjs/operators';
-import {TuiToolbarNavigationService} from './toolbar-navigation.service';
+import {map, take} from 'rxjs/operators';
+import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 
 function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     return (
@@ -56,11 +56,7 @@ function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     templateUrl: './toolbar-new.template.html',
     styleUrls: ['./toolbar-new.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        TuiDestroyService,
-        TuiToolbarNavigationService,
-        LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
-    ],
+    providers: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
         role: 'toolbar',
     },
@@ -125,6 +121,9 @@ export class TuiToolbarNewComponent {
     @ViewChildren('dropdown', {read: ElementRef})
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
+    @ViewChild(TuiToolbarNavigationManagerDirective)
+    private readonly navigationManager?: TuiToolbarNavigationManagerDirective;
+
     constructor(
         @Optional()
         @Inject(ElementRef)
@@ -140,15 +139,7 @@ export class TuiToolbarNewComponent {
         private readonly fontOptionsTexts$: Observable<
             LanguageEditor['editorFontOptions']
         >,
-        @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(TuiToolbarNavigationService)
-        private readonly navigationManager: TuiToolbarNavigationService,
-    ) {
-        this.navigationManager
-            .enableHorizontalNavigation$()
-            .pipe(takeUntil(this.destroy$))
-            .subscribe();
-    }
+    ) {}
 
     get focused(): boolean {
         return (
@@ -435,7 +426,7 @@ export class TuiToolbarNewComponent {
     }
 
     private focusFirst() {
-        const firstButton = this.navigationManager.findFirstFocusableTool();
+        const firstButton = this.navigationManager?.findFirstFocusableTool();
 
         if (firstButton) {
             setNativeFocused(firstButton);
@@ -443,7 +434,7 @@ export class TuiToolbarNewComponent {
     }
 
     private focusLast() {
-        const lastButton = this.navigationManager.findFirstFocusableTool(true);
+        const lastButton = this.navigationManager?.findFirstFocusableTool(true);
 
         if (lastButton) {
             setNativeFocused(lastButton);
