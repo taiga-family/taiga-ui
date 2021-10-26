@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/cdk';
 
 @Directive({
-    selector: '[toolbarNavigationManager]',
+    selector: '[tuiToolbarNavigationManager]',
 })
 export class TuiToolbarNavigationManagerDirective {
     private get toolsContainers(): ReadonlyArray<HTMLElement> {
