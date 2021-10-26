@@ -3,6 +3,8 @@ import {NgModule} from '@angular/core';
 import {TuiColorSelectorModule} from '@taiga-ui/addon-editor/components/color-selector';
 import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
 import {
+    TuiFontSizeModule,
+    TuiFontStyleModule,
     TuiTableCellColorModule,
     TuiTableCreateModule,
     TuiTableMergeCellsModule,
@@ -43,6 +45,8 @@ import {TuiToolbarToolDirective} from './toolbar-tool.directive';
         TuiTableCellColorModule,
         TuiTableRowColumnManagerModule,
         TuiTableCreateModule,
+        TuiFontSizeModule,
+        TuiFontStyleModule,
     ],
     declarations: [
         TuiToolbarNewComponent,

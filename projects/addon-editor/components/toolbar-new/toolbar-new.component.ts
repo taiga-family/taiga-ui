@@ -21,10 +21,8 @@ import {
 } from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
-import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
 import {
     TUI_EDITOR_CODE_OPTIONS,
-    TUI_EDITOR_FONT_OPTIONS,
     TUI_EDITOR_TOOLBAR_TEXTS,
     TUI_IMAGE_LOADER,
 } from '@taiga-ui/addon-editor/tokens';
@@ -40,7 +38,7 @@ import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
-import {map, take} from 'rxjs/operators';
+import {take} from 'rxjs/operators';
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 
 function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
@@ -96,28 +94,6 @@ export class TuiToolbarNewComponent {
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
-    readonly fontsOptions$: Observable<ReadonlyArray<Partial<TuiEditorFontOption>>> =
-        this.fontOptionsTexts$.pipe(
-            map(texts => [
-                {
-                    px: 15,
-                    name: texts.normal,
-                },
-                {
-                    px: 24,
-                    family: 'var(--tui-font-heading)',
-                    name: texts.subtitle,
-                    headingLevel: 2,
-                },
-                {
-                    px: 30,
-                    family: 'var(--tui-font-heading)',
-                    name: texts.title,
-                    headingLevel: 1,
-                },
-            ]),
-        );
-
     @ViewChildren('dropdown', {read: ElementRef})
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
@@ -135,10 +111,6 @@ export class TuiToolbarNewComponent {
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_CODE_OPTIONS)
         readonly codeOptionsTexts$: Observable<LanguageEditor['editorCodeOptions']>,
-        @Inject(TUI_EDITOR_FONT_OPTIONS)
-        private readonly fontOptionsTexts$: Observable<
-            LanguageEditor['editorFontOptions']
-        >,
     ) {}
 
     get focused(): boolean {
@@ -150,22 +122,6 @@ export class TuiToolbarNewComponent {
 
     get focusable(): boolean {
         return !this.focused && !this.disabled;
-    }
-
-    get bold(): boolean {
-        return !!this.editor.isActive('bold');
-    }
-
-    get italic(): boolean {
-        return !!this.editor.isActive('italic');
-    }
-
-    get underline(): boolean {
-        return !!this.editor.isActive('underline');
-    }
-
-    get strikeThrough(): boolean {
-        return !!this.editor.isActive('strike');
     }
 
     get unorderedList(): boolean {
@@ -285,14 +241,6 @@ export class TuiToolbarNewComponent {
         this.focusFirst();
     }
 
-    onHeading({headingLevel}: TuiEditorFontOption) {
-        if (headingLevel) {
-            this.editor.setHeading(headingLevel);
-        } else {
-            this.editor.setParagraph();
-        }
-    }
-
     onAlign(align: string) {
         this.editor.onAlign(align);
     }
@@ -371,22 +319,6 @@ export class TuiToolbarNewComponent {
 
     setHiliteColor(color: string) {
         this.editor.setBackgroundColor(color);
-    }
-
-    toggleBold() {
-        this.editor.toggleBold();
-    }
-
-    toggleItalic() {
-        this.editor.toggleItalic();
-    }
-
-    toggleUnderline() {
-        this.editor.toggleUnderline();
-    }
-
-    toggleStrikeThrough() {
-        this.editor.toggleStrike();
     }
 
     toggleOrderedList() {
