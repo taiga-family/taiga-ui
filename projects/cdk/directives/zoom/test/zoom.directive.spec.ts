@@ -44,7 +44,7 @@ describe('TuiPan directive', () => {
 
         fixture.detectChanges();
 
-        expect(floor(testComponent.scale, 2)).toEqual(1.14);
+        expect(floor(testComponent.scale, 2)).toEqual(0.85);
     });
 
     it('wheel', () => {
