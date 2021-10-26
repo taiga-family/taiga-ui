@@ -1,6 +1,6 @@
 @import 'taiga-ui-local';
 
-:host {
+.wrapper {
     .scrollbar-hidden();
     display: flex;
     padding: 0.25rem 0.75rem;
@@ -25,10 +25,11 @@
     }
 }
 
-.t-button {
+.t-tool {
     .transition(background);
 
-    &:hover {
+    button&:hover,
+    & ::ng-deep button:hover {
         background: var(--tui-secondary-hover);
     }
 

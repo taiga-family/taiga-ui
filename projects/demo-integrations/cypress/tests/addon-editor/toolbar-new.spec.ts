@@ -70,4 +70,76 @@ describe("Editor's toolbar", () => {
 
         cy.get('@wrapper').matchImageSnapshot('2-3-inserted-new-smile');
     });
+
+    describe('has keyboard horizontal navigation between tool-buttons', () => {
+        it('focuses nearest left/right active tool on "Arrow Right"/"Arrow Left"', () => {
+            cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+            cy.get('@wrapper')
+                .find('button[icon="tuiIconAlignLeftLarge"]')
+                .as('initialTool');
+            cy.get('@wrapper').find('button[icon="tuiIconFormatLarge"]').as('leftTool');
+            cy.get('@wrapper')
+                .find('button[icon="tuiIconViewListLarge"]')
+                .as('rightTool');
+
+            cy.get('@initialTool').focus().should('be.focused');
+
+            // <==
+            cy.get('body').type('{leftarrow}');
+            cy.get('@leftTool').should('be.focused');
+
+            // ==> ==>
+            cy.get('body').type('{rightarrow}');
+            cy.get('@initialTool').should('be.focused');
+            cy.get('body').type('{rightarrow}');
+            cy.get('@rightTool').should('be.focused');
+        });
+
+        it('skips disabled tools and selects next tool after disabled', () => {
+            cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+            cy.get('@wrapper')
+                .find('button[icon="tuiIconUndoLarge"]')
+                .as('leftActiveTool');
+            cy.get('@wrapper')
+                .find('button[icon="tuiIconRedoLarge"]')
+                .as('betweenDisabledTool');
+            cy.get('@wrapper')
+                .find('button[icon="tuiIconFontLarge"]')
+                .as('rightActiveTool');
+
+            // | (active) | disabled | active |
+            // ==>
+            // | active | disabled | (active) |
+            cy.get('@leftActiveTool').focus().should('be.focused');
+            cy.get('body').type('{rightarrow}');
+            cy.get('@betweenDisabledTool').should('not.be.focused');
+            cy.get('@rightActiveTool').should('be.focused');
+
+            // | active | disabled | (active) |
+            // <==
+            // | (active) | disabled | active |
+            cy.get('body').type('{leftarrow}');
+            cy.get('@betweenDisabledTool').should('not.be.focused');
+            cy.get('@leftActiveTool').should('be.focused');
+        });
+
+        it('works with custom tools', () => {
+            cy.get('#custom-tool').findByAutomationId('tui-doc-example').as('wrapper');
+            cy.get('@wrapper')
+                .find('button[icon="tuiIconUndoLarge"]')
+                .as('leftBuiltInTool');
+            cy.get('@wrapper')
+                .find('button[icon="tuiIconStarLarge"]')
+                .as('rightCustomTool');
+
+            // ==>
+            cy.get('@leftBuiltInTool').focus().should('be.focused');
+            cy.get('body').type('{rightarrow}');
+            cy.get('@rightCustomTool').should('be.focused');
+
+            // <==
+            cy.get('body').type('{leftarrow}');
+            cy.get('@leftBuiltInTool').should('be.focused');
+        });
+    });
 });

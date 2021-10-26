@@ -2,7 +2,12 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiColorSelectorModule} from '@taiga-ui/addon-editor/components/color-selector';
 import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
-import {TuiTableSizeSelectorModule} from '@taiga-ui/addon-editor/components/toolbar-tools';
+import {
+    TuiTableCellColorModule,
+    TuiTableCreateModule,
+    TuiTableMergeCellsModule,
+    TuiTableRowColumnManagerModule,
+} from '@taiga-ui/addon-editor/components/toolbar-tools';
 import {
     TuiActiveZoneModule,
     TuiFocusableModule,
@@ -16,7 +21,9 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 import {TuiToolbarNewComponent} from './toolbar-new.component';
+import {TuiToolbarToolDirective} from './toolbar-tool.directive';
 
 @NgModule({
     imports: [
@@ -32,9 +39,16 @@ import {TuiToolbarNewComponent} from './toolbar-new.component';
         TuiActiveZoneModule,
         TuiRepeatTimesModule,
         TuiDropdownControllerModule,
-        TuiTableSizeSelectorModule,
+        TuiTableMergeCellsModule,
+        TuiTableCellColorModule,
+        TuiTableRowColumnManagerModule,
+        TuiTableCreateModule,
     ],
-    declarations: [TuiToolbarNewComponent],
-    exports: [TuiToolbarNewComponent],
+    declarations: [
+        TuiToolbarNewComponent,
+        TuiToolbarToolDirective,
+        TuiToolbarNavigationManagerDirective,
+    ],
+    exports: [TuiToolbarNewComponent, TuiToolbarToolDirective],
 })
 export class TuiToolbarNewModule {}
