@@ -40,7 +40,9 @@ export function processIcon(source: string, name: string): string {
         !heightString ||
         !widthString ||
         widthString.includes('%') ||
-        heightString.includes('%')
+        heightString.includes('%') ||
+        widthString.includes('em') ||
+        heightString.includes('em')
     ) {
         return src.replace(START, `<svg id="${name}"`);
     }
