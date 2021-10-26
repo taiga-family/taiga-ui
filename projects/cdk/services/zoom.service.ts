@@ -32,7 +32,7 @@ export class TuiZoomService extends Observable<TuiZoom> {
                             (event.touches[0].clientY + event.touches[1].clientY) / 2;
 
                         const newDistanse = distanceBetweenTouches(event);
-                        const delta = (distance - newDistanse) * 0.01;
+                        const delta = (newDistanse - distance) * 0.01;
 
                         distance = newDistanse;
 
