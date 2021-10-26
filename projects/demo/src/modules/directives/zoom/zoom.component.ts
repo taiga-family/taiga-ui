@@ -11,7 +11,6 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
 @Component({
     selector: 'example-tui-zoom',
     templateUrl: './zoom.template.html',
-    styleUrls: ['./zoom.style.less'],
     changeDetection,
 })
 export class ExampleTuiZoomComponent {
