@@ -15,11 +15,6 @@
                     "options": {
                         "tsConfig": "projects/cdk/tsconfig.lib.json",
                         "project": "projects/cdk/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/cdk/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "test": {
@@ -55,11 +50,6 @@
                     "options": {
                         "tsConfig": "projects/i18n/tsconfig.lib.json",
                         "project": "projects/i18n/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/i18n/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "lint": {
@@ -83,11 +73,6 @@
                     "options": {
                         "tsConfig": "projects/core/tsconfig.lib.json",
                         "project": "projects/core/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/core/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "test": {
@@ -122,11 +107,6 @@
                     "options": {
                         "tsConfig": "projects/taiga-schematics/tsconfig.lib.json",
                         "project": "projects/taiga-schematics/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/taiga-schematics/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "postbuild": {
@@ -174,11 +154,6 @@
                     "options": {
                         "tsConfig": "projects/kit/tsconfig.lib.json",
                         "project": "projects/kit/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/kit/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "test": {
@@ -223,11 +198,6 @@
                     "options": {
                         "tsConfig": "projects/icons/tsconfig.lib.json",
                         "project": "projects/icons/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/icons/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "lint": {
@@ -251,11 +221,6 @@
                     "options": {
                         "tsConfig": "projects/addon-charts/tsconfig.lib.json",
                         "project": "projects/addon-charts/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/addon-charts/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "test": {
@@ -294,11 +259,6 @@
                     "options": {
                         "tsConfig": "projects/addon-commerce/tsconfig.lib.json",
                         "project": "projects/addon-commerce/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/addon-commerce/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "test": {
@@ -337,11 +297,6 @@
                     "options": {
                         "tsConfig": "projects/addon-mobile/tsconfig.lib.json",
                         "project": "projects/addon-mobile/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/addon-mobile/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "test": {
@@ -380,11 +335,6 @@
                     "options": {
                         "tsConfig": "projects/addon-tablebars/tsconfig.lib.json",
                         "project": "projects/addon-tablebars/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/addon-tablebars/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "test": {
@@ -423,11 +373,6 @@
                     "options": {
                         "tsConfig": "projects/addon-table/tsconfig.lib.json",
                         "project": "projects/addon-table/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/addon-table/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "test": {
@@ -466,11 +411,6 @@
                     "options": {
                         "tsConfig": "projects/addon-editor/tsconfig.lib.json",
                         "project": "projects/addon-editor/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/addon-editor/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "test": {
@@ -509,11 +449,6 @@
                     "options": {
                         "tsConfig": "projects/addon-doc/tsconfig.lib.json",
                         "project": "projects/addon-doc/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/addon-doc/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "test": {

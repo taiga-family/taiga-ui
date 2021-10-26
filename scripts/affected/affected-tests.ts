@@ -9,7 +9,6 @@ import {DEFAULT_NX_MAX_PARALLEL} from '../shared/default-nx-max-parallel';
             `npx nx affected \
                     --target=test \
                     --parallel \
-                    --configuration=production \
                     --maxParallel=${MAX_PARALLEL} \
                     --browsers=ChromeHeadless \
                     --code-coverage=true
