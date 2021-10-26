@@ -883,13 +883,11 @@ export const ROUTES = [
         },
     },
     {
-        path: 'components/tree-view',
+        path: 'components/tree',
         loadChildren: () =>
-            import(`../components/tree-view/tree-view.module`).then(
-                m => m.ExampleTuiTreeViewModule,
-            ),
+            import(`../components/tree/tree.module`).then(m => m.ExampleTuiTreeModule),
         data: {
-            title: 'TreeView',
+            title: 'Tree',
         },
     },
     {

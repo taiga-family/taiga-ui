@@ -791,9 +791,9 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
-        title: 'TreeView',
-        keywords: 'tree, multi, recursive, folders, рекурсия, дерево, папки',
-        route: '/components/tree-view',
+        title: 'Tree',
+        keywords: 'tree, view, multi, recursive, folders, рекурсия, дерево, папки',
+        route: '/components/tree',
     },
     {
         section: $localize`Components`,

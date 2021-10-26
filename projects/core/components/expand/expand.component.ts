@@ -59,6 +59,7 @@ export class TuiExpandComponent {
     content?: TemplateRef<{}>;
 
     @HostBinding('class._expanded')
+    @HostBinding('attr.aria-expanded')
     expanded: boolean | null = null;
 
     @ViewChild('wrapper')
