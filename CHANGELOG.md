@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.21.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.20.0...v2.21.0) (2021-10-25)
+
+### Features
+
+-   **addon-editor:** `Editor[new]` add custom tools support ([#842](https://github.com/TinkoffCreditSystems/taiga-ui/issues/842)) ([1422520](https://github.com/TinkoffCreditSystems/taiga-ui/commit/142252009a29e00ae4e92742abd12401109ef5a6))
+-   **cdk:** new directive `TuiPan` ([#922](https://github.com/TinkoffCreditSystems/taiga-ui/issues/922)) ([d87996e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/d87996e30516198e3b725b952c81cb3631fcb29a))
+-   **cdk:** new directive `TuiSwipe` ([#914](https://github.com/TinkoffCreditSystems/taiga-ui/issues/914)) ([fb7581b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/fb7581bee1058d35533b7d801cbabc092406eb76))
+
+### Bug Fixes
+
+-   **cdk:** `Autofill` get rid of an extra change detection cycle ([#908](https://github.com/TinkoffCreditSystems/taiga-ui/issues/908)) ([bb051d5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bb051d5354fcd143c9505f70e6e756ba522f7a15))
+-   **core:** fix tui-mobile-only query ([#912](https://github.com/TinkoffCreditSystems/taiga-ui/issues/912)) ([0457918](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0457918945f7547359d3479d7cb6cc562645a331))
+
 ## [2.20.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.19.0...v2.20.0) (2021-10-18)
 
 ### Features
