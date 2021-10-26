@@ -1,3 +1,6 @@
+export * from './misc/tree.constants';
+export * from './misc/tree.interfaces';
+export * from './misc/tree.tokens';
 export * from './components/tree/tree.component';
 export * from './components/tree-item/tree-item.component';
 export * from './components/tree-item/tree-item.providers';
@@ -6,7 +9,4 @@ export * from './directives/tree-children.directive';
 export * from './directives/tree-controller.directive';
 export * from './directives/tree-item-controller.directive';
 export * from './directives/tree-node.directive';
-export * from './misc/tree.constants';
-export * from './misc/tree.interfaces';
-export * from './misc/tree.tokens';
 export * from './tree.module';
