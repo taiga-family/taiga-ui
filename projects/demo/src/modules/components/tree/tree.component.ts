@@ -18,6 +18,9 @@ import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
 import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
 
+import {default as example6Html} from '!!raw-loader!./examples/6/index.html';
+import {default as example6Ts} from '!!raw-loader!./examples/6/index.ts';
+
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -63,5 +66,10 @@ export class ExampleTuiTreeComponent {
         LESS: example5Less,
         'content.ts': example5Content,
         'content.less': example5ContentLess,
+    };
+
+    readonly example6: FrontEndExample = {
+        TypeScript: example6Ts,
+        HTML: example6Html,
     };
 }
