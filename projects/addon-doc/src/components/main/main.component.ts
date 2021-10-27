@@ -1,8 +1,8 @@
 import {Component, forwardRef, Inject, ViewEncapsulation} from '@angular/core';
 import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
+import {TuiSwipeService} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
-import {TuiSwipeService} from '../../../../cdk';
 
 // @dynamic
 @Component({
