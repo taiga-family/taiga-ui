@@ -44,12 +44,12 @@
         ></button>
     </div>
     <div *ngIf="enabled(TuiEditorTool.Size)" class="t-block">
-        <tui-font-size tuiToolbarTool class="t-tool"></tui-font-size>
+        <tui-font-size tuiToolbarTool class="t-tool t-wrapper"></tui-font-size>
     </div>
     <div *ngIf="firstBigBlockEnabled" class="t-block">
         <tui-font-style
             *ngIf="formatEnabled"
-            class="t-tool"
+            class="t-tool t-wrapper"
             tuiToolbarTool
             [enabledTools]="tools"
         ></tui-font-style>
