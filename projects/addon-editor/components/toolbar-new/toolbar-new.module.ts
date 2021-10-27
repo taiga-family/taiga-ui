@@ -6,6 +6,7 @@ import {
     TuiFontSizeModule,
     TuiFontStyleModule,
     TuiJustifyContentModule,
+    TuiListConfigsModule,
     TuiTableCellColorModule,
     TuiTableCreateModule,
     TuiTableMergeCellsModule,
@@ -49,6 +50,7 @@ import {TuiToolbarToolDirective} from './toolbar-tool.directive';
         TuiFontSizeModule,
         TuiFontStyleModule,
         TuiJustifyContentModule,
+        TuiListConfigsModule,
     ],
     declarations: [
         TuiToolbarNewComponent,

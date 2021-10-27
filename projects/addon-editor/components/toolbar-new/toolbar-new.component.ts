@@ -277,14 +277,6 @@ export class TuiToolbarNewComponent {
         this.editor.redo();
     }
 
-    indent() {
-        this.editor.indent();
-    }
-
-    outdent() {
-        this.editor.outdent();
-    }
-
     insertHorizontalRule() {
         this.editor.setHorizontalRule();
     }
@@ -303,10 +295,6 @@ export class TuiToolbarNewComponent {
 
     toggleOrderedList() {
         this.editor.toggleOrderedList();
-    }
-
-    toggleUnorderedList() {
-        this.editor.toggleUnorderedList();
     }
 
     toggleQuote() {

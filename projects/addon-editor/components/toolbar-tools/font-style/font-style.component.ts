@@ -1,11 +1,9 @@
 import {ChangeDetectionStrategy, Component, Inject, Input, NgZone} from '@angular/core';
-import {
-    defaultEditorTools,
-    TUI_EDITOR_TOOLBAR_TEXTS,
-    TuiEditorTool,
-    TuiTiptapEditorService,
-} from '@taiga-ui/addon-editor';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
+import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
+import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {tuiZoneOptimized} from '@taiga-ui/cdk';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {combineLatest, Observable} from 'rxjs';
@@ -14,7 +12,7 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 @Component({
     selector: 'tui-font-style',
     templateUrl: './font-style.template.html',
-    styleUrls: ['./font-style.style.less'],
+    styleUrls: ['../tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontStyleComponent {

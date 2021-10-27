@@ -6,26 +6,18 @@ import {LanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-align-content',
-    templateUrl: './align-content.template.html',
+    selector: 'tui-list-configs',
+    templateUrl: './list-configs.template.html',
     styleUrls: ['../tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiJustifyContentComponent {
-    get alignLeft(): boolean {
-        return this.editor.isActive({textAlign: 'left'});
+export class TuiListConfigsComponent {
+    get unorderedList(): boolean {
+        return this.editor.isActive('bulletList');
     }
 
-    get alignRight(): boolean {
-        return this.editor.isActive({textAlign: 'right'});
-    }
-
-    get alignCenter(): boolean {
-        return this.editor.isActive({textAlign: 'center'});
-    }
-
-    get justify(): boolean {
-        return this.editor.isActive({textAlign: 'justify'});
+    get orderedList(): boolean {
+        return this.editor.isActive('orderedList');
     }
 
     constructor(

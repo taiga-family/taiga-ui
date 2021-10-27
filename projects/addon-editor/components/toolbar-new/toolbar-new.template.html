@@ -60,77 +60,12 @@
             class="t-tool t-wrapper"
         ></tui-align-content>
 
-        <!-- @bad TODO: Keyboard navigation-->
-        <tui-hosted-dropdown
+        <tui-list-configs
             *ngIf="enabled(TuiEditorTool.List)"
-            #list
             tuiToolbarTool
-            class="t-wrapper"
-            [content]="listDropdown"
-        >
-            <button
-                #button
-                #listBtn
-                tuiIconButton
-                type="button"
-                size="s"
-                icon="tuiIconViewListLarge"
-                class="t-tool"
-                appearance="icon"
-                tuiHintDirection="top-left"
-                [tuiHint]="texts.list"
-                [tuiHintId]="listBtn.id"
-                [tuiDescribedBy]="listBtn.id"
-                [pseudoPressed]="list.open || unorderedList || orderedList"
-                [focusable]="list.open"
-            ></button>
-            <ng-template #listDropdown>
-                <div #dropdown class="t-dropdown">
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="s"
-                        icon="tuiIconViewListLarge"
-                        appearance="icon"
-                        class="t-tool t-tool_margin"
-                        [tuiHint]="texts.unorderedList"
-                        [pseudoPressed]="unorderedList"
-                        (click)="toggleUnorderedList()"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="s"
-                        icon="tuiIconOLLarge"
-                        appearance="icon"
-                        class="t-tool t-tool_margin"
-                        [tuiHint]="texts.orderedList"
-                        [pseudoPressed]="orderedList"
-                        (click)="toggleOrderedList()"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="s"
-                        icon="tuiIconIndentLarge"
-                        class="t-tool t-tool_margin"
-                        appearance="icon"
-                        [tuiHint]="texts.indent"
-                        (click)="indent()"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="s"
-                        icon="tuiIconOutdentLarge"
-                        class="t-tool t-tool_margin"
-                        appearance="icon"
-                        [tuiHint]="texts.outdent"
-                        (click)="outdent()"
-                    ></button>
-                </div>
-            </ng-template>
-        </tui-hosted-dropdown>
+            class="t-tool t-wrapper"
+        ></tui-list-configs>
+
         <button
             *ngIf="enabled(TuiEditorTool.Quote)"
             #button

@@ -11,7 +11,7 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 @Component({
     selector: 'tui-table-cell-color',
     templateUrl: './table-cell-color.template.html',
-    styleUrls: ['./table-cell-color.style.less'],
+    styleUrls: ['../tools-common.less', './table-cell-color.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableCellColorComponent {

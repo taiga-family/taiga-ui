@@ -2,7 +2,6 @@
 <tui-hosted-dropdown
     *tuiLet="texts$ | async as texts"
     #align
-    class="t-wrapper"
     [content]="alignDropdown"
 >
     <button
@@ -27,7 +26,7 @@
                 size="s"
                 icon="tuiIconAlignLeftLarge"
                 appearance="icon"
-                class="t-justify-button"
+                class="t-option t-option_margin"
                 [pseudoPressed]="alignLeft"
                 [tuiHint]="texts.justifyLeft"
                 (click)="editor.onAlign('left')"
@@ -38,7 +37,7 @@
                 size="s"
                 icon="tuiIconAlignCenterLarge"
                 appearance="icon"
-                class="t-justify-button"
+                class="t-option t-option_margin"
                 [pseudoPressed]="alignCenter"
                 [tuiHint]="texts.justifyCenter"
                 (click)="editor.onAlign('center')"
@@ -49,7 +48,7 @@
                 size="s"
                 icon="tuiIconAlignRightLarge"
                 appearance="icon"
-                class="t-justify-button"
+                class="t-option t-option_margin"
                 [pseudoPressed]="alignRight"
                 [tuiHint]="texts.justifyRight"
                 (click)="editor.onAlign('right')"
@@ -60,7 +59,7 @@
                 size="s"
                 icon="tuiIconAlignJustifyLarge"
                 appearance="icon"
-                class="t-justify-button"
+                class="t-option t-option_margin"
                 [pseudoPressed]="justify"
                 [tuiHint]="texts.justifyFull"
                 (click)="editor.onAlign('justify')"
