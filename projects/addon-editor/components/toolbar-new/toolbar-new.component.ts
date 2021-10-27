@@ -17,11 +17,7 @@ import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
-import {
-    TUI_EDITOR_CODE_OPTIONS,
-    TUI_EDITOR_TOOLBAR_TEXTS,
-    TUI_IMAGE_LOADER,
-} from '@taiga-ui/addon-editor/tokens';
+import {TUI_EDITOR_TOOLBAR_TEXTS, TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
 import {
     EMPTY_QUERY,
     getClosestElement,
@@ -105,8 +101,6 @@ export class TuiToolbarNewComponent {
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
-        @Inject(TUI_EDITOR_CODE_OPTIONS)
-        readonly codeOptionsTexts$: Observable<LanguageEditor['editorCodeOptions']>,
     ) {}
 
     get focused(): boolean {
@@ -142,14 +136,6 @@ export class TuiToolbarNewComponent {
 
     get redoDisabled(): boolean {
         return !!this.editor.redoDisabled();
-    }
-
-    get code(): boolean {
-        return !!this.editor.isActive('code');
-    }
-
-    get pre(): boolean {
-        return !!this.editor.isActive('codeBlock');
     }
 
     get subscript(): boolean {
@@ -229,14 +215,6 @@ export class TuiToolbarNewComponent {
         }
     }
 
-    onCode(code: number) {
-        if (code === 0) {
-            this.toggleCode();
-        } else {
-            this.togglePre();
-        }
-    }
-
     enabled(tool: TuiEditorTool): boolean {
         return this.tools.indexOf(tool) !== -1;
     }
@@ -271,14 +249,6 @@ export class TuiToolbarNewComponent {
 
     toggleSuperscript() {
         this.editor.toggleSuperscript();
-    }
-
-    private toggleCode() {
-        this.editor.toggleCode();
-    }
-
-    private togglePre() {
-        this.editor.toggleCodeBlock();
     }
 
     private addImage(image: string) {

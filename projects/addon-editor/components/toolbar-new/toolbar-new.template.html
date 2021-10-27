@@ -199,41 +199,12 @@
         ></tui-highlight-color>
     </div>
     <div *ngIf="secondBigBlockEnabled" class="t-block">
-        <tui-hosted-dropdown
+        <tui-code
             *ngIf="enabled(TuiEditorTool.Code)"
-            #codes
             tuiToolbarTool
-            class="t-wrapper"
-            [content]="codesDropdown"
-        >
-            <button
-                #button
-                #codeBtn
-                tuiIconButton
-                type="button"
-                size="s"
-                icon="tuiIconCodeLarge"
-                appearance="icon"
-                class="t-tool"
-                tuiHintDirection="top-left"
-                [tuiHint]="texts.code"
-                [tuiHintId]="codeBtn.id"
-                [tuiDescribedBy]="codeBtn.id"
-                [pseudoPressed]="codes.open || code || pre"
-                [focusable]="codes.open"
-            ></button>
-            <ng-template #codesDropdown>
-                <tui-data-list #dropdown>
-                    <button
-                        *ngFor="let item of codeOptionsTexts$ | async; let index = index"
-                        tuiOption
-                        (click)="onCode(index)"
-                    >
-                        {{item}}
-                    </button>
-                </tui-data-list>
-            </ng-template>
-        </tui-hosted-dropdown>
+            class="t-tool t-wrapper"
+        ></tui-code>
+
         <button
             *ngIf="enabled(TuiEditorTool.Tex)"
             #button

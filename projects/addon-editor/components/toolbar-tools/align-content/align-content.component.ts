@@ -11,7 +11,7 @@ import {Observable} from 'rxjs';
     styleUrls: ['../tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiJustifyContentComponent {
+export class TuiAlignContentComponent {
     get alignLeft(): boolean {
         return this.editor.isActive({textAlign: 'left'});
     }

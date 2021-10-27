@@ -1,13 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
+    TuiDataListModule,
     TuiDescribedByModule,
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {TuiAlignContentComponent} from './align-content.component';
+import {CodeComponent} from './code.component';
 
 @NgModule({
     imports: [
@@ -16,9 +16,9 @@ import {TuiAlignContentComponent} from './align-content.component';
         TuiButtonModule,
         TuiHintModule,
         TuiDescribedByModule,
-        TuiLetModule,
+        TuiDataListModule,
     ],
-    declarations: [TuiAlignContentComponent],
-    exports: [TuiAlignContentComponent],
+    declarations: [CodeComponent],
+    exports: [CodeComponent],
 })
-export class TuiAlignContentModule {}
+export class TuiCodeModule {}

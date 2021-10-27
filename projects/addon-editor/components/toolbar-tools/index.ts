@@ -1,4 +1,5 @@
 export * from '@taiga-ui/addon-editor/components/toolbar-tools/align-content';
+export * from '@taiga-ui/addon-editor/components/toolbar-tools/code';
 export * from '@taiga-ui/addon-editor/components/toolbar-tools/font-size';
 export * from '@taiga-ui/addon-editor/components/toolbar-tools/font-style';
 export * from '@taiga-ui/addon-editor/components/toolbar-tools/highlight-color';

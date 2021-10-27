@@ -2,10 +2,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
 import {
+    TuiAlignContentModule,
+    TuiCodeModule,
     TuiFontSizeModule,
     TuiFontStyleModule,
     TuiHighlightColorModule,
-    TuiJustifyContentModule,
     TuiListConfigsModule,
     TuiTableCellColorModule,
     TuiTableCreateModule,
@@ -16,7 +17,6 @@ import {
 import {TuiFocusableModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
-    TuiDataListModule,
     TuiDescribedByModule,
     TuiHintModule,
     TuiHostedDropdownModule,
@@ -34,17 +34,17 @@ import {TuiToolbarToolDirective} from './toolbar-tool.directive';
         TuiHostedDropdownModule,
         TuiEditLinkModule,
         TuiDescribedByModule,
-        TuiDataListModule,
         TuiTableMergeCellsModule,
         TuiTableCellColorModule,
         TuiTableRowColumnManagerModule,
         TuiTableCreateModule,
         TuiFontSizeModule,
         TuiFontStyleModule,
-        TuiJustifyContentModule,
+        TuiAlignContentModule,
         TuiListConfigsModule,
         TuiTextColorModule,
         TuiHighlightColorModule,
+        TuiCodeModule,
     ],
     declarations: [
         TuiToolbarNewComponent,
