@@ -57,7 +57,7 @@
                             *ngFor="let item of items[index]; index as subIndex"
                         >
                             <ng-container
-                                *ngTemplateOutlet="pages; context: {item: item, index: index + subIndex}"
+                                *ngTemplateOutlet="pages; context: {item: item, index: (index * 100) + subIndex}"
                             >
                             </ng-container>
                         </ng-container>
