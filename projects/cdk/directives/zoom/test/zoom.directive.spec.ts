@@ -48,7 +48,7 @@ describe('TuiPan directive', () => {
     });
 
     it('wheel', () => {
-        const wheel = new WheelEvent('wheel', {deltaY: -1.1});
+        const wheel = new WheelEvent('wheel', {deltaY: 1.1});
 
         testElement.nativeElement.dispatchEvent(wheel);
 

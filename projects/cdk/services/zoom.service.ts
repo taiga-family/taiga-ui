@@ -43,7 +43,7 @@ export class TuiZoomService extends Observable<TuiZoom> {
                             map(wheel => ({
                                 clientX: wheel.clientX,
                                 clientY: wheel.clientY,
-                                delta: wheel.deltaY * 0.01,
+                                delta: -wheel.deltaY * 0.01,
                                 event: wheel,
                             })),
                         ),
