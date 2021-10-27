@@ -242,16 +242,16 @@
                 [tuiHintId]="button.id"
                 [focusable]="false"
                 (click)="image.click()"
-            >
-                <input
-                    #image
-                    class="t-image"
-                    type="file"
-                    accept="image/*"
-                    [tuiFocusable]="false"
-                    (change)="onImage(image)"
-                />
-            </button>
+            ></button>
+
+            <input
+                #image
+                class="t-image"
+                type="file"
+                accept="image/*"
+                [tuiFocusable]="false"
+                (change)="onImage(image)"
+            />
         </div>
         <button
             *ngIf="enabled(TuiEditorTool.HR)"
