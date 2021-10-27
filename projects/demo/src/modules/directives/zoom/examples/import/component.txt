@@ -1,4 +1,4 @@
-active = false;
+scale = 1;
 
 onZoom(scale: TuiScale) {
     this.scale = this.scale + scale.delta;
