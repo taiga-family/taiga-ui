@@ -15,12 +15,19 @@
                     "options": {
                         "tsConfig": "projects/cdk/tsconfig.lib.json",
                         "project": "projects/cdk/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "outputs": ["coverage/cdk"],
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/cdk/test.ts",
                         "tsConfig": "projects/cdk/tsconfig.spec.json",
                         "karmaConfig": "projects/cdk/karma.conf.js"
@@ -34,6 +41,12 @@
                             "projects/cdk/tsconfig.spec.json"
                         ],
                         "exclude": ["**/node_modules/**"]
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/cdk"
                     }
                 }
             }
@@ -50,13 +63,25 @@
                     "options": {
                         "tsConfig": "projects/i18n/tsconfig.lib.json",
                         "project": "projects/i18n/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
                         "tsConfig": ["projects/i18n/tsconfig.lib.json"],
                         "exclude": ["**/node_modules/**"]
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/i18n"
                     }
                 }
             }
@@ -73,12 +98,19 @@
                     "options": {
                         "tsConfig": "projects/core/tsconfig.lib.json",
                         "project": "projects/core/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "outputs": ["coverage/core"],
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/core/test.ts",
                         "tsConfig": "projects/core/tsconfig.spec.json",
                         "karmaConfig": "projects/core/karma.conf.js"
@@ -93,6 +125,12 @@
                         ],
                         "exclude": ["**/node_modules/**"]
                     }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/core"
+                    }
                 }
             }
         },
@@ -101,13 +139,29 @@
             "sourceRoot": "projects/taiga-schematics",
             "projectType": "library",
             "architect": {
-                "build": {
+                "prebuild": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
                     "outputs": ["dist/taiga-schematics"],
                     "options": {
                         "tsConfig": "projects/taiga-schematics/tsconfig.lib.json",
                         "project": "projects/taiga-schematics/ng-package.json"
                     }
+                },
+                "build": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "parallel": false,
+                        "commands": [
+                            "nx prebuild taiga-schematics",
+                            "nx postbuild taiga-schematics"
+                        ]
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "postbuild": {
                     "builder": "@nrwl/workspace:run-commands",
@@ -120,7 +174,7 @@
                         ]
                     }
                 },
-                "schematics": {
+                "test": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
                         "parallel": false,
@@ -128,7 +182,13 @@
                             "tsc -p ./projects/taiga-schematics/tsconfig.spec.json",
                             "jasmine ./dist/taiga-schematics/**/*.spec.js"
                         ]
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "self"
+                        }
+                    ]
                 },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
@@ -138,6 +198,12 @@
                             "projects/taiga-schematics/tsconfig.spec.json"
                         ],
                         "exclude": ["**/node_modules/**"]
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/taiga-schematics"
                     }
                 }
             }
@@ -154,12 +220,19 @@
                     "options": {
                         "tsConfig": "projects/kit/tsconfig.lib.json",
                         "project": "projects/kit/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "outputs": ["coverage/kit"],
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/kit/test.ts",
                         "tsConfig": "projects/kit/tsconfig.spec.json",
                         "karmaConfig": "projects/kit/karma.conf.js",
@@ -177,6 +250,12 @@
                         ],
                         "exclude": ["**/node_modules/**"]
                     }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/kit"
+                    }
                 }
             }
         },
@@ -189,7 +268,7 @@
                 "prebuild": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm run task ./projects/icons/scripts/compile-icons.ts"
+                        "command": "npm run exec ./projects/icons/scripts/compile-icons.ts"
                     }
                 },
                 "build": {
@@ -198,13 +277,25 @@
                     "options": {
                         "tsConfig": "projects/icons/tsconfig.lib.json",
                         "project": "projects/icons/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "prebuild",
+                            "projects": "self"
+                        }
+                    ]
                 },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
                         "tsConfig": ["projects/icons/tsconfig.lib.json"],
                         "exclude": ["**/node_modules/**"]
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/icons"
                     }
                 }
             }
@@ -221,12 +312,19 @@
                     "options": {
                         "tsConfig": "projects/addon-charts/tsconfig.lib.json",
                         "project": "projects/addon-charts/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "outputs": ["coverage/addon-charts"],
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/addon-charts/test.ts",
                         "tsConfig": "projects/addon-charts/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-charts/karma.conf.js",
@@ -244,6 +342,12 @@
                         ],
                         "exclude": ["**/node_modules/**"]
                     }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/addon-charts"
+                    }
                 }
             }
         },
@@ -259,12 +363,19 @@
                     "options": {
                         "tsConfig": "projects/addon-commerce/tsconfig.lib.json",
                         "project": "projects/addon-commerce/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "outputs": ["coverage/addon-commerce"],
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/addon-commerce/test.ts",
                         "tsConfig": "projects/addon-commerce/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-commerce/karma.conf.js",
@@ -282,6 +393,12 @@
                         ],
                         "exclude": ["**/node_modules/**"]
                     }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/addon-commerce"
+                    }
                 }
             }
         },
@@ -297,12 +414,19 @@
                     "options": {
                         "tsConfig": "projects/addon-mobile/tsconfig.lib.json",
                         "project": "projects/addon-mobile/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "outputs": ["coverage/addon-mobile"],
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/addon-mobile/test.ts",
                         "tsConfig": "projects/addon-mobile/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-mobile/karma.conf.js",
@@ -320,6 +444,12 @@
                         ],
                         "exclude": ["**/node_modules/**"]
                     }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/addon-mobile"
+                    }
                 }
             }
         },
@@ -335,12 +465,19 @@
                     "options": {
                         "tsConfig": "projects/addon-tablebars/tsconfig.lib.json",
                         "project": "projects/addon-tablebars/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "outputs": ["coverage/addon-tablebars"],
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/addon-tablebars/test.ts",
                         "tsConfig": "projects/addon-tablebars/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-tablebars/karma.conf.js",
@@ -358,6 +495,12 @@
                         ],
                         "exclude": ["**/node_modules/**"]
                     }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/addon-tablebars"
+                    }
                 }
             }
         },
@@ -373,12 +516,19 @@
                     "options": {
                         "tsConfig": "projects/addon-table/tsconfig.lib.json",
                         "project": "projects/addon-table/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "outputs": ["coverage/addon-table"],
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/addon-table/test.ts",
                         "tsConfig": "projects/addon-table/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-table/karma.conf.js",
@@ -396,6 +546,12 @@
                         ],
                         "exclude": ["**/node_modules/**"]
                     }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/addon-table"
+                    }
                 }
             }
         },
@@ -411,12 +567,19 @@
                     "options": {
                         "tsConfig": "projects/addon-editor/tsconfig.lib.json",
                         "project": "projects/addon-editor/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "outputs": ["coverage/addon-editor"],
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/addon-editor/test.ts",
                         "tsConfig": "projects/addon-editor/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-editor/karma.conf.js",
@@ -434,6 +597,12 @@
                         ],
                         "exclude": ["**/node_modules/**"]
                     }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/addon-editor"
+                    }
                 }
             }
         },
@@ -449,12 +618,19 @@
                     "options": {
                         "tsConfig": "projects/addon-doc/tsconfig.lib.json",
                         "project": "projects/addon-doc/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "outputs": ["coverage/addon-doc"],
                     "options": {
+                        "codeCoverage": true,
                         "main": "projects/addon-doc/src/test.ts",
                         "tsConfig": "projects/addon-doc/tsconfig.spec.json",
                         "karmaConfig": "projects/addon-doc/karma.conf.js",
@@ -471,6 +647,12 @@
                             "projects/addon-doc/tsconfig.spec.json"
                         ],
                         "exclude": ["**/node_modules/**"]
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/addon-doc"
                     }
                 }
             }

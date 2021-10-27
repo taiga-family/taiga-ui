@@ -1,6 +1,8 @@
-import {asyncExec} from './async-exec';
+import * as child_process from 'child_process';
+import * as util from 'util';
 
-export function grepByPattern(pattern: string, path: string): Promise<string> {
+export async function grepByPattern(pattern: string, path: string): Promise<any> {
+    const exec = util.promisify(child_process.exec);
     const grep = `grep -iRl '${pattern}' ${path}`;
 
     // tslint:disable-next-line:no-console
@@ -10,5 +12,5 @@ export function grepByPattern(pattern: string, path: string): Promise<string> {
      * @note(splincode):
      * If `grep` didn't find anything, then it throws an error
      */
-    return asyncExec(`${grep} || true`);
+    return (await exec(`${grep} || true`)).stdout;
 }
