@@ -140,10 +140,6 @@ export class TuiToolbarNewComponent {
         return !!this.editor.isActive('link');
     }
 
-    get foreColorBlank(): boolean {
-        return this.isBlankColor(this.foreColor);
-    }
-
     get hiliteColorBlank(): boolean {
         return this.isBlankColor(this.hiliteColor);
     }
@@ -170,10 +166,6 @@ export class TuiToolbarNewComponent {
 
     get superscript(): boolean {
         return !!this.editor.isActive('superscript');
-    }
-
-    get foreColor(): string {
-        return this.editor.getFontColor() || EDITOR_BLANK_COLOR;
     }
 
     get hiliteColor(): string {
@@ -283,10 +275,6 @@ export class TuiToolbarNewComponent {
 
     removeFormat() {
         this.editor.removeFormat();
-    }
-
-    setForeColor(color: string) {
-        this.editor.setFontColor(color);
     }
 
     setHiliteColor(color: string) {

@@ -404,6 +404,12 @@
             "sourceRoot": "projects/addon-editor",
             "projectType": "library",
             "prefix": "tui",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "changeDetection": "OnPush",
+                    "style": "less"
+                }
+            },
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",

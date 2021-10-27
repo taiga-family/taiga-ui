@@ -11,6 +11,7 @@ import {
     TuiTableCreateModule,
     TuiTableMergeCellsModule,
     TuiTableRowColumnManagerModule,
+    TuiTextColorModule,
 } from '@taiga-ui/addon-editor/components/toolbar-tools';
 import {
     TuiActiveZoneModule,
@@ -51,6 +52,7 @@ import {TuiToolbarToolDirective} from './toolbar-tool.directive';
         TuiFontStyleModule,
         TuiJustifyContentModule,
         TuiListConfigsModule,
+        TuiTextColorModule,
     ],
     declarations: [
         TuiToolbarNewComponent,

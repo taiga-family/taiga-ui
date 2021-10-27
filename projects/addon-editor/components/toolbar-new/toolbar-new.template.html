@@ -184,44 +184,13 @@
         *ngIf="enabled(TuiEditorTool.Color) || enabled(TuiEditorTool.Hilite)"
         class="t-block"
     >
-        <!-- TODO: refactor colors -->
-        <!-- @bad TODO: Keyboard navigation-->
-        <tui-hosted-dropdown
+        <tui-text-color
             *ngIf="enabled(TuiEditorTool.Color)"
-            #color
             tuiToolbarTool
-            class="t-wrapper"
-            [content]="colorDropdown"
-            [tuiDropdownMaxHeight]="999"
-        >
-            <button
-                #button
-                #colorBtn
-                tuiIconButton
-                type="button"
-                size="s"
-                icon="tuiIconColorLarge"
-                appearance="icon"
-                class="t-tool"
-                tuiHintDirection="top-left"
-                automation-id="toolbar__color-button"
-                [tuiHint]="texts.foreColor"
-                [tuiHintId]="colorBtn.id"
-                [tuiDescribedBy]="colorBtn.id"
-                [pseudoPressed]="color.open"
-                [focusable]="color.open"
-            ></button>
-            <div class="t-plate" [style.background]="foreColor"></div>
-            <ng-template #colorDropdown let-activeZone>
-                <tui-color-selector
-                    class="t-color-picker"
-                    [tuiActiveZoneParent]="activeZone"
-                    [colors]="colors"
-                    [color]="foreColor"
-                    (colorChange)="setForeColor($event)"
-                ></tui-color-selector>
-            </ng-template>
-        </tui-hosted-dropdown>
+            class="t-tool t-wrapper"
+            [colors]="colors"
+        ></tui-text-color>
+
         <!-- @bad TODO: Keyboard navigation-->
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Hilite)"
