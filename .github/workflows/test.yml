@@ -34,16 +34,33 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: '12.x'
-            - name: Cache Node.js modules
+            # Setup cache
+            - name: Restore node_modules from cache
+              id: cache-node-modules
+              uses: actions/cache@v2
+              with:
+                  path: |
+                      node_modules
+                      !node_modules/.cache/
+                  key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
+            - name: Restore from global NPM cache
+              if: steps.cache-node-modules.outputs.cache-hit != 'true'
               uses: actions/cache@v2
               with:
                   path: ~/.npm
-                  key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: |
-                      ${{ runner.OS }}-node-
-                      ${{ runner.OS }}-
-            - name: Install dependencies
+                  key: npm-cache-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: npm-cache-
+            - name: Restore from cache of builds
+              id: build-cache
+              uses: actions/cache@v2
+              with:
+                  path: node_modules/.cache
+                  key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
+                  restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
+            - name: Clean install dependencies
+              if: steps.cache-node-modules.outputs.cache-hit != 'true'
               run: npm ci
+            # End of setup cache
             # End of setup
             - name: Run affected tests for libraries based on main branch
               if: ${{ env.IS_MAIN_BRANCH == 'false' }}
