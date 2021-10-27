@@ -217,32 +217,12 @@ export class TuiToolbarNewComponent {
         );
     }
 
-    get alignLeft(): boolean {
-        return !!this.editor.isActive({textAlign: 'left'});
-    }
-
-    get alignRight(): boolean {
-        return !!this.editor.isActive({textAlign: 'right'});
-    }
-
-    get alignCenter(): boolean {
-        return !!this.editor.isActive({textAlign: 'center'});
-    }
-
-    get justify(): boolean {
-        return !!this.editor.isActive({textAlign: 'justify'});
-    }
-
     onBottomFocus() {
         this.focusLast();
     }
 
     onTopFocus() {
         this.focusFirst();
-    }
-
-    onAlign(align: string) {
-        this.editor.onAlign(align);
     }
 
     onImage(input: HTMLInputElement) {

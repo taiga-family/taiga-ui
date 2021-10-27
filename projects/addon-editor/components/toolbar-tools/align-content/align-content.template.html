@@ -1,0 +1,70 @@
+<!-- @bad TODO: Keyboard navigation-->
+<tui-hosted-dropdown
+    *tuiLet="texts$ | async as texts"
+    #align
+    class="t-wrapper"
+    [content]="alignDropdown"
+>
+    <button
+        #alignBtn
+        tuiIconButton
+        type="button"
+        size="s"
+        icon="tuiIconAlignLeftLarge"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        [tuiHint]="texts.justify"
+        [tuiHintId]="alignBtn.id"
+        [tuiDescribedBy]="alignBtn.id"
+        [pseudoPressed]="align.open"
+        [focusable]="align.open"
+    ></button>
+    <ng-template #alignDropdown>
+        <div class="t-dropdown">
+            <button
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconAlignLeftLarge"
+                appearance="icon"
+                class="t-justify-button"
+                [pseudoPressed]="alignLeft"
+                [tuiHint]="texts.justifyLeft"
+                (click)="editor.onAlign('left')"
+            ></button>
+            <button
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconAlignCenterLarge"
+                appearance="icon"
+                class="t-justify-button"
+                [pseudoPressed]="alignCenter"
+                [tuiHint]="texts.justifyCenter"
+                (click)="editor.onAlign('center')"
+            ></button>
+            <button
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconAlignRightLarge"
+                appearance="icon"
+                class="t-justify-button"
+                [pseudoPressed]="alignRight"
+                [tuiHint]="texts.justifyRight"
+                (click)="editor.onAlign('right')"
+            ></button>
+            <button
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconAlignJustifyLarge"
+                appearance="icon"
+                class="t-justify-button"
+                [pseudoPressed]="justify"
+                [tuiHint]="texts.justifyFull"
+                (click)="editor.onAlign('justify')"
+            ></button>
+        </div>
+    </ng-template>
+</tui-hosted-dropdown>

@@ -5,6 +5,7 @@ import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
 import {
     TuiFontSizeModule,
     TuiFontStyleModule,
+    TuiJustifyContentModule,
     TuiTableCellColorModule,
     TuiTableCreateModule,
     TuiTableMergeCellsModule,
@@ -47,6 +48,7 @@ import {TuiToolbarToolDirective} from './toolbar-tool.directive';
         TuiTableCreateModule,
         TuiFontSizeModule,
         TuiFontStyleModule,
+        TuiJustifyContentModule,
     ],
     declarations: [
         TuiToolbarNewComponent,

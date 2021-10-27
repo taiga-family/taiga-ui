@@ -48,83 +48,18 @@
     </div>
     <div *ngIf="firstBigBlockEnabled" class="t-block">
         <tui-font-style
+            *ngIf="formatEnabled"
             class="t-tool"
             tuiToolbarTool
             [enabledTools]="tools"
         ></tui-font-style>
-        <!-- @bad TODO: Keyboard navigation-->
-        <tui-hosted-dropdown
+
+        <tui-align-content
             *ngIf="enabled(TuiEditorTool.Align)"
-            #align
             tuiToolbarTool
-            class="t-wrapper"
-            [content]="alignDropdown"
-        >
-            <button
-                #button
-                #alignBtn
-                tuiIconButton
-                type="button"
-                size="s"
-                icon="tuiIconAlignLeftLarge"
-                appearance="icon"
-                class="t-tool"
-                tuiHintDirection="top-left"
-                [tuiHint]="texts.justify"
-                [tuiHintId]="alignBtn.id"
-                [tuiDescribedBy]="alignBtn.id"
-                [pseudoPressed]="align.open"
-                [focusable]="align.open"
-            ></button>
-            <ng-template #alignDropdown>
-                <div #dropdown class="t-dropdown">
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="s"
-                        icon="tuiIconAlignLeftLarge"
-                        class="t-tool t-tool_margin"
-                        appearance="icon"
-                        [pseudoPressed]="alignLeft"
-                        [tuiHint]="texts.justifyLeft"
-                        (click)="onAlign('left')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="s"
-                        icon="tuiIconAlignCenterLarge"
-                        class="t-tool t-tool_margin"
-                        appearance="icon"
-                        [pseudoPressed]="alignCenter"
-                        [tuiHint]="texts.justifyCenter"
-                        (click)="onAlign('center')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="s"
-                        icon="tuiIconAlignRightLarge"
-                        class="t-tool t-tool_margin"
-                        appearance="icon"
-                        [pseudoPressed]="alignRight"
-                        [tuiHint]="texts.justifyRight"
-                        (click)="onAlign('right')"
-                    ></button>
-                    <button
-                        tuiIconButton
-                        type="button"
-                        size="s"
-                        icon="tuiIconAlignJustifyLarge"
-                        class="t-tool t-tool_margin"
-                        appearance="icon"
-                        [pseudoPressed]="justify"
-                        [tuiHint]="texts.justifyFull"
-                        (click)="onAlign('justify')"
-                    ></button>
-                </div>
-            </ng-template>
-        </tui-hosted-dropdown>
+            class="t-tool t-wrapper"
+        ></tui-align-content>
+
         <!-- @bad TODO: Keyboard navigation-->
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.List)"
