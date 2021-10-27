@@ -14,11 +14,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
-import {
-    defaultEditorColors,
-    defaultEditorTools,
-    EDITOR_BLANK_COLOR,
-} from '@taiga-ui/addon-editor/constants';
+import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {
@@ -140,10 +136,6 @@ export class TuiToolbarNewComponent {
         return !!this.editor.isActive('link');
     }
 
-    get hiliteColorBlank(): boolean {
-        return this.isBlankColor(this.hiliteColor);
-    }
-
     get undoDisabled(): boolean {
         return !!this.editor.undoDisabled();
     }
@@ -166,18 +158,6 @@ export class TuiToolbarNewComponent {
 
     get superscript(): boolean {
         return !!this.editor.isActive('superscript');
-    }
-
-    get hiliteColor(): string {
-        return this.editor.getBackgroundColor() || EDITOR_BLANK_COLOR;
-    }
-
-    get cellColor(): string {
-        return this.editor.getCellColor() || EDITOR_BLANK_COLOR;
-    }
-
-    get canMergeCells(): boolean {
-        return this.editor.canMergeCells();
     }
 
     get formatEnabled(): boolean {
@@ -277,10 +257,6 @@ export class TuiToolbarNewComponent {
         this.editor.removeFormat();
     }
 
-    setHiliteColor(color: string) {
-        this.editor.setBackgroundColor(color);
-    }
-
     toggleOrderedList() {
         this.editor.toggleOrderedList();
     }
@@ -307,10 +283,6 @@ export class TuiToolbarNewComponent {
 
     private addImage(image: string) {
         this.editor.setImage(image);
-    }
-
-    private isBlankColor(color: string): boolean {
-        return color === EDITOR_BLANK_COLOR;
     }
 
     private focusFirst() {

@@ -191,47 +191,12 @@
             [colors]="colors"
         ></tui-text-color>
 
-        <!-- @bad TODO: Keyboard navigation-->
-        <tui-hosted-dropdown
+        <tui-highlight-color
             *ngIf="enabled(TuiEditorTool.Hilite)"
-            #hilite
             tuiToolbarTool
-            class="t-wrapper"
-            [content]="hiliteDropdown"
-            [tuiDropdownMaxHeight]="999"
-        >
-            <button
-                #button
-                #hiliteBtn
-                tuiIconButton
-                type="button"
-                size="s"
-                tuiHintDirection="top-left"
-                appearance="icon"
-                class="t-tool"
-                icon="tuiIconHiliteLarge"
-                automation-id="toolbar__hilite-button"
-                [tuiHint]="texts.backColor"
-                [tuiHintId]="hiliteBtn.id"
-                [tuiDescribedBy]="hiliteBtn.id"
-                [pseudoPressed]="hilite.open"
-                [focusable]="hilite.open"
-            ></button>
-            <div
-                *ngIf="!hiliteColorBlank"
-                class="t-plate"
-                [style.background]="hiliteColor"
-            ></div>
-            <ng-template #hiliteDropdown let-activeZone>
-                <tui-color-selector
-                    class="t-color-picker"
-                    [tuiActiveZoneParent]="activeZone"
-                    [colors]="colors"
-                    [color]="hiliteColor"
-                    (colorChange)="setHiliteColor($event)"
-                ></tui-color-selector>
-            </ng-template>
-        </tui-hosted-dropdown>
+            class="t-tool t-wrapper"
+            [colors]="colors"
+        ></tui-highlight-color>
     </div>
     <div *ngIf="secondBigBlockEnabled" class="t-block">
         <tui-hosted-dropdown
