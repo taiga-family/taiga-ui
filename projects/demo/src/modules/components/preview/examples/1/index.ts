@@ -1,6 +1,7 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
 import {PreviewDialogService} from '@taiga-ui/addon-preview';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {clamp, TuiSwipe} from '../../../../../../../cdk';
 import {TuiDialogContext, TuiNotificationsService} from '../../../../../../../core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
@@ -14,6 +15,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiPreviewExample1 {
     index = 0;
+    lastIndex = 1;
 
     @ViewChild('preview')
     readonly preview?: TemplateRef<TuiDialogContext<void>>;
@@ -50,5 +52,15 @@ export class TuiPreviewExample1 {
 
     delete() {
         this.notificationsService.show('Deleting...').subscribe();
+    }
+
+    onSwipe(swipe: TuiSwipe) {
+        if (swipe.direction === 'left') {
+            this.index = clamp(this.index + 1, 0, this.lastIndex);
+        }
+
+        if (swipe.direction === 'right') {
+            this.index = clamp(this.index - 1, 0, this.lastIndex);
+        }
     }
 }

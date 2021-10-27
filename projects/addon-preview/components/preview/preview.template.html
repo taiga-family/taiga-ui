@@ -10,6 +10,7 @@
         [class.t-transitive]="transitioned$ | async"
         [style.transform]="wrapperTransform$ | async"
         [style.cursor]="cursor$ | async"
+        (tuiPan)="onPan($event)"
         (tuiResize)="onResize($event)"
         (waMutationObserver)="onMutation(contentWrapper)"
         (wheel)="onWheel($event)"

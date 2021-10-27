@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MutationObserverModule} from '@ng-web-apis/mutation-observer';
-import {TuiDragModule, TuiResizeModule} from '@taiga-ui/cdk';
+import {TuiDragModule, TuiPanModule, TuiResizeModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiHintModule,
@@ -34,6 +34,7 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiResizeModule,
         TuiSvgModule,
         TuiLoaderModule,
+        TuiPanModule,
     ],
     declarations: [
         TuiPreviewComponent,

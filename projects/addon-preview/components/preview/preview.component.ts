@@ -15,17 +15,14 @@ import {
     tuiDefaultProp,
     TuiDestroyService,
     TuiDragStage,
-    TuiDragState,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {LanguagePreview} from '@taiga-ui/i18n';
-import {BehaviorSubject, combineLatest, merge, Observable, Subject} from 'rxjs';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {
-    distinctUntilChanged,
     filter,
     map,
-    mapTo,
     pairwise,
     repeat,
     startWith,
@@ -59,33 +56,20 @@ export class TuiPreviewComponent {
     height = 0;
     hypot = 0;
 
-    readonly drag$ = new Subject<TuiDragState | null>();
     readonly zoom$ = new BehaviorSubject<number>(this.minZoom);
     readonly rotation$ = new BehaviorSubject<number>(0);
     readonly coordinates$ = new BehaviorSubject<readonly [number, number]>(
         EMPTY_COORDINATES,
     );
 
-    readonly transitioned$ = merge(
-        this.drag$.pipe(
-            filter(drag => drag === null),
-            switchMap(() =>
-                merge(
-                    this.zoom$.pipe(filter(zoom => zoom !== this.minZoom)),
-                    this.rotation$.pipe(filter(rotation => rotation !== 0)),
-                ).pipe(mapTo(true), startWith(false)),
-            ),
-        ),
-        this.drag$.pipe(
-            filter(drag => drag !== null),
-            map(drag => !drag || drag.stage !== TuiDragStage.Continues),
-        ),
-        typedFromEvent(this.elementRef.nativeElement, 'touchmove', {passive: true}).pipe(
-            mapTo(false),
-        ),
+    transitioned$ = dragAndDropFrom(this.elementRef.nativeElement).pipe(
+        map(state => state.stage !== TuiDragStage.Continues),
     );
 
-    readonly cursor$ = combineLatest(this.drag$.pipe(startWith(null)), this.zoom$).pipe(
+    readonly cursor$ = combineLatest(
+        dragAndDropFrom(this.elementRef.nativeElement).pipe(startWith(null)),
+        this.zoom$,
+    ).pipe(
         map(([state, zoom]) => {
             if (!this.zoomable) {
                 return null;
@@ -97,49 +81,6 @@ export class TuiPreviewComponent {
 
             return zoom > this.minZoom ? 'zoom-out' : 'zoom-in';
         }),
-    );
-
-    // TODO: use named tuples after TS update
-    readonly wrapperTranslate$ = combineLatest([
-        this.drag$.pipe(startWith(null), pairwise()),
-        this.rotation$,
-    ]).pipe(
-        map<
-            [[TuiDragState | null, TuiDragState | null], number],
-            readonly [number, number]
-        >(state => {
-            const [pair, rotation] = state;
-            let coordinates = this.coordinates$.value;
-
-            if (
-                pair[1] === null ||
-                pair[0] === null ||
-                pair[1].stage === TuiDragStage.Start
-            ) {
-                return coordinates;
-            }
-
-            if (
-                pair[0].stage === TuiDragStage.Start &&
-                pair[1].stage === TuiDragStage.End
-            ) {
-                coordinates = this.recalculateCoordinatesAfterZoom(
-                    coordinates,
-                    pair[1].event.clientX,
-                    pair[1].event.clientY,
-                    rotation,
-                );
-            }
-
-            const moveX = pair[1].event.clientX - pair[0].event.clientX;
-            const moveY = pair[1].event.clientY - pair[0].event.clientY;
-
-            return this.getGuarderCoordinates(
-                coordinates[0] + moveX,
-                coordinates[1] + moveY,
-            );
-        }),
-        distinctUntilChanged(),
     );
 
     readonly wrapperTransform$ = combineLatest([
@@ -156,9 +97,8 @@ export class TuiPreviewComponent {
 
     @ViewChild('contentWrapper')
     set contentWrapper({nativeElement}: ElementRef<HTMLElement>) {
-        this.initDragSubscribtion(nativeElement);
-
         this.initTouchScaleSubscribtion(nativeElement);
+        this.initClickSubscription(nativeElement);
     }
 
     constructor(
@@ -167,13 +107,19 @@ export class TuiPreviewComponent {
         @Inject(TuiDestroyService) readonly destroy$: Observable<void>,
         @Inject(TUI_PREVIEW_TEXTS)
         readonly texts$: Observable<LanguagePreview['previewTexts']>,
-    ) {
-        this.initClickSubscription();
-        this.initWrapperTranslateSubscription();
-    }
+    ) {}
 
     rotate() {
         this.rotation$.next(this.rotation$.value - 90);
+    }
+
+    onPan(delta: [number, number]) {
+        this.coordinates$.next(
+            this.getGuarderCoordinates(
+                this.coordinates$.value[0] + delta[0],
+                this.coordinates$.value[1] + delta[1],
+            ),
+        );
     }
 
     onMutation(contentWrapper: HTMLElement) {
@@ -293,8 +239,8 @@ export class TuiPreviewComponent {
         return previous;
     }
 
-    private initClickSubscription() {
-        this.drag$
+    private initClickSubscription(element: HTMLElement) {
+        dragAndDropFrom(element)
             .pipe(
                 pairwise(),
                 filter(
@@ -306,52 +252,23 @@ export class TuiPreviewComponent {
                 ),
                 takeUntil(this.destroy$),
             )
-            .subscribe(() => {
+            .subscribe(([{event}]) => {
                 this.zoom$.next(
                     this.zoom$.value > this.minZoom
                         ? this.minZoom
                         : this.zoom$.value + 0.5,
                 );
-            });
-    }
 
-    private initDragSubscribtion(nativeElement: HTMLElement) {
-        merge(
-            dragAndDropFrom(nativeElement),
-            typedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(
-                switchMap(() =>
-                    typedFromEvent(nativeElement, 'touchmove', {passive: true}),
-                ),
-                filter(event => event.touches.length < 2),
-                takeUntil(typedFromEvent(nativeElement, 'touchend')),
-                repeat(),
-                map(event => {
-                    /**
-                     * TODO: find the better way. DragFrom does not support touches and
-                     * they are incompatible with MouseEvent, but we may use it
-                     * while we need only ClientX/Y
-                     */
-
-                    return new TuiDragState(
-                        TuiDragStage.Continues,
-                        event.touches[0] as any,
-                    );
-                }),
-            ),
-            typedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(
-                filter(event => event.touches.length < 2),
-                map(
-                    event =>
-                        new TuiDragState(TuiDragStage.Start, event.touches[0] as any),
-                ),
-            ),
-        )
-            .pipe(
-                filter(() => this.zoomable),
-                takeUntil(this.destroy$),
-            )
-            .subscribe(event => {
-                this.drag$.next(event);
+                this.coordinates$.next(
+                    this.getGuarderCoordinates(
+                        ...this.recalculateCoordinatesAfterZoom(
+                            this.coordinates$.value,
+                            event.clientX,
+                            event.clientY,
+                            this.rotation$.value,
+                        ),
+                    ),
+                );
             });
     }
 
@@ -383,12 +300,6 @@ export class TuiPreviewComponent {
             .subscribe();
     }
 
-    private initWrapperTranslateSubscription() {
-        this.wrapperTranslate$
-            .pipe(takeUntil(this.destroy$))
-            .subscribe(coords => this.coordinates$.next(coords));
-    }
-
     private refresh(width: number, height: number) {
         this.width = width;
         this.height = height;
@@ -400,7 +311,6 @@ export class TuiPreviewComponent {
         );
         this.zoom$.next(this.minZoom);
         this.rotation$.next(0);
-        this.drag$.next(null);
     }
 
     private getScaleCenter(
