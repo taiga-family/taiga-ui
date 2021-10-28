@@ -4,14 +4,16 @@ import {typedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_ZOOM_OPTIONS} from '@taiga-ui/cdk/tokens';
 import {distanceBetweenTouches} from '@taiga-ui/cdk/utils';
 import {merge, Observable} from 'rxjs';
-import {filter, map, repeat, scan, switchMap, takeUntil} from 'rxjs/operators';
+import {filter, map, scan, switchMap, takeUntil} from 'rxjs/operators';
+
+const TOUCH_SENSITIVITY = 0.01;
 
 // @dynamic
 @Injectable()
 export class TuiZoomService extends Observable<TuiZoom> {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(TUI_ZOOM_OPTIONS) {touchSensitivity, wheelSensitivity}: TuiZoomOptions,
+        @Inject(TUI_ZOOM_OPTIONS) {wheelSensitivity}: TuiZoomOptions,
     ) {
         super(subscriber => {
             merge(
@@ -22,7 +24,6 @@ export class TuiZoomService extends Observable<TuiZoom> {
                             passive: true,
                         }).pipe(
                             takeUntil(typedFromEvent(nativeElement, 'touchend')),
-                            repeat(),
                             scan(
                                 (prev, event) => {
                                     const distance = distanceBetweenTouches(event);
@@ -31,7 +32,8 @@ export class TuiZoomService extends Observable<TuiZoom> {
                                         event,
                                         distance,
                                         delta:
-                                            (distance - prev.distance) * touchSensitivity,
+                                            (distance - prev.distance) *
+                                            TOUCH_SENSITIVITY,
                                     };
                                 },
                                 {

@@ -6,6 +6,9 @@ import {TuiZoomService} from '@taiga-ui/cdk/services';
     selector: '[tuiZoom]',
     outputs: ['tuiZoom'],
     providers: [TuiZoomService],
+    host: {
+        '[style.touch-actions]': '"none"',
+    },
 })
 export class TuiZoomDirective {
     constructor(@Inject(TuiZoomService) readonly tuiZoom: TuiZoomService) {}

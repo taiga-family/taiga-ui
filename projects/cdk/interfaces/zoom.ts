@@ -6,6 +6,5 @@ export interface TuiZoom {
 }
 
 export interface TuiZoomOptions {
-    readonly touchSensitivity: number;
     readonly wheelSensitivity: number;
 }
