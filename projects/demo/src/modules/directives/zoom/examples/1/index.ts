@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {clamp, TuiZoom} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
-import {map, scan} from 'rxjs/operators';
+import {map, scan, startWith} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -15,10 +15,12 @@ import {encapsulation} from '../../../../../view-encapsulation';
 export class TuiZoomExample1 {
     readonly delta$ = new Subject<number>();
 
-    readonly transform$ = this.delta$.pipe(
+    readonly scale$ = this.delta$.pipe(
         scan((scale, next) => clamp(scale + next, 0.5, 3), 1),
-        map(scale => `scale(${scale})`),
+        startWith(1),
     );
+
+    readonly transform$ = this.scale$.pipe(map(scale => `scale(${scale})`));
 
     onZoom({delta}: TuiZoom) {
         this.delta$.next(delta);

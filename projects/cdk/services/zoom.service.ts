@@ -26,7 +26,7 @@ export class TuiZoomService extends Observable<TuiZoom> {
                                     return {
                                         event,
                                         distance,
-                                        delta: distance - prev.distance,
+                                        delta: (distance - prev.distance) * 0.01,
                                     };
                                 },
                                 {

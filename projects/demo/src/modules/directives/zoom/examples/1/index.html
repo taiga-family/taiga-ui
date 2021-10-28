@@ -1,5 +1,5 @@
 <div class="container" (tuiZoom)="onZoom($event)">
     <div class="zoomable" [style.transform]="transform$ | async">
-        <span>{{delta$ | async | number: '1.0-3'}}</span>
+        <span>{{scale$ | async | number: '1.0-3'}}</span>
     </div>
 </div>
