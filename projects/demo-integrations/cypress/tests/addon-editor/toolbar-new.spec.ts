@@ -1,6 +1,5 @@
 import {EDITOR_PAGE_URL} from '../../support/shared.entities';
-
-const WAIT_BEFORE_SCREENSHOT = 1000; // editor has a huge number of icons (that is why we wait so long)
+import {WAIT_BEFORE_SCREENSHOT} from './utils';
 
 describe("Editor's toolbar", () => {
     beforeEach(() => {
