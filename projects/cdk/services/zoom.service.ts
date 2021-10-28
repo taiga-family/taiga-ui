@@ -1,6 +1,7 @@
 import {ElementRef, Inject, Injectable} from '@angular/core';
-import {TuiZoom} from '@taiga-ui/cdk/interfaces';
+import {TuiZoom, TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
 import {typedFromEvent} from '@taiga-ui/cdk/observables';
+import {TUI_ZOOM_OPTIONS} from '@taiga-ui/cdk/tokens';
 import {distanceBetweenTouches} from '@taiga-ui/cdk/utils';
 import {merge, Observable} from 'rxjs';
 import {filter, map, repeat, scan, switchMap, takeUntil} from 'rxjs/operators';
@@ -8,7 +9,10 @@ import {filter, map, repeat, scan, switchMap, takeUntil} from 'rxjs/operators';
 // @dynamic
 @Injectable()
 export class TuiZoomService extends Observable<TuiZoom> {
-    constructor(@Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>) {
+    constructor(
+        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
+        @Inject(TUI_ZOOM_OPTIONS) {touchSensitivity, wheelSensitivity}: TuiZoomOptions,
+    ) {
         super(subscriber => {
             merge(
                 typedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(
@@ -26,7 +30,8 @@ export class TuiZoomService extends Observable<TuiZoom> {
                                     return {
                                         event,
                                         distance,
-                                        delta: (distance - prev.distance) * 0.01,
+                                        delta:
+                                            (distance - prev.distance) * touchSensitivity,
                                     };
                                 },
                                 {
@@ -59,7 +64,7 @@ export class TuiZoomService extends Observable<TuiZoom> {
                         return {
                             clientX: wheel.clientX,
                             clientY: wheel.clientY,
-                            delta: -wheel.deltaY * 0.01,
+                            delta: -wheel.deltaY * wheelSensitivity,
                             event: wheel,
                         };
                     }),

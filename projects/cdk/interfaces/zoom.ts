@@ -4,3 +4,8 @@ export interface TuiZoom {
     readonly delta: number;
     readonly event: WheelEvent | TouchEvent;
 }
+
+export interface TuiZoomOptions {
+    readonly touchSensitivity: number;
+    readonly wheelSensitivity: number;
+}
