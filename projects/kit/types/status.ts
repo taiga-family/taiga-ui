@@ -4,4 +4,6 @@ export type TuiStatusT =
     | 'custom'
     | 'success'
     | 'error'
-    | 'warning';
+    | 'warning'
+    | 'info'
+    | 'neutral';
