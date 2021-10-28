@@ -6,7 +6,7 @@ import {TuiZoom} from '../../../interfaces/zoom';
 import {floor} from '../../../utils/math';
 import {TuiZoomModule} from '../zoom.module';
 
-describe('TuiPan directive', () => {
+describe('TuiZoom directive', () => {
     @Component({
         template: ` <div class="main" (tuiZoom)="onZoom($event)"></div> `,
     })

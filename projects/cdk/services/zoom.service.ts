@@ -2,54 +2,69 @@ import {ElementRef, Inject, Injectable} from '@angular/core';
 import {TuiZoom} from '@taiga-ui/cdk/interfaces';
 import {typedFromEvent} from '@taiga-ui/cdk/observables';
 import {distanceBetweenTouches} from '@taiga-ui/cdk/utils';
-import {Observable} from 'rxjs';
-import {filter, map, merge, repeat, switchMap, takeUntil} from 'rxjs/operators';
+import {merge, Observable} from 'rxjs';
+import {filter, map, repeat, scan, switchMap, takeUntil} from 'rxjs/operators';
 
 // @dynamic
 @Injectable()
 export class TuiZoomService extends Observable<TuiZoom> {
     constructor(@Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>) {
         super(subscriber => {
-            let distance = 0;
-
-            typedFromEvent(nativeElement, 'touchstart', {passive: true})
-                .pipe(
-                    filter(event => event.touches.length > 1),
-                    map(event => distanceBetweenTouches(event)),
-                    switchMap(startDistance => {
-                        distance = startDistance;
-
-                        return typedFromEvent(nativeElement, 'touchmove', {
+            merge(
+                typedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(
+                    filter(({touches}) => touches.length > 1),
+                    switchMap(startEvent =>
+                        typedFromEvent(nativeElement, 'touchmove', {
                             passive: true,
-                        });
-                    }),
-                    takeUntil(typedFromEvent(nativeElement, 'touchend')),
-                    repeat(),
-                    map(event => {
-                        const clientX =
-                            (event.touches[0].clientX + event.touches[1].clientX) / 2;
-                        const clientY =
-                            (event.touches[0].clientY + event.touches[1].clientY) / 2;
+                        }).pipe(
+                            takeUntil(typedFromEvent(nativeElement, 'touchend')),
+                            repeat(),
+                            scan(
+                                (prev, event) => {
+                                    const distance = distanceBetweenTouches(event);
 
-                        const newDistanse = distanceBetweenTouches(event);
-                        const delta = (newDistanse - distance) * 0.01;
+                                    return {
+                                        event,
+                                        distance,
+                                        delta: distance - prev.distance,
+                                    };
+                                },
+                                {
+                                    event: startEvent,
+                                    distance: distanceBetweenTouches(startEvent),
+                                    delta: 0,
+                                },
+                            ),
+                            map(({event, delta}) => {
+                                event.preventDefault();
 
-                        distance = newDistanse;
+                                const clientX =
+                                    (event.touches[0].clientX +
+                                        event.touches[1].clientX) /
+                                    2;
+                                const clientY =
+                                    (event.touches[0].clientY +
+                                        event.touches[1].clientY) /
+                                    2;
 
-                        return {clientX, clientY, delta, event};
-                    }),
-                    merge(
-                        typedFromEvent(nativeElement, 'wheel', {passive: false}).pipe(
-                            map(wheel => ({
-                                clientX: wheel.clientX,
-                                clientY: wheel.clientY,
-                                delta: -wheel.deltaY * 0.01,
-                                event: wheel,
-                            })),
+                                return {clientX, clientY, delta, event};
+                            }),
                         ),
                     ),
-                )
-                .subscribe(subscriber);
+                ),
+                typedFromEvent(nativeElement, 'wheel', {passive: false}).pipe(
+                    map(wheel => {
+                        wheel.preventDefault();
+
+                        return {
+                            clientX: wheel.clientX,
+                            clientY: wheel.clientY,
+                            delta: -wheel.deltaY * 0.01,
+                            event: wheel,
+                        };
+                    }),
+                ),
+            ).subscribe(subscriber);
         });
     }
 }

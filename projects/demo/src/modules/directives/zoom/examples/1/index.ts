@@ -1,8 +1,7 @@
-import {Component, Inject} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import {Component} from '@angular/core';
 import {clamp, TuiZoom} from '@taiga-ui/cdk';
-import {BehaviorSubject} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {map, scan} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -14,19 +13,14 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiZoomExample1 {
-    readonly scale$ = new BehaviorSubject(1);
+    readonly delta$ = new Subject<number>();
 
-    readonly transform$ = this.scale$.pipe(
-        map(scale => this.sanitizer.bypassSecurityTrustStyle(`scale(${scale})`)),
+    readonly transform$ = this.delta$.pipe(
+        scan((scale, next) => clamp(scale + next, 0.5, 3), 1),
+        map(scale => `scale(${scale})`),
     );
 
-    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
-
-    onZoom(zoom: TuiZoom) {
-        this.scale$.next(clamp(this.currentScale + zoom.delta, 0.2, 3));
-    }
-
-    private get currentScale(): number {
-        return this.scale$.value;
+    onZoom({delta}: TuiZoom) {
+        this.delta$.next(delta);
     }
 }
