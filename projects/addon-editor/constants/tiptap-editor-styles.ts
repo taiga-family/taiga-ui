@@ -17,10 +17,8 @@ export const tiptapEditorStyles = `
 
 .tui-editor-socket {
     display: block;
-    color: #333;
-    font-size: 15px;
-    font-family: tuiText, 'Manrope', sans-serif;
-    line-height: 24px;
+    color: var(--tui-text-01);
+    font: var(--tui-font-text-m);
 }
 
 .tui-editor-socket ul,
@@ -46,7 +44,7 @@ export const tiptapEditorStyles = `
     height: 8px;
     border-radius: 100%;
     margin: 0 14px 1px -22px;
-    background-color: #ffdd2d;
+    background-color: var(--tui-primary);
 }
 
 .tui-editor-socket ol {
@@ -58,7 +56,7 @@ export const tiptapEditorStyles = `
     width: 24px;
     margin: 0 12px 0 -24px;
     counter-increment: counter;
-    color: #909090;
+    color: var(--tui-base-05);
 }
 
 .tui-editor-socket pre {
@@ -68,16 +66,16 @@ export const tiptapEditorStyles = `
     margin: 16px 0;
     padding: 12px 16px;
     font-family: 'Courier', monospace;
-    color: #666666;
-    background-color: #f5f5f6;
+    color: var(--tui-text-02);
+    background: var(--tui-base-02);
 }
 
 .tui-editor-socket pre code {
     box-shadow: none !important;
 }
 
-.tui-editor-socket :focus code {
-    background-color: #f5f5f6;
+.tui-editor-socket :focus pre {
+    background-color: var(--tui-base-01);
 }
 
 .tui-editor-socket pre + pre {
@@ -88,7 +86,7 @@ export const tiptapEditorStyles = `
 .tui-editor-socket blockquote {
     margin: 20px 0 20px 24px !important;
     padding-left: 17px !important;
-    border-left: 1px solid #cbcfd3 !important;
+    border-left: 1px solid var(--tui-base-04) !important;
 }
 
 .tui-editor-socket p {
@@ -96,22 +94,22 @@ export const tiptapEditorStyles = `
 }
 
 .tui-editor-socket a {
-    color: #3d7ab6;
+    color: var(--tui-link);
     text-decoration: none;
     outline: none;
 }
 
 .tui-editor-socket a:hover {
-    color: #369;
+    color: var(--tui-link-hover);
 }
 
 .tui-editor-socket a:active {
-    color: #29527c;
+    color: var(--tui-primary-active);
 }
 
 .tui-editor-socket hr {
     border: none;
-    border-top: 1px solid #e7e8ea;
+    border-top: 1px solid var(--tui-base-03);
     margin: 16px 0;
 }
 
@@ -126,7 +124,7 @@ export const tiptapEditorStyles = `
 .tui-editor-socket table td {
     min-width: 1em;
     height: 2rem;
-    border: 2px solid #ced4da;
+    border: 2px solid var(--tui-base-03);
     padding: 3px 5px;
     vertical-align: top;
     box-sizing: border-box;
@@ -137,7 +135,7 @@ export const tiptapEditorStyles = `
 .tui-editor-socket table th {
     min-width: 1em;
     height: 2rem;
-    border: 2px solid #ced4da;
+    border: 2px solid var(--tui-base-03);
     padding: 3px 5px;
     vertical-align: top;
     box-sizing: border-box;
@@ -168,7 +166,7 @@ export const tiptapEditorStyles = `
 .tui-editor-socket table  th {
     font-weight: bold;
     text-align: left;
-    background-color: #f1f3f5;
+    background-color: var(--tui-base-02);
     min-heigth: 2rem
 }
 
@@ -185,7 +183,7 @@ export const tiptapEditorStyles = `
     position: absolute;
     content: "";
     left: 0; right: 0; top: 0; bottom: 0;
-    background: rgba(200, 200, 255, 0.4);
+    background: var(--tui-selection);
     pointer-events: none;
 }
 
