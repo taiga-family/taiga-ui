@@ -21,10 +21,10 @@ export class TuiFontStyleComponent {
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
     readonly fontStyleState$ = combineLatest([
-        this.getActiveStatus('bold'),
-        this.getActiveStatus('italic'),
-        this.getActiveStatus('underline'),
-        this.getActiveStatus('strike'),
+        this.getActiveStatus$('bold'),
+        this.getActiveStatus$('italic'),
+        this.getActiveStatus$('underline'),
+        this.getActiveStatus$('strike'),
     ]).pipe(
         map(([bold, italic, underline, strikeThrough]) => ({
             bold,
@@ -41,7 +41,7 @@ export class TuiFontStyleComponent {
         @Inject(NgZone) private readonly ngZone: NgZone,
     ) {}
 
-    getActiveStatus(status: string): Observable<boolean> {
+    getActiveStatus$(status: string): Observable<boolean> {
         return this.editor.stateChange$.pipe(
             map(() => this.editor.isActive(status)),
             distinctUntilChanged(),
