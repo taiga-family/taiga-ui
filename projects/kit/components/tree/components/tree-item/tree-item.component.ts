@@ -27,6 +27,9 @@ import {TUI_TREE_ITEM_PROVIDERS} from './tree-item.providers';
     styleUrls: ['./tree-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TREE_ITEM_PROVIDERS,
+    host: {
+        role: 'treeitem',
+    },
 })
 export class TuiTreeItemComponent implements DoCheck {
     private readonly change$ = new Subject<void>();

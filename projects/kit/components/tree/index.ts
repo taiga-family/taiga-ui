@@ -1,6 +1,7 @@
 export * from './misc/tree.constants';
 export * from './misc/tree.interfaces';
 export * from './misc/tree.tokens';
+export * from './misc/tree.service';
 export * from './components/tree/tree.component';
 export * from './components/tree-item/tree-item.component';
 export * from './components/tree-item/tree-item.providers';

@@ -1,7 +1,12 @@
 import {InjectionToken} from '@angular/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TUI_DEFAULT_TREE_CONTROLLER, TUI_TREE_ITEM_CONTENT} from './tree.constants';
-import {TuiTreeAccessor, TuiTreeController, TuiTreeItemContext} from './tree.interfaces';
+import {
+    TuiTreeAccessor,
+    TuiTreeController,
+    TuiTreeItemContext,
+    TuiTreeLoader,
+} from './tree.interfaces';
 
 export const TUI_TREE_ACCESSOR = new InjectionToken<TuiTreeAccessor<any>>(
     'Controller for tracking value - TuiTreeItemComponent pairs',
@@ -15,6 +20,14 @@ export const TUI_TREE_CONTROLLER = new InjectionToken<TuiTreeController>(
 );
 
 export const TUI_TREE_NODE = new InjectionToken('A node of a tree view');
+
+export const TUI_TREE_LOADING = new InjectionToken('A tree node placeholder for loading');
+
+export const TUI_TREE_START = new InjectionToken('A tree node starting point');
+
+export const TUI_TREE_LOADER = new InjectionToken<TuiTreeLoader<any>>(
+    'A service to load tree progressively',
+);
 
 export const TUI_TREE_CONTENT = new InjectionToken<
     PolymorpheusContent<TuiTreeItemContext>

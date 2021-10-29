@@ -1,4 +1,4 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, EventEmitter, Input, Output} from '@angular/core';
 import {isPresent, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
 import {TuiTreeAccessor, TuiTreeController} from '../misc/tree.interfaces';
@@ -29,10 +29,12 @@ export class TuiTreeControllerDirective<T>
     @tuiDefaultProp()
     map: Map<T, boolean> = new Map();
 
+    @Output()
+    readonly toggled = new EventEmitter<T>();
+
     readonly items = new Map<TuiTreeItemComponent, T>();
 
     register(item: TuiTreeItemComponent, value: T) {
-        this.unregister(item);
         this.items.set(item, value);
     }
 
@@ -50,8 +52,11 @@ export class TuiTreeControllerDirective<T>
         const value = this.items.get(item);
         const expanded = this.isExpanded(item);
 
-        if (isPresent(value)) {
-            this.map.set(value, !expanded);
+        if (!isPresent(value)) {
+            return;
         }
+
+        this.toggled.emit(value);
+        this.map.set(value, !expanded);
     }
 }

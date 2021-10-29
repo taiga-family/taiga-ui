@@ -14,6 +14,9 @@ import {TUI_TREE_NODE} from '../../misc/tree.tokens';
             useExisting: TuiTreeComponent,
         },
     ],
+    host: {
+        role: 'tree',
+    },
 })
 export class TuiTreeComponent<T> {
     @Input()

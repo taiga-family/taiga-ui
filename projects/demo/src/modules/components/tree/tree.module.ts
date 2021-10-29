@@ -4,7 +4,12 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiMapperPipeModule} from '@taiga-ui/cdk';
-import {TuiButtonModule, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core';
+import {
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiLoaderModule,
+    TuiSvgModule,
+} from '@taiga-ui/core';
 import {TuiCheckboxLabeledModule, TuiTreeModule} from '@taiga-ui/kit';
 import {TuiTreeExample1} from './examples/1';
 import {TuiTreeExample2} from './examples/2';
@@ -13,6 +18,7 @@ import {TuiTreeExample4} from './examples/4';
 import {TuiTreeExample5} from './examples/5';
 import {FoldersComponent} from './examples/5/content';
 import {TuiTreeExample6} from './examples/6';
+import {TuiTreeExample7} from './examples/7';
 import {ExampleTuiTreeComponent} from './tree.component';
 
 @NgModule({
@@ -23,6 +29,7 @@ import {ExampleTuiTreeComponent} from './tree.component';
         TuiLinkModule,
         TuiCheckboxLabeledModule,
         TuiMapperPipeModule,
+        TuiLoaderModule,
         FormsModule,
         CommonModule,
         TuiAddonDocModule,
@@ -38,6 +45,7 @@ import {ExampleTuiTreeComponent} from './tree.component';
         TuiTreeExample4,
         TuiTreeExample5,
         TuiTreeExample6,
+        TuiTreeExample7,
     ],
     exports: [ExampleTuiTreeComponent],
 })
