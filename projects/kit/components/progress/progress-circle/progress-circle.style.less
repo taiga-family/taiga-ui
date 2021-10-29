@@ -28,13 +28,13 @@
 
     .t-track {
         /* clean-css ignore:start */
-        r: (@width[ @@size] - @track-stroke[ @@size]) / 2;
+        r: ((@width[ @@size] - @track-stroke[ @@size]) / 2);
         /* clean-css ignore:end */
         stroke-width: @track-stroke[ @@size];
     }
 
     .t-progress {
-        @radius: (@width[ @@size] - @progress-stroke[ @@size]) / 2;
+        @radius: ((@width[ @@size] - @progress-stroke[ @@size]) / 2);
         @circumference: 2 * pi() * @radius;
 
         /* clean-css ignore:start */

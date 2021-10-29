@@ -176,7 +176,7 @@ export class TuiDocNavigationComponent {
                     page.subPages.forEach(subPage => {
                         if (this.isActiveRoute(subPage.route)) {
                             this.openPagesArr[pagesIndex] = true;
-                            this.openPagesGroupsArr[pagesIndex + pageIndex] = true;
+                            this.openPagesGroupsArr[pagesIndex * 100 + pageIndex] = true;
                             this.active = subPage.route;
                         }
                     });

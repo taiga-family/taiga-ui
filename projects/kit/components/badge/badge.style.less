@@ -113,6 +113,50 @@
         }
     }
 
+    &[data-tui-host-status='info'] {
+        background-color: var(--tui-info-bg);
+        color: var(--tui-text-01);
+
+        --left-content-color: var(--tui-info-fill);
+
+        &._hoverable:hover,
+        &._hoverable:active {
+            background-color: var(--tui-info-bg-hover);
+        }
+
+        &[data-mode='onDark'] {
+            background-color: var(--tui-info-bg-night);
+            color: var(--tui-text-01-night);
+
+            &._hoverable:hover,
+            &._hoverable:active {
+                background-color: var(--tui-info-bg-night-hover);
+            }
+        }
+    }
+
+    &[data-tui-host-status='neutral'] {
+        background-color: var(--tui-neutral-bg);
+        color: var(--tui-text-01);
+
+        --left-content-color: var(--tui-neutral-fill);
+
+        &._hoverable:hover,
+        &._hoverable:active {
+            background-color: var(--tui-neutral-bg-hover);
+        }
+
+        &[data-mode='onDark'] {
+            background-color: var(--tui-neutral-bg-night);
+            color: var(--tui-text-01-night);
+
+            &._hoverable:hover,
+            &._hoverable:active {
+                background-color: var(--tui-neutral-bg-night-hover);
+            }
+        }
+    }
+
     &[data-tui-host-status='default'] {
         background-color: var(--tui-base-06);
 
@@ -240,7 +284,9 @@
 
     :host[data-tui-host-status='error'] &,
     :host[data-tui-host-status='success'] &,
-    :host[data-tui-host-status='warning'] & {
+    :host[data-tui-host-status='warning'] &,
+    :host[data-tui-host-status='info'] &,
+    :host[data-tui-host-status='neutral'] & {
         display: block;
     }
 
