@@ -59,6 +59,8 @@ export class ExampleTuiBadgeComponent {
         'success',
         'error',
         'warning',
+        'info',
+        'neutral',
     ];
 
     status = this.statusVariants[0];
