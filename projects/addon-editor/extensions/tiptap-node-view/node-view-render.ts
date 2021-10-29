@@ -12,6 +12,10 @@ import type {Decoration} from 'prosemirror-view';
 
 import {AngularRenderer} from './component-render';
 
+/**
+ * Copied from
+ * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/NodeViewRenderer.ts ngx-tiptap}
+ */
 export class AngularNodeViewComponent implements NodeViewProps {
     @Input() editor!: NodeViewProps['editor'];
     @Input() node!: NodeViewProps['node'];
@@ -28,6 +32,10 @@ interface AngularNodeViewRendererOptions extends NodeViewRendererOptions {
     injector: Injector;
 }
 
+/**
+ * Copied from
+ * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/NodeViewRenderer.ts ngx-tiptap}
+ */
 class AngularNodeView extends NodeView<
     Type<AngularNodeViewComponent>,
     Editor,
