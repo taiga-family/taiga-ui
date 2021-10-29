@@ -108,7 +108,13 @@ export class TuiTiptapEditorService extends TuiEditor {
     }
 
     setImage(src: string) {
-        this.editor.chain().focus().setImage({src}).run();
+        const isEditableImageEnabled = !!this.editor.commands.setEditableImage;
+
+        if (isEditableImageEnabled) {
+            this.editor.chain().focus().setEditableImage({src}).run();
+        } else {
+            this.editor.chain().focus().setImage({src}).run();
+        }
     }
 
     undo() {

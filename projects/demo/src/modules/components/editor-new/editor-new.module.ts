@@ -16,6 +16,7 @@ import {ExampleEditorNewComponent} from './editor-new.component';
 import {TuiEditorNewExample1} from './examples/1';
 import {TuiEditorNewExample2} from './examples/2';
 import {ExampleSmilesToolModule} from './examples/2/smiles-tool/smiles-tool.module';
+import {TuiEditorNewExample3} from './examples/3';
 
 @NgModule({
     imports: [
@@ -33,7 +34,12 @@ import {ExampleSmilesToolModule} from './examples/2/smiles-tool/smiles-tool.modu
         ExampleSmilesToolModule,
         RouterModule.forChild(generateRoutes(ExampleEditorNewComponent)),
     ],
-    declarations: [ExampleEditorNewComponent, TuiEditorNewExample1, TuiEditorNewExample2],
+    declarations: [
+        ExampleEditorNewComponent,
+        TuiEditorNewExample1,
+        TuiEditorNewExample2,
+        TuiEditorNewExample3,
+    ],
     exports: [ExampleEditorNewComponent],
 })
 export class ExampleTuiEditorNewModule {}

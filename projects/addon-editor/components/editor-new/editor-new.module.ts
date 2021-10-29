@@ -6,6 +6,7 @@ import {
     TuiToolbarToolDirective,
 } from '@taiga-ui/addon-editor/components/toolbar-new';
 import {TuiTiptapEditorModule} from '@taiga-ui/addon-editor/directives';
+import {TuiImageEditorModule} from '@taiga-ui/addon-editor/extensions';
 import {TuiActiveZoneModule, TuiHoveredModule, TuiLetModule} from '@taiga-ui/cdk';
 import {TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';
 import {TuiDropdownSelectionModule} from '@taiga-ui/kit';
@@ -25,6 +26,7 @@ import {TuiEditorNewComponent} from './editor-new.component';
         TuiDropdownSelectionModule,
         TuiTiptapEditorModule,
         TuiLetModule,
+        TuiImageEditorModule,
     ],
     exports: [TuiEditorNewComponent, TuiToolbarToolDirective],
 })
