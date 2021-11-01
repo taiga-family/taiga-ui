@@ -176,10 +176,6 @@ export class TuiMultiSelectComponent<T>
         return this.search === null ? '' : this.search;
     }
 
-    get tagIcon(): string {
-        return this.interactive ? 'iconBlank' : this.arrowIcon;
-    }
-
     get interactive(): boolean {
         return !this.disabled && !this.readOnly;
     }
