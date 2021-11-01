@@ -101,8 +101,6 @@ export class TuiComboBoxComponent<T>
     @Output()
     readonly searchChange = new EventEmitter<string | null>();
 
-    readonly arrow: PolymorpheusContent = TUI_ARROW;
-
     open = false;
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
@@ -125,6 +123,10 @@ export class TuiComboBoxComponent<T>
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    get arrow(): PolymorpheusContent {
+        return this.disabled || this.readOnly ? '' : TUI_ARROW;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
