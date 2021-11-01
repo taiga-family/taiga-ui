@@ -18,8 +18,8 @@
         "@ng-web-apis/common": "1.12.1",
         "@ng-web-apis/mutation-observer": "1.1.0",
         "@ng-web-apis/resize-observer": "1.0.3",
-        "@tinkoff/ng-event-plugins": "2.3.0",
-        "@tinkoff/ng-polymorpheus": "3.1.9",
+        "@tinkoff/ng-event-plugins": "2.3.1",
+        "@tinkoff/ng-polymorpheus": "3.1.10",
         "@types/resize-observer-browser": "0.1.5"
     },
     "peerDependencies": {
