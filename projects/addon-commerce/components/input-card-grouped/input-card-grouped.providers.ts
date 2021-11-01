@@ -6,7 +6,8 @@ import {
     TUI_CARD_NUMBER_TEXTS,
 } from '@taiga-ui/addon-commerce/tokens';
 import {typedFromEvent} from '@taiga-ui/cdk';
-import {MEDIA} from '@taiga-ui/core';
+import {TuiMedia} from '@taiga-ui/core/interfaces';
+import {TUI_MEDIA} from '@taiga-ui/core/tokens';
 import {combineLatest, Observable, of} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
 
@@ -25,6 +26,7 @@ export const TUI_INPUT_CARD_GROUPED_TEXTS = new InjectionToken<
             inject(TUI_CARD_NUMBER_TEXTS),
             inject(TUI_CARD_EXPIRY_TEXTS),
             inject(TUI_CARD_CVC_TEXTS),
+            inject(TUI_MEDIA),
         ),
 });
 
@@ -33,9 +35,10 @@ export function inputGroupedTextsFactory(
     cardNumberTexts: Observable<[string, string]>,
     expiryTexts: Observable<[string, string]>,
     cvcTexts: Observable<[string, string]>,
+    {desktopSmall}: TuiMedia,
 ): Observable<TuiCardGroupedTexts> {
     const media = windowRef.matchMedia(
-        `screen and (min-width: ${(MEDIA.desktopSmall - 1) / 16}em)`,
+        `screen and (min-width: ${(desktopSmall - 1) / 16}em)`,
     );
 
     return typedFromEvent(media, 'change').pipe(
