@@ -4,6 +4,7 @@ import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-list-configs',
@@ -12,13 +13,13 @@ import {Observable} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiListConfigsComponent {
-    get unorderedList(): boolean {
-        return this.editor.isActive('bulletList');
-    }
-
-    get orderedList(): boolean {
-        return this.editor.isActive('orderedList');
-    }
+    readonly listState$ = this.editor.stateChange$.pipe(
+        map(() => ({
+            ordered: this.editor.isActive('orderedList'),
+            unordered: this.editor.isActive('bulletList'),
+        })),
+        startWith({ordered: false, unordered: false}),
+    );
 
     constructor(
         @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,

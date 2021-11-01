@@ -4,6 +4,7 @@ import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-align-content',
@@ -12,21 +13,14 @@ import {Observable} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAlignContentComponent {
-    get alignLeft(): boolean {
-        return this.editor.isActive({textAlign: 'left'});
-    }
-
-    get alignRight(): boolean {
-        return this.editor.isActive({textAlign: 'right'});
-    }
-
-    get alignCenter(): boolean {
-        return this.editor.isActive({textAlign: 'center'});
-    }
-
-    get justify(): boolean {
-        return this.editor.isActive({textAlign: 'justify'});
-    }
+    readonly alignState$ = this.editor.stateChange$.pipe(
+        map(() => ({
+            left: this.editor.isActive({textAlign: 'left'}),
+            right: this.editor.isActive({textAlign: 'right'}),
+            center: this.editor.isActive({textAlign: 'center'}),
+            justify: this.editor.isActive({textAlign: 'justify'}),
+        })),
+    );
 
     constructor(
         @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,

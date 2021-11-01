@@ -16,7 +16,7 @@
             [tuiHint]="texts.fontStyle"
             [tuiHintId]="formatBtn.id"
             [tuiDescribedBy]="formatBtn.id"
-            [pseudoPressed]="format.open || state.bold || state.italic || state.underline || state.strikeThrough"
+            [pseudoPressed]="format.open || state.bold || state.italic || state.underline || state.strike"
             [focusable]="format.open"
         ></button>
         <ng-template #formatDropdown>
@@ -66,7 +66,7 @@
                     appearance="icon"
                     class="t-option t-option_margin"
                     [tuiHint]="texts.strikeThrough"
-                    [pseudoPressed]="state.strikeThrough"
+                    [pseudoPressed]="state.strike"
                     (click)="editor.toggleStrike()"
                 ></button>
             </div>

@@ -5,8 +5,8 @@ import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {LanguageEditor} from '@taiga-ui/i18n';
-import {combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-font-style',
@@ -20,17 +20,12 @@ export class TuiFontStyleComponent {
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
-    readonly fontStyleState$ = combineLatest([
-        this.getActiveStatus$('bold'),
-        this.getActiveStatus$('italic'),
-        this.getActiveStatus$('underline'),
-        this.getActiveStatus$('strike'),
-    ]).pipe(
-        map(([bold, italic, underline, strikeThrough]) => ({
-            bold,
-            italic,
-            underline,
-            strikeThrough,
+    readonly fontStyleState$ = this.editor.stateChange$.pipe(
+        map(() => ({
+            bold: this.editor.isActive('bold'),
+            italic: this.editor.isActive('italic'),
+            underline: this.editor.isActive('underline'),
+            strike: this.editor.isActive('strike'),
         })),
     );
 
@@ -42,12 +37,5 @@ export class TuiFontStyleComponent {
 
     isEnabled(tool: TuiEditorTool): boolean {
         return this.enabledTools.includes(tool);
-    }
-
-    private getActiveStatus$(status: string): Observable<boolean> {
-        return this.editor.stateChange$.pipe(
-            map(() => this.editor.isActive(status)),
-            distinctUntilChanged(),
-        );
     }
 }
