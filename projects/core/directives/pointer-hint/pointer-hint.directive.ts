@@ -57,7 +57,7 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
         private readonly destroy$: TuiDestroyService,
         @Inject(TuiHoveredService) hoveredService: TuiHoveredService,
     ) {
-        super(elementRef, hintService);
+        super(elementRef, hintService, null);
 
         const hint$ = hoveredService.createHovered$(this.elementRef.nativeElement).pipe(
             filter(() => !!this.content),

@@ -1,5 +1,5 @@
 import {Directive, ElementRef, Input, OnDestroy} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -19,6 +19,7 @@ export abstract class AbstractTuiHint implements OnDestroy {
     constructor(
         protected readonly elementRef: ElementRef<HTMLElement>,
         protected readonly hintService: TuiHintService,
+        readonly activeZone: TuiActiveZoneDirective | null,
     ) {}
 
     abstract getElementClientRect(): ClientRect;

@@ -4,6 +4,7 @@
     [attr.id]="hint.id"
     [@tuiFadeIn]="animation"
     [hint]="hint"
+    [tuiActiveZoneParent]="hint.activeZone"
     (tuiHoveredChange)="onHovered($event, hint)"
 >
     <div polymorpheus-outlet [content]="hint.content">
