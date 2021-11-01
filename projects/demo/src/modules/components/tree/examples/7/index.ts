@@ -6,12 +6,11 @@ import {
     TUI_TREE_START,
     TuiTreeService,
 } from '@taiga-ui/kit';
-import {Observable, timer} from 'rxjs';
-import {mapTo} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
+import {TreeLoader} from './service';
 
-interface Item {
+export interface Item {
     readonly text: string;
     readonly children?: boolean;
 }
@@ -25,19 +24,12 @@ interface Item {
     providers: [
         TuiTreeService,
         {
-            provide: TUI_TREE_LOADING,
-            useValue: {text: ''},
-        },
-        {
             provide: TUI_TREE_START,
             useValue: {text: 'Topmost'},
         },
         {
             provide: TUI_TREE_LOADER,
-            useValue: {
-                loadChildren: serverRequestImitation,
-                hasChildren: (item: Item) => !!item.children,
-            },
+            useClass: TreeLoader,
         },
     ],
 })
@@ -45,7 +37,7 @@ export class TuiTreeExample7 {
     map = new Map<Item, boolean>();
 
     constructor(
-        @Inject(TUI_TREE_LOADING) readonly loading: Item,
+        @Inject(TUI_TREE_LOADING) readonly loading: unknown,
         @Inject(TuiTreeService) readonly service: TuiTreeService<Item>,
     ) {}
 
@@ -55,14 +47,4 @@ export class TuiTreeExample7 {
     onToggled(item: Item) {
         this.service.loadChildren(item);
     }
-}
-
-function serverRequestImitation({text}: Item): Observable<readonly Item[]> {
-    return timer(3000).pipe(
-        mapTo([
-            {text: `${text} 1`, children: Math.random() > 0.5},
-            {text: `${text} 2`, children: Math.random() > 0.5},
-            {text: `${text} 3`, children: Math.random() > 0.5},
-        ]),
-    );
 }

@@ -21,7 +21,10 @@ export const TUI_TREE_CONTROLLER = new InjectionToken<TuiTreeController>(
 
 export const TUI_TREE_NODE = new InjectionToken('A node of a tree view');
 
-export const TUI_TREE_LOADING = new InjectionToken('A tree node placeholder for loading');
+export const TUI_TREE_LOADING = new InjectionToken(
+    'A tree node placeholder for loading',
+    {factory: () => ({})},
+);
 
 export const TUI_TREE_START = new InjectionToken('A tree node starting point');
 

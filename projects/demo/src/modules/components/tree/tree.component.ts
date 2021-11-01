@@ -22,7 +22,9 @@ import {default as example6Html} from '!!raw-loader!./examples/6/index.html';
 import {default as example6Ts} from '!!raw-loader!./examples/6/index.ts';
 
 import {default as example7Html} from '!!raw-loader!./examples/7/index.html';
+import {default as example7Less} from '!!raw-loader!./examples/7/index.less';
 import {default as example7Ts} from '!!raw-loader!./examples/7/index.ts';
+import {default as example7Service} from '!!raw-loader!./examples/7/service';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -76,8 +78,10 @@ export class ExampleTuiTreeComponent {
         HTML: example6Html,
     };
 
-    readonly example7: FrontEndExample = {
+    readonly example7 = {
         TypeScript: example7Ts,
         HTML: example7Html,
+        LESS: example7Less,
+        Service: example7Service,
     };
 }
