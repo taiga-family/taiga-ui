@@ -4,10 +4,12 @@ import {
     Inject,
     Input,
     OnDestroy,
+    Optional,
     Renderer2,
     Self,
 } from '@angular/core';
 import {
+    TuiActiveZoneDirective,
     tuiDefaultProp,
     TuiDestroyService,
     TuiHoveredService,
@@ -78,8 +80,11 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
         @Self()
         obscured$: TuiObscuredService,
         @Inject(TuiHoveredService) hoveredService: TuiHoveredService,
+        @Optional()
+        @Inject(TuiActiveZoneDirective)
+        activeZone: TuiActiveZoneDirective | null,
     ) {
-        super(elementRef, hintService);
+        super(elementRef, hintService, activeZone);
 
         // @bad TODO: Use private provider
         combineLatest(
