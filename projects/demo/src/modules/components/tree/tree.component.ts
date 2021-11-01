@@ -82,6 +82,6 @@ export class ExampleTuiTreeComponent {
         TypeScript: example7Ts,
         HTML: example7Html,
         LESS: example7Less,
-        Service: example7Service,
+        'service.ts': example7Service,
     };
 }
