@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {BehaviorSubject} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -16,7 +16,6 @@ export class TuiPanExample1 {
     readonly coordinates$ = new BehaviorSubject([0, 0]);
 
     readonly transform$ = this.coordinates$.pipe(
-        tap(console.log),
         map(coords =>
             this.sanitizer.bypassSecurityTrustStyle(
                 `translate(${coords[0]}px, ${coords[1]}px)`,

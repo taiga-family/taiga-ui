@@ -11,3 +11,4 @@ export * from './is-cypress';
 export * from './take-only-trusted-events';
 export * from './window-height';
 export * from './swipe-options';
+export * from './zoom-options';

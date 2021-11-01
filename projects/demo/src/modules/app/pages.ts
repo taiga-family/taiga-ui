@@ -1016,6 +1016,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'Zoom',
+                keywords: 'zoom, scale, pinch, зум, масштаб',
+                route: '/directives/zoom',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'Present',
                 keywords: 'DOM, директива, появление, наличие, присутствие',
                 route: '/directives/present',
