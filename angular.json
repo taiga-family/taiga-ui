@@ -563,7 +563,8 @@
             "schematics": {
                 "@schematics/angular:component": {
                     "changeDetection": "OnPush",
-                    "style": "less"
+                    "style": "less",
+                    "displayBlock": true
                 }
             },
             "architect": {

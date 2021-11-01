@@ -23,6 +23,7 @@ export class TuiHighlightColorComponent {
         map(() => this.editor.getBackgroundColor() || EDITOR_BLANK_COLOR),
         distinctUntilChanged(),
     );
+
     readonly backColorText$ = this.texts$.pipe(map(texts => texts.backColor));
 
     constructor(

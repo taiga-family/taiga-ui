@@ -23,6 +23,7 @@ export class TuiTextColorComponent {
         map(() => this.editor.getFontColor() || EDITOR_BLANK_COLOR),
         distinctUntilChanged(),
     );
+
     readonly foreColorText$ = this.texts$.pipe(map(texts => texts.foreColor));
 
     constructor(

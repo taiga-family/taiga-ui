@@ -1,10 +1,9 @@
-import {ChangeDetectionStrategy, Component, Inject, Input, NgZone} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
-import {tuiZoneOptimized} from '@taiga-ui/cdk';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
@@ -20,6 +19,7 @@ export class TuiFontStyleComponent {
     enabledTools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
+
     readonly fontStyleState$ = combineLatest([
         this.getActiveStatus$('bold'),
         this.getActiveStatus$('italic'),
@@ -38,18 +38,16 @@ export class TuiFontStyleComponent {
         @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
-        @Inject(NgZone) private readonly ngZone: NgZone,
     ) {}
-
-    getActiveStatus$(status: string): Observable<boolean> {
-        return this.editor.stateChange$.pipe(
-            map(() => this.editor.isActive(status)),
-            distinctUntilChanged(),
-            tuiZoneOptimized(this.ngZone),
-        );
-    }
 
     isEnabled(tool: TuiEditorTool): boolean {
         return this.enabledTools.includes(tool);
+    }
+
+    private getActiveStatus$(status: string): Observable<boolean> {
+        return this.editor.stateChange$.pipe(
+            map(() => this.editor.isActive(status)),
+            distinctUntilChanged(),
+        );
     }
 }

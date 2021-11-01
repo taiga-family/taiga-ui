@@ -37,6 +37,7 @@ export class TuiFontSizeComponent {
                 },
             ]),
         );
+
     readonly fontText$ = this.texts$.pipe(map(texts => texts.font));
 
     constructor(
