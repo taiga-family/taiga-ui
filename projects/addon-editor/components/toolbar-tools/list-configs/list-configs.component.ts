@@ -4,7 +4,7 @@ import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-list-configs',
@@ -14,8 +14,8 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 })
 export class TuiListConfigsComponent {
     readonly listState$ = combineLatest([
-        this.getActiveStatus$('orderedList'),
-        this.getActiveStatus$('bulletList'),
+        this.editor.isActive$('orderedList'),
+        this.editor.isActive$('bulletList'),
     ]).pipe(
         map(([ordered, unordered]) => ({
             ordered,
@@ -29,11 +29,4 @@ export class TuiListConfigsComponent {
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
     ) {}
-
-    private getActiveStatus$(status: string): Observable<boolean> {
-        return this.editor.stateChange$.pipe(
-            map(() => this.editor.isActive(status)),
-            distinctUntilChanged(),
-        );
-    }
 }

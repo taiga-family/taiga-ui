@@ -4,7 +4,7 @@ import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-align-content',
@@ -14,10 +14,10 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 })
 export class TuiAlignContentComponent {
     readonly alignState$ = combineLatest([
-        this.getActiveStatus$('left'),
-        this.getActiveStatus$('right'),
-        this.getActiveStatus$('center'),
-        this.getActiveStatus$('justify'),
+        this.editor.isActive$({textAlign: 'left'}),
+        this.editor.isActive$({textAlign: 'right'}),
+        this.editor.isActive$({textAlign: 'center'}),
+        this.editor.isActive$({textAlign: 'justify'}),
     ]).pipe(
         map(([left, right, center, justify]) => ({
             left,
@@ -32,11 +32,4 @@ export class TuiAlignContentComponent {
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
     ) {}
-
-    private getActiveStatus$(status: string): Observable<boolean> {
-        return this.editor.stateChange$.pipe(
-            map(() => this.editor.isActive({textAlign: status})),
-            distinctUntilChanged(),
-        );
-    }
 }

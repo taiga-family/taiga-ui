@@ -6,7 +6,7 @@ import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-font-style',
@@ -21,10 +21,10 @@ export class TuiFontStyleComponent {
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
     readonly fontStyleState$ = combineLatest([
-        this.getActiveStatus$('bold'),
-        this.getActiveStatus$('italic'),
-        this.getActiveStatus$('underline'),
-        this.getActiveStatus$('strike'),
+        this.editor.isActive$('bold'),
+        this.editor.isActive$('italic'),
+        this.editor.isActive$('underline'),
+        this.editor.isActive$('strike'),
     ]).pipe(
         map(([bold, italic, underline, strike]) => ({
             bold,
@@ -42,12 +42,5 @@ export class TuiFontStyleComponent {
 
     isEnabled(tool: TuiEditorTool): boolean {
         return this.enabledTools.includes(tool);
-    }
-
-    private getActiveStatus$(status: string): Observable<boolean> {
-        return this.editor.stateChange$.pipe(
-            map(() => this.editor.isActive(status)),
-            distinctUntilChanged(),
-        );
     }
 }

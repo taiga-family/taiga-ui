@@ -20,10 +20,9 @@ export class TuiTableCellColorComponent {
     colors: ReadonlyMap<string, string> = defaultEditorColors;
 
     readonly cellColorText$ = this.texts$.pipe(map(texts => texts.cellColor));
-    readonly isActive$ = this.editor.stateChange$.pipe(
-        map(() => this.editor.isActive('table')),
-        distinctUntilChanged(),
-    );
+
+    readonly isActive$ = this.editor.isActive$('table');
+
     readonly cellColor$ = this.editor.stateChange$.pipe(
         map(() => this.editor.getCellColor() || EDITOR_BLANK_COLOR),
         distinctUntilChanged(),

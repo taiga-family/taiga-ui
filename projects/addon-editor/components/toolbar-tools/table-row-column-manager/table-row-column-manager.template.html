@@ -1,8 +1,8 @@
 <tui-hosted-dropdown
-    *tuiLet="isDisabled$ | async as disabled"
+    *tuiLet="isActive$ | async as active"
     #tableCommand
     [content]="tableOptionsDropdown"
-    [canOpen]="!disabled"
+    [canOpen]="active"
 >
     <button
         #tableCommandsBtn
@@ -16,7 +16,7 @@
         [tuiHintId]="tableCommandsBtn.id"
         [tuiDescribedBy]="tableCommandsBtn.id"
         [focusable]="tableCommand.open"
-        [disabled]="disabled"
+        [disabled]="!active"
     ></button>
 </tui-hosted-dropdown>
 

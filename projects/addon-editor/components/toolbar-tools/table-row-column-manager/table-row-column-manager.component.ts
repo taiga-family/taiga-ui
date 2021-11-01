@@ -7,7 +7,7 @@ import {
 } from '@taiga-ui/addon-editor/tokens';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 export enum TableComands {
     InsertColumnBefore,
@@ -24,10 +24,8 @@ export enum TableComands {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableRowColumnManagerComponent {
-    readonly isDisabled$ = this.editor.stateChange$.pipe(
-        map(() => !this.editor.isActive('table')),
-        distinctUntilChanged(),
-    );
+    readonly isActive$ = this.editor.isActive$('table');
+
     readonly rowsColumnsManagingText$ = this.texts$.pipe(
         map(texts => texts.rowsColumnsManaging),
     );

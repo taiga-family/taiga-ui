@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 import type {Editor} from '@tiptap/core';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 @Directive()
 export abstract class TuiEditor {
@@ -10,6 +10,8 @@ export abstract class TuiEditor {
     abstract readonly isFocused: boolean;
     abstract readonly html: string;
     abstract editable: boolean;
+
+    abstract isActive$(name: string | Record<string, string>): Observable<boolean>;
 
     abstract isActive(name: string | Record<string, string>): boolean;
     abstract undoDisabled(): boolean;
