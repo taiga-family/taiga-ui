@@ -11,7 +11,7 @@ export abstract class TuiEditor {
     abstract readonly html: string;
     abstract editable: boolean;
 
-    abstract isActive$(name: string | Record<string, string>): Observable<boolean>;
+    abstract isActive$(name: string | Record<string, string>): Observable<boolean | null>;
 
     abstract isActive(name: string | Record<string, string>): boolean;
     abstract undoDisabled(): boolean;

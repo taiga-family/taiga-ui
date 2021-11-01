@@ -4,7 +4,7 @@ import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {combineLatest, Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-list-configs',
@@ -21,7 +21,6 @@ export class TuiListConfigsComponent {
             ordered,
             unordered,
         })),
-        startWith({ordered: false, unordered: false}),
     );
 
     constructor(
