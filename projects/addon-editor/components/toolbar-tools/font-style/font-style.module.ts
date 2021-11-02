@@ -3,24 +3,22 @@ import {NgModule} from '@angular/core';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
-    TuiDataListModule,
     TuiDescribedByModule,
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {TuiTableRowColumnManagerComponent} from './table-row-column-manager.component';
+import {TuiFontStyleComponent} from './font-style.component';
 
 @NgModule({
     imports: [
         CommonModule,
         TuiHostedDropdownModule,
+        TuiButtonModule,
         TuiHintModule,
         TuiDescribedByModule,
-        TuiButtonModule,
-        TuiDataListModule,
         TuiLetModule,
     ],
-    declarations: [TuiTableRowColumnManagerComponent],
-    exports: [TuiTableRowColumnManagerComponent],
+    declarations: [TuiFontStyleComponent],
+    exports: [TuiFontStyleComponent],
 })
-export class TuiTableRowColumnManagerModule {}
+export class TuiFontStyleModule {}

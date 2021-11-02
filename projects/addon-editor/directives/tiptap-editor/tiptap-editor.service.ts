@@ -31,6 +31,7 @@ import type Underline from '@tiptap/extension-underline';
 // @ts-ignore
 import type StarterKit from '@tiptap/starter-kit';
 import {Observable} from 'rxjs';
+import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -156,8 +157,16 @@ export class TuiTiptapEditorService extends TuiEditor {
         this.editor.chain().focus().toggleCodeBlock().run();
     }
 
-    isActive(name: string): boolean {
-        return this.editor.isActive(name);
+    isActive(nameOrAttributes: Record<string, string> | string): boolean {
+        return this.editor.isActive(nameOrAttributes);
+    }
+
+    isActive$(nameOrAttributes: Record<string, string> | string): Observable<boolean> {
+        return this.stateChange$.pipe(
+            startWith(null),
+            map(() => this.isActive(nameOrAttributes)),
+            distinctUntilChanged(),
+        );
     }
 
     toggleBold() {

@@ -14,20 +14,10 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
-import {
-    defaultEditorColors,
-    defaultEditorTools,
-    EDITOR_BLANK_COLOR,
-} from '@taiga-ui/addon-editor/constants';
+import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
-import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
-import {
-    TUI_EDITOR_CODE_OPTIONS,
-    TUI_EDITOR_FONT_OPTIONS,
-    TUI_EDITOR_TOOLBAR_TEXTS,
-    TUI_IMAGE_LOADER,
-} from '@taiga-ui/addon-editor/tokens';
+import {TUI_EDITOR_TOOLBAR_TEXTS, TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
 import {
     EMPTY_QUERY,
     getClosestElement,
@@ -40,7 +30,7 @@ import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LanguageEditor} from '@taiga-ui/i18n';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
-import {map, take} from 'rxjs/operators';
+import {take} from 'rxjs/operators';
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 
 function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
@@ -96,28 +86,6 @@ export class TuiToolbarNewComponent {
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
-    readonly fontsOptions$: Observable<ReadonlyArray<Partial<TuiEditorFontOption>>> =
-        this.fontOptionsTexts$.pipe(
-            map(texts => [
-                {
-                    px: 15,
-                    name: texts.normal,
-                },
-                {
-                    px: 24,
-                    family: 'var(--tui-font-heading)',
-                    name: texts.subtitle,
-                    headingLevel: 2,
-                },
-                {
-                    px: 30,
-                    family: 'var(--tui-font-heading)',
-                    name: texts.title,
-                    headingLevel: 1,
-                },
-            ]),
-        );
-
     @ViewChildren('dropdown', {read: ElementRef})
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
@@ -133,12 +101,6 @@ export class TuiToolbarNewComponent {
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
-        @Inject(TUI_EDITOR_CODE_OPTIONS)
-        readonly codeOptionsTexts$: Observable<LanguageEditor['editorCodeOptions']>,
-        @Inject(TUI_EDITOR_FONT_OPTIONS)
-        private readonly fontOptionsTexts$: Observable<
-            LanguageEditor['editorFontOptions']
-        >,
     ) {}
 
     get focused(): boolean {
@@ -150,22 +112,6 @@ export class TuiToolbarNewComponent {
 
     get focusable(): boolean {
         return !this.focused && !this.disabled;
-    }
-
-    get bold(): boolean {
-        return !!this.editor.isActive('bold');
-    }
-
-    get italic(): boolean {
-        return !!this.editor.isActive('italic');
-    }
-
-    get underline(): boolean {
-        return !!this.editor.isActive('underline');
-    }
-
-    get strikeThrough(): boolean {
-        return !!this.editor.isActive('strike');
     }
 
     get unorderedList(): boolean {
@@ -184,14 +130,6 @@ export class TuiToolbarNewComponent {
         return !!this.editor.isActive('link');
     }
 
-    get foreColorBlank(): boolean {
-        return this.isBlankColor(this.foreColor);
-    }
-
-    get hiliteColorBlank(): boolean {
-        return this.isBlankColor(this.hiliteColor);
-    }
-
     get undoDisabled(): boolean {
         return !!this.editor.undoDisabled();
     }
@@ -200,36 +138,12 @@ export class TuiToolbarNewComponent {
         return !!this.editor.redoDisabled();
     }
 
-    get code(): boolean {
-        return !!this.editor.isActive('code');
-    }
-
-    get pre(): boolean {
-        return !!this.editor.isActive('codeBlock');
-    }
-
     get subscript(): boolean {
         return !!this.editor.isActive('subscript');
     }
 
     get superscript(): boolean {
         return !!this.editor.isActive('superscript');
-    }
-
-    get foreColor(): string {
-        return this.editor.getFontColor() || EDITOR_BLANK_COLOR;
-    }
-
-    get hiliteColor(): string {
-        return this.editor.getBackgroundColor() || EDITOR_BLANK_COLOR;
-    }
-
-    get cellColor(): string {
-        return this.editor.getCellColor() || EDITOR_BLANK_COLOR;
-    }
-
-    get canMergeCells(): boolean {
-        return this.editor.canMergeCells();
     }
 
     get formatEnabled(): boolean {
@@ -261,40 +175,12 @@ export class TuiToolbarNewComponent {
         );
     }
 
-    get alignLeft(): boolean {
-        return !!this.editor.isActive({textAlign: 'left'});
-    }
-
-    get alignRight(): boolean {
-        return !!this.editor.isActive({textAlign: 'right'});
-    }
-
-    get alignCenter(): boolean {
-        return !!this.editor.isActive({textAlign: 'center'});
-    }
-
-    get justify(): boolean {
-        return !!this.editor.isActive({textAlign: 'justify'});
-    }
-
     onBottomFocus() {
         this.focusLast();
     }
 
     onTopFocus() {
         this.focusFirst();
-    }
-
-    onHeading({headingLevel}: TuiEditorFontOption) {
-        if (headingLevel) {
-            this.editor.setHeading(headingLevel);
-        } else {
-            this.editor.setParagraph();
-        }
-    }
-
-    onAlign(align: string) {
-        this.editor.onAlign(align);
     }
 
     onImage(input: HTMLInputElement) {
@@ -329,14 +215,6 @@ export class TuiToolbarNewComponent {
         }
     }
 
-    onCode(code: number) {
-        if (code === 0) {
-            this.toggleCode();
-        } else {
-            this.togglePre();
-        }
-    }
-
     enabled(tool: TuiEditorTool): boolean {
         return this.tools.indexOf(tool) !== -1;
     }
@@ -349,14 +227,6 @@ export class TuiToolbarNewComponent {
         this.editor.redo();
     }
 
-    indent() {
-        this.editor.indent();
-    }
-
-    outdent() {
-        this.editor.outdent();
-    }
-
     insertHorizontalRule() {
         this.editor.setHorizontalRule();
     }
@@ -365,36 +235,8 @@ export class TuiToolbarNewComponent {
         this.editor.removeFormat();
     }
 
-    setForeColor(color: string) {
-        this.editor.setFontColor(color);
-    }
-
-    setHiliteColor(color: string) {
-        this.editor.setBackgroundColor(color);
-    }
-
-    toggleBold() {
-        this.editor.toggleBold();
-    }
-
-    toggleItalic() {
-        this.editor.toggleItalic();
-    }
-
-    toggleUnderline() {
-        this.editor.toggleUnderline();
-    }
-
-    toggleStrikeThrough() {
-        this.editor.toggleStrike();
-    }
-
     toggleOrderedList() {
         this.editor.toggleOrderedList();
-    }
-
-    toggleUnorderedList() {
-        this.editor.toggleUnorderedList();
     }
 
     toggleQuote() {
@@ -409,20 +251,8 @@ export class TuiToolbarNewComponent {
         this.editor.toggleSuperscript();
     }
 
-    private toggleCode() {
-        this.editor.toggleCode();
-    }
-
-    private togglePre() {
-        this.editor.toggleCodeBlock();
-    }
-
     private addImage(image: string) {
         this.editor.setImage(image);
-    }
-
-    private isBlankColor(color: string): boolean {
-        return color === EDITOR_BLANK_COLOR;
     }
 
     private focusFirst() {
