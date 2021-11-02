@@ -17,7 +17,7 @@
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
         "@ng-web-apis/intersection-observer": "2.0.1",
-        "@tinkoff/ng-polymorpheus": "3.1.10",
+        "@tinkoff/ng-polymorpheus": "3.1.11",
         "@taiga-ui/cdk": "2.21.0",
         "@taiga-ui/core": "2.21.0",
         "@taiga-ui/i18n": "2.21.0",
