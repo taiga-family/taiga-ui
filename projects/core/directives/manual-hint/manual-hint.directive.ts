@@ -1,5 +1,5 @@
-import {Directive, ElementRef, Inject, Input} from '@angular/core';
-import {tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
+import {Directive, ElementRef, Inject, Input, Optional} from '@angular/core';
+import {TuiActiveZoneDirective, tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -25,8 +25,11 @@ export class TuiManualHintDirective extends AbstractTuiHint {
     constructor(
         @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
         @Inject(TuiHintService) hintService: TuiHintService,
+        @Optional()
+        @Inject(TuiActiveZoneDirective)
+        activeZone: TuiActiveZoneDirective | null,
     ) {
-        super(elementRef, hintService);
+        super(elementRef, hintService, activeZone);
     }
 
     getElementClientRect(): ClientRect {

@@ -10,3 +10,4 @@ export * from './mark-control-as-touched-and-validate';
 export * from './nullable-same';
 export * from './uniq-by';
 export * from './get-swipe-direction';
+export * from './distance-between-touches';

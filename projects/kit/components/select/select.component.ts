@@ -75,8 +75,6 @@ export class TuiSelectComponent<T>
     @tuiDefaultProp()
     valueContent: PolymorpheusContent<TuiValueContentContext<T>> = '';
 
-    readonly arrow: PolymorpheusContent = TUI_ARROW;
-
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent = '';
 
@@ -96,6 +94,10 @@ export class TuiSelectComponent<T>
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    get arrow(): PolymorpheusContent {
+        return this.disabled || this.readOnly ? '' : TUI_ARROW;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
