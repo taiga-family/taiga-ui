@@ -797,6 +797,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: 'Tree',
+        keywords: 'tree, view, multi, recursive, folders, рекурсия, дерево, папки',
+        route: '/components/tree',
+    },
+    {
+        section: $localize`Components`,
         title: 'Toolbar',
         keywords: 'editor, редактор, текст, html, rich, text, input, инпут, ввод',
         route: '/components/toolbar',

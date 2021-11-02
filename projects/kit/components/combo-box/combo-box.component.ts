@@ -76,7 +76,7 @@ export class TuiComboBoxComponent<T>
 {
     @Input()
     @tuiDefaultProp()
-    stringify: TuiStringHandler<T | string> = TUI_DEFAULT_STRINGIFY;
+    stringify: TuiStringHandler<T> = TUI_DEFAULT_STRINGIFY;
 
     @Input()
     @tuiDefaultProp()
@@ -84,7 +84,7 @@ export class TuiComboBoxComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    identityMatcher: TuiIdentityMatcher<T | string> = TUI_DEFAULT_IDENTITY_MATCHER;
+    identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
     @tuiDefaultProp()
@@ -141,7 +141,11 @@ export class TuiComboBoxComponent<T>
     }
 
     get nativeValue(): string {
-        return this.value === null ? this.search || '' : this.stringify(this.value);
+        if (this.value === null) {
+            return this.search || '';
+        }
+
+        return typeof this.value === 'string' ? this.value : this.stringify(this.value);
     }
 
     get showValueTemplate(): boolean {

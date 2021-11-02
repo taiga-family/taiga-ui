@@ -891,6 +891,14 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/tree',
+        loadChildren: () =>
+            import(`../components/tree/tree.module`).then(m => m.ExampleTuiTreeModule),
+        data: {
+            title: 'Tree',
+        },
+    },
+    {
         path: 'components/toolbar',
         loadChildren: () =>
             import(`../components/toolbar/toolbar.module`).then(
