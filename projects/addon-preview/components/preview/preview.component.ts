@@ -120,7 +120,9 @@ export class TuiPreviewComponent {
     }
 
     onZoom({clientX, clientY, delta}: TuiZoom) {
-        this.processZoom(clientX, clientY, delta);
+        if (this.zoomable) {
+            this.processZoom(clientX, clientY, delta);
+        }
     }
 
     onResize(contentResizeEntries: ReadonlyArray<ResizeObserverEntry>) {
