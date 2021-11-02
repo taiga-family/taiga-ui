@@ -15,23 +15,16 @@ import {
     tuiDefaultProp,
     TuiDestroyService,
     TuiDragStage,
-    typedFromEvent,
+    TuiZoom,
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {LanguagePreview} from '@taiga-ui/i18n';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {
-    filter,
-    map,
-    pairwise,
-    repeat,
-    startWith,
-    switchMap,
-    takeUntil,
-} from 'rxjs/operators';
+import {filter, map, pairwise, startWith, takeUntil} from 'rxjs/operators';
 
 const INITIAL_SCALE_COEF = 0.8;
 const EMPTY_COORDINATES: [number, number] = [0, 0];
+const ROTATION_ANGLE = 90;
 
 @Component({
     selector: 'tui-preview',
@@ -54,7 +47,6 @@ export class TuiPreviewComponent {
 
     width = 0;
     height = 0;
-    hypot = 0;
 
     readonly zoom$ = new BehaviorSubject<number>(this.minZoom);
     readonly rotation$ = new BehaviorSubject<number>(0);
@@ -97,7 +89,6 @@ export class TuiPreviewComponent {
 
     @ViewChild('contentWrapper')
     set contentWrapper({nativeElement}: ElementRef<HTMLElement>) {
-        this.initTouchScaleSubscribtion(nativeElement);
         this.initClickSubscription(nativeElement);
     }
 
@@ -110,7 +101,7 @@ export class TuiPreviewComponent {
     ) {}
 
     rotate() {
-        this.rotation$.next(this.rotation$.value - 90);
+        this.rotation$.next(this.rotation$.value - ROTATION_ANGLE);
     }
 
     onPan(delta: [number, number]) {
@@ -128,35 +119,8 @@ export class TuiPreviewComponent {
         this.refresh(clientWidth, clientHeight);
     }
 
-    onWheel(event: WheelEvent) {
-        if (!this.zoomable) {
-            return;
-        }
-
-        this.processZoom(event, event.deltaY);
-    }
-
-    processZoom(event: {clientX: number; clientY: number}, delta: number) {
-        const oldScale = this.zoom$.value;
-        const newScale = clamp(this.zoom$.value - delta * 0.01, this.minZoom, 2);
-
-        const center = this.getScaleCenter(
-            event,
-            this.coordinates$.value,
-            this.zoom$.value,
-        );
-
-        const moveX = center[0] * oldScale - center[0] * newScale;
-        const moveY = center[1] * oldScale - center[1] * newScale;
-
-        this.zoom$.next(newScale);
-
-        const coordinates = this.getGuarderCoordinates(
-            this.coordinates$.value[0] + moveX,
-            this.coordinates$.value[1] + moveY,
-        );
-
-        this.coordinates$.next(coordinates);
+    onZoom({clientX, clientY, delta}: TuiZoom) {
+        this.processZoom(clientX, clientY, delta);
     }
 
     onResize(contentResizeEntries: ReadonlyArray<ResizeObserverEntry>) {
@@ -179,12 +143,6 @@ export class TuiPreviewComponent {
         const offsetY = ((this.zoom$.value - this.minZoom) * this.height) / 2;
 
         return {offsetX, offsetY};
-    }
-
-    private getGuarderCoordinates(x: number, y: number): readonly [number, number] {
-        const {offsetX, offsetY} = this.offsets;
-
-        return [clamp(x, -offsetX, offsetX), clamp(y, -offsetY, offsetY)];
     }
 
     private calculateMinZoom(
@@ -210,35 +168,6 @@ export class TuiPreviewComponent {
             : 1;
     }
 
-    private recalculateCoordinatesAfterZoom(
-        previous: readonly [number, number],
-        nextX: number,
-        nextY: number,
-        rotation: number,
-    ): readonly [number, number] {
-        const vertical = rotation % 180 === 0;
-        const third =
-            (vertical
-                ? this.elementRef.nativeElement.clientHeight
-                : this.elementRef.nativeElement.clientWidth) / 3;
-        const next = vertical ? nextY : nextX;
-
-        if (next < third) {
-            return [vertical ? 0 : this.width / 3, vertical ? this.height / 3 : 0];
-        }
-
-        const lastThird =
-            (vertical
-                ? this.elementRef.nativeElement.clientHeight
-                : this.elementRef.nativeElement.clientWidth) - third;
-
-        if (next > lastThird) {
-            return [vertical ? 0 : -this.width / 3, vertical ? -this.height / 3 : 0];
-        }
-
-        return previous;
-    }
-
     private initClickSubscription(element: HTMLElement) {
         dragAndDropFrom(element)
             .pipe(
@@ -253,51 +182,12 @@ export class TuiPreviewComponent {
                 takeUntil(this.destroy$),
             )
             .subscribe(([{event}]) => {
-                this.zoom$.next(
-                    this.zoom$.value > this.minZoom
-                        ? this.minZoom
-                        : this.zoom$.value + 0.5,
-                );
-
-                this.coordinates$.next(
-                    this.getGuarderCoordinates(
-                        ...this.recalculateCoordinatesAfterZoom(
-                            this.coordinates$.value,
-                            event.clientX,
-                            event.clientY,
-                            this.rotation$.value,
-                        ),
-                    ),
+                this.processZoom(
+                    event.clientX,
+                    event.clientY,
+                    this.zoom$.value > this.minZoom ? -0.5 : 0.5,
                 );
             });
-    }
-
-    private initTouchScaleSubscribtion(nativeElement: HTMLElement) {
-        typedFromEvent(nativeElement, 'touchstart', {passive: true})
-            .pipe(
-                filter(event => event.touches.length > 1),
-                map(event => this.calculateMultitouchHypot(event)),
-                switchMap(hypot => {
-                    this.hypot = hypot;
-
-                    return typedFromEvent(nativeElement, 'touchmove', {passive: true});
-                }),
-                takeUntil(typedFromEvent(nativeElement, 'touchend')),
-                repeat(),
-                map(event => {
-                    const clientX =
-                        (event.touches[0].clientX + event.touches[1].clientX) / 2;
-                    const clientY =
-                        (event.touches[0].clientY + event.touches[1].clientY) / 2;
-                    const hypot = this.calculateMultitouchHypot(event);
-                    const delta = this.hypot - hypot;
-
-                    this.hypot = hypot;
-
-                    this.processZoom({clientX, clientY}, delta);
-                }),
-            )
-            .subscribe();
     }
 
     private refresh(width: number, height: number) {
@@ -313,6 +203,35 @@ export class TuiPreviewComponent {
         this.rotation$.next(0);
     }
 
+    private processZoom(clientX: number, clientY: number, delta: number) {
+        const oldScale = this.zoom$.value;
+        const newScale = clamp(this.zoom$.value + delta, this.minZoom, 2);
+
+        const center = this.getScaleCenter(
+            {clientX, clientY},
+            this.coordinates$.value,
+            this.zoom$.value,
+        );
+
+        this.zoom$.next(newScale);
+
+        const moveX = center[0] * oldScale - center[0] * newScale;
+        const moveY = center[1] * oldScale - center[1] * newScale;
+
+        const coordinates = this.getGuarderCoordinates(
+            this.coordinates$.value[0] + moveX,
+            this.coordinates$.value[1] + moveY,
+        );
+
+        this.coordinates$.next(coordinates);
+    }
+
+    private getGuarderCoordinates(x: number, y: number): readonly [number, number] {
+        const {offsetX, offsetY} = this.offsets;
+
+        return [clamp(x, -offsetX, offsetX), clamp(y, -offsetY, offsetY)];
+    }
+
     private getScaleCenter(
         {clientX, clientY}: {clientX: number; clientY: number},
         [x, y]: readonly [number, number],
@@ -322,12 +241,5 @@ export class TuiPreviewComponent {
             (clientX - x - this.elementRef.nativeElement.offsetWidth / 2) / scale,
             (clientY - y - this.elementRef.nativeElement.offsetHeight / 2) / scale,
         ];
-    }
-
-    private calculateMultitouchHypot({touches}: TouchEvent): number {
-        return Math.hypot(
-            touches[0].clientX - touches[1].clientX,
-            touches[0].clientY - touches[1].clientY,
-        );
     }
 }
