@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.22.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.21.0...v2.22.0) (2021-11-02)
+
+### Features
+
+-   **addon-doc:** open sidebar on swipe ([#943](https://github.com/TinkoffCreditSystems/taiga-ui/issues/943)) ([a8a4016](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a8a40165ad1e14205fab7ab65a0b7ebac90caf81))
+-   **addon-editor:** `Editor[new]` dark mode support ([#947](https://github.com/TinkoffCreditSystems/taiga-ui/issues/947)) ([3c2f814](https://github.com/TinkoffCreditSystems/taiga-ui/commit/3c2f8144b3f766866bb6d2d5d7da34ff4c2c1619))
+-   **cdk:** add `TuiZoom` directive ([#938](https://github.com/TinkoffCreditSystems/taiga-ui/issues/938)) ([bbe762c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bbe762ca63730e01d355902b16f9e65afff20944))
+-   **core:** add old styles ([#957](https://github.com/TinkoffCreditSystems/taiga-ui/issues/957)) ([89683cb](https://github.com/TinkoffCreditSystems/taiga-ui/commit/89683cbd48649bd8978078909cfa7bb2a0dab56c))
+-   **core,kit:** support Less 4+ ([#949](https://github.com/TinkoffCreditSystems/taiga-ui/issues/949)) ([ca5f276](https://github.com/TinkoffCreditSystems/taiga-ui/commit/ca5f276233223de7d1da3dab75a8a8fd35cfbb45))
+-   **kit:** `Tree` add new component ([33f47b8](https://github.com/TinkoffCreditSystems/taiga-ui/commit/33f47b85f4ac97f8d2f9bb93685cb719f2907d4b))
+-   **kit:** `TuiBadge` add "info" and "neutral" statuses ([#948](https://github.com/TinkoffCreditSystems/taiga-ui/issues/948)) ([43d0f33](https://github.com/TinkoffCreditSystems/taiga-ui/commit/43d0f33f9ac7ed9ca042d27bcb5563d65981111e))
+
+### Bug Fixes
+
+-   **addon-doc:** fix menu header ([#941](https://github.com/TinkoffCreditSystems/taiga-ui/issues/941)) ([7168bb7](https://github.com/TinkoffCreditSystems/taiga-ui/commit/7168bb70d8a3e912a28e7c3bae0db8e6e6a14fcc))
+-   **addon-doc:** unexpected expanding subitems ([#935](https://github.com/TinkoffCreditSystems/taiga-ui/issues/935)) ([2768d72](https://github.com/TinkoffCreditSystems/taiga-ui/commit/2768d729a47303e5d14ea3104b1a67505d9267dc))
+-   **core:** `SvgService` fix custom icons ([2cd27cf](https://github.com/TinkoffCreditSystems/taiga-ui/commit/2cd27cf84f18fcfd0ccd3a85c159468b8268af09))
+-   **core:** make hint part of current active zone ([#956](https://github.com/TinkoffCreditSystems/taiga-ui/issues/956)) ([9ef7272](https://github.com/TinkoffCreditSystems/taiga-ui/commit/9ef727267bef116f58cd1f623c2ae41e217425eb))
+-   **kit:** `Select`, `ComboBox`, `MultiSelect` remove arrow icon if `disabled` or `readonly` ([#955](https://github.com/TinkoffCreditSystems/taiga-ui/issues/955)) ([8eb4d1c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/8eb4d1cb0b2f4791fe83efb6d50d7d7be42a9994))
+
 ## [2.21.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.20.0...v2.21.0) (2021-10-25)
 
 ### Features
