@@ -378,7 +378,13 @@
                     "options": {
                         "tsConfig": "projects/addon-preview/tsconfig.lib.json",
                         "project": "projects/addon-preview/ng-package.json"
-                    }
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
