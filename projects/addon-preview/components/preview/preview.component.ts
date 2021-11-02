@@ -16,11 +16,12 @@ import {
     TuiDestroyService,
     TuiDragStage,
     TuiZoom,
+    typedFromEvent,
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {LanguagePreview} from '@taiga-ui/i18n';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {filter, map, pairwise, startWith, takeUntil} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, merge, Observable} from 'rxjs';
+import {filter, map, mapTo, pairwise, startWith, takeUntil} from 'rxjs/operators';
 
 const INITIAL_SCALE_COEF = 0.8;
 const EMPTY_COORDINATES: [number, number] = [0, 0];
@@ -53,9 +54,13 @@ export class TuiPreviewComponent {
     readonly coordinates$ = new BehaviorSubject<readonly [number, number]>(
         EMPTY_COORDINATES,
     );
-
-    transitioned$ = dragAndDropFrom(this.elementRef.nativeElement).pipe(
-        map(state => state.stage !== TuiDragStage.Continues),
+    transitioned$ = merge(
+        dragAndDropFrom(this.elementRef.nativeElement).pipe(
+            map(state => state.stage !== TuiDragStage.Continues),
+        ),
+        typedFromEvent(this.elementRef.nativeElement, 'touchmove', {passive: true}).pipe(
+            mapTo(false),
+        ),
     );
 
     readonly cursor$ = combineLatest(

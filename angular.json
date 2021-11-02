@@ -378,11 +378,6 @@
                     "options": {
                         "tsConfig": "projects/addon-preview/tsconfig.lib.json",
                         "project": "projects/addon-preview/ng-package.json"
-                    },
-                    "configurations": {
-                        "production": {
-                            "tsConfig": "projects/addon-preview/tsconfig.lib.prod.json"
-                        }
                     }
                 },
                 "test": {
