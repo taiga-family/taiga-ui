@@ -161,9 +161,7 @@ export class TuiTiptapEditorService extends TuiEditor {
         return this.editor.isActive(nameOrAttributes);
     }
 
-    isActive$(
-        nameOrAttributes: Record<string, string> | string,
-    ): Observable<boolean | null> {
+    isActive$(nameOrAttributes: Record<string, string> | string): Observable<boolean> {
         return this.stateChange$.pipe(
             startWith(null),
             map(() => this.isActive(nameOrAttributes)),
