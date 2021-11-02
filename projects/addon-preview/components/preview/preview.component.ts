@@ -106,7 +106,7 @@ export class TuiPreviewComponent {
 
     onPan(delta: [number, number]) {
         this.coordinates$.next(
-            this.getGuarderCoordinates(
+            this.getGuardedCoordinates(
                 this.coordinates$.value[0] + delta[0],
                 this.coordinates$.value[1] + delta[1],
             ),
@@ -218,7 +218,7 @@ export class TuiPreviewComponent {
         const moveX = center[0] * oldScale - center[0] * newScale;
         const moveY = center[1] * oldScale - center[1] * newScale;
 
-        const coordinates = this.getGuarderCoordinates(
+        const coordinates = this.getGuardedCoordinates(
             this.coordinates$.value[0] + moveX,
             this.coordinates$.value[1] + moveY,
         );
@@ -226,7 +226,7 @@ export class TuiPreviewComponent {
         this.coordinates$.next(coordinates);
     }
 
-    private getGuarderCoordinates(x: number, y: number): readonly [number, number] {
+    private getGuardedCoordinates(x: number, y: number): readonly [number, number] {
         const {offsetX, offsetY} = this.offsets;
 
         return [clamp(x, -offsetX, offsetX), clamp(y, -offsetY, offsetY)];
