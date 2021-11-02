@@ -7,17 +7,6 @@
     &__header {
         margin-top: @fields-space-large;
 
-        @media @mobile-m {
-            font: var(--tui-font-text-l);
-            font-weight: bold;
-            margin-bottom: @fields-space-mobile;
-        }
-
-        @media @desktop-s-min {
-            font: var(--tui-font-heading-5);
-            margin-bottom: @fields-space;
-        }
-
         &_margin-top_none {
             margin-top: 0;
         }
@@ -34,6 +23,17 @@
             @media @desktop-s-min {
                 margin-bottom: @fields-space - @space;
             }
+        }
+
+        @media @mobile-m {
+            font: var(--tui-font-text-l);
+            font-weight: bold;
+            margin-bottom: @fields-space-mobile;
+        }
+
+        @media @desktop-s-min {
+            font: var(--tui-font-heading-5);
+            margin-bottom: @fields-space;
         }
     }
 

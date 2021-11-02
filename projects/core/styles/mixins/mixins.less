@@ -77,7 +77,6 @@
 
 .clearinput(@mode: default) {
     .autofill(@mode);
-
     padding: 0;
     border: 0;
     border-radius: inherit;
@@ -357,6 +356,7 @@
 
 // hide an element visually without hiding it from screen readers
 .sr-only() {
+    position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);
     height: 1px;
@@ -364,5 +364,4 @@
     margin: -1px;
     overflow: hidden;
     padding: 0;
-    position: absolute;
 }
