@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiEditableImage} from '@taiga-ui/addon-editor/extensions';
-import {AngularNodeViewComponent} from '../tiptap-node-view';
+import {AngularNodeViewComponent} from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
+import {TuiEditableImage} from './image-editor.extension';
 
 @Component({
     selector: 'tui-image-editor',
