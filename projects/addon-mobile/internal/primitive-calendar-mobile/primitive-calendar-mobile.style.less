@@ -1,8 +1,8 @@
 @import 'taiga-ui-local';
 
 @itemSize: 2.75rem;
-@accent: #458bf6;
-@faded: #dae8fd;
+@accent: var(--tui-link);
+@faded: var(--tui-base-02);
 
 .picker(@itemSize);
 
@@ -53,7 +53,7 @@
     }
 
     &_disabled {
-        color: fade(#333, 30%);
+        opacity: var(--tui-disabled-opacity);
     }
 
     &_interval {
@@ -71,11 +71,11 @@
     &[data-tui-element-range='end'] {
         border-radius: 100%;
         background-color: @accent;
-        color: #fff;
+        color: var(--tui-accent-text);
         font-weight: 500;
 
         &:after {
-            background-color: #fff;
+            background-color: var(--tui-base-01);
         }
 
         :host._ios & {
@@ -91,7 +91,7 @@
 
     &[data-tui-element-range='end']:not(:first-child):before {
         left: 50%;
-        background: #fff;
+        background: var(--tui-base-01);
         border-radius: 0;
     }
 

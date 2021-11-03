@@ -1,17 +1,15 @@
 @import 'taiga-ui-local';
 
-@accent: #458bf6;
-@text: #333;
-@secondary: #9299a2;
-@border: #c7c9cc;
-@header-border: #eaecee;
-@background: #f6f7f8;
+@accent: var(--tui-link);
+@secondary: var(--tui-text-02);
+@border: var(--tui-base-03);
+@background: var(--tui-base-01);
 
 :host {
     display: block;
     height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-    color: @text;
+    color: var(--tui-text-01);
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -21,7 +19,7 @@
     align-items: center;
     height: 3.5rem;
     padding: 0 1rem;
-    border-bottom: 0.5px solid @header-border;
+    border-bottom: 0.5px solid @border;
 
     :host._ios & {
         height: 2.75rem;
