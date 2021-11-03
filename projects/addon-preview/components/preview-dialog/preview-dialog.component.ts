@@ -5,7 +5,7 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {PreviewDialogOptions} from './preview-dialog-options';
 
 @Component({
-    selector: 'preview-dialog',
+    selector: 'tui-preview-dialog',
     templateUrl: './preview-dialog.template.html',
     styleUrls: ['./preview-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
