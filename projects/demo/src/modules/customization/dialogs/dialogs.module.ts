@@ -6,7 +6,7 @@ import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiAvatarModule} from '@taiga-ui/kit';
 import {DialogsComponent} from './dialogs.component';
 import {TuiDialogsExample1} from './examples/1';
-import {PromptModule} from './examples/prompt/prompt.module';
+import {PromptModule} from './examples/1/prompt/prompt.module';
 
 @NgModule({
     imports: [
