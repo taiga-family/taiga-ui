@@ -29,6 +29,7 @@
     .t-track {
         /* clean-css ignore:start */
         r: ((@width[ @@size] - @track-stroke[ @@size]) / 2);
+
         /* clean-css ignore:end */
         stroke-width: @track-stroke[ @@size];
     }
@@ -39,6 +40,7 @@
 
         /* clean-css ignore:start */
         r: @radius;
+
         /* clean-css ignore:end */
         stroke-width: @progress-stroke[ @@size];
         stroke-dasharray: @circumference;
@@ -47,8 +49,8 @@
 }
 
 :host {
-    display: block;
     position: relative;
+    display: block;
     color: var(--tui-primary);
     transform: rotate(-90deg);
     transform-origin: center;

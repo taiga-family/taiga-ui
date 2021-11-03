@@ -3,10 +3,12 @@
 @padding: 0.75rem;
 
 :host {
-    font: var(--tui-font-text-s);
     .transition(background-color);
+
+    --left-content-color: currentColor;
     position: relative;
     display: inline-flex;
+    font: var(--tui-font-text-s);
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
@@ -15,8 +17,6 @@
     white-space: nowrap;
     overflow: hidden;
     vertical-align: middle;
-
-    --left-content-color: currentColor;
 
     &:after {
         .transition(background);
@@ -48,10 +48,9 @@
     }
 
     &[data-tui-host-status='error'] {
+        --left-content-color: var(--tui-error-fill);
         background-color: var(--tui-error-bg);
         color: var(--tui-text-01);
-
-        --left-content-color: var(--tui-error-fill);
 
         &._hoverable:hover,
         &._hoverable:active {
@@ -70,10 +69,9 @@
     }
 
     &[data-tui-host-status='success'] {
+        --left-content-color: var(--tui-success-fill);
         background-color: var(--tui-success-bg);
         color: var(--tui-text-01);
-
-        --left-content-color: var(--tui-success-fill);
 
         &._hoverable:hover,
         &._hoverable:active {
@@ -92,10 +90,9 @@
     }
 
     &[data-tui-host-status='warning'] {
+        --left-content-color: var(--tui-warning-fill);
         background-color: var(--tui-warning-bg);
         color: var(--tui-text-01);
-
-        --left-content-color: var(--tui-warning-fill);
 
         &._hoverable:hover,
         &._hoverable:active {
@@ -114,10 +111,9 @@
     }
 
     &[data-tui-host-status='info'] {
+        --left-content-color: var(--tui-info-fill);
         background-color: var(--tui-info-bg);
         color: var(--tui-text-01);
-
-        --left-content-color: var(--tui-info-fill);
 
         &._hoverable:hover,
         &._hoverable:active {
@@ -136,10 +132,9 @@
     }
 
     &[data-tui-host-status='neutral'] {
+        --left-content-color: var(--tui-neutral-fill);
         background-color: var(--tui-neutral-bg);
         color: var(--tui-text-01);
-
-        --left-content-color: var(--tui-neutral-fill);
 
         &._hoverable:hover,
         &._hoverable:active {
@@ -291,12 +286,12 @@
     }
 
     &:before {
+        content: '';
         display: block;
         background: currentColor;
         margin: 0 0.375rem 0 0;
         width: 0.375rem;
         height: 0.375rem;
         border-radius: 100%;
-        content: '';
     }
 }
