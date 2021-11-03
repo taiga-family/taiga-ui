@@ -25,7 +25,7 @@ export class TuiHoveredService {
     ) {
         this.documentEvents$ = merge(
             typedFromEvent(documentRef, 'mousemove'),
-            typedFromEvent(documentRef, 'touchend'),
+            typedFromEvent(documentRef, 'touchstart', {capture: true}),
         );
     }
 
