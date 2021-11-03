@@ -71,10 +71,6 @@ export class TuiPreviewZoomComponent {
         return this.value > this.min;
     }
 
-    getHintText(value: number | null): string {
-        return `${Math.round((value || this.value) * 100)}%`;
-    }
-
     onModelChange(value: number) {
         const clamped = clamp(value, this.min, this.max);
 

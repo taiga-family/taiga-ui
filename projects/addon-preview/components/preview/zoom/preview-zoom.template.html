@@ -19,7 +19,9 @@
             [tuiManualHintShow]="hintShow$ | async"
             [style.left.px]="ghostLeft"
         ></div>
-        <ng-template #hint>{{getHintText(valueChange | async)}} </ng-template>
+        <ng-template #hint>
+            {{ ((valueChange | async) || value) | percent }}
+        </ng-template>
         <tui-slider
             class="t-slider"
             [min]="min"
