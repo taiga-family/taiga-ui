@@ -16,6 +16,7 @@ import {InheritedDocumentationModule} from '../abstract/inherited-documentation/
 import {TuiInputNumberExample1} from './examples/1';
 import {TuiInputNumberExample2} from './examples/2';
 import {TuiInputNumberExample3} from './examples/3';
+import {TuiInputNumberExample4} from './examples/4';
 import {ExampleTuiInputNumberComponent} from './input-number.component';
 
 @NgModule({
@@ -40,6 +41,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         TuiInputNumberExample1,
         TuiInputNumberExample2,
         TuiInputNumberExample3,
+        TuiInputNumberExample4,
     ],
     exports: [ExampleTuiInputNumberComponent],
 })
