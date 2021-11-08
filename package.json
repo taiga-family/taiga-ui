@@ -19,7 +19,7 @@
         "*** Workflow ***": "",
         "exec": "ts-node --project tsconfig.tools.json",
         "lint": "nx lint",
-        "lint:less": "stylelint '**/*.less'",
+        "stylelint": "stylelint '**/*.less'",
         "tslint": "tslint '**/projects/**/*.ts'",
         "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}'",
         "typecheck": "tsc --noEmit --skipLibCheck --project tsconfig.spec.json",
@@ -135,6 +135,7 @@
         "@nrwl/tao": "12.10.0",
         "@nrwl/workspace": "12.10.0",
         "@tinkoff/linters": "^0.6.0",
+        "@tinkoff/stylelint-config": "^1.12.1",
         "@types/cypress-image-snapshot": "^3.1.5",
         "@types/dompurify": "^2.0.4",
         "@types/express": "4.16.1",
@@ -174,12 +175,23 @@
         "rollup-plugin-typescript2": "^0.20.1",
         "rollup-pluginutils": "^2.6.0",
         "standard-version": "^8.0.1",
-        "stylelint": "^10.0.1",
         "svgo": "^1.2.1",
         "ts-loader": "^5.3.3",
         "ts-node": "~7.0.0",
         "tslint": "~5.15.0",
         "typescript": "~3.8.3"
+    },
+    "stylelint": {
+        "extends": [
+            "@tinkoff/stylelint-config/less",
+            "@tinkoff/stylelint-config/angular"
+        ],
+        "ignoreFiles": [
+            "**/demo/**",
+            "**/dist/**",
+            "**/coverage/**",
+            "**/node_modules/**"
+        ]
     },
     "lint-staged": {
         "*.{js,ts,html,md,less,json}": [

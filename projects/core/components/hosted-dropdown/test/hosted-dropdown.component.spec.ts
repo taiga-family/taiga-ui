@@ -15,7 +15,7 @@ import {TuiHostedDropdownModule} from '../hosted-dropdown.module';
 describe('TuiHostedDropdown', () => {
     @Component({
         template: `
-            <tui-root>
+            <tui-root (keydown.escape)="onEsc()">
                 <tui-hosted-dropdown
                     *ngIf="default"
                     [canOpen]="canOpen"
@@ -26,6 +26,13 @@ describe('TuiHostedDropdown', () => {
                     <button tuiButton>Button</button>
                 </tui-hosted-dropdown>
                 <tui-hosted-dropdown *ngIf="input" [content]="dropdown" [(open)]="open">
+                    <tui-primitive-textfield> Entry field </tui-primitive-textfield>
+                </tui-hosted-dropdown>
+                <tui-hosted-dropdown
+                    *ngIf="canNotOpen"
+                    [canOpen]="canOpen"
+                    [(open)]="open"
+                >
                     <tui-primitive-textfield> Entry field </tui-primitive-textfield>
                 </tui-hosted-dropdown>
                 <tui-hosted-dropdown
@@ -55,8 +62,10 @@ describe('TuiHostedDropdown', () => {
     class TestComponent {
         open = false;
         items = ['Item 1', 'Item 2'];
-        mode: 'default' | 'input' | 'targeted' = 'default';
+        mode: 'default' | 'input' | 'targeted' | 'can-not-open' = 'default';
         canOpen = true;
+
+        escCatched = false;
 
         @ViewChild(TuiPrimitiveTextfieldComponent)
         tuiTextfield: TuiPrimitiveTextfieldComponent;
@@ -75,6 +84,14 @@ describe('TuiHostedDropdown', () => {
 
         get targeted(): boolean {
             return this.mode === 'targeted';
+        }
+
+        get canNotOpen(): boolean {
+            return this.mode === 'can-not-open';
+        }
+
+        onEsc() {
+            this.escCatched = true;
         }
     }
 
@@ -219,6 +236,24 @@ describe('TuiHostedDropdown', () => {
             expect(document.activeElement).toBe(
                 testComponent.tuiTextfield.nativeFocusableElement,
             );
+        });
+    });
+
+    describe('Can not open', () => {
+        beforeEach(() => {
+            testComponent.mode = 'can-not-open';
+            fixture.detectChanges();
+        });
+
+        it('Esc event should bubble up if content is empty', () => {
+            testComponent.open = true;
+            testComponent.canOpen = false;
+            fixture.detectChanges();
+
+            testComponent.tuiTextfield.nativeFocusableElement!.focus();
+            dispatchOnActive('escape', fixture);
+
+            expect(testComponent.escCatched).toBe(true);
         });
     });
 
