@@ -43,11 +43,13 @@ import {
     TuiDataListDirective,
     TuiDataListHost,
     TuiHostedDropdownComponent,
+    TuiSvgService,
     TuiTextfieldController,
     TuiTextfieldLabelOutsideDirective,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
+import {iconBlank} from '@taiga-ui/kit/constants';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -139,12 +141,15 @@ export class TuiMultiSelectComponent<T>
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TuiSvgService) svgService: TuiSvgService,
         @Inject(TUI_TEXTFIELD_LABEL_OUTSIDE)
         readonly textfieldLabelOutside: TuiTextfieldLabelOutsideDirective,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
     ) {
         super(control, changeDetectorRef);
+
+        svgService.define({iconBlank});
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -169,6 +174,14 @@ export class TuiMultiSelectComponent<T>
 
     get searchString(): string {
         return this.search === null ? '' : this.search;
+    }
+
+    /**
+     * Pass empty icon to InputTag (inside this component)
+     * to prevent overflow of arrow icon by many tags
+     */
+    get tagIcon(): string {
+        return this.interactive ? 'iconBlank' : '';
     }
 
     get interactive(): boolean {
