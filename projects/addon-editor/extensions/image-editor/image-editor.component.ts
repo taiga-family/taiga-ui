@@ -29,9 +29,9 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
         return this.attrs.title || '';
     }
 
-    onHorizontalDrag([x]: [number, number]) {
+    onHorizontalDrag([x]: [number, number], direction: -1 | 1) {
         this.updateAttributes({
-            width: this.width + x,
+            width: this.width + direction * x,
         });
     }
 }
