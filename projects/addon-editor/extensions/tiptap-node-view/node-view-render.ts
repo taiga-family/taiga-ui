@@ -13,10 +13,11 @@ import type {Decoration} from 'prosemirror-view';
 import {TuiComponentRenderer} from './component-render';
 
 /**
- * Copied from
- * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/NodeViewRenderer.ts ngx-tiptap}
+ * You should extend this class to create custom
+ * Tiptap's {@link https://tiptap.dev/guide/node-views NodeView} from angular component.
+ * It contains compulsory properties which component will get externally while NodeView's rendering.
  */
-export class AngularNodeViewComponent implements NodeViewProps {
+export class TuiNodeViewNgComponent implements NodeViewProps {
     @Input() editor!: NodeViewProps['editor'];
     @Input() node!: NodeViewProps['node'];
     @Input() decorations!: NodeViewProps['decorations'];
@@ -34,7 +35,7 @@ interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
 
 /**
  * Tiptap editor proposes concept of interactive {@link https://tiptap.dev/guide/node-views NodeViews}.
- * It gives you opportunity to create custom complex Node inside editor. And it will look like native tiptap Node.
+ * It gives you opportunity to create custom complex Node inside editor. And it will look like native Tiptap's Node.
  * Regard it like angular component inside editor.
  *
  * This solution is adaptation of official React implementation of NodeViews.
@@ -42,11 +43,11 @@ interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
  * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/NodeViewRenderer.ts ngx-tiptap}
  */
 class TuiNodeView extends NodeView<
-    Type<AngularNodeViewComponent>,
+    Type<TuiNodeViewNgComponent>,
     Editor,
     TuiNodeViewRendererOptions
 > {
-    renderer!: TuiComponentRenderer<AngularNodeViewComponent, NodeViewProps>;
+    renderer!: TuiComponentRenderer<TuiNodeViewNgComponent, NodeViewProps>;
     contentDOMElement!: HTMLElement | null;
 
     mount() {
@@ -147,7 +148,7 @@ class TuiNodeView extends NodeView<
 }
 
 export const TuiNodeViewRenderer = (
-    component: Type<AngularNodeViewComponent>,
+    component: Type<TuiNodeViewNgComponent>,
     options: Partial<TuiNodeViewRendererOptions>,
 ): NodeViewRenderer => {
     return (props: NodeViewRendererProps) => {

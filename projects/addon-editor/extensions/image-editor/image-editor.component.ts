@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {AngularNodeViewComponent} from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
+import {TuiNodeViewNgComponent} from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
 import {TuiEditableImage} from './image-editor.extension';
 
 @Component({
@@ -8,7 +8,7 @@ import {TuiEditableImage} from './image-editor.extension';
     styleUrls: ['./image-editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiImageEditorComponent extends AngularNodeViewComponent {
+export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
     get attrs(): TuiEditableImage {
         return (this.node?.attrs as TuiEditableImage) || {src: ''};
     }
