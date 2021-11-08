@@ -1,9 +1,9 @@
 <img [src]="src" [width]="width" [alt]="alt" [title]="title" />
-<span
-    class="width-controller width-controller_right"
-    (tuiPan)="onHorizontalDrag($event, 1)"
-></span>
-<span
-    class="width-controller width-controller_left"
-    (tuiPan)="onHorizontalDrag($event, -1)"
-></span>
+
+<div class="border border_right" (tuiPan)="onHorizontalDrag($event, 1)">
+    <span class="controller"></span>
+</div>
+
+<div class="border border_left" (tuiPan)="onHorizontalDrag($event, -1)">
+    <span class="controller"></span>
+</div>
