@@ -57,6 +57,8 @@ export class TuiEditorNewExample3 {
             this.control.patchValue(`
                 <img data-type="image-editor" src="${src}" width="300">
                 <p>Try to drag right border of image!</p>
+
+                <p>To change min size of image use token <code>TUI_EDITOR_MIN_IMAGE_WIDTH</code>.</p>
             `);
         });
     }
