@@ -1,5 +1,5 @@
 import {Injector} from '@angular/core';
-import {AngularNodeViewRenderer} from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
+import {TuiNodeViewRenderer} from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
 import {
     Attribute,
     mergeAttributes,
@@ -65,7 +65,7 @@ export const createImageEditorExtension = (injector: Injector): Node => {
         },
 
         addNodeView(): NodeViewRenderer {
-            return AngularNodeViewRenderer(TuiImageEditorComponent, {injector});
+            return TuiNodeViewRenderer(TuiImageEditorComponent, {injector});
         },
 
         addCommands(): Partial<RawCommands> {

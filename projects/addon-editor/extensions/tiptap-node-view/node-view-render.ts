@@ -10,7 +10,7 @@ import {
 import type {Node as ProseMirrorNode} from 'prosemirror-model';
 import type {Decoration} from 'prosemirror-view';
 
-import {AngularRenderer} from './component-render';
+import {TuiComponentRenderer} from './component-render';
 
 /**
  * Copied from
@@ -27,21 +27,26 @@ export class AngularNodeViewComponent implements NodeViewProps {
     @Input() deleteNode!: NodeViewProps['deleteNode'];
 }
 
-interface AngularNodeViewRendererOptions extends NodeViewRendererOptions {
+interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
     update?: ((node: ProseMirrorNode, decorations: Decoration[]) => boolean) | null;
     injector: Injector;
 }
 
 /**
- * Copied from
+ * Tiptap editor proposes concept of interactive {@link https://tiptap.dev/guide/node-views NodeViews}.
+ * It gives you opportunity to create custom complex Node inside editor. And it will look like native tiptap Node.
+ * Regard it like angular component inside editor.
+ *
+ * This solution is adaptation of official React implementation of NodeViews.
+ * It was copied from
  * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/NodeViewRenderer.ts ngx-tiptap}
  */
-class AngularNodeView extends NodeView<
+class TuiNodeView extends NodeView<
     Type<AngularNodeViewComponent>,
     Editor,
-    AngularNodeViewRendererOptions
+    TuiNodeViewRendererOptions
 > {
-    renderer!: AngularRenderer<AngularNodeViewComponent, NodeViewProps>;
+    renderer!: TuiComponentRenderer<AngularNodeViewComponent, NodeViewProps>;
     contentDOMElement!: HTMLElement | null;
 
     mount() {
@@ -59,7 +64,7 @@ class AngularNodeView extends NodeView<
         };
 
         // create renderer
-        this.renderer = new AngularRenderer(this.component, injector, props);
+        this.renderer = new TuiComponentRenderer(this.component, injector, props);
 
         // Register drag handler
         if (this.extension.config.draggable) {
@@ -141,15 +146,11 @@ class AngularNodeView extends NodeView<
     }
 }
 
-/**
- * Copied from
- * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/NodeViewRenderer.ts ngx-tiptap}
- */
-export const AngularNodeViewRenderer = (
+export const TuiNodeViewRenderer = (
     component: Type<AngularNodeViewComponent>,
-    options: Partial<AngularNodeViewRendererOptions>,
+    options: Partial<TuiNodeViewRendererOptions>,
 ): NodeViewRenderer => {
     return (props: NodeViewRendererProps) => {
-        return new AngularNodeView(component, props, options);
+        return new TuiNodeView(component, props, options);
     };
 };

@@ -11,7 +11,7 @@ import {
  * Copied from
  * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/AngularRenderer.ts ngx-tiptap}
  */
-export class AngularRenderer<C, P> {
+export class TuiComponentRenderer<C, P> {
     private applicationRef: ApplicationRef;
     private componentRef: ComponentRef<C>;
 
