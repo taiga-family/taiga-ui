@@ -3,7 +3,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {
     TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
     TUI_INPUT_PASSWORD_OPTIONS,
+    TUI_PASSWORD_TEXTS,
 } from '@taiga-ui/kit';
+import {of} from 'rxjs';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -18,10 +20,14 @@ import {encapsulation} from '../../../../../view-encapsulation';
             useValue: {
                 ...TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
                 icons: {
-                    hide: 'tuiIconEyeClosed',
-                    show: 'tuiIconEyeOpen',
+                    hide: 'tuiIconLockLarge',
+                    show: 'tuiIconLockOpenLarge',
                 },
             },
+        },
+        {
+            provide: TUI_PASSWORD_TEXTS,
+            useValue: of(['']),
         },
     ],
 })
