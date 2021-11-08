@@ -139,7 +139,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     @HostListener('keydown.esc', ['$event'])
     onKeyDownEsc(event: KeyboardEvent) {
-        if (!this.open) {
+        if (!this.canOpen || !this.open) {
             return;
         }
 
