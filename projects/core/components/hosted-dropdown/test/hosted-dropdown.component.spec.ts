@@ -29,8 +29,8 @@ describe('TuiHostedDropdown', () => {
                     <tui-primitive-textfield> Entry field </tui-primitive-textfield>
                 </tui-hosted-dropdown>
                 <tui-hosted-dropdown
-                    *ngIf="withoutContent"
-                    [content]="''"
+                    *ngIf="canNotOpen"
+                    [canOpen]="canOpen"
                     [(open)]="open"
                 >
                     <tui-primitive-textfield> Entry field </tui-primitive-textfield>
@@ -62,7 +62,7 @@ describe('TuiHostedDropdown', () => {
     class TestComponent {
         open = false;
         items = ['Item 1', 'Item 2'];
-        mode: 'default' | 'input' | 'targeted' | 'without-content' = 'default';
+        mode: 'default' | 'input' | 'targeted' | 'can-not-open' = 'default';
         canOpen = true;
 
         escCatched = false;
@@ -86,8 +86,8 @@ describe('TuiHostedDropdown', () => {
             return this.mode === 'targeted';
         }
 
-        get withoutContent(): boolean {
-            return this.mode === 'without-content';
+        get canNotOpen(): boolean {
+            return this.mode === 'can-not-open';
         }
 
         onEsc() {
@@ -239,14 +239,15 @@ describe('TuiHostedDropdown', () => {
         });
     });
 
-    describe('without content', () => {
+    describe('Can not open', () => {
         beforeEach(() => {
-            testComponent.mode = 'without-content';
+            testComponent.mode = 'can-not-open';
             fixture.detectChanges();
         });
 
         it('Esc event should bubble up if content is empty', () => {
             testComponent.open = true;
+            testComponent.canOpen = false;
             fixture.detectChanges();
 
             testComponent.tuiTextfield.nativeFocusableElement!.focus();
