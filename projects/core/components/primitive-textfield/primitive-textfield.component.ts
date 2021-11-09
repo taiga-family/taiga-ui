@@ -15,7 +15,6 @@ import {
     AbstractTuiInteractive,
     isNativeFocused,
     setNativeFocused,
-    TuiContextWithImplicit,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -37,9 +36,10 @@ import {
     TuiSizeL,
     TuiSizeS,
 } from '@taiga-ui/core/types';
-import {getBorder, sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
+import {getBorder} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {fromEvent, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {TUI_PRIMITIVE_TEXTFIELD_PROVIDERS} from './primitive-textfield.providers';
 
 const ICON_PADDING = 1.75;
@@ -91,6 +91,10 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
+    prefix = '';
+
+    @Input()
+    @tuiDefaultProp()
     postfix = '';
 
     @Input()
@@ -132,6 +136,11 @@ export class TuiPrimitiveTextfieldComponent
         return isNativeFocused(this.nativeFocusableElement);
     }
 
+    @tuiPure
+    getIndent$(element: HTMLElement): Observable<number> {
+        return fromEvent(element, 'scroll').pipe(map(() => -1 * element.scrollLeft));
+    }
+
     @HostBinding('attr.data-tui-host-size')
     get size(): TuiSizeS | TuiSizeL {
         return this.controller.size;
@@ -155,47 +164,49 @@ export class TuiPrimitiveTextfieldComponent
         return this.appearance === TuiAppearance.Table;
     }
 
+    get hasValue(): boolean {
+        return !!this.value;
+    }
+
+    get hasCleaner(): boolean {
+        return (
+            this.controller.cleaner && this.hasValue && !this.disabled && !this.readOnly
+        );
+    }
+
     get hasTooltip(): boolean {
-        return !!this.hintController && !!this.hintController.content && !this.disabled;
+        return !!this.hintController?.content && !this.disabled;
     }
 
     get hasCustomContent(): boolean {
         return !!this.controller.customContent;
     }
 
-    get iconPaddingLeft(): number {
-        return this.size === 's' ? ICON_PADDING_S : ICON_PADDING;
-    }
-
-    get borderLeft(): number {
-        return (
-            (this.iconAlignLeft ? this.iconPaddingLeft : 0) +
-            getBorder(sizeBigger(this.size, 'm'), false)
-        );
-    }
-
-    get borderRight(): number {
-        return getBorder(
-            sizeBigger(this.size, 'm'),
-            this.iconAlignRight,
-            this.hasCleaner,
-            this.hasTooltip,
-            this.hasCustomContent,
-        );
-    }
-
     get hasPlaceholder(): boolean {
-        return (
-            (this.big && !this.labelOutside) ||
-            (!this.hasValue && !this.hasExampleText && !this.hasPostfix)
-        );
+        const hasDecor = this.controller.exampleText || this.prefix || this.postfix;
+        const showDecor = hasDecor && !this.readOnly && this.computedFocused;
+        const placeholderVisible = !this.hasValue && !showDecor;
+
+        return this.placeholderRaisable || placeholderVisible;
     }
 
     get placeholderRaised(): boolean {
         return (
-            this.big &&
-            !this.labelOutside &&
+            this.placeholderRaisable &&
             ((this.computedFocused && !this.readOnly) || this.hasValue || this.autofilled)
+        );
+    }
+
+    get borderLeft(): number {
+        return this.iconAlignLeft ? this.iconPaddingLeft : 0;
+    }
+
+    get borderRight(): number {
+        return getBorder(
+            this.iconAlignRight,
+            this.hasCleaner,
+            this.hasTooltip,
+            this.hasCustomContent,
         );
     }
 
@@ -207,62 +218,11 @@ export class TuiPrimitiveTextfieldComponent
         return this.hasIcon && this.iconAlign === 'right';
     }
 
-    get hasValue(): boolean {
-        return !!this.value;
-    }
-
-    get hasCleaner(): boolean {
-        return (
-            this.controller.cleaner && this.hasValue && !this.disabled && !this.readOnly
-        );
-    }
-
-    @HostBinding('class._right-aligned')
-    get rightAligned(): boolean {
-        return (
-            this.appearance === TuiAppearance.Table &&
-            (this.controller.inputMode === 'numeric' ||
-                this.controller.inputMode === 'decimal')
-        );
-    }
-
-    get hasValueDecoration(): boolean {
-        const fillerOrExampleShown =
-            this.computedFocused && !this.readOnly && this.hasFillerOrExampleText;
-
-        return fillerOrExampleShown || this.hasPostfix;
-    }
-
-    get hasPostfix(): boolean {
-        const isPostfixAllowed =
-            this.hasValue || (this.computedFocused && !this.readOnly);
-
-        return isPostfixAllowed && !!this.postfix;
-    }
-
-    get hasFillerOrExampleText(): boolean {
-        return this.hasValue ? !!this.computedFiller : !!this.controller.exampleText;
-    }
-
-    get postfixShifted(): boolean {
-        return this.postfix !== '%' && (this.hasFillerOrExampleText || this.hasValue);
-    }
-
-    get computedFiller(): string {
-        return this.hasExampleText
-            ? this.controller.exampleText
-            : this.filler.slice(this.value.length);
-    }
-
     // Safari expiration date autofill workaround
     get name(): 'ccexpiryyear' | null {
         return this.controller.autocomplete === TuiCreditCardAutofillName.CcExp
             ? 'ccexpiryyear'
             : null;
-    }
-
-    get context(): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
-        return this.getContext(this.size);
     }
 
     clear() {
@@ -301,28 +261,16 @@ export class TuiPrimitiveTextfieldComponent
         this.updateAutofilled(autofilled);
     }
 
-    private get big(): boolean {
-        return this.size !== 's';
+    private get iconPaddingLeft(): number {
+        return this.size === 's' ? ICON_PADDING_S : ICON_PADDING;
+    }
+
+    private get placeholderRaisable(): boolean {
+        return this.size !== 's' && !this.labelOutside;
     }
 
     private get hasIcon(): boolean {
         return !!this.iconContent;
-    }
-
-    private get hasExampleText(): boolean {
-        return (
-            !!this.controller.exampleText &&
-            this.computedFocused &&
-            !this.hasValue &&
-            !this.readOnly
-        );
-    }
-
-    @tuiPure
-    private getContext(
-        $implicit: TuiSizeS | TuiSizeL,
-    ): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
-        return {$implicit};
     }
 
     private updateAutofilled(autofilled: boolean) {

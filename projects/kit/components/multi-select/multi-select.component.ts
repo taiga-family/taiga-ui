@@ -34,18 +34,13 @@ import {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
-    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DATA_LIST_ACCESSOR,
     TUI_DATA_LIST_HOST,
-    TUI_TEXTFIELD_LABEL_OUTSIDE,
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDataListAccessor,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiSvgService,
-    TuiTextfieldController,
-    TuiTextfieldLabelOutsideDirective,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
@@ -68,7 +63,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
             useExisting: forwardRef(() => TuiMultiSelectComponent),
         },
         FIXED_DROPDOWN_CONTROLLER_PROVIDER,
-        TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })
 export class TuiMultiSelectComponent<T>
@@ -142,10 +136,6 @@ export class TuiMultiSelectComponent<T>
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiSvgService) svgService: TuiSvgService,
-        @Inject(TUI_TEXTFIELD_LABEL_OUTSIDE)
-        readonly textfieldLabelOutside: TuiTextfieldLabelOutsideDirective,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        readonly controller: TuiTextfieldController,
     ) {
         super(control, changeDetectorRef);
 
@@ -202,12 +192,6 @@ export class TuiMultiSelectComponent<T>
 
     get context(): TuiContextWithImplicit<ReadonlyArray<T>> {
         return this.getContext(this.value);
-    }
-
-    get arrowIcon(): string {
-        return this.controller.size === 's'
-            ? 'tuiIconChevronDown'
-            : 'tuiIconChevronDownLarge';
     }
 
     @tuiPure

@@ -70,6 +70,10 @@ export class TuiInputNumberComponent
 
     @Input()
     @tuiDefaultProp()
+    prefix = '';
+
+    @Input()
+    @tuiDefaultProp()
     postfix = '';
 
     mask: TuiMapper<boolean, TuiTextMaskOptions> = (

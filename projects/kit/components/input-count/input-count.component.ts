@@ -77,6 +77,10 @@ export class TuiInputCountComponent
 
     @Input()
     @tuiDefaultProp()
+    prefix = '';
+
+    @Input()
+    @tuiDefaultProp()
     postfix = this.options.postfix;
 
     @tuiPure

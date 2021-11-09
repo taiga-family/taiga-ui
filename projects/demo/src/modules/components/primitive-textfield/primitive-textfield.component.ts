@@ -77,6 +77,8 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     filler = '';
 
+    prefix = '';
+
     postfix = '';
 
     readonly maxLengthVariants: readonly number[] = [10];

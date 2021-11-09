@@ -53,6 +53,7 @@
                     [max]="max"
                     [hideButtons]="hideButtons"
                     [step]="step"
+                    [prefix]="prefix"
                     [postfix]="postfix"
                     [readOnly]="readOnly"
                     [tuiTextfieldLabelOutside]="labelOutside"
@@ -97,6 +98,15 @@
                 [(documentationPropertyValue)]="max"
             >
                 Maximum value (<code>Infinity</code> by default)
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="prefix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="prefix"
+            >
+                A prefix symbol, like currency
             </ng-template>
             <ng-template
                 i18n

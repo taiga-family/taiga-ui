@@ -7,6 +7,10 @@ import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
+import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
+import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
+import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
+
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -59,6 +63,12 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
         TypeScript: example3Ts,
     };
 
+    readonly example4: FrontEndExample = {
+        HTML: example4Html,
+        LESS: example4Less,
+        TypeScript: example4Ts,
+    };
+
     readonly autocompleteVariants = ['off', 'transaction-amount'];
 
     autocomplete: TuiTransactionAutofillName | null = null;
@@ -74,6 +84,8 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
     precision = this.precisionVariants[0];
 
     readonly postfixVariants: readonly string[] = ['', '$', 'GBP'];
+
+    prefix = this.postfixVariants[0];
 
     postfix = this.postfixVariants[0];
 

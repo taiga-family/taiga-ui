@@ -20,11 +20,11 @@
 
     &[data-tui-host-size='m'] {
         font: var(--tui-font-text-s);
-        min-height: @height - 1.25rem;
+        min-height: (@height - 1.25rem);
     }
 
     &[data-tui-host-size='m']._has-counter {
-        min-height: @heightCounter - 1.25rem;
+        min-height: (@heightCounter - 1.25rem);
     }
 
     &[data-tui-host-size='l']._has-counter {
@@ -38,7 +38,6 @@
 }
 
 .content {
-    .customize-scroll();
     margin-top: 0;
     margin-bottom: 0;
     min-height: inherit;
@@ -122,6 +121,7 @@
     pointer-events: none;
     color: transparent;
     overflow: hidden;
+    border: 0 solid transparent;
 
     :host[data-tui-host-size='m'] & {
         padding: 0 0.75rem;
@@ -142,13 +142,24 @@
     top: 0;
     left: 0;
     width: 100%;
-    box-sizing: border-box;
     height: 100%;
+    box-sizing: border-box;
     resize: none;
     overflow: hidden;
+    outline: none;
+    border: 0 solid transparent;
 
-    &:focus {
-        outline: none;
+    &::placeholder {
+        color: var(--tui-text-03);
+        visibility: hidden;
+    }
+
+    :host[data-mode='onDark'] &::placeholder {
+        color: var(--tui-text-03-night);
+    }
+
+    :host._focused &:not(:read-only)::placeholder {
+        visibility: visible;
     }
 
     :host[data-tui-host-size='m'] & {
@@ -168,35 +179,22 @@
     }
 }
 
-.pseudo-content,
-.input {
-    :host._focused._has-tooltip &,
-    :host._has-value._has-tooltip & {
-        padding-right: 2.5rem;
-    }
-}
-
 .placeholder {
     .textfield-placeholder();
     position: absolute;
-    max-width: ~'calc(100% - 1.5rem)';
-
-    &_raised {
-        max-width: ~'calc(113% - 2rem)';
-    }
+    left: 0;
+    max-width: 100%;
+    padding: 0 1rem;
+    border: 0 solid transparent;
+    box-sizing: border-box;
 
     :host[data-tui-host-size='m'] & {
         top: 0.75rem;
-        left: 0.75rem;
+        padding: 0 0.75rem;
     }
 
     :host[data-tui-host-size='l'] & {
         top: 1rem;
-        left: 1rem;
-    }
-
-    :host._has-tooltip & {
-        max-width: ~'calc(100% - 3.25rem)';
     }
 
     :host._label-outside & {
@@ -206,30 +204,25 @@
     }
 }
 
-.example-text {
-    position: absolute;
-    max-width: ~'calc(100% - 1.5rem)';
-    color: var(--tui-text-03);
-    user-select: none;
-
-    :host._has-tooltip._focused &,
-    :host._has-tooltip._has-value & {
-        max-width: ~'calc(100% - 3.25rem)';
-    }
+.icons {
+    .fullsize(absolute, inset);
+    display: flex;
+    justify-content: flex-end;
+    pointer-events: none;
+    padding: 1rem 0.75rem;
 
     :host[data-tui-host-size='m'] & {
-        left: 0.75rem;
-    }
-
-    :host[data-tui-host-size='l'] & {
-        left: 1rem;
+        padding: 0.75rem;
     }
 }
 
+.cleaner {
+    .icon-button();
+    pointer-events: auto;
+}
+
 .tooltip {
-    position: absolute;
-    top: 1rem;
-    right: 0.75rem;
+    pointer-events: auto;
 }
 
 .counter {

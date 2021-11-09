@@ -20,6 +20,7 @@ import {
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {
+    getBorder,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_MODE,
     TUI_TEXTFIELD_APPEARANCE,
@@ -99,6 +100,16 @@ export class TuiTextAreaComponent
     @HostBinding('attr.data-tui-host-size')
     get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
+    }
+
+    get border(): number {
+        return getBorder(false, this.hasCleaner, this.hasTooltip);
+    }
+
+    get hasCleaner(): boolean {
+        return (
+            this.controller.cleaner && this.hasValue && !this.disabled && !this.readOnly
+        );
     }
 
     @HostBinding('class._has-tooltip')

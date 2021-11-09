@@ -17,6 +17,7 @@ import {TuiTextAreaExample1} from './examples/1';
 import {TuiTextAreaExample2} from './examples/2';
 import {TuiTextAreaExample3} from './examples/3';
 import {TuiTextAreaExample4} from './examples/4';
+import {TuiTextAreaExample5} from './examples/5';
 import {ExampleTuiTextAreaComponent} from './text-area.component';
 
 @NgModule({
@@ -43,6 +44,7 @@ import {ExampleTuiTextAreaComponent} from './text-area.component';
         TuiTextAreaExample2,
         TuiTextAreaExample3,
         TuiTextAreaExample4,
+        TuiTextAreaExample5,
     ],
     exports: [ExampleTuiTextAreaComponent],
 })

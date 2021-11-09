@@ -1,3 +1,4 @@
+export * from '@taiga-ui/core/directives/border';
 export * from '@taiga-ui/core/directives/color';
 export * from '@taiga-ui/core/directives/described-by';
 export * from '@taiga-ui/core/directives/dropdown';

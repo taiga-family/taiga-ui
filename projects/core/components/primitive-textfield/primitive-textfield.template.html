@@ -18,8 +18,7 @@
         automation-id="tui-primitive-textfield__native-input"
         class="input"
         [class.input_hidden]="inputHidden"
-        [style.borderLeftWidth.rem]="borderLeft"
-        [style.borderRightWidth.rem]="borderRight"
+        [style.textIndent.px]="decor.pre$ | async"
         [attr.disabled]="computedDisabled || null"
         [attr.maxLength]="controller.maxLength"
         [attr.name]="name"
@@ -29,6 +28,8 @@
         [type]="controller.type"
         [id]="id"
         [readOnly]="readOnly || !editable"
+        [tuiBorderStart]="borderLeft"
+        [tuiBorderEnd]="borderRight"
         [tuiInputMode]="controller.inputMode"
         [tuiFocusable]="computedFocusable"
         [tuiDescribedBy]="id"
@@ -41,8 +42,8 @@
         *ngIf="inputHidden"
         automation-id="tui-primitive-textfield__value"
         class="input input_template"
-        [style.paddingLeft.rem]="borderLeft"
-        [style.borderRightWidth.rem]="borderRight"
+        [tuiBorderStart]="borderLeft"
+        [tuiBorderEnd]="borderRight"
     >
         <ng-content select="[polymorpheus-outlet]"></ng-content>
     </div>
@@ -52,7 +53,7 @@
             *ngIf="iconAlignLeft"
             class="icon icon_left"
             [content]="iconContent"
-            [context]="context"
+            [context]="{ $implicit: size }"
         >
             <ng-template let-iconSrc>
                 <tui-svg [src]="iconSrc"></tui-svg>
@@ -60,9 +61,9 @@
         </div>
         <div class="wrapper">
             <span
-                [class.value_visible]="isContextTable"
                 aria-hidden="true"
                 class="value"
+                [class.value_visible]="isContextTable"
             >
                 {{value}}
             </span>
@@ -75,25 +76,12 @@
             >
                 <ng-content></ng-content>
             </label>
-            <div
-                *ngIf="hasValueDecoration"
-                class="value-decoration"
+            <tui-value-decoration
+                #decor
                 automation-id="tui-primitive-textfield__value-decoration"
                 aria-hidden="true"
-            >
-                <span class="value-decoration-inner">
-                    <span class="ghost">{{value}}</span>
-                    <span automation-id="tui-primitive-textfield__example-text"
-                        >{{computedFiller}}</span
-                    >
-                    <span
-                        *ngIf="hasPostfix"
-                        class="postfix"
-                        [class.postfix_shifted]="postfixShifted"
-                        >{{postfix}}</span
-                    >
-                </span>
-            </div>
+                [style.textIndent.px]="getIndent$(focusableElement) | async"
+            ></tui-value-decoration>
         </div>
         <div
             polymorpheus-outlet
@@ -128,7 +116,7 @@
             *ngIf="iconAlignRight"
             class="icon"
             [content]="iconContent"
-            [context]="context"
+            [context]="{ $implicit: size }"
         >
             <ng-template let-iconSrc>
                 <tui-svg [src]="iconSrc"></tui-svg>

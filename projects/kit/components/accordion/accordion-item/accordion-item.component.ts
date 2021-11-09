@@ -122,11 +122,9 @@ export class TuiAccordionItemComponent
     }
 
     onRowToggle() {
-        if (this.disabled) {
-            return;
+        if (!this.disabled) {
+            this.updateOpen(!this.open);
         }
-
-        this.updateOpen(!this.open);
     }
 
     onItemKeyDownEsc(event: KeyboardEvent) {

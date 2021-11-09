@@ -50,6 +50,7 @@
                 [iconAlign]="iconAlign"
                 [iconContent]="iconContent"
                 [readOnly]="readOnly"
+                [prefix]="prefix"
                 [postfix]="postfix"
                 [invalid]="invalid"
                 [tuiHintContent]="hintContent"
@@ -125,12 +126,24 @@
             </ng-template>
             <ng-template
                 i18n
+                documentationPropertyName="prefix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="prefix"
+            >
+                Uneditable text before value. For example, currency symbol in
+                <a tuiLink routerLink="/components/input-number"
+                    ><code>InputNumber</code></a
+                >.
+            </ng-template>
+            <ng-template
+                i18n
                 documentationPropertyName="postfix"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="postfix"
             >
-                Unfocusable text after value. For example, currency symbol in
+                Uneditable text after value. For example, currency symbol in
                 <a tuiLink routerLink="/components/input-number"
                     ><code>InputNumber</code></a
                 >.

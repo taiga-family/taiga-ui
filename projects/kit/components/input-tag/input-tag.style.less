@@ -67,6 +67,15 @@
     :host[data-tui-host-size='l']:not(._label-outside) & {
         padding: 1.6875rem 1rem 0.5625rem 0;
     }
+
+    :host[data-tui-host-size] {
+        padding-inline-start: 0;
+        padding-inline-end: 0.25rem;
+    }
+
+    :host[data-tui-host-size]:not(._label-outside) & {
+        padding-inline-end: 1rem;
+    }
 }
 
 .content {
@@ -75,28 +84,31 @@
 
     :host[data-tui-host-size='s'] &,
     :host[data-tui-host-size='m'] & {
-        padding-left: 0.75rem;
-    }
-
-    :host[data-tui-host-size='s'] & {
-        padding-right: 0;
+        padding: 0 0 0 0.75rem;
+        padding-inline-start: 0.75rem;
+        padding-inline-end: 0;
     }
 }
 
 .icons {
     display: flex;
     align-items: center;
-    padding: 0 0.75rem;
+    padding: 0 0 0 0.75rem;
+    padding-inline-start: 0.75rem;
+    padding-inline-end: 0;
 
     &_left {
         padding: 0;
-        margin-right: 0.5rem;
-        margin-left: -0.25rem;
+        margin: 0 0.5rem 0 -0.25rem;
+        margin-inline-start: -0.25rem;
+        margin-inline-end: 0.5rem;
     }
 
     &_right {
         :host._expandable & {
-            margin-left: -0.625rem;
+            margin: 0 0 0 -0.625rem;
+            margin-inline-start: -0.625rem;
+            margin-inline-end: 0;
         }
     }
 
@@ -135,6 +147,8 @@
 
 .tag {
     margin: @tag-vertical-space 0.5rem @tag-vertical-space -0.25rem;
+    margin-inline-start: -0.25rem;
+    margin-inline-end: 0.5rem;
     max-width: 100%;
     flex-shrink: 0;
 }
@@ -168,7 +182,9 @@
 
     &_collapsed {
         flex: 0;
-        margin-left: -2 * @space;
+        margin: 0 0 0 -0.5rem;
+        margin-inline-start: -0.5rem;
+        margin-inline-end: 0;
     }
 
     :host[data-tui-host-size='s'] & {
@@ -189,6 +205,9 @@
 }
 
 .ghost {
+    visibility: hidden;
+    white-space: pre;
+    text-overflow: clip;
     min-width: 0.125rem;
 
     :host:not(._expandable) & {
@@ -208,6 +227,19 @@
     &_hidden {
         opacity: 0;
         text-indent: -10em;
+    }
+
+    &::placeholder {
+        color: var(--tui-text-03);
+        visibility: hidden;
+    }
+
+    :host[data-mode='onDark'] &::placeholder {
+        color: var(--tui-text-03-night);
+    }
+
+    :host._focused &:not(:read-only)::placeholder {
+        visibility: visible;
     }
 }
 
