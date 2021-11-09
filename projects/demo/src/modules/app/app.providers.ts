@@ -16,7 +16,7 @@ import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../../../addon-doc/src/tokens/example-content-processor';
-import {PROMPT_PROVIDER} from '../customization/dialogs/examples/prompt/prompt.service';
+import {PROMPT_PROVIDER} from '../customization/dialogs/examples/1/prompt/prompt.service';
 import {SEE_ALSO_GROUPS} from './app.const';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {pages} from './pages';
