@@ -17,7 +17,6 @@ import {TuiPreviewLoadingComponent} from './loading/preview-loading.component';
 import {TuiPreviewPaginationComponent} from './pagination/preview-pagination.component';
 import {TuiPreviewComponent} from './preview.component';
 import {TuiPreviewTitleComponent} from './title/preview-title.component';
-import {TuiPreviewUnavailableComponent} from './unavailable/preview-unavailable.component';
 import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
 
 @NgModule({
@@ -42,7 +41,6 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiPreviewTitleComponent,
         TuiPreviewPaginationComponent,
         TuiPreviewZoomComponent,
-        TuiPreviewUnavailableComponent,
         TuiPreviewActionComponent,
         TuiPreviewLoadingComponent,
     ],
@@ -52,7 +50,6 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiPreviewPaginationComponent,
         TuiPreviewZoomComponent,
         TuiPreviewActionComponent,
-        TuiPreviewUnavailableComponent,
         TuiPreviewLoadingComponent,
     ],
 })

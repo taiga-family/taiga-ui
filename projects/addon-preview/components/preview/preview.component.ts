@@ -178,6 +178,7 @@ export class TuiPreviewComponent {
     private initClickSubscription(element: HTMLElement) {
         dragAndDropFrom(element)
             .pipe(
+                filter(() => this.zoomable),
                 pairwise(),
                 filter(
                     ([previous, current]) =>

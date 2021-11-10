@@ -33,10 +33,12 @@
             (click)="preview.complete()"
         ></tui-preview-action>
 
-        <!-- supports also [content] -->
-        <tui-preview-unavailable
-            *ngIf="contentUnavailable$ | async"
-        ></tui-preview-unavailable>
+        <ng-container *ngIf="contentUnavailable$ | async">
+            <div class="t-container">
+                <tui-svg class="t-icon" src="tuiIconFileLarge"></tui-svg>
+                <div>Preview unavailable</div>
+            </div>
+        </ng-container>
 
         <img
             *ngIf="imageSrc$ | async as src"

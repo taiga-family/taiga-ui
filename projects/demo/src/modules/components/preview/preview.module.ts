@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiPreviewModule} from '@taiga-ui/addon-preview';
-import {TuiButtonModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiSwipeModule} from '../../../../../cdk';
 import {TuiPreviewExample1} from './examples/1';
@@ -19,6 +19,7 @@ import {ExampleTuiPreviewComponent} from './preview.component';
         TuiPreviewModule,
         TuiNotificationModule,
         TuiAddonDocModule,
+        TuiSvgModule,
         TuiSwipeModule,
         RouterModule.forChild(generateRoutes(ExampleTuiPreviewComponent)),
     ],
