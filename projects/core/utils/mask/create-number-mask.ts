@@ -75,7 +75,7 @@ export function tuiCreateNumberMask({
             : integer;
         const integerCappedClean = integerCapped
             .replace(TUI_NON_DIGITS_REGEXP, '')
-            .replace(/^0+(?!\.|$)/, '0');
+            .replace(/^0+(?!\.|$)/, '');
         const withSeparator = addThousandsSeparator(integerCappedClean, thousandSymbol);
         const mask = convertToMask(withSeparator);
 
@@ -115,7 +115,11 @@ export function tuiCreateNumberMask({
 function preventLeadingZeroes(mask: Array<string | RegExp>): Array<string | RegExp> {
     const firstDigitIndex = mask.indexOf(TUI_DIGIT_REGEXP);
 
-    if (firstDigitIndex !== -1 && mask[firstDigitIndex + 1] === TUI_DIGIT_REGEXP) {
+    if (
+        firstDigitIndex !== -1 &&
+        mask[firstDigitIndex] === TUI_DIGIT_REGEXP &&
+        mask.length !== 1
+    ) {
         mask[firstDigitIndex] = NON_ZERO_DIGIT;
     }
 
