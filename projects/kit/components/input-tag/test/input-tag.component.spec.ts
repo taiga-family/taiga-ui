@@ -20,7 +20,6 @@ import {
     NativeInputPO,
     PageObject,
     testCleaner,
-    testExampleText,
     testPlaceholder,
     testTooltip,
 } from '@taiga-ui/testing';
@@ -389,8 +388,6 @@ describe('InputTag', () => {
             expect(inputPO.focused).toBe(true);
         });
     });
-
-    testExampleText(testContext, ['test'], []);
 
     testPlaceholder(testContext, ['test'], []);
 

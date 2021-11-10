@@ -1,15 +1,14 @@
-import {Component, DebugElement, ElementRef, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {TuiRootModule} from '@taiga-ui/core/components/root';
 import {
     NativeInputPO,
     PageObject,
     testCleaner,
-    testExampleText,
     testPlaceholder,
     testTooltip,
 } from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {configureTestSuite} from 'ng-bullet';
 import {TuiHintControllerModule} from '../../../directives/hint-controller/hint-controller.module';
 import {TuiTextfieldControllerModule} from '../../../directives/textfield-controller';
@@ -25,10 +24,13 @@ describe('PrimitiveTextfield', () => {
                 [tuiTextfieldExampleText]="exampleText"
                 [tuiTextfieldLabelOutside]="labelOutside"
                 [tuiTextfieldSize]="size"
-                [readOnly]="readOnly"
                 [tuiHintContent]="hintContent"
+                [readOnly]="readOnly"
                 [invalid]="invalid"
                 [disabled]="disabled"
+                [filler]="filler"
+                [postfix]="postfix"
+                [pseudoFocused]="focused"
                 [(value)]="value"
             ></tui-primitive-textfield>
         `,
@@ -36,9 +38,6 @@ describe('PrimitiveTextfield', () => {
     class TestComponent {
         @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
         component: TuiPrimitiveTextfieldComponent;
-
-        @ViewChild('submit')
-        submit: ElementRef<HTMLButtonElement>;
 
         cleaner = false;
 
@@ -54,9 +53,15 @@ describe('PrimitiveTextfield', () => {
 
         value = '';
 
+        filler = '';
+
+        postfix = '';
+
         invalid = false;
 
         disabled = false;
+
+        focused = false;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -89,9 +94,9 @@ describe('PrimitiveTextfield', () => {
                 TuiPrimitiveTextfieldModule,
                 TuiTextfieldControllerModule,
                 TuiHintControllerModule,
+                TuiRootModule,
             ],
             declarations: [TestComponent],
-            providers: NG_EVENT_PLUGINS,
         });
     });
 
@@ -108,16 +113,16 @@ describe('PrimitiveTextfield', () => {
             testComponent.size = 'l';
         });
 
-        it('is not swown when value is empty and field is not focused', () => {
+        it('is not shown when value is empty and field is not focused', () => {
             const example = 'text';
             const postfix = 'post';
 
             testComponent.exampleText = example;
-            testComponent.component.postfix = postfix;
+            testComponent.postfix = postfix;
 
             fixture.detectChanges();
 
-            expect(getValueDecoration()).toBeNull();
+            expect(getValueDecoration()).toBe('');
         });
 
         it('value, filler and postfix are shown when value is not empty and field is focused', () => {
@@ -126,42 +131,70 @@ describe('PrimitiveTextfield', () => {
             const postfix = 'post';
 
             testComponent.value = value;
-            testComponent.component.filler = filler;
-            testComponent.component.postfix = postfix;
-
-            testComponent.component.onFocused(true);
+            testComponent.filler = filler;
+            testComponent.postfix = postfix;
+            testComponent.focused = true;
 
             fixture.detectChanges();
 
-            expect(getValueDecoration()!.nativeElement.textContent.trim()).toBe(
+            expect(getValueDecoration()).toBe(
                 value + filler.slice(value.length) + postfix,
             );
         });
 
-        it('value and postfix are shpwn when value is not empty', () => {
+        it('value and postfix are shown when value is not empty', () => {
             const value = 'value';
             const postfix = 'post';
 
             testComponent.value = value;
-            testComponent.component.postfix = postfix;
+            testComponent.postfix = postfix;
 
             fixture.detectChanges();
 
-            expect(getValueDecoration()!.nativeElement.textContent.trim()).toBe(
-                value + postfix,
-            );
+            expect(getValueDecoration()).toBe(value + postfix);
+        });
+    });
+
+    describe('Example of filling in the field (example-text)', () => {
+        it('if the input is not focused, then example-text is not shown', done => {
+            fixture.whenStable().then(() => {
+                expect(getValueDecoration()).toBe('');
+                done();
+            });
+        });
+
+        it('if the input has value, then example-text is not shown', done => {
+            testComponent.value = 'value';
+            fixture.whenStable().then(() => {
+                fixture.detectChanges();
+                expect(getValueDecoration()).toBe(testComponent.value);
+                done();
+            });
+        });
+
+        it('if the input is focused, then example-text is shown', done => {
+            testComponent.value = '';
+            testComponent.focused = true;
+
+            fixture.detectChanges();
+            fixture.whenStable().then(() => {
+                fixture.detectChanges();
+                expect(getValueDecoration()).toBe(testComponent.exampleText);
+                done();
+            });
         });
     });
 
     testCleaner(testContext, 'test', '');
 
-    testExampleText(testContext);
-
     testTooltip(testContext);
 
     testPlaceholder(testContext);
 
-    function getValueDecoration(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-primitive-textfield__value-decoration');
+    function getValueDecoration(): string {
+        return pageObject
+            .getByAutomationId('tui-primitive-textfield__value-decoration')!
+            .nativeElement.textContent.trim()
+            .replace('\n ', '');
     }
 });
