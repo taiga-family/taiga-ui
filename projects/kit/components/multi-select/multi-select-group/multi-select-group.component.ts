@@ -21,6 +21,7 @@ import {
 import {
     sizeBigger,
     TUI_DATA_LIST_HOST,
+    TUI_OPTION_CONTENT,
     TuiDataListHost,
     TuiOptionComponent,
     TuiSizeL,
@@ -34,6 +35,12 @@ import {map} from 'rxjs/operators';
     templateUrl: './multi-select-group.template.html',
     styleUrls: ['./multi-select-group.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    viewProviders: [
+        {
+            provide: TUI_OPTION_CONTENT,
+            useValue: null,
+        },
+    ],
 })
 export class TuiMultiSelectGroupComponent<T> {
     @Input()

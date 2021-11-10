@@ -136,11 +136,6 @@ export class TuiPrimitiveTextfieldComponent
         return isNativeFocused(this.nativeFocusableElement);
     }
 
-    @tuiPure
-    getIndent$(element: HTMLElement): Observable<number> {
-        return fromEvent(element, 'scroll').pipe(map(() => -1 * element.scrollLeft));
-    }
-
     @HostBinding('attr.data-tui-host-size')
     get size(): TuiSizeS | TuiSizeL {
         return this.controller.size;
@@ -223,6 +218,11 @@ export class TuiPrimitiveTextfieldComponent
         return this.controller.autocomplete === TuiCreditCardAutofillName.CcExp
             ? 'ccexpiryyear'
             : null;
+    }
+
+    @tuiPure
+    getIndent$(element: HTMLElement): Observable<number> {
+        return fromEvent(element, 'scroll').pipe(map(() => -1 * element.scrollLeft));
     }
 
     clear() {

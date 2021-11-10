@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     HostBinding,
     Inject,
@@ -50,6 +51,7 @@ export class TuiDocNavigationComponent {
     );
 
     constructor(
+        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(Title) titleService: Title,
         @Inject(NAVIGATION_TITLE) title$: Observable<string>,
         @Inject(DOCUMENT) private readonly documentRef: Document,
@@ -68,6 +70,7 @@ export class TuiDocNavigationComponent {
         // Angular can't navigate no anchor links
         // https://stackoverflow.com/questions/36101756/angular2-routing-with-hashtag-to-page-anchor
         title$.subscribe(title => {
+            changeDetectorRef.markForCheck();
             titleService.setTitle(title);
             this.openActivePageGroup();
             this.handleAnchorLink(this.activatedRoute.snapshot.fragment);

@@ -1,7 +1,6 @@
 <ng-container *tuiLet="value$ | async as value">
     <button
         *ngIf="label && !(empty$ | async)"
-        tuiMultiSelectGroupReset
         tuiOption
         [size]="size"
         [disabled]="disabled$ | async"
