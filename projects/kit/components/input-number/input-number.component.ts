@@ -83,6 +83,7 @@ export class TuiInputNumberComponent
             allowDecimal: decimal !== 'never',
             decimalLimit: precision,
             requireDecimal: decimal === 'always',
+            autoCorrectDecimalSymbol: false,
             decimalSymbol: this.numberFormat.decimalSeparator,
             thousandSymbol: this.numberFormat.thousandSeparator,
         }),
