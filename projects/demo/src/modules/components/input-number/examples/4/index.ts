@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {TUI_NUMBER_FORMAT} from '@taiga-ui/core';
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -8,7 +9,13 @@ import {encapsulation} from '../../../../../view-encapsulation';
     styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
+    providers: [
+        {
+            provide: TUI_NUMBER_FORMAT,
+            useValue: {decimalSeparator: '.', thousandSeparator: ','},
+        },
+    ],
 })
 export class TuiInputNumberExample4 {
-    value = 237;
+    value = 1234.56;
 }

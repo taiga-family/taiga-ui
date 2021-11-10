@@ -12,6 +12,7 @@ const NON_ZERO_DIGIT = /[1-9]/;
 
 /**
  * Adaptation for {@link https://github.com/text-mask/text-mask/tree/master/addons#createnumbermask `createNumberMask`}
+ * @todo TODO: autocCorrectDecimalSymbol is no longer needed. Remove it in 3.0
  */
 export function tuiCreateNumberMask({
     allowDecimal = false,
