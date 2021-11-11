@@ -82,16 +82,20 @@
                 aria-hidden="true"
             >
                 <span class="value-decoration-inner">
-                    <span class="ghost">{{value}}</span>
-                    <span automation-id="tui-primitive-textfield__example-text"
-                        >{{computedFiller}}</span
+                    <span class="ghost" *ngIf="value">{{value}}</span>
+                    <span
+                        *ngIf="computedFiller as fillerValue"
+                        automation-id="tui-primitive-textfield__example-text"
                     >
+                        {{fillerValue}}
+                    </span>
                     <span
                         *ngIf="hasPostfix"
                         class="postfix"
                         [class.postfix_shifted]="postfixShifted"
-                        >{{postfix}}</span
                     >
+                        {{postfix}}
+                    </span>
                 </span>
             </div>
         </div>

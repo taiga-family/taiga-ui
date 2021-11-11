@@ -108,7 +108,7 @@ describe('PrimitiveTextfield', () => {
             testComponent.size = 'l';
         });
 
-        it('is not swown when value is empty and field is not focused', () => {
+        it('is not shown when value is empty and field is not focused', () => {
             const example = 'text';
             const postfix = 'post';
 
@@ -133,12 +133,14 @@ describe('PrimitiveTextfield', () => {
 
             fixture.detectChanges();
 
-            expect(getValueDecoration()!.nativeElement.textContent.trim()).toBe(
-                value + filler.slice(value.length) + postfix,
+            const processedFiller = filler.slice(value.length);
+
+            expect(getHtmlDecoration()).toBe(
+                `<span><span>${value}</span><span> ${processedFiller} </span><span> ${postfix} </span></span>`,
             );
         });
 
-        it('value and postfix are shpwn when value is not empty', () => {
+        it('value and postfix are shown when value is not empty', () => {
             const value = 'value';
             const postfix = 'post';
 
@@ -147,8 +149,8 @@ describe('PrimitiveTextfield', () => {
 
             fixture.detectChanges();
 
-            expect(getValueDecoration()!.nativeElement.textContent.trim()).toBe(
-                value + postfix,
+            expect(getHtmlDecoration()).toBe(
+                `<span><span>${value}</span><span> ${postfix} </span></span>`,
             );
         });
     });
@@ -163,5 +165,13 @@ describe('PrimitiveTextfield', () => {
 
     function getValueDecoration(): DebugElement | null {
         return pageObject.getByAutomationId('tui-primitive-textfield__value-decoration');
+    }
+
+    function getHtmlDecoration(): string {
+        return (
+            getValueDecoration()
+                ?.nativeElement.innerHTML.replace(/<(\w+)(.|[\r\n])*?>/gs, '<$1>')
+                .replace(/<!--.*?-->/gs, '') ?? ''
+        );
     }
 });

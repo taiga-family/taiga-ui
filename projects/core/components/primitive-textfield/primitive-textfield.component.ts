@@ -251,7 +251,7 @@ export class TuiPrimitiveTextfieldComponent
     get computedFiller(): string {
         return this.hasExampleText
             ? this.controller.exampleText
-            : this.filler.slice(this.value.length);
+            : this.filler?.toString().slice(this.value?.toString().length);
     }
 
     // Safari expiration date autofill workaround
