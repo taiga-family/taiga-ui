@@ -29,7 +29,9 @@ const STATIC_REQUEST_MOCK = {
 
 describe('Svg', () => {
     @Component({
-        template: ` <tui-svg [src]="icon"></tui-svg> `,
+        template: `
+            <tui-svg [src]="icon"></tui-svg>
+        `,
     })
     class TestComponent {
         icon = '';

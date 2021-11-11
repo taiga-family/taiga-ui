@@ -9,7 +9,9 @@ import {TuiNotificationsHostComponent} from '../notifications-host.component';
 
 describe('NotificationsHost', () => {
     @Component({
-        template: ` <tui-notifications-host></tui-notifications-host> `,
+        template: `
+            <tui-notifications-host></tui-notifications-host>
+        `,
     })
     class TestComponent {
         @ViewChild(TuiNotificationsHostComponent, {static: true})

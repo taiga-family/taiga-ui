@@ -42,8 +42,9 @@
             <span
                 *ngIf="propertyConnector.documentationPropertyDeprecated"
                 class="t-deprecated-label"
-                >deprecated</span
             >
+                deprecated
+            </span>
             <ng-container
                 *ngTemplateOutlet="propertyConnector.template"
             ></ng-container>
@@ -63,8 +64,9 @@
                             tuiMode="onDark"
                             target="_blank"
                             href="https://github.com/TinkoffCreditSystems/ng-polymorpheus"
-                            ><code>ng-polymorpheus</code></a
                         >
+                            <code>ng-polymorpheus</code>
+                        </a>
                     </ng-template>
                 </tui-tooltip>
             </span>

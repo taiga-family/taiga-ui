@@ -1,7 +1,8 @@
 <tui-doc-page header="Select" package="KIT" type="components">
     <ng-template pageTab>
         <div i18n class="tui-space_bottom-3">
-            <code>Select</code> is a field with dropdown to choose one item.
+            <code>Select</code>
+            is a field with dropdown to choose one item.
         </div>
 
         <tui-doc-example
@@ -97,7 +98,8 @@
         <div i18n>
             <p>
                 Set a value with copied object from items to check
-                <code>identityMatcher</code>:
+                <code>identityMatcher</code>
+                :
             </p>
 
             <button tuiButton type="button" size="m" (click)="setValue()">
@@ -112,7 +114,9 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Disabled state (use <code>formControl.disable()</code>)
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
             </ng-template>
             <ng-template
                 i18n
@@ -123,7 +127,9 @@
                 [(documentationPropertyValue)]="identityMatcher"
             >
                 Function that matches value and items, e.g. if objects are
-                copied. Uses <code>===</code> by default.
+                copied. Uses
+                <code>===</code>
+                by default.
 
                 <strong>Must be a pure function</strong>
             </ng-template>
@@ -146,8 +152,8 @@
             <li>
                 <p i18n>
                     Import an Angular module for forms and
-                    <code>TuiSelectModule</code> in the same module where you
-                    want to use our component:
+                    <code>TuiSelectModule</code>
+                    in the same module where you want to use our component:
                 </p>
 
                 <tui-doc-code
@@ -157,14 +163,18 @@
 
                 <p i18n>
                     See samples to learn more about working with
-                    <code>tui-data-list-wrapper</code> or without them
+                    <code>tui-data-list-wrapper</code>
+                    or without them
                 </p>
             </li>
 
             <li>
                 <p i18n>
-                    Declare a form (<code>FormGroup</code>) or a control
-                    (<code>FormControl</code>) in your component:
+                    Declare a form (
+                    <code>FormGroup</code>
+                    ) or a control (
+                    <code>FormControl</code>
+                    ) in your component:
                 </p>
 
                 <tui-doc-code

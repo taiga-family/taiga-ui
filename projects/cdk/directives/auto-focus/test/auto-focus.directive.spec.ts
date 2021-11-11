@@ -17,7 +17,9 @@ import {TuiAutoFocusModule} from '../autofocus.module';
 describe('TuiAutoFocus directive', () => {
     describe('works for focusable HTML element', () => {
         @Component({
-            template: ` <div tuiAutoFocus tabindex="0"></div> `,
+            template: `
+                <div tuiAutoFocus tabindex="0"></div>
+            `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TestComponentWithDiv {
@@ -52,7 +54,9 @@ describe('TuiAutoFocus directive', () => {
 
     describe('works for TUI_FOCUSABLE_ITEM_ACCESSOR', () => {
         @Component({
-            template: ` <p><input #input value="test" /></p> `,
+            template: `
+                <p><input #input value="test" /></p>
+            `,
             selector: 'focusable-component',
             changeDetection: ChangeDetectionStrategy.OnPush,
             providers: [
@@ -78,7 +82,9 @@ describe('TuiAutoFocus directive', () => {
         }
 
         @Component({
-            template: ` <focusable-component tuiAutoFocus></focusable-component> `,
+            template: `
+                <focusable-component tuiAutoFocus></focusable-component>
+            `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TestComponentWithTuiButton {
@@ -114,7 +120,9 @@ describe('TuiAutoFocus directive', () => {
 
     describe('works for iOS decoy method', () => {
         @Component({
-            template: ` <input tuiAutoFocus /> `,
+            template: `
+                <input tuiAutoFocus />
+            `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TestComponentIos {
@@ -155,7 +163,9 @@ describe('TuiAutoFocus directive', () => {
 
     describe('autoFocus flag is false', () => {
         @Component({
-            template: ` <div tuiAutoFocus [autoFocus]="autoFocus" tabindex="0"></div> `,
+            template: `
+                <div tuiAutoFocus [autoFocus]="autoFocus" tabindex="0"></div>
+            `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
         class TestComponentWithFocusFlag {

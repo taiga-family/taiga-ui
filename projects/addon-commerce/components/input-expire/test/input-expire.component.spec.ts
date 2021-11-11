@@ -8,7 +8,9 @@ import {TuiInputExpireModule} from '../input-expire.module';
 
 describe('InputExpire', () => {
     @Component({
-        template: ` <tui-input-expire [(ngModel)]="value"></tui-input-expire> `,
+        template: `
+            <tui-input-expire [(ngModel)]="value"></tui-input-expire>
+        `,
     })
     class TestComponent {
         @ViewChild(TuiInputExpireComponent)

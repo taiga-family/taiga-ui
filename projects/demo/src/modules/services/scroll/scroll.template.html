@@ -19,12 +19,14 @@
     <ng-template pageTab>
         <p i18n class="b-full-width">
             Method
-            <strong
-                ><code
-                    >scroll$: Observable&lt;[number, number]&gt;</code
-                ></strong
-            >
-            <em>(emits a tuple tuple <code>[scrollTop, scrollLeft]</code>)</em>
+            <strong>
+                <code>scroll$: Observable&lt;[number, number]&gt;</code>
+            </strong>
+            <em>
+                (emits a tuple tuple
+                <code>[scrollTop, scrollLeft]</code>
+                )
+            </em>
         </p>
         <tui-doc-documentation [showValues]="false">
             <ng-template
@@ -46,15 +48,16 @@
                 documentationPropertyName="scrollLeft"
                 documentationPropertyType="number"
             >
-                <strong>Optional</strong>. Target position from left
+                <strong>Optional</strong>
+                . Target position from left
             </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="duration"
                 documentationPropertyType="number"
             >
-                <strong>Optional</strong>. Duration time in ms (0 for an instant
-                scroll).
+                <strong>Optional</strong>
+                . Duration time in ms (0 for an instant scroll).
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -62,7 +65,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Inject <code>TuiScrollService</code> into your component:
+                    Inject
+                    <code>TuiScrollService</code>
+                    into your component:
                 </p>
 
                 <tui-doc-code
@@ -73,8 +78,11 @@
 
             <li>
                 <p i18n>
-                    Call <code>scroll$</code> method and subscribe to returened
-                    <code>Observable</code>:
+                    Call
+                    <code>scroll$</code>
+                    method and subscribe to returened
+                    <code>Observable</code>
+                    :
                 </p>
 
                 <tui-doc-code

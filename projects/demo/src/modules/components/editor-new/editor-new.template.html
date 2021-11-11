@@ -2,8 +2,8 @@
     <ng-template pageTab>
         <p i18n>
             Rich Text Editor based on
-            <a tuiLink href="https://www.tiptap.dev/">TipTap Editor</a> for
-            using with Angular forms. For safety reasons use a
+            <a tuiLink href="https://www.tiptap.dev/">TipTap Editor</a>
+            for using with Angular forms. For safety reasons use a
             <a tuiLink routerLink="/icon-set" fragment="sanitizer">sanitizer</a>
             with this component.
         </p>
@@ -39,13 +39,18 @@
                     >
                         original TipTap editor API
                     </a>
-                    via <code>TuiTiptapEditorService</code> from
-                    <code>@taiga-ui/addon-editor</code>).
+                    via
+                    <code>TuiTiptapEditorService</code>
+                    from
+                    <code>@taiga-ui/addon-editor</code>
+                    ).
                 </li>
                 <li class="tui-list__item">
                     Pass the component as content projection (with
-                    <code>ngProjectAs="tools"</code>) to
-                    <code>&lt;tui-editor&gt;</code>.
+                    <code>ngProjectAs="tools"</code>
+                    ) to
+                    <code>&lt;tui-editor&gt;</code>
+                    .
                 </li>
             </ul>
             <tui-editor-example-2></tui-editor-example-2>
@@ -75,7 +80,9 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Disabled state (use <code>formControl.disable()</code>)
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
             </ng-template>
             <ng-template
                 i18n
@@ -104,8 +111,8 @@
             <li>
                 <p i18n>
                     Import an Angular module for forms and
-                    <code>TuiEditorModule</code> in the same module where you
-                    want to use our component:
+                    <code>TuiEditorModule</code>
+                    in the same module where you want to use our component:
                 </p>
 
                 <tui-doc-code

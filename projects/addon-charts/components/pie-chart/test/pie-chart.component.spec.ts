@@ -7,7 +7,9 @@ import {TuiPieChartModule} from '../pie-chart.module';
 
 describe('PieChart', () => {
     @Component({
-        template: ` <tui-pie-chart [value]="value"></tui-pie-chart> `,
+        template: `
+            <tui-pie-chart [value]="value"></tui-pie-chart>
+        `,
     })
     class TestComponent {
         readonly value = [1, 2, 3];

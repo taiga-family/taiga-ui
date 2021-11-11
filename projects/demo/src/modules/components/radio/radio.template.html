@@ -3,12 +3,14 @@
         <p i18n>
             Radio button without a label. If you want to use it with a label,
             see
-            <a tuiLink routerLink="/components/radio-labeled"
-                ><code>RadioLabeled</code></a
-            >, and inside button — see
-            <a tuiLink routerLink="/components/radio-block"
-                ><code>RadioBlock</code></a
-            >.
+            <a tuiLink routerLink="/components/radio-labeled">
+                <code>RadioLabeled</code>
+            </a>
+            , and inside button — see
+            <a tuiLink routerLink="/components/radio-block">
+                <code>RadioBlock</code>
+            </a>
+            .
         </p>
 
         <tui-doc-example
@@ -87,7 +89,9 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Disabled state (use <code>formControl.disable()</code>)
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
             </ng-template>
             <ng-template
                 i18n
@@ -98,7 +102,9 @@
                 [(documentationPropertyValue)]="identityMatcher"
             >
                 Function that matches value and items, e.g. if objects are
-                copied. Uses <code>===</code> by default.
+                copied. Uses
+                <code>===</code>
+                by default.
 
                 <strong>Must be a pure function</strong>
             </ng-template>
@@ -128,8 +134,8 @@
         <ol class="b-demo-steps">
             <li>
                 Import an Angular module for forms and
-                <code>TuiRadioModule</code> in the same module where you want to
-                use our component:
+                <code>TuiRadioModule</code>
+                in the same module where you want to use our component:
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -139,8 +145,9 @@
 
             <li>
                 Optionally use the
-                <code>TUI_RADIO_OPTIONS </code> injection token to override the
-                default options for the component.
+                <code>TUI_RADIO_OPTIONS</code>
+                injection token to override the default options for the
+                component.
 
                 <tui-doc-code
                     filename="myComponent.module.ts"
@@ -150,8 +157,11 @@
 
             <li>
                 <p i18n>
-                    Declare a form (<code>FormGroup</code>) or a control
-                    (<code>FormControl</code>) in your component:
+                    Declare a form (
+                    <code>FormGroup</code>
+                    ) or a control (
+                    <code>FormControl</code>
+                    ) in your component:
                 </p>
 
                 <tui-doc-code

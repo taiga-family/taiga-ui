@@ -94,9 +94,8 @@ npm i @taiga-ui/addon-doc
     ];
     ```
 
-    > You must have title in route data in order for `TUI_DOC_SEE_ALSO` to work.
-    > It would also be automatically added to `TUI_DOC_TITLE` for browser tab title
-    > when navigating to that route.
+    > You must have title in route data in order for `TUI_DOC_SEE_ALSO` to work. It would also be automatically added to
+    > `TUI_DOC_TITLE` for browser tab title when navigating to that route.
 
 5. Create pages.
 

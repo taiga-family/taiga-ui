@@ -1,6 +1,7 @@
 <ng-container *ngIf="texts$ | async as texts">
     <span class="pages">
-        {{texts.pages}} <strong class="strong">{{pages}}</strong>
+        {{texts.pages}}
+        <strong class="strong">{{pages}}</strong>
     </span>
     <span>
         {{texts.linesPerPage}}
@@ -24,7 +25,8 @@
                 </tui-data-list>
             </ng-template>
         </tui-hosted-dropdown>
-        {{texts.of}} <strong class="strong">{{total}}</strong>
+        {{texts.of}}
+        <strong class="strong">{{total}}</strong>
     </span>
     <ng-container *ngIf="spinTexts$ | async as spinTexts">
         <button

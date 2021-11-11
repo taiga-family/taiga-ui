@@ -51,9 +51,9 @@
                     [src]="getFlagPath(item)"
                 />
                 <span class="country-item-name">{{countriesNames[item]}}</span>
-                <span class="country-item-code"
-                    >{{item | tuiMapper : isoToCountryCodeMapper}}</span
-                >
+                <span class="country-item-code">
+                    {{item | tuiMapper : isoToCountryCodeMapper}}
+                </span>
             </button>
         </tui-data-list>
     </ng-template>

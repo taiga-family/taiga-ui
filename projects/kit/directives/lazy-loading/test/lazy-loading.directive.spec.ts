@@ -6,7 +6,9 @@ import {fromEvent} from 'rxjs';
 
 describe('TuiLazyLoading directive', () => {
     @Component({
-        template: `<img id="image" loading="lazy" src="https://picsum.photos/1/1" />`,
+        template: `
+            <img id="image" loading="lazy" src="https://picsum.photos/1/1" />
+        `,
     })
     class TestComponent {}
 

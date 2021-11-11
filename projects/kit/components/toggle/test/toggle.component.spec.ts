@@ -13,8 +13,7 @@ describe('Toggle', () => {
                 [formControl]="control"
                 [showIcons]="showIcons"
                 [showLoader]="showLoader"
-            >
-            </tui-toggle>
+            ></tui-toggle>
         `,
     })
     class TestComponent {
@@ -212,7 +211,7 @@ describe('Toggle', () => {
 describe('Toggle with TUI_TOGGLE_OPTIONS', () => {
     @Component({
         template: `
-            <tui-toggle [formControl]="control" [showLoader]="showLoader"> </tui-toggle>
+            <tui-toggle [formControl]="control" [showLoader]="showLoader"></tui-toggle>
         `,
     })
     class TestComponent {

@@ -31,8 +31,10 @@ describe('InputNumber', () => {
                 >
                     Enter the amount
                 </tui-input-number>
-                <tui-input-number *ngIf="defaultValues" formControlName="control">
-                </tui-input-number>
+                <tui-input-number
+                    *ngIf="defaultValues"
+                    formControlName="control"
+                ></tui-input-number>
             </ng-container>
         `,
     })

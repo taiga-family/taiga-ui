@@ -1,8 +1,12 @@
 <tui-doc-page header="InputCard" package="ADDON-COMMERCE" type="components">
     <ng-template pageTab>
         <p i18n>
-            <code>InputCard</code> can be used with <code>InputExpire</code> and
-            <code>InputCVC</code> to input a card
+            <code>InputCard</code>
+            can be used with
+            <code>InputExpire</code>
+            and
+            <code>InputCVC</code>
+            to input a card
         </p>
 
         <tui-doc-example id="group" heading="tui-group" [content]="example1">
@@ -78,8 +82,9 @@
         </tui-doc-demo>
         <div class="b-full-width tui-space_bottom-6">
             <p i18n>
-                Add <code>tuiCreateLuhnValidator(customMessage?)</code> to
-                control validators to validate it with Luhn algorithm
+                Add
+                <code>tuiCreateLuhnValidator(customMessage?)</code>
+                to control validators to validate it with Luhn algorithm
             </p>
         </div>
         <tui-accordion class="b-full-width" [closeOthers]="false">
@@ -94,7 +99,8 @@
                             [(documentationPropertyValue)]="disabledCard"
                         >
                             Disabled state (use
-                            <code>formControl.disable()</code>)
+                            <code>formControl.disable()</code>
+                            )
                         </ng-template>
                         <ng-template
                             i18n
@@ -139,7 +145,8 @@
                             [(documentationPropertyValue)]="disabledExpire"
                         >
                             Disabled state (use
-                            <code>formControl.disable()</code>)
+                            <code>formControl.disable()</code>
+                            )
                         </ng-template>
                         <ng-template
                             i18n
@@ -166,7 +173,8 @@
                             [(documentationPropertyValue)]="disabledCVC"
                         >
                             Disabled state (use
-                            <code>formControl.disable()</code>)
+                            <code>formControl.disable()</code>
+                            )
                         </ng-template>
                         <ng-template
                             i18n
@@ -198,9 +206,12 @@
         <ol class="b-demo-steps">
             <li i18n>
                 Import
-                <code>TuiInputCardModule</code>, <code>TuiInputCVCModule</code>,
-                <code>TuiInputExpireModule</code> modules into the module where
-                you want to use them:
+                <code>TuiInputCardModule</code>
+                ,
+                <code>TuiInputCVCModule</code>
+                ,
+                <code>TuiInputExpireModule</code>
+                modules into the module where you want to use them:
 
                 <tui-doc-code
                     filename="myComponent.module.ts"

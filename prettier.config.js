@@ -1,5 +1,6 @@
 module.exports = {
     ...require('@tinkoff/linters/prettier/prettier.config'),
+    htmlWhitespaceSensitivity: 'ignore',
     overrides: [
         {
             files: '*.html',
