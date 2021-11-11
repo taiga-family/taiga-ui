@@ -13,6 +13,15 @@ module.exports = function (config, path = '') {
         client: {
             clearContext: false,
         },
+        logLevel: config.LOG_DISABLE,
+        /**
+         * @note: override logger behavior
+         */
+        browserConsoleLogOptions: {
+            level: 'error',
+            format: '%b %T: %m',
+            terminal: true,
+        },
         coverageIstanbulReporter: {
             dir: require('path').join(__dirname, './coverage', path),
             reports: ['html', 'lcovonly'],
@@ -21,7 +30,6 @@ module.exports = function (config, path = '') {
         reporters: ['progress', 'kjhtml'],
         port: 9876,
         colors: true,
-        logLevel: config.LOG_INFO,
         autoWatch: true,
         browsers: ['ChromeHeadless'],
         singleRun: true,
