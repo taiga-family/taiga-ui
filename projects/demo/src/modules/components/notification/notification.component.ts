@@ -42,8 +42,4 @@ export class ExampleTuiNotificationComponent {
     ];
 
     status = this.statusVariants[0];
-
-    onClose() {
-        console.log('close', null);
-    }
 }
