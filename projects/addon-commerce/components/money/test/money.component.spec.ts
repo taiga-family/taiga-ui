@@ -68,7 +68,7 @@ describe('Money', () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency!.nativeElement.textContent).toEqual('');
+            expect(currency!.nativeElement.textContent.trim()).toEqual('');
         });
 
         it('if empty string is passed, currency symbol is not shown', () => {
@@ -79,7 +79,7 @@ describe('Money', () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency!.nativeElement.textContent).toEqual('');
+            expect(currency!.nativeElement.textContent.trim()).toEqual('');
         });
 
         it('words with currency code', () => {
@@ -90,7 +90,7 @@ describe('Money', () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency!.nativeElement.textContent).toEqual('$');
+            expect(currency!.nativeElement.textContent.trim()).toEqual('$');
         });
 
         it('works with currency name', () => {
@@ -101,7 +101,7 @@ describe('Money', () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency!.nativeElement.textContent).toEqual('$');
+            expect(currency!.nativeElement.textContent.trim()).toEqual('$');
         });
 
         it('works with custom currency', () => {
@@ -114,7 +114,7 @@ describe('Money', () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency!.nativeElement.textContent).toEqual(customCurrency);
+            expect(currency!.nativeElement.textContent.trim()).toEqual(customCurrency);
         });
     });
 
