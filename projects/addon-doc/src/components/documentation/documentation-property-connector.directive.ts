@@ -10,7 +10,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {ActivatedRoute, Params, UrlSerializer} from '@angular/router';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 const SERIALIZED_SUFFIX = '$';
 
@@ -19,6 +19,7 @@ export type DocumentationPropertyType = 'input' | 'output' | 'input-output' | nu
 // @bad TODO: refactor output and value sync
 @Directive({
     selector: 'ng-template[documentationPropertyName]',
+    exportAs: 'documentationProperty',
 })
 export class TuiDocDocumentationPropertyConnectorDirective<T>
     implements OnInit, OnChanges
@@ -45,6 +46,8 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     readonly documentationPropertyValueChange = new EventEmitter<T>();
 
     readonly changed$ = new Subject<void>();
+
+    readonly emits$ = new BehaviorSubject(1);
 
     constructor(
         @Inject(TemplateRef) readonly template: TemplateRef<{}>,
@@ -133,5 +136,13 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         };
 
         this.locationRef.go(String(tree));
+    }
+
+    emitEvent(event: unknown): void {
+        // For more convenient debugging
+        // tslint:disable-next-line:no-console
+        console.log(this.attrName, event);
+
+        this.emits$.next(this.emits$.value + 1);
     }
 }

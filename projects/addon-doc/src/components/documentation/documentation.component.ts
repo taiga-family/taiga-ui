@@ -1,3 +1,4 @@
+import {animate, style, transition, trigger} from '@angular/animations';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -24,6 +25,11 @@ import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-pro
     templateUrl: './documentation.template.html',
     styleUrls: ['./documentation.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [
+        trigger('emitEvent', [
+            transition(':increment', [style({opacity: 1}), animate('500ms ease-in')]),
+        ]),
+    ],
 })
 export class TuiDocDocumentationComponent implements AfterContentInit {
     @Input()
