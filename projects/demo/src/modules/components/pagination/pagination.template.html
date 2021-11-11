@@ -49,6 +49,8 @@
                 [length]="length"
                 [size]="size"
                 [(index)]="index"
+                [activePadding]="activePadding"
+                [sidePadding]="sidePadding"
             ></tui-pagination>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -88,6 +90,24 @@
                 [(documentationPropertyValue)]="size"
             >
                 Size
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="activePadding"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="activePadding"
+            >
+                Amount of visible pages around active page
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="sidePadding"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="sidePadding"
+            >
+                Amount of visible pages at the edges
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

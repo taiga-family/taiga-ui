@@ -58,4 +58,6 @@ export class ExampleTuiPaginationComponent {
     length = 8;
     readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
     size: TuiSizeS = this.sizeVariants[1];
+    activePadding = 1;
+    sidePadding = 1;
 }
