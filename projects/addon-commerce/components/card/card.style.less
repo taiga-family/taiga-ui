@@ -1,18 +1,12 @@
 @import 'taiga-ui-local';
 
-@payment-system-logo-height: 0.625rem;
-@brand-logo-size: 0.875rem;
-@number-height-s: 0.625rem;
-@number-height-m: 0.875rem;
-@space: 0.125rem;
-
 :host {
     position: relative;
     display: block;
     color: var(--tui-base-01);
     transform-style: preserve-3d;
     cursor: default;
-    border-radius: 0.25rem;
+    border-radius: var(--tui-radius-xs);
     background-size: 100%;
 
     &[data-tui-host-size='s'] {
@@ -33,97 +27,54 @@
 .t-front {
     .fullsize();
     backface-visibility: hidden;
-    background: inherit;
-    border-radius: var(--tui-radius-m);
-}
-
-.t-box {
-    position: absolute;
-    background-color: inherit;
-    opacity: 0.8;
-    border-radius: 0.125rem;
-
-    &_brand {
-        top: @space * 1.5;
-        left: @space;
-        width: @brand-logo-size;
-        height: @brand-logo-size;
-    }
-
-    &_number {
-        right: @space;
-
-        :host[data-tui-host-size='s'] & {
-            top: @space;
-            height: @number-height-s;
-            width: 1.4375rem;
-        }
-
-        :host[data-tui-host-size='m'] & {
-            top: @space * 1.5;
-            height: @number-height-m;
-            width: 1.75rem;
-        }
-    }
-
-    &_system {
-        bottom: @space;
-        right: @space;
-        height: @payment-system-logo-height;
-    }
 }
 
 .t-brand-logo {
     position: absolute;
-    top: @space * 1.5;
-    left: @space;
-    height: @brand-logo-size;
-    width: @brand-logo-size;
+    top: 0.1875rem;
+    left: 0.125rem;
+    height: 0.875rem;
+    width: 0.875rem;
 }
 
 .t-number {
     position: absolute;
-    right: @space * 2;
+    right: 0.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
 
     :host[data-tui-host-size='s'] & {
-        top: @space;
-        height: @number-height-s;
+        top: 0.125rem;
+        height: 0.625rem;
         width: 1.1875rem;
         font-size: 0.5rem;
     }
 
     :host[data-tui-host-size='m'] & {
-        top: @space * 1.5;
-        height: @number-height-m;
+        top: 0.1875rem;
+        height: 0.875rem;
         width: 1.5rem;
         font-size: 0.625rem;
     }
 }
 
-.t-secret-payment-system-logo {
-    height: @payment-system-logo-height;
-    padding: 0 @space;
-    visibility: hidden;
-}
-
 .t-payment-system-logo {
     position: absolute;
-    right: -0.25rem;
+    right: 0.25rem;
     bottom: -0.5rem;
     width: 2rem;
     height: 2rem;
     transform: scale(0.5);
+    transform-origin: right;
 }
 
 .t-back {
     .fullsize();
     backface-visibility: hidden;
-    transform: rotateY(180deg) translate3d(0, 0, 0.00625rem);
-    border-radius: 0.1875rem;
+    transform: rotateY(180deg) translate3d(0, 0, 1px);
     background-color: var(--tui-base-05);
+    border-radius: var(--tui-radius-xs);
 
     &:after {
         content: '';
