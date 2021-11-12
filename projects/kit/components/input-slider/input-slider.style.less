@@ -65,13 +65,13 @@
 .placeholder {
     .textfield-placeholder();
     .fullsize();
-    left: @padding;
-    transform: translateY(-0.625rem) scale(0.87);
+    padding: 0 var(--tui-padding-l);
     line-height: var(--tui-height-l);
-    max-width: ~'calc(114% - @{padding2})';
+    box-sizing: border-box;
+    pointer-events: none;
 
     :host._has-tooltip & {
-        max-width: ~'calc(114% - 3.75rem)';
+        max-width: calc(100% - 1.75rem);
     }
 }
 
@@ -80,7 +80,6 @@
 }
 
 .label {
-    line-height: 0.9375rem;
     overflow: hidden;
     text-overflow: ellipsis;
 
