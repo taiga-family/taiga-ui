@@ -3,8 +3,8 @@ import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
-export function cardNumberAssertion(cardNumber: string): boolean {
-    return cardNumber === '' || cardNumber.length === 4;
+export function cardNumberAssertion({length}: string): boolean {
+    return !length || length === 4;
 }
 
 export const cardNumberAssertionMessage = 'cardNumber should contain 4 symbols';
