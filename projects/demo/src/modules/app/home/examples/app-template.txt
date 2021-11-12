@@ -4,8 +4,11 @@
     <!--
      If you need, you can add something between Taiga portal layers:
     -->
+    <ng-container ngProjectAs="tuiOverContent">
+        <!-- Content over app content -->
+    </ng-container>
     <ng-container ngProjectAs="tuiOverDialogs">
-        <!-- Content over dialogs-->
+        <!-- Content over dialogs -->
     </ng-container>
     <ng-container ngProjectAs="tuiOverNotifications">
         <!-- Content over notifications -->
