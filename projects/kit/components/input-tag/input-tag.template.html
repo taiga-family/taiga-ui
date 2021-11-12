@@ -29,15 +29,6 @@
                     >
                         <ng-content></ng-content>
                     </div>
-                    <div
-                        *ngIf="hasExampleText"
-                        automation-id="tui-input-tag__example-text"
-                        class="value-decoration"
-                    >
-                        <span class="example-text-inner">
-                            {{controller.exampleText}}
-                        </span>
-                    </div>
                 </div>
                 <tui-scrollbar
                     *ngIf="!expandable; else items"
@@ -89,6 +80,7 @@
                                 type="text"
                                 automation-id="tui-input-tag__native"
                                 class="native"
+                                [placeholder]="controller.exampleText"
                                 [class.native_hidden]="inputHidden"
                                 [attr.maxLength]="controller.maxLength"
                                 [id]="id"

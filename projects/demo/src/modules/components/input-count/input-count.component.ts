@@ -67,5 +67,7 @@ export class ExampleTuiInputCountComponent extends AbstractExampleTuiControl {
 
     control = new FormControl();
 
+    prefix = '';
+
     postfix = '';
 }

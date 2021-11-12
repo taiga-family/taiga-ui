@@ -17,7 +17,7 @@
     box-sizing: border-box;
 
     &:not([data-mode='overflow']):before,
-    .arrow {
+    .t-arrow {
         content: '';
         position: absolute;
         width: @arrowSize;
@@ -28,11 +28,11 @@
         transform: rotate(45deg);
     }
 
-    &[data-tui-host-direction='top'] .arrow {
+    &[data-tui-host-direction='top'] .t-arrow {
         bottom: (-@arrowSize / 2);
     }
 
-    &[data-tui-host-direction='bottom'] .arrow {
+    &[data-tui-host-direction='bottom'] .t-arrow {
         top: (-@arrowSize / 2);
     }
 
@@ -122,7 +122,7 @@
     }
 }
 
-.tooltip {
+.t-tooltip {
     font: var(--tui-font-text-s);
     word-wrap: break-word;
 

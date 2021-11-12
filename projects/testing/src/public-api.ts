@@ -3,7 +3,6 @@
  */
 
 export * from './utils/input/cleaner.unit-common';
-export * from './utils/input/example-text.unit-common';
 export * from './utils/input/filler.unit-common';
 export * from './utils/input/form-control-state.unit-common';
 export * from './utils/input/placeholder.unit-common';

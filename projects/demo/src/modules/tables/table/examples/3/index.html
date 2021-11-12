@@ -60,6 +60,7 @@
                 <ng-container *tuiCell="'price'">
                     <th *ngIf="item.price <= 1000" class="second" tuiTd>
                         <tui-input-number
+                            class="number"
                             [tuiValidator]="minPrice"
                             [ngModel]="item.price"
                             [ngModelOptions]="options"

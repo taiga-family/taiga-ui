@@ -28,15 +28,9 @@
             automation-id="tui-text-area__placeholder"
             class="placeholder"
             [class.placeholder_raised]="placeholderRaised"
+            [tuiBorderEnd]="border"
         >
             <ng-content></ng-content>
-        </div>
-        <div
-            *ngIf="hasExampleText"
-            automation-id="tui-text-area__example-text"
-            class="example-text"
-        >
-            <span class="example-text-inner"> {{controller.exampleText}} </span>
         </div>
         <tui-scrollbar
             automation-id="tui-text-area__scrollbar"
@@ -45,8 +39,12 @@
         >
             <div class="input-wrapper">
                 <div class="relative">
-                    <div class="pseudo-content" aria-hidden="true">
-                        <span>{{fittedContent}}</span>
+                    <div
+                        class="pseudo-content"
+                        aria-hidden="true"
+                        [tuiBorderEnd]="border"
+                    >
+                        <span>{{fittedContent || controller.exampleText}}</span>
                         <span class="pseudo-content__extra"
                             >{{extraContent}}</span
                         >
@@ -56,8 +54,11 @@
                         #focusableElement
                         automation-id="tui-text-area__native"
                         class="input"
+                        [placeholder]="controller.exampleText"
                         [id]="id"
+                        [tuiDescribedBy]="id"
                         [tuiFocusable]="focusable"
+                        [tuiBorderEnd]="border"
                         [disabled]="disabled"
                         [ngModel]="value"
                         [readOnly]="readOnly"
@@ -68,15 +69,23 @@
             </div>
         </tui-scrollbar>
     </div>
-    <tui-tooltip
-        *ngIf="hasTooltip"
-        automation-id="tui-text-area__tooltip"
-        class="tooltip"
-        describeId="placeholer_until_accesibility_is_added"
-        [direction]="hintController.direction"
-        [mode]="hintController.mode"
-        [content]="hintController.content"
-        [showDelay]="hintController.showDelay"
-        [hideDelay]="hintController.hideDelay"
-    ></tui-tooltip>
+    <div class="icons">
+        <tui-svg
+            *ngIf="hasCleaner"
+            class="cleaner"
+            src="tuiIconCloseLarge"
+            (click.stop)="onValue('')"
+        ></tui-svg>
+        <tui-tooltip
+            *ngIf="hasTooltip"
+            automation-id="tui-text-area__tooltip"
+            class="tooltip"
+            [describeId]="id"
+            [direction]="hintController.direction"
+            [mode]="hintController.mode"
+            [content]="hintController.content"
+            [showDelay]="hintController.showDelay"
+            [hideDelay]="hintController.hideDelay"
+        ></tui-tooltip>
+    </div>
 </label>

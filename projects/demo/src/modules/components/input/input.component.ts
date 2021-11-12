@@ -27,6 +27,10 @@ import {default as example8Html} from '!!raw-loader!./examples/8/index.html';
 import {default as example8Less} from '!!raw-loader!./examples/8/index.less';
 import {default as example8Ts} from '!!raw-loader!./examples/8/index.ts';
 
+import {default as example9Html} from '!!raw-loader!./examples/9/index.html';
+import {default as example9Less} from '!!raw-loader!./examples/9/index.less';
+import {default as example9Ts} from '!!raw-loader!./examples/9/index.ts';
+
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -99,6 +103,12 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
         TypeScript: example8Ts,
         HTML: example8Html,
         LESS: example8Less,
+    };
+
+    readonly example9: FrontEndExample = {
+        TypeScript: example9Ts,
+        HTML: example9Html,
+        LESS: example9Less,
     };
 
     readonly iconVariants = ['tuiIconSearch', 'tuiIconCalendar'];

@@ -123,6 +123,19 @@
     border: 0;
     padding: 0 1rem;
 
+    &:not(.t-input_prefilled)::placeholder {
+        color: var(--tui-text-03);
+        visibility: hidden;
+    }
+
+    :host[data-mode='onDark'] &::placeholder {
+        color: var(--tui-text-03-night);
+    }
+
+    :host._focused &:not(:read-only)::placeholder {
+        visibility: visible;
+    }
+
     &_card {
         transition: color 0s var(--tui-duration);
 
@@ -174,10 +187,4 @@
     .textfield-placeholder();
     margin: 1.125rem 1rem;
     line-height: 1.25rem;
-}
-
-.t-example-text {
-    .example-text();
-    position: absolute;
-    margin: 1.125rem 1rem;
 }

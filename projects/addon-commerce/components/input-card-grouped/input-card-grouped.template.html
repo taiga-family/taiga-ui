@@ -15,9 +15,6 @@
     (mousedown)="onMouseDown($event)"
 >
     <div class="t-wrapper">
-        <span *ngIf="hasCardExampleText" class="t-example-text">
-            {{exampleText}}
-        </span>
         <label tuiPreventDefault="click">
             <input
                 #inputCard
@@ -29,7 +26,7 @@
                 [class.t-input_hidden]="isCardCollapsed"
                 [attr.id]="idCard"
                 [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper : cardValidator)"
-                [attr.aria-placeholder]="exampleText"
+                [placeholder]="cardPrefilled ? '' : exampleText"
                 [autocomplete]="autocompleteCard"
                 [disabled]="computedDisabled"
                 [readOnly]="readOnly"
@@ -67,11 +64,11 @@
         class="t-wrapper t-wrapper_expire"
         [class.t-wrapper_active]="isCardCollapsed"
     >
-        <span *ngIf="hasExpireExampleText" class="t-example-text"> 00/00 </span>
         <label tuiPreventDefault="click">
             <input
                 #inputExpire
                 type="text"
+                placeholder="00/00"
                 class="t-input"
                 automation-id="tui-input-card-grouped__expire"
                 tuiInputMode="numeric"
@@ -99,17 +96,15 @@
         class="t-wrapper t-wrapper_cvc"
         [class.t-wrapper_active]="isCardCollapsed"
     >
-        <span *ngIf="hasCVCExampleText" class="t-example-text">
-            {{exampleTextCVC}}
-        </span>
         <label tuiPreventDefault="click">
             <input
                 #inputCVC
                 type="text"
-                class="t-input"
                 automation-id="tui-input-card-grouped__cvc"
                 tuiInputMode="numeric"
-                [placeholder]="cvcPrefilled ? '•••' : ''"
+                class="t-input"
+                [class.t-input_prefilled]="cvcPrefilled"
+                [placeholder]="cvcPrefilled ? '•••' : exampleTextCVC"
                 [attr.id]="idCVC"
                 [disabled]="computedDisabled"
                 [readOnly]="readOnly || cvcPrefilled"

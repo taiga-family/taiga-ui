@@ -36,7 +36,7 @@
     background-color: var(--tui-base-01);
     overflow: hidden;
 
-    &.wrapper_transparent {
+    &.t-wrapper_transparent {
         background-image: linear-gradient(45deg, var(--tui-base-02) 25%, transparent 25%),
             linear-gradient(-45deg, var(--tui-base-02) 25%, transparent 25%),
             linear-gradient(45deg, transparent 75%, var(--tui-base-02) 75%),
@@ -45,23 +45,23 @@
         background-position: 0 0, 0 0.625rem, 0.625rem -0.625rem, -0.625rem 0;
     }
 
-    &.wrapper_dark {
+    &.t-wrapper_dark {
         background-color: @color-dark;
         color: var(--tui-base-01);
     }
 
-    &.wrapper_gray {
+    &.t-wrapper_gray {
         background-color: @color-gray;
     }
 
-    &.wrapper_dark.wrapper_transparent {
+    &.t-wrapper_dark.t-wrapper_transparent {
         background-image: linear-gradient(45deg, var(--tui-focus) 25%, transparent 25%),
             linear-gradient(-45deg, var(--tui-focus) 25%, transparent 25%),
             linear-gradient(45deg, transparent 75%, var(--tui-focus) 75%),
             linear-gradient(-45deg, transparent 75%, var(--tui-focus) 75%);
     }
 
-    &.wrapper_gray.wrapper_transparent {
+    &.t-wrapper_gray.t-wrapper_transparent {
         background-image: linear-gradient(45deg, var(--tui-base-05) 25%, transparent 25%),
             linear-gradient(-45deg, var(--tui-base-05) 25%, transparent 25%),
             linear-gradient(45deg, transparent 75%, var(--tui-base-05) 75%),

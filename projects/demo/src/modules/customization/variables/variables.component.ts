@@ -27,6 +27,9 @@ export class VariablesComponent {
         '--tui-height-s': 'small elements height (i.e. small inputs)',
         '--tui-height-m': 'default elements height (i.e. inputs, buttons)',
         '--tui-height-l': 'large elements height (i.e. inputs, buttons)',
+        '--tui-padding-s': 'padding for inputs with size "s"',
+        '--tui-padding-m': 'padding for inputs with size "m"',
+        '--tui-padding-l': 'padding for inputs with size "l"',
         '--tui-disabled-opacity': 'amount of transparency for disabled elements',
         '--tui-autofill': 'color for native browser autofill',
     };

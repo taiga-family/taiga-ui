@@ -14,6 +14,10 @@ import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 
+import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
+import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
+import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
+
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -60,6 +64,12 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
         TypeScript: example4Ts,
         HTML: example4Html,
         LESS: example4Less,
+    };
+
+    readonly example5: FrontEndExample = {
+        TypeScript: example5Ts,
+        HTML: example5Html,
+        LESS: example5Less,
     };
 
     readonly exampleImportModule = exampleImportModule;

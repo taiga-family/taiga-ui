@@ -37,6 +37,15 @@
         >
             <tui-text-area-example-4></tui-text-area-example-4>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="rtl"
+            i18n-heading
+            heading="Direction: RTL"
+            [content]="example5"
+        >
+            <tui-text-area-example-5></tui-text-area-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -45,6 +54,7 @@
                 class="b-form"
                 [formControl]="control"
                 [focusable]="focusable"
+                [tuiTextfieldCleaner]="cleaner"
                 [tuiTextfieldExampleText]="exampleText"
                 [tuiTextfieldLabelOutside]="labelOutside"
                 [tuiTextfieldMaxLength]="maxLength"

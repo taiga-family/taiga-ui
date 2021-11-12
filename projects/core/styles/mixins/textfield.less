@@ -3,6 +3,7 @@
     position: relative;
     display: block;
     border-radius: var(--tui-radius-m);
+    text-align: left;
 
     &[data-tui-host-size='s'] {
         height: var(--tui-height-s);
@@ -28,17 +29,26 @@
     display: flex;
     height: 100%;
     width: 100%;
-    padding: 0 0.75rem;
+    padding: 0 var(--tui-padding-m);
     box-sizing: border-box;
     align-items: center;
     overflow: hidden;
 
     :host[data-tui-host-size='s'] & {
-        padding-right: 0.5rem;
+        padding: 0 var(--tui-padding-s);
     }
 
     :host[data-tui-host-size='l'] & {
-        padding-left: 1rem;
+        padding: 0 var(--tui-padding-l);
+    }
+
+    &:after {
+        content: '';
+        margin-right: -0.25rem;
+    }
+
+    :host[data-tui-host-size='m'] &:after {
+        display: none;
     }
 }
 
@@ -46,9 +56,9 @@
     .text-basic();
     .clearinput();
     .fullsize();
-    padding: 0;
-    border: solid transparent;
-    border-width: 0 0.75rem;
+    padding: 0 var(--tui-padding-m);
+    border: 0 solid transparent;
+    text-align: inherit;
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
@@ -59,11 +69,11 @@
     }
 
     :host[data-tui-host-size='s'] & {
-        border-width: 0 5rem 0 0.75rem;
+        padding: 0 var(--tui-padding-s);
     }
 
     :host[data-tui-host-size='l'] & {
-        border-width: 0 1rem;
+        padding: 0 var(--tui-padding-l);
     }
 
     :host._disabled & {
@@ -80,8 +90,8 @@
 
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .content .placeholder {
-            width: 114%; // compensation of scale(0.87)
-            transform: translateY(-0.625rem) scale(0.87);
+            font-size: 0.8156rem;
+            transform: translateY(-0.625rem);
         }
     }
 
@@ -90,8 +100,8 @@
 
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .content .placeholder {
-            width: 118%; // compensation of scale(0.85)
-            transform: translateY(-0.5rem) scale(0.85);
+            font-size: 0.69rem;
+            transform: translateY(-0.5rem);
         }
     }
 }
@@ -99,32 +109,27 @@
 .textfield-wrapper() {
     flex: 1;
     min-width: 0;
-    padding-right: @space;
+    padding-right: 0.25rem;
+    padding-inline-end: 0.25rem;
+    padding-inline-start: 0;
 }
 
 .textfield-placeholder() {
-    .transition(~'transform, min-width, color, letter-spacing');
+    .transition(~'transform, font-size, color, letter-spacing');
     .text-basic();
     .text-overflow();
     display: block;
     width: 100%;
-    height: 1.25rem;
     font-size: 0.8125rem;
-    box-sizing: border-box;
     user-select: none;
-    pointer-events: none;
     color: var(--tui-text-02);
-    transform-origin: left;
-    letter-spacing: normal;
-    text-transform: none;
 
     &_raised {
-        width: 114%; // compensation of scale(0.87)
-        transform: translateY(-0.625rem) scale(0.87);
+        transform: translateY(-0.625rem);
 
         :host[data-tui-host-size='m'] & {
-            width: 118%;
-            transform: translateY(-0.5rem) scale(0.85);
+            font-size: 0.69rem;
+            transform: translateY(-0.5rem);
             letter-spacing: 0.025rem;
         }
 
@@ -147,6 +152,10 @@
 
     :host[data-tui-host-size='l'] & {
         font-size: 0.9375rem;
+
+        &_raised {
+            font-size: 0.8156rem;
+        }
     }
 
     :host[data-tui-host-size='m']._focused:not(._label-outside) &,
@@ -212,31 +221,6 @@
     }
 }
 
-.example-text() {
-    display: flex;
-    align-items: center;
-    height: 1.25rem;
-    margin: -1.25rem 0;
-    padding: 0.625rem 0;
-    box-sizing: content-box;
-    color: var(--tui-text-03);
-    letter-spacing: normal;
-    text-transform: none;
-
-    :host._right-aligned & {
-        flex-direction: row-reverse;
-        margin-right: -@space;
-    }
-
-    :host[data-tui-host-size='m']._label-outside & {
-        margin-top: -1.1875rem;
-    }
-
-    :host[data-mode='onDark'] & {
-        color: var(--tui-text-03-night);
-    }
-}
-
 .textfield() {
     :host {
         .textfield-host();
@@ -244,12 +228,6 @@
 
     .input {
         .textfield-input();
-    }
-
-    .ghost {
-        visibility: hidden;
-        white-space: pre;
-        text-overflow: clip;
     }
 
     .filler {
@@ -262,28 +240,6 @@
 
     .wrapper {
         .textfield-wrapper();
-    }
-
-    .value-decoration {
-        .example-text();
-    }
-
-    .value-decoration-inner {
-        .text-overflow();
-        min-width: 0;
-    }
-
-    .postfix {
-        .transition(~'color');
-        color: var(--tui-text-01);
-
-        &_shifted {
-            margin-left: 0.5ch;
-        }
-
-        :host[data-mode='onDark'] & {
-            color: var(--tui-text-01-night);
-        }
     }
 
     .placeholder {
@@ -300,9 +256,12 @@
 
         &_left {
             margin: 0 2 * @space 0 -@space;
+            margin-inline-start: -@space;
+            margin-inline-end: 2 * @space;
 
             :host[data-tui-host-size='s'] & {
                 margin-right: @space;
+                margin-inline-end: @space;
             }
         }
     }

@@ -206,18 +206,6 @@ export class TuiInputCardGroupedComponent
         return this.value?.cvc ?? '';
     }
 
-    get hasCardExampleText(): boolean {
-        return !this.readOnly && this.focused && !this.card;
-    }
-
-    get hasExpireExampleText(): boolean {
-        return !this.readOnly && this.focused && !this.expire;
-    }
-
-    get hasCVCExampleText(): boolean {
-        return !this.readOnly && this.focused && !this.cvc;
-    }
-
     get hasCleaner(): boolean {
         return !!this.value && !this.readOnly && !this.computedDisabled;
     }

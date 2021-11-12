@@ -1,15 +1,13 @@
 <tui-doc-page header="InputNumber" package="KIT" type="components">
     <ng-template pageTab>
         <div i18n class="tui-space_bottom-3">
-            InputNumber&nbsp;&mdash; is a component to input numbers. Inputed
-            value is formatted: thousands are separated with space. A control
-            value of the component is a number.
+            A component to input numbers. Control value is also of number type.
         </div>
 
         <p i18n>
-            Component can be used to input money or sum of something if you
-            choose a currency symbol as a postfix (see
-            <code>tuiCurrency</code> pipe samples).
+            Component can be used to input money if you choose a currency symbol
+            as a postfix or prefix (see
+            <code>Currency</code> pipe samples).
         </p>
 
         <p i18n>
@@ -17,7 +15,7 @@
             <a tuiLink routerLink="/components/input-count"
                 ><code>InputCount</code></a
             >
-            for integers under 999,
+            for integers,
             <a tuiLink routerLink="/components/slider"><code>Slider</code></a>
             and
             <a tuiLink routerLink="/components/input-slider"
@@ -27,8 +25,8 @@
         </p>
 
         <p i18n>
-            Number formatting can be customized by using
-            <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a>
+            Number formatting can be customized with
+            <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a> token.
         </p>
 
         <tui-doc-example
@@ -59,9 +57,10 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="precision"
+            id="align"
             i18n-heading
-            heading="Custom number format"
+            heading="Align to the right"
+            description="With currency symbol as prefix and custom format"
             [content]="example4"
         >
             <tui-input-number-example-4></tui-input-number-example-4>
@@ -87,6 +86,7 @@
                     [precision]="precision"
                     [readOnly]="readOnly"
                     [decimal]="decimal"
+                    [prefix]="prefix"
                     [postfix]="postfix"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
@@ -124,6 +124,16 @@
                 [(documentationPropertyValue)]="max"
             >
                 Max value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="prefix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="postfixVariants"
+                [(documentationPropertyValue)]="prefix"
+            >
+                A prefix symbol, like currency
             </ng-template>
             <ng-template
                 i18n
