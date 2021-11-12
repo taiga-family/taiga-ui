@@ -1,6 +1,5 @@
 import {Directive, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
-import {fallbackValue} from '@taiga-ui/cdk/utils/miscellaneous';
 
 const TUI = 'tui_interactive_';
 
@@ -72,12 +71,12 @@ export abstract class AbstractTuiInteractive {
 
     @HostBinding('class._hovered')
     get computedHovered(): boolean {
-        return !this.computedDisabled && fallbackValue(this.pseudoHovered, this.hovered);
+        return !this.computedDisabled && (this.pseudoHovered ?? this.hovered);
     }
 
     @HostBinding('class._pressed')
     get computedPressed(): boolean {
-        return !this.computedDisabled && fallbackValue(this.pseudoPressed, this.pressed);
+        return !this.computedDisabled && (this.pseudoPressed ?? this.pressed);
     }
 
     get computedFocusable(): boolean {
@@ -86,14 +85,12 @@ export abstract class AbstractTuiInteractive {
 
     @HostBinding('class._focused')
     get computedFocused(): boolean {
-        return !this.computedDisabled && fallbackValue(this.pseudoFocused, this.focused);
+        return !this.computedDisabled && (this.pseudoFocused ?? this.focused);
     }
 
     @HostBinding('class._focus-visible')
     get computedFocusVisible(): boolean {
-        return (
-            !this.computedDisabled && fallbackValue(this.pseudoFocused, this.focusVisible)
-        );
+        return !this.computedDisabled && (this.pseudoFocused ?? this.focusVisible);
     }
 
     get id(): string {
