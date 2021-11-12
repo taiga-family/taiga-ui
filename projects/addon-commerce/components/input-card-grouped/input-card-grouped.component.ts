@@ -26,7 +26,6 @@ import {
 } from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiNullableControl,
-    fallbackValue,
     isNativeFocused,
     isNativeFocusedIn,
     setNativeFocused,
@@ -225,7 +224,7 @@ export class TuiInputCardGroupedComponent
     }
 
     get icon(): PolymorpheusContent | null {
-        return fallbackValue(this.cardSrc, this.defaultIcon);
+        return this.cardSrc ?? this.defaultIcon;
     }
 
     get bin(): string | null {
