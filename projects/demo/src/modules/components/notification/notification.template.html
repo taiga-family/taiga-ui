@@ -29,7 +29,7 @@
             <tui-notification
                 [hasIcon]="hasIcon"
                 [status]="status"
-                (close)="onClose()"
+                (close)="documentationPropertyClose.emitEvent($event)"
             >
                 A short simple informative message
             </tui-notification>
@@ -59,6 +59,7 @@
                 documentationPropertyName="close"
                 documentationPropertyMode="output"
                 documentationPropertyType="void"
+                #documentationPropertyClose="documentationProperty"
             >
                 Emits click on close cross. When subscribed to, close button
                 appears.

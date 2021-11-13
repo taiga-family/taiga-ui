@@ -79,7 +79,9 @@
                 t-cell
             "
         >
-            <ng-container *ngIf="propertyConnector.shouldShowValues">
+            <ng-container
+                *ngIf="propertyConnector.shouldShowValues; else elseEmitter"
+            >
                 <tui-select
                     *ngIf="propertyConnector.hasItems; else noItems"
                     tuiTextfieldSize="m"
@@ -156,6 +158,15 @@
                     </ng-container>
                 </ng-template>
             </ng-container>
+
+            <ng-template #elseEmitter>
+                <tui-notification
+                    class="t-output"
+                    [@emitEvent]="propertyConnector.emits$ | async"
+                >
+                    Emit!
+                </tui-notification>
+            </ng-template>
         </td>
     </tr>
 </table>

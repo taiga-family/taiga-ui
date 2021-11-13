@@ -9,6 +9,7 @@ import {
     TuiHintControllerModule,
     TuiLinkModule,
     TuiModeModule,
+    TuiNotificationModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
     TuiTooltipModule,
@@ -44,6 +45,7 @@ import {TuiDocDocumentationComponent} from './documentation.component';
         TuiDropdownControllerModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
+        TuiNotificationModule,
     ],
     declarations: [
         TuiDocDocumentationComponent,
