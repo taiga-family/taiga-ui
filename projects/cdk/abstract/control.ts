@@ -10,7 +10,6 @@ import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angula
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
-import {fallbackValue} from '@taiga-ui/cdk/utils/miscellaneous';
 import {merge, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {AbstractTuiInteractive} from './interactive';
@@ -71,11 +70,11 @@ export abstract class AbstractTuiControl<T>
     }
 
     get value(): T {
-        return fallbackValue<T>(this.previousInternalValue, this.fallbackValue);
+        return this.previousInternalValue ?? this.fallbackValue;
     }
 
     get safeCurrentValue(): T {
-        return fallbackValue<T>(this.rawValue, this.fallbackValue);
+        return this.rawValue ?? this.fallbackValue;
     }
 
     get invalid(): boolean {
@@ -193,10 +192,7 @@ export abstract class AbstractTuiControl<T>
         extractor: (ngControl: NgControl) => T | null | undefined,
         defaultFieldValue: T,
     ): T {
-        return fallbackValue<T>(
-            this.ngControl && extractor(this.ngControl),
-            defaultFieldValue,
-        );
+        return (this.ngControl && extractor(this.ngControl)) ?? defaultFieldValue;
     }
 
     private controlMarkAsTouched() {
