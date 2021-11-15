@@ -270,6 +270,22 @@ describe('InputNumber', () => {
             expect(component.computedValue).toBe(`-12${CHAR_NO_BREAK_SPACE}345,67`);
         });
 
+        it(`The given value from the form is correctly converted to a string with 0's at start`, () => {
+            inputPO.sendText('00 002 025');
+
+            expect(component.computedValue).toBe(`2${CHAR_NO_BREAK_SPACE}025`);
+
+            inputPO.sendText(' 005');
+
+            expect(component.computedValue).toBe(`5`);
+        });
+
+        it(`The given value from the form is correctly converted to a string with 0`, () => {
+            inputPO.sendText('0');
+
+            expect(component.computedValue).toBe(`0`);
+        });
+
         it(`Doesn't trim zeros if the input is focused`, () => {
             component.decimal = 'not-zero';
 

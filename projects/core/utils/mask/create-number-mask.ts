@@ -108,17 +108,28 @@ export function tuiCreateNumberMask({
             mask.unshift('-');
         }
 
-        return preventLeadingZeroes(mask);
+        return preventLeadingZeroes(mask, thousandSymbol, integerCappedClean);
+        //return mask;
     };
 }
 
-function preventLeadingZeroes(mask: Array<string | RegExp>): Array<string | RegExp> {
+function preventLeadingZeroes(
+    mask: Array<string | RegExp>,
+    thousandSymbol: string = CHAR_NO_BREAK_SPACE,
+    integerCappedClean: string,
+): Array<string | RegExp> {
     const firstDigitIndex = mask.indexOf(TUI_DIGIT_REGEXP);
 
+    if (firstDigitIndex === -1) {
+        return mask;
+    }
+
+    const isOnlyNonZeroDigit =
+        mask.length === 1 && NON_ZERO_DIGIT.test(integerCappedClean);
+
     if (
-        firstDigitIndex !== -1 &&
-        mask[firstDigitIndex] === TUI_DIGIT_REGEXP &&
-        mask.length !== 1
+        isOnlyNonZeroDigit ||
+        [TUI_DIGIT_REGEXP, thousandSymbol].includes(mask[firstDigitIndex + 1])
     ) {
         mask[firstDigitIndex] = NON_ZERO_DIGIT;
     }
