@@ -19,6 +19,23 @@
     text-overflow: clip;
 }
 
+.t-postfix {
+    display: inline-block;
+    line-height: 0;
+    margin-top: 1.15ch;
+
+    &:not(&--is-empty):before {
+        /**
+         @note(splincode): emulate native whitespace before input value
+         */
+        content: '\00a0';
+    }
+}
+
+.t-ghost:empty + .t-postfix:before {
+    content: '';
+}
+
 .t-filler {
     color: var(--tui-text-03);
 
