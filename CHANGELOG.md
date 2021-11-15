@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.23.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.22.0...v2.23.0) (2021-11-15)
+
+### Features
+
+-   **addon-doc:** output visualization ([#994](https://github.com/TinkoffCreditSystems/taiga-ui/issues/994)) ([835c8f1](https://github.com/TinkoffCreditSystems/taiga-ui/commit/835c8f1bdb53c103de5544293731c44a0d70ff17))
+-   **addon-mobile:** `MobileCalendar` add dark mode support ([#964](https://github.com/TinkoffCreditSystems/taiga-ui/issues/964)) ([a0f230d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a0f230d24e6f1c005b19caca8ec7e7523f51a861))
+-   **kit:** `InputPassword` disable hint if text is empty string ([#981](https://github.com/TinkoffCreditSystems/taiga-ui/issues/981)) ([f0407dd](https://github.com/TinkoffCreditSystems/taiga-ui/commit/f0407ddad111eff1e85136f8987106b850d9df46))
+-   **kit:** support direction: rtl for controls ([#983](https://github.com/TinkoffCreditSystems/taiga-ui/issues/983)) ([c0b4b28](https://github.com/TinkoffCreditSystems/taiga-ui/commit/c0b4b28c9e7e5759fa451d922f4ff8ea9a97d83e))
+
+### Bug Fixes
+
+-   **addon-commerce:** `InputCardGrouped` fix for long numbers and small screens ([#998](https://github.com/TinkoffCreditSystems/taiga-ui/issues/998)) ([84078cc](https://github.com/TinkoffCreditSystems/taiga-ui/commit/84078ccf2b6699350572c90ac99bed9f0db10f66))
+-   **cdk:** `HoveredService` fix for touch devices ([#973](https://github.com/TinkoffCreditSystems/taiga-ui/issues/973)) ([19e5136](https://github.com/TinkoffCreditSystems/taiga-ui/commit/19e513693a2c1da009f58057221a52224d51248d))
+-   **core:** `HostedDropdown` fix event propagation on esc ([#975](https://github.com/TinkoffCreditSystems/taiga-ui/issues/975)) ([5daee4a](https://github.com/TinkoffCreditSystems/taiga-ui/commit/5daee4a9ce6b81a0c4a090c93bdcc3cf0f91f6f0))
+-   **kit:** `InputNumber` fix custom formatting ([#976](https://github.com/TinkoffCreditSystems/taiga-ui/issues/976)) ([fcb4b34](https://github.com/TinkoffCreditSystems/taiga-ui/commit/fcb4b34650310e51c42da09f4fe6e341a829b706))
+-   **kit:** `MultiSelect` arrow icon overflow (by many tags) ([#982](https://github.com/TinkoffCreditSystems/taiga-ui/issues/982)) ([0933adf](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0933adfd9614631a9831d354560bd893b74f899d))
+
 ## [2.22.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.21.0...v2.22.0) (2021-11-02)
 
 ### Features
