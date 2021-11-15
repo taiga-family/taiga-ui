@@ -17,8 +17,6 @@
         "@angular/core": ">=9.0.0",
         "@angular/forms": ">=9.0.0",
         "@angular/router": ">=9.0.0",
-        "@ng-web-apis/common": ">=1.11.0",
-        "@tinkoff/ng-polymorpheus": "3.1.11",
         "@taiga-ui/cdk": "2.22.0",
         "@taiga-ui/core": "2.22.0",
         "@taiga-ui/i18n": "2.22.0",
@@ -26,7 +24,10 @@
     },
     "dependencies": {
         "angular2-text-mask": "9.0.0",
-        "@ng-web-apis/intersection-observer": "2.0.1"
+        "@tinkoff/ng-polymorpheus": "3.1.11",
+        "@ng-web-apis/common": ">=1.11.0",
+        "@ng-web-apis/intersection-observer": ">=2.0.1",
+        "@ng-web-apis/mutation-observer": "1.1.0"
     },
     "devDependencies": {
         "@taiga-ui/core": "2.22.0"
