@@ -45,9 +45,10 @@
                         [tuiBorderEnd]="border"
                     >
                         <span>{{fittedContent || controller.exampleText}}</span>
-                        <span class="pseudo-content__extra"
-                            >{{extraContent}}</span
-                        >
+                        <span
+                            class="pseudo-content__extra"
+                            [textContent]="extraContent"
+                        ></span>
                         &nbsp;
                     </div>
                     <textarea
