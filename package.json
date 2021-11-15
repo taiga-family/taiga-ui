@@ -21,7 +21,7 @@
         "lint": "nx lint",
         "stylelint": "stylelint '**/*.less'",
         "tslint": "tslint '**/projects/**/*.ts'",
-        "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}'",
+        "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}' --write",
         "typecheck": "tsc --noEmit --skipLibCheck --project tsconfig.spec.json",
         "*** Build **": "",
         "build:demo": "nx build --prod --configuration=production",
