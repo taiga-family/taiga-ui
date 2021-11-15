@@ -213,10 +213,6 @@ export class TuiInputCardGroupedComponent
         return !!this.dropdown;
     }
 
-    get isCardSmall(): boolean {
-        return this.card.length < 16;
-    }
-
     get defaultIcon(): string | null {
         const {paymentSystem} = this;
 
