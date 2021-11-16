@@ -40,9 +40,22 @@ body:
           label: Description
           placeholder: |
               Please provide the exception or error you saw.
-              Please provide the environment you discovered this bug in:
-              * Angular CLI: x.y.z
-              * Taiga: x.y.z
+      validations:
+          required: true
+
+    - type: input
+      id: angular-version
+      attributes:
+          label: Angular version
+          placeholder: x.y.z
+      validations:
+          required: true
+
+    - type: input
+      id: taiga-version
+      attributes:
+          label: Taiga UI version
+          placeholder: x.y.z
       validations:
           required: true
 
