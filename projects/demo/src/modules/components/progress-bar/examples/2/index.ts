@@ -12,8 +12,8 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiProgressBarExample2 {
-    readonly fastValue$ = this.isCypress ? of(40) : timer(500, 100);
-    readonly slowValue$ = this.isCypress ? of(2) : timer(500, 2000);
+    readonly fastValue$ = this.isCypress ? of(80) : timer(500, 100);
+    readonly slowValue$ = this.isCypress ? of(4) : timer(500, 2000);
     readonly colors = [
         'var(--tui-support-01)',
         'var(--tui-support-21)',
