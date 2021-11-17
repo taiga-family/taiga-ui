@@ -4,11 +4,15 @@
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@taiga-ui/addon-mobile)](https://bundlephobia.com/result?p=@taiga-ui/addon-mobile)
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 
-[Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki) • [Core team](https://github.com/TinkoffCreditSystems/taiga-ui/#core-team)
+[Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) •
+[CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki) •
+[Core team](https://github.com/TinkoffCreditSystems/taiga-ui/#core-team)
 
-> Extension package for Taiga UI that adds support for mobile specific behaviors such as custom data pickers, dropdowns, etc.
+> Extension package for Taiga UI that adds support for mobile specific behaviors such as custom data pickers, dropdowns,
+> etc.
 
-It's a part of [**Taiga UI**](https://github.com/TinkoffCreditSystems/taiga-ui) that is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons
+It's a part of [**Taiga UI**](https://github.com/TinkoffCreditSystems/taiga-ui) that is fully-treeshakable Angular UI
+Kit consisting of multiple base libraries and several add-ons
 
 ## How to install
 
@@ -24,7 +28,8 @@ Install addon-mobile:
 npm i @taiga-ui/addon-mobile
 ```
 
-Don't forget that Taiga UI is fully-treeshakable. **You can import even just one entity from our library** and be sure that there is no redundant code in your bundle. Bundlphobia badge shows size of the whole library.
+Don't forget that Taiga UI is fully-treeshakable. **You can import even just one entity from our library** and be sure
+that there is no redundant code in your bundle. Bundlphobia badge shows size of the whole library.
 
 ## Docs
 

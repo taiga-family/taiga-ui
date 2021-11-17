@@ -6,17 +6,22 @@
 >
     <ng-template pageTab>
         <div i18n class="tui-space_bottom-3">
-            Decorator for <code>@Input</code> with default value
+            Decorator for
+            <code>@Input</code>
+            with default value
         </div>
         <div i18n class="tui-space_bottom-3">
-            <strong>Warning:</strong> decorator overrides getter/setter of input
+            <strong>Warning:</strong>
+            decorator overrides getter/setter of input
         </div>
 
         <p i18n>
-            Decorator stops <code>undefined</code> values if they were passed
-            into input. If it gets <code>undefined</code>, it will use default
-            value and show an error message about the problem in console in dev
-            mode.
+            Decorator stops
+            <code>undefined</code>
+            values if they were passed into input. If it gets
+            <code>undefined</code>
+            , it will use default value and show an error message about the
+            problem in console in dev mode.
         </p>
 
         <div i18n>
@@ -49,9 +54,11 @@
     <ng-template pageTab>
         <p i18n>
             You can also pass contract function of type
-            <code>TuiBooleanHandler&lt;T&gt;</code> with the component instance
-            as <code>this</code>. If check is unsuccessful, it shows an error
-            message about the problem in console in dev mode.
+            <code>TuiBooleanHandler&lt;T&gt;</code>
+            with the component instance as
+            <code>this</code>
+            . If check is unsuccessful, it shows an error message about the
+            problem in console in dev mode.
         </p>
         <tui-doc-documentation>
             <ng-template
@@ -61,11 +68,15 @@
             >
                 Optional argument, contract function
                 <p>
-                    <strong>Warning:</strong> Angular Compiler does not allow
-                    arrow functions in decorators with
-                    <code>strictMetadataEmit</code> (by default). Add
-                    <code>// @dynamic</code> comment right above your
-                    <code>@Component</code> decorator to use them
+                    <strong>Warning:</strong>
+                    Angular Compiler does not allow arrow functions in
+                    decorators with
+                    <code>strictMetadataEmit</code>
+                    (by default). Add
+                    <code>// @dynamic</code>
+                    comment right above your
+                    <code>@Component</code>
+                    decorator to use them
                 </p>
             </ng-template>
             <ng-template
@@ -82,7 +93,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Add <code>@tuiDefaultProp</code> to input of your component
+                    Add
+                    <code>@tuiDefaultProp</code>
+                    to input of your component
                 </p>
 
                 <tui-doc-code

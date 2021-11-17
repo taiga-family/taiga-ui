@@ -22,8 +22,7 @@ describe('InputPhone', () => {
                     [readOnly]="readOnly"
                     [countryCode]="countryCode"
                     [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
-                >
-                </tui-input-phone>
+                ></tui-input-phone>
             </tui-root>
         `,
     })

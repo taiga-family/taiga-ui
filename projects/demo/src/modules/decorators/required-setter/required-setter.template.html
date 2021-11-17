@@ -8,10 +8,12 @@
         <p i18n>Decorator setter @Input</p>
 
         <p i18n>
-            Decorator stops <code>undefined</code> values if they were passed
-            into setter input. If it gets <code>undefined</code>, setter will
-            not be called and it will show an error message about the problem in
-            console in dev mode.
+            Decorator stops
+            <code>undefined</code>
+            values if they were passed into setter input. If it gets
+            <code>undefined</code>
+            , setter will not be called and it will show an error message about
+            the problem in console in dev mode.
         </p>
 
         <div>
@@ -36,9 +38,11 @@
     <ng-template pageTab>
         <p i18n>
             You can also pass contract function of type
-            <code>TuiBooleanHandler&lt;T&gt;</code> with the component instance
-            as <code>this</code>. If check is unsuccessful, it shows an error
-            message about the problem in console in dev mode.
+            <code>TuiBooleanHandler&lt;T&gt;</code>
+            with the component instance as
+            <code>this</code>
+            . If check is unsuccessful, it shows an error message about the
+            problem in console in dev mode.
         </p>
         <tui-doc-documentation>
             <ng-template
@@ -48,11 +52,15 @@
             >
                 Optional argument, contract function
                 <p>
-                    <strong>Warning:</strong> Angular Compiler does not allow
-                    arrow functions in decorators with
-                    <code>strictMetadataEmit</code> (by default). Add
-                    <code>// @dynamic</code> comment right above your
-                    <code>@Component</code> decorator to use them
+                    <strong>Warning:</strong>
+                    Angular Compiler does not allow arrow functions in
+                    decorators with
+                    <code>strictMetadataEmit</code>
+                    (by default). Add
+                    <code>// @dynamic</code>
+                    comment right above your
+                    <code>@Component</code>
+                    decorator to use them
                 </p>
             </ng-template>
             <ng-template
@@ -69,8 +77,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Add <code>@tuiRequiredSetter</code> to setter input of your
-                    component
+                    Add
+                    <code>@tuiRequiredSetter</code>
+                    to setter input of your component
                 </p>
 
                 <tui-doc-code

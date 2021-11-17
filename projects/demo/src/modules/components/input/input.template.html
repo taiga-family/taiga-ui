@@ -11,69 +11,71 @@
         <blockquote>
             <ul i18n>
                 <li>
-                    <a tuiLink routerLink="/components/text-area"
-                        ><code>TextArea</code></a
-                    >
+                    <a tuiLink routerLink="/components/text-area">
+                        <code>TextArea</code>
+                    </a>
                     — for multiline text
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-date"
-                        ><code>InputDate</code></a
-                    >
+                    <a tuiLink routerLink="/components/input-date">
+                        <code>InputDate</code>
+                    </a>
                     — for dates
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-date-range"
-                        ><code>InputDateRange</code></a
-                    >
+                    <a tuiLink routerLink="/components/input-date-range">
+                        <code>InputDateRange</code>
+                    </a>
                     — for a range of dates
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-number"
-                        ><code>InputNumber</code></a
-                    >
+                    <a tuiLink routerLink="/components/input-number">
+                        <code>InputNumber</code>
+                    </a>
                     — for number (with measurement postfix)
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-password"
-                        ><code>InputPassword</code></a
-                    >
+                    <a tuiLink routerLink="/components/input-password">
+                        <code>InputPassword</code>
+                    </a>
                     — for passwords
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-phone"
-                        ><code>InputPhone</code></a
-                    >
+                    <a tuiLink routerLink="/components/input-phone">
+                        <code>InputPhone</code>
+                    </a>
                     — for phone numbers
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-tag"
-                        ><code>InputTag</code></a
-                    >
+                    <a tuiLink routerLink="/components/input-tag">
+                        <code>InputTag</code>
+                    </a>
                     — for inputing tags
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-range"
-                        ><code>InputRange</code></a
-                    >,
-                    <a tuiLink routerLink="/components/input-slider"
-                        ><code>InputSlider</code></a
-                    >
+                    <a tuiLink routerLink="/components/input-range">
+                        <code>InputRange</code>
+                    </a>
+                    ,
+                    <a tuiLink routerLink="/components/input-slider">
+                        <code>InputSlider</code>
+                    </a>
                     — for accurate number values
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/slider"
-                        ><code>Slider</code></a
-                    >,
-                    <a tuiLink routerLink="/components/range"
-                        ><code>Range</code></a
-                    >
+                    <a tuiLink routerLink="/components/slider">
+                        <code>Slider</code>
+                    </a>
+                    ,
+                    <a tuiLink routerLink="/components/range">
+                        <code>Range</code>
+                    </a>
                     — for not accurate number values
                 </li>
                 <li>
-                    <a tuiLink routerLink="/components/input-count"
-                        ><code>InputCount</code></a
-                    >
+                    <a tuiLink routerLink="/components/input-count">
+                        <code>InputCount</code>
+                    </a>
                     — for integer number of smth
                 </li>
             </ul>
@@ -182,7 +184,8 @@
                     [tuiHintDirection]="hintDirection"
                     [tuiHintMode]="hintMode"
                 >
-                    placeholder <strong>strong text</strong>
+                    placeholder
+                    <strong>strong text</strong>
                 </tui-input>
             </ng-template>
         </tui-doc-demo>
@@ -199,7 +202,9 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Disabled state (use <code>formControl.disable()</code>)
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
             </ng-template>
             <ng-template
                 i18n
@@ -211,9 +216,9 @@
             >
                 An icon. It can be stringified svg or a name of icon registered
                 in
-                <a tuiLink routerLink="/services/svg-service"
-                    ><code>SvgService</code></a
-                >
+                <a tuiLink routerLink="/services/svg-service">
+                    <code>SvgService</code>
+                </a>
             </ng-template>
             <ng-template
                 i18n
@@ -234,8 +239,8 @@
             <li>
                 <p i18n>
                     Import an Angular module for forms and
-                    <code>TuiInputModule</code> in the same module where you
-                    want to use our component:
+                    <code>TuiInputModule</code>
+                    in the same module where you want to use our component:
                 </p>
 
                 <tui-doc-code
@@ -246,8 +251,11 @@
 
             <li>
                 <p i18n>
-                    Declare a form (<code>FormGroup</code>) or a control
-                    (<code>FormControl</code>) in your component:
+                    Declare a form (
+                    <code>FormGroup</code>
+                    ) or a control (
+                    <code>FormControl</code>
+                    ) in your component:
                 </p>
 
                 <tui-doc-code

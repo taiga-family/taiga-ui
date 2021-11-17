@@ -6,7 +6,9 @@ import {TuiPrimitiveSpinButtonModule} from '../primitive-spin-button.module';
 
 describe('primitiveSpinButton', () => {
     @Component({
-        template: ` <tui-primitive-spin-button> My button </tui-primitive-spin-button> `,
+        template: `
+            <tui-primitive-spin-button>My button</tui-primitive-spin-button>
+        `,
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveSpinButtonComponent, {static: true})

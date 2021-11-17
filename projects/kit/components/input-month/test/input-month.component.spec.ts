@@ -9,7 +9,9 @@ import {TuiInputMonthModule} from '../input-month.module';
 
 describe('InputMonth', () => {
     @Component({
-        template: ` <tui-input-month [formControl]="control"></tui-input-month> `,
+        template: `
+            <tui-input-month [formControl]="control"></tui-input-month>
+        `,
     })
     class TestComponent {
         @ViewChild(TuiInputMonthComponent, {static: true})

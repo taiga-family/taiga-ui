@@ -3,7 +3,9 @@ import {TuiController, TuiInputTypeT} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_TYPE = new InjectionToken<TuiTextfieldTypeDirective>(
     'tuiTextfieldType',
-    {factory: typeDirectiveFactory},
+    {
+        factory: typeDirectiveFactory,
+    },
 );
 
 @Directive({

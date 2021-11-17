@@ -7,12 +7,13 @@
         <p i18n>Service to show notifications</p>
         <p i18n>
             Do not forget to add
-            <code>TuiNotificationsModule</code> into your app.module to use it
+            <code>TuiNotificationsModule</code>
+            into your app.module to use it
         </p>
 
         <p i18n>
-            <strong>Singleton</strong> you do not need to provide a service. It
-            is just available to inject
+            <strong>Singleton</strong>
+            you do not need to provide a service. It is just available to inject
         </p>
 
         <tui-doc-example id="text" heading="Text" [content]="example1">
@@ -71,15 +72,24 @@
                     <div>): Observable&lt;O&gt;</div>
                 </code>
             </p>
-            of <code>TuiNotificationsService</code>, where <code>O</code> is
-            output data type and <code>I</code> is input data type. If content
-            does not need input data, the second argument is optional. In the
-            sample above the both of them are <code>number</code>.
+            of
+            <code>TuiNotificationsService</code>
+            , where
+            <code>O</code>
+            is output data type and
+            <code>I</code>
+            is input data type. If content does not need input data, the second
+            argument is optional. In the sample above the both of them are
+            <code>number</code>
+            .
             <p>
                 You can also just unsubcribe from a stream to hode a
                 notification (this observable is returned from
-                <code>open</code> method). You can save a subscription for that
-                or use <code>takeUntil</code> like tools from <code>RxJs</code>
+                <code>open</code>
+                method). You can save a subscription for that or use
+                <code>takeUntil</code>
+                like tools from
+                <code>RxJs</code>
             </p>
         </div>
         <tui-doc-documentation>
@@ -93,7 +103,10 @@
                 Content
             </ng-template>
         </tui-doc-documentation>
-        <p i18n><code>TuiNotificationOptionsWithData</code> interface:</p>
+        <p i18n>
+            <code>TuiNotificationOptionsWithData</code>
+            interface:
+        </p>
         <tui-doc-documentation>
             <ng-template
                 i18n
@@ -151,7 +164,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Add <code>TuiNotificationsModule</code> into your app.module
+                    Add
+                    <code>TuiNotificationsModule</code>
+                    into your app.module
                 </p>
 
                 <tui-doc-code
@@ -162,7 +177,9 @@
 
             <li>
                 <p i18n>
-                    Use service <code>show</code> method and subscribe to
+                    Use service
+                    <code>show</code>
+                    method and subscribe to
                     <code>Observable</code>
                 </p>
 
@@ -179,16 +196,18 @@
                     fragment="example-template"
                     tuiLink
                 >
-                    <code>your template</code> </a
-                >.
+                    <code>your template</code>
+                </a>
+                .
             </li>
 
             <li>
                 <p i18n>
                     You can also customize notification logic with a component.
-                    Use <code>POLYMORPHEUS_CONTEXT</code> into the component to
-                    get context input data and to output results. It has the
-                    following interface:
+                    Use
+                    <code>POLYMORPHEUS_CONTEXT</code>
+                    into the component to get context input data and to output
+                    results. It has the following interface:
                 </p>
 
                 <p>
@@ -221,7 +240,8 @@
                 <div i18n>
                     where O is output data type and I is input data type. Do not
                     forget to add notification component into
-                    <code>entryComponents</code> of your module:
+                    <code>entryComponents</code>
+                    of your module:
                 </div>
 
                 <tui-doc-code
@@ -233,10 +253,9 @@
             <li>
                 <p i18n>
                     Use
-                    <code
-                        >new
-                        PolymorpheusComponent(CustomNotificationComponent)</code
-                    >
+                    <code>
+                        new PolymorpheusComponent(CustomNotificationComponent)
+                    </code>
                     to show notification component with a service:
                 </p>
 
@@ -248,9 +267,13 @@
 
             <li>
                 <p i18n>
-                    Use <code>emitHook</code>, <code>closeHook</code> and
-                    <code>emitAndCloseHook</code> methods to control
-                    notification from itself:
+                    Use
+                    <code>emitHook</code>
+                    ,
+                    <code>closeHook</code>
+                    and
+                    <code>emitAndCloseHook</code>
+                    methods to control notification from itself:
                 </p>
 
                 <tui-doc-code
@@ -262,8 +285,9 @@
             <li>
                 <p i18n>
                     If you use it from lazy loading modules, do not forget to
-                    use <code>new TuiComponentContent Injector</code> of
-                    component where you call it
+                    use
+                    <code>new TuiComponentContent Injector</code>
+                    of component where you call it
                 </p>
 
                 <tui-doc-code
@@ -275,8 +299,9 @@
             <li>
                 <p i18n>
                     Optionally use the
-                    <code>TUI_NOTIFICATION_OPTIONS</code> injection token to
-                    override the default options (works only in app.module.ts).
+                    <code>TUI_NOTIFICATION_OPTIONS</code>
+                    injection token to override the default options (works only
+                    in app.module.ts).
                 </p>
 
                 <tui-doc-code

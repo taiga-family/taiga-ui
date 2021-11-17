@@ -110,9 +110,9 @@
             >
                 Icon content. If content is a string, it is used as stringified
                 svg or a name of icon registered in
-                <a tuiLink routerLink="/services/svg-service"
-                    ><code>SvgService</code></a
-                >
+                <a tuiLink routerLink="/services/svg-service">
+                    <code>SvgService</code>
+                </a>
             </ng-template>
             <ng-template
                 i18n
@@ -132,9 +132,10 @@
                 [(documentationPropertyValue)]="prefix"
             >
                 Uneditable text before value. For example, currency symbol in
-                <a tuiLink routerLink="/components/input-number"
-                    ><code>InputNumber</code></a
-                >.
+                <a tuiLink routerLink="/components/input-number">
+                    <code>InputNumber</code>
+                </a>
+                .
             </ng-template>
             <ng-template
                 i18n
@@ -144,9 +145,10 @@
                 [(documentationPropertyValue)]="postfix"
             >
                 Uneditable text after value. For example, currency symbol in
-                <a tuiLink routerLink="/components/input-number"
-                    ><code>InputNumber</code></a
-                >.
+                <a tuiLink routerLink="/components/input-number">
+                    <code>InputNumber</code>
+                </a>
+                .
             </ng-template>
             <ng-template
                 i18n
@@ -185,8 +187,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Import <code>TuiPrimitiveTextfieldModule</code> into a
-                    module where you want to use our component
+                    Import
+                    <code>TuiPrimitiveTextfieldModule</code>
+                    into a module where you want to use our component
                 </p>
 
                 <tui-doc-code
@@ -217,7 +220,7 @@
                 [items]="themes"
                 [(ngModel)]="theme"
             ></tui-radio-list>
-            <ng-template i18n #label> Theming sample </ng-template>
+            <ng-template i18n #label>Theming sample</ng-template>
             <label
                 tuiLabel
                 class="theme-wrapper label"

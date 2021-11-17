@@ -7,8 +7,9 @@
         <p i18n>Service to define SVG to reuse it later</p>
 
         <p i18n>
-            <strong>Singleton</strong> you do not need to provide it, just
-            inject into your component and use it
+            <strong>Singleton</strong>
+            you do not need to provide it, just inject into your component and
+            use it
         </p>
     </ng-template>
     <ng-template pageTab>
@@ -20,10 +21,11 @@
             >
                 Method to define an icon.
                 <p>
-                    <strong
-                        >Warning, name of the icon must not start with
-                        "<code>&lt;</code>"</strong
-                    >
+                    <strong>
+                        Warning, name of the icon must not start with "
+                        <code>&lt;</code>
+                        "
+                    </strong>
                 </p>
                 Name should be unique.
             </ng-template>
@@ -33,8 +35,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Inject <code>TuiSvgService</code> into your component and
-                    define an icon:
+                    Inject
+                    <code>TuiSvgService</code>
+                    into your component and define an icon:
                 </p>
 
                 <tui-doc-code
@@ -42,7 +45,11 @@
                     [code]="injectService"
                 ></tui-doc-code>
 
-                <p i18n>Show in tempaltes with <code>tui-svg</code>:</p>
+                <p i18n>
+                    Show in tempaltes with
+                    <code>tui-svg</code>
+                    :
+                </p>
                 <p>
                     <tui-svg src="tuiIconTrashLarge"></tui-svg>
                 </p>

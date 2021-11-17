@@ -4,21 +4,22 @@
 
         <p i18n>
             If you want custom dialogs see
-            <a tuiLink routerLink="/dialogs">this link</a> on creating your own
-            implementation
+            <a tuiLink routerLink="/dialogs">this link</a>
+            on creating your own implementation
         </p>
 
         <tui-notification i18n class="tui-space_vertical-4">
-            Use <code><strong>TUI_DIALOGS_CLOSE</strong></code> token if you
-            need to close dialog with from a stream. For example, this way you
-            can close dialogs by logout:
+            Use
+            <code><strong>TUI_DIALOGS_CLOSE</strong></code>
+            token if you need to close dialog with from a stream. For example,
+            this way you can close dialogs by logout:
             <p><tui-doc-code [code]="dialogsCloseToken"></tui-doc-code></p>
         </tui-notification>
 
         <tui-notification class="tui-space_vertical-4" status="warning">
             Do not forget to add
-            <code><strong>TuiDialogModule</strong></code> into your app.module
-            to use dialogs (See also "Setup" for details)
+            <code><strong>TuiDialogModule</strong></code>
+            into your app.module to use dialogs (See also "Setup" for details)
         </tui-notification>
 
         <tui-doc-example
@@ -98,11 +99,17 @@
             <h2 i18n [class.big]="size === 'xl'">I am an example of dialog</h2>
             <h2 *ngIf="size === 'xl'" i18n>Template can be customized</h2>
             <p i18n>
-                Dialog has <code>Observer</code> in its context to call
-                <code>next</code>, <code>complete</code> or
-                <code>error</code> of stream. There is also a
-                <code>completeWith</code> method to pass data and close dialog
-                with one action
+                Dialog has
+                <code>Observer</code>
+                in its context to call
+                <code>next</code>
+                ,
+                <code>complete</code>
+                or
+                <code>error</code>
+                of stream. There is also a
+                <code>completeWith</code>
+                method to pass data and close dialog with one action
             </p>
             <p i18n>Input data: {{data}}.</p>
             <p>
@@ -160,16 +167,26 @@
                 To show a dialog, use method
                 <tui-doc-code [code]="method"></tui-doc-code>
             </p>
-            of <code>TuiDialogService</code>, where <code>O</code> is output
-            data type and <code>I</code> input data type. In this sample, input
-            data has type <code>number</code> and output data has type
-            <code>string</code>.
+            of
+            <code>TuiDialogService</code>
+            , where
+            <code>O</code>
+            is output data type and
+            <code>I</code>
+            input data type. In this sample, input data has type
+            <code>number</code>
+            and output data has type
+            <code>string</code>
+            .
             <p>
                 You can also just unsubcribe from
-                <code>Observable</code> to close a dialog (this observable is
-                returned from <code>open</code> method). You can save a
-                subscription for that or use <code>takeUntil</code> like tools
-                from <code>RxJs</code>
+                <code>Observable</code>
+                to close a dialog (this observable is returned from
+                <code>open</code>
+                method). You can save a subscription for that or use
+                <code>takeUntil</code>
+                like tools from
+                <code>RxJs</code>
             </p>
         </div>
         <tui-doc-documentation>
@@ -219,8 +236,8 @@
                 [(documentationPropertyValue)]="required"
             >
                 Cross click, overlay click or Escape click emits an error into
-                <code>Observable</code> (you can catch it with "catch" operator
-                or onError handler)
+                <code>Observable</code>
+                (you can catch it with "catch" operator or onError handler)
             </ng-template>
             <ng-template
                 i18n
@@ -238,7 +255,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Add <code>TuiDialogModule</code> into your app.module
+                    Add
+                    <code>TuiDialogModule</code>
+                    into your app.module
                 </p>
 
                 <tui-doc-code
@@ -248,8 +267,11 @@
             </li>
             <li>
                 <p i18n>
-                    Use <code>open</code> method to show a dialog, subscribe to
-                    an <code>Observable</code>:
+                    Use
+                    <code>open</code>
+                    method to show a dialog, subscribe to an
+                    <code>Observable</code>
+                    :
                 </p>
 
                 <tui-doc-code
@@ -261,14 +283,23 @@
             <li>
                 <p i18n>
                     If you want to use your own component as a dialog content,
-                    use <code>POLYMORPHEUS_CONTEXT</code> in it. Dialog will
-                    provide with this token some useful options:
-                    <code>$implicit</code> with
-                    <code>Observer&lt;O&gt;</code> and
-                    <code>completeWith</code> hook to call <code>next</code> and
-                    <code>complete</code> in one action. Do not forget to add
-                    your dialog component into <code>entryComponents</code> of
-                    your module where you use dialog
+                    use
+                    <code>POLYMORPHEUS_CONTEXT</code>
+                    in it. Dialog will provide with this token some useful
+                    options:
+                    <code>$implicit</code>
+                    with
+                    <code>Observer&lt;O&gt;</code>
+                    and
+                    <code>completeWith</code>
+                    hook to call
+                    <code>next</code>
+                    and
+                    <code>complete</code>
+                    in one action. Do not forget to add your dialog component
+                    into
+                    <code>entryComponents</code>
+                    of your module where you use dialog
                 </p>
 
                 <tui-doc-code
@@ -286,8 +317,11 @@
 
             <li>
                 <p i18n>
-                    Use <code>Observer</code> from <code>$implicit</code> field
-                    of context to close a dialog or get some data
+                    Use
+                    <code>Observer</code>
+                    from
+                    <code>$implicit</code>
+                    field of context to close a dialog or get some data
                 </p>
 
                 <tui-doc-code
@@ -300,8 +334,8 @@
                 <p i18n>
                     If you use dialog components in lazy loading modules, do not
                     forget to pass into
-                    <code>new PolymorpheusComponent Injector</code> of component
-                    where you open a dialog
+                    <code>new PolymorpheusComponent Injector</code>
+                    of component where you open a dialog
                 </p>
 
                 <tui-doc-code
@@ -313,13 +347,15 @@
                 <p i18n>
                     Dialogs have experimental feature with closing them on
                     browser backward navigation. It was achieved through
-                    manipulation of <code><strong>window.history</strong></code
-                    >.
+                    manipulation of
+                    <code><strong>window.history</strong></code>
+                    .
                 </p>
 
                 <p i18n>
                     If you have some troubles with it, report about this,
-                    please.<br />
+                    please.
+                    <br />
                     In this case, you can disable this feature for your app
                     using
                     <code><strong>TUI_DIALOG_CLOSES_ON_BACK</strong></code>
@@ -341,17 +377,19 @@
         </p>
         <p i18n>
             Then you need to provide a stream of your dialogs into multi token
-            <code>TUI_DIALOGS</code>.
+            <code>TUI_DIALOGS</code>
+            .
         </p>
         <p i18n>
             You can also use
-            <code>AbstractTuiDialogService</code> to create this stream of
-            dialogs.
+            <code>AbstractTuiDialogService</code>
+            to create this stream of dialogs.
         </p>
 
         <p i18n>
             See example of custom dialog
-            <a tuiLink routerLink="/dialogs">here</a>.
+            <a tuiLink routerLink="/dialogs">here</a>
+            .
         </p>
     </ng-template>
 </tui-doc-page>

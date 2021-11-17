@@ -6,8 +6,8 @@
 >
     <ng-template pageTab>
         <p i18n class="description">
-            <code>DropdownContext</code> allows to show custom right click
-            context dropdown.
+            <code>DropdownContext</code>
+            allows to show custom right click context dropdown.
         </p>
         <ng-container *ngTemplateOutlet="tips"></ng-container>
 
@@ -50,7 +50,8 @@
                 [tuiDropdownDirection]="dropdownDirection"
                 [tuiDropdownLimitWidth]="dropdownLimitWidth"
             >
-                Right click on me to <strong>see a dropdown</strong>
+                Right click on me to
+                <strong>see a dropdown</strong>
             </p>
             <ng-template #dropdownContent let-close="close">
                 <div class="dropdown">
@@ -79,8 +80,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Import <code>TuiDropdownContextModule</code> into a module
-                    where you want to use our directive
+                    Import
+                    <code>TuiDropdownContextModule</code>
+                    into a module where you want to use our directive
                 </p>
 
                 <tui-doc-code
@@ -104,21 +106,31 @@
 <ng-template #tips>
     <h3 class="tips__title">Tips:</h3>
     <ol class="tips__list">
-        <li>Use <strong>Arrow Up/Down</strong> to focus closest element.</li>
+        <li>
+            Use
+            <strong>Arrow Up/Down</strong>
+            to focus closest element.
+        </li>
         <li>
             To close dropdown:
             <ul class="tui-list tui-list_small">
-                <li class="tui-list__item">Use <strong>Esc</strong></li>
                 <li class="tui-list__item">
-                    Make <strong>mouse left click</strong> outside of dropdown
-                    content
+                    Use
+                    <strong>Esc</strong>
                 </li>
                 <li class="tui-list__item">
-                    Open new dropdown via <strong>mouse right click</strong>
+                    Make
+                    <strong>mouse left click</strong>
+                    outside of dropdown content
+                </li>
+                <li class="tui-list__item">
+                    Open new dropdown via
+                    <strong>mouse right click</strong>
                 </li>
                 <li class="tui-list__item">
                     Declare local template variable which access to property
-                    <strong>close</strong> of
+                    <strong>close</strong>
+                    of
                     <a
                         tuiLink
                         href="https://angular.io/api/common/NgTemplateOutlet#properties"
@@ -126,12 +138,14 @@
                     >
                         template context object
                     </a>
-                    and call it<br />
+                    and call it
+                    <br />
                     (for example,
-                    <code
-                        >&lt;ng-template
-                        let-close="close"&gt;&lt;/ng-template&gt;</code
-                    >).
+                    <code>
+                        &lt;ng-template
+                        let-close="close"&gt;&lt;/ng-template&gt;
+                    </code>
+                    ).
                 </li>
             </ul>
         </li>
@@ -141,13 +155,16 @@
                 ActiveZone
             </a>
             of opened dropdown you should declare local template variable which
-            access to property <strong>activeZone</strong> of template context
-            object<br />
+            access to property
+            <strong>activeZone</strong>
+            of template context object
+            <br />
             (for example,
-            <code
-                >&lt;ng-template
-                let-activeZone="activeZone"&gt;&lt;/ng-template&gt;</code
-            >).
+            <code>
+                &lt;ng-template
+                let-activeZone="activeZone"&gt;&lt;/ng-template&gt;
+            </code>
+            ).
         </li>
     </ol>
 </ng-template>

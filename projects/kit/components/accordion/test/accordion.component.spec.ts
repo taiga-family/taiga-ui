@@ -61,8 +61,9 @@ describe('Accordion', () => {
                                     tuiTextfieldSize="l"
                                     tuiTextfieldExampleText="Ivanov Ivan Ivanovich"
                                     formControlName="name"
-                                    >Enter your full name</tui-input
                                 >
+                                    Enter your full name
+                                </tui-input>
                                 <tui-select
                                     automation-id="tui-accordion__select"
                                     tuiTextfieldSize="l"

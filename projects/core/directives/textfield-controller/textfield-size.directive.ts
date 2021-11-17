@@ -4,7 +4,9 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 export const TUI_TEXTFIELD_SIZE = new InjectionToken<TuiTextfieldSizeDirective>(
     'tuiTextfieldSize',
-    {factory: sizeDirectiveFactory},
+    {
+        factory: sizeDirectiveFactory,
+    },
 );
 
 @Directive({

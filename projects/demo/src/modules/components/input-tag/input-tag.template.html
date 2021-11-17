@@ -1,8 +1,8 @@
 <tui-doc-page header="InputTag" package="KIT" type="components">
     <ng-template pageTab>
         <div i18n class="tui-space_bottom-3">
-            <code>InputTag</code> allows to input several tags with autocomplete
-            and list in dropdown.
+            <code>InputTag</code>
+            allows to input several tags with autocomplete and list in dropdown.
         </div>
 
         <tui-doc-example
@@ -96,7 +96,9 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
-                Disabled state (use <code>formControl.disable()</code>)
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
             </ng-template>
             <ng-template
                 i18n
@@ -106,7 +108,9 @@
                 [(documentationPropertyValue)]="search"
             >
                 Textfield value to subscribe on input or setting it from the
-                outside (emits <code>null</code> when item from list selected)
+                outside (emits
+                <code>null</code>
+                when item from list selected)
             </ng-template>
             <ng-template
                 documentationPropertyName="allowSpaces"
@@ -154,9 +158,9 @@
             >
                 An icon. It can be stringified svg or a name of icon registered
                 in
-                <a tuiLink routerLink="/services/svg-service"
-                    ><code>SvgService</code></a
-                >
+                <a tuiLink routerLink="/services/svg-service">
+                    <code>SvgService</code>
+                </a>
             </ng-template>
             <ng-template
                 i18n
@@ -195,8 +199,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Import <code>TuiInputTagModule</code> into a module where
-                    you want to use our component
+                    Import
+                    <code>TuiInputTagModule</code>
+                    into a module where you want to use our component
                 </p>
 
                 <tui-doc-code

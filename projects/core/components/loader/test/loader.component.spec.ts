@@ -15,9 +15,8 @@ describe('Loader', () => {
                 [inheritColor]="inheritColor"
                 [overlay]="overlay"
                 [textContent]="textContent"
-            >
-            </tui-loader>
-            <ng-template #textTemplate> Loading... </ng-template>
+            ></tui-loader>
+            <ng-template #textTemplate>Loading...</ng-template>
         `,
     })
     class TestComponent {

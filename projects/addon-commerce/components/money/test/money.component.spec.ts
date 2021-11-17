@@ -21,8 +21,7 @@ describe('Money', () => {
                 [precision]="precision"
                 [sign]="sign"
                 [colored]="colored"
-            >
-            </tui-money>
+            ></tui-money>
         `,
     })
     class TestComponent {
