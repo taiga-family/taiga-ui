@@ -34,7 +34,7 @@
     Set component's input property
     <code>color</code>
     via
-    <code>tuiProgressColorSegments</code>
+    <code>tuiProgressColorSegmentsAsync</code>
     pipe to to get multicolor segments.
 </p>
 
@@ -43,7 +43,7 @@
     class="progress"
     max="100"
     [value]="fastValue$ | async"
-    [color]="colors | tuiProgressColorSegments"
+    [color]="colors | tuiProgressColorSegmentsAsync | async"
 ></progress>
 
 <progress
@@ -51,5 +51,5 @@
     class="progress"
     [value]="slowValue$ | async"
     [max]="colors.length"
-    [color]="colors | tuiProgressColorSegments"
+    [color]="colors | tuiProgressColorSegmentsAsync | async"
 ></progress>
