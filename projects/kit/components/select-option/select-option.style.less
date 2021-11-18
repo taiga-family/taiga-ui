@@ -1,8 +1,20 @@
+// This is used to trigger checkmark check when virtual scroll moves nodes around
+@keyframes retrigger {
+    from {
+        left: 1px;
+    }
+
+    to {
+        left: 2px;
+    }
+}
+
 :host {
     display: flex;
     flex: 1;
     align-items: center;
     max-width: 100%;
+    animation: retrigger 1s;
 }
 
 .checkmark {

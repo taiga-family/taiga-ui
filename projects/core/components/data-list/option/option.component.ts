@@ -103,6 +103,8 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     }
 
     // Preventing focus loss upon focused option removal
+    // TODO: add ".passive" when implemented in event plugins lib
+    @HostListener('wheel.silent')
     ngOnDestroy() {
         this.dataList.handleFocusLossIfNecessary(this.elementRef.nativeElement);
     }
