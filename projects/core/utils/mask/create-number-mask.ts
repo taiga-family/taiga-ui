@@ -2,6 +2,7 @@ import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE, tuiAssert} from '@taiga-ui/cdk';
 import {
     MASK_CARET_TRAP,
     TUI_DIGIT_REGEXP,
+    TUI_LEADING_ZEROES_REGEXP,
     TUI_NON_DIGITS_REGEXP,
 } from '@taiga-ui/core/constants';
 import {TuiNumberMaskOptions, TuiTextMaskListHandler} from '@taiga-ui/core/mask';
@@ -73,10 +74,16 @@ export function tuiCreateNumberMask({
         const integerCapped = integerLimit
             ? integer.slice(0, integerLimit + thousandSeparators.length)
             : integer;
-        const integerCappedClean = integerCapped
-            .replace(TUI_NON_DIGITS_REGEXP, '')
-            .replace(/^0+(?!\.|$)/, '');
-        const withSeparator = addThousandsSeparator(integerCappedClean, thousandSymbol);
+        const integerCappedClean = integerCapped.replace(TUI_NON_DIGITS_REGEXP, '');
+        const leadingZerosMarchArray =
+            integerCappedClean.match(TUI_LEADING_ZEROES_REGEXP) || [];
+        const leadingZerosAmount =
+            leadingZerosMarchArray.length !== 0 ? leadingZerosMarchArray[0].length : 0;
+        const integerCappedZerosClean = integerCappedClean.replace(/^0+(?!\.|$)/, '');
+        const withSeparator = addThousandsSeparator(
+            integerCappedZerosClean,
+            thousandSymbol,
+        );
         const mask = convertToMask(withSeparator);
 
         if ((hasDecimal && allowDecimal) || requireDecimal) {
@@ -100,6 +107,8 @@ export function tuiCreateNumberMask({
             }
         }
 
+        const isOnlyZeroDigit = mask.length === 1 && integerCappedZerosClean === '0';
+
         if (isNegative) {
             if (mask.length === 0) {
                 mask.push(TUI_DIGIT_REGEXP);
@@ -108,31 +117,36 @@ export function tuiCreateNumberMask({
             mask.unshift('-');
         }
 
-        return preventLeadingZeroes(mask, thousandSymbol, integerCappedClean);
-        //return mask;
+        return preventLeadingZeroes(mask, isOnlyZeroDigit, leadingZerosAmount);
     };
 }
 
 function preventLeadingZeroes(
     mask: Array<string | RegExp>,
-    thousandSymbol: string = CHAR_NO_BREAK_SPACE,
-    integerCappedClean: string,
+    isOnlyZeroDigit: boolean = false,
+    leadingZerosAmount: number = 0,
 ): Array<string | RegExp> {
+    if (isOnlyZeroDigit || leadingZerosAmount < 0) {
+        return mask;
+    }
+
     const firstDigitIndex = mask.indexOf(TUI_DIGIT_REGEXP);
 
     if (firstDigitIndex === -1) {
         return mask;
     }
 
-    const isOnlyNonZeroDigit =
-        mask.length === 1 && NON_ZERO_DIGIT.test(integerCappedClean);
-
-    if (
-        isOnlyNonZeroDigit ||
-        [TUI_DIGIT_REGEXP, thousandSymbol].includes(mask[firstDigitIndex + 1])
-    ) {
-        mask[firstDigitIndex] = NON_ZERO_DIGIT;
+    if (mask[firstDigitIndex + 1] === MASK_CARET_TRAP && leadingZerosAmount === 1) {
+        return mask;
     }
+
+    if (mask[firstDigitIndex + 1] === MASK_CARET_TRAP) {
+        mask.unshift(NON_ZERO_DIGIT);
+
+        return mask;
+    }
+
+    mask[firstDigitIndex] = NON_ZERO_DIGIT;
 
     return mask;
 }
