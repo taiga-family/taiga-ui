@@ -44,9 +44,7 @@
         /* clean-css ignore:end */
         stroke-width: @progress-stroke[ @@size];
         stroke-dasharray: @circumference;
-        stroke-dashoffset: calc(
-            @circumference - var(--progress-percentage) * @circumference
-        );
+        stroke-dashoffset: calc(@circumference - var(--progress-percentage) * @circumference);
     }
 }
 

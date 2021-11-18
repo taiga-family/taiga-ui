@@ -6,10 +6,6 @@
         "tinkoff-angular-member-ordering": false
     },
     "linterOptions": {
-        "exclude": [
-            "projects/**/test.ts",
-            "projects/**/icons/all.ts",
-            "**/schematics/*/files/**/*"
-        ]
+        "exclude": ["projects/**/test.ts", "projects/**/icons/all.ts", "**/schematics/*/files/**/*"]
     }
 }

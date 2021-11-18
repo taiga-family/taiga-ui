@@ -1,11 +1,7 @@
 {
     "compileOnSave": false,
     "include": ["projects/**/*"],
-    "exclude": [
-        "projects/**/*.spec.ts",
-        "projects/demo-integrations",
-        "**/schematics/**/*"
-    ],
+    "exclude": ["projects/**/*.spec.ts", "projects/demo-integrations", "**/schematics/**/*"],
     "compilerOptions": {
         "baseUrl": "./",
         "skipLibCheck": true,

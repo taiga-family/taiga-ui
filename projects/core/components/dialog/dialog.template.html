@@ -6,9 +6,11 @@
     [context]="context"
 ></header>
 <div class="content">
-    <h2 class="heading tui-text_{{ h }}" [id]="context.id">
-        {{ context.label }}
-    </h2>
+    <h2
+        class="heading tui-text_{{ h }}"
+        [id]="context.id"
+        [textContent]="context.label"
+    ></h2>
     <section
         polymorpheus-outlet
         [context]="context"

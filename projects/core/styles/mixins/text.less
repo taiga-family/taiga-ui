@@ -166,17 +166,11 @@
 }
 
 // deprecated
-.font(@size, @line-height: 'none', @weight: normal, @color: 'none')
-    when
-    not
-    (@line-height = 'none') {
+.font(@size, @line-height: 'none', @weight: normal, @color: 'none') when not (@line-height = 'none') {
     line-height: @line-height;
 }
 
 // deprecated
-.font(@size, @line-height: 'none', @weight: normal, @color: 'none')
-    when
-    not
-    (@color = 'none') {
+.font(@size, @line-height: 'none', @weight: normal, @color: 'none') when not (@color = 'none') {
     color: @color;
 }

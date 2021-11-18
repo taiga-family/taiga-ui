@@ -44,9 +44,9 @@
                         class="pseudo-content"
                         [tuiBorderEnd]="border"
                     >
-                        <span>
-                            {{ fittedContent || controller.exampleText }}
-                        </span>
+                        <span
+                            [textContent]="fittedContent || controller.exampleText"
+                        ></span>
                         <span
                             class="pseudo-content__extra"
                             [textContent]="extraContent"
