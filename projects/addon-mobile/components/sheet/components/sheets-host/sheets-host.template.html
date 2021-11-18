@@ -3,10 +3,10 @@
         *ngFor="let item of items"
         tuiSheetWrapper
         class="t-wrapper"
-        [class.t-wrapper_overlay]="item.overlay"
-        [class.t-wrapper_closeable]="item.closeable"
         [@tuiSlideInTop]="options"
         [@tuiFadeIn]="options"
+        [class.t-wrapper_overlay]="item.overlay"
+        [class.t-wrapper_closeable]="item.closeable"
     >
         <tui-sheet
             tuiScrollRef

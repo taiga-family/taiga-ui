@@ -1,7 +1,7 @@
 <tui-combo-box
     *tuiLet="service.request(search) | async as filtered"
-    class="b-form"
     tuiTextfieldExampleText="Type a name"
+    class="b-form"
     [formControl]="control"
     [valueContent]="value"
     [(search)]="search"
@@ -9,8 +9,8 @@
     Find the best employees
     <ng-template #value let-item>
         <tui-avatar
-            class="avatar"
             size="xs"
+            class="avatar"
             [avatarUrl]="item.avatarUrl || null"
             [text]="item.toString()"
         ></tui-avatar>
@@ -25,8 +25,8 @@
                 [disabled]="item.disabled"
             >
                 <tui-avatar
-                    class="avatar"
                     size="xs"
+                    class="avatar"
                     [avatarUrl]="item.avatarUrl || null"
                     [text]="item.toString()"
                 ></tui-avatar>

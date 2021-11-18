@@ -19,8 +19,8 @@
             <ng-template>
                 <form class="form" [formGroup]="control">
                     <tui-input-card
-                        class="control"
                         formControlName="card"
+                        class="control"
                         [autocompleteEnabled]="autocompleteEnabledCard"
                         [cardSrc]="cardSrc"
                         [focusable]="focusable"
@@ -40,8 +40,8 @@
                         Card number
                     </tui-input-card>
                     <tui-input-expire
-                        class="control"
                         formControlName="expire"
+                        class="control"
                         [autocompleteEnabled]="autocompleteEnabledExpire"
                         [focusable]="focusable"
                         [readOnly]="readOnly"
@@ -55,8 +55,8 @@
                         Expire date
                     </tui-input-expire>
                     <tui-input-cvc
-                        class="control"
                         formControlName="cvc"
+                        class="control"
                         [autocompleteEnabled]="autocompleteEnabledCVC"
                         [focusable]="focusable"
                         [length]="length"
@@ -74,8 +74,8 @@
                         CVC/CVV
                     </tui-input-cvc>
                     <tui-field-error
-                        class="error"
                         formControlName="card"
+                        class="error"
                     ></tui-field-error>
                 </form>
             </ng-template>

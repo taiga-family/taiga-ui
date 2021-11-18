@@ -19,12 +19,12 @@
 
     <ng-template pageTab>
         <p i18n class="text b-full-width">
-            Formatted number: {{value | tuiFormatNumber: decimalLimit:
-            decimalSeparator}}
+            Formatted number: {{ value | tuiFormatNumber:
+            decimalLimit:decimalSeparator }}
         </p>
         <tui-input-slider
-            class="slider"
             size="m"
+            class="slider"
             [max]="10000000"
             [quantum]="0.111"
             [(ngModel)]="value"

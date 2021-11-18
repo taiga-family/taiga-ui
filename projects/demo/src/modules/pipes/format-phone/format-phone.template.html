@@ -14,12 +14,12 @@
 
     <ng-template pageTab>
         <p i18n class="text b-full-width">
-            Formatted phone number: {{index | tuiFormatPhone: countryCode :
-            phoneMask}}
+            Formatted phone number: {{ index | tuiFormatPhone:
+            countryCode:phoneMask }}
         </p>
         <tui-input
-            class="slider"
             tuiTextfieldSize="m"
+            class="slider"
             [tuiTextfieldMaxLength]="maxLength"
             [tuiTextfieldLabelOutside]="true"
             [(ngModel)]="index"

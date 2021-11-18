@@ -3,7 +3,7 @@
         *ngIf="value !== children"
         polymorpheus-outlet
         [content]="content"
-        [context]="{ $implicit: value, node: view }"
+        [context]="{$implicit: value, node: view}"
     ></div>
     <tui-tree
         *ngFor="let child of children"

@@ -4,7 +4,7 @@
         automation-id="tui-axex__axis-y-name"
         class="t-name t-name_primary"
     >
-        {{axisYName}}
+        {{ axisYName }}
     </div>
     <div *ngIf="!axisYInset" class="t-labels-y t-labels-y_primary">
         <div
@@ -12,7 +12,7 @@
             automation-id="tui-axex__axis-y-label"
             class="t-label-y"
         >
-            {{fallback(label)}}
+            {{ fallback(label) }}
         </div>
     </div>
 </div>
@@ -25,16 +25,16 @@
         <div class="t-vertical">
             <div
                 *tuiRepeatTimes="let index of verticalLines"
-                class="t-line t-line_vertical"
                 automation-id="tui-axex__vertical-line"
+                class="t-line t-line_vertical"
                 [style.borderRightStyle]="verticalLinesHandler(index, verticalLines)"
             ></div>
         </div>
         <div class="t-horizontal">
             <div
                 *tuiRepeatTimes="let index of horizontalLines"
-                class="t-line"
                 automation-id="tui-axex__horizontal-line"
+                class="t-line"
                 [style.borderTopStyle]="horizontalLinesHandler(index, horizontalLines)"
             ></div>
         </div>
@@ -44,7 +44,7 @@
                 automation-id="tui-axex__axis-y-label"
                 class="t-label-y"
             >
-                {{fallback(label)}}
+                {{ fallback(label) }}
             </div>
         </div>
         <div
@@ -56,7 +56,7 @@
                 automation-id="tui-axex__axis-y-secondary-label"
                 class="t-label-y"
             >
-                {{fallback(label)}}
+                {{ fallback(label) }}
             </div>
         </div>
         <div class="t-content">
@@ -70,7 +70,7 @@
             class="t-label-x"
             [class.t-label-x_transparent]="label === null"
         >
-            {{fallback(label)}}
+            {{ fallback(label) }}
         </div>
     </div>
 </div>
@@ -85,7 +85,7 @@
             automation-id="tui-axex__axis-y-secondary-label"
             class="t-label-y"
         >
-            {{fallback(label)}}
+            {{ fallback(label) }}
         </div>
     </div>
     <div
@@ -93,6 +93,6 @@
         automation-id="tui-axex__axis-y-secondary-name"
         class="t-name"
     >
-        {{axisYSecondaryName}}
+        {{ axisYSecondaryName }}
     </div>
 </div>

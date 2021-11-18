@@ -3,12 +3,12 @@
     polymorpheus-outlet
     class="t-content"
     [content]="content"
-    [context]="{ $implicit: this, template: template }"
+    [context]="{$implicit: this, template: template}"
 ></div>
 <tui-expand
     *ngIf="isExpandable"
-    class="t-children"
     role="group"
+    class="t-children"
     [expanded]="expanded$ | async"
 >
     <div>

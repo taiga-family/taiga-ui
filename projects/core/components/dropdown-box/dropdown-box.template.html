@@ -7,8 +7,8 @@
     <tui-scrollbar class="scroll">
         <div tabindex="0" (focus)="onTopFocus()"></div>
         <div
-            polymorpheus-outlet
             #content
+            polymorpheus-outlet
             class="content"
             [content]="directive.content"
             [context]="getContext(directive.context, activeZone)"

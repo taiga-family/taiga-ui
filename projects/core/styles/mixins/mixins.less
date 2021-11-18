@@ -240,7 +240,12 @@
 .dashed-border(@color: currentColor, @alignment: bottom, @space: 4) {
     @size: unit(@space, px);
     @percentage: (100% / @space * 2);
-    background-image: linear-gradient(to right, @color 0%, @color @percentage, transparent @percentage);
+    background-image: linear-gradient(
+        to right,
+        @color 0%,
+        @color @percentage,
+        transparent @percentage
+    );
     background-position: 0 @alignment;
     background-size: @size 1px;
     background-repeat: repeat-x;
@@ -292,7 +297,12 @@
         right: 0;
         width: @width;
         height: 100%;
-        background-image: linear-gradient(to right, @transparentColor 0%, @color 80%, @color 100%);
+        background-image: linear-gradient(
+            to right,
+            @transparentColor 0%,
+            @color 80%,
+            @color 100%
+        );
         pointer-events: none;
     }
 }

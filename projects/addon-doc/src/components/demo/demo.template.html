@@ -1,14 +1,14 @@
 <div class="t-bg-toggle" [tuiMode]="null">
     <ng-template #tooltip>
-        {{texts[0]}}
+        {{ texts[0] }}
         <a tuiLink tuiMode="onDark" routerLink="/directives/mode">
             <code>tuiMode</code>
         </a>
     </ng-template>
-    <ng-container *ngIf="isMobile else desktop">
+    <ng-container *ngIf="isMobile; else desktop">
         <tui-select
-            class="t-mode"
             tuiTextfieldSize="s"
+            class="t-mode"
             [tuiTextfieldCleaner]="true"
             [tuiHintContent]="tooltip"
             [formControl]="modeControl"
@@ -25,9 +25,9 @@
         <tui-tooltip describeId="form" [content]="tooltip"></tui-tooltip>
         <div tuiGroup class="tui-space_left-3" [collapsed]="true">
             <tui-radio-block
-                class="tui-group__auto-width-item"
                 size="s"
                 nativeId="form"
+                class="tui-group__auto-width-item"
                 [item]="null"
                 [hideRadio]="true"
                 [formControl]="modeControl"
@@ -35,20 +35,20 @@
                 null
             </tui-radio-block>
             <tui-radio-block
-                class="tui-group__auto-width-item"
                 item="onDark"
                 size="s"
                 nativeId="form"
+                class="tui-group__auto-width-item"
                 [hideRadio]="true"
                 [formControl]="modeControl"
             >
                 onDark
             </tui-radio-block>
             <tui-radio-block
-                class="tui-group__auto-width-item"
                 item="onLight"
                 size="s"
                 nativeId="form"
+                class="tui-group__auto-width-item"
                 [hideRadio]="true"
                 [formControl]="modeControl"
             >
@@ -57,11 +57,11 @@
         </div>
     </ng-template>
     <tui-checkbox-labeled
-        class="tui-space_left-3"
         size="m"
+        class="tui-space_left-3"
         [(ngModel)]="opaque"
     >
-        {{texts[1]}}
+        {{ texts[1] }}
     </tui-checkbox-labeled>
 </div>
 <div
@@ -79,12 +79,12 @@
             <button
                 tuiButton
                 type="button"
-                class="tui-space_top-3"
                 size="s"
+                class="tui-space_top-3"
                 [iconRight]="icon"
                 (click)="toggleDetails()"
             >
-                {{texts[2]}}
+                {{ texts[2] }}
             </button>
             <ng-template #icon>
                 <tui-svg
@@ -96,12 +96,12 @@
             <tui-expand class="t-expand" [expanded]="expanded">
                 <ng-template tuiExpandContent>
                     <pre class="t-value">
-Form data: {{testForm.value | json}}</pre
+Form data: {{ testForm.value | json }}</pre
                     >
                     <div tuiGroup class="tui-space_top-3">
                         <tui-select
-                            class="t-select"
                             tuiTextfieldSize="s"
+                            class="t-select"
                             [ngModel]="updateOn"
                             [ngModelOptions]="{standalone: true}"
                             (ngModelChange)="updateOnChange($event)"
@@ -114,17 +114,17 @@ Form data: {{testForm.value | json}}</pre
                         </tui-select>
                         <button
                             tuiButton
-                            class="tui-group__auto-width-item"
                             type="reset"
                             size="s"
+                            class="tui-group__auto-width-item"
                         >
                             Reset
                         </button>
                         <button
                             tuiButton
-                            class="tui-group__auto-width-item"
                             type="submit"
                             size="s"
+                            class="tui-group__auto-width-item"
                         >
                             Submit
                         </button>
@@ -135,8 +135,8 @@ Form data: {{testForm.value | json}}</pre
         <ng-content></ng-content>
     </div>
     <button
-        class="t-resizer"
         tabindex="-1"
+        class="t-resizer"
         (tuiDragStart)="onDragStart($event)"
         (tuiDragContinues)="onDragContinues($event)"
         (tuiDragEnd)="onDragEnd()"

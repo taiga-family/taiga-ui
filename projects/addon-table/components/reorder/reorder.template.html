@@ -1,7 +1,7 @@
 <div cdkDropList class="wrapper" (cdkDropListDropped)="drop($event)">
-    <div *ngFor="let item of items" class="item" tabindex="-1" cdkDrag>
+    <div *ngFor="let item of items" tabindex="-1" cdkDrag class="item">
         <tui-svg src="tuiIconDrag" class="icon"></tui-svg>
-        {{item}}
+        {{ item }}
         <button
             type="button"
             tuiIconButton

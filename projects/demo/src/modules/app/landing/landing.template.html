@@ -1,4 +1,4 @@
-<img class="taiga" src="assets/images/taiga.svg" alt="" />
+<img src="assets/images/taiga.svg" alt="" class="taiga" />
 
 <section
     class="components"
@@ -15,8 +15,8 @@
             components
         </h2>
         <tui-input-tag
-            class="tui-space_vertical-10"
             tuiHintContent="Customizable for any use case"
+            class="tui-space_vertical-10"
             [tuiTextfieldLabelOutside]="true"
             [(ngModel)]="tags"
         ></tui-input-tag>
@@ -42,53 +42,53 @@
             <div>
                 <tui-checkbox-labeled
                     *ngFor="let label of labels"
-                    class="tui-space_bottom-4"
                     size="l"
+                    class="tui-space_bottom-4"
                     [ngModel]="label === labels[1]"
                 >
-                    {{label}}
+                    {{ label }}
                 </tui-checkbox-labeled>
             </div>
             <div class="controls">
                 <label>
                     <tui-toggle
-                        class="tui-space_right-3"
                         size="l"
+                        class="tui-space_right-3"
                         [showIcons]="true"
                         [ngModel]="true"
                     ></tui-toggle>
                     Push notifications
                 </label>
                 <tui-slider
-                    class="tui-space_vertical-6"
                     size="m"
+                    class="tui-space_vertical-6"
                     [max]="140"
                     [ngModel]="80"
                 ></tui-slider>
                 <div class="icons">
                     <button
                         tuiIconButton
-                        class="button"
                         appearance=""
                         icon="tuiIconSoundOffLarge"
                         title="Mute speaker"
                         shape="rounded"
+                        class="button"
                     ></button>
                     <button
                         tuiIconButton
-                        class="button"
                         appearance=""
                         icon="tuiIconMicOffLarge"
                         title="Mute microphone"
                         shape="rounded"
+                        class="button"
                     ></button>
                     <button
                         tuiIconButton
-                        class="error"
                         appearance=""
                         icon="tuiIconCallTransferLarge"
                         title="Forward call"
                         shape="rounded"
+                        class="error"
                     ></button>
                 </div>
             </div>
@@ -96,12 +96,12 @@
     </div>
     <div class="make">
         <svg
-            class="width"
             width="285"
             height="20"
             viewBox="0 0 285 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            class="width"
         >
             <path
                 d="M1.01042 9.79289C0.619898 10.1834 0.619898 10.8166 1.01042 11.2071L7.37438 17.5711C7.76491 17.9616 8.39807 17.9616 8.7886 17.5711C9.17912 17.1805 9.17912 16.5474 8.7886 16.1569L3.13174 10.5L8.7886 4.84315C9.17912 4.45262 9.17912 3.81946 8.7886 3.42893C8.39807 3.03841 7.76491 3.03841 7.37438 3.42893L1.01042 9.79289ZM283.814 11.2071C284.205 10.8166 284.205 10.1834 283.814 9.79289L277.45 3.42893C277.06 3.03841 276.427 3.03841 276.036 3.42893C275.646 3.81946 275.646 4.45262 276.036 4.84315L281.693 10.5L276.036 16.1569C275.646 16.5474 275.646 17.1805 276.036 17.5711C276.427 17.9616 277.06 17.9616 277.45 17.5711L283.814 11.2071ZM1.71753 11.5H283.107V9.5H1.71753V11.5Z"
@@ -118,12 +118,12 @@
     <div class="customize">
         Customize design the way you like it
         <svg
-            class="arrow"
             width="100"
             height="110"
             viewBox="0 0 100 110"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            class="arrow"
         >
             <path
                 d="M94 0L87.9795 9.85325L99.5229 10.1406L94 0ZM1.093 109.996C18.1038 108.407 40.5258 102.765 59.2087 87.6932C77.927 72.5926 92.7921 48.1045 94.775 9.04005L92.7775 8.93866C90.821 47.4838 76.1912 71.4232 57.9529 86.1366C39.6791 100.879 17.6828 106.437 0.907002 108.004L1.093 109.996Z"
@@ -137,20 +137,20 @@
             We use these components in our work ourselves, so we often release
             updates. Contributions are welcome —
             <a
-                class="link"
                 href="https://github.com/TinkoffCreditSystems/taiga-ui"
                 target="_blank"
+                class="link"
             >
                 GitHub repo
             </a>
         </p>
         <svg
-            class="os"
             width="286"
             height="412"
             viewBox="0 0 286 412"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            class="os"
         >
             <path
                 d="M385.2 291.026C410.869 268.605 429.016 238.827 437.174 205.736C445.332 172.645 443.107 137.844 430.801 106.061C418.495 74.2782 396.704 47.0536 368.388 28.085C340.072 9.11653 306.603 -0.676436 272.529 0.0363019C238.454 0.749039 205.424 11.9329 177.926 32.0689C150.428 52.2049 129.795 80.3169 118.828 112.587C107.862 144.856 107.094 179.719 116.629 212.441C126.163 245.162 145.539 274.155 172.124 295.483L218.426 237.767C203.691 225.946 192.952 209.876 187.667 191.74C182.382 173.604 182.808 154.281 188.886 136.395C194.964 118.509 206.401 102.928 221.642 91.7675C236.883 80.607 255.19 74.4082 274.076 74.0132C292.962 73.6181 311.512 79.046 327.207 89.5594C342.901 100.073 354.979 115.162 361.8 132.778C368.621 150.394 369.854 169.683 365.332 188.024C360.81 206.365 350.752 222.87 336.525 235.297L385.2 291.026Z"
@@ -179,7 +179,7 @@
         <span class="block">
             Taiga UI
             <span class="dash">——</span>
-            <img src="assets/images/taiga.svg" class="logo" alt="" />
+            <img src="assets/images/taiga.svg" alt="" class="logo" />
         </span>
         <span class="block">powerful set of</span>
         <span class="block">open source</span>
@@ -191,26 +191,26 @@
 <div
     *tuiRepeatTimes="let index of 3"
     #block
-    class="screen"
     waIntersectionObserver
     waIntersectionThreshold="0.5"
+    class="screen"
     (waIntersectionObservee)="onIntersection($event, index)"
 ></div>
 
 <footer class="footer">
     <a
         tuiButton
-        class="browse browse_mobile"
         appearance=""
         routerLink="/getting-started"
+        class="browse browse_mobile"
     >
         Browse
     </a>
     <a
         tuiButton
-        class="browse browse_desktop"
         appearance=""
         routerLink="/getting-started"
+        class="browse browse_desktop"
     >
         Browse components
     </a>

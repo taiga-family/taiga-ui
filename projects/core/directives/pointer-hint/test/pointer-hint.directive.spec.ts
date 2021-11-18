@@ -13,8 +13,8 @@ describe('PointerHint', () => {
                 <div
                     #hintHost
                     id="hint-host"
-                    class="host"
                     tuiHintDirection="top"
+                    class="host"
                     [tuiPointerHint]="hint"
                 >
                     Tooltip host

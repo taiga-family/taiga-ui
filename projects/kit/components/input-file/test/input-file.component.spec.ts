@@ -14,14 +14,14 @@ describe('InputFile', () => {
         template: `
             <tui-input-file
                 [accept]="accept"
-                [(ngModel)]="files"
                 [multiple]="true"
                 [loadingFiles]="loadingFiles"
-                [(rejectedFiles)]="rejectedFiles"
                 [showSize]="showSize"
                 [size]="size"
                 [readOnly]="readOnly"
                 [disabled]="disabled"
+                [(ngModel)]="files"
+                [(rejectedFiles)]="rejectedFiles"
             ></tui-input-file>
         `,
     })

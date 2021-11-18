@@ -11,7 +11,7 @@
     [disabled]="computedDisabled"
 >
     <label
-        *ngIf="(units$ | async) as units"
+        *ngIf="units$ | async as units"
         automation-id="tui-input-file__label"
     >
         <a tuiLink>
@@ -32,9 +32,9 @@
         <input
             *ngIf="!readOnly && !computedDisabled && (inputFileTexts$ | async) as texts"
             #input
-            class="native"
             type="file"
             tuiPreventDefault="mousedown"
+            class="native"
             [id]="id"
             [accept]="accept"
             [multiple]="multiple"
@@ -52,8 +52,8 @@
 <section
     *tuiLet="mode$ | async as mode"
     tuiGroup
-    class="files"
     orientation="vertical"
+    class="files"
     [collapsed]="true"
 >
     <tui-file

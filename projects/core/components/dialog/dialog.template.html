@@ -6,14 +6,16 @@
     [context]="context"
 ></header>
 <div class="content">
-    <h2 class="heading tui-text_{{h}}" [id]="context.id">{{context.label}}</h2>
+    <h2 class="heading tui-text_{{ h }}" [id]="context.id">
+        {{ context.label }}
+    </h2>
     <section
         polymorpheus-outlet
         [context]="context"
         [content]="context.content"
     >
         <ng-template let-text>
-            {{text}}
+            {{ text }}
             <div class="buttons">
                 <button
                     tuiButton
@@ -31,11 +33,11 @@
         tuiIconButton
         tuiPreventDefault="mousedown"
         automation-id="tui-dialog__close"
-        class="close"
         size="s"
         appearance=""
         icon="tuiIconCloseLarge"
         shape="rounded"
+        class="close"
         [title]="closeWord$ | async"
         (click)="close()"
     ></button>

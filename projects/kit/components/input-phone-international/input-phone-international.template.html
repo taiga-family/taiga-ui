@@ -21,8 +21,8 @@
             [tuiHintContent]="null"
         ></tui-primitive-textfield>
         <tui-input-phone
-            class="input-phone tui-group__auto-width-item"
             tuiTextfieldAutocomplete="off"
+            class="input-phone tui-group__auto-width-item"
             [ngModel]="value"
             [disabled]="disabled"
             [focusable]="focusable"
@@ -46,13 +46,15 @@
                 (click)="onItemClick(item)"
             >
                 <img
-                    class="country-item-flag"
                     alt=""
+                    class="country-item-flag"
                     [src]="getFlagPath(item)"
                 />
-                <span class="country-item-name">{{countriesNames[item]}}</span>
+                <span class="country-item-name">
+                    {{ countriesNames[item] }}
+                </span>
                 <span class="country-item-code">
-                    {{item | tuiMapper : isoToCountryCodeMapper}}
+                    {{ item | tuiMapper: isoToCountryCodeMapper }}
                 </span>
             </button>
         </tui-data-list>

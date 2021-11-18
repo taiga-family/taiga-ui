@@ -3,8 +3,8 @@
         *tuiRepeatTimes="let y of rowsNumber"
         class="t-cell"
         [class.t-cell_hovered]="tableSelectHovered(y, x)"
-        (mouseenter)="updateCurrentSize(y+1, x+1, $event)"
+        (mouseenter)="updateCurrentSize(y + 1, x + 1, $event)"
         (click)="onClick()"
     ></div>
 </div>
-<div class="t-description">{{tableSize.cols}}&#215;{{tableSize.rows}}</div>
+<div class="t-description">{{ tableSize.cols }}&#215;{{ tableSize.rows }}</div>

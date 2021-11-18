@@ -5,9 +5,9 @@
     (leftClick)="onPrevMonthClick()"
     (rightClick)="onNextMonthClick()"
 >
-    {{value | tuiMonth | async}}
+    {{ value | tuiMonth | async }}
     <ng-container *ngIf="oneYear; else button">
-        {{value.formattedYear}}
+        {{ value.formattedYear }}
     </ng-container>
     <ng-template #button>
         <button
@@ -17,7 +17,7 @@
             [tuiFocusable]="false"
             (click)="onYearClick()"
         >
-            {{value.formattedYear}}
+            {{ value.formattedYear }}
         </button>
     </ng-template>
 </tui-primitive-spin-button>

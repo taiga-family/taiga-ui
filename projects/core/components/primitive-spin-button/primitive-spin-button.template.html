@@ -1,8 +1,8 @@
 <div
     *ngIf="spinTexts$ | async as texts"
-    class="wrapper"
-    tuiPreventDefault="mousedown"
     #wrapper
+    tuiPreventDefault="mousedown"
+    class="wrapper"
     [tuiFocusable]="computedFocusable"
     (tuiFocusedChange)="onFocused($event)"
     (tuiFocusVisibleChange)="onFocusVisible($event)"

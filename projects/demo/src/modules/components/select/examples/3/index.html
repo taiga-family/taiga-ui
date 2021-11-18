@@ -1,5 +1,5 @@
 <form class="wrapper" [formGroup]="testForm">
-    <tui-select class="tui-space_bottom-4" formControlName="email">
+    <tui-select formControlName="email" class="tui-space_bottom-4">
         Choose an adress
         <tui-data-list *tuiDataList>
             <button
@@ -8,7 +8,7 @@
                 class="link"
                 (click)="toggle()"
             >
-                <tui-svg class="icon" src="tuiIconPlusCircleLarge"></tui-svg>
+                <tui-svg src="tuiIconPlusCircleLarge" class="icon"></tui-svg>
                 Add signature
             </button>
             <button *ngFor="let item of items" tuiOption [value]="item">
@@ -18,10 +18,10 @@
     </tui-select>
     <ng-container *ngIf="signatureVisible">
         <tui-text-area
-            class="tui-space_bottom-4"
             formControlName="signature"
             tuiTextfieldSize="m"
             tuiAutoFocus
+            class="tui-space_bottom-4"
         >
             Type a signature
         </tui-text-area>

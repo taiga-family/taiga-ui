@@ -5,17 +5,17 @@
         tuiIconButton
         type="button"
         size="xs"
-        class="t-link-icon"
         icon="tuiIconLinkLarge"
         appearance="icon"
+        class="t-link-icon"
         [title]="copy$ | async"
         (click)="copyExampleLink()"
     ></button>
 </h3>
 <h4
     *ngIf="description"
-    class="t-description"
     polymorpheus-outlet
+    class="t-description"
     [content]="description"
 ></h4>
 <div class="t-example">
@@ -25,7 +25,7 @@
             [(activeItemIndex)]="activeItemIndex"
         >
             <ng-container *ngFor="let tab of tabs">
-                <button *tuiTab tuiTab>{{tab}}</button>
+                <button *tuiTab tuiTab>{{ tab }}</button>
             </ng-container>
         </tui-tabs-with-more>
 
@@ -34,16 +34,16 @@
             tuiButton
             appearance="flat"
             size="s"
-            (click)="codeEditor.open(componentName, id || '',  processedContent)"
+            (click)="codeEditor.open(componentName, id || '', processedContent)"
         >
-            Edit on {{codeEditor.name}}
+            Edit on {{ codeEditor.name }}
         </button>
     </div>
     <ng-container [ngSwitch]="activeItem">
         <div
             *ngIf="isDefaultItem; else codeTab"
-            class="t-demo"
             automation-id="tui-doc-example"
+            class="t-demo"
         >
             <ng-content></ng-content>
         </div>

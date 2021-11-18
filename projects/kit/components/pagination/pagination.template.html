@@ -4,10 +4,10 @@
             tuiIconButton
             type="button"
             tuiPreventDefault="mousedown"
-            class="button"
             size="s"
             appearance="flat"
             icon="tuiIconChevronLeft"
+            class="button"
             [title]="texts[0]"
             [disabled]="arrowIsDisabledLeft"
             [focusable]="false"
@@ -23,9 +23,9 @@
                     tuiButton
                     type="button"
                     automation-id="tui-pagination__element"
-                    class="button"
                     shape="square"
                     size="s"
+                    class="button"
                     [disabled]="disabled"
                     [focusable]="elementIsFocusable(index)"
                     [appearance]="getElementMode(index)"
@@ -45,10 +45,10 @@
             tuiIconButton
             type="button"
             tuiPreventDefault="mousedown"
-            class="button"
             size="s"
             appearance="flat"
             icon="tuiIconChevronRight"
+            class="button"
             [title]="texts[1]"
             [disabled]="arrowIsDisabledRight"
             [focusable]="false"
@@ -61,8 +61,8 @@
             #element
             tuiButton
             type="button"
-            class="button button_small"
             shape="square"
+            class="button button_small"
             [class.button_active]="indexItem === index"
             [disabled]="disabled"
             [focusable]="elementIsFocusable(indexItem)"

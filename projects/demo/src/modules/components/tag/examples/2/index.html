@@ -2,15 +2,15 @@
     Base colors
     <tui-tag class="tag" [hoverable]="true" [value]="tag"></tui-tag>
     <tui-tag
+        status="primary"
         class="tag"
         [hoverable]="true"
-        status="primary"
         [value]="tag"
     ></tui-tag>
-    <div class="light-mode" tuiMode="onDark">
+    <div tuiMode="onDark" class="light-mode">
         <tui-tag class="tag" [hoverable]="true" [value]="tag"></tui-tag>
     </div>
-    <div class="dark-mode" tuiMode="onLight">
+    <div tuiMode="onLight" class="dark-mode">
         <tui-tag class="tag" [hoverable]="true" [value]="tag"></tui-tag>
     </div>
 </div>
@@ -19,8 +19,8 @@
     <code>status="custom"</code>
     <tui-tag
         *tuiRepeatTimes="let index of 20"
-        class="tag support-{{index + 1}}"
         status="custom"
+        class="tag support-{{index + 1}}"
         [hoverable]="true"
         [value]="tag"
     ></tui-tag>

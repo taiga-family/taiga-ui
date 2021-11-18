@@ -1,5 +1,5 @@
 <h2 *ngIf="!!context.label" class="t-heading" [id]="context.id">
-    {{context.label}}
+    {{ context.label }}
 </h2>
 <div
     polymorpheus-outlet
@@ -12,11 +12,11 @@
     tuiButton
     tuiRipple
     type="button"
-    class="t-button"
     size="s"
     appearance="flat"
+    class="t-button"
     [class.t-button_column]="context.actions.length > 2"
     (click)="onAction(index)"
 >
-    {{action}}
+    {{ action }}
 </button>

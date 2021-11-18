@@ -1,23 +1,23 @@
 <p i18n>Statuses</p>
 <tui-badge class="tui-space_right-2" [value]="-6"></tui-badge>
-<tui-badge class="tui-space_right-2" status="primary" [value]="6"></tui-badge>
+<tui-badge status="primary" class="tui-space_right-2" [value]="6"></tui-badge>
 <tui-badge
-    class="tui-space_right-2"
     status="success"
     value="Success"
-></tui-badge>
-<tui-badge class="tui-space_right-2" status="error" value="Error"></tui-badge>
-<tui-badge
     class="tui-space_right-2"
+></tui-badge>
+<tui-badge status="error" value="Error" class="tui-space_right-2"></tui-badge>
+<tui-badge
     status="warning"
     value="Warning"
+    class="tui-space_right-2"
 ></tui-badge>
 <tui-badge
-    class="tui-space_right-2"
     status="neutral"
     value="Neutral"
+    class="tui-space_right-2"
 ></tui-badge>
-<tui-badge class="tui-space_right-2" status="info" value="Info"></tui-badge>
+<tui-badge status="info" value="Info" class="tui-space_right-2"></tui-badge>
 <div tuiMode="onLight" class="tui-space_right-2 outline outline_dark">
     <tui-badge [value]="6"></tui-badge>
 </div>
@@ -31,8 +31,8 @@
 </p>
 <tui-badge
     *tuiRepeatTimes="let index of 20"
-    class="tui-space_horizontal-2 tui-space_vertical-2 support-{{index + 1}}"
     status="custom"
     value="Taiga"
+    class="tui-space_horizontal-2 tui-space_vertical-2 support-{{index + 1}}"
     [hoverable]="true"
 ></tui-badge>

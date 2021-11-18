@@ -18,9 +18,9 @@
     <ul>
         <li *ngFor="let item of state | keyvalue">
             <tui-doc-copy class="var" [cdkCopyToClipboard]="item.key">
-                <code>{{item.key}}</code>
+                <code>{{ item.key }}</code>
             </tui-doc-copy>
-            — {{item.value}}
+            — {{ item.value }}
         </li>
     </ul>
 

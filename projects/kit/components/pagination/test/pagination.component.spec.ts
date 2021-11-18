@@ -20,10 +20,10 @@ describe('TuiPaginationComponent', () => {
     @Component({
         template: `
             <tui-pagination
-                [(index)]="index"
                 [length]="length"
                 [activePadding]="activePadding"
                 [sidePadding]="sidePadding"
+                [(index)]="index"
             ></tui-pagination>
         `,
     })

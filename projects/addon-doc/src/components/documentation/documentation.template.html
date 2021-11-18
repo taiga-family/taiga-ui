@@ -1,11 +1,11 @@
-<h1 *ngIf="heading" class="tui-text_h4">{{heading}}</h1>
+<h1 *ngIf="heading" class="tui-text_h4">{{ heading }}</h1>
 <ng-content></ng-content>
 <table class="tui-table tui-table_layout_fixed tui-table_font-size_s">
     <tr class="tui-table__tr tui-table__tr_hover_disabled t-row t-row_header">
         <th class="tui-table__th tui-table__th_first t-cell t-cell_prop">
-            {{texts[2]}}
+            {{ texts[2] }}
         </th>
-        <td class="tui-table__th">{{type}}</td>
+        <td class="tui-table__th">{{ type }}</td>
         <td
             *ngIf="showValues && !isAPI"
             class="
@@ -13,7 +13,7 @@
                 t-cell t-cell_value
             "
         >
-            {{texts[3]}}
+            {{ texts[3] }}
         </td>
     </tr>
     <tr
@@ -29,10 +29,10 @@
             "
         >
             <div
-                class="t-property t-cell"
                 automation-id="tui-documentation__property-name"
+                class="t-property t-cell"
             >
-                {{stripOptional(propertyConnector.attrName)}}
+                {{ stripOptional(propertyConnector.attrName) }}
                 <tui-badge
                     *ngIf="isOptional(propertyConnector.attrName)"
                     size="s"
@@ -51,14 +51,14 @@
         </td>
         <td class="tui-table__td tui-table__td_align_center t-cell">
             <span class="type">
-                {{propertyConnector.documentationPropertyType}}
+                {{ propertyConnector.documentationPropertyType }}
                 <tui-tooltip
                     *ngIf="showContentTooltip(propertyConnector.documentationPropertyType)"
                     [describeId]="propertyConnector.attrName"
                     [content]="content"
                 >
                     <ng-template #content>
-                        {{texts[4]}}
+                        {{ texts[4] }}
                         <a
                             tuiLink
                             tuiMode="onDark"
@@ -103,7 +103,7 @@
                     ></tui-data-list-wrapper>
                 </tui-select>
                 <ng-template #selectContent let-data>
-                    <code>{{inspectAny(data)}}</code>
+                    <code>{{ inspectAny(data) }}</code>
                 </ng-template>
 
                 <ng-template #noItems>

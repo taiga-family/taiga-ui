@@ -8,8 +8,8 @@
         ></tui-data-list-wrapper>
     </tui-select>
     <tui-select
-        class="tui-space_vertical-5"
         formControlName="testValue"
+        class="tui-space_vertical-5"
         [tuiTextfieldLabelOutside]="true"
         [valueContent]="cardContent"
     >
@@ -36,9 +36,9 @@
     <ng-template #cardContent let-item>
         <div class="card-item">
             <tui-card
-                class="card"
                 size="s"
                 paymentSystem="mastercard"
+                class="card"
                 [cardNumber]="item.cardNumber.slice(1)"
             ></tui-card>
             <span class="card-name">{{item.cardName}}</span>

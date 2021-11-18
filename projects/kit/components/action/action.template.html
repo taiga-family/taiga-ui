@@ -6,9 +6,9 @@
     <ng-container *ngTemplateOutlet="content"></ng-container>
     <button
         #focusableElement
-        class="button"
         type="button"
         automation-id="tui-action__native"
+        class="button"
         [id]="id"
         [tuiDescribedBy]="id"
         [tuiFocusable]="computedFocusable"
@@ -20,4 +20,4 @@
         <ng-content></ng-content>
     </div>
 </ng-template>
-<tui-marker-icon class="icon" size="s" [src]="icon"></tui-marker-icon>
+<tui-marker-icon size="s" class="icon" [src]="icon"></tui-marker-icon>

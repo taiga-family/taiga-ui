@@ -7,9 +7,9 @@
     (focusedChange)="onFocused($event)"
 >
     <tui-primitive-textfield
-        class="textfield"
         tuiValueAccessor
         tuiTextfieldInputMode="numeric"
+        class="textfield"
         [filler]="getFiller$(mode) | async"
         [nativeId]="nativeId"
         [pseudoFocused]="innerPseudoFocused"
@@ -40,7 +40,7 @@
             [disabled]="disabledItemHandler(item)"
             (click)="onMenuClick(item)"
         >
-            {{item}}
+            {{ item }}
         </button>
     </tui-data-list>
 </ng-template>

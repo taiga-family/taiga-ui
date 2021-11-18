@@ -15,13 +15,13 @@
 </div>
 
 <form class="form tui-col_md-6" [formGroup]="testForm">
-    <label tuiLabel class="tui-row" label="Write a wise thought">
+    <label tuiLabel label="Write a wise thought" class="tui-row">
         <tui-text-area
             formControlName="testValue1"
+            tuiHintContent="it's just a joke"
             [expandable]="true"
             [tuiTextfieldMaxLength]="maxLength"
             [tuiTextfieldLabelOutside]="true"
-            tuiHintContent="it's just a joke"
         >
             Type it
         </tui-text-area>

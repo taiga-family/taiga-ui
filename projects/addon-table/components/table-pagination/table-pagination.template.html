@@ -1,13 +1,13 @@
 <ng-container *ngIf="texts$ | async as texts">
     <span class="pages">
-        {{texts.pages}}
-        <strong class="strong">{{pages}}</strong>
+        {{ texts.pages }}
+        <strong class="strong">{{ pages }}</strong>
     </span>
     <span>
-        {{texts.linesPerPage}}
+        {{ texts.linesPerPage }}
         <tui-hosted-dropdown [content]="content" [(open)]="open">
             <button tuiLink>
-                <strong>{{start + 1}}–{{end}}</strong>
+                <strong>{{ start + 1 }}–{{ end }}</strong>
             </button>
             <ng-template #content>
                 <tui-data-list>
@@ -19,23 +19,23 @@
                             class="item"
                             (click)="onItem(item)"
                         >
-                            {{item}}
+                            {{ item }}
                         </button>
                     </ng-container>
                 </tui-data-list>
             </ng-template>
         </tui-hosted-dropdown>
-        {{texts.of}}
-        <strong class="strong">{{total}}</strong>
+        {{ texts.of }}
+        <strong class="strong">{{ total }}</strong>
     </span>
     <ng-container *ngIf="spinTexts$ | async as spinTexts">
         <button
             tuiIconButton
             type="button"
-            class="tui-space_left-6 tui-space_right-1"
             size="xs"
             appearance="icon"
             icon="tuiIconChevronLeft"
+            class="tui-space_left-6 tui-space_right-1"
             [disabled]="leftDisabled"
             [title]="spinTexts[0]"
             (click)="back()"

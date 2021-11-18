@@ -8,10 +8,10 @@ import {TuiPressedModule} from '../pressed.module';
 describe('TuiPressed directive', () => {
     @Component({
         template: `
-            <div class="wrapper" style="position: fixed; top: 0; left: 0; z-index: 1000">
+            <div style="position: fixed; top: 0; left: 0; z-index: 1000" class="wrapper">
                 <div
-                    class="inner"
                     style="position: absolute; left: 0; top: 0; height: 200px; width: 100px"
+                    class="inner"
                     (tuiPressedChange)="pressed = $event"
                 >
                     button

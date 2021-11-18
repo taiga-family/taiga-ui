@@ -1,15 +1,15 @@
 <tui-hint-box
     *ngFor="let hint of hints$ | async"
     role="tooltip"
-    [attr.id]="hint.id"
     [@tuiFadeIn]="animation"
+    [attr.id]="hint.id"
     [hint]="hint"
     [tuiActiveZoneParent]="hint.activeZone"
     (tuiHoveredChange)="onHovered($event, hint)"
 >
     <div polymorpheus-outlet [content]="hint.content">
         <ng-template let-text>
-            <span class="t-text">{{text}}</span>
+            <span class="t-text">{{ text }}</span>
         </ng-template>
     </div>
 </tui-hint-box>

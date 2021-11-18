@@ -16,7 +16,7 @@
         [context]="context"
     >
         <ng-template let-content>
-            <img [src]="content" alt="" class="t-image" />
+            <img alt="" class="t-image" [src]="content" />
         </ng-template>
     </header>
     <section #content tuiSheetStop class="t-sheet">
@@ -35,7 +35,7 @@
             [context]="context"
         >
             <ng-template let-content>
-                <h2 tuiSheetHeading class="t-heading">{{content}}</h2>
+                <h2 tuiSheetHeading class="t-heading">{{ content }}</h2>
             </ng-template>
         </div>
     </section>

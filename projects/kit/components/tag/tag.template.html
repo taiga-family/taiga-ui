@@ -9,7 +9,7 @@
         class="left-content"
         [content]="leftContent"
     ></div>
-    <span automation-id="tui-tag__text" class="text">{{displayText}}</span>
+    <span automation-id="tui-tag__text" class="text">{{ displayText }}</span>
     <tui-loader
         *ngIf="showLoader"
         class="icon icon_loader"
@@ -20,8 +20,8 @@
         *ngIf="canRemove"
         tuiPreventDefault="mousedown"
         automation-id="tui-tag__remove"
-        class="icon"
         src="tuiIconCloseLarge"
+        class="icon"
         (click)="remove($event)"
     ></tui-svg>
 </div>
@@ -29,8 +29,8 @@
     *ngIf="editing"
     #input
     automation-id="tui-tag__edit"
-    class="edit"
     type="text"
+    class="edit"
     [attr.maxLength]="maxLength"
     [ngModel]="editedText"
     (ngModelChange)="onInput($event)"

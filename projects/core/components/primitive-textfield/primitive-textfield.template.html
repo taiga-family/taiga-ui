@@ -49,11 +49,11 @@
     </div>
     <div class="content">
         <div
-            polymorpheus-outlet
             *ngIf="iconAlignLeft"
+            polymorpheus-outlet
             class="icon icon_left"
             [content]="iconContent"
-            [context]="{ $implicit: size }"
+            [context]="{$implicit: size}"
         >
             <ng-template let-iconSrc>
                 <tui-svg [src]="iconSrc"></tui-svg>
@@ -65,7 +65,7 @@
                 class="value"
                 [class.value_visible]="isContextTable"
             >
-                {{value}}
+                {{ value }}
             </span>
             <label
                 *ngIf="hasPlaceholder"
@@ -84,10 +84,10 @@
             ></tui-value-decoration>
         </div>
         <div
-            polymorpheus-outlet
             *ngIf="hasCustomContent"
-            class="custom-content"
+            polymorpheus-outlet
             automation-id="tui-primitive-textfield__custom-content"
+            class="custom-content"
             [content]="controller.customContent"
         >
             <ng-template let-iconSrc>
@@ -96,9 +96,9 @@
         </div>
         <tui-svg
             *ngIf="hasCleaner"
-            class="cleaner"
             automation-id="tui-primitive-textfield__cleaner"
             src="tuiIconCloseLarge"
+            class="cleaner"
             (click.stop)="clear()"
         ></tui-svg>
         <tui-tooltip
@@ -112,11 +112,11 @@
             [hideDelay]="hintController.hideDelay"
         ></tui-tooltip>
         <div
-            polymorpheus-outlet
             *ngIf="iconAlignRight"
+            polymorpheus-outlet
             class="icon"
             [content]="iconContent"
-            [context]="{ $implicit: size }"
+            [context]="{$implicit: size}"
         >
             <ng-template let-iconSrc>
                 <tui-svg [src]="iconSrc"></tui-svg>
