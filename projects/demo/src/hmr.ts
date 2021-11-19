@@ -16,6 +16,7 @@ export const hmrBootstrap = (
         const makeVisible = createNewHosts(elements);
 
         ngModule.destroy();
+
         makeVisible();
     });
 };
