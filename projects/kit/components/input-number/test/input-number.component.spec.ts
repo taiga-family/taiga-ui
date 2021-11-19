@@ -322,6 +322,17 @@ describe('InputNumber', () => {
 
             expect(component.computedValue).toBe(`${value},00`);
         });
+
+        it(`Adds the number of zeros specified by the precision property when updating Value with an integer`, () => {
+            const value = '0';
+            const precision = 2;
+
+            component.decimal = 'always';
+            component.precision = precision;
+            component.onValue(value);
+
+            expect(component.computedValue).toBe(`${value},00`);
+        });
     });
 
     function getNativeInput(): DebugElement | null {

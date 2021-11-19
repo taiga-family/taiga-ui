@@ -75,11 +75,13 @@ export function tuiCreateNumberMask({
             ? integer.slice(0, integerLimit + thousandSeparators.length)
             : integer;
         const integerCappedClean = integerCapped.replace(TUI_NON_DIGITS_REGEXP, '');
-        const leadingZerosMarchArray =
-            integerCappedClean.match(TUI_LEADING_ZEROES_REGEXP) || [];
-        const leadingZerosAmount =
-            leadingZerosMarchArray.length !== 0 ? leadingZerosMarchArray[0].length : 0;
-        const integerCappedZerosClean = integerCappedClean.replace(/^0+(?!\.|$)/, '');
+        const [leadingZerosMarch] = integerCappedClean.match(
+            TUI_LEADING_ZEROES_REGEXP,
+        ) || [''];
+        const leadingZerosAmount = leadingZerosMarch.length;
+        const integerCappedZerosClean = integerCappedClean
+            .replace(/^0+(?!\.|$)/, '')
+            .trim();
         const withSeparator = addThousandsSeparator(
             integerCappedZerosClean,
             thousandSymbol,
@@ -126,7 +128,7 @@ function preventLeadingZeroes(
     isOnlyZeroDigit: boolean = false,
     leadingZerosAmount: number = 0,
 ): Array<string | RegExp> {
-    if (isOnlyZeroDigit || leadingZerosAmount < 0) {
+    if (isOnlyZeroDigit || leadingZerosAmount === 0) {
         return mask;
     }
 
@@ -136,11 +138,12 @@ function preventLeadingZeroes(
         return mask;
     }
 
-    if (mask[firstDigitIndex + 1] === MASK_CARET_TRAP && leadingZerosAmount === 1) {
-        return mask;
-    }
+    const secondMaskDigit = mask[firstDigitIndex + 1];
+    const isCaretTrap = secondMaskDigit === MASK_CARET_TRAP;
 
-    if (mask[firstDigitIndex + 1] === MASK_CARET_TRAP) {
+    if (isCaretTrap && leadingZerosAmount === 1) {
+        return mask;
+    } else if (isCaretTrap) {
         mask.unshift(NON_ZERO_DIGIT);
 
         return mask;
