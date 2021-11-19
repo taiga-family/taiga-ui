@@ -8,5 +8,6 @@
     "baseUrl": "http://localhost:3333",
     "testFiles": "**/*.spec.ts",
     "viewportWidth": 1280,
-    "viewportHeight": 720
+    "viewportHeight": 720,
+    "projectId": "taiga-ui"
 }

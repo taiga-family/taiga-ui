@@ -20,11 +20,22 @@ env:
     NX_BRANCH: ${{ github.event.number }}
 
 jobs:
+    pre:
+        name: Preparing
+        steps:
+            - name: Fetch Cypress API
+              run: |
+                  curl -s -X GET ${CYPRESS_API_URL} > /dev/null
     demo-integrations:
         name: Cypress
         runs-on: ubuntu-latest
+        needs: pre
+        matrix:
+            jobIndex: [1, 2, 3]
         env:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+            CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
+            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         steps:
             - uses: actions/checkout@v2
             - name: Use Node.js
