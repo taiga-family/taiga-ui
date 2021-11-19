@@ -9,7 +9,6 @@ import {default as tsconfig} from '!!raw-loader!./project-files/tsconfig.txt';
 import {Injectable} from '@angular/core';
 import stackblitz from '@stackblitz/sdk';
 import {CodeEditor} from '@taiga-ui/addon-doc';
-import {FrontEndExample} from '../../interfaces/front-end-example';
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';
 import {
@@ -32,7 +31,7 @@ const APP_COMP_META = {
 export class StackblitzService implements CodeEditor {
     readonly name = 'Stackblitz';
 
-    open(component: string, sampleId: string, content: FrontEndExample) {
+    open(component: string, sampleId: string, content: Record<string, string>) {
         if (!content.HTML || !content.TypeScript) {
             return;
         }

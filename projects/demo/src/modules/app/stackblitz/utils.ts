@@ -1,4 +1,4 @@
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {Project} from '@stackblitz/sdk/typings/interfaces';
 import {TsFileComponentParser, TsFileModuleParser, TsFileParser} from '../classes';
 import {isLess, isPrimaryComponentFile, isTS} from '../utils';
 
@@ -15,7 +15,7 @@ export const appPrefix = (stringsPart: TemplateStringsArray, path: string = '') 
 type FileName = string;
 type FileContent = string;
 
-export const getSupportFiles = <T extends FrontEndExample>(
+export const getSupportFiles = <T extends Record<string, string>>(
     files: T,
 ): Array<[FileName, FileContent]> => {
     return Object.entries(files).filter(
@@ -25,8 +25,8 @@ export const getSupportFiles = <T extends FrontEndExample>(
 
 export const prepareSupportFiles = (
     files: Array<[FileName, FileContent]>,
-): Record<FileName, FileContent> => {
-    const processedContent: Record<FileName, FileContent> = {};
+): Project['files'] => {
+    const processedContent: Project['files'] = {};
 
     for (const [fileName, fileContent] of files) {
         const prefixedFileName = appPrefix`${fileName}`;
