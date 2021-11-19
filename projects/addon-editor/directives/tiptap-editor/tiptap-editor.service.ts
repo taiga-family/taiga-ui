@@ -1,4 +1,3 @@
-// tslint:disable:no-unused-vars
 import {Inject, Injectable} from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 // @ts-ignore
