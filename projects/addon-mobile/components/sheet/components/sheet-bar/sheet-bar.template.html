@@ -1,5 +1,5 @@
 <ng-container *tuiLet="rotate$ | async as deg">
-    <div class="t-bar" style="transform: rotate(-{{deg}}deg)"></div>
+    <div style="transform: rotate(-{{ deg }}deg)" class="t-bar"></div>
     <ng-content *ngIf="deg"></ng-content>
-    <div class="t-bar" style="transform: rotate({{deg}}deg)"></div>
+    <div style="transform: rotate({{ deg }}deg)" class="t-bar"></div>
 </ng-container>

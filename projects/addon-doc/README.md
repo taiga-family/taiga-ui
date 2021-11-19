@@ -27,9 +27,7 @@ npm i @taiga-ui/addon-doc
 1. Include `TuiDocMainModule` in your App module and use in your template:
 
     ```html
-    <tui-doc-main>
-        You can add content here, it will be shown below navigation in the sidebar
-    </tui-doc-main>
+    <tui-doc-main>You can add content here, it will be shown below navigation in the sidebar</tui-doc-main>
     ```
 
 2. Configure languages to highlight in your main module:
@@ -50,11 +48,9 @@ npm i @taiga-ui/addon-doc
                 provide: HIGHLIGHT_OPTIONS,
                 useValue: {
                     coreLibraryLoader: () => import('highlight.js/lib/core' as string),
-                    lineNumbersLoader: () =>
-                        import('highlightjs-line-numbers.js' as string), // Optional, only if you want the line numbers
+                    lineNumbersLoader: () => import('highlightjs-line-numbers.js' as string), // Optional, only if you want the line numbers
                     languages: {
-                        typescript: () =>
-                            import('highlight.js/lib/languages/typescript' as string),
+                        typescript: () => import('highlight.js/lib/languages/typescript' as string),
                         less: () => import('highlight.js/lib/languages/less' as string),
                         xml: () => import('highlight.js/lib/languages/xml' as string),
                     },
@@ -108,10 +104,7 @@ npm i @taiga-ui/addon-doc
     import {SuperComponent} from './super.component';
 
     @NgModule({
-        imports: [
-            TuiAddonDocModule,
-            RouterModule.forChild(generateRoutes(SuperComponent)),
-        ],
+        imports: [TuiAddonDocModule, RouterModule.forChild(generateRoutes(SuperComponent))],
         declarations: [SuperComponent],
         exports: [SuperComponent],
     })
@@ -149,11 +142,7 @@ npm i @taiga-ui/addon-doc
             <!-- default tab name would be used -->
             This would be the content of a first tab
 
-            <tui-doc-example
-                id="basic-example"
-                heading="Example of usage"
-                [content]="example"
-            >
+            <tui-doc-example id="basic-example" heading="Example of usage" [content]="example">
                 <example-1></example-1>
             </tui-doc-example>
         </ng-template>

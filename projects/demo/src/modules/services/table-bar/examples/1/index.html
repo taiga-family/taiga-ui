@@ -3,14 +3,14 @@
 </button>
 
 <ng-template #tableBarTemplate let-close>
-    <div class="content" tuiMode="onDark">
+    <div tuiMode="onDark" class="content">
         <button tuiButton type="button" size="m">Save</button>
         <button
             tuiButton
             type="button"
-            class="tui-space_left-3"
             appearance="flat"
             size="m"
+            class="tui-space_left-3"
             (click)="close()"
         >
             Cancel
@@ -18,10 +18,10 @@
         <button
             tuiButton
             type="button"
-            class="delete-button"
             appearance="outline"
             size="m"
             icon="tuiIconTrashLarge"
+            class="delete-button"
         >
             Delete
         </button>

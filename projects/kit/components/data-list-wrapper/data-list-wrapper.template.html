@@ -1,4 +1,4 @@
-<tui-data-list *ngIf="items else loading" [emptyContent]="emptyContent">
+<tui-data-list *ngIf="items; else loading" [emptyContent]="emptyContent">
     <button
         *ngFor="let item of items"
         #elementRef="elementRef"
@@ -19,7 +19,7 @@
 </tui-data-list>
 <ng-template #loading>
     <tui-loader
-        class="tui-space_vertical-3"
         automation-id="tui-data-list-wrapper__loader"
+        class="tui-space_vertical-3"
     ></tui-loader>
 </ng-template>

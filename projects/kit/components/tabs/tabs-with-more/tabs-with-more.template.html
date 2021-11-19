@@ -38,7 +38,7 @@
             <span polymorpheus-outlet [content]="moreContent || more"></span>
         </button>
         <ng-template #more>
-            {{moreWord$ | async}}
+            {{ moreWord$ | async }}
             <tui-svg
                 src="tuiIconChevronDown"
                 class="icon"

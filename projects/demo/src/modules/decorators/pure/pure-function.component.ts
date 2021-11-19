@@ -10,7 +10,7 @@ import {changeDetection} from '../../../change-detection-strategy';
         <div *ngIf="show" class="tui-space_top-2">
             Result: {{ calculate(counter, text) | json }}
         </div>
-        <button tuiButton class="tui-space_top-2" type="button" (click)="show = !show">
+        <button tuiButton type="button" class="tui-space_top-2" (click)="show = !show">
             Show/hide
         </button>
     `,

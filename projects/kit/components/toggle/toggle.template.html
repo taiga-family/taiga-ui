@@ -18,13 +18,13 @@
             polymorpheus-outlet
             class="icon-wrapper"
             [content]="iconOn"
-            [context]="{ $implicit: size }"
+            [context]="{$implicit: size}"
         >
             <ng-template let-icon>
                 <tui-svg
                     *ngIf="showIcons && !showLoader"
-                    class="icon"
                     automation-id="tui-toggle__check-icon"
+                    class="icon"
                     [src]="icon"
                 ></tui-svg>
             </ng-template>
@@ -41,13 +41,13 @@
             polymorpheus-outlet
             class="icon-wrapper"
             [content]="iconOff"
-            [context]="{ $implicit: size }"
+            [context]="{$implicit: size}"
         >
             <ng-template let-icon>
                 <tui-svg
                     *ngIf="showIcons && !showLoader"
-                    class="icon icon_off"
                     automation-id="tui-toggle__cancel-icon"
+                    class="icon icon_off"
                     [src]="icon"
                 ></tui-svg>
             </ng-template>
@@ -57,9 +57,9 @@
 <input
     #focusableElement
     type="checkbox"
-    class="checkbox"
     role="switch"
     automation-id="tui-toggle__checkbox"
+    class="checkbox"
     [attr.aria-checked]="value"
     [id]="id"
     [disabled]="disabled"

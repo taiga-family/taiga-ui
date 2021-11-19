@@ -1,6 +1,6 @@
 <tui-wrapper
-    class="t-outline"
     appearance="textfield"
+    class="t-outline"
     [readOnly]="readOnly"
     [disabled]="disabled"
     [focused]="computedFocused"
@@ -29,7 +29,9 @@
         >
             <ng-content></ng-content>
         </div>
-        <div *ngIf="hasExampleText" class="t-example-text">{{exampleText}}</div>
+        <div *ngIf="hasExampleText" class="t-example-text">
+            {{ exampleText }}
+        </div>
     </div>
 
     <tui-scrollbar class="t-scrollbar">
@@ -46,7 +48,7 @@
                 [value]="value"
                 [editable]="interactive"
                 (valueChange)="onModelChange($event)"
-                (stateChange)="0"
+                (stateChange)="(0)"
             ></div>
         </div>
     </tui-scrollbar>

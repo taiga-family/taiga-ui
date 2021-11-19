@@ -1,27 +1,13 @@
 module.exports = {
-    ...require('@tinkoff/linters/prettier/prettier.config'),
-    htmlWhitespaceSensitivity: 'ignore',
+    ...require('@tinkoff/prettier-config/angular'),
     overrides: [
         {
+            files: ['*.js', '*.ts'],
+            options: {printWidth: 90, parser: 'typescript'},
+        },
+        {
             files: '*.html',
-            options: {
-                printWidth: 80,
-                parser: 'html',
-            },
-        },
-        {
-            files: '*.svg',
-            options: {
-                printWidth: 120,
-                parser: 'html',
-            },
-        },
-        {
-            files: '*.less',
-            options: {
-                printWidth: 120,
-                parser: 'less',
-            },
+            options: {printWidth: 80, parser: 'html'},
         },
     ],
 };

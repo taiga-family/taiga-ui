@@ -17,7 +17,7 @@ describe('Hint', () => {
     @Component({
         template: `
             <tui-root>
-                <div id="hint-host" class="host" tuiHintDirection="top" [tuiHint]="hint">
+                <div id="hint-host" tuiHintDirection="top" class="host" [tuiHint]="hint">
                     Tooltip host
                 </div>
             </tui-root>

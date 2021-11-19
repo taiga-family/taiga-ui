@@ -62,13 +62,13 @@
             </tui-primitive-textfield>
         </tui-doc-demo>
         <ng-template #template let-item>
-            <tui-avatar class="avatar" size="xs" [text]="item"></tui-avatar>
-            {{item}}
+            <tui-avatar size="xs" class="avatar" [text]="item"></tui-avatar>
+            {{ item }}
         </ng-template>
         <ng-template #interactiveContent>
             <tui-svg
-                class="icon-button"
                 src="tuiIconCalendarLarge"
+                class="icon-button"
                 (click)="onClick()"
             ></tui-svg>
         </ng-template>
@@ -214,27 +214,27 @@
             <bootstrap *ngIf="isBootstrap"></bootstrap>
             <material *ngIf="isMaterial"></material>
             <tui-radio-list
-                class="tui-space_bottom-4"
                 size="l"
                 orientation="horizontal"
+                class="tui-space_bottom-4"
                 [items]="themes"
                 [(ngModel)]="theme"
             ></tui-radio-list>
-            <ng-template i18n #label>Theming sample</ng-template>
+            <ng-template #label i18n>Theming sample</ng-template>
             <label
                 tuiLabel
                 class="theme-wrapper label"
                 [label]="isBootstrap ? label : ''"
             >
                 <tui-primitive-textfield
-                    class="input"
                     value="Value"
                     tuiTextfieldExampleText="Example text"
+                    class="input"
                     [tuiTextfieldCleaner]="!isBootstrap"
                     [tuiTextfieldLabelOutside]="isBootstrap"
                     [tuiTextfieldSize]="customizationSize"
                 >
-                    {{placeholder}}
+                    {{ placeholder }}
                 </tui-primitive-textfield>
             </label>
         </tui-customization>

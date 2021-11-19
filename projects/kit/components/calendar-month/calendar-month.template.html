@@ -16,13 +16,11 @@
         (rightClick)="onNextYear()"
     >
         <button tuiLink [tuiFocusable]="false" (click)="onYearClick()">
-            {{year.formattedYear}}
+            {{ year.formattedYear }}
         </button>
     </tui-primitive-spin-button>
     <div class="t-row">
-        <ng-container
-            *ngFor="let month of (months$ | async); let index = index"
-        >
+        <ng-container *ngFor="let month of months$ | async; let index = index">
             <div
                 *tuiLet="getTuiMonth(index, year.year) as item"
                 class="t-cell"
@@ -34,7 +32,7 @@
                 (tuiPressedChange)="onItemHovered($event, item)"
                 (click)="onItemClick(item)"
             >
-                <div class="t-item">{{month}}</div>
+                <div class="t-item">{{ month }}</div>
             </div>
         </ng-container>
     </div>

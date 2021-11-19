@@ -8,20 +8,20 @@
 >
     <span
         *ngIf="hasPlaceholder"
-        class="placeholder placeholder_raised"
         automation-id="tui-input-slider__placeholder"
+        class="placeholder placeholder_raised"
     >
         <ng-content></ng-content>
     </span>
     <input
         #focusableElement
-        class="native"
         automation-id="tui-input-slider__native"
+        class="native"
         [disabled]="disabled"
         [readOnly]="readOnly"
         [tuiInputMode]="inputMode"
         [tuiFocusable]="focusable"
-        [textMask]="quantum | tuiMapper: mask: min"
+        [textMask]="quantum | tuiMapper: mask:min"
         [ngModel]="computedValue"
         (ngModelChange)="onValue($event)"
         (tuiFocusedChange)="onFocused($event)"
@@ -31,35 +31,35 @@
     />
     <div class="content">
         <span *ngIf="showValue" class="label">
-            <span class="value">{{computedValue}}</span>
+            <span class="value">{{ computedValue }}</span>
             <span
                 *ngIf="pluralizeMap"
                 automation-id="tui-input-slider__pluralize"
             >
-                {{value | i18nPlural: pluralizeMap}}
+                {{ value | i18nPlural: pluralizeMap }}
             </span>
         </span>
         <span
             *ngIf="showMinLabel"
-            class="label"
             automation-id="tui-input-slider__min-label"
+            class="label"
         >
-            {{minLabel}}
+            {{ minLabel }}
         </span>
         <span
             *ngIf="showMaxLabel"
-            class="label"
             automation-id="tui-input-slider__max-label"
+            class="label"
         >
-            {{maxLabel}}
+            {{ maxLabel }}
         </span>
-        <span class="secondary" automation-id="tui-input-slider__secondary">
-            {{secondary}}
+        <span automation-id="tui-input-slider__secondary" class="secondary">
+            {{ secondary }}
             <tui-tooltip
                 *ngIf="hasTooltip"
                 automation-id="tui-input-slider__tooltip"
-                class="tooltip"
                 describeId="placeholer_until_accesibility_is_added"
+                class="tooltip"
                 [content]="hintController.content"
                 [direction]="hintController.direction"
                 [mode]="hintController.mode"

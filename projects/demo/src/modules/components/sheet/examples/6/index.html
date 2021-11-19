@@ -7,8 +7,8 @@
         <img
             *ngFor="let image of images"
             #img
-            class="image"
             alt=""
+            class="image"
             [src]="image"
             (waIntersectionObservee)="onIntersection($event, img)"
         />

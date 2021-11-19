@@ -2,9 +2,9 @@
     *ngIf="texts$ | async as texts"
     tuiButton
     type="button"
-    class="t-copy"
     appearance=""
     size="s"
+    class="t-copy"
     [title]="texts[0]"
     (click)="onClick()"
 >
@@ -12,6 +12,6 @@
         <span class="t-initial" [attr.data-text]="texts[0]">
             <ng-content></ng-content>
         </span>
-        {{texts[1]}}
+        {{ texts[1] }}
     </span>
 </button>

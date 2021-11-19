@@ -24,10 +24,10 @@
     >
         <ng-content></ng-content>
         <div
-            polymorpheus-outlet
             *ngIf="showValueTemplate"
-            class="value"
+            polymorpheus-outlet
             automation-id="tui-combo-box__template"
+            class="value"
             [content]="computedContent"
             [context]="computeContext(value, computedFocused)"
         ></div>

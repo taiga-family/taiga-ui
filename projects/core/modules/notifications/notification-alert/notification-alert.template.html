@@ -1,5 +1,5 @@
 <tui-notification
-    *ngIf="item.hasCloseButton else noClose"
+    *ngIf="item.hasCloseButton; else noClose"
     [status]="item.status"
     [hasIcon]="item.hasIcon"
     (close)="closeNotification()"

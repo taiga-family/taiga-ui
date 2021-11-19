@@ -1,8 +1,8 @@
 <tui-hosted-dropdown
     *tuiLet="filteredItems as filtered"
-    class="input"
     tuiAutoFocus
     tuiDropdownLimitWidth="fixed"
+    class="input"
     [autoFocus]="!!sidebar"
     [content]="dropdown"
     [canOpen]="canOpen"
@@ -18,7 +18,7 @@
         [value]="search"
         (valueChange)="onSearchChange($event)"
     >
-        {{searchText}}
+        {{ searchText }}
     </tui-primitive-textfield>
     <ng-template #dropdown let-activeZone>
         <tui-data-list>
@@ -32,7 +32,7 @@
                     [routerLink]="item.route"
                     (click)="onClick()"
                 >
-                    {{item.title}}
+                    {{ item.title }}
                 </a>
             </tui-opt-group>
         </tui-data-list>
@@ -40,7 +40,7 @@
 </tui-hosted-dropdown>
 
 <nav class="navigation">
-    <tui-scrollbar [tuiMode]="mode$ | async" class="scrollbar">
+    <tui-scrollbar class="scrollbar" [tuiMode]="mode$ | async">
         <tui-accordion [closeOthers]="false" [rounded]="false">
             <tui-accordion-item
                 *ngFor="let label of labels; index as index"
@@ -49,7 +49,7 @@
                 [(open)]="!!openPagesArr[index]"
             >
                 <span class="tui-space_left-2">
-                    <strong>{{label}}</strong>
+                    <strong>{{ label }}</strong>
                 </span>
                 <ng-template tuiAccordionItemContent>
                     <div class="section">
@@ -57,7 +57,7 @@
                             *ngFor="let item of items[index]; index as subIndex"
                         >
                             <ng-container
-                                *ngTemplateOutlet="pages; context: {item: item, index: (index * 100) + subIndex}"
+                                *ngTemplateOutlet="pages; context: {item: item, index: index * 100 + subIndex}"
                             ></ng-container>
                         </ng-container>
                     </div>
@@ -69,7 +69,7 @@
                 *ngFor="let item of itemsWithoutSections; let index = index"
             >
                 <ng-container
-                    *ngTemplateOutlet="pages; context: {item: item, index: (items.length - 1) + index}"
+                    *ngTemplateOutlet="pages; context: {item: item, index: items.length - 1 + index}"
                 ></ng-container>
             </ng-container>
         </div>
@@ -78,13 +78,13 @@
             <a
                 *ngIf="!item.subPages; else subPages"
                 tuiLink
-                class="sublink"
                 routerLinkActive="sublink_active"
+                class="sublink"
                 [routerLink]="item.route"
                 [scrollIntoView]="isActive(item.route)"
                 (click)="closeMenu()"
             >
-                {{item.title}}
+                {{ item.title }}
             </a>
             <ng-template #subPages>
                 <div
@@ -104,7 +104,7 @@
                             class="chevron"
                             [class.chevron_active]="!!openPagesGroupsArr[index]"
                         ></tui-svg>
-                        {{item.title}}
+                        {{ item.title }}
                     </button>
                     <tui-expand
                         class="tui-space_left-1"
@@ -114,13 +114,13 @@
                             <a
                                 *ngFor="let subPage of item.subPages"
                                 tuiLink
-                                class="sublink sublink_small"
                                 routerLinkActive="sublink_active"
+                                class="sublink sublink_small"
                                 [routerLink]="subPage.route"
                                 [scrollIntoView]="isActive(subPage.route)"
                                 (click)="closeMenu()"
                             >
-                                {{subPage.title}}
+                                {{ subPage.title }}
                             </a>
                         </div>
                     </tui-expand>

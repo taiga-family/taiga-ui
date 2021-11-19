@@ -2,8 +2,8 @@
     <div
         automation-id="tui-table-bar__bar"
         class="bar"
-        [class.bar_light]="item.mode === 'onDark'"
         [@tuiSlideInTop]="animation"
+        [class.bar_light]="item.mode === 'onDark'"
     >
         <div
             class="tui-container"
@@ -22,10 +22,10 @@
                     tuiIconButton
                     type="button"
                     automation-id="tui-table-bar__close-button"
-                    class="close-button tui-space_left-6"
                     size="xs"
                     icon="tuiIconRemoveLarge"
                     appearance="icon"
+                    class="close-button tui-space_left-6"
                     [tuiMode]="getMode(item.mode)"
                     [title]="closeWord$ | async"
                     (click)="onCloseClick(item)"

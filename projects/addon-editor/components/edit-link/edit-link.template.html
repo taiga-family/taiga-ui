@@ -2,7 +2,7 @@
     <label class="t-label">
         URL
         <span class="t-url">
-            {{prefix}}
+            {{ prefix }}
             <tui-input-inline
                 tuiAutoFocus
                 class="t-input"
@@ -28,23 +28,23 @@
         size="s"
         title="Insert link"
         icon="tuiIconCheckCircleLarge"
-        class="t-button"
         shape="rounded"
         appearance="icon"
+        class="t-button"
         (click)="onSave()"
     ></button>
 </ng-container>
 <ng-template #view>
-    <a tuiLink [href]="href" target="_blank" class="t-link">{{shortUrl}}</a>
+    <a tuiLink target="_blank" class="t-link" [href]="href">{{ shortUrl }}</a>
     <button
         tuiIconButton
         type="button"
         size="s"
         title="Change link"
         icon="tuiIconEditLarge"
-        class="t-button"
         shape="rounded"
         appearance="icon"
+        class="t-button"
         (click)="onEdit()"
     ></button>
     <button
@@ -53,9 +53,9 @@
         size="s"
         title="Remove link"
         icon="tuiIconTrashLarge"
-        class="t-button"
         shape="rounded"
         appearance="icon"
+        class="t-button"
         (click)="onRemove()"
     ></button>
 </ng-template>

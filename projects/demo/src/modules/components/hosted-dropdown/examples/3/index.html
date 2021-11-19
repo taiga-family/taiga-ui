@@ -1,16 +1,16 @@
 <div class="wrapper">
     <tui-hosted-dropdown [content]="dropdown" [(open)]="open">
-        <a tuiLink class="link" tabindex="0">
+        <a tuiLink tabindex="0" class="link">
             <tui-svg
+                src="tuiIconSortDown"
                 class="sort"
                 [class.sort_ascending]="ascending"
-                src="tuiIconSortDown"
             ></tui-svg>
             {{primary}}
             <tui-svg
+                src="tuiIconChevronDown"
                 class="arrow"
                 [class.arrow_open]="open"
-                src="tuiIconChevronDown"
             ></tui-svg>
         </a>
     </tui-hosted-dropdown>

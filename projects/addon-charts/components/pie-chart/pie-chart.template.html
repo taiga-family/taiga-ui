@@ -1,10 +1,10 @@
 <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="t-svg"
     height="100%"
     width="100%"
     viewBox="-100 -100 200 200"
     focusable="false"
+    class="t-svg"
 >
     <defs>
         <mask [attr.id]="maskId">
@@ -23,9 +23,9 @@
             *ngFor="let segment of segments; let index = index"
             fill="currentColor"
             automation-id="tui-pie-chart__segment"
-            class="t-segment"
             tuiHintMode="onDark"
             tuiHintDirection="top-right"
+            class="t-segment"
             [attr.transform]="getTransform(index)"
             [attr.d]="segment"
             [style.color]="getColor(index)"

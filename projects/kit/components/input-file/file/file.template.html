@@ -4,9 +4,9 @@
 
 <ng-template #withLink>
     <a
-        class="link"
         rel="noreferrer noopener"
         target="_blank"
+        class="link"
         [href]="src"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     >
@@ -33,8 +33,8 @@
         </ng-template>
         <ng-template #svg>
             <tui-svg
-                class="icon"
                 automation-id="tui-file__icon"
+                class="icon"
                 [class.icon_deleted]="isDeleted"
                 [class.icon_error]="isError"
                 [src]="icon"
@@ -43,19 +43,19 @@
     </div>
     <div class="wrapper">
         <div class="text">
-            <div automation-id="tui-file__name" class="name">{{name}}</div>
-            <div automation-id="tui-file__type" class="type">{{type}}</div>
+            <div automation-id="tui-file__name" class="name">{{ name }}</div>
+            <div automation-id="tui-file__type" class="type">{{ type }}</div>
             <div
                 *ngIf="showSize && (fileSize$ | async) as fileSize"
                 automation-id="tui-file__size"
                 class="size"
             >
-                {{fileSize}}
+                {{ fileSize }}
             </div>
         </div>
         <div
-            polymorpheus-outlet
             *ngIf="content$ | async as content"
+            polymorpheus-outlet
             automation-id="tui-file__content"
             class="content"
             [content]="content"

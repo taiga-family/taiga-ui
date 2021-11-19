@@ -1,10 +1,10 @@
-<form [formGroup]="testForm" class="form">
+<form class="form" [formGroup]="testForm">
     <tui-input-slider
-        class="control"
         formControlName="testValue"
         size="m"
         minLabel="Nothing"
         maxLabel="Everything"
+        class="control"
         [pluralize]="pluralize"
         [segmentsPluralize]="pluralize"
         [segments]="1"
@@ -15,10 +15,10 @@
         [keySteps]="keySteps"
     ></tui-input-slider>
     <tui-input-slider
-        class="control"
         formControlName="testValue"
         minLabel="Nothing"
         maxLabel="Everything"
+        class="control"
         [pluralize]="pluralize"
         [segmentsPluralize]="pluralize"
         [segments]="1"

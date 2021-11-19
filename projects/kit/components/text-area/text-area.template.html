@@ -13,7 +13,7 @@
         automation-id="tui-text-area__counter"
         class="counter"
     >
-        {{value.length}}/{{controller.maxLength}}
+        {{ value.length }}/{{ controller.maxLength }}
     </div>
 </tui-wrapper>
 
@@ -40,11 +40,13 @@
             <div class="input-wrapper">
                 <div class="relative">
                     <div
-                        class="pseudo-content"
                         aria-hidden="true"
+                        class="pseudo-content"
                         [tuiBorderEnd]="border"
                     >
-                        <span>{{fittedContent || controller.exampleText}}</span>
+                        <span
+                            [textContent]="fittedContent || controller.exampleText"
+                        ></span>
                         <span
                             class="pseudo-content__extra"
                             [textContent]="extraContent"
@@ -73,8 +75,8 @@
     <div class="icons">
         <tui-svg
             *ngIf="hasCleaner"
-            class="cleaner"
             src="tuiIconCloseLarge"
+            class="cleaner"
             (click.stop)="onValue('')"
         ></tui-svg>
         <tui-tooltip

@@ -1,8 +1,8 @@
 <button
     tuiIconButton
-    class="menu"
     icon="tuiIconMenuLarge"
     appearance="icon"
+    class="menu"
     [title]="menu"
     (click)="onClick()"
     (tuiActiveZoneChange)="onActiveZone($event)"
@@ -14,7 +14,7 @@
 </button>
 <div polymorpheus-outlet class="logo tui-text_h5" [content]="logo">
     <ng-template let-src>
-        <img class="img" alt="Logo" [src]="src" />
+        <img alt="Logo" class="img" [src]="src" />
     </ng-template>
 </div>
 <ng-content></ng-content>

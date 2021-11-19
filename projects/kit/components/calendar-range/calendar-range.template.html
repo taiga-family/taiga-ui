@@ -3,10 +3,10 @@
     automation-id="tui-calendar-range__calendars"
     tuiPreventDefault="mousedown"
     [markerHandler]="markerHandler"
-    [min]="min | tuiMapper: maxLengthMapper: value: maxLength: true"
-    [max]="max | tuiMapper: maxLengthMapper: value: maxLength: false"
+    [min]="min | tuiMapper: maxLengthMapper:value:maxLength:true"
+    [max]="max | tuiMapper: maxLengthMapper:value:maxLength:false"
     [defaultViewedMonthFirst]="defaultViewedMonth"
-    [defaultViewedMonthSecond]="defaultViewedMonth | tuiMapper : monthShiftMapper"
+    [defaultViewedMonthSecond]="defaultViewedMonth | tuiMapper: monthShiftMapper"
     [disabledItemHandler]="calculatedDisabledItemHandler"
     [value]="value"
     (dayClick)="onDayClick($event)"
@@ -18,8 +18,8 @@
             tuiPreventDefault="mousedown"
             [value]="value"
             [markerHandler]="markerHandler"
-            [min]="min | tuiMapper: maxLengthMapper: value: maxLength: true"
-            [max]="max | tuiMapper: maxLengthMapper: value: maxLength: false"
+            [min]="min | tuiMapper: maxLengthMapper:value:maxLength:true"
+            [max]="max | tuiMapper: maxLengthMapper:value:maxLength:false"
             [month]="computedMonth"
             [disabledItemHandler]="calculatedDisabledItemHandler"
             (dayClick)="onDayClick($event)"
@@ -30,7 +30,7 @@
             class="menu"
         >
             <button
-                *ngFor="let item of items | tuiMapper : mapper : min : max : minLength : (otherDateText$ | async)"
+                *ngFor="let item of items | tuiMapper: mapper:min:max:minLength:(otherDateText$ | async)"
                 tuiOption
                 tuiPreventDefault="mousedown"
                 role="menuitemradio"
@@ -40,12 +40,12 @@
                 (keydown.space.prevent)="onItemSelect(item)"
                 (click)="onItemSelect(item)"
             >
-                {{item}}
+                {{ item }}
                 <tui-svg
                     *ngIf="isItemActive(item)"
                     automation-id="tui-calendar-range__checkmark"
-                    class="checkmark"
                     src="tuiIconCheck"
+                    class="checkmark"
                 ></tui-svg>
             </button>
         </tui-data-list>

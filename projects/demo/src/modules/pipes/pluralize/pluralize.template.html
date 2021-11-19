@@ -12,11 +12,11 @@
 
     <ng-template pageTab>
         <p class="text b-full-width">
-            Today we made {{index}} {{index | tuiPluralize: pluralize}}
+            Today we made {{ index }} {{ index | tuiPluralize: pluralize }}
         </p>
         <tui-input-slider
-            class="slider"
             size="m"
+            class="slider"
             [max]="100"
             [quantum]="1"
             [(ngModel)]="index"

@@ -43,8 +43,8 @@
                             <tui-tag
                                 *ngFor="let item of value; index as index"
                                 #tag
-                                class="tag"
                                 automation-id="tui-input-tag__tag"
+                                class="tag"
                                 [status]="status"
                                 [leftContent]="getLeftContent(item)"
                                 [allowSpaces]="allowSpaces"
@@ -68,14 +68,14 @@
                                 [class.text_disabled]="disabledItemHandler(item)"
                                 [class.text_error]="!tagValidator(item)"
                             >
-                                {{item}}
+                                {{ item }}
                             </span>
                         </ng-template>
                         <div
                             class="input-wrapper"
                             [class.input-wrapper_collapsed]="computedDisabled || readOnly || inputHidden"
                         >
-                            <div class="ghost">{{search}}</div>
+                            <div class="ghost">{{ search }}</div>
                             <input
                                 #focusableElement
                                 type="text"
@@ -102,16 +102,16 @@
                 <tui-svg
                     *ngIf="hasCleaner"
                     #cleaner
-                    class="cleaner"
                     automation-id="tui-input-tag__cleaner"
                     src="tuiIconCloseLarge"
+                    class="cleaner"
                     (click.stop)="onCleanerClick()"
                 ></tui-svg>
                 <tui-tooltip
                     *ngIf="hasTooltip"
                     automation-id="tui-input-tag__tooltip"
-                    class="tooltip"
                     describeId="placeholer_until_accesibility_is_added"
+                    class="tooltip"
                     [direction]="hintController.direction"
                     [mode]="hintController.mode"
                     [content]="hintController.content"
@@ -126,7 +126,7 @@
             </div>
         </div>
         <ng-template #errorIcon>
-            <tui-svg class="error-icon" src="tuiIconAttention"></tui-svg>
+            <tui-svg src="tuiIconAttention" class="error-icon"></tui-svg>
         </ng-template>
     </tui-wrapper>
 </tui-hosted-dropdown>

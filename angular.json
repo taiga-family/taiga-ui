@@ -36,10 +36,7 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": [
-                            "projects/cdk/tsconfig.lib.json",
-                            "projects/cdk/tsconfig.spec.json"
-                        ],
+                        "tsConfig": ["projects/cdk/tsconfig.lib.json", "projects/cdk/tsconfig.spec.json"],
                         "exclude": ["**/node_modules/**"]
                     }
                 },
@@ -119,10 +116,7 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": [
-                            "projects/core/tsconfig.lib.json",
-                            "projects/core/tsconfig.spec.json"
-                        ],
+                        "tsConfig": ["projects/core/tsconfig.lib.json", "projects/core/tsconfig.spec.json"],
                         "exclude": ["**/node_modules/**"]
                     }
                 },
@@ -151,10 +145,7 @@
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
                         "parallel": false,
-                        "commands": [
-                            "nx prebuild taiga-schematics",
-                            "nx postbuild taiga-schematics"
-                        ]
+                        "commands": ["nx prebuild taiga-schematics", "nx postbuild taiga-schematics"]
                     },
                     "dependsOn": [
                         {
@@ -244,10 +235,7 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": [
-                            "projects/kit/tsconfig.lib.json",
-                            "projects/kit/tsconfig.spec.json"
-                        ],
+                        "tsConfig": ["projects/kit/tsconfig.lib.json", "projects/kit/tsconfig.spec.json"],
                         "exclude": ["**/node_modules/**"]
                     }
                 },
@@ -649,10 +637,7 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": [
-                            "projects/addon-doc/tsconfig.lib.json",
-                            "projects/addon-doc/tsconfig.spec.json"
-                        ],
+                        "tsConfig": ["projects/addon-doc/tsconfig.lib.json", "projects/addon-doc/tsconfig.spec.json"],
                         "exclude": ["**/node_modules/**"]
                     }
                 },
@@ -717,17 +702,11 @@
                         "baseHref": "/",
                         "deployUrl": "/",
                         "showCircularDependencies": false,
-                        "styles": [
-                            "projects/demo/src/styles.less",
-                            "projects/demo/src/styles.scss"
-                        ],
+                        "styles": ["projects/demo/src/styles.less", "projects/demo/src/styles.scss"],
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         },
-                        "scripts": [
-                            "node_modules/prismjs/prism.js",
-                            "node_modules/marked/lib/marked.js"
-                        ],
+                        "scripts": ["node_modules/prismjs/prism.js", "node_modules/marked/lib/marked.js"],
                         "es5BrowserSupport": true
                     },
                     "configurations": {

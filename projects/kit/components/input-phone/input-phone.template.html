@@ -6,9 +6,9 @@
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-primitive-textfield
-        class="textfield"
         tuiValueAccessor
         tuiTextfieldType="tel"
+        class="textfield"
         [tuiTextfieldInputMode]="inputMode"
         [pseudoHovered]="pseudoHovered"
         [pseudoFocused]="computedFocused"
@@ -19,12 +19,12 @@
         [focusable]="focusable"
         [textMask]="textMaskOptions"
         [value]="nativeValue"
+        [tuiTextfieldCleaner]="canClean"
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
         (drop)="onDrop($event)"
         (keydown.backspace)="onBackspace($event)"
         (paste.prevent)="onPaste($event)"
-        [tuiTextfieldCleaner]="canClean"
     >
         <ng-content></ng-content>
     </tui-primitive-textfield>
