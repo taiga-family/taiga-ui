@@ -23,6 +23,8 @@ jobs:
     pre:
         name: Preparing
         runs-on: ubuntu-latest
+        env:
+            CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
         steps:
             - name: Fetch Cypress API
               run: |
