@@ -31,8 +31,9 @@ jobs:
         name: Cypress
         runs-on: ubuntu-latest
         needs: pre
-        matrix:
-            jobIndex: [1, 2, 3]
+        strategy:
+            matrix:
+                jobIndex: [1, 2, 3]
         env:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
             CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
