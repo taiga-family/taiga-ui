@@ -96,15 +96,13 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
 
     // @bad TODO: Consider aria-activedescendant for proper accessibility implementation
     @shouldCall(shouldFocus)
-    @HostListener('init.onMouseMove', ['$event'])
+    @HostListener('mousemove.init', ['$event'])
     @HostListener('mousemove.silent', ['$event'])
     onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>) {
         setNativeFocused(currentTarget, true, true);
     }
 
     // Preventing focus loss upon focused option removal
-    // TODO: add ".passive" when implemented in event plugins lib
-    @HostListener('wheel.silent')
     ngOnDestroy() {
         this.dataList.handleFocusLossIfNecessary(this.elementRef.nativeElement);
     }

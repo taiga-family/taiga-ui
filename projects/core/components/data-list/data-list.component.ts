@@ -104,6 +104,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     }
 
     // TODO: Consider aria-activedescendant for proper accessibility implementation
+    @HostListener('wheel.silent.passive', ['$event.currentTarget'])
     @HostListener('mouseleave', ['$event.target'])
     handleFocusLossIfNecessary(element: HTMLElement) {
         if (this.origin && isNativeFocusedIn(element)) {
