@@ -34,8 +34,9 @@ jobs:
         runs-on: ubuntu-latest
         needs: pre
         strategy:
+            fail-fast: false
             matrix:
-                jobIndex: [1, 2, 3]
+                jobIndex: [1]
         env:
             NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
             CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
@@ -75,6 +76,7 @@ jobs:
             # End of setup cache
             - name: Run screenshot tests
               run: |
+                  sed -i -e 's|api_url:.*$|api_url: "${CYPRESS_API_URL}"|g' /home/runner/.cache/Cypress/*/Cypress/resources/app/packages/server/config/app.yml
                   npm run build:demo
                   npm run demo:integrations:ci
 
