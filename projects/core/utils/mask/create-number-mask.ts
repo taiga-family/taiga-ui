@@ -75,10 +75,10 @@ export function tuiCreateNumberMask({
             ? integer.slice(0, integerLimit + thousandSeparators.length)
             : integer;
         const integerCappedClean = integerCapped.replace(TUI_NON_DIGITS_REGEXP, '');
-        const [leadingZerosMarch] = integerCappedClean.match(
+        const [leadingZerosMatch] = integerCappedClean.match(
             TUI_LEADING_ZEROES_REGEXP,
         ) || [''];
-        const leadingZerosAmount = leadingZerosMarch.length;
+        const leadingZerosAmount = leadingZerosMatch.length;
         const integerCappedZerosClean = integerCappedClean
             .replace(/^0+(?!\.|$)/, '')
             .trim();
