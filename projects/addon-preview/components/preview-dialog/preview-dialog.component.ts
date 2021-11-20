@@ -10,7 +10,7 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop],
 })
-export class PreviewDialogComponent {
+export class TuiPreviewDialogComponent {
     constructor(
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<void, void>,

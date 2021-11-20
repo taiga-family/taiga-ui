@@ -4,9 +4,7 @@ import {
     ElementRef,
     Inject,
     Input,
-    ViewChild,
 } from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {
     clamp,
@@ -21,7 +19,7 @@ import {
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {LanguagePreview} from '@taiga-ui/i18n';
 import {BehaviorSubject, combineLatest, merge, Observable} from 'rxjs';
-import {filter, map, mapTo, pairwise, startWith, takeUntil} from 'rxjs/operators';
+import {map, mapTo, startWith} from 'rxjs/operators';
 
 const INITIAL_SCALE_COEF = 0.8;
 const EMPTY_COORDINATES: [number, number] = [0, 0];
@@ -54,7 +52,7 @@ export class TuiPreviewComponent {
     readonly coordinates$ = new BehaviorSubject<readonly [number, number]>(
         EMPTY_COORDINATES,
     );
-    transitioned$ = merge(
+    readonly transitioned$ = merge(
         dragAndDropFrom(this.elementRef.nativeElement).pipe(
             map(state => state.stage !== TuiDragStage.Continues),
         ),
@@ -63,42 +61,26 @@ export class TuiPreviewComponent {
         ),
     );
 
-    readonly cursor$ = combineLatest(
-        dragAndDropFrom(this.elementRef.nativeElement).pipe(startWith(null)),
-        this.zoom$,
-    ).pipe(
-        map(([state, zoom]) => {
-            if (!this.zoomable) {
-                return null;
-            }
-
-            if (state && state.stage === TuiDragStage.Continues) {
-                return 'grabbing';
-            }
-
-            return zoom > this.minZoom ? 'zoom-out' : 'zoom-in';
-        }),
-    );
+    readonly cursor$ = dragAndDropFrom(this.elementRef.nativeElement)
+        .pipe(startWith(null))
+        .pipe(
+            map(state =>
+                state && state.stage === TuiDragStage.Continues ? 'grabbing' : 'initial',
+            ),
+        );
 
     readonly wrapperTransform$ = combineLatest([
         this.coordinates$.pipe(map(([x, y]) => `${x}px, ${y}px`)),
         this.zoom$,
         this.rotation$,
     ]).pipe(
-        map(([translate, zoom, rotation]) =>
-            this.sanitizer.bypassSecurityTrustStyle(
+        map(
+            ([translate, zoom, rotation]) =>
                 `translate(${translate}) scale(${zoom}) rotate(${rotation}deg)`,
-            ),
         ),
     );
 
-    @ViewChild('contentWrapper')
-    set contentWrapper({nativeElement}: ElementRef<HTMLElement>) {
-        this.initClickSubscription(nativeElement);
-    }
-
     constructor(
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) readonly destroy$: Observable<void>,
         @Inject(TUI_PREVIEW_TEXTS)
@@ -161,41 +143,17 @@ export class TuiPreviewComponent {
         const bigSize =
             contentHeight > boxHeight * INITIAL_SCALE_COEF ||
             contentWidth > boxWidth * INITIAL_SCALE_COEF;
+        const {clientHeight, clientWidth} = this.elementRef.nativeElement;
 
         return bigSize
             ? round(
                   Math.min(
-                      (this.elementRef.nativeElement.clientHeight * INITIAL_SCALE_COEF) /
-                          contentHeight,
-                      (this.elementRef.nativeElement.clientWidth * INITIAL_SCALE_COEF) /
-                          contentWidth,
+                      (clientHeight * INITIAL_SCALE_COEF) / contentHeight,
+                      (clientWidth * INITIAL_SCALE_COEF) / contentWidth,
                   ),
                   2,
               )
             : 1;
-    }
-
-    private initClickSubscription(element: HTMLElement) {
-        dragAndDropFrom(element)
-            .pipe(
-                filter(() => this.zoomable),
-                pairwise(),
-                filter(
-                    ([previous, current]) =>
-                        previous !== null &&
-                        current !== null &&
-                        previous.stage === TuiDragStage.Start &&
-                        current.stage === TuiDragStage.End,
-                ),
-                takeUntil(this.destroy$),
-            )
-            .subscribe(([{event}]) => {
-                this.processZoom(
-                    event.clientX,
-                    event.clientY,
-                    this.zoom$.value > this.minZoom ? -0.5 : 0.5,
-                );
-            });
     }
 
     private refresh(width: number, height: number) {

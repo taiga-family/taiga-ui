@@ -3,8 +3,7 @@
 
 :host {
     display: inline-block;
-    margin-left: 0.3125rem;
-    margin-right: 0.3125rem;
+    margin: 0 0.3125rem;
 }
 
 .t-button {
@@ -13,13 +12,5 @@
 
     &:hover {
         background: rgba(159, 159, 159, 0.86);
-    }
-
-    :host:not([data-size='fullscreen']) & {
-        animation: tuiFadeIn var(--tui-duration);
-    }
-
-    :host:not([data-size='fullscreen']).ng-animating & {
-        display: none;
     }
 }

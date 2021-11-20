@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 
 import {default as exampleComponent} from '!!raw-loader!./examples/import/component.txt';
-import {default as exampleImportHostModule} from '!!raw-loader!./examples/import/import-host-module.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleTemplate} from '!!raw-loader!./examples/import/template.txt';
 
@@ -26,7 +25,6 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiPreviewComponent {
-    readonly exampleImportHostModule = exampleImportHostModule;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleComponent = exampleComponent;
     readonly exampleTemplate = exampleTemplate;

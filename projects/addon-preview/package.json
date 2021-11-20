@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-preview",
-    "version": "2.19.0",
+    "version": "2.23.0",
     "description": "A library to show a modal with custom content preview",
     "keywords": [
         "angular",

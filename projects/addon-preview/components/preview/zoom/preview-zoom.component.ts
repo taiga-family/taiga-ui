@@ -14,7 +14,6 @@ import {mapTo, startWith, switchMap} from 'rxjs/operators';
 
 const STEP = 0.5;
 const SLIDER_SIZE = 104;
-
 const GHOST_OFFSET_PX = 36;
 
 @Component({
@@ -40,7 +39,7 @@ export class TuiPreviewZoomComponent {
     readonly valueChange = new EventEmitter<number>();
 
     @Output()
-    readonly reset = new EventEmitter();
+    readonly reset = new EventEmitter<void>();
 
     readonly hintShow$ = this.valueChange.pipe(
         switchMap(() => merge(of(true), timer(1000).pipe(mapTo(false)))),
@@ -91,6 +90,6 @@ export class TuiPreviewZoomComponent {
     }
 
     onPlus() {
-        this.onModelChange(this.value < 1 ? 1 : this.value + STEP);
+        this.onModelChange(this.value + STEP);
     }
 }
