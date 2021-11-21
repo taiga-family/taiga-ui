@@ -22,10 +22,10 @@ import {
     TuiHoveredService,
     watch,
 } from '@taiga-ui/cdk';
-import {ButtonOptions, TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components';
 import {TuiSizeS} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {ButtonOptions, TUI_BUTTON_OPTIONS} from './button-options';
 
 @Component({
     selector: 'button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton]',
