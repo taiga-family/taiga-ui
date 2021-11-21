@@ -23,6 +23,7 @@ import {
     watch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core/types';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ButtonOptions, TUI_BUTTON_OPTIONS} from './button-options';
@@ -43,7 +44,7 @@ import {ButtonOptions, TUI_BUTTON_OPTIONS} from './button-options';
 })
 export class TuiButtonComponent
     extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor
+    implements TuiFocusableElementAccessor, ButtonOptions
 {
     @Input()
     @HostBinding('attr.data-appearance')
@@ -56,11 +57,11 @@ export class TuiButtonComponent
 
     @Input()
     @tuiDefaultProp()
-    icon = this.options.icon;
+    icon: PolymorpheusContent = '';
 
     @Input()
     @tuiDefaultProp()
-    iconRight = this.options.iconRight;
+    iconRight: PolymorpheusContent = '';
 
     @Input()
     @HostBinding('attr.data-tui-host-shape')

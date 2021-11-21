@@ -10,7 +10,7 @@ import {changeDetection} from '../../../../../change-detection-strategy';
         {
             provide: TUI_BUTTON_OPTIONS,
             useValue: {
-                iconRight: 'tuiIconCheckCircleLarge',
+                shape: 'rounded',
                 appearance: TuiAppearance.Outline,
                 size: 'm',
             },
