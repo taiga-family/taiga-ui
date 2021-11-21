@@ -61,6 +61,15 @@
         >
             <tui-button-example-4></tui-button-example-4>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="options"
+            i18n-heading
+            heading="Options"
+            [content]="example5"
+        >
+            <tui-button-example-5></tui-button-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -203,6 +212,20 @@
                 <tui-doc-code
                     filename="myComponent.template.html"
                     [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Optionally use the
+                    <code>TUI_BUTTON_OPTIONS</code>
+                    injection token to override the default options for the
+                    component.
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleDefineOptions"
                 ></tui-doc-code>
             </li>
         </ol>
