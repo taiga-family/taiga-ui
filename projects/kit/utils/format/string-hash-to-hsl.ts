@@ -12,10 +12,8 @@ export function stringHashToHsl(value: string): string {
     let hash = 0;
 
     for (let i = 0; i < value.length; i++) {
-        /* tslint:disable: no-bitwise */
         hash = value.charCodeAt(i) + ((hash << 5) - hash);
         hash = hash & hash;
-        /* tslint:enable: no-bitwise */
     }
 
     const hue = hash % 360;

@@ -74,14 +74,14 @@ jobs:
               if: ${{ env.IS_FORK == 'false' && env.IS_MAIN_BRANCH == 'false' }}
               run: |
                   npm run prettier -- --write
-                  npm run tslint -- --fix
+                  npm run lint -- --fix
                   npm run stylelint -- --fix
 
             - name: Only linting files in fork or main branch
               if: ${{ env.IS_FORK == 'true' || env.IS_MAIN_BRANCH == 'true' }}
               run: |
                   npm run prettier -- --check
-                  npm run tslint
+                  npm run lint
                   npm run stylelint
 
             - name: Get last commit message

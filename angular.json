@@ -33,13 +33,6 @@
                         "karmaConfig": "projects/cdk/karma.conf.js"
                     }
                 },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/cdk/tsconfig.lib.json", "projects/cdk/tsconfig.spec.json"],
-                        "exclude": ["**/node_modules/**"]
-                    }
-                },
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
@@ -67,13 +60,6 @@
                             "projects": "dependencies"
                         }
                     ]
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/i18n/tsconfig.lib.json"],
-                        "exclude": ["**/node_modules/**"]
-                    }
                 },
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
@@ -111,13 +97,6 @@
                         "main": "projects/core/test.ts",
                         "tsConfig": "projects/core/tsconfig.spec.json",
                         "karmaConfig": "projects/core/karma.conf.js"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/core/tsconfig.lib.json", "projects/core/tsconfig.spec.json"],
-                        "exclude": ["**/node_modules/**"]
                     }
                 },
                 "publish": {
@@ -181,16 +160,6 @@
                         }
                     ]
                 },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/taiga-schematics/tsconfig.lib.json",
-                            "projects/taiga-schematics/tsconfig.spec.json"
-                        ],
-                        "exclude": ["**/node_modules/**"]
-                    }
-                },
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
@@ -232,13 +201,6 @@
                         }
                     }
                 },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/kit/tsconfig.lib.json", "projects/kit/tsconfig.spec.json"],
-                        "exclude": ["**/node_modules/**"]
-                    }
-                },
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
@@ -272,13 +234,6 @@
                             "projects": "self"
                         }
                     ]
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/icons/tsconfig.lib.json"],
-                        "exclude": ["**/node_modules/**"]
-                    }
                 },
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
@@ -319,16 +274,6 @@
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/addon-charts/tsconfig.lib.json",
-                            "projects/addon-charts/tsconfig.spec.json"
-                        ],
-                        "exclude": ["**/node_modules/**"]
                     }
                 },
                 "publish": {
@@ -372,16 +317,6 @@
                         }
                     }
                 },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/addon-commerce/tsconfig.lib.json",
-                            "projects/addon-commerce/tsconfig.spec.json"
-                        ],
-                        "exclude": ["**/node_modules/**"]
-                    }
-                },
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
@@ -421,16 +356,6 @@
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/addon-mobile/tsconfig.lib.json",
-                            "projects/addon-mobile/tsconfig.spec.json"
-                        ],
-                        "exclude": ["**/node_modules/**"]
                     }
                 },
                 "publish": {
@@ -474,16 +399,6 @@
                         }
                     }
                 },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/addon-tablebars/tsconfig.lib.json",
-                            "projects/addon-tablebars/tsconfig.spec.json"
-                        ],
-                        "exclude": ["**/node_modules/**"]
-                    }
-                },
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
@@ -523,16 +438,6 @@
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/addon-table/tsconfig.lib.json",
-                            "projects/addon-table/tsconfig.spec.json"
-                        ],
-                        "exclude": ["**/node_modules/**"]
                     }
                 },
                 "publish": {
@@ -583,16 +488,6 @@
                         }
                     }
                 },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/addon-editor/tsconfig.lib.json",
-                            "projects/addon-editor/tsconfig.spec.json"
-                        ],
-                        "exclude": ["**/node_modules/**"]
-                    }
-                },
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
@@ -634,13 +529,6 @@
                         }
                     }
                 },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/addon-doc/tsconfig.lib.json", "projects/addon-doc/tsconfig.spec.json"],
-                        "exclude": ["**/node_modules/**"]
-                    }
-                },
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
@@ -654,15 +542,7 @@
             "sourceRoot": "projects/testing/src",
             "projectType": "library",
             "prefix": "tui",
-            "architect": {
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/testing/tsconfig.lib.json"],
-                        "exclude": ["**/node_modules/**"]
-                    }
-                }
-            }
+            "architect": {}
         },
         "demo": {
             "root": "projects/demo/",
@@ -890,13 +770,6 @@
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
                         "browserTarget": "demo:build"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": ["projects/demo/tsconfig.app.json"],
-                        "exclude": ["**/node_modules/**"]
                     }
                 }
             }
