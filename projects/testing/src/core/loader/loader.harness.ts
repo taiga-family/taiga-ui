@@ -11,6 +11,6 @@ export class TuiLoaderHarness extends HarnessWith<TuiLoaderHarness>('tui-loader'
     async getText(): Promise<string> {
         const loader = await this.loader();
 
-        return loader ? loader.text() : '';
+        return loader?.text() ?? '';
     }
 }
