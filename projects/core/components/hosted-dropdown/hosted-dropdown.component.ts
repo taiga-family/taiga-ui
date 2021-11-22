@@ -20,11 +20,9 @@ import {
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {
@@ -102,10 +100,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         return isNativeKeyboardFocusable(this.host)
             ? this.host
             : getClosestFocusable(this.host, false, this.elementRef.nativeElement);
-    }
-
-    get contentContext(): TuiContextWithImplicit<TuiActiveZoneDirective | undefined> {
-        return this.calculateContentContext(this.activeZone);
     }
 
     @HostBinding('class._hosted_dropdown_focused')
@@ -194,13 +188,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
         // TODO: iframe warning
         return host instanceof HTMLElement && isElementEditable(host);
-    }
-
-    @tuiPure
-    private calculateContentContext(
-        $implicit?: TuiActiveZoneDirective,
-    ): TuiContextWithImplicit<TuiActiveZoneDirective | undefined> {
-        return {$implicit};
     }
 
     private focusDropdown(event: KeyboardEvent, first: boolean) {
