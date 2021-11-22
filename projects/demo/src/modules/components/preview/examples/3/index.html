@@ -27,15 +27,15 @@
         ></tui-preview-action>
 
         <tui-preview-action
-            class="t-close-button"
             icon="tuiIconCloseLarge"
             title="Close"
+            class="t-close-button"
             (click)="preview.complete()"
         ></tui-preview-action>
 
         <ng-container *ngIf="contentUnavailable$ | async">
             <div class="t-container">
-                <tui-svg class="t-icon" src="tuiIconFileLarge"></tui-svg>
+                <tui-svg src="tuiIconFileLarge" class="t-icon"></tui-svg>
                 <div>Preview unavailable</div>
             </div>
         </ng-container>
@@ -47,6 +47,10 @@
             [src]="src"
         />
 
-        <tui-preview-loading *ngIf="loading$ | async"></tui-preview-loading>
+        <tui-loader
+            *ngIf="loading$ | async"
+            size="xl"
+            class="t-loader"
+        ></tui-loader>
     </tui-preview>
 </ng-template>
