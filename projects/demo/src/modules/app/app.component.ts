@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
@@ -10,6 +10,7 @@ import {changeDetection} from '../../change-detection-strategy';
     selector: 'app',
     templateUrl: 'app.template.html',
     styleUrls: ['app.style.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
 export class AppComponent {
