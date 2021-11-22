@@ -1,3 +1,4 @@
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -10,6 +11,7 @@ import {
     TuiDropdownControllerModule,
     TuiHintControllerModule,
     TuiLinkModule,
+    TuiScrollbarModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -26,6 +28,7 @@ import {TuiMultiSelectExample3} from './examples/3';
 import {TuiMultiSelectExample4} from './examples/4';
 import {TuiMultiSelectExample5} from './examples/5';
 import {TuiMultiSelectExample6} from './examples/6';
+import {TuiMultiSelectExample7} from './examples/7';
 import {ExampleTuiMultiSelectComponent} from './multi-select.component';
 
 @NgModule({
@@ -33,6 +36,8 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        ScrollingModule,
+        TuiScrollbarModule,
         TuiMultiSelectModule,
         TuiRadioListModule,
         TuiButtonModule,
@@ -57,6 +62,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiMultiSelectExample4,
         TuiMultiSelectExample5,
         TuiMultiSelectExample6,
+        TuiMultiSelectExample7,
     ],
     exports: [ExampleTuiMultiSelectComponent],
 })

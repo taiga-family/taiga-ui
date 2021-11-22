@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     Inject,
     OnInit,
     TemplateRef,
@@ -11,11 +12,12 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TuiContextWithImplicit,
     TuiIdentityMatcher,
-    tuiReplayedValueChangesFrom,
+    typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_HOST, TuiDataListHost, TuiOptionComponent} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {map} from 'rxjs/operators';
+import {EMPTY, merge} from 'rxjs';
+import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-select-option',
@@ -24,13 +26,13 @@ import {map} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSelectOptionComponent<T> implements OnInit {
-    readonly selected$ = tuiReplayedValueChangesFrom<T>(this.control).pipe(
-        map(
-            value =>
-                isPresent(this.option.value) &&
-                isPresent(value) &&
-                this.matcher(value, this.option.value),
-        ),
+    readonly selected$ = merge(
+        this.control.valueChanges ?? EMPTY,
+        typedFromEvent(this.elementRef.nativeElement, 'animationstart'),
+    ).pipe(
+        startWith(null),
+        map(() => this.selected),
+        distinctUntilChanged(),
     );
 
     constructor(
@@ -38,6 +40,7 @@ export class TuiSelectOptionComponent<T> implements OnInit {
         readonly context: TuiContextWithImplicit<TemplateRef<{}>>,
         @Inject(TUI_DATA_LIST_HOST)
         private readonly host: TuiDataListHost<T>,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiOptionComponent) protected readonly option: TuiOptionComponent<T>,
         @Inject(NgControl) protected readonly control: NgControl,
     ) {}
@@ -50,6 +53,14 @@ export class TuiSelectOptionComponent<T> implements OnInit {
         if (isPresent(this.option.value) && this.host.checkOption) {
             this.host.checkOption(this.option.value);
         }
+    }
+
+    protected get selected(): boolean {
+        return (
+            isPresent(this.option.value) &&
+            isPresent(this.control.value) &&
+            this.matcher(this.control.value, this.option.value)
+        );
     }
 }
 

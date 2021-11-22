@@ -1,3 +1,4 @@
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -11,6 +12,7 @@ import {
     TuiHintControllerModule,
     TuiLinkModule,
     TuiLoaderModule,
+    TuiScrollbarModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -28,12 +30,15 @@ import {TuiComboBoxExample1} from './examples/1';
 import {TuiComboBoxExample2} from './examples/2';
 import {TuiComboBoxExample3} from './examples/3';
 import {TuiComboBoxExample4} from './examples/4';
+import {TuiComboBoxExample5} from './examples/5';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        ScrollingModule,
+        TuiScrollbarModule,
         TuiComboBoxModule,
         TuiButtonModule,
         TuiLinkModule,
@@ -59,6 +64,7 @@ import {TuiComboBoxExample4} from './examples/4';
         TuiComboBoxExample2,
         TuiComboBoxExample3,
         TuiComboBoxExample4,
+        TuiComboBoxExample5,
     ],
     exports: [ExampleTuiComboBoxComponent],
 })
