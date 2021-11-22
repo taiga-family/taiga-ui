@@ -1,7 +1,7 @@
 <fieldset
-    class="content"
-    [class.content_has-overlay]="hasOverlay"
-    [class.content_loading]="loading"
+    class="t-content"
+    [class.t-content_has-overlay]="hasOverlay"
+    [class.t-content_loading]="loading"
     [disabled]="loading && !isApple"
 >
     <ng-content></ng-content>
@@ -9,24 +9,24 @@
 
 <div
     *ngIf="loading"
-    class="loader"
+    class="t-loader"
+    [class.t-loader_horizontal]="isHorizontal"
+    [class.t-loader_inherit-color]="inheritColor"
     [attr.data-tui-element-size]="size"
-    [class.loader_horizontal]="isHorizontal"
-    [class.loader_inherit-color]="inheritColor"
 >
     <svg
         automation-id="tui-loader__loader"
         focusable="false"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
-        class="icon"
+        class="t-icon"
     >
         <circle
             cx="50"
             cy="50"
             r="50"
             stroke-dasharray="314"
-            class="circle"
+            class="t-circle"
         ></circle>
     </svg>
 
@@ -34,8 +34,8 @@
         *ngIf="hasText"
         polymorpheus-outlet
         automation-id="tui-loader__text"
-        class="text"
-        [class.text_horizontal]="isHorizontal"
+        class="t-text"
+        [class.t-text_horizontal]="isHorizontal"
         [content]="textContent"
     ></div>
 </div>
