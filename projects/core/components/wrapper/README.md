@@ -12,5 +12,4 @@ The state is determined with following attributes:
 3. `_invalid` — class for invalid state (not applicable to readonly | disabled state)
 4. `_focused` — class for focused state (not applicable to disabled state)
 
-This allows you to create custom appearances and set styles
-for them based on the interactive state.
+This allows you to create custom appearances and set styles for them based on the interactive state.

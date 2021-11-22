@@ -8,7 +8,9 @@ import {TuiPrimitiveCalendarRangeModule} from '../primitive-calendar-range.modul
 
 describe('PrimitiveRangeCalendar component', () => {
     @Component({
-        template: ` <tui-primitive-calendar-range></tui-primitive-calendar-range> `,
+        template: `
+            <tui-primitive-calendar-range></tui-primitive-calendar-range>
+        `,
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveCalendarRangeComponent, {static: true})

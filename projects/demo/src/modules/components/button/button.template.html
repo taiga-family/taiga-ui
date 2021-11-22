@@ -1,10 +1,16 @@
 <tui-doc-page header="Button" package="CORE" type="components">
     <ng-template pageTab>
         <p i18n>
-            <code>TuiButtonModule</code> is a module with components
-            <code>tuiButton</code>, <code>tuiIconButton</code> are components to
-            use them with native <code>button</code> and
-            <code>a</code> elements.
+            <code>TuiButtonModule</code>
+            is a module with components
+            <code>tuiButton</code>
+            ,
+            <code>tuiIconButton</code>
+            are components to use them with native
+            <code>button</code>
+            and
+            <code>a</code>
+            elements.
         </p>
 
         <tui-doc-example
@@ -15,11 +21,17 @@
         >
             <tui-button-example-1></tui-button-example-1>
             <tui-notification i18n>
-                Link cannot be <code>disabled</code>. If you want to make an
-                unactive link, remove <code>href</code> attribute or send an
-                empty string into <code>routerLink</code>. To prevent keyboard
-                focus when <code>routerLink</code>, use
-                <code>[tuiFocusable]="false"</code> directive
+                Link cannot be
+                <code>disabled</code>
+                . If you want to make an unactive link, remove
+                <code>href</code>
+                attribute or send an empty string into
+                <code>routerLink</code>
+                . To prevent keyboard focus when
+                <code>routerLink</code>
+                , use
+                <code>[tuiFocusable]="false"</code>
+                directive
             </tui-notification>
         </tui-doc-example>
 
@@ -48,6 +60,15 @@
             [content]="example4"
         >
             <tui-button-example-4></tui-button-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="options"
+            i18n-heading
+            heading="Options"
+            [content]="example5"
+        >
+            <tui-button-example-5></tui-button-example-5>
         </tui-doc-example>
     </ng-template>
 
@@ -92,10 +113,10 @@
         </tui-doc-demo>
         <ng-template #template>
             <tui-card
-                class="card"
                 cardNumber="1234"
                 paymentSystem="maestro"
                 size="s"
+                class="card"
             ></tui-card>
         </ng-template>
         <tui-doc-documentation>
@@ -174,8 +195,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Import <code>TuiButtonModule</code> into a module where you
-                    want to use our component
+                    Import
+                    <code>TuiButtonModule</code>
+                    into a module where you want to use our component
                 </p>
 
                 <tui-doc-code
@@ -190,6 +212,20 @@
                 <tui-doc-code
                     filename="myComponent.template.html"
                     [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Optionally use the
+                    <code>TUI_BUTTON_OPTIONS</code>
+                    injection token to override the default options for the
+                    component.
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleDefineOptions"
                 ></tui-doc-code>
             </li>
         </ol>

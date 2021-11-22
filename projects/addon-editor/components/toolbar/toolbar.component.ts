@@ -647,11 +647,9 @@ export class TuiToolbarComponent {
     }
 
     // https://stackoverflow.com/a/11467243/2706426
-    /* tslint:disable: no-bitwise */
     private numberToColor(color: number): string {
         return `rgb(${color & 0xff}, ${(color & 0xff00) >> 8}, ${
             (color & 0xff0000) >> 16
         })`;
     }
-    /* tslint:enable: no-bitwise */
 }

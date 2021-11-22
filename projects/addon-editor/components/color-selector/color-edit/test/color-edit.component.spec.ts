@@ -5,7 +5,9 @@ import {TuiColorEditComponent} from '../color-edit.component';
 import {TuiColorEditModule} from '../color-edit.module';
 
 @Component({
-    template: ` <tui-color-edit [(color)]="color"></tui-color-edit> `,
+    template: `
+        <tui-color-edit [(color)]="color"></tui-color-edit>
+    `,
 })
 class TestComponent {
     @ViewChild(TuiColorEditComponent)

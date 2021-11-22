@@ -26,14 +26,14 @@ describe('TuiHostedDropdown', () => {
                     <button tuiButton>Button</button>
                 </tui-hosted-dropdown>
                 <tui-hosted-dropdown *ngIf="input" [content]="dropdown" [(open)]="open">
-                    <tui-primitive-textfield> Entry field </tui-primitive-textfield>
+                    <tui-primitive-textfield>Entry field</tui-primitive-textfield>
                 </tui-hosted-dropdown>
                 <tui-hosted-dropdown
                     *ngIf="canNotOpen"
                     [canOpen]="canOpen"
                     [(open)]="open"
                 >
-                    <tui-primitive-textfield> Entry field </tui-primitive-textfield>
+                    <tui-primitive-textfield>Entry field</tui-primitive-textfield>
                 </tui-hosted-dropdown>
                 <tui-hosted-dropdown
                     *ngIf="targeted"

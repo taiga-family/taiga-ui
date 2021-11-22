@@ -5,15 +5,15 @@
 <p [tuiDropdownContext]="reportForm">Another text</p>
 
 <ng-template #reportForm let-close="close">
-    <form [formGroup]="testForm" class="container">
+    <form class="container" [formGroup]="testForm">
         <tui-text-area formControlName="reportText">
             Have you found a mistake ? Write about it!
         </tui-text-area>
 
         <button
-            class="button"
             type="button"
             tuiButton
+            class="button"
             (click)="report(); close()"
         >
             SEND IT

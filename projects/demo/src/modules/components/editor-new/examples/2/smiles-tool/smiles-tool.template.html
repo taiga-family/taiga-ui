@@ -1,7 +1,7 @@
 <tui-hosted-dropdown
     #dropdown
-    class="t-wrapper"
     tuiDropdownAlign="left"
+    class="t-wrapper"
     [content]="smileDropdown"
 >
     <button
@@ -10,13 +10,13 @@
         size="s"
         icon="tuiIconStarLarge"
         appearance="icon"
-        class="tool-button"
         automation-id="smiles-tool__button"
+        class="tool-button"
         [pseudoPressed]="dropdown.open"
         [focusable]="dropdown.open"
     ></button>
     <ng-template #smileDropdown let-activeZone>
-        <div [tuiActiveZoneParent]="activeZone" class="smiles">
+        <div class="smiles" [tuiActiveZoneParent]="activeZone">
             <button
                 *ngFor="let smile of smiles"
                 class="smile"

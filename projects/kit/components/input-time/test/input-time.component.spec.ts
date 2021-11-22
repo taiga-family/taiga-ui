@@ -38,8 +38,7 @@ describe('InputTime', () => {
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [tuiHintContent]="hintContent"
-                >
-                </tui-input-time>
+                ></tui-input-time>
             </tui-root>
         `,
     })

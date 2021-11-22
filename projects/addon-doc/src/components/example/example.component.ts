@@ -8,16 +8,18 @@ import {
     Optional,
 } from '@angular/core';
 import {LOCATION} from '@ng-web-apis/common';
-import {TuiHandler, tuiPure} from '@taiga-ui/cdk';
+import {TuiHandler} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map, switchMap} from 'rxjs/operators';
 import {CodeEditor} from '../../interfaces/code-editor';
+import {TuiDocExample} from '../../interfaces/page';
 import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';
 import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../tokens/example-content-processor';
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
+import {rawLoadRecord} from '../../utils/raw-load-record';
 
 // Ambient type cannot be used without dynamic https://github.com/angular/angular/issues/23395
 // @dynamic
@@ -28,6 +30,8 @@ import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocExampleComponent {
+    private readonly rawLoader$$ = new BehaviorSubject<TuiDocExample>({});
+
     @Input()
     heading: PolymorpheusContent = '';
 
@@ -35,8 +39,8 @@ export class TuiDocExampleComponent {
     description: PolymorpheusContent = '';
 
     @Input()
-    set content(content: Record<string, string>) {
-        this.processedContent = this.processContent(content);
+    set content(content: TuiDocExample) {
+        this.rawLoader$$.next(content);
     }
 
     @Input()
@@ -44,11 +48,14 @@ export class TuiDocExampleComponent {
 
     activeItemIndex = 0;
 
-    processedContent: Record<string, string> = {};
-
     readonly defaultTab = this.texts[0];
 
     readonly copy$ = this.copyTexts$.pipe(map(([copy]) => copy));
+
+    readonly processor$: Observable<Record<string, string>> = this.rawLoader$$.pipe(
+        switchMap(rawLoadRecord),
+        map(this.processContent),
+    );
 
     constructor(
         @Attribute('id')
@@ -69,24 +76,6 @@ export class TuiDocExampleComponent {
         >,
     ) {}
 
-    get activeItem(): string {
-        return this.tabs[this.activeItemIndex];
-    }
-
-    get tabs(): readonly string[] {
-        return this.getTabs(this.processedContent);
-    }
-
-    get code(): string {
-        const code = this.processedContent[this.activeItem];
-
-        return code ? code.trim() : '';
-    }
-
-    get isDefaultItem(): boolean {
-        return this.activeItem === this.defaultTab;
-    }
-
     copyExampleLink() {
         const hashPosition = this.location.href.indexOf('#');
         const currentUrl =
@@ -102,10 +91,5 @@ export class TuiDocExampleComponent {
                 status: TuiNotification.Success,
             })
             .subscribe();
-    }
-
-    @tuiPure
-    private getTabs(content: Record<string, string>): readonly string[] {
-        return [this.defaultTab, ...Object.keys(content)];
     }
 }

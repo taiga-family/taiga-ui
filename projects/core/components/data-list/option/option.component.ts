@@ -96,7 +96,7 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
 
     // @bad TODO: Consider aria-activedescendant for proper accessibility implementation
     @shouldCall(shouldFocus)
-    @HostListener('init.onMouseMove', ['$event'])
+    @HostListener('mousemove.init', ['$event'])
     @HostListener('mousemove.silent', ['$event'])
     onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>) {
         setNativeFocused(currentTarget, true, true);

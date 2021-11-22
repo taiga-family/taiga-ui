@@ -17,8 +17,8 @@
 </ng-template>
 <ng-template #bar let-item let-index="index" let-flexible="flexible">
     <tui-bar
-        class="t-bar"
         automation-id="tui-bar-set__bar"
+        class="t-bar"
         [class.t-bar_flexible]="flexible"
         [class.t-bar_negative]="item < 0"
         [style.height.%]="getHeight(item)"

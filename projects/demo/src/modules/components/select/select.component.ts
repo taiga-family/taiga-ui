@@ -25,6 +25,10 @@ import {default as example7Html} from '!!raw-loader!./examples/7/index.html';
 import {default as example7Less} from '!!raw-loader!./examples/7/index.less';
 import {default as example7Ts} from '!!raw-loader!./examples/7/index.ts';
 
+import {default as example8Html} from '!!raw-loader!./examples/8/index.html';
+import {default as example8Less} from '!!raw-loader!./examples/8/index.less';
+import {default as example8Ts} from '!!raw-loader!./examples/8/index.ts';
+
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -102,6 +106,12 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
         TypeScript: example7Ts,
         HTML: example7Html,
         LESS: example7Less,
+    };
+
+    readonly example8: FrontEndExample = {
+        TypeScript: example8Ts,
+        HTML: example8Html,
+        LESS: example8Less,
     };
 
     readonly items = [new Account('Ruble', 500), new Account('Dollar', 237)];

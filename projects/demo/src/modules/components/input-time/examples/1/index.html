@@ -3,16 +3,17 @@
         Input time
     </tui-input-time>
     <tui-input-time
-        class="tui-space_top-2"
         formControlName="testValue"
         tuiTextfieldSize="m"
+        class="tui-space_top-2"
         [tuiTextfieldLabelOutside]="true"
     >
         Input time
     </tui-input-time>
     <p i18n>
         If field is not required, but you want to mark it invalid if user did
-        not complete it, use <code>tuiUnfinishedValidator</code>
+        not complete it, use
+        <code>tuiUnfinishedValidator</code>
         directive
     </p>
     <tui-input-time tuiUnfinishedValidator formControlName="testValue">

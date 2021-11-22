@@ -7,7 +7,9 @@ import {TuiFocusableModule} from '../focusable.module';
 
 describe('TuiFocusable directive', () => {
     @Component({
-        template: ` <div [tuiFocusable]="focusable"></div> `,
+        template: `
+            <div [tuiFocusable]="focusable"></div>
+        `,
     })
     class TestComponent {
         focusable!: boolean;

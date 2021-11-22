@@ -8,9 +8,9 @@
     <tui-primitive-textfield
         *tuiLet="filler$ | async as filler"
         automation-id="tui-input-date-range__textfield"
-        class="textfield"
         tuiValueAccessor
         tuiTextfieldInputMode="numeric"
+        class="textfield"
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
@@ -57,7 +57,7 @@
             class="button"
         >
             <button tuiLink type="button" (click)="onDayClick(items[0].day)">
-                {{items[0]}}
+                {{ items[0] }}
             </button>
         </div>
     </ng-template>

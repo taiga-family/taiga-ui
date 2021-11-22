@@ -1,6 +1,6 @@
 <tui-input
-    class="b-form"
     tuiHintContent="Type 5 letters or more"
+    class="b-form"
     [tuiTextfieldCleaner]="true"
     [tuiTextfieldCustomContent]="control.valid ? success : ''"
     [formControl]="control"
@@ -8,5 +8,5 @@
     Hello
 </tui-input>
 <ng-template #success>
-    <tui-svg class="success tui-space_left-3" src="tuiIconCheckLarge"></tui-svg>
+    <tui-svg src="tuiIconCheckLarge" class="success tui-space_left-3"></tui-svg>
 </ng-template>

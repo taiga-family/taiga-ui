@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" focusable="false" height="100%">
-    <svg xmlns="http://www.w3.org/2000/svg" id="ts" width="100%" height="100%" viewBox="0 0 256 256">
+    <svg id="ts" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 256 256">
         <polygon
             fill="#007ACC"
             transform="translate(128.000000, 128.000000) scale(1, -1) translate(-128.000000, -128.000000) "

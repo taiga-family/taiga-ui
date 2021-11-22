@@ -1,4 +1,4 @@
-<p class="filters" tuiTextfieldSize="m">
+<p tuiTextfieldSize="m" class="filters">
     <tui-input class="input" [tuiTextfieldCleaner]="true" [(ngModel)]="search">
         Find on page
     </tui-input>
@@ -10,8 +10,8 @@
         <ng-template #dropdown>
             <tui-reorder
                 class="columns"
-                [(items)]="initial"
                 [enabled]="enabled"
+                [(items)]="initial"
                 (enabledChange)="onEnabled($event)"
             ></tui-reorder>
         </ng-template>

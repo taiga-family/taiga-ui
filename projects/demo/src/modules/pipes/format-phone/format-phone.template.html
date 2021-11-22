@@ -14,12 +14,12 @@
 
     <ng-template pageTab>
         <p i18n class="text b-full-width">
-            Formatted phone number: {{index | tuiFormatPhone: countryCode :
-            phoneMask}}
+            Formatted phone number: {{ index | tuiFormatPhone:
+            countryCode:phoneMask }}
         </p>
         <tui-input
-            class="slider"
             tuiTextfieldSize="m"
+            class="slider"
             [tuiTextfieldMaxLength]="maxLength"
             [tuiTextfieldLabelOutside]="true"
             [(ngModel)]="index"
@@ -50,8 +50,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Import <code>TuiFormatPhonePipe</code> into a module where
-                    you want to use our component
+                    Import
+                    <code>TuiFormatPhonePipe</code>
+                    into a module where you want to use our component
                 </p>
 
                 <tui-doc-code

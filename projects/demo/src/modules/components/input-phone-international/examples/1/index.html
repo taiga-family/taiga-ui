@@ -1,9 +1,9 @@
 <form [formGroup]="testForm">
     <tui-input-phone-international
-        class="input"
         formControlName="testValue"
+        class="input"
         [countries]="countries"
-        [(countryIsoCode)]="countryIsoCode"
         [tuiTextfieldLabelOutside]="true"
+        [(countryIsoCode)]="countryIsoCode"
     ></tui-input-phone-international>
 </form>

@@ -140,7 +140,6 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
 
     emitEvent(event: unknown): void {
         // For more convenient debugging
-        // tslint:disable-next-line:no-console
         console.log(this.attrName, event);
 
         this.emits$.next(this.emits$.value + 1);

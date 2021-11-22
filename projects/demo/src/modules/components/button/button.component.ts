@@ -8,7 +8,10 @@ import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
+import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
+import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
 
+import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -56,8 +59,14 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
         LESS: example4Less,
     };
 
+    readonly example5: FrontEndExample = {
+        TypeScript: example5Ts,
+        HTML: example5Html,
+    };
+
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleDefineOptions = exampleDefineOptions;
 
     disabled = false;
 

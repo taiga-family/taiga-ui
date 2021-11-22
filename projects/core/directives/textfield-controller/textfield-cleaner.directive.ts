@@ -3,7 +3,9 @@ import {TuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_CLEANER = new InjectionToken<TuiTextfieldCleanerDirective>(
     'tuiTextfieldCleaner',
-    {factory: cleanerDirectiveFactory},
+    {
+        factory: cleanerDirectiveFactory,
+    },
 );
 
 @Directive({

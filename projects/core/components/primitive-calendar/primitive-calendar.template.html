@@ -1,7 +1,7 @@
 <div class="t-row t-row_weekday">
-    <div *ngFor="let day of (weekDays$ | async)" class="t-cell">{{day}}</div>
+    <div *ngFor="let day of weekDays$ | async" class="t-cell">{{ day }}</div>
 </div>
-<div *tuiLet="month | tuiCalendarSheet:true as sheet">
+<div *tuiLet="month | tuiCalendarSheet: true as sheet">
     <div
         *tuiRepeatTimes="let rowIndex of sheet.length"
         automation-id="tui-primitive-calendar__row"
@@ -27,9 +27,9 @@
                         class="t-item"
                         [class.t-item_unavailable]="itemIsUnavailable(item)"
                     >
-                        {{item.day}}
+                        {{ item.day }}
                         <div
-                            *ngIf="item | tuiMapper : toMarkers : itemIsToday(item) : !!getItemRange(item) as markers"
+                            *ngIf="item | tuiMapper: toMarkers:itemIsToday(item):!!getItemRange(item) as markers"
                             class="t-dots"
                         >
                             <div

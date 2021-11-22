@@ -81,7 +81,9 @@ describe('NotificationAlertComponent', () => {
     };
 
     @Component({
-        template: ` <tui-notification-alert [item]="alert"></tui-notification-alert> `,
+        template: `
+            <tui-notification-alert [item]="alert"></tui-notification-alert>
+        `,
     })
     class TestComponent {
         @ViewChild(TuiNotificationAlertComponent, {static: true})

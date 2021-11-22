@@ -12,17 +12,18 @@
     <ul>
         <li *ngFor="let item of vars | keyvalue">
             <tui-doc-copy class="var" [cdkCopyToClipboard]="item.key">
-                <code>{{item.key}}</code>
+                <code>{{ item.key }}</code>
             </tui-doc-copy>
-            — {{item.value}}
+            — {{ item.value }}
         </li>
     </ul>
 
     <p i18n>
         An easy way to dynamically override variables is to use a
         <a tuiLink routerLink="/components/theme-switcher">
-            <code>ThemeSwitcher</code> </a
-        >. This is how
+            <code>ThemeSwitcher</code>
+        </a>
+        . This is how
         <a tuiLink routerLink="/components/theme-night">
             <code>ThemeNight</code>
         </a>

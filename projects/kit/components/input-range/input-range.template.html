@@ -9,35 +9,35 @@
     >
         <span
             *ngIf="hasPlaceholder"
-            class="placeholder placeholder_raised"
             automation-id="tui-input-range__placeholder"
+            class="placeholder placeholder_raised"
         >
             <ng-content></ng-content>
         </span>
         <div class="content">
             <span *ngIf="!showMinLabel" class="label">
-                <span class="value">{{inputValueLeft}}</span>
+                <span class="value">{{ inputValueLeft }}</span>
                 <span
                     *ngIf="pluralizeMap"
-                    class="pluralize"
                     automation-id="tui-input-range__pluralize-left"
+                    class="pluralize"
                 >
-                    {{value[0] | i18nPlural: pluralizeMap}}
+                    {{ value[0] | i18nPlural: pluralizeMap }}
                 </span>
             </span>
             <span
                 *ngIf="showMinLabel"
-                class="label"
                 automation-id="tui-input-range__min-label"
+                class="label"
             >
-                {{minLabel}}
+                {{ minLabel }}
             </span>
             <span
                 *ngIf="showMaxLabel"
                 automation-id="tui-input-range__max-label"
                 class="max"
             >
-                {{maxLabel}}
+                {{ maxLabel }}
             </span>
         </div>
         <tui-range
@@ -59,14 +59,14 @@
     <div class="native-wrapper" (tuiHoveredChange)="onHovered($event)">
         <input
             #nativeLeft
-            class="native"
             automation-id="tui-input-range__native-left"
+            class="native"
             [disabled]="disabled"
             [readOnly]="readOnly"
             [class.native_hidden]="showMinLabel"
             [tuiInputMode]="inputMode"
             [tuiFocusable]="focusable"
-            [textMask]="quantum | tuiMapper: mask: min"
+            [textMask]="quantum | tuiMapper: mask:min"
             [ngModel]="computedValueLeft"
             (ngModelChange)="onInputLeft()"
             (tuiFocusedChange)="onLeftFocused($event)"
@@ -75,14 +75,14 @@
         />
         <input
             #nativeRight
-            class="native native_right"
             automation-id="tui-input-range__native-right"
+            class="native native_right"
             [disabled]="disabled"
             [readOnly]="readOnly"
             [class.native_hidden]="showMaxLabel"
             [tuiInputMode]="inputMode"
             [tuiFocusable]="focusable"
-            [textMask]="quantum | tuiMapper: mask: min"
+            [textMask]="quantum | tuiMapper: mask:min"
             [ngModel]="computedValueRight"
             (ngModelChange)="onInputRight()"
             (tuiFocusedChange)="onRightFocused($event)"
@@ -91,11 +91,11 @@
         />
         <span
             *ngIf="pluralizeMap && !showMaxLabel"
-            class="pluralize pluralize_right"
             automation-id="tui-input-range__pluralize-right"
+            class="pluralize pluralize_right"
             (mousedown)="onMouseDown()"
         >
-            {{value[1] | i18nPlural: pluralizeMap}}
+            {{ value[1] | i18nPlural: pluralizeMap }}
         </span>
     </div>
 </div>

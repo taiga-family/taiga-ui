@@ -8,7 +8,9 @@ import {TuiInputInlineModule} from '../input-inline.module';
 
 describe('InputInline', () => {
     @Component({
-        template: ` <tui-input-inline [formControl]="control"></tui-input-inline> `,
+        template: `
+            <tui-input-inline [formControl]="control"></tui-input-inline>
+        `,
     })
     class TestComponent {
         @ViewChild(TuiInputInlineComponent, {static: true})

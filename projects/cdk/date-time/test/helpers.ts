@@ -2,8 +2,7 @@ declare const global: {Date: typeof Date};
 
 const OriginalDate = global.Date;
 
-// tslint:disable-next-line:tinkoff-method-return-type
-export function mockCurrentDate(dateOrNumber: Date | number) {
+export function mockCurrentDate(dateOrNumber: Date | number): void {
     const date: Date =
         typeof dateOrNumber === 'number' ? new OriginalDate(dateOrNumber) : dateOrNumber;
 

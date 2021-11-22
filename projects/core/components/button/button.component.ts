@@ -22,11 +22,11 @@ import {
     TuiHoveredService,
     watch,
 } from '@taiga-ui/cdk';
-import {TuiAppearance} from '@taiga-ui/core/enums';
-import {TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
+import {TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {ButtonOptions, TUI_BUTTON_OPTIONS} from './button-options';
 
 @Component({
     selector: 'button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton]',
@@ -44,12 +44,12 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class TuiButtonComponent
     extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor
+    implements TuiFocusableElementAccessor, ButtonOptions
 {
     @Input()
     @HostBinding('attr.data-appearance')
     @tuiDefaultProp()
-    appearance: TuiAppearance | string = TuiAppearance.Primary;
+    appearance = this.options.appearance;
 
     @Input()
     @tuiDefaultProp()
@@ -66,7 +66,7 @@ export class TuiButtonComponent
     @Input()
     @HostBinding('attr.data-tui-host-shape')
     @tuiDefaultProp()
-    shape: 'square' | 'rounded' | null = null;
+    shape = this.options.shape;
 
     @Input()
     @HostBinding('class._loading')
@@ -76,7 +76,7 @@ export class TuiButtonComponent
     @Input()
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeXL = 'l';
+    size = this.options.size;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -86,6 +86,7 @@ export class TuiButtonComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_TAKE_ONLY_TRUSTED_EVENTS)
         private readonly takeOnlyTrustedEvents: boolean,
+        @Inject(TUI_BUTTON_OPTIONS) private readonly options: ButtonOptions,
     ) {
         super();
 

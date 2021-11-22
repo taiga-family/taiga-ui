@@ -6,7 +6,9 @@ import {TuiPanModule} from '../pan.module';
 
 describe('TuiPan directive', () => {
     @Component({
-        template: ` <div class="main" (tuiPan)="pan($event)"></div> `,
+        template: `
+            <div class="main" (tuiPan)="pan($event)"></div>
+        `,
     })
     class TestComponent {
         coords = [0, 0];

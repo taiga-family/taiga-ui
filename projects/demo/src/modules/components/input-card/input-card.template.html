@@ -1,8 +1,12 @@
 <tui-doc-page header="InputCard" package="ADDON-COMMERCE" type="components">
     <ng-template pageTab>
         <p i18n>
-            <code>InputCard</code> can be used with <code>InputExpire</code> and
-            <code>InputCVC</code> to input a card
+            <code>InputCard</code>
+            can be used with
+            <code>InputExpire</code>
+            and
+            <code>InputCVC</code>
+            to input a card
         </p>
 
         <tui-doc-example id="group" heading="tui-group" [content]="example1">
@@ -15,8 +19,8 @@
             <ng-template>
                 <form class="form" [formGroup]="control">
                     <tui-input-card
-                        class="control"
                         formControlName="card"
+                        class="control"
                         [autocompleteEnabled]="autocompleteEnabledCard"
                         [cardSrc]="cardSrc"
                         [focusable]="focusable"
@@ -36,8 +40,8 @@
                         Card number
                     </tui-input-card>
                     <tui-input-expire
-                        class="control"
                         formControlName="expire"
+                        class="control"
                         [autocompleteEnabled]="autocompleteEnabledExpire"
                         [focusable]="focusable"
                         [readOnly]="readOnly"
@@ -51,8 +55,8 @@
                         Expire date
                     </tui-input-expire>
                     <tui-input-cvc
-                        class="control"
                         formControlName="cvc"
+                        class="control"
                         [autocompleteEnabled]="autocompleteEnabledCVC"
                         [focusable]="focusable"
                         [length]="length"
@@ -70,16 +74,17 @@
                         CVC/CVV
                     </tui-input-cvc>
                     <tui-field-error
-                        class="error"
                         formControlName="card"
+                        class="error"
                     ></tui-field-error>
                 </form>
             </ng-template>
         </tui-doc-demo>
         <div class="b-full-width tui-space_bottom-6">
             <p i18n>
-                Add <code>tuiCreateLuhnValidator(customMessage?)</code> to
-                control validators to validate it with Luhn algorithm
+                Add
+                <code>tuiCreateLuhnValidator(customMessage?)</code>
+                to control validators to validate it with Luhn algorithm
             </p>
         </div>
         <tui-accordion class="b-full-width" [closeOthers]="false">
@@ -94,7 +99,8 @@
                             [(documentationPropertyValue)]="disabledCard"
                         >
                             Disabled state (use
-                            <code>formControl.disable()</code>)
+                            <code>formControl.disable()</code>
+                            )
                         </ng-template>
                         <ng-template
                             i18n
@@ -139,7 +145,8 @@
                             [(documentationPropertyValue)]="disabledExpire"
                         >
                             Disabled state (use
-                            <code>formControl.disable()</code>)
+                            <code>formControl.disable()</code>
+                            )
                         </ng-template>
                         <ng-template
                             i18n
@@ -166,7 +173,8 @@
                             [(documentationPropertyValue)]="disabledCVC"
                         >
                             Disabled state (use
-                            <code>formControl.disable()</code>)
+                            <code>formControl.disable()</code>
+                            )
                         </ng-template>
                         <ng-template
                             i18n
@@ -198,9 +206,12 @@
         <ol class="b-demo-steps">
             <li i18n>
                 Import
-                <code>TuiInputCardModule</code>, <code>TuiInputCVCModule</code>,
-                <code>TuiInputExpireModule</code> modules into the module where
-                you want to use them:
+                <code>TuiInputCardModule</code>
+                ,
+                <code>TuiInputCVCModule</code>
+                ,
+                <code>TuiInputExpireModule</code>
+                modules into the module where you want to use them:
 
                 <tui-doc-code
                     filename="myComponent.module.ts"

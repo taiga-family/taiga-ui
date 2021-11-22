@@ -2,12 +2,13 @@
 <tui-tooltip content="Please don't touch this" direction="left"></tui-tooltip>
 <p i18n>
     ...or any custom HTML or logic with
-    <code>PolymorpheusContent</code>:
+    <code>PolymorpheusContent</code>
+    :
 </p>
 <tui-tooltip direction="bottom-right" [content]="tooltip"></tui-tooltip>
 
 <ng-template #tooltip>
-    <tui-loader class="tooltip" size="s" [showLoader]="loader">
+    <tui-loader size="s" class="tooltip" [showLoader]="loader">
         {{text}}
     </tui-loader>
 </ng-template>

@@ -16,14 +16,14 @@
         (tuiHoveredChange)="onHovered($event)"
         (click)="onRowToggle()"
     >
-        <div class="title" automation-id="tui-accordion__item-title">
+        <div automation-id="tui-accordion__item-title" class="title">
             <ng-content></ng-content>
         </div>
         <tui-svg
             *ngIf="showArrow"
             automation-id="tui-accordion__item-arrow"
-            class="icon"
             src="tuiIconChevronDownLarge"
+            class="icon"
             [class.icon_open]="open"
         ></tui-svg>
     </div>

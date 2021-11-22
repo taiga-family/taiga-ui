@@ -1,14 +1,14 @@
 <tui-select
-    class="t-select tui-group__auto-width-item"
     tuiTextfieldSize="m"
     tuiDropdownAlign="left"
     tuiDropdownLimitWidth="min"
+    class="t-select tui-group__auto-width-item"
     [tuiTextfieldLabelOutside]="true"
     [(ngModel)]="mode"
 >
     <tui-data-list *tuiDataList>
         <button *ngFor="let item of modes" size="xs" tuiOption [value]="item">
-            {{item}}
+            {{ item }}
         </button>
     </tui-data-list>
 </tui-select>
@@ -49,9 +49,9 @@
     ></tui-input-count>
 </ng-template>
 <tui-input-count
-    class="t-opacity tui-group__auto-width-item"
     postfix="%"
     tuiTextfieldSize="m"
+    class="t-opacity tui-group__auto-width-item"
     [tuiTextfieldLabelOutside]="true"
     [hideButtons]="true"
     [max]="100"

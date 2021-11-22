@@ -26,8 +26,8 @@
         <div
             *ngIf="value !== null"
             polymorpheus-outlet
-            class="value"
             automation-id="tui-select__value"
+            class="value"
             [content]="computedContent"
             [context]="computeContext(value, computedFocused)"
         ></div>

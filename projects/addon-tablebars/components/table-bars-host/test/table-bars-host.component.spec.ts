@@ -11,7 +11,9 @@ import {TuiTableBarsHostModule} from '../table-bars-host.module';
 
 describe('TableBarsHost', () => {
     @Component({
-        template: ` <tui-table-bars-host></tui-table-bars-host> `,
+        template: `
+            <tui-table-bars-host></tui-table-bars-host>
+        `,
     })
     class TestComponent {
         @ViewChild(TuiTableBarsHostComponent, {static: true})

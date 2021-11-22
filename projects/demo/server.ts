@@ -64,7 +64,6 @@ function run() {
     const server = app();
 
     server.listen(port, () => {
-        // tslint:disable-next-line:no-console
         console.log(`Node Express server listening on http://localhost:${port}`);
     });
 }

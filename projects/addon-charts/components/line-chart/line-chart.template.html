@@ -1,11 +1,11 @@
 <ng-container *tuiLet="hovered$ | async as hovered">
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="t-svg"
         focusable="false"
         preserveAspectRatio="none"
         width="100%"
         height="100%"
+        class="t-svg"
         [attr.viewBox]="viewBox"
     >
         <defs>
@@ -43,8 +43,8 @@
         <ng-container *ngFor="let point of value; let index = index">
             <div
                 *ngIf="value.length > 1 || dots"
-                class="t-column"
                 tuiHintDirection="top-left"
+                class="t-column"
                 [class.t-column_hovered]="hovered === index"
                 [tuiHintHost]="hintHost"
                 [tuiHint]="computedHint && hint"
@@ -87,14 +87,14 @@
             class="t-hint t-hint_x"
             [style.left.%]="getLeft(point[0])"
         >
-            {{xStringify(point[0])}}
+            {{ xStringify(point[0]) }}
         </div>
         <div
             *ngIf="yStringify"
             class="t-hint t-hint_y"
             [style.bottom.%]="getBottom(point[1])"
         >
-            {{yStringify(point[1])}}
+            {{ yStringify(point[1]) }}
         </div>
     </ng-container>
 </ng-container>

@@ -1,16 +1,16 @@
 <header class="t-header">
     <h1 class="t-title">
-        {{header}}
+        {{ header }}
         <tui-tag
             *ngIf="deprecated !== null"
-            class="t-tag t-tag_deprecated"
             value="deprecated"
             status="custom"
+            class="t-tag t-tag_deprecated"
         ></tui-tag>
         <tui-tag
             *ngIf="package"
-            class="t-tag t-tag_package"
             status="custom"
+            class="t-tag t-tag_package"
             [value]="package"
             [autoColor]="true"
         ></tui-tag>
@@ -29,9 +29,9 @@
                     tuiTab
                     routerLink="./"
                     routerLinkActive
-                    [routerLinkActiveOptions]="{ exact: true }"
+                    [routerLinkActiveOptions]="{exact: true}"
                 >
-                    {{tab.pageTab || defaultTabs[index]}}
+                    {{ tab.pageTab || defaultTabs[index] }}
                 </a>
             </ng-container>
             <ng-template #dynamicTab>
@@ -41,7 +41,7 @@
                     routerLinkActive
                     [routerLink]="getRouterLink(tab.pageTab || defaultTabs[index])"
                 >
-                    {{tab.pageTab || defaultTabs[index]}}
+                    {{ tab.pageTab || defaultTabs[index] }}
                 </a>
             </ng-template>
         </ng-container>

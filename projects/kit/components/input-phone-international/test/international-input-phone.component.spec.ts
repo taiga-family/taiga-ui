@@ -215,8 +215,8 @@ describe('InputPhoneInternational', () => {
         const countryNameContainers =
             fixture.debugElement.queryAll(By.css('.country-item-name')) || [];
 
-        return countryNameContainers.map(
-            container => container.nativeElement.textContent,
+        return countryNameContainers.map(container =>
+            container.nativeElement.textContent?.trim(),
         );
     }
 

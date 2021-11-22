@@ -14,9 +14,9 @@
         ></tui-data-list-wrapper>
     </tui-combo-box>
     <tui-combo-box
-        class="tui-space_vertical-5"
         tuiTextfieldSize="m"
         tuiTextfieldExampleText="Type a name"
+        class="tui-space_vertical-5"
         [formControl]="testValue"
         [valueContent]="content"
         (searchChange)="onSearchChange($event)"
@@ -46,8 +46,8 @@
 <ng-template #content let-data>
     <div class="template">
         <tui-avatar
-            class="avatar"
             size="xs"
+            class="avatar"
             [avatarUrl]="data.avatarUrl || null"
             [text]="data.toString()"
         ></tui-avatar>

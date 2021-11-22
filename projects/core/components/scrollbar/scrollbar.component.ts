@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
     ElementRef,
     HostBinding,
     HostListener,
@@ -10,9 +9,8 @@ import {
 } from '@angular/core';
 import {CSS, USER_AGENT} from '@ng-web-apis/common';
 import {getElementOffset, isFirefox, TUI_IS_IOS, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TUI_SCROLL_INTO_VIEW} from '@taiga-ui/core/constants';
+import {TUI_SCROLL_INTO_VIEW, TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {TuiScrollableDirective} from './scrollable.directive';
 
 export function scrollRefFactory({
     browserScrollRef,
@@ -39,9 +37,9 @@ export class TuiScrollbarComponent {
     @tuiDefaultProp()
     hidden = false;
 
-    @HostBinding('class._container')
-    @ContentChild(TuiScrollableDirective, {read: ElementRef})
-    readonly scrollable?: ElementRef<HTMLDivElement>;
+    readonly browserScrollRef = new ElementRef(this.elementRef.nativeElement);
+
+    private delegated = false;
 
     private readonly isLegacy: boolean =
         !this.cssRef.supports('position', 'sticky') ||
@@ -58,25 +56,27 @@ export class TuiScrollbarComponent {
     ) {}
 
     get showScrollbars(): boolean {
-        return !this.hidden && !this.isIos && (!this.isLegacy || !!this.scrollable);
-    }
-
-    get browserScrollRef(): ElementRef<HTMLElement> {
-        return this.scrollable || this.elementRef;
+        return !this.hidden && !this.isIos && (!this.isLegacy || this.delegated);
     }
 
     @HostBinding('class._legacy')
     get showNative(): boolean {
-        return this.isLegacy && !this.hidden && !this.scrollable;
+        return this.isLegacy && !this.hidden && !this.delegated;
     }
 
-    @HostListener(TUI_SCROLL_INTO_VIEW, ['$event'])
-    scrollIntoView(event: CustomEvent<HTMLElement>) {
-        const {detail} = event;
+    @HostListener(`${TUI_SCROLLABLE}.stop`, ['$event.detail'])
+    onScrollable(element: HTMLElement) {
+        this.delegated = true;
+        this.browserScrollRef.nativeElement = element;
+    }
+
+    @HostListener(`${TUI_SCROLL_INTO_VIEW}.stop`, ['$event.detail'])
+    scrollIntoView(detail: HTMLElement) {
+        if (this.delegated) {
+            return;
+        }
+
         const {nativeElement} = this.browserScrollRef;
-
-        event.stopPropagation();
-
         const {offsetTop, offsetLeft} = getElementOffset(nativeElement, detail);
 
         nativeElement.scrollTop =

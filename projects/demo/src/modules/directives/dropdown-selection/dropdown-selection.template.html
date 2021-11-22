@@ -6,8 +6,8 @@
 >
     <ng-template pageTab>
         <p i18n>
-            <code>tuiDropdownSelection</code> shows dropdown with custom
-            template on selected text
+            <code>tuiDropdownSelection</code>
+            shows dropdown with custom template on selected text
         </p>
 
         <tui-doc-example
@@ -38,7 +38,8 @@
                 [tuiDropdownLimitWidth]="tuiDropdownLimitWidth"
                 [tuiDropdownSided]="tuiDropdownSided"
             >
-                Select a text to <strong>see a dropdown</strong>
+                Select a text to
+                <strong>see a dropdown</strong>
             </p>
             <ng-template #dropdownContent>
                 <div i18n class="dropdown">
@@ -69,7 +70,8 @@
                 [(documentationPropertyValue)]="tuiDropdownAlign"
             >
                 Align of dropdown (does not work together with
-                <code>limitWidth === 'fixed'</code>)
+                <code>limitWidth === 'fixed'</code>
+                )
             </ng-template>
             <ng-template
                 i18n
@@ -126,9 +128,10 @@
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<Range>"
             >
-                <strong>Directive selector</strong>. Optional: you can also set
-                a handler that gets <code>Range</code> and returns show/close
-                dropdown
+                <strong>Directive selector</strong>
+                . Optional: you can also set a handler that gets
+                <code>Range</code>
+                and returns show/close dropdown
             </ng-template>
             <ng-template
                 i18n
@@ -156,8 +159,9 @@
         <ol class="b-demo-steps">
             <li>
                 <p i18n>
-                    Import <code>TuiDropdownModule</code> into a module where
-                    you want to use our component
+                    Import
+                    <code>TuiDropdownModule</code>
+                    into a module where you want to use our component
                 </p>
 
                 <tui-doc-code

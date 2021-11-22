@@ -5,7 +5,9 @@ import {TuiColorPickerComponent} from '../color-picker.component';
 import {TuiColorPickerModule} from '../color-picker.module';
 
 @Component({
-    template: ` <tui-color-picker [(color)]="color"></tui-color-picker> `,
+    template: `
+        <tui-color-picker [(color)]="color"></tui-color-picker>
+    `,
 })
 class TestComponent {
     @ViewChild(TuiColorPickerComponent)

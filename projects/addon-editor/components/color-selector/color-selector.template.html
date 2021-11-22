@@ -1,6 +1,6 @@
 <tui-hosted-dropdown #dropdown class="t-select" [content]="menu">
     <button tuiButton appearance="" size="s" type="button" [iconRight]="arrow">
-        {{currentMode}}
+        {{ currentMode }}
     </button>
     <ng-template #arrow>
         <tui-svg
@@ -21,11 +21,11 @@
                 (keydown.space.prevent)="onModeSelect(mode, dropdown)"
                 (click)="onModeSelect(mode, dropdown)"
             >
-                {{mode}}
+                {{ mode }}
                 <tui-svg
                     *ngIf="isModeActive(mode)"
-                    class="t-checkmark"
                     src="tuiIconCheck"
+                    class="t-checkmark"
                 ></tui-svg>
             </button>
         </tui-data-list>

@@ -1,9 +1,9 @@
 <img
     *ngIf="isUrlValid"
-    class="image"
     loading="lazy"
+    class="image"
     [attr.alt]="text"
     [src]="avatarUrl"
     (error)="onError()"
 />
-<span class="text">{{computedText}}</span>
+<span class="text">{{ computedText }}</span>

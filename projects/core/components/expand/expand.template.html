@@ -2,7 +2,7 @@
     <ng-container *ngIf="contentVisible">
         <ng-content></ng-content>
         <tui-loader
-            *ngIf="async else content"
+            *ngIf="async; else content"
             size="l"
             [overlay]="true"
             [showLoader]="loading"

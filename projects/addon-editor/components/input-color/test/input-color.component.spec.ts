@@ -6,7 +6,9 @@ import {TuiInputColorComponent} from '../input-color.component';
 import {TuiInputColorModule} from '../input-color.module';
 
 @Component({
-    template: ` <tui-input-color [(ngModel)]="color"></tui-input-color> `,
+    template: `
+        <tui-input-color [(ngModel)]="color"></tui-input-color>
+    `,
 })
 class TestComponent {
     @ViewChild(TuiInputColorComponent)

@@ -5,7 +5,6 @@ export async function grepByPattern(pattern: string, path: string): Promise<any>
     const exec = util.promisify(child_process.exec);
     const grep = `grep -iRl '${pattern}' ${path}`;
 
-    // tslint:disable-next-line:no-console
     console.info(`[TASK]: $ ${grep}`);
 
     /**

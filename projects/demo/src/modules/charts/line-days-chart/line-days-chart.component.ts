@@ -83,7 +83,9 @@ export class ExampleTuiLineDaysChartComponent {
         ({$implicit}) =>
             `${this.months[$implicit[0].month]}, ${$implicit[0].day}\n${(
                 10 * $implicit[1]
-            ).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
+            ).toLocaleString('en-US', {
+                maximumFractionDigits: 0,
+            })} $`,
     ];
 
     yStringify: TuiStringHandler<number> | null = null;

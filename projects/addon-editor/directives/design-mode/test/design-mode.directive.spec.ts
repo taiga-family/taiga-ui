@@ -7,7 +7,9 @@ import {TuiDesignModeModule} from '../design-mode.module';
 
 describe('TuiDesignMode directive', () => {
     @Component({
-        template: ` <iframe tuiDesignMode [(ngModel)]="model"></iframe> `,
+        template: `
+            <iframe tuiDesignMode [(ngModel)]="model"></iframe>
+        `,
     })
     class TestComponent {
         @ViewChild(TuiDesignModeDirective, {read: ElementRef})

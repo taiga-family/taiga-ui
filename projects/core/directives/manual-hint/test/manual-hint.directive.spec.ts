@@ -15,8 +15,8 @@ describe('ManualHint', () => {
                 <div
                     *ngIf="host"
                     id="hint-host"
-                    class="host"
                     tuiHintDirection="top"
+                    class="host"
                     [tuiManualHintShow]="show"
                     [tuiManualHint]="hint"
                 >

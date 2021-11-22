@@ -15,7 +15,7 @@
     "peerDependencies": {
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
-        "@tinkoff/ng-polymorpheus": "3.1.11",
+        "@tinkoff/ng-polymorpheus": "3.1.12",
         "@taiga-ui/cdk": "2.23.0",
         "@taiga-ui/core": "2.23.0",
         "rxjs": ">=6.0.0"

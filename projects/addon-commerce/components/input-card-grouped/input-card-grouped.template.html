@@ -19,13 +19,13 @@
             <input
                 #inputCard
                 type="text"
-                class="t-input t-input_card"
                 automation-id="tui-input-card-grouped__card"
                 tuiInputMode="numeric"
+                class="t-input t-input_card"
                 [class.t-input_inert]="cardPrefilled"
                 [class.t-input_hidden]="isCardCollapsed"
                 [attr.id]="idCard"
-                [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper : cardValidator)"
+                [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper: cardValidator)"
                 [placeholder]="cardPrefilled ? '' : exampleText"
                 [autocomplete]="autocompleteCard"
                 [disabled]="computedDisabled"
@@ -34,7 +34,7 @@
                 [tuiFocusable]="cardFocusable"
                 [ngModel]="formattedCard"
                 (ngModelChange)="onCardChange($event)"
-                (focus)="0"
+                (focus)="(0)"
             />
             <span
                 aria-hidden="true"
@@ -47,7 +47,7 @@
                         class="t-value"
                         [class.t-value_collapsed]="isCardCollapsed"
                     >
-                        {{formattedCard}}
+                        {{ formattedCard }}
                     </span>
                 </span>
             </span>
@@ -55,7 +55,7 @@
                 class="t-placeholder"
                 [class.t-placeholder_raised]="placeholderRaised"
             >
-                {{texts.cardNumberText}}
+                {{ texts.cardNumberText }}
             </span>
         </label>
     </div>
@@ -68,9 +68,9 @@
                 #inputExpire
                 type="text"
                 placeholder="00/00"
-                class="t-input"
                 automation-id="tui-input-card-grouped__expire"
                 tuiInputMode="numeric"
+                class="t-input"
                 [class.t-input_inert]="!expireFocusable"
                 [attr.id]="idExpire"
                 [attr.name]="name"
@@ -81,13 +81,13 @@
                 [textMask]="maskExpire"
                 [ngModel]="expire"
                 (ngModelChange)="onExpireChange($event)"
-                (focus)="0"
+                (focus)="(0)"
             />
             <span
                 class="t-placeholder"
                 [class.t-placeholder_raised]="placeholderRaised"
             >
-                {{texts.expiryText}}
+                {{ texts.expiryText }}
             </span>
         </label>
     </div>
@@ -112,35 +112,35 @@
                 [tuiFocusable]="cvcFocusable"
                 [ngModel]="cvc"
                 (ngModelChange)="onCVCChange($event)"
-                (focus)="0"
+                (focus)="(0)"
             />
             <span
                 class="t-placeholder"
                 [class.t-placeholder_raised]="placeholderRaised"
             >
-                {{texts.cvcText}}
+                {{ texts.cvcText }}
             </span>
         </label>
     </div>
     <div class="t-icons">
         <div
             *ngIf="icon"
-            class="t-icon-outlet"
             polymorpheus-outlet
+            class="t-icon-outlet"
             [content]="icon"
         >
             <ng-template let-icon>
                 <tui-svg
-                    class="t-card"
                     automation-id="tui-input-card-grouped__icon"
+                    class="t-card"
                     [src]="icon"
                 ></tui-svg>
             </ng-template>
         </div>
         <tui-svg
             *ngIf="hasCleaner"
-            class="t-icon"
             src="tuiIconCloseLarge"
+            class="t-icon"
             (click)="clear()"
         ></tui-svg>
         <tui-svg

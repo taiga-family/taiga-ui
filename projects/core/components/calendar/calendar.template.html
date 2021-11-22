@@ -1,7 +1,7 @@
 <tui-scrollbar
     *ngIf="year; else calendar"
-    class="scrollbar"
     automation-id="tui-calendar__scrollbar"
+    class="scrollbar"
 >
     <tui-primitive-year-picker
         automation-id="tui-calendar__year"
@@ -14,8 +14,8 @@
 </tui-scrollbar>
 <ng-template #calendar>
     <tui-primitive-year-month-pagination
-        class="pagination"
         automation-id="tui-calendar__pagination"
+        class="pagination"
         [min]="computedMinViewedMonth"
         [max]="computedMaxViewedMonth"
         [value]="month"
@@ -27,7 +27,7 @@
         [showAdjacent]="showAdjacent"
         [value]="value"
         [month]="month"
-        [disabledItemHandler]="disabledItemHandler | tuiMapper : disabledItemHandlerMapper : min : max"
+        [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerMapper:min:max"
         [markerHandler]="markerHandler"
         [hoveredItem]="hoveredItem"
         (hoveredItemChange)="onHoveredItemChange($event)"

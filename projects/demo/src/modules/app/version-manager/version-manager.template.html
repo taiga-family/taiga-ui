@@ -1,6 +1,6 @@
 <tui-select
-    class="select"
     tuiTextfieldSize="s"
+    class="select"
     [ngModel]="initialVersion"
     [valueContent]="'label' | tuiStringify | tuiStringifyContent"
 >
@@ -12,7 +12,7 @@
             [value]="version"
             [href]="getVersionHref(version)"
         >
-            {{version.label}}
+            {{ version.label }}
         </a>
     </tui-data-list>
 </tui-select>
