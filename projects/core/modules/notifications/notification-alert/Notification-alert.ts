@@ -6,6 +6,7 @@ import {
 } from '@taiga-ui/core/interfaces';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observer} from 'rxjs';
+
 import {TuiNotificationContentContext} from '../notification-content-context';
 
 export class NotificationAlert<O, I> {

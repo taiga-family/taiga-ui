@@ -2,6 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
 import {of, timer} from 'rxjs';
 import {map, startWith, takeWhile} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

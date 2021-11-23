@@ -12,6 +12,7 @@ import {
 import {TuiDropdownModule, TuiSvgModule, TuiWrapperModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TextMaskModule} from 'angular2-text-mask';
+
 import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
 
 @NgModule({

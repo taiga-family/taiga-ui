@@ -5,6 +5,7 @@ import {
     TuiIdentityMatcher,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

@@ -10,6 +10,7 @@ import {
     TuiRadioListModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiPaginationExample1} from './examples/1';
 import {TuiPaginationExample2} from './examples/2';
 import {TuiPaginationExample3} from './examples/3';

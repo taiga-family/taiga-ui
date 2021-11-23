@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiProgressModule} from '@taiga-ui/kit';
+
 import {TuiProgressBarExample1} from './examples/1';
 import {TuiProgressBarExample2} from './examples/2';
 import {TuiProgressBarExample3} from './examples/3';

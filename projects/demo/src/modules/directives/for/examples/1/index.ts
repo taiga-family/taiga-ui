@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

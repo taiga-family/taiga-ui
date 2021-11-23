@@ -7,6 +7,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 import {TextMaskModule} from 'angular2-text-mask';
+
 import {TuiInputPhoneComponent} from './input-phone.component';
 
 @NgModule({

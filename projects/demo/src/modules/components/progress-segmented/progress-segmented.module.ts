@@ -5,6 +5,7 @@ import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLabelModule} from '@taiga-ui/core';
 import {TuiProgressModule} from '@taiga-ui/kit';
+
 import {TuiProgressSegmentedExample1} from './examples/1';
 import {TuiProgressSegmentedExample2} from './examples/2';
 import {TuiProgressSegmentedExample3} from './examples/3';

@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule} from '@taiga-ui/core';
+
 import {TuiNotificationExample1} from './examples/1';
 import {TuiNotificationExample2} from './examples/2';
 import {ExampleTuiNotificationComponent} from './notification.component';

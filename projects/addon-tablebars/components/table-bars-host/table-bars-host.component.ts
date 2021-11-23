@@ -1,9 +1,14 @@
 import {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TUI_PARENT_ANIMATION, TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TUI_ANIMATION_OPTIONS, TuiBrightness, tuiSlideInTop} from '@taiga-ui/core';
-import {TUI_CLOSE_WORD} from '@taiga-ui/core';
+import {
+    TUI_ANIMATION_OPTIONS,
+    TUI_CLOSE_WORD,
+    TuiBrightness,
+    tuiSlideInTop,
+} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+
 import {TableBar} from '../../classes/table-bar';
 import {TuiTableBarsService} from '../../services/table-bars.service';
 

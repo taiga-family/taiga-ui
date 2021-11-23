@@ -9,6 +9,7 @@ import {
     TuiPressedModule,
 } from '@taiga-ui/cdk';
 import {TuiPrimitiveCheckboxModule} from '@taiga-ui/core';
+
 import {TuiCheckboxComponent} from './checkbox.component';
 
 @NgModule({

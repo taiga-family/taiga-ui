@@ -1,9 +1,10 @@
+import {Component, Inject} from '@angular/core';
+import {TuiSizeL} from '@taiga-ui/core';
+
 import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {Component, Inject} from '@angular/core';
-import {TuiSizeL} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
 

@@ -21,9 +21,10 @@ import {
     TuiSelectModule,
     TuiToggleModule,
 } from '@taiga-ui/kit';
+
 import {TuiInputOpacityModule} from '../../internal/input-opacity/input-opacity.module';
-import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 import {TuiDocDocumentationComponent} from './documentation.component';
+import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 
 @NgModule({
     imports: [

@@ -1,3 +1,7 @@
+import {Injectable} from '@angular/core';
+import stackblitz from '@stackblitz/sdk';
+import {CodeEditor} from '@taiga-ui/addon-doc';
+
 import {default as angularJson} from '!!raw-loader!./project-files/angular.txt';
 import {default as appModuleTs} from '!!raw-loader!./project-files/src/app/app.module.ts.txt';
 import {default as indexHtml} from '!!raw-loader!./project-files/src/index.html';
@@ -6,9 +10,6 @@ import {default as polyfills} from '!!raw-loader!./project-files/src/polyfills.t
 import {default as styles} from '!!raw-loader!./project-files/src/styles.less';
 import {default as tsconfig} from '!!raw-loader!./project-files/tsconfig.txt';
 
-import {Injectable} from '@angular/core';
-import stackblitz from '@stackblitz/sdk';
-import {CodeEditor} from '@taiga-ui/addon-doc';
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';
 import {

@@ -6,6 +6,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule, TuiDocCopyModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiCheckboxLabeledModule, TuiInputModule} from '@taiga-ui/kit';
+
 import {TuiWrapperExample1} from './examples/1';
 import {WrapperComponent} from './wrapper.component';
 

@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiFilterPipe} from './filter.pipe';
 
 @NgModule({

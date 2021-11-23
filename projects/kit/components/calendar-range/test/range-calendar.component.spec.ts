@@ -14,6 +14,7 @@ import {TuiRootModule} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 import {Observable, of} from 'rxjs';
+
 import {TuiDayRangePeriod} from '../../../classes/day-range-period';
 import {TUI_CALENDAR_DATA_STREAM} from '../../../tokens/calendar-data-stream';
 import {tuiCreateDefaultDayRangePeriods} from '../../../utils/miscellaneous/create-default-day-range-periods';

@@ -1,4 +1,5 @@
 import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
+
 import {User} from './user';
 
 export const databaseMockData: ReadonlyArray<User> = [

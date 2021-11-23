@@ -1,9 +1,16 @@
+import {Component, Inject, Injector} from '@angular/core';
+import {
+    TuiNotification,
+    TuiNotificationContentContext,
+    TuiNotificationsService,
+} from '@taiga-ui/core';
+import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {switchMap} from 'rxjs/operators';
+
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-
 import {default as example3AlertExampleComponent} from '!!raw-loader!./examples/3/alert-example/alert-example.component.ts';
 import {default as example3AlertExampleModule} from '!!raw-loader!./examples/3/alert-example/alert-example.module.ts';
 import {default as example3AlertExampleTemplate} from '!!raw-loader!./examples/3/alert-example/alert-example.template.html';
@@ -13,38 +20,25 @@ import {default as example4AlertDataComponent} from '!!raw-loader!./examples/4/a
 import {default as example4AlertDataModule} from '!!raw-loader!./examples/4/alert-example-with-data/alert-example-with-data.module';
 import {default as example4AlertDataStyle} from '!!raw-loader!./examples/4/alert-example-with-data/alert-example-with-data.style.less';
 import {default as example4AlertDataTemplate} from '!!raw-loader!./examples/4/alert-example-with-data/alert-example-with-data.template.html';
-
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
-
+import {default as example5AlertExampleComponent} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.component.ts';
+import {default as example5AlertExampleModule} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module.ts';
+import {default as example5AlertExampleTemplate} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.template.html';
 import {default as example5CustomLabelComponent} from '!!raw-loader!./examples/5/custom-label/custom-label.component.ts';
 import {default as example5CustomLabelModule} from '!!raw-loader!./examples/5/custom-label/custom-label.module.ts';
 import {default as example5CustomLabelStyle} from '!!raw-loader!./examples/5/custom-label/custom-label.style.less';
 import {default as example5CustomLabelTemplate} from '!!raw-loader!./examples/5/custom-label/custom-label.template.html';
-
-import {default as example5AlertExampleComponent} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.component.ts';
-import {default as example5AlertExampleModule} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module.ts';
-import {default as example5AlertExampleTemplate} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.template.html';
-
 import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
-
 import {default as exampleCustomAlert} from '!!raw-loader!./examples/import/custom-alert.txt';
 import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleImportModuleComponent} from '!!raw-loader!./examples/import/import-module-component.txt';
 import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
 import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
-import {default as exampleServiceUsageComponent} from '!!raw-loader!./examples/import/service-usage-component.txt';
 import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/service-usage.txt';
+import {default as exampleServiceUsageComponent} from '!!raw-loader!./examples/import/service-usage-component.txt';
 
-import {Component, Inject, Injector} from '@angular/core';
-import {
-    TuiNotification,
-    TuiNotificationContentContext,
-    TuiNotificationsService,
-} from '@taiga-ui/core';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {switchMap} from 'rxjs/operators';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-data/alert-example-with-data.component';

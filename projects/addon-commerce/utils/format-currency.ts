@@ -1,5 +1,6 @@
 import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 import {padStart} from '@taiga-ui/cdk';
+
 import {getCurrencySymbol} from './get-currency-symbol';
 
 export function formatCurrency(currency: TuiCurrencyVariants): string {

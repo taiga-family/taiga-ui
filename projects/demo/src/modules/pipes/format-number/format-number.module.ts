@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiFormatNumberPipeModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiInputSliderModule, TuiRadioListModule} from '@taiga-ui/kit';
+
 import {TuiFormatNumberExample1} from './examples/1';
 import {ExampleTuiFormatNumberComponent} from './format-number.component';
 

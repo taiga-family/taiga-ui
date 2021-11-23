@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiPrimitiveCalendarRangeComponent} from '../primitive-calendar-range.component';
 import {TuiPrimitiveCalendarRangeModule} from '../primitive-calendar-range.module';
 

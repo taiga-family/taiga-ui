@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiCalendarMonthModule} from '@taiga-ui/kit';
+
 import {ExampleTuiCalendarMonthComponent} from './calendar-month.component';
 import {TuiMonthExample1} from './examples/1';
 import {TuiMonthExample2} from './examples/2';

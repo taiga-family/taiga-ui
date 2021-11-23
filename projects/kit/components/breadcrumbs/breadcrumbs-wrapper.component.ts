@@ -11,6 +11,7 @@ import {
 import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
+
 import {TuiBreadcrumbDirective} from './breadcrumb.directive';
 
 @Component({

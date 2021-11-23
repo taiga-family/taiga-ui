@@ -6,6 +6,7 @@ import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk
 import {TuiSizeS} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiFilterComponent} from '../filter.component';
 import {TuiFilterModule} from '../filter.module';
 

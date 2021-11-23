@@ -17,6 +17,7 @@ import {
     TuiSliderModule,
     TuiToggleModule,
 } from '@taiga-ui/kit';
+
 import {LandingComponent} from './landing.component';
 
 @NgModule({

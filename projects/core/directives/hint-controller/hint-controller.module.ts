@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiHintControllerDirective} from './hint-controller.directive';
 
 @NgModule({

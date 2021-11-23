@@ -7,6 +7,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+
 import {CodeComponent} from './code.component';
 
 @NgModule({

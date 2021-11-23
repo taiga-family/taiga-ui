@@ -1,5 +1,6 @@
 import {Component, Inject, Renderer2} from '@angular/core';
 import {TUI_DEFAULT_RENDERER} from '@taiga-ui/cdk/tokens';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

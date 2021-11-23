@@ -1,6 +1,7 @@
 import {fakeAsync} from '@angular/core/testing';
 import {Subject} from 'rxjs';
 import {first} from 'rxjs/operators';
+
 import {stopPropagation} from '../stop-propagation';
 
 describe('stopPropagation operator function', () => {

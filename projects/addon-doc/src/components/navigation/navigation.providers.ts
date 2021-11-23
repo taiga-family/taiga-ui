@@ -3,6 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {isPresent, TuiDestroyService} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
+
 import {TUI_DOC_PAGES} from '../../tokens/pages';
 import {TUI_DOC_TITLE} from '../../tokens/title';
 import {TuiDocPages} from '../../types/pages';

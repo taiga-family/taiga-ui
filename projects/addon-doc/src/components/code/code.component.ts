@@ -1,6 +1,7 @@
 import {Component, HostBinding, Input} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
+
 import {RawLoaderContent} from '../../interfaces/page';
 import {rawLoad} from '../../utils/raw-load';
 

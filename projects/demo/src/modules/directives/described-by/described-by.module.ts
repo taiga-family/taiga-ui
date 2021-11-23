@@ -8,6 +8,7 @@ import {
     TuiHintModule,
     TuiNotificationModule,
 } from '@taiga-ui/core';
+
 import {ExampleTuiDescribeByComponent} from './described-by.component';
 import {TuiDescribedByExample1} from './examples/1';
 

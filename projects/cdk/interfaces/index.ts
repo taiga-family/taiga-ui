@@ -5,7 +5,7 @@ export * from './context-with-implicit';
 export * from './day-like';
 export * from './focusable-element-accessor';
 export * from './month-like';
+export * from './swipe';
 export * from './time-like';
 export * from './year-like';
-export * from './swipe';
 export * from './zoom';

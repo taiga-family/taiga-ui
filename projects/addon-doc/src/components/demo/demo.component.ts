@@ -21,6 +21,7 @@ import {TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {startWith, takeUntil} from 'rxjs/operators';
+
 import {TUI_DOC_DEMO_TEXTS} from '../../tokens/i18n';
 
 const MIN_COMPONENT_WIDTH = 104;

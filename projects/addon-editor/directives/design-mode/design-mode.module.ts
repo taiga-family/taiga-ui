@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiDesignModeDirective} from './design-mode.directive';
 
 @NgModule({

@@ -17,10 +17,11 @@ import {
 import {TuiInputTagModule} from '@taiga-ui/kit/components/input-tag';
 import {TuiMultiSelectOptionModule} from '@taiga-ui/kit/components/multi-select-option';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiHideSelectedPipe} from './hide-selected.pipe';
+import {TuiMultiSelectComponent} from './multi-select.component';
 import {TuiMultiSelectGroupComponent} from './multi-select-group/multi-select-group.component';
 import {TuiMultiSelectGroupDirective} from './multi-select-group/multi-select-group.directive';
-import {TuiMultiSelectComponent} from './multi-select.component';
 
 @NgModule({
     imports: [

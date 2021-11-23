@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiAvatarModule, TuiRadioListModule} from '@taiga-ui/kit';
+
 import {ExampleTuiAvatarComponent} from './avatar.component';
 import {TuiAvatarExample1} from './examples/1';
 import {TuiAvatarExample2} from './examples/2';

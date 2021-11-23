@@ -1,5 +1,6 @@
 import {clamp} from '@taiga-ui/cdk/utils/math';
 import {isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+
 import {getDocumentOrShadowRoot} from './get-document-or-shadow-root';
 
 /**

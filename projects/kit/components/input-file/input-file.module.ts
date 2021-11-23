@@ -19,6 +19,7 @@ import {
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiFileComponent} from './file/file.component';
 import {TuiInputFileComponent} from './input-file.component';
 

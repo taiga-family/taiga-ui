@@ -11,6 +11,7 @@ import {
     TuiSizeS,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
+
 import {ExampleTuiDropdown} from './dropdown-controller-documentation/dropdown-controller-documentation.component';
 import {AbstractExampleTuiInteractive} from './interactive';
 

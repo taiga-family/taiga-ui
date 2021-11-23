@@ -11,6 +11,7 @@ import {
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiMultiSelectComponent} from '../multi-select.component';
 import {TuiMultiSelectModule} from '../multi-select.module';
 

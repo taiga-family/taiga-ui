@@ -29,6 +29,7 @@ import {
     TuiSizeXS,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {ToggleOptions, TUI_TOGGLE_OPTIONS} from './toggle-options';
 
 @Component({

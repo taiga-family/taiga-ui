@@ -2,6 +2,7 @@ import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiZoom} from '../../../interfaces/zoom';
 import {floor} from '../../../utils/math';
 import {TuiZoomModule} from '../zoom.module';

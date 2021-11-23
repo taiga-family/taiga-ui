@@ -6,6 +6,7 @@ import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiRadioListModule} from '@taiga-ui/kit';
+
 import {TuiMoneyExample1} from './examples/1';
 import {TuiMoneyExample2} from './examples/2';
 import {TuiMoneyExample3} from './examples/3';

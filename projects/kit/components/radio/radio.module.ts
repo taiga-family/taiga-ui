@@ -9,6 +9,7 @@ import {
     TuiPressedModule,
 } from '@taiga-ui/cdk';
 import {TuiWrapperModule} from '@taiga-ui/core';
+
 import {TuiRadioComponent} from './radio.component';
 
 @NgModule({

@@ -1,4 +1,5 @@
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
+
 import {isNativeKeyboardFocusable} from './is-native-keyboard-focusable';
 import {isNativeMouseFocusable} from './is-native-mouse-focusable';
 

@@ -7,6 +7,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+
 import {TuiFontSizeComponent} from './font-size.component';
 
 @NgModule({

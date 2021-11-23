@@ -6,6 +6,7 @@ import {
     TUI_PASSWORD_TEXTS,
 } from '@taiga-ui/kit';
 import {of} from 'rxjs';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

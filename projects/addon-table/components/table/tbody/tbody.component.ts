@@ -13,6 +13,7 @@ import {
 import {TuiComparator} from '@taiga-ui/addon-table/types';
 import {EMPTY_QUERY, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';

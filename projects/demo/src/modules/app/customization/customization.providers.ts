@@ -2,6 +2,7 @@ import {forwardRef, InjectionToken, Provider} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiModeDirective} from '@taiga-ui/core';
+
 import {CSS_VARS} from '../../tokens/css-vars';
 import {TuiCustomizationComponent} from './customization.component';
 

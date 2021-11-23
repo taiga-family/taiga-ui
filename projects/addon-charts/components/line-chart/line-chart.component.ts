@@ -22,6 +22,7 @@ import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, Subject} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
+
 import {TuiLineChartHintDirective} from './line-chart-hint.directive';
 
 export function smoothingAssertion(smoothingFactor: number): boolean {

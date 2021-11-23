@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiHighlightModule, TuiInputModule} from '@taiga-ui/kit';
+
 import {TuiHighlightExample1} from './examples/1';
 import {ExampleTuiHighlightComponent} from './highlight.component';
 

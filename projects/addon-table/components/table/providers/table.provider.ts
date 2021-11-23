@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Provider, SkipSelf} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {watchedControllerFactory} from '@taiga-ui/core';
+
 import {TuiTableDirective} from '../directives/table.directive';
 
 // TODO: remove in ivy compilation

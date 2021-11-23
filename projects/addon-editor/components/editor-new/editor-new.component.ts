@@ -29,6 +29,7 @@ import {
 } from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
 import {Observable} from 'rxjs';
+
 import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 
 @Component({

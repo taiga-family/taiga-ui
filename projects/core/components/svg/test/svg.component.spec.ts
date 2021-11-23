@@ -5,6 +5,7 @@ import {TuiStaticRequestService} from '@taiga-ui/cdk';
 import {configureTestSuite} from 'ng-bullet';
 import {of, throwError} from 'rxjs';
 import {filter, skip} from 'rxjs/operators';
+
 import {TuiSvgService} from '../../../services/svg.service';
 import {TuiSvgComponent} from '../svg.component';
 import {TuiSvgModule} from '../svg.module';

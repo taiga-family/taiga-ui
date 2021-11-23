@@ -12,6 +12,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiRadioListModule} from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputNumberExample1} from './examples/1';
 import {TuiInputNumberExample2} from './examples/2';

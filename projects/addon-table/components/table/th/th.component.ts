@@ -12,6 +12,7 @@ import {TuiComparator} from '@taiga-ui/addon-table/types';
 import {defaultSort} from '@taiga-ui/addon-table/utils';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
+
 import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 

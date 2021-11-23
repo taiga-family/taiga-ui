@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

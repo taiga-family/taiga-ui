@@ -5,9 +5,10 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
+
+import {ExampleTuiPureComponent} from './pure.component';
 import {ExampleTuiPureFunctionComponent} from './pure-function.component';
 import {ExampleTuiPureGetterComponent} from './pure-getter.component';
-import {ExampleTuiPureComponent} from './pure.component';
 
 @NgModule({
     imports: [

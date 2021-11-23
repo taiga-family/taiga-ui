@@ -4,6 +4,7 @@ import {
     IntersectionObserverService,
 } from '@ng-web-apis/intersection-observer';
 import {Observable} from 'rxjs';
+
 import {TUI_STUCK, TUI_STUCK_PROVIDER} from '../providers/stuck.provider';
 
 @Directive({

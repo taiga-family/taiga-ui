@@ -1,5 +1,6 @@
 import {Component, Inject, Input} from '@angular/core';
 import {TuiDirection, TuiHintModeT} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../../change-detection-strategy';
 import {AbstractExampleTuiControl} from '../control';
 import {AbstractExampleTuiHint} from '../hint';

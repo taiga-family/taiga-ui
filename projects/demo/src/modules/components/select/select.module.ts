@@ -27,6 +27,7 @@ import {
     TuiTextAreaModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiSelectExample1} from './examples/1';
 import {TuiSelectExample2} from './examples/2';

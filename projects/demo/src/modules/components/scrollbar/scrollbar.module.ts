@@ -9,6 +9,7 @@ import {
     TuiNotificationModule,
     TuiScrollbarModule,
 } from '@taiga-ui/core';
+
 import {TuiScrollbarExample1Component} from './examples/1/component';
 import {TuiScrollbarExample2Component} from './examples/2/component';
 import {TuiScrollbarExample3Component} from './examples/3/component';

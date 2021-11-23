@@ -6,6 +6,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiHighDpiModule, TuiMediaModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
+
 import {TuiMediaExample1} from './examples/1';
 import {TuiMediaExample2} from './examples/2';
 import {TuiMediaExample3} from './examples/3';

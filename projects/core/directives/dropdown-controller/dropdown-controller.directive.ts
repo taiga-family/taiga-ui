@@ -6,6 +6,7 @@ import {
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core/types';
+
 import {TUI_DROPDOWN_CONTROLLER} from './dropdown-controller.token';
 
 @Directive({

@@ -1,5 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {NumberFormatSettings, TUI_NUMBER_FORMAT} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

@@ -32,6 +32,7 @@ import {
 } from '@taiga-ui/core/directives/dropdown-controller';
 import {isEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
 
 @Component({

@@ -7,6 +7,7 @@ import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {TuiErrorModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiToggleModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {ExampleTuiErrorComponent} from './error.component';
 import {TuiErrorExample1} from './examples/1';
 

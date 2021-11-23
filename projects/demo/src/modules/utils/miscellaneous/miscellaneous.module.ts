@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiDataListModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
+
 import {TuiMiscellaneousExample1} from './examples/1';
 import {TuiMiscellaneousExample2} from './examples/2';
 import {TuiMiscellaneousExample4} from './examples/4';

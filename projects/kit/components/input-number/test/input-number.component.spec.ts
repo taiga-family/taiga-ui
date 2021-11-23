@@ -12,6 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiInputNumberComponent} from '../input-number.component';
 import {TuiInputNumberModule} from '../input-number.module';
 

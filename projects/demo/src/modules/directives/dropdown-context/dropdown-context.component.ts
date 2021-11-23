@@ -1,18 +1,3 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1LESS} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2LESS} from '!!raw-loader!./examples/2/index.less';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3LESS} from '!!raw-loader!./examples/3/index.less';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
 import {Component, forwardRef} from '@angular/core';
 import {
     DEFAULT_MAX_HEIGHT,
@@ -21,6 +6,19 @@ import {
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
+
+import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
+import {default as example1LESS} from '!!raw-loader!./examples/1/index.less';
+import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
+import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
+import {default as example2LESS} from '!!raw-loader!./examples/2/index.less';
+import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
+import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
+import {default as example3LESS} from '!!raw-loader!./examples/3/index.less';
+import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
+import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {ExampleTuiDropdown} from '../../components/abstract/dropdown-controller-documentation/dropdown-controller-documentation.component';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';

@@ -1,4 +1,5 @@
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
+
 import {markControlAsTouchedAndValidate} from '../mark-control-as-touched-and-validate';
 
 describe('markControlAsTouchedAndValidate', () => {

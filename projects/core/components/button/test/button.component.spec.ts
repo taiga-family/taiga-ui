@@ -4,6 +4,7 @@ import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiButtonHarness, TuiLoaderHarness} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiButtonModule} from '../button.module';
 
 describe('Button', () => {

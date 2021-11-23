@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiHintControllerModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputDateTimeModule} from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputDateTimeExample1} from './examples/1';
 import {TuiInputDateTimeExample2} from './examples/2';

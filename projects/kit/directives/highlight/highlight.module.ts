@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiHighlightDirective} from './highlight.directive';
 
 @NgModule({

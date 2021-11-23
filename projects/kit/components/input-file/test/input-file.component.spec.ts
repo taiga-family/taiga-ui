@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiSizeL} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiFileState} from '../../../enums/file-state';
 import {TuiFileLike} from '../../../interfaces/file-like';
 import {TuiInputFileComponent} from '../input-file.component';

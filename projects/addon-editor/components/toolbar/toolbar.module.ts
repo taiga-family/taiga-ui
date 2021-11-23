@@ -11,6 +11,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+
 import {TuiToolbarComponent} from './toolbar.component';
 
 @NgModule({

@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiPrimitiveSpinButtonComponent} from '../primitive-spin-button.component';
 import {TuiPrimitiveSpinButtonModule} from '../primitive-spin-button.module';
 

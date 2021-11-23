@@ -6,6 +6,7 @@ import {isIE, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
 import {TuiBrightness} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {
     TUI_DOC_CUSTOMIZATION_PROVIDERS,

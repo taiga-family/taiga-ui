@@ -14,6 +14,7 @@ import {tuiPure, uniqBy} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+
 import {TuiDocPage} from '../../interfaces/page';
 import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
 import {TuiDocPages} from '../../types/pages';

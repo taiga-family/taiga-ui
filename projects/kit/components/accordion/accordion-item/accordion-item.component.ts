@@ -22,6 +22,7 @@ import {
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
 
 @Component({

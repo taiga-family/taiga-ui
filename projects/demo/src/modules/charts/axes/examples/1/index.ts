@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {TuiLineHandler} from '@taiga-ui/addon-charts';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

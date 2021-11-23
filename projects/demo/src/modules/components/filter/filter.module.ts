@@ -6,6 +6,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiFilterModule, TuiTagModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiFilterExample1} from './examples/1';
 import {TuiFilterExample2} from './examples/2';
 import {TuiFilterExample3} from './examples/3';

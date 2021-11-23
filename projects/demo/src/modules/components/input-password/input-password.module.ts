@@ -10,6 +10,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputPasswordModule} from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputPasswordExample1} from './examples/1';
 import {TuiInputPasswordExample2} from './examples/2';

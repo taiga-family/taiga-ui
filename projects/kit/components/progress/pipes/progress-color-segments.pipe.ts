@@ -1,4 +1,5 @@
 import {Pipe} from '@angular/core';
+
 import {AbstractTuiColorSegments} from './abstract-color-segments';
 
 /**

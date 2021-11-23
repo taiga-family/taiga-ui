@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {dispatchOnActive, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiTextfieldControllerModule} from '../../../directives';
 import {TuiButtonComponent} from '../../button/button.component';
 import {TuiButtonModule} from '../../button/button.module';

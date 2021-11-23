@@ -32,6 +32,7 @@ import {
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+
 import {TUI_TEXT_AREA_PROVIDERS} from './text-area.providers';
 
 export const DEFAULT_ROWS = 20;

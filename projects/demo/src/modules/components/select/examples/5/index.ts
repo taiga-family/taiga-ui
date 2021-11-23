@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {TuiContextWithImplicit, tuiPure, TuiStringHandler} from '@taiga-ui/cdk';
 import {of} from 'rxjs';
 import {delay} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

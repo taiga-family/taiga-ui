@@ -4,6 +4,7 @@ import {TuiSwipeService} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Subject} from 'rxjs';
 import {distinctUntilChanged, filter, map, mapTo, startWith} from 'rxjs/operators';
+
 import {TUI_DOC_MENU_TEXT} from '../../tokens/i18n';
 import {TUI_DOC_LOGO} from '../../tokens/logo';
 

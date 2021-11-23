@@ -8,6 +8,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+
 import {TuiTableRowColumnManagerComponent} from './table-row-column-manager.component';
 
 @NgModule({

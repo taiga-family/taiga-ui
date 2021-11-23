@@ -7,6 +7,7 @@ import {
 } from '@taiga-ui/core/tokens';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiNotification} from '../../../enums/notification';
 import {TuiSvgService} from '../../../services/svg.service';
 import {STATUS_ICON, TuiNotificationComponent} from '../notification.component';

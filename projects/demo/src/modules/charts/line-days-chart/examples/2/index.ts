@@ -8,6 +8,7 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 
 @Component({

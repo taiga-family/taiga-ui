@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {TuiHoveredModule} from '@taiga-ui/cdk';
 import {TuiPointerHintModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiPieChartComponent} from './pie-chart.component';
 
 @NgModule({

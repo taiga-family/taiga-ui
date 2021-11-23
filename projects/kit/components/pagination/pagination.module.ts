@@ -8,6 +8,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiPaginationComponent} from './pagination.component';
 
 @NgModule({

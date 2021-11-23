@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
+
 import {TuiList1} from './examples/1';
 import {TuiList2} from './examples/2';
 import {TuiList3} from './examples/3';

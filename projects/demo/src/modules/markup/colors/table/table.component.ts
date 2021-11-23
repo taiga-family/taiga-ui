@@ -3,6 +3,7 @@ import {Component, HostBinding, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../change-detection-strategy';
 import {TuiThemeService} from '../../../app/theme.service';
 import {Color} from '../colors.constants';

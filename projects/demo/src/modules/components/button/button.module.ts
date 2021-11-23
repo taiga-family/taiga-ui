@@ -14,6 +14,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiArrowModule, TuiAvatarModule, TuiToggleModule} from '@taiga-ui/kit';
+
 import {ExampleTuiButtonComponent} from './button.component';
 import {TuiButtonExample1} from './examples/1';
 import {TuiButtonExample2} from './examples/2';

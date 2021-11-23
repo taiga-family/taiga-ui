@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiBarChartComponent} from '../bar-chart.component';
 import {TuiBarChartModule} from '../bar-chart.module';
 

@@ -1,5 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

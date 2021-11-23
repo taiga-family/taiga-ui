@@ -24,6 +24,7 @@ import {
     TuiRadioBlockModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
+
 import {TuiGroupExample1} from './examples/1';
 import {TuiGroupExample2} from './examples/2';
 import {TuiGroupExample3} from './examples/3';

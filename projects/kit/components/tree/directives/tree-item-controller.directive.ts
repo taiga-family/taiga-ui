@@ -1,5 +1,6 @@
 import {Directive, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
+
 import {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
 import {TuiTreeController} from '../misc/tree.interfaces';
 import {TUI_TREE_CONTROLLER} from '../misc/tree.tokens';

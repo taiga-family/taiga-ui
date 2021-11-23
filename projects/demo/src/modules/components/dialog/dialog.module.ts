@@ -20,6 +20,7 @@ import {
     TuiRadioListModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {ExampleTuiDialogComponent} from './dialog.component';
 import {TuiDialogExampleComponent1} from './examples/1';
 import {TuiDialogExampleComponent2} from './examples/2';

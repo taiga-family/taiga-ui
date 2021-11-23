@@ -4,6 +4,7 @@ import {CHAR_EN_DASH} from '@taiga-ui/cdk';
 import {TuiDecimalT} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiCurrency} from '../../../enums/currency';
 import {TuiCurrencyCode} from '../../../enums/currency-code';
 import {TuiMoneySignT} from '../../../types';

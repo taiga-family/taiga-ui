@@ -1,5 +1,6 @@
 import {Observable, of, timer} from 'rxjs';
 import {finalize, takeUntil} from 'rxjs/operators';
+
 import {TuiDestroyService} from '../destroy.service';
 
 describe('TuiDestroy service', () => {

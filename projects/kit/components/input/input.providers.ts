@@ -5,6 +5,7 @@ import {
     FIXED_DROPDOWN_CONTROLLER_PROVIDER,
     TUI_VALUE_ACCESSOR_PROVIDER,
 } from '@taiga-ui/kit/providers';
+
 import {TuiInputComponent} from './input.component';
 
 export const TUI_INPUT_PROVIDERS = [

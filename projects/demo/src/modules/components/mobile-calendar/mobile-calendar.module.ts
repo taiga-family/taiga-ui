@@ -8,6 +8,7 @@ import {
     TuiMobileCalendarModule,
 } from '@taiga-ui/addon-mobile';
 import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
+
 import {TuiMobileCalendarExample1} from './examples/1';
 import {ExampleTuiMobileCalendarComponent} from './mobile-calendar.component';
 

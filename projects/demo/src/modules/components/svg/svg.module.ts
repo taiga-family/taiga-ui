@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiPresentModule} from '@taiga-ui/kit';
+
 import {TuiSvgExample1} from './examples/1';
 import {TuiSvgExample2} from './examples/2';
 import {ExampleTuiSvgComponent} from './svg.component';

@@ -15,6 +15,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiArrowModule, TuiMultiSelectModule, TuiSelectModule} from '@taiga-ui/kit';
+
 import {ExampleTuiDataListComponent} from './data-list.component';
 import {TuiDataListExample1} from './examples/1';
 import {TuiDataListExample2} from './examples/2';

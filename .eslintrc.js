@@ -1,10 +1,6 @@
 module.exports = {
     root: true,
-    ignorePatterns: [
-        'projects/**/test.ts',
-        'projects/**/icons/all.ts',
-        '**/schematics/*/files/**/*',
-    ],
+    ignorePatterns: ['projects/**/test.ts', 'projects/**/icons/all.ts'],
     extends: ['@tinkoff/eslint-config-angular'],
     rules: {
         // TODO(splincode): enable later

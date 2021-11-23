@@ -7,6 +7,7 @@ import {TuiToolbarModule} from '@taiga-ui/addon-editor';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiDropdownModule, TuiLinkModule} from '@taiga-ui/core';
 import {ContenteditableValueAccessorModule} from '@tinkoff/angular-contenteditable-accessor';
+
 import {TuiToolbarExample1} from './examples/1';
 import {ExampleTuiToolbarComponent} from './toolbar.component';
 

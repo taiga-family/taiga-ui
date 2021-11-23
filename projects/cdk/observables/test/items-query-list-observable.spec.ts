@@ -1,4 +1,5 @@
 import {QueryList} from '@angular/core';
+
 import {itemsQueryListObservable} from '../items-query-list-observable';
 
 describe('itemsQueryListObservable', () => {

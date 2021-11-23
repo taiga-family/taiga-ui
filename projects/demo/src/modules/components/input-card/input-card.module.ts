@@ -15,6 +15,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiAccordionModule, TuiFieldErrorModule} from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputCardExample1} from './examples/1';
 import {ExampleTuiInputCardComponent} from './input-card.component';

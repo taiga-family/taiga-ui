@@ -1,15 +1,15 @@
 import {Component, forwardRef, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AbstractExampleTuiControl} from '../../components/abstract/control';
-
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
+import {TuiNotificationsService} from '@taiga-ui/core';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+
 import {changeDetection} from '../../../change-detection-strategy';
+import {AbstractExampleTuiControl} from '../../components/abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 

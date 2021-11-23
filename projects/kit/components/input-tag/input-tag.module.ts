@@ -16,6 +16,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiTagModule} from '@taiga-ui/kit/components/tag';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiInputTagComponent} from './input-tag.component';
 
 @NgModule({

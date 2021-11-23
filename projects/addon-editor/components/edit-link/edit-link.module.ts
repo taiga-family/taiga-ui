@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiAutoFocusModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiInputInlineModule} from '@taiga-ui/kit';
+
 import {TuiEditLinkComponent} from './edit-link.component';
 
 @NgModule({

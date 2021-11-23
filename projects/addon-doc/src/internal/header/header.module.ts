@@ -4,6 +4,7 @@ import {TuiSidebarModule} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiDocNavigationModule} from '../../components/navigation/navigation.module';
 import {TuiDocHeaderComponent} from './header.component';
 

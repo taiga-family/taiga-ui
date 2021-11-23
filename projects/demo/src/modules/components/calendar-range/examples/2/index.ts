@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {of} from 'rxjs';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

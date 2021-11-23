@@ -13,6 +13,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateRangeModule} from '@taiga-ui/kit';
+
 import {TuiIconSetExample1} from './examples/1';
 import {IconSetComponent} from './icon-set.component';
 

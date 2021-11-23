@@ -13,6 +13,7 @@ import {
 } from '@taiga-ui/i18n';
 import {configureTestSuite} from 'ng-bullet';
 import {of} from 'rxjs';
+
 import {TuiInputPhoneInternationalComponent} from '../input-phone-international.component';
 import {TuiInputPhoneInternationalModule} from '../input-phone-international.module';
 

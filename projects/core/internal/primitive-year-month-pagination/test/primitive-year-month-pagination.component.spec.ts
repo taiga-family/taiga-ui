@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiMonth, TuiYear} from '@taiga-ui/cdk';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiPrimitiveYearMonthPaginationComponent} from '../primitive-year-month-pagination.component';
 import {TuiPrimitiveYearMonthPaginationModule} from '../primitive-year-month-pagination.module';
 

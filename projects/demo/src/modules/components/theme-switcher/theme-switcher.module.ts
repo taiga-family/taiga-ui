@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {TuiToggleModule} from '@taiga-ui/kit';
+
 import {TuiThemeSwitcherExample1} from './examples/1';
 import {ElderlyComponent} from './examples/elderly/elderly.component';
 import {ExampleTuiThemeSwitcherComponent} from './theme-switcher.component';

@@ -9,6 +9,7 @@ import {TuiDestroyService, TuiDirectiveStylesService} from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
 import {TuiTiptapEditorService} from './tiptap-editor.service';
 
 // @dynamic

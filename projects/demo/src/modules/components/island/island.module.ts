@@ -14,6 +14,7 @@ import {
     TuiIslandModule,
     TuiToggleModule,
 } from '@taiga-ui/kit';
+
 import {TuiIslandExample1} from './examples/1';
 import {TuiIslandExample2} from './examples/2';
 import {TuiIslandExample3} from './examples/3';

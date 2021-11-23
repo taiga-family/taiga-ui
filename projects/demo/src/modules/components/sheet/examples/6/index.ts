@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

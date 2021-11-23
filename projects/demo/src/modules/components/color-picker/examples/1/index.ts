@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {defaultEditorColors} from '@taiga-ui/addon-editor';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

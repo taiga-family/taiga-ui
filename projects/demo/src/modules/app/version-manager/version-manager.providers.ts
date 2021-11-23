@@ -1,5 +1,6 @@
 import {LocationStrategy} from '@angular/common';
 import {InjectionToken, Provider} from '@angular/core';
+
 import {TAIGA_VERSIONS_META, TaigaVersionMeta} from './versions.constants';
 
 export const SELECTED_VERSION_META = new InjectionToken<TaigaVersionMeta | null>(

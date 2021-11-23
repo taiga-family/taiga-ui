@@ -6,6 +6,7 @@ import {
     TuiHostedDropdownModule,
     TuiLinkModule,
 } from '@taiga-ui/core';
+
 import {TuiTablePaginationComponent} from './table-pagination.component';
 
 @NgModule({

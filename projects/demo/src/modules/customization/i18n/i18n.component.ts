@@ -1,5 +1,7 @@
-import {default as readme} from '!!raw-loader!../../../../../i18n/README.md';
 import {Component, ViewEncapsulation} from '@angular/core';
+
+import {default as readme} from '!!raw-loader!../../../../../i18n/README.md';
+
 import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({

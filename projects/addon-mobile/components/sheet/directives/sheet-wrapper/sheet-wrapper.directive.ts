@@ -3,6 +3,7 @@ import {WINDOW} from '@ng-web-apis/common';
 import {clamp, tuiPure} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
 import {
     TUI_SHEET_DRAGGED,

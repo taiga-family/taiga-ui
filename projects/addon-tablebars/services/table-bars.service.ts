@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, ReplaySubject} from 'rxjs';
+
 import {TableBar} from '../classes/table-bar';
 import {TuiTableBarOptions} from '../interfaces/table-bar-options';
 

@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiBarSetModule} from '@taiga-ui/addon-charts';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+
 import {ExampleTuiBarSetComponent} from './bar-set.component';
 import {TuiBarSetExample1} from './examples/1';
 import {TuiBarSetExample2} from './examples/2';

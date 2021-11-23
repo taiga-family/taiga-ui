@@ -4,6 +4,7 @@ import {
     TUI_NOTIFICATION_OPTIONS,
     TuiNotification,
 } from '@taiga-ui/core';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

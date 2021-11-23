@@ -8,12 +8,13 @@ import {TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiInputModule} from '../../input/input.module';
 import {TuiSelectComponent} from '../../select/select.component';
 import {TuiSelectModule} from '../../select/select.module';
-import {TuiAccordionItemComponent} from '../accordion-item/accordion-item.component';
 import {TuiAccordionComponent} from '../accordion.component';
 import {TuiAccordionModule} from '../accordion.module';
+import {TuiAccordionItemComponent} from '../accordion-item/accordion-item.component';
 
 class Account {
     constructor(readonly name: string, readonly balance: number) {}
