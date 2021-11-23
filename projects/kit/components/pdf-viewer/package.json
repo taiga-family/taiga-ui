@@ -3,7 +3,7 @@
         "lib": {
             "entryFile": "index.ts",
             "styleIncludePaths": [
-                "../../../../public/projects/core/styles"
+                "../../../core/styles"
             ]
         }
     }
