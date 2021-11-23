@@ -606,6 +606,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: 'PdfViewer',
+        keywords: 'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
+        route: '/components/pdf-viewer',
+    },
+    {
+        section: $localize`Components`,
         title: 'Progress',
         subPages: [
             {

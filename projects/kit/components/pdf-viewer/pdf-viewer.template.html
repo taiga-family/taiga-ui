@@ -1,0 +1,29 @@
+<header class="header">
+    <h2 class="title">{{context.label}}</h2>
+    <div
+        polymorpheus-outlet
+        class="actions"
+        [content]="context.actions"
+        [context]="context"
+    ></div>
+    <button
+        tuiIconButton
+        shape="rounded"
+        appearance=""
+        size="s"
+        icon="tuiIconCloseLarge"
+        title="Закрыть"
+        class="close"
+        (click)="context.$implicit.complete()"
+    ></button>
+</header>
+<section
+    polymorpheus-outlet
+    class="content"
+    [content]="context.content"
+    [context]="context"
+>
+    <ng-template let-content>
+        <iframe class="iframe" [src]="bypass(content)"></iframe>
+    </ng-template>
+</section>
