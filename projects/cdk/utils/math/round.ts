@@ -30,13 +30,15 @@ function calculate(
         return value;
     }
 
-    tuiAssert.assert(!isNaN(value), 'Value must be number');
-    tuiAssert.assert(Number.isInteger(precision), 'Precision must be integer');
+    let precisionValue = precision;
 
-    precision = Math.min(precision, MAX_PRECISION);
+    tuiAssert.assert(!isNaN(value), 'Value must be number');
+    tuiAssert.assert(Number.isInteger(precisionValue), 'Precision must be integer');
+
+    precisionValue = Math.min(precisionValue, MAX_PRECISION);
 
     const pair = `${value}e`.split('e');
-    const tempValue = func(Number(`${pair[0]}e${Number(pair[1]) + precision}`));
+    const tempValue = func(Number(`${pair[0]}e${Number(pair[1]) + precisionValue}`));
     const processedPair = `${tempValue}e`.split('e');
 
     return Number(`${processedPair[0]}e${Number(processedPair[1]) - precision}`);

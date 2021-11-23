@@ -16,5 +16,5 @@ export const TUI_TREE_ITEM_PROVIDERS: Provider[] = [
 ];
 
 export function treeLevelFactory(level: number): number {
-    return ++level;
+    return level + 1;
 }

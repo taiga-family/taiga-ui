@@ -76,7 +76,8 @@ function setNodeIndentMarkup(tr: Transaction, pos: number, delta: number): Trans
     return tr.setNodeMarkup(pos, node.type, nodeAttrs, node.marks);
 }
 
-function updateIndentLevel(tr: Transaction, delta: number): Transaction {
+function updateIndentLevel(value: Transaction, delta: number): Transaction {
+    let tr: Transaction = value;
     const {doc, selection} = tr;
 
     if (!doc || !selection) {
@@ -141,13 +142,14 @@ export const Indent = Extension.create<IndentOptions>({
             indent:
                 () =>
                 ({tr, state, dispatch}) => {
+                    let trValue = tr;
                     const {selection} = state;
 
-                    tr = tr.setSelection(selection);
-                    tr = updateIndentLevel(tr, IndentProps.more);
+                    trValue = trValue.setSelection(selection);
+                    trValue = updateIndentLevel(trValue, IndentProps.more);
 
-                    if (tr.docChanged && dispatch) {
-                        dispatch(tr);
+                    if (trValue.docChanged && dispatch) {
+                        dispatch(trValue);
 
                         return true;
                     }
@@ -157,13 +159,14 @@ export const Indent = Extension.create<IndentOptions>({
             outdent:
                 () =>
                 ({tr, state, dispatch}) => {
+                    let trValue = tr;
                     const {selection} = state;
 
-                    tr = tr.setSelection(selection);
-                    tr = updateIndentLevel(tr, IndentProps.less);
+                    trValue = trValue.setSelection(selection);
+                    trValue = updateIndentLevel(trValue, IndentProps.less);
 
-                    if (tr.docChanged && dispatch) {
-                        dispatch(tr);
+                    if (trValue.docChanged && dispatch) {
+                        dispatch(trValue);
 
                         return true;
                     }

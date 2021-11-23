@@ -15,6 +15,8 @@ export function setRangeOffset(
         return;
     }
 
+    let newOffset = offset;
+
     const treeWalker = ownerDocument.createTreeWalker(
         node,
         NodeFilter.SHOW_TEXT,
@@ -30,10 +32,10 @@ export function setRangeOffset(
                 ? treeWalker.currentNode.nodeValue.length
                 : 0;
 
-            if (offset > length) {
-                offset -= length;
+            if (newOffset > length) {
+                newOffset -= length;
             } else {
-                range[method](treeWalker.currentNode, offset);
+                range[method](treeWalker.currentNode, newOffset);
             }
         }
     }

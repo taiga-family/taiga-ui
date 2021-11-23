@@ -117,21 +117,26 @@ export class TuiDocNavigationComponent {
     @tuiPure
     private filterItems(
         items: ReadonlyArray<ReadonlyArray<TuiDocPage>>,
-        search: string,
+        searchValue: string,
     ): ReadonlyArray<ReadonlyArray<TuiDocPage>> {
+        let search = searchValue;
+
         return items.map(section =>
             uniqBy(
-                section.filter(({title, keywords = ''}) => {
-                    title = title.toLowerCase();
+                section.filter(({title, keywords}) => {
+                    let titleValue = title;
+                    let keywordsValue = keywords || '';
+
+                    titleValue = titleValue.toLowerCase();
                     search = search.toLowerCase();
-                    keywords = keywords.toLowerCase();
+                    keywordsValue = keywordsValue.toLowerCase();
 
                     return (
-                        title.includes(search) ||
-                        keywords.includes(search) ||
-                        title.includes(transliterateKeyboardLayout(search)) ||
-                        keywords.includes(transliterateKeyboardLayout(search)) ||
-                        search.replace(/-/gi, '').includes(title)
+                        titleValue.includes(search) ||
+                        keywordsValue.includes(search) ||
+                        titleValue.includes(transliterateKeyboardLayout(search)) ||
+                        keywordsValue.includes(transliterateKeyboardLayout(search)) ||
+                        search.replace(/-/gi, '').includes(titleValue)
                     );
                 }),
                 'title',

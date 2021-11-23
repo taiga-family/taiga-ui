@@ -117,7 +117,10 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * @param backwards shift date backwards
      * @return new month and year object as a result of offsetting current
      */
-    append({year = 0, month = 0}: TuiMonthLike, backwards: boolean = false): TuiMonth {
+    append(offset: TuiMonthLike, backwards: boolean = false): TuiMonth {
+        let year = offset.year || 0;
+        let month = offset.month || 0;
+
         if (backwards) {
             year *= -1;
             month *= -1;

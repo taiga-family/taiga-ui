@@ -6,14 +6,14 @@ import {isNativeMouseFocusable} from './is-native-mouse-focusable';
 /**
  * Finds closest element that can be focused with a keyboard or mouse in theory
  *
- * @param initial current HTML element
+ * @param value current HTML element
  * @param prev should it look backwards instead (find item that will be focused with Shift + Tab)
  * @param root top Node limiting the search area
  * @param keyboard determine if only keyboard focus is of interest
  *
  */
 export function getClosestFocusable(
-    initial: HTMLElement,
+    value: HTMLElement,
     prev: boolean = false,
     root: Node,
     keyboard: boolean = true,
@@ -22,6 +22,7 @@ export function getClosestFocusable(
         return null;
     }
 
+    let initial = value;
     const check = keyboard ? isNativeKeyboardFocusable : isNativeMouseFocusable;
 
     // Deprecated but ony this overload works in IE

@@ -219,11 +219,11 @@ export class TuiInputPhoneComponent
     }
 
     onValueChange(value: string) {
-        value = value === '' ? this.countryCode : value;
+        let newValue = value === '' ? this.countryCode : value;
 
-        const parsed = isText(value)
-            ? value
-            : value.replace(NON_PLUS_AND_DIGITS_REGEX, '');
+        const parsed = isText(newValue)
+            ? newValue
+            : newValue.replace(NON_PLUS_AND_DIGITS_REGEX, '');
 
         this.updateSearch(parsed);
         this.updateValue(parsed === this.countryCode || isText(parsed) ? '' : parsed);

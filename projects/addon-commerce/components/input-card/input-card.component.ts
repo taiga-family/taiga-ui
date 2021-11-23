@@ -38,9 +38,9 @@ const icons = {
 };
 
 export function cardTextfieldControllerFactory(
-    directive: TuiTextfieldExampleTextDirective | null,
+    value: TuiTextfieldExampleTextDirective | null,
 ): TuiTextfieldExampleTextDirective {
-    directive = directive || new TuiTextfieldExampleTextDirective();
+    let directive = value || new TuiTextfieldExampleTextDirective();
     directive.exampleText = '0000 0000 0000 0000';
 
     return directive;

@@ -83,7 +83,9 @@ export class TuiYear implements TuiYearLike {
     /**
      * Immutably offsets year
      */
-    append({year = 0}: TuiYearLike, backwards: boolean = false): TuiYear {
+    append(offset: TuiYearLike, backwards: boolean = false): TuiYear {
+        let year = offset.year || 0;
+
         tuiAssert.assert(Number.isInteger(year));
 
         if (backwards) {

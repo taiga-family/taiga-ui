@@ -4,16 +4,16 @@ import {setNativeFocused} from './set-native-focused';
 /**
  * Utility method for moving focus in a list of elements
  *
- * @param currentIndex currently focused index
+ * @param index currently focused index
  * @param elements array of focusable elements
  * @param step a step to move focus by, typically -1 or 1
  */
 export function moveFocus(
-    currentIndex: number,
+    index: number,
     elements: ReadonlyArray<HTMLElement>,
     step: number,
 ) {
-    currentIndex += step;
+    let currentIndex = index + step;
 
     while (currentIndex >= 0 && currentIndex < elements.length) {
         setNativeFocused(elements[currentIndex]);

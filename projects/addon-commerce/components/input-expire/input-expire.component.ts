@@ -83,25 +83,27 @@ export class TuiInputExpireComponent
             : TuiCreditCardAutofillName.Off;
     }
 
+    // TODO: need reuse in input-card-grouped component
     onValueChange(value: string) {
+        let expire = value;
         // @bad TODO: Workaround until mask pipe can replace chars and keep caret position
         // @bad TODO: Think about a solution without mask at all
         if (!this.input || !this.input.nativeFocusableElement) {
             return;
         }
 
-        if (parseInt(value.substr(0, 2), 10) > 12) {
-            value = '12' + value.substr(2);
+        if (parseInt(expire.substr(0, 2), 10) > 12) {
+            expire = '12' + expire.substr(2);
         }
 
-        if (value.substr(0, 2) === '00') {
-            value = '01' + value.substr(2);
+        if (expire.substr(0, 2) === '00') {
+            expire = '01' + expire.substr(2);
         }
 
-        this.input.nativeFocusableElement.value = value;
+        this.input.nativeFocusableElement.value = expire;
 
-        if (this.value !== value) {
-            this.updateValue(value);
+        if (this.value !== expire) {
+            this.updateValue(expire);
         }
     }
 

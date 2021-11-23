@@ -16,21 +16,22 @@ export function formatPhone(
         return '';
     }
 
-    let result = countryCode;
+    let newCountryCode = countryCode;
+    let newValue = value;
 
-    countryCode = countryCode.replace(/[()]/g, '');
+    newCountryCode = newCountryCode.replace(/[()]/g, '');
 
-    if (!value.startsWith(countryCode)) {
-        value = countryCode + value.replace('+', '');
+    if (!newValue.startsWith(countryCode)) {
+        newValue = countryCode + newValue.replace('+', '');
     }
 
     const splitPhoneMask = phoneMask.split('');
-    const splitValue = value.slice(countryCode.length).split('');
+    const splitValue = newValue.slice(countryCode.length).split('');
 
-    result += ' ';
+    newCountryCode += ' ';
 
     if (splitValue.length === 0) {
-        return result;
+        return newCountryCode;
     }
 
     for (let i = 0; i < splitPhoneMask.length; i++) {
@@ -39,12 +40,12 @@ export function formatPhone(
         }
 
         if (splitPhoneMask[i] === '#') {
-            result += splitValue[0] || '';
+            newCountryCode += splitValue[0] || '';
             splitValue.splice(0, 1);
         } else {
-            result += splitPhoneMask[i];
+            newCountryCode += splitPhoneMask[i];
         }
     }
 
-    return result;
+    return newCountryCode;
 }

@@ -20,7 +20,9 @@ checkChangelog().then(() => {
     execSync(`git push --tags`);
 });
 
-function bump(versionArray, mode) {
+function bump(arr, mode) {
+    let versionArray = arr || [];
+
     if (mode === 'major') {
         versionArray = [Number(versionArray[0]) + 1, 0, 0];
     }

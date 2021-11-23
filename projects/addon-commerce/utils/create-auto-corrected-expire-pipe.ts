@@ -10,7 +10,9 @@ const TUI_EXP_SAFARI = /^\d{1,4}.\d{1,2}.\d{1,4}$/;
  * @returns MM/YY
  */
 export function tuiCreateAutoCorrectedExpirePipe(): TuiTextMaskPipeHandler {
-    return (conformedValue, {rawValue}) => {
+    return (value, {rawValue}) => {
+        let conformedValue = value;
+
         // Autofilled with MM/YYYY format
         if (TUI_EXP_YEAR_MONTH.test(rawValue)) {
             conformedValue = rawValue.substr(0, 2) + '/' + rawValue.substr(5);

@@ -338,7 +338,8 @@ export class TuiInputCardGroupedComponent
         }
     }
 
-    onExpireChange(expire: string) {
+    onExpireChange(value: string) {
+        let expire = value;
         // @bad TODO: Workaround until mask pipe can replace chars and keep caret position
         // @bad TODO: Think about a solution without mask at all
         if (!this.inputExpire) {

@@ -30,7 +30,9 @@ export function tuiCreateNumberMask({
     tuiAssert.assert(Number.isInteger(integerLimit));
     tuiAssert.assert(integerLimit >= 0);
 
-    return (rawValue, {previousConformedValue}) => {
+    return (value, {previousConformedValue}) => {
+        let rawValue = value;
+
         if (previousConformedValue && requireDecimal) {
             const conformedWithoutSeparator = rawValue.split(thousandSymbol).join('');
             const previousConformedValueWithoutDecimalSymbolAndSeparator =

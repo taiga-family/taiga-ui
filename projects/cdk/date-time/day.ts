@@ -127,10 +127,11 @@ export class TuiDay extends TuiMonth {
      * @param backwards shift date backwards
      * @return new date object as a result of offsetting current
      */
-    append(
-        {year = 0, month = 0, day = 0}: TuiDayLike,
-        backwards: boolean = false,
-    ): TuiDay {
+    append(offset: TuiDayLike, backwards: boolean = false): TuiDay {
+        let year = offset.year || 0;
+        let month = offset.month || 0;
+        let day = offset.day || 0;
+
         if (backwards) {
             year *= -1;
             month *= -1;
@@ -239,24 +240,26 @@ export class TuiDay extends TuiMonth {
      * @return resulting day on these coordinates (could exceed passed month)
      */
     static getDayFromMonthRowCol(month: TuiMonth, row: number, col: number): TuiDay {
+        let newMonth: TuiMonth = month;
+
         tuiAssert.assert(Number.isInteger(row));
         tuiAssert.assert(inRange(row, 0, 6));
         tuiAssert.assert(Number.isInteger(col));
         tuiAssert.assert(inRange(col, 0, DAYS_IN_WEEK));
 
-        let day = row * DAYS_IN_WEEK + col - month.monthStartDaysOffset + 1;
+        let day = row * DAYS_IN_WEEK + col - newMonth.monthStartDaysOffset + 1;
 
-        if (day > month.daysCount) {
-            day = day - month.daysCount;
-            month = month.append({month: 1});
+        if (day > newMonth.daysCount) {
+            day = day - newMonth.daysCount;
+            newMonth = newMonth.append({month: 1});
         }
 
         if (day <= 0) {
-            month = month.append({month: -1});
-            day = month.daysCount + day;
+            newMonth = newMonth.append({month: -1});
+            day = newMonth.daysCount + day;
         }
 
-        return new TuiDay(month.year, month.month, day);
+        return new TuiDay(newMonth.year, newMonth.month, day);
     }
 
     /**

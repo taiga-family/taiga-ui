@@ -27,9 +27,9 @@ import {
 } from '@taiga-ui/core';
 
 export function longDropdownControllerFactory(
-    directive: TuiDropdownControllerDirective | null,
+    value: TuiDropdownControllerDirective | null,
 ): TuiDropdownControllerDirective {
-    directive = directive || new TuiDropdownControllerDirective();
+    let directive = value || new TuiDropdownControllerDirective();
     directive.maxHeight = 600;
 
     return directive;

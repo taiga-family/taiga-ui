@@ -2,9 +2,9 @@ import {Optional, Provider} from '@angular/core';
 import {TUI_DROPDOWN_CONTROLLER, TuiDropdownControllerDirective} from '@taiga-ui/core';
 
 export function fixedDropdownControllerFactory(
-    directive: TuiDropdownControllerDirective | null,
+    value: TuiDropdownControllerDirective | null,
 ): TuiDropdownControllerDirective {
-    directive = directive || new TuiDropdownControllerDirective();
+    let directive = value || new TuiDropdownControllerDirective();
     directive.limitWidth = 'fixed';
 
     return directive;
@@ -19,9 +19,9 @@ export const FIXED_DROPDOWN_CONTROLLER_PROVIDER: Provider = [
 ];
 
 export function leftAlignedDropdownControllerFactory(
-    directive: TuiDropdownControllerDirective | null,
+    value: TuiDropdownControllerDirective | null,
 ): TuiDropdownControllerDirective {
-    directive = directive || new TuiDropdownControllerDirective();
+    let directive = value || new TuiDropdownControllerDirective();
     directive.align = 'left';
 
     return directive;
