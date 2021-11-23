@@ -3,6 +3,7 @@ import {TuiBaseDialogContext} from '@taiga-ui/cdk';
 import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {EMPTY, Subject} from 'rxjs';
 import {endWith, ignoreElements, switchMap} from 'rxjs/operators';
+
 import {TuiDialogService} from './dialog.service';
 
 @Directive({

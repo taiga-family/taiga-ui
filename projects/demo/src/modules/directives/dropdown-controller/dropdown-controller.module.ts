@@ -10,6 +10,7 @@ import {
     TuiLinkModule,
 } from '@taiga-ui/core';
 import {TuiInputDateModule} from '@taiga-ui/kit';
+
 import {ExampleTuiDropdownControllerComponent} from './dropdown-controller.component';
 import {TuiDropdownControllerExample1} from './examples/1';
 

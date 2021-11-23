@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiTablePaginationModule} from '@taiga-ui/addon-table';
+
 import {TuiTablePaginationExample1} from './examples/1';
 import {ExampleTuiTablePaginationComponent} from './table-pagination.component';
 

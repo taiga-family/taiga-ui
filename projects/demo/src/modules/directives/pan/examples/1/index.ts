@@ -2,6 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

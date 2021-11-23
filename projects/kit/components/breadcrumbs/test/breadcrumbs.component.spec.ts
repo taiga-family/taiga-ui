@@ -5,6 +5,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {TuiSizeL} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiBreadcrumbsComponent} from '../breadcrumbs.component';
 import {TuiBreadcrumbsModule} from '../breadcrumbs.module';
 

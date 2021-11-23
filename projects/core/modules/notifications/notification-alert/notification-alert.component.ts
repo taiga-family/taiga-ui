@@ -10,6 +10,7 @@ import {isNumber, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
 import {NotificationTokenOptions, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';
+
 import {TuiNotificationContentContext} from '../notification-content-context';
 import {NotificationAlert} from './Notification-alert';
 

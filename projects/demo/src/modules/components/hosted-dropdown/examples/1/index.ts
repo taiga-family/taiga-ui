@@ -1,5 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

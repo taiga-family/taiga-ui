@@ -9,6 +9,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiColorModule} from '@taiga-ui/core/directives/color';
 import {TuiCalendarSheetPipeModule} from '@taiga-ui/core/pipes';
+
 import {TuiPrimitiveCalendarComponent} from './primitive-calendar.component';
 
 @NgModule({

@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiPointerHintDirective} from './pointer-hint.directive';
 
 @NgModule({

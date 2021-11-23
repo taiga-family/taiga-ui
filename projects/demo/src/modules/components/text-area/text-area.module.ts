@@ -12,6 +12,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiFieldErrorModule, TuiRadioListModule, TuiTextAreaModule} from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiTextAreaExample1} from './examples/1';
 import {TuiTextAreaExample2} from './examples/2';

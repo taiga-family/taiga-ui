@@ -4,6 +4,7 @@ import {
     ContentChildren,
     DoCheck,
     ElementRef,
+    forwardRef,
     HostBinding,
     Inject,
     QueryList,
@@ -12,6 +13,7 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subject} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+
 import {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
 import {
     TUI_TREE_CONTENT,
@@ -51,11 +53,11 @@ export class TuiTreeItemComponent implements DoCheck {
     constructor(
         @Inject(ElementRef)
         private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TUI_TREE_CONTROLLER)
+        @Inject(forwardRef(() => TUI_TREE_CONTROLLER))
         private readonly controller: TuiTreeController,
-        @Inject(TUI_TREE_LEVEL)
+        @Inject(forwardRef(() => TUI_TREE_LEVEL))
         readonly level: number,
-        @Inject(TUI_TREE_CONTENT)
+        @Inject(forwardRef(() => TUI_TREE_CONTENT))
         readonly content: PolymorpheusContent<TuiTreeItemContext>,
     ) {}
 

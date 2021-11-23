@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiToggleModule} from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiToggleExample1} from './examples/1';
 import {TuiToggleExample2} from './examples/2';

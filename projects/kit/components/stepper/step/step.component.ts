@@ -16,6 +16,7 @@ import {
 import {TuiRouterLinkActiveService} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
+
 import {TuiStepperComponent} from '../stepper.component';
 
 @Component({

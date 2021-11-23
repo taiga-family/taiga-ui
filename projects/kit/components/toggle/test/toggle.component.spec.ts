@@ -3,8 +3,9 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
-import {TUI_TOGGLE_DEFAULT_OPTIONS, TUI_TOGGLE_OPTIONS} from '../toggle-options';
+
 import {TuiToggleModule} from '../toggle.module';
+import {TUI_TOGGLE_DEFAULT_OPTIONS, TUI_TOGGLE_OPTIONS} from '../toggle-options';
 
 describe('Toggle', () => {
     @Component({

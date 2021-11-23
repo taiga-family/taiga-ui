@@ -1,5 +1,7 @@
-import {default as basicImportsLess} from '!!raw-loader!./examples/import/basic-imports-less.txt';
 import {Component, ViewEncapsulation} from '@angular/core';
+
+import {default as basicImportsLess} from '!!raw-loader!./examples/import/basic-imports-less.txt';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {
     BASE,

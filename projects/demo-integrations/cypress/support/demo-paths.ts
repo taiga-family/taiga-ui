@@ -1,4 +1,5 @@
 import '@angular/localize/init';
+
 import {TuiDocPage, TuiDocPages} from '../../../addon-doc/src/public-api';
 import {pages} from '../../../demo/src/modules/app/pages';
 

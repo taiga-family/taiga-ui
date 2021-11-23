@@ -10,9 +10,10 @@ import {tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, Subject} from 'rxjs';
 import {endWith, ignoreElements, switchMap} from 'rxjs/operators';
+
 import {TuiSheet} from './sheet';
-import {TuiSheetOptions} from './sheet-options';
 import {TuiSheetService} from './sheet.service';
+import {TuiSheetOptions} from './sheet-options';
 
 @Directive({
     selector: 'ng-template[tuiSheet]',

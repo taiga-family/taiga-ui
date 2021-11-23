@@ -26,6 +26,7 @@ import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
+
 import {TuiTabDirective} from '../tab.directive';
 import {TuiTabComponent} from '../tab/tab.component';
 import {TAB_MARGIN} from '../tabs.const';

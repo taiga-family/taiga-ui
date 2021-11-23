@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import {isCurrentTarget, tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
+
 import {TuiExpandContentDirective} from './expand-content.directive';
 
 enum State {

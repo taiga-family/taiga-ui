@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSizeL} from '@taiga-ui/core';
 import {TuiStatusT} from '@taiga-ui/kit/types';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiBadgeComponent} from '../badge.component';
 import {TuiBadgeModule} from '../badge.module';
 

@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiRootComponent} from '../root.component';
 import {TuiRootModule} from '../root.module';
 

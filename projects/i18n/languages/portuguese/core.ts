@@ -1,4 +1,5 @@
 import {LanguageCore} from '@taiga-ui/i18n/interfaces';
+
 import {TUI_PORTUGUESE_LANGUAGE_COUNTRIES} from './countries';
 
 export const TUI_PORTUGUESE_LANGUAGE_CORE: LanguageCore = {

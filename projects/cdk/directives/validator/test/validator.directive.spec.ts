@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiValidatorModule} from '../validator.module';
 
 describe('TuiValidator directive', () => {

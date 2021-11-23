@@ -1,6 +1,8 @@
-import {default as rubl} from '!!raw-loader!./rubl.svg';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+
+import {default as rubl} from '!!raw-loader!./rubl.svg';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

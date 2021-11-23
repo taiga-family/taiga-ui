@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiButtonModule} from '@taiga-ui/core';
+
 import {TuiLegendItemComponent} from './legend-item.component';
 
 @NgModule({

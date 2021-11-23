@@ -21,6 +21,7 @@ import {
     TuiRadioListModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiMultiSelectExample1} from './examples/1';
 import {TuiMultiSelectExample2} from './examples/2';

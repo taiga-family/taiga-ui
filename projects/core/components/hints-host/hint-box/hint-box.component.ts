@@ -15,6 +15,7 @@ import {TuiPointerHintDirective} from '@taiga-ui/core/directives/pointer-hint';
 import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
 import {TuiHintsHostComponent} from '../hints-host.component';
 
 const SPACE = 8;

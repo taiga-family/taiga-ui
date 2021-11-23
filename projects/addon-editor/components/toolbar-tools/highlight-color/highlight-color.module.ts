@@ -9,6 +9,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+
 import {TuiHighlightColorComponent} from './highlight-color.component';
 
 @NgModule({

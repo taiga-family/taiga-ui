@@ -7,6 +7,7 @@ import {
 import {NotificationTokenOptions, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, Observer} from 'rxjs';
+
 import {NotificationAlert} from './notification-alert/Notification-alert';
 import {TuiNotificationContentContext} from './notification-content-context';
 

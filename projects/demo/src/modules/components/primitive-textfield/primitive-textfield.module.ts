@@ -15,6 +15,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiAvatarModule, TuiRadioListModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiCustomizationModule} from '../../app/customization/customization.module';
 import {ThemesModule} from '../../themes/themes.module';
 import {HintControllerDocumentationModule} from '../abstract/hint-controller-documentation/hint-controller-documentation.module';

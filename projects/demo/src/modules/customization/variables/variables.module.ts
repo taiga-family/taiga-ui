@@ -6,6 +6,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule, TuiDocCopyModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiCheckboxLabeledModule, TuiInputModule, TuiIslandModule} from '@taiga-ui/kit';
+
 import {TuiVariablesExample1} from './examples/1';
 import {VariablesComponent} from './variables.component';
 

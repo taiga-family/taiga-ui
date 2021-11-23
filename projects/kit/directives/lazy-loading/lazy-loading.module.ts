@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiLazyLoadingDirective} from './lazy-loading.directive';
 
 @NgModule({

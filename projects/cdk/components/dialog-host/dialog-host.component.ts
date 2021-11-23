@@ -1,8 +1,8 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    inject,
     Inject,
+    inject,
     InjectionToken,
 } from '@angular/core';
 import {Title} from '@angular/platform-browser';

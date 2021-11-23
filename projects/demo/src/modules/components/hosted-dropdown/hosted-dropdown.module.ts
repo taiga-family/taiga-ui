@@ -22,6 +22,7 @@ import {
     TuiTabsModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {DropdownControllerDocumentationModule} from '../abstract/dropdown-controller-documentation/dropdown-controller-documentation.module';
 import {TuiHostedDropdownExample1} from './examples/1';
 import {TuiHostedDropdownExample2} from './examples/2';

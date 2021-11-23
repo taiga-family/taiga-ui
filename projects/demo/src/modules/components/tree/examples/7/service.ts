@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {TuiTreeLoader} from '@taiga-ui/kit';
 import {Observable, timer} from 'rxjs';
 import {mapTo} from 'rxjs/operators';
+
 import {Item} from './index';
 
 @Injectable()

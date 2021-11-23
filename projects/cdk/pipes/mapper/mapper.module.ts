@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiMapperPipe} from './mapper.pipe';
 
 @NgModule({

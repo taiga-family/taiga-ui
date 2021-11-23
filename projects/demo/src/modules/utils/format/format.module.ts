@@ -10,6 +10,7 @@ import {
     TuiInputNumberModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
+
 import {TuiFormatExample1} from './examples/1';
 import {TuiFormatExample2} from './examples/2';
 import {TuiFormatExample3} from './examples/3';

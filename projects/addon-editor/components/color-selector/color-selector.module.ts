@@ -10,6 +10,7 @@ import {
     TuiHostedDropdownModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
+
 import {TuiColorEditModule} from './color-edit/color-edit.module';
 import {TuiColorPickerModule} from './color-picker/color-picker.module';
 import {TuiColorSelectorComponent} from './color-selector.component';

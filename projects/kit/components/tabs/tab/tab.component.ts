@@ -18,6 +18,7 @@ import {
 import {TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
+
 import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
 
 @Component({

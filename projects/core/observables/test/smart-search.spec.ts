@@ -1,5 +1,6 @@
 import {from, Observable, of} from 'rxjs';
 import {skip, take} from 'rxjs/operators';
+
 import {smartSearch} from '../smart-search';
 
 describe('smartSearch', () => {

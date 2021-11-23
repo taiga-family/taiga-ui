@@ -3,10 +3,11 @@ import {NgModule} from '@angular/core';
 import {TuiFocusableModule} from '@taiga-ui/cdk';
 import {TuiHostedDropdownModule, TuiSvgModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiTabDirective} from './tab.directive';
 import {TuiTabComponent} from './tab/tab.component';
-import {TuiTabsWithMoreComponent} from './tabs-with-more/tabs-with-more.component';
 import {TuiTabsComponent} from './tabs/tabs.component';
+import {TuiTabsWithMoreComponent} from './tabs-with-more/tabs-with-more.component';
 import {TuiUnderlineComponent} from './underline/underline.component';
 
 @NgModule({

@@ -1,11 +1,11 @@
-import {default as imageUrl} from '!!file-loader!../../../../../assets/images/ts.svg';
-
 import {Component, Inject} from '@angular/core';
 import {TuiSvgService} from '@taiga-ui/core';
-import {tuiIconMaestro, tuiIconMastercard} from '@taiga-ui/icons';
-import {tuiIconTimeLarge} from '@taiga-ui/icons';
+import {tuiIconMaestro, tuiIconMastercard, tuiIconTimeLarge} from '@taiga-ui/icons';
 import {timer} from 'rxjs';
 import {mapTo} from 'rxjs/operators';
+
+import {default as imageUrl} from '!!file-loader!../../../../../assets/images/ts.svg';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

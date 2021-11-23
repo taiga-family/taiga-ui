@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
+
 import {
     SELECTED_VERSION_META,
     VERSION_MANAGER_PROVIDERS,

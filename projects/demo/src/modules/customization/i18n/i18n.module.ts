@@ -3,6 +3,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiCalendarModule, TuiLinkModule} from '@taiga-ui/core';
 import {MarkdownModule} from 'ngx-markdown';
+
 import {I18nComponent} from './i18n.component';
 
 @NgModule({

@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiResizableColumnComponent} from '../resizable-column.component';
 import {TuiResizableColumnModule} from '../resizable-column.module';
 

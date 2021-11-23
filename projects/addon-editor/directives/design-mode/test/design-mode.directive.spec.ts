@@ -2,6 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiDesignModeDirective} from '../design-mode.directive';
 import {TuiDesignModeModule} from '../design-mode.module';
 

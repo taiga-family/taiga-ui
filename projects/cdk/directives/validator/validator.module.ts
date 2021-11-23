@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiValidatorDirective} from './validator.directive';
 
 @NgModule({

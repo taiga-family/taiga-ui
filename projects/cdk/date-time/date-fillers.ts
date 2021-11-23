@@ -1,4 +1,5 @@
 import {inject, InjectionToken} from '@angular/core';
+
 import {RANGE_SEPARATOR_CHAR} from './date-time';
 
 /**

@@ -5,6 +5,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiTouchableModule} from '@taiga-ui/addon-mobile';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiIslandModule} from '@taiga-ui/kit';
+
 import {TuiTouchableExample1} from './examples/1';
 import {ExampleTuiTouchableComponent} from './touchable.component';
 

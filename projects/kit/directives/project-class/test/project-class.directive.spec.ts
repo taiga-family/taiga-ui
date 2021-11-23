@@ -5,6 +5,7 @@ import {TuiDataListModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {NativeInputPO} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiComboBoxModule} from '../../../components/combo-box/combo-box.module';
 import {TuiProjectClassModule} from '../project-class.module';
 

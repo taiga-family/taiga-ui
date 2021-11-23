@@ -5,6 +5,7 @@ import {
     TUI_TOGGLE_DEFAULT_OPTIONS,
     TUI_TOGGLE_OPTIONS,
 } from '@taiga-ui/kit';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

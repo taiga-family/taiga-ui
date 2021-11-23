@@ -15,6 +15,7 @@ import {
     TuiFieldErrorModule,
     TuiInputTagModule,
 } from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputTagExample1} from './examples/1';
 import {TuiInputTagExample2} from './examples/2';

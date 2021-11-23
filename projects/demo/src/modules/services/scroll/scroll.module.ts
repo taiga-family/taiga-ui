@@ -6,6 +6,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiElementModule, TuiScrollService} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiScrollbarModule} from '@taiga-ui/core';
 import {TuiInputCountModule} from '@taiga-ui/kit';
+
 import {TuiScrollExample1} from './examples/1';
 import {ExampleTuiScrollComponent} from './scroll.component';
 

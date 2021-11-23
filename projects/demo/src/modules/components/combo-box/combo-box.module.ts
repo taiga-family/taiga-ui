@@ -24,6 +24,7 @@ import {
     TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {ExampleTuiComboBoxComponent} from './combo-box.component';
 import {TuiComboBoxExample1} from './examples/1';

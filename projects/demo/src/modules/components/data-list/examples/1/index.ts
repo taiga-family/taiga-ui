@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {TUI_ARROW} from '@taiga-ui/kit';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

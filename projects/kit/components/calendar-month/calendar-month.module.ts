@@ -12,6 +12,7 @@ import {
     TuiPrimitiveYearPickerModule,
     TuiScrollbarModule,
 } from '@taiga-ui/core';
+
 import {TuiCalendarMonthComponent} from './calendar-month.component';
 
 @NgModule({

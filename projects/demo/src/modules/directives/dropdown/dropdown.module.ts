@@ -7,6 +7,7 @@ import {TuiActiveZoneModule, TuiObscuredModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiDropdownModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiAvatarModule, TuiSelectModule, TuiToggleModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {ExampleTuiDropdownComponent} from './dropdown.component';
 import {TuiDropdownExample1} from './examples/1';
 import {TuiDropdownExample2} from './examples/2';

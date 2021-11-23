@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule, TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiMarkerIconModule} from '@taiga-ui/kit';
+
 import {TuiMarkerIconExample1} from './examples/1';
 import {TuiMarkerIconExample2} from './examples/2';
 import {TuiMarkerIconExample3} from './examples/3';

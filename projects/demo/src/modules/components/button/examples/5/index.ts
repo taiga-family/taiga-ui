@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {TUI_BUTTON_OPTIONS, TuiAppearance} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 
 @Component({

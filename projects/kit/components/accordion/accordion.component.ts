@@ -17,6 +17,7 @@ import {
 } from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
 import {filter, map, mapTo, pairwise, switchMap, takeUntil} from 'rxjs/operators';
+
 import {TuiAccordionItemComponent} from './accordion-item/accordion-item.component';
 
 @Component({

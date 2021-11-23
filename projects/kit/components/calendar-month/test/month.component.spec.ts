@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiMonthRange, TuiYear} from '@taiga-ui/cdk';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiCalendarMonthComponent} from '../calendar-month.component';
 import {TuiCalendarMonthModule} from '../calendar-month.module';
 

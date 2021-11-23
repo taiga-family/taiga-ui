@@ -9,6 +9,7 @@ import {
     switchMap,
     takeUntil,
 } from 'rxjs/operators';
+
 import {databaseMockData} from './database-mock-data';
 import {User} from './user';
 

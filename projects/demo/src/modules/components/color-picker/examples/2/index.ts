@@ -1,5 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

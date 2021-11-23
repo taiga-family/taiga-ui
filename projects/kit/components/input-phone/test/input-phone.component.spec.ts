@@ -10,6 +10,7 @@ import {
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiInputPhoneComponent} from '../input-phone.component';
 import {TuiInputPhoneModule} from '../input-phone.module';
 

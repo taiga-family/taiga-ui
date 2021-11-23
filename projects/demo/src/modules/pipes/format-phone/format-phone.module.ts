@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiFormatPhonePipeModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputModule, TuiRadioListModule} from '@taiga-ui/kit';
+
 import {TuiFormatPhoneExample1} from './examples/1';
 import {ExampleTuiFormatPhoneComponent} from './format-phone.component';
 

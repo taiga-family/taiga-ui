@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {TuiButtonModule, TuiModeModule} from '@taiga-ui/core';
 import {TuiSelectModule} from '@taiga-ui/kit';
+
 import {AlertExampleComponent} from './alert-example.component';
 
 @NgModule({

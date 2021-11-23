@@ -16,6 +16,7 @@ import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+
 import {fakeSmoothScroll} from '../../ios.hacks';
 import {TuiSheet} from '../../sheet';
 import {TUI_SHEET_ID} from '../sheet-heading/sheet-heading.component';

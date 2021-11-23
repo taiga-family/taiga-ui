@@ -9,6 +9,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+
 import {TuiTableCellColorComponent} from './table-cell-color.component';
 
 @NgModule({

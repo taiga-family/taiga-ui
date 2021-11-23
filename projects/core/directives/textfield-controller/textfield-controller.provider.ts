@@ -2,6 +2,8 @@ import {ChangeDetectorRef, InjectionToken, Provider} from '@angular/core';
 import {TuiDestroyService, watch} from '@taiga-ui/cdk';
 import {merge, NEVER, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
+import {TuiTextfieldController} from './textfield.controller';
 import {
     TUI_TEXTFIELD_AUTOCOMPLETE,
     TuiTextfieldAutocompleteDirective,
@@ -32,7 +34,6 @@ import {
 } from './textfield-max-length.directive';
 import {TUI_TEXTFIELD_SIZE, TuiTextfieldSizeDirective} from './textfield-size.directive';
 import {TUI_TEXTFIELD_TYPE, TuiTextfieldTypeDirective} from './textfield-type.directive';
-import {TuiTextfieldController} from './textfield.controller';
 
 export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
     new InjectionToken<TuiTextfieldController>('watched textfield controller');

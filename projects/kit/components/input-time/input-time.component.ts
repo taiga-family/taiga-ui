@@ -42,6 +42,7 @@ import {
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+
 import {InputTimeOptions, TUI_INPUT_TIME_OPTIONS} from './input-time-options';
 
 // @dynamic

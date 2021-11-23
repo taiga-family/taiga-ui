@@ -1,5 +1,6 @@
 import {ApplicationRef, NgModuleRef} from '@angular/core';
 import {createNewHosts} from '@angularclass/hmr';
+
 import {AppBrowserModule} from './modules/app/app.browser.module';
 
 export const hmrBootstrap = (

@@ -3,6 +3,7 @@ import {Component, TemplateRef} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiRootModule} from '../../../components/root/root.module';
 import {TuiManualHintModule} from '../manual-hint.module';
 

@@ -9,6 +9,7 @@ import {
     TuiInputSliderModule,
     TuiRadioListModule,
 } from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputRangeExample1} from './examples/1';
 import {ExampleTuiInputRangeComponent} from './input-range.component';

@@ -5,6 +5,7 @@ import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 import {Subscription, timer} from 'rxjs';
 import {skip, take, takeUntil} from 'rxjs/operators';
+
 import {TuiTableBarsService} from '../../../services/table-bars.service';
 import {TuiTableBarsHostComponent} from '../table-bars-host.component';
 import {TuiTableBarsHostModule} from '../table-bars-host.module';

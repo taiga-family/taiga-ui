@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiCardModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
+
 import {ExampleTuiCardComponent} from './card.component';
 import {TuiCardExample1} from './examples/1';
 import {TuiCardExample2} from './examples/2';

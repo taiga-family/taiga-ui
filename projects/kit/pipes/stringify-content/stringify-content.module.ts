@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiStringifyContentPipe} from './stringify-content.pipe';
 
 @NgModule({

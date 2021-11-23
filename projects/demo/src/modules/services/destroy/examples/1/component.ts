@@ -2,6 +2,7 @@ import {Component, ElementRef} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {fromEvent} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiDescribedByModule, TuiHintModule} from '@taiga-ui/core';
 import {TuiAvatarModule} from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
 import {TuiHintExample1} from './examples/1';
 import {ExampleTuiHintComponent} from './hint.component';

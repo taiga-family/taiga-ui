@@ -4,6 +4,7 @@ import {TuiLetModule} from '@taiga-ui/cdk/directives';
 import {TuiFocusTrapModule} from '@taiga-ui/cdk/directives/focus-trap';
 import {TuiOverscrollModule} from '@taiga-ui/cdk/directives/overscroll';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiDialogHostComponent} from './dialog-host.component';
 
 @NgModule({

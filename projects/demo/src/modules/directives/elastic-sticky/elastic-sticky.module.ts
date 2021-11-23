@@ -5,6 +5,7 @@ import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
 import {TuiScrollbarModule} from '@taiga-ui/core';
+
 import {ExampleTuiElasticStickyComponent} from './elastic-sticky.component';
 import {TuiElasticStickyExample1} from './examples/1';
 

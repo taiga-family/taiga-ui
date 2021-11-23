@@ -11,6 +11,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputModule, TuiMarkerIconModule} from '@taiga-ui/kit';
+
 import {IconsComponent} from './icons.component';
 
 @NgModule({

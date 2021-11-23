@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {EMPTY_ARRAY, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_TREE_CONTENT} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 import {FoldersComponent} from './content';

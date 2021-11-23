@@ -1,8 +1,10 @@
 import {Component, Inject} from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
 import {isEdge, isEdgeOlderThan, isFirefox, isIE} from '@taiga-ui/cdk';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
+
 @Component({
     selector: 'tui-browser-example-1',
     templateUrl: './index.html',

@@ -11,6 +11,7 @@ import {
     TuiStringifyContentPipeModule,
     TuiStringifyPipeModule,
 } from '@taiga-ui/kit';
+
 import {TuiStringifyExample1} from './examples/1';
 import {ExampleTuiStringifyComponent} from './stringify.component';
 

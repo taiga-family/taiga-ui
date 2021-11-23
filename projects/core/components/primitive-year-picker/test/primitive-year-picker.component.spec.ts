@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TUI_FIRST_DAY, TuiDay, TuiDayRange, TuiYear} from '@taiga-ui/cdk';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiInteractiveState} from '../../../enums/interactive-state';
 import {TuiRangeState} from '../../../enums/range-state';
 import {TuiPrimitiveYearPickerComponent} from '../primitive-year-picker.component';

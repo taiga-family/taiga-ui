@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiInputCVCComponent} from '../input-CVC.component';
 import {TuiInputCVCModule} from '../input-CVC.module';
 

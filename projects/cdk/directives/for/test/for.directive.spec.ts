@@ -2,6 +2,7 @@ import {Component, ElementRef} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {configureTestSuite} from 'ng-bullet';
 import {Subject} from 'rxjs';
+
 import {TuiForModule} from '../for.module';
 
 describe('TuiFor directive', () => {

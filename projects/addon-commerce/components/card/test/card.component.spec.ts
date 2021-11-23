@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiCardComponent} from '../card.component';
 import {TuiCardModule} from '../card.module';
 

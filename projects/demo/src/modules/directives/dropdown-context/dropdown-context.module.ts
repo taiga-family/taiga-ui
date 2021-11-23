@@ -13,6 +13,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiDropdownContextModule, TuiTextAreaModule} from '@taiga-ui/kit';
+
 import {DropdownControllerDocumentationModule} from '../../components/abstract/dropdown-controller-documentation/dropdown-controller-documentation.module';
 import {ExampleTuiDropdownContextComponent} from './dropdown-context.component';
 import {TuiDropdownContextExample1} from './examples/1';

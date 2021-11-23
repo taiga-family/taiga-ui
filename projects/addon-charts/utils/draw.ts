@@ -1,4 +1,5 @@
 import {TuiPoint} from '@taiga-ui/core';
+
 import {drawCurve} from './draw-curve';
 import {drawLine} from './draw-line';
 

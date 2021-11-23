@@ -9,6 +9,7 @@ import {
     TuiThemeNightModule,
 } from '@taiga-ui/core';
 import {TuiToggleModule} from '@taiga-ui/kit';
+
 import {TuiDocHeaderModule} from '../../internal/header/header.module';
 import {TuiDocNavigationModule} from '../navigation/navigation.module';
 import {TuiDocMainComponent} from './main.component';

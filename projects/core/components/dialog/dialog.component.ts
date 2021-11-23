@@ -6,6 +6,7 @@ import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
+
 import {TUI_DIALOG_CLOSE_STREAM, TUI_DIALOG_PROVIDERS} from './dialog.providers';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');

@@ -33,6 +33,7 @@ import {
 import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 import {filter, mapTo} from 'rxjs/operators';
+
 import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
 import {TAB_ACTIVE_CLASS} from '../tabs.const';

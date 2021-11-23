@@ -1,13 +1,13 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
 import {DOCUMENT} from '@angular/common';
 import {ChangeDetectorRef, Component, ElementRef, Inject, ViewChild} from '@angular/core';
 import {tuiCustomEvent} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiExpandComponent} from '@taiga-ui/core';
+
+import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
+import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
+import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 

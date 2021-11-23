@@ -1,5 +1,6 @@
-import {Command, Extension, GlobalAttributes} from '@tiptap/core';
 import '@tiptap/extension-text-style';
+
+import {Command, Extension, GlobalAttributes} from '@tiptap/core';
 
 type BackgroundColorOptions = {
     types: string[];

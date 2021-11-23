@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiRadioListModule, TuiSliderModule} from '@taiga-ui/kit';
+
 import {TuiSliderExample1} from './examples/1';
 import {TuiSliderExample2} from './examples/2';
 import {ExampleTuiSliderComponent} from './slider.component';

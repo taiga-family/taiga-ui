@@ -5,6 +5,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
+
 import {ExampleTuiActiveZoneComponent} from './active-zone.component';
 import {TuiActiveZoneExample1} from './examples/1';
 

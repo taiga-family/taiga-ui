@@ -1,3 +1,9 @@
+import {Component, forwardRef, Inject} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
+import {TuiNotificationsService} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
@@ -7,11 +13,7 @@ import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-import {Component, forwardRef, Inject} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
-import {TuiNotificationsService} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {FrontEndExample} from '../../interfaces/front-end-example';

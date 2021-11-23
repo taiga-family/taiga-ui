@@ -12,6 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiInputDateComponent} from '../input-date.component';
 import {TuiInputDateModule} from '../input-date.module';
 

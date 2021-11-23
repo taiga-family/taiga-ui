@@ -1,4 +1,5 @@
 import {addMatchImageSnapshotCommand} from 'cypress-image-snapshot/command';
+
 import {goToDemoPage} from './go-to-demo-page.util';
 import {hideHeader} from './hide-header.util';
 import {setNightMode} from './set-night-mode';

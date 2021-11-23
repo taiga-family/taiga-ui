@@ -8,6 +8,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiDataListWrapperModule, TuiInputModule, TuiSelectModule} from '@taiga-ui/kit';
+
 import {DialogExampleComponent} from './dialog-example.component';
 
 @NgModule({

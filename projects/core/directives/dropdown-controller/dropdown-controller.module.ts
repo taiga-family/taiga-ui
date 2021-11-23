@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiDropdownControllerDirective} from './dropdown-controller.directive';
 
 @NgModule({

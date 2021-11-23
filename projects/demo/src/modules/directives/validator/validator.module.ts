@@ -11,6 +11,7 @@ import {
     TuiInputPhoneModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
+
 import {TuiValidatorExample1} from './examples/1';
 import {ExampleTuiValidatorComponent} from './validator.component';
 

@@ -6,6 +6,7 @@ import {RANGE_SEPARATOR_CHAR, TUI_LAST_DAY, TuiDay, TuiDayRange} from '@taiga-ui
 import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiDayRangePeriod} from '../../../classes/day-range-period';
 import {TuiInputDateRangeComponent} from '../input-date-range.component';
 import {TuiInputDateRangeModule} from '../input-date-range.module';

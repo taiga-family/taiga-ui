@@ -12,6 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiFieldErrorModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputCardGroupedExample1} from './examples/1';
 import {TuiInputCardGroupedExample2} from './examples/2';

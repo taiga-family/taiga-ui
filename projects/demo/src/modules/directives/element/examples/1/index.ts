@@ -1,5 +1,6 @@
 import {Component, ElementRef} from '@angular/core';
 import {TuiButtonComponent} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

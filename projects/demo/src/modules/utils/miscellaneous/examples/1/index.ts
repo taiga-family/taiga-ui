@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

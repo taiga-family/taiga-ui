@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiBreadcrumbsModule} from '@taiga-ui/kit';
+
 import {ExampleTuiBreadcrumbsComponent} from './breadcrumbs.component';
 import {TuiBreadcrumbsExample1} from './examples/1';
 

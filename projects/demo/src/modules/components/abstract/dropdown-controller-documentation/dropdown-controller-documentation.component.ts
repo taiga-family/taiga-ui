@@ -4,6 +4,7 @@ import {
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
+
 import {changeDetection} from '../../../../change-detection-strategy';
 import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props-accessor';
 

@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as process from 'process';
+
 import {checkImportWithSrc} from './shared/check-import-with-src';
 import {checkIncorrectImports} from './shared/check-incorrect-imports';
 import {checkPrivateExports} from './shared/check-private-exports';

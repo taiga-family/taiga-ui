@@ -36,6 +36,7 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
+
 import {COUNTRIES_MASKS} from './const/countries';
 
 const MASK_AFTER_CODE_REGEXP = /\([\#]+\)|[#\- ]/g;

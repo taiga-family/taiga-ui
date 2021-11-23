@@ -5,6 +5,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule, TuiModeModule, TuiPointerHintModule} from '@taiga-ui/core';
 import {TuiIslandModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
 import {TuiPointerHintExample1} from './examples/1';
 import {ExampleTuiPointerHintComponent} from './pointer-hint.component';

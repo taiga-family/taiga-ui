@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_ACCESSOR, TuiDataListAccessor} from '@taiga-ui/core';
+
 import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 
 @Component({

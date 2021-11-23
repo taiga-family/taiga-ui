@@ -1,4 +1,5 @@
 import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
+
 import {DEFAULT_COLORS} from './default-colors';
 
 /** @deprecated use CSS variables */

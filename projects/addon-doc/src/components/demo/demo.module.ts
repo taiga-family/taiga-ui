@@ -21,6 +21,7 @@ import {
     TuiRadioBlockModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
+
 import {TuiDocDemoComponent} from './demo.component';
 
 @NgModule({

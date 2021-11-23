@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiAxesComponent} from '../axes.component';
 import {TuiAxesModule} from '../axes.module';
 

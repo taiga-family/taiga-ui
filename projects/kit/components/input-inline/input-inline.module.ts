@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiFocusableModule, TuiFocusedModule} from '@taiga-ui/cdk';
 import {TuiMaskAccessorModule} from '@taiga-ui/core';
+
 import {TuiInputInlineComponent} from './input-inline.component';
 
 @NgModule({

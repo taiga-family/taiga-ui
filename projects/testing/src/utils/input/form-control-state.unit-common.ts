@@ -1,5 +1,6 @@
 import {ComponentFixture} from '@angular/core/testing';
 import {FormControl} from '@angular/forms';
+
 import {NativeInputPO} from '../native-input.page-object';
 
 interface TestParams {

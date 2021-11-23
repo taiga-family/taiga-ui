@@ -7,6 +7,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {TuiInputModule, TuiRadioListModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiTableBarExampleComponent1} from './examples/1';
 import {ExampleTuiTableBarComponent} from './table-bar.component';
 

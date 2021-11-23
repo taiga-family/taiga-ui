@@ -22,6 +22,7 @@ import {
 import {TuiOrientationT} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
+
 import {TuiStepComponent} from './step/step.component';
 
 @Component({

@@ -8,6 +8,7 @@ import {
 } from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiRootModule} from '../../../components/root/root.module';
 import {TuiHintModule} from '../hint.module';
 

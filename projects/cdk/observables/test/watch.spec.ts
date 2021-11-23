@@ -1,5 +1,6 @@
 import {fakeAsync, tick} from '@angular/core/testing';
 import {Subject} from 'rxjs';
+
 import {watch} from '../watch';
 
 describe('Watch operator function', () => {

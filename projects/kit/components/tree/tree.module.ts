@@ -2,9 +2,10 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiButtonModule, TuiExpandModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {TuiTreeItemContentComponent} from './components/tree-item-content/tree-item-content.component';
-import {TuiTreeItemComponent} from './components/tree-item/tree-item.component';
+
 import {TuiTreeComponent} from './components/tree/tree.component';
+import {TuiTreeItemComponent} from './components/tree-item/tree-item.component';
+import {TuiTreeItemContentComponent} from './components/tree-item-content/tree-item-content.component';
 import {TuiTreeChildrenDirective} from './directives/tree-children.directive';
 import {TuiTreeControllerDirective} from './directives/tree-controller.directive';
 import {TuiTreeItemControllerDirective} from './directives/tree-item-controller.directive';

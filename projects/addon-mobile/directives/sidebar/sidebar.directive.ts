@@ -12,6 +12,7 @@ import {
 import {TuiPortalService} from '@taiga-ui/cdk';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
+
 import {TuiSidebarComponent} from './sidebar.component';
 
 @Directive({

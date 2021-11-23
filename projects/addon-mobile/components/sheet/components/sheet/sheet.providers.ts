@@ -4,6 +4,7 @@ import {TUI_IS_IOS, tuiZonefree, typedFromEvent} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
 import {map, mapTo, share} from 'rxjs/operators';
+
 import {iosScrollFactory} from '../../ios.hacks';
 
 export const TUI_SHEET_SCROLL = new InjectionToken<number>(

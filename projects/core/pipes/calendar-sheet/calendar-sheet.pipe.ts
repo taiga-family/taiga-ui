@@ -1,6 +1,7 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {DAYS_IN_WEEK, TuiDay, TuiDayOfWeek, TuiMonth} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
+
 import {getDayFromMonthRowCol} from './utils';
 
 const CALENDAR_ROWS_COUNT = 6;

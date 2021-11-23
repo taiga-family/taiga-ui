@@ -5,6 +5,7 @@ import {
     TuiFocusableElementAccessor,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
+
 import {ArrayElement, TuiFilterByInputBase} from './filter-by-input.base';
 
 @Pipe({

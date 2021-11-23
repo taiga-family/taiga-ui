@@ -1,6 +1,7 @@
 import {Pipe} from '@angular/core';
 import {Observable, timer} from 'rxjs';
 import {map} from 'rxjs/operators';
+
 import {AbstractTuiColorSegments} from './abstract-color-segments';
 
 @Pipe({name: 'tuiProgressColorSegmentsAsync'})

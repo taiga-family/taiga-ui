@@ -1,5 +1,6 @@
 import {TuiEventWith, TuiTypedEventTarget} from '@taiga-ui/cdk/types';
 import {merge, Observable} from 'rxjs';
+
 import {typedFromEvent} from './typed-from-event';
 
 /**

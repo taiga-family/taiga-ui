@@ -5,6 +5,7 @@ import {
     TuiPortalHostModule,
 } from '@taiga-ui/cdk/components/portal-host';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiElementModule} from '../element.module';
 
 describe('TuiElement directive', () => {

@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiBarSetComponent} from '../bar-set.component';
 import {TuiBarSetModule} from '../bar-set.module';
 

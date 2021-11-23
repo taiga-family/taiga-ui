@@ -4,6 +4,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {PageObject} from '@taiga-ui/testing';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiRootModule} from '../../../components/root/root.module';
 import {TuiDropdownModule} from '../dropdown.module';
 

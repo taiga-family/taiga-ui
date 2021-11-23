@@ -8,6 +8,7 @@ import {
     TuiLinkModule,
     TuiPrimitiveTextfieldModule,
 } from '@taiga-ui/core';
+
 import {TuiHintControllerExample1} from './examples/1';
 import {ExampleTuiHintControllerComponent} from './hint-controller.component';
 

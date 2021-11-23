@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiTiptapEditorDirective} from './tiptap-editor.directive';
 
 @NgModule({
