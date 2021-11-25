@@ -70,8 +70,10 @@ describe('TuiHostedDropdown', () => {
 
         @ViewChild(TuiPrimitiveTextfieldComponent)
         tuiTextfield: TuiPrimitiveTextfieldComponent;
+
         @ViewChild(TuiButtonComponent)
         tuiButton: TuiButtonComponent;
+
         @ViewChild('host', {read: TuiButtonComponent})
         target: TuiButtonComponent;
 

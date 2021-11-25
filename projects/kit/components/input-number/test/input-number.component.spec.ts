@@ -47,6 +47,7 @@ describe('InputNumber', () => {
         form = new FormGroup({
             control: this.control,
         });
+
         readOnly = false;
         decimal: TuiDecimalT = 'never';
         cleaner = true;

@@ -14,10 +14,12 @@ describe('BarChart', () => {
     class TestComponent {
         @ViewChild(TuiBarChartComponent)
         readonly component: TuiBarChartComponent;
+
         readonly value = [
             [1, 2, 3],
             [4, 5, 6],
         ];
+
         max = NaN;
     }
 

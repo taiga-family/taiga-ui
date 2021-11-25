@@ -36,6 +36,7 @@ describe('InputFile', () => {
                 size: 237,
             },
         ];
+
         loadingFiles: ReadonlyArray<TuiFileLike> = [];
         rejectedFiles: ReadonlyArray<TuiFileLike> = [];
         state = TuiFileState.Normal;

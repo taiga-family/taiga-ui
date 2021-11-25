@@ -39,6 +39,7 @@ export class ExampleTuiTooltipComponent {
         HTML: example3Html,
         LESS: example3Less,
     };
+
     readonly exampleImportModule = exampleImportModule;
 
     readonly exampleInsertTemplate = exampleInsertTemplate;

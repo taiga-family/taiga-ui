@@ -26,6 +26,7 @@ export class ExampleTuiLineClampComponent {
         HTML: example1Html,
         LESS: example1Less,
     };
+
     readonly example2: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,

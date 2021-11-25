@@ -39,6 +39,7 @@ export class ExampleProgressSegmentedComponent {
             .fill('')
             .map((_, index) => `var(--tui-support-0${index + 1})`),
     ];
+
     color = this.colorVariants[0];
 
     readonly basicExample: FrontEndExample = {

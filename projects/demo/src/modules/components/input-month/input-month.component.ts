@@ -37,6 +37,7 @@ export class ExampleInputMonthComponent extends AbstractExampleTuiControl {
         TypeScript: example1Ts,
         HTML: example1Html,
     };
+
     readonly example2: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,

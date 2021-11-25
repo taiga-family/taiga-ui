@@ -38,6 +38,7 @@ export class ExampleProgressCircleComponent {
         'rgba(74, 201, 155, 1)',
         'url(#gradient)',
     ];
+
     color = this.colorVariants[0];
 
     readonly basicExample: FrontEndExample = {

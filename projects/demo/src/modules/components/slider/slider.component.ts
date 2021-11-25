@@ -69,6 +69,7 @@ export class ExampleTuiSliderComponent {
             other: 'years',
         },
     ];
+
     pluralize = null;
     readonly keyStepsVariants: ReadonlyArray<TuiKeySteps> = [
         [[50, 1000]],
@@ -77,6 +78,7 @@ export class ExampleTuiSliderComponent {
             [(100 / 3) * 2, 300000],
         ],
     ];
+
     keySteps = null;
     readonly quantumVariants: ReadonlyArray<number> = [0.01, 0.1, 1, 10];
     quantum = this.quantumVariants[0];

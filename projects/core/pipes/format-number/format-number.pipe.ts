@@ -9,6 +9,7 @@ export class TuiFormatNumberPipe implements PipeTransform {
         @Inject(TUI_NUMBER_FORMAT)
         private readonly numberFormat: NumberFormatSettings,
     ) {}
+
     /**
      * Formats number adding thousand separators and correct decimal separator
      * padding decimal part with zeroes to given length
