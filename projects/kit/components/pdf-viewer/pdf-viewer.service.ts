@@ -5,10 +5,7 @@ import {TuiPdfViewerOptions} from './pdf-viewer-options';
 import {TuiPdfViewerComponent} from './pdf-viewer.component';
 
 const DIALOG = new PolymorpheusComponent(TuiPdfViewerComponent);
-const DEFAULT_OPTIONS = {
-    label: '',
-    actions: '',
-} as const;
+const DEFAULT_OPTIONS = {label: '', actions: ''} as const;
 
 @Injectable({
     providedIn: 'root',

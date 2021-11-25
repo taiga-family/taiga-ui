@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
 import {timer} from 'rxjs';
 import {mapTo} from 'rxjs/operators';
 
@@ -10,5 +11,9 @@ import {mapTo} from 'rxjs/operators';
     styles: [':host { display: flex; height: 100% } :host > * { flex: 1 }'],
 })
 export class PdfContent {
-    readonly src$ = timer(3000).pipe(mapTo('/assets/media/taiga.pdf'));
+    readonly src$ = timer(3000).pipe(
+        mapTo(this.sanitizer.bypassSecurityTrustResourceUrl('/assets/media/taiga.pdf')),
+    );
+
+    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
 }

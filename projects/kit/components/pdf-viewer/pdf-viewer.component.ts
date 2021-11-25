@@ -16,10 +16,7 @@ import {TuiPdfViewerOptions} from './pdf-viewer-options';
 export class TuiPdfViewerComponent<I, O> {
     @HostBinding('@tuiSlideInTop')
     @HostBinding('@tuiFadeIn')
-    readonly animation = {
-        value: '',
-        ...this.options,
-    } as const;
+    readonly animation = {value: '', ...this.options} as const;
 
     constructor(
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,

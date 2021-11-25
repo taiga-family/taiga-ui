@@ -1,11 +1,14 @@
-import {Directive, Inject, TemplateRef} from '@angular/core';
+import {ChangeDetectorRef, Directive, Inject, TemplateRef} from '@angular/core';
 import {TuiBaseDialogContext} from '@taiga-ui/cdk/interfaces';
+import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {AbstractTuiDialogService} from './dialog.service';
 import {EMPTY, Subject} from 'rxjs';
 import {endWith, ignoreElements, switchMap} from 'rxjs/operators';
 
 @Directive()
-export abstract class AbstractTuiDialogDirective<T> {
+export abstract class AbstractTuiDialogDirective<T> extends PolymorpheusTemplate<
+    TuiBaseDialogContext<void> & T
+> {
     private readonly open$ = new Subject<boolean>();
 
     options: Partial<T> = {};
@@ -18,7 +21,7 @@ export abstract class AbstractTuiDialogDirective<T> {
         switchMap(open =>
             open
                 ? this.service
-                      .open(this.templateRef, this.options)
+                      .open(this, this.options)
                       .pipe(ignoreElements(), endWith(false))
                 : EMPTY,
         ),
@@ -26,8 +29,11 @@ export abstract class AbstractTuiDialogDirective<T> {
 
     constructor(
         @Inject(TemplateRef)
-        private readonly templateRef: TemplateRef<TuiBaseDialogContext<void> & T>,
+        templateRef: TemplateRef<TuiBaseDialogContext<void> & T>,
+        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(AbstractTuiDialogService)
         private readonly service: AbstractTuiDialogService<T>,
-    ) {}
+    ) {
+        super(templateRef, changeDetectorRef);
+    }
 }

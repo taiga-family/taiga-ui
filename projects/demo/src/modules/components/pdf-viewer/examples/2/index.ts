@@ -33,12 +33,12 @@ export class TuiPdfViewerExample2 {
             actions: new PolymorpheusComponent(ActionsContent),
             data: [
                 {
-                    text: 'Подписать',
-                    onClick: context => context.completeWith('Документ подписан'),
+                    text: 'Sign',
+                    onClick: context => context.completeWith('Document signed'),
                 },
                 {
-                    text: 'Отклонить',
-                    onClick: context => context.completeWith('Документ отклонён'),
+                    text: 'Deny',
+                    onClick: context => context.completeWith('Document denied'),
                 },
             ],
         };
