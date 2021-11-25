@@ -1,8 +1,8 @@
-<header class="header">
-    <h2 class="title">{{context.label}}</h2>
+<header class="t-header">
+    <h2 class="t-title">{{context.label}}</h2>
     <div
         polymorpheus-outlet
-        class="actions"
+        class="t-actions"
         [content]="context.actions"
         [context]="context"
     ></div>
@@ -12,18 +12,18 @@
         appearance=""
         size="s"
         icon="tuiIconCloseLarge"
-        title="Закрыть"
-        class="close"
+        class="t-close"
+        [title]="closeWord$ | async"
         (click)="context.$implicit.complete()"
     ></button>
 </header>
 <section
     polymorpheus-outlet
-    class="content"
+    class="t-content"
     [content]="context.content"
     [context]="context"
 >
     <ng-template let-content>
-        <iframe class="iframe" [src]="bypass(content)"></iframe>
+        <iframe class="t-iframe" [src]="bypass(content)"></iframe>
     </ng-template>
 </section>
