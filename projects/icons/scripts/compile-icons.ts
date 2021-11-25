@@ -21,7 +21,7 @@ const inputOptions: RollupOptions = {
     input: allToCompilePath,
     output: {preferConst: true},
     plugins: [
-        typescript(),
+        typescript({cacheRoot: 'node_modules/.cache/.rpt2_cache'}),
         rollupSvgo({
             include: '**/*.svg',
             options: {
