@@ -24,10 +24,12 @@ export class ExampleTuiLabelComponent {
         TypeScript: example1Ts,
         HTML: example1Html,
     };
+
     readonly example2: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,
     };
+
     readonly example3: FrontEndExample = {
         HTML: example3Html,
     };

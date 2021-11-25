@@ -53,6 +53,7 @@ export class TuiInputFileExample3 {
             src: 'https://tools.ietf.org/html/rfc675',
         },
     ];
+
     loadingFiles: ReadonlyArray<TuiFileLike> = [this.files[0]];
     rejectedFiles: ReadonlyArray<TuiFileLike> = [
         {

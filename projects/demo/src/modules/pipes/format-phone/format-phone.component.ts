@@ -34,6 +34,7 @@ export class ExampleTuiFormatPhoneComponent {
         '### ###-####',
         '### ###-####',
     ];
+
     phoneMask = this.phoneMasks[0];
 
     get maxLength(): number {

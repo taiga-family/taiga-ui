@@ -54,6 +54,7 @@ describe('Select', () => {
     class TestComponent {
         @ViewChild(TuiSelectComponent, {static: true})
         component!: TuiSelectComponent<string | Beast>;
+
         items = ITEMS;
         control = new FormControl();
         cleaner = false;

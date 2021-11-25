@@ -78,6 +78,7 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
         new TuiMonth(2020, 2),
         new TuiMonth(2017, 2),
     ];
+
     defaultActiveYearMonth = this.defaultActiveYearMonthVariants[0];
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiDay>> = [

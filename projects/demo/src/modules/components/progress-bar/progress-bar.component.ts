@@ -42,6 +42,7 @@ export class ExampleProgressBarComponent {
         'rgba(74, 201, 155, 1)',
         'linear-gradient(to right, var(--tui-support-02), var(--tui-support-14), var(--tui-support-12))',
     ];
+
     color = this.colorVariants[0];
 
     readonly basicExample: FrontEndExample = {

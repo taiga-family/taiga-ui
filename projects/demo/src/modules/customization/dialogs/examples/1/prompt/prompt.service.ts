@@ -13,6 +13,7 @@ export class PromptService extends AbstractTuiDialogService<PromptOptions> {
         heading: 'Are you sure?',
         buttons: ['Yes', 'No'],
     } as const;
+
     readonly component = new PolymorpheusComponent(PromptComponent);
 }
 

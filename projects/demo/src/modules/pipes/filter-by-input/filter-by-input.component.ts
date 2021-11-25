@@ -25,10 +25,12 @@ export class ExampleTuiFilterByInputComponent {
         TypeScript: example1Ts,
         HTML: example1Html,
     };
+
     readonly example2: FrontEndExample = {
         TypeScript: example2Ts,
         HTML: example2Html,
     };
+
     readonly example3: FrontEndExample = {
         TypeScript: example3Ts,
         HTML: example3Html,

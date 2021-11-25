@@ -38,6 +38,7 @@ export class TuiFilterExample2 {
         item1: Orerations,
         item2: Orerations,
     ) => item1.title === item2.title;
+
     items: ReadonlyArray<Orerations> = [
         COMPLETED,
         {

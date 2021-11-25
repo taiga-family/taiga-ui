@@ -70,6 +70,7 @@ describe('ComboBox', () => {
     class TestComponent {
         @ViewChild(TuiComboBoxComponent, {static: true})
         component!: TuiComboBoxComponent<string | Beast>;
+
         items = ITEMS;
         control = new FormControl();
         defaultInputs = false;
