@@ -12,6 +12,7 @@ import {join} from 'path';
 import {AppServerModule} from './src/main.server';
 
 global.requestAnimationFrame = global.setImmediate as any;
+
 global.cancelAnimationFrame = () => {};
 
 // The Express app is exported so that it can be used by serverless Functions.
