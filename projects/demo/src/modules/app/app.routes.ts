@@ -832,6 +832,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/pdf-viewer',
+        loadChildren: () =>
+            import(`../components/pdf-viewer/pdf-viewer.module`).then(
+                m => m.ExampleTuiPdfViewerModule,
+            ),
+        data: {
+            title: 'PdfViewer',
+        },
+    },
+    {
         path: 'components/progress-bar',
         loadChildren: () =>
             import(`../components/progress-bar/progress-bar.module`).then(
