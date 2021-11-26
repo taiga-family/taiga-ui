@@ -14,6 +14,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiAvatarModule, TuiInputModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiTooltipExample1} from './examples/1';
 import {TuiTooltipExample2} from './examples/2';
 import {TuiTooltipExample3} from './examples/3';

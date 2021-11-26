@@ -6,6 +6,7 @@ import {TuiCurrencyPipeModule, TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/kit';
+
 import {ExampleTuiCurrencyComponent} from './currency.component';
 import {TuiCurrencyExample1} from './examples/1/component';
 import {TuiCurrencyExample2} from './examples/2/component';

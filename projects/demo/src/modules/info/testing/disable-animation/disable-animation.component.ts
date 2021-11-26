@@ -1,6 +1,6 @@
-import {default as disableAnimationExample} from '!!raw-loader!./examples/disable-all-animation.txt';
-
 import {Component} from '@angular/core';
+
+import {default as disableAnimationExample} from '!!raw-loader!./examples/disable-all-animation.txt';
 
 @Component({
     selector: 'disable-animation',

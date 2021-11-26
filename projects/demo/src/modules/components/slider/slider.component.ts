@@ -1,17 +1,16 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TuiPluralize, TuiSizeS} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
+
+import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
+import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
+import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
+import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
+import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
+import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -70,6 +69,7 @@ export class ExampleTuiSliderComponent {
             other: 'years',
         },
     ];
+
     pluralize = null;
     readonly keyStepsVariants: ReadonlyArray<TuiKeySteps> = [
         [[50, 1000]],
@@ -78,6 +78,7 @@ export class ExampleTuiSliderComponent {
             [(100 / 3) * 2, 300000],
         ],
     ];
+
     keySteps = null;
     readonly quantumVariants: ReadonlyArray<number> = [0.01, 0.1, 1, 10];
     quantum = this.quantumVariants[0];

@@ -9,6 +9,7 @@ import {
     TuiTooltipModule,
 } from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
+
 import {TuiLabelExample1} from './examples/1';
 import {TuiLabelExample2} from './examples/2';
 import {TuiLabelExample3} from './examples/3';

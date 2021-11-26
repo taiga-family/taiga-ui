@@ -1,6 +1,7 @@
 import {isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {concat, merge, Observable} from 'rxjs';
 import {endWith, map, repeat, take, takeWhile} from 'rxjs/operators';
+
 import {mouseDragFinishFrom} from './mouse-drag-finish-from';
 import {typedFromEvent} from './typed-from-event';
 

@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiCalendarRangeModule} from '@taiga-ui/kit';
+
 import {ExampleTuiCalendarRangeComponent} from './calendar-range.component';
 import {TuiRangeExample1} from './examples/1';
 import {TuiRangeExample2} from './examples/2';

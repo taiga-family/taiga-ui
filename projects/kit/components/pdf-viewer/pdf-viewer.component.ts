@@ -10,6 +10,7 @@ import {
 } from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
+
 import {TuiPdfViewerOptions} from './pdf-viewer-options';
 
 @Component({

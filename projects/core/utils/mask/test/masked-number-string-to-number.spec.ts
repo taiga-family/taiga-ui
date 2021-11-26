@@ -1,4 +1,5 @@
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
+
 import {maskedNumberStringToNumber} from '../masked-number-string-to-number';
 
 describe('Converts the text value of a number obtained from a mask into a number', () => {

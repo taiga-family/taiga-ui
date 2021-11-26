@@ -4,8 +4,8 @@ import {TuiActiveZoneModule, TuiObscuredModule} from '@taiga-ui/cdk';
 import {TuiDropdownModule} from '@taiga-ui/core/directives/dropdown';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
-import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
 import {TuiHostedDropdownComponent} from './hosted-dropdown.component';
+import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
 
 @NgModule({
     imports: [

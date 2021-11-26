@@ -1,5 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {TuiScrollbarComponent} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

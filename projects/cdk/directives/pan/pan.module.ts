@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiPanDirective} from './pan.directive';
 
 /**

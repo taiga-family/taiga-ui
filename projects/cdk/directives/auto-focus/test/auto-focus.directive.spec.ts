@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiFocusableElementAccessor} from '../../../interfaces/focusable-element-accessor';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '../../../tokens/focusable-item-accessor';
 import {TUI_IS_IOS} from '../../../tokens/is-ios';

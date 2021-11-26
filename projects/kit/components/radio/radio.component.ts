@@ -25,6 +25,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATION_OPTIONS, tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
+
 import {RadioOptions, TUI_RADIO_OPTIONS} from './radio-options';
 
 // @dynamic

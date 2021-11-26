@@ -12,6 +12,7 @@ import {
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiSelectComponent} from '../select.component';
 import {TuiSelectModule} from '../select.module';
 
@@ -53,6 +54,7 @@ describe('Select', () => {
     class TestComponent {
         @ViewChild(TuiSelectComponent, {static: true})
         component!: TuiSelectComponent<string | Beast>;
+
         items = ITEMS;
         control = new FormControl();
         cleaner = false;

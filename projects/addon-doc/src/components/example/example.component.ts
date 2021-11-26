@@ -14,6 +14,7 @@ import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
+
 import {CodeEditor} from '../../interfaces/code-editor';
 import {TuiDocExample} from '../../interfaces/page';
 import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';

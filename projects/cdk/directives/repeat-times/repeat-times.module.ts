@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiRepeatTimesDirective} from './repeat-times.directive';
 
 @NgModule({

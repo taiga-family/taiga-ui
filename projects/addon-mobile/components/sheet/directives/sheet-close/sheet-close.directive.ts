@@ -3,12 +3,13 @@ import {WINDOW} from '@ng-web-apis/common';
 import {typedFromEvent} from '@taiga-ui/cdk';
 import {EMPTY, merge, Observable} from 'rxjs';
 import {filter, startWith, switchMap} from 'rxjs/operators';
-import {TUI_SHEET_CLOSE} from '../../components/sheet-heading/sheet-heading.component';
+
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
 import {
     TUI_SHEET_DRAGGED,
     TUI_SHEET_SCROLL,
 } from '../../components/sheet/sheet.providers';
+import {TUI_SHEET_CLOSE} from '../../components/sheet-heading/sheet-heading.component';
 
 // @dynamic
 @Directive({

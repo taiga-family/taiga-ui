@@ -1,5 +1,6 @@
 import {Observable} from 'rxjs';
 import {filter, mapTo, startWith, switchMapTo, take} from 'rxjs/operators';
+
 import {mouseDragFinishFrom} from './mouse-drag-finish-from';
 import {typedFromEvent} from './typed-from-event';
 

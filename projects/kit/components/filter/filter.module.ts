@@ -5,6 +5,7 @@ import {TuiModeModule} from '@taiga-ui/core';
 import {TuiBadgeModule} from '@taiga-ui/kit/components/badge';
 import {TuiCheckboxBlockModule} from '@taiga-ui/kit/components/checkbox-block';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiFilterComponent} from './filter.component';
 
 @NgModule({

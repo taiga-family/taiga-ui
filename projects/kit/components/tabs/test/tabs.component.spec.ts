@@ -4,6 +4,7 @@ import {isNativeFocused} from '@taiga-ui/cdk';
 import {dispatchOnActive} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiTabsModule} from '../tabs.module';
 
 describe('Tabs', () => {

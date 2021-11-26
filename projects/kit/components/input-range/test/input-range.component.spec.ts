@@ -4,6 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiInputRangeComponent} from '../input-range.component';
 import {TuiInputRangeModule} from '../input-range.module';
 

@@ -12,6 +12,7 @@ import {TuiComparator} from '@taiga-ui/addon-table/types';
 import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+
 import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
 

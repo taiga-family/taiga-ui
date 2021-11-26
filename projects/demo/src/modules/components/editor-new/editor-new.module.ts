@@ -10,6 +10,7 @@ import {
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {ExampleEditorNewComponent} from './editor-new.component';
 import {TuiEditorNewExample1} from './examples/1';

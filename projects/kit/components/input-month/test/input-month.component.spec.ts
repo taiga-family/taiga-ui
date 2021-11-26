@@ -4,6 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiMonth} from '@taiga-ui/cdk';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiInputMonthComponent} from '../input-month.component';
 import {TuiInputMonthModule} from '../input-month.module';
 

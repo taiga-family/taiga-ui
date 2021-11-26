@@ -15,6 +15,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiAvatarModule, TuiInputPhoneModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputPhoneExample1} from './examples/1';
 import {TuiInputPhoneExample2} from './examples/2';

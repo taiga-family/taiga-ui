@@ -7,6 +7,7 @@ import {
     TuiRepeatTimesModule,
 } from '@taiga-ui/cdk';
 import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
+
 import {TuiSliderComponent} from './slider.component';
 
 @NgModule({

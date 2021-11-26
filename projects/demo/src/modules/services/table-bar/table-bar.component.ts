@@ -1,19 +1,19 @@
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
-import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
-import {default as exampleServiceUsageHtml} from '!!raw-loader!./examples/import/service-usage-html.txt';
-import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/service-usage.txt';
-import {default as exampleTemplate} from '!!raw-loader!./examples/import/template.txt';
-
 import {Component, Inject, OnDestroy, ViewChild} from '@angular/core';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 import {TuiBrightness} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
+import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
+import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
+import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
+import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
+import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/service-usage.txt';
+import {default as exampleServiceUsageHtml} from '!!raw-loader!./examples/import/service-usage-html.txt';
+import {default as exampleTemplate} from '!!raw-loader!./examples/import/template.txt';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 

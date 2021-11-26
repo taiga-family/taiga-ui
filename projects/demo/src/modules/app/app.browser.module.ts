@@ -13,6 +13,7 @@ import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
 import {TuiDialogModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {TuiPdfViewerModule} from '@taiga-ui/kit';
 import {MarkdownModule} from 'ngx-markdown';
+
 import {AppComponent} from './app.component';
 import {APP_PROVIDERS} from './app.providers';
 import {AppRoutingModule} from './app.routes';

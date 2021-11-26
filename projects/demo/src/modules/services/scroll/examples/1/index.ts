@@ -1,5 +1,6 @@
 import {Component, ElementRef, Inject} from '@angular/core';
 import {TuiScrollService} from '@taiga-ui/cdk';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

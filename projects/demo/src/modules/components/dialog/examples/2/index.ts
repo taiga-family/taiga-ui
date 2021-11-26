@@ -1,6 +1,7 @@
 import {Component, Inject, Injector} from '@angular/core';
 import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 import {DialogExampleComponent} from './dialog-example/dialog-example.component';

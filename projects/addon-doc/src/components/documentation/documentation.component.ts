@@ -12,6 +12,7 @@ import {
 import {EMPTY_QUERY, itemsQueryListObservable, watch} from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
+
 import {TUI_DOC_DOCUMENTATION_TEXTS} from '../../tokens/i18n';
 import {hexToRgb, rgbToHex} from '../../utils/color-conversion';
 import {inspectAny} from '../../utils/inspect';

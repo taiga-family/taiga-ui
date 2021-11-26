@@ -1,4 +1,5 @@
 import {ComponentFixture} from '@angular/core/testing';
+
 import {createKeyboardEvent} from './keyboard-event';
 
 export function dispatchOnActive<T>(key: string, fixture?: ComponentFixture<T>) {

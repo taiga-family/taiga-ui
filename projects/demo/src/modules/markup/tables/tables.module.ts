@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule, TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiCheckboxModule, TuiInputTagModule, TuiTagModule} from '@taiga-ui/kit';
+
 import {TuiTablesExample1} from './examples/1';
 import {TablesComponent} from './tables.component';
 

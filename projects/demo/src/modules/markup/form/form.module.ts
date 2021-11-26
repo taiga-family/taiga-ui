@@ -32,6 +32,7 @@ import {
     TuiStepperModule,
     TuiTextAreaModule,
 } from '@taiga-ui/kit';
+
 import {TuiExample} from './example';
 import {FormComponent} from './form.component';
 

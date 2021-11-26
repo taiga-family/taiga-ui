@@ -8,6 +8,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+
 import {TuiTableCreateComponent} from './table-create.component';
 
 @NgModule({

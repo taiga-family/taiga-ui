@@ -7,6 +7,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+
 import {TuiListConfigsComponent} from './list-configs.component';
 
 @NgModule({

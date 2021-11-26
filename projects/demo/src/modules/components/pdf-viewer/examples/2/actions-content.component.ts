@@ -2,6 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {TuiDialog} from '@taiga-ui/cdk';
 import {TuiPdfViewerOptions} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+
 import {Buttons} from './index';
 
 @Component({

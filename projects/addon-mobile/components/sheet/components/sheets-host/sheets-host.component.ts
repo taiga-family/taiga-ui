@@ -3,6 +3,7 @@ import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TUI_WINDOW_HEIGHT} from '@taiga-ui/cdk';
 import {TUI_ANIMATION_OPTIONS, tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+
 import {TuiSheet} from '../../sheet';
 import {TuiSheetService} from '../../sheet.service';
 import {TUI_SHEET_OFFSET} from '../sheet/sheet.providers';

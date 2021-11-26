@@ -6,6 +6,7 @@ import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiHoveredModule} from '@taiga-ui/cdk';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiLegendItemExample1} from './examples/1';
 import {ExampleTuiLegendItemComponent} from './legend-item.component';
 

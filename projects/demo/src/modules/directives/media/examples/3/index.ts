@@ -1,4 +1,5 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 
 @Component({

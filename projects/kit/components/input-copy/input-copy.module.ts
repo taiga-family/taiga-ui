@@ -7,6 +7,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiInputCopyComponent} from './input-copy.component';
 
 @NgModule({

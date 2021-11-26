@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiScrollbarModule} from '@taiga-ui/core';
+
 import {TuiElasticStickyModule} from '../elastic-sticky.module';
 
 describe('TuiElasticStickyDirective', () => {

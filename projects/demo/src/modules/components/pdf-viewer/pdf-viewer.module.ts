@@ -4,11 +4,12 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLoaderModule} from '@taiga-ui/core';
 import {TuiPdfViewerModule} from '@taiga-ui/kit';
+
 import {TuiPdfViewerExample1} from './examples/1';
 import {TuiPdfViewerExample2} from './examples/2';
-import {TuiPdfViewerExample3} from './examples/3';
 import {ActionsContent} from './examples/2/actions-content.component';
 import {PdfContent} from './examples/2/pdf-content.component';
+import {TuiPdfViewerExample3} from './examples/3';
 import {ExampleTuiPdfViewerComponent} from './pdf-viewer.component';
 
 @NgModule({

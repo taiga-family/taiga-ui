@@ -10,6 +10,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiLoaderModule, TuiSvgModule, TuiWrapperModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiToggleComponent} from './toggle.component';
 
 @NgModule({

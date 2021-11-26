@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {SECONDS_IN_MINUTE} from '@taiga-ui/cdk';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

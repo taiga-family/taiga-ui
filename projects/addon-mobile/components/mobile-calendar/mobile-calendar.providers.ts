@@ -10,6 +10,7 @@ import {
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {EMPTY, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
 import {TuiMobileCalendarStrategy} from './mobile-calendar.strategy';
 
 export const TUI_VALUE_STREAM = new InjectionToken<Observable<TuiDayRange | null>>(

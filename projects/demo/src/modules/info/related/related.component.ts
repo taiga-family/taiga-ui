@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+
 import {changeDetection} from '../../../change-detection-strategy';
 import {
     SCREENSHOT_BOT_LINK,

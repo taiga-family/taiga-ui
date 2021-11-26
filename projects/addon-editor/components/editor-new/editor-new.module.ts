@@ -9,6 +9,7 @@ import {TuiTiptapEditorModule} from '@taiga-ui/addon-editor/directives';
 import {TuiActiveZoneModule, TuiHoveredModule, TuiLetModule} from '@taiga-ui/cdk';
 import {TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';
 import {TuiDropdownSelectionModule} from '@taiga-ui/kit';
+
 import {TuiEditorNewComponent} from './editor-new.component';
 
 @NgModule({

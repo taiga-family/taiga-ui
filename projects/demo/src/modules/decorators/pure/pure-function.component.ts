@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk';
+
 import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({

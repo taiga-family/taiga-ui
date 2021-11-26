@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiResizeDirective} from './resize.directive';
 
 /**

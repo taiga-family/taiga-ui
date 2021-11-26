@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {timer} from 'rxjs';
 import {skip, take, takeUntil} from 'rxjs/operators';
+
 import {TuiNotificationsModule} from '../../notifications.module';
 import {TuiNotificationsService} from '../../notifications.service';
 import {TuiNotificationsHostComponent} from '../notifications-host.component';

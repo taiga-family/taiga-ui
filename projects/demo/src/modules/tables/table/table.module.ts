@@ -33,6 +33,7 @@ import {
     TuiSelectModule,
     TuiTagModule,
 } from '@taiga-ui/kit';
+
 import {TuiTableExample1} from './examples/1';
 import {TuiTableExample2} from './examples/2';
 import {TuiTableExample3} from './examples/3';

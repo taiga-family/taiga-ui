@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+
 import {TuiGroupDirective} from './group.directive';
 
 /** @deprecated */

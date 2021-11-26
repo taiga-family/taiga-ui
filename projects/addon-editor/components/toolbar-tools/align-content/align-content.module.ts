@@ -7,6 +7,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+
 import {TuiAlignContentComponent} from './align-content.component';
 
 @NgModule({

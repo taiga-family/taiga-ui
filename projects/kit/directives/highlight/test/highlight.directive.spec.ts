@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiHighlightModule} from '../highlight.module';
 
 describe('TuiHighlight directive', () => {

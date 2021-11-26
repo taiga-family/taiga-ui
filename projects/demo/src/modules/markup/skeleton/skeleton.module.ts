@@ -13,6 +13,7 @@ import {
     TuiIslandModule,
     TuiToggleModule,
 } from '@taiga-ui/kit';
+
 import {TuiSkeletonExample1} from './examples/1';
 import {TuiSkeletonExample2} from './examples/2';
 import {SkeletonComponent} from './skeleton.component';

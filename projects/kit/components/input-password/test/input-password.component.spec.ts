@@ -7,6 +7,7 @@ import {TuiSizeL, TuiSizeS, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
 import {PolymorpheusHandler} from '@tinkoff/ng-polymorpheus';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiInputPasswordComponent} from '../input-password.component';
 import {TuiInputPasswordModule} from '../input-password.module';
 

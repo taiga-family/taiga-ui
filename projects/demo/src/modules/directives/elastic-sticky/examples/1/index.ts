@@ -3,6 +3,7 @@ import {TuiElasticStickyDirective} from '@taiga-ui/addon-mobile';
 import {clamp} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

@@ -3,6 +3,7 @@ import {TuiTimeLike} from '@taiga-ui/cdk/interfaces';
 import {TuiTimeMode} from '@taiga-ui/cdk/types';
 import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange} from '@taiga-ui/cdk/utils/math';
+
 import {
     HOURS_IN_DAY,
     MILLISECONDS_IN_DAY,

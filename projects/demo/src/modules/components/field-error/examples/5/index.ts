@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -34,6 +35,7 @@ export class TuiFieldErrorExample5 {
         Validators.minLength(4),
         Validators.maxLength(4),
     ]);
+
     readonly testValue2 = new FormControl('', [Validators.required, Validators.email]);
 
     readonly testForm = new FormGroup({

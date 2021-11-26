@@ -12,6 +12,7 @@ import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 import {of} from 'rxjs';
+
 import {TuiMobileCalendarComponent} from '../mobile-calendar.component';
 import {TuiMobileCalendarModule} from '../mobile-calendar.module';
 

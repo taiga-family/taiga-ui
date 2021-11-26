@@ -26,6 +26,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 
 const DUMMY: TuiPoint = [NaN, NaN];

@@ -17,6 +17,7 @@ import {
     TuiInputModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
+
 import {ExampleTuiAccordionComponent} from './accordion.component';
 import {TuiAccordionExample1} from './examples/1';
 import {TuiAccordionExample2} from './examples/2';

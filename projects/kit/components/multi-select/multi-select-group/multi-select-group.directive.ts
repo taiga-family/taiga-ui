@@ -4,6 +4,7 @@ import {EMPTY_FUNCTION} from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT, TuiDataListHost} from '@taiga-ui/core';
 import {TuiMultiSelectOptionComponent} from '@taiga-ui/kit/components/multi-select-option';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+
 import {TuiMultiSelectComponent} from '../multi-select.component';
 
 export function hostFallbackFactory<T>(

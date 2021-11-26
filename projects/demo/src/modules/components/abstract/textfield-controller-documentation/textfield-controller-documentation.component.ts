@@ -1,4 +1,5 @@
 import {Component, Inject} from '@angular/core';
+
 import {changeDetection} from '../../../../change-detection-strategy';
 import {AbstractExampleTuiControl} from '../control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props-accessor';

@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

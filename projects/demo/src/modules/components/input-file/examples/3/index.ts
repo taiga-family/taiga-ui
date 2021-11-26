@@ -4,6 +4,7 @@ import {TuiNotificationsService} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit';
 import {combineLatest, Observable, Subject, timer} from 'rxjs';
 import {mapTo, startWith, switchMap, takeUntil} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -52,6 +53,7 @@ export class TuiInputFileExample3 {
             src: 'https://tools.ietf.org/html/rfc675',
         },
     ];
+
     loadingFiles: ReadonlyArray<TuiFileLike> = [this.files[0]];
     rejectedFiles: ReadonlyArray<TuiFileLike> = [
         {

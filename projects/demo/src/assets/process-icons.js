@@ -1,5 +1,6 @@
 const fs = require('fs');
 const glob = require('glob');
+
 const WIDTH_SEARCH = 'width="';
 const HEIGHT_SEARCH = 'height="';
 const START = '<svg';

@@ -2,6 +2,7 @@ import {Component, Inject, TemplateRef} from '@angular/core';
 import {clamp, TuiPortalService} from '@taiga-ui/cdk';
 import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

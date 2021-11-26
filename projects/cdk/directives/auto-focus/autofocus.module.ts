@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiAutoFocusDirective} from './autofocus.directive';
 
 @NgModule({

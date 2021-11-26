@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {TuiBadgeModule} from '@taiga-ui/kit';
+
 import {TuiLetExample1} from './examples/1';
 import {TuiLetExample2} from './examples/2';
 import {ExampleTuiLetComponent} from './let.component';

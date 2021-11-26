@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

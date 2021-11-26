@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {map, startWith} from 'rxjs/operators';
+
 import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';

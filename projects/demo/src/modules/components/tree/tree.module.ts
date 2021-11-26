@@ -11,6 +11,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiCheckboxLabeledModule, TuiTreeModule} from '@taiga-ui/kit';
+
 import {TuiTreeExample1} from './examples/1';
 import {TuiTreeExample2} from './examples/2';
 import {TuiTreeExample3} from './examples/3';

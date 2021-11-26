@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiRadioModule} from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiRadioExample1} from './examples/1';
 import {TuiRadioExample2} from './examples/2';

@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
-import {TuiFilterByInputWithPipe} from './filter-by-input-with.pipe';
+
 import {TuiFilterByInputPipe} from './filter-by-input.pipe';
+import {TuiFilterByInputWithPipe} from './filter-by-input-with.pipe';
 
 @NgModule({
     declarations: [TuiFilterByInputPipe, TuiFilterByInputWithPipe],

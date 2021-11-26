@@ -17,6 +17,7 @@ import {
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TuiDropdownSelectionModule} from '@taiga-ui/kit';
+
 import {TuiEditorComponent} from './editor.component';
 
 @NgModule({

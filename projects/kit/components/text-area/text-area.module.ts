@@ -10,6 +10,7 @@ import {
     TuiTooltipModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
+
 import {TuiTextAreaComponent} from './text-area.component';
 
 @NgModule({

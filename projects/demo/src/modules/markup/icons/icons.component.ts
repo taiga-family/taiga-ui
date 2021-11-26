@@ -3,6 +3,7 @@ import {Component, Inject, InjectionToken} from '@angular/core';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
+
 import {changeDetection} from '../../../change-detection-strategy';
 
 export const COMMERCE = [

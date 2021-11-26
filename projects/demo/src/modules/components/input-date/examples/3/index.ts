@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
 import {TuiNamedDay} from '@taiga-ui/kit';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

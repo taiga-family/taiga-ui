@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, InjectionToken, Provider} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {watchedControllerFactory} from '@taiga-ui/core/providers';
+
 import {TUI_DROPDOWN_CONTROLLER} from './dropdown-controller.token';
 
 export const TUI_DROPDOWN_WATCHED_CONTROLLER = new InjectionToken(

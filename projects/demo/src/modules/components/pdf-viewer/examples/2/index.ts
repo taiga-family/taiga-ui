@@ -4,6 +4,7 @@ import {TuiNotificationsService} from '@taiga-ui/core';
 import {TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 import {ActionsContent} from './actions-content.component';

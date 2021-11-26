@@ -11,6 +11,7 @@ import {
     TuiHostedDropdownModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+
 import {ExampleTuiColorPickerComponent} from './color-picker.component';
 import {TuiColorPickerExample1} from './examples/1';
 import {TuiColorPickerExample2} from './examples/2';

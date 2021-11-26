@@ -10,6 +10,7 @@ import {
     TuiFilterByInputPipeModule,
     TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
+
 import {TuiStringifyContentExample1} from './examples/1';
 import {ExampleTuiStringifyContentComponent} from './stringify-content.component';
 

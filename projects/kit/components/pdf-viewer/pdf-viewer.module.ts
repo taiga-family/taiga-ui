@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {TUI_DIALOGS} from '@taiga-ui/cdk';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiPdfViewerComponent} from './pdf-viewer.component';
 import {TuiPdfViewerDirective} from './pdf-viewer.directive';
 import {TuiPdfViewerService} from './pdf-viewer.service';

@@ -9,6 +9,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputCountModule} from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputCountExample1} from './examples/1';
 import {TuiInputCountExample2} from './examples/2';

@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiForModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiLoaderModule} from '@taiga-ui/core';
+
 import {TuiForExample1} from './examples/1';
 import {ExampleTuiForComponent} from './for.component';
 

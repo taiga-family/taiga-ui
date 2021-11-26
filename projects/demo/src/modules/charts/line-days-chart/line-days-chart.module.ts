@@ -11,6 +11,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiFilterPipeModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {TuiInputDateRangeModule, TuiSelectModule} from '@taiga-ui/kit';
+
 import {TuiLineDaysChartExample1} from './examples/1';
 import {TuiLineDaysChartExample2} from './examples/2';
 import {LabelsPipe} from './examples/2/pipe';

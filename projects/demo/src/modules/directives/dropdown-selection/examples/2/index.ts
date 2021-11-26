@@ -1,8 +1,10 @@
-import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
 import {Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
 import {EMPTY_QUERY, setNativeFocused, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
 import {TuiOptionComponent} from '@taiga-ui/core';
 import {getWordRange} from '@taiga-ui/kit';
+
+import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

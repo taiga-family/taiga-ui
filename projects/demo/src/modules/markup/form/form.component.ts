@@ -1,8 +1,9 @@
+import {Component} from '@angular/core';
+
 import {default as example1Html} from '!!raw-loader!./example/index.html';
 import {default as example1Less} from '!!raw-loader!./example/index.style.less';
 import {default as example1Ts} from '!!raw-loader!./example/index.ts';
 
-import {Component} from '@angular/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 

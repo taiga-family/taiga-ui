@@ -9,6 +9,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiInputPasswordComponent} from './input-password.component';
 
 @NgModule({

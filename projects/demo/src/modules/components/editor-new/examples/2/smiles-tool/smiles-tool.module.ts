@@ -6,6 +6,7 @@ import {
     TuiDropdownControllerModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
+
 import {ExampleSmilesToolComponent} from './smiles-tool.component';
 
 @NgModule({

@@ -12,6 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiInputNumberComponent} from '../input-number.component';
 import {TuiInputNumberModule} from '../input-number.module';
 
@@ -46,6 +47,7 @@ describe('InputNumber', () => {
         form = new FormGroup({
             control: this.control,
         });
+
         readOnly = false;
         decimal: TuiDecimalT = 'never';
         cleaner = true;

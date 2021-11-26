@@ -5,6 +5,7 @@ import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
 } from '@taiga-ui/core';
+
 import {TuiTextAreaComponent} from './text-area.component';
 
 export const TUI_TEXT_AREA_PROVIDERS: Provider[] = [

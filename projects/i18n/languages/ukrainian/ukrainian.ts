@@ -1,4 +1,5 @@
 import {Language} from '@taiga-ui/i18n/interfaces';
+
 import {TUI_UKRAINIAN_LANGUAGE_ADDON_COMMERCE} from './addon-commerce';
 import {TUI_UKRAINIAN_LANGUAGE_ADDON_EDITOR} from './addon-editor';
 import {TUI_UKRAINIAN_LANGUAGE_ADDON_TABLE} from './addon-table';

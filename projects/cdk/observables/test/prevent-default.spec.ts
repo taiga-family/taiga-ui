@@ -1,6 +1,7 @@
 import {fakeAsync} from '@angular/core/testing';
 import {Subject} from 'rxjs';
 import {first} from 'rxjs/operators';
+
 import {preventDefault} from '../prevent-default';
 
 describe('preventDefault operator function', () => {

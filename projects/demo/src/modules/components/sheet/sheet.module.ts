@@ -12,6 +12,7 @@ import {
     TuiNotificationModule,
 } from '@taiga-ui/core';
 import {TuiAvatarModule} from '@taiga-ui/kit';
+
 import {TuiSheetExample1} from './examples/1';
 import {TuiSheetExample2} from './examples/2';
 import {TuiSheetExample3} from './examples/3';

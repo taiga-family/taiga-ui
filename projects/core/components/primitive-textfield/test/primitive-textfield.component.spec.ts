@@ -10,6 +10,7 @@ import {
     testTooltip,
 } from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiHintControllerModule} from '../../../directives/hint-controller/hint-controller.module';
 import {TuiTextfieldControllerModule} from '../../../directives/textfield-controller';
 import {TuiSizeL, TuiSizeS} from '../../../types/size';

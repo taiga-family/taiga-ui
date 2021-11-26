@@ -8,6 +8,7 @@ import {
 import {TuiContextWithImplicit, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {CheckboxOptions, TUI_CHECKBOX_OPTIONS} from './checkbox-options';
 
 // @dynamic

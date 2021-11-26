@@ -5,6 +5,7 @@ import {TuiHostedDropdownModule, TuiPrimitiveTextfieldModule} from '@taiga-ui/co
 import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
 import {TuiSelectOptionModule} from '@taiga-ui/kit/components/select-option';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiSelectComponent} from './select.component';
 
 @NgModule({

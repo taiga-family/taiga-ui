@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiProgressModule} from '@taiga-ui/kit';
+
 import {TuiProgressCircleExample1} from './examples/1';
 import {TuiProgressCircleExample2} from './examples/2';
 import {TuiProgressCircleExample3} from './examples/3';

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable, of, Subject} from 'rxjs';
 import {delay, startWith, switchMap} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

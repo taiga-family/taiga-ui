@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiBarSetComponent} from '../bar-set.component';
 import {TuiBarSetModule} from '../bar-set.module';
 
@@ -14,6 +15,7 @@ describe('BarSet', () => {
     class TestComponent {
         @ViewChild(TuiBarSetComponent)
         readonly component: TuiBarSetComponent;
+
         readonly value = [10, 20, 30, 40];
         collapsed = false;
     }

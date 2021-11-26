@@ -17,6 +17,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiAccordionModule} from '@taiga-ui/kit';
+
 import {ScrollIntoViewModule} from '../../directives/scroll-into-view/scroll-into-view.module';
 import {TuiDocNavigationComponent} from './navigation.component';
 

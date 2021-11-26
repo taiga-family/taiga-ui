@@ -3,9 +3,10 @@ import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {TuiLetModule, TuiOverscrollModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiScrollbarModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
+import {TuiSheetComponent} from './components/sheet/sheet.component';
 import {TuiSheetBarComponent} from './components/sheet-bar/sheet-bar.component';
 import {TuiSheetHeadingComponent} from './components/sheet-heading/sheet-heading.component';
-import {TuiSheetComponent} from './components/sheet/sheet.component';
 import {TuiSheetsHostComponent} from './components/sheets-host/sheets-host.component';
 import {TuiSheetCloseDirective} from './directives/sheet-close/sheet-close.directive';
 import {TuiSheetStopDirective} from './directives/sheet-stop/sheet-stop.directive';

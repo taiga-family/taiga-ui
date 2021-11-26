@@ -47,6 +47,7 @@ export class TuiDropdownContextDirective
     readonly context = {
         close: () => this.closeDropdownBox(),
     };
+
     private lastClickedClientRect: ClientRect = this.getClientRectFromDot(0, 0);
 
     constructor(

@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiMobileDialogModule} from '@taiga-ui/addon-mobile';
 import {TuiButtonModule} from '@taiga-ui/core';
+
 import {TuiMobileDialogExample1} from './examples/1';
 import {ExampleTuiMobileDialogComponent} from './mobile-dialog.component';
 

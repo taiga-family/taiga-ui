@@ -13,6 +13,7 @@ import {
     tuiSlideIn,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {TuiSidebarDirective} from './sidebar.directive';
 
 // @dynamic

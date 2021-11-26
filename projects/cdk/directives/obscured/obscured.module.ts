@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiObscuredDirective} from './obscured.directive';
 
 @NgModule({

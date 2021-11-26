@@ -6,6 +6,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule, TuiLoaderModule} from '@taiga-ui/core';
 import {TuiRadioListModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiLoaderExample1} from './examples/1';
 import {TuiLoaderExample2} from './examples/2';
 import {TuiLoaderExample3} from './examples/3';

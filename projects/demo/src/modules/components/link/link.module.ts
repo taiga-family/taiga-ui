@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
+
 import {TuiLinkExample1} from './examples/1';
 import {TuiLinkExample2} from './examples/2';
 import {TuiLinkExample3} from './examples/3';

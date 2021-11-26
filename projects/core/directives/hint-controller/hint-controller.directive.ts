@@ -2,6 +2,7 @@ import {Directive, forwardRef, Input} from '@angular/core';
 import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {TUI_HINT_CONTROLLER} from './hint-controller.token';
 
 // TODO: v2.0 use in Charts

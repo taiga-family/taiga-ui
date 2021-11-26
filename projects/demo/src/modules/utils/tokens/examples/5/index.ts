@@ -1,5 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

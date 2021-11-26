@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiAvatarModule, TuiBadgedContentModule, TuiInputModule} from '@taiga-ui/kit';
+
 import {ExampleTuiBadgedContentComponent} from './badged-content.component';
 import {TuiBadgedContentExample1} from './examples/1';
 import {TuiBadgedContentExample2} from './examples/2';

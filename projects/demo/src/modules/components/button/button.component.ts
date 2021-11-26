@@ -1,3 +1,8 @@
+import {Component, forwardRef, TemplateRef} from '@angular/core';
+import {tuiPure} from '@taiga-ui/cdk';
+import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
@@ -10,15 +15,10 @@ import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
-
 import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {Component, forwardRef, TemplateRef} from '@angular/core';
-import {tuiPure} from '@taiga-ui/cdk';
-import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

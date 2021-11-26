@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {tuiRequiredSetter} from '@taiga-ui/cdk';
+
 import {changeDetection} from '../../../change-detection-strategy';
 
 // @dynamic

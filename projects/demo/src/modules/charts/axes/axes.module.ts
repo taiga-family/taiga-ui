@@ -6,6 +6,7 @@ import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiHintModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {ExampleTuiAxesComponent} from './axes.component';
 import {TuiAxesExample1} from './examples/1';
 import {TuiAxesExample2} from './examples/2';

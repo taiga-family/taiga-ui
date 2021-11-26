@@ -25,6 +25,7 @@ import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from '@taiga-ui/core/tokens';
 import {TuiOptionRole, TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {TuiDataListComponent} from '../data-list.component';
 
 export function shouldFocus({

@@ -8,9 +8,10 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiExpandModule, TuiGroupModule, TuiSvgModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {TuiAccordionItemContentDirective} from './accordion-item/accordion-item-content.directive';
-import {TuiAccordionItemComponent} from './accordion-item/accordion-item.component';
+
 import {TuiAccordionComponent} from './accordion.component';
+import {TuiAccordionItemComponent} from './accordion-item/accordion-item.component';
+import {TuiAccordionItemContentDirective} from './accordion-item/accordion-item-content.directive';
 
 @NgModule({
     imports: [

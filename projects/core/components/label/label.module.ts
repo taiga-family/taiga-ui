@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiLabelComponent} from './label.component';
 
 @NgModule({

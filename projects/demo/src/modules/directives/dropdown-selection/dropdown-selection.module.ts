@@ -10,6 +10,7 @@ import {
     TuiTextAreaModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {ExampleTuiDropdownSelectionComponent} from './dropdown-selection.component';
 import {TuiDropdownSelectionExample1} from './examples/1';
 import {TuiDropdownSelectionExample2} from './examples/2';

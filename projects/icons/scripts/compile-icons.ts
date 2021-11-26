@@ -1,9 +1,11 @@
 import {readdirSync, readFileSync, unlinkSync, writeFileSync} from 'fs';
 import {rollup, RollupOptions} from 'rollup';
+
 import {rollupSvgo} from './rollup-svgo';
 
 const prettier = require('prettier');
 const typescript = require('rollup-plugin-typescript2');
+
 const projectPath = process.argv[2] || 'projects/icons';
 const allToCompilePath = `${projectPath}/all-to-compile.ts`;
 const iconsSrc = `${projectPath}/src/`;
@@ -19,7 +21,7 @@ const inputOptions: RollupOptions = {
     input: allToCompilePath,
     output: {preferConst: true},
     plugins: [
-        typescript(),
+        typescript({cacheRoot: 'node_modules/.cache/.rpt2_cache'}),
         rollupSvgo({
             include: '**/*.svg',
             options: {

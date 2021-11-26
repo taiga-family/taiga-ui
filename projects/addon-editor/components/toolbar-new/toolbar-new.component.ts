@@ -31,6 +31,7 @@ import {LanguageEditor} from '@taiga-ui/i18n';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {take} from 'rxjs/operators';
+
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 
 function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {

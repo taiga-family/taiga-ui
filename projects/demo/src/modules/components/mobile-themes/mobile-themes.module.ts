@@ -10,6 +10,7 @@ import {
 } from '@taiga-ui/addon-mobile';
 import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiIslandModule} from '@taiga-ui/kit';
+
 import {TuiMobileThemesExample1} from './examples/1';
 import {TuiMobileThemesExample2} from './examples/2';
 import {ExampleTuiMobileThemesComponent} from './mobile-themes.component';

@@ -7,6 +7,7 @@ import {
     TuiStringifyContentPipeModule,
     TuiStringifyPipeModule,
 } from '@taiga-ui/kit';
+
 import {VersionManagerComponent} from './version-manager.component';
 
 @NgModule({

@@ -3,8 +3,9 @@ import {NgModule} from '@angular/core';
 import {TuiFocusableModule, TuiLetModule} from '@taiga-ui/cdk';
 import {TuiDescribedByModule, TuiHintModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {TuiLineChartHintDirective} from './line-chart-hint.directive';
+
 import {TuiLineChartComponent} from './line-chart.component';
+import {TuiLineChartHintDirective} from './line-chart-hint.directive';
 
 @NgModule({
     imports: [

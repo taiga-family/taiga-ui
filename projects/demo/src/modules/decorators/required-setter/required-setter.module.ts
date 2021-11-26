@@ -5,8 +5,9 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiInputCountModule} from '@taiga-ui/kit';
-import {ExampleTuiRequiredSetterDemoComponent} from './required-setter-demo.component';
+
 import {ExampleTuiRequiredSetterComponent} from './required-setter.component';
+import {ExampleTuiRequiredSetterDemoComponent} from './required-setter-demo.component';
 
 @NgModule({
     imports: [

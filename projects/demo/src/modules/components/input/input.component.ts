@@ -1,43 +1,35 @@
+import {Component, forwardRef} from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
+import {TuiHorizontalDirection} from '@taiga-ui/core';
+
 import {default as example1Ts} from '!!raw-loader!./examples/1/component.ts';
 import {default as example1Html} from '!!raw-loader!./examples/1/template.html';
-
 import {default as example2Ts} from '!!raw-loader!./examples/2/component.ts';
 import {default as example2Html} from '!!raw-loader!./examples/2/template.html';
-
 import {default as example3Ts} from '!!raw-loader!./examples/3/component.ts';
 import {default as example3Html} from '!!raw-loader!./examples/3/template.html';
-
 import {default as example4Ts} from '!!raw-loader!./examples/4/component.ts';
 import {default as example4Less} from '!!raw-loader!./examples/4/style.less';
 import {default as example4Html} from '!!raw-loader!./examples/4/template.html';
-
 import {default as example5Ts} from '!!raw-loader!./examples/5/component.ts';
 import {default as example5Less} from '!!raw-loader!./examples/5/style.less';
 import {default as example5Html} from '!!raw-loader!./examples/5/template.html';
-
 import {default as example6Ts} from '!!raw-loader!./examples/6/component.ts';
 import {default as example6Less} from '!!raw-loader!./examples/6/style.less';
 import {default as example6Html} from '!!raw-loader!./examples/6/template.html';
-
 import {default as example7Ts} from '!!raw-loader!./examples/7/component.ts';
 import {default as example7Less} from '!!raw-loader!./examples/7/style.less';
 import {default as example7Html} from '!!raw-loader!./examples/7/template.html';
-
 import {default as example8Html} from '!!raw-loader!./examples/8/index.html';
 import {default as example8Less} from '!!raw-loader!./examples/8/index.less';
 import {default as example8Ts} from '!!raw-loader!./examples/8/index.ts';
-
 import {default as example9Html} from '!!raw-loader!./examples/9/index.html';
 import {default as example9Less} from '!!raw-loader!./examples/9/index.less';
 import {default as example9Ts} from '!!raw-loader!./examples/9/index.ts';
-
 import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {Component, forwardRef} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import {TuiHorizontalDirection} from '@taiga-ui/core';
 import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';

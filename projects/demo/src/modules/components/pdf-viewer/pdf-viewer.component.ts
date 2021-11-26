@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
+
 import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({

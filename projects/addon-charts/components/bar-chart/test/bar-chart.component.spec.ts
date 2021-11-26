@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {configureTestSuite} from 'ng-bullet';
+
 import {TuiBarChartComponent} from '../bar-chart.component';
 import {TuiBarChartModule} from '../bar-chart.module';
 
@@ -13,10 +14,12 @@ describe('BarChart', () => {
     class TestComponent {
         @ViewChild(TuiBarChartComponent)
         readonly component: TuiBarChartComponent;
+
         readonly value = [
             [1, 2, 3],
             [4, 5, 6],
         ];
+
         max = NaN;
     }
 

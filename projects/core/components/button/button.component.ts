@@ -26,6 +26,7 @@ import {TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
 import {ButtonOptions, TUI_BUTTON_OPTIONS} from './button-options';
 
 @Component({

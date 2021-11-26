@@ -1,8 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiLoaderModule} from '@taiga-ui/core/components/loader';
-import {TuiExpandContentDirective} from './expand-content.directive';
+
 import {TuiExpandComponent} from './expand.component';
+import {TuiExpandContentDirective} from './expand-content.directive';
 
 @NgModule({
     imports: [CommonModule, TuiLoaderModule],

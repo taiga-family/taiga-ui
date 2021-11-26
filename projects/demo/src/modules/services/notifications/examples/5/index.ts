@@ -4,6 +4,7 @@ import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 import {AlertExampleWithCustomLabelComponent} from './alert-example-with-custom-label/alert-example-with-custom-label.component';

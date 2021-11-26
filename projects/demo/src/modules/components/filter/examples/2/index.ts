@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
@@ -37,6 +38,7 @@ export class TuiFilterExample2 {
         item1: Orerations,
         item2: Orerations,
     ) => item1.title === item2.title;
+
     items: ReadonlyArray<Orerations> = [
         COMPLETED,
         {

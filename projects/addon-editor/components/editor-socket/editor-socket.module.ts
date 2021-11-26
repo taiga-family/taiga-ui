@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiEditorSocketComponent} from './editor-socket.component';
 
 @NgModule({

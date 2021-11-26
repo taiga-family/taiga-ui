@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {TuiProjectClassDirective} from './project-class.directive';
 
 @NgModule({

@@ -5,8 +5,9 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {TuiSizeL} from '@taiga-ui/core';
 import {PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
-import {TuiBreadcrumbsWrapperComponent} from '../breadcrumbs-wrapper.component';
+
 import {TuiBreadcrumbsModule} from '../breadcrumbs.module';
+import {TuiBreadcrumbsWrapperComponent} from '../breadcrumbs-wrapper.component';
 
 const ITEMS = [
     {

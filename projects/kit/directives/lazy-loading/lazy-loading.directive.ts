@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiDestroyService} from '@taiga-ui/cdk';
+
 import {TuiLazyLoadingService} from './lazy-loading.service';
 
 @Directive({

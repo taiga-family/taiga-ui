@@ -8,6 +8,7 @@ import {
 } from '@taiga-ui/core/animations';
 import {TuiAnimationOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
+
 import {TuiNotificationsService} from '../notifications.service';
 
 @Component({

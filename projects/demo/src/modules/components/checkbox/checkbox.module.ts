@@ -6,6 +6,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiCheckboxModule} from '@taiga-ui/kit';
 import {MarkdownModule} from 'ngx-markdown';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {ExampleTuiCheckboxComponent} from './checkbox.component';
 import {TuiCheckboxExample1} from './examples/1';

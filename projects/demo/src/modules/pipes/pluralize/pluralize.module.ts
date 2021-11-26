@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule, TuiPluralizePipeModule} from '@taiga-ui/core';
 import {TuiInputSliderModule} from '@taiga-ui/kit';
+
 import {ExampleTuiPluralizeComponent} from './pluralize.component';
 
 @NgModule({

@@ -1,5 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {TuiDialogService} from '@taiga-ui/core';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

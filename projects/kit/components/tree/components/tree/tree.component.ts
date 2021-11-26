@@ -1,5 +1,6 @@
 import {Component, Inject, Input, Optional} from '@angular/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {TuiTreeChildrenDirective} from '../../directives/tree-children.directive';
 import {TuiTreeContext} from '../../misc/tree.interfaces';
 import {TUI_TREE_NODE} from '../../misc/tree.tokens';

@@ -1,4 +1,5 @@
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
+
 import {capitalize} from '../capitalize';
 
 describe('Capitalize', () => {

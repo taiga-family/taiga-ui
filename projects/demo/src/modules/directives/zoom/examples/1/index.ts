@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {clamp, TuiZoom} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
 import {map, scan, startWith} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

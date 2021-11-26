@@ -16,6 +16,7 @@ import {
     TuiRadioListModule,
     TuiUnfinishedValidatorModule,
 } from '@taiga-ui/kit';
+
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputDateExample1} from './examples/1';
 import {TuiInputDateExample2} from './examples/2';

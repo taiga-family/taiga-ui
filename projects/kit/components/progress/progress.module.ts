@@ -1,8 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
-import {TuiProgressColorSegmentsAsyncPipe} from './pipes/progress-color-segments-async.pipe';
+
 import {TuiProgressColorSegmentsPipe} from './pipes/progress-color-segments.pipe';
+import {TuiProgressColorSegmentsAsyncPipe} from './pipes/progress-color-segments-async.pipe';
 import {TuiProgressBarComponent} from './progress-bar/progress-bar.component';
 import {TuiProgressCircleComponent} from './progress-circle/progress-circle.component';
 import {TuiProgressLabelComponent} from './progress-label/progress-label.component';

@@ -39,6 +39,7 @@ import {
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+
 import {INPUT_PHONE_PROVIDERS, SELECTION_STREAM} from './input-phone.providers';
 
 const NON_PLUS_AND_DIGITS_REGEX = /[ \-_\(\)]/g;

@@ -9,6 +9,7 @@ import {
     TuiModeModule,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
 import {TuiManualHintExample1} from './examples/1';
 import {ExampleTuiManualHintComponent} from './manual-hint.component';
