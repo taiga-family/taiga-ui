@@ -398,14 +398,10 @@
                         }
                     }
                 },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "tsConfig": [
-                            "projects/addon-preview/tsconfig.lib.json",
-                            "projects/addon-preview/tsconfig.spec.json"
-                        ],
-                        "exclude": ["**/node_modules/**"]
+                        "command": "npm publish dist/addon-preview"
                     }
                 }
             }
