@@ -12,7 +12,9 @@ import {
 } from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {TuiPreviewActionComponent} from './action/preview-action.component';
+
+import {TuiPreviewActionDirective} from '../../directives/preview-action/preview-action.directive';
+import {TuiPreviewActionModule} from '../../directives/preview-action/preview-action.module';
 import {TuiPreviewPaginationComponent} from './pagination/preview-pagination.component';
 import {TuiPreviewComponent} from './preview.component';
 import {TuiPreviewTitleComponent} from './title/preview-title.component';
@@ -34,20 +36,20 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiLoaderModule,
         TuiPanModule,
         TuiZoomModule,
+        TuiPreviewActionModule,
     ],
     declarations: [
         TuiPreviewComponent,
         TuiPreviewTitleComponent,
         TuiPreviewPaginationComponent,
         TuiPreviewZoomComponent,
-        TuiPreviewActionComponent,
     ],
     exports: [
         TuiPreviewComponent,
         TuiPreviewTitleComponent,
         TuiPreviewPaginationComponent,
         TuiPreviewZoomComponent,
-        TuiPreviewActionComponent,
+        TuiPreviewActionDirective,
     ],
 })
 export class TuiPreviewModule {}

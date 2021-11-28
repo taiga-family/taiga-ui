@@ -4,10 +4,6 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_PREVIEW: LanguagePreview = {
     previewTexts: {
         rotate: 'Повернуть',
     },
-    previewPagination: {
-        next: 'Вперед',
-        previous: 'Назад',
-    },
     zoomTexts: {
         zoomIn: 'Увеличить масштаб',
         zoomOut: 'Уменьшить масштаб',

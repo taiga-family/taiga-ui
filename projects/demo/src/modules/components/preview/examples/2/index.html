@@ -11,18 +11,20 @@
 <ng-template #preview let-preview>
     <tui-preview [rotatable]="false" [zoomable]="false">
         <iframe
-            class="content"
             src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
+            class="content"
         ></iframe>
 
-        <tui-preview-action
-            class="t-close-button"
+        <button
+            tuiIconButton
+            tuiPreviewAction
             icon="tuiIconCloseLarge"
             title="Close"
+            class="t-close-button"
             (click)="preview.complete()"
-        ></tui-preview-action>
+        ></button>
     </tui-preview>
 </ng-template>

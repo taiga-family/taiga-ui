@@ -4,6 +4,7 @@ import {isPresent} from '@taiga-ui/cdk';
 import {TuiDialogContext} from '@taiga-ui/core';
 import {BehaviorSubject, Observable, of, timer} from 'rxjs';
 import {filter, map, mapTo, startWith, switchMap} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 

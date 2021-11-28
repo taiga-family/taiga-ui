@@ -4,10 +4,6 @@ export const TUI_SPANISH_LANGUAGE_PREVIEW: LanguagePreview = {
     previewTexts: {
         rotate: 'Rotate',
     },
-    previewPagination: {
-        next: 'Next',
-        previous: 'Previous',
-    },
     zoomTexts: {
         zoomOut: 'Zoom out',
         zoomIn: 'Zoom in',

@@ -20,18 +20,23 @@
             (indexChange)="index$$.next($event)"
         ></tui-preview-pagination>
 
-        <tui-preview-action
+        <button
+            tuiIconButton
+            tuiPreviewAction
             icon="tuiIconDownload"
             title="Download"
+            class="t-action-button"
             (click)="download()"
-        ></tui-preview-action>
+        ></button>
 
-        <tui-preview-action
+        <button
+            tuiIconButton
+            tuiPreviewAction
             icon="tuiIconCloseLarge"
             title="Close"
             class="t-close-button"
             (click)="preview.complete()"
-        ></tui-preview-action>
+        ></button>
 
         <ng-container *ngIf="contentUnavailable$ | async">
             <div class="t-container">

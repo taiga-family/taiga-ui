@@ -2,19 +2,19 @@
     <section class="t-zoom">
         <button
             tuiIconButton
-            class="t-sign t-sign_minus"
             size="s"
             appearance=""
             icon="tuiIconMinus"
             shape="rounded"
+            class="t-sign t-sign_minus"
             [title]="texts.zoomOut"
             [disabled]="leftButtonDisabled"
             (click)="onMinus()"
         ></button>
         <div
-            class="t-ghost-dot"
             tuiHintMode="onDark"
             tuiHintDirection="top-right"
+            class="t-ghost-dot"
             [tuiManualHint]="hint"
             [tuiManualHintShow]="hintShow$ | async"
             [style.left.px]="ghostLeft"
@@ -31,24 +31,27 @@
         ></tui-slider>
         <button
             tuiIconButton
-            class="t-sign t-sign_plus"
             size="s"
             appearance=""
             icon="tuiIconPlus"
             shape="rounded"
+            class="t-sign t-sign_plus"
             [title]="texts.zoomIn"
             [disabled]="rightButtonDisabled"
             (click)="onPlus()"
         ></button>
     </section>
 
-    <tui-preview-action
+    <button
+        tuiIconButton
+        tuiPreviewAction
         icon="tuiIconCollapse"
-        [tuiHint]="texts.reset"
         tuiHintId="Collapse"
         tuiHintDirection="top-right"
         tuiHintMode="onDark"
+        class="t-reset-button"
+        [tuiHint]="texts.reset"
         [class.t-invisible]="!collapseVisible"
         (click)="onReset()"
-    ></tui-preview-action>
+    ></button>
 </ng-container>

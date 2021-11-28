@@ -18,22 +18,30 @@
             [(index)]="index"
         ></tui-preview-pagination>
 
-        <tui-preview-action
+        <button
+            tuiIconButton
+            tuiPreviewAction
             icon="tuiIconTrash"
             title="Delete"
+            class="t-action-button"
             (click)="delete()"
-        ></tui-preview-action>
-        <tui-preview-action
+        ></button>
+        <button
+            tuiIconButton
+            tuiPreviewAction
             icon="tuiIconDownload"
             title="Download"
+            class="t-action-button"
             (click)="download()"
-        ></tui-preview-action>
-        <tui-preview-action
-            class="t-close-button"
+        ></button>
+        <button
+            tuiPreviewAction
+            tuiIconButton
             icon="tuiIconCloseLarge"
             title="Close"
+            class="t-close-button"
             (click)="preview.complete()"
-        ></tui-preview-action>
+        ></button>
 
         <div polymorpheus-outlet [content]="previewContent">
             <ng-template let-src>
@@ -62,8 +70,8 @@
         </p>
 
         <img
-            class="polymorpheus"
             src="https://github.com/TinkoffCreditSystems/ng-polymorpheus/raw/master/projects/demo/assets/logo.svg"
+            class="polymorpheus"
         />
     </div>
 </ng-template>

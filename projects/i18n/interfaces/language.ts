@@ -161,10 +161,6 @@ export type LanguagePreview = {
     previewTexts: {
         rotate: string;
     };
-    previewPagination: {
-        next: string;
-        previous: string;
-    };
     zoomTexts: {
         zoomOut: string;
         zoomIn: string;

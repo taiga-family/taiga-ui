@@ -1,6 +1,7 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
 import {PreviewDialogService} from '@taiga-ui/addon-preview';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 import {clamp, TuiSwipe} from '../../../../../../../cdk';
 import {TuiDialogContext, TuiNotificationsService} from '../../../../../../../core';
 import {changeDetection} from '../../../../../change-detection-strategy';

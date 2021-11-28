@@ -10,6 +10,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
 import {TuiSwipeModule} from '../../../../../cdk';
 import {TuiPreviewExample1} from './examples/1';
 import {TuiPreviewExample2} from './examples/2';

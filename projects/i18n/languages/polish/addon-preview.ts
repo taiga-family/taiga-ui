@@ -4,10 +4,6 @@ export const TUI_POLISH_LANGUAGE_ADDON_PREVIEW: LanguagePreview = {
     previewTexts: {
         rotate: 'Rotate',
     },
-    previewPagination: {
-        next: 'Next',
-        previous: 'Previous',
-    },
     zoomTexts: {
         zoomOut: 'Zoom out',
         zoomIn: 'Zoom in',

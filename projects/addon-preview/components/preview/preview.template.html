@@ -1,11 +1,11 @@
 <ng-container *ngIf="texts$ | async as texts">
     <section
         #contentWrapper
-        class="t-wrapper"
         subtree
         childList
         characterData
         attributeFilter="src"
+        class="t-wrapper"
         [class.t-not-interactive-content]="zoomable"
         [class.t-transitive]="transitioned$ | async"
         [style.transform]="wrapperTransform$ | async"
@@ -26,20 +26,23 @@
         <ng-content select="tui-preview-pagination"></ng-content>
 
         <div class="t-actions">
-            <ng-content select="tui-preview-action"></ng-content>
+            <ng-content select="[tuiPreviewAction]"></ng-content>
         </div>
     </header>
 
     <footer class="t-footer">
-        <tui-preview-action
+        <button
             *ngIf="rotatable"
+            tuiIconButton
+            tuiPreviewAction
             icon="tuiIconRotate"
             tuiHintId="Rotate"
             tuiHintDirection="top-right"
             tuiHintMode="onDark"
+            class="t-action-button"
             [tuiHint]="texts.rotate"
             (click)="rotate()"
-        ></tui-preview-action>
+        ></button>
 
         <tui-preview-zoom
             *ngIf="zoomable"

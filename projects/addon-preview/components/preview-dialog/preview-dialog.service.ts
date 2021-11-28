@@ -1,6 +1,7 @@
 import {Injectable, Provider} from '@angular/core';
 import {AbstractTuiDialogService, TUI_DIALOGS} from '@taiga-ui/cdk';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+
 import {TuiPreviewDialogComponent} from './preview-dialog.component';
 
 @Injectable({

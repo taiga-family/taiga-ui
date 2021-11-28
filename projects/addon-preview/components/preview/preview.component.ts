@@ -52,11 +52,15 @@ export class TuiPreviewComponent {
     readonly coordinates$ = new BehaviorSubject<readonly [number, number]>(
         EMPTY_COORDINATES,
     );
+
     readonly transitioned$ = merge(
         dragAndDropFrom(this.elementRef.nativeElement).pipe(
             map(state => state.stage !== TuiDragStage.Continues),
         ),
         typedFromEvent(this.elementRef.nativeElement, 'touchmove', {passive: true}).pipe(
+            mapTo(false),
+        ),
+        typedFromEvent(this.elementRef.nativeElement, 'wheel', {passive: true}).pipe(
             mapTo(false),
         ),
     );
