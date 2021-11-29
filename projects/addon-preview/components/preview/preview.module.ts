@@ -2,10 +2,6 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MutationObserverModule} from '@ng-web-apis/mutation-observer';
-import {
-    TuiPreviewActionDirective,
-    TuiPreviewActionModule,
-} from '@taiga-ui/addon-preview/directives/preview-action';
 import {TuiDragModule, TuiPanModule, TuiResizeModule, TuiZoomModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -19,6 +15,8 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPreviewPaginationComponent} from './pagination/preview-pagination.component';
 import {TuiPreviewComponent} from './preview.component';
+import {TuiPreviewActionDirective} from './preview-action/preview-action.directive';
+import {TuiPreviewActionModule} from './preview-action/preview-action.module';
 import {TuiPreviewTitleComponent} from './title/preview-title.component';
 import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
 

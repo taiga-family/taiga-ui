@@ -49,8 +49,8 @@
         tuiHintId="Collapse"
         tuiHintDirection="top-right"
         tuiHintMode="onDark"
-        class="t-reset-button"
         [tuiHint]="texts.reset"
+        [style.marginLeft]="'0.3125rem'"
         [class.t-invisible]="!collapseVisible"
         (click)="onReset()"
     ></button>

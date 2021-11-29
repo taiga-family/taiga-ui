@@ -6,16 +6,20 @@
             [(index)]="index"
         ></tui-preview-pagination>
 
-        <tui-preview-action
+        <button
+            tuiIconButton
+            tuiPreviewAction
             icon="tuiIconTrash"
-            title="Удалить"
+            title="Delete"
             (click)="delete()"
-        ></tui-preview-action>
-        <tui-preview-action
+        ></button>
+        <button
+            tuiIconButton
+            tuiPreviewAction
             icon="tuiIconDownload"
-            title="Скачать"
+            title="Download"
             (click)="download()"
-        ></tui-preview-action>
+        ></button>
 
         <div polymorpheus-outlet [content]="previewContent">
             <ng-template let-src>

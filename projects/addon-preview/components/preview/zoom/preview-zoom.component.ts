@@ -90,6 +90,6 @@ export class TuiPreviewZoomComponent {
     }
 
     onPlus() {
-        this.onModelChange(this.value + STEP);
+        this.onModelChange(this.value < 1 ? 1 : this.value + STEP);
     }
 }

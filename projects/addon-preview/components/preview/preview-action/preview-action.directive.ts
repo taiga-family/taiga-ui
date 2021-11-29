@@ -15,5 +15,8 @@ export const PREVIEW_ACTION_OPTIONS: ButtonOptions = {
             useValue: PREVIEW_ACTION_OPTIONS,
         },
     ],
+    host: {
+        style: 'margin-left: 0.652rem',
+    },
 })
 export class TuiPreviewActionDirective {}
