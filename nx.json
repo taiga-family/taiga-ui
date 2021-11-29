@@ -35,6 +35,9 @@
         "addon-mobile": {
             "implicitDependencies": []
         },
+        "addon-preview": {
+            "implicitDependencies": []
+        },
         "addon-table": {
             "implicitDependencies": []
         },

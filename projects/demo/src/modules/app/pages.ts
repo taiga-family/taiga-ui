@@ -737,6 +737,14 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: 'Preview',
+        keywords:
+            'popup, dialog, диалог, попап, модалка, modal, просмотр, превью, предпросмотр, ' +
+            'предпоказ, показ, pdf, jpg, png, viewer, файл',
+        route: '/components/preview',
+    },
+    {
+        section: $localize`Components`,
         title: 'Svg',
         keywords: 'icon, картинка, свг, иконка, svg, графика',
         route: '/components/svg',
