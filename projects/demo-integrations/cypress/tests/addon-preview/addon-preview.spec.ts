@@ -7,7 +7,12 @@ describe('Addon preview', () => {
 
     it('Full preview', () => {
         cy.get(`tui-preview-example-1 button`).first().click();
-        cy.get('tui-preview').wait(200).matchImageSnapshot('preview');
+        cy.get('tui-preview')
+            .wait(200)
+            .matchImageSnapshot('preview', {
+                capture: 'viewport',
+                blackout: ['tui-doc-navigation'],
+            });
     });
 
     it('Full preview scrolled', () => {
@@ -17,11 +22,19 @@ describe('Addon preview', () => {
             .get('tui-preview section')
             .first()
             .trigger('wheel', 'center', {deltaY: -50});
-        cy.get('tui-preview').matchImageSnapshot('preview scroll');
+        cy.get('tui-preview').matchImageSnapshot('preview scroll', {
+            capture: 'viewport',
+            blackout: ['tui-doc-navigation'],
+        });
     });
 
     it('No preview avaliable', () => {
         cy.get(`tui-preview-example-3 button`).first().click();
-        cy.get('tui-preview').wait(200).matchImageSnapshot('preview-unavailable');
+        cy.get('tui-preview')
+            .wait(200)
+            .matchImageSnapshot('preview-unavailable', {
+                capture: 'viewport',
+                blackout: ['tui-doc-navigation'],
+            });
     });
 });
