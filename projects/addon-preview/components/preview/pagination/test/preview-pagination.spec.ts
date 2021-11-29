@@ -6,14 +6,14 @@ import {configureTestSuite} from 'ng-bullet';
 import {TuiPreviewModule} from '../../preview.module';
 import {TuiPreviewPaginationComponent} from '../preview-pagination.component';
 
-describe('TablePagination', () => {
+describe('PreviewPagination', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
     @Component({
         template: `
             <tui-preview-pagination
-                [lastIndex]="lastIndex"
+                [length]="length"
                 [(index)]="index"
             ></tui-preview-pagination>
         `,
@@ -23,7 +23,7 @@ describe('TablePagination', () => {
         component!: TuiPreviewPaginationComponent;
 
         index = 0;
-        lastIndex = 10;
+        length = 10;
     }
 
     configureTestSuite(() => {

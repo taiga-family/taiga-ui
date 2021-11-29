@@ -21,7 +21,7 @@ import {Observable} from 'rxjs';
 export class TuiPreviewPaginationComponent {
     @Input()
     @tuiDefaultProp()
-    lastIndex = 1;
+    length = 1;
 
     @Input()
     @tuiDefaultProp()
@@ -40,13 +40,13 @@ export class TuiPreviewPaginationComponent {
     }
 
     get rightButtonDisabled(): boolean {
-        return this.index === this.lastIndex;
+        return this.index === this.length - 1;
     }
 
     @HostListener('document:keydown.arrowRight.prevent', ['1'])
     @HostListener('document:keydown.arrowLeft.prevent', ['-1'])
     onArrowClick(step: number) {
-        this.updateIndex(clamp(this.index + step, 0, this.lastIndex));
+        this.updateIndex(clamp(this.index + step, 0, this.length - 1));
     }
 
     private updateIndex(index: number) {

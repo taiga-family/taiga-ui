@@ -2,7 +2,7 @@
     <tui-preview>
         <tui-preview-title>{{title}}</tui-preview-title>
         <tui-preview-pagination
-            [lastIndex]="1"
+            [length]="2"
             [(index)]="index"
         ></tui-preview-pagination>
 

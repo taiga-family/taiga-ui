@@ -55,7 +55,7 @@ export class TuiPreviewComponent {
 
     readonly transitioned$ = merge(
         dragAndDropFrom(this.elementRef.nativeElement).pipe(
-            map(state => state.stage !== TuiDragStage.Continues),
+            map(({stage}) => stage !== TuiDragStage.Continues),
         ),
         typedFromEvent(this.elementRef.nativeElement, 'touchmove', {passive: true}).pipe(
             mapTo(false),
@@ -65,13 +65,10 @@ export class TuiPreviewComponent {
         ),
     );
 
-    readonly cursor$ = dragAndDropFrom(this.elementRef.nativeElement)
-        .pipe(startWith(null))
-        .pipe(
-            map(state =>
-                state && state.stage === TuiDragStage.Continues ? 'grabbing' : 'initial',
-            ),
-        );
+    readonly cursor$ = dragAndDropFrom(this.elementRef.nativeElement).pipe(
+        map(({stage}) => (stage === TuiDragStage.Continues ? 'grabbing' : 'initial')),
+        startWith('initial'),
+    );
 
     readonly wrapperTransform$ = combineLatest([
         this.coordinates$.pipe(map(([x, y]) => `${x}px, ${y}px`)),
@@ -175,7 +172,7 @@ export class TuiPreviewComponent {
 
     private processZoom(clientX: number, clientY: number, delta: number) {
         const oldScale = this.zoom$.value;
-        const newScale = clamp(this.zoom$.value + delta, this.minZoom, 2);
+        const newScale = clamp(oldScale + delta, this.minZoom, 2);
 
         const center = this.getScaleCenter(
             {clientX, clientY},

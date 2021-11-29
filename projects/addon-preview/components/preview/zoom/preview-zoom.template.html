@@ -2,11 +2,9 @@
     <section class="t-zoom">
         <button
             tuiIconButton
-            size="s"
-            appearance=""
+            tuiPreviewAction
             icon="tuiIconMinus"
-            shape="rounded"
-            class="t-sign t-sign_minus"
+            class="t-sign_minus"
             [title]="texts.zoomOut"
             [disabled]="leftButtonDisabled"
             (click)="onMinus()"
@@ -31,11 +29,9 @@
         ></tui-slider>
         <button
             tuiIconButton
-            size="s"
-            appearance=""
+            tuiPreviewAction
             icon="tuiIconPlus"
-            shape="rounded"
-            class="t-sign t-sign_plus"
+            class="t-sign_plus"
             [title]="texts.zoomIn"
             [disabled]="rightButtonDisabled"
             (click)="onPlus()"
@@ -49,6 +45,7 @@
         tuiHintId="Collapse"
         tuiHintDirection="top-right"
         tuiHintMode="onDark"
+        class="t-reset-button"
         [tuiHint]="texts.reset"
         [class.t-invisible]="!collapseVisible"
         (click)="onReset()"

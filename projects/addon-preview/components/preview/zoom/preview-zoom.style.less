@@ -13,7 +13,6 @@
     justify-content: space-between;
     align-items: center;
     width: 12rem;
-    margin-right: -0.3125rem;
 }
 
 .t-slider {
@@ -21,17 +20,6 @@
 }
 
 .t-sign {
-    .transition(background);
-    color: var(--tui-text-01-night);
-
-    &:hover {
-        background: var(--tui-clear-inverse-hover);
-    }
-
-    &:disabled {
-        opacity: var(--tui-disabled-opacity);
-    }
-
     &_minus {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -53,4 +41,8 @@
 
 .t-invisible {
     visibility: hidden;
+}
+
+.t-reset-button {
+    margin-left: 0.3125rem;
 }
