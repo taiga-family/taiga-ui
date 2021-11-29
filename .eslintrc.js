@@ -6,6 +6,7 @@ module.exports = {
         '@typescript-eslint/member-ordering': 'off',
         '@typescript-eslint/no-useless-constructor': 'off',
         // TODO(splincode): move to @tinkoff/eslint-config-angular
+        'no-case-declarations': 'error',
         '@typescript-eslint/lines-between-class-members': [
             'error',
             'always',

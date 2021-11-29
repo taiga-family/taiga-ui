@@ -197,7 +197,7 @@ export class TuiDropdownSelectionDirective
      */
     private get rangeRect(): ClientRect {
         switch (this.position) {
-            case 'tag':
+            case 'tag': {
                 const {commonAncestorContainer} = this.range;
                 const element =
                     commonAncestorContainer.nodeType === Node.ELEMENT_NODE
@@ -205,6 +205,7 @@ export class TuiDropdownSelectionDirective
                         : commonAncestorContainer.parentNode;
 
                 return (element as Element).getBoundingClientRect();
+            }
             case 'word':
                 return getWordRange(this.range).getBoundingClientRect();
             default:
