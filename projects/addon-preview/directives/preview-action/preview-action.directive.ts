@@ -1,16 +1,18 @@
 import {Directive} from '@angular/core';
-import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core';
+import {ButtonOptions, TUI_BUTTON_OPTIONS} from '@taiga-ui/core';
+
+export const PREVIEW_ACTION_OPTIONS: ButtonOptions = {
+    appearance: 'preview-action',
+    shape: 'rounded',
+    size: 's',
+};
 
 @Directive({
     selector: '[tuiPreviewAction]',
     providers: [
         {
             provide: TUI_BUTTON_OPTIONS,
-            useValue: {
-                appearance: 'preview-action',
-                shape: 'rounded',
-                size: 's',
-            },
+            useValue: PREVIEW_ACTION_OPTIONS,
         },
     ],
 })
