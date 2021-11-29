@@ -1,0 +1,31 @@
+@import 'taiga-ui-local';
+
+:host {
+    .scrollbar-hidden();
+    position: relative;
+    display: block;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.t-items {
+    display: flex;
+    align-items: center;
+}
+
+.t-item {
+    padding: 0 1.25rem;
+    flex: 1;
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.t-content {
+    position: sticky;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,11 @@
+<tui-carousel [itemsCount]="3" [(index)]="index">
+    <ng-container *ngFor="let item of items; let i = index">
+        <img
+            *tuiItem
+            alt=""
+            src="assets/images/{{item}}"
+            class="item"
+            [class.item_active]="i === index"
+        />
+    </ng-container>
+</tui-carousel>

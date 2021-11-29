@@ -196,6 +196,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/carousel',
+        loadChildren: () =>
+            import(`../components/carousel/carousel.module`).then(
+                m => m.ExampleTuiCarouselModule,
+            ),
+        data: {
+            title: 'Carousel',
+        },
+    },
+    {
         path: 'components/card',
         loadChildren: () =>
             import(`../components/card/card.module`).then(m => m.ExampleTuiCardModule),
