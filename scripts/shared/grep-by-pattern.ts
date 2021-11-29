@@ -1,9 +1,21 @@
 import * as child_process from 'child_process';
 import * as util from 'util';
 
-export async function grepByPattern(pattern: string, path: string): Promise<any> {
+interface Options {
+    path: string;
+    includePattern: string;
+    excludePattern?: string;
+}
+
+export async function grepByPattern(options: Options): Promise<any> {
+    const {path, includePattern, excludePattern} = options;
+
     const exec = util.promisify(child_process.exec);
-    const grep = `grep -iRl '${pattern}' ${path}`;
+    let grep = `grep -iRl '${includePattern}' ${path}`;
+
+    if (excludePattern) {
+        grep += ` | grep -v '${excludePattern}'`;
+    }
 
     console.info(`[TASK]: $ ${grep}`);
 
