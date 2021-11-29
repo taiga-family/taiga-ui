@@ -44,7 +44,7 @@
         "affected:build:libs": "nx affected --target build --parallel --exclude demo",
         "run-many:test:libs": "nx run-many --target test --all --parallel --exclude demo",
         "run-many:build:libs": "nx run-many --target build --parallel --all --exclude demo",
-        "run-many:publish:libs": "nx run-many --target publish --all"
+        "run-many:publish:libs": "nx run-many --target publish --all --access public"
     },
     "keywords": [
         "angular",
