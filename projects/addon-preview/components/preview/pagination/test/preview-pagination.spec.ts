@@ -23,7 +23,7 @@ describe('PreviewPagination', () => {
         component!: TuiPreviewPaginationComponent;
 
         index = 0;
-        length = 10;
+        length = 11;
     }
 
     configureTestSuite(() => {
