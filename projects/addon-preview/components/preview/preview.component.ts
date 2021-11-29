@@ -183,17 +183,16 @@ export class TuiPreviewComponent {
             this.zoom$.value,
         );
 
-        this.zoom$.next(newScale);
-
         const moveX = center[0] * oldScale - center[0] * newScale;
         const moveY = center[1] * oldScale - center[1] * newScale;
 
-        const coordinates = this.getGuardedCoordinates(
-            this.coordinates$.value[0] + moveX,
-            this.coordinates$.value[1] + moveY,
+        this.zoom$.next(newScale);
+        this.coordinates$.next(
+            this.getGuardedCoordinates(
+                this.coordinates$.value[0] + moveX,
+                this.coordinates$.value[1] + moveY,
+            ),
         );
-
-        this.coordinates$.next(coordinates);
     }
 
     private getGuardedCoordinates(x: number, y: number): readonly [number, number] {
