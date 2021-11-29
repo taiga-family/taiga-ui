@@ -1,25 +1,19 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ## [2.25.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.23.0...v2.25.0) (2021-11-29)
 
-
 ### Features
 
-* **addon-doc:** support Promise content ([#821](https://github.com/TinkoffCreditSystems/taiga-ui/issues/821)) ([459fc21](https://github.com/TinkoffCreditSystems/taiga-ui/commit/459fc21911da527cf7920df3d172301f95e3566d))
-* **addon-preview:** add new package ([#350](https://github.com/TinkoffCreditSystems/taiga-ui/issues/350)) ([841be7e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/841be7e96bc5a1f5676dcd0f6fd35945683698f7))
-* **core:** `Button` allow configuration of default options ([#1026](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1026)) ([df2a8f5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/df2a8f5a46752780617ec13295d68ad71927fabe))
-* **core:** add support for virtual scroll in dropdowns ([#1018](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1018)) ([3ecb73b](https://github.com/TinkoffCreditSystems/taiga-ui/commit/3ecb73b161404d615ff3d5bac7cf13c9d2f17850))
-* **icons:** expose node.js utils for building icons ([#1045](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1045)) ([617f6ce](https://github.com/TinkoffCreditSystems/taiga-ui/commit/617f6cefdb19f23ddb55a02fa8d14837ff13ef46))
-* **kit:** `PdfViewer` add new component ([#1032](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1032)) ([b953123](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b953123103a2470d026981f0be2b102b9c90e48b))
-
-
-### Bug Fixes
-
-* **addon-commerce:** fix problem with autofill card in Safari ([#1024](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1024)) ([883fde6](https://github.com/TinkoffCreditSystems/taiga-ui/commit/883fde63290446c929788748c6b2a651f0bba138))
-* **cdk:** `ActiveZone` fix for shadow DOM clicks ([#1028](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1028)) ([f2ee219](https://github.com/TinkoffCreditSystems/taiga-ui/commit/f2ee219f31806bdf724433c738c33ee5952cb8eb))
-* fix number mask bug with wrong position of thousand separator ([#985](https://github.com/TinkoffCreditSystems/taiga-ui/issues/985)) ([9fb097c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/9fb097c97cd0cd35ff7611912e380c0600fd12ad))
+-   **addon-preview:** add new package ([#350](https://github.com/TinkoffCreditSystems/taiga-ui/issues/350))
+    ([841be7e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/841be7e96bc5a1f5676dcd0f6fd35945683698f7))
+-   **icons:** expose node.js utils for building icons
+    ([#1045](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1045))
+    ([617f6ce](https://github.com/TinkoffCreditSystems/taiga-ui/commit/617f6cefdb19f23ddb55a02fa8d14837ff13ef46))
+-   **kit:** `PdfViewer` add new component ([#1032](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1032))
+    ([b953123](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b953123103a2470d026981f0be2b102b9c90e48b))
 
 ## [2.24.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.23.0...v2.24.0) (2021-11-22)
 
