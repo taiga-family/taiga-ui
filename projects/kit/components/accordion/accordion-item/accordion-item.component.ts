@@ -45,6 +45,9 @@ export class TuiAccordionItemComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
+
     @Input()
     @HostBinding('class._no-padding')
     @tuiDefaultProp()
@@ -87,9 +90,6 @@ export class TuiAccordionItemComponent
 
     @ContentChild(TuiAccordionItemContentDirective)
     readonly content?: TuiAccordionItemContentDirective;
-
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,

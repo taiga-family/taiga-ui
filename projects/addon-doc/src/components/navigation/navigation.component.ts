@@ -37,14 +37,14 @@ const SCROLL_INTO_VIEW_DELAY = 200;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocNavigationComponent {
+    @HostBinding('class._open')
+    menuOpen = false;
+
     search = '';
     open = false;
     openPagesArr: boolean[] = [];
     openPagesGroupsArr: boolean[] = [];
     active = '';
-
-    @HostBinding('class._open')
-    menuOpen = false;
 
     readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),

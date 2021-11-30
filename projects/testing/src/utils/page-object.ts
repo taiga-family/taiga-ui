@@ -2,6 +2,8 @@ import {DebugElement, Predicate} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';
 
 export class PageObject<T> {
+    constructor(protected fixture: ComponentFixture<T>) {}
+
     static getIds({nativeElement}: DebugElement): string[] {
         const attributeValue: string | null = nativeElement.getAttribute('automation-id');
 
@@ -15,8 +17,6 @@ export class PageObject<T> {
     private static byAutomationId(automationId: string): Predicate<DebugElement> {
         return debugElement => PageObject.containsId(debugElement, automationId);
     }
-
-    constructor(protected fixture: ComponentFixture<T>) {}
 
     getByAutomationId(
         automationId: string,

@@ -43,6 +43,10 @@ export class TuiFieldErrorExample2 implements OnInit {
         testValue2: this.testValue2,
     });
 
+    ngOnInit() {
+        this.testValue2.setValidators([Validators.required, this.companyValidator]);
+    }
+
     private readonly companyValidator = (
         field: AbstractControl,
     ): ValidationErrors | null =>
@@ -51,10 +55,6 @@ export class TuiFieldErrorExample2 implements OnInit {
                   inn: new TuiValidationError(this.bigErrorContent),
               }
             : null;
-
-    ngOnInit() {
-        this.testValue2.setValidators([Validators.required, this.companyValidator]);
-    }
 
     private getSecretValidator(): (field: AbstractControl) => ValidationErrors | null {
         return (field: AbstractControl): ValidationErrors | null =>

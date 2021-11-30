@@ -51,15 +51,6 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
 
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent<any> = ({$implicit}: TuiContextWithImplicit<unknown>) =>
-        TUI_DEFAULT_STRINGIFY($implicit);
-
-    @Input()
-    @tuiDefaultProp()
-    badgeHandler: TuiHandler<T, number> = item => Number(item);
-
-    @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
 
     @Output()
@@ -75,6 +66,15 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     ) {
         super(control, changeDetectorRef);
     }
+
+    @Input()
+    @tuiDefaultProp()
+    content: PolymorpheusContent<any> = ({$implicit}: TuiContextWithImplicit<unknown>) =>
+        TUI_DEFAULT_STRINGIFY($implicit);
+
+    @Input()
+    @tuiDefaultProp()
+    badgeHandler: TuiHandler<T, number> = item => Number(item);
 
     get focused(): boolean {
         return isNativeFocusedIn(this.elementRef.nativeElement);

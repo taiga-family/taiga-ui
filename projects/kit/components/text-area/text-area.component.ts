@@ -54,6 +54,9 @@ export class TuiTextAreaComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<HTMLTextAreaElement>;
+
     @Input()
     @tuiDefaultProp()
     rows = DEFAULT_ROWS;
@@ -62,9 +65,6 @@ export class TuiTextAreaComponent
     @HostBinding('class._expandable')
     @tuiDefaultProp()
     expandable = false;
-
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<HTMLTextAreaElement>;
 
     constructor(
         @Optional()

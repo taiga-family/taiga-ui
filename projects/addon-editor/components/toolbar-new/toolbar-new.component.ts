@@ -53,6 +53,12 @@ function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     },
 })
 export class TuiToolbarNewComponent {
+    @ViewChildren('dropdown', {read: ElementRef})
+    private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
+    @ViewChild(TuiToolbarNavigationManagerDirective)
+    private readonly navigationManager?: TuiToolbarNavigationManagerDirective;
+
     @Input()
     @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
     tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
@@ -75,23 +81,7 @@ export class TuiToolbarNewComponent {
     @Output()
     readonly attachClicked = new EventEmitter<void>();
 
-    @HostListener('mousedown', ['$event', '$event.target'])
-    onMouseDown(event: MouseEvent, target: HTMLElement) {
-        if (getClosestElement(target, 'button')) {
-            return;
-        }
-
-        event.preventDefault();
-        this.editor.focus();
-    }
-
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
-
-    @ViewChildren('dropdown', {read: ElementRef})
-    private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
-    @ViewChild(TuiToolbarNavigationManagerDirective)
-    private readonly navigationManager?: TuiToolbarNavigationManagerDirective;
 
     constructor(
         @Optional()
@@ -174,6 +164,16 @@ export class TuiToolbarNewComponent {
             this.enabled(TuiEditorTool.Img) ||
             this.enabled(TuiEditorTool.HR)
         );
+    }
+
+    @HostListener('mousedown', ['$event', '$event.target'])
+    onMouseDown(event: MouseEvent, target: HTMLElement) {
+        if (getClosestElement(target, 'button')) {
+            return;
+        }
+
+        event.preventDefault();
+        this.editor.focus();
     }
 
     onBottomFocus() {

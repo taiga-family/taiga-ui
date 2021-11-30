@@ -11,6 +11,12 @@ export class TuiMonthRange {
         tuiAssert.assert(from.monthSameOrBefore(to));
     }
 
+    static sort(month1: TuiMonth, month2: TuiMonth): TuiMonthRange {
+        return month1.monthSameOrBefore(month2)
+            ? new TuiMonthRange(month1, month2)
+            : new TuiMonthRange(month2, month1);
+    }
+
     get isSingleMonth(): boolean {
         return this.from.monthSame(this.to);
     }
@@ -25,11 +31,5 @@ export class TuiMonthRange {
 
     toString(): string {
         return `${this.from}${RANGE_SEPARATOR_CHAR}${this.to}`;
-    }
-
-    static sort(month1: TuiMonth, month2: TuiMonth): TuiMonthRange {
-        return month1.monthSameOrBefore(month2)
-            ? new TuiMonthRange(month1, month2)
-            : new TuiMonthRange(month2, month1);
     }
 }

@@ -13,10 +13,10 @@ import {rawLoad} from '../../utils/raw-load';
 export class TuiDocCodeComponent {
     private readonly rawLoader$$ = new BehaviorSubject<RawLoaderContent>('');
 
-    readonly processor$ = this.rawLoader$$.pipe(switchMap(rawLoad));
-
     @Input()
     filename = '';
+
+    readonly processor$ = this.rawLoader$$.pipe(switchMap(rawLoad));
 
     @Input()
     set code(code: RawLoaderContent) {

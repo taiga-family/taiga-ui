@@ -26,9 +26,6 @@ interface TreeNode {
     encapsulation,
 })
 export class TuiTreeExample5 {
-    readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
-        item.children || EMPTY_ARRAY;
-
     readonly data: TreeNode = {
         text: 'Topmost',
         children: [
@@ -52,4 +49,7 @@ export class TuiTreeExample5 {
             },
         ],
     };
+
+    readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
+        item.children || EMPTY_ARRAY;
 }

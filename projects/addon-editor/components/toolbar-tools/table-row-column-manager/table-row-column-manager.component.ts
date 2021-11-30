@@ -24,12 +24,6 @@ export enum TableComands {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableRowColumnManagerComponent {
-    readonly isActive$ = this.editor.isActive$('table');
-
-    readonly rowsColumnsManagingText$ = this.texts$.pipe(
-        map(texts => texts.rowsColumnsManaging),
-    );
-
     private commandsRegistry: Record<TableComands, () => void> = {
         [TableComands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
         [TableComands.InsertColumnBefore]: () => this.editor.addColumnBefore(),
@@ -38,6 +32,12 @@ export class TuiTableRowColumnManagerComponent {
         [TableComands.DeleteColumn]: () => this.editor.deleteColumn(),
         [TableComands.DeleteRow]: () => this.editor.deleteRow(),
     };
+
+    readonly isActive$ = this.editor.isActive$('table');
+
+    readonly rowsColumnsManagingText$ = this.texts$.pipe(
+        map(texts => texts.rowsColumnsManaging),
+    );
 
     constructor(
         @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,

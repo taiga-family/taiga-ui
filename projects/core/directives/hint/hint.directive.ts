@@ -39,8 +39,6 @@ export const HINT_HOVERED_CLASS = '_hint_hovered';
     providers: [TuiObscuredService, TuiParentsScrollService, TuiDestroyService],
 })
 export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
-    readonly componentHovered$ = new Subject<boolean>();
-
     @Input()
     tuiHintId?: string;
 
@@ -69,6 +67,8 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
 
         this.content = value;
     }
+
+    readonly componentHovered$ = new Subject<boolean>();
 
     constructor(
         @Inject(Renderer2) private readonly renderer: Renderer2,

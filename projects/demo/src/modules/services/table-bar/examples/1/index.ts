@@ -13,10 +13,10 @@ import {Subscription} from 'rxjs';
     encapsulation,
 })
 export class TuiTableBarExampleComponent1 {
-    subscription = new Subscription();
-
     @ViewChild('tableBarTemplate')
     tableBarTemplate: PolymorpheusContent = '';
+
+    subscription = new Subscription();
 
     constructor(
         @Inject(TuiTableBarsService)

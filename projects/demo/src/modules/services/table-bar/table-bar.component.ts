@@ -24,6 +24,11 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiTableBarComponent implements OnDestroy {
+    private destroy$ = new Subject<void>();
+
+    @ViewChild('tableBarTemplate')
+    readonly tableBarTemplate: PolymorpheusContent = '';
+
     readonly exampleServiceUsage = exampleServiceUsage;
     readonly exampleServiceUsageHtml = exampleServiceUsageHtml;
     readonly exampleLazyModule = exampleLazyModule;
@@ -45,11 +50,6 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
     hasCloseButton = false;
 
     subscription = new Subscription();
-
-    @ViewChild('tableBarTemplate')
-    readonly tableBarTemplate: PolymorpheusContent = '';
-
-    private destroy$ = new Subject<void>();
 
     constructor(
         @Inject(TuiTableBarsService)

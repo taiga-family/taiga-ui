@@ -31,8 +31,6 @@ export class TuiLazyLoadingDirective {
     @HostBinding('attr.src')
     src: string | null = null;
 
-    private readonly supported = 'loading' in this.elementRef.nativeElement;
-
     constructor(
         @Inject(TuiLazyLoadingService)
         private readonly src$: TuiLazyLoadingService,
@@ -44,6 +42,10 @@ export class TuiLazyLoadingDirective {
                 this.src = src;
             });
         }
+    }
+
+    private get supported() {
+        return 'loading' in this.elementRef.nativeElement;
     }
 
     @HostListener('load')

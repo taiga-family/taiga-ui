@@ -27,6 +27,17 @@ import {debounceTime, map, mapTo, share, switchMap} from 'rxjs/operators';
     },
 })
 export class TuiUnderlineComponent {
+    private readonly element$ = new ReplaySubject<HTMLElement | null>(1);
+
+    private readonly refresh$ = this.element$.pipe(
+        switchMap(element =>
+            element
+                ? this.animationFrame$.pipe(mapTo(element), tuiZonefree(this.ngZone))
+                : of(null),
+        ),
+        share(),
+    );
+
     @Input()
     @tuiDefaultProp()
     set element(element: HTMLElement | null) {
@@ -38,17 +49,6 @@ export class TuiUnderlineComponent {
 
     @HostBinding('class._android')
     readonly isAndroid = this.mobileAware && this.android;
-
-    private readonly element$ = new ReplaySubject<HTMLElement | null>(1);
-
-    private readonly refresh$ = this.element$.pipe(
-        switchMap(element =>
-            element
-                ? this.animationFrame$.pipe(mapTo(element), tuiZonefree(this.ngZone))
-                : of(null),
-        ),
-        share(),
-    );
 
     @HostListener('$.style.transitionProperty')
     readonly transition$ = asCallable(

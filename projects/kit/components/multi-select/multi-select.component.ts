@@ -69,6 +69,15 @@ export class TuiMultiSelectComponent<T>
     extends AbstractTuiMultipleControl<T>
     implements TuiFocusableElementAccessor, TuiDataListHost<T>
 {
+    @ContentChild(TUI_DATA_LIST_ACCESSOR as any)
+    private readonly accessor?: TuiDataListAccessor<T>;
+
+    @ViewChild(TuiHostedDropdownComponent)
+    private readonly hostedDropdown?: TuiHostedDropdownComponent;
+
+    @ViewChild(TuiInputTagComponent)
+    private readonly input?: TuiInputTagComponent;
+
     @Input()
     @tuiDefaultProp()
     stringify: TuiStringHandler<T> = TUI_DEFAULT_STRINGIFY;
@@ -101,33 +110,10 @@ export class TuiMultiSelectComponent<T>
     @Output()
     readonly searchChange = new EventEmitter<string | null>();
 
-    open = false;
-
-    readonly valueMapper: TuiMapper<
-        ReadonlyArray<T>,
-        ReadonlyArray<TuiStringifiableItem<T>>
-    > = (value, stringify: TuiStringHandler<T>, group: boolean) =>
-        group
-            ? EMPTY_ARRAY
-            : value.map(item => new TuiStringifiableItem(item, stringify));
-
-    readonly disabledItemHandlerWrapper: TuiMapper<
-        TuiBooleanHandler<T>,
-        TuiBooleanHandler<TuiStringifiableItem<T>>
-    > = handler => stringifiable =>
-        typeof stringifiable === 'string' || handler(stringifiable.item);
-
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent = '';
 
-    @ContentChild(TUI_DATA_LIST_ACCESSOR as any)
-    private readonly accessor?: TuiDataListAccessor<T>;
-
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly hostedDropdown?: TuiHostedDropdownComponent;
-
-    @ViewChild(TuiInputTagComponent)
-    private readonly input?: TuiInputTagComponent;
+    open = false;
 
     constructor(
         @Optional()
@@ -200,6 +186,20 @@ export class TuiMultiSelectComponent<T>
     ): TuiStringHandler<TuiContextWithImplicit<T>> {
         return ({$implicit}) => stringify($implicit);
     }
+
+    readonly valueMapper: TuiMapper<
+        ReadonlyArray<T>,
+        ReadonlyArray<TuiStringifiableItem<T>>
+    > = (value, stringify: TuiStringHandler<T>, group: boolean) =>
+        group
+            ? EMPTY_ARRAY
+            : value.map(item => new TuiStringifiableItem(item, stringify));
+
+    readonly disabledItemHandlerWrapper: TuiMapper<
+        TuiBooleanHandler<T>,
+        TuiBooleanHandler<TuiStringifiableItem<T>>
+    > = handler => stringifiable =>
+        typeof stringifiable === 'string' || handler(stringifiable.item);
 
     onHoveredChange(hovered: boolean) {
         this.updateHovered(hovered);
@@ -278,6 +278,13 @@ export class TuiMultiSelectComponent<T>
         this.open = false;
     }
 
+    @tuiPure
+    private getContext(
+        $implicit: ReadonlyArray<T>,
+    ): TuiContextWithImplicit<ReadonlyArray<T>> {
+        return {$implicit};
+    }
+
     private updateSearch(search: string | null) {
         if (this.search === search) {
             return;
@@ -291,12 +298,5 @@ export class TuiMultiSelectComponent<T>
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
         }
-    }
-
-    @tuiPure
-    private getContext(
-        $implicit: ReadonlyArray<T>,
-    ): TuiContextWithImplicit<ReadonlyArray<T>> {
-        return {$implicit};
     }
 }

@@ -60,6 +60,9 @@ export class TuiInputCountComponent
     extends AbstractTuiControl<number>
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     step = this.options.step;
@@ -84,21 +87,6 @@ export class TuiInputCountComponent
     @tuiDefaultProp()
     postfix = this.options.postfix;
 
-    @tuiPure
-    getMask(allowNegative: boolean): TuiTextMaskOptions {
-        return {
-            mask: tuiCreateNumberMask({
-                allowNegative,
-                decimalSymbol: this.numberFormat.decimalSeparator,
-                thousandSymbol: this.numberFormat.thousandSeparator,
-            }),
-            guide: false,
-        };
-    }
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
-
     constructor(
         @Optional()
         @Self()
@@ -118,6 +106,18 @@ export class TuiInputCountComponent
         private readonly numberFormat: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    @tuiPure
+    getMask(allowNegative: boolean): TuiTextMaskOptions {
+        return {
+            mask: tuiCreateNumberMask({
+                allowNegative,
+                decimalSymbol: this.numberFormat.decimalSeparator,
+                thousandSymbol: this.numberFormat.thousandSeparator,
+            }),
+            guide: false,
+        };
     }
 
     // TODO: Remove in v.3

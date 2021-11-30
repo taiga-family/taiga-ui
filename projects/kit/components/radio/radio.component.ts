@@ -46,6 +46,9 @@ export class TuiRadioComponent<T>
     extends AbstractTuiNullableControl<T>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
+
     @Input()
     item?: T;
 
@@ -66,13 +69,7 @@ export class TuiRadioComponent<T>
     @tuiDefaultProp()
     pseudoDisabled = false;
 
-    readonly animation = {
-        value: '',
-        ...this.animationOptions,
-    } as const;
-
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
+    readonly animation = {value: '', ...this.animationOptions} as const;
 
     constructor(
         @Optional()

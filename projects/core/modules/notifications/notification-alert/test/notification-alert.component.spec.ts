@@ -90,14 +90,14 @@ describe('NotificationAlertComponent', () => {
         @ViewChild(TuiNotificationAlertComponent, {static: true})
         component: TuiNotificationAlertComponent<string, string>;
 
+        alert: NotificationAlert<string, string>;
+
         constructor(
             @Inject(TUI_NOTIFICATION_OPTIONS)
             public readonly options: NotificationTokenOptions,
         ) {
             this.setAlert(content, {label});
         }
-
-        alert: NotificationAlert<string, string>;
 
         setAlert(
             content: PolymorpheusContent<TuiNotificationContentContext<string, string>>,

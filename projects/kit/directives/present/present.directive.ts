@@ -33,12 +33,11 @@ const STYLE = `
     },
 })
 export class TuiPresentDirective implements OnDestroy {
+    private readonly visibility$ = new Subject<boolean>();
+    private readonly observer?: MutationObserver;
+
     @Output()
     readonly tuiPresentChange: Observable<boolean>;
-
-    private readonly visibility$ = new Subject<boolean>();
-
-    private readonly observer?: MutationObserver;
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,

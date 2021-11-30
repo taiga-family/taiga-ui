@@ -16,8 +16,6 @@ interface User {
 export class TuiStringifyContentExample1 {
     value = null;
 
-    readonly stringify = ({name, surname}: User) => `${name} ${surname}`;
-
     readonly items = [
         {
             name: 'John',
@@ -28,4 +26,6 @@ export class TuiStringifyContentExample1 {
             surname: 'Idle',
         },
     ];
+
+    readonly stringify = ({name, surname}: User) => `${name} ${surname}`;
 }

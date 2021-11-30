@@ -20,6 +20,65 @@ export class TuiYear implements TuiYearLike {
         tuiAssert.assert(TuiYear.isValidYear(year));
     }
 
+    /**
+     * Checks year for validity
+     */
+    static isValidYear(year: number): boolean {
+        return Number.isInteger(year) && inRange(year, MIN_YEAR, MAX_YEAR + 1);
+    }
+
+    /**
+     * Check if passed year is a leap year
+     */
+    static isLeapYear(year: number): boolean {
+        tuiAssert.assert(TuiYear.isValidYear(year));
+
+        return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
+    }
+
+    /**
+     * Returns amount of leap years from year 0 to the passed one
+     */
+    static getAbsoluteLeapYears(year: number): number {
+        tuiAssert.assert(TuiYear.isValidYear(year));
+
+        return Math.ceil(year / 400) + (Math.ceil(year / 4) - Math.ceil(year / 100));
+    }
+
+    /**
+     * @deprecated DONT USE IT (will be deleted soon)
+     *
+     * Returns day of week offset of the beginning of the passed year
+     *
+     * @param year
+     * @param absoluteLeapYears amount of leap years prior to the passed one
+     * @return offset in days
+     */
+    static getYearStartDaysOffset(year: number, absoluteLeapYears: number): number {
+        tuiAssert.assert(TuiYear.isValidYear(year));
+        tuiAssert.assert(Number.isInteger(absoluteLeapYears));
+        tuiAssert.assert(year >= absoluteLeapYears);
+        tuiAssert.assert(absoluteLeapYears >= 0);
+
+        return (
+            (absoluteLeapYears * DAYS_IN_LEAP_YEAR +
+                (year - absoluteLeapYears) * DAYS_IN_NORMAL_YEAR +
+                5) %
+            DAYS_IN_WEEK
+        );
+    }
+
+    static lengthBetween(from: TuiYear, to: TuiYear): number {
+        return to.year - from.year;
+    }
+
+    /**
+     * Normalizes year by clamping it between min and max years
+     */
+    protected static normalizeYearPart(year: number): number {
+        return normalizeToIntNumber(year, MIN_YEAR, MAX_YEAR);
+    }
+
     get formattedYear(): string {
         return padStart(this.year.toString(), 4, '0');
     }
@@ -103,64 +162,5 @@ export class TuiYear implements TuiYearLike {
 
     toJSON(): string {
         return this.formattedYear;
-    }
-
-    /**
-     * Checks year for validity
-     */
-    static isValidYear(year: number): boolean {
-        return Number.isInteger(year) && inRange(year, MIN_YEAR, MAX_YEAR + 1);
-    }
-
-    /**
-     * Check if passed year is a leap year
-     */
-    static isLeapYear(year: number): boolean {
-        tuiAssert.assert(TuiYear.isValidYear(year));
-
-        return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
-    }
-
-    /**
-     * Returns amount of leap years from year 0 to the passed one
-     */
-    static getAbsoluteLeapYears(year: number): number {
-        tuiAssert.assert(TuiYear.isValidYear(year));
-
-        return Math.ceil(year / 400) + (Math.ceil(year / 4) - Math.ceil(year / 100));
-    }
-
-    /**
-     * @deprecated DONT USE IT (will be deleted soon)
-     *
-     * Returns day of week offset of the beginning of the passed year
-     *
-     * @param year
-     * @param absoluteLeapYears amount of leap years prior to the passed one
-     * @return offset in days
-     */
-    static getYearStartDaysOffset(year: number, absoluteLeapYears: number): number {
-        tuiAssert.assert(TuiYear.isValidYear(year));
-        tuiAssert.assert(Number.isInteger(absoluteLeapYears));
-        tuiAssert.assert(year >= absoluteLeapYears);
-        tuiAssert.assert(absoluteLeapYears >= 0);
-
-        return (
-            (absoluteLeapYears * DAYS_IN_LEAP_YEAR +
-                (year - absoluteLeapYears) * DAYS_IN_NORMAL_YEAR +
-                5) %
-            DAYS_IN_WEEK
-        );
-    }
-
-    static lengthBetween(from: TuiYear, to: TuiYear): number {
-        return to.year - from.year;
-    }
-
-    /**
-     * Normalizes year by clamping it between min and max years
-     */
-    protected static normalizeYearPart(year: number): number {
-        return normalizeToIntNumber(year, MIN_YEAR, MAX_YEAR);
     }
 }

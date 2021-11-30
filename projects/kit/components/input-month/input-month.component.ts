@@ -48,6 +48,9 @@ export class TuiInputMonthComponent
     extends AbstractTuiNullableControl<TuiMonth>
     implements TuiWithOptionalMinMax<TuiMonth>, TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     min: TuiMonth = TUI_FIRST_DAY;
@@ -61,9 +64,6 @@ export class TuiInputMonthComponent
     disabledItemHandler: TuiBooleanHandler<TuiMonth> = ALWAYS_FALSE_HANDLER;
 
     open = false;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()

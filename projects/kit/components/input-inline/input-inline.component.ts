@@ -39,12 +39,12 @@ export class TuiInputInlineComponent
     extends AbstractTuiControl<string | number>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('native')
+    private readonly native?: ElementRef<HTMLInputElement>;
+
     @Input()
     @tuiDefaultProp()
     maxLength: number | null = null;
-
-    @ViewChild('native')
-    private readonly native?: ElementRef<HTMLInputElement>;
 
     constructor(
         @Optional()

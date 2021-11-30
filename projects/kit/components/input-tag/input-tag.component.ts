@@ -87,6 +87,27 @@ export class TuiInputTagComponent
     extends AbstractTuiMultipleControl<string>
     implements TuiFocusableElementAccessor, TuiDataListHost<string>
 {
+    @ViewChild(TuiHostedDropdownComponent)
+    private readonly dropdown?: TuiHostedDropdownComponent;
+
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<HTMLInputElement>;
+
+    @ViewChild('tagsContainer')
+    private readonly tagsContainer?: ElementRef<HTMLElement>;
+
+    @ViewChildren('tag', {read: ElementRef})
+    private readonly tags: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
+    @ViewChild('cleaner', {read: ElementRef})
+    private readonly cleanerSvg?: ElementRef<HTMLElement>;
+
+    @ViewChild(TuiScrollbarComponent, {read: ElementRef})
+    private readonly scrollBar?: ElementRef<HTMLElement>;
+
+    private readonly scrollToStart$ = new Subject<void>();
+    private readonly scrollToEnd$ = new Subject<void>();
+
     @Input()
     @tuiDefaultProp()
     allowSpaces = true;
@@ -136,39 +157,18 @@ export class TuiInputTagComponent
     @Output()
     readonly searchChange = new EventEmitter<string>();
 
-    open = false;
-
-    @ViewChild(TuiScrollbarComponent)
-    set scrollerSetter(scroller: TuiScrollbarComponent | null) {
-        this.initScrollerSubscrition(scroller);
-    }
-
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
     @ViewChild('errorIcon')
     readonly errorIconTemplate?: TemplateRef<{}>;
 
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly dropdown?: TuiHostedDropdownComponent;
+    @ViewChild(TuiScrollbarComponent)
+    set scrollerSetter(scroller: TuiScrollbarComponent | null) {
+        this.initScrollerSubscrition(scroller);
+    }
 
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<HTMLInputElement>;
-
-    @ViewChild('tagsContainer')
-    private readonly tagsContainer?: ElementRef<HTMLElement>;
-
-    @ViewChildren('tag', {read: ElementRef})
-    private readonly tags: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
-    private readonly scrollToStart$ = new Subject<void>();
-    private readonly scrollToEnd$ = new Subject<void>();
-
-    @ViewChild('cleaner', {read: ElementRef})
-    private readonly cleanerSvg?: ElementRef<HTMLElement>;
-
-    @ViewChild(TuiScrollbarComponent, {read: ElementRef})
-    private readonly scrollBar?: ElementRef<HTMLElement>;
+    open = false;
 
     constructor(
         @Optional()
@@ -407,6 +407,17 @@ export class TuiInputTagComponent
         this.open = false;
     }
 
+    protected updateValue(value: Array<string>) {
+        const seen = new Set();
+
+        super.updateValue(
+            value
+                .reverse()
+                .filter(item => !!item && !seen.has(item) && seen.add(item))
+                .reverse(),
+        );
+    }
+
     private onScrollKeyDown(currentIndex: number, flag: number) {
         const tag = this.tags.find((_item, index) => index === currentIndex + flag);
 
@@ -450,17 +461,6 @@ export class TuiInputTagComponent
                 takeUntil(this.destroy$),
             )
             .subscribe();
-    }
-
-    protected updateValue(value: Array<string>) {
-        const seen = new Set();
-
-        super.updateValue(
-            value
-                .reverse()
-                .filter(item => !!item && !seen.has(item) && seen.add(item))
-                .reverse(),
-        );
     }
 
     private updateSearch(value: string) {

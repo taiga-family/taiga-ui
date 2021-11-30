@@ -55,11 +55,11 @@ const reverseDirectionsHorizontal: {[key in TuiDirection]: TuiDirection} = {
     providers: [TuiDestroyService],
 })
 export class TuiHintBoxComponent {
-    @Input()
-    hint!: AbstractTuiHint;
-
     @ViewChild('arrow')
     private readonly arrow?: ElementRef<HTMLElement>;
+
+    @Input()
+    hint!: AbstractTuiHint;
 
     constructor(
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
@@ -71,9 +71,9 @@ export class TuiHintBoxComponent {
         @Inject(TuiHintsHostComponent)
         private readonly hintsHost: TuiHintsHostComponent,
     ) {
-        animationFrame$.pipe(tuiZonefree(ngZone), takeUntil(destroy$)).subscribe(() => {
-            this.calculatePosition();
-        });
+        animationFrame$
+            .pipe(tuiZonefree(ngZone), takeUntil(destroy$))
+            .subscribe(() => this.calculatePosition());
     }
 
     @tuiPure

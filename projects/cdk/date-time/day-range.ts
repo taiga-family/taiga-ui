@@ -15,38 +15,6 @@ export class TuiDayRange extends TuiMonthRange {
         tuiAssert.assert(from.daySameOrBefore(to));
     }
 
-    get isSingleDay(): boolean {
-        return this.from.daySame(this.to);
-    }
-
-    /**
-     * Human readable format.
-     */
-    get formattedDayRange(): string {
-        return `${this.from.formattedDay}${RANGE_SEPARATOR_CHAR}${this.to.formattedDay}`;
-    }
-
-    /**
-     * Tests ranges for identity
-     *
-     * @param another second range to test against current
-     * @return `true` if days are identical
-     */
-    daySame(another: TuiDayRange): boolean {
-        return this.from.daySame(another.from) && this.to.daySame(another.to);
-    }
-
-    /**
-     * Locks range between two days included, or limits from one side if the other is null
-     *
-     * @param min
-     * @param max
-     * @return range — clamped range
-     */
-    dayLimit(min: TuiDay | null, max: TuiDay | null): TuiDayRange {
-        return new TuiDayRange(this.from.dayLimit(min, max), this.to.dayLimit(min, max));
-    }
-
     /**
      * Creates range from two days after sorting them
      *
@@ -90,5 +58,37 @@ export class TuiDayRange extends TuiMonthRange {
                 rangeString.slice(DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length),
             ),
         );
+    }
+
+    get isSingleDay(): boolean {
+        return this.from.daySame(this.to);
+    }
+
+    /**
+     * Human readable format.
+     */
+    get formattedDayRange(): string {
+        return `${this.from.formattedDay}${RANGE_SEPARATOR_CHAR}${this.to.formattedDay}`;
+    }
+
+    /**
+     * Tests ranges for identity
+     *
+     * @param another second range to test against current
+     * @return `true` if days are identical
+     */
+    daySame(another: TuiDayRange): boolean {
+        return this.from.daySame(another.from) && this.to.daySame(another.to);
+    }
+
+    /**
+     * Locks range between two days included, or limits from one side if the other is null
+     *
+     * @param min
+     * @param max
+     * @return range — clamped range
+     */
+    dayLimit(min: TuiDay | null, max: TuiDay | null): TuiDayRange {
+        return new TuiDayRange(this.from.dayLimit(min, max), this.to.dayLimit(min, max));
     }
 }

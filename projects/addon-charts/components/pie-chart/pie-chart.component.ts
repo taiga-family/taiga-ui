@@ -45,6 +45,8 @@ const TRANSFORM = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPieChartComponent {
+    private readonly autoIdString: string;
+
     @Input()
     @tuiDefaultProp()
     value: readonly number[] = [];
@@ -72,8 +74,6 @@ export class TuiPieChartComponent {
 
     @Output()
     activeItemIndexChange = new EventEmitter<number>();
-
-    private readonly autoIdString: string;
 
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
@@ -103,6 +103,11 @@ export class TuiPieChartComponent {
         return this.getSegments(this.value);
     }
 
+    @tuiPure
+    getContentContext($implicit: number): TuiContextWithImplicit<number> {
+        return {$implicit};
+    }
+
     getTransform(index: number): string | null {
         const transform = this.masked
             ? `scale(${TRANSFORM[this.size]})`
@@ -119,9 +124,10 @@ export class TuiPieChartComponent {
         this.updateActiveItemIndex(hovered ? index : NaN);
     }
 
-    @tuiPure
-    getContentContext($implicit: number): TuiContextWithImplicit<number> {
-        return {$implicit};
+    getColor(index: number): SafeValue {
+        return this.sanitizer.bypassSecurityTrustStyle(
+            `var(--tui-chart-${index}, ${colorFallback(this.colorHandler(index))})`,
+        );
     }
 
     @tuiPure
@@ -148,11 +154,5 @@ export class TuiPieChartComponent {
 
         this.activeItemIndex = index;
         this.activeItemIndexChange.next(index);
-    }
-
-    getColor(index: number): SafeValue {
-        return this.sanitizer.bypassSecurityTrustStyle(
-            `var(--tui-chart-${index}, ${colorFallback(this.colorHandler(index))})`,
-        );
     }
 }

@@ -82,6 +82,11 @@ export class TuiInputDateTimeComponent
         TuiWithOptionalMinMax<TuiDay | [TuiDay, TuiTime]>,
         TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    private month: TuiMonth | null = null;
+
     @Input()
     @tuiDefaultProp()
     min = TUI_FIRST_DAY;
@@ -107,11 +112,6 @@ export class TuiInputDateTimeComponent
         this.dateTexts$.pipe(pluck(this.dateFormat)),
         this.timeTexts$.pipe(pluck(this.timeMode)),
     ]).pipe(map(fillers => this.getDateTimeString(...fillers)));
-
-    private month: TuiMonth | null = null;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()
@@ -304,26 +304,6 @@ export class TuiInputDateTimeComponent
         );
     }
 
-    private updateNativeValue(day: TuiDay) {
-        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
-
-        this.nativeValue = this.getDateTimeString(day, time);
-    }
-
-    private clampTime(time: TuiTime, day: TuiDay): TuiTime {
-        const ms = time.toAbsoluteMilliseconds();
-        const min =
-            Array.isArray(this.min) && day.daySame(this.calendarMinDay)
-                ? this.min[1].toAbsoluteMilliseconds()
-                : -Infinity;
-        const max =
-            Array.isArray(this.max) && day.daySame(this.calendarMaxDay)
-                ? this.max[1].toAbsoluteMilliseconds()
-                : Infinity;
-
-        return TuiTime.fromAbsoluteMilliseconds(clamp(ms, min, max));
-    }
-
     @tuiPure
     private calculateMask(
         day: TuiDay | null,
@@ -348,5 +328,25 @@ export class TuiInputDateTimeComponent
         const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
 
         return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
+    }
+
+    private updateNativeValue(day: TuiDay) {
+        const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
+
+        this.nativeValue = this.getDateTimeString(day, time);
+    }
+
+    private clampTime(time: TuiTime, day: TuiDay): TuiTime {
+        const ms = time.toAbsoluteMilliseconds();
+        const min =
+            Array.isArray(this.min) && day.daySame(this.calendarMinDay)
+                ? this.min[1].toAbsoluteMilliseconds()
+                : -Infinity;
+        const max =
+            Array.isArray(this.max) && day.daySame(this.calendarMaxDay)
+                ? this.max[1].toAbsoluteMilliseconds()
+                : Infinity;
+
+        return TuiTime.fromAbsoluteMilliseconds(clamp(ms, min, max));
     }
 }

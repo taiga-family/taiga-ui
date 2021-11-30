@@ -44,6 +44,9 @@ export class TuiCheckboxBlockComponent
     extends AbstractTuiNullableControl<boolean>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild(TuiCheckboxComponent)
+    private checkbox?: TuiCheckboxComponent;
+
     @Input()
     @HostBinding('attr.data-tui-host-align')
     @tuiDefaultProp()
@@ -58,9 +61,6 @@ export class TuiCheckboxBlockComponent
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
     size: TuiSizeS | TuiSizeL = 'l';
-
-    @ViewChild(TuiCheckboxComponent)
-    private checkbox?: TuiCheckboxComponent;
 
     constructor(
         @Optional()

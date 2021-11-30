@@ -33,10 +33,13 @@ const COMPLETED = {
     encapsulation,
 })
 export class TuiFilterExample2 {
-    identityMatcher: TuiIdentityMatcher<Orerations> = (
-        item1: Orerations,
-        item2: Orerations,
-    ) => item1.title === item2.title;
+    readonly form = new FormGroup({
+        filters: new FormControl([
+            {
+                title: 'Drafts',
+            },
+        ]),
+    });
 
     items: ReadonlyArray<Orerations> = [
         COMPLETED,
@@ -86,13 +89,10 @@ export class TuiFilterExample2 {
         },
     ];
 
-    badgeHandler: TuiHandler<Orerations, number> = item => item.operations.length;
+    identityMatcher: TuiIdentityMatcher<Orerations> = (
+        item1: Orerations,
+        item2: Orerations,
+    ) => item1.title === item2.title;
 
-    readonly form = new FormGroup({
-        filters: new FormControl([
-            {
-                title: 'Drafts',
-            },
-        ]),
-    });
+    badgeHandler: TuiHandler<Orerations, number> = item => item.operations.length;
 }

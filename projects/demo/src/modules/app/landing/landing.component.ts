@@ -22,6 +22,9 @@ import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
     ],
 })
 export class LandingComponent {
+    @ViewChildren('block', {read: ElementRef})
+    private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
     current = 0;
 
     tags = ['Angular', 'Open source'];
@@ -29,9 +32,6 @@ export class LandingComponent {
     date: TuiDay | null = null;
 
     readonly labels = ['New', 'Read', 'Archived', 'Junk'];
-
-    @ViewChildren('block', {read: ElementRef})
-    private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @HostBinding('style.background')
     get background(): string {

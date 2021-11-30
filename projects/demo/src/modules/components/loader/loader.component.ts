@@ -22,6 +22,9 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiLoaderComponent {
+    @ViewChild('textTemplate')
+    readonly textTemplate: PolymorpheusContent = '';
+
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
@@ -59,9 +62,6 @@ export class ExampleTuiLoaderComponent {
     size = this.sizeVariants[2];
 
     selectedTemplate = '';
-
-    @ViewChild('textTemplate')
-    readonly textTemplate: PolymorpheusContent = '';
 
     readonly textVariants: string[] = ['', 'template', 'string'];
 

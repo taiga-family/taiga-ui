@@ -35,6 +35,9 @@ describe('Svg', () => {
         `,
     })
     class TestComponent {
+        @ViewChild(TuiSvgComponent)
+        svgComponent: TuiSvgComponent;
+
         icon = '';
 
         constructor(@Inject(TuiSvgService) svgService: TuiSvgService) {
@@ -42,9 +45,6 @@ describe('Svg', () => {
                 customIcon: SVG_ICON,
             });
         }
-
-        @ViewChild(TuiSvgComponent)
-        svgComponent: TuiSvgComponent;
     }
 
     let fixture: ComponentFixture<TestComponent>;

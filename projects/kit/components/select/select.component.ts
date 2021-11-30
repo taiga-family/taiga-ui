@@ -67,6 +67,12 @@ export class TuiSelectComponent<T>
     extends AbstractTuiNullableControl<T>
     implements TuiFocusableElementAccessor, TuiDataListHost<T>
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    @ViewChild(TuiHostedDropdownComponent)
+    private readonly hostedDropdown?: TuiHostedDropdownComponent;
+
     @Input()
     @tuiDefaultProp()
     identityMatcher: TuiIdentityMatcher<T | string> = TUI_DEFAULT_IDENTITY_MATCHER;
@@ -77,12 +83,6 @@ export class TuiSelectComponent<T>
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent = '';
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
-
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly hostedDropdown?: TuiHostedDropdownComponent;
 
     constructor(
         @Optional()
@@ -123,6 +123,14 @@ export class TuiSelectComponent<T>
         return !this.computedDisabled && !this.readOnly;
     }
 
+    @tuiPure
+    computeContext(
+        $implicit: T | null,
+        active: boolean,
+    ): TuiValueContentContext<T | null> {
+        return {$implicit, active};
+    }
+
     onValueChange(value: string) {
         if (!value) {
             this.updateValue(null);
@@ -150,17 +158,6 @@ export class TuiSelectComponent<T>
         if (this.hostedDropdown) {
             this.hostedDropdown.updateOpen(false);
         }
-    }
-
-    @tuiPure
-    computeContext(
-        $implicit: T | null,
-        active: boolean,
-    ): TuiValueContentContext<T | null> {
-        return {
-            $implicit,
-            active,
-        };
     }
 
     private focusInput(preventScroll: boolean = false) {

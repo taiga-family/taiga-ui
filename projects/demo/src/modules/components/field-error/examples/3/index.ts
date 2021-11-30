@@ -24,17 +24,10 @@ export class TuiFieldErrorExample3 {
     @ViewChild('phoneErrorContent')
     phoneErrorContent: PolymorpheusContent = '';
 
-    getPhoneArrayValidator = (array: FormArray): ValidationErrors | null => {
-        return array.controls.length < 2 ||
-            (!!array.controls.filter(item => item.errors).length && array.controls.length)
-            ? {length: new TuiValidationError('You should add at least 2 phone number')}
-            : null;
-    };
-
     testForm = new FormGroup({
         phones: new FormArray(
             [new FormControl('', [Validators.required, this.getPhoneLengthValidator()])],
-            [this.getPhoneArrayValidator as ValidatorFn],
+            [this.getPhoneArrayValidator()],
         ),
     });
 
@@ -75,5 +68,17 @@ export class TuiFieldErrorExample3 {
                       lenght: new TuiValidationError(this.phoneErrorContent),
                   }
                 : null;
+    }
+
+    private getPhoneArrayValidator(): ValidatorFn {
+        return ((array: FormArray): ValidationErrors | null =>
+            array.controls.length < 2 ||
+            (!!array.controls.filter(item => item.errors).length && array.controls.length)
+                ? {
+                      length: new TuiValidationError(
+                          'You should add at least 2 phone number',
+                      ),
+                  }
+                : null) as ValidatorFn;
     }
 }

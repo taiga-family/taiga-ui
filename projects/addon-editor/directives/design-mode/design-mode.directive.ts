@@ -58,6 +58,13 @@ const PADDING = 26;
 export class TuiDesignModeDirective
     implements ControlValueAccessor, TuiFocusableElementAccessor
 {
+    private onTouched = EMPTY_FUNCTION;
+    private onChange = EMPTY_FUNCTION;
+    private _value = '';
+    private _exampleText = '';
+    private _disabled = false;
+    private readonly observer = new MutationObserver(() => this.update());
+
     @Input()
     @tuiRequiredSetter()
     set exampleText(exampleText: string) {
@@ -69,20 +76,6 @@ export class TuiDesignModeDirective
 
     @HostBinding('style.pointerEvents')
     pointerEvents = 'all';
-
-    private onTouched = EMPTY_FUNCTION;
-
-    private onChange = EMPTY_FUNCTION;
-
-    private _value = '';
-
-    private _exampleText = '';
-
-    private _disabled = false;
-
-    private readonly observer = new MutationObserver(() => {
-        this.update();
-    });
 
     constructor(
         @Inject(TuiDestroyService)

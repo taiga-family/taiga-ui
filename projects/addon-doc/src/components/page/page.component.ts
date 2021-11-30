@@ -35,10 +35,10 @@ export class TuiDocPageComponent {
     @Input()
     path = '';
 
-    activeItemIndex = NaN;
-
     @ContentChildren(TuiDocPageTabConnectorDirective)
     readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> = EMPTY_QUERY;
+
+    activeItemIndex = NaN;
 
     constructor(
         @Attribute('deprecated') readonly deprecated: string | null,

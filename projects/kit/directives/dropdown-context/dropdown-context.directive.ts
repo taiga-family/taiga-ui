@@ -39,16 +39,15 @@ export class TuiDropdownContextDirective
     extends AbstractTuiDropdown
     implements TuiDropdown
 {
+    private lastClickedClientRect: ClientRect = this.getClientRectFromDot(0, 0);
+
     @Input('tuiDropdownContext')
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
 
     readonly refresh$ = EMPTY;
-    readonly context = {
-        close: () => this.closeDropdownBox(),
-    };
 
-    private lastClickedClientRect: ClientRect = this.getClientRectFromDot(0, 0);
+    readonly context = {close: () => this.closeDropdownBox()};
 
     constructor(
         protected readonly elementRef: ElementRef,

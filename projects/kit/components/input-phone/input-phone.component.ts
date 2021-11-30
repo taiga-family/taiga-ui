@@ -66,6 +66,12 @@ export class TuiInputPhoneComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor, TuiDataListHost<string>
 {
+    @ViewChild(TuiHostedDropdownComponent)
+    private readonly dropdown?: TuiHostedDropdownComponent;
+
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
     @Input('countryCode')
     @tuiRequiredSetter()
     set countryCodeSetter(countryCode: string) {
@@ -87,6 +93,9 @@ export class TuiInputPhoneComponent
 
     @Output()
     readonly searchChange = new EventEmitter<string>();
+
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
     readonly textMaskOptions: TuiTextMaskOptions = {
         mask: value =>
@@ -115,15 +124,6 @@ export class TuiInputPhoneComponent
     countryCode = '+7';
 
     open = false;
-
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
-
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly dropdown?: TuiHostedDropdownComponent;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()

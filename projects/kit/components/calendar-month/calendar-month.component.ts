@@ -220,6 +220,19 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         this.updatePressedItem(pressed ? item : null);
     }
 
+    @tuiPure
+    private calculateDisabledItemHandlerWithMinMax(
+        disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>,
+        value: TuiMonth | TuiMonthRange | null,
+        min: TuiMonth,
+        max: TuiMonth,
+    ): TuiBooleanHandler<TuiMonth> {
+        return item =>
+            item.monthBefore(min) ||
+            item.monthAfter(max) ||
+            disabledItemHandler(item, {value});
+    }
+
     private get disabledItemHandlerWithMinMax(): TuiBooleanHandler<TuiMonth> {
         return this.calculateDisabledItemHandlerWithMinMax(
             this.disabledItemHandler,
@@ -240,18 +253,5 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
 
     private updatePressedItem(item: TuiMonth | null) {
         this.pressedItem = item;
-    }
-
-    @tuiPure
-    private calculateDisabledItemHandlerWithMinMax(
-        disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>,
-        value: TuiMonth | TuiMonthRange | null,
-        min: TuiMonth,
-        max: TuiMonth,
-    ): TuiBooleanHandler<TuiMonth> {
-        return item =>
-            item.monthBefore(min) ||
-            item.monthAfter(max) ||
-            disabledItemHandler(item, {value});
     }
 }

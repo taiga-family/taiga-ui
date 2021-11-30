@@ -23,17 +23,17 @@ import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
     changeDetection: ChangeDetectionStrategy.Default,
 })
 export class TuiValueDecorationComponent {
-    readonly pre$ = defer(() => this.directive?.waMutationObserver ?? EMPTY).pipe(
-        map(() => this.pre?.nativeElement.offsetWidth ?? 0),
-        startWith(0),
-        distinctUntilChanged(),
-    );
-
     @ViewChild('pre', {read: ElementRef, static: true})
     private readonly pre?: ElementRef<HTMLElement>;
 
     @ViewChild(MutationObserverDirective, {static: true})
     private readonly directive?: MutationObserverDirective;
+
+    readonly pre$ = defer(() => this.directive?.waMutationObserver ?? EMPTY).pipe(
+        map(() => this.pre?.nativeElement.offsetWidth ?? 0),
+        startWith(0),
+        distinctUntilChanged(),
+    );
 
     constructor(
         @Inject(TuiPrimitiveTextfieldComponent)

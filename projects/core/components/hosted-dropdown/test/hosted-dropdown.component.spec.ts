@@ -61,13 +61,6 @@ describe('TuiHostedDropdown', () => {
         `,
     })
     class TestComponent {
-        open = false;
-        items = ['Item 1', 'Item 2'];
-        mode: 'default' | 'input' | 'targeted' | 'can-not-open' = 'default';
-        canOpen = true;
-
-        escCatched = false;
-
         @ViewChild(TuiPrimitiveTextfieldComponent)
         tuiTextfield: TuiPrimitiveTextfieldComponent;
 
@@ -76,6 +69,13 @@ describe('TuiHostedDropdown', () => {
 
         @ViewChild('host', {read: TuiButtonComponent})
         target: TuiButtonComponent;
+
+        open = false;
+        items = ['Item 1', 'Item 2'];
+        mode: 'default' | 'input' | 'targeted' | 'can-not-open' = 'default';
+        canOpen = true;
+
+        escCatched = false;
 
         get input(): boolean {
             return this.mode === 'input';

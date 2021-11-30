@@ -13,10 +13,10 @@ const SOME_OFFSET_CONST = 20;
     encapsulation,
 })
 export class TuiScrollbarExample3Component {
-    SOME_OFFSET_CONST = SOME_OFFSET_CONST;
-
     @ViewChild(TuiScrollbarComponent, {read: ElementRef})
     private scrollBar?: ElementRef<HTMLElement>;
+
+    SOME_OFFSET_CONST = SOME_OFFSET_CONST;
 
     get scrollTop(): number {
         return this.scrollBar ? this.scrollBar.nativeElement.scrollTop : 0;

@@ -25,9 +25,6 @@ export class TuiTableExample3 {
 
     readonly units = ['items', 'kg', 'm'];
 
-    readonly minPrice: ValidatorFn = ({value}) =>
-        value > 400 ? null : {minPrice: 'Price must be above $400'};
-
     pythons: readonly Item[] = [
         {
             name: 'Holy Grail',
@@ -77,6 +74,9 @@ export class TuiTableExample3 {
     ];
 
     readonly columns = ['name', 'price', 'quantity', 'unit', 'total'] as const;
+
+    readonly minPrice: ValidatorFn = ({value}) =>
+        value > 400 ? null : {minPrice: 'Price must be above $400'};
 
     readonly totalSorter: TuiComparator<Item> = (a, b) =>
         defaultSort(a.price * a.quantity, b.price * b.quantity);

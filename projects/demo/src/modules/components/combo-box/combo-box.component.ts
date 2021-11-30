@@ -57,6 +57,9 @@ class Account {
     ],
 })
 export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
+    @ViewChild('valueTemplateContent')
+    private valueTemplateRef: PolymorpheusContent = '';
+
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
@@ -133,9 +136,6 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     identityMatcher = this.identityMatcherVariants[0];
 
     readonly control = new FormControl(null, Validators.required);
-
-    @ViewChild('valueTemplateContent')
-    private valueTemplateRef: PolymorpheusContent = '';
 
     get valueContent(): PolymorpheusContent {
         return this.valueTemplateRef && this.selectedValueTemplate

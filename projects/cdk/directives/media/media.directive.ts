@@ -23,6 +23,8 @@ export function volumeAssertion(volume: number): boolean {
     exportAs: 'tuiMedia',
 })
 export class TuiMediaDirective {
+    private playbackRate = 1;
+
     @Input()
     @HostBinding('volume')
     @tuiDefaultProp(volumeAssertion)
@@ -60,8 +62,6 @@ export class TuiMediaDirective {
 
     @Output()
     readonly volumeChange = new EventEmitter<number>();
-
-    private playbackRate = 1;
 
     constructor(
         @Inject(ElementRef)

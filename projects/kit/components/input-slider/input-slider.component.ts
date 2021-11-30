@@ -51,12 +51,12 @@ export class TuiInputSliderComponent
     extends AbstractTuiInputSlider<number>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<HTMLInputElement>;
+
     @Input()
     @tuiDefaultProp()
     secondary = '';
-
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     constructor(
         @Optional()

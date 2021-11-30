@@ -56,6 +56,9 @@ class Account {
     ],
 })
 export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
+    @ViewChild('valueTemplateContent')
+    private valueTemplateRef: PolymorpheusContent = '';
+
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
     readonly exampleDeclareForm = exampleDeclareForm;
@@ -126,9 +129,6 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
         ALWAYS_FALSE_HANDLER,
         (item: Account) => item.balance < 300,
     ];
-
-    @ViewChild('valueTemplateContent')
-    private valueTemplateRef: PolymorpheusContent = '';
 
     get valueContent(): PolymorpheusContent {
         return this.valueTemplateRef && this.selectedValueTemplate

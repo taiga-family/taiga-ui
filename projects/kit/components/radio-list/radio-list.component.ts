@@ -42,6 +42,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     ],
 })
 export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
+    @ViewChildren(TuiRadioLabeledComponent)
+    private readonly radioButtons: QueryList<TuiRadioLabeledComponent<{}>> = EMPTY_QUERY;
+
     @Input()
     @tuiDefaultProp()
     items: ReadonlyArray<T> = [];
@@ -60,19 +63,9 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     @tuiDefaultProp()
     orientation: TuiOrientationT = 'vertical';
 
-    // @bad TODO: Remove & { index: number }
-    @Input()
-    @tuiDefaultProp()
-    itemContent: PolymorpheusContent<TuiValueContentContext<T> & {index: number}> = ({
-        $implicit,
-    }) => String($implicit);
-
     @Input()
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
-
-    @ViewChildren(TuiRadioLabeledComponent)
-    private readonly radioButtons: QueryList<TuiRadioLabeledComponent<{}>> = EMPTY_QUERY;
 
     constructor(
         @Optional()
@@ -84,6 +77,13 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     ) {
         super(control, changeDetectorRef);
     }
+
+    // @bad TODO: Remove & { index: number }
+    @Input()
+    @tuiDefaultProp()
+    itemContent: PolymorpheusContent<TuiValueContentContext<T> & {index: number}> = ({
+        $implicit,
+    }) => String($implicit);
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         const focusableRadioButton = this.radioButtons.find(

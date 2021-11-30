@@ -37,6 +37,9 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiSheetComponent {
+    @ViewChild('template')
+    readonly templateRef: PolymorpheusContent<TuiSheet<any>> = '';
+
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
@@ -87,9 +90,6 @@ export class ExampleTuiSheetComponent {
     readonly imageVariants = [this.image, '/assets/images/avatar.jpg', 'Template'];
 
     readonly stopsVariants = [this.stops, ['100px'], ['10rem', '20rem']];
-
-    @ViewChild('template')
-    readonly templateRef: PolymorpheusContent<TuiSheet<any>> = '';
 
     constructor(@Inject(TUI_IS_MOBILE) readonly isMobile: boolean) {}
 

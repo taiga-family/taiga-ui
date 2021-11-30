@@ -38,13 +38,13 @@ export class TuiCheckboxLabeledComponent
     extends AbstractTuiNullableControl<boolean>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild(TuiCheckboxComponent)
+    private checkbox?: TuiCheckboxComponent;
+
     @Input()
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
     size: TuiSizeL = 'm';
-
-    @ViewChild(TuiCheckboxComponent)
-    private checkbox?: TuiCheckboxComponent;
 
     constructor(
         @Optional()

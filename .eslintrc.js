@@ -3,7 +3,6 @@ module.exports = {
     ignorePatterns: ['projects/**/test.ts', 'projects/**/icons/all.ts'],
     extends: ['@tinkoff/eslint-config-angular'],
     rules: {
-        '@typescript-eslint/member-ordering': 'off',
         '@typescript-eslint/no-useless-constructor': 'off',
         // TODO(splincode): move to @tinkoff/eslint-config-angular
         'no-case-declarations': 'error',

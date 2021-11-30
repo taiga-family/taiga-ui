@@ -80,6 +80,17 @@ export class TuiInputDateComponent
     extends AbstractTuiNullableControl<TuiDay>
     implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    private month: TuiMonth | null = null;
+
+    private readonly textMaskOptions: TuiTextMaskOptions = {
+        mask: TUI_DATE_MASK,
+        pipe: tuiCreateAutoCorrectedDatePipe(this),
+        guide: false,
+    };
+
     @Input()
     @tuiDefaultProp()
     min = TUI_FIRST_DAY;
@@ -106,17 +117,6 @@ export class TuiInputDateComponent
 
     open = false;
     readonly filler$ = this.dateTexts$.pipe(pluck(this.dateFormat));
-
-    private month: TuiMonth | null = null;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
-
-    private readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: TUI_DATE_MASK,
-        pipe: tuiCreateAutoCorrectedDatePipe(this),
-        guide: false,
-    };
 
     constructor(
         @Optional()
@@ -201,6 +201,13 @@ export class TuiInputDateComponent
         return (value && this.items.find(item => item.day.daySame(value))) || null;
     }
 
+    @HostListener('click')
+    onClick() {
+        if (!this.isMobile) {
+            this.open = !this.open;
+        }
+    }
+
     getComputedFiller(filler: string): string {
         return this.activeItem ? '' : filler;
     }
@@ -227,13 +234,6 @@ export class TuiInputDateComponent
             .subscribe(value => {
                 this.updateValue(value);
             });
-    }
-
-    @HostListener('click')
-    onClick() {
-        if (!this.isMobile) {
-            this.open = !this.open;
-        }
     }
 
     onValueChange(value: string) {

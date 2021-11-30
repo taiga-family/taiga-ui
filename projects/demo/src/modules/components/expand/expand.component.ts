@@ -18,6 +18,9 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiExpandComponent {
+    @ViewChild(TuiExpandComponent, {read: ElementRef})
+    expand?: ElementRef;
+
     readonly exampleImportModule = exampleImportModule;
 
     readonly exampleInsertTemplate = exampleInsertTemplate;
@@ -32,9 +35,6 @@ export class ExampleTuiExpandComponent {
     async = false;
 
     delayed = false;
-
-    @ViewChild(TuiExpandComponent, {read: ElementRef})
-    expand?: ElementRef;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,

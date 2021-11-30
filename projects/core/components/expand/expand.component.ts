@@ -32,6 +32,11 @@ const LOADER_HEIGHT = 48;
     styleUrls: ['./expand.style.less'],
 })
 export class TuiExpandComponent {
+    @ViewChild('wrapper')
+    private contentWrapper?: ElementRef<HTMLDivElement>;
+
+    private state = State.Idle;
+
     @Input()
     @tuiDefaultProp()
     async = false;
@@ -62,11 +67,6 @@ export class TuiExpandComponent {
     @HostBinding('class._expanded')
     @HostBinding('attr.aria-expanded')
     expanded: boolean | null = null;
-
-    @ViewChild('wrapper')
-    private contentWrapper?: ElementRef<HTMLDivElement>;
-
-    private state = State.Idle;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,

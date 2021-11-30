@@ -44,6 +44,9 @@ const DUMMY: TuiPoint = [NaN, NaN];
     ],
 })
 export class TuiLineDaysChartComponent {
+    @ViewChildren(TuiLineChartComponent)
+    private readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
+
     @Input('value')
     @tuiDefaultProp()
     set valueSetter(value: ReadonlyArray<[TuiDay, number]>) {
@@ -94,16 +97,10 @@ export class TuiLineDaysChartComponent {
     @tuiDefaultProp()
     dots = false;
 
-    value: ReadonlyArray<[TuiDay, number]> = [];
-
     @HostBinding('style.zIndex')
     zIndex = 0;
 
-    readonly daysStringify: TuiStringHandler<number> = index =>
-        this.xStringify ? this.xStringify(this.getMonth(index)) : '';
-
-    @ViewChildren(TuiLineChartComponent)
-    private readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
+    value: ReadonlyArray<[TuiDay, number]> = [];
 
     constructor(
         @Optional()
@@ -122,6 +119,19 @@ export class TuiLineDaysChartComponent {
     get hint(): PolymorpheusContent<TuiContextWithImplicit<any>> {
         return this.hintDirective ? this.hintDirective.hint : this.hintContent;
     }
+
+    @tuiPure
+    getHintContext(
+        x: number,
+        value: ReadonlyArray<[TuiDay, number]>,
+    ): TuiContextWithImplicit<[TuiDay, number]> {
+        return {
+            $implicit: value[x - value[0][0].day + 1],
+        };
+    }
+
+    readonly daysStringify: TuiStringHandler<number> = index =>
+        this.xStringify ? this.xStringify(this.getMonth(index)) : '';
 
     getX(index: number): number {
         const current = this.getMonth(index);
@@ -165,16 +175,6 @@ export class TuiLineDaysChartComponent {
         return this.getMonth(index).daysCount * this.months.length;
     }
 
-    @tuiPure
-    getHintContext(
-        x: number,
-        value: ReadonlyArray<[TuiDay, number]>,
-    ): TuiContextWithImplicit<[TuiDay, number]> {
-        return {
-            $implicit: value[x - value[0][0].day + 1],
-        };
-    }
-
     getContext(
         index: number,
         {value}: TuiLineChartComponent,
@@ -184,10 +184,6 @@ export class TuiLineDaysChartComponent {
         return this.hintDirective
             ? this.hintDirective.getContext(this.getMonth(x))
             : this.getHintContext(x, this.value);
-    }
-
-    private getMonth(index: number): TuiDay {
-        return this.value[index - this.value[0][0].day + 1][0];
     }
 
     @tuiPure
@@ -212,5 +208,9 @@ export class TuiLineDaysChartComponent {
                     ? month
                     : [...month, array[index + 1].find(day => !isNaN(day[1])) || DUMMY],
             );
+    }
+
+    private getMonth(index: number): TuiDay {
+        return this.value[index - this.value[0][0].day + 1][0];
     }
 }

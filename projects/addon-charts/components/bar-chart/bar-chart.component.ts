@@ -27,6 +27,8 @@ const VALUE_ERROR = 'All arrays must be of the same length';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBarChartComponent {
+    private readonly autoIdString: string;
+
     @Input()
     @tuiDefaultProp(valueAssertion, VALUE_ERROR)
     value: ReadonlyArray<readonly number[]> = [];
@@ -55,14 +57,6 @@ export class TuiBarChartComponent {
     @tuiDefaultProp()
     hintMode: TuiHintModeT | null = null;
 
-    private readonly autoIdString: string;
-
-    readonly percentMapper: TuiMapper<ReadonlyArray<number>, number> = (
-        set,
-        collapsed: boolean,
-        max: number,
-    ) => (100 * (collapsed ? sum(...set) : Math.max(...set))) / max;
-
     constructor(@Inject(TuiIdService) idService: TuiIdService) {
         this.autoIdString = idService.generate();
     }
@@ -79,19 +73,25 @@ export class TuiBarChartComponent {
         return this.max || this.getMax(this.value, this.collapsed);
     }
 
+    @tuiPure
+    getContentContext(index: number): TuiContextWithImplicit<number> {
+        return {
+            $implicit: index,
+        };
+    }
+
+    readonly percentMapper: TuiMapper<ReadonlyArray<number>, number> = (
+        set,
+        collapsed: boolean,
+        max: number,
+    ) => (100 * (collapsed ? sum(...set) : Math.max(...set))) / max;
+
     getHint(hint: PolymorpheusContent): PolymorpheusContent {
         return this.hasHint ? hint : '';
     }
 
     getHintId(index: number): string {
         return `${this.autoIdString}_${index}`;
-    }
-
-    @tuiPure
-    getContentContext(index: number): TuiContextWithImplicit<number> {
-        return {
-            $implicit: index,
-        };
     }
 
     @tuiPure
