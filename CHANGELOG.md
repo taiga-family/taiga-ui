@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.25.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.23.0...v2.25.0) (2021-11-29)
+
+### Features
+
+-   **addon-preview:** add new package ([#350](https://github.com/TinkoffCreditSystems/taiga-ui/issues/350))
+    ([841be7e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/841be7e96bc5a1f5676dcd0f6fd35945683698f7))
+-   **icons:** expose node.js utils for building icons
+    ([#1045](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1045))
+    ([617f6ce](https://github.com/TinkoffCreditSystems/taiga-ui/commit/617f6cefdb19f23ddb55a02fa8d14837ff13ef46))
+-   **kit:** `PdfViewer` add new component ([#1032](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1032))
+    ([b953123](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b953123103a2470d026981f0be2b102b9c90e48b))
+
 ## [2.24.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.23.0...v2.24.0) (2021-11-22)
 
 ### Features
