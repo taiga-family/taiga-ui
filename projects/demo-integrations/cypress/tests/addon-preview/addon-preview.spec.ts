@@ -5,16 +5,6 @@ describe('Addon preview', () => {
         cy.hideHeader();
     });
 
-    it('Full preview', () => {
-        cy.get(`tui-preview-example-1 button`).first().click();
-        cy.get('tui-preview')
-            .wait(200)
-            .matchImageSnapshot('preview', {
-                capture: 'viewport',
-                blackout: ['tui-doc-navigation'],
-            });
-    });
-
     it('Full preview scrolled', () => {
         cy.get(`tui-preview-example-1 button`).first().click();
         cy.get('tui-preview')
