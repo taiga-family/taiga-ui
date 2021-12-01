@@ -118,8 +118,13 @@
     }
 
     &_sorted,
-    &:focus-visible,
     &:hover {
+        & .arrow {
+            opacity: 1;
+        }
+    }
+
+    &:focus-visible {
         & .arrow {
             opacity: 1;
         }
