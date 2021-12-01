@@ -6,11 +6,10 @@ import {
     ValidationErrors,
     Validators,
 } from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 const secretRegexTen = /^\d{10}$/;
 const secretRegexTwelve = /^\d{12}$/;

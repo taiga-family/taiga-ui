@@ -1,4 +1,5 @@
 import {Component, Inject, TemplateRef} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiDialogContext,
     TuiDialogService,
@@ -33,7 +34,6 @@ import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-
 import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
 import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/service-usage.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 const METHOD = `open<O>(

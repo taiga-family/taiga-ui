@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiCurrency,
     TuiCurrencyCode,
@@ -7,8 +8,6 @@ import {
 } from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDecimalT} from '@taiga-ui/core';
-
-import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'example-tui-money',

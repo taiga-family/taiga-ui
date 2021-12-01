@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 export function maxLengthValidator(context: {requiredLength: string}): string {
     return `Maximum length — ${context.requiredLength}`;

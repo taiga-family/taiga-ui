@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiContextWithImplicit, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-line-chart-example-4',

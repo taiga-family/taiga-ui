@@ -1,10 +1,9 @@
 import {Component, ElementRef} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {fromEvent} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-destroy-example',

@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-
-import {changeDetection} from '../../../change-detection-strategy';
 
 // @dynamic
 @Component({

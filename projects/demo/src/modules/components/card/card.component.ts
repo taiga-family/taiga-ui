@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
 import {TuiSizeS} from '@taiga-ui/core';
 
@@ -15,7 +16,6 @@ import {default as exampleCustomizeStyles} from '!!raw-loader!./examples/import/
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 const BRAND_LOGOS = [

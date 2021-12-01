@@ -1,8 +1,7 @@
 import {Component, Input} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {EMPTY_ARRAY, setNativeFocused, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {isEditingKey, TuiDataListComponent} from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../../change-detection-strategy';
 
 interface Items<T> {
     readonly name: string;

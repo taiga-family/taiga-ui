@@ -1,13 +1,12 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSvgService} from '@taiga-ui/core';
 import {tuiIconMaestro, tuiIconMastercard, tuiIconTimeLarge} from '@taiga-ui/icons';
 import {timer} from 'rxjs';
 import {mapTo} from 'rxjs/operators';
 
 import {default as imageUrl} from '!!file-loader!../../../../../assets/images/ts.svg';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-svg-example-1',

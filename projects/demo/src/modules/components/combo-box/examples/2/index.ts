@@ -1,8 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
-import {changeDetection} from '../../../../../change-detection-strategy';
 import {databaseMockData} from './database-mock-data';
 import {RequestService} from './request.service';
 

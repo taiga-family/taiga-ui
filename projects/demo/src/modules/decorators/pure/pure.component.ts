@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 
 import {default as exampleDecorator} from '!!raw-loader!./import/example-decorator.txt';
 import {default as example2Ts} from '!!raw-loader!./pure-function.component.ts';
 import {default as example1Ts} from '!!raw-loader!./pure-getter.component.ts';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({

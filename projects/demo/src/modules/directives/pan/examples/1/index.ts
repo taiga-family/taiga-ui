@@ -1,10 +1,9 @@
 import {Component, Inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-pan-example-1',

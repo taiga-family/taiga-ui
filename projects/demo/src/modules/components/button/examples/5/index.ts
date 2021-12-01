@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_BUTTON_OPTIONS, TuiAppearance} from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
 
 @Component({
     selector: 'tui-button-example-5',

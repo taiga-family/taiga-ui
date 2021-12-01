@@ -1,14 +1,13 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
     TUI_INPUT_PASSWORD_OPTIONS,
     TUI_PASSWORD_TEXTS,
 } from '@taiga-ui/kit';
 import {of} from 'rxjs';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-input-password-example-2',

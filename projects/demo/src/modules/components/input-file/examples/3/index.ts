@@ -1,12 +1,11 @@
 import {ChangeDetectorRef, Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService, watch} from '@taiga-ui/cdk';
 import {TuiNotificationsService} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit';
 import {combineLatest, Observable, Subject, timer} from 'rxjs';
 import {mapTo, startWith, switchMap, takeUntil} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 class RejectedFile {
     constructor(readonly file: TuiFileLike, readonly reason: string) {}
