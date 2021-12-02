@@ -167,6 +167,7 @@ export class TuiPreviewComponent {
             this.elementRef.nativeElement.clientWidth,
         );
         this.zoom$.next(this.minZoom);
+        this.coordinates$.next(EMPTY_COORDINATES);
         this.rotation$.next(0);
     }
 

@@ -16,7 +16,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiPreviewExample1 {
     index = 0;
-    lastIndex = 1;
+    length = 2;
 
     @ViewChild('preview')
     readonly preview?: TemplateRef<TuiDialogContext<void>>;
@@ -57,11 +57,11 @@ export class TuiPreviewExample1 {
 
     onSwipe(swipe: TuiSwipe) {
         if (swipe.direction === 'left') {
-            this.index = clamp(this.index + 1, 0, this.lastIndex);
+            this.index = clamp(this.index + 1, 0, this.length - 1);
         }
 
         if (swipe.direction === 'right') {
-            this.index = clamp(this.index - 1, 0, this.lastIndex);
+            this.index = clamp(this.index - 1, 0, this.length - 1);
         }
     }
 }
