@@ -18,15 +18,21 @@
         can be shown simultaneously.
 
         <tui-doc-example id="single" heading="Single" [content]="example1">
-            <tui-carousel-example-1></tui-carousel-example-1>
+            <tui-carousel-example-1
+                (touchstart.passive.stop)="0"
+            ></tui-carousel-example-1>
         </tui-doc-example>
 
         <tui-doc-example id="multi" heading="Multiple" [content]="example2">
-            <tui-carousel-example-2></tui-carousel-example-2>
+            <tui-carousel-example-2
+                (touchstart.passive.stop)="0"
+            ></tui-carousel-example-2>
         </tui-doc-example>
 
         <tui-doc-example id="custom" heading="Custom" [content]="example3">
-            <tui-carousel-example-3></tui-carousel-example-3>
+            <tui-carousel-example-3
+                (touchstart.passive.stop)="0"
+            ></tui-carousel-example-3>
         </tui-doc-example>
 
         <tui-doc-example
@@ -42,6 +48,7 @@
         <tui-doc-demo>
             <tui-carousel
                 class="carousel"
+                [draggable]="draggable"
                 [duration]="duration"
                 [itemsCount]="itemsCount"
                 [(index)]="index"
@@ -58,12 +65,22 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyName="draggable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="draggable"
+            >
+                Whether or not slider can be dragged by clicking and holding
+            </ng-template>
+            <ng-template
                 documentationPropertyName="duration"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
+                [documentationPropertyValues]="durationVariants"
                 [(documentationPropertyValue)]="duration"
             >
-                Duration for automatic rotation
+                Duration in milliseconds for each slide for automatic rotation
+                (use 0 to disable automatic rotation)
             </ng-template>
             <ng-template
                 documentationPropertyName="itemsCount"

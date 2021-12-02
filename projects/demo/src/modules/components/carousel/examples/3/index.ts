@@ -10,10 +10,4 @@ import {encapsulation} from '../../../../../view-encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiCarouselExample3 {
-    index = 1;
-
-    onClick(delta: number) {
-        this.index += delta;
-    }
-}
+export class TuiCarouselExample3 {}

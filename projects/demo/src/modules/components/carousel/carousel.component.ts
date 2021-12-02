@@ -10,7 +10,9 @@ import {changeDetection} from '../../../change-detection-strategy';
     changeDetection,
 })
 export class ExampleTuiCarouselComponent {
-    duration = 0;
+    readonly durationVariants = [0, 3000, 10000];
+    draggable = false;
+    duration = this.durationVariants[0];
     index = 0;
     itemsCount = 1;
 

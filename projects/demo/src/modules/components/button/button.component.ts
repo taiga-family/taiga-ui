@@ -79,6 +79,7 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
         'flat',
         'whiteblock',
         'whiteblock-active',
+        'icon',
     ];
 
     appearance = this.appearanceVariants[0];

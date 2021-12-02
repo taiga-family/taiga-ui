@@ -3,16 +3,19 @@ import {
     Component,
     ContentChildren,
     ElementRef,
+    EventEmitter,
     Inject,
     Input,
+    Optional,
     Output,
     QueryList,
     TemplateRef,
 } from '@angular/core';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY, tuiDefaultProp, TuiItemDirective, tuiPure} from '@taiga-ui/cdk';
-import {merge, Observable, Subject} from 'rxjs';
-import {distinctUntilChanged, map, share} from 'rxjs/operators';
+import {TuiCarouselDraggableDirective} from '@taiga-ui/kit/components/carousel/carousel-draggable.directive';
+import {Observable, Subject} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 import {TuiCarouselDirective} from './carousel.directive';
 
@@ -40,15 +43,23 @@ export class TuiCarouselComponent {
     index = 0;
 
     @Output()
-    readonly indexChange = merge(
-        this.intersected$,
-        this.directive.pipe(map(index => index % this.items.length || 0)),
-    ).pipe(share(), distinctUntilChanged());
+    readonly indexChange = new EventEmitter<number>();
+
+    readonly manual$ = this.index$.pipe(
+        map(index => index % (this.items.length || index + 1)),
+    );
+
+    attached = false;
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<any>> = EMPTY_QUERY;
 
-    constructor(@Inject(TuiCarouselDirective) readonly directive: Observable<number>) {}
+    constructor(
+        @Optional()
+        @Inject(TuiCarouselDraggableDirective)
+        readonly transform$: Observable<string | null> | null,
+        @Inject(TuiCarouselDirective) private readonly index$: Observable<number>,
+    ) {}
 
     @tuiPure
     getStyle(itemsCount: number): Partial<CSSStyleDeclaration> {
@@ -61,9 +72,24 @@ export class TuiCarouselComponent {
         };
     }
 
-    onIntersection([{intersectionRatio}]: IntersectionObserverEntry[], index: number) {
-        if (intersectionRatio && intersectionRatio !== 1) {
-            this.intersected$.next(index);
+    onIntersection(
+        {intersectionRatio, intersectionRect, rootBounds}: IntersectionObserverEntry,
+        index: number,
+    ) {
+        if (
+            !this.attached ||
+            !intersectionRatio ||
+            intersectionRatio === 1 ||
+            // Phantom intersections due to width wobble on drag
+            intersectionRect.left > Number(rootBounds?.left)
+        ) {
+            return;
         }
+
+        this.indexChange.emit(index - Math.floor(this.itemsCount / 2));
+    }
+
+    onPresent(attached: boolean) {
+        this.attached = attached;
     }
 }
