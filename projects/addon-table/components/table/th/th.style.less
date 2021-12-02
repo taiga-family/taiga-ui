@@ -111,6 +111,10 @@
 
     &:focus-visible {
         background: var(--tui-selection);
+
+        & .arrow {
+            opacity: 1;
+        }
     }
 
     &:hover {
@@ -118,7 +122,6 @@
     }
 
     &_sorted,
-    &:focus-visible,
     &:hover {
         & .arrow {
             opacity: 1;
