@@ -10,7 +10,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiCarouselExample1 {
-    index = 0;
+    index = 2;
 
     readonly items = [
         'John Cleese',

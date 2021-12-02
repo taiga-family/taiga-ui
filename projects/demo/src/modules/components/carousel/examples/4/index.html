@@ -10,7 +10,7 @@
     [tuiDialogOptions]="{ size: 's', header: header }"
     [(tuiDialog)]="open"
 >
-    <div tuiCarouselButtons class="wrapper">
+    <div tuiCarouselButtons class="wrapper" (touchstart.passive.stop)="0">
         <button
             tuiIconButton
             tuiMode="onDark"
@@ -32,7 +32,7 @@
                     <a tuiLink routerLink="/components/pagination">
                         Pagination
                     </a>
-                    component with size 'm' together with it
+                    component with size 's' together with it
                 </p>
             </div>
             <div *tuiItem>

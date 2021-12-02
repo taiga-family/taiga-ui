@@ -3,10 +3,9 @@
         tuiIconButton
         icon="tuiIconChevronLeftLarge"
         title="Previous"
-        [disabled]="!index"
-        (click)="onClick(-1)"
+        (click)="carousel.prev()"
     ></button>
-    <tui-carousel class="carousel" [(index)]="index">
+    <tui-carousel #carousel="tui-carousel" class="carousel">
         <tui-island *tuiItem>
             <h2 class="tui-island__title">Monty Python and the Holy Grail</h2>
             <p>
@@ -42,7 +41,6 @@
         tuiIconButton
         icon="tuiIconChevronRightLarge"
         title="Next"
-        [disabled]="index === 2"
-        (click)="onClick(1)"
+        (click)="carousel.next()"
     ></button>
 </div>
