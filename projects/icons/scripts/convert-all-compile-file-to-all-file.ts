@@ -1,5 +1,5 @@
 import {rollup, RollupOptions} from 'rollup';
-import typescript from 'rollup-plugin-typescript2';
+import typescript, {RPT2Options} from 'rollup-plugin-typescript2';
 
 import {rollupSvgo} from './rollup-svgo';
 
@@ -11,27 +11,34 @@ const banner = `
 `;
 
 interface Options {
-    cacheRoot?: string;
+    prt2Options?: RPT2Options;
     from: string;
     to: string;
 }
 
 export async function convertAllCompileFileToAllFile(config: Options): Promise<void> {
-    const {from, to, cacheRoot} = config;
+    const {from, to, prt2Options} = config;
 
     const inputOptions: RollupOptions = {
         input: from,
         output: {preferConst: true},
         plugins: [
-            typescript({cacheRoot: cacheRoot ?? 'node_modules/.cache/.rpt2_cache'}),
+            typescript(prt2Options ?? {cacheRoot: 'node_modules/.cache/.rpt2_cache'}),
             rollupSvgo({
                 include: '**/*.svg',
                 options: {
                     plugins: [
-                        {removeViewBox: false},
-                        {collapseGroups: false},
-                        {cleanupIDs: false},
-                        {removeUnknownsAndDefaults: false},
+                        {
+                            name: 'preset-default',
+                            params: {
+                                overrides: {
+                                    removeViewBox: false,
+                                    collapseGroups: false,
+                                    cleanupIDs: false,
+                                    removeUnknownsAndDefaults: false,
+                                },
+                            },
+                        },
                     ],
                 },
             }),
