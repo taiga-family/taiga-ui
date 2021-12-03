@@ -30,6 +30,7 @@ export class TuiStaticRequestService {
                     }
                 }
             };
+
             xhr.open('GET', url);
             xhr.send();
 

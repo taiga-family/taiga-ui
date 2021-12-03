@@ -492,6 +492,9 @@ const tuiIconRefreshLarge =
 const tuiIconRemoveLarge =
     '<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" focusable="false"><g id="tuiIconRemoveLarge" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24" fill="none"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.707 5.293a1 1 0 00-1.414 1.414L10.586 12l-5.293 5.293a1 1 0 101.414 1.414L12 13.414l5.293 5.293a1 1 0 001.414-1.414L13.414 12l5.293-5.293a1 1 0 00-1.414-1.414L12 10.586 6.707 5.293z" fill="currentColor"/></svg></svg></g></svg>';
 
+const tuiIconRotate =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><g id="tuiIconRotate" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><g clip-path="url(#clip0_29215:435606)"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.036 9a.97.97 0 01-.965-.977v-2.4c0-.406-.156-.792-.43-1.074v-.001a1.425 1.425 0 00-1.017-.434H9.292l.404.486c.377.382.377 1 0 1.382a.955.955 0 01-1.364 0l-2.05-2.155a.987.987 0 010-1.382L8.332.286a.955.955 0 011.364 0c.377.382.377 1 0 1.382l-.404.49h2.334A3.352 3.352 0 0114.02 3.18c.63.653.981 1.531.981 2.444v2.4a.97.97 0 01-.964.977zM4 9h5v4H4V9zM2 9a2 2 0 012-2h5a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2V9z" fill="currentColor"/></g><defs><clipPath id="clip0_29215:435606"><path fill="#fff" transform="translate(0 .002)" d="M0 0h16v16H0z"/></clipPath></defs></svg></svg></g></svg>';
+
 const tuiIconSearch =
     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false"><g id="tuiIconSearch" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><path d="M7.333 12.667A5.333 5.333 0 107.333 2a5.333 5.333 0 000 10.667zM14 14l-2.9-2.9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></svg></g></svg>';
 
@@ -815,6 +818,7 @@ export {
     tuiIconRefresh,
     tuiIconRefreshLarge,
     tuiIconRemoveLarge,
+    tuiIconRotate,
     tuiIconSearch,
     tuiIconSearchLarge,
     tuiIconSettings,

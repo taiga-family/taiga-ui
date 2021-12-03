@@ -9,9 +9,11 @@ import {
     ViewChild,
 } from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
-import {px, TUI_IS_MOBILE, TuiDestroyService, tuiPure, tuiZonefree} from '@taiga-ui/cdk';
+import {px, TuiDestroyService, tuiPure, tuiZonefree} from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
 import {TuiPointerHintDirective} from '@taiga-ui/core/directives/pointer-hint';
+import {TuiMedia} from '@taiga-ui/core/interfaces';
+import {TUI_MEDIA} from '@taiga-ui/core/tokens';
 import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -65,7 +67,7 @@ export class TuiHintBoxComponent {
         @Inject(NgZone) ngZone: NgZone,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
+        @Inject(TUI_MEDIA) private readonly media: TuiMedia,
         @Inject(TuiHintsHostComponent)
         private readonly hintsHost: TuiHintsHostComponent,
     ) {
@@ -83,6 +85,10 @@ export class TuiHintBoxComponent {
     @HostBinding('attr.data-mode')
     get mode(): TuiHintModeT | null {
         return this.hint.mode;
+    }
+
+    get isMobile(): boolean {
+        return this.windowRef.innerWidth <= this.media.mobile;
     }
 
     /**

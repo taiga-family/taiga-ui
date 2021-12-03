@@ -15,7 +15,7 @@ import {
     TuiPanService,
     typedFromEvent,
 } from '@taiga-ui/cdk';
-import {EMPTY,Observable} from 'rxjs';
+import {EMPTY, Observable} from 'rxjs';
 import {delay, endWith, filter, map, repeat, scan, takeUntil} from 'rxjs/operators';
 
 // @dynamic

@@ -3,6 +3,7 @@ import {BehaviorSubject} from 'rxjs';
 
 // TODO: remove after v2.0 separating. It prevents seps cycling.
 type TuiHintDirective = any;
+
 type AbstractTuiHint = any;
 
 /**

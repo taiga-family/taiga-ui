@@ -14,6 +14,7 @@ export const appPrefix = (stringsPart: TemplateStringsArray, path: string = '') 
     `src/app/${stringsPart.join('')}${path}`;
 
 type FileName = string;
+
 type FileContent = string;
 
 export const getSupportFiles = <T extends Record<string, string>>(

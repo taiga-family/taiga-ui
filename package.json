@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "2.24.0",
+    "version": "2.25.0",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "scripts": {
         "postinstall": "husky install && ngcc --async",
@@ -44,7 +44,7 @@
         "affected:build:libs": "nx affected --target build --parallel --exclude demo",
         "run-many:test:libs": "nx run-many --target test --all --parallel --exclude demo",
         "run-many:build:libs": "nx run-many --target build --parallel --all --exclude demo",
-        "run-many:publish:libs": "nx run-many --target publish --all"
+        "run-many:publish:libs": "nx run-many --target publish --all --access public"
     },
     "keywords": [
         "angular",
@@ -135,7 +135,7 @@
         "@tinkoff/eslint-config": "^1.14.0",
         "@tinkoff/eslint-config-angular": "^1.18.1",
         "@tinkoff/stylelint-config": "^1.16.1",
-        "@tinkoff/prettier-config": "^1.15.1",
+        "@tinkoff/prettier-config": "^1.19.1",
         "@types/cypress-image-snapshot": "^3.1.5",
         "@types/dompurify": "^2.0.4",
         "@types/express": "4.16.1",

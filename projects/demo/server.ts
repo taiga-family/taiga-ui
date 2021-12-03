@@ -4,14 +4,14 @@ import 'zone.js/dist/zone-node';
 import {APP_BASE_HREF} from '@angular/common';
 import {provideLocation, provideUserAgent} from '@ng-web-apis/universal';
 import {ngExpressEngine} from '@nguniversal/express-engine';
-import * as express from 'express';
-import {Express} from 'express';
+import express, {Express} from 'express';
 import {existsSync} from 'fs';
 import {join} from 'path';
 
 import {AppServerModule} from './src/main.server';
 
 global.requestAnimationFrame = global.setImmediate as any;
+
 global.cancelAnimationFrame = () => {};
 
 // The Express app is exported so that it can be used by serverless Functions.
