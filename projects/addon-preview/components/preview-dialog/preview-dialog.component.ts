@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    HostListener,
     Inject,
     ViewEncapsulation,
 } from '@angular/core';
@@ -21,4 +22,9 @@ export class TuiPreviewDialogComponent {
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<void, void>,
     ) {}
+
+    @HostListener('document:keydown.esc')
+    onKeyDownEsc() {
+        this.context.$implicit.complete();
+    }
 }
