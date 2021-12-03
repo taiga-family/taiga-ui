@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[221],{COnf:function(n,t,o){"use strict";o.r(t),t.default='<button tuiButton (click)="show(actions)">Taiga</button>\n<ng-template #actions let-content="content">\n    <a tuiButton shape="rounded" size="s" download [href]="content">Download</a>\n</ng-template>\n'}}]);
