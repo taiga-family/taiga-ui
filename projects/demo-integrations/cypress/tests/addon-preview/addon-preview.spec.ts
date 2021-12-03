@@ -7,8 +7,9 @@ describe('Addon preview', () => {
 
     it('Full preview scrolled', () => {
         cy.get(`tui-preview-example-1 button`).first().click();
+        cy.waitKitDialog('tui-preview');
         cy.get('tui-preview')
-            .wait(200)
+            .wait(350)
             .get('tui-preview section')
             .first()
             .trigger('wheel', 'center', {deltaY: -50});
@@ -20,8 +21,9 @@ describe('Addon preview', () => {
 
     it('No preview avaliable', () => {
         cy.get(`tui-preview-example-3 button`).first().click();
+        cy.waitKitDialog('tui-preview');
         cy.get('tui-preview')
-            .wait(200)
+            .wait(350)
             .matchImageSnapshot('preview-unavailable', {
                 capture: 'viewport',
                 blackout: ['tui-doc-navigation'],
