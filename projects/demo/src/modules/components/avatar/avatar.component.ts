@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
+
+import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'example-avatar',

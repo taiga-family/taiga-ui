@@ -1,7 +1,5 @@
 import {Component, Inject, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileCalendarDialogComponent} from '@taiga-ui/addon-mobile';
 import {TuiDay, tuiReplayedValueChangesFrom} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiDialogService} from '@taiga-ui/core';
@@ -9,6 +7,9 @@ import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, startWith, withLatestFrom} from 'rxjs/operators';
+
+import {changeDetection} from '../../../../../change-detection-strategy';
+import {encapsulation} from '../../../../../view-encapsulation';
 
 // @dynamic
 @Component({

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
+
+import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'example-tui-pdf-viewer',

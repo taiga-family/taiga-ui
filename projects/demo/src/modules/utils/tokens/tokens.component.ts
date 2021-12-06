@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
@@ -18,6 +17,7 @@ import {default as example7Ts} from '!!raw-loader!./examples/7/index.ts';
 import {default as example8Html} from '!!raw-loader!./examples/8/index.html';
 import {default as example8Ts} from '!!raw-loader!./examples/8/index.ts';
 
+import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({

@@ -1,5 +1,4 @@
 import {Component, Inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiContextWithImplicit, TuiDay, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -14,6 +13,7 @@ import {default as example2Pipe} from '!!raw-loader!./examples/2/pipe.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
+import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 // @dynamic

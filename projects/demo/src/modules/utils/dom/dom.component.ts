@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 
 import {default as importComponentExample} from '!!raw-loader!./examples/import/import-component.txt';
+
+import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'example-dom',

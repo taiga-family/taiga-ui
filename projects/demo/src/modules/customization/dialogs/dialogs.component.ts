@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
@@ -10,6 +9,8 @@ import {default as examplePromptService} from '!!raw-loader!./examples/1/prompt/
 import {default as examplePromptLess} from '!!raw-loader!./examples/1/prompt/prompt.style.less';
 import {default as examplePromptHtml} from '!!raw-loader!./examples/1/prompt/prompt.template.html';
 import {default as examplePromptOptions} from '!!raw-loader!./examples/1/prompt/prompt-options.ts';
+
+import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'dialogs',

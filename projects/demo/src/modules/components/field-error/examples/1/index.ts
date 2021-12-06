@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
+
+import {changeDetection} from '../../../../../change-detection-strategy';
+import {encapsulation} from '../../../../../view-encapsulation';
 
 const latinChars = /^[a-zA-Z]+$/;
 
