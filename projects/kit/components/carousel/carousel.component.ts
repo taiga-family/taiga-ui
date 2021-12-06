@@ -13,11 +13,11 @@ import {
 } from '@angular/core';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY, tuiDefaultProp, TuiItemDirective, tuiPure} from '@taiga-ui/cdk';
-import {TuiCarouselDraggableDirective} from '@taiga-ui/kit/components/carousel/carousel-draggable.directive';
 import {Observable, Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {TuiCarouselDirective} from './carousel.directive';
+import {TuiCarouselDraggableDirective} from './carousel-draggable.directive';
 
 @Component({
     selector: 'tui-carousel',
