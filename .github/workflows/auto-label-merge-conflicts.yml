@@ -1,0 +1,17 @@
+name: Add label when PR has conflicts
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    triage:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: mschilde/auto-label-merge-conflicts@v2.0
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  CONFLICT_LABEL_NAME: has conflicts
+                  MAX_RETRIES: 5
+                  WAIT_MS: 5000
