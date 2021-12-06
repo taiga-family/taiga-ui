@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {Injector, Input, Type} from '@angular/core';
 import {
     Editor,
@@ -5,7 +6,6 @@ import {
     NodeViewProps,
     NodeViewRenderer,
     NodeViewRendererOptions,
-    NodeViewRendererProps,
 } from '@tiptap/core';
 import type {Node as ProseMirrorNode} from 'prosemirror-model';
 import type {Decoration} from 'prosemirror-view';
@@ -29,7 +29,7 @@ export class TuiNodeViewNgComponent implements NodeViewProps {
 }
 
 interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
-    update?: ((node: ProseMirrorNode, decorations: Decoration[]) => boolean) | null;
+    update?: (node: ProseMirrorNode, decorations: Decoration[]) => boolean;
     injector: Injector;
 }
 
@@ -48,10 +48,11 @@ class TuiNodeView extends NodeView<
     TuiNodeViewRendererOptions
 > {
     renderer!: TuiComponentRenderer<TuiNodeViewNgComponent, NodeViewProps>;
-    contentDOMElement!: HTMLElement | null;
+    contentDOMElement: HTMLElement | null = null;
 
-    mount() {
-        const injector = this.options.injector as Injector;
+    mount(): void {
+        const injector = this.options.injector;
+        const documentRef = injector.get(DOCUMENT);
 
         const props: NodeViewProps = {
             editor: this.editor,
@@ -76,7 +77,7 @@ class TuiNodeView extends NodeView<
 
         this.contentDOMElement = this.node.isLeaf
             ? null
-            : document.createElement(this.node.isInline ? 'span' : 'div');
+            : documentRef.createElement(this.node.isInline ? 'span' : 'div');
 
         if (this.contentDOMElement) {
             // For some reason the whiteSpace prop is not inherited properly in Chrome and Safari
@@ -87,11 +88,11 @@ class TuiNodeView extends NodeView<
         }
     }
 
-    get dom() {
+    get dom(): HTMLElement {
         return this.renderer.dom;
     }
 
-    get contentDOM() {
+    get contentDOM(): HTMLElement | null {
         if (this.node.isLeaf) {
             return null;
         }
@@ -134,24 +135,23 @@ class TuiNodeView extends NodeView<
         return true;
     }
 
-    selectNode() {
+    selectNode(): void {
         this.renderer.updateProps({selected: true});
     }
 
-    deselectNode() {
+    deselectNode(): void {
         this.renderer.updateProps({selected: false});
     }
 
-    destroy() {
+    destroy(): void {
         this.renderer.destroy();
     }
 }
 
-export const TuiNodeViewRenderer = (
-    component: Type<TuiNodeViewNgComponent>,
-    options: Partial<TuiNodeViewRendererOptions>,
-): NodeViewRenderer => {
-    return (props: NodeViewRendererProps) => {
-        return new TuiNodeView(component, props, options);
-    };
-};
+export const TuiNodeViewRenderer =
+    (
+        component: Type<TuiNodeViewNgComponent>,
+        options: Partial<TuiNodeViewRendererOptions>,
+    ): NodeViewRenderer =>
+    props =>
+        new TuiNodeView(component, props, options);

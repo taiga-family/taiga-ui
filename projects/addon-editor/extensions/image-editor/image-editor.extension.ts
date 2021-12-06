@@ -76,12 +76,11 @@ export const createImageEditorExtension = (injector: Injector): Node => {
             return {
                 setEditableImage:
                     attrs =>
-                    ({commands}) => {
-                        return commands.insertContent({
+                    ({commands}) =>
+                        commands.insertContent({
                             type: this.name,
                             attrs,
-                        });
-                    },
+                        }),
             };
         },
     });
