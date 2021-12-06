@@ -61,8 +61,6 @@ export class TuiHighlightDirective implements OnChanges {
             return;
         }
 
-        this.highlight.style.background = this.tuiHighlightColor;
-
         this.treeWalker.currentNode = this.elementRef.nativeElement;
 
         do {
