@@ -712,8 +712,8 @@
                             ],
                             "fileReplacements": [
                                 {
-                                    "replace": "projects/demo/src/change-detection-strategy.ts",
-                                    "with": "projects/demo/src/change-detection-strategy.def.ts"
+                                    "replace": "projects/demo/src/emulate/change-detection-strategy.ts",
+                                    "with": "projects/demo/src/emulate/change-detection-strategy.def.ts"
                                 }
                             ]
                         },
@@ -726,8 +726,8 @@
                             ],
                             "fileReplacements": [
                                 {
-                                    "replace": "projects/demo/src/view-encapsulation.ts",
-                                    "with": "projects/demo/src/view-encapsulation.shadow.ts"
+                                    "replace": "projects/demo/src/emulate/view-encapsulation.ts",
+                                    "with": "projects/demo/src/emulate/view-encapsulation.shadow.ts"
                                 }
                             ]
                         },
