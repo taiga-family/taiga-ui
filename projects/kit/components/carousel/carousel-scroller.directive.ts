@@ -46,9 +46,9 @@ export class TuiCarouselScrollerDirective {
     ) {}
 
     @HostListener('document:mouseup.init', ['$event'])
-    @HostListener('document:mouseup.silent')
+    @HostListener('document:mouseup.silent', ['$event'])
     @shouldCall(shouldScroll)
-    onMouseUp() {
+    onMouseUp(_e: unknown) {
         const {left} = this.root.nativeElement.getBoundingClientRect();
         const rect = this.elementRef.nativeElement.getBoundingClientRect();
         const {parentElement} = this.elementRef.nativeElement;
