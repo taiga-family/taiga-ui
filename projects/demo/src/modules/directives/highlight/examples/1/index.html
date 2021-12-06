@@ -11,7 +11,8 @@
         <tr *ngFor="let row of rows">
             <td
                 *ngFor="let cell of row"
-                [tuiHighlight]="{value: search, color: '#228B22'}"
+                [tuiHighlight]="search"
+                [tuiHighlightColor]="'#228B22'"
             >
                 {{cell}}
             </td>
