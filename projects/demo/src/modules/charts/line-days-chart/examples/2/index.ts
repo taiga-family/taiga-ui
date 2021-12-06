@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiDay,
     TuiDayLike,
@@ -8,8 +9,6 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
 
 @Component({
     selector: 'tui-line-days-chart-example-2',

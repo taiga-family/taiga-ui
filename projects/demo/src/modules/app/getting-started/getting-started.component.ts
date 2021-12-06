@@ -1,6 +1,6 @@
 import {Component, Inject, InjectionToken, Type} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {HomeComponent} from '../home/home.component';
 
 export const TUI_HOME_COMPONENT = new InjectionToken<Type<any>>('Home page', {

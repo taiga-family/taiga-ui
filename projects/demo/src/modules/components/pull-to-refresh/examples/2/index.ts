@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_LOADED} from '@taiga-ui/addon-mobile';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiNotificationsService} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 const loaded$ = new Subject<void>();
 

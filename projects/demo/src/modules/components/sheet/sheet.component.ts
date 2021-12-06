@@ -1,4 +1,5 @@
 import {Component, Inject, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TUI_SHEET_DEFAULT_OPTIONS,
     TuiSheet,
@@ -26,7 +27,6 @@ import {default as example6Ts} from '!!raw-loader!./examples/6/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 // @dynamic

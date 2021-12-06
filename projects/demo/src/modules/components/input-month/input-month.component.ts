@@ -1,5 +1,6 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -16,7 +17,6 @@ import {default as declareForm} from '!!raw-loader!./examples/import/declare-for
 import {default as importModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as insertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

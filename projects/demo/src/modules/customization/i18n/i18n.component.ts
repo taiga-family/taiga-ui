@@ -1,8 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 
 import {default as readme} from '!!raw-loader!../../../../../i18n/README.md';
-
-import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'i18n',

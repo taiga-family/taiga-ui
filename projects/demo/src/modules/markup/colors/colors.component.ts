@@ -1,8 +1,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 
 import {default as basicImportsLess} from '!!raw-loader!./examples/import/basic-imports-less.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {
     BASE,
     BASE_NIGHT,

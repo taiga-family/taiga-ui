@@ -1,4 +1,5 @@
 import {Component, Inject, OnDestroy, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 import {TuiBrightness} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -14,7 +15,6 @@ import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/ser
 import {default as exampleServiceUsageHtml} from '!!raw-loader!./examples/import/service-usage-html.txt';
 import {default as exampleTemplate} from '!!raw-loader!./examples/import/template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({

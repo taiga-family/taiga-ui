@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {getCurrencySymbol, TuiCurrency} from '@taiga-ui/addon-commerce';
 import {round, sum, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {formatNumber, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
@@ -13,7 +14,6 @@ import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({

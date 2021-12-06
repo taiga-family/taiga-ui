@@ -1,10 +1,9 @@
 import {Component, Inject, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map} from 'rxjs/operators';
-
-import {changeDetection} from '../../change-detection-strategy';
 
 // @dynamic
 @Component({

@@ -1,4 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
@@ -20,7 +21,6 @@ import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 

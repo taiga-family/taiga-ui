@@ -1,12 +1,12 @@
 import {Component, Inject, Injector} from '@angular/core';
 import {Router} from '@angular/router';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 import {AlertExampleComponent} from './alert-example/alert-example.component';
 
 @Component({

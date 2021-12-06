@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 
 import {default as addons} from '!!raw-loader!./examples/addons.txt';
 import {default as angularJsonStyles} from '!!raw-loader!./examples/angular-json-styles.txt';
@@ -9,8 +10,6 @@ import {default as assets} from '!!raw-loader!./examples/assets.txt';
 import {default as componentsStyles} from '!!raw-loader!./examples/components-styles.txt';
 import {default as importLocalLess} from '!!raw-loader!./examples/import-local-less.txt';
 import {default as main} from '!!raw-loader!./examples/main.txt';
-
-import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'home',

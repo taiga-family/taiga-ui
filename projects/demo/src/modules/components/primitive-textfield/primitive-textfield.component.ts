@@ -1,4 +1,5 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
 import {
     TuiDirection,
@@ -15,7 +16,6 @@ import {default as example1Html} from '!!raw-loader!./examples/1/template.html';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';

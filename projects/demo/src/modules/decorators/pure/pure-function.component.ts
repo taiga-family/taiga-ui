@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiPure} from '@taiga-ui/cdk';
-
-import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'example-tui-pure-function',

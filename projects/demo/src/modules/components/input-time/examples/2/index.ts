@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-input-time-example-2',

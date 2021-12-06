@@ -1,4 +1,5 @@
 import {Component, Inject, Injector} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiNotification,
     TuiNotificationContentContext,
@@ -39,7 +40,6 @@ import {default as exampleModule} from '!!raw-loader!./examples/import/module.tx
 import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/service-usage.txt';
 import {default as exampleServiceUsageComponent} from '!!raw-loader!./examples/import/service-usage-component.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-data/alert-example-with-data.component';
 

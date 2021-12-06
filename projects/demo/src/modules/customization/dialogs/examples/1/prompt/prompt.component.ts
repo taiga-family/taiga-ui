@@ -1,8 +1,8 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDialog} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
-import {changeDetection} from '../../../../../../change-detection-strategy';
 import {PromptOptions} from './prompt-options';
 
 @Component({

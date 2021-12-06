@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
     TuiNotification,
 } from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-notification-example-2',
