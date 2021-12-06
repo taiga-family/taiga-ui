@@ -1,9 +1,8 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-pdf-viewer-example-1',

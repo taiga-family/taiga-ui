@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {
     SCREENSHOT_BOT_LINK,
     SCREENSHOT_BOT_NAME,

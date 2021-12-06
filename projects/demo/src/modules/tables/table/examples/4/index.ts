@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {defaultSort, TuiComparator} from '@taiga-ui/addon-table';
 import {
     isPresent,
@@ -19,9 +21,6 @@ import {
     startWith,
     switchMap,
 } from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 interface User {
     readonly name: string;

@@ -1,12 +1,11 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {PreviewDialogService} from '@taiga-ui/addon-preview';
 import {isPresent} from '@taiga-ui/cdk';
 import {TuiDialogContext} from '@taiga-ui/core';
 import {BehaviorSubject, Observable, of, timer} from 'rxjs';
 import {filter, map, mapTo, startWith, switchMap} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-preview-example-3',

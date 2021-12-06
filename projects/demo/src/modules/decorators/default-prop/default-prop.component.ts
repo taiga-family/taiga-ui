@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 
 import {default as exampleDecorator} from '!!raw-loader!./import/example-decorator.txt';
-
-import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'example-tui-default-prop',

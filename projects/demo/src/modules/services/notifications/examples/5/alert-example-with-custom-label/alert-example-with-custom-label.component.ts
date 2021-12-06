@@ -1,9 +1,8 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiContextWithImplicit, tuiPure} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationContentContext} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-import {changeDetection} from '../../../../../../change-detection-strategy';
 
 @Component({
     selector: 'tui-notifications-service-example-with-custom-label',

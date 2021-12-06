@@ -1,4 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     DEFAULT_MAX_HEIGHT,
     DEFAULT_MIN_HEIGHT,
@@ -19,7 +20,6 @@ import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {ExampleTuiDropdown} from '../../components/abstract/dropdown-controller-documentation/dropdown-controller-documentation.component';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {FrontEndExample} from '../../interfaces/front-end-example';

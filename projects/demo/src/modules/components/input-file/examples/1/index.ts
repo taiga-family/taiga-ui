@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiFileLike} from '@taiga-ui/kit';
 import {Observable, of, timer} from 'rxjs';
 import {map, mapTo, share, startWith, switchMap, tap} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 class RejectedFile {
     constructor(readonly file: TuiFileLike, readonly reason: string) {}

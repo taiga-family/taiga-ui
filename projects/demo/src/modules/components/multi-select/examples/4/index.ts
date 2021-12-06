@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {isNumber, TUI_DEFAULT_MATCHER, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {Subject, timer} from 'rxjs';
 import {map, mapTo, shareReplay, startWith, switchMap} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
 
 const DICTIONARY = [
     {id: 1, name: 'Luke Skywalker'},

@@ -8,11 +8,10 @@ import {
     ValidatorFn,
     Validators,
 } from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-field-error-example-3',

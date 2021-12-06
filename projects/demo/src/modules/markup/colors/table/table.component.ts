@@ -1,10 +1,10 @@
 import {DOCUMENT} from '@angular/common';
 import {Component, HostBinding, Inject, Input} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {WINDOW} from '@ng-web-apis/common';
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
-import {changeDetection} from '../../../../change-detection-strategy';
 import {TuiThemeService} from '../../../app/theme.service';
 import {Color} from '../colors.constants';
 

@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {of} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
 import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 class User {
     constructor(

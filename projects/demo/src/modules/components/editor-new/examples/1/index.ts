@@ -1,14 +1,13 @@
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     defaultEditorExtensions,
     tiptapEditorStyles,
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_STYLES,
 } from '@taiga-ui/addon-editor';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-editor-example-1',

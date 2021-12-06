@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 export function importStarterKit(): Promise<unknown> {
     return import('@tiptap/starter-kit').then(m => m.default);

@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 enum Department {
     IT = 'IT',

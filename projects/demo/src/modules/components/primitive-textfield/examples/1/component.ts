@@ -7,11 +7,10 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {AbstractTuiControl, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-primitive-textfield-example-1',

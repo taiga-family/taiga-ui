@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
-
-import {changeDetection} from '../../../../change-detection-strategy';
 
 class User {
     constructor(readonly firstName: string, readonly lastName: string) {}

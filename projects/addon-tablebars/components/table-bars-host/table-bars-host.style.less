@@ -10,12 +10,12 @@
     height: 0;
 }
 
-.wrapper {
+.t-wrapper {
     display: flex;
     width: 100%;
 }
 
-.bar {
+.t-bar {
     .shadow();
     flex: 0 0 100%;
     background: var(--tui-base-07);
@@ -27,15 +27,31 @@
     }
 }
 
-.inner {
+.t-container {
+    position: relative;
+}
+
+.t-inner {
     display: flex;
     align-items: center;
     height: 4.5rem;
     width: 100%;
     overflow: hidden;
+
+    @media @mobile-m {
+        height: 5.75rem;
+    }
 }
 
-.content {
+.t-close-button {
+    @media @mobile-m {
+        position: absolute;
+        top: -0.125rem;
+        right: -0.125rem;
+    }
+}
+
+.t-content {
     width: 100%;
     flex: 1 1 0;
 }

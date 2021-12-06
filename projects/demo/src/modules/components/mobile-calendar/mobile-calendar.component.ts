@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -18,7 +19,6 @@ import {default as exampleImportDialogModule} from '!!raw-loader!./examples/impo
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 export function dataStreamFactory(

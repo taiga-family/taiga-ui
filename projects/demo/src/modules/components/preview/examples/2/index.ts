@@ -1,9 +1,8 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {PreviewDialogService} from '@taiga-ui/addon-preview';
 import {TuiDialogContext} from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-preview-example-2',

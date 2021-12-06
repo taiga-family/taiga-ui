@@ -1,4 +1,5 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -26,7 +27,6 @@ import {default as exampleFirstDayOfWeekToken} from '!!raw-loader!./examples/imp
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 const TWO_DOTS: [TuiColor, TuiColor] = [TuiBaseColor.Primary, TuiBaseColor.Secondary];

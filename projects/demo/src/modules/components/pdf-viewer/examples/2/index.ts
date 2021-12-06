@@ -1,12 +1,12 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialog} from '@taiga-ui/cdk';
 import {TuiNotificationsService} from '@taiga-ui/core';
 import {TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs/operators';
 
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 import {ActionsContent} from './actions-content.component';
 import {PdfContent} from './pdf-content.component';
 

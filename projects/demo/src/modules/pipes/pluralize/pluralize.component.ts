@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiPluralize} from '@taiga-ui/core';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'example-tui-pluralize',

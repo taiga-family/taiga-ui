@@ -1,9 +1,8 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-token-example-7',

@@ -1,8 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 
 import {default as docReadme} from '!!raw-loader!../../../../../addon-doc/README.md';
-
-import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'doc',

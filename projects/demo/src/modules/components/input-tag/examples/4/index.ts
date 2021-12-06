@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {AbstractControl, FormControl, ValidatorFn} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     EMPTY_ARRAY,
     TUI_DEFAULT_MATCHER,
@@ -7,9 +9,6 @@ import {
     tuiPure,
     TuiValidationError,
 } from '@taiga-ui/cdk';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 function createControlValidator(handler: TuiBooleanHandler<string>): ValidatorFn {
     return ({value}: AbstractControl) => {

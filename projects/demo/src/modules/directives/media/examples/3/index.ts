@@ -1,6 +1,5 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
+import {changeDetection} from '@demo/emulate/change-detection';
 
 @Component({
     selector: 'tui-media-example-3',

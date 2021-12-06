@@ -1,4 +1,6 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiDay,
     TuiDayLike,
@@ -8,9 +10,6 @@ import {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 // @dynamic
 @Component({

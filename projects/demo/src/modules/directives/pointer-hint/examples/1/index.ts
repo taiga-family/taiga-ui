@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
+import {changeDetection} from '@demo/emulate/change-detection';
 
 @Component({
     selector: 'tui-pointer-hint-example-1',

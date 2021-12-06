@@ -1,11 +1,11 @@
 import {Component, forwardRef} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {FrontEndExample} from '../../interfaces/front-end-example';
