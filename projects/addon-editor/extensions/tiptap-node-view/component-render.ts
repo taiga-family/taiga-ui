@@ -12,11 +12,10 @@ import {
  * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/AngularRenderer.ts ngx-tiptap}
  */
 export class TuiComponentRenderer<C, P> {
-    private applicationRef: ApplicationRef;
     private componentRef: ComponentRef<C>;
 
     constructor(component: Type<C>, injector: Injector, props: Partial<P>) {
-        this.applicationRef = injector.get(ApplicationRef);
+        const applicationRef = injector.get(ApplicationRef);
 
         const componentFactoryResolver = injector.get(ComponentFactoryResolver);
         const factory = componentFactoryResolver.resolveComponentFactory(component);
@@ -27,7 +26,7 @@ export class TuiComponentRenderer<C, P> {
         this.updateProps(props);
 
         // Attach to the view so that the change detector knows to run
-        this.applicationRef.attachView(this.componentRef.hostView);
+        applicationRef.attachView(this.componentRef.hostView);
     }
 
     get instance(): C {
@@ -54,6 +53,5 @@ export class TuiComponentRenderer<C, P> {
 
     destroy(): void {
         this.componentRef.destroy();
-        this.applicationRef.detachView(this.componentRef.hostView);
     }
 }

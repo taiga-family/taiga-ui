@@ -11,6 +11,7 @@ import {
 import {TuiDestroyService, TuiHandler} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
+
 import {changeDetection} from '../../../../../change-detection-strategy';
 import {encapsulation} from '../../../../../view-encapsulation';
 
