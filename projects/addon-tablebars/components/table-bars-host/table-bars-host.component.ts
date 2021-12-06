@@ -16,6 +16,7 @@ import {TableBar} from '../../classes/table-bar';
 import {TuiTableBarsService} from '../../services/table-bars.service';
 
 // TODO: Accessibility
+// @dynamic
 @Component({
     selector: 'tui-table-bars-host',
     changeDetection: ChangeDetectionStrategy.OnPush,
