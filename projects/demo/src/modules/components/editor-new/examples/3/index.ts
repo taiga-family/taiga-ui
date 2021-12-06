@@ -26,7 +26,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
             deps: [Injector],
             useFactory: (injector: Injector) => [
                 import('@tiptap/starter-kit').then(m => m.default),
-                import('@taiga-ui/addon-editor/extensions').then(m =>
+                import('@taiga-ui/addon-editor/extensions/image-editor').then(m =>
                     m.createImageEditorExtension(injector),
                 ),
             ],

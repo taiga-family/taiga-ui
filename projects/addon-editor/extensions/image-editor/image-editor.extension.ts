@@ -21,11 +21,7 @@ export interface TuiEditableImage {
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         imageEditor: {
-            setImage: (imageConfigs: TuiEditableImage) => ReturnType;
-        };
-
-        image: {
-            setImage: (imageConfigs: TuiEditableImage) => ReturnType;
+            setEditableImage: (imageConfigs: TuiEditableImage) => ReturnType;
         };
     }
 }
@@ -78,7 +74,7 @@ export const createImageEditorExtension = (injector: Injector): Node => {
 
         addCommands(): Partial<RawCommands> {
             return {
-                setImage:
+                setEditableImage:
                     attrs =>
                     ({commands}) =>
                         commands.insertContent({
