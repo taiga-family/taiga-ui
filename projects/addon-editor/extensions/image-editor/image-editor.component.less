@@ -1,32 +1,19 @@
 @import 'taiga-ui-local';
 
-@controller-width: 0.375rem;
-
 :host {
     position: relative;
     display: inline-block;
 
-    &:hover .controller {
+    &:hover .border:after {
         opacity: 1;
     }
-}
-
-.controller {
-    .transition(opacity);
-    width: @controller-width;
-    height: 33%;
-    box-sizing: border-box;
-    border-radius: var(--tui-radius-m);
-    background-color: var(--tui-base-08);
-    border: 1px solid var(--tui-base-03);
-    opacity: 0;
 }
 
 .border {
     position: absolute;
     top: 0;
-    height: 100%;
-    width: 2 * @controller-width;
+    bottom: 0;
+    width: 0.75rem;
     cursor: col-resize;
 
     display: flex;
@@ -39,5 +26,17 @@
 
     &_right {
         right: 0;
+    }
+
+    &:after {
+        .transition(opacity);
+        content: '';
+        width: 50%;
+        height: 33%;
+        box-sizing: border-box;
+        border-radius: var(--tui-radius-m);
+        background: var(--tui-base-08);
+        border: 1px solid var(--tui-base-03);
+        opacity: 0;
     }
 }
