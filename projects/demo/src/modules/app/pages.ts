@@ -208,6 +208,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: 'Carousel',
+        keywords: 'карусель, слайдер, slider, carousel',
+        route: '/components/carousel',
+    },
+    {
+        section: $localize`Components`,
         title: 'Charts',
         subPages: [
             {

@@ -7,6 +7,7 @@ export * from '@taiga-ui/kit/components/badged-content';
 export * from '@taiga-ui/kit/components/breadcrumbs';
 export * from '@taiga-ui/kit/components/calendar-month';
 export * from '@taiga-ui/kit/components/calendar-range';
+export * from '@taiga-ui/kit/components/carousel';
 export * from '@taiga-ui/kit/components/checkbox';
 export * from '@taiga-ui/kit/components/checkbox-block';
 export * from '@taiga-ui/kit/components/checkbox-labeled';

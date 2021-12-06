@@ -1,0 +1,30 @@
+<ng-container *ngIf="items.changes | async"></ng-container>
+<div
+    *ngIf="{
+        manual: manual$ | async,
+        intersected: indexChange | async
+    } as state"
+    waIntersectionObserver
+    waIntersectionThreshold="0,1"
+    waIntersectionRootMargin="100px 100000px 100px -51%"
+    class="t-items"
+    [class.t-items_visible]="attached"
+    [style.transform]="transform$ | async"
+    (tuiPresentChange)="onPresent($event)"
+>
+    <div
+        *ngFor="let item of items; let i = index"
+        tuiCarouselScroller
+        class="t-item"
+        [scroll]="attached && i === state.manual && i !== state.intersected"
+        [index]="i"
+        [current]="state.intersected"
+        [ngStyle]="getStyle(itemsCount)"
+        (waIntersectionObservee)="onIntersection($event[0], i)"
+    >
+        <ng-container [ngTemplateOutlet]="item"></ng-container>
+    </div>
+</div>
+<div class="t-content">
+    <ng-content></ng-content>
+</div>
