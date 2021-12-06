@@ -29,6 +29,7 @@ export class TuiTableBarExampleComponent1 {
         this.subscription = this.tableBarsService
             .open(this.tableBarTemplate || '', {
                 hasCloseButton: true,
+                adaptive: true,
             })
             .subscribe();
     }

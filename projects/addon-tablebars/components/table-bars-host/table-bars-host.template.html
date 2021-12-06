@@ -1,18 +1,22 @@
-<div *ngIf="service.bar$ | async as item" class="wrapper" [@tuiParentAnimation]>
+<div
+    *ngIf="service.bar$ | async as item"
+    class="t-wrapper"
+    [@tuiParentAnimation]
+>
     <div
         automation-id="tui-table-bar__bar"
-        class="bar"
+        class="t-bar"
         [@tuiSlideInTop]="animation"
         [class.bar_light]="item.mode === 'onDark'"
     >
         <div
-            class="tui-container"
+            class="tui-container t-container"
             [class.tui-container_adaptive]="item.adaptive"
         >
-            <div class="inner">
+            <div class="t-inner">
                 <div
                     polymorpheus-outlet
-                    class="content"
+                    class="t-content"
                     [content]="item.content"
                     [context]="getItemContext(item)"
                 ></div>
@@ -23,9 +27,9 @@
                     type="button"
                     automation-id="tui-table-bar__close-button"
                     size="xs"
-                    icon="tuiIconRemoveLarge"
                     appearance="icon"
-                    class="close-button tui-space_left-6"
+                    class="t-close-button tui-space_left-6"
+                    [icon]="closeIcon"
                     [tuiMode]="getMode(item.mode)"
                     [title]="closeWord$ | async"
                     (click)="onCloseClick(item)"

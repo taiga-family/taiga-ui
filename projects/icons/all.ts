@@ -183,6 +183,9 @@ const tuiIconChevronUpLarge =
 const tuiIconClearFormatLarge =
     '<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" focusable="false"><g id="tuiIconClearFormatLarge" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24" fill="none"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path d="m17 17 3 3m3 3-3-3m0 0-3 3m3-3 3-3M7 21v-9.5M17 3H7v8.5m0 0h6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></svg></g></svg>';
 
+const tuiIconClose =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false"><g id="tuiIconClose" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 24 24" fill="none"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.707 7.293a1 1 0 00-1.414 1.414L10.586 12l-3.293 3.293a1 1 0 101.414 1.414L12 13.414l3.293 3.293a1 1 0 001.414-1.414L13.414 12l3.293-3.293a1 1 0 00-1.414-1.414L12 10.586 8.707 7.293z" fill="currentColor"/></svg></svg></g></svg>';
+
 const tuiIconCloseCircleLarge =
     '<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" focusable="false"><g id="tuiIconCloseCircleLarge" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24" fill="none"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path d="M4.929 19.071c3.905 3.905 10.237 3.905 14.142 0 3.905-3.905 3.905-10.237 0-14.142-3.905-3.905-10.237-3.905-14.142 0-3.905 3.905-3.905 10.237 0 14.142zm9.899-9.9-5.656 5.657m0-5.657 5.656 5.657" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></svg></g></svg>';
 
@@ -715,6 +718,7 @@ export {
     tuiIconChevronUp,
     tuiIconChevronUpLarge,
     tuiIconClearFormatLarge,
+    tuiIconClose,
     tuiIconCloseCircleLarge,
     tuiIconCloseLarge,
     tuiIconCloud,
