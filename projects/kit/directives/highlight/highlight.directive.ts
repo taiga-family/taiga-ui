@@ -21,7 +21,10 @@ import {Observable} from 'rxjs';
 export class TuiHighlightDirective implements OnChanges {
     @Input()
     @tuiDefaultProp()
-    tuiHighlight = '';
+    tuiHighlight: {value: string; color: string} = {
+        value: '',
+        color: 'var(--tui-selection)',
+    };
 
     private readonly highlight: HTMLElement = this.setUpHighlight();
 
@@ -70,12 +73,16 @@ export class TuiHighlightDirective implements OnChanges {
             const range = this.documentRef.createRange();
 
             range.setStart(this.treeWalker.currentNode, index);
-            range.setEnd(this.treeWalker.currentNode, index + this.tuiHighlight.length);
+            range.setEnd(
+                this.treeWalker.currentNode,
+                index + this.tuiHighlight.value.length,
+            );
 
             const hostRect = this.elementRef.nativeElement.getBoundingClientRect();
             const {left, top, width, height} = range.getBoundingClientRect();
             const {style} = this.highlight;
 
+            style.background = this.tuiHighlight.color;
             style.left = px(left - hostRect.left);
             style.top = px(top - hostRect.top);
             style.width = px(width);
@@ -87,9 +94,9 @@ export class TuiHighlightDirective implements OnChanges {
     }
 
     private indexOf(source: string | null): number {
-        return !source || !this.tuiHighlight
+        return !source || !this.tuiHighlight.value
             ? -1
-            : source.toLowerCase().indexOf(this.tuiHighlight.toLowerCase());
+            : source.toLowerCase().indexOf(this.tuiHighlight.value.toLowerCase());
     }
 
     private setUpHighlight(): HTMLElement {
