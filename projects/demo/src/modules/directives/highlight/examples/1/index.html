@@ -9,7 +9,13 @@
     </thead>
     <tbody>
         <tr *ngFor="let row of rows">
-            <td *ngFor="let cell of row" [tuiHighlight]="search">{{cell}}</td>
+            <td
+                *ngFor="let cell of row"
+                [tuiHighlight]="search"
+                [tuiHighlightColor]="'#228B22'"
+            >
+                {{cell}}
+            </td>
         </tr>
     </tbody>
 </table>
