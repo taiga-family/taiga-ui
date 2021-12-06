@@ -4428,9 +4428,6 @@ SOFTWARE.
 
 
 
-intersection-observer
-W3C-20150513
-
 marked
 MIT
 # License information
