@@ -209,7 +209,7 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: 'Carousel',
-        keywords: 'молекулы, карусель, слайдер, slider, carousel',
+        keywords: 'карусель, слайдер, slider, carousel',
         route: '/components/carousel',
     },
     {

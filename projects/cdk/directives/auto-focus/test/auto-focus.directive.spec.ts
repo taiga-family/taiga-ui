@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {configureTestSuite} from 'ng-bullet';
+import {EMPTY} from 'rxjs';
 
 import {TuiFocusableElementAccessor} from '../../../interfaces/focusable-element-accessor';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '../../../tokens/focusable-item-accessor';
@@ -70,6 +71,8 @@ describe('TuiAutoFocus directive', () => {
         class TestFocusableComponent implements TuiFocusableElementAccessor {
             @ViewChild('input')
             input?: ElementRef<HTMLInputElement>;
+
+            focusedChange = EMPTY;
 
             get nativeFocusableElement(): HTMLInputElement | null {
                 return this.input ? this.input.nativeElement : null;

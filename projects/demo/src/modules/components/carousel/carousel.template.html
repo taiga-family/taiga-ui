@@ -1,4 +1,4 @@
-<tui-doc-page header="Carousel" package="KIT">
+<tui-doc-page header="Carousel" package="KIT" type="components">
     <ng-template pageTab>
         <tui-notification status="warning" class="tui-space_bottom-4">
             Requires
@@ -52,6 +52,7 @@
                 [duration]="duration"
                 [itemsCount]="itemsCount"
                 [(index)]="index"
+                (touchstart.passive.stop)="0"
             >
                 <ng-container *tuiRepeatTimes="let item of 9">
                     <div *tuiItem class="plate">

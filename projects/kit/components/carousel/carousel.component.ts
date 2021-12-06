@@ -45,9 +45,7 @@ export class TuiCarouselComponent {
     @Output()
     readonly indexChange = new EventEmitter<number>();
 
-    readonly manual$ = this.index$.pipe(
-        map(index => index % (this.items.length || index + 1)),
-    );
+    readonly manual$ = this.index$.pipe(map(index => this.loopback(index)));
 
     attached = false;
 
@@ -91,5 +89,12 @@ export class TuiCarouselComponent {
 
     onPresent(attached: boolean) {
         this.attached = attached;
+    }
+
+    private loopback(index: number) {
+        const safe = this.items.length || index + 1;
+        const remainder = index % safe;
+
+        return remainder < 0 ? remainder + this.items.length : remainder;
     }
 }
