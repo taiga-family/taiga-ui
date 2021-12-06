@@ -11,6 +11,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiHighlightExample1 {
     search = '';
+    highlightColor = 'orange';
 
     readonly rows = [
         ['King Arthur', '-', 'Arrested'],

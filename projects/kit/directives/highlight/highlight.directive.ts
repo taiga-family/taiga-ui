@@ -23,6 +23,10 @@ export class TuiHighlightDirective implements OnChanges {
     @tuiDefaultProp()
     tuiHighlight = '';
 
+    @Input()
+    @tuiDefaultProp()
+    tuiHighlightColor = 'var(--tui-selection)';
+
     private readonly highlight: HTMLElement = this.setUpHighlight();
 
     private readonly treeWalker = this.documentRef.createTreeWalker(
@@ -57,6 +61,8 @@ export class TuiHighlightDirective implements OnChanges {
         if (!this.match) {
             return;
         }
+
+        this.highlight.style.background = this.tuiHighlightColor;
 
         this.treeWalker.currentNode = this.elementRef.nativeElement;
 
@@ -96,7 +102,7 @@ export class TuiHighlightDirective implements OnChanges {
         const highlight = this.renderer.createElement('div');
         const {style} = highlight;
 
-        style.background = 'var(--tui-selection)';
+        style.background = this.tuiHighlightColor;
         style.zIndex = '-1';
         style.position = 'absolute';
         this.renderer.appendChild(this.elementRef.nativeElement, highlight);
