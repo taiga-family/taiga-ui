@@ -24,7 +24,6 @@ export class TuiHighlightDirective implements OnChanges {
     tuiHighlight = '';
 
     @Input()
-    @tuiDefaultProp()
     tuiHighlightColor = 'var(--tui-selection)';
 
     private readonly highlight: HTMLElement = this.setUpHighlight();
@@ -82,6 +81,7 @@ export class TuiHighlightDirective implements OnChanges {
             const {left, top, width, height} = range.getBoundingClientRect();
             const {style} = this.highlight;
 
+            style.background = this.tuiHighlightColor;
             style.left = px(left - hostRect.left);
             style.top = px(top - hostRect.top);
             style.width = px(width);
