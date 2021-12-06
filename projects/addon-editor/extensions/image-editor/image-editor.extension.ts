@@ -8,6 +8,7 @@ import {
     RawCommands,
 } from '@tiptap/core';
 import {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
+
 import {TuiImageEditorComponent} from './image-editor.component';
 
 export interface TuiEditableImage {
@@ -26,6 +27,26 @@ declare module '@tiptap/core' {
 }
 
 export const createImageEditorExtension = (injector: Injector): Node => {
+    const IMAGE_EDITOR_PARSE_META = [{tag: 'img[data-type="image-editor"]'}];
+    const DEFAULT_IMAGE_ATTRS = {
+        src: {
+            default: '',
+            keepOnSplit: false,
+        },
+        width: {
+            default: 300,
+            keepOnSplit: false,
+        },
+        alt: {
+            default: '',
+            keepOnSplit: false,
+        },
+        title: {
+            default: '',
+            keepOnSplit: false,
+        },
+    };
+
     return Node.create({
         name: 'imageEditor',
         group: 'block',
@@ -33,28 +54,11 @@ export const createImageEditorExtension = (injector: Injector): Node => {
         draggable: true,
 
         parseHTML(): NodeSpec['parseDOM'] {
-            return [{tag: 'img[data-type="image-editor"]'}];
+            return IMAGE_EDITOR_PARSE_META;
         },
 
         addAttributes(): Record<keyof TuiEditableImage, Attribute> {
-            return {
-                src: {
-                    default: '',
-                    keepOnSplit: false,
-                },
-                width: {
-                    default: 300,
-                    keepOnSplit: false,
-                },
-                alt: {
-                    default: '',
-                    keepOnSplit: false,
-                },
-                title: {
-                    default: '',
-                    keepOnSplit: false,
-                },
-            };
+            return DEFAULT_IMAGE_ATTRS;
         },
 
         renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
