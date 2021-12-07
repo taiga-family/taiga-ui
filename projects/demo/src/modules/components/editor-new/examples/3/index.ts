@@ -1,6 +1,8 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, Inject, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     tiptapEditorStyles,
     TUI_EDITOR_EXTENSIONS,
@@ -11,9 +13,6 @@ import {
 import {TuiDestroyService, TuiHandler} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-editor-example-3',

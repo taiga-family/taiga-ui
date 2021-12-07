@@ -45,10 +45,6 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
         return this.attrs.title || '';
     }
 
-    onHorizontalDrag([x]: readonly [number, number], direction: number) {
-        this._width = Math.max(this.minWidth, this.width + direction * x);
-    }
-
     constructor(
         @Inject(TUI_EDITOR_MIN_IMAGE_WIDTH) private readonly minWidth: number,
         @Inject(DOCUMENT) readonly documentRef: Document,
@@ -62,5 +58,9 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
         )
             .pipe(takeUntil(destroy$))
             .subscribe(() => this.updateAttributes({width: this._width}));
+    }
+
+    onHorizontalDrag([x]: readonly [number, number], direction: number) {
+        this._width = Math.max(this.minWidth, this.width + direction * x);
     }
 }
