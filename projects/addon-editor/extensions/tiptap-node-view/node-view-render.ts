@@ -102,18 +102,6 @@ class TuiNodeView extends NodeView<
         return this.contentDOMElement;
     }
 
-    private maybeMoveContentDOM(): void {
-        const contentElement = this.dom.querySelector('[data-node-view-content]');
-
-        if (
-            this.contentDOMElement &&
-            contentElement &&
-            !contentElement.contains(this.contentDOMElement)
-        ) {
-            contentElement.appendChild(this.contentDOMElement);
-        }
-    }
-
     update(node: ProseMirrorNode, decorations: Decoration[]): boolean {
         if (this.options.update) {
             return this.options.update(node, decorations);
@@ -145,6 +133,18 @@ class TuiNodeView extends NodeView<
 
     destroy(): void {
         this.renderer.destroy();
+    }
+
+    private maybeMoveContentDOM(): void {
+        const contentElement = this.dom.querySelector('[data-node-view-content]');
+
+        if (
+            this.contentDOMElement &&
+            contentElement &&
+            !contentElement.contains(this.contentDOMElement)
+        ) {
+            contentElement.appendChild(this.contentDOMElement);
+        }
     }
 }
 
