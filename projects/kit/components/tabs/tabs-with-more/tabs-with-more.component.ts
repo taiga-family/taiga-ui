@@ -41,6 +41,11 @@ import {TABS_PROVIDERS, TABS_REFRESH} from './tabs-with-more.providers';
     providers: TABS_PROVIDERS,
 })
 export class TuiTabsWithMoreComponent implements AfterViewInit {
+    @ViewChild(TuiTabComponent, {read: ElementRef})
+    private readonly moreButton?: ElementRef<HTMLButtonElement>;
+
+    private maxIndex = Infinity;
+
     @Input()
     @tuiDefaultProp()
     moreContent: PolymorpheusContent = '';
@@ -65,11 +70,6 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     readonly items: QueryList<TemplateRef<{}>> = EMPTY_QUERY;
 
     open = false;
-
-    private maxIndex = Infinity;
-
-    @ViewChild(TuiTabComponent, {read: ElementRef})
-    private readonly moreButton?: ElementRef<HTMLButtonElement>;
 
     constructor(
         @Inject(TABS_REFRESH) private readonly refresh$: Observable<unknown>,

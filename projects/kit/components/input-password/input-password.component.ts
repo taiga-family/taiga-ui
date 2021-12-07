@@ -57,10 +57,10 @@ export class TuiInputPasswordComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
-    isPasswordHidden = true;
-
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    isPasswordHidden = true;
 
     readonly computedMode$: Observable<TuiBrightness | TuiHintModeT | null> =
         combineLatest([
@@ -112,13 +112,6 @@ export class TuiInputPasswordComponent
         return this.getContext(this.textfieldSize.size);
     }
 
-    @tuiPure
-    private getContext(
-        $implicit: TuiSizeS | TuiSizeL,
-    ): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
-        return {$implicit};
-    }
-
     get inputType(): string {
         return this.isPasswordHidden || !this.hasEyeIcon ? 'password' : 'text';
     }
@@ -149,5 +142,12 @@ export class TuiInputPasswordComponent
 
     protected getFallbackValue(): string {
         return '';
+    }
+
+    @tuiPure
+    private getContext(
+        $implicit: TuiSizeS | TuiSizeL,
+    ): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
+        return {$implicit};
     }
 }

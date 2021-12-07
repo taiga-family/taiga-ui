@@ -68,6 +68,9 @@ export class TuiInputCardComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly input?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     cardSrc: string | null = null;
@@ -84,9 +87,6 @@ export class TuiInputCardComponent
         guide: false,
         pipe: conformedValue => conformedValue.trim(),
     };
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly input?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()

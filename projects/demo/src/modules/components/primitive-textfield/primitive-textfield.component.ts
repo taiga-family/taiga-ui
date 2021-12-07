@@ -42,6 +42,9 @@ viewBox="0 0 24 24">
     ],
 })
 export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInteractive {
+    @ViewChild('interactiveContent')
+    private readonly interactiveIcon: PolymorpheusContent = '';
+
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
@@ -149,9 +152,6 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     hintDirection: TuiDirection = this.hintDirectionVariants[2];
 
     hintMode: TuiHintModeT | null = null;
-
-    @ViewChild('interactiveContent')
-    private readonly interactiveIcon: PolymorpheusContent = '';
 
     get customContent(): string | null {
         return this.customContentSelected !== null ? CUSTOM_SVG : null;

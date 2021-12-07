@@ -27,12 +27,6 @@ export class TuiLineDaysChartExample1 {
 
     readonly maxLength: TuiDayLike = {month: 12};
 
-    readonly xStringify: TuiStringHandler<TuiDay> = ({month, day}) =>
-        `${this.months[month]}, ${day}`;
-
-    readonly yStringify: TuiStringHandler<number> = y =>
-        `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
-
     constructor(@Inject(TUI_MONTHS) private readonly months: readonly string[]) {}
 
     get labels(): readonly string[] {
@@ -42,6 +36,12 @@ export class TuiLineDaysChartExample1 {
     get value(): ReadonlyArray<[TuiDay, number]> {
         return this.computeValue(this.range);
     }
+
+    readonly xStringify: TuiStringHandler<TuiDay> = ({month, day}) =>
+        `${this.months[month]}, ${day}`;
+
+    readonly yStringify: TuiStringHandler<number> = y =>
+        `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
 
     @tuiPure
     private computeValue({from, to}: TuiDayRange): ReadonlyArray<[TuiDay, number]> {

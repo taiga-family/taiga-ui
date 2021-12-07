@@ -21,6 +21,9 @@ import {Observable} from 'rxjs';
     styleUrls: ['./primitive-spin-button.style.less'],
 })
 export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
+    @ViewChild('wrapper')
+    private readonly wrapper?: ElementRef<HTMLElement>;
+
     @Input()
     @tuiDefaultProp()
     disabled = false;
@@ -42,9 +45,6 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
 
     @Output()
     readonly rightClick = new EventEmitter<void>();
-
-    @ViewChild('wrapper')
-    private readonly wrapper?: ElementRef<HTMLElement>;
 
     constructor(
         @Inject(TUI_SPIN_TEXTS) readonly spinTexts$: Observable<[string, string]>,

@@ -28,6 +28,12 @@ export class TuiTableCellColorComponent {
         distinctUntilChanged(),
     );
 
+    constructor(
+        @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
+        @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
+        readonly texts$: Observable<LanguageEditor['toolbarTools']>,
+    ) {}
+
     isBlankColor(color: string): boolean {
         return color === EDITOR_BLANK_COLOR;
     }
@@ -35,10 +41,4 @@ export class TuiTableCellColorComponent {
     setCellColor(color: string) {
         this.editor.setCellColor(color);
     }
-
-    constructor(
-        @Inject(TuiTiptapEditorService) readonly editor: TuiEditor,
-        @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<LanguageEditor['toolbarTools']>,
-    ) {}
 }

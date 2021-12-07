@@ -24,6 +24,9 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiTagComponent {
+    @ViewChild('errorIcon')
+    errorTemplate?: TemplateRef<{}>;
+
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
@@ -76,9 +79,6 @@ export class ExampleTuiTagComponent {
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
 
     size: TuiSizeS | TuiSizeL = this.sizeVariants[1];
-
-    @ViewChild('errorIcon')
-    errorTemplate?: TemplateRef<{}>;
 
     readonly leftContentVariants = ['', 'Error icon'];
 

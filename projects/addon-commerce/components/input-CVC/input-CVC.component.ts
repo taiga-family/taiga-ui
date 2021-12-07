@@ -44,6 +44,9 @@ export class TuiInputCVCComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly input?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     autocompleteEnabled = false;
@@ -64,9 +67,6 @@ export class TuiInputCVCComponent
         mask: new Array(3).fill(TUI_DIGIT_REGEXP),
         guide: false,
     };
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly input?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()

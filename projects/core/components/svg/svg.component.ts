@@ -42,6 +42,10 @@ const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSvgComponent {
+    private readonly src$ = new ReplaySubject<void>(1);
+    private readonly isIE = isIE(this.userAgent);
+    private icon = '';
+
     @Input()
     @tuiRequiredSetter()
     set src(src: string) {
@@ -50,10 +54,6 @@ export class TuiSvgComponent {
     }
 
     readonly innerHTML$: Observable<SafeHtml>;
-
-    private icon = '';
-    private readonly src$ = new ReplaySubject<void>(1);
-    private readonly isIE = isIE(this.userAgent);
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,

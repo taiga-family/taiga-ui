@@ -39,6 +39,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     ],
 })
 export class TuiDataListWrapperComponent<T> implements TuiDataListAccessor<T> {
+    @ViewChildren(forwardRef(() => TuiOptionComponent))
+    private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+
     @Input()
     @tuiDefaultProp()
     items: ReadonlyArray<ReadonlyArray<T>> | ReadonlyArray<T> | null = [];
@@ -53,15 +56,12 @@ export class TuiDataListWrapperComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @tuiDefaultProp()
-    itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
-        TUI_DEFAULT_STRINGIFY($implicit);
+    size: TuiSizeXS | TuiSizeL = 'm';
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeL = 'm';
-
-    @ViewChildren(forwardRef(() => TuiOptionComponent))
-    private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+    itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
+        TUI_DEFAULT_STRINGIFY($implicit);
 
     getContext(
         $implicit: T,

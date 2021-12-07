@@ -14,6 +14,8 @@ const BENJI = 100;
     encapsulation,
 })
 export class TuiAxesExample2 {
+    private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
+
     readonly value: ReadonlyArray<[number, number, number, number]> = [
         [10, 20, 3, 7],
         [15, 18, 24, 1],
@@ -32,8 +34,6 @@ export class TuiAxesExample2 {
     readonly horizontalLinesHandler = TUI_ALWAYS_DASHED;
 
     readonly verticalLinesHandler = TUI_ALWAYS_NONE;
-
-    private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
 
     getPercent(set: [number, number, number, number]): number {
         return (BENJI * Math.max(...set)) / this.getMax(this.value);

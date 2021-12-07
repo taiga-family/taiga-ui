@@ -12,6 +12,10 @@ import {TuiBooleanHandler} from '@taiga-ui/cdk';
     encapsulation,
 })
 export class TuiFilterExample1 {
+    readonly form = new FormGroup({
+        filters: new FormControl(['Food']),
+    });
+
     readonly items = [
         'News',
         'Food',
@@ -24,8 +28,4 @@ export class TuiFilterExample1 {
     ];
 
     disabledItemHandler: TuiBooleanHandler<string> = item => item.length < 7;
-
-    readonly form = new FormGroup({
-        filters: new FormControl(['Food']),
-    });
 }

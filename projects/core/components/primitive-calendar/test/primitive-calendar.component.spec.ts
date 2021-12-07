@@ -34,14 +34,14 @@ import {TuiPrimitiveCalendarModule} from '../primitive-calendar.module';
     `,
 })
 class TestComponent {
+    @ViewChild(TuiPrimitiveCalendarComponent, {static: true})
+    component!: TuiPrimitiveCalendarComponent;
+
     month = new TuiMonth(2018, 1);
 
     value: TuiDayRange | null = null;
 
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
-
-    @ViewChild(TuiPrimitiveCalendarComponent, {static: true})
-    component!: TuiPrimitiveCalendarComponent;
 
     onDayClick(_: TuiDay) {}
 }

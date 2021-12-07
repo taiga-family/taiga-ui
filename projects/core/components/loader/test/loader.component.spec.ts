@@ -27,12 +27,12 @@ describe('Loader', () => {
         @ViewChild(TuiLoaderComponent, {static: true})
         component!: TuiLoaderComponent;
 
+        @ViewChild('template', {static: true})
+        template: PolymorpheusContent = '';
+
         custom = false;
         showLoader = false;
         content: PolymorpheusContent = '';
-
-        @ViewChild('template', {static: true})
-        template: PolymorpheusContent = '';
     }
 
     let fixture: ComponentFixture<TestComponent>;

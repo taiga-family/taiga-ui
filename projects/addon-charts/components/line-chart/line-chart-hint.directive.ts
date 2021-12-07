@@ -37,15 +37,15 @@ import {TuiLineChartComponent} from './line-chart.component';
     providers: [TuiDestroyService],
 })
 export class TuiLineChartHintDirective {
-    @Input('tuiLineChartHint')
-    @tuiDefaultProp()
-    hint: PolymorpheusContent<TuiContextWithImplicit<ReadonlyArray<TuiPoint>>> = '';
-
     @ContentChildren(forwardRef(() => TuiLineChartComponent))
     private readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
 
     @ContentChildren(forwardRef(() => TuiLineChartComponent), {read: ElementRef})
     private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
+    @Input('tuiLineChartHint')
+    @tuiDefaultProp()
+    hint: PolymorpheusContent<TuiContextWithImplicit<ReadonlyArray<TuiPoint>>> = '';
 
     constructor(
         @Inject(Renderer2) private readonly renderer: Renderer2,

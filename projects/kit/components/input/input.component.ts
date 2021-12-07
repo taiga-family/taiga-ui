@@ -40,6 +40,12 @@ export class TuiInputComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor, TuiDataListHost<string>
 {
+    @ViewChild(TuiHostedDropdownComponent)
+    private readonly hostedDropdown?: TuiHostedDropdownComponent;
+
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     icon: string | null = null;
@@ -48,16 +54,10 @@ export class TuiInputComponent
     @tuiDefaultProp()
     iconAlign: TuiHorizontalDirection = 'left';
 
-    open = false;
-
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent = '';
 
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly hostedDropdown?: TuiHostedDropdownComponent;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+    open = false;
 
     constructor(
         @Optional()

@@ -33,9 +33,6 @@ export class TuiTreeComponent<T> implements DoCheck {
     @Input()
     value!: T;
 
-    @Input()
-    content: PolymorpheusContent<TuiTreeContext<T>> = ({$implicit}) => String($implicit);
-
     @ViewChild(TuiTreeItemComponent)
     readonly item?: TuiTreeItemComponent;
 
@@ -47,6 +44,9 @@ export class TuiTreeComponent<T> implements DoCheck {
         @Inject(TuiTreeChildrenDirective)
         readonly directive: TuiTreeChildrenDirective<T> | null,
     ) {}
+
+    @Input()
+    content: PolymorpheusContent<TuiTreeContext<T>> = ({$implicit}) => String($implicit);
 
     get children(): readonly T[] {
         return (

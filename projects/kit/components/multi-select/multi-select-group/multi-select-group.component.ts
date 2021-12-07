@@ -43,12 +43,12 @@ import {map} from 'rxjs/operators';
     ],
 })
 export class TuiMultiSelectGroupComponent<T> {
+    @ContentChildren(TuiOptionComponent)
+    private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+
     @Input()
     @tuiDefaultProp()
     label = '';
-
-    @ContentChildren(TuiOptionComponent)
-    private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
     constructor(
         @Inject(TUI_DATA_LIST_HOST) private readonly host: TuiDataListHost<T>,

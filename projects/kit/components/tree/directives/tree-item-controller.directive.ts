@@ -16,11 +16,11 @@ import {TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
     ],
 })
 export class TuiTreeItemControllerDirective implements TuiTreeController {
+    private readonly map = new WeakMap<TuiTreeItemComponent, boolean>();
+
     @Input('tuiTreeController')
     @tuiDefaultProp()
     fallback = true;
-
-    private readonly map = new WeakMap<TuiTreeItemComponent, boolean>();
 
     isExpanded(item: TuiTreeItemComponent): boolean {
         return this.map.get(item) ?? this.fallback;

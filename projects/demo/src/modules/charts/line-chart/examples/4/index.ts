@@ -12,9 +12,6 @@ import {TuiPoint} from '@taiga-ui/core';
     encapsulation,
 })
 export class TuiLineChartExample4 {
-    readonly hint: TuiStringHandler<TuiContextWithImplicit<TuiPoint>> = ({$implicit}) =>
-        `Vertical: ${$implicit[1]}\nHorizontal: ${$implicit[0]}`;
-
     readonly value = [
         [50, 50],
         [100, 75],
@@ -26,4 +23,7 @@ export class TuiLineChartExample4 {
     ];
 
     readonly singleValue = [[200, 150]];
+
+    readonly hint: TuiStringHandler<TuiContextWithImplicit<TuiPoint>> = ({$implicit}) =>
+        `Vertical: ${$implicit[1]}\nHorizontal: ${$implicit[0]}`;
 }

@@ -90,6 +90,15 @@ export class TuiInputDateRangeComponent
     extends AbstractTuiNullableControl<TuiDayRange>
     implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    private readonly textMaskOptions: TuiTextMaskOptions = {
+        mask: TUI_DATE_RANGE_MASK,
+        pipe: tuiCreateAutoCorrectedDateRangePipe(this),
+        guide: false,
+    };
+
     @Input()
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
@@ -126,15 +135,6 @@ export class TuiInputDateRangeComponent
 
     readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
     readonly dateFiller$ = this.dateTexts$.pipe(pluck(this.dateFormat));
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
-
-    private readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: TUI_DATE_RANGE_MASK,
-        pipe: tuiCreateAutoCorrectedDateRangePipe(this),
-        guide: false,
-    };
 
     constructor(
         @Optional()
@@ -237,6 +237,13 @@ export class TuiInputDateRangeComponent
         this.nativeFocusableElement.value = value;
     }
 
+    @HostListener('click')
+    onClick() {
+        if (!this.isMobile) {
+            this.toggle();
+        }
+    }
+
     getComputedRangeFiller(dateFiller: string): string {
         return this.activePeriod ? '' : this.getDateRangeFiller(dateFiller);
     }
@@ -276,13 +283,6 @@ export class TuiInputDateRangeComponent
             .subscribe(value => {
                 this.updateValue(value);
             });
-    }
-
-    @HostListener('click')
-    onClick() {
-        if (!this.isMobile) {
-            this.toggle();
-        }
     }
 
     onOpenChange(open: boolean) {

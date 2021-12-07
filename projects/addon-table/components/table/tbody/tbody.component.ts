@@ -48,8 +48,6 @@ export class TuiTbodyComponent<T> {
     @ContentChildren(forwardRef(() => TuiTrComponent))
     readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
 
-    readonly toContext = ($implicit: T, index: number) => ({$implicit, index});
-
     constructor(
         @Inject(forwardRef(() => TuiTableDirective))
         readonly table: TuiTableDirective<T>,
@@ -58,6 +56,8 @@ export class TuiTbodyComponent<T> {
     get sorted(): readonly T[] {
         return this.sort(this.data, this.table.sorter, this.table.direction);
     }
+
+    readonly toContext = ($implicit: T, index: number) => ({$implicit, index});
 
     onClick() {
         this.open = !this.open;

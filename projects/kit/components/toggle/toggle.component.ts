@@ -48,6 +48,9 @@ export class TuiToggleComponent
     extends AbstractTuiControl<boolean>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
+
     @Input()
     @tuiDefaultProp()
     singleColor = this.options.singleColor;
@@ -64,9 +67,6 @@ export class TuiToggleComponent
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
-
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     constructor(
         @Optional()

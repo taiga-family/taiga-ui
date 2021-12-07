@@ -30,6 +30,10 @@ const ITEMS_IN_ROW = 4;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveYearPickerComponent {
+    private hoveredItem: number | null = null;
+    private pressedItem: number | null = null;
+    private currentYear = TuiMonth.currentLocal().year;
+
     @Input()
     @tuiDefaultProp()
     value: TuiYear | TuiDayRange | null = null;
@@ -52,12 +56,6 @@ export class TuiPrimitiveYearPickerComponent {
 
     @Output()
     readonly yearClick = new EventEmitter<TuiYear | TuiDayRange>();
-
-    private hoveredItem: number | null = null;
-
-    private pressedItem: number | null = null;
-
-    private currentYear = TuiMonth.currentLocal().year;
 
     @HostBinding('class._single')
     get isSingle(): boolean {

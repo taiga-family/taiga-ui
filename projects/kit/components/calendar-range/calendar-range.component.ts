@@ -88,6 +88,25 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
 
+    constructor(
+        @Inject(TUI_CALENDAR_DATA_STREAM)
+        @Optional()
+        valueChanges: Observable<TuiDayRange | null> | null,
+        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Inject(TUI_OTHER_DATE_TEXT) readonly otherDateText$: Observable<string>,
+    ) {
+        if (!valueChanges) {
+            return;
+        }
+
+        valueChanges
+            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
+            .subscribe(value => {
+                this.value = value;
+            });
+    }
+
     readonly monthShiftMapper: TuiMapper<TuiMonth, TuiMonth> = item =>
         item.append({month: 1});
 
@@ -110,25 +129,6 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         ),
         otherDateText,
     ];
-
-    constructor(
-        @Inject(TUI_CALENDAR_DATA_STREAM)
-        @Optional()
-        valueChanges: Observable<TuiDayRange | null> | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        @Inject(TUI_OTHER_DATE_TEXT) readonly otherDateText$: Observable<string>,
-    ) {
-        if (!valueChanges) {
-            return;
-        }
-
-        valueChanges
-            .pipe(watch(changeDetectorRef), takeUntil(destroy$))
-            .subscribe(value => {
-                this.value = value;
-            });
-    }
 
     get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
         return this.calculateDisabledItemHandler(

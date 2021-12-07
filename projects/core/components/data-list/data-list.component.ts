@@ -46,6 +46,11 @@ import {TuiOptionComponent} from './option/option.component';
     ],
 })
 export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
+    @ContentChildren(forwardRef(() => TuiOptionComponent), {descendants: true})
+    private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+
+    private origin?: HTMLElement;
+
     @Input()
     @HostBinding('attr.role')
     @tuiDefaultProp()
@@ -54,11 +59,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @Input()
     @tuiDefaultProp()
     emptyContent: PolymorpheusContent = '';
-
-    @ContentChildren(forwardRef(() => TuiOptionComponent), {descendants: true})
-    private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
-
-    private origin?: HTMLElement;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -69,14 +69,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @tuiPure
     get empty$(): Observable<boolean> {
         return itemsQueryListObservable(this.options).pipe(map(({length}) => !length));
-    }
-
-    getOptions(includeDisabled: boolean = false): ReadonlyArray<T> {
-        return this.options
-            .toArray()
-            .filter(({disabled}) => includeDisabled || !disabled)
-            .map(({value}) => value)
-            .filter(isPresent);
     }
 
     @HostListener('focusin', ['$event.relatedTarget', '$event.currentTarget'])
@@ -97,13 +89,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
         moveFocus(elements.indexOf(current), elements, step);
     }
 
-    onFocus(element: HTMLElement, top: boolean) {
-        const {elements} = this;
-
-        moveFocus(top ? -1 : elements.length, elements, top ? 1 : -1);
-        this.handleFocusLossIfNecessary(element);
-    }
-
     // TODO: Consider aria-activedescendant for proper accessibility implementation
     @HostListener('wheel.silent.passive', ['$event.currentTarget'])
     @HostListener('mouseleave', ['$event.target'])
@@ -111,6 +96,21 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
         if (this.origin && isNativeFocusedIn(element)) {
             setNativeMouseFocused(this.origin, true, true);
         }
+    }
+
+    getOptions(includeDisabled: boolean = false): ReadonlyArray<T> {
+        return this.options
+            .toArray()
+            .filter(({disabled}) => includeDisabled || !disabled)
+            .map(({value}) => value)
+            .filter(isPresent);
+    }
+
+    onFocus(element: HTMLElement, top: boolean) {
+        const {elements} = this;
+
+        moveFocus(top ? -1 : elements.length, elements, top ? 1 : -1);
+        this.handleFocusLossIfNecessary(element);
     }
 
     private get elements(): ReadonlyArray<HTMLElement> {

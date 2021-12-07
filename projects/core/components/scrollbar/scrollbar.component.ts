@@ -33,17 +33,17 @@ export function scrollRefFactory({
     ],
 })
 export class TuiScrollbarComponent {
-    @Input()
-    @tuiDefaultProp()
-    hidden = false;
-
-    readonly browserScrollRef = new ElementRef(this.elementRef.nativeElement);
-
     private delegated = false;
 
     private readonly isLegacy: boolean =
         !this.cssRef.supports('position', 'sticky') ||
         (isFirefox(this.userAgent) && !this.cssRef.supports('scrollbar-width', 'none'));
+
+    @Input()
+    @tuiDefaultProp()
+    hidden = false;
+
+    readonly browserScrollRef = new ElementRef(this.elementRef.nativeElement);
 
     constructor(
         /**

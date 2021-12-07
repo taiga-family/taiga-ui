@@ -28,9 +28,6 @@ const OFFSET = 16;
     },
 })
 export class TuiSheetWrapperDirective {
-    // Trying to get overflow: visible as early as possible for Safari
-    touched = false;
-
     @ContentChild(TuiSheetComponent)
     private readonly sheet?: TuiSheetComponent<unknown>;
 
@@ -39,6 +36,9 @@ export class TuiSheetWrapperDirective {
 
     @ContentChild(TuiSheetComponent, {read: TUI_SHEET_SCROLL})
     private readonly scroll$!: Observable<number>;
+
+    // Trying to get overflow: visible as early as possible for Safari
+    touched = false;
 
     constructor(
         @Inject(WINDOW) private readonly windowRef: Window,

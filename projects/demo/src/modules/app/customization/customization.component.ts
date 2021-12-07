@@ -22,12 +22,12 @@ import {
     providers: TUI_DOC_CUSTOMIZATION_PROVIDERS,
 })
 export class TuiCustomizationComponent implements AfterViewInit {
+    @ViewChild('demo')
+    private readonly demo?: TuiDocDemoComponent;
+
     readonly isIE = isIE(this.userAgent);
 
     readonly change$ = new Subject<void>();
-
-    @ViewChild('demo')
-    private readonly demo?: TuiDocDemoComponent;
 
     constructor(
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,

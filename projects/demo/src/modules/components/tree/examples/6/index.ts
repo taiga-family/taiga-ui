@@ -15,8 +15,7 @@ interface TreeNode {
     encapsulation,
 })
 export class TuiTreeExample6 {
-    readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
-        item.children || EMPTY_ARRAY;
+    map = new Map<TreeNode, boolean>();
 
     readonly data: TreeNode = {
         text: 'Topmost',
@@ -42,6 +41,9 @@ export class TuiTreeExample6 {
         ],
     };
 
+    readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
+        item.children || EMPTY_ARRAY;
+
     readonly getValue = (item: TreeNode, map: Map<TreeNode, boolean>) => {
         const flat = flatten(item);
         const result = !!map.get(flat[0]);
@@ -54,8 +56,6 @@ export class TuiTreeExample6 {
 
         return result;
     };
-
-    map = new Map<TreeNode, boolean>();
 
     onChecked(node: TreeNode, value: boolean) {
         flatten(node).forEach(item => this.map.set(item, value));

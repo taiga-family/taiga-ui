@@ -91,6 +91,13 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         this.setQueryParam(value);
     }
 
+    emitEvent(event: unknown): void {
+        // For more convenient debugging
+        console.log(this.attrName, event);
+
+        this.emits$.next(this.emits$.value + 1);
+    }
+
     private parseParams(params: Params) {
         if (
             !params[this.documentationPropertyName] &&
@@ -136,12 +143,5 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         };
 
         this.locationRef.go(String(tree));
-    }
-
-    emitEvent(event: unknown): void {
-        // For more convenient debugging
-        console.log(this.attrName, event);
-
-        this.emits$.next(this.emits$.value + 1);
     }
 }

@@ -15,6 +15,10 @@ import {Color} from '../colors.constants';
     changeDetection,
 })
 export class TableComponent {
+    private readonly styles = this.windowRef.getComputedStyle(
+        this.documentRef.documentElement,
+    );
+
     @Input()
     colors: ReadonlyArray<Color> = [];
 
@@ -23,10 +27,6 @@ export class TableComponent {
     dark = false;
 
     readonly theme$ = this.themeService.pipe(delay(1));
-
-    private readonly styles = this.windowRef.getComputedStyle(
-        this.documentRef.documentElement,
-    );
 
     constructor(
         @Inject(TuiThemeService) private readonly themeService: Observable<unknown>,

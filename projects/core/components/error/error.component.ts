@@ -28,10 +28,7 @@ export class TuiErrorComponent {
 
     error: TuiValidationError | null = null;
 
-    readonly animation = {
-        value: '',
-        ...this.options,
-    } as const;
+    readonly animation = {value: '', ...this.options} as const;
 
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,

@@ -49,6 +49,9 @@ export class TuiEditorNewComponent
     extends AbstractTuiControl<string>
     implements OnDestroy
 {
+    @ViewChild(TuiEditLinkComponent, {read: ElementRef})
+    private readonly editLink?: ElementRef<HTMLElement>;
+
     @Input()
     @tuiDefaultProp()
     readonly exampleText = '';
@@ -59,11 +62,6 @@ export class TuiEditorNewComponent
 
     @ViewChild(TuiToolbarNewComponent)
     readonly toolbar?: TuiToolbarNewComponent;
-
-    @ViewChild(TuiEditLinkComponent, {read: ElementRef})
-    private readonly editLink?: ElementRef<HTMLElement>;
-
-    private readonly isSelectionLink = () => !!this.editor?.isActive('link');
 
     constructor(
         @Optional()
@@ -135,6 +133,8 @@ export class TuiEditorNewComponent
     protected getFallbackValue(): string {
         return '';
     }
+
+    private readonly isSelectionLink = () => !!this.editor?.isActive('link');
 
     private get hasValue(): boolean {
         return !!this.value;

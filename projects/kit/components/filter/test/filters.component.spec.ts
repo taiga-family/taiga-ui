@@ -46,8 +46,6 @@ describe('Filter', () => {
         @ViewChild(TuiFilterComponent, {static: true})
         component: TuiFilterComponent<any>;
 
-        badgeHandler: TuiHandler<any, number> = item => Number(item);
-
         disabledItemHandler: TuiBooleanHandler<any> = ALWAYS_FALSE_HANDLER;
 
         control = new FormControl([]);
@@ -55,6 +53,8 @@ describe('Filter', () => {
         items: ReadonlyArray<any> = ARR_STRING;
 
         size: TuiSizeS = 'm';
+
+        badgeHandler: TuiHandler<any, number> = item => Number(item);
     }
 
     let fixture: ComponentFixture<TestComponent>;

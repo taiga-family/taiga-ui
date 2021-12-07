@@ -39,6 +39,10 @@ const ICONS: Record<TuiGradientDirection, string> = {
     providers: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiColorSelectorComponent {
+    private stops = new Map(DEFAULT_STEPS);
+    private currentStop = 0;
+    private direction: TuiGradientDirection = 'to bottom';
+
     @Input()
     @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = new Map<string, string>();
@@ -66,12 +70,6 @@ export class TuiColorSelectorComponent {
         'to top left',
         'to top',
     ];
-
-    private stops = new Map(DEFAULT_STEPS);
-
-    private currentStop = 0;
-
-    private direction: TuiGradientDirection = 'to bottom';
 
     constructor(
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
@@ -163,6 +161,30 @@ export class TuiColorSelectorComponent {
         this.updateColor(this.getGradient(this.direction));
     }
 
+    @tuiPure
+    private getStopsKeys(stops: Map<number, unknown>): number[] {
+        return Array.from(stops.keys());
+    }
+
+    @tuiPure
+    private filterPalette(
+        colors: ReadonlyMap<string, string>,
+        isGradient: boolean,
+    ): Map<string, string> {
+        const map = new Map(colors);
+
+        map.forEach((value, key) => {
+            if (
+                (value.startsWith('linear-gradient') && !isGradient) ||
+                (!value.startsWith('linear-gradient') && isGradient)
+            ) {
+                map.delete(key);
+            }
+        });
+
+        return map;
+    }
+
     private updateColor(color: string) {
         this.colorChange.emit(color);
     }
@@ -204,30 +226,6 @@ export class TuiColorSelectorComponent {
                 key === removed ? [added, value] : [key, this.getStop(key)],
             ),
         );
-    }
-
-    @tuiPure
-    private getStopsKeys(stops: Map<number, unknown>): number[] {
-        return Array.from(stops.keys());
-    }
-
-    @tuiPure
-    private filterPalette(
-        colors: ReadonlyMap<string, string>,
-        isGradient: boolean,
-    ): Map<string, string> {
-        const map = new Map(colors);
-
-        map.forEach((value, key) => {
-            if (
-                (value.startsWith('linear-gradient') && !isGradient) ||
-                (!value.startsWith('linear-gradient') && isGradient)
-            ) {
-                map.delete(key);
-            }
-        });
-
-        return map;
     }
 
     private parse(color: string) {

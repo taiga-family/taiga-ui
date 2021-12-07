@@ -26,6 +26,9 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
+    @ViewChild('customTemplate')
+    customTemplate: PolymorpheusContent = '';
+
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,
         HTML: example1Html,
@@ -59,9 +62,6 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
     readonly autocomplete: TuiAccountAutofillName | null = null;
 
     readonly maxLength = null;
-
-    @ViewChild('customTemplate')
-    customTemplate: PolymorpheusContent = '';
 
     readonly successMessageVariants = ['Copied', 'Template'];
 

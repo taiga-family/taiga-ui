@@ -74,6 +74,15 @@ export class TuiComboBoxComponent<T>
     extends AbstractTuiNullableControl<T | string>
     implements TuiFocusableElementAccessor, TuiDataListHost<T>
 {
+    @ContentChild(TUI_DATA_LIST_ACCESSOR as any)
+    private readonly accessor?: TuiDataListAccessor<T>;
+
+    @ViewChild(TuiHostedDropdownComponent)
+    private readonly hostedDropdown?: TuiHostedDropdownComponent;
+
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     stringify: TuiStringHandler<T> = TUI_DEFAULT_STRINGIFY;
@@ -101,19 +110,10 @@ export class TuiComboBoxComponent<T>
     @Output()
     readonly searchChange = new EventEmitter<string | null>();
 
-    open = false;
-
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent = '';
 
-    @ContentChild(TUI_DATA_LIST_ACCESSOR as any)
-    private readonly accessor?: TuiDataListAccessor<T>;
-
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly hostedDropdown?: TuiHostedDropdownComponent;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+    open = false;
 
     constructor(
         @Optional()
@@ -158,6 +158,17 @@ export class TuiComboBoxComponent<T>
 
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
         return this.valueContent || this.nativeValue;
+    }
+
+    @tuiPure
+    computeContext(
+        $implicit: T | null,
+        active: boolean,
+    ): TuiValueContentContext<T | null> {
+        return {
+            $implicit,
+            active,
+        };
     }
 
     onActiveZone(active: boolean) {
@@ -220,17 +231,6 @@ export class TuiComboBoxComponent<T>
 
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
-    }
-
-    @tuiPure
-    computeContext(
-        $implicit: T | null,
-        active: boolean,
-    ): TuiValueContentContext<T | null> {
-        return {
-            $implicit,
-            active,
-        };
     }
 
     toggle() {

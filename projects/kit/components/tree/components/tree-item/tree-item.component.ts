@@ -34,10 +34,10 @@ import {TUI_TREE_ITEM_PROVIDERS} from './tree-item.providers';
     },
 })
 export class TuiTreeItemComponent implements DoCheck {
-    private readonly change$ = new Subject<void>();
-
     @ContentChildren(TUI_TREE_NODE as any)
     private readonly nested: QueryList<unknown> = EMPTY_QUERY;
+
+    private readonly change$ = new Subject<void>();
 
     readonly expanded$ = this.change$.pipe(
         startWith(null),

@@ -15,14 +15,14 @@ import {TuiDialogContext, TuiNotificationsService} from '../../../../../../../co
     encapsulation,
 })
 export class TuiPreviewExample1 {
-    index = 0;
-    length = 2;
-
     @ViewChild('preview')
     readonly preview?: TemplateRef<TuiDialogContext<void>>;
 
     @ViewChild('contentSample')
     readonly contentSample?: TemplateRef<{}>;
+
+    index = 0;
+    length = 2;
 
     constructor(
         @Inject(PreviewDialogService)

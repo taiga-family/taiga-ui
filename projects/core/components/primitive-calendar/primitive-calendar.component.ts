@@ -30,6 +30,9 @@ import {Observable} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarComponent {
+    private pressedItem: TuiDay | null = null;
+    private today = TuiDay.currentLocal();
+
     @Input()
     @tuiDefaultProp()
     month: TuiMonth = TuiMonth.currentLocal();
@@ -60,9 +63,18 @@ export class TuiPrimitiveCalendarComponent {
     @Output()
     readonly dayClick = new EventEmitter<TuiDay>();
 
-    private pressedItem: TuiDay | null = null;
+    constructor(
+        @Inject(TUI_ORDERED_SHORT_WEEK_DAYS)
+        readonly weekDays$: Observable<WEEK_DAYS_NAMES>,
+    ) {}
 
-    private today = TuiDay.currentLocal();
+    @HostBinding('class._single')
+    get isSingle(): boolean {
+        return (
+            this.value !== null &&
+            (this.value instanceof TuiDay || this.value.isSingleDay)
+        );
+    }
 
     readonly toMarkers = (
         day: TuiDay,
@@ -77,19 +89,6 @@ export class TuiPrimitiveCalendarComponent {
 
         return markers.length === 0 ? null : markers;
     };
-
-    constructor(
-        @Inject(TUI_ORDERED_SHORT_WEEK_DAYS)
-        readonly weekDays$: Observable<WEEK_DAYS_NAMES>,
-    ) {}
-
-    @HostBinding('class._single')
-    get isSingle(): boolean {
-        return (
-            this.value !== null &&
-            (this.value instanceof TuiDay || this.value.isSingleDay)
-        );
-    }
 
     getItemState(item: TuiDay): TuiInteractiveState | null {
         const {disabledItemHandler, pressedItem, hoveredItem} = this;

@@ -24,6 +24,9 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiAccordionComponent {
+    @ViewChild('content')
+    content?: ElementRef;
+
     async = false;
     closeOthers = true;
     disabled = false;
@@ -60,9 +63,6 @@ export class ExampleTuiAccordionComponent {
     readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
 
     size: TuiSizeS = this.sizeVariants[1];
-
-    @ViewChild('content')
-    content?: ElementRef;
 
     constructor(@Inject(DOCUMENT) private readonly documentRef: Document) {}
 

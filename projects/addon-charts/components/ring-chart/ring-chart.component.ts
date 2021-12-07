@@ -60,6 +60,14 @@ export class TuiRingChartComponent {
         this.updateActiveItemIndex(index);
     }
 
+    @tuiPure
+    private getContentContext(
+        $implicit: number,
+        value: readonly number[],
+    ): TuiRingChartContext {
+        return {$implicit, value};
+    }
+
     private updateActiveItemIndex(index: number) {
         if (index === this.activeItemIndex) {
             return;
@@ -67,13 +75,5 @@ export class TuiRingChartComponent {
 
         this.activeItemIndex = index;
         this.activeItemIndexChange.next(index);
-    }
-
-    @tuiPure
-    private getContentContext(
-        $implicit: number,
-        value: readonly number[],
-    ): TuiRingChartContext {
-        return {$implicit, value};
     }
 }

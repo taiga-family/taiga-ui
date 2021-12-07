@@ -24,6 +24,8 @@ import {
     providers: [TuiDestroyService],
 })
 export class TuiPointerHintDirective extends AbstractTuiHint {
+    private currentMouseRect = this.mousePositionToClientRect();
+
     @Input()
     @tuiDefaultProp()
     tuiHintShowDelay = 0;
@@ -47,8 +49,6 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
     }
 
     content: PolymorpheusContent = '';
-
-    private currentMouseRect = this.mousePositionToClientRect();
 
     constructor(
         @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,

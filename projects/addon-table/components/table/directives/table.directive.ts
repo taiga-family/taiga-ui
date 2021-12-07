@@ -37,10 +37,6 @@ export class TuiTableDirective<T> extends TuiController {
 
     @Input()
     @tuiDefaultProp()
-    sorter: TuiComparator<T> = () => 0;
-
-    @Input()
-    @tuiDefaultProp()
     direction: -1 | 1 = 1;
 
     @Output()
@@ -58,6 +54,10 @@ export class TuiTableDirective<T> extends TuiController {
     ) {
         super();
     }
+
+    @Input()
+    @tuiDefaultProp()
+    sorter: TuiComparator<T> = () => 0;
 
     updateSorter(sorter: TuiComparator<T>) {
         if (this.sorter === sorter) {

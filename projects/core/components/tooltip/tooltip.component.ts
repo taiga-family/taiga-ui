@@ -22,6 +22,8 @@ import {takeUntil} from 'rxjs/operators';
     providers: [TuiDestroyService, MODE_PROVIDER],
 })
 export class TuiTooltipComponent {
+    private globalMode: TuiBrightness | null = null;
+
     @Input()
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
@@ -45,8 +47,6 @@ export class TuiTooltipComponent {
     @Input()
     @tuiDefaultProp()
     describeId = '';
-
-    private globalMode: TuiBrightness | null = null;
 
     constructor(
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,

@@ -11,6 +11,8 @@ import {
     selector: '[ngFor][ngForOf][ngForElse],[ngFor][ngForOf][ngForEmpty]',
 })
 export class TuiForDirective implements OnChanges {
+    private ref?: EmbeddedViewRef<{}>;
+
     @Input()
     ngForOf: unknown[] | null = [];
 
@@ -19,8 +21,6 @@ export class TuiForDirective implements OnChanges {
 
     @Input()
     ngForEmpty?: TemplateRef<{}>;
-
-    private ref?: EmbeddedViewRef<{}>;
 
     constructor(private readonly vcr: ViewContainerRef) {}
 

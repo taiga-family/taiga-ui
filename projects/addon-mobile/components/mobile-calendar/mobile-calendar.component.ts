@@ -65,6 +65,16 @@ import {
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
 })
 export class TuiMobileCalendarComponent {
+    @ViewChild('yearsScrollRef')
+    private readonly yearsScrollRef?: CdkVirtualScrollViewport;
+
+    @ViewChild('monthsScrollRef')
+    private readonly monthsScrollRef?: CdkVirtualScrollViewport;
+
+    private readonly today = TuiDay.currentLocal();
+    private activeYear = this.initialYear;
+    private activeMonth = this.initialMonth;
+
     @Input()
     @tuiDefaultProp()
     single = true;
@@ -81,8 +91,6 @@ export class TuiMobileCalendarComponent {
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
-    value: TuiDay | TuiDayRange | null = null;
-
     @Output()
     readonly cancel = new EventEmitter<void>();
 
@@ -91,6 +99,8 @@ export class TuiMobileCalendarComponent {
 
     @HostBinding('class._ios')
     readonly isIOS: boolean;
+
+    value: TuiDay | TuiDayRange | null = null;
 
     readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
 
@@ -102,26 +112,6 @@ export class TuiMobileCalendarComponent {
                 i % MONTHS_IN_YEAR,
             ),
     );
-
-    readonly disabledItemHandlerMapper: TuiMapper<
-        TuiBooleanHandler<TuiDay>,
-        TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min: TuiDay, max: TuiDay) => item =>
-        item.dayBefore(min) ||
-        (max !== null && item.dayAfter(max)) ||
-        disabledItemHandler(item);
-
-    private readonly today = TuiDay.currentLocal();
-
-    private activeYear = this.initialYear;
-
-    private activeMonth = this.initialMonth;
-
-    @ViewChild('yearsScrollRef')
-    private readonly yearsScrollRef?: CdkVirtualScrollViewport;
-
-    @ViewChild('monthsScrollRef')
-    private readonly monthsScrollRef?: CdkVirtualScrollViewport;
 
     constructor(
         @Inject(TUI_IS_IOS) isIOS: boolean,
@@ -243,6 +233,14 @@ export class TuiMobileCalendarComponent {
             this.scrollToActiveMonth();
         });
     }
+
+    readonly disabledItemHandlerMapper: TuiMapper<
+        TuiBooleanHandler<TuiDay>,
+        TuiBooleanHandler<TuiDay>
+    > = (disabledItemHandler, min: TuiDay, max: TuiDay) => item =>
+        item.dayBefore(min) ||
+        (max !== null && item.dayAfter(max)) ||
+        disabledItemHandler(item);
 
     private get initialYear(): number {
         if (!this.value) {

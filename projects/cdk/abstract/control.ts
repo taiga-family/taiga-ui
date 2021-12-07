@@ -59,6 +59,8 @@ export abstract class AbstractTuiControl<T>
         }
     }
 
+    protected abstract getFallbackValue(): T;
+
     @HostBinding('class._invalid')
     get computedInvalid(): boolean {
         return (
@@ -165,8 +167,6 @@ export abstract class AbstractTuiControl<T>
                 : value,
         );
     }
-
-    protected abstract getFallbackValue(): T;
 
     protected updateFocused(focused: boolean) {
         if (!focused) {

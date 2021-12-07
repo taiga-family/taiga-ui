@@ -13,6 +13,14 @@ type AbstractTuiHint = any;
     providedIn: 'root',
 })
 export class TuiHintService extends BehaviorSubject<ReadonlyArray<AbstractTuiHint>> {
+    /**
+     * TODO: v2.0
+     * We need the following logic for desribedBy
+     * move it into another service that can register hints and
+     * manage it using TuiHintService inside
+     */
+    private directives: ReadonlyArray<TuiHintDirective> = [];
+
     constructor() {
         super([]);
     }
@@ -26,14 +34,6 @@ export class TuiHintService extends BehaviorSubject<ReadonlyArray<AbstractTuiHin
             this.next(this.value.filter(hint => hint !== directive));
         }
     }
-
-    /**
-     * TODO: v2.0
-     * We need the following logic for desribedBy
-     * move it into another service that can register hints and
-     * manage it using TuiHintService inside
-     */
-    private directives: ReadonlyArray<TuiHintDirective> = [];
 
     register(directive: TuiHintDirective) {
         this.directives = [...this.directives, directive];

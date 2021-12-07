@@ -23,6 +23,9 @@ import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressCircleComponent {
+    @ViewChild('progressCircle', {static: true})
+    private readonly progressCircle!: ElementRef<SVGCircleElement>;
+
     @Input()
     @tuiDefaultProp()
     value = 0;
@@ -45,9 +48,6 @@ export class TuiProgressCircleComponent {
     get progressPercentage(): number {
         return this.value / this.max;
     }
-
-    @ViewChild('progressCircle', {static: true})
-    private readonly progressCircle!: ElementRef<SVGCircleElement>;
 
     get oldEdgeRadiusFallback(): number | null {
         if (!isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent)) {

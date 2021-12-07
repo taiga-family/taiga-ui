@@ -48,6 +48,17 @@ export abstract class AbstractTuiSlider<T>
     extends AbstractTuiControl<T>
     implements TuiWithOptionalMinMax<number>
 {
+    // @bad TODO: handle pointer events instead of mouse and touch events
+    private pointerDown$ = new Subject<
+        TuiEventWith<MouseEvent | TouchEvent, HTMLElement>
+    >();
+
+    @ViewChild('dotLeft')
+    protected dotLeft?: ElementRef<TuiNativeFocusableElement>;
+
+    @ViewChild('dotRight')
+    protected dotRight?: ElementRef<TuiNativeFocusableElement>;
+
     @Input()
     @tuiDefaultProp()
     min = 0;
@@ -92,17 +103,6 @@ export abstract class AbstractTuiSlider<T>
 
     pluralizeMap: Record<string, string> | null = null;
 
-    @ViewChild('dotLeft')
-    protected dotLeft?: ElementRef<TuiNativeFocusableElement>;
-
-    @ViewChild('dotRight')
-    protected dotRight?: ElementRef<TuiNativeFocusableElement>;
-
-    // @bad TODO: handle pointer events instead of mouse and touch events
-    private pointerDown$ = new Subject<
-        TuiEventWith<MouseEvent | TouchEvent, HTMLElement>
-    >();
-
     protected constructor(
         ngControl: NgControl | null,
         changeDetectorRef: ChangeDetectorRef,
@@ -143,8 +143,9 @@ export abstract class AbstractTuiSlider<T>
     }
 
     abstract get left(): number;
-
     abstract get right(): number;
+    protected abstract processValue(value: number, right?: boolean): void;
+    protected abstract processStep(increment: boolean, right?: boolean): void;
 
     ngOnInit() {
         super.ngOnInit();
@@ -278,10 +279,6 @@ export abstract class AbstractTuiSlider<T>
     onRightFocusVisible(focusVisible: boolean) {
         this.focusVisibleRight = focusVisible;
     }
-
-    protected abstract processValue(value: number, right?: boolean): void;
-
-    protected abstract processStep(increment: boolean, right?: boolean): void;
 
     protected getFractionFromValue(value: number): number {
         const fraction = (value - this.min) / this.length;

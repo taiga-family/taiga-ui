@@ -52,15 +52,15 @@ export class TuiInputColorComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
-    @Input()
-    @tuiDefaultProp()
-    colors: ReadonlyMap<string, string> = new Map<string, string>();
-
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @ViewChild(TuiHostedDropdownComponent)
     private readonly dropdown?: TuiHostedDropdownComponent;
+
+    @Input()
+    @tuiDefaultProp()
+    colors: ReadonlyMap<string, string> = new Map<string, string>();
 
     open = false;
 

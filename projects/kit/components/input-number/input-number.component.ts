@@ -52,6 +52,9 @@ export class TuiInputNumberComponent
     extends AbstractTuiNullableControl<number>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     min = -Infinity;
@@ -75,33 +78,6 @@ export class TuiInputNumberComponent
     @Input()
     @tuiDefaultProp()
     postfix = '';
-
-    mask: TuiMapper<boolean, TuiTextMaskOptions> = (
-        allowNegative: boolean,
-        decimal: TuiDecimalT,
-        precision: number,
-        nativeFocusableElement: HTMLInputElement | null,
-    ) => ({
-        mask: tuiCreateNumberMask({
-            allowNegative: allowNegative,
-            allowDecimal: decimal !== 'never',
-            decimalLimit: precision,
-            requireDecimal: decimal === 'always',
-            autoCorrectDecimalSymbol: false,
-            decimalSymbol: this.numberFormat.decimalSeparator,
-            thousandSymbol: this.numberFormat.thousandSeparator,
-        }),
-        pipe: tuiCreateAutoCorrectedNumberPipe(
-            decimal === 'always' ? precision : 0,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-            nativeFocusableElement || undefined,
-        ),
-        guide: false,
-    });
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()
@@ -179,6 +155,49 @@ export class TuiInputNumberComponent
         return this.formattedValue;
     }
 
+    @HostListener('keydown.0', ['$event'])
+    onZero(event: KeyboardEvent) {
+        const decimal =
+            this.nativeValue.split(this.numberFormat.decimalSeparator)[1] || '';
+        const {nativeFocusableElement} = this;
+
+        if (
+            decimal.length < this.precision ||
+            !nativeFocusableElement ||
+            !nativeFocusableElement.selectionStart ||
+            this.nativeValue[nativeFocusableElement.selectionStart] !== '0'
+        ) {
+            return;
+        }
+
+        event.preventDefault();
+        nativeFocusableElement.selectionStart++;
+    }
+
+    mask: TuiMapper<boolean, TuiTextMaskOptions> = (
+        allowNegative: boolean,
+        decimal: TuiDecimalT,
+        precision: number,
+        nativeFocusableElement: HTMLInputElement | null,
+    ) => ({
+        mask: tuiCreateNumberMask({
+            allowNegative: allowNegative,
+            allowDecimal: decimal !== 'never',
+            decimalLimit: precision,
+            requireDecimal: decimal === 'always',
+            autoCorrectDecimalSymbol: false,
+            decimalSymbol: this.numberFormat.decimalSeparator,
+            thousandSymbol: this.numberFormat.thousandSeparator,
+        }),
+        pipe: tuiCreateAutoCorrectedNumberPipe(
+            decimal === 'always' ? precision : 0,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+            nativeFocusableElement || undefined,
+        ),
+        guide: false,
+    });
+
     onValue(value: string) {
         if (maskedMoneyValueIsEmpty(value)) {
             this.updateValue(null);
@@ -254,25 +273,6 @@ export class TuiInputNumberComponent
 
     onPressed(pressed: boolean) {
         this.updatePressed(pressed);
-    }
-
-    @HostListener('keydown.0', ['$event'])
-    onZero(event: KeyboardEvent) {
-        const decimal =
-            this.nativeValue.split(this.numberFormat.decimalSeparator)[1] || '';
-        const {nativeFocusableElement} = this;
-
-        if (
-            decimal.length < this.precision ||
-            !nativeFocusableElement ||
-            !nativeFocusableElement.selectionStart ||
-            this.nativeValue[nativeFocusableElement.selectionStart] !== '0'
-        ) {
-            return;
-        }
-
-        event.preventDefault();
-        nativeFocusableElement.selectionStart++;
     }
 
     private get isNativeValueInLimit(): boolean {

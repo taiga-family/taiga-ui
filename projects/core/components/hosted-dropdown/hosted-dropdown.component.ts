@@ -49,6 +49,15 @@ import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.d
     ],
 })
 export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
+    @ContentChild(TuiHostedDropdownConnectorDirective, {read: ElementRef})
+    private dropdownHost?: ElementRef<HTMLElement>;
+
+    @ViewChild('wrapper', {read: ElementRef})
+    private wrapper?: ElementRef<HTMLDivElement>;
+
+    @ViewChild(TuiDropdownDirective)
+    private dropdownDirective?: TuiDropdownDirective;
+
     @Input()
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
@@ -69,15 +78,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     @ViewChild(TuiActiveZoneDirective)
     readonly activeZone?: TuiActiveZoneDirective;
-
-    @ContentChild(TuiHostedDropdownConnectorDirective, {read: ElementRef})
-    private dropdownHost?: ElementRef<HTMLElement>;
-
-    @ViewChild('wrapper', {read: ElementRef})
-    private wrapper?: ElementRef<HTMLDivElement>;
-
-    @ViewChild(TuiDropdownDirective)
-    private dropdownDirective?: TuiDropdownDirective;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef,

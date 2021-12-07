@@ -19,13 +19,6 @@ import {Observable} from 'rxjs';
     providers: [TuiDestroyService, TuiResizeService],
 })
 export class TuiHighlightDirective implements OnChanges {
-    @Input()
-    @tuiDefaultProp()
-    tuiHighlight = '';
-
-    @Input()
-    tuiHighlightColor = 'var(--tui-selection)';
-
     private readonly highlight: HTMLElement = this.setUpHighlight();
 
     private readonly treeWalker = this.documentRef.createTreeWalker(
@@ -34,6 +27,13 @@ export class TuiHighlightDirective implements OnChanges {
         svgNodeFilter,
         false,
     );
+
+    @Input()
+    @tuiDefaultProp()
+    tuiHighlight = '';
+
+    @Input()
+    tuiHighlightColor = 'var(--tui-selection)';
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,

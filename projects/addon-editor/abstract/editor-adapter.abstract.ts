@@ -4,12 +4,12 @@ import {Observable, Subject} from 'rxjs';
 
 @Directive()
 export abstract class TuiEditor {
-    readonly stateChange$ = new Subject();
-    readonly valueChange$ = new Subject<string>();
-
     abstract readonly isFocused: boolean;
     abstract readonly html: string;
     abstract editable: boolean;
+
+    readonly stateChange$ = new Subject();
+    readonly valueChange$ = new Subject<string>();
 
     abstract isActive$(name: string | Record<string, string>): Observable<boolean>;
 

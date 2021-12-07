@@ -15,6 +15,9 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiErrorComponent {
+    @ViewChild('errorContent')
+    errorContent?: TemplateRef<{}>;
+
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
@@ -22,9 +25,6 @@ export class ExampleTuiErrorComponent {
         TypeScript: example1Ts,
         HTML: example1Html,
     };
-
-    @ViewChild('errorContent')
-    errorContent?: TemplateRef<{}>;
 
     readonly errorVariants: readonly string[] = [
         'Error as string',

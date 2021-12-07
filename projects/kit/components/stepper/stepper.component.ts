@@ -32,6 +32,9 @@ import {TuiStepComponent} from './step/step.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiStepperComponent {
+    @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
+    private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
     @Input()
     @HostBinding('attr.data-orientation')
     @tuiDefaultProp()
@@ -44,33 +47,11 @@ export class TuiStepperComponent {
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
 
-    @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
-    private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
     @tuiPure
     get changes$(): Observable<unknown> {
         // Delay is required to trigger change detection after steps are rendered
         // so they can update their "active" status
         return itemsQueryListObservable(this.steps).pipe(delay(0));
-    }
-
-    indexOf(step: HTMLElement): number {
-        return getOriginalArrayFromQueryList(this.steps).findIndex(
-            ({nativeElement}) => nativeElement === step,
-        );
-    }
-
-    isActive(index: number): boolean {
-        return index === this.activeItemIndex;
-    }
-
-    activate(index: number) {
-        if (this.activeItemIndex === index) {
-            return;
-        }
-
-        this.activeItemIndex = index;
-        this.activeItemIndexChange.emit(index);
     }
 
     @HostListener('keydown.arrowRight', ['$event', '1'])
@@ -93,6 +74,25 @@ export class TuiStepperComponent {
 
         event.preventDefault();
         this.moveFocus(event.target, step);
+    }
+
+    indexOf(step: HTMLElement): number {
+        return getOriginalArrayFromQueryList(this.steps).findIndex(
+            ({nativeElement}) => nativeElement === step,
+        );
+    }
+
+    isActive(index: number): boolean {
+        return index === this.activeItemIndex;
+    }
+
+    activate(index: number) {
+        if (this.activeItemIndex === index) {
+            return;
+        }
+
+        this.activeItemIndex = index;
+        this.activeItemIndexChange.emit(index);
     }
 
     private moveFocus(current: EventTarget, step: number) {

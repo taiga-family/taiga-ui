@@ -32,8 +32,6 @@ import {TuiCarouselDraggableDirective} from './carousel-draggable.directive';
     ],
 })
 export class TuiCarouselComponent {
-    readonly intersected$ = new Subject<number>();
-
     @Input()
     @tuiDefaultProp()
     itemsCount = 1;
@@ -45,12 +43,14 @@ export class TuiCarouselComponent {
     @Output()
     readonly indexChange = new EventEmitter<number>();
 
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    readonly items: QueryList<TemplateRef<any>> = EMPTY_QUERY;
+
+    readonly intersected$ = new Subject<number>();
+
     readonly manual$ = this.index$.pipe(map(index => this.loopback(index)));
 
     attached = false;
-
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    readonly items: QueryList<TemplateRef<any>> = EMPTY_QUERY;
 
     constructor(
         @Optional()
