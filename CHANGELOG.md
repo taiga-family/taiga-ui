@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.26.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.25.0...v2.26.0) (2021-12-06)
+
+### Features
+
+-   **addon-tablebars:** add adaptive for `TableBars`
+    ([#1063](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1063))
+    ([6487074](https://github.com/TinkoffCreditSystems/taiga-ui/commit/6487074f00f6cb2b12b7341b71a918bfa8ad574c))
+-   **kit:** `Carousel` add new component ([#1044](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1044))
+    ([bb0740d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bb0740d682126b951d9b985b3ece9f235562eaf5))
+-   **kit:** `Highlight` add color customization ([#1064](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1064))
+    ([5a9d0b7](https://github.com/TinkoffCreditSystems/taiga-ui/commit/5a9d0b73444e2ae5b717d7db0010c7ab59079fba))
+
+### Bug Fixes
+
+-   **addon-preview:** close preview on esc event
+    ([#1057](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1057))
+    ([74f453c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/74f453c381975f234f1207157d9a197dc6b21075))
+-   **addon-table:** fix arrow visibility in safari
+    ([#1050](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1050))
+    ([1e0145c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/1e0145cc14c7bfdafdb681f5f88044c402abd305))
+-   **core:** `Hint` fix positioning for small screens
+    ([#1055](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1055))
+    ([31b0fb0](https://github.com/TinkoffCreditSystems/taiga-ui/commit/31b0fb0bbd85a01c279f58382459145eb0c0add9))
+
 ## [2.25.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.23.0...v2.25.0) (2021-11-29)
 
 ### Features
