@@ -1,5 +1,9 @@
+import {DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject, InjectionToken} from '@angular/core';
 import {TuiNodeViewNgComponent} from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
+import {TuiDestroyService, typedFromEvent} from '@taiga-ui/cdk';
+import {merge} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 import {TuiEditableImage} from './image-editor.extension';
 
@@ -15,9 +19,12 @@ export const TUI_EDITOR_MIN_IMAGE_WIDTH = new InjectionToken<number>(
     selector: 'tui-image-editor',
     templateUrl: './image-editor.component.html',
     styleUrls: ['./image-editor.component.less'],
+    providers: [TuiDestroyService],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
+    private _width = 0;
+
     get attrs(): TuiEditableImage {
         return (this.node?.attrs as TuiEditableImage) || {src: ''};
     }
@@ -27,7 +34,7 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
     }
 
     get width(): number {
-        return this.attrs.width || 0;
+        return this._width || this.attrs.width || 0;
     }
 
     get alt(): string {
@@ -38,13 +45,22 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
         return this.attrs.title || '';
     }
 
-    onHorizontalDrag([x]: [number, number], direction: number) {
-        this.updateAttributes({
-            width: Math.max(this.minWidth, this.width + direction * x),
-        });
+    onHorizontalDrag([x]: readonly [number, number], direction: number) {
+        this._width = Math.max(this.minWidth, this.width + direction * x);
     }
 
-    constructor(@Inject(TUI_EDITOR_MIN_IMAGE_WIDTH) private readonly minWidth: number) {
+    constructor(
+        @Inject(TUI_EDITOR_MIN_IMAGE_WIDTH) private readonly minWidth: number,
+        @Inject(DOCUMENT) readonly documentRef: Document,
+        @Inject(TuiDestroyService) readonly destroy$: TuiDestroyService,
+    ) {
         super();
+
+        merge(
+            typedFromEvent(this.documentRef, 'touchend'),
+            typedFromEvent(this.documentRef, 'mouseup'),
+        )
+            .pipe(takeUntil(destroy$))
+            .subscribe(() => this.updateAttributes({width: this._width}));
     }
 }
