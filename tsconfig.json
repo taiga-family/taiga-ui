@@ -50,8 +50,8 @@
             "@taiga-ui/addon-editor/*": ["projects/addon-editor/*"],
             "@taiga-ui/addon-mobile": ["projects/addon-mobile/index"],
             "@taiga-ui/addon-mobile/*": ["projects/addon-mobile/*"],
-            "@demo/emulate/change-detection": ["projects/demo/src/change-detection-strategy.ts"],
-            "@demo/emulate/encapsulation": ["projects/demo/src/view-encapsulation.ts"]
+            "@demo/emulate/change-detection": ["projects/demo/src/emulate/change-detection-strategy.ts"],
+            "@demo/emulate/encapsulation": ["projects/demo/src/emulate/view-encapsulation.ts"]
         }
     }
 }
