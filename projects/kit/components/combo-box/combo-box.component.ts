@@ -224,7 +224,7 @@ export class TuiComboBoxComponent<T>
 
         this.updateValue(this.strict || this.search === '' ? null : this.search);
 
-        if (this.search && this.hostedDropdown) {
+        if (this.hostedDropdown) {
             this.hostedDropdown.updateOpen(true);
         }
     }
