@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TuiContextWithImplicit, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -76,15 +76,6 @@ export class TuiPrimitiveCheckboxComponent {
 
     get empty(): boolean {
         return this.value === false;
-    }
-
-    get context(): TuiContextWithImplicit<TuiSizeL> {
-        return this.getContext(this.size);
-    }
-
-    @tuiPure
-    private getContext($implicit: TuiSizeL): TuiContextWithImplicit<TuiSizeL> {
-        return {$implicit};
     }
 
     private setCurrentIcon(value: null | boolean) {
