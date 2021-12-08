@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Injector, Input, Type} from '@angular/core';
+import {Injector, Type} from '@angular/core';
 import {
     Editor,
     NodeView,
@@ -18,14 +18,14 @@ import {TuiComponentRenderer} from './component-render';
  * It contains compulsory properties which component will get externally while NodeView's rendering.
  */
 export class TuiNodeViewNgComponent implements NodeViewProps {
-    @Input() editor!: NodeViewProps['editor'];
-    @Input() node!: NodeViewProps['node'];
-    @Input() decorations!: NodeViewProps['decorations'];
-    @Input() selected!: NodeViewProps['selected'];
-    @Input() extension!: NodeViewProps['extension'];
-    @Input() getPos!: NodeViewProps['getPos'];
-    @Input() updateAttributes!: NodeViewProps['updateAttributes'];
-    @Input() deleteNode!: NodeViewProps['deleteNode'];
+    editor!: NodeViewProps['editor'];
+    node!: NodeViewProps['node'];
+    decorations!: NodeViewProps['decorations'];
+    selected!: NodeViewProps['selected'];
+    extension!: NodeViewProps['extension'];
+    getPos!: NodeViewProps['getPos'];
+    updateAttributes!: NodeViewProps['updateAttributes'];
+    deleteNode!: NodeViewProps['deleteNode'];
 }
 
 interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
