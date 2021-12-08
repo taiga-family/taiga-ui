@@ -144,15 +144,11 @@ export class TuiInputNumberComponent
     }
 
     get computedValue(): string {
-        if (this.focused || !this.isNativeValueInLimit) {
+        if (this.focused) {
             return this.nativeValue;
         }
 
-        if (this.value === null) {
-            return maskedMoneyValueIsEmpty(this.nativeValue) ? this.nativeValue : '';
-        }
-
-        return this.formattedValue;
+        return this.value === null ? '' : this.formattedValue;
     }
 
     @HostListener('keydown.0', ['$event'])
@@ -273,16 +269,6 @@ export class TuiInputNumberComponent
 
     onPressed(pressed: boolean) {
         this.updatePressed(pressed);
-    }
-
-    private get isNativeValueInLimit(): boolean {
-        if (this.nativeValue === '') {
-            return true;
-        }
-
-        const nativeNumberValue = this.nativeNumberValue;
-
-        return nativeNumberValue >= this.min && nativeNumberValue <= this.max;
     }
 
     private get isNativeValueNotFinished(): boolean {
