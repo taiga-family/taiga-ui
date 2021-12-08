@@ -8,7 +8,9 @@
     [tuiTextfieldMaxLength]="calculatedMaxLength"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
-    [textMask]="isNegativeAllowed | tuiMapper: mask:decimal:precision:nativeFocusableElement"
+    [textMask]="
+        isNegativeAllowed | tuiMapper: mask:decimal:precision:nativeFocusableElement
+    "
     [value]="computedValue"
     [prefix]="prefix"
     [postfix]="postfix"

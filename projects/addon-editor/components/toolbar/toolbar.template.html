@@ -98,7 +98,9 @@
                 [tuiHint]="texts.fontStyle"
                 [tuiHintId]="formatBtn.id"
                 [tuiDescribedBy]="formatBtn.id"
-                [pseudoPressed]="format.open || bold || italic || underline || strikeThrough"
+                [pseudoPressed]="
+                    format.open || bold || italic || underline || strikeThrough
+                "
                 [focusable]="format.open"
                 (keydown.arrowLeft.prevent)="onArrowLeft()"
                 (keydown.arrowRight.prevent)="onArrowRight()"
@@ -375,10 +377,7 @@
             (click)="onAttach()"
         ></button>
     </div>
-    <div
-        *ngIf="enabled(TuiEditorTool.Sub) || enabled(TuiEditorTool.Sup)"
-        class="t-block"
-    >
+    <div *ngIf="enabled(TuiEditorTool.Sub) || enabled(TuiEditorTool.Sup)" class="t-block">
         <button
             *ngIf="enabled(TuiEditorTool.Sub)"
             #button

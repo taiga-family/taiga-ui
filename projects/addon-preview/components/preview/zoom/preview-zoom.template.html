@@ -18,7 +18,7 @@
             [style.left.px]="ghostLeft"
         ></div>
         <ng-template #hint>
-            {{ ((valueChange | async) || value) | percent }}
+            {{ (valueChange | async) || value | percent }}
         </ng-template>
         <tui-slider
             class="t-slider"

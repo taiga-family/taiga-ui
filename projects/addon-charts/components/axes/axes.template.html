@@ -17,11 +17,7 @@
     </div>
 </div>
 <div class="t-wrapper">
-    <div
-        class="t-grid"
-        [style.borderLeftStyle]="axisY"
-        [style.borderBottomStyle]="axisX"
-    >
+    <div class="t-grid" [style.borderLeftStyle]="axisY" [style.borderBottomStyle]="axisX">
         <div class="t-vertical">
             <div
                 *tuiRepeatTimes="let index of verticalLines"
@@ -74,11 +70,7 @@
         </div>
     </div>
 </div>
-<div
-    *ngIf="hasYSecondaryLabels"
-    class="t-side"
-    [class.t-side_padding]="hasXLabels"
->
+<div *ngIf="hasYSecondaryLabels" class="t-side" [class.t-side_padding]="hasXLabels">
     <div *ngIf="!axisYSecondaryInset" class="t-labels-y t-labels-y_secondary">
         <div
             *ngFor="let label of axisYSecondaryLabels"

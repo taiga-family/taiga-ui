@@ -2,21 +2,11 @@
     <ng-template pageTab>
         <p i18n>Component to input a range of months</p>
 
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="base" i18n-heading heading="Basic" [content]="example1">
             <tui-input-month-range-example-1></tui-input-month-range-example-1>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="sizes"
-            i18n-heading
-            heading="sizes"
-            [content]="example2"
-        >
+        <tui-doc-example id="sizes" i18n-heading heading="sizes" [content]="example2">
             <tui-input-month-range-example-2></tui-input-month-range-example-2>
         </tui-doc-example>
 
@@ -75,10 +65,7 @@
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                <div>
-                    A handler that gets a date and returns true if it is
-                    disabled.
-                </div>
+                <div>A handler that gets a date and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
             </ng-template>

@@ -7,37 +7,22 @@
             param to choose appearance or set it with custom styles
         </p>
         <tui-notification i18n>
-            Marker icons should be 48x48px or smaller. If icon is smaller, it
-            will be cantered.
+            Marker icons should be 48x48px or smaller. If icon is smaller, it will be
+            cantered.
 
             <strong>s</strong>
             size shows an icon as it and other sizes scale it
         </tui-notification>
 
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="base" i18n-heading heading="Basic" [content]="example1">
             <tui-marker-icon-example-1></tui-marker-icon-example-1>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="modes"
-            i18n-heading
-            heading="modes"
-            [content]="example2"
-        >
+        <tui-doc-example id="modes" i18n-heading heading="modes" [content]="example2">
             <tui-marker-icon-example-2></tui-marker-icon-example-2>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="sizes"
-            i18n-heading
-            heading="sizes"
-            [content]="example3"
-        >
+        <tui-doc-example id="sizes" i18n-heading heading="sizes" [content]="example3">
             <tui-marker-icon-example-3></tui-marker-icon-example-3>
         </tui-doc-example>
     </ng-template>
@@ -79,8 +64,7 @@
                 [documentationPropertyValues]="icons"
                 [(documentationPropertyValue)]="selectedIcon"
             >
-                An icon. It can be stringified svg or a name of icon registered
-                in
+                An icon. It can be stringified svg or a name of icon registered in
                 <a tuiLink routerLink="/services/svg-service">
                     <code>SvgService</code>
                 </a>

@@ -11,19 +11,11 @@
         [id]="context.id"
         [textContent]="context.label"
     ></h2>
-    <section
-        polymorpheus-outlet
-        [context]="context"
-        [content]="context.content"
-    >
+    <section polymorpheus-outlet [context]="context" [content]="context.content">
         <ng-template let-text>
             {{ text }}
             <div class="buttons">
-                <button
-                    tuiButton
-                    size="m"
-                    (click)="context.$implicit.complete()"
-                >
+                <button tuiButton size="m" (click)="context.$implicit.complete()">
                     OK
                 </button>
             </div>

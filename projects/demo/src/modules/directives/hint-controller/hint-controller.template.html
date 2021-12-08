@@ -1,29 +1,15 @@
-<tui-doc-page
-    i18n-header
-    header="HintController"
-    package="CORE"
-    type="directives"
->
+<tui-doc-page i18n-header header="HintController" package="CORE" type="directives">
     <ng-template pageTab>
         <p i18n>
-            Directive allows to control hint setting on hint or its parent
-            components. For example, if you want to add tooltip to
-            <a
-                tuiLink
-                target="_blank"
-                routerLink="/components/primitive-textfield"
-            >
+            Directive allows to control hint setting on hint or its parent components. For
+            example, if you want to add tooltip to
+            <a tuiLink target="_blank" routerLink="/components/primitive-textfield">
                 <code>TuiPrimitiveTextfield</code>
             </a>
             , use this directive on it.
         </p>
 
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="base" i18n-heading heading="Basic" [content]="example1">
             <tui-hint-controller-example-1></tui-hint-controller-example-1>
         </tui-doc-example>
     </ng-template>

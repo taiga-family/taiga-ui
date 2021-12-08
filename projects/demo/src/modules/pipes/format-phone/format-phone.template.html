@@ -2,20 +2,15 @@
     <ng-template pageTab>
         <p i18n>Pipe to format phone number</p>
 
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="base" i18n-heading heading="Basic" [content]="example1">
             <tui-format-phone-example-1></tui-format-phone-example-1>
         </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <p i18n class="text b-full-width">
-            Formatted phone number: {{ index | tuiFormatPhone:
-            countryCode:phoneMask }}
+            Formatted phone number:
+            {{ index | tuiFormatPhone: countryCode:phoneMask }}
         </p>
         <tui-input
             tuiTextfieldSize="m"
@@ -62,9 +57,7 @@
             </li>
 
             <li>
-                <p i18n>
-                    Use pipe in template with function and its arguments:
-                </p>
+                <p i18n>Use pipe in template with function and its arguments:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

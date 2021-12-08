@@ -51,11 +51,7 @@
             (dayClick)="onDayClick($event)"
             (monthChange)="onMonthChange($event)"
         ></tui-calendar>
-        <div
-            *ngIf="items.length === 1"
-            tuiPreventDefault="mousedown"
-            class="button"
-        >
+        <div *ngIf="items.length === 1" tuiPreventDefault="mousedown" class="button">
             <button tuiLink type="button" (click)="onDayClick(items[0].day)">
                 {{ items[0] }}
             </button>

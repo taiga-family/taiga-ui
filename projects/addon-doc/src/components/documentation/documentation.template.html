@@ -22,12 +22,7 @@
         [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
         [class.tui-table__tr_border_none]="lastItem"
     >
-        <td
-            class="
-                tui-table__td tui-table__td_first tui-table__td_align_center
-                t-cell
-            "
-        >
+        <td class="tui-table__td tui-table__td_first tui-table__td_align_center t-cell">
             <div
                 automation-id="tui-documentation__property-name"
                 class="t-property t-cell"
@@ -45,15 +40,15 @@
             >
                 deprecated
             </span>
-            <ng-container
-                *ngTemplateOutlet="propertyConnector.template"
-            ></ng-container>
+            <ng-container *ngTemplateOutlet="propertyConnector.template"></ng-container>
         </td>
         <td class="tui-table__td tui-table__td_align_center t-cell">
             <span class="type">
                 {{ propertyConnector.documentationPropertyType }}
                 <tui-tooltip
-                    *ngIf="showContentTooltip(propertyConnector.documentationPropertyType)"
+                    *ngIf="
+                        showContentTooltip(propertyConnector.documentationPropertyType)
+                    "
                     [describeId]="propertyConnector.attrName"
                     [content]="content"
                 >
@@ -81,14 +76,14 @@
                 t-cell
             "
         >
-            <ng-container
-                *ngIf="propertyConnector.shouldShowValues; else elseEmitter"
-            >
+            <ng-container *ngIf="propertyConnector.shouldShowValues; else elseEmitter">
                 <tui-select
                     *ngIf="propertyConnector.hasItems; else noItems"
                     tuiTextfieldSize="m"
                     tuiDropdownLimitWidth="min"
-                    [tuiTextfieldCleaner]="showCleaner(propertyConnector.documentationPropertyType)"
+                    [tuiTextfieldCleaner]="
+                        showCleaner(propertyConnector.documentationPropertyType)
+                    "
                     [tuiTextfieldLabelOutside]="true"
                     [nativeId]="propertyConnector.attrName"
                     [valueContent]="selectContent"
@@ -135,15 +130,27 @@
                                 tuiTextfieldSize="m"
                                 [attr.id]="propertyConnector.attrName"
                                 [tuiTextfieldLabelOutside]="true"
-                                [tuiInputOpacity]="getOpacity(propertyConnector.documentationPropertyValue)"
-                                [value]="getColor(propertyConnector.documentationPropertyValue)"
+                                [tuiInputOpacity]="
+                                    getOpacity(
+                                        propertyConnector.documentationPropertyValue
+                                    )
+                                "
+                                [value]="
+                                    getColor(propertyConnector.documentationPropertyValue)
+                                "
                                 (valueChange)="onColorChange(propertyConnector, $event)"
                             ></tui-primitive-textfield>
                             <tui-input-count
                                 tuiTextfieldSize="m"
                                 [max]="100"
-                                [ngModel]="getOpacity(propertyConnector.documentationPropertyValue)"
-                                (ngModelChange)="onOpacityChange(propertyConnector, $event)"
+                                [ngModel]="
+                                    getOpacity(
+                                        propertyConnector.documentationPropertyValue
+                                    )
+                                "
+                                (ngModelChange)="
+                                    onOpacityChange(propertyConnector, $event)
+                                "
                             >
                                 Opacity
                             </tui-input-count>

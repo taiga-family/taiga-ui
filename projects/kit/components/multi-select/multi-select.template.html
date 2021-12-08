@@ -14,7 +14,9 @@
         [nativeId]="nativeId"
         [icon]="tagIcon"
         [disabled]="disabled"
-        [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerWrapper"
+        [disabledItemHandler]="
+            disabledItemHandler | tuiMapper: disabledItemHandlerWrapper
+        "
         [readOnly]="readOnly"
         [inputHidden]="!editable"
         [pseudoHovered]="hovered"
@@ -47,7 +49,9 @@
             tuiPreventDefault="mousedown"
             class="t-arrow"
             [class.t-arrow_open]="open"
-            [src]="inputTag.size === 's' ? 'tuiIconChevronDown' : 'tuiIconChevronDownLarge'"
+            [src]="
+                inputTag.size === 's' ? 'tuiIconChevronDown' : 'tuiIconChevronDownLarge'
+            "
             (click.prevent)="onArrowClick()"
         ></tui-svg>
     </div>

@@ -1,8 +1,4 @@
-<div
-    class="tag"
-    [style.backgroundColor]="backgroundColor"
-    (dblclick)="edit($event)"
->
+<div class="tag" [style.backgroundColor]="backgroundColor" (dblclick)="edit($event)">
     <div
         *ngIf="leftContent"
         polymorpheus-outlet

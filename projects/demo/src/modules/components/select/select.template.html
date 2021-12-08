@@ -40,27 +40,15 @@
             <tui-select-example-5></tui-select-example-5>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="wrapper"
-            heading="DataListWrapper"
-            [content]="example6"
-        >
+        <tui-doc-example id="wrapper" heading="DataListWrapper" [content]="example6">
             <tui-select-example-6></tui-select-example-6>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="complex"
-            heading="Complex dropdown"
-            [content]="example7"
-        >
+        <tui-doc-example id="complex" heading="Complex dropdown" [content]="example7">
             <tui-select-example-7></tui-select-example-7>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="virtual"
-            heading="Virtual scroll"
-            [content]="example8"
-        >
+        <tui-doc-example id="virtual" heading="Virtual scroll" [content]="example8">
             <tui-select-example-8></tui-select-example-8>
         </tui-doc-example>
     </ng-template>
@@ -110,9 +98,7 @@
                 :
             </p>
 
-            <button tuiButton type="button" size="m" (click)="setValue()">
-                Set
-            </button>
+            <button tuiButton type="button" size="m" (click)="setValue()">Set</button>
         </div>
 
         <tui-doc-documentation>
@@ -134,8 +120,7 @@
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
             >
-                Function that matches value and items, e.g. if objects are
-                copied. Uses
+                Function that matches value and items, e.g. if objects are copied. Uses
                 <code>===</code>
                 by default.
 

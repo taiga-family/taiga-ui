@@ -2,13 +2,7 @@
     "name": "@taiga-ui/addon-preview",
     "version": "2.26.0",
     "description": "A library to show a modal with custom content preview",
-    "keywords": [
-        "angular",
-        "component",
-        "preview",
-        "documents",
-        "images"
-    ],
+    "keywords": ["angular", "component", "preview", "documents", "images"],
     "publishConfig": {
         "access": "public"
     },

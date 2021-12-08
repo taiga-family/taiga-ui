@@ -2,8 +2,8 @@
     <ng-template pageTab>
         <div i18n class="tui-space_bottom-3">
             <code>ComboBox</code>
-            is a textfield with a dropdown with items. You can choose one of
-            available options or input a value manually.
+            is a textfield with a dropdown with items. You can choose one of available
+            options or input a value manually.
         </div>
 
         <tui-doc-example
@@ -37,11 +37,7 @@
             <tui-combo-box-example-4></tui-combo-box-example-4>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="virtual"
-            heading="Virtual scroll"
-            [content]="example5"
-        >
+        <tui-doc-example id="virtual" heading="Virtual scroll" [content]="example5">
             <tui-combo-box-example-5></tui-combo-box-example-5>
         </tui-doc-example>
     </ng-template>
@@ -87,10 +83,7 @@
         </tui-doc-demo>
         <ng-template #valueTemplateContent let-item>
             <div class="item-template">
-                <tui-svg
-                    src="tuiIconCheck"
-                    class="item-template-icon"
-                ></tui-svg>
+                <tui-svg src="tuiIconCheck" class="item-template-icon"></tui-svg>
                 <span>{{ item }}</span>
             </div>
         </ng-template>
@@ -101,9 +94,7 @@
                 :
             </p>
 
-            <button tuiButton type="button" size="m" (click)="setValue()">
-                Set
-            </button>
+            <button tuiButton type="button" size="m" (click)="setValue()">Set</button>
         </div>
 
         <tui-doc-documentation>
@@ -124,8 +115,8 @@
                 documentationPropertyType="string | null"
                 [(documentationPropertyValue)]="search"
             >
-                Textfield value to subscribe on input or setting it from the
-                outside (emits
+                Textfield value to subscribe on input or setting it from the outside
+                (emits
                 <code>null</code>
                 when item from list selected)
             </ng-template>
@@ -137,8 +128,7 @@
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
             >
-                A function that compares search and value to define a match
-                between them.
+                A function that compares search and value to define a match between them.
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
@@ -158,8 +148,8 @@
                 [documentationPropertyValues]="strictMatcherVariants"
                 [(documentationPropertyValue)]="strictMatcher"
             >
-                A function that compares search text and item to define a match
-                between them. Lowercase string comparasion function by default.
+                A function that compares search text and item to define a match between
+                them. Lowercase string comparasion function by default.
                 <strong>Should be a pure function</strong>
             </ng-template>
             <ng-template

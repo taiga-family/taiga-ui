@@ -2,26 +2,14 @@
     <ng-template pageTab>
         <p i18n>
             Month picker component. If you want a textfield, see
-            <a tuiLink routerLink="/components/input-month-range">
-                InputMonthRange
-            </a>
+            <a tuiLink routerLink="/components/input-month-range">InputMonthRange</a>
         </p>
 
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="base" i18n-heading heading="Basic" [content]="example1">
             <tui-calendar-month-example-1></tui-calendar-month-example-1>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="range"
-            i18n-heading
-            heading="Range"
-            [content]="example2"
-        >
+        <tui-doc-example id="range" i18n-heading heading="Range" [content]="example2">
             <tui-calendar-month-example-2></tui-calendar-month-example-2>
         </tui-doc-example>
     </ng-template>
@@ -46,10 +34,7 @@
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                <div>
-                    A handler that gets a month and returns true if it is
-                    disabled.
-                </div>
+                <div>A handler that gets a month and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
             </ng-template>

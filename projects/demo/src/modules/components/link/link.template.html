@@ -1,16 +1,10 @@
 <tui-doc-page header="Link" package="CORE" type="components">
     <ng-template pageTab>
         <p i18n>
-            Link component. It has focus highlight and can be customized with an
-            icon
+            Link component. It has focus highlight and can be customized with an icon
         </p>
 
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="base" i18n-heading heading="Basic" [content]="example1">
             <tui-link-example-1></tui-link-example-1>
         </tui-doc-example>
 
@@ -23,12 +17,7 @@
             <tui-link-example-2></tui-link-example-2>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="modes"
-            i18n-heading
-            heading="Modes"
-            [content]="example3"
-        >
+        <tui-doc-example id="modes" i18n-heading heading="Modes" [content]="example3">
             <tui-link-example-3></tui-link-example-3>
         </tui-doc-example>
     </ng-template>
@@ -78,8 +67,7 @@
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
             >
-                An icon. It can be stringified svg or a name of icon registered
-                in
+                An icon. It can be stringified svg or a name of icon registered in
                 <a tuiLink routerLink="/services/svg-service">
                     <code>SvgService</code>
                 </a>

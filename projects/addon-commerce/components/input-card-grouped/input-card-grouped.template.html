@@ -25,7 +25,9 @@
                 [class.t-input_inert]="cardPrefilled"
                 [class.t-input_hidden]="isCardCollapsed"
                 [attr.id]="idCard"
-                [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper: cardValidator)"
+                [attr.aria-invalid]="
+                    !cardPrefilled && !(this.card | tuiMapper: cardValidator)
+                "
                 [placeholder]="cardPrefilled ? '' : exampleText"
                 [autocomplete]="autocompleteCard"
                 [disabled]="computedDisabled"
@@ -43,26 +45,17 @@
                 [attr.data-before]="masked"
             >
                 <span class="t-collapsed-wrapper">
-                    <span
-                        class="t-value"
-                        [class.t-value_collapsed]="isCardCollapsed"
-                    >
+                    <span class="t-value" [class.t-value_collapsed]="isCardCollapsed">
                         {{ formattedCard }}
                     </span>
                 </span>
             </span>
-            <span
-                class="t-placeholder"
-                [class.t-placeholder_raised]="placeholderRaised"
-            >
+            <span class="t-placeholder" [class.t-placeholder_raised]="placeholderRaised">
                 {{ texts.cardNumberText }}
             </span>
         </label>
     </div>
-    <div
-        class="t-wrapper t-wrapper_expire"
-        [class.t-wrapper_active]="isCardCollapsed"
-    >
+    <div class="t-wrapper t-wrapper_expire" [class.t-wrapper_active]="isCardCollapsed">
         <label tuiPreventDefault="click">
             <input
                 #inputExpire
@@ -83,18 +76,12 @@
                 (ngModelChange)="onExpireChange($event)"
                 (focus)="(0)"
             />
-            <span
-                class="t-placeholder"
-                [class.t-placeholder_raised]="placeholderRaised"
-            >
+            <span class="t-placeholder" [class.t-placeholder_raised]="placeholderRaised">
                 {{ texts.expiryText }}
             </span>
         </label>
     </div>
-    <div
-        class="t-wrapper t-wrapper_cvc"
-        [class.t-wrapper_active]="isCardCollapsed"
-    >
+    <div class="t-wrapper t-wrapper_cvc" [class.t-wrapper_active]="isCardCollapsed">
         <label tuiPreventDefault="click">
             <input
                 #inputCVC
@@ -114,21 +101,13 @@
                 (ngModelChange)="onCVCChange($event)"
                 (focus)="(0)"
             />
-            <span
-                class="t-placeholder"
-                [class.t-placeholder_raised]="placeholderRaised"
-            >
+            <span class="t-placeholder" [class.t-placeholder_raised]="placeholderRaised">
                 {{ texts.cvcText }}
             </span>
         </label>
     </div>
     <div class="t-icons">
-        <div
-            *ngIf="icon"
-            polymorpheus-outlet
-            class="t-icon-outlet"
-            [content]="icon"
-        >
+        <div *ngIf="icon" polymorpheus-outlet class="t-icon-outlet" [content]="icon">
             <ng-template let-icon>
                 <tui-svg
                     automation-id="tui-input-card-grouped__icon"

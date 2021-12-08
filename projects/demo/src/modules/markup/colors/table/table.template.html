@@ -18,11 +18,7 @@
     </td>
     <td>
         <div class="value">
-            <tui-doc-copy
-                i18n
-                class="copy"
-                [cdkCopyToClipboard]="getValue(color.name)"
-            >
+            <tui-doc-copy i18n class="copy" [cdkCopyToClipboard]="getValue(color.name)">
                 Copy
             </tui-doc-copy>
             {{ getValue(color.name) }}

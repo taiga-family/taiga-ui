@@ -2,12 +2,7 @@
     <ng-template pageTab>
         <p i18n>Stepper makes visual step navigation</p>
 
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="base" i18n-heading heading="Basic" [content]="example1">
             <tui-stepper-example-1></tui-stepper-example-1>
         </tui-doc-example>
 
@@ -24,9 +19,7 @@
             >
                 <button tuiStep>Simple step</button>
                 <button tuiStep>Simple step</button>
-                <button tuiStep [state]="state" [icon]="icon">
-                    Simple step
-                </button>
+                <button tuiStep [state]="state" [icon]="icon">Simple step</button>
             </tui-stepper>
         </tui-doc-demo>
         <tui-doc-documentation heading="Stepper">

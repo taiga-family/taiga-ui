@@ -16,7 +16,13 @@
             [tuiHint]="texts.fontStyle"
             [tuiHintId]="formatBtn.id"
             [tuiDescribedBy]="formatBtn.id"
-            [pseudoPressed]="format.open || state.bold || state.italic || state.underline || state.strike"
+            [pseudoPressed]="
+                format.open ||
+                state.bold ||
+                state.italic ||
+                state.underline ||
+                state.strike
+            "
             [focusable]="format.open"
         ></button>
         <ng-template #formatDropdown>

@@ -40,16 +40,8 @@
 
     <ng-template #dropdown>
         <tui-data-list>
-            <button
-                *ngFor="let item of countries"
-                tuiOption
-                (click)="onItemClick(item)"
-            >
-                <img
-                    alt=""
-                    class="country-item-flag"
-                    [src]="getFlagPath(item)"
-                />
+            <button *ngFor="let item of countries" tuiOption (click)="onItemClick(item)">
+                <img alt="" class="country-item-flag" [src]="getFlagPath(item)" />
                 <span class="country-item-name">
                     {{ countriesNames[item] }}
                 </span>

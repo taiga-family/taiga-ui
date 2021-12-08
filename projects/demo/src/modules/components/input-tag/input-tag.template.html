@@ -5,12 +5,7 @@
             allows to input several tags with autocomplete and list in dropdown.
         </div>
 
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="base" i18n-heading heading="Basic" [content]="example1">
             <tui-input-tag-example-1></tui-input-tag-example-1>
         </tui-doc-example>
 
@@ -23,12 +18,7 @@
             <tui-input-tag-example-2></tui-input-tag-example-2>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="sizes"
-            i18n-heading
-            heading="sizes"
-            [content]="example3"
-        >
+        <tui-doc-example id="sizes" i18n-heading heading="sizes" [content]="example3">
             <tui-input-tag-example-3></tui-input-tag-example-3>
         </tui-doc-example>
 
@@ -107,8 +97,8 @@
                 documentationPropertyType="string | null"
                 [(documentationPropertyValue)]="search"
             >
-                Textfield value to subscribe on input or setting it from the
-                outside (emits
+                Textfield value to subscribe on input or setting it from the outside
+                (emits
                 <code>null</code>
                 when item from list selected)
             </ng-template>
@@ -156,8 +146,7 @@
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
             >
-                An icon. It can be stringified svg or a name of icon registered
-                in
+                An icon. It can be stringified svg or a name of icon registered in
                 <a tuiLink routerLink="/services/svg-service">
                     <code>SvgService</code>
                 </a>

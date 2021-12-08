@@ -14,10 +14,7 @@
             [formControl]="modeControl"
         >
             tuiMode
-            <tui-data-list-wrapper
-                *tuiDataList
-                [items]="items"
-            ></tui-data-list-wrapper>
+            <tui-data-list-wrapper *tuiDataList [items]="items"></tui-data-list-wrapper>
         </tui-select>
     </ng-container>
     <ng-template #desktop>
@@ -56,11 +53,7 @@
             </tui-radio-block>
         </div>
     </ng-template>
-    <tui-checkbox-labeled
-        size="m"
-        class="tui-space_left-3"
-        [(ngModel)]="opaque"
-    >
+    <tui-checkbox-labeled size="m" class="tui-space_left-3" [(ngModel)]="opaque">
         {{ texts[1] }}
     </tui-checkbox-labeled>
 </div>
@@ -95,9 +88,7 @@
             </ng-template>
             <tui-expand class="t-expand" [expanded]="expanded">
                 <ng-template tuiExpandContent>
-                    <pre class="t-value">
-Form data: {{ testForm.value | json }}</pre
-                    >
+                    <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
                     <div tuiGroup class="tui-space_top-3">
                         <tui-select
                             tuiTextfieldSize="s"

@@ -24,11 +24,7 @@
             <tui-notifications-example-2></tui-notifications-example-2>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="component"
-            heading="Component"
-            [content]="example3"
-        >
+        <tui-doc-example id="component" heading="Component" [content]="example3">
             <tui-notifications-example-3></tui-notifications-example-3>
         </tui-doc-example>
 
@@ -66,8 +62,8 @@
                         I&gt;&gt;
                     </div>
                     <div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;options: TuiNotificationOptions
-                        | TuiNotificationOptionsWithData&lt;I&gt;
+                        &nbsp;&nbsp;&nbsp;&nbsp;options: TuiNotificationOptions |
+                        TuiNotificationOptionsWithData&lt;I&gt;
                     </div>
                     <div>): Observable&lt;O&gt;</div>
                 </code>
@@ -78,13 +74,13 @@
             <code>O</code>
             is output data type and
             <code>I</code>
-            is input data type. If content does not need input data, the second
-            argument is optional. In the sample above the both of them are
+            is input data type. If content does not need input data, the second argument
+            is optional. In the sample above the both of them are
             <code>number</code>
             .
             <p>
-                You can also just unsubcribe from a stream to hode a
-                notification (this observable is returned from
+                You can also just unsubcribe from a stream to hode a notification (this
+                observable is returned from
                 <code>open</code>
                 method). You can save a subscription for that or use
                 <code>takeUntil</code>
@@ -203,43 +199,33 @@
 
             <li>
                 <p i18n>
-                    You can also customize notification logic with a component.
-                    Use
+                    You can also customize notification logic with a component. Use
                     <code>POLYMORPHEUS_CONTEXT</code>
-                    into the component to get context input data and to output
-                    results. It has the following interface:
+                    into the component to get context input data and to output results. It
+                    has the following interface:
                 </p>
 
                 <p>
                     <code>
-                        <div>
-                            TuiNotificationContentContext&lt;O, I&gt; {{ '{' }}
-                        </div>
-                        <div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;$implicit: TuiNotification;
-                        </div>
+                        <div>TuiNotificationContentContext&lt;O, I&gt; {{ '{' }}</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;$implicit: TuiNotification;</div>
                         <div>
                             &nbsp;&nbsp;&nbsp;&nbsp;label:
                             PolymorpheusContent&lt;TuiContextWithImplicit&lt;TuiNotification&gt;&gt;;
                         </div>
                         <div>&nbsp;&nbsp;&nbsp;&nbsp;data: I;</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;closeHook: () => void;</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;emitHook: (data: O) => void;</div>
                         <div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;closeHook: () => void;
-                        </div>
-                        <div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;emitHook: (data: O) => void;
-                        </div>
-                        <div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;emitAndCloseHook: (data: O)
-                            => void;
+                            &nbsp;&nbsp;&nbsp;&nbsp;emitAndCloseHook: (data: O) => void;
                         </div>
                         {{ '}' }}
                     </code>
                 </p>
 
                 <div i18n>
-                    where O is output data type and I is input data type. Do not
-                    forget to add notification component into
+                    where O is output data type and I is input data type. Do not forget to
+                    add notification component into
                     <code>entryComponents</code>
                     of your module:
                 </div>
@@ -253,9 +239,7 @@
             <li>
                 <p i18n>
                     Use
-                    <code>
-                        new PolymorpheusComponent(CustomNotificationComponent)
-                    </code>
+                    <code>new PolymorpheusComponent(CustomNotificationComponent)</code>
                     to show notification component with a service:
                 </p>
 
@@ -284,8 +268,7 @@
 
             <li>
                 <p i18n>
-                    If you use it from lazy loading modules, do not forget to
-                    use
+                    If you use it from lazy loading modules, do not forget to use
                     <code>new TuiComponentContent Injector</code>
                     of component where you call it
                 </p>
@@ -300,8 +283,8 @@
                 <p i18n>
                     Optionally use the
                     <code>TUI_NOTIFICATION_OPTIONS</code>
-                    injection token to override the default options (works only
-                    in app.module.ts).
+                    injection token to override the default options (works only in
+                    app.module.ts).
                 </p>
 
                 <tui-doc-code

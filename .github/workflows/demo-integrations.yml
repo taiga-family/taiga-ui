@@ -1,77 +1,77 @@
 name: Screenshot tests
 
 on:
-    pull_request:
-        paths:
-            - 'projects/**'
-            - '!projects/*testing/**'
-            - '!projects/demo/**'
-            - '!projects/icons/**'
-            - 'projects/demo/emulate/**'
-            - 'angular.json'
-            - 'package.json'
-            - 'tsconfig*'
-            - '**/demo-integrations.yml'
-    push:
-        branches:
-            - '!main'
-            - '!release/**'
+  pull_request:
+    paths:
+      - 'projects/**'
+      - '!projects/*testing/**'
+      - '!projects/demo/**'
+      - '!projects/icons/**'
+      - 'projects/demo/emulate/**'
+      - 'angular.json'
+      - 'package.json'
+      - 'tsconfig*'
+      - '**/demo-integrations.yml'
+  push:
+    branches:
+      - '!main'
+      - '!release/**'
 
 env:
-    NX_BRANCH: ${{ github.event.number }}
+  NX_BRANCH: ${{ github.event.number }}
 
 jobs:
-    demo-integrations:
-        name: Cypress
-        runs-on: ubuntu-latest
-        env:
-            NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-        steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js
-              uses: actions/setup-node@v1
-              with:
-                  node-version: '12.x'
-            # Setup cache
-            - name: Restore node_modules from cache
-              id: cache-node-modules
-              uses: actions/cache@v2
-              with:
-                  path: |
-                      node_modules
-                      !node_modules/.cache/
-                  key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
-            - name: Restore from global NPM cache
-              if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              uses: actions/cache@v2
-              with:
-                  path: ~/.npm
-                  key: npm-cache-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: npm-cache-
-            - name: Restore from cache of builds
-              id: build-cache
-              uses: actions/cache@v2
-              with:
-                  path: node_modules/.cache
-                  key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
-                  restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
-            - name: Clean install dependencies
-              if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              run: npm ci
-            # End of setup cache
-            - name: Run screenshot tests
-              run: |
-                  npm run build:demo
-                  npm run demo:integrations:ci
+  demo-integrations:
+    name: Cypress
+    runs-on: ubuntu-latest
+    env:
+      NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      # Setup cache
+      - name: Restore node_modules from cache
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            !node_modules/.cache/
+          key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Restore from global NPM cache
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: npm-cache-
+      - name: Restore from cache of builds
+        id: build-cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules/.cache
+          key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
+          restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Clean install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+      # End of setup cache
+      - name: Run screenshot tests
+        run: |
+          npm run build:demo
+          npm run demo:integrations:ci
 
-            - name: Upload artifact
-              uses: actions/upload-artifact@v1
-              if: failure()
-              with:
-                  name: cypress-screenshots
-                  path: projects/demo-integrations/cypress/snapshots
-                  retention-days: 7
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: projects/demo-integrations/cypress/snapshots
+          retention-days: 7
 
 concurrency:
-    group: demo-integrations-${{ github.head_ref }}
-    cancel-in-progress: true
+  group: demo-integrations-${{ github.head_ref }}
+  cancel-in-progress: true

@@ -24,13 +24,12 @@
             [disabledItemHandler]="calculatedDisabledItemHandler"
             (dayClick)="onDayClick($event)"
         ></tui-calendar>
-        <tui-data-list
-            role="menu"
-            automation-id="tui-calendar-range__menu"
-            class="menu"
-        >
+        <tui-data-list role="menu" automation-id="tui-calendar-range__menu" class="menu">
             <button
-                *ngFor="let item of items | tuiMapper: mapper:min:max:minLength:(otherDateText$ | async)"
+                *ngFor="
+                    let item of items
+                        | tuiMapper: mapper:min:max:minLength:(otherDateText$ | async)
+                "
                 tuiOption
                 tuiPreventDefault="mousedown"
                 role="menuitemradio"

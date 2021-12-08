@@ -22,12 +22,9 @@
 <div *ngIf="processor$ | async as content" class="t-example">
     <ng-container *ngIf="content | tuiDocExampleGetTabs: defaultTab as tabs">
         <div class="t-tabs-wrapper">
-            <tui-tabs-with-more
-                class="t-tabs"
-                [(activeItemIndex)]="activeItemIndex"
-            >
+            <tui-tabs-with-more class="t-tabs" [(activeItemIndex)]="activeItemIndex">
                 <ng-container *ngFor="let tab of tabs">
-                    <button *tuiTab tuiTab>{{tab}}</button>
+                    <button *tuiTab tuiTab>{{ tab }}</button>
                 </ng-container>
             </tui-tabs-with-more>
 
@@ -36,9 +33,9 @@
                 tuiButton
                 appearance="flat"
                 size="s"
-                (click)="codeEditor.open(componentName, id || '',  content)"
+                (click)="codeEditor.open(componentName, id || '', content)"
             >
-                Edit on {{codeEditor.name}}
+                Edit on {{ codeEditor.name }}
             </button>
         </div>
 

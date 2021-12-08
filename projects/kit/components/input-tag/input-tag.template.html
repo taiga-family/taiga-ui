@@ -58,7 +58,9 @@
                                 [value]="item.toString()"
                                 (edited)="onTagEdited($event, item)"
                                 (keydown.arrowLeft.prevent)="onTagKeyDownArrowLeft(index)"
-                                (keydown.arrowRight.prevent)="onTagKeyDownArrowRight(index)"
+                                (keydown.arrowRight.prevent)="
+                                    onTagKeyDownArrowRight(index)
+                                "
                             ></tui-tag>
                         </ng-container>
                         <ng-template #text>
@@ -73,7 +75,9 @@
                         </ng-template>
                         <div
                             class="input-wrapper"
-                            [class.input-wrapper_collapsed]="computedDisabled || readOnly || inputHidden"
+                            [class.input-wrapper_collapsed]="
+                                computedDisabled || readOnly || inputHidden
+                            "
                         >
                             <div class="ghost">{{ search }}</div>
                             <input
@@ -118,11 +122,7 @@
                     [showDelay]="hintController.showDelay"
                     [hideDelay]="hintController.hideDelay"
                 ></tui-tooltip>
-                <tui-svg
-                    *ngIf="iconAlignRight"
-                    class="icon"
-                    [src]="icon"
-                ></tui-svg>
+                <tui-svg *ngIf="iconAlignRight" class="icon" [src]="icon"></tui-svg>
             </div>
         </div>
         <ng-template #errorIcon>

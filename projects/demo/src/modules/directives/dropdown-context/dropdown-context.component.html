@@ -1,9 +1,4 @@
-<tui-doc-page
-    i18n-header
-    header="DropdownContext"
-    package="KIT"
-    type="directives"
->
+<tui-doc-page i18n-header header="DropdownContext" package="KIT" type="directives">
     <ng-template pageTab>
         <p i18n class="description">
             <code>DropdownContext</code>
@@ -11,12 +6,7 @@
         </p>
         <ng-container *ngTemplateOutlet="tips"></ng-container>
 
-        <tui-doc-example
-            id="basic"
-            i18n-heading
-            heading="Basic"
-            [content]="exampleBasic"
-        >
+        <tui-doc-example id="basic" i18n-heading heading="Basic" [content]="exampleBasic">
             <tui-dropdown-context-example-1></tui-dropdown-context-example-1>
         </tui-doc-example>
 
@@ -57,9 +47,7 @@
                 <div class="dropdown">
                     <ng-container *ngTemplateOutlet="tips"></ng-container>
 
-                    <button tuiButton type="button" (click)="close()">
-                        Close me
-                    </button>
+                    <button tuiButton type="button" (click)="close()">Close me</button>
                 </div>
             </ng-template>
         </tui-doc-demo>
@@ -141,28 +129,22 @@
                     and call it
                     <br />
                     (for example,
-                    <code>
-                        &lt;ng-template
-                        let-close="close"&gt;&lt;/ng-template&gt;
-                    </code>
+                    <code>&lt;ng-template let-close="close"&gt;&lt;/ng-template&gt;</code>
                     ).
                 </li>
             </ul>
         </li>
         <li>
             To get
-            <a tuiLink routerLink="/directives/active-zone" target="_blank">
-                ActiveZone
-            </a>
-            of opened dropdown you should declare local template variable which
-            access to property
+            <a tuiLink routerLink="/directives/active-zone" target="_blank">ActiveZone</a>
+            of opened dropdown you should declare local template variable which access to
+            property
             <strong>activeZone</strong>
             of template context object
             <br />
             (for example,
             <code>
-                &lt;ng-template
-                let-activeZone="activeZone"&gt;&lt;/ng-template&gt;
+                &lt;ng-template let-activeZone="activeZone"&gt;&lt;/ng-template&gt;
             </code>
             ).
         </li>

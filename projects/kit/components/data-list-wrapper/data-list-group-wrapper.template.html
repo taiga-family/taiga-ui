@@ -1,8 +1,5 @@
 <tui-data-list *ngIf="items; else loading" [emptyContent]="emptyContent">
-    <tui-opt-group
-        *ngFor="let group of items; let index = index"
-        [label]="labels[index]"
-    >
+    <tui-opt-group *ngFor="let group of items; let index = index" [label]="labels[index]">
         <button
             *ngFor="let item of group"
             #elementRef="elementRef"

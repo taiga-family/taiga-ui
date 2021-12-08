@@ -1,11 +1,7 @@
 <ng-container *ngIf="editor.stateChange$ | async"></ng-container>
 <div [tuiFocusable]="focusable" (focus)="onTopFocus()"></div>
 <div [tuiFocusable]="focusable" (focus)="onBottomFocus()"></div>
-<section
-    *ngIf="texts$ | async as texts"
-    tuiToolbarNavigationManager
-    class="wrapper"
->
+<section *ngIf="texts$ | async as texts" tuiToolbarNavigationManager class="wrapper">
     <div *ngIf="enabled(TuiEditorTool.Undo)" class="t-block">
         <button
             #button
@@ -137,10 +133,7 @@
             (click)="onAttach()"
         ></button>
     </div>
-    <div
-        *ngIf="enabled(TuiEditorTool.Sub) || enabled(TuiEditorTool.Sup)"
-        class="t-block"
-    >
+    <div *ngIf="enabled(TuiEditorTool.Sub) || enabled(TuiEditorTool.Sup)" class="t-block">
         <button
             *ngIf="enabled(TuiEditorTool.Sub)"
             #button
@@ -223,11 +216,7 @@
             [focusable]="false"
             (click)="onTeX()"
         ></button>
-        <div
-            *ngIf="enabled(TuiEditorTool.Img)"
-            tuiToolbarTool
-            class="t-wrapper"
-        >
+        <div *ngIf="enabled(TuiEditorTool.Img)" tuiToolbarTool class="t-wrapper">
             <button
                 #button
                 tuiIconButton
@@ -292,10 +281,7 @@
         ></button>
     </div>
     <div *ngIf="enabled(TuiEditorTool.Table)" class="t-block">
-        <tui-table-create
-            tuiToolbarTool
-            class="t-tool t-tool_margin"
-        ></tui-table-create>
+        <tui-table-create tuiToolbarTool class="t-tool t-tool_margin"></tui-table-create>
 
         <tui-table-row-column-manager
             tuiToolbarTool

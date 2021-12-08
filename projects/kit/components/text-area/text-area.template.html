@@ -8,11 +8,7 @@
     [readOnly]="readOnly"
     [invalid]="computedInvalid"
 >
-    <div
-        *ngIf="hasCounter"
-        automation-id="tui-text-area__counter"
-        class="counter"
-    >
+    <div *ngIf="hasCounter" automation-id="tui-text-area__counter" class="counter">
         {{ value.length }}/{{ controller.maxLength }}
     </div>
 </tui-wrapper>

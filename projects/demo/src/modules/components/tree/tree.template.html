@@ -2,21 +2,11 @@
     <ng-template pageTab>
         <p i18n>Component to display tree-like data structure</p>
 
-        <tui-doc-example
-            id="manual"
-            i18n-heading
-            heading="Manual"
-            [content]="example1"
-        >
+        <tui-doc-example id="manual" i18n-heading heading="Manual" [content]="example1">
             <tui-tree-example-1></tui-tree-example-1>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="array"
-            i18n-heading
-            heading="Array"
-            [content]="example2"
-        >
+        <tui-doc-example id="array" i18n-heading heading="Array" [content]="example2">
             <tui-tree-example-2></tui-tree-example-2>
         </tui-doc-example>
 
@@ -38,12 +28,7 @@
             <tui-tree-example-4></tui-tree-example-4>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="custom"
-            i18n-heading
-            heading="Custom"
-            [content]="example5"
-        >
+        <tui-doc-example id="custom" i18n-heading heading="Custom" [content]="example5">
             <tui-tree-example-5></tui-tree-example-5>
         </tui-doc-example>
 
@@ -109,8 +94,7 @@
                 documentationPropertyType="Map<T, boolean>"
                 documentationPropertyMode="input"
             >
-                A map used with controller directive for manual programmatic
-                toggling.
+                A map used with controller directive for manual programmatic toggling.
             </ng-template>
         </tui-doc-documentation>
 
@@ -119,8 +103,7 @@
                 documentationPropertyName="TUI_TREE_CONTENT"
                 documentationPropertyType="PolymorpheusContent<TuiTreeItemContext>"
             >
-                Provide your own component used internally to display node
-                content (see
+                Provide your own component used internally to display node content (see
                 <a tuiLink routerLink="/components/tree" fragment="custom">
                     this example
                 </a>

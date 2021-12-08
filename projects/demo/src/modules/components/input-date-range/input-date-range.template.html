@@ -2,21 +2,11 @@
     <ng-template pageTab>
         <p i18n>A field to input a range of dates</p>
 
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="base" i18n-heading heading="Basic" [content]="example1">
             <tui-input-date-range-example-1></tui-input-date-range-example-1>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="large"
-            i18n-heading
-            heading="Big size"
-            [content]="example2"
-        >
+        <tui-doc-example id="large" i18n-heading heading="Big size" [content]="example2">
             <tui-input-date-range-example-2></tui-input-date-range-example-2>
         </tui-doc-example>
     </ng-template>
@@ -81,10 +71,7 @@
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
-                <div>
-                    A handler that gets a date and returns true if it is
-                    disabled.
-                </div>
+                <div>A handler that gets a date and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
             </ng-template>
@@ -106,8 +93,8 @@
                 [documentationPropertyValues]="markerHandlerVariants"
                 [(documentationPropertyValue)]="markerHandler"
             >
-                A handler that gets date and returns null or a tuple with
-                circled marker colors
+                A handler that gets date and returns null or a tuple with circled marker
+                colors
             </ng-template>
             <ng-template
                 i18n

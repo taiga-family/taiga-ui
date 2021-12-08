@@ -9,17 +9,10 @@
 
         <p i18n>
             See also
-            <a tuiLink [routerLink]="['/components/hosted-dropdown']">
-                HostedDropdown
-            </a>
+            <a tuiLink [routerLink]="['/components/hosted-dropdown']">HostedDropdown</a>
         </p>
 
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="base" i18n-heading heading="Basic" [content]="example1">
             <tui-dropdown-example-1></tui-dropdown-example-1>
         </tui-doc-example>
 
@@ -61,8 +54,7 @@
                 >
                     PRESS!
                     <i>
-                        * There is also a pretty long text to check its width
-                        limitations
+                        * There is also a pretty long text to check its width limitations
                     </i>
                 </button>
                 <ng-template #dropdownContent>
@@ -122,9 +114,9 @@
                 documentationPropertyMode="input"
                 documentationPropertyType="HTMLElement | null"
             >
-                Set dropdown host manually. For example, it will be a target if
-                someone blurs dropdown with Tab/Shift+Tab. Element with a
-                directive is used by default.
+                Set dropdown host manually. For example, it will be a target if someone
+                blurs dropdown with Tab/Shift+Tab. Element with a directive is used by
+                default.
             </ng-template>
             <ng-template
                 i18n

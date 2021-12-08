@@ -13,12 +13,7 @@
             </ng-template>
         </span>
         <ng-content></ng-content>
-        <span
-            *ngIf="iconRight"
-            polymorpheus-outlet
-            class="right"
-            [content]="iconRight"
-        >
+        <span *ngIf="iconRight" polymorpheus-outlet class="right" [content]="iconRight">
             <ng-template let-icon>
                 <tui-svg class="icon" [src]="icon"></tui-svg>
             </ng-template>

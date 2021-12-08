@@ -15,18 +15,10 @@
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div class="t-toolbar-wrapper">
-        <tui-toolbar
-            *ngIf="editorLoaded"
-            new
-            [tools]="tools"
-            [disabled]="!interactive"
-        >
+        <tui-toolbar *ngIf="editorLoaded" new [tools]="tools" [disabled]="!interactive">
             <ng-content select="tools"></ng-content>
         </tui-toolbar>
-        <div
-            class="t-placeholder"
-            [class.t-placeholder_raised]="placeholderRaised"
-        >
+        <div class="t-placeholder" [class.t-placeholder_raised]="placeholderRaised">
             <ng-content></ng-content>
         </div>
         <div *ngIf="hasExampleText" class="t-example-text">

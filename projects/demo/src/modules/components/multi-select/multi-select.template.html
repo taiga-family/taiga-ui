@@ -23,21 +23,11 @@
             <tui-multi-select-example-2></tui-multi-select-example-2>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="sizes"
-            i18n-heading
-            heading="sizes"
-            [content]="example3"
-        >
+        <tui-doc-example id="sizes" i18n-heading heading="sizes" [content]="example3">
             <tui-multi-select-example-3></tui-multi-select-example-3>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="ids"
-            i18n-heading
-            heading="With IDs"
-            [content]="example4"
-        >
+        <tui-doc-example id="ids" i18n-heading heading="With IDs" [content]="example4">
             <tui-multi-select-example-4></tui-multi-select-example-4>
         </tui-doc-example>
 
@@ -49,11 +39,7 @@
             <tui-multi-select-example-6></tui-multi-select-example-6>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="virtual"
-            heading="Virtual scroll"
-            [content]="example7"
-        >
+        <tui-doc-example id="virtual" heading="Virtual scroll" [content]="example7">
             <tui-multi-select-example-7></tui-multi-select-example-7>
         </tui-doc-example>
     </ng-template>
@@ -106,9 +92,7 @@
                 :
             </p>
 
-            <button tuiButton type="button" size="m" (click)="setValue()">
-                Set
-            </button>
+            <button tuiButton type="button" size="m" (click)="setValue()">Set</button>
         </div>
 
         <tui-doc-documentation>
@@ -129,8 +113,8 @@
                 documentationPropertyType="string | null"
                 [(documentationPropertyValue)]="search"
             >
-                Textfield value to subscribe on input or setting it from the
-                outside (emits
+                Textfield value to subscribe on input or setting it from the outside
+                (emits
                 <code>null</code>
                 when item from list selected)
             </ng-template>
@@ -170,8 +154,7 @@
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
             >
-                A function that compares search and value to define a match
-                between them.
+                A function that compares search and value to define a match between them.
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template

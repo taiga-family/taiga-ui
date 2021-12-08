@@ -2,12 +2,7 @@
     <ng-template pageTab>
         <p i18n>Directive to show a hint by hover of an element</p>
 
-        <tui-doc-example
-            id="multiple"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="multiple" i18n-heading heading="Basic" [content]="example1">
             <tui-hint-example-1></tui-hint-example-1>
         </tui-doc-example>
     </ng-template>
@@ -40,9 +35,9 @@
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="id"
             >
-                To be accessible, hint should be set to a focusable element and
-                user with Screen Readers will listen to hint text after a small
-                delay when focusing textfield. Set unique
+                To be accessible, hint should be set to a focusable element and user with
+                Screen Readers will listen to hint text after a small delay when focusing
+                textfield. Set unique
                 <code>describeId</code>
                 and use
                 <code>[tuiDescribedBy]="theSameId"</code>

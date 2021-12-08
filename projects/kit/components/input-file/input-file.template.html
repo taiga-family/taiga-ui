@@ -10,10 +10,7 @@
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
 >
-    <label
-        *ngIf="units$ | async as units"
-        automation-id="tui-input-file__label"
-    >
+    <label *ngIf="units$ | async as units" automation-id="tui-input-file__label">
         <a tuiLink>
             <span
                 polymorpheus-outlet
@@ -23,11 +20,7 @@
         </a>
         <ng-container *ngIf="computedLabel$ | async as computedLabel">
             <span>&nbsp;</span>
-            <span
-                polymorpheus-outlet
-                class="inline"
-                [content]="computedLabel"
-            ></span>
+            <span polymorpheus-outlet class="inline" [content]="computedLabel"></span>
         </ng-container>
         <input
             *ngIf="!readOnly && !computedDisabled && (inputFileTexts$ | async) as texts"

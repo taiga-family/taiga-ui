@@ -4,12 +4,7 @@
 
         <p i18n>Only one section of accordion can be opened by default</p>
 
-        <tui-doc-example
-            id="base"
-            i18n-heading
-            heading="Basic"
-            [content]="example1"
-        >
+        <tui-doc-example id="base" i18n-heading heading="Basic" [content]="example1">
             <tui-accordion-example-1></tui-accordion-example-1>
         </tui-doc-example>
 
@@ -22,12 +17,7 @@
             <tui-accordion-example-2></tui-accordion-example-2>
         </tui-doc-example>
 
-        <tui-doc-example
-            id="single"
-            i18n-heading
-            heading="alone"
-            [content]="example3"
-        >
+        <tui-doc-example id="single" i18n-heading heading="alone" [content]="example3">
             <tui-accordion-example-3></tui-accordion-example-3>
         </tui-doc-example>
     </ng-template>
@@ -44,8 +34,8 @@
                 >
                     Taiga UI cdk
                     <ng-template tuiAccordionItemContent>
-                        Development kit consisting of the low level tools and
-                        abstractions used to develop Taiga UI Angular entities
+                        Development kit consisting of the low level tools and abstractions
+                        used to develop Taiga UI Angular entities
                     </ng-template>
                 </tui-accordion-item>
                 <tui-accordion-item
@@ -61,8 +51,8 @@
                     Taiga UI core
                     <ng-template tuiAccordionItemContent>
                         <div #content>
-                            Basic elements needed to develop components,
-                            directives and more using Taiga UI design system
+                            Basic elements needed to develop components, directives and
+                            more using Taiga UI design system
                         </div>
                     </ng-template>
                 </tui-accordion-item>
@@ -108,8 +98,7 @@
                         >
                             Waits for a custom event
                             <code>TUI_EXPAND_LOADED</code>
-                            before opening. Content is initialized when opening
-                            starts
+                            before opening. Content is initialized when opening starts
                         </ng-template>
                         <ng-template
                             i18n

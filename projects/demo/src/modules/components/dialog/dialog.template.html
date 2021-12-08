@@ -11,8 +11,8 @@
         <tui-notification i18n class="tui-space_vertical-4">
             Use
             <code><strong>TUI_DIALOGS_CLOSE</strong></code>
-            token if you need to close dialog with from a stream. For example,
-            this way you can close dialogs by logout:
+            token if you need to close dialog with from a stream. For example, this way
+            you can close dialogs by logout:
             <p><tui-doc-code [code]="dialogsCloseToken"></tui-doc-code></p>
         </tui-notification>
 
@@ -80,12 +80,7 @@
 
     <ng-template pageTab>
         <div>
-            <button
-                tuiButton
-                type="button"
-                size="m"
-                (click)="showDialog(template)"
-            >
+            <button tuiButton type="button" size="m" (click)="showDialog(template)">
                 Show
             </button>
         </div>
@@ -114,23 +109,22 @@
             <p i18n>Input data: {{ data }}.</p>
             <p>
                 <i i18n>
-                    There is no need in input data for template dialog because
-                    you can set it in template. But if you use a component,
-                    context is the only way to get data from outside
+                    There is no need in input data for template dialog because you can set
+                    it in template. But if you use a component, context is the only way to
+                    get data from outside
                 </i>
             </p>
             <tui-accordion class="container">
                 <tui-accordion-item i18n>
                     Dynamic height change
                     <ng-template tuiAccordionItemContent>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Aspernatur eligendi esse minima nobis! Assumenda
-                        debitis, delectus dicta dolore eos explicabo fuga id
-                        inventore maiores, nihil, nobis nostrum quasi quo unde!
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Aspernatur eligendi esse minima nobis! Assumenda
-                        debitis, delectus dicta dolore eos explicabo fuga id
-                        inventore maiores, nihil, nobis nostrum quasi quo unde!
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Aspernatur eligendi esse minima nobis! Assumenda debitis, delectus
+                        dicta dolore eos explicabo fuga id inventore maiores, nihil, nobis
+                        nostrum quasi quo unde! Lorem ipsum dolor sit amet, consectetur
+                        adipisicing elit. Aspernatur eligendi esse minima nobis! Assumenda
+                        debitis, delectus dicta dolore eos explicabo fuga id inventore
+                        maiores, nihil, nobis nostrum quasi quo unde!
                     </ng-template>
                 </tui-accordion-item>
             </tui-accordion>
@@ -282,11 +276,9 @@
 
             <li>
                 <p i18n>
-                    If you want to use your own component as a dialog content,
-                    use
+                    If you want to use your own component as a dialog content, use
                     <code>POLYMORPHEUS_CONTEXT</code>
-                    in it. Dialog will provide with this token some useful
-                    options:
+                    in it. Dialog will provide with this token some useful options:
                     <code>$implicit</code>
                     with
                     <code>Observer&lt;O&gt;</code>
@@ -296,8 +288,7 @@
                     <code>next</code>
                     and
                     <code>complete</code>
-                    in one action. Do not forget to add your dialog component
-                    into
+                    in one action. Do not forget to add your dialog component into
                     <code>entryComponents</code>
                     of your module where you use dialog
                 </p>
@@ -310,9 +301,7 @@
 
             <li i18n>
                 You can also use a
-                <a routerLink="/dialogs" fragment="example-template" tuiLink>
-                    template
-                </a>
+                <a routerLink="/dialogs" fragment="example-template" tuiLink>template</a>
             </li>
 
             <li>
@@ -332,8 +321,8 @@
 
             <li>
                 <p i18n>
-                    If you use dialog components in lazy loading modules, do not
-                    forget to pass into
+                    If you use dialog components in lazy loading modules, do not forget to
+                    pass into
                     <code>new PolymorpheusComponent Injector</code>
                     of component where you open a dialog
                 </p>
@@ -345,19 +334,16 @@
             </li>
             <li>
                 <p i18n>
-                    Dialogs have experimental feature with closing them on
-                    browser backward navigation. It was achieved through
-                    manipulation of
+                    Dialogs have experimental feature with closing them on browser
+                    backward navigation. It was achieved through manipulation of
                     <code><strong>window.history</strong></code>
                     .
                 </p>
 
                 <p i18n>
-                    If you have some troubles with it, report about this,
-                    please.
+                    If you have some troubles with it, report about this, please.
                     <br />
-                    In this case, you can disable this feature for your app
-                    using
+                    In this case, you can disable this feature for your app using
                     <code><strong>TUI_DIALOG_CLOSES_ON_BACK</strong></code>
                     token.
                 </p>
@@ -372,8 +358,8 @@
 
     <ng-template i18n-pageTab pageTab="Your own dialogs">
         <p i18n>
-            You can create your own dialogs. For example, special dialogs for
-            mobile apps or with very customizable appearance.
+            You can create your own dialogs. For example, special dialogs for mobile apps
+            or with very customizable appearance.
         </p>
         <p i18n>
             Then you need to provide a stream of your dialogs into multi token
