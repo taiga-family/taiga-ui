@@ -21,13 +21,13 @@ export class TuiPanService extends Observable<readonly [number, number]> {
                 .pipe(
                     switchMapTo(
                         merge(
-                            typedFromEvent(nativeElement, 'touchmove', {
+                            typedFromEvent(documentRef, 'touchmove', {
                                 passive: true,
                             }).pipe(
                                 filter(({touches}) => touches.length < 2),
                                 map(({touches}) => touches[0]),
                             ),
-                            typedFromEvent(nativeElement, 'mousemove'),
+                            typedFromEvent(documentRef, 'mousemove'),
                         ),
                     ),
                     pairwise(),
