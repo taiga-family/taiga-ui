@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Component, ElementRef, Inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiCustomEvent} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiSizeS} from '@taiga-ui/core';
 
@@ -54,6 +55,12 @@ export class ExampleTuiAccordionComponent {
         TypeScript: example3Ts,
         HTML: example3Html,
         LESS: example3Less,
+    };
+
+    readonly example4: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/4/index.html'),
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        LESS: import('!!raw-loader!./examples/4/index.less'),
     };
 
     readonly bordersVariants = ['all', 'top-bottom'];

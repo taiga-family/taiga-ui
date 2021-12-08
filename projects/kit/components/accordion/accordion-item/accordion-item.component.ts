@@ -24,6 +24,7 @@ import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
+import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-content.directive';
 
 @Component({
     selector: 'tui-accordion-item',
@@ -88,8 +89,11 @@ export class TuiAccordionItemComponent
     @Output()
     readonly openChange = new EventEmitter<boolean>();
 
+    @ContentChild(TuiAccordionItemEagerContentDirective)
+    readonly eagerContent?: TuiAccordionItemEagerContentDirective;
+
     @ContentChild(TuiAccordionItemContentDirective)
-    readonly content?: TuiAccordionItemContentDirective;
+    readonly lazyContent?: TuiAccordionItemContentDirective;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
