@@ -98,6 +98,7 @@ export class TuiInputMonthComponent
     onValueChange(value: string) {
         if (value === '') {
             this.updateValue(null);
+            this.onOpenChange(true);
         }
     }
 
