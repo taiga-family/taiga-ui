@@ -9,7 +9,7 @@
     font: var(--tui-font-text-s);
     text-align: left;
     font-weight: bold;
-    color: var(--tui-text-01);
+    color: var(--tui-text-02);
     background: var(--tui-base-01);
     cursor: default;
     padding: 0 0.75rem;
@@ -91,7 +91,7 @@
     top: var(--tui-height-s);
 }
 
-.sort {
+.t-sort {
     .transition(color);
     .clearbtn();
     display: inline-flex;
@@ -104,37 +104,21 @@
     &_sorted {
         color: var(--tui-text-01);
 
-        & .arrow_rotated {
+        & .t-sort-icon_rotated {
             transform: scaleY(-1);
         }
     }
 
     &:focus-visible {
         background: var(--tui-selection);
-
-        & .arrow {
-            opacity: 1;
-        }
     }
 
     &:hover {
-        color: var(--tui-text-02);
-    }
-
-    &_sorted,
-    &:hover {
-        & .arrow {
-            opacity: 1;
-        }
+        color: var(--tui-text-01);
     }
 }
 
-.arrow {
-    .transition(opacity);
-    opacity: 0;
-}
-
-.bar {
+.t-bar {
     .transition(opacity);
     position: absolute;
     top: 0;

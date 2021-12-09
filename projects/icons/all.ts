@@ -184,7 +184,7 @@ const tuiIconClearFormatLarge =
     '<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" focusable="false"><g id="tuiIconClearFormatLarge" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24" fill="none"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path d="m17 17 3 3m3 3-3-3m0 0-3 3m3-3 3-3M7 21v-9.5M17 3H7v8.5m0 0h6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></svg></g></svg>';
 
 const tuiIconClose =
-    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false"><g id="tuiIconClose" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 24 24" fill="none"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.707 7.293a1 1 0 00-1.414 1.414L10.586 12l-3.293 3.293a1 1 0 101.414 1.414L12 13.414l3.293 3.293a1 1 0 001.414-1.414L13.414 12l3.293-3.293a1 1 0 00-1.414-1.414L12 10.586 8.707 7.293z" fill="currentColor"/></svg></svg></g></svg>';
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false"><g id="tuiIconClose" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 24 24" fill="none"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.707 7.293a1 1 0 0 0-1.414 1.414L10.586 12l-3.293 3.293a1 1 0 1 0 1.414 1.414L12 13.414l3.293 3.293a1 1 0 0 0 1.414-1.414L13.414 12l3.293-3.293a1 1 0 0 0-1.414-1.414L12 10.586 8.707 7.293z" fill="currentColor"/></svg></svg></g></svg>';
 
 const tuiIconCloseCircleLarge =
     '<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" focusable="false"><g id="tuiIconCloseCircleLarge" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24" fill="none"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path d="M4.929 19.071c3.905 3.905 10.237 3.905 14.142 0 3.905-3.905 3.905-10.237 0-14.142-3.905-3.905-10.237-3.905-14.142 0-3.905 3.905-3.905 10.237 0 14.142zm9.899-9.9-5.656 5.657m0-5.657 5.656 5.657" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></svg></g></svg>';
@@ -516,6 +516,9 @@ const tuiIconShowLarge =
 const tuiIconSortDown =
     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false"><g id="tuiIconSortDown" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><path d="M4.1 5H12c.3 0 .5.2.5.5 0 .1 0 .2-.1.3l-3.9 4.7c-.2.2-.5.2-.7.1l-.1-.1-4-4.7c-.2-.2-.2-.5 0-.7.1-.1.3-.1.4-.1z" fill="currentColor"/></svg></svg></g></svg>';
 
+const tuiIconSortOff =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><g id="tuiIconSortOff" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.707 4.879a1 1 0 0 1-1.414 1.414L8 4 5.707 6.293a1 1 0 1 1-1.414-1.414l2.293-2.293a2 2 0 0 1 2.828 0l2.293 2.293ZM4.293 10.707a1 1 0 0 1 1.414-1.414L8 11.586l2.293-2.293a1 1 0 1 1 1.414 1.414L9.414 13a2 2 0 0 1-2.828 0l-2.293-2.293Z" fill="currentColor"/></svg></svg></svg></g></svg>';
+
 const tuiIconSortUp =
     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false"><g id="tuiIconSortUp" xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><path d="M4.1 10.665H12c.3 0 .5-.2.5-.5 0-.1 0-.2-.1-.3l-3.9-4.7c-.2-.2-.5-.2-.7-.1l-.1.1-4 4.7c-.2.2-.2.5 0 .7.1.1.3.1.4.1z" fill="currentColor"/></svg></svg></g></svg>';
 
@@ -829,6 +832,7 @@ export {
     tuiIconSettingsLarge,
     tuiIconShowLarge,
     tuiIconSortDown,
+    tuiIconSortOff,
     tuiIconSortUp,
     tuiIconSound,
     tuiIconSoundLarge,
