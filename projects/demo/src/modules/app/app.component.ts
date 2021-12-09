@@ -39,7 +39,7 @@ export class AppComponent {
 
         return (
             (!today.getMonth() && today.getDate() < 14) ||
-            (today.getMonth() === 11 && today.getDate() > 25)
+            (today.getMonth() === 11 && today.getDate() > 24)
         );
     }
 }
