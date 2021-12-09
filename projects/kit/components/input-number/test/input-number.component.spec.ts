@@ -230,44 +230,6 @@ describe('InputNumber', () => {
     });
 
     describe('computedValue | value to display', () => {
-        describe('Form value null does not change the displayed value', () => {
-            beforeEach(() => {
-                testComponent.control.setValue(null);
-            });
-
-            it(`Value ''`, () => {
-                const value = '';
-
-                inputPO.nativeElement.value = value;
-
-                expect(component.computedValue).toBe(value);
-            });
-
-            it(`Value '-'`, () => {
-                const value = '-';
-
-                inputPO.nativeElement.value = value;
-
-                expect(component.computedValue).toBe(value);
-            });
-
-            it(`Value ','`, () => {
-                const value = ',';
-
-                inputPO.nativeElement.value = value;
-
-                expect(component.computedValue).toBe(value);
-            });
-
-            it(`Value '-,'`, () => {
-                const value = '-,';
-
-                inputPO.nativeElement.value = value;
-
-                expect(component.computedValue).toBe(value);
-            });
-        });
-
         it(`The given value from the form is correctly converted to a string`, () => {
             testComponent.control.setValue(-12345.67);
 
