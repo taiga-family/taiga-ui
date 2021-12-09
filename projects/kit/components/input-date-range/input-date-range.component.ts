@@ -294,9 +294,12 @@ export class TuiInputDateRangeComponent
             this.control.updateValueAndValidity({emitEvent: false});
         }
 
+        if (!value) {
+            this.onOpenChange(true);
+        }
+
         if (value.length !== DATE_RANGE_FILLER_LENGTH) {
             this.updateValue(null);
-            this.onOpenChange(true);
 
             return;
         }
