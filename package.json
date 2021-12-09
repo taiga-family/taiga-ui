@@ -46,24 +46,10 @@
         "run-many:build:libs": "nx run-many --target build --parallel --all --exclude demo",
         "run-many:publish:libs": "nx run-many --target publish --all --access public"
     },
-    "keywords": [
-        "angular",
-        "kit",
-        "ui",
-        "component-library",
-        "component",
-        "service",
-        "directive"
-    ],
+    "keywords": ["angular", "kit", "ui", "component-library", "component", "service", "directive"],
     "license": "Apache-2.0",
-    "authors": [
-        "Alex Inkin <alexander@inkin.ru>",
-        "Roman Sedov <79601794011@ya.ru>"
-    ],
-    "maintainers": [
-        "Alex Inkin <alexander@inkin.ru>",
-        "Roman Sedov <79601794011@ya.ru>"
-    ],
+    "authors": ["Alex Inkin <alexander@inkin.ru>", "Roman Sedov <79601794011@ya.ru>"],
+    "maintainers": ["Alex Inkin <alexander@inkin.ru>", "Roman Sedov <79601794011@ya.ru>"],
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "dependencies": {
@@ -133,9 +119,9 @@
         "@nrwl/tao": "12.10.0",
         "@nrwl/workspace": "12.10.0",
         "@tinkoff/eslint-config": "^1.14.0",
-        "@tinkoff/eslint-config-angular": "^1.18.1",
+        "@tinkoff/eslint-config-angular": "^1.21.0",
         "@tinkoff/stylelint-config": "^1.16.1",
-        "@tinkoff/prettier-config": "^1.19.1",
+        "@tinkoff/prettier-config": "^1.20.0",
         "@types/cypress-image-snapshot": "^3.1.5",
         "@types/dompurify": "^2.0.4",
         "@types/express": "4.16.1",
@@ -180,26 +166,12 @@
         "typescript": "~3.8.3"
     },
     "stylelint": {
-        "extends": [
-            "@tinkoff/stylelint-config/less",
-            "@tinkoff/stylelint-config/angular"
-        ],
-        "ignoreFiles": [
-            "**/demo/**",
-            "**/dist/**",
-            "**/coverage/**",
-            "**/node_modules/**"
-        ]
+        "extends": ["@tinkoff/stylelint-config/less", "@tinkoff/stylelint-config/angular"],
+        "ignoreFiles": ["**/demo/**", "**/dist/**", "**/coverage/**", "**/node_modules/**"]
     },
     "lint-staged": {
-        "*.{js,ts,html,md,less,json}": [
-            "prettier --write",
-            "git add"
-        ],
-        "*.{js,ts}": [
-            "eslint --fix",
-            "git add"
-        ]
+        "*.{js,ts,html,md,less,json}": ["prettier --write", "git add"],
+        "*.{js,ts}": ["eslint --fix", "git add"]
     },
     "standard-version": {
         "scripts": {

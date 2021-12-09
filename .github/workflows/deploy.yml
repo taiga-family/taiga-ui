@@ -1,64 +1,64 @@
 name: Deploy
 
 on:
-    push:
-        branches:
-            - 'release/**'
-    workflow_dispatch:
+  push:
+    branches:
+      - 'release/**'
+  workflow_dispatch:
 
 env:
-    NX_BRANCH: ${{ github.event.number }}
+  NX_BRANCH: ${{ github.event.number }}
 
 jobs:
-    build-and-deploy:
-        name: Demo
-        runs-on: ubuntu-latest
-        env:
-            NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-        steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js
-              uses: actions/setup-node@v1
-              with:
-                  node-version: '12.x'
-            # Setup cache
-            - name: Restore node_modules from cache
-              id: cache-node-modules
-              uses: actions/cache@v2
-              with:
-                  path: |
-                      node_modules
-                      !node_modules/.cache/
-                  key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
-            - name: Restore from global NPM cache
-              if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              uses: actions/cache@v2
-              with:
-                  path: ~/.npm
-                  key: npm-cache-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: npm-cache-
-            - name: Restore from cache of builds
-              id: build-cache
-              uses: actions/cache@v2
-              with:
-                  path: node_modules/.cache
-                  key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
-                  restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
-            - name: Clean install dependencies
-              if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              run: npm ci
-            # End of setup cache
-            - name: npm build demo
-              run: |
-                  npm run build:demo
-                  npm run build:demo:next
-            - name: Deploy
-              uses: JamesIves/github-pages-deploy-action@releases/v3
-              with:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  BRANCH: gh-pages
-                  FOLDER: dist/demo/browser
+  build-and-deploy:
+    name: Demo
+    runs-on: ubuntu-latest
+    env:
+      NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      # Setup cache
+      - name: Restore node_modules from cache
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            !node_modules/.cache/
+          key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Restore from global NPM cache
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: npm-cache-
+      - name: Restore from cache of builds
+        id: build-cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules/.cache
+          key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
+          restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Clean install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+      # End of setup cache
+      - name: npm build demo
+        run: |
+          npm run build:demo
+          npm run build:demo:next
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist/demo/browser
 
 concurrency:
-    group: deploy-${{ github.head_ref }}
-    cancel-in-progress: true
+  group: deploy-${{ github.head_ref }}
+  cancel-in-progress: true

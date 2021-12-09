@@ -1,106 +1,106 @@
 name: Lint
 
 on:
-    pull_request:
-        branches:
-            - main
-    push:
-        branches:
-            - main
-            - '!release/**'
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+      - '!release/**'
 
 env:
-    NX_BRANCH: ${{ github.event.number }}
-    IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
-    IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
+  NX_BRANCH: ${{ github.event.number }}
+  IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+  IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
 
 jobs:
-    lint:
-        name: Format
-        # Setup part
-        runs-on: ubuntu-latest
-        env:
-            NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-        steps:
-            - name: Fetch from origin repo
-              if: ${{ env.IS_FORK == 'false' }}
-              uses: actions/checkout@v2
-              with:
-                  ref: ${{ github.head_ref }}
-                  token: ${{ secrets.TINKOFF_BOT_PAT }}
-                  fetch-depth: 2
-            - name: Fetch from forked repo
-              if: ${{ env.IS_FORK == 'true' }}
-              uses: actions/checkout@v2
-              with:
-                  fetch-depth: 2
-            - name: Use Node.js
-              uses: actions/setup-node@v1
-              with:
-                  node-version: '12.x'
-            # Setup cache
-            - name: Restore node_modules from cache
-              id: cache-node-modules
-              uses: actions/cache@v2
-              with:
-                  path: |
-                      node_modules
-                      !node_modules/.cache/
-                  key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
-            - name: Restore from global NPM cache
-              if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              uses: actions/cache@v2
-              with:
-                  path: ~/.npm
-                  key: npm-cache-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: npm-cache-
-            - name: Restore from cache of builds
-              id: build-cache
-              uses: actions/cache@v2
-              with:
-                  path: node_modules/.cache
-                  key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
-                  restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
-            - name: Clean install dependencies
-              if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              run: npm ci
-            # End of setup cache
-            # End of setup
+  lint:
+    name: Format
+    # Setup part
+    runs-on: ubuntu-latest
+    env:
+      NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+    steps:
+      - name: Fetch from origin repo
+        if: ${{ env.IS_FORK == 'false' }}
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+          fetch-depth: 2
+      - name: Fetch from forked repo
+        if: ${{ env.IS_FORK == 'true' }}
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      # Setup cache
+      - name: Restore node_modules from cache
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            !node_modules/.cache/
+          key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Restore from global NPM cache
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: npm-cache-
+      - name: Restore from cache of builds
+        id: build-cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules/.cache
+          key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
+          restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Clean install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+      # End of setup cache
+      # End of setup
 
-            - name: Typecheck
-              run: npm run typecheck
+      - name: Typecheck
+        run: npm run typecheck
 
-            - name: Auto format files only in PR of maintainers
-              if: ${{ env.IS_FORK == 'false' && env.IS_MAIN_BRANCH == 'false' }}
-              run: |
-                  npm run prettier -- --write
-                  npm run lint -- --fix
-                  npm run stylelint -- --fix
+      - name: Auto format files only in PR of maintainers
+        if: ${{ env.IS_FORK == 'false' && env.IS_MAIN_BRANCH == 'false' }}
+        run: |
+          npm run prettier -- --write
+          npm run lint -- --fix
+          npm run stylelint -- --fix
 
-            - name: Only linting files in fork or main branch
-              if: ${{ env.IS_FORK == 'true' || env.IS_MAIN_BRANCH == 'true' }}
-              run: |
-                  npm run prettier -- --check
-                  npm run lint
-                  npm run stylelint
+      - name: Only linting files in fork or main branch
+        if: ${{ env.IS_FORK == 'true' || env.IS_MAIN_BRANCH == 'true' }}
+        run: |
+          npm run prettier -- --check
+          npm run lint
+          npm run stylelint
 
-            - name: Get last commit message
-              if: ${{ env.IS_MAIN_BRANCH == 'false' && env.IS_FORK == 'false' }}
-              id: last-commit-message
-              run: |
-                  git config user.name "tinkoff-bot"
-                  echo "::set-output name=msg::$(git log -1 --pretty=%s)"
+      - name: Get last commit message
+        if: ${{ env.IS_MAIN_BRANCH == 'false' && env.IS_FORK == 'false' }}
+        id: last-commit-message
+        run: |
+          git config user.name "tinkoff-bot"
+          echo "::set-output name=msg::$(git log -1 --pretty=%s)"
 
-            - name: Apply changes after linting
-              uses: stefanzweifel/git-auto-commit-action@v4.12.0
-              if: ${{ env.IS_MAIN_BRANCH == 'false' && env.IS_FORK == 'false' }}
-              with:
-                  commit_message: ${{ steps.last-commit-message.outputs.msg }}
-                  status_options: '--untracked-files=no'
-                  commit_options: '--amend --no-edit --no-verify'
-                  push_options: '--force-with-lease'
-                  skip_fetch: true
+      - name: Apply changes after linting
+        uses: stefanzweifel/git-auto-commit-action@v4.12.0
+        if: ${{ env.IS_MAIN_BRANCH == 'false' && env.IS_FORK == 'false' }}
+        with:
+          commit_message: ${{ steps.last-commit-message.outputs.msg }}
+          status_options: '--untracked-files=no'
+          commit_options: '--amend --no-edit --no-verify'
+          push_options: '--force-with-lease'
+          skip_fetch: true
 
 concurrency:
-    group: lint-${{ github.head_ref }}
-    cancel-in-progress: true
+  group: lint-${{ github.head_ref }}
+  cancel-in-progress: true

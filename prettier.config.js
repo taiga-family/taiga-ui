@@ -1,6 +1,9 @@
+const base = require('@tinkoff/prettier-config/angular');
+
 module.exports = {
-    ...require('@tinkoff/prettier-config/angular'),
+    ...base,
     overrides: [
+        ...base.overrides,
         {
             files: ['*.js', '*.ts'],
             options: {printWidth: 90, parser: 'typescript'},
