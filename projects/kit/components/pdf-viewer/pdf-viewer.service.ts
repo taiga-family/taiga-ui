@@ -22,15 +22,7 @@ export class TuiPdfViewerService extends AbstractTuiDialogService<
     protected readonly defaultOptions: TuiPdfViewerOptions<any> = DEFAULT_OPTIONS as any;
 
     open<G>(
-        content: () => SafeResourceUrl,
-        options: Partial<TuiPdfViewerOptions<any>>,
-    ): Observable<G>;
-    open<G>(
-        content: Content<G>,
-        options: Partial<TuiPdfViewerOptions<any>>,
-    ): Observable<G>;
-    open<G>(
-        content: (() => SafeResourceUrl) | Content<G>,
+        content: SafeResourceUrl | Content<G>,
         options: Partial<TuiPdfViewerOptions<any>> = {},
     ): Observable<G> {
         return super.open(content as Content<G>, options);

@@ -12,10 +12,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     encapsulation,
 })
 export class TuiPdfViewerExample1 {
-    readonly url: any = this.sanitizer.bypassSecurityTrustResourceUrl(
-        '/assets/media/taiga.pdf',
-    );
-
     constructor(
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService,
@@ -23,10 +19,13 @@ export class TuiPdfViewerExample1 {
 
     show(actions: PolymorpheusContent<TuiPdfViewerOptions>) {
         this.pdfService
-            .open(() => this.url, {
-                label: 'Taiga UI',
-                actions,
-            })
+            .open(
+                this.sanitizer.bypassSecurityTrustResourceUrl('/assets/media/taiga.pdf'),
+                {
+                    label: 'Taiga UI',
+                    actions,
+                },
+            )
             .subscribe();
     }
 }
