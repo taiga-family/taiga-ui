@@ -23,11 +23,11 @@
 .t-bumpers {
     display: flex;
     height: 100%;
-    scroll-snap-align: start;
-    scroll-margin: -1px;
 
     :host-context(.t-wrapper_closeable) & {
         scroll-snap-stop: always;
+        scroll-snap-align: start;
+        scroll-margin: -1px;
     }
 }
 
