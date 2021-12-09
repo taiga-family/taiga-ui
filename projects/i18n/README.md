@@ -49,13 +49,13 @@ import {TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
 
 // app.module
 @NgModule({
-    // ...
-    providers: [
-        {
-            provide: TUI_LANGUAGE,
-            useValue: of(TUI_RUSSIAN_LANGUAGE),
-        },
-    ],
+  // ...
+  providers: [
+    {
+      provide: TUI_LANGUAGE,
+      useValue: of(TUI_RUSSIAN_LANGUAGE),
+    },
+  ],
 })
 export class AppModule {}
 ```
@@ -68,10 +68,10 @@ If you extremely struggle against every byte of your app, you can build a custom
 ```ts
 // If we plan to use CORE and KIT packages only
 export const CUSTOM_RUSSIAN_LANGUAGE: Language = {
-    ...TUI_RUSSIAN_LANGUAGE_CORE,
-    ...TUI_RUSSIAN_LANGUAGE_KIT,
-    // ...TUI_RUSSIAN_LANGUAGE_ADDON_COMMERCE,
-    // ...TUI_RUSSIAN_LANGUAGE_ADDON_TABLE,
+  ...TUI_RUSSIAN_LANGUAGE_CORE,
+  ...TUI_RUSSIAN_LANGUAGE_KIT,
+  // ...TUI_RUSSIAN_LANGUAGE_ADDON_COMMERCE,
+  // ...TUI_RUSSIAN_LANGUAGE_ADDON_TABLE,
 };
 ```
 

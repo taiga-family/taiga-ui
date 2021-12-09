@@ -4,12 +4,12 @@ description: Suggest a feature for improve productivity of the Taiga UI Team
 labels: ['dev-infra']
 
 body:
-    - type: textarea
-      id: description
-      attributes:
-          label: Description
-          placeholder: |
-              Proposed solution.
-              Alternatives considered.
-      validations:
-          required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: |
+        Proposed solution.
+        Alternatives considered.
+    validations:
+      required: true

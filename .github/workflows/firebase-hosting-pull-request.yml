@@ -2,54 +2,54 @@ name: Deploy
 on: pull_request
 
 env:
-    IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+  IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
 
 jobs:
-    build_and_preview:
-        name: Firebase
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js
-              uses: actions/setup-node@v1
-              with:
-                  node-version: '12.x'
-            # Setup cache
-            - name: Restore node_modules from cache
-              id: cache-node-modules
-              uses: actions/cache@v2
-              with:
-                  path: |
-                      node_modules
-                      !node_modules/.cache/
-                  key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
-            - name: Restore from global NPM cache
-              if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              uses: actions/cache@v2
-              with:
-                  path: ~/.npm
-                  key: npm-cache-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: npm-cache-
-            - name: Restore from cache of builds
-              id: build-cache
-              uses: actions/cache@v2
-              with:
-                  path: node_modules/.cache
-                  key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
-                  restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
-            - name: Clean install dependencies
-              if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              run: npm ci
-            # End of setup cache
-            - run: npm run build:demo
-            - uses: FirebaseExtended/action-hosting-deploy@v0
-              if: ${{ env.IS_FORK == 'false' }}
-              with:
-                  repoToken: ${{ secrets.GITHUB_TOKEN }}
-                  firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TAIGA_UI }}
-                  projectId: taiga-ui
-                  expires: 1d
+  build_and_preview:
+    name: Firebase
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      # Setup cache
+      - name: Restore node_modules from cache
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            !node_modules/.cache/
+          key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Restore from global NPM cache
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: npm-cache-
+      - name: Restore from cache of builds
+        id: build-cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules/.cache
+          key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
+          restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Clean install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+      # End of setup cache
+      - run: npm run build:demo
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        if: ${{ env.IS_FORK == 'false' }}
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TAIGA_UI }}
+          projectId: taiga-ui
+          expires: 1d
 
 concurrency:
-    group: firebase-${{ github.head_ref }}
-    cancel-in-progress: true
+  group: firebase-${{ github.head_ref }}
+  cancel-in-progress: true

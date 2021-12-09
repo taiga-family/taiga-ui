@@ -1,175 +1,175 @@
 name: Unit tests
 
 on:
-    pull_request:
-        paths:
-            - 'projects/**'
-            - '!projects/*testing/**'
-            - '!projects/demo/**'
-            - '!projects/icons/**'
-            - '.github/workflows/test.yml'
-            - 'angular.json'
-            - 'package.json'
-            - 'karma.config.json'
-            - 'tsconfig*'
-    push:
-        branches:
-            - main
-            - '!release/**'
+  pull_request:
+    paths:
+      - 'projects/**'
+      - '!projects/*testing/**'
+      - '!projects/demo/**'
+      - '!projects/icons/**'
+      - '.github/workflows/test.yml'
+      - 'angular.json'
+      - 'package.json'
+      - 'karma.config.json'
+      - 'tsconfig*'
+  push:
+    branches:
+      - main
+      - '!release/**'
 
 env:
-    NX_BRANCH: ${{ github.event.number }}
-    NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-    IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
+  NX_BRANCH: ${{ github.event.number }}
+  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+  IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
 
 jobs:
-    test:
-        name: Karma
-        # Setup part
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-              with:
-                  fetch-depth: 0
-            - name: Use Node.js
-              uses: actions/setup-node@v1
-              with:
-                  node-version: '12.x'
-            # Setup cache
-            - name: Restore node_modules from cache
-              id: cache-node-modules
-              uses: actions/cache@v2
-              with:
-                  path: |
-                      node_modules
-                      !node_modules/.cache/
-                  key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
-            - name: Restore from global NPM cache
-              if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              uses: actions/cache@v2
-              with:
-                  path: ~/.npm
-                  key: npm-cache-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: npm-cache-
-            - name: Restore from cache of builds
-              id: build-cache
-              uses: actions/cache@v2
-              with:
-                  path: node_modules/.cache
-                  key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
-                  restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
-            - name: Clean install dependencies
-              if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              run: npm ci
-            # End of setup cache
-            # End of setup
-            - name: Run affected tests for libraries based on main branch
-              if: ${{ env.IS_MAIN_BRANCH == 'false' }}
-              run: npm run affected:test:libs
-            - name: Run all tests for libraries only in main branch
-              if: ${{ env.IS_MAIN_BRANCH == 'true' }}
-              run: npm run run-many:test:libs
-            # Coveralls part
+  test:
+    name: Karma
+    # Setup part
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      # Setup cache
+      - name: Restore node_modules from cache
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            !node_modules/.cache/
+          key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Restore from global NPM cache
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: npm-cache-
+      - name: Restore from cache of builds
+        id: build-cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules/.cache
+          key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
+          restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Clean install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+      # End of setup cache
+      # End of setup
+      - name: Run affected tests for libraries based on main branch
+        if: ${{ env.IS_MAIN_BRANCH == 'false' }}
+        run: npm run affected:test:libs
+      - name: Run all tests for libraries only in main branch
+        if: ${{ env.IS_MAIN_BRANCH == 'true' }}
+        run: npm run run-many:test:libs
+      # Coveralls part
 
-            - name: Check file existence cdk_lcov_info
-              id: cdk_lcov_info
-              uses: andstor/file-existence-action@v1
-              with:
-                  files: ./coverage/cdk/lcov.info
-            - name: Coveralls(cdk)
-              if: steps.cdk_lcov_info.outputs.files_exists == 'true'
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/cdk/lcov.info
+      - name: Check file existence cdk_lcov_info
+        id: cdk_lcov_info
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ./coverage/cdk/lcov.info
+      - name: Coveralls(cdk)
+        if: steps.cdk_lcov_info.outputs.files_exists == 'true'
+        continue-on-error: true
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/cdk/lcov.info
 
-            - name: Check file existence core_lcov_info
-              id: core_lcov_info
-              uses: andstor/file-existence-action@v1
-              with:
-                  files: ./coverage/core/lcov.info
-            - name: Coveralls(core)
-              if: steps.core_lcov_info.outputs.files_exists == 'true'
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/core/lcov.info
+      - name: Check file existence core_lcov_info
+        id: core_lcov_info
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ./coverage/core/lcov.info
+      - name: Coveralls(core)
+        if: steps.core_lcov_info.outputs.files_exists == 'true'
+        continue-on-error: true
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/core/lcov.info
 
-            - name: Check file existence kit_lcov_info
-              id: kit_lcov_info
-              uses: andstor/file-existence-action@v1
-              with:
-                  files: ./coverage/kit/lcov.info
-            - name: Coveralls(kit)
-              if: steps.kit_lcov_info.outputs.files_exists == 'true'
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/kit/lcov.info
+      - name: Check file existence kit_lcov_info
+        id: kit_lcov_info
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ./coverage/kit/lcov.info
+      - name: Coveralls(kit)
+        if: steps.kit_lcov_info.outputs.files_exists == 'true'
+        continue-on-error: true
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/kit/lcov.info
 
-            - name: Check file existence addon_charts_lcov_info
-              id: addon_charts_lcov_info
-              uses: andstor/file-existence-action@v1
-              with:
-                  files: ./coverage/addon-charts/lcov.info
-            - name: Coveralls(addon-charts)
-              if: steps.addon_charts_lcov_info.outputs.files_exists == 'true'
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/addon-charts/lcov.info
+      - name: Check file existence addon_charts_lcov_info
+        id: addon_charts_lcov_info
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ./coverage/addon-charts/lcov.info
+      - name: Coveralls(addon-charts)
+        if: steps.addon_charts_lcov_info.outputs.files_exists == 'true'
+        continue-on-error: true
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/addon-charts/lcov.info
 
-            - name: Check file existence addon_commerce_lcov_info
-              id: addon_commerce_lcov_info
-              uses: andstor/file-existence-action@v1
-              with:
-                  files: ./coverage/addon-commerce/lcov.info
-            - name: Coveralls(addon-commerce)
-              if: steps.addon_commerce_lcov_info.outputs.files_exists == 'true'
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/addon-commerce/lcov.info
+      - name: Check file existence addon_commerce_lcov_info
+        id: addon_commerce_lcov_info
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ./coverage/addon-commerce/lcov.info
+      - name: Coveralls(addon-commerce)
+        if: steps.addon_commerce_lcov_info.outputs.files_exists == 'true'
+        continue-on-error: true
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/addon-commerce/lcov.info
 
-            - name: Check file existence addon_editor_lcov_info
-              id: addon_editor_lcov_info
-              uses: andstor/file-existence-action@v1
-              with:
-                  files: ./coverage/addon-editor/lcov.info
-            - name: Coveralls(addon-editor)
-              if: steps.addon_editor_lcov_info.outputs.files_exists == 'true'
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/addon-editor/lcov.info
+      - name: Check file existence addon_editor_lcov_info
+        id: addon_editor_lcov_info
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ./coverage/addon-editor/lcov.info
+      - name: Coveralls(addon-editor)
+        if: steps.addon_editor_lcov_info.outputs.files_exists == 'true'
+        continue-on-error: true
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/addon-editor/lcov.info
 
-            - name: Check file existence addon_table_lcov_info
-              id: addon_table_lcov_info
-              uses: andstor/file-existence-action@v1
-              with:
-                  files: ./coverage/addon-table/lcov.info
-            - name: Coveralls(addon-table)
-              if: steps.addon_table_lcov_info.outputs.files_exists == 'true'
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  path-to-lcov: ./coverage/addon-table/lcov.info
+      - name: Check file existence addon_table_lcov_info
+        id: addon_table_lcov_info
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ./coverage/addon-table/lcov.info
+      - name: Coveralls(addon-table)
+        if: steps.addon_table_lcov_info.outputs.files_exists == 'true'
+        continue-on-error: true
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/addon-table/lcov.info
 
-            - name: Coveralls Finished
-              continue-on-error: true
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  parallel-finished: true
-            # End of Coveralls
+      - name: Coveralls Finished
+        continue-on-error: true
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
+      # End of Coveralls
 
 concurrency:
-    group: test-${{ github.head_ref }}
-    cancel-in-progress: true
+  group: test-${{ github.head_ref }}
+  cancel-in-progress: true
