@@ -10,7 +10,8 @@ on:
       - '.github/workflows/test.yml'
       - 'angular.json'
       - 'package.json'
-      - 'karma.config.json'
+      - 'karma.conf.js'
+      - 'karma.config.js'
       - 'tsconfig*'
   push:
     branches:

@@ -7,6 +7,7 @@
         },
         ".eslintrc.js": "*",
         "nx.json": "*",
+        "karma.*.js": "*",
         "tsconfig.*.json": "*",
         "tsconfig.json": "*"
     },
