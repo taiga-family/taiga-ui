@@ -171,7 +171,8 @@
     },
     "lint-staged": {
         "*.{js,ts,html,md,less,json}": ["prettier --write", "git add"],
-        "*.{js,ts}": ["eslint --fix", "git add"]
+        "*.{js,ts}": ["eslint --fix", "git add"],
+        "*.less": ["stylelint --fix", "git add"]
     },
     "standard-version": {
         "scripts": {
