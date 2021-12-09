@@ -68,6 +68,10 @@ export class TuiThComponent<T> {
         return !!this.sorter && !!this.table && this.sorter === this.table.sorter;
     }
 
+    get icon(): string {
+        return this.isCurrent ? 'tuiIconSortDown' : 'tuiIconSortOff';
+    }
+
     onResized(width: number) {
         this.width = width;
     }
