@@ -2,9 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
 @Component({
     selector: 'example-tui-copy-processor',
     templateUrl: './copy-processor.template.html',
@@ -16,6 +13,11 @@ export class ExampleTuiCopyProcessorComponent {
         HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleImportModule = import(
+        '!!raw-loader!./examples/import/import-module.txt'
+    );
+
+    readonly exampleInsertTemplate = import(
+        '!!raw-loader!./examples/import/insert-template.txt'
+    );
 }

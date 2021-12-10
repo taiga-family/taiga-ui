@@ -4,6 +4,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 import {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {identity} from 'rxjs';
 
+// @dynamic
 @Directive({
     selector: '[tuiCopyProcessor]',
 })
