@@ -1,7 +1,6 @@
 import {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
-import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {TuiDialog, tuiPure} from '@taiga-ui/cdk';
+import {TuiDialog} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
     TUI_CLOSE_WORD,
@@ -26,19 +25,9 @@ export class TuiPdfViewerComponent<I, O> {
     readonly animation = {value: '', ...this.options} as const;
 
     constructor(
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<TuiPdfViewerOptions<I>, O>,
     ) {}
-
-    @tuiPure
-    bypass(url: string): SafeValue {
-        if (!url.endsWith('.pdf')) {
-            throw 'PdfViewer is intended for PDF files only';
-        }
-
-        return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    }
 }
