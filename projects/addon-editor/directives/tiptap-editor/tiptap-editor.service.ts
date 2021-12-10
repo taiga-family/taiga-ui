@@ -32,6 +32,8 @@ import type StarterKit from '@tiptap/starter-kit';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
+import {isEmptyParagraph} from './utils/is-empty-paragraph';
+
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
 // @dynamic
@@ -68,8 +70,9 @@ export class TuiTiptapEditorService extends TuiEditor {
             editor.on('update', () => {
                 const content = editor.getHTML();
                 const json = editor.getJSON().content;
+                const value: string = isEmptyParagraph(json) ? '' : content;
 
-                this.valueChange$.next(this.isEmptyParagraph(json) ? '' : content);
+                this.valueChange$.next(value);
             });
         });
     }
@@ -299,11 +302,5 @@ export class TuiTiptapEditorService extends TuiEditor {
         if (range) {
             this.editor.chain().setTextSelection(range).run();
         }
-    }
-
-    private isEmptyParagraph(json: Object[]): boolean {
-        return (
-            Array.isArray(json) && json.length === 1 && !json[0].hasOwnProperty('content')
-        );
     }
 }
