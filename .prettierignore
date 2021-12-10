@@ -2,3 +2,4 @@ dist
 **/coverage/**
 */import/
 **/schematics/*/files/**/*
+package-lock.json
