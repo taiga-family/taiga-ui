@@ -12,7 +12,7 @@ export class TuiCopyProcessorDirective {
     @tuiDefaultProp()
     tuiCopyProcessor: TuiStringHandler<string> = identity;
 
-    constructor(@Inject(WINDOW) readonly windowRef: Window) {}
+    constructor(@Inject(WINDOW) private readonly windowRef: Window) {}
 
     @HostListener('copy.prevent', ['$event'])
     onCopy(event: ClipboardEvent) {

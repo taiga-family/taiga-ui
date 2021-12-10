@@ -931,7 +931,7 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: 'CopyProcessor',
-                keywords: 'copy',
+                keywords: 'copy, clipboard, копия, буфер',
                 route: '/directives/copy-processor',
             },
             {
