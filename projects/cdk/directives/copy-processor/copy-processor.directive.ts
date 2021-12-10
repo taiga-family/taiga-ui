@@ -17,9 +17,13 @@ export class TuiCopyProcessorDirective {
 
     @HostListener('copy.prevent', ['$event'])
     onCopy(event: ClipboardEvent) {
-        event.clipboardData?.setData(
-            'text/plain',
-            this.tuiCopyProcessor(String(this.windowRef.getSelection())),
-        );
+        const selection = this.windowRef.getSelection();
+
+        if (selection) {
+            event.clipboardData?.setData(
+                'text/plain',
+                this.tuiCopyProcessor(String(selection)),
+            );
+        }
     }
 }
