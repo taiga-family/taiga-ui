@@ -8,7 +8,6 @@ import {
 } from '@taiga-ui/cdk/directives/copy-processor';
 import {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {configureTestSuite} from 'ng-bullet';
-import {Subject} from 'rxjs';
 
 describe('TuiCopyProcessor Directive', () => {
     @Component({
@@ -17,14 +16,8 @@ describe('TuiCopyProcessor Directive', () => {
         `,
     })
     class TestComponent {
-        readonly clipboardDataDataChanged = new Subject<string>();
-
         @HostListener('copy', ['$event'])
-        onCopy(event: ClipboardEvent) {
-            this.clipboardDataDataChanged.next(
-                event.clipboardData?.getData('text/plain'),
-            );
-        }
+        onCopy = jasmine.createSpy('onCopy');
 
         processor: TuiStringHandler<string> = text =>
             text.replace(',', '.').replace(new RegExp(' ', 'g'), '');
@@ -69,8 +62,10 @@ describe('TuiCopyProcessor Directive', () => {
 
         testDirectiveElement.dispatchEvent(event);
 
-        component.clipboardDataDataChanged.subscribe(value => {
-            expect(value).toBe(component.processor(mockSelectedValue));
-        });
+        const actualEvent = component.onCopy.calls.first().args[0] as ClipboardEvent;
+
+        expect(actualEvent.clipboardData?.getData).toBe(
+            component.processor(mockSelectedValue),
+        );
     });
 });
