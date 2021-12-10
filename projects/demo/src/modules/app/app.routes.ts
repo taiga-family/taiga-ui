@@ -1149,6 +1149,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'directives/copy-processor',
+        loadChildren: () =>
+            import(`../directives/copy-processor/copy-processor.module`).then(
+                m => m.ExampleTuiCopyProcessorModule,
+            ),
+        data: {
+            title: 'CopyProcessor',
+        },
+    },
+    {
         path: 'directives/dropdown',
         loadChildren: () =>
             import(`../directives/dropdown/dropdown.module`).then(
