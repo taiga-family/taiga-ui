@@ -2,11 +2,11 @@ import {LanguagePreview} from '@taiga-ui/i18n/interfaces';
 
 export const TUI_VIETNAMESE_LANGUAGE_ADDON_PREVIEW: LanguagePreview = {
     previewTexts: {
-        rotate: 'Rotate',
+        rotate: 'Xoay',
     },
     zoomTexts: {
-        zoomOut: 'Zoom out',
-        zoomIn: 'Zoom in',
-        reset: 'Reset',
+        zoomOut: 'Thu nhỏ',
+        zoomIn: 'Phóng to',
+        reset: 'Đặt lại',
     },
 };
