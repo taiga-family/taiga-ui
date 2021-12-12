@@ -151,7 +151,7 @@
 
     &::placeholder {
         color: var(--tui-text-03);
-        visibility: hidden;
+        opacity: 0;
     }
 
     :host[data-mode='onDark'] &::placeholder {
@@ -159,7 +159,7 @@
     }
 
     :host._focused &:not(:read-only)::placeholder {
-        visibility: visible;
+        opacity: 1;
     }
 
     :host[data-tui-host-size='m'] & {
