@@ -1,10 +1,13 @@
-import {Component, DebugElement} from '@angular/core';
+import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
-import {TuiInputDateTimeModule} from '@taiga-ui/kit/components';
+import {
+    TuiInputDateTimeComponent,
+    TuiInputDateTimeModule,
+} from '@taiga-ui/kit/components';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 
@@ -20,6 +23,9 @@ import {configureTestSuite} from 'ng-bullet';
     `,
 })
 class TestComponent {
+    @ViewChild(TuiInputDateTimeComponent)
+    dateTimeComponent: TuiInputDateTimeComponent;
+
     readonly control = new FormControl([new TuiDay(2021, 6, 12), null]);
 
     min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
@@ -297,6 +303,12 @@ describe('InputDateTime', () => {
 
                 done();
             });
+    });
+
+    it('empty value opens dropdown', () => {
+        inputPO.sendText('');
+        fixture.detectChanges();
+        expect(component.dateTimeComponent.open).toEqual(true);
     });
 
     function clickOnCellInsideCalendar(dayNumber: number): void {

@@ -223,10 +223,7 @@ export class TuiComboBoxComponent<T>
         }
 
         this.updateValue(this.strict || this.search === '' ? null : this.search);
-
-        if (this.search && this.hostedDropdown) {
-            this.hostedDropdown.updateOpen(true);
-        }
+        this.hostedDropdown?.updateOpen(true);
     }
 
     onHovered(hovered: boolean) {

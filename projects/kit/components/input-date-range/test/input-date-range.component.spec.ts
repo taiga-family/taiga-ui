@@ -161,6 +161,12 @@ describe('InputDateRangeComponent', () => {
                 `15.07.2001${RANGE_SEPARATOR_CHAR}15.07.2019`,
             );
         });
+
+        it('empty value opens dropdown', () => {
+            inputPO.sendText('');
+            fixture.detectChanges();
+            expect(component.open).toEqual(true);
+        });
     });
 
     function clickOnTextfield() {

@@ -241,6 +241,10 @@ export class TuiInputDateComponent
             this.control.updateValueAndValidity({emitEvent: false});
         }
 
+        if (!value) {
+            this.onOpenChange(true);
+        }
+
         this.updateValue(
             value.length !== DATE_FILLER_LENGTH ? null : TuiDay.normalizeParse(value),
         );

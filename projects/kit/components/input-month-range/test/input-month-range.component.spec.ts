@@ -134,5 +134,11 @@ describe('InputMonthRange', () => {
             expect(component.value!.from.month).toBe(newMonthStart.month);
             expect(component.value!.to.month).toBe(newMonthEnd.month);
         });
+
+        it('empty value opens dropdown', () => {
+            component.onValueChange('');
+            fixture.detectChanges();
+            expect(component.open).toEqual(true);
+        });
     });
 });

@@ -207,6 +207,10 @@ export class TuiInputDateTimeComponent
     }
 
     onValueChange(value: string) {
+        if (!value) {
+            this.onOpenChange(true);
+        }
+
         if (value.length < DATE_FILLER_LENGTH) {
             this.updateValue([null, null]);
 

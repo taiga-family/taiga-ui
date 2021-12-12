@@ -198,6 +198,14 @@ describe('ComboBox', () => {
                 expect(getCheckmark()).not.toBeNull();
             });
         });
+
+        describe('dropdown', () => {
+            it('empty value opens dropdown', () => {
+                testComponent.component.onInput('');
+                fixture.detectChanges();
+                expect(testComponent.component.open).toEqual(true);
+            });
+        });
     });
 
     function getValue(): DebugElement | null {
