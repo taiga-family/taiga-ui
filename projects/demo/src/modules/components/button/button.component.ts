@@ -74,6 +74,7 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
 
     readonly appearanceVariants = [
         'primary',
+        'accent',
         'secondary',
         'outline',
         'flat',
