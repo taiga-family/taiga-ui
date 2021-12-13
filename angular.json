@@ -687,6 +687,12 @@
             "projectType": "library",
             "prefix": "tui",
             "architect": {
+                "preprocess": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm run exec ./scripts/preprocess-icons.ts"
+                    }
+                },
                 "prebuild": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {

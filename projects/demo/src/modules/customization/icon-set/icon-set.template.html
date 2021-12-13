@@ -51,19 +51,26 @@
     <p i18n>
         If you want to bundle your icons, you need to provide
         <code>TUI_ICONS</code>
-        token with a dictionary of name to source code. If you want to move your
-        icons to assets you need to process them with
-        <a tuiLink download="process-icons.js" href="assets/process-icons.js">
-            this script
-        </a>
-        . Drop it to the folder with your icons and run
-        <code>node process-icons.js</code>
-        . Then move your icons to the assets folder and provide
+        token with a dictionary of name to source code. Also you need to process
+        your icons by
+        <code>processIcons</code>
+        from
+        <code>@taiga-ui/icons/scripts</code>
+        package. Then move icons to the assets folder and provide
         <code>TUI_ICONS_PATH</code>
         as seen in example below:
     </p>
 
-    <section id="sanitizer">
+    <tui-doc-example
+        id="material"
+        i18n-heading
+        heading="Material icons"
+        [content]="example1"
+    >
+        <tui-icon-set-example-1></tui-icon-set-example-1>
+    </tui-doc-example>
+
+    <section id="sanitizer" class="sanitizer-example">
         <h2>Sanitizer</h2>
         <p i18n>
             If you use unsafe icons or
@@ -93,16 +100,7 @@
 
         <tui-doc-code
             filename="app.module.ts"
-            [code]="exampleSanitier"
+            [code]="exampleSanitizer"
         ></tui-doc-code>
     </section>
-
-    <tui-doc-example
-        id="material"
-        i18n-heading
-        heading="Material icons"
-        [content]="example1"
-    >
-        <tui-icon-set-example-1></tui-icon-set-example-1>
-    </tui-doc-example>
 </tui-doc-page>

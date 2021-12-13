@@ -55,6 +55,6 @@ export function processIcon(source: string, name: string): string {
     }em" height="${
         height / 16
     }em" overflow="visible" viewBox="0 0 ${width} ${height}"><svg x="${-width / 2}" y="${
-        -width / 2
+        -height / 2
     }">${src}</svg></svg></g>`;
 }

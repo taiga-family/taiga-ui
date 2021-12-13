@@ -2,12 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiKitIcons} from '@taiga-ui/icons';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as exampleSanitizer} from '!!raw-loader!./examples/sanitizer/sanitizer.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
-
 @Component({
     selector: 'icon-set',
     templateUrl: './icon-set.template.html',
@@ -15,10 +9,12 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class IconSetComponent {
-    readonly exampleSanitier = exampleSanitizer;
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly exampleSanitizer = import('!!raw-loader!./examples/sanitizer/sanitizer.txt');
+
+    readonly example1 = {
+        'process-icons.js': import('!!raw-loader!./examples/1/process-icons.md'),
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
     readonly names = Object.keys(tuiKitIcons);
