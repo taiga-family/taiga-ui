@@ -57,7 +57,7 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
             typedFromEvent(this.documentRef, 'mouseup'),
         )
             .pipe(takeUntil(destroy$))
-            .subscribe(() => this.updateAttributes({width: this._width}));
+            .subscribe(() => this.updateAttributes({width: this.width}));
     }
 
     onHorizontalDrag([x]: readonly [number, number], direction: number) {
