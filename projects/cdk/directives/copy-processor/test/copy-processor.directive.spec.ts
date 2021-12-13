@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
@@ -16,9 +16,6 @@ describe('TuiCopyProcessor Directive', () => {
         `,
     })
     class TestComponent {
-        @HostListener('copy', ['$event'])
-        onCopy = jasmine.createSpy('onCopy');
-
         processor: TuiStringHandler<string> = text =>
             text.replace(',', '.').replace(new RegExp(' ', 'g'), '');
     }
@@ -57,14 +54,13 @@ describe('TuiCopyProcessor Directive', () => {
     });
 
     it('clipboardData is processed via processed function when copy event happen', () => {
-        const clipboardData = new DataTransfer();
+        const clipboardData = jasmine.createSpyObj('clipboardData', ['setDate']);
         const event = new ClipboardEvent('copy', {clipboardData});
 
         testDirectiveElement.dispatchEvent(event);
 
-        const actualEvent = component.onCopy.calls.first().args[0] as ClipboardEvent;
-
-        expect(actualEvent.clipboardData?.getData).toBe(
+        expect(event.clipboardData?.setData).toHaveBeenCalledWith(
+            'text/plain',
             component.processor(mockSelectedValue),
         );
     });
