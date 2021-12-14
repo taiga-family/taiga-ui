@@ -4,7 +4,6 @@
     position: relative;
     display: block;
     overflow: hidden;
-    overscroll-behavior-x: none;
 
     &._draggable {
         user-select: none;
@@ -38,7 +37,26 @@
     margin: 0;
 }
 
-.t-content {
+.t-wrapper {
+    position: sticky;
+    left: 0;
+    right: 0;
+    min-width: 100%;
+    overflow: hidden;
+}
+
+.t-scroller {
+    .scrollbar-hidden();
     display: flex;
-    justify-content: center;
+    overflow: auto;
+    overscroll-behavior-x: none;
+    padding-bottom: 2rem;
+    margin-bottom: -2rem;
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        min-width: 1rem;
+    }
 }

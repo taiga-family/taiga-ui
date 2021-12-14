@@ -115,6 +115,12 @@ export class TuiCarouselComponent {
         }
     }
 
+    onScroll(delta: number) {
+        if (!this.isMobile) {
+            this.updateIndex(this.index + delta);
+        }
+    }
+
     onPan(x: number) {
         if (!this.computedDraggable) {
             return;

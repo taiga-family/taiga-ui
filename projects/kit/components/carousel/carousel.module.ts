@@ -12,6 +12,7 @@ import {TuiCarouselComponent} from './carousel.component';
 import {TuiCarouselDirective} from './carousel.directive';
 import {TuiCarouselAutoscrollDirective} from './carousel-autoscroll.directive';
 import {TuiCarouselButtonsDirective} from './carousel-buttons.directive';
+import {TuiCarouselScrollDirective} from './carousel-scroll.directive';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import {TuiCarouselButtonsDirective} from './carousel-buttons.directive';
         TuiCarouselDirective,
         TuiCarouselButtonsDirective,
         TuiCarouselAutoscrollDirective,
+        TuiCarouselScrollDirective,
     ],
     exports: [
         TuiCarouselComponent,
