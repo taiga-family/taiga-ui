@@ -46,24 +46,10 @@
         "run-many:build:libs": "nx run-many --target build --parallel --all --exclude demo",
         "run-many:publish:libs": "nx run-many --target publish --all --access public"
     },
-    "keywords": [
-        "angular",
-        "kit",
-        "ui",
-        "component-library",
-        "component",
-        "service",
-        "directive"
-    ],
+    "keywords": ["angular", "kit", "ui", "component-library", "component", "service", "directive"],
     "license": "Apache-2.0",
-    "authors": [
-        "Alex Inkin <alexander@inkin.ru>",
-        "Roman Sedov <79601794011@ya.ru>"
-    ],
-    "maintainers": [
-        "Alex Inkin <alexander@inkin.ru>",
-        "Roman Sedov <79601794011@ya.ru>"
-    ],
+    "authors": ["Alex Inkin <alexander@inkin.ru>", "Roman Sedov <79601794011@ya.ru>"],
+    "maintainers": ["Alex Inkin <alexander@inkin.ru>", "Roman Sedov <79601794011@ya.ru>"],
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "dependencies": {
@@ -180,30 +166,13 @@
         "typescript": "~3.8.3"
     },
     "stylelint": {
-        "extends": [
-            "@tinkoff/stylelint-config/less",
-            "@tinkoff/stylelint-config/angular"
-        ],
-        "ignoreFiles": [
-            "**/demo/**",
-            "**/dist/**",
-            "**/coverage/**",
-            "**/node_modules/**"
-        ]
+        "extends": ["@tinkoff/stylelint-config/less", "@tinkoff/stylelint-config/angular"],
+        "ignoreFiles": ["**/demo/**", "**/dist/**", "**/coverage/**", "**/node_modules/**"]
     },
     "lint-staged": {
-        "*.{js,ts,html,md,less,json}": [
-            "prettier --write",
-            "git add"
-        ],
-        "*.{js,ts}": [
-            "eslint --fix",
-            "git add"
-        ],
-        "*.less": [
-            "stylelint --fix",
-            "git add"
-        ]
+        "*.{js,ts,html,md,less,json}": ["prettier --write", "git add"],
+        "*.{js,ts}": ["eslint --fix", "git add"],
+        "*.less": ["stylelint --fix", "git add"]
     },
     "standard-version": {
         "scripts": {

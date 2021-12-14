@@ -2,14 +2,7 @@
     "name": "@taiga-ui/addon-doc",
     "version": "2.27.0",
     "description": "Taiga UI based library for developing documentation portals for Angular libraries.",
-    "keywords": [
-        "angular",
-        "component",
-        "library",
-        "docs",
-        "documentation",
-        "storybook"
-    ],
+    "keywords": ["angular", "component", "library", "docs", "documentation", "storybook"],
     "schematics": "./schematics/collection.json",
     "license": "Apache-2.0",
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
