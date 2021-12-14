@@ -43,12 +43,6 @@
                     directive to setup navigation buttons
                 </p>
             </div>
-            <tui-pagination
-                size="s"
-                class="tui-space_top-4"
-                [length]="3"
-                [(index)]="index"
-            ></tui-pagination>
         </tui-carousel>
         <button
             tuiIconButton
@@ -58,6 +52,12 @@
             (click)="navigate(1)"
         ></button>
     </div>
+    <tui-pagination
+        size="s"
+        class="tui-space_top-4"
+        [length]="3"
+        [(index)]="index"
+    ></tui-pagination>
     <div class="tui-space_top-4">
         <button tuiButton appearance="primary" (click)="open = false">
             Got it!

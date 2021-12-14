@@ -1,24 +1,30 @@
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ContentChildren,
     ElementRef,
     EventEmitter,
+    HostBinding,
+    HostListener,
     Inject,
     Input,
-    Optional,
     Output,
     QueryList,
     TemplateRef,
 } from '@angular/core';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY, tuiDefaultProp, TuiItemDirective, tuiPure} from '@taiga-ui/cdk';
-import {Observable, Subject} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {
+    clamp,
+    EMPTY_QUERY,
+    TUI_IS_MOBILE,
+    tuiDefaultProp,
+    TuiItemDirective,
+    tuiPure,
+    TuiSwipeDirection,
+} from '@taiga-ui/cdk';
 
-import {TuiCarouselDirective} from './carousel.directive';
-import {TuiCarouselDraggableDirective} from './carousel-draggable.directive';
-
+// @dynamic
 @Component({
     selector: 'tui-carousel',
     templateUrl: 'carousel.template.html',
@@ -32,6 +38,13 @@ import {TuiCarouselDraggableDirective} from './carousel-draggable.directive';
     ],
 })
 export class TuiCarouselComponent {
+    private translate = 0;
+
+    @Input()
+    @HostBinding('class._draggable')
+    @tuiDefaultProp()
+    draggable = false;
+
     @Input()
     @tuiDefaultProp()
     itemsCount = 1;
@@ -46,18 +59,32 @@ export class TuiCarouselComponent {
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<any>> = EMPTY_QUERY;
 
-    readonly intersected$ = new Subject<number>();
-
-    readonly manual$ = this.index$.pipe(map(index => this.loopback(index)));
-
-    attached = false;
+    @HostBinding('class._transitioned')
+    transitioned = true;
 
     constructor(
-        @Optional()
-        @Inject(TuiCarouselDraggableDirective)
-        readonly transform$: Observable<string | null> | null,
-        @Inject(TuiCarouselDirective) private readonly index$: Observable<number>,
+        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
     ) {}
+
+    get transform(): string {
+        const x = this.transitioned ? this.computedTranslate : this.translate;
+
+        return `translateX(${100 * x}%)`;
+    }
+
+    @HostListener('touchstart', ['false'])
+    @HostListener('touchend', ['true'])
+    @HostListener('mousedown', ['false'])
+    @HostListener('document:mouseup.silent', ['true'])
+    onTransitioned(transitioned: boolean) {
+        this.transitioned = transitioned;
+
+        if (!transitioned) {
+            this.translate = this.computedTranslate;
+        }
+    }
 
     @tuiPure
     getStyle(itemsCount: number): Partial<CSSStyleDeclaration> {
@@ -70,31 +97,66 @@ export class TuiCarouselComponent {
         };
     }
 
-    onIntersection(
-        {intersectionRatio, intersectionRect, rootBounds}: IntersectionObserverEntry,
-        index: number,
-    ) {
-        if (
-            !this.attached ||
-            !intersectionRatio ||
-            intersectionRatio === 1 ||
-            // Phantom intersections due to width wobble on drag
-            intersectionRect.left > Number(rootBounds?.left)
-        ) {
+    next() {
+        this.updateIndex(this.index + 1);
+    }
+
+    prev() {
+        this.updateIndex(this.index - 1);
+    }
+
+    isDisabled(index: number): boolean {
+        return index < this.index || index > this.index + this.itemsCount;
+    }
+
+    onIntersection({intersectionRatio}: IntersectionObserverEntry, index: number) {
+        if (intersectionRatio && intersectionRatio !== 1 && !this.transitioned) {
+            this.updateIndex(index - Math.floor(this.itemsCount / 2));
+        }
+    }
+
+    onScroll(delta: number) {
+        if (!this.isMobile) {
+            this.updateIndex(this.index + delta);
+        }
+    }
+
+    onPan(x: number) {
+        if (!this.computedDraggable) {
             return;
         }
 
-        this.indexChange.emit(index - Math.floor(this.itemsCount / 2));
+        const {clientWidth} = this.elementRef.nativeElement;
+        const min = 1 - this.items.length / this.itemsCount;
+
+        this.translate = clamp(x / clientWidth + this.translate, min, 0);
     }
 
-    onPresent(attached: boolean) {
-        this.attached = attached;
+    onSwipe(direction: TuiSwipeDirection) {
+        if (Math.round(this.translate) !== -this.index || !this.computedDraggable) {
+            return;
+        } else if (direction === 'left') {
+            this.next();
+        } else if (direction === 'right') {
+            this.prev();
+        }
     }
 
-    private loopback(index: number) {
-        const safe = this.items.length || index + 1;
-        const remainder = index % safe;
+    onAutoscroll() {
+        this.updateIndex(this.index === this.items.length - 1 ? 0 : this.index + 1);
+    }
 
-        return remainder < 0 ? remainder + this.items.length : remainder;
+    private get computedTranslate(): number {
+        return -this.index / this.itemsCount;
+    }
+
+    private get computedDraggable(): boolean {
+        return this.isMobile || this.draggable;
+    }
+
+    private updateIndex(index: number) {
+        this.index = clamp(index, 0, this.items.length - 1);
+        this.indexChange.emit(this.index);
+        this.changeDetectorRef.markForCheck();
     }
 }
