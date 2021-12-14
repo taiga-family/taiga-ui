@@ -28,7 +28,6 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives/textfield-controller';
-import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TUI_MODE, TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
 import {
     TuiBrightness,
@@ -154,10 +153,6 @@ export class TuiPrimitiveTextfieldComponent
 
     get inputHidden(): boolean {
         return !!this.content?.length;
-    }
-
-    get isContextTable(): boolean {
-        return this.appearance === TuiAppearance.Table;
     }
 
     get hasValue(): boolean {
