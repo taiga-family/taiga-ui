@@ -1,16 +1,10 @@
 @import 'taiga-ui-local';
 
 :host {
-    .scrollbar-hidden();
     position: relative;
     display: block;
-    overflow: auto;
+    overflow: hidden;
     overscroll-behavior-x: none;
-    scroll-snap-type: x mandatory;
-
-    &._transitioned {
-        scroll-snap-type: none;
-    }
 
     &._draggable {
         user-select: none;
@@ -28,13 +22,8 @@
 .t-items {
     display: flex;
     align-items: center;
-    visibility: hidden;
 
-    &_visible {
-        visibility: visible;
-    }
-
-    &:not([style*='transform']) {
+    :host._transitioned & {
         .transition(transform);
     }
 }
@@ -45,13 +34,11 @@
     min-width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    border: none;
+    margin: 0;
 }
 
 .t-content {
-    position: sticky;
-    left: 0;
     display: flex;
     justify-content: center;
 }
