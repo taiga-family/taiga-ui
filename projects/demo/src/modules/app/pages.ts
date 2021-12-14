@@ -930,6 +930,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'CopyProcessor',
+                keywords: 'copy, clipboard, копия, буфер',
+                route: '/directives/copy-processor',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'DescribedBy',
                 keywords: '',
                 route: '/directives/described-by',
