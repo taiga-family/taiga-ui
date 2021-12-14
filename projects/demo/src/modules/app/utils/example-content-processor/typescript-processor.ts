@@ -9,8 +9,8 @@ export function processTs(fileContent: string): string {
 
     return tsFileContent
         .toString()
-        .replace(/import {encapsulation} from '..\/.*';\n/gm, '')
-        .replace(/import {changeDetection} from '..\/.*';\n/gm, '')
+        .replace(/import {encapsulation} from '.*';\n/gm, '')
+        .replace(/import {changeDetection} from '.*';\n/gm, '')
         .replace(/\n +encapsulation,/gm, '')
         .replace(
             /changeDetection,/gm,
