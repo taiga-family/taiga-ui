@@ -1,13 +1,14 @@
 import {grepByPattern} from './grep-by-pattern';
 
 export async function checkRequireWithSrc(path: string): Promise<void> | never {
+    const includePattern = 'require(.*/src/.*)';
     const result = await grepByPattern({
-        includePattern: 'require(.*/src/.*)',
-        excludePattern: 'taiga-ui-icons-scripts',
+        excludePattern: 'taiga-ui-icons-scripts|browser',
+        includePattern,
         path,
     });
 
     if (result.length > 0) {
-        throw new Error(`There are problems with require(.../src/...) in:\n\n${result}`);
+        throw new Error(`There are problems with ${includePattern} in:\n\n${result}`);
     }
 }
