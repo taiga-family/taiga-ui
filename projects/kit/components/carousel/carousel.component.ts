@@ -155,7 +155,7 @@ export class TuiCarouselComponent {
     }
 
     private updateIndex(index: number) {
-        this.index = clamp(index, 0, this.items.length + 1);
+        this.index = clamp(index, 0, this.items.length - 1);
         this.indexChange.emit(this.index);
         this.changeDetectorRef.markForCheck();
     }
