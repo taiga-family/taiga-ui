@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.27.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.27.0...v2.27.1) (2021-12-15)
+
+### Bug Fixes
+
+- **core:** disable pointer events on value decorator
+  ([#1113](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1113))
+  ([2623d1c](https://github.com/TinkoffCreditSystems/taiga-ui/commit/2623d1cbc6cc0e9a243352e0b34796f198da1ae8))
+
 ## [2.27.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.25.0...v2.27.0) (2021-12-14)
 
 ### Features
