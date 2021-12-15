@@ -2,14 +2,7 @@
     "name": "@taiga-ui/addon-charts",
     "version": "2.27.1",
     "description": "Extension package for Taiga UI that adds various charts, graphs and related components.",
-    "keywords": [
-        "angular",
-        "component",
-        "graph",
-        "chart",
-        "bar",
-        "diagram"
-    ],
+    "keywords": ["angular", "component", "graph", "chart", "bar", "diagram"],
     "license": "Apache-2.0",
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",

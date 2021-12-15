@@ -2,14 +2,7 @@
     "name": "@taiga-ui/addon-commerce",
     "version": "2.27.1",
     "description": "Extension package for Taiga UI related to commerce, payment systems, currencies etc.",
-    "keywords": [
-        "angular",
-        "component",
-        "kit",
-        "commerce",
-        "card",
-        "payment"
-    ],
+    "keywords": ["angular", "component", "kit", "commerce", "card", "payment"],
     "license": "Apache-2.0",
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
