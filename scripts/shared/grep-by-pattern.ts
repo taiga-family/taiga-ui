@@ -14,7 +14,7 @@ export async function grepByPattern(options: Options): Promise<any> {
     let grep = `grep -iRl '${includePattern}' ${path}`;
 
     if (excludePattern) {
-        grep += ` | grep -v '${excludePattern}'`;
+        grep += ` | grep -vE '${excludePattern}'`;
     }
 
     console.info(`[TASK]: $ ${grep}`);
