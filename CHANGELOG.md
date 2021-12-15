@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.27.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.25.0...v2.27.0) (2021-12-14)
+
+### Features
+
+- **addon-editor:** resizable images ([#959](https://github.com/TinkoffCreditSystems/taiga-ui/issues/959))
+  ([4132e57](https://github.com/TinkoffCreditSystems/taiga-ui/commit/4132e579f0b2506f4fa790c40ceb109e806296ee))
+- **addon-table:** update `Th` style ([#1087](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1087))
+  ([59830c6](https://github.com/TinkoffCreditSystems/taiga-ui/commit/59830c677ce0446332332855d7da0d77624f7edf))
+- **cdk:** `CopyProcessor` add new directive to process value before it is copied
+  ([#1094](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1094))
+  ([1768464](https://github.com/TinkoffCreditSystems/taiga-ui/commit/1768464cd102046ee8b8f4c9d9051f9e126a052b))
+- **core:** add accent appearance ([#1098](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1098))
+  ([bf55bb1](https://github.com/TinkoffCreditSystems/taiga-ui/commit/bf55bb15a56620c24fb579a7bad5a70356e4728a))
+- **kit:** `Accordion` add support for eager content
+  ([#1081](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1081))
+  ([14f44ca](https://github.com/TinkoffCreditSystems/taiga-ui/commit/14f44caef5c393fe76aaf45dab3d7eb2579a1187))
+- **kit:** add attribute tuiHighlightColor ([#1065](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1065))
+  ([1a6975d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/1a6975d32f37f9f30105ac1b9ad55a807cc4a447)), closes
+  [#2](https://github.com/TinkoffCreditSystems/taiga-ui/issues/2)
+
+### Bug Fixes
+
+- **addon-editor:** improved type safety ([#1089](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1089))
+  ([9077e88](https://github.com/TinkoffCreditSystems/taiga-ui/commit/9077e885be3e789c52317c235a251f33795e0417))
+- **addon-mobile:** `Sheet` fix closeable and swipe down
+  ([#1073](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1073))
+  ([9870fb4](https://github.com/TinkoffCreditSystems/taiga-ui/commit/9870fb424237358c168f96e9db6263aa9e8d9bf9))
+- **core:** `Button` add visual indication for clicks on mobile
+  ([#1074](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1074))
+  ([143311f](https://github.com/TinkoffCreditSystems/taiga-ui/commit/143311f64b093a2064263473159d34f06158e9a3))
+- **core:** fix expanding inputs based on content
+  ([#1107](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1107))
+  ([72f15a2](https://github.com/TinkoffCreditSystems/taiga-ui/commit/72f15a23677d6dbc489ed1991f4d79c6e9b83716))
+- **kit:** `Carousel` fix for iOS ([#1105](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1105))
+  ([6888347](https://github.com/TinkoffCreditSystems/taiga-ui/commit/6888347002138e98a708cb43a3a65279778e8fbf))
+- **kit:** `Combobox` open dropdown on cleaner click
+  ([#1078](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1078))
+  ([849f22d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/849f22d0ddf17270eca60a9c03b4815c2953b2a6))
+- **kit:** `InputInline` fix expression change error
+  ([#1082](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1082))
+  ([8d7f615](https://github.com/TinkoffCreditSystems/taiga-ui/commit/8d7f615077c164ddcccb5a27344b04a7a2604acf))
+- **kit:** `InputNumber` fix updating the value and limits at the same time
+  ([#1076](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1076))
+  ([a9bae40](https://github.com/TinkoffCreditSystems/taiga-ui/commit/a9bae401c63fe8b12bf23614204ab461008d259a))
+- **kit:** `PdfViewer` add `SafeResourceUrl` support
+  ([#1090](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1090))
+  ([3b0cb71](https://github.com/TinkoffCreditSystems/taiga-ui/commit/3b0cb7173a09968a0f3a960aaf4f20c9ec0771a1))
+- **kit:** cross browser support hiding placeholder
+  ([#1099](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1099))
+  ([dd71659](https://github.com/TinkoffCreditSystems/taiga-ui/commit/dd71659249c8ede6d431908a868c751757352e94))
+
 ## [2.26.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.25.0...v2.26.0) (2021-12-06)
 
 ### Features

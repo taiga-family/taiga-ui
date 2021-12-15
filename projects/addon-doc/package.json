@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-doc",
-    "version": "2.26.0",
+    "version": "2.27.0",
     "description": "Taiga UI based library for developing documentation portals for Angular libraries.",
     "keywords": ["angular", "component", "library", "docs", "documentation", "storybook"],
     "schematics": "./schematics/collection.json",
@@ -15,17 +15,17 @@
         "@angular-devkit/schematics": "^9.0.0",
         "@ng-web-apis/common": "1.12.1",
         "@tinkoff/ng-polymorpheus": "3.1.12",
-        "@taiga-ui/cdk": "2.26.0",
-        "@taiga-ui/core": "2.26.0",
-        "@taiga-ui/kit": "2.26.0",
-        "@taiga-ui/addon-mobile": "2.26.0",
+        "@taiga-ui/cdk": "2.27.0",
+        "@taiga-ui/core": "2.27.0",
+        "@taiga-ui/kit": "2.27.0",
+        "@taiga-ui/addon-mobile": "2.27.0",
         "schematics-utilities": "1.0.1",
         "highlight.js": "^10.0.0",
         "ngx-highlightjs": "^4.0.0"
     },
     "devDependencies": {
-        "@taiga-ui/core": "2.26.0",
-        "@taiga-ui/kit": "2.26.0",
-        "@taiga-ui/addon-mobile": "2.26.0"
+        "@taiga-ui/core": "2.27.0",
+        "@taiga-ui/kit": "2.27.0",
+        "@taiga-ui/addon-mobile": "2.27.0"
     }
 }
