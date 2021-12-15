@@ -1,8 +1,16 @@
 {
     "name": "@taiga-ui/cdk",
-    "version": "2.27.0",
+    "version": "2.27.1",
     "description": "Base library for creating Angular components and applications using Taiga UI principles regarding of actual visual appearance",
-    "keywords": ["angular", "cdk", "component", "development", "kit", "service", "directive"],
+    "keywords": [
+        "angular",
+        "cdk",
+        "component",
+        "development",
+        "kit",
+        "service",
+        "directive"
+    ],
     "license": "Apache-2.0",
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
