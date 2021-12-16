@@ -1,7 +1,7 @@
 <ng-container *ngIf="change$ | async"></ng-container>
 <tui-error
     *ngIf="isObservable; else string"
-    [error]="computedError | async"
+    [error]="$any(computedError) | async"
 ></tui-error>
 <ng-template #string>
     <tui-error [error]="computedError"></tui-error>

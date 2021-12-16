@@ -55,7 +55,7 @@ export class TuiFieldErrorComponent {
         @Inject(TUI_VALIDATION_ERRORS)
         private readonly validationErrors: Record<
             string,
-            PolymorpheusContent | Observable<string>
+            PolymorpheusContent | Observable<PolymorpheusContent>
         >,
     ) {
         if (this.ngControl) {
@@ -152,7 +152,7 @@ export class TuiFieldErrorComponent {
     @tuiPure
     private getError(
         firstError: any,
-        errorContent?: PolymorpheusContent | Observable<string>,
+        errorContent?: PolymorpheusContent | Observable<PolymorpheusContent>,
     ): TuiValidationError | Observable<TuiValidationError> | null {
         if (firstError instanceof TuiValidationError) {
             return firstError;
