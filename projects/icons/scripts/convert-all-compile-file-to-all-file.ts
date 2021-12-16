@@ -53,4 +53,11 @@ export async function convertAllCompileFileToAllFile(config: Options): Promise<v
         format: 'es',
         preferConst: true,
     });
+
+    /**
+     * @note:
+     * The rollup bundle must be closed once `write` is finished to let plugins clean up their external
+     * processes or services via the `closeBundle` hook, otherwise it can lead to memory leaks.
+     */
+    await bundle.close();
 }
