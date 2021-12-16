@@ -54,11 +54,11 @@ export class TuiEditorNewComponent
 
     @Input()
     @tuiDefaultProp()
-    readonly exampleText = '';
+    exampleText = '';
 
     @Input()
     @tuiDefaultProp()
-    readonly tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
+    tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
 
     @ViewChild(TuiToolbarNewComponent)
     readonly toolbar?: TuiToolbarNewComponent;
