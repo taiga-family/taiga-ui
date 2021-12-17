@@ -9,7 +9,7 @@ import {DemoTuiIconsTabs, TUI_DEMO_ICONS} from './icons.tokens';
     changeDetection,
 })
 export class IconsComponent {
-    keys = Object.keys(this.icons);
+    readonly keys = Object.keys(this.icons);
 
     constructor(@Inject(TUI_DEMO_ICONS) readonly icons: DemoTuiIconsTabs) {}
 }
