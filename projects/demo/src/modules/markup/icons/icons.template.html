@@ -1,39 +1,11 @@
 <tui-doc-page i18n-header header="Icons">
-    <p i18n>
-        These icons can be used by name in
-        <a tuiLink routerLink="/components/svg">Svg</a>
-        component and all Taiga UI component accepting icons as input.
-    </p>
+    <ng-template *ngFor="let key of keys" i18n-pageTab [pageTab]="key">
+        <p i18n>
+            These icons can be used by name in
+            <a tuiLink routerLink="/components/svg">Svg</a>
+            component and all Taiga UI component accepting icons as input.
+        </p>
 
-    <ng-template pageTab>
-        <h2 i18n class="title">Search by name</h2>
-        <tui-input
-            i18n
-            tuiHintContent="You can copy icon's name with a click"
-            tuiTextfieldSize="m"
-            [tuiTextfieldLabelOutside]="true"
-            [(ngModel)]="search"
-        >
-            Input icon name to highlight
-        </tui-input>
-        <ng-container *ngFor="let key of keys">
-            <h2 i18n class="title">{{ key }}</h2>
-            <div class="icons">
-                <button
-                    *ngFor="let icon of icons[key]"
-                    tuiIconButton
-                    type="button"
-                    size="m"
-                    i18n-title
-                    title="Copy"
-                    appearance="icon"
-                    class="icon"
-                    [class.icon_highlighted]="getHighlight(icon)"
-                    [attr.aria-label]="icon"
-                    [icon]="icon"
-                    (click)="copyPath(icon)"
-                ></button>
-            </div>
-        </ng-container>
+        <icons-group [icons]="icons[key]"></icons-group>
     </ng-template>
 </tui-doc-page>
