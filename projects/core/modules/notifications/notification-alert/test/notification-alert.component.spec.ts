@@ -94,7 +94,7 @@ describe('NotificationAlertComponent', () => {
 
         constructor(
             @Inject(TUI_NOTIFICATION_OPTIONS)
-            public readonly options: NotificationTokenOptions,
+            readonly options: NotificationTokenOptions,
         ) {
             this.setAlert(content, {label});
         }

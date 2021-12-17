@@ -31,7 +31,7 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TUI_NOTIFICATION_OPTIONS)
-        public readonly options: NotificationTokenOptions,
+        readonly options: NotificationTokenOptions,
     ) {}
 
     ngOnInit() {

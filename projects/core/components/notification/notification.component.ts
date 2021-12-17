@@ -46,7 +46,7 @@ export class TuiNotificationComponent {
     constructor(
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_NOTIFICATION_OPTIONS)
-        public readonly options: NotificationTokenOptions,
+        readonly options: NotificationTokenOptions,
     ) {}
 
     get icon(): string {
