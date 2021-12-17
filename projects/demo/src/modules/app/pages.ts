@@ -218,6 +218,13 @@ export const pages: TuiDocPages = [
         subPages: [
             {
                 section: $localize`Components`,
+                title: 'ArcChart',
+                keywords:
+                    'график, чарт, chart, graph, line, столбик, диаграмма, дуга, кольцо',
+                route: '/components/arc-chart',
+            },
+            {
+                section: $localize`Components`,
                 title: 'Axes',
                 keywords:
                     'график, чарт, chart, graph, line, столбик, диаграмма, оси, координаты',

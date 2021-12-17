@@ -1,0 +1,30 @@
+<svg
+    *ngFor="let item of value; let index = index"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="-100 -100 200 200"
+    focusable="false"
+    class="t-svg"
+    [style.top.rem]="getInset(index)"
+    [style.left.rem]="getInset(index)"
+    [style.right.rem]="getInset(index)"
+>
+    <path
+        vector-effect="non-scaling-stroke"
+        d="M -70 70 A 100 100 0 1 1 70 70"
+    />
+    <path
+        vector-effect="non-scaling-stroke"
+        d="M -70 70 A 100 100 0 1 1 70 70"
+        class="t-value"
+        [style.color]="getColor(index)"
+        [style.strokeDasharray.rem]="getLength(index)"
+        [style.strokeDashoffset.rem]="initialized ? getOffset(index) : getLength(index)"
+    />
+</svg>
+<div class="t-content">
+    <div class="t-wrapper"><ng-content></ng-content></div>
+</div>
+<div class="t-percent">
+    <span>{{minLabel}}</span>
+    <span>{{maxLabel}}</span>
+</div>

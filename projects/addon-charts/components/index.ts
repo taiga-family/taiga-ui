@@ -1,3 +1,4 @@
+export * from '@taiga-ui/addon-charts/components/arc-chart';
 export * from '@taiga-ui/addon-charts/components/axes';
 export * from '@taiga-ui/addon-charts/components/bar';
 export * from '@taiga-ui/addon-charts/components/bar-chart';
