@@ -1,7 +1,7 @@
 import {inject, InjectionToken} from '@angular/core';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
-import {TUI_I18N_STORAGE_KEY} from '@taiga-ui/i18n';
-import {TUI_LANGUAGE_MAP} from '@taiga-ui/i18n';
+import {TUI_I18N_STORAGE_KEY, TUI_LANGUAGE_MAP} from '@taiga-ui/i18n';
+
 import {Language} from '..';
 import {TUI_DEFAULT_LANGUAGE} from './default-lanuage';
 
@@ -13,14 +13,13 @@ export const TUI_STORED_LANGUAGE = new InjectionToken<Language>(
             const defaultLanguage = inject(TUI_DEFAULT_LANGUAGE);
             const storageKey = inject(TUI_I18N_STORAGE_KEY);
             const storedLanguageCode = storage.getItem(storageKey);
-            const storedLanguage =
-                storedLanguageCode &&
-                TUI_LANGUAGE_MAP.has(storedLanguageCode) &&
-                TUI_LANGUAGE_MAP.get(storedLanguageCode);
+            let result: Language = defaultLanguage;
 
-            return storedLanguage
-                ? storedLanguage
-                : defaultLanguage;
+            if (storedLanguageCode && TUI_LANGUAGE_MAP.has(storedLanguageCode)) {
+                result = TUI_LANGUAGE_MAP.get(storedLanguageCode) as Language;
+            }
+
+            return result;
         },
     },
 );
