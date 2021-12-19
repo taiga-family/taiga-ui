@@ -144,7 +144,7 @@ export const TUI_ITALIAN_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> =
     [TuiCountryIsoCode.NZ]: 'Nuova Zelanda',
     [TuiCountryIsoCode.OM]: 'Oman',
     [TuiCountryIsoCode.PA]: 'Panama',
-    [TuiCountryIsoCode.PE]: 'Peru',
+    [TuiCountryIsoCode.PE]: 'Perù',
     [TuiCountryIsoCode.PF]: 'Polinesia Francese',
     [TuiCountryIsoCode.PG]: 'Papua Nuova Guinea',
     [TuiCountryIsoCode.PH]: 'Filippine',
