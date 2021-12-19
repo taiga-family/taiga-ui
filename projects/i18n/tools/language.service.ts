@@ -1,19 +1,23 @@
-import {inject, Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
-import {Language} from '@taiga-ui/i18n';
+import {Language} from '..';
 import {TUI_I18N_STORAGE_KEY, TUI_STORED_LANGUAGE} from '@taiga-ui/i18n/tools';
-import {ReplaySubject} from 'rxjs';
-@Injectable()
-export class TuiLanguageService extends ReplaySubject<Language> {
-    storedLanguage = inject(TUI_STORED_LANGUAGE);
-    storageKey = inject(TUI_I18N_STORAGE_KEY);
-    storage = inject(LOCAL_STORAGE);
-    constructor() {
-        super(1);
-        this.next(this.storedLanguage);
+import {BehaviorSubject, ReplaySubject} from 'rxjs';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class TuiLanguageService extends BehaviorSubject<Language> {
+
+    constructor(
+        @Inject(TUI_STORED_LANGUAGE) private storedLanguage: Language,
+        @Inject(TUI_I18N_STORAGE_KEY) private storageKey: string,
+        @Inject(LOCAL_STORAGE) private storage: Storage,
+    ) {
+        super(storedLanguage)
     }
     setLang(lang: Language) {
         this.storage.setItem(this.storageKey, lang.code);
-        super.next(lang);
+        this.next(lang);
     }
 }

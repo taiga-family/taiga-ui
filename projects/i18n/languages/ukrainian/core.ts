@@ -1,9 +1,9 @@
-import {TUI_LANGUAGE_CODE} from '@taiga-ui/i18n/constants';
+import {TuiLanguageCode} from '@taiga-ui/i18n/constants';
 import {LanguageCore} from '@taiga-ui/i18n/interfaces';
 import {TUI_ENGLISH_LANGUAGE_COUNTRIES} from '@taiga-ui/i18n/languages/english';
 
 export const TUI_UKRAINIAN_LANGUAGE_CORE: LanguageCore = {
-    code: TUI_LANGUAGE_CODE.UKRANIAN,
+    code: TuiLanguageCode.UKRANIAN,
     months: [
         'Січень',
         'Лютий',

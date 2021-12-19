@@ -1,10 +1,10 @@
-import {TUI_LANGUAGE_CODE} from '@taiga-ui/i18n/constants';
+import {TuiLanguageCode} from '@taiga-ui/i18n/constants';
 import {LanguageCore} from '@taiga-ui/i18n/interfaces';
 
 import {TUI_PORTUGUESE_LANGUAGE_COUNTRIES} from './countries';
 
 export const TUI_PORTUGUESE_LANGUAGE_CORE: LanguageCore = {
-    code: TUI_LANGUAGE_CODE.PORTUGUESE,
+    code: TuiLanguageCode.PORTUGUESE,
     months: [
         'Janeiro',
         'Fevereiro',

@@ -1,4 +1,4 @@
-export enum TUI_LANGUAGE_CODE {
+export enum TuiLanguageCode {
     ENGLISH = 'en',
     RUSSIAN = 'ru',
     DUTCH = 'nl',
