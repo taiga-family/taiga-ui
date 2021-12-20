@@ -2,15 +2,24 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    HostBinding,
+    HostListener,
     Inject,
+    NgZone,
     Optional,
 } from '@angular/core';
-import {TUI_DIALOGS, TUI_IS_MOBILE, tuiAssert} from '@taiga-ui/cdk';
+import {WINDOW} from '@ng-web-apis/common';
+import {TUI_DIALOGS, TUI_IS_MOBILE, tuiAssert, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {VERSION} from '@taiga-ui/core/constants';
+import {TuiMedia} from '@taiga-ui/core/interfaces';
 import {TuiNotificationsHostComponent} from '@taiga-ui/core/modules/notifications';
-import {TUI_ANIMATIONS_DURATION, TUI_ASSERT_ENABLED} from '@taiga-ui/core/tokens';
-import {merge, Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {
+    TUI_ANIMATIONS_DURATION,
+    TUI_ASSERT_ENABLED,
+    TUI_MEDIA,
+} from '@taiga-ui/core/tokens';
+import {fromEvent, merge, Observable, of} from 'rxjs';
+import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 // @dynamic
 @Component({
@@ -24,6 +33,15 @@ import {map} from 'rxjs/operators';
     },
 })
 export class TuiRootComponent {
+    @HostBinding('$.class._mobile')
+    @HostListener('$.class._mobile')
+    readonly mobile$ = fromEvent(this.windowRef, 'resize').pipe(
+        startWith(null),
+        map(() => this.windowRef.innerWidth < this.media.mobile),
+        distinctUntilChanged(),
+        tuiZoneOptimized(this.ngZone),
+    );
+
     readonly scrollbars$ =
         this.dialogs && !this.isMobile
             ? merge(...this.dialogs).pipe(map(({length}) => !length))
@@ -40,6 +58,9 @@ export class TuiRootComponent {
         readonly notificationsHost: TuiNotificationsHostComponent,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_ASSERT_ENABLED) enabled: boolean,
+        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(TUI_MEDIA) private readonly media: TuiMedia,
+        @Inject(NgZone) private readonly ngZone: NgZone,
     ) {
         tuiAssert.enabled = enabled;
     }

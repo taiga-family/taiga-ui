@@ -75,7 +75,7 @@
         text-align: center;
     }
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) {
         &[data-size] {
             min-width: 100vw;
             width: 100vw;
@@ -110,7 +110,7 @@
     border-top-right-radius: inherit;
     overflow: hidden;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         :host[data-size='fullscreen'] & {
             flex: 1;
         }
@@ -154,7 +154,7 @@
         display: none;
     }
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         position: absolute;
         top: 0;
         right: 0;
