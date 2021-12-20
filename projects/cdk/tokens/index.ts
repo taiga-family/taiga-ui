@@ -10,5 +10,6 @@ export * from './removed-element';
 export * from './sanitizer';
 export * from './swipe-options';
 export * from './take-only-trusted-events';
+export * from './touch-supported';
 export * from './window-height';
 export * from './zoom-options';
