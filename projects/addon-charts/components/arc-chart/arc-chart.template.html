@@ -4,9 +4,10 @@
     viewBox="-100 -100 200 200"
     focusable="false"
     class="t-svg"
-    [style.top.rem]="getInset(index)"
-    [style.left.rem]="getInset(index)"
-    [style.right.rem]="getInset(index)"
+    [style.top.em]="getInset(index)"
+    [style.left.em]="getInset(index)"
+    [style.width.em]="getDiameter(index)"
+    [style.height.em]="getDiameter(index)"
 >
     <path
         vector-effect="non-scaling-stroke"
@@ -17,8 +18,8 @@
         d="M -70 70 A 100 100 0 1 1 70 70"
         class="t-value"
         [style.color]="getColor(index)"
-        [style.strokeDasharray.rem]="getLength(index)"
-        [style.strokeDashoffset.rem]="initialized ? getOffset(index) : getLength(index)"
+        [style.strokeDasharray.em]="getLength(index)"
+        [style.strokeDashoffset.em]="initialized ? getOffset(index) : getLength(index)"
     />
 </svg>
 <div class="t-content">

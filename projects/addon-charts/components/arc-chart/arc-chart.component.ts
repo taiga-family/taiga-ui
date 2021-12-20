@@ -83,12 +83,16 @@ export class TuiArcChartComponent {
         return WIDTH[this.size];
     }
 
-    getLength(index: number): number {
-        return Math.PI * (SIZE[this.size] - 2 * this.getInset(index)) * ARC;
-    }
-
     getInset(index: number): number {
         return this.strokeWidth / 2 + index * (this.strokeWidth + GAP[this.size]);
+    }
+
+    getDiameter(index: number): number {
+        return SIZE[this.size] - 2 * this.getInset(index);
+    }
+
+    getLength(index: number): number {
+        return Math.PI * this.getDiameter(index) * ARC;
     }
 
     getOffset(index: number): number {
