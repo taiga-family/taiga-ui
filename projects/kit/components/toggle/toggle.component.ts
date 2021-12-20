@@ -78,7 +78,7 @@ export class TuiToggleComponent
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_TOGGLE_OPTIONS)
-        public readonly options: ToggleOptions,
+        readonly options: ToggleOptions,
     ) {
         super(control, changeDetectorRef);
     }

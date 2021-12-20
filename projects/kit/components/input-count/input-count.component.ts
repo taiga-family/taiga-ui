@@ -101,7 +101,7 @@ export class TuiInputCountComponent
         readonly minusTexts$: Observable<[string, string]>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_INPUT_COUNT_OPTIONS)
-        public readonly options: InputCountOptions,
+        readonly options: InputCountOptions,
         @Inject(TUI_NUMBER_FORMAT)
         private readonly numberFormat: NumberFormatSettings,
     ) {

@@ -5,7 +5,7 @@ import {TuiStringHandler} from '@taiga-ui/cdk';
     name: 'tuiStringify',
 })
 export class TuiStringifyPipe implements PipeTransform {
-    public transform<K extends string>(
+    transform<K extends string>(
         key: K,
     ): TuiStringHandler<Readonly<Record<K, unknown> & Record<any, any>>> {
         return value => String(value[key] ?? '');

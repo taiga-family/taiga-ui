@@ -85,7 +85,7 @@ export class TuiInputPasswordComponent
         @Inject(TUI_PASSWORD_TEXTS)
         readonly passwordTexts$: Observable<[string, string]>,
         @Inject(TUI_INPUT_PASSWORD_OPTIONS)
-        public readonly options: InputPasswordOptions,
+        readonly options: InputPasswordOptions,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_MODE)

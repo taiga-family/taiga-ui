@@ -13,7 +13,7 @@ export abstract class AbstractTuiColorSegments<T> implements PipeTransform {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {}
 
-    public abstract transform(colors: string[]): T;
+    abstract transform(colors: string[]): T;
 
     protected calculate(colors: string[]): string {
         if (this.isOldBrowsers) {

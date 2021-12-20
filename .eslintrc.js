@@ -4,5 +4,9 @@ module.exports = {
     extends: ['@tinkoff/eslint-config-angular'],
     rules: {
         '@typescript-eslint/no-useless-constructor': 'off',
+        '@typescript-eslint/explicit-member-accessibility': [
+            'error',
+            {accessibility: 'no-public'},
+        ],
     },
 };
