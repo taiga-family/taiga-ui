@@ -1,11 +1,10 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 
 import {TuiArcChartComponent} from './arc-chart.component';
 
 @NgModule({
-    imports: [CommonModule, PolymorpheusModule],
+    imports: [TuiRepeatTimesModule],
     declarations: [TuiArcChartComponent],
     exports: [TuiArcChartComponent],
 })

@@ -30,7 +30,7 @@ export class ExampleTuiArcChartComponent {
         LESS: import('!!raw-loader!./examples/2/index.less'),
     };
 
-    readonly valueVariants = [[42], [40, 30, 20, 10], [13769, 12367, 10172, 3018, 2592]];
+    readonly valueVariants = [[42], [40, 30, 20, 10], [13769, 10172, 3018, 2592]];
 
     value = this.valueVariants[0];
 

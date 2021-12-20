@@ -96,7 +96,7 @@ export class TuiArcChartComponent {
     }
 
     getOffset(index: number): number {
-        return this.getLength(index) * (1 - this.value[index] / this.max);
+        return this.getLength(index) * (1 - Math.min(this.value[index] / this.max, 1));
     }
 
     getColor(index: number): SafeValue {
