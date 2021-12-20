@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[251],{Ccep:function(e,t,n){"use strict";n.r(t),t.default='<button tuiButton (click)="open = true">Taiga</button>\n<ng-template [(tuiPdfViewer)]="open">\n    <iframe src="assets/media/taiga.pdf" class="iframe"></iframe>\n</ng-template>\n'}}]);
