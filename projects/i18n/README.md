@@ -63,18 +63,6 @@ export class AppModule {}
 You can also switch languages on the fly. Use `useFactory` or `useClass` with a service to make a stream of
 dictionaries.
 
-If you extremely struggle against every byte of your app, you can build a custom language dictionary with constants:
-
-```ts
-// If we plan to use CORE and KIT packages only
-export const CUSTOM_RUSSIAN_LANGUAGE: Language = {
-  ...TUI_RUSSIAN_LANGUAGE_CORE,
-  ...TUI_RUSSIAN_LANGUAGE_KIT,
-  // ...TUI_RUSSIAN_LANGUAGE_ADDON_COMMERCE,
-  // ...TUI_RUSSIAN_LANGUAGE_ADDON_TABLE,
-};
-```
-
 ## How to add a language
 
 Feel free to add new languages!
@@ -85,5 +73,3 @@ Feel free to add new languages!
    please write to us via issues or any other way of contact :)
 
 Thank you!
-
-> You do not need to translate "Editor". It is an experimental package

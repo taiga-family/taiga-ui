@@ -34,21 +34,25 @@
     }
 }
 
-.t-wrapper:first-line {
-    color: var(--tui-text-01);
+.t-wrapper {
+    flex: 1;
 
-    :host[data-size='m'] & {
-        font: var(--tui-font-text-s);
-        font-weight: bold;
-    }
+    &:first-line {
+        color: var(--tui-text-01);
 
-    :host[data-size='l'] & {
-        font: var(--tui-font-text-m);
-        font-weight: bold;
-    }
+        :host[data-size='m'] & {
+            font: var(--tui-font-text-s);
+            font-weight: bold;
+        }
 
-    :host[data-size='xl'] & {
-        font: var(--tui-font-heading-5);
+        :host[data-size='l'] & {
+            font: var(--tui-font-text-m);
+            font-weight: bold;
+        }
+
+        :host[data-size='xl'] & {
+            font: var(--tui-font-heading-5);
+        }
     }
 }
 

@@ -11,7 +11,5 @@ import {default as readme} from '!!raw-loader!../../../../../i18n/README.md';
     changeDetection,
 })
 export class I18nComponent {
-    readonly supported = readme
-        .split('> A package with tools for Taiga UI library i18n')[1]
-        .split(`It's a part of [**Taiga UI**]`)[0];
+    readonly readme = readme.split('Supported languages:')[1];
 }
