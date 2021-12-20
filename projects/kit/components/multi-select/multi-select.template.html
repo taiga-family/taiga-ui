@@ -17,7 +17,7 @@
         [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerWrapper"
         [readOnly]="readOnly"
         [inputHidden]="!editable"
-        [pseudoHovered]="hovered"
+        [pseudoHovered]="computedHovered"
         [pseudoFocused]="computedFocused"
         [pseudoInvalid]="computedInvalid"
         [editable]="false"
