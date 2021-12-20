@@ -1,7 +1,8 @@
 import {ElementRef, InjectionToken, Provider, Renderer2} from '@angular/core';
 import {
     isPresent,
-    TUI_IS_ANDROID,
+    TUI_IS_IOS,
+    TUI_TOUCH_SUPPORTED,
     TuiDestroyService,
     typedFromEvent,
 } from '@taiga-ui/cdk';
@@ -20,22 +21,23 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
     TuiDestroyService,
     {
         provide: TUI_RIPPLE_START,
-        deps: [TUI_IS_ANDROID, ElementRef, Renderer2],
+        deps: [TUI_TOUCH_SUPPORTED, TUI_IS_IOS, ElementRef, Renderer2],
         useFactory: rippleStartFactory,
     },
     {
         provide: TUI_RIPPLE_END,
-        deps: [TUI_IS_ANDROID, ElementRef, TuiDestroyService],
+        deps: [TUI_TOUCH_SUPPORTED, TUI_IS_IOS, ElementRef, TuiDestroyService],
         useFactory: rippleEndFactory,
     },
 ];
 
 export function rippleStartFactory(
-    isAndroid: boolean,
+    touchSupported: boolean,
+    isIOS: boolean,
     {nativeElement}: ElementRef<HTMLElement>,
     renderer: Renderer2,
 ): Observable<HTMLElement> {
-    return !isAndroid
+    return isIOS || !touchSupported
         ? EMPTY
         : typedFromEvent(nativeElement, 'touchstart').pipe(
               map(({touches}) => {
@@ -67,11 +69,12 @@ export function rippleStartFactory(
 }
 
 export function rippleEndFactory(
-    isAndroid: boolean,
+    touchSupported: boolean,
+    isIOS: boolean,
     {nativeElement}: ElementRef<HTMLElement>,
     destroy$: Observable<void>,
 ): Observable<EventTarget> {
-    return !isAndroid
+    return isIOS || !touchSupported
         ? EMPTY
         : typedFromEvent(nativeElement, 'animationend').pipe(
               filter(({animationName}) => animationName === RIPPLE_OFF),
