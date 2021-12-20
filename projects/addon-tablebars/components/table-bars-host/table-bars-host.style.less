@@ -38,13 +38,13 @@
     width: 100%;
     overflow: hidden;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         height: 5.75rem;
     }
 }
 
 .t-close-button {
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         position: absolute;
         top: -0.125rem;
         right: -0.125rem;

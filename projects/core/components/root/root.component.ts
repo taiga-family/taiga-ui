@@ -8,7 +8,12 @@ import {
 import {TUI_DIALOGS, TUI_IS_MOBILE, tuiAssert} from '@taiga-ui/cdk';
 import {VERSION} from '@taiga-ui/core/constants';
 import {TuiNotificationsHostComponent} from '@taiga-ui/core/modules/notifications';
-import {TUI_ANIMATIONS_DURATION, TUI_ASSERT_ENABLED} from '@taiga-ui/core/tokens';
+import {TUI_IS_MOBILE_RES_PROVIDER} from '@taiga-ui/core/providers';
+import {
+    TUI_ANIMATIONS_DURATION,
+    TUI_ASSERT_ENABLED,
+    TUI_IS_MOBILE_RES,
+} from '@taiga-ui/core/tokens';
 import {merge, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -18,9 +23,11 @@ import {map} from 'rxjs/operators';
     templateUrl: 'root.template.html',
     styleUrls: ['./root.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TUI_IS_MOBILE_RES_PROVIDER],
     host: {
         'data-tui-version': VERSION,
         '[style.--tui-duration]': 'duration + "ms"',
+        '($.class._mobile)': 'isMobileRes$',
     },
 })
 export class TuiRootComponent {
@@ -40,6 +47,7 @@ export class TuiRootComponent {
         readonly notificationsHost: TuiNotificationsHostComponent,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_ASSERT_ENABLED) enabled: boolean,
+        @Inject(TUI_IS_MOBILE_RES) readonly isMobileRes$: Observable<boolean>,
     ) {
         tuiAssert.enabled = enabled;
     }

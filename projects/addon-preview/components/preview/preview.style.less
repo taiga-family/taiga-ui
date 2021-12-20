@@ -46,7 +46,7 @@
 .t-title {
     flex: 1;
 
-    @media @mobile {
+    :host-context(tui-root._mobile) & {
         display: none;
     }
 }
