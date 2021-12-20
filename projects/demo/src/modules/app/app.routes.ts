@@ -971,6 +971,16 @@ export const ROUTES = [
     },
     // CHARTS
     {
+        path: 'components/arc-chart',
+        loadChildren: () =>
+            import(`../charts/arc-chart/arc-chart.module`).then(
+                m => m.ExampleTuiArcChartModule,
+            ),
+        data: {
+            title: 'ArcChart',
+        },
+    },
+    {
         path: 'components/axes',
         loadChildren: () =>
             import(`../charts/axes/axes.module`).then(m => m.ExampleTuiAxesModule),

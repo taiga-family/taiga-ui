@@ -622,11 +622,21 @@
                         "baseHref": "/",
                         "deployUrl": "/",
                         "showCircularDependencies": false,
-                        "styles": ["projects/demo/src/styles.less", "projects/demo/src/styles.scss"],
+                        "styles": [
+                            "projects/demo/src/styles.less",
+                            "projects/demo/src/styles.scss",
+                            "node_modules/prismjs/themes/prism-okaidia.css"
+                        ],
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         },
-                        "scripts": ["node_modules/prismjs/prism.js", "node_modules/marked/lib/marked.js"],
+                        "scripts": [
+                            "node_modules/marked/lib/marked.js",
+                            "node_modules/prismjs/prism.js",
+                            "node_modules/prismjs/components/prism-less.min.js",
+                            "node_modules/prismjs/components/prism-markup.min.js",
+                            "node_modules/prismjs/components/prism-typescript.min.js"
+                        ],
                         "es5BrowserSupport": true
                     },
                     "configurations": {
