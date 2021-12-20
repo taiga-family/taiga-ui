@@ -10,6 +10,7 @@ export * from './first-day-of-week';
 export * from './i18n';
 export * from './icons';
 export * from './icons-path';
+export * from './is-mobile-resolution';
 export * from './media';
 export * from './mode';
 export * from './notification-options';
