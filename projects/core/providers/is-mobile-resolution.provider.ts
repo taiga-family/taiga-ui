@@ -19,7 +19,9 @@ export function isMobileResFactory(
         tuiZoneOptimized(ngZone),
     );
 
-    return (nativeElement['$.class._mobile'] = mobile$);
+    nativeElement['$.class._mobile'] = mobile$;
+
+    return mobile$;
 }
 
 export const TUI_IS_MOBILE_RES_PROVIDER: Provider = {
