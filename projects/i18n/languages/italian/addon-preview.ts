@@ -2,11 +2,11 @@ import {LanguagePreview} from '@taiga-ui/i18n/interfaces';
 
 export const TUI_ITALIAN_LANGUAGE_ADDON_PREVIEW: LanguagePreview = {
     previewTexts: {
-        rotate: 'Rotate',
+        rotate: 'Ruota',
     },
     zoomTexts: {
-        zoomOut: 'Zoom out',
-        zoomIn: 'Zoom in',
-        reset: 'Reset',
+        zoomOut: 'Rimpicciolisci',
+        zoomIn: 'Ingrandisci',
+        reset: 'Ripristina',
     },
 };
