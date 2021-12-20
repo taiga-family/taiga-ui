@@ -2,11 +2,7 @@
     "name": "@taiga-ui/addon-mobile",
     "version": "2.28.0",
     "description": "Extension package for Taiga UI that adds support for mobile specific behaviors such as custom data pickers, dropdowns, etc.",
-    "keywords": [
-        "angular",
-        "component",
-        "mobile"
-    ],
+    "keywords": ["angular", "component", "mobile"],
     "license": "Apache-2.0",
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
