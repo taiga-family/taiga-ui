@@ -29,7 +29,7 @@ export function addTaigaStylesToAngularJson(
     if (!styles) {
         targetOptions.styles = taigaStyles;
     } else {
-        targetOptions.styles = [...styles, ...taigaStyles];
+        targetOptions.styles = Array.from(new Set([...styles, ...taigaStyles]));
     }
 
     return updateWorkspace(workspace);
