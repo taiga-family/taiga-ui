@@ -6,7 +6,7 @@ import {catchError, filter, mapTo, switchMap, take, takeUntil} from 'rxjs/operat
 
 @Injectable()
 export class TuiLazyLoadingService extends Observable<string> {
-    private src$ = new Subject<string>();
+    private readonly src$ = new Subject<string>();
 
     constructor(
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,

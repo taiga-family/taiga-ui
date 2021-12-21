@@ -21,12 +21,12 @@ const DICTIONARY = [
 })
 export class TuiMultiSelectExample4 {
     // Server request emulation
-    private server$ = timer(5000).pipe(
+    private readonly server$ = timer(5000).pipe(
         mapTo(DICTIONARY),
         shareReplay({refCount: true, bufferSize: 1}),
     );
 
-    private search$ = new Subject<string>();
+    private readonly search$ = new Subject<string>();
 
     // Items only hold IDs
     readonly items$ = this.search$.pipe(

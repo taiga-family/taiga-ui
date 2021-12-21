@@ -34,7 +34,7 @@ function asyncValidatorFn(): AsyncValidatorFn {
 export class TuiFieldErrorExample4 {
     readonly form: FormGroup;
 
-    constructor(@Inject(FormBuilder) private fb: FormBuilder) {
+    constructor(@Inject(FormBuilder) private readonly fb: FormBuilder) {
         this.form = this.fb.group({
             text: ['русский текст', Validators.required],
         });

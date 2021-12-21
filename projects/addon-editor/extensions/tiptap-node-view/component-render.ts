@@ -12,7 +12,7 @@ import {
  * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/AngularRenderer.ts ngx-tiptap}
  */
 export class TuiComponentRenderer<C, P> {
-    private componentRef: ComponentRef<C>;
+    private readonly componentRef: ComponentRef<C>;
 
     constructor(component: Type<C>, injector: Injector, props: Partial<P>) {
         const applicationRef = injector.get(ApplicationRef);

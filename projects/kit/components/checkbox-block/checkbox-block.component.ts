@@ -45,7 +45,7 @@ export class TuiCheckboxBlockComponent
     implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiCheckboxComponent)
-    private checkbox?: TuiCheckboxComponent;
+    private readonly checkbox?: TuiCheckboxComponent;
 
     @Input()
     @HostBinding('attr.data-tui-host-align')

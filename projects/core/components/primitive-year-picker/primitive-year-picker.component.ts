@@ -32,7 +32,7 @@ const ITEMS_IN_ROW = 4;
 export class TuiPrimitiveYearPickerComponent {
     private hoveredItem: number | null = null;
     private pressedItem: number | null = null;
-    private currentYear = TuiMonth.currentLocal().year;
+    private readonly currentYear = TuiMonth.currentLocal().year;
 
     @Input()
     @tuiDefaultProp()

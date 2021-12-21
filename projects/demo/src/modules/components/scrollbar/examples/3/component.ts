@@ -14,7 +14,7 @@ const SOME_OFFSET_CONST = 20;
 })
 export class TuiScrollbarExample3Component {
     @ViewChild(TuiScrollbarComponent, {read: ElementRef})
-    private scrollBar?: ElementRef<HTMLElement>;
+    private readonly scrollBar?: ElementRef<HTMLElement>;
 
     SOME_OFFSET_CONST = SOME_OFFSET_CONST;
 

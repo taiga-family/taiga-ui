@@ -81,7 +81,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
     @ViewChild(TuiEditLinkComponent, {read: ElementRef})
     private readonly editLink?: ElementRef<HTMLElement>;
 
-    private resizeSubscription?: Subscription;
+    private readonly resizeSubscription?: Subscription;
 
     @Input()
     @tuiDefaultProp()

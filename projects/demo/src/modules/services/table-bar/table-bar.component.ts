@@ -24,7 +24,7 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiTableBarComponent implements OnDestroy {
-    private destroy$ = new Subject<void>();
+    private readonly destroy$ = new Subject<void>();
 
     @ViewChild('tableBarTemplate')
     readonly tableBarTemplate: PolymorpheusContent = '';

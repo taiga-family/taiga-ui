@@ -6,7 +6,7 @@ import {shareReplay} from 'rxjs/operators';
     providedIn: 'root',
 })
 export class TuiStaticRequestService {
-    private cache = new Map<string, Observable<string>>();
+    private readonly cache = new Map<string, Observable<string>>();
 
     request(url: string): Observable<string> {
         const cache = this.cache.get(url);

@@ -24,7 +24,7 @@ export enum TableComands {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableRowColumnManagerComponent {
-    private commandsRegistry: Record<TableComands, () => void> = {
+    private readonly commandsRegistry: Record<TableComands, () => void> = {
         [TableComands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
         [TableComands.InsertColumnBefore]: () => this.editor.addColumnBefore(),
         [TableComands.InsertRowAfter]: () => this.editor.addRowAfter(),

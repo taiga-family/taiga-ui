@@ -4,9 +4,12 @@ import {createKeyboardEvent} from './keyboard-event';
 import {PageObject} from './page-object';
 
 export class NativeInputPO {
-    private pageObject: PageObject<any>;
+    private readonly pageObject: PageObject<any>;
 
-    constructor(private fixture: ComponentFixture<any>, private automationId: string) {
+    constructor(
+        private readonly fixture: ComponentFixture<any>,
+        private readonly automationId: string,
+    ) {
         this.pageObject = new PageObject(fixture);
     }
 
