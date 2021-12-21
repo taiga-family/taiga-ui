@@ -26,7 +26,7 @@ import {TuiParentsScrollService} from './parents-scroll.service';
 // @dynamic
 @Injectable()
 export class TuiObscuredService extends Observable<null | ReadonlyArray<Element>> {
-    private obscured$: Observable<null | ReadonlyArray<Element>>;
+    private readonly obscured$: Observable<null | ReadonlyArray<Element>>;
 
     constructor(
         @Inject(TuiParentsScrollService)

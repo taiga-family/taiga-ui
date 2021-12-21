@@ -33,7 +33,7 @@ const LOADER_HEIGHT = 48;
 })
 export class TuiExpandComponent {
     @ViewChild('wrapper')
-    private contentWrapper?: ElementRef<HTMLDivElement>;
+    private readonly contentWrapper?: ElementRef<HTMLDivElement>;
 
     private state = State.Idle;
 

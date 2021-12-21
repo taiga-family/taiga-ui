@@ -176,7 +176,7 @@ export class TuiInputTagComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiScrollService) private tuiScrollService: TuiScrollService,
+        @Inject(TuiScrollService) private readonly tuiScrollService: TuiScrollService,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_TEXTFIELD_APPEARANCE) readonly appearance: string,
         @Optional()

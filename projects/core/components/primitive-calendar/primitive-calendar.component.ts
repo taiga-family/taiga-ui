@@ -31,7 +31,7 @@ import {Observable} from 'rxjs';
 })
 export class TuiPrimitiveCalendarComponent {
     private pressedItem: TuiDay | null = null;
-    private today = TuiDay.currentLocal();
+    private readonly today = TuiDay.currentLocal();
 
     @Input()
     @tuiDefaultProp()

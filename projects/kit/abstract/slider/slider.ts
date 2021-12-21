@@ -49,7 +49,7 @@ export abstract class AbstractTuiSlider<T>
     implements TuiWithOptionalMinMax<number>
 {
     // @bad TODO: handle pointer events instead of mouse and touch events
-    private pointerDown$ = new Subject<
+    private readonly pointerDown$ = new Subject<
         TuiEventWith<MouseEvent | TouchEvent, HTMLElement>
     >();
 

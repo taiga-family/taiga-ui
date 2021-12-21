@@ -34,7 +34,7 @@ export class TuiTableBarsHostComponent {
         @Inject(TuiTableBarsService) readonly service: TuiTableBarsService,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
-        @Inject(TUI_MEDIA) private media: TuiMedia,
+        @Inject(TUI_MEDIA) private readonly media: TuiMedia,
         @Inject(WINDOW) private readonly windowRef: Window,
     ) {}
 

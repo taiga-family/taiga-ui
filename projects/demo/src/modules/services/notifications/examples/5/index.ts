@@ -23,7 +23,7 @@ export class TuiNotificationsExampleComponent5 {
     constructor(
         @Inject(TuiNotificationsService) notificationsService: TuiNotificationsService,
         @Inject(Router) router: Router,
-        @Inject(Injector) private injector: Injector,
+        @Inject(Injector) private readonly injector: Injector,
     ) {
         this.notification = notificationsService
             .show<undefined>(

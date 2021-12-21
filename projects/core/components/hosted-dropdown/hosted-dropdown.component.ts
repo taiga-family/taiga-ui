@@ -50,13 +50,13 @@ import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.d
 })
 export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @ContentChild(TuiHostedDropdownConnectorDirective, {read: ElementRef})
-    private dropdownHost?: ElementRef<HTMLElement>;
+    private readonly dropdownHost?: ElementRef<HTMLElement>;
 
     @ViewChild('wrapper', {read: ElementRef})
-    private wrapper?: ElementRef<HTMLDivElement>;
+    private readonly wrapper?: ElementRef<HTMLDivElement>;
 
     @ViewChild(TuiDropdownDirective)
-    private dropdownDirective?: TuiDropdownDirective;
+    private readonly dropdownDirective?: TuiDropdownDirective;
 
     @Input()
     @tuiDefaultProp()
