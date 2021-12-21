@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.28.0](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.27.1...v2.28.0) (2021-12-20)
+
+### Features
+
+- **addon-charts:** `ArcChart` add new component ([#1122](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1122))
+  ([0742c9f](https://github.com/TinkoffCreditSystems/taiga-ui/commit/0742c9f99bedd1b7d2a9100d0956d7e5d472169c))
+- **cdk:** `TUI_TOUCH_SUPPORTED` add new token ([#1123](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1123))
+  ([2227a09](https://github.com/TinkoffCreditSystems/taiga-ui/commit/2227a093b3f3a33ac4e45fd891decbad082f5626))
+- **core:** add source processor for svg component
+  ([29701d5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/29701d50c9b91a9eb0128611a86fb83b32923dc4))
+- **kit:** `TUI_VALIDATION_ERRORS` add ability to work with Observable
+  ([#1118](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1118))
+  ([f78f946](https://github.com/TinkoffCreditSystems/taiga-ui/commit/f78f946e2f75bb796e5b5d87f21b22e829129ff8))
+
+### Bug Fixes
+
+- **kit:** `MultiSelect` fix pseudoHovered and pseudoFocused
+  ([#1125](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1125))
+  ([08326a5](https://github.com/TinkoffCreditSystems/taiga-ui/commit/08326a595c302e877cb8ae285a3b902da2555ca9))
+
 ### [2.27.1](https://github.com/TinkoffCreditSystems/taiga-ui/compare/v2.27.0...v2.27.1) (2021-12-15)
 
 ### Bug Fixes
