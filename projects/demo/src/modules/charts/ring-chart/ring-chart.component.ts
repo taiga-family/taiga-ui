@@ -40,7 +40,7 @@ export class ExampleTuiRingChartComponent {
 
     readonly valueVariants = [
         [40, 30, 20, 10],
-        [13769, 12367, 10172, 3018, 2592],
+        [13769, 10172, 3018, 2592],
     ];
 
     value = this.valueVariants[0];

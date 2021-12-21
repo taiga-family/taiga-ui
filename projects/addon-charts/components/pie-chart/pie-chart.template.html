@@ -20,15 +20,15 @@
     </defs>
     <g [style.mask]="mask">
         <path
-            *ngFor="let segment of segments; let index = index"
+            *tuiRepeatTimes="let index of segments.length"
             fill="currentColor"
             automation-id="tui-pie-chart__segment"
             tuiHintMode="onDark"
             tuiHintDirection="top-right"
             class="t-segment"
             [attr.transform]="getTransform(index)"
-            [attr.d]="segment"
             [style.color]="getColor(index)"
+            [tuiPieChart]="segments[index]"
             [tuiPointerHint]="getHint(hint)"
             (tuiHoveredChange)="onHovered($event, index)"
         >

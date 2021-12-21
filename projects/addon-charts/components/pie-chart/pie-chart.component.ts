@@ -11,7 +11,6 @@ import {
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
 import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
 import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
-import {describeSector} from '@taiga-ui/addon-charts/utils';
 import {
     sum,
     TuiContextWithImplicit,
@@ -99,7 +98,7 @@ export class TuiPieChartComponent {
         return RADII[this.size];
     }
 
-    get segments(): readonly string[] {
+    get segments(): readonly [number, number][] {
         return this.getSegments(this.value);
     }
 
@@ -131,7 +130,7 @@ export class TuiPieChartComponent {
     }
 
     @tuiPure
-    private getSegments(value: readonly number[]): readonly string[] {
+    private getSegments(value: readonly number[]): readonly [number, number][] {
         const total = sum(...value);
 
         return value
@@ -142,9 +141,10 @@ export class TuiPieChartComponent {
                     (currentItem / total) * 360,
                 ),
             )
-            .map((angle, index, array) =>
-                describeSector(array[index - 1] || 0, Math.min(angle, 359.9999)),
-            );
+            .map((angle, index, array) => [
+                array[index - 1] || 0,
+                Math.min(angle, 359.9999),
+            ]);
     }
 
     private updateActiveItemIndex(index: number) {

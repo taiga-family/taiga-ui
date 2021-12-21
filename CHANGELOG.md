@@ -47,9 +47,6 @@ All notable changes to this project will be documented in this file. See
 - **kit:** `Accordion` add support for eager content
   ([#1081](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1081))
   ([14f44ca](https://github.com/TinkoffCreditSystems/taiga-ui/commit/14f44caef5c393fe76aaf45dab3d7eb2579a1187))
-- **kit:** add attribute tuiHighlightColor ([#1065](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1065))
-  ([1a6975d](https://github.com/TinkoffCreditSystems/taiga-ui/commit/1a6975d32f37f9f30105ac1b9ad55a807cc4a447)), closes
-  [#2](https://github.com/TinkoffCreditSystems/taiga-ui/issues/2)
 
 ### Bug Fixes
 
@@ -111,9 +108,6 @@ All notable changes to this project will be documented in this file. See
 
 - **addon-preview:** add new package ([#350](https://github.com/TinkoffCreditSystems/taiga-ui/issues/350))
   ([841be7e](https://github.com/TinkoffCreditSystems/taiga-ui/commit/841be7e96bc5a1f5676dcd0f6fd35945683698f7))
-- **icons:** expose node.js utils for building icons
-  ([#1045](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1045))
-  ([617f6ce](https://github.com/TinkoffCreditSystems/taiga-ui/commit/617f6cefdb19f23ddb55a02fa8d14837ff13ef46))
 - **kit:** `PdfViewer` add new component ([#1032](https://github.com/TinkoffCreditSystems/taiga-ui/issues/1032))
   ([b953123](https://github.com/TinkoffCreditSystems/taiga-ui/commit/b953123103a2470d026981f0be2b102b9c90e48b))
 
