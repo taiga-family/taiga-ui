@@ -28,7 +28,10 @@ describe('ng-add', () => {
 
         setActiveProject(createProject(host));
 
-        createSourceFile('package.json', '{"dependencies": {}}');
+        createSourceFile(
+            'package.json',
+            '{"dependencies": {"@angular/core": "~13.0.0"}}',
+        );
         createAngularJson();
         createMainFiles();
         saveActiveProject();
@@ -48,6 +51,7 @@ describe('ng-add', () => {
         expect(tree.readContent('package.json')).toEqual(
             `{
   "dependencies": {
+    "@angular/core": "~13.0.0",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
@@ -74,6 +78,8 @@ describe('ng-add', () => {
     "@types/dompurify": "2.2.3"
   },
   "dependencies": {
+    "@angular/cdk": "^13.0.0",
+    "@angular/core": "~13.0.0",
     "@taiga-ui/addon-doc": "${TAIGA_VERSION}",
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
@@ -95,7 +101,7 @@ describe('ng-add', () => {
         expect(tree.readContent('angular.json')).toEqual(`
 {
   "version": 1,
-  "defaultProject": "demo", 
+  "defaultProject": "demo",
   "projects": {
     "demo": {
         "architect": {
@@ -170,7 +176,7 @@ function createAngularJson() {
         `
 {
   "version": 1,
-  "defaultProject": "demo", 
+  "defaultProject": "demo",
   "projects": {
     "demo": {
         "architect": {
@@ -192,11 +198,11 @@ function createMainFiles() {
         `import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
   import {AppModule} from './app/app.module';
   import {environment} from './environments/environment';
-  
+
   if (environment.production) {
     enableProdMode();
   }
-  
+
   platformBrowserDynamic()
     .bootstrapModule(AppModule)
     .catch(err => console.log(err));
