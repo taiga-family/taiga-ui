@@ -261,7 +261,7 @@ describe('TuiDay', () => {
         });
 
         describe('normalizeParse return parsed date', () => {
-            describe('from a valid string', () => {
+            describe('from a valid string (dd.mm.yyyy)', () => {
                 it("'20.10.2018'", () => {
                     const result = TuiDay.normalizeParse('20.10.2018');
 
@@ -301,6 +301,41 @@ describe('TuiDay', () => {
                     expect(result.year).toBe(0);
                     expect(result.month).toBe(0);
                     expect(result.day).toBe(1);
+                });
+            });
+            describe('from yyyy.mm.dd string', () => {
+                it("'2021/12/22'", () => {
+                    const result = TuiDay.normalizeParse('2021/12/22', 'YMD');
+
+                    expect(result.year).toBe(2021);
+                    expect(result.month).toBe(11);
+                    expect(result.day).toBe(22);
+                });
+
+                it("'1900.05.01'", () => {
+                    const result = TuiDay.normalizeParse('1900.05.01', 'YMD');
+
+                    expect(result.year).toBe(1900);
+                    expect(result.month).toBe(4);
+                    expect(result.day).toBe(1);
+                });
+            });
+
+            describe('from mm.dd.yyyy string', () => {
+                it("'03/10/1956'", () => {
+                    const result = TuiDay.normalizeParse('03/10/1956', 'MDY');
+
+                    expect(result.year).toBe(1956);
+                    expect(result.month).toBe(2);
+                    expect(result.day).toBe(10);
+                });
+
+                it("'01.02.0988'", () => {
+                    const result = TuiDay.normalizeParse('01.02.0988', 'MDY');
+
+                    expect(result.year).toBe(988);
+                    expect(result.month).toBe(0);
+                    expect(result.day).toBe(2);
                 });
             });
         });

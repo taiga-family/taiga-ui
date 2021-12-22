@@ -1,6 +1,7 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiDayOfWeek, TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {TuiDayLike} from '@taiga-ui/cdk/interfaces';
+import {TuiDateMode} from '@taiga-ui/cdk/types';
 import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
@@ -122,17 +123,45 @@ export class TuiDay extends TuiMonth {
         );
     }
 
+    static parseRawDateString(
+        date: string,
+        dateMode: TuiDateMode = 'DMY',
+    ): {day: number; month: number; year: number} {
+        switch (dateMode) {
+            case 'YMD':
+                return {
+                    day: parseInt(date.slice(8, 10), 10),
+                    month: parseInt(date.slice(5, 7), 10) - 1,
+                    year: parseInt(date.slice(0, 4), 10),
+                };
+
+            case 'MDY':
+                return {
+                    day: parseInt(date.slice(3, 5), 10),
+                    month: parseInt(date.slice(0, 2), 10) - 1,
+                    year: parseInt(date.slice(6, 10), 10),
+                };
+
+            default:
+            case 'DMY':
+                return {
+                    day: parseInt(date.slice(0, 2), 10),
+                    month: parseInt(date.slice(3, 5), 10) - 1,
+                    year: parseInt(date.slice(6, 10), 10),
+                };
+        }
+    }
+
     // TODO: Move month and year related code corresponding classes
     /**
      * Parsing a string with date with normalization
      *
-     * @param yearMonthDayString date string in format of DD.MM.Yyyy
+     * @param rawDate date string
+     * @param dateMode date format of the date string (DMY | MDY | YMD)
      * @return normalized date
      */
-    static normalizeParse(yearMonthDayString: string): TuiDay {
-        const day = parseInt(yearMonthDayString.slice(0, 2), 10);
-        const month = parseInt(yearMonthDayString.slice(3, 5), 10) - 1;
-        const year = parseInt(yearMonthDayString.slice(6, 10), 10);
+    static normalizeParse(rawDate: string, dateMode: TuiDateMode = 'DMY'): TuiDay {
+        const {day, month, year} = this.parseRawDateString(rawDate, dateMode);
 
         return TuiDay.normalizeOf(year, month, day);
     }
@@ -144,9 +173,7 @@ export class TuiDay extends TuiMonth {
      * @throws exceptions if any part of the date is invalid
      */
     static jsonParse(yearMonthDayString: string): TuiDay {
-        const day = parseInt(yearMonthDayString.slice(8, 10), 10);
-        const month = parseInt(yearMonthDayString.slice(5, 7), 10) - 1;
-        const year = parseInt(yearMonthDayString.slice(0, 4), 10);
+        const {day, month, year} = this.parseRawDateString(yearMonthDayString, 'YMD');
 
         if (!TuiYear.isValidYear(year)) {
             throw new Error('Invalid year: ' + year);
