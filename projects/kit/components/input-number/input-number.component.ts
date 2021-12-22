@@ -173,23 +173,24 @@ export class TuiInputNumberComponent
     mask: TuiMapper<boolean, TuiTextMaskOptions> = (
         allowNegative: boolean,
         decimal: TuiDecimalT,
-        precision: number,
+        decimalLimit: number,
         nativeFocusableElement: HTMLInputElement | null,
     ) => ({
         mask: tuiCreateNumberMask({
-            allowNegative: allowNegative,
+            allowNegative,
+            decimalLimit,
             allowDecimal: decimal !== 'never',
-            decimalLimit: precision,
             requireDecimal: decimal === 'always',
             autoCorrectDecimalSymbol: false,
             decimalSymbol: this.numberFormat.decimalSeparator,
             thousandSymbol: this.numberFormat.thousandSeparator,
         }),
         pipe: tuiCreateAutoCorrectedNumberPipe(
-            decimal === 'always' ? precision : 0,
+            decimal === 'always' ? decimalLimit : 0,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
             nativeFocusableElement || undefined,
+            allowNegative,
         ),
         guide: false,
     });

@@ -103,6 +103,8 @@ export abstract class AbstractTuiInputSlider<T>
             0,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
+            undefined,
+            min < 0,
         ),
         guide: false,
     });
