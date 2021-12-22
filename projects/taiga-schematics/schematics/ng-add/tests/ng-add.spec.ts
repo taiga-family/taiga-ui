@@ -127,6 +127,44 @@ describe('ng-add', () => {
 }`);
     });
 
+    it('should add styles without dublicates, taiga styles first', async () => {
+        createAngularJson({stylesExist: true});
+        saveActiveProject();
+
+        const tree = await runner
+            .runSchematicAsync('ng-add-setup-project', {}, host)
+            .toPromise();
+
+        expect(tree.readContent('angular.json')).toEqual(`
+{
+  "version": 1,
+  "defaultProject": "demo",
+  "projects": {
+    "demo": {
+        "architect": {
+          "build": {
+            "options": {
+              "main": "test/main.ts",
+            "styles": [
+              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+              "some.style"
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "node_modules/@taiga-ui/icons/src",
+                "output": "assets/taiga-ui/icons"
+              }
+            ]
+                }
+          }
+        }
+    }
+  }
+}`);
+    });
+
     it('Should add Taiga-ui modules and providers to main module', async () => {
         const options: Schema = {
             addSanitizer: true,
@@ -170,7 +208,7 @@ export class AppModule {}
     });
 });
 
-function createAngularJson() {
+function createAngularJson({stylesExist}: {stylesExist: boolean} = {stylesExist: false}) {
     createSourceFile(
         'angular.json',
         `
@@ -183,12 +221,21 @@ function createAngularJson() {
           "build": {
             "options": {
               "main": "test/main.ts",
-            }
+            ${
+                stylesExist
+                    ? `"styles": [
+                  "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+                  "some.style"
+                ]
+                `
+                    : ``
+            }}
           }
         }
     }
   }
 }`,
+        {overwrite: true},
     );
 }
 
