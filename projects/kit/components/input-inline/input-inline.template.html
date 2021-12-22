@@ -1,4 +1,8 @@
-<span *ngIf="!hasValue" automation-id="tui-input-inline__placeholder">
+<span
+    *ngIf="!hasValue"
+    automation-id="tui-input-inline__placeholder"
+    class="t-placeholder"
+>
     <ng-content></ng-content>
 </span>
 
@@ -7,7 +11,7 @@
     automation-id="tui-input-inline__native"
     type="text"
     tuiMaskAccessor
-    class="native"
+    class="t-native"
     [attr.maxLength]="maxLength"
     [id]="id"
     [disabled]="computedDisabled"
