@@ -42,14 +42,17 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit/classes';
-import {EMPTY_MASK, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
+import {EMPTY_MASK} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_TEXTS,
     TUI_MOBILE_CALENDAR,
 } from '@taiga-ui/kit/tokens';
-import {tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit/utils/mask';
+import {
+    tuiCreateAutoCorrectedDatePipe,
+    tuiCreateDateMask,
+} from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -86,7 +89,8 @@ export class TuiInputDateComponent
     private month: TuiMonth | null = null;
 
     private readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: TUI_DATE_MASK,
+        // TODO finish localization in {@link https://github.com/TinkoffCreditSystems/taiga-ui/issues/954 issue}
+        mask: tuiCreateDateMask('DMY', '.'),
         pipe: tuiCreateAutoCorrectedDatePipe(this),
         guide: false,
     };

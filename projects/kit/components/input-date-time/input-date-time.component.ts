@@ -39,7 +39,7 @@ import {
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {DATE_TIME_SEPARATOR, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
+import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_CALENDAR_DATA_STREAM,
@@ -48,6 +48,7 @@ import {
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDateTimePipe,
+    tuiCreateDateMask,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
@@ -316,7 +317,13 @@ export class TuiInputDateTimeComponent
         timeMode: TuiTimeMode,
     ): TuiTextMaskOptions {
         return {
-            mask: [...TUI_DATE_MASK, ',', ' ', ...tuiCreateTimeMask(timeMode)],
+            // TODO finish localization in {@link https://github.com/TinkoffCreditSystems/taiga-ui/issues/954 issue}
+            mask: [
+                ...tuiCreateDateMask('DMY', '.'),
+                ',',
+                ' ',
+                ...tuiCreateTimeMask(timeMode),
+            ],
             pipe: tuiCreateAutoCorrectedDateTimePipe({value: day, min, max}, timeMode),
             guide: false,
         };
