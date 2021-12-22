@@ -213,6 +213,8 @@ export class TuiDay extends TuiMonth {
     }
 
     /**
+     * @deprecated use {@link getFormattedDay} instead
+     * TODO remove in 3.0
      * Formatted whole date
      */
     get formattedDay(): string {
@@ -362,8 +364,32 @@ export class TuiDay extends TuiMonth {
         return new TuiDay(years, months, days);
     }
 
-    toString(): string {
-        return this.formattedDay;
+    /**
+     * Returns formatted whole date
+     */
+    getFormattedDay(dateFormat: TuiDateMode, separator: string): string {
+        tuiAssert.assert(
+            separator.length === 1,
+            'Separator should consist of only 1 symbol',
+        );
+
+        const dd = this.formattedDayPart;
+        const mm = this.formattedMonthPart;
+        const yyyy = this.formattedYear;
+
+        switch (dateFormat) {
+            case 'YMD':
+                return `${yyyy}${separator}${mm}${separator}${dd}`;
+            case 'MDY':
+                return `${mm}${separator}${dd}${separator}${yyyy}`;
+            case 'DMY':
+            default:
+                return `${dd}${separator}${mm}${separator}${yyyy}`;
+        }
+    }
+
+    toString(dateFormat: TuiDateMode = 'DMY', separator: string = '.'): string {
+        return this.getFormattedDay(dateFormat, separator);
     }
 
     toJSON(): string {
