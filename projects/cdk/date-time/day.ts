@@ -5,6 +5,7 @@ import {TuiDateMode} from '@taiga-ui/cdk/types';
 import {padStart} from '@taiga-ui/cdk/utils/format';
 import {inRange, normalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
+import {DATE_FILLER_LENGTH} from './date-fillers';
 import {DAYS_IN_WEEK, MIN_DAY, MONTHS_IN_YEAR} from './date-time';
 import {TuiMonth} from './month';
 import {TuiYear} from './year';
@@ -127,6 +128,11 @@ export class TuiDay extends TuiMonth {
         date: string,
         dateMode: TuiDateMode = 'DMY',
     ): {day: number; month: number; year: number} {
+        tuiAssert.assert(
+            date.length === DATE_FILLER_LENGTH,
+            '[parseRawDateString]: wrong date string length',
+        );
+
         switch (dateMode) {
             case 'YMD':
                 return {
