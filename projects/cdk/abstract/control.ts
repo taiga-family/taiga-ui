@@ -43,6 +43,15 @@ export abstract class AbstractTuiControl<T>
     @tuiDefaultProp()
     pseudoInvalid: boolean | null = null;
 
+    @Input()
+    set disableControl(disable: boolean) {
+        if (disable) {
+            this.ngControl?.control?.disable?.();
+        } else {
+            this.ngControl?.control?.enable?.();
+        }
+    }
+
     protected constructor(
         private readonly ngControl: NgControl | null,
         protected readonly changeDetectorRef: ChangeDetectorRef,

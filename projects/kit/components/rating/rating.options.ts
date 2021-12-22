@@ -1,19 +1,15 @@
 import {InjectionToken} from '@angular/core';
 
 export interface RatingOptions {
-    readonly rateMax: number;
-    readonly rateReadonly: boolean;
-    readonly rateColor: string;
-    readonly rateEmptyIcon: string;
-    readonly rateSelectedIcon: string;
+    readonly max: number;
+    readonly iconNormal: string;
+    readonly iconFilled: string;
 }
 
 export const TUI_RATING_DEFAULT_OPTIONS: RatingOptions = {
-    rateMax: 5,
-    rateReadonly: false,
-    rateColor: 'var(--tui-accent)',
-    rateEmptyIcon: 'tuiIconStarLarge',
-    rateSelectedIcon: 'tuiIconStarFilledLarge',
+    max: 5,
+    iconNormal: 'tuiIconStarLarge',
+    iconFilled: 'tuiIconStarFilledLarge',
 };
 
 export const TUI_RATING_OPTIONS: InjectionToken<RatingOptions> =

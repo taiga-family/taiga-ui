@@ -2,19 +2,18 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    EventEmitter,
     forwardRef,
-    HostListener,
     Inject,
     Input,
-    Output,
+    Optional,
+    Self,
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {EMPTY_FUNCTION, moveFocus} from '@taiga-ui/cdk';
+import {NgControl} from '@angular/forms';
+import {AbstractTuiControl, TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
 
 import {RatingOptions, TUI_RATING_OPTIONS} from './rating.options';
-import {TuiRatingState} from './rating.state';
-import {getChildrenByParent} from './utils/get-children-by-parent';
+import {roundFocusedBy} from './utils/round-focused-by';
+import {roundRatingBy} from './utils/round-rating-by';
 
 @Component({
     selector: 'tui-rating',
@@ -23,130 +22,97 @@ import {getChildrenByParent} from './utils/get-children-by-parent';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
-            provide: NG_VALUE_ACCESSOR,
+            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiRatingComponent),
-            multi: true,
         },
     ],
 })
-export class TuiRatingComponent implements ControlValueAccessor {
-    @Input() tuiRateMax: number = this.options.rateMax;
-    @Input() tuiRateReadonly: boolean = this.options.rateReadonly;
-    @Input() tuiRateColor: string = this.options.rateColor;
-    @Input() tuiRateEmptyIcon: string = this.options.rateEmptyIcon;
-    @Input() tuiRateSelectedIcon: string = this.options.rateSelectedIcon;
-    @Output() readonly tuiRateActiveChange: EventEmitter<number> = new EventEmitter();
-    ratingState: TuiRatingState = new TuiRatingState();
-    onTouched = EMPTY_FUNCTION;
-    onChange = EMPTY_FUNCTION;
-    touched = false;
-    disabled = false;
+export class TuiRatingComponent extends AbstractTuiControl<number> {
+    private previousValue: number = this.getFallbackValue();
+    @Input() max: number = this.options.max;
+    @Input() iconNormal: string = this.options.iconNormal;
+    @Input() iconFilled: string = this.options.iconFilled;
+    focused: boolean = false;
+    focusedValue: number = 0;
 
     constructor(
+        @Optional()
+        @Self()
+        @Inject(NgControl)
+        ngControl: NgControl | null,
+        @Inject(ChangeDetectorRef)
+        changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_RATING_OPTIONS)
         private readonly options: RatingOptions,
-        @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,
-    ) {}
-
-    @Input()
-    set tuiRateDisable(isDisabled: boolean) {
-        this.disabled = isDisabled;
+    ) {
+        super(ngControl, changeDetectorRef);
     }
 
-    @Input()
-    set tuiRateActive(rate: number) {
-        this.ratingState.setCurrentRate(rate);
+    writeValue(value: number): void {
+        const computed = this.getComputedRatingValue(value);
+
+        /**
+         * @note: force update view model, when set invalid value
+         * ~ 7.5 (double), -1 (negative), 100 (greater than max)
+         */
+        this.updateValue(computed);
     }
 
-    get enabled(): boolean {
-        return !(this.tuiRateReadonly || this.disabled);
+    setValue(value: number): void {
+        const computed = this.getComputedRatingValue(value);
+
+        this.updateValue(computed);
     }
 
-    @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
-    @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
-    onKeyDownArrow(current: HTMLElement, previousIndex: number): void {
-        if (this.enabled) {
-            const elements = getChildrenByParent(current.parentElement);
+    toggleValueByFocus(): void {
+        const newValue = this.previousValue === this.focusedValue ? 0 : this.focusedValue;
 
-            const movedIndex = moveFocus(
-                elements.indexOf(current),
-                elements,
-                previousIndex,
-            );
+        this.setValue(newValue);
+        this.setPreviousValue();
 
-            if (movedIndex >= 0) {
-                this.rateOnFocus(movedIndex + 1);
-            }
+        if (this.value === 0) {
+            this.unsetValue();
         }
     }
 
-    writeValue(rate: number): void {
-        this.tuiRateActive = rate;
+    resetFocusedValue(): void {
+        this.focusedValue = 0;
     }
 
-    registerOnChange(onChange: () => void): void {
-        this.onChange = onChange;
+    updateFocusedValue(offsetX: number, widthPx: number): void {
+        this.focusedValue = roundFocusedBy({max: this.max, offsetX, widthPx});
+        this.setPreviousValue();
     }
 
-    registerOnTouched(onTouched: () => void): void {
-        this.onTouched = onTouched;
-    }
-
-    ratesSetActive(rate: number): void {
-        if (this.enabled) {
-            this.markAsTouched();
-
-            this.ratingState.toggleCurrentRate(rate);
-            const current = this.ratingState.currentRate;
-
-            this.onChange(current);
-            this.tuiRateActiveChange.emit(current);
+    updateValueWhenUseKeyboard(value: number): void {
+        if (this.focusedValue > 0) {
+            /**
+             * @note: prevent call twice (ngModelChange) when trigger (click) event
+             * if we use the keyboard, then we don't use mouseover
+             * and can use (ngModelChange) safely
+             */
+            return;
         }
+
+        this.setValue(value);
     }
 
-    rateOnFocus(rate: number): void {
-        if (this.enabled) {
-            this.markAsTouched();
-            this.ratingState.setFocusedRate(rate);
-        }
+    protected getFallbackValue(): number {
+        return 0;
     }
 
-    ratesMouseLeave(parent: HTMLElement): void {
-        this.unFocusElements(parent);
-        this.rateOnBlur();
+    private getComputedRatingValue(value: number): number {
+        return roundRatingBy({value, max: this.max});
     }
 
-    rateOnBlur(): void {
-        if (this.enabled) {
-            this.markAsTouched();
-            this.ratingState.setFocusedRate(0);
-        }
+    private unsetValue(): void {
+        this.setValue(0);
+        this.focusedValue = 0;
+        this.previousValue = 0;
+        this.changeDetectorRef.detectChanges();
     }
 
-    rateMouseEnter(parent: HTMLElement, rate: number): void {
-        this.unFocusElements(parent);
-        this.rateOnFocus(rate);
-    }
-
-    setDisabledState(isDisabled: boolean) {
-        this.tuiRateDisable = isDisabled;
-        this.cd.detectChanges();
-    }
-
-    markAsTouched(): void {
-        if (!this.touched) {
-            this.onTouched();
-            this.touched = true;
-        }
-    }
-
-    private unFocusElements(parent: HTMLElement): void {
-        if (this.enabled) {
-            const elements = getChildrenByParent(parent);
-
-            for (const element of elements) {
-                element.blur();
-            }
-        }
+    private setPreviousValue(): void {
+        this.previousValue = this.value;
     }
 }

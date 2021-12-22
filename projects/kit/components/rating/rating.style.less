@@ -1,23 +1,45 @@
 @import 'taiga-ui-local';
 
-.tui-rating {
+:host {
+    position: relative;
     display: inline-flex;
+}
 
-    &--disable {
-        pointer-events: none;
-        opacity: 0.5;
-    }
+.t-rating {
+    display: inline-flex;
+    flex-direction: row-reverse;
 
-    &__rate {
+    &__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
         cursor: pointer;
+        width: 100%;
+        appearance: none;
+        background: transparent;
+
+        &::-webkit-slider-thumb {
+            opacity: 0;
+        }
     }
 
-    &:not(&--readonly) &__rate {
-        transition: all 0.2s ease-in-out;
-        backface-visibility: hidden;
+    &__wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-flex;
+        overflow: hidden;
+        white-space: nowrap;
+        pointer-events: none;
+    }
 
-        &:hover {
-            transform: scale(1.2) translateZ(0);
-        }
+    &--disabled,
+    &--readonly {
+        pointer-events: none;
+    }
+
+    &--disabled {
+        opacity: 0.5;
     }
 }

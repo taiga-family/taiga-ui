@@ -6,11 +6,9 @@ import {TUI_RATING_OPTIONS} from '@taiga-ui/kit';
         {
             provide: TUI_RATING_OPTIONS,
             useValue: {
-                rateMax: 5,
-                rateReadonly: false,
-                rateColor: 'var(--tui-accent)',
-                rateEmptyIcon: 'tuiIconStarLarge',
-                rateSelectedIcon: 'tuiIconStarFilledLarge',
+                max: 5,
+                iconNormal: 'tuiIconStarLarge',
+                iconFilled: 'tuiIconStarFilledLarge',
             },
         },
     ],

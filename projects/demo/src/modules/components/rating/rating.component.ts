@@ -16,8 +16,8 @@ export class ExampleTuiRatingComponent {
     tuiRateSelectedIcons: string[] = [this.tuiRateSelectedIcon, 'tuiIconStarFilled'];
     tuiRateReadonly: boolean = false;
     tuiRateDisable: boolean = false;
-    tuiRateActive: number = 0;
-    tuiRateMax: number = 5;
+    tuiRateActive: number = 5;
+    tuiRateMax: number = 10;
 
     readonly exampleImportModule: RawLoaderContent = import(
         '!!raw-loader!./examples/import/import-module.txt'

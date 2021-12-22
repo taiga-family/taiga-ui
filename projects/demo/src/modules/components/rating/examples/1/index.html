@@ -1,35 +1,34 @@
 <div>
     <h2>Template Driven</h2>
 
-    <p><b>Controlled</b></p>
-    <tui-rating [(tuiRateActive)]="rateValue"></tui-rating>
+    <p><b>Controlled (value = {{rateValue}})</b></p>
+    <tui-rating class="rating" [(ngModel)]="rateValue"></tui-rating>
 
     <p><b>Read only</b></p>
     <tui-rating
-        [tuiRateReadonly]="true"
-        [(tuiRateActive)]="rateValue"
+        class="rating"
+        [readOnly]="true"
+        [(ngModel)]="rateValue"
     ></tui-rating>
 
     <p><b>Disabled</b></p>
     <tui-rating
-        [tuiRateDisable]="true"
-        [(tuiRateActive)]="rateValue"
+        class="rating"
+        [disableControl]="true"
+        [(ngModel)]="rateValue"
     ></tui-rating>
 </div>
 
-<br />
 <br />
 
 <div [formGroup]="form">
     <h2>Reactive Forms</h2>
 
-    <p><b>Controlled</b></p>
-    <tui-rating formControlName="rateControl"></tui-rating>
+    <p><b>Controlled (value = {{ rateControl?.value }})</b></p>
+    <tui-rating formControlName="rateControl" class="rating"></tui-rating>
 
     <ul>
-        <li>Value - {{ rateControl?.value }}</li>
-        <li>Touched - {{ rateControl?.touched }}</li>
-        <li>Disabled - {{ rateControl?.disabled }}</li>
+        <li>Disabled = {{ rateControl?.disabled }}</li>
     </ul>
 
     <br />

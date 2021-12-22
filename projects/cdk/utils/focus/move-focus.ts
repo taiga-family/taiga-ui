@@ -12,18 +12,16 @@ export function moveFocus(
     currentIndex: number,
     elements: ReadonlyArray<HTMLElement>,
     step: number,
-): number {
+) {
     currentIndex += step;
 
     while (currentIndex >= 0 && currentIndex < elements.length) {
         setNativeFocused(elements[currentIndex]);
 
         if (isNativeFocused(elements[currentIndex])) {
-            return currentIndex;
+            return;
         }
 
         currentIndex += step;
     }
-
-    return currentIndex;
 }

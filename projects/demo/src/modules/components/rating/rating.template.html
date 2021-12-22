@@ -1,21 +1,15 @@
 <tui-doc-page header="Rating" package="KIT" type="components">
     <ng-template pageTab>
         <p i18n>A rating indicates user interest in content</p>
-
         <br />
-        <h2 i18n>ARIA</h2>
+
+        <h2 i18n>ARIA and Keyboard</h2>
+
+        <p i18n>The aria-label that describes the displayed rating.</p>
 
         <p i18n>
-            The read only rating has a role of "img", and an aria-label that
-            describes the displayed rating.
-        </p>
-
-        <br />
-        <h2 i18n>Keyboard</h2>
-
-        <p i18n>
-            Tab will focus the current rating, and cursor keys control the
-            selected rating. The read only rating is not focusable.
+            Tab will focus the rating, and cursor keys control the selected
+            rating. The read only rating is not focusable.
         </p>
 
         <tui-doc-example
@@ -39,38 +33,27 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
+            <b>Current rating</b>
+            - {{rating.value}}
+            <br />
+
             <tui-rating
-                [tuiRateMax]="tuiRateMax"
-                [tuiRateDisable]="tuiRateDisable"
-                [tuiRateColor]="tuiRateColor"
-                [tuiRateReadonly]="tuiRateReadonly"
-                [tuiRateEmptyIcon]="tuiRateEmptyIcon"
-                [tuiRateSelectedIcon]="tuiRateSelectedIcon"
-                [(tuiRateActive)]="tuiRateActive"
+                #rating
+                [max]="tuiRateMax"
+                [style.color]="tuiRateColor"
+                [disableControl]="tuiRateDisable"
+                [readOnly]="tuiRateReadonly"
+                [iconNormal]="tuiRateEmptyIcon"
+                [iconFilled]="tuiRateSelectedIcon"
+                [(ngModel)]="tuiRateActive"
             ></tui-rating>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
                 i18n
-                documentationPropertyType="number"
-                documentationPropertyMode="input-output"
-                documentationPropertyName="tuiRateMax"
-                [documentationPropertyValue]="tuiRateMax"
-                (documentationPropertyValueChange)="tuiRateMax = $event"
-            ></ng-template>
-            <ng-template
-                i18n
-                documentationPropertyType="number"
-                documentationPropertyMode="input-output"
-                documentationPropertyName="tuiRateActive"
-                [documentationPropertyValue]="tuiRateActive"
-                (documentationPropertyValueChange)="tuiRateActive = $event"
-            ></ng-template>
-            <ng-template
-                i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
-                documentationPropertyName="tuiRateReadonly"
+                documentationPropertyName="readOnly"
                 [documentationPropertyValue]="tuiRateReadonly"
                 (documentationPropertyValueChange)="tuiRateReadonly = $event"
             ></ng-template>
@@ -78,15 +61,31 @@
                 i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
-                documentationPropertyName="tuiRateDisable"
+                documentationPropertyName="disableControl"
                 [documentationPropertyValue]="tuiRateDisable"
                 (documentationPropertyValueChange)="tuiRateDisable = $event"
             ></ng-template>
             <ng-template
                 i18n
+                documentationPropertyType="number"
+                documentationPropertyMode="input-output"
+                documentationPropertyName="ngModel"
+                [documentationPropertyValue]="tuiRateActive"
+                (documentationPropertyValueChange)="tuiRateActive = $event"
+            ></ng-template>
+            <ng-template
+                i18n
+                documentationPropertyType="number"
+                documentationPropertyMode="input-output"
+                documentationPropertyName="max"
+                [documentationPropertyValue]="tuiRateMax"
+                (documentationPropertyValueChange)="tuiRateMax = $event"
+            ></ng-template>
+            <ng-template
+                i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
-                documentationPropertyName="tuiRateColor"
+                documentationPropertyName="style.color"
                 [documentationPropertyValues]="tuiRateColors"
                 (documentationPropertyValueChange)="tuiRateColor = $event"
             ></ng-template>
@@ -94,7 +93,7 @@
                 i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
-                documentationPropertyName="tuiRateEmptyIcon"
+                documentationPropertyName="iconNormal"
                 [documentationPropertyValues]="tuiRateEmptyIcons"
                 (documentationPropertyValueChange)="tuiRateEmptyIcon = $event"
             ></ng-template>
@@ -102,7 +101,7 @@
                 i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
-                documentationPropertyName="tuiRateSelectedIcon"
+                documentationPropertyName="iconFilled"
                 [documentationPropertyValues]="tuiRateSelectedIcons"
                 (documentationPropertyValueChange)="tuiRateSelectedIcon = $event"
             ></ng-template>

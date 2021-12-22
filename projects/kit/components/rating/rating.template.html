@@ -1,26 +1,35 @@
-<div
+<label
     #parent
-    role="img"
-    class="tui-rating"
-    [class.tui-rating--touched]="touched"
-    [class.tui-rating--disable]="disabled"
-    [class.tui-rating--readonly]="tuiRateReadonly"
-    [attr.aria-label]="ratingState.selectedRate + ' Stars'"
-    [attr.tabindex]="ratingState.selectedRate === 0 && enabled ? 0 : -1"
-    (mouseleave)="ratesMouseLeave(parent)"
+    class="t-rating"
+    [attr.aria-label]="value + ' Stars'"
+    [class.t-rating--readonly]="readOnly"
+    [class.t-rating--disabled]="disabled"
 >
-    <ng-container *tuiRepeatTimes="let index of tuiRateMax">
+    <input
+        type="range"
+        step="1"
+        class="t-rating__input"
+        [max]="max"
+        [ngModel]="value"
+        [attr.tabindex]="readOnly || disabled ? -1 : 0"
+        (ngModelChange)="updateValueWhenUseKeyboard($event)"
+        (mousemove)="updateFocusedValue($event.offsetX, parent.clientWidth)"
+        (mouseleave)="resetFocusedValue()"
+        (click)="toggleValueByFocus()"
+    />
+    <tui-svg
+        *tuiRepeatTimes="let item of max"
+        class="t-rating__icon-normal"
+        [src]="iconNormal"
+    ></tui-svg>
+    <div
+        class="t-rating__wrapper"
+        [style.width.%]="focusedValue | ratingPercent: value : max "
+    >
         <tui-svg
-            *ngIf="{ rate: index + 1, selected: ratingState.selectedRate } as state"
-            class="tui-rating__rate"
-            [attr.tabindex]="state.selected === state.rate && enabled ? 0 : -1"
-            [style.color]="tuiRateColor"
-            [src]="state.selected >= state.rate ? this.tuiRateSelectedIcon : this.tuiRateEmptyIcon"
-            (mouseenter)="rateMouseEnter(parent, state.rate)"
-            (click)="ratesSetActive(state.rate)"
-            (keydown.enter)="ratesSetActive(state.rate)"
-            (focus)="rateOnFocus(state.rate)"
-            (blur)="rateOnBlur()"
+            *tuiRepeatTimes="let item of max"
+            class="t-rating__icon-filled"
+            [src]="iconFilled"
         ></tui-svg>
-    </ng-container>
-</div>
+    </div>
+</label>

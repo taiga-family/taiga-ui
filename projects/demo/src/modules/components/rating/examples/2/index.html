@@ -1,28 +1,23 @@
 <div>
-    <p><b>Custom colors</b></p>
+    <h2>Custom colors</h2>
 
-    <p>Yellow</p>
-    <tui-rating
-        tuiRateColor="#faaf00"
-        [(tuiRateActive)]="firstRate"
-    ></tui-rating>
+    <p><b>Yellow (value = {{firstRate}})</b></p>
+    <tui-rating class="yellow" [(ngModel)]="firstRate"></tui-rating>
 
-    <p>10 stars</p>
-    <tui-rating
-        tuiRateColor="pink"
-        [tuiRateMax]="10"
-        [(tuiRateActive)]="secondRate"
-    ></tui-rating>
+    <p><b>10 stars (value = {{secondRate}})</b></p>
+    <tui-rating class="pink" [max]="10" [(ngModel)]="secondRate"></tui-rating>
 </div>
 
-<div>
-    <p><b>Custom icons</b></p>
+<br />
 
-    <p>
-        <tui-rating
-            tuiRateEmptyIcon="tuiIconHeartLarge"
-            tuiRateSelectedIcon="tuiIconHeartFilledLarge"
-            [(tuiRateActive)]="thirdRate"
-        ></tui-rating>
-    </p>
+<div>
+    <h2>Custom icons</h2>
+
+    <p><b>Controlled (value = {{thirdRate}})</b></p>
+    <tui-rating
+        iconNormal="tuiIconHeart"
+        iconFilled="tuiIconHeartFilledLarge"
+        class="red"
+        [(ngModel)]="thirdRate"
+    ></tui-rating>
 </div>
