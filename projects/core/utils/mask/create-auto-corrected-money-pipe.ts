@@ -16,6 +16,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
     decimalSymbol: TuiDecimalSymbol = ',',
     thousandSymbol: string = CHAR_NO_BREAK_SPACE,
     nativeInput?: HTMLInputElement,
+    allowNegative?: boolean,
 ): TuiTextMaskPipeHandler {
     tuiAssert.assert(Number.isInteger(decimalLimit));
     tuiAssert.assert(decimalLimit >= 0);
@@ -32,6 +33,11 @@ export function tuiCreateAutoCorrectedNumberPipe(
     }
 
     return (conformedValue, config) => {
+        // Removing everything by selecting and pressing '-'
+        if (!conformedValue && config.rawValue === '-' && allowNegative) {
+            return '-';
+        }
+
         // remove these hacks after text mask library has changed
         if (nativeInput && unlucky && isNativeFocused(nativeInput)) {
             const caret = calculateSafariCaret(

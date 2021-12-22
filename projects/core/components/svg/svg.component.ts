@@ -182,7 +182,6 @@ export class TuiSvgComponent {
             : src;
     }
 
-    // @bad TODO: Create a simple XMLHttpRequest to Observable service
     private getExternalIcon(src: string): Observable<SafeHtml> {
         const url = src.includes('.svg') ? src : this.use;
 
