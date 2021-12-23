@@ -1,35 +1,34 @@
-<label
-    #parent
-    class="t-rating"
-    [attr.aria-label]="value + ' Stars'"
-    [class.t-rating--readonly]="readOnly"
-    [class.t-rating--disabled]="disabled"
->
-    <input
-        type="range"
-        step="1"
-        class="t-rating__input"
-        [max]="max"
-        [ngModel]="value"
-        [attr.tabindex]="readOnly || disabled ? -1 : 0"
-        (ngModelChange)="updateValueWhenUseKeyboard($event)"
-        (mousemove)="updateFocusedValue($event.offsetX, parent.clientWidth)"
-        (mouseleave)="resetFocusedValue()"
-        (click)="toggleValueByFocus()"
-    />
+<div class="t-rating-interactive">
     <tui-svg
-        *tuiRepeatTimes="let item of max"
-        class="t-rating__icon-normal"
-        [src]="iconNormal"
+        *tuiRepeatTimes="let index of max"
+        class="t-rating-icon-filled"
+        [src]="iconFilled"
+        (click)="setRateByReverseIndex(index)"
     ></tui-svg>
-    <div
-        class="t-rating__wrapper"
-        [style.width.%]="focusedValue | ratingPercent: value : max "
-    >
-        <tui-svg
-            *tuiRepeatTimes="let item of max"
-            class="t-rating__icon-filled"
-            [src]="iconFilled"
-        ></tui-svg>
-    </div>
-</label>
+</div>
+
+<div class="t-rating-wrapper" [style.width.%]="percent">
+    <tui-svg
+        *tuiRepeatTimes="let index of max"
+        class="t-rating-icon-filled"
+        [src]="iconFilled"
+    ></tui-svg>
+</div>
+
+<tui-svg
+    *tuiRepeatTimes="let item of max"
+    class="t-rating-icon-normal"
+    [src]="iconNormal"
+></tui-svg>
+
+<input
+    #range
+    type="range"
+    step="1"
+    class="t-rating-input"
+    [min]="min"
+    [max]="max"
+    [value]="value"
+    [tuiFocusable]="isFocusable"
+    (change)="setRate(range.value)"
+/>

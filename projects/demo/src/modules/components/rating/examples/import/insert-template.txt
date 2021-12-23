@@ -1,1 +1,1 @@
-<tui-rating [(ngModel)]="value"></tui-avatar>
+<tui-rating [(ngModel)]="value"></tui-rating>

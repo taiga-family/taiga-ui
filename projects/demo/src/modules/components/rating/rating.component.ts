@@ -8,16 +8,17 @@ import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiRatingComponent {
-    tuiRateColor: string = 'var(--tui-accent)';
-    tuiRateColors: string[] = [this.tuiRateColor, '#faaf00', 'pink'];
-    tuiRateEmptyIcon: string = 'tuiIconStarLarge';
-    tuiRateEmptyIcons: string[] = [this.tuiRateEmptyIcon, 'tuiIconStar'];
-    tuiRateSelectedIcon: string = 'tuiIconStarFilledLarge';
-    tuiRateSelectedIcons: string[] = [this.tuiRateSelectedIcon, 'tuiIconStarFilled'];
-    tuiRateReadonly: boolean = false;
-    tuiRateDisable: boolean = false;
-    tuiRateActive: number = 5;
-    tuiRateMax: number = 10;
+    min: number = 0;
+    max: number = 10;
+    value: number = 5;
+    color: string = 'var(--tui-accent)';
+    colorVariants: string[] = [this.color, '#faaf00', 'pink'];
+    iconNormal: string = 'tuiIconStarLarge';
+    iconNormalVariants: string[] = [this.iconNormal, 'tuiIconStar'];
+    iconFilled: string = 'tuiIconStarFilledLarge';
+    iconFilledVariants: string[] = [this.iconFilled, 'tuiIconStarFilled'];
+    readOnly: boolean = false;
+    disabled: boolean = false;
 
     readonly exampleImportModule: RawLoaderContent = import(
         '!!raw-loader!./examples/import/import-module.txt'
@@ -34,10 +35,12 @@ export class ExampleTuiRatingComponent {
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),
         HTML: import('!!raw-loader!./examples/1/index.html'),
+        LESS: import('!!raw-loader!./examples/1/index.less'),
     };
 
     readonly example2: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/2/index.ts'),
         HTML: import('!!raw-loader!./examples/2/index.html'),
+        LESS: import('!!raw-loader!./examples/2/index.less'),
     };
 }
