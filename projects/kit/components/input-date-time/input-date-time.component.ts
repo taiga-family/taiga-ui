@@ -141,6 +141,7 @@ export class TuiInputDateTimeComponent
             this.calendarMinDay,
             this.calendarMaxDay,
             this.timeMode,
+            this.dateFormat,
         );
     }
 
@@ -315,6 +316,7 @@ export class TuiInputDateTimeComponent
         min: TuiDay,
         max: TuiDay,
         timeMode: TuiTimeMode,
+        dateFormat: TuiDateMode,
     ): TuiTextMaskOptions {
         return {
             // TODO finish localization in {@link https://github.com/TinkoffCreditSystems/taiga-ui/issues/954 issue}
@@ -324,7 +326,13 @@ export class TuiInputDateTimeComponent
                 ' ',
                 ...tuiCreateTimeMask(timeMode),
             ],
-            pipe: tuiCreateAutoCorrectedDateTimePipe({value: day, min, max}, timeMode),
+            pipe: tuiCreateAutoCorrectedDateTimePipe({
+                value: day,
+                min,
+                max,
+                dateFormat,
+                timeMode,
+            }),
             guide: false,
         };
     }

@@ -90,7 +90,7 @@ export class TuiInputDateComponent
 
     private readonly textMaskOptions: TuiTextMaskOptions = {
         // TODO finish localization in {@link https://github.com/TinkoffCreditSystems/taiga-ui/issues/954 issue}
-        mask: tuiCreateDateMask('DMY', '.'),
+        mask: tuiCreateDateMask(this.dateFormat, '.'),
         pipe: tuiCreateAutoCorrectedDatePipe(this),
         guide: false,
     };
@@ -168,7 +168,7 @@ export class TuiInputDateComponent
             return String(activeItem);
         }
 
-        return value ? String(value) : nativeValue;
+        return value ? value.toString(this.dateFormat) : nativeValue;
     }
 
     get computedActiveYearMonth(): TuiMonth {
@@ -250,7 +250,9 @@ export class TuiInputDateComponent
         }
 
         this.updateValue(
-            value.length !== DATE_FILLER_LENGTH ? null : TuiDay.normalizeParse(value),
+            value.length !== DATE_FILLER_LENGTH
+                ? null
+                : TuiDay.normalizeParse(value, this.dateFormat),
         );
     }
 
