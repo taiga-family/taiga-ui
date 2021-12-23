@@ -16,6 +16,6 @@ export class TuiDropdownContextExample3 {
     });
 
     report() {
-        console.log(this.testForm.value);
+        console.info(this.testForm.value);
     }
 }

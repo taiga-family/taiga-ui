@@ -162,7 +162,7 @@ export class TuiTableExample4 {
         size: number,
         minAge: number,
     ): Observable<ReadonlyArray<User | null>> {
-        console.log('Making a request');
+        console.info('Making a request');
 
         const start = page * size;
         const end = start + size;

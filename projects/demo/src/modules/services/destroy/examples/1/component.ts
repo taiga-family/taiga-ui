@@ -16,8 +16,6 @@ export class TuiDestroyExample {
     constructor(destroy$: TuiDestroyService, {nativeElement}: ElementRef<HTMLElement>) {
         fromEvent(nativeElement, 'click')
             .pipe(takeUntil(destroy$))
-            .subscribe(() => {
-                console.log('click');
-            });
+            .subscribe(() => console.info('click'));
     }
 }

@@ -11,6 +11,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiLinkExample3 {
     onClick(event: MouseEvent) {
-        console.log('click', event);
+        console.info('click', event);
     }
 }
