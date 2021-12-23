@@ -1,12 +1,12 @@
 <tui-hosted-dropdown
-    class="hosted"
+    class="t-hosted"
     [canOpen]="canOpen"
     [content]="datalist || ''"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-primitive-textfield
         automation-id="tui-select__textfield"
-        class="textfield"
+        class="t-textfield"
         [editable]="false"
         [pseudoFocused]="computedFocused"
         [pseudoHovered]="computedHovered"
@@ -27,9 +27,13 @@
             *ngIf="value !== null"
             polymorpheus-outlet
             automation-id="tui-select__value"
-            class="value"
+            class="t-value"
             [content]="computedContent"
             [context]="computeContext(value, computedFocused)"
-        ></div>
+        >
+            <ng-template let-primitiveValue>
+                <div class="t-primitive-value">{{ primitiveValue }}</div>
+            </ng-template>
+        </div>
     </tui-primitive-textfield>
 </tui-hosted-dropdown>
