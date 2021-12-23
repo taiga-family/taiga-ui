@@ -15,11 +15,26 @@
         >
             <tui-legend-item-example-1></tui-legend-item-example-1>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="toggle"
+            i18n-heading
+            heading="Toggling"
+            [content]="example2"
+        >
+            <tui-legend-item-example-2></tui-legend-item-example-2>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-legend-item [active]="active" [color]="color" [text]="text">
+            <tui-legend-item
+                [active]="active"
+                [disabled]="disabled"
+                [color]="color"
+                [text]="text"
+                [size]="size"
+            >
                 <tui-money [value]="123456" [singleColor]="true"></tui-money>
             </tui-legend-item>
             <p i18n>
@@ -46,6 +61,25 @@
                 [(documentationPropertyValue)]="color"
             >
                 Indicator color
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="disabled"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled item (i.e. hidden from the related chart)
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeS"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size
             </ng-template>
             <ng-template
                 i18n

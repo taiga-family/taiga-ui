@@ -9,10 +9,11 @@ import {
 import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
 import {TuiRingChartContext} from '@taiga-ui/addon-charts/interfaces';
 import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
-import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+// TODO: Refactor to use ng-content
 @Component({
     selector: 'tui-ring-chart',
     templateUrl: './ring-chart.template.html',
@@ -52,20 +53,8 @@ export class TuiRingChartComponent {
         return this.size !== 's' && !!this.content;
     }
 
-    get contentContext(): TuiRingChartContext {
-        return this.getContentContext(this.activeItemIndex, this.value);
-    }
-
     onActiveItemIndexChange(index: number) {
         this.updateActiveItemIndex(index);
-    }
-
-    @tuiPure
-    private getContentContext(
-        $implicit: number,
-        value: readonly number[],
-    ): TuiRingChartContext {
-        return {$implicit, value};
     }
 
     private updateActiveItemIndex(index: number) {
