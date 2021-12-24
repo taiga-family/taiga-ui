@@ -137,19 +137,20 @@ export class TuiPieChartComponent {
     @tuiPure
     private getSegments(value: readonly number[]): readonly [number, number][] {
         return value
-            .map((currentItem, currentIndex, array) =>
+            .map((initial, i, array) =>
                 array.reduce(
-                    (sum, item, index) =>
-                        index < currentIndex
-                            ? (item / this.getSum(value)) * 360 + sum
-                            : sum,
-                    (currentItem / this.getSum(value)) * 360,
+                    (sum, current, j) => (j < i ? this.getDeg(current) + sum : sum),
+                    this.getDeg(initial),
                 ),
             )
             .map((angle, index, array) => [
                 array[index - 1] || 0,
                 Math.min(angle, 359.9999),
             ]);
+    }
+
+    private getDeg(value: number): number {
+        return 360 * (value / this.getSum(this.value));
     }
 
     private updateActiveItemIndex(index: number) {
