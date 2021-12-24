@@ -328,6 +328,8 @@ export class TuiInputDateTimeComponent
             ],
             pipe: tuiCreateAutoCorrectedDateTimePipe({
                 value: day,
+                // TODO finish localization in {@link https://github.com/TinkoffCreditSystems/taiga-ui/issues/954 issue}
+                dateSeparator: '.',
                 min,
                 max,
                 dateFormat,

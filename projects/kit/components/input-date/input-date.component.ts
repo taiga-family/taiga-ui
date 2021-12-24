@@ -19,6 +19,7 @@ import {
     DATE_FILLER_LENGTH,
     nullableSame,
     TUI_DATE_FORMAT,
+    TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
@@ -89,8 +90,7 @@ export class TuiInputDateComponent
     private month: TuiMonth | null = null;
 
     private readonly textMaskOptions: TuiTextMaskOptions = {
-        // TODO finish localization in {@link https://github.com/TinkoffCreditSystems/taiga-ui/issues/954 issue}
-        mask: tuiCreateDateMask(this.dateFormat, '.'),
+        mask: tuiCreateDateMask(this.dateFormat, this.dateSeparator),
         pipe: tuiCreateAutoCorrectedDatePipe(this),
         guide: false,
     };
@@ -137,6 +137,7 @@ export class TuiInputDateComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
+        @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
@@ -168,7 +169,7 @@ export class TuiInputDateComponent
             return String(activeItem);
         }
 
-        return value ? value.toString(this.dateFormat) : nativeValue;
+        return value ? value.toString(this.dateFormat, this.dateSeparator) : nativeValue;
     }
 
     get computedActiveYearMonth(): TuiMonth {

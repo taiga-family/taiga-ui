@@ -4,17 +4,18 @@ import {TuiTextMaskPipeHandler, TuiWithOptionalMinMaxWithValue} from '@taiga-ui/
 export interface AutoCorrectedDatePipeConfigs
     extends TuiWithOptionalMinMaxWithValue<TuiDay | null, TuiDay> {
     dateFormat: TuiDateMode;
+    dateSeparator: string;
 }
 
 export function normalizeDateValue(
     dateValue: string,
-    {value, min, max, dateFormat}: AutoCorrectedDatePipeConfigs,
+    {value, min, max, dateFormat, dateSeparator}: AutoCorrectedDatePipeConfigs,
 ): string {
     return value && value.toString() === dateValue
         ? dateValue
         : TuiDay.normalizeParse(dateValue, dateFormat)
               .dayLimit(min, max)
-              .toString(dateFormat);
+              .toString(dateFormat, dateSeparator);
 }
 
 export function tuiCreateAutoCorrectedDatePipe(
