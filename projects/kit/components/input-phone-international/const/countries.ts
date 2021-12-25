@@ -22,10 +22,6 @@ export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.AI]: {mask: '+1(264) ###-####', name: 'Ангилья'},
     [TuiCountryIsoCode.AL]: {mask: '+355(###) ###-###', name: 'Албания'},
     [TuiCountryIsoCode.AM]: {mask: '+374##-###-###', name: 'Армения'},
-    [TuiCountryIsoCode.AN]: {
-        mask: '+599-###-####',
-        name: 'Нидерландские Антильские острова',
-    },
     [TuiCountryIsoCode.AO]: {mask: '+244(###) ###-###', name: 'Ангола'},
     [TuiCountryIsoCode.AR]: {mask: '+54(###) ###-####', name: 'Аргентина'},
     [TuiCountryIsoCode.AT]: {mask: '+43(###) ###-####', name: 'Австрия'},
@@ -44,6 +40,10 @@ export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.BM]: {mask: '+1(441) ###-####', name: 'Бермудские острова'},
     [TuiCountryIsoCode.BN]: {mask: '+673###-####', name: 'Бруней-Даруссалам'},
     [TuiCountryIsoCode.BO]: {mask: '+591#-###-####', name: 'Боливия'},
+    [TuiCountryIsoCode.BQ]: {
+        mask: '+599-###-####',
+        name: 'Бонайре, Синт-Эстатиус и Саба',
+    },
     [TuiCountryIsoCode.BR]: {mask: '+55(##) ####-####', name: 'Бразилия'},
     [TuiCountryIsoCode.BS]: {mask: '+1(242) ###-####', name: 'Багамские Острова'},
     [TuiCountryIsoCode.BT]: {mask: '+975#-###-###', name: 'Бутан'},
@@ -69,6 +69,7 @@ export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.CR]: {mask: '+506####-####', name: 'Коста-Рика'},
     [TuiCountryIsoCode.CU]: {mask: '+53#-###-####', name: 'Куба'},
     [TuiCountryIsoCode.CV]: {mask: '+238(###) ##-##', name: 'Кабо-Верде'},
+    [TuiCountryIsoCode.CW]: {mask: '+5999-###-####', name: 'Кюрасао'},
     [TuiCountryIsoCode.CY]: {mask: '+357##-###-###', name: 'Кипр'},
     [TuiCountryIsoCode.CZ]: {mask: '+420(###) ###-###', name: 'Чехия'},
     [TuiCountryIsoCode.DE]: {mask: '+49(###) ###-###-##', name: 'Германия'},
@@ -201,6 +202,7 @@ export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.SR]: {mask: '+597###-####', name: 'Суринам '},
     [TuiCountryIsoCode.ST]: {mask: '+239##-#####', name: 'Сан-Томе и Принсипи'},
     [TuiCountryIsoCode.SV]: {mask: '+503##-##-####', name: 'Сальвадор'},
+    [TuiCountryIsoCode.SX]: {mask: '+1(721) ###-####', name: 'Синт-Мартен'},
     [TuiCountryIsoCode.SY]: {
         mask: '+963##-####-###',
         name: 'Сирийская арабская республика',
