@@ -2,6 +2,7 @@ import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
+import {TuiValueContentContext} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
@@ -57,7 +58,9 @@ class Account {
 })
 export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
     @ViewChild('valueTemplateContent')
-    private readonly valueTemplateRef: PolymorpheusContent = '';
+    private readonly valueTemplateRef: PolymorpheusContent<
+        TuiValueContentContext<Account>
+    > = '';
 
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
@@ -130,7 +133,7 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
         (item: Account) => item.balance < 300,
     ];
 
-    get valueContent(): PolymorpheusContent {
+    get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate
             ? this.valueTemplateRef
             : '';
