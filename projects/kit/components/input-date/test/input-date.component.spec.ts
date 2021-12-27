@@ -2,7 +2,7 @@ import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TUI_DATE_FORMAT, TuiDay} from '@taiga-ui/cdk';
+import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay} from '@taiga-ui/cdk';
 import {
     TuiHintControllerModule,
     TuiRootModule,
@@ -320,6 +320,44 @@ describe('InputDate + TUI_DATE_FORMAT = MDY integration', () => {
         await fixture.whenStable();
 
         expect(inputPO.value).toBe('03.09.2017');
+    });
+});
+
+describe('InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA format)', () => {
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            ...DEFAULT_TESTING_MODULE_META,
+            providers: [
+                {provide: TUI_DATE_FORMAT, useValue: 'MDY'},
+                {provide: TUI_DATE_SEPARATOR, useValue: '/'},
+            ],
+        });
+    });
+
+    beforeEach(async () => {
+        await initializeEnvironment();
+    });
+
+    it('accepts valid mm/dd/yyyy', () => {
+        inputPO.sendText('12272021');
+
+        const typedDay = testComponent.control.value;
+
+        expect(inputPO.value).toBe('12/27/2021');
+        expect(typedDay.day).toBe(27);
+        expect(typedDay.month).toBe(11);
+        expect(typedDay.year).toBe(2021);
+    });
+
+    it('replaces dots by custom separator', () => {
+        inputPO.sendText('05.14.1988');
+
+        const typedDay = testComponent.control.value;
+
+        expect(inputPO.value).toBe('05/14/1988');
+        expect(typedDay.day).toBe(14);
+        expect(typedDay.month).toBe(4);
+        expect(typedDay.year).toBe(1988);
     });
 });
 
