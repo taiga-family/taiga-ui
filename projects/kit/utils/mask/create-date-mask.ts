@@ -1,20 +1,18 @@
 import {tuiAssert, TuiDateMode} from '@taiga-ui/cdk';
 import {TUI_DIGIT_REGEXP, TuiTextMaskList} from '@taiga-ui/core';
 
+const TWO_DIGITS = Array(2).fill(TUI_DIGIT_REGEXP);
+const FOUR_DIGITS = Array(4).fill(TUI_DIGIT_REGEXP);
+
 export function tuiCreateDateMask(mode: TuiDateMode, separator: string): TuiTextMaskList {
     tuiAssert.assert(separator.length === 1, 'Separator should consist of only 1 symbol');
 
-    const DAY = [TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP];
-    const MONTH = [TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP];
-    const YEAR = [TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP];
-
     switch (mode) {
         case 'YMD':
-            return [...YEAR, separator, ...MONTH, separator, ...DAY];
+            return [...FOUR_DIGITS, separator, ...TWO_DIGITS, separator, ...TWO_DIGITS];
         case 'MDY':
-            return [...MONTH, separator, ...DAY, separator, ...YEAR];
-        default:
         case 'DMY':
-            return [...DAY, separator, ...MONTH, separator, ...YEAR];
+        default:
+            return [...TWO_DIGITS, separator, ...TWO_DIGITS, separator, ...FOUR_DIGITS];
     }
 }
