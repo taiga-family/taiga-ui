@@ -6,7 +6,7 @@
     padding-top: 3.5rem;
     clear: right;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) {
         padding-top: 2rem;
     }
 }
@@ -15,7 +15,7 @@
     font: var(--tui-font-heading-5);
     margin: 0 0 0.5rem;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         font: var(--tui-font-heading-6);
     }
 }
@@ -40,7 +40,7 @@
     border-radius: var(--tui-radius-m);
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         margin-top: 0.75rem;
     }
 }
@@ -52,7 +52,7 @@
     justify-content: space-between;
     align-items: center;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         padding: 0 1rem;
     }
 }
@@ -66,7 +66,7 @@
     padding: 2rem;
     overflow-x: auto;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         padding: 1rem;
     }
 }
@@ -80,4 +80,21 @@
 .t-link-icon {
     margin-left: 0.3rem;
     vertical-align: baseline;
+}
+
+.t-content {
+    will-change: opacity;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.t-content_animated {
+    transition: opacity 300ms ease-in-out;
+}
+
+.t-content_visible {
+    height: auto;
+    visibility: visible;
+    opacity: 1;
 }
