@@ -143,6 +143,7 @@ export class TuiInputDateTimeComponent
             this.timeMode,
             // TODO finish localization in {@link https://github.com/TinkoffCreditSystems/taiga-ui/issues/954 issue}
             'DMY',
+            '.',
         );
     }
 
@@ -318,22 +319,21 @@ export class TuiInputDateTimeComponent
         max: TuiDay,
         timeMode: TuiTimeMode,
         dateFormat: TuiDateMode,
+        dateSeparator: string,
     ): TuiTextMaskOptions {
         return {
-            // TODO finish localization in {@link https://github.com/TinkoffCreditSystems/taiga-ui/issues/954 issue}
             mask: [
-                ...tuiCreateDateMask('DMY', '.'),
+                ...tuiCreateDateMask(dateFormat, dateSeparator),
                 ',',
                 ' ',
                 ...tuiCreateTimeMask(timeMode),
             ],
             pipe: tuiCreateAutoCorrectedDateTimePipe({
                 value: day,
-                // TODO finish localization in {@link https://github.com/TinkoffCreditSystems/taiga-ui/issues/954 issue}
-                dateSeparator: '.',
                 min,
                 max,
                 dateFormat,
+                dateSeparator,
                 timeMode,
             }),
             guide: false,
