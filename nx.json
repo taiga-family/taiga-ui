@@ -14,60 +14,11 @@
     "npmScope": "taiga-ui",
     "tasksRunnerOptions": {
         "default": {
-            "runner": "@nrwl/nx-cloud",
+            "runner": "@nx-cloud/runners/firebase",
             "options": {
-                "cacheableOperations": ["build", "test", "lint"]
+                "cacheableOperations": ["build", "test", "lint"],
+                "parallel": 1
             }
-        }
-    },
-    "projects": {
-        "addon-charts": {
-            "implicitDependencies": []
-        },
-        "addon-commerce": {
-            "implicitDependencies": []
-        },
-        "addon-doc": {
-            "implicitDependencies": []
-        },
-        "addon-editor": {
-            "implicitDependencies": []
-        },
-        "addon-mobile": {
-            "implicitDependencies": []
-        },
-        "addon-preview": {
-            "implicitDependencies": []
-        },
-        "addon-table": {
-            "implicitDependencies": []
-        },
-        "addon-tablebars": {
-            "implicitDependencies": []
-        },
-        "cdk": {
-            "implicitDependencies": []
-        },
-        "core": {
-            "implicitDependencies": []
-        },
-        "i18n": {
-            "implicitDependencies": []
-        },
-        "icons": {
-            "implicitDependencies": []
-        },
-        "kit": {
-            "implicitDependencies": []
-        },
-        "taiga-schematics": {
-            "implicitDependencies": []
-        },
-        "testing": {
-            "implicitDependencies": []
-        },
-        "demo": {
-            "implicitDependencies": []
         }
     },
     "affected": {
@@ -76,5 +27,9 @@
     "workspaceLayout": {
         "libsDir": "projects",
         "appsDir": "projects"
-    }
+    },
+    "cli": {
+        "analytics": "ce6ae05d-f6ae-4271-89e4-40e616f7090f"
+    },
+    "defaultProject": "demo"
 }

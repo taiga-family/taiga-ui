@@ -25,7 +25,7 @@ jobs:
     name: Cypress
     runs-on: ubuntu-latest
     env:
-      NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js
