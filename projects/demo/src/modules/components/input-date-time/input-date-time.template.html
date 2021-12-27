@@ -16,6 +16,28 @@
         <tui-doc-example id="modes" heading="Modes" [content]="example2">
             <tui-input-date-time-example-2></tui-input-date-time-example-2>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="date-localization"
+            heading="Date localization"
+            [content]="example3"
+        >
+            <h3 i18n>DI-tokens for date format localization:</h3>
+
+            <dl i18n>
+                <dt><code>TUI_DATE_FORMAT</code></dt>
+                <dd>
+                    active date format (
+                    <code>'DMY' | 'MDY' | 'YMD'</code>
+                    )
+                </dd>
+                <br />
+                <dt><code>TUI_DATE_SEPARATOR</code></dt>
+                <dd>single-character date's separator (dot, slash etc.)</dd>
+            </dl>
+            <br />
+            <tui-input-date-time-example-3></tui-input-date-time-example-3>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
