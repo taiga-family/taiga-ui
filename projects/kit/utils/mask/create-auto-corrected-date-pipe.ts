@@ -1,17 +1,25 @@
-import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk';
+import {DATE_FILLER_LENGTH, TuiDateMode, TuiDay} from '@taiga-ui/cdk';
 import {TuiTextMaskPipeHandler, TuiWithOptionalMinMaxWithValue} from '@taiga-ui/core';
+
+export interface TuiAutoCorrectedDatePipeConfigs
+    extends TuiWithOptionalMinMaxWithValue<TuiDay | null, TuiDay> {
+    dateFormat: TuiDateMode;
+    dateSeparator: string;
+}
 
 export function normalizeDateValue(
     dateValue: string,
-    {value, min, max}: TuiWithOptionalMinMaxWithValue<TuiDay | null, TuiDay>,
+    {value, min, max, dateFormat, dateSeparator}: TuiAutoCorrectedDatePipeConfigs,
 ): string {
     return value && value.toString() === dateValue
         ? dateValue
-        : TuiDay.normalizeParse(dateValue).dayLimit(min, max).toString();
+        : TuiDay.normalizeParse(dateValue, dateFormat)
+              .dayLimit(min, max)
+              .toString(dateFormat, dateSeparator);
 }
 
 export function tuiCreateAutoCorrectedDatePipe(
-    config: TuiWithOptionalMinMaxWithValue<TuiDay | null, TuiDay>,
+    config: TuiAutoCorrectedDatePipeConfigs,
 ): TuiTextMaskPipeHandler {
     return value => {
         if (value.length !== DATE_FILLER_LENGTH) {

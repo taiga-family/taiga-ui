@@ -19,6 +19,7 @@ import {
     DATE_FILLER_LENGTH,
     nullableSame,
     TUI_DATE_FORMAT,
+    TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
@@ -42,14 +43,17 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit/classes';
-import {EMPTY_MASK, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
+import {EMPTY_MASK} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_TEXTS,
     TUI_MOBILE_CALENDAR,
 } from '@taiga-ui/kit/tokens';
-import {tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit/utils/mask';
+import {
+    tuiCreateAutoCorrectedDatePipe,
+    tuiCreateDateMask,
+} from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -86,7 +90,7 @@ export class TuiInputDateComponent
     private month: TuiMonth | null = null;
 
     private readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: TUI_DATE_MASK,
+        mask: tuiCreateDateMask(this.dateFormat, this.dateSeparator),
         pipe: tuiCreateAutoCorrectedDatePipe(this),
         guide: false,
     };
@@ -133,6 +137,7 @@ export class TuiInputDateComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
+        @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
@@ -164,7 +169,7 @@ export class TuiInputDateComponent
             return String(activeItem);
         }
 
-        return value ? String(value) : nativeValue;
+        return value ? value.toString(this.dateFormat, this.dateSeparator) : nativeValue;
     }
 
     get computedActiveYearMonth(): TuiMonth {
@@ -246,7 +251,9 @@ export class TuiInputDateComponent
         }
 
         this.updateValue(
-            value.length !== DATE_FILLER_LENGTH ? null : TuiDay.normalizeParse(value),
+            value.length !== DATE_FILLER_LENGTH
+                ? null
+                : TuiDay.normalizeParse(value, this.dateFormat),
         );
     }
 

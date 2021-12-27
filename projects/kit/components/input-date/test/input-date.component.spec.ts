@@ -2,7 +2,7 @@ import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiDay} from '@taiga-ui/cdk';
+import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay} from '@taiga-ui/cdk';
 import {
     TuiHintControllerModule,
     TuiRootModule,
@@ -16,95 +16,98 @@ import {configureTestSuite} from 'ng-bullet';
 import {TuiInputDateComponent} from '../input-date.component';
 import {TuiInputDateModule} from '../input-date.module';
 
-describe('InputDate', () => {
-    @Component({
-        template: `
-            <tui-root>
-                <tui-input-date
-                    [formControl]="control"
-                    [readOnly]="readOnly"
-                    [min]="min"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldExampleText]="exampleText"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    [tuiHintContent]="hintContent"
-                >
-                    Select date
-                </tui-input-date>
-            </tui-root>
-        `,
-    })
-    class TestComponent {
-        @ViewChild(TuiInputDateComponent)
-        readonly component: TuiInputDateComponent;
+@Component({
+    template: `
+        <tui-root>
+            <tui-input-date
+                [formControl]="control"
+                [readOnly]="readOnly"
+                [min]="min"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldExampleText]="exampleText"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
+                [tuiHintContent]="hintContent"
+            >
+                Select date
+            </tui-input-date>
+        </tui-root>
+    `,
+})
+class TestComponent {
+    @ViewChild(TuiInputDateComponent)
+    readonly component: TuiInputDateComponent;
 
-        control = new FormControl(new TuiDay(2017, 2, 1));
+    control = new FormControl(new TuiDay(2017, 2, 1));
 
-        cleaner = false;
+    cleaner = false;
 
-        readOnly = false;
+    readOnly = false;
 
-        min = new TuiDay(1900, 0, 1);
+    min = new TuiDay(1900, 0, 1);
 
-        labelOutside = false;
+    labelOutside = false;
 
-        size: TuiSizeS | TuiSizeL = 'm';
+    size: TuiSizeS | TuiSizeL = 'm';
 
-        hintContent: string | null = 'prompt';
+    hintContent: string | null = 'prompt';
 
-        exampleText = '';
-    }
+    exampleText = '';
+}
 
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
-    let inputPO: NativeInputPO;
+let fixture: ComponentFixture<TestComponent>;
+let testComponent: TestComponent;
+let pageObject: PageObject<TestComponent>;
+let inputPO: NativeInputPO;
 
-    const testContext = {
-        get pageObject() {
-            return pageObject;
-        },
-        get fixture() {
-            return fixture;
-        },
-        get testComponent() {
-            return testComponent;
-        },
-        get inputPO() {
-            return inputPO;
-        },
-        get prefix() {
-            return 'tui-input-date__';
-        },
-    };
+const testContext = {
+    get pageObject() {
+        return pageObject;
+    },
+    get fixture() {
+        return fixture;
+    },
+    get testComponent() {
+        return testComponent;
+    },
+    get inputPO() {
+        return inputPO;
+    },
+    get prefix() {
+        return 'tui-input-date__';
+    },
+};
 
+const DEFAULT_TESTING_MODULE_META = {
+    imports: [
+        TuiRootModule,
+        NoopAnimationsModule,
+        TuiInputDateModule,
+        ReactiveFormsModule,
+        TuiHintControllerModule,
+        TuiTextfieldControllerModule,
+    ],
+    declarations: [TestComponent],
+};
+
+const initializeEnvironment = async () => {
+    fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+
+    pageObject = new PageObject(fixture);
+    testComponent = fixture.componentInstance;
+    inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+
+    await fixture.whenStable();
+};
+
+describe('InputDate (base cases when TUI_DATE_FORMAT = DMY)', () => {
     configureTestSuite(() => {
-        TestBed.configureTestingModule({
-            imports: [
-                TuiRootModule,
-                NoopAnimationsModule,
-                TuiInputDateModule,
-                ReactiveFormsModule,
-                TuiHintControllerModule,
-                TuiTextfieldControllerModule,
-            ],
-            declarations: [TestComponent],
-        });
+        TestBed.configureTestingModule(DEFAULT_TESTING_MODULE_META);
     });
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(TestComponent);
-        pageObject = new PageObject(fixture);
-        testComponent = fixture.componentInstance;
-        inputPO = new NativeInputPO(fixture, `tui-primitive-textfield__native-input`);
-    });
-
-    beforeEach(done => {
-        fixture.whenStable().then(() => {
-            fixture.detectChanges();
-            done();
-        });
+    beforeEach(async () => {
+        await initializeEnvironment();
     });
 
     it('If there is min and an initial value and an initial value less than min - keep the initial value', done => {
@@ -118,6 +121,20 @@ describe('InputDate', () => {
                 done();
             });
         });
+    });
+
+    it('sets valid day if date selected via calendar', async () => {
+        mouseDownOnTextfield();
+
+        expect(getCalendar()).not.toBeNull();
+
+        const calendarCell = getCalendarCell(14);
+
+        calendarCell?.nativeElement.click();
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('14.03.2017');
     });
 
     describe('Keyboard input', () => {
@@ -184,20 +201,186 @@ describe('InputDate', () => {
             });
         });
     });
-
-    function mouseDownOnTextfield() {
-        getTextfield()!.nativeElement.dispatchEvent(
-            new MouseEvent('mousedown', {bubbles: true}),
-        );
-        getTextfield()!.nativeElement.click();
-        fixture.detectChanges();
-    }
-
-    function getTextfield(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-input-date-range__textfield');
-    }
-
-    function getCalendar(): DebugElement | null {
-        return pageObject.getByAutomationId(`${testContext.prefix}calendar`);
-    }
 });
+
+describe('InputDate + TUI_DATE_FORMAT = YMD integration', () => {
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            ...DEFAULT_TESTING_MODULE_META,
+            providers: [{provide: TUI_DATE_FORMAT, useValue: 'YMD'}],
+        });
+    });
+
+    beforeEach(async () => {
+        await initializeEnvironment();
+    });
+
+    it('accepts yyyy.mm.dd', () => {
+        inputPO.sendText('2021.12.23');
+
+        const typedDay = testComponent.control.value;
+
+        expect(inputPO.value).toBe('2021.12.23');
+        expect(typedDay.day).toBe(23);
+        expect(typedDay.month).toBe(11);
+        expect(typedDay.year).toBe(2021);
+    });
+
+    it('does not accept dd.mm.yyyy', () => {
+        inputPO.sendText('23.12.2021');
+
+        const typedDay = testComponent.control.value;
+
+        expect(inputPO.value).toBe('2312.12.21');
+        expect(typedDay.day).toBe(21);
+        expect(typedDay.month).toBe(11);
+        expect(typedDay.year).toBe(2312);
+    });
+
+    it('does not accept mm.dd.yyyy (and set min day if it is less min day)', () => {
+        inputPO.sendText('12.23.2021');
+
+        const typedDay = testComponent.control.value;
+
+        expect(inputPO.value).toBe('1900.01.01');
+        expect(typedDay.day).toBe(1);
+        expect(typedDay.month).toBe(0);
+        expect(typedDay.year).toBe(1900);
+    });
+
+    it('sets valid day if date selected via calendar', async () => {
+        mouseDownOnTextfield();
+
+        expect(getCalendar()).not.toBeNull();
+
+        const calendarCell = getCalendarCell(22);
+
+        calendarCell?.nativeElement.click();
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('2017.03.22');
+    });
+});
+
+describe('InputDate + TUI_DATE_FORMAT = MDY integration', () => {
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            ...DEFAULT_TESTING_MODULE_META,
+            providers: [{provide: TUI_DATE_FORMAT, useValue: 'MDY'}],
+        });
+    });
+
+    beforeEach(async () => {
+        await initializeEnvironment();
+    });
+
+    it('accepts mm.dd.yyyy', () => {
+        inputPO.sendText('12.23.2021');
+
+        const typedDay = testComponent.control.value;
+
+        expect(inputPO.value).toBe('12.23.2021');
+        expect(typedDay.day).toBe(23);
+        expect(typedDay.month).toBe(11);
+        expect(typedDay.year).toBe(2021);
+    });
+
+    it('does not accept dd.mm.yyyy', () => {
+        inputPO.sendText('23.12.2021');
+
+        const typedDay = testComponent.control.value;
+
+        expect(inputPO.value).toBe('12.12.2021');
+        expect(typedDay.day).toBe(12);
+        expect(typedDay.month).toBe(11);
+        expect(typedDay.year).toBe(2021);
+    });
+
+    it('does not accept yyyy.mm.dd (and set min day if it is less min day)', () => {
+        inputPO.sendText('2021.12.23');
+
+        const typedDay = testComponent.control.value;
+
+        expect(inputPO.value).toBe('01.01.1900');
+        expect(typedDay.day).toBe(1);
+        expect(typedDay.month).toBe(0);
+        expect(typedDay.year).toBe(1900);
+    });
+
+    it('sets valid day if date selected via calendar', async () => {
+        mouseDownOnTextfield();
+
+        expect(getCalendar()).not.toBeNull();
+
+        const calendarCell = getCalendarCell(9);
+
+        calendarCell?.nativeElement.click();
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('03.09.2017');
+    });
+});
+
+describe('InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA format)', () => {
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            ...DEFAULT_TESTING_MODULE_META,
+            providers: [
+                {provide: TUI_DATE_FORMAT, useValue: 'MDY'},
+                {provide: TUI_DATE_SEPARATOR, useValue: '/'},
+            ],
+        });
+    });
+
+    beforeEach(async () => {
+        await initializeEnvironment();
+    });
+
+    it('accepts valid mm/dd/yyyy', () => {
+        inputPO.sendText('12272021');
+
+        const typedDay = testComponent.control.value;
+
+        expect(inputPO.value).toBe('12/27/2021');
+        expect(typedDay.day).toBe(27);
+        expect(typedDay.month).toBe(11);
+        expect(typedDay.year).toBe(2021);
+    });
+
+    it('replaces dots by custom separator', () => {
+        inputPO.sendText('05.14.1988');
+
+        const typedDay = testComponent.control.value;
+
+        expect(inputPO.value).toBe('05/14/1988');
+        expect(typedDay.day).toBe(14);
+        expect(typedDay.month).toBe(4);
+        expect(typedDay.year).toBe(1988);
+    });
+});
+
+function mouseDownOnTextfield() {
+    getTextfield()!.nativeElement.dispatchEvent(
+        new MouseEvent('mousedown', {bubbles: true}),
+    );
+    getTextfield()!.nativeElement.click();
+    fixture.detectChanges();
+}
+
+function getTextfield(): DebugElement | null {
+    return pageObject.getByAutomationId('tui-input-date-range__textfield');
+}
+
+function getCalendar(): DebugElement | null {
+    return pageObject.getByAutomationId(`${testContext.prefix}calendar`);
+}
+
+function getCalendarCell(dayNumber: number): DebugElement | null {
+    return (
+        pageObject
+            .getAllByAutomationId('tui-primitive-calendar__cell')
+            .find(el => +el.nativeElement.innerText.trim() === dayNumber) || null
+    );
+}

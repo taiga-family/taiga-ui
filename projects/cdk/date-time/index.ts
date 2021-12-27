@@ -1,5 +1,6 @@
 export * from './date-fillers';
 export * from './date-format';
+export * from './date-separator';
 export * from './date-time';
 export * from './day';
 export * from './day-range';
