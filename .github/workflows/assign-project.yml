@@ -6,7 +6,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  PROJECTS_BASE_URL: 'https://github.com/TinkoffCreditSystems/taiga-ui/projects'
+  PROJECTS_BASE_URL: 'https://github.com/tinkoff/taiga-ui/projects'
 
 jobs:
   assign-projects:

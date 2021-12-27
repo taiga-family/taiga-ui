@@ -292,7 +292,7 @@ import {RouterModule} from '@angular/router';
         /**
          * If you use unsafe icons or have kind of WYSISYG editor in your app
          *
-         * Take a look at: https://github.com/TinkoffCreditSystems/ng-dompurify
+         * Take a look at: https://github.com/tinkoff/ng-dompurify
          *
          * This library implements DOMPurify as Angular Sanitizer or Pipe.
          * It delegates sanitizing to DOMPurify and supports the same configuration.

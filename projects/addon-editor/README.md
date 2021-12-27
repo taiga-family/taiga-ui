@@ -5,15 +5,14 @@
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) •
-[CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki) •
-[Core team](https://github.com/TinkoffCreditSystems/taiga-ui/#core-team)
+[CDK Wiki](https://github.com/tinkoff/taiga-ui/wiki) • [Core team](https://github.com/tinkoff/taiga-ui/#core-team)
 
 `WORK IN PROGRESS`
 
 > Tools for creating rich text editor in Angular
 
-It's a part of [**Taiga UI**](https://github.com/TinkoffCreditSystems/taiga-ui) that is fully-treeshakable Angular UI
-Kit consisting of multiple base libraries and several add-ons
+It's a part of [**Taiga UI**](https://github.com/tinkoff/taiga-ui) that is fully-treeshakable Angular UI Kit consisting
+of multiple base libraries and several add-ons
 
 ## How to install
 
@@ -39,4 +38,4 @@ See our [Documentation](https://taiga-ui.dev/getting-started)
 ---
 
 You can also visit CDK wiki to learn more about its tools:
-[CDK Documentation on Github Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki/CDK)
+[CDK Documentation on Github Wiki](https://github.com/tinkoff/taiga-ui/wiki/CDK)
