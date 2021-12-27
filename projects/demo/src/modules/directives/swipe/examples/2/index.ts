@@ -19,7 +19,7 @@ export class TuiSwipeExample2 {
     }
 
     onSwipe(swipe: TuiSwipe) {
-        console.log(swipe.direction);
+        console.info(swipe.direction);
 
         if (swipe.direction === 'left') {
             this.toggle(true);

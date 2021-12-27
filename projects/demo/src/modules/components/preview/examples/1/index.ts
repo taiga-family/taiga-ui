@@ -43,7 +43,7 @@ export class TuiPreviewExample1 {
 
     show() {
         this.previewService.open(this.preview || '').subscribe({
-            complete: () => console.log('complete'),
+            complete: () => console.info('complete'),
         });
     }
 

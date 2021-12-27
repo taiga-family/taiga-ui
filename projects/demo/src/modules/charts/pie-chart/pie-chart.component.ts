@@ -39,6 +39,7 @@ export class ExampleTuiPieChartComponent {
     };
 
     readonly valueVariants = [
+        [0, 30, 20, 10],
         [40, 30, 20, 10],
         [13769, 12367, 10172, 3018, 2592],
     ];

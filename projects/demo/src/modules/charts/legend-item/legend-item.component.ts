@@ -1,14 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiBaseColor, TuiColor, TuiSupportColor} from '@taiga-ui/core';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-legend-item',
@@ -16,24 +9,41 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiLegendItemComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleImportModule = import(
+        '!!raw-loader!./examples/import/import-module.txt'
+    );
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1Less,
+    readonly exampleInsertTemplate = import(
+        '!!raw-loader!./examples/import/insert-template.txt'
+    );
+
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
+        LESS: import('!!raw-loader!./examples/1/index.less'),
+    };
+
+    readonly example2: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
+        LESS: import('!!raw-loader!./examples/2/index.less'),
     };
 
     text = 'Text inside';
 
     active = false;
 
-    readonly colorVariants: ReadonlyArray<TuiColor> = [
-        TuiSupportColor.Feijoa,
-        TuiBaseColor.Primary,
-        TuiBaseColor.Secondary,
+    readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
+
+    readonly colorVariants: readonly string[] = [
+        'var(--tui-support-04)',
+        'var(--tui-primary)',
+        'var(--tui-secondary)',
     ];
+
+    size = this.sizeVariants[0];
+
+    disabled = false;
 
     color = '';
 }

@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {colorFallback} from '@taiga-ui/core';
+import {colorFallback, TuiSizeS} from '@taiga-ui/core';
 
 // TODO: Remove fallback in 3.0
 @Component({
@@ -22,7 +22,21 @@ export class TuiLegendItemComponent {
     @tuiDefaultProp()
     text = '';
 
-    get computedColor(): string {
+    @Input()
+    @HostBinding('attr.data-size')
+    @tuiDefaultProp()
+    size: TuiSizeS = 'm';
+
+    @Input()
+    @HostBinding('class._disabled')
+    disabled = false;
+
+    @HostBinding('style.--tui-primary')
+    get computedColor(): string | null {
+        if (this.color === 'var(--tui-primary)') {
+            return null;
+        }
+
         return this.color.startsWith('var(') ? this.color : colorFallback(this.color);
     }
 }

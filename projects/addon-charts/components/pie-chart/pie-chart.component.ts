@@ -82,6 +82,11 @@ export class TuiPieChartComponent {
         this.autoIdString = idService.generate();
     }
 
+    @HostBinding('class._empty')
+    get empty(): boolean {
+        return !this.getSum(this.value);
+    }
+
     get maskId(): string {
         return 'tui-ring-chart-' + this.autoIdString;
     }
@@ -100,11 +105,6 @@ export class TuiPieChartComponent {
 
     get segments(): readonly [number, number][] {
         return this.getSegments(this.value);
-    }
-
-    @tuiPure
-    getContentContext($implicit: number): TuiContextWithImplicit<number> {
-        return {$implicit};
     }
 
     getTransform(index: number): string | null {
@@ -130,21 +130,27 @@ export class TuiPieChartComponent {
     }
 
     @tuiPure
-    private getSegments(value: readonly number[]): readonly [number, number][] {
-        const total = sum(...value);
+    private getSum(value: readonly number[]): number {
+        return sum(...value);
+    }
 
+    @tuiPure
+    private getSegments(value: readonly number[]): readonly [number, number][] {
         return value
-            .map((currentItem, currentIndex, array) =>
+            .map((initial, i, array) =>
                 array.reduce(
-                    (sum, item, index) =>
-                        index < currentIndex ? (item / total) * 360 + sum : sum,
-                    (currentItem / total) * 360,
+                    (sum, current, j) => (j < i ? this.getDeg(current) + sum : sum),
+                    this.getDeg(initial),
                 ),
             )
             .map((angle, index, array) => [
                 array[index - 1] || 0,
                 Math.min(angle, 359.9999),
             ]);
+    }
+
+    private getDeg(value: number): number {
+        return 360 * (value / this.getSum(this.value));
     }
 
     private updateActiveItemIndex(index: number) {

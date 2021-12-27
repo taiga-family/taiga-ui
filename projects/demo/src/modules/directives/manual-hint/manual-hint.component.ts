@@ -33,6 +33,6 @@ export class ExampleTuiManualHintComponent extends AbstractExampleTuiHint {
     show = false;
 
     sayHi() {
-        console.log('Hi all!');
+        console.info('Hi all!');
     }
 }

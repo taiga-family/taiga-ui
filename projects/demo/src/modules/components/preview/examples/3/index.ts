@@ -58,7 +58,7 @@ export class TuiPreviewExample3 {
     }
 
     download() {
-        console.log('downloading...');
+        console.info('downloading...');
     }
 
     emulateBackendRequest(): Observable<string> {
