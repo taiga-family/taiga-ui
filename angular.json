@@ -3,246 +3,6 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "cdk": {
-            "root": "projects/cdk",
-            "sourceRoot": "projects/cdk",
-            "projectType": "library",
-            "prefix": "tui",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/cdk"],
-                    "options": {
-                        "tsConfig": "projects/cdk/tsconfig.lib.json",
-                        "project": "projects/cdk/ng-package.json"
-                    },
-                    "dependsOn": [
-                        {
-                            "target": "build",
-                            "projects": "dependencies"
-                        }
-                    ]
-                },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "outputs": ["coverage/cdk"],
-                    "options": {
-                        "codeCoverage": true,
-                        "main": "projects/cdk/test.ts",
-                        "tsConfig": "projects/cdk/tsconfig.spec.json",
-                        "karmaConfig": "projects/cdk/karma.conf.js"
-                    }
-                },
-                "publish": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "command": "npm publish dist/cdk"
-                    }
-                }
-            }
-        },
-        "i18n": {
-            "root": "projects/i18n",
-            "sourceRoot": "projects/i18n",
-            "projectType": "library",
-            "prefix": "tui",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/i18n"],
-                    "options": {
-                        "tsConfig": "projects/i18n/tsconfig.lib.json",
-                        "project": "projects/i18n/ng-package.json"
-                    },
-                    "dependsOn": [
-                        {
-                            "target": "build",
-                            "projects": "dependencies"
-                        }
-                    ]
-                },
-                "publish": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "command": "npm publish dist/i18n"
-                    }
-                }
-            }
-        },
-        "core": {
-            "root": "projects/core",
-            "sourceRoot": "projects/core",
-            "projectType": "library",
-            "prefix": "tui",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/core"],
-                    "options": {
-                        "tsConfig": "projects/core/tsconfig.lib.json",
-                        "project": "projects/core/ng-package.json"
-                    },
-                    "dependsOn": [
-                        {
-                            "target": "build",
-                            "projects": "dependencies"
-                        }
-                    ]
-                },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "outputs": ["coverage/core"],
-                    "options": {
-                        "codeCoverage": true,
-                        "main": "projects/core/test.ts",
-                        "tsConfig": "projects/core/tsconfig.spec.json",
-                        "karmaConfig": "projects/core/karma.conf.js"
-                    }
-                },
-                "publish": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "command": "npm publish dist/core"
-                    }
-                }
-            }
-        },
-        "taiga-schematics": {
-            "root": "projects/taiga-schematics",
-            "sourceRoot": "projects/taiga-schematics",
-            "projectType": "library",
-            "architect": {
-                "prebuild": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/taiga-schematics"],
-                    "options": {
-                        "tsConfig": "projects/taiga-schematics/tsconfig.lib.json",
-                        "project": "projects/taiga-schematics/ng-package.json"
-                    }
-                },
-                "build": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "parallel": false,
-                        "commands": ["nx prebuild taiga-schematics", "nx postbuild taiga-schematics"]
-                    },
-                    "dependsOn": [
-                        {
-                            "target": "build",
-                            "projects": "dependencies"
-                        }
-                    ]
-                },
-                "postbuild": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "parallel": false,
-                        "commands": [
-                            "tsc -p ./projects/taiga-schematics/tsconfig.schematics.json",
-                            "cp ./projects/taiga-schematics/schematics/collection.json ./dist/taiga-schematics/collection.json",
-                            "cp ./projects/taiga-schematics/schematics/ng-add/schema.json ./dist/taiga-schematics/ng-add/schema.json"
-                        ]
-                    }
-                },
-                "test": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "parallel": false,
-                        "commands": [
-                            "tsc -p ./projects/taiga-schematics/tsconfig.spec.json",
-                            "jasmine ./dist/taiga-schematics/**/*.spec.js"
-                        ]
-                    },
-                    "dependsOn": [
-                        {
-                            "target": "build",
-                            "projects": "self"
-                        }
-                    ]
-                },
-                "publish": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "command": "npm publish dist/taiga-schematics"
-                    }
-                }
-            }
-        },
-        "kit": {
-            "root": "projects/kit",
-            "sourceRoot": "projects/kit",
-            "projectType": "library",
-            "prefix": "tui",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/kit"],
-                    "options": {
-                        "tsConfig": "projects/kit/tsconfig.lib.json",
-                        "project": "projects/kit/ng-package.json"
-                    },
-                    "dependsOn": [
-                        {
-                            "target": "build",
-                            "projects": "dependencies"
-                        }
-                    ]
-                },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "outputs": ["coverage/kit"],
-                    "options": {
-                        "codeCoverage": true,
-                        "main": "projects/kit/test.ts",
-                        "tsConfig": "projects/kit/tsconfig.spec.json",
-                        "karmaConfig": "projects/kit/karma.conf.js",
-                        "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
-                        }
-                    }
-                },
-                "publish": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "command": "npm publish dist/kit"
-                    }
-                }
-            }
-        },
-        "icons": {
-            "root": "projects/icons",
-            "sourceRoot": "projects/icons/src",
-            "projectType": "library",
-            "prefix": "tui",
-            "architect": {
-                "prebuild": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "command": "npm run exec ./scripts/compile-icons.ts"
-                    }
-                },
-                "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/icons"],
-                    "options": {
-                        "tsConfig": "projects/icons/tsconfig.lib.json",
-                        "project": "projects/icons/ng-package.json"
-                    },
-                    "dependsOn": [
-                        {
-                            "target": "prebuild",
-                            "projects": "self"
-                        }
-                    ]
-                },
-                "publish": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "command": "npm publish dist/icons"
-                    }
-                }
-            }
-        },
         "addon-charts": {
             "root": "projects/addon-charts",
             "sourceRoot": "projects/addon-charts",
@@ -282,7 +42,8 @@
                         "command": "npm publish dist/addon-charts"
                     }
                 }
-            }
+            },
+            "implicitDependencies": []
         },
         "addon-commerce": {
             "root": "projects/addon-commerce",
@@ -323,20 +84,21 @@
                         "command": "npm publish dist/addon-commerce"
                     }
                 }
-            }
+            },
+            "implicitDependencies": []
         },
-        "addon-mobile": {
-            "root": "projects/addon-mobile",
-            "sourceRoot": "projects/addon-mobile/src",
+        "addon-doc": {
+            "root": "projects/addon-doc",
+            "sourceRoot": "projects/addon-doc/src",
             "projectType": "library",
             "prefix": "tui",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/addon-mobile"],
+                    "outputs": ["dist/addon-doc"],
                     "options": {
-                        "tsConfig": "projects/addon-mobile/tsconfig.lib.json",
-                        "project": "projects/addon-mobile/ng-package.json"
+                        "tsConfig": "projects/addon-doc/tsconfig.lib.json",
+                        "project": "projects/addon-doc/ng-package.json"
                     },
                     "dependsOn": [
                         {
@@ -347,12 +109,12 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
-                    "outputs": ["coverage/addon-mobile"],
+                    "outputs": ["coverage/addon-doc"],
                     "options": {
                         "codeCoverage": true,
-                        "main": "projects/addon-mobile/test.ts",
-                        "tsConfig": "projects/addon-mobile/tsconfig.spec.json",
-                        "karmaConfig": "projects/addon-mobile/karma.conf.js",
+                        "main": "projects/addon-doc/src/test.ts",
+                        "tsConfig": "projects/addon-doc/tsconfig.spec.json",
+                        "karmaConfig": "projects/addon-doc/karma.conf.js",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
@@ -361,132 +123,11 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/addon-mobile"
+                        "command": "npm publish dist/addon-doc"
                     }
                 }
-            }
-        },
-        "addon-preview": {
-            "root": "projects/addon-preview",
-            "sourceRoot": "projects/addon-preview/src",
-            "projectType": "library",
-            "prefix": "tui",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/addon-preview"],
-                    "options": {
-                        "tsConfig": "projects/addon-preview/tsconfig.lib.json",
-                        "project": "projects/addon-preview/ng-package.json"
-                    },
-                    "dependsOn": [
-                        {
-                            "target": "build",
-                            "projects": "dependencies"
-                        }
-                    ]
-                },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "outputs": ["coverage/addon-preview"],
-                    "options": {
-                        "main": "projects/addon-preview/test.ts",
-                        "tsConfig": "projects/addon-preview/tsconfig.spec.json",
-                        "karmaConfig": "projects/addon-preview/karma.conf.js",
-                        "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
-                        }
-                    }
-                },
-                "publish": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "command": "npm publish dist/addon-preview"
-                    }
-                }
-            }
-        },
-        "addon-tablebars": {
-            "root": "projects/addon-tablebars",
-            "sourceRoot": "projects/addon-tablebars/src",
-            "projectType": "library",
-            "prefix": "tui",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/addon-tablebars"],
-                    "options": {
-                        "tsConfig": "projects/addon-tablebars/tsconfig.lib.json",
-                        "project": "projects/addon-tablebars/ng-package.json"
-                    },
-                    "dependsOn": [
-                        {
-                            "target": "build",
-                            "projects": "dependencies"
-                        }
-                    ]
-                },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "outputs": ["coverage/addon-tablebars"],
-                    "options": {
-                        "codeCoverage": true,
-                        "main": "projects/addon-tablebars/test.ts",
-                        "tsConfig": "projects/addon-tablebars/tsconfig.spec.json",
-                        "karmaConfig": "projects/addon-tablebars/karma.conf.js",
-                        "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
-                        }
-                    }
-                },
-                "publish": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "command": "npm publish dist/addon-tablebars"
-                    }
-                }
-            }
-        },
-        "addon-table": {
-            "root": "projects/addon-table",
-            "sourceRoot": "projects/addon-table",
-            "projectType": "library",
-            "prefix": "tui",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/addon-table"],
-                    "options": {
-                        "tsConfig": "projects/addon-table/tsconfig.lib.json",
-                        "project": "projects/addon-table/ng-package.json"
-                    },
-                    "dependsOn": [
-                        {
-                            "target": "build",
-                            "projects": "dependencies"
-                        }
-                    ]
-                },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "outputs": ["coverage/addon-table"],
-                    "options": {
-                        "codeCoverage": true,
-                        "main": "projects/addon-table/test.ts",
-                        "tsConfig": "projects/addon-table/tsconfig.spec.json",
-                        "karmaConfig": "projects/addon-table/karma.conf.js",
-                        "stylePreprocessorOptions": {
-                            "includePaths": ["projects/core/styles"]
-                        }
-                    }
-                },
-                "publish": {
-                    "builder": "@nrwl/workspace:run-commands",
-                    "options": {
-                        "command": "npm publish dist/addon-table"
-                    }
-                }
-            }
+            },
+            "implicitDependencies": []
         },
         "addon-editor": {
             "root": "projects/addon-editor",
@@ -534,20 +175,21 @@
                         "command": "npm publish dist/addon-editor"
                     }
                 }
-            }
+            },
+            "implicitDependencies": []
         },
-        "addon-doc": {
-            "root": "projects/addon-doc",
-            "sourceRoot": "projects/addon-doc/src",
+        "addon-mobile": {
+            "root": "projects/addon-mobile",
+            "sourceRoot": "projects/addon-mobile/src",
             "projectType": "library",
             "prefix": "tui",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/addon-doc"],
+                    "outputs": ["dist/addon-mobile"],
                     "options": {
-                        "tsConfig": "projects/addon-doc/tsconfig.lib.json",
-                        "project": "projects/addon-doc/ng-package.json"
+                        "tsConfig": "projects/addon-mobile/tsconfig.lib.json",
+                        "project": "projects/addon-mobile/ng-package.json"
                     },
                     "dependsOn": [
                         {
@@ -558,12 +200,12 @@
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
-                    "outputs": ["coverage/addon-doc"],
+                    "outputs": ["coverage/addon-mobile"],
                     "options": {
                         "codeCoverage": true,
-                        "main": "projects/addon-doc/src/test.ts",
-                        "tsConfig": "projects/addon-doc/tsconfig.spec.json",
-                        "karmaConfig": "projects/addon-doc/karma.conf.js",
+                        "main": "projects/addon-mobile/test.ts",
+                        "tsConfig": "projects/addon-mobile/tsconfig.spec.json",
+                        "karmaConfig": "projects/addon-mobile/karma.conf.js",
                         "stylePreprocessorOptions": {
                             "includePaths": ["projects/core/styles"]
                         }
@@ -572,17 +214,214 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/addon-doc"
+                        "command": "npm publish dist/addon-mobile"
                     }
                 }
-            }
+            },
+            "implicitDependencies": []
         },
-        "testing": {
-            "root": "projects/testing",
-            "sourceRoot": "projects/testing/src",
+        "addon-preview": {
+            "root": "projects/addon-preview",
+            "sourceRoot": "projects/addon-preview/src",
             "projectType": "library",
             "prefix": "tui",
-            "architect": {}
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/addon-preview"],
+                    "options": {
+                        "tsConfig": "projects/addon-preview/tsconfig.lib.json",
+                        "project": "projects/addon-preview/ng-package.json"
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/addon-preview"],
+                    "options": {
+                        "main": "projects/addon-preview/test.ts",
+                        "tsConfig": "projects/addon-preview/tsconfig.spec.json",
+                        "karmaConfig": "projects/addon-preview/karma.conf.js",
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["projects/core/styles"]
+                        }
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/addon-preview"
+                    }
+                }
+            },
+            "implicitDependencies": []
+        },
+        "addon-table": {
+            "root": "projects/addon-table",
+            "sourceRoot": "projects/addon-table",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/addon-table"],
+                    "options": {
+                        "tsConfig": "projects/addon-table/tsconfig.lib.json",
+                        "project": "projects/addon-table/ng-package.json"
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/addon-table"],
+                    "options": {
+                        "codeCoverage": true,
+                        "main": "projects/addon-table/test.ts",
+                        "tsConfig": "projects/addon-table/tsconfig.spec.json",
+                        "karmaConfig": "projects/addon-table/karma.conf.js",
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["projects/core/styles"]
+                        }
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/addon-table"
+                    }
+                }
+            },
+            "implicitDependencies": []
+        },
+        "addon-tablebars": {
+            "root": "projects/addon-tablebars",
+            "sourceRoot": "projects/addon-tablebars/src",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/addon-tablebars"],
+                    "options": {
+                        "tsConfig": "projects/addon-tablebars/tsconfig.lib.json",
+                        "project": "projects/addon-tablebars/ng-package.json"
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/addon-tablebars"],
+                    "options": {
+                        "codeCoverage": true,
+                        "main": "projects/addon-tablebars/test.ts",
+                        "tsConfig": "projects/addon-tablebars/tsconfig.spec.json",
+                        "karmaConfig": "projects/addon-tablebars/karma.conf.js",
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["projects/core/styles"]
+                        }
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/addon-tablebars"
+                    }
+                }
+            },
+            "implicitDependencies": []
+        },
+        "cdk": {
+            "root": "projects/cdk",
+            "sourceRoot": "projects/cdk",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/cdk"],
+                    "options": {
+                        "tsConfig": "projects/cdk/tsconfig.lib.json",
+                        "project": "projects/cdk/ng-package.json"
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/cdk"],
+                    "options": {
+                        "codeCoverage": true,
+                        "main": "projects/cdk/test.ts",
+                        "tsConfig": "projects/cdk/tsconfig.spec.json",
+                        "karmaConfig": "projects/cdk/karma.conf.js"
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/cdk"
+                    }
+                }
+            },
+            "implicitDependencies": []
+        },
+        "core": {
+            "root": "projects/core",
+            "sourceRoot": "projects/core",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/core"],
+                    "options": {
+                        "tsConfig": "projects/core/tsconfig.lib.json",
+                        "project": "projects/core/ng-package.json"
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/core"],
+                    "options": {
+                        "codeCoverage": true,
+                        "main": "projects/core/test.ts",
+                        "tsConfig": "projects/core/tsconfig.spec.json",
+                        "karmaConfig": "projects/core/karma.conf.js"
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/core"
+                    }
+                }
+            },
+            "implicitDependencies": []
         },
         "demo": {
             "root": "projects/demo/",
@@ -822,11 +661,184 @@
                         "browserTarget": "demo:build"
                     }
                 }
-            }
+            },
+            "implicitDependencies": []
+        },
+        "i18n": {
+            "root": "projects/i18n",
+            "sourceRoot": "projects/i18n",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/i18n"],
+                    "options": {
+                        "tsConfig": "projects/i18n/tsconfig.lib.json",
+                        "project": "projects/i18n/ng-package.json"
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/i18n"
+                    }
+                }
+            },
+            "implicitDependencies": []
+        },
+        "icons": {
+            "root": "projects/icons",
+            "sourceRoot": "projects/icons/src",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "prebuild": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm run exec ./scripts/compile-icons.ts"
+                    }
+                },
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/icons"],
+                    "options": {
+                        "tsConfig": "projects/icons/tsconfig.lib.json",
+                        "project": "projects/icons/ng-package.json"
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "prebuild",
+                            "projects": "self"
+                        }
+                    ]
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/icons"
+                    }
+                }
+            },
+            "implicitDependencies": []
+        },
+        "kit": {
+            "root": "projects/kit",
+            "sourceRoot": "projects/kit",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/kit"],
+                    "options": {
+                        "tsConfig": "projects/kit/tsconfig.lib.json",
+                        "project": "projects/kit/ng-package.json"
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "outputs": ["coverage/kit"],
+                    "options": {
+                        "codeCoverage": true,
+                        "main": "projects/kit/test.ts",
+                        "tsConfig": "projects/kit/tsconfig.spec.json",
+                        "karmaConfig": "projects/kit/karma.conf.js",
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["projects/core/styles"]
+                        }
+                    }
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/kit"
+                    }
+                }
+            },
+            "implicitDependencies": []
+        },
+        "taiga-schematics": {
+            "root": "projects/taiga-schematics",
+            "sourceRoot": "projects/taiga-schematics",
+            "projectType": "library",
+            "architect": {
+                "prebuild": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "outputs": ["dist/taiga-schematics"],
+                    "options": {
+                        "tsConfig": "projects/taiga-schematics/tsconfig.lib.json",
+                        "project": "projects/taiga-schematics/ng-package.json"
+                    }
+                },
+                "build": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "parallel": false,
+                        "commands": ["nx prebuild taiga-schematics", "nx postbuild taiga-schematics"]
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "dependencies"
+                        }
+                    ]
+                },
+                "postbuild": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "parallel": false,
+                        "commands": [
+                            "tsc -p ./projects/taiga-schematics/tsconfig.schematics.json",
+                            "cp ./projects/taiga-schematics/schematics/collection.json ./dist/taiga-schematics/collection.json",
+                            "cp ./projects/taiga-schematics/schematics/ng-add/schema.json ./dist/taiga-schematics/ng-add/schema.json"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "parallel": false,
+                        "commands": [
+                            "tsc -p ./projects/taiga-schematics/tsconfig.spec.json",
+                            "jasmine ./dist/taiga-schematics/**/*.spec.js"
+                        ]
+                    },
+                    "dependsOn": [
+                        {
+                            "target": "build",
+                            "projects": "self"
+                        }
+                    ]
+                },
+                "publish": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "command": "npm publish dist/taiga-schematics"
+                    }
+                }
+            },
+            "implicitDependencies": []
+        },
+        "testing": {
+            "root": "projects/testing",
+            "sourceRoot": "projects/testing/src",
+            "projectType": "library",
+            "prefix": "tui",
+            "architect": {},
+            "implicitDependencies": []
         }
-    },
-    "defaultProject": "demo",
-    "cli": {
-        "analytics": "ce6ae05d-f6ae-4271-89e4-40e616f7090f"
     }
 }

@@ -20,7 +20,7 @@ jobs:
     # Setup part
     runs-on: ubuntu-latest
     env:
-      NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
     steps:
       - name: Fetch from origin repo
         if: ${{ env.IS_FORK == 'false' }}
