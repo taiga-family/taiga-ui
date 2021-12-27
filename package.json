@@ -115,7 +115,6 @@
         "@nguniversal/builders": "^9.1.1",
         "@nrwl/cli": "13.3.0",
         "@nrwl/node": "13.3.0",
-        "@nrwl/nx-cloud": "12.5.4",
         "@nrwl/tao": "13.3.0",
         "@nrwl/workspace": "13.3.0",
         "@nx-cloud/runners": "1.1.0",
