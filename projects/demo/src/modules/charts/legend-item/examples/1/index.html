@@ -13,6 +13,7 @@
     <div class="legend">
         <tui-legend-item
             *ngFor="let label of labels; let index = index"
+            size="s"
             class="item"
             [color]="getColor(index)"
             [text]="label"

@@ -3,13 +3,39 @@
 }
 
 .t-button {
+    height: 2rem;
     font-weight: bold;
+
+    :host[data-size='m'] & {
+        height: 2.25rem;
+        font: var(--tui-font-text-m);
+        font-weight: bold;
+    }
+}
+
+.t-wrapper {
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+
+    :host._disabled & {
+        color: var(--tui-text-03);
+    }
 }
 
 .t-dot {
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 100%;
+    background: var(--tui-primary);
+
+    :host._disabled & {
+        background: var(--tui-base-04);
+    }
+
+    &:not(:first-child) {
+        display: none;
+    }
 }
 
 .t-text {

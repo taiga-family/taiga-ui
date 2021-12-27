@@ -4,7 +4,7 @@
         automation-id="tui-ring-chart__content"
         class="t-wrapper"
         [content]="content"
-        [context]="contentContext"
+        [context]="{$implicit: activeItemIndex, value: value}"
     ></div>
 </div>
 

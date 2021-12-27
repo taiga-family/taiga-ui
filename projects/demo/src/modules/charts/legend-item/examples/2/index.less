@@ -8,17 +8,39 @@
     --tui-chart-4: #9795cd;
 }
 
+.chart {
+    pointer-events: none;
+}
+
 .wrapper {
     display: flex;
     align-items: center;
+    margin-top: 1rem;
 
     @media @mobile {
         flex-direction: column;
     }
 }
 
+.disable {
+    .transition('transform, color');
+    margin-left: 0.25rem;
+    will-change: transform;
+    color: var(--tui-text-02);
+    pointer-events: auto;
+
+    &:hover {
+        color: var(--tui-text-01);
+    }
+
+    &_rotated {
+        transform: rotate(45deg);
+    }
+}
+
 .legend {
     margin: 0 0 0 2rem;
+    justify-content: center;
 
     @media @mobile {
         margin: 2rem 0 0;

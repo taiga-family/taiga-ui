@@ -6,7 +6,10 @@
     class="t-button"
     [pseudoHovered]="active || null"
 >
-    <span class="t-dot" [style.background]="computedColor"></span>
-    <span class="t-text">{{ text }}</span>
-    <ng-content></ng-content>
+    <div class="t-wrapper">
+        <ng-content select="tui-primitive-checkbox"></ng-content>
+        <span class="t-dot"></span>
+        <span class="t-text">{{ text }}</span>
+        <ng-content></ng-content>
+    </div>
 </button>

@@ -45,6 +45,14 @@
 
 .t-segment {
     .transition(transform);
+
+    :host._empty & {
+        display: none;
+    }
+}
+
+.t-placeholder {
+    fill: var(--tui-base-03);
 }
 
 .t-text {
