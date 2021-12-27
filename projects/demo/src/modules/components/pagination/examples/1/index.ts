@@ -16,6 +16,6 @@ export class TuiPaginationExample1 {
 
     goToPage(index: number) {
         this.index = index;
-        console.log('New page:', index);
+        console.info('New page:', index);
     }
 }

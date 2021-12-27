@@ -14,6 +14,6 @@ export class TuiButtonExample1 {
     readonly avatarUrl = avatar;
 
     onClick(event: MouseEvent) {
-        console.log('click', event);
+        console.info('click', event);
     }
 }

@@ -47,7 +47,7 @@ function checkChangelog() {
 
     readline.setPrompt(`Check\n./CHANGELOG.md\nand save all fixes. Then press enter`);
     readline.prompt();
-    console.log('\n');
+    console.info('\n');
 
     return new Promise(resolve => {
         readline.on('line', userInput => {

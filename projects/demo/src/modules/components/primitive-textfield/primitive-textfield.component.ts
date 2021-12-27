@@ -184,6 +184,6 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     }
 
     onClick() {
-        console.log('Interactive icon clicked');
+        console.info('Interactive icon clicked');
     }
 }
