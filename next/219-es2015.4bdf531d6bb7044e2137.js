@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[219],{ndxp:function(n,i,o){"use strict";o.r(i),i.default="import {TuiAvatarModule} from '@taiga-ui/kit';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiAvatarModule\n    ],\n...\n"}}]);

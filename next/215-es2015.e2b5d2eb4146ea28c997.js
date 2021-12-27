@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[215],{hUUw:function(a,t,n){"use strict";n.r(t),t.default='<tui-avatar class="tui-space_top-1" [avatarUrl]="avatar"></tui-avatar>\n<tui-avatar text="alex inkin" class="tui-space_top-1"></tui-avatar>\n<tui-avatar\n    text="dmitry demensky"\n    size="l"\n    class="tui-space_top-1"\n    [rounded]="true"\n></tui-avatar>\n'}}]);
