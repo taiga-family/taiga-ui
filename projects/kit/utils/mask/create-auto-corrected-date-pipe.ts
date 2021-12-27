@@ -1,7 +1,7 @@
 import {DATE_FILLER_LENGTH, TuiDateMode, TuiDay} from '@taiga-ui/cdk';
 import {TuiTextMaskPipeHandler, TuiWithOptionalMinMaxWithValue} from '@taiga-ui/core';
 
-export interface AutoCorrectedDatePipeConfigs
+export interface TuiAutoCorrectedDatePipeConfigs
     extends TuiWithOptionalMinMaxWithValue<TuiDay | null, TuiDay> {
     dateFormat: TuiDateMode;
     dateSeparator: string;
@@ -9,7 +9,7 @@ export interface AutoCorrectedDatePipeConfigs
 
 export function normalizeDateValue(
     dateValue: string,
-    {value, min, max, dateFormat, dateSeparator}: AutoCorrectedDatePipeConfigs,
+    {value, min, max, dateFormat, dateSeparator}: TuiAutoCorrectedDatePipeConfigs,
 ): string {
     return value && value.toString() === dateValue
         ? dateValue
@@ -19,7 +19,7 @@ export function normalizeDateValue(
 }
 
 export function tuiCreateAutoCorrectedDatePipe(
-    config: AutoCorrectedDatePipeConfigs,
+    config: TuiAutoCorrectedDatePipeConfigs,
 ): TuiTextMaskPipeHandler {
     return value => {
         if (value.length !== DATE_FILLER_LENGTH) {

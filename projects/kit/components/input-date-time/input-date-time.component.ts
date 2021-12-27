@@ -141,7 +141,8 @@ export class TuiInputDateTimeComponent
             this.calendarMinDay,
             this.calendarMaxDay,
             this.timeMode,
-            this.dateFormat,
+            // TODO finish localization in {@link https://github.com/TinkoffCreditSystems/taiga-ui/issues/954 issue}
+            'DMY',
         );
     }
 

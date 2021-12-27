@@ -3,17 +3,17 @@ import {TuiTextMaskPipeHandler} from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
 
 import {
-    AutoCorrectedDatePipeConfigs,
     normalizeDateValue,
+    TuiAutoCorrectedDatePipeConfigs,
 } from './create-auto-corrected-date-pipe';
 import {tuiCreateAutoCorrectedTimePipe} from './create-auto-corrected-time-pipe';
 
-interface AutoCorrectedDateTimePipeConfigs extends AutoCorrectedDatePipeConfigs {
+interface TuiAutoCorrectedDateTimePipeConfigs extends TuiAutoCorrectedDatePipeConfigs {
     timeMode: TuiTimeMode;
 }
 
 export function tuiCreateAutoCorrectedDateTimePipe(
-    configs: AutoCorrectedDateTimePipeConfigs,
+    configs: TuiAutoCorrectedDateTimePipeConfigs,
 ): TuiTextMaskPipeHandler {
     const timePipe = tuiCreateAutoCorrectedTimePipe(configs.timeMode);
 
