@@ -4,6 +4,6 @@
         "rootDir": ".",
         "baseUrl": "."
     },
-    "include": ["projects", "scripts"],
-    "exclude": ["**/node_modules", "**/.*/", "*.js"]
+    "include": ["projects", "scripts", "**/*.js"],
+    "exclude": ["**/node_modules", "**/.*/"]
 }
