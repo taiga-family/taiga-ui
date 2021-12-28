@@ -469,19 +469,27 @@ describe('TuiDay', () => {
 
             describe('formattedDay returns', () => {
                 it("'01.01.2000' for TuiMonth {year: 2000, month: 0, day: 1}", () => {
-                    expect(new TuiDay(2000, 0, 1).formattedDay).toBe('01.01.2000');
+                    expect(new TuiDay(2000, 0, 1).getFormattedDay('DMY', '.')).toBe(
+                        '01.01.2000',
+                    );
                 });
 
                 it("'05.01.2000' for TuiMonth {year: 2000, month: 0, day: 5}", () => {
-                    expect(new TuiDay(2000, 0, 5).formattedDay).toBe('05.01.2000');
+                    expect(new TuiDay(2000, 0, 5).getFormattedDay('DMY', '.')).toBe(
+                        '05.01.2000',
+                    );
                 });
 
                 it("'10.01.0000' for TuiMonth {year: 0, month: 0, day: 10}", () => {
-                    expect(new TuiDay(0, 0, 10).formattedDay).toBe('10.01.0000');
+                    expect(new TuiDay(0, 0, 10).getFormattedDay('DMY', '.')).toBe(
+                        '10.01.0000',
+                    );
                 });
 
                 it("'12.01.1995' for TuiMonth {year: 1995, month: 0, day: 12}", () => {
-                    expect(new TuiDay(1995, 0, 12).formattedDay).toBe('12.01.1995');
+                    expect(new TuiDay(1995, 0, 12).getFormattedDay('DMY', '.')).toBe(
+                        '12.01.1995',
+                    );
                 });
             });
         });
