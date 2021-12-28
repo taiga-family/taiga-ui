@@ -1,6 +1,7 @@
 import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE, tuiAssert, TuiDateMode} from '@taiga-ui/cdk';
 import {TuiTextMaskList} from '@taiga-ui/core';
-import {tuiCreateDateMask} from '@taiga-ui/kit/utils';
+
+import {tuiCreateDateMask} from './create-date-mask';
 
 export function tuiCreateDateRangeMask(
     dateMode: TuiDateMode,
