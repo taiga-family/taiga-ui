@@ -6,8 +6,11 @@ import {RANGE_SEPARATOR_CHAR} from './date-time';
 import {TuiDay} from './day';
 import {TuiMonthRange} from './month-range';
 
-// Temporary type guard to satisfy ts-overloading of normalizeParse method (TODO rm in v3.0)
-const isDateMode = (dateMode: string): dateMode is TuiDateMode =>
+/**
+ * Temporary type guard to satisfy ts-overloading of normalizeParse method
+ * @deprecated TODO rm in v3.0
+ */
+export const isDateMode = (dateMode: string): dateMode is TuiDateMode =>
     ['DMY', 'YMD', 'MDY'].includes(dateMode);
 
 /**
