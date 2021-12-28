@@ -42,8 +42,7 @@
                         "command": "npm publish dist/addon-charts"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "addon-commerce": {
             "root": "projects/addon-commerce",
@@ -84,8 +83,7 @@
                         "command": "npm publish dist/addon-commerce"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "addon-doc": {
             "root": "projects/addon-doc",
@@ -126,8 +124,7 @@
                         "command": "npm publish dist/addon-doc"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "addon-editor": {
             "root": "projects/addon-editor",
@@ -175,8 +172,7 @@
                         "command": "npm publish dist/addon-editor"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "addon-mobile": {
             "root": "projects/addon-mobile",
@@ -217,8 +213,7 @@
                         "command": "npm publish dist/addon-mobile"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "addon-preview": {
             "root": "projects/addon-preview",
@@ -258,8 +253,7 @@
                         "command": "npm publish dist/addon-preview"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "addon-table": {
             "root": "projects/addon-table",
@@ -300,8 +294,7 @@
                         "command": "npm publish dist/addon-table"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "addon-tablebars": {
             "root": "projects/addon-tablebars",
@@ -342,8 +335,7 @@
                         "command": "npm publish dist/addon-tablebars"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "cdk": {
             "root": "projects/cdk",
@@ -381,8 +373,7 @@
                         "command": "npm publish dist/cdk"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "core": {
             "root": "projects/core",
@@ -420,8 +411,7 @@
                         "command": "npm publish dist/core"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "demo": {
             "root": "projects/demo/",
@@ -661,8 +651,7 @@
                         "browserTarget": "demo:build"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "i18n": {
             "root": "projects/i18n",
@@ -690,8 +679,7 @@
                         "command": "npm publish dist/i18n"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "icons": {
             "root": "projects/icons",
@@ -725,8 +713,7 @@
                         "command": "npm publish dist/icons"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "kit": {
             "root": "projects/kit",
@@ -767,8 +754,7 @@
                         "command": "npm publish dist/kit"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "taiga-schematics": {
             "root": "projects/taiga-schematics",
@@ -829,16 +815,14 @@
                         "command": "npm publish dist/taiga-schematics"
                     }
                 }
-            },
-            "implicitDependencies": []
+            }
         },
         "testing": {
             "root": "projects/testing",
             "sourceRoot": "projects/testing/src",
             "projectType": "library",
             "prefix": "tui",
-            "architect": {},
-            "implicitDependencies": []
+            "architect": {}
         }
     }
 }
