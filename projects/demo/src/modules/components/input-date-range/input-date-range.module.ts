@@ -15,6 +15,7 @@ import {TuiInputDateRangeModule, TuiUnfinishedValidatorModule} from '@taiga-ui/k
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputDateRangeExample1} from './examples/1/component';
 import {TuiInputDateRangeExample2} from './examples/2/component';
+import {TuiInputDateRangeExample3} from './examples/3';
 import {ExampleTuiInputDateRangeComponent} from './input-date-range.component';
 
 @NgModule({
@@ -36,6 +37,7 @@ import {ExampleTuiInputDateRangeComponent} from './input-date-range.component';
         ExampleTuiInputDateRangeComponent,
         TuiInputDateRangeExample1,
         TuiInputDateRangeExample2,
+        TuiInputDateRangeExample3,
     ],
     exports: [ExampleTuiInputDateRangeComponent],
 })
