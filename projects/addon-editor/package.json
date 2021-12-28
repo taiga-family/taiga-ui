@@ -1,8 +1,15 @@
 {
     "name": "@taiga-ui/addon-editor",
-    "version": "2.28.0",
+    "version": "2.29.0",
     "description": "Rich text editor extension package for Taiga UI",
-    "keywords": ["angular", "component", "wysiwyg", "rich", "text", "editor"],
+    "keywords": [
+        "angular",
+        "component",
+        "wysiwyg",
+        "rich",
+        "text",
+        "editor"
+    ],
     "license": "Apache-2.0",
     "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
@@ -12,15 +19,15 @@
         "@angular/forms": ">=9.0.0",
         "@angular/platform-browser": ">=9.0.0",
         "@ng-web-apis/common": "1.12.1",
-        "@taiga-ui/cdk": "2.28.0",
-        "@taiga-ui/core": "2.28.0",
-        "@taiga-ui/i18n": "2.28.0",
-        "@taiga-ui/kit": "2.28.0",
+        "@taiga-ui/cdk": "2.29.0",
+        "@taiga-ui/core": "2.29.0",
+        "@taiga-ui/i18n": "2.29.0",
+        "@taiga-ui/kit": "2.29.0",
         "rxjs": ">=6.0.0"
     },
     "devDependencies": {
-        "@taiga-ui/core": "2.28.0",
-        "@taiga-ui/kit": "2.28.0"
+        "@taiga-ui/core": "2.29.0",
+        "@taiga-ui/kit": "2.29.0"
     },
     "dependencies": {
         "@tiptap/core": "^2.0.0-beta.151",

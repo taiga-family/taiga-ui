@@ -1,8 +1,14 @@
 {
     "name": "@taiga-ui/kit",
-    "version": "2.28.0",
+    "version": "2.29.0",
     "description": "Taiga UI Angular main components kit",
-    "keywords": ["angular", "kit", "component", "service", "directive"],
+    "keywords": [
+        "angular",
+        "kit",
+        "component",
+        "service",
+        "directive"
+    ],
     "license": "Apache-2.0",
     "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
@@ -14,9 +20,9 @@
         "@ng-web-apis/common": "1.12.1",
         "@ng-web-apis/mutation-observer": "1.1.0",
         "@tinkoff/ng-polymorpheus": "3.1.12",
-        "@taiga-ui/cdk": "2.28.0",
-        "@taiga-ui/core": "2.28.0",
-        "@taiga-ui/i18n": "2.28.0",
+        "@taiga-ui/cdk": "2.29.0",
+        "@taiga-ui/core": "2.29.0",
+        "@taiga-ui/i18n": "2.29.0",
         "rxjs": ">=6.0.0"
     },
     "dependencies": {
@@ -24,6 +30,6 @@
         "@ng-web-apis/intersection-observer": "2.0.1"
     },
     "devDependencies": {
-        "@taiga-ui/core": "2.28.0"
+        "@taiga-ui/core": "2.29.0"
     }
 }
