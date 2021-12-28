@@ -1,9 +1,17 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
+import {TuiDateMode} from '@taiga-ui/cdk/types';
 
 import {DATE_FILLER_LENGTH, DATE_RANGE_FILLER_LENGTH} from './date-fillers';
 import {RANGE_SEPARATOR_CHAR} from './date-time';
 import {TuiDay} from './day';
 import {TuiMonthRange} from './month-range';
+
+/**
+ * Temporary type guard to satisfy ts-overloading of normalizeParse method
+ * @deprecated TODO rm in v3.0
+ */
+export const isDateMode = (dateMode: string): dateMode is TuiDateMode =>
+    ['DMY', 'YMD', 'MDY'].includes(dateMode);
 
 /**
  * An immutable range of two {@link TuiDay} objects
@@ -37,16 +45,25 @@ export class TuiDayRange extends TuiMonthRange {
         dateFiller: string,
         dateRangeFiller: string,
     ): TuiDayRange;
-    static normalizeParse(rangeString: string): TuiDayRange;
+    static normalizeParse(rangeString: string, dateMode?: TuiDateMode): TuiDayRange;
 
     /**
      * Parse and correct a day range in string format
      *
      * @param rangeString a string of dates in a format dd.mm.yyyy - dd.mm.yyyy
+     * @param dateMode {@link TuiDateMode}
      * @return normalized day range object
      */
-    static normalizeParse(rangeString: string): TuiDayRange {
-        const leftDay = TuiDay.normalizeParse(rangeString.slice(0, DATE_FILLER_LENGTH));
+    static normalizeParse(
+        rangeString: string,
+        dateMode: string | TuiDateMode = 'DMY',
+    ): TuiDayRange {
+        const dateFormat = isDateMode(dateMode) ? dateMode : 'DMY';
+
+        const leftDay = TuiDay.normalizeParse(
+            rangeString.slice(0, DATE_FILLER_LENGTH),
+            dateFormat,
+        );
 
         if (rangeString.length < DATE_RANGE_FILLER_LENGTH) {
             return new TuiDayRange(leftDay, leftDay);
@@ -56,6 +73,7 @@ export class TuiDayRange extends TuiMonthRange {
             leftDay,
             TuiDay.normalizeParse(
                 rangeString.slice(DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length),
+                dateFormat,
             ),
         );
     }
@@ -66,9 +84,13 @@ export class TuiDayRange extends TuiMonthRange {
 
     /**
      * Human readable format.
+     * @deprecated use {@link getFormattedDayRange} instead
      */
     get formattedDayRange(): string {
-        return `${this.from.formattedDay}${RANGE_SEPARATOR_CHAR}${this.to.formattedDay}`;
+        const from = this.from.getFormattedDay('DMY', '.');
+        const to = this.to.getFormattedDay('DMY', '.');
+
+        return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
     }
 
     /**
@@ -90,5 +112,22 @@ export class TuiDayRange extends TuiMonthRange {
      */
     dayLimit(min: TuiDay | null, max: TuiDay | null): TuiDayRange {
         return new TuiDayRange(this.from.dayLimit(min, max), this.to.dayLimit(min, max));
+    }
+
+    /**
+     * Human readable format.
+     */
+    getFormattedDayRange(dateFormat: TuiDateMode, dateSeparator: string): string {
+        const from = this.from.getFormattedDay(dateFormat, dateSeparator);
+        const to = this.to.getFormattedDay(dateFormat, dateSeparator);
+
+        return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
+    }
+
+    toString(dateFormat: TuiDateMode = 'DMY', dateSeparator: string = '.'): string {
+        const from = this.from.getFormattedDay(dateFormat, dateSeparator);
+        const to = this.to.getFormattedDay(dateFormat, dateSeparator);
+
+        return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
     }
 }

@@ -763,7 +763,6 @@
             "architect": {
                 "prebuild": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
-                    "outputs": ["dist/taiga-schematics"],
                     "options": {
                         "tsConfig": "projects/taiga-schematics/tsconfig.lib.json",
                         "project": "projects/taiga-schematics/ng-package.json"
@@ -771,6 +770,7 @@
                 },
                 "build": {
                     "builder": "@nrwl/workspace:run-commands",
+                    "outputs": ["dist/taiga-schematics"],
                     "options": {
                         "parallel": false,
                         "commands": ["nx prebuild taiga-schematics", "nx postbuild taiga-schematics"]

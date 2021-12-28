@@ -21,6 +21,7 @@ import {
     RANGE_SEPARATOR_CHAR,
     setNativeFocused,
     TUI_DATE_FORMAT,
+    TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
@@ -49,18 +50,17 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
-import {
-    EMPTY_MASK,
-    MAX_DAY_RANGE_LENGTH_MAPPER,
-    TUI_DATE_RANGE_MASK,
-} from '@taiga-ui/kit/constants';
+import {EMPTY_MASK, MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_TEXTS,
     TUI_MOBILE_CALENDAR,
 } from '@taiga-ui/kit/tokens';
-import {tuiCreateAutoCorrectedDateRangePipe} from '@taiga-ui/kit/utils/mask';
+import {
+    tuiCreateAutoCorrectedDateRangePipe,
+    tuiCreateDateRangeMask,
+} from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -94,7 +94,7 @@ export class TuiInputDateRangeComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: TUI_DATE_RANGE_MASK,
+        mask: tuiCreateDateRangeMask(this.dateFormat, this.dateSeparator),
         pipe: tuiCreateAutoCorrectedDateRangePipe(this),
         guide: false,
     };
@@ -153,6 +153,7 @@ export class TuiInputDateRangeComponent
         @Inject(TUI_TEXTFIELD_EXAMPLE_TEXT)
         private readonly textfieldExampleText: TuiTextfieldExampleTextDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
+        @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
@@ -210,7 +211,9 @@ export class TuiInputDateRangeComponent
             return String(activePeriod);
         }
 
-        return value ? value.formattedDayRange : nativeValue;
+        return value
+            ? value.getFormattedDayRange(this.dateFormat, this.dateSeparator)
+            : nativeValue;
     }
 
     get innerPseudoFocused(): boolean | null {
@@ -304,7 +307,7 @@ export class TuiInputDateRangeComponent
             return;
         }
 
-        const parsedValue = TuiDayRange.normalizeParse(value);
+        const parsedValue = TuiDayRange.normalizeParse(value, this.dateFormat);
 
         this.updateValue(
             !this.minLength && !this.maxLength
@@ -360,7 +363,9 @@ export class TuiInputDateRangeComponent
                 this.nativeValue.length ===
                     DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length)
         ) {
-            this.updateValue(TuiDayRange.normalizeParse(this.nativeValue));
+            this.updateValue(
+                TuiDayRange.normalizeParse(this.nativeValue, this.dateFormat),
+            );
         }
     }
 

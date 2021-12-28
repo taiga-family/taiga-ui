@@ -16,6 +16,8 @@ function wrapper(
             min,
             max,
             value,
+            dateFormat: 'DMY',
+            dateSeparator: '.',
         })(rawString, DUMMY) as TuiTextMaskPipeResult
     ).value;
 }
