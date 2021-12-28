@@ -146,7 +146,7 @@ describe('InputDateRangeComponent', () => {
         it('When entering two dates, the control value is updated', () => {
             inputPO.sendText(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
 
-            expect(testComponent.control.value.formattedDayRange).toBe(
+            expect(testComponent.control.value.getFormattedDayRange('DMY', '.')).toBe(
                 `15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`,
             );
         });
@@ -157,7 +157,7 @@ describe('InputDateRangeComponent', () => {
             fixture.detectChanges();
             inputPO.sendText(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
 
-            expect(testComponent.control.value.formattedDayRange).toBe(
+            expect(testComponent.control.value.getFormattedDayRange('DMY', '.')).toBe(
                 `15.07.2001${RANGE_SEPARATOR_CHAR}15.07.2019`,
             );
         });

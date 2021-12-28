@@ -11,7 +11,7 @@ export function normalizeDateValue(
     dateValue: string,
     {value, min, max, dateFormat, dateSeparator}: TuiAutoCorrectedDatePipeConfigs,
 ): string {
-    return value && value.toString() === dateValue
+    return value && value.toString(dateFormat, dateSeparator) === dateValue
         ? dateValue
         : TuiDay.normalizeParse(dateValue, dateFormat)
               .dayLimit(min, max)
