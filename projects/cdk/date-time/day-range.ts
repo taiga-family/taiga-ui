@@ -6,6 +6,10 @@ import {RANGE_SEPARATOR_CHAR} from './date-time';
 import {TuiDay} from './day';
 import {TuiMonthRange} from './month-range';
 
+// Temporary type guard to satisfy ts-overloading of normalizeParse method (TODO rm in v3.0)
+const isDateMode = (dateMode: string): dateMode is TuiDateMode =>
+    ['DMY', 'YMD', 'MDY'].includes(dateMode);
+
 /**
  * An immutable range of two {@link TuiDay} objects
  */
@@ -51,9 +55,6 @@ export class TuiDayRange extends TuiMonthRange {
         rangeString: string,
         dateMode: string | TuiDateMode = 'DMY',
     ): TuiDayRange {
-        // Temporary type guard to satisfy ts-overloading of this method (TODO rm in v3.0)
-        const isDateMode = (dateMode: string): dateMode is TuiDateMode =>
-            ['DMY', 'YMD', 'MDY'].includes(dateMode);
         const dateFormat = isDateMode(dateMode) ? dateMode : 'DMY';
 
         const leftDay = TuiDay.normalizeParse(
