@@ -2,7 +2,14 @@ import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiTime} from '@taiga-ui/cdk';
+import {
+    TUI_DATE_FORMAT,
+    TUI_DATE_SEPARATOR,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TuiDay,
+    TuiTime,
+} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 import {
     TuiInputDateTimeComponent,
@@ -32,45 +39,49 @@ class TestComponent {
     max: TuiDay | [TuiDay, TuiTime] = TUI_LAST_DAY;
 }
 
+let fixture: ComponentFixture<TestComponent>;
+let component: TestComponent;
+let inputPO: NativeInputPO;
+let pageObject: PageObject<TestComponent>;
+const testContext = {
+    get prefix() {
+        return 'tui-input-date-time__';
+    },
+    get calendarCellAutomationId() {
+        return 'tui-primitive-calendar__cell';
+    },
+    get nativeInputAutomationId() {
+        return 'tui-primitive-textfield__native-input';
+    },
+};
+
+const DEFAULT_TESTING_MODULE_META = {
+    imports: [
+        TuiRootModule,
+        ReactiveFormsModule,
+        NoopAnimationsModule,
+        TuiInputDateTimeModule,
+    ],
+    declarations: [TestComponent],
+};
+
+const initializeEnvironment = async () => {
+    fixture = TestBed.createComponent(TestComponent);
+    component = fixture.componentInstance;
+    pageObject = new PageObject(fixture);
+    inputPO = new NativeInputPO(fixture, testContext.nativeInputAutomationId);
+
+    fixture.detectChanges();
+    await fixture.whenStable();
+};
+
 describe('InputDateTime', () => {
     configureTestSuite(() => {
-        TestBed.configureTestingModule({
-            imports: [
-                TuiRootModule,
-                ReactiveFormsModule,
-                NoopAnimationsModule,
-                TuiInputDateTimeModule,
-            ],
-            declarations: [TestComponent],
-        });
+        TestBed.configureTestingModule(DEFAULT_TESTING_MODULE_META);
     });
 
-    let fixture: ComponentFixture<TestComponent>;
-    let component: TestComponent;
-    let inputPO: NativeInputPO;
-    let pageObject: PageObject<TestComponent>;
-    const testContext = {
-        get prefix() {
-            return 'tui-input-date-time__';
-        },
-        get calendarCellAutomationId() {
-            return 'tui-primitive-calendar__cell';
-        },
-        get nativeInputAutomationId() {
-            return 'tui-primitive-textfield__native-input';
-        },
-    };
-
-    beforeEach(done => {
-        fixture = TestBed.createComponent(TestComponent);
-        component = fixture.componentInstance;
-        pageObject = new PageObject(fixture);
-        inputPO = new NativeInputPO(fixture, testContext.nativeInputAutomationId);
-
-        fixture.whenStable().then(() => {
-            fixture.detectChanges();
-            done();
-        });
+    beforeEach(async () => {
+        await initializeEnvironment();
     });
 
     it('displays initial value', done => {
@@ -310,32 +321,140 @@ describe('InputDateTime', () => {
         fixture.detectChanges();
         expect(component.dateTimeComponent.open).toEqual(true);
     });
-
-    function clickOnCellInsideCalendar(dayNumber: number): void {
-        const cells = pageObject.getAllByAutomationId(
-            testContext.calendarCellAutomationId,
-        );
-        const cell = cells.find(
-            debugEl => debugEl.nativeElement.textContent.trim() === `${dayNumber}`,
-        );
-
-        cell?.nativeElement.click();
-        fixture.detectChanges();
-    }
-
-    function mouseDownOnTextfield() {
-        getTextfield()!.nativeElement.dispatchEvent(
-            new MouseEvent('mousedown', {bubbles: true}),
-        );
-        getTextfield()!.nativeElement.click();
-        fixture.detectChanges();
-    }
-
-    function getTextfield(): DebugElement | null {
-        return pageObject.getByAutomationId(`${testContext.prefix}textfield`);
-    }
-
-    function getCalendar(): DebugElement | null {
-        return pageObject.getByAutomationId(`${testContext.prefix}calendar`);
-    }
 });
+
+describe('InputDateTime + TUI_DATE_FORMAT="DMY" + TUI_DATE_SEPARATOR="/"', () => {
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            ...DEFAULT_TESTING_MODULE_META,
+            providers: [
+                {provide: TUI_DATE_FORMAT, useValue: 'MDY'},
+                {provide: TUI_DATE_SEPARATOR, useValue: '/'},
+            ],
+        });
+    });
+
+    beforeEach(async () => {
+        await initializeEnvironment();
+    });
+
+    it('displays correctly initial value', () => {
+        expect(inputPO.value).toBe('07/12/2021');
+    });
+
+    it('corrects date if month more than 12', () => {
+        inputPO.sendTextAndBlur('151420071830');
+        expect(inputPO.value).toBe('12/14/2007, 18:30');
+    });
+
+    it('corrects date if day more than 31', () => {
+        inputPO.sendTextAndBlur('153320071642');
+        expect(inputPO.value).toBe('12/31/2007, 16:42');
+    });
+
+    it('does not accept another separator', () => {
+        inputPO.sendTextAndBlur('05.27.2002, 12:11');
+        expect(inputPO.value).toBe('05/27/2002, 12:11');
+    });
+
+    it('keeps typed time if new date selected via calendar', async () => {
+        inputPO.sendTextAndBlur('041520102018');
+        expect(inputPO.value).toBe('04/15/2010, 20:18');
+
+        mouseDownOnTextfield();
+        expect(getCalendar()).not.toBeNull();
+
+        const calendarCell = getCalendarCell(9);
+
+        calendarCell?.nativeElement.click();
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('04/09/2010, 20:18');
+    });
+});
+
+describe('InputDateTime + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"', () => {
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            ...DEFAULT_TESTING_MODULE_META,
+            providers: [
+                {provide: TUI_DATE_FORMAT, useValue: 'YMD'},
+                {provide: TUI_DATE_SEPARATOR, useValue: '-'},
+            ],
+        });
+    });
+
+    beforeEach(async () => {
+        await initializeEnvironment();
+    });
+
+    it('displays correctly initial value', () => {
+        expect(inputPO.value).toBe('2021-07-12');
+    });
+
+    it('corrects date if month more than 12', () => {
+        inputPO.sendTextAndBlur('200715141830');
+        expect(inputPO.value).toBe('2007-12-14, 18:30');
+    });
+
+    it('corrects date if day more than 31', () => {
+        inputPO.sendTextAndBlur('200715331642');
+        expect(inputPO.value).toBe('2007-12-31, 16:42');
+    });
+
+    it('does not accept another separator', () => {
+        inputPO.sendTextAndBlur('2002.05.27, 12:11');
+        expect(inputPO.value).toBe('2002-05-27, 12:11');
+    });
+
+    it('keeps typed time if new date selected via calendar', async () => {
+        inputPO.sendTextAndBlur('201004152018');
+        expect(inputPO.value).toBe('2010-04-15, 20:18');
+
+        mouseDownOnTextfield();
+        expect(getCalendar()).not.toBeNull();
+
+        const calendarCell = getCalendarCell(9);
+
+        calendarCell?.nativeElement.click();
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('2010-04-09, 20:18');
+    });
+});
+
+function clickOnCellInsideCalendar(dayNumber: number): void {
+    const cells = pageObject.getAllByAutomationId(testContext.calendarCellAutomationId);
+    const cell = cells.find(
+        debugEl => debugEl.nativeElement.textContent.trim() === `${dayNumber}`,
+    );
+
+    cell?.nativeElement.click();
+    fixture.detectChanges();
+}
+
+function mouseDownOnTextfield() {
+    getTextfield()!.nativeElement.dispatchEvent(
+        new MouseEvent('mousedown', {bubbles: true}),
+    );
+    getTextfield()!.nativeElement.click();
+    fixture.detectChanges();
+}
+
+function getTextfield(): DebugElement | null {
+    return pageObject.getByAutomationId(`${testContext.prefix}textfield`);
+}
+
+function getCalendar(): DebugElement | null {
+    return pageObject.getByAutomationId(`${testContext.prefix}calendar`);
+}
+
+function getCalendarCell(dayNumber: number): DebugElement | null {
+    return (
+        pageObject
+            .getAllByAutomationId(testContext.calendarCellAutomationId)
+            .find(el => +el.nativeElement.innerText.trim() === dayNumber) || null
+    );
+}

@@ -18,6 +18,7 @@ import {
     DATE_FILLER_LENGTH,
     nullableSame,
     TUI_DATE_FORMAT,
+    TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
@@ -123,6 +124,7 @@ export class TuiInputDateTimeComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
+        @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_TIME_TEXTS)
         readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
         @Inject(TUI_DATE_TEXTS)
@@ -141,9 +143,8 @@ export class TuiInputDateTimeComponent
             this.calendarMinDay,
             this.calendarMaxDay,
             this.timeMode,
-            // TODO finish localization in {@link https://github.com/tinkoff/taiga-ui/issues/954 issue}
-            'DMY',
-            '.',
+            this.dateFormat,
+            this.dateSeparator,
         );
     }
 
@@ -223,7 +224,7 @@ export class TuiInputDateTimeComponent
 
         const [date, time] = value.split(DATE_TIME_SEPARATOR);
 
-        const parsedDate = TuiDay.normalizeParse(date);
+        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat);
         const parsedTime =
             time && time.length === this.timeMode.length
                 ? this.clampTime(TuiTime.fromString(time), parsedDate)
@@ -346,7 +347,10 @@ export class TuiInputDateTimeComponent
         time: TuiTime | string | null,
         timeMode: TuiTimeMode = 'HH:MM',
     ): string {
-        const dateString = date instanceof TuiDay ? date.toString() : date;
+        const dateString =
+            date instanceof TuiDay
+                ? date.toString(this.dateFormat, this.dateSeparator)
+                : date;
         const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
 
         return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;

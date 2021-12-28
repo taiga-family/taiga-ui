@@ -9,6 +9,7 @@ import {TuiInputDateTimeModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputDateTimeExample1} from './examples/1';
 import {TuiInputDateTimeExample2} from './examples/2';
+import {TuiInputDateTimeExample3} from './examples/3';
 import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
 
 @NgModule({
@@ -27,6 +28,7 @@ import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
         ExampleTuiInputDateTimeComponent,
         TuiInputDateTimeExample1,
         TuiInputDateTimeExample2,
+        TuiInputDateTimeExample3,
     ],
     exports: [ExampleTuiInputDateTimeComponent],
 })
