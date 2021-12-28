@@ -50,8 +50,8 @@
     "license": "Apache-2.0",
     "authors": ["Alex Inkin <alexander@inkin.ru>", "Roman Sedov <79601794011@ya.ru>"],
     "maintainers": ["Alex Inkin <alexander@inkin.ru>", "Roman Sedov <79601794011@ya.ru>"],
-    "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
-    "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "homepage": "https://github.com/tinkoff/taiga-ui",
     "dependencies": {
         "@angular/animations": "~9.1.12",
         "@angular/cdk": "~9.2.4",

@@ -4,8 +4,8 @@
     "description": "Extension package for Taiga UI related to commerce, payment systems, currencies etc.",
     "keywords": ["angular", "component", "kit", "commerce", "card", "payment"],
     "license": "Apache-2.0",
-    "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
-    "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "homepage": "https://github.com/tinkoff/taiga-ui",
     "peerDependencies": {
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",

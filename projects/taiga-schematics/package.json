@@ -5,8 +5,8 @@
     "keywords": ["angular", "kit", "ui", "component-library", "component", "service", "directive"],
     "schematics": "./collection.json",
     "license": "Apache-2.0",
-    "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
-    "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "homepage": "https://github.com/tinkoff/taiga-ui",
     "dependencies": {
         "@angular-devkit/schematics": "^9.1.12",
         "ng-morph": "2.0.0"
