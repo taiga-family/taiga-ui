@@ -1,28 +1,38 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ## [2.29.0](https://github.com/tinkoff/taiga-ui/compare/v2.28.0...v2.29.0) (2021-12-28)
 
-
 ### Features
 
-* **addon-doc:** `LegendItem` add checkbox support ([#1145](https://github.com/tinkoff/taiga-ui/issues/1145)) ([140391b](https://github.com/tinkoff/taiga-ui/commit/140391bf3f3c517f461dff4276d3795bd9b84ef4))
-* **addon-doc:** `PieChart`/`RingChart` add animations ([#1133](https://github.com/tinkoff/taiga-ui/issues/1133)) ([1803970](https://github.com/tinkoff/taiga-ui/commit/1803970cd0cc6b8e3da86816d64cf82afbe0ed35))
-* **cdk:** use ReplaySubject for TuiDestroyService ([1c00e78](https://github.com/tinkoff/taiga-ui/commit/1c00e78468d3518d83bfa464846ddd3226c1e4f9))
-* **cdk:** use ReplaySubject for TuiDestroyService ([4745af4](https://github.com/tinkoff/taiga-ui/commit/4745af49f41e239368a2aa17495a0a49b64b8500))
-* **kit:** `InputDate` add full support of `TUI_DATE_FORMAT` ([#1146](https://github.com/tinkoff/taiga-ui/issues/1146)) ([52d6472](https://github.com/tinkoff/taiga-ui/commit/52d647257b71409a407e8c00cec85cfc93c64970))
-* **kit:** `InputDateRange` add full support of `TUI_DATE_FORMAT` ([#1155](https://github.com/tinkoff/taiga-ui/issues/1155)) ([f6c8d08](https://github.com/tinkoff/taiga-ui/commit/f6c8d080139bba3d55d8608311b9aca594aca4de))
-* **kit:** `InputDateTime` add full support of `TUI_DATE_FORMAT` ([#1154](https://github.com/tinkoff/taiga-ui/issues/1154)) ([6ea8dd2](https://github.com/tinkoff/taiga-ui/commit/6ea8dd2e122a9083aec133d1c0c37c90ddb4d0f9))
-
+- **addon-doc:** `LegendItem` add checkbox support ([#1145](https://github.com/tinkoff/taiga-ui/issues/1145))
+  ([140391b](https://github.com/tinkoff/taiga-ui/commit/140391bf3f3c517f461dff4276d3795bd9b84ef4))
+- **addon-doc:** `PieChart`/`RingChart` add animations ([#1133](https://github.com/tinkoff/taiga-ui/issues/1133))
+  ([1803970](https://github.com/tinkoff/taiga-ui/commit/1803970cd0cc6b8e3da86816d64cf82afbe0ed35))
+- **cdk:** use ReplaySubject for TuiDestroyService
+  ([1c00e78](https://github.com/tinkoff/taiga-ui/commit/1c00e78468d3518d83bfa464846ddd3226c1e4f9))
+- **kit:** `InputDate` add full support of `TUI_DATE_FORMAT` ([#1146](https://github.com/tinkoff/taiga-ui/issues/1146))
+  ([52d6472](https://github.com/tinkoff/taiga-ui/commit/52d647257b71409a407e8c00cec85cfc93c64970))
+- **kit:** `InputDateRange` add full support of `TUI_DATE_FORMAT`
+  ([#1155](https://github.com/tinkoff/taiga-ui/issues/1155))
+  ([f6c8d08](https://github.com/tinkoff/taiga-ui/commit/f6c8d080139bba3d55d8608311b9aca594aca4de))
+- **kit:** `InputDateTime` add full support of `TUI_DATE_FORMAT`
+  ([#1154](https://github.com/tinkoff/taiga-ui/issues/1154))
+  ([6ea8dd2](https://github.com/tinkoff/taiga-ui/commit/6ea8dd2e122a9083aec133d1c0c37c90ddb4d0f9))
 
 ### Bug Fixes
 
-* **addon-doc:** fix vertical scrollbar height for root content ([#1148](https://github.com/tinkoff/taiga-ui/issues/1148)) ([128295a](https://github.com/tinkoff/taiga-ui/commit/128295a340c60f4181cd9f6abd3666cd8516cf49))
-* **i18n:** update countries ([#1147](https://github.com/tinkoff/taiga-ui/issues/1147)) ([eb7829f](https://github.com/tinkoff/taiga-ui/commit/eb7829feb5c39b5b0236f59593567cf0b4fa145f))
-* **kit:** `InputInline` fix hiding first charcter in safari ([#1138](https://github.com/tinkoff/taiga-ui/issues/1138)) ([03cfda9](https://github.com/tinkoff/taiga-ui/commit/03cfda9a6a963c9de54b8375ac7f344628b1941d))
-* **kit:** overflow content in select ([79cee45](https://github.com/tinkoff/taiga-ui/commit/79cee454c81e57bdbcefd54c9fe8a0684f3379bf))
-* **kit:** overflow content in select ([2b4a5dd](https://github.com/tinkoff/taiga-ui/commit/2b4a5dd02712ffd34b456c1230f1d2c44629ffa2))
+- **addon-doc:** fix vertical scrollbar height for root content
+  ([#1148](https://github.com/tinkoff/taiga-ui/issues/1148))
+  ([128295a](https://github.com/tinkoff/taiga-ui/commit/128295a340c60f4181cd9f6abd3666cd8516cf49))
+- **kit:** `InputPhoneInternation` fix countries ([#1147](https://github.com/tinkoff/taiga-ui/issues/1147))
+  ([eb7829f](https://github.com/tinkoff/taiga-ui/commit/eb7829feb5c39b5b0236f59593567cf0b4fa145f))
+- **kit:** `InputInline` fix hiding first charcter in safari ([#1138](https://github.com/tinkoff/taiga-ui/issues/1138))
+  ([03cfda9](https://github.com/tinkoff/taiga-ui/commit/03cfda9a6a963c9de54b8375ac7f344628b1941d))
+- **kit:** overflow content in select
+  ([79cee45](https://github.com/tinkoff/taiga-ui/commit/79cee454c81e57bdbcefd54c9fe8a0684f3379bf))
 
 ## [2.28.0](https://github.com/tinkoff/taiga-ui/compare/v2.27.1...v2.28.0) (2021-12-20)
 
