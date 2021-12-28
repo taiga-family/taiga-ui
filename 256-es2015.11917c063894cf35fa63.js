@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[256],{Ezi6:function(n,o,u){"use strict";u.r(o),o.default='<tui-input-number [tuiCopyProcessor]="processor" [(ngModel)]="value">\n    Copy this\n</tui-input-number>\n'}}]);
