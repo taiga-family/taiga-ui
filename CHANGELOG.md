@@ -29,7 +29,7 @@ All notable changes to this project will be documented in this file. See
   ([128295a](https://github.com/tinkoff/taiga-ui/commit/128295a340c60f4181cd9f6abd3666cd8516cf49))
 - **kit:** `InputPhoneInternation` fix countries ([#1147](https://github.com/tinkoff/taiga-ui/issues/1147))
   ([eb7829f](https://github.com/tinkoff/taiga-ui/commit/eb7829feb5c39b5b0236f59593567cf0b4fa145f))
-- **kit:** `InputInline` fix hiding first charcter in safari ([#1138](https://github.com/tinkoff/taiga-ui/issues/1138))
+- **kit:** `InputInline` fix hiding first character in safari ([#1138](https://github.com/tinkoff/taiga-ui/issues/1138))
   ([03cfda9](https://github.com/tinkoff/taiga-ui/commit/03cfda9a6a963c9de54b8375ac7f344628b1941d))
 - **kit:** overflow content in select
   ([79cee45](https://github.com/tinkoff/taiga-ui/commit/79cee454c81e57bdbcefd54c9fe8a0684f3379bf))
