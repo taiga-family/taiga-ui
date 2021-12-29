@@ -20,7 +20,7 @@ export function rollupSvgo({
     return {
         name: 'rollupSvgo',
         async transform(svgString: string, id: string): Promise<TransformResult> {
-            const skip: boolean = !filter(id);
+            const skip = !filter(id);
 
             if (skip) {
                 console.info('\x1b[33m%s\x1b[0m', '[skip]', id);

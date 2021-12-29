@@ -11,6 +11,7 @@ module.exports = {
     rules: {
         // TODO: move rules to @tinkoff/eslint-config-angular
         '@typescript-eslint/no-useless-constructor': 'off',
+        '@typescript-eslint/no-inferrable-types': ['error', {ignoreParameters: true}],
         '@typescript-eslint/explicit-member-accessibility': [
             'error',
             {accessibility: 'no-public'},
