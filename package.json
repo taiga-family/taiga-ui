@@ -131,6 +131,7 @@
         "@types/node": "^12.11.1",
         "@types/resize-observer-browser": "0.1.5",
         "@types/svgo": "~2.6.0",
+        "@types/markdown-it": "^12.2.3",
         "angular-http-server": "^1.10.0",
         "codelyzer": "^5.1.2",
         "concurrently": "^6.2.0",
@@ -163,7 +164,8 @@
         "svgo": "~2.8.0",
         "ts-loader": "^5.3.3",
         "ts-node": "~7.0.0",
-        "typescript": "~3.8.3"
+        "typescript": "~3.8.3",
+        "markdown-it": "^12.3.0"
     },
     "stylelint": {
         "extends": ["@tinkoff/stylelint-config/less", "@tinkoff/stylelint-config/angular"],
