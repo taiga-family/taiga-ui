@@ -149,6 +149,7 @@ export class TuiHintBoxComponent {
 
         directions.splice(directions.indexOf(direction), 1);
 
+        // eslint-disable-next-line no-constant-condition
         while (true) {
             switch (direction) {
                 case 'left':

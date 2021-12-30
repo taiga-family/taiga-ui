@@ -39,7 +39,7 @@ import {Observable} from 'rxjs';
 
 import {COUNTRIES_MASKS} from './const/countries';
 
-const MASK_AFTER_CODE_REGEXP = /\([\#]+\)|[#\- ]/g;
+const MASK_AFTER_CODE_REGEXP = /\([#]+\)|[#\- ]/g;
 
 // @dynamic
 @Component({

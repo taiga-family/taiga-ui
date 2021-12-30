@@ -64,11 +64,11 @@ export class TuiActiveZoneDirective implements OnDestroy {
     }
 
     ngOnDestroy() {
-        if (!!this.directParentActiveZone) {
+        if (this.directParentActiveZone) {
             this.directParentActiveZone.removeSubActiveZone(this);
         }
 
-        if (!!this.tuiActiveZoneParent) {
+        if (this.tuiActiveZoneParent) {
             this.tuiActiveZoneParent.removeSubActiveZone(this);
         }
     }

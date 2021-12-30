@@ -1,6 +1,11 @@
 module.exports = {
     root: true,
-    extends: ['@tinkoff/eslint-config-angular'],
+    extends: [
+        // TODO: move rules to @tinkoff/eslint-config-angular
+        'eslint:recommended',
+        'plugin:@typescript-eslint/eslint-recommended',
+        '@tinkoff/eslint-config-angular',
+    ],
     ignorePatterns: ['projects/**/test.ts', 'projects/**/icons/all.ts'],
     parserOptions: {
         ecmaVersion: 2020,
@@ -18,5 +23,10 @@ module.exports = {
         ],
         '@typescript-eslint/prefer-readonly': ['error'],
         'no-console': ['error', {allow: ['info', 'assert', 'warn', 'error']}],
+
+        'no-prototype-builtins': 'off',
+        // note you must disable the base rule as it can report incorrect errors
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': ['error', {argsIgnorePattern: '^_'}],
     },
 };

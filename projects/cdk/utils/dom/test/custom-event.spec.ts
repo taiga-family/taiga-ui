@@ -18,6 +18,7 @@ describe('custom event', () => {
     it('IE fallback', () => {
         const savedCE = CustomEvent;
 
+        // eslint-disable-next-line no-global-assign
         CustomEvent = undefined as any;
 
         const event = tuiCustomEvent(
@@ -32,6 +33,7 @@ describe('custom event', () => {
 
         expect(event.type).toEqual('hello');
 
+        // eslint-disable-next-line no-global-assign
         CustomEvent = savedCE;
     });
 });

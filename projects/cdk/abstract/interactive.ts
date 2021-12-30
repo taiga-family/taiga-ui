@@ -94,7 +94,7 @@ export abstract class AbstractTuiInteractive {
     }
 
     get id(): string {
-        return !!this.nativeId ? this.nativeId : this.autoIdString;
+        return this.nativeId ? this.nativeId : this.autoIdString;
     }
 
     protected updateHovered(hovered: boolean) {
