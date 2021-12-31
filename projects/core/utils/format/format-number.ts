@@ -1,5 +1,4 @@
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
-import {toStringWithoutExponent} from '@taiga-ui/core/utils/format/to-string-without-exp';
 
 /**
  * Formats number adding thousand separators and correct decimal separator
@@ -20,7 +19,22 @@ export function formatNumber(
     zeroPadding: boolean = true,
 ): string {
     const integerPartString = Math.floor(Math.abs(value)).toString();
-    const fractionPartString = toStringWithoutExponent(value).split('.')[1] || '';
+
+    const valueAsString = value.toString();
+    const [numberPart, expPart] = valueAsString.split('e-');
+
+    let valueWithoutExp = valueAsString;
+
+    if (expPart) {
+        const fractionalPartLength = numberPart.includes('.')
+            ? numberPart.split('.')[1].length
+            : 0;
+        const decimals = +expPart + fractionalPartLength;
+
+        valueWithoutExp = value.toFixed(decimals);
+    }
+
+    const fractionPartString = valueWithoutExp.split('.')[1] || '';
     let fractionPartPadded = fractionPartString;
 
     if (decimalLimit !== null) {
