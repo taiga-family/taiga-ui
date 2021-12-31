@@ -60,4 +60,8 @@ describe('Number formatting', () => {
     it('add zeros with default behavior', () => {
         expect(formatNumber(12345.6, 2, ',', '.')).toBe('12.345,60');
     });
+
+    it('add zeros with default behavior for value with decimals > 6', () => {
+        expect(formatNumber(1e-10, null, ',', '.')).toBe('0,0000000001');
+    });
 });
