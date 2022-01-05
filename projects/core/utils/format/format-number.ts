@@ -19,7 +19,22 @@ export function formatNumber(
     zeroPadding: boolean = true,
 ): string {
     const integerPartString = Math.floor(Math.abs(value)).toString();
-    const fractionPartString = value.toString().split('.')[1] || '';
+
+    const valueAsString = value.toString();
+    const [numberPart, expPart] = valueAsString.split('e-');
+
+    let valueWithoutExp = valueAsString;
+
+    if (expPart) {
+        const fractionalPartLength = numberPart.includes('.')
+            ? numberPart.split('.')[1].length
+            : 0;
+        const decimals = +expPart + fractionalPartLength;
+
+        valueWithoutExp = value.toFixed(decimals);
+    }
+
+    const fractionPartString = valueWithoutExp.split('.')[1] || '';
     let fractionPartPadded = fractionPartString;
 
     if (decimalLimit !== null) {
