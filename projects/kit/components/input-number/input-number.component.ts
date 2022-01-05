@@ -24,6 +24,7 @@ import {
     maskedMoneyValueIsEmpty,
     maskedNumberStringToNumber,
     NumberFormatSettings,
+    numberToStringWithoutExp,
     TUI_DECIMAL_SYMBOLS,
     TUI_NUMBER_FORMAT,
     tuiCreateAutoCorrectedNumberPipe,
@@ -127,7 +128,7 @@ export class TuiInputNumberComponent
         let limit = this.decimal === 'always' || hasFraction ? this.precision : 0;
 
         const fraction = hasFraction
-            ? value.toString().split('.')[1].substr(0, this.precision)
+            ? numberToStringWithoutExp(value).split('.')[1].substr(0, this.precision)
             : '';
 
         if (this.focused && this.decimal !== 'always') {

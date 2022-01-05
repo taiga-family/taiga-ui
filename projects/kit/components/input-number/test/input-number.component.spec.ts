@@ -271,6 +271,21 @@ describe('InputNumber', () => {
         });
     });
 
+    it(`Formats value with precision > 6 if the element out of focus`, () => {
+        const value = '0,0000000001';
+        const precision = 10;
+
+        component.decimal = 'always';
+        component.precision = precision;
+        inputPO.focus();
+        inputPO.sendText(value);
+        component.onFocused(false);
+
+        fixture.detectChanges();
+
+        expect(component.computedValue).toBe(`0,0000000001`);
+    });
+
     it('maxlength is set to 18 by default', () => {
         const nativeInput = getNativeInput()!.nativeElement;
 

@@ -61,17 +61,7 @@ describe('Number formatting', () => {
         expect(formatNumber(12345.6, 2, ',', '.')).toBe('12.345,60');
     });
 
-    describe('format values with decimals > 6', () => {
-        it('value with exponent and without fractional part', () => {
-            expect(formatNumber(1e-10, 10)).toBe('0,0000000001');
-        });
-
-        it('value with exponent and fractional part', () => {
-            expect(formatNumber(1.23e-8, 10)).toBe('0,0000000123');
-        });
-
-        it('value with exponent and fractional part with decimal bigger than precision', () => {
-            expect(formatNumber(1.23e-8, 12)).toBe('0,000000012300');
-        });
+    it('value with exponent and fractional part with and decimal bigger than precision', () => {
+        expect(formatNumber(1.23e-8, 12)).toBe('0,000000012300');
     });
 });
