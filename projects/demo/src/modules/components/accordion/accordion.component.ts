@@ -58,7 +58,7 @@ export class ExampleTuiAccordionComponent {
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/4/index.html'),
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
         HTML: import('!!raw-loader!./examples/4/index.html'),
         LESS: import('!!raw-loader!./examples/4/index.less'),
     };
