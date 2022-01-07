@@ -21,10 +21,10 @@ import {
 } from '@taiga-ui/cdk';
 import {
     formatNumber,
+    getFractionPartPadded,
     maskedMoneyValueIsEmpty,
     maskedNumberStringToNumber,
     NumberFormatSettings,
-    numberToStringWithoutExp,
     TUI_DECIMAL_SYMBOLS,
     TUI_NUMBER_FORMAT,
     tuiCreateAutoCorrectedNumberPipe,
@@ -127,9 +127,7 @@ export class TuiInputNumberComponent
         const hasFraction = absValue % 1 > 0;
         let limit = this.decimal === 'always' || hasFraction ? this.precision : 0;
 
-        const fraction = hasFraction
-            ? numberToStringWithoutExp(value).split('.')[1].substr(0, this.precision)
-            : '';
+        const fraction = hasFraction ? getFractionPartPadded(value, this.precision) : '';
 
         if (this.focused && this.decimal !== 'always') {
             limit = fraction.length;

@@ -1,6 +1,6 @@
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
-import {numberToStringWithoutExp} from './number-to-string-without-exp';
+import {getFractionPartPadded} from './get-fractional-part-padded';
 
 /**
  * Formats number adding thousand separators and correct decimal separator
@@ -22,17 +22,15 @@ export function formatNumber(
 ): string {
     const integerPartString = Math.floor(Math.abs(value)).toString();
 
-    const fractionPartString = numberToStringWithoutExp(value).split('.')[1] || '';
-    let fractionPartPadded = fractionPartString;
+    let fractionPartPadded = getFractionPartPadded(value, decimalLimit);
 
     if (decimalLimit !== null) {
         const zeroPaddingSize: number = zeroPadding
-            ? Math.max(decimalLimit - fractionPartString.length, 0)
+            ? Math.max(decimalLimit - fractionPartPadded.length, 0)
             : 0;
-        const basePartString = fractionPartString.substr(0, decimalLimit);
         const zeroPartString = '0'.repeat(zeroPaddingSize);
 
-        fractionPartPadded = `${basePartString}${zeroPartString}`;
+        fractionPartPadded = `${fractionPartPadded}${zeroPartString}`;
     }
 
     const remainder = integerPartString.length % 3;

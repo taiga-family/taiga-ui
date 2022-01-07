@@ -271,19 +271,37 @@ describe('InputNumber', () => {
         });
     });
 
-    it(`Formats value with precision > 6 if the element out of focus`, () => {
-        const value = '0,0000000001';
-        const precision = 10;
+    describe('Format value when element lose focus with precision > 6', () => {
+        beforeEach(() => {
+            component.decimal = 'always';
+            component.precision = 10;
+            inputPO.sendText('');
+            inputPO.focus();
+        });
 
-        component.decimal = 'always';
-        component.precision = precision;
-        inputPO.focus();
-        inputPO.sendText(value);
-        component.onFocused(false);
+        it('Positive value', () => {
+            inputPO.sendText('0,0000000001');
+            component.onFocused(false);
+            fixture.detectChanges();
 
-        fixture.detectChanges();
+            expect(component.computedValue).toBe(`0,0000000001`);
+        });
 
-        expect(component.computedValue).toBe(`0,0000000001`);
+        it('Negative value', () => {
+            inputPO.sendText('-0,0000000001');
+            component.onFocused(false);
+            fixture.detectChanges();
+
+            expect(component.computedValue).toBe(`-0,0000000001`);
+        });
+
+        it('Value with precision less than 10', () => {
+            inputPO.sendText('-0,00000052');
+            component.onFocused(false);
+            fixture.detectChanges();
+
+            expect(component.computedValue).toBe(`-0,0000005200`);
+        });
     });
 
     it('maxlength is set to 18 by default', () => {
