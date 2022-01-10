@@ -16,6 +16,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
+    changeDateSeparator,
     DATE_FILLER_LENGTH,
     nullableSame,
     TUI_DATE_FORMAT,
@@ -57,7 +58,7 @@ import {
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {pluck, takeUntil} from 'rxjs/operators';
+import {map, pluck, takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
 export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
@@ -120,7 +121,10 @@ export class TuiInputDateComponent
     defaultActiveYearMonth = TuiMonth.currentLocal();
 
     open = false;
-    readonly filler$ = this.dateTexts$.pipe(pluck(this.dateFormat));
+    readonly filler$ = this.dateTexts$.pipe(
+        pluck(this.dateFormat),
+        map(dateFiller => changeDateSeparator(dateFiller, this.dateSeparator)),
+    );
 
     constructor(
         @Optional()

@@ -14,6 +14,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
+    changeDateSeparator,
     clamp,
     DATE_FILLER_LENGTH,
     nullableSame,
@@ -111,7 +112,10 @@ export class TuiInputDateTimeComponent
 
     open = false;
     readonly filler$ = combineLatest([
-        this.dateTexts$.pipe(pluck(this.dateFormat)),
+        this.dateTexts$.pipe(
+            pluck(this.dateFormat),
+            map(dateFiller => changeDateSeparator(dateFiller, this.dateSeparator)),
+        ),
         this.timeTexts$.pipe(pluck(this.timeMode)),
     ]).pipe(map(fillers => this.getDateTimeString(...fillers)));
 
