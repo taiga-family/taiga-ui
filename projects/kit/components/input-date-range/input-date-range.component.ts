@@ -65,7 +65,7 @@ import {
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {map, pluck, takeUntil} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
 export const RANGE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
@@ -136,8 +136,9 @@ export class TuiInputDateRangeComponent
 
     readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
     readonly dateFiller$ = this.dateTexts$.pipe(
-        pluck(this.dateFormat),
-        map(dateFiller => changeDateSeparator(dateFiller, this.dateSeparator)),
+        map(dateTexts =>
+            changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+        ),
     );
 
     constructor(

@@ -113,8 +113,9 @@ export class TuiInputDateTimeComponent
     open = false;
     readonly filler$ = combineLatest([
         this.dateTexts$.pipe(
-            pluck(this.dateFormat),
-            map(dateFiller => changeDateSeparator(dateFiller, this.dateSeparator)),
+            map(dateTexts =>
+                changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+            ),
         ),
         this.timeTexts$.pipe(pluck(this.timeMode)),
     ]).pipe(map(fillers => this.getDateTimeString(...fillers)));

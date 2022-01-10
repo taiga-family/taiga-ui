@@ -58,7 +58,7 @@ import {
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {map, pluck, takeUntil} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
 export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
@@ -122,8 +122,9 @@ export class TuiInputDateComponent
 
     open = false;
     readonly filler$ = this.dateTexts$.pipe(
-        pluck(this.dateFormat),
-        map(dateFiller => changeDateSeparator(dateFiller, this.dateSeparator)),
+        map(dateTexts =>
+            changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+        ),
     );
 
     constructor(
