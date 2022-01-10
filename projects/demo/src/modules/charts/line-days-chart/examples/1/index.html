@@ -4,7 +4,7 @@
     </tui-input-date-range>
 </p>
 <tui-axes
-    *ngIf="labels$ | async as labels"
+    *ngIf="computeLabels$(range) | async as labels"
     class="axes"
     [verticalLines]="labels.length"
     [horizontalLines]="4"

@@ -6,7 +6,7 @@ import {map} from 'rxjs/operators';
 
 // @dynamic
 @Pipe({
-    name: 'labels$',
+    name: 'labels',
 })
 export class LabelsPipe implements PipeTransform {
     constructor(
@@ -18,12 +18,12 @@ export class LabelsPipe implements PipeTransform {
 
         if (length > 90) {
             return this.months$.pipe(
-                map(months => {
-                    return Array.from(
+                map(months =>
+                    Array.from(
                         {length: TuiMonth.lengthBetween(from, to) + 1},
                         (_, i) => months[from.append({month: i}).month],
-                    );
-                }),
+                    ),
+                ),
             );
         }
 

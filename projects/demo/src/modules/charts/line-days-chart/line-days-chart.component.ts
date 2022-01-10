@@ -68,9 +68,7 @@ export class ExampleTuiLineDaysChartComponent {
     readonly value = this.valueVariants[0];
 
     readonly labels$: Observable<readonly string[]> = this.months$.pipe(
-        map(months => {
-            return Array.from({length: 3}, (_, i) => months[i]);
-        }),
+        map(months => Array.from({length: 3}, (_, i) => months[i])),
     );
 
     readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [

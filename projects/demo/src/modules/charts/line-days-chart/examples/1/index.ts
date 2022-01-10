@@ -30,19 +30,31 @@ export class TuiLineDaysChartExample1 {
     readonly maxLength: TuiDayLike = {month: 12};
 
     readonly xStringify$: Observable<TuiStringHandler<TuiDay>> = this.months$.pipe(
-        map(months => {
-            return ({month, day}) => `${months[month]}, ${day}`;
-        }),
+        map(
+            months =>
+                ({month, day}) =>
+                    `${months[month]}, ${day}`,
+        ),
     );
 
-    constructor(@Inject(TUI_MONTHS) readonly months$: Observable<readonly string[]>) {}
-
-    get labels$(): Observable<readonly string[]> {
-        return this.months$.pipe(map(months => this.computeLabels(this.range, months)));
-    }
+    constructor(
+        @Inject(TUI_MONTHS) private readonly months$: Observable<readonly string[]>,
+    ) {}
 
     get value(): ReadonlyArray<[TuiDay, number]> {
         return this.computeValue(this.range);
+    }
+
+    @tuiPure
+    computeLabels$({from, to}: TuiDayRange): Observable<readonly string[]> {
+        return this.months$.pipe(
+            map(months =>
+                Array.from(
+                    {length: TuiMonth.lengthBetween(from, to) + 1},
+                    (_, i) => months[from.append({month: i}).month],
+                ),
+            ),
+        );
     }
 
     readonly yStringify: TuiStringHandler<number> = y =>
@@ -62,16 +74,5 @@ export class TuiLineDaysChartExample1 {
                 ],
                 [],
             );
-    }
-
-    @tuiPure
-    private computeLabels(
-        {from, to}: TuiDayRange,
-        months: readonly string[],
-    ): readonly string[] {
-        return Array.from(
-            {length: TuiMonth.lengthBetween(from, to) + 1},
-            (_, i) => months[from.append({month: i}).month],
-        );
     }
 }
