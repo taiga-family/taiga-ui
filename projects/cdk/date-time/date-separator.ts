@@ -1,11 +1,9 @@
 import {InjectionToken} from '@angular/core';
 
-export const DEFAULT_DATE_SEPARATOR = '.';
-
 export const TUI_DATE_SEPARATOR = new InjectionToken<string>(
     'Date separator for Taiga UI components',
     {
-        factory: () => DEFAULT_DATE_SEPARATOR,
+        factory: () => '.',
     },
 );
 
