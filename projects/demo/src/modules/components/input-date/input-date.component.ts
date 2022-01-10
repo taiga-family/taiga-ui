@@ -62,7 +62,6 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
     readonly example4: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/4/index.ts'),
         HTML: import('!!raw-loader!./examples/4/index.html'),
-        LESS: import('!!raw-loader!./examples/4/index.less'),
     };
 
     minVariants = [TUI_FIRST_DAY, new TuiDay(2017, 2, 5), new TuiDay(1900, 0, 1)];
