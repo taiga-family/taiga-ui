@@ -42,7 +42,7 @@ import {Observable} from 'rxjs';
 
 import {INPUT_PHONE_PROVIDERS, SELECTION_STREAM} from './input-phone.providers';
 
-const NON_PLUS_AND_DIGITS_REGEX = /[ \-_\(\)]/g;
+const NON_PLUS_AND_DIGITS_REGEX = /[ \-_()]/g;
 
 // @dynamic
 @Component({
@@ -105,7 +105,7 @@ export class TuiInputPhoneComponent
                       ...this.countryCode.split(''),
                       ' ',
                       ...this.phoneMaskAfterCountryCode
-                          .replace(/[^#\- \(\)]+/g, '')
+                          .replace(/[^#\- ()]+/g, '')
                           .split('')
                           .map(item => (item === '#' ? /\d/ : item)),
                   ],

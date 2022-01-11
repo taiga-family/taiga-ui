@@ -25,7 +25,7 @@ import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-export const ALLOWED_SPACE_REGEXP = new RegExp(`\,|[\\s]`);
+export const ALLOWED_SPACE_REGEXP = new RegExp(`,|[\\s]`);
 
 @Component({
     selector: 'tui-tag, a[tuiTag]',

@@ -12,7 +12,7 @@ import {
 
 function createControlValidator(handler: TuiBooleanHandler<string>): ValidatorFn {
     return ({value}: AbstractControl) => {
-        const invalidTags = !!value ? value.filter(handler) : EMPTY_ARRAY;
+        const invalidTags = value ? value.filter(handler) : EMPTY_ARRAY;
 
         return invalidTags.length > 0
             ? {

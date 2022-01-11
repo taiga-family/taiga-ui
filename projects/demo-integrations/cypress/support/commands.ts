@@ -7,7 +7,7 @@ import {waitKitDialog} from './wait-kit-dialog';
 
 declare global {
     namespace Cypress {
-        interface Chainable<Subject = any> {
+        interface Chainable {
             getByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
 
             findByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
