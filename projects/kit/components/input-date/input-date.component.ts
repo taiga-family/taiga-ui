@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    AbstractTuiControlValueTransformer,
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
@@ -59,6 +60,8 @@ import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellan
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
+
+import {TUI_INPUT_DATE_VALUE_TRANSFORMER} from './value-transformer.token';
 
 // TODO: remove in ivy compilation
 export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
@@ -145,8 +148,11 @@ export class TuiInputDateComponent
         @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
+        @Optional()
+        @Inject(TUI_INPUT_DATE_VALUE_TRANSFORMER)
+        readonly valueTransformer: AbstractTuiControlValueTransformer<TuiDay | null> | null,
     ) {
-        super(control, changeDetectorRef);
+        super(control, changeDetectorRef, valueTransformer);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

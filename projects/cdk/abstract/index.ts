@@ -1,4 +1,5 @@
 export * from './control';
+export * from './control-value-transformer';
 export * from './controller';
 export * from './dialog.directive';
 export * from './dialog.service';

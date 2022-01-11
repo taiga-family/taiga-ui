@@ -13,6 +13,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 import {merge, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
+import {AbstractTuiControlValueTransformer} from './control-value-transformer';
 import {AbstractTuiInteractive} from './interactive';
 
 /**
@@ -45,6 +46,7 @@ export abstract class AbstractTuiControl<T>
     protected constructor(
         private readonly ngControl: NgControl | null,
         protected readonly changeDetectorRef: ChangeDetectorRef,
+        protected readonly valueTransformer?: AbstractTuiControlValueTransformer<T> | null,
     ) {
         super();
 
@@ -118,9 +120,14 @@ export abstract class AbstractTuiControl<T>
             return undefined;
         }
 
-        return ngControl instanceof NgModel && this.previousInternalValue === undefined
-            ? ngControl.viewModel
-            : ngControl.value;
+        const possiblyTransformedValue =
+            ngControl instanceof NgModel && this.previousInternalValue === undefined
+                ? ngControl.viewModel
+                : ngControl.value;
+
+        return this.valueTransformer
+            ? this.valueTransformer.toOrigin(possiblyTransformedValue)
+            : possiblyTransformedValue;
     }
 
     ngOnInit() {
@@ -148,8 +155,14 @@ export abstract class AbstractTuiControl<T>
         this.changeDetectorRef.markForCheck();
     }
 
-    registerOnChange(onChange: (value: T) => void) {
-        this.onChange = onChange;
+    registerOnChange(onChange: (value: T | unknown) => void) {
+        this.onChange = (value: T) => {
+            const transformedValue = this.valueTransformer
+                ? this.valueTransformer.transformValue(value)
+                : value;
+
+            onChange(transformedValue);
+        };
     }
 
     registerOnTouched(onTouched: () => void) {
@@ -160,7 +173,11 @@ export abstract class AbstractTuiControl<T>
         this.checkControlUpdate();
     }
 
-    writeValue(value: T | null) {
+    writeValue(possiblyTransformedValue: T | null) {
+        const value = this.valueTransformer
+            ? this.valueTransformer.toOrigin(possiblyTransformedValue)
+            : possiblyTransformedValue;
+
         this.refreshLocalValue(
             this.ngControl instanceof NgModel && this.previousInternalValue === undefined
                 ? this.ngControl.model
