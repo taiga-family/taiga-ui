@@ -21,7 +21,7 @@ interface Item {
     encapsulation,
 })
 export class TuiTableExample3 {
-    readonly options = {updateOn: 'blur'};
+    readonly options = {updateOn: 'blur'} as const;
 
     readonly units = ['items', 'kg', 'm'];
 
