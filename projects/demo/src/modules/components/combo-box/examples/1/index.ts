@@ -42,7 +42,7 @@ export class TuiComboBoxExample1 {
         startWith(databaseMockData),
     );
 
-    readonly testValue = new FormControl(null);
+    readonly testValue = new FormControl(databaseMockData[1]);
 
     onSearchChange(searchQuery: string) {
         this.search$.next(searchQuery);
