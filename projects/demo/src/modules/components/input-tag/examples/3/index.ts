@@ -11,6 +11,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiInputTagExample3 {
     readonly testForm = new FormGroup({
-        testValue: new FormControl([]),
+        testValue: new FormControl(['I', 'love', 'Angular']),
     });
 }
