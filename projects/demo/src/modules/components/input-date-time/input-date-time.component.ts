@@ -53,7 +53,6 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
     readonly example3: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/3/index.ts'),
         HTML: import('!!raw-loader!./examples/3/index.html'),
-        LESS: import('!!raw-loader!./examples/3/index.less'),
     };
 
     readonly minVariants = [

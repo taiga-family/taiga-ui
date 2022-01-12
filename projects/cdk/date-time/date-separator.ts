@@ -6,3 +6,6 @@ export const TUI_DATE_SEPARATOR = new InjectionToken<string>(
         factory: () => '.',
     },
 );
+
+export const changeDateSeparator = (dateString: string, newDateSeparator: string) =>
+    dateString.replace(/[^0-9a-z]/gi, newDateSeparator);

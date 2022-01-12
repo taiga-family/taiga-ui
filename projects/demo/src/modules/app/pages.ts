@@ -390,23 +390,9 @@ export const pages: TuiDocPages = [
         subPages: [
             {
                 section: $localize`Components`,
-                title: 'InputInline',
-                keywords: 'input',
-                route: '/components/input-inline',
-            },
-            {
-                section: $localize`Components`,
                 title: 'Input',
                 keywords: 'поле, инпут, форма, ввод, input, table, таблица',
                 route: '/components/input',
-            },
-            {
-                section: $localize`Components`,
-                title: 'InputDate',
-                keywords:
-                    'поле, инпут, форма, ввод, input, календарь, день, ' +
-                    'неделя, месяц, год, дата, calendar',
-                route: '/components/input-date',
             },
             {
                 section: $localize`Components`,
@@ -436,6 +422,20 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
+                title: 'InputDate',
+                keywords:
+                    'поле, инпут, форма, ввод, input, календарь, день, ' +
+                    'неделя, месяц, год, дата, calendar',
+                route: '/components/input-date',
+            },
+            {
+                section: $localize`Components`,
+                title: 'InputDateRange',
+                keywords: 'calendar, календарь, даты, период',
+                route: '/components/input-date-range',
+            },
+            {
+                section: $localize`Components`,
                 title: 'InputDateTime',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
@@ -448,6 +448,12 @@ export const pages: TuiDocPages = [
                 keywords:
                     'селект, форма, файл, загрузка, ввод, input, file, attach, load',
                 route: '/components/input-file',
+            },
+            {
+                section: $localize`Components`,
+                title: 'InputInline',
+                keywords: 'input',
+                route: '/components/input-inline',
             },
             {
                 section: $localize`Components`,
@@ -483,15 +489,16 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
-                title: 'InputRange',
-                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: '/components/input-range',
+                title: 'InputPhoneInternational',
+                keywords:
+                    'поле, инпут, форма, ввод, input, phone, телефон, страны, номера,',
+                route: '/components/input-phone-international',
             },
             {
                 section: $localize`Components`,
-                title: 'InputDateRange',
-                keywords: 'calendar, календарь, даты, период',
-                route: '/components/input-date-range',
+                title: 'InputRange',
+                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
+                route: '/components/input-range',
             },
             {
                 section: $localize`Components`,
@@ -511,13 +518,6 @@ export const pages: TuiDocPages = [
                 keywords:
                     'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
                 route: '/components/input-time',
-            },
-            {
-                section: $localize`Components`,
-                title: 'InputPhoneInternational',
-                keywords:
-                    'поле, инпут, форма, ввод, input, phone, телефон, страны, номера,',
-                route: '/components/input-phone-international',
             },
             {
                 section: $localize`Components`,

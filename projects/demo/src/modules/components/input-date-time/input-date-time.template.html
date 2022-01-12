@@ -4,6 +4,19 @@
             InputDateTime allows to input date and time
         </div>
 
+        <h3 i18n>DI-tokens for date localization:</h3>
+        <dl i18n>
+            <dt><code>TUI_DATE_FORMAT</code></dt>
+            <dd>
+                active date format (
+                <code>'DMY' | 'MDY' | 'YMD'</code>
+                )
+            </dd>
+            <br />
+            <dt><code>TUI_DATE_SEPARATOR</code></dt>
+            <dd>single-character date's separator (dot, slash etc.)</dd>
+        </dl>
+
         <tui-doc-example
             id="base"
             i18n-heading
@@ -22,20 +35,6 @@
             heading="Date localization"
             [content]="example3"
         >
-            <h3 i18n>DI-tokens for date format localization:</h3>
-
-            <dl i18n>
-                <dt><code>TUI_DATE_FORMAT</code></dt>
-                <dd>
-                    active date format (
-                    <code>'DMY' | 'MDY' | 'YMD'</code>
-                    )
-                </dd>
-                <br />
-                <dt><code>TUI_DATE_SEPARATOR</code></dt>
-                <dd>single-character date's separator (dot, slash etc.)</dd>
-            </dl>
-            <br />
             <tui-input-date-time-example-3></tui-input-date-time-example-3>
         </tui-doc-example>
     </ng-template>
