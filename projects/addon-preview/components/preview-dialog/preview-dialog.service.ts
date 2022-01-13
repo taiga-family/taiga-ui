@@ -4,6 +4,7 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPreviewDialogComponent} from './preview-dialog.component';
 
+// TODO: add Tui-prefix in 3.0
 @Injectable({
     providedIn: 'root',
 })
