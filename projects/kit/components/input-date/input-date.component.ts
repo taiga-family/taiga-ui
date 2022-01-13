@@ -49,8 +49,8 @@ import {EMPTY_MASK} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_CALENDAR_DATA_STREAM,
-    TUI_DATE_INPUTS_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
+    TUI_DATE_VALUE_TRANSFORMER,
     TUI_MOBILE_CALENDAR,
 } from '@taiga-ui/kit/tokens';
 import {
@@ -148,7 +148,7 @@ export class TuiInputDateComponent
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
         @Optional()
-        @Inject(TUI_DATE_INPUTS_VALUE_TRANSFORMER)
+        @Inject(TUI_DATE_VALUE_TRANSFORMER)
         readonly valueTransformer: AbstractTuiControlValueTransformer<TuiDay | null> | null,
     ) {
         super(control, changeDetectorRef, valueTransformer);

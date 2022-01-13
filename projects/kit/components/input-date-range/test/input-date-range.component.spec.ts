@@ -1,8 +1,9 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
+import {Component, DebugElement, Optional, Type, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
+    AbstractTuiControlValueTransformer,
     RANGE_SEPARATOR_CHAR,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
@@ -11,6 +12,10 @@ import {
     TuiDayRange,
 } from '@taiga-ui/cdk';
 import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {
+    TUI_DATE_RANGE_VALUE_TRANSFORMER,
+    TUI_DATE_VALUE_TRANSFORMER,
+} from '@taiga-ui/kit/tokens';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 
@@ -71,8 +76,10 @@ const DEFAULT_TESTING_MODULE_META = {
     declarations: [TestComponent],
 };
 
-const initializeEnvironment = async () => {
-    fixture = TestBed.createComponent(TestComponent);
+const initializeEnvironment = async (
+    testComponentClass: Type<TestComponent> = TestComponent,
+) => {
+    fixture = TestBed.createComponent(testComponentClass);
     pageObject = new PageObject(fixture);
     testComponent = fixture.componentInstance;
     fixture.detectChanges();
@@ -273,6 +280,133 @@ describe('InputDateRangeComponent + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="
         await fixture.whenStable();
 
         expect(inputPO.value).toBe('2021-12-12 – 2022-02-18');
+    });
+});
+
+describe('InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER', () => {
+    class ExampleDateTransformer extends AbstractTuiControlValueTransformer<
+        TuiDay | null,
+        Date | null
+    > {
+        toOrigin(transformedValue: Date | null): TuiDay | null {
+            return transformedValue && TuiDay.fromLocalNativeDate(transformedValue);
+        }
+
+        transformValue(originValue: TuiDay | null): Date | null {
+            return originValue && originValue.toLocalNativeDate();
+        }
+    }
+
+    function getExampleDateRangeTransformer(
+        dateTransformer: ExampleDateTransformer | null,
+    ) {
+        if (!dateTransformer) {
+            return null;
+        }
+
+        return new (class {
+            toOrigin([transformedFrom, transformedTo]: [Date, Date]): TuiDayRange | null {
+                const from = transformedFrom && dateTransformer.toOrigin(transformedFrom);
+                const to = transformedTo && dateTransformer.toOrigin(transformedTo);
+
+                return from && to && new TuiDayRange(from, to);
+            }
+
+            transformValue(originalValue: TuiDayRange | null): [Date, Date] | null {
+                const from =
+                    originalValue && dateTransformer.transformValue(originalValue.from);
+                const to =
+                    originalValue && dateTransformer.transformValue(originalValue.to);
+
+                return from && to && [from, to];
+            }
+        })();
+    }
+
+    class TransformerTestComponent extends TestComponent {
+        control = new FormControl([new Date(2022, 0, 31), new Date(2022, 5, 14)]);
+    }
+
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            ...DEFAULT_TESTING_MODULE_META,
+            declarations: [TransformerTestComponent],
+            providers: [
+                {
+                    provide: TUI_DATE_VALUE_TRANSFORMER,
+                    useValue: new ExampleDateTransformer(),
+                },
+                {
+                    provide: TUI_DATE_RANGE_VALUE_TRANSFORMER,
+                    deps: [[new Optional(), TUI_DATE_VALUE_TRANSFORMER]],
+                    useFactory: getExampleDateRangeTransformer,
+                },
+            ],
+        });
+    });
+
+    beforeEach(async () => {
+        await initializeEnvironment(TransformerTestComponent);
+    });
+
+    it('correctly transforms initial value', () => {
+        expect(inputPO.value).toBe('31.01.2022 – 14.06.2022');
+        expect(testComponent.control.value).toEqual([
+            new Date(2022, 0, 31),
+            new Date(2022, 5, 14),
+        ]);
+    });
+
+    it('transforms typed value', () => {
+        inputPO.sendText('20022000-17062020');
+
+        expect(inputPO.value).toBe('20.02.2000 – 17.06.2020');
+        expect(testComponent.control.value).toEqual([
+            new Date(2000, 1, 20),
+            new Date(2020, 5, 17),
+        ]);
+    });
+
+    it('transforms min day as output (if typed day is less than min day)', () => {
+        inputPO.sendText('19.02.1861-10.03.1995');
+
+        expect(inputPO.value).toBe('01.01.1900 – 10.03.1995');
+        expect(testComponent.control.value).toEqual([
+            new Date(1900, 0, 1),
+            new Date(1995, 2, 10),
+        ]);
+    });
+
+    it('transforms value which was selected via calendar', async () => {
+        inputPO.sendTextAndBlur('01.09.2021-01.11.2022');
+
+        clickOnTextfield();
+
+        const [leftCalendar, rightCalendar] = getCalendars();
+
+        expect(leftCalendar).toBeTruthy();
+        expect(rightCalendar).toBeTruthy();
+
+        getCalendarCell(leftCalendar, 12)?.nativeElement?.click();
+        getCalendarCell(rightCalendar, 18)?.nativeElement?.click();
+
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('12.09.2021 – 18.11.2022');
+    });
+
+    it('transforms value which was programmatically patched', () => {
+        testComponent.control.patchValue([
+            new Date(1922, 11, 30),
+            new Date(1991, 11, 26),
+        ]);
+
+        expect(inputPO.value).toBe('30.12.1922 – 26.12.1991');
+        expect(testComponent.control.value).toEqual([
+            new Date(1922, 11, 30),
+            new Date(1991, 11, 26),
+        ]);
     });
 });
 

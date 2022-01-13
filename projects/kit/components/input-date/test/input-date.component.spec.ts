@@ -15,7 +15,7 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TUI_DATE_INPUTS_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
+import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 
@@ -367,7 +367,7 @@ describe('InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA forma
     });
 });
 
-describe('InputDate + TUI_DATE_INPUTS_VALUE_TRANSFORMER', () => {
+describe('InputDate + TUI_DATE_VALUE_TRANSFORMER', () => {
     class TestTransformer extends AbstractTuiControlValueTransformer<
         TuiDay | null,
         Date | null
@@ -391,7 +391,7 @@ describe('InputDate + TUI_DATE_INPUTS_VALUE_TRANSFORMER', () => {
             declarations: [TransformerTestComponent],
             providers: [
                 {
-                    provide: TUI_DATE_INPUTS_VALUE_TRANSFORMER,
+                    provide: TUI_DATE_VALUE_TRANSFORMER,
                     useValue: new TestTransformer(),
                 },
             ],

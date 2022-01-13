@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    AbstractTuiControlValueTransformer,
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
@@ -55,6 +56,7 @@ import {EMPTY_MASK, MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_CALENDAR_DATA_STREAM,
+    TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
     TUI_MOBILE_CALENDAR,
 } from '@taiga-ui/kit/tokens';
@@ -68,7 +70,10 @@ import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
-export const RANGE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
+export const RANGE_STREAM_FACTORY = (
+    control: NgControl | null,
+    valueTransformer: AbstractTuiControlValueTransformer<TuiDayRange>,
+) => TuiReplayControlValueChangesFactory(control, valueTransformer);
 
 @Component({
     selector: 'tui-input-date-range',
@@ -81,7 +86,10 @@ export const RANGE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
         },
         {
             provide: TUI_CALENDAR_DATA_STREAM,
-            deps: [[new Optional(), new Self(), NgControl]],
+            deps: [
+                [new Optional(), new Self(), NgControl],
+                [new Optional(), forwardRef(() => TUI_DATE_RANGE_VALUE_TRANSFORMER)],
+            ],
             useFactory: RANGE_STREAM_FACTORY,
         },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
@@ -161,8 +169,11 @@ export class TuiInputDateRangeComponent
         @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
+        @Optional()
+        @Inject(TUI_DATE_RANGE_VALUE_TRANSFORMER)
+        readonly valueTransformer: AbstractTuiControlValueTransformer<TuiDayRange | null> | null,
     ) {
-        super(control, changeDetectorRef);
+        super(control, changeDetectorRef, valueTransformer);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

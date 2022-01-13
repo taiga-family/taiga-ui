@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 import {AbstractTuiControlValueTransformer, TuiDay} from '@taiga-ui/cdk';
-import {TUI_DATE_INPUTS_VALUE_TRANSFORMER} from '@taiga-ui/kit';
+import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 
 type From = TuiDay | null;
 
@@ -20,7 +20,7 @@ class ExampleTransformer extends AbstractTuiControlValueTransformer<From, To> {
     selector: 'tui-input-date[toNativeDate]',
     providers: [
         {
-            provide: TUI_DATE_INPUTS_VALUE_TRANSFORMER,
+            provide: TUI_DATE_VALUE_TRANSFORMER,
             useValue: new ExampleTransformer(),
         },
     ],
