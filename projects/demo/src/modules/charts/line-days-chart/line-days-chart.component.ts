@@ -3,6 +3,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiContextWithImplicit, TuiDay, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
@@ -65,33 +67,36 @@ export class ExampleTuiLineDaysChartComponent {
 
     readonly value = this.valueVariants[0];
 
-    readonly labels = Array.from({length: 3}, (_, i) => this.months[i]);
+    readonly labels$: Observable<readonly string[]> = this.months$.pipe(
+        map(months => Array.from({length: 3}, (_, i) => months[i])),
+    );
 
     readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
         y => `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
     ];
 
-    readonly xStringifyVariants: ReadonlyArray<TuiStringHandler<TuiDay>> = [
-        ({month, day}) => `${this.months[month]}, ${day}`,
-    ];
+    readonly xStringifyVariants$: Observable<ReadonlyArray<TuiStringHandler<TuiDay>>> =
+        this.months$.pipe(map(months => [({month, day}) => `${months[month]}, ${day}`]));
 
-    readonly hintContentVariants: ReadonlyArray<
-        PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>
-    > = [
-        '',
-        ({$implicit}) =>
-            `${this.months[$implicit[0].month]}, ${$implicit[0].day}\n${(
-                10 * $implicit[1]
-            ).toLocaleString('en-US', {
-                maximumFractionDigits: 0,
-            })} $`,
-    ];
+    readonly hintContentVariants$: Observable<
+        ReadonlyArray<PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>>
+    > = this.months$.pipe(
+        map(months => [
+            '',
+            ({$implicit}) =>
+                `${months[$implicit[0].month]}, ${$implicit[0].day}\n${(
+                    10 * $implicit[1]
+                ).toLocaleString('en-US', {
+                    maximumFractionDigits: 0,
+                })} $`,
+        ]),
+    );
 
     yStringify: TuiStringHandler<number> | null = null;
 
     xStringify: TuiStringHandler<TuiDay> | null = null;
 
-    hintContent = this.hintContentVariants[0];
+    hintContent = '';
 
     dots = false;
 
@@ -101,5 +106,5 @@ export class ExampleTuiLineDaysChartComponent {
 
     height = 200;
 
-    constructor(@Inject(TUI_MONTHS) private readonly months: readonly string[]) {}
+    constructor(@Inject(TUI_MONTHS) readonly months$: Observable<readonly string[]>) {}
 }

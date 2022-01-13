@@ -10,6 +10,8 @@ import {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 // @dynamic
 @Component({
@@ -27,18 +29,33 @@ export class TuiLineDaysChartExample1 {
 
     readonly maxLength: TuiDayLike = {month: 12};
 
-    constructor(@Inject(TUI_MONTHS) private readonly months: readonly string[]) {}
+    readonly xStringify$: Observable<TuiStringHandler<TuiDay>> = this.months$.pipe(
+        map(
+            months =>
+                ({month, day}) =>
+                    `${months[month]}, ${day}`,
+        ),
+    );
 
-    get labels(): readonly string[] {
-        return this.computeLabels(this.range, this.months);
-    }
+    constructor(
+        @Inject(TUI_MONTHS) private readonly months$: Observable<readonly string[]>,
+    ) {}
 
     get value(): ReadonlyArray<[TuiDay, number]> {
         return this.computeValue(this.range);
     }
 
-    readonly xStringify: TuiStringHandler<TuiDay> = ({month, day}) =>
-        `${this.months[month]}, ${day}`;
+    @tuiPure
+    computeLabels$({from, to}: TuiDayRange): Observable<readonly string[]> {
+        return this.months$.pipe(
+            map(months =>
+                Array.from(
+                    {length: TuiMonth.lengthBetween(from, to) + 1},
+                    (_, i) => months[from.append({month: i}).month],
+                ),
+            ),
+        );
+    }
 
     readonly yStringify: TuiStringHandler<number> = y =>
         `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
@@ -57,16 +74,5 @@ export class TuiLineDaysChartExample1 {
                 ],
                 [],
             );
-    }
-
-    @tuiPure
-    private computeLabels(
-        {from, to}: TuiDayRange,
-        months: readonly string[],
-    ): readonly string[] {
-        return Array.from(
-            {length: TuiMonth.lengthBetween(from, to) + 1},
-            (_, i) => months[from.append({month: i}).month],
-        );
     }
 }
