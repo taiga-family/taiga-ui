@@ -1,4 +1,5 @@
 export * from './calendar-data-stream';
+export * from './date-inputs-value-transformer';
 export * from './i18n';
 export * from './mobile-aware';
 export * from './mobile-calendar';
