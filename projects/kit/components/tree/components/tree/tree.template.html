@@ -1,4 +1,8 @@
-<tui-tree-item #view [tuiTreeNode]="value">
+<tui-tree-item
+    *tuiLet="children$ | async as children"
+    #view
+    [tuiTreeNode]="value"
+>
     <div
         *ngIf="value !== children"
         polymorpheus-outlet
