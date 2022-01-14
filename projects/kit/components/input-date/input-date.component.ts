@@ -68,6 +68,7 @@ export const DATE_STREAM_FACTORY = (
     valueTransformer: AbstractTuiControlValueTransformer<TuiDay>,
 ) => TuiReplayControlValueChangesFactory(control, valueTransformer);
 
+// @dynamic
 @Component({
     selector: 'tui-input-date',
     templateUrl: './input-date.template.html',
