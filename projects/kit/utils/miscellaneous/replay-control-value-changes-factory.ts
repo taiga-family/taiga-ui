@@ -4,11 +4,12 @@ import {
     TuiDay,
     TuiDayRange,
     tuiReplayedValueChangesFrom,
+    TuiTime,
 } from '@taiga-ui/cdk';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-type PossibleValue = TuiDayRange | TuiDay | null;
+type PossibleValue = TuiDayRange | TuiDay | [TuiDay | null, TuiTime | null] | null;
 
 /**
  * @internal

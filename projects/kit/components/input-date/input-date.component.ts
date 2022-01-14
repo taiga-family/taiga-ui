@@ -63,7 +63,10 @@ import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
-export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
+export const DATE_STREAM_FACTORY = (
+    control: NgControl | null,
+    valueTransformer: AbstractTuiControlValueTransformer<TuiDay>,
+) => TuiReplayControlValueChangesFactory(control, valueTransformer);
 
 @Component({
     selector: 'tui-input-date',
@@ -77,7 +80,10 @@ export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
         },
         {
             provide: TUI_CALENDAR_DATA_STREAM,
-            deps: [[new Optional(), new Self(), NgControl]],
+            deps: [
+                [new Optional(), new Self(), NgControl],
+                [new Optional(), forwardRef(() => TUI_DATE_VALUE_TRANSFORMER)],
+            ],
             useFactory: DATE_STREAM_FACTORY,
         },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
