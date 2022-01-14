@@ -75,6 +75,7 @@ export const RANGE_STREAM_FACTORY = (
     valueTransformer: AbstractTuiControlValueTransformer<TuiDayRange>,
 ) => TuiReplayControlValueChangesFactory(control, valueTransformer);
 
+// @dynamic
 @Component({
     selector: 'tui-input-date-range',
     templateUrl: './input-date-range.template.html',
