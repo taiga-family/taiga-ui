@@ -51,10 +51,11 @@
     &[data-size='fullscreen'],
     &[data-size='page'] {
         width: 100vw;
-        min-height: 100vh;
+        min-height: 100%;
         border-radius: 0;
         border: none;
         background: var(--tui-base-01);
+        box-shadow: 0 4rem var(--tui-base-01);
 
         .content {
             padding: 3rem calc(50vw - (45rem / 2));
