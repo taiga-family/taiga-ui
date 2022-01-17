@@ -4,7 +4,6 @@ import {
     Component,
     ElementRef,
     forwardRef,
-    HostBinding,
     Inject,
     Input,
     Optional,
@@ -14,7 +13,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    clamp,
     isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
@@ -67,11 +65,6 @@ export class TuiRatingComponent extends AbstractTuiControl<number> {
         super(ngControl, changeDetectorRef);
     }
 
-    @HostBinding('class._disabled')
-    get computedDisabled(): boolean {
-        return this.disabled;
-    }
-
     get nativeRangeElement(): HTMLInputElement | null {
         return this.computedDisabled || !this.rangeElement
             ? null
@@ -91,23 +84,22 @@ export class TuiRatingComponent extends AbstractTuiControl<number> {
     }
 
     setRateByReverseIndex(index: number): void {
-        const computed = this.clamp(this.max - index);
-        const toggled = this.value === computed ? this.min : computed;
-
-        this.updateValue(toggled);
+        this.updateValue(this.max - index);
+        this.onTouchedByUpdateOnBlur();
     }
 
     setRate(value: number | string): void {
-        const computed = this.clamp(value);
+        this.updateValue(Number(value));
+        this.onTouchedByUpdateOnBlur();
+    }
 
-        this.updateValue(computed);
+    onTouchedByUpdateOnBlur(): void {
+        if (this.control?.updateOn === 'blur') {
+            this.updateFocused(false);
+        }
     }
 
     protected getFallbackValue(): number {
         return 0;
-    }
-
-    private clamp(value: number | string): number {
-        return clamp(Math.ceil(Number(value)), this.min, this.max);
     }
 }

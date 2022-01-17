@@ -1,34 +1,33 @@
-<div class="t-rating-interactive">
+<div class="t-interactive">
     <tui-svg
         *tuiRepeatTimes="let index of max"
-        class="t-rating-icon-filled"
+        class="t-icon-filled"
         [src]="iconFilled"
         (click)="setRateByReverseIndex(index)"
     ></tui-svg>
 </div>
 
-<div class="t-rating-wrapper" [style.width.%]="percent">
+<div class="t-wrapper" [style.width.%]="percent">
     <tui-svg
         *tuiRepeatTimes="let index of max"
-        class="t-rating-icon-filled"
+        class="t-icon-filled"
         [src]="iconFilled"
     ></tui-svg>
 </div>
 
 <tui-svg
     *tuiRepeatTimes="let item of max"
-    class="t-rating-icon-normal"
+    class="t-icon-normal"
     [src]="iconNormal"
 ></tui-svg>
 
 <input
-    #range
     type="range"
     step="1"
-    class="t-rating-input"
+    class="t-input"
     [min]="min"
     [max]="max"
-    [value]="value"
+    [ngModel]="value"
     [tuiFocusable]="isFocusable"
-    (change)="setRate(range.value)"
+    (ngModelChange)="setRate($event)"
 />

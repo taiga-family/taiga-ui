@@ -1,7 +1,7 @@
-<div>
+<div class="example">
     <h2>Template Driven</h2>
 
-    <p><b>Controlled (value = {{rateValue}})</b></p>
+    <p><b>value = {{rateValue}}</b></p>
     <tui-rating class="rating" [(ngModel)]="rateValue"></tui-rating>
 
     <p><b>Read only</b></p>
@@ -19,21 +19,19 @@
     ></tui-rating>
 </div>
 
-<br />
+<div class="example">
+    <h2>Reactive Forms / Disabled</h2>
 
-<div [formGroup]="form">
-    <h2>Reactive Forms</h2>
-
-    <p><b>Controlled (value = {{ rateControl?.value }})</b></p>
-    <tui-rating formControlName="rateControl" class="rating"></tui-rating>
-
-    <ul>
-        <li>Disabled = {{ rateControl?.disabled }}</li>
-    </ul>
-
-    <br />
-
-    <button tuiButton type="button" size="xs" (click)="enableOrDisable()">
-        {{ rateControl?.disabled ? 'enable' : 'disable' }} form control
-    </button>
+    <p><b>value = {{ rateControl?.value }}</b></p>
+    <tui-rating class="rating" [formControl]="rateControl"></tui-rating>
 </div>
+
+<button
+    tuiButton
+    type="button"
+    size="xs"
+    class="example"
+    (click)="enableOrDisable()"
+>
+    {{ rateControl?.disabled ? 'enable' : 'disable' }} form control
+</button>

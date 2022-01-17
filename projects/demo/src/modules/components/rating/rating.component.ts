@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
 
@@ -8,28 +9,27 @@ import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiRatingComponent {
-    min: number = 0;
-    max: number = 10;
-    value: number = 5;
-    color: string = 'var(--tui-accent)';
-    colorVariants: string[] = [this.color, '#faaf00', 'pink'];
-    iconNormal: string = 'tuiIconStarLarge';
-    iconNormalVariants: string[] = [this.iconNormal, 'tuiIconStar'];
-    iconFilled: string = 'tuiIconStarFilledLarge';
-    iconFilledVariants: string[] = [this.iconFilled, 'tuiIconStarFilled'];
-    readOnly: boolean = false;
-    disabled: boolean = false;
+    control = new FormControl(5);
+    colorVariants = ['var(--tui-accent)', '#faaf00', 'pink'];
+    color = this.colorVariants[0];
+    iconNormalVariants = ['tuiIconStarLarge', 'tuiIconStar'];
+    iconNormal = this.iconNormalVariants[0];
+    iconFilledVariants = ['tuiIconStarFilledLarge', 'tuiIconStarFilled'];
+    iconFilled = this.iconFilledVariants[0];
+    readOnly = false;
+    max = 10;
+    min = 0;
 
     readonly exampleImportModule: RawLoaderContent = import(
-        '!!raw-loader!./examples/import/import-module.txt'
+        '!!raw-loader!./examples/import/import-module.md'
     );
 
     readonly exampleInsertTemplate: RawLoaderContent = import(
-        '!!raw-loader!./examples/import/insert-template.txt'
+        '!!raw-loader!./examples/import/insert-template.md'
     );
 
     readonly exampleDefineOptions: RawLoaderContent = import(
-        '!!raw-loader!./examples/import/define-options.txt'
+        '!!raw-loader!./examples/import/define-options.md'
     );
 
     readonly example1: TuiDocExample = {

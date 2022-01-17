@@ -1,3 +1,5 @@
+@import 'taiga-ui-local';
+
 :host {
     position: relative;
     display: inline-flex;
@@ -8,12 +10,12 @@
     }
 
     &._disabled {
-        opacity: 0.5;
+        opacity: var(--tui-disabled-opacity);
     }
 }
 
-.t-rating-wrapper,
-.t-rating-interactive {
+.t-wrapper,
+.t-interactive {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,57 +27,50 @@
     white-space: nowrap;
 }
 
-.t-rating-wrapper {
+.t-wrapper {
     // the element is only needed as a display cover
     pointer-events: none;
 }
 
-.t-rating-interactive {
+.t-interactive {
     opacity: 0;
 
-    &:hover {
-        opacity: 1;
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            opacity: 1;
 
-        & ~ .t-rating-wrapper {
-            visibility: hidden;
-        }
+            & ~ .t-wrapper {
+                visibility: hidden;
+            }
 
-        .t-rating-icon-filled {
-            opacity: 0;
+            .t-icon-filled {
+                opacity: 0;
 
-            &:hover,
-            &:hover ~ .t-rating-icon-filled {
-                opacity: 1;
+                &:hover,
+                &:hover ~ .t-icon-filled {
+                    opacity: 1;
+                }
             }
         }
     }
 }
 
-.t-rating-input {
-    // @note: don't use .sr-only()
-    // we need to use an element to focus
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: -1; // fix problem in safari, firefox
-    width: 100%;
-    height: 100%;
+.t-input {
+    .fullsize(absolute, height);
+    pointer-events: none;
     appearance: none;
     background: transparent;
 
-    // works in chrome, safari, edge
     &::-webkit-slider-thumb {
         display: none;
     }
 
-    // only works in firefox
     &::-moz-range-thumb {
         opacity: 0;
     }
 }
 
-.t-rating-icon-filled {
+.t-icon-filled {
     position: relative;
     cursor: pointer;
 }

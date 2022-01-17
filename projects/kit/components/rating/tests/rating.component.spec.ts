@@ -54,7 +54,7 @@ describe('Rating', () => {
             expect(component.value).toEqual(1);
             expect(component.nativeRangeElement?.value).toEqual('1');
 
-            component.setRate('4');
+            component.setRate(4);
             fixture.detectChanges();
 
             expect(component.percent).toEqual(80);
@@ -86,18 +86,18 @@ describe('Rating', () => {
             component.setRate(4.5);
             fixture.detectChanges();
 
-            expect(testComponent.rate).toEqual(5);
-            expect(component.value).toEqual(5);
-            expect(component.percent).toEqual(100);
+            expect(testComponent.rate).toEqual(4.5);
+            expect(component.value).toEqual(4.5);
+            expect(component.percent).toEqual(90);
             expect(component.nativeRangeElement?.value).toEqual('5');
 
             component.setRate(0.4);
             fixture.detectChanges();
 
-            expect(testComponent.rate).toEqual(1);
-            expect(component.value).toEqual(1);
-            expect(component.percent).toEqual(20);
-            expect(component.nativeRangeElement?.value).toEqual('1');
+            expect(testComponent.rate).toEqual(0.4);
+            expect(component.value).toEqual(0.4);
+            expect(component.percent).toEqual(8);
+            expect(component.nativeRangeElement?.value).toEqual('0');
         });
     });
 
@@ -149,7 +149,7 @@ describe('Rating', () => {
             expect(component.value).toEqual(2);
             expect(component.nativeRangeElement?.value).toEqual('2');
 
-            component.setRate('3');
+            component.setRate(3);
             fixture.detectChanges();
 
             expect(component.percent).toEqual(60);
@@ -182,17 +182,17 @@ describe('Rating', () => {
             component.setRate(100);
             fixture.detectChanges();
 
-            expect(testComponent.rate).toEqual(5);
-            expect(component.value).toEqual(5);
-            expect(component.percent).toEqual(100);
+            expect(testComponent.rate).toEqual(100);
+            expect(component.value).toEqual(100);
+            expect(component.percent).toEqual(2000);
             expect(component.nativeRangeElement?.value).toEqual('5');
 
             component.setRate(-1);
             fixture.detectChanges();
 
-            expect(testComponent.rate).toEqual(0);
-            expect(component.value).toEqual(0);
-            expect(component.percent).toEqual(0);
+            expect(testComponent.rate).toEqual(-1);
+            expect(component.value).toEqual(-1);
+            expect(component.percent).toEqual(-20);
             expect(component.nativeRangeElement?.value).toEqual('0');
         });
     });

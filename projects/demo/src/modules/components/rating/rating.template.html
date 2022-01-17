@@ -22,22 +22,23 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo>
-            <b>Current rating</b>
-            - {{rating.value}}
-            <br />
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <b>Current rating</b>
+                - {{rating.value}}
+                <br />
 
-            <tui-rating
-                #rating
-                [min]="min"
-                [max]="max"
-                [style.color]="color"
-                [disabled]="disabled"
-                [readOnly]="readOnly"
-                [iconNormal]="iconNormal"
-                [iconFilled]="iconFilled"
-                [(ngModel)]="value"
-            ></tui-rating>
+                <tui-rating
+                    #rating
+                    [min]="min"
+                    [max]="max"
+                    [style.color]="color"
+                    [readOnly]="readOnly"
+                    [iconNormal]="iconNormal"
+                    [iconFilled]="iconFilled"
+                    [formControl]="control"
+                ></tui-rating>
+            </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
@@ -45,40 +46,29 @@
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 documentationPropertyName="readOnly"
-                [documentationPropertyValue]="readOnly"
-                (documentationPropertyValueChange)="readOnly = $event"
+                [(documentationPropertyValue)]="readOnly"
             ></ng-template>
             <ng-template
                 i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 documentationPropertyName="disabled"
-                [documentationPropertyValue]="disabled"
-                (documentationPropertyValueChange)="disabled = $event"
-            ></ng-template>
-            <ng-template
-                i18n
-                documentationPropertyType="number"
-                documentationPropertyMode="input-output"
-                documentationPropertyName="ngModel"
-                [documentationPropertyValue]="value"
-                (documentationPropertyValueChange)="value = $event"
+                [documentationPropertyValue]="control.disabled"
+                (documentationPropertyValueChange)="$event ? control.disable() : control.enable()"
             ></ng-template>
             <ng-template
                 i18n
                 documentationPropertyType="number"
                 documentationPropertyMode="input"
                 documentationPropertyName="min"
-                [documentationPropertyValue]="min"
-                (documentationPropertyValueChange)="min = $event"
+                [(documentationPropertyValue)]="min"
             ></ng-template>
             <ng-template
                 i18n
                 documentationPropertyType="number"
                 documentationPropertyMode="input"
                 documentationPropertyName="max"
-                [documentationPropertyValue]="max"
-                (documentationPropertyValueChange)="max = $event"
+                [(documentationPropertyValue)]="max"
             ></ng-template>
             <ng-template
                 i18n

@@ -1,19 +1,17 @@
-<div>
+<div class="example">
     <h2>Custom colors</h2>
 
-    <p><b>Yellow (value = {{firstRate}})</b></p>
+    <p><b>Yellow / value = {{firstRate}}</b></p>
     <tui-rating class="yellow" [(ngModel)]="firstRate"></tui-rating>
 
-    <p><b>10 stars (value = {{secondRate}})</b></p>
+    <p><b>10 stars / value = {{secondRate}}</b></p>
     <tui-rating class="pink" [max]="10" [(ngModel)]="secondRate"></tui-rating>
 </div>
 
-<br />
-
-<div>
+<div class="example">
     <h2>Custom icons</h2>
 
-    <p><b>Controlled (value = {{thirdRate}})</b></p>
+    <p><b>Controlled / value = {{thirdRate}}</b></p>
     <tui-rating
         iconNormal="tuiIconHeart"
         iconFilled="tuiIconHeartFilledLarge"

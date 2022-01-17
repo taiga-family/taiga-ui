@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 
 @Component({
@@ -9,21 +9,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class TuiRatingExample1 {
-    rateValue: number = 2;
-
-    form: FormGroup = this.fb.group({rateControl: 2});
-
-    constructor(private readonly fb: FormBuilder) {}
-
-    get rateControl(): AbstractControl | null {
-        return this.form.get('rateControl');
-    }
+    rateControl = new FormControl(2);
+    rateValue = 2;
 
     enableOrDisable(): void {
-        if (this.rateControl?.disabled) {
-            this.rateControl?.enable();
+        if (this.rateControl.disabled) {
+            this.rateControl.enable();
         } else {
-            this.rateControl?.disable();
+            this.rateControl.disable();
         }
     }
 }
