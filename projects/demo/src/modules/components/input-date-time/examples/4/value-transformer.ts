@@ -6,8 +6,8 @@ export class ExampleDateTimeTransformer extends AbstractTuiControlValueTransform
 > {
     private readonly separator = ', ';
 
-    toOrigin(transformedValue: string): [TuiDay | null, TuiTime | null] {
-        const [day, time = ''] = transformedValue.split(this.separator);
+    fromControlValue(controlValue: string): [TuiDay | null, TuiTime | null] {
+        const [day, time = ''] = controlValue.split(this.separator);
 
         if (!day) {
             return [null, null];
@@ -16,7 +16,7 @@ export class ExampleDateTimeTransformer extends AbstractTuiControlValueTransform
         return [TuiDay.normalizeParse(day), time ? TuiTime.fromString(time) : null];
     }
 
-    transformValue([day, time]: [TuiDay | null, TuiTime | null]): string {
+    toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
         if (!day) return '';
 
         return day.toString() + (time ? `${this.separator}${time.toString()}` : '');

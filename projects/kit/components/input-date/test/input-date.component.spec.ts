@@ -372,12 +372,12 @@ describe('InputDate + TUI_DATE_VALUE_TRANSFORMER', () => {
         TuiDay | null,
         Date | null
     > {
-        toOrigin(transformedValue: Date | null): TuiDay | null {
-            return transformedValue && TuiDay.fromLocalNativeDate(transformedValue);
+        fromControlValue(controlValue: Date | null): TuiDay | null {
+            return controlValue && TuiDay.fromLocalNativeDate(controlValue);
         }
 
-        transformValue(originValue: TuiDay | null): Date | null {
-            return originValue && originValue.toLocalNativeDate();
+        toControlValue(componentValue: TuiDay | null): Date | null {
+            return componentValue && componentValue.toLocalNativeDate();
         }
     }
 

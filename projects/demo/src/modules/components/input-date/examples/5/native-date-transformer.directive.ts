@@ -7,12 +7,12 @@ type From = TuiDay | null;
 type To = Date | null;
 
 class ExampleTransformer extends AbstractTuiControlValueTransformer<From, To> {
-    toOrigin(transformedValue: To): From {
-        return transformedValue && TuiDay.fromLocalNativeDate(transformedValue);
+    fromControlValue(controlValue: To): From {
+        return controlValue && TuiDay.fromLocalNativeDate(controlValue);
     }
 
-    transformValue(originValue: From): To {
-        return originValue && originValue.toLocalNativeDate();
+    toControlValue(componentValue: From): To {
+        return componentValue && componentValue.toLocalNativeDate();
     }
 }
 

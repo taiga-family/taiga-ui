@@ -284,43 +284,64 @@ describe('InputDateRangeComponent + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="
 });
 
 describe('InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER', () => {
-    class ExampleDateTransformer extends AbstractTuiControlValueTransformer<
+    class TestDateTransformer extends AbstractTuiControlValueTransformer<
         TuiDay | null,
         Date | null
     > {
-        toOrigin(transformedValue: Date | null): TuiDay | null {
-            return transformedValue && TuiDay.fromLocalNativeDate(transformedValue);
+        fromControlValue(controlValue: Date | null): TuiDay | null {
+            return controlValue && TuiDay.fromLocalNativeDate(controlValue);
         }
 
-        transformValue(originValue: TuiDay | null): Date | null {
-            return originValue && originValue.toLocalNativeDate();
+        toControlValue(componentValue: TuiDay | null): Date | null {
+            return componentValue && componentValue.toLocalNativeDate();
+        }
+    }
+
+    class TestDateRangeTransformer extends AbstractTuiControlValueTransformer<
+        TuiDayRange | null,
+        [Date, Date] | null
+    > {
+        constructor(
+            private readonly dateTransformer: AbstractTuiControlValueTransformer<
+                TuiDay | null,
+                Date | null
+            >,
+        ) {
+            super();
+        }
+
+        fromControlValue(controlValue: [Date, Date] | null): TuiDayRange | null {
+            const [transformedFrom, transformedTo] = controlValue || [null, null];
+            const from =
+                transformedFrom && this.dateTransformer.fromControlValue(transformedFrom);
+            const to =
+                transformedTo && this.dateTransformer.fromControlValue(transformedTo);
+
+            return from && to && new TuiDayRange(from, to);
+        }
+
+        toControlValue(componentValue: TuiDayRange | null): [Date, Date] | null {
+            const from =
+                componentValue &&
+                this.dateTransformer.toControlValue(componentValue.from);
+            const to =
+                componentValue && this.dateTransformer.toControlValue(componentValue.to);
+
+            return from && to && [from, to];
         }
     }
 
     function getExampleDateRangeTransformer(
-        dateTransformer: ExampleDateTransformer | null,
-    ) {
+        dateTransformer: TestDateTransformer | null,
+    ): AbstractTuiControlValueTransformer<
+        TuiDayRange | null,
+        [Date, Date] | null
+    > | null {
         if (!dateTransformer) {
             return null;
         }
 
-        return new (class {
-            toOrigin([transformedFrom, transformedTo]: [Date, Date]): TuiDayRange | null {
-                const from = transformedFrom && dateTransformer.toOrigin(transformedFrom);
-                const to = transformedTo && dateTransformer.toOrigin(transformedTo);
-
-                return from && to && new TuiDayRange(from, to);
-            }
-
-            transformValue(originalValue: TuiDayRange | null): [Date, Date] | null {
-                const from =
-                    originalValue && dateTransformer.transformValue(originalValue.from);
-                const to =
-                    originalValue && dateTransformer.transformValue(originalValue.to);
-
-                return from && to && [from, to];
-            }
-        })();
+        return new TestDateRangeTransformer(dateTransformer);
     }
 
     class TransformerTestComponent extends TestComponent {
@@ -334,7 +355,7 @@ describe('InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER', () => {
             providers: [
                 {
                     provide: TUI_DATE_VALUE_TRANSFORMER,
-                    useValue: new ExampleDateTransformer(),
+                    useValue: new TestDateTransformer(),
                 },
                 {
                     provide: TUI_DATE_RANGE_VALUE_TRANSFORMER,

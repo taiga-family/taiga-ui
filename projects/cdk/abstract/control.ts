@@ -120,14 +120,12 @@ export abstract class AbstractTuiControl<T>
             return undefined;
         }
 
-        const possiblyTransformedValue =
+        const controlValue =
             ngControl instanceof NgModel && this.previousInternalValue === undefined
                 ? ngControl.viewModel
                 : ngControl.value;
 
-        return this.valueTransformer
-            ? this.valueTransformer.toOrigin(possiblyTransformedValue)
-            : possiblyTransformedValue;
+        return this.fromControlValue(controlValue);
     }
 
     ngOnInit() {
@@ -156,12 +154,8 @@ export abstract class AbstractTuiControl<T>
     }
 
     registerOnChange(onChange: (value: T | unknown) => void) {
-        this.onChange = (value: T) => {
-            const transformedValue = this.valueTransformer
-                ? this.valueTransformer.transformValue(value)
-                : value;
-
-            onChange(transformedValue);
+        this.onChange = (componentValue: T) => {
+            onChange(this.toControlValue(componentValue));
         };
     }
 
@@ -173,16 +167,13 @@ export abstract class AbstractTuiControl<T>
         this.checkControlUpdate();
     }
 
-    writeValue(possiblyTransformedValue: T | null) {
-        const value = this.valueTransformer
-            ? this.valueTransformer.toOrigin(possiblyTransformedValue)
-            : possiblyTransformedValue;
-
-        this.refreshLocalValue(
+    writeValue(value: T | null) {
+        const controlValue =
             this.ngControl instanceof NgModel && this.previousInternalValue === undefined
                 ? this.ngControl.model
-                : value,
-        );
+                : value;
+
+        this.refreshLocalValue(this.fromControlValue(controlValue));
     }
 
     protected updateFocused(focused: boolean) {
@@ -226,5 +217,17 @@ export abstract class AbstractTuiControl<T>
     private refreshLocalValue(value: T | null) {
         this.previousInternalValue = value;
         this.checkControlUpdate();
+    }
+
+    private fromControlValue(controlValue: unknown): T {
+        return this.valueTransformer
+            ? this.valueTransformer.fromControlValue(controlValue)
+            : (controlValue as T);
+    }
+
+    private toControlValue(componentValue: T): unknown {
+        return this.valueTransformer
+            ? this.valueTransformer.toControlValue(componentValue)
+            : componentValue;
     }
 }

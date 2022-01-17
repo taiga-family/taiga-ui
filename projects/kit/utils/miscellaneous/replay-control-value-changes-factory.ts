@@ -24,7 +24,7 @@ export function TuiReplayControlValueChangesFactory<
 
     return tuiReplayedValueChangesFrom(control).pipe(
         map(value =>
-            valueTransformer ? valueTransformer.toOrigin(value) : (value as T),
+            valueTransformer ? valueTransformer.fromControlValue(value) : (value as T),
         ),
     );
 }
