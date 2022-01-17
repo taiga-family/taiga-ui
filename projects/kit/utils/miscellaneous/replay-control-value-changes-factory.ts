@@ -9,24 +9,22 @@ import {
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-type PossibleValue = TuiDayRange | TuiDay | [TuiDay | null, TuiTime | null] | null;
-
 /**
  * @internal
  */
-export function TuiReplayControlValueChangesFactory(
+export function TuiReplayControlValueChangesFactory<
+    T extends TuiDayRange | TuiDay | [TuiDay | null, TuiTime | null],
+>(
     control: NgControl | null,
-    valueTransformer?: AbstractTuiControlValueTransformer<PossibleValue> | null,
-): Observable<PossibleValue> | null {
+    valueTransformer?: AbstractTuiControlValueTransformer<T> | null,
+): Observable<T | null> | null {
     if (!control) {
         return of(null);
     }
 
     return tuiReplayedValueChangesFrom(control).pipe(
         map(value =>
-            valueTransformer
-                ? valueTransformer.toOrigin(value)
-                : (value as PossibleValue),
+            valueTransformer ? valueTransformer.toOrigin(value) : (value as T),
         ),
     );
 }
