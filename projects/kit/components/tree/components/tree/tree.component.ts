@@ -7,7 +7,10 @@ import {
     Optional,
     ViewChild,
 } from '@angular/core';
+import {TuiHandler} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Subject} from 'rxjs';
+import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 import {TuiTreeChildrenDirective} from '../../directives/tree-children.directive';
 import {TuiTreeContext} from '../../misc/tree.interfaces';
@@ -30,6 +33,8 @@ import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
     },
 })
 export class TuiTreeComponent<T> implements DoCheck {
+    private readonly check$ = new Subject<void>();
+
     @Input()
     value!: T;
 
@@ -38,6 +43,12 @@ export class TuiTreeComponent<T> implements DoCheck {
 
     @ViewChild(TuiTreeComponent)
     readonly child?: TuiTreeComponent<T>;
+
+    readonly children$ = this.check$.pipe(
+        startWith(null),
+        map(() => this.handler(this.value)),
+        distinctUntilChanged(),
+    );
 
     constructor(
         @Optional()
@@ -48,15 +59,13 @@ export class TuiTreeComponent<T> implements DoCheck {
     @Input()
     content: PolymorpheusContent<TuiTreeContext<T>> = ({$implicit}) => String($implicit);
 
-    get children(): readonly T[] {
-        return (
-            this.directive?.childrenHandler(this.value) ??
-            TuiTreeChildrenDirective.defaultHandler(this.value)
-        );
-    }
-
     ngDoCheck() {
+        this.check$.next();
         this.item?.ngDoCheck();
         this.child?.ngDoCheck();
+    }
+
+    private get handler(): TuiHandler<T, readonly T[]> {
+        return this.directive?.childrenHandler ?? TuiTreeChildrenDirective.defaultHandler;
     }
 }

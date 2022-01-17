@@ -5,34 +5,6 @@ import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiIdentityMatcher} from '@taig
 import {TuiValueContentContext} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
-import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
-import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
-import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
-import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
-import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
-import {default as example6Html} from '!!raw-loader!./examples/6/index.html';
-import {default as example6Less} from '!!raw-loader!./examples/6/index.less';
-import {default as example6Ts} from '!!raw-loader!./examples/6/index.ts';
-import {default as example7Html} from '!!raw-loader!./examples/7/index.html';
-import {default as example7Less} from '!!raw-loader!./examples/7/index.less';
-import {default as example7Ts} from '!!raw-loader!./examples/7/index.ts';
-import {default as example8Html} from '!!raw-loader!./examples/8/index.html';
-import {default as example8Less} from '!!raw-loader!./examples/8/index.less';
-import {default as example8Ts} from '!!raw-loader!./examples/8/index.ts';
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
@@ -62,55 +34,63 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
         TuiValueContentContext<Account>
     > = '';
 
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
-    readonly exampleDeclareForm = exampleDeclareForm;
+    readonly exampleImportModule = import(
+        '!!raw-loader!./examples/import/import-module.txt'
+    );
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly exampleInsertTemplate = import(
+        '!!raw-loader!./examples/import/insert-template.txt'
+    );
+
+    readonly exampleDeclareForm = import(
+        '!!raw-loader!./examples/import/declare-form.txt'
+    );
+
+    readonly example1 = {
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
-        LESS: example2Less,
+    readonly example2 = {
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
+        LESS: import('!!raw-loader!./examples/2/index.less'),
     };
 
-    readonly example3: FrontEndExample = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
-        LESS: example3Less,
+    readonly example3 = {
+        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
+        HTML: import('!!raw-loader!./examples/3/index.html'),
+        LESS: import('!!raw-loader!./examples/3/index.less'),
     };
 
-    readonly example4: FrontEndExample = {
-        TypeScript: example4Ts,
-        HTML: example4Html,
-        LESS: example4Less,
+    readonly example4 = {
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        LESS: import('!!raw-loader!./examples/4/index.less'),
     };
 
-    readonly example5: FrontEndExample = {
-        TypeScript: example5Ts,
-        HTML: example5Html,
-        LESS: example5Less,
+    readonly example5 = {
+        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
+        HTML: import('!!raw-loader!./examples/5/index.html'),
+        LESS: import('!!raw-loader!./examples/5/index.less'),
     };
 
-    readonly example6: FrontEndExample = {
-        TypeScript: example6Ts,
-        HTML: example6Html,
-        LESS: example6Less,
+    readonly example6 = {
+        TypeScript: import('!!raw-loader!./examples/6/index.ts'),
+        HTML: import('!!raw-loader!./examples/6/index.html'),
+        LESS: import('!!raw-loader!./examples/6/index.less'),
     };
 
-    readonly example7: FrontEndExample = {
-        TypeScript: example7Ts,
-        HTML: example7Html,
-        LESS: example7Less,
+    readonly example7 = {
+        TypeScript: import('!!raw-loader!./examples/7/index.ts'),
+        HTML: import('!!raw-loader!./examples/7/index.html'),
+        LESS: import('!!raw-loader!./examples/7/index.less'),
     };
 
-    readonly example8: FrontEndExample = {
-        TypeScript: example8Ts,
-        HTML: example8Html,
-        LESS: example8Less,
+    readonly example8 = {
+        TypeScript: import('!!raw-loader!./examples/8/index.ts'),
+        HTML: import('!!raw-loader!./examples/8/index.html'),
+        LESS: import('!!raw-loader!./examples/8/index.less'),
     };
 
     readonly items = [new Account('Ruble', 500), new Account('Dollar', 237)];
