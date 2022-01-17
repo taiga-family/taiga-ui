@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.30.0](https://github.com/tinkoff/taiga-ui/compare/v2.29.0...v2.30.0) (2022-01-17)
+
+### Features
+
+- **addon-doc:** support parse markdown in tui-doc-code ([#1160](https://github.com/tinkoff/taiga-ui/issues/1160))
+  ([3c6297b](https://github.com/tinkoff/taiga-ui/commit/3c6297bf8c7a0b495816cca81aeef5985c141a54))
+
+### Bug Fixes
+
+- **addon-editor:** change width for the opacity block ([#1162](https://github.com/tinkoff/taiga-ui/issues/1162))
+  ([9907f49](https://github.com/tinkoff/taiga-ui/commit/9907f4940684d99b38297dd4788dfb35aef88f1f))
+- **addon-preview:** add providers to `TuiPreviewModule` ([#1194](https://github.com/tinkoff/taiga-ui/issues/1194))
+  ([f7a4ba9](https://github.com/tinkoff/taiga-ui/commit/f7a4ba9be559243059a1898c3d8a4e9677b81794))
+- **core:** fix `formatNumber` for values when precision > 6 ([#1171](https://github.com/tinkoff/taiga-ui/issues/1171))
+  ([d7f7183](https://github.com/tinkoff/taiga-ui/commit/d7f718314cdfa35e171a5650808dce369ccc2cb1))
+- **core:** fix unnecessary scroll in fullsize dialogs on mobile
+  ([#1190](https://github.com/tinkoff/taiga-ui/issues/1190))
+  ([e8303af](https://github.com/tinkoff/taiga-ui/commit/e8303af19af547e072123e0af26c8f947e52bb52))
+- **demo:** line days chart labels visibility ([#1179](https://github.com/tinkoff/taiga-ui/issues/1179))
+  ([28bf963](https://github.com/tinkoff/taiga-ui/commit/28bf9632328978086ff8e211184450c384057c3d))
+- **demo:** ngModelOptions for table example 3 ([#1187](https://github.com/tinkoff/taiga-ui/issues/1187))
+  ([83f2bdb](https://github.com/tinkoff/taiga-ui/commit/83f2bdb2015d75762a52d83ece845446d8600b9a))
+- **kit:** `InputDate*`-components' filler with custom date-separator
+  ([#1180](https://github.com/tinkoff/taiga-ui/issues/1180))
+  ([723c9b3](https://github.com/tinkoff/taiga-ui/commit/723c9b35ef6d99442f0d223ee6152834664792e5))
+- **kit:** `InputTag` broken layout of `tuiTextfieldCleaner` (size = s, m)
+  ([#1186](https://github.com/tinkoff/taiga-ui/issues/1186))
+  ([2cd678f](https://github.com/tinkoff/taiga-ui/commit/2cd678f74c5ec35092e7052b6cf0e9cb33ab8800))
+- **kit:** `Tree` fix change detection in async children ([#1189](https://github.com/tinkoff/taiga-ui/issues/1189))
+  ([2a215cf](https://github.com/tinkoff/taiga-ui/commit/2a215cf1d518f5ad1867abe468c400b7d95a9e3b))
+
 ## [2.29.0](https://github.com/tinkoff/taiga-ui/compare/v2.28.0...v2.29.0) (2021-12-28)
 
 ### Features
