@@ -4,12 +4,16 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-slider-example-1',
+    selector: 'tui-slider-example-2',
     templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })
-export class TuiSliderExample1 {
-    value = 4;
-    formControl = new FormControl(60);
+export class TuiSliderExample2 {
+    readonly testValue = new FormControl();
+
+    keySteps = [
+        [(100 / 3) * 1, 100000],
+        [(100 / 3) * (1 + 1), 300000],
+    ];
 }

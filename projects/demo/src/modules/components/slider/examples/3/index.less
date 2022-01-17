@@ -1,0 +1,18 @@
+.labels {
+    position: relative;
+    display: flex;
+    font: var(--tui-font-text-s);
+
+    .label {
+        flex: 1;
+
+        &:not(:last-child):not(:first-child) {
+            margin-left: -1.5rem;
+        }
+
+        &:last-child {
+            position: absolute;
+            right: 0;
+        }
+    }
+}

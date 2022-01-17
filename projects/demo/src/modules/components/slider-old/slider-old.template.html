@@ -1,5 +1,14 @@
-<tui-doc-page header="Slider" package="KIT" type="components">
+<tui-doc-page header="Slider" package="KIT" type="components" deprecated>
     <ng-template pageTab>
+        <tui-notification status="error">
+            <strong>Deprecated component</strong>
+            . Use
+            <a tuiLink routerLink="/components/slider">
+                &lt;input tuiSlider /&gt;
+            </a>
+            from the same module.
+        </tui-notification>
+
         <p i18n>Component allows to choose a value from a limited range</p>
 
         <tui-doc-example
