@@ -3,7 +3,9 @@ import Token from 'markdown-it/lib/token';
 
 export function tryParseMarkdownCodeBlock(text: string): string[] {
     const tokens: Token[] = new MarkdownIt().parse(text, {});
-    const result = tokens.filter(({tag}) => tag === 'code').map(({content}) => content);
+    const result = tokens
+        .filter(({tag, type}) => tag === 'code' && type === 'fence')
+        .map(({content}) => content);
 
     return result.length ? result : [text];
 }
