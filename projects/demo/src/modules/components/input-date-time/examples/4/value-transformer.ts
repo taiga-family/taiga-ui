@@ -1,9 +1,8 @@
-import {AbstractTuiControlValueTransformer, TuiDay, TuiTime} from '@taiga-ui/cdk';
+import {TuiControlValueTransformer, TuiDay, TuiTime} from '@taiga-ui/cdk';
 
-export class ExampleDateTimeTransformer extends AbstractTuiControlValueTransformer<
-    [TuiDay | null, TuiTime | null],
-    string
-> {
+export class ExampleDateTimeTransformer
+    implements TuiControlValueTransformer<[TuiDay | null, TuiTime | null], string>
+{
     private readonly separator = ', ';
 
     fromControlValue(controlValue: string): [TuiDay | null, TuiTime | null] {

@@ -2,6 +2,7 @@ export * from './aria-dialog-context';
 export * from './base-dialog';
 export * from './base-dialog-context';
 export * from './context-with-implicit';
+export * from './control-value-transformer';
 export * from './day-like';
 export * from './focusable-element-accessor';
 export * from './month-like';

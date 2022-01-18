@@ -13,7 +13,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    AbstractTuiControlValueTransformer,
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     clamp,
@@ -25,6 +24,7 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiControlValueTransformer,
     TuiDateMode,
     TuiDay,
     tuiDefaultProp,
@@ -62,7 +62,7 @@ import {map, pluck} from 'rxjs/operators';
 // TODO: remove in ivy compilation
 export const TIME_STREAM_FACTORY = (
     control: NgControl | null,
-    valueTransformer: AbstractTuiControlValueTransformer<[TuiDay | null, TuiTime | null]>,
+    valueTransformer: TuiControlValueTransformer<[TuiDay | null, TuiTime | null]>,
 ) => TuiReplayControlValueChangesFactory(control, valueTransformer);
 
 // @dynamic
@@ -144,11 +144,11 @@ export class TuiInputDateTimeComponent
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
         @Optional()
         @Inject(TUI_DATE_TIME_VALUE_TRANSFORMER)
-        readonly valueTransformer: AbstractTuiControlValueTransformer<
+        readonly valueTransformer: TuiControlValueTransformer<
             [TuiDay | null, TuiTime | null]
         > | null,
     ) {
-        super(control, changeDetectorRef);
+        super(control, changeDetectorRef, valueTransformer);
     }
 
     get fillerLength(): number {

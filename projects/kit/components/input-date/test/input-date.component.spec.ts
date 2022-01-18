@@ -3,9 +3,9 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
-    AbstractTuiControlValueTransformer,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
+    TuiControlValueTransformer,
     TuiDay,
 } from '@taiga-ui/cdk';
 import {
@@ -368,10 +368,9 @@ describe('InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA forma
 });
 
 describe('InputDate + TUI_DATE_VALUE_TRANSFORMER', () => {
-    class TestTransformer extends AbstractTuiControlValueTransformer<
-        TuiDay | null,
-        Date | null
-    > {
+    class TestTransformer
+        implements TuiControlValueTransformer<TuiDay | null, Date | null>
+    {
         fromControlValue(controlValue: Date | null): TuiDay | null {
             return controlValue && TuiDay.fromLocalNativeDate(controlValue);
         }

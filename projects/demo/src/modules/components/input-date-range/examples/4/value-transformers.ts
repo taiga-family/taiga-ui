@@ -1,9 +1,8 @@
-import {AbstractTuiControlValueTransformer, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {TuiControlValueTransformer, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 
-export class ExampleDateTransformer extends AbstractTuiControlValueTransformer<
-    TuiDay | null,
-    Date | null
-> {
+export class ExampleDateTransformer
+    implements TuiControlValueTransformer<TuiDay | null, Date | null>
+{
     fromControlValue(controlValue: Date | null): TuiDay | null {
         return controlValue && TuiDay.fromLocalNativeDate(controlValue);
     }
@@ -13,18 +12,15 @@ export class ExampleDateTransformer extends AbstractTuiControlValueTransformer<
     }
 }
 
-class ExampleDateRangeTransformer extends AbstractTuiControlValueTransformer<
-    TuiDayRange | null,
-    [Date, Date] | null
-> {
+class ExampleDateRangeTransformer
+    implements TuiControlValueTransformer<TuiDayRange | null, [Date, Date] | null>
+{
     constructor(
-        private readonly dateTransformer: AbstractTuiControlValueTransformer<
+        private readonly dateTransformer: TuiControlValueTransformer<
             TuiDay | null,
             Date | null
         >,
-    ) {
-        super();
-    }
+    ) {}
 
     fromControlValue(controlValue: [Date, Date] | null): TuiDayRange | null {
         const [transformedFrom, transformedTo] = controlValue || [null, null];
@@ -47,7 +43,7 @@ class ExampleDateRangeTransformer extends AbstractTuiControlValueTransformer<
 
 export function getExampleDateRangeTransformer(
     dateTransformer: ExampleDateTransformer | null,
-): AbstractTuiControlValueTransformer<TuiDayRange | null, [Date, Date] | null> | null {
+): TuiControlValueTransformer<TuiDayRange | null, [Date, Date] | null> | null {
     if (!dateTransformer) {
         return null;
     }

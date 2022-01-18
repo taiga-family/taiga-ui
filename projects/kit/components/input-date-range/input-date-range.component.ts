@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
-    AbstractTuiControlValueTransformer,
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
@@ -29,6 +28,7 @@ import {
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiControlValueTransformer,
     TuiDateMode,
     TuiDay,
     TuiDayLike,
@@ -72,7 +72,7 @@ import {map, takeUntil} from 'rxjs/operators';
 // TODO: remove in ivy compilation
 export const RANGE_STREAM_FACTORY = (
     control: NgControl | null,
-    valueTransformer: AbstractTuiControlValueTransformer<TuiDayRange>,
+    valueTransformer: TuiControlValueTransformer<TuiDayRange>,
 ) => TuiReplayControlValueChangesFactory(control, valueTransformer);
 
 // @dynamic
@@ -172,7 +172,7 @@ export class TuiInputDateRangeComponent
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
         @Optional()
         @Inject(TUI_DATE_RANGE_VALUE_TRANSFORMER)
-        readonly valueTransformer: AbstractTuiControlValueTransformer<TuiDayRange | null> | null,
+        readonly valueTransformer: TuiControlValueTransformer<TuiDayRange | null> | null,
     ) {
         super(control, changeDetectorRef, valueTransformer);
     }

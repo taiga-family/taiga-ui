@@ -10,10 +10,10 @@ import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angula
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
+import {TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
 import {merge, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-import {AbstractTuiControlValueTransformer} from './control-value-transformer';
 import {AbstractTuiInteractive} from './interactive';
 
 /**
@@ -46,7 +46,7 @@ export abstract class AbstractTuiControl<T>
     protected constructor(
         private readonly ngControl: NgControl | null,
         protected readonly changeDetectorRef: ChangeDetectorRef,
-        protected readonly valueTransformer?: AbstractTuiControlValueTransformer<T> | null,
+        protected readonly valueTransformer?: TuiControlValueTransformer<T> | null,
     ) {
         super();
 

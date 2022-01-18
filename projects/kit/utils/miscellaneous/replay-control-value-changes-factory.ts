@@ -1,6 +1,6 @@
 import {NgControl} from '@angular/forms';
 import {
-    AbstractTuiControlValueTransformer,
+    TuiControlValueTransformer,
     TuiDay,
     TuiDayRange,
     tuiReplayedValueChangesFrom,
@@ -16,7 +16,7 @@ export function TuiReplayControlValueChangesFactory<
     T extends TuiDayRange | TuiDay | [TuiDay | null, TuiTime | null],
 >(
     control: NgControl | null,
-    valueTransformer?: AbstractTuiControlValueTransformer<T> | null,
+    valueTransformer?: TuiControlValueTransformer<T> | null,
 ): Observable<T | null> | null {
     if (!control) {
         return of(null);
