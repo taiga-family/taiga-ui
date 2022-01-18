@@ -464,7 +464,7 @@ describe('InputDateTime + TUI_DATE_TIME_VALUE_TRANSFORMER', () => {
             providers: [
                 {
                     provide: TUI_DATE_TIME_VALUE_TRANSFORMER,
-                    useValue: new ExampleDateTimeTransformer(),
+                    useClass: ExampleDateTimeTransformer,
                 },
             ],
         });

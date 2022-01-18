@@ -391,7 +391,7 @@ describe('InputDate + TUI_DATE_VALUE_TRANSFORMER', () => {
             providers: [
                 {
                     provide: TUI_DATE_VALUE_TRANSFORMER,
-                    useValue: new TestTransformer(),
+                    useClass: TestTransformer,
                 },
             ],
         });

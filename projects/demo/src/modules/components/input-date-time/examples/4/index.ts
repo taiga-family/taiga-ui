@@ -12,7 +12,7 @@ import {ExampleDateTimeTransformer} from './value-transformer';
     providers: [
         {
             provide: TUI_DATE_TIME_VALUE_TRANSFORMER,
-            useValue: new ExampleDateTimeTransformer(),
+            useClass: ExampleDateTimeTransformer,
         },
     ],
     changeDetection,

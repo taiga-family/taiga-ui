@@ -348,7 +348,7 @@ describe('InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER', () => {
             providers: [
                 {
                     provide: TUI_DATE_VALUE_TRANSFORMER,
-                    useValue: new TestDateTransformer(),
+                    useClass: TestDateTransformer,
                 },
                 {
                     provide: TUI_DATE_RANGE_VALUE_TRANSFORMER,

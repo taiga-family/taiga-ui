@@ -21,7 +21,7 @@ class ExampleTransformer implements TuiControlValueTransformer<From, To> {
     providers: [
         {
             provide: TUI_DATE_VALUE_TRANSFORMER,
-            useValue: new ExampleTransformer(),
+            useClass: ExampleTransformer,
         },
     ],
 })

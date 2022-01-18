@@ -18,7 +18,7 @@ import {
     providers: [
         {
             provide: TUI_DATE_VALUE_TRANSFORMER,
-            useValue: new ExampleDateTransformer(),
+            useClass: ExampleDateTransformer,
         },
         {
             provide: TUI_DATE_RANGE_VALUE_TRANSFORMER,
