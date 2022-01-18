@@ -98,6 +98,7 @@ export abstract class AbstractTuiInputSlider<T>
             allowDecimal: !Number.isInteger(quantum),
             decimalSymbol: this.numberFormat.decimalSeparator,
             thousandSymbol: this.numberFormat.thousandSeparator,
+            decimalLimit: this.decimalLimit,
         }),
         pipe: tuiCreateAutoCorrectedNumberPipe(
             0,
@@ -141,6 +142,10 @@ export abstract class AbstractTuiInputSlider<T>
 
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
+    }
+
+    private get decimalLimit(): number {
+        return (1 / this.quantum - 1).toString().split('.')[0].length;
     }
 
     protected valueGuard(value: number): number {
