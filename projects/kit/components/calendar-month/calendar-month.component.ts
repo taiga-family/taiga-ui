@@ -137,7 +137,11 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         }
 
         const theLastOfRange = value.to.monthSame(item) && !value.isSingleMonth;
-        const hoveredItemBeforeTo = value.to.monthSame(item) && !value.isSingleMonth;
+        const hoveredItemBeforeTo =
+            hoveredItem !== null &&
+            value.to.monthSame(item) &&
+            hoveredItem.monthBefore(value.to) &&
+            value.isSingleMonth;
         const hoveredItemIsCandidatToBeTo =
             hoveredItem !== null &&
             hoveredItem.monthSame(item) &&
