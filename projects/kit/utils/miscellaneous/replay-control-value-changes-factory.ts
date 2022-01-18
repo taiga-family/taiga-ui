@@ -11,6 +11,7 @@ import {map} from 'rxjs/operators';
 
 /**
  * @internal
+ * TODO: rename function in 3.0. The name should be shorter and start with lowercase letter.
  */
 export function TuiReplayControlValueChangesFactory<
     T extends TuiDayRange | TuiDay | [TuiDay | null, TuiTime | null],
@@ -18,13 +19,13 @@ export function TuiReplayControlValueChangesFactory<
     control: NgControl | null,
     valueTransformer?: TuiControlValueTransformer<T> | null,
 ): Observable<T | null> | null {
-    if (!control) {
-        return of(null);
-    }
-
-    return tuiReplayedValueChangesFrom(control).pipe(
-        map(value =>
-            valueTransformer ? valueTransformer.fromControlValue(value) : (value as T),
-        ),
-    );
+    return control
+        ? tuiReplayedValueChangesFrom(control).pipe(
+              map(value =>
+                  valueTransformer
+                      ? valueTransformer.fromControlValue(value)
+                      : (value as T),
+              ),
+          )
+        : of(null);
 }

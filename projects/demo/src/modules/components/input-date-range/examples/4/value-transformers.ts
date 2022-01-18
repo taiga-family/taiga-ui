@@ -44,9 +44,5 @@ class ExampleDateRangeTransformer
 export function getExampleDateRangeTransformer(
     dateTransformer: ExampleDateTransformer | null,
 ): TuiControlValueTransformer<TuiDayRange | null, [Date, Date] | null> | null {
-    if (!dateTransformer) {
-        return null;
-    }
-
-    return new ExampleDateRangeTransformer(dateTransformer);
+    return dateTransformer && new ExampleDateRangeTransformer(dateTransformer);
 }
