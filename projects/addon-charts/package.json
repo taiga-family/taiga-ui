@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-charts",
-    "version": "2.29.0",
+    "version": "2.30.0",
     "description": "Extension package for Taiga UI that adds various charts, graphs and related components.",
     "keywords": ["angular", "component", "graph", "chart", "bar", "diagram"],
     "license": "Apache-2.0",
@@ -11,10 +11,10 @@
         "@angular/core": ">=9.0.0",
         "@ng-web-apis/common": "1.12.1",
         "@tinkoff/ng-polymorpheus": "3.1.12",
-        "@taiga-ui/cdk": "2.29.0",
-        "@taiga-ui/core": "2.29.0"
+        "@taiga-ui/cdk": "2.30.0",
+        "@taiga-ui/core": "2.30.0"
     },
     "devDependencies": {
-        "@taiga-ui/core": "2.29.0"
+        "@taiga-ui/core": "2.30.0"
     }
 }
