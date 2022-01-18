@@ -52,6 +52,30 @@ export class MyAvatarModule {
         expect(tryParseMarkdownCodeBlock(txt)).toEqual([txt]);
     });
 
+    it('correct parse typescript file as plain text', () => {
+        const txt = `
+import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+
+@Component({
+    selector: 'tui-example',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    changeDetection,
+})
+export class TuiRatingExample1 {
+    control = new FormControl('');
+
+    setDisable(): void {
+        control.enable();
+    }
+}
+`;
+
+        expect(tryParseMarkdownCodeBlock(txt)).toEqual([txt]);
+    });
+
     it('should be correct parse with deep markdown in variable', () => {
         const code = `
 ${codeSection}ts
