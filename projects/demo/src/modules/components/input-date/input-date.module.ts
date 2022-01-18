@@ -22,6 +22,8 @@ import {TuiInputDateExample1} from './examples/1';
 import {TuiInputDateExample2} from './examples/2';
 import {TuiInputDateExample3} from './examples/3';
 import {TuiInputDateExample4} from './examples/4';
+import {TuiInputDateExample5} from './examples/5';
+import {ExampleNativeDateTransformerDirective} from './examples/5/native-date-transformer.directive';
 import {ExampleTuiInputDateComponent} from './input-date.component';
 
 @NgModule({
@@ -48,6 +50,8 @@ import {ExampleTuiInputDateComponent} from './input-date.component';
         TuiInputDateExample2,
         TuiInputDateExample3,
         TuiInputDateExample4,
+        TuiInputDateExample5,
+        ExampleNativeDateTransformerDirective,
     ],
     exports: [ExampleTuiInputDateComponent],
 })

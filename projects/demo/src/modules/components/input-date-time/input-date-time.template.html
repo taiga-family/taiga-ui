@@ -1,20 +1,42 @@
 <tui-doc-page header="InputDateTime" package="KIT" type="components">
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
-            InputDateTime allows to input date and time
+        <div i18n class="tui-space_bottom-9">
+            <code>InputDateTime</code>
+            allows to input date and time
         </div>
 
         <h3 i18n>DI-tokens for date localization:</h3>
         <dl i18n>
             <dt><code>TUI_DATE_FORMAT</code></dt>
-            <dd>
+            <dd class="tui-space_bottom-5">
                 active date format (
                 <code>'DMY' | 'MDY' | 'YMD'</code>
                 )
             </dd>
-            <br />
             <dt><code>TUI_DATE_SEPARATOR</code></dt>
             <dd>single-character date's separator (dot, slash etc.)</dd>
+        </dl>
+        <p class="tui-space_bottom-9">
+            <a tuiLink routerLink="." fragment="date-localization">
+                See example
+            </a>
+            with the usage of these tokens.
+        </p>
+
+        <h3 i18n>DI-tokens for input-configurations:</h3>
+        <dl i18n>
+            <dt><code>TUI_DATE_TIME_VALUE_TRANSFORMER</code></dt>
+            <dd>
+                custom format of control output (
+                <code>[TuiDay | null, TuiTime | null]</code>
+                is default).
+                <p>
+                    <a tuiLink routerLink="." fragment="string-control-output">
+                        See example
+                    </a>
+                    with string as control's output.
+                </p>
+            </dd>
         </dl>
 
         <tui-doc-example
@@ -36,6 +58,15 @@
             [content]="example3"
         >
             <tui-input-date-time-example-3></tui-input-date-time-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="string-control-output"
+            i18n-heading
+            heading="With control's output as string"
+            [content]="example4"
+        >
+            <tui-input-date-time-example-4></tui-input-date-time-example-4>
         </tui-doc-example>
     </ng-template>
 

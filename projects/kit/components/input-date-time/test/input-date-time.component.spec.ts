@@ -1,4 +1,4 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
+import {Component, DebugElement, Type, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -7,6 +7,7 @@ import {
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    TuiControlValueTransformer,
     TuiDay,
     TuiTime,
 } from '@taiga-ui/cdk';
@@ -15,6 +16,7 @@ import {
     TuiInputDateTimeComponent,
     TuiInputDateTimeModule,
 } from '@taiga-ui/kit/components';
+import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 
@@ -65,8 +67,10 @@ const DEFAULT_TESTING_MODULE_META = {
     declarations: [TestComponent],
 };
 
-const initializeEnvironment = async () => {
-    fixture = TestBed.createComponent(TestComponent);
+const initializeEnvironment = async (
+    componentClass: Type<TestComponent> = TestComponent,
+) => {
+    fixture = TestBed.createComponent(componentClass);
     component = fixture.componentInstance;
     pageObject = new PageObject(fixture);
     inputPO = new NativeInputPO(fixture, testContext.nativeInputAutomationId);
@@ -422,6 +426,94 @@ describe('InputDateTime + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"', () =>
         await fixture.whenStable();
 
         expect(inputPO.value).toBe('2010-04-09, 20:18');
+    });
+});
+
+describe('InputDateTime + TUI_DATE_TIME_VALUE_TRANSFORMER', () => {
+    class ExampleDateTimeTransformer
+        implements TuiControlValueTransformer<[TuiDay | null, TuiTime | null], string>
+    {
+        private readonly separator = ', ';
+
+        fromControlValue(controlValue: string): [TuiDay | null, TuiTime | null] {
+            const [day, time = ''] = controlValue.split(this.separator);
+
+            if (!day) {
+                return [null, null];
+            }
+
+            return [TuiDay.normalizeParse(day), time ? TuiTime.fromString(time) : null];
+        }
+
+        toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
+            if (!day) return '';
+
+            return day.toString() + (time ? `${this.separator}${time.toString()}` : '');
+        }
+    }
+
+    class TransformerTestComponent extends TestComponent {
+        control = new FormControl('19.01.2022, 12:33');
+        min = new TuiDay(1900, 0, 1);
+    }
+
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            ...DEFAULT_TESTING_MODULE_META,
+            declarations: [TransformerTestComponent],
+            providers: [
+                {
+                    provide: TUI_DATE_TIME_VALUE_TRANSFORMER,
+                    useClass: ExampleDateTimeTransformer,
+                },
+            ],
+        });
+    });
+
+    beforeEach(async () => {
+        await initializeEnvironment(TransformerTestComponent);
+    });
+
+    it('correctly transforms initial value', () => {
+        expect(inputPO.value).toBe('19.01.2022, 12:33');
+        expect(component.control.value).toEqual('19.01.2022, 12:33');
+    });
+
+    it('transforms typed value', () => {
+        inputPO.sendText('150520220943');
+
+        expect(inputPO.value).toBe('15.05.2022, 09:43');
+        expect(component.control.value).toEqual('15.05.2022, 09:43');
+    });
+
+    it('transforms min day as output (if typed day is less than min day)', () => {
+        inputPO.sendText('19.02.1861,1833');
+
+        expect(inputPO.value).toBe('01.01.1900, 18:33');
+        expect(component.control.value).toEqual('01.01.1900, 18:33');
+    });
+
+    it('transforms value which was selected via calendar', async () => {
+        inputPO.sendTextAndBlur('020320221211');
+        expect(inputPO.value).toBe('02.03.2022, 12:11');
+
+        mouseDownOnTextfield();
+        expect(getCalendar()).not.toBeNull();
+
+        const calendarCell = getCalendarCell(17);
+
+        calendarCell?.nativeElement.click();
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('17.03.2022, 12:11');
+    });
+
+    it('transforms value which was programmatically patched', () => {
+        component.control.patchValue('09.05.1945, 00:43');
+
+        expect(inputPO.value).toBe('09.05.1945, 00:43');
+        expect(component.control.value).toEqual('09.05.1945, 00:43');
     });
 });
 

@@ -1,8 +1,13 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
+import {Component, DebugElement, Type, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay} from '@taiga-ui/cdk';
+import {
+    TUI_DATE_FORMAT,
+    TUI_DATE_SEPARATOR,
+    TuiControlValueTransformer,
+    TuiDay,
+} from '@taiga-ui/cdk';
 import {
     TuiHintControllerModule,
     TuiRootModule,
@@ -10,6 +15,7 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 
@@ -90,8 +96,8 @@ const DEFAULT_TESTING_MODULE_META = {
     declarations: [TestComponent],
 };
 
-const initializeEnvironment = async () => {
-    fixture = TestBed.createComponent(TestComponent);
+const initializeEnvironment = async (component: Type<TestComponent> = TestComponent) => {
+    fixture = TestBed.createComponent(component);
     fixture.detectChanges();
 
     pageObject = new PageObject(fixture);
@@ -358,6 +364,82 @@ describe('InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA forma
         expect(typedDay.day).toBe(14);
         expect(typedDay.month).toBe(4);
         expect(typedDay.year).toBe(1988);
+    });
+});
+
+describe('InputDate + TUI_DATE_VALUE_TRANSFORMER', () => {
+    class TestTransformer
+        implements TuiControlValueTransformer<TuiDay | null, Date | null>
+    {
+        fromControlValue(controlValue: Date | null): TuiDay | null {
+            return controlValue && TuiDay.fromLocalNativeDate(controlValue);
+        }
+
+        toControlValue(componentValue: TuiDay | null): Date | null {
+            return componentValue && componentValue.toLocalNativeDate();
+        }
+    }
+
+    class TransformerTestComponent extends TestComponent {
+        control = new FormControl(new Date(2022, 0, 31));
+    }
+
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            ...DEFAULT_TESTING_MODULE_META,
+            declarations: [TransformerTestComponent],
+            providers: [
+                {
+                    provide: TUI_DATE_VALUE_TRANSFORMER,
+                    useClass: TestTransformer,
+                },
+            ],
+        });
+    });
+
+    beforeEach(async () => {
+        await initializeEnvironment(TransformerTestComponent);
+    });
+
+    it('correctly transforms initial value', () => {
+        expect(inputPO.value).toBe('31.01.2022');
+        expect(testComponent.control.value).toEqual(new Date(2022, 0, 31));
+    });
+
+    it('transforms typed value', () => {
+        inputPO.sendText('09011905');
+
+        expect(inputPO.value).toBe('09.01.1905');
+        expect(testComponent.control.value).toEqual(new Date(1905, 0, 9));
+    });
+
+    it('transforms min day as output (if typed day is less than min day)', () => {
+        inputPO.sendText('19.02.1861');
+
+        expect(inputPO.value).toBe('01.01.1900');
+        expect(testComponent.control.value).toEqual(new Date(1900, 0, 1));
+    });
+
+    it('transforms value which was selected via calendar', async () => {
+        mouseDownOnTextfield();
+
+        expect(getCalendar()).not.toBeNull();
+
+        const calendarCell = getCalendarCell(20);
+
+        calendarCell?.nativeElement.click();
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe('20.01.2022');
+        expect(testComponent.control.value).toEqual(new Date(2022, 0, 20));
+    });
+
+    it('transforms value which was programmatically patched', () => {
+        testComponent.control.patchValue(new Date(1991, 11, 26));
+
+        expect(inputPO.value).toBe('26.12.1991');
+        expect(testComponent.control.value).toEqual(new Date(1991, 11, 26));
     });
 });
 

@@ -1,18 +1,60 @@
 <tui-doc-page header="InputDateRange" package="KIT" type="components">
     <ng-template pageTab>
-        <p i18n>A field to input a range of dates</p>
+        <p i18n class="tui-space_bottom-9">
+            <code>InputDate</code>
+            is a field to input a range of dates.
+        </p>
 
         <h3 i18n>DI-tokens for date localization:</h3>
         <dl i18n>
             <dt><code>TUI_DATE_FORMAT</code></dt>
-            <dd>
+            <dd class="tui-space_bottom-5">
                 active date format (
                 <code>'DMY' | 'MDY' | 'YMD'</code>
                 )
             </dd>
-            <br />
             <dt><code>TUI_DATE_SEPARATOR</code></dt>
             <dd>single-character date's separator (dot, slash etc.)</dd>
+        </dl>
+        <p class="tui-space_bottom-9">
+            <a tuiLink routerLink="." fragment="date-localization">
+                See an example
+            </a>
+            with the usage of these tokens.
+        </p>
+
+        <h3 i18n>DI-tokens for input-configurations:</h3>
+        <dl i18n>
+            <dt><code>TUI_DATE_RANGE_VALUE_TRANSFORMER</code></dt>
+            <dd>
+                custom format of control output (
+                <a
+                    tuiLink
+                    target="_blank"
+                    href="https://github.com/Tinkoff/taiga-ui/blob/main/projects/cdk/date-time/day-range.ts"
+                >
+                    TuiDayRange
+                </a>
+                is default).
+                <p>
+                    <a tuiLink routerLink="." fragment="native-date-output">
+                        See an example
+                    </a>
+                    of how to provide transformers for
+                    <code>InputDate</code>
+                    and
+                    <code>InputDateRange</code>
+                    to work with native
+                    <a
+                        tuiLink
+                        target="_blank"
+                        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
+                    >
+                        Date
+                    </a>
+                    objects.
+                </p>
+            </dd>
         </dl>
 
         <tui-doc-example
@@ -39,6 +81,15 @@
             [content]="example3"
         >
             <tui-input-date-range-example-3></tui-input-date-range-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="native-date-output"
+            i18n-heading
+            heading="With native Date output"
+            [content]="example4"
+        >
+            <tui-input-date-range-example-4></tui-input-date-range-example-4>
         </tui-doc-example>
     </ng-template>
 

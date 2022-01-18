@@ -60,6 +60,14 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
         HTML: import('!!raw-loader!./examples/3/index.html'),
     };
 
+    readonly example4: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        'value-transformers.ts': import(
+            '!!raw-loader!./examples/4/value-transformers.ts'
+        ),
+    };
+
     readonly dayVariants = [
         TUI_FIRST_DAY,
         new TuiDay(2021, 2, 5),

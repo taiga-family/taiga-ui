@@ -26,6 +26,7 @@ import {
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiControlValueTransformer,
     TuiDateMode,
     TuiDay,
     tuiDefaultProp,
@@ -49,6 +50,7 @@ import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers
 import {
     TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_TEXTS,
+    TUI_DATE_VALUE_TRANSFORMER,
     TUI_MOBILE_CALENDAR,
 } from '@taiga-ui/kit/tokens';
 import {
@@ -61,8 +63,12 @@ import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
-export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
+export const DATE_STREAM_FACTORY = (
+    control: NgControl | null,
+    valueTransformer: TuiControlValueTransformer<TuiDay>,
+) => TuiReplayControlValueChangesFactory(control, valueTransformer);
 
+// @dynamic
 @Component({
     selector: 'tui-input-date',
     templateUrl: './input-date.template.html',
@@ -75,7 +81,10 @@ export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
         },
         {
             provide: TUI_CALENDAR_DATA_STREAM,
-            deps: [[new Optional(), new Self(), NgControl]],
+            deps: [
+                [new Optional(), new Self(), NgControl],
+                [new Optional(), forwardRef(() => TUI_DATE_VALUE_TRANSFORMER)],
+            ],
             useFactory: DATE_STREAM_FACTORY,
         },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
@@ -145,8 +154,11 @@ export class TuiInputDateComponent
         @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
+        @Optional()
+        @Inject(TUI_DATE_VALUE_TRANSFORMER)
+        readonly valueTransformer: TuiControlValueTransformer<TuiDay | null> | null,
     ) {
-        super(control, changeDetectorRef);
+        super(control, changeDetectorRef, valueTransformer);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

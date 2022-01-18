@@ -10,6 +10,7 @@ import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angula
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
+import {TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
 import {merge, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -45,6 +46,7 @@ export abstract class AbstractTuiControl<T>
     protected constructor(
         private readonly ngControl: NgControl | null,
         protected readonly changeDetectorRef: ChangeDetectorRef,
+        protected readonly valueTransformer?: TuiControlValueTransformer<T> | null,
     ) {
         super();
 
@@ -118,9 +120,12 @@ export abstract class AbstractTuiControl<T>
             return undefined;
         }
 
-        return ngControl instanceof NgModel && this.previousInternalValue === undefined
-            ? ngControl.viewModel
-            : ngControl.value;
+        const controlValue =
+            ngControl instanceof NgModel && this.previousInternalValue === undefined
+                ? ngControl.viewModel
+                : ngControl.value;
+
+        return this.fromControlValue(controlValue);
     }
 
     ngOnInit() {
@@ -148,8 +153,10 @@ export abstract class AbstractTuiControl<T>
         this.changeDetectorRef.markForCheck();
     }
 
-    registerOnChange(onChange: (value: T) => void) {
-        this.onChange = onChange;
+    registerOnChange(onChange: (value: T | unknown) => void) {
+        this.onChange = (componentValue: T) => {
+            onChange(this.toControlValue(componentValue));
+        };
     }
 
     registerOnTouched(onTouched: () => void) {
@@ -161,11 +168,12 @@ export abstract class AbstractTuiControl<T>
     }
 
     writeValue(value: T | null) {
-        this.refreshLocalValue(
+        const controlValue =
             this.ngControl instanceof NgModel && this.previousInternalValue === undefined
                 ? this.ngControl.model
-                : value,
-        );
+                : value;
+
+        this.refreshLocalValue(this.fromControlValue(controlValue));
     }
 
     protected updateFocused(focused: boolean) {
@@ -209,5 +217,17 @@ export abstract class AbstractTuiControl<T>
     private refreshLocalValue(value: T | null) {
         this.previousInternalValue = value;
         this.checkControlUpdate();
+    }
+
+    private fromControlValue(controlValue: unknown): T {
+        return this.valueTransformer
+            ? this.valueTransformer.fromControlValue(controlValue)
+            : (controlValue as T);
+    }
+
+    private toControlValue(componentValue: T): unknown {
+        return this.valueTransformer
+            ? this.valueTransformer.toControlValue(componentValue)
+            : componentValue;
     }
 }
