@@ -7,9 +7,10 @@ describe('Select', () => {
     });
 
     it('opens dropdown by click on icon', () => {
-        cy.get('body')
+        cy.get('tui-doc-example')
+            .first()
             .wait(200)
-            .trigger('click', {x: 720, y: 530})
+            .trigger('click', {x: 330, y: 220})
             .wait(100)
             .matchImageSnapshot('01-click-arrow');
     });
