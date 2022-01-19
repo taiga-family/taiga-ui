@@ -145,7 +145,7 @@ export abstract class AbstractTuiInputSlider<T>
     }
 
     private get decimalLimit(): number {
-        return (1 / this.quantum - 1).toString().split('.')[0].length;
+        return this.quantum.toString().split('.')[1]?.length || 2;
     }
 
     protected valueGuard(value: number): number {

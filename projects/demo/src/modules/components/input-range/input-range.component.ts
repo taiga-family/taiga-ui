@@ -53,7 +53,7 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     steps = this.stepsVariants[0];
 
-    quantumVariants: readonly number[] = [1, 10, 100];
+    quantumVariants: readonly number[] = [1, 0.001, 10, 100];
 
     quantum = this.quantumVariants[0];
 
