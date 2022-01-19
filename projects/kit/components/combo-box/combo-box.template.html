@@ -13,7 +13,7 @@
         [invalid]="computedInvalid"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [iconContent]="arrow"
+        [iconContent]="icon"
         [disabled]="computedDisabled"
         [focusable]="computedFocusable"
         [value]="nativeValue"
@@ -32,4 +32,8 @@
             [context]="computeContext(value, computedFocused)"
         ></div>
     </tui-primitive-textfield>
+
+    <ng-template #icon>
+        <div polymorpheus-outlet class="t-icon" [content]="arrow"></div>
+    </ng-template>
 </tui-hosted-dropdown>
