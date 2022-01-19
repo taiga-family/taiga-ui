@@ -93,14 +93,14 @@ describe('TableBarsHost', () => {
 
         fixture.detectChanges();
 
-        expect(getBar().nativeElement.classList.contains('bar_light')).toBe(false);
+        expect(getBar().nativeElement.classList.contains('t-bar_light')).toBe(false);
     });
 
     it('pi mode: light tableBar light', () => {
         service.open(title, {mode: 'onDark'}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
-        expect(getBar().nativeElement.classList.contains('bar_light')).toBe(true);
+        expect(getBar().nativeElement.classList.contains('t-bar_light')).toBe(true);
     });
 
     it('there is no close button by default', () => {
