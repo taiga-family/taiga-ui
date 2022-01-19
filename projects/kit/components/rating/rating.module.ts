@@ -1,12 +1,18 @@
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiFocusableModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
 
 import {TuiRatingComponent} from './rating.component';
 
 @NgModule({
-    imports: [TuiRepeatTimesModule, TuiFocusableModule, TuiSvgModule, FormsModule],
+    imports: [
+        TuiSvgModule,
+        TuiFocusableModule,
+        TuiRepeatTimesModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
     declarations: [TuiRatingComponent],
     exports: [TuiRatingComponent],
 })

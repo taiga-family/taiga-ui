@@ -4,6 +4,7 @@ import {
     Component,
     ElementRef,
     forwardRef,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -16,6 +17,7 @@ import {
     isNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
+    TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 
 import {TUI_RATING_OPTIONS, TuiRatingOptions} from './rating-options';
@@ -32,9 +34,12 @@ import {TUI_RATING_OPTIONS, TuiRatingOptions} from './rating-options';
         },
     ],
 })
-export class TuiRatingComponent extends AbstractTuiControl<number> {
-    @ViewChild('range')
-    private readonly rangeElement?: ElementRef<HTMLInputElement>;
+export class TuiRatingComponent
+    extends AbstractTuiControl<number>
+    implements TuiFocusableElementAccessor
+{
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @Input()
     @tuiDefaultProp()
@@ -65,14 +70,14 @@ export class TuiRatingComponent extends AbstractTuiControl<number> {
         super(ngControl, changeDetectorRef);
     }
 
-    get nativeRangeElement(): HTMLInputElement | null {
-        return this.computedDisabled || !this.rangeElement
+    get nativeFocusableElement(): HTMLInputElement | null {
+        return this.computedDisabled || !this.focusableElement
             ? null
-            : this.rangeElement.nativeElement;
+            : this.focusableElement.nativeElement;
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeRangeElement);
+        return isNativeFocused(this.nativeFocusableElement);
     }
 
     get isFocusable(): boolean {
@@ -83,20 +88,18 @@ export class TuiRatingComponent extends AbstractTuiControl<number> {
         return (100 * this.value) / this.max;
     }
 
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
+    onFocused(focused: boolean): void {
+        this.updateFocused(focused);
+    }
+
     setRateByReverseIndex(index: number): void {
         this.updateValue(this.max - index);
-        this.onTouchedByUpdateOnBlur();
     }
 
-    setRate(value: number | string): void {
-        this.updateValue(Number(value));
-        this.onTouchedByUpdateOnBlur();
-    }
-
-    onTouchedByUpdateOnBlur(): void {
-        if (this.control?.updateOn === 'blur') {
-            this.updateFocused(false);
-        }
+    setRate(value: number): void {
+        this.updateValue(value);
     }
 
     protected getFallbackValue(): number {

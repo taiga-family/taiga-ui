@@ -1,5 +1,5 @@
 ```ts
-import {TUI_RATING_OPTIONS} from '@taiga-ui/kit';
+import {TUI_RATING_OPTIONS, TUI_RATING_DEFAULT_OPTIONS} from '@taiga-ui/kit';
 // ...
 
 @NgModule({
@@ -7,10 +7,9 @@ import {TUI_RATING_OPTIONS} from '@taiga-ui/kit';
     {
       provide: TUI_RATING_OPTIONS,
       useValue: {
-        min: 0,
-        max: 5,
-        iconNormal: 'tuiIconStarLarge',
-        iconFilled: 'tuiIconStarFilledLarge',
+        ...TUI_RATING_DEFAULT_OPTIONS,
+        iconNormal: 'tuiIconHeart',
+        iconFilled: 'tuiIconHeartFilled',
       },
     },
   ],

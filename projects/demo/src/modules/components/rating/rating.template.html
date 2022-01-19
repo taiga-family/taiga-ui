@@ -24,10 +24,6 @@
     <ng-template pageTab>
         <tui-doc-demo [control]="control">
             <ng-template>
-                <b>Current rating</b>
-                - {{rating.value}}
-                <br />
-
                 <tui-rating
                     #rating
                     [min]="min"
@@ -37,7 +33,9 @@
                     [iconNormal]="iconNormal"
                     [iconFilled]="iconFilled"
                     [formControl]="control"
-                ></tui-rating>
+                >
+                    <p class="label">Current rating - {{rating.value}}</p>
+                </tui-rating>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -47,53 +45,67 @@
                 documentationPropertyType="boolean"
                 documentationPropertyName="readOnly"
                 [(documentationPropertyValue)]="readOnly"
-            ></ng-template>
+            >
+                Component is read only
+            </ng-template>
             <ng-template
                 i18n
-                documentationPropertyMode="input"
+                documentationPropertyName=""
                 documentationPropertyType="boolean"
-                documentationPropertyName="disabled"
-                [documentationPropertyValue]="control.disabled"
-                (documentationPropertyValueChange)="$event ? control.disable() : control.enable()"
-            ></ng-template>
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyType="number"
                 documentationPropertyMode="input"
                 documentationPropertyName="min"
                 [(documentationPropertyValue)]="min"
-            ></ng-template>
+            >
+                Min value
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyType="number"
                 documentationPropertyMode="input"
                 documentationPropertyName="max"
                 [(documentationPropertyValue)]="max"
-            ></ng-template>
+            >
+                Max value
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 documentationPropertyName="style.color"
                 [documentationPropertyValues]="colorVariants"
-                (documentationPropertyValueChange)="color = $event"
-            ></ng-template>
+                [(documentationPropertyValue)]="color"
+            >
+                Custom color
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 documentationPropertyName="iconNormal"
                 [documentationPropertyValues]="iconNormalVariants"
-                (documentationPropertyValueChange)="iconNormal = $event"
-            ></ng-template>
+                [(documentationPropertyValue)]="iconNormal"
+            >
+                Custom empty icon
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 documentationPropertyName="iconFilled"
                 [documentationPropertyValues]="iconFilledVariants"
-                (documentationPropertyValueChange)="iconFilled = $event"
-            ></ng-template>
+                [(documentationPropertyValue)]="iconFilled"
+            >
+                Custom filled icon
+            </ng-template>
         </tui-doc-documentation>
     </ng-template>
 

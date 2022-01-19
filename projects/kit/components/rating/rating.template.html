@@ -1,33 +1,36 @@
-<div class="t-interactive">
-    <tui-svg
-        *tuiRepeatTimes="let index of max"
-        class="t-icon-filled"
-        [src]="iconFilled"
-        (click)="setRateByReverseIndex(index)"
-    ></tui-svg>
-</div>
+<label>
+    <ng-content></ng-content>
 
-<div class="t-wrapper" [style.width.%]="percent">
-    <tui-svg
-        *tuiRepeatTimes="let index of max"
-        class="t-icon-filled"
-        [src]="iconFilled"
-    ></tui-svg>
-</div>
+    <div class="t-host">
+        <div class="t-interactive">
+            <tui-svg
+                *tuiRepeatTimes="let index of max"
+                class="t-icon-filled"
+                [src]="iconFilled"
+                (click)="setRateByReverseIndex(index)"
+            ></tui-svg>
+        </div>
 
-<tui-svg
-    *tuiRepeatTimes="let item of max"
-    class="t-icon-normal"
-    [src]="iconNormal"
-></tui-svg>
+        <div class="t-wrapper" [style.width.%]="percent">
+            <tui-svg
+                *tuiRepeatTimes="let index of max"
+                class="t-icon-filled"
+                [src]="iconFilled"
+            ></tui-svg>
+        </div>
 
-<input
-    type="range"
-    step="1"
-    class="t-input"
-    [min]="min"
-    [max]="max"
-    [ngModel]="value"
-    [tuiFocusable]="isFocusable"
-    (ngModelChange)="setRate($event)"
-/>
+        <tui-svg *tuiRepeatTimes="let item of max" [src]="iconNormal"></tui-svg>
+
+        <input
+            #focusableElement
+            type="range"
+            step="1"
+            class="t-input"
+            [min]="min"
+            [max]="max"
+            [ngModel]="value"
+            [tuiFocusable]="isFocusable"
+            (ngModelChange)="setRate($event)"
+        />
+    </div>
+</label>

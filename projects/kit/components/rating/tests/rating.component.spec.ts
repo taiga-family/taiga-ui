@@ -35,7 +35,7 @@ describe('Rating', () => {
             fixture = TestBed.createComponent(TestComponent);
             testComponent = fixture.componentInstance;
             component = testComponent.component;
-            fixture.detectChanges();
+            fixture.autoDetectChanges();
         });
 
         // noinspection DuplicatedCode
@@ -43,24 +43,18 @@ describe('Rating', () => {
             expect(testComponent.rate).toEqual(2);
             expect(component.percent).toEqual(40);
             expect(component.value).toEqual(2);
-            expect(component.nativeRangeElement?.value).toEqual('2');
 
             component.setRate(1);
-            // noinspection DuplicatedCode
-            fixture.detectChanges();
 
             expect(component.percent).toEqual(20);
             expect(testComponent.rate).toEqual(1);
             expect(component.value).toEqual(1);
-            expect(component.nativeRangeElement?.value).toEqual('1');
 
             component.setRate(4);
-            fixture.detectChanges();
 
             expect(component.percent).toEqual(80);
             expect(testComponent.rate).toEqual(4);
             expect(component.value).toEqual(4);
-            expect(component.nativeRangeElement?.value).toEqual('4');
         });
 
         // noinspection DuplicatedCode
@@ -68,14 +62,11 @@ describe('Rating', () => {
             expect(testComponent.rate).toEqual(2);
             expect(component.percent).toEqual(40);
             expect(component.value).toEqual(2);
-            expect(component.nativeRangeElement?.value).toEqual('2');
 
             component.setRateByReverseIndex(1);
-            fixture.detectChanges();
 
             expect(component.percent).toEqual(80);
             expect(component.value).toEqual(4);
-            expect(component.nativeRangeElement?.value).toEqual('4');
         });
 
         it('try set invalid value', () => {
@@ -84,20 +75,16 @@ describe('Rating', () => {
             expect(component.percent).toEqual(40);
 
             component.setRate(4.5);
-            fixture.detectChanges();
 
             expect(testComponent.rate).toEqual(4.5);
             expect(component.value).toEqual(4.5);
             expect(component.percent).toEqual(90);
-            expect(component.nativeRangeElement?.value).toEqual('5');
 
             component.setRate(0.4);
-            fixture.detectChanges();
 
             expect(testComponent.rate).toEqual(0.4);
             expect(component.value).toEqual(0.4);
             expect(component.percent).toEqual(8);
-            expect(component.nativeRangeElement?.value).toEqual('0');
         });
     });
 
@@ -132,7 +119,7 @@ describe('Rating', () => {
             fixture = TestBed.createComponent(TestComponent);
             testComponent = fixture.componentInstance;
             component = testComponent.component;
-            fixture.detectChanges();
+            fixture.autoDetectChanges();
         });
 
         // noinspection DuplicatedCode
@@ -140,21 +127,17 @@ describe('Rating', () => {
             expect(testComponent.rate).toEqual(0);
             expect(component.percent).toEqual(0);
             expect(component.value).toEqual(0);
-            expect(component.nativeRangeElement?.value).toEqual('0');
 
             component.setRate(2);
-            fixture.detectChanges();
 
             expect(component.percent).toEqual(40);
             expect(component.value).toEqual(2);
-            expect(component.nativeRangeElement?.value).toEqual('2');
 
             component.setRate(3);
             fixture.detectChanges();
 
             expect(component.percent).toEqual(60);
             expect(component.value).toEqual(3);
-            expect(component.nativeRangeElement?.value).toEqual('3');
         });
 
         // noinspection DuplicatedCode
@@ -162,7 +145,6 @@ describe('Rating', () => {
             expect(testComponent.rate).toEqual(0);
             expect(component.percent).toEqual(0);
             expect(component.value).toEqual(0);
-            expect(component.nativeRangeElement?.value).toEqual('0');
 
             component.setRateByReverseIndex(1);
             fixture.detectChanges();
@@ -170,14 +152,12 @@ describe('Rating', () => {
             expect(testComponent.rate).toEqual(4);
             expect(component.percent).toEqual(80);
             expect(component.value).toEqual(4);
-            expect(component.nativeRangeElement?.value).toEqual('4');
         });
 
         it('try set invalid value', () => {
             expect(testComponent.rate).toEqual(0);
             expect(component.value).toEqual(0);
             expect(component.percent).toEqual(0);
-            expect(component.nativeRangeElement?.value).toEqual('0');
 
             component.setRate(100);
             fixture.detectChanges();
@@ -185,7 +165,6 @@ describe('Rating', () => {
             expect(testComponent.rate).toEqual(100);
             expect(component.value).toEqual(100);
             expect(component.percent).toEqual(2000);
-            expect(component.nativeRangeElement?.value).toEqual('5');
 
             component.setRate(-1);
             fixture.detectChanges();
@@ -193,7 +172,6 @@ describe('Rating', () => {
             expect(testComponent.rate).toEqual(-1);
             expect(component.value).toEqual(-1);
             expect(component.percent).toEqual(-20);
-            expect(component.nativeRangeElement?.value).toEqual('0');
         });
     });
 });
