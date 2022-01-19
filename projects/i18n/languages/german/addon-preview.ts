@@ -2,11 +2,11 @@ import {LanguagePreview} from '@taiga-ui/i18n/interfaces';
 
 export const TUI_GERMAN_LANGUAGE_ADDON_PREVIEW: LanguagePreview = {
     previewTexts: {
-        rotate: 'Rotate',
+        rotate: 'Rotieren',
     },
     zoomTexts: {
-        zoomOut: 'Zoom out',
-        zoomIn: 'Zoom in',
-        reset: 'Reset',
+        zoomOut: 'Verkleinern',
+        zoomIn: 'Vergrößern',
+        reset: 'Zurücksetzen',
     },
 };
