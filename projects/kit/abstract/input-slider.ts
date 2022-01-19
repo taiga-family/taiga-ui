@@ -145,7 +145,9 @@ export abstract class AbstractTuiInputSlider<T>
     }
 
     private get decimalLimit(): number {
-        return this.quantum.toString().split('.')[1]?.length || 2;
+        const [, fractionPart = ''] = this.quantum.toString().split('.');
+
+        return fractionPart.length || TUI_FLOATING_PRECISION;
     }
 
     protected valueGuard(value: number): number {
