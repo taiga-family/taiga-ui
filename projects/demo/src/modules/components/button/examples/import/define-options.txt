@@ -8,7 +8,7 @@ import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core';
             provide: TUI_BUTTON_OPTIONS,
             useValue: {
                 appearance: 'flat',
-                itemSize: 'm',
+                size: 'm',
                 shape: 'rounded'
             },
         },
