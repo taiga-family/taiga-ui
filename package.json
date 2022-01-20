@@ -165,7 +165,7 @@
         "ts-loader": "^5.3.3",
         "ts-node": "~7.0.0",
         "typescript": "~3.8.3",
-        "markdown-it": "^12.3.0"
+        "markdown-it": "^12.3.2"
     },
     "stylelint": {
         "extends": ["@tinkoff/stylelint-config/less", "@tinkoff/stylelint-config/angular"],
