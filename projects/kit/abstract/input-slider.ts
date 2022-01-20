@@ -22,6 +22,7 @@ import {
 } from '@taiga-ui/core';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
+import {getPrecision} from '@taiga-ui/kit/utils';
 
 export function quantumAssertion(quantum: number): boolean {
     return quantum > 0;
@@ -98,7 +99,7 @@ export abstract class AbstractTuiInputSlider<T>
             allowDecimal: !Number.isInteger(quantum),
             decimalSymbol: this.numberFormat.decimalSeparator,
             thousandSymbol: this.numberFormat.thousandSeparator,
-            decimalLimit: this.decimalLimit,
+            decimalLimit: getPrecision(quantum),
         }),
         pipe: tuiCreateAutoCorrectedNumberPipe(
             0,
@@ -142,12 +143,6 @@ export abstract class AbstractTuiInputSlider<T>
 
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
-    }
-
-    private get decimalLimit(): number {
-        const [, fractionPart = ''] = this.quantum.toString().split('.');
-
-        return fractionPart.length || TUI_FLOATING_PRECISION;
     }
 
     protected valueGuard(value: number): number {
