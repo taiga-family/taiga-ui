@@ -28,7 +28,7 @@ export function minLengthValidator(context: {requiredLength: string}): string {
                 maxlength: maxLengthValidator,
                 minlength: minLengthValidator,
                 min: interval(2000).pipe(
-                    scan(acc => (acc = !acc), false),
+                    scan(acc => !acc, false),
                     map(val => (val ? 'Fix please' : 'Min number 3')),
                     startWith('Min number 3'),
                 ),

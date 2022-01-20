@@ -28,5 +28,14 @@ module.exports = {
         // note you must disable the base rule as it can report incorrect errors
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': ['error', {argsIgnorePattern: '^_'}],
+        'no-useless-rename': [
+            'error',
+            {
+                ignoreDestructuring: true,
+                ignoreImport: false,
+                ignoreExport: true,
+            },
+        ],
+        'no-return-assign': ['error', 'always'],
     },
 };

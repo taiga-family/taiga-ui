@@ -14,8 +14,10 @@ export class TuiCarouselScrollDirective {
         filter(({deltaX}) => Math.abs(deltaX) > 20),
         throttleTime(500),
         map(({deltaX}) => Math.sign(deltaX)),
-        // So we always have space to scroll and overflow-behavior saves us from back nav
-        tap(() => (this.elementRef.nativeElement.scrollLeft = 10)),
+        tap(() => {
+            // So we always have space to scroll and overflow-behavior saves us from back nav
+            this.elementRef.nativeElement.scrollLeft = 10;
+        }),
     );
 
     constructor(

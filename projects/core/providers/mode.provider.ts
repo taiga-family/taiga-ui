@@ -16,7 +16,9 @@ export function modeFactory(
           )
         : EMPTY;
 
-    return (nativeElement['$.data-mode.attr'] = mode$);
+    nativeElement['$.data-mode.attr'] = mode$;
+
+    return mode$;
 }
 
 export const MODE_PROVIDER: Provider = {
