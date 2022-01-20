@@ -68,7 +68,7 @@ export class TuiCheckboxComponent
     }
 
     get computedFocusable(): boolean {
-        return !this.computedDisabled && !this.readOnly && this.focusable;
+        return this.interactive && this.focusable;
     }
 
     onChecked(checked: boolean) {

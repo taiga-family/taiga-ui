@@ -158,19 +158,11 @@ export class TuiInputCountComponent
     }
 
     get minusButtonDisabled(): boolean {
-        return (
-            this.disabled ||
-            this.readOnly ||
-            (isPresent(this.value) && this.value <= this.min)
-        );
+        return !this.interactive || (isPresent(this.value) && this.value <= this.min);
     }
 
     get plusButtonDisabled(): boolean {
-        return (
-            this.disabled ||
-            this.readOnly ||
-            (isPresent(this.value) && this.value >= this.max)
-        );
+        return !this.interactive || (isPresent(this.value) && this.value >= this.max);
     }
 
     onButtonMouseDown(event: MouseEvent, disabled: boolean = false) {

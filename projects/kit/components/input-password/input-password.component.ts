@@ -117,7 +117,7 @@ export class TuiInputPasswordComponent
     }
 
     get hasEyeIcon(): boolean {
-        return !(this.disabled || this.readOnly);
+        return this.interactive;
     }
 
     onValueChange(textValue: string) {

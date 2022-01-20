@@ -91,10 +91,6 @@ export class TuiEditorNewComponent
         );
     }
 
-    get interactive(): boolean {
-        return !this.readOnly && !this.computedDisabled;
-    }
-
     get placeholderRaised(): boolean {
         return (this.computedFocused && !this.readOnly) || this.hasValue;
     }

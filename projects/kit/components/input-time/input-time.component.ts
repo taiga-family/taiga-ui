@@ -126,10 +126,6 @@ export class TuiInputTimeComponent
         return this.computedValue.length !== this.mode.length ? this.computedValue : '';
     }
 
-    get interactive(): boolean {
-        return !this.disabled && !this.readOnly;
-    }
-
     get innerPseudoFocused(): boolean | null {
         if (this.pseudoFocused === false) {
             return false;

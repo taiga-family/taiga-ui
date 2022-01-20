@@ -167,7 +167,7 @@ export class TuiInputPhoneComponent
     }
 
     get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly && !!this.datalist;
+        return this.interactive && !!this.datalist;
     }
 
     get canClean(): boolean {

@@ -221,7 +221,7 @@ export class TuiInputDateTimeComponent
     }
 
     get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly;
+        return this.interactive;
     }
 
     @HostListener('click')

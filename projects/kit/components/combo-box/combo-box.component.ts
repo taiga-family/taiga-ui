@@ -126,7 +126,7 @@ export class TuiComboBoxComponent<T>
     }
 
     get arrow(): PolymorpheusContent {
-        return this.disabled || this.readOnly ? '' : TUI_ARROW;
+        return !this.interactive ? '' : TUI_ARROW;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -153,7 +153,7 @@ export class TuiComboBoxComponent<T>
     }
 
     get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly;
+        return this.interactive;
     }
 
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {

@@ -162,10 +162,6 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
         );
     }
 
-    get interactive(): boolean {
-        return !this.readOnly && !this.computedDisabled;
-    }
-
     get hasExampleText(): boolean {
         return (
             !!this.exampleText && this.computedFocused && !this.hasValue && !this.readOnly

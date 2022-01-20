@@ -113,7 +113,7 @@ export class TuiInputMonthRangeComponent
     }
 
     get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly;
+        return this.interactive;
     }
 
     onValueChange(value: string) {

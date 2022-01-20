@@ -108,9 +108,7 @@ export class TuiTextAreaComponent
     }
 
     get hasCleaner(): boolean {
-        return (
-            this.controller.cleaner && this.hasValue && !this.disabled && !this.readOnly
-        );
+        return this.controller.cleaner && this.hasValue && this.interactive;
     }
 
     @HostBinding('class._has-tooltip')
@@ -125,7 +123,7 @@ export class TuiTextAreaComponent
 
     @HostBinding('class._has-counter')
     get hasCounter(): boolean {
-        return !!this.controller.maxLength && !this.disabled && !this.readOnly;
+        return !!this.controller.maxLength && this.interactive;
     }
 
     get hasPlaceholder(): boolean {

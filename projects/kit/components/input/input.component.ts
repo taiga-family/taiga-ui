@@ -83,7 +83,7 @@ export class TuiInputComponent
     }
 
     get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly && !!this.datalist;
+        return this.interactive && !!this.datalist;
     }
 
     onValueChange(value: string) {

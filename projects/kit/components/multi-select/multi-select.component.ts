@@ -160,10 +160,6 @@ export class TuiMultiSelectComponent<T>
         return this.interactive ? 'iconBlank' : '';
     }
 
-    get interactive(): boolean {
-        return !this.disabled && !this.readOnly;
-    }
-
     get inputHidden(): boolean {
         return !this.editable && !this.computedGroup;
     }

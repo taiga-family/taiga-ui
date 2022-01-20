@@ -210,7 +210,7 @@ export class TuiInputDateComponent
     }
 
     get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly && !this.computedMobile;
+        return this.interactive && !this.computedMobile;
     }
 
     get computedMask(): TuiTextMaskOptions {

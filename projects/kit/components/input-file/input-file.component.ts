@@ -141,7 +141,7 @@ export class TuiInputFileComponent
     }
 
     get allowDelete(): boolean {
-        return !this.computedDisabled && !this.readOnly;
+        return this.interactive;
     }
 
     get computedLink$(): Observable<PolymorpheusContent> {
