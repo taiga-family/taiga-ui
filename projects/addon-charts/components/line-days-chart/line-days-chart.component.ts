@@ -165,9 +165,12 @@ export class TuiLineDaysChartComponent {
 
     raise(index: number, {value}: TuiLineChartComponent) {
         const x = value[index][0];
+        const month = this.getMonth(x);
 
         if (this.hintDirective) {
-            this.hintDirective.raise(this.getMonth(x));
+            this.hintDirective.raise(month);
+        } else {
+            this.onHovered(month);
         }
     }
 
