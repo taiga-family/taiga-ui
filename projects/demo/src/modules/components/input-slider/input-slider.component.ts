@@ -53,7 +53,7 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     steps = this.stepsVariants[0];
 
-    readonly quantumVariants: readonly number[] = [1, 0.01, 10, 100];
+    readonly quantumVariants: readonly number[] = [1, 0.01, 0.001, 0.0001, 10, 100];
 
     quantum = this.quantumVariants[0];
 

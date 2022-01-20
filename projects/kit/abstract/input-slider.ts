@@ -22,6 +22,7 @@ import {
 } from '@taiga-ui/core';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
+import {getPrecision} from '@taiga-ui/kit/utils';
 
 export function quantumAssertion(quantum: number): boolean {
     return quantum > 0;
@@ -98,6 +99,7 @@ export abstract class AbstractTuiInputSlider<T>
             allowDecimal: !Number.isInteger(quantum),
             decimalSymbol: this.numberFormat.decimalSeparator,
             thousandSymbol: this.numberFormat.thousandSeparator,
+            decimalLimit: getPrecision(quantum),
         }),
         pipe: tuiCreateAutoCorrectedNumberPipe(
             0,

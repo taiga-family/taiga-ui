@@ -80,6 +80,6 @@ export class ExampleTuiSliderComponent {
     ];
 
     keySteps = null;
-    readonly quantumVariants: ReadonlyArray<number> = [0.01, 0.1, 1, 10];
+    readonly quantumVariants: ReadonlyArray<number> = [0.01, 0.001, 0.1, 1, 10];
     quantum = this.quantumVariants[0];
 }
