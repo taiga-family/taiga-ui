@@ -4,10 +4,10 @@ import {Country} from '../interfaces/country';
 
 /**
  * @deprecated Dont use it (will be deleted soon).
- * - Use const `COUNTRIES_MASKS` to get phone mask by country iso code
+ * - Use token `TUI_COUNTRIES_MASKS` to get phone mask by country iso code
  * - Use token `TUI_COUNTRIES` to get localized country name by its iso code
  * @example
- * import {TUI_COUNTRIES, COUNTRIES_MASKS} from '@taiga-ui/kit';
+ * import {TUI_COUNTRIES, TUI_COUNTRIES_MASKS} from '@taiga-ui/kit';
  *
  * @todo TODO: remove it in 3.0
  */
@@ -28,7 +28,7 @@ export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.AU]: {mask: '+61#-####-####', name: 'Австралия'},
     [TuiCountryIsoCode.AW]: {mask: '+297###-####', name: 'Аруба'},
     [TuiCountryIsoCode.AZ]: {mask: '+994##-###-##-##', name: 'Азербайджан'},
-    [TuiCountryIsoCode.BA]: {mask: '+387##-#####', name: 'Босния и Герцеговина'},
+    [TuiCountryIsoCode.BA]: {mask: '+387 ###-####-#', name: 'Босния и Герцеговина'},
     [TuiCountryIsoCode.BB]: {mask: '+1(246) ###-####', name: 'Барбадос'},
     [TuiCountryIsoCode.BD]: {mask: '+880##-###-###', name: 'Бангладеш'},
     [TuiCountryIsoCode.BE]: {mask: '+32(###) ###-###', name: 'Бельгия'},
@@ -241,18 +241,27 @@ export const COUNTRIES: Record<string, Country> = {
     [TuiCountryIsoCode.ZW]: {mask: '+263#-######', name: 'Зимбабве'},
 };
 
-type PhoneMaskByCountry = Record<TuiCountryIsoCode, string>;
-
-// TODO: remove in ivy compilation
+/**
+ * @deprecated will be deleted soon
+ * TODO: remove in 3.0 (in ivy compilation)
+ */
 export function countriesMasksReducer(
-    acc: PhoneMaskByCountry,
+    acc: Record<TuiCountryIsoCode, string>,
     [countryIsoCode, {mask}]: [string, {mask: string}],
-): PhoneMaskByCountry {
+): Record<TuiCountryIsoCode, string> {
     acc[countryIsoCode as TuiCountryIsoCode] = mask;
 
     return acc;
 }
 
-export const COUNTRIES_MASKS: PhoneMaskByCountry = Object.entries<Country>(
-    COUNTRIES,
-).reduce<PhoneMaskByCountry>(countriesMasksReducer, {} as PhoneMaskByCountry);
+/**
+ * @deprecated will be deleted soon
+ * Use token `TUI_COUNTRIES_MASKS`
+ * TODO: remove in 3.0
+ */
+export const COUNTRIES_MASKS = Object.entries<Country>(COUNTRIES).reduce(
+    countriesMasksReducer,
+    {} as Record<TuiCountryIsoCode, string>,
+);
+
+export const MASK_AFTER_CODE_REGEXP = /\([#]+\)|[#\- ]/g;
