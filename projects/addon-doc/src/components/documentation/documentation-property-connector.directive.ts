@@ -58,7 +58,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
     ) {}
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
     }
 
@@ -83,24 +83,24 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         return this.documentationPropertyMode !== 'output';
     }
 
-    ngOnChanges(): void {
+    ngOnChanges() {
         this.changed$.next();
     }
 
-    onValueChange(value: T | null): void {
+    onValueChange(value: T | null) {
         this.documentationPropertyValue = value;
         this.documentationPropertyValueChange.emit(value);
         this.setQueryParam(value);
     }
 
-    emitEvent(event: unknown): void {
+    emitEvent(event: unknown) {
         // For more convenient debugging
         console.info(this.attrName, event);
 
         this.emits$.next(this.emits$.value + 1);
     }
 
-    private parseParams(params: Params): void {
+    private parseParams(params: Params) {
         const propertyValue: string | undefined = params[this.documentationPropertyName];
         const propertyValueWithSuffix: string | number | undefined =
             params[`${this.documentationPropertyName}${SERIALIZED_SUFFIX}`];

@@ -17,7 +17,7 @@ function isEmptyParamValue(value: string): boolean {
 }
 
 function isBooleanParamValue(value: string): boolean {
-    return String(value) === 'true' || String(value) === 'false';
+    return value === 'true' || value === 'false';
 }
 
 function isNumberParamValue(value: string): boolean {
