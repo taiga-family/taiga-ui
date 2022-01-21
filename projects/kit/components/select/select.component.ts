@@ -119,10 +119,6 @@ export class TuiSelectComponent<T>
         return this.valueContent || this.computedValue;
     }
 
-    get canOpen(): boolean {
-        return this.interactive;
-    }
-
     @tuiPure
     computeContext(
         $implicit: T | null,

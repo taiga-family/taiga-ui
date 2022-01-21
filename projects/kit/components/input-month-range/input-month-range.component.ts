@@ -112,10 +112,6 @@ export class TuiInputMonthRangeComponent
         return `${this.formatMonth(value.from, months)} — ${formattedValueTo}`;
     }
 
-    get canOpen(): boolean {
-        return this.interactive;
-    }
-
     onValueChange(value: string) {
         if (value === '') {
             this.updateValue(null);

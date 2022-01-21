@@ -113,11 +113,7 @@ export class TuiInputPasswordComponent
     }
 
     get inputType(): string {
-        return this.isPasswordHidden || !this.hasEyeIcon ? 'password' : 'text';
-    }
-
-    get hasEyeIcon(): boolean {
-        return this.interactive;
+        return this.isPasswordHidden || !this.interactive ? 'password' : 'text';
     }
 
     onValueChange(textValue: string) {

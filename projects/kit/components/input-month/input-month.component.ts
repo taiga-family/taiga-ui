@@ -91,10 +91,6 @@ export class TuiInputMonthComponent
             : 'tuiIconCalendar';
     }
 
-    get canOpen(): boolean {
-        return this.interactive;
-    }
-
     onValueChange(value: string) {
         if (value === '') {
             this.updateValue(null);

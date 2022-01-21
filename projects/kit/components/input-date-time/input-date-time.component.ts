@@ -220,10 +220,6 @@ export class TuiInputDateTimeComponent
         this.nativeFocusableElement.value = value;
     }
 
-    get canOpen(): boolean {
-        return this.interactive;
-    }
-
     @HostListener('click')
     onClick() {
         this.open = !this.open;

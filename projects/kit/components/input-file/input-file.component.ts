@@ -140,10 +140,6 @@ export class TuiInputFileComponent
         return isNativeFocused(this.nativeFocusableElement);
     }
 
-    get allowDelete(): boolean {
-        return this.interactive;
-    }
-
     get computedLink$(): Observable<PolymorpheusContent> {
         return this.computeLink$(this.fileDragged, this.multiple, this.link);
     }

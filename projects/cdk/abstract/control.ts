@@ -98,7 +98,7 @@ export abstract class AbstractTuiControl<T>
     }
 
     get interactive(): boolean {
-        return !this.readOnly && !this.disabled;
+        return !this.readOnly && !this.computedDisabled;
     }
 
     get control(): AbstractControl | null {

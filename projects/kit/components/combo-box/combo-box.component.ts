@@ -152,10 +152,6 @@ export class TuiComboBoxComponent<T>
         return isPresent(this.value) && !this.focused;
     }
 
-    get canOpen(): boolean {
-        return this.interactive;
-    }
-
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
         return this.valueContent || this.nativeValue;
     }
