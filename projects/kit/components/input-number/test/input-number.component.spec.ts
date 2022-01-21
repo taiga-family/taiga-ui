@@ -304,10 +304,10 @@ describe('InputNumber', () => {
         });
     });
 
-    it('maxlength is set to 18 by default', () => {
+    it('maxlength is set to 23 by default (18 digits + 5 default separators)', () => {
         const nativeInput = getNativeInput()!.nativeElement;
 
-        expect(nativeInput.getAttribute('maxlength')).toBe('18');
+        expect(nativeInput.getAttribute('maxlength')).toBe('23');
     });
 
     describe('При decimal === always', () => {

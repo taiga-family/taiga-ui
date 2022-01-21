@@ -112,14 +112,13 @@ export class TuiInputNumberComponent
     }
 
     get calculatedMaxLength(): number {
-        return (
-            DEFAULT_MAX_LENGTH +
-            (this.decimal !== 'never' &&
-            this.nativeValue.includes(this.numberFormat.decimalSeparator)
-                ? this.precision + 1
-                : 0) +
-            this.numberFormat.thousandSeparator.repeat(5).length
-        );
+        const decimalPart =
+            this.decimal !== 'never' &&
+            this.nativeValue.includes(this.numberFormat.decimalSeparator);
+        const precision = decimalPart ? this.precision + 1 : 0;
+        const takeThousand = this.numberFormat.thousandSeparator.repeat(5).length;
+
+        return DEFAULT_MAX_LENGTH + precision + takeThousand;
     }
 
     get formattedValue(): string {
