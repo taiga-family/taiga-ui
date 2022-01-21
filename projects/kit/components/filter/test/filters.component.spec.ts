@@ -153,7 +153,7 @@ describe('Filter', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
-            expect(+getBadge().nativeElement.textContent).toBe(BADGE_VALUE);
+            expect(Number(getBadge().nativeElement.textContent)).toBe(BADGE_VALUE);
         });
     });
 

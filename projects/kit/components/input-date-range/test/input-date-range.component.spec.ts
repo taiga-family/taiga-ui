@@ -452,6 +452,6 @@ function getCalendarCell(
     return (
         pageObject
             .getAllByAutomationId('tui-primitive-calendar__cell', calendarEl)
-            .find(el => +el.nativeElement.innerText.trim() === dayNumber) || null
+            .find(el => Number(el.nativeElement.innerText.trim()) === dayNumber) || null
     );
 }
