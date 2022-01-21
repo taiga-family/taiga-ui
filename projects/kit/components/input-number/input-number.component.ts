@@ -117,7 +117,8 @@ export class TuiInputNumberComponent
             (this.decimal !== 'never' &&
             this.nativeValue.includes(this.numberFormat.decimalSeparator)
                 ? this.precision + 1
-                : 0)
+                : 0) +
+            this.numberFormat.thousandSeparator.repeat(5).length
         );
     }
 
