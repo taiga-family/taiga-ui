@@ -26,7 +26,6 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_MASK_SYMBOLS_REGEXP,
-    TUI_NON_DIGITS_REGEXP,
     TuiFlagPipe,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
@@ -151,8 +150,10 @@ export class TuiInputPhoneInternationalComponent
     @HostListener('paste.capture.prevent.stop', ['$event'])
     @HostListener('drop.capture.prevent.stop', ['$event'])
     onPaste(event: ClipboardEvent | DragEvent): void {
-        let value = extractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, '');
-        const countryIsoCode = this.extractCountryCode(value);
+        let value = extractValueFromEvent(event);
+        const countryIsoCode = this.countries.find(countryIsoCode =>
+            value.startsWith(this.isoToCountryCode(countryIsoCode)),
+        );
 
         if (!countryIsoCode) {
             this.updateValue(
@@ -237,23 +238,5 @@ export class TuiInputPhoneInternationalComponent
     private updateCountryIsoCode(code: TuiCountryIsoCode): void {
         this.countryIsoCode = code;
         this.countryIsoCodeChange.emit(code);
-    }
-
-    private extractCountryCode(value: string): TuiCountryIsoCode | undefined {
-        return this.countries.find(countryIsoCode => {
-            const ruCodeTest =
-                countryIsoCode === TuiCountryIsoCode.RU &&
-                /^[7 | 8]/.test(value) &&
-                /^(?!880[1-9 ])/.test(value) &&
-                value.length + 1 === this.getMaxAllowedLength(TuiCountryIsoCode.RU);
-
-            return (
-                ruCodeTest ||
-                (value.startsWith(
-                    this.isoToCountryCode(countryIsoCode).replace(CHAR_PLUS, ''),
-                ) &&
-                    value.length + 1 === this.getMaxAllowedLength(countryIsoCode))
-            );
-        });
     }
 }
