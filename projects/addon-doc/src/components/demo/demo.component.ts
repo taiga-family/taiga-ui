@@ -81,7 +81,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     ) {
         this.isBrowser = isPlatformBrowser(platformId);
 
-        const parsedMode = locationRef.path().match(/tui-mode=(onDark|onLight)/);
+        const parsedMode = locationRef.path().match(/tuiMode=(onDark|onLight)/);
 
         if (parsedMode !== null && parsedMode.length > 0) {
             this.modeControl.setValue(parsedMode[1]);
