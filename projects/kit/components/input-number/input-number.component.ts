@@ -112,13 +112,13 @@ export class TuiInputNumberComponent
     }
 
     get calculatedMaxLength(): number {
-        return (
-            DEFAULT_MAX_LENGTH +
-            (this.decimal !== 'never' &&
-            this.nativeValue.includes(this.numberFormat.decimalSeparator)
-                ? this.precision + 1
-                : 0)
-        );
+        const decimalPart =
+            this.decimal !== 'never' &&
+            this.nativeValue.includes(this.numberFormat.decimalSeparator);
+        const precision = decimalPart ? this.precision + 1 : 0;
+        const takeThousand = this.numberFormat.thousandSeparator.repeat(5).length;
+
+        return DEFAULT_MAX_LENGTH + precision + takeThousand;
     }
 
     get formattedValue(): string {
@@ -311,7 +311,10 @@ export class TuiInputNumberComponent
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
         );
-        const capped = value < 0 ? Math.max(this.min, value) : Math.min(value, this.max);
+        const capped =
+            value < 0
+                ? Math.max(Math.max(this.min, Number.MIN_SAFE_INTEGER), value)
+                : Math.min(value, Math.min(this.max, Number.MAX_SAFE_INTEGER));
         const ineligibleValue = isNaN(capped) || capped < this.min || capped > this.max;
 
         return ineligibleValue ? null : capped;
