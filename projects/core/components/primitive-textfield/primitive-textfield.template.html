@@ -87,13 +87,18 @@
                 <tui-svg class="custom-icon" [src]="iconSrc"></tui-svg>
             </ng-template>
         </div>
-        <tui-svg
+        <span
             *ngIf="hasCleaner"
+            polymorpheus-outlet
             automation-id="tui-primitive-textfield__cleaner"
-            src="tuiIconCloseLarge"
             class="cleaner"
+            [content]="iconCleaner"
             (click.stop)="clear()"
-        ></tui-svg>
+        >
+            <ng-template let-icon>
+                <tui-svg [src]="icon"></tui-svg>
+            </ng-template>
+        </span>
         <tui-tooltip
             *ngIf="hasTooltip"
             automation-id="tui-primitive-textfield__tooltip"

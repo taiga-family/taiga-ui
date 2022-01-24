@@ -1,0 +1,39 @@
+<div class="b-form">
+    <label tuiLabel i18n-label label="Modified cleaner icon">
+        <tui-primitive-textfield
+            tuiTextfieldSize="m"
+            tuiTextfieldType="email"
+            [tuiTextfieldLabelOutside]="true"
+            [tuiTextfieldCleaner]="true"
+            [value]="value"
+            (valueChange)="onValueChange($event)"
+            (focusedChange)="onFocused($event)"
+        >
+            Type an email
+        </tui-primitive-textfield>
+    </label>
+
+    <label
+        tuiLabel
+        i18n-label
+        label="Override modified cleaner icon"
+        class="tui-space_top-4"
+    >
+        <tui-primitive-textfield
+            tuiTextfieldSize="m"
+            tuiTextfieldType="email"
+            [tuiTextfieldLabelOutside]="true"
+            [tuiTextfieldCleaner]="true"
+            [value]="value"
+            [iconCleaner]="iconCleaner"
+            (valueChange)="onValueChange($event)"
+            (focusedChange)="onFocused($event)"
+        >
+            Type an email
+        </tui-primitive-textfield>
+    </label>
+</div>
+
+<ng-template #iconCleaner>
+    <tui-svg src="tuiIconDraft"></tui-svg>
+</ng-template>

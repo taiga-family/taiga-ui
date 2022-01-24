@@ -29,18 +29,17 @@ import {
     TuiTextfieldController,
 } from '@taiga-ui/core/directives/textfield-controller';
 import {TUI_MODE, TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
-import {
-    TuiBrightness,
-    TuiHorizontalDirection,
-    TuiSizeL,
-    TuiSizeS,
-} from '@taiga-ui/core/types';
+import {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {getBorder} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {TUI_PRIMITIVE_TEXTFIELD_PROVIDERS} from './primitive-textfield.providers';
+import {
+    PrimitiveTextfieldOptions,
+    TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
+} from './primitive-textfield-options';
 
 const ICON_PADDING = 1.75;
 const ICON_PADDING_S = 1.5;
@@ -74,12 +73,16 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
-    iconAlign: TuiHorizontalDirection = 'right';
+    iconAlign: PrimitiveTextfieldOptions['iconAlign'] = this.options.iconAlign;
 
     // TODO: Remove null in 3.0
     @Input()
     @tuiDefaultProp()
     iconContent: PolymorpheusContent | null = null;
+
+    @Input()
+    @tuiDefaultProp()
+    iconCleaner: PrimitiveTextfieldOptions['iconCleaner'] = this.options.iconCleaner;
 
     @Input()
     @HostBinding('class._readonly')
@@ -100,7 +103,7 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
-    postfix = '';
+    postfix: PrimitiveTextfieldOptions['postfix'] = this.options.postfix;
 
     @Input()
     @tuiDefaultProp()
@@ -122,6 +125,8 @@ export class TuiPrimitiveTextfieldComponent
         readonly controller: TuiTextfieldController,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
+        @Inject(TUI_PRIMITIVE_TEXTFIELD_OPTIONS)
+        readonly options: PrimitiveTextfieldOptions,
     ) {
         super();
     }
