@@ -217,9 +217,7 @@ export class TuiInputTagComponent
     }
 
     get hasCleaner(): boolean {
-        return (
-            this.controller.cleaner && this.hasValue && !this.disabled && !this.readOnly
-        );
+        return this.controller.cleaner && this.hasValue && this.interactive;
     }
 
     get hasNativeValue(): boolean {
@@ -271,7 +269,7 @@ export class TuiInputTagComponent
     }
 
     get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly && !!this.datalist;
+        return this.interactive && !!this.datalist;
     }
 
     getLeftContent(tag: string): PolymorpheusContent {

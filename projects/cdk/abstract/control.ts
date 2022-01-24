@@ -66,8 +66,7 @@ export abstract class AbstractTuiControl<T>
     @HostBinding('class._invalid')
     get computedInvalid(): boolean {
         return (
-            !this.readOnly &&
-            !this.disabled &&
+            this.interactive &&
             (this.pseudoInvalid !== null
                 ? this.pseudoInvalid
                 : this.touched && this.invalid)
@@ -96,6 +95,10 @@ export abstract class AbstractTuiControl<T>
 
     get disabled(): boolean {
         return this.safeNgControlData<boolean>(({disabled}) => disabled, false);
+    }
+
+    get interactive(): boolean {
+        return !this.readOnly && !this.computedDisabled;
     }
 
     get control(): AbstractControl | null {
