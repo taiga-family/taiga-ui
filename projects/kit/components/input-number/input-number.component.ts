@@ -311,7 +311,10 @@ export class TuiInputNumberComponent
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
         );
-        const capped = value < 0 ? Math.max(this.min, value) : Math.min(value, this.max);
+        const capped =
+            value < 0
+                ? Math.max(Math.max(this.min, Number.MIN_SAFE_INTEGER), value)
+                : Math.min(value, Math.min(this.max, Number.MAX_SAFE_INTEGER));
         const ineligibleValue = isNaN(capped) || capped < this.min || capped > this.max;
 
         return ineligibleValue ? null : capped;
