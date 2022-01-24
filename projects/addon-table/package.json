@@ -2,13 +2,7 @@
     "name": "@taiga-ui/addon-table",
     "version": "2.31.0",
     "description": "A library to display tabled data with filters, search, group actions, etc.",
-    "keywords": [
-        "angular",
-        "component",
-        "table",
-        "group",
-        "action"
-    ],
+    "keywords": ["angular", "component", "table", "group", "action"],
     "license": "Apache-2.0",
     "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",

@@ -1,43 +1,66 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ## [2.31.0](https://github.com/tinkoff/taiga-ui/compare/v2.29.0...v2.31.0) (2022-01-24)
 
-
 ### Features
 
-* **addon-doc:** add fade in animation for tab content ([35bcd8b](https://github.com/tinkoff/taiga-ui/commit/35bcd8b6fe45497a552d38b6823b887a9d6819f6))
-* **addon-doc:** add fade-in animation for tab content ([fb48ef2](https://github.com/tinkoff/taiga-ui/commit/fb48ef295c2a0bebc02a04f7177674062bcefc98))
-* **addon-doc:** support parse markdown in tui-doc-code ([#1160](https://github.com/tinkoff/taiga-ui/issues/1160)) ([3c6297b](https://github.com/tinkoff/taiga-ui/commit/3c6297bf8c7a0b495816cca81aeef5985c141a54))
-* **icons:** expose `processIcons` utility ([#1102](https://github.com/tinkoff/taiga-ui/issues/1102)) ([7e9f42b](https://github.com/tinkoff/taiga-ui/commit/7e9f42b816ea43c3978af9c4dd5b4dc2f545a75e))
-* **kit:** `InputDate`, `InputDateRange`, `InputDateTime` add value-transformer tokens ([#1184](https://github.com/tinkoff/taiga-ui/issues/1184)) ([88a3b7e](https://github.com/tinkoff/taiga-ui/commit/88a3b7e9a65882d8defdecb083da8b1a152889ce))
-* **kit:** `Rating` add new component ([#791](https://github.com/tinkoff/taiga-ui/issues/791)) ([232b01c](https://github.com/tinkoff/taiga-ui/commit/232b01cbca086cd6034c2a915c8a85f46596fa52))
-* **kit:** add TUI_COUNTRIES_MASKS token ([2730c3d](https://github.com/tinkoff/taiga-ui/commit/2730c3ddf127c64958140761a37b7911c6701b24))
-* **kit:** add TUI_COUNTRIES_MASKS token ([f0c8475](https://github.com/tinkoff/taiga-ui/commit/f0c8475025a331d114ebfc2d50a50b9f509e01e2))
-
+- **addon-doc:** add fade-in animation for tab content
+  ([fb48ef2](https://github.com/tinkoff/taiga-ui/commit/fb48ef295c2a0bebc02a04f7177674062bcefc98))
+- **addon-doc:** support parse markdown in tui-doc-code ([#1160](https://github.com/tinkoff/taiga-ui/issues/1160))
+  ([3c6297b](https://github.com/tinkoff/taiga-ui/commit/3c6297bf8c7a0b495816cca81aeef5985c141a54))
+- **icons:** expose `processIcons` utility ([#1102](https://github.com/tinkoff/taiga-ui/issues/1102))
+  ([7e9f42b](https://github.com/tinkoff/taiga-ui/commit/7e9f42b816ea43c3978af9c4dd5b4dc2f545a75e))
+- **kit:** `InputDate`, `InputDateRange`, `InputDateTime` add value-transformer tokens
+  ([#1184](https://github.com/tinkoff/taiga-ui/issues/1184))
+  ([88a3b7e](https://github.com/tinkoff/taiga-ui/commit/88a3b7e9a65882d8defdecb083da8b1a152889ce))
+- **kit:** `Rating` add new component ([#791](https://github.com/tinkoff/taiga-ui/issues/791))
+  ([232b01c](https://github.com/tinkoff/taiga-ui/commit/232b01cbca086cd6034c2a915c8a85f46596fa52))
+- **kit:** add TUI_COUNTRIES_MASKS token
+  ([2730c3d](https://github.com/tinkoff/taiga-ui/commit/2730c3ddf127c64958140761a37b7911c6701b24))
 
 ### Bug Fixes
 
-* **addon-charts:** fix axis hints ([#1223](https://github.com/tinkoff/taiga-ui/issues/1223)) ([f515914](https://github.com/tinkoff/taiga-ui/commit/f515914a5d87accbf2347c165a80d251cc4d8564))
-* **addon-doc:** extract only `fence` type content from markdown ([#1205](https://github.com/tinkoff/taiga-ui/issues/1205)) ([c30c4a3](https://github.com/tinkoff/taiga-ui/commit/c30c4a3a7c72ef465147d375ae22fd6ea4da9224))
-* **addon-doc:** support coercing value from query params ([#1234](https://github.com/tinkoff/taiga-ui/issues/1234)) ([d6af595](https://github.com/tinkoff/taiga-ui/commit/d6af595917f49d7832d116c183c7011bd7e2e12e))
-* **addon-editor:** change width for the opacity block ([#1162](https://github.com/tinkoff/taiga-ui/issues/1162)) ([9907f49](https://github.com/tinkoff/taiga-ui/commit/9907f4940684d99b38297dd4788dfb35aef88f1f))
-* **addon-preview:** add providers to `TuiPreviewModule` ([#1194](https://github.com/tinkoff/taiga-ui/issues/1194)) ([f7a4ba9](https://github.com/tinkoff/taiga-ui/commit/f7a4ba9be559243059a1898c3d8a4e9677b81794))
-* **addon-tablebars:** fix light mode class ([#1218](https://github.com/tinkoff/taiga-ui/issues/1218)) ([c1743b4](https://github.com/tinkoff/taiga-ui/commit/c1743b433f7cc8e12c02587bc3fd231acb2667aa))
-* **core:** fix `formatNumber` for values when precision > 6 ([#1171](https://github.com/tinkoff/taiga-ui/issues/1171)) ([d7f7183](https://github.com/tinkoff/taiga-ui/commit/d7f718314cdfa35e171a5650808dce369ccc2cb1))
-* **core:** fix unnecessary scroll in fullsize dialogs on mobile ([#1190](https://github.com/tinkoff/taiga-ui/issues/1190)) ([e8303af](https://github.com/tinkoff/taiga-ui/commit/e8303af19af547e072123e0af26c8f947e52bb52))
-* **demo:** line days chart labels visibility ([#1179](https://github.com/tinkoff/taiga-ui/issues/1179)) ([28bf963](https://github.com/tinkoff/taiga-ui/commit/28bf9632328978086ff8e211184450c384057c3d))
-* **demo:** ngModelOptions for table example 3 ([#1187](https://github.com/tinkoff/taiga-ui/issues/1187)) ([83f2bdb](https://github.com/tinkoff/taiga-ui/commit/83f2bdb2015d75762a52d83ece845446d8600b9a))
-* **i18n:** add italian to i18n index ([#1216](https://github.com/tinkoff/taiga-ui/issues/1216)) ([54ba4f3](https://github.com/tinkoff/taiga-ui/commit/54ba4f38e6f9161d7e1de86808ffe35aa4935a40))
-* **i18n:** fix German translation ([#1219](https://github.com/tinkoff/taiga-ui/issues/1219)) ([b768574](https://github.com/tinkoff/taiga-ui/commit/b768574267dc7bb557496ea2481d04d996d4283c))
-* **kit:** `CalendarMonth` fix incorrect state in range ([#1207](https://github.com/tinkoff/taiga-ui/issues/1207)) ([9ead920](https://github.com/tinkoff/taiga-ui/commit/9ead920762a2b7dcfb35674b31910a18fc290584))
-* **kit:** `InputDate*`-components' filler with custom date-separator ([#1180](https://github.com/tinkoff/taiga-ui/issues/1180)) ([723c9b3](https://github.com/tinkoff/taiga-ui/commit/723c9b35ef6d99442f0d223ee6152834664792e5))
-* **kit:** `InputNumber` fix max length ([#1233](https://github.com/tinkoff/taiga-ui/issues/1233)) ([7b5c015](https://github.com/tinkoff/taiga-ui/commit/7b5c015c1678d2a0b8752c388f6484cdccb40609))
-* **kit:** `InputSlider` fix decimal limit ([#1213](https://github.com/tinkoff/taiga-ui/issues/1213)) ([06fc16b](https://github.com/tinkoff/taiga-ui/commit/06fc16baf4f30182345d02ed83ea7f81052ef068))
-* **kit:** `InputTag` broken layout of `tuiTextfieldCleaner` (size = s, m) ([#1186](https://github.com/tinkoff/taiga-ui/issues/1186)) ([2cd678f](https://github.com/tinkoff/taiga-ui/commit/2cd678f74c5ec35092e7052b6cf0e9cb33ab8800))
-* **kit:** `Tree` fix change detection in async children ([#1189](https://github.com/tinkoff/taiga-ui/issues/1189)) ([2a215cf](https://github.com/tinkoff/taiga-ui/commit/2a215cf1d518f5ad1867abe468c400b7d95a9e3b))
-* **kit:** fix cursor pointer in `ComboBox` and date controls ([#1208](https://github.com/tinkoff/taiga-ui/issues/1208)) ([7374bb1](https://github.com/tinkoff/taiga-ui/commit/7374bb140ac1f9708cd208be762abaf67011d412))
+- **addon-charts:** fix axis hints ([#1223](https://github.com/tinkoff/taiga-ui/issues/1223))
+  ([f515914](https://github.com/tinkoff/taiga-ui/commit/f515914a5d87accbf2347c165a80d251cc4d8564))
+- **addon-doc:** extract only `fence` type content from markdown
+  ([#1205](https://github.com/tinkoff/taiga-ui/issues/1205))
+  ([c30c4a3](https://github.com/tinkoff/taiga-ui/commit/c30c4a3a7c72ef465147d375ae22fd6ea4da9224))
+- **addon-doc:** support coercing value from query params ([#1234](https://github.com/tinkoff/taiga-ui/issues/1234))
+  ([d6af595](https://github.com/tinkoff/taiga-ui/commit/d6af595917f49d7832d116c183c7011bd7e2e12e))
+- **addon-editor:** change width for the opacity block ([#1162](https://github.com/tinkoff/taiga-ui/issues/1162))
+  ([9907f49](https://github.com/tinkoff/taiga-ui/commit/9907f4940684d99b38297dd4788dfb35aef88f1f))
+- **addon-preview:** add providers to `TuiPreviewModule` ([#1194](https://github.com/tinkoff/taiga-ui/issues/1194))
+  ([f7a4ba9](https://github.com/tinkoff/taiga-ui/commit/f7a4ba9be559243059a1898c3d8a4e9677b81794))
+- **addon-tablebars:** fix light mode class ([#1218](https://github.com/tinkoff/taiga-ui/issues/1218))
+  ([c1743b4](https://github.com/tinkoff/taiga-ui/commit/c1743b433f7cc8e12c02587bc3fd231acb2667aa))
+- **core:** fix `formatNumber` for values when precision > 6 ([#1171](https://github.com/tinkoff/taiga-ui/issues/1171))
+  ([d7f7183](https://github.com/tinkoff/taiga-ui/commit/d7f718314cdfa35e171a5650808dce369ccc2cb1))
+- **core:** fix unnecessary scroll in fullsize dialogs on mobile
+  ([#1190](https://github.com/tinkoff/taiga-ui/issues/1190))
+  ([e8303af](https://github.com/tinkoff/taiga-ui/commit/e8303af19af547e072123e0af26c8f947e52bb52))
+- **i18n:** add italian to i18n index ([#1216](https://github.com/tinkoff/taiga-ui/issues/1216))
+  ([54ba4f3](https://github.com/tinkoff/taiga-ui/commit/54ba4f38e6f9161d7e1de86808ffe35aa4935a40))
+- **i18n:** fix German translation ([#1219](https://github.com/tinkoff/taiga-ui/issues/1219))
+  ([b768574](https://github.com/tinkoff/taiga-ui/commit/b768574267dc7bb557496ea2481d04d996d4283c))
+- **kit:** `CalendarMonth` fix incorrect state in range ([#1207](https://github.com/tinkoff/taiga-ui/issues/1207))
+  ([9ead920](https://github.com/tinkoff/taiga-ui/commit/9ead920762a2b7dcfb35674b31910a18fc290584))
+- **kit:** `InputDate*`-components' filler with custom date-separator
+  ([#1180](https://github.com/tinkoff/taiga-ui/issues/1180))
+  ([723c9b3](https://github.com/tinkoff/taiga-ui/commit/723c9b35ef6d99442f0d223ee6152834664792e5))
+- **kit:** `InputNumber` fix max length ([#1233](https://github.com/tinkoff/taiga-ui/issues/1233))
+  ([7b5c015](https://github.com/tinkoff/taiga-ui/commit/7b5c015c1678d2a0b8752c388f6484cdccb40609))
+- **kit:** `InputSlider` fix decimal limit ([#1213](https://github.com/tinkoff/taiga-ui/issues/1213))
+  ([06fc16b](https://github.com/tinkoff/taiga-ui/commit/06fc16baf4f30182345d02ed83ea7f81052ef068))
+- **kit:** `InputTag` broken layout of `tuiTextfieldCleaner` (size = s, m)
+  ([#1186](https://github.com/tinkoff/taiga-ui/issues/1186))
+  ([2cd678f](https://github.com/tinkoff/taiga-ui/commit/2cd678f74c5ec35092e7052b6cf0e9cb33ab8800))
+- **kit:** `Tree` fix change detection in async children ([#1189](https://github.com/tinkoff/taiga-ui/issues/1189))
+  ([2a215cf](https://github.com/tinkoff/taiga-ui/commit/2a215cf1d518f5ad1867abe468c400b7d95a9e3b))
+- **kit:** fix cursor pointer in `ComboBox` and date controls ([#1208](https://github.com/tinkoff/taiga-ui/issues/1208))
+  ([7374bb1](https://github.com/tinkoff/taiga-ui/commit/7374bb140ac1f9708cd208be762abaf67011d412))
 
 ## [2.30.0](https://github.com/tinkoff/taiga-ui/compare/v2.29.0...v2.30.0) (2022-01-17)
 

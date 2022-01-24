@@ -2,10 +2,7 @@
     "name": "@taiga-ui/icons",
     "version": "2.31.0",
     "description": "Taiga UI icons pack",
-    "keywords": [
-        "angular",
-        "icon"
-    ],
+    "keywords": ["angular", "icon"],
     "license": "Apache-2.0",
     "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui"
