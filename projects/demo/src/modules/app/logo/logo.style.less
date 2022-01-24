@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) {
         font-size: 0;
     }
 }
@@ -17,7 +17,7 @@
 .by {
     margin-left: 0.875rem;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         display: none;
     }
 }

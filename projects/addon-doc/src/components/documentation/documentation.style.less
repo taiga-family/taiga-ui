@@ -8,7 +8,7 @@
 }
 
 .t-row {
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         display: flex;
         flex-wrap: wrap;
 
@@ -26,12 +26,12 @@
     &_value {
         max-width: 20rem;
 
-        @media @mobile-m {
+        :host-context(tui-root._mobile) & {
             width: 9.375rem;
         }
     }
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         width: 100%;
         height: auto;
         padding: 0.5rem 0;
