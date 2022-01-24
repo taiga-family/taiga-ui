@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/core",
-    "version": "2.30.0",
+    "version": "2.31.0",
     "description": "Core library for creating Angular components and applications using Taiga UI",
     "keywords": ["angular", "kit", "ui", "component-library", "component", "service", "directive"],
     "license": "Apache-2.0",
@@ -8,10 +8,10 @@
     "homepage": "https://github.com/tinkoff/taiga-ui",
     "schematics": "./schematics/collection.json",
     "dependencies": {
-        "@taiga-ui/i18n": "2.30.0"
+        "@taiga-ui/i18n": "2.31.0"
     },
     "peerDependencies": {
-        "@taiga-ui/cdk": "2.30.0",
+        "@taiga-ui/cdk": "2.31.0",
         "@angular/animations": ">=9.0.0",
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
