@@ -41,7 +41,7 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
+import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -121,12 +121,14 @@ export class TuiComboBoxComponent<T>
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TUI_ARROW_MODE)
+        private readonly arrowMode: TuiArrowMode,
     ) {
         super(control, changeDetectorRef);
     }
 
     get arrow(): PolymorpheusContent {
-        return !this.interactive ? '' : TUI_ARROW;
+        return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -227,9 +229,7 @@ export class TuiComboBoxComponent<T>
     }
 
     toggle() {
-        if (this.hostedDropdown) {
-            this.hostedDropdown.updateOpen(!this.open);
-        }
+        this.hostedDropdown?.updateOpen(!this.open);
     }
 
     private isStrictMatch(item: T): boolean {
@@ -237,9 +237,7 @@ export class TuiComboBoxComponent<T>
     }
 
     private close() {
-        if (this.hostedDropdown) {
-            this.hostedDropdown.updateOpen(false);
-        }
+        this.hostedDropdown?.updateOpen(false);
     }
 
     private updateSearch(search: string | null) {

@@ -1,6 +1,5 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TuiDataListModule,
@@ -12,57 +11,19 @@ import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {configureTestSuite} from 'ng-bullet';
 
-import {TuiMultiSelectComponent} from '../multi-select.component';
 import {TuiMultiSelectModule} from '../multi-select.module';
-
-class User {
-    constructor(
-        readonly firstName: string,
-        readonly lastName: string,
-        readonly id: string,
-    ) {}
-
-    toString(): string {
-        return `${this.firstName} ${this.lastName}`;
-    }
-}
-
-const ITEMS = [
-    new User('Marsi', 'Barsi', '0'),
-    new User('Роман', 'Седов', '1'),
-    new User('Water', 'Plea', '2'),
-    new User('Alexander', 'Inkin', '3'),
-    new User('Александр', 'Инкин', '4'),
-];
+import {
+    getArrow,
+    getDropdown,
+    getInputTag,
+    ITEMS,
+    MultiSelectTestComponent,
+} from './multi-select.helpers';
 
 describe('MultiSelect', () => {
-    @Component({
-        template: `
-            <tui-root>
-                <tui-multi-select [formControl]="control" [readOnly]="readOnly">
-                    <tui-data-list-wrapper
-                        *tuiDataList
-                        automation-id="tui-multi-select__menu"
-                        [items]="items"
-                    ></tui-data-list-wrapper>
-                </tui-multi-select>
-            </tui-root>
-        `,
-    })
-    class TestComponent {
-        @ViewChild(TuiMultiSelectComponent, {static: true})
-        component: TuiMultiSelectComponent<User>;
-
-        items = ITEMS;
-
-        control = new FormControl([ITEMS[0]]);
-
-        readOnly = false;
-    }
-
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
-    let pageObject: PageObject<TestComponent>;
+    let fixture: ComponentFixture<MultiSelectTestComponent>;
+    let testComponent: MultiSelectTestComponent;
+    let pageObject: PageObject<MultiSelectTestComponent>;
     let inputPO: NativeInputPO;
 
     configureTestSuite(() => {
@@ -77,12 +38,12 @@ describe('MultiSelect', () => {
                 TuiTextfieldControllerModule,
                 TuiHintControllerModule,
             ],
-            declarations: [TestComponent],
+            declarations: [MultiSelectTestComponent],
         });
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(MultiSelectTestComponent);
         pageObject = new PageObject(fixture);
         testComponent = fixture.componentInstance;
 
@@ -98,29 +59,29 @@ describe('MultiSelect', () => {
             });
 
             it('opens a dropdown', () => {
-                getInputTag().nativeElement.click();
+                getInputTag(pageObject).nativeElement.click();
                 fixture.detectChanges();
 
-                expect(getDropdown()).not.toBeNull();
+                expect(getDropdown(pageObject)).not.toBeNull();
             });
 
             describe('does not open the dropdown', () => {
                 it('in readOnly mode', () => {
                     testComponent.readOnly = true;
                     fixture.detectChanges();
-                    getInputTag().nativeElement.click();
+                    getInputTag(pageObject).nativeElement.click();
                     fixture.detectChanges();
 
-                    expect(getDropdown()).toBeNull();
+                    expect(getDropdown(pageObject)).toBeNull();
                 });
 
                 it('if control is disabled', () => {
                     testComponent.control.disable();
                     fixture.detectChanges();
-                    getInputTag().nativeElement.click();
+                    getInputTag(pageObject).nativeElement.click();
                     fixture.detectChanges();
 
-                    expect(getDropdown()).toBeNull();
+                    expect(getDropdown(pageObject)).toBeNull();
                 });
             });
         });
@@ -128,33 +89,33 @@ describe('MultiSelect', () => {
 
     describe('Arrow', () => {
         it('Click on the arrow to open the dropdown', () => {
-            getArrow()!.nativeElement.click();
+            getArrow(pageObject)?.nativeElement.click();
             fixture.detectChanges();
 
-            expect(getDropdown()).not.toBeNull();
+            expect(getDropdown(pageObject)).not.toBeNull();
         });
 
         it('Clicking the arrow again closes the dropdown', () => {
-            getArrow()!.nativeElement.click();
+            getArrow(pageObject)?.nativeElement.click();
             fixture.detectChanges();
-            getArrow()!.nativeElement.click();
+            getArrow(pageObject)?.nativeElement.click();
             fixture.detectChanges();
 
-            expect(getDropdown()).toBeNull();
+            expect(getDropdown(pageObject)).toBeNull();
         });
 
-        it('There is no interactive arrow in readOnly mode', () => {
+        it('There is exists interactive arrow in readOnly mode', () => {
             testComponent.readOnly = true;
             fixture.detectChanges();
 
-            expect(getArrow()).toBeNull();
+            expect(getArrow(pageObject)?.nativeElement).toBeTruthy();
         });
 
-        it('In disabled mode there is no interactive arrow', () => {
+        it('In disabled mode there is interactive arrow exists', () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
-            expect(getArrow()).toBeNull();
+            expect(getArrow(pageObject)?.nativeElement).toBeTruthy();
         });
     });
 
@@ -167,7 +128,7 @@ describe('MultiSelect', () => {
             inputPO.sendKeydown('ArrowDown');
             fixture.detectChanges();
 
-            expect(getDropdown()).not.toBeNull();
+            expect(getDropdown(pageObject)).not.toBeNull();
         });
 
         it('Esc closes the dropdown', () => {
@@ -176,7 +137,7 @@ describe('MultiSelect', () => {
             inputPO.sendKeydown('Escape');
             fixture.detectChanges();
 
-            expect(getDropdown()).toBeNull();
+            expect(getDropdown(pageObject)).toBeNull();
         });
 
         it('Down arrow does not open dropdown in readOnly mode', () => {
@@ -185,14 +146,14 @@ describe('MultiSelect', () => {
             inputPO.sendKeydown('ArrowDown');
             fixture.detectChanges();
 
-            expect(getDropdown()).toBeNull();
+            expect(getDropdown(pageObject)).toBeNull();
         });
 
         it('The repeated down arrow moves focus to the item', () => {
             inputPO.sendKeydown('ArrowDown');
             inputPO.sendKeydown('ArrowDown');
 
-            expect(document.activeElement!.tagName.toLowerCase()).toBe('button');
+            expect(document.activeElement?.tagName.toLowerCase()).toBe('button');
         });
 
         it('Click to remove the selected item', () => {
@@ -212,16 +173,4 @@ describe('MultiSelect', () => {
             expect(testComponent.control.value).toEqual([ITEMS[0]]);
         });
     });
-
-    function getInputTag(): DebugElement {
-        return pageObject.getByAutomationId('tui-multi-select__input')!;
-    }
-
-    function getDropdown(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-multi-select__menu');
-    }
-
-    function getArrow(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-multi-select__arrow');
-    }
 });

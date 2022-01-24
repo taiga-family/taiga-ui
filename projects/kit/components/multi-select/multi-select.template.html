@@ -32,7 +32,7 @@
     >
         <ng-content></ng-content>
     </tui-input-tag>
-    <div class="t-wrapper">
+    <div class="t-wrapper" [class.t-wrapper_disabled]="disabled">
         <div
             *ngIf="computedGroup"
             polymorpheus-outlet
@@ -41,14 +41,15 @@
             [context]="context"
             [content]="valueContent"
         ></div>
-        <tui-svg
-            *ngIf="interactive"
+
+        <div
+            *ngIf="arrow"
+            polymorpheus-outlet
             automation-id="tui-multi-select__arrow"
             tuiPreventDefault="mousedown"
             class="t-arrow"
-            [class.t-arrow_open]="open"
-            [src]="inputTag.size === 's' ? 'tuiIconChevronDown' : 'tuiIconChevronDownLarge'"
+            [content]="arrow"
             (click.prevent)="onArrowClick()"
-        ></tui-svg>
+        ></div>
     </div>
 </tui-hosted-dropdown>

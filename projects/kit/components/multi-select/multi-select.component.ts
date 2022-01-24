@@ -43,6 +43,7 @@ import {
     TuiSvgService,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
+import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
 import {iconBlank} from '@taiga-ui/kit/constants';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -122,10 +123,16 @@ export class TuiMultiSelectComponent<T>
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TuiSvgService) svgService: TuiSvgService,
+        @Inject(TUI_ARROW_MODE)
+        private readonly arrowMode: TuiArrowMode,
     ) {
         super(control, changeDetectorRef);
 
         svgService.define({iconBlank});
+    }
+
+    get arrow(): PolymorpheusContent {
+        return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -247,12 +254,12 @@ export class TuiMultiSelectComponent<T>
             nativeFocusableElement &&
             isNativeFocused(nativeFocusableElement)
         ) {
-            this.open = !this.open;
+            this.hostedDropdown?.updateOpen(!this.open);
         }
     }
 
     onArrowClick() {
-        this.open = !this.open;
+        this.hostedDropdown?.updateOpen(!this.open);
         this.focusInput();
     }
 
