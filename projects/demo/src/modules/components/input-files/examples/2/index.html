@@ -1,0 +1,25 @@
+<tui-input-files
+    accept="image/*"
+    [multiple]="true"
+    [formControl]="control"
+    (onReject)="onReject($event)"
+></tui-input-files>
+
+<tui-files class="tui-space_top-1 files">
+    <ng-container *ngFor="let file of control.valueChanges | async">
+        <tui-file
+            *tuiFile
+            [file]="file"
+            (fileRemoved)="removeFile(file)"
+        ></tui-file>
+    </ng-container>
+
+    <ng-container *ngFor="let file of rejectedFiles">
+        <tui-file
+            *tuiFile
+            state="error"
+            [file]="file"
+            (fileRemoved)="clearRejected(file)"
+        ></tui-file>
+    </ng-container>
+</tui-files>

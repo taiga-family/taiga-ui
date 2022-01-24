@@ -362,6 +362,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: 'InputFiles',
+        keywords: 'input-files, files, file, файлы',
+        route: '/components/files',
+    },
+    {
+        section: $localize`Components`,
         title: 'Expand',
         keywords: 'аккордеон, expand, раскрывашка, spoiler, cut',
         route: '/components/expand',

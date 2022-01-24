@@ -1,0 +1,48 @@
+<tui-wrapper
+    class="wrapper"
+    [class.wrapper_mobile]="isMobile"
+    [appearance]="getAppearance(mode$ | async)"
+    [focused]="computedFocused"
+    [hovered]="computedHovered || fileDragged"
+    [pressed]="computedPressed"
+    [readOnly]="readOnly"
+    [disabled]="computedDisabled"
+>
+    <label
+        *ngIf="units$ | async as units"
+        automation-id="tui-input-file__label"
+    >
+        <a tuiLink>
+            <span
+                polymorpheus-outlet
+                class="inline"
+                [content]="computedLink$ | async"
+            ></span>
+        </a>
+        <ng-container *ngIf="computedLabel$ | async as computedLabel">
+            <span>&nbsp;</span>
+            <span
+                polymorpheus-outlet
+                class="inline"
+                [content]="computedLabel"
+            ></span>
+        </ng-container>
+        <input
+            *ngIf="!readOnly && !computedDisabled && (inputFileTexts$ | async) as texts"
+            #input
+            type="file"
+            tuiPreventDefault="mousedown"
+            class="native"
+            [id]="id"
+            [accept]="accept"
+            [multiple]="multiple"
+            [tuiFocusable]="focusable"
+            (change)="onFilesSelected(input, texts, units)"
+            (tuiHoveredChange)="onHovered($event)"
+            (tuiFocusedChange)="onFocused($event)"
+            (tuiPressedChange)="onPressed($event)"
+            (tuiDroppableDropped)="onDropped($event, texts, units)"
+            (tuiDroppableDragOverChange)="onDragOver($event)"
+        />
+    </label>
+</tui-wrapper>

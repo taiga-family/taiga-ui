@@ -1,0 +1,14 @@
+<tui-files class="files">
+    <tui-file
+        *tuiFile
+        [file]="file"
+        [allowDelete]="false"
+        [leftContent]="content"
+    >
+        <span class="tui-text_body-s-2">file is on checking</span>
+    </tui-file>
+</tui-files>
+
+<ng-template #content>
+    <tui-svg src="tuiIconTimeLarge"></tui-svg>
+</ng-template>
