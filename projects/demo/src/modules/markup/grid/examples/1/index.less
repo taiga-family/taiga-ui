@@ -4,8 +4,8 @@
     height: 12.5rem;
     background-color: rgba(208, 2, 27, 0.3);
 
-    &:not(&_fixed) {
-        @media @mobile-m {
+    :host-context(tui-root._mobile) & {
+        &:not(&_fixed) {
             height: 1.25rem;
         }
     }

@@ -15,7 +15,7 @@ app {
     transform: rotate(20deg);
     margin-left: 1.25rem;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         left: 2.5rem;
     }
 }
@@ -28,7 +28,7 @@ app {
     font-weight: bold;
     height: 1.5rem;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         font-size: 0;
     }
 }
