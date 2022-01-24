@@ -9,10 +9,12 @@ import {
 import {TUI_IS_MOBILE, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness, TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
+import {TuiBrightness, TuiHintModeT} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+
+import {TooltipOptions, TUI_TOOLTIP_OPTIONS} from './tooltip-options';
 
 @Component({
     selector: 'tui-tooltip',
@@ -30,19 +32,19 @@ export class TuiTooltipComponent {
 
     @Input()
     @tuiDefaultProp()
-    mode: TuiHintModeT | null = null;
+    mode: TooltipOptions['mode'] = this.options.mode;
 
     @Input()
     @tuiDefaultProp()
-    direction: TuiDirection = 'bottom-left';
+    direction: TooltipOptions['direction'] = this.options.direction;
 
     @Input()
     @tuiDefaultProp()
-    showDelay = 500;
+    showDelay: TooltipOptions['showDelay'] = this.options.showDelay;
 
     @Input()
     @tuiDefaultProp()
-    hideDelay = 200;
+    hideDelay: TooltipOptions['hideDelay'] = this.options.hideDelay;
 
     @Input()
     @tuiDefaultProp()
@@ -52,6 +54,7 @@ export class TuiTooltipComponent {
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
+        @Inject(TUI_TOOLTIP_OPTIONS) private readonly options: TooltipOptions,
     ) {
         mode$.pipe(takeUntil(destroy$)).subscribe(mode => {
             this.globalMode = mode;
@@ -71,5 +74,9 @@ export class TuiTooltipComponent {
             event.preventDefault();
             event.stopPropagation();
         }
+    }
+
+    get icon(): PolymorpheusContent {
+        return this.options.icon;
     }
 }

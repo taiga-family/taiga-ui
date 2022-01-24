@@ -1,11 +1,16 @@
-<tui-svg
-    src="tuiIconTooltipLarge"
+<span
+    polymorpheus-outlet
     automation-id="tui-tooltip__icon"
     class="icon"
+    [content]="icon"
     [tuiHintId]="describeId"
     [tuiHint]="content"
     [tuiHintDirection]="direction"
     [tuiHintShowDelay]="showDelay"
     [tuiHintHideDelay]="hideDelay"
     [tuiHintMode]="computedMode"
-></tui-svg>
+>
+    <ng-template let-icon>
+        <tui-svg [src]="icon"></tui-svg>
+    </ng-template>
+</span>
