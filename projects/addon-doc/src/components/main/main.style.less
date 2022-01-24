@@ -107,6 +107,10 @@ label.night-mode {
     padding: 0.5em;
     color: var(--tui-text-01);
     background-color: var(--tui-clear-disabled);
+
+    &.hljs-line-numbers {
+        background: transparent;
+    }
 }
 
 .hljs-subst,
@@ -170,7 +174,14 @@ label.night-mode {
 
 .hljs-variable,
 .hljs-template-variable {
-    color: var(--tui-warning-fill);
+    color: var(--tui-link-hover);
+}
+
+[data-mode='onDark'] {
+    .hljs-variable,
+    .hljs-template-variable {
+        color: var(--tui-warning-fill);
+    }
 }
 
 .hljs-addition {

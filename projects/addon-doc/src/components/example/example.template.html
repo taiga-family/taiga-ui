@@ -42,27 +42,34 @@
             </button>
         </div>
 
-        <ng-container
-            *ngIf="{
-                activeTab: tabs[activeItemIndex],
-                code: content[tabs[activeItemIndex]] || ''
-            } as state"
+        <div
+            *ngFor="let tab of tabs; let index = index"
+            class="t-content"
+            [class.t-content_animated]="!isCypress"
+            [class.t-content_visible]="activeItemIndex === index"
         >
-            <div
-                *ngIf="state.activeTab == defaultTab; else codeSection"
-                automation-id="tui-doc-example"
-                class="t-demo"
-            >
-                <ng-content></ng-content>
-            </div>
-
-            <ng-template #codeSection>
-                <tui-doc-copy
-                    class="t-copy-code"
-                    [cdkCopyToClipboard]="state.code"
-                ></tui-doc-copy>
-                <tui-doc-code [code]="state.code"></tui-doc-code>
+            <ng-container *ngIf="index === defaultTabIndex; else anotherTab">
+                <ng-container *ngTemplateOutlet="preview"></ng-container>
+            </ng-container>
+            <ng-template #anotherTab>
+                <ng-container
+                    *ngTemplateOutlet="codeSection; context: { $implicit: content[tabs[activeItemIndex]] || '' }"
+                ></ng-container>
             </ng-template>
-        </ng-container>
+        </div>
     </ng-container>
 </div>
+
+<ng-template #preview>
+    <div automation-id="tui-doc-example" class="t-demo">
+        <ng-content></ng-content>
+    </div>
+</ng-template>
+
+<ng-template #codeSection let-code>
+    <tui-doc-copy
+        class="t-copy-code"
+        [cdkCopyToClipboard]="code"
+    ></tui-doc-copy>
+    <tui-doc-code [code]="code"></tui-doc-code>
+</ng-template>
