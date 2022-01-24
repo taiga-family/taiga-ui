@@ -106,8 +106,8 @@ import {
     TuiTextAreaModule,
     TuiToggleModule,
     TuiRatingModule,
+    TuiTreeModule,
 } from '@taiga-ui/kit';
-
 import {
     TuiAxesModule,
     TuiBarModule,
@@ -278,6 +278,7 @@ import {AppComponent} from './app.component';
         TuiProjectClassModule,
         TuiRatingModule,
         TuiFilterByInputPipeModule,
+        TuiTreeModule,
         RouterModule.forRoot([]),
     ],
     declarations: [AppComponent],
