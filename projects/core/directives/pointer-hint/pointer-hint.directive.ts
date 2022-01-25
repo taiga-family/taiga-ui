@@ -19,7 +19,7 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
-import {PointerHintOptions, TUI_POINTER_HINT_OPTIONS} from './pointer-hint-options';
+import {TUI_POINTER_HINT_OPTIONS, TuiPointerHintOptions} from './pointer-hint-options';
 
 @Directive({
     selector: '[tuiPointerHint]:not(ng-container)',
@@ -30,12 +30,12 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
 
     @Input()
     @tuiDefaultProp()
-    tuiHintShowDelay: PointerHintOptions['tuiHintShowDelay'] =
+    tuiHintShowDelay: TuiPointerHintOptions['tuiHintShowDelay'] =
         this.options.tuiHintShowDelay;
 
     @Input()
     @tuiDefaultProp()
-    tuiHintHideDelay: PointerHintOptions['tuiHintHideDelay'] =
+    tuiHintHideDelay: TuiPointerHintOptions['tuiHintHideDelay'] =
         this.options.tuiHintHideDelay;
 
     // TODO: Remove null in 3.0
@@ -60,7 +60,8 @@ export class TuiPointerHintDirective extends AbstractTuiHint {
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
         @Inject(TuiHoveredService) hoveredService: TuiHoveredService,
-        @Inject(TUI_POINTER_HINT_OPTIONS) protected readonly options: PointerHintOptions,
+        @Inject(TUI_POINTER_HINT_OPTIONS)
+        protected readonly options: TuiPointerHintOptions,
     ) {
         super(elementRef, hintService, null, options);
 

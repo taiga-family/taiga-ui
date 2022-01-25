@@ -32,7 +32,7 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
-import {HintOptions, TUI_HINT_OPTIONS} from './hint-options';
+import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
 
 export const HINT_HOVERED_CLASS = '_hint_hovered';
 
@@ -46,11 +46,11 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
 
     @Input()
     @tuiDefaultProp()
-    tuiHintShowDelay: HintOptions['tuiHintShowDelay'] = this.options.tuiHintShowDelay;
+    tuiHintShowDelay: TuiHintOptions['tuiHintShowDelay'] = this.options.tuiHintShowDelay;
 
     @Input()
     @tuiDefaultProp()
-    tuiHintHideDelay: HintOptions['tuiHintHideDelay'] = this.options.tuiHintHideDelay;
+    tuiHintHideDelay: TuiHintOptions['tuiHintHideDelay'] = this.options.tuiHintHideDelay;
 
     @Input()
     @tuiDefaultProp()
@@ -85,7 +85,7 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
         @Optional()
         @Inject(TuiActiveZoneDirective)
         activeZone: TuiActiveZoneDirective | null,
-        @Inject(TUI_HINT_OPTIONS) protected readonly options: HintOptions,
+        @Inject(TUI_HINT_OPTIONS) protected readonly options: TuiHintOptions,
     ) {
         super(elementRef, hintService, activeZone, options);
 

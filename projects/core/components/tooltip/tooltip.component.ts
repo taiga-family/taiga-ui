@@ -7,7 +7,7 @@ import {
     Input,
 } from '@angular/core';
 import {TUI_IS_MOBILE, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
-import {HintOptions, TUI_HINT_OPTIONS} from '@taiga-ui/core/directives';
+import {TUI_HINT_OPTIONS, TuiHintOptions} from '@taiga-ui/core/directives';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiHintModeT} from '@taiga-ui/core/types';
@@ -31,19 +31,19 @@ export class TuiTooltipComponent {
 
     @Input()
     @tuiDefaultProp()
-    mode: HintOptions['mode'] = this.options.mode;
+    mode: TuiHintOptions['mode'] = this.options.mode;
 
     @Input()
     @tuiDefaultProp()
-    direction: HintOptions['direction'] = this.options.direction;
+    direction: TuiHintOptions['direction'] = this.options.direction;
 
     @Input()
     @tuiDefaultProp()
-    showDelay: HintOptions['tuiHintShowDelay'] = this.options.tuiHintShowDelay;
+    showDelay: TuiHintOptions['tuiHintShowDelay'] = this.options.tuiHintShowDelay;
 
     @Input()
     @tuiDefaultProp()
-    hideDelay: HintOptions['tuiHintHideDelay'] = this.options.tuiHintHideDelay;
+    hideDelay: TuiHintOptions['tuiHintHideDelay'] = this.options.tuiHintHideDelay;
 
     @Input()
     @tuiDefaultProp()
@@ -53,7 +53,7 @@ export class TuiTooltipComponent {
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TUI_HINT_OPTIONS) private readonly options: HintOptions,
+        @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
     ) {
         mode$.pipe(takeUntil(destroy$)).subscribe(mode => {
             this.globalMode = mode;

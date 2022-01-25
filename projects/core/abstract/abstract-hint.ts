@@ -3,17 +3,17 @@ import {TuiActiveZoneDirective, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {AbstractHintOptions} from './abstract-hint-options';
+import {TuiAbstractHintOptions} from './abstract-hint-options';
 
 @Directive()
 export abstract class AbstractTuiHint implements OnDestroy {
     @Input('tuiHintMode')
     @tuiDefaultProp()
-    mode: AbstractHintOptions['mode'] = this.options.mode;
+    mode: TuiAbstractHintOptions['mode'] = this.options.mode;
 
     @Input('tuiHintDirection')
     @tuiDefaultProp()
-    direction: AbstractHintOptions['direction'] = this.options.direction;
+    direction: TuiAbstractHintOptions['direction'] = this.options.direction;
 
     content: PolymorpheusContent = '';
 
@@ -21,7 +21,7 @@ export abstract class AbstractTuiHint implements OnDestroy {
         protected readonly elementRef: ElementRef<HTMLElement>,
         protected readonly hintService: TuiHintService,
         readonly activeZone: TuiActiveZoneDirective | null,
-        protected readonly options: AbstractHintOptions,
+        protected readonly options: TuiAbstractHintOptions,
     ) {}
 
     abstract getElementClientRect(): ClientRect;
