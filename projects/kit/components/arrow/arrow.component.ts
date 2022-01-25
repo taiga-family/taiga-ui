@@ -7,7 +7,7 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {ArrowOptions,TUI_ARROW_OPTIONS} from './arrow-options';
+import {TUI_ARROW_OPTIONS, TuiArrowOptions} from './arrow-options';
 
 @Component({
     selector: 'tui-arrow',
@@ -21,7 +21,7 @@ export class TuiArrowComponent {
         readonly dropdown: TuiHostedDropdownComponent,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_ARROW_OPTIONS) private readonly options: ArrowOptions,
+        @Inject(TUI_ARROW_OPTIONS) private readonly options: TuiArrowOptions,
     ) {}
 
     get arrowIcon(): PolymorpheusContent {
