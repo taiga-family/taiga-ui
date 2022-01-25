@@ -5,7 +5,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export interface PrimitiveTextfieldOptions {
     readonly iconAlign: TuiHorizontalDirection;
     readonly iconCleaner: PolymorpheusContent;
-    readonly postfix: string;
 }
 
 // TODO: remove in ivy compilation
@@ -15,7 +14,6 @@ export const PRIMITIVE_TEXTFIELD_ICON_CLEANER = 'tuiIconCloseLarge';
 export const TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS: PrimitiveTextfieldOptions = {
     iconAlign: 'right',
     iconCleaner: PRIMITIVE_TEXTFIELD_ICON_CLEANER,
-    postfix: '',
 };
 
 export const TUI_PRIMITIVE_TEXTFIELD_OPTIONS =

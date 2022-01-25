@@ -103,7 +103,7 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
-    postfix: PrimitiveTextfieldOptions['postfix'] = this.options.postfix;
+    postfix = '';
 
     @Input()
     @tuiDefaultProp()
