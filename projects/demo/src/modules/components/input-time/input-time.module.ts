@@ -10,12 +10,18 @@ import {
     TuiLinkModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputTimeModule, TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
+import {
+    TuiInputTimeModule,
+    TuiToggleModule,
+    TuiUnfinishedValidatorModule,
+} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputTimeExample1} from './examples/1';
 import {TuiInputTimeExample2} from './examples/2';
 import {TuiInputTimeExample3} from './examples/3';
+import {TuiInputTimeExample4} from './examples/4';
+import {TuiInputTimeExample5} from './examples/5';
 import {ExampleTuiInputTimeComponent} from './input-time.component';
 
 @NgModule({
@@ -30,6 +36,7 @@ import {ExampleTuiInputTimeComponent} from './input-time.component';
         TuiDropdownControllerModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
+        TuiToggleModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputTimeComponent)),
         TuiUnfinishedValidatorModule,
@@ -39,6 +46,8 @@ import {ExampleTuiInputTimeComponent} from './input-time.component';
         TuiInputTimeExample1,
         TuiInputTimeExample2,
         TuiInputTimeExample3,
+        TuiInputTimeExample4,
+        TuiInputTimeExample5,
     ],
     exports: [ExampleTuiInputTimeComponent],
 })
