@@ -1,11 +1,13 @@
 import {InjectionToken} from '@angular/core';
 import {TuiContextWithImplicit, TuiTimeMode} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface InputTimeOptions {
     readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>;
     readonly mode: TuiTimeMode;
+    readonly maxValues: Record<TuiTimeFormatParts, number>;
     readonly itemSize: TuiSizeS | TuiSizeL;
 }
 
@@ -16,6 +18,7 @@ export const INPUT_TIME_ICON = ({$implicit}: any) =>
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: InputTimeOptions = {
     icon: INPUT_TIME_ICON,
     mode: 'HH:MM',
+    maxValues: {HH: 23, MM: 59, SS: 59, MS: 999},
     itemSize: 'm',
 };
 

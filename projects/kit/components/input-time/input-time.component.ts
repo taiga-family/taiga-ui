@@ -61,7 +61,7 @@ import {InputTimeOptions, TUI_INPUT_TIME_OPTIONS} from './input-time-options';
 })
 export class TuiInputTimeComponent
     extends AbstractTuiNullableControl<TuiTime>
-    implements TuiFocusableElementAccessor, InputTimeOptions
+    implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
@@ -250,8 +250,8 @@ export class TuiInputTimeComponent
     @tuiPure
     private calculateMask(mode: TuiTimeMode): TuiTextMaskOptions {
         return {
-            mask: tuiCreateTimeMask(mode),
-            pipe: tuiCreateAutoCorrectedTimePipe(mode),
+            mask: tuiCreateTimeMask(mode, this.options.maxValues),
+            pipe: tuiCreateAutoCorrectedTimePipe(mode, this.options.maxValues),
             guide: false,
         };
     }
