@@ -1,5 +1,6 @@
 {
     "extends": "../../tsconfig.build.json",
+    "include": ["./svg.d.ts"],
     "compilerOptions": {
         "types": ["node"]
     },
