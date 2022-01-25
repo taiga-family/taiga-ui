@@ -2,22 +2,22 @@ import {InjectionToken} from '@angular/core';
 import {TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-export interface PrimitiveTextfieldOptions {
+export interface TuiPrimitiveTextfieldOptions {
     readonly iconAlign: TuiHorizontalDirection;
     readonly iconCleaner: PolymorpheusContent;
 }
 
 // TODO: remove in ivy compilation
-export const PRIMITIVE_TEXTFIELD_ICON_CLEANER = 'tuiIconCloseLarge';
+export const TUI_PRIMITIVE_TEXTFIELD_ICON_CLEANER = 'tuiIconCloseLarge';
 
 /** Default values for primitive textfield options */
-export const TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS: PrimitiveTextfieldOptions = {
+export const TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS: TuiPrimitiveTextfieldOptions = {
     iconAlign: 'right',
-    iconCleaner: PRIMITIVE_TEXTFIELD_ICON_CLEANER,
+    iconCleaner: TUI_PRIMITIVE_TEXTFIELD_ICON_CLEANER,
 };
 
 export const TUI_PRIMITIVE_TEXTFIELD_OPTIONS =
-    new InjectionToken<PrimitiveTextfieldOptions>(
+    new InjectionToken<TuiPrimitiveTextfieldOptions>(
         'Default parameters for primitive textfield component',
         {
             factory: () => TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS,

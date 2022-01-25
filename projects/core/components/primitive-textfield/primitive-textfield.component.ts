@@ -37,8 +37,8 @@ import {map} from 'rxjs/operators';
 
 import {TUI_PRIMITIVE_TEXTFIELD_PROVIDERS} from './primitive-textfield.providers';
 import {
-    PrimitiveTextfieldOptions,
     TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
+    TuiPrimitiveTextfieldOptions,
 } from './primitive-textfield-options';
 
 const ICON_PADDING = 1.75;
@@ -73,7 +73,7 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
-    iconAlign: PrimitiveTextfieldOptions['iconAlign'] = this.options.iconAlign;
+    iconAlign: TuiPrimitiveTextfieldOptions['iconAlign'] = this.options.iconAlign;
 
     // TODO: Remove null in 3.0
     @Input()
@@ -82,7 +82,7 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
-    iconCleaner: PrimitiveTextfieldOptions['iconCleaner'] = this.options.iconCleaner;
+    iconCleaner: TuiPrimitiveTextfieldOptions['iconCleaner'] = this.options.iconCleaner;
 
     @Input()
     @HostBinding('class._readonly')
@@ -126,7 +126,7 @@ export class TuiPrimitiveTextfieldComponent
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_PRIMITIVE_TEXTFIELD_OPTIONS)
-        readonly options: PrimitiveTextfieldOptions,
+        readonly options: TuiPrimitiveTextfieldOptions,
     ) {
         super();
     }
