@@ -36,7 +36,10 @@ export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     constructor(
-        @Optional() @Self() @Inject(NgControl) control: NgControl | null,
+        @Optional()
+        @Self()
+        @Inject(NgControl)
+        control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(control, changeDetectorRef);
