@@ -1,8 +1,8 @@
 import {Directive, forwardRef, Inject, Input} from '@angular/core';
 import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TUI_HINT_OPTIONS, TuiHintOptions} from '@taiga-ui/core/directives/hint';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_HINT_OPTIONS, TuiHintOptions} from '../hint';
 import {TUI_HINT_CONTROLLER} from './hint-controller.token';
 
 // TODO: v2.0 use in Charts
