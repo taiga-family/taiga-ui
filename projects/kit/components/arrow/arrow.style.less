@@ -1,14 +1,12 @@
 @import 'taiga-ui-local';
 
 .icon {
+    .transition(transform);
+    display: block;
     cursor: pointer;
     pointer-events: none;
 
-    > * {
-        .transition(transform);
-    }
-
-    &_rotated > * {
+    &_rotated {
         transform: rotate(180deg);
     }
 }
