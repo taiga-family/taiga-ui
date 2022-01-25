@@ -7,14 +7,13 @@ import {
     Input,
 } from '@angular/core';
 import {TUI_IS_MOBILE, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
+import {HintOptions, TUI_HINT_OPTIONS} from '@taiga-ui/core/directives';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiHintModeT} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-
-import {TooltipOptions, TUI_TOOLTIP_OPTIONS} from './tooltip-options';
 
 @Component({
     selector: 'tui-tooltip',
@@ -32,19 +31,19 @@ export class TuiTooltipComponent {
 
     @Input()
     @tuiDefaultProp()
-    mode: TooltipOptions['mode'] = this.options.mode;
+    mode: HintOptions['mode'] = this.options.mode;
 
     @Input()
     @tuiDefaultProp()
-    direction: TooltipOptions['direction'] = this.options.direction;
+    direction: HintOptions['direction'] = this.options.direction;
 
     @Input()
     @tuiDefaultProp()
-    showDelay: TooltipOptions['showDelay'] = this.options.showDelay;
+    showDelay: HintOptions['tuiHintShowDelay'] = this.options.tuiHintShowDelay;
 
     @Input()
     @tuiDefaultProp()
-    hideDelay: TooltipOptions['hideDelay'] = this.options.hideDelay;
+    hideDelay: HintOptions['tuiHintHideDelay'] = this.options.tuiHintHideDelay;
 
     @Input()
     @tuiDefaultProp()
@@ -54,7 +53,7 @@ export class TuiTooltipComponent {
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TUI_TOOLTIP_OPTIONS) private readonly options: TooltipOptions,
+        @Inject(TUI_HINT_OPTIONS) private readonly options: HintOptions,
     ) {
         mode$.pipe(takeUntil(destroy$)).subscribe(mode => {
             this.globalMode = mode;
@@ -77,6 +76,6 @@ export class TuiTooltipComponent {
     }
 
     get icon(): PolymorpheusContent {
-        return this.options.icon;
+        return this.options.tooltipIcon;
     }
 }

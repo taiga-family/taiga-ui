@@ -32,6 +32,8 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
+import {HintOptions, TUI_HINT_OPTIONS} from './hint-options';
+
 export const HINT_HOVERED_CLASS = '_hint_hovered';
 
 @Directive({
@@ -44,11 +46,11 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
 
     @Input()
     @tuiDefaultProp()
-    tuiHintShowDelay = 500;
+    tuiHintShowDelay: HintOptions['tuiHintShowDelay'] = this.options.tuiHintShowDelay;
 
     @Input()
     @tuiDefaultProp()
-    tuiHintHideDelay = 200;
+    tuiHintHideDelay: HintOptions['tuiHintHideDelay'] = this.options.tuiHintHideDelay;
 
     @Input()
     @tuiDefaultProp()
@@ -83,8 +85,9 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
         @Optional()
         @Inject(TuiActiveZoneDirective)
         activeZone: TuiActiveZoneDirective | null,
+        @Inject(TUI_HINT_OPTIONS) protected readonly options: HintOptions,
     ) {
-        super(elementRef, hintService, activeZone);
+        super(elementRef, hintService, activeZone, options);
 
         // @bad TODO: Use private provider
         combineLatest(

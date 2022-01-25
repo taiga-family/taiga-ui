@@ -4,6 +4,8 @@ import {AbstractTuiHint} from '@taiga-ui/core/abstract';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+import {ManualHintOptions, TUI_MANUAL_HINT_OPTIONS} from './manual-hint-options';
+
 @Directive({
     selector: '[tuiManualHint]:not(ng-container)',
 })
@@ -28,8 +30,9 @@ export class TuiManualHintDirective extends AbstractTuiHint {
         @Optional()
         @Inject(TuiActiveZoneDirective)
         activeZone: TuiActiveZoneDirective | null,
+        @Inject(TUI_MANUAL_HINT_OPTIONS) protected readonly options: ManualHintOptions,
     ) {
-        super(elementRef, hintService, activeZone);
+        super(elementRef, hintService, activeZone, options);
     }
 
     getElementClientRect(): ClientRect {
