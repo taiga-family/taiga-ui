@@ -1,5 +1,6 @@
 import {TuiTimeMode} from '@taiga-ui/cdk';
 import {TuiTextMaskPipeHandler} from '@taiga-ui/core';
+import {MAX_TIME_VALUES} from '@taiga-ui/kit/constants';
 import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 
 /**
@@ -8,7 +9,7 @@ import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
  */
 export function tuiCreateAutoCorrectedTimePipe(
     timeMode: TuiTimeMode = 'HH:MM',
-    maxValues: Record<TuiTimeFormatParts, number> = {HH: 23, MM: 59, SS: 59, MS: 999},
+    maxValues: Record<TuiTimeFormatParts, number> = MAX_TIME_VALUES,
 ): TuiTextMaskPipeHandler {
     const timeFormatArray: TuiTimeFormatParts[] = ['HH', 'MM', 'SS', 'MS'];
 

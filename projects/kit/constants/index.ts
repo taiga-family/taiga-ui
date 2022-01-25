@@ -5,4 +5,5 @@ export * from './icon-blank';
 export * from './masks';
 export * from './math';
 export * from './max-day-range-length-mapper';
+export * from './max-time-values';
 export * from './router-link-options';
