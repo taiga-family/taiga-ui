@@ -41,7 +41,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/component.ts'),
-        HTML: import('!!raw-loader!./examples/1/index.html'),
+        HTML: import('!!raw-loader!./examples/1/template.html'),
         LESS: import('!!raw-loader!./examples/1/style.less'),
     };
 
