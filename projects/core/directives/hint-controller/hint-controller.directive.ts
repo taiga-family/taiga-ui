@@ -1,9 +1,12 @@
-import {Directive, forwardRef, Input} from '@angular/core';
+import {Directive, forwardRef, Inject, Input} from '@angular/core';
 import {TuiController, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_HINT_CONTROLLER} from './hint-controller.token';
+import {
+    TUI_HINT_CONTROLLER_OPTIONS,
+    TuiHintControllerOptions,
+} from './hint-controller-options';
 
 // TODO: v2.0 use in Charts
 @Directive({
@@ -23,17 +26,26 @@ export class TuiHintControllerDirective extends TuiController {
 
     @Input('tuiHintDirection')
     @tuiDefaultProp()
-    direction: TuiDirection = 'bottom-left';
+    direction: TuiHintControllerOptions['direction'] = this.options.direction;
 
     @Input('tuiHintMode')
     @tuiDefaultProp()
-    mode: TuiHintModeT | null = null;
+    mode: TuiHintControllerOptions['mode'] = this.options.mode;
 
     @Input('tuiHintShowDelay')
     @tuiDefaultProp()
-    showDelay = 500;
+    showDelay: TuiHintControllerOptions['tuiHintShowDelay'] =
+        this.options.tuiHintShowDelay;
 
     @Input('tuiHintHideDelay')
     @tuiDefaultProp()
-    hideDelay = 200;
+    hideDelay: TuiHintControllerOptions['tuiHintHideDelay'] =
+        this.options.tuiHintHideDelay;
+
+    constructor(
+        @Inject(TUI_HINT_CONTROLLER_OPTIONS)
+        private readonly options: TuiHintControllerOptions,
+    ) {
+        super();
+    }
 }
