@@ -1,0 +1,86 @@
+import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
+import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
+import {tuiCreateTimeMask} from '@taiga-ui/kit/utils';
+
+describe('tuiCreateTimeMask', () => {
+    const maxValuesRegular: Record<TuiTimeFormatParts, number> = {
+        HH: 23,
+        MM: 59,
+        SS: 59,
+        MS: 999,
+    };
+    const maxValues47h5m: Record<TuiTimeFormatParts, number> = {
+        HH: 47,
+        MM: 5,
+        SS: 59,
+        MS: 999,
+    };
+    const maxValuesPartial: Record<TuiTimeFormatParts, number> = {
+        HH: 23,
+        MM: 59,
+    } as Record<TuiTimeFormatParts, number>;
+    const maxValuesEmpty: Record<TuiTimeFormatParts, number> = {} as Record<
+        TuiTimeFormatParts,
+        number
+    >;
+
+    it('HH:MM regular', () => {
+        expect(tuiCreateTimeMask('HH:MM', maxValuesRegular)).toEqual([
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+            ':',
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+        ]);
+    });
+
+    it('HH:MM defaults', () => {
+        expect(tuiCreateTimeMask('HH:MM')).toEqual([
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+            ':',
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+        ]);
+    });
+
+    it('HH:MM:SS.MSS regular', () => {
+        expect(tuiCreateTimeMask('HH:MM:SS.MSS', maxValuesRegular)).toEqual([
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+            ':',
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+            ':',
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+            '.',
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+        ]);
+    });
+
+    it('HH:MM 47h5m', () => {
+        expect(tuiCreateTimeMask('HH:MM', maxValues47h5m)).toEqual([
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+            ':',
+            TUI_DIGIT_REGEXP,
+        ]);
+    });
+
+    it('HH:MM partial', () => {
+        expect(tuiCreateTimeMask('HH:MM', maxValuesPartial)).toEqual([
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+            ':',
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+        ]);
+    });
+
+    it('HH:MM empty', () => {
+        expect(tuiCreateTimeMask('HH:MM', maxValuesEmpty)).toEqual([]);
+    });
+});
