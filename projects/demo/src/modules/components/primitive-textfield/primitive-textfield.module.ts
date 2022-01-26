@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
@@ -22,12 +22,14 @@ import {HintControllerDocumentationModule} from '../abstract/hint-controller-doc
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TextfieldControllerDocumentationModule} from '../abstract/textfield-controller-documentation/textfield-controller-documentation.module';
 import {TuiPrimitiveTextfieldExample1} from './examples/1/component';
+import {TuiPrimitiveTextfieldExample2} from './examples/2';
 import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         InheritedDocumentationModule,
         HintControllerDocumentationModule,
         TextfieldControllerDocumentationModule,
@@ -47,7 +49,11 @@ import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.compo
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiPrimitiveTextfieldComponent)),
     ],
-    declarations: [ExampleTuiPrimitiveTextfieldComponent, TuiPrimitiveTextfieldExample1],
+    declarations: [
+        ExampleTuiPrimitiveTextfieldComponent,
+        TuiPrimitiveTextfieldExample1,
+        TuiPrimitiveTextfieldExample2,
+    ],
     exports: [ExampleTuiPrimitiveTextfieldComponent],
 })
 export class ExampleTuiPrimitiveTextfieldModule {}
