@@ -1,9 +1,6 @@
 import {readdirSync, writeFileSync} from 'fs';
 
-export function prepareAllToCompileFile(
-    iconsSrc: string,
-    allToCompilePath: string,
-): void {
+export function prepareAllToCompileFile(iconsSrc: string, entryPointTs: string): void {
     const icons: string[] = readdirSync(iconsSrc).filter(
         file => file.split('.').pop() === 'svg',
     );
@@ -19,7 +16,7 @@ export function prepareAllToCompileFile(
     }
 
     writeFileSync(
-        allToCompilePath,
+        entryPointTs,
         `${importDeclarations} \n export { ${exportDeclarations} }`,
     );
 }
