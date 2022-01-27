@@ -60,7 +60,7 @@ export abstract class AbstractTuiInteractive {
 
     focusVisible = false;
 
-    constructor() {
+    protected constructor() {
         this.autoIdString = `${TUI}${AbstractTuiInteractive.autoId++}${Date.now()}`;
     }
 

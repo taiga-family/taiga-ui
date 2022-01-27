@@ -6,14 +6,13 @@
     overflow: hidden;
     white-space: nowrap;
     box-sizing: border-box;
+}
 
-    &:before {
-        content: attr(data-value);
-        padding-right: 0.02em; // to prevent caret shaking
-        margin-left: 1px; // to prevent hiding characters in safari
-        visibility: hidden;
-        white-space: pre;
-    }
+.t-before {
+    padding-right: 0.02em; // to prevent caret shaking
+    margin-left: 1px; // to prevent hiding characters in safari
+    visibility: hidden;
+    white-space: pre;
 }
 
 .t-placeholder {

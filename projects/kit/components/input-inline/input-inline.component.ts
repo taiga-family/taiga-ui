@@ -4,7 +4,6 @@ import {
     Component,
     ElementRef,
     forwardRef,
-    HostBinding,
     Inject,
     Input,
     Optional,
@@ -66,13 +65,6 @@ export class TuiInputInlineComponent
 
     get hasValue(): boolean {
         return this.value !== '';
-    }
-
-    @HostBinding('attr.data-value')
-    get maskedValue(): string {
-        return this.native?.nativeElement.value && this.value
-            ? this.native.nativeElement.value
-            : String(this.value);
     }
 
     onValueChange(value: string) {
