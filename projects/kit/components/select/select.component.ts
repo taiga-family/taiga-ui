@@ -34,7 +34,7 @@ import {
     TuiTextfieldCleanerDirective,
     TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
+import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -92,12 +92,14 @@ export class TuiSelectComponent<T>
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_CLEANER)
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
+        @Inject(TUI_ARROW_MODE)
+        private readonly arrowMode: TuiArrowMode,
     ) {
         super(control, changeDetectorRef);
     }
 
     get arrow(): PolymorpheusContent {
-        return !this.interactive ? '' : TUI_ARROW;
+        return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -150,10 +152,7 @@ export class TuiSelectComponent<T>
     handleOption(option: T) {
         this.focusInput();
         this.updateValue(option);
-
-        if (this.hostedDropdown) {
-            this.hostedDropdown.updateOpen(false);
-        }
+        this.hostedDropdown?.updateOpen(false);
     }
 
     private focusInput(preventScroll: boolean = false) {
