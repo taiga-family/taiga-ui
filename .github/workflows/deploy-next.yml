@@ -13,48 +13,20 @@ on:
 
 env:
   NX_BRANCH: ${{ github.event.number }}
+  FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
 
 jobs:
   build-and-deploy:
     name: Next
     runs-on: ubuntu-latest
-    env:
-      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      # Setup cache
-      - name: Restore node_modules from cache
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            !node_modules/.cache/
-          key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
-      - name: Restore from global NPM cache
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: npm-cache-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: npm-cache-
-      - name: Restore from cache of builds
-        id: build-cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules/.cache
-          key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
-          restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
-      - name: Clean install dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-      # End of setup cache
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
       - name: npm build demo
         run: npm run build:demo:next
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
