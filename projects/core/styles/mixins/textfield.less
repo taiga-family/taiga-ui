@@ -245,6 +245,13 @@
 
     .placeholder {
         .textfield-placeholder();
+
+        /* Safari 9+ */
+        @supports (-webkit-hyphens: none) {
+            & {
+                transition-property: transform, color, letter-spacing;
+            }
+        }
     }
 
     .cleaner {
