@@ -10,6 +10,7 @@ export interface InputTimeOptions {
     readonly mode: TuiTimeMode;
     readonly postfix: string;
     readonly maxValues: Record<TuiTimeFormatParts, number>;
+    readonly strict12h: boolean;
     readonly itemSize: TuiSizeS | TuiSizeL;
 }
 
@@ -22,6 +23,7 @@ export const TUI_INPUT_TIME_DEFAULT_OPTIONS: InputTimeOptions = {
     mode: 'HH:MM',
     postfix: '',
     maxValues: MAX_TIME_VALUES,
+    strict12h: false,
     itemSize: 'm',
 };
 

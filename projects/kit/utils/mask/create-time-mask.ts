@@ -28,12 +28,17 @@ function tuiCreateTimePartMask(
 
 export function tuiCreateTimeMask(
     mode: TuiTimeMode,
-    maxValues: Record<TuiTimeFormatParts, number> = MAX_TIME_VALUES,
+    maxValues: Partial<Record<TuiTimeFormatParts, number>> = {},
 ): TuiTextMaskList {
+    const _maxValues: Record<TuiTimeFormatParts, number> = {
+        ...MAX_TIME_VALUES,
+        ...maxValues,
+    };
+
     return [
-        ...tuiCreateTimePartMask(maxValues.HH),
-        ...tuiCreateTimePartMask(maxValues.MM, ':'),
-        ...(mode.includes('HH:MM:SS') ? tuiCreateTimePartMask(maxValues.SS, ':') : []),
-        ...(mode === 'HH:MM:SS.MSS' ? tuiCreateTimePartMask(maxValues.MS, '.') : []),
+        ...tuiCreateTimePartMask(_maxValues.HH),
+        ...tuiCreateTimePartMask(_maxValues.MM, ':'),
+        ...(mode.includes('HH:MM:SS') ? tuiCreateTimePartMask(_maxValues.SS, ':') : []),
+        ...(mode === 'HH:MM:SS.MSS' ? tuiCreateTimePartMask(_maxValues.MS, '.') : []),
     ];
 }

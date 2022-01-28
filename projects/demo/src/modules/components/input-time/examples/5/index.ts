@@ -16,6 +16,7 @@ import {TUI_INPUT_TIME_DEFAULT_OPTIONS, TUI_INPUT_TIME_OPTIONS} from '@taiga-ui/
                 ...TUI_INPUT_TIME_DEFAULT_OPTIONS,
                 mode: 'HH:MM',
                 maxValues: {HH: 11, MM: 59},
+                strict12h: true,
             },
         },
     ],

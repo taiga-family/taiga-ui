@@ -9,9 +9,14 @@ import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
  */
 export function tuiCreateAutoCorrectedTimePipe(
     timeMode: TuiTimeMode = 'HH:MM',
-    maxValues: Record<TuiTimeFormatParts, number> = MAX_TIME_VALUES,
+    maxValues: Partial<Record<TuiTimeFormatParts, number>> = {},
+    strict12h: boolean = false,
 ): TuiTextMaskPipeHandler {
     const timeFormatArray: TuiTimeFormatParts[] = ['HH', 'MM', 'SS', 'MS'];
+    const _maxValues: Record<TuiTimeFormatParts, number> = {
+        ...MAX_TIME_VALUES,
+        ...maxValues,
+    };
 
     return (conformedValue: string) => {
         const indexesOfPipedChars: number[] = [];
@@ -19,10 +24,10 @@ export function tuiCreateAutoCorrectedTimePipe(
 
         timeFormatArray.forEach(format => {
             const position = timeMode.indexOf(format);
-            const maxFirstDigit =
-                format in maxValues
-                    ? parseInt(maxValues[format].toString().substr(0, 1), 10)
-                    : 0;
+            const maxFirstDigit = parseInt(
+                _maxValues[format].toString().substr(0, 1),
+                10,
+            );
 
             if (parseInt(conformedValueArr[position], 10) > maxFirstDigit) {
                 conformedValueArr[position + 1] = conformedValueArr[position];
@@ -31,12 +36,18 @@ export function tuiCreateAutoCorrectedTimePipe(
             }
         });
 
-        const isInvalid = timeFormatArray.some(format =>
-            format in maxValues
-                ? parseInt(conformedValue.substr(timeMode.indexOf(format), 2), 10) >
-                  maxValues[format]
-                : false,
-        );
+        const isInvalid = timeFormatArray.some(format => {
+            const part: number = parseInt(
+                conformedValue.substr(timeMode.indexOf(format), 2),
+                10,
+            );
+
+            return strict12h && format === 'HH'
+                ? part > 11 ||
+                      (part < 1 &&
+                          conformedValue.substr(timeMode.indexOf(format), 2) !== '0')
+                : part > _maxValues[format];
+        });
 
         return isInvalid
             ? false
