@@ -25,6 +25,10 @@ describe('changeDateSeparator', () => {
         expect(changeDateSeparator('yyyy.mm.dd', '/')).toBe('yyyy/mm/dd');
     });
 
+    it('works with cyrillic filler', () => {
+        expect(changeDateSeparator('дд.мм.гггг', '/')).toBe('дд/мм/гггг');
+    });
+
     it('keeps the initial separator (if new separator is the same one)', () => {
         expect(changeDateSeparator('10.01.2022', '.')).toBe('10.01.2022');
         expect(changeDateSeparator('01.10.2022', '.')).toBe('01.10.2022');
@@ -33,5 +37,6 @@ describe('changeDateSeparator', () => {
         expect(changeDateSeparator('dd.mm.yyyy', '.')).toBe('dd.mm.yyyy');
         expect(changeDateSeparator('mm.dd.yyyy', '.')).toBe('mm.dd.yyyy');
         expect(changeDateSeparator('yyyy.mm.dd', '.')).toBe('yyyy.mm.dd');
+        expect(changeDateSeparator('ГГГГ.ММ.ДД', '.')).toBe('ГГГГ.ММ.ДД');
     });
 });
