@@ -52,6 +52,7 @@ const ICON_PADDING_S = 1.5;
     providers: TUI_PRIMITIVE_TEXTFIELD_PROVIDERS,
     host: {
         '($.data-mode.attr)': 'mode$',
+        '[class._autofilled]': 'autofilled',
     },
 })
 export class TuiPrimitiveTextfieldComponent
@@ -60,8 +61,6 @@ export class TuiPrimitiveTextfieldComponent
 {
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
-
-    private autofilled = false;
 
     @Input()
     @tuiDefaultProp()
@@ -117,6 +116,8 @@ export class TuiPrimitiveTextfieldComponent
 
     @ContentChildren(PolymorpheusOutletComponent)
     readonly content?: QueryList<unknown>;
+
+    autofilled = false;
 
     constructor(
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
