@@ -8,4 +8,4 @@ export const TUI_DATE_SEPARATOR = new InjectionToken<string>(
 );
 
 export const changeDateSeparator = (dateString: string, newDateSeparator: string) =>
-    dateString.replace(/[^0-9a-z]/gi, newDateSeparator);
+    dateString.replace(/[^0-9a-zа-я]/gi, newDateSeparator);
