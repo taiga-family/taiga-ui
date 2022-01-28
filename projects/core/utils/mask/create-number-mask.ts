@@ -26,7 +26,7 @@ export function tuiCreateNumberMask({
     integerLimit = 0,
 }: TuiNumberMaskOptions = {}): TuiTextMaskListHandler {
     tuiAssert.assert(Number.isInteger(decimalLimit));
-    tuiAssert.assert(decimalLimit > 0);
+    tuiAssert.assert(decimalLimit >= 0);
     tuiAssert.assert(Number.isInteger(integerLimit));
     tuiAssert.assert(integerLimit >= 0);
 
