@@ -52,6 +52,7 @@
     "maintainers": ["Alex Inkin <alexander@inkin.ru>", "Roman Sedov <79601794011@ya.ru>"],
     "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
+    "workspaces": ["./projects/*"],
     "dependencies": {
         "@angular/animations": "~9.1.12",
         "@angular/cdk": "~9.2.4",
@@ -94,8 +95,6 @@
         "core-js": "^2.6.9",
         "dompurify": "^2.2.3",
         "express": "^4.15.2",
-        "highlight.js": "^11.3.1",
-        "ngx-highlightjs": "^4.1.4",
         "ngx-markdown": "^11.1.3",
         "preboot": "^7.0.0",
         "rxjs": "~6.6.3",
@@ -105,7 +104,6 @@
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.901.12",
         "@angular-devkit/build-ng-packagr": "~0.901.12",
-        "@angular-devkit/schematics": "^9.1.12",
         "@angular-devkit/schematics-cli": "~0.901.12",
         "@angular/cli": "~9.1.12",
         "@angular/compiler-cli": "~9.1.12",
@@ -131,7 +129,6 @@
         "@types/node": "^12.11.1",
         "@types/resize-observer-browser": "0.1.5",
         "@types/svgo": "~2.6.0",
-        "@types/markdown-it": "^12.2.3",
         "angular-http-server": "^1.10.0",
         "codelyzer": "^5.1.2",
         "concurrently": "^6.2.0",
@@ -164,8 +161,7 @@
         "svgo": "~2.8.0",
         "ts-loader": "^5.3.3",
         "ts-node": "~7.0.0",
-        "typescript": "~3.8.3",
-        "markdown-it": "^12.3.2"
+        "typescript": "~3.8.3"
     },
     "stylelint": {
         "extends": ["@tinkoff/stylelint-config/less", "@tinkoff/stylelint-config/angular"],
@@ -182,7 +178,7 @@
         }
     },
     "engines": {
-        "node": ">= 10",
-        "npm": ">= 3 < 7"
+        "node": ">= 14",
+        "npm": ">= 7"
     }
 }
