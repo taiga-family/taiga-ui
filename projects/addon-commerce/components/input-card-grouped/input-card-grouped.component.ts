@@ -43,6 +43,7 @@ import {
     TUI_DIGIT_REGEXP,
     TUI_MODE,
     TUI_NON_DIGIT_REGEXP,
+    TUI_TEXTFIELD_APPEARANCE,
     TuiBrightness,
     TuiDataListComponent,
     TuiDataListDirective,
@@ -182,6 +183,8 @@ export class TuiInputCardGroupedComponent
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_INPUT_CARD_GROUPED_TEXTS)
         readonly cardGroupedTexts$: Observable<TuiCardGroupedTexts>,
+        @Inject(TUI_TEXTFIELD_APPEARANCE)
+        readonly appearance: string,
     ) {
         super(control, changeDetectorRef);
     }
