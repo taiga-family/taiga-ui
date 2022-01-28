@@ -3,26 +3,23 @@ import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 import {tuiCreateTimeMask} from '@taiga-ui/kit/utils';
 
 describe('tuiCreateTimeMask', () => {
-    const maxValuesRegular: Record<TuiTimeFormatParts, number> = {
+    const maxValuesRegular: Partial<Record<TuiTimeFormatParts, number>> = {
         HH: 23,
         MM: 59,
         SS: 59,
         MS: 999,
     };
-    const maxValues47h5m: Record<TuiTimeFormatParts, number> = {
+    const maxValues47h5m: Partial<Record<TuiTimeFormatParts, number>> = {
         HH: 47,
         MM: 5,
         SS: 59,
         MS: 999,
     };
-    const maxValuesPartial: Record<TuiTimeFormatParts, number> = {
+    const maxValuesPartial: Partial<Record<TuiTimeFormatParts, number>> = {
         HH: 23,
         MM: 59,
-    } as Record<TuiTimeFormatParts, number>;
-    const maxValuesEmpty: Record<TuiTimeFormatParts, number> = {} as Record<
-        TuiTimeFormatParts,
-        number
-    >;
+    };
+    const maxValuesEmpty: Partial<Record<TuiTimeFormatParts, number>> = {};
 
     it('HH:MM regular', () => {
         expect(tuiCreateTimeMask('HH:MM', maxValuesRegular)).toEqual([
@@ -81,6 +78,12 @@ describe('tuiCreateTimeMask', () => {
     });
 
     it('HH:MM empty', () => {
-        expect(tuiCreateTimeMask('HH:MM', maxValuesEmpty)).toEqual([]);
+        expect(tuiCreateTimeMask('HH:MM', maxValuesEmpty)).toEqual([
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+            ':',
+            TUI_DIGIT_REGEXP,
+            TUI_DIGIT_REGEXP,
+        ]);
     });
 });
