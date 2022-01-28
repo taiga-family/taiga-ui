@@ -7,53 +7,21 @@ on:
 
 env:
   NX_BRANCH: ${{ github.event.number }}
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
 
 jobs:
   build:
-    # Setup part
     runs-on: ubuntu-latest
-    env:
-      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-          registry-url: 'https://registry.npmjs.org'
-      # Setup cache
-      - name: Restore node_modules from cache
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            !node_modules/.cache/
-          key: node-modules-cache-${{ hashFiles('**/package-lock.json') }}
-      - name: Restore from global NPM cache
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: npm-cache-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: npm-cache-
-      - name: Restore from cache of builds
-        id: build-cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules/.cache
-          key: builds-cache-${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
-          restore-keys: builds-cache-${{ hashFiles('**/package-lock.json') }}
-      - name: Clean install dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-      # End of setup cache
-      # End of setup
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
       - name: Build publishable libraries
         run: npm run run-many:build:libs
+
       - name: Publish libraries
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm run run-many:publish:libs
 
 concurrency:
