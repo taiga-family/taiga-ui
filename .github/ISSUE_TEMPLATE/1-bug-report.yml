@@ -1,7 +1,7 @@
 name: '🐞 - Bug Report'
 title: '🐞 - '
 description: Report a bug in the Taiga UI
-labels: ['bug']
+labels: ['bug', 'state: need triage']
 
 body:
   - type: dropdown
