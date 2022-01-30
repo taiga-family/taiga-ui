@@ -6,7 +6,7 @@ import {
     Output,
 } from '@angular/core';
 import {hexToRgb, rgbToHex} from '@taiga-ui/addon-editor/utils';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {round, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiTextMaskOptions} from '@taiga-ui/core';
 
 @Component({
@@ -41,7 +41,7 @@ export class TuiColorEditComponent {
     }
 
     get opacity(): number {
-        return this.color[3] * 100;
+        return round(this.color[3] * 100);
     }
 
     onHexChange(hex: string) {
