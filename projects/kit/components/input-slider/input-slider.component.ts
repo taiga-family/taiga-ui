@@ -28,6 +28,7 @@ import {
     NumberFormatSettings,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_NUMBER_FORMAT,
+    TUI_TEXTFIELD_APPEARANCE,
     TuiHintControllerDirective,
     TuiModeDirective,
 } from '@taiga-ui/core';
@@ -71,6 +72,8 @@ export class TuiInputSliderComponent
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_NUMBER_FORMAT)
         protected readonly numberFormat: NumberFormatSettings,
+        @Inject(TUI_TEXTFIELD_APPEARANCE)
+        readonly appearance: string,
     ) {
         super(control, changeDetectorRef);
     }
