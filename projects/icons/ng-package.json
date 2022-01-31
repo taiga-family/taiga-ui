@@ -1,9 +1,13 @@
 {
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
     "dest": "../../dist/icons",
-    "assets": ["src"],
+    "assets": [
+        "src"
+    ],
     "lib": {
         "entryFile": "./public-api.ts"
     },
-    "whitelistedNonPeerDependencies": ["."]
+    "whitelistedNonPeerDependencies": [
+        "."
+    ]
 }

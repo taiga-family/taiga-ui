@@ -12,5 +12,9 @@ module.exports = {
             files: '*.html',
             options: {printWidth: 80, parser: 'html'},
         },
+        {
+            files: ['package.json', 'ng-package.json'],
+            options: {parser: 'json-stringify'},
+        },
     ],
 };

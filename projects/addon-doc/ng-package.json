@@ -3,7 +3,11 @@
     "dest": "../../dist/addon-doc",
     "lib": {
         "entryFile": "src/public-api.ts",
-        "styleIncludePaths": ["../core/styles"]
+        "styleIncludePaths": [
+            "../core/styles"
+        ]
     },
-    "whitelistedNonPeerDependencies": ["."]
+    "whitelistedNonPeerDependencies": [
+        "."
+    ]
 }
