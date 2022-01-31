@@ -4,5 +4,6 @@
     "assets": ["src"],
     "lib": {
         "entryFile": "./public-api.ts"
-    }
+    },
+    "whitelistedNonPeerDependencies": ["."]
 }

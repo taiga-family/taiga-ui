@@ -12,7 +12,7 @@
         "highlight.js": "^11.3.1",
         "ngx-highlightjs": "^4.1.4",
         "schematics-utilities": "^1.0.1",
-        "@angular-devkit/schematics": "^9.0.0"
+        "@angular-devkit/schematics": "^9.1.12"
     },
     "devDependencies": {
         "@types/markdown-it": "^12.2.3"

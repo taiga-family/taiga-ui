@@ -1,9 +1,9 @@
 {
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
     "dest": "../../dist/kit",
-    "whitelistedNonPeerDependencies": ["@ng-web-apis/intersection-observer", "angular2-text-mask"],
     "lib": {
         "entryFile": "index.ts",
         "styleIncludePaths": ["../core/styles"]
-    }
+    },
+    "whitelistedNonPeerDependencies": ["."]
 }

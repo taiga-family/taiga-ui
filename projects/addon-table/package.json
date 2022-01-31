@@ -10,14 +10,11 @@
         "@angular/cdk": ">=9.0.0",
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
-        "@ng-web-apis/intersection-observer": "2.0.1",
-        "@tinkoff/ng-polymorpheus": "3.1.12",
-        "@taiga-ui/cdk": "2.31.0",
-        "@taiga-ui/core": "2.31.0",
-        "@taiga-ui/i18n": "2.31.0",
+        "@ng-web-apis/intersection-observer": ">=2.1.0",
+        "@tinkoff/ng-polymorpheus": ">=3.1.12",
+        "@taiga-ui/cdk": ">=2.31.0",
+        "@taiga-ui/core": ">=2.31.0",
+        "@taiga-ui/i18n": ">=2.31.0",
         "rxjs": ">=6.0.0"
-    },
-    "devDependencies": {
-        "@taiga-ui/core": "2.31.0"
     }
 }
