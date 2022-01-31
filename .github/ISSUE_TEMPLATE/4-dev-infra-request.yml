@@ -1,7 +1,7 @@
 name: '🤖 - Dev Infrastructure Request'
 title: '🤖 - '
 description: Suggest a feature for improve productivity of the Taiga UI Team
-labels: ['dev-infra']
+labels: ['dev-infra', 'state: need triage']
 
 body:
   - type: textarea

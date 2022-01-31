@@ -1,7 +1,7 @@
 name: '📚 - Docs or taiga-ui.dev Bug Report'
 title: '📚 - '
 description: Report an issue in Taiga's documentation or taiga-ui.dev application
-labels: ['documentation']
+labels: ['documentation', 'state: need triage']
 
 body:
   - type: input
