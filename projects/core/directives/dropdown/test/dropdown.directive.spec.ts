@@ -12,15 +12,15 @@ describe('TuiDropdown directive', () => {
     @Component({
         template: `
             <tui-root>
-                <button automation-id="tui-dropdow-directive__button"></button>
+                <button automation-id="tui-dropdown-directive__button"></button>
                 <div [tuiDropdownContent]="dropdown" [tuiDropdown]="open">
                     Hosty host
-                    <button automation-id="tui-dropdow-directive__host"></button>
+                    <button automation-id="tui-dropdown-directive__host"></button>
                 </div>
                 <ng-template #dropdown="polymorpheus" polymorpheus>
-                    <div automation-id="tui-dropdow-directive__item">
+                    <div automation-id="tui-dropdown-directive__item">
                         Droppy down
-                        <input automation-id="tui-dropdow-directive__input" />
+                        <input automation-id="tui-dropdown-directive__input" />
                     </div>
                 </ng-template>
             </tui-root>
@@ -35,7 +35,7 @@ describe('TuiDropdown directive', () => {
     let testComponent: TestComponent;
     const testContext = {
         get prefix() {
-            return 'tui-dropdow-directive__';
+            return 'tui-dropdown-directive__';
         },
     };
 

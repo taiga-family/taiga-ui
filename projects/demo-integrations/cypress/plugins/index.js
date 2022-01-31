@@ -1,4 +1,5 @@
 const {addMatchImageSnapshotPlugin} = require('cypress-image-snapshot/plugin');
+const {viewportWidth, viewportHeight} = require('./../../cypress.json');
 
 module.exports = (on, config) => {
     addMatchImageSnapshotPlugin(on, config);
@@ -7,6 +8,10 @@ module.exports = (on, config) => {
             launchOptions.args.push('--disable-dev-shm-usage');
             launchOptions.args.push('--force-device-scale-factor=1');
             launchOptions.args.push('--start-fullscreen');
+        }
+
+        if (browser.isHeadless) {
+            launchOptions.args.push(`--window-size=${viewportWidth},${viewportHeight}`);
         }
 
         return launchOptions;
