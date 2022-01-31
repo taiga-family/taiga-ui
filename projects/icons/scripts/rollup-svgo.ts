@@ -1,6 +1,8 @@
 import {createFilter} from '@rollup/pluginutils';
 import {Plugin, TransformResult} from 'rollup';
-import {optimize, OptimizedSvg, OptimizeOptions} from 'svgo';
+import {optimize, OptimizedError, OptimizedSvg, OptimizeOptions} from 'svgo';
+
+type SvgoResult = OptimizedSvg | OptimizedError;
 
 export interface RollupSvgoConfig {
     readonly include?: string;
@@ -19,35 +21,42 @@ export function rollupSvgo({
 
     return {
         name: 'rollupSvgo',
-        async transform(svgString: string, id: string): Promise<TransformResult> {
-            const skip = !filter(id);
+        async transform(svgString: string, path: string): Promise<TransformResult> {
+            const skip = !filter(path);
 
             if (skip) {
-                console.info('\x1b[33m%s\x1b[0m', '[skip]', id);
+                console.info('\x1b[33m%s\x1b[0m', '[skip]', path);
 
                 return;
             }
 
-            let optimizedSvg: OptimizedSvg | null = null;
+            let data: unknown;
+            let error: unknown;
 
             try {
-                optimizedSvg = await optimize(svgString, {path: id, ...options});
+                const result: SvgoResult = await optimize(svgString, {path, ...options});
 
-                console.info('\x1b[32m%s\x1b[0m', '[success]', id);
+                data = (result as OptimizedSvg)?.data || {};
+                error = result.error;
             } catch (err) {
+                error = err.message;
+            }
+
+            if (error) {
                 console.error(
                     '\x1b[31m%s\x1b[0m',
                     '[error]',
-                    id,
+                    path,
                     `\n${svgString}`,
-                    `\n${err}`,
+                    `\n${error}`,
                 );
-
                 process.exit(1);
             }
 
+            console.info('\x1b[32m%s\x1b[0m', '[success]', path);
+
             return {
-                code: `export default ${JSON.stringify(optimizedSvg?.data)}`,
+                code: `export default ${JSON.stringify(data)}`,
                 map: {mappings: ''},
             };
         },

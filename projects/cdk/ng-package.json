@@ -1,15 +1,8 @@
 {
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
     "dest": "../../dist/cdk",
-    "whitelistedNonPeerDependencies": [
-        "@tinkoff/ng-polymorpheus",
-        "@tinkoff/ng-event-plugins",
-        "@ng-web-apis/common",
-        "@ng-web-apis/mutation-observer",
-        "@ng-web-apis/resize-observer",
-        "@types/resize-observer-browser"
-    ],
     "lib": {
         "entryFile": "index.ts"
-    }
+    },
+    "whitelistedNonPeerDependencies": ["."]
 }

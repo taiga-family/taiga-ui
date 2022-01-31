@@ -9,6 +9,6 @@
     "homepage": "https://github.com/tinkoff/taiga-ui",
     "dependencies": {
         "@angular-devkit/schematics": "^9.1.12",
-        "ng-morph": "2.0.0"
+        "ng-morph": "^2.0.0"
     }
 }

@@ -3,5 +3,6 @@
     "dest": "../../dist/testing",
     "lib": {
         "entryFile": "src/public-api.ts"
-    }
+    },
+    "whitelistedNonPeerDependencies": ["."]
 }

@@ -6,38 +6,38 @@ import {TuiValueContentContext} from '@taiga-ui/core';
 
 interface Account {
     readonly name: string;
-    readonly account: number;
+    readonly account: string;
 }
 
 const BANK: ReadonlyArray<Account> = [
     {
         name: 'Ruble',
-        account: 1234567890987654321,
+        account: '1234567890987654321',
     },
     {
         name: 'Dollar',
-        account: 1234567890987654321,
+        account: '1234567890987654321',
     },
 ];
 
 const OTHERS: ReadonlyArray<Account> = [
     {
         name: 'Bank',
-        account: 1234567890987654321,
+        account: '1234567890987654321',
     },
     {
         name: 'Other bank',
-        account: 1234567890987654321,
+        account: '1234567890987654321',
     },
     {
         name: 'Bank of America',
-        account: 1234567890987654321,
+        account: '1234567890987654321',
     },
 ];
 
 const CASH: Account = {
     name: 'Cash',
-    account: NaN,
+    account: '',
 };
 
 @Component({
