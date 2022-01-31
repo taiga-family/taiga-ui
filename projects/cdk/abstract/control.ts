@@ -132,19 +132,13 @@ export abstract class AbstractTuiControl<T>
     }
 
     ngOnInit() {
-        if (
-            !this.ngControl ||
-            !this.ngControl.valueChanges ||
-            !this.ngControl.statusChanges
-        ) {
+        if (!this.ngControl?.valueChanges || !this.ngControl?.statusChanges) {
             return;
         }
 
         merge(this.ngControl.valueChanges, this.ngControl.statusChanges)
             .pipe(takeUntil(this.destroy$))
-            .subscribe(() => {
-                this.refreshLocalValue(this.safeCurrentValue);
-            });
+            .subscribe(() => this.refreshLocalValue(this.safeCurrentValue));
     }
 
     ngOnDestroy() {
