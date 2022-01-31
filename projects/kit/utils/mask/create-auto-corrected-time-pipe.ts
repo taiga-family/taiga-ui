@@ -10,7 +10,6 @@ import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 export function tuiCreateAutoCorrectedTimePipe(
     timeMode: TuiTimeMode = 'HH:MM',
     maxValues: Partial<Record<TuiTimeFormatParts, number>> = {},
-    strict12h: boolean = false,
 ): TuiTextMaskPipeHandler {
     const timeFormatArray: TuiTimeFormatParts[] = ['HH', 'MM', 'SS', 'MS'];
     const _maxValues: Record<TuiTimeFormatParts, number> = {
@@ -42,11 +41,7 @@ export function tuiCreateAutoCorrectedTimePipe(
                 10,
             );
 
-            return strict12h && format === 'HH'
-                ? part > 11 ||
-                      (part < 1 &&
-                          conformedValue.substr(timeMode.indexOf(format), 2) !== '0')
-                : part > _maxValues[format];
+            return part > _maxValues[format];
         });
 
         return isInvalid

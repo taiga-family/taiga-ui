@@ -248,11 +248,7 @@ export class TuiInputTimeComponent
     private calculateMask(mode: TuiTimeMode): TuiTextMaskOptions {
         return {
             mask: tuiCreateTimeMask(mode, this.options.maxValues),
-            pipe: tuiCreateAutoCorrectedTimePipe(
-                mode,
-                this.options.maxValues,
-                this.options.strict12h,
-            ),
+            pipe: tuiCreateAutoCorrectedTimePipe(mode, this.options.maxValues),
             guide: false,
         };
     }
