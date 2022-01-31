@@ -1,23 +1,25 @@
-const {argv} = require('process');
 const {version} = require('../package.json');
 const {createInterface} = require('readline');
 const {execSync} = require('child_process');
 
-const mode = argv.length >= 2 ? argv[2] : 'patch';
+const mode = process.argv.length >= 2 ? process.argv[2] : 'patch';
+const options = {stdio: 'inherit'};
 const parsedVersion = version.split('.');
 
 const newVersion = bump(parsedVersion, mode);
 
-execSync('git checkout main');
-execSync('git pull');
-execSync(`git checkout -b release/${newVersion}`);
-execSync(`npm run release -- --release-as ${mode}`);
+execSync('git checkout main', options);
+execSync('git pull', options);
+execSync(`git checkout -b release/${newVersion}`, options);
+execSync(`npm run release -- --release-as ${mode}`, options);
+
+execSync(`npm run prettier`, options);
+execSync(`git add . && git commit --all --amend --no-edit --no-verify`, options);
 
 checkChangelog().then(() => {
-    execSync('git add .');
-    execSync(`git commit -m "chore(changelog): fix incorrect generated logs"`);
-    execSync(`git push --set-upstream origin release/${newVersion}`);
-    execSync(`git push --tags`);
+    execSync(`git add . && git commit --all --amend --no-edit --no-verify`, options);
+    execSync(`git push --set-upstream origin release/${newVersion}`, options);
+    execSync(`git push --tags`, options);
 });
 
 function bump(versionArray, mode) {
