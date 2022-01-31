@@ -19,7 +19,6 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_STRICT_MATCHER,
     TuiBooleanHandler,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiPure,
@@ -27,19 +26,13 @@ import {
     TuiTimeLike,
     TuiTimeMode,
 } from '@taiga-ui/cdk';
-import {
-    TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
-    TuiTextMaskOptions,
-} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent, TuiTextMaskOptions} from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedTimePipe,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -61,7 +54,7 @@ import {InputTimeOptions, TUI_INPUT_TIME_OPTIONS} from './input-time-options';
 })
 export class TuiInputTimeComponent
     extends AbstractTuiNullableControl<TuiTime>
-    implements TuiFocusableElementAccessor, InputTimeOptions
+    implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
@@ -76,7 +69,7 @@ export class TuiInputTimeComponent
 
     @Input()
     @tuiDefaultProp()
-    itemSize = this.options.itemSize;
+    itemSize: InputTimeOptions['itemSize'] = this.options.itemSize;
 
     @Input()
     @tuiDefaultProp()
@@ -84,7 +77,11 @@ export class TuiInputTimeComponent
 
     @Input()
     @tuiDefaultProp()
-    mode = this.options.mode;
+    mode: InputTimeOptions['mode'] = this.options.mode;
+
+    @Input()
+    @tuiDefaultProp()
+    postfix: InputTimeOptions['postfix'] = this.options.postfix;
 
     open = false;
 
@@ -138,7 +135,7 @@ export class TuiInputTimeComponent
         return null;
     }
 
-    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+    get icon(): InputTimeOptions['icon'] {
         return this.options.icon;
     }
 
@@ -250,8 +247,8 @@ export class TuiInputTimeComponent
     @tuiPure
     private calculateMask(mode: TuiTimeMode): TuiTextMaskOptions {
         return {
-            mask: tuiCreateTimeMask(mode),
-            pipe: tuiCreateAutoCorrectedTimePipe(mode),
+            mask: tuiCreateTimeMask(mode, this.options.maxValues),
+            pipe: tuiCreateAutoCorrectedTimePipe(mode, this.options.maxValues),
             guide: false,
         };
     }
