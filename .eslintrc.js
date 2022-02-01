@@ -1,11 +1,14 @@
+/**
+ * @type {import('eslint').Linter.Config}
+ */
 module.exports = {
     root: true,
-    plugins: ['@nrwl/nx'],
     extends: [
         // TODO: move rules to @tinkoff/eslint-config-angular
         'eslint:recommended',
         'plugin:@typescript-eslint/eslint-recommended',
         '@tinkoff/eslint-config-angular',
+        './scripts/eslint/nx.js',
     ],
     ignorePatterns: ['projects/**/test.ts', 'projects/**/icons/all.ts'],
     parserOptions: {
@@ -39,32 +42,5 @@ module.exports = {
         ],
         'no-return-assign': ['error', 'always'],
         'no-implicit-coercion': ['error', {allow: ['!!']}],
-
-        '@nrwl/nx/enforce-module-boundaries': [
-            'warn', // TODO: increase error level as soon as warnings are fixed
-            {
-                enforceBuildableLibDependency: true,
-                allowCircularSelfDependency: true,
-                depConstraints: [{sourceTag: '*', onlyDependOnLibsWithTags: ['*']}],
-            },
-        ],
     },
-    overrides: [
-        {
-            files: ['*.spec.ts'],
-            rules: {
-                '@nrwl/nx/enforce-module-boundaries': [
-                    'warn',
-                    {
-                        enforceBuildableLibDependency: true,
-                        allowCircularSelfDependency: true,
-                        allow: ['@taiga-ui/testing'],
-                        depConstraints: [
-                            {sourceTag: '*', onlyDependOnLibsWithTags: ['*']},
-                        ],
-                    },
-                ],
-            },
-        },
-    ],
 };
