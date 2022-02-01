@@ -5,6 +5,7 @@
 /* Components */
 export * from './components/code/code.component';
 export * from './components/code/code.module';
+export * from './components/code/parse-code-block';
 export * from './components/copy/copy.component';
 export * from './components/copy/copy.module';
 export * from './components/demo/demo.component';

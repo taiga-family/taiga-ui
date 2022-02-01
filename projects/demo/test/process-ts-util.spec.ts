@@ -1,4 +1,4 @@
-import {processTs} from '../../../../demo/src/modules/app/utils/example-content-processor/typescript-processor';
+import {processTs} from '../src/modules/app/utils/example-content-processor/typescript-processor';
 
 describe('Replacing a custom instructions in typescript', () => {
     it('relative path', () => {

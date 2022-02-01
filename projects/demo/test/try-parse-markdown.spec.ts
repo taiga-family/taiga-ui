@@ -1,4 +1,4 @@
-import {tryParseMarkdownCodeBlock} from '../parse-code-block';
+import {tryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 
 describe('tryParseMarkdown', () => {
     const codeSection = '```';

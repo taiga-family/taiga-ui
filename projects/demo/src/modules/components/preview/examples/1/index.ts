@@ -2,10 +2,9 @@ import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {PreviewDialogService} from '@taiga-ui/addon-preview';
+import {clamp, TuiSwipe} from '@taiga-ui/cdk';
+import {TuiDialogContext, TuiNotificationsService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-import {clamp, TuiSwipe} from '../../../../../../../cdk';
-import {TuiDialogContext, TuiNotificationsService} from '../../../../../../../core';
 
 @Component({
     selector: 'tui-preview-example-1',
