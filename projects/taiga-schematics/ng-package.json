@@ -4,5 +4,7 @@
     "lib": {
         "entryFile": "index.ts"
     },
-    "whitelistedNonPeerDependencies": ["."]
+    "whitelistedNonPeerDependencies": [
+        "."
+    ]
 }
