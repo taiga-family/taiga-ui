@@ -27,7 +27,7 @@
         "@ng-web-apis/common": ">=1.12.1",
         "@ng-web-apis/mutation-observer": ">=1.1.0",
         "@tinkoff/ng-event-plugins": ">=2.3.2",
-        "@tinkoff/ng-polymorpheus": ">=3.1.12",
+        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
         "rxjs": ">=6.0.0"
     }
 }
