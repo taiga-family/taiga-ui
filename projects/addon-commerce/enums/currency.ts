@@ -18,4 +18,5 @@ export const enum TuiCurrency {
     ArmenianDram = 'AMD',
     Won = 'KRW',
     Hryvnia = 'UAH',
+    MexicanPeso = 'MXN',
 }

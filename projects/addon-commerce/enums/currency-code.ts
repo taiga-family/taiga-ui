@@ -18,4 +18,5 @@ export const enum TuiCurrencyCode {
     CanadianDollar = '124',
     ArmenianDram = '051',
     Hryvnia = '980',
+    MexicanPeso = '484',
 }
