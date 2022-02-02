@@ -28,7 +28,6 @@
             automation-id="tui-text-area__placeholder"
             class="placeholder"
             [class.placeholder_raised]="placeholderRaised"
-            [tuiBorderEnd]="border"
         >
             <ng-content></ng-content>
         </div>
@@ -39,11 +38,7 @@
         >
             <div class="input-wrapper">
                 <div class="relative">
-                    <div
-                        aria-hidden="true"
-                        class="pseudo-content"
-                        [tuiBorderEnd]="border"
-                    >
+                    <div aria-hidden="true" class="pseudo-content">
                         <span
                             [textContent]="fittedContent || controller.exampleText"
                         ></span>
@@ -61,7 +56,6 @@
                         [id]="id"
                         [tuiDescribedBy]="id"
                         [tuiFocusable]="focusable"
-                        [tuiBorderEnd]="border"
                         [disabled]="disabled"
                         [ngModel]="value"
                         [readOnly]="readOnly"

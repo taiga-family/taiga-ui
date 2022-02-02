@@ -65,10 +65,6 @@
         pointer-events: none;
     }
 
-    :host._right-aligned & {
-        text-align: right;
-    }
-
     :host[data-tui-host-size='l']:not(._label-outside) & {
         padding-top: 20px;
 
@@ -216,11 +212,6 @@
     color: var(--tui-text-03);
     letter-spacing: normal;
     text-transform: none;
-
-    :host._right-aligned & {
-        flex-direction: row-reverse;
-        margin-right: -$space;
-    }
 
     :host[data-tui-host-size='m']._label-outside & {
         margin-top: -19px;

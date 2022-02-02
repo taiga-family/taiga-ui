@@ -2,7 +2,6 @@
     <label tuiLabel i18n-label label="Modified cleaner icon">
         <tui-primitive-textfield
             tuiTextfieldSize="m"
-            tuiTextfieldType="email"
             [tuiTextfieldLabelOutside]="true"
             [tuiTextfieldCleaner]="true"
             [value]="value"
@@ -10,6 +9,7 @@
             (focusedChange)="onFocused($event)"
         >
             Type an email
+            <input tuiTextfield type="email" />
         </tui-primitive-textfield>
     </label>
 
@@ -21,7 +21,6 @@
     >
         <tui-primitive-textfield
             tuiTextfieldSize="m"
-            tuiTextfieldType="email"
             [tuiTextfieldLabelOutside]="true"
             [tuiTextfieldCleaner]="true"
             [value]="value"
@@ -30,6 +29,7 @@
             (focusedChange)="onFocused($event)"
         >
             Type an email
+            <input tuiTextfield type="email" />
         </tui-primitive-textfield>
     </label>
 </div>

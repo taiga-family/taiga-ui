@@ -7,6 +7,9 @@ import {pairwise, takeUntil} from 'rxjs/operators';
 const PERIMETER = 314;
 const COEFFICIENT = 1.5;
 
+/**
+ * @deprecated
+ */
 @Directive({
     selector: 'circle',
     providers: [TuiDestroyService],
@@ -45,7 +48,7 @@ export class TuiLoaderDirective {
         const offsetStep = 1 + Math.floor(this.strokeDasharray / PERIMETER);
         const {style} = this.elementRef.nativeElement;
 
-        style.strokeDashoffset = this.strokeDashoffset.toString();
+        style.strokeDashoffset = String(this.strokeDashoffset);
         style.strokeDasharray = PERIMETER - strokeDasharray + ' ' + strokeDasharray;
 
         this.strokeDasharray -= PERIMETER / COEFFICIENT / fps;

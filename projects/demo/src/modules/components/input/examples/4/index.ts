@@ -81,8 +81,8 @@ const USERS = [
 
 @Component({
     selector: 'tui-input-example-4',
-    templateUrl: './template.html',
-    styleUrls: ['./style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

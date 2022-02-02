@@ -1,7 +1,12 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
+import {
+    TuiAutofillFieldName,
+    TuiContextWithImplicit,
+    TuiInputModeT,
+    TuiInputTypeT,
+} from '@taiga-ui/cdk';
 import {
     TuiDirection,
     TuiHintModeT,
@@ -37,7 +42,9 @@ viewBox="0 0 24 24">
 })
 export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInteractive {
     @ViewChild('interactiveContent')
-    private readonly interactiveIcon: PolymorpheusContent = '';
+    private readonly interactiveIcon: PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeL>
+    > = '';
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/component.ts'),
@@ -77,7 +84,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         'url',
     ];
 
-    type = 'text';
+    type: TuiInputTypeT = 'text';
 
     cleaner = false;
 
@@ -163,7 +170,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         return this.customContentSelected !== null ? CUSTOM_SVG : null;
     }
 
-    get iconContent(): PolymorpheusContent {
+    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
         if (this.selectedIcon === '') {
             return '';
         }

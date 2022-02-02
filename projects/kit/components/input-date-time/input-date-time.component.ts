@@ -319,11 +319,7 @@ export class TuiInputDateTimeComponent
     ): boolean {
         return (
             nullableSame(oldValue[0], newValue[0], (a, b) => a.daySame(b)) &&
-            nullableSame(
-                oldValue[1],
-                newValue[1],
-                (a, b) => a.toString() === b.toString(),
-            )
+            nullableSame(oldValue[1], newValue[1], (a, b) => String(a) === String(b))
         );
     }
 

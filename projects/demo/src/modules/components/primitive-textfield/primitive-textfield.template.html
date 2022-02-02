@@ -70,6 +70,7 @@
                 [(value)]="value"
             >
                 Component label
+                <input tuiTextfield />
             </tui-primitive-textfield>
         </tui-doc-demo>
         <ng-template #template let-item>
@@ -220,34 +221,35 @@
         </ol>
     </ng-template>
 
-    <ng-template i18n-pageTab pageTab="Theming">
-        <tui-customization>
-            <bootstrap *ngIf="isBootstrap"></bootstrap>
-            <material *ngIf="isMaterial"></material>
-            <tui-radio-list
-                size="l"
-                orientation="horizontal"
-                class="tui-space_bottom-4"
-                [items]="themes"
-                [(ngModel)]="theme"
-            ></tui-radio-list>
-            <ng-template #label i18n>Theming sample</ng-template>
-            <label
-                tuiLabel
-                class="theme-wrapper label"
-                [label]="isBootstrap ? label : ''"
-            >
-                <tui-primitive-textfield
-                    value="Value"
-                    tuiTextfieldExampleText="Example text"
-                    class="input"
-                    [tuiTextfieldCleaner]="!isBootstrap"
-                    [tuiTextfieldLabelOutside]="isBootstrap"
-                    [tuiTextfieldSize]="customizationSize"
-                >
-                    {{ placeholder }}
-                </tui-primitive-textfield>
-            </label>
-        </tui-customization>
-    </ng-template>
+    <!--    TODO: Possibly remove-->
+    <!--    <ng-template i18n-pageTab pageTab="Theming">-->
+    <!--        <tui-customization>-->
+    <!--            <bootstrap *ngIf="isBootstrap"></bootstrap>-->
+    <!--            <material *ngIf="isMaterial"></material>-->
+    <!--            <tui-radio-list-->
+    <!--                size="l"-->
+    <!--                orientation="horizontal"-->
+    <!--                class="tui-space_bottom-4"-->
+    <!--                [items]="themes"-->
+    <!--                [(ngModel)]="theme"-->
+    <!--            ></tui-radio-list>-->
+    <!--            <ng-template #label i18n>Theming sample</ng-template>-->
+    <!--            <label-->
+    <!--                tuiLabel-->
+    <!--                class="theme-wrapper label"-->
+    <!--                [label]="isBootstrap ? label : ''"-->
+    <!--            >-->
+    <!--                <tui-primitive-textfield-->
+    <!--                    value="Value"-->
+    <!--                    tuiTextfieldExampleText="Example text"-->
+    <!--                    class="input"-->
+    <!--                    [tuiTextfieldCleaner]="!isBootstrap"-->
+    <!--                    [tuiTextfieldLabelOutside]="isBootstrap"-->
+    <!--                    [tuiTextfieldSize]="customizationSize"-->
+    <!--                >-->
+    <!--                    {{ placeholder }}-->
+    <!--                </tui-primitive-textfield>-->
+    <!--            </label>-->
+    <!--        </tui-customization>-->
+    <!--    </ng-template>-->
 </tui-doc-page>

@@ -9,16 +9,17 @@
     [hovered]="computedHovered"
     [pressed]="computedPressed"
     [invalid]="computedInvalid"
-    (tuiHoveredChange)="onHovered($event)"
+    [style.--text-indent.px]="decor.pre$ | async"
     (mousedown)="onMouseDown($event)"
+    (tuiHoveredChange)="onHovered($event)"
+    (tuiAutofilledChange)="onAutofilled($event)"
 >
+    <ng-content select="input"></ng-content>
     <input
         #focusableElement
         tuiMaskAccessor
         automation-id="tui-primitive-textfield__native-input"
         class="input"
-        [class.input_hidden]="inputHidden"
-        [style.textIndent.px]="decor.pre$ | async"
         [attr.disabled]="computedDisabled || null"
         [attr.maxLength]="controller.maxLength"
         [attr.name]="name"
@@ -28,22 +29,16 @@
         [type]="controller.type"
         [id]="id"
         [readOnly]="readOnly || !editable"
-        [tuiBorderStart]="borderLeft"
-        [tuiBorderEnd]="borderRight"
         [tuiInputMode]="controller.inputMode"
         [tuiFocusable]="computedFocusable"
         [tuiDescribedBy]="id"
         [ngModel]="value"
         (ngModelChange)="onModelChange($event)"
-        (tuiFocusedChange)="onFocused($event)"
-        (tuiAutofilledChange)="onAutofilled($event)"
     />
     <div
         *ngIf="inputHidden"
         automation-id="tui-primitive-textfield__value"
         class="input input_template"
-        [tuiBorderStart]="borderLeft"
-        [tuiBorderEnd]="borderRight"
     >
         <ng-content select="[polymorpheus-outlet]"></ng-content>
     </div>
@@ -65,7 +60,7 @@
                 automation-id="tui-primitive-textfield__placeholder"
                 class="placeholder"
                 [class.placeholder_raised]="placeholderRaised"
-                [for]="id"
+                [for]="computedId"
             >
                 <ng-content></ng-content>
             </label>
@@ -103,7 +98,7 @@
         <tui-tooltip
             *ngIf="hasTooltip"
             automation-id="tui-primitive-textfield__tooltip"
-            [describeId]="id"
+            [describeId]="computedId"
             [content]="hintController.content"
             [direction]="hintController.direction"
             [mode]="hintController.mode"

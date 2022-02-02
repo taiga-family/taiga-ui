@@ -6,6 +6,7 @@
         [tuiTextfieldCustomContent]="content"
     >
         User
+        <input tuiTextfield />
         <ng-container *ngIf="users.length">
             <tui-data-list *tuiDataList>
                 <button
@@ -35,6 +36,7 @@
     </ng-template>
     <tui-input formControlName="account" class="tui-space_vertical-5">
         Account
+        <input tuiTextfield />
         <tui-data-list-wrapper
             *tuiDataList
             [items]="accounts"

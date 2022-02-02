@@ -4,6 +4,8 @@
  * @param sourceString
  * @param minResultLength
  * @param padString string to pad with
+ *
+ * @deprecated use String.prototype.padStart in 3.0 (after Chrome 49 support is dropped)
  */
 export function padStart(
     sourceString: string,

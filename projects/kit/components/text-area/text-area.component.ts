@@ -98,11 +98,12 @@ export class TuiTextAreaComponent
         return isNativeFocused(this.nativeFocusableElement);
     }
 
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
 
+    @HostBinding('style.--border-end.rem')
     get border(): number {
         return getBorder(false, this.hasCleaner, this.hasTooltip);
     }

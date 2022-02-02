@@ -1,7 +1,6 @@
 <tui-primitive-textfield
     [invalid]="computedInvalid"
     [focusable]="focusable"
-    [tuiTextfieldType]="inputType"
     [disabled]="disabled"
     [readOnly]="readOnly"
     [iconContent]="iconContent"
@@ -10,6 +9,7 @@
     (focusedChange)="onFocused($event)"
 >
     <ng-content></ng-content>
+    <input tuiTextfield [type]="inputType" />
 </tui-primitive-textfield>
 
 <ng-template #iconContent>

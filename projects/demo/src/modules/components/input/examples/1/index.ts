@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
     selector: 'tui-input-example-1',
-    templateUrl: './template.html',
+    templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })

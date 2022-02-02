@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostListener,
     Inject,
     Injector,
@@ -22,7 +21,6 @@ import {
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
     TuiBooleanHandler,
@@ -46,9 +44,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit/classes';
 import {EMPTY_MASK} from '@taiga-ui/kit/constants';
-import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
-    TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
     TUI_MOBILE_CALENDAR,
@@ -57,16 +53,11 @@ import {
     tuiCreateAutoCorrectedDatePipe,
     tuiCreateDateMask,
 } from '@taiga-ui/kit/utils/mask';
-import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
-// TODO: remove in ivy compilation
-export const DATE_STREAM_FACTORY = (
-    control: NgControl | null,
-    valueTransformer: TuiControlValueTransformer<TuiDay>,
-) => TuiReplayControlValueChangesFactory(control, valueTransformer);
+import {TUI_INPUT_DATE_PROVIDERS} from './input-date.providers';
 
 // @dynamic
 @Component({
@@ -74,21 +65,7 @@ export const DATE_STREAM_FACTORY = (
     templateUrl: './input-date.template.html',
     styleUrls: ['./input-date.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputDateComponent),
-        },
-        {
-            provide: TUI_CALENDAR_DATA_STREAM,
-            deps: [
-                [new Optional(), new Self(), NgControl],
-                [new Optional(), forwardRef(() => TUI_DATE_VALUE_TRANSFORMER)],
-            ],
-            useFactory: DATE_STREAM_FACTORY,
-        },
-        LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
-    ],
+    providers: TUI_INPUT_DATE_PROVIDERS,
 })
 export class TuiInputDateComponent
     extends AbstractTuiNullableControl<TuiDay>

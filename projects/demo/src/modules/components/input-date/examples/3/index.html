@@ -2,10 +2,12 @@
 <p class="b-form">
     <tui-input-date [min]="min" [max]="max" [(ngModel)]="from">
         Start
+        <input tuiTextfield />
     </tui-input-date>
 </p>
 <p class="b-form">
     <tui-input-date [min]="from || min" [items]="items" [(ngModel)]="to">
         Finish
+        <input tuiTextfield />
     </tui-input-date>
 </p>

@@ -163,7 +163,7 @@ export class TuiTagComponent {
             : value.split(ALLOWED_SPACE_REGEXP);
 
         if (newTags.length > 1) {
-            this.save(newTags.toString());
+            this.save(String(newTags));
 
             return;
         }

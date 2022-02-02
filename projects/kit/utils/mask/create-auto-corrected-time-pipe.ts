@@ -11,22 +11,19 @@ export function tuiCreateAutoCorrectedTimePipe(
     timeMode: TuiTimeMode = 'HH:MM',
     maxValues: Partial<Record<TuiTimeFormatParts, number>> = {},
 ): TuiTextMaskPipeHandler {
-    const timeFormatArray: TuiTimeFormatParts[] = ['HH', 'MM', 'SS', 'MS'];
-    const _maxValues: Record<TuiTimeFormatParts, number> = {
+    const timeFormatArray = ['HH', 'MM', 'SS', 'MS'] as const;
+    const safeValues = {
         ...MAX_TIME_VALUES,
         ...maxValues,
     };
 
-    return (conformedValue: string) => {
+    return conformedValue => {
         const indexesOfPipedChars: number[] = [];
         const conformedValueArr = conformedValue.split('');
 
         timeFormatArray.forEach(format => {
             const position = timeMode.indexOf(format);
-            const maxFirstDigit = parseInt(
-                _maxValues[format].toString().substr(0, 1),
-                10,
-            );
+            const maxFirstDigit = parseInt(String(safeValues[format]).substr(0, 1), 10);
 
             if (parseInt(conformedValueArr[position], 10) > maxFirstDigit) {
                 conformedValueArr[position + 1] = conformedValueArr[position];
@@ -35,14 +32,11 @@ export function tuiCreateAutoCorrectedTimePipe(
             }
         });
 
-        const isInvalid = timeFormatArray.some(format => {
-            const part: number = parseInt(
-                conformedValue.substr(timeMode.indexOf(format), 2),
-                10,
-            );
-
-            return part > _maxValues[format];
-        });
+        const isInvalid = timeFormatArray.some(
+            format =>
+                parseInt(conformedValue.substr(timeMode.indexOf(format), 2), 10) >
+                safeValues[format],
+        );
 
         return isInvalid
             ? false

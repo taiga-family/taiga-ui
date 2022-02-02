@@ -18,16 +18,16 @@
         color: var(--tui-text-01-night);
     }
 
-    &[data-tui-host-size='m'] {
+    &[data-size='m'] {
         font: var(--tui-font-text-s);
         min-height: (@height - 1.25rem);
     }
 
-    &[data-tui-host-size='m']._has-counter {
+    &[data-size='m']._has-counter {
         min-height: (@heightCounter - 1.25rem);
     }
 
-    &[data-tui-host-size='l']._has-counter {
+    &[data-size='l']._has-counter {
         min-height: @heightCounter;
     }
 }
@@ -73,19 +73,19 @@
     padding-bottom: @margin;
     box-sizing: border-box;
 
-    :host[data-tui-host-size='m']._label-outside & {
+    :host[data-size='m']._label-outside & {
         padding-top: 0.75rem;
     }
 
-    :host[data-tui-host-size='l']._label-outside & {
+    :host[data-size='l']._label-outside & {
         padding-top: 1rem;
     }
 
-    :host[data-tui-host-size='m']:not(._label-outside) & {
+    :host[data-size='m']:not(._label-outside) & {
         padding-top: 1.375rem;
     }
 
-    :host[data-tui-host-size='l']:not(._label-outside) & {
+    :host[data-size='l']:not(._label-outside) & {
         padding-top: 1.625rem;
     }
 }
@@ -122,12 +122,15 @@
     color: transparent;
     overflow: hidden;
     border: 0 solid transparent;
+    border-width: 0 var(--border-end) 0 var(--border-start);
+    border-inline-start-width: var(--border-start);
+    border-inline-end-width: var(--border-end);
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         padding: 0 0.75rem;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         padding: 0 1rem;
     }
 
@@ -148,6 +151,9 @@
     overflow: hidden;
     outline: none;
     border: 0 solid transparent;
+    border-width: 0 var(--border-end) 0 var(--border-start);
+    border-inline-start-width: var(--border-start);
+    border-inline-end-width: var(--border-end);
 
     &::placeholder {
         color: var(--tui-text-03);
@@ -162,11 +168,11 @@
         opacity: 1;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         padding: 0 0.75rem;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         padding: 0 1rem;
     }
 
@@ -186,14 +192,17 @@
     max-width: 100%;
     padding: 0 1rem;
     border: 0 solid transparent;
+    border-width: 0 var(--border-end) 0 var(--border-start);
+    border-inline-start-width: var(--border-start);
+    border-inline-end-width: var(--border-end);
     box-sizing: border-box;
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         top: 0.75rem;
         padding: 0 0.75rem;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         top: 1rem;
     }
 
@@ -211,7 +220,7 @@
     pointer-events: none;
     padding: 1rem 0.75rem;
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         padding: 0.75rem;
     }
 }

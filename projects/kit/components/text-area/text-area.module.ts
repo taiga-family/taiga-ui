@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiFocusableModule, TuiFocusedModule, TuiHoveredModule} from '@taiga-ui/cdk';
 import {
-    TuiBorderModule,
     TuiDescribedByModule,
     TuiScrollbarModule,
     TuiSvgModule,
@@ -24,7 +23,6 @@ import {TuiTextAreaComponent} from './text-area.component';
         TuiTooltipModule,
         TuiWrapperModule,
         TuiDescribedByModule,
-        TuiBorderModule,
         TuiSvgModule,
     ],
     declarations: [TuiTextAreaComponent],
