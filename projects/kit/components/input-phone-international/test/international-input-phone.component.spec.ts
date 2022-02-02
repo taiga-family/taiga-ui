@@ -155,6 +155,18 @@ describe('InputPhoneInternational', () => {
             expect(testComponent.control.value).toEqual('+380123456789');
         });
 
+        it('should update value without "+" on paste', () => {
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '380 (12) 345-67-89');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
+
+            expect(testComponent.control.value).toEqual('+380123456789');
+        });
+
         it('should not update value on paste if there is no country code in list', () => {
             const data = new DataTransfer();
 

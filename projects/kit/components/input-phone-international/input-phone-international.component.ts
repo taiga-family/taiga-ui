@@ -131,9 +131,9 @@ export class TuiInputPhoneInternationalComponent
     @HostListener('paste.capture.prevent.stop', ['$event'])
     @HostListener('drop.capture.prevent.stop', ['$event'])
     onPaste(event: ClipboardEvent | DragEvent) {
-        const value = extractValueFromEvent(event);
+        const value = extractValueFromEvent(event).replace('+', '');
         const countryIsoCode = this.countries.find(countryIsoCode =>
-            value.startsWith(this.isoToCountryCode(countryIsoCode)),
+            value.startsWith(this.isoToCountryCode(countryIsoCode).replace('+', '')),
         );
 
         if (countryIsoCode) {
