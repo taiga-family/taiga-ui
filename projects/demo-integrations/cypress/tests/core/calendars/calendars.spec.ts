@@ -1,3 +1,5 @@
+import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '../../../support/shared.entities';
+
 describe('Calendars', () => {
     beforeEach(() => {
         cy.viewport(720, 700);
@@ -8,13 +10,19 @@ describe('Calendars', () => {
         );
         cy.hideHeader();
 
-        cy.get('tui-calendar').first().wait(100).matchImageSnapshot('calendar');
+        cy.get('tui-calendar')
+            .first()
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .matchImageSnapshot('calendar');
     });
 
     it('Month', () => {
         cy.goToDemoPage('components/calendar-month/API?tuiMode=null&year$=1&value$=2');
         cy.hideHeader();
 
-        cy.get('tui-calendar-month').first().wait(100).matchImageSnapshot('month');
+        cy.get('tui-calendar-month')
+            .first()
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .matchImageSnapshot('month');
     });
 });

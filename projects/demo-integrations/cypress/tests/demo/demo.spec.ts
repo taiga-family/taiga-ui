@@ -3,10 +3,6 @@ import {excluded} from '../../support/exclusions';
 import {EXAMPLE_ID} from '../../support/shared.entities';
 
 describe('Demo', () => {
-    beforeEach(() => {
-        cy.viewport(1280, 720);
-    });
-
     DEMO_PATHS.forEach(path => {
         it(`${path}`, () => {
             cy.goToDemoPage(path, {waitAllIcons: true});
@@ -19,8 +15,7 @@ describe('Demo', () => {
 
                 return cy
                     .wrap(sample)
-                    .scrollIntoView({offset: {top: 64, left: 0}})
-                    .wait(100)
+                    .scrollIntoView({offset: {top: 0, left: 0}})
                     .matchImageSnapshot(`${path}/${index + 1}`);
             });
         });

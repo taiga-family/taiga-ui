@@ -1,6 +1,5 @@
 describe('Addon preview', () => {
     beforeEach(() => {
-        cy.viewport(1400, 720);
         cy.goToDemoPage('components/preview');
         cy.hideHeader();
     });

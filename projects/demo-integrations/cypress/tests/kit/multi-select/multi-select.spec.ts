@@ -1,4 +1,7 @@
-import {MULTI_SELECT_PAGE_URL} from '../../../support/shared.entities';
+import {
+    DEFAULT_TIMEOUT_BEFORE_ACTION,
+    MULTI_SELECT_PAGE_URL,
+} from '../../../support/shared.entities';
 
 describe('MultiSelect', () => {
     beforeEach(() => {
@@ -16,6 +19,8 @@ describe('MultiSelect', () => {
 
         cy.get('@wrapper').findByAutomationId('tui-multi-select__arrow').click();
 
-        cy.get('@wrapper').wait(100).matchImageSnapshot(`01-not-overflow-by-tags`);
+        cy.get('@wrapper')
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .matchImageSnapshot(`01-not-overflow-by-tags`);
     });
 });

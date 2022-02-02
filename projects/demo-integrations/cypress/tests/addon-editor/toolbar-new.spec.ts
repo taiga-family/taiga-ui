@@ -3,7 +3,6 @@ import {WAIT_BEFORE_SCREENSHOT} from './utils';
 
 describe("Editor's toolbar", () => {
     beforeEach(() => {
-        cy.viewport(1400, 720);
         cy.goToDemoPage(EDITOR_PAGE_URL, {waitAllIcons: true});
         cy.hideHeader();
     });

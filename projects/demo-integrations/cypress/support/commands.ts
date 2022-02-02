@@ -21,7 +21,7 @@ declare global {
 }
 
 Cypress.Commands.add('getByAutomationId', id => cy.get(`[automation-id=${id}]`));
-Cypress.Commands.add('findByAutomationId', {prevSubject: true}, (subject, id) =>
+Cypress.Commands.add('findByAutomationId', {prevSubject: true}, (subject: any, id) =>
     subject.find(`[automation-id=${id}]`),
 );
 Cypress.Commands.add('goToDemoPage', goToDemoPage);
@@ -44,6 +44,16 @@ addMatchImageSnapshotCommand({
     // percent of image or number of pixels
     failureThresholdType: 'percent',
 
+    // The method by which images are compared.
+    // pixelmatch does a pixel by pixel comparison,
+    // whereas ssim does a structural similarity comparison.
+    comparisonMethod: 'pixelmatch',
+
+    // Custom config passed to 'pixelmatch' or 'ssim'
     // threshold for each pixel
     customDiffConfig: {threshold: 0.1},
+
+    // Runs the diff in process without spawning a child process.
+    // For improved performance
+    runInProcess: false,
 });

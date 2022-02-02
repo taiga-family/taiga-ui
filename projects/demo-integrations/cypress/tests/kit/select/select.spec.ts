@@ -1,4 +1,7 @@
-import {SELECT_PAGE_URL} from '../../../support/shared.entities';
+import {
+    DEFAULT_TIMEOUT_BEFORE_ACTION,
+    SELECT_PAGE_URL,
+} from '../../../support/shared.entities';
 
 describe('Select', () => {
     beforeEach(() => {
@@ -9,9 +12,9 @@ describe('Select', () => {
     it('opens dropdown by click on icon', () => {
         cy.get('tui-doc-example')
             .first()
-            .wait(200)
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .trigger('click', {x: 330, y: 220})
-            .wait(100)
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .matchImageSnapshot('01-click-arrow');
     });
 });
