@@ -28,13 +28,24 @@ jobs:
       FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+
+      - uses: imba-tjd/rebase-upstream-action@0.5
+        continue-on-error: true
+        with:
+          upstream: Tinkoff/taiga-ui
+          branch: main
+          push: false
+
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
+      - name: Build demo/local application
+        run: npm run build:demo
+
       - name: Run screenshot tests
-        run: |
-          npm run build:demo
-          npm run demo:integrations:ci
+        run: npm run demo:integrations:ci
 
       - name: Upload artifact
         uses: actions/upload-artifact@v1
