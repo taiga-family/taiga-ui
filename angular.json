@@ -650,6 +650,18 @@
                     "options": {
                         "browserTarget": "demo:build"
                     }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "codeCoverage": false,
+                        "main": "projects/demo/test.ts",
+                        "karmaConfig": "projects/demo/karma.conf.js",
+                        "tsConfig": "projects/demo/tsconfig.spec.json",
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["projects/core/styles"]
+                        }
+                    }
                 }
             }
         },
