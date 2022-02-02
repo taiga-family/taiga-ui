@@ -37,14 +37,6 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
 
     card = '';
 
-    readonly sizeVariantsCustom = ['m', 'l'];
-
-    sizeCard = this.sizeVariantsCustom[1];
-
-    sizeExpire = this.sizeVariantsCustom[1];
-
-    sizeCVC = this.sizeVariantsCustom[1];
-
     readonly lengthVariants = [3, 4];
 
     length = this.lengthVariants[0];
@@ -52,12 +44,6 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     cleaner = false;
 
     exampleText = '0000 0000 0000 0000';
-
-    labelOutsideCard = false;
-
-    labelOutsideExpire = false;
-
-    labelOutsideCVC = false;
 
     hintContentCVC = null;
 
