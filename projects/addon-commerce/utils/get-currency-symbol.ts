@@ -8,6 +8,8 @@ export function getCurrencySymbol(currency: TuiCurrencyVariants): string | null 
             return '₽';
         case TuiCurrency.Dollar:
         case TuiCurrencyCode.Dollar:
+        case TuiCurrency.MexicanPeso:
+        case TuiCurrencyCode.MexicanPeso:
             return '$';
         case TuiCurrency.SingaporeDollar:
         case TuiCurrencyCode.SingaporeDollar:

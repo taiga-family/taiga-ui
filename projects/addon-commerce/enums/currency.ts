@@ -177,4 +177,5 @@ export const enum TuiCurrency {
      * @description Countries and territories: Ukraine
      */
     Hryvnia = 'UAH',
+    MexicanPeso = 'MXN',
 }
