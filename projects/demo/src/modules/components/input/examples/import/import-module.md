@@ -1,15 +1,14 @@
 ```ts
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {TuiInputModule} from '@taiga-ui/kit';
 
-...
-
 @NgModule({
-    imports: [
-        ...
-        FormsModule,
-        ReactiveFormsModule,
-        TuiInputModule
-    ],
-...
+  imports: [
+    // ...
+    ReactiveFormsModule,
+    TuiInputModule,
+  ],
+  // ...
+})
+export class MyModule {}
 ```

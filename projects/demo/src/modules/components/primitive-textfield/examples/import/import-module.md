@@ -1,14 +1,12 @@
 ```ts
-import {FormsModule} from '@angular/forms';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/core';
 
-...
-
 @NgModule({
-    imports: [
-        ...
-        FormsModule,
-        TuiPrimitiveTextfieldModule
-    ],
-...
+  imports: [
+    // ...
+    TuiPrimitiveTextfieldModule,
+  ],
+  // ...
+})
+export class MyModule {}
 ```

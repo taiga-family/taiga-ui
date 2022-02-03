@@ -1,14 +1,12 @@
 ```ts
 import {TuiMobileDialogModule} from '@taiga-ui/addon-mobile';
 
-...
-
 @NgModule({
-    imports: [
-        ...
-        TuiMobileDialogModule
-    ],
-    ...
+  imports: [
+    // ...
+    TuiMobileDialogModule,
+  ],
+  // ...
 })
 export class AppModule {}
 ```
