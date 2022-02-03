@@ -14,7 +14,7 @@ import {
     TuiPrimitiveCheckboxModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiArrowModule} from '@taiga-ui/kit/components';
+import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
 import {TuiInputTagModule} from '@taiga-ui/kit/components/input-tag';
 import {TuiMultiSelectOptionModule} from '@taiga-ui/kit/components/multi-select-option';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
