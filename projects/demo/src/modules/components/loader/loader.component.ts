@@ -1,4 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -12,7 +13,6 @@ import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
@@ -22,6 +22,9 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiLoaderComponent {
+    @ViewChild('textTemplate')
+    readonly textTemplate: PolymorpheusContent = '';
+
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
@@ -59,9 +62,6 @@ export class ExampleTuiLoaderComponent {
     size = this.sizeVariants[2];
 
     selectedTemplate = '';
-
-    @ViewChild('textTemplate')
-    readonly textTemplate: PolymorpheusContent = '';
 
     readonly textVariants: string[] = ['', 'template', 'string'];
 

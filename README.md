@@ -1,18 +1,18 @@
 # <img src="projects/demo/src/assets/images/taiga.svg" alt="taiga ui logo" width="48px"> Taiga UI
 
 [![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk.svg)](https://npmjs.com/package/@taiga-ui/cdk)
-[![All packages CI](https://github.com/TinkoffCreditSystems/taiga-ui/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/TinkoffCreditSystems/taiga-ui/actions/workflows/build.yml)
+[![All packages CI](https://github.com/tinkoff/taiga-ui/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/tinkoff/taiga-ui/actions/workflows/build.yml)
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
-[![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/TinkoffCreditSystems/angular-open-source-starter)
+[![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/tinkoff/angular-open-source-starter)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) •
-[CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki) • [Core team](#core-team) •
+[CDK Wiki](https://github.com/tinkoff/taiga-ui/wiki) • [Core team](#core-team) •
 [Figma](https://www.figma.com/community/file/966347242613098831)
 
 **Taiga UI** is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons.
 
-It is based on [ng-polymorpheus](https://github.com/TinkoffCreditSystems/ng-polymorpheus) dynamic content approach and
-uses [Web APIs for Angular](https://github.com/ng-web-apis) for required browser APIs.
+It is based on [ng-polymorpheus](https://github.com/tinkoff/ng-polymorpheus) dynamic content approach and uses
+[Web APIs for Angular](https://github.com/ng-web-apis) for required browser APIs.
 
 ## Why Taiga UI
 
@@ -39,7 +39,7 @@ Read more about Taiga UI main features in [this article](https://indepth.dev/pos
 
 See our [Getting started](https://taiga-ui.dev/getting-started) page to start working with Taiga UI
 
-> If you want to use cdk tools only, see [CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki)
+> If you want to use cdk tools only, see [CDK Wiki](https://github.com/tinkoff/taiga-ui/wiki)
 
 You can also use our [StackBlitz starter](https://stackblitz.com/edit/taiga-starter?file=src%2Fapp%2Fapp.component.html)
 to create a quick sample with Taiga UI

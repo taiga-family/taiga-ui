@@ -6,11 +6,10 @@ import {
     ValidationErrors,
     Validators,
 } from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 const secretRegexTen = /^\d{10}$/;
 const secretRegexTwelve = /^\d{12}$/;
@@ -44,6 +43,10 @@ export class TuiFieldErrorExample2 implements OnInit {
         testValue2: this.testValue2,
     });
 
+    ngOnInit() {
+        this.testValue2.setValidators([Validators.required, this.companyValidator]);
+    }
+
     private readonly companyValidator = (
         field: AbstractControl,
     ): ValidationErrors | null =>
@@ -52,10 +55,6 @@ export class TuiFieldErrorExample2 implements OnInit {
                   inn: new TuiValidationError(this.bigErrorContent),
               }
             : null;
-
-    ngOnInit() {
-        this.testValue2.setValidators([Validators.required, this.companyValidator]);
-    }
 
     private getSecretValidator(): (field: AbstractControl) => ValidationErrors | null {
         return (field: AbstractControl): ValidationErrors | null =>

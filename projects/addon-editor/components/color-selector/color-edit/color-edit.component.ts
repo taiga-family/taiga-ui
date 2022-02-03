@@ -41,7 +41,7 @@ export class TuiColorEditComponent {
     }
 
     get opacity(): number {
-        return this.color[3] * 100;
+        return Math.round(this.color[3] * 100);
     }
 
     onHexChange(hex: string) {

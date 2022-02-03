@@ -1,10 +1,9 @@
 import {Component, Inject, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subscription} from 'rxjs';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-table-bar-example-1',
@@ -14,10 +13,10 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiTableBarExampleComponent1 {
-    subscription = new Subscription();
-
     @ViewChild('tableBarTemplate')
     tableBarTemplate: PolymorpheusContent = '';
+
+    subscription = new Subscription();
 
     constructor(
         @Inject(TuiTableBarsService)
@@ -30,6 +29,7 @@ export class TuiTableBarExampleComponent1 {
         this.subscription = this.tableBarsService
             .open(this.tableBarTemplate || '', {
                 hasCloseButton: true,
+                adaptive: true,
             })
             .subscribe();
     }

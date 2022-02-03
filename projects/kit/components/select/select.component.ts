@@ -34,7 +34,7 @@ import {
     TuiTextfieldCleanerDirective,
     TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
+import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -67,6 +67,12 @@ export class TuiSelectComponent<T>
     extends AbstractTuiNullableControl<T>
     implements TuiFocusableElementAccessor, TuiDataListHost<T>
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    @ViewChild(TuiHostedDropdownComponent)
+    private readonly hostedDropdown?: TuiHostedDropdownComponent;
+
     @Input()
     @tuiDefaultProp()
     identityMatcher: TuiIdentityMatcher<T | string> = TUI_DEFAULT_IDENTITY_MATCHER;
@@ -78,12 +84,6 @@ export class TuiSelectComponent<T>
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent = '';
 
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
-
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly hostedDropdown?: TuiHostedDropdownComponent;
-
     constructor(
         @Optional()
         @Self()
@@ -92,12 +92,14 @@ export class TuiSelectComponent<T>
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_CLEANER)
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
+        @Inject(TUI_ARROW_MODE)
+        private readonly arrowMode: TuiArrowMode,
     ) {
         super(control, changeDetectorRef);
     }
 
     get arrow(): PolymorpheusContent {
-        return this.disabled || this.readOnly ? '' : TUI_ARROW;
+        return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -119,8 +121,12 @@ export class TuiSelectComponent<T>
         return this.valueContent || this.computedValue;
     }
 
-    get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly;
+    @tuiPure
+    computeContext(
+        $implicit: T | null,
+        active: boolean,
+    ): TuiValueContentContext<T | null> {
+        return {$implicit, active};
     }
 
     onValueChange(value: string) {
@@ -146,21 +152,7 @@ export class TuiSelectComponent<T>
     handleOption(option: T) {
         this.focusInput();
         this.updateValue(option);
-
-        if (this.hostedDropdown) {
-            this.hostedDropdown.updateOpen(false);
-        }
-    }
-
-    @tuiPure
-    computeContext(
-        $implicit: T | null,
-        active: boolean,
-    ): TuiValueContentContext<T | null> {
-        return {
-            $implicit,
-            active,
-        };
+        this.hostedDropdown?.updateOpen(false);
     }
 
     private focusInput(preventScroll: boolean = false) {

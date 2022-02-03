@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_ALWAYS_DASHED, TUI_ALWAYS_NONE} from '@taiga-ui/addon-charts';
 import {ceil, tuiPure} from '@taiga-ui/cdk';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 const BENJI = 100;
 
@@ -15,6 +14,8 @@ const BENJI = 100;
     encapsulation,
 })
 export class TuiAxesExample2 {
+    private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
+
     readonly value: ReadonlyArray<[number, number, number, number]> = [
         [10, 20, 3, 7],
         [15, 18, 24, 1],
@@ -33,8 +34,6 @@ export class TuiAxesExample2 {
     readonly horizontalLinesHandler = TUI_ALWAYS_DASHED;
 
     readonly verticalLinesHandler = TUI_ALWAYS_NONE;
-
-    private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
 
     getPercent(set: [number, number, number, number]): number {
         return (BENJI * Math.max(...set)) / this.getMax(this.value);

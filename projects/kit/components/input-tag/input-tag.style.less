@@ -79,15 +79,7 @@
 }
 
 .content {
-    padding: 0;
     align-items: flex-start;
-
-    :host[data-tui-host-size='s'] &,
-    :host[data-tui-host-size='m'] & {
-        padding: 0 0 0 0.75rem;
-        padding-inline-start: 0.75rem;
-        padding-inline-end: 0;
-    }
 }
 
 .icons {
@@ -231,7 +223,7 @@
 
     &::placeholder {
         color: var(--tui-text-03);
-        visibility: hidden;
+        opacity: 0;
     }
 
     :host[data-mode='onDark'] &::placeholder {
@@ -239,7 +231,7 @@
     }
 
     :host._focused &:not(:read-only)::placeholder {
-        visibility: visible;
+        opacity: 1;
     }
 }
 

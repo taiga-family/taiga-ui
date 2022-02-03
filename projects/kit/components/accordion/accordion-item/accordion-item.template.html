@@ -28,12 +28,16 @@
         ></tui-svg>
     </div>
     <tui-expand [async]="async" [expanded]="open">
+        <div *ngIf="eagerContent" class="content">
+            <ng-content select="[tuiAccordionItemContent]"></ng-content>
+        </div>
         <ng-template tuiExpandContent>
             <div
+                *ngIf="lazyContent"
                 polymorpheus-outlet
                 automation-id="tui-accordion__item-content"
                 class="content"
-                [content]="content"
+                [content]="lazyContent"
             ></div>
         </ng-template>
     </tui-expand>

@@ -13,6 +13,10 @@
     margin: 0;
 }
 
+.t-code + .t-code {
+    margin-top: 1rem;
+}
+
 // highlightjs added class
 .hljs:not(:empty) {
     .customize-scroll();
@@ -27,7 +31,7 @@
         border-radius: 0.75rem;
     }
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         padding: 1rem;
     }
 }

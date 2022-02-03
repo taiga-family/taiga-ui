@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
+import {interval} from 'rxjs';
+import {map, scan, startWith} from 'rxjs/operators';
 
 export function maxLengthValidator(context: {requiredLength: string}): string {
     return `Maximum length — ${context.requiredLength}`;
@@ -26,6 +27,11 @@ export function minLengthValidator(context: {requiredLength: string}): string {
                 email: 'Enter a valid email',
                 maxlength: maxLengthValidator,
                 minlength: minLengthValidator,
+                min: interval(2000).pipe(
+                    scan(acc => !acc, false),
+                    map(val => (val ? 'Fix please' : 'Min number 3')),
+                    startWith('Min number 3'),
+                ),
             },
         },
     ],
@@ -35,11 +41,15 @@ export class TuiFieldErrorExample5 {
         Validators.minLength(4),
         Validators.maxLength(4),
     ]);
+
     readonly testValue2 = new FormControl('', [Validators.required, Validators.email]);
+
+    readonly testValue3 = new FormControl(2, [Validators.min(3)]);
 
     readonly testForm = new FormGroup({
         testValue1: this.testValue1,
         testValue2: this.testValue2,
+        testValue3: this.testValue3,
     });
 
     constructor() {

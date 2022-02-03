@@ -55,6 +55,11 @@ export class TuiDropdownSelectionDirective
     extends AbstractTuiDropdown
     implements TuiDropdown, OnDestroy
 {
+    private visibilityHandler: TuiBooleanHandler<Range> = ALWAYS_TRUE_HANDLER;
+    private readonly documentRef: Document;
+    private ghost?: HTMLElement;
+    private range: Range;
+
     @Input()
     set tuiDropdownSelection(handler: TuiBooleanHandler<Range> | undefined) {
         if (!handler) {
@@ -71,14 +76,6 @@ export class TuiDropdownSelectionDirective
 
     @Input('tuiDropdownSelectionPosition')
     position: 'selection' | 'word' | 'tag' = 'selection';
-
-    private range: Range;
-
-    private visibilityHandler: TuiBooleanHandler<Range> = ALWAYS_TRUE_HANDLER;
-
-    private readonly documentRef: Document;
-
-    private ghost?: HTMLElement;
 
     constructor(
         @Inject(DOCUMENT) documentRef: Document,
@@ -197,7 +194,7 @@ export class TuiDropdownSelectionDirective
      */
     private get rangeRect(): ClientRect {
         switch (this.position) {
-            case 'tag':
+            case 'tag': {
                 const {commonAncestorContainer} = this.range;
                 const element =
                     commonAncestorContainer.nodeType === Node.ELEMENT_NODE
@@ -205,6 +202,7 @@ export class TuiDropdownSelectionDirective
                         : commonAncestorContainer.parentNode;
 
                 return (element as Element).getBoundingClientRect();
+            }
             case 'word':
                 return getWordRange(this.range).getBoundingClientRect();
             default:

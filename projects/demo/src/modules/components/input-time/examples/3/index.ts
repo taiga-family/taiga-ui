@@ -1,9 +1,12 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {TUI_INPUT_TIME_OPTIONS, tuiCreateTimePeriods} from '@taiga-ui/kit';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TUI_INPUT_TIME_DEFAULT_OPTIONS,
+    TUI_INPUT_TIME_OPTIONS,
+    tuiCreateTimePeriods,
+} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tui-input-time-example-3',
@@ -14,6 +17,7 @@ import {encapsulation} from '../../../../../view-encapsulation';
         {
             provide: TUI_INPUT_TIME_OPTIONS,
             useValue: {
+                ...TUI_INPUT_TIME_DEFAULT_OPTIONS,
                 icon: 'tuiIconCheckCircleLarge',
                 mode: 'HH:MM:SS',
                 itemSize: 's',

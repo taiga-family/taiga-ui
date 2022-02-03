@@ -137,7 +137,11 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         }
 
         const theLastOfRange = value.to.monthSame(item) && !value.isSingleMonth;
-        const hoveredItemBeforeTo = value.to.monthSame(item) && !value.isSingleMonth;
+        const hoveredItemBeforeTo =
+            hoveredItem !== null &&
+            value.to.monthSame(item) &&
+            hoveredItem.monthBefore(value.to) &&
+            value.isSingleMonth;
         const hoveredItemIsCandidatToBeTo =
             hoveredItem !== null &&
             hoveredItem.monthSame(item) &&
@@ -220,6 +224,19 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         this.updatePressedItem(pressed ? item : null);
     }
 
+    @tuiPure
+    private calculateDisabledItemHandlerWithMinMax(
+        disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>,
+        value: TuiMonth | TuiMonthRange | null,
+        min: TuiMonth,
+        max: TuiMonth,
+    ): TuiBooleanHandler<TuiMonth> {
+        return item =>
+            item.monthBefore(min) ||
+            item.monthAfter(max) ||
+            disabledItemHandler(item, {value});
+    }
+
     private get disabledItemHandlerWithMinMax(): TuiBooleanHandler<TuiMonth> {
         return this.calculateDisabledItemHandlerWithMinMax(
             this.disabledItemHandler,
@@ -240,18 +257,5 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
 
     private updatePressedItem(item: TuiMonth | null) {
         this.pressedItem = item;
-    }
-
-    @tuiPure
-    private calculateDisabledItemHandlerWithMinMax(
-        disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>,
-        value: TuiMonth | TuiMonthRange | null,
-        min: TuiMonth,
-        max: TuiMonth,
-    ): TuiBooleanHandler<TuiMonth> {
-        return item =>
-            item.monthBefore(min) ||
-            item.monthAfter(max) ||
-            disabledItemHandler(item, {value});
     }
 }

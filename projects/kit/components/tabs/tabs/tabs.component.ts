@@ -60,6 +60,9 @@ export const OBSERVER_INIT = {
     ],
 })
 export class TuiTabsComponent implements AfterViewChecked {
+    @ContentChildren(forwardRef(() => TuiTabComponent))
+    private readonly children: QueryList<unknown> = EMPTY_QUERY;
+
     @Input()
     @HostBinding('class._underline')
     @tuiDefaultProp()
@@ -79,9 +82,6 @@ export class TuiTabsComponent implements AfterViewChecked {
 
     @HostBinding('class._android')
     readonly isAndroid: boolean;
-
-    @ContentChildren(forwardRef(() => TuiTabComponent))
-    private readonly children: QueryList<unknown> = EMPTY_QUERY;
 
     activeItemIndex = 0;
 
@@ -117,20 +117,6 @@ export class TuiTabsComponent implements AfterViewChecked {
         return this.tabs[this.activeItemIndex] || null;
     }
 
-    ngAfterViewChecked() {
-        const {tabs, activeElement} = this;
-
-        tabs.forEach(nativeElement => {
-            this.renderer.removeClass(nativeElement, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(nativeElement, 'tabIndex', '-1');
-        });
-
-        if (activeElement) {
-            this.renderer.addClass(activeElement, TAB_ACTIVE_CLASS);
-            this.renderer.setAttribute(activeElement, 'tabIndex', '0');
-        }
-    }
-
     @HostListener(`${TUI_TAB_ACTIVATE}.stop`, ['$event.target'])
     onActivate(element: HTMLElement) {
         const index = this.tabs.findIndex(tab => tab === element);
@@ -149,6 +135,20 @@ export class TuiTabsComponent implements AfterViewChecked {
         const {tabs} = this;
 
         moveFocus(tabs.indexOf(current), tabs, step);
+    }
+
+    ngAfterViewChecked() {
+        const {tabs, activeElement} = this;
+
+        tabs.forEach(nativeElement => {
+            this.renderer.removeClass(nativeElement, TAB_ACTIVE_CLASS);
+            this.renderer.setAttribute(nativeElement, 'tabIndex', '-1');
+        });
+
+        if (activeElement) {
+            this.renderer.addClass(activeElement, TAB_ACTIVE_CLASS);
+            this.renderer.setAttribute(activeElement, 'tabIndex', '0');
+        }
     }
 
     private scrollTo(element?: HTMLElement) {

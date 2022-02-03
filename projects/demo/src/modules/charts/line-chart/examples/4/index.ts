@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiContextWithImplicit, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-line-chart-example-4',
@@ -13,9 +12,6 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiLineChartExample4 {
-    readonly hint: TuiStringHandler<TuiContextWithImplicit<TuiPoint>> = ({$implicit}) =>
-        `Vertical: ${$implicit[1]}\nHorizontal: ${$implicit[0]}`;
-
     readonly value = [
         [50, 50],
         [100, 75],
@@ -27,4 +23,7 @@ export class TuiLineChartExample4 {
     ];
 
     readonly singleValue = [[200, 150]];
+
+    readonly hint: TuiStringHandler<TuiContextWithImplicit<TuiPoint>> = ({$implicit}) =>
+        `Vertical: ${$implicit[1]}\nHorizontal: ${$implicit[0]}`;
 }

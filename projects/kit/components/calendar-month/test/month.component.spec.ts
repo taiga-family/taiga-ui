@@ -190,6 +190,15 @@ describe('Month', () => {
 
             expect(component.getItemRange(month)).toBe(TuiRangeState.End);
         });
+
+        it('returns end if hovered item before item', () => {
+            const month = new TuiMonth(TODAY.year, 7);
+
+            component.value = new TuiMonthRange(month, month);
+            component.hoveredItem = new TuiMonth(TODAY.year, 4);
+
+            expect(component.getItemRange(month)).toBe(TuiRangeState.End);
+        });
     });
 
     describe('year change', () => {

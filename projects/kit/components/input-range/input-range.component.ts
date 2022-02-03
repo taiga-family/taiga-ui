@@ -25,6 +25,7 @@ import {
     maskedNumberStringToNumber,
     NumberFormatSettings,
     TUI_NUMBER_FORMAT,
+    TUI_TEXTFIELD_APPEARANCE,
     TuiModeDirective,
 } from '@taiga-ui/core';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
@@ -65,6 +66,8 @@ export class TuiInputRangeComponent
         private readonly isMobile: boolean,
         @Inject(TUI_NUMBER_FORMAT)
         protected readonly numberFormat: NumberFormatSettings,
+        @Inject(TUI_TEXTFIELD_APPEARANCE)
+        readonly appearance: string,
     ) {
         super(control, changeDetectorRef);
     }

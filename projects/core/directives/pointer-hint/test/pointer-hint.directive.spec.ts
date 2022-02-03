@@ -34,13 +34,13 @@ describe('PointerHint', () => {
         ],
     })
     class TestComponent {
-        hint = 'Tooltip text';
-
         @ViewChild(TuiPointerHintDirective, {static: true})
         directive!: TuiPointerHintDirective;
 
         @ViewChild('hintHost', {static: true})
         host!: ElementRef<HTMLElement>;
+
+        hint = 'Tooltip text';
     }
 
     let fixture: ComponentFixture<TestComponent>;

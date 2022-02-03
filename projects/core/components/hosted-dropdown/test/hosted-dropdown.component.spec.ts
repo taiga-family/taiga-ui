@@ -61,19 +61,21 @@ describe('TuiHostedDropdown', () => {
         `,
     })
     class TestComponent {
+        @ViewChild(TuiPrimitiveTextfieldComponent)
+        tuiTextfield: TuiPrimitiveTextfieldComponent;
+
+        @ViewChild(TuiButtonComponent)
+        tuiButton: TuiButtonComponent;
+
+        @ViewChild('host', {read: TuiButtonComponent})
+        target: TuiButtonComponent;
+
         open = false;
         items = ['Item 1', 'Item 2'];
         mode: 'default' | 'input' | 'targeted' | 'can-not-open' = 'default';
         canOpen = true;
 
         escCatched = false;
-
-        @ViewChild(TuiPrimitiveTextfieldComponent)
-        tuiTextfield: TuiPrimitiveTextfieldComponent;
-        @ViewChild(TuiButtonComponent)
-        tuiButton: TuiButtonComponent;
-        @ViewChild('host', {read: TuiButtonComponent})
-        target: TuiButtonComponent;
 
         get input(): boolean {
             return this.mode === 'input';

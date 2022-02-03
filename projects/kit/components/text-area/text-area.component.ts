@@ -54,6 +54,9 @@ export class TuiTextAreaComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<HTMLTextAreaElement>;
+
     @Input()
     @tuiDefaultProp()
     rows = DEFAULT_ROWS;
@@ -62,9 +65,6 @@ export class TuiTextAreaComponent
     @HostBinding('class._expandable')
     @tuiDefaultProp()
     expandable = false;
-
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<HTMLTextAreaElement>;
 
     constructor(
         @Optional()
@@ -108,9 +108,7 @@ export class TuiTextAreaComponent
     }
 
     get hasCleaner(): boolean {
-        return (
-            this.controller.cleaner && this.hasValue && !this.disabled && !this.readOnly
-        );
+        return this.controller.cleaner && this.hasValue && this.interactive;
     }
 
     @HostBinding('class._has-tooltip')
@@ -125,7 +123,7 @@ export class TuiTextAreaComponent
 
     @HostBinding('class._has-counter')
     get hasCounter(): boolean {
-        return !!this.controller.maxLength && !this.disabled && !this.readOnly;
+        return !!this.controller.maxLength && this.interactive;
     }
 
     get hasPlaceholder(): boolean {

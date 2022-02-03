@@ -3,5 +3,8 @@
     "dest": "../../dist/i18n",
     "lib": {
         "entryFile": "index.ts"
-    }
+    },
+    "whitelistedNonPeerDependencies": [
+        "."
+    ]
 }

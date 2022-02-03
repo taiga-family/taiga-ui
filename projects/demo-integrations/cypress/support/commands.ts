@@ -7,7 +7,7 @@ import {waitKitDialog} from './wait-kit-dialog';
 
 declare global {
     namespace Cypress {
-        interface Chainable<Subject = any> {
+        interface Chainable {
             getByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
 
             findByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
@@ -29,4 +29,21 @@ Cypress.Commands.add('hideHeader', hideHeader);
 Cypress.Commands.add('waitKitDialog', waitKitDialog);
 Cypress.Commands.add('setNightMode', setNightMode);
 
-addMatchImageSnapshotCommand();
+addMatchImageSnapshotCommand({
+    // When fullPage, your application under test
+    // is captured in its entirety from top to bottom.
+    capture: 'fullPage',
+
+    // When true, prevents JavaScript timers (setTimeout, setInterval)
+    // and CSS animations from running while the screenshot is taken.
+    disableTimersAndAnimations: true,
+
+    // threshold for entire image
+    failureThreshold: 0.03,
+
+    // percent of image or number of pixels
+    failureThresholdType: 'percent',
+
+    // threshold for each pixel
+    customDiffConfig: {threshold: 0.1},
+});

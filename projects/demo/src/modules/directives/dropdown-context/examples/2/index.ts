@@ -1,8 +1,7 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogService} from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-dropdown-context-example-2',
@@ -27,6 +26,7 @@ export class TuiDropdownContextExample2 {
         {character: 'Monica Geller', actor: 'Courteney Cox'},
         {character: 'Rachel Green', actor: 'Jennifer Aniston'},
     ] as const;
+
     readonly tableColumns = Object.keys(this.tableData[0]);
 
     readonly moreOptions = ['Option 1', 'Option 2', 'Option 3'];

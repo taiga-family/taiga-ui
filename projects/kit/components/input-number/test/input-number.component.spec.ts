@@ -47,6 +47,7 @@ describe('InputNumber', () => {
         form = new FormGroup({
             control: this.control,
         });
+
         readOnly = false;
         decimal: TuiDecimalT = 'never';
         cleaner = true;
@@ -229,44 +230,6 @@ describe('InputNumber', () => {
     });
 
     describe('computedValue | value to display', () => {
-        describe('Form value null does not change the displayed value', () => {
-            beforeEach(() => {
-                testComponent.control.setValue(null);
-            });
-
-            it(`Value ''`, () => {
-                const value = '';
-
-                inputPO.nativeElement.value = value;
-
-                expect(component.computedValue).toBe(value);
-            });
-
-            it(`Value '-'`, () => {
-                const value = '-';
-
-                inputPO.nativeElement.value = value;
-
-                expect(component.computedValue).toBe(value);
-            });
-
-            it(`Value ','`, () => {
-                const value = ',';
-
-                inputPO.nativeElement.value = value;
-
-                expect(component.computedValue).toBe(value);
-            });
-
-            it(`Value '-,'`, () => {
-                const value = '-,';
-
-                inputPO.nativeElement.value = value;
-
-                expect(component.computedValue).toBe(value);
-            });
-        });
-
         it(`The given value from the form is correctly converted to a string`, () => {
             testComponent.control.setValue(-12345.67);
 
@@ -308,10 +271,43 @@ describe('InputNumber', () => {
         });
     });
 
-    it('maxlength is set to 18 by default', () => {
+    describe('Format value when element lose focus with precision > 6', () => {
+        beforeEach(() => {
+            component.decimal = 'always';
+            component.precision = 10;
+            inputPO.sendText('');
+            inputPO.focus();
+        });
+
+        it('Positive value', () => {
+            inputPO.sendText('0,0000000001');
+            component.onFocused(false);
+            fixture.detectChanges();
+
+            expect(component.computedValue).toBe(`0,0000000001`);
+        });
+
+        it('Negative value', () => {
+            inputPO.sendText('-0,0000000001');
+            component.onFocused(false);
+            fixture.detectChanges();
+
+            expect(component.computedValue).toBe(`-0,0000000001`);
+        });
+
+        it('Value with precision less than 10', () => {
+            inputPO.sendText('-0,00000052');
+            component.onFocused(false);
+            fixture.detectChanges();
+
+            expect(component.computedValue).toBe(`-0,0000005200`);
+        });
+    });
+
+    it('maxlength is set to 23 by default (18 digits + 5 default separators)', () => {
         const nativeInput = getNativeInput()!.nativeElement;
 
-        expect(nativeInput.getAttribute('maxlength')).toBe('18');
+        expect(nativeInput.getAttribute('maxlength')).toBe('23');
     });
 
     describe('При decimal === always', () => {

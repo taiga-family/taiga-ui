@@ -23,7 +23,7 @@ export class TuiNotificationsService {
 
     constructor(
         @Inject(TUI_NOTIFICATION_OPTIONS)
-        public readonly options: NotificationTokenOptions,
+        readonly options: NotificationTokenOptions,
     ) {}
 
     show<O = void>(

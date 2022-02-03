@@ -5,9 +5,15 @@ import {TuiLegendItemModule, TuiRingChartModule} from '@taiga-ui/addon-charts';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiHoveredModule} from '@taiga-ui/cdk';
+import {
+    TuiNotificationModule,
+    TuiPrimitiveCheckboxModule,
+    TuiSvgModule,
+} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiLegendItemExample1} from './examples/1';
+import {TuiLegendItemExample2} from './examples/2';
 import {ExampleTuiLegendItemComponent} from './legend-item.component';
 
 @NgModule({
@@ -16,12 +22,19 @@ import {ExampleTuiLegendItemComponent} from './legend-item.component';
         TuiLegendItemModule,
         TuiRingChartModule,
         TuiMoneyModule,
+        TuiPrimitiveCheckboxModule,
+        TuiSvgModule,
+        TuiNotificationModule,
         PolymorpheusModule,
         TuiHoveredModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiLegendItemComponent)),
     ],
-    declarations: [ExampleTuiLegendItemComponent, TuiLegendItemExample1],
+    declarations: [
+        ExampleTuiLegendItemComponent,
+        TuiLegendItemExample1,
+        TuiLegendItemExample2,
+    ],
     exports: [ExampleTuiLegendItemComponent],
 })
 export class ExampleTuiLegendItemModule {}

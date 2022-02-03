@@ -1,9 +1,10 @@
 import {Component, HostBinding, Input} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 
 import {RawLoaderContent} from '../../interfaces/page';
 import {rawLoad} from '../../utils/raw-load';
+import {tryParseMarkdownCodeBlock} from './parse-code-block';
 
 @Component({
     selector: 'tui-doc-code',
@@ -13,10 +14,13 @@ import {rawLoad} from '../../utils/raw-load';
 export class TuiDocCodeComponent {
     private readonly rawLoader$$ = new BehaviorSubject<RawLoaderContent>('');
 
-    readonly processor$ = this.rawLoader$$.pipe(switchMap(rawLoad));
-
     @Input()
     filename = '';
+
+    readonly processor$ = this.rawLoader$$.pipe(
+        switchMap(rawLoad),
+        map(tryParseMarkdownCodeBlock),
+    );
 
     @Input()
     set code(code: RawLoaderContent) {

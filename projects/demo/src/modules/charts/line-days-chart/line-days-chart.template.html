@@ -32,7 +32,7 @@
                 class="axes"
                 [verticalLines]="3"
                 [horizontalLines]="4"
-                [axisXLabels]="labels"
+                [axisXLabels]="labels$ | async"
             >
                 <tui-line-days-chart
                     [value]="value"
@@ -61,7 +61,7 @@
                 documentationPropertyName="hintContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="hintContentVariants"
+                [documentationPropertyValues]="hintContentVariants$ | async"
                 [(documentationPropertyValue)]="hintContent"
             >
                 Content of hint for hover. It has
@@ -111,7 +111,7 @@
                 documentationPropertyName="xStringify"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiStringHandler<TuiDay> | null"
-                [documentationPropertyValues]="xStringifyVariants"
+                [documentationPropertyValues]="xStringifyVariants$ | async"
                 [(documentationPropertyValue)]="xStringify"
             >
                 Function to stringify a value number to a string in axis X hint

@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {AbstractControl, FormControl, ValidatorFn} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     EMPTY_ARRAY,
     TUI_DEFAULT_MATCHER,
@@ -8,12 +10,9 @@ import {
     TuiValidationError,
 } from '@taiga-ui/cdk';
 
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
-
 function createControlValidator(handler: TuiBooleanHandler<string>): ValidatorFn {
     return ({value}: AbstractControl) => {
-        const invalidTags = !!value ? value.filter(handler) : EMPTY_ARRAY;
+        const invalidTags = value ? value.filter(handler) : EMPTY_ARRAY;
 
         return invalidTags.length > 0
             ? {
@@ -25,6 +24,10 @@ function createControlValidator(handler: TuiBooleanHandler<string>): ValidatorFn
 
 const ITEMS = ['The Midnight', 'FM-84', 'Timecop1983', 'GUNSHIP'];
 
+function tagValidator(tag: string) {
+    return !/\d/.test(tag);
+}
+
 @Component({
     selector: 'tui-input-tag-example-4',
     templateUrl: './index.html',
@@ -34,9 +37,9 @@ const ITEMS = ['The Midnight', 'FM-84', 'Timecop1983', 'GUNSHIP'];
 export class TuiInputTagExample4 {
     search = '';
 
-    readonly tagValidator = (tag: string) => !/\d/.test(tag);
+    readonly tagValidator = tagValidator;
 
-    readonly control = new FormControl([], createControlValidator(this.tagValidator));
+    readonly control = new FormControl([], createControlValidator(tagValidator));
 
     get filtered(): readonly string[] {
         return this.filter(this.search, this.control.value);

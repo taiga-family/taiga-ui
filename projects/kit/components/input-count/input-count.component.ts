@@ -60,6 +60,9 @@ export class TuiInputCountComponent
     extends AbstractTuiControl<number>
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     step = this.options.step;
@@ -84,21 +87,6 @@ export class TuiInputCountComponent
     @tuiDefaultProp()
     postfix = this.options.postfix;
 
-    @tuiPure
-    getMask(allowNegative: boolean): TuiTextMaskOptions {
-        return {
-            mask: tuiCreateNumberMask({
-                allowNegative,
-                decimalSymbol: this.numberFormat.decimalSeparator,
-                thousandSymbol: this.numberFormat.thousandSeparator,
-            }),
-            guide: false,
-        };
-    }
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
-
     constructor(
         @Optional()
         @Self()
@@ -113,11 +101,23 @@ export class TuiInputCountComponent
         readonly minusTexts$: Observable<[string, string]>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_INPUT_COUNT_OPTIONS)
-        public readonly options: InputCountOptions,
+        readonly options: InputCountOptions,
         @Inject(TUI_NUMBER_FORMAT)
         private readonly numberFormat: NumberFormatSettings,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    @tuiPure
+    getMask(allowNegative: boolean): TuiTextMaskOptions {
+        return {
+            mask: tuiCreateNumberMask({
+                allowNegative,
+                decimalSymbol: this.numberFormat.decimalSeparator,
+                thousandSymbol: this.numberFormat.thousandSeparator,
+            }),
+            guide: false,
+        };
     }
 
     // TODO: Remove in v.3
@@ -158,19 +158,11 @@ export class TuiInputCountComponent
     }
 
     get minusButtonDisabled(): boolean {
-        return (
-            this.disabled ||
-            this.readOnly ||
-            (isPresent(this.value) && this.value <= this.min)
-        );
+        return !this.interactive || (isPresent(this.value) && this.value <= this.min);
     }
 
     get plusButtonDisabled(): boolean {
-        return (
-            this.disabled ||
-            this.readOnly ||
-            (isPresent(this.value) && this.value >= this.max)
-        );
+        return !this.interactive || (isPresent(this.value) && this.value >= this.max);
     }
 
     onButtonMouseDown(event: MouseEvent, disabled: boolean = false) {

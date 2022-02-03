@@ -16,6 +16,7 @@ export class TuiTableMergeCellsComponent {
         map(() => this.editor.canMergeCells()),
         distinctUntilChanged(),
     );
+
     readonly canSplitCells$ = this.editor.stateChange$.pipe(
         map(() => this.editor.canSplitCells()),
         distinctUntilChanged(),

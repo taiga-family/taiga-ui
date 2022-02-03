@@ -17,7 +17,7 @@
         --tui-autofill: var(--tui-autofill-night);
     }
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) {
         width: @width-mobile;
     }
 }
@@ -50,7 +50,7 @@
         margin-left: @offset-full;
         transform: translate3d(100%, 0, 0);
 
-        @media @mobile-m {
+        :host-context(tui-root._mobile) & {
             margin-left: @offset-small;
         }
     }
@@ -62,7 +62,7 @@
     &_active {
         transform: translate3d(@wrapper-offset-full, 0, 0);
 
-        @media @mobile-m {
+        :host-context(tui-root._mobile) & {
             transform: translate3d(@wrapper-offset-small, 0, 0);
         }
     }
@@ -135,7 +135,7 @@
 
     &:not(.t-input_prefilled)::placeholder {
         color: var(--tui-text-03);
-        visibility: hidden;
+        opacity: 0;
     }
 
     :host[data-mode='onDark'] &::placeholder {
@@ -143,7 +143,7 @@
     }
 
     :host._focused &:not(:read-only)::placeholder {
-        visibility: visible;
+        opacity: 1;
     }
 
     &_card {

@@ -28,20 +28,18 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives/textfield-controller';
-import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TUI_MODE, TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
-import {
-    TuiBrightness,
-    TuiHorizontalDirection,
-    TuiSizeL,
-    TuiSizeS,
-} from '@taiga-ui/core/types';
+import {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {getBorder} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {TUI_PRIMITIVE_TEXTFIELD_PROVIDERS} from './primitive-textfield.providers';
+import {
+    TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
+    TuiPrimitiveTextfieldOptions,
+} from './primitive-textfield-options';
 
 const ICON_PADDING = 1.75;
 const ICON_PADDING_S = 1.5;
@@ -54,12 +52,16 @@ const ICON_PADDING_S = 1.5;
     providers: TUI_PRIMITIVE_TEXTFIELD_PROVIDERS,
     host: {
         '($.data-mode.attr)': 'mode$',
+        '[class._autofilled]': 'autofilled',
     },
 })
 export class TuiPrimitiveTextfieldComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<HTMLInputElement>;
+
     @Input()
     @tuiDefaultProp()
     editable = true;
@@ -70,12 +72,16 @@ export class TuiPrimitiveTextfieldComponent
 
     @Input()
     @tuiDefaultProp()
-    iconAlign: TuiHorizontalDirection = 'right';
+    iconAlign: TuiPrimitiveTextfieldOptions['iconAlign'] = this.options.iconAlign;
 
     // TODO: Remove null in 3.0
     @Input()
     @tuiDefaultProp()
     iconContent: PolymorpheusContent | null = null;
+
+    @Input()
+    @tuiDefaultProp()
+    iconCleaner: TuiPrimitiveTextfieldOptions['iconCleaner'] = this.options.iconCleaner;
 
     @Input()
     @HostBinding('class._readonly')
@@ -108,13 +114,10 @@ export class TuiPrimitiveTextfieldComponent
     @Output()
     readonly autofilledChange = new EventEmitter<boolean>();
 
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<HTMLInputElement>;
-
     @ContentChildren(PolymorpheusOutletComponent)
     readonly content?: QueryList<unknown>;
 
-    private autofilled = false;
+    autofilled = false;
 
     constructor(
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
@@ -123,6 +126,8 @@ export class TuiPrimitiveTextfieldComponent
         readonly controller: TuiTextfieldController,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
+        @Inject(TUI_PRIMITIVE_TEXTFIELD_OPTIONS)
+        readonly options: TuiPrimitiveTextfieldOptions,
     ) {
         super();
     }
@@ -154,10 +159,6 @@ export class TuiPrimitiveTextfieldComponent
 
     get inputHidden(): boolean {
         return !!this.content?.length;
-    }
-
-    get isContextTable(): boolean {
-        return this.appearance === TuiAppearance.Table;
     }
 
     get hasValue(): boolean {

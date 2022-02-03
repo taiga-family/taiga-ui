@@ -1,4 +1,5 @@
 import {Component, TemplateRef, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiValidationError} from '@taiga-ui/cdk';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
@@ -6,7 +7,6 @@ import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
@@ -15,6 +15,9 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiErrorComponent {
+    @ViewChild('errorContent')
+    errorContent?: TemplateRef<{}>;
+
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
 
@@ -22,9 +25,6 @@ export class ExampleTuiErrorComponent {
         TypeScript: example1Ts,
         HTML: example1Html,
     };
-
-    @ViewChild('errorContent')
-    errorContent?: TemplateRef<{}>;
 
     readonly errorVariants: readonly string[] = [
         'Error as string',

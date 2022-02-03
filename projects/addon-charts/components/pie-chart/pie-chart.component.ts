@@ -11,7 +11,6 @@ import {
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
 import {TUI_DEFAULT_COLOR_HANDLER} from '@taiga-ui/addon-charts/constants';
 import {TuiColorHandler} from '@taiga-ui/addon-charts/types';
-import {describeSector} from '@taiga-ui/addon-charts/utils';
 import {
     sum,
     TuiContextWithImplicit,
@@ -45,6 +44,8 @@ const TRANSFORM = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPieChartComponent {
+    private readonly autoIdString: string;
+
     @Input()
     @tuiDefaultProp()
     value: readonly number[] = [];
@@ -73,14 +74,17 @@ export class TuiPieChartComponent {
     @Output()
     activeItemIndexChange = new EventEmitter<number>();
 
-    private readonly autoIdString: string;
-
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
         @Inject(Location) private readonly locationRef: Location,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
     ) {
         this.autoIdString = idService.generate();
+    }
+
+    @HostBinding('class._empty')
+    get empty(): boolean {
+        return !this.getSum(this.value);
     }
 
     get maskId(): string {
@@ -99,7 +103,7 @@ export class TuiPieChartComponent {
         return RADII[this.size];
     }
 
-    get segments(): readonly string[] {
+    get segments(): readonly [number, number][] {
         return this.getSegments(this.value);
     }
 
@@ -119,26 +123,34 @@ export class TuiPieChartComponent {
         this.updateActiveItemIndex(hovered ? index : NaN);
     }
 
-    @tuiPure
-    getContentContext($implicit: number): TuiContextWithImplicit<number> {
-        return {$implicit};
+    getColor(index: number): SafeValue {
+        return this.sanitizer.bypassSecurityTrustStyle(
+            `var(--tui-chart-${index}, ${colorFallback(this.colorHandler(index))})`,
+        );
     }
 
     @tuiPure
-    private getSegments(value: readonly number[]): readonly string[] {
-        const total = sum(...value);
+    private getSum(value: readonly number[]): number {
+        return sum(...value);
+    }
 
+    @tuiPure
+    private getSegments(value: readonly number[]): readonly [number, number][] {
         return value
-            .map((currentItem, currentIndex, array) =>
+            .map((initial, i, array) =>
                 array.reduce(
-                    (sum, item, index) =>
-                        index < currentIndex ? (item / total) * 360 + sum : sum,
-                    (currentItem / total) * 360,
+                    (sum, current, j) => (j < i ? this.getDeg(current) + sum : sum),
+                    this.getDeg(initial),
                 ),
             )
-            .map((angle, index, array) =>
-                describeSector(array[index - 1] || 0, Math.min(angle, 359.9999)),
-            );
+            .map((angle, index, array) => [
+                array[index - 1] || 0,
+                Math.min(angle, 359.9999),
+            ]);
+    }
+
+    private getDeg(value: number): number {
+        return 360 * (value / this.getSum(this.value));
     }
 
     private updateActiveItemIndex(index: number) {
@@ -148,11 +160,5 @@ export class TuiPieChartComponent {
 
         this.activeItemIndex = index;
         this.activeItemIndexChange.next(index);
-    }
-
-    getColor(index: number): SafeValue {
-        return this.sanitizer.bypassSecurityTrustStyle(
-            `var(--tui-chart-${index}, ${colorFallback(this.colorHandler(index))})`,
-        );
     }
 }

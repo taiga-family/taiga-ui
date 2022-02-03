@@ -102,6 +102,34 @@ describe('TuiDayRange', () => {
                 expect(result.to.month).toBe(5);
                 expect(result.to.year).toBe(9321);
             });
+
+            it('correctly works with dateMode="YMD" + separator = "-"', () => {
+                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                    `2021-12-14${RANGE_SEPARATOR_CHAR}2022-06-19`,
+                    'YMD',
+                );
+
+                expect(result.from.day).toBe(14);
+                expect(result.from.month).toBe(11);
+                expect(result.from.year).toBe(2021);
+                expect(result.to.day).toBe(19);
+                expect(result.to.month).toBe(5);
+                expect(result.to.year).toBe(2022);
+            });
+
+            it('correctly works with dateMode="MDY" + separator = "/"', () => {
+                const result: TuiDayRange = TuiDayRange.normalizeParse(
+                    `12/14/2021${RANGE_SEPARATOR_CHAR}06/19/2022`,
+                    'MDY',
+                );
+
+                expect(result.from.day).toBe(14);
+                expect(result.from.month).toBe(11);
+                expect(result.from.year).toBe(2021);
+                expect(result.to.day).toBe(19);
+                expect(result.to.month).toBe(5);
+                expect(result.to.year).toBe(2022);
+            });
         });
     });
 
@@ -121,13 +149,6 @@ describe('TuiDayRange', () => {
                             .isSingleDay,
                     ).toBe(false);
                 });
-            });
-
-            it('formattedDayRange returns formatted string', () => {
-                expect(
-                    new TuiDayRange(new TuiDay(2000, 0, 1), new TuiDay(3000, 0, 1))
-                        .formattedDayRange,
-                ).toBe(`01.01.2000${RANGE_SEPARATOR_CHAR}01.01.3000`);
             });
         });
 
@@ -185,6 +206,35 @@ describe('TuiDayRange', () => {
             const limitedRange = range.dayLimit(null, y2999m0d1);
 
             expect(limitedRange.to).toBe(y2999m0d1);
+        });
+    });
+
+    describe('getFormattedDayRange returns', () => {
+        it('formatted string (DMY)', () => {
+            expect(
+                new TuiDayRange(
+                    new TuiDay(2000, 11, 20),
+                    new TuiDay(3000, 9, 18),
+                ).getFormattedDayRange('DMY', '.'),
+            ).toBe(`20.12.2000${RANGE_SEPARATOR_CHAR}18.10.3000`);
+        });
+
+        it('formatted string (MDY)', () => {
+            expect(
+                new TuiDayRange(
+                    new TuiDay(2000, 11, 20),
+                    new TuiDay(3000, 9, 18),
+                ).getFormattedDayRange('MDY', '/'),
+            ).toBe(`12/20/2000${RANGE_SEPARATOR_CHAR}10/18/3000`);
+        });
+
+        it('formatted string (YMD)', () => {
+            expect(
+                new TuiDayRange(
+                    new TuiDay(2000, 11, 20),
+                    new TuiDay(3000, 9, 18),
+                ).getFormattedDayRange('YMD', '-'),
+            ).toBe(`2000-12-20${RANGE_SEPARATOR_CHAR}3000-10-18`);
         });
     });
 });

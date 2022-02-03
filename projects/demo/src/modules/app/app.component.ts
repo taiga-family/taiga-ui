@@ -1,16 +1,16 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map} from 'rxjs/operators';
-
-import {changeDetection} from '../../change-detection-strategy';
 
 // @dynamic
 @Component({
     selector: 'app',
     templateUrl: 'app.template.html',
     styleUrls: ['app.style.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
 export class AppComponent {
@@ -39,7 +39,7 @@ export class AppComponent {
 
         return (
             (!today.getMonth() && today.getDate() < 14) ||
-            (today.getMonth() === 11 && today.getDate() > 25)
+            (today.getMonth() === 11 && today.getDate() > 24)
         );
     }
 }

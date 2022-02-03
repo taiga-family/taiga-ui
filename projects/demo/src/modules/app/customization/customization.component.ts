@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {USER_AGENT} from '@ng-web-apis/common';
 import {TuiDocDemoComponent} from '@taiga-ui/addon-doc';
 import {isIE, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
@@ -7,7 +8,6 @@ import {TuiBrightness} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {
     TUI_DOC_CUSTOMIZATION_PROVIDERS,
     TUI_DOC_CUSTOMIZATION_VARS,
@@ -22,12 +22,12 @@ import {
     providers: TUI_DOC_CUSTOMIZATION_PROVIDERS,
 })
 export class TuiCustomizationComponent implements AfterViewInit {
+    @ViewChild('demo')
+    private readonly demo?: TuiDocDemoComponent;
+
     readonly isIE = isIE(this.userAgent);
 
     readonly change$ = new Subject<void>();
-
-    @ViewChild('demo')
-    private readonly demo?: TuiDocDemoComponent;
 
     constructor(
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,

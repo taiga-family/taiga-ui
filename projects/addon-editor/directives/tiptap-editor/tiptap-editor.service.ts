@@ -1,36 +1,14 @@
+import './tiptap-editor.types';
+
 import {Inject, Injectable} from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
-// @ts-ignore
-import type {BackgroundColor, FontColor} from '@taiga-ui/addon-editor/extensions';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {getMarkRange} from '@taiga-ui/addon-editor/utils';
 import type {Editor} from '@tiptap/core';
-// @ts-ignore
-import type Image from '@tiptap/extension-image';
-// @ts-ignore
-import type Link from '@tiptap/extension-link';
-// @ts-ignore
-import type Subscript from '@tiptap/extension-subscript';
-// @ts-ignore
-import type Superscript from '@tiptap/extension-superscript';
-// @ts-ignore
-import type Table from '@tiptap/extension-table';
-// @ts-ignore
-import type TableCell from '@tiptap/extension-table-cell';
-// @ts-ignore
-import type TableHeader from '@tiptap/extension-table-header';
-// @ts-ignore
-import type TableRow from '@tiptap/extension-table-row';
-// @ts-ignore
-import type TextAlign from '@tiptap/extension-text-align';
-// @ts-ignore
-import type TextStyle from '@tiptap/extension-text-style';
-// @ts-ignore
-import type Underline from '@tiptap/extension-underline';
-// @ts-ignore
-import type StarterKit from '@tiptap/starter-kit';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+
+import {isEmptyParagraph} from './utils/is-empty-paragraph';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -68,8 +46,9 @@ export class TuiTiptapEditorService extends TuiEditor {
             editor.on('update', () => {
                 const content = editor.getHTML();
                 const json = editor.getJSON().content;
+                const value: string = isEmptyParagraph(json) ? '' : content;
 
-                this.valueChange$.next(this.isEmptyParagraph(json) ? '' : content);
+                this.valueChange$.next(value);
             });
         });
     }
@@ -108,7 +87,14 @@ export class TuiTiptapEditorService extends TuiEditor {
     }
 
     setImage(src: string) {
-        this.editor.chain().focus().setImage({src}).run();
+        this.editor
+            .chain()
+            .focus()
+            .first(({commands}) => [
+                () => commands.setEditableImage?.({src}) || false,
+                () => commands.setImage({src}),
+            ])
+            .run();
     }
 
     undo() {
@@ -292,11 +278,5 @@ export class TuiTiptapEditorService extends TuiEditor {
         if (range) {
             this.editor.chain().setTextSelection(range).run();
         }
-    }
-
-    private isEmptyParagraph(json: Object[]): boolean {
-        return (
-            Array.isArray(json) && json.length === 1 && !json[0].hasOwnProperty('content')
-        );
     }
 }

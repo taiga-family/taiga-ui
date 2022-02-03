@@ -33,7 +33,6 @@ import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 import 'prismjs';
 import 'prismjs/components/prism-typescript.min.js';
-import 'intersection-observer';
 
 /**
  * Required to support Web Animations `@angular/platform-browser/animations`.

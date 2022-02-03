@@ -4,8 +4,7 @@
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) •
-[CDK Wiki](https://github.com/TinkoffCreditSystems/taiga-ui/wiki) •
-[Core team](https://github.com/TinkoffCreditSystems/taiga-ui/#core-team)
+[CDK Wiki](https://github.com/tinkoff/taiga-ui/wiki) • [Core team](https://github.com/tinkoff/taiga-ui/#core-team)
 
 <!-- Do not change next line without i18n demo page -->
 
@@ -30,8 +29,8 @@ Supported languages:
 
 <!-- Do not change next line without i18n demo page -->
 
-It's a part of [**Taiga UI**](https://github.com/TinkoffCreditSystems/taiga-ui) that is fully-treeshakable Angular UI
-Kit consisting of multiple base libraries and several add-ons
+It's a part of [**Taiga UI**](https://github.com/tinkoff/taiga-ui) that is fully-treeshakable Angular UI Kit consisting
+of multiple base libraries and several add-ons
 
 ## How to install
 
@@ -49,31 +48,19 @@ import {TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
 
 // app.module
 @NgModule({
-    // ...
-    providers: [
-        {
-            provide: TUI_LANGUAGE,
-            useValue: of(TUI_RUSSIAN_LANGUAGE),
-        },
-    ],
+  // ...
+  providers: [
+    {
+      provide: TUI_LANGUAGE,
+      useValue: of(TUI_RUSSIAN_LANGUAGE),
+    },
+  ],
 })
 export class AppModule {}
 ```
 
 You can also switch languages on the fly. Use `useFactory` or `useClass` with a service to make a stream of
 dictionaries.
-
-If you extremely struggle against every byte of your app, you can build a custom language dictionary with constants:
-
-```ts
-// If we plan to use CORE and KIT packages only
-export const CUSTOM_RUSSIAN_LANGUAGE: Language = {
-    ...TUI_RUSSIAN_LANGUAGE_CORE,
-    ...TUI_RUSSIAN_LANGUAGE_KIT,
-    // ...TUI_RUSSIAN_LANGUAGE_ADDON_COMMERCE,
-    // ...TUI_RUSSIAN_LANGUAGE_ADDON_TABLE,
-};
-```
 
 ## How to add a language
 
@@ -85,5 +72,3 @@ Feel free to add new languages!
    please write to us via issues or any other way of contact :)
 
 Thank you!
-
-> You do not need to translate "Editor". It is an experimental package

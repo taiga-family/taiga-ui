@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwipe} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-swipe-example-2',
@@ -20,7 +19,7 @@ export class TuiSwipeExample2 {
     }
 
     onSwipe(swipe: TuiSwipe) {
-        console.log(swipe.direction);
+        console.info(swipe.direction);
 
         if (swipe.direction === 'left') {
             this.toggle(true);

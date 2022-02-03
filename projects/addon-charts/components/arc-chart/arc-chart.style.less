@@ -1,0 +1,72 @@
+@import 'taiga-ui-local';
+
+:host {
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+}
+
+.t-svg {
+    .fullsize(absolute, inset);
+    overflow: visible;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    color: var(--tui-secondary);
+    font-size: 1rem;
+}
+
+.t-value {
+    .transition(stroke-dashoffset);
+}
+
+.t-content {
+    .fullsize();
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--tui-text-02);
+    font: var(--tui-font-text-xs);
+
+    :host[data-size='xl'] & {
+        font: var(--tui-font-text-m);
+    }
+}
+
+.t-wrapper {
+    flex: 1;
+
+    &:first-line {
+        color: var(--tui-text-01);
+
+        :host[data-size='m'] & {
+            font: var(--tui-font-text-s);
+            font-weight: bold;
+        }
+
+        :host[data-size='l'] & {
+            font: var(--tui-font-text-m);
+            font-weight: bold;
+        }
+
+        :host[data-size='xl'] & {
+            font: var(--tui-font-heading-5);
+        }
+    }
+}
+
+.t-percent {
+    position: absolute;
+    left: 25%;
+    bottom: 11%;
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    font: var(--tui-font-text-xs);
+    color: var(--tui-text-02);
+
+    :host[data-size='xl'] & {
+        font: var(--tui-font-text-m);
+    }
+}

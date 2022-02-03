@@ -1,11 +1,10 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetService} from '@taiga-ui/addon-mobile';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {first, retry, switchMap, takeUntil} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-sheet-example-1',

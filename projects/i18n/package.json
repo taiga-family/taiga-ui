@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/i18n",
-    "version": "2.24.0",
+    "version": "2.32.0",
     "description": "A package with tools for Taiga UI library i18n",
     "keywords": [
         "angular",
@@ -12,8 +12,8 @@
         "directive"
     ],
     "license": "Apache-2.0",
-    "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
-    "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "homepage": "https://github.com/tinkoff/taiga-ui",
     "peerDependencies": {
         "@angular/core": ">=9.0.0",
         "rxjs": ">=6.0.0"

@@ -34,60 +34,6 @@ export class TuiTime implements TuiTimeLike {
     }
 
     /**
-     * Shifts time by hours and minutes
-     */
-    shift({hours = 0, minutes = 0, seconds = 0, ms = 0}: TuiTimeLike): TuiTime {
-        const newMs = (1000 + this.ms + (ms % 1000)) % 1000;
-
-        const secondsInMs = ms < 0 ? Math.ceil(ms / 1000) : Math.floor(ms / 1000);
-        const secondsToAdd = secondsInMs + seconds;
-        const newSeconds = (60 + this.seconds + (secondsToAdd % 60)) % 60;
-
-        const minutesInSeconds =
-            secondsToAdd < 0
-                ? Math.ceil(secondsToAdd / 60)
-                : Math.floor(secondsToAdd / 60);
-        const minutesToAdd = minutesInSeconds + minutes;
-        const newMinutes = (60 + this.minutes + (minutesToAdd % 60)) % 60;
-
-        const hoursInMinutes =
-            minutesToAdd < 0
-                ? Math.ceil(minutesToAdd / 60)
-                : Math.floor(minutesToAdd / 60);
-        const hoursToAdd = hoursInMinutes + hours;
-        const newHours = (24 + this.hours + (hoursToAdd % 24)) % 24;
-
-        return new TuiTime(newHours, newMinutes, newSeconds, newMs);
-    }
-
-    /**
-     * Converts TuiTime to string
-     */
-    toString(mode?: TuiTimeMode): string {
-        const needAddMs = mode === 'HH:MM:SS.MSS' || (!mode && this.ms > 0);
-        const needAddSeconds =
-            needAddMs || mode === 'HH:MM:SS' || (!mode && this.seconds > 0);
-
-        return (
-            `${this.formatTime(this.hours)}:${this.formatTime(this.minutes)}` +
-            `${needAddSeconds ? ':' + this.formatTime(this.seconds) : ''}` +
-            `${needAddMs ? '.' + this.formatTime(this.ms, 3) : ''}`
-        );
-    }
-
-    /**
-     * Converts TuiTime to milliseconds
-     */
-    toAbsoluteMilliseconds(): number {
-        return (
-            this.hours * MILLISECONDS_IN_HOUR +
-            this.minutes * MILLISECONDS_IN_MINUTE +
-            this.seconds * 1000 +
-            this.ms
-        );
-    }
-
-    /**
      * Checks if time is valid
      */
     static isValidTime(
@@ -175,6 +121,60 @@ export class TuiTime implements TuiTimeLike {
             date.getMinutes(),
             date.getSeconds(),
             date.getMilliseconds(),
+        );
+    }
+
+    /**
+     * Shifts time by hours and minutes
+     */
+    shift({hours = 0, minutes = 0, seconds = 0, ms = 0}: TuiTimeLike): TuiTime {
+        const newMs = (1000 + this.ms + (ms % 1000)) % 1000;
+
+        const secondsInMs = ms < 0 ? Math.ceil(ms / 1000) : Math.floor(ms / 1000);
+        const secondsToAdd = secondsInMs + seconds;
+        const newSeconds = (60 + this.seconds + (secondsToAdd % 60)) % 60;
+
+        const minutesInSeconds =
+            secondsToAdd < 0
+                ? Math.ceil(secondsToAdd / 60)
+                : Math.floor(secondsToAdd / 60);
+        const minutesToAdd = minutesInSeconds + minutes;
+        const newMinutes = (60 + this.minutes + (minutesToAdd % 60)) % 60;
+
+        const hoursInMinutes =
+            minutesToAdd < 0
+                ? Math.ceil(minutesToAdd / 60)
+                : Math.floor(minutesToAdd / 60);
+        const hoursToAdd = hoursInMinutes + hours;
+        const newHours = (24 + this.hours + (hoursToAdd % 24)) % 24;
+
+        return new TuiTime(newHours, newMinutes, newSeconds, newMs);
+    }
+
+    /**
+     * Converts TuiTime to string
+     */
+    toString(mode?: TuiTimeMode): string {
+        const needAddMs = mode === 'HH:MM:SS.MSS' || (!mode && this.ms > 0);
+        const needAddSeconds =
+            needAddMs || mode === 'HH:MM:SS' || (!mode && this.seconds > 0);
+
+        return (
+            `${this.formatTime(this.hours)}:${this.formatTime(this.minutes)}` +
+            `${needAddSeconds ? ':' + this.formatTime(this.seconds) : ''}` +
+            `${needAddMs ? '.' + this.formatTime(this.ms, 3) : ''}`
+        );
+    }
+
+    /**
+     * Converts TuiTime to milliseconds
+     */
+    toAbsoluteMilliseconds(): number {
+        return (
+            this.hours * MILLISECONDS_IN_HOUR +
+            this.minutes * MILLISECONDS_IN_MINUTE +
+            this.seconds * 1000 +
+            this.ms
         );
     }
 

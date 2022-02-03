@@ -70,6 +70,7 @@ describe('ComboBox', () => {
     class TestComponent {
         @ViewChild(TuiComboBoxComponent, {static: true})
         component!: TuiComboBoxComponent<string | Beast>;
+
         items = ITEMS;
         control = new FormControl();
         defaultInputs = false;
@@ -195,6 +196,14 @@ describe('ComboBox', () => {
                 fixture.detectChanges();
 
                 expect(getCheckmark()).not.toBeNull();
+            });
+        });
+
+        describe('dropdown', () => {
+            it('empty value opens dropdown', () => {
+                testComponent.component.onInput('');
+                fixture.detectChanges();
+                expect(testComponent.component.open).toEqual(true);
             });
         });
     });

@@ -24,7 +24,7 @@ export const STACKBLITZ_DEPS: Record<string, string> = {
     '@taiga-ui/addon-editor': '*',
     '@tinkoff/ng-dompurify': '*',
     '@tinkoff/ng-polymorpheus': '3.x.x',
-    '@ng-web-apis/common': '*',
+    '@ng-web-apis/common': '1.x.x',
     '@tinkoff/ng-event-plugins': '*',
     '@ng-web-apis/intersection-observer': '*',
     '@ng-web-apis/mutation-observer': '*',

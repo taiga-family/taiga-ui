@@ -18,6 +18,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiTooltipExample1} from './examples/1';
 import {TuiTooltipExample2} from './examples/2';
 import {TuiTooltipExample3} from './examples/3';
+import {TuiTooltipExample4} from './examples/4';
 import {ExampleTuiTooltipComponent} from './tooltip.component';
 
 @NgModule({
@@ -42,6 +43,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         TuiTooltipExample1,
         TuiTooltipExample2,
         TuiTooltipExample3,
+        TuiTooltipExample4,
     ],
     exports: [ExampleTuiTooltipComponent],
 })

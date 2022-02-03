@@ -1,6 +1,6 @@
 <div class="zone" (tuiActiveZoneChange)="onActiveZone($event)">
     <tui-wrapper
-        appearance="textfield"
+        [appearance]="appearance"
         [readOnly]="readOnly"
         [disabled]="disabled"
         [focused]="computedFocused"

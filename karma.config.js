@@ -18,7 +18,10 @@ module.exports = function (config, path = '') {
          * @note: override logger behavior
          */
         browserConsoleLogOptions: {
-            level: 'error',
+            /**
+             * @note: support debugging by console.log in *.spec.ts
+             */
+            level: 'debug',
             format: '%b %T: %m',
             terminal: true,
         },
@@ -27,7 +30,7 @@ module.exports = function (config, path = '') {
             reports: ['html', 'lcovonly'],
             fixWebpackSourcePaths: true,
         },
-        reporters: ['progress', 'kjhtml'],
+        reporters: ['kjhtml'],
         port: 9876,
         colors: true,
         autoWatch: true,

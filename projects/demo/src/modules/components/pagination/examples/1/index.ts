@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
     selector: 'tui-pagination-example-1',
@@ -17,6 +16,6 @@ export class TuiPaginationExample1 {
 
     goToPage(index: number) {
         this.index = index;
-        console.log('New page:', index);
+        console.info('New page:', index);
     }
 }

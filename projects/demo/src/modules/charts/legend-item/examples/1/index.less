@@ -1,3 +1,5 @@
+@import 'taiga-ui-local';
+
 :host {
     --tui-chart-0: #c779d0;
     --tui-chart-1: #feac5e;
@@ -9,10 +11,18 @@
 .wrapper {
     display: flex;
     align-items: center;
+
+    @media @mobile {
+        flex-direction: column;
+    }
 }
 
 .legend {
-    margin-left: 2.8125rem;
+    margin: 0 0 0 2rem;
+
+    @media @mobile {
+        margin: 2rem 0 0;
+    }
 }
 
 .item {

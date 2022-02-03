@@ -1,8 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 
 import {default as readme} from '!!raw-loader!../../../../../i18n/README.md';
-
-import {changeDetection} from '../../../change-detection-strategy';
 
 @Component({
     selector: 'i18n',
@@ -12,7 +11,5 @@ import {changeDetection} from '../../../change-detection-strategy';
     changeDetection,
 })
 export class I18nComponent {
-    readonly supported = readme
-        .split('> A package with tools for Taiga UI library i18n')[1]
-        .split(`It's a part of [**Taiga UI**]`)[0];
+    readonly readme = readme.split('Supported languages:')[1];
 }

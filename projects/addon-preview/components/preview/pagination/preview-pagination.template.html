@@ -1,0 +1,21 @@
+<ng-container *ngIf="texts$ | async as texts">
+    <button
+        tuiIconButton
+        tuiPreviewAction
+        icon="tuiIconArrowLeft"
+        class="t-arrow_left"
+        [title]="texts.previous"
+        [disabled]="leftButtonDisabled"
+        (click)="onArrowClick(-1)"
+    ></button>
+    {{index + 1}}/{{length}}
+    <button
+        tuiIconButton
+        tuiPreviewAction
+        icon="tuiIconArrowRight"
+        class="t-arrow_right"
+        [title]="texts.next"
+        [disabled]="rightButtonDisabled"
+        (click)="onArrowClick(1)"
+    ></button>
+</ng-container>

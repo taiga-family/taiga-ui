@@ -1,4 +1,6 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAutofillFieldName, TuiInputModeT, TuiInputTypeT} from '@taiga-ui/cdk';
 import {
     TuiDirection,
@@ -9,14 +11,6 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {default as example1Ts} from '!!raw-loader!./examples/1/component.ts';
-import {default as example1Less} from '!!raw-loader!./examples/1/style.less';
-import {default as example1Html} from '!!raw-loader!./examples/1/template.html';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {changeDetection} from '../../../change-detection-strategy';
-import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
@@ -42,14 +36,27 @@ viewBox="0 0 24 24">
     ],
 })
 export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInteractive {
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1Less,
+    @ViewChild('interactiveContent')
+    private readonly interactiveIcon: PolymorpheusContent = '';
+
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/component.ts'),
+        HTML: import('!!raw-loader!./examples/1/template.html'),
+        LESS: import('!!raw-loader!./examples/1/style.less'),
     };
 
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly example2: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
+    };
+
+    readonly exampleImportModule = import(
+        '!!raw-loader!./examples/import/import-module.txt'
+    );
+
+    readonly exampleInsertTemplate = import(
+        '!!raw-loader!./examples/import/insert-template.txt'
+    );
 
     readonly themes = ['Taiga UI', 'Bootstrap', 'Material'];
     theme = this.themes[0];
@@ -115,6 +122,8 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     password = '';
 
+    example2Value = 'mail@example.com';
+
     value = '';
 
     exampleText = '';
@@ -150,9 +159,6 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     hintMode: TuiHintModeT | null = null;
 
-    @ViewChild('interactiveContent')
-    private readonly interactiveIcon: PolymorpheusContent = '';
-
     get customContent(): string | null {
         return this.customContentSelected !== null ? CUSTOM_SVG : null;
     }
@@ -184,6 +190,6 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     }
 
     onClick() {
-        console.log('Interactive icon clicked');
+        console.info('Interactive icon clicked');
     }
 }

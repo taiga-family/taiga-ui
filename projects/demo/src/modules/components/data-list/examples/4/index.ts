@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiContextWithImplicit,
     TuiIdentityMatcher,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 const INCOME = {
     name: 'Income',

@@ -41,7 +41,7 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
+import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -74,6 +74,15 @@ export class TuiComboBoxComponent<T>
     extends AbstractTuiNullableControl<T | string>
     implements TuiFocusableElementAccessor, TuiDataListHost<T>
 {
+    @ContentChild(TUI_DATA_LIST_ACCESSOR as any)
+    private readonly accessor?: TuiDataListAccessor<T>;
+
+    @ViewChild(TuiHostedDropdownComponent)
+    private readonly hostedDropdown?: TuiHostedDropdownComponent;
+
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     stringify: TuiStringHandler<T> = TUI_DEFAULT_STRINGIFY;
@@ -101,19 +110,10 @@ export class TuiComboBoxComponent<T>
     @Output()
     readonly searchChange = new EventEmitter<string | null>();
 
-    open = false;
-
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent = '';
 
-    @ContentChild(TUI_DATA_LIST_ACCESSOR as any)
-    private readonly accessor?: TuiDataListAccessor<T>;
-
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly hostedDropdown?: TuiHostedDropdownComponent;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+    open = false;
 
     constructor(
         @Optional()
@@ -121,12 +121,14 @@ export class TuiComboBoxComponent<T>
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TUI_ARROW_MODE)
+        private readonly arrowMode: TuiArrowMode,
     ) {
         super(control, changeDetectorRef);
     }
 
     get arrow(): PolymorpheusContent {
-        return this.disabled || this.readOnly ? '' : TUI_ARROW;
+        return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -152,12 +154,19 @@ export class TuiComboBoxComponent<T>
         return isPresent(this.value) && !this.focused;
     }
 
-    get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly;
-    }
-
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
         return this.valueContent || this.nativeValue;
+    }
+
+    @tuiPure
+    computeContext(
+        $implicit: T | null,
+        active: boolean,
+    ): TuiValueContentContext<T | null> {
+        return {
+            $implicit,
+            active,
+        };
     }
 
     onActiveZone(active: boolean) {
@@ -212,31 +221,15 @@ export class TuiComboBoxComponent<T>
         }
 
         this.updateValue(this.strict || this.search === '' ? null : this.search);
-
-        if (this.search && this.hostedDropdown) {
-            this.hostedDropdown.updateOpen(true);
-        }
+        this.hostedDropdown?.updateOpen(true);
     }
 
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
     }
 
-    @tuiPure
-    computeContext(
-        $implicit: T | null,
-        active: boolean,
-    ): TuiValueContentContext<T | null> {
-        return {
-            $implicit,
-            active,
-        };
-    }
-
     toggle() {
-        if (this.hostedDropdown) {
-            this.hostedDropdown.updateOpen(!this.open);
-        }
+        this.hostedDropdown?.updateOpen(!this.open);
     }
 
     private isStrictMatch(item: T): boolean {
@@ -244,9 +237,7 @@ export class TuiComboBoxComponent<T>
     }
 
     private close() {
-        if (this.hostedDropdown) {
-            this.hostedDropdown.updateOpen(false);
-        }
+        this.hostedDropdown?.updateOpen(false);
     }
 
     private updateSearch(search: string | null) {

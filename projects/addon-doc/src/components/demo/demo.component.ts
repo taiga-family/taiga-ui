@@ -41,27 +41,6 @@ const MIN_COMPONENT_WIDTH = 104;
     ],
 })
 export class TuiDocDemoComponent implements OnInit, AfterViewInit {
-    @Input()
-    control: AbstractControl | null = null;
-
-    testForm?: FormGroup;
-    updateOnVariants = ['change', 'blur', 'submit'];
-    updateOn: 'change' | 'blur' | 'submit' = 'change';
-    expanded = false;
-    opaque = true;
-    modeControl = new FormControl();
-
-    mode: TuiBrightness | null = null;
-    readonly change$ = new Subject<void>();
-
-    @ContentChild(TemplateRef)
-    readonly template?: TemplateRef<{}>;
-
-    readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
-
-    private initialX = 0;
-    private wrapperWidth = 0;
-
     @ViewChild('content')
     private readonly content?: ElementRef<HTMLElement>;
 
@@ -72,6 +51,24 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     private readonly resizerText?: ElementRef<HTMLElement>;
 
     private readonly isBrowser: boolean;
+    private initialX = 0;
+    private wrapperWidth = 0;
+
+    @Input()
+    control: AbstractControl | null = null;
+
+    @ContentChild(TemplateRef)
+    readonly template?: TemplateRef<{}>;
+
+    testForm?: FormGroup;
+    updateOnVariants = ['change', 'blur', 'submit'];
+    updateOn: 'change' | 'blur' | 'submit' = 'change';
+    expanded = false;
+    opaque = true;
+    modeControl = new FormControl();
+    mode: TuiBrightness | null = null;
+    readonly change$ = new Subject<void>();
+    readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
 
     constructor(
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
@@ -84,7 +81,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     ) {
         this.isBrowser = isPlatformBrowser(platformId);
 
-        const parsedMode = locationRef.path().match(/tui-mode=(onDark|onLight)/);
+        const parsedMode = locationRef.path().match(/tuiMode=(onDark|onLight)/);
 
         if (parsedMode !== null && parsedMode.length > 0) {
             this.modeControl.setValue(parsedMode[1]);
@@ -105,6 +102,11 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
                 this.mode = mode;
                 this.change$.next();
             });
+    }
+
+    @HostListener('window:resize')
+    onResize() {
+        this.setResizerTextContent();
     }
 
     ngOnInit() {
@@ -128,11 +130,6 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
         this.resizerText.nativeElement.textContent = String(
             offsetWidth - parseInt(paddingLeft || '0', 10) * 2,
         );
-    }
-
-    @HostListener('window:resize')
-    onResize() {
-        this.setResizerTextContent();
     }
 
     onDragStart(event: MouseEvent) {

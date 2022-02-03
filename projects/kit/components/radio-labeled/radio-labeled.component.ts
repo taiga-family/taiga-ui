@@ -39,6 +39,9 @@ export class TuiRadioLabeledComponent<T>
     extends AbstractTuiNullableControl<T>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild(TuiRadioComponent)
+    private readonly radio?: TuiRadioComponent<T>;
+
     @Input()
     item?: T;
 
@@ -54,9 +57,6 @@ export class TuiRadioLabeledComponent<T>
     @Input()
     @tuiDefaultProp()
     pseudoDisabled = false;
-
-    @ViewChild(TuiRadioComponent)
-    private readonly radio?: TuiRadioComponent<T>;
 
     constructor(
         @Optional()

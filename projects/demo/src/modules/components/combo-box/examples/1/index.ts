@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {Observable, of, Subject} from 'rxjs';
 import {delay, filter, startWith, switchMap} from 'rxjs/operators';
 
 import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 class User {
     constructor(
@@ -43,7 +42,7 @@ export class TuiComboBoxExample1 {
         startWith(databaseMockData),
     );
 
-    readonly testValue = new FormControl(null);
+    readonly testValue = new FormControl(databaseMockData[1]);
 
     onSearchChange(searchQuery: string) {
         this.search$.next(searchQuery);

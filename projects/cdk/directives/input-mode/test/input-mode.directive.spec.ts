@@ -16,8 +16,10 @@ describe('TuiInputMode directive', () => {
     class TestComponent {
         @ViewChild('inputDefault')
         inputDefault!: ElementRef<HTMLInputElement>;
+
         @ViewChild('inputCustom')
         inputCustom!: ElementRef<HTMLInputElement>;
+
         @ViewChild('inputWithPattern')
         inputWithPattern!: ElementRef<HTMLInputElement>;
 

@@ -12,6 +12,10 @@ import {
     selector: '[tuiToolbarNavigationManager]',
 })
 export class TuiToolbarNavigationManagerDirective {
+    constructor(
+        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+    ) {}
+
     private get toolsContainers(): ReadonlyArray<HTMLElement> {
         return Array.from(
             this.elementRef.nativeElement.querySelectorAll<HTMLElement>(
@@ -40,10 +44,6 @@ export class TuiToolbarNavigationManagerDirective {
             setNativeFocused(targetTool);
         }
     }
-
-    constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-    ) {}
 
     findFirstFocusableTool(reversed: boolean = false): TuiNativeFocusableElement | null {
         const tools = reversed

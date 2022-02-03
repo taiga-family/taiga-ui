@@ -9,6 +9,7 @@ describe('TuiHighlight directive', () => {
         template: `
             <div id="ica" tuiHighlight="ica">HAPICA</div>
             <div id="dong" tuiHighlight="dong">ding</div>
+            <div id="aaa" tuiHighlight="aaa" tuiHighlightColor="yellow">aaabbb</div>
         `,
     })
     class TestComponent {}
@@ -38,5 +39,12 @@ describe('TuiHighlight directive', () => {
             (document.querySelector('#dong')!.firstElementChild as HTMLElement).style
                 .display,
         ).toBe('none');
+    });
+
+    it('Highlight color is yellow', () => {
+        expect(
+            (document.querySelector('#aaa')!.firstElementChild as HTMLElement).style
+                .background,
+        ).toBe('yellow');
     });
 });

@@ -2,6 +2,7 @@ import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
 import {
     addPackageJsonDependency,
+    getPackageJsonDependency,
     NodeDependencyType,
     removePackageJsonDependency,
 } from 'ng-morph';
@@ -52,6 +53,27 @@ function addDependencies(tree: Tree, options: Schema) {
             name: '@types/dompurify',
             version: DOMPURIFY_TYPES_VERSION,
             type: NodeDependencyType.Dev,
+        });
+    }
+
+    if (packages.includes('addon-table') || packages.includes('addon-mobile')) {
+        addAngularCdkDep(tree);
+    }
+}
+
+function addAngularCdkDep(tree: Tree) {
+    const angularCore = getPackageJsonDependency(tree, '@angular/core')?.version;
+
+    if (!angularCore) {
+        return;
+    }
+
+    const majorVersionArr = angularCore.match(/[0-9]+/);
+
+    if (majorVersionArr) {
+        addPackageJsonDependency(tree, {
+            name: '@angular/cdk',
+            version: `^${majorVersionArr[0]}.0.0`,
         });
     }
 }

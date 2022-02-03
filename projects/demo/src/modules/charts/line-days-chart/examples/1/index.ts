@@ -1,4 +1,6 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiDay,
     TuiDayLike,
@@ -8,9 +10,8 @@ import {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 // @dynamic
 @Component({
@@ -28,21 +29,36 @@ export class TuiLineDaysChartExample1 {
 
     readonly maxLength: TuiDayLike = {month: 12};
 
-    readonly xStringify: TuiStringHandler<TuiDay> = ({month, day}) =>
-        `${this.months[month]}, ${day}`;
+    readonly xStringify$: Observable<TuiStringHandler<TuiDay>> = this.months$.pipe(
+        map(
+            months =>
+                ({month, day}) =>
+                    `${months[month]}, ${day}`,
+        ),
+    );
 
-    readonly yStringify: TuiStringHandler<number> = y =>
-        `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
-
-    constructor(@Inject(TUI_MONTHS) private readonly months: readonly string[]) {}
-
-    get labels(): readonly string[] {
-        return this.computeLabels(this.range, this.months);
-    }
+    constructor(
+        @Inject(TUI_MONTHS) private readonly months$: Observable<readonly string[]>,
+    ) {}
 
     get value(): ReadonlyArray<[TuiDay, number]> {
         return this.computeValue(this.range);
     }
+
+    @tuiPure
+    computeLabels$({from, to}: TuiDayRange): Observable<readonly string[]> {
+        return this.months$.pipe(
+            map(months =>
+                Array.from(
+                    {length: TuiMonth.lengthBetween(from, to) + 1},
+                    (_, i) => months[from.append({month: i}).month],
+                ),
+            ),
+        );
+    }
+
+    readonly yStringify: TuiStringHandler<number> = y =>
+        `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
 
     @tuiPure
     private computeValue({from, to}: TuiDayRange): ReadonlyArray<[TuiDay, number]> {
@@ -58,16 +74,5 @@ export class TuiLineDaysChartExample1 {
                 ],
                 [],
             );
-    }
-
-    @tuiPure
-    private computeLabels(
-        {from, to}: TuiDayRange,
-        months: readonly string[],
-    ): readonly string[] {
-        return Array.from(
-            {length: TuiMonth.lengthBetween(from, to) + 1},
-            (_, i) => months[from.append({month: i}).month],
-        );
     }
 }

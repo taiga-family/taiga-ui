@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiPluralize, TuiSizeS} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
@@ -11,7 +12,6 @@ import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/decl
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
@@ -69,6 +69,7 @@ export class ExampleTuiSliderComponent {
             other: 'years',
         },
     ];
+
     pluralize = null;
     readonly keyStepsVariants: ReadonlyArray<TuiKeySteps> = [
         [[50, 1000]],
@@ -77,7 +78,8 @@ export class ExampleTuiSliderComponent {
             [(100 / 3) * 2, 300000],
         ],
     ];
+
     keySteps = null;
-    readonly quantumVariants: ReadonlyArray<number> = [0.01, 0.1, 1, 10];
+    readonly quantumVariants: ReadonlyArray<number> = [0.01, 0.001, 0.1, 1, 10];
     quantum = this.quantumVariants[0];
 }

@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {defaultSort, TuiComparator} from '@taiga-ui/addon-table';
 import {
     isPresent,
@@ -19,9 +21,6 @@ import {
     startWith,
     switchMap,
 } from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 interface User {
     readonly name: string;
@@ -77,6 +76,9 @@ const KEYS: Record<string, Key> = {
     encapsulation,
 })
 export class TuiTableExample4 {
+    private readonly size$ = new Subject<number>();
+    private readonly page$ = new Subject<number>();
+
     readonly sorters: Record<Key, TuiComparator<User>> = {
         name: () => 0,
         dob: () => 0,
@@ -89,11 +91,7 @@ export class TuiTableExample4 {
 
     readonly minAge = new FormControl(21);
 
-    private readonly size$ = new Subject<number>();
-
-    private readonly page$ = new Subject<number>();
-
-    private readonly request$ = combineLatest([
+    readonly request$ = combineLatest([
         this.sorter$.pipe(map(sorter => getKey(sorter, this.sorters))),
         this.direction$,
         this.page$.pipe(startWith(0)),
@@ -164,7 +162,7 @@ export class TuiTableExample4 {
         size: number,
         minAge: number,
     ): Observable<ReadonlyArray<User | null>> {
-        console.log('Making a request');
+        console.info('Making a request');
 
         const start = page * size;
         const end = start + size;

@@ -19,6 +19,8 @@ import {TuiSidebarComponent} from './sidebar.component';
     selector: '[tuiSidebar]',
 })
 export class TuiSidebarDirective extends PolymorpheusTemplate<{}> implements OnDestroy {
+    private sidebarRef: ComponentRef<TuiSidebarComponent> | null = null;
+
     @Input('tuiSidebarDirection')
     direction: TuiHorizontalDirection = 'left';
 
@@ -33,8 +35,6 @@ export class TuiSidebarDirective extends PolymorpheusTemplate<{}> implements OnD
             this.hide();
         }
     }
-
-    private sidebarRef: ComponentRef<TuiSidebarComponent> | null = null;
 
     constructor(
         @Inject(TemplateRef) readonly content: TemplateRef<{}>,

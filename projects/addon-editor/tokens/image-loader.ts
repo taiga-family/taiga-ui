@@ -5,16 +5,13 @@ import {map} from 'rxjs/operators';
 
 export const TUI_IMAGE_LOADER: InjectionToken<TuiHandler<File, Observable<string>>> =
     new InjectionToken<TuiHandler<File, Observable<string>>>('Image loader handler', {
-        factory: () => {
-            return file => {
-                const fileReader = new FileReader();
-                const handler = typedFromEvent(fileReader, 'load').pipe(
-                    map(() => String(fileReader.result)),
-                );
+        factory: () => file => {
+            const fileReader = new FileReader();
 
-                fileReader.readAsDataURL(file);
+            fileReader.readAsDataURL(file);
 
-                return handler;
-            };
+            return typedFromEvent(fileReader, 'load').pipe(
+                map(() => String(fileReader.result)),
+            );
         },
     });

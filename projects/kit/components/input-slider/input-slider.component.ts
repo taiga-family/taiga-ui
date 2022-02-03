@@ -28,6 +28,7 @@ import {
     NumberFormatSettings,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_NUMBER_FORMAT,
+    TUI_TEXTFIELD_APPEARANCE,
     TuiHintControllerDirective,
     TuiModeDirective,
 } from '@taiga-ui/core';
@@ -51,12 +52,12 @@ export class TuiInputSliderComponent
     extends AbstractTuiInputSlider<number>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<HTMLInputElement>;
+
     @Input()
     @tuiDefaultProp()
     secondary = '';
-
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     constructor(
         @Optional()
@@ -71,6 +72,8 @@ export class TuiInputSliderComponent
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_NUMBER_FORMAT)
         protected readonly numberFormat: NumberFormatSettings,
+        @Inject(TUI_TEXTFIELD_APPEARANCE)
+        readonly appearance: string,
     ) {
         super(control, changeDetectorRef);
     }

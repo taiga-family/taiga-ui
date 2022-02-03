@@ -16,14 +16,17 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
+    changeDateSeparator,
     DATE_FILLER_LENGTH,
     nullableSame,
     TUI_DATE_FORMAT,
+    TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiControlValueTransformer,
     TuiDateMode,
     TuiDay,
     tuiDefaultProp,
@@ -42,22 +45,30 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit/classes';
-import {EMPTY_MASK, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
+import {EMPTY_MASK} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_TEXTS,
+    TUI_DATE_VALUE_TRANSFORMER,
     TUI_MOBILE_CALENDAR,
 } from '@taiga-ui/kit/tokens';
-import {tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit/utils/mask';
+import {
+    tuiCreateAutoCorrectedDatePipe,
+    tuiCreateDateMask,
+} from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {pluck, takeUntil} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
-export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
+export const DATE_STREAM_FACTORY = (
+    control: NgControl | null,
+    valueTransformer: TuiControlValueTransformer<TuiDay>,
+) => TuiReplayControlValueChangesFactory(control, valueTransformer);
 
+// @dynamic
 @Component({
     selector: 'tui-input-date',
     templateUrl: './input-date.template.html',
@@ -70,7 +81,10 @@ export const DATE_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
         },
         {
             provide: TUI_CALENDAR_DATA_STREAM,
-            deps: [[new Optional(), new Self(), NgControl]],
+            deps: [
+                [new Optional(), new Self(), NgControl],
+                [new Optional(), forwardRef(() => TUI_DATE_VALUE_TRANSFORMER)],
+            ],
             useFactory: DATE_STREAM_FACTORY,
         },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
@@ -80,6 +94,17 @@ export class TuiInputDateComponent
     extends AbstractTuiNullableControl<TuiDay>
     implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    private month: TuiMonth | null = null;
+
+    private readonly textMaskOptions: TuiTextMaskOptions = {
+        mask: tuiCreateDateMask(this.dateFormat, this.dateSeparator),
+        pipe: tuiCreateAutoCorrectedDatePipe(this),
+        guide: false,
+    };
+
     @Input()
     @tuiDefaultProp()
     min = TUI_FIRST_DAY;
@@ -105,18 +130,11 @@ export class TuiInputDateComponent
     defaultActiveYearMonth = TuiMonth.currentLocal();
 
     open = false;
-    readonly filler$ = this.dateTexts$.pipe(pluck(this.dateFormat));
-
-    private month: TuiMonth | null = null;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
-
-    private readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: TUI_DATE_MASK,
-        pipe: tuiCreateAutoCorrectedDatePipe(this),
-        guide: false,
-    };
+    readonly filler$ = this.dateTexts$.pipe(
+        map(dateTexts =>
+            changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+        ),
+    );
 
     constructor(
         @Optional()
@@ -133,10 +151,14 @@ export class TuiInputDateComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
+        @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
+        @Optional()
+        @Inject(TUI_DATE_VALUE_TRANSFORMER)
+        readonly valueTransformer: TuiControlValueTransformer<TuiDay | null> | null,
     ) {
-        super(control, changeDetectorRef);
+        super(control, changeDetectorRef, valueTransformer);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -164,7 +186,7 @@ export class TuiInputDateComponent
             return String(activeItem);
         }
 
-        return value ? String(value) : nativeValue;
+        return value ? value.toString(this.dateFormat, this.dateSeparator) : nativeValue;
     }
 
     get computedActiveYearMonth(): TuiMonth {
@@ -188,7 +210,7 @@ export class TuiInputDateComponent
     }
 
     get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly && !this.computedMobile;
+        return this.interactive && !this.computedMobile;
     }
 
     get computedMask(): TuiTextMaskOptions {
@@ -199,6 +221,13 @@ export class TuiInputDateComponent
         const {value} = this;
 
         return (value && this.items.find(item => item.day.daySame(value))) || null;
+    }
+
+    @HostListener('click')
+    onClick() {
+        if (!this.isMobile) {
+            this.open = !this.open;
+        }
     }
 
     getComputedFiller(filler: string): string {
@@ -229,20 +258,19 @@ export class TuiInputDateComponent
             });
     }
 
-    @HostListener('click')
-    onClick() {
-        if (!this.isMobile) {
-            this.open = !this.open;
-        }
-    }
-
     onValueChange(value: string) {
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
         }
 
+        if (!value) {
+            this.onOpenChange(true);
+        }
+
         this.updateValue(
-            value.length !== DATE_FILLER_LENGTH ? null : TuiDay.normalizeParse(value),
+            value.length !== DATE_FILLER_LENGTH
+                ? null
+                : TuiDay.normalizeParse(value, this.dateFormat),
         );
     }
 

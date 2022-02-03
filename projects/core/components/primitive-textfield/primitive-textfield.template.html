@@ -60,13 +60,6 @@
             </ng-template>
         </div>
         <div class="wrapper">
-            <span
-                aria-hidden="true"
-                class="value"
-                [class.value_visible]="isContextTable"
-            >
-                {{ value }}
-            </span>
             <label
                 *ngIf="hasPlaceholder"
                 automation-id="tui-primitive-textfield__placeholder"
@@ -80,6 +73,7 @@
                 #decor
                 automation-id="tui-primitive-textfield__value-decoration"
                 aria-hidden="true"
+                class="t-value-decoration"
                 [style.textIndent.px]="getIndent$(focusableElement) | async"
             ></tui-value-decoration>
         </div>
@@ -94,13 +88,18 @@
                 <tui-svg class="custom-icon" [src]="iconSrc"></tui-svg>
             </ng-template>
         </div>
-        <tui-svg
+        <span
             *ngIf="hasCleaner"
+            polymorpheus-outlet
             automation-id="tui-primitive-textfield__cleaner"
-            src="tuiIconCloseLarge"
             class="cleaner"
+            [content]="iconCleaner"
             (click.stop)="clear()"
-        ></tui-svg>
+        >
+            <ng-template let-icon>
+                <tui-svg [src]="icon"></tui-svg>
+            </ng-template>
+        </span>
         <tui-tooltip
             *ngIf="hasTooltip"
             automation-id="tui-primitive-textfield__tooltip"

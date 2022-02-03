@@ -38,6 +38,10 @@ const SMOOTHING_MESSAGE = 'smoothingFactor must be between 0 and 100';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLineChartComponent {
+    private readonly _hovered$ = new Subject<number>();
+
+    private readonly autoIdString: string;
+
     @Input('value')
     @tuiDefaultProp()
     set valueSetter(value: ReadonlyArray<TuiPoint>) {
@@ -85,10 +89,6 @@ export class TuiLineChartComponent {
     dots = false;
 
     value: ReadonlyArray<TuiPoint> = [];
-
-    private readonly _hovered$ = new Subject<number>();
-
-    private readonly autoIdString: string;
 
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
@@ -146,6 +146,13 @@ export class TuiLineChartComponent {
         return !!this.xStringify || !!this.yStringify || !!this.computedHint;
     }
 
+    @HostListener('mouseleave')
+    onMouseLeave() {
+        if (!this.hintDirective) {
+            this.onHovered(NaN);
+        }
+    }
+
     getX(index: number): number {
         if (this.isSinglePoint) {
             return this.value[0][0] / 2;
@@ -201,13 +208,6 @@ export class TuiLineChartComponent {
 
     onHovered(index: number) {
         this._hovered$.next(index);
-    }
-
-    @HostListener('mouseleave')
-    onMouseLeave() {
-        if (!this.hintDirective) {
-            this.onHovered(NaN);
-        }
     }
 
     private get isSinglePoint(): boolean {

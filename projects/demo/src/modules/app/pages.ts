@@ -208,8 +208,21 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: 'Carousel',
+        keywords: 'карусель, слайдер, slider, carousel',
+        route: '/components/carousel',
+    },
+    {
+        section: $localize`Components`,
         title: 'Charts',
         subPages: [
+            {
+                section: $localize`Components`,
+                title: 'ArcChart',
+                keywords:
+                    'график, чарт, chart, graph, line, столбик, диаграмма, дуга, кольцо',
+                route: '/components/arc-chart',
+            },
             {
                 section: $localize`Components`,
                 title: 'Axes',
@@ -377,23 +390,9 @@ export const pages: TuiDocPages = [
         subPages: [
             {
                 section: $localize`Components`,
-                title: 'InputInline',
-                keywords: 'input',
-                route: '/components/input-inline',
-            },
-            {
-                section: $localize`Components`,
                 title: 'Input',
                 keywords: 'поле, инпут, форма, ввод, input, table, таблица',
                 route: '/components/input',
-            },
-            {
-                section: $localize`Components`,
-                title: 'InputDate',
-                keywords:
-                    'поле, инпут, форма, ввод, input, календарь, день, ' +
-                    'неделя, месяц, год, дата, calendar',
-                route: '/components/input-date',
             },
             {
                 section: $localize`Components`,
@@ -423,6 +422,20 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
+                title: 'InputDate',
+                keywords:
+                    'поле, инпут, форма, ввод, input, календарь, день, ' +
+                    'неделя, месяц, год, дата, calendar',
+                route: '/components/input-date',
+            },
+            {
+                section: $localize`Components`,
+                title: 'InputDateRange',
+                keywords: 'calendar, календарь, даты, период',
+                route: '/components/input-date-range',
+            },
+            {
+                section: $localize`Components`,
                 title: 'InputDateTime',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
@@ -435,6 +448,12 @@ export const pages: TuiDocPages = [
                 keywords:
                     'селект, форма, файл, загрузка, ввод, input, file, attach, load',
                 route: '/components/input-file',
+            },
+            {
+                section: $localize`Components`,
+                title: 'InputInline',
+                keywords: 'input',
+                route: '/components/input-inline',
             },
             {
                 section: $localize`Components`,
@@ -470,15 +489,16 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
-                title: 'InputRange',
-                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: '/components/input-range',
+                title: 'InputPhoneInternational',
+                keywords:
+                    'поле, инпут, форма, ввод, input, phone, телефон, страны, номера,',
+                route: '/components/input-phone-international',
             },
             {
                 section: $localize`Components`,
-                title: 'InputDateRange',
-                keywords: 'calendar, календарь, даты, период',
-                route: '/components/input-date-range',
+                title: 'InputRange',
+                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
+                route: '/components/input-range',
             },
             {
                 section: $localize`Components`,
@@ -498,13 +518,6 @@ export const pages: TuiDocPages = [
                 keywords:
                     'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
                 route: '/components/input-time',
-            },
-            {
-                section: $localize`Components`,
-                title: 'InputPhoneInternational',
-                keywords:
-                    'поле, инпут, форма, ввод, input, phone, телефон, страны, номера,',
-                route: '/components/input-phone-international',
             },
             {
                 section: $localize`Components`,
@@ -606,6 +619,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: 'PdfViewer',
+        keywords: 'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
+        route: '/components/pdf-viewer',
+    },
+    {
+        section: $localize`Components`,
         title: 'Progress',
         subPages: [
             {
@@ -660,6 +679,12 @@ export const pages: TuiDocPages = [
                 route: '/components/radio-list',
             },
         ],
+    },
+    {
+        section: $localize`Components`,
+        title: 'Rating',
+        keywords: 'рейтинг, оценка, звезда, rating, star, rate',
+        route: '/components/rating',
     },
     {
         section: $localize`Components`,
@@ -728,6 +753,14 @@ export const pages: TuiDocPages = [
                 route: '/components/range',
             },
         ],
+    },
+    {
+        section: $localize`Components`,
+        title: 'Preview',
+        keywords:
+            'popup, dialog, диалог, попап, модалка, modal, просмотр, превью, предпросмотр, ' +
+            'предпоказ, показ, pdf, jpg, png, viewer, файл',
+        route: '/components/preview',
     },
     {
         section: $localize`Components`,
@@ -907,6 +940,12 @@ export const pages: TuiDocPages = [
                 title: 'AutoFocus',
                 keywords: 'focus, blur, фокус, авто',
                 route: '/directives/auto-focus',
+            },
+            {
+                section: $localize`Tools`,
+                title: 'CopyProcessor',
+                keywords: 'copy, clipboard, копия, буфер',
+                route: '/directives/copy-processor',
             },
             {
                 section: $localize`Tools`,

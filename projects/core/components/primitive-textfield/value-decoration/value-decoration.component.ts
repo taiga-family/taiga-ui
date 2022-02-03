@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    HostBinding,
     Inject,
     ViewChild,
 } from '@angular/core';
@@ -10,6 +11,7 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
 } from '@taiga-ui/core/directives';
+import {TuiAppearance} from '@taiga-ui/core/enums';
 import {defer, EMPTY} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
@@ -23,17 +25,17 @@ import {TuiPrimitiveTextfieldComponent} from '../primitive-textfield.component';
     changeDetection: ChangeDetectionStrategy.Default,
 })
 export class TuiValueDecorationComponent {
-    readonly pre$ = defer(() => this.directive?.waMutationObserver ?? EMPTY).pipe(
-        map(() => this.pre?.nativeElement.offsetWidth ?? 0),
-        startWith(0),
-        distinctUntilChanged(),
-    );
-
     @ViewChild('pre', {read: ElementRef, static: true})
     private readonly pre?: ElementRef<HTMLElement>;
 
     @ViewChild(MutationObserverDirective, {static: true})
     private readonly directive?: MutationObserverDirective;
+
+    readonly pre$ = defer(() => this.directive?.waMutationObserver ?? EMPTY).pipe(
+        map(() => this.pre?.nativeElement.offsetWidth ?? 0),
+        startWith(0),
+        distinctUntilChanged(),
+    );
 
     constructor(
         @Inject(TuiPrimitiveTextfieldComponent)
@@ -41,6 +43,11 @@ export class TuiValueDecorationComponent {
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         private readonly controller: TuiTextfieldController,
     ) {}
+
+    @HostBinding('class._table')
+    get isContextTable(): boolean {
+        return this.textfield.appearance === TuiAppearance.Table;
+    }
 
     get value(): string {
         return this.textfield.value;

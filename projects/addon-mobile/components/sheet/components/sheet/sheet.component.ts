@@ -34,18 +34,12 @@ import {TUI_SHEET_PROVIDERS, TUI_SHEET_SCROLL} from './sheet.providers';
         role: 'dialog',
         '[attr.aria-labelledby]': 'id',
         '[class._ios]': 'isIos',
+        // '[class._stuck]': 'true', // Initially disable snapping for Firefox
         '[$.class._stuck]': 'stuck$',
         '($.class._stuck)': 'stuck$',
     },
 })
 export class TuiSheetComponent<T> implements AfterViewInit {
-    @Input()
-    item!: TuiSheet<T>;
-
-    id = '';
-
-    readonly stuck$ = this.scroll$.pipe(map(y => Math.floor(y) > this.contentTop));
-
     @ViewChild('sheet')
     private readonly sheet?: ElementRef<HTMLElement>;
 
@@ -54,6 +48,13 @@ export class TuiSheetComponent<T> implements AfterViewInit {
 
     @ViewChildren('stops')
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
+    @Input()
+    item!: TuiSheet<T>;
+
+    id = '';
+
+    readonly stuck$ = this.scroll$.pipe(map(y => Math.floor(y) > this.contentTop));
 
     constructor(
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
@@ -83,15 +84,15 @@ export class TuiSheetComponent<T> implements AfterViewInit {
         };
     }
 
+    @HostListener(TUI_SHEET_ID, ['$event.detail'])
+    onId(id: string) {
+        this.id = id;
+    }
+
     ngAfterViewInit() {
         const stops = [...this.stops, this.sheetTop, this.contentTop];
 
         this.elementRef.nativeElement.scrollTop = stops[this.item.initial];
-    }
-
-    @HostListener(TUI_SHEET_ID, ['$event.detail'])
-    onId(id: string) {
-        this.id = id;
     }
 
     scrollTo(top: number = this.sheetTop) {

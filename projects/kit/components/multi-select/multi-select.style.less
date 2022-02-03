@@ -24,6 +24,10 @@
     display: flex;
     pointer-events: none;
     justify-content: flex-end;
+
+    &_disabled {
+        opacity: var(--tui-disabled-opacity);
+    }
 }
 
 .t-group {
@@ -51,20 +55,8 @@
     .transition(transform);
     .icon-button();
     width: 1.5rem;
-    height: 1.5rem;
+    height: auto;
     margin: 1rem 0.75rem;
     pointer-events: auto;
     cursor: pointer;
-
-    &_open {
-        transform: rotate(-180deg);
-    }
-
-    [data-tui-host-size='m'] + .t-wrapper & {
-        margin: 0.625rem 0.75rem;
-    }
-
-    [data-tui-host-size='s'] + .t-wrapper & {
-        margin: 0.25rem 0.5rem;
-    }
 }

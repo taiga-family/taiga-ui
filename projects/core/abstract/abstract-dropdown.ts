@@ -31,6 +31,8 @@ import {Observable} from 'rxjs';
 export abstract class AbstractTuiDropdown
     implements TuiDropdown, AfterViewChecked, OnDestroy
 {
+    abstract refresh$: Observable<unknown>;
+
     @Input('tuiDropdownContent')
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
@@ -64,8 +66,6 @@ export abstract class AbstractTuiDropdown
     limitMinWidth: TuiDropdownWidthT = 'min';
 
     dropdownBoxRef: ComponentRef<TuiDropdownBoxComponent> | null = null;
-
-    abstract refresh$: Observable<unknown>;
 
     constructor(
         private readonly componentFactoryResolver: ComponentFactoryResolver,

@@ -19,7 +19,6 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_STRICT_MATCHER,
     TuiBooleanHandler,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiPure,
@@ -27,19 +26,13 @@ import {
     TuiTimeLike,
     TuiTimeMode,
 } from '@taiga-ui/cdk';
-import {
-    TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
-    TuiTextMaskOptions,
-} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent, TuiTextMaskOptions} from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedTimePipe,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -61,8 +54,11 @@ import {InputTimeOptions, TUI_INPUT_TIME_OPTIONS} from './input-time-options';
 })
 export class TuiInputTimeComponent
     extends AbstractTuiNullableControl<TuiTime>
-    implements TuiFocusableElementAccessor, InputTimeOptions
+    implements TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiTime> = ALWAYS_FALSE_HANDLER;
@@ -73,7 +69,7 @@ export class TuiInputTimeComponent
 
     @Input()
     @tuiDefaultProp()
-    itemSize = this.options.itemSize;
+    itemSize: InputTimeOptions['itemSize'] = this.options.itemSize;
 
     @Input()
     @tuiDefaultProp()
@@ -81,12 +77,13 @@ export class TuiInputTimeComponent
 
     @Input()
     @tuiDefaultProp()
-    mode = this.options.mode;
+    mode: InputTimeOptions['mode'] = this.options.mode;
+
+    @Input()
+    @tuiDefaultProp()
+    postfix: InputTimeOptions['postfix'] = this.options.postfix;
 
     open = false;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()
@@ -126,10 +123,6 @@ export class TuiInputTimeComponent
         return this.computedValue.length !== this.mode.length ? this.computedValue : '';
     }
 
-    get interactive(): boolean {
-        return !this.disabled && !this.readOnly;
-    }
-
     get innerPseudoFocused(): boolean | null {
         if (this.pseudoFocused === false) {
             return false;
@@ -142,7 +135,7 @@ export class TuiInputTimeComponent
         return null;
     }
 
-    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+    get icon(): InputTimeOptions['icon'] {
         return this.options.icon;
     }
 
@@ -161,6 +154,11 @@ export class TuiInputTimeComponent
     @tuiPure
     getFiller$(mode: TuiTimeMode): Observable<string> {
         return this.timeTexts$.pipe(map(texts => texts[mode]));
+    }
+
+    @HostListener('click')
+    onClick() {
+        this.open = !this.open;
     }
 
     onValueChange(value: string) {
@@ -232,11 +230,6 @@ export class TuiInputTimeComponent
         this.processArrow(event, -1);
     }
 
-    @HostListener('click')
-    onClick() {
-        this.open = !this.open;
-    }
-
     onMenuClick(item: TuiTime) {
         this.focusInput();
         this.updateValue(item);
@@ -249,6 +242,24 @@ export class TuiInputTimeComponent
     writeValue(value: TuiTime | null) {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : '';
+    }
+
+    @tuiPure
+    private calculateMask(mode: TuiTimeMode): TuiTextMaskOptions {
+        return {
+            mask: tuiCreateTimeMask(mode, this.options.maxValues),
+            pipe: tuiCreateAutoCorrectedTimePipe(mode, this.options.maxValues),
+            guide: false,
+        };
+    }
+
+    @tuiPure
+    private filter(
+        items: ReadonlyArray<TuiTime>,
+        mode: TuiTimeMode,
+        search: string,
+    ): ReadonlyArray<TuiTime> {
+        return items.filter(item => item.toString(mode).includes(search));
     }
 
     private findNearestTimeFromItems(value: TuiTime): TuiTime | null {
@@ -317,23 +328,5 @@ export class TuiInputTimeComponent
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
             this.close();
         }
-    }
-
-    @tuiPure
-    private calculateMask(mode: TuiTimeMode): TuiTextMaskOptions {
-        return {
-            mask: tuiCreateTimeMask(mode),
-            pipe: tuiCreateAutoCorrectedTimePipe(mode),
-            guide: false,
-        };
-    }
-
-    @tuiPure
-    private filter(
-        items: ReadonlyArray<TuiTime>,
-        mode: TuiTimeMode,
-        search: string,
-    ): ReadonlyArray<TuiTime> {
-        return items.filter(item => item.toString(mode).includes(search));
     }
 }

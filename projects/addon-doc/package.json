@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-doc",
-    "version": "2.24.0",
+    "version": "2.32.0",
     "description": "Taiga UI based library for developing documentation portals for Angular libraries.",
     "keywords": [
         "angular",
@@ -12,26 +12,28 @@
     ],
     "schematics": "./schematics/collection.json",
     "license": "Apache-2.0",
-    "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
-    "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "homepage": "https://github.com/tinkoff/taiga-ui",
+    "dependencies": {
+        "markdown-it": "^12.3.2",
+        "highlight.js": "^11.3.1",
+        "ngx-highlightjs": "^4.1.4",
+        "schematics-utilities": "^1.0.1",
+        "@angular-devkit/schematics": "^9.1.12"
+    },
+    "devDependencies": {
+        "@types/markdown-it": "^12.2.3"
+    },
     "peerDependencies": {
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
         "@angular/forms": ">=9.0.0",
         "@angular/router": ">=9.0.0",
-        "@angular-devkit/schematics": "^9.0.0",
-        "@tinkoff/ng-polymorpheus": "3.1.12",
-        "@taiga-ui/cdk": "2.24.0",
-        "@taiga-ui/core": "2.24.0",
-        "@taiga-ui/kit": "2.24.0",
-        "@taiga-ui/addon-mobile": "2.24.0",
-        "schematics-utilities": "1.0.1",
-        "highlight.js": "^10.0.0",
-        "ngx-highlightjs": "^4.0.0"
-    },
-    "devDependencies": {
-        "@taiga-ui/core": "2.24.0",
-        "@taiga-ui/kit": "2.24.0",
-        "@taiga-ui/addon-mobile": "2.24.0"
+        "@ng-web-apis/common": ">=1.12.1",
+        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
+        "@taiga-ui/cdk": "2.32.0",
+        "@taiga-ui/core": "2.32.0",
+        "@taiga-ui/kit": "2.32.0",
+        "@taiga-ui/addon-mobile": "2.32.0"
     }
 }

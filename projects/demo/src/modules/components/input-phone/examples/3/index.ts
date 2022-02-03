@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DEFAULT_MATCHER, tuiPure} from '@taiga-ui/cdk';
 import {combineLatest, merge, Observable, of, Subject} from 'rxjs';
 import {map, share, startWith, switchMap, tap} from 'rxjs/operators';
 
 import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 class User {
     constructor(
@@ -87,6 +86,18 @@ export class TuiInputPhoneExample3 {
         this.selected$.next(user);
     }
 
+    // Request imitation
+    @tuiPure
+    private request(query: string): Observable<ReadonlyArray<User>> {
+        return of(
+            DATA.filter(
+                item =>
+                    TUI_DEFAULT_MATCHER(item, query) ||
+                    TUI_DEFAULT_MATCHER(item.phone, query),
+            ),
+        ).pipe(share());
+    }
+
     private getPlaceholder(search: string): string {
         if (!search) {
             return 'Phone number or name';
@@ -104,17 +115,5 @@ export class TuiInputPhoneExample3 {
             response.length === 1 &&
             (String(response[0]) === value || response[0].phone === value)
         );
-    }
-
-    // Request imitation
-    @tuiPure
-    private request(query: string): Observable<ReadonlyArray<User>> {
-        return of(
-            DATA.filter(
-                item =>
-                    TUI_DEFAULT_MATCHER(item, query) ||
-                    TUI_DEFAULT_MATCHER(item.phone, query),
-            ),
-        ).pipe(share());
     }
 }

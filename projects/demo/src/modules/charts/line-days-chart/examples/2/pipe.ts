@@ -1,21 +1,29 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
+import {Observable, of} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 // @dynamic
 @Pipe({
     name: 'labels',
 })
 export class LabelsPipe implements PipeTransform {
-    constructor(@Inject(TUI_MONTHS) private readonly months: readonly string[]) {}
+    constructor(
+        @Inject(TUI_MONTHS) private readonly months$: Observable<readonly string[]>,
+    ) {}
 
-    transform({from, to}: TuiDayRange): readonly string[] {
+    transform({from, to}: TuiDayRange): Observable<readonly string[]> {
         const length = TuiDay.lengthBetween(from, to);
 
         if (length > 90) {
-            return Array.from(
-                {length: TuiMonth.lengthBetween(from, to) + 1},
-                (_, i) => this.months[from.append({month: i}).month],
+            return this.months$.pipe(
+                map(months =>
+                    Array.from(
+                        {length: TuiMonth.lengthBetween(from, to) + 1},
+                        (_, i) => months[from.append({month: i}).month],
+                    ),
+                ),
             );
         }
 
@@ -24,18 +32,18 @@ export class LabelsPipe implements PipeTransform {
         const days = range.map(String);
 
         if (length > 60) {
-            return even(mondays);
+            return of(even(mondays));
         }
 
         if (length > 14) {
-            return mondays;
+            return of(mondays);
         }
 
         if (length > 7) {
-            return even(days);
+            return of(even(days));
         }
 
-        return days;
+        return of(days);
     }
 }
 

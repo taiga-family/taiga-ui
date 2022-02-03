@@ -3,13 +3,14 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
-import {TuiModeModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiForModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiModeModule, TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiRadioListModule, TuiTagModule} from '@taiga-ui/kit';
 
 import {TuiTagExample1} from './examples/1';
 import {TuiTagExample2} from './examples/2';
 import {TuiTagExample3} from './examples/3';
+import {TuiTagExample4} from './examples/4';
 import {ExampleTuiTagComponent} from './tag.component';
 
 @NgModule({
@@ -22,6 +23,8 @@ import {ExampleTuiTagComponent} from './tag.component';
         TuiSvgModule,
         TuiRepeatTimesModule,
         TuiAddonDocModule,
+        TuiForModule,
+        TuiNotificationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiTagComponent)),
     ],
     declarations: [
@@ -29,6 +32,7 @@ import {ExampleTuiTagComponent} from './tag.component';
         TuiTagExample1,
         TuiTagExample2,
         TuiTagExample3,
+        TuiTagExample4,
     ],
     exports: [ExampleTuiTagComponent],
 })

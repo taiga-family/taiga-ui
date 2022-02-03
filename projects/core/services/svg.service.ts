@@ -13,9 +13,9 @@ import {BehaviorSubject} from 'rxjs';
     providedIn: 'root',
 })
 export class TuiSvgService {
-    readonly items$ = new BehaviorSubject<Map<string, SafeHtml>>(new Map());
-
     private originals: Record<string, string> = {};
+
+    readonly items$ = new BehaviorSubject<Map<string, SafeHtml>>(new Map());
 
     constructor(
         @Optional()

@@ -14,14 +14,17 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
+    changeDateSeparator,
     clamp,
     DATE_FILLER_LENGTH,
     nullableSame,
     TUI_DATE_FORMAT,
+    TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiControlValueTransformer,
     TuiDateMode,
     TuiDay,
     tuiDefaultProp,
@@ -39,15 +42,17 @@ import {
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {DATE_TIME_SEPARATOR, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
+import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_TEXTS,
+    TUI_DATE_TIME_VALUE_TRANSFORMER,
     TUI_TIME_TEXTS,
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDateTimePipe,
+    tuiCreateDateMask,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
@@ -55,7 +60,10 @@ import {combineLatest, Observable} from 'rxjs';
 import {map, pluck} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
-export const TIME_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
+export const TIME_STREAM_FACTORY = (
+    control: NgControl | null,
+    valueTransformer: TuiControlValueTransformer<[TuiDay | null, TuiTime | null]>,
+) => TuiReplayControlValueChangesFactory(control, valueTransformer);
 
 // @dynamic
 @Component({
@@ -70,7 +78,10 @@ export const TIME_STREAM_FACTORY = TuiReplayControlValueChangesFactory;
         },
         {
             provide: TUI_CALENDAR_DATA_STREAM,
-            deps: [[new Optional(), new Self(), NgControl]],
+            deps: [
+                [new Optional(), new Self(), NgControl],
+                [new Optional(), forwardRef(() => TUI_DATE_TIME_VALUE_TRANSFORMER)],
+            ],
             useFactory: TIME_STREAM_FACTORY,
         },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
@@ -82,6 +93,11 @@ export class TuiInputDateTimeComponent
         TuiWithOptionalMinMax<TuiDay | [TuiDay, TuiTime]>,
         TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    private month: TuiMonth | null = null;
+
     @Input()
     @tuiDefaultProp()
     min = TUI_FIRST_DAY;
@@ -104,14 +120,13 @@ export class TuiInputDateTimeComponent
 
     open = false;
     readonly filler$ = combineLatest([
-        this.dateTexts$.pipe(pluck(this.dateFormat)),
+        this.dateTexts$.pipe(
+            map(dateTexts =>
+                changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+            ),
+        ),
         this.timeTexts$.pipe(pluck(this.timeMode)),
     ]).pipe(map(fillers => this.getDateTimeString(...fillers)));
-
-    private month: TuiMonth | null = null;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()
@@ -122,12 +137,18 @@ export class TuiInputDateTimeComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
+        @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_TIME_TEXTS)
         readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
         @Inject(TUI_DATE_TEXTS)
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
+        @Optional()
+        @Inject(TUI_DATE_TIME_VALUE_TRANSFORMER)
+        readonly valueTransformer: TuiControlValueTransformer<
+            [TuiDay | null, TuiTime | null]
+        > | null,
     ) {
-        super(control, changeDetectorRef);
+        super(control, changeDetectorRef, valueTransformer);
     }
 
     get fillerLength(): number {
@@ -140,6 +161,8 @@ export class TuiInputDateTimeComponent
             this.calendarMinDay,
             this.calendarMaxDay,
             this.timeMode,
+            this.dateFormat,
+            this.dateSeparator,
         );
     }
 
@@ -197,16 +220,16 @@ export class TuiInputDateTimeComponent
         this.nativeFocusableElement.value = value;
     }
 
-    get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly;
-    }
-
     @HostListener('click')
     onClick() {
         this.open = !this.open;
     }
 
     onValueChange(value: string) {
+        if (!value) {
+            this.onOpenChange(true);
+        }
+
         if (value.length < DATE_FILLER_LENGTH) {
             this.updateValue([null, null]);
 
@@ -215,7 +238,7 @@ export class TuiInputDateTimeComponent
 
         const [date, time] = value.split(DATE_TIME_SEPARATOR);
 
-        const parsedDate = TuiDay.normalizeParse(date);
+        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat);
         const parsedTime =
             time && time.length === this.timeMode.length
                 ? this.clampTime(TuiTime.fromString(time), parsedDate)
@@ -304,6 +327,49 @@ export class TuiInputDateTimeComponent
         );
     }
 
+    @tuiPure
+    private calculateMask(
+        day: TuiDay | null,
+        min: TuiDay,
+        max: TuiDay,
+        timeMode: TuiTimeMode,
+        dateFormat: TuiDateMode,
+        dateSeparator: string,
+    ): TuiTextMaskOptions {
+        return {
+            mask: [
+                ...tuiCreateDateMask(dateFormat, dateSeparator),
+                ',',
+                ' ',
+                ...tuiCreateTimeMask(timeMode),
+            ],
+            pipe: tuiCreateAutoCorrectedDateTimePipe({
+                value: day,
+                min,
+                max,
+                dateFormat,
+                dateSeparator,
+                timeMode,
+            }),
+            guide: false,
+        };
+    }
+
+    @tuiPure
+    private getDateTimeString(
+        date: TuiDay | string,
+        time: TuiTime | string | null,
+        timeMode: TuiTimeMode = 'HH:MM',
+    ): string {
+        const dateString =
+            date instanceof TuiDay
+                ? date.toString(this.dateFormat, this.dateSeparator)
+                : date;
+        const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
+
+        return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
+    }
+
     private updateNativeValue(day: TuiDay) {
         const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
 
@@ -322,31 +388,5 @@ export class TuiInputDateTimeComponent
                 : Infinity;
 
         return TuiTime.fromAbsoluteMilliseconds(clamp(ms, min, max));
-    }
-
-    @tuiPure
-    private calculateMask(
-        day: TuiDay | null,
-        min: TuiDay,
-        max: TuiDay,
-        timeMode: TuiTimeMode,
-    ): TuiTextMaskOptions {
-        return {
-            mask: [...TUI_DATE_MASK, ',', ' ', ...tuiCreateTimeMask(timeMode)],
-            pipe: tuiCreateAutoCorrectedDateTimePipe({value: day, min, max}, timeMode),
-            guide: false,
-        };
-    }
-
-    @tuiPure
-    private getDateTimeString(
-        date: TuiDay | string,
-        time: TuiTime | string | null,
-        timeMode: TuiTimeMode = 'HH:MM',
-    ): string {
-        const dateString = date instanceof TuiDay ? date.toString() : date;
-        const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
-
-        return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
     }
 }

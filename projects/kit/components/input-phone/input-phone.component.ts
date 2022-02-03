@@ -42,7 +42,7 @@ import {Observable} from 'rxjs';
 
 import {INPUT_PHONE_PROVIDERS, SELECTION_STREAM} from './input-phone.providers';
 
-const NON_PLUS_AND_DIGITS_REGEX = /[ \-_\(\)]/g;
+const NON_PLUS_AND_DIGITS_REGEX = /[ \-_()]/g;
 
 // @dynamic
 @Component({
@@ -66,6 +66,12 @@ export class TuiInputPhoneComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor, TuiDataListHost<string>
 {
+    @ViewChild(TuiHostedDropdownComponent)
+    private readonly dropdown?: TuiHostedDropdownComponent;
+
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
     @Input('countryCode')
     @tuiRequiredSetter()
     set countryCodeSetter(countryCode: string) {
@@ -88,6 +94,9 @@ export class TuiInputPhoneComponent
     @Output()
     readonly searchChange = new EventEmitter<string>();
 
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
+
     readonly textMaskOptions: TuiTextMaskOptions = {
         mask: value =>
             this.allowText && !this.value && isText(value) && value !== '+'
@@ -96,7 +105,7 @@ export class TuiInputPhoneComponent
                       ...this.countryCode.split(''),
                       ' ',
                       ...this.phoneMaskAfterCountryCode
-                          .replace(/[^#\- \(\)]+/g, '')
+                          .replace(/[^#\- ()]+/g, '')
                           .split('')
                           .map(item => (item === '#' ? /\d/ : item)),
                   ],
@@ -115,15 +124,6 @@ export class TuiInputPhoneComponent
     countryCode = '+7';
 
     open = false;
-
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
-
-    @ViewChild(TuiHostedDropdownComponent)
-    private readonly dropdown?: TuiHostedDropdownComponent;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()
@@ -167,7 +167,7 @@ export class TuiInputPhoneComponent
     }
 
     get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly && !!this.datalist;
+        return this.interactive && !!this.datalist;
     }
 
     get canClean(): boolean {

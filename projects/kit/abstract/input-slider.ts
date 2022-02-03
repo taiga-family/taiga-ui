@@ -22,6 +22,7 @@ import {
 } from '@taiga-ui/core';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
+import {getPrecision} from '@taiga-ui/kit/utils';
 
 export function quantumAssertion(quantum: number): boolean {
     return quantum > 0;
@@ -35,6 +36,9 @@ export abstract class AbstractTuiInputSlider<T>
     extends AbstractTuiControl<T>
     implements TuiWithOptionalMinMax<number>
 {
+    protected abstract readonly modeDirective: TuiModeDirective | null;
+    protected abstract readonly numberFormat: NumberFormatSettings;
+
     @Input()
     @tuiDefaultProp()
     min = 0;
@@ -84,26 +88,28 @@ export abstract class AbstractTuiInputSlider<T>
     @HostBinding('attr.data-tui-host-size')
     size: TuiSizeL = 'l';
 
+    pluralizeMap: Record<string, string> | null = null;
+
+    abstract get showMinLabel(): boolean;
+    abstract get showMaxLabel(): boolean;
+
     mask: TuiMapper<number, TuiTextMaskOptions> = (quantum: number, min: number) => ({
         mask: tuiCreateNumberMask({
             allowNegative: min < 0,
             allowDecimal: !Number.isInteger(quantum),
             decimalSymbol: this.numberFormat.decimalSeparator,
             thousandSymbol: this.numberFormat.thousandSeparator,
+            decimalLimit: getPrecision(quantum),
         }),
         pipe: tuiCreateAutoCorrectedNumberPipe(
             0,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
+            undefined,
+            min < 0,
         ),
         guide: false,
     });
-
-    pluralizeMap: Record<string, string> | null = null;
-
-    protected abstract readonly modeDirective: TuiModeDirective | null;
-
-    protected abstract readonly numberFormat: NumberFormatSettings;
 
     @HostBinding('class._segmented')
     get segmented(): boolean {
@@ -134,10 +140,6 @@ export abstract class AbstractTuiInputSlider<T>
     get hostMode(): TuiBrightness | null {
         return this.modeDirective && this.modeDirective.mode;
     }
-
-    abstract get showMinLabel(): boolean;
-
-    abstract get showMaxLabel(): boolean;
 
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);

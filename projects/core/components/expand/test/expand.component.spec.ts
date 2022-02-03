@@ -20,12 +20,12 @@ describe('expand', () => {
         `,
     })
     class TestComponent {
+        @ViewChild('content')
+        content: ElementRef<HTMLDivElement>;
+
         expanded = false;
 
         async = false;
-
-        @ViewChild('content')
-        content: ElementRef<HTMLDivElement>;
     }
 
     let fixture: ComponentFixture<TestComponent>;

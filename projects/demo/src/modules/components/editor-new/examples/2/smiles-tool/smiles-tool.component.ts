@@ -23,6 +23,11 @@ export class ExampleSmilesToolComponent {
         '&#128640;',
     ];
 
+    constructor(
+        @Inject(TuiTiptapEditorService)
+        private readonly editor: TuiTiptapEditorService,
+    ) {}
+
     insertSmile(smile: string): void {
         this.editor
             .getOriginTiptapEditor()
@@ -31,9 +36,4 @@ export class ExampleSmilesToolComponent {
             .insertContent(`${smile} `)
             .run();
     }
-
-    constructor(
-        @Inject(TuiTiptapEditorService)
-        private readonly editor: TuiTiptapEditorService,
-    ) {}
 }

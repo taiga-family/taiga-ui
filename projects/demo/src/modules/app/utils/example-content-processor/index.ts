@@ -1,6 +1,6 @@
-import {identity} from '@taiga-ui/cdk';
+import {identity} from 'rxjs';
 
-import {isLess, isTS} from '../index';
+import {isLess, isTS} from '../file-type-guards.utils';
 import {processLess} from './less-processor';
 import {processTs} from './typescript-processor';
 

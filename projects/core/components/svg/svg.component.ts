@@ -24,7 +24,11 @@ import {
 import {TUI_ICON_ERROR} from '@taiga-ui/core/constants';
 import {TuiIconError} from '@taiga-ui/core/interfaces';
 import {TuiSvgService} from '@taiga-ui/core/services';
-import {TUI_ICONS_PATH, TUI_SANITIZER} from '@taiga-ui/core/tokens';
+import {
+    TUI_ICONS_PATH,
+    TUI_SANITIZER,
+    TUI_SVG_SRC_PROCESSOR,
+} from '@taiga-ui/core/tokens';
 import {isPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
@@ -42,18 +46,18 @@ const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSvgComponent {
+    private readonly src$ = new ReplaySubject<void>(1);
+    private readonly isIE = isIE(this.userAgent);
+    private icon = '';
+
     @Input()
     @tuiRequiredSetter()
     set src(src: string) {
-        this.icon = src;
+        this.icon = this.processor(src);
         this.src$.next();
     }
 
     readonly innerHTML$: Observable<SafeHtml>;
-
-    private icon = '';
-    private readonly src$ = new ReplaySubject<void>(1);
-    private readonly isIE = isIE(this.userAgent);
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
@@ -68,6 +72,8 @@ export class TuiSvgComponent {
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
         @Inject(USER_AGENT) private readonly userAgent: string,
+        @Inject(TUI_SVG_SRC_PROCESSOR)
+        private readonly processor: TuiStringHandler<string>,
     ) {
         this.innerHTML$ = this.src$.pipe(
             switchMap(() =>
@@ -77,6 +83,10 @@ export class TuiSvgComponent {
             ),
             startWith(''),
         );
+    }
+
+    get src(): string {
+        return this.icon;
     }
 
     get use(): string {
@@ -172,7 +182,6 @@ export class TuiSvgComponent {
             : src;
     }
 
-    // @bad TODO: Create a simple XMLHttpRequest to Observable service
     private getExternalIcon(src: string): Observable<SafeHtml> {
         const url = src.includes('.svg') ? src : this.use;
 

@@ -1,14 +1,16 @@
 import {grepByPattern} from './grep-by-pattern';
 
 export async function checkPrivateExports(path: string): Promise<void> | never {
-    const result = await grepByPattern('ɵ0', path);
-    const greppedIcons = result
-        .trim()
-        .split('\n')
-        .every((path: string) => path.includes('icons/src'));
-    const hasError = result.length > 0 && !greppedIcons;
+    const includePattern = 'ɵ0';
+    const result = await grepByPattern({
+        excludePattern: 'icons/src|demo',
+        includePattern,
+        path,
+    });
 
-    if (hasError) {
-        throw new Error(`There are problems with private exports in:\n\n${result}`);
+    if (result.length > 0) {
+        throw new Error(
+            `There are problems with private exports included ${includePattern} in:\n\n${result}`,
+        );
     }
 }

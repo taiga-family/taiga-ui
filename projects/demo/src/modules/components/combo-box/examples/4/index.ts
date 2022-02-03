@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
+import {changeDetection} from '@demo/emulate/change-detection';
 
 @Component({
     selector: 'tui-combo-box-example-4',
@@ -8,6 +7,8 @@ import {changeDetection} from '../../../../../change-detection-strategy';
     changeDetection,
 })
 export class TuiComboBoxExample4 {
+    value = null;
+
     readonly items = [
         {name: 'John', surname: 'Cleese'},
         {name: 'Eric', surname: 'Idle'},
@@ -19,6 +20,4 @@ export class TuiComboBoxExample4 {
 
     readonly stringify = (item: {name: string; surname: string}) =>
         `${item.name} ${item.surname}`;
-
-    value = null;
 }

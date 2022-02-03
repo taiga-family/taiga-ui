@@ -37,13 +37,13 @@ export class TuiCheckboxComponent
     extends AbstractTuiNullableControl<boolean>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<HTMLInputElement>;
+
     @Input()
     @HostBinding('attr.data-tui-host-size')
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
-
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     constructor(
         @Optional()
@@ -68,7 +68,7 @@ export class TuiCheckboxComponent
     }
 
     get computedFocusable(): boolean {
-        return !this.computedDisabled && !this.readOnly && this.focusable;
+        return this.interactive && this.focusable;
     }
 
     onChecked(checked: boolean) {

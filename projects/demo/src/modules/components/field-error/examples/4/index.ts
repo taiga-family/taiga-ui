@@ -6,12 +6,11 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {of} from 'rxjs';
 import {delay} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 const latinChars = /^[a-zA-Z]+$/;
 
@@ -35,7 +34,7 @@ function asyncValidatorFn(): AsyncValidatorFn {
 export class TuiFieldErrorExample4 {
     readonly form: FormGroup;
 
-    constructor(@Inject(FormBuilder) private fb: FormBuilder) {
+    constructor(@Inject(FormBuilder) private readonly fb: FormBuilder) {
         this.form = this.fb.group({
             text: ['русский текст', Validators.required],
         });

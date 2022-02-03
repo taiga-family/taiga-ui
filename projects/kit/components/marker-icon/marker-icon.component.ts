@@ -25,6 +25,8 @@ import {takeUntil} from 'rxjs/operators';
     providers: [TuiDestroyService, MODE_PROVIDER],
 })
 export class TuiMarkerIconComponent {
+    private globalMode: TuiBrightness | null = null;
+
     @Input()
     @tuiDefaultProp()
     mode: TuiMarkerIconModeT | null = null;
@@ -37,8 +39,6 @@ export class TuiMarkerIconComponent {
     @Input()
     @tuiDefaultProp()
     src = '';
-
-    private globalMode: TuiBrightness | null = null;
 
     constructor(
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,

@@ -15,11 +15,13 @@ import {
     TuiFocusableElementAccessor,
     TuiFocusVisibleService,
     TuiNativeFocusableElement,
+    typedFromEvent,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiHorizontalDirection} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
+import {merge, Observable} from 'rxjs';
+import {mapTo} from 'rxjs/operators';
 
 // @bad TODO: Think about extending Interactive
 @Component({
@@ -67,6 +69,11 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
 
     @HostBinding('class._focus-visible')
     focusVisible = false;
+
+    readonly focusedChange = merge(
+        typedFromEvent(this.elementRef.nativeElement, 'focusin').pipe(mapTo(true)),
+        typedFromEvent(this.elementRef.nativeElement, 'focusout').pipe(mapTo(false)),
+    );
 
     constructor(
         @Inject(ElementRef)

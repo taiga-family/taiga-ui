@@ -64,6 +64,15 @@ export function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
     },
 })
 export class TuiToolbarComponent {
+    @ViewChildren('button')
+    private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;
+
+    @ViewChildren('dropdown', {read: ElementRef})
+    private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
+    private readonly documentRef: Document;
+    private range: Range | null = null;
+
     @Input()
     @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
     tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
@@ -125,16 +134,6 @@ export class TuiToolbarComponent {
 
     // TODO: i18n
     readonly codeOptions: readonly string[] = ['Code in the text', 'Code in block'];
-
-    @ViewChildren('button')
-    private readonly buttons: QueryList<TuiButtonComponent> = EMPTY_QUERY;
-
-    @ViewChildren('dropdown', {read: ElementRef})
-    private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
-    private readonly documentRef: Document;
-
-    private range: Range | null = null;
 
     constructor(
         @Inject(TuiDestroyService)

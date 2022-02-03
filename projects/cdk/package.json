@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/cdk",
-    "version": "2.24.0",
+    "version": "2.32.0",
     "description": "Base library for creating Angular components and applications using Taiga UI principles regarding of actual visual appearance",
     "keywords": [
         "angular",
@@ -12,15 +12,17 @@
         "directive"
     ],
     "license": "Apache-2.0",
-    "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
-    "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "homepage": "https://github.com/tinkoff/taiga-ui",
     "dependencies": {
-        "@ng-web-apis/common": "1.12.1",
-        "@ng-web-apis/mutation-observer": "1.1.0",
-        "@ng-web-apis/resize-observer": "1.0.3",
-        "@tinkoff/ng-event-plugins": "2.4.0",
-        "@tinkoff/ng-polymorpheus": "3.1.12",
-        "@types/resize-observer-browser": "0.1.5"
+        "@ng-web-apis/common": "^1.12.1",
+        "@ng-web-apis/mutation-observer": "^1.1.0",
+        "@ng-web-apis/resize-observer": "^1.0.3",
+        "@tinkoff/ng-event-plugins": "^2.5.1",
+        "@tinkoff/ng-polymorpheus": "^3.1.12"
+    },
+    "devDependencies": {
+        "@types/resize-observer-browser": "^0.1.5"
     },
     "peerDependencies": {
         "@angular/animations": ">=9.0.0",

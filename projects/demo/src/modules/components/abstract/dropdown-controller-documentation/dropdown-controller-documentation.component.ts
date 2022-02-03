@@ -1,11 +1,11 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiDropdownWidthT,
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
 
-import {changeDetection} from '../../../../change-detection-strategy';
 import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props-accessor';
 
 export interface ExampleTuiDropdown {

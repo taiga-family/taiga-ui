@@ -1,5 +1,6 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiPluralize, TuiSizeL} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
@@ -9,7 +10,6 @@ import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -53,7 +53,7 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     steps = this.stepsVariants[0];
 
-    readonly quantumVariants: readonly number[] = [1, 0.01, 10, 100];
+    readonly quantumVariants: readonly number[] = [1, 0.01, 0.001, 0.0001, 10, 100];
 
     quantum = this.quantumVariants[0];
 

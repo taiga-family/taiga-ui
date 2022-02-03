@@ -18,7 +18,7 @@
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [focusable]="computedFocusable"
-        [iconContent]="computedMobile ? iconContent : calendarIcon"
+        [iconContent]="computedMobile ? mobileIconContent : iconContent"
         [disabled]="computedDisabled"
         [textMask]="computedMask"
         [value]="computedValue"
@@ -29,12 +29,19 @@
         <ng-content></ng-content>
     </tui-primitive-textfield>
 
-    <ng-template #iconContent>
+    <ng-template #mobileIconContent>
         <tui-svg
             automation-id="tui-input-date-range__icon"
             [class.icon]="!computedDisabled"
             [src]="calendarIcon"
             (click)="onMobileClick()"
+        ></tui-svg>
+    </ng-template>
+
+    <ng-template #iconContent>
+        <tui-svg
+            [class.icon]="!computedDisabled"
+            [src]="calendarIcon"
         ></tui-svg>
     </ng-template>
 

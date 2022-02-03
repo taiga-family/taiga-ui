@@ -1,12 +1,11 @@
 import {Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {EMPTY_QUERY, setNativeFocused, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
 import {TuiOptionComponent} from '@taiga-ui/core';
 import {getWordRange} from '@taiga-ui/kit';
 
 import {default as avatar} from '!!file-loader!../../../../../assets/images/avatar.jpg';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 export interface User {
     readonly name: string;
@@ -22,13 +21,10 @@ export interface User {
     encapsulation,
 })
 export class TuiDropdownSelectionExample2 {
-    value = 'Type @ to see a dropdown';
-
     @ViewChildren(TuiOptionComponent, {read: ElementRef})
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    predicate: TuiBooleanHandler<Range> = range =>
-        getWordRange(range).toString().startsWith('@');
+    value = 'Type @ to see a dropdown';
 
     readonly items = [
         {
@@ -46,6 +42,9 @@ export class TuiDropdownSelectionExample2 {
     get focused(): true | null {
         return !!this.options.length || null;
     }
+
+    predicate: TuiBooleanHandler<Range> = range =>
+        getWordRange(range).toString().startsWith('@');
 
     onArrow(event: KeyboardEvent, which: 'first' | 'last') {
         const item = this.options[which];
@@ -75,13 +74,6 @@ export class TuiDropdownSelectionExample2 {
         textarea.setSelectionRange(caret, caret);
     }
 
-    private getCurrentSearch(textarea: HTMLTextAreaElement): string {
-        return textarea.value.substring(
-            textarea.value.indexOf('@'),
-            textarea.selectionStart,
-        );
-    }
-
     @tuiPure
     private getFilteredItems(
         items: ReadonlyArray<User>,
@@ -89,6 +81,13 @@ export class TuiDropdownSelectionExample2 {
     ): ReadonlyArray<User> {
         return items.filter(
             ({name, login}) => login.startsWith(search) || name.startsWith(search),
+        );
+    }
+
+    private getCurrentSearch(textarea: HTMLTextAreaElement): string {
+        return textarea.value.substring(
+            textarea.value.indexOf('@'),
+            textarea.selectionStart,
         );
     }
 }

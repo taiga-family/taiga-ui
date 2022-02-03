@@ -1,14 +1,27 @@
-import {Component, Inject, Input, Optional} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DoCheck,
+    Inject,
+    Input,
+    Optional,
+    ViewChild,
+} from '@angular/core';
+import {TuiHandler} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Subject} from 'rxjs';
+import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 import {TuiTreeChildrenDirective} from '../../directives/tree-children.directive';
 import {TuiTreeContext} from '../../misc/tree.interfaces';
 import {TUI_TREE_NODE} from '../../misc/tree.tokens';
+import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
 
 @Component({
     selector: 'tui-tree[value]',
     templateUrl: 'tree.template.html',
     styleUrls: ['tree.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_TREE_NODE,
@@ -19,12 +32,23 @@ import {TUI_TREE_NODE} from '../../misc/tree.tokens';
         role: 'tree',
     },
 })
-export class TuiTreeComponent<T> {
+export class TuiTreeComponent<T> implements DoCheck {
+    private readonly check$ = new Subject<void>();
+
     @Input()
     value!: T;
 
-    @Input()
-    content: PolymorpheusContent<TuiTreeContext<T>> = ({$implicit}) => String($implicit);
+    @ViewChild(TuiTreeItemComponent)
+    readonly item?: TuiTreeItemComponent;
+
+    @ViewChild(TuiTreeComponent)
+    readonly child?: TuiTreeComponent<T>;
+
+    readonly children$ = this.check$.pipe(
+        startWith(null),
+        map(() => this.handler(this.value)),
+        distinctUntilChanged(),
+    );
 
     constructor(
         @Optional()
@@ -32,10 +56,16 @@ export class TuiTreeComponent<T> {
         readonly directive: TuiTreeChildrenDirective<T> | null,
     ) {}
 
-    get children(): readonly T[] {
-        return (
-            this.directive?.childrenHandler(this.value) ??
-            TuiTreeChildrenDirective.defaultHandler(this.value)
-        );
+    @Input()
+    content: PolymorpheusContent<TuiTreeContext<T>> = ({$implicit}) => String($implicit);
+
+    ngDoCheck() {
+        this.check$.next();
+        this.item?.ngDoCheck();
+        this.child?.ngDoCheck();
+    }
+
+    private get handler(): TuiHandler<T, readonly T[]> {
+        return this.directive?.childrenHandler ?? TuiTreeChildrenDirective.defaultHandler;
     }
 }

@@ -60,18 +60,7 @@
 }
 
 .browse {
-    .transition(background);
-    color: var(--tui-base-01);
-    background: #ff603e;
     pointer-events: auto;
-
-    &:hover {
-        background: var(--tui-accent);
-    }
-
-    &:active {
-        background: var(--tui-accent-active);
-    }
 
     &_desktop {
         display: none;
@@ -295,7 +284,7 @@
     font-weight: bold;
     text-align: center;
     color: #fff;
-    background: #ff603e;
+    background: var(--tui-accent);
     box-sizing: border-box;
 
     &:before {

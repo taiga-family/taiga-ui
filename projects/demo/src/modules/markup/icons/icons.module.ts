@@ -13,6 +13,8 @@ import {
 import {TuiInputModule, TuiMarkerIconModule} from '@taiga-ui/kit';
 
 import {IconsComponent} from './icons.component';
+import {IconsGroupComponent} from './icons-group/icons-group.component';
+import {IconHighlightPipe} from './pipes/icon-highlight.pipe';
 
 @NgModule({
     imports: [
@@ -29,7 +31,7 @@ import {IconsComponent} from './icons.component';
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(IconsComponent)),
     ],
-    declarations: [IconsComponent],
-    exports: [IconsComponent],
+    declarations: [IconsComponent, IconsGroupComponent, IconHighlightPipe],
+    exports: [IconsComponent, IconsGroupComponent],
 })
 export class IconsModule {}

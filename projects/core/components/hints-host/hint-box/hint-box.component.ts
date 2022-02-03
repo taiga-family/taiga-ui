@@ -9,9 +9,11 @@ import {
     ViewChild,
 } from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
-import {px, TUI_IS_MOBILE, TuiDestroyService, tuiPure, tuiZonefree} from '@taiga-ui/cdk';
+import {px, TuiDestroyService, tuiPure, tuiZonefree} from '@taiga-ui/cdk';
 import {AbstractTuiHint} from '@taiga-ui/core/abstract';
 import {TuiPointerHintDirective} from '@taiga-ui/core/directives/pointer-hint';
+import {TuiMedia} from '@taiga-ui/core/interfaces';
+import {TUI_MEDIA} from '@taiga-ui/core/tokens';
 import {TuiDirection, TuiHintModeT} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -53,11 +55,11 @@ const reverseDirectionsHorizontal: {[key in TuiDirection]: TuiDirection} = {
     providers: [TuiDestroyService],
 })
 export class TuiHintBoxComponent {
-    @Input()
-    hint!: AbstractTuiHint;
-
     @ViewChild('arrow')
     private readonly arrow?: ElementRef<HTMLElement>;
+
+    @Input()
+    hint!: AbstractTuiHint;
 
     constructor(
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
@@ -65,13 +67,13 @@ export class TuiHintBoxComponent {
         @Inject(NgZone) ngZone: NgZone,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
+        @Inject(TUI_MEDIA) private readonly media: TuiMedia,
         @Inject(TuiHintsHostComponent)
         private readonly hintsHost: TuiHintsHostComponent,
     ) {
-        animationFrame$.pipe(tuiZonefree(ngZone), takeUntil(destroy$)).subscribe(() => {
-            this.calculatePosition();
-        });
+        animationFrame$
+            .pipe(tuiZonefree(ngZone), takeUntil(destroy$))
+            .subscribe(() => this.calculatePosition());
     }
 
     @tuiPure
@@ -83,6 +85,10 @@ export class TuiHintBoxComponent {
     @HostBinding('attr.data-mode')
     get mode(): TuiHintModeT | null {
         return this.hint.mode;
+    }
+
+    get isMobile(): boolean {
+        return this.windowRef.innerWidth <= this.media.mobile;
     }
 
     /**
@@ -143,6 +149,7 @@ export class TuiHintBoxComponent {
 
         directions.splice(directions.indexOf(direction), 1);
 
+        // eslint-disable-next-line no-constant-condition
         while (true) {
             switch (direction) {
                 case 'left':

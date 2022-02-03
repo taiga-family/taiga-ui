@@ -60,6 +60,9 @@ export class TuiPaginationComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor
 {
+    @ViewChildren('element', {read: TUI_FOCUSABLE_ITEM_ACCESSOR})
+    private readonly elements: QueryList<TuiFocusableElementAccessor> = EMPTY_QUERY;
+
     @Input()
     @tuiDefaultProp(nonNegativeInteger, 'Must be non-negative integer')
     length = 1;
@@ -102,9 +105,6 @@ export class TuiPaginationComponent
 
     @Output()
     readonly indexChange = new EventEmitter<number>();
-
-    @ViewChildren('element', {read: TUI_FOCUSABLE_ITEM_ACCESSOR})
-    private readonly elements: QueryList<TuiFocusableElementAccessor> = EMPTY_QUERY;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,

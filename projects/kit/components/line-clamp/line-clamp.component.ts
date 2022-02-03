@@ -22,6 +22,12 @@ import {filter, mapTo, pairwise, startWith, switchMap} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLineClampComponent implements AfterViewInit {
+    @ViewChild(PolymorpheusOutletComponent, {read: ElementRef})
+    private readonly outlet?: ElementRef<HTMLElement>;
+
+    private readonly linesLimit$ = new BehaviorSubject(1);
+    private initialized = false;
+
     @Input()
     @tuiDefaultProp()
     set linesLimit(linesLimit: number) {
@@ -35,13 +41,6 @@ export class TuiLineClampComponent implements AfterViewInit {
     @Input()
     @tuiDefaultProp()
     content: PolymorpheusContent = '';
-
-    private readonly linesLimit$ = new BehaviorSubject(1);
-
-    @ViewChild(PolymorpheusOutletComponent, {read: ElementRef})
-    private readonly outlet?: ElementRef<HTMLElement>;
-
-    private initialized = false;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -99,11 +98,11 @@ export class TuiLineClampComponent implements AfterViewInit {
         return !this.outlet ? 0 : this.outlet.nativeElement.scrollHeight + 4 || null;
     }
 
-    ngAfterViewInit() {
-        this.initialized = true;
-    }
-
     // Change detection
     @HostListener('mouseenter')
     markForCheck() {}
+
+    ngAfterViewInit() {
+        this.initialized = true;
+    }
 }

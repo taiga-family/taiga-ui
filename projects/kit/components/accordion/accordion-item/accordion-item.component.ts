@@ -24,6 +24,7 @@ import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
+import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-content.directive';
 
 @Component({
     selector: 'tui-accordion-item',
@@ -45,6 +46,9 @@ export class TuiAccordionItemComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
+
     @Input()
     @HostBinding('class._no-padding')
     @tuiDefaultProp()
@@ -85,11 +89,11 @@ export class TuiAccordionItemComponent
     @Output()
     readonly openChange = new EventEmitter<boolean>();
 
-    @ContentChild(TuiAccordionItemContentDirective)
-    readonly content?: TuiAccordionItemContentDirective;
+    @ContentChild(TuiAccordionItemEagerContentDirective)
+    readonly eagerContent?: TuiAccordionItemEagerContentDirective;
 
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
+    @ContentChild(TuiAccordionItemContentDirective)
+    readonly lazyContent?: TuiAccordionItemContentDirective;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,

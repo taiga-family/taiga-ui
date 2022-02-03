@@ -4,6 +4,7 @@ import {Title} from '@angular/platform-browser';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
+    TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
     TUI_DOC_SEE_ALSO,
@@ -16,7 +17,6 @@ import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
-import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../../../addon-doc/src/tokens/example-content-processor';
 import {PROMPT_PROVIDER} from '../customization/dialogs/examples/1/prompt/prompt.service';
 import {SEE_ALSO_GROUPS} from './app.const';
 import {LOGO_CONTENT} from './logo/logo.component';
@@ -56,8 +56,7 @@ export const APP_PROVIDERS = [
     {
         provide: TUI_DOC_SOURCE_CODE,
         useValue: (context: TuiDocSourceCodePathOptions) => {
-            const link =
-                'https://github.com/TinkoffCreditSystems/taiga-ui/tree/main/projects';
+            const link = 'https://github.com/tinkoff/taiga-ui/tree/main/projects';
 
             if (!context.package) {
                 return null;

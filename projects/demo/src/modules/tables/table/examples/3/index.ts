@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
 import {ValidatorFn} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {defaultSort, TuiComparator} from '@taiga-ui/addon-table';
 import {TuiDay} from '@taiga-ui/cdk';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 interface Item {
     readonly name: string;
@@ -22,12 +21,9 @@ interface Item {
     encapsulation,
 })
 export class TuiTableExample3 {
-    readonly options = {updateOn: 'blur'};
+    readonly options = {updateOn: 'blur'} as const;
 
     readonly units = ['items', 'kg', 'm'];
-
-    readonly minPrice: ValidatorFn = ({value}) =>
-        value > 400 ? null : {minPrice: 'Price must be above $400'};
 
     pythons: readonly Item[] = [
         {
@@ -78,6 +74,9 @@ export class TuiTableExample3 {
     ];
 
     readonly columns = ['name', 'price', 'quantity', 'unit', 'total'] as const;
+
+    readonly minPrice: ValidatorFn = ({value}) =>
+        value > 400 ? null : {minPrice: 'Price must be above $400'};
 
     readonly totalSorter: TuiComparator<Item> = (a, b) =>
         defaultSort(a.price * a.quantity, b.price * b.quantity);

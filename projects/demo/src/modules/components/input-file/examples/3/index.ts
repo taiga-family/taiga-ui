@@ -1,12 +1,11 @@
 import {ChangeDetectorRef, Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService, watch} from '@taiga-ui/cdk';
 import {TuiNotificationsService} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit';
 import {combineLatest, Observable, Subject, timer} from 'rxjs';
 import {mapTo, startWith, switchMap, takeUntil} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 class RejectedFile {
     constructor(readonly file: TuiFileLike, readonly reason: string) {}
@@ -44,6 +43,8 @@ function convertRejected({file, reason}: RejectedFile): TuiFileLike {
     encapsulation,
 })
 export class TuiInputFileExample3 {
+    private readonly files$ = new Subject<ReadonlyArray<TuiFileLike>>();
+
     files: ReadonlyArray<TuiFileLike> = [
         {
             name: 'Loading file.txt',
@@ -53,6 +54,7 @@ export class TuiInputFileExample3 {
             src: 'https://tools.ietf.org/html/rfc675',
         },
     ];
+
     loadingFiles: ReadonlyArray<TuiFileLike> = [this.files[0]];
     rejectedFiles: ReadonlyArray<TuiFileLike> = [
         {
@@ -60,8 +62,6 @@ export class TuiInputFileExample3 {
             content: 'Something went wrong this time',
         },
     ];
-
-    private readonly files$ = new Subject<ReadonlyArray<TuiFileLike>>();
 
     constructor(
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,

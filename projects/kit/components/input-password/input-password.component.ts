@@ -57,10 +57,10 @@ export class TuiInputPasswordComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
-    isPasswordHidden = true;
-
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    isPasswordHidden = true;
 
     readonly computedMode$: Observable<TuiBrightness | TuiHintModeT | null> =
         combineLatest([
@@ -85,7 +85,7 @@ export class TuiInputPasswordComponent
         @Inject(TUI_PASSWORD_TEXTS)
         readonly passwordTexts$: Observable<[string, string]>,
         @Inject(TUI_INPUT_PASSWORD_OPTIONS)
-        public readonly options: InputPasswordOptions,
+        readonly options: InputPasswordOptions,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_MODE)
@@ -112,19 +112,8 @@ export class TuiInputPasswordComponent
         return this.getContext(this.textfieldSize.size);
     }
 
-    @tuiPure
-    private getContext(
-        $implicit: TuiSizeS | TuiSizeL,
-    ): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
-        return {$implicit};
-    }
-
     get inputType(): string {
-        return this.isPasswordHidden || !this.hasEyeIcon ? 'password' : 'text';
-    }
-
-    get hasEyeIcon(): boolean {
-        return !(this.disabled || this.readOnly);
+        return this.isPasswordHidden || !this.interactive ? 'password' : 'text';
     }
 
     onValueChange(textValue: string) {
@@ -149,5 +138,12 @@ export class TuiInputPasswordComponent
 
     protected getFallbackValue(): string {
         return '';
+    }
+
+    @tuiPure
+    private getContext(
+        $implicit: TuiSizeS | TuiSizeL,
+    ): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
+        return {$implicit};
     }
 }

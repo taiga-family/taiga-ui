@@ -1,14 +1,15 @@
-import {Plugin, TransformSourceDescription} from 'rollup';
-import {createFilter} from 'rollup-pluginutils';
+import {createFilter} from '@rollup/pluginutils';
+import {Plugin, TransformResult} from 'rollup';
+import {optimize, OptimizedError, OptimizedSvg, OptimizeOptions} from 'svgo';
 
-const SVGO = require('svgo');
+type SvgoResult = OptimizedSvg | OptimizedError;
 
 export interface RollupSvgoConfig {
     readonly include?: string;
 
     readonly exclude?: string;
 
-    readonly options?: any;
+    readonly options?: OptimizeOptions;
 }
 
 export function rollupSvgo({
@@ -17,23 +18,46 @@ export function rollupSvgo({
     options,
 }: RollupSvgoConfig = {}): Plugin {
     const filter = createFilter(include, exclude);
-    const svgo = new SVGO(options);
 
     return {
         name: 'rollupSvgo',
-        async transform(
-            svgString: string,
-            id: string,
-        ): Promise<TransformSourceDescription | any> {
-            if (!filter(id)) {
+        async transform(svgString: string, path: string): Promise<TransformResult> {
+            const skip = !filter(path);
+
+            if (skip) {
+                console.info('\x1b[33m%s\x1b[0m', '[skip]', path);
+
                 return;
             }
 
-            const optimizedSvg = await svgo.optimize(svgString); // TODO add path
+            let data: unknown;
+            let error: unknown;
+
+            try {
+                const result: SvgoResult = await optimize(svgString, {path, ...options});
+
+                data = (result as OptimizedSvg)?.data || {};
+                error = result.error;
+            } catch (err) {
+                error = err.message;
+            }
+
+            if (error) {
+                console.error(
+                    '\x1b[31m%s\x1b[0m',
+                    '[error]',
+                    path,
+                    `\n${svgString}`,
+                    `\n${error}`,
+                );
+                process.exit(1);
+            }
+
+            console.info('\x1b[32m%s\x1b[0m', '[success]', path);
 
             return {
-                code: `export default ${JSON.stringify(optimizedSvg.data)}`,
-                map: null as any, // TODO https://github.com/rollup/rollup/wiki/Plugins#conventions
+                code: `export default ${JSON.stringify(data)}`,
+                map: {mappings: ''},
             };
         },
     };

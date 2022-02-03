@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 
 interface User {
     readonly name: string;
@@ -17,8 +16,6 @@ interface User {
 export class TuiStringifyContentExample1 {
     value = null;
 
-    readonly stringify = ({name, surname}: User) => `${name} ${surname}`;
-
     readonly items = [
         {
             name: 'John',
@@ -29,4 +26,6 @@ export class TuiStringifyContentExample1 {
             surname: 'Idle',
         },
     ];
+
+    readonly stringify = ({name, surname}: User) => `${name} ${surname}`;
 }

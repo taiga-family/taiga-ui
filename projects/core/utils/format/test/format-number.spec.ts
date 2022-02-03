@@ -60,4 +60,8 @@ describe('Number formatting', () => {
     it('add zeros with default behavior', () => {
         expect(formatNumber(12345.6, 2, ',', '.')).toBe('12.345,60');
     });
+
+    it('value with exponent and fractional part with and decimal bigger than precision', () => {
+        expect(formatNumber(1.23e-8, 12)).toBe('0,000000012300');
+    });
 });

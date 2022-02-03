@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 interface Orerations {
     title: string;
@@ -34,10 +33,14 @@ const COMPLETED = {
     encapsulation,
 })
 export class TuiFilterExample2 {
-    identityMatcher: TuiIdentityMatcher<Orerations> = (
-        item1: Orerations,
-        item2: Orerations,
-    ) => item1.title === item2.title;
+    readonly form = new FormGroup({
+        filters: new FormControl([
+            {
+                title: 'Drafts',
+            },
+        ]),
+    });
+
     items: ReadonlyArray<Orerations> = [
         COMPLETED,
         {
@@ -86,13 +89,10 @@ export class TuiFilterExample2 {
         },
     ];
 
-    badgeHandler: TuiHandler<Orerations, number> = item => item.operations.length;
+    identityMatcher: TuiIdentityMatcher<Orerations> = (
+        item1: Orerations,
+        item2: Orerations,
+    ) => item1.title === item2.title;
 
-    readonly form = new FormGroup({
-        filters: new FormControl([
-            {
-                title: 'Drafts',
-            },
-        ]),
-    });
+    badgeHandler: TuiHandler<Orerations, number> = item => item.operations.length;
 }

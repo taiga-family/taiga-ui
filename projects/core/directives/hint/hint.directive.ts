@@ -32,6 +32,8 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
+import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options';
+
 export const HINT_HOVERED_CLASS = '_hint_hovered';
 
 @Directive({
@@ -39,18 +41,16 @@ export const HINT_HOVERED_CLASS = '_hint_hovered';
     providers: [TuiObscuredService, TuiParentsScrollService, TuiDestroyService],
 })
 export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
-    readonly componentHovered$ = new Subject<boolean>();
-
     @Input()
     tuiHintId?: string;
 
     @Input()
     @tuiDefaultProp()
-    tuiHintShowDelay = 500;
+    tuiHintShowDelay: TuiHintOptions['tuiHintShowDelay'] = this.options.tuiHintShowDelay;
 
     @Input()
     @tuiDefaultProp()
-    tuiHintHideDelay = 200;
+    tuiHintHideDelay: TuiHintOptions['tuiHintHideDelay'] = this.options.tuiHintHideDelay;
 
     @Input()
     @tuiDefaultProp()
@@ -70,6 +70,8 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
         this.content = value;
     }
 
+    readonly componentHovered$ = new Subject<boolean>();
+
     constructor(
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
@@ -83,8 +85,9 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
         @Optional()
         @Inject(TuiActiveZoneDirective)
         activeZone: TuiActiveZoneDirective | null,
+        @Inject(TUI_HINT_OPTIONS) protected readonly options: TuiHintOptions,
     ) {
-        super(elementRef, hintService, activeZone);
+        super(elementRef, hintService, activeZone, options);
 
         // @bad TODO: Use private provider
         combineLatest(

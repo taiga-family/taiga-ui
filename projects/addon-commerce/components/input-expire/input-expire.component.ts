@@ -40,6 +40,9 @@ export class TuiInputExpireComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly input?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     autocompleteEnabled = false;
@@ -55,9 +58,6 @@ export class TuiInputExpireComponent
         pipe: tuiCreateAutoCorrectedExpirePipe(),
         guide: false,
     };
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly input?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()

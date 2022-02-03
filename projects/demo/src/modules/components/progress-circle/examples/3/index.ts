@@ -1,10 +1,9 @@
 import {Component, Inject} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
 import {of, timer} from 'rxjs';
 import {map, startWith, takeWhile} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-progress-circle-example-3',

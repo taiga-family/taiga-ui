@@ -43,6 +43,7 @@ import {
     TUI_DIGIT_REGEXP,
     TUI_MODE,
     TUI_NON_DIGIT_REGEXP,
+    TUI_TEXTFIELD_APPEARANCE,
     TuiBrightness,
     TuiDataListComponent,
     TuiDataListDirective,
@@ -96,6 +97,17 @@ export class TuiInputCardGroupedComponent
     extends AbstractTuiNullableControl<TuiCard>
     implements TuiFocusableElementAccessor, TuiDataListHost<Partial<TuiCard>>
 {
+    @ViewChild('inputCard')
+    private readonly inputCard?: ElementRef<HTMLInputElement>;
+
+    @ViewChild('inputExpire')
+    private readonly inputExpire?: ElementRef<HTMLInputElement>;
+
+    @ViewChild('inputCVC')
+    private readonly inputCVC?: ElementRef<HTMLInputElement>;
+
+    private expireInert = false;
+
     @Input()
     @tuiDefaultProp()
     autocompleteEnabled = false;
@@ -128,6 +140,12 @@ export class TuiInputCardGroupedComponent
     @Output()
     readonly binChange = new EventEmitter<string | null>();
 
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    readonly dropdown: PolymorpheusContent = '';
+
+    @ContentChild(TuiDataListComponent)
+    readonly datalist?: TuiDataListComponent<TuiCard>;
+
     exampleTextCVC = '000';
 
     maskCVC: TuiTextMaskOptions = {
@@ -155,23 +173,6 @@ export class TuiInputCardGroupedComponent
 
     open = false;
 
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly dropdown: PolymorpheusContent = '';
-
-    @ContentChild(TuiDataListComponent)
-    readonly datalist?: TuiDataListComponent<TuiCard>;
-
-    @ViewChild('inputCard')
-    private readonly inputCard?: ElementRef<HTMLInputElement>;
-
-    @ViewChild('inputExpire')
-    private readonly inputExpire?: ElementRef<HTMLInputElement>;
-
-    @ViewChild('inputCVC')
-    private readonly inputCVC?: ElementRef<HTMLInputElement>;
-
-    private expireInert = false;
-
     constructor(
         @Optional()
         @Self()
@@ -182,6 +183,8 @@ export class TuiInputCardGroupedComponent
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_INPUT_CARD_GROUPED_TEXTS)
         readonly cardGroupedTexts$: Observable<TuiCardGroupedTexts>,
+        @Inject(TUI_TEXTFIELD_APPEARANCE)
+        readonly appearance: string,
     ) {
         super(control, changeDetectorRef);
     }
@@ -306,6 +309,19 @@ export class TuiInputCardGroupedComponent
         return this.cardPrefilled ? `*${this.card.slice(-4)}` : '*';
     }
 
+    @HostListener('keydown.esc')
+    onEsc() {
+        this.open = false;
+    }
+
+    @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
+    @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
+    onArrow(element: HTMLElement, step: number) {
+        this.open = this.hasDropdown;
+        this.changeDetectorRef.detectChanges();
+        this.datalist?.onKeyDownArrow(element, step);
+    }
+
     handleOption(option: Partial<TuiCard>) {
         const {card = '', expire = '', cvc = ''} = option;
         const {bin} = this;
@@ -385,19 +401,6 @@ export class TuiInputCardGroupedComponent
 
     onScroll(element: HTMLElement) {
         element.scrollLeft = 0;
-    }
-
-    @HostListener('keydown.esc')
-    onEsc() {
-        this.open = false;
-    }
-
-    @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
-    @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
-    onArrow(element: HTMLElement, step: number) {
-        this.open = this.hasDropdown;
-        this.changeDetectorRef.detectChanges();
-        this.datalist?.onKeyDownArrow(element, step);
     }
 
     clear() {

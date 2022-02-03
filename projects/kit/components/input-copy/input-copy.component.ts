@@ -51,6 +51,11 @@ export class TuiInputCopyComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    private readonly copy$ = new Subject<void>();
+
     @Input()
     @tuiDefaultProp()
     successMessage: PolymorpheusContent = '';
@@ -62,11 +67,6 @@ export class TuiInputCopyComponent
     @Input()
     @tuiDefaultProp()
     messageMode: TuiHintModeT | null = null;
-
-    private readonly copy$ = new Subject<void>();
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()

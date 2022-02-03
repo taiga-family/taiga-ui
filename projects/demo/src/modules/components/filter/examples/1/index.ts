@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBooleanHandler} from '@taiga-ui/cdk';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-filter-example-1',
@@ -13,6 +12,10 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiFilterExample1 {
+    readonly form = new FormGroup({
+        filters: new FormControl(['Food']),
+    });
+
     readonly items = [
         'News',
         'Food',
@@ -25,8 +28,4 @@ export class TuiFilterExample1 {
     ];
 
     disabledItemHandler: TuiBooleanHandler<string> = item => item.length < 7;
-
-    readonly form = new FormGroup({
-        filters: new FormControl(['Food']),
-    });
 }

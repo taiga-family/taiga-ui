@@ -1,7 +1,6 @@
 <ng-template #template><ng-content></ng-content></ng-template>
 <div
     polymorpheus-outlet
-    class="t-content"
     [content]="content"
     [context]="{$implicit: this, template: template}"
 ></div>

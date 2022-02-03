@@ -1,5 +1,10 @@
-<tui-svg
-    class="icon"
-    [class.icon_rotated]="dropdown.openChange | async"
-    [src]="arrowIcon"
-></tui-svg>
+<span
+    polymorpheus-outlet
+    class="t-icon"
+    [class.t-icon_rotated]="dropdown.openChange | async"
+    [content]="arrowIcon"
+>
+    <ng-template let-icon>
+        <tui-svg [src]="icon"></tui-svg>
+    </ng-template>
+</span>

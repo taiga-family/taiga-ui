@@ -1,12 +1,11 @@
 import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiNotification,
     TuiNotificationContentContext,
     TuiNotificationsService,
 } from '@taiga-ui/core';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 @Component({
     selector: 'tui-notifications-example-2',
@@ -15,13 +14,13 @@ import {encapsulation} from '../../../../../view-encapsulation';
     encapsulation,
 })
 export class TuiNotificationsExampleComponent2 {
-    money = 1000;
-
     @ViewChild('withdrawTemplate')
     withdrawTemplate?: TemplateRef<TuiNotificationContentContext>;
 
     @ViewChild('depositTemplate')
     depositTemplate?: TemplateRef<TuiNotificationContentContext>;
+
+    money = 1000;
 
     constructor(
         @Inject(TuiNotificationsService)

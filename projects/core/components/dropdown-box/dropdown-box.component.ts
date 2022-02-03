@@ -49,12 +49,6 @@ import {takeUntil, throttleTime} from 'rxjs/operators';
     animations: [tuiDropdownAnimation],
 })
 export class TuiDropdownBoxComponent implements AfterViewChecked {
-    @HostBinding('@tuiDropdownAnimation')
-    dropdownAnimation!: TuiAnimationOptions;
-
-    @ViewChild(TuiActiveZoneDirective)
-    readonly activeZone?: TuiActiveZoneDirective;
-
     private readonly animationTop = {
         value: TuiDropdownAnimation.FadeInTop,
         ...this.options,
@@ -69,6 +63,12 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
      * Is previous position on top (to prevent jumping up and down on scroll)
      */
     private prevDirectionIsTop = false;
+
+    @HostBinding('@tuiDropdownAnimation')
+    dropdownAnimation!: TuiAnimationOptions;
+
+    @ViewChild(TuiActiveZoneDirective)
+    readonly activeZone?: TuiActiveZoneDirective;
 
     @ViewChild('content', {read: ElementRef})
     readonly contentElementRef?: ElementRef<HTMLElement>;

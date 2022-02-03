@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-mobile",
-    "version": "2.24.0",
+    "version": "2.32.0",
     "description": "Extension package for Taiga UI that adds support for mobile specific behaviors such as custom data pickers, dropdowns, etc.",
     "keywords": [
         "angular",
@@ -8,20 +8,17 @@
         "mobile"
     ],
     "license": "Apache-2.0",
-    "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
-    "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "homepage": "https://github.com/tinkoff/taiga-ui",
     "peerDependencies": {
         "@angular/cdk": ">=9.0.0",
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
-        "@tinkoff/ng-polymorpheus": "3.1.12",
-        "@taiga-ui/cdk": "2.24.0",
-        "@taiga-ui/core": "2.24.0",
-        "@taiga-ui/kit": "2.24.0",
+        "@ng-web-apis/common": ">=1.12.1",
+        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
+        "@taiga-ui/cdk": "2.32.0",
+        "@taiga-ui/core": "2.32.0",
+        "@taiga-ui/kit": "2.32.0",
         "rxjs": ">=6.0.0"
-    },
-    "devDependencies": {
-        "@taiga-ui/core": "2.24.0",
-        "@taiga-ui/kit": "2.24.0"
     }
 }

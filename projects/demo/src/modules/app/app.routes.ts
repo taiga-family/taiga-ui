@@ -196,6 +196,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/carousel',
+        loadChildren: () =>
+            import(`../components/carousel/carousel.module`).then(
+                m => m.ExampleTuiCarouselModule,
+            ),
+        data: {
+            title: 'Carousel',
+        },
+    },
+    {
         path: 'components/card',
         loadChildren: () =>
             import(`../components/card/card.module`).then(m => m.ExampleTuiCardModule),
@@ -712,6 +722,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/rating',
+        loadChildren: () =>
+            import(`../components/rating/rating.module`).then(
+                m => m.ExampleTuiRatingModule,
+            ),
+        data: {
+            title: 'Rating',
+        },
+    },
+    {
         path: 'components/range',
         loadChildren: () =>
             import(`../components/range/range.module`).then(m => m.ExampleTuiRangeModule),
@@ -778,6 +798,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/preview',
+        loadChildren: () =>
+            import(`../components/preview/preview.module`).then(
+                m => m.ExampleTuiPreviewModule,
+            ),
+        data: {
+            title: 'Preview',
+        },
+    },
+    {
         path: 'components/svg',
         loadChildren: () =>
             import(`../components/svg/svg.module`).then(m => m.ExampleTuiSvgModule),
@@ -829,6 +859,16 @@ export const ROUTES = [
             ),
         data: {
             title: 'PrimitiveTextfield',
+        },
+    },
+    {
+        path: 'components/pdf-viewer',
+        loadChildren: () =>
+            import(`../components/pdf-viewer/pdf-viewer.module`).then(
+                m => m.ExampleTuiPdfViewerModule,
+            ),
+        data: {
+            title: 'PdfViewer',
         },
     },
     {
@@ -940,6 +980,16 @@ export const ROUTES = [
         },
     },
     // CHARTS
+    {
+        path: 'components/arc-chart',
+        loadChildren: () =>
+            import(`../charts/arc-chart/arc-chart.module`).then(
+                m => m.ExampleTuiArcChartModule,
+            ),
+        data: {
+            title: 'ArcChart',
+        },
+    },
     {
         path: 'components/axes',
         loadChildren: () =>
@@ -1116,6 +1166,16 @@ export const ROUTES = [
             ),
         data: {
             title: 'ActiveZone',
+        },
+    },
+    {
+        path: 'directives/copy-processor',
+        loadChildren: () =>
+            import(`../directives/copy-processor/copy-processor.module`).then(
+                m => m.ExampleTuiCopyProcessorModule,
+            ),
+        data: {
+            title: 'CopyProcessor',
         },
     },
     {

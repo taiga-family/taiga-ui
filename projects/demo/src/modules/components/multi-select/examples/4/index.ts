@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {isNumber, TUI_DEFAULT_MATCHER, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {Subject, timer} from 'rxjs';
 import {map, mapTo, shareReplay, startWith, switchMap} from 'rxjs/operators';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
 
 const DICTIONARY = [
     {id: 1, name: 'Luke Skywalker'},
@@ -22,12 +21,12 @@ const DICTIONARY = [
 })
 export class TuiMultiSelectExample4 {
     // Server request emulation
-    private server$ = timer(5000).pipe(
+    private readonly server$ = timer(5000).pipe(
         mapTo(DICTIONARY),
         shareReplay({refCount: true, bufferSize: 1}),
     );
 
-    private search$ = new Subject<string>();
+    private readonly search$ = new Subject<string>();
 
     // Items only hold IDs
     readonly items$ = this.search$.pipe(

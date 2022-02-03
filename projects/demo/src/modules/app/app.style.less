@@ -1,10 +1,12 @@
+@import 'taiga-ui-global';
+@import 'taiga-ui-theme';
 @import 'taiga-ui-local';
 
-:host {
+app {
     display: block;
 }
 
-.christmas {
+.app-christmas {
     position: absolute;
     left: 0.3125rem;
     top: 0.4375rem;
@@ -13,25 +15,25 @@
     transform: rotate(20deg);
     margin-left: 1.25rem;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         left: 2.5rem;
     }
 }
 
-.version {
+.app-version {
     margin: 1em 0;
 }
 
-.link {
+.app-link {
     font-weight: bold;
     height: 1.5rem;
 
-    @media @mobile-m {
+    :host-context(tui-root._mobile) & {
         font-size: 0;
     }
 }
 
-.github {
+.app-github {
     width: 1.5rem;
     height: 1.5rem;
     margin: 0 0.25rem 0 1rem;

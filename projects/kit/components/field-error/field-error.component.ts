@@ -16,7 +16,8 @@ import {
 import {tuiDefaultProp, tuiPure, TuiValidationError} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, merge, Observable} from 'rxjs';
+import {EMPTY, isObservable, merge, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 const EMPTY_RECORD = {};
 
@@ -52,7 +53,10 @@ export class TuiFieldErrorComponent {
         @Inject(FormGroupDirective)
         private readonly formGroup: FormGroupDirective | null,
         @Inject(TUI_VALIDATION_ERRORS)
-        private readonly validationErrors: Record<string, PolymorpheusContent>,
+        private readonly validationErrors: Record<
+            string,
+            PolymorpheusContent | Observable<PolymorpheusContent>
+        >,
     ) {
         if (this.ngControl) {
             this.ngControl.valueAccessor = this;
@@ -67,8 +71,14 @@ export class TuiFieldErrorComponent {
         );
     }
 
-    get computedError(): TuiValidationError | null {
+    get computedError(): TuiValidationError | Observable<TuiValidationError> | null {
         return (this.invalid && this.touched && this.error) || null;
+    }
+
+    get isObservable() {
+        const {errorId} = this;
+
+        return isObservable(this.validationErrors[errorId]);
     }
 
     registerOnChange() {}
@@ -79,7 +89,7 @@ export class TuiFieldErrorComponent {
 
     writeValue() {}
 
-    private get error(): TuiValidationError | null {
+    private get error(): TuiValidationError | Observable<TuiValidationError> | null {
         const {errorId} = this;
 
         if (!errorId) {
@@ -142,14 +152,22 @@ export class TuiFieldErrorComponent {
     @tuiPure
     private getError(
         firstError: any,
-        errorContent?: PolymorpheusContent,
-    ): TuiValidationError | null {
+        errorContent?: PolymorpheusContent | Observable<PolymorpheusContent>,
+    ): TuiValidationError | Observable<TuiValidationError> | null {
         if (firstError instanceof TuiValidationError) {
             return firstError;
         }
 
-        return errorContent === undefined && typeof firstError === 'string'
-            ? new TuiValidationError(firstError)
-            : new TuiValidationError(errorContent || '', firstError);
+        if (errorContent === undefined && typeof firstError === 'string') {
+            return new TuiValidationError(firstError);
+        }
+
+        if (isObservable(errorContent)) {
+            return errorContent.pipe(
+                map(error => new TuiValidationError(error || '', firstError)),
+            );
+        }
+
+        return new TuiValidationError(errorContent || '', firstError);
     }
 }

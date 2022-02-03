@@ -1,4 +1,5 @@
-declare module '*';
+declare module '!!raw-loader!*';
+declare module 'highlight*';
 
 /* SystemJS module definition */
 declare var module: NodeModule;
@@ -8,12 +9,6 @@ interface NodeModule {
 }
 
 declare module '!!file-loader!*' {
-    const result: string;
-
-    export = result;
-}
-
-declare module '!!raw-loader!*' {
     const result: string;
 
     export = result;

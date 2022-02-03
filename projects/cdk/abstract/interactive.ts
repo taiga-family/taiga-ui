@@ -8,19 +8,13 @@ const TUI = 'tui_interactive_';
  */
 @Directive()
 export abstract class AbstractTuiInteractive {
-    private readonly autoIdString: string;
-
     private static autoId = 0;
 
     abstract disabled: boolean;
 
-    hovered = false;
-
-    pressed = false;
-
-    focusVisible = false;
-
     abstract focused: boolean;
+
+    private readonly autoIdString: string;
 
     @Input()
     @tuiDefaultProp()
@@ -60,7 +54,13 @@ export abstract class AbstractTuiInteractive {
     @Output()
     readonly focusVisibleChange = new EventEmitter<boolean>();
 
-    constructor() {
+    hovered = false;
+
+    pressed = false;
+
+    focusVisible = false;
+
+    protected constructor() {
         this.autoIdString = `${TUI}${AbstractTuiInteractive.autoId++}${Date.now()}`;
     }
 
@@ -94,7 +94,7 @@ export abstract class AbstractTuiInteractive {
     }
 
     get id(): string {
-        return !!this.nativeId ? this.nativeId : this.autoIdString;
+        return this.nativeId ? this.nativeId : this.autoIdString;
     }
 
     protected updateHovered(hovered: boolean) {

@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {EMPTY_ARRAY, TuiHandler} from '@taiga-ui/cdk';
-
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 
 interface TreeNode {
     readonly text: string;
@@ -16,9 +15,6 @@ interface TreeNode {
     encapsulation,
 })
 export class TuiTreeExample4 {
-    readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
-        item.children || EMPTY_ARRAY;
-
     readonly data: TreeNode = {
         text: 'Topmost',
         children: [
@@ -44,6 +40,9 @@ export class TuiTreeExample4 {
     };
 
     readonly map = new Map<TreeNode, boolean>();
+
+    readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
+        item.children || EMPTY_ARRAY;
 
     toggleTopmost() {
         this.map.set(this.data, !this.map.get(this.data));

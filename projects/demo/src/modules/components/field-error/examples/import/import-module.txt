@@ -7,7 +7,6 @@ import {TuiFieldErrorModule} from '@taiga-ui/kit';
     imports: [
         ...
         ReactiveFormsModule,
-        TuiFieldErrorModule,
-        TuiContentModule
+        TuiFieldErrorModule
     ],
 ...

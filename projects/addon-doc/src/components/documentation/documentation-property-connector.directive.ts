@@ -12,6 +12,8 @@ import {
 import {ActivatedRoute, Params, UrlSerializer} from '@angular/router';
 import {BehaviorSubject, Subject} from 'rxjs';
 
+import {coerceValue} from '../../utils/coerce-value';
+
 const SERIALIZED_SUFFIX = '$';
 
 export type DocumentationPropertyType = 'input' | 'output' | 'input-output' | null;
@@ -43,7 +45,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     documentationPropertyValues: ReadonlyArray<T> | null = null;
 
     @Output()
-    readonly documentationPropertyValueChange = new EventEmitter<T>();
+    readonly documentationPropertyValueChange = new EventEmitter<T | null>();
 
     readonly changed$ = new Subject<void>();
 
@@ -85,48 +87,45 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         this.changed$.next();
     }
 
-    onValueChange(value: T) {
+    onValueChange(value: T | null) {
         this.documentationPropertyValue = value;
         this.documentationPropertyValueChange.emit(value);
         this.setQueryParam(value);
     }
 
-    private parseParams(params: Params) {
-        if (
-            !params[this.documentationPropertyName] &&
-            !params[this.documentationPropertyName + SERIALIZED_SUFFIX]
-        ) {
-            return;
-        }
+    emitEvent(event: unknown) {
+        // For more convenient debugging
+        console.info(this.attrName, event);
 
-        const isValueAvailableByKey =
-            !!params[this.documentationPropertyName + SERIALIZED_SUFFIX];
-
-        if (isValueAvailableByKey && this.documentationPropertyValues) {
-            this.onValueChange(
-                this.documentationPropertyValues[
-                    params[this.documentationPropertyName + SERIALIZED_SUFFIX]
-                ],
-            );
-
-            return;
-        }
-
-        this.onValueChange(
-            !isNaN(Number(params[this.documentationPropertyName]))
-                ? Number(params[this.documentationPropertyName])
-                : params[this.documentationPropertyName],
-        );
+        this.emits$.next(this.emits$.value + 1);
     }
 
-    private setQueryParam(value: T) {
+    private parseParams(params: Params) {
+        const propertyValue: string | undefined = params[this.documentationPropertyName];
+        const propertyValueWithSuffix: string | number | undefined =
+            params[`${this.documentationPropertyName}${SERIALIZED_SUFFIX}`];
+
+        if (!propertyValue && !propertyValueWithSuffix) {
+            return;
+        }
+
+        const value =
+            !!propertyValueWithSuffix && this.documentationPropertyValues
+                ? this.documentationPropertyValues[propertyValueWithSuffix as number]
+                : coerceValue(propertyValue);
+
+        this.onValueChange(value as T);
+    }
+
+    private setQueryParam(value: T | string | number | boolean | null) {
         const tree = this.urlSerializer.parse(this.locationRef.path());
 
         const isValueAvailableByKey = value instanceof Object;
         const computedValue =
             isValueAvailableByKey && this.documentationPropertyValues
-                ? this.documentationPropertyValues.indexOf(value)
+                ? this.documentationPropertyValues.indexOf(value as T)
                 : value;
+
         const suffix = isValueAvailableByKey ? SERIALIZED_SUFFIX : '';
         const propName = this.documentationPropertyName + suffix;
 
@@ -136,12 +135,5 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         };
 
         this.locationRef.go(String(tree));
-    }
-
-    emitEvent(event: unknown): void {
-        // For more convenient debugging
-        console.log(this.attrName, event);
-
-        this.emits$.next(this.emits$.value + 1);
     }
 }

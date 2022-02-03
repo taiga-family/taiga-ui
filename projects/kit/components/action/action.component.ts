@@ -33,6 +33,9 @@ import {
     ],
 })
 export class TuiActionComponent extends AbstractTuiInteractive {
+    @ViewChild('focusableElement')
+    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
+
     @Input()
     @tuiDefaultProp()
     icon = '';
@@ -40,9 +43,6 @@ export class TuiActionComponent extends AbstractTuiInteractive {
     readonly isLink = this.elementRef.nativeElement.tagName.toLowerCase() === 'a';
 
     readonly disabled = false;
-
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     constructor(
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,

@@ -20,6 +20,72 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         tuiAssert.assert(TuiMonth.isValidMonth(year, month));
     }
 
+    /**
+     * Tests month and year for validity
+     */
+    static isValidMonth(year: number, month: number): boolean {
+        return TuiYear.isValidYear(year) && TuiMonth.isValidMonthPart(month);
+    }
+
+    /**
+     * Returns number of days in a month
+     */
+    static getMonthDaysCount(month: number, isLeapYear: boolean): number {
+        tuiAssert.assert(TuiMonth.isValidMonthPart(month));
+
+        switch (month) {
+            case TuiMonthNumber.February:
+                return isLeapYear ? 29 : 28;
+            case TuiMonthNumber.April:
+            case TuiMonthNumber.June:
+            case TuiMonthNumber.September:
+            case TuiMonthNumber.November:
+                return 30;
+            default:
+                return 31;
+        }
+    }
+
+    /**
+     * Returns current month and year based on local time zone
+     * @nosideeffects
+     */
+    static currentLocal(): TuiMonth {
+        const nativeDate = new Date();
+
+        return new TuiMonth(nativeDate.getFullYear(), nativeDate.getMonth());
+    }
+
+    /**
+     * Returns current month and year based on UTC
+     */
+    static currentUtc(): TuiMonth {
+        const nativeDate = new Date();
+
+        return new TuiMonth(nativeDate.getUTCFullYear(), nativeDate.getUTCMonth());
+    }
+
+    static lengthBetween(from: TuiMonth, to: TuiMonth): number {
+        const absoluteFrom = from.month + from.year * 12;
+        const absoluteTo = to.month + to.year * 12;
+
+        return absoluteTo - absoluteFrom;
+    }
+
+    /**
+     * Normalizes number by clamping it between min and max month
+     */
+    protected static normalizeMonthPart(month: number): number {
+        return normalizeToIntNumber(month, MIN_MONTH, MAX_MONTH);
+    }
+
+    /**
+     * Tests month for validity
+     */
+    private static isValidMonthPart(month: number): boolean {
+        return Number.isInteger(month) && inRange(month, MIN_MONTH, MAX_MONTH + 1);
+    }
+
     get formattedMonthPart(): string {
         return padStart((this.month + 1).toString(), 2, '0');
     }
@@ -151,71 +217,5 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      */
     toUtcNativeDate(): Date {
         return new Date(Date.UTC(this.year, this.month));
-    }
-
-    /**
-     * Tests month and year for validity
-     */
-    static isValidMonth(year: number, month: number): boolean {
-        return TuiYear.isValidYear(year) && TuiMonth.isValidMonthPart(month);
-    }
-
-    /**
-     * Returns number of days in a month
-     */
-    static getMonthDaysCount(month: number, isLeapYear: boolean): number {
-        tuiAssert.assert(TuiMonth.isValidMonthPart(month));
-
-        switch (month) {
-            case TuiMonthNumber.February:
-                return isLeapYear ? 29 : 28;
-            case TuiMonthNumber.April:
-            case TuiMonthNumber.June:
-            case TuiMonthNumber.September:
-            case TuiMonthNumber.November:
-                return 30;
-            default:
-                return 31;
-        }
-    }
-
-    /**
-     * Returns current month and year based on local time zone
-     * @nosideeffects
-     */
-    static currentLocal(): TuiMonth {
-        const nativeDate = new Date();
-
-        return new TuiMonth(nativeDate.getFullYear(), nativeDate.getMonth());
-    }
-
-    /**
-     * Returns current month and year based on UTC
-     */
-    static currentUtc(): TuiMonth {
-        const nativeDate = new Date();
-
-        return new TuiMonth(nativeDate.getUTCFullYear(), nativeDate.getUTCMonth());
-    }
-
-    static lengthBetween(from: TuiMonth, to: TuiMonth): number {
-        const absoluteFrom = from.month + from.year * 12;
-        const absoluteTo = to.month + to.year * 12;
-
-        return absoluteTo - absoluteFrom;
-    }
-
-    /**
-     * Normalizes number by clamping it between min and max month
-     */
-    protected static normalizeMonthPart(month: number): number {
-        return normalizeToIntNumber(month, MIN_MONTH, MAX_MONTH);
-    }
-
-    /**
-     * Tests month for validity
-     */
-    private static isValidMonthPart(month: number): boolean {
-        return Number.isInteger(month) && inRange(month, MIN_MONTH, MAX_MONTH + 1);
     }
 }

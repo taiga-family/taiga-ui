@@ -1,5 +1,6 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TUI_DEFAULT_MATCHER,
     TUI_DEFAULT_STRINGIFY,
@@ -31,7 +32,6 @@ import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/decl
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -57,6 +57,9 @@ class Account {
     ],
 })
 export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
+    @ViewChild('valueTemplateContent')
+    private readonly valueTemplateRef: PolymorpheusContent = '';
+
     readonly exampleDeclareForm = exampleDeclareForm;
     readonly exampleImportModule = exampleImportModule;
     readonly exampleInsertTemplate = exampleInsertTemplate;
@@ -133,9 +136,6 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     identityMatcher = this.identityMatcherVariants[0];
 
     readonly control = new FormControl(null, Validators.required);
-
-    @ViewChild('valueTemplateContent')
-    private valueTemplateRef: PolymorpheusContent = '';
 
     get valueContent(): PolymorpheusContent {
         return this.valueTemplateRef && this.selectedValueTemplate

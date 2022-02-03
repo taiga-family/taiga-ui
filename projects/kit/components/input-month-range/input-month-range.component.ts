@@ -52,6 +52,9 @@ export class TuiInputMonthRangeComponent
     extends AbstractTuiNullableControl<TuiMonthRange>
     implements TuiWithOptionalMinMax<TuiMonth>, TuiFocusableElementAccessor
 {
+    @ViewChild(TuiPrimitiveTextfieldComponent)
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
     @Input()
     @tuiDefaultProp()
     min: TuiMonth = TUI_FIRST_DAY;
@@ -66,9 +69,6 @@ export class TuiInputMonthRangeComponent
         ALWAYS_FALSE_HANDLER;
 
     open = false;
-
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     constructor(
         @Optional()
@@ -112,13 +112,10 @@ export class TuiInputMonthRangeComponent
         return `${this.formatMonth(value.from, months)} — ${formattedValueTo}`;
     }
 
-    get canOpen(): boolean {
-        return !this.computedDisabled && !this.readOnly;
-    }
-
     onValueChange(value: string) {
         if (value === '') {
             this.updateValue(null);
+            this.onOpenChange(true);
         }
     }
 

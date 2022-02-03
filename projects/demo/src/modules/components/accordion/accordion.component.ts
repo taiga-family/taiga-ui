@@ -1,5 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Component, ElementRef, Inject, ViewChild} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiCustomEvent} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiSizeS} from '@taiga-ui/core';
 
@@ -15,7 +17,6 @@ import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
 
-import {changeDetection} from '../../../change-detection-strategy';
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
@@ -24,6 +25,9 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiAccordionComponent {
+    @ViewChild('content')
+    content?: ElementRef;
+
     async = false;
     closeOthers = true;
     disabled = false;
@@ -53,6 +57,12 @@ export class ExampleTuiAccordionComponent {
         LESS: example3Less,
     };
 
+    readonly example4: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        LESS: import('!!raw-loader!./examples/4/index.less'),
+    };
+
     readonly bordersVariants = ['all', 'top-bottom'];
 
     borders = this.bordersVariants[0];
@@ -60,9 +70,6 @@ export class ExampleTuiAccordionComponent {
     readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
 
     size: TuiSizeS = this.sizeVariants[1];
-
-    @ViewChild('content')
-    content?: ElementRef;
 
     constructor(@Inject(DOCUMENT) private readonly documentRef: Document) {}
 

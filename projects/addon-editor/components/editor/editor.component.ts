@@ -75,6 +75,14 @@ export function elementFactory(editor: TuiEditorComponent): ElementRef | null {
     ],
 })
 export class TuiEditorComponent extends AbstractTuiControl<string> implements OnDestroy {
+    @ViewChild(TuiToolbarComponent)
+    private readonly toolbar?: TuiToolbarComponent;
+
+    @ViewChild(TuiEditLinkComponent, {read: ElementRef})
+    private readonly editLink?: ElementRef<HTMLElement>;
+
+    private readonly resizeSubscription?: Subscription;
+
     @Input()
     @tuiDefaultProp()
     exampleText = '';
@@ -91,19 +99,6 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
     readonly focusableElement?: TuiDesignModeDirective;
 
     linkDropdownEnabled = false;
-
-    @ViewChild(TuiToolbarComponent)
-    private readonly toolbar?: TuiToolbarComponent;
-
-    @ViewChild(TuiEditLinkComponent, {read: ElementRef})
-    private readonly editLink?: ElementRef<HTMLElement>;
-
-    private readonly isSelectionLink: TuiBooleanHandler<Range> = ({
-        startContainer,
-        endContainer,
-    }) => isNodeIn(startContainer, 'a') && isNodeIn(endContainer, 'a');
-
-    private resizeSubscription?: Subscription;
 
     constructor(
         @Inject(DOCUMENT)
@@ -165,10 +160,6 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
             !!this.focusableElement.documentRef &&
             this.focusableElement.documentRef.readyState === 'complete'
         );
-    }
-
-    get interactive(): boolean {
-        return !this.readOnly && !this.computedDisabled;
     }
 
     get hasExampleText(): boolean {
@@ -264,6 +255,11 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
     protected getFallbackValue(): string {
         return '';
     }
+
+    private readonly isSelectionLink: TuiBooleanHandler<Range> = ({
+        startContainer,
+        endContainer,
+    }) => isNodeIn(startContainer, 'a') && isNodeIn(endContainer, 'a');
 
     private get hasValue(): boolean {
         return !!this.value;

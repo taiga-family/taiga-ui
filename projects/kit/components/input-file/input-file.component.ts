@@ -58,6 +58,8 @@ export class TuiInputFileComponent
     extends AbstractTuiNullableControl<TuiFileLike | ReadonlyArray<TuiFileLike>>
     implements TuiFocusableElementAccessor
 {
+    private dataTransfer: DataTransfer | null = null;
+
     @Input()
     @tuiDefaultProp()
     link: PolymorpheusContent = '';
@@ -100,8 +102,6 @@ export class TuiInputFileComponent
     @ViewChild('input')
     readonly input?: ElementRef<HTMLInputElement>;
 
-    private dataTransfer: DataTransfer | null = null;
-
     constructor(
         @Optional()
         @Self()
@@ -138,10 +138,6 @@ export class TuiInputFileComponent
 
     get focused(): boolean {
         return isNativeFocused(this.nativeFocusableElement);
-    }
-
-    get allowDelete(): boolean {
-        return !this.computedDisabled && !this.readOnly;
     }
 
     get computedLink$(): Observable<PolymorpheusContent> {

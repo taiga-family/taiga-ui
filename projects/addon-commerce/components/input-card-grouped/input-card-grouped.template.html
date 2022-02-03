@@ -1,7 +1,7 @@
 <tui-wrapper
     *ngIf="cardGroupedTexts$ | async as texts"
-    appearance="textfield"
     class="t-common-wrapper"
+    [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="computedDisabled"
     [focused]="computedFocused"

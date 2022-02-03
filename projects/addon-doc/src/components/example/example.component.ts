@@ -8,7 +8,7 @@ import {
     Optional,
 } from '@angular/core';
 import {LOCATION} from '@ng-web-apis/common';
-import {TuiHandler} from '@taiga-ui/cdk';
+import {TUI_IS_CYPRESS, TuiHandler} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -47,9 +47,11 @@ export class TuiDocExampleComponent {
     @Input()
     componentName: string = this.location.pathname.slice(1);
 
-    activeItemIndex = 0;
+    readonly defaultTabIndex = 0;
 
-    readonly defaultTab = this.texts[0];
+    readonly defaultTab = this.texts[this.defaultTabIndex];
+
+    activeItemIndex = this.defaultTabIndex;
 
     readonly copy$ = this.copyTexts$.pipe(map(([copy]) => copy));
 
@@ -75,6 +77,7 @@ export class TuiDocExampleComponent {
             Record<string, string>,
             Record<string, string>
         >,
+        @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
     ) {}
 
     copyExampleLink() {

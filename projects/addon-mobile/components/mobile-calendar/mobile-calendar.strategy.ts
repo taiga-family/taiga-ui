@@ -42,7 +42,7 @@ function reduceCycle(
  * work for {@link TuiMobileCalendarComponent} with years 1906 to 2102
  */
 export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
-    private index$ = new Subject<number>();
+    private readonly index$ = new Subject<number>();
 
     private viewport: CdkVirtualScrollViewport | null = null;
 

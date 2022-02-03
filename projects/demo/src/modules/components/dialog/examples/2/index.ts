@@ -1,9 +1,9 @@
 import {Component, Inject, Injector} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
-import {changeDetection} from '../../../../../change-detection-strategy';
-import {encapsulation} from '../../../../../view-encapsulation';
 import {DialogExampleComponent} from './dialog-example/dialog-example.component';
 
 @Component({
@@ -30,10 +30,10 @@ export class TuiDialogExampleComponent2 {
     showDialog() {
         this.dialog.subscribe({
             next: data => {
-                console.log('Dialog emitted data = ' + data);
+                console.info('Dialog emitted data = ' + data);
             },
             complete: () => {
-                console.log('Dialog closed');
+                console.info('Dialog closed');
             },
         });
     }
