@@ -180,6 +180,21 @@ describe('InputPhoneInternational', () => {
         });
     });
 
+    describe('programmatically patch', () => {
+        initializeTestModule();
+
+        it('should correct update control', done => {
+            const phoneNumber = '+380123456789';
+
+            testComponent.control.valueChanges.subscribe(value => {
+                expect(value).toEqual(phoneNumber);
+                done();
+            });
+            testComponent.countryIsoCode = TuiCountryIsoCode.UA;
+            testComponent.control.patchValue(phoneNumber);
+        });
+    });
+
     describe('phone mask after country code', () => {
         initializeTestModule();
 

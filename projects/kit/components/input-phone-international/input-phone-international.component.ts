@@ -66,15 +66,20 @@ export class TuiInputPhoneInternationalComponent
 
     private readonly staticPath: string | null = null;
 
-    @Input()
+    @Input('countryIsoCode')
     @tuiDefaultProp()
-    countryIsoCode: TuiCountryIsoCode = TuiCountryIsoCode.RU;
+    set isoCode(code: TuiCountryIsoCode) {
+        this.inputPhoneComponent?.writeValue(this.value);
+        this.countryIsoCode = code;
+    }
 
     @Input()
     countries: ReadonlyArray<TuiCountryIsoCode> = [];
 
     @Output()
     readonly countryIsoCodeChange = new EventEmitter<TuiCountryIsoCode>();
+
+    countryIsoCode: TuiCountryIsoCode = TuiCountryIsoCode.RU;
 
     open = false;
 
