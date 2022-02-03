@@ -14,10 +14,10 @@ export class ExampleTuiMobileDialogComponent {
     };
 
     readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.txt'
+        '!!raw-loader!./examples/import/import-module.md'
     );
 
     readonly exampleInsertComponent = import(
-        '!!raw-loader!./examples/import/insert-component.txt'
+        '!!raw-loader!./examples/import/insert-component.md'
     );
 }

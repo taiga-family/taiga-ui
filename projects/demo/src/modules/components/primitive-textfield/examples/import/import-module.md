@@ -1,3 +1,4 @@
+```ts
 import {FormsModule} from '@angular/forms';
 import {TuiPrimitiveTextfieldModule} from '@taiga-ui/core';
 
@@ -10,3 +11,4 @@ import {TuiPrimitiveTextfieldModule} from '@taiga-ui/core';
         TuiPrimitiveTextfieldModule
     ],
 ...
+```

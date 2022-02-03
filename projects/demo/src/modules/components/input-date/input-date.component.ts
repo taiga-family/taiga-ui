@@ -18,10 +18,6 @@ import {
 } from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit';
 
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
@@ -40,9 +36,17 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
     ],
 })
 export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
-    readonly exampleDeclareForm = exampleDeclareForm;
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleDeclareForm = import(
+        '!!raw-loader!./examples/import/declare-form.md'
+    );
+
+    readonly exampleImportModule = import(
+        '!!raw-loader!./examples/import/import-module.md'
+    );
+
+    readonly exampleInsertTemplate = import(
+        '!!raw-loader!./examples/import/insert-template.md'
+    );
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),

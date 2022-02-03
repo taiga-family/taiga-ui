@@ -1,3 +1,4 @@
+```ts
 import {FormControl, FormGroup} from '@angular/forms';
 
 ...
@@ -10,3 +11,4 @@ export class MyComponent {
         testValue: new FormControl(),
     });
 }
+```

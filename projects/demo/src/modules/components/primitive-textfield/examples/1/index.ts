@@ -14,8 +14,8 @@ import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-primitive-textfield-example-1',
-    templateUrl: './template.html',
-    styleUrls: ['./style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

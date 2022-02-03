@@ -47,9 +47,9 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     > = '';
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/component.ts'),
-        HTML: import('!!raw-loader!./examples/1/template.html'),
-        LESS: import('!!raw-loader!./examples/1/style.less'),
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
+        LESS: import('!!raw-loader!./examples/1/index.less'),
     };
 
     readonly example2: TuiDocExample = {
@@ -58,11 +58,11 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     };
 
     readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.txt'
+        '!!raw-loader!./examples/import/import-module.md'
     );
 
     readonly exampleInsertTemplate = import(
-        '!!raw-loader!./examples/import/insert-template.txt'
+        '!!raw-loader!./examples/import/insert-template.md'
     );
 
     readonly themes = ['Taiga UI', 'Bootstrap', 'Material'];

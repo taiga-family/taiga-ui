@@ -1,5 +1,6 @@
+```ts
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiInputModule} from '@taiga-ui/kit';
+import {TuiInputDateModule} from '@taiga-ui/kit';
 
 ...
 
@@ -8,6 +9,7 @@ import {TuiInputModule} from '@taiga-ui/kit';
         ...
         FormsModule,
         ReactiveFormsModule,
-        TuiInputModule
+        TuiInputDateModule,
     ],
 ...
+```

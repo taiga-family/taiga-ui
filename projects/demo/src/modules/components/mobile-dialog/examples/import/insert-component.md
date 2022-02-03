@@ -1,3 +1,4 @@
+```ts
 constructor(private readonly dialogsService: TuiMobileDialogService) {}
 
 // ...
@@ -15,3 +16,4 @@ this.dialogsService
         // Index of clicked button
         console.log(index);
     });
+```

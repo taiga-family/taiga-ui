@@ -6,13 +6,9 @@
     </tui-notification>
 
     <p>
-        <tui-input
-            formControlName="testValue"
-            tuiTextfieldExampleText="mail@mail.ru"
-            [tuiTextfieldCleaner]="true"
-        >
+        <tui-input formControlName="testValue" [tuiTextfieldCleaner]="true">
             Type an email
-            <input tuiTextfield />
+            <input tuiTextfield placeholder="mail@mail.ru" type="email" />
         </tui-input>
     </p>
     <div>
@@ -20,24 +16,22 @@
             <tui-input
                 formControlName="testValue"
                 tuiMode="onDark"
-                tuiTextfieldExampleText="mail@mail.ru"
                 [tuiTextfieldCleaner]="true"
             >
                 Type an email
-                <input tuiTextfield />
+                <input tuiTextfield placeholder="mail@mail.ru" type="email" />
             </tui-input>
         </p>
     </div>
     <div>
         <p class="wrapper wrapper_light">
             <tui-input
-                tuiTextfieldExampleText="mail@mail.ru"
                 formControlName="testValue"
                 tuiMode="onLight"
                 [tuiTextfieldCleaner]="true"
             >
                 Type an email
-                <input tuiTextfield />
+                <input tuiTextfield placeholder="mail@mail.ru" type="email" />
             </tui-input>
         </p>
     </div>

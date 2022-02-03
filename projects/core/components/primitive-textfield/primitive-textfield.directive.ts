@@ -1,7 +1,6 @@
 import {Directive, forwardRef, Inject} from '@angular/core';
 import {AbstractTuiControl} from '@taiga-ui/cdk';
 import {TuiAbstractTextfieldHost} from '@taiga-ui/core/abstract';
-import {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
 
 import {TuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
@@ -15,10 +14,7 @@ import {TuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
         },
     ],
 })
-export class TuiPrimitiveTextfieldDirective
-    extends TuiAbstractTextfieldHost<any>
-    implements TuiTextfieldHost
-{
+export class TuiPrimitiveTextfieldDirective extends TuiAbstractTextfieldHost<any> {
     constructor(
         @Inject(TuiPrimitiveTextfieldComponent)
         private readonly textfield: TuiPrimitiveTextfieldComponent,

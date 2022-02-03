@@ -2,11 +2,10 @@
     <tui-input
         *tuiLet="users$ | async as users"
         formControlName="user"
-        tuiTextfieldExampleText="Type your name or surname"
         [tuiTextfieldCustomContent]="content"
     >
         User
-        <input tuiTextfield />
+        <input tuiTextfield placeholder="Type your name or surname" />
         <ng-container *ngIf="users.length">
             <tui-data-list *tuiDataList>
                 <button
@@ -36,7 +35,6 @@
     </ng-template>
     <tui-input formControlName="account" class="tui-space_vertical-5">
         Account
-        <input tuiTextfield />
         <tui-data-list-wrapper
             *tuiDataList
             [items]="accounts"

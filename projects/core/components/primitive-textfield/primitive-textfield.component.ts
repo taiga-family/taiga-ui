@@ -116,7 +116,7 @@ export class TuiPrimitiveTextfieldComponent
     readonly valueChange = new EventEmitter<string>();
 
     /**
-     * @deprecated TODO: remove
+     * @deprecated TODO: remove in 3.0
      */
     @Output()
     readonly autofilledChange = new EventEmitter<boolean>();

@@ -30,4 +30,17 @@
         background-color: var(--tui-text-02);
     }
     /* stylelint-enable */
+
+    &::placeholder {
+        color: var(--tui-text-03);
+        opacity: 0;
+    }
+
+    :host-context(tui-primitive-textfield[data-mode='onDark'])::placeholder {
+        color: var(--tui-text-03-night);
+    }
+
+    :host-context(tui-primitive-textfield._focused):not(:read-only)::placeholder {
+        opacity: 1;
+    }
 }

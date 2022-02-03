@@ -31,7 +31,7 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
         '[attr.aria-placeholder]': 'controller.exampleText',
         '[attr.aria-invalid]': 'host.invalid',
         '[attr.disabled]': 'host.disabled || null',
-        '[tabIndex]': 'host.focusable ? 1 : 0',
+        '[tabIndex]': 'host.focusable ? 0 : -1',
         '[readOnly]': 'host.readOnly',
         '[value]': 'host.value',
         '(input)': 'host.onValueChange($event.target.value)',
