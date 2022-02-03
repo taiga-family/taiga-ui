@@ -74,13 +74,11 @@ jobs:
         run: |
           npm run concurrently -- \
                              "npm run cy2:run:localhost" \
-                             "npm run cy2:run:localhost" \
                              "npm run cy2:run:localhost"
 
       - name: Run screenshot tests on demo/next
         run: |
           npm run concurrently -- \
-                         "npm run cy2:run:demo:next" \
                          "npm run cy2:run:demo:next" \
                          "npm run cy2:run:demo:next"
 
