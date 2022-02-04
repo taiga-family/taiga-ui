@@ -24,4 +24,14 @@ export class TuiInputPhoneExample1 {
     ];
 
     countryIsoCode = TuiCountryIsoCode.RU;
+
+    contact = {
+        phone: '+375123456789',
+        phoneCountryCode: TuiCountryIsoCode.BY,
+    };
+
+    patchValue() {
+        this.countryIsoCode = this.contact.phoneCountryCode;
+        this.testForm.get('testValue')?.patchValue(this.contact.phone);
+    }
 }

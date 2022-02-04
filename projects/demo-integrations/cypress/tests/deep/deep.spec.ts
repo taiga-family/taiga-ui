@@ -42,16 +42,11 @@ const makeDemoSnapshot = (
             return cy
                 .get(`#demoContent`)
                 .first()
-                .wait(200)
                 .matchImageSnapshot(`${path}/${stepIndex}-${property}-${optionIndex}`);
         });
 };
 
 describe('Deep', () => {
-    beforeEach(() => {
-        cy.viewport(1500, 3200);
-    });
-
     DEEP_PATHS.forEach(path => {
         it(path, () => {
             let counter = 1;

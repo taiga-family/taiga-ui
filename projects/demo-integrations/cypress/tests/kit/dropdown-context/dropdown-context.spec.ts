@@ -1,4 +1,7 @@
-import {DROPDOWN_CONTEXT_PAGE_URL} from '../../../support/shared.entities';
+import {
+    DEFAULT_TIMEOUT_BEFORE_ACTION,
+    DROPDOWN_CONTEXT_PAGE_URL,
+} from '../../../support/shared.entities';
 
 describe('DropdownContext', () => {
     beforeEach(() => {
@@ -10,7 +13,7 @@ describe('DropdownContext', () => {
         cy.get('#contextMenu').find('tr').last().rightclick();
 
         cy.window()
-            .wait(100)
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .matchImageSnapshot(`01-opened-context-menu`, {capture: 'viewport'});
     });
 
@@ -18,11 +21,13 @@ describe('DropdownContext', () => {
         cy.get('#contextMenu').find('tr').eq(1).rightclick();
 
         cy.get('body').type('{downarrow}{downarrow}');
-        cy.window().wait(100).matchImageSnapshot(`02-arrow-down`, {capture: 'viewport'});
+        cy.window()
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .matchImageSnapshot(`02-arrow-down`, {capture: 'viewport'});
 
         cy.focused().click();
         cy.window()
-            .wait(100)
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .matchImageSnapshot(`02-arrow-down-clicked`, {capture: 'viewport'});
     });
 
@@ -39,7 +44,7 @@ describe('DropdownContext', () => {
         cy.get('body').type('{rightarrow}');
 
         cy.window()
-            .wait(100)
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .matchImageSnapshot(`03-arrow-up-right`, {capture: 'viewport'});
     });
 });

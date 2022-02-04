@@ -1,8 +1,11 @@
-import {DIALOG_PAGE_URL} from '../../../support/shared.entities';
+import {
+    DEFAULT_TIMEOUT_BEFORE_ACTION,
+    DIALOG_PAGE_URL,
+} from '../../../support/shared.entities';
 
 describe('Dialogs + browser back navigation', () => {
     /**
-     * Alternative to cy.go('back', {timeout: 0}), which doesnt wait page load event
+     * Alternative to cy.go('back', {timeout: 0}), which doesn't wait page load event
      */
     const goBack = () => {
         cy.window().then(win => win.history.back());
@@ -15,7 +18,6 @@ describe('Dialogs + browser back navigation', () => {
         );
 
     beforeEach(() => {
-        cy.viewport(1280, 720);
         cy.visit('/'); // need to check that browser back navigation is not broken after closing all dialogs
     });
 
@@ -45,7 +47,7 @@ describe('Dialogs + browser back navigation', () => {
                 blackout: ['tui-doc-navigation'],
             });
             goBack();
-            cy.wait(100) // wait for scrollbar
+            cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION) // wait for scrollbar
                 .matchImageSnapshot('4-3-after-second-back-nav', {
                     capture: 'viewport',
                     blackout: ['tui-doc-navigation'],

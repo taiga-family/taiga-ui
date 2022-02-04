@@ -1,4 +1,4 @@
-import {NIGHT_THEME_KEY} from './shared.entities';
+import {DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION, NIGHT_THEME_KEY} from './shared.entities';
 import {stubExternalIcons} from './stub-external-icons.util';
 import {waitAllRequests} from './wait-requests.util';
 
@@ -57,4 +57,6 @@ export const goToDemoPage = (path: string, options: Options = {}) => {
     if (waitAllIcons) {
         waitAllRequests('@icons');
     }
+
+    cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION);
 };

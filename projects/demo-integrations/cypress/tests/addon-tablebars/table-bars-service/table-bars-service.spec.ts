@@ -1,3 +1,5 @@
+import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '../../../support/shared.entities';
+
 describe('TableBarsService', () => {
     it('works', () => {
         cy.viewport(1000, 720);
@@ -7,7 +9,7 @@ describe('TableBarsService', () => {
         cy.get(`tui-table-bar-example-1 button`).first().click();
         cy.getByAutomationId('tui-table-bar__bar')
             .first()
-            .wait(100)
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .matchImageSnapshot('table-bars');
     });
 });
