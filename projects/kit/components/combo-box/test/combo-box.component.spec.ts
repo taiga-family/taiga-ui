@@ -201,7 +201,7 @@ describe('ComboBox', () => {
 
         describe('dropdown', () => {
             it('empty value opens dropdown', () => {
-                testComponent.component.onInput('');
+                testComponent.component.onValueChange('');
                 fixture.detectChanges();
                 expect(testComponent.component.open).toEqual(true);
             });

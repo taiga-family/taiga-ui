@@ -9,13 +9,12 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    identity,
     isPresent,
     itemsQueryListObservable,
     tuiDefaultProp,
     TuiDestroyService,
 } from '@taiga-ui/cdk';
-import {merge} from 'rxjs';
+import {identity, merge} from 'rxjs';
 import {filter, map, mapTo, pairwise, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TuiAccordionItemComponent} from './accordion-item/accordion-item.component';
