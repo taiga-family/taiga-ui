@@ -5,6 +5,7 @@ import {
     ElementRef,
     EventEmitter,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     Output,
@@ -13,8 +14,9 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    isNativeFocused,
+    isNativeFocusedIn,
     setNativeFocused,
+    TuiContextWithImplicit,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -53,6 +55,7 @@ const ICON_PADDING_S = 1.5;
     host: {
         '($.data-mode.attr)': 'mode$',
         '[class._autofilled]': 'autofilled',
+        '[class._label-outside]': 'controller.labelOutside',
     },
 })
 export class TuiPrimitiveTextfieldComponent
@@ -77,7 +80,8 @@ export class TuiPrimitiveTextfieldComponent
     // TODO: Remove null in 3.0
     @Input()
     @tuiDefaultProp()
-    iconContent: PolymorpheusContent | null = null;
+    iconContent: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> | null =
+        null;
 
     @Input()
     @tuiDefaultProp()
@@ -111,6 +115,9 @@ export class TuiPrimitiveTextfieldComponent
     @Output()
     readonly valueChange = new EventEmitter<string>();
 
+    /**
+     * @deprecated TODO: remove in 3.0
+     */
     @Output()
     readonly autofilledChange = new EventEmitter<boolean>();
 
@@ -128,28 +135,31 @@ export class TuiPrimitiveTextfieldComponent
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_PRIMITIVE_TEXTFIELD_OPTIONS)
         readonly options: TuiPrimitiveTextfieldOptions,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {
         super();
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.computedDisabled || !this.focusableElement
-            ? null
-            : this.focusableElement.nativeElement;
+        if (this.computedDisabled || !this.focusableElement) {
+            return null;
+        }
+
+        // TODO: Refactor this after we drop built-in input element
+        return (
+            (this.focusableElement.nativeElement
+                .previousElementSibling as HTMLInputElement | null) ||
+            this.focusableElement.nativeElement
+        );
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return isNativeFocusedIn(this.elementRef.nativeElement);
     }
 
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     get size(): TuiSizeS | TuiSizeL {
         return this.controller.size;
-    }
-
-    @HostBinding('class._label-outside')
-    get labelOutside(): boolean {
-        return this.controller.labelOutside;
     }
 
     @HostBinding('class._invalid')
@@ -157,6 +167,7 @@ export class TuiPrimitiveTextfieldComponent
         return !this.readOnly && !this.disabled && this.invalid;
     }
 
+    @HostBinding('class._hidden')
     get inputHidden(): boolean {
         return !!this.content?.length;
     }
@@ -194,11 +205,13 @@ export class TuiPrimitiveTextfieldComponent
         );
     }
 
-    get borderLeft(): number {
+    @HostBinding('style.--border-start.rem')
+    get borderStart(): number {
         return this.iconAlignLeft ? this.iconPaddingLeft : 0;
     }
 
-    get borderRight(): number {
+    @HostBinding('style.--border-end.rem')
+    get borderEnd(): number {
         return getBorder(
             this.iconAlignRight,
             this.hasCleaner,
@@ -222,6 +235,16 @@ export class TuiPrimitiveTextfieldComponent
             : null;
     }
 
+    get computedId(): string {
+        return this.nativeFocusableElement?.id || '';
+    }
+
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
+    onFocused(focused: boolean) {
+        this.updateFocused(focused);
+    }
+
     @tuiPure
     getIndent$(element: HTMLElement): Observable<number> {
         return fromEvent(element, 'scroll').pipe(map(() => -1 * element.scrollLeft));
@@ -236,15 +259,14 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     onMouseDown(event: MouseEvent) {
-        if (
-            !this.focusableElement ||
-            event.target === this.focusableElement.nativeElement
-        ) {
+        const {nativeFocusableElement} = this;
+
+        if (!nativeFocusableElement || event.target === nativeFocusableElement) {
             return;
         }
 
         event.preventDefault();
-        setNativeFocused(this.focusableElement.nativeElement);
+        setNativeFocused(nativeFocusableElement);
     }
 
     onModelChange(value: string) {
@@ -253,10 +275,6 @@ export class TuiPrimitiveTextfieldComponent
 
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
-    }
-
-    onFocused(focused: boolean) {
-        this.updateFocused(focused);
     }
 
     onAutofilled(autofilled: boolean) {
@@ -268,7 +286,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     private get placeholderRaisable(): boolean {
-        return this.size !== 's' && !this.labelOutside;
+        return this.size !== 's' && !this.controller.labelOutside;
     }
 
     private get hasIcon(): boolean {

@@ -68,7 +68,7 @@ export function inspectAny(data: any, depth: number): string {
     }
 
     if (data instanceof RegExp) {
-        return data.toString();
+        return String(data);
     }
 
     if (Array.isArray(data)) {

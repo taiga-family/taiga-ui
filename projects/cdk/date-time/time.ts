@@ -179,6 +179,6 @@ export class TuiTime implements TuiTimeLike {
     }
 
     private formatTime(time: number, digits: number = 2): string {
-        return padStart(time.toString(), digits, '0');
+        return padStart(String(time), digits, '0');
     }
 }

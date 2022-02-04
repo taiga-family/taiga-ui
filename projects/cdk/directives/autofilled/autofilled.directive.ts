@@ -28,7 +28,7 @@ const STYLE = `
 
 // @dynamic
 @Directive({
-    selector: 'input[tuiAutofilledChange]',
+    selector: '[tuiAutofilledChange]',
     host: {
         class: 'tui-autofill',
     },

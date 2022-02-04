@@ -8,6 +8,7 @@ import {
     TuiButtonModule,
     TuiHintControllerModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -42,6 +43,7 @@ import {ExampleTuiInputDateComponent} from './input-date.component';
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
         TuiFieldErrorModule,
+        TuiNotificationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputDateComponent)),
     ],
     declarations: [

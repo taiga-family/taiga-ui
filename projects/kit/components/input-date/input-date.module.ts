@@ -7,6 +7,7 @@ import {
     TuiLinkModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
+    TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
@@ -14,6 +15,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TextMaskModule} from 'angular2-text-mask';
 
 import {TuiInputDateComponent} from './input-date.component';
+import {TuiInputDateDirective} from './input-date.directive';
 
 @NgModule({
     imports: [
@@ -30,7 +32,7 @@ import {TuiInputDateComponent} from './input-date.component';
         TuiLetModule,
         TuiTextfieldControllerModule,
     ],
-    declarations: [TuiInputDateComponent],
-    exports: [TuiInputDateComponent],
+    declarations: [TuiInputDateComponent, TuiInputDateDirective],
+    exports: [TuiInputDateComponent, TuiInputDateDirective, TuiTextfieldComponent],
 })
 export class TuiInputDateModule {}

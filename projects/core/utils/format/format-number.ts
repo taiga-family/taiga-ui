@@ -20,7 +20,7 @@ export function formatNumber(
     thousandSeparator: string = CHAR_NO_BREAK_SPACE,
     zeroPadding: boolean = true,
 ): string {
-    const integerPartString = Math.floor(Math.abs(value)).toString();
+    const integerPartString = String(Math.floor(Math.abs(value)));
 
     let fractionPartPadded = getFractionPartPadded(value, decimalLimit);
 

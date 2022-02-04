@@ -1,15 +1,17 @@
-<div class="b-form">
+<form
+    tuiTextfieldSize="m"
+    class="b-form"
+    [tuiTextfieldLabelOutside]="true"
+    [tuiTextfieldCleaner]="true"
+>
     <label tuiLabel i18n-label label="Modified cleaner icon">
         <tui-primitive-textfield
-            tuiTextfieldSize="m"
-            tuiTextfieldType="email"
-            [tuiTextfieldLabelOutside]="true"
-            [tuiTextfieldCleaner]="true"
             [value]="value"
             (valueChange)="onValueChange($event)"
             (focusedChange)="onFocused($event)"
         >
             Type an email
+            <input tuiTextfield type="email" />
         </tui-primitive-textfield>
     </label>
 
@@ -20,19 +22,16 @@
         class="tui-space_top-4"
     >
         <tui-primitive-textfield
-            tuiTextfieldSize="m"
-            tuiTextfieldType="email"
-            [tuiTextfieldLabelOutside]="true"
-            [tuiTextfieldCleaner]="true"
             [value]="value"
             [iconCleaner]="iconCleaner"
             (valueChange)="onValueChange($event)"
             (focusedChange)="onFocused($event)"
         >
             Type an email
+            <input tuiTextfield type="email" />
         </tui-primitive-textfield>
     </label>
-</div>
+</form>
 
 <ng-template #iconCleaner>
     <tui-svg src="tuiIconDraft"></tui-svg>

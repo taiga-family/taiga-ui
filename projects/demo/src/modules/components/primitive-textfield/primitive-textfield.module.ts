@@ -9,6 +9,7 @@ import {
     TuiHintModule,
     TuiLabelModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
@@ -21,7 +22,7 @@ import {ThemesModule} from '../../themes/themes.module';
 import {HintControllerDocumentationModule} from '../abstract/hint-controller-documentation/hint-controller-documentation.module';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TextfieldControllerDocumentationModule} from '../abstract/textfield-controller-documentation/textfield-controller-documentation.module';
-import {TuiPrimitiveTextfieldExample1} from './examples/1/component';
+import {TuiPrimitiveTextfieldExample1} from './examples/1';
 import {TuiPrimitiveTextfieldExample2} from './examples/2';
 import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
 
@@ -35,6 +36,7 @@ import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.compo
         TextfieldControllerDocumentationModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
+        TuiNotificationModule,
         TuiHintControllerModule,
         TuiAvatarModule,
         TuiLinkModule,

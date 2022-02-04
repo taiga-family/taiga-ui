@@ -316,7 +316,7 @@ export class TuiInputPhoneComponent
             this.value.length < this.maxPhoneLength;
         const newValueLength = value.replace(NON_PLUS_AND_DIGITS_REGEX, '').length;
         const cleanNewValue = value.replace(/[^0-9]+/g, '');
-        const selectionLength = getSelection()!.toString().length;
+        const selectionLength = String(getSelection()).length;
 
         if (oldValueExist && selectionLength === 0) {
             return `${this.value}${cleanNewValue}`.slice(0, this.maxPhoneLength);

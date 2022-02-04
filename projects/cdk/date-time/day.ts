@@ -215,7 +215,7 @@ export class TuiDay extends TuiMonth {
     }
 
     get formattedDayPart(): string {
-        return padStart(this.day.toString(), 2, '0');
+        return padStart(String(this.day), 2, '0');
     }
 
     /**

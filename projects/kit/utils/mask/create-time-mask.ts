@@ -4,20 +4,11 @@ import {MAX_TIME_VALUES} from '@taiga-ui/kit/constants';
 import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 
 function tuiCreateTimePartMask(
-    maxPartValue: number | undefined,
+    maxPartValue: number,
     prefix?: string,
 ): Array<string | RegExp> {
-    const partLength =
-        typeof maxPartValue === 'number' ? maxPartValue.toString().length : 0;
-
-    if (!partLength) {
-        return [];
-    }
-
-    const regExp = Array.from<undefined, RegExp | string>(
-        {length: partLength},
-        () => TUI_DIGIT_REGEXP,
-    );
+    const {length} = String(maxPartValue);
+    const regExp = Array(length).fill(TUI_DIGIT_REGEXP);
 
     if (prefix) {
         regExp.unshift(prefix);
@@ -30,15 +21,15 @@ export function tuiCreateTimeMask(
     mode: TuiTimeMode,
     maxValues: Partial<Record<TuiTimeFormatParts, number>> = {},
 ): TuiTextMaskList {
-    const _maxValues: Record<TuiTimeFormatParts, number> = {
+    const {HH, MM, SS, MS} = {
         ...MAX_TIME_VALUES,
         ...maxValues,
     };
 
     return [
-        ...tuiCreateTimePartMask(_maxValues.HH),
-        ...tuiCreateTimePartMask(_maxValues.MM, ':'),
-        ...(mode.includes('HH:MM:SS') ? tuiCreateTimePartMask(_maxValues.SS, ':') : []),
-        ...(mode === 'HH:MM:SS.MSS' ? tuiCreateTimePartMask(_maxValues.MS, '.') : []),
+        ...tuiCreateTimePartMask(HH),
+        ...tuiCreateTimePartMask(MM, ':'),
+        ...(mode.includes('HH:MM:SS') ? tuiCreateTimePartMask(SS, ':') : []),
+        ...(mode === 'HH:MM:SS.MSS' ? tuiCreateTimePartMask(MS, '.') : []),
     ];
 }

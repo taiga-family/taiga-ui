@@ -1,37 +1,9 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
 
-import {default as example1Ts} from '!!raw-loader!./examples/1/component.ts';
-import {default as example1Html} from '!!raw-loader!./examples/1/template.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/component.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/template.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/component.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/template.html';
-import {default as example4Ts} from '!!raw-loader!./examples/4/component.ts';
-import {default as example4Less} from '!!raw-loader!./examples/4/style.less';
-import {default as example4Html} from '!!raw-loader!./examples/4/template.html';
-import {default as example5Ts} from '!!raw-loader!./examples/5/component.ts';
-import {default as example5Less} from '!!raw-loader!./examples/5/style.less';
-import {default as example5Html} from '!!raw-loader!./examples/5/template.html';
-import {default as example6Ts} from '!!raw-loader!./examples/6/component.ts';
-import {default as example6Less} from '!!raw-loader!./examples/6/style.less';
-import {default as example6Html} from '!!raw-loader!./examples/6/template.html';
-import {default as example7Ts} from '!!raw-loader!./examples/7/component.ts';
-import {default as example7Less} from '!!raw-loader!./examples/7/style.less';
-import {default as example7Html} from '!!raw-loader!./examples/7/template.html';
-import {default as example8Html} from '!!raw-loader!./examples/8/index.html';
-import {default as example8Less} from '!!raw-loader!./examples/8/index.less';
-import {default as example8Ts} from '!!raw-loader!./examples/8/index.ts';
-import {default as example9Html} from '!!raw-loader!./examples/9/index.html';
-import {default as example9Less} from '!!raw-loader!./examples/9/index.less';
-import {default as example9Ts} from '!!raw-loader!./examples/9/index.ts';
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
@@ -48,64 +20,72 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
-    readonly exampleDeclareForm = exampleDeclareForm;
+    readonly exampleImportModule = import(
+        '!!raw-loader!./examples/import/import-module.md'
+    );
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly exampleInsertTemplate = import(
+        '!!raw-loader!./examples/import/insert-template.md'
+    );
+
+    readonly exampleDeclareForm = import(
+        '!!raw-loader!./examples/import/declare-form.md'
+    );
+
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
+    readonly example2: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
     };
 
-    readonly example3: FrontEndExample = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
+    readonly example3: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
+        HTML: import('!!raw-loader!./examples/3/index.html'),
     };
 
-    readonly example4: FrontEndExample = {
-        TypeScript: example4Ts,
-        HTML: example4Html,
-        LESS: example4Less,
+    readonly example4: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        LESS: import('!!raw-loader!./examples/4/index.less'),
     };
 
-    readonly example5: FrontEndExample = {
-        TypeScript: example5Ts,
-        HTML: example5Html,
-        LESS: example5Less,
+    readonly example5: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
+        HTML: import('!!raw-loader!./examples/5/index.html'),
+        LESS: import('!!raw-loader!./examples/5/index.less'),
     };
 
-    readonly example6: FrontEndExample = {
-        TypeScript: example6Ts,
-        HTML: example6Html,
-        LESS: example6Less,
+    readonly example6: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/6/index.ts'),
+        HTML: import('!!raw-loader!./examples/6/index.html'),
+        LESS: import('!!raw-loader!./examples/6/index.less'),
     };
 
-    readonly example7: FrontEndExample = {
-        TypeScript: example7Ts,
-        HTML: example7Html,
-        LESS: example7Less,
+    readonly example7: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/7/index.ts'),
+        HTML: import('!!raw-loader!./examples/7/index.html'),
+        LESS: import('!!raw-loader!./examples/7/index.less'),
     };
 
-    readonly example8: FrontEndExample = {
-        TypeScript: example8Ts,
-        HTML: example8Html,
-        LESS: example8Less,
+    readonly example8: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/8/index.ts'),
+        HTML: import('!!raw-loader!./examples/8/index.html'),
+        LESS: import('!!raw-loader!./examples/8/index.less'),
     };
 
-    readonly example9: FrontEndExample = {
-        TypeScript: example9Ts,
-        HTML: example9Html,
-        LESS: example9Less,
+    readonly example9: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/9/index.ts'),
+        HTML: import('!!raw-loader!./examples/9/index.html'),
+        LESS: import('!!raw-loader!./examples/9/index.less'),
     };
 
-    readonly iconVariants = ['tuiIconSearch', 'tuiIconCalendar'];
+    readonly iconVariants = [null, 'tuiIconSearch', 'tuiIconCalendar'];
 
-    icon: 'tuiIconSearch' | 'tuiIconCalendar' | null = null;
+    icon = this.iconVariants[0];
 
     readonly iconAlignVariants: ReadonlyArray<TuiHorizontalDirection> = ['left', 'right'];
 

@@ -2,7 +2,7 @@
  * @return fractional length
  */
 export function getPrecision(num: number): number {
-    const [, fractionPart = ''] = num.toString().split('.');
+    const [, fractionPart = ''] = String(num).split('.');
 
     return fractionPart.length;
 }
