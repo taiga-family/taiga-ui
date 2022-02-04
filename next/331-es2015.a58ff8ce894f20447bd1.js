@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[331],{AOPq:function(n,o,s){"use strict";s.r(o),o.default=":host {\n    display: block;\n}\n\n.icon {\n    cursor: pointer;\n    pointer-events: auto;\n}\n"}}]);
