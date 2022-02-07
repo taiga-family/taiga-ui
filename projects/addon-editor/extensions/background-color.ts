@@ -2,9 +2,9 @@ import '@tiptap/extension-text-style';
 
 import {Command, Extension, GlobalAttributes} from '@tiptap/core';
 
-type BackgroundColorOptions = {
+interface BackgroundColorOptions {
     types: string[];
-};
+}
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -24,8 +24,10 @@ declare module '@tiptap/core' {
 export const BackgroundColor = Extension.create<BackgroundColorOptions>({
     name: 'backgroundColor',
 
-    defaultOptions: {
-        types: ['textStyle'],
+    addOptions(): BackgroundColorOptions {
+        return {
+            types: ['textStyle'],
+        };
     },
 
     addGlobalAttributes(): GlobalAttributes {
