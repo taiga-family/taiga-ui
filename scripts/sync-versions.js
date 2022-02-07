@@ -51,6 +51,6 @@ function bumpTUIDeps(deps, version) {
     Object.keys(deps)
         .filter(key => !key.indexOf('@taiga-ui/'))
         .forEach(key => {
-            deps[key] = version;
+            deps[key] = '^' + version;
         });
 }
