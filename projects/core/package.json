@@ -15,6 +15,9 @@
     "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
     "schematics": "./schematics/collection.json",
+    "dependencies": {
+        "@taiga-ui/i18n": "^2.32.0"
+    },
     "peerDependencies": {
         "@taiga-ui/i18n": ">=2.32.0",
         "@taiga-ui/cdk": ">=2.32.0",
