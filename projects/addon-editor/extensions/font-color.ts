@@ -2,9 +2,9 @@ import '@tiptap/extension-text-style';
 
 import {Command, Extension, GlobalAttributes} from '@tiptap/core';
 
-type FontColorOptions = {
+interface FontColorOptions {
     types: string[];
-};
+}
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -24,8 +24,10 @@ declare module '@tiptap/core' {
 export const FontColor = Extension.create<FontColorOptions>({
     name: 'fontColor',
 
-    defaultOptions: {
-        types: ['textStyle'],
+    addOptions(): FontColorOptions {
+        return {
+            types: ['textStyle'],
+        };
     },
 
     addGlobalAttributes(): GlobalAttributes {
