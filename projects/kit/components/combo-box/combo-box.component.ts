@@ -4,7 +4,6 @@ import {
     Component,
     ContentChild,
     EventEmitter,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -21,7 +20,6 @@ import {
     setNativeFocused,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_STRICT_MATCHER,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -32,8 +30,6 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_ACCESSOR,
-    TUI_DATA_LIST_HOST,
-    TUI_OPTION_CONTENT,
     TuiDataListAccessor,
     TuiDataListDirective,
     TuiDataListHost,
@@ -42,33 +38,16 @@ import {
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
-import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// TODO: remove in ivy compilation
-export const COMBOBOX_OPTION: any = TUI_SELECT_OPTION;
+import {TUI_COMBO_BOX_PROVIDERS} from './combo-box.providers';
 
 @Component({
     selector: 'tui-combo-box',
     templateUrl: './combo-box.template.html',
     styleUrls: ['./combo-box.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiComboBoxComponent),
-        },
-        {
-            provide: TUI_DATA_LIST_HOST,
-            useExisting: forwardRef(() => TuiComboBoxComponent),
-        },
-        {
-            provide: TUI_OPTION_CONTENT,
-            useValue: COMBOBOX_OPTION,
-        },
-        FIXED_DROPDOWN_CONTROLLER_PROVIDER,
-    ],
+    providers: TUI_COMBO_BOX_PROVIDERS,
 })
 export class TuiComboBoxComponent<T>
     extends AbstractTuiNullableControl<T | string>
@@ -206,7 +185,7 @@ export class TuiComboBoxComponent<T>
         this.close();
     }
 
-    onInput(value: string) {
+    onValueChange(value: string) {
         this.updateSearch(value);
 
         const match =

@@ -1,12 +1,12 @@
 <tui-combo-box
     *tuiLet="service.request(search) | async as filtered"
-    tuiTextfieldExampleText="Type a name"
     class="b-form"
     [formControl]="control"
     [valueContent]="value"
     [(search)]="search"
 >
     Find the best employees
+    <input tuiTextfield placeholder="Type a name" />
     <ng-template #value let-item>
         <tui-avatar
             size="xs"

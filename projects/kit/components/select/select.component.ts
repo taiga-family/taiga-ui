@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChild,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -17,15 +16,12 @@ import {
     isNativeFocused,
     setNativeFocused,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiIdentityMatcher,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    TUI_DATA_LIST_HOST,
-    TUI_OPTION_CONTENT,
     TUI_TEXTFIELD_CLEANER,
     TuiDataListDirective,
     TuiDataListHost,
@@ -35,33 +31,16 @@ import {
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
-import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// TODO: remove in ivy compilation
-export const SELECT_OPTION: unknown = TUI_SELECT_OPTION;
+import {TUI_SELECT_PROVIDERS} from './select.providers';
 
 @Component({
     selector: 'tui-select',
     templateUrl: './select.template.html',
     styleUrls: ['./select.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiSelectComponent),
-        },
-        {
-            provide: TUI_DATA_LIST_HOST,
-            useExisting: forwardRef(() => TuiSelectComponent),
-        },
-        {
-            provide: TUI_OPTION_CONTENT,
-            useValue: SELECT_OPTION,
-        },
-        FIXED_DROPDOWN_CONTROLLER_PROVIDER,
-    ],
+    providers: TUI_SELECT_PROVIDERS,
 })
 export class TuiSelectComponent<T>
     extends AbstractTuiNullableControl<T>

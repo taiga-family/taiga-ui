@@ -1,8 +1,9 @@
 import {FactoryProvider, Optional, Self} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {identity} from '@taiga-ui/cdk';
 import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core/tokens';
+import {identity} from 'rxjs';
 
+// TODO: remove in ivy compilation
 export const IDENTITY = identity;
 
 export const TUI_VALUE_ACCESSOR_PROVIDER: FactoryProvider = {

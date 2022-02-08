@@ -23,6 +23,7 @@
         (keydown.backspace.prevent)="onKeyDownDelete()"
     >
         <ng-content></ng-content>
+        <ng-content select="input" ngProjectAs="input"></ng-content>
         <div
             *ngIf="value !== null"
             polymorpheus-outlet

@@ -1,30 +1,31 @@
-<p class="b-form">
+<form class="b-form">
     <tui-select tuiTextfieldSize="s" [formControl]="testValue">
+        Character
+        <input tuiTextfield placeholder="Choose your hero" />
         <tui-data-list-wrapper
             *tuiDataList
             [items]="items"
         ></tui-data-list-wrapper>
     </tui-select>
-</p>
-<p class="b-form">
     <tui-select
         tuiTextfieldSize="m"
+        class="tui-space_vertical-4"
         [formControl]="testValue"
         [tuiTextfieldLabelOutside]="true"
     >
-        Choose your hero
+        Character
+        <input tuiTextfield placeholder="Choose your hero" />
         <tui-data-list-wrapper
             *tuiDataList
             [items]="items"
         ></tui-data-list-wrapper>
     </tui-select>
-</p>
-<p class="b-form">
     <tui-select [formControl]="testValue">
-        Choose your hero
+        Character
+        <input tuiTextfield placeholder="Choose your hero" />
         <tui-data-list-wrapper
             *tuiDataList
             [items]="items"
         ></tui-data-list-wrapper>
     </tui-select>
-</p>
+</form>

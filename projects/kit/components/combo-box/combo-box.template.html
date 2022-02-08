@@ -17,12 +17,13 @@
         [disabled]="computedDisabled"
         [focusable]="computedFocusable"
         [value]="nativeValue"
-        (valueChange)="onInput($event)"
+        (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
         (click)="toggle()"
         (keydown.enter)="onFieldKeyDownEnter($event)"
     >
         <ng-content></ng-content>
+        <ng-content select="input" ngProjectAs="input"></ng-content>
         <div
             *ngIf="showValueTemplate"
             polymorpheus-outlet

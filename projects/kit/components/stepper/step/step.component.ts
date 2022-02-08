@@ -7,14 +7,9 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {
-    identity,
-    tuiDefaultProp,
-    TuiDestroyService,
-    TuiFocusVisibleService,
-} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
 import {TuiRouterLinkActiveService} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import {identity, Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
 import {TuiStepperComponent} from '../stepper.component';
