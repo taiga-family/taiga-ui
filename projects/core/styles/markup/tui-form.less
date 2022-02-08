@@ -4,8 +4,20 @@
 @fields-space-large-mobile: @space * 6;
 
 .tui-form {
+    /* stylelint-disable */
     &__header {
         margin-top: @fields-space-large;
+
+        @media @mobile-m {
+            font: var(--tui-font-text-l);
+            font-weight: bold;
+            margin-bottom: @fields-space-mobile;
+        }
+
+        @media @desktop-s-min {
+            font: var(--tui-font-heading-5);
+            margin-bottom: @fields-space;
+        }
 
         &_margin-top_none {
             margin-top: 0;
@@ -24,18 +36,8 @@
                 margin-bottom: @fields-space - @space;
             }
         }
-
-        @media @mobile-m {
-            font: var(--tui-font-text-l);
-            font-weight: bold;
-            margin-bottom: @fields-space-mobile;
-        }
-
-        @media @desktop-s-min {
-            font: var(--tui-font-heading-5);
-            margin-bottom: @fields-space;
-        }
     }
+    /* stylelint-enable */
 
     &__row {
         margin-top: @fields-space;
