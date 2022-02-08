@@ -145,7 +145,7 @@
         "@types/jasmine-ajax": "^3.1.40",
         "@types/markdown-it": "^12.2.3",
         "@types/node": "^12.11.1",
-        "@types/resize-observer-browser": "0.1.5",
+        "@types/resize-observer-browser": "^0.1.7",
         "@types/svgo": "~2.6.0",
         "angular-http-server": "^1.10.0",
         "codelyzer": "^5.1.2",
