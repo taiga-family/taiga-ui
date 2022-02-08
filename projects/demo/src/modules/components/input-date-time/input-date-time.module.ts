@@ -6,6 +6,7 @@ import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {
     TuiHintControllerModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateTimeModule} from '@taiga-ui/kit';
@@ -28,6 +29,7 @@ import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
         TuiInputDateTimeModule,
         TuiHintControllerModule,
         TuiTextfieldControllerModule,
+        TuiNotificationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputDateTimeComponent)),
     ],
     declarations: [

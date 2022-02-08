@@ -17,8 +17,8 @@ import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3LESS} from '!!raw-loader!./examples/3/index.less';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {ExampleTuiDropdown} from '../../components/abstract/dropdown-controller-documentation/dropdown-controller-documentation.component';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
@@ -37,8 +37,8 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     ],
 })
 export class ExampleTuiDropdownContextComponent implements ExampleTuiDropdown {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = exampleModule;
+    readonly exampleHtml = exampleHtml;
 
     readonly exampleBasic: FrontEndExample = {
         TypeScript: example1Ts,

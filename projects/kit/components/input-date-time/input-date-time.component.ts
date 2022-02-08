@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -21,7 +20,6 @@ import {
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
     TuiBooleanHandler,
     TuiControlValueTransformer,
@@ -43,9 +41,7 @@ import {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
-import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
-    TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_TEXTS,
     TUI_DATE_TIME_VALUE_TRANSFORMER,
     TUI_TIME_TEXTS,
@@ -55,15 +51,10 @@ import {
     tuiCreateDateMask,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
-import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {combineLatest, Observable} from 'rxjs';
 import {map, pluck} from 'rxjs/operators';
 
-// TODO: remove in ivy compilation
-export const TIME_STREAM_FACTORY = (
-    control: NgControl | null,
-    valueTransformer: TuiControlValueTransformer<[TuiDay | null, TuiTime | null]>,
-) => TuiReplayControlValueChangesFactory(control, valueTransformer);
+import {TUI_INPUT_DATE_TIME_PROVIDERS} from './input-date-time.providers';
 
 // @dynamic
 @Component({
@@ -71,21 +62,7 @@ export const TIME_STREAM_FACTORY = (
     templateUrl: './input-date-time.template.html',
     styleUrls: ['./input-date-time.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputDateTimeComponent),
-        },
-        {
-            provide: TUI_CALENDAR_DATA_STREAM,
-            deps: [
-                [new Optional(), new Self(), NgControl],
-                [new Optional(), forwardRef(() => TUI_DATE_TIME_VALUE_TRANSFORMER)],
-            ],
-            useFactory: TIME_STREAM_FACTORY,
-        },
-        LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
-    ],
+    providers: TUI_INPUT_DATE_TIME_PROVIDERS,
 })
 export class TuiInputDateTimeComponent
     extends AbstractTuiControl<[TuiDay | null, TuiTime | null]>

@@ -6,7 +6,7 @@
     [invalid]="computedInvalid"
     [focusable]="focusable"
     [nativeId]="nativeId"
-    [disabled]="disabled"
+    [disabled]="computedDisabled"
     [readOnly]="readOnly"
     [iconContent]="!disabled ? iconContent : null"
     [value]="value"
@@ -16,6 +16,7 @@
     (pressedChange)="onPressed($event)"
 >
     <ng-content></ng-content>
+    <ng-content select="input" ngProjectAs="input"></ng-content>
 </tui-primitive-textfield>
 
 <ng-template #iconContent>

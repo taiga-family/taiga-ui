@@ -5,10 +5,12 @@ import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
+    TuiTextfieldComponent,
 } from '@taiga-ui/core';
 import {TuiCalendarMonthModule} from '@taiga-ui/kit/components/calendar-month';
 
 import {TuiInputMonthRangeComponent} from './input-month-range.component';
+import {TuiInputMonthRangeDirective} from './input-month-range.directive';
 
 @NgModule({
     imports: [
@@ -20,7 +22,11 @@ import {TuiInputMonthRangeComponent} from './input-month-range.component';
         TuiPreventDefaultModule,
         TuiActiveZoneModule,
     ],
-    declarations: [TuiInputMonthRangeComponent],
-    exports: [TuiInputMonthRangeComponent],
+    declarations: [TuiInputMonthRangeComponent, TuiInputMonthRangeDirective],
+    exports: [
+        TuiInputMonthRangeComponent,
+        TuiInputMonthRangeDirective,
+        TuiTextfieldComponent,
+    ],
 })
 export class TuiInputMonthRangeModule {}

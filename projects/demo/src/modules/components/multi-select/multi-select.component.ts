@@ -37,9 +37,9 @@ import {default as example6Ts} from '!!raw-loader!./examples/6/index.ts';
 import {default as example7Html} from '!!raw-loader!./examples/7/index.html';
 import {default as example7Less} from '!!raw-loader!./examples/7/index.less';
 import {default as example7Ts} from '!!raw-loader!./examples/7/index.ts';
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleForm} from '!!raw-loader!./examples/import/declare-form.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -66,9 +66,9 @@ class Account {
     ],
 })
 export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
-    readonly exampleDeclareForm = exampleDeclareForm;
+    readonly exampleModule = exampleModule;
+    readonly exampleHtml = exampleHtml;
+    readonly exampleForm = exampleForm;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

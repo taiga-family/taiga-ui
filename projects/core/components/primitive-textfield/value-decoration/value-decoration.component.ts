@@ -54,9 +54,13 @@ export class TuiValueDecorationComponent {
     }
 
     get filler(): string {
-        return this.focused
-            ? this.exampleText || this.textfield.filler.slice(this.value.length)
-            : '';
+        const {focused, placeholder, exampleText, value, textfield} = this;
+
+        if (focused && placeholder && exampleText) {
+            return '';
+        }
+
+        return focused ? exampleText || textfield.filler.slice(value.length) : '';
     }
 
     get prefix(): string {
@@ -67,8 +71,14 @@ export class TuiValueDecorationComponent {
         return this.decorationsVisible ? this.computedPostfix : '';
     }
 
+    private get placeholder(): string {
+        return this.textfield.nativeFocusableElement?.placeholder || '';
+    }
+
     private get exampleText(): string {
-        return !this.value && this.focused ? this.controller.exampleText : '';
+        const exampleText = this.controller.exampleText || this.placeholder;
+
+        return !this.value && this.focused ? exampleText : '';
     }
 
     private get decorationsVisible(): boolean {

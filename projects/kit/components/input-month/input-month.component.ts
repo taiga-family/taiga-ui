@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    AbstractTuiControl,
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -40,6 +41,10 @@ import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputMonthComponent),
         },
+        {
+            provide: AbstractTuiControl,
+            useExisting: forwardRef(() => TuiInputMonthComponent),
+        },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,7 +54,7 @@ export class TuiInputMonthComponent
     implements TuiWithOptionalMinMax<TuiMonth>, TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+    readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()
     @tuiDefaultProp()

@@ -6,10 +6,12 @@ import {
     TuiMonthPipeModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
+    TuiTextfieldComponent,
 } from '@taiga-ui/core';
 import {TuiCalendarMonthModule} from '@taiga-ui/kit/components/calendar-month';
 
 import {TuiInputMonthComponent} from './input-month.component';
+import {TuiInputMonthDirective} from './input-month.directive';
 
 @NgModule({
     imports: [
@@ -21,7 +23,7 @@ import {TuiInputMonthComponent} from './input-month.component';
         TuiPreventDefaultModule,
         TuiMonthPipeModule,
     ],
-    declarations: [TuiInputMonthComponent],
-    exports: [TuiInputMonthComponent],
+    declarations: [TuiInputMonthComponent, TuiInputMonthDirective],
+    exports: [TuiInputMonthComponent, TuiInputMonthDirective, TuiTextfieldComponent],
 })
 export class TuiInputMonthModule {}

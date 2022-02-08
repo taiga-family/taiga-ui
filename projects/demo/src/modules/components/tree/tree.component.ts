@@ -7,13 +7,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class ExampleTuiTreeComponent {
-    readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.txt'
-    );
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
 
-    readonly exampleInsertTemplate = import(
-        '!!raw-loader!./examples/import/insert-template.txt'
-    );
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
 
     readonly example1 = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),

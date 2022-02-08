@@ -4,7 +4,6 @@ import {
     Component,
     ContentChild,
     EventEmitter,
-    forwardRef,
     Inject,
     Input,
     Optional,
@@ -19,7 +18,6 @@ import {
     getClipboardDataText,
     isNativeFocused,
     setNativeFocused,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -29,7 +27,6 @@ import {
 } from '@taiga-ui/cdk';
 import {
     formatPhone,
-    TUI_DATA_LIST_HOST,
     TUI_TEXTFIELD_CLEANER,
     TuiDataListDirective,
     TuiDataListHost,
@@ -50,17 +47,7 @@ const NON_PLUS_AND_DIGITS_REGEX = /[ \-_()]/g;
     templateUrl: './input-phone.template.html',
     styleUrls: ['./input-phone.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputPhoneComponent),
-        },
-        {
-            provide: TUI_DATA_LIST_HOST,
-            useExisting: forwardRef(() => TuiInputPhoneComponent),
-        },
-        INPUT_PHONE_PROVIDERS,
-    ],
+    providers: INPUT_PHONE_PROVIDERS,
 })
 export class TuiInputPhoneComponent
     extends AbstractTuiControl<string>
@@ -156,7 +143,7 @@ export class TuiInputPhoneComponent
         );
     }
 
-    get nativeValue(): string {
+    get computedValue(): string {
         return this.value
             ? formatPhone(this.value, this.countryCode, this.phoneMaskAfterCountryCode)
             : this.search || '';
@@ -171,7 +158,7 @@ export class TuiInputPhoneComponent
     }
 
     get canClean(): boolean {
-        return this.nativeValue !== this.countryCode && this.textfieldCleaner.cleaner;
+        return this.computedValue !== this.countryCode && this.textfieldCleaner.cleaner;
     }
 
     onHovered(hovered: boolean) {
@@ -194,14 +181,14 @@ export class TuiInputPhoneComponent
     onActiveZone(active: boolean) {
         this.updateFocused(active);
 
-        if (active && !this.nativeValue && !this.readOnly && !this.allowText) {
+        if (active && !this.computedValue && !this.readOnly && !this.allowText) {
             this.updateSearch(this.countryCode);
 
             return;
         }
 
         if (
-            this.nativeValue === this.countryCode ||
+            this.computedValue === this.countryCode ||
             (this.search !== null &&
                 isNaN(parseInt(this.search.replace(NON_PLUS_AND_DIGITS_REGEX, ''), 10)))
         ) {

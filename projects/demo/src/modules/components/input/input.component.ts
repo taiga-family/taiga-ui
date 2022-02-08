@@ -20,17 +20,11 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
-    readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.md'
-    );
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
 
-    readonly exampleInsertTemplate = import(
-        '!!raw-loader!./examples/import/insert-template.md'
-    );
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
-    readonly exampleDeclareForm = import(
-        '!!raw-loader!./examples/import/declare-form.md'
-    );
+    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),

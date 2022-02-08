@@ -11,8 +11,8 @@ import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -22,8 +22,8 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiPaginationComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = exampleModule;
+    readonly exampleHtml = exampleHtml;
 
     readonly example1: TuiDocExample = {
         TypeScript: example1Ts,

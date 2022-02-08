@@ -19,8 +19,8 @@ import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
 import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -38,8 +38,8 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = exampleModule;
+    readonly exampleHtml = exampleHtml;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

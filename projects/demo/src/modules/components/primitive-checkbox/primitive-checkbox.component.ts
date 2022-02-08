@@ -2,9 +2,9 @@ import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiSizeL} from '@taiga-ui/core';
 
-import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleOptions} from '!!raw-loader!./examples/import/define-options.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
 
@@ -14,9 +14,9 @@ import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
     changeDetection,
 })
 export class ExampleTuiPrimitiveCheckboxComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleDefineOptions = exampleDefineOptions;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = exampleModule;
+    readonly exampleOptions = exampleOptions;
+    readonly exampleHtml = exampleHtml;
 
     readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
 

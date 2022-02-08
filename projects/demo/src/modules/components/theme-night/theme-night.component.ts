@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 @Component({
     selector: 'example-tui-theme-night',
@@ -10,6 +10,6 @@ import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/i
     changeDetection,
 })
 export class ExampleTuiThemeNightComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = exampleModule;
+    readonly exampleHtml = exampleHtml;
 }

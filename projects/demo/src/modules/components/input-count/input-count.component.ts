@@ -1,20 +1,9 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
@@ -30,24 +19,24 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputCountComponent extends AbstractExampleTuiControl {
-    readonly exampleDeclareForm = exampleDeclareForm;
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
-    readonly exampleDefineOptions = exampleDefineOptions;
+    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.txt');
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
+    readonly exampleOptions = import('!!raw-loader!./examples/import/define-options.txt');
 
-    readonly example1: FrontEndExample = {
-        HTML: example1Html,
-        TypeScript: example1Ts,
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
-    readonly example2: FrontEndExample = {
-        HTML: example2Html,
-        TypeScript: example2Ts,
+    readonly example2: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
     };
 
-    readonly example3: FrontEndExample = {
-        HTML: example3Html,
-        TypeScript: example3Ts,
+    readonly example3: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
+        HTML: import('!!raw-loader!./examples/3/index.html'),
     };
 
     min = 0;

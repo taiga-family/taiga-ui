@@ -8,7 +8,7 @@
     <tui-primitive-textfield
         class="textfield"
         [editable]="false"
-        [disabled]="disabled"
+        [disabled]="computedDisabled"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [iconContent]="calendarIcon"
@@ -21,6 +21,7 @@
         (focusedChange)="onFocused($event)"
     >
         <ng-content></ng-content>
+        <ng-content select="input" ngProjectAs="input"></ng-content>
     </tui-primitive-textfield>
 
     <ng-template #dropdown>

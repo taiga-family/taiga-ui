@@ -13,9 +13,7 @@ export class ExampleTuiMobileDialogComponent {
         HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
-    readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.md'
-    );
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
 
     readonly exampleInsertComponent = import(
         '!!raw-loader!./examples/import/insert-component.md'

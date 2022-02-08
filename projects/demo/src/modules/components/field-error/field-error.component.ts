@@ -13,8 +13,8 @@ import {default as example4Less} from '!!raw-loader!./examples/4/index.less';
 import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -24,9 +24,9 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiFieldErrorComponent {
-    readonly exampleImportModule = exampleImportModule;
+    readonly exampleModule = exampleModule;
 
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleHtml = exampleHtml;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

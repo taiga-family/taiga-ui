@@ -5,10 +5,12 @@ import {
     TuiNotificationsModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
+    TuiTextfieldComponent,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputCopyComponent} from './input-copy.component';
+import {TuiInputCopyDirective} from './input-copy.directive';
 
 @NgModule({
     imports: [
@@ -19,7 +21,7 @@ import {TuiInputCopyComponent} from './input-copy.component';
         TuiPrimitiveTextfieldModule,
         TuiNotificationsModule,
     ],
-    declarations: [TuiInputCopyComponent],
-    exports: [TuiInputCopyComponent],
+    declarations: [TuiInputCopyComponent, TuiInputCopyDirective],
+    exports: [TuiInputCopyComponent, TuiInputCopyDirective, TuiTextfieldComponent],
 })
 export class TuiInputCopyModule {}

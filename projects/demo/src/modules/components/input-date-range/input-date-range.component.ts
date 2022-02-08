@@ -19,10 +19,6 @@ import {
 } from '@taiga-ui/core';
 import {tuiCreateDefaultDayRangePeriods, TuiDayRangePeriod} from '@taiga-ui/kit';
 
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
@@ -41,18 +37,18 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
     ],
 })
 export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
-    readonly exampleDeclareForm = exampleDeclareForm;
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
+    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.txt');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/component.ts'),
-        HTML: import('!!raw-loader!./examples/1/template.html'),
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/2/component.ts'),
-        HTML: import('!!raw-loader!./examples/2/template.html'),
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
     };
 
     readonly example3: TuiDocExample = {

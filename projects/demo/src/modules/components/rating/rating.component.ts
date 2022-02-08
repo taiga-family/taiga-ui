@@ -10,15 +10,15 @@ import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiRatingComponent {
-    readonly exampleImportModule: RawLoaderContent = import(
+    readonly exampleModule: RawLoaderContent = import(
         '!!raw-loader!./examples/import/import-module.md'
     );
 
-    readonly exampleInsertTemplate: RawLoaderContent = import(
+    readonly exampleHtml: RawLoaderContent = import(
         '!!raw-loader!./examples/import/insert-template.md'
     );
 
-    readonly exampleDefineOptions: RawLoaderContent = import(
+    readonly exampleOptions: RawLoaderContent = import(
         '!!raw-loader!./examples/import/define-options.md'
     );
 

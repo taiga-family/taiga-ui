@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    AbstractTuiControl,
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -44,6 +45,10 @@ import {Observable} from 'rxjs';
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputMonthRangeComponent),
         },
+        {
+            provide: AbstractTuiControl,
+            useExisting: forwardRef(() => TuiInputMonthRangeComponent),
+        },
         LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,7 +58,7 @@ export class TuiInputMonthRangeComponent
     implements TuiWithOptionalMinMax<TuiMonth>, TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+    readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()
     @tuiDefaultProp()

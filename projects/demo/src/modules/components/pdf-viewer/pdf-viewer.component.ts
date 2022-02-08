@@ -9,9 +9,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class ExampleTuiPdfViewerComponent {
     readonly exampleService = import('!!raw-loader!./examples/import/service.txt');
-    readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.txt'
-    );
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),

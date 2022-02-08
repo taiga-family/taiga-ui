@@ -57,13 +57,9 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         HTML: import('!!raw-loader!./examples/2/index.html'),
     };
 
-    readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.md'
-    );
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
 
-    readonly exampleInsertTemplate = import(
-        '!!raw-loader!./examples/import/insert-template.md'
-    );
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
     readonly themes = ['Taiga UI', 'Bootstrap', 'Material'];
     theme = this.themes[0];

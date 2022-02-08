@@ -8,13 +8,14 @@ import {
     TuiButtonModule,
     TuiHintControllerModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateRangeModule, TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
-import {TuiInputDateRangeExample1} from './examples/1/component';
-import {TuiInputDateRangeExample2} from './examples/2/component';
+import {TuiInputDateRangeExample1} from './examples/1';
+import {TuiInputDateRangeExample2} from './examples/2';
 import {TuiInputDateRangeExample3} from './examples/3';
 import {TuiInputDateRangeExample4} from './examples/4';
 import {ExampleTuiInputDateRangeComponent} from './input-date-range.component';
@@ -30,6 +31,7 @@ import {ExampleTuiInputDateRangeComponent} from './input-date-range.component';
         TuiMobileCalendarDialogModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
+        TuiNotificationModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputDateRangeComponent)),
         TuiUnfinishedValidatorModule,
