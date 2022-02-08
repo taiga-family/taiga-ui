@@ -16,8 +16,8 @@
     "homepage": "https://github.com/tinkoff/taiga-ui",
     "schematics": "./schematics/collection.json",
     "peerDependencies": {
-        "@taiga-ui/i18n": "2.32.0",
-        "@taiga-ui/cdk": "2.32.0",
+        "@taiga-ui/i18n": ">=2.32.0",
+        "@taiga-ui/cdk": ">=2.32.0",
         "@angular/animations": ">=9.0.0",
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
