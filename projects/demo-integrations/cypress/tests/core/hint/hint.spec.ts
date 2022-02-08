@@ -23,13 +23,23 @@ describe('TuiHint', () => {
         cy.get('tui-hint-box').first().wait(1000).matchImageSnapshot('manual-hint');
     });
 
-    it('Tooltip also works', () => {
+    it('Tooltip horizontal direction', () => {
         cy.goToDemoPage('/components/tooltip');
-
-        cy.get('tui-tooltip-example-1 tui-tooltip')
+        cy.hideHeader();
+        cy.get('tui-doc-example')
             .first()
-            .trigger('mouseenter')
-            .wait(1000);
-        cy.get('tui-hint-box').first().matchImageSnapshot('tooltip');
+            .trigger('mouseenter', {x: 35, y: 200})
+            .wait(1000)
+            .matchImageSnapshot('tooltip-left');
+    });
+
+    it('Tooltip vertical direction', () => {
+        cy.goToDemoPage('/components/tooltip');
+        cy.hideHeader();
+        cy.get('tui-doc-example')
+            .first()
+            .trigger('mouseenter', {x: 35, y: 270})
+            .wait(1000)
+            .matchImageSnapshot('tooltip-bottom');
     });
 });
