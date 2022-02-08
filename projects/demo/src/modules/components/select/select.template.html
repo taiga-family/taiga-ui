@@ -70,6 +70,14 @@
         >
             <tui-select-example-8></tui-select-example-8>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="accounts"
+            heading="Accounts list"
+            [content]="example9"
+        >
+            <tui-select-example-9></tui-select-example-9>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -107,6 +115,7 @@
                 </tui-select>
             </ng-template>
         </tui-doc-demo>
+
         <ng-template #valueTemplateContent let-item>
             <tui-svg src="tuiIconCheck" class="icon"></tui-svg>
             <div class="text-overflow">{{ item }}</div>

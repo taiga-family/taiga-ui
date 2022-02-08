@@ -93,6 +93,21 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
         LESS: import('!!raw-loader!./examples/8/index.less'),
     };
 
+    readonly example9 = {
+        TypeScript: import('!!raw-loader!./examples/9/index.ts'),
+        HTML: import('!!raw-loader!./examples/9/index.html'),
+        LESS: import('!!raw-loader!./examples/9/index.less'),
+        './account/my-account.component.ts': import(
+            '!!raw-loader!./examples/9/account/my-account.component'
+        ),
+        './account/my-account.component.less': import(
+            '!!raw-loader!./examples/9/account/my-account.component.less'
+        ),
+        './account/my-account.component.html': import(
+            '!!raw-loader!./examples/9/account/my-account.component.html'
+        ),
+    };
+
     readonly items = [new Account('Ruble', 500), new Account('Dollar', 237)];
 
     readonly valueTemplateVariants = ['', 'Template'];
