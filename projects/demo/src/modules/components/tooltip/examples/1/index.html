@@ -1,5 +1,5 @@
 <p i18n>Component with a static text...</p>
-<tui-tooltip content="Please don't touch this" direction="left"></tui-tooltip>
+<tui-tooltip content="Please don't touch this" direction="right"></tui-tooltip>
 <p i18n>
     ...or any custom HTML or logic with
     <code>PolymorpheusContent</code>
@@ -8,7 +8,12 @@
 <tui-tooltip direction="bottom-right" [content]="tooltip"></tui-tooltip>
 
 <ng-template #tooltip>
-    <tui-loader size="s" class="tooltip" [showLoader]="loader">
+    <tui-loader
+        size="s"
+        class="tooltip"
+        [inheritColor]="true"
+        [showLoader]="loader"
+    >
         {{text}}
     </tui-loader>
 </ng-template>
