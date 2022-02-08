@@ -465,8 +465,7 @@
                             "node_modules/prismjs/components/prism-less.min.js",
                             "node_modules/prismjs/components/prism-markup.min.js",
                             "node_modules/prismjs/components/prism-typescript.min.js"
-                        ],
-                        "es5BrowserSupport": true
+                        ]
                     },
                     "configurations": {
                         "production": {

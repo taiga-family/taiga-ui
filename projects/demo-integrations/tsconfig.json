@@ -1,12 +1,8 @@
 {
+    "extends": "../../tsconfig.json",
     "compilerOptions": {
         "baseUrl": "./",
-        "strict": true,
-        "target": "es5",
-        "module": "es2015",
-        "lib": ["es5", "dom"],
-        "types": ["cypress", "node"],
-        "skipLibCheck": true
+        "types": ["cypress", "node"]
     },
     "include": ["**/*.ts", "../demo/src/modules/app/pages.ts", "../addon-doc"]
 }
