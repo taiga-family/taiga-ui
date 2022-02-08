@@ -29,9 +29,9 @@ export const ALLOWED_SPACE_REGEXP = new RegExp(`,|[\\s]`);
 
 @Component({
     selector: 'tui-tag, a[tuiTag]',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './tag.template.html',
     styleUrls: ['./tag.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [MODE_PROVIDER],
     host: {
         '($.data-mode.attr)': 'mode$',

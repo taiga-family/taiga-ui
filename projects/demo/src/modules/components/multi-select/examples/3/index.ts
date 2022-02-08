@@ -29,12 +29,7 @@ export class TuiMultiSelectExample3 {
         {id: 6, name: 'Yoda'},
     ];
 
-    readonly control = new FormControl([
-        {
-            id: 4,
-            name: 'Han Solo',
-        },
-    ]);
+    readonly control = new FormControl([this.items[3], this.items[4]]);
 
     readonly stringify: TuiStringHandler<Hero | TuiContextWithImplicit<Hero>> = item =>
         'name' in item ? item.name : item.$implicit.name;
