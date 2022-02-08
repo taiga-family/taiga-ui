@@ -13,7 +13,7 @@ import {TuiInputPasswordComponent} from './input-password.component';
     ],
 })
 export class TuiInputPasswordDirective extends TuiAbstractTextfieldHost<TuiInputPasswordComponent> {
-    input: HTMLInputElement;
+    input?: HTMLInputElement;
 
     onValueChange(value: string) {
         this.host.onValueChange(value);
@@ -24,6 +24,8 @@ export class TuiInputPasswordDirective extends TuiAbstractTextfieldHost<TuiInput
     }
 
     ngDoCheck() {
-        this.input.type = this.host.isPasswordHidden ? 'password' : 'text';
+        if (this.input) {
+            this.input.type = this.host.isPasswordHidden ? 'password' : 'text';
+        }
     }
 }
