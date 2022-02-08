@@ -18,15 +18,19 @@ function syncVersions(root) {
                 const {dependencies, peerDependencies, devDependencies} = packageJson;
 
                 if (dependencies) {
-                    bumpTUIDeps(dependencies, version);
+                    bumpTUIDeps({deps: dependencies, version});
                 }
 
                 if (peerDependencies) {
-                    bumpTUIDeps(peerDependencies, version);
+                    bumpTUIDeps({
+                        deps: peerDependencies,
+                        version,
+                        isPeerDependency: true,
+                    });
                 }
 
                 if (devDependencies) {
-                    bumpTUIDeps(devDependencies, version);
+                    bumpTUIDeps({deps: devDependencies, version});
                 }
 
                 fs.writeFileSync(
@@ -40,17 +44,18 @@ function syncVersions(root) {
                         },
                         null,
                         INDENTATION,
-                    ),
+                    ) + `\n`,
                 );
             });
         },
     );
 }
 
-function bumpTUIDeps(deps, version) {
+function bumpTUIDeps({deps, version, isPeerDependency}) {
+    const prefix = isPeerDependency ? '>=' : '^';
     Object.keys(deps)
         .filter(key => !key.indexOf('@taiga-ui/'))
         .forEach(key => {
-            deps[key] = '^' + version;
+            deps[key] = `${prefix}${version}`;
         });
 }
