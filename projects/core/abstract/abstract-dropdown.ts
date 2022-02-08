@@ -67,7 +67,7 @@ export abstract class AbstractTuiDropdown
 
     dropdownBoxRef: ComponentRef<TuiDropdownBoxComponent> | null = null;
 
-    constructor(
+    protected constructor(
         private readonly componentFactoryResolver: ComponentFactoryResolver,
         private readonly injector: Injector,
         private readonly portalService: TuiPortalService,
@@ -98,6 +98,15 @@ export abstract class AbstractTuiDropdown
     @tuiPure
     get fixed(): boolean {
         return checkFixedPosition(this.elementRef.nativeElement);
+    }
+
+    @tuiPure
+    protected toggleDropdown(value: boolean) {
+        if (value) {
+            this.openDropdownBox();
+        } else {
+            this.closeDropdownBox();
+        }
     }
 
     protected openDropdownBox() {

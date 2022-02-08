@@ -40,4 +40,10 @@ export class ExampleTuiDataListComponent {
             '!!raw-loader!./examples/4/custom-list/custom-list.template.html'
         ),
     };
+
+    readonly example5 = {
+        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
+        HTML: import('!!raw-loader!./examples/5/index.html'),
+        LESS: import('!!raw-loader!./examples/5/index.less'),
+    };
 }

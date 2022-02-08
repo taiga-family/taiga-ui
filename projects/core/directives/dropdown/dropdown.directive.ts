@@ -35,11 +35,7 @@ export class TuiDropdownDirective
 {
     @Input('tuiDropdown')
     set open(value: boolean) {
-        if (value) {
-            this.openDropdownBox();
-        } else {
-            this.closeDropdownBox();
-        }
+        this.toggleDropdown(value);
     }
 
     constructor(
