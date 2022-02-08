@@ -14,7 +14,7 @@ import {
 } from './constants/versions';
 import {Schema} from './schema';
 
-const MAIN_PACKAGES = ['core', 'cdk', 'kit', 'icons'];
+const MAIN_PACKAGES = ['core', 'cdk', 'kit', 'icons', 'i18n'];
 
 export function ngAdd(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {

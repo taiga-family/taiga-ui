@@ -10,6 +10,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {
+    DOMPURIFY_TYPES_VERSION,
     DOMPURIFY_VERSION,
     NG_DOMPURIFY_VERSION,
     TAIGA_VERSION,
@@ -54,6 +55,7 @@ describe('ng-add', () => {
     "@angular/core": "~13.0.0",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/i18n": "${TAIGA_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}"
   }
@@ -75,7 +77,7 @@ describe('ng-add', () => {
         expect(tree.readContent('package.json')).toEqual(
             `{
   "devDependencies": {
-    "@types/dompurify": "2.2.3"
+    "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
   },
   "dependencies": {
     "@angular/cdk": "^13.0.0",
@@ -84,6 +86,7 @@ describe('ng-add', () => {
     "@taiga-ui/addon-mobile": "${TAIGA_VERSION}",
     "@taiga-ui/cdk": "${TAIGA_VERSION}",
     "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/i18n": "${TAIGA_VERSION}",
     "@taiga-ui/icons": "${TAIGA_VERSION}",
     "@taiga-ui/kit": "${TAIGA_VERSION}",
     "@tinkoff/ng-dompurify": "${NG_DOMPURIFY_VERSION}",
@@ -127,7 +130,7 @@ describe('ng-add', () => {
 }`);
     });
 
-    it('should add styles without dublicates, taiga styles first', async () => {
+    it('should add styles without duplicates, taiga styles first', async () => {
         createAngularJson({stylesExist: true});
         saveActiveProject();
 

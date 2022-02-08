@@ -17,7 +17,7 @@ of multiple base libraries and several add-ons
 Install base packages:
 
 ```
-npm i @taiga-ui/{cdk,core,kit,icons}
+npm i @taiga-ui/{cdk,core,kit,i18n,icons}
 ```
 
 Install addon-preview:

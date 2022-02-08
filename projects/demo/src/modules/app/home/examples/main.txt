@@ -1,1 +1,1 @@
-npm i @taiga-ui/{cdk,core,kit,icons}
+npm i @taiga-ui/{cdk,core,kit,i18n,icons}
