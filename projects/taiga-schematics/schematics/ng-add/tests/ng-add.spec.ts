@@ -10,6 +10,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {
+    DOMPURIFY_TYPES_VERSION,
     DOMPURIFY_VERSION,
     NG_DOMPURIFY_VERSION,
     TAIGA_VERSION,
@@ -75,7 +76,7 @@ describe('ng-add', () => {
         expect(tree.readContent('package.json')).toEqual(
             `{
   "devDependencies": {
-    "@types/dompurify": "2.2.3"
+    "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
   },
   "dependencies": {
     "@angular/cdk": "^13.0.0",
