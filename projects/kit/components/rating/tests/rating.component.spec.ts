@@ -9,9 +9,9 @@ describe('Rating', () => {
 
     class AbstractTestComponent {
         @ViewChild(TuiRatingComponent, {static: true})
-        component: TuiRatingComponent;
+        component!: TuiRatingComponent;
 
-        rate: number;
+        rate!: number;
     }
 
     describe('Template Driven', () => {

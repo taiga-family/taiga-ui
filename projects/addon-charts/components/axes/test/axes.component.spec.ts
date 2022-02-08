@@ -22,10 +22,10 @@ describe('Axes', () => {
     })
     class TestComponent {
         @ViewChild('defaultValues')
-        readonly defaultValues: TuiAxesComponent;
+        readonly defaultValues!: TuiAxesComponent;
 
         @ViewChild('customValues')
-        readonly customValues: TuiAxesComponent;
+        readonly customValues!: TuiAxesComponent;
 
         axisXLabels = ['Label 1', 'Label 2'];
 

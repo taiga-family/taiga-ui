@@ -39,7 +39,7 @@ import {TuiInputDateRangeModule} from '../input-date-range.module';
 })
 class TestComponent {
     @ViewChild(TuiInputDateRangeComponent)
-    readonly component: TuiInputDateRangeComponent;
+    readonly component!: TuiInputDateRangeComponent;
 
     readonly control = new FormControl(
         new TuiDayRange(

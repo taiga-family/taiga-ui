@@ -16,7 +16,7 @@ describe('NotificationsHost', () => {
     })
     class TestComponent {
         @ViewChild(TuiNotificationsHostComponent, {static: true})
-        component: TuiNotificationsHostComponent;
+        component!: TuiNotificationsHostComponent;
     }
 
     let fixture: ComponentFixture<TestComponent>;

@@ -17,7 +17,7 @@ describe('Card', () => {
     })
     class TestComponent {
         @ViewChild(TuiCardComponent, {static: true})
-        component: TuiCardComponent;
+        component!: TuiCardComponent;
 
         paymentSystem: any | null = null;
         brandLogo = '';

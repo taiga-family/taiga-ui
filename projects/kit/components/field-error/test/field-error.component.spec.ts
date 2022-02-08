@@ -81,7 +81,7 @@ describe('FieldError', () => {
         })
         class TestComponent {
             @ViewChild(TuiFieldErrorComponent, {static: true})
-            component: TuiFieldErrorComponent;
+            component!: TuiFieldErrorComponent;
 
             testForm = new FormGroup({
                 formArray: new FormArray([new FormControl('')], [arrayValidator]),
@@ -149,7 +149,7 @@ describe('FieldError', () => {
         })
         class TestComponent {
             @ViewChild(TuiFieldErrorComponent, {static: true})
-            component: TuiFieldErrorComponent;
+            component!: TuiFieldErrorComponent;
 
             testForm = new FormGroup(
                 {
@@ -218,7 +218,7 @@ describe('FieldError', () => {
         })
         class TestComponent {
             @ViewChild('errorContent', {static: true})
-            errorContent: PolymorpheusTemplate<{}>;
+            errorContent!: PolymorpheusTemplate<{}>;
 
             readonly testMes = ZIP_CODE_MESSAGE;
 
@@ -226,7 +226,7 @@ describe('FieldError', () => {
                 control: new FormControl(),
             });
 
-            order: string[];
+            order!: string[];
         }
 
         let fixture: ComponentFixture<TestComponent>;

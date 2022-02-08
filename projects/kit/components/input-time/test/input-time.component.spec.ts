@@ -45,7 +45,7 @@ describe('InputTime', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputTimeComponent, {static: true})
-        component: TuiInputTimeComponent;
+        component!: TuiInputTimeComponent;
 
         control = new FormControl(new TuiTime(12, 30));
         cleaner = false;

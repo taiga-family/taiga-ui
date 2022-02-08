@@ -23,7 +23,7 @@ describe('Calendar', () => {
     })
     class TestComponent {
         @ViewChild(TuiCalendarComponent, {static: true})
-        component: TuiCalendarComponent;
+        component!: TuiCalendarComponent;
 
         min = TuiDay.currentLocal().append({month: -2});
         max = TuiDay.currentLocal().append({month: 2});

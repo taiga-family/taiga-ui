@@ -13,7 +13,7 @@ import {TuiInputColorModule} from '../input-color.module';
 })
 class TestComponent {
     @ViewChild(TuiInputColorComponent)
-    component: TuiInputColorComponent;
+    component!: TuiInputColorComponent;
 
     color = '#0000ff';
 }

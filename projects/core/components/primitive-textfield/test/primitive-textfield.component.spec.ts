@@ -38,7 +38,7 @@ describe('PrimitiveTextfield', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
-        component: TuiPrimitiveTextfieldComponent;
+        component!: TuiPrimitiveTextfieldComponent;
 
         cleaner = false;
 

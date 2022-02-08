@@ -15,7 +15,7 @@ describe('InputExpire', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputExpireComponent)
-        input: TuiInputExpireComponent;
+        input!: TuiInputExpireComponent;
 
         value = '';
     }

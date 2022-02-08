@@ -33,7 +33,7 @@ import {configureTestSuite} from 'ng-bullet';
 })
 class TestComponent {
     @ViewChild(TuiInputDateTimeComponent)
-    dateTimeComponent: TuiInputDateTimeComponent;
+    dateTimeComponent!: TuiInputDateTimeComponent;
 
     readonly control = new FormControl([new TuiDay(2021, 6, 12), null]);
 

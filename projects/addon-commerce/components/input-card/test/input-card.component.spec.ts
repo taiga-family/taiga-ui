@@ -18,7 +18,7 @@ describe('InputCard', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputCardComponent, {static: true})
-        component: TuiInputCardComponent;
+        component!: TuiInputCardComponent;
 
         control = new FormControl('');
 

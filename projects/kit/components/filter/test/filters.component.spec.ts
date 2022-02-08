@@ -44,7 +44,7 @@ describe('Filter', () => {
     })
     class TestComponent {
         @ViewChild(TuiFilterComponent, {static: true})
-        component: TuiFilterComponent<any>;
+        component!: TuiFilterComponent<any>;
 
         disabledItemHandler: TuiBooleanHandler<any> = ALWAYS_FALSE_HANDLER;
 

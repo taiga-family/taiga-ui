@@ -23,10 +23,10 @@ describe('InputCardGrouped', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputCardGroupedComponent, {static: true})
-        component: TuiInputCardGroupedComponent;
+        component!: TuiInputCardGroupedComponent;
 
         @ViewChild('customIconTemplate', {read: TemplateRef})
-        customIconTemplate: TemplateRef<any>;
+        customIconTemplate!: TemplateRef<any>;
 
         control = new FormControl('');
 

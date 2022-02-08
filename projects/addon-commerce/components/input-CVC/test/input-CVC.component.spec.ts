@@ -16,10 +16,10 @@ describe('InputCVC', () => {
     })
     class TestComponent {
         @ViewChild('default')
-        default: TuiInputCVCComponent;
+        default!: TuiInputCVCComponent;
 
         @ViewChild('custom')
-        custom: TuiInputCVCComponent;
+        custom!: TuiInputCVCComponent;
 
         control = new FormControl('');
     }

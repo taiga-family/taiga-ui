@@ -12,7 +12,7 @@ import {TuiColorPickerModule} from '../color-picker.module';
 })
 class TestComponent {
     @ViewChild(TuiColorPickerComponent)
-    component: TuiColorPickerComponent;
+    component!: TuiColorPickerComponent;
 
     color = [0, 255, 0, 1];
 }

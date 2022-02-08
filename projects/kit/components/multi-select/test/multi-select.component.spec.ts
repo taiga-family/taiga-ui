@@ -58,7 +58,7 @@ describe('MultiSelect', () => {
         })
         class TestComponent {
             @ViewChild(TuiMultiSelectComponent, {static: true})
-            component: TuiMultiSelectComponent<User>;
+            component!: TuiMultiSelectComponent<User>;
 
             items = ITEMS;
 
@@ -250,7 +250,7 @@ describe('MultiSelect', () => {
         })
         class TestComponent {
             @ViewChild(TuiMultiSelectComponent, {static: true})
-            component: TuiMultiSelectComponent<User>;
+            component!: TuiMultiSelectComponent<User>;
 
             items = ITEMS;
 

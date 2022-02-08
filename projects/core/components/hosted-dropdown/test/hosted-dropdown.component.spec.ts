@@ -62,13 +62,13 @@ describe('TuiHostedDropdown', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveTextfieldComponent)
-        tuiTextfield: TuiPrimitiveTextfieldComponent;
+        tuiTextfield!: TuiPrimitiveTextfieldComponent;
 
         @ViewChild(TuiButtonComponent)
-        tuiButton: TuiButtonComponent;
+        tuiButton!: TuiButtonComponent;
 
         @ViewChild('host', {read: TuiButtonComponent})
-        target: TuiButtonComponent;
+        target!: TuiButtonComponent;
 
         open = false;
         items = ['Item 1', 'Item 2'];
