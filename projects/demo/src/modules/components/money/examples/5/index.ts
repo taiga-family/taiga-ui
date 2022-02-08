@@ -6,6 +6,7 @@ import {TUI_NUMBER_FORMAT} from '@taiga-ui/core';
 @Component({
     selector: 'tui-money-example-5',
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     providers: [
         {
             provide: TUI_NUMBER_FORMAT,
