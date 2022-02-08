@@ -11,7 +11,7 @@
     [nativeId]="nativeId"
     [prefix]="prefix"
     [postfix]="postfix"
-    [disabled]="disabled"
+    [disabled]="computedDisabled"
     [readOnly]="readOnly"
     [textMask]="getMask(min < 0)"
     [invalid]="computedInvalid"
@@ -23,6 +23,7 @@
     (pressedChange)="onPressed($event)"
 >
     <ng-content></ng-content>
+    <ng-content select="input" ngProjectAs="input"></ng-content>
 </tui-primitive-textfield>
 <ng-container *ngIf="!buttonsHidden && (minusTexts$ | async) as texts">
     <section class="buttons">

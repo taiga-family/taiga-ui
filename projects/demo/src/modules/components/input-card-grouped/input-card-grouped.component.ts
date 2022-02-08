@@ -12,8 +12,8 @@ import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {FrontEndExample} from '../../interfaces/front-end-example';
@@ -32,9 +32,9 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
     ],
 })
 export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInteractive {
-    readonly exampleImportModule = exampleImportModule;
+    readonly exampleModule = exampleModule;
 
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleHtml = exampleHtml;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

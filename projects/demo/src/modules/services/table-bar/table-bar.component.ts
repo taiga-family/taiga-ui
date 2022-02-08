@@ -13,7 +13,7 @@ import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-
 import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
 import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/service-usage.txt';
 import {default as exampleServiceUsageHtml} from '!!raw-loader!./examples/import/service-usage-html.txt';
-import {default as exampleTemplate} from '!!raw-loader!./examples/import/template.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -33,7 +33,7 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
     readonly exampleServiceUsageHtml = exampleServiceUsageHtml;
     readonly exampleLazyModule = exampleLazyModule;
     readonly exampleModule = exampleModule;
-    readonly exampleTemplate = exampleTemplate;
+    readonly exampleHtml = exampleHtml;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

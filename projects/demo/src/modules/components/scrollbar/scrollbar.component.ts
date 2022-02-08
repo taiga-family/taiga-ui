@@ -16,8 +16,8 @@ import {default as example5Html} from '!!raw-loader!./examples/5/template.html';
 import {default as example6Ts} from '!!raw-loader!./examples/6/component.ts';
 import {default as example6Less} from '!!raw-loader!./examples/6/style.less';
 import {default as example6Html} from '!!raw-loader!./examples/6/template.html';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -26,8 +26,8 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     templateUrl: './scrollbar.template.html',
 })
 export class ExampleTuiScrollbarComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = exampleModule;
+    readonly exampleHtml = exampleHtml;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

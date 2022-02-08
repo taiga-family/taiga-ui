@@ -23,7 +23,7 @@ import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -36,7 +36,7 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
     changeDetection,
 })
 export class ExampleTuiCalendarRangeComponent {
-    readonly exampleImportModule = exampleImportModule;
+    readonly exampleModule = exampleModule;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

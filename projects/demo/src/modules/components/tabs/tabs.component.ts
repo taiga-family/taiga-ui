@@ -17,8 +17,8 @@ import {default as example6Less} from '!!raw-loader!./examples/6/index.less';
 import {default as example6Ts} from '!!raw-loader!./examples/6/index.ts';
 import {default as example7Html} from '!!raw-loader!./examples/7/index.html';
 import {default as example7Ts} from '!!raw-loader!./examples/7/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -66,8 +66,8 @@ export class ExampleTuiTabsComponent {
         HTML: example7Html,
     };
 
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = exampleModule;
+    readonly exampleHtml = exampleHtml;
 
     readonly moreContentVariants = ['', 'And more'];
 

@@ -24,8 +24,8 @@ import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 import {default as exampleFirstDayOfWeekToken} from '!!raw-loader!./examples/import/first-day-of-week-token.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -38,8 +38,8 @@ const ONE_DOT: [TuiColor] = [TuiBaseColor.Success];
     changeDetection,
 })
 export class ExampleTuiCalendarComponent {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleModule = exampleModule;
+    readonly exampleHtml = exampleHtml;
     readonly firstDayOfWeekToken = exampleFirstDayOfWeekToken;
 
     readonly example1: FrontEndExample = {

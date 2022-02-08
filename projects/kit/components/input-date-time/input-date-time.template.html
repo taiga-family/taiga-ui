@@ -17,7 +17,7 @@
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [iconContent]="iconContent"
-        [disabled]="disabled"
+        [disabled]="computedDisabled"
         [textMask]="textMaskOptions"
         [value]="computedValue"
         (valueChange)="onValueChange($event)"
@@ -25,6 +25,7 @@
         (focusedChange)="onFocused($event)"
     >
         <ng-content></ng-content>
+        <ng-content select="input" ngProjectAs="input"></ng-content>
     </tui-primitive-textfield>
 
     <ng-template #iconContent>

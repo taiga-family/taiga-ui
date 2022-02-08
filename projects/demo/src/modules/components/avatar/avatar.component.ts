@@ -9,11 +9,11 @@ import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiAvatarComponent {
-    readonly exampleImportModule: RawLoaderContent = import(
+    readonly exampleModule: RawLoaderContent = import(
         '!!raw-loader!./examples/import/import-module.md'
     );
 
-    readonly exampleInsertTemplate: RawLoaderContent = import(
+    readonly exampleHtml: RawLoaderContent = import(
         '!!raw-loader!./examples/import/insert-template.md'
     );
 

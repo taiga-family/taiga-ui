@@ -6,8 +6,8 @@ import {TUI_EXPAND_LOADED, TuiExpandComponent} from '@taiga-ui/core';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -21,9 +21,9 @@ export class ExampleTuiExpandComponent {
     @ViewChild(TuiExpandComponent, {read: ElementRef})
     expand?: ElementRef;
 
-    readonly exampleImportModule = exampleImportModule;
+    readonly exampleModule = exampleModule;
 
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleHtml = exampleHtml;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

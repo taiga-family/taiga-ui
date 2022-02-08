@@ -6,8 +6,8 @@ import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -28,9 +28,9 @@ export class ExampleTuiActionComponent {
         HTML: example2Html,
     };
 
-    readonly exampleImportModule = exampleImportModule;
+    readonly exampleModule = exampleModule;
 
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleHtml = exampleHtml;
 
     readonly iconVariants = [
         'tuiIconPrintLarge',

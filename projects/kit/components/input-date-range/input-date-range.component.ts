@@ -1,7 +1,6 @@
 import {
     ChangeDetectorRef,
     Component,
-    forwardRef,
     HostListener,
     Inject,
     Injector,
@@ -24,7 +23,6 @@ import {
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
     TuiBooleanHandler,
@@ -53,9 +51,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {EMPTY_MASK, MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
-import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
-    TUI_CALENDAR_DATA_STREAM,
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
     TUI_MOBILE_CALENDAR,
@@ -64,37 +60,18 @@ import {
     tuiCreateAutoCorrectedDateRangePipe,
     tuiCreateDateRangeMask,
 } from '@taiga-ui/kit/utils/mask';
-import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
-// TODO: remove in ivy compilation
-export const RANGE_STREAM_FACTORY = (
-    control: NgControl | null,
-    valueTransformer: TuiControlValueTransformer<TuiDayRange>,
-) => TuiReplayControlValueChangesFactory(control, valueTransformer);
+import {TUI_INPUT_DATE_RANGE_PROVIDERS} from './input-date-range.providers';
 
 // @dynamic
 @Component({
     selector: 'tui-input-date-range',
     templateUrl: './input-date-range.template.html',
     styleUrls: ['./input-date-range.style.less'],
-    providers: [
-        {
-            provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
-            useExisting: forwardRef(() => TuiInputDateRangeComponent),
-        },
-        {
-            provide: TUI_CALENDAR_DATA_STREAM,
-            deps: [
-                [new Optional(), new Self(), NgControl],
-                [new Optional(), forwardRef(() => TUI_DATE_RANGE_VALUE_TRANSFORMER)],
-            ],
-            useFactory: RANGE_STREAM_FACTORY,
-        },
-        LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
-    ],
+    providers: TUI_INPUT_DATE_RANGE_PROVIDERS,
 })
 export class TuiInputDateRangeComponent
     extends AbstractTuiNullableControl<TuiDayRange>

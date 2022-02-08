@@ -15,11 +15,11 @@ export class ExampleTuiTagComponent {
     @ViewChild('errorIcon')
     errorTemplate?: TemplateRef<{}>;
 
-    readonly exampleImportModule: RawLoaderContent = import(
+    readonly exampleModule: RawLoaderContent = import(
         '!!raw-loader!./examples/import/import-module.txt'
     );
 
-    readonly exampleInsertTemplate: RawLoaderContent = import(
+    readonly exampleHtml: RawLoaderContent = import(
         '!!raw-loader!./examples/import/insert-template.txt'
     );
 

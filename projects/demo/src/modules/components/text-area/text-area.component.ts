@@ -18,9 +18,9 @@ import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
 import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
 import {default as example5Less} from '!!raw-loader!./examples/5/index.less';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleForm} from '!!raw-loader!./examples/import/declare-form.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -68,9 +68,9 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
         LESS: example5Less,
     };
 
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
-    exampleDeclareForm = exampleDeclareForm;
+    readonly exampleModule = exampleModule;
+    readonly exampleHtml = exampleHtml;
+    exampleForm = exampleForm;
 
     readonly maxLengthVariants: readonly number[] = [50, 100, 500];
 

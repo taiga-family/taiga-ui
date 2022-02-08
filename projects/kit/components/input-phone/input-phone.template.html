@@ -18,7 +18,7 @@
         [disabled]="computedDisabled"
         [focusable]="focusable"
         [textMask]="textMaskOptions"
-        [value]="nativeValue"
+        [value]="computedValue"
         [tuiTextfieldCleaner]="canClean"
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
@@ -27,5 +27,6 @@
         (paste.prevent)="onPaste($event)"
     >
         <ng-content></ng-content>
+        <ng-content select="input" ngProjectAs="input"></ng-content>
     </tui-primitive-textfield>
 </tui-hosted-dropdown>

@@ -13,11 +13,12 @@
     [prefix]="prefix"
     [postfix]="postfix"
     [focusable]="focusable"
-    (valueChange)="onValue($event)"
+    (valueChange)="onValueChange($event)"
     (hoveredChange)="onHovered($event)"
     (focusedChange)="onFocused($event)"
     (pressedChange)="onPressed($event)"
     (keydown)="onKeyDown($event)"
 >
     <ng-content></ng-content>
+    <ng-content select="input" ngProjectAs="input"></ng-content>
 </tui-primitive-textfield>

@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    AbstractTuiControl,
     AbstractTuiNullableControl,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
@@ -45,6 +46,10 @@ const DEFAULT_MAX_LENGTH = 18;
     providers: [
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
+            useExisting: forwardRef(() => TuiInputNumberComponent),
+        },
+        {
+            provide: AbstractTuiControl,
             useExisting: forwardRef(() => TuiInputNumberComponent),
         },
     ],
@@ -194,7 +199,7 @@ export class TuiInputNumberComponent
         guide: false,
     });
 
-    onValue(value: string) {
+    onValueChange(value: string) {
         if (maskedMoneyValueIsEmpty(value)) {
             this.updateValue(null);
 

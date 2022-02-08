@@ -33,7 +33,7 @@ import {default as example5CustomLabelTemplate} from '!!raw-loader!./examples/5/
 import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
 import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
 import {default as exampleCustomAlert} from '!!raw-loader!./examples/import/custom-alert.txt';
-import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
+import {default as exampleOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleImportModuleComponent} from '!!raw-loader!./examples/import/import-module-component.txt';
 import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
 import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
@@ -56,7 +56,7 @@ export class ExampleTuiNotificationsComponent {
     readonly exampleCustomAlert = exampleCustomAlert;
     readonly exampleLazyModule = exampleLazyModule;
     readonly exampleModule = exampleModule;
-    readonly exampleDefineOptions = exampleDefineOptions;
+    readonly exampleOptions = exampleOptions;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

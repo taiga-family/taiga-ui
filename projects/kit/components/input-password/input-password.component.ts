@@ -49,6 +49,10 @@ import {InputPasswordOptions, TUI_INPUT_PASSWORD_OPTIONS} from './input-password
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputPasswordComponent),
         },
+        {
+            provide: AbstractTuiControl,
+            useExisting: forwardRef(() => TuiInputPasswordComponent),
+        },
         HINT_CONTROLLER_PROVIDER,
         MODE_PROVIDER,
     ],

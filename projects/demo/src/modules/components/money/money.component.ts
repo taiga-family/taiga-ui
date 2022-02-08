@@ -15,13 +15,9 @@ import {TuiDecimalT} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiMoneyComponent {
-    readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.txt'
-    );
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
 
-    readonly exampleInsertTemplate = import(
-        '!!raw-loader!./examples/import/insert-template.txt'
-    );
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),

@@ -54,6 +54,10 @@ import {InputCountOptions, TUI_INPUT_COUNT_OPTIONS} from './input-count-options'
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputCountComponent),
         },
+        {
+            provide: AbstractTuiControl,
+            useExisting: forwardRef(() => TuiInputCountComponent),
+        },
     ],
 })
 export class TuiInputCountComponent

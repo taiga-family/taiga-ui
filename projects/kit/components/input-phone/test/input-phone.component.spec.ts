@@ -330,7 +330,7 @@ describe('InputPhone', () => {
 
         fixture.whenStable().then(() => {
             fixture.detectChanges();
-            expect(component.nativeValue).toBe('+7 123 456-78-90');
+            expect(component.computedValue).toBe('+7 123 456-78-90');
             done();
         });
     }
@@ -348,7 +348,7 @@ describe('InputPhone', () => {
         getTel().dispatchEvent(dragEvent);
         fixture.whenStable().then(() => {
             fixture.detectChanges();
-            expect(component.nativeValue).toBe('+7 123 456-78-90');
+            expect(component.computedValue).toBe('+7 123 456-78-90');
             done();
         });
     }

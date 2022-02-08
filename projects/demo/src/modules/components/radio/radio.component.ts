@@ -8,10 +8,10 @@ import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
 import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleDeclareForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleDefineOptions} from '!!raw-loader!./examples/import/define-options.txt';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleForm} from '!!raw-loader!./examples/import/declare-form.txt';
+import {default as exampleOptions} from '!!raw-loader!./examples/import/define-options.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -29,10 +29,10 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
     ],
 })
 export class ExampleTuiRadioComponent extends AbstractExampleTuiInteractive {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
-    readonly exampleDeclareForm = exampleDeclareForm;
-    readonly exampleDefineOptions = exampleDefineOptions;
+    readonly exampleModule = exampleModule;
+    readonly exampleHtml = exampleHtml;
+    readonly exampleForm = exampleForm;
+    readonly exampleOptions = exampleOptions;
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

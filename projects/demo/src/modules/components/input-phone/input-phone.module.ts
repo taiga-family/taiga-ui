@@ -10,6 +10,7 @@ import {
     TuiDropdownControllerModule,
     TuiHintControllerModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -38,6 +39,7 @@ import {ExampleTuiInputPhoneComponent} from './input-phone.component';
         TuiHintControllerModule,
         TuiInputPhoneModule,
         TuiLinkModule,
+        TuiNotificationModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputPhoneComponent)),

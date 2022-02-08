@@ -6,7 +6,7 @@ import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-input-date-range-example-1',
-    templateUrl: './template.html',
+    templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })

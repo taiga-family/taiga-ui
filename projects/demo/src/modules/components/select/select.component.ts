@@ -34,17 +34,11 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
         TuiValueContentContext<Account>
     > = '';
 
-    readonly exampleImportModule = import(
-        '!!raw-loader!./examples/import/import-module.txt'
-    );
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
 
-    readonly exampleInsertTemplate = import(
-        '!!raw-loader!./examples/import/insert-template.txt'
-    );
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
 
-    readonly exampleDeclareForm = import(
-        '!!raw-loader!./examples/import/declare-form.txt'
-    );
+    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.txt');
 
     readonly example1 = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),

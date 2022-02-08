@@ -24,8 +24,8 @@ import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
 import {default as example6Html} from '!!raw-loader!./examples/6/index.html';
 import {default as example6Less} from '!!raw-loader!./examples/6/index.less';
 import {default as example6Ts} from '!!raw-loader!./examples/6/index.ts';
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
+import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
+import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 
@@ -74,9 +74,9 @@ export class ExampleTuiSheetComponent {
         LESS: example6Less,
     };
 
-    readonly exampleImportModule = exampleImportModule;
+    readonly exampleModule = exampleModule;
 
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleHtml = exampleHtml;
 
     closeable = TUI_SHEET_DEFAULT_OPTIONS.closeable;
     image = TUI_SHEET_DEFAULT_OPTIONS.image;

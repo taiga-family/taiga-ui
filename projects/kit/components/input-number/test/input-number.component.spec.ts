@@ -156,28 +156,28 @@ describe('InputNumber', () => {
         });
     });
 
-    describe('onValue | updating form values', () => {
+    describe('onValueChange | updating form values', () => {
         describe('An incomplete value is passed to the form null', () => {
             it(`Value ''`, () => {
-                component.onValue('');
+                component.onValueChange('');
 
                 expect(testComponent.control.value).toBe(null);
             });
 
             it(`Value '-'`, () => {
-                component.onValue('-');
+                component.onValueChange('-');
 
                 expect(testComponent.control.value).toBe(null);
             });
 
             it(`Value ','`, () => {
-                component.onValue(',');
+                component.onValueChange(',');
 
                 expect(testComponent.control.value).toBe(null);
             });
 
             it(`Value '-,'`, () => {
-                component.onValue('-,');
+                component.onValueChange('-,');
 
                 expect(testComponent.control.value).toBe(null);
             });
@@ -191,7 +191,7 @@ describe('InputNumber', () => {
 
             it('A value less than positive min does not update the control', () => {
                 testComponent.component.min = 15;
-                component.onValue(`10`);
+                component.onValueChange(`10`);
 
                 expect(testComponent.control.value).toBe(null);
             });
@@ -200,14 +200,14 @@ describe('InputNumber', () => {
                 const savedMax = 25;
 
                 testComponent.component.max = savedMax;
-                component.onValue(`50`);
+                component.onValueChange(`50`);
 
                 expect(testComponent.control.value).toBe(savedMax);
             });
 
             it('A value greater than negative max does not update the control', () => {
                 testComponent.component.max = -15;
-                component.onValue(`-10`);
+                component.onValueChange(`-10`);
 
                 expect(testComponent.control.value).toBe(null);
             });
@@ -216,14 +216,14 @@ describe('InputNumber', () => {
                 const savedMin = -25;
 
                 testComponent.component.min = savedMin;
-                component.onValue(`-50`);
+                component.onValueChange(`-50`);
 
                 expect(testComponent.control.value).toBe(savedMin);
             });
         });
 
         it(`The correctly filled value is passed to the form number`, () => {
-            component.onValue(`-12${CHAR_NO_BREAK_SPACE}345,67`);
+            component.onValueChange(`-12${CHAR_NO_BREAK_SPACE}345,67`);
 
             expect(testComponent.control.value).toBe(-12345.67);
         });
@@ -317,7 +317,7 @@ describe('InputNumber', () => {
 
             component.decimal = 'always';
             component.precision = precision;
-            component.onValue(value);
+            component.onValueChange(value);
 
             expect(component.computedValue).toBe(`${value},00`);
         });
@@ -328,7 +328,7 @@ describe('InputNumber', () => {
 
             component.decimal = 'always';
             component.precision = precision;
-            component.onValue(value);
+            component.onValueChange(value);
 
             expect(component.computedValue).toBe(`${value},00`);
         });
