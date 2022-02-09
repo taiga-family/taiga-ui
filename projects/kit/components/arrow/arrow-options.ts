@@ -37,16 +37,13 @@ export interface TuiArrowMode {
     readonly disabled: PolymorpheusContent;
 }
 
-/** Default values for arrow mode */
-export const TUI_ARROW_DEFAULT_MODE: TuiArrowMode = {
-    interactive: TUI_ARROW,
-    disabled: TUI_ARROW,
-};
-
 export const TUI_ARROW_MODE: InjectionToken<TuiArrowMode> = new InjectionToken(
     'Type of icon in dropdowns for interactive or disable mode',
     {
-        factory: () => TUI_ARROW_DEFAULT_MODE,
+        factory: () => ({
+            interactive: TUI_ARROW,
+            disabled: TUI_ARROW,
+        }),
     },
 );
 
@@ -54,5 +51,11 @@ export const tuiArrowModeProvider: (options: Partial<TuiArrowMode>) => ValueProv
     options: Partial<TuiArrowMode>,
 ) => ({
     provide: TUI_ARROW_MODE,
-    useValue: {...TUI_ARROW_DEFAULT_MODE, ...options},
+    useValue: {
+        ...{
+            interactive: TUI_ARROW,
+            disabled: TUI_ARROW,
+        },
+        ...options,
+    },
 });
