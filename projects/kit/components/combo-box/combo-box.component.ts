@@ -18,15 +18,9 @@ import {
     isNativeFocused,
     isPresent,
     setNativeFocused,
-    TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_DEFAULT_STRINGIFY,
-    TUI_STRICT_MATCHER,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    TuiIdentityMatcher,
     tuiPure,
-    TuiStringHandler,
-    TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_ACCESSOR,
@@ -38,9 +32,11 @@ import {
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_COMBO_BOX_PROVIDERS} from './combo-box.providers';
+import {TUI_COMBO_BOX_OPTIONS, TuiComboBoxOptions} from './combo-box-options';
 
 @Component({
     selector: 'tui-combo-box',
@@ -64,23 +60,24 @@ export class TuiComboBoxComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    stringify: TuiStringHandler<T> = TUI_DEFAULT_STRINGIFY;
+    stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
     @Input()
     @tuiDefaultProp()
-    strictMatcher: TuiStringMatcher<T> = TUI_STRICT_MATCHER;
+    strictMatcher: TuiComboBoxOptions<T>['strictMatcher'] = this.options.strictMatcher;
 
     @Input()
     @tuiDefaultProp()
-    identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
+    identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
+        this.itemsHandlers.identityMatcher;
 
     @Input()
     @tuiDefaultProp()
-    valueContent: PolymorpheusContent<TuiValueContentContext<T>> = '';
+    valueContent: TuiComboBoxOptions<T>['valueContent'] = this.options.valueContent;
 
     @Input()
     @tuiDefaultProp()
-    strict = true;
+    strict: TuiComboBoxOptions<T>['strict'] = this.options.strict;
 
     @Input()
     @tuiDefaultProp()
@@ -102,6 +99,10 @@ export class TuiComboBoxComponent<T>
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_ARROW_MODE)
         private readonly arrowMode: TuiArrowMode,
+        @Inject(TUI_ITEMS_HANDLERS)
+        private readonly itemsHandlers: TuiItemsHandlers<T>,
+        @Inject(TUI_COMBO_BOX_OPTIONS)
+        private readonly options: TuiComboBoxOptions<T>,
     ) {
         super(control, changeDetectorRef);
     }
