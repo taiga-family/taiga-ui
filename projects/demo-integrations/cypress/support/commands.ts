@@ -2,6 +2,7 @@ import {addMatchImageSnapshotCommand} from 'cypress-image-snapshot/command';
 
 import {goToDemoPage} from './go-to-demo-page.util';
 import {hideHeader} from './hide-header.util';
+import {hideNavigation} from './hide-navigation.util';
 import {setNightMode} from './set-night-mode';
 import {waitKitDialog} from './wait-kit-dialog';
 
@@ -16,6 +17,7 @@ declare global {
             hideHeader: typeof hideHeader;
             waitKitDialog: typeof waitKitDialog;
             setNightMode: typeof setNightMode;
+            hideNavigation: typeof hideNavigation;
         }
     }
 }
@@ -28,32 +30,13 @@ Cypress.Commands.add('goToDemoPage', goToDemoPage);
 Cypress.Commands.add('hideHeader', hideHeader);
 Cypress.Commands.add('waitKitDialog', waitKitDialog);
 Cypress.Commands.add('setNightMode', setNightMode);
+Cypress.Commands.add('hideNavigation', hideNavigation);
 
 addMatchImageSnapshotCommand({
-    // When fullPage, your application under test
-    // is captured in its entirety from top to bottom.
-    capture: 'fullPage',
-
-    // When true, prevents JavaScript timers (setTimeout, setInterval)
-    // and CSS animations from running while the screenshot is taken.
-    disableTimersAndAnimations: true,
-
-    // threshold for entire image
-    failureThreshold: 0.03,
-
-    // percent of image or number of pixels
+    failureThreshold: 0,
     failureThresholdType: 'percent',
-
-    // The method by which images are compared.
-    // pixelmatch does a pixel by pixel comparison,
-    // whereas ssim does a structural similarity comparison.
-    comparisonMethod: 'pixelmatch',
-
-    // Custom config passed to 'pixelmatch' or 'ssim'
-    // threshold for each pixel
-    customDiffConfig: {threshold: 0.1},
-
-    // Runs the diff in process without spawning a child process.
-    // For improved performance
-    runInProcess: false,
+    customDiffConfig: {
+        threshold: 0.6, // ranges from 0 to 1. Smaller values make the comparison more sensitive.
+        includeAA: true, // If true, disables detecting and ignoring anti-aliased pixels.
+    },
 });

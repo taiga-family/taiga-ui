@@ -5,6 +5,7 @@ describe('DataList', () => {
         cy.viewport(1500, 800);
         cy.goToDemoPage('/components/data-list');
         cy.hideHeader();
+        cy.hideNavigation();
     });
 
     it('Complex', () => {

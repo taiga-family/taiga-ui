@@ -56,7 +56,6 @@ jobs:
 
       - run: |
           sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
@@ -70,25 +69,19 @@ jobs:
         run: |
           npm run serve:compiled & sleep 5
           curl -X GET -I -f "http://localhost:3333"
-
       - name: Run screenshot tests on demo/localhost
-        run: |
-          npm run concurrently -- \
-                             "npm run cy2:run:localhost" \
-                             "npm run cy2:run:localhost"
+        run: npm run concurrently "npm run cy2:run:localhost" "npm run cy2:run:localhost"
 
       - name: Run screenshot tests on demo/next
         continue-on-error: true
-        run: |
-          npm run concurrently -- \
-                         "npm run cy2:run:demo:next" \
-                         "npm run cy2:run:demo:next"
+        env:
+          CYPRESS_failOnSnapshotDiff: 0 # note: need for collect all diff files for lumberjack bot
+        run: npm run concurrently "npm run cy2:run:demo:next" "npm run cy2:run:demo:next"
 
       - name: Check if diff-output exists
         id: diff-checker
-        run:
-          echo "::set-output name=diff_exist::$(find ${{ env.SNAPSHOTS_PATH }} -type d -name '__diff_output__' | wc -l |
-          sed -e 's/^[[:space:]]*//')"
+        run: |
+          echo "::set-output name=diff_exist::$(find ${{ env.SNAPSHOTS_PATH }} -type d -name '__diff_output__' | wc -l | sed -e 's/^[[:space:]]*//')"
 
       - name: Fall with an error if diff-output exists
         if: ${{ steps.diff-checker.outputs.diff_exist != '0' }}
