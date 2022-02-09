@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.33.0](https://github.com/tinkoff/taiga-ui/compare/v2.32.0...v2.33.0) (2022-02-08)
+
+### Features
+
+- **addon-commerce:** add mexican peso currency ([#1314](https://github.com/tinkoff/taiga-ui/issues/1314))
+  ([fc179a1](https://github.com/tinkoff/taiga-ui/commit/fc179a126df447de19079a97ba7da941a0e46512))
+- **addon-commerce:** add type inference for currency ([#1326](https://github.com/tinkoff/taiga-ui/issues/1326))
+  ([06d2b51](https://github.com/tinkoff/taiga-ui/commit/06d2b51e5ed6d55ba55b06707fc2e9c3ad7d6bc1))
+- **core:** `Textfield` add component to expose native input from controls
+  ([#1316](https://github.com/tinkoff/taiga-ui/issues/1316))
+  ([9881ea7](https://github.com/tinkoff/taiga-ui/commit/9881ea7d6626bd7f56f7b2e4f7c2ac29e8859229))
+- **core:** add elevation css vars ([#1333](https://github.com/tinkoff/taiga-ui/issues/1333))
+  ([d40cb17](https://github.com/tinkoff/taiga-ui/commit/d40cb177117d27c65ac752d8d74e9823cf522dff))
+
+### Bug Fixes
+
+- **addon-commerce:** having redundant padding when currency is empty
+  ([#1328](https://github.com/tinkoff/taiga-ui/issues/1328))
+  ([2918a73](https://github.com/tinkoff/taiga-ui/commit/2918a73b6245752dba620425066f18530d935fe0))
+- **addon-editor:** updated extensions ([#1330](https://github.com/tinkoff/taiga-ui/issues/1330))
+  ([5245fa3](https://github.com/tinkoff/taiga-ui/commit/5245fa344e1b55cfc438a52b0f685a68df6efbe2))
+- **addon-mobile:** `Sheet` fix initial position for iOS ([#1277](https://github.com/tinkoff/taiga-ui/issues/1277))
+  ([878d48b](https://github.com/tinkoff/taiga-ui/commit/878d48bb39b4e461b3e97214733d3e995c4bffa1))
+- **core:** add `@taiga-ui/i18n` as dependency ([#1346](https://github.com/tinkoff/taiga-ui/issues/1346))
+  ([08ea554](https://github.com/tinkoff/taiga-ui/commit/08ea5547e359b87fbf0ac03d4bf04b3589a4b1c1))
+- **core:** fix tooltip position ([#1339](https://github.com/tinkoff/taiga-ui/issues/1339))
+  ([4eff5a2](https://github.com/tinkoff/taiga-ui/commit/4eff5a2833801e1e78fc8bd66464d7ef2bf3f2e1))
+- **core:** prevent multiple call `markForCheck` in dropdown ([#1289](https://github.com/tinkoff/taiga-ui/issues/1289))
+  ([70bd847](https://github.com/tinkoff/taiga-ui/commit/70bd847169c031ae70b613d79879cf971121ef8e))
+- **kit:** `InputPhoneInternational` fix paste/drop with plus ([#1306](https://github.com/tinkoff/taiga-ui/issues/1306))
+  ([d320109](https://github.com/tinkoff/taiga-ui/commit/d3201099b8f5897bf6949b7f79f00c2dcd856868))
+- **kit:** `InputPhoneInternational` fix wrong model update ([#1309](https://github.com/tinkoff/taiga-ui/issues/1309))
+  ([28b8312](https://github.com/tinkoff/taiga-ui/commit/28b831225d3ee6543b36eecbe2d7a7658bfb1ebc))
+- **kit:** prevent content overflow in select ([#1340](https://github.com/tinkoff/taiga-ui/issues/1340))
+  ([e05164f](https://github.com/tinkoff/taiga-ui/commit/e05164f376f25fedf30aa41f2e5b63f3e4b27dfd))
+- **kit:** prevent redundant space in input-tag ([#1341](https://github.com/tinkoff/taiga-ui/issues/1341))
+  ([eb3ad4d](https://github.com/tinkoff/taiga-ui/commit/eb3ad4d92203a6a381412cf8efa7927e6bb71e9f))
+
 ## [2.32.0](https://github.com/tinkoff/taiga-ui/compare/v2.31.0...v2.32.0) (2022-01-31)
 
 ### Features
