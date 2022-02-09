@@ -19,7 +19,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {CheckboxOptions, TUI_CHECKBOX_OPTIONS, TuiSizeL} from '@taiga-ui/core';
+import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions, TuiSizeL} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-checkbox',
@@ -51,7 +51,7 @@ export class TuiCheckboxComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(TUI_CHECKBOX_OPTIONS)
-        private readonly options: CheckboxOptions,
+        private readonly options: TuiCheckboxOptions,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(control, changeDetectorRef);

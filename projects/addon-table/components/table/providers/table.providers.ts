@@ -10,7 +10,7 @@ import {
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TUI_TEXTFIELD_SIZE,
 } from '@taiga-ui/core';
-import {InputCountOptions, TUI_INPUT_COUNT_OPTIONS} from '@taiga-ui/kit';
+import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from '@taiga-ui/kit';
 
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_STUCK_PROVIDER} from './stuck.provider';
@@ -21,7 +21,9 @@ export const TABLE_LABEL = {
     labelOutside: true,
 };
 
-export function inputCountOptionsFactory(options: InputCountOptions): InputCountOptions {
+export function inputCountOptionsFactory(
+    options: TuiInputCountOptions,
+): TuiInputCountOptions {
     return {...options, hideButtons: true};
 }
 

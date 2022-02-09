@@ -1,4 +1,4 @@
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, ValueProvider} from '@angular/core';
 
 export interface TuiRatingOptions {
     readonly min: number;
@@ -14,7 +14,16 @@ export const TUI_RATING_DEFAULT_OPTIONS: TuiRatingOptions = {
     iconFilled: 'tuiIconStarFilledLarge',
 };
 
-export const TUI_RATING_OPTIONS: InjectionToken<TuiRatingOptions> =
-    new InjectionToken<TuiRatingOptions>('Default parameters for rating component', {
+export const TUI_RATING_OPTIONS = new InjectionToken<TuiRatingOptions>(
+    'Default parameters for rating component',
+    {
         factory: () => TUI_RATING_DEFAULT_OPTIONS,
-    });
+    },
+);
+
+export const tuiRatingOptionsProvider: (
+    options: Partial<TuiRatingOptions>,
+) => ValueProvider = (options: Partial<TuiRatingOptions>) => ({
+    provide: TUI_RATING_OPTIONS,
+    useValue: {...TUI_RATING_DEFAULT_OPTIONS, ...options},
+});

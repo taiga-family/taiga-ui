@@ -1,8 +1,8 @@
 import {Directive} from '@angular/core';
-import {ButtonOptions, TUI_BUTTON_OPTIONS, TuiAppearance} from '@taiga-ui/core';
+import {TUI_BUTTON_OPTIONS, TuiAppearance, TuiButtonOptions} from '@taiga-ui/core';
 
 // TODO: remove in ivy compilation
-export const CAROUSEL_BUTTON_OPTIONS: ButtonOptions = {
+export const CAROUSEL_BUTTON_OPTIONS: TuiButtonOptions = {
     appearance: TuiAppearance.Secondary,
     shape: 'rounded',
     size: 'm',

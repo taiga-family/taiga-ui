@@ -11,9 +11,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {AbstractTuiControl, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
-    TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS,
-    TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
     TuiPrimitiveTextfieldComponent,
+    tuiPrimitiveTextfieldOptionsProvider,
 } from '@taiga-ui/core';
 
 @Component({
@@ -22,13 +21,9 @@ import {
     changeDetection,
     encapsulation,
     providers: [
-        {
-            provide: TUI_PRIMITIVE_TEXTFIELD_OPTIONS, // <-- You are looking for this token
-            useValue: {
-                ...TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS,
-                iconCleaner: 'tuiIconChevronUp',
-            },
-        },
+        tuiPrimitiveTextfieldOptionsProvider({
+            iconCleaner: 'tuiIconChevronUp',
+        }),
     ],
 })
 export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
