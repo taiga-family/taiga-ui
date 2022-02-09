@@ -35,7 +35,7 @@
         border-radius: 6.25rem;
     }
 
-    &[data-tui-host-size='xs'] {
+    &[data-size='xs'] {
         height: var(--tui-height-xs);
         font-weight: normal;
 
@@ -46,7 +46,7 @@
         }
     }
 
-    &[data-tui-host-size='s'] {
+    &[data-size='s'] {
         height: var(--tui-height-s);
         font-weight: normal;
 
@@ -57,7 +57,7 @@
         }
     }
 
-    &[data-tui-host-size='m'] {
+    &[data-size='m'] {
         height: var(--tui-height-m);
         font-size: @font-size-large;
 
@@ -68,7 +68,7 @@
         }
     }
 
-    &[data-tui-host-size='l'] {
+    &[data-size='l'] {
         height: var(--tui-height-l);
         font-size: @font-size-large;
 
@@ -79,7 +79,7 @@
         }
     }
 
-    &[data-tui-host-size='xl'] {
+    &[data-size='xl'] {
         height: 3.75rem;
         font-size: @font-size-large;
 
@@ -107,8 +107,8 @@
 .icon {
     display: block;
 
-    :host[data-tui-host-size='s'] &,
-    :host[data-tui-host-size='xs'] & {
+    :host[data-size='s'] &,
+    :host[data-size='xs'] & {
         width: 1rem;
         height: 1rem;
     }
@@ -131,23 +131,23 @@
     box-sizing: border-box;
     cursor: pointer;
 
-    :host[data-tui-host-size='xs'] & {
+    :host[data-size='xs'] & {
         padding: 0 @padding-xs;
     }
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         padding: 0 @padding-s;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         padding: 0 @padding-m;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         padding: 0 @padding-l;
     }
 
-    :host[data-tui-host-size='xl'] & {
+    :host[data-size='xl'] & {
         padding: 0 @padding-xl;
     }
 

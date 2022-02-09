@@ -31,7 +31,7 @@ export class TuiBadgedContentComponent {
     contentBottom: PolymorpheusContent = '';
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeXS | TuiSizeXXL = 'm';
 

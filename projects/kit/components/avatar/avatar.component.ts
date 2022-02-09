@@ -11,7 +11,7 @@ import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
 })
 export class TuiAvatarComponent {
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeXS | TuiSizeXXL = 'm';
 

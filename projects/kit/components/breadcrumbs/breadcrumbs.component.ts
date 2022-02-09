@@ -17,7 +17,7 @@ export class TuiBreadcrumbsComponent {
     items: ReadonlyArray<TuiBreadCrumbsItem> = [];
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeL = 'm';
 

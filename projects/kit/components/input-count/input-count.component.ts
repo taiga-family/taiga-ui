@@ -144,7 +144,7 @@ export class TuiInputCountComponent
             : this.primitiveTextfield.nativeFocusableElement;
     }
 
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }

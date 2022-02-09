@@ -58,7 +58,7 @@ export class TuiCheckboxBlockComponent
     hideCheckbox = false;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeS | TuiSizeL = 'l';
 

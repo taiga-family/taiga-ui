@@ -61,7 +61,7 @@ export class TuiRadioComponent<T>
     name: string | null = null;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 

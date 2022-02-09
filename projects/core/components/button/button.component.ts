@@ -75,7 +75,7 @@ export class TuiButtonComponent
     showLoader = false;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size = this.options.size;
 

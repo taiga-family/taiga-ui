@@ -56,7 +56,7 @@ export class TuiTagComponent {
     maxLength: number | null = null;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeS | TuiSizeL = 'm';
 

@@ -176,8 +176,8 @@ describe('Filter', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
-            expect(getCheckbox().attributes['data-tui-host-size']).toBe('m');
-            expect(getBadge().attributes['data-tui-host-size']).toBe('m');
+            expect(getCheckbox().attributes['data-size']).toBe('m');
+            expect(getBadge().attributes['data-size']).toBe('m');
         });
 
         it('if s, then both CheckboxBlock and badge have s', () => {
@@ -185,8 +185,8 @@ describe('Filter', () => {
             testComponent.size = 's';
             fixture.detectChanges();
 
-            expect(getCheckbox().attributes['data-tui-host-size']).toBe('s');
-            expect(getBadge().attributes['data-tui-host-size']).toBe('s');
+            expect(getCheckbox().attributes['data-size']).toBe('s');
+            expect(getBadge().attributes['data-size']).toBe('s');
         });
     });
 });

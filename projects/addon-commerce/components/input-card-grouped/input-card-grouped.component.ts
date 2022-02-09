@@ -90,7 +90,7 @@ const ICONS = {
     ],
     host: {
         '($.data-mode.attr)': 'mode$',
-        'data-tui-host-size': 'l',
+        'data-size': 'l',
     },
 })
 export class TuiInputCardGroupedComponent

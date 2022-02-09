@@ -39,7 +39,7 @@
     &_right {
         margin-left: -0.75rem;
 
-        :host[data-tui-host-size='l'] & {
+        :host[data-size='l'] & {
             padding-top: 1.25rem;
         }
 
@@ -75,7 +75,7 @@
         user-select: none;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         padding: 1.25rem @padding 0;
     }
 
@@ -95,16 +95,16 @@
     justify-content: space-between;
     align-items: center;
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         height: var(--tui-height-l);
         padding: 0 @padding;
     }
 
-    :host[data-tui-host-size='l']._disabled & {
+    :host[data-size='l']._disabled & {
         color: var(--tui-text-03);
     }
 
-    :host[data-tui-host-size='l'][data-mode='onDark']._disabled & {
+    :host[data-size='l'][data-mode='onDark']._disabled & {
         color: var(--tui-text-03-night);
     }
 }
@@ -130,7 +130,7 @@
     display: flex;
     width: 50%;
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         padding-top: 1.25rem;
     }
 }
@@ -139,7 +139,7 @@
     text-align: right;
     flex: 1;
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         padding-top: 1.25rem;
         line-height: calc(var(--tui-height-l) - 1.25rem);
     }

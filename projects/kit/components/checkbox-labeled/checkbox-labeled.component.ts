@@ -42,7 +42,7 @@ export class TuiCheckboxLabeledComponent
     private readonly checkbox?: TuiCheckboxComponent;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeL = 'm';
 

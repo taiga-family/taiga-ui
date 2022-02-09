@@ -4,19 +4,19 @@
     display: block;
     border-radius: var(--tui-radius-m);
 
-    &[data-tui-host-size='s'] {
+    &[data-size='s'] {
         height: var(--tui-height-s);
         min-height: var(--tui-height-s);
         max-height: var(--tui-height-s);
     }
 
-    &[data-tui-host-size='m'] {
+    &[data-size='m'] {
         height: var(--tui-height-m);
         min-height: var(--tui-height-m);
         max-height: var(--tui-height-m);
     }
 
-    &[data-tui-host-size='l'] {
+    &[data-size='l'] {
         height: var(--tui-height-l);
         min-height: var(--tui-height-l);
         max-height: var(--tui-height-l);
@@ -33,11 +33,11 @@
     align-items: center;
     overflow: hidden;
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         padding-right: 8px;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         padding-left: 16px;
     }
 }
@@ -52,11 +52,11 @@
     overflow: hidden;
     text-transform: inherit;
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         padding: 0 8px 0 12px;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         padding: 0 16px;
     }
 
@@ -65,7 +65,7 @@
         pointer-events: none;
     }
 
-    :host[data-tui-host-size='l']:not(._label-outside) & {
+    :host[data-size='l']:not(._label-outside) & {
         padding-top: 20px;
 
         // Workaround for raising placeholder in temporary autofill
@@ -75,7 +75,7 @@
         }
     }
 
-    :host[data-tui-host-size='m']:not(._label-outside) & {
+    :host[data-size='m']:not(._label-outside) & {
         padding-top: 18px;
 
         // Workaround for raising placeholder in temporary autofill
@@ -112,7 +112,7 @@
         width: 114%; // compensation of scale(0.87)
         transform: translateY(-10px) scale(0.87);
 
-        :host[data-tui-host-size='m'] & {
+        :host[data-size='m'] & {
             width: 118%;
             transform: translateY(-8px) scale(0.85);
             letter-spacing: 0.025rem;
@@ -130,17 +130,17 @@
     }
 
     :host._focused &,
-    :host[data-tui-host-size='m']._focused._label-outside &,
-    :host[data-tui-host-size='l']._focused._label-outside & {
+    :host[data-size='m']._focused._label-outside &,
+    :host[data-size='l']._focused._label-outside & {
         color: var(--tui-text-03);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         font-size: 15px;
     }
 
-    :host[data-tui-host-size='m']._focused:not(._label-outside) &,
-    :host[data-tui-host-size='l']._focused:not(._label-outside) & {
+    :host[data-size='m']._focused:not(._label-outside) &,
+    :host[data-size='l']._focused:not(._label-outside) & {
         color: var(--tui-text-01);
     }
 
@@ -150,14 +150,14 @@
         color: var(--tui-text-02-night);
     }
 
-    :host[data-tui-host-size='m'][data-mode='onDark']._focused:not(._label-outside) &,
-    :host[data-tui-host-size='l'][data-mode='onDark']._focused:not(._label-outside) & {
+    :host[data-size='m'][data-mode='onDark']._focused:not(._label-outside) &,
+    :host[data-size='l'][data-mode='onDark']._focused:not(._label-outside) & {
         color: var(--tui-text-01-night);
     }
 
     :host[data-mode='onDark']._focused &,
-    :host[data-tui-host-size='m'][data-mode='onDark']._focused._label-outside &,
-    :host[data-tui-host-size='l'][data-mode='onDark']._focused._label-outside & {
+    :host[data-size='m'][data-mode='onDark']._focused._label-outside &,
+    :host[data-size='l'][data-mode='onDark']._focused._label-outside & {
         color: var(--tui-text-02-night);
     }
     /* stylelint-enable selector-max-specificity */
@@ -213,7 +213,7 @@
     letter-spacing: normal;
     text-transform: none;
 
-    :host[data-tui-host-size='m']._label-outside & {
+    :host[data-size='m']._label-outside & {
         margin-top: -19px;
     }
 
@@ -286,7 +286,7 @@
         &_left {
             margin: 0 2 * $space 0 -$space;
 
-            :host[data-tui-host-size='s'] & {
+            :host[data-size='s'] & {
                 margin-right: $space;
             }
         }

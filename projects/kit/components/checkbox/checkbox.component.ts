@@ -41,7 +41,7 @@ export class TuiCheckboxComponent
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 

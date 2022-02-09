@@ -85,7 +85,7 @@ export abstract class AbstractTuiInputSlider<T>
     keySteps: TuiKeySteps | null = null;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     size: TuiSizeL = 'l';
 
     pluralizeMap: Record<string, string> | null = null;

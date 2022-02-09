@@ -65,7 +65,7 @@ export class TuiAccordionItemComponent
     borders: 'all' | 'top-bottom' | null = 'all';
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeS = 'm';
 

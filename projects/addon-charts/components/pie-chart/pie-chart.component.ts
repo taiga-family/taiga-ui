@@ -51,7 +51,7 @@ export class TuiPieChartComponent {
     value: readonly number[] = [];
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeXS | TuiSizeXL = 'm';
 

@@ -204,7 +204,7 @@ export class TuiInputTagComponent
         );
     }
 
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
