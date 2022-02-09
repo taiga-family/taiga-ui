@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [2.33.0](https://github.com/tinkoff/taiga-ui/compare/v2.31.0...v2.33.0) (2022-02-08)
+## [2.33.0](https://github.com/tinkoff/taiga-ui/compare/v2.32.0...v2.33.0) (2022-02-08)
 
 ### Features
 
@@ -16,30 +16,12 @@ All notable changes to this project will be documented in this file. See
   ([9881ea7](https://github.com/tinkoff/taiga-ui/commit/9881ea7d6626bd7f56f7b2e4f7c2ac29e8859229))
 - **core:** add elevation css vars ([#1333](https://github.com/tinkoff/taiga-ui/issues/1333))
   ([d40cb17](https://github.com/tinkoff/taiga-ui/commit/d40cb177117d27c65ac752d8d74e9823cf522dff))
-- **core:** default options configuration for `Hint` ([#1250](https://github.com/tinkoff/taiga-ui/issues/1250))
-  ([1a58d36](https://github.com/tinkoff/taiga-ui/commit/1a58d3632e4def793c31c4912d4fd35031b6b4fa))
-- **core:** default options configuration for `PrimitiveTextfield`
-  ([#1249](https://github.com/tinkoff/taiga-ui/issues/1249))
-  ([af77aaf](https://github.com/tinkoff/taiga-ui/commit/af77aaf9c2d7bd769f2557ad61e358f6d0413782))
-- **kit:** add `TUI_ARROW_MODE` token ([#1243](https://github.com/tinkoff/taiga-ui/issues/1243))
-  ([faa9087](https://github.com/tinkoff/taiga-ui/commit/faa908716895b65aa1d870d2ae72e6b9adc3e97e))
-- **kit:** configurable maxValues for input-time ([#1256](https://github.com/tinkoff/taiga-ui/issues/1256))
-  ([d18d192](https://github.com/tinkoff/taiga-ui/commit/d18d1920432ba252085530af78f872907d93d33f))
-- **kit:** default options configuration for `Arrow` ([#1251](https://github.com/tinkoff/taiga-ui/issues/1251))
-  ([8b99faa](https://github.com/tinkoff/taiga-ui/commit/8b99faa6aa3021f964d10e2e53482765fb9f8dc0))
-- **kit:** Use appearance injection token for `InputRange`, `InputSlider` and `InputCardGrouped`
-  ([#1280](https://github.com/tinkoff/taiga-ui/issues/1280))
-  ([43645c3](https://github.com/tinkoff/taiga-ui/commit/43645c363ccf02f84130601507b4f6da2d661b1c))
 
 ### Bug Fixes
 
 - **addon-commerce:** having redundant padding when currency is empty
   ([#1328](https://github.com/tinkoff/taiga-ui/issues/1328))
   ([2918a73](https://github.com/tinkoff/taiga-ui/commit/2918a73b6245752dba620425066f18530d935fe0))
-- **addon-doc:** `Money` remove empty space around currency ([#1248](https://github.com/tinkoff/taiga-ui/issues/1248))
-  ([73118c5](https://github.com/tinkoff/taiga-ui/commit/73118c538f1c97846384f10fe2eb5022bd696277))
-- **addon-doc:** use correct dependencies ([#1284](https://github.com/tinkoff/taiga-ui/issues/1284))
-  ([ecb876d](https://github.com/tinkoff/taiga-ui/commit/ecb876d6a6409e086f3952af0365b3def16921e2))
 - **addon-editor:** updated extensions ([#1330](https://github.com/tinkoff/taiga-ui/issues/1330))
   ([5245fa3](https://github.com/tinkoff/taiga-ui/commit/5245fa344e1b55cfc438a52b0f685a68df6efbe2))
 - **addon-mobile:** `Sheet` fix initial position for iOS ([#1277](https://github.com/tinkoff/taiga-ui/issues/1277))
@@ -48,22 +30,16 @@ All notable changes to this project will be documented in this file. See
   ([08ea554](https://github.com/tinkoff/taiga-ui/commit/08ea5547e359b87fbf0ac03d4bf04b3589a4b1c1))
 - **core:** fix tooltip position ([#1339](https://github.com/tinkoff/taiga-ui/issues/1339))
   ([4eff5a2](https://github.com/tinkoff/taiga-ui/commit/4eff5a2833801e1e78fc8bd66464d7ef2bf3f2e1))
-- **core:** hide placeholder when use value from autocomplete ([#1265](https://github.com/tinkoff/taiga-ui/issues/1265))
-  ([bf20787](https://github.com/tinkoff/taiga-ui/commit/bf20787ada2254bfe4307c67a9a32f8751123975))
 - **core:** prevent multiple call `markForCheck` in dropdown ([#1289](https://github.com/tinkoff/taiga-ui/issues/1289))
   ([70bd847](https://github.com/tinkoff/taiga-ui/commit/70bd847169c031ae70b613d79879cf971121ef8e))
 - **kit:** `InputPhoneInternational` fix paste/drop with plus ([#1306](https://github.com/tinkoff/taiga-ui/issues/1306))
   ([d320109](https://github.com/tinkoff/taiga-ui/commit/d3201099b8f5897bf6949b7f79f00c2dcd856868))
 - **kit:** `InputPhoneInternational` fix wrong model update ([#1309](https://github.com/tinkoff/taiga-ui/issues/1309))
   ([28b8312](https://github.com/tinkoff/taiga-ui/commit/28b831225d3ee6543b36eecbe2d7a7658bfb1ebc))
-- **kit:** fix cyrillic filler in date-components ([#1271](https://github.com/tinkoff/taiga-ui/issues/1271))
-  ([b894373](https://github.com/tinkoff/taiga-ui/commit/b894373db83a1f7d0df929d3b3d82a2332e5bcbc))
 - **kit:** prevent content overflow in select ([#1340](https://github.com/tinkoff/taiga-ui/issues/1340))
   ([e05164f](https://github.com/tinkoff/taiga-ui/commit/e05164f376f25fedf30aa41f2e5b63f3e4b27dfd))
 - **kit:** prevent redundant space in input-tag ([#1341](https://github.com/tinkoff/taiga-ui/issues/1341))
   ([eb3ad4d](https://github.com/tinkoff/taiga-ui/commit/eb3ad4d92203a6a381412cf8efa7927e6bb71e9f))
-- **kit:** remove `HostBinding` in `input-inline` ([#1268](https://github.com/tinkoff/taiga-ui/issues/1268))
-  ([9229ff2](https://github.com/tinkoff/taiga-ui/commit/9229ff203d76c8e808b5ed91109ce5b85639f925))
 
 ## [2.32.0](https://github.com/tinkoff/taiga-ui/compare/v2.31.0...v2.32.0) (2022-01-31)
 
