@@ -21,7 +21,14 @@ jobs:
       - name: Build publishable libraries
         run: npm run run-many:build:libs
 
+      - name: Check core is already published
+        id: core-published
+        run: |
+          VERSION=$(node -pe "require('./package.json').version")
+          echo "::set-output name=published::$(npm view @taiga-ui/core@"$VERSION" version | wc -l | sed -e 's/^[[:space:]]*//')"
+
       - name: Publish libraries
+        if: ${{ steps.core-published.outputs.published == '0' }}
         run: npm run run-many:publish:libs
 
 concurrency:
