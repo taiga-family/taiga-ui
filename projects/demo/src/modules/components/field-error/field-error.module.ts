@@ -7,6 +7,7 @@ import {
     TuiButtonModule,
     TuiLabelModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -37,6 +38,7 @@ import {ExampleTuiFieldErrorComponent} from './field-error.component';
         TuiAddonDocModule,
         PolymorpheusModule,
         TuiButtonModule,
+        TuiNotificationModule,
         TuiTextfieldControllerModule,
         RouterModule.forChild(generateRoutes(ExampleTuiFieldErrorComponent)),
     ],
