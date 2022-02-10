@@ -16,13 +16,14 @@ export class ExampleTuiInputInlineComponent extends AbstractExampleTuiControl {
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/component.ts'),
-        HTML: import('!!raw-loader!./examples/1/style.less'),
+        HTML: import('!!raw-loader!./examples/1/template.html'),
         LESS: import('!!raw-loader!./examples/1/style.less'),
     };
 
     readonly example2: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/2/component.ts'),
         HTML: import('!!raw-loader!./examples/2/template.html'),
+        LESS: import('!!raw-loader!./examples/2/style.less'),
     };
 
     readonly example3: TuiDocExample = {
