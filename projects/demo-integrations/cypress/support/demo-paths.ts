@@ -1,6 +1,7 @@
 import '@angular/localize/init';
 
-import {TuiDocPage, TuiDocPages} from '../../../addon-doc/src/public-api';
+import {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc';
+
 import {pages} from '../../../demo/src/modules/app/pages';
 
 const EXCLUSION_SECTIONS = ['Documentation', 'Common', 'Tools'];
