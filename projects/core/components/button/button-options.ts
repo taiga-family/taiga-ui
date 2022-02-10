@@ -8,6 +8,12 @@ export interface TuiButtonOptions {
     readonly shape: 'square' | 'rounded' | null;
 }
 
+/**
+ * @deprecated: use TuiButtonOptions instead
+ * todo: remove in 3.0
+ */
+export type ButtonOptions = TuiButtonOptions;
+
 export const TUI_BUTTON_DEFAULT_OPTIONS: TuiButtonOptions = {
     size: 'l',
     shape: null,

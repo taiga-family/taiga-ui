@@ -14,6 +14,12 @@ export interface TuiInputCountOptions {
     readonly postfix: string;
 }
 
+/**
+ * @deprecated: use TuiInputCountOptions instead
+ * todo: remove in 3.0
+ */
+export type InputCountOptions = TuiInputCountOptions;
+
 // TODO: remove in ivy compilation
 export const PASSWORD_ICON_UP = 'tuiIconPlus';
 export const PASSWORD_ICON_DOWN = 'tuiIconMinus';

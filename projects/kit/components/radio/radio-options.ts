@@ -10,6 +10,12 @@ export interface TuiRadioOptions {
     }>;
 }
 
+/**
+ * @deprecated: use TuiRadioOptions instead
+ * todo: remove in 3.0
+ */
+export type RadioOptions = TuiRadioOptions;
+
 /** Default values for the checkbox options. */
 export const TUI_RADIO_DEFAULT_OPTIONS: TuiRadioOptions = {
     size: 'm',

@@ -52,10 +52,8 @@ export const tuiArrowModeProvider: (options: Partial<TuiArrowMode>) => ValueProv
 ) => ({
     provide: TUI_ARROW_MODE,
     useValue: {
-        ...{
-            interactive: TUI_ARROW,
-            disabled: TUI_ARROW,
-        },
+        interactive: TUI_ARROW,
+        disabled: TUI_ARROW,
         ...options,
     },
 });

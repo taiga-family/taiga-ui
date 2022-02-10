@@ -17,6 +17,12 @@ export interface TuiCheckboxOptions {
     }>;
 }
 
+/**
+ * @deprecated: use TuiCheckboxOptions instead
+ * todo: remove in 3.0
+ */
+export type CheckboxOptions = TuiCheckboxOptions;
+
 /** Default values for the checkbox options. */
 export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
     size: 'm',

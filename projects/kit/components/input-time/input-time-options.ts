@@ -13,6 +13,12 @@ export interface TuiInputTimeOptions {
     readonly itemSize: TuiSizeS | TuiSizeL;
 }
 
+/**
+ * @deprecated: use TuiInputTimeOptions instead
+ * todo: remove in 3.0
+ */
+export type InputTimeOptions = TuiInputTimeOptions;
+
 // TODO: remove in ivy compilation
 export const INPUT_TIME_ICON = ({$implicit}: any) =>
     $implicit === 's' ? 'tuiIconTime' : 'tuiIconTimeLarge';
