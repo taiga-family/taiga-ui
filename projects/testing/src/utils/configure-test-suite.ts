@@ -1,11 +1,7 @@
 import {ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
 
-// type CallbackVoid = () => void;
-
-export const configureTestSuite = (
-    configureModule?: () => void,
-    createComponent?: () => void,
-) => {
+// Forked from: https://github.com/topnotch48/ng-bullet-workspace/blob/6440299/projects/ng-bullet/src/testing.ts
+export const configureTestSuite = (configureModule?: () => void) => {
     const testBedApi = getTestBed();
     const originReset = TestBed.resetTestingModule;
 
@@ -44,10 +40,6 @@ export const configureTestSuite = (
             configureModule();
             await TestBed.compileComponents();
         });
-    }
-
-    if (createComponent) {
-        beforeEach(() => createComponent());
     }
 
     afterEach(() => {

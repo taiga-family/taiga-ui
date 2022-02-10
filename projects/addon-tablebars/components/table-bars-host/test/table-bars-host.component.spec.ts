@@ -34,24 +34,23 @@ describe('TableBarsHost', () => {
         },
     };
 
-    configureTestSuite(
-        () => {
-            TestBed.configureTestingModule({
-                imports: [TuiTableBarsHostModule, NoopAnimationsModule],
-                declarations: [TestComponent],
-                providers: [TuiTableBarsService],
-            });
-        },
-        () => {
-            fixture = TestBed.createComponent(TestComponent);
-            pageObject = new PageObject(fixture);
-            testComponent = fixture.componentInstance;
-            fixture.detectChanges();
-            component = testComponent.component;
-            service = TestBed.inject(TuiTableBarsService);
-            service.bar$['_events'] = [];
-        },
-    );
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            imports: [TuiTableBarsHostModule, NoopAnimationsModule],
+            declarations: [TestComponent],
+            providers: [TuiTableBarsService],
+        });
+    });
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(TestComponent);
+        pageObject = new PageObject(fixture);
+        testComponent = fixture.componentInstance;
+        fixture.detectChanges();
+        component = testComponent.component;
+        service = TestBed.inject(TuiTableBarsService);
+        service.bar$['_events'] = [];
+    });
 
     function getBar(): DebugElement {
         return pageObject.getByAutomationId(`${testContext.prefix}bar`)!;
