@@ -89,31 +89,21 @@ export class TuiFieldErrorPipe implements PipeTransform {
     }
 
     private get invalid(): boolean {
-        return !!this.control && this.control.invalid;
+        return !!this.control?.invalid;
     }
 
     private get touched(): boolean {
-        return !!this.control && this.control.touched;
+        return !!this.control?.touched;
     }
 
     private get control(): AbstractControl | null {
-        if (this.ngControl) {
-            return this.ngControl.control;
-        }
-
-        if (this.formArrayName) {
-            return this.formArrayName.control;
-        }
-
-        if (this.formGroupName) {
-            return this.formGroupName.control;
-        }
-
-        if (this.formGroup) {
-            return this.formGroup.control;
-        }
-
-        return null;
+        return (
+            this.ngControl?.control ||
+            this.formArrayName?.control ||
+            this.formGroupName?.control ||
+            this.formGroup?.control ||
+            null
+        );
     }
 
     private get errorId(): string {
@@ -121,7 +111,7 @@ export class TuiFieldErrorPipe implements PipeTransform {
     }
 
     private get controlErrors(): Record<string, any> {
-        return (this.control && this.control.errors) || EMPTY_RECORD;
+        return this.control?.errors || EMPTY_RECORD;
     }
 
     @tuiPure
@@ -129,7 +119,7 @@ export class TuiFieldErrorPipe implements PipeTransform {
         order: readonly string[],
         controlErrors: Record<string, any>,
     ): string {
-        const id = order && order.find(errorId => controlErrors[errorId]);
+        const id = order?.find(errorId => controlErrors[errorId]);
         const fallback = Object.keys(controlErrors)[0];
 
         return id || fallback || '';

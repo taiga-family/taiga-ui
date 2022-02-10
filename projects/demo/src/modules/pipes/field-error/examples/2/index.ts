@@ -21,14 +21,7 @@ import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
     ],
 })
 export class TuiFieldErrorPipeExample2 {
-    readonly data = [
-        {
-            name: 'Latte',
-        },
-        {
-            name: 'Cappuccino',
-        },
-    ] as const;
+    readonly data = [{name: 'Latte'}, {name: 'Cappuccino'}] as const;
 
     latteControl = new FormControl(null, [Validators.required, Validators.max(6)]);
     cappuccinoControl = new FormControl(null, [Validators.required, Validators.max(5)]);

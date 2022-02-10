@@ -2,17 +2,14 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
-import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.md';
-import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.md';
-
 @Component({
     selector: 'example-field-error-pipe',
     templateUrl: './field-error.template.html',
     changeDetection,
 })
 export class ExampleTuiFieldErrorPipeComponent {
-    readonly exampleModule = exampleModule;
-    readonly exampleHtml = exampleHtml;
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),
