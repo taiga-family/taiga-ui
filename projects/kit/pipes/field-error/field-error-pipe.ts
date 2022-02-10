@@ -14,6 +14,7 @@ import {map} from 'rxjs/operators';
 
 const EMPTY_RECORD = {};
 
+// @dynamic
 @Pipe({
     name: 'tuiFieldError',
     pure: false,
