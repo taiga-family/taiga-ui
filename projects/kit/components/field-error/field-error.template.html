@@ -1,3 +1,1 @@
-<ng-container *ngIf="change$ | async"></ng-container>
-
-<tui-error [error]="computedError | async"></tui-error>
+<tui-error [error]="order | tuiFieldError | async"></tui-error>

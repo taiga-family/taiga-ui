@@ -7,7 +7,7 @@ import {
     NgControl,
 } from '@angular/forms';
 import {tuiPure, TuiValidationError} from '@taiga-ui/cdk';
-import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
+import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, isObservable, merge, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
