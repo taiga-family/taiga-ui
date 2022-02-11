@@ -70,13 +70,13 @@ jobs:
           npm run serve:compiled & sleep 5
           curl -X GET -I -f "http://localhost:3333"
       - name: Run screenshot tests on demo/localhost
-        run: npm run concurrently "npm run cy2:run:localhost" "npm run cy2:run:localhost"
+        run: npm run concurrently "npm run cy2:run:localhost" "sleep 10 && npm run cy2:run:localhost"
 
       - name: Run screenshot tests on demo/next
         continue-on-error: true
         env:
           CYPRESS_failOnSnapshotDiff: 0 # note: need for collect all diff files for lumberjack bot
-        run: npm run concurrently "npm run cy2:run:demo:next" "npm run cy2:run:demo:next"
+        run: npm run concurrently "npm run cy2:run:demo:next" "sleep 10 && npm run cy2:run:demo:next"
 
       - name: Check if diff-output exists
         id: diff-checker
