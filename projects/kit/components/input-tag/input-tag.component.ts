@@ -150,7 +150,7 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
-    uniqueTags = true;
+    uniqueTags = this.options.uniqueTags;
 
     @Input()
     @tuiDefaultProp()
@@ -199,7 +199,7 @@ export class TuiInputTagComponent
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Inject(TUI_INPUT_TAG_OPTIONS)
-        readonly options: TuiInputTagOptions,
+        private readonly options: TuiInputTagOptions,
     ) {
         super(control, changeDetectorRef);
     }
