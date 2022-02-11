@@ -47,8 +47,8 @@ jobs:
         with:
           fetch-depth: 10
 
-      - uses: imba-tjd/rebase-upstream-action@0.5
-        continue-on-error: true
+      - name: Try rebase locally for check affected e2e
+        uses: imba-tjd/rebase-upstream-action@0.5
         with:
           upstream: Tinkoff/taiga-ui
           branch: main
