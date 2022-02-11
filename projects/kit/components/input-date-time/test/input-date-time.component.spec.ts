@@ -17,8 +17,7 @@ import {
     TuiInputDateTimeModule,
 } from '@taiga-ui/kit/components';
 import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
-import {NativeInputPO, PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
 
 @Component({
     template: `

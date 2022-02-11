@@ -1,6 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiInputModeT} from '../../../types/input-mode';
 import {TuiInputModeModule} from '../input-mode.module';

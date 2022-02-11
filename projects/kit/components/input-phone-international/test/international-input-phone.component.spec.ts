@@ -11,7 +11,7 @@ import {
     TUI_RUSSIAN_LANGUAGE,
     TuiCountryIsoCode,
 } from '@taiga-ui/i18n';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 import {of} from 'rxjs';
 
 import {TuiInputPhoneInternationalComponent} from '../input-phone-international.component';

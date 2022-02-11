@@ -1,8 +1,7 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NativeInputPO, PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
 
 import {TuiInputCountComponent} from '../input-count.component';
 import {TuiInputCountModule} from '../input-count.module';

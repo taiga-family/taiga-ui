@@ -5,8 +5,7 @@ import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
 } from '@taiga-ui/core/tokens';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, PageObject} from '@taiga-ui/testing';
 
 import {TuiNotification} from '../../../enums/notification';
 import {TuiSvgService} from '../../../services/svg.service';

@@ -2,8 +2,7 @@ import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiButtonHarness, TuiLoaderHarness} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, TuiButtonHarness, TuiLoaderHarness} from '@taiga-ui/testing';
 
 import {TuiButtonModule} from '../button.module';
 

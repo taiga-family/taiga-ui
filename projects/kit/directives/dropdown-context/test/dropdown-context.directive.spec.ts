@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootModule} from '@taiga-ui/core';
 import {TuiDropdownContextModule} from '@taiga-ui/kit/directives';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 describe('TuiDropdownContext directive', () => {
     @Component({

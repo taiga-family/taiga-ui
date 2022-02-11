@@ -3,8 +3,12 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHintControllerModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {NativeInputPO, PageObject, testFormControlState} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {
+    configureTestSuite,
+    NativeInputPO,
+    PageObject,
+    testFormControlState,
+} from '@taiga-ui/testing';
 
 import {DEFAULT_ROWS, LINE_HEIGHT_L, TuiTextAreaComponent} from '../text-area.component';
 import {TuiTextAreaModule} from '../text-area.module';

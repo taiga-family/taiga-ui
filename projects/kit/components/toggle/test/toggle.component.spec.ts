@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, PageObject} from '@taiga-ui/testing';
 
 import {TuiToggleModule} from '../toggle.module';
 import {tuiToggleOptionsProvider} from '../toggle-options';

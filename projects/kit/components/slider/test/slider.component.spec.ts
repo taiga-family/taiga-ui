@@ -4,9 +4,8 @@ import {Component, DebugElement, LOCALE_ID, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiPluralize} from '@taiga-ui/core';
-import {PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, PageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
-import {configureTestSuite} from 'ng-bullet';
 
 import {TuiKeySteps} from '../../../types/key-steps';
 import {TuiSliderComponent} from '../slider.component';

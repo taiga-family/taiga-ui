@@ -1,8 +1,7 @@
 import {Location} from '@angular/common';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, PageObject} from '@taiga-ui/testing';
 
 import {TuiRingChartModule} from '../ring-chart.module';
 

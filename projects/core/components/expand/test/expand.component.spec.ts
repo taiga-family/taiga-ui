@@ -1,8 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {tuiCustomEvent} from '@taiga-ui/cdk';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, PageObject} from '@taiga-ui/testing';
 
 import {TUI_EXPAND_LOADED} from '../../../constants/events';
 import {TuiExpandModule} from '../expand.module';

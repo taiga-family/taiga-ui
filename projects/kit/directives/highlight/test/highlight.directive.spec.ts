@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiHighlightModule} from '../highlight.module';
 

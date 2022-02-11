@@ -1,7 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiRootModule} from '../../../components/root/root.module';
 import {TuiPointerHintDirective} from '../pointer-hint.directive';

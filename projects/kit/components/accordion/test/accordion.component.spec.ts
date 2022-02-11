@@ -6,8 +6,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {getOriginalArrayFromQueryList} from '@taiga-ui/cdk';
 import {TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, PageObject} from '@taiga-ui/testing';
 
 import {TuiInputModule} from '../../input/input.module';
 import {TuiSelectComponent} from '../../select/select.component';

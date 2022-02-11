@@ -6,7 +6,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 import {EMPTY} from 'rxjs';
 
 import {TuiFocusableElementAccessor} from '../../../interfaces/focusable-element-accessor';

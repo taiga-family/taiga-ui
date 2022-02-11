@@ -2,8 +2,7 @@ import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiSvgModule} from '@taiga-ui/core';
-import {NativeInputPO} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, NativeInputPO} from '@taiga-ui/testing';
 
 import {TuiInputCardGroupedComponent} from '../input-card-grouped.component';
 import {TuiInputCardGroupedModule} from '../input-card-grouped.module';

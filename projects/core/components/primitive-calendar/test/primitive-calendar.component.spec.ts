@@ -12,11 +12,11 @@ import {
 import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {
+    configureTestSuite,
     mockCurrentDate,
     pendingIfNotMoscowTimeZone,
     restoreRealDate,
 } from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
 
 import {TuiInteractiveState} from '../../../enums/interactive-state';
 import {TuiRangeState} from '../../../enums/range-state';

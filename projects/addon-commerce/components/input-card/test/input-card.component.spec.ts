@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiPaymentSystem} from '../../../enums/payment-system';
 import {TuiInputCardComponent} from '../input-card.component';

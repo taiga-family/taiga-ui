@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite} from '@taiga-ui/testing';
 import {take} from 'rxjs/operators';
 
 import {TuiNightThemeService} from '../night-theme.service';

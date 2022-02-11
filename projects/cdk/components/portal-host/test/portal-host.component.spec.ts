@@ -1,8 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {configureTestSuite} from '@taiga-ui/testing';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {configureTestSuite} from 'ng-bullet';
 
 import {TuiPortalHostComponent} from '../portal-host.component';
 import {TuiPortalHostModule} from '../portal-host.module';

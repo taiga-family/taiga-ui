@@ -16,6 +16,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
+    configureTestSuite,
     isActive,
     NativeInputPO,
     PageObject,
@@ -23,7 +24,6 @@ import {
     testPlaceholder,
     testTooltip,
 } from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
 
 import {TuiInputTagComponent} from '../input-tag.component';
 import {TuiInputTagModule} from '../input-tag.module';

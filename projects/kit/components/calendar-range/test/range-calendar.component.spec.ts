@@ -11,8 +11,7 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, PageObject} from '@taiga-ui/testing';
 import {Observable, of} from 'rxjs';
 
 import {TuiDayRangePeriod} from '../../../classes/day-range-period';

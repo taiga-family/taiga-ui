@@ -11,13 +11,12 @@ import {
 } from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import {NativeInputPO, PageObject} from '@taiga-ui/testing';
+import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
 import {
     PolymorpheusContent,
     PolymorpheusModule,
     PolymorpheusTemplate,
 } from '@tinkoff/ng-polymorpheus';
-import {configureTestSuite} from 'ng-bullet';
 
 import {TuiInputModule} from '../../input/input.module';
 import {TuiFieldErrorComponent} from '../field-error.component';
