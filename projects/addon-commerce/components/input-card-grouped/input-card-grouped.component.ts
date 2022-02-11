@@ -238,7 +238,7 @@ export class TuiInputCardGroupedComponent
     }
 
     get hasCardNumber(): boolean {
-        return (this.value?.card?.trim().length ?? 0) > 0;
+        return !!this.value?.card?.trim();
     }
 
     get formattedCard(): string {
