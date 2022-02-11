@@ -3,13 +3,13 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootModule} from '@taiga-ui/core/components/root';
 import {
+    configureTestSuite,
     NativeInputPO,
     PageObject,
     testCleaner,
     testPlaceholder,
     testTooltip,
 } from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
 
 import {TuiHintControllerModule} from '../../../directives/hint-controller/hint-controller.module';
 import {TuiTextfieldControllerModule} from '../../../directives/textfield-controller';

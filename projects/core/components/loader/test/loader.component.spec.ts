@@ -2,9 +2,8 @@ import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiLoaderHarness} from '@taiga-ui/testing';
+import {configureTestSuite, TuiLoaderHarness} from '@taiga-ui/testing';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {configureTestSuite} from 'ng-bullet';
 
 import {TuiLoaderComponent} from '../loader.component';
 import {TuiLoaderModule} from '../loader.module';

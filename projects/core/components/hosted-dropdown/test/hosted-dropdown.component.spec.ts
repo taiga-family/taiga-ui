@@ -1,8 +1,7 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {dispatchOnActive, PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, dispatchOnActive, PageObject} from '@taiga-ui/testing';
 
 import {TuiTextfieldControllerModule} from '../../../directives';
 import {TuiButtonComponent} from '../../button/button.component';

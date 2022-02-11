@@ -16,8 +16,7 @@ import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_VALUE_TRANSFORMER,
 } from '@taiga-ui/kit/tokens';
-import {NativeInputPO, PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
 
 import {TuiDayRangePeriod} from '../../../classes/day-range-period';
 import {TuiInputDateRangeComponent} from '../input-date-range.component';

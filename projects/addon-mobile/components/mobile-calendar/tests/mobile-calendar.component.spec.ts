@@ -9,8 +9,7 @@ import {
     TuiDayRange,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
-import {PageObject} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, PageObject} from '@taiga-ui/testing';
 import {of} from 'rxjs';
 
 import {TuiMobileCalendarComponent} from '../mobile-calendar.component';

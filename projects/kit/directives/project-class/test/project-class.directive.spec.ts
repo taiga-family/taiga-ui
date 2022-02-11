@@ -3,8 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDataListModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
-import {NativeInputPO} from '@taiga-ui/testing';
-import {configureTestSuite} from 'ng-bullet';
+import {configureTestSuite, NativeInputPO} from '@taiga-ui/testing';
 
 import {TuiComboBoxModule} from '../../../components/combo-box/combo-box.module';
 import {TuiProjectClassModule} from '../project-class.module';
