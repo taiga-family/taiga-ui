@@ -9,7 +9,7 @@ import {TuiContextWithImplicit, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {CheckboxOptions, TUI_CHECKBOX_OPTIONS} from './checkbox-options';
+import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox-options';
 
 // @dynamic
 @Component({
@@ -60,7 +60,7 @@ export class TuiPrimitiveCheckboxComponent {
     value: boolean | null = false;
 
     constructor(
-        @Inject(TUI_CHECKBOX_OPTIONS) private readonly options: CheckboxOptions,
+        @Inject(TUI_CHECKBOX_OPTIONS) private readonly options: TuiCheckboxOptions,
     ) {}
 
     get appearance(): string {

@@ -26,7 +26,7 @@ import {
 import {TUI_ANIMATION_OPTIONS, tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 
-import {RadioOptions, TUI_RADIO_OPTIONS} from './radio-options';
+import {TUI_RADIO_OPTIONS, TuiRadioOptions} from './radio-options';
 
 // @dynamic
 @Component({
@@ -80,7 +80,7 @@ export class TuiRadioComponent<T>
         @Inject(TUI_ANIMATION_OPTIONS)
         private readonly animationOptions: AnimationOptions,
         @Inject(TUI_RADIO_OPTIONS)
-        private readonly options: RadioOptions,
+        private readonly options: TuiRadioOptions,
         @Optional()
         @Inject(TuiRadioGroupComponent)
         private readonly radioGroup: TuiRadioGroupComponent | null,

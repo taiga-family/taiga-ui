@@ -1,10 +1,10 @@
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, ValueProvider} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-export interface CheckboxOptions {
+export interface TuiCheckboxOptions {
     readonly size: TuiSizeL;
     readonly appearances: Readonly<{
         unchecked: string;
@@ -17,8 +17,14 @@ export interface CheckboxOptions {
     }>;
 }
 
+/**
+ * @deprecated: use TuiCheckboxOptions instead
+ * todo: remove in 3.0
+ */
+export type CheckboxOptions = TuiCheckboxOptions;
+
 /** Default values for the checkbox options. */
-export const TUI_CHECKBOX_DEFAULT_OPTIONS: CheckboxOptions = {
+export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
     size: 'm',
     appearances: {
         unchecked: TuiAppearance.Outline,
@@ -35,9 +41,16 @@ export const TUI_CHECKBOX_DEFAULT_OPTIONS: CheckboxOptions = {
     },
 };
 
-export const TUI_CHECKBOX_OPTIONS = new InjectionToken<CheckboxOptions>(
+export const TUI_CHECKBOX_OPTIONS = new InjectionToken<TuiCheckboxOptions>(
     'Default parameters for checkbox component',
     {
         factory: () => TUI_CHECKBOX_DEFAULT_OPTIONS,
     },
 );
+
+export const tuiCheckboxOptionsProvider: (
+    options: Partial<TuiCheckboxOptions>,
+) => ValueProvider = (options: Partial<TuiCheckboxOptions>) => ({
+    provide: TUI_CHECKBOX_OPTIONS,
+    useValue: {...TUI_CHECKBOX_DEFAULT_OPTIONS, ...options},
+});

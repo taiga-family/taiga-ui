@@ -1,4 +1,4 @@
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, ValueProvider} from '@angular/core';
 import {TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -23,3 +23,10 @@ export const TUI_PRIMITIVE_TEXTFIELD_OPTIONS =
             factory: () => TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS,
         },
     );
+
+export const tuiPrimitiveTextfieldOptionsProvider: (
+    options: Partial<TuiPrimitiveTextfieldOptions>,
+) => ValueProvider = (options: Partial<TuiPrimitiveTextfieldOptions>) => ({
+    provide: TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
+    useValue: {...TUI_PRIMITIVE_TEXTFIELD_DEFAULT_OPTIONS, ...options},
+});

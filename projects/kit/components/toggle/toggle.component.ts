@@ -30,7 +30,7 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {ToggleOptions, TUI_TOGGLE_OPTIONS} from './toggle-options';
+import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle-options';
 
 @Component({
     selector: 'tui-toggle',
@@ -78,7 +78,7 @@ export class TuiToggleComponent
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_TOGGLE_OPTIONS)
-        readonly options: ToggleOptions,
+        readonly options: TuiToggleOptions,
     ) {
         super(control, changeDetectorRef);
     }

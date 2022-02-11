@@ -1,4 +1,4 @@
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, ValueProvider} from '@angular/core';
 import {
     TUI_ABSTRACT_HINT_DEFAULT_OPTIONS,
     TuiAbstractHintOptions,
@@ -17,3 +17,10 @@ export const TUI_MANUAL_HINT_OPTIONS = new InjectionToken<TuiManualHintOptions>(
         factory: () => TUI_MANUAL_HINT_DEFAULT_OPTIONS,
     },
 );
+
+export const tuiManualHintOptionsProvider: (
+    options: Partial<TuiManualHintOptions>,
+) => ValueProvider = (options: Partial<TuiManualHintOptions>) => ({
+    provide: TUI_MANUAL_HINT_OPTIONS,
+    useValue: {...TUI_MANUAL_HINT_DEFAULT_OPTIONS, ...options},
+});

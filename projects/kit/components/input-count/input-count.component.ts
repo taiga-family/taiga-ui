@@ -41,7 +41,7 @@ import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-import {InputCountOptions, TUI_INPUT_COUNT_OPTIONS} from './input-count-options';
+import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-options';
 
 // @dynamic
 @Component({
@@ -105,7 +105,7 @@ export class TuiInputCountComponent
         readonly minusTexts$: Observable<[string, string]>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_INPUT_COUNT_OPTIONS)
-        readonly options: InputCountOptions,
+        readonly options: TuiInputCountOptions,
         @Inject(TUI_NUMBER_FORMAT)
         private readonly numberFormat: NumberFormatSettings,
     ) {

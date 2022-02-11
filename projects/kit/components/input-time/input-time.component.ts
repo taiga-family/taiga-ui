@@ -36,7 +36,7 @@ import {
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {InputTimeOptions, TUI_INPUT_TIME_OPTIONS} from './input-time-options';
+import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time-options';
 
 // @dynamic
 @Component({
@@ -69,7 +69,7 @@ export class TuiInputTimeComponent
 
     @Input()
     @tuiDefaultProp()
-    itemSize: InputTimeOptions['itemSize'] = this.options.itemSize;
+    itemSize: TuiInputTimeOptions['itemSize'] = this.options.itemSize;
 
     @Input()
     @tuiDefaultProp()
@@ -77,11 +77,11 @@ export class TuiInputTimeComponent
 
     @Input()
     @tuiDefaultProp()
-    mode: InputTimeOptions['mode'] = this.options.mode;
+    mode: TuiInputTimeOptions['mode'] = this.options.mode;
 
     @Input()
     @tuiDefaultProp()
-    postfix: InputTimeOptions['postfix'] = this.options.postfix;
+    postfix: TuiInputTimeOptions['postfix'] = this.options.postfix;
 
     open = false;
 
@@ -94,7 +94,7 @@ export class TuiInputTimeComponent
         @Inject(TUI_TIME_TEXTS)
         private readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
         @Inject(TUI_INPUT_TIME_OPTIONS)
-        private readonly options: InputTimeOptions,
+        private readonly options: TuiInputTimeOptions,
     ) {
         super(control, changeDetectorRef);
     }
@@ -135,7 +135,7 @@ export class TuiInputTimeComponent
         return null;
     }
 
-    get icon(): InputTimeOptions['icon'] {
+    get icon(): TuiInputTimeOptions['icon'] {
         return this.options.icon;
     }
 

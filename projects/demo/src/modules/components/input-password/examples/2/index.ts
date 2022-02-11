@@ -2,11 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
-    TUI_INPUT_PASSWORD_OPTIONS,
-    TUI_PASSWORD_TEXTS,
-} from '@taiga-ui/kit';
+import {TUI_PASSWORD_TEXTS, tuiInputPasswordOptionsProvider} from '@taiga-ui/kit';
 import {of} from 'rxjs';
 
 @Component({
@@ -15,16 +11,12 @@ import {of} from 'rxjs';
     changeDetection,
     encapsulation,
     providers: [
-        {
-            provide: TUI_INPUT_PASSWORD_OPTIONS,
-            useValue: {
-                ...TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
-                icons: {
-                    hide: 'tuiIconLockLarge',
-                    show: 'tuiIconLockOpenLarge',
-                },
+        tuiInputPasswordOptionsProvider({
+            icons: {
+                hide: 'tuiIconLockLarge',
+                show: 'tuiIconLockOpenLarge',
             },
-        },
+        }),
         {
             provide: TUI_PASSWORD_TEXTS,
             useValue: of(['']),

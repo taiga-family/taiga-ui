@@ -36,7 +36,10 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
-import {InputPasswordOptions, TUI_INPUT_PASSWORD_OPTIONS} from './input-password-options';
+import {
+    TUI_INPUT_PASSWORD_OPTIONS,
+    TuiInputPasswordOptions,
+} from './input-password-options';
 
 // @dynamic
 @Component({
@@ -89,7 +92,7 @@ export class TuiInputPasswordComponent
         @Inject(TUI_PASSWORD_TEXTS)
         readonly passwordTexts$: Observable<[string, string]>,
         @Inject(TUI_INPUT_PASSWORD_OPTIONS)
-        readonly options: InputPasswordOptions,
+        readonly options: TuiInputPasswordOptions,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_MODE)

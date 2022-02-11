@@ -1,4 +1,4 @@
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, ValueProvider} from '@angular/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_ARROW} from './arrow.component';
@@ -6,11 +6,6 @@ import {TUI_ARROW} from './arrow.component';
 export interface TuiArrowOptions {
     readonly iconSmall: PolymorpheusContent;
     readonly iconLarge: PolymorpheusContent;
-}
-
-export interface TuiArrowMode {
-    interactive: PolymorpheusContent;
-    disabled: PolymorpheusContent;
 }
 
 // TODO: remove in ivy compilation
@@ -30,9 +25,35 @@ export const TUI_ARROW_OPTIONS = new InjectionToken<TuiArrowOptions>(
     },
 );
 
+export const tuiArrowOptionsProvider: (
+    options: Partial<TuiArrowOptions>,
+) => ValueProvider = (options: Partial<TuiArrowOptions>) => ({
+    provide: TUI_ARROW_OPTIONS,
+    useValue: {...TUI_ARROW_DEFAULT_OPTIONS, ...options},
+});
+
+export interface TuiArrowMode {
+    readonly interactive: PolymorpheusContent;
+    readonly disabled: PolymorpheusContent;
+}
+
 export const TUI_ARROW_MODE: InjectionToken<TuiArrowMode> = new InjectionToken(
     'Type of icon in dropdowns for interactive or disable mode',
     {
-        factory: () => ({interactive: TUI_ARROW, disabled: TUI_ARROW}),
+        factory: () => ({
+            interactive: TUI_ARROW,
+            disabled: TUI_ARROW,
+        }),
     },
 );
+
+export const tuiArrowModeProvider: (options: Partial<TuiArrowMode>) => ValueProvider = (
+    options: Partial<TuiArrowMode>,
+) => ({
+    provide: TUI_ARROW_MODE,
+    useValue: {
+        interactive: TUI_ARROW,
+        disabled: TUI_ARROW,
+        ...options,
+    },
+});
