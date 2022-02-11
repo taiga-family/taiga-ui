@@ -1,12 +1,25 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
-import {
-    passwordValidator,
-    superComputerValidator,
-} from '../../../../components/field-error/examples/1';
+const latinChars = /^[a-zA-Z]+$/;
+
+export function passwordValidator(field: AbstractControl): Validators | null {
+    return field.value && latinChars.test(field.value)
+        ? null
+        : {
+              other: 'Only latin letters are allowed',
+          };
+}
+
+export function superComputerValidator(field: AbstractControl): Validators | null {
+    return field.value === '42'
+        ? null
+        : {
+              other: 'Wrong',
+          };
+}
 
 @Component({
     selector: 'tui-field-error-pipe-example-1',

@@ -318,7 +318,7 @@ export const ROUTES = [
                 m => m.ExampleTuiFieldErrorModule,
             ),
         data: {
-            title: 'FieldError ',
+            title: 'FieldError',
         },
     },
     {
@@ -328,7 +328,7 @@ export const ROUTES = [
                 m => m.ExampleTuiFilterByInputModule,
             ),
         data: {
-            title: 'FieldError ',
+            title: 'FieldError',
         },
     },
     {
