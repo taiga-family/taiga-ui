@@ -22,7 +22,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveYearPickerComponent, {static: true})
-        component: TuiPrimitiveYearPickerComponent;
+        component!: TuiPrimitiveYearPickerComponent;
 
         min = TUI_FIRST_DAY;
         max = TuiDay.currentLocal().append({year: 200});

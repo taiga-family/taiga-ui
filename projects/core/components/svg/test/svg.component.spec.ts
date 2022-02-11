@@ -36,7 +36,7 @@ describe('Svg', () => {
     })
     class TestComponent {
         @ViewChild(TuiSvgComponent)
-        svgComponent: TuiSvgComponent;
+        svgComponent!: TuiSvgComponent;
 
         icon = '';
 

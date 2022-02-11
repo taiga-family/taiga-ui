@@ -32,7 +32,7 @@ describe('Notification', () => {
     })
     class TestComponent {
         @ViewChild(TuiNotificationComponent, {static: false})
-        component: TuiNotificationComponent;
+        component!: TuiNotificationComponent;
 
         hasCloseButton = true;
         hasIcon = true;
@@ -119,7 +119,7 @@ describe('Notification with TUI_NOTIFICATION_OPTIONS', () => {
     })
     class TestComponent {
         @ViewChild(TuiNotificationComponent, {static: false})
-        component: TuiNotificationComponent;
+        component!: TuiNotificationComponent;
     }
 
     const status = TuiNotification.Error;

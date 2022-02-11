@@ -29,7 +29,7 @@ describe('TuiPaginationComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiPaginationComponent, {static: true})
-        component: TuiPaginationComponent;
+        component!: TuiPaginationComponent;
 
         index = 0;
 

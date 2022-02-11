@@ -41,7 +41,7 @@ import {TuiInputDateModule} from '../input-date.module';
 })
 class TestComponent {
     @ViewChild(TuiInputDateComponent)
-    readonly component: TuiInputDateComponent;
+    readonly component!: TuiInputDateComponent;
 
     control = new FormControl(new TuiDay(2017, 2, 1));
 

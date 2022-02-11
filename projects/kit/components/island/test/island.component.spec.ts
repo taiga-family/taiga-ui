@@ -21,7 +21,7 @@ describe('Island', () => {
     })
     class TestComponent {
         @ViewChild(TuiIslandComponent, {static: true})
-        component: TuiIslandComponent;
+        component!: TuiIslandComponent;
 
         hoverable = false;
         textAlign: 'left' | 'right' | 'center' = 'left';

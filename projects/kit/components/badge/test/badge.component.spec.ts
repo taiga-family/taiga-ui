@@ -15,13 +15,13 @@ describe('Badge', () => {
     })
     class TestComponent {
         @ViewChild(TuiBadgeComponent, {static: true})
-        component: TuiBadgeComponent;
+        component!: TuiBadgeComponent;
 
         @ViewChild(TuiBadgeComponent, {read: ElementRef, static: true})
-        element: ElementRef<Element>;
+        element!: ElementRef<Element>;
 
         size: TuiSizeL = 'm';
-        value: number | string;
+        value!: number | string;
         status: TuiStatusT = 'default';
     }
 

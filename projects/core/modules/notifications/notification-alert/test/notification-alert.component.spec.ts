@@ -88,9 +88,9 @@ describe('NotificationAlertComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiNotificationAlertComponent, {static: true})
-        component: TuiNotificationAlertComponent<string, string>;
+        component!: TuiNotificationAlertComponent<string, string>;
 
-        alert: NotificationAlert<string, string>;
+        alert!: NotificationAlert<string, string>;
 
         constructor(
             @Inject(TUI_NOTIFICATION_OPTIONS)

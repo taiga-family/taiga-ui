@@ -12,7 +12,7 @@ import {TuiColorSelectorModule} from '../color-selector.module';
 })
 class TestComponent {
     @ViewChild(TuiColorSelectorComponent)
-    component: TuiColorSelectorComponent;
+    component!: TuiColorSelectorComponent;
 
     colors = new Map([
         ['hap', '#ff0000'],

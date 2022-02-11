@@ -12,7 +12,7 @@ import {TuiColorEditModule} from '../color-edit.module';
 })
 class TestComponent {
     @ViewChild(TuiColorEditComponent)
-    component: TuiColorEditComponent;
+    component!: TuiColorEditComponent;
 
     color = [255, 0, 0, 1];
 }

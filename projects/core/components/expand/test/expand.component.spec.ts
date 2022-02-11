@@ -20,7 +20,7 @@ describe('expand', () => {
     })
     class TestComponent {
         @ViewChild('content')
-        content: ElementRef<HTMLDivElement>;
+        content!: ElementRef<HTMLDivElement>;
 
         expanded = false;
 

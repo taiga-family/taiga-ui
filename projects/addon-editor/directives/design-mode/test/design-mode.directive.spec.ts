@@ -14,7 +14,7 @@ describe('TuiDesignMode directive', () => {
     })
     class TestComponent {
         @ViewChild(TuiDesignModeDirective, {read: ElementRef})
-        element: ElementRef<HTMLIFrameElement>;
+        element!: ElementRef<HTMLIFrameElement>;
 
         model = '';
     }

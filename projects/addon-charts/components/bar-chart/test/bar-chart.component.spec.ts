@@ -13,7 +13,7 @@ describe('BarChart', () => {
     })
     class TestComponent {
         @ViewChild(TuiBarChartComponent)
-        readonly component: TuiBarChartComponent;
+        readonly component!: TuiBarChartComponent;
 
         readonly value = [
             [1, 2, 3],

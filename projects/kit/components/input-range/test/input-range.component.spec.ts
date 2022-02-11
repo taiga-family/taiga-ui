@@ -31,7 +31,7 @@ describe('InputRange', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputRangeComponent, {static: true})
-        component: TuiInputRangeComponent;
+        component!: TuiInputRangeComponent;
 
         control = new FormControl([0, 1]);
         default = false;

@@ -14,7 +14,7 @@ describe('BarSet', () => {
     })
     class TestComponent {
         @ViewChild(TuiBarSetComponent)
-        readonly component: TuiBarSetComponent;
+        readonly component!: TuiBarSetComponent;
 
         readonly value = [10, 20, 30, 40];
         collapsed = false;

@@ -18,7 +18,7 @@ describe('PrimitiveYearMonthPaginationComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveYearMonthPaginationComponent)
-        readonly component: TuiPrimitiveYearMonthPaginationComponent;
+        readonly component!: TuiPrimitiveYearMonthPaginationComponent;
 
         min = new TuiMonth(1900, 6);
 

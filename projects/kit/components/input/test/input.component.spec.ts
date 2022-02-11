@@ -70,10 +70,10 @@ describe('Input', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputComponent, {static: true})
-        component: TuiInputComponent;
+        component!: TuiInputComponent;
 
         @ViewChild('submit')
-        submit: ElementRef<HTMLButtonElement>;
+        submit!: ElementRef<HTMLButtonElement>;
 
         cleaner = false;
 

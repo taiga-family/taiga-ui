@@ -17,7 +17,7 @@ describe('TableBarsHost', () => {
     })
     class TestComponent {
         @ViewChild(TuiTableBarsHostComponent, {static: true})
-        component: TuiTableBarsHostComponent;
+        component!: TuiTableBarsHostComponent;
     }
 
     let fixture: ComponentFixture<TestComponent>;

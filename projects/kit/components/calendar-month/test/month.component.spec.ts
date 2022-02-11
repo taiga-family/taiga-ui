@@ -23,7 +23,7 @@ describe('Month', () => {
     })
     class TestComponent {
         @ViewChild(TuiCalendarMonthComponent, {static: true})
-        component: TuiCalendarMonthComponent;
+        component!: TuiCalendarMonthComponent;
 
         year = new TuiYear(TODAY.year);
 

@@ -40,7 +40,7 @@ describe('MobileCalendar', () => {
     })
     class TestComponent {
         @ViewChild(TuiMobileCalendarComponent, {static: true})
-        component: TuiMobileCalendarComponent;
+        component!: TuiMobileCalendarComponent;
 
         min = TUI_FIRST_DAY;
         max = TUI_LAST_DAY;

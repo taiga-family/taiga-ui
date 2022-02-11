@@ -14,7 +14,7 @@ describe('svg source processor', () => {
     })
     class TestComponent {
         @ViewChild(TuiSvgComponent)
-        svgComponent: TuiSvgComponent;
+        svgComponent!: TuiSvgComponent;
 
         icon = '';
     }

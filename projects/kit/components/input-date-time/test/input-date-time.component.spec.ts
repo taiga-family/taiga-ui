@@ -32,7 +32,7 @@ import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
 })
 class TestComponent {
     @ViewChild(TuiInputDateTimeComponent)
-    dateTimeComponent: TuiInputDateTimeComponent;
+    dateTimeComponent!: TuiInputDateTimeComponent;
 
     readonly control = new FormControl([new TuiDay(2021, 6, 12), null]);
 

@@ -40,7 +40,7 @@ describe('Breadcrumbs Wrapper', () => {
     })
     class TestComponent {
         @ViewChild(TuiBreadcrumbsWrapperComponent, {static: true})
-        component: TuiBreadcrumbsWrapperComponent;
+        component!: TuiBreadcrumbsWrapperComponent;
 
         items = ITEMS;
 

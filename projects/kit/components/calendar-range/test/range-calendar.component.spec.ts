@@ -48,7 +48,7 @@ describe('rangeCalendarComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiCalendarRangeComponent)
-        readonly component: TuiCalendarRangeComponent;
+        readonly component!: TuiCalendarRangeComponent;
 
         readonly control = new FormControl(
             new TuiDayRange(new TuiDay(2019, 2, 10), new TuiDay(2019, 2, 12)),

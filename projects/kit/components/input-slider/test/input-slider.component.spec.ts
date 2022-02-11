@@ -32,7 +32,7 @@ describe('InputSlider', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputSliderComponent)
-        component: TuiInputSliderComponent;
+        component!: TuiInputSliderComponent;
 
         control = new FormControl(0);
         default = false;

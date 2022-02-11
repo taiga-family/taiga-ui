@@ -31,7 +31,7 @@ describe('InputCount', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputCountComponent)
-        component: TuiInputCountComponent;
+        component!: TuiInputCountComponent;
 
         control = new FormControl();
 
@@ -420,7 +420,7 @@ describe('InputCount with TUI_INPUT_COUNT_OPTIONS', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputCountComponent)
-        component: TuiInputCountComponent;
+        component!: TuiInputCountComponent;
 
         control = new FormControl();
     }
