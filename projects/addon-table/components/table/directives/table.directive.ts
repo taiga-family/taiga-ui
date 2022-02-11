@@ -31,7 +31,7 @@ export class TuiTableDirective<T> extends TuiController {
     columns: ReadonlyArray<keyof T | string> = [];
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeS | TuiSizeL = 'm';
 

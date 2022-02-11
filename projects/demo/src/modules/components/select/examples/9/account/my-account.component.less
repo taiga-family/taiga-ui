@@ -10,7 +10,7 @@
     box-sizing: border-box;
     outline: none;
 
-    &[data-tui-host-size='m'] {
+    &[data-size='m'] {
         height: var(--tui-height-m);
     }
 }
@@ -25,7 +25,7 @@
 .icon {
     margin: 0 @space * 2 0 calc(-1px - @space);
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         transform: scale(0.75);
     }
 }
@@ -54,7 +54,7 @@
     color: var(--tui-text-02);
     margin-bottom: -0.125rem;
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         font: var(--tui-font-text-xs);
     }
 }
@@ -62,7 +62,7 @@
 .value {
     font: var(--tui-font-text-m);
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         font: var(--tui-font-text-s);
     }
 }

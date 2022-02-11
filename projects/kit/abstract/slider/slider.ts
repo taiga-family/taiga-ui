@@ -89,7 +89,7 @@ export abstract class AbstractTuiSlider<T>
     }
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeS = 'm';
 

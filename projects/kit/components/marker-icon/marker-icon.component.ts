@@ -32,7 +32,7 @@ export class TuiMarkerIconComponent {
     mode: TuiMarkerIconModeT | null = null;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeXS | TuiSizeXL = 'm';
 

@@ -64,7 +64,7 @@ export class TuiToggleComponent
     showLoader = false;
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 

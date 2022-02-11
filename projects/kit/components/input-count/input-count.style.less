@@ -12,7 +12,7 @@
         pointer-events: none;
     }
 
-    &[data-tui-host-size='l'] {
+    &[data-size='l'] {
         font: var(--tui-font-text-m);
         height: var(--tui-height-l);
     }
@@ -52,7 +52,7 @@
         border-radius: 0 0 var(--tui-radius-m);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         width: calc(var(--tui-height-l) * 0.75);
     }
 }

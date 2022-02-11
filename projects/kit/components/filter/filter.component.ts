@@ -45,7 +45,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     items: ReadonlyArray<T> = [];
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeS | TuiSizeL = 'm';
 

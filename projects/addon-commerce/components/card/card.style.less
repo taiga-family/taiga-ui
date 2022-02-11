@@ -9,12 +9,12 @@
     border-radius: var(--tui-radius-xs);
     background-size: 100%;
 
-    &[data-tui-host-size='s'] {
+    &[data-size='s'] {
         width: 2rem;
         height: 1.5rem;
     }
 
-    &[data-tui-host-size='m'] {
+    &[data-size='m'] {
         width: 3rem;
         height: 2rem;
     }
@@ -44,14 +44,14 @@
     justify-content: center;
     align-items: center;
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         top: 0.125rem;
         height: 0.625rem;
         width: 1.1875rem;
         font-size: 0.5rem;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         top: 0.1875rem;
         height: 0.875rem;
         width: 1.5rem;

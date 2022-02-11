@@ -20,7 +20,7 @@ import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox-options';
 })
 export class TuiPrimitiveCheckboxComponent {
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 

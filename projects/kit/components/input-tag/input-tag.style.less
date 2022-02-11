@@ -45,35 +45,35 @@
         pointer-events: none;
     }
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         min-height: var(--tui-height-s);
         padding: 0.25rem 0.25rem 0.25rem 0;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         min-height: var(--tui-height-m);
         padding: 0.5rem 0.25rem 0.5rem 0;
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         min-height: var(--tui-height-l);
         padding: 0.625rem 0.25rem 0.625rem 0;
     }
 
-    :host[data-tui-host-size='m']:not(._label-outside) & {
+    :host[data-size='m']:not(._label-outside) & {
         padding: 1.1875rem 1rem 0 0;
     }
 
-    :host[data-tui-host-size='l']:not(._label-outside) & {
+    :host[data-size='l']:not(._label-outside) & {
         padding: 1.6875rem 1rem 0.5625rem 0;
     }
 
-    :host[data-tui-host-size] {
+    :host[data-size] {
         padding-inline-start: 0;
         padding-inline-end: 0.25rem;
     }
 
-    :host[data-tui-host-size]:not(._label-outside) & {
+    :host[data-size]:not(._label-outside) & {
         padding-inline-end: 1rem;
     }
 }
@@ -104,15 +104,15 @@
         }
     }
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         height: var(--tui-height-s);
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         height: var(--tui-height-m);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         height: var(--tui-height-l);
     }
 }
@@ -123,11 +123,11 @@
     flex-direction: column;
     justify-content: center;
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         height: var(--tui-height-m);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         height: var(--tui-height-l);
     }
 }
@@ -179,15 +179,15 @@
         margin-inline-end: 0;
     }
 
-    :host[data-tui-host-size='s'] & {
+    :host[data-size='s'] & {
         min-height: 1.25rem + 2 * @tag-vertical-space;
     }
 
-    :host[data-tui-host-size='m'] & {
+    :host[data-size='m'] & {
         min-height: calc(var(--tui-height-xs) + 2 * @tag-vertical-space);
     }
 
-    :host[data-tui-host-size='l'] & {
+    :host[data-size='l'] & {
         min-height: calc(var(--tui-height-s) + 2 * @tag-vertical-space);
     }
 

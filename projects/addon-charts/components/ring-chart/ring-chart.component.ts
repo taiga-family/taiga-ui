@@ -26,7 +26,7 @@ export class TuiRingChartComponent {
     value: readonly number[] = [];
 
     @Input()
-    @HostBinding('attr.data-tui-host-size')
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeS | TuiSizeXL = 'm';
 
