@@ -43,6 +43,7 @@ describe('InputTag', () => {
                     *ngIf="!defaultInputs"
                     [formControl]="control"
                     [readOnly]="readOnly"
+                    [separator]="separator"
                     [allowSpaces]="allowSpaces"
                     [tagValidator]="tagValidator"
                     [tuiTextfieldCleaner]="cleaner"
@@ -63,6 +64,7 @@ describe('InputTag', () => {
         cleaner = true;
         readOnly = false;
         allowSpaces = true;
+        separator = ',';
         labelOutside = true;
         exampleText = 'Пример';
         size: TuiSizeS | TuiSizeL = 'm';
@@ -207,6 +209,20 @@ describe('InputTag', () => {
         });
     });
 
+    describe('Adding tags with custom serarator', () => {
+        it('Adds tags separated by custom separator', fakeAsync(() => {
+            testComponent.separator = ';';
+            inputPO.focus();
+            fixture.detectChanges();
+            inputPO.sendText('10,5;12,2');
+            focusStealer.focus();
+            fixture.detectChanges();
+
+            expect(component.value[1]).toEqual('10,5');
+            expect(component.value[2]).toEqual('12,2');
+        }));
+    });
+
     describe('Adding tags with spaces when the allowSpaces option is enabled', () => {
         it('Spaces are preserved and not tagged', fakeAsync(() => {
             inputPO.focus();
@@ -334,14 +350,14 @@ describe('InputTag', () => {
 
     describe('Editing tags', () => {
         it('Edits tags', () => {
-            component.onTagEdited('Hapica', TAG);
+            component.onTagEdited('Hapica', 0);
             fixture.detectChanges();
 
             expect(component.value[0]).toBe('Hapica');
         });
 
         it('Moves focus to the input field after editing', () => {
-            component.onTagEdited('Hapica', TAG);
+            component.onTagEdited('Hapica', 0);
             fixture.detectChanges();
 
             expect(inputPO.focused).toBe(true);

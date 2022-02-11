@@ -53,10 +53,11 @@
                                 [editable]="editable && !readOnly"
                                 [hoverable]="!readOnly"
                                 [removable]="!readOnly"
+                                [separator]="separator"
                                 [maxLength]="controller.maxLength"
                                 [size]="controller.size"
                                 [value]="item.toString()"
-                                (edited)="onTagEdited($event, item)"
+                                (edited)="onTagEdited($event, index)"
                                 (keydown.arrowLeft.prevent)="onTagKeyDownArrowLeft(index)"
                                 (keydown.arrowRight.prevent)="onTagKeyDownArrowRight(index)"
                             ></tui-tag>

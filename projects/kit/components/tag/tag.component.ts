@@ -47,9 +47,14 @@ export class TuiTagComponent {
     @tuiDefaultProp()
     editable = false;
 
+    // TODO: Remove in 3.0
     @Input()
     @tuiDefaultProp()
     allowSpaces = true;
+
+    @Input()
+    @tuiDefaultProp()
+    separator: string | RegExp = ',';
 
     @Input()
     @tuiDefaultProp()
@@ -159,7 +164,7 @@ export class TuiTagComponent {
 
     onInput(value: string) {
         const newTags = this.allowSpaces
-            ? value.split(',')
+            ? value.split(this.separator)
             : value.split(ALLOWED_SPACE_REGEXP);
 
         if (newTags.length > 1) {
