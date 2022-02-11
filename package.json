@@ -158,7 +158,7 @@
         "husky": "7.0.2",
         "jasmine-core": "^3.4.0",
         "jasmine-spec-reporter": "^4.2.1",
-        "karma": "^4.0.1",
+        "karma": "^6.3.14",
         "karma-allure-reporter": "^1.4.6",
         "karma-chrome-launcher": "~2.2.0",
         "karma-coverage-istanbul-reporter": "~2.0.5",
