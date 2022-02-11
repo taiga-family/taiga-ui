@@ -41,6 +41,7 @@ import {TuiSelectExample7} from './examples/7';
 import {TuiSelectExample8} from './examples/8';
 import {TuiSelectExample9} from './examples/9';
 import {ExampleMyAccountComponent} from './examples/9/account/my-account.component';
+import {TuiSelectExample10} from './examples/10';
 import {ExampleTuiSelectComponent} from './select.component';
 
 @NgModule({
@@ -89,6 +90,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiSelectExample7,
         TuiSelectExample8,
         TuiSelectExample9,
+        TuiSelectExample10,
     ],
     exports: [ExampleTuiSelectComponent],
 })

@@ -77,6 +77,11 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
         LESS: import('!!raw-loader!./examples/5/index.less'),
     };
 
+    readonly example6: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/6/index.ts'),
+        HTML: import('!!raw-loader!./examples/6/index.html'),
+    };
+
     readonly items = [
         new Account('Rubles', 500),
         new Account('Dollars', 237),

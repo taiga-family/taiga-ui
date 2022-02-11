@@ -15,10 +15,8 @@ import {
     AbstractTuiNullableControl,
     isNativeFocused,
     setNativeFocused,
-    TUI_DEFAULT_IDENTITY_MATCHER,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    TuiIdentityMatcher,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
@@ -31,9 +29,11 @@ import {
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_SELECT_PROVIDERS} from './select.providers';
+import {TUI_SELECT_OPTIONS, TuiSelectOptions} from './select-options';
 
 @Component({
     selector: 'tui-select',
@@ -54,11 +54,16 @@ export class TuiSelectComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    identityMatcher: TuiIdentityMatcher<T | string> = TUI_DEFAULT_IDENTITY_MATCHER;
+    stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
     @Input()
     @tuiDefaultProp()
-    valueContent: PolymorpheusContent<TuiValueContentContext<T>> = '';
+    identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
+        this.itemsHandlers.identityMatcher;
+
+    @Input()
+    @tuiDefaultProp()
+    valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent = '';
@@ -73,6 +78,10 @@ export class TuiSelectComponent<T>
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
         @Inject(TUI_ARROW_MODE)
         private readonly arrowMode: TuiArrowMode,
+        @Inject(TUI_ITEMS_HANDLERS)
+        private readonly itemsHandlers: TuiItemsHandlers<T>,
+        @Inject(TUI_SELECT_OPTIONS)
+        private readonly options: TuiSelectOptions<T>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -93,7 +102,7 @@ export class TuiSelectComponent<T>
     }
 
     get computedValue(): string {
-        return this.value === null ? '' : String(this.value) || ' ';
+        return this.value === null ? '' : this.stringify(this.value) || ' ';
     }
 
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {

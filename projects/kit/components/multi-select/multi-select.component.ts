@@ -17,18 +17,14 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
-    ALWAYS_FALSE_HANDLER,
     EMPTY_ARRAY,
     isNativeFocused,
     setNativeFocused,
-    TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_DEFAULT_STRINGIFY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    TuiIdentityMatcher,
     TuiMapper,
     tuiPure,
     TuiStringHandler,
@@ -47,7 +43,10 @@ import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
 import {iconBlank} from '@taiga-ui/kit/constants';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select-options';
 
 @Component({
     selector: 'tui-multi-select',
@@ -81,15 +80,16 @@ export class TuiMultiSelectComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    stringify: TuiStringHandler<T> = TUI_DEFAULT_STRINGIFY;
+    stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
     @Input()
     @tuiDefaultProp()
-    identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
+    identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
+        this.itemsHandlers.identityMatcher;
 
     @Input()
     @tuiDefaultProp()
-    expandable = true;
+    expandable: TuiMultiSelectOptions<T>['expandable'] = this.options.expandable;
 
     @Input()
     @tuiDefaultProp()
@@ -102,11 +102,12 @@ export class TuiMultiSelectComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
+    disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
+        this.itemsHandlers.disabledItemHandler;
 
     @Input()
     @tuiDefaultProp()
-    valueContent: PolymorpheusContent<TuiContextWithImplicit<ReadonlyArray<T>>> = '';
+    valueContent: TuiMultiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
     @Output()
     readonly searchChange = new EventEmitter<string | null>();
@@ -125,6 +126,10 @@ export class TuiMultiSelectComponent<T>
         @Inject(TuiSvgService) svgService: TuiSvgService,
         @Inject(TUI_ARROW_MODE)
         private readonly arrowMode: TuiArrowMode,
+        @Inject(TUI_ITEMS_HANDLERS)
+        private readonly itemsHandlers: TuiItemsHandlers<T>,
+        @Inject(TUI_MULTI_SELECT_OPTIONS)
+        private readonly options: TuiMultiSelectOptions<T>,
     ) {
         super(control, changeDetectorRef);
 
