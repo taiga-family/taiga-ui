@@ -234,7 +234,11 @@ export class TuiInputCardGroupedComponent
     }
 
     get placeholderRaised(): boolean {
-        return (this.computedFocused && !this.readOnly) || !!this.value;
+        return (this.computedFocused && !this.readOnly) || this.hasCardNumber;
+    }
+
+    get hasCardNumber(): boolean {
+        return !!this.value?.card?.trim();
     }
 
     get formattedCard(): string {

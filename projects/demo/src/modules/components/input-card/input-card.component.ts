@@ -1,17 +1,12 @@
 import {Component, forwardRef, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
-import {TuiNotificationsService} from '@taiga-ui/core';
+import {TuiCodeCVCLength, tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiHintOptions, TuiNotificationsService} from '@taiga-ui/core';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {AbstractExampleTuiControl} from '../../components/abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
     selector: 'example-input-card',
@@ -26,18 +21,17 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     ],
 })
 export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = exampleModule;
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
 
-    readonly exampleHtml = exampleHtml;
-
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
     card = '';
 
-    readonly lengthVariants = [3, 4];
+    readonly lengthVariants: TuiCodeCVCLength[] = [3, 4];
 
     length = this.lengthVariants[0];
 
@@ -47,7 +41,7 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
 
     hintContentCVC = null;
 
-    hintDirectionCVC = 'bottom-left';
+    hintDirectionCVC: TuiHintOptions['direction'] = 'bottom-left';
 
     hintModeCVC = null;
 
