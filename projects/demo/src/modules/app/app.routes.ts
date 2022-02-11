@@ -318,7 +318,17 @@ export const ROUTES = [
                 m => m.ExampleTuiFieldErrorModule,
             ),
         data: {
-            title: 'FieldError ',
+            title: 'FieldError',
+        },
+    },
+    {
+        path: 'pipes/field-error',
+        loadChildren: () =>
+            import(`../pipes/field-error/field-error.module`).then(
+                m => m.ExampleTuiFilterByInputModule,
+            ),
+        data: {
+            title: 'FieldError',
         },
     },
     {

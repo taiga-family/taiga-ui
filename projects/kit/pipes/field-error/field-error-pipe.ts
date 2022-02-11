@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Inject,
-    Input,
-    Optional,
-    Self,
-} from '@angular/core';
+import {Inject, Optional, Pipe, PipeTransform, Self} from '@angular/core';
 import {
     AbstractControl,
     FormArrayName,
@@ -13,26 +6,21 @@ import {
     FormGroupName,
     NgControl,
 } from '@angular/forms';
-import {tuiDefaultProp, tuiPure, TuiValidationError} from '@taiga-ui/cdk';
+import {tuiPure, TuiValidationError} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, isObservable, merge, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 const EMPTY_RECORD = {};
+
 // @dynamic
-@Component({
-    selector: 'tui-field-error',
-    // @bad TODO: find a way to get 'touched' state change
-    // https://github.com/angular/angular/issues/10887
-    changeDetection: ChangeDetectionStrategy.Default,
-    templateUrl: './field-error.template.html',
-    styleUrls: ['./field-error.style.less'],
+@Pipe({
+    name: 'tuiFieldError',
+    pure: false,
 })
-export class TuiFieldErrorComponent {
-    @Input()
-    @tuiDefaultProp()
-    order: readonly string[] = [];
+export class TuiFieldErrorPipe implements PipeTransform {
+    private order: ReadonlyArray<string> = [];
 
     constructor(
         @Optional()
@@ -57,9 +45,15 @@ export class TuiFieldErrorComponent {
             PolymorpheusContent | Observable<PolymorpheusContent>
         >,
     ) {
-        if (this.ngControl) {
+        if (this.ngControl && !this.ngControl.valueAccessor) {
             this.ngControl.valueAccessor = this;
         }
+    }
+
+    transform(order: ReadonlyArray<string>): Observable<TuiValidationError | null> {
+        this.order = order;
+
+        return this.computedError;
     }
 
     @tuiPure
@@ -82,11 +76,11 @@ export class TuiFieldErrorComponent {
 
     writeValue() {}
 
-    private get error(): Observable<TuiValidationError | null> {
+    private get error(): Observable<TuiValidationError> | null {
         const {errorId} = this;
 
         if (!errorId) {
-            return of(null);
+            return null;
         }
 
         const firstError = this.controlErrors[errorId];
@@ -96,31 +90,21 @@ export class TuiFieldErrorComponent {
     }
 
     private get invalid(): boolean {
-        return !!this.control && this.control.invalid;
+        return !!this.control?.invalid;
     }
 
     private get touched(): boolean {
-        return !!this.control && this.control.touched;
+        return !!this.control?.touched;
     }
 
     private get control(): AbstractControl | null {
-        if (this.ngControl) {
-            return this.ngControl.control;
-        }
-
-        if (this.formArrayName) {
-            return this.formArrayName.control;
-        }
-
-        if (this.formGroupName) {
-            return this.formGroupName.control;
-        }
-
-        if (this.formGroup) {
-            return this.formGroup.control;
-        }
-
-        return null;
+        return (
+            this.ngControl?.control ||
+            this.formArrayName?.control ||
+            this.formGroupName?.control ||
+            this.formGroup?.control ||
+            null
+        );
     }
 
     private get errorId(): string {
@@ -128,7 +112,7 @@ export class TuiFieldErrorComponent {
     }
 
     private get controlErrors(): Record<string, any> {
-        return (this.control && this.control.errors) || EMPTY_RECORD;
+        return this.control?.errors || EMPTY_RECORD;
     }
 
     @tuiPure
@@ -136,7 +120,7 @@ export class TuiFieldErrorComponent {
         order: readonly string[],
         controlErrors: Record<string, any>,
     ): string {
-        const id = order && order.find(errorId => controlErrors[errorId]);
+        const id = order?.find(errorId => controlErrors[errorId]);
         const fallback = Object.keys(controlErrors)[0];
 
         return id || fallback || '';
