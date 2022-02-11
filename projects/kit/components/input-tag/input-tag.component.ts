@@ -62,6 +62,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Subject} from 'rxjs';
 import {filter, map, mapTo, switchMap, takeUntil} from 'rxjs/operators';
 
+import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag-options';
+
 const EVENT_Y_TO_X_COEFFICENT = 3;
 
 @Component({
@@ -108,9 +110,14 @@ export class TuiInputTagComponent
     private readonly scrollToStart$ = new Subject<void>();
     private readonly scrollToEnd$ = new Subject<void>();
 
+    // TODO: Remove in 3.0
     @Input()
     @tuiDefaultProp()
     allowSpaces = true;
+
+    @Input()
+    @tuiDefaultProp()
+    separator: string | RegExp = this.options.separator;
 
     @Input()
     @tuiDefaultProp()
@@ -140,6 +147,10 @@ export class TuiInputTagComponent
     @Input()
     @tuiDefaultProp()
     inputHidden = false;
+
+    @Input()
+    @tuiDefaultProp()
+    uniqueTags = this.options.uniqueTags;
 
     @Input()
     @tuiDefaultProp()
@@ -187,6 +198,8 @@ export class TuiInputTagComponent
         readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
+        @Inject(TUI_INPUT_TAG_OPTIONS)
+        private readonly options: TuiInputTagOptions,
     ) {
         super(control, changeDetectorRef);
     }
@@ -350,15 +363,15 @@ export class TuiInputTagComponent
         }
     }
 
-    onTagEdited(value: string, editedTag: string) {
+    onTagEdited(value: string, index: number) {
         this.focusInput();
         this.updateValue(
             this.value
-                .map(tag =>
-                    tag !== editedTag
+                .map((tag, tagIndex) =>
+                    tagIndex !== index
                         ? tag
                         : value
-                              .split(',')
+                              .split(this.separator)
                               .map(tag => tag.trim())
                               .filter(Boolean),
                 )
@@ -379,7 +392,7 @@ export class TuiInputTagComponent
 
     onInput(value: string) {
         const array = this.allowSpaces
-            ? value.split(',')
+            ? value.split(this.separator)
             : value.split(ALLOWED_SPACE_REGEXP);
         const tags = array
             .map(item => item.trim())
@@ -411,7 +424,10 @@ export class TuiInputTagComponent
         super.updateValue(
             value
                 .reverse()
-                .filter(item => !!item && !seen.has(item) && seen.add(item))
+                .filter(
+                    item =>
+                        !this.uniqueTags || (!!item && !seen.has(item) && seen.add(item)),
+                )
                 .reverse(),
         );
     }

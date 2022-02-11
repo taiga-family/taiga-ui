@@ -49,6 +49,15 @@
         >
             <tui-input-tag-example-5></tui-input-tag-example-5>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="separator"
+            i18n-heading
+            heading="Custom separator"
+            [content]="example6"
+        >
+            <tui-input-tag-example-6></tui-input-tag-example-6>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -73,6 +82,8 @@
                     [disabledItemHandler]="disabledItemHandler"
                     [editable]="editable"
                     [expandable]="expandable"
+                    [uniqueTags]="uniqueTags"
+                    [separator]="separator"
                     [icon]="icon"
                     [iconAlign]="iconAlign"
                     [readOnly]="readOnly"
@@ -131,6 +142,14 @@
                 Handler for deactivation some tags
             </ng-template>
             <ng-template
+                documentationPropertyName="uniqueTags"
+                documentationPropertyType="boolean"
+                documentationPropertyMode="input"
+                [(documentationPropertyValue)]="uniqueTags"
+            >
+                Ability to enter unique or non-unique tags
+            </ng-template>
+            <ng-template
                 i18n
                 documentationPropertyName="editable"
                 documentationPropertyMode="input"
@@ -147,6 +166,16 @@
                 [(documentationPropertyValue)]="expandable"
             >
                 Control height can be expanded to show all tags
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="separator"
+                documentationPropertyMode="input"
+                documentationPropertyType="string | RegExp"
+                [documentationPropertyValues]="separatorVariants"
+                [(documentationPropertyValue)]="separator"
+            >
+                String or RegExp to separate tags
             </ng-template>
             <ng-template
                 i18n
