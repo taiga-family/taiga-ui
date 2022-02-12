@@ -1,5 +1,10 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiDayOfWeek, TuiMonthNumber} from '@taiga-ui/cdk/enums';
+import {
+    InvalidDayException,
+    InvalidMonthException,
+    InvalidYearException,
+} from '@taiga-ui/cdk/exceptions';
 import {TuiDayLike} from '@taiga-ui/cdk/interfaces';
 import {TuiDateMode} from '@taiga-ui/cdk/types';
 import {padStart} from '@taiga-ui/cdk/utils/format';
@@ -182,11 +187,11 @@ export class TuiDay extends TuiMonth {
         const {day, month, year} = this.parseRawDateString(yearMonthDayString, 'YMD');
 
         if (!TuiYear.isValidYear(year)) {
-            throw new Error('Invalid year: ' + year);
+            throw new InvalidYearException(year);
         }
 
         if (!TuiMonth.isValidMonth(year, month)) {
-            throw new Error('Invalid month: ' + month);
+            throw new InvalidMonthException(month);
         }
 
         if (
@@ -197,7 +202,7 @@ export class TuiDay extends TuiMonth {
                 TuiMonth.getMonthDaysCount(month, TuiYear.isLeapYear(year)) + 1,
             )
         ) {
-            throw new Error('Invalid day: ' + day);
+            throw new InvalidDayException(day);
         }
 
         return new TuiDay(year, month, day);

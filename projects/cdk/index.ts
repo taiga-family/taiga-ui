@@ -6,6 +6,7 @@ export * from '@taiga-ui/cdk/date-time';
 export * from '@taiga-ui/cdk/decorators';
 export * from '@taiga-ui/cdk/directives';
 export * from '@taiga-ui/cdk/enums';
+export * from '@taiga-ui/cdk/exceptions';
 export * from '@taiga-ui/cdk/interfaces';
 export * from '@taiga-ui/cdk/observables';
 export * from '@taiga-ui/cdk/pipes';

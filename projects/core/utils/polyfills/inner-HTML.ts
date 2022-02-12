@@ -1,3 +1,5 @@
+import {TuiXmlParsingException} from '@taiga-ui/cdk';
+
 /**
  * @internal
  */
@@ -38,7 +40,7 @@ export function innerHTML(documentRef: Document): void {
                     this.appendChild(this.ownerDocument.importNode(svgDocElement, true));
                 }
             } catch (e) {
-                throw new Error('Error parsing XML string');
+                throw new TuiXmlParsingException();
             }
         },
     });

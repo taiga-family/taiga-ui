@@ -1,6 +1,8 @@
 import {DebugElement, Predicate} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';
 
+import {TuiElementIsNotInputException, TuiFieldNotFoundException} from '../exceptions';
+
 export class PageObject<T> {
     constructor(protected fixture: ComponentFixture<T>) {}
 
@@ -53,11 +55,11 @@ export class PageObject<T> {
         );
 
         if (inputDebugElement === null) {
-            throw new Error(`Field ${automationId} not found`);
+            throw new TuiFieldNotFoundException(automationId);
         }
 
         if (!(inputDebugElement.nativeElement instanceof HTMLInputElement)) {
-            throw new Error(`Element ${automationId} is not <input />`);
+            throw new TuiElementIsNotInputException(automationId);
         }
 
         inputDebugElement.nativeElement.value = value;

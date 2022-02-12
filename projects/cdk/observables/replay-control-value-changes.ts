@@ -1,4 +1,5 @@
 import {AbstractControl, AbstractControlDirective} from '@angular/forms';
+import {TuiValueChangesException} from '@taiga-ui/cdk/exceptions';
 import {Observable} from 'rxjs';
 import {startWith} from 'rxjs/operators';
 
@@ -11,7 +12,7 @@ export function tuiReplayedValueChangesFrom<T>(
 ): Observable<T> {
     return new Observable(subscriber => {
         if (!control.valueChanges) {
-            throw new Error('Control does not have valueChanges');
+            throw new TuiValueChangesException();
         }
 
         control.valueChanges.pipe(startWith(control.value)).subscribe(subscriber);

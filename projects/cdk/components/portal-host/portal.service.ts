@@ -6,10 +6,9 @@ import {
     Injector,
     TemplateRef,
 } from '@angular/core';
+import {TuiNoHostException} from '@taiga-ui/cdk/exceptions';
 
 import {TuiPortalHostComponent} from './portal-host.component';
-
-const NO_HOST = 'Portals cannot be used without TuiPortalHostComponent';
 
 /**
  * Service for displaying portals
@@ -22,7 +21,7 @@ export class TuiPortalService {
 
     private get safeHost(): TuiPortalHostComponent {
         if (!this.host) {
-            throw new Error(NO_HOST);
+            throw new TuiNoHostException();
         }
 
         return this.host;

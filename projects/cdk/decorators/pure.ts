@@ -1,3 +1,5 @@
+import {TuiPureException} from '@taiga-ui/cdk/exceptions';
+
 /**
  * Implements lazy initialization for getter or memoization of a function call similar to pure {@link: Pipe}.
  * Replaces getter with its calculated value upon first call or keeps track of last call arguments and returned
@@ -26,7 +28,7 @@ export function tuiPure<T>(
     }
 
     if (typeof value !== 'function') {
-        throw new Error('tuiPure can only be used with functions or getters');
+        throw new TuiPureException();
     }
 
     const original = value;

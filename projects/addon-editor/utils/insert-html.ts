@@ -1,3 +1,5 @@
+import {TuiDocumentSelectionException} from '@taiga-ui/cdk';
+
 /**
  * Provides document.execCommand('insertHTML', false, html) support to unsupported browser,
  * taking Undo stack into account if possible
@@ -17,7 +19,7 @@ export function tuiInsertHtml(documentRef: Document, html: string) {
     const selection = documentRef.getSelection();
 
     if (!selection) {
-        throw new Error('Failed to get document selection');
+        throw new TuiDocumentSelectionException();
     }
 
     documentRef.execCommand('ms-beginUndoUnit');

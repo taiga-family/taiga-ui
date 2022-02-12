@@ -1,3 +1,4 @@
+import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
 import {isPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {concat, merge, Observable} from 'rxjs';
 import {endWith, map, repeat, take, takeWhile} from 'rxjs/operators';
@@ -19,7 +20,7 @@ export function dragAndDropFrom(element: Element): Observable<TuiDragState> {
     const {ownerDocument} = element;
 
     if (!ownerDocument) {
-        throw new Error('element does not have ownerDocument');
+        throw new TuiOwnerDocumentException();
     }
 
     return concat(

@@ -1,3 +1,4 @@
+import {TuiGrepException} from './grep.exception';
 import {grepByPattern} from './grep-by-pattern';
 
 export async function checkRequireWithSrc(path: string): Promise<void> | never {
@@ -9,6 +10,6 @@ export async function checkRequireWithSrc(path: string): Promise<void> | never {
     });
 
     if (result.length > 0) {
-        throw new Error(`There are problems with ${includePattern} in:\n\n${result}`);
+        throw new TuiGrepException(includePattern, result);
     }
 }

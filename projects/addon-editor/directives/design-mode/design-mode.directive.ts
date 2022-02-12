@@ -26,6 +26,7 @@ import {
     preventDefault,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TuiComputedDocumentException,
     TuiDestroyService,
     TuiEventWith,
     TuiFocusableElementAccessor,
@@ -115,7 +116,7 @@ export class TuiDesignModeDirective
         const {contentDocument} = this.elementRef.nativeElement;
 
         if (!contentDocument) {
-            throw new Error('Only use computedDocument after load event');
+            throw new TuiComputedDocumentException();
         }
 
         return contentDocument;
