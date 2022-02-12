@@ -1,12 +1,13 @@
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ElementRef,
     HostBinding,
-    HostListener,
     Inject,
     Input,
+    NgZone,
     Renderer2,
     ViewChild,
 } from '@angular/core';
@@ -44,12 +45,11 @@ export class TuiLineClampComponent implements AfterViewInit {
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(Renderer2) renderer: Renderer2,
+        @Inject(Renderer2) private readonly renderer: Renderer2,
+        @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,
+        @Inject(NgZone) private readonly ngZone: NgZone,
     ) {
-        // Skipping initial transition
-        setTimeout(() => {
-            renderer.addClass(this.elementRef.nativeElement, '_initialized');
-        });
+        this.skipInitialTransition();
     }
 
     @tuiPure
@@ -98,11 +98,20 @@ export class TuiLineClampComponent implements AfterViewInit {
         return !this.outlet ? 0 : this.outlet.nativeElement.scrollHeight + 4 || null;
     }
 
-    // Change detection
-    @HostListener('mouseenter')
-    markForCheck() {}
+    updateView() {
+        this.cd.detectChanges();
+    }
 
     ngAfterViewInit() {
         this.initialized = true;
+    }
+
+    private skipInitialTransition() {
+        this.ngZone.runOutsideAngular(() => {
+            setTimeout(() => {
+                this.renderer.addClass(this.elementRef.nativeElement, '_initialized');
+                this.cd.detectChanges();
+            });
+        });
     }
 }

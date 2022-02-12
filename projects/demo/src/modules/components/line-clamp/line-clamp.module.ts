@@ -7,6 +7,7 @@ import {TuiIslandModule, TuiLineClampModule} from '@taiga-ui/kit';
 
 import {TuiLineClampExample1} from './examples/1';
 import {TuiLineClampExample2} from './examples/2';
+import {TuiLineClampExample3} from './examples/3';
 import {ExampleTuiLineClampComponent} from './line-clamp.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
         ExampleTuiLineClampComponent,
         TuiLineClampExample1,
         TuiLineClampExample2,
+        TuiLineClampExample3,
     ],
     exports: [ExampleTuiLineClampComponent],
 })
