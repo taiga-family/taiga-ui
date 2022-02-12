@@ -34,28 +34,30 @@ export function tuiPure<T>(
     return {
         enumerable,
         get(): T {
-            let previousArgs: ReadonlyArray<unknown> = [];
-            let previousResult: any;
+            let previousArgs: readonly unknown[] = [];
+            let originalFnWasCalledLeastAtOnce = false;
+            let pureValue: unknown;
 
-            const patched = (...args: Array<unknown>) => {
-                if (
+            const patched = (...args: unknown[]) => {
+                const isPure =
+                    originalFnWasCalledLeastAtOnce &&
                     previousArgs.length === args.length &&
-                    args.every((arg, index) => arg === previousArgs[index])
-                ) {
-                    return previousResult;
+                    args.every((arg, index) => arg === previousArgs[index]);
+
+                if (isPure) {
+                    return pureValue;
                 }
 
                 previousArgs = args;
-                previousResult = original.apply(this, args);
+                pureValue = original.apply(this, args);
+                originalFnWasCalledLeastAtOnce = true;
 
-                return previousResult;
+                return pureValue;
             };
 
-            Object.defineProperty(this, propertyKey, {
-                value: patched,
-            });
+            Object.defineProperty(this, propertyKey, {value: patched});
 
-            return patched as any;
+            return patched as unknown as T;
         },
     };
 }
