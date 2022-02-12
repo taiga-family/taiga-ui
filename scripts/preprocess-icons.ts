@@ -2,7 +2,7 @@ import glob from 'glob';
 
 import {processIcons} from '../projects/icons/scripts';
 
-(async function main(): Promise<void> {
+(function main(): void {
     const pattern = process.argv[2] || './projects/icons/**/*.svg';
 
     console.info('\x1b[35m%s\x1b[0m', '[cwd]:', process.cwd());
