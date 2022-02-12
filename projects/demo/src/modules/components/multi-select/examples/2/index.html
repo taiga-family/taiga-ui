@@ -1,12 +1,14 @@
 <tui-multi-select
     *tuiLet="items$ | async as items"
     #component
+    tuiTextfieldExampleText="Find by ..."
     class="control"
     [formControl]="testValue"
     [tuiTextfieldLabelOutside]="true"
     [expandable]="false"
     (searchChange)="onSearchChange($event)"
 >
+    Rock Star Frontend Developers
     <tui-data-list-wrapper
         *tuiDataList
         [items]="items | tuiHideSelected : component"

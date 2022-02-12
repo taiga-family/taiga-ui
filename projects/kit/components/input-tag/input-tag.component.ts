@@ -242,7 +242,10 @@ export class TuiInputTagComponent
     }
 
     get hasPlaceholder(): boolean {
-        return !this.labelOutside || (!this.hasValue && !this.hasExampleText);
+        return (
+            !this.labelOutside ||
+            (!this.hasValue && (!this.hasExampleText || this.inputHidden))
+        );
     }
 
     get placeholderRaised(): boolean {
