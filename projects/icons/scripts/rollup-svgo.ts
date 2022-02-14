@@ -21,7 +21,7 @@ export function rollupSvgo({
 
     return {
         name: 'rollupSvgo',
-        async transform(svgString: string, path: string): Promise<TransformResult> {
+        transform(svgString: string, path: string): TransformResult {
             const skip = !filter(path);
 
             if (skip) {
@@ -34,7 +34,7 @@ export function rollupSvgo({
             let error: unknown;
 
             try {
-                const result: SvgoResult = await optimize(svgString, {path, ...options});
+                const result: SvgoResult = optimize(svgString, {path, ...options});
 
                 data = (result as OptimizedSvg)?.data || {};
                 error = result.error;
