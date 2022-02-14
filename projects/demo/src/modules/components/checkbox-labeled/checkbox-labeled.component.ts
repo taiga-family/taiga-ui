@@ -14,8 +14,8 @@ import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-temp
 
 import {HOW_TO_PATH_RESOLVER} from '../../../how-to-path-resolver';
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
     selector: 'example-tui-checkbox-labeled',
@@ -28,7 +28,7 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
         },
     ],
 })
-export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiInteractive {
+export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiControl {
     readonly exampleForm = exampleForm;
     readonly exampleModule = exampleModule;
     readonly exampleHtml = exampleHtml;

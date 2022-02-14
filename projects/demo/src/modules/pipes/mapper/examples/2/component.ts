@@ -11,6 +11,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiMapperExample2 {
     readonly numbers = [1, 2, 3, 4, 5] as const;
 
-    readonly mapper = (numbers: Array<number>, multiplier: number) =>
+    readonly mapper = (numbers: readonly number[], multiplier: number) =>
         numbers.map(number => number * multiplier);
 }

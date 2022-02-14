@@ -15,8 +15,8 @@ import {default as exampleModule} from '!!raw-loader!./examples/import/import-mo
 import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
+import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
     selector: 'example-tui-radio-labeled',
@@ -30,7 +30,7 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
         },
     ],
 })
-export class ExampleTuiRadioLabeledComponent extends AbstractExampleTuiInteractive {
+export class ExampleTuiRadioLabeledComponent extends AbstractExampleTuiControl {
     readonly exampleModule = exampleModule;
     readonly exampleHtml = exampleHtml;
     readonly exampleForm = exampleForm;
