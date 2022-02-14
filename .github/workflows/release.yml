@@ -1,8 +1,7 @@
 name: Release Taiga UI packages
 
 on:
-  pull_request:
-    types: [labeled]
+  push:
     branches:
       - 'release/**'
 
@@ -13,7 +12,6 @@ env:
 
 jobs:
   build:
-    if: ${{ github.event.label.name == 'ready to merge' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
