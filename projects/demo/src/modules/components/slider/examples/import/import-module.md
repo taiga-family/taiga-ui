@@ -5,13 +5,13 @@ import {TuiSliderModule} from '@taiga-ui/kit';
 // ...
 
 @NgModule({
-    imports: [
-        // ...
-        FormsModule,
-        ReactiveFormsModule,
-        TuiSliderModule
-    ],
+  imports: [
     // ...
+    FormsModule,
+    ReactiveFormsModule,
+    TuiSliderModule,
+  ],
+  // ...
 })
-// ...
+export class MyModule {}
 ```
