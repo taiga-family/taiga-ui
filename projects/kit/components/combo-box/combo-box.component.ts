@@ -78,6 +78,10 @@ export class TuiComboBoxComponent<T>
 
     @Input()
     @tuiDefaultProp()
+    strict = true;
+
+    @Input()
+    @tuiDefaultProp()
     search: string | null = '';
 
     @Output()
@@ -166,7 +170,7 @@ export class TuiComboBoxComponent<T>
             event.preventDefault();
         }
 
-        const options = this.accessor ? this.accessor.getOptions() : [];
+        const options = this.accessor?.getOptions() || [];
 
         if (options.length !== 1) {
             return;
@@ -180,9 +184,7 @@ export class TuiComboBoxComponent<T>
     onValueChange(value: string) {
         this.updateSearch(value);
 
-        const match =
-            this.accessor &&
-            this.accessor.getOptions().find(item => this.isStrictMatch(item));
+        const match = this.accessor?.getOptions().find(item => this.isStrictMatch(item));
 
         if (match !== undefined) {
             this.updateValue(match);
@@ -191,7 +193,7 @@ export class TuiComboBoxComponent<T>
             return;
         }
 
-        if (!this.search) {
+        if (this.strict || this.search === '') {
             this.updateValue(null);
         }
 
