@@ -32,5 +32,6 @@ module.exports = {
         'no-implicit-coercion': ['error', {allow: ['!!']}],
         'require-await': 'off',
         '@typescript-eslint/require-await': 'error',
+        '@typescript-eslint/no-unnecessary-type-constraint': 'error',
     },
 };
