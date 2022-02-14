@@ -18,9 +18,11 @@ import {
     isNativeFocused,
     isPresent,
     setNativeFocused,
+    TUI_STRICT_MATCHER,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiPure,
+    TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_ACCESSOR,
@@ -36,7 +38,6 @@ import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_COMBO_BOX_PROVIDERS} from './combo-box.providers';
-import {TUI_COMBO_BOX_OPTIONS, TuiComboBoxOptions} from './combo-box-options';
 
 @Component({
     selector: 'tui-combo-box',
@@ -46,7 +47,7 @@ import {TUI_COMBO_BOX_OPTIONS, TuiComboBoxOptions} from './combo-box-options';
     providers: TUI_COMBO_BOX_PROVIDERS,
 })
 export class TuiComboBoxComponent<T>
-    extends AbstractTuiNullableControl<T | string>
+    extends AbstractTuiNullableControl<T>
     implements TuiFocusableElementAccessor, TuiDataListHost<T>
 {
     @ContentChild(TUI_DATA_LIST_ACCESSOR as any)
@@ -64,7 +65,7 @@ export class TuiComboBoxComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    strictMatcher: TuiComboBoxOptions<T>['strictMatcher'] = this.options.strictMatcher;
+    strictMatcher: TuiStringMatcher<T> = TUI_STRICT_MATCHER;
 
     @Input()
     @tuiDefaultProp()
@@ -73,11 +74,7 @@ export class TuiComboBoxComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    valueContent: TuiComboBoxOptions<T>['valueContent'] = this.options.valueContent;
-
-    @Input()
-    @tuiDefaultProp()
-    strict: TuiComboBoxOptions<T>['strict'] = this.options.strict;
+    valueContent: PolymorpheusContent<TuiValueContentContext<T>> = '';
 
     @Input()
     @tuiDefaultProp()
@@ -101,8 +98,6 @@ export class TuiComboBoxComponent<T>
         private readonly arrowMode: TuiArrowMode,
         @Inject(TUI_ITEMS_HANDLERS)
         private readonly itemsHandlers: TuiItemsHandlers<T>,
-        @Inject(TUI_COMBO_BOX_OPTIONS)
-        private readonly options: TuiComboBoxOptions<T>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -123,11 +118,7 @@ export class TuiComboBoxComponent<T>
     }
 
     get nativeValue(): string {
-        if (this.value === null) {
-            return this.search || '';
-        }
-
-        return typeof this.value === 'string' ? this.value : this.stringify(this.value);
+        return this.value === null ? this.search || '' : this.stringify(this.value);
     }
 
     get showValueTemplate(): boolean {
@@ -200,8 +191,15 @@ export class TuiComboBoxComponent<T>
             return;
         }
 
-        this.updateValue(this.strict || this.search === '' ? null : this.search);
+        if (!this.search) {
+            this.updateValue(null);
+        }
+
         this.hostedDropdown?.updateOpen(true);
+    }
+
+    updateValue(value: T | null) {
+        super.updateValue(value);
     }
 
     onHovered(hovered: boolean) {
