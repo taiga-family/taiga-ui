@@ -163,7 +163,21 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="strict"
             >
-                Value must be only item of items
+                Value must only be an item of suggestions&nbsp;
+                <code>&lt;T&gt;</code>
+
+                <p>
+                    <strong>
+                        When
+                        <code>false</code>
+                        , make sure your handlers, such as
+                        <code>stringify</code>
+                        can handle
+                        <code>string</code>
+                        value, as well as
+                        <code>&lt;T&gt;</code>
+                    </strong>
+                </p>
             </ng-template>
             <ng-template
                 i18n
