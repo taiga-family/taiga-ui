@@ -51,7 +51,9 @@ describe('InputTag', () => {
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [tuiHintContent]="hintContent"
-                ></tui-input-tag>
+                >
+                    Placeholder
+                </tui-input-tag>
             </tui-root>
         `,
     })
@@ -66,7 +68,7 @@ describe('InputTag', () => {
         allowSpaces = true;
         separator = ',';
         labelOutside = true;
-        exampleText = 'Пример';
+        exampleText = 'Example';
         size: TuiSizeS | TuiSizeL = 'm';
         hintContent: string | null = 'prompt';
         tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
@@ -406,9 +408,62 @@ describe('InputTag', () => {
         });
     });
 
+    it('reuse example text as placeholder', () => {
+        expect(component.hasValue).toBeTruthy();
+        expect(component.labelOutside).toBeTruthy();
+        expect(component.inputHidden).toBeFalsy();
+        expect(component.hasExampleText).toBeFalsy();
+        expect(component.hasPlaceholder).toBeFalsy();
+        expect(getPlaceholderText(fixture)).toEqual('Example');
+
+        testComponent.control.reset();
+        fixture.detectChanges();
+
+        expect(component.hasValue).toBeFalsy();
+        expect(component.labelOutside).toBeTruthy();
+        expect(component.inputHidden).toBeFalsy();
+        expect(component.hasExampleText).toEqual(false);
+        expect(component.hasPlaceholder).toEqual(true);
+        expect(getPlaceholderText(fixture)).toEqual('Placeholder');
+
+        // noinspection DuplicatedCode
+        component.inputHidden = true;
+        fixture.detectChanges();
+
+        expect(component.hasValue).toBeFalsy();
+        expect(component.labelOutside).toBeTruthy();
+        expect(component.inputHidden).toBeTruthy();
+        expect(component.hasExampleText).toEqual(false);
+        expect(component.hasPlaceholder).toEqual(true);
+        expect(getPlaceholderText(fixture)).toEqual('Placeholder');
+
+        testComponent.defaultInputs = true;
+        testComponent.labelOutside = true;
+        // noinspection DuplicatedCode
+        component.inputHidden = true;
+        fixture.detectChanges();
+
+        expect(component.hasValue).toBeFalsy();
+        expect(component.labelOutside).toBeTruthy();
+        expect(component.inputHidden).toBeTruthy();
+        expect(component.hasExampleText).toEqual(false);
+        expect(component.hasPlaceholder).toEqual(true);
+        expect(getPlaceholderText(fixture)).toEqual('');
+    });
+
     testPlaceholder(testContext, ['test'], []);
 
     testCleaner(testContext, ['test'], []);
 
     testTooltip(testContext);
 });
+
+function getPlaceholderText<T>(fixture: ComponentFixture<T>) {
+    return (
+        new PageObject(fixture)
+            .getByAutomationId('tui-input-tag__placeholder')
+            ?.nativeElement.innerText?.trim() ||
+        new PageObject(fixture)?.getByAutomationId('tui-input-tag__native')?.nativeElement
+            .placeholder
+    );
+}
