@@ -1,3 +1,4 @@
+import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
 import {Observable} from 'rxjs';
 import {filter, mapTo, startWith, switchMapTo, take} from 'rxjs/operators';
 
@@ -15,7 +16,7 @@ export function pressedObservable(
     const {ownerDocument} = element;
 
     if (!ownerDocument) {
-        throw new Error('element does not have ownerDocument');
+        throw new TuiOwnerDocumentException();
     }
 
     return typedFromEvent(element, 'mousedown').pipe(

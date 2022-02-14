@@ -1,3 +1,4 @@
+import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
 import {isNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {concat, merge, Observable} from 'rxjs';
 import {
@@ -24,7 +25,7 @@ export function focusVisibleObservable(element: Element): Observable<boolean> {
     const {ownerDocument} = element;
 
     if (!ownerDocument) {
-        throw new Error('element does not have ownerDocument');
+        throw new TuiOwnerDocumentException();
     }
 
     if (!documentMouseDownIsAlive$ || !documentMouseUpIsAlive$) {

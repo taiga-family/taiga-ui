@@ -10,6 +10,7 @@ copyExtraFiles();
 
 function copyExtraFiles() {
     if (!fs.existsSync(README_PATH) || !fs.existsSync(LOGO_PATH)) {
+        // TODO: replace later (after switch script to typescript)
         throw new Error('Requested files do not exit');
     } else {
         copyReadmeIntoDistFolder(README_PATH, PATH_TO_README);

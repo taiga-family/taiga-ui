@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
 import {defaultSort} from '@taiga-ui/addon-table/utils';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiTableSortKeyException} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 
 import {TuiHeadDirective} from '../directives/head.directive';
@@ -58,7 +58,7 @@ export class TuiThComponent<T> {
 
     get key(): keyof T {
         if (!this.head) {
-            throw new Error('Trying to sort with no key');
+            throw new TuiTableSortKeyException();
         }
 
         return this.head.tuiHead;
