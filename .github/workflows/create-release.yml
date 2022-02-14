@@ -1,0 +1,51 @@
+name: Create release
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        description: release type
+        required: true
+        default: 'minor'
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  run-release:
+    name: Run release
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
+    steps:
+      - name: Fetch from origin repo
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
+      - name: Run release
+        id: run-release
+        run: |
+          git config user.name "tinkoff-bot"
+          git config --global push.followTags true
+          npm run release -- --release-as ${{ github.event.inputs.mode }}
+          npm run prettier
+          git add .
+          git commit -m 'chore: run prettier' --no-verify
+          echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+          branch: release/${{ steps.run-release.outputs.new_version }}
+          title: 'Release/${{ steps.run-release.outputs.new_version }}'
+
+concurrency:
+  group: create-release-${{ github.head_ref }}
+  cancel-in-progress: true

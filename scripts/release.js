@@ -14,10 +14,12 @@ execSync(`git checkout -b release/${newVersion}`, options);
 execSync(`npm run release -- --release-as ${mode}`, options);
 
 execSync(`npm run prettier`, options);
-execSync(`git add . && git commit --all --amend --no-edit --no-verify`, options);
+execSync(`git commit -m 'chore: run prettier' --no-verify`);
 
 checkChangelog().then(() => {
-    execSync(`git add . && git commit --all --amend --no-edit --no-verify`, options);
+    execSync(
+        `git commit -m 'chore(changelog): fix incorrect generated logs' --no-verify`,
+    );
     execSync(`git push --set-upstream origin release/${newVersion}`, options);
     execSync(`git push --tags`, options);
 });
