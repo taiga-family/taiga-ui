@@ -4,12 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-slider-example-1',
+    selector: 'tui-slider-example-3',
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
-export class TuiSliderExample1 {
-    value = 4;
-    formControl = new FormControl(60);
+export class TuiSliderExample3 {
+    readonly labels = ['100$', '250$', '500$', '750$', '1000$'];
+    readonly formControl = new FormControl(1);
 }

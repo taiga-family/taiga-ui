@@ -1,12 +1,129 @@
-.dot:first-child {
-    display: none;
+/*
+*** Thumb – this is an element on the track that the user can move around to select varying range values.
+*** Track – this is the part of the slider that the thumb runs along.
+*** Ticks - tick marks along the length of the track.
+*/
+
+@thumb-heights: {
+    @s: 0.5rem;
+    @m: 1rem;
+};
+@track-height: 0.125rem;
+@ticks-thickness: 0.25rem;
+
+@track-color: var(--tui-base-03);
+@thumb-color: currentColor;
+
+.customize-track(@progress-filling: false) {
+    height: @track-height;
+    border-radius: var(--tui-radius-m);
+
+    @hide-first-tick: linear-gradient(to right, @thumb-color 0px @ticks-thickness, transparent @ticks-thickness);
+    @hide-last-tick: linear-gradient(to left, @track-color 0px @ticks-thickness, transparent @ticks-thickness);
+    @ticks-gradient: repeating-linear-gradient(
+        to right,
+        var(--tui-base-07) 0 @ticks-thickness,
+        transparent @ticks-thickness var(--tui-slider-segment-width)
+    );
+    @filling-progress-gradient: linear-gradient(
+        to right,
+        @thumb-color var(--tui-slider-fill-percentage),
+        transparent var(--tui-slider-fill-percentage)
+    );
+
+    & when (@progress-filling = true) {
+        background: @hide-first-tick, @hide-last-tick, @ticks-gradient, @filling-progress-gradient;
+    }
+
+    & when (@progress-filling = false) {
+        background: @hide-first-tick, @hide-last-tick, @ticks-gradient;
+    }
 }
 
-.wrapper {
-    border-left: none;
+.customize-thumb(@size) {
+    appearance: none;
+    background-color: @thumb-color;
+    border: none;
+    border-radius: 50%;
+    height: @thumb-heights[ @@size];
+    width: @thumb-heights[ @@size];
+
+    :not(:disabled)& {
+        cursor: ew-resize;
+    }
+
+    :focus-visible& {
+        box-shadow: 0 0 0 2px inset var(--tui-focus);
+    }
 }
 
-.bar,
-.segments {
-    margin-left: 0;
+/* Vertically centers thumb on the track (webkit only) */
+.vertically-align-thumb(@size) {
+    margin-top: (@track-height / 2) - (@thumb-heights[ @@size] / 2);
+}
+
+:host {
+    display: block;
+    width: 100%;
+    color: var(--tui-primary); /* See currentColor inside this file */
+    cursor: pointer;
+
+    &:disabled {
+        opacity: var(--tui-disabled-opacity);
+        cursor: auto;
+    }
+}
+
+:host:not(._old-edge) {
+    appearance: none;
+    height: @track-height;
+    padding: 0.4375rem 0; /* To catch click events nearby THIN input's track */
+    background: @track-color;
+    background-clip: content-box; /* To clip filling of paddings */
+    outline: none;
+
+    &::-webkit-slider-runnable-track {
+        .customize-track(true);
+    }
+
+    &::-moz-range-track {
+        .customize-track(false);
+    }
+
+    &[data-size='m']::-webkit-slider-thumb {
+        .customize-thumb(m);
+        .vertically-align-thumb(m);
+    }
+
+    &[data-size='s']::-webkit-slider-thumb {
+        .customize-thumb(s);
+        .vertically-align-thumb(s);
+    }
+
+    &[data-size='m']::-moz-range-thumb {
+        .customize-thumb(m);
+    }
+
+    &[data-size='s']::-moz-range-thumb {
+        .customize-thumb(s);
+    }
+
+    &::-moz-range-progress {
+        background: @thumb-color;
+    }
+}
+
+/* Not-chromium Edge minimum customisation */
+:host._old-edge {
+    &::-ms-thumb {
+        background: @thumb-color;
+    }
+
+    &::-ms-fill-lower {
+        background: @thumb-color;
+    }
+
+    &::-ms-track {
+        background: @track-color;
+    }
 }

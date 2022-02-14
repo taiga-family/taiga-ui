@@ -798,6 +798,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/slider-deprecated',
+        loadChildren: () =>
+            import(`../components/slider-old/slider-old.module`).then(
+                m => m.ExampleTuiSliderOldModule,
+            ),
+        data: {
+            title: 'Slider[deprecated]',
+        },
+    },
+    {
         path: 'navigation/stepper',
         loadChildren: () =>
             import(`../components/stepper/stepper.module`).then(
