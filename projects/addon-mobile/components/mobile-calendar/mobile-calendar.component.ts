@@ -4,7 +4,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostBinding,
     Inject,
     Input,
     Output,
@@ -63,6 +62,7 @@ import {
     styleUrls: ['./mobile-calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
+    host: {'[class._ios]': 'isIOS'},
 })
 export class TuiMobileCalendarComponent {
     @ViewChild('yearsScrollRef')
@@ -97,9 +97,6 @@ export class TuiMobileCalendarComponent {
     @Output()
     readonly confirm = new EventEmitter<TuiDayRange | TuiDay>();
 
-    @HostBinding('class._ios')
-    readonly isIOS: boolean;
-
     value: TuiDay | TuiDayRange | null = null;
 
     readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
@@ -114,7 +111,7 @@ export class TuiMobileCalendarComponent {
     );
 
     constructor(
-        @Inject(TUI_IS_IOS) isIOS: boolean,
+        @Inject(TUI_IS_IOS) readonly isIOS: boolean,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
@@ -142,12 +139,8 @@ export class TuiMobileCalendarComponent {
     }
 
     ngAfterViewInit() {
-        if (!this.monthsScrollRef) {
-            return;
-        }
-
         // Virtual scroll has not yet rendered items even in ngAfterViewInit
-        this.monthsScrollRef.scrolledIndexChange
+        this.monthsScrollRef?.scrolledIndexChange
             .pipe(take(1), takeUntil(this.destroy$))
             .subscribe(() => {
                 this.scrollToActiveYear();
@@ -350,7 +343,7 @@ export class TuiMobileCalendarComponent {
             'touchend',
         );
 
-        // Smooth scroll to closest month after scrolling is done
+        // Smooth scroll to the closest month after scrolling is done
         touchstart$
             .pipe(
                 switchMapTo(touchend$),
@@ -372,18 +365,14 @@ export class TuiMobileCalendarComponent {
     }
 
     private scrollToActiveYear(behavior?: ScrollBehavior) {
-        if (this.yearsScrollRef) {
-            this.yearsScrollRef.scrollToIndex(
-                Math.max(this.activeYear - STARTING_YEAR - 2, 0),
-                behavior,
-            );
-        }
+        this.yearsScrollRef?.scrollToIndex(
+            Math.max(this.activeYear - STARTING_YEAR - 2, 0),
+            behavior,
+        );
     }
 
     private scrollToActiveMonth(behavior?: ScrollBehavior) {
-        if (this.monthsScrollRef) {
-            this.monthsScrollRef.scrollToIndex(this.activeMonth, behavior);
-        }
+        this.monthsScrollRef?.scrollToIndex(this.activeMonth, behavior);
     }
 
     private isYearActive(index: number): boolean {
