@@ -1,2 +1,29 @@
 codecov:
   branch: main
+  notify:
+    require_ci_to_pass: no
+
+coverage:
+  # This value is used to customize the visible color range in Codecov.
+  # The first number represents the red, and the second represents green.
+  # You can change the range of colors by adjusting this configuration.
+  range: 50..100 # by default 70..100
+  round: down
+  precision: 2
+
+  status:
+    project:
+      default:
+        flag_coverage_not_uploaded_behavior: pass
+        if_ci_failed: success
+        if_not_found: success
+
+    # The codecov/patch status only measures lines adjusted in
+    # the pull request or single commit, if the commit is not
+    # in a pull request. This status provides an indication
+    # on how well the pull request is tested.
+    patch:
+      default:
+        flag_coverage_not_uploaded_behavior: pass
+        if_ci_failed: success
+        if_not_found: success
