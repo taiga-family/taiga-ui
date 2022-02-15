@@ -56,6 +56,6 @@ export class ExampleProgressBarComponent {
         LESS: import('!!raw-loader!./examples/5/index.less'),
     };
 
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 }
