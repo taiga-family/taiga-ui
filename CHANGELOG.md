@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.34.0](https://github.com/tinkoff/taiga-ui/compare/v2.33.0...v2.34.0) (2022-02-14)
+
+### Features
+
+- **cdk:** support no arguments' function decorated by tuiPure
+  ([#1374](https://github.com/tinkoff/taiga-ui/issues/1374))
+  ([a12e31f](https://github.com/tinkoff/taiga-ui/commit/a12e31f5d4450d754b3373c79a913e2643217f4d))
+- **cdk:** use `Exception` instead of throw `Error` directly ([#1378](https://github.com/tinkoff/taiga-ui/issues/1378))
+  ([41f193b](https://github.com/tinkoff/taiga-ui/commit/41f193b35105a2368216c658fd71583290ea974f))
+- **core,kit:** default options configuration helpers ([#1356](https://github.com/tinkoff/taiga-ui/issues/1356))
+  ([2259182](https://github.com/tinkoff/taiga-ui/commit/2259182c77c95001533974031c3c8480ddb91f05))
+- **kit:** `<tui-slider />` => `<input tuiSlider>` ([#1222](https://github.com/tinkoff/taiga-ui/issues/1222))
+  ([8ea7f0a](https://github.com/tinkoff/taiga-ui/commit/8ea7f0aed98ccdfce8490b8511aa8f3a3b3c4fc3))
+- **kit:** `InputTag` optionally allow non-unique tags and custom separators
+  ([#1366](https://github.com/tinkoff/taiga-ui/issues/1366))
+  ([875d4a1](https://github.com/tinkoff/taiga-ui/commit/875d4a1a2073709a7c9cd31b347c7ba8c5580cf5))
+- **kit:** default options configuration for `ComboBox`, `MultiSelect`, `Select` and `DataListWrapper`
+  ([#1352](https://github.com/tinkoff/taiga-ui/issues/1352))
+  ([04dc1ab](https://github.com/tinkoff/taiga-ui/commit/04dc1ab558e32b64612a76db5bfcd5a698e6d641))
+- **kit:** new pipe `FieldError` ([#1360](https://github.com/tinkoff/taiga-ui/issues/1360))
+  ([447b5f2](https://github.com/tinkoff/taiga-ui/commit/447b5f2e12adab65bd12cbb7cfd0d9650ee6dcf8))
+
+### Bug Fixes
+
+- **addon-commerce:** check empty card number ([#1359](https://github.com/tinkoff/taiga-ui/issues/1359))
+  ([803cfed](https://github.com/tinkoff/taiga-ui/commit/803cfed9c888bd005ce3283eb9587320e894023a))
+- **addon-doc:** `Money` remove empty space around currency ([#1248](https://github.com/tinkoff/taiga-ui/issues/1248))
+  ([73118c5](https://github.com/tinkoff/taiga-ui/commit/73118c538f1c97846384f10fe2eb5022bd696277))
+- **addon-doc:** translate word in schematics ([#1377](https://github.com/tinkoff/taiga-ui/issues/1377))
+  ([878d48b](https://github.com/tinkoff/taiga-ui/commit/878d48bb39b4e461b3e97214733d3e995c4bffa1))
+- **addon-mobile:** restrict choosing unavailable value ([#1372](https://github.com/tinkoff/taiga-ui/issues/1372))
+  ([3f0024e](https://github.com/tinkoff/taiga-ui/commit/3f0024e5390c972dba517d2549ff25f34bbf9ebe))
+- **core:** fixed styles for form header ([#1347](https://github.com/tinkoff/taiga-ui/issues/1347))
+  ([391a4ce](https://github.com/tinkoff/taiga-ui/commit/391a4cea671919ae992151cfb4694e607af523df))
+- **demo:** fixed input-inline tabs ([#1362](https://github.com/tinkoff/taiga-ui/issues/1362))
+  ([4406240](https://github.com/tinkoff/taiga-ui/commit/44062409347260f37980b5e198a0eb664d7bbc6e))
+- **kit:** `ComboBox` run stringify on string values too ([#1385](https://github.com/tinkoff/taiga-ui/issues/1385))
+  ([0c66a21](https://github.com/tinkoff/taiga-ui/commit/0c66a215aec4b0abcc8ce62256c6d82f497fa2e9))
+- **kit:** show example text when opened dropdown in multi-select
+  ([#1376](https://github.com/tinkoff/taiga-ui/issues/1376))
+  ([fa12f99](https://github.com/tinkoff/taiga-ui/commit/fa12f999581fcce48548fbe1c6de8dc4ff387206))
+
 ## [2.33.0](https://github.com/tinkoff/taiga-ui/compare/v2.32.0...v2.33.0) (2022-02-08)
 
 ### Features
@@ -23,8 +65,6 @@ All notable changes to this project will be documented in this file. See
   ([#1328](https://github.com/tinkoff/taiga-ui/issues/1328))
   ([2918a73](https://github.com/tinkoff/taiga-ui/commit/2918a73b6245752dba620425066f18530d935fe0))
 - **addon-editor:** updated extensions ([#1330](https://github.com/tinkoff/taiga-ui/issues/1330))
-  ([5245fa3](https://github.com/tinkoff/taiga-ui/commit/5245fa344e1b55cfc438a52b0f685a68df6efbe2))
-- **addon-mobile:** `Sheet` fix initial position for iOS ([#1277](https://github.com/tinkoff/taiga-ui/issues/1277))
   ([878d48b](https://github.com/tinkoff/taiga-ui/commit/878d48bb39b4e461b3e97214733d3e995c4bffa1))
 - **core:** add `@taiga-ui/i18n` as dependency ([#1346](https://github.com/tinkoff/taiga-ui/issues/1346))
   ([08ea554](https://github.com/tinkoff/taiga-ui/commit/08ea5547e359b87fbf0ac03d4bf04b3589a4b1c1))
