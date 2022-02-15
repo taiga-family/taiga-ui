@@ -9,6 +9,29 @@ import {TuiSizeS} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiSliderComponent {
+    readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
+    readonly control = new FormControl(1);
+
+    max = 5;
+    min = 0;
+    step = 1;
+    size: TuiSizeS = this.sizeVariants[1];
+    segments = this.max;
+
+    get disabled(): boolean {
+        return this.control.disabled;
+    }
+
+    set disabled(value: boolean) {
+        if (value) {
+            this.control.disable();
+
+            return;
+        }
+
+        this.control.enable();
+    }
+
     readonly exampleImportModule = import(
         '!!raw-loader!./examples/import/import-module.md'
     );
@@ -42,25 +65,4 @@ export class ExampleTuiSliderComponent {
         HTML: import('!!raw-loader!./examples/4/index.html'),
         TypeScript: import('!!raw-loader!./examples/4/index'),
     };
-
-    readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
-    readonly control = new FormControl(1);
-    readonly max = 5;
-
-    size: TuiSizeS = this.sizeVariants[1];
-    segments = this.max;
-
-    get disabled(): boolean {
-        return this.control.disabled;
-    }
-
-    set disabled(value: boolean) {
-        if (value) {
-            this.control.disable();
-
-            return;
-        }
-
-        this.control.enable();
-    }
 }
