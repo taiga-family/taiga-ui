@@ -57,7 +57,7 @@ export class TuiSliderComponent {
 
     @HostBinding('style.--tui-slider-fill-percentage')
     get fillPercentage(): string {
-        const percentage = Math.floor((100 * this.value) / (this.max - this.min));
+        const percentage = (100 * this.value) / (this.max - this.min);
 
         return `${percentage}%`;
     }
