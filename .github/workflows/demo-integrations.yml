@@ -85,7 +85,9 @@ jobs:
 
       - name: Fall with an error if diff-output exists
         if: ${{ steps.diff-checker.outputs.diff_exist != '0' }}
-        run: exit 1
+        run: |
+          find ${{ env.SNAPSHOTS_PATH }} -type d -name '__diff_output__' -exec echo "{}" \;
+          exit 1
 
       - name: Upload artifact
         uses: actions/upload-artifact@v1

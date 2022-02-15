@@ -1,17 +1,17 @@
-import {WAIT_BEFORE_SCREENSHOT} from './utils';
+import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '../../support/shared.entities';
 
 describe("Editor's color picker", () => {
     beforeEach(() => {
         cy.goToDemoPage('components/color-picker');
         cy.hideHeader();
+        cy.hideNavigation();
     });
 
     it('opened color picker', () => {
         openColorPicker('wrapper');
 
-        cy.get('@wrapper')
-            .wait(WAIT_BEFORE_SCREENSHOT)
-            .matchImageSnapshot('1-color-picker-with-hex');
+        cy.get('@wrapper').scrollIntoView().wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
+        cy.matchImageSnapshot('1-color-picker-with-hex', {capture: 'viewport'});
     });
 
     it('opened color picker and change rgb', () => {
@@ -22,9 +22,8 @@ describe("Editor's color picker", () => {
         setInputBox(2, 255);
         setInputBox(3, 255);
 
-        cy.get('@wrapper')
-            .wait(WAIT_BEFORE_SCREENSHOT)
-            .matchImageSnapshot('2-color-picker-with-rgb');
+        cy.get('@wrapper').scrollIntoView().wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
+        cy.matchImageSnapshot('2-color-picker-with-rgb', {capture: 'viewport'});
     });
 
     function openColorPicker(alias: string) {

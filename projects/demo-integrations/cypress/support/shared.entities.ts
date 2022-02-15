@@ -1,5 +1,6 @@
+export const WAIT_BEFORE_SCREENSHOT = 500; // editor has a huge number of icons (that is why we wait so long)
 export const DEFAULT_TIMEOUT_BEFORE_ACTION = 100;
-export const DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION = 300;
+export const DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION = 200;
 export const NIGHT_THEME_KEY = 'night';
 export const EXAMPLE_ID = 'tui-doc-example';
 export const DIALOG_PAGE_URL = 'components/dialog';

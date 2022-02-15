@@ -33,10 +33,13 @@ Cypress.Commands.add('setNightMode', setNightMode);
 Cypress.Commands.add('hideNavigation', hideNavigation);
 
 addMatchImageSnapshotCommand({
-    failureThreshold: 0,
+    // Pixel to pixel comparison can fail frequently,
+    // but more often than not, it's because of minor
+    // variations in rendering and the compression algorithm.
+    // https://github.com/americanexpress/jest-image-snapshot/issues/201
+    comparisonMethod: 'ssim',
+    customDiffConfig: {ssim: 'fast', windowSize: 24} as any,
+    failureThreshold: 0.001,
     failureThresholdType: 'percent',
-    customDiffConfig: {
-        threshold: 0.6, // ranges from 0 to 1. Smaller values make the comparison more sensitive.
-        includeAA: true, // If true, disables detecting and ignoring anti-aliased pixels.
-    },
+    allowSizeMismatch: true, // Windows fix
 });

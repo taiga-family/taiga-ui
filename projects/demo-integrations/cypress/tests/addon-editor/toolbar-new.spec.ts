@@ -1,5 +1,4 @@
-import {EDITOR_PAGE_URL} from '../../support/shared.entities';
-import {WAIT_BEFORE_SCREENSHOT} from './utils';
+import {EDITOR_PAGE_URL, WAIT_BEFORE_SCREENSHOT} from '../../support/shared.entities';
 
 describe("Editor's toolbar", () => {
     beforeEach(() => {
