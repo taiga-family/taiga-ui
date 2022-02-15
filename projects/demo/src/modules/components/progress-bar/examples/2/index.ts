@@ -19,7 +19,7 @@ export class TuiProgressBarExample2 {
         'var(--tui-support-21)',
         'lightskyblue',
         '#3682db',
-        'var(--tui-support-22)',
+        'var(--tui-primary)',
     ];
 
     constructor(@Inject(TUI_IS_CYPRESS) private readonly isCypress: boolean) {}
