@@ -33,10 +33,14 @@ Cypress.Commands.add('setNightMode', setNightMode);
 Cypress.Commands.add('hideNavigation', hideNavigation);
 
 addMatchImageSnapshotCommand({
-    failureThreshold: 0,
+    allowSizeMismatch: true, // Windows CI fix
+    runInProcess: true, // macOS CI fix
+    failureThreshold: 0.01,
     failureThresholdType: 'percent',
+    comparisonMethod: 'ssim',
+    diffDirection: 'vertical',
     customDiffConfig: {
-        threshold: 0.6, // ranges from 0 to 1. Smaller values make the comparison more sensitive.
-        includeAA: true, // If true, disables detecting and ignoring anti-aliased pixels.
-    },
+        ssim: 'fast',
+        windowSize: 24,
+    } as any,
 });
