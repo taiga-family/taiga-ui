@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[577],{jPzD:function(i,n,s){"use strict";s.r(n),n.default='<input tuiSlider value="65" class="first" />\n<input tuiSlider value="80" class="second" />\n<input tuiSlider value="40" class="third" />\n'}}]);

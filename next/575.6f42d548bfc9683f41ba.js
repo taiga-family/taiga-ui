@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[575],{L19o:function(n,o,e){"use strict";e.r(o),o.default='<input tuiSlider max="10" step="1" size="s" [(ngModel)]="value" />\n\n<input tuiSlider value="60" size="m" [formControl]="formControl" />\n'}}]);

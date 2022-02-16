@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[587],{C16L:function(n,o,t){"use strict";t.r(o),o.default='```html\n<input tuiSlider [formControl]="control" />\n```\n'}}]);
