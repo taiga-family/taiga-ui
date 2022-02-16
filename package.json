@@ -19,7 +19,7 @@
         "*** Workflow ***": "",
         "exec": "ts-node --project tsconfig.tools.json",
         "stylelint": "stylelint '**/*.less'",
-        "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
+        "lint": "eslint --cache --cache-location node_modules/.cache/eslint",
         "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}' --write",
         "typecheck": "tsc --noEmit --skipLibCheck --project tsconfig.spec.json",
         "*** Build **": "",
@@ -196,11 +196,8 @@
     },
     "lint-staged": {
         "*.{js,ts,html,md,less,json}": [
+            "npm run lint -- --fix",
             "prettier --write",
-            "git add"
-        ],
-        "*.{js,ts}": [
-            "eslint --fix",
             "git add"
         ],
         "*.less": [
