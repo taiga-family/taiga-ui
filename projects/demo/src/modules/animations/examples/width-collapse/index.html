@@ -8,4 +8,8 @@
     {{isOpen ? 'ON' : 'OFF'}}
 </button>
 
-<div *ngIf="isOpen" class="plasma" [@tuiWidthCollapse]="animation"></div>
+<div
+    *ngIf="isOpen"
+    class="plasma"
+    [@tuiWidthCollapse]="getAnimation(speed)"
+></div>

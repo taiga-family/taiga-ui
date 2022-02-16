@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiPure} from '@taiga-ui/cdk';
 import {tuiFadeIn} from '@taiga-ui/core';
 import {from, of} from 'rxjs';
 import {concatMap, delay, repeat, startWith} from 'rxjs/operators';
@@ -23,10 +24,11 @@ export class TuiFadeInExample {
         startWith(true),
     );
 
-    get animation() {
+    @tuiPure
+    getAnimation(duration: number) {
         return {
             value: '',
-            params: {duration: this.speed},
+            params: {duration},
         } as const;
     }
 }

@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiPure} from '@taiga-ui/cdk';
 import {tuiScaleIn} from '@taiga-ui/core';
 
 @Component({
@@ -21,10 +22,11 @@ export class TuiScaleInExample {
         {title: 'Look into "Getting Started"', completed: false},
     ] as const;
 
-    get animation() {
+    @tuiPure
+    getAnimation(duration: number) {
         return {
             value: '',
-            params: {duration: this.speed},
+            params: {duration},
         } as const;
     }
 }

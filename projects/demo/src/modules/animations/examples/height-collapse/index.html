@@ -7,6 +7,10 @@
     {{isOpen ? 'Hide me' : 'Show opening crawl'}}
 </button>
 
-<div *ngIf="isOpen" class="container" [@tuiHeightCollapse]="animation">
+<div
+    *ngIf="isOpen"
+    class="container"
+    [@tuiHeightCollapse]="getAnimation(speed)"
+>
     A long time ago in a galaxy far, far away....
 </div>
