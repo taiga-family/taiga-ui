@@ -121,10 +121,10 @@
     pointer-events: none;
     color: transparent;
     overflow: hidden;
-    border: 0 solid transparent;
-    border-width: 0 var(--border-end) 0 var(--border-start);
-    border-inline-start-width: var(--border-start);
-    border-inline-end-width: var(--border-end);
+    border: solid transparent;
+    border-width: 0 var(--border-end, 0) 0 var(--border-start, 0);
+    border-inline-start-width: var(--border-start, 0);
+    border-inline-end-width: var(--border-end, 0);
 
     :host[data-size='m'] & {
         padding: 0 0.75rem;
@@ -150,10 +150,10 @@
     resize: none;
     overflow: hidden;
     outline: none;
-    border: 0 solid transparent;
-    border-width: 0 var(--border-end) 0 var(--border-start);
-    border-inline-start-width: var(--border-start);
-    border-inline-end-width: var(--border-end);
+    border: solid transparent;
+    border-width: 0 var(--border-end, 0) 0 var(--border-start, 0);
+    border-inline-start-width: var(--border-start, 0);
+    border-inline-end-width: var(--border-end, 0);
 
     &::placeholder {
         color: var(--tui-text-03);
@@ -191,10 +191,10 @@
     left: 0;
     max-width: 100%;
     padding: 0 1rem;
-    border: 0 solid transparent;
-    border-width: 0 var(--border-end) 0 var(--border-start);
-    border-inline-start-width: var(--border-start);
-    border-inline-end-width: var(--border-end);
+    border: solid transparent;
+    border-width: 0 var(--border-end, 0) 0 var(--border-start, 0);
+    border-inline-start-width: var(--border-start, 0);
+    border-inline-end-width: var(--border-end, 0);
     box-sizing: border-box;
 
     :host[data-size='m'] & {

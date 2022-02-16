@@ -57,10 +57,10 @@
     .clearinput();
     .fullsize();
     padding: 0 var(--tui-padding-m);
-    border: 0 solid transparent;
-    border-width: 0 var(--border-end) 0 var(--border-start);
-    border-inline-start-width: var(--border-start);
-    border-inline-end-width: var(--border-end);
+    border: solid transparent;
+    border-width: 0 var(--border-end, 0) 0 var(--border-start, 0);
+    border-inline-start-width: var(--border-start, 0);
+    border-inline-end-width: var(--border-end, 0);
     text-indent: var(--text-indent);
     text-align: inherit;
     box-sizing: border-box;
