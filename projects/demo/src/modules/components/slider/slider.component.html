@@ -67,9 +67,9 @@
             <ng-template>
                 <input
                     tuiSlider
-                    step="1"
-                    min="0"
                     [max]="max"
+                    [min]="min"
+                    [step]="step"
                     [formControl]="control"
                     [size]="size"
                     [segments]="segments"
@@ -86,6 +86,60 @@
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="max"
+            >
+                Native attribute
+                <a
+                    tuiLink
+                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#max"
+                    target="_blank"
+                >
+                    max
+                </a>
+                of
+                <code>&lt;input&nbsp;type="range"&nbsp;/&gt;</code>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="min"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="min"
+            >
+                Native attribute
+                <a
+                    tuiLink
+                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#min"
+                    target="_blank"
+                >
+                    min
+                </a>
+                of
+                <code>&lt;input&nbsp;type="range"&nbsp;/&gt;</code>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="step"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="step"
+            >
+                Native attribute
+                <a
+                    tuiLink
+                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#step"
+                    target="_blank"
+                >
+                    step
+                </a>
+                of
+                <code>&lt;input&nbsp;type="range"&nbsp;/&gt;</code>
             </ng-template>
             <ng-template
                 i18n

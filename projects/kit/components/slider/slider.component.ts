@@ -55,18 +55,14 @@ export class TuiSliderComponent {
         return Number(this.elementRef.nativeElement.step) || 1;
     }
 
-    @HostBinding('style.--tui-slider-fill-percentage')
-    get fillPercentage(): string {
-        const percentage = Math.floor((100 * this.value) / (this.max - this.min));
-
-        return `${percentage}%`;
+    @HostBinding('style.--tui-slider-fill-percentage.%')
+    get fillPercentage(): number {
+        return (100 * this.value) / (this.max - this.min);
     }
 
-    @HostBinding('style.--tui-slider-segment-width')
-    get stepPercentage(): string {
-        const percentage = 100 / this.segments - 0.1;
-
-        return `${percentage}%`;
+    @HostBinding('style.--tui-slider-segment-width.%')
+    get stepPercentage(): number {
+        return 100 / this.segments - 0.1;
     }
 
     @HostBinding('class._old-edge')
