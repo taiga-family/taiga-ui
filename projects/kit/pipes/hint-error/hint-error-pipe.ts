@@ -1,8 +1,7 @@
 import {AsyncPipe} from '@angular/common';
 import {Inject, INJECTOR, Injector, OnDestroy, Pipe, PipeTransform} from '@angular/core';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit/pipes/field-error';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-import {TuiFieldErrorPipe} from '../field-error';
 
 // @dynamic
 @Pipe({
