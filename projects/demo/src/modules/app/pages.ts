@@ -1177,6 +1177,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: 'HintError',
+                keywords: 'error, hint, ошибка, преобразование, пайп, pipe',
+                route: '/pipes/hint-error',
+            },
+            {
+                section: $localize`Tools`,
                 title: 'Stringify',
                 keywords: 'string, tostring, мап, преобразование, пайп, pipe',
                 route: '/pipes/stringify',

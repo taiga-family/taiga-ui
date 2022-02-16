@@ -325,10 +325,20 @@ export const ROUTES = [
         path: 'pipes/field-error',
         loadChildren: () =>
             import(`../pipes/field-error/field-error.module`).then(
-                m => m.ExampleTuiFilterByInputModule,
+                m => m.ExampleTuiFieldErrorModule,
             ),
         data: {
             title: 'FieldError',
+        },
+    },
+    {
+        path: 'pipes/hint-error',
+        loadChildren: () =>
+            import(`../pipes/hint-error/hint-error.module`).then(
+                m => m.ExampleTuiHintErrorModule,
+            ),
+        data: {
+            title: 'HintError',
         },
     },
     {
