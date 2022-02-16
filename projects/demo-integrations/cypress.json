@@ -8,6 +8,6 @@
     "fixturesFolder": "cypress/fixtures",
     "baseUrl": "http://localhost:3333",
     "testFiles": "**/*.spec.ts",
-    "viewportWidth": 1500,
-    "viewportHeight": 3200
+    "viewportWidth": 1440,
+    "viewportHeight": 1920
 }
