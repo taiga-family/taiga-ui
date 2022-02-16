@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[572],{Pdsk:function(i,n,d){"use strict";d.r(n),n.default='<input tuiSlider disabled value="80" />\n'}}]);
