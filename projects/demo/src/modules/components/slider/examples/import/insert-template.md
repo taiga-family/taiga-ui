@@ -1,3 +1,3 @@
 ```html
-<input tuiSlider [formControl]="control" />
+<input tuiSlider type="range" [formControl]="control" />
 ```

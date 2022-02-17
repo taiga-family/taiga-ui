@@ -18,11 +18,16 @@ import {
 import {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    selector: 'input[tuiSlider]',
+    /**
+     * We have to call our component as `<input tuiSlider type="range" ... />`
+     * because otherwise built-in angular
+     * {@link https://github.com/angular/angular/blob/master/packages/forms/src/directives/range_value_accessor.ts#L45 RangeValueAccessor}
+     * cannot be matched by its CSS selector.
+     */
+    selector: 'input[type=range][tuiSlider]',
     template: ``,
     styleUrls: ['./slider.style.less'],
     host: {
-        type: 'range',
         /**
          * For change detection.
          * Webkit does not have built-in method for customization of filling progress (as Firefox).
