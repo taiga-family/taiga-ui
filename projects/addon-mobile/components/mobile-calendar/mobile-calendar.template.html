@@ -48,7 +48,7 @@
         <button
             *cdkVirtualFor="let index of years"
             class="t-year"
-            [attr.data-tui-element-state]="getState(index)"
+            [attr.data-state]="getState(index)"
             (click)="setYear(index)"
         >
             {{ index }}

@@ -127,7 +127,9 @@ describe('PrimitiveCalendar', () => {
             it('can be checked due itemIsDisabled', () => {
                 const disabledDay = new TuiDay(2010, 4, 20);
 
-                expect(component.itemIsDisabled(disabledDay)).toBe(true);
+                expect(component.getItemState(disabledDay)).toBe(
+                    TuiInteractiveState.Disabled,
+                );
             });
         });
     });
@@ -245,9 +247,7 @@ describe('PrimitiveCalendar', () => {
     }
 
     function getDisabledCalendarItems(): DebugElement[] {
-        return fixture.debugElement.queryAll(
-            By.css('[data-tui-element-state="disabled"]'),
-        );
+        return fixture.debugElement.queryAll(By.css('[data-state="disabled"]'));
     }
 
     afterEach(() => {

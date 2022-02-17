@@ -35,7 +35,7 @@ Cypress.Commands.add('hideNavigation', hideNavigation);
 addMatchImageSnapshotCommand({
     allowSizeMismatch: true, // Windows CI fix
     runInProcess: true, // macOS CI fix
-    failureThreshold: 0.01,
+    failureThreshold: 0.0004,
     failureThresholdType: 'percent',
     comparisonMethod: 'ssim',
     diffDirection: 'vertical',

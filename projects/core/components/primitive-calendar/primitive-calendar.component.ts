@@ -152,12 +152,6 @@ export class TuiPrimitiveCalendarComponent {
             : null;
     }
 
-    itemIsDisabled(day: TuiDay): boolean {
-        const {disabledItemHandler} = this;
-
-        return disabledItemHandler(day);
-    }
-
     itemIsToday(item: TuiDay): boolean {
         return this.today.daySame(item);
     }

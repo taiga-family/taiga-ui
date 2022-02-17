@@ -11,19 +11,11 @@ coverage:
   round: down
   precision: 2
 
+  # Disable codecov/patch check
   status:
     project:
       default:
-        flag_coverage_not_uploaded_behavior: pass
-        if_ci_failed: success
-        if_not_found: success
-
-    # The codecov/patch status only measures lines adjusted in
-    # the pull request or single commit, if the commit is not
-    # in a pull request. This status provides an indication
-    # on how well the pull request is tested.
+        enabled: false
     patch:
       default:
-        flag_coverage_not_uploaded_behavior: pass
-        if_ci_failed: success
-        if_not_found: success
+        enabled: false

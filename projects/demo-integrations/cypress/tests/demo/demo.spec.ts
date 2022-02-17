@@ -15,7 +15,7 @@ describe('Demo', () => {
 
                 return cy
                     .wrap(sample)
-                    .scrollIntoView({offset: {top: 0, left: 0}})
+                    .scrollIntoView({offset: {top: 0, left: 0}, duration: 0})
                     .matchImageSnapshot(`${path}/${index + 1}`);
             });
         });

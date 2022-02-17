@@ -3,22 +3,15 @@ import {
     SLIDER_PAGE_URL,
 } from '../../../support/shared.entities';
 
-const goToApiPage = () => {
-    cy.get('[tuitab]').eq(1).click();
-};
-
 describe('Slider', () => {
     beforeEach(() => {
         cy.viewport('macbook-13');
-        cy.goToDemoPage(SLIDER_PAGE_URL);
+        cy.goToDemoPage(`${SLIDER_PAGE_URL}/API?tuiMode=null&max=89&min=0&step=1&size=s`);
+        cy.hideHeader();
+        cy.hideNavigation();
     });
 
     it('correctly displays values with float percentage progress', () => {
-        goToApiPage();
-        cy.window().then(win =>
-            cy.goToDemoPage(win.location.pathname + '?max=89&min=0&step=1&size=s'),
-        );
-        cy.hideHeader();
         cy.get('input[type="range"]').as('slider');
 
         const makeSnapOnValue = (value: number) => {
