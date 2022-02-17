@@ -1,4 +1,4 @@
-import {Directive, forwardRef} from '@angular/core';
+import {Directive, DoCheck, forwardRef} from '@angular/core';
 import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputPhoneComponent} from './input-phone.component';
@@ -12,7 +12,12 @@ import {TuiInputPhoneComponent} from './input-phone.component';
         },
     ],
 })
-export class TuiInputPhoneDirective extends TuiAbstractTextfieldHost<TuiInputPhoneComponent> {
+export class TuiInputPhoneDirective
+    extends TuiAbstractTextfieldHost<TuiInputPhoneComponent>
+    implements DoCheck
+{
+    input?: HTMLInputElement;
+
     get value(): string {
         return this.host.computedValue;
     }
@@ -22,7 +27,15 @@ export class TuiInputPhoneDirective extends TuiAbstractTextfieldHost<TuiInputPho
     }
 
     process(input: HTMLInputElement) {
-        input.type = 'tel';
-        // TODO inputMode?
+        this.input = input;
+    }
+
+    ngDoCheck() {
+        if (!this.input) {
+            return;
+        }
+
+        this.input.type = 'tel';
+        this.input.inputMode = this.host.inputMode;
     }
 }

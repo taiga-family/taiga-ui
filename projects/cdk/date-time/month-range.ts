@@ -21,6 +21,10 @@ export class TuiMonthRange {
         return this.from.monthSame(this.to);
     }
 
+    /**
+     * @deprecated
+     * TODO remove in 3.0
+     */
     get formattedMonthRange(): string {
         return `${this.from.formattedMonth}${RANGE_SEPARATOR_CHAR}${this.to.formattedMonth}`;
     }

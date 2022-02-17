@@ -1,4 +1,4 @@
-import {Directive, forwardRef} from '@angular/core';
+import {Directive, DoCheck, forwardRef} from '@angular/core';
 import {TUI_TEXTFIELD_HOST, TuiAbstractTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputNumberComponent} from './input-number.component';
@@ -12,7 +12,12 @@ import {TuiInputNumberComponent} from './input-number.component';
         },
     ],
 })
-export class TuiInputNumberDirective extends TuiAbstractTextfieldHost<TuiInputNumberComponent> {
+export class TuiInputNumberDirective
+    extends TuiAbstractTextfieldHost<TuiInputNumberComponent>
+    implements DoCheck
+{
+    input?: HTMLInputElement;
+
     get value(): string {
         return this.host.computedValue;
     }
@@ -22,7 +27,15 @@ export class TuiInputNumberDirective extends TuiAbstractTextfieldHost<TuiInputNu
     }
 
     process(input: HTMLInputElement) {
-        input.inputMode = 'decimal';
-        // TODO maxLength?
+        this.input = input;
+    }
+
+    ngDoCheck() {
+        if (!this.input) {
+            return;
+        }
+
+        this.input.maxLength = this.host.calculatedMaxLength;
+        this.input.inputMode = 'decimal';
     }
 }

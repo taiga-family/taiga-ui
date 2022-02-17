@@ -7,6 +7,7 @@ import {
     TuiButtonModule,
     TuiHintControllerModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputMonthRangeModule} from '@taiga-ui/kit';
@@ -29,6 +30,7 @@ import {ExampleTuiInputMonthRangeComponent} from './input-month-range.component'
         TuiInputMonthRangeModule,
         TuiTextfieldControllerModule,
         TuiHintControllerModule,
+        TuiNotificationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputMonthRangeComponent)),
     ],
     declarations: [

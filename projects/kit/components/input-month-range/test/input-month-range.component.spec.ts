@@ -8,21 +8,6 @@ import {configureTestSuite} from '@taiga-ui/testing';
 import {TuiInputMonthRangeComponent} from '../input-month-range.component';
 import {TuiInputMonthRangeModule} from '../input-month-range.module';
 
-const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-] as const;
-
 describe('InputMonthRange', () => {
     @Component({
         template: `
@@ -72,7 +57,7 @@ describe('InputMonthRange', () => {
             component.nativeFocusableElement!.focus();
             component.writeValue(testRange);
 
-            expect(component.computeValue(testRange, true, months)).toBe(`May 2020 — `);
+            expect(component.computeValue('May 2020', 'May 2020')).toBe(`May 2020 — `);
         });
 
         it('returns the whole stringified range if there is', () => {
@@ -82,7 +67,7 @@ describe('InputMonthRange', () => {
             component.nativeFocusableElement!.focus();
             component.writeValue(testRange);
 
-            expect(component.computeValue(testRange, true, months)).toBe(
+            expect(component.computeValue('May 2020', 'July 2020')).toBe(
                 `May 2020 — July 2020`,
             );
         });
@@ -93,7 +78,7 @@ describe('InputMonthRange', () => {
 
             component.writeValue(testRange);
 
-            expect(component.computeValue(testRange, false, months)).toBe(
+            expect(component.computeValue('May 2020', 'May 2020')).toBe(
                 `May 2020 — May 2020`,
             );
         });
