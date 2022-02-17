@@ -13,12 +13,13 @@ export class TuiParentsScrollService extends Observable<Event> {
     private readonly callback$: Observable<Event>;
 
     constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
+        @Inject(ElementRef) elementRef: ElementRef<Element>,
         @Inject(WINDOW) windowRef: Window,
     ) {
         super(subscriber => this.callback$.subscribe(subscriber));
 
         this.callback$ = defer(() => {
+            let {nativeElement} = elementRef;
             const eventTargets: Array<Element | Window> = [windowRef, nativeElement];
 
             while (nativeElement.parentElement) {
