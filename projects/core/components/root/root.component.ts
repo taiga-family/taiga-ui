@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -13,6 +14,7 @@ import {
     TUI_ANIMATIONS_DURATION,
     TUI_ASSERT_ENABLED,
     TUI_IS_MOBILE_RES,
+    TUI_THEME,
 } from '@taiga-ui/core/tokens';
 import {merge, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -48,7 +50,10 @@ export class TuiRootComponent {
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_ASSERT_ENABLED) enabled: boolean,
         @Inject(TUI_IS_MOBILE_RES) readonly isMobileRes$: Observable<boolean>,
+        @Inject(DOCUMENT) {body}: Document,
+        @Inject(TUI_THEME) theme: string,
     ) {
         tuiAssert.enabled = enabled;
+        body.setAttribute('data-tui-theme', theme.toLowerCase());
     }
 }
