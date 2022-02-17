@@ -6,7 +6,7 @@ module.exports = (on, config) => {
     on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome') {
             launchOptions.args.push('--disable-dev-shm-usage');
-            launchOptions.args.push('--force-device-scale-factor=2');
+            launchOptions.args.push('--force-device-scale-factor=1');
             launchOptions.args.push('--start-fullscreen');
             launchOptions.args.push('--high-dpi-support=1');
         }
