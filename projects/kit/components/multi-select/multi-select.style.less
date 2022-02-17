@@ -28,6 +28,18 @@
     &_disabled {
         opacity: var(--tui-disabled-opacity);
     }
+
+    :host-context([data-size='s']) & {
+        height: var(--tui-height-s);
+    }
+
+    :host-context([data-size='m']) & {
+        height: var(--tui-height-m);
+    }
+
+    :host-context([data-size='l']) & {
+        height: var(--tui-height-l);
+    }
 }
 
 .t-group {
@@ -56,7 +68,7 @@
     .icon-button();
     width: 1.5rem;
     height: auto;
-    margin: 1rem 0.75rem;
+    margin: 0 0.75rem;
     pointer-events: auto;
     cursor: pointer;
 }
