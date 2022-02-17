@@ -21,7 +21,10 @@
         </p>
         <p i18n>
             <strong>Usage:</strong>
-            <code>&lt;input tuiSlider min="0" max="100" step="1" /&gt;</code>
+            <code>
+                &lt;input tuiSlider type="range" min="0" max="100" step="1"
+                /&gt;
+            </code>
             .
         </p>
 
@@ -67,6 +70,7 @@
             <ng-template>
                 <input
                     tuiSlider
+                    type="range"
                     [max]="max"
                     [min]="min"
                     [step]="step"

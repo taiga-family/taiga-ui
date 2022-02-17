@@ -11,7 +11,7 @@ import {TuiKeySteps} from '../../../types/key-steps';
 import {TuiSliderModule} from '../slider.module';
 import {TuiSliderOldComponent} from '../slider-old.component';
 
-describe('Slider', () => {
+describe('Slider-old', () => {
     @Component({
         template: `
             <tui-slider *ngIf="default" max="10" [formControl]="testValue"></tui-slider>

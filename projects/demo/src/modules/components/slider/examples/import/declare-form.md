@@ -7,6 +7,6 @@ import {FormControl} from '@angular/forms';
   // ...
 })
 export class MyComponent {
-  readonly control = new FormControl('1');
+  readonly control = new FormControl(1);
 }
 ```
