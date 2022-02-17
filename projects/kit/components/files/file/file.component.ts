@@ -18,6 +18,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
+type FileTexts = 'loadingError' | 'preview' | 'remove';
+
 // @dynamic
 @Component({
     selector: 'tui-file',
@@ -59,9 +61,7 @@ export class TuiFileComponent {
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(TUI_FILE_TEXTS)
-        readonly fileTexts$: Observable<
-            Record<'loadingError' | 'preview' | 'remove', string>
-        >,
+        readonly fileTexts$: Observable<Record<FileTexts, string>>,
         @Inject(TUI_DIGITAL_INFORMATION_UNITS)
         private readonly units$: Observable<[string, string, string]>,
     ) {}

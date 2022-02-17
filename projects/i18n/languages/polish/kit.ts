@@ -5,6 +5,8 @@ export const TUI_POLISH_LANGUAGE_KIT: LanguageKit = {
     done: 'Gotowe',
     more: 'Więcej',
     otherDate: 'Inna data...',
+    showAll: 'Show all',
+    hide: 'Hide',
     mobileCalendarTexts: ['Wybierz dzień', 'Wybierz zakres'],
     range: ['od', 'do'],
     countTexts: ['Plus', 'Minus'],
