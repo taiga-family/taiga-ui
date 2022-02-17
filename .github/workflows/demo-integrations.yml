@@ -90,12 +90,13 @@ jobs:
           exit 1
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         if: failure()
         with:
           name: cypress-screenshots
           path: ${{ env.SNAPSHOTS_PATH }}
-          retention-days: 7
+          if-no-files-found: ignore
+          retention-days: 5
 
 concurrency:
   group: demo-integrations-${{ github.head_ref }}
