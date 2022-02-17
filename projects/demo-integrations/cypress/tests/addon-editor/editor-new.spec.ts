@@ -4,7 +4,7 @@ import {WAIT_BEFORE_SCREENSHOT} from './utils';
 describe('Editor', () => {
     describe('Dark mode', () => {
         beforeEach(() => {
-            cy.goToDemoPage(EDITOR_PAGE_URL, {waitAllIcons: true, enableNightMode: true});
+            cy.goToDemoPage(EDITOR_PAGE_URL, {enableNightMode: true});
             cy.hideHeader();
         });
 

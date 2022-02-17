@@ -28,6 +28,7 @@ import {rawLoadRecord} from '../../utils/raw-load-record';
     selector: 'tui-doc-example',
     templateUrl: './example.template.html',
     styleUrls: ['./example.style.less'],
+    host: {'[class._cypress-mode]': 'isCypress'},
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocExampleComponent {

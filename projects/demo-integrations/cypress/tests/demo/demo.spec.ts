@@ -1,11 +1,11 @@
 import {DEMO_PATHS} from '../../support/demo-paths';
 import {excluded} from '../../support/exclusions';
-import {EXAMPLE_ID} from '../../support/shared.entities';
+import {DEFAULT_TIMEOUT_BEFORE_ACTION, EXAMPLE_ID} from '../../support/shared.entities';
 
 describe('Demo', () => {
     DEMO_PATHS.forEach(path => {
         it(`${path}`, () => {
-            cy.goToDemoPage(path, {waitAllIcons: true});
+            cy.goToDemoPage(path);
             cy.hideHeader();
 
             cy.getByAutomationId(EXAMPLE_ID).each((sample, index) => {
@@ -15,7 +15,8 @@ describe('Demo', () => {
 
                 return cy
                     .wrap(sample)
-                    .scrollIntoView({offset: {top: 0, left: 0}, duration: 0})
+                    .scrollIntoView()
+                    .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
                     .matchImageSnapshot(`${path}/${index + 1}`);
             });
         });

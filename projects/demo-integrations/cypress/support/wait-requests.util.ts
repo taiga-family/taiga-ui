@@ -1,4 +1,4 @@
-import {DEFAULT_TIMEOUT_BEFORE_ACTION} from './shared.entities';
+import {DEFAULT_TIMEOUT_BEFORE_ACTION as RETRY} from './shared.entities';
 
 const getNotLoadedRequests = (alias: string) =>
     cy
@@ -7,15 +7,13 @@ const getNotLoadedRequests = (alias: string) =>
 
 export const waitAllRequests = (alias: string) => {
     getNotLoadedRequests(alias)
-        .then(reqs => {
-            return reqs.length ? cy.wait(alias) : cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
-        })
+        .then(reqs => (reqs.length ? cy.wait(alias) : cy.wait(RETRY)))
         .then(() => getNotLoadedRequests(alias))
         .then(reqs => {
             return reqs.length
                 ? waitAllRequests(alias)
                 : cy
-                      .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+                      .wait(RETRY)
                       .then(() => getNotLoadedRequests(alias))
                       .then(reqs =>
                           reqs.length ? waitAllRequests(alias) : Promise.resolve(),
