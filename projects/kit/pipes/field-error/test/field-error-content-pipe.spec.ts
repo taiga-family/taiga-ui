@@ -10,11 +10,11 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHintModule, TuiRootModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit/components';
-import {TuiHintErrorPipeModule} from '@taiga-ui/kit/pipes';
+import {TuiFieldErrorPipeModule} from '@taiga-ui/kit/pipes';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-describe('TuiHintErrorPipe', () => {
+describe('TuiFieldErrorContentPipe', () => {
     const testError = 'testError';
 
     @Component({
@@ -24,7 +24,7 @@ describe('TuiHintErrorPipe', () => {
                     id="hint-host"
                     tuiHintDirection="top"
                     class="host"
-                    [tuiHint]="[] | tuiHintError"
+                    [tuiHint]="[] | tuiFieldErrorContent"
                     [formControl]="control"
                 >
                     Tooltip host
@@ -58,7 +58,7 @@ describe('TuiHintErrorPipe', () => {
                 TuiRootModule,
                 ReactiveFormsModule,
                 TuiInputModule,
-                TuiHintErrorPipeModule,
+                TuiFieldErrorPipeModule,
             ],
             declarations: [TestComponent],
         });

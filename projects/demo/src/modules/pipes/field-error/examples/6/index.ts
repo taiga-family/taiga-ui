@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-hint-error-pipe-example-1',
+    selector: 'tui-field-error-content-pipe-example-6',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
@@ -20,7 +20,7 @@ import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
         },
     ],
 })
-export class TuiHintErrorPipeExample1 {
+export class TuiFieldErrorContentPipeExample6 {
     readonly data = [{name: 'Latte'}, {name: 'Cappuccino'}] as const;
 
     latteControl = new FormControl(null, [Validators.required, Validators.max(6)]);

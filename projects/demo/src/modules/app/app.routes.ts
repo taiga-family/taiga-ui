@@ -332,16 +332,6 @@ export const ROUTES = [
         },
     },
     {
-        path: 'pipes/hint-error',
-        loadChildren: () =>
-            import(`../pipes/hint-error/hint-error.module`).then(
-                m => m.ExampleTuiHintErrorModule,
-            ),
-        data: {
-            title: 'HintError',
-        },
-    },
-    {
         path: 'components/group',
         loadChildren: () =>
             import(`../components/group/group.module`).then(m => m.ExampleTuiGroupModule),

@@ -1172,14 +1172,8 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: 'FieldError',
-                keywords: 'error, field, ошибка, преобразование, пайп, pipe',
+                keywords: 'error, field, hint, ошибка, преобразование, пайп, pipe',
                 route: '/pipes/field-error',
-            },
-            {
-                section: $localize`Tools`,
-                title: 'HintError',
-                keywords: 'error, hint, ошибка, преобразование, пайп, pipe',
-                route: '/pipes/hint-error',
             },
             {
                 section: $localize`Tools`,
