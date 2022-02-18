@@ -210,7 +210,7 @@ export class TuiInputRangeComponent
     }
 
     changeByStep(
-        event: KeyboardEvent,
+        event: Event | KeyboardEvent,
         [leftCoefficient, rightCoefficient]: [number, number],
     ) {
         if (this.readOnly) {

@@ -19,6 +19,7 @@ import {
     px,
     setNativeFocused,
     TuiActiveZoneDirective,
+    tuiAssertIsHTMLElement,
     TuiDestroyService,
     TuiDropdownHostComponent,
     TuiOverscrollModeT,
@@ -363,7 +364,9 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         const {ownerDocument} = host;
         const root = ownerDocument ? ownerDocument.body : host;
 
-        let focusable = getClosestFocusable(host as HTMLElement, previous, root);
+        tuiAssertIsHTMLElement(host);
+
+        let focusable = getClosestFocusable(host, previous, root);
 
         while (focusable !== null && host.contains(focusable)) {
             focusable = getClosestFocusable(focusable, previous, root);

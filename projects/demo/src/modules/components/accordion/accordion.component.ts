@@ -65,7 +65,7 @@ export class ExampleTuiAccordionComponent {
 
     readonly bordersVariants = ['all', 'top-bottom'] as const;
 
-    borders = this.bordersVariants[0];
+    borders: 'all' | 'top-bottom' = this.bordersVariants[0];
 
     readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
 

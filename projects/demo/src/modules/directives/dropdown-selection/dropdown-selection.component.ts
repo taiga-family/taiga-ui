@@ -7,6 +7,7 @@ import {
     TuiHorizontalDirection,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
+import {TuiDropdownPositionT} from '@taiga-ui/kit';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
 import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
@@ -39,11 +40,11 @@ export class ExampleTuiDropdownSelectionComponent {
         LESS: example2Less,
     };
 
-    positionVariants = ['selection', 'word', 'tag'];
+    positionVariants: TuiDropdownPositionT[] = ['selection', 'word', 'tag'];
 
     open = false;
 
-    position: 'selection' | 'word' | 'tag' = 'selection';
+    position = this.positionVariants[0];
 
     tuiDropdownMinHeight = DEFAULT_MIN_HEIGHT;
 
@@ -68,6 +69,5 @@ export class ExampleTuiDropdownSelectionComponent {
         'auto',
     ];
 
-    tuiDropdownLimitWidth: TuiDropdownWidthT | null =
-        this.tuiDropdownLimitWidthVariants[0];
+    tuiDropdownLimitWidth: TuiDropdownWidthT = this.tuiDropdownLimitWidthVariants[0];
 }

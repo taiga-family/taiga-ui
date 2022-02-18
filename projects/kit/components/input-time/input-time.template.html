@@ -10,7 +10,7 @@
         tuiValueAccessor
         tuiTextfieldInputMode="numeric"
         class="textfield"
-        [filler]="getFiller$(mode) | async"
+        [filler]="(getFiller$(mode) | async) || ''"
         [nativeId]="nativeId"
         [pseudoFocused]="innerPseudoFocused"
         [pseudoHovered]="pseudoHovered"

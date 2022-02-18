@@ -111,11 +111,11 @@ export class ExampleTuiCalendarComponent {
         new TuiDay(2020, 3, 21),
     ];
 
-    value = null;
+    value: TuiDay | TuiDayRange | null = null;
 
     month = TuiMonth.currentLocal();
 
-    hoveredItem = null;
+    hoveredItem: TuiDay | null = null;
 
     constructor(
         @Inject(TuiNotificationsService)

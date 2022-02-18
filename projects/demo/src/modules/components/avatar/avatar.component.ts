@@ -40,7 +40,7 @@ export class ExampleTuiAvatarComponent {
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',
     ];
 
-    avatarUrl = null;
+    avatarUrl: string | null = null;
 
     text = 'daenerys targaryen';
 

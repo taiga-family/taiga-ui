@@ -50,7 +50,7 @@
                 tuiButton
                 appearance="flat"
                 size="s"
-                [showLoader]="(loading$ | async) || false"
+                [showLoader]="!!(loading$ | async)"
                 (click)="edit(files)"
             >
                 Edit on {{codeEditor.name}}

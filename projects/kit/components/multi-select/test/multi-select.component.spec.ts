@@ -2,20 +2,20 @@ import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {tuiAssertIsHTMLElement} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
     TuiHintControllerModule,
     TuiRootModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiMultiSelectModule} from '@taiga-ui/kit';
 import {
     TUI_ARROW_MODE,
     TuiDataListWrapperModule,
     TuiMultiSelectComponent,
 } from '@taiga-ui/kit/components';
 import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
-
-import {TuiMultiSelectModule} from '../multi-select.module';
 
 describe('MultiSelect', () => {
     describe('Basic', () => {
@@ -202,7 +202,8 @@ describe('MultiSelect', () => {
             it('Click to remove the selected item', () => {
                 inputPO.sendKeydown('ArrowDown');
                 inputPO.sendKeydown('ArrowDown');
-                (document.activeElement as HTMLElement).click();
+                tuiAssertIsHTMLElement(document.activeElement);
+                document.activeElement.click();
 
                 expect(testComponent.control.value).toEqual([]);
             });
@@ -210,8 +211,9 @@ describe('MultiSelect', () => {
             it('Click to select an unselected item', () => {
                 inputPO.sendKeydown('ArrowDown');
                 inputPO.sendKeydown('ArrowDown');
-                (document.activeElement as HTMLElement).click();
-                (document.activeElement as HTMLElement).click();
+                tuiAssertIsHTMLElement(document.activeElement);
+                document.activeElement.click();
+                document.activeElement.click();
 
                 expect(testComponent.control.value).toEqual([ITEMS[0]]);
             });

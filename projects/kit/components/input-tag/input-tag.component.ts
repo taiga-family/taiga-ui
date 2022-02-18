@@ -350,7 +350,7 @@ export class TuiInputTagComponent
         this.focusInput();
     }
 
-    onFieldKeyDownBackspace(event: KeyboardEvent) {
+    onFieldKeyDownBackspace(event: Event) {
         if (!this.labelOutside && !this.hasNativeValue && this.value.length) {
             this.deleteLastEnabledItem();
         } else {
@@ -358,7 +358,7 @@ export class TuiInputTagComponent
         }
     }
 
-    onFieldKeyDownArrowLeft(event: KeyboardEvent) {
+    onFieldKeyDownArrowLeft(event: Event) {
         if (!this.labelOutside || this.hasNativeValue || !this.value.length) {
             return;
         }

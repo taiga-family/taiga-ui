@@ -15,6 +15,7 @@ import {
     quantize,
     round,
     setNativeFocused,
+    tuiAssertIsHTMLElement,
     tuiDefaultProp,
     TuiEventWith,
     TuiNativeFocusableElement,
@@ -158,9 +159,9 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$
             .pipe(
                 map((event: MouseEvent | TouchEvent) => {
-                    const rect = (
-                        event.currentTarget as HTMLElement
-                    ).getBoundingClientRect();
+                    tuiAssertIsHTMLElement(event.currentTarget);
+
+                    const rect = event.currentTarget.getBoundingClientRect();
                     const clientX =
                         event instanceof MouseEvent
                             ? event.clientX
@@ -225,22 +226,22 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$.complete();
     }
 
-    onMouseDown(event: TuiEventWith<MouseEvent, HTMLElement>) {
+    onMouseDown(event: MouseEvent) {
         if (this.disabled) {
             return;
         }
 
         event.preventDefault();
-        this.pointerDown$.next(event);
+        this.pointerDown$.next(event as TuiEventWith<MouseEvent, HTMLElement>);
     }
 
-    onTouchStart(event: TuiEventWith<TouchEvent, HTMLElement>) {
+    onTouchStart(event: TouchEvent) {
         if (this.disabled) {
             return;
         }
 
         event.preventDefault();
-        this.pointerDown$.next(event);
+        this.pointerDown$.next(event as TuiEventWith<TouchEvent, HTMLElement>);
     }
 
     getSegmentLabel(segment: number): number {

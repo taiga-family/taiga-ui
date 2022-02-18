@@ -56,7 +56,7 @@ export class ExampleTuiCardComponent {
         LESS: example3Less,
     };
 
-    paymentSystemVariants = [
+    paymentSystemVariants: readonly TuiPaymentSystem[] = [
         TuiPaymentSystem.Visa,
         TuiPaymentSystem.Maestro,
         TuiPaymentSystem.Mastercard,
@@ -70,6 +70,6 @@ export class ExampleTuiCardComponent {
     active = false;
     brandLogo = this.brandLogoVariants[0];
     cardNumber = '9999';
-    paymentSystem = null;
+    paymentSystem: TuiPaymentSystem | null = null;
     size: TuiSizeS = 'm';
 }

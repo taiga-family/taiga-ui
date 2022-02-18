@@ -5,7 +5,7 @@
     class="tui-space_all-2"
     [tuiTextfieldLabelOutside]="true"
     [(value)]="value"
-    (keydown.arrowDown.prevent)="onArrowDown(list, $event.target)"
+    (keydown.arrowDown.prevent)="onArrowDown(list, $event)"
 >
     Search categories
 </tui-primitive-textfield>

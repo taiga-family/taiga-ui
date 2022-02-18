@@ -13,7 +13,7 @@
         <input
             tuiTextfield
             placeholder="Type a name"
-            (input)="onSearchChange($event.target.value)"
+            (input)="onSearchChange(extractValueFromEvent($event))"
         />
         <tui-data-list-wrapper
             *tuiDataList
@@ -31,7 +31,7 @@
         <input
             tuiTextfield
             placeholder="Type a name"
-            (input)="onSearchChange($event.target.value)"
+            (input)="onSearchChange(extractValueFromEvent($event))"
         />
         <tui-data-list-wrapper
             *tuiDataList
@@ -47,7 +47,7 @@
         <input
             tuiTextfield
             placeholder="Type a name"
-            (input)="onSearchChange($event.target.value)"
+            (input)="onSearchChange(extractValueFromEvent($event))"
         />
         <tui-data-list-wrapper
             *tuiDataList

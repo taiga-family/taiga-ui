@@ -15,7 +15,7 @@
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
-        [value]="value | tuiMapper : formatter | async"
+        [value]="(value | tuiMapper : formatter | async) || ''"
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
         (focusedChange)="onFocused($event)"

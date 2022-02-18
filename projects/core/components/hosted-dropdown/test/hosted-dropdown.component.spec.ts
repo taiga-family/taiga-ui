@@ -1,6 +1,7 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {tuiAssertIsHTMLElement} from '@taiga-ui/cdk';
 import {configureTestSuite, dispatchOnActive, PageObject} from '@taiga-ui/testing';
 
 import {TuiTextfieldControllerModule} from '../../../directives';
@@ -132,7 +133,12 @@ describe('TuiHostedDropdown', () => {
         testComponent = fixture.componentInstance;
         pageObject = new PageObject(fixture);
         fixture.detectChanges();
-        nativeButton = document.querySelector('#native-button') as HTMLElement;
+
+        const element = document.querySelector('#native-button');
+
+        tuiAssertIsHTMLElement(element);
+
+        nativeButton = element;
     });
 
     describe('Buttons', () => {
@@ -144,7 +150,11 @@ describe('TuiHostedDropdown', () => {
         });
 
         it('Clicking on another button does not open the dropdown', () => {
-            (testComponent.tuiButton.nativeFocusableElement as HTMLElement).click();
+            const element = testComponent.tuiButton.nativeFocusableElement;
+
+            tuiAssertIsHTMLElement(element);
+
+            element.click();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(0);
@@ -226,7 +236,11 @@ describe('TuiHostedDropdown', () => {
         });
 
         it('Clicking on the host does not open the dropdown', () => {
-            (testComponent.tuiTextfield.nativeFocusableElement as HTMLElement).click();
+            const element = testComponent.tuiTextfield.nativeFocusableElement;
+
+            tuiAssertIsHTMLElement(element);
+
+            element.click();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(0);
@@ -276,14 +290,22 @@ describe('TuiHostedDropdown', () => {
         });
 
         it('Clicking on the first focused element does not open the dropdown', () => {
-            (testComponent.tuiButton.nativeFocusableElement as HTMLElement).click();
+            const element = testComponent.tuiButton.nativeFocusableElement;
+
+            tuiAssertIsHTMLElement(element);
+
+            element.click();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(0);
         });
 
         it('An element with tuiHostedDropdownHost is used as a host, clicking on it opens a dropdown', () => {
-            (testComponent.target.nativeFocusableElement as HTMLElement).click();
+            const element = testComponent.target.nativeFocusableElement;
+
+            tuiAssertIsHTMLElement(element);
+
+            element.click();
             fixture.detectChanges();
 
             expect(getItems().length).toBe(2);

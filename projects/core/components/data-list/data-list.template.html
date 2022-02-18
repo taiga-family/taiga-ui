@@ -1,7 +1,7 @@
 <div
     tabindex="0"
     class="trap"
-    (focusin)="onFocus($event.target, true)"
+    (focusin)="onFocus($event, true)"
 ></div>
 <ng-content></ng-content>
 <div
@@ -13,5 +13,5 @@
 <div
     tabindex="0"
     class="trap"
-    (focusin)="onFocus($event.target, false)"
+    (focusin)="onFocus($event, false)"
 ></div>

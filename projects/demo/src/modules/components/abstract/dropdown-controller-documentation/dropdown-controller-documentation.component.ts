@@ -12,7 +12,7 @@ export interface ExampleTuiDropdown {
     dropdownDirectionVariants: readonly TuiVerticalDirection[];
     dropdownDirection: TuiVerticalDirection | null;
     dropdownLimitWidthVariants: readonly TuiDropdownWidthT[];
-    dropdownLimitWidth: TuiDropdownWidthT | null;
+    dropdownLimitWidth: TuiDropdownWidthT;
     dropdownAlignVariants: readonly TuiHorizontalDirection[];
     dropdownAlign: TuiHorizontalDirection;
     dropdownMinHeight: number;

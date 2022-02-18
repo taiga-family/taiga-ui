@@ -50,7 +50,7 @@ export class TuiRadioComponent<T>
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()
-    item?: T;
+    item?: T | null;
 
     @Input()
     @tuiDefaultProp()
@@ -112,11 +112,13 @@ export class TuiRadioComponent<T>
     get checked(): boolean {
         return this.value === null
             ? this.item === null
-            : this.item !== undefined && this.identityMatcher(this.value, this.item);
+            : this.item !== undefined &&
+                  this.item !== null &&
+                  this.identityMatcher(this.value, this.item);
     }
 
-    get computedName(): string | null {
-        return this.name || this.radioGroupName || this.controlName || null;
+    get computedName(): string {
+        return this.name || this.radioGroupName || this.controlName || '';
     }
 
     get isFocusable(): boolean {

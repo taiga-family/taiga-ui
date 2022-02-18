@@ -46,7 +46,7 @@ export class TuiDropdownSelectionExample2 {
     predicate: TuiBooleanHandler<Range> = range =>
         getWordRange(range).toString().startsWith('@');
 
-    onArrow(event: KeyboardEvent, which: 'first' | 'last') {
+    onArrow(event: Event, which: 'first' | 'last') {
         const item = this.options[which];
 
         if (!item) {

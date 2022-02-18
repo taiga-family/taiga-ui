@@ -14,7 +14,7 @@ import {RequestService} from './request.service';
     changeDetection,
 })
 export class TuiComboBoxExample2 {
-    search = '';
+    search: string | null = '';
 
     readonly control = new FormControl(databaseMockData[0]);
 

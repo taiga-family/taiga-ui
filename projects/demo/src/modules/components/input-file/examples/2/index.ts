@@ -81,7 +81,7 @@ export class TuiInputFileExample2 {
         share(),
     );
 
-    readonly loading$ = this.files$.pipe(
+    readonly loading$: Observable<readonly TuiFileLike[]> = this.files$.pipe(
         // We filter out RejectedFiles to remove errors from loading array
         map(files => files.filter(isFile)),
         switchMap(loading =>
@@ -95,7 +95,7 @@ export class TuiInputFileExample2 {
     );
 
     // We start with internal changes (i.e. wrong format or size found or user removed existing error message)
-    readonly rejected$ = this.rejectedFiles$.pipe(
+    readonly rejected$: Observable<readonly TuiFileLike[]> = this.rejectedFiles$.pipe(
         switchMap(rejectedFiles =>
             this.files$.pipe(
                 // We filter out Files to ignore loading files

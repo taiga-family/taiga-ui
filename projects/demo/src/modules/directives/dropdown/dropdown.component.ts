@@ -67,8 +67,7 @@ export class ExampleTuiDropdownComponent {
         'auto',
     ];
 
-    tuiDropdownLimitWidth: TuiDropdownWidthT | null =
-        this.tuiDropdownLimitWidthVariants[0];
+    tuiDropdownLimitWidth: TuiDropdownWidthT = this.tuiDropdownLimitWidthVariants[0];
 
     open = false;
 

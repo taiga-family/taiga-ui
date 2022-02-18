@@ -114,7 +114,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         'country-name',
     ];
 
-    autocomplete: TuiAutofillFieldName | null = null;
+    autocomplete: TuiAutofillFieldName | '' = '';
 
     readonly inputModeVariants: readonly TuiInputModeT[] = ['text', 'numeric'];
 

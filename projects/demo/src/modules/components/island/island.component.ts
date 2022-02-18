@@ -48,7 +48,7 @@ export class ExampleTuiIslandComponent {
 
     readonly textAlignVariants = ['left', 'right', 'center'] as const;
 
-    textAlign = this.textAlignVariants[0];
+    textAlign: 'left' | 'right' | 'center' = this.textAlignVariants[0];
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = ['s', 'm', 'l'];
 

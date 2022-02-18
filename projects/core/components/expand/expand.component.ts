@@ -44,7 +44,7 @@ export class TuiExpandComponent {
 
     @Input('expanded')
     @tuiRequiredSetter()
-    set expandedSetter(expanded: boolean) {
+    set expandedSetter(expanded: boolean | null) {
         if (this.expanded === null) {
             this.expanded = expanded;
 
@@ -63,7 +63,7 @@ export class TuiExpandComponent {
     }
 
     @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
-    content?: TemplateRef<NgIfContext<boolean>>;
+    content: TemplateRef<NgIfContext<boolean>> | null = null;
 
     @HostBinding('class._expanded')
     @HostBinding('attr.aria-expanded')

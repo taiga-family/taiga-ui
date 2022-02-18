@@ -232,7 +232,7 @@ export class TuiMultiSelectComponent<T>
         this.updateHovered(hovered);
     }
 
-    onSpace(event: KeyboardEvent) {
+    onSpace(event: Event) {
         if (!this.editable) {
             event.preventDefault();
         }
@@ -252,7 +252,7 @@ export class TuiMultiSelectComponent<T>
         this.updateSearch(null);
     }
 
-    onEnter(event: KeyboardEvent) {
+    onEnter(event: Event) {
         const {value} = this;
         const options = this.accessor ? this.accessor.getOptions() : [];
 

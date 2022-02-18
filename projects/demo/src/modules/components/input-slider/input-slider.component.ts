@@ -2,7 +2,7 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContextWithImplicit, TuiTransactionAutofillName} from '@taiga-ui/cdk';
+import {TuiAutofillFieldName, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiPluralize, TuiSizeL} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
@@ -90,13 +90,13 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
         },
     ];
 
-    pluralize = null;
+    pluralize: Record<string, string> | TuiPluralize | null = null;
 
-    segmentsPluralize = null;
+    segmentsPluralize: Record<string, string> | TuiPluralize | null = null;
 
     readonly secondaryVariants: readonly string[] = ['getter of percent', 'Something'];
 
-    secondarySelected = null;
+    secondarySelected: string | null = null;
 
     readonly valueContentVariants = [
         '',
@@ -120,10 +120,10 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     readonly keyStepsVariants: readonly TuiKeySteps[] = [[[50, 1000]]];
 
-    keySteps = null;
+    keySteps: TuiKeySteps | null = null;
 
-    readonly autocompleteVariants = ['off', 'transaction-amount'];
-    autocomplete: TuiTransactionAutofillName | null = null;
+    readonly autocompleteVariants: TuiAutofillFieldName[] = ['off', 'transaction-amount'];
+    autocomplete: TuiAutofillFieldName | '' = '';
 
     readonly customContentVariants: string[] = [
         'tuiIconVisaMono',
@@ -132,9 +132,9 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     customContentSelected = null;
 
-    get secondary(): string | null {
+    get secondary(): string {
         return this.secondarySelected === this.secondaryVariants[0]
             ? `${Math.round((this.control.value / this.max) * 100)}%`
-            : this.secondarySelected;
+            : this.secondarySelected || '';
     }
 }

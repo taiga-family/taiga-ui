@@ -81,7 +81,7 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
 
     readonly shapeVariants = ['square', 'rounded'] as const;
 
-    shape = null;
+    shape: 'square' | 'rounded' | null = null;
 
     icon: PolymorpheusContent = '';
 

@@ -21,6 +21,7 @@ import {
     setNativeFocused,
     toInt,
     TuiActiveZoneDirective,
+    tuiAssertIsHTMLElement,
     TuiContextWithImplicit,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
@@ -136,8 +137,10 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         this.updateActiveItemIndex(index);
     }
 
-    onArrowRight(element: HTMLElement) {
-        if (isNativeFocused(element)) {
+    onArrowRight(event: Event) {
+        tuiAssertIsHTMLElement(event.target);
+
+        if (isNativeFocused(event.target)) {
             this.focusMore();
         }
     }
@@ -157,7 +160,8 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
     }
 
-    onWrapperArrow(button: HTMLButtonElement, wrapper: HTMLElement, prev: boolean) {
+    onWrapperArrow(event: Event, wrapper: HTMLElement, prev: boolean) {
+        const button: HTMLButtonElement = event.target as HTMLButtonElement;
         const target = getClosestFocusable(button, prev, wrapper);
 
         if (target) {

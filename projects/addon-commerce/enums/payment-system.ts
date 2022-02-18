@@ -5,3 +5,5 @@ export const enum TuiPaymentSystem {
     Maestro = 'maestro',
     Mir = 'mir',
 }
+
+export type TuiPaymentSystemT = 'visa' | 'electron' | 'mastercard' | 'maestro' | 'mir';

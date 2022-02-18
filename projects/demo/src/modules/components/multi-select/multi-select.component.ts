@@ -117,9 +117,9 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = ['fixed', 'min'];
 
-    dropdownLimitWidth: TuiDropdownWidthT | null = this.dropdownLimitWidthVariants[0];
+    dropdownLimitWidth: TuiDropdownWidthT = this.dropdownLimitWidthVariants[0];
 
-    search = '';
+    search: string | null = '';
 
     readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 

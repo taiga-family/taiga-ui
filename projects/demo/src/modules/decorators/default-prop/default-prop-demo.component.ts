@@ -14,5 +14,5 @@ export class ExampleTuiDefaultPropDemoComponent {
         quantity => Number.isInteger(quantity) && quantity >= 5,
         'Should be integer number more than min value',
     )
-    quantity = 10;
+    quantity: number | undefined = 10;
 }

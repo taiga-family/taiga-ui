@@ -33,9 +33,9 @@
                     required
                     tuiTextfieldExampleText="dd.mm.yyyy"
                     [(ngModel)]="date"
-                    (mousedown.capture.stop)="stop()"
-                    (click.capture.stop)="stop()"
-                    (keydown.capture)="stop($event)"
+                    (mousedown.capture.stop)="0"
+                    (click.capture.stop)="0"
+                    (keydown.capture.stop)="0"
                 >
                     Choose date
                 </tui-input-date>

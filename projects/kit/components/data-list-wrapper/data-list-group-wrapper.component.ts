@@ -1,8 +1,15 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {TUI_DATA_LIST_ACCESSOR, TuiDataListAccessor} from '@taiga-ui/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    forwardRef,
+    Inject,
+    Input,
+} from '@angular/core';
+import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
+import {TUI_DATA_LIST_ACCESSOR} from '@taiga-ui/core/tokens';
+import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 
-import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
+import {AbstractDataListWrapper} from './data-list-wrapper';
 
 @Component({
     selector: 'tui-data-list-wrapper[labels]',
@@ -16,15 +23,16 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
         },
     ],
 })
-export class TuiDataListGroupWrapperComponent<T>
-    extends TuiDataListWrapperComponent<T>
-    implements TuiDataListAccessor<T>
-{
+export class TuiDataListGroupWrapperComponent<T> extends AbstractDataListWrapper<T> {
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<readonly T[]> | null = [];
+    items: readonly T[][] | null = [];
 
     @Input()
     @tuiDefaultProp()
     labels: readonly string[] = [];
+
+    constructor(@Inject(TUI_ITEMS_HANDLERS) itemsHandlers: TuiItemsHandlers<T>) {
+        super(itemsHandlers);
+    }
 }

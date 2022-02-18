@@ -19,7 +19,6 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_CLEANER,
@@ -116,14 +115,6 @@ export class TuiSelectComponent<T>
 
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
         return this.valueContent || this.computedValue;
-    }
-
-    @tuiPure
-    computeContext(
-        $implicit: T | null,
-        active: boolean,
-    ): TuiValueContentContext<T | null> {
-        return {$implicit, active};
     }
 
     onValueChange(value: string) {

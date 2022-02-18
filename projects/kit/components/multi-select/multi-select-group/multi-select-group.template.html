@@ -3,7 +3,7 @@
         *ngIf="label && !(empty$ | async)"
         tuiOption
         [size]="size"
-        [disabled]="disabled$ | async"
+        [disabled]="!!(disabled$ | async)"
         (click)="onClick(value)"
     >
         <tui-primitive-checkbox

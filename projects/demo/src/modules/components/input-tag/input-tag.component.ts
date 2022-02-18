@@ -82,7 +82,7 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     readonly iconVariants: readonly string[] = ['tuiIconSearchLarge'];
 
-    icon: string | null = null;
+    icon = '';
 
     readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
@@ -108,10 +108,9 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     inputHidden = false;
 
-    readonly disabledItemHandlerVariants: [
-        TuiBooleanHandler<string | TuiStringifiableItem<string>>,
-        TuiBooleanHandler<string>,
-    ] = [ALWAYS_FALSE_HANDLER, item => item[0] === 'T'];
+    readonly disabledItemHandlerVariants: TuiBooleanHandler<
+        string | TuiStringifiableItem<string>
+    >[] = [ALWAYS_FALSE_HANDLER, item => String(item)[0] === 'T'];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 }

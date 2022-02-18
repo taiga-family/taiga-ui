@@ -55,10 +55,4 @@ export class LandingComponent {
             }
         });
     }
-
-    stop(e?: KeyboardEvent) {
-        if (e && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
-            e.stopPropagation();
-        }
-    }
 }

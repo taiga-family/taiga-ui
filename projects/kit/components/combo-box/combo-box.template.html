@@ -33,7 +33,7 @@
             automation-id="tui-combo-box__template"
             class="value"
             [content]="computedContent"
-            [context]="computeContext(value, computedFocused)"
+            [context]="{$implicit: value!, active: computedFocused}"
         ></div>
     </tui-primitive-textfield>
 
