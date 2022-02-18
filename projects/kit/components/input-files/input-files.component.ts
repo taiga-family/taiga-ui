@@ -281,21 +281,25 @@ export class TuiInputFilesComponent
                 tooBigFiles.indexOf(file) === -1 && wrongFormatFiles.indexOf(file) === -1,
         );
 
-        this.rejectFiles([
-            ...tooBigFiles.map(file => ({
-                name: file.name,
-                type: file.type,
-                size: file.size,
-                content:
-                    texts.maxSizeRejectionReason + formatSize(units, this.maxFileSize),
-            })),
-            ...wrongFormatFiles.map(file => ({
-                name: file.name,
-                type: file.type,
-                size: file.size,
-                content: texts.formatRejectionReason,
-            })),
-        ]);
+        if (tooBigFiles.length || wrongFormatFiles.length) {
+            this.rejectFiles([
+                ...tooBigFiles.map(file => ({
+                    name: file.name,
+                    type: file.type,
+                    size: file.size,
+                    content:
+                        texts.maxSizeRejectionReason +
+                        formatSize(units, this.maxFileSize),
+                })),
+                ...wrongFormatFiles.map(file => ({
+                    name: file.name,
+                    type: file.type,
+                    size: file.size,
+                    content: texts.formatRejectionReason,
+                })),
+            ]);
+        }
+
         this.updateValue(
             this.multiple
                 ? [...this.arrayValue, ...acceptedFiles]

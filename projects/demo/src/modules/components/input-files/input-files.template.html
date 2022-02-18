@@ -53,9 +53,52 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-files></tui-files>
+            <tui-input-files
+                [formControl]="control"
+                [accept]="accept"
+                [link]="link"
+                [label]="label"
+                [maxFileSize]="maxFileSize"
+                [multiple]="multiple"
+                [readOnly]="readOnly"
+                [focusable]="focusable"
+                [pseudoFocused]="pseudoFocused"
+                [pseudoHovered]="pseudoHovered"
+                [pseudoPressed]="pseudoPressed"
+                (onReject)="updateRejected($event)"
+            ></tui-input-files>
+            <tui-files class="tui-space_top-2">
+                <ng-container *ngIf="multiple; else single">
+                    <ng-container
+                        *ngFor="let file of control.valueChanges | async"
+                    >
+                        <tui-file
+                            *tuiFile
+                            [file]="file"
+                            (fileRemoved)="removeFile(file)"
+                        ></tui-file>
+                    </ng-container>
+                </ng-container>
+
+                <ng-template #single>
+                    <ng-container *ngIf="control.value as file">
+                        <tui-file *tuiFile [file]="file"></tui-file>
+                    </ng-container>
+                </ng-template>
+
+                <ng-container *ngFor="let file of rejectedFiles">
+                    <tui-file
+                        *tuiFile
+                        state="error"
+                        [file]="file"
+                        [size]="size"
+                        [showSize]="showSize"
+                        (fileRemoved)="removeRejected(file)"
+                    ></tui-file>
+                </ng-container>
+            </tui-files>
         </tui-doc-demo>
-        <tui-doc-documentation>
+        <tui-doc-documentation heading="TuiInputFiles">
             <ng-template
                 i18n
                 documentationPropertyName=""
@@ -65,6 +108,116 @@
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="accept"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="acceptVariants"
+                [(documentationPropertyValue)]="accept"
+            >
+                Allowed formats (for native attribute
+                <code>accept</code>
+                )
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="label"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="label"
+            >
+                Label text
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="link"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="link"
+            >
+                Link text
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="maxFileSize"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="maxFileSizeVariants"
+                [(documentationPropertyValue)]="maxFileSize"
+            >
+                Max file size in bytes (30 MB by default — 30 * 1000 * 1000)
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="multiple"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="multiple"
+            >
+                Allows to upload several files
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="onReject"
+                documentationPropertyMode="output"
+                documentationPropertyType="TuiFileLike"
+            >
+                Emits file that was rejected.
+            </ng-template>
+        </tui-doc-documentation>
+
+        <tui-doc-documentation heading="TuiFile">
+            <ng-template
+                i18n
+                documentationPropertyName="file"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiFileLike"
+            >
+                File
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="state"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiFileStateT"
+            >
+                State of the file
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="showSize"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="showSize"
+            >
+                Show file size
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Component size
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="fileRemoved"
+                documentationPropertyMode="output"
+                documentationPropertyType="TuiFileLike"
+            >
+                Emits file on click on close button. When subscribed to, close
+                button appears.
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

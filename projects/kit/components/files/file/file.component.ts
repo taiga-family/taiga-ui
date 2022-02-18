@@ -42,10 +42,6 @@ export class TuiFileComponent {
 
     @Input()
     @tuiDefaultProp()
-    allowDelete = true;
-
-    @Input()
-    @tuiDefaultProp()
     showSize = true;
 
     @Input()
@@ -84,6 +80,10 @@ export class TuiFileComponent {
 
     get isDeleted(): boolean {
         return this.state === TuiFileState.Deleted;
+    }
+
+    get allowDelete(): boolean {
+        return !!this.fileRemoved.observers.length;
     }
 
     get icon(): string {

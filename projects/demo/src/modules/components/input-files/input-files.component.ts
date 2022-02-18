@@ -2,6 +2,8 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiSizeL} from '@taiga-ui/core';
+import {TuiFileLike} from '@taiga-ui/kit';
 
 import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
@@ -50,4 +52,35 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     };
 
     readonly control = new FormControl();
+    link = 'Choose a file';
+    label = 'or drop\u00A0it\u00A0here';
+    multiple = true;
+    showSize = true;
+    accept = '';
+    acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
+    readonly maxFileSizeVariants = [100, 512000, 30 * 1000 * 1000, 2.2 * 1000 * 1000];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+
+    size = this.sizeVariants[0];
+    rejectedFiles: TuiFileLike[] = [];
+    maxFileSize = this.maxFileSizeVariants[2];
+
+    removeFile(file: TuiFileLike) {
+        this.control.setValue(
+            this.control.value.filter((current: File) => current.name !== file.name),
+        );
+    }
+
+    removeRejected(file: TuiFileLike) {
+        this.rejectedFiles = this.rejectedFiles.filter(
+            rejectedFile => rejectedFile.name !== file.name,
+        );
+    }
+
+    updateRejected(file: TuiFileLike | ReadonlyArray<TuiFileLike>) {
+        this.rejectedFiles = [
+            ...this.rejectedFiles,
+            ...(Array.isArray(file) ? file : [file]),
+        ];
+    }
 }

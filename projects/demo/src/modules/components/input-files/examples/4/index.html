@@ -1,19 +1,9 @@
 <tui-files class="files" [max]="3">
     <ng-container *ngFor="let file of files">
-        <tui-file
-            *tuiFile
-            state="normal"
-            [file]="file"
-            [allowDelete]="false"
-        ></tui-file>
+        <tui-file *tuiFile state="normal" [file]="file"></tui-file>
     </ng-container>
 
     <ng-container *ngFor="let file of rejectedFiles">
-        <tui-file
-            *tuiFile
-            state="error"
-            [file]="file"
-            [allowDelete]="false"
-        ></tui-file>
+        <tui-file *tuiFile state="error" [file]="file"></tui-file>
     </ng-container>
 </tui-files>
