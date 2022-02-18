@@ -17,6 +17,7 @@ interface Options {
     enableNightMode?: boolean;
     hideCursorInHeadless?: boolean;
     hideScrollbarInHeadless?: boolean;
+    noSmoothScrollInHeadless?: boolean;
 }
 
 const setBeforeLoadOptions = (
@@ -36,6 +37,7 @@ export const goToDemoPage = (path: string, options: Options = {}) => {
         enableNightMode = false,
         hideCursorInHeadless = true,
         hideScrollbarInHeadless = true,
+        noSmoothScrollInHeadless = true,
     } = options;
 
     stubExternalIcons();
@@ -67,12 +69,18 @@ export const goToDemoPage = (path: string, options: Options = {}) => {
     }
 
     if (Cypress.browser.isHeadless) {
+        cy.get('._is-cypress-mode').as('app');
+
         if (hideCursorInHeadless) {
-            cy.get('._is-cypress-mode').invoke('addClass', '_hide-cursor');
+            cy.get('@app').invoke('addClass', '_hide-cursor');
         }
 
         if (hideScrollbarInHeadless) {
-            cy.get('._is-cypress-mode').invoke('addClass', '_hide-scrollbar');
+            cy.get('@app').invoke('addClass', '_hide-scrollbar');
+        }
+
+        if (noSmoothScrollInHeadless) {
+            cy.get('@app').invoke('addClass', '_no-smooth-scroll');
         }
     }
 
