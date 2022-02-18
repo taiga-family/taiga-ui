@@ -2,14 +2,15 @@ import {Component, Inject, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
-import {TUI_IS_ANDROID, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
+import {TUI_IS_ANDROID, TUI_IS_CYPRESS, TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
 // @dynamic
 @Component({
     selector: 'app',
-    templateUrl: 'app.template.html',
-    styleUrls: ['app.style.less'],
+    templateUrl: './app.template.html',
+    styleUrls: ['./app.style.less'],
+    host: {'[class._is-cypress-mode]': 'isCypress'},
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
@@ -24,6 +25,7 @@ export class AppComponent {
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
         @Inject(Router) private readonly router: Router,
         @Inject(LOCAL_STORAGE) localStorage: Storage,
+        @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
     ) {
         const env = localStorage.getItem('env');
 
