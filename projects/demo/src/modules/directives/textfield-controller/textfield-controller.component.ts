@@ -43,9 +43,10 @@ export class ExampleTuiTextfieldControllerComponent {
 
     readonly customContentVariants = ['Bell'];
 
-    customContentSelected = null;
+    customContentSelected: string | null = null;
 
-    autocompleteVariants = [
+    autocompleteVariants: (TuiAutofillFieldName | '')[] = [
+        '',
         'off',
         'cc-name',
         'cc-number',
@@ -62,13 +63,13 @@ export class ExampleTuiTextfieldControllerComponent {
         'country-name',
     ];
 
-    autocomplete: TuiAutofillFieldName | null = null;
+    autocomplete = this.autocompleteVariants[0];
     cleaner = false;
     exampleText = '';
     labelOutside = false;
     size = this.sizeVariants[2];
     inputMode = this.inputModeVariants[0];
-    maxLength = null;
+    maxLength: number | null = null;
 
     readonly control = new FormControl('111', Validators.required);
 }

@@ -13,7 +13,7 @@
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
-        [filler]="filler$ | async"
+        [filler]="(filler$ | async) || ''"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [iconContent]="iconContent"

@@ -55,7 +55,7 @@ export class TuiPrimitiveYearPickerComponent {
     disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
 
     @Output()
-    readonly yearClick = new EventEmitter<TuiYear | TuiDayRange>();
+    readonly yearClick = new EventEmitter<TuiYear>();
 
     @HostBinding('class._single')
     get isSingle(): boolean {

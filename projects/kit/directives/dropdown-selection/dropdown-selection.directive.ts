@@ -70,7 +70,7 @@ export class TuiDropdownSelectionDirective
     private range?: Range;
 
     @Input()
-    set tuiDropdownSelection(handler: TuiBooleanHandler<Range> | undefined) {
+    set tuiDropdownSelection(handler: TuiBooleanHandler<Range> | '') {
         if (!handler || !this.range) {
             return;
         }

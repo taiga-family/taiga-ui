@@ -51,15 +51,25 @@ export class ExampleTuiSliderComponent {
     }
 
     readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
+
     size: TuiSizeS = this.sizeVariants[1];
+
     readonly minVariants: readonly number[] = [0, 1, 5, 7.77, 5000];
+
     min = this.minVariants[0];
+
     readonly maxVariants: readonly number[] = [10, 100, 10000, 1000000];
+
     max = this.maxVariants[0];
+
     readonly segmentsVariants: readonly number[] = [0, 1, 3, 5, 13];
+
     segments = this.segmentsVariants[0];
+
     readonly stepsVariants: readonly number[] = [0, 3, 4, 10];
+
     steps = this.stepsVariants[0];
+
     readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
         ['year', 'years', 'years'],
         ['₽', '₽', '₽'],
@@ -70,7 +80,8 @@ export class ExampleTuiSliderComponent {
         },
     ];
 
-    pluralize = null;
+    pluralize: TuiPluralize | Record<string, string> | null = null;
+
     readonly keyStepsVariants: readonly TuiKeySteps[] = [
         [[50, 1000]],
         [
@@ -79,7 +90,9 @@ export class ExampleTuiSliderComponent {
         ],
     ];
 
-    keySteps = null;
+    keySteps: TuiKeySteps | null = null;
+
     readonly quantumVariants: readonly number[] = [0.01, 0.001, 0.1, 1, 10];
+
     quantum = this.quantumVariants[0];
 }

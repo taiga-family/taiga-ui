@@ -58,7 +58,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     control: AbstractControl | null = null;
 
     @ContentChild(TemplateRef)
-    readonly template?: TemplateRef<{}>;
+    readonly template: TemplateRef<{}> | null = null;
 
     testForm?: FormGroup;
     updateOnVariants = ['change', 'blur', 'submit'];

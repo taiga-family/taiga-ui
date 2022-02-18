@@ -1,8 +1,9 @@
 <tui-hosted-dropdown
     class="t-wrapper"
-    [content]="picker"
+    [content]="$any(picker)"
     [(open)]="open"
 >
+    <!-- TODO: remove $any later -->
     <tui-primitive-textfield
         iconAlign="left"
         tuiTextfieldAutocomplete="off"

@@ -4,8 +4,9 @@
 >
     <ng-container *ngIf="contentVisible">
         <ng-content></ng-content>
+        <!-- TODO: collision with async pipe, fix after upgrade to ng11 -->
         <tui-loader
-            *ngIf="async; else content"
+            *ngIf="this.async; else content"
             size="l"
             [overlay]="true"
             [showLoader]="loading"

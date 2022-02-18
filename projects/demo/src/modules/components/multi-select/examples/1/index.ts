@@ -20,7 +20,7 @@ const ITEMS: readonly string[] = [
     encapsulation,
 })
 export class TuiMultiSelectExample1 {
-    search = '';
+    search: string | null = '';
 
     readonly control = new FormControl([ITEMS[0]]);
 

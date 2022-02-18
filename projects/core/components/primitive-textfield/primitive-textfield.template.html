@@ -104,7 +104,7 @@
             *ngIf="hasTooltip"
             automation-id="tui-primitive-textfield__tooltip"
             [describeId]="computedId"
-            [content]="hintController.content"
+            [content]="hintController.content || ''"
             [direction]="hintController.direction"
             [mode]="hintController.mode"
             [showDelay]="hintController.showDelay"

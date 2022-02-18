@@ -77,11 +77,11 @@ export class ExampleTuiRangeComponent {
         },
     ];
 
-    pluralize = null;
+    pluralize: Record<string, string> | TuiPluralize | null = null;
 
     readonly keyStepsVariants: readonly TuiKeySteps[] = [[[50, 1000]]];
 
-    keySteps = null;
+    keySteps: TuiKeySteps | null = null;
 
     readonly quantumVariants: readonly number[] = [0.01, 0.1, 1, 10];
 

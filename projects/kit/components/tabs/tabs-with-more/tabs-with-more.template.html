@@ -5,7 +5,7 @@
         [underline]="false"
         [activeItemIndex]="activeItemIndex"
         (activeItemIndexChange)="onActiveItemIndexChange($event)"
-        (keydown.arrowRight)="onArrowRight($event.target)"
+        (keydown.arrowRight)="onArrowRight($event)"
     >
         <ng-container *ngFor="let item of items; let index = index">
             <ng-container
@@ -50,8 +50,8 @@
         <div
             #element
             class="t-dropdown"
-            (keydown.arrowUp.prevent)="onWrapperArrow($event.target, element, true)"
-            (keydown.arrowDown.prevent)="onWrapperArrow($event.target, element, false)"
+            (keydown.arrowUp.prevent)="onWrapperArrow($event, element, true)"
+            (keydown.arrowDown.prevent)="onWrapperArrow($event, element, false)"
         >
             <div
                 *ngFor="let item of items; let index = index"

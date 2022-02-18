@@ -29,6 +29,7 @@ import {
     isNativeFocused,
     isNativeFocusedIn,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAssertIsHTMLElement,
     TuiBooleanHandler,
     TuiCreditCardAutofillName,
     tuiDefaultProp,
@@ -393,7 +394,9 @@ export class TuiInputCardGroupedComponent
     }
 
     onMouseDown(event: MouseEvent) {
-        if ((event.target as HTMLElement).matches('input')) {
+        tuiAssertIsHTMLElement(event.target);
+
+        if (event.target.matches('input')) {
             return;
         }
 
@@ -401,8 +404,10 @@ export class TuiInputCardGroupedComponent
         this.focusInput();
     }
 
-    onScroll(element: HTMLElement) {
-        element.scrollLeft = 0;
+    onScroll({currentTarget}: Event) {
+        tuiAssertIsHTMLElement(currentTarget);
+
+        currentTarget.scrollLeft = 0;
     }
 
     clear() {

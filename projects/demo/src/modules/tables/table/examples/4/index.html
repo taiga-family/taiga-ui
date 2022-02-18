@@ -35,16 +35,16 @@
 </p>
 <tui-loader
     [overlay]="true"
-    [showLoader]="loading$ | async"
+    [showLoader]="!!(loading$ | async)"
 >
     <table
         *tuiLet="data$ | async as data"
         tuiTable
         class="table"
         [columns]="columns"
-        [direction]="direction$ | async"
+        [direction]="(direction$ | async) || 1"
         [tuiSortBy]="sorter$ | async"
-        (tuiSortByChange)="sorter$.next($event)"
+        (tuiSortByChange)="sorter$.next($event!)"
         (directionChange)="direction$.next($event)"
     >
         <thead>
@@ -108,7 +108,7 @@
                 <td [colSpan]="columns.length">
                     <tui-table-pagination
                         class="tui-space_top-2"
-                        [total]="total$ | async"
+                        [total]="(total$ | async) || 0"
                         (pageChange)="onPage($event)"
                         (sizeChange)="onSize($event)"
                     ></tui-table-pagination>

@@ -68,7 +68,7 @@ export class ExampleTuiCalendarMonthComponent {
         new TuiMonth(2007, 2),
     ];
 
-    value = null;
+    value: TuiMonth | TuiMonthRange | null = null;
 
     readonly yearVariants: readonly TuiYear[] = [
         TuiDay.currentLocal(),

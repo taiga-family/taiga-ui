@@ -9,6 +9,7 @@ import {
     TuiIdentityMatcher,
     tuiPure,
     TuiStringHandler,
+    TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {TuiValueContentContext} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -92,7 +93,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
 
     strict = true;
 
-    search = '';
+    search: string | null = '';
 
     valueTemplateVariants = ['', 'Template'];
 
@@ -105,13 +106,12 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
 
     stringify = this.stringifyVariants[0];
 
-    readonly strictMatcherVariants = [
-        TUI_STRICT_MATCHER,
+    readonly strictMatcherVariants: ReadonlyArray<TuiStringMatcher<Account>> = [
+        TUI_STRICT_MATCHER as TuiStringMatcher<Account>,
         (item: Account, search: string, stringify: TuiStringHandler<Account>) =>
             Number.parseInt(stringify(item).match(/\d+/g)![0], 10) ===
             Number.parseInt(search, 10),
-        null,
-    ] as const;
+    ];
 
     strictMatcher = this.strictMatcherVariants[0];
 

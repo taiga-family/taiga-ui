@@ -43,7 +43,7 @@
                             <div
                                 *ngIf="markers.length > 1"
                                 class="t-dot"
-                                [tuiBackground]="markers[1]"
+                                [tuiBackground]="markers[1] || ''"
                             ></div>
                         </div>
                     </div>

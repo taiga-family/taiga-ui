@@ -18,7 +18,10 @@ import {TuiSidebarComponent} from './sidebar.component';
 @Directive({
     selector: '[tuiSidebar]',
 })
-export class TuiSidebarDirective extends PolymorpheusTemplate<{}> implements OnDestroy {
+export class TuiSidebarDirective<T = {}>
+    extends PolymorpheusTemplate<T>
+    implements OnDestroy
+{
     private sidebarRef: ComponentRef<TuiSidebarComponent> | null = null;
 
     @Input('tuiSidebarDirection')
@@ -37,7 +40,7 @@ export class TuiSidebarDirective extends PolymorpheusTemplate<{}> implements OnD
     }
 
     constructor(
-        @Inject(TemplateRef) readonly content: TemplateRef<{}>,
+        @Inject(TemplateRef) readonly content: TemplateRef<T>,
         @Inject(Injector) private readonly injector: Injector,
         @Inject(ComponentFactoryResolver)
         private readonly componentFactoryResolver: ComponentFactoryResolver,

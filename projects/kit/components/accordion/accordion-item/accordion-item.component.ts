@@ -132,7 +132,7 @@ export class TuiAccordionItemComponent
         }
     }
 
-    onItemKeyDownEsc(event: KeyboardEvent) {
+    onItemKeyDownEsc(event: Event) {
         if (!this.focused || !this.open) {
             return;
         }
@@ -141,7 +141,7 @@ export class TuiAccordionItemComponent
         this.updateOpen(false);
     }
 
-    onItemKeyDownSpace(event: KeyboardEvent) {
+    onItemKeyDownSpace(event: Event) {
         if (!this.focused) {
             return;
         }

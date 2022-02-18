@@ -13,7 +13,15 @@
         "strictInjectionParameters": true,
         "enableResourceInlining": true,
         "strictLiteralTypes": true,
-        "strictInputTypes": true
+        "strictInputTypes": true,
+        "strictInputAccessModifiers": true,
+        "strictNullInputTypes": true,
+        "strictAttributeTypes": true,
+        "strictSafeNavigationTypes": true,
+        "strictDomLocalRefTypes": true,
+        "strictOutputEventTypes": true,
+        "strictDomEventTypes": true,
+        "strictContextGenerics": true
     },
     "compilerOptions": {
         "strict": true,

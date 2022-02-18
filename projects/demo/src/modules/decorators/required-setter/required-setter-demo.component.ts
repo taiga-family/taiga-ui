@@ -14,7 +14,7 @@ export class ExampleTuiRequiredSetterDemoComponent {
         quantity => Number.isInteger(quantity) && quantity >= 5,
         'Should be integer number more than min value',
     )
-    set quantity(quantity: number) {
+    set quantity(quantity: number | undefined) {
         this.items = new Array(quantity).fill(
             Math.floor(Math.random() * Math.floor(100)),
         );

@@ -1,24 +1,15 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     forwardRef,
     Inject,
     Input,
-    QueryList,
-    ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, isNativeFocused, isPresent, tuiDefaultProp} from '@taiga-ui/cdk';
-import {
-    TUI_DATA_LIST_ACCESSOR,
-    TuiDataListAccessor,
-    TuiOptionComponent,
-    TuiSizeL,
-    TuiSizeXS,
-    TuiValueContentContext,
-} from '@taiga-ui/core';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {TUI_DATA_LIST_ACCESSOR} from '@taiga-ui/core';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+import {AbstractDataListWrapper} from './data-list-wrapper';
 
 @Component({
     selector: 'tui-data-list-wrapper:not([labels])',
@@ -32,49 +23,12 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
         },
     ],
 })
-export class TuiDataListWrapperComponent<T> implements TuiDataListAccessor<T> {
-    @ViewChildren(forwardRef(() => TuiOptionComponent))
-    private readonly optionsQuery: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
-
+export class TuiDataListWrapperComponent<T> extends AbstractDataListWrapper<T> {
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<readonly T[]> | readonly T[] | null = [];
+    items: readonly T[] | null = [];
 
-    @Input()
-    @tuiDefaultProp()
-    disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
-        this.itemsHandlers.disabledItemHandler;
-
-    @Input()
-    @tuiDefaultProp()
-    emptyContent: PolymorpheusContent = '';
-
-    @Input()
-    @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeL = 'm';
-
-    constructor(
-        @Inject(TUI_ITEMS_HANDLERS)
-        private readonly itemsHandlers: TuiItemsHandlers<T>,
-    ) {}
-
-    @Input()
-    @tuiDefaultProp()
-    itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
-        this.itemsHandlers.stringify($implicit);
-
-    getContext(
-        $implicit: T,
-        {nativeElement}: ElementRef<HTMLElement>,
-    ): TuiValueContentContext<T> {
-        return {$implicit, active: isNativeFocused(nativeElement)};
-    }
-
-    getOptions(includeDisabled: boolean = false): readonly T[] {
-        return this.optionsQuery
-            .toArray()
-            .filter(({disabled}) => includeDisabled || !disabled)
-            .map(({value}) => value)
-            .filter(isPresent);
+    constructor(@Inject(TUI_ITEMS_HANDLERS) itemsHandlers: TuiItemsHandlers<T>) {
+        super(itemsHandlers);
     }
 }

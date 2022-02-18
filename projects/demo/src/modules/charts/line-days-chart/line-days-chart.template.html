@@ -32,7 +32,7 @@
                 class="axes"
                 [verticalLines]="3"
                 [horizontalLines]="4"
-                [axisXLabels]="labels$ | async"
+                [axisXLabels]="(labels$ | async) || []"
             >
                 <tui-line-days-chart
                     [value]="value"

@@ -2,7 +2,7 @@ import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAccountAutofillName} from '@taiga-ui/cdk';
+import {TuiAutofillFieldName} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -36,7 +36,7 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
 
     readonly maxLengthVariants: readonly number[] = [10];
 
-    readonly autocompleteVariants = [
+    readonly autocompleteVariants: TuiAutofillFieldName[] = [
         'off',
         'cc-name',
         'cc-number',
@@ -53,7 +53,7 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
         'country-name',
     ];
 
-    readonly autocomplete: TuiAccountAutofillName | null = null;
+    readonly autocomplete: TuiAutofillFieldName | '' = '';
 
     readonly maxLength = null;
 

@@ -93,7 +93,7 @@ export class ExampleTuiCalendarRangeComponent {
 
     markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
     min: TuiDay = this.minVariants[0];
-    max: TuiDay | null = this.maxVariants[0];
+    max: TuiDay = this.maxVariants[0];
     cleaner = false;
     disabledItemHandler = this.disabledItemHandlerVariants[0];
     items = this.itemsVariants[0];

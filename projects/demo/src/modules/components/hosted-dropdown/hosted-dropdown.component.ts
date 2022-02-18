@@ -80,7 +80,7 @@ export class ExampleTuiHostedDropdownComponent {
 
     readonly limitWidthVariants: readonly TuiDropdownWidthT[] = ['auto', 'fixed', 'min'];
 
-    limitWidth: TuiDropdownWidthT | null = this.limitWidthVariants[0];
+    limitWidth: TuiDropdownWidthT = this.limitWidthVariants[0];
 
     open = false;
 

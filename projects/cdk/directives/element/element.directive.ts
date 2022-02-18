@@ -4,7 +4,7 @@ import {Directive, ElementRef, Inject} from '@angular/core';
     selector: '[tuiElement]',
     exportAs: 'elementRef',
 })
-export class TuiElementDirective<T extends Element> extends ElementRef<T> {
+export class TuiElementDirective<T extends Element = HTMLElement> extends ElementRef<T> {
     constructor(@Inject(ElementRef) {nativeElement}: ElementRef<T>) {
         super(nativeElement);
     }

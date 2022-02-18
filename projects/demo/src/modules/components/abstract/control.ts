@@ -62,7 +62,8 @@ export abstract class AbstractExampleTuiControl
 
     readonly maxLengthVariants: readonly possibleGenericType[] = [10];
 
-    readonly autocompleteVariants = [
+    readonly autocompleteVariants: (TuiAutofillFieldName | '')[] = [
+        '',
         'off',
         'cc-name',
         'cc-number',
@@ -93,7 +94,7 @@ export abstract class AbstractExampleTuiControl
 
     inputMode = this.inputModeVariants[0];
 
-    autocomplete: TuiAutofillFieldName | null = null;
+    autocomplete: TuiAutofillFieldName | '' = '';
 
     maxLength: possibleGenericType | null = null;
 
@@ -113,7 +114,7 @@ export abstract class AbstractExampleTuiControl
 
     exampleText = '';
 
-    hintContent = null;
+    hintContent: string | null = null;
 
     hintDirection: TuiDirection = this.hintDirectionVariants[2];
 
@@ -125,7 +126,7 @@ export abstract class AbstractExampleTuiControl
 
     readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = ['fixed', 'min'];
 
-    dropdownLimitWidth: TuiDropdownWidthT | null = this.dropdownLimitWidthVariants[0];
+    dropdownLimitWidth: TuiDropdownWidthT = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         'top',

@@ -34,7 +34,7 @@
             automation-id="tui-select__value"
             class="t-value"
             [content]="computedContent"
-            [context]="computeContext(value, computedFocused)"
+            [context]="{$implicit: value, active: computedFocused}"
         >
             <ng-template let-primitiveValue>
                 <div class="t-primitive-value">{{ primitiveValue }}</div>

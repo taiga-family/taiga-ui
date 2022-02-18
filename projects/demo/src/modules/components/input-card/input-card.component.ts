@@ -124,7 +124,7 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
         this.control.get(control)!.enable();
     }
 
-    onBinChange(bin: string) {
+    onBinChange(bin: string | null) {
         this.notifications.show(`bin: ${bin}`).subscribe();
     }
 }

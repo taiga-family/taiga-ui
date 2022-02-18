@@ -23,8 +23,8 @@ export class CustomListComponent<T> {
 
     readonly filter = TUI_DEFAULT_MATCHER;
 
-    onArrowDown(list: TuiDataListComponent<string>, input: HTMLElement) {
-        list.onFocus(input, true);
+    onArrowDown<T>(list: TuiDataListComponent<T>, event: Event) {
+        list.onFocus(event, true);
     }
 
     onKeyDown(key: string, element: HTMLElement | null) {

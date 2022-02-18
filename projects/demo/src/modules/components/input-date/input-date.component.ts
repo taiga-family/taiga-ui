@@ -6,8 +6,8 @@ import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    TuiAutofillFieldName,
     TuiBooleanHandler,
-    TuiDateAutofillName,
     TuiDay,
 } from '@taiga-ui/cdk';
 import {
@@ -104,9 +104,9 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
 
     items = this.itemsVariants[0];
 
-    autocompleteVariants = ['off', 'bday'];
+    autocompleteVariants: TuiAutofillFieldName[] = ['off', 'bday'];
 
-    autocomplete: TuiDateAutofillName | null = null;
+    autocomplete: TuiAutofillFieldName | '' = '';
 
     cleaner = false;
 

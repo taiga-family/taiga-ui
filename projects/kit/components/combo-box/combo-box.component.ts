@@ -23,7 +23,6 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
-    tuiPure,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {
@@ -142,17 +141,6 @@ export class TuiComboBoxComponent<T>
         return this.valueContent || this.nativeValue;
     }
 
-    @tuiPure
-    computeContext(
-        $implicit: T | null,
-        active: boolean,
-    ): TuiValueContentContext<T | null> {
-        return {
-            $implicit,
-            active,
-        };
-    }
-
     onActiveZone(active: boolean) {
         this.updateFocused(active);
     }
@@ -174,7 +162,7 @@ export class TuiComboBoxComponent<T>
         this.updateValue(item);
     }
 
-    onFieldKeyDownEnter(event: KeyboardEvent) {
+    onFieldKeyDownEnter(event: Event) {
         if (this.open) {
             event.preventDefault();
         }

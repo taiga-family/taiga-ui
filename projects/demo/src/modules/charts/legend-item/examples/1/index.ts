@@ -11,7 +11,7 @@ import {sum} from '@taiga-ui/cdk';
     encapsulation,
 })
 export class TuiLegendItemExample1 {
-    activeItemIndex: number | null = null;
+    activeItemIndex = NaN;
 
     readonly value = [13769, 12367, 10172, 3018, 2592];
     readonly sum = sum(...this.value);
@@ -22,7 +22,7 @@ export class TuiLegendItemExample1 {
     }
 
     onHover(index: number, hovered: boolean) {
-        this.activeItemIndex = hovered ? index : null;
+        this.activeItemIndex = hovered ? index : 0;
     }
 
     getColor(index: number): string {

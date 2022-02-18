@@ -16,6 +16,7 @@ import {
     getOriginalArrayFromQueryList,
     itemsQueryListObservable,
     moveFocus,
+    tuiAssertIsHTMLElement,
     tuiDefaultProp,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -96,10 +97,12 @@ export class TuiStepperComponent {
     }
 
     private moveFocus(current: EventTarget, step: number) {
+        tuiAssertIsHTMLElement(current);
+
         const steps = getOriginalArrayFromQueryList(this.steps).map(
             ({nativeElement}) => nativeElement,
         );
 
-        moveFocus(steps.indexOf(current as HTMLElement), steps, step);
+        moveFocus(steps.indexOf(current), steps, step);
     }
 }

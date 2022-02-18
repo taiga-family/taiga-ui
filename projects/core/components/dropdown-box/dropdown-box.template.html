@@ -3,7 +3,7 @@
     class="wrapper"
     [tuiOverscroll]="overscroll"
     [tuiMode]="null"
-    [tuiActiveZoneParent]="directive.activeZone"
+    [tuiActiveZoneParent]="directive.activeZone || null"
 >
     <tui-scrollbar class="scroll">
         <div

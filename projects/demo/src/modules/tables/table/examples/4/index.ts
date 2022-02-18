@@ -97,7 +97,7 @@ export class TuiTableExample4 {
         share(),
     );
 
-    initial = ['Name', 'Date of Birth', 'Age'];
+    initial: readonly string[] = ['Name', 'Date of Birth', 'Age'];
 
     enabled = this.initial;
 
@@ -115,13 +115,13 @@ export class TuiTableExample4 {
         startWith(1),
     );
 
-    readonly data$ = this.request$.pipe(
+    readonly data$: Observable<readonly User[]> = this.request$.pipe(
         filter(isPresent),
         map(users => users.filter(isPresent)),
         startWith([]),
     );
 
-    onEnabled(enabled: string[]) {
+    onEnabled(enabled: readonly string[]) {
         this.enabled = enabled;
         this.columns = this.initial
             .filter(column => enabled.includes(column))

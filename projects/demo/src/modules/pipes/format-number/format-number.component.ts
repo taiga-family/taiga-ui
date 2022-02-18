@@ -26,7 +26,7 @@ export class ExampleTuiFormatNumberComponent {
     value = 100;
 
     readonly decimalLimitVariants = [0, 2, 4];
-    decimalLimit = null;
+    decimalLimit: number | null = null;
 
     readonly decimalSeparatorVariants: readonly string[] = [',', '.', '/'];
     decimalSeparator = this.decimalSeparatorVariants[0];

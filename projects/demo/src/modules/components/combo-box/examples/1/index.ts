@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {Observable, of, Subject} from 'rxjs';
 import {delay, filter, startWith, switchMap} from 'rxjs/operators';
 
@@ -32,7 +33,7 @@ const databaseMockData: readonly User[] = [
     encapsulation,
 })
 export class TuiComboBoxExample1 {
-    readonly search$ = new Subject<string>();
+    readonly search$: Subject<string | null> = new Subject();
 
     readonly items$: Observable<readonly User[] | null> = this.search$.pipe(
         filter(value => value !== null),
@@ -44,16 +45,20 @@ export class TuiComboBoxExample1 {
 
     readonly testValue = new FormControl(databaseMockData[1]);
 
-    onSearchChange(searchQuery: string) {
+    onSearchChange(searchQuery: string | null) {
         this.search$.next(searchQuery);
+    }
+
+    extractValueFromEvent(event: Event): string | null {
+        return (event.target as HTMLInputElement)?.value || null;
     }
 
     /**
      * Service request emulation
      */
-    private serverRequest(searchQuery: string): Observable<readonly User[]> {
+    private serverRequest(searchQuery: string | null): Observable<readonly User[]> {
         const result = databaseMockData.filter(user =>
-            user.toString().toLowerCase().includes(searchQuery.toLowerCase()),
+            TUI_DEFAULT_MATCHER(user, searchQuery || ''),
         );
 
         return of(result).pipe(delay(Math.random() * 1000 + 500));

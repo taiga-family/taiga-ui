@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiReorderExample1 {
-    items = [
+    items: readonly string[] = [
         'John Cleese',
         'Eric Idle',
         'Michael Palin',

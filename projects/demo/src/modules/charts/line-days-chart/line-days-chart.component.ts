@@ -96,7 +96,7 @@ export class ExampleTuiLineDaysChartComponent {
 
     xStringify: TuiStringHandler<TuiDay> | null = null;
 
-    hintContent = '';
+    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>> = '';
 
     dots = false;
 

@@ -93,7 +93,7 @@ export class TuiPreviewComponent {
         this.rotation$.next(this.rotation$.value - ROTATION_ANGLE);
     }
 
-    onPan(delta: [number, number]) {
+    onPan(delta: readonly [number, number]) {
         this.coordinates$.next(
             this.getGuardedCoordinates(
                 this.coordinates$.value[0] + delta[0],

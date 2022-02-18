@@ -3,7 +3,7 @@
     loading="lazy"
     class="image"
     [attr.alt]="text"
-    [src]="avatarUrl"
+    [src]="avatarUrl || ''"
     (error)="onError()"
 />
 <span class="text">{{ computedText }}</span>

@@ -217,7 +217,7 @@ export class TuiInputTimeComponent
         this.updateHovered(hovered);
     }
 
-    onArrowUp(event: KeyboardEvent) {
+    onArrowUp(event: Event) {
         if (this.items.length) {
             return;
         }
@@ -225,7 +225,7 @@ export class TuiInputTimeComponent
         this.processArrow(event, 1);
     }
 
-    onArrowDown(event: KeyboardEvent) {
+    onArrowDown(event: Event) {
         if (this.items.length) {
             return;
         }
@@ -282,7 +282,7 @@ export class TuiInputTimeComponent
         this.open = false;
     }
 
-    private processArrow(event: KeyboardEvent, shift: -1 | 1) {
+    private processArrow(event: Event, shift: -1 | 1) {
         const {target} = event;
 
         // TODO: iframe warning

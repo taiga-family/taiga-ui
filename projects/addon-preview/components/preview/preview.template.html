@@ -47,7 +47,7 @@
         <tui-preview-zoom
             *ngIf="zoomable"
             [min]="minZoom"
-            [value]="zoom$ | async"
+            [value]="(zoom$ | async) || 1"
             (valueChange)="zoom$.next($event)"
             (reset)="reset()"
         ></tui-preview-zoom>

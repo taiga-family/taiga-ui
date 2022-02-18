@@ -13,8 +13,8 @@
         accept="image/*"
         formControlName="files"
         [multiple]="true"
-        [loadingFiles]="loading$ | async"
-        [rejectedFiles]="rejected$ | async"
+        [loadingFiles]="(loading$ | async) || []"
+        [rejectedFiles]="(rejected$ | async) || []"
         (rejectedFilesChange)="onRejectedFilesChange($event)"
     ></tui-input-file>
 </form>

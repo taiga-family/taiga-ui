@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/enums';
+import {TuiPaymentSystem, TuiPaymentSystemT} from '@taiga-ui/addon-commerce/enums';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
@@ -39,7 +39,7 @@ export class TuiCardComponent {
 
     @Input()
     @tuiDefaultProp()
-    paymentSystem: TuiPaymentSystem | null = null;
+    paymentSystem: TuiPaymentSystemT | TuiPaymentSystem | null = null;
 
     @Input()
     @HostBinding('attr.data-size')

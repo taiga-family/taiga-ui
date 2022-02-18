@@ -10,7 +10,7 @@ import {
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
 import {TUI_IS_MOBILE, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core';
-import {TuiFileState} from '@taiga-ui/kit/enums';
+import {TuiFileState, TuiFileStateT} from '@taiga-ui/kit/enums';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {formatSize} from '@taiga-ui/kit/utils/files';
@@ -32,7 +32,7 @@ export class TuiFileOldComponent {
 
     @Input()
     @tuiDefaultProp()
-    state: TuiFileState = TuiFileState.Normal;
+    state: TuiFileStateT | TuiFileState = TuiFileState.Normal;
 
     @Input()
     @tuiDefaultProp()
@@ -129,7 +129,7 @@ export class TuiFileOldComponent {
 
     @tuiPure
     private calculateContent$(
-        state: TuiFileState,
+        state: keyof Record<TuiFileState, string> | string | TuiFileState,
         file: TuiFileLike,
         fileTexts$: Observable<Record<'loadingError' | 'preview' | 'remove', string>>,
     ): Observable<PolymorpheusContent> {

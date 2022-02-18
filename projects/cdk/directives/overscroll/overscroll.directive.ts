@@ -16,7 +16,7 @@ import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
 })
 export class TuiOverscrollDirective {
     @Input('tuiOverscroll')
-    mode: TuiOverscrollModeT = 'scroll';
+    mode: TuiOverscrollModeT | '' = 'scroll';
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,

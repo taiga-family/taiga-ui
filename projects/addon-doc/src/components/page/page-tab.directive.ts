@@ -7,7 +7,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 export class TuiDocPageTabConnectorDirective {
     @Input()
     @tuiDefaultProp()
-    pageTab?: string;
+    pageTab?: string | '';
 
     constructor(@Inject(TemplateRef) readonly template: TemplateRef<{}>) {}
 }
