@@ -15,6 +15,7 @@ import {
     CHROMIUM_EDGE_START_VERSION,
     isEdgeOlderThan,
     tuiDefaultProp,
+    watch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs/operators';
@@ -85,8 +86,8 @@ export class TuiSliderComponent {
         @Optional()
         @Self()
         @Inject(NgControl)
-        readonly control: NgControl | null,
-        @Inject(ChangeDetectorRef) readonly changeDetectorRef: ChangeDetectorRef,
+        control: NgControl | null,
+        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLInputElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
     ) {
@@ -98,9 +99,7 @@ export class TuiSliderComponent {
              * ___
              * See this {@link https://github.com/angular/angular/issues/14988 issue}
              */
-            control.valueChanges
-                ?.pipe(take(1))
-                .subscribe(() => this.changeDetectorRef.markForCheck());
+            control.valueChanges?.pipe(watch(changeDetectorRef), take(1)).subscribe();
         }
     }
 }
