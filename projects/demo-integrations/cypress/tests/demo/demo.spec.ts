@@ -3,21 +3,23 @@ import {excluded} from '../../support/exclusions';
 import {EXAMPLE_ID} from '../../support/shared.entities';
 
 describe('Demo', () => {
-    DEMO_PATHS.forEach(path => {
-        it(`${path}`, () => {
-            cy.goToDemoPage(path, {waitAllIcons: true});
+    for (const path of DEMO_PATHS) {
+        it(path, () => {
+            cy.goToDemoPage(path);
             cy.hideHeader();
 
-            cy.getByAutomationId(EXAMPLE_ID).each((sample, index) => {
-                if (excluded(path, index + 1)) {
-                    return cy.wrap(sample);
-                }
+            cy.get('tui-doc-example').each((example, index) => {
+                cy.wrap(example)
+                    .find('.t-example')
+                    .scrollIntoView()
+                    .findByAutomationId(EXAMPLE_ID)
+                    .should('be.visible')
+                    .as('example');
 
-                return cy
-                    .wrap(sample)
-                    .scrollIntoView({offset: {top: 0, left: 0}, duration: 0})
-                    .matchImageSnapshot(`${path}/${index + 1}`);
+                return excluded(path, index + 1)
+                    ? cy.get('@example')
+                    : cy.get('@example').matchImageSnapshot(`${path}/${index + 1}`);
             });
         });
-    });
+    }
 });
