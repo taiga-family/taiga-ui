@@ -9,7 +9,7 @@ module.exports = {
         '@tinkoff/eslint-config-angular',
         './scripts/eslint/nx.js',
     ],
-    ignorePatterns: ['projects/**/test.ts', 'projects/**/icons/all.ts'],
+    ignorePatterns: ['projects/**/test.ts', 'projects/**/icons/all.ts', '*.js', '*.json'],
     parserOptions: {
         ecmaVersion: 2020,
         sourceType: 'module',
