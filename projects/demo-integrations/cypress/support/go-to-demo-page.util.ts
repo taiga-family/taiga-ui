@@ -15,6 +15,8 @@ interface Options {
     inIframe?: boolean;
     waitAllIcons?: boolean;
     enableNightMode?: boolean;
+    hideCursorInHeadless?: boolean;
+    hideScrollbarInHeadless?: boolean;
 }
 
 const setBeforeLoadOptions = (
@@ -28,7 +30,13 @@ const setBeforeLoadOptions = (
 };
 
 export const goToDemoPage = (path: string, options: Options = {}) => {
-    const {inIframe = true, waitAllIcons = false, enableNightMode = false} = options;
+    const {
+        inIframe = true,
+        waitAllIcons = false,
+        enableNightMode = false,
+        hideCursorInHeadless = true,
+        hideScrollbarInHeadless = true,
+    } = options;
 
     stubExternalIcons();
     cy.visit('/', {
@@ -56,6 +64,16 @@ export const goToDemoPage = (path: string, options: Options = {}) => {
 
     if (waitAllIcons) {
         waitAllRequests('@icons');
+    }
+
+    if (Cypress.browser.isHeadless) {
+        if (hideCursorInHeadless) {
+            cy.get('._is-cypress-mode').invoke('addClass', '_hide-cursor');
+        }
+
+        if (hideScrollbarInHeadless) {
+            cy.get('._is-cypress-mode').invoke('addClass', '_hide-scrollbar');
+        }
     }
 
     cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION);

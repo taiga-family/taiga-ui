@@ -39,3 +39,13 @@ app {
     margin: 0 0.25rem 0 1rem;
     vertical-align: -0.375rem;
 }
+
+._is-cypress-mode {
+    &._hide-scrollbar .bar {
+        display: none;
+    }
+
+    &._hide-cursor * {
+        caret-color: transparent;
+    }
+}
