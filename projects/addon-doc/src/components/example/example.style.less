@@ -9,6 +9,11 @@
     :host-context(tui-root._mobile) {
         padding-top: 2rem;
     }
+
+    &._cypress-mode * {
+        // prevent flaky e2e tests when cursor blinked
+        caret-color: transparent;
+    }
 }
 
 .t-title {
