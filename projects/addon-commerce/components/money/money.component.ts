@@ -5,7 +5,6 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TuiCurrency} from '@taiga-ui/addon-commerce/enums';
 import {TuiCurrencyVariants, TuiMoneySignT} from '@taiga-ui/addon-commerce/types';
 import {CHAR_EN_DASH, tuiDefaultProp} from '@taiga-ui/cdk';
 import {
@@ -14,6 +13,8 @@ import {
     TUI_NUMBER_FORMAT,
     TuiDecimalT,
 } from '@taiga-ui/core';
+
+import {TUI_MONEY_OPTIONS, TuiMoneyOptions} from './money-options';
 
 @Component({
     selector: 'tui-money',
@@ -28,27 +29,27 @@ export class TuiMoneyComponent {
 
     @Input()
     @tuiDefaultProp()
-    decimal: TuiDecimalT = 'not-zero';
+    decimal: TuiDecimalT = this.options.decimal;
 
     @Input()
     @tuiDefaultProp()
-    currency: TuiCurrencyVariants = TuiCurrency.Ruble;
+    currency: TuiCurrencyVariants = this.options.currency;
 
     @Input()
     @tuiDefaultProp()
-    sign: TuiMoneySignT = 'negative-only';
+    sign: TuiMoneySignT = this.options.sign;
 
     @Input()
     @tuiDefaultProp()
-    colored = false;
+    colored = this.options.colored;
 
     @Input()
     @tuiDefaultProp()
-    precision = 2;
+    precision = this.options.precision;
 
     @Input()
     @tuiDefaultProp()
-    singleColor = false;
+    singleColor = this.options.singleColor;
 
     get integerPart(): string {
         return formatNumber(
@@ -109,5 +110,7 @@ export class TuiMoneyComponent {
     constructor(
         @Inject(TUI_NUMBER_FORMAT)
         private readonly numberFormat: NumberFormatSettings,
+        @Inject(TUI_MONEY_OPTIONS)
+        private readonly options: TuiMoneyOptions,
     ) {}
 }
