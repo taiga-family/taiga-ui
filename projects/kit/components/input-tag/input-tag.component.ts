@@ -64,7 +64,7 @@ import {filter, map, mapTo, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag-options';
 
-const EVENT_Y_TO_X_COEFFICENT = 3;
+const EVENT_Y_TO_X_COEFFICIENT = 3;
 
 @Component({
     selector: 'tui-input-tag',
@@ -90,7 +90,7 @@ export class TuiInputTagComponent
     implements TuiFocusableElementAccessor, TuiDataListHost<string>
 {
     @ViewChild(TuiHostedDropdownComponent)
-    private readonly dropdown?: TuiHostedDropdownComponent;
+    private readonly hostedDropdown?: TuiHostedDropdownComponent;
 
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
@@ -200,6 +200,9 @@ export class TuiInputTagComponent
         readonly controller: TuiTextfieldController,
         @Inject(TUI_INPUT_TAG_OPTIONS)
         private readonly options: TuiInputTagOptions,
+        @Optional()
+        @Inject(TuiHostedDropdownComponent)
+        private readonly parentHostedDropdown?: TuiHostedDropdownComponent,
     ) {
         super(control, changeDetectorRef);
     }
@@ -213,7 +216,7 @@ export class TuiInputTagComponent
     get focused(): boolean {
         return (
             isNativeFocusedIn(this.elementRef.nativeElement) ||
-            (!!this.dropdown && this.dropdown.focused)
+            !!this.hostedDropdown?.focused
         );
     }
 
@@ -298,6 +301,7 @@ export class TuiInputTagComponent
         this.updateSearch('');
         this.clear();
         this.focusInput();
+        this.parentHostedDropdown?.updateOpen(true);
     }
 
     onActiveZone(active: boolean) {
@@ -466,7 +470,7 @@ export class TuiInputTagComponent
             filter(event => event.deltaX === 0 && this.shouldScroll(nativeElement)),
             preventDefault(),
             map(({deltaY}) =>
-                Math.max(nativeElement.scrollLeft + deltaY * EVENT_Y_TO_X_COEFFICENT, 0),
+                Math.max(nativeElement.scrollLeft + deltaY * EVENT_Y_TO_X_COEFFICIENT, 0),
             ),
         );
         const start$ = this.scrollToStart$.pipe(mapTo(0));
