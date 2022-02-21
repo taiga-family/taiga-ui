@@ -2,6 +2,9 @@ import {ElementRef, Inject, Injectable, PipeTransform} from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
 import {CHROMIUM_EDGE_START_VERSION, isEdgeOlderThan, isIE} from '@taiga-ui/cdk';
 
+import {calculateColorSegments} from './calculate-color-segments';
+
+// TODO delete in v3.0
 @Injectable()
 export abstract class AbstractTuiColorSegments<T> implements PipeTransform {
     private readonly isOldBrowsers =
@@ -21,13 +24,7 @@ export abstract class AbstractTuiColorSegments<T> implements PipeTransform {
         }
 
         const elementWidth = this.elementRef.nativeElement.offsetWidth;
-        const segmentWidth = Math.ceil(elementWidth / colors.length);
-        const colorsString = colors.reduce(
-            (acc, color, i) =>
-                `${acc}, ${color} ${i * segmentWidth}px ${(i + 1) * segmentWidth}px`,
-            '',
-        );
 
-        return `linear-gradient(to right ${colorsString})`;
+        return calculateColorSegments(colors, elementWidth);
     }
 }
