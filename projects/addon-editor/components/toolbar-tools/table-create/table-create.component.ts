@@ -21,6 +21,10 @@ export class TuiTableCreateComponent {
     ) {}
 
     addTable({rows, cols}: {rows: number; cols: number}) {
+        const prev = this.editor.state.selection.anchor;
+
+        this.editor.setHardBreak();
+        this.editor.setTextSelection(prev);
         this.editor.insertTable(rows, cols);
     }
 }

@@ -69,6 +69,36 @@ describe("Editor's toolbar", () => {
         cy.get('@wrapper').matchImageSnapshot('2-3-inserted-new-smile');
     });
 
+    it('make a html table by 2x2', () => {
+        cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+        cy.get('@wrapper').find('[contenteditable]').as('input');
+
+        cy.get('@input').scrollIntoView().type('\n').should('be.visible');
+
+        cy.get('#basic')
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot('3-1-editor-break-line');
+
+        cy.get('@wrapper').find('button[icon="tuiIconTableLarge"]').as('tableTool');
+
+        cy.get('@tableTool').focus().should('be.focused').click();
+
+        cy.get('#basic')
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot('3-2-editor-table-tool');
+
+        cy.get('@tableTool')
+            .get('tui-table-size-selector .t-column')
+            .eq(1)
+            .find('.t-cell')
+            .eq(1)
+            .click();
+
+        cy.get('#basic')
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot('3-3-editor-table-2x2');
+    });
+
     describe('has keyboard horizontal navigation between tool-buttons', () => {
         it('focuses nearest left/right active tool on "Arrow Right"/"Arrow Left"', () => {
             cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
