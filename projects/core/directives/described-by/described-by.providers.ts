@@ -31,27 +31,34 @@ export function describedByFactory(
     focusVisible$: Observable<boolean>,
     {nativeElement}: ElementRef<HTMLElement>,
 ): Observable<boolean> {
-    return merge(
-        focusVisible$.pipe(
+    return focusVisible$
+        .pipe(
             filter(v => v),
             switchMapTo(
                 timer(DELAY).pipe(
                     mapTo(true),
-                    takeUntil(typedFromEvent(nativeElement, 'keydown')),
+                    takeUntil(
+                        merge(
+                            typedFromEvent(nativeElement, 'keydown'),
+                            typedFromEvent(nativeElement, 'blur'),
+                        ),
+                    ),
                 ),
             ),
             switchMapTo(
-                typedFromEvent(nativeElement, 'keydown').pipe(
-                    filter(({key}) => key === 'Escape'),
-                    take(1),
-                    tap(event => {
-                        event.stopPropagation();
-                    }),
-                    mapTo(false),
-                    startWith(true),
+                merge(
+                    typedFromEvent(nativeElement, 'keydown').pipe(
+                        filter(({key}) => key === 'Escape'),
+                        take(1),
+                        tap(event => {
+                            event.stopPropagation();
+                        }),
+                        mapTo(false),
+                        startWith(true),
+                    ),
+                    typedFromEvent(nativeElement, 'blur').pipe(mapTo(false)),
                 ),
             ),
-        ),
-        typedFromEvent(nativeElement, 'blur').pipe(mapTo(false)),
-    ).pipe(distinctUntilChanged());
+        )
+        .pipe(distinctUntilChanged());
 }
