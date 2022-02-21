@@ -11,6 +11,7 @@ import {EMPTY} from 'rxjs';
 
 import {TuiFocusableElementAccessor} from '../../../interfaces/focusable-element-accessor';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '../../../tokens/focusable-item-accessor';
+import {TUI_IS_IOS} from '../../../tokens/is-ios';
 import {isNativeFocused} from '../../../utils/focus/is-native-focused';
 import {TuiAutoFocusDirective} from '../autofocus.directive';
 import {TuiAutoFocusModule} from '../autofocus.module';
@@ -118,6 +119,49 @@ describe('TuiAutoFocus directive', () => {
                 );
                 done();
             });
+        });
+    });
+
+    describe('works for iOS decoy method', () => {
+        @Component({
+            template: `
+                <input tuiAutoFocus />
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class TestComponentIos {
+            @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
+            element!: ElementRef<HTMLElement>;
+        }
+
+        let fixture: ComponentFixture<TestComponentIos>;
+        let testComponent: TestComponentIos;
+
+        configureTestSuite(() => {
+            TestBed.configureTestingModule({
+                imports: [TuiAutoFocusModule],
+                declarations: [TestComponentIos],
+                providers: [
+                    {
+                        provide: TUI_IS_IOS,
+                        useValue: true,
+                    },
+                ],
+            });
+        });
+
+        beforeEach(() => {
+            fixture = TestBed.createComponent(TestComponentIos);
+            testComponent = fixture.componentInstance;
+        });
+
+        it('focuses', done => {
+            fixture.detectChanges();
+
+            setTimeout(() => {
+                expect(isNativeFocused(testComponent.element.nativeElement)).toBe(true);
+                done();
+            }, 100);
         });
     });
 
