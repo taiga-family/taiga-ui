@@ -92,7 +92,7 @@ export class TuiInputMonthRangeComponent
             : 'tuiIconCalendar';
     }
 
-    computeValue(from: string, to: string): string {
+    computeValue(from: string | null, to: string | null): string {
         const formattedTo = from === to && this.focused ? '' : to;
 
         return `${from} — ${formattedTo}`;
