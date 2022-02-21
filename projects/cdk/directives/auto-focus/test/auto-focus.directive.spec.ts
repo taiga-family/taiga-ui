@@ -50,7 +50,7 @@ describe('TuiAutoFocus directive', () => {
             setTimeout(() => {
                 expect(isNativeFocused(testComponent.element.nativeElement)).toBe(true);
                 done();
-            });
+            }, 100);
         });
     });
 
@@ -118,7 +118,7 @@ describe('TuiAutoFocus directive', () => {
                     testComponent.focusable.nativeFocusableElement,
                 );
                 done();
-            });
+            }, 100);
         });
     });
 
@@ -198,7 +198,7 @@ describe('TuiAutoFocus directive', () => {
             setTimeout(() => {
                 expect(isNativeFocused(testComponent.element.nativeElement)).toBe(false);
                 done();
-            });
+            }, 100);
         });
     });
 });

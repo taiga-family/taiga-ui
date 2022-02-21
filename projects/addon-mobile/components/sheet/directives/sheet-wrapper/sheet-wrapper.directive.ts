@@ -58,12 +58,14 @@ export class TuiSheetWrapperDirective {
     }
 
     @tuiPure
-    get height$(): Observable<number> {
+    get height$(): Observable<number | null> {
         return this.scroll$.pipe(map(this.getHeight.bind(this)));
     }
 
-    private getHeight(value: number): number {
-        return clamp(this.withImage(value) + OFFSET, OFFSET, this.windowRef.innerHeight);
+    private getHeight(value: number): number | null {
+        return this.sheet?.context.overlay
+            ? null
+            : clamp(this.withImage(value) + OFFSET, OFFSET, this.windowRef.innerHeight);
     }
 
     private withImage(value: number): number {
