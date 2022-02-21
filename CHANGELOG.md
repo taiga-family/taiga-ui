@@ -1,13 +1,14 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ## 2.35.0 (2022-02-21)
 
-
 ### Bug Fixes
 
-* **addon-mobile:** support late rendering ([#1369](https://github.com/tinkoff/taiga-ui/issues/1369)) ([2aee3cf](https://github.com/tinkoff/taiga-ui/commit/2aee3cfa6221ddcf18e902940483fab3204ed929))
+- **addon-mobile:** support late rendering ([#1369](https://github.com/tinkoff/taiga-ui/issues/1369))
+  ([2aee3cf](https://github.com/tinkoff/taiga-ui/commit/2aee3cfa6221ddcf18e902940483fab3204ed929))
 
 ## [2.34.0](https://github.com/tinkoff/taiga-ui/compare/v2.33.0...v2.34.0) (2022-02-14)
 
