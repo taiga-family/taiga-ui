@@ -105,6 +105,12 @@ export class TuiSheetComponent<T> implements AfterViewInit {
         nativeElement.scrollTo({top, behavior: 'smooth'});
     }
 
+    close() {
+        if (this.context.closeable) {
+            this.context.$implicit.complete();
+        }
+    }
+
     private get contentTop(): number {
         return this.content?.nativeElement.offsetTop ?? Infinity;
     }
