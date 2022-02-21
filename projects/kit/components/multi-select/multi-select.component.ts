@@ -30,13 +30,18 @@ import {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DATA_LIST_ACCESSOR,
     TUI_DATA_LIST_HOST,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDataListAccessor,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHostedDropdownComponent,
+    TuiSizeL,
+    TuiSizeS,
     TuiSvgService,
+    TuiTextfieldController,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
@@ -63,6 +68,7 @@ import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select-op
             useExisting: forwardRef(() => TuiMultiSelectComponent),
         },
         FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+        TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })
 export class TuiMultiSelectComponent<T>
@@ -130,10 +136,17 @@ export class TuiMultiSelectComponent<T>
         private readonly itemsHandlers: TuiItemsHandlers<T>,
         @Inject(TUI_MULTI_SELECT_OPTIONS)
         private readonly options: TuiMultiSelectOptions<T>,
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
+        readonly controller: TuiTextfieldController,
     ) {
         super(control, changeDetectorRef);
 
         svgService.define({iconBlank});
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.controller.size;
     }
 
     get arrow(): PolymorpheusContent {

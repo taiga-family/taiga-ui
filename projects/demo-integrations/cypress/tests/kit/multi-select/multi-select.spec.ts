@@ -4,24 +4,52 @@ import {
 } from '../../../support/shared.entities';
 
 describe('MultiSelect', () => {
-    beforeEach(() => {
-        cy.viewport('macbook-13');
-        cy.goToDemoPage(MULTI_SELECT_PAGE_URL);
-        cy.hideHeader();
+    describe('Description and examples page', () => {
+        beforeEach(() => {
+            cy.viewport('macbook-13');
+            cy.goToDemoPage(MULTI_SELECT_PAGE_URL);
+            cy.hideHeader();
+        });
+
+        it('does not overflow arrow icon by many tags', () => {
+            cy.get('#object-array').findByAutomationId('tui-doc-example').as('wrapper');
+
+            cy.get('@wrapper').find('tui-multi-select').click();
+
+            [0, 1, 2, 3].forEach(() => cy.get('[tuioption]').first().click());
+
+            cy.get('@wrapper').findByAutomationId('tui-multi-select__arrow').click();
+
+            cy.get('@wrapper')
+                .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+                .matchImageSnapshot(`01-not-overflow-by-tags`);
+        });
     });
 
-    it('does not overflow arrow icon by many tags', () => {
-        cy.get('#object-array').findByAutomationId('tui-doc-example').as('wrapper');
+    describe('API page', () => {
+        beforeEach(() => cy.viewport(400, 812));
 
-        cy.get('@wrapper').find('tui-multi-select').click();
+        ['s', 'm', 'l'].forEach(size => {
+            it(`tuiTextfieldSize=${size}`, () => {
+                cy.goToDemoPage(
+                    `components/multi-select/API?tuiMode=null&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
+                );
 
-        [0, 1, 2, 3].forEach(() => cy.get('[tuioption]').first().click());
+                cy.getByAutomationId('tui-multi-select__arrow').click({force: true});
 
-        cy.get('@wrapper').findByAutomationId('tui-multi-select__arrow').click();
+                [0, 1, 2, 3, 4].forEach(index => {
+                    cy.get('tui-data-list-wrapper')
+                        .findByAutomationId('tui-data-list-wrapper__option')
+                        .eq(index)
+                        .click({force: true});
+                });
 
-        cy.get('@wrapper')
-            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
-            .matchImageSnapshot(`01-not-overflow-by-tags`);
+                cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION).matchImageSnapshot(
+                    `02-multi-select-size-${size}`,
+                    {capture: 'viewport'},
+                );
+            });
+        });
     });
 
     it('checking that the arrow icon is rotated when enabled tuiTextfieldCleaner', () => {
