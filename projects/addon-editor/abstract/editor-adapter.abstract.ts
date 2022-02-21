@@ -1,5 +1,6 @@
 import {Directive} from '@angular/core';
-import type {Editor} from '@tiptap/core';
+import type {Editor, Range} from '@tiptap/core';
+import type {EditorState} from 'prosemirror-state';
 import {Observable, Subject} from 'rxjs';
 
 @Directive()
@@ -10,6 +11,8 @@ export abstract class TuiEditor {
 
     readonly stateChange$ = new Subject();
     readonly valueChange$ = new Subject<string>();
+
+    abstract get state(): EditorState;
 
     abstract isActive$(name: string | Record<string, string>): Observable<boolean>;
 
@@ -52,6 +55,8 @@ export abstract class TuiEditor {
     abstract splitCell(): void;
     abstract setHeading(level: number): void;
     abstract setParagraph(): void;
+    abstract setHardBreak(): void;
+    abstract setTextSelection(value: number | Range): void;
     abstract toggleLink(href: string): void;
     abstract setLink(href: string): void;
     abstract unsetLink(): void;
