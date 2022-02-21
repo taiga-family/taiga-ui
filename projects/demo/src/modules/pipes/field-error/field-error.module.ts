@@ -10,6 +10,7 @@ import {
     TuiErrorModule,
     TuiHintModule,
     TuiLabelModule,
+    TuiLinkModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -25,7 +26,7 @@ import {TuiFieldErrorPipeExample2} from './examples/2';
 import {TuiFieldErrorPipeExample3} from './examples/3';
 import {TuiFieldErrorPipeExample4} from './examples/4';
 import {TuiFieldErrorPipeExample5} from './examples/5';
-import {TuiFieldErrorPipeExample6} from './examples/6';
+import {TuiFieldErrorContentPipeExample6} from './examples/6';
 import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
 
 @NgModule({
@@ -37,13 +38,15 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
         TuiErrorModule,
         TuiFieldErrorPipeModule,
         TuiLabelModule,
-        TuiTableModule,
         TuiHintModule,
         TuiInputModule,
-        TuiInputNumberModule,
         TuiButtonModule,
         TuiInputPhoneModule,
         TuiInputCountModule,
+        TuiLinkModule,
+        TuiTableModule,
+        TuiHintModule,
+        TuiInputNumberModule,
         TuiCurrencyPipeModule,
         RouterModule.forChild(generateRoutes(ExampleTuiFieldErrorPipeComponent)),
     ],
@@ -54,8 +57,8 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
         TuiFieldErrorPipeExample3,
         TuiFieldErrorPipeExample4,
         TuiFieldErrorPipeExample5,
-        TuiFieldErrorPipeExample6,
+        TuiFieldErrorContentPipeExample6,
     ],
     exports: [ExampleTuiFieldErrorPipeComponent],
 })
-export class ExampleTuiFilterByInputModule {}
+export class ExampleTuiFieldErrorModule {}
