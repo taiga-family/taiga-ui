@@ -3,12 +3,54 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## 2.35.0 (2022-02-21)
+## [2.35.0](https://github.com/tinkoff/taiga-ui/compare/v2.34.0...v2.35.0) (2022-02-21)
+
+### Features
+
+- **addon-commerce:** support options in money component ([#1434](https://github.com/tinkoff/taiga-ui/issues/1434))
+  ([85bf60a](https://github.com/tinkoff/taiga-ui/commit/85bf60a66afc042fd4ea96de49e316a0b72f6fa7))
+- **kit:** new pipe `HintErrorPipe` ([#1405](https://github.com/tinkoff/taiga-ui/issues/1405))
+  ([71e7a96](https://github.com/tinkoff/taiga-ui/commit/71e7a969f3fd7eaa2a5015459fc5b4b7e34cc1d8))
 
 ### Bug Fixes
 
+- **addon-editor:** add space after table created ([#1437](https://github.com/tinkoff/taiga-ui/issues/1437))
+  ([b535a17](https://github.com/tinkoff/taiga-ui/commit/b535a171387f5c23a4abe28b36ecffd884d5bc12))
+- **addon-editor:** prevent auto clicking on toolbar when editor is inside a label
+  ([#1383](https://github.com/tinkoff/taiga-ui/issues/1383))
+  ([0d61d60](https://github.com/tinkoff/taiga-ui/commit/0d61d60e9e13b44cc242a967080db113703014b6))
+- **addon-mobile:** `Sheet` fix unnecessary calculations for overlay mode
+  ([#1439](https://github.com/tinkoff/taiga-ui/issues/1439))
+  ([44a77fc](https://github.com/tinkoff/taiga-ui/commit/44a77fcc5567123152c8b6068927c0cdd4d13989))
+- **addon-mobile:** fix styles for disabled cell ([#1401](https://github.com/tinkoff/taiga-ui/issues/1401))
+  ([79219b8](https://github.com/tinkoff/taiga-ui/commit/79219b8355c8ccee7a908131f8c60ffd9260d776))
 - **addon-mobile:** support late rendering ([#1369](https://github.com/tinkoff/taiga-ui/issues/1369))
   ([2aee3cf](https://github.com/tinkoff/taiga-ui/commit/2aee3cfa6221ddcf18e902940483fab3204ed929))
+- **cdk:** `Autofocus` wait for Angular animations to finish before focusing
+  ([#1435](https://github.com/tinkoff/taiga-ui/issues/1435))
+  ([8bfc6d7](https://github.com/tinkoff/taiga-ui/commit/8bfc6d7c5ca94ed855bfd339c6539b4dd78a41e1))
+- **cdk:** `Dropdown` fix shaking during scroll ([#1416](https://github.com/tinkoff/taiga-ui/issues/1416))
+  ([512a35e](https://github.com/tinkoff/taiga-ui/commit/512a35eb90f29ca28f3453fdeebdb8dcfd9829ab))
+- **core:** `DescribedByDirective` fix hint visibility ([#1436](https://github.com/tinkoff/taiga-ui/issues/1436))
+  ([518dd27](https://github.com/tinkoff/taiga-ui/commit/518dd27ee8cd76e2efe8e753de78bdd24933787d))
+- **core:** fix form-header style ([#1407](https://github.com/tinkoff/taiga-ui/issues/1407))
+  ([8e0a9af](https://github.com/tinkoff/taiga-ui/commit/8e0a9afbf9e135140530149a3fbedc6f0459c32e))
+- **core:** provide fallback value for border-width ([#1402](https://github.com/tinkoff/taiga-ui/issues/1402))
+  ([766e106](https://github.com/tinkoff/taiga-ui/commit/766e106b56226a2ae3fa522893e8127cb552166b))
+- **kit:** `InputMonth` fix change detection in `Textfield` mode
+  ([#1415](https://github.com/tinkoff/taiga-ui/issues/1415))
+  ([010c1b4](https://github.com/tinkoff/taiga-ui/commit/010c1b41f52d0edb040c5f268d709a8df24a5b3e))
+- **kit:** `LineClamp` prevent expression changed exception ([#1375](https://github.com/tinkoff/taiga-ui/issues/1375))
+  ([2eca9a8](https://github.com/tinkoff/taiga-ui/commit/2eca9a85dc7b980e795b0d0c8e4d0f08c207e5a9))
+- **kit:** `ProgressBar` color segments with dynamic progress width
+  ([#1406](https://github.com/tinkoff/taiga-ui/issues/1406))
+  ([0c079d6](https://github.com/tinkoff/taiga-ui/commit/0c079d6365abaf3862361f51f3af142bf7ddd5c7))
+- **kit:** `Slider` work with `number` instead of `string` ([#1420](https://github.com/tinkoff/taiga-ui/issues/1420))
+  ([368ded5](https://github.com/tinkoff/taiga-ui/commit/368ded59b16eb1abf37953f4e575ae25b08f0774))
+- **kit:** correct icons' alignment in multi-select ([#1417](https://github.com/tinkoff/taiga-ui/issues/1417))
+  ([9a6b126](https://github.com/tinkoff/taiga-ui/commit/9a6b126668e60a16976f9f3f09a6b517e32c3a89))
+- **kit:** track openChange when clear value in multi-select ([#1408](https://github.com/tinkoff/taiga-ui/issues/1408))
+  ([dfb047f](https://github.com/tinkoff/taiga-ui/commit/dfb047fee43eb11ddd6aa34f2c81379a6738c653))
 
 ## [2.34.0](https://github.com/tinkoff/taiga-ui/compare/v2.33.0...v2.34.0) (2022-02-14)
 
