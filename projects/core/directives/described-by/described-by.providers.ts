@@ -1,5 +1,10 @@
 import {ElementRef, InjectionToken, Provider} from '@angular/core';
-import {TuiDestroyService, TuiFocusVisibleService, typedFromEvent} from '@taiga-ui/cdk';
+import {
+    stopPropagation,
+    TuiDestroyService,
+    TuiFocusVisibleService,
+    typedFromEvent,
+} from '@taiga-ui/cdk';
 import {merge, Observable, timer} from 'rxjs';
 import {
     distinctUntilChanged,
@@ -9,7 +14,6 @@ import {
     switchMapTo,
     take,
     takeUntil,
-    tap,
 } from 'rxjs/operators';
 
 const DELAY = 1000;
@@ -33,7 +37,7 @@ export function describedByFactory(
 ): Observable<boolean> {
     return focusVisible$
         .pipe(
-            filter(v => v),
+            filter(Boolean),
             switchMapTo(
                 timer(DELAY).pipe(
                     mapTo(true),
@@ -50,9 +54,7 @@ export function describedByFactory(
                     typedFromEvent(nativeElement, 'keydown').pipe(
                         filter(({key}) => key === 'Escape'),
                         take(1),
-                        tap(event => {
-                            event.stopPropagation();
-                        }),
+                        stopPropagation(),
                         mapTo(false),
                         startWith(true),
                     ),
