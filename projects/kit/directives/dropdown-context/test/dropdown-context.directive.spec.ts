@@ -36,13 +36,12 @@ describe('TuiDropdownContext directive', () => {
         fixture.detectChanges();
     });
 
-    it('does not show dropdown if NO right-click was made', async () => {
-        return fixture.whenStable().then(() => {
+    it('does not show dropdown if NO right-click was made', () =>
+        fixture.whenStable().then(() => {
             expect(getTextInsideDropdown()).toBeNull();
-        });
-    });
+        }));
 
-    it('does not show dropdown if left-click was made', async () => {
+    it('does not show dropdown if left-click was made', () => {
         getRootBlock()?.click();
 
         return fixture.whenStable().then(() => {
@@ -56,7 +55,7 @@ describe('TuiDropdownContext directive', () => {
         expect(getTextInsideDropdown()).toBe('Text inside dropdown');
     });
 
-    it('closes dropdown on esc button', async () => {
+    it('closes dropdown on esc button', () => {
         dispatchEventFromRoot(rightClickEvent);
         fixture.detectChanges();
 
@@ -69,7 +68,7 @@ describe('TuiDropdownContext directive', () => {
         });
     });
 
-    it('does not close dropdown on left click inside', async () => {
+    it('does not close dropdown on left click inside', () => {
         dispatchEventFromRoot(rightClickEvent);
         fixture.detectChanges();
 
@@ -82,7 +81,7 @@ describe('TuiDropdownContext directive', () => {
         });
     });
 
-    it('closes dropdown on left click outside', async () => {
+    it('closes dropdown on left click outside', () => {
         dispatchEventFromRoot(rightClickEvent);
         fixture.detectChanges();
 

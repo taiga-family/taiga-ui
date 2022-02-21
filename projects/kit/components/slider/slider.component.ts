@@ -1,5 +1,6 @@
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ElementRef,
     HostBinding,
@@ -14,8 +15,10 @@ import {
     CHROMIUM_EDGE_START_VERSION,
     isEdgeOlderThan,
     tuiDefaultProp,
+    watch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
+import {take} from 'rxjs/operators';
 
 @Component({
     /**
@@ -60,6 +63,10 @@ export class TuiSliderComponent {
         return Number(this.elementRef.nativeElement.step) || 1;
     }
 
+    get value(): number {
+        return Number(this.elementRef.nativeElement.value) || 0;
+    }
+
     @HostBinding('style.--tui-slider-fill-percentage.%')
     get fillPercentage(): number {
         return (100 * this.value) / (this.max - this.min);
@@ -75,20 +82,24 @@ export class TuiSliderComponent {
         return isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent);
     }
 
-    get value(): number {
-        const {control} = this;
-        const controlValue =
-            control instanceof NgModel ? control.viewModel : control?.value;
-
-        return controlValue || Number(this.elementRef.nativeElement.value) || 0;
-    }
-
     constructor(
         @Optional()
         @Self()
         @Inject(NgControl)
-        private readonly control: NgControl | null,
+        control: NgControl | null,
+        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLInputElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
-    ) {}
+    ) {
+        if (control instanceof NgModel) {
+            /**
+             * The ValueAccessor.writeValue method is called twice on any value accessor during component initialization,
+             * when a control is bound using [(ngModel)], first time with a phantom null value.
+             * With `changeDetection: ChangeDetectionStrategy.OnPush` the second call of writeValue with real value don't re-render the view.
+             * ___
+             * See this {@link https://github.com/angular/angular/issues/14988 issue}
+             */
+            control.valueChanges?.pipe(watch(changeDetectorRef), take(1)).subscribe();
+        }
+    }
 }

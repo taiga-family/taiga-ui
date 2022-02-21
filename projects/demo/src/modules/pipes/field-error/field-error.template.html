@@ -1,10 +1,22 @@
 <tui-doc-page header="FieldErrorPipe" package="KIT" type="pipes">
     <ng-template i18n pageTab>
-        FieldErrorPipe takes order of errors as array and transform it to
-        validation error of a field. Can be used with
-        <code>TuiError</code>
-        or
-        <code>TuiHint</code>
+        <p>
+            FieldErrorPipe takes order of errors as array and transform it to
+            <code>TuiValidationError</code>
+            . Can be used with
+            <code>TuiError</code>
+        </p>
+        <p>
+            You can also use
+            <code>tuiFieldErrorContentPipe</code>
+            with
+            <code>TuiHint</code>
+            (see
+            <a tuiLink href="/pipes/field-error#content">
+                tuiFieldErrorContentPipe example
+            </a>
+            ). It returns a content of the TuiValidationError.
+        </p>
 
         <tui-doc-example
             id="base"
@@ -16,9 +28,9 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="hiht"
+            id="customMessages"
             i18n-heading
-            heading="in a hint"
+            heading="With custom messages for validators"
             [content]="example2"
         >
             <tui-field-error-pipe-example-2></tui-field-error-pipe-example-2>
@@ -52,12 +64,12 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="customMessages"
+            id="content"
             i18n-heading
-            heading="With custom messages for validators"
+            heading="tuiFieldErrorContentPipe"
             [content]="example6"
         >
-            <tui-field-error-pipe-example-6></tui-field-error-pipe-example-6>
+            <tui-field-error-content-pipe-example-6></tui-field-error-content-pipe-example-6>
         </tui-doc-example>
     </ng-template>
 

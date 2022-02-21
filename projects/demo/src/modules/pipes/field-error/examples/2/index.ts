@@ -1,13 +1,22 @@
 import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
+import {interval} from 'rxjs';
+import {map, scan, startWith} from 'rxjs/operators';
+
+export function maxLengthValidator(context: {requiredLength: string}): string {
+    return `Maximum length — ${context.requiredLength}`;
+}
+
+export function minLengthValidator(context: {requiredLength: string}): string {
+    return `Minimum length — ${context.requiredLength}`;
+}
 
 @Component({
     selector: 'tui-field-error-pipe-example-2',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
     providers: [
@@ -15,17 +24,37 @@ import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
             provide: TUI_VALIDATION_ERRORS,
             useValue: {
                 required: 'Enter this!',
-                max: 'Too expensive',
+                email: 'Enter a valid email',
+                maxlength: maxLengthValidator,
+                minlength: minLengthValidator,
+                min: interval(2000).pipe(
+                    scan(acc => !acc, false),
+                    map(val => (val ? 'Fix please' : 'Min number 3')),
+                    startWith('Min number 3'),
+                ),
             },
         },
     ],
 })
 export class TuiFieldErrorPipeExample2 {
-    readonly data = [{name: 'Latte'}, {name: 'Cappuccino'}] as const;
+    readonly testValue1 = new FormControl('', [
+        Validators.minLength(4),
+        Validators.maxLength(4),
+    ]);
 
-    latteControl = new FormControl(null, [Validators.required, Validators.max(6)]);
-    cappuccinoControl = new FormControl(null, [Validators.required, Validators.max(5)]);
-    controls = [this.latteControl, this.cappuccinoControl];
+    readonly testValue2 = new FormControl('', [Validators.required, Validators.email]);
 
-    readonly columns = ['name', 'price'];
+    readonly testValue3 = new FormControl(2, [Validators.min(3)]);
+
+    readonly testForm = new FormGroup({
+        testValue1: this.testValue1,
+        testValue2: this.testValue2,
+        testValue3: this.testValue3,
+    });
+
+    constructor() {
+        this.testValue1.valueChanges.subscribe(() => {
+            this.testValue1.markAsTouched();
+        });
+    }
 }

@@ -50,7 +50,7 @@ describe('Slider', () => {
         });
     });
 
-    beforeEach(async () => {
+    beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

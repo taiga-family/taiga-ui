@@ -23,4 +23,37 @@ describe('MultiSelect', () => {
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .matchImageSnapshot(`01-not-overflow-by-tags`);
     });
+
+    it('checking that the arrow icon is rotated when enabled tuiTextfieldCleaner', () => {
+        cy.goToDemoPage(
+            'components/multi-select/API?tuiMode=null&tuiTextfieldCleaner=true',
+        );
+        cy.hideHeader();
+        cy.hideNavigation();
+
+        cy.getByAutomationId('tui-multi-select__arrow').click({force: true});
+
+        [0, 1, 2, 3, 4].forEach(index => {
+            cy.get('tui-data-list-wrapper')
+                .findByAutomationId('tui-data-list-wrapper__option')
+                .eq(index)
+                .click({force: true});
+        });
+
+        cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION).matchImageSnapshot(
+            '02-multi-select-before-clear',
+            {capture: 'viewport'},
+        );
+
+        cy.getByAutomationId('tui-multi-select__arrow').click({force: true});
+
+        cy.getByAutomationId('tui-input-tag__cleaner')
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .click({force: true});
+
+        cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION).matchImageSnapshot(
+            '03-multi-select-after-clear',
+            {capture: 'viewport'},
+        );
+    });
 });

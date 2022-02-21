@@ -3,13 +3,8 @@
  */
 module.exports = {
     root: true,
-    extends: [
-        'eslint:recommended',
-        'plugin:@typescript-eslint/eslint-recommended',
-        '@tinkoff/eslint-config-angular',
-        './scripts/eslint/nx.js',
-    ],
-    ignorePatterns: ['projects/**/test.ts', 'projects/**/icons/all.ts'],
+    extends: ['@tinkoff/eslint-config-angular', './scripts/eslint/nx.js'],
+    ignorePatterns: ['projects/**/test.ts', 'projects/**/icons/all.ts', '*.js', '*.json'],
     parserOptions: {
         ecmaVersion: 2020,
         sourceType: 'module',
@@ -31,7 +26,7 @@ module.exports = {
         'no-return-assign': ['error', 'always'],
         'no-implicit-coercion': ['error', {allow: ['!!']}],
         '@typescript-eslint/await-thenable': 'error',
-        'require-await': 'off',
+        'require-await': 'error',
         '@typescript-eslint/require-await': 'error',
         '@typescript-eslint/no-unnecessary-type-constraint': 'error',
     },

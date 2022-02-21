@@ -325,7 +325,7 @@ export const ROUTES = [
         path: 'pipes/field-error',
         loadChildren: () =>
             import(`../pipes/field-error/field-error.module`).then(
-                m => m.ExampleTuiFilterByInputModule,
+                m => m.ExampleTuiFieldErrorModule,
             ),
         data: {
             title: 'FieldError',

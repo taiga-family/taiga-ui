@@ -41,5 +41,6 @@ export class ExampleTuiFieldErrorPipeComponent {
     readonly example6: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/6/index.ts'),
         HTML: import('!!raw-loader!./examples/6/index.html'),
+        LESS: import('!!raw-loader!./examples/6/index.less'),
     };
 }
