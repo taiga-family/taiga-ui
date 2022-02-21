@@ -30,7 +30,7 @@ import {
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
     TUI_DONE_WORD,
 } from '@taiga-ui/kit';
-import {Observable, race, timer} from 'rxjs';
+import {identity, MonoTypeOperatorFunction, Observable, race, timer} from 'rxjs';
 import {
     debounceTime,
     delay,
@@ -115,8 +115,7 @@ export class TuiMobileCalendarComponent {
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
-        @Inject(TUI_VALUE_STREAM)
-        valueChanges: Observable<TuiDayRange | null>,
+        @Inject(TUI_VALUE_STREAM) valueChanges: Observable<TuiDayRange | null>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_CANCEL_WORD) readonly cancelWord$: Observable<string>,
         @Inject(TUI_DONE_WORD) readonly doneWord$: Observable<string>,
@@ -127,8 +126,6 @@ export class TuiMobileCalendarComponent {
         @Inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS)
         readonly chooseDayOrRangeTexts$: Observable<[string, string]>,
     ) {
-        this.isIOS = isIOS;
-
         valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
             this.value = value;
         });
@@ -140,14 +137,7 @@ export class TuiMobileCalendarComponent {
 
     ngAfterViewInit() {
         // Virtual scroll has not yet rendered items even in ngAfterViewInit
-        this.monthsScrollRef?.scrolledIndexChange
-            .pipe(take(1), takeUntil(this.destroy$))
-            .subscribe(() => {
-                this.scrollToActiveYear();
-                this.scrollToActiveMonth();
-                this.initYearScroll();
-                this.initMonthScroll();
-            });
+        this.waitScrolledChange();
     }
 
     onClose() {
@@ -260,6 +250,33 @@ export class TuiMobileCalendarComponent {
             this.value.from.month +
             (this.value.from.year - STARTING_YEAR) * MONTHS_IN_YEAR
         );
+    }
+
+    private getYearsViewportSize() {
+        return this.yearsScrollRef?.getViewportSize() || 0;
+    }
+
+    private updateViewportDimension() {
+        this.yearsScrollRef?.checkViewportSize();
+        this.monthsScrollRef?.checkViewportSize();
+    }
+
+    private lateInit(): MonoTypeOperatorFunction<number> {
+        return this.getYearsViewportSize() > 0 ? identity : delay(200);
+    }
+
+    private waitScrolledChange() {
+        this.updateViewportDimension();
+
+        this.monthsScrollRef?.scrolledIndexChange
+            .pipe(this.lateInit(), take(1), takeUntil(this.destroy$))
+            .subscribe(() => {
+                this.updateViewportDimension();
+                this.initYearScroll();
+                this.initMonthScroll();
+                this.scrollToActiveYear();
+                this.scrollToActiveMonth();
+            });
     }
 
     private initYearScroll() {
