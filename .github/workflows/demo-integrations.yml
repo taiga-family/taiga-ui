@@ -12,6 +12,8 @@ on:
       - 'package.json'
       - 'tsconfig*'
       - '**/demo-integrations.yml'
+    branches-ignore:
+      - 'release/**'
   push:
     branches:
       - '!main'

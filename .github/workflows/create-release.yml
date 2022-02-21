@@ -22,6 +22,7 @@ jobs:
       - name: Fetch from origin repo
         uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
 
