@@ -7,7 +7,6 @@
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-primitive-textfield
-        *ngIf="months$ | async as months"
         class="textfield"
         [editable]="false"
         [disabled]="computedDisabled"
@@ -17,7 +16,7 @@
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
         [invalid]="computedInvalid"
-        [value]="computeValue(value, focused, months)"
+        [value]="value ? computeValue(value.from | tuiMapper : formatter | async, value.to | tuiMapper : formatter | async) : ''"
         (valueChange)="onValueChange($event)"
         (hoveredChange)="onHovered($event)"
     >

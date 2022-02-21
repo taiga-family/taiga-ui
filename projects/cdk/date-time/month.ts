@@ -91,6 +91,8 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     }
 
     /**
+     * @deprecated
+     * TODO remove in 3.0
      * Formatter month and year
      */
     get formattedMonth(): string {

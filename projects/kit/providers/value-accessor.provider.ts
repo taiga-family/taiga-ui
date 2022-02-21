@@ -1,6 +1,6 @@
 import {FactoryProvider, Optional, Self} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core/tokens';
+import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core';
 import {identity} from 'rxjs';
 
 // TODO: remove in ivy compilation
