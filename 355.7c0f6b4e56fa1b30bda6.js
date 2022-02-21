@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[355],{"k/AW":function(n,o,t){"use strict";t.r(o),o.default='<tui-input-month class="b-form" [formControl]="control">\n    Choose a month\n    <input tuiTextfield placeholder="Not September please" />\n</tui-input-month>\n'}}]);
