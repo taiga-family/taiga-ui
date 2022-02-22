@@ -1,6 +1,6 @@
 import {DEMO_PATHS} from '../../support/demo-paths';
 import {excluded} from '../../support/exclusions';
-import {EXAMPLE_ID} from '../../support/shared.entities';
+import {DEFAULT_TIMEOUT_BEFORE_ACTION, EXAMPLE_ID} from '../../support/shared.entities';
 
 describe('Demo', () => {
     DEMO_PATHS.forEach(path => {
@@ -8,14 +8,21 @@ describe('Demo', () => {
             cy.goToDemoPage(path, {waitAllIcons: true});
             cy.hideHeader();
 
-            cy.getByAutomationId(EXAMPLE_ID).each((sample, index) => {
+            cy.get('tui-doc-example').each((example, index) => {
+                cy.wrap(example)
+                    .find('.t-example')
+                    .scrollIntoView()
+                    .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+                    .findByAutomationId(EXAMPLE_ID)
+                    .as('example');
+
                 if (excluded(path, index + 1)) {
-                    return cy.wrap(sample);
+                    return cy.get('@example').should('be.visible');
                 }
 
                 return cy
-                    .wrap(sample)
-                    .scrollIntoView({offset: {top: 0, left: 0}, duration: 0})
+                    .get('@example')
+                    .should('be.visible')
                     .matchImageSnapshot(`${path}/${index + 1}`);
             });
         });

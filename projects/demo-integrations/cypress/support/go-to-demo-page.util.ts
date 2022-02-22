@@ -1,4 +1,4 @@
-import {DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION, NIGHT_THEME_KEY} from './shared.entities';
+import {NIGHT_THEME_KEY} from './shared.entities';
 import {stubExternalIcons} from './stub-external-icons.util';
 import {waitAllRequests} from './wait-requests.util';
 
@@ -62,6 +62,11 @@ export const goToDemoPage = (path: string, options: Options = {}) => {
     cy.clearLocalStorage(NEXT_URL_STORAGE_KEY);
     cy.document().its('fonts.status').should('equal', 'loaded');
 
+    cy.document().then((document: any) => {
+        cy.wrap(document.fonts).invoke('check', '15px Manrope').should('be.true');
+        cy.wrap(document.fonts).invoke('check', '1em Roboto').should('be.true');
+    });
+
     if (waitAllIcons) {
         waitAllRequests('@icons');
     }
@@ -75,6 +80,4 @@ export const goToDemoPage = (path: string, options: Options = {}) => {
             cy.get('._is-cypress-mode').invoke('addClass', '_hide-scrollbar');
         }
     }
-
-    cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION);
 };
