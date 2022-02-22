@@ -18,11 +18,6 @@ import {
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 
 import {TuiSliderComponent} from './slider.component';
-import {
-    checkHasMinMaxPercents,
-    findKeyStepsBoundariesByFn,
-    transformToControlValue,
-} from './slider-key-steps.utils';
 
 // @dynamic
 @Directive({
@@ -105,4 +100,30 @@ export class TuiSliderKeyStepsDirective
 
         return (newValuePercentage * (max - min)) / 100;
     }
+}
+
+function checkHasMinMaxPercents(steps: TuiKeySteps): boolean {
+    return !steps.length || (steps[0][0] === 0 && steps[steps.length - 1][0] === 100);
+}
+
+function findKeyStepsBoundariesByFn(
+    keySteps: TuiKeySteps,
+    fn: ([keyStepPercent, keyStepValue]: [number, number]) => boolean,
+): [[number, number], [number, number]] {
+    const keyStepUpperIndex = keySteps.findIndex((ketStep, i) => i && fn(ketStep));
+    const lowerStep = keySteps[keyStepUpperIndex - 1];
+    const upperStep = keySteps[keyStepUpperIndex];
+
+    return [lowerStep, upperStep];
+}
+
+function transformToControlValue(
+    valuePercentage: number,
+    [upperStepPercent, upperStepValue]: [number, number],
+    [lowerStepPercent, lowerStepValue]: [number, number],
+): number {
+    const ratio =
+        (valuePercentage - lowerStepPercent) / (upperStepPercent - lowerStepPercent);
+
+    return (upperStepValue - lowerStepValue) * ratio + lowerStepValue;
 }
