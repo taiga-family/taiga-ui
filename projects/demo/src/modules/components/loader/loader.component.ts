@@ -10,6 +10,9 @@ import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
 import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
+import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
+import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
+import {default as exampleOptions} from '!!raw-loader!./examples/import/define-options.txt';
 import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
 import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
@@ -25,6 +28,7 @@ export class ExampleTuiLoaderComponent {
     @ViewChild('textTemplate')
     readonly textTemplate: PolymorpheusContent = '';
 
+    readonly exampleOptions = exampleOptions;
     readonly exampleModule = exampleModule;
     readonly exampleHtml = exampleHtml;
 
@@ -42,6 +46,11 @@ export class ExampleTuiLoaderComponent {
     readonly example3: FrontEndExample = {
         TypeScript: example3Ts,
         HTML: example3Html,
+    };
+
+    readonly example4: FrontEndExample = {
+        TypeScript: example4Ts,
+        HTML: example4Html,
     };
 
     showLoader = true;
