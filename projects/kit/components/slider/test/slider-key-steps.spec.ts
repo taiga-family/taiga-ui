@@ -131,4 +131,58 @@ describe('TuiSliderKeyStepsDirective', () => {
             });
         }
     });
+
+    describe("works with float numbers (even if value doesn't satisfy input's steps)", () => {
+        beforeEach(() => {
+            testComponent.control = new FormControl(null);
+            testComponent.keySteps = [
+                [0, 0],
+                [25, 0.5],
+                [50, 0.9],
+                [75, 0.99],
+                [100, 1],
+            ];
+            testComponent.max = 100;
+            fixture.detectChanges();
+        });
+
+        const testsConditions = [
+            // Q1 (every step increase by 0.02 control value)
+            {controlValue: 0.11, expectedNativeValue: 6},
+            {controlValue: 0.221, expectedNativeValue: 11},
+            {controlValue: 0.322, expectedNativeValue: 16},
+            {controlValue: 0.433, expectedNativeValue: 22},
+
+            // Q2 (every step increase by 0.016 control value)
+            {controlValue: 0.54, expectedNativeValue: 28},
+            {controlValue: 0.64, expectedNativeValue: 34},
+            {controlValue: 0.78, expectedNativeValue: 43},
+
+            // Q3 (every step increase by 0.0036 control value)
+            {controlValue: 0.901, expectedNativeValue: 50},
+            {controlValue: 0.912, expectedNativeValue: 53},
+            {controlValue: 0.925, expectedNativeValue: 57},
+
+            // Q4 (every step increase by 0.0004 control value)
+            {controlValue: 0.99, expectedNativeValue: 75},
+            {controlValue: 0.991, expectedNativeValue: 78},
+            {controlValue: 0.992, expectedNativeValue: 80},
+            {controlValue: 0.993, expectedNativeValue: 83},
+            {controlValue: 0.994, expectedNativeValue: 85},
+            {controlValue: 0.999, expectedNativeValue: 98},
+            {controlValue: 0.9995, expectedNativeValue: 99},
+            {controlValue: 1, expectedNativeValue: 100},
+        ] as const;
+
+        for (const {controlValue, expectedNativeValue} of testsConditions) {
+            it(`${controlValue} => ${expectedNativeValue}/100`, () => {
+                testComponent.control = new FormControl(controlValue);
+                fixture.detectChanges();
+
+                expect(testComponent.inputElRef.nativeElement.value).toBe(
+                    `${expectedNativeValue}`,
+                );
+            });
+        }
+    });
 });
