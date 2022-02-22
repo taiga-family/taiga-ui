@@ -1,8 +1,9 @@
 <input
     tuiSlider
     type="range"
-    max="4"
     size="m"
+    [max]="1000"
+    [step]="250"
     [segments]="4"
     [formControl]="formControl"
 />
@@ -10,3 +11,8 @@
 <div class="labels">
     <span *ngFor="let label of labels" class="label">${{label}}</span>
 </div>
+
+<p>
+    Control value:
+    <code>{{formControl.value}}</code>
+</p>

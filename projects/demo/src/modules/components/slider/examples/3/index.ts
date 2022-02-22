@@ -11,6 +11,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiSliderExample3 {
-    readonly labels: number[] = [100, 250, 500, 750, 1000];
-    readonly formControl = new FormControl(1);
+    readonly labels: number[] = [0, 250, 500, 750, 1000];
+    readonly formControl = new FormControl(250);
 }
