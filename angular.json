@@ -481,9 +481,11 @@
                             "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
+                            "extractLicenses": false,
+                            "vendorChunk": true,
                             "buildOptimizer": true,
+                            "statsJson": false,
+                            "progress": false,
                             "budgets": [
                                 {
                                     "type": "initial",
@@ -512,9 +514,11 @@
                             "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
+                            "extractLicenses": false,
+                            "vendorChunk": true,
                             "buildOptimizer": true,
+                            "statsJson": false,
+                            "progress": false,
                             "budgets": [
                                 {
                                     "type": "initial",
