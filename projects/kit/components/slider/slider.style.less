@@ -11,12 +11,12 @@
 @track-height: 0.125rem;
 @ticks-thickness: 0.25rem;
 
-@track-color: var(--tui-base-03);
+@track-color: var(--tui-slider-track-color);
 @thumb-color: currentColor;
 
 .customize-track(@progress-filling: false) {
     height: @track-height;
-    border-radius: var(--tui-radius-m);
+    border-radius: inherit;
 
     @hide-first-tick: linear-gradient(to right, @thumb-color 0px @ticks-thickness, transparent @ticks-thickness);
     @hide-last-tick: linear-gradient(to left, @track-color 0px @ticks-thickness, transparent @ticks-thickness);
@@ -81,6 +81,11 @@
     background: @track-color;
     background-clip: content-box; /* To clip filling of paddings */
     outline: none;
+    border-radius: var(--tui-radius-m);
+
+    &::-webkit-slider-container {
+        border-radius: inherit;
+    }
 
     &::-webkit-slider-runnable-track {
         .customize-track(true);
@@ -110,6 +115,9 @@
 
     &::-moz-range-progress {
         background: @thumb-color;
+        border-radius: inherit;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
     }
 }
 

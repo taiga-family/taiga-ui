@@ -20,6 +20,8 @@ import {
 import {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs/operators';
 
+import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider-options';
+
 @Component({
     /**
      * We have to call our component as `<input tuiSlider type="range" ... />`
@@ -38,6 +40,7 @@ import {take} from 'rxjs/operators';
          * This function triggers change detection (for `fillPercentage` function) when we drag thumb of the input.
          */
         '(input)': '0',
+        '[style.--tui-slider-track-color]': 'options.trackColor',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -45,7 +48,7 @@ export class TuiSliderComponent {
     @Input()
     @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size: TuiSizeS = 'm';
+    size: TuiSizeS = this.options.size;
 
     @Input()
     @tuiDefaultProp()
@@ -92,6 +95,7 @@ export class TuiSliderComponent {
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TUI_SLIDER_OPTIONS) readonly options: TuiSliderOptions,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLInputElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
     ) {
