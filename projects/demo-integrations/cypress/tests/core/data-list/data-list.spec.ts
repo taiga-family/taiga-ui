@@ -2,7 +2,6 @@ import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '../../../support/shared.entities';
 
 describe('DataList', () => {
     beforeEach(() => {
-        cy.viewport(1500, 800);
         cy.goToDemoPage('/components/data-list');
         cy.hideHeader();
         cy.hideNavigation();
@@ -11,11 +10,11 @@ describe('DataList', () => {
     it('Complex', () => {
         const demo = `tui-doc-example[id=complex] .t-demo`;
 
-        cy.get(demo).scrollIntoView();
-        cy.matchImageSnapshot('1-initial', {capture: 'viewport'});
+        cy.get(demo).scrollIntoView().should('be.visible');
+        cy.get('tui-doc-page').matchImageSnapshot('1-data-list-initial');
 
         cy.get(demo).find('button').first().click();
-        cy.matchImageSnapshot('2-opened', {capture: 'viewport'});
+        cy.get('tui-doc-page').matchImageSnapshot('2-data-list-opened');
 
         cy.getByAutomationId('tui-data-money-input')
             .findByAutomationId('tui-primitive-textfield__native-input')
@@ -25,7 +24,7 @@ describe('DataList', () => {
             .should('have.value', '')
             .type('2000', {force: true});
 
-        cy.matchImageSnapshot('3-converted-money', {capture: 'viewport'});
+        cy.get('tui-doc-page').matchImageSnapshot('3-data-list-converted-money');
 
         cy.getByAutomationId('tui-data-list-email-option')
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
@@ -38,7 +37,7 @@ describe('DataList', () => {
             .should('have.value', '')
             .type('demo@taiga-ui.io', {force: true});
 
-        cy.matchImageSnapshot('4-email-opened', {capture: 'viewport'});
+        cy.get('tui-doc-page').matchImageSnapshot('4-data-list-email-opened');
 
         cy.getByAutomationId('tui-data-list-range-option')
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
@@ -50,7 +49,7 @@ describe('DataList', () => {
             .should('have.value', '')
             .type('04.02.2022 – 04.02.2023', {force: true});
 
-        cy.matchImageSnapshot('5-range-opened', {capture: 'viewport'});
+        cy.get('tui-doc-page').matchImageSnapshot('5-data-list-range-opened');
 
         cy.getByAutomationId('tui-data-list-calendar-option')
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
@@ -59,10 +58,10 @@ describe('DataList', () => {
             .eq(4)
             .click();
 
-        cy.matchImageSnapshot('6-calendar-opened', {capture: 'viewport'});
+        cy.get('tui-doc-page').matchImageSnapshot('6-data-list-calendar-opened');
 
         cy.get(demo).wait(DEFAULT_TIMEOUT_BEFORE_ACTION).click();
 
-        cy.matchImageSnapshot('7-finish', {capture: 'viewport'});
+        cy.matchImageSnapshot('7-data-list-finish');
     });
 });

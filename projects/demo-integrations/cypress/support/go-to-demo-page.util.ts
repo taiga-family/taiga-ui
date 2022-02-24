@@ -15,8 +15,9 @@ interface Options {
     inIframe?: boolean;
     waitAllIcons?: boolean;
     enableNightMode?: boolean;
-    hideCursorInHeadless?: boolean;
-    hideScrollbarInHeadless?: boolean;
+    hideCursor?: boolean;
+    hideScrollbar?: boolean;
+    noSmoothScroll?: boolean;
 }
 
 const setBeforeLoadOptions = (
@@ -32,13 +33,15 @@ const setBeforeLoadOptions = (
 export const goToDemoPage = (path: string, options: Options = {}) => {
     const {
         inIframe = true,
-        waitAllIcons = false,
+        waitAllIcons = true,
         enableNightMode = false,
-        hideCursorInHeadless = true,
-        hideScrollbarInHeadless = true,
+        hideCursor = true,
+        hideScrollbar = true,
+        noSmoothScroll = true,
     } = options;
 
     stubExternalIcons();
+
     cy.visit('/', {
         onBeforeLoad: window => {
             const baseHref =
@@ -58,22 +61,28 @@ export const goToDemoPage = (path: string, options: Options = {}) => {
     }
 
     cy.window().should('have.property', 'Cypress');
+
     cy.url().should('include', path);
     cy.clearLocalStorage(NEXT_URL_STORAGE_KEY);
+
     cy.document().its('fonts.status').should('equal', 'loaded');
 
     if (waitAllIcons) {
         waitAllRequests('@icons');
     }
 
-    if (Cypress.browser.isHeadless) {
-        if (hideCursorInHeadless) {
-            cy.get('._is-cypress-mode').invoke('addClass', '_hide-cursor');
-        }
+    cy.get('._is-cypress-mode').as('app');
 
-        if (hideScrollbarInHeadless) {
-            cy.get('._is-cypress-mode').invoke('addClass', '_hide-scrollbar');
-        }
+    if (hideCursor) {
+        cy.get('@app').invoke('addClass', '_hide-cursor');
+    }
+
+    if (hideScrollbar) {
+        cy.get('@app').invoke('addClass', '_hide-scrollbar');
+    }
+
+    if (noSmoothScroll) {
+        cy.get('@app').invoke('addClass', '_no-smooth-scroll');
     }
 
     cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION);

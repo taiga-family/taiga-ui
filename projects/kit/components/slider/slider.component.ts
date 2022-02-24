@@ -67,13 +67,17 @@ export class TuiSliderComponent {
         return Number(this.elementRef.nativeElement.value) || 0;
     }
 
+    set value(newValue: number) {
+        this.elementRef.nativeElement.value = `${newValue}`;
+    }
+
     @HostBinding('style.--tui-slider-fill-percentage.%')
-    get fillPercentage(): number {
+    get valuePercentage(): number {
         return (100 * this.value) / (this.max - this.min);
     }
 
     @HostBinding('style.--tui-slider-segment-width.%')
-    get stepPercentage(): number {
+    get segmentWidth(): number {
         return 100 / this.segments - 0.1;
     }
 
