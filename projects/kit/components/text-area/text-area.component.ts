@@ -2,8 +2,10 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ContentChild,
     ElementRef,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -29,6 +31,7 @@ import {
     TuiHintControllerDirective,
     TuiSizeL,
     TuiSizeS,
+    TuiTextfieldComponent,
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
@@ -56,6 +59,9 @@ export class TuiTextAreaComponent
 {
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLTextAreaElement>;
+
+    @ContentChild(TuiTextfieldComponent, {read: ElementRef})
+    private readonly textfield?: ElementRef<HTMLTextAreaElement>;
 
     @Input()
     @tuiDefaultProp()
@@ -89,9 +95,13 @@ export class TuiTextAreaComponent
     }
 
     get nativeFocusableElement(): HTMLTextAreaElement | null {
-        return this.computedDisabled || !this.focusableElement
-            ? null
-            : this.focusableElement.nativeElement;
+        if (this.computedDisabled) {
+            return null;
+        }
+
+        return (
+            this.textfield?.nativeElement || this.focusableElement?.nativeElement || null
+        );
     }
 
     get focused(): boolean {
@@ -132,12 +142,10 @@ export class TuiTextAreaComponent
     }
 
     get hasExampleText(): boolean {
-        return (
-            !!this.controller.exampleText &&
-            this.focused &&
-            !this.hasValue &&
-            !this.readOnly
-        );
+        const text =
+            this.controller.exampleText || this.textfield?.nativeElement.placeholder;
+
+        return !!text && this.focused && !this.hasValue && !this.readOnly;
     }
 
     get computeMaxHeight(): number | null {
@@ -159,6 +167,8 @@ export class TuiTextAreaComponent
         return this.value.slice(this.controller.maxLength || Infinity);
     }
 
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
     onFocused(focused: boolean) {
         this.updateFocused(focused);
     }
@@ -171,7 +181,7 @@ export class TuiTextAreaComponent
         this.updatePressed(pressed);
     }
 
-    onValue(value: string) {
+    onValueChange(value: string) {
         this.updateValue(value);
     }
 

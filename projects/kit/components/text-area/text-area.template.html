@@ -55,13 +55,13 @@
                         [placeholder]="controller.exampleText"
                         [id]="id"
                         [tuiDescribedBy]="id"
-                        [tuiFocusable]="focusable"
-                        [disabled]="disabled"
+                        [tuiFocusable]="computedFocusable"
+                        [disabled]="computedDisabled"
                         [ngModel]="value"
                         [readOnly]="readOnly"
-                        (tuiFocusedChange)="onFocused($event)"
-                        (ngModelChange)="onValue($event)"
+                        (ngModelChange)="onValueChange($event)"
                     ></textarea>
+                    <ng-content select="textarea"></ng-content>
                 </div>
             </div>
         </tui-scrollbar>
@@ -71,7 +71,7 @@
             *ngIf="hasCleaner"
             src="tuiIconCloseLarge"
             class="cleaner"
-            (click.stop)="onValue('')"
+            (click.stop)="onValueChange('')"
         ></tui-svg>
         <tui-tooltip
             *ngIf="hasTooltip"

@@ -155,6 +155,10 @@
     border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
 
+    &:not(:last-child) {
+        display: none;
+    }
+
     &::placeholder {
         color: var(--tui-text-03);
         opacity: 0;
