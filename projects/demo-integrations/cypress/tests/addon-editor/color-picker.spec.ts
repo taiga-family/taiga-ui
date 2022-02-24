@@ -31,6 +31,7 @@ describe("Editor's color picker", () => {
         cy.get('#dropdown').findByAutomationId('tui-doc-example').as(alias);
         cy.get('@wrapper')
             .scrollIntoView()
+            .should('be.visible')
             .findByAutomationId('color-picker__button')
             .click();
     }

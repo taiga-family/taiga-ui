@@ -6,7 +6,7 @@ describe('Dialogs', () => {
     });
 
     it('A dialog and a nested dialog are open correctly', () => {
-        cy.goToDemoPage(DIALOG_PAGE_URL, {waitAllIcons: true});
+        cy.goToDemoPage(DIALOG_PAGE_URL);
 
         cy.get(`tui-dialog-example-2 button`).first().click();
         cy.waitKitDialog();
@@ -19,7 +19,7 @@ describe('Dialogs', () => {
     });
 
     it('Mobile dialog works', () => {
-        cy.goToDemoPage(DIALOG_PAGE_URL, {waitAllIcons: true});
+        cy.goToDemoPage(DIALOG_PAGE_URL);
 
         cy.get(`tui-dialog-example-4 button`).first().click();
         cy.waitKitDialog();
