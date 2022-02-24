@@ -349,7 +349,7 @@ export class TuiDesignModeDirective
     }
 
     private updateHeight() {
-        if (!this.documentRef) {
+        if (!this.documentRef?.createRange) {
             return;
         }
 
