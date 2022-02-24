@@ -10,6 +10,7 @@ import {TuiSliderExample1} from './examples/1';
 import {TuiSliderExample2} from './examples/2';
 import {TuiSliderExample3} from './examples/3';
 import {TuiSliderExample4} from './examples/4';
+import {TuiSliderExample5} from './examples/5';
 import {ExampleTuiSliderComponent} from './slider.component';
 
 @NgModule({
@@ -28,6 +29,7 @@ import {ExampleTuiSliderComponent} from './slider.component';
         TuiSliderExample2,
         TuiSliderExample3,
         TuiSliderExample4,
+        TuiSliderExample5,
     ],
 })
 export class ExampleTuiSliderModule {}

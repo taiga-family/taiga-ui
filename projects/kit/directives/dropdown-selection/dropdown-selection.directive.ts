@@ -39,6 +39,15 @@ import {getWordRange} from '@taiga-ui/kit/utils/dom';
 import {merge} from 'rxjs';
 import {map, switchMapTo, takeUntil} from 'rxjs/operators';
 
+const EMPTY_RECT: ClientRect = {
+    bottom: 0,
+    height: 0,
+    left: 0,
+    right: 0,
+    top: 0,
+    width: 0,
+};
+
 // @dynamic
 @Directive({
     selector: '[tuiDropdownSelection]:not(ng-container)',
@@ -58,11 +67,11 @@ export class TuiDropdownSelectionDirective
     private visibilityHandler: TuiBooleanHandler<Range> = ALWAYS_TRUE_HANDLER;
     private readonly documentRef: Document;
     private ghost?: HTMLElement;
-    private range: Range;
+    private range?: Range;
 
     @Input()
     set tuiDropdownSelection(handler: TuiBooleanHandler<Range> | undefined) {
-        if (!handler) {
+        if (!handler || !this.range) {
             return;
         }
 
@@ -109,6 +118,12 @@ export class TuiDropdownSelectionDirective
             activeZone,
         );
         this.documentRef = shadowRootRef || documentRef;
+
+        // SSR protection
+        if (!this.documentRef.createRange) {
+            return;
+        }
+
         this.range = this.documentRef.createRange();
 
         const {nativeElement} = this.elementRef;
@@ -145,15 +160,18 @@ export class TuiDropdownSelectionDirective
                 takeUntil(destroy$),
             )
             .subscribe(range => {
-                const contained = nativeElement.contains(range.commonAncestorContainer);
+                const contained =
+                    !!range && nativeElement.contains(range.commonAncestorContainer);
 
                 this.range = contained ? range : this.range;
 
                 const valid =
                     contained &&
-                    (!this.visibilityHandler || this.visibilityHandler(this.range));
+                    (!this.visibilityHandler ||
+                        !this.range ||
+                        this.visibilityHandler(this.range));
 
-                this.toggleDropdownBox(valid || this.inDropdown(range));
+                this.toggleDropdownBox(!!range && (valid || this.inDropdown(range)));
             });
     }
 
@@ -193,6 +211,10 @@ export class TuiDropdownSelectionDirective
      * get ClientRect of current Range according to provided position
      */
     private get rangeRect(): ClientRect {
+        if (!this.range) {
+            return EMPTY_RECT;
+        }
+
         switch (this.position) {
             case 'tag': {
                 const {commonAncestorContainer} = this.range;
@@ -236,7 +258,7 @@ export class TuiDropdownSelectionDirective
     }
 
     /**
-     * Check if given range is at leaset partially inside dropdown
+     * Check if given range is at least partially inside dropdown
      */
     private inDropdown(range: Range): boolean {
         const {startContainer, endContainer} = range;

@@ -9,5 +9,6 @@
     "baseUrl": "http://localhost:3333",
     "testFiles": "**/*.spec.ts",
     "viewportWidth": 1440,
-    "viewportHeight": 1920
+    "viewportHeight": 900,
+    "defaultCommandTimeout": 10000
 }

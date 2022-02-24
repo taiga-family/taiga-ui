@@ -12,7 +12,7 @@ describe('MobileCalendar', () => {
         cy.hideHeader();
 
         cy.get(`tui-mobile-calendar-example-1 button`).first().click();
-        cy.get('tui-mobile-calendar')
+        cy.get('tui-dialog tui-mobile-calendar')
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .matchImageSnapshot('mobile-calendar');
     });

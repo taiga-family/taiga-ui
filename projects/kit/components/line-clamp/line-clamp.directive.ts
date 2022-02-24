@@ -39,6 +39,7 @@ export class TuiLineClampDirective {
     ) {
         if (
             cssRef.supports('-webkit-line-clamp', '1') ||
+            !documentRef.createRange ||
             !(nativeElement.parentElement instanceof HTMLElement)
         ) {
             return;

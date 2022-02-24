@@ -82,7 +82,7 @@ export class TuiComboBoxComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    search: string | null = '';
+    search: string | null = null;
 
     @Output()
     readonly searchChange = new EventEmitter<string | null>();
