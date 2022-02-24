@@ -15,8 +15,8 @@ export class ExampleTuiLoaderComponent {
     readonly textTemplate: PolymorpheusContent = '';
 
     readonly exampleOptions = import('!!raw-loader!./examples/import/define-options.md');
-    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.txt');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),
