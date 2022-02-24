@@ -72,8 +72,7 @@ export class TuiLoaderComponent {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_IS_IOS) private readonly isIos: boolean,
-        @Inject(TUI_LOADER_OPTIONS)
-        readonly options: TuiLoaderOptions,
+        @Inject(TUI_LOADER_OPTIONS) private readonly options: TuiLoaderOptions,
     ) {}
 
     get hasOverlay(): boolean {
