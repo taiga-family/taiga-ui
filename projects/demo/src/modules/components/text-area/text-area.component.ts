@@ -55,7 +55,7 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
     };
 
     readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
-    readonly exampleHtml = import('!!raw-loader!./examples/import/declare-form.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
     readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
 
     readonly maxLengthVariants: readonly number[] = [50, 100, 500];
