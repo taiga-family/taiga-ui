@@ -39,12 +39,28 @@
         </tui-doc-example>
 
         <tui-doc-example
+            id="native"
+            i18n-heading
+            heading="Native attributes"
+            [content]="example5"
+        >
+            <tui-notification class="tui-space_bottom-4 b-form">
+                If you need to set some attributes or listen to events on native
+                <code>textarea</code>
+                , you can put it inside with
+                <code>Textfield</code>
+                directive as shown below
+            </tui-notification>
+            <tui-text-area-example-5></tui-text-area-example-5>
+        </tui-doc-example>
+
+        <tui-doc-example
             id="rtl"
             i18n-heading
             heading="Direction: RTL"
-            [content]="example5"
+            [content]="example6"
         >
-            <tui-text-area-example-5></tui-text-area-example-5>
+            <tui-text-area-example-6></tui-text-area-example-6>
         </tui-doc-example>
     </ng-template>
 
@@ -70,6 +86,7 @@
                 [tuiHintMode]="hintMode"
             >
                 Textfield for multiline input. It can grow with its content.
+                <textarea tuiTextfield placeholder="Placeholder"></textarea>
             </tui-text-area>
         </tui-doc-demo>
         <tui-doc-documentation>

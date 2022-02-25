@@ -19,7 +19,7 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
 
 // @dynamic
 @Component({
-    selector: 'input[tuiTextfield]',
+    selector: 'input[tuiTextfield], textarea[tuiTextfield]',
     template: '',
     providers: [
         TuiDescribedByDirective,
