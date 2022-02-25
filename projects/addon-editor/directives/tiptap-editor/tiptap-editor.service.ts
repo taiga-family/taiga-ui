@@ -292,4 +292,8 @@ export class TuiTiptapEditorService extends TuiEditor {
             this.editor.chain().setTextSelection(range).run();
         }
     }
+
+    enter() {
+        this.editor.commands.enter();
+    }
 }

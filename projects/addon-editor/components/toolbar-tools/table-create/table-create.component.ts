@@ -21,10 +21,17 @@ export class TuiTableCreateComponent {
     ) {}
 
     addTable({rows, cols}: {rows: number; cols: number}) {
-        const prev = this.editor.state.selection.anchor;
+        this.editor.enter(); // @note: clear previous styles
 
-        this.editor.setHardBreak();
-        this.editor.setTextSelection(prev);
+        const prevLine = this.editor.state.selection.anchor;
+
+        // @note: don't use `setHardBreak`,
+        // it inherits styles of previous lines
+        // required two line after
+        this.editor.enter();
+        this.editor.enter();
+
+        this.editor.setTextSelection(prevLine);
         this.editor.insertTable(rows, cols);
     }
 }
