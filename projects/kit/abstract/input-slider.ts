@@ -6,6 +6,7 @@ import {
     tuiDefaultProp,
     TuiInputModeT,
     TuiMapper,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     maskedNumberStringToNumber,
@@ -64,9 +65,25 @@ export abstract class AbstractTuiInputSlider<T>
             : pluralize;
     }
 
+    /**
+     * @deprecated This input-property will be deleted in next major update.
+     * You can create ticks labels below this input by yourself. It is easy!
+     * Mixin `tui-slider-ticks-labels` will help with it. See examples in demo page `InputSlider`.
+     * ___
+     * TODO remove in v3.0.
+     * Dont forget to delete:
+     *** {@link segmentsPluralizeMap}
+     *** {@link getTickPrefix}
+     *** TuiFormatNumberPipeModule
+     *** TuiRepeatTimesModule
+     */
     @Input()
     @tuiDefaultProp()
-    segmentsPluralize: TuiPluralize | null = null;
+    set segmentsPluralize(pluralize: TuiPluralize | Record<string, string> | null) {
+        this.segmentsPluralizeMap = Array.isArray(pluralize)
+            ? tuiPluralizeToICU(pluralize)
+            : pluralize;
+    }
 
     @Input()
     @tuiDefaultProp()
@@ -89,9 +106,21 @@ export abstract class AbstractTuiInputSlider<T>
     size: TuiSizeL = 'l';
 
     pluralizeMap: Record<string, string> | null = null;
+    /** @deprecated TODO remove in v3.0 */
+    segmentsPluralizeMap: Record<string, string> | null = null;
 
     abstract get showMinLabel(): boolean;
     abstract get showMaxLabel(): boolean;
+
+    /** @deprecated TODO remove in v3.0 */
+    @tuiPure
+    getTickPrefix(segment: number, segments: number, texts: [string, string]): string {
+        if (segments !== 1) {
+            return '';
+        }
+
+        return segment === 0 ? `${texts[0]}` : `${texts[1]}`;
+    }
 
     mask: TuiMapper<number, TuiTextMaskOptions> = (quantum: number, min: number) => ({
         mask: tuiCreateNumberMask({
@@ -136,6 +165,10 @@ export abstract class AbstractTuiInputSlider<T>
         return this.length / this.computedSteps;
     }
 
+    get computedKeySteps(): TuiKeySteps {
+        return this.computePureKeySteps(this.keySteps, this.min, this.max);
+    }
+
     @HostBinding('attr.data-mode')
     get hostMode(): TuiBrightness | null {
         return this.modeDirective && this.modeDirective.mode;
@@ -173,5 +206,14 @@ export abstract class AbstractTuiInputSlider<T>
         }
 
         return isNaN(capped) || capped < this.min ? null : capped;
+    }
+
+    @tuiPure
+    private computePureKeySteps(
+        keySteps: TuiKeySteps | null,
+        min: number,
+        max: number,
+    ): TuiKeySteps {
+        return [[0, min], ...(keySteps || []), [100, max]];
     }
 }

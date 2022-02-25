@@ -65,22 +65,42 @@
                 [mode]="hintController.mode"
                 [showDelay]="hintController.showDelay"
                 [hideDelay]="hintController.hideDelay"
-                (mousedown.prevent)="onMouseDown()"
+                (mousedown.prevent)="focusTextInput()"
             ></tui-tooltip>
         </span>
     </div>
 </tui-wrapper>
-<tui-slider
-    class="t-slider"
-    [min]="min"
-    [max]="max"
-    [steps]="computedSteps"
-    [segments]="segments"
-    [keySteps]="keySteps"
-    [pluralize]="segmentsPluralize"
-    [focusable]="false"
-    [disabled]="readOnly || disabled"
-    [ngModel]="value"
-    (ngModelChange)="onSliderValue($event)"
-    (mousedown)="onMouseDown()"
-></tui-slider>
+
+<!--TODO: remove wrapper + ticks labels (leave only slider) in v3.0-->
+<div class="t-slider-wrapper">
+    <input
+        tuiSlider
+        type="range"
+        [tuiFocusable]="false"
+        [max]="computedSteps"
+        [segments]="segments"
+        [keySteps]="computedKeySteps"
+        [attr.disabled]="readOnly || disabled || null"
+        [ngModel]="value"
+        (keyStepsInput)="onSliderValue($event)"
+        (click)="focusTextInput()"
+    />
+
+    <!--TODO delete ticks labels in v3.0-->
+    <div *ngIf="segmented && !isNew" class="t-ticks-labels">
+        <span
+            *tuiRepeatTimes="let tickIndex of segments + 1"
+            automation-id="tui-slider__segment"
+        >
+            <span *ngIf="fromToTexts$ | async as fromToText">
+                {{ getTickPrefix(tickIndex, segments, fromToText) }} {{
+                tickIndex | tuiSliderTickLabel:segments:computedKeySteps |
+                tuiFormatNumber}}
+                <span *ngIf="segmentsPluralizeMap">
+                    {{ tickIndex | tuiSliderTickLabel:segments:computedKeySteps
+                    | i18nPlural: segmentsPluralizeMap }}
+                </span>
+            </span>
+        </span>
+    </div>
+</div>

@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    Directive,
     ElementRef,
     forwardRef,
     HostBinding,
@@ -33,18 +34,42 @@ import {
     TuiModeDirective,
 } from '@taiga-ui/core';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
+import {
+    TuiSliderComponent,
+    tuiSliderOptionsProvider,
+} from '@taiga-ui/kit/components/slider';
+import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
+import {Observable} from 'rxjs';
+
+/**
+ * Turn on new `InputSlider`'s version.
+ * The new version will behave almost the same as `InputSlider` from the next major release.
+ * @deprecated TODO remove me in v3.0 and make `InputSlider` always "new".
+ */
+@Directive({
+    selector: 'tui-input-slider[new]',
+})
+export class TuiNewInputSliderDirective {}
 
 // @dynamic
 @Component({
     selector: 'tui-input-slider',
     templateUrl: './input-slider.template.html',
     styleUrls: ['./input-slider.style.less'],
+    host: {
+        /**
+         * TODO delete it in v3.0
+         * Dont forget to clear html-tags
+         */
+        '[class._show-ticks-labels]': '!isNew',
+    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputSliderComponent),
         },
+        tuiSliderOptionsProvider({trackColor: 'transparent'}),
         HINT_CONTROLLER_PROVIDER,
     ],
 })
@@ -54,6 +79,9 @@ export class TuiInputSliderComponent
 {
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
+
+    @ViewChild(TuiSliderComponent, {read: ElementRef})
+    private readonly sliderRef?: ElementRef<HTMLInputElement>;
 
     @Input()
     @tuiDefaultProp()
@@ -74,6 +102,10 @@ export class TuiInputSliderComponent
         protected readonly numberFormat: NumberFormatSettings,
         @Inject(TUI_TEXTFIELD_APPEARANCE)
         readonly appearance: string,
+        @Inject(TUI_FROM_TO_TEXTS) readonly fromToTexts$: Observable<[string, string]>,
+        @Optional()
+        @Inject(TuiNewInputSliderDirective)
+        readonly isNew: TuiNewInputSliderDirective | null,
     ) {
         super(control, changeDetectorRef);
     }
@@ -85,7 +117,10 @@ export class TuiInputSliderComponent
     }
 
     get focused(): boolean {
-        return isNativeFocused(this.nativeFocusableElement);
+        return (
+            isNativeFocused(this.nativeFocusableElement) ||
+            isNativeFocused(this.sliderRef?.nativeElement || null)
+        );
     }
 
     @HostBinding('class._has-tooltip')
@@ -125,7 +160,7 @@ export class TuiInputSliderComponent
         }
     }
 
-    onMouseDown() {
+    focusTextInput() {
         if (this.focusableElement) {
             setNativeFocused(this.focusableElement.nativeElement);
         }

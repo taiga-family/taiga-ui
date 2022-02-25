@@ -8,12 +8,20 @@ import {
     TuiInputModeModule,
     TuiMapperPipeModule,
     TuiPressedModule,
+    TuiRepeatTimesModule,
 } from '@taiga-ui/cdk';
-import {TuiTooltipModule, TuiWrapperModule} from '@taiga-ui/core';
+import {
+    TuiFormatNumberPipeModule,
+    TuiTooltipModule,
+    TuiWrapperModule,
+} from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit/components/slider';
 import {TextMaskModule} from 'angular2-text-mask';
 
-import {TuiInputSliderComponent} from './input-slider.component';
+import {
+    TuiInputSliderComponent,
+    TuiNewInputSliderDirective,
+} from './input-slider.component';
 
 @NgModule({
     imports: [
@@ -30,8 +38,10 @@ import {TuiInputSliderComponent} from './input-slider.component';
         TuiTooltipModule,
         TuiSliderModule,
         TuiWrapperModule,
+        TuiFormatNumberPipeModule,
+        TuiRepeatTimesModule,
     ],
-    declarations: [TuiInputSliderComponent],
-    exports: [TuiInputSliderComponent],
+    declarations: [TuiInputSliderComponent, TuiNewInputSliderDirective],
+    exports: [TuiInputSliderComponent, TuiNewInputSliderDirective],
 })
 export class TuiInputSliderModule {}
