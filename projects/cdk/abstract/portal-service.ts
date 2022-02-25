@@ -8,18 +8,16 @@ import {
 } from '@angular/core';
 import {TuiNoHostException} from '@taiga-ui/cdk/exceptions';
 
-import {TuiPortalHostComponent} from './portal-host.component';
+import {AbstractTuiPortalHostComponent} from './portal-host';
 
 /**
- * Service for displaying portals
+ * Abstract service for displaying portals
  */
-@Injectable({
-    providedIn: 'root',
-})
-export class TuiPortalService {
-    private host?: TuiPortalHostComponent;
+@Injectable()
+export abstract class AbstractTuiPortalService {
+    protected host?: AbstractTuiPortalHostComponent;
 
-    private get safeHost(): TuiPortalHostComponent {
+    protected get safeHost(): AbstractTuiPortalHostComponent {
         if (!this.host) {
             throw new TuiNoHostException();
         }
@@ -27,7 +25,7 @@ export class TuiPortalService {
         return this.host;
     }
 
-    attach(host: TuiPortalHostComponent) {
+    attach(host: AbstractTuiPortalHostComponent) {
         this.host = host;
     }
 

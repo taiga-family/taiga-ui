@@ -1,10 +1,10 @@
-import {TuiPortalService} from '../portal.service';
+import {TuiDropdownPortalService} from '../dropdown-portal.service';
 
 describe('PortalService', () => {
-    let service: TuiPortalService;
+    let service: TuiDropdownPortalService;
 
     beforeEach(() => {
-        service = new TuiPortalService();
+        service = new TuiDropdownPortalService();
     });
 
     it('Template removing', () => {

@@ -1,7 +1,7 @@
 import {Component, Inject, TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {clamp, TuiPortalService} from '@taiga-ui/cdk';
+import {clamp, TuiDropdownPortalService} from '@taiga-ui/cdk';
 import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -19,7 +19,8 @@ export class TuiDialogExampleComponent4 {
 
     constructor(
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-        @Inject(TuiPortalService) private readonly portalService: TuiPortalService,
+        @Inject(TuiDropdownPortalService)
+        private readonly portalService: TuiDropdownPortalService,
     ) {}
 
     get transform(): string {
