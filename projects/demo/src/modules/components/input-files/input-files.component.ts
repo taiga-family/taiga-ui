@@ -5,9 +5,6 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit';
 
-import {default as exampleImportModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleInsertTemplate} from '!!raw-loader!./examples/import/insert-template.txt';
-
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
@@ -23,8 +20,13 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
-    readonly exampleImportModule = exampleImportModule;
-    readonly exampleInsertTemplate = exampleInsertTemplate;
+    readonly exampleImportModule = import(
+        '!!raw-loader!./examples/import/import-module.md'
+    );
+
+    readonly exampleInsertTemplate = import(
+        '!!raw-loader!./examples/import/insert-template.md'
+    );
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),
@@ -82,5 +84,11 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
             ...this.rejectedFiles,
             ...(Array.isArray(file) ? file : [file]),
         ];
+    }
+
+    multipleChange(multiple: boolean) {
+        this.rejectedFiles = [];
+        this.control.setValue(null);
+        this.multiple = multiple;
     }
 }

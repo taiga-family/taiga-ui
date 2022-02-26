@@ -8,10 +8,10 @@ import {
     TuiLoaderModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiFileDirective} from '@taiga-ui/kit/components/files/file.directive';
-import {TuiFileComponent} from '@taiga-ui/kit/components/files/file/file.component';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
+import {TuiFileDirective} from './file.directive';
+import {TuiFileComponent} from './file/file.component';
 import {TuiFilesComponent} from './files.component';
 
 @NgModule({

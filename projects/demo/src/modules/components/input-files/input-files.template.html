@@ -60,7 +60,6 @@
                 [label]="label"
                 [maxFileSize]="maxFileSize"
                 [multiple]="multiple"
-                [readOnly]="readOnly"
                 [focusable]="focusable"
                 [pseudoFocused]="pseudoFocused"
                 [pseudoHovered]="pseudoHovered"
@@ -75,6 +74,8 @@
                         <tui-file
                             *tuiFile
                             [file]="file"
+                            [size]="size"
+                            [showSize]="showSize"
                             (fileRemoved)="removeFile(file)"
                         ></tui-file>
                     </ng-container>
@@ -82,7 +83,12 @@
 
                 <ng-template #single>
                     <ng-container *ngIf="control.value as file">
-                        <tui-file *tuiFile [file]="file"></tui-file>
+                        <tui-file
+                            *tuiFile
+                            [file]="file"
+                            [size]="size"
+                            [showSize]="showSize"
+                        ></tui-file>
                     </ng-container>
                 </ng-template>
 
@@ -156,7 +162,8 @@
                 documentationPropertyName="multiple"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="multiple"
+                [documentationPropertyValue]="multiple"
+                (documentationPropertyValueChange)="multipleChange($event)"
             >
                 Allows to upload several files
             </ng-template>
