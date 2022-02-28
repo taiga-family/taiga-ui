@@ -81,7 +81,7 @@ export class TuiSliderComponent {
 
     @HostBinding('style.--tui-slider-segment-width.%')
     get segmentWidth(): number {
-        return 100 / this.segments - 0.1;
+        return 100 / Math.max(1, this.segments);
     }
 
     @HostBinding('class._old-edge')

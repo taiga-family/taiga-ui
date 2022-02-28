@@ -14,29 +14,44 @@
 @track-color: var(--tui-slider-track-color);
 @thumb-color: currentColor;
 
-.customize-track(@progress-filling: false) {
+.customize-track(@progress-filling, @thumb-height) {
     height: @track-height;
     border-radius: inherit;
 
-    @hide-first-tick: linear-gradient(to right, @thumb-color 0px @ticks-thickness, transparent @ticks-thickness);
-    @hide-last-tick: linear-gradient(to left, @track-color 0px @ticks-thickness, transparent @ticks-thickness);
+    /*
+    The most left point of the track is the most left point of the thumb (at the zero-position).
+    The first tick should start at the center of thumb to set correct position for all other ticks.
+    */
+    @first-tick-offset: (@thumb-height - @ticks-thickness) / 2;
+    @ticks-background-size: calc(100% - @thumb-height);
+
+    @hide-first-tick: linear-gradient(
+        to right,
+        @thumb-color 0px (@first-tick-offset + @ticks-thickness),
+        transparent @ticks-thickness
+    );
     @ticks-gradient: repeating-linear-gradient(
         to right,
         var(--tui-base-07) 0 @ticks-thickness,
-        transparent @ticks-thickness var(--tui-slider-segment-width)
+        transparent 0 var(--tui-slider-segment-width)
     );
     @filling-progress-gradient: linear-gradient(
         to right,
         @thumb-color var(--tui-slider-fill-percentage),
         transparent var(--tui-slider-fill-percentage)
     );
+    background-repeat: no-repeat;
 
     & when (@progress-filling = true) {
-        background: @hide-first-tick, @hide-last-tick, @ticks-gradient, @filling-progress-gradient;
+        background-image: @hide-first-tick, @ticks-gradient, @filling-progress-gradient;
+        background-position-x: 0, @first-tick-offset, 0;
+        background-size: @ticks-background-size, @ticks-background-size, auto;
     }
 
     & when (@progress-filling = false) {
-        background: @hide-first-tick, @hide-last-tick, @ticks-gradient;
+        background-image: @hide-first-tick, @ticks-gradient;
+        background-position-x: 0, @first-tick-offset;
+        background-size: @ticks-background-size;
     }
 }
 
@@ -87,12 +102,20 @@
         border-radius: inherit;
     }
 
-    &::-webkit-slider-runnable-track {
-        .customize-track(true);
+    &[data-size='m']::-webkit-slider-runnable-track {
+        .customize-track(true, @thumb-heights[@m]);
     }
 
-    &::-moz-range-track {
-        .customize-track(false);
+    &[data-size='s']::-webkit-slider-runnable-track {
+        .customize-track(true, @thumb-heights[@s]);
+    }
+
+    &[data-size='m']::-moz-range-track {
+        .customize-track(false, @thumb-heights[@m]);
+    }
+
+    &[data-size='s']::-moz-range-track {
+        .customize-track(false, @thumb-heights[@s]);
     }
 
     &[data-size='m']::-webkit-slider-thumb {
