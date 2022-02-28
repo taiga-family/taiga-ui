@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[633],{"Wz+/":function(n,i,o){"use strict";o.r(i),i.default="import {TuiTagModule} from '@taiga-ui/kit';\n\n...\n\n@NgModule({\n    imports: [\n        ...\n        TuiTagModule\n    ],\n...\n"}}]);
