@@ -1,5 +1,5 @@
 <tui-hosted-dropdown
-    class="hosted"
+    class="t-hosted"
     [canOpen]="canOpen"
     [content]="datalist || ''"
     [(open)]="open"
@@ -15,36 +15,36 @@
         (tuiHoveredChange)="onHoveredChange($event)"
         (mousedown)="onMouseDown($event)"
     >
-        <div class="content">
-            <div *ngIf="iconAlignLeft" class="icons icons_left">
-                <tui-svg class="icon" [src]="icon"></tui-svg>
+        <div class="t-content">
+            <div *ngIf="iconAlignLeft" class="t-icons t-icons_left">
+                <tui-svg class="t-icon" [src]="icon"></tui-svg>
             </div>
-            <div class="wrapper">
-                <div class="absolute-wrapper">
+            <div class="t-wrapper">
+                <div class="t-absolute-wrapper">
                     <div
                         *ngIf="hasPlaceholder"
                         automation-id="tui-input-tag__placeholder"
-                        class="placeholder"
-                        [class.placeholder_raised]="placeholderRaised"
+                        class="t-placeholder"
+                        [class.t-placeholder_raised]="placeholderRaised"
                     >
                         <ng-content></ng-content>
                     </div>
                 </div>
                 <tui-scrollbar
                     *ngIf="!expandable; else items"
-                    class="scrollbar"
+                    class="t-scrollbar"
                     [hidden]="true"
                 >
                     <ng-container *ngTemplateOutlet="items"></ng-container>
                 </tui-scrollbar>
                 <ng-template #items>
-                    <div #tagsContainer class="tags">
+                    <div #tagsContainer class="t-tags">
                         <ng-container *ngIf="labelOutside; else text">
                             <tui-tag
                                 *ngFor="let item of value; index as index"
                                 #tag
                                 automation-id="tui-input-tag__tag"
-                                class="tag"
+                                class="t-tag"
                                 [status]="status"
                                 [leftContent]="getLeftContent(item)"
                                 [allowSpaces]="allowSpaces"
@@ -65,24 +65,24 @@
                         <ng-template #text>
                             <span
                                 *ngFor="let item of value"
-                                class="text"
-                                [class.text_disabled]="disabledItemHandler(item)"
-                                [class.text_error]="!tagValidator(item)"
+                                class="t-text"
+                                [class.t-text_disabled]="disabledItemHandler(item)"
+                                [class.t-text_error]="!tagValidator(item)"
                                 [innerText]="item"
                             ></span>
                         </ng-template>
                         <div
-                            class="input-wrapper"
-                            [class.input-wrapper_collapsed]="computedDisabled || readOnly || inputHidden"
+                            class="t-input-wrapper"
+                            [class.t-input-wrapper_collapsed]="computedDisabled || readOnly || inputHidden"
                         >
-                            <div class="ghost">{{ search }}</div>
+                            <div class="t-ghost">{{ search }}</div>
                             <input
                                 #focusableElement
                                 type="text"
                                 automation-id="tui-input-tag__native"
-                                class="native"
+                                class="t-native"
                                 [placeholder]="controller.exampleText"
-                                [class.native_hidden]="inputHidden"
+                                [class.t-native_hidden]="inputHidden"
                                 [attr.maxLength]="controller.maxLength"
                                 [id]="id"
                                 [disabled]="computedDisabled"
@@ -98,20 +98,20 @@
                     </div>
                 </ng-template>
             </div>
-            <div *ngIf="hasRightIcons" class="icons icons_right">
+            <div *ngIf="hasRightIcons" class="t-icons t-icons_right">
                 <tui-svg
                     *ngIf="hasCleaner"
                     #cleaner
                     automation-id="tui-input-tag__cleaner"
                     src="tuiIconCloseLarge"
-                    class="cleaner"
+                    class="t-cleaner"
                     (click.stop)="onCleanerClick()"
                 ></tui-svg>
                 <tui-tooltip
                     *ngIf="hasTooltip"
                     automation-id="tui-input-tag__tooltip"
                     describeId="placeholer_until_accesibility_is_added"
-                    class="tooltip"
+                    class="t-tooltip"
                     [direction]="hintController.direction"
                     [mode]="hintController.mode"
                     [content]="hintController.content"
@@ -120,13 +120,13 @@
                 ></tui-tooltip>
                 <tui-svg
                     *ngIf="iconAlignRight"
-                    class="icon"
+                    class="t-icon"
                     [src]="icon"
                 ></tui-svg>
             </div>
         </div>
         <ng-template #errorIcon>
-            <tui-svg src="tuiIconAttention" class="error-icon"></tui-svg>
+            <tui-svg src="tuiIconAttention" class="t-error-icon"></tui-svg>
         </ng-template>
     </tui-wrapper>
 </tui-hosted-dropdown>

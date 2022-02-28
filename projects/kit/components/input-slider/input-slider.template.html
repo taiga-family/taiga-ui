@@ -9,14 +9,14 @@
     <span
         *ngIf="hasPlaceholder"
         automation-id="tui-input-slider__placeholder"
-        class="placeholder placeholder_raised"
+        class="t-placeholder t-placeholder_raised"
     >
         <ng-content></ng-content>
     </span>
     <input
         #focusableElement
         automation-id="tui-input-slider__native"
-        class="native"
+        class="t-native"
         [disabled]="disabled"
         [readOnly]="readOnly"
         [tuiInputMode]="inputMode"
@@ -29,9 +29,9 @@
         (keydown.arrowUp)="onKeyDownArrowUp($event)"
         (keydown.arrowDown)="onKeyDownArrowDown($event)"
     />
-    <div class="content">
-        <span *ngIf="showValue" class="label">
-            <span class="value">{{ computedValue }}</span>
+    <div class="t-content">
+        <span *ngIf="showValue" class="t-label">
+            <span class="t-value">{{ computedValue }}</span>
             <span
                 *ngIf="pluralizeMap"
                 automation-id="tui-input-slider__pluralize"
@@ -42,24 +42,24 @@
         <span
             *ngIf="showMinLabel"
             automation-id="tui-input-slider__min-label"
-            class="label"
+            class="t-label"
         >
             {{ minLabel }}
         </span>
         <span
             *ngIf="showMaxLabel"
             automation-id="tui-input-slider__max-label"
-            class="label"
+            class="t-label"
         >
             {{ maxLabel }}
         </span>
-        <span automation-id="tui-input-slider__secondary" class="secondary">
+        <span automation-id="tui-input-slider__secondary" class="t-secondary">
             {{ secondary }}
             <tui-tooltip
                 *ngIf="hasTooltip"
                 automation-id="tui-input-slider__tooltip"
                 describeId="placeholer_until_accesibility_is_added"
-                class="tooltip"
+                class="t-tooltip"
                 [content]="hintController.content"
                 [direction]="hintController.direction"
                 [mode]="hintController.mode"
@@ -71,7 +71,7 @@
     </div>
 </tui-wrapper>
 <tui-slider
-    class="slider"
+    class="t-slider"
     [min]="min"
     [max]="max"
     [steps]="computedSteps"

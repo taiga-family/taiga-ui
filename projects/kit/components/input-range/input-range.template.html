@@ -1,4 +1,4 @@
-<div class="zone" (tuiActiveZoneChange)="onActiveZone($event)">
+<div class="t-zone" (tuiActiveZoneChange)="onActiveZone($event)">
     <tui-wrapper
         [appearance]="appearance"
         [readOnly]="readOnly"
@@ -10,17 +10,17 @@
         <span
             *ngIf="hasPlaceholder"
             automation-id="tui-input-range__placeholder"
-            class="placeholder placeholder_raised"
+            class="t-placeholder t-placeholder_raised"
         >
             <ng-content></ng-content>
         </span>
-        <div class="content">
-            <span *ngIf="!showMinLabel" class="label">
-                <span class="value">{{ inputValueLeft }}</span>
+        <div class="t-content">
+            <span *ngIf="!showMinLabel" class="t-label">
+                <span class="t-value">{{ inputValueLeft }}</span>
                 <span
                     *ngIf="pluralizeMap"
                     automation-id="tui-input-range__pluralize-left"
-                    class="pluralize"
+                    class="t-pluralize"
                 >
                     {{ value[0] | i18nPlural: pluralizeMap }}
                 </span>
@@ -28,20 +28,20 @@
             <span
                 *ngIf="showMinLabel"
                 automation-id="tui-input-range__min-label"
-                class="label"
+                class="t-label"
             >
                 {{ minLabel }}
             </span>
             <span
                 *ngIf="showMaxLabel"
                 automation-id="tui-input-range__max-label"
-                class="max"
+                class="t-max"
             >
                 {{ maxLabel }}
             </span>
         </div>
         <tui-range
-            class="slider"
+            class="t-slider"
             [min]="min"
             [max]="max"
             [steps]="computedSteps"
@@ -56,14 +56,14 @@
         ></tui-range>
     </tui-wrapper>
 
-    <div class="native-wrapper" (tuiHoveredChange)="onHovered($event)">
+    <div class="t-native-wrapper" (tuiHoveredChange)="onHovered($event)">
         <input
             #nativeLeft
             automation-id="tui-input-range__native-left"
-            class="native"
+            class="t-native"
             [disabled]="disabled"
             [readOnly]="readOnly"
-            [class.native_hidden]="showMinLabel"
+            [class.t-native_hidden]="showMinLabel"
             [tuiInputMode]="inputMode"
             [tuiFocusable]="focusable"
             [textMask]="quantum | tuiMapper: mask:min"
@@ -76,10 +76,10 @@
         <input
             #nativeRight
             automation-id="tui-input-range__native-right"
-            class="native native_right"
+            class="t-native t-native_right"
             [disabled]="disabled"
             [readOnly]="readOnly"
-            [class.native_hidden]="showMaxLabel"
+            [class.t-native_hidden]="showMaxLabel"
             [tuiInputMode]="inputMode"
             [tuiFocusable]="focusable"
             [textMask]="quantum | tuiMapper: mask:min"
@@ -92,7 +92,7 @@
         <span
             *ngIf="pluralizeMap && !showMaxLabel"
             automation-id="tui-input-range__pluralize-right"
-            class="pluralize pluralize_right"
+            class="t-pluralize t-pluralize_right"
             (mousedown)="onMouseDown()"
         >
             {{ value[1] | i18nPlural: pluralizeMap }}
