@@ -1,7 +1,26 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See
-[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.36.0](https://github.com/tinkoff/taiga-ui/compare/v2.35.0...v2.36.0) (2022-02-28)
+
+
+### Features
+
+* **addon-editor:** add `box-shadow` for toolbar panel ([#1457](https://github.com/tinkoff/taiga-ui/issues/1457)) ([1e1d26d](https://github.com/tinkoff/taiga-ui/commit/1e1d26d900cd123dddef7bcbc4bf97e64c3649f5))
+* **cdk:**  `TUI_IS_IOS` fix detecting iPad that pretend to be MacOS ([#1459](https://github.com/tinkoff/taiga-ui/issues/1459)) ([6230118](https://github.com/tinkoff/taiga-ui/commit/6230118d701c43f15144a8d1356e4d502281891b))
+* **core:** `Loader` allow configuration of default options ([#1447](https://github.com/tinkoff/taiga-ui/issues/1447)) ([3ba41f2](https://github.com/tinkoff/taiga-ui/commit/3ba41f2f24c341755ac38a461f13156fe8b67200))
+* **kit:** `TextArea` expose native element ([#1456](https://github.com/tinkoff/taiga-ui/issues/1456)) ([e79f5db](https://github.com/tinkoff/taiga-ui/commit/e79f5dbaf92aec08e4fea6d9e78933f63ad249c5))
+* **kit:** `TUI_SLIDER_OPTIONS` (make `Slider` more customizable) ([#1453](https://github.com/tinkoff/taiga-ui/issues/1453)) ([d825332](https://github.com/tinkoff/taiga-ui/commit/d825332c05e182670f6f488958068af0207e2386))
+* **kit:** new `SliderKeyStepsDirective` for `Slider` ([#1441](https://github.com/tinkoff/taiga-ui/issues/1441)) ([d9b0d6e](https://github.com/tinkoff/taiga-ui/commit/d9b0d6eed910642e5adf62c509ede432807739e6))
+
+
+### Bug Fixes
+
+* **addon-editor:** set table without style inheritance ([#1455](https://github.com/tinkoff/taiga-ui/issues/1455)) ([88c1f05](https://github.com/tinkoff/taiga-ui/commit/88c1f05894555359f42384b3481bc69c6e2b86d4))
+* **core:** `PrimitiveTextfield` fix styles collision with Bootstrap ([#1458](https://github.com/tinkoff/taiga-ui/issues/1458)) ([5135da1](https://github.com/tinkoff/taiga-ui/commit/5135da182bd27b2b87a2755f5c65ad78fd874964))
+* **kit:** `ComboBox` fix initial `search` emit ([#1446](https://github.com/tinkoff/taiga-ui/issues/1446)) ([07a354c](https://github.com/tinkoff/taiga-ui/commit/07a354c2e1997a441f351481869272c1764351f0))
+* **kit:** `Slider` fix ticks position ([#1462](https://github.com/tinkoff/taiga-ui/issues/1462)) ([20a5086](https://github.com/tinkoff/taiga-ui/commit/20a508607de29d4ae237c721e2c5a43c1f95a4fd))
 
 ## [2.35.0](https://github.com/tinkoff/taiga-ui/compare/v2.34.0...v2.35.0) (2022-02-21)
 
