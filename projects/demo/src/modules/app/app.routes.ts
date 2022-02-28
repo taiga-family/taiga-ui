@@ -332,7 +332,7 @@ export const ROUTES = [
         },
     },
     {
-        path: 'components/files',
+        path: 'components/input-files',
         loadChildren: () =>
             import(`../components/input-files/input-files.module`).then(
                 m => m.ExampleTuiFilesModule,

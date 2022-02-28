@@ -58,6 +58,9 @@ export class TuiInputFilesComponent
     extends AbstractTuiNullableControl<TuiFileLike | ReadonlyArray<TuiFileLike>>
     implements TuiFocusableElementAccessor
 {
+    @ViewChild('input')
+    private readonly input?: ElementRef<HTMLInputElement>;
+
     private dataTransfer: DataTransfer | null = null;
 
     @Input()
@@ -85,10 +88,7 @@ export class TuiInputFilesComponent
     maxFileSize = DEFAULT_MAX_SIZE;
 
     @Output()
-    onReject = new EventEmitter<ReadonlyArray<TuiFileLike> | TuiFileLike>();
-
-    @ViewChild('input')
-    readonly input?: ElementRef<HTMLInputElement>;
+    reject = new EventEmitter<ReadonlyArray<TuiFileLike> | TuiFileLike>();
 
     constructor(
         @Optional()
@@ -121,7 +121,7 @@ export class TuiInputFilesComponent
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return this.input ? this.input.nativeElement : null;
+        return this.input?.nativeElement || null;
     }
 
     get focused(): boolean {
@@ -142,7 +142,7 @@ export class TuiInputFilesComponent
     }
 
     get fileDragged(): boolean {
-        return !!this.dataTransfer && this.dataTransfer.types.indexOf('Files') !== -1;
+        return !!this.dataTransfer?.types.includes('Files');
     }
 
     get acceptArray(): readonly string[] {
@@ -203,17 +203,15 @@ export class TuiInputFilesComponent
         multiple: boolean,
         link: PolymorpheusContent,
     ): Observable<PolymorpheusContent> {
-        if (fileDragged) {
-            return of('');
-        }
-
-        return this.inputFileTexts$.pipe(
-            map(texts =>
-                multiple && link === ''
-                    ? texts.defaultLinkMultiple
-                    : link || texts.defaultLinkSingle,
-            ),
-        );
+        return fileDragged
+            ? of('')
+            : this.inputFileTexts$.pipe(
+                  map(texts =>
+                      multiple && link === ''
+                          ? texts.defaultLinkMultiple
+                          : link || texts.defaultLinkSingle,
+                  ),
+              );
     }
 
     @tuiPure
@@ -250,7 +248,7 @@ export class TuiInputFilesComponent
             return EMPTY_ARRAY;
         }
 
-        return value instanceof Array ? value : [value];
+        return Array.isArray(value) ? value : [value];
     }
 
     @tuiPure
@@ -267,7 +265,7 @@ export class TuiInputFilesComponent
         units: [string, string, string],
     ) {
         // IE11 after selecting a file through the open dialog generates a second event passing an empty FileList.
-        if (files === null || files.length === 0) {
+        if (!files?.length) {
             return;
         }
 
@@ -324,6 +322,6 @@ export class TuiInputFilesComponent
     }
 
     private rejectFiles(rejectedFiles: ReadonlyArray<TuiFileLike>) {
-        this.onReject.emit(this.multiple ? rejectedFiles : rejectedFiles[0]);
+        this.reject.emit(this.multiple ? rejectedFiles : rejectedFiles[0]);
     }
 }

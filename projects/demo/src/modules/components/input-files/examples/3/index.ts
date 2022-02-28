@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
 import {TuiFileLike} from '@taiga-ui/kit';
 
 @Component({
@@ -40,6 +41,8 @@ export class TuiInputFilesExample3 {
 
     removedFiles = [this.loadingFile];
     restoredFiles: TuiFileLike[] = [];
+
+    constructor(@Inject(TUI_IS_CYPRESS) readonly isCypress: boolean) {}
 
     removeLoading() {
         this.loadingFile = null;

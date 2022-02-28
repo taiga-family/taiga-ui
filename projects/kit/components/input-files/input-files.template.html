@@ -30,7 +30,6 @@
             *ngIf="!readOnly && !computedDisabled && (inputFileTexts$ | async) as texts"
             #input
             type="file"
-            tuiPreventDefault="mousedown"
             class="t-native"
             [id]="id"
             [accept]="accept"
@@ -42,6 +41,7 @@
             (tuiPressedChange)="onPressed($event)"
             (tuiDroppableDropped)="onDropped($event, texts, units)"
             (tuiDroppableDragOverChange)="onDragOver($event)"
+            (mousedown.prevent.silent)="0"
         />
     </label>
 </tui-wrapper>

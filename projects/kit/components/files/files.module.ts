@@ -10,12 +10,11 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
-import {TuiFileDirective} from './file.directive';
 import {TuiFileComponent} from './file/file.component';
 import {TuiFilesComponent} from './files.component';
 
 @NgModule({
-    declarations: [TuiFilesComponent, TuiFileComponent, TuiFileDirective],
+    declarations: [TuiFilesComponent, TuiFileComponent],
     imports: [
         CommonModule,
         TuiGroupModule,
@@ -26,6 +25,6 @@ import {TuiFilesComponent} from './files.component';
         TuiButtonModule,
         TuiExpandModule,
     ],
-    exports: [TuiFilesComponent, TuiFileComponent, TuiFileDirective],
+    exports: [TuiFilesComponent, TuiFileComponent],
 })
 export class TuiFilesModule {}

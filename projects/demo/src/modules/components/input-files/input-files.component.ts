@@ -51,6 +51,7 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     readonly example5: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/5/index.ts'),
         HTML: import('!!raw-loader!./examples/5/index.html'),
+        LESS: import('!!raw-loader!./examples/5/index.less'),
     };
 
     readonly control = new FormControl();

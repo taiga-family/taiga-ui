@@ -1,6 +1,7 @@
-<ng-container *ngIf="!src; else withLink">
-    <ng-container *ngTemplateOutlet="fileInfoTemplate"></ng-container>
-</ng-container>
+<ng-container
+    *ngIf="!src; else withLink"
+    [ngTemplateOutlet]="fileInfoTemplate"
+></ng-container>
 
 <ng-template #withLink>
     <a
@@ -52,17 +53,16 @@
         appearance="icon"
         class="t-remove"
         [title]="texts.remove"
-        [class.remove_mobile]="isMobile"
+        [class.t-remove_mobile]="isMobile"
         (click.prevent)="onRemoveClick()"
     ></button>
 </ng-template>
 
 <ng-template #defaultLeftContent>
     <img
-        *ngIf="preview && (fileTexts$ | async) as texts; else loader"
+        *ngIf="preview; else loader"
         automation-id="tui-file__preview"
         class="t-image"
-        [alt]="texts.preview"
         [src]="preview"
     />
     <ng-template #loader>

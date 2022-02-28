@@ -8,7 +8,6 @@ import {
     TuiHoveredModule,
     TuiLetModule,
     TuiPressedModule,
-    TuiPreventDefaultModule,
 } from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -38,7 +37,6 @@ import {TuiInputFilesComponent} from './input-files.component';
         TuiLinkModule,
         TuiLoaderModule,
         TuiButtonModule,
-        TuiPreventDefaultModule,
         TuiGroupModule,
     ],
     declarations: [TuiInputFilesComponent],

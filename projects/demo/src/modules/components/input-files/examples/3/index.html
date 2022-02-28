@@ -1,32 +1,32 @@
 <tui-files>
     <ng-container *ngFor="let file of files">
-        <tui-file *tuiFile state="normal" [file]="file"></tui-file>
+        <tui-file *tuiItem state="normal" [file]="file"></tui-file>
     </ng-container>
 
     <ng-container *ngFor="let file of rejectedFiles">
-        <tui-file *tuiFile state="error" [file]="file"></tui-file>
+        <tui-file *tuiItem state="error" [file]="file"></tui-file>
     </ng-container>
 
-    <ng-container *ngIf="loadingFile">
+    <ng-container *ngIf="loadingFile && !isCypress">
         <tui-file
-            *tuiFile
+            *tuiItem
             state="loading"
             [file]="loadingFile"
-            (fileRemoved)="removeLoading()"
+            (removed)="removeLoading()"
         ></tui-file>
     </ng-container>
 </tui-files>
 
 <h4>With link</h4>
 <tui-files>
-    <tui-file *tuiFile state="normal" [file]="fileWithLink"></tui-file>
+    <tui-file *tuiItem state="normal" [file]="fileWithLink"></tui-file>
 </tui-files>
 
 <h4>With deleted state</h4>
 <tui-files>
     <ng-container *ngFor="let file of removedFiles">
-        <tui-file *tuiFile state="deleted" size="l" [file]="file">
-            <button tuiLink (click)="restore(file)">Восстановить</button>
+        <tui-file *tuiItem state="deleted" size="l" [file]="file">
+            <button tuiLink (click)="restore(file)">Restore</button>
         </tui-file>
     </ng-container>
     <ng-container *ngFor="let file of restoredFiles">
@@ -36,7 +36,7 @@
             size="l"
             [file]="file"
             [leftContent]="icon"
-            (fileRemoved)="remove(file)"
+            (removed)="remove(file)"
         ></tui-file>
     </ng-container>
 </tui-files>

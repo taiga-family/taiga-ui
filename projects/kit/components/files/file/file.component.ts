@@ -48,7 +48,7 @@ export class TuiFileComponent {
     leftContent: PolymorpheusContent = '';
 
     @Output()
-    readonly fileRemoved = new EventEmitter<void>();
+    readonly removed = new EventEmitter<void>();
 
     @HostBinding('class._focused')
     focused = false;
@@ -83,7 +83,7 @@ export class TuiFileComponent {
     }
 
     get allowDelete(): boolean {
-        return !!this.fileRemoved.observers.length;
+        return !!this.removed.observers.length;
     }
 
     get icon(): string {
@@ -107,11 +107,11 @@ export class TuiFileComponent {
     }
 
     get name(): string {
-        return this.file.name.split('.').slice(0, -1).join('.');
+        return this.getName(this.file);
     }
 
     get type(): string {
-        return '.' + this.file.name.split('.').pop() || '';
+        return this.getType(this.file);
     }
 
     get content$(): Observable<PolymorpheusContent> {
@@ -123,7 +123,7 @@ export class TuiFileComponent {
     }
 
     onRemoveClick() {
-        this.fileRemoved.emit();
+        this.removed.emit();
     }
 
     onFocusVisible(focusVisible: boolean) {
@@ -161,5 +161,15 @@ export class TuiFileComponent {
         }
 
         return '';
+    }
+
+    @tuiPure
+    private getName(file: TuiFileLike): string {
+        return file.name.split('.').slice(0, -1).join('.');
+    }
+
+    @tuiPure
+    private getType(file: TuiFileLike) {
+        return '.' + file.name.split('.').pop() || '';
     }
 }

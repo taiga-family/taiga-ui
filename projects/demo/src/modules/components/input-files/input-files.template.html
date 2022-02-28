@@ -64,7 +64,7 @@
                 [pseudoFocused]="pseudoFocused"
                 [pseudoHovered]="pseudoHovered"
                 [pseudoPressed]="pseudoPressed"
-                (onReject)="updateRejected($event)"
+                (reject)="updateRejected($event)"
             ></tui-input-files>
             <tui-files class="tui-space_top-2">
                 <ng-container *ngIf="multiple; else single">
@@ -76,7 +76,7 @@
                             [file]="file"
                             [size]="size"
                             [showSize]="showSize"
-                            (fileRemoved)="removeFile(file)"
+                            (removed)="removeFile(file)"
                         ></tui-file>
                     </ng-container>
                 </ng-container>
@@ -99,7 +99,7 @@
                         [file]="file"
                         [size]="size"
                         [showSize]="showSize"
-                        (fileRemoved)="removeRejected(file)"
+                        (removed)="removeRejected(file)"
                     ></tui-file>
                 </ng-container>
             </tui-files>

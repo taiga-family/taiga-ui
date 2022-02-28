@@ -8,11 +8,9 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiPure} from '@taiga-ui/cdk';
-import {TUI_HIDE_WORD, TUI_SHOW_ALL_WORD} from '@taiga-ui/kit/tokens';
+import {TuiItemDirective, tuiPure} from '@taiga-ui/cdk';
+import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
-
-import {TuiFileDirective} from './file.directive';
 
 @Component({
     selector: 'tui-files',
@@ -22,7 +20,7 @@ import {TuiFileDirective} from './file.directive';
     encapsulation: ViewEncapsulation.None,
 })
 export class TuiFilesComponent {
-    @ContentChildren(TuiFileDirective, {read: TemplateRef})
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<{}>> | null = null;
 
     @Input()
@@ -31,12 +29,12 @@ export class TuiFilesComponent {
     hidden = true;
 
     constructor(
-        @Inject(TUI_HIDE_WORD) private readonly hideWord$: Observable<string>,
-        @Inject(TUI_SHOW_ALL_WORD) private readonly showAllWord$: Observable<string>,
+        @Inject(TUI_HIDE_TEXT) private readonly hideText$: Observable<string>,
+        @Inject(TUI_SHOW_ALL_TEXT) private readonly showAllText$: Observable<string>,
     ) {}
 
     get hasExtraItems(): boolean {
-        return !!this.max && !!this.items?.length;
+        return !!this.max && (this.items?.length ?? 0) > this.max;
     }
 
     get showHideWord$(): Observable<string> {
@@ -49,6 +47,6 @@ export class TuiFilesComponent {
 
     @tuiPure
     private getShowHideWord$(hidden: boolean): Observable<string> {
-        return hidden ? this.showAllWord$ : this.hideWord$;
+        return hidden ? this.showAllText$ : this.hideText$;
     }
 }

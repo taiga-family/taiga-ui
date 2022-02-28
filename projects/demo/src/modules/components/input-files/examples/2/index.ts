@@ -18,15 +18,15 @@ export class TuiInputFilesExample2 {
         this.rejectedFiles = [...this.rejectedFiles, ...files];
     }
 
-    removeFile(file: File) {
+    removeFile({name}: File) {
         this.control.setValue(
-            this.control.value.filter((current: File) => current.name !== file.name),
+            this.control.value.filter((current: File) => current.name !== name),
         );
     }
 
-    clearRejected(file: TuiFileLike) {
+    clearRejected({name}: TuiFileLike) {
         this.rejectedFiles = this.rejectedFiles.filter(
-            rejected => rejected.name !== file.name,
+            rejected => rejected.name !== name,
         );
     }
 }
