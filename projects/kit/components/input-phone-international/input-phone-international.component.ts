@@ -136,10 +136,22 @@ export class TuiInputPhoneInternationalComponent
     @HostListener('paste.capture.prevent.stop', ['$event'])
     @HostListener('drop.capture.prevent.stop', ['$event'])
     onPaste(event: ClipboardEvent | DragEvent) {
-        const value = extractValueFromEvent(event).replace('+', '');
-        const countryIsoCode = this.countries.find(countryIsoCode =>
-            value.startsWith(this.isoToCountryCode(countryIsoCode).replace('+', '')),
-        );
+        let value = extractValueFromEvent(event).replace('+', '');
+        const countryIsoCode = this.countries.find(countryIsoCode => {
+            if (countryIsoCode === TuiCountryIsoCode.RU) {
+                const test = /^[7 | 8]/.test(value) && /^(?!880[1-9])/.test(value);
+
+                if (test) {
+                    value = value.replace(/^8/, '7');
+                }
+
+                return test;
+            }
+
+            return value.startsWith(
+                this.isoToCountryCode(countryIsoCode).replace('+', ''),
+            );
+        });
 
         if (countryIsoCode) {
             this.updateCountryIsoCode(countryIsoCode);
