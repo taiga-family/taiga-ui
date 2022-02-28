@@ -18,9 +18,10 @@ import {
     tuiDefaultProp,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
-import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
 import {sizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader-options';
 
 // @dynamic
 @Component({
@@ -32,15 +33,15 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export class TuiLoaderComponent {
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeXXL = 'm';
+    size = this.options.size;
 
     @Input()
     @tuiDefaultProp()
-    inheritColor = false;
+    inheritColor = this.options.inheritColor;
 
     @Input()
     @tuiDefaultProp()
-    overlay = false;
+    overlay = this.options.overlay;
 
     // TODO: Remove null in 3.0
     @Input()
@@ -71,6 +72,7 @@ export class TuiLoaderComponent {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_IS_IOS) private readonly isIos: boolean,
+        @Inject(TUI_LOADER_OPTIONS) private readonly options: TuiLoaderOptions,
     ) {}
 
     get hasOverlay(): boolean {
