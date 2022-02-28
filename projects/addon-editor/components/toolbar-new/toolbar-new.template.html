@@ -4,14 +4,14 @@
 <ng-container *ngIf="editor.stateChange$ | async"></ng-container>
 <div [tuiFocusable]="focusable" (focus)="onTopFocus()"></div>
 <div [tuiFocusable]="focusable" (focus)="onBottomFocus()"></div>
+
 <section
     *ngIf="texts$ | async as texts"
     tuiToolbarNavigationManager
-    class="wrapper"
+    class="t-tools-wrapper"
 >
     <div *ngIf="enabled(TuiEditorTool.Undo)" class="t-block">
         <button
-            #button
             #undoBtn
             tuiToolbarTool
             tuiIconButton
@@ -54,7 +54,7 @@
             *ngIf="formatEnabled"
             tuiToolbarTool
             class="t-tool t-wrapper"
-            [enabledTools]="tools"
+            [enabledTools]="toolsSet"
         ></tui-font-style>
 
         <tui-align-content
