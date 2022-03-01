@@ -1,6 +1,8 @@
-import {Directive, HostBinding, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {Directive, HostBinding, Inject, Input} from '@angular/core';
+import {tuiDefaultProp, TuiDirectiveStylesService} from '@taiga-ui/cdk';
 import {TuiOrientationT, TuiSizeL} from '@taiga-ui/core/types';
+
+import {TuiGroupStylesComponent} from './group-styles.component';
 
 @Directive({
     selector: '[tuiGroup]:not(ng-container)',
@@ -32,6 +34,14 @@ export class TuiGroupDirective {
     @Input()
     @tuiDefaultProp()
     size: TuiSizeL = 'm';
+
+    absoluteLoh = 'loh';
+
+    constructor(
+        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
+    ) {
+        directiveStyles.addComponent(TuiGroupStylesComponent);
+    }
 
     @HostBinding('class.tui-group_orientation_horizontal')
     get orientationHorizontal(): boolean {

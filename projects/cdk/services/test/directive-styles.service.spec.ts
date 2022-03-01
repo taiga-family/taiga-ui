@@ -9,7 +9,12 @@ describe('TuiDirectiveStylesService service', () => {
             },
         };
 
-        const service = new TuiDirectiveStylesService(stub, null as any);
+        const service = new TuiDirectiveStylesService(
+            null as any,
+            null as any,
+            stub,
+            null as any,
+        );
 
         service.addStyle('test', 'test');
 
@@ -25,7 +30,12 @@ describe('TuiDirectiveStylesService service', () => {
             setAttribute: () => ++called,
         };
 
-        const service = new TuiDirectiveStylesService(document, rendererStub);
+        const service = new TuiDirectiveStylesService(
+            null as any,
+            null as any,
+            document,
+            rendererStub,
+        );
 
         service.addStyle('p { color: black; }', 'test');
 
