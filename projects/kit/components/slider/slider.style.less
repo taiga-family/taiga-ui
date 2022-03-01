@@ -1,20 +1,18 @@
+@import 'taiga-ui-local';
+
 /*
 *** Thumb – this is an element on the track that the user can move around to select varying range values.
 *** Track – this is the part of the slider that the thumb runs along.
 *** Ticks - tick marks along the length of the track.
 */
 
-@thumb-heights: {
-    @s: 0.5rem;
-    @m: 1rem;
-};
 @track-height: 0.125rem;
 @ticks-thickness: 0.25rem;
 
 @track-color: var(--tui-slider-track-color);
 @thumb-color: currentColor;
 
-.customize-track(@progress-filling, @thumb-height) {
+.customize-track(@progress-filling, @thumb-width) {
     height: @track-height;
     border-radius: inherit;
 
@@ -22,8 +20,8 @@
     The most left point of the track is the most left point of the thumb (at the zero-position).
     The first tick should start at the center of thumb to set correct position for all other ticks.
     */
-    @first-tick-offset: (@thumb-height - @ticks-thickness) / 2;
-    @ticks-background-size: calc(100% - @thumb-height);
+    @first-tick-offset: (@thumb-width - @ticks-thickness) / 2;
+    @ticks-background-size: calc(100% - @thumb-width);
 
     @hide-first-tick: linear-gradient(
         to right,
@@ -60,8 +58,8 @@
     background-color: @thumb-color;
     border: none;
     border-radius: 50%;
-    height: @thumb-heights[ @@size];
-    width: @thumb-heights[ @@size];
+    height: @thumb-diameters[ @@size];
+    width: @thumb-diameters[ @@size];
 
     :not(:disabled)& {
         cursor: ew-resize;
@@ -74,7 +72,7 @@
 
 /* Vertically centers thumb on the track (webkit only) */
 .vertically-align-thumb(@size) {
-    margin-top: (@track-height / 2) - (@thumb-heights[ @@size] / 2);
+    margin-top: (@track-height / 2) - (@thumb-diameters[ @@size] / 2);
 }
 
 :host {
@@ -103,19 +101,19 @@
     }
 
     &[data-size='m']::-webkit-slider-runnable-track {
-        .customize-track(true, @thumb-heights[@m]);
+        .customize-track(true, @thumb-diameters[@m]);
     }
 
     &[data-size='s']::-webkit-slider-runnable-track {
-        .customize-track(true, @thumb-heights[@s]);
+        .customize-track(true, @thumb-diameters[@s]);
     }
 
     &[data-size='m']::-moz-range-track {
-        .customize-track(false, @thumb-heights[@m]);
+        .customize-track(false, @thumb-diameters[@m]);
     }
 
     &[data-size='s']::-moz-range-track {
-        .customize-track(false, @thumb-heights[@s]);
+        .customize-track(false, @thumb-diameters[@s]);
     }
 
     &[data-size='m']::-webkit-slider-thumb {
