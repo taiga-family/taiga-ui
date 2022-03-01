@@ -2,7 +2,7 @@
     *tuiLet="filteredItems as filtered"
     tuiAutoFocus
     tuiDropdownLimitWidth="fixed"
-    class="input"
+    class="t-input"
     [autoFocus]="!!sidebar"
     [content]="dropdown"
     [canOpen]="canOpen"
@@ -39,8 +39,8 @@
     </ng-template>
 </tui-hosted-dropdown>
 
-<nav class="navigation">
-    <tui-scrollbar class="scrollbar" [tuiMode]="mode$ | async">
+<nav class="t-navigation">
+    <tui-scrollbar class="t-scrollbar" [tuiMode]="mode$ | async">
         <tui-accordion [closeOthers]="false" [rounded]="false">
             <tui-accordion-item
                 *ngFor="let label of labels; index as index"
@@ -48,11 +48,11 @@
                 [borders]="null"
                 [(open)]="!!openPagesArr[index]"
             >
-                <span class="tui-space_left-2">
+                <span class="t-label">
                     <strong>{{ label }}</strong>
                 </span>
                 <ng-template tuiAccordionItemContent>
-                    <div class="section">
+                    <div class="t-section">
                         <ng-container
                             *ngFor="let item of items[index]; index as subIndex"
                         >
@@ -64,7 +64,7 @@
                 </ng-template>
             </tui-accordion-item>
         </tui-accordion>
-        <div class="items-container">
+        <div class="t-items-container">
             <ng-container
                 *ngFor="let item of itemsWithoutSections; let index = index"
             >
@@ -79,7 +79,7 @@
                 *ngIf="!item.subPages; else subPages"
                 tuiLink
                 routerLinkActive="sublink_active"
-                class="sublink"
+                class="t-sublink"
                 [routerLink]="item.route"
                 [scrollIntoView]="isActive(item.route)"
                 (click)="closeMenu()"
@@ -89,33 +89,33 @@
             <ng-template #subPages>
                 <div
                     routerLinkActive
-                    class="subsection"
+                    class="t-subsection"
                     [routerLinkActiveOptions]="{exact: false}"
                 >
                     <button
                         *ngIf="item.subPages"
                         tuiLink
                         type="button"
-                        class="sublink sublink_subsection"
+                        class="t-sublink t-sublink_subsection"
                         (click)="onGroupClick(index)"
                     >
                         <tui-svg
                             src="tuiIconChevronRight"
-                            class="chevron"
-                            [class.chevron_active]="!!openPagesGroupsArr[index]"
+                            class="t-chevron"
+                            [class.t-chevron_active]="!!openPagesGroupsArr[index]"
                         ></tui-svg>
                         {{ item.title }}
                     </button>
                     <tui-expand
-                        class="tui-space_left-1"
+                        class="t-expand"
                         [expanded]="!!openPagesGroupsArr[index]"
                     >
-                        <div class="section section_bordered">
+                        <div class="t-section t-section_bordered">
                             <a
                                 *ngFor="let subPage of item.subPages"
                                 tuiLink
                                 routerLinkActive="sublink_active"
-                                class="sublink sublink_small"
+                                class="t-sublink t-sublink_small"
                                 [routerLink]="subPage.route"
                                 [scrollIntoView]="isActive(subPage.route)"
                                 (click)="closeMenu()"

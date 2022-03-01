@@ -61,21 +61,6 @@ export class TuiDialogComponent<O, I> {
         return this.context.header;
     }
 
-    get h(): 'h3' | 'h4' | 'h5' {
-        if (this.isMobile) {
-            return 'h5';
-        }
-
-        switch (this.size) {
-            case 's':
-                return 'h5';
-            case 'm':
-                return 'h4';
-            default:
-                return 'h3';
-        }
-    }
-
     @HostBinding('@tuiSlideInTop')
     @HostBinding('@tuiFadeIn')
     get slideInTop(): TuiAnimationOptions {

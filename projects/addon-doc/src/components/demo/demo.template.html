@@ -23,7 +23,7 @@
     <ng-template #desktop>
         tuiMode:
         <tui-tooltip describeId="form" [content]="tooltip"></tui-tooltip>
-        <div tuiGroup class="tui-space_left-3" [collapsed]="true">
+        <div tuiGroup class="t-group" [collapsed]="true">
             <tui-radio-block
                 size="s"
                 nativeId="form"
@@ -56,11 +56,7 @@
             </tui-radio-block>
         </div>
     </ng-template>
-    <tui-checkbox-labeled
-        size="m"
-        class="tui-space_left-3"
-        [(ngModel)]="opaque"
-    >
+    <tui-checkbox-labeled size="m" class="t-checkbox" [(ngModel)]="opaque">
         {{ texts[1] }}
     </tui-checkbox-labeled>
 </div>
@@ -80,7 +76,7 @@
                 tuiButton
                 type="button"
                 size="s"
-                class="tui-space_top-3"
+                class="t-button"
                 [iconRight]="icon"
                 (click)="toggleDetails()"
             >
@@ -98,7 +94,7 @@
                     <pre class="t-value">
 Form data: {{ testForm.value | json }}</pre
                     >
-                    <div tuiGroup class="tui-space_top-3">
+                    <div tuiGroup class="t-form-controls">
                         <tui-select
                             tuiTextfieldSize="s"
                             class="t-select"

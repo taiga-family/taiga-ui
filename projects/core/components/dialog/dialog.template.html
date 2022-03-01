@@ -1,16 +1,12 @@
 <header
     *ngIf="header"
     polymorpheus-outlet
-    class="header"
+    class="t-header"
     [content]="header"
     [context]="context"
 ></header>
-<div class="content">
-    <h2
-        class="heading tui-text_{{ h }}"
-        [id]="context.id"
-        [textContent]="context.label"
-    ></h2>
+<div class="t-content">
+    <h2 class="t-heading" [id]="context.id" [textContent]="context.label"></h2>
     <section
         polymorpheus-outlet
         [context]="context"
@@ -18,7 +14,7 @@
     >
         <ng-template let-text>
             {{ text }}
-            <div class="buttons">
+            <div class="t-buttons">
                 <button
                     tuiButton
                     size="m"
@@ -30,7 +26,7 @@
         </ng-template>
     </section>
 </div>
-<div *ngIf="context.closeable" class="wrapper">
+<div *ngIf="context.closeable" class="t-wrapper">
     <button
         tuiIconButton
         tuiPreventDefault="mousedown"
@@ -39,7 +35,7 @@
         appearance=""
         icon="tuiIconCloseLarge"
         shape="rounded"
-        class="close"
+        class="t-close"
         [title]="closeWord$ | async"
         (click)="close()"
     ></button>
