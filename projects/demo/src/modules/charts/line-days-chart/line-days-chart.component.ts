@@ -42,7 +42,7 @@ export class ExampleTuiLineDaysChartComponent {
         Pipe: example2Pipe,
     };
 
-    readonly valueVariants = [
+    readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         new Array(91)
             .fill(0)
             .reduce<ReadonlyArray<[TuiDay, number]>>(

@@ -15,6 +15,8 @@ import {
     AbstractTuiControl,
     isNativeFocused,
     setNativeFocused,
+    TuiActiveZoneDirective,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
@@ -55,7 +57,9 @@ export class TuiInputComponent
     iconAlign: TuiHorizontalDirection = 'left';
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent = '';
+    readonly datalist: PolymorpheusContent<
+        TuiContextWithImplicit<TuiActiveZoneDirective>
+    > = '';
 
     open = false;
 

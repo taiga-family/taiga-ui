@@ -146,7 +146,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
     dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
 
     readonly valueContentVariants: ReadonlyArray<
-        PolymorpheusContent<TuiContextWithImplicit<ReadonlyArray<unknown>>>
+        PolymorpheusContent<TuiContextWithImplicit<ReadonlyArray<Account>>>
     > = ['', ({$implicit: {length}}) => `Selected: ${length}`];
 
     valueContent = this.valueContentVariants[0];

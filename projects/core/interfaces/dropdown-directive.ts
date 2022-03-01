@@ -1,4 +1,4 @@
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     TuiDropdownWidthT,
     TuiHorizontalDirection,
@@ -11,7 +11,7 @@ export interface TuiDropdown<C = object> {
     refresh$: Observable<any>;
     clientRect: ClientRect;
     content: PolymorpheusContent;
-    host: HTMLElement;
+    host: TuiNativeFocusableElement | HTMLElement;
     align: TuiHorizontalDirection;
     minHeight: number;
     maxHeight: number;

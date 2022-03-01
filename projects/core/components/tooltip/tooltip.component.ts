@@ -62,8 +62,8 @@ export class TuiTooltipComponent {
 
     // TODO: Simplify
     @HostBinding('attr.data-mode')
-    get computedMode(): TuiHintModeT | TuiBrightness | null {
-        return this.mode || this.globalMode;
+    get computedMode(): TuiHintModeT | null {
+        return this.mode || (this.globalMode === 'onDark' ? 'onDark' : null);
     }
 
     @HostListener('mousedown', ['$event'])

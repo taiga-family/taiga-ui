@@ -35,6 +35,7 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
+import {TextMaskConfig} from 'angular2-text-mask';
 
 const DEFAULT_MAX_LENGTH = 18;
 
@@ -175,32 +176,33 @@ export class TuiInputNumberComponent
         nativeFocusableElement.selectionStart++;
     }
 
-    mask: TuiMapper<boolean, TuiTextMaskOptions> = (
+    mask: TuiMapper<boolean, TextMaskConfig> = (
         allowNegative: boolean,
         decimal: TuiDecimalT,
         decimalLimit: number,
         nativeFocusableElement: HTMLInputElement | null,
-    ) => ({
-        mask: tuiCreateNumberMask({
-            allowNegative,
-            decimalLimit,
-            allowDecimal: decimal !== 'never',
-            requireDecimal: decimal === 'always',
-            decimalSymbol: this.numberFormat.decimalSeparator,
-            thousandSymbol: this.numberFormat.thousandSeparator,
-            autoCorrectDecimalSymbol: tuiEnableAutoCorrectDecimalSymbol(
-                this.numberFormat,
+    ) =>
+        ({
+            mask: tuiCreateNumberMask({
+                allowNegative,
+                decimalLimit,
+                allowDecimal: decimal !== 'never',
+                requireDecimal: decimal === 'always',
+                decimalSymbol: this.numberFormat.decimalSeparator,
+                thousandSymbol: this.numberFormat.thousandSeparator,
+                autoCorrectDecimalSymbol: tuiEnableAutoCorrectDecimalSymbol(
+                    this.numberFormat,
+                ),
+            }),
+            pipe: tuiCreateAutoCorrectedNumberPipe(
+                decimal === 'always' ? decimalLimit : 0,
+                this.numberFormat.decimalSeparator,
+                this.numberFormat.thousandSeparator,
+                nativeFocusableElement,
+                allowNegative,
             ),
-        }),
-        pipe: tuiCreateAutoCorrectedNumberPipe(
-            decimal === 'always' ? decimalLimit : 0,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-            nativeFocusableElement,
-            allowNegative,
-        ),
-        guide: false,
-    });
+            guide: false,
+        } as TuiTextMaskOptions as unknown as TextMaskConfig);
 
     onValueChange(value: string) {
         if (maskedMoneyValueIsEmpty(value)) {

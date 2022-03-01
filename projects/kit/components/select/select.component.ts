@@ -15,6 +15,8 @@ import {
     AbstractTuiNullableControl,
     isNativeFocused,
     setNativeFocused,
+    TuiActiveZoneDirective,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiPure,
@@ -25,6 +27,9 @@ import {
     TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeM,
+    TuiSizeS,
     TuiTextfieldCleanerDirective,
     TuiValueContentContext,
 } from '@taiga-ui/core';
@@ -66,7 +71,9 @@ export class TuiSelectComponent<T>
     valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent = '';
+    readonly datalist: PolymorpheusContent<
+        TuiContextWithImplicit<TuiActiveZoneDirective>
+    > = '';
 
     constructor(
         @Optional()
@@ -86,7 +93,9 @@ export class TuiSelectComponent<T>
         super(control, changeDetectorRef);
     }
 
-    get arrow(): PolymorpheusContent {
+    get arrow(): PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+    > {
         return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 

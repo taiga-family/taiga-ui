@@ -14,6 +14,7 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiContextWithImplicit,
     TuiFocusableElementAccessor,
+    TuiInputTypeT,
     TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -69,17 +70,18 @@ export class TuiInputPasswordComponent
 
     isPasswordHidden = true;
 
-    readonly computedMode$: Observable<TuiBrightness | TuiHintModeT | null> =
-        combineLatest([
-            this.mode$,
-            this.hintController.change$.pipe(
-                startWith(null),
-                map(() => this.hintController.mode),
-            ),
-        ]).pipe(
-            map(([mode, controller]) => controller || mode),
+    readonly computedMode$: Observable<TuiHintModeT | null> = combineLatest([
+        this.mode$.pipe(map(val => (val === 'onDark' ? 'onDark' : null))),
+        this.hintController.change$.pipe(
             startWith(null),
-        );
+            map(() => this.hintController.mode),
+        ),
+    ]).pipe(
+        map(([mode, controller]) => controller || mode),
+        startWith(null),
+    );
+
+    readonly type!: TuiContextWithImplicit<TuiSizeS | TuiSizeL>;
 
     constructor(
         @Optional()
@@ -119,7 +121,7 @@ export class TuiInputPasswordComponent
         return this.getContext(this.textfieldSize.size);
     }
 
-    get inputType(): string {
+    get inputType(): TuiInputTypeT {
         return this.isPasswordHidden || !this.interactive ? 'password' : 'text';
     }
 

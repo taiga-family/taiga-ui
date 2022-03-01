@@ -23,6 +23,7 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
+import {TextMaskConfig} from 'angular2-text-mask';
 
 @Component({
     selector: 'tui-input-expire',
@@ -47,7 +48,7 @@ export class TuiInputExpireComponent
     @tuiDefaultProp()
     autocompleteEnabled = false;
 
-    readonly textMaskOptions: TuiTextMaskOptions = {
+    readonly textMaskOptions: TextMaskConfig = {
         mask: [
             TUI_DIGIT_REGEXP,
             TUI_DIGIT_REGEXP,
@@ -57,7 +58,7 @@ export class TuiInputExpireComponent
         ],
         pipe: tuiCreateAutoCorrectedExpirePipe(),
         guide: false,
-    };
+    } as TuiTextMaskOptions as unknown as TextMaskConfig;
 
     constructor(
         @Optional()

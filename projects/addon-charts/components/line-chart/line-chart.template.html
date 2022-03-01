@@ -72,10 +72,11 @@
                 [style.bottom.%]="getBottom(point[1])"
             ></div>
             <ng-template #hint>
+                <!-- TODO: need investigate why build failed without $any -->
                 <div
                     polymorpheus-outlet
                     class="t-text"
-                    [content]="computedHint"
+                    [content]="$any(computedHint)"
                     [context]="getContentContext(point)"
                 ></div>
             </ng-template>

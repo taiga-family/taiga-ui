@@ -66,7 +66,7 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
         new TuiDay(2017, 2, 5),
         new TuiDay(1900, 0, 1),
         [this.today.append({day: -1}), new TuiTime(12, 20)],
-    ];
+    ] as const;
 
     min = this.minVariants[0];
 
@@ -76,7 +76,7 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
         new TuiDay(2020, 2, 5),
         new TuiDay(2300, 0, 1),
         [this.today.append({day: +1}), new TuiTime(16, 20)],
-    ];
+    ] as const;
 
     max = this.maxVariants[0];
 

@@ -44,7 +44,7 @@ export class TuiLineChartComponent {
 
     @Input('value')
     @tuiDefaultProp()
-    set valueSetter(value: ReadonlyArray<TuiPoint>) {
+    set valueSetter(value: readonly TuiPoint[]) {
         this.value = value.filter(item => !item.some(isNaN));
     }
 
@@ -88,7 +88,7 @@ export class TuiLineChartComponent {
     @tuiDefaultProp()
     dots = false;
 
-    value: ReadonlyArray<TuiPoint> = [];
+    value: readonly TuiPoint[] = [];
 
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
@@ -134,7 +134,7 @@ export class TuiLineChartComponent {
 
     get computedHint():
         | PolymorpheusContent<TuiContextWithImplicit<TuiPoint>>
-        | PolymorpheusContent<TuiContextWithImplicit<ReadonlyArray<TuiPoint>>> {
+        | PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> {
         return this.hintDirective ? this.hintDirective.hint : this.hintContent;
     }
 
@@ -173,9 +173,7 @@ export class TuiLineChartComponent {
 
     getContentContext(
         $implicit: TuiPoint,
-    ):
-        | TuiContextWithImplicit<TuiPoint>
-        | TuiContextWithImplicit<ReadonlyArray<TuiPoint>> {
+    ): TuiContextWithImplicit<TuiPoint> | TuiContextWithImplicit<readonly TuiPoint[]> {
         return this.hintDirective
             ? this.hintDirective.getContext(this.value.indexOf($implicit), this)
             : {$implicit};
@@ -215,7 +213,7 @@ export class TuiLineChartComponent {
     }
 
     @tuiPure
-    private getD(value: ReadonlyArray<TuiPoint>, smoothingFactor: number): string {
+    private getD(value: readonly TuiPoint[], smoothingFactor: number): string {
         return value.reduce(
             (d, point, index) =>
                 index ? `${d} ${draw(value, index, smoothingFactor)}` : `M ${point}`,

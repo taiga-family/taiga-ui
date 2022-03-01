@@ -108,7 +108,7 @@ export class TuiLineDaysChartComponent {
         private readonly hintDirective: TuiLineDaysChartHintDirective | null,
     ) {}
 
-    get months(): ReadonlyArray<ReadonlyArray<TuiPoint>> {
+    get months(): ReadonlyArray<readonly TuiPoint[]> {
         return this.value.length ? this.breakMonths(this.value) : EMPTY_ARRAY;
     }
 
@@ -192,7 +192,7 @@ export class TuiLineDaysChartComponent {
     @tuiPure
     private breakMonths(
         value: ReadonlyArray<[TuiDay, number]>,
-    ): ReadonlyArray<ReadonlyArray<TuiPoint>> {
+    ): ReadonlyArray<readonly TuiPoint[]> {
         const offset = value[0][0].day - 1;
 
         return Array.from(

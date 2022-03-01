@@ -4,7 +4,7 @@ import {isNativeKeyboardFocusable} from './is-native-keyboard-focusable';
 import {isNativeMouseFocusable} from './is-native-mouse-focusable';
 
 /**
- * Finds closest element that can be focused with a keyboard or mouse in theory
+ * Finds the closest element that can be focused with a keyboard or mouse in theory
  *
  * @param initial current HTML element
  * @param prev should it look backwards instead (find item that will be focused with Shift + Tab)

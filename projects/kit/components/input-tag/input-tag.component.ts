@@ -54,6 +54,7 @@ import {
     TuiSizeS,
     TuiTextfieldController,
 } from '@taiga-ui/core';
+import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {ALLOWED_SPACE_REGEXP} from '@taiga-ui/kit/components/tag';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TAG_STATUS} from '@taiga-ui/kit/tokens';
@@ -154,7 +155,8 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
-    disabledItemHandler: TuiBooleanHandler<string> = ALWAYS_FALSE_HANDLER;
+    disabledItemHandler: TuiBooleanHandler<string | TuiStringifiableItem<any>> =
+        ALWAYS_FALSE_HANDLER;
 
     @Input('pseudoFocused')
     set pseudoFocusedSetter(value: boolean | null) {

@@ -45,7 +45,7 @@ export class TuiLineChartHintDirective {
 
     @Input('tuiLineChartHint')
     @tuiDefaultProp()
-    hint: PolymorpheusContent<TuiContextWithImplicit<ReadonlyArray<TuiPoint>>> = '';
+    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = '';
 
     constructor(
         @Inject(Renderer2) private readonly renderer: Renderer2,
@@ -73,7 +73,7 @@ export class TuiLineChartHintDirective {
     getContext(
         index: number,
         _chart: TuiLineChartComponent,
-    ): TuiContextWithImplicit<ReadonlyArray<TuiPoint>> {
+    ): TuiContextWithImplicit<readonly TuiPoint[]> {
         return this.computeContext(index, this.charts);
     }
 
@@ -96,7 +96,7 @@ export class TuiLineChartHintDirective {
     private computeContext(
         index: number,
         charts: QueryList<TuiLineChartComponent>,
-    ): TuiContextWithImplicit<ReadonlyArray<TuiPoint>> {
+    ): TuiContextWithImplicit<readonly TuiPoint[]> {
         return {
             $implicit: charts.map(chart => chart.value[index]),
         };

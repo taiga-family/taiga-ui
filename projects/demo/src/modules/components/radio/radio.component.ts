@@ -65,19 +65,15 @@ export class ExampleTuiRadioComponent extends AbstractExampleTuiControl {
 
     pseudoDisabled = false;
 
-    identityMatcherVariants: ReadonlyArray<TuiIdentityMatcher<{id: string}>> = [
-        TUI_DEFAULT_IDENTITY_MATCHER,
-        (item1, item2) => item1.id === item2.id,
-    ];
+    identityMatcherVariants: ReadonlyArray<
+        TuiIdentityMatcher<{id: number; value: string}>
+    > = [TUI_DEFAULT_IDENTITY_MATCHER, (item1, item2) => item1.id === item2.id];
 
     identityMatcher = this.identityMatcherVariants[0];
 
     control = new FormControl(this.items[1]);
 
     onClick() {
-        this.control.setValue({
-            id: 0,
-            value: 'One',
-        });
+        this.control.setValue({id: 0, value: 'One'});
     }
 }

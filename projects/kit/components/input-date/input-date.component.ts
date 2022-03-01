@@ -23,7 +23,9 @@ import {
     TUI_FIRST_DAY,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
+    TuiActiveZoneDirective,
     TuiBooleanHandler,
+    TuiContextWithImplicit,
     TuiControlValueTransformer,
     TuiDateMode,
     TuiDay,
@@ -54,6 +56,7 @@ import {
     tuiCreateDateMask,
 } from '@taiga-ui/kit/utils/mask';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
@@ -107,7 +110,10 @@ export class TuiInputDateComponent
     defaultActiveYearMonth = TuiMonth.currentLocal();
 
     open = false;
-    readonly filler$ = this.dateTexts$.pipe(
+
+    readonly type!: TuiContextWithImplicit<TuiActiveZoneDirective>;
+
+    readonly filler$: Observable<string> = this.dateTexts$.pipe(
         map(dateTexts =>
             changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
         ),
@@ -190,8 +196,10 @@ export class TuiInputDateComponent
         return this.interactive && !this.computedMobile;
     }
 
-    get computedMask(): TuiTextMaskOptions {
-        return this.activeItem ? EMPTY_MASK : this.textMaskOptions;
+    get computedMask(): TextMaskConfig {
+        return (this.activeItem
+            ? EMPTY_MASK
+            : this.textMaskOptions) as TuiTextMaskOptions as unknown as TextMaskConfig;
     }
 
     get activeItem(): TuiNamedDay | null {

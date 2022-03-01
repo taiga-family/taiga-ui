@@ -1,8 +1,8 @@
 <tui-hosted-dropdown
     class="hosted"
     [canOpen]="canOpen"
-    [content]="dropdown"
     [open]="open && canOpen"
+    [content]="dropdown"
     (openChange)="onOpenChange($event)"
 >
     <tui-primitive-textfield
@@ -46,7 +46,7 @@
         ></tui-svg>
     </ng-template>
 
-    <ng-template #dropdown="polymorpheus" polymorpheus>
+    <ng-template #dropdown="polymorpheus" [polymorpheus]="type">
         <tui-calendar
             tuiPreventDefault="mousedown"
             automation-id="tui-input-date__calendar"
