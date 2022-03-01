@@ -1,11 +1,17 @@
 @import 'taiga-ui-local';
 
+.t-tools-panel {
+    display: flex;
+    width: 100%;
+    box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+}
+
 .t-tools-wrapper {
     .scrollbar-hidden();
+    position: relative;
     display: flex;
     padding: 0.25rem 0.75rem;
-    overflow: auto;
-    box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 
     &._disabled {
         pointer-events: none;
@@ -15,9 +21,9 @@
 
 .t-block {
     display: flex;
-    padding: 0.25rem 0;
+    padding: 0.25rem;
 
-    &:not(:last-child):after {
+    &:not(.t-ng-content):after {
         content: '';
         display: block;
         margin: 0 @space;
@@ -39,8 +45,30 @@
     }
 }
 
+.t-with-more {
+    padding: 0.25rem;
+    margin-right: 0.4rem;
+    margin-left: auto;
+    min-width: 2rem;
+}
+
+.t-hidden {
+    // don't use display none
+    // for correct handle of intersection observer events
+    visibility: hidden;
+}
+
 .t-dropdown {
     padding: 0.75rem;
+}
+
+.t-dropdown-tools {
+    display: flex;
+    max-width: 12rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.35rem 0;
 }
 
 .t-wrapper {

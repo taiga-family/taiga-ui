@@ -20,6 +20,305 @@
         *ngIf="enabled(TuiEditorTool.Undo)"
         class="t-block"
     >
+<div class="t-tools-panel">
+    <section tuiToolbarNavigationManager class="t-tools-wrapper">
+        <div
+            *ngIf="enabled(TuiEditorTool.Undo)"
+            class="t-block"
+            [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Undo)"
+            (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Undo)"
+        >
+            <ng-container *ngTemplateOutlet="undoTool"></ng-container>
+        </div>
+
+        <div
+            *ngIf="enabled(TuiEditorTool.Size)"
+            class="t-block"
+            [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Size)"
+            (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Size)"
+        >
+            <ng-container *ngTemplateOutlet="sizeTool"></ng-container>
+        </div>
+
+        <div *ngIf="firstBigBlockEnabled" class="t-block">
+            <div
+                *ngIf="formatEnabled"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorGroupTools.Format)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorGroupTools.Format)"
+            >
+                <ng-container *ngTemplateOutlet="formatTools"></ng-container>
+            </div>
+
+            <div
+                *ngIf="enabled(TuiEditorTool.Align)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Align)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Align)"
+            >
+                <ng-container *ngTemplateOutlet="alignTool"></ng-container>
+            </div>
+
+            <div
+                *ngIf="enabled(TuiEditorTool.List)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.List)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.List)"
+            >
+                <ng-container *ngTemplateOutlet="listTool"></ng-container>
+            </div>
+
+            <div
+                *ngIf="enabled(TuiEditorTool.Quote)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Quote)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Quote)"
+            >
+                <ng-container *ngTemplateOutlet="quoteTool"></ng-container>
+            </div>
+
+            <div
+                *ngIf="enabled(TuiEditorTool.Link)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Link)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Link)"
+            >
+                <ng-container *ngTemplateOutlet="linkTool"></ng-container>
+            </div>
+
+            <div
+                *ngIf="enabled(TuiEditorTool.Attach)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Attach)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Attach)"
+            >
+                <ng-container *ngTemplateOutlet="attachTool"></ng-container>
+            </div>
+        </div>
+
+        <div *ngIf="supOrSubEnabled" class="t-block">
+            <div
+                *ngIf="enabled(TuiEditorTool.Sub)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Sub)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Sub)"
+            >
+                <ng-container *ngTemplateOutlet="subTool"></ng-container>
+            </div>
+
+            <div
+                *ngIf="enabled(TuiEditorTool.Sup)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Sup)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Sup)"
+            >
+                <ng-container *ngTemplateOutlet="supTool"></ng-container>
+            </div>
+        </div>
+
+        <div *ngIf="colorOrHiliteEnabled" class="t-block">
+            <div
+                *ngIf="enabled(TuiEditorTool.Color)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Color)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Color)"
+            >
+                <ng-container *ngTemplateOutlet="colorTool"></ng-container>
+            </div>
+
+            <div
+                *ngIf="enabled(TuiEditorTool.Hilite)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Hilite)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Hilite)"
+            >
+                <ng-container *ngTemplateOutlet="hiliteTool"></ng-container>
+            </div>
+        </div>
+
+        <div *ngIf="secondBigBlockEnabled" class="t-block">
+            <div
+                *ngIf="enabled(TuiEditorTool.Code)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Code)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Code)"
+            >
+                <ng-container *ngTemplateOutlet="codeTool"></ng-container>
+            </div>
+
+            <div
+                *ngIf="enabled(TuiEditorTool.Tex)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Tex)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Tex)"
+            >
+                <ng-container *ngTemplateOutlet="textTool"></ng-container>
+            </div>
+
+            <div
+                *ngIf="enabled(TuiEditorTool.Img)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Img)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Img)"
+            >
+                <ng-container *ngTemplateOutlet="imgTool"></ng-container>
+            </div>
+
+            <div
+                *ngIf="enabled(TuiEditorTool.HR)"
+                [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.HR)"
+                (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.HR)"
+            >
+                <ng-container *ngTemplateOutlet="hrTool"></ng-container>
+            </div>
+        </div>
+
+        <div
+            *ngIf="enabled(TuiEditorTool.Clear)"
+            class="t-block"
+            [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Clear)"
+            (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Clear)"
+        >
+            <ng-container *ngTemplateOutlet="clearTool"></ng-container>
+        </div>
+
+        <div
+            *ngIf="enabled(TuiEditorTool.Table)"
+            class="t-block"
+            [class.t-hidden]="toolsSetInDropdown.has(TuiEditorTool.Table)"
+            (tuiToolbarIntersection)="changeVisible($event, TuiEditorTool.Table)"
+        >
+            <ng-container *ngTemplateOutlet="tableTools"></ng-container>
+        </div>
+
+        <div class="t-block t-ng-content">
+            <!--
+                TODO: breaking change later, don't use ng-content;
+                because it isn't possible to use ng-template to reuse
+            -->
+            <ng-content></ng-content>
+        </div>
+    </section>
+
+    <section class="t-with-more">
+        <tui-hosted-dropdown
+            *ngIf="toolsSetInDropdown.size > 0"
+            tuiDropdownDirection="bottom"
+            tuiDropdownAlign="right"
+            class="t-block t-block-dropdown"
+            [content]="dropdownContent"
+            [(open)]="open"
+        >
+            <button
+                tuiIconButton
+                type="button"
+                size="s"
+                icon="tuiIconMoreVertLarge"
+                appearance="icon"
+                class="t-tool"
+            ></button>
+        </tui-hosted-dropdown>
+    </section>
+
+    <ng-template #dropdownContent let-activeZone>
+        <div class="t-dropdown-tools">
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Size)">
+                <ng-container
+                    *ngTemplateOutlet="sizeTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container
+                *ngIf="toolsSetInDropdown.has(TuiEditorGroupTools.Format)"
+            >
+                <ng-container
+                    *ngTemplateOutlet="formatTools; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Align)">
+                <ng-container
+                    *ngTemplateOutlet="alignTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.List)">
+                <ng-container
+                    *ngTemplateOutlet="listTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Quote)">
+                <ng-container
+                    *ngTemplateOutlet="quoteTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Link)">
+                <ng-container
+                    *ngTemplateOutlet="linkTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Attach)">
+                <ng-container
+                    *ngTemplateOutlet="attachTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Sub)">
+                <ng-container
+                    *ngTemplateOutlet="subTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Sup)">
+                <ng-container
+                    *ngTemplateOutlet="supTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Color)">
+                <ng-container
+                    *ngTemplateOutlet="colorTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Hilite)">
+                <ng-container
+                    *ngTemplateOutlet="hiliteTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Code)">
+                <ng-container
+                    *ngTemplateOutlet="codeTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Tex)">
+                <ng-container
+                    *ngTemplateOutlet="textTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Img)">
+                <ng-container
+                    *ngTemplateOutlet="imgTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.HR)">
+                <ng-container
+                    *ngTemplateOutlet="hrTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Clear)">
+                <ng-container
+                    *ngTemplateOutlet="clearTool; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="toolsSetInDropdown.has(TuiEditorTool.Table)">
+                <ng-container
+                    *ngTemplateOutlet="tableTools; context: { $implicit: activeZone }"
+                ></ng-container>
+            </ng-container>
+        </div>
+    </ng-template>
+</div>
+
+<!-- Toolbar components/templates -->
+<ng-template #undoTool let-activeZone>
+    <ng-container *ngIf="texts$ | async as texts">
         <button
             #undoBtn
             tuiToolbarTool
@@ -35,6 +334,7 @@
             [tuiDescribedBy]="undoBtn.id"
             [disabled]="undoDisabled"
             [focusable]="false"
+            [tuiActiveZoneParent]="activeZone"
             (click)="undo()"
         ></button>
         <button
@@ -52,6 +352,7 @@
             [tuiDescribedBy]="redoBtn.id"
             [disabled]="redoDisabled"
             [focusable]="false"
+            [tuiActiveZoneParent]="activeZone"
             (click)="redo()"
         ></button>
     </div>
@@ -74,143 +375,173 @@
             class="t-tool t-wrapper"
             [enabledTools]="toolsSet"
         ></tui-font-style>
+    </ng-container>
+</ng-template>
 
-        <tui-align-content
-            *ngIf="enabled(TuiEditorTool.Align)"
-            tuiToolbarTool
-            class="t-tool t-wrapper"
-        ></tui-align-content>
+<ng-template #sizeTool let-activeZone>
+    <tui-font-size
+        tuiToolbarTool
+        class="t-tool t-wrapper"
+        [tuiActiveZoneParent]="activeZone"
+    ></tui-font-size>
+</ng-template>
 
-        <tui-list-configs
-            *ngIf="enabled(TuiEditorTool.List)"
-            tuiToolbarTool
-            class="t-tool t-wrapper"
-        ></tui-list-configs>
+<ng-template #formatTools let-activeZone>
+    <tui-font-style
+        tuiToolbarTool
+        class="t-tool t-wrapper"
+        [enabledTools]="toolsSet"
+        [tuiActiveZoneParent]="activeZone"
+    ></tui-font-style>
+</ng-template>
 
-        <button
-            *ngIf="enabled(TuiEditorTool.Quote)"
-            #button
-            #quoteBtn
-            tuiIconButton
-            tuiToolbarTool
-            type="button"
-            size="s"
-            icon="tuiIconQuoteLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
-            [tuiHint]="texts.quote"
-            [tuiHintId]="quoteBtn.id"
-            [tuiDescribedBy]="quoteBtn.id"
-            [pseudoPressed]="blockquote"
-            [disabled]="unorderedList || orderedList"
-            [focusable]="false"
-            (click)="toggleQuote()"
-        ></button>
-        <tui-hosted-dropdown
-            *ngIf="enabled(TuiEditorTool.Link)"
-            #link
-            tuiToolbarTool
-            class="t-wrapper"
-            [canOpen]="!a"
-            [content]="linkDropdown"
-        >
-            <button
-                #button
-                #linkBtn
-                tuiIconButton
-                type="button"
-                size="s"
-                icon="tuiIconLinkLarge"
-                appearance="icon"
-                tuiHintDirection="top-left"
-                class="t-tool"
-                [tuiHint]="texts.link"
-                [tuiHintId]="linkBtn.id"
-                [tuiDescribedBy]="linkBtn.id"
-                [pseudoPressed]="link.open || a"
-                [focusable]="link.open"
-            ></button>
-            <ng-template #linkDropdown>
-                <tui-edit-link
-                    #dropdown
-                    (addLink)="onLink(link, $event)"
-                    (removeLink)="onLink(link)"
-                ></tui-edit-link>
-            </ng-template>
-        </tui-hosted-dropdown>
-        <button
-            *ngIf="enabled(TuiEditorTool.Attach)"
-            #button
-            #attachBtn
-            tuiIconButton
-            tuiToolbarTool
-            type="button"
-            size="s"
-            icon="tuiIconAttachLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
-            [tuiHint]="texts.attach"
-            [tuiHintId]="attachBtn.id"
-            [tuiDescribedBy]="attachBtn.id"
-            [focusable]="false"
-            (click)="onAttach()"
-        ></button>
-    </div>
-    <div
-        *ngIf="enabled(TuiEditorTool.Sub) || enabled(TuiEditorTool.Sup)"
-        class="t-block"
+<ng-template #alignTool let-activeZone>
+    <tui-align-content
+        tuiToolbarTool
+        class="t-tool t-wrapper"
+        [tuiActiveZoneParent]="activeZone"
+    ></tui-align-content>
+</ng-template>
+
+<ng-template #listTool let-activeZone>
+    <tui-list-configs
+        tuiToolbarTool
+        class="t-tool t-wrapper"
+        [tuiActiveZoneParent]="activeZone"
+    ></tui-list-configs>
+</ng-template>
+
+<ng-template #quoteTool let-activeZone>
+    <button
+        *ngIf="texts$ | async as texts"
+        #quoteBtn
+        tuiIconButton
+        tuiToolbarTool
+        type="button"
+        size="s"
+        icon="tuiIconQuoteLarge"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        class="t-tool t-tool_margin"
+        [tuiHint]="texts.quote"
+        [tuiHintId]="quoteBtn.id"
+        [tuiDescribedBy]="quoteBtn.id"
+        [pseudoPressed]="blockquote"
+        [disabled]="unorderedList || orderedList"
+        [tuiActiveZoneParent]="activeZone"
+        [focusable]="false"
+        (click)="toggleQuote()"
+    ></button>
+</ng-template>
+
+<ng-template #linkTool let-activeZone>
+    <tui-hosted-dropdown
+        *ngIf="texts$ | async as texts"
+        #link
+        tuiToolbarTool
+        class="t-wrapper"
+        [canOpen]="!a"
+        [content]="linkDropdown"
+        [tuiActiveZoneParent]="activeZone"
     >
         <button
-            *ngIf="enabled(TuiEditorTool.Sub)"
-            #button
-            #subBtn
+            #linkBtn
             tuiIconButton
-            tuiToolbarTool
             type="button"
             size="s"
-            icon="tuiIconSubscriptLarge"
+            icon="tuiIconLinkLarge"
             appearance="icon"
             tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
-            [tuiHint]="texts.subscript"
-            [tuiHintId]="subBtn.id"
-            [tuiDescribedBy]="subBtn.id"
-            [pseudoPressed]="subscript"
-            [focusable]="false"
-            (click)="toggleSubscript()"
+            class="t-tool"
+            [tuiHint]="texts.link"
+            [tuiHintId]="linkBtn.id"
+            [tuiDescribedBy]="linkBtn.id"
+            [pseudoPressed]="link.open || a"
+            [focusable]="link.open"
         ></button>
-        <button
-            *ngIf="enabled(TuiEditorTool.Sup)"
-            #button
-            #supBtn
-            tuiIconButton
-            tuiToolbarTool
-            type="button"
-            size="s"
-            icon="tuiIconSuperscriptLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
-            [tuiHint]="texts.superscript"
-            [tuiHintId]="supBtn.id"
-            [tuiDescribedBy]="supBtn.id"
-            [pseudoPressed]="superscript"
-            [focusable]="false"
-            (click)="toggleSuperscript()"
-        ></button>
-    </div>
-    <div
-        *ngIf="enabled(TuiEditorTool.Color) || enabled(TuiEditorTool.Hilite)"
-        class="t-block"
-    >
-        <tui-text-color
-            *ngIf="enabled(TuiEditorTool.Color)"
-            tuiToolbarTool
-            class="t-tool t-wrapper"
-            [colors]="colors"
-        ></tui-text-color>
+        <ng-template #linkDropdown>
+            <tui-edit-link
+                #dropdown
+                (addLink)="onLink(link, $event)"
+                (removeLink)="onLink(link)"
+            ></tui-edit-link>
+        </ng-template>
+    </tui-hosted-dropdown>
+</ng-template>
+
+<ng-template #attachTool let-activeZone>
+    <button
+        *ngIf="texts$ | async as texts"
+        #attachBtn
+        tuiIconButton
+        tuiToolbarTool
+        type="button"
+        size="s"
+        icon="tuiIconAttachLarge"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        class="t-tool t-tool_margin"
+        [tuiHint]="texts.attach"
+        [tuiHintId]="attachBtn.id"
+        [tuiDescribedBy]="attachBtn.id"
+        [tuiActiveZoneParent]="activeZone"
+        [focusable]="false"
+        (click)="onAttach()"
+    ></button>
+</ng-template>
+
+<ng-template #subTool let-activeZone>
+    <button
+        *ngIf="texts$ | async as texts"
+        #subBtn
+        tuiIconButton
+        tuiToolbarTool
+        type="button"
+        size="s"
+        icon="tuiIconSubscriptLarge"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        class="t-tool t-tool_margin"
+        [tuiHint]="texts.subscript"
+        [tuiHintId]="subBtn.id"
+        [tuiDescribedBy]="subBtn.id"
+        [pseudoPressed]="subscript"
+        [tuiActiveZoneParent]="activeZone"
+        [focusable]="false"
+        (click)="toggleSubscript()"
+    ></button>
+</ng-template>
+
+<ng-template #supTool let-activeZone>
+    <button
+        *ngIf="texts$ | async as texts"
+        #supBtn
+        tuiIconButton
+        tuiToolbarTool
+        type="button"
+        size="s"
+        icon="tuiIconSuperscriptLarge"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        class="t-tool t-tool_margin"
+        [tuiHint]="texts.superscript"
+        [tuiHintId]="supBtn.id"
+        [tuiDescribedBy]="supBtn.id"
+        [pseudoPressed]="superscript"
+        [focusable]="false"
+        [tuiActiveZoneParent]="activeZone"
+        (click)="toggleSuperscript()"
+    ></button>
+</ng-template>
+
+<ng-template #colorTool let-activeZone>
+    <tui-text-color
+        tuiToolbarTool
+        class="t-tool t-wrapper"
+        [colors]="colors"
+        [tuiActiveZoneParent]="activeZone"
+    ></tui-text-color>
+</ng-template>
 
         <tui-highlight-color
             *ngIf="enabled(TuiEditorTool.Hilite)"
@@ -228,45 +559,62 @@
             tuiToolbarTool
             class="t-tool t-wrapper"
         ></tui-code>
+<ng-template #hiliteTool let-activeZone>
+    <tui-highlight-color
+        tuiToolbarTool
+        class="t-tool t-wrapper"
+        [colors]="colors"
+        [tuiActiveZoneParent]="activeZone"
+    ></tui-highlight-color>
+</ng-template>
 
+<ng-template #codeTool let-activeZone>
+    <tui-code
+        tuiToolbarTool
+        class="t-tool t-wrapper"
+        [tuiActiveZoneParent]="activeZone"
+    ></tui-code>
+</ng-template>
+
+<ng-template #textTool let-activeZone>
+    <button
+        *ngIf="texts$ | async as texts"
+        #texBtn
+        tuiIconButton
+        tuiToolbarTool
+        type="button"
+        size="s"
+        icon="tuiIconTeXLarge"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        class="t-tool"
+        [tuiHint]="texts.tex"
+        [tuiHintId]="texBtn.id"
+        [tuiDescribedBy]="texBtn.id"
+        [tuiActiveZoneParent]="activeZone"
+        [focusable]="false"
+        (click)="onTeX()"
+    ></button>
+</ng-template>
+
+<ng-template #imgTool let-activeZone>
+    <div *ngIf="texts$ | async as texts" tuiToolbarTool class="t-wrapper">
         <button
-            *ngIf="enabled(TuiEditorTool.Tex)"
             #button
-            #texBtn
             tuiIconButton
-            tuiToolbarTool
             type="button"
             size="s"
-            icon="tuiIconTeXLarge"
+            icon="tuiIconImgLarge"
             appearance="icon"
             tuiHintDirection="top-left"
             class="t-tool"
-            [tuiHint]="texts.tex"
-            [tuiHintId]="texBtn.id"
-            [tuiDescribedBy]="texBtn.id"
+            [tuiHint]="texts.image"
+            [id]="button.id"
+            [tuiHintId]="button.id"
             [focusable]="false"
-            (click)="onTeX()"
+            [tuiActiveZoneParent]="activeZone"
+            (click)="image.click()"
         ></button>
-        <div
-            *ngIf="enabled(TuiEditorTool.Img)"
-            tuiToolbarTool
-            class="t-wrapper"
-        >
-            <button
-                #button
-                tuiIconButton
-                type="button"
-                size="s"
-                icon="tuiIconImgLarge"
-                appearance="icon"
-                tuiHintDirection="top-left"
-                class="t-tool"
-                [tuiHint]="texts.image"
-                [id]="button.id"
-                [tuiHintId]="button.id"
-                [focusable]="false"
-                (click)="image.click()"
-            ></button>
 
             <input
                 #image
@@ -340,24 +688,82 @@
             tuiToolbarTool
             class="t-tool t-tool_margin"
         ></tui-table-create>
-
-        <tui-table-row-column-manager
-            tuiToolbarTool
-            class="t-tool t-tool_margin"
-        ></tui-table-row-column-manager>
-
-        <tui-table-merge-cells
-            tuiToolbarTool
-            class="t-tool t-tool_margin"
-        ></tui-table-merge-cells>
-
-        <tui-table-cell-color
-            tuiToolbarTool
-            class="t-tool t-wrapper"
-            [colors]="colors"
-        ></tui-table-cell-color>
+        <input
+            #image
+            type="file"
+            accept="image/*"
+            class="t-image"
+            [tuiFocusable]="false"
+            (change)="onImage(image)"
+        />
     </div>
-    <div class="t-block">
-        <ng-content></ng-content>
-    </div>
-</section>
+</ng-template>
+
+<ng-template #hrTool let-activeZone>
+    <button
+        *ngIf="texts$ | async as texts"
+        #hrBtn
+        tuiIconButton
+        tuiToolbarTool
+        type="button"
+        size="s"
+        icon="tuiIconHrLarge"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        class="t-tool t-tool_margin"
+        [tuiHint]="texts.insertHorizontalRule"
+        [tuiHintId]="hrBtn.id"
+        [tuiDescribedBy]="hrBtn.id"
+        [focusable]="false"
+        [tuiActiveZoneParent]="activeZone"
+        (click)="insertHorizontalRule()"
+    ></button>
+</ng-template>
+
+<ng-template #clearTool let-activeZone>
+    <button
+        *ngIf="texts$ | async as texts"
+        #clearBtn
+        tuiIconButton
+        tuiToolbarTool
+        type="button"
+        size="s"
+        icon="tuiIconClearFormatLarge"
+        appearance="icon"
+        tuiHintDirection="top-left"
+        class="t-tool t-tool_margin"
+        [tuiHint]="texts.clear"
+        [tuiHintId]="clearBtn.id"
+        [tuiDescribedBy]="clearBtn.id"
+        [focusable]="false"
+        [tuiActiveZoneParent]="activeZone"
+        (click)="removeFormat()"
+    ></button>
+</ng-template>
+
+<ng-template #tableTools let-activeZone>
+    <tui-table-create
+        tuiToolbarTool
+        class="t-tool t-tool_margin"
+        [tuiActiveZoneParent]="activeZone"
+    ></tui-table-create>
+
+    <tui-table-row-column-manager
+        tuiToolbarTool
+        class="t-tool t-tool_margin"
+        [tuiActiveZoneParent]="activeZone"
+    ></tui-table-row-column-manager>
+
+    <tui-table-merge-cells
+        tuiToolbarTool
+        class="t-tool t-tool_margin"
+        [tuiActiveZoneParent]="activeZone"
+    ></tui-table-merge-cells>
+
+    <tui-table-cell-color
+        tuiToolbarTool
+        class="t-tool t-wrapper"
+        [colors]="colors"
+        [tuiActiveZoneParent]="activeZone"
+    ></tui-table-cell-color>
+</ng-template>

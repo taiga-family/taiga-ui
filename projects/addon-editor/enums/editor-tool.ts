@@ -25,3 +25,8 @@ export enum TuiEditorTool {
     RowsColumnsManaging = 'rowsColumnsManaging',
     Details = 'details',
 }
+
+export enum TuiEditorGroupTools {
+    Format = 'format',
+    NgContent = 'NgContent',
+}
