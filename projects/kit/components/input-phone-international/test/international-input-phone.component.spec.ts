@@ -155,7 +155,7 @@ describe('InputPhoneInternational', () => {
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.RU);
         });
 
-        it('should replace code on paste event ', () => {
+        it('should replace code 8 on paste event', () => {
             const data = new DataTransfer();
 
             data.setData('text/plain', '88005553535');
@@ -165,6 +165,18 @@ describe('InputPhoneInternational', () => {
             component.onPaste(pasteEvent);
 
             expect(testComponent.control.value).toEqual('+78005553535');
+        });
+
+        it('should replace code +8 on paste event', () => {
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '+89112223344');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
+
+            expect(testComponent.control.value).toEqual('+79112223344');
         });
 
         it('should update value on paste', () => {
