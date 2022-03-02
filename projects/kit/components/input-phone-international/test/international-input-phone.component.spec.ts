@@ -143,6 +143,30 @@ describe('InputPhoneInternational', () => {
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.UA);
         });
 
+        it('should set country code on paste event ', () => {
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '88005553535');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
+
+            expect(component.countryIsoCode).toBe(TuiCountryIsoCode.RU);
+        });
+
+        it('should replace code on paste event ', () => {
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '88005553535');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
+
+            expect(testComponent.control.value).toEqual('+78005553535');
+        });
+
         it('should update value on paste', () => {
             const data = new DataTransfer();
 
