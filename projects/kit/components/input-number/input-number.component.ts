@@ -31,6 +31,7 @@ import {
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
     TuiDecimalT,
+    tuiEnableAutoCorrectDecimalSymbol,
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
@@ -185,15 +186,17 @@ export class TuiInputNumberComponent
             decimalLimit,
             allowDecimal: decimal !== 'never',
             requireDecimal: decimal === 'always',
-            autoCorrectDecimalSymbol: false,
             decimalSymbol: this.numberFormat.decimalSeparator,
             thousandSymbol: this.numberFormat.thousandSeparator,
+            autoCorrectDecimalSymbol: tuiEnableAutoCorrectDecimalSymbol(
+                this.numberFormat,
+            ),
         }),
         pipe: tuiCreateAutoCorrectedNumberPipe(
             decimal === 'always' ? decimalLimit : 0,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
-            nativeFocusableElement || undefined,
+            nativeFocusableElement,
             allowNegative,
         ),
         guide: false,

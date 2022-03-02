@@ -127,7 +127,7 @@ describe('InputNumber', () => {
         });
     });
 
-    it('There is no minus sign for negative values ​​with min> = 0', done => {
+    it('There is no minus sign for negative values with min> = 0', done => {
         testComponent.component.min = 0;
         testComponent.control.setValue(-12345);
         fixture.detectChanges();
@@ -179,6 +179,14 @@ describe('InputNumber', () => {
                 component.onValueChange('-,');
 
                 expect(testComponent.control.value).toBe(null);
+            });
+
+            it(`Value does not depend on the separator`, () => {
+                component.onValueChange('123456,50');
+                expect(testComponent.control.value).toBe(123456.5);
+
+                component.onValueChange('123456.50');
+                expect(testComponent.control.value).toBe(123456.5);
             });
         });
 
@@ -309,7 +317,7 @@ describe('InputNumber', () => {
         expect(nativeInput.getAttribute('maxlength')).toBe('23');
     });
 
-    describe('При decimal === always', () => {
+    describe('When decimal === always', () => {
         it(`Adds the number of zeros specified by the precision property when updating Value with an integer`, () => {
             const value = '123';
             const precision = 2;

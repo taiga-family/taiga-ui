@@ -62,7 +62,7 @@ export class TuiInputPhoneComponent
     @Input('countryCode')
     @tuiRequiredSetter()
     set countryCodeSetter(countryCode: string) {
-        this.updateValueWithNewContryCode(countryCode);
+        this.updateValueWithNewCountryCode(countryCode);
         this.countryCode = countryCode;
     }
 
@@ -334,7 +334,7 @@ export class TuiInputPhoneComponent
         this.searchChange.emit(search);
     }
 
-    private updateValueWithNewContryCode(newCountryCode: string) {
+    private updateValueWithNewCountryCode(newCountryCode: string) {
         if (!this.isTextValue) {
             this.updateValue(this.value.replace(this.countryCode, newCountryCode));
         }

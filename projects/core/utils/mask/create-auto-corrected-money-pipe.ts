@@ -15,7 +15,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
     decimalLimit: number = 0,
     decimalSymbol: TuiDecimalSymbol = ',',
     thousandSymbol: string = CHAR_NO_BREAK_SPACE,
-    nativeInput?: HTMLInputElement,
+    nativeInput?: HTMLInputElement | null,
     allowNegative?: boolean,
 ): TuiTextMaskPipeHandler {
     tuiAssert.assert(Number.isInteger(decimalLimit));
