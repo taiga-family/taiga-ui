@@ -7,6 +7,10 @@
     min-width: 100%;
 }
 
+.t-table {
+    width: 100%;
+}
+
 .t-row {
     &:not(:last-child) {
         border-bottom: 1px solid var(--tui-base-03);
@@ -66,6 +70,10 @@
     margin-bottom: @space;
     font-family: monospace;
     color: @color-property;
+
+    :host-context(tui-root._mobile) & {
+        padding: 0.5rem 0;
+    }
 }
 
 .t-type {
