@@ -48,7 +48,7 @@ export class TuiInputTagExample4 {
     @tuiPure
     private filter(search: string, value: readonly string[]): readonly string[] {
         return ITEMS.filter(
-            item => TUI_DEFAULT_MATCHER(item, search) && value.indexOf(item) === -1,
+            item => TUI_DEFAULT_MATCHER(item, search) && !value.includes(item),
         );
     }
 }

@@ -16,13 +16,13 @@ function isRejectedFile(file: any): file is RejectedFile {
 }
 
 function getRemoved<T>(oldArray: ReadonlyArray<T>, newArray: ReadonlyArray<T>): T | null {
-    const filtered = oldArray.filter(item => newArray.indexOf(item) === -1);
+    const filtered = oldArray.filter(item => !newArray.includes(item));
 
     return filtered.length === 1 ? filtered[0] : null;
 }
 
 function isNarrowed<T>(oldArray: ReadonlyArray<T>, newArray: ReadonlyArray<T>): boolean {
-    return newArray.every(item => oldArray.indexOf(item) !== -1);
+    return newArray.every(item => oldArray.includes(item));
 }
 
 function convertRejected({file, reason}: RejectedFile): TuiFileLike {
@@ -89,9 +89,7 @@ export class TuiInputFileExample3 {
 
         if (isNarrowed(this.files, files)) {
             this.files = files;
-            this.loadingFiles = this.loadingFiles.filter(
-                file => files.indexOf(file) !== -1,
-            );
+            this.loadingFiles = this.loadingFiles.filter(file => files.includes(file));
 
             return;
         }
@@ -110,11 +108,11 @@ export class TuiInputFileExample3 {
     }
 
     private processResponse(files: ReadonlyArray<RejectedFile | TuiFileLike | null>) {
-        this.loadingFiles = this.loadingFiles.filter(file => files.indexOf(file) !== -1);
+        this.loadingFiles = this.loadingFiles.filter(file => files.includes(file));
 
         const newRejectedFiles = files
             .filter(isRejectedFile)
-            .filter(({file}) => this.files.indexOf(file) !== -1);
+            .filter(({file}) => this.files.includes(file));
 
         if (newRejectedFiles.length === 0) {
             return;

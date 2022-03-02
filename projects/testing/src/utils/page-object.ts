@@ -13,7 +13,7 @@ export class PageObject<T> {
     }
 
     static containsId(debugElement: DebugElement, automationId: string): boolean {
-        return PageObject.getIds(debugElement).indexOf(automationId) >= 0;
+        return PageObject.getIds(debugElement).includes(automationId);
     }
 
     private static byAutomationId(automationId: string): Predicate<DebugElement> {

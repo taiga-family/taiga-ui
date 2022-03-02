@@ -57,9 +57,8 @@ export class TuiMultiSelectExample2 {
      * Server request emulation
      */
     private serverRequest(searchQuery: string): Observable<ReadonlyArray<User>> {
-        const result = databaseMockData.filter(
-            user =>
-                user.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
+        const result = databaseMockData.filter(user =>
+            user.toString().toLowerCase().includes(searchQuery.toLowerCase()),
         );
 
         return of(result).pipe(delay(Math.random() * 1000 + 500));

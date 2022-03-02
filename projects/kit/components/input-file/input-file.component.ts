@@ -290,7 +290,7 @@ export class TuiInputFileComponent
         value: ReadonlyArray<TuiFileLike>,
         loading: ReadonlyArray<TuiFileLike>,
     ): ReadonlyArray<TuiFileLike> {
-        return value.filter(file => loading.indexOf(file) === -1);
+        return value.filter(file => !loading.includes(file));
     }
 
     @tuiPure
@@ -298,7 +298,7 @@ export class TuiInputFileComponent
         value: ReadonlyArray<TuiFileLike>,
         loading: ReadonlyArray<TuiFileLike>,
     ): ReadonlyArray<TuiFileLike> {
-        return loading.filter(file => value.indexOf(file) !== -1);
+        return loading.filter(file => value.includes(file));
     }
 
     @tuiPure
@@ -322,11 +322,10 @@ export class TuiInputFileComponent
         const newFiles = this.multiple ? Array.from(files) : [files[0]];
         const tooBigFiles = newFiles.filter(file => file.size > this.maxFileSize);
         const wrongFormatFiles = newFiles.filter(
-            file => !this.isFormatAcceptable(file) && tooBigFiles.indexOf(file) === -1,
+            file => !this.isFormatAcceptable(file) && !tooBigFiles.includes(file),
         );
         const acceptedFiles = newFiles.filter(
-            file =>
-                tooBigFiles.indexOf(file) === -1 && wrongFormatFiles.indexOf(file) === -1,
+            file => !tooBigFiles.includes(file) && !wrongFormatFiles.includes(file),
         );
 
         this.updateRejectedFiles([

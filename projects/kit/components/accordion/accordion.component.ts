@@ -49,7 +49,7 @@ export class TuiAccordionComponent implements AfterContentInit {
         const newOpenRow$ = rows$.pipe(
             pairwise(),
             map(([previous, current]) =>
-                current.find(item => previous.indexOf(item) === -1 && item.open),
+                current.find(item => !previous.includes(item) && item.open),
             ),
             filter(isPresent),
         );

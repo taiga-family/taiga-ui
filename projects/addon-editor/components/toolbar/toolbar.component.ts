@@ -46,10 +46,7 @@ const MONOSPACE_FONT = 'Courier';
 const IE_TRANSPARENT = 16777215;
 
 export function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
-    return (
-        tools.indexOf(TuiEditorTool.Tex) === -1 &&
-        tools.indexOf(TuiEditorTool.Attach) === -1
-    );
+    return !tools.includes(TuiEditorTool.Tex) && !tools.includes(TuiEditorTool.Attach);
 }
 
 // @dynamic
@@ -440,7 +437,7 @@ export class TuiToolbarComponent {
     }
 
     enabled(tool: TuiEditorTool): boolean {
-        return this.tools.indexOf(tool) !== -1;
+        return this.tools.includes(tool);
     }
 
     undo() {

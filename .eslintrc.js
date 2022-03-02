@@ -36,5 +36,6 @@ module.exports = {
         'require-await': 'error',
         '@typescript-eslint/require-await': 'error',
         '@typescript-eslint/no-unnecessary-type-constraint': 'error',
+        '@typescript-eslint/prefer-includes': 'error',
     },
 };

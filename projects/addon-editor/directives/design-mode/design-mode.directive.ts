@@ -258,7 +258,7 @@ export class TuiDesignModeDirective
                 filter(
                     event =>
                         !event.clipboardData ||
-                        event.clipboardData.types.indexOf('Files') === -1,
+                        !event.clipboardData.types.includes('Files'),
                 ),
                 preventDefault(),
                 map(event => this.sanitize(getClipboardDataText(event, 'text/html'))),

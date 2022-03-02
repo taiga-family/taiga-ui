@@ -27,7 +27,7 @@ export class TuiTabsExample5 {
     open = false;
 
     get activeItemIndex(): number {
-        if (this.collaborators.indexOf(this.activeElement) !== -1) {
+        if (this.collaborators.includes(this.activeElement)) {
             return this.tabs.indexOf(this.collaborators);
         }
 
