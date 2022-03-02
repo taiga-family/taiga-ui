@@ -1,34 +1,5 @@
-// TODO https://github.com/Tinkoff/taiga-ui/issues/1463
-// Add convenient util for this
-@thumb-heights: {
-    @s: 0.5rem;
-    @m: 1rem;
-};
+@import 'taiga-ui-local';
 
-.slider-ticks-labels(@first-tick-offset) {
-    display: flex;
-    margin: 0 @first-tick-offset;
-    font: var(--tui-font-text-s);
-
-    & > * {
-        position: relative;
-        flex: 2;
-        text-align: center;
-
-        &:first-child {
-            left: -@first-tick-offset;
-            flex: 1;
-            text-align: left;
-        }
-
-        &:last-child {
-            right: -@first-tick-offset;
-            flex: 1;
-            text-align: right;
-        }
-    }
-}
-
-.labels {
-    .slider-ticks-labels(@thumb-heights[@m] / 2);
+.ticks-labels {
+    .tui-slider-ticks-labels(m);
 }
