@@ -5,7 +5,7 @@
     (reject)="onReject($event)"
 ></tui-input-files>
 
-<tui-files class="tui-space_top-1 files">
+<tui-files class="tui-space_top-1">
     <ng-container *ngIf="control.valueChanges | async as file">
         <tui-file *tuiItem [file]="file" (removed)="removeFile()"></tui-file>
     </ng-container>

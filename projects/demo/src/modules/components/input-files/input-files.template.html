@@ -72,7 +72,7 @@
                         *ngFor="let file of control.valueChanges | async"
                     >
                         <tui-file
-                            *tuiFile
+                            *tuiItem
                             [file]="file"
                             [size]="size"
                             [showSize]="showSize"
@@ -84,7 +84,7 @@
                 <ng-template #single>
                     <ng-container *ngIf="control.value as file">
                         <tui-file
-                            *tuiFile
+                            *tuiItem
                             [file]="file"
                             [size]="size"
                             [showSize]="showSize"
@@ -94,7 +94,7 @@
 
                 <ng-container *ngFor="let file of rejectedFiles">
                     <tui-file
-                        *tuiFile
+                        *tuiItem
                         state="error"
                         [file]="file"
                         [size]="size"

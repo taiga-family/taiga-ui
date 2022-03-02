@@ -1,7 +1,7 @@
 <tui-wrapper
+    appearance="input-file"
     class="t-wrapper"
-    [class.t-wrapper_mobile]="isMobile"
-    [appearance]="getAppearance(mode$ | async)"
+    [class._mobile]="isMobile"
     [focused]="computedFocused"
     [hovered]="computedHovered || fileDragged"
     [pressed]="computedPressed"

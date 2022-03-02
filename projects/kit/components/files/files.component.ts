@@ -8,7 +8,7 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiItemDirective, tuiPure} from '@taiga-ui/cdk';
+import {TuiItemDirective} from '@taiga-ui/cdk';
 import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 
@@ -29,24 +29,15 @@ export class TuiFilesComponent {
     hidden = true;
 
     constructor(
-        @Inject(TUI_HIDE_TEXT) private readonly hideText$: Observable<string>,
-        @Inject(TUI_SHOW_ALL_TEXT) private readonly showAllText$: Observable<string>,
+        @Inject(TUI_HIDE_TEXT) readonly hideText$: Observable<string>,
+        @Inject(TUI_SHOW_ALL_TEXT) readonly showAllText$: Observable<string>,
     ) {}
 
     get hasExtraItems(): boolean {
         return !!this.max && (this.items?.length ?? 0) > this.max;
     }
 
-    get showHideWord$(): Observable<string> {
-        return this.getShowHideWord$(this.hidden);
-    }
-
     toggle() {
         this.hidden = !this.hidden;
-    }
-
-    @tuiPure
-    private getShowHideWord$(hidden: boolean): Observable<string> {
-        return hidden ? this.showAllText$ : this.hideText$;
     }
 }

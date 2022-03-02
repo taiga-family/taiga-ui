@@ -11,6 +11,7 @@ import {
     Output,
     Self,
     ViewChild,
+    ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
@@ -24,16 +25,10 @@ import {
     TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiAppearance,
-    TuiBrightness,
-    TuiSizeL,
-} from '@taiga-ui/core';
+import {MODE_PROVIDER, TuiSizeL} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import {formatSize} from '@taiga-ui/kit/utils/files';
+import {formatSize, getAcceptArray} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -46,6 +41,7 @@ const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
     templateUrl: './input-files.template.html',
     styleUrls: ['./input-files.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
     providers: [
         MODE_PROVIDER,
         {
@@ -113,7 +109,6 @@ export class TuiInputFilesComponent
                 string
             >
         >,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_DIGITAL_INFORMATION_UNITS)
         readonly units$: Observable<[string, string, string]>,
     ) {
@@ -145,10 +140,6 @@ export class TuiInputFilesComponent
         return !!this.dataTransfer?.types.includes('Files');
     }
 
-    get acceptArray(): readonly string[] {
-        return this.getAcceptArray(this.accept);
-    }
-
     get arrayValue(): ReadonlyArray<TuiFileLike> {
         return this.getValueArray(this.value);
     }
@@ -165,7 +156,6 @@ export class TuiInputFilesComponent
         this.updatePressed(pressed);
     }
 
-    // TODO: refactor i18n messages
     onFilesSelected(
         input: HTMLInputElement,
         texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
@@ -191,10 +181,6 @@ export class TuiInputFilesComponent
         this.updateValue(
             this.multiple ? this.arrayValue.filter(file => file !== removedFile) : null,
         );
-    }
-
-    getAppearance(mode: null | unknown): string {
-        return mode === null ? '' : TuiAppearance.Outline;
     }
 
     @tuiPure
@@ -251,14 +237,6 @@ export class TuiInputFilesComponent
         return Array.isArray(value) ? value : [value];
     }
 
-    @tuiPure
-    private getAcceptArray(accept: string): readonly string[] {
-        return accept
-            .toLowerCase()
-            .split(',')
-            .map(format => format.trim());
-    }
-
     private processSelectedFiles(
         files: FileList | null,
         texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
@@ -272,11 +250,10 @@ export class TuiInputFilesComponent
         const newFiles = this.multiple ? Array.from(files) : [files[0]];
         const tooBigFiles = newFiles.filter(file => file.size > this.maxFileSize);
         const wrongFormatFiles = newFiles.filter(
-            file => !this.isFormatAcceptable(file) && tooBigFiles.indexOf(file) === -1,
+            file => !this.isFormatAcceptable(file) && !tooBigFiles.includes(file),
         );
         const acceptedFiles = newFiles.filter(
-            file =>
-                tooBigFiles.indexOf(file) === -1 && wrongFormatFiles.indexOf(file) === -1,
+            file => !tooBigFiles.includes(file) && !wrongFormatFiles.includes(file),
         );
 
         if (tooBigFiles.length || wrongFormatFiles.length) {
@@ -312,7 +289,7 @@ export class TuiInputFilesComponent
 
         const extension = '.' + (file.name.split('.').pop() || '').toLowerCase();
 
-        return this.acceptArray.some(
+        return getAcceptArray(this.accept).some(
             format =>
                 format === extension ||
                 format === file.type ||

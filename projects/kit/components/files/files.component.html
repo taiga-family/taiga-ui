@@ -26,6 +26,6 @@
         [class.t-button_collapsed]="hidden"
         (click)="toggle()"
     >
-        {{showHideWord$ | async}}
+        {{(hidden ? showAllText$ : hideText$) | async}}
     </button>
 </section>
