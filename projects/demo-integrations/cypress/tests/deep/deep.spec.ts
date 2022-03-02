@@ -35,7 +35,7 @@ const makeDemoSnapshot = (
     optionIndex: number,
 ) => {
     cy.wrap($input)
-        .parents('.tui-table tr')
+        .parents('tui-doc-documentation tr')
         .find('[automation-id="tui-documentation__property-name"]')
         .then(propertyName$ => propertyName$.text().trim())
         .then(property => {
@@ -55,7 +55,7 @@ describe('Deep', () => {
             cy.goToDemoPage(`/${path}/API`);
             cy.hideHeader();
 
-            cy.get(`.tui-table tui-select`).each(($select, selectIndex) => {
+            cy.get(`tui-doc-documentation tui-select`).each(($select, selectIndex) => {
                 if (selectExclusions[path]?.includes(selectIndex)) {
                     return cy.wrap($select);
                 }
@@ -86,10 +86,10 @@ describe('Deep', () => {
                     .click({force: true});
             });
 
-            cy.get('.tui-table')
+            cy.get('tui-doc-documentation')
                 .then($table =>
                     $table.find('tui-toggle').length
-                        ? cy.get('.tui-table tui-toggle')
+                        ? cy.get('tui-doc-documentation tui-toggle')
                         : [],
                 )
                 .each((toggle$, index) => {
