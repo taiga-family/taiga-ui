@@ -30,8 +30,6 @@ module.exports = {
                 ignoreExport: true,
             },
         ],
-        'no-return-assign': ['error', 'always'],
-        'no-implicit-coercion': ['error', {allow: ['!!']}],
         '@typescript-eslint/await-thenable': 'error',
         'require-await': 'error',
         '@typescript-eslint/require-await': 'error',
