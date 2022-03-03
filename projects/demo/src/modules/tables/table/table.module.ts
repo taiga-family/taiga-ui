@@ -1,3 +1,4 @@
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -38,6 +39,7 @@ import {TuiTableExample1} from './examples/1';
 import {TuiTableExample2} from './examples/2';
 import {TuiTableExample3} from './examples/3';
 import {TuiTableExample4} from './examples/4';
+import {TuiTableExample5} from './examples/5';
 import {ExampleTuiTableComponent} from './table.component';
 
 @NgModule({
@@ -45,6 +47,7 @@ import {ExampleTuiTableComponent} from './table.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        ScrollingModule,
         IntersectionObserverModule,
         TuiNotificationModule,
         TuiScrollbarModule,
@@ -79,6 +82,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiTableExample2,
         TuiTableExample3,
         TuiTableExample4,
+        TuiTableExample5,
     ],
     exports: [ExampleTuiTableComponent],
 })
