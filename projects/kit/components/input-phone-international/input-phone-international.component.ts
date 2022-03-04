@@ -219,7 +219,8 @@ export class TuiInputPhoneInternationalComponent
             const ruCodeTest =
                 countryIsoCode === TuiCountryIsoCode.RU &&
                 /^[7 | 8]/.test(value) &&
-                /^(?!880[1-9 ])/.test(value);
+                /^(?!880[1-9 ])/.test(value) &&
+                value.length + 1 === this.getMaxAllowedLength(TuiCountryIsoCode.RU);
 
             return (
                 ruCodeTest ||
