@@ -10,12 +10,12 @@ import {
     Output,
     QueryList,
 } from '@angular/core';
-import {TuiTableSortPipe} from '@taiga-ui/addon-table/components';
 import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
+import {TuiTableSortPipe} from '../pipes/table-sort.pipe';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TuiTrComponent} from '../tr/tr.component';
 
