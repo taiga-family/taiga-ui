@@ -35,8 +35,6 @@ export class TuiGroupDirective {
     @tuiDefaultProp()
     size: TuiSizeL = 'm';
 
-    absoluteLoh = 'loh';
-
     constructor(
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
     ) {
