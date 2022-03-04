@@ -24,6 +24,8 @@ export interface LanguageKit {
     cancel: string;
     done: string;
     more: string;
+    showAll: string;
+    hide: string;
     otherDate: string;
     /**
      * [@string 'choose day', @param 'choose range']

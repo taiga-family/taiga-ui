@@ -7,3 +7,5 @@ export const enum TuiFileState {
     Loading = 'loading',
     Normal = 'normal',
 }
+
+export type TuiFileStateT = 'error' | 'deleted' | 'loading' | 'normal';

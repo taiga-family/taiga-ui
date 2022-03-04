@@ -5,6 +5,8 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: LanguageKit = {
     done: 'Готово',
     more: 'Ще',
     otherDate: 'Інша дата ...',
+    showAll: 'Show all',
+    hide: 'Hide',
     mobileCalendarTexts: ['Виберіть день', 'Виберіть період'],
     range: ['від', 'до'],
     countTexts: ['Плюс', 'Мінус'],
