@@ -19,7 +19,7 @@ describe('TUI_IS_IOS', () => {
         });
 
         it('return true if iPhone', () => {
-            expect(TestBed.inject(TUI_IS_IOS)).toBeTrue();
+            expect(TestBed.inject(TUI_IS_IOS)).toBe(true);
         });
     });
 
@@ -41,7 +41,7 @@ describe('TUI_IS_IOS', () => {
         });
 
         it('return true if apple and maxTouchPoints > 1', () => {
-            expect(TestBed.inject(TUI_IS_IOS)).toBeTrue();
+            expect(TestBed.inject(TUI_IS_IOS)).toBe(true);
         });
     });
 
@@ -63,7 +63,7 @@ describe('TUI_IS_IOS', () => {
         });
 
         it('return false if MacOS Desktop', () => {
-            expect(TestBed.inject(TUI_IS_IOS)).toBeFalse();
+            expect(TestBed.inject(TUI_IS_IOS)).toBe(false);
         });
     });
 });

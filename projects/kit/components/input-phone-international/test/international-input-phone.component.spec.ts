@@ -41,6 +41,8 @@ describe('InputPhoneInternational', () => {
             TuiCountryIsoCode.KZ,
             TuiCountryIsoCode.UA,
             TuiCountryIsoCode.BY,
+            TuiCountryIsoCode.TW,
+            TuiCountryIsoCode.BD,
         ];
 
         countryIsoCode = TuiCountryIsoCode.RU;
@@ -143,6 +145,42 @@ describe('InputPhoneInternational', () => {
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.UA);
         });
 
+        it('should set country code on paste event ', () => {
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '88005553535');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
+
+            expect(component.countryIsoCode).toBe(TuiCountryIsoCode.RU);
+        });
+
+        it('should replace code 8 on paste event', () => {
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '88005553535');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
+
+            expect(testComponent.control.value).toEqual('+78005553535');
+        });
+
+        it('should replace code +8 on paste event', () => {
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '+89112223344');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
+
+            expect(testComponent.control.value).toEqual('+79112223344');
+        });
+
         it('should update value on paste', () => {
             const data = new DataTransfer();
 
@@ -177,6 +215,30 @@ describe('InputPhoneInternational', () => {
             component.onPaste(pasteEvent);
 
             expect(testComponent.control.value).toEqual('+79110330102');
+        });
+
+        it('should set country code on paste event 8(863)', () => {
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '88635553535');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
+
+            expect(component.countryIsoCode).toBe(TuiCountryIsoCode.RU);
+        });
+
+        it('should set country code on paste event +886', () => {
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '886355535353');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.onPaste(pasteEvent);
+
+            expect(component.countryIsoCode).toBe(TuiCountryIsoCode.TW);
         });
     });
 
@@ -218,6 +280,8 @@ describe('InputPhoneInternational', () => {
                     'Казахстан',
                     'Украина',
                     'Беларусь (Белоруссия)',
+                    'Тайвань',
+                    'Бангладеш',
                 ]);
             });
         });
@@ -234,6 +298,8 @@ describe('InputPhoneInternational', () => {
                     'Kazakhstan',
                     'Ukraine',
                     'Belarus',
+                    'Taiwan',
+                    'Bangladesh',
                 ]);
             });
         });
