@@ -1,6 +1,7 @@
 <ng-container *ngIf="items?.changes | async"></ng-container>
 
 <section tuiGroup orientation="vertical" class="t-files" [collapsed]="true">
+    <ng-content></ng-content>
     <ng-container *ngFor="let item of items; let index = index">
         <ng-container
             *ngIf="!max || index < max"

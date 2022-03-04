@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiFocusVisibleModule} from '@taiga-ui/cdk';
+import {TuiFocusVisibleModule, TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiExpandModule,
@@ -23,8 +23,9 @@ import {TuiFilesComponent} from './files.component';
         TuiSvgModule,
         TuiFocusVisibleModule,
         TuiButtonModule,
+        TuiItemModule,
         TuiExpandModule,
     ],
-    exports: [TuiFilesComponent, TuiFileComponent],
+    exports: [TuiFilesComponent, TuiFileComponent, TuiItemDirective],
 })
 export class TuiFilesModule {}

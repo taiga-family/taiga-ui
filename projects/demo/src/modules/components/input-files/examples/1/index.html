@@ -6,16 +6,16 @@
 ></tui-input-files>
 
 <tui-files class="tui-space_top-1">
-    <ng-container *ngIf="control.valueChanges | async as file">
-        <tui-file *tuiItem [file]="file" (removed)="removeFile()"></tui-file>
-    </ng-container>
+    <tui-file
+        *ngIf="control.valueChanges | async as file"
+        [file]="file"
+        (removed)="removeFile()"
+    ></tui-file>
 
-    <ng-container *ngFor="let file of rejectedFiles$ | async">
-        <tui-file
-            *tuiItem
-            state="error"
-            [file]="file"
-            (removed)="clearRejected()"
-        ></tui-file>
-    </ng-container>
+    <tui-file
+        *ngIf="rejectedFiles$ | async as file"
+        state="error"
+        [file]="file"
+        (removed)="clearRejected()"
+    ></tui-file>
 </tui-files>

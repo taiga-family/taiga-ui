@@ -1,20 +1,22 @@
 <tui-files>
-    <ng-container *ngFor="let file of files">
-        <tui-file *tuiItem state="normal" [file]="file"></tui-file>
-    </ng-container>
+    <tui-file
+        *ngFor="let file of files"
+        state="normal"
+        [file]="file"
+    ></tui-file>
 
-    <ng-container *ngFor="let file of rejectedFiles">
-        <tui-file *tuiItem state="error" [file]="file"></tui-file>
-    </ng-container>
+    <tui-file
+        *ngFor="let file of rejectedFiles"
+        state="error"
+        [file]="file"
+    ></tui-file>
 
-    <ng-container *ngIf="loadingFile && !isCypress">
-        <tui-file
-            *tuiItem
-            state="loading"
-            [file]="loadingFile"
-            (removed)="removeLoading()"
-        ></tui-file>
-    </ng-container>
+    <tui-file
+        *ngIf="loadingFile && !isCypress"
+        state="loading"
+        [file]="loadingFile"
+        (removed)="removeLoading()"
+    ></tui-file>
 </tui-files>
 
 <h4>With link</h4>
@@ -24,21 +26,22 @@
 
 <h4>With deleted state</h4>
 <tui-files>
-    <ng-container *ngFor="let file of removedFiles">
-        <tui-file *tuiItem state="deleted" size="l" [file]="file">
-            <button tuiLink (click)="restore(file)">Restore</button>
-        </tui-file>
-    </ng-container>
-    <ng-container *ngFor="let file of restoredFiles">
-        <tui-file
-            *tuiFile
-            state="normal"
-            size="l"
-            [file]="file"
-            [leftContent]="icon"
-            (removed)="remove(file)"
-        ></tui-file>
-    </ng-container>
+    <tui-file
+        *ngFor="let file of removedFiles"
+        state="deleted"
+        size="l"
+        [file]="file"
+    >
+        <button tuiLink (click)="restore(file)">Restore</button>
+    </tui-file>
+    <tui-file
+        *ngFor="let file of restoredFiles"
+        state="normal"
+        size="l"
+        [file]="file"
+        [leftContent]="icon"
+        (removed)="remove(file)"
+    ></tui-file>
 </tui-files>
 
 <ng-template #icon><tui-svg src="tuiIconFileLarge"></tui-svg></ng-template>
