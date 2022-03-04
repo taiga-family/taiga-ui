@@ -8,7 +8,7 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiItemDirective} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiItemDirective} from '@taiga-ui/cdk';
 import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 
@@ -24,6 +24,7 @@ export class TuiFilesComponent {
     readonly items: QueryList<TemplateRef<{}>> | null = null;
 
     @Input()
+    @tuiDefaultProp()
     max = 0;
 
     hidden = true;

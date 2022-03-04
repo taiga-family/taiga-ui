@@ -45,6 +45,7 @@ export class TuiFileComponent {
     showSize = true;
 
     @Input()
+    @tuiDefaultProp()
     leftContent: PolymorpheusContent = '';
 
     @Output()
