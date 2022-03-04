@@ -12,6 +12,7 @@ import {
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputRangeExample1} from './examples/1';
+import {TuiInputRangeExample2} from './examples/2';
 import {ExampleTuiInputRangeComponent} from './input-range.component';
 
 @NgModule({
@@ -28,7 +29,11 @@ import {ExampleTuiInputRangeComponent} from './input-range.component';
         TuiLinkModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputRangeComponent)),
     ],
-    declarations: [ExampleTuiInputRangeComponent, TuiInputRangeExample1],
+    declarations: [
+        ExampleTuiInputRangeComponent,
+        TuiInputRangeExample1,
+        TuiInputRangeExample2,
+    ],
     exports: [ExampleTuiInputRangeComponent],
 })
 export class ExampleTuiInputRangeModule {}
