@@ -1,7 +1,6 @@
 <ng-container *ngIf="content?.changes | async"></ng-container>
 <tui-wrapper
     automation-id="tui-primitive-textfield__wrapper"
-    tuiPreventDefault="click"
     [appearance]="appearance"
     [readOnly]="readOnly"
     [disabled]="disabled"
@@ -11,6 +10,7 @@
     [invalid]="computedInvalid"
     [style.--text-indent.px]="decor.pre$ | async"
     (mousedown)="onMouseDown($event)"
+    (click.prevent.silent)="0"
     (tuiHoveredChange)="onHovered($event)"
     (tuiAutofilledChange)="onAutofilled($event)"
 >
@@ -19,7 +19,7 @@
         #focusableElement
         tuiMaskAccessor
         automation-id="tui-primitive-textfield__native-input"
-        class="input"
+        class="t-input"
         [attr.disabled]="computedDisabled || null"
         [attr.maxLength]="controller.maxLength"
         [attr.name]="name"
@@ -38,15 +38,15 @@
     <div
         *ngIf="inputHidden"
         automation-id="tui-primitive-textfield__value"
-        class="input input_template"
+        class="t-input t-input_template"
     >
         <ng-content select="[polymorpheus-outlet]"></ng-content>
     </div>
-    <div class="content">
+    <div class="t-content">
         <div
             *ngIf="iconAlignLeft"
             polymorpheus-outlet
-            class="icon icon_left"
+            class="t-icon t-icon_left"
             [content]="iconContent"
             [context]="{$implicit: size}"
         >
@@ -54,12 +54,12 @@
                 <tui-svg [src]="iconSrc"></tui-svg>
             </ng-template>
         </div>
-        <div class="wrapper">
+        <div class="t-wrapper">
             <label
                 *ngIf="hasPlaceholder"
                 automation-id="tui-primitive-textfield__placeholder"
-                class="placeholder"
-                [class.placeholder_raised]="placeholderRaised"
+                class="t-placeholder"
+                [class.t-placeholder_raised]="placeholderRaised"
                 [for]="computedId"
             >
                 <ng-content></ng-content>
@@ -76,18 +76,18 @@
             *ngIf="hasCustomContent"
             polymorpheus-outlet
             automation-id="tui-primitive-textfield__custom-content"
-            class="custom-content"
+            class="t-custom-content"
             [content]="controller.customContent"
         >
             <ng-template let-iconSrc>
-                <tui-svg class="custom-icon" [src]="iconSrc"></tui-svg>
+                <tui-svg class="t-custom-icon" [src]="iconSrc"></tui-svg>
             </ng-template>
         </div>
         <span
             *ngIf="hasCleaner"
             polymorpheus-outlet
             automation-id="tui-primitive-textfield__cleaner"
-            class="cleaner"
+            class="t-cleaner"
             [content]="iconCleaner"
             (click.stop)="clear()"
         >
@@ -108,7 +108,7 @@
         <div
             *ngIf="iconAlignRight"
             polymorpheus-outlet
-            class="icon"
+            class="t-icon"
             [content]="iconContent"
             [context]="{$implicit: size}"
         >

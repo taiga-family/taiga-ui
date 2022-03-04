@@ -5,9 +5,7 @@ on:
     paths:
       - 'projects/**'
       - '!projects/*testing/**'
-      - '!projects/demo/**'
       - '!projects/icons/**'
-      - 'projects/demo/emulate/**'
       - 'angular.json'
       - 'package.json'
       - 'tsconfig*'

@@ -15,6 +15,14 @@ export const TUI_MORE_WORD = new InjectionToken(`i18n 'more' word`, {
     factory: extractI18n('more'),
 });
 
+export const TUI_HIDE_TEXT = new InjectionToken(`i18n 'hide' word`, {
+    factory: extractI18n('hide'),
+});
+
+export const TUI_SHOW_ALL_TEXT = new InjectionToken(`i18n 'show all' word`, {
+    factory: extractI18n('showAll'),
+});
+
 export const TUI_OTHER_DATE_TEXT = new InjectionToken(`i18n 'Other date' text`, {
     factory: extractI18n('otherDate'),
 });

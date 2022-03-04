@@ -9,6 +9,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiDialogExampleComponent6 {
+    value = '';
+
     open = false;
 
     showDialog() {

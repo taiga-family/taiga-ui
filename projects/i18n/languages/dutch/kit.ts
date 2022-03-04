@@ -5,6 +5,8 @@ export const TUI_DUTCH_LANGUAGE_KIT: LanguageKit = {
     done: 'Klaar',
     more: 'Meer',
     otherDate: 'Andere datum ...',
+    showAll: 'Show all',
+    hide: 'Hide',
     mobileCalendarTexts: ['Kies een dag', 'Kies bereik'],
     range: ['van', 'tot'],
     countTexts: ['Plus', 'Min'],

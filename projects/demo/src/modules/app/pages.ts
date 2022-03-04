@@ -545,6 +545,12 @@ export const pages: TuiDocPages = [
                     'wysiwyg, editor, редактор, текст, html, rich, text, input, инпут, ввод',
                 route: '/components/editor-new',
             },
+            {
+                section: $localize`Components`,
+                title: 'InputFiles',
+                keywords: 'input-files, files, file, файлы',
+                route: '/components/input-files',
+            },
         ],
     },
     {

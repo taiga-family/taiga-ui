@@ -7,7 +7,6 @@ import {
     TuiFocusableModule,
     TuiHoveredModule,
     TuiInputModeModule,
-    TuiPreventDefaultModule,
 } from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core/components/svg';
 import {TuiTooltipModule} from '@taiga-ui/core/components/tooltip';
@@ -35,7 +34,6 @@ import {TuiValueDecorationComponent} from './value-decoration/value-decoration.c
         TuiTooltipModule,
         TuiAutofilledModule,
         TuiDescribedByModule,
-        TuiPreventDefaultModule,
         MutationObserverModule,
     ],
     declarations: [

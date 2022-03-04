@@ -4,6 +4,7 @@ export * from './directives/resized.directive';
 export * from './directives/row.directive';
 export * from './directives/table.directive';
 export * from './directives/thead.directive';
+export * from './pipes/table-sort.pipe';
 export * from './providers/stuck.provider';
 export * from './providers/table.provider';
 export * from './providers/table.providers';

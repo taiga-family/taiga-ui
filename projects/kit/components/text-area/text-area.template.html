@@ -1,6 +1,6 @@
 <tui-wrapper
     automation-id="tui-text-area__wrapper"
-    class="outline"
+    class="t-outline"
     [appearance]="appearance"
     [disabled]="disabled"
     [focused]="computedFocused"
@@ -11,39 +11,39 @@
     <div
         *ngIf="hasCounter"
         automation-id="tui-text-area__counter"
-        class="counter"
+        class="t-counter"
     >
         {{ value.length }}/{{ controller.maxLength }}
     </div>
 </tui-wrapper>
 
 <label
-    class="content"
+    class="t-content"
     (tuiHoveredChange)="onHovered($event)"
     (mousedown)="onMouseDown($event)"
 >
-    <div class="wrapper">
+    <div class="t-wrapper">
         <div
             *ngIf="hasPlaceholder"
             automation-id="tui-text-area__placeholder"
-            class="placeholder"
-            [class.placeholder_raised]="placeholderRaised"
+            class="t-placeholder"
+            [class.t-placeholder_raised]="placeholderRaised"
         >
             <ng-content></ng-content>
         </div>
         <tui-scrollbar
             automation-id="tui-text-area__scrollbar"
-            class="box"
+            class="t-box"
             [style.maxHeight.px]="computeMaxHeight"
         >
-            <div class="input-wrapper">
-                <div class="relative">
-                    <div aria-hidden="true" class="pseudo-content">
+            <div class="t-input-wrapper">
+                <div class="t-relative">
+                    <div aria-hidden="true" class="t-pseudo-content">
                         <span
                             [textContent]="fittedContent || controller.exampleText"
                         ></span>
                         <span
-                            class="pseudo-content__extra"
+                            class="t-pseudo-content__extra"
                             [textContent]="extraContent"
                         ></span>
                         &nbsp;
@@ -51,7 +51,7 @@
                     <textarea
                         #focusableElement
                         automation-id="tui-text-area__native"
-                        class="input"
+                        class="t-input"
                         [placeholder]="controller.exampleText"
                         [id]="id"
                         [tuiDescribedBy]="id"
@@ -66,17 +66,17 @@
             </div>
         </tui-scrollbar>
     </div>
-    <div class="icons">
+    <div class="t-icons">
         <tui-svg
             *ngIf="hasCleaner"
             src="tuiIconCloseLarge"
-            class="cleaner"
+            class="t-cleaner"
             (click.stop)="onValueChange('')"
         ></tui-svg>
         <tui-tooltip
             *ngIf="hasTooltip"
             automation-id="tui-text-area__tooltip"
-            class="tooltip"
+            class="t-tooltip"
             [describeId]="id"
             [direction]="hintController.direction"
             [mode]="hintController.mode"

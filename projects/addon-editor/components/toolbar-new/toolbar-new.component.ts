@@ -34,13 +34,6 @@ import {take} from 'rxjs/operators';
 
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 
-function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
-    return (
-        tools.indexOf(TuiEditorTool.Tex) === -1 &&
-        tools.indexOf(TuiEditorTool.Attach) === -1
-    );
-}
-
 // @dynamic
 @Component({
     selector: 'tui-toolbar[new]',
@@ -58,10 +51,6 @@ export class TuiToolbarNewComponent {
 
     @ViewChild(TuiToolbarNavigationManagerDirective)
     private readonly navigationManager?: TuiToolbarNavigationManagerDirective;
-
-    @Input()
-    @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
-    tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
 
     @Input()
     @tuiDefaultProp()
@@ -82,6 +71,14 @@ export class TuiToolbarNewComponent {
     readonly attachClicked = new EventEmitter<void>();
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
+
+    toolsSet: Set<TuiEditorTool> = new Set(defaultEditorTools);
+
+    @Input()
+    @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
+    set tools(value: ReadonlyArray<TuiEditorTool>) {
+        this.toolsSet = new Set(value);
+    }
 
     constructor(
         @Optional()
@@ -106,35 +103,35 @@ export class TuiToolbarNewComponent {
     }
 
     get unorderedList(): boolean {
-        return !!this.editor.isActive('bulletList');
+        return this.editor.isActive('bulletList');
     }
 
     get orderedList(): boolean {
-        return !!this.editor.isActive('orderedList');
+        return this.editor.isActive('orderedList');
     }
 
     get blockquote(): boolean {
-        return !!this.editor.isActive('blockquote');
+        return this.editor.isActive('blockquote');
     }
 
     get a(): boolean {
-        return !!this.editor.isActive('link');
+        return this.editor.isActive('link');
     }
 
     get undoDisabled(): boolean {
-        return !!this.editor.undoDisabled();
+        return this.editor.undoDisabled();
     }
 
     get redoDisabled(): boolean {
-        return !!this.editor.redoDisabled();
+        return this.editor.redoDisabled();
     }
 
     get subscript(): boolean {
-        return !!this.editor.isActive('subscript');
+        return this.editor.isActive('subscript');
     }
 
     get superscript(): boolean {
-        return !!this.editor.isActive('superscript');
+        return this.editor.isActive('superscript');
     }
 
     get formatEnabled(): boolean {
@@ -217,7 +214,7 @@ export class TuiToolbarNewComponent {
     }
 
     enabled(tool: TuiEditorTool): boolean {
-        return this.tools.indexOf(tool) !== -1;
+        return this.toolsSet.has(tool);
     }
 
     undo() {
@@ -271,4 +268,8 @@ export class TuiToolbarNewComponent {
             setNativeFocused(lastButton);
         }
     }
+}
+
+function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
+    return !tools.includes(TuiEditorTool.Tex) && !tools.includes(TuiEditorTool.Attach);
 }

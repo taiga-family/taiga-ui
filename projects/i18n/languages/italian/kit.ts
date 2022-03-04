@@ -5,6 +5,8 @@ export const TUI_ITALIAN_LANGUAGE_KIT: LanguageKit = {
     done: 'Fatto',
     more: 'Di più',
     otherDate: 'Altra data...',
+    showAll: 'Show all',
+    hide: 'Hide',
     mobileCalendarTexts: ['Scegli giorno', 'Scegli intervallo'],
     range: ['da', 'a'],
     countTexts: ['Più', 'Meno'],

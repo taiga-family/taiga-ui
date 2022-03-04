@@ -25,7 +25,7 @@ import {map} from 'rxjs/operators';
     templateUrl: './file.template.html',
     styleUrls: ['./file.style.less'],
 })
-export class TuiFileComponent {
+export class TuiFileOldComponent {
     @Input()
     @tuiDefaultProp()
     file: TuiFileLike = {name: ''};

@@ -10,6 +10,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiLoaderExample1} from './examples/1';
 import {TuiLoaderExample2} from './examples/2';
 import {TuiLoaderExample3} from './examples/3';
+import {TuiLoaderExample4} from './examples/4';
 import {ExampleTuiLoaderComponent} from './loader.component';
 
 @NgModule({
@@ -30,6 +31,7 @@ import {ExampleTuiLoaderComponent} from './loader.component';
         TuiLoaderExample1,
         TuiLoaderExample2,
         TuiLoaderExample3,
+        TuiLoaderExample4,
     ],
     exports: [ExampleTuiLoaderComponent],
 })

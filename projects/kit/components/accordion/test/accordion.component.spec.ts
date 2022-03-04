@@ -288,7 +288,7 @@ describe('Accordion', () => {
             accordionHeaderClick(2);
             fixture.detectChanges();
 
-            const input = getAccordionInput()!.query(By.css('.input'))!.nativeElement;
+            const input = getAccordionInput()!.query(By.css('.t-input'))!.nativeElement;
 
             input.dispatchEvent(space);
             fixture.detectChanges();

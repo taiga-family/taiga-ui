@@ -20,7 +20,7 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
-import {TuiFileComponent} from './file/file.component';
+import {TuiFileOldComponent} from './file/file.component';
 import {TuiInputFileComponent} from './input-file.component';
 
 @NgModule({
@@ -42,7 +42,7 @@ import {TuiInputFileComponent} from './input-file.component';
         TuiPreventDefaultModule,
         TuiGroupModule,
     ],
-    declarations: [TuiFileComponent, TuiInputFileComponent],
+    declarations: [TuiFileOldComponent, TuiInputFileComponent],
     exports: [TuiInputFileComponent],
 })
 export class TuiInputFileModule {}

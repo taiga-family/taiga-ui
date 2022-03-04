@@ -5,6 +5,8 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: LanguageKit = {
     done: 'Готово',
     more: 'Еще',
     otherDate: 'Другая дата...',
+    showAll: 'Показать все',
+    hide: 'Скрыть',
     mobileCalendarTexts: ['Выберите день', 'Выберите период'],
     range: ['от', 'до'],
     countTexts: ['Плюс', 'Минус'],

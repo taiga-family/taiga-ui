@@ -15,8 +15,12 @@ import {map} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontStyleComponent {
+    private toolsSet: Set<TuiEditorTool> = new Set(defaultEditorTools);
+
     @Input()
-    enabledTools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
+    set enabledTools(value: ReadonlyArray<TuiEditorTool> | Set<TuiEditorTool>) {
+        this.toolsSet = new Set(value);
+    }
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
@@ -41,6 +45,6 @@ export class TuiFontStyleComponent {
     ) {}
 
     isEnabled(tool: TuiEditorTool): boolean {
-        return this.enabledTools.includes(tool);
+        return this.toolsSet.has(tool);
     }
 }

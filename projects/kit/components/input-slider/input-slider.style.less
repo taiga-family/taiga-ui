@@ -10,14 +10,14 @@
     border-radius: var(--tui-radius-m);
     color: var(--tui-text-01);
 
-    &._segmented {
-        // TODO: research if it can be used in rem units
+    &._segmented._show-ticks-labels {
+        // TODO: remove in v3.0
         /* stylelint-disable-next-line */
         border-bottom: 26px solid transparent;
     }
 }
 
-.native {
+.t-native {
     .fullsize();
     .clearinput();
     width: 100%;
@@ -49,7 +49,7 @@
     }
 }
 
-.content {
+.t-content {
     display: flex;
     align-items: center;
     height: var(--tui-height-m);
@@ -62,7 +62,7 @@
     }
 }
 
-.placeholder {
+.t-placeholder {
     .textfield-placeholder();
     .fullsize();
     padding: 0 var(--tui-padding-l);
@@ -75,11 +75,11 @@
     }
 }
 
-.value {
+.t-value {
     visibility: hidden;
 }
 
-.label {
+.t-label {
     overflow: hidden;
     text-overflow: ellipsis;
 
@@ -88,7 +88,7 @@
     }
 }
 
-.secondary {
+.t-secondary {
     color: var(--tui-text-01);
 
     :host._disabled & {
@@ -100,22 +100,27 @@
     }
 }
 
-.tooltip {
+.t-tooltip {
     margin-left: 0.75rem;
 }
 
-.slider {
+// TODO: remove wrapper and move all styles to input[type='range'] in v3.0
+.t-slider-wrapper {
     position: absolute;
     top: 100%;
-    left: 0;
+    left: calc(var(--tui-radius-m) / 2);
     right: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
     margin: -0.5625rem 0 0;
-    color: transparent;
+}
 
-    :host._disabled &,
-    :host._readonly & {
-        pointer-events: none;
-    }
+// Dont change CSS-selector (we require the such specificity to override default styles without !important)
+input[type='range'] {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: calc(var(--tui-radius-m) * 5) calc(var(--tui-radius-m) * 1.5);
+}
+
+// TODO: remove in v3.0
+.t-ticks-labels {
+    .tui-slider-ticks-labels(m);
+    color: var(--tui-text-02);
 }
