@@ -6,16 +6,23 @@ import {
     Inject,
     Input,
     Optional,
+    Output,
+    Pipe,
+    PipeTransform,
     Self,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     isNativeFocused,
+    round,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    typedFromEvent,
 } from '@taiga-ui/cdk';
+import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
+import {map} from 'rxjs/operators';
 
 import {TuiSliderComponent} from './slider.component';
 
@@ -31,12 +38,27 @@ export class TuiSliderKeyStepsDirective
     @tuiDefaultProp(checkHasMinMaxPercents, 'Should contain min and max values')
     keySteps: TuiKeySteps = [];
 
+    @Output()
+    keyStepsInput = typedFromEvent(this.elementRef.nativeElement, 'input').pipe(
+        map(() => this.controlValue),
+    );
+
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled ? null : this.elementRef.nativeElement;
     }
 
     get focused(): boolean {
         return isNativeFocused(this.nativeFocusableElement);
+    }
+
+    private get controlValue(): number {
+        const {valuePercentage} = this.slider;
+        const [lowerStep, upperStep] = findKeyStepsBoundariesByFn(
+            this.keySteps,
+            ([keyStepPercentage, _]) => valuePercentage <= keyStepPercentage,
+        );
+
+        return transformToControlValue(valuePercentage, lowerStep, upperStep);
     }
 
     constructor(
@@ -52,19 +74,8 @@ export class TuiSliderKeyStepsDirective
     }
 
     @HostListener('change')
-    onInput() {
-        const {valuePercentage} = this.slider;
-        const [lowerStep, upperStep] = findKeyStepsBoundariesByFn(
-            this.keySteps,
-            ([keyStepPercentage, _]) => valuePercentage <= keyStepPercentage,
-        );
-        const newControlValue = transformToControlValue(
-            valuePercentage,
-            lowerStep,
-            upperStep,
-        );
-
-        this.updateValue(newControlValue);
+    updateControlValue() {
+        this.updateValue(this.controlValue);
     }
 
     writeValue(controlValue: number | null) {
@@ -102,6 +113,24 @@ export class TuiSliderKeyStepsDirective
     }
 }
 
+/**
+ * @deprecated DONT USE IT! It is just temporary solution for internal purposes only. We will delete it in next major release.
+ * TODO delete it in v3.0
+ *
+ */
+@Pipe({name: 'tuiSliderTickLabel'})
+export class TuiSliderTickLabelPipe implements PipeTransform {
+    transform(tickIndex: number, totalSegments: number, keySteps: TuiKeySteps): number {
+        const percentage = (100 / totalSegments) * tickIndex;
+        const [lowerStep, upperStep] = findKeyStepsBoundariesByFn(
+            keySteps,
+            ([keyStepPercentage, _]) => percentage <= keyStepPercentage,
+        );
+
+        return transformToControlValue(percentage, upperStep, lowerStep);
+    }
+}
+
 function checkHasMinMaxPercents(steps: TuiKeySteps): boolean {
     return !steps.length || (steps[0][0] === 0 && steps[steps.length - 1][0] === 100);
 }
@@ -124,6 +153,7 @@ function transformToControlValue(
 ): number {
     const ratio =
         (valuePercentage - lowerStepPercent) / (upperStepPercent - lowerStepPercent);
+    const controlValue = (upperStepValue - lowerStepValue) * ratio + lowerStepValue;
 
-    return (upperStepValue - lowerStepValue) * ratio + lowerStepValue;
+    return round(controlValue, TUI_FLOATING_PRECISION);
 }

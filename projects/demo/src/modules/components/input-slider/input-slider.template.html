@@ -7,6 +7,31 @@
             <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a>
         </p>
 
+        <tui-notification>
+            <p i18n class="tui-space_top-0">
+                This component is being refactored.
+                Soon&nbsp;(next&nbsp;major&nbsp;release) you will see the fresh
+                version of it!
+            </p>
+            <p i18n>
+                Of course, we keep backward compatibility in mind (for 2.x.x).
+                You can still use old version of
+                <code>InputSlider</code>
+                .
+            </p>
+
+            <p i18n>
+                However, if you are going to use this component, we recommend to
+                use new version. To enable the "new version"-mode, add
+                <code>new</code>
+                directive. Example:&nbsp;
+                <code>
+                    &lt;tui&#8209;input&#8209;slider&nbsp;new&nbsp;...&gt;
+                </code>
+            </p>
+        </tui-notification>
+
+        <!-- TODO: this example is not actually so "basic" (refactor it in next PR)-->
         <tui-doc-example
             id="base"
             i18n-heading
@@ -14,6 +39,36 @@
             [content]="example1"
         >
             <tui-input-slider-example-1></tui-input-slider-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="slider-segments"
+            i18n-heading
+            heading="With slider segments + ticks labels"
+            [content]="example2"
+        >
+            <tui-notification i18n class="tui-space_bottom-8">
+                Use mixin
+                <code>tui-slider-ticks-labels</code>
+                to arrange ticks' labels (it places them strictly below ticks).
+            </tui-notification>
+            <tui-input-slider-example-2></tui-input-slider-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="key-steps"
+            i18n-heading
+            heading="KeySteps"
+            [content]="example3"
+        >
+            <dl i18n class="tui-space_bottom-8 tui-space_top-0">
+                <dt><strong>Key steps</strong></dt>
+                <dd>
+                    anchor points of non-uniform format between value and
+                    position
+                </dd>
+            </dl>
+            <tui-input-slider-example-3></tui-input-slider-example-3>
         </tui-doc-example>
     </ng-template>
 
@@ -159,6 +214,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiPluralize"
                 [documentationPropertyValues]="pluralizeVariants"
+                [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="segmentsPluralize"
             >
                 Plural forms for

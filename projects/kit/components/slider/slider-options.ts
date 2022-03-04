@@ -16,9 +16,11 @@ export const TUI_SLIDER_OPTIONS = new InjectionToken<TuiSliderOptions>(
     {factory: () => TUI_SLIDER_DEFAULT_OPTIONS},
 );
 
-export const tuiSliderOptionsProvider = (
+export function tuiSliderOptionsProvider(
     options: Partial<TuiSliderOptions>,
-): ValueProvider => ({
-    provide: TUI_SLIDER_OPTIONS,
-    useValue: {...TUI_SLIDER_DEFAULT_OPTIONS, ...options},
-});
+): ValueProvider {
+    return {
+        provide: TUI_SLIDER_OPTIONS,
+        useValue: {...TUI_SLIDER_DEFAULT_OPTIONS, ...options},
+    };
+}
