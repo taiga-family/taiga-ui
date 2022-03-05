@@ -9,9 +9,9 @@ import {
 } from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {
-    NotificationTokenOptions,
     TUI_CLOSE_WORD,
     TUI_NOTIFICATION_OPTIONS,
+    TuiNotificationDefaultOptions,
 } from '@taiga-ui/core/tokens';
 import {Observable} from 'rxjs';
 
@@ -46,7 +46,7 @@ export class TuiNotificationComponent {
     constructor(
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_NOTIFICATION_OPTIONS)
-        readonly options: NotificationTokenOptions,
+        readonly options: TuiNotificationDefaultOptions,
     ) {}
 
     get icon(): string {

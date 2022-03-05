@@ -4,7 +4,10 @@ import {
     TuiNotificationOptions,
     TuiNotificationOptionsWithData,
 } from '@taiga-ui/core/interfaces';
-import {NotificationTokenOptions, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
+import {
+    TUI_NOTIFICATION_OPTIONS,
+    TuiNotificationDefaultOptions,
+} from '@taiga-ui/core/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, Observer} from 'rxjs';
 
@@ -23,7 +26,7 @@ export class TuiNotificationsService {
 
     constructor(
         @Inject(TUI_NOTIFICATION_OPTIONS)
-        readonly options: NotificationTokenOptions,
+        readonly options: TuiNotificationDefaultOptions,
     ) {}
 
     show<O = void>(

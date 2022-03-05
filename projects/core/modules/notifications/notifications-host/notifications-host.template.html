@@ -1,7 +1,7 @@
 <ng-container *tuiLet="service.items$ | async as items">
     <div
         *ngIf="items.length"
-        class="wrapper"
+        class="t-wrapper"
         [@tuiFadeInList]="getAnimation(items.length)"
         [@tuiHeightCollapseList]="getAnimation(items.length)"
         [@tuiSlideInRightList]="getAnimation(items.length)"
@@ -9,7 +9,7 @@
         <tui-notification-alert
             *ngFor="let item of items"
             role="alert"
-            class="alert"
+            class="t-alert"
             [item]="item"
         ></tui-notification-alert>
     </div>
