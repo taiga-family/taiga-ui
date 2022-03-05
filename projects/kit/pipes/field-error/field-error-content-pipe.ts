@@ -21,12 +21,22 @@ export class TuiFieldErrorContentPipe implements PipeTransform, OnDestroy {
     constructor(@Inject(Injector) private readonly injector: Injector) {}
 
     transform(order: ReadonlyArray<string>): PolymorpheusContent {
-        return (
-            this.asyncPipe.transform(this.fieldErrorPipe.transform(order))?.message || ''
-        );
+        return this.getErrorContent(order);
     }
 
     ngOnDestroy() {
         this.asyncPipe.ngOnDestroy();
+    }
+
+    private getErrorContent(order: readonly string[]): PolymorpheusContent {
+        const error = this.asyncPipe.transform(this.fieldErrorPipe.transform(order));
+
+        if (!error) {
+            return '';
+        }
+
+        return typeof error.message === 'function'
+            ? error.message(error.context)
+            : error.message;
     }
 }

@@ -16,6 +16,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 
 describe('TuiFieldErrorContentPipe', () => {
     const testError = 'testError';
+    const max = 15;
 
     @Component({
         template: `
@@ -41,10 +42,18 @@ describe('TuiFieldErrorContentPipe', () => {
                 }
             `,
         ],
-        providers: [{provide: TUI_VALIDATION_ERRORS, useValue: {min: testError}}],
+        providers: [
+            {
+                provide: TUI_VALIDATION_ERRORS,
+                useValue: {
+                    min: testError,
+                    max: ({max}: {max: number}) => `error ${max}`,
+                },
+            },
+        ],
     })
     class TestComponent {
-        control = new FormControl(6, [Validators.min(10)]);
+        control = new FormControl(6, [Validators.min(10), Validators.max(max)]);
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -72,24 +81,29 @@ describe('TuiFieldErrorContentPipe', () => {
     });
 
     describe('Hint', () => {
-        beforeEach(fakeAsync(() => {
-            component.control.markAsTouched();
+        it('shows validation error', fakeAsync(() => {
+            showHint();
             fixture.detectChanges();
-            getHost().dispatchEvent(new Event('mouseenter'));
-            fixture.detectChanges();
-            tick(500);
-            fixture.detectChanges();
-            discardPeriodicTasks();
+            expect(getTooltip()!.textContent!.trim()).toBe(testError);
         }));
 
-        it('shows validation error', done => {
-            fixture.whenStable().then(() => {
-                fixture.detectChanges();
-                expect(getTooltip()!.textContent!.trim()).toBe(testError);
-                done();
-            });
-        });
+        it('shows validation error (function error)', fakeAsync(() => {
+            component.control.setValue(22);
+            showHint();
+            fixture.detectChanges();
+            expect(getTooltip()!.textContent!.trim()).toBe(`error ${max}`);
+        }));
     });
+
+    function showHint() {
+        component.control.markAsTouched();
+        fixture.detectChanges();
+        getHost().dispatchEvent(new Event('mouseenter'));
+        fixture.detectChanges();
+        tick(500);
+        fixture.detectChanges();
+        discardPeriodicTasks();
+    }
 
     function getHost(): HTMLElement {
         return document.querySelector('#hint-host') as HTMLElement;
