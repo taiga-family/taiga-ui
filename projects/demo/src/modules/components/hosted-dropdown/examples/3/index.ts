@@ -22,7 +22,7 @@ export class TuiHostedDropdownExample3 {
     ascending = false;
 
     onClick(item: string) {
-        if (this.items[0].indexOf(item) !== -1) {
+        if (this.items[0].includes(item)) {
             this.primary = item;
 
             return;

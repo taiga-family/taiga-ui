@@ -40,7 +40,7 @@ export class TuiReorderComponent<T> {
     noop() {}
 
     isEnabled(item: T): boolean {
-        return this.enabled.indexOf(item) !== -1;
+        return this.enabled.includes(item);
     }
 
     getIcon(item: T): string {
@@ -61,7 +61,7 @@ export class TuiReorderComponent<T> {
         moveItemInArray(items, event.previousIndex, event.currentIndex);
         this.items = items;
         this.itemsChange.emit(items);
-        this.updateEnabled(items.filter(item => this.enabled.indexOf(item) !== -1));
+        this.updateEnabled(items.filter(item => this.enabled.includes(item)));
     }
 
     private updateEnabled(enabled: readonly T[]) {

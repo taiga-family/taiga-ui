@@ -231,7 +231,7 @@ export class TuiInputNumberComponent
     }
 
     onKeyDown(event: KeyboardEvent) {
-        if (TUI_DECIMAL_SYMBOLS.indexOf(event.key) === -1) {
+        if (!TUI_DECIMAL_SYMBOLS.includes(event.key)) {
             return;
         }
 

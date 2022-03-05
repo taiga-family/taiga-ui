@@ -17,7 +17,7 @@ export function seeAlsoProviderFactory(
     seeAlsoGroups: ReadonlyArray<readonly string[]>,
 ): readonly string[] {
     const groups =
-        seeAlsoGroups.filter(group => group.indexOf(nativeElement.header) !== -1) || [];
+        seeAlsoGroups.filter(group => group.includes(nativeElement.header)) || [];
 
     const seeAlsoSet = new Set(
         groups

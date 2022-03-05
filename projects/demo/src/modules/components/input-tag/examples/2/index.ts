@@ -39,8 +39,8 @@ export class TuiInputTagExample2 {
      * Server request emulation
      */
     private serverRequest(search: string): Observable<readonly string[]> {
-        const result = databaseMockData.filter(
-            item => item.toLowerCase().indexOf(search.toLowerCase()) !== -1,
+        const result = databaseMockData.filter(item =>
+            item.toLowerCase().includes(search.toLowerCase()),
         );
 
         return of(result).pipe(delay(Math.random() * 1000 + 500));

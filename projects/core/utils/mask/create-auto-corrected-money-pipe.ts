@@ -88,7 +88,7 @@ function addDecimalSymbolIfNeeded(
     value: string,
     decimalSymbol: TuiDecimalSymbol = ',',
 ): string {
-    return value.indexOf(decimalSymbol) === -1 ? value + decimalSymbol : value;
+    return !value.includes(decimalSymbol) ? value + decimalSymbol : value;
 }
 
 function calculateSafariCaret(

@@ -6,7 +6,7 @@ describe('TuiFilter pipe', () => {
     const data = ['two', 'eleven'];
     const args = ['two', 'four'];
     const matcher: TuiMatcher<string> = (item, search, ...rest) =>
-        item.length === search || rest.indexOf(item) !== -1;
+        item.length === search || rest.includes(item);
 
     beforeEach(() => {
         pipe = new TuiFilterPipe();

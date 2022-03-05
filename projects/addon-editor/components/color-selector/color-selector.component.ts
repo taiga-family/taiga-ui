@@ -143,8 +143,8 @@ export class TuiColorSelectorComponent {
     }
 
     onStopsChange(stopsKeys: readonly number[]) {
-        const removed = this.stopsKeys.find(item => stopsKeys.indexOf(item) === -1);
-        const added = stopsKeys.find(item => this.stopsKeys.indexOf(item) === -1);
+        const removed = this.stopsKeys.find(item => !stopsKeys.includes(item));
+        const added = stopsKeys.find(item => !this.stopsKeys.includes(item));
 
         if (removed === undefined && added !== undefined) {
             this.addStop(added);
