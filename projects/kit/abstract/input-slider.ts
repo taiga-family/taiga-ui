@@ -21,6 +21,7 @@ import {
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
+import {tuiEnableAutoCorrectDecimalSymbol} from '@taiga-ui/core/utils';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {getPrecision} from '@taiga-ui/kit/utils';
@@ -129,6 +130,9 @@ export abstract class AbstractTuiInputSlider<T>
             decimalSymbol: this.numberFormat.decimalSeparator,
             thousandSymbol: this.numberFormat.thousandSeparator,
             decimalLimit: getPrecision(quantum),
+            autoCorrectDecimalSymbol: tuiEnableAutoCorrectDecimalSymbol(
+                this.numberFormat,
+            ),
         }),
         pipe: tuiCreateAutoCorrectedNumberPipe(
             0,
