@@ -9,10 +9,7 @@
         [@tuiSlideInTop]="animation"
         [class.t-bar_light]="item.mode === 'onDark'"
     >
-        <div
-            class="tui-container t-container"
-            [class.tui-container_adaptive]="item.adaptive"
-        >
+        <div class="t-container" [class.t-container_adaptive]="item.adaptive">
             <div class="t-inner">
                 <div
                     polymorpheus-outlet
@@ -28,7 +25,7 @@
                     automation-id="tui-table-bar__close-button"
                     size="xs"
                     appearance="icon"
-                    class="t-close-button tui-space_left-6"
+                    class="t-close-button"
                     [icon]="closeIcon"
                     [tuiMode]="getMode(item.mode)"
                     [title]="closeWord$ | async"

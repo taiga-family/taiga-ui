@@ -1,30 +1,22 @@
-<h1 *ngIf="heading" class="tui-text_h4">{{ heading }}</h1>
+<h1 *ngIf="heading" class="t-heading">{{ heading }}</h1>
 <ng-content></ng-content>
-<table class="tui-table tui-table_layout_fixed tui-table_font-size_s">
-    <tr class="tui-table__tr tui-table__tr_hover_disabled t-row t-row_header">
-        <th class="tui-table__th tui-table__th_first t-cell t-cell_prop">
-            {{ texts[2] }}
-        </th>
-        <td class="tui-table__th">{{ type }}</td>
-        <td
-            *ngIf="showValues && !isAPI"
-            class="tui-table__th tui-table__th_last tui-table__th_text_right t-cell t-cell_value"
-        >
+<table class="t-table">
+    <tr class="t-row t-row_header">
+        <th class="t-th t-cell t-cell_prop">{{ texts[2] }}</th>
+        <th class="t-th">{{ type }}</th>
+        <th *ngIf="showValues && !isAPI" class="t-th t-cell t-cell_value">
             {{ texts[3] }}
-        </td>
+        </th>
     </tr>
     <tr
-        *ngFor="let propertyConnector of propertiesConnectors; last as lastItem"
-        class="tui-table__tr tui-table__tr_hover_disabled t-row"
+        *ngFor="let propertyConnector of propertiesConnectors"
+        class="t-row"
         [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
-        [class.tui-table__tr_border_none]="lastItem"
     >
-        <td
-            class="tui-table__td tui-table__td_first tui-table__td_align_center t-cell"
-        >
+        <td class="t-cell">
             <div
                 automation-id="tui-documentation__property-name"
-                class="t-property t-cell"
+                class="t-property"
             >
                 {{ stripOptional(propertyConnector.attrName) }}
                 <tui-badge
@@ -43,7 +35,7 @@
                 *ngTemplateOutlet="propertyConnector.template"
             ></ng-container>
         </td>
-        <td class="tui-table__td tui-table__td_align_center t-cell">
+        <td class="t-cell">
             <span class="type">
                 {{ propertyConnector.documentationPropertyType }}
                 <tui-tooltip
@@ -65,10 +57,7 @@
                 </tui-tooltip>
             </span>
         </td>
-        <td
-            *ngIf="showValues"
-            class="tui-table__td tui-table__td_align_center tui-table__td_last tui-table__td_text_right t-cell"
-        >
+        <td *ngIf="showValues" class="t-cell">
             <ng-container
                 *ngIf="propertyConnector.shouldShowValues; else elseEmitter"
             >

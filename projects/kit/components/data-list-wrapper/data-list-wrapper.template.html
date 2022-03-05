@@ -11,7 +11,7 @@
     >
         <span
             polymorpheus-outlet
-            class="content"
+            class="t-content"
             [content]="itemContent"
             [context]="getContext(item, elementRef)"
         ></span>
@@ -20,6 +20,6 @@
 <ng-template #loading>
     <tui-loader
         automation-id="tui-data-list-wrapper__loader"
-        class="tui-space_vertical-3"
+        class="t-loader"
     ></tui-loader>
 </ng-template>

@@ -23,27 +23,29 @@
     &[data-size='s'] {
         width: 30rem;
 
-        .content {
+        .t-content {
             padding: 1.5rem;
         }
 
-        .heading {
+        .t-heading {
             margin-bottom: 0.5rem;
+            font: var(--tui-font-heading-5);
         }
     }
 
     &[data-size='m'] {
         width: 42.5rem;
 
-        .heading {
+        .t-heading {
             margin-bottom: 0.75rem;
+            font: var(--tui-font-heading-4);
         }
     }
 
     &[data-size='l'] {
         width: 55rem;
 
-        .heading {
+        .t-heading {
             margin-bottom: 1rem;
         }
     }
@@ -57,17 +59,17 @@
         background: var(--tui-elevation-01);
         box-shadow: 0 4rem var(--tui-base-01);
 
-        .content {
+        .t-content {
             padding: 3rem calc(50vw - (45rem / 2));
         }
 
-        .heading {
+        .t-heading {
             margin-bottom: 1rem;
         }
     }
 
     &[data-size='page'] {
-        .content {
+        .t-content {
             padding: 0;
         }
     }
@@ -85,27 +87,29 @@
             border: none;
             margin: auto 0 0;
 
-            .content {
+            .t-content {
                 padding: 2rem 1.5rem;
             }
 
-            .heading {
+            .t-heading {
                 margin-bottom: 0.5rem;
+                font: var(--tui-font-heading-5);
             }
         }
     }
 }
 
-.heading {
+.t-heading {
     margin: 0;
     word-wrap: break-word;
+    font: var(--tui-font-heading-3);
 
     &:empty {
         display: none;
     }
 }
 
-.header {
+.t-header {
     display: flex;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
@@ -118,7 +122,7 @@
     }
 }
 
-.content {
+.t-content {
     border-radius: inherit;
     padding: 2rem;
     background: var(--tui-base-01);
@@ -129,13 +133,13 @@
     }
 }
 
-.wrapper {
+.t-wrapper {
     position: sticky;
     top: 0;
     order: -1;
 }
 
-.close {
+.t-close {
     .transition(background);
     position: fixed;
     top: 1.5rem;
@@ -168,7 +172,7 @@
     }
 }
 
-.buttons {
+.t-buttons {
     margin-top: 1.25rem;
     text-align: right;
 }
