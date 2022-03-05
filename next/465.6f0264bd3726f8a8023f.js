@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[465],{"i3L+":function(t,n,i){"use strict";i.r(n),n.default='<form class="b-form" [formGroup]="testForm">\n    <tui-input-time formControlName="testValue" [items]="items1">\n        Input time\n    </tui-input-time>\n</form>\n'}}]);
