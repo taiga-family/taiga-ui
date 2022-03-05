@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - name: npm build demo
+      - name: build demo/next
         run: npm run build:demo:next
 
       - name: Deploy
