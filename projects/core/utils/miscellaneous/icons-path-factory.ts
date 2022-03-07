@@ -3,7 +3,7 @@ import {DEFAULT_ICONS_PATH} from '@taiga-ui/core/constants';
 
 export function iconsPathFactory(staticPath: string): TuiStringHandler<string> {
     const base =
-        staticPath[staticPath.length - 1] === '/' ? staticPath : staticPath + '/';
+        staticPath[staticPath.length - 1] === '/' ? staticPath : `${staticPath}/`;
 
     return name => {
         if (name.startsWith('tuiIcon')) {

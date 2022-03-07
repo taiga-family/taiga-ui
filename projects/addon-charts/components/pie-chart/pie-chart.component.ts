@@ -88,7 +88,7 @@ export class TuiPieChartComponent {
     }
 
     get maskId(): string {
-        return 'tui-ring-chart-' + this.autoIdString;
+        return `tui-ring-chart-${this.autoIdString}`;
     }
 
     get mask(): string | null {

@@ -11,7 +11,7 @@ describe('smartSearch', () => {
     });
 
     it('starts with empty array', done => {
-        const operator = smartSearch<string>((search: string) => of([search + 'result']));
+        const operator = smartSearch<string>((search: string) => of([`${search}result`]));
 
         operator(source)
             .pipe(take(1))
@@ -22,7 +22,7 @@ describe('smartSearch', () => {
     });
 
     it('returns null starting search', done => {
-        const operator = smartSearch<string>((search: string) => of([search + 'result']));
+        const operator = smartSearch<string>((search: string) => of([`${search}result`]));
 
         operator(source)
             .pipe(skip(1), take(1))
@@ -33,7 +33,7 @@ describe('smartSearch', () => {
     });
 
     it('returns search result of function', done => {
-        const operator = smartSearch<string>((search: string) => of([search + 'result']));
+        const operator = smartSearch<string>((search: string) => of([`${search}result`]));
 
         operator(source)
             .pipe(skip(2), take(1))
@@ -49,7 +49,7 @@ describe('smartSearch', () => {
         const operator = smartSearch<string>((search: string) => {
             counter++;
 
-            return of([search + 'result']);
+            return of([`${search}result`]);
         });
 
         source = from(['search', 'searchhh']);

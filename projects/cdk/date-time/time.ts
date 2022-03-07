@@ -161,8 +161,8 @@ export class TuiTime implements TuiTimeLike {
 
         return (
             `${this.formatTime(this.hours)}:${this.formatTime(this.minutes)}` +
-            `${needAddSeconds ? ':' + this.formatTime(this.seconds) : ''}` +
-            `${needAddMs ? '.' + this.formatTime(this.ms, 3) : ''}`
+            `${needAddSeconds ? `:${this.formatTime(this.seconds)}` : ''}` +
+            `${needAddMs ? `.${this.formatTime(this.ms, 3)}` : ''}`
         );
     }
 

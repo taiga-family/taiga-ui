@@ -35,7 +35,7 @@ export class TuiNotificationsExampleComponent4 {
             )
             .pipe(
                 switchMap(response =>
-                    notificationsService.show('Got a value — ' + response, {
+                    notificationsService.show(`Got a value — ${response}`, {
                         label: 'Information',
                     }),
                 ),

@@ -49,7 +49,7 @@ export class TuiLoaderDirective {
         const {style} = this.elementRef.nativeElement;
 
         style.strokeDashoffset = String(this.strokeDashoffset);
-        style.strokeDasharray = PERIMETER - strokeDasharray + ' ' + strokeDasharray;
+        style.strokeDasharray = `${PERIMETER - strokeDasharray} ${strokeDasharray}`;
 
         this.strokeDasharray -= PERIMETER / COEFFICIENT / fps;
         this.strokeDashoffset += (offsetStep * PERIMETER) / COEFFICIENT / fps;

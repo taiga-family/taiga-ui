@@ -39,9 +39,7 @@ describe('Matcher functions', () => {
         });
 
         it('does not do the trimming', () => {
-            expect(defaultMatcher(item, '    ' + search + '  ', defaultStringify)).toBe(
-                false,
-            );
+            expect(defaultMatcher(item, `    ${search}  `, defaultStringify)).toBe(false);
         });
 
         it('uses TUI_DEFAULT_STRINGIFY if stringify function was not provided', () => {

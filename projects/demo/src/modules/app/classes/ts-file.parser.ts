@@ -10,7 +10,7 @@ export class TsFileParser {
     set className(newClassName: string) {
         this.rawFileContent = this.rawFileContent.replace(
             /(export class\s)(\w*)/i,
-            '$1' + newClassName,
+            `$1${newClassName}`,
         );
     }
 

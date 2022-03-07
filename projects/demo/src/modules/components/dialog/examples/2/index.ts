@@ -30,7 +30,7 @@ export class TuiDialogExampleComponent2 {
     showDialog() {
         this.dialog.subscribe({
             next: data => {
-                console.info('Dialog emitted data = ' + data);
+                console.info(`Dialog emitted data = ${data}`);
             },
             complete: () => {
                 console.info('Dialog closed');

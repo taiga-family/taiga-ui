@@ -251,15 +251,15 @@ export class TuiInputCardGroupedComponent
     }
 
     get idCard(): string {
-        return this.id + '_card';
+        return `${this.id}_card`;
     }
 
     get idExpire(): string {
-        return this.id + '_expire';
+        return `${this.id}_expire`;
     }
 
     get idCVC(): string {
-        return this.id + '_cvc';
+        return `${this.id}_cvc`;
     }
 
     get isCardCollapsed(): boolean {
@@ -366,11 +366,11 @@ export class TuiInputCardGroupedComponent
         }
 
         if (parseInt(expire.substr(0, 2), 10) > 12) {
-            expire = '12' + expire.substr(2);
+            expire = `12${expire.substr(2)}`;
         }
 
         if (expire.substr(0, 2) === '00') {
-            expire = '01' + expire.substr(2);
+            expire = `01${expire.substr(2)}`;
         }
 
         this.inputExpire.nativeElement.value = expire;
