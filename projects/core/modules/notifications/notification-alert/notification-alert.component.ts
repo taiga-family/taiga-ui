@@ -7,20 +7,21 @@ import {
     OnInit,
 } from '@angular/core';
 import {isNumber, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
-import {NotificationTokenOptions, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
+import {
+    TUI_NOTIFICATION_OPTIONS,
+    TuiNotificationDefaultOptions,
+} from '@taiga-ui/core/tokens';
 import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';
 
 import {TuiNotificationContentContext} from '../notification-content-context';
 import {NotificationAlert} from './Notification-alert';
 
-export const DEFAULT_ALERT_AUTOCLOSE_TIMEOUT = 3000;
-
 @Component({
     selector: 'tui-notification-alert',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './notification-alert.template.html',
     styleUrls: ['./notification-alert.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })
 export class TuiNotificationAlertComponent<O, I> implements OnInit {
@@ -31,7 +32,7 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TUI_NOTIFICATION_OPTIONS)
-        readonly options: NotificationTokenOptions,
+        readonly options: TuiNotificationDefaultOptions,
     ) {}
 
     ngOnInit() {
@@ -78,7 +79,7 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
         timer(
             isNumber(this.item.autoClose)
                 ? this.item.autoClose
-                : DEFAULT_ALERT_AUTOCLOSE_TIMEOUT,
+                : this.options.defaultAutoCloseTime,
         )
             .pipe(
                 takeUntil(fromEvent(this.elementRef.nativeElement, 'mouseenter')),

@@ -57,21 +57,10 @@
         </button>
         <div i18n class="b-full-width">
             <p>To show notification, use method</p>
-            <p>
-                <code>
-                    <div>show&lt;O, I&gt;(</div>
-                    <div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;content:
-                        PolymorpheusContent&lt;TuiNotificationContentContext&lt;O,
-                        I&gt;&gt;
-                    </div>
-                    <div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;options: TuiNotificationOptions
-                        | TuiNotificationOptionsWithData&lt;I&gt;
-                    </div>
-                    <div>): Observable&lt;O&gt;</div>
-                </code>
-            </p>
+            <tui-doc-code
+                class="tui-space_bottom-4"
+                [code]="method"
+            ></tui-doc-code>
             of
             <code>TuiNotificationsService</code>
             , where
@@ -83,7 +72,7 @@
             <code>number</code>
             .
             <p>
-                You can also just unsubcribe from a stream to hode a
+                You can also just unsubscribe from a stream to hide a
                 notification (this observable is returned from
                 <code>open</code>
                 method). You can save a subscription for that or use

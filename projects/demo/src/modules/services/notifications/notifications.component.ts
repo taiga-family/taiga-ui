@@ -1,5 +1,6 @@
 import {Component, Inject, Injector} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     TuiNotification,
     TuiNotificationContentContext,
@@ -8,39 +9,6 @@ import {
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs/operators';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as example3AlertExampleComponent} from '!!raw-loader!./examples/3/alert-example/alert-example.component.ts';
-import {default as example3AlertExampleModule} from '!!raw-loader!./examples/3/alert-example/alert-example.module.ts';
-import {default as example3AlertExampleTemplate} from '!!raw-loader!./examples/3/alert-example/alert-example.template.html';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as example4AlertDataComponent} from '!!raw-loader!./examples/4/alert-example-with-data/alert-example-with-data.component.ts';
-import {default as example4AlertDataModule} from '!!raw-loader!./examples/4/alert-example-with-data/alert-example-with-data.module';
-import {default as example4AlertDataStyle} from '!!raw-loader!./examples/4/alert-example-with-data/alert-example-with-data.style.less';
-import {default as example4AlertDataTemplate} from '!!raw-loader!./examples/4/alert-example-with-data/alert-example-with-data.template.html';
-import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
-import {default as example4Ts} from '!!raw-loader!./examples/4/index.ts';
-import {default as example5AlertExampleComponent} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.component.ts';
-import {default as example5AlertExampleModule} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module.ts';
-import {default as example5AlertExampleTemplate} from '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.template.html';
-import {default as example5CustomLabelComponent} from '!!raw-loader!./examples/5/custom-label/custom-label.component.ts';
-import {default as example5CustomLabelModule} from '!!raw-loader!./examples/5/custom-label/custom-label.module.ts';
-import {default as example5CustomLabelStyle} from '!!raw-loader!./examples/5/custom-label/custom-label.style.less';
-import {default as example5CustomLabelTemplate} from '!!raw-loader!./examples/5/custom-label/custom-label.template.html';
-import {default as example5Html} from '!!raw-loader!./examples/5/index.html';
-import {default as example5Ts} from '!!raw-loader!./examples/5/index.ts';
-import {default as exampleCustomAlert} from '!!raw-loader!./examples/import/custom-alert.txt';
-import {default as exampleOptions} from '!!raw-loader!./examples/import/define-options.txt';
-import {default as exampleImportModuleComponent} from '!!raw-loader!./examples/import/import-module-component.txt';
-import {default as exampleLazyModule} from '!!raw-loader!./examples/import/lazy-module.txt';
-import {default as exampleModule} from '!!raw-loader!./examples/import/module.txt';
-import {default as exampleServiceUsage} from '!!raw-loader!./examples/import/service-usage.txt';
-import {default as exampleServiceUsageComponent} from '!!raw-loader!./examples/import/service-usage-component.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-data/alert-example-with-data.component';
 
 @Component({
@@ -50,58 +18,96 @@ import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-dat
     changeDetection,
 })
 export class ExampleTuiNotificationsComponent {
-    readonly exampleImportModuleComponent = exampleImportModuleComponent;
-    readonly exampleServiceUsage = exampleServiceUsage;
-    readonly exampleServiceUsageComponent = exampleServiceUsageComponent;
-    readonly exampleCustomAlert = exampleCustomAlert;
-    readonly exampleLazyModule = exampleLazyModule;
-    readonly exampleModule = exampleModule;
-    readonly exampleOptions = exampleOptions;
+    readonly method = import('!!raw-loader!./method.md');
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly exampleImportModuleComponent = import(
+        '!!raw-loader!./examples/import/import-module-component.txt'
+    );
+
+    readonly exampleServiceUsage = import(
+        '!!raw-loader!./examples/import/service-usage.txt'
+    );
+
+    readonly exampleServiceUsageComponent = import(
+        '!!raw-loader!./examples/import/service-usage-component.txt'
+    );
+
+    readonly exampleCustomAlert = import(
+        '!!raw-loader!./examples/import/custom-alert.txt'
+    );
+
+    readonly exampleLazyModule = import('!!raw-loader!./examples/import/lazy-module.txt');
+    readonly exampleModule = import('!!raw-loader!./examples/import/module.txt');
+    readonly exampleOptions = import('!!raw-loader!./examples/import/define-options.txt');
+
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
-    readonly example2: FrontEndExample = {
-        TypeScript: example2Ts,
-        HTML: example2Html,
+    readonly example2: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
     };
 
-    readonly example3 = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
-        'alert-example/alert-example.component.ts': example3AlertExampleComponent,
-        'alert-example/alert-example.template.html': example3AlertExampleTemplate,
-        'alert-example/alert-example.module.ts': example3AlertExampleModule,
+    readonly example3: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
+        HTML: import('!!raw-loader!./examples/3/index.html'),
+        'alert-example/alert-example.component.ts': import(
+            '!!raw-loader!./examples/3/alert-example/alert-example.component.ts'
+        ),
+        'alert-example/alert-example.template.html': import(
+            '!!raw-loader!./examples/3/alert-example/alert-example.template.html'
+        ),
+        'alert-example/alert-example.module.ts': import(
+            '!!raw-loader!./examples/3/alert-example/alert-example.module.ts'
+        ),
     };
 
-    readonly example4 = {
-        TypeScript: example4Ts,
-        HTML: example4Html,
-        'alert-example-with-data/alert-example-with-data.component.ts':
-            example4AlertDataComponent,
-        'alert-example-with-data/alert-example-with-data.template.html':
-            example4AlertDataTemplate,
-        'alert-example-with-data/alert-example-with-data.style.less':
-            example4AlertDataStyle,
-        'alert-example-with-data/alert-example-with-data.module.ts':
-            example4AlertDataModule,
+    readonly example4: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        'alert-example-with-data/alert-example-with-data.component.ts': import(
+            '!!raw-loader!./examples/4/alert-example-with-data/alert-example-with-data.component.ts'
+        ),
+        'alert-example-with-data/alert-example-with-data.template.html': import(
+            '!!raw-loader!./examples/4/alert-example-with-data/alert-example-with-data.template.html'
+        ),
+        'alert-example-with-data/alert-example-with-data.style.less': import(
+            '!!raw-loader!./examples/4/alert-example-with-data/alert-example-with-data.style.less'
+        ),
+        'alert-example-with-data/alert-example-with-data.module.ts': import(
+            '!!raw-loader!./examples/4/alert-example-with-data/alert-example-with-data.module'
+        ),
     };
 
-    readonly example5 = {
-        TypeScript: example5Ts,
-        HTML: example5Html,
-        'custom-label/custom-label.module.ts': example5CustomLabelModule,
-        'custom-label/custom-label.component.ts': example5CustomLabelComponent,
-        'custom-label/custom-label.style.less': example5CustomLabelStyle,
-        'custom-label/custom-label.template.html': example5CustomLabelTemplate,
+    readonly example5: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
+        HTML: import('!!raw-loader!./examples/5/index.html'),
+        'custom-label/custom-label.module.ts': import(
+            '!!raw-loader!./examples/5/custom-label/custom-label.module.ts'
+        ),
+        'custom-label/custom-label.component.ts': import(
+            '!!raw-loader!./examples/5/custom-label/custom-label.component.ts'
+        ),
+        'custom-label/custom-label.style.less': import(
+            '!!raw-loader!./examples/5/custom-label/custom-label.style.less'
+        ),
+        'custom-label/custom-label.template.html': import(
+            '!!raw-loader!./examples/5/custom-label/custom-label.template.html'
+        ),
         'alert-example-with-custom-label/alert-example-with-custom-label.module.ts':
-            example5AlertExampleModule,
+            import(
+                '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module.ts'
+            ),
         'alert-example-with-custom-label/alert-example-with-custom-label.component.ts':
-            example5AlertExampleComponent,
+            import(
+                '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.component.ts'
+            ),
         'alert-example-with-custom-label/alert-example-with-custom-label.template.html':
-            example5AlertExampleTemplate,
+            import(
+                '!!raw-loader!./examples/5/alert-example-with-custom-label/alert-example-with-custom-label.template.html'
+            ),
     };
 
     data = 100;
