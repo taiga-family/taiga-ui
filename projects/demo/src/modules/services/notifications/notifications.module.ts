@@ -21,6 +21,7 @@ import {AlertExampleWithCustomLabelComponent} from './examples/5/alert-example-w
 import {AlertExampleWithCustomLabelModule} from './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module';
 import {CustomLabelComponent} from './examples/5/custom-label/custom-label.component';
 import {CustomLabelModule} from './examples/5/custom-label/custom-label.module';
+import {TuiNotificationsExampleComponent6} from './examples/6';
 import {ExampleTuiNotificationsComponent} from './notifications.component';
 
 @NgModule({
@@ -48,6 +49,7 @@ import {ExampleTuiNotificationsComponent} from './notifications.component';
         TuiNotificationsExampleComponent3,
         TuiNotificationsExampleComponent4,
         TuiNotificationsExampleComponent5,
+        TuiNotificationsExampleComponent6,
     ],
     entryComponents: [
         AlertExampleComponent,

@@ -18,7 +18,7 @@ import {
 } from '@tinkoff/ng-polymorpheus';
 
 import {TuiNotificationContentContext} from '../../notification-content-context';
-import {NotificationAlert} from '../Notification-alert';
+import {NotificationAlert} from '../notification-alert';
 import {TuiNotificationAlertComponent} from '../notification-alert.component';
 import {TuiNotificationAlertModule} from '../notification-alert.module';
 

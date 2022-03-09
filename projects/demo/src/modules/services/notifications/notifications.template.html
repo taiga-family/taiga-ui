@@ -49,6 +49,15 @@
         >
             <tui-notifications-example-5></tui-notifications-example-5>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="label"
+            i18n-heading
+            heading="Direction"
+            [content]="example6"
+        >
+            <tui-notifications-example-6></tui-notifications-example-6>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -106,6 +115,13 @@
             >
                 Status
             </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="direction"
+                documentationPropertyType="TuiSideDirection"
+                [documentationPropertyValues]="directionVariants"
+                [(documentationPropertyValue)]="direction"
+            ></ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="label"

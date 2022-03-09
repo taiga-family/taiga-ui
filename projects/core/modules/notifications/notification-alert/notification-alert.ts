@@ -23,6 +23,8 @@ export class NotificationAlert<O, I> {
 
     readonly data!: I;
 
+    readonly direction = this.options.direction;
+
     constructor(
         readonly observer: Observer<O>,
         readonly content: PolymorpheusContent<TuiNotificationContentContext<O, I>>,

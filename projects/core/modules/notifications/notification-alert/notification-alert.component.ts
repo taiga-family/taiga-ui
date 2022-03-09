@@ -15,7 +15,7 @@ import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';
 
 import {TuiNotificationContentContext} from '../notification-content-context';
-import {NotificationAlert} from './Notification-alert';
+import {NotificationAlert} from './notification-alert';
 
 @Component({
     selector: 'tui-notification-alert',
@@ -52,12 +52,14 @@ export class TuiNotificationAlertComponent<O, I> implements OnInit {
         status,
         data,
         label,
+        direction,
         observer,
     }: NotificationAlert<O, I>): TuiNotificationContentContext<O, I> {
         return {
             $implicit: status,
             data: data,
             label: label,
+            direction: direction,
             closeHook: () => {
                 observer.complete();
             },

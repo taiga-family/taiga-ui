@@ -5,6 +5,7 @@ import {
     TuiNotification,
     TuiNotificationContentContext,
     TuiNotificationsService,
+    TuiSideDirection,
 } from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs/operators';
@@ -110,6 +111,12 @@ export class ExampleTuiNotificationsComponent {
             ),
     };
 
+    readonly example6: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/6/index.ts'),
+        HTML: import('!!raw-loader!./examples/6/index.html'),
+        LESS: import('!!raw-loader!./examples/6/index.less'),
+    };
+
     data = 100;
 
     label = 'Heading';
@@ -122,6 +129,15 @@ export class ExampleTuiNotificationsComponent {
     ];
 
     status = this.statusVariants[0];
+
+    readonly directionVariants: TuiSideDirection[] = [
+        'top-right',
+        'top-left',
+        'bottom-left',
+        'bottom-right',
+    ];
+
+    direction = this.directionVariants[0];
 
     readonly contentVariants = ['String', 'Component'];
 
@@ -166,6 +182,7 @@ export class ExampleTuiNotificationsComponent {
                 autoClose: this.autoClose,
                 hasCloseButton: this.hasCloseButton,
                 hasIcon: this.hasIcon,
+                direction: this.direction,
             })
             .pipe(
                 switchMap(response =>

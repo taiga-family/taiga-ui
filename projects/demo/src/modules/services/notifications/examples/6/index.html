@@ -1,0 +1,40 @@
+<section class="example">
+    <div class="row">
+        <div class="col">
+            <ng-container
+                [ngTemplateOutlet]="button"
+                [ngTemplateOutletContext]="{ $implicit: topLeft }"
+            ></ng-container>
+        </div>
+        <div class="col">
+            <ng-container
+                [ngTemplateOutlet]="button"
+                [ngTemplateOutletContext]="{ $implicit: topRight }"
+            ></ng-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <ng-container
+                [ngTemplateOutlet]="button"
+                [ngTemplateOutletContext]="{ $implicit: bottomLeft }"
+            ></ng-container>
+        </div>
+        <div class="col">
+            <ng-container
+                [ngTemplateOutlet]="button"
+                [ngTemplateOutletContext]="{ $implicit: bottomRight }"
+            ></ng-container>
+        </div>
+    </div>
+</section>
+
+<ng-template #button let-type>
+    <button tuiButton type="button" size="m" (click)="show(type)">
+        {{type}}
+    </button>
+</ng-template>
+
+<ng-template #notification let-id="data" let-direction="direction">
+    #{{ id }}: {{ direction }}
+</ng-template>

@@ -1,16 +1,68 @@
-<ng-container *tuiLet="service.items$ | async as items">
-    <div
-        *ngIf="items.length"
-        class="t-wrapper"
-        [@tuiFadeInList]="getAnimation(items.length)"
-        [@tuiHeightCollapseList]="getAnimation(items.length)"
-        [@tuiSlideInRightList]="getAnimation(items.length)"
-    >
-        <tui-notification-alert
-            *ngFor="let item of items"
-            role="alert"
-            class="t-alert"
-            [item]="item"
-        ></tui-notification-alert>
-    </div>
+<ng-container *ngFor="let entry of service.items | keyvalue">
+    <ng-container *tuiLet="entry.value | async as items">
+        <div
+            *ngIf="items.length"
+            class="t-direction-side t-direction-side_{{entry.key}}"
+        >
+            <ng-container [ngSwitch]="entry.key">
+                <ng-container *ngSwitchCase="'top-left'">
+                    <div
+                        class="t-side-wrapper"
+                        [@tuiFadeInList]="getAnimation(items.length)"
+                        [@tuiHeightCollapseList]="getAnimation(items.length)"
+                        [@tuiSlideInLeftList]="getAnimation(items.length)"
+                    >
+                        <ng-container
+                            [ngTemplateOutlet]="notification"
+                        ></ng-container>
+                    </div>
+                </ng-container>
+                <ng-container *ngSwitchCase="'top-right'">
+                    <div
+                        class="t-side-wrapper"
+                        [@tuiFadeInList]="getAnimation(items.length)"
+                        [@tuiHeightCollapseList]="getAnimation(items.length)"
+                        [@tuiSlideInRightList]="getAnimation(items.length)"
+                    >
+                        <ng-container
+                            [ngTemplateOutlet]="notification"
+                        ></ng-container>
+                    </div>
+                </ng-container>
+                <ng-container *ngSwitchCase="'bottom-left'">
+                    <div
+                        class="t-side-wrapper"
+                        [@tuiFadeInList]="getAnimation(items.length)"
+                        [@tuiHeightCollapseList]="getAnimation(items.length)"
+                        [@tuiSlideInBottomList]="getAnimation(items.length)"
+                    >
+                        <ng-container
+                            [ngTemplateOutlet]="notification"
+                        ></ng-container>
+                    </div>
+                </ng-container>
+                <ng-container *ngSwitchCase="'bottom-right'">
+                    <div
+                        class="t-side-wrapper"
+                        [@tuiFadeInList]="getAnimation(items.length)"
+                        [@tuiHeightCollapseList]="getAnimation(items.length)"
+                        [@tuiSlideInBottomList]="getAnimation(items.length)"
+                    >
+                        <ng-container
+                            [ngTemplateOutlet]="notification"
+                        ></ng-container>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+            <ng-template #notification>
+                <tui-notification-alert
+                    *ngFor="let item of items"
+                    role="alert"
+                    class="t-alert"
+                    [item]="item"
+                ></tui-notification-alert>
+            </ng-template>
+        </div>
+    </ng-container>
 </ng-container>

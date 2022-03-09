@@ -2,6 +2,7 @@ import {InjectionToken, ValueProvider} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core/enums';
 import {TuiNotificationAutoClose} from '@taiga-ui/core/interfaces';
+import {TuiSideDirection} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiNotificationDefaultOptions {
@@ -10,6 +11,7 @@ export interface TuiNotificationDefaultOptions {
     readonly status: TuiNotification;
     readonly hasIcon: boolean;
     readonly hasCloseButton: boolean;
+    readonly direction: TuiSideDirection;
     readonly defaultAutoCloseTime: number;
 }
 
@@ -26,6 +28,7 @@ export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationDefaultOptions = {
     hasIcon: true,
     hasCloseButton: true,
     defaultAutoCloseTime: 3000,
+    direction: 'top-right',
 };
 
 export const TUI_NOTIFICATION_OPTIONS = new InjectionToken<TuiNotificationDefaultOptions>(

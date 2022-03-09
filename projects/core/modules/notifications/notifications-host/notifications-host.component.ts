@@ -4,6 +4,8 @@ import {tuiPure} from '@taiga-ui/cdk';
 import {
     tuiFadeInList,
     tuiHeightCollapseList,
+    tuiSlideInBottomList,
+    tuiSlideInLeftList,
     tuiSlideInRightList,
 } from '@taiga-ui/core/animations';
 import {TuiAnimationOptions} from '@taiga-ui/core/interfaces';
@@ -16,7 +18,13 @@ import {TuiNotificationsService} from '../notifications.service';
     templateUrl: './notifications-host.template.html',
     styleUrls: ['./notifications-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiFadeInList, tuiSlideInRightList, tuiHeightCollapseList],
+    animations: [
+        tuiFadeInList,
+        tuiSlideInRightList,
+        tuiSlideInLeftList,
+        tuiSlideInBottomList,
+        tuiHeightCollapseList,
+    ],
 })
 export class TuiNotificationsHostComponent {
     constructor(
@@ -26,9 +34,6 @@ export class TuiNotificationsHostComponent {
 
     @tuiPure
     getAnimation(value: number): TuiAnimationOptions {
-        return {
-            value: String(value),
-            ...this.options,
-        };
+        return {value: String(value), ...this.options};
     }
 }

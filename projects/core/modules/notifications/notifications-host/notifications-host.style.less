@@ -1,22 +1,74 @@
 @import '../../../styles/taiga-ui-local.less';
 
-:host {
+.t-direction-side {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 0;
+    height: 100%;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+
+    &_top-right,
+    &_top-left {
+        .t-alert:not(:first-child) {
+            margin-top: 0.75rem;
+        }
+    }
+
+    &_bottom-right,
+    &_bottom-left {
+        .t-side-wrapper {
+            display: flex;
+            flex-direction: column-reverse;
+            margin-top: auto;
+        }
+
+        .t-alert:not(:first-child) {
+            margin-bottom: 0.75rem;
+        }
+    }
+
+    &_top-right .t-side-wrapper {
+        margin-left: auto;
+        padding: 2rem 3rem 0 0;
+
+        :host-context(tui-root._mobile) & {
+            padding: 1rem 1rem 0 0;
+        }
+    }
+
+    &_top-left .t-side-wrapper {
+        margin-right: auto;
+        padding: 2rem 0 0 3rem;
+
+        :host-context(tui-root._mobile) & {
+            padding: 1rem 0 0 1rem;
+        }
+    }
+
+    &_bottom-right .t-side-wrapper {
+        margin-left: auto;
+        padding: 0 3rem 2rem 0;
+
+        :host-context(tui-root._mobile) & {
+            padding: 0 1rem 1rem 0;
+        }
+    }
+
+    &_bottom-left .t-side-wrapper {
+        padding: 0 0 2rem 3rem;
+
+        :host-context(tui-root._mobile) & {
+            padding: 0 0 1rem 1rem;
+        }
+    }
 }
 
-.t-wrapper {
+.t-side-wrapper {
     width: 18rem;
-    margin-left: auto;
-    padding: 2rem 3rem 0 0;
     pointer-events: none;
-
-    :host-context(tui-root._mobile) & {
-        padding: 1rem 1rem 0 0;
-    }
 
     @media @desktop-m-min {
         width: 23rem;
@@ -25,8 +77,4 @@
 
 .t-alert {
     pointer-events: auto;
-
-    &:not(:first-child) {
-        margin-top: 0.75rem;
-    }
 }
