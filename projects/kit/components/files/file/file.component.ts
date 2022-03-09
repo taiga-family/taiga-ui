@@ -171,6 +171,6 @@ export class TuiFileComponent {
 
     @tuiPure
     private getType(file: TuiFileLike) {
-        return '.' + file.name.split('.').pop() || '';
+        return `.${file.name.split('.').pop()}` || '';
     }
 }

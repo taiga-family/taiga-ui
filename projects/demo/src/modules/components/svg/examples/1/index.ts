@@ -18,7 +18,7 @@ import {default as imageUrl} from '!!file-loader!../../../../../assets/images/ts
 export class TuiSvgExample1 {
     readonly timeout$ = timer(0).pipe(mapTo(true));
 
-    readonly imageUrl = imageUrl + '#ts';
+    readonly imageUrl = `${imageUrl}#ts`;
 
     readonly tuiIconTimeLarge = tuiIconTimeLarge;
 

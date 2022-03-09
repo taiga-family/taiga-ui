@@ -9,6 +9,7 @@ import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {
     clamp,
     dragAndDropFrom,
+    px,
     round,
     tuiDefaultProp,
     TuiDestroyService,
@@ -71,7 +72,7 @@ export class TuiPreviewComponent {
     );
 
     readonly wrapperTransform$ = combineLatest([
-        this.coordinates$.pipe(map(([x, y]) => `${x}px, ${y}px`)),
+        this.coordinates$.pipe(map(([x, y]) => `${px(x)}, ${px(y)}`)),
         this.zoom$,
         this.rotation$,
     ]).pipe(

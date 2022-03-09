@@ -16,7 +16,7 @@ export function parseColor(color: string): [number, number, number, number] {
         return array.concat(1) as [number, number, number, number];
     }
 
-    const matches = stripped.match(new RegExp('(.{' + stripped.length / 3 + '})', 'g'));
+    const matches = stripped.match(new RegExp(`(.{${stripped.length / 3}})`, 'g'));
 
     if (!matches) {
         return DEFAULT;

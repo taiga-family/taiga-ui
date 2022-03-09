@@ -59,7 +59,7 @@ export class TuiEditLinkComponent {
     get shortUrl(): string {
         return this.url.length < MAX_LENGTH
             ? this.url
-            : this.url.substr(0, START) + '...' + this.url.substr(this.url.length - END);
+            : `${this.url.substr(0, START)}...${this.url.substr(this.url.length - END)}`;
     }
 
     @HostListener('mousedown', ['$event'])

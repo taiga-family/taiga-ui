@@ -91,11 +91,11 @@ export class TuiInputExpireComponent
         }
 
         if (parseInt(value.substr(0, 2), 10) > 12) {
-            value = '12' + value.substr(2);
+            value = `12${value.substr(2)}`;
         }
 
         if (value.substr(0, 2) === '00') {
-            value = '01' + value.substr(2);
+            value = `01${value.substr(2)}`;
         }
 
         this.input.nativeFocusableElement.value = value;

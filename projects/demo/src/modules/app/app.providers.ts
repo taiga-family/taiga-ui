@@ -65,7 +65,7 @@ export const APP_PROVIDERS = [
             if (context.type) {
                 return `${link}/${context.package.toLowerCase()}/${context.type.toLowerCase()}/${(
                     context.header[0].toLowerCase() + context.header.slice(1)
-                ).replace(/[A-Z]/g, m => '-' + m.toLowerCase())}`;
+                ).replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
             }
 
             return `${link}/${context.path}`;

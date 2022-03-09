@@ -287,7 +287,7 @@ export class TuiInputFilesComponent
             return true;
         }
 
-        const extension = '.' + (file.name.split('.').pop() || '').toLowerCase();
+        const extension = `.${(file.name.split('.').pop() || '').toLowerCase()}`;
 
         return getAcceptArray(this.accept).some(
             format =>

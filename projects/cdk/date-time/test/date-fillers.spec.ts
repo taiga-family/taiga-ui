@@ -17,6 +17,6 @@ describe('Date Fillers', () => {
 
         const result = TestBed.inject(TUI_DATE_RANGE_FILLER);
 
-        expect(result).toBe('dd.mm.yyyy' + RANGE_SEPARATOR_CHAR + 'dd.mm.yyyy');
+        expect(result).toBe(`dd.mm.yyyy${RANGE_SEPARATOR_CHAR}dd.mm.yyyy`);
     });
 });

@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {UrlSerializer} from '@angular/router';
-import {TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
+import {px, TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {startWith, takeUntil} from 'rxjs/operators';
@@ -176,7 +176,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
         this.renderer.setStyle(
             this.wrapper.nativeElement,
             'width',
-            `${Math.max(this.wrapperWidth - delta, MIN_COMPONENT_WIDTH)}px`,
+            px(Math.max(this.wrapperWidth - delta, MIN_COMPONENT_WIDTH)),
         );
     }
 }

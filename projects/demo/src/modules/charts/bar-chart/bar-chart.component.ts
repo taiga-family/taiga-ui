@@ -93,8 +93,7 @@ export class ExampleTuiBarChartComponent {
         return this.value
             .reduce(
                 (result, set) =>
-                    result +
-                    `${formatNumber(set[index])} ${getCurrencySymbol(
+                    `${result}${formatNumber(set[index])} ${getCurrencySymbol(
                         TuiCurrency.Ruble,
                     )}\n`,
                 '',

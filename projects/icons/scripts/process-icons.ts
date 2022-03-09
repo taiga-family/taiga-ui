@@ -29,10 +29,10 @@ export function processIcons(files: string[], interceptor?: ContentInterceptor):
 
         const final =
             typeof wrapped === 'string'
-                ? wrapped.replace(
+                ? `${wrapped.replace(
                       START,
                       `<svg xmlns="http://www.w3.org/2000/svg"><g id="${name}" xmlns="http://www.w3.org/2000/svg"><svg`,
-                  ) + '</g></svg>'
+                  )}</g></svg>`
                 : `<svg xmlns="http://www.w3.org/2000/svg" width="${wrapped.width}" height="${wrapped.height}">${wrapped.src}</svg>`;
 
         fs.writeFileSync(file, final);

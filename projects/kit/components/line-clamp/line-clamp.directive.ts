@@ -8,7 +8,7 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 import {ANIMATION_FRAME, CSS} from '@ng-web-apis/common';
-import {CHAR_ELLIPSIS, TuiDestroyService, tuiZonefree} from '@taiga-ui/cdk';
+import {CHAR_ELLIPSIS, px, TuiDestroyService, tuiZonefree} from '@taiga-ui/cdk';
 import {setRangeOffset} from '@taiga-ui/kit/utils/dom';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
@@ -52,7 +52,7 @@ export class TuiLineClampDirective {
 
         style.position = 'absolute';
         style.bottom = '0';
-        style.left = `${HIDDEN_LEFT}px`;
+        style.left = px(HIDDEN_LEFT);
         ellipsis.textContent = CHAR_ELLIPSIS;
 
         viewContainerRef.element.nativeElement.appendChild(ellipsis);
@@ -93,7 +93,7 @@ export class TuiLineClampDirective {
                 takeUntil(destroy$),
             )
             .subscribe(left => {
-                style.left = `${left}px`;
+                style.left = px(left);
             });
     }
 }

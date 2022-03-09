@@ -11,6 +11,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiLazyLoadingExample1 {
     readonly array = Array.from(
         {length: 100},
-        (_, i) => 'https://picsum.photos/' + (250 + i) + '/200',
+        (_, i) => `https://picsum.photos/${250 + i}/200`,
     );
 }

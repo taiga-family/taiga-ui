@@ -108,7 +108,7 @@ export class TuiFileOldComponent {
     }
 
     get type(): string {
-        return '.' + this.file.name.split('.').pop() || '';
+        return `.${this.file.name.split('.').pop()}` || '';
     }
 
     get content$(): Observable<PolymorpheusContent> {

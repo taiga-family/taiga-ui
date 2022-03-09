@@ -110,7 +110,7 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     get secondary(): string | null {
         return this.secondarySelected === this.secondaryVariants[0]
-            ? Math.round((this.control.value / this.max) * 100) + '%'
+            ? `${Math.round((this.control.value / this.max) * 100)}%`
             : this.secondarySelected;
     }
 }
