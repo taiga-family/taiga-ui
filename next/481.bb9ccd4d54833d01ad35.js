@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[481],{CTEK:function(n,t,e){"use strict";e.r(t),t.default='<form class="b-form" [formGroup]="testForm">\n    <tui-input formControlName="testValue">\n        Type an email\n        <input tuiTextfield type="email" />\n    </tui-input>\n</form>\n'}}]);

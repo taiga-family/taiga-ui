@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[526],{uoxX:function(t,n,o){"use strict";o.r(n),n.default='<tui-loader class="inline-flex">\n    <button tuiButton type="button">Loading button</button>\n</tui-loader>\n'}}]);

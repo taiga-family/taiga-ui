@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[735],{"7WFn":function(e,n,t){"use strict";t.r(n),n.default='<tui-tree\n    *ngFor="let item of data.children"\n    [tuiTreeController]="true"\n    [value]="item"\n    [content]="content"\n    [childrenHandler]="handler"\n></tui-tree>\n\n<ng-template #content let-item>{{item.text}}</ng-template>\n'}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[684],{j3wA:function(a,n,t){"use strict";t.r(n),n.default='<tui-tag [value]="tag"></tui-tag>\n \x3c!--Use can use tag as link--\x3e\n<a tuiTag\n   href="//somesite.com"\n   target="_blank"\n   [value]="tag"></a>\n'}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[697],{sdcA:function(e,t,a){"use strict";a.r(t),t.default='<tui-text-area class="b-form" [(ngModel)]="value">\n    Bio\n    <textarea\n        tuiTextfield\n        maxlength="97"\n        placeholder="Write a few words about yourself"\n    ></textarea>\n</tui-text-area>\n'}}]);

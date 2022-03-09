@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[612],{"1PQF":function(s,n,r){"use strict";r.r(n),n.default='```html\n<progress tuiProgressBar [value]="40" [max]="100"></progress>\n```\n'}}]);
