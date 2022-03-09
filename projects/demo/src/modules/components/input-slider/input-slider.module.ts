@@ -9,6 +9,7 @@ import {
     TuiLinkModule,
     TuiNotificationModule,
     TuiSvgModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
     TuiInputRangeModule,
@@ -20,6 +21,8 @@ import {InheritedDocumentationModule} from '../abstract/inherited-documentation/
 import {TuiInputSliderExample1} from './examples/1';
 import {TuiInputSliderExample2} from './examples/2';
 import {TuiInputSliderExample3} from './examples/3';
+import {TuiInputSliderExample4} from './examples/4';
+import {TuiInputSliderExample5} from './examples/5';
 import {ExampleTuiInputSliderComponent} from './input-slider.component';
 
 @NgModule({
@@ -37,6 +40,7 @@ import {ExampleTuiInputSliderComponent} from './input-slider.component';
         TuiLinkModule,
         TuiSvgModule,
         TuiNotificationModule,
+        TuiTextfieldControllerModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputSliderComponent)),
     ],
     declarations: [
@@ -44,6 +48,8 @@ import {ExampleTuiInputSliderComponent} from './input-slider.component';
         TuiInputSliderExample1,
         TuiInputSliderExample2,
         TuiInputSliderExample3,
+        TuiInputSliderExample4,
+        TuiInputSliderExample5,
     ],
     exports: [ExampleTuiInputSliderComponent],
 })

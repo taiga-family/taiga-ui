@@ -54,7 +54,10 @@
             {{ maxLabel }}
         </span>
         <span automation-id="tui-input-slider__secondary" class="t-secondary">
-            {{ secondary }}
+            <span
+                polymorpheus-outlet
+                [content]="controller.customContent || secondary"
+            ></span>
             <tui-tooltip
                 *ngIf="hasTooltip"
                 automation-id="tui-input-slider__tooltip"
