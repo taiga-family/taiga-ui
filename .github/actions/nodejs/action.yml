@@ -5,13 +5,13 @@ inputs:
   node-version:
     description: Node.js version
     required: false
-    default: 12.x
+    default: 14.x
 
 runs:
   using: composite
   steps:
     - name: Use Node.js ${{ inputs.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ inputs.node-version }}
         registry-url: 'https://registry.npmjs.org'
@@ -25,7 +25,7 @@ runs:
           */*/node_modules/
           !node_modules/.cache
           !*/*/node_modules/.cache
-        key: node-modules-cache-hash__${{ hashfiles('**/package-lock.json') }}
+        key: modules-cache__nodejs-${{ inputs.node-version }}__${{ hashfiles('**/package-lock.json') }}
 
     - name: Restore from cache of builds
       id: build-cache
@@ -36,14 +36,14 @@ runs:
           node_modules/.cache
           */*/node_modules/.cache
         key: builds-cache-hash__${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
-        restore-keys: builds-cache-hash__${{ hashFiles('**/package-lock.json') }}
+        restore-keys: builds-cache__nodejs-${{ inputs.node-version }}__${{ hashFiles('**/package-lock.json') }}
 
     - name: Restore from global NPM cache
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
       uses: actions/cache@v2
       with:
         path: ~/.npm
-        key: npm-cache-hash__${{ hashFiles('**/package-lock.json') }}
+        key: npm-cache__nodejs-${{ inputs.node-version }}__${{ hashFiles('**/package-lock.json') }}
         restore-keys: npm-cache-hash__
 
     - run: npm ci
