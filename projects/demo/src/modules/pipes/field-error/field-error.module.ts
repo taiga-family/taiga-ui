@@ -20,6 +20,7 @@ import {
     TuiInputPhoneModule,
 } from '@taiga-ui/kit';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit/pipes/field-error';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiFieldErrorPipeExample1} from './examples/1';
 import {TuiFieldErrorPipeExample2} from './examples/2';
@@ -48,6 +49,7 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
         TuiHintModule,
         TuiInputNumberModule,
         TuiCurrencyPipeModule,
+        PolymorpheusModule,
         RouterModule.forChild(generateRoutes(ExampleTuiFieldErrorPipeComponent)),
     ],
     declarations: [
