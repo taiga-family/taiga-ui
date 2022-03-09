@@ -25,8 +25,8 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     readonly example1: TuiDocExample = {
         HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
         TypeScript: import('!!raw-loader!./examples/1/index'),
+        LESS: import('!!raw-loader!./examples/1/index.less'),
     };
 
     readonly example2: TuiDocExample = {
@@ -39,6 +39,18 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
         HTML: import('!!raw-loader!./examples/3/index.html'),
         TypeScript: import('!!raw-loader!./examples/3/index'),
         LESS: import('!!raw-loader!./examples/3/index.less'),
+    };
+
+    readonly example4: TuiDocExample = {
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        TypeScript: import('!!raw-loader!./examples/4/index'),
+        LESS: import('!!raw-loader!./examples/4/index.less'),
+    };
+
+    readonly example5: TuiDocExample = {
+        HTML: import('!!raw-loader!./examples/5/index.html'),
+        TypeScript: import('!!raw-loader!./examples/5/index'),
+        LESS: import('!!raw-loader!./examples/5/index.less'),
     };
 
     readonly control = new FormControl();

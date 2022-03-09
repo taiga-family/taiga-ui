@@ -16,6 +16,7 @@ import {
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit/components/slider';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TextMaskModule} from 'angular2-text-mask';
 
 import {
@@ -40,6 +41,7 @@ import {
         TuiWrapperModule,
         TuiFormatNumberPipeModule,
         TuiRepeatTimesModule,
+        PolymorpheusModule,
     ],
     declarations: [TuiInputSliderComponent, TuiNewInputSliderDirective],
     exports: [TuiInputSliderComponent, TuiNewInputSliderDirective],

@@ -27,11 +27,14 @@ import {
     maskedMoneyValueIsEmpty,
     maskedNumberStringToNumber,
     NumberFormatSettings,
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_HINT_WATCHED_CONTROLLER,
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_APPEARANCE,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiHintControllerDirective,
     TuiModeDirective,
+    TuiTextfieldController,
 } from '@taiga-ui/core';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
 import {
@@ -71,6 +74,7 @@ export class TuiNewInputSliderDirective {}
         },
         tuiSliderOptionsProvider({trackColor: 'transparent'}),
         HINT_CONTROLLER_PROVIDER,
+        TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })
 export class TuiInputSliderComponent
@@ -83,6 +87,10 @@ export class TuiInputSliderComponent
     @ViewChild(TuiSliderComponent, {read: ElementRef})
     private readonly sliderRef?: ElementRef<HTMLInputElement>;
 
+    /**
+     * @deprecated use `tuiTextfieldCustomContent` instead
+     * TODO delete in v3.0
+     */
     @Input()
     @tuiDefaultProp()
     secondary = '';
@@ -98,6 +106,8 @@ export class TuiInputSliderComponent
         protected readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
+        readonly controller: TuiTextfieldController,
         @Inject(TUI_NUMBER_FORMAT)
         protected readonly numberFormat: NumberFormatSettings,
         @Inject(TUI_TEXTFIELD_APPEARANCE)

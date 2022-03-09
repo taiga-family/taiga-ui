@@ -7,7 +7,7 @@
             <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a>
         </p>
 
-        <tui-notification>
+        <tui-notification status="warning">
             <p i18n class="tui-space_top-0">
                 This component is being refactored.
                 Soon&nbsp;(next&nbsp;major&nbsp;release) you will see the fresh
@@ -31,13 +31,23 @@
             </p>
         </tui-notification>
 
-        <!-- TODO: this example is not actually so "basic" (refactor it in next PR)-->
         <tui-doc-example
             id="base"
             i18n-heading
             heading="Basic"
             [content]="example1"
+            [description]="stepQuantumDescription"
         >
+            <ng-template #stepQuantumDescription>
+                <p>
+                    Look into this example to understand difference between
+                    input-props
+                    <code>[steps]</code>
+                    and
+                    <code>[quantum]</code>
+                    .
+                </p>
+            </ng-template>
             <tui-input-slider-example-1></tui-input-slider-example-1>
         </tui-doc-example>
 
@@ -69,6 +79,24 @@
                 </dd>
             </dl>
             <tui-input-slider-example-3></tui-input-slider-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="right-label"
+            i18n-heading
+            heading="With right label"
+            [content]="example4"
+        >
+            <tui-input-slider-example-4></tui-input-slider-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="min-max-labels"
+            i18n-heading
+            heading="With min and max labels"
+            [content]="example5"
+        >
+            <tui-input-slider-example-5></tui-input-slider-example-5>
         </tui-doc-example>
     </ng-template>
 
@@ -190,16 +218,6 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="secondary"
-                documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="secondaryVariants"
-                [(documentationPropertyValue)]="secondarySelected"
-            >
-                Right label
-            </ng-template>
-            <ng-template
-                i18n
                 documentationPropertyName="segments"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -207,18 +225,6 @@
                 [(documentationPropertyValue)]="segments"
             >
                 A number of visual segments
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="segmentsPluralize"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiPluralize"
-                [documentationPropertyValues]="pluralizeVariants"
-                [documentationPropertyDeprecated]="true"
-                [(documentationPropertyValue)]="segmentsPluralize"
-            >
-                Plural forms for
-                <code>segments</code>
             </ng-template>
             <ng-template
                 i18n
@@ -239,6 +245,34 @@
                 [(documentationPropertyValue)]="steps"
             >
                 Number of actual discrete slider steps
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="secondary"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyDeprecated]="true"
+                [documentationPropertyValues]="secondaryVariants"
+                [(documentationPropertyValue)]="secondarySelected"
+            >
+                Right label.
+                <p>
+                    Use
+                    <code>tuiTextfieldCustomContent</code>
+                    instead.
+                </p>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="segmentsPluralize"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiPluralize"
+                [documentationPropertyValues]="pluralizeVariants"
+                [documentationPropertyDeprecated]="true"
+                [(documentationPropertyValue)]="segmentsPluralize"
+            >
+                Plural forms for
+                <code>segments</code>
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
