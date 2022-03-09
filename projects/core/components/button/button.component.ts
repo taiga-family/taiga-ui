@@ -65,7 +65,7 @@ export class TuiButtonComponent
     iconRight: PolymorpheusContent = '';
 
     @Input()
-    @HostBinding('attr.data-tui-host-shape')
+    @HostBinding('attr.data-shape')
     @tuiDefaultProp()
     shape = this.options.shape;
 
