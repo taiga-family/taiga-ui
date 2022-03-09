@@ -3,7 +3,7 @@ import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {getFractionPartPadded} from './get-fractional-part-padded';
 
 /**
- * Formats number adding thousand separators and correct decimal separator
+ * Formats number adding a thousand separators and correct decimal separator
  * padding decimal part with zeroes to given length
  *
  * @param value the input number
