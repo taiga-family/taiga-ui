@@ -61,7 +61,7 @@ export class ExampleTuiBadgedContentComponent {
 
     contentBottom: PolymorpheusContent = '';
 
-    readonly contentVariants = [
+    readonly contentVariants: PolymorpheusContent[] = [
         '',
         1,
         5,

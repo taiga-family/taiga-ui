@@ -21,7 +21,9 @@ import {
     TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    TuiActiveZoneDirective,
     TuiBooleanHandler,
+    TuiContextWithImplicit,
     TuiControlValueTransformer,
     TuiDateMode,
     TuiDay,
@@ -51,6 +53,7 @@ import {
     tuiCreateDateMask,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
+import {TextMaskConfig} from 'angular2-text-mask';
 import {combineLatest, Observable} from 'rxjs';
 import {map, pluck} from 'rxjs/operators';
 
@@ -77,11 +80,11 @@ export class TuiInputDateTimeComponent
 
     @Input()
     @tuiDefaultProp()
-    min = TUI_FIRST_DAY;
+    min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
 
     @Input()
     @tuiDefaultProp()
-    max = TUI_LAST_DAY;
+    max: TuiDay | [TuiDay, TuiTime] = TUI_LAST_DAY;
 
     @Input()
     @tuiDefaultProp()
@@ -96,7 +99,10 @@ export class TuiInputDateTimeComponent
     timeMode: TuiTimeMode = 'HH:MM';
 
     open = false;
-    readonly filler$ = combineLatest([
+
+    readonly type!: TuiContextWithImplicit<TuiActiveZoneDirective>;
+
+    readonly filler$: Observable<string> = combineLatest([
         this.dateTexts$.pipe(
             map(dateTexts =>
                 changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
@@ -132,7 +138,7 @@ export class TuiInputDateTimeComponent
         return DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length + this.timeMode.length;
     }
 
-    get textMaskOptions(): TuiTextMaskOptions {
+    get textMaskOptions(): TextMaskConfig {
         return this.calculateMask(
             this.value[0],
             this.calendarMinDay,
@@ -140,7 +146,7 @@ export class TuiInputDateTimeComponent
             this.timeMode,
             this.dateFormat,
             this.dateSeparator,
-        );
+        ) as TuiTextMaskOptions as unknown as TextMaskConfig;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

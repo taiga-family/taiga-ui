@@ -7,7 +7,9 @@ export async function rawLoadRecord(
     const processedContent: Record<string, string> = {};
 
     for (const [key, content] of Object.entries(example)) {
-        processedContent[key] = await rawLoad(content);
+        if (content) {
+            processedContent[key] = await rawLoad(content);
+        }
     }
 
     return processedContent;

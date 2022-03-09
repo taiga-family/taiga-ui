@@ -47,7 +47,7 @@
                 class="t-column"
                 [class.t-column_hovered]="hovered === index"
                 [tuiHintHost]="hintHost"
-                [tuiHint]="computedHint && hint"
+                [tuiHint]="hint"
                 [tuiHintId]="getHintId(index)"
                 [style.left.%]="getLeft(getX(index))"
                 [style.width.%]="getWidth(index)"
@@ -73,11 +73,20 @@
             ></div>
             <ng-template #hint>
                 <div
+                    *ngIf="hintDirective else single"
                     polymorpheus-outlet
                     class="t-text"
-                    [content]="computedHint"
+                    [content]="hintDirective.hint"
                     [context]="getContentContext(point)"
                 ></div>
+                <ng-template #single>
+                    <div
+                        polymorpheus-outlet
+                        class="t-text"
+                        [content]="hintContent"
+                        [context]="{ $implicit: point }"
+                    ></div>
+                </ng-template>
             </ng-template>
         </ng-container>
     </ng-container>

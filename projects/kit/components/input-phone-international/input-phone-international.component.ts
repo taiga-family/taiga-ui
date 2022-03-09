@@ -17,6 +17,7 @@ import {
     AbstractTuiControl,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiMapper,
@@ -27,6 +28,9 @@ import {
     TUI_ICONS_PATH,
     TUI_NON_DIGITS_REGEXP,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeM,
+    TuiSizeS,
 } from '@taiga-ui/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
@@ -83,7 +87,9 @@ export class TuiInputPhoneInternationalComponent
 
     open = false;
 
-    readonly arrow: PolymorpheusContent = TUI_ARROW;
+    readonly arrow: PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+    > = TUI_ARROW;
 
     constructor(
         @Optional()

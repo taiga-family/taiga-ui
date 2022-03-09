@@ -67,9 +67,6 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
     @HostBinding('@tuiDropdownAnimation')
     dropdownAnimation!: TuiAnimationOptions;
 
-    @ViewChild(TuiActiveZoneDirective)
-    readonly activeZone?: TuiActiveZoneDirective;
-
     @ViewChild('content', {read: ElementRef})
     readonly contentElementRef?: ElementRef<HTMLElement>;
 
@@ -365,7 +362,7 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         const {ownerDocument} = host;
         const root = ownerDocument ? ownerDocument.body : host;
 
-        let focusable = getClosestFocusable(host, previous, root);
+        let focusable = getClosestFocusable(host as HTMLElement, previous, root);
 
         while (focusable !== null && host.contains(focusable)) {
             focusable = getClosestFocusable(focusable, previous, root);

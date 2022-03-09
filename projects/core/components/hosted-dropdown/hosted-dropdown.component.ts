@@ -20,6 +20,7 @@ import {
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiActiveZoneDirective,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
@@ -60,7 +61,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent = '';
+    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>> = '';
 
     @Input()
     @tuiDefaultProp()
@@ -75,9 +76,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     @Output()
     readonly focusedChange = new EventEmitter<boolean>();
-
-    @ViewChild(TuiActiveZoneDirective)
-    readonly activeZone?: TuiActiveZoneDirective;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef,

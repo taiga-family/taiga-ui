@@ -1,3 +1,4 @@
+import {NgIfContext} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -62,7 +63,7 @@ export class TuiExpandComponent {
     }
 
     @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
-    content?: TemplateRef<{}>;
+    content?: TemplateRef<NgIfContext<boolean>>;
 
     @HostBinding('class._expanded')
     @HostBinding('attr.aria-expanded')

@@ -20,7 +20,7 @@ export class TuiScaleInExample {
         {title: 'Install Angular', completed: true},
         {title: 'Install Taiga UI', completed: false},
         {title: 'Look into "Getting Started"', completed: false},
-    ] as const;
+    ];
 
     @tuiPure
     getAnimation(duration: number) {

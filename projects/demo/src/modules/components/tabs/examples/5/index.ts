@@ -44,7 +44,7 @@ export class TuiTabsExample5 {
         this.open = false;
     }
 
-    isString(tab: any): boolean {
+    isString(tab: unknown): tab is string {
         return typeof tab === 'string';
     }
 }

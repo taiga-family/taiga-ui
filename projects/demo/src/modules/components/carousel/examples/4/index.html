@@ -5,9 +5,9 @@
 <ng-template #header>
     <div class="header" [style.backgroundImage]="background"></div>
 </ng-template>
-
+<!-- TODO: need remove $any later -->
 <ng-template
-    [tuiDialogOptions]="{ size: 's', header: header }"
+    [tuiDialogOptions]="$any({ size: 's', header: header })"
     [(tuiDialog)]="open"
 >
     <div tuiCarouselButtons class="wrapper" (touchstart.passive.stop)="0">

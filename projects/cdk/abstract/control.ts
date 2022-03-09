@@ -108,12 +108,12 @@ export abstract class AbstractTuiControl<T>
         );
     }
 
-    get computedName(): string | number | null {
-        return this.controlName;
+    get computedName(): string | null {
+        return this.controlName?.toString() ?? null;
     }
 
-    protected get controlName(): string | number | null {
-        return this.ngControl && this.ngControl.name;
+    protected get controlName(): string | null {
+        return this.ngControl?.name?.toString() ?? null;
     }
 
     private get rawValue(): T | undefined {

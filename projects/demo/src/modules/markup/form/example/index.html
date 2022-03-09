@@ -64,9 +64,9 @@
                         formControlName="quantityValue"
                         [min]="50000"
                         [max]="3000000"
-                        [pluralize]="['₽', '₽', '₽']"
                         [segments]="1"
-                        [segmentsPluralize]="['₽', '₽', '₽']"
+                        [pluralize]="pluralize"
+                        [segmentsPluralize]="pluralize"
                     >
                         Some slider
                     </tui-input-slider>

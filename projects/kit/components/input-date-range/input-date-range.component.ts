@@ -61,6 +61,7 @@ import {
     tuiCreateDateRangeMask,
 } from '@taiga-ui/kit/utils/mask';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
@@ -180,8 +181,10 @@ export class TuiInputDateRangeComponent
         return this.items.length ? this.textfieldExampleText.exampleText : '';
     }
 
-    get computedMask(): TuiTextMaskOptions {
-        return this.activePeriod ? EMPTY_MASK : this.textMaskOptions;
+    get computedMask(): TextMaskConfig {
+        return (this.activePeriod
+            ? EMPTY_MASK
+            : this.textMaskOptions) as TuiTextMaskOptions as unknown as TextMaskConfig;
     }
 
     get activePeriod(): TuiDayRangePeriod | null {

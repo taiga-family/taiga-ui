@@ -5,6 +5,7 @@ import {
     ElementRef,
     Inject,
     Optional,
+    Type,
 } from '@angular/core';
 import {TUI_DIALOGS, TUI_IS_MOBILE, tuiAssert} from '@taiga-ui/cdk';
 import {VERSION} from '@taiga-ui/core/constants';
@@ -33,7 +34,7 @@ import {map} from 'rxjs/operators';
     },
 })
 export class TuiRootComponent {
-    readonly scrollbars$ =
+    readonly scrollbars$: Observable<boolean> =
         this.dialogs && !this.isMobile
             ? merge(...this.dialogs).pipe(map(({length}) => !length))
             : of(!this.isMobile);
@@ -46,7 +47,7 @@ export class TuiRootComponent {
         readonly dialogs: readonly Observable<readonly unknown[]>[] | null,
         @Optional()
         @Inject(TuiNotificationsHostComponent)
-        readonly notificationsHost: TuiNotificationsHostComponent,
+        readonly notificationsHost: Type<unknown>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_ASSERT_ENABLED) enabled: boolean,
         @Inject(TUI_IS_MOBILE_RES) readonly isMobileRes$: Observable<boolean>,

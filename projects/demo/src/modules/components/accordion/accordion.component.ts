@@ -63,7 +63,7 @@ export class ExampleTuiAccordionComponent {
         LESS: import('!!raw-loader!./examples/4/index.less'),
     };
 
-    readonly bordersVariants = ['all', 'top-bottom'];
+    readonly bordersVariants = ['all', 'top-bottom'] as const;
 
     borders = this.bordersVariants[0];
 

@@ -9,7 +9,9 @@
         "strictMetadataEmit": true,
         "fullTemplateTypeCheck": true,
         "strictInjectionParameters": true,
-        "enableResourceInlining": true
+        "enableResourceInlining": true,
+        "strictLiteralTypes": true,
+        "strictInputTypes": true
     },
     "compilerOptions": {
         "strict": true,

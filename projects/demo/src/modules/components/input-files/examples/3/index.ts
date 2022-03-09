@@ -48,7 +48,11 @@ export class TuiInputFilesExample3 {
         this.loadingFile = null;
     }
 
-    restore(file: TuiFileLike) {
+    restore(file: TuiFileLike | null) {
+        if (!file) {
+            return;
+        }
+
         this.restoredFiles = [...this.restoredFiles, file];
         this.removedFiles = this.removedFiles.filter(
             removed => file.name !== removed?.name,

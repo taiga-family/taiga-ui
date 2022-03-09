@@ -47,11 +47,18 @@ export class ExampleTuiAxesComponent {
         'hidden',
     ];
 
-    readonly labelsVariants = [
+    readonly labelsXVariants: ReadonlyArray<ReadonlyArray<string | null>> = [
         [],
         ['', '25%', '50%', '100%'],
         ['One', 'Two', 'Three'],
         ['One', null, '', 'Two and a half', 'Three', null],
+    ];
+
+    readonly labelsYVariants: ReadonlyArray<ReadonlyArray<string>> = [
+        [],
+        ['', '25%', '50%', '100%'],
+        ['One', 'Two', 'Three'],
+        ['One', '', 'Two and a half', 'Three'],
     ];
 
     readonly handlerVariants: ReadonlyArray<TuiLineHandler> = [
@@ -62,19 +69,19 @@ export class ExampleTuiAxesComponent {
 
     axisX = this.lineVariants[0];
 
-    axisXLabels = this.labelsVariants[0];
+    axisXLabels = this.labelsXVariants[0];
 
     axisY = this.lineVariants[0];
 
     axisYInset = false;
 
-    axisYLabels = this.labelsVariants[0];
+    axisYLabels = this.labelsYVariants[0];
 
     axisYName = '';
 
     axisYSecondaryInset = false;
 
-    axisYSecondaryLabels = this.labelsVariants[0];
+    axisYSecondaryLabels = this.labelsYVariants[0];
 
     axisYSecondaryName = '';
 

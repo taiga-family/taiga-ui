@@ -6,7 +6,7 @@ import {drawLine} from './draw-line';
 const COEFFICIENT = 500;
 
 export function draw(
-    array: ReadonlyArray<TuiPoint>,
+    array: readonly TuiPoint[],
     index: number,
     smoothing: number,
 ): string {

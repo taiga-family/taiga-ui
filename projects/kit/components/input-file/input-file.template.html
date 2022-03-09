@@ -29,23 +29,25 @@
                 [content]="computedLabel"
             ></span>
         </ng-container>
-        <input
-            *ngIf="!readOnly && !computedDisabled && (inputFileTexts$ | async) as texts"
-            #input
-            type="file"
-            tuiPreventDefault="mousedown"
-            class="native"
-            [id]="id"
-            [accept]="accept"
-            [multiple]="multiple"
-            [tuiFocusable]="focusable"
-            (change)="onFilesSelected(input, texts, units)"
-            (tuiHoveredChange)="onHovered($event)"
-            (tuiFocusedChange)="onFocused($event)"
-            (tuiPressedChange)="onPressed($event)"
-            (tuiDroppableDropped)="onDropped($event, texts, units)"
-            (tuiDroppableDragOverChange)="onDragOver($event)"
-        />
+        <ng-container *ngIf="!readOnly && !computedDisabled">
+            <input
+                *ngIf="inputFileTexts$ | async as texts"
+                #input
+                type="file"
+                tuiPreventDefault="mousedown"
+                class="native"
+                [id]="id"
+                [accept]="accept"
+                [multiple]="multiple"
+                [tuiFocusable]="focusable"
+                (change)="onFilesSelected(input, texts, units)"
+                (tuiHoveredChange)="onHovered($event)"
+                (tuiFocusedChange)="onFocused($event)"
+                (tuiPressedChange)="onPressed($event)"
+                (tuiDroppableDropped)="onDropped($event, texts, units)"
+                (tuiDroppableDragOverChange)="onDragOver($event)"
+            />
+        </ng-container>
     </label>
 </tui-wrapper>
 

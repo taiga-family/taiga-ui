@@ -12,7 +12,7 @@ import {Subject} from 'rxjs';
     encapsulation,
 })
 export class TuiSwipeExample2 {
-    readonly open$ = new Subject();
+    readonly open$ = new Subject<boolean>();
 
     toggle(open: boolean) {
         this.open$.next(open);

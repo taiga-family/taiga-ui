@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiContextWithImplicit, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
@@ -63,7 +64,7 @@ export class ExampleTuiLineChartComponent {
         LESS: example5Less,
     };
 
-    readonly value = [
+    readonly value: readonly TuiPoint[] = [
         [50, 50],
         [100, 75],
         [150, 50],
@@ -82,7 +83,7 @@ export class ExampleTuiLineChartComponent {
     ];
 
     readonly hintContentVariants: ReadonlyArray<
-        PolymorpheusContent<TuiContextWithImplicit<[number, number]>>
+        PolymorpheusContent<TuiContextWithImplicit<TuiPoint>>
     > = [
         '',
         ({$implicit}) =>

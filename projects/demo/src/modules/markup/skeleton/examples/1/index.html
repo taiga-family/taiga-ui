@@ -4,7 +4,7 @@
         type="button"
         size="xs"
         class="tui-space_right-2"
-        (click)="showSkelet()"
+        (click)="showSkeleton()"
     >
         Show/hide skeleton
     </button>
@@ -16,7 +16,7 @@
 <div
     class="container"
     [class.container_dark]="lightMode"
-    [tuiMode]="lightMode ? 'light' : null"
+    [tuiMode]="lightMode ? 'onDark' : null"
 >
     <div class="tui-row">
         <div class="tui-col_md-4 tui-col_stretch">
@@ -55,8 +55,7 @@
                             [class.tui-skeleton_text]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
                         >
-                            {{skeletonVisible ? '' : 'Some paragraph with
-                            information'}}
+                            {{ skeletonVisible ? '' : placeholder }}
                         </p>
                         <p
                             class="tui-island__paragraph tui-island__paragraph_link"

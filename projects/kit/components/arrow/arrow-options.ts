@@ -1,4 +1,6 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_ARROW} from './arrow.component';
@@ -33,8 +35,12 @@ export const tuiArrowOptionsProvider: (
 });
 
 export interface TuiArrowMode {
-    readonly interactive: PolymorpheusContent;
-    readonly disabled: PolymorpheusContent;
+    readonly interactive: PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+    >;
+    readonly disabled: PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+    >;
 }
 
 export const TUI_ARROW_MODE: InjectionToken<TuiArrowMode> = new InjectionToken(

@@ -19,6 +19,8 @@ import {
     isPresent,
     setNativeFocused,
     TUI_STRICT_MATCHER,
+    TuiActiveZoneDirective,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiPure,
@@ -31,6 +33,9 @@ import {
     TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeM,
+    TuiSizeS,
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
@@ -88,7 +93,9 @@ export class TuiComboBoxComponent<T>
     readonly searchChange = new EventEmitter<string | null>();
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent = '';
+    readonly datalist: PolymorpheusContent<
+        TuiContextWithImplicit<TuiActiveZoneDirective>
+    > = '';
 
     open = false;
 
@@ -106,7 +113,9 @@ export class TuiComboBoxComponent<T>
         super(control, changeDetectorRef);
     }
 
-    get arrow(): PolymorpheusContent {
+    get arrow(): PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+    > {
         return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 

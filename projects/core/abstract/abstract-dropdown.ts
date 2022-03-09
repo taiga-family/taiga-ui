@@ -11,6 +11,7 @@ import {
 import {
     TuiActiveZoneDirective,
     tuiDefaultProp,
+    TuiNativeFocusableElement,
     TuiPortalService,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -39,7 +40,7 @@ export abstract class AbstractTuiDropdown
 
     @Input('tuiDropdownHost')
     @tuiDefaultProp()
-    tuiDropdownHost: HTMLElement | null = null;
+    tuiDropdownHost: TuiNativeFocusableElement | HTMLElement | null = null;
 
     @Input('tuiDropdownMinHeight')
     @tuiDefaultProp()
@@ -91,7 +92,7 @@ export abstract class AbstractTuiDropdown
         return this.elementRef.nativeElement.getBoundingClientRect();
     }
 
-    get host(): HTMLElement {
+    get host(): TuiNativeFocusableElement | HTMLElement {
         return this.tuiDropdownHost || this.elementRef.nativeElement;
     }
 

@@ -35,6 +35,7 @@ import {
     TuiTextfieldCleanerDirective,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
+import {TextMaskConfig} from 'angular2-text-mask';
 import {Observable} from 'rxjs';
 
 import {INPUT_PHONE_PROVIDERS, SELECTION_STREAM} from './input-phone.providers';
@@ -84,7 +85,7 @@ export class TuiInputPhoneComponent
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
-    readonly textMaskOptions: TuiTextMaskOptions = {
+    readonly textMaskOptions: TextMaskConfig = {
         mask: value =>
             this.allowText && !this.value && isText(value) && value !== '+'
                 ? false
@@ -106,7 +107,7 @@ export class TuiInputPhoneComponent
                 : value.replace(/-$/, '');
         },
         guide: false,
-    };
+    } as TuiTextMaskOptions as unknown as TextMaskConfig;
 
     countryCode = '+7';
 
@@ -196,10 +197,12 @@ export class TuiInputPhoneComponent
         }
     }
 
-    onBackspace(event: Event & {target: HTMLInputElement}) {
+    onBackspace(event: KeyboardEvent) {
+        const target = event.target as HTMLInputElement;
+
         if (
-            (event.target.selectionStart || 0) <= this.nonRemovableLength &&
-            event.target.selectionStart === event.target.selectionEnd
+            (target.selectionStart || 0) <= this.nonRemovableLength &&
+            target.selectionStart === target.selectionEnd
         ) {
             event.preventDefault();
         }

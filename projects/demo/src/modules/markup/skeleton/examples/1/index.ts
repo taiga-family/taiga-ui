@@ -17,8 +17,9 @@ export class TuiSkeletonExample1 {
 
     skeletonVisible = false;
     lightMode = false;
+    placeholder = 'Some paragraph with information';
 
-    showSkelet() {
+    showSkeleton() {
         this.skeletonVisible = !this.skeletonVisible;
     }
 

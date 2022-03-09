@@ -42,7 +42,7 @@ export class TuiLineDaysChartHintDirective {
 
     @Input('tuiLineChartHint')
     @tuiDefaultProp()
-    hint: PolymorpheusContent<TuiContextWithImplicit<ReadonlyArray<TuiPoint>>> = '';
+    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = '';
 
     constructor(
         @Inject(TuiDestroyService) destroy$: TuiDestroyService,

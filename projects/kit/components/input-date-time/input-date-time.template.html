@@ -35,7 +35,7 @@
         ></tui-svg>
     </ng-template>
 
-    <ng-template #dropdown="polymorpheus" polymorpheus>
+    <ng-template #dropdown="polymorpheus" [polymorpheus]="type">
         <tui-calendar
             tuiPreventDefault="mousedown"
             automation-id="tui-input-date-time__calendar"

@@ -17,7 +17,7 @@ export abstract class AbstractTuiHint implements OnDestroy {
 
     content: PolymorpheusContent = '';
 
-    constructor(
+    protected constructor(
         protected readonly elementRef: ElementRef<HTMLElement>,
         protected readonly hintService: TuiHintService,
         readonly activeZone: TuiActiveZoneDirective | null,

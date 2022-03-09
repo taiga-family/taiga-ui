@@ -46,7 +46,7 @@ export class ExampleTuiIslandComponent {
 
     hoverable = false;
 
-    readonly textAlignVariants = ['left', 'right', 'center'];
+    readonly textAlignVariants = ['left', 'right', 'center'] as const;
 
     textAlign = this.textAlignVariants[0];
 

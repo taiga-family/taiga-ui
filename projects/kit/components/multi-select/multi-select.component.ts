@@ -21,6 +21,7 @@ import {
     isNativeFocused,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TuiActiveZoneDirective,
     TuiBooleanHandler,
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -39,6 +40,7 @@ import {
     TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiSizeL,
+    TuiSizeM,
     TuiSizeS,
     TuiSvgService,
     TuiTextfieldController,
@@ -119,7 +121,9 @@ export class TuiMultiSelectComponent<T>
     readonly searchChange = new EventEmitter<string | null>();
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent = '';
+    readonly datalist: PolymorpheusContent<
+        TuiContextWithImplicit<TuiActiveZoneDirective>
+    > = '';
 
     open = false;
 
@@ -149,7 +153,9 @@ export class TuiMultiSelectComponent<T>
         return this.controller.size;
     }
 
-    get arrow(): PolymorpheusContent {
+    get arrow(): PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+    > {
         return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 
@@ -218,7 +224,7 @@ export class TuiMultiSelectComponent<T>
 
     readonly disabledItemHandlerWrapper: TuiMapper<
         TuiBooleanHandler<T>,
-        TuiBooleanHandler<TuiStringifiableItem<T>>
+        TuiBooleanHandler<string | TuiStringifiableItem<T>>
     > = handler => stringifiable =>
         typeof stringifiable === 'string' || handler(stringifiable.item);
 

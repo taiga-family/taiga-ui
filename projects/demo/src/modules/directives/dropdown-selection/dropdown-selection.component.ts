@@ -43,7 +43,7 @@ export class ExampleTuiDropdownSelectionComponent {
 
     open = false;
 
-    position = 'selection';
+    position: 'selection' | 'word' | 'tag' = 'selection';
 
     tuiDropdownMinHeight = DEFAULT_MIN_HEIGHT;
 
