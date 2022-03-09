@@ -125,7 +125,7 @@ import {
     TuiInputExpireModule,
     TuiMoneyModule,
 } from '@taiga-ui/addon-commerce';
-import {TuiColorPickerModule, TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
+import {TuiColorPickerModule, TuiInputColorModule, TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
 import {
     TuiElasticStickyModule,
     TuiMobileCalendarModule,
@@ -194,6 +194,7 @@ import {AppComponent} from './app.component';
         TuiInputModule,
         TuiInputDateModule,
         TuiInputCardModule,
+        TuiInputColorModule,
         TuiInputCVCModule,
         TuiInputExpireModule,
         TuiInputCopyModule,
