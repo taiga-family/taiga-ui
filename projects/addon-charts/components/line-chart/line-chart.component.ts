@@ -96,7 +96,7 @@ export class TuiLineChartComponent {
         @Inject(Location) private readonly locationRef: Location,
         @Optional()
         @Inject(TuiLineChartHintDirective)
-        private readonly hintDirective: TuiLineChartHintDirective | null,
+        readonly hintDirective: TuiLineChartHintDirective | null,
     ) {
         this.autoIdString = idService.generate();
     }
@@ -132,18 +132,17 @@ export class TuiLineChartComponent {
             : this.d;
     }
 
-    get computedHint():
-        | PolymorpheusContent<TuiContextWithImplicit<TuiPoint>>
-        | PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> {
-        return this.hintDirective ? this.hintDirective.hint : this.hintContent;
-    }
-
     get isFocusable(): boolean {
         return !this.hintDirective && this.hasHints;
     }
 
     get hasHints(): boolean {
-        return !!this.xStringify || !!this.yStringify || !!this.computedHint;
+        return (
+            !!this.xStringify ||
+            !!this.yStringify ||
+            !!this.hintDirective?.hint ||
+            !!this.hintContent
+        );
     }
 
     @HostListener('mouseleave')
@@ -171,12 +170,12 @@ export class TuiLineChartComponent {
         return `${this.autoIdString}_${index}`;
     }
 
-    getContentContext(
-        $implicit: TuiPoint,
-    ): TuiContextWithImplicit<TuiPoint> | TuiContextWithImplicit<readonly TuiPoint[]> {
-        return this.hintDirective
-            ? this.hintDirective.getContext(this.value.indexOf($implicit), this)
-            : {$implicit};
+    getContentContext($implicit: TuiPoint): TuiContextWithImplicit<readonly TuiPoint[]> {
+        return (
+            this.hintDirective?.getContext(this.value.indexOf($implicit), this) || {
+                $implicit: [],
+            }
+        );
     }
 
     getHovered(hovered: number): TuiPoint | null {
