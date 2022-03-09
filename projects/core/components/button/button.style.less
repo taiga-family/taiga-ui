@@ -26,12 +26,12 @@
         pointer-events: none;
     }
 
-    &[tuiIconButton] .left,
-    &[tuiIconButton] .right {
+    &[tuiIconButton] .t-left,
+    &[tuiIconButton] .t-right {
         margin: 0;
     }
 
-    &[data-tui-host-shape='rounded'] {
+    &[data-shape='rounded'] {
         border-radius: 6.25rem;
     }
 
@@ -39,7 +39,7 @@
         height: var(--tui-height-xs);
         font-weight: normal;
 
-        &[data-tui-host-shape='square'],
+        &[data-shape='square'],
         &[tuiIconButton] {
             height: var(--tui-height-xs);
             width: var(--tui-height-xs);
@@ -50,7 +50,7 @@
         height: var(--tui-height-s);
         font-weight: normal;
 
-        &[data-tui-host-shape='square'],
+        &[data-shape='square'],
         &[tuiIconButton] {
             height: var(--tui-height-s);
             width: var(--tui-height-s);
@@ -61,7 +61,7 @@
         height: var(--tui-height-m);
         font-size: @font-size-large;
 
-        &[data-tui-host-shape='square'],
+        &[data-shape='square'],
         &[tuiIconButton] {
             height: var(--tui-height-m);
             width: var(--tui-height-m);
@@ -72,7 +72,7 @@
         height: var(--tui-height-l);
         font-size: @font-size-large;
 
-        &[data-tui-host-shape='square'],
+        &[data-shape='square'],
         &[tuiIconButton] {
             height: var(--tui-height-l);
             width: var(--tui-height-l);
@@ -83,7 +83,7 @@
         height: 3.75rem;
         font-size: @font-size-large;
 
-        &[data-tui-host-shape='square'],
+        &[data-shape='square'],
         &[tuiIconButton] {
             height: 3.75rem;
             width: 3.75rem;
@@ -91,20 +91,20 @@
     }
 }
 
-.loader {
+.t-loader {
     .fullsize();
     cursor: default;
 }
 
-.left {
+.t-left {
     margin: 0 @icon-margin 0 (-@icon-margin / 2);
 }
 
-.right {
-    margin: 0 (-@icon-margin / 2) 0 @icon-margin;
+.t-right {
+    margin: 0 -@icon-margin 0 (@icon-margin / 2);
 }
 
-.icon {
+.t-icon {
     display: block;
 
     :host[data-size='s'] &,
@@ -114,9 +114,9 @@
     }
 }
 
-.left,
-.right,
-.icon {
+.t-left,
+.t-right,
+.t-icon {
     :host[tuiIconButton] & {
         display: flex;
         width: 100%;
@@ -126,7 +126,7 @@
     }
 }
 
-.wrapper {
+.t-wrapper {
     .createStackingContext();
     box-sizing: border-box;
     cursor: pointer;
@@ -151,13 +151,13 @@
         padding: 0 @padding-xl;
     }
 
-    :host[data-tui-host-shape='square'] &,
+    :host[data-shape='square'] &,
     :host[tuiIconButton] & {
         padding: 0;
     }
 }
 
-.content {
+.t-content {
     display: flex;
     height: 100%;
     align-items: center;
