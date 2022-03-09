@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[792],{PaWf:function(n,s,a){"use strict";a.r(s),s.default='<label class="label">\n    <span class="text">From custom label component with</span>\n    <tui-svg src="tuiIconHeart"></tui-svg>\n</label>\n'}}]);

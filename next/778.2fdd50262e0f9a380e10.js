@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[778],{oCOm:function(n,t,o){"use strict";o.r(t),t.default='<p i18n>\n    This notification will be removed after router change (see component sample)\n</p>\n<button tuiButton type="button" size="m" (click)="showNotification()">\n    Show\n</button>\n'}}]);
