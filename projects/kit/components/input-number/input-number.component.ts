@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ContentChild,
     forwardRef,
     HostListener,
     Inject,
@@ -35,6 +36,7 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
+import {PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
 import {TextMaskConfig} from 'angular2-text-mask';
 
 const DEFAULT_MAX_LENGTH = 18;
@@ -87,6 +89,9 @@ export class TuiInputNumberComponent
     @tuiDefaultProp()
     postfix = '';
 
+    @ContentChild(PolymorpheusOutletComponent)
+    readonly polymorpheusValueContent?: unknown;
+
     constructor(
         @Optional()
         @Self()
@@ -129,24 +134,7 @@ export class TuiInputNumberComponent
     }
 
     get formattedValue(): string {
-        const value = this.value || 0;
-        const absValue = Math.abs(value);
-        const hasFraction = absValue % 1 > 0;
-        let limit = this.decimal === 'always' || hasFraction ? this.precision : 0;
-
-        const fraction = hasFraction ? getFractionPartPadded(value, this.precision) : '';
-
-        if (this.focused && this.decimal !== 'always') {
-            limit = fraction.length;
-        }
-
-        return formatNumber(
-            value,
-            limit,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-            this.numberFormat.zeroPadding,
-        );
+        return this.getFormattedValue(this.value || 0);
     }
 
     get computedValue(): string {
@@ -281,6 +269,26 @@ export class TuiInputNumberComponent
         this.updatePressed(pressed);
     }
 
+    getFormattedValue(value: number): string {
+        const absValue = Math.abs(value);
+        const hasFraction = absValue % 1 > 0;
+        let limit = this.decimal === 'always' || hasFraction ? this.precision : 0;
+
+        const fraction = hasFraction ? getFractionPartPadded(value, this.precision) : '';
+
+        if (this.focused && this.decimal !== 'always') {
+            limit = fraction.length;
+        }
+
+        return formatNumber(
+            value,
+            limit,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+            this.numberFormat.zeroPadding,
+        );
+    }
+
     private get isNativeValueNotFinished(): boolean {
         const nativeNumberValue = this.nativeNumberValue;
 
@@ -289,8 +297,17 @@ export class TuiInputNumberComponent
             : nativeNumberValue < this.min;
     }
 
-    private get nativeValue(): string {
+    get nativeValue(): string {
         return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
+    }
+
+    set nativeValue(value: string) {
+        if (!this.primitiveTextfield || !this.nativeFocusableElement) {
+            return;
+        }
+
+        this.primitiveTextfield.value = value;
+        this.nativeFocusableElement.value = value;
     }
 
     private get nativeNumberValue(): number {
@@ -299,15 +316,6 @@ export class TuiInputNumberComponent
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
         );
-    }
-
-    private set nativeValue(value: string) {
-        if (!this.primitiveTextfield || !this.nativeFocusableElement) {
-            return;
-        }
-
-        this.primitiveTextfield.value = value;
-        this.nativeFocusableElement.value = value;
     }
 
     private clear() {

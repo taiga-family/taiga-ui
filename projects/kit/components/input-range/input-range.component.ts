@@ -27,6 +27,7 @@ import {
     NumberFormatSettings,
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_APPEARANCE,
+    TuiBrightness,
     TuiModeDirective,
 } from '@taiga-ui/core';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
@@ -97,6 +98,11 @@ export class TuiInputRangeComponent
     @HostBinding('class._max-label')
     get showMaxLabel(): boolean {
         return !this.focusedRight && !!this.maxLabel && this.value[1] === this.max;
+    }
+
+    @HostBinding('attr.data-mode')
+    get hostMode(): TuiBrightness | null {
+        return this.modeDirective && this.modeDirective.mode;
     }
 
     get inputValueLeft(): string {

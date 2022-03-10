@@ -2,32 +2,35 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
+import {TuiRootModule} from '@taiga-ui/core';
 import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
 
 import {TuiInputSliderComponent} from '../input-slider.component';
 import {TuiInputSliderModule} from '../input-slider.module';
 
-describe('InputSlider', () => {
+describe('InputSlider[legacy props]', () => {
     @Component({
         template: `
-            <tui-input-slider
-                *ngIf="default"
-                max="10"
-                [formControl]="control"
-            ></tui-input-slider>
-            <tui-input-slider
-                *ngIf="!default"
-                [formControl]="control"
-                [max]="max"
-                [min]="min"
-                [steps]="steps"
-                [minLabel]="minLabel"
-                [maxLabel]="maxLabel"
-                [pluralize]="pluralize"
-                [readOnly]="readOnly"
-                [secondary]="secondary"
-                [quantum]="quantum"
-            ></tui-input-slider>
+            <tui-root>
+                <tui-input-slider
+                    *ngIf="default"
+                    max="10"
+                    [formControl]="control"
+                ></tui-input-slider>
+                <tui-input-slider
+                    *ngIf="!default"
+                    [formControl]="control"
+                    [max]="max"
+                    [min]="min"
+                    [steps]="steps"
+                    [minLabel]="minLabel"
+                    [maxLabel]="maxLabel"
+                    [pluralize]="pluralize"
+                    [readOnly]="readOnly"
+                    [secondary]="secondary"
+                    [quantum]="quantum"
+                ></tui-input-slider>
+            </tui-root>
         `,
     })
     class TestComponent {
@@ -55,6 +58,18 @@ describe('InputSlider', () => {
         get prefix() {
             return 'tui-input-slider__';
         },
+
+        get customContentAutoId() {
+            return 'tui-primitive-textfield__custom-content';
+        },
+
+        get valueContentAutoId() {
+            return `${this.prefix}value-content`;
+        },
+
+        get valueDecorationAutoId() {
+            return 'tui-primitive-textfield__value-decoration';
+        },
     };
 
     function aid(aid: string): HTMLElement & {textContent: string} {
@@ -63,7 +78,7 @@ describe('InputSlider', () => {
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
-            imports: [TuiInputSliderModule, ReactiveFormsModule],
+            imports: [TuiRootModule, TuiInputSliderModule, ReactiveFormsModule],
             declarations: [TestComponent],
         });
     });
@@ -73,7 +88,7 @@ describe('InputSlider', () => {
         pageObject = new PageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        inputPO = new NativeInputPO(fixture, `${testContext.prefix}native`);
+        inputPO = new NativeInputPO(fixture, 'tui-primitive-textfield__native-input');
     });
 
     describe('Default values', () => {
@@ -86,89 +101,87 @@ describe('InputSlider', () => {
             expect(testComponent.component.min).toBe(0);
         });
 
-        it('minLabel is missing', () => {
+        it('custom valueContent is missing (value is min)', () => {
             expect(
-                pageObject.getByAutomationId(`${testContext.prefix}min-label`),
+                pageObject.getByAutomationId(testContext.valueContentAutoId),
             ).toBeNull();
         });
 
-        it('maxLabel is missing', () => {
+        it('valueContent is missing (value is max)', () => {
             testComponent.control.setValue(10);
             fixture.detectChanges();
 
             expect(
-                pageObject.getByAutomationId(`${testContext.prefix}min-label`),
+                pageObject.getByAutomationId(testContext.valueContentAutoId),
             ).toBeNull();
         });
 
-        it('Plural signature missing', () => {
+        it('Plural signature missing (legacy prop)', () => {
             expect(
-                pageObject.getByAutomationId(`${testContext.prefix}pluralize`),
-            ).toBeNull();
+                pageObject
+                    .getByAutomationId(testContext.valueDecorationAutoId)
+                    ?.nativeElement.textContent.trim(),
+            ).toBe('0');
         });
 
         it('There is no label on the right', () => {
-            expect(aid(`${testContext.prefix}secondary`).textContent.trim()).toBe('');
+            expect(aid(testContext.customContentAutoId).textContent.trim()).toBe('');
         });
     });
 
     describe('Labels', () => {
-        it('The label on the right is shown', () => {
-            expect(aid(`${testContext.prefix}secondary`).textContent.trim()).toBe(
-                testComponent.secondary,
-            );
+        it('valueContent not shown (max > value > min)', () => {
+            expect(aid(testContext.valueContentAutoId).textContent.trim()).toBe('');
         });
 
-        it('Plural signature is present', () => {
-            expect(aid(`${testContext.prefix}pluralize`).textContent.trim()).toBe('лет');
-        });
-
-        it('minLabel not shown at start> min', () => {
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}min-label`),
-            ).toBeNull();
-        });
-
-        it('minLabel is shown', () => {
-            testComponent.control.setValue(-10);
-            fixture.detectChanges();
-
-            expect(aid(`${testContext.prefix}min-label`).textContent.trim()).toBe(
-                testComponent.minLabel,
-            );
-        });
-
-        it('minLabel missing on focus', () => {
+        it('valueContent is missing on focus (value = min)', () => {
             testComponent.control.setValue(-10);
             inputPO.focus();
 
             expect(
-                pageObject.getByAutomationId(`${testContext.prefix}min-label`),
+                pageObject.getByAutomationId(testContext.valueContentAutoId),
             ).toBeNull();
         });
 
-        it('maxLabel not shown when end < max', () => {
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}min-label`),
-            ).toBeNull();
-        });
-
-        it('maxLabel is shown', () => {
-            testComponent.control.setValue(10);
-            fixture.detectChanges();
-
-            expect(aid(`${testContext.prefix}max-label`).textContent.trim()).toBe(
-                testComponent.maxLabel,
-            );
-        });
-
-        it('maxLabel missing on focus', () => {
+        it('valueContent missing on focus (value = max)', () => {
             testComponent.control.setValue(10);
             inputPO.focus();
 
             expect(
-                pageObject.getByAutomationId(`${testContext.prefix}max-label`),
+                pageObject.getByAutomationId(testContext.valueContentAutoId),
             ).toBeNull();
+        });
+
+        describe('legacy props checks', () => {
+            it('Plural signature is present (legacy `pluralize` prop)', () => {
+                expect(aid(testContext.valueDecorationAutoId).textContent.trim()).toMatch(
+                    /0\s+лет/,
+                );
+            });
+
+            it('minLabel is shown (legacy prop)', () => {
+                testComponent.control.setValue(-10);
+                fixture.detectChanges();
+
+                expect(aid(testContext.valueContentAutoId).textContent.trim()).toBe(
+                    testComponent.minLabel,
+                );
+            });
+
+            it('The label on the right is shown (legacy `secondary` prop)', () => {
+                expect(aid(testContext.customContentAutoId).textContent.trim()).toBe(
+                    testComponent.secondary,
+                );
+            });
+
+            it('maxLabel is shown (legacy prop)', () => {
+                testComponent.control.setValue(10);
+                fixture.detectChanges();
+
+                expect(aid(testContext.valueContentAutoId).textContent.trim()).toBe(
+                    testComponent.maxLabel,
+                );
+            });
         });
     });
 
@@ -179,8 +192,12 @@ describe('InputSlider', () => {
             expect(testComponent.control.value).toBe(5);
         });
 
-        it('Rounds the input field value to the nearest quantum when focus is lost', () => {
+        it('Rounds the input field value to the nearest quantum when focus is lost', async () => {
             inputPO.sendTextAndBlur('7');
+
+            await fixture.whenStable();
+            fixture.detectChanges();
+            await fixture.whenStable();
 
             expect(inputPO.value).toBe('5');
         });
@@ -203,9 +220,13 @@ describe('InputSlider', () => {
         });
     });
 
-    it(`Doesn't change value when content is removed`, () => {
+    it(`Doesn't change value when content is removed`, async () => {
         inputPO.sendTextAndBlur('5');
+        await fixture.whenStable();
+
         inputPO.sendTextAndBlur('');
+        fixture.detectChanges();
+        await fixture.whenStable();
 
         expect(testComponent.control.value).toBe(5);
         expect(inputPO.value).toBe('5');
@@ -220,7 +241,7 @@ describe('InputSlider', () => {
             fixture.detectChanges();
         });
 
-        describe('Quantum', () => {
+        describe('Quantum (Steps were not set)', () => {
             it('Up arrow increases the value by a quantum', () => {
                 inputPO.sendKeydown('arrowUp');
 
@@ -260,8 +281,11 @@ describe('InputSlider', () => {
                 fixture.detectChanges();
             });
 
-            it('Up arrow increments the value', () => {
+            it('Up arrow increments the value', async () => {
                 inputPO.sendKeydown('arrowUp');
+
+                fixture.detectChanges();
+                await fixture.whenStable();
 
                 expect(testComponent.control.value).toBe(8);
             });

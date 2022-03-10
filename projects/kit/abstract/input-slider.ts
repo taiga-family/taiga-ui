@@ -11,10 +11,8 @@ import {
 import {
     maskedNumberStringToNumber,
     NumberFormatSettings,
-    TuiBrightness,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
-    TuiModeDirective,
     TuiPluralize,
     tuiPluralizeToICU,
     TuiSizeL,
@@ -33,13 +31,13 @@ export function quantumAssertion(quantum: number): boolean {
 
 /**
  * @internal
+ * @deprecated TODO delete me after `InputSlider` and `InputRange` stop using it
  */
 @Directive()
 export abstract class AbstractTuiInputSlider<T>
     extends AbstractTuiControl<T>
     implements TuiWithOptionalMinMax<number>
 {
-    protected abstract readonly modeDirective: TuiModeDirective | null;
     protected abstract readonly numberFormat: NumberFormatSettings;
 
     @Input()
@@ -110,9 +108,13 @@ export abstract class AbstractTuiInputSlider<T>
     pluralizeMap: Record<string, string> | null = null;
     /** @deprecated TODO remove in v3.0 */
     segmentsPluralizeMap: Record<string, string> | null = null;
-
-    abstract get showMinLabel(): boolean;
-    abstract get showMaxLabel(): boolean;
+    /** @deprecated TODO remove in v3.0 */
+    readonly pluralizeMapFallback = {
+        one: '',
+        few: '',
+        many: '',
+        other: '',
+    };
 
     /** @deprecated TODO remove in v3.0 */
     @tuiPure
@@ -173,11 +175,6 @@ export abstract class AbstractTuiInputSlider<T>
 
     get computedKeySteps(): TuiKeySteps {
         return this.computePureKeySteps(this.keySteps, this.min, this.max);
-    }
-
-    @HostBinding('attr.data-mode')
-    get hostMode(): TuiBrightness | null {
-        return this.modeDirective && this.modeDirective.mode;
     }
 
     onHovered(hovered: boolean) {
