@@ -47,9 +47,10 @@ describe("Editor's toolbar", () => {
 
     it('has the possibility to add custom tool', () => {
         cy.get('#custom-tool').findByAutomationId('tui-doc-example').as('wrapper');
-        cy.get('@wrapper').find('[contenteditable]').as('input');
 
         cy.get('@wrapper').scrollIntoView().should('be.visible');
+
+        cy.get('@wrapper').find('[contenteditable]').as('input');
 
         cy.get('.smiles').should('not.exist');
         cy.get('@input').should('not.be.focused');
@@ -89,6 +90,8 @@ describe("Editor's toolbar", () => {
 
     it('make a html table by 2x2', () => {
         cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+        cy.get('@wrapper').scrollIntoView().should('be.visible');
+
         cy.get('@wrapper').find('[contenteditable]').as('input');
 
         cy.get('@input').scrollIntoView().type('\n').should('be.visible');
@@ -120,6 +123,8 @@ describe("Editor's toolbar", () => {
 
     it('set table without style inheritance', () => {
         cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+        cy.get('@wrapper').scrollIntoView().should('be.visible');
+
         cy.get('@wrapper').find('[contenteditable]').as('input');
 
         cy.get('@input')
@@ -168,6 +173,7 @@ describe("Editor's toolbar", () => {
     describe('has keyboard horizontal navigation between tool-buttons', () => {
         it('focuses nearest left/right active tool on "Arrow Right"/"Arrow Left"', () => {
             cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+            cy.get('@wrapper').scrollIntoView().should('be.visible');
             cy.get('@wrapper')
                 .find('button[icon="tuiIconAlignLeftLarge"]')
                 .as('initialTool');
@@ -191,6 +197,7 @@ describe("Editor's toolbar", () => {
 
         it('skips disabled tools and selects next tool after disabled', () => {
             cy.get('#basic').findByAutomationId('tui-doc-example').as('wrapper');
+            cy.get('@wrapper').scrollIntoView().should('be.visible');
             cy.get('@wrapper')
                 .find('button[icon="tuiIconUndoLarge"]')
                 .as('leftActiveTool');
@@ -219,6 +226,7 @@ describe("Editor's toolbar", () => {
 
         it('works with custom tools', () => {
             cy.get('#custom-tool').findByAutomationId('tui-doc-example').as('wrapper');
+            cy.get('@wrapper').scrollIntoView().should('be.visible');
             cy.get('@wrapper')
                 .find('button[icon="tuiIconUndoLarge"]')
                 .as('leftBuiltInTool');

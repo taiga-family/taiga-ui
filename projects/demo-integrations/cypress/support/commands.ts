@@ -24,7 +24,14 @@ declare global {
 
 Cypress.Commands.add('getByAutomationId', id => cy.get(`[automation-id=${id}]`));
 Cypress.Commands.add('findByAutomationId', {prevSubject: true}, (subject: any, id) =>
-    subject.find(`[automation-id=${id}]`),
+    /**
+     * `subject` is just `jQuery`-element which has method `.find()`.
+     * This method doesn't have {@link https://docs.cypress.io/guides/core-concepts/retry-ability retry-ability}!
+     * ___
+     * `cy.wrap(subject)` is a `$Chainer`-element (cypress built-in implementation) which also has method `.find()`.
+     * This method has retry-ability!
+     */
+    cy.wrap(subject).find(`[automation-id=${id}]`),
 );
 Cypress.Commands.add('goToDemoPage', goToDemoPage);
 Cypress.Commands.add('hideHeader', hideHeader);

@@ -1,6 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     defaultEditorExtensions,
     defaultEditorTools,
@@ -8,21 +9,6 @@ import {
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
 
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as example2Html} from '!!raw-loader!./examples/2/index.html';
-import {default as example2Less} from '!!raw-loader!./examples/2/index.less';
-import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
-import {default as exampleSmilesToolComponent} from '!!raw-loader!./examples/2/smiles-tool/smiles-tool.component.ts';
-import {default as exampleSmilesToolModule} from '!!raw-loader!./examples/2/smiles-tool/smiles-tool.module.ts';
-import {default as exampleSmilesToolStyles} from '!!raw-loader!./examples/2/smiles-tool/smiles-tool.styles.less';
-import {default as exampleSmilesToolTemplate} from '!!raw-loader!./examples/2/smiles-tool/smiles-tool.template.html';
-import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
-import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
-import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
@@ -52,26 +38,34 @@ export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
         '!!raw-loader!./examples/import/editor-options-token.md'
     );
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
-        LESS: example1Less,
+    readonly example1: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/1/index'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
+        LESS: import('!!raw-loader!./examples/1/index.less'),
     };
 
-    readonly example2 = {
-        HTML: example2Html,
-        TypeScript: example2Ts,
-        LESS: example2Less,
-        'smiles-tool/smiles-tool.component.ts': exampleSmilesToolComponent,
-        'smiles-tool/smiles-tool.template.html': exampleSmilesToolTemplate,
-        'smiles-tool/smiles-tool.styles.less': exampleSmilesToolStyles,
-        'smiles-tool/smiles-tool.module.ts': exampleSmilesToolModule,
+    readonly example2: TuiDocExample = {
+        HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import('!!raw-loader!./examples/2/index'),
+        LESS: import('!!raw-loader!./examples/2/index.less'),
+        'smiles-tool/smiles-tool.component.ts': import(
+            '!!raw-loader!./examples/2/smiles-tool/smiles-tool.component.ts'
+        ),
+        'smiles-tool/smiles-tool.template.html': import(
+            '!!raw-loader!./examples/2/smiles-tool/smiles-tool.template.html'
+        ),
+        'smiles-tool/smiles-tool.styles.less': import(
+            '!!raw-loader!./examples/2/smiles-tool/smiles-tool.styles.less'
+        ),
+        'smiles-tool/smiles-tool.module.ts': import(
+            '!!raw-loader!./examples/2/smiles-tool/smiles-tool.module.ts'
+        ),
     };
 
-    readonly example3: FrontEndExample = {
-        TypeScript: example3Ts,
-        HTML: example3Html,
-        LESS: example3Less,
+    readonly example3: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/3/index'),
+        HTML: import('!!raw-loader!./examples/3/index.html'),
+        LESS: import('!!raw-loader!./examples/3/index.less'),
     };
 
     readonly control = new FormControl();
