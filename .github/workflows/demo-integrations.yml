@@ -62,6 +62,9 @@ jobs:
       - name: Ignore running parallel Xvfb servers
         run: Xvfb :99 &
 
+      - name: Health check of taiga-ui.dev
+        run: curl -X GET -I -f "https://taiga-ui.dev/next"
+
       - name: Build demo/local application
         run: npm run build:demo
 
