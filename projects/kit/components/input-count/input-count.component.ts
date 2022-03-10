@@ -159,7 +159,7 @@ export class TuiInputCountComponent
     }
 
     get computedValue(): string {
-        return this.formatNumber(this.value);
+        return this.focused ? this.nativeValue : this.formatNumber(this.value);
     }
 
     get minusButtonDisabled(): boolean {
