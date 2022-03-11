@@ -10,19 +10,22 @@ import {CustomPortalService} from './portal/custom-portal.service';
     changeDetection,
 })
 export class TuiPortalsExample1 {
-    template: EmbeddedViewRef<{}> | null = null;
+    templates: EmbeddedViewRef<{}>[] = [];
 
     constructor(
         @Inject(CustomPortalService)
         private readonly customPortalServce: CustomPortalService,
     ) {}
 
-    toggleTemplate(template: TemplateRef<any>) {
-        if (this.template) {
-            this.customPortalServce.removeTemplate(this.template);
-            this.template = null;
-        } else {
-            this.template = this.customPortalServce.addTemplate(template);
+    addTemplate(template: TemplateRef<any>) {
+        this.templates.push(this.customPortalServce.addTemplate(template));
+    }
+
+    removeTemplate() {
+        const viewRef = this.templates.pop();
+
+        if (viewRef) {
+            this.customPortalServce.removeTemplate(viewRef);
         }
     }
 }

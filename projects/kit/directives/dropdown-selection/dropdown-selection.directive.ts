@@ -24,8 +24,8 @@ import {
     TuiActiveZoneDirective,
     TuiBooleanHandler,
     TuiDestroyService,
-    TuiDropdownPortalService,
     TuiParentsScrollService,
+    TuiPortalService,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {
@@ -91,7 +91,7 @@ export class TuiDropdownSelectionDirective
         @Inject(ComponentFactoryResolver)
         componentFactoryResolver: ComponentFactoryResolver,
         @Inject(Injector) injector: Injector,
-        @Inject(TuiDropdownPortalService) portalService: TuiDropdownPortalService,
+        @Inject(TuiPortalService) portalService: TuiPortalService,
         @Host() @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
         @Inject(TuiActiveZoneDirective)
         @Optional()

@@ -9,7 +9,7 @@ import {
     OnDestroy,
     TemplateRef,
 } from '@angular/core';
-import {TuiDropdownPortalService} from '@taiga-ui/cdk';
+import {TuiPortalService} from '@taiga-ui/cdk';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 
@@ -41,8 +41,8 @@ export class TuiSidebarDirective extends PolymorpheusTemplate<{}> implements OnD
         @Inject(Injector) private readonly injector: Injector,
         @Inject(ComponentFactoryResolver)
         private readonly componentFactoryResolver: ComponentFactoryResolver,
-        @Inject(TuiDropdownPortalService)
-        private readonly portalService: TuiDropdownPortalService,
+        @Inject(TuiPortalService)
+        private readonly portalService: TuiPortalService,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(content, changeDetectorRef);

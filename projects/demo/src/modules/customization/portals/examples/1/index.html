@@ -1,5 +1,21 @@
-<button tuiButton size="s" (click)="toggleTemplate(someTemplate)">
-    {{template ? 'Remove' : 'Add'}} template
+<button
+    tuiButton
+    size="s"
+    icon="tuiIconPlus"
+    (click)="addTemplate(someTemplate)"
+>
+    Add
+</button>
+
+<button
+    tuiButton
+    size="s"
+    appearance="secondary"
+    icon="tuiIconTrash"
+    class="tui-space_left-3"
+    (click)="removeTemplate()"
+>
+    Remove
 </button>
 
 <ng-template #someTemplate>

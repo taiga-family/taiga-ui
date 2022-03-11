@@ -8,6 +8,10 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class PortalsComponent {
+    host = import('!!raw-loader!./examples/setup/create-host.md');
+    service = import('!!raw-loader!./examples/setup/create-service.md');
+    insert = import('!!raw-loader!./examples/setup/insert-host.md');
+
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),
         HTML: import('!!raw-loader!./examples/1/index.html'),

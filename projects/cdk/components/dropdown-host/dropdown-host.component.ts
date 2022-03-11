@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
-import {AbstractTuiPortalHostComponent} from '@taiga-ui/cdk/abstract';
-import {AbstractTuiPortalService} from '@taiga-ui/cdk/abstract/portal-service';
-
-import {TuiDropdownPortalService} from './dropdown-portal.service';
+import {
+    AbstractTuiPortalHostComponent,
+    AbstractTuiPortalService,
+} from '@taiga-ui/cdk/abstract';
+import {TuiPortalService} from '@taiga-ui/cdk/components/portal-host';
 
 const BLANK_CLIENT_RECT: ClientRect = {
     bottom: 0,
@@ -21,17 +22,16 @@ const BLANK_CLIENT_RECT: ClientRect = {
     templateUrl: './dropdown-host.template.html',
     styleUrls: ['./dropdown-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {provide: AbstractTuiPortalService, useExisting: TuiDropdownPortalService},
-    ],
+    providers: [{provide: AbstractTuiPortalService, useExisting: TuiPortalService}],
 })
 export class TuiDropdownHostComponent extends AbstractTuiPortalHostComponent {
     @ViewChild('positionFixedOffset')
     private readonly positionFixedOffsetRef?: ElementRef<HTMLDivElement>;
 
     fixedPositionOffset(): ClientRect {
-        return this.positionFixedOffsetRef
-            ? this.positionFixedOffsetRef.nativeElement.getBoundingClientRect()
-            : BLANK_CLIENT_RECT;
+        return (
+            this.positionFixedOffsetRef?.nativeElement.getBoundingClientRect() ||
+            BLANK_CLIENT_RECT
+        );
     }
 }
