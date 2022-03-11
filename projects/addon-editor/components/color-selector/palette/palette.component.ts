@@ -16,7 +16,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 export class TuiPaletteComponent {
     @Input()
     @tuiDefaultProp()
-    colors: Map<string, string> = new Map<string, string>();
+    colors: ReadonlyMap<string, string> = new Map<string, string>();
 
     @Output()
     readonly selectedColor = new EventEmitter<string>();

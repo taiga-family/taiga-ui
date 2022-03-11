@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiColorSelectorModule} from '@taiga-ui/addon-editor/components/color-selector';
+import {TuiPaletteModule} from '@taiga-ui/addon-editor/components/color-selector';
 import {TuiActiveZoneModule, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -16,7 +16,7 @@ import {TuiTableCellColorComponent} from './table-cell-color.component';
     imports: [
         CommonModule,
         TuiHostedDropdownModule,
-        TuiColorSelectorModule,
+        TuiPaletteModule,
         TuiButtonModule,
         TuiHintModule,
         TuiDescribedByModule,
