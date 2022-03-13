@@ -115,6 +115,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'notifications',
+        loadChildren: () =>
+            import(`../customization/notifications/notifications.module`).then(
+                m => m.NotificationsModule,
+            ),
+        data: {
+            title: `Notifications`,
+        },
+    },
+    {
         path: 'icon-set',
         loadChildren: () =>
             import(`../customization/icon-set/icon-set.module`).then(

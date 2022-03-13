@@ -1,0 +1,17 @@
+<ng-container *tuiLet="service.items$ | async as items">
+    <div
+        *ngIf="items.length"
+        class="t-wrapper"
+        [@tuiFadeInList]="getAnimation(items.length)"
+        [@tuiHeightCollapseList]="getAnimation(items.length)"
+        [@tuiSlideInRightList]="getAnimation(items.length)"
+    >
+        <section
+            *ngFor="let item of items"
+            polymorpheus-outlet
+            class="t-alert"
+            [context]="item"
+            [content]="service.itemComponent"
+        ></section>
+    </div>
+</ng-container>

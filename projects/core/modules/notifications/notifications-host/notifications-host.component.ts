@@ -1,34 +1,23 @@
-import {AnimationOptions} from '@angular/animations';
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {tuiPure} from '@taiga-ui/cdk';
-import {
-    tuiFadeInList,
-    tuiHeightCollapseList,
-    tuiSlideInRightList,
-} from '@taiga-ui/core/animations';
-import {TuiAnimationOptions} from '@taiga-ui/core/interfaces';
-import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
+import {ChangeDetectionStrategy, Component, Inject, Injector} from '@angular/core';
+import {TuiNotificationGroupService} from '@taiga-ui/core/interfaces';
 
-import {TuiNotificationsService} from '../notifications.service';
+import {TUI_NOTIFICATIONS_GROUP} from '../notifications-group-token';
 
 @Component({
     selector: 'tui-notifications-host',
     templateUrl: './notifications-host.template.html',
-    styleUrls: ['./notifications-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiFadeInList, tuiSlideInRightList, tuiHeightCollapseList],
 })
 export class TuiNotificationsHostComponent {
     constructor(
-        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
-        @Inject(TuiNotificationsService) readonly service: TuiNotificationsService,
-    ) {}
+        @Inject(TUI_NOTIFICATIONS_GROUP)
+        readonly groups: TuiNotificationGroupService[],
+        private injector: Injector,
+    ) {
+        console.log(groups);
+    }
 
-    @tuiPure
-    getAnimation(value: number): TuiAnimationOptions {
-        return {
-            value: String(value),
-            ...this.options,
-        };
+    get() {
+        console.log(this.injector.get(TUI_NOTIFICATIONS_GROUP));
     }
 }

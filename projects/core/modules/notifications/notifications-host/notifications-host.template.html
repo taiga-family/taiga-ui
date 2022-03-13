@@ -1,16 +1,9 @@
-<ng-container *tuiLet="service.items$ | async as items">
-    <div
-        *ngIf="items.length"
-        class="t-wrapper"
-        [@tuiFadeInList]="getAnimation(items.length)"
-        [@tuiHeightCollapseList]="getAnimation(items.length)"
-        [@tuiSlideInRightList]="getAnimation(items.length)"
-    >
-        <tui-notification-alert
-            *ngFor="let item of items"
-            role="alert"
-            class="t-alert"
-            [item]="item"
-        ></tui-notification-alert>
-    </div>
-</ng-container>
+<section *ngFor="let service of groups" class="t-notification-group">
+    <section
+        polymorpheus-outlet
+        [context]="service"
+        [content]="service.groupComponent"
+    ></section>
+</section>
+
+{{get()}}

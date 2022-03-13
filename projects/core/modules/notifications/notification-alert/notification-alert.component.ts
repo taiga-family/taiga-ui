@@ -15,7 +15,7 @@ import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';
 
 import {TuiNotificationContentContext} from '../notification-content-context';
-import {NotificationAlert} from './Notification-alert';
+import {NotificationAlert} from './notification-alert';
 
 @Component({
     selector: 'tui-notification-alert',
