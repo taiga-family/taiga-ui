@@ -58,11 +58,11 @@ export class TuiButtonComponent
 
     @Input()
     @tuiDefaultProp()
-    icon: PolymorpheusContent = '';
+    icon: PolymorpheusContent | keyof typeof import('@taiga-ui/icons') = '';
 
     @Input()
     @tuiDefaultProp()
-    iconRight: PolymorpheusContent = '';
+    iconRight: PolymorpheusContent | keyof typeof import('@taiga-ui/icons') = '';
 
     @Input()
     @HostBinding('attr.data-shape')

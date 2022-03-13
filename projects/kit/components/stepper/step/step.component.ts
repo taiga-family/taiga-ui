@@ -33,7 +33,7 @@ export class TuiStepComponent {
 
     @Input()
     @tuiDefaultProp()
-    icon = '';
+    icon: keyof typeof import('@taiga-ui/icons') | string = '';
 
     @HostBinding('class._focus-visible')
     focusVisible = false;

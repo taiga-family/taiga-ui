@@ -12,8 +12,12 @@ export interface TuiCheckboxOptions {
         indeterminate: string;
     }>;
     readonly icons: Readonly<{
-        checked: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
-        indeterminate: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
+        checked:
+            | PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>
+            | keyof typeof import('@taiga-ui/icons');
+        indeterminate:
+            | PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>
+            | keyof typeof import('@taiga-ui/icons');
     }>;
 }
 

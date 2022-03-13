@@ -48,7 +48,7 @@ const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
 export class TuiSvgComponent {
     private readonly src$ = new ReplaySubject<void>(1);
     private readonly isIE = isIE(this.userAgent);
-    private icon = '';
+    private icon: keyof typeof import('@taiga-ui/icons') | string = '';
 
     @Input()
     @tuiRequiredSetter()

@@ -51,7 +51,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
 
     @Input()
     @tuiDefaultProp()
-    icon: string | null = null;
+    icon: string | keyof typeof import('@taiga-ui/icons') | null = null;
 
     @Input()
     @tuiDefaultProp()

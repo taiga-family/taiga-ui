@@ -99,9 +99,9 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
 
     shape = null;
 
-    icon: PolymorpheusContent = '';
+    icon: PolymorpheusContent | keyof typeof import('@taiga-ui/icons') = '';
 
-    iconRight: PolymorpheusContent = '';
+    iconRight: PolymorpheusContent | keyof typeof import('@taiga-ui/icons') = '';
 
     iconButton = false;
 

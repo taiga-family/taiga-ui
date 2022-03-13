@@ -6,7 +6,9 @@ import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputTimeOptions {
-    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>;
+    readonly icon:
+        | PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>
+        | keyof typeof import('@taiga-ui/icons');
     readonly mode: TuiTimeMode;
     readonly postfix: string;
     readonly maxValues: Record<TuiTimeFormatParts, number>;

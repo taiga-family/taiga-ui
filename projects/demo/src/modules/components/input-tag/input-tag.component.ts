@@ -82,7 +82,7 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     readonly iconVariants: readonly string[] = ['tuiIconSearchLarge'];
 
-    icon: string | null = null;
+    icon: string | keyof typeof import('@taiga-ui/icons') | null = null;
 
     readonly iconAlignVariants: ReadonlyArray<TuiHorizontalDirection> = ['left', 'right'];
 

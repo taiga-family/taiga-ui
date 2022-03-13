@@ -37,7 +37,7 @@ export class TuiSvgService {
         this.items$.next(value);
     }
 
-    getOriginal(name: string): string | null {
+    getOriginal(name: string): keyof typeof import('@taiga-ui/icons') | string | null {
         return this.originals[name] || null;
     }
 

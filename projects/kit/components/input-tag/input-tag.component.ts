@@ -122,7 +122,7 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
-    icon = '';
+    icon: keyof typeof import('@taiga-ui/icons') | string = '';
 
     @Input()
     @tuiDefaultProp()

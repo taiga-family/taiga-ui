@@ -38,7 +38,7 @@ export class TuiActionComponent extends AbstractTuiInteractive {
 
     @Input()
     @tuiDefaultProp()
-    icon = '';
+    icon: keyof typeof import('@taiga-ui/icons') | string = '';
 
     readonly isLink = this.elementRef.nativeElement.tagName.toLowerCase() === 'a';
 

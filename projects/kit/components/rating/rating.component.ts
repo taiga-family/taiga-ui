@@ -51,11 +51,11 @@ export class TuiRatingComponent
 
     @Input()
     @tuiDefaultProp()
-    iconNormal = this.options.iconNormal;
+    iconNormal: keyof typeof import('@taiga-ui/icons') | string = this.options.iconNormal;
 
     @Input()
     @tuiDefaultProp()
-    iconFilled = this.options.iconFilled;
+    iconFilled: keyof typeof import('@taiga-ui/icons') | string = this.options.iconFilled;
 
     constructor(
         @Optional()

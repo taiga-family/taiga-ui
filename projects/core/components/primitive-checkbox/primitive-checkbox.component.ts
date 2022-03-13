@@ -54,8 +54,9 @@ export class TuiPrimitiveCheckboxComponent {
         this.value = value;
     }
 
-    icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> =
-        this.options.icons.checked;
+    icon:
+        | PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>
+        | keyof typeof import('@taiga-ui/icons') = this.options.icons.checked;
 
     value: boolean | null = false;
 
