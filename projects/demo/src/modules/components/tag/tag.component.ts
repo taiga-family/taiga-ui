@@ -46,6 +46,11 @@ export class ExampleTuiTagComponent {
         LESS: import('!!raw-loader!./examples/4/index.less'),
     };
 
+    readonly example5: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
+        HTML: import('!!raw-loader!./examples/5/index.html'),
+    };
+
     removable = false;
 
     disabled = false;

@@ -11,6 +11,7 @@ import {TuiTagExample1} from './examples/1';
 import {TuiTagExample2} from './examples/2';
 import {TuiTagExample3} from './examples/3';
 import {TuiTagExample4} from './examples/4';
+import {TuiTagExample5} from './examples/5';
 import {ExampleTuiTagComponent} from './tag.component';
 
 @NgModule({
@@ -33,6 +34,7 @@ import {ExampleTuiTagComponent} from './tag.component';
         TuiTagExample2,
         TuiTagExample3,
         TuiTagExample4,
+        TuiTagExample5,
     ],
     exports: [ExampleTuiTagComponent],
 })
