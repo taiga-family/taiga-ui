@@ -1,3 +1,5 @@
+@line-height-l: 1.25rem;
+
 .textfield-host() {
     .text-basic();
     position: relative;
@@ -22,6 +24,7 @@
         min-height: var(--tui-height-l);
         max-height: var(--tui-height-l);
         font: var(--tui-font-text-m);
+        line-height: @line-height-l;
     }
 }
 
@@ -96,7 +99,7 @@
 
     :host[data-size='l']:not(._label-outside) &,
     :host-context(tui-primitive-textfield[data-size='l']:not(._label-outside)):not(tui-primitive-textfield) {
-        padding-top: 1.25rem;
+        padding-top: @line-height-l;
 
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .content .placeholder {
