@@ -15,6 +15,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiArrowModule, TuiAvatarModule, TuiToggleModule} from '@taiga-ui/kit';
 
+import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {ExampleTuiButtonComponent} from './button.component';
 import {TuiButtonExample1} from './examples/1';
 import {TuiButtonExample2} from './examples/2';
@@ -36,6 +37,7 @@ import {TuiButtonExample5} from './examples/5';
         TuiDropdownControllerModule,
         TuiArrowModule,
         TuiNotificationModule,
+        InheritedDocumentationModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiButtonComponent)),
         TuiLinkModule,

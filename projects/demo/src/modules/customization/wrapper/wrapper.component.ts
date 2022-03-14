@@ -1,11 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Less} from '!!raw-loader!./examples/1/index.less';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'wrapper',
@@ -14,17 +9,18 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class WrapperComponent {
-    readonly example1: FrontEndExample = {
-        HTML: example1Html,
-        LESS: example1Less,
-        TypeScript: example1Ts,
+    readonly example1: TuiDocExample = {
+        HTML: import('!!raw-loader!./examples/1/index.html'),
+        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
     };
 
-    readonly state: Record<string, string> = {
-        '[data-appearance]': 'appearance string',
-        '[data-mode]': 'optional "onDark"/"onLight" mode',
-        '[data-state]': 'interactive state: "hovered"/"pressed"/"readonly"/"disabled"',
-        '._focused': 'class for focused state',
-        '._invalid': 'class for invalid state',
-    };
+    readonly mixins = [
+        `.wrapper-hover(@ruleset)`,
+        `.wrapper-active(@ruleset)`,
+        `.wrapper-readonly(@ruleset)`,
+        `.wrapper-disabled(@ruleset)`,
+        `.wrapper-focus(@ruleset)`,
+        `.wrapper-invalid(@ruleset)`,
+    ];
 }

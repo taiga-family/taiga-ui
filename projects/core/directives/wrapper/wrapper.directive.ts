@@ -1,39 +1,31 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    Inject,
-    Input,
-} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {Directive, HostBinding, Inject, Input} from '@angular/core';
 import {TuiInteractiveState} from '@taiga-ui/core/enums';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 
-@Component({
-    selector: 'tui-wrapper',
-    template: '<ng-content></ng-content>',
-    styleUrls: ['./wrapper.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+@Directive({
+    selector: 'tui-wrapper, [tuiWrapper]',
     providers: [MODE_PROVIDER],
     host: {
         '($.data-mode.attr)': 'mode$',
     },
 })
-export class TuiWrapperComponent {
+export class TuiWrapperDirective {
     @Input()
     disabled = false;
 
     @Input()
     readOnly = false;
 
+    // TODO: Rename to `hover` in 3.0
     @Input()
-    hovered = false;
+    hovered: boolean | null = null;
 
+    // TODO: Rename to `active` in 3.0
     @Input()
-    pressed = false;
+    pressed: boolean | null = null;
 
     @Input()
     focused = false;
@@ -45,10 +37,7 @@ export class TuiWrapperComponent {
     @HostBinding('attr.data-appearance')
     appearance = '';
 
-    constructor(
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-    ) {}
+    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 
     @HostBinding('class._invalid')
     get computedInvalid(): boolean {
@@ -61,7 +50,7 @@ export class TuiWrapperComponent {
     }
 
     @HostBinding('attr.data-state')
-    get interactiveState(): TuiInteractiveState | null {
+    get interactiveState(): TuiInteractiveState | string | null {
         if (this.disabled) {
             return TuiInteractiveState.Disabled;
         }
@@ -70,14 +59,24 @@ export class TuiWrapperComponent {
             return TuiInteractiveState.Readonly;
         }
 
-        if (this.pressed && !this.isMobile) {
+        if (this.pressed) {
             return TuiInteractiveState.Pressed;
         }
 
-        if (this.hovered && !this.isMobile) {
+        if (this.hovered) {
             return TuiInteractiveState.Hovered;
         }
 
         return null;
+    }
+
+    @HostBinding('class._no-hover')
+    get noHover(): boolean {
+        return this.readOnly || this.hovered === false;
+    }
+
+    @HostBinding('class._no-active')
+    get noActive(): boolean {
+        return this.readOnly || this.pressed === false;
     }
 }

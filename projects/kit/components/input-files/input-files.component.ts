@@ -123,6 +123,10 @@ export class TuiInputFilesComponent
         return isNativeFocused(this.nativeFocusableElement);
     }
 
+    get computedPseudoHovered(): boolean | null {
+        return this.pseudoHovered ?? (this.fileDragged || null);
+    }
+
     get computedLink$(): Observable<PolymorpheusContent> {
         return this.computeLink$(this.fileDragged, this.multiple, this.link);
     }

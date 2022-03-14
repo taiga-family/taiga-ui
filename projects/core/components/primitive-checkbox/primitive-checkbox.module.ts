@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {TuiSvgModule} from '@taiga-ui/core/components/svg';
-import {TuiWrapperModule} from '@taiga-ui/core/components/wrapper';
+import {TuiWrapperModule} from '@taiga-ui/core/directives/wrapper';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPrimitiveCheckboxComponent} from './primitive-checkbox.component';

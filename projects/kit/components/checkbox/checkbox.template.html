@@ -6,19 +6,20 @@
     [pressed]="computedPressed"
     [invalid]="computedInvalid"
     [value]="value"
-></tui-primitive-checkbox>
-<input
-    #focusableElement
-    type="checkbox"
-    automation-id="tui-checkbox__native"
-    class="native"
-    [disabled]="disabled"
-    [id]="id"
-    [tuiChecked]="value"
-    [tuiFocusable]="computedFocusable"
-    (tuiFocusedChange)="onFocused($event)"
-    (tuiHoveredChange)="onHovered($event)"
-    (tuiPressedChange)="onPressed($event)"
-    (tuiCheckedChange)="onChecked($event)"
-    (tuiFocusVisibleChange)="onFocusVisible($event)"
-/>
+>
+    <input
+        #focusableElement
+        type="checkbox"
+        automation-id="tui-checkbox__native"
+        class="native"
+        [disabled]="disabled"
+        [id]="id"
+        [tuiChecked]="value"
+        [tuiFocusable]="computedFocusable"
+        (tuiFocusedChange)="onFocused($event)"
+        (tuiHoveredChange)="onHovered($event)"
+        (tuiPressedChange)="onPressed($event)"
+        (tuiCheckedChange)="onChecked($event)"
+        (tuiFocusVisibleChange)="onFocusVisible($event)"
+    />
+</tui-primitive-checkbox>
