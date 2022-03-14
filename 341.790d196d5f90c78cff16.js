@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[341],{EpuT:function(n,o,t){"use strict";t.r(o),o.default='<tui-input-date-time class="b-form" [formControl]="control">\n    Choose date and time\n</tui-input-date-time>\n\n<p>Stringified control value:</p>\n<p><code>{{control.value}}</code></p>\n'}}]);

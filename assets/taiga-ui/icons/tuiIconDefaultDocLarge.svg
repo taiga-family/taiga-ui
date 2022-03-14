@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" focusable="false" height="1.5em">
+    <g id="tuiIconDefaultDocLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24" fill="none">
+            <svg xmlns="http://www.w3.org/2000/svg" x="-12" y="-12">
+<path fill="#CBCFD3" d="M6,2h8l6,6v12c0,1.1-0.9,2-2,2H6c-1.1,0-2-0.9-2-2V4C4,2.9,4.9,2,6,2z" />
+<path fill="#959BA4" d="M14,2l6,6h-4c-1.1,0-2-0.9-2-2V2z" />
+</svg>
+</svg>
+    </g>
+</svg>
