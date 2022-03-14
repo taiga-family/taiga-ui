@@ -24,6 +24,8 @@ viewBox="0 0 24 24">
    s3,1.3,3,3v0.1c2.3,0.6,4,3,4,5.9v3.8l1.4,4.2h-4.5c-0.4,1.8-2,3-3.9,3c-1.8,0-3.4-1.2-3.9-3H3.6z"/>
 </svg>`;
 
+const CUSTOM_SVG_NAME = 'Bell';
+
 type possibleGenericType = any;
 
 export abstract class AbstractExampleTuiControl
@@ -76,7 +78,7 @@ export abstract class AbstractExampleTuiControl
 
     readonly inputModeVariants: readonly TuiInputModeT[] = ['text', 'numeric'];
 
-    readonly customContentVariants = ['Bell'];
+    readonly customContentVariants = [CUSTOM_SVG_NAME, `<span>LongTextContent</span>`];
 
     customContentSelected = null;
 
@@ -133,7 +135,9 @@ export abstract class AbstractExampleTuiControl
     dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
 
     get customContent(): string | null {
-        return this.customContentSelected !== null ? CUSTOM_SVG : null;
+        return this.customContentSelected === CUSTOM_SVG_NAME
+            ? CUSTOM_SVG
+            : this.customContentSelected;
     }
 
     get disabled(): boolean {
