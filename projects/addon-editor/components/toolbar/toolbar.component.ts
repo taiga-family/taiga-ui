@@ -15,10 +15,15 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
-import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorFontOption} from '@taiga-ui/addon-editor/interfaces';
-import {TUI_EDITOR_TOOLBAR_TEXTS, TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
+import {
+    TUI_EDITOR_OPTIONS,
+    TUI_EDITOR_TOOLBAR_TEXTS,
+    TUI_IMAGE_LOADER,
+    TuiEditorOptions,
+} from '@taiga-ui/addon-editor/tokens';
 import {isSelectionIn, tuiInsertHtml} from '@taiga-ui/addon-editor/utils';
 import {
     EMPTY_QUERY,
@@ -76,7 +81,7 @@ export class TuiToolbarComponent {
 
     @Input()
     @tuiDefaultProp()
-    colors: ReadonlyMap<string, string> = defaultEditorColors;
+    colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
 
     @Input()
     @tuiDefaultProp()
@@ -147,6 +152,8 @@ export class TuiToolbarComponent {
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<Record<string, string>>,
+        @Inject(TUI_EDITOR_OPTIONS)
+        private readonly defaultOptions: TuiEditorOptions,
     ) {
         this.documentRef = shadowRootRef || documentRef;
 

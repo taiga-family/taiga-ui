@@ -14,10 +14,15 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
-import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
-import {TUI_EDITOR_TOOLBAR_TEXTS, TUI_IMAGE_LOADER} from '@taiga-ui/addon-editor/tokens';
+import {
+    TUI_EDITOR_OPTIONS,
+    TUI_EDITOR_TOOLBAR_TEXTS,
+    TUI_IMAGE_LOADER,
+    TuiEditorOptions,
+} from '@taiga-ui/addon-editor/tokens';
 import {
     EMPTY_QUERY,
     getClosestElement,
@@ -54,7 +59,7 @@ export class TuiToolbarNewComponent {
 
     @Input()
     @tuiDefaultProp()
-    colors: ReadonlyMap<string, string> = defaultEditorColors;
+    colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
 
     @Input()
     @HostBinding('class._disabled')
@@ -89,6 +94,8 @@ export class TuiToolbarNewComponent {
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
+        @Inject(TUI_EDITOR_OPTIONS)
+        private readonly defaultOptions: TuiEditorOptions,
     ) {}
 
     get focused(): boolean {

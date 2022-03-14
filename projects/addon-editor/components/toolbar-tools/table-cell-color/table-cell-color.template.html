@@ -27,13 +27,12 @@
             [style.background]="cellColor"
         ></div>
         <ng-template #cellColorDropdown let-activeZone>
-            <tui-color-selector
+            <tui-palette
                 class="t-color-picker"
                 [tuiActiveZoneParent]="activeZone"
                 [colors]="colors"
-                [color]="cellColor"
-                (colorChange)="setCellColor($event)"
-            ></tui-color-selector>
+                (selectedColor)="setCellColor($event)"
+            ></tui-palette>
         </ng-template>
     </tui-hosted-dropdown>
 </ng-container>
