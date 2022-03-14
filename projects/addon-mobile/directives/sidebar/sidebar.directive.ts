@@ -41,7 +41,8 @@ export class TuiSidebarDirective extends PolymorpheusTemplate<{}> implements OnD
         @Inject(Injector) private readonly injector: Injector,
         @Inject(ComponentFactoryResolver)
         private readonly componentFactoryResolver: ComponentFactoryResolver,
-        @Inject(TuiPortalService) private readonly portalService: TuiPortalService,
+        @Inject(TuiPortalService)
+        private readonly portalService: TuiPortalService,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         super(content, changeDetectorRef);

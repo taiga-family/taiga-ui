@@ -134,7 +134,7 @@ describe("Editor's toolbar", () => {
 
         cy.get('button[icon="tuiIconViewListLarge"].t-option')
             .should('be.visible')
-            .click();
+            .click({force: true});
 
         cy.get('@wrapper')
             .findByAutomationId('toolbar__font-style-button')

@@ -107,6 +107,14 @@ export const ROUTES = [
         },
     },
     {
+        path: 'portals',
+        loadChildren: () =>
+            import(`../customization/portals/portals.module`).then(m => m.PortalsModule),
+        data: {
+            title: `Portals`,
+        },
+    },
+    {
         path: 'icon-set',
         loadChildren: () =>
             import(`../customization/icon-set/icon-set.module`).then(

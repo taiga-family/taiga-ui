@@ -15,6 +15,7 @@ import {TuiDialogModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {TuiPdfViewerModule} from '@taiga-ui/kit';
 import {MarkdownModule} from 'ngx-markdown';
 
+import {CustomHostModule} from '../customization/portals/examples/1/portal/сustom-host.module';
 import {AppComponent} from './app.component';
 import {APP_PROVIDERS} from './app.providers';
 import {AppRoutingModule} from './app.routes';
@@ -47,6 +48,7 @@ import {VersionManagerModule} from './version-manager/version-manager.module';
         LandingModule,
         LogoModule,
         VersionManagerModule,
+        CustomHostModule,
         HttpClientModule,
         MarkdownModule.forRoot({
             loader: HttpClient,

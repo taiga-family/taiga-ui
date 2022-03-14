@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {
-    TuiPortalHostComponent,
-    TuiPortalHostModule,
-} from '@taiga-ui/cdk/components/portal-host';
+    TuiDropdownHostComponent,
+    TuiDropdownHostModule,
+} from '@taiga-ui/cdk/components/dropdown-host';
 import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiElementModule} from '../element.module';
@@ -11,12 +11,12 @@ import {TuiElementModule} from '../element.module';
 describe('TuiElement directive', () => {
     @Component({
         template: `
-            <tui-portal-host
+            <tui-dropdown-host
                 #component
                 #element="elementRef"
                 tuiElement
                 [class]="storeRefs(component, element)"
-            ></tui-portal-host>
+            ></tui-dropdown-host>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
@@ -35,7 +35,7 @@ describe('TuiElement directive', () => {
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
-            imports: [TuiPortalHostModule, TuiElementModule],
+            imports: [TuiDropdownHostModule, TuiElementModule],
             declarations: [TestComponent],
         });
     });
@@ -47,10 +47,10 @@ describe('TuiElement directive', () => {
     });
 
     it('gets native element behind component', () => {
-        expect(testComponent.component instanceof TuiPortalHostComponent).toBe(true);
+        expect(testComponent.component instanceof TuiDropdownHostComponent).toBe(true);
         expect(testComponent.element.nativeElement instanceof HTMLElement).toBe(true);
         expect(testComponent.element.nativeElement.tagName.toLowerCase()).toBe(
-            'tui-portal-host',
+            'tui-dropdown-host',
         );
     });
 });

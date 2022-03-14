@@ -19,11 +19,12 @@ import {
     setNativeFocused,
     TuiActiveZoneDirective,
     TuiDestroyService,
+    TuiDropdownHostComponent,
     TuiOverscrollModeT,
-    TuiPortalHostComponent,
     tuiPure,
     tuiZonefree,
 } from '@taiga-ui/cdk';
+import {AbstractTuiPortalHostComponent} from '@taiga-ui/cdk/abstract/portal-host';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {DEFAULT_MARGIN, DEFAULT_MAX_WIDTH} from '@taiga-ui/core/constants';
 import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
@@ -77,8 +78,8 @@ export class TuiDropdownBoxComponent implements AfterViewChecked {
         @Inject(TUI_DROPDOWN_DIRECTIVE) readonly directive: TuiDropdown,
         @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TuiPortalHostComponent)
-        private readonly portalHost: TuiPortalHostComponent,
+        @Inject(AbstractTuiPortalHostComponent)
+        private readonly portalHost: TuiDropdownHostComponent,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
     ) {
