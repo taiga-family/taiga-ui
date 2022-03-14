@@ -5,7 +5,6 @@ import {TuiStatusT} from '@taiga-ui/kit/types';
 export interface TuiTagOptions {
     readonly size: TuiSizeS | TuiSizeL;
     readonly status: TuiStatusT;
-    readonly showLoader: boolean;
     readonly hoverable: boolean;
     readonly removable: boolean;
     readonly disabled: boolean;
@@ -16,7 +15,6 @@ export interface TuiTagOptions {
 export const TUI_TAG_DEFAULT_OPTIONS: TuiTagOptions = {
     size: 'm',
     status: 'default',
-    showLoader: false,
     hoverable: false,
     removable: false,
     disabled: false,

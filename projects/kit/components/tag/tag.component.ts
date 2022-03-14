@@ -66,7 +66,7 @@ export class TuiTagComponent {
 
     @Input()
     @tuiDefaultProp()
-    showLoader = this.options.showLoader;
+    showLoader = false;
 
     @Input()
     @HostBinding('attr.data-tui-host-status')

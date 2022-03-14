@@ -12,7 +12,6 @@ import {tuiTagOptionsProvider} from '@taiga-ui/kit';
         tuiTagOptionsProvider({
             size: 'l',
             status: 'success',
-            showLoader: true,
         }),
     ],
 })
