@@ -3,7 +3,7 @@
     class="scrollbar"
 ></tui-scroll-controls>
 <tui-svg-defs-host></tui-svg-defs-host>
-<tui-portal-host>
+<tui-dropdown-host>
     <div class="content">
         <ng-content></ng-content>
     </div>
@@ -15,7 +15,7 @@
         [ngComponentOutlet]="notificationsHost"
     ></ng-container>
     <ng-content select="tuiOverNotifications"></ng-content>
-</tui-portal-host>
+</tui-dropdown-host>
 <ng-content select="tuiOverPortals"></ng-content>
 <tui-hints-host></tui-hints-host>
 <ng-content select="tuiOverHints"></ng-content>

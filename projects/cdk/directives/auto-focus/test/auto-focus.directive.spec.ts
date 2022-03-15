@@ -5,16 +5,17 @@ import {
     forwardRef,
     ViewChild,
 } from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {
+    isNativeFocused,
+    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TUI_IS_IOS,
+    TuiAutoFocusDirective,
+    TuiAutoFocusModule,
+    TuiFocusableElementAccessor,
+} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 import {EMPTY} from 'rxjs';
-
-import {TuiFocusableElementAccessor} from '../../../interfaces/focusable-element-accessor';
-import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '../../../tokens/focusable-item-accessor';
-import {TUI_IS_IOS} from '../../../tokens/is-ios';
-import {isNativeFocused} from '../../../utils/focus/is-native-focused';
-import {TuiAutoFocusDirective} from '../autofocus.directive';
-import {TuiAutoFocusModule} from '../autofocus.module';
 
 describe('TuiAutoFocus directive', () => {
     describe('works for focusable HTML element', () => {
@@ -155,14 +156,13 @@ describe('TuiAutoFocus directive', () => {
             testComponent = fixture.componentInstance;
         });
 
-        it('focuses', done => {
+        it('focuses', fakeAsync(() => {
             fixture.detectChanges();
 
-            setTimeout(() => {
-                expect(isNativeFocused(testComponent.element.nativeElement)).toBe(true);
-                done();
-            }, 100);
-        });
+            tick(100);
+
+            expect(isNativeFocused(testComponent.element.nativeElement)).toBe(true);
+        }));
     });
 
     describe('autoFocus flag is false', () => {

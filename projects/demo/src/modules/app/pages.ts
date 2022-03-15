@@ -905,6 +905,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Customization`,
+        title: `Portals`,
+        keywords: 'portal, custom, theme, style',
+        route: 'portals',
+    },
+    {
+        section: $localize`Customization`,
         title: `Icon set`,
         keywords: 'icons, svg, theme, custom, style, sanitizer',
         route: 'icon-set',

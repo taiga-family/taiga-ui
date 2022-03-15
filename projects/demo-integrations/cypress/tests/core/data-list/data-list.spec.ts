@@ -41,7 +41,7 @@ describe('DataList', () => {
 
         cy.getByAutomationId('tui-data-list-range-option')
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
-            .click()
+            .click({force: true})
             .getByAutomationId('tui-data-list-range-field')
             .findByAutomationId('tui-primitive-textfield__native-input')
             .focus()
@@ -53,10 +53,10 @@ describe('DataList', () => {
 
         cy.getByAutomationId('tui-data-list-calendar-option')
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
-            .click()
+            .click({force: true})
             .getByAutomationId('tui-primitive-calendar__cell')
             .eq(4)
-            .click();
+            .click({force: true});
 
         cy.get('tui-doc-page').matchImageSnapshot('6-data-list-calendar-opened');
 

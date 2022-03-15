@@ -21,8 +21,6 @@ import {default as exampleSmilesToolTemplate} from '!!raw-loader!./examples/2/sm
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Less} from '!!raw-loader!./examples/3/index.less';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
-import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
 
 import {FrontEndExample} from '../../interfaces/front-end-example';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -44,8 +42,15 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleEditorNewComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = exampleModule;
-    readonly exampleHtml = exampleHtml;
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly provideExtensions = import(
+        '!!raw-loader!./examples/import/provide-extensions.md'
+    );
+
+    readonly exampleEditorOptionsToken = import(
+        '!!raw-loader!./examples/import/editor-options-token.md'
+    );
 
     readonly example1: FrontEndExample = {
         TypeScript: example1Ts,

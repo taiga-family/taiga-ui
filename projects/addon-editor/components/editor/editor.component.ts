@@ -16,9 +16,10 @@ import {NgControl} from '@angular/forms';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiEditLinkComponent} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiToolbarComponent} from '@taiga-ui/addon-editor/components/toolbar';
-import {defaultEditorColors, defaultEditorTools} from '@taiga-ui/addon-editor/constants';
+import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiDesignModeDirective} from '@taiga-ui/addon-editor/directives/design-mode';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
+import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '@taiga-ui/addon-editor/tokens';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
@@ -93,7 +94,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
 
     @Input()
     @tuiDefaultProp()
-    colors: ReadonlyMap<string, string> = defaultEditorColors;
+    colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
 
     @ViewChild('focusableElement', {read: TuiDesignModeDirective})
     readonly focusableElement?: TuiDesignModeDirective;
@@ -103,6 +104,8 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
     constructor(
         @Inject(DOCUMENT)
         private readonly documentRef: Document,
+        @Inject(TUI_EDITOR_OPTIONS)
+        private readonly defaultOptions: TuiEditorOptions,
         @Inject(WINDOW) windowRef: Window,
         @Optional()
         @Self()

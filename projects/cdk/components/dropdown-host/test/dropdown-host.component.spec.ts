@@ -4,20 +4,20 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {configureTestSuite} from '@taiga-ui/testing';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
-import {TuiPortalHostComponent} from '../portal-host.component';
-import {TuiPortalHostModule} from '../portal-host.module';
+import {TuiDropdownHostComponent} from '../dropdown-host.component';
+import {TuiDropdownHostModule} from '../dropdown-host.module';
 
-describe('PortalHost', () => {
+describe('DropdownHost', () => {
     @Component({
         template: `
-            <tui-portal-host>
+            <tui-dropdown-host>
                 <button>Content</button>
-            </tui-portal-host>
+            </tui-dropdown-host>
         `,
     })
     class TestComponent {
-        @ViewChild(TuiPortalHostComponent)
-        portalHost?: TuiPortalHostComponent;
+        @ViewChild(TuiDropdownHostComponent)
+        dropdownHost?: TuiDropdownHostComponent;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -25,7 +25,7 @@ describe('PortalHost', () => {
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
-            imports: [NoopAnimationsModule, PolymorpheusModule, TuiPortalHostModule],
+            imports: [NoopAnimationsModule, PolymorpheusModule, TuiDropdownHostModule],
             declarations: [TestComponent],
         });
     });
@@ -37,12 +37,12 @@ describe('PortalHost', () => {
     });
 
     it('calculates clientRect', () => {
-        expect(testComponent.portalHost!.clientRect.top).toBeGreaterThanOrEqual(0);
+        expect(testComponent.dropdownHost!.clientRect.top).toBeGreaterThanOrEqual(0);
     });
 
     it('calculates fixedPositionOffset', () => {
         expect(
-            testComponent.portalHost!.fixedPositionOffset().top,
+            testComponent.dropdownHost!.fixedPositionOffset().top,
         ).toBeGreaterThanOrEqual(0);
     });
 });

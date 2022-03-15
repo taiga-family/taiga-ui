@@ -1,5 +1,6 @@
+<!--TODO remove any in v3.0 (after update angular to 10.1.0+)-->
 <button
-    *ngFor="let color of colors | keyvalue"
+    *ngFor="let color of $any(colors) | keyvalue"
     type="button"
     class="t-button"
     [style.background]="color.value"

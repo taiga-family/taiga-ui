@@ -19,7 +19,8 @@ export class TuiDialogExampleComponent4 {
 
     constructor(
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-        @Inject(TuiPortalService) private readonly portalService: TuiPortalService,
+        @Inject(TuiPortalService)
+        private readonly portalService: TuiPortalService,
     ) {}
 
     get transform(): string {
