@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.37.1](https://github.com/tinkoff/taiga-ui/compare/v2.37.0...v2.37.1) (2022-03-15)
+
+### Bug Fixes
+
+- **core:** fix broken import ([#1520](https://github.com/tinkoff/taiga-ui/issues/1520))
+  ([ebf4ee2](https://github.com/tinkoff/taiga-ui/commit/ebf4ee2570bfe04be997812147e7a5638aa4378f))
+
 ## [2.37.0](https://github.com/tinkoff/taiga-ui/compare/v2.36.0...v2.37.0) (2022-03-14)
 
 ### Features
