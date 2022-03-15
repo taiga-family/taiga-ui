@@ -22,18 +22,12 @@ tui-wrapper[data-appearance='table'],
 
     &[data-mode='onDark'] {
         .wrapper-focus({
-            &:after {
-                color: var(--tui-text-01-night);
-            }
+            --tui-focus: var(--tui-text-01-night);
         });
     }
 
     .wrapper-hover({
         background: var(--tui-clear-disabled);
-    });
-
-    .wrapper-disabled({
-        color: var(--tui-text-03);
     });
 
     .wrapper-focus({
@@ -64,9 +58,10 @@ tui-wrapper[data-appearance='table'],
         .wrapper-focus({
             background: transparent;
 
+            --tui-focus: var(--tui-error-fill);
+
             &:after {
                 border-width: 1px;
-                color: var(--tui-error-fill);
             }
         });
     });
