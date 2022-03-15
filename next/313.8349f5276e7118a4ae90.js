@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[313],{pN2s:function(e,n,o){"use strict";o.r(n),n.default='```html\n<tui-editor new exampleText="Example" [(ngModel)]="model">Placeholder</tui-editor>\n```\n'}}]);
