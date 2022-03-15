@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {
+    AbstractTuiPortalHostComponent,
     getClosestElement,
     getClosestFocusable,
     inRange,
@@ -24,7 +25,6 @@ import {
     tuiPure,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {AbstractTuiPortalHostComponent} from '@taiga-ui/cdk/abstract/portal-host';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {DEFAULT_MARGIN, DEFAULT_MAX_WIDTH} from '@taiga-ui/core/constants';
 import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
