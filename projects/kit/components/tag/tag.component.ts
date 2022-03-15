@@ -16,8 +16,11 @@ import {
     sizeBigger,
     TUI_MODE,
     TuiBrightness,
+    TuiSizeL,
+    TuiSizeS,
     TuiSizeXS,
 } from '@taiga-ui/core';
+import {TuiStatusT} from '@taiga-ui/kit/types';
 import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -62,7 +65,7 @@ export class TuiTagComponent {
     @Input()
     @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size = this.options.size;
+    size: TuiSizeS | TuiSizeL = this.options.size;
 
     @Input()
     @tuiDefaultProp()
@@ -71,26 +74,26 @@ export class TuiTagComponent {
     @Input()
     @HostBinding('attr.data-tui-host-status')
     @tuiDefaultProp()
-    status = this.options.status;
+    status: TuiStatusT = this.options.status;
 
     @Input()
     @HostBinding('class._hoverable')
     @tuiDefaultProp()
-    hoverable = this.options.hoverable;
+    hoverable: boolean = this.options.hoverable;
 
     @Input()
     @tuiDefaultProp()
-    removable = this.options.removable;
+    removable: boolean = this.options.removable;
 
     @Input()
     @HostBinding('class._disabled')
     @tuiDefaultProp()
-    disabled = this.options.disabled;
+    disabled: boolean = this.options.disabled;
 
     @Input()
     @HostBinding('class._autocolor')
     @tuiDefaultProp()
-    autoColor = this.options.autoColor;
+    autoColor: boolean = this.options.autoColor;
 
     // TODO: Remove null in 3.0
     @Input()
