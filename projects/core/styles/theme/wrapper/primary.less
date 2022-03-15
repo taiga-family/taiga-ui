@@ -14,10 +14,6 @@ tui-wrapper[data-appearance='primary'],
         background: var(--tui-primary-active);
     });
 
-    .wrapper-disabled({
-        opacity: var(--tui-disabled-opacity);
-    });
-
     .wrapper-invalid({
         color: var(--tui-negative-night);
         background: var(--tui-error-bg);
@@ -31,9 +27,7 @@ tui-wrapper[data-appearance='primary'],
         });
 
         .wrapper-focus({
-            &:after {
-                color: var(--tui-error-fill);
-            }
+            --tui-focus: var(--tui-error-fill);
         })
     });
 }

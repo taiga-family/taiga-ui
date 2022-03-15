@@ -34,9 +34,7 @@ tui-wrapper[data-appearance='outline'],
         });
 
         .wrapper-focus({
-            &:after {
-                color: var(--tui-text-01-night);
-            }
+            --tui-focus: var(--tui-text-01-night);
         });
     }
 
@@ -74,9 +72,5 @@ tui-wrapper[data-appearance='outline'],
         &:after {
             color: var(--tui-base-06);
         }
-    });
-
-    .wrapper-disabled({
-        opacity: var(--tui-disabled-opacity);
     });
 }

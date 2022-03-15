@@ -1,4 +1,3 @@
-@import '../taiga-ui-local.less';
 @import 'wrapper/icon.less';
 @import 'wrapper/outline.less';
 @import 'wrapper/primary.less';
@@ -8,39 +7,4 @@
 @import 'wrapper/textfield.less';
 @import 'wrapper/whiteblock.less';
 
-/* stylelint-disable order/order */
-tui-wrapper,
-[tuiWrapper] {
-    position: relative;
-    display: block;
-    height: 100%;
-    width: 100%;
-    appearance: none;
-    border-radius: inherit;
-
-    &:after {
-        .transition(box-shadow);
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: inherit;
-        border: 1px solid currentColor;
-        pointer-events: none;
-        color: transparent;
-    }
-    .transition(~'color, background');
-
-    .wrapper-focus({
-        &:after {
-            border-width: 2px;
-            color: var(--tui-focus);
-        }
-    });
-
-    .wrapper-disabled({
-        pointer-events: none;
-    });
-}
+@import 'wrapper/base.less';

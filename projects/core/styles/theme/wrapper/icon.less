@@ -11,9 +11,7 @@ tui-wrapper[data-appearance='icon'],
         opacity: var(--tui-disabled-opacity);
 
         .wrapper-focus({
-            &:after {
-                color: var(--tui-base-01);
-            }
+            --tui-focus: var(--tui-base-01);
         });
     }
 
@@ -21,10 +19,6 @@ tui-wrapper[data-appearance='icon'],
         color: var(--tui-text-01);
         opacity: var(--tui-disabled-opacity);
     }
-
-    .wrapper-disabled({
-        opacity: var(--tui-disabled-opacity);
-    });
 
     .wrapper-hover({
         color: var(--tui-base-07);

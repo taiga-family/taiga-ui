@@ -1,3 +1,5 @@
+@import '../../taiga-ui-local';
+
 /* stylelint-disable order/order */
 tui-wrapper[data-appearance='secondary'],
 tui-wrapper[data-appearance='flat'],
@@ -19,9 +21,7 @@ tui-wrapper[data-appearance='flat'],
         });
 
         .wrapper-focus({
-            &:after {
-                color: var(--tui-text-01-night);
-            }
+            --tui-focus: var(--tui-text-01-night);
         });
     }
 
@@ -47,10 +47,6 @@ tui-wrapper[data-appearance='flat'],
         background: var(--tui-secondary-active);
     });
 
-    .wrapper-disabled({
-        opacity: var(--tui-disabled-opacity);
-    });
-
     .wrapper-invalid({
         color: var(--tui-error-fill);
         background: var(--tui-error-bg);
@@ -60,9 +56,7 @@ tui-wrapper[data-appearance='flat'],
         });
 
         .wrapper-focus({
-            &:after {
-                color: var(--tui-error-fill);
-            }
+            --tui-focus: var(--tui-error-fill);
         });
     });
 }
