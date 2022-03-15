@@ -18,6 +18,11 @@
         width: @sizeL;
         height: @sizeL;
     }
+
+    &._disabled,
+    &._readonly {
+        pointer-events: none;
+    }
 }
 
 .native {
@@ -25,9 +30,4 @@
     .fullsize();
     opacity: 0;
     cursor: pointer;
-
-    :host._disabled &,
-    :host._readonly & {
-        pointer-events: none;
-    }
 }

@@ -1,4 +1,8 @@
-tui-wrapper[data-appearance='textfield'] {
+@import '../../taiga-ui-local';
+
+/* stylelint-disable order/order */
+tui-wrapper[data-appearance='textfield'],
+[tuiWrapper][data-appearance='textfield'] {
     transition: var(--tui-duration) ease-in-out;
     transition-property: box-shadow, background;
     background: var(--tui-base-01);
@@ -11,39 +15,44 @@ tui-wrapper[data-appearance='textfield'] {
         color: var(--tui-base-03);
     }
 
-    &[data-state='hovered'] {
+    .wrapper-hover({
         box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
-    }
+    });
 
-    &._focused {
+    .wrapper-focus({
         box-shadow: none;
 
         &:after {
             color: var(--tui-primary);
             border-width: 2px;
         }
-    }
+    });
 
-    &[data-state='readonly'] {
+    .wrapper-readonly({
         box-shadow: none;
 
         &:after {
             color: var(--tui-base-04);
         }
-    }
+    });
 
-    &[data-state='disabled'] {
+    .wrapper-disabled({
         opacity: var(--tui-disabled-opacity);
         box-shadow: none;
-    }
+    });
 
-    &._invalid._focused:after {
-        color: var(--tui-error-fill);
-        opacity: var(--tui-disabled-opacity);
-    }
+    .wrapper-invalid({
+        .wrapper-focus({
+            &:after {
+                color: var(--tui-error-fill);
+                opacity: var(--tui-disabled-opacity);
+            }
+        })
+    });
 }
 
-tui-wrapper[data-appearance='textfield'][data-mode='onDark'] {
+tui-wrapper[data-appearance='textfield'][data-mode='onDark'],
+[tuiWrapper][data-appearance='textfield'][data-mode='onDark'] {
     background: var(--tui-clear-inverse);
     color: var(--tui-text-01-night);
 
@@ -52,23 +61,27 @@ tui-wrapper[data-appearance='textfield'][data-mode='onDark'] {
         opacity: var(--tui-disabled-opacity);
     }
 
-    &[data-state='hovered'] {
+    .wrapper-hover({
         background: var(--tui-clear-inverse-hover);
 
         &:after {
             color: var(--tui-text-02-night);
         }
-    }
+    });
 
-    &[data-state='readonly'] {
+    .wrapper-readonly({
         background: transparent;
-    }
+    });
 
-    &._invalid._focused:after {
-        color: var(--tui-error-fill-night);
-    }
+    .wrapper-invalid({
+        .wrapper-focus({
+            &:after {
+                color: var(--tui-error-fill-night);
+            }
+        })
+    });
 
-    &._focused {
+    .wrapper-focus({
         background: rgba(255, 255, 255, 0.08);
 
         &:after {
@@ -76,35 +89,36 @@ tui-wrapper[data-appearance='textfield'][data-mode='onDark'] {
             color: var(--tui-primary);
             opacity: 1;
         }
-    }
+    });
 }
 
-tui-wrapper[data-appearance='textfield'][data-mode='onLight'] {
+tui-wrapper[data-appearance='textfield'][data-mode='onLight'],
+[tuiWrapper][data-appearance='textfield'][data-mode='onLight'] {
     background: var(--tui-clear);
 
-    &[data-state='hovered'] {
+    .wrapper-hover({
         background: var(--tui-clear-hover);
-    }
+    });
 
-    &[data-state='readonly'] {
+    .wrapper-readonly({
         background: transparent;
-    }
+    });
 
-    &._invalid {
+    .wrapper-invalid({
         &:after {
             color: var(--tui-error-fill);
         }
 
-        &._focused {
+        .wrapper-focus({
             background: transparent;
-        }
-    }
+        });
+    });
 
-    &._focused {
+    .wrapper-focus({
         background: transparent;
 
         &:after {
             color: var(--tui-text-01);
         }
-    }
+    });
 }

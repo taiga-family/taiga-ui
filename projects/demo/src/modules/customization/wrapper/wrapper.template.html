@@ -12,17 +12,25 @@
     <p i18n>
         Built-in appearances come with Taiga UI theme. You can extend or
         completely replace them with your own in global non-encapsulated styles.
-        Here are CSS selectors you can use to target wrapper and customize the
-        look of components:
+        Use the following mixins from
+        <code>@import '~@taiga-ui/core/styles/taiga-ui-local';</code>
+        :
     </p>
     <ul>
-        <li *ngFor="let item of state | keyvalue">
-            <tui-doc-copy class="var" [cdkCopyToClipboard]="item.key">
-                <code>{{ item.key }}</code>
+        <li *ngFor="let item of mixins">
+            <tui-doc-copy class="var" [cdkCopyToClipboard]="item">
+                <code>{{ item }}</code>
             </tui-doc-copy>
-            — {{ item.value }}
         </li>
     </ul>
+    <p>
+        Use
+        <code>[data-mode='onDark']</code>
+        /
+        <code>[data-mode='onLight']</code>
+        selectors to account for
+        <a tuiLink routerLink="/directives/mode">Mode</a>
+    </p>
 
     <tui-doc-example
         id="material"

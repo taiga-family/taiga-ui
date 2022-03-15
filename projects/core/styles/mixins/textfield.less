@@ -155,12 +155,12 @@
         }
 
         :host._invalid:not(._focused) &,
-        :host._invalid:not(._focused)._hovered & {
+        :host._invalid:not(._focused):hover & {
             color: var(--tui-error-fill);
         }
 
         :host[data-mode='onDark']._invalid:not(._focused) &,
-        :host[data-mode='onDark']._invalid:not(._focused)._hovered & {
+        :host[data-mode='onDark']._invalid:not(._focused):hover & {
             color: var(--tui-error-fill-night);
         }
     }

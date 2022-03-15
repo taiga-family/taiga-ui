@@ -1,6 +1,7 @@
 <tui-wrapper
     [appearance]="appearance"
-    [disabled]="disabled"
+    [readOnly]="readOnly"
+    [disabled]="computedDisabled"
     [focused]="computedFocusVisible"
     [hovered]="computedHovered"
     [pressed]="computedPressed"
@@ -53,21 +54,21 @@
             </ng-template>
         </span>
     </div>
+    <input
+        #focusableElement
+        type="checkbox"
+        role="switch"
+        automation-id="tui-toggle__checkbox"
+        class="checkbox"
+        [attr.aria-checked]="value"
+        [id]="id"
+        [disabled]="disabled"
+        [tuiChecked]="checked"
+        [tuiFocusable]="focusable"
+        (tuiCheckedChange)="onChecked($event)"
+        (tuiFocusedChange)="onFocused($event)"
+        (tuiHoveredChange)="onHovered($event)"
+        (tuiPressedChange)="onPressed($event)"
+        (tuiFocusVisibleChange)="onFocusVisible($event)"
+    />
 </tui-wrapper>
-<input
-    #focusableElement
-    type="checkbox"
-    role="switch"
-    automation-id="tui-toggle__checkbox"
-    class="checkbox"
-    [attr.aria-checked]="value"
-    [id]="id"
-    [disabled]="disabled"
-    [tuiChecked]="checked"
-    [tuiFocusable]="focusable"
-    (tuiCheckedChange)="onChecked($event)"
-    (tuiFocusedChange)="onFocused($event)"
-    (tuiHoveredChange)="onHovered($event)"
-    (tuiPressedChange)="onPressed($event)"
-    (tuiFocusVisibleChange)="onFocusVisible($event)"
-/>

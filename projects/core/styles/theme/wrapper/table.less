@@ -1,4 +1,8 @@
-tui-wrapper[data-appearance='table'] {
+@import '../../taiga-ui-local';
+
+/* stylelint-disable order/order */
+tui-wrapper[data-appearance='table'],
+[tuiWrapper][data-appearance='table'] {
     border-radius: 0;
     background: transparent;
     color: var(--tui-text-01);
@@ -16,24 +20,27 @@ tui-wrapper[data-appearance='table'] {
         color: var(--tui-base-04);
     }
 
-    &[data-state='hovered']:not(._focused) {
+    &[data-mode='onDark'] {
+        .wrapper-focus({
+            &:after {
+                color: var(--tui-text-01-night);
+            }
+        });
+    }
+
+    .wrapper-hover({
         background: var(--tui-clear-disabled);
-    }
+    });
 
-    &[data-state='disabled'] {
+    .wrapper-disabled({
         color: var(--tui-text-03);
-    }
+    });
 
-    &._focused:after {
-        border-width: 2px;
-        color: var(--tui-focus);
-    }
+    .wrapper-focus({
+        background: transparent;
+    });
 
-    &[data-mode='onDark']._focused:after {
-        color: var(--tui-text-01-night);
-    }
-
-    &._invalid {
+    .wrapper-invalid({
         background: var(--tui-error-bg);
 
         &:before {
@@ -42,33 +49,25 @@ tui-wrapper[data-appearance='table'] {
             top: 0;
             right: 0;
             z-index: 1;
-            // TODO: research if it can be used in rem units
-            /* stylelint-disable-next-line */
-            border-top: 8px solid var(--tui-error-fill);
-            // TODO: research if it can be used in rem units
-            /* stylelint-disable-next-line */
-            border-left: 8px solid transparent;
+            border-top: 0.5rem solid var(--tui-error-fill);
+            border-left: 0.5rem solid transparent;
         }
 
-        &[data-state='hovered'] {
+        .wrapper-hover({
             background: var(--tui-error-bg-hover);
+        });
 
-            &._focused {
-                background: transparent;
-            }
-        }
-
-        &[data-state='disabled'] {
+        .wrapper-disabled({
             background: transparent;
-        }
+        });
 
-        &._focused {
+        .wrapper-focus({
             background: transparent;
 
             &:after {
                 border-width: 1px;
                 color: var(--tui-error-fill);
             }
-        }
-    }
+        });
+    });
 }
