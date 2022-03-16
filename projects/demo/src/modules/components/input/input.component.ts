@@ -1,11 +1,14 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component, forwardRef, TemplateRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+
+const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
 
 @Component({
     selector: 'example-tui-input',
@@ -20,6 +23,11 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
+    @ViewChild('justLongText', {static: true})
+    private readonly longTextRef!: TemplateRef<HTMLElement>;
+
+    private _customContentSelected: PolymorpheusContent | null = null;
+
     readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
 
     readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
@@ -86,4 +94,22 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
 
     readonly control = new FormControl('111', Validators.required);
+
+    readonly customContentVariants = [
+        'tuiIconSearchLarge',
+        'tuiIconCalendarLarge',
+        'tuiIconVisaMono',
+        'tuiIconMastercardMono',
+        LONG_TEXT_TEMPLATE,
+    ];
+
+    get customContentSelected() {
+        return this._customContentSelected === LONG_TEXT_TEMPLATE
+            ? this.longTextRef
+            : this._customContentSelected;
+    }
+
+    set customContentSelected(newValue) {
+        this._customContentSelected = newValue;
+    }
 }
