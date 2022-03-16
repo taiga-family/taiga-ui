@@ -50,7 +50,7 @@ const testContext = {
         return 'tui-primitive-textfield__native-input';
     },
 
-    get textInputValueAutoId() {
+    get textInputCustomValueAutoId() {
         return 'tui-primitive-textfield__value';
     },
 
@@ -233,7 +233,7 @@ describe('InputSlider[new]', () => {
             await fixture.whenStable();
 
             expect(testComponent.control.value).toBe(value);
-            expect(getTextInputVisualValue()).toBe(expectedContent);
+            expect(getTextInputCustomValue()).toBe(expectedContent);
         };
 
         it('100 => MAX', async () => {
@@ -290,6 +290,21 @@ describe('InputSlider[new]', () => {
                 await fixture.whenStable();
                 expect(testComponent.control.value).toBe(11);
             });
+
+            it('cannot set value less than min using ArrowDown', async () => {
+                inputPO.sendTextAndBlur('10');
+
+                await fixture.whenStable();
+
+                inputPO.focus();
+                inputPO.sendKeydown('arrowDown');
+
+                fixture.detectChanges();
+                await fixture.whenStable();
+
+                expect(testComponent.control.value).toBe(10);
+                expect(inputPO.value).toBe('10');
+            });
         });
 
         describe('negative numbers', () => {
@@ -335,6 +350,21 @@ describe('InputSlider[new]', () => {
         it('can type large negative number', () => {
             inputPO.sendTextAndBlur('-200');
             expect(testComponent.control.value).toBe(-200);
+        });
+
+        it('cannot set value more than max using ArrowUp', async () => {
+            inputPO.sendTextAndBlur('100');
+
+            await fixture.whenStable();
+
+            inputPO.focus();
+            inputPO.sendKeydown('arrowUp');
+
+            fixture.detectChanges();
+            await fixture.whenStable();
+
+            expect(testComponent.control.value).toBe(100);
+            expect(inputPO.value).toBe('100');
         });
     });
 
@@ -383,10 +413,10 @@ describe('InputSlider[new]', () => {
     });
 });
 
-function getTextInputVisualValue(): string {
+function getTextInputCustomValue(): string {
     return (
-        pageObject.getByAutomationId(testContext.textInputValueAutoId)?.nativeElement
-            .textContent || ''
+        pageObject.getByAutomationId(testContext.textInputCustomValueAutoId)
+            ?.nativeElement.textContent || ''
     );
 }
 

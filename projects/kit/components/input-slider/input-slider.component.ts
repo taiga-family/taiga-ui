@@ -244,7 +244,7 @@ export class TuiInputSliderComponent
             this.safelyUpdateValue(value);
         }
 
-        this.updateTextInputValue(value);
+        this.updateTextInputValue(this.valueGuard(value));
     }
 
     onFocused(focused: boolean) {
