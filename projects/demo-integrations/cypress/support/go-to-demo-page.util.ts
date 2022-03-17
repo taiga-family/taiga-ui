@@ -1,5 +1,6 @@
 import {DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION, NIGHT_THEME_KEY} from './shared.entities';
 import {stubExternalIcons} from './stub-external-icons.util';
+import {stubMetrics} from './stub-metrics';
 import {waitAllRequests} from './wait-requests.util';
 
 const NEXT_URL_STORAGE_KEY = 'env';
@@ -41,6 +42,7 @@ export const goToDemoPage = (path: string, options: Options = {}) => {
     } = options;
 
     stubExternalIcons();
+    stubMetrics();
 
     cy.visit('/', {
         onBeforeLoad: window => {
