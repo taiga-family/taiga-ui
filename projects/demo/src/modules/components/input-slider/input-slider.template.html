@@ -104,24 +104,37 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-slider
+                    new
                     [formControl]="control"
-                    [focusable]="focusable"
                     [min]="min"
                     [max]="max"
-                    [minLabel]="minLabel"
-                    [maxLabel]="maxLabel"
-                    [segments]="segments"
-                    [size]="size"
-                    [keySteps]="keySteps"
-                    [pluralize]="pluralize"
-                    [segmentsPluralize]="segmentsPluralize"
-                    [steps]="steps"
                     [quantum]="quantum"
+                    [steps]="steps"
+                    [segments]="segments"
+                    [keySteps]="keySteps"
+                    [valueContent]="valueContent"
+                    [prefix]="prefix"
+                    [postfix]="postfix"
+                    [focusable]="focusable"
                     [readOnly]="readOnly"
-                    [secondary]="secondary"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoFocused]="pseudoFocused"
+                    [pseudoHovered]="pseudoHovered"
+                    [pseudoPressed]="pseudoPressed"
+                    [tuiTextfieldAutocomplete]="autocomplete"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldCustomContent]="customContentSelected"
+                    [tuiTextfieldExampleText]="exampleText"
+                    [tuiTextfieldSize]="size"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintMode]="hintMode"
+                    [size]="size"
+                    [pluralize]="pluralize"
+                    [segmentsPluralize]="segmentsPluralize"
+                    [minLabel]="minLabel"
+                    [maxLabel]="maxLabel"
+                    [secondary]="secondary"
                 >
                     Range
                 </tui-input-slider>
@@ -137,16 +150,6 @@
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="keySteps"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiKeySteps"
-                [documentationPropertyValues]="keyStepsVariants"
-                [(documentationPropertyValue)]="keySteps"
-            >
-                Key steps to bind slider position and value
             </ng-template>
             <ng-template
                 i18n
@@ -170,44 +173,6 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="minLabel"
-                documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="minLabelVariants"
-                [(documentationPropertyValue)]="minLabel"
-            >
-                Label for min value
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="maxLabel"
-                documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="maxLabelVariants"
-                [(documentationPropertyValue)]="maxLabel"
-            >
-                Label for max value
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="pluralize"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiPluralize | Record<string, string>"
-                [documentationPropertyValues]="pluralizeVariants"
-                [(documentationPropertyValue)]="pluralize"
-            >
-                Plural forms for labels. TuiPluralize array is deprecated. Use
-                object that mimics the
-                <a
-                    tuiLink
-                    href="https://unicode-org.github.io/icu/userguide/format_parse/messages/"
-                >
-                    ICU format
-                </a>
-                for i18nPlural
-            </ng-template>
-            <ng-template
-                i18n
                 documentationPropertyName="quantum"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -218,33 +183,118 @@
             </ng-template>
             <ng-template
                 i18n
+                documentationPropertyName="steps"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="steps"
+            >
+                Number of actual discrete slider steps
+
+                <p>
+                    If property is not set (i.e. equals to default value
+                    <strong>0</strong>
+                    ), number of steps equals
+                    <code>(max&nbsp;-&nbsp;min)&nbsp;/&nbsp;quantum</code>
+                </p>
+            </ng-template>
+            <ng-template
+                i18n
                 documentationPropertyName="segments"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
-                [documentationPropertyValues]="segmentsVariants"
                 [(documentationPropertyValue)]="segments"
             >
-                A number of visual segments
+                A number of visual segments (use
+                <code>1</code>
+                for no ticks)
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="keySteps"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiKeySteps"
+                [documentationPropertyValues]="keyStepsVariants"
+                [(documentationPropertyValue)]="keySteps"
+            >
+                Key steps to bind slider position and value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="valueContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="valueContentVariants"
+                [(documentationPropertyValue)]="valueContent"
+            >
+                A template for custom view of selected value.
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="prefix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="prefix"
+            >
+                A prefix symbol, like currency
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="postfix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="postfix"
+            >
+                A postfix symbol, like currency
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="minLabel"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyDeprecated]="true"
+                [documentationPropertyValues]="minLabelVariants"
+                [(documentationPropertyValue)]="minLabel"
+            >
+                Label for min value.
+
+                <p>
+                    Use
+                    <code>valueContent</code>
+                    instead.
+                </p>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="maxLabel"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyDeprecated]="true"
+                [documentationPropertyValues]="maxLabelVariants"
+                [(documentationPropertyValue)]="maxLabel"
+            >
+                Label for max value.
+
+                <p>
+                    Use
+                    <code>valueContent</code>
+                    instead.
+                </p>
             </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
+                [documentationPropertyDeprecated]="true"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="steps"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="stepsVariants"
-                [(documentationPropertyValue)]="steps"
-            >
-                Number of actual discrete slider steps
+                <p>
+                    Use
+                    <code>tuiTextfieldSize</code>
+                    instead.
+                </p>
             </ng-template>
             <ng-template
                 i18n
@@ -264,6 +314,31 @@
             </ng-template>
             <ng-template
                 i18n
+                documentationPropertyName="pluralize"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiPluralize | Record<string, string>"
+                [documentationPropertyDeprecated]="true"
+                [documentationPropertyValues]="pluralizeVariants"
+                [(documentationPropertyValue)]="pluralize"
+            >
+                Plural forms for labels. TuiPluralize array is deprecated. Use
+                object that mimics the
+                <a
+                    tuiLink
+                    href="https://unicode-org.github.io/icu/userguide/format_parse/messages/"
+                >
+                    ICU format
+                </a>
+                for i18nPlural.
+
+                <p>
+                    Use
+                    <code>postfix</code>
+                    instead.
+                </p>
+            </ng-template>
+            <ng-template
+                i18n
                 documentationPropertyName="segmentsPluralize"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiPluralize"
@@ -273,6 +348,11 @@
             >
                 Plural forms for
                 <code>segments</code>
+
+                <p>
+                    See examples how create ticks without this property (outside
+                    of the component).
+                </p>
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>

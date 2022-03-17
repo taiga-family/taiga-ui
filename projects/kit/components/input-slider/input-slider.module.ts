@@ -12,9 +12,11 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiFormatNumberPipeModule,
+    TuiTextfieldControllerModule,
     TuiTooltipModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
+import {TuiInputNumberModule} from '@taiga-ui/kit/components/input-number';
 import {TuiSliderModule} from '@taiga-ui/kit/components/slider';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TextMaskModule} from 'angular2-text-mask';
@@ -42,6 +44,8 @@ import {
         TuiFormatNumberPipeModule,
         TuiRepeatTimesModule,
         PolymorpheusModule,
+        TuiInputNumberModule,
+        TuiTextfieldControllerModule,
     ],
     declarations: [TuiInputSliderComponent, TuiNewInputSliderDirective],
     exports: [TuiInputSliderComponent, TuiNewInputSliderDirective],

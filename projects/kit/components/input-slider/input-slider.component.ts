@@ -5,7 +5,6 @@ import {
     Directive,
     ElementRef,
     forwardRef,
-    HostBinding,
     Inject,
     Input,
     Optional,
@@ -14,34 +13,38 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    clamp,
     isNativeFocused,
+    round,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    tuiAssert,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
-    formatNumber,
+    getFractionPartPadded,
     HINT_CONTROLLER_PROVIDER,
-    maskedMoneyValueIsEmpty,
-    maskedNumberStringToNumber,
     NumberFormatSettings,
     TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_HINT_WATCHED_CONTROLLER,
     TUI_NUMBER_FORMAT,
-    TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiHintControllerDirective,
-    TuiModeDirective,
+    TuiDecimalT,
+    TuiSizeL,
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
+import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
 import {
     TuiSliderComponent,
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
+import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TUI_FROM_TO_TEXTS} from '@taiga-ui/kit/tokens';
+import {TuiKeySteps} from '@taiga-ui/kit/types';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 /**
@@ -77,15 +80,63 @@ export class TuiNewInputSliderDirective {}
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })
+/**
+ * TODO replace `extends AbstractTuiInputSlider<number>` by `extends AbstractTuiControl<number> implements TuiWithOptionalMinMax<number>`
+ * in v3.0
+ */
 export class TuiInputSliderComponent
     extends AbstractTuiInputSlider<number>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<HTMLInputElement>;
+    @ViewChild(TuiInputNumberComponent)
+    private readonly inputNumberRef?: TuiInputNumberComponent;
 
     @ViewChild(TuiSliderComponent, {read: ElementRef})
     private readonly sliderRef?: ElementRef<HTMLInputElement>;
+
+    @Input()
+    @tuiDefaultProp()
+    min = 0;
+
+    @Input()
+    @tuiDefaultProp()
+    max = Infinity;
+
+    @Input()
+    @tuiDefaultProp(quantumAssertion, 'Quantum must be positive')
+    quantum = 1;
+
+    @Input()
+    @tuiDefaultProp()
+    steps = 0;
+
+    @Input()
+    @tuiDefaultProp()
+    segments = 0;
+
+    @Input()
+    @tuiDefaultProp()
+    keySteps: TuiKeySteps | null = null;
+
+    @Input()
+    @tuiDefaultProp()
+    valueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+
+    @Input()
+    @tuiDefaultProp()
+    prefix = '';
+
+    @Input()
+    @tuiDefaultProp()
+    postfix = '';
+
+    /**
+     * @deprecated use `tuiTextfieldSize` instead
+     * TODO delete in v3.0
+     */
+    @Input()
+    @tuiDefaultProp()
+    size: TuiSizeL = 'l';
 
     /**
      * @deprecated use `tuiTextfieldCustomContent` instead
@@ -101,17 +152,10 @@ export class TuiInputSliderComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Optional()
-        @Inject(TuiModeDirective)
-        protected readonly modeDirective: TuiModeDirective | null,
-        @Inject(TUI_HINT_WATCHED_CONTROLLER)
-        readonly hintController: TuiHintControllerDirective,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Inject(TUI_NUMBER_FORMAT)
         protected readonly numberFormat: NumberFormatSettings,
-        @Inject(TUI_TEXTFIELD_APPEARANCE)
-        readonly appearance: string,
         @Inject(TUI_FROM_TO_TEXTS) readonly fromToTexts$: Observable<[string, string]>,
         @Optional()
         @Inject(TuiNewInputSliderDirective)
@@ -121,9 +165,9 @@ export class TuiInputSliderComponent
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return !this.focusableElement || this.computedDisabled
+        return !this.inputNumberRef?.nativeFocusableElement || this.computedDisabled
             ? null
-            : this.focusableElement.nativeElement;
+            : this.inputNumberRef.nativeFocusableElement;
     }
 
     get focused(): boolean {
@@ -133,149 +177,128 @@ export class TuiInputSliderComponent
         );
     }
 
-    @HostBinding('class._has-tooltip')
-    get hasTooltip(): boolean {
-        return !!this.hintController.content && !this.disabled;
+    get computedSteps(): number {
+        return this.steps || (this.max - this.min) / this.quantum;
     }
 
-    @HostBinding('class._min-label')
-    get showMinLabel(): boolean {
-        return !this.focused && this.value === this.min && !!this.minLabel;
+    get precision(): number {
+        return getFractionPartPadded(this.quantum).length;
     }
 
-    @HostBinding('class._max-label')
-    get showMaxLabel(): boolean {
-        return !this.focused && this.value === this.max && !!this.maxLabel;
+    get decimal(): TuiDecimalT {
+        return this.precision ? 'not-zero' : 'never';
     }
 
-    get computedValue(): string {
-        if (this.focused && this.isInputValueNotFinished) {
-            return this.inputValue;
+    /**
+     * TODO remove old property `size` in v3.0
+     */
+    get computedSize(): TuiSizeL {
+        if (this.isNew) {
+            tuiAssert.assert(
+                this.controller.size !== 's',
+                "Size 's' is not supported by this input.",
+            );
+
+            return this.controller.size === 'l' ? 'l' : 'm';
         }
 
-        return this.formattedValue;
+        return this.size;
     }
 
-    get showValue(): boolean {
-        return !this.showMinLabel && !this.showMaxLabel;
-    }
-
-    get inputValue(): string {
-        return this.focusableElement ? this.focusableElement.nativeElement.value : '';
-    }
-
-    set inputValue(value: string) {
-        if (this.focusableElement) {
-            this.focusableElement.nativeElement.value = value;
-        }
+    /**
+     * @deprecated for backward compatibility
+     * TODO replace by just `this.valueContent` in v3.0
+     */
+    get computedValueContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
+        return this.minLabel || this.maxLabel
+            ? legacyMinMaxLabel(this)
+            : this.valueContent;
     }
 
     focusTextInput() {
-        if (this.focusableElement) {
-            setNativeFocused(this.focusableElement.nativeElement);
+        const focusableElement = this.inputNumberRef?.nativeFocusableElement;
+
+        if (focusableElement) {
+            setNativeFocused(focusableElement);
         }
     }
 
-    onKeyDownArrowUp(event: KeyboardEvent) {
+    safelyUpdateValue(value: number | null) {
+        this.updateValue(this.valueGuard(value ?? this.safeCurrentValue));
+    }
+
+    onVerticalArrowKeyDown(coefficient: number) {
         if (this.readOnly) {
             return;
         }
 
-        event.preventDefault();
-        this.processStep(true);
-        this.inputValue = this.formattedValue;
-    }
+        const value = this.value + coefficient * this.step;
 
-    onKeyDownArrowDown(event: KeyboardEvent) {
-        if (this.readOnly) {
-            return;
+        if (value !== this.value) {
+            this.safelyUpdateValue(value);
         }
 
-        event.preventDefault();
-        this.processStep(false);
-        this.inputValue = this.formattedValue;
+        this.updateTextInputValue(this.valueGuard(value));
     }
 
     onFocused(focused: boolean) {
+        if (!focused && !this.textInputValue) {
+            this.updateTextInputValue(this.safeCurrentValue);
+        }
+
         this.updateFocused(focused);
-
-        if (focused) {
-            return;
-        }
-
-        const inputValue = maskedNumberStringToNumber(
-            this.computedValue,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
-        const value = isNaN(inputValue) ? this.min : this.valueGuard(inputValue);
-
-        this.updateValue(value);
-        this.inputValue = this.formattedValue;
     }
 
-    onValue(value: string) {
-        const capped = this.capInputValue(value);
-        const postfix = value.slice(-1)[0] === ',' ? ',' : '';
-
-        if (maskedMoneyValueIsEmpty(value) || capped === null) {
-            return;
-        }
-
-        const newValue = this.formatNumber(capped) + postfix;
-
-        if (value !== newValue) {
-            this.inputValue = newValue;
-        }
-
-        this.updateValue(capped);
+    onPressed(pressed: boolean) {
+        this.updatePressed(pressed);
     }
 
-    onSliderValue(value: number) {
-        this.updateValue(this.valueGuard(value));
-        this.inputValue = this.formattedValue;
+    onHovered(hovered: boolean) {
+        this.updateHovered(hovered);
+    }
+
+    private get textInputValue(): string {
+        return this.inputNumberRef?.nativeValue || '';
     }
 
     protected getFallbackValue(): number {
         return 0;
     }
 
-    private get formattedValue(): string {
-        return this.formatNumber(this.value);
-    }
-
-    private get isInputValueNotFinished(): boolean {
-        if (this.inputValue === '') {
-            return true;
-        }
-
-        const nativeNumberValue = maskedNumberStringToNumber(
-            this.inputValue,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
+    protected valueGuard(value: number): number {
+        const roundedValue = round(
+            Math.round(value / this.quantum) * this.quantum,
+            TUI_FLOATING_PRECISION,
         );
 
-        return nativeNumberValue < 0
-            ? nativeNumberValue > this.max
-            : nativeNumberValue < this.min;
+        return clamp(roundedValue, this.min, this.max);
     }
 
-    private processStep(increment: boolean) {
-        const value = this.valueGuard(
-            increment ? this.value + this.step : this.value - this.step,
-        );
-
-        if (value !== this.value) {
-            this.updateValue(value);
+    private updateTextInputValue(value: number) {
+        if (this.inputNumberRef) {
+            this.inputNumberRef.nativeValue =
+                this.inputNumberRef.getFormattedValue(value);
         }
     }
+}
 
-    private formatNumber(value: number): string {
-        return formatNumber(
-            value,
-            null,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
-    }
+function quantumAssertion(quantum: number): boolean {
+    return quantum > 0;
+}
+
+/**
+ * @deprecated helper for backward compatibility.
+ * TODO remove in v3.0
+ */
+function legacyMinMaxLabel({min, max, minLabel, maxLabel}: TuiInputSliderComponent) {
+    return ({$implicit: value}: TuiContextWithImplicit<number>) => {
+        switch (value) {
+            case min:
+                return minLabel || value;
+            case max:
+                return maxLabel || value;
+            default:
+                return value;
+        }
+    };
 }

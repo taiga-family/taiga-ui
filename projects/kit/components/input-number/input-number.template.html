@@ -2,8 +2,9 @@
     tuiValueAccessor
     tuiTextfieldInputMode="decimal"
     class="textfield"
-    [pseudoHovered]="pseudoHovered"
+    [pseudoHovered]="computedHovered"
     [pseudoFocused]="computedFocused"
+    [pseudoPressed]="computedPressed"
     [invalid]="computedInvalid"
     [tuiTextfieldMaxLength]="calculatedMaxLength"
     [readOnly]="readOnly"
@@ -21,4 +22,13 @@
 >
     <ng-content></ng-content>
     <ng-content select="input" ngProjectAs="input"></ng-content>
+    <div
+        *ngIf="polymorpheusValueContent"
+        polymorpheus-outlet
+        [content]="valueContent"
+    ></div>
 </tui-primitive-textfield>
+
+<ng-template #valueContent>
+    <ng-content select="[polymorpheus-outlet]"></ng-content>
+</ng-template>

@@ -8,4 +8,5 @@ export const EDITOR_PAGE_URL = 'components/editor-new';
 export const MULTI_SELECT_PAGE_URL = 'components/multi-select';
 export const SELECT_PAGE_URL = 'components/select';
 export const SLIDER_PAGE_URL = 'components/slider';
+export const INPUT_SLIDER_PAGE_URL = 'components/input-slider';
 export const INPUT_PAGE_URL = 'components/input';
