@@ -23,7 +23,6 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     getFractionPartPadded,
@@ -214,11 +213,6 @@ export class TuiInputSliderComponent
         return this.minLabel || this.maxLabel
             ? legacyMinMaxLabel(this)
             : this.valueContent;
-    }
-
-    @tuiPure
-    computeContext(value: number): TuiContextWithImplicit<number> {
-        return {$implicit: value};
     }
 
     focusTextInput() {

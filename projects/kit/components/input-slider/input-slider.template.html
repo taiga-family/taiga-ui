@@ -10,8 +10,8 @@
     [tuiTextfieldLabelOutside]="computedSize !== 'l'"
     [readOnly]="readOnly"
     [pseudoFocused]="computedFocused"
-    [pseudoHovered]="pseudoHovered"
-    [pseudoPressed]="pseudoPressed"
+    [pseudoHovered]="computedHovered"
+    [pseudoPressed]="computedPressed"
     [pseudoInvalid]="pseudoInvalid"
     [ngModel]="value"
     (ngModelChange)="safelyUpdateValue($event)"
@@ -27,7 +27,7 @@
         polymorpheus-outlet
         automation-id="tui-input-slider__value-content"
         [content]="computedValueContent"
-        [context]="computeContext(value)"
+        [context]="{$implicit: value}"
     ></div>
 </tui-input-number>
 
