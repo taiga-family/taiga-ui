@@ -13,6 +13,7 @@ import {TuiPreviewModule} from '@taiga-ui/addon-preview';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
 import {TuiDialogModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {TuiPdfViewerModule} from '@taiga-ui/kit';
+import {MetrikaModule} from 'ng-yandex-metrika';
 import {MarkdownModule} from 'ngx-markdown';
 
 import {CustomHostModule} from '../customization/portals/examples/1/portal/сustom-host.module';
@@ -50,6 +51,7 @@ import {VersionManagerModule} from './version-manager/version-manager.module';
         VersionManagerModule,
         CustomHostModule,
         HttpClientModule,
+        MetrikaModule.forRoot({id: 87890624, webvisor: false, clickmap: false}),
         MarkdownModule.forRoot({
             loader: HttpClient,
         }),
