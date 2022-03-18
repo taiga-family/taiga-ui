@@ -63,6 +63,14 @@
 
     :not(:disabled)& {
         cursor: ew-resize;
+
+        &:hover {
+            background: var(--tui-primary-hover);
+        }
+
+        &:active {
+            background: var(--tui-primary-active);
+        }
     }
 
     :focus-visible& {
