@@ -63,8 +63,7 @@ export class AppComponent {
     private initRouterSubscribtion() {
         this.router.events
             .pipe(
-                filter(event => event instanceof NavigationEnd),
-                map(event => event as NavigationEnd),
+                filter((event): event is NavigationEnd => event instanceof NavigationEnd),
                 takeUntil(this.destroy$),
             )
             .subscribe(event => {

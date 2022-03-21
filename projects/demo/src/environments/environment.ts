@@ -6,4 +6,5 @@
 export const environment = {
     production: false,
     hmr: false,
+    ym: 87890624,
 };

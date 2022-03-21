@@ -16,6 +16,7 @@ import {TuiPdfViewerModule} from '@taiga-ui/kit';
 import {MetrikaModule} from 'ng-yandex-metrika';
 import {MarkdownModule} from 'ngx-markdown';
 
+import {environment} from '../../environments/environment';
 import {CustomHostModule} from '../customization/portals/examples/1/portal/сustom-host.module';
 import {AppComponent} from './app.component';
 import {APP_PROVIDERS} from './app.providers';
@@ -51,7 +52,7 @@ import {VersionManagerModule} from './version-manager/version-manager.module';
         VersionManagerModule,
         CustomHostModule,
         HttpClientModule,
-        MetrikaModule.forRoot({id: 87890624, webvisor: false, clickmap: false}),
+        MetrikaModule.forRoot({id: environment.ym, webvisor: false, clickmap: false}),
         MarkdownModule.forRoot({
             loader: HttpClient,
         }),
