@@ -109,7 +109,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         value.append({month: offset});
 
     ngOnInit() {
-        this.updateViewedMonths();
+        this.setInitialMonths();
     }
 
     onSectionFirstViewedMonth(month: TuiMonth) {
@@ -134,6 +134,42 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
 
     onDayClick(day: TuiDay) {
         this.dayClick.emit(day);
+    }
+
+    private setInitialMonths() {
+        if (!this.value) {
+            this.userViewedMonthSecond = this.updatedViewedMonthSecond(
+                this.defaultViewedMonthSecond,
+            );
+
+            this.userViewedMonthFirst = this.updatedViewedMonthFirst(
+                this.defaultViewedMonthFirst,
+            );
+        }
+    }
+
+    private updatedViewedMonthSecond(month: TuiMonth) {
+        if (month.monthSameOrAfter(this.max)) {
+            return this.max;
+        }
+
+        if (month.monthBefore(this.min)) {
+            return this.min.append({month: 1});
+        }
+
+        return month;
+    }
+
+    private updatedViewedMonthFirst(month: TuiMonth) {
+        if (month.monthSameOrAfter(this.userViewedMonthSecond)) {
+            return this.userViewedMonthSecond.append({month: -1});
+        }
+
+        if (month.monthSameOrBefore(this.min)) {
+            return this.min;
+        }
+
+        return month;
     }
 
     private updateViewedMonths() {

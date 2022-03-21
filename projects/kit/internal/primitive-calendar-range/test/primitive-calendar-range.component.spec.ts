@@ -48,6 +48,22 @@ describe('PrimitiveRangeCalendar component', () => {
                 TuiMonth.currentLocal().formattedMonth,
             );
         });
+
+        it('Returns max when initialized with max less than default', () => {
+            const maxDate = new TuiDay(2000, 1, 1);
+
+            component.max = maxDate;
+            component.ngOnInit();
+            expect(component.userViewedMonthFirst).toEqual(maxDate.append({month: -1}));
+        });
+
+        it('Returns min when initialized with default less than min', () => {
+            const minDate = new TuiDay(2024, 1, 1);
+
+            component.min = minDate;
+            component.ngOnInit();
+            expect(component.userViewedMonthFirst).toEqual(minDate);
+        });
     });
 
     describe('viewedMonthSecond', () => {
@@ -65,6 +81,22 @@ describe('PrimitiveRangeCalendar component', () => {
             expect(component.userViewedMonthSecond.formattedMonth).toBe(
                 formattedNextMonth,
             );
+        });
+
+        it('Returns max when initialized with max less than default', () => {
+            const maxDate = new TuiDay(2000, 1, 1);
+
+            component.max = maxDate;
+            component.ngOnInit();
+            expect(component.userViewedMonthSecond).toEqual(maxDate);
+        });
+
+        it('Returns min when initialized with default less than min', () => {
+            const minDate = new TuiDay(2024, 1, 1);
+
+            component.min = minDate;
+            component.ngOnInit();
+            expect(component.userViewedMonthSecond).toEqual(minDate.append({month: 1}));
         });
     });
 
