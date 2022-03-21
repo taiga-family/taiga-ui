@@ -109,7 +109,6 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         value.append({month: offset});
 
     ngOnInit() {
-        this.updateViewedMonths();
         this.setInitialMonths();
     }
 
