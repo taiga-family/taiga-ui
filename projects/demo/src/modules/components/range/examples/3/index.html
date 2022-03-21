@@ -1,0 +1,21 @@
+<tui-range
+    id="range-with-segments"
+    new
+    size="m"
+    class="range"
+    [max]="1000"
+    [quantum]="250"
+    [segments]="4"
+    [(ngModel)]="value"
+></tui-range>
+
+<div class="ticks-labels">
+    <span *ngFor="let label of labels">${{label}}</span>
+</div>
+
+<p class="tui-space_top-12 tui-space_bottom-0">
+    Control value:
+    <output for="range-with-segments">
+        <code>{{value | json}}</code>
+    </output>
+</p>

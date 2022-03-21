@@ -71,6 +71,18 @@ export class TuiSliderOldComponent
         return 100 - 100 * this.getFractionFromValue(this.value);
     }
 
+    processValue(value: number) {
+        this.updateValue(this.valueGuard(value));
+    }
+
+    decrement() {
+        this.processStep(false);
+    }
+
+    increment() {
+        this.processStep(true);
+    }
+
     protected getFallbackValue(): number {
         return 0;
     }
@@ -83,9 +95,5 @@ export class TuiSliderOldComponent
         );
 
         this.processValue(value);
-    }
-
-    protected processValue(value: number) {
-        this.updateValue(this.valueGuard(value));
     }
 }
