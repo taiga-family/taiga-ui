@@ -90,6 +90,14 @@ export const BASE: ReadonlyArray<Color> = [
         name: '--tui-clear-active',
         desc: $localize`Active state of filling color of interface elements on colored background`,
     },
+    {
+        name: '--tui-elevation-01',
+        desc: $localize`Background color of elevated elements: dialogs, dropdowns`,
+    },
+    {
+        name: '--tui-elevation-02',
+        desc: $localize`Background color of elevated elements: islands inside dialogs`,
+    },
 ];
 
 export const BASE_NIGHT: ReadonlyArray<Color> = [
