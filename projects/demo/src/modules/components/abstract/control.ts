@@ -11,6 +11,7 @@ import {
     TuiSizeS,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ExampleTuiDropdown} from './dropdown-controller-documentation/dropdown-controller-documentation.component';
 import {AbstractExampleTuiInteractive} from './interactive';
@@ -78,9 +79,15 @@ export abstract class AbstractExampleTuiControl
 
     readonly inputModeVariants: readonly TuiInputModeT[] = ['text', 'numeric'];
 
-    readonly customContentVariants = [CUSTOM_SVG_NAME, `<span>LongTextContent</span>`];
+    readonly customContentVariants: PolymorpheusContent[] = [
+        CUSTOM_SVG_NAME,
+        'tuiIconSearchLarge',
+        'tuiIconCalendarLarge',
+        'tuiIconVisaMono',
+        'tuiIconMastercardMono',
+    ];
 
-    customContentSelected = null;
+    customContentSelected: PolymorpheusContent | null = null;
 
     inputMode = this.inputModeVariants[0];
 
@@ -134,7 +141,7 @@ export abstract class AbstractExampleTuiControl
 
     dropdownMaxHeight = DEFAULT_MAX_HEIGHT;
 
-    get customContent(): string | null {
+    get customContent(): PolymorpheusContent | null {
         return this.customContentSelected === CUSTOM_SVG_NAME
             ? CUSTOM_SVG
             : this.customContentSelected;
