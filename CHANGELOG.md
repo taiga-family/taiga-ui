@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.38.0](https://github.com/tinkoff/taiga-ui/compare/v2.37.1...v2.38.0) (2022-03-21)
+
+### Features
+
+- **core:** `Wrapper` switch to directive and support CSS states
+  ([#1515](https://github.com/tinkoff/taiga-ui/issues/1515))
+  ([7de2823](https://github.com/tinkoff/taiga-ui/commit/7de2823572b64fa1a67be81332ca0586f7d6d320))
+
+### Bug Fixes
+
+- **core:** `PrimitiveTextfield` built-in icons inside `tuiTextfieldCustomContent`
+  ([#1523](https://github.com/tinkoff/taiga-ui/issues/1523))
+  ([c864a95](https://github.com/tinkoff/taiga-ui/commit/c864a95c68826d3aa489a4698ec4894f41366ab7))
+- **kit:** `InputDateRange` fix initial months ([#1530](https://github.com/tinkoff/taiga-ui/issues/1530))
+  ([677b875](https://github.com/tinkoff/taiga-ui/commit/677b875d95ed73740a41cd7d3d3cdf69bfc12c3b))
+
 ### [2.37.1](https://github.com/tinkoff/taiga-ui/compare/v2.37.0...v2.37.1) (2022-03-15)
 
 ### Bug Fixes
