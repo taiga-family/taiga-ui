@@ -28,5 +28,28 @@
         "@angular/core": ">=9.0.0",
         "@angular/forms": ">=9.0.0",
         "rxjs": ">=6.0.0"
+    },
+    "devDependencies": {
+        "@angular-devkit/schematics": "^9.1.12",
+        "ng-morph": "^2.0.0"
+    },
+    "schematics": "./schematics/collection.json",
+    "ng-update": {
+        "migrations": "./schematics/migration.json",
+        "packageGroup": [
+            "@taiga-ui/i18n",
+            "@taiga-ui/cdk",
+            "@taiga-ui/core",
+            "@taiga-ui/kit",
+            "@taiga-ui/addon-doc",
+            "@taiga-ui/addon-charts",
+            "@taiga-ui/addon-commerce",
+            "@taiga-ui/icons",
+            "@taiga-ui/addon-preview",
+            "@taiga-ui/addon-tablebars",
+            "@taiga-ui/addon-table",
+            "@taiga-ui/addon-editor",
+            "@taiga-ui/addon-mobile"
+        ]
     }
 }
