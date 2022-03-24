@@ -47,6 +47,20 @@ jobs:
           branch: release/${{ steps.run-release.outputs.new_version }}
           title: 'Release/${{ steps.run-release.outputs.new_version }}'
 
+      - name: Generate Release Body
+        id: generare_body
+        run: |
+          npx extract-changelog-release > RELEASE_BODY.md
+          echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          release_name: Release ${{ steps.generare_body.outputs.tag_name }}
+          tag_name: ${{ steps.generare_body.outputs.tag_name }}
+          bodyFile: 'RELEASE_BODY.md'
+          token: ${{ secrets.GITHUB_TOKEN }}
+
 concurrency:
   group: create-release-${{ github.head_ref }}
   cancel-in-progress: true
