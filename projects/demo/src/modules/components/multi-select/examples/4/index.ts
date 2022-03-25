@@ -49,7 +49,7 @@ export class TuiMultiSelectExample4 {
         startWith(new Map()),
         map(
             map => (id: number | TuiContextWithImplicit<number>) =>
-                (isNumber(id) ? map.get(id) : map.get(id.$implicit)) || '',
+                (isNumber(id) ? map.get(id) : map.get(id.$implicit)) || 'Loading...',
         ),
     );
 
