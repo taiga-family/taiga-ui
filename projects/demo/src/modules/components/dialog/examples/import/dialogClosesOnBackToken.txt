@@ -5,6 +5,6 @@ import {TUI_DIALOG_CLOSES_ON_BACK} from '@taiga-ui/cdk';
 providers: [
     {
         provide: TUI_DIALOG_CLOSES_ON_BACK,
-        useValue: of(false),
+        useValue: of(true),
     }
 ]
