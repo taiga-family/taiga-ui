@@ -1,3 +1,4 @@
+export * from './alert-options';
 export * from './animation-options';
 export * from './data-list-accessor';
 export * from './data-list-host';

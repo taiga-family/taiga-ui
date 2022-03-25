@@ -8,12 +8,11 @@
         <ng-content></ng-content>
     </div>
     <ng-content select="tuiOverContent"></ng-content>
-    <tui-dialog-host *ngIf="dialogs && dialogs.length"></tui-dialog-host>
+    <tui-dialog-host></tui-dialog-host>
     <ng-content select="tuiOverDialogs"></ng-content>
-    <ng-container
-        *ngIf="notificationsHost"
-        [ngComponentOutlet]="notificationsHost"
-    ></ng-container>
+    <tui-alert-host></tui-alert-host>
+    <ng-content select="tuiOverAlerts"></ng-content>
+    <!-- TODO: Remove-->
     <ng-content select="tuiOverNotifications"></ng-content>
 </tui-dropdown-host>
 <ng-content select="tuiOverPortals"></ng-content>

@@ -1,15 +1,9 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core/enums';
-import {TuiNotificationAutoClose} from '@taiga-ui/core/interfaces';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
 
-export interface TuiNotificationDefaultOptions {
-    readonly autoClose: TuiNotificationAutoClose;
-    readonly label: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>>;
-    readonly status: TuiNotification;
-    readonly hasIcon: boolean;
-    readonly hasCloseButton: boolean;
+export interface TuiNotificationDefaultOptions
+    extends Omit<TuiAlertOptions<unknown>, 'data'> {
     readonly defaultAutoCloseTime: number;
 }
 

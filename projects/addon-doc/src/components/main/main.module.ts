@@ -3,8 +3,8 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {
+    TuiAlertModule,
     TuiDialogModule,
-    TuiNotificationsModule,
     TuiRootModule,
     TuiThemeNightModule,
 } from '@taiga-ui/core';
@@ -24,7 +24,7 @@ import {TuiDocMainComponent} from './main.component';
         TuiDocHeaderModule,
         TuiRootModule,
         TuiDialogModule,
-        TuiNotificationsModule,
+        TuiAlertModule,
         TuiDocNavigationModule,
     ],
     declarations: [TuiDocMainComponent],
