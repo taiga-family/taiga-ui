@@ -9,6 +9,7 @@ import {
 import {TuiAnimationOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
 
+import {AbstractTuiNotificationsService} from '../abstract.notifications';
 import {TuiNotificationsService} from '../notifications.service';
 
 @Component({
@@ -21,7 +22,8 @@ import {TuiNotificationsService} from '../notifications.service';
 export class TuiNotificationsHostComponent {
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
-        @Inject(TuiNotificationsService) readonly service: TuiNotificationsService,
+        @Inject(AbstractTuiNotificationsService)
+        readonly service: TuiNotificationsService,
     ) {}
 
     @tuiPure

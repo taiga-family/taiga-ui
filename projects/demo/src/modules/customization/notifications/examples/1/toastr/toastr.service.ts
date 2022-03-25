@@ -1,15 +1,14 @@
 import {Inject, Injectable} from '@angular/core';
 import {
+    AbstractTuiNotificationsService,
     TUI_NOTIFICATION_OPTIONS,
+    TuiNotificationAlertComponent,
     TuiNotificationDefaultOptions,
-} from '@taiga-ui/core/tokens';
+} from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {AbstractTuiNotificationsService} from './abstract.notifications';
-import {TuiNotificationAlertComponent} from './notification-alert/notification-alert.component';
-
 @Injectable({providedIn: 'root'})
-export class TuiNotificationsService extends AbstractTuiNotificationsService<TuiNotificationDefaultOptions> {
+export class ToastrService extends AbstractTuiNotificationsService<any> {
     protected readonly defaultOptions = this.options;
 
     component: PolymorpheusContent<any> = new PolymorpheusComponent<any, any>(

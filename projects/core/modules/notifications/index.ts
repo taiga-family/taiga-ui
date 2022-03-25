@@ -1,3 +1,4 @@
+export * from './abstract.notifications';
 export * from './notification-alert/Notification-alert';
 export * from './notification-alert/notification-alert.component';
 export * from './notification-alert/notification-alert.module';

@@ -5,12 +5,14 @@ import {
     Inject,
     Input,
     OnInit,
+    Optional,
 } from '@angular/core';
 import {isNumber, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_NOTIFICATION_OPTIONS,
     TuiNotificationDefaultOptions,
 } from '@taiga-ui/core/tokens';
+import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';
 
@@ -26,13 +28,16 @@ import {NotificationAlert} from './Notification-alert';
 })
 export class TuiNotificationAlertComponent<O, I> implements OnInit {
     @Input()
-    item!: NotificationAlert<O, I>;
+    item: NotificationAlert<O, I> = this.itemContext;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TUI_NOTIFICATION_OPTIONS)
         readonly options: TuiNotificationDefaultOptions,
+        @Optional()
+        @Inject(POLYMORPHEUS_CONTEXT)
+        readonly itemContext: NotificationAlert<O, I>,
     ) {}
 
     ngOnInit() {

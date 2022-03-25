@@ -911,6 +911,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Customization`,
+        title: `Notifications`,
+        keywords: 'alert, notification',
+        route: 'notifications',
+    },
+    {
+        section: $localize`Customization`,
         title: `Icon set`,
         keywords: 'icons, svg, theme, custom, style, sanitizer',
         route: 'icon-set',

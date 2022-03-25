@@ -6,11 +6,13 @@
         [@tuiHeightCollapseList]="getAnimation(items.length)"
         [@tuiSlideInRightList]="getAnimation(items.length)"
     >
-        <tui-notification-alert
+        <div
             *ngFor="let item of items"
+            polymorpheus-outlet
             role="alert"
             class="t-alert"
-            [item]="item"
-        ></tui-notification-alert>
+            [content]="service.component"
+            [context]="item"
+        ></div>
     </div>
 </ng-container>
