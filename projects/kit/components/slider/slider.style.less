@@ -39,6 +39,7 @@
         transparent var(--tui-slider-fill-percentage)
     );
     background-repeat: no-repeat;
+    background-color: @track-color;
 
     & when (@progress-filling = true) {
         background-image: @hide-first-tick, @ticks-gradient, @filling-progress-gradient;
@@ -99,7 +100,7 @@
     appearance: none;
     height: @track-height;
     padding: 0.4375rem 0; /* To catch click events nearby THIN input's track */
-    background: @track-color;
+    background-color: transparent;
     background-clip: content-box; /* To clip filling of paddings */
     outline: none;
     border-radius: var(--tui-radius-m);
