@@ -8,6 +8,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiDocCodeModule} from '../code/code.module';
 import {TuiDocCopyModule} from '../copy/copy.module';
 import {TuiDocExampleComponent} from './example.component';
+import {TuiDocExampleCapitalizePipe} from './example-capitalize.pipe';
 import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 
 @NgModule({
@@ -20,7 +21,15 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiDocCodeModule,
         PolymorpheusModule,
     ],
-    declarations: [TuiDocExampleComponent, TuiDocExampleGetTabsPipe],
-    exports: [TuiDocExampleComponent, TuiDocExampleGetTabsPipe],
+    declarations: [
+        TuiDocExampleComponent,
+        TuiDocExampleGetTabsPipe,
+        TuiDocExampleCapitalizePipe,
+    ],
+    exports: [
+        TuiDocExampleComponent,
+        TuiDocExampleGetTabsPipe,
+        TuiDocExampleCapitalizePipe,
+    ],
 })
 export class TuiDocExampleModule {}
