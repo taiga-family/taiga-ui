@@ -1,6 +1,7 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {inject} from '@angular/core';
 import {Title} from '@angular/platform-browser';
+import {WINDOW} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -12,10 +13,11 @@ import {
     TUI_DOC_TITLE,
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
-import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
+import {isInsideIframe, TUI_DIALOG_CLOSES_ON_BACK, TUI_IS_CYPRESS} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
+import {of} from 'rxjs';
 
 import {PROMPT_PROVIDER} from '../customization/dialogs/examples/1/prompt/prompt.service';
 import {SEE_ALSO_GROUPS} from './app.const';
@@ -106,5 +108,9 @@ export const APP_PROVIDERS = [
     {
         provide: TUI_ANIMATIONS_DURATION,
         useFactory: () => (inject(TUI_IS_CYPRESS) ? 0 : 300),
+    },
+    {
+        provide: TUI_DIALOG_CLOSES_ON_BACK,
+        useFactory: () => of(!isInsideIframe(inject(WINDOW))), // for cypress tests
     },
 ];

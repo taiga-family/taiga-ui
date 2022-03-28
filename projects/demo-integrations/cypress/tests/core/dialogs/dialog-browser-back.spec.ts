@@ -21,7 +21,7 @@ describe('Dialogs + browser back navigation', () => {
         cy.visit('/'); // need to check that browser back navigation is not broken after closing all dialogs
     });
 
-    describe('Not inside iframe', () => {
+    describe('feature is enabled', () => {
         beforeEach(() => {
             cy.goToDemoPage(DIALOG_PAGE_URL, {inIframe: false});
         });
@@ -76,7 +76,7 @@ describe('Dialogs + browser back navigation', () => {
         });
     });
 
-    describe('Inside iframe', () => {
+    describe('feature is disabled', () => {
         beforeEach(() => {
             cy.goToDemoPage(DIALOG_PAGE_URL, {inIframe: true});
         });
