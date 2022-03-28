@@ -52,4 +52,23 @@ describe('Input', () => {
             .should('be.visible')
             .matchImageSnapshot('04-custom-normal-icon-content-cleaner-hint');
     });
+
+    it('input overflow due to placeholder', () => {
+        cy.viewport(400, 812);
+        cy.goToDemoPage(
+            `${INPUT_PAGE_URL}/API?tuiMode=null&icon=tuiIconSearch&iconAlign=left&tuiTextfieldExampleText=Lorem%20ipsum%20dolor%20sit%20amet,%20consectetur%20adipiscing%20elit,%20sed%20do%20eiusmod%20tempor%20incididunt%20ut%20labore&pseudoFocused=true`,
+        );
+
+        cy.get('.t-input-wrapper')
+            .find('input')
+            .focus()
+            .should('have.value', '111')
+            .focused()
+            .clear()
+            .blur();
+
+        cy.matchImageSnapshot('05-placeholder-will-be-hidden-inside', {
+            capture: 'viewport',
+        });
+    });
 });
