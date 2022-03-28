@@ -38,11 +38,14 @@ import {
 } from '@taiga-ui/cdk';
 import {
     HINT_CONTROLLER_PROVIDER,
+    MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DATA_LIST_HOST,
     TUI_HINT_WATCHED_CONTROLLER,
+    TUI_MODE,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
+    TuiBrightness,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHintControllerDirective,
@@ -60,7 +63,7 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TAG_STATUS} from '@taiga-ui/kit/tokens';
 import {TuiStatusT} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {merge, Subject} from 'rxjs';
+import {merge, Observable, Subject} from 'rxjs';
 import {filter, map, mapTo, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag-options';
@@ -84,6 +87,7 @@ const EVENT_Y_TO_X_COEFFICIENT = 3;
         FIXED_DROPDOWN_CONTROLLER_PROVIDER,
         TEXTFIELD_CONTROLLER_PROVIDER,
         HINT_CONTROLLER_PROVIDER,
+        MODE_PROVIDER,
     ],
 })
 export class TuiInputTagComponent
@@ -181,6 +185,10 @@ export class TuiInputTagComponent
         this.initScrollerSubscrition(scroller);
     }
 
+    status$: Observable<TuiStatusT> = this.mode$.pipe(
+        map(mode => (mode ? 'default' : this.tagStatus)),
+    );
+
     open = false;
 
     constructor(
@@ -195,6 +203,8 @@ export class TuiInputTagComponent
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_MODE)
+        private readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TAG_STATUS) private readonly tagStatus: TuiStatusT,
         @Inject(TUI_HINT_WATCHED_CONTROLLER)
         readonly hintController: TuiHintControllerDirective,
@@ -285,6 +295,10 @@ export class TuiInputTagComponent
         return this.hasCleaner || this.hasTooltip || this.iconAlignRight;
     }
 
+    /**
+     * @deprecated: use `status$ | async` instead
+     * TODO: remove in v3.0
+     */
     get status(): TuiStatusT {
         return this.modeDirective && this.modeDirective.mode ? 'default' : this.tagStatus;
     }
