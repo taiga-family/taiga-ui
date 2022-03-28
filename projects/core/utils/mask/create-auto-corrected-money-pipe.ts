@@ -17,14 +17,14 @@ export function tuiCreateAutoCorrectedNumberPipe(
     thousandSymbol: string = CHAR_NO_BREAK_SPACE,
     nativeInput?: HTMLInputElement | null,
     allowNegative?: boolean,
+    isIOS = false,
 ): TuiTextMaskPipeHandler {
     tuiAssert.assert(Number.isInteger(decimalLimit));
     tuiAssert.assert(decimalLimit >= 0);
 
     // Guess for which browser I need this :)
     let previousCaret = -1;
-
-    const unlucky = !!nativeInput && isSafari(nativeInput);
+    const unlucky = (!!nativeInput && isSafari(nativeInput)) || isIOS;
 
     if (nativeInput && unlucky) {
         nativeInput.addEventListener('beforeinput', () => {

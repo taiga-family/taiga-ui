@@ -16,6 +16,7 @@ import {
     AbstractTuiControl,
     AbstractTuiNullableControl,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TUI_IS_IOS,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiInputModeT,
@@ -101,6 +102,7 @@ export class TuiInputNumberComponent
         changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_NUMBER_FORMAT)
         private readonly numberFormat: NumberFormatSettings,
+        @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
     ) {
         super(control, changeDetectorRef);
     }
@@ -188,6 +190,7 @@ export class TuiInputNumberComponent
                 this.numberFormat.thousandSeparator,
                 nativeFocusableElement,
                 allowNegative,
+                this.isIOS,
             ),
             guide: false,
         } as TuiTextMaskOptions as unknown as TextMaskConfig);
