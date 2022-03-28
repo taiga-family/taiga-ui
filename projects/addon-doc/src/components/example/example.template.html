@@ -1,5 +1,8 @@
 <h3 *ngIf="heading" class="t-title">
-    <span polymorpheus-outlet [content]="heading"></span>
+    <span
+        polymorpheus-outlet
+        [content]="heading | tuiDocExampleCapitalize"
+    ></span>
     <button
         *ngIf="id"
         tuiIconButton
@@ -16,7 +19,7 @@
     *ngIf="description"
     polymorpheus-outlet
     class="t-description"
-    [content]="description"
+    [content]="description | tuiDocExampleCapitalize"
 ></h4>
 
 <div *ngIf="processor$ | async as content" class="t-example">
