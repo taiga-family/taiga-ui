@@ -47,7 +47,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
 
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<T> = [];
+    items: readonly T[] = [];
 
     @Input()
     @HostBinding('attr.data-size')

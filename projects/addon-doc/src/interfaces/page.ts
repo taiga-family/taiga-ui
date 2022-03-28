@@ -9,7 +9,7 @@ export interface TuiDocPage extends TuiDocPageBase {
 }
 
 export interface TuiDocPageGroup extends TuiDocPageBase {
-    readonly subPages: ReadonlyArray<TuiDocPage>;
+    readonly subPages: readonly TuiDocPage[];
 }
 
 export type RawLoaderContent = Promise<{default: string}> | string;

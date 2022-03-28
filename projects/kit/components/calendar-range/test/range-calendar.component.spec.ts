@@ -54,7 +54,7 @@ describe('rangeCalendarComponent', () => {
             new TuiDayRange(new TuiDay(2019, 2, 10), new TuiDay(2019, 2, 12)),
         );
 
-        items: ReadonlyArray<TuiDayRangePeriod> = [];
+        items: readonly TuiDayRangePeriod[] = [];
 
         min = new TuiDay(1900, 0, 1);
 

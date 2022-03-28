@@ -13,10 +13,10 @@ export class ExampleProgressBarComponent {
     value = 6;
     max = 10;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['m', 's'];
+    readonly sizeVariants: readonly TuiSizeS[] = ['m', 's'];
     size: TuiSizeS = this.sizeVariants[0];
 
-    readonly colorVariants: ReadonlyArray<string> = [
+    readonly colorVariants: readonly string[] = [
         'var(--tui-primary)',
         'lightskyblue',
         '#3682db',

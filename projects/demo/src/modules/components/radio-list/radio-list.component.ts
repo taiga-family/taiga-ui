@@ -69,11 +69,11 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiControl {
         },
     ];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     size: TuiSizeL = this.sizeVariants[0];
 
-    readonly disabledItemHandlerVariants: Array<TuiBooleanHandler<any>> = [
+    readonly disabledItemHandlerVariants: TuiBooleanHandler<any>[] = [
         ALWAYS_FALSE_HANDLER,
         ALWAYS_TRUE_HANDLER,
         item => item.name === 'Advanced',

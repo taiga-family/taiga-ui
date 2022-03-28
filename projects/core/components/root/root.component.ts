@@ -44,7 +44,7 @@ export class TuiRootComponent {
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TUI_DIALOGS)
-        readonly dialogs: readonly Observable<readonly unknown[]>[] | null,
+        readonly dialogs: ReadonlyArray<Observable<readonly unknown[]>> | null,
         @Optional()
         @Inject(TuiNotificationsHostComponent)
         readonly notificationsHost: Type<unknown>,

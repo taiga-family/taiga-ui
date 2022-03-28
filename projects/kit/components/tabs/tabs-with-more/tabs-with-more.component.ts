@@ -78,7 +78,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
     ) {}
 
-    get tabs(): ReadonlyArray<HTMLElement> {
+    get tabs(): readonly HTMLElement[] {
         return Array.from<HTMLElement>(
             this.elementRef.nativeElement.querySelectorAll('[tuiTab]'),
         );

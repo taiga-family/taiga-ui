@@ -23,7 +23,7 @@ describe('Tabs', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let component: TestComponent;
-    let buttons: ReadonlyArray<HTMLElement>;
+    let buttons: readonly HTMLElement[];
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({

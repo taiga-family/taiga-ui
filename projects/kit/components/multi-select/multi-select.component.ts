@@ -170,7 +170,7 @@ export class TuiMultiSelectComponent<T>
         );
     }
 
-    get computedValue(): ReadonlyArray<T> {
+    get computedValue(): readonly T[] {
         return this.computedGroup ? EMPTY_ARRAY : this.value;
     }
 
@@ -203,7 +203,7 @@ export class TuiMultiSelectComponent<T>
         );
     }
 
-    get context(): TuiContextWithImplicit<ReadonlyArray<T>> {
+    get context(): TuiContextWithImplicit<readonly T[]> {
         return this.getContext(this.value);
     }
 
@@ -215,7 +215,7 @@ export class TuiMultiSelectComponent<T>
     }
 
     readonly valueMapper: TuiMapper<
-        ReadonlyArray<T>,
+        readonly T[],
         ReadonlyArray<TuiStringifiableItem<T>>
     > = (value, stringify: TuiStringHandler<T>, group: boolean) =>
         group
@@ -306,9 +306,7 @@ export class TuiMultiSelectComponent<T>
     }
 
     @tuiPure
-    private getContext(
-        $implicit: ReadonlyArray<T>,
-    ): TuiContextWithImplicit<ReadonlyArray<T>> {
+    private getContext($implicit: readonly T[]): TuiContextWithImplicit<readonly T[]> {
         return {$implicit};
     }
 

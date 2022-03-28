@@ -55,7 +55,7 @@ const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
     ],
 })
 export class TuiInputFileComponent
-    extends AbstractTuiNullableControl<TuiFileLike | ReadonlyArray<TuiFileLike>>
+    extends AbstractTuiNullableControl<TuiFileLike | readonly TuiFileLike[]>
     implements TuiFocusableElementAccessor
 {
     private dataTransfer: DataTransfer | null = null;
@@ -90,14 +90,14 @@ export class TuiInputFileComponent
 
     @Input()
     @tuiDefaultProp()
-    loadingFiles: ReadonlyArray<TuiFileLike> = [];
+    loadingFiles: readonly TuiFileLike[] = [];
 
     @Input()
     @tuiDefaultProp()
-    rejectedFiles: ReadonlyArray<TuiFileLike> = [];
+    rejectedFiles: readonly TuiFileLike[] = [];
 
     @Output()
-    rejectedFilesChange = new EventEmitter<ReadonlyArray<TuiFileLike>>();
+    rejectedFilesChange = new EventEmitter<readonly TuiFileLike[]>();
 
     @ViewChild('input')
     readonly input?: ElementRef<HTMLInputElement>;
@@ -165,15 +165,15 @@ export class TuiInputFileComponent
         return this.getAcceptArray(this.accept);
     }
 
-    get arrayValue(): ReadonlyArray<TuiFileLike> {
+    get arrayValue(): readonly TuiFileLike[] {
         return this.getValueArray(this.value);
     }
 
-    get readyFiles(): ReadonlyArray<TuiFileLike> {
+    get readyFiles(): readonly TuiFileLike[] {
         return this.getReadyFiles(this.arrayValue, this.loadingFiles);
     }
 
-    get computedLoading(): ReadonlyArray<TuiFileLike> {
+    get computedLoading(): readonly TuiFileLike[] {
         return this.getLoadingFiles(this.arrayValue, this.loadingFiles);
     }
 
@@ -276,8 +276,8 @@ export class TuiInputFileComponent
 
     @tuiPure
     private getValueArray(
-        value: TuiFileLike | ReadonlyArray<TuiFileLike> | null,
-    ): ReadonlyArray<TuiFileLike> {
+        value: TuiFileLike | readonly TuiFileLike[] | null,
+    ): readonly TuiFileLike[] {
         if (!value) {
             return EMPTY_ARRAY;
         }
@@ -287,17 +287,17 @@ export class TuiInputFileComponent
 
     @tuiPure
     private getReadyFiles(
-        value: ReadonlyArray<TuiFileLike>,
-        loading: ReadonlyArray<TuiFileLike>,
-    ): ReadonlyArray<TuiFileLike> {
+        value: readonly TuiFileLike[],
+        loading: readonly TuiFileLike[],
+    ): readonly TuiFileLike[] {
         return value.filter(file => !loading.includes(file));
     }
 
     @tuiPure
     private getLoadingFiles(
-        value: ReadonlyArray<TuiFileLike>,
-        loading: ReadonlyArray<TuiFileLike>,
-    ): ReadonlyArray<TuiFileLike> {
+        value: readonly TuiFileLike[],
+        loading: readonly TuiFileLike[],
+    ): readonly TuiFileLike[] {
         return loading.filter(file => value.includes(file));
     }
 
@@ -366,7 +366,7 @@ export class TuiInputFileComponent
         );
     }
 
-    private updateRejectedFiles(rejectedFiles: ReadonlyArray<TuiFileLike>) {
+    private updateRejectedFiles(rejectedFiles: readonly TuiFileLike[]) {
         this.rejectedFiles = rejectedFiles;
         this.rejectedFilesChange.emit(rejectedFiles);
     }

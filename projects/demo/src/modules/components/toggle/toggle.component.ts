@@ -51,7 +51,7 @@ export class ExampleTuiToggleComponent extends AbstractExampleTuiInteractive {
 
     readonly control = new FormControl(false);
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     size: TuiSizeL = this.sizeVariants[0];
 

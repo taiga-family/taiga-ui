@@ -50,7 +50,7 @@ function convertRejected({file, reason}: RejectedFile): TuiFileLike {
 export class TuiInputFileExample2 {
     private readonly files = new FormControl([]);
 
-    private readonly rejectedFiles$ = new Subject<ReadonlyArray<TuiFileLike>>();
+    private readonly rejectedFiles$ = new Subject<readonly TuiFileLike[]>();
 
     private readonly files$ = this.files.valueChanges.pipe(
         // We start with empty array for pairwise to work immediately
@@ -60,7 +60,7 @@ export class TuiInputFileExample2 {
         map(([prev, cur]) => cur.filter(item => !prev.includes(item))),
         // We use mergeScan + combineLatest to accumulate results in one array
         mergeScan(
-            (acc: readonly (RejectedFile | File)[], cur) =>
+            (acc: ReadonlyArray<RejectedFile | File>, cur) =>
                 combineLatest(
                     cur.map(file =>
                         this.serverRequest(file).pipe(
@@ -123,11 +123,11 @@ export class TuiInputFileExample2 {
         files: this.files,
     });
 
-    onRejectedFilesChange(rejectedFiles: ReadonlyArray<TuiFileLike>) {
+    onRejectedFilesChange(rejectedFiles: readonly TuiFileLike[]) {
         this.rejectedFiles$.next(rejectedFiles);
     }
 
-    private removeRejected(rejectedFiles: ReadonlyArray<RejectedFile>) {
+    private removeRejected(rejectedFiles: readonly RejectedFile[]) {
         const filtered = this.files.value.filter((file: File) =>
             rejectedFiles.every(rejectedFile => rejectedFile.file !== file),
         );

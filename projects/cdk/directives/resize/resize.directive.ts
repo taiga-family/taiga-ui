@@ -11,6 +11,6 @@ import {Observable} from 'rxjs';
 export class TuiResizeDirective {
     constructor(
         @Inject(TuiResizeService)
-        readonly tuiResize: Observable<ReadonlyArray<ResizeObserverEntry>>,
+        readonly tuiResize: Observable<readonly ResizeObserverEntry[]>,
     ) {}
 }

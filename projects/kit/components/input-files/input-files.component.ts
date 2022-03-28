@@ -51,7 +51,7 @@ const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
     ],
 })
 export class TuiInputFilesComponent
-    extends AbstractTuiNullableControl<TuiFileLike | ReadonlyArray<TuiFileLike>>
+    extends AbstractTuiNullableControl<TuiFileLike | readonly TuiFileLike[]>
     implements TuiFocusableElementAccessor
 {
     @ViewChild('input')
@@ -84,7 +84,7 @@ export class TuiInputFilesComponent
     maxFileSize = DEFAULT_MAX_SIZE;
 
     @Output()
-    reject = new EventEmitter<ReadonlyArray<TuiFileLike> | TuiFileLike>();
+    reject = new EventEmitter<readonly TuiFileLike[] | TuiFileLike>();
 
     constructor(
         @Optional()
@@ -144,7 +144,7 @@ export class TuiInputFilesComponent
         return !!this.dataTransfer?.types.includes('Files');
     }
 
-    get arrayValue(): ReadonlyArray<TuiFileLike> {
+    get arrayValue(): readonly TuiFileLike[] {
         return this.getValueArray(this.value);
     }
 
@@ -232,8 +232,8 @@ export class TuiInputFilesComponent
 
     @tuiPure
     private getValueArray(
-        value: TuiFileLike | ReadonlyArray<TuiFileLike> | null,
-    ): ReadonlyArray<TuiFileLike> {
+        value: TuiFileLike | readonly TuiFileLike[] | null,
+    ): readonly TuiFileLike[] {
         if (!value) {
             return EMPTY_ARRAY;
         }
@@ -302,7 +302,7 @@ export class TuiInputFilesComponent
         );
     }
 
-    private rejectFiles(rejectedFiles: ReadonlyArray<TuiFileLike>) {
+    private rejectFiles(rejectedFiles: readonly TuiFileLike[]) {
         this.reject.emit(this.multiple ? rejectedFiles : rejectedFiles[0]);
     }
 }

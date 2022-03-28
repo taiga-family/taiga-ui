@@ -71,26 +71,22 @@ export class ExampleTuiCalendarRangeComponent {
         ({day}) => day % 3 === 0,
     ];
 
-    readonly defaultViewedMonthVariants: ReadonlyArray<TuiMonth> = [
+    readonly defaultViewedMonthVariants: readonly TuiMonth[] = [
         TuiMonth.currentLocal(),
         TuiMonth.currentLocal().append({month: 1}),
         new TuiMonth(2007, 5),
     ];
 
-    readonly itemsVariants: ReadonlyArray<ReadonlyArray<TuiDayRangePeriod>> = [
+    readonly itemsVariants: ReadonlyArray<readonly TuiDayRangePeriod[]> = [
         [],
         tuiCreateDefaultDayRangePeriods(),
     ];
 
-    readonly minLengthVariants: ReadonlyArray<TuiDayLike> = [{day: 3}, {day: 15}];
+    readonly minLengthVariants: readonly TuiDayLike[] = [{day: 3}, {day: 15}];
 
-    readonly maxLengthVariants: ReadonlyArray<TuiDayLike> = [
-        {day: 5},
-        {month: 1},
-        {year: 1},
-    ];
+    readonly maxLengthVariants: readonly TuiDayLike[] = [{day: 5}, {month: 1}, {year: 1}];
 
-    readonly markerHandlerVariants: ReadonlyArray<TuiMarkerHandler> = [
+    readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         TUI_DEFAULT_MARKER_HANDLER,
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
     ];

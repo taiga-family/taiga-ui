@@ -34,7 +34,7 @@ export class ExampleTuiNotificationComponent {
 
     hasIcon = true;
 
-    readonly statusVariants: ReadonlyArray<TuiNotification> = [
+    readonly statusVariants: readonly TuiNotification[] = [
         TuiNotification.Info,
         TuiNotification.Error,
         TuiNotification.Warning,

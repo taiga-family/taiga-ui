@@ -12,14 +12,14 @@ type AbstractTuiHint = any;
 @Injectable({
     providedIn: 'root',
 })
-export class TuiHintService extends BehaviorSubject<ReadonlyArray<AbstractTuiHint>> {
+export class TuiHintService extends BehaviorSubject<readonly AbstractTuiHint[]> {
     /**
      * TODO: v2.0
      * We need the following logic for desribedBy
      * move it into another service that can register hints and
      * manage it using TuiHintService inside
      */
-    private directives: ReadonlyArray<TuiHintDirective> = [];
+    private directives: readonly TuiHintDirective[] = [];
 
     constructor() {
         super([]);

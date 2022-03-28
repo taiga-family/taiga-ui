@@ -9,11 +9,11 @@ import {
 import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props-accessor';
 
 export interface ExampleTuiDropdown {
-    dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection>;
+    dropdownDirectionVariants: readonly TuiVerticalDirection[];
     dropdownDirection: TuiVerticalDirection | null;
     dropdownLimitWidthVariants: readonly TuiDropdownWidthT[];
     dropdownLimitWidth: TuiDropdownWidthT | null;
-    dropdownAlignVariants: ReadonlyArray<TuiHorizontalDirection>;
+    dropdownAlignVariants: readonly TuiHorizontalDirection[];
     dropdownAlign: TuiHorizontalDirection;
     dropdownMinHeight: number;
     dropdownMaxHeight: number;

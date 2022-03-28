@@ -40,7 +40,7 @@ export class ExampleTuiTooltipComponent {
 
     mode: TuiHintModeT | null = null;
 
-    directionVariants: ReadonlyArray<TuiDirection> = [
+    directionVariants: readonly TuiDirection[] = [
         'left',
         'right',
         'bottom-left',

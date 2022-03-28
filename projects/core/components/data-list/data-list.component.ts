@@ -98,7 +98,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
         }
     }
 
-    getOptions(includeDisabled: boolean = false): ReadonlyArray<T> {
+    getOptions(includeDisabled: boolean = false): readonly T[] {
         return this.options
             .toArray()
             .filter(({disabled}) => includeDisabled || !disabled)
@@ -113,7 +113,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
         this.handleFocusLossIfNecessary(element);
     }
 
-    private get elements(): ReadonlyArray<HTMLElement> {
+    private get elements(): readonly HTMLElement[] {
         return Array.from(this.elementRef.nativeElement.querySelectorAll('[tuiOption]'));
     }
 }

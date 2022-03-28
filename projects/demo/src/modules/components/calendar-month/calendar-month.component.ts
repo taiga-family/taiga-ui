@@ -70,7 +70,7 @@ export class ExampleTuiCalendarMonthComponent {
 
     value = null;
 
-    readonly yearVariants: ReadonlyArray<TuiYear> = [
+    readonly yearVariants: readonly TuiYear[] = [
         TuiDay.currentLocal(),
         new TuiYear(2007),
     ];

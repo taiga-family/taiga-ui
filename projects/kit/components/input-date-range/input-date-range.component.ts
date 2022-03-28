@@ -101,7 +101,7 @@ export class TuiInputDateRangeComponent
 
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<TuiDayRangePeriod> = [];
+    items: readonly TuiDayRangePeriod[] = [];
 
     @Input()
     @tuiDefaultProp()

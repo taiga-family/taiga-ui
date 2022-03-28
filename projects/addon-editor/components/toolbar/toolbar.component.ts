@@ -50,7 +50,7 @@ const DEFAULT_FONT = 'haas, helvetica, arial, sans-serif';
 const MONOSPACE_FONT = 'Courier';
 const IE_TRANSPARENT = 16777215;
 
-export function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
+export function toolsAssertion(tools: readonly TuiEditorTool[]): boolean {
     return !tools.includes(TuiEditorTool.Tex) && !tools.includes(TuiEditorTool.Attach);
 }
 
@@ -77,7 +77,7 @@ export class TuiToolbarComponent {
 
     @Input()
     @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
-    tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
+    tools: readonly TuiEditorTool[] = defaultEditorTools;
 
     @Input()
     @tuiDefaultProp()
@@ -104,7 +104,7 @@ export class TuiToolbarComponent {
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
     // TODO: i18n
-    readonly fontsOptions: ReadonlyArray<TuiEditorFontOption> = [
+    readonly fontsOptions: readonly TuiEditorFontOption[] = [
         {
             size: '2',
             px: 13,

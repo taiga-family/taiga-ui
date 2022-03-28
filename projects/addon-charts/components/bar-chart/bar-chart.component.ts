@@ -80,7 +80,7 @@ export class TuiBarChartComponent {
         };
     }
 
-    readonly percentMapper: TuiMapper<ReadonlyArray<number>, number> = (
+    readonly percentMapper: TuiMapper<readonly number[], number> = (
         set,
         collapsed: boolean,
         max: number,

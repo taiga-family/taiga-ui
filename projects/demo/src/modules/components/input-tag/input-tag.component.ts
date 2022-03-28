@@ -84,7 +84,7 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     icon: string | null = null;
 
-    readonly iconAlignVariants: ReadonlyArray<TuiHorizontalDirection> = ['left', 'right'];
+    readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
     iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
 

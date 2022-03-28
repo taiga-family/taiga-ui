@@ -29,15 +29,15 @@ describe('InputFile', () => {
         @ViewChild(TuiInputFileComponent, {static: true})
         component!: TuiInputFileComponent;
 
-        files: ReadonlyArray<TuiFileLike> = [
+        files: readonly TuiFileLike[] = [
             {
                 name: 'test.txt',
                 size: 237,
             },
         ];
 
-        loadingFiles: ReadonlyArray<TuiFileLike> = [];
-        rejectedFiles: ReadonlyArray<TuiFileLike> = [];
+        loadingFiles: readonly TuiFileLike[] = [];
+        rejectedFiles: readonly TuiFileLike[] = [];
         state = TuiFileState.Normal;
         showSize = true;
         readOnly = false;

@@ -11,7 +11,7 @@ const CALENDAR_ROWS_COUNT = 6;
 })
 export class TuiCalendarSheetPipe implements PipeTransform {
     private currentMonth: TuiMonth | null = null;
-    private currentSheet: ReadonlyArray<ReadonlyArray<TuiDay>> = [];
+    private currentSheet: ReadonlyArray<readonly TuiDay[]> = [];
 
     constructor(
         @Inject(TUI_FIRST_DAY_OF_WEEK)
@@ -21,12 +21,12 @@ export class TuiCalendarSheetPipe implements PipeTransform {
     transform(
         month: TuiMonth,
         showAdjacentDays: boolean = false,
-    ): ReadonlyArray<ReadonlyArray<TuiDay>> {
+    ): ReadonlyArray<readonly TuiDay[]> {
         if (this.currentMonth && this.currentMonth.monthSame(month)) {
             return this.currentSheet;
         }
 
-        const sheet: Array<readonly TuiDay[]> = [];
+        const sheet: (readonly TuiDay[])[] = [];
 
         for (let rowIndex = 0; rowIndex < CALENDAR_ROWS_COUNT; rowIndex++) {
             const row: TuiDay[] = [];

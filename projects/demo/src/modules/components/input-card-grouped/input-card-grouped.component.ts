@@ -102,7 +102,7 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
 
     getContentVariants(
         template: PolymorpheusContent,
-    ): ReadonlyArray<PolymorpheusContent> | null {
+    ): readonly PolymorpheusContent[] | null {
         return [...this.cardSrcVariants, template];
     }
 }

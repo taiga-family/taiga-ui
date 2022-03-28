@@ -40,7 +40,7 @@ export class ExampleTuiAxesComponent {
         LESS: example2Less,
     };
 
-    readonly lineVariants: ReadonlyArray<TuiLineTypeT> = [
+    readonly lineVariants: readonly TuiLineTypeT[] = [
         'solid',
         'dashed',
         'none',
@@ -54,14 +54,14 @@ export class ExampleTuiAxesComponent {
         ['One', null, '', 'Two and a half', 'Three', null],
     ];
 
-    readonly labelsYVariants: ReadonlyArray<ReadonlyArray<string>> = [
+    readonly labelsYVariants: ReadonlyArray<readonly string[]> = [
         [],
         ['', '25%', '50%', '100%'],
         ['One', 'Two', 'Three'],
         ['One', '', 'Two and a half', 'Three'],
     ];
 
-    readonly handlerVariants: ReadonlyArray<TuiLineHandler> = [
+    readonly handlerVariants: readonly TuiLineHandler[] = [
         TUI_ALWAYS_SOLID,
         TUI_ALWAYS_DASHED,
         index => (index % 2 ? 'dashed' : 'solid'),

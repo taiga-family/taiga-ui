@@ -66,7 +66,7 @@ export class ExampleTuiHostedDropdownComponent {
 
     maxHeight = DEFAULT_MAX_HEIGHT;
 
-    alignVariants: ReadonlyArray<TuiHorizontalDirection> = ['right', 'left'];
+    alignVariants: readonly TuiHorizontalDirection[] = ['right', 'left'];
 
     align = this.alignVariants[0];
 

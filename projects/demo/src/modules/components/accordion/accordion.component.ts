@@ -67,7 +67,7 @@ export class ExampleTuiAccordionComponent {
 
     borders = this.bordersVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
+    readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
 
     size: TuiSizeS = this.sizeVariants[1];
 

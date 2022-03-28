@@ -427,7 +427,7 @@ export class TuiInputTagComponent
         this.open = false;
     }
 
-    protected updateValue(value: Array<string>) {
+    protected updateValue(value: string[]) {
         const seen = new Set();
 
         super.updateValue(

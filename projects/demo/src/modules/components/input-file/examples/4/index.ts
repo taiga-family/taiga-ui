@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiInputFileExample4 {
-    files: ReadonlyArray<File> = [];
+    files: readonly File[] = [];
 }

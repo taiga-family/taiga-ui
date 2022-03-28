@@ -57,7 +57,7 @@ export class TuiDropdownSelectionExample2 {
         setNativeFocused(item.nativeElement);
     }
 
-    filterItems(textarea: HTMLTextAreaElement): ReadonlyArray<User> {
+    filterItems(textarea: HTMLTextAreaElement): readonly User[] {
         const search = this.getCurrentSearch(textarea).replace('@', '');
 
         return this.getFilteredItems(this.items, search);
@@ -75,10 +75,7 @@ export class TuiDropdownSelectionExample2 {
     }
 
     @tuiPure
-    private getFilteredItems(
-        items: ReadonlyArray<User>,
-        search: string,
-    ): ReadonlyArray<User> {
+    private getFilteredItems(items: readonly User[], search: string): readonly User[] {
         return items.filter(
             ({name, login}) => login.startsWith(search) || name.startsWith(search),
         );

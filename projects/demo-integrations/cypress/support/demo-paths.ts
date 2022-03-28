@@ -12,9 +12,9 @@ export const DEMO_PATHS = flatPages(pages)
     .filter(page => !EXCLUSION_ROUTES.includes(page.title))
     .map(page => page.route.replace('/', ''));
 
-function flatPages(pages: TuiDocPages): ReadonlyArray<TuiDocPage> {
+function flatPages(pages: TuiDocPages): readonly TuiDocPage[] {
     return pages.reduce(
-        (prev: ReadonlyArray<TuiDocPage>, next) => [
+        (prev: readonly TuiDocPage[], next) => [
             ...prev,
             ...('subPages' in next ? next.subPages : [next]),
         ],

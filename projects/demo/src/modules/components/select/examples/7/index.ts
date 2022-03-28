@@ -9,7 +9,7 @@ interface Account {
     readonly account: string;
 }
 
-const BANK: ReadonlyArray<Account> = [
+const BANK: readonly Account[] = [
     {
         name: 'Ruble',
         account: '1234567890987654321',
@@ -20,7 +20,7 @@ const BANK: ReadonlyArray<Account> = [
     },
 ];
 
-const OTHERS: ReadonlyArray<Account> = [
+const OTHERS: readonly Account[] = [
     {
         name: 'Bank',
         account: '1234567890987654321',
@@ -55,6 +55,7 @@ export class TuiSelectExample7 {
     readonly bank = BANK;
     readonly others = OTHERS;
 
-    readonly content: TuiStringHandler<TuiValueContentContext<ReadonlyArray<unknown>>> =
-        ({$implicit: {length}}) => (length ? `${length} accounts` : 'All');
+    readonly content: TuiStringHandler<TuiValueContentContext<readonly unknown[]>> = ({
+        $implicit: {length},
+    }) => (length ? `${length} accounts` : 'All');
 }

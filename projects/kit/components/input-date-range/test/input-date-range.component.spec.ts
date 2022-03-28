@@ -51,7 +51,7 @@ class TestComponent {
 
     readOnly = false;
 
-    items: ReadonlyArray<TuiDayRangePeriod> = [];
+    items: readonly TuiDayRangePeriod[] = [];
 
     min = new TuiDay(1900, 0, 1);
 

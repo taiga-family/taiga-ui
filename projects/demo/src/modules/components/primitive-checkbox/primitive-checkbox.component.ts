@@ -18,7 +18,7 @@ export class ExampleTuiPrimitiveCheckboxComponent {
     readonly exampleOptions = exampleOptions;
     readonly exampleHtml = exampleHtml;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     size: TuiSizeL = this.sizeVariants[0];
 
@@ -32,7 +32,7 @@ export class ExampleTuiPrimitiveCheckboxComponent {
 
     invalid = false;
 
-    readonly valueVariants: ReadonlyArray<boolean> = [false, true];
+    readonly valueVariants: readonly boolean[] = [false, true];
 
     value = this.valueVariants[0];
 

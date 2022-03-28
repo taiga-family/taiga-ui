@@ -103,7 +103,7 @@ export class TuiInputDateComponent
 
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<TuiNamedDay> = [];
+    items: readonly TuiNamedDay[] = [];
 
     @Input()
     @tuiDefaultProp()

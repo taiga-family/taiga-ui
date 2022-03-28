@@ -14,7 +14,7 @@ export class TuiInputFilesExample4 {
     height = 3;
     readonly control = new FormControl();
 
-    readonly files: ReadonlyArray<TuiFileLike> = [
+    readonly files: readonly TuiFileLike[] = [
         {
             name: 'Loaded.txt',
         },
@@ -38,7 +38,7 @@ export class TuiInputFilesExample4 {
         },
     ];
 
-    readonly rejectedFiles: ReadonlyArray<TuiFileLike> = [
+    readonly rejectedFiles: readonly TuiFileLike[] = [
         {
             name: 'File with an error.txt',
         },

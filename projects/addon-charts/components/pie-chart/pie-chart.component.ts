@@ -103,7 +103,7 @@ export class TuiPieChartComponent {
         return RADII[this.size];
     }
 
-    get segments(): readonly [number, number][] {
+    get segments(): ReadonlyArray<[number, number]> {
         return this.getSegments(this.value);
     }
 
@@ -135,7 +135,7 @@ export class TuiPieChartComponent {
     }
 
     @tuiPure
-    private getSegments(value: readonly number[]): readonly [number, number][] {
+    private getSegments(value: readonly number[]): ReadonlyArray<[number, number]> {
         return value
             .map((initial, i, array) =>
                 array.reduce(

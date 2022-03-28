@@ -81,7 +81,7 @@ export class TuiToolbarNewComponent {
 
     @Input()
     @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
-    set tools(value: ReadonlyArray<TuiEditorTool>) {
+    set tools(value: readonly TuiEditorTool[]) {
         this.toolsSet = new Set(value);
     }
 
@@ -277,6 +277,6 @@ export class TuiToolbarNewComponent {
     }
 }
 
-function toolsAssertion(tools: ReadonlyArray<TuiEditorTool>): boolean {
+function toolsAssertion(tools: readonly TuiEditorTool[]): boolean {
     return !tools.includes(TuiEditorTool.Tex) && !tools.includes(TuiEditorTool.Attach);
 }

@@ -14,7 +14,7 @@ import {TuiBreadCrumbsItem} from '@taiga-ui/kit/interfaces';
 export class TuiBreadcrumbsComponent {
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<TuiBreadCrumbsItem> = [];
+    items: readonly TuiBreadCrumbsItem[] = [];
 
     @Input()
     @HostBinding('attr.data-size')

@@ -57,7 +57,7 @@ export class ExampleTuiGroupComponent {
 
     orientation: TuiOrientationT = this.orientationVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     size: TuiSizeL = this.sizeVariants[0];
 }

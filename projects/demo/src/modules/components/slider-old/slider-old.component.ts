@@ -50,7 +50,7 @@ export class ExampleTuiSliderComponent {
         this.control.enable();
     }
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
+    readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
     size: TuiSizeS = this.sizeVariants[1];
     readonly minVariants: readonly number[] = [0, 1, 5, 7.77, 5000];
     min = this.minVariants[0];
@@ -71,7 +71,7 @@ export class ExampleTuiSliderComponent {
     ];
 
     pluralize = null;
-    readonly keyStepsVariants: ReadonlyArray<TuiKeySteps> = [
+    readonly keyStepsVariants: readonly TuiKeySteps[] = [
         [[50, 1000]],
         [
             [100 / 3, 100000],
@@ -80,6 +80,6 @@ export class ExampleTuiSliderComponent {
     ];
 
     keySteps = null;
-    readonly quantumVariants: ReadonlyArray<number> = [0.01, 0.001, 0.1, 1, 10];
+    readonly quantumVariants: readonly number[] = [0.01, 0.001, 0.1, 1, 10];
     quantum = this.quantumVariants[0];
 }

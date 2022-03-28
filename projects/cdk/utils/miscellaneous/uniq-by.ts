@@ -1,7 +1,7 @@
 export function uniqBy<T extends object>(
-    array: ReadonlyArray<T>,
+    array: readonly T[],
     key: keyof T,
-): ReadonlyArray<T> {
+): readonly T[] {
     return Array.from(
         array
             .reduce(

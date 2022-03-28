@@ -46,7 +46,7 @@ export class ExampleTuiBreadcrumbsComponent {
 
     items = this.itemsVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     size: TuiSizeL = this.sizeVariants[0];
 }

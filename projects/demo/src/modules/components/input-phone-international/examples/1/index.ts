@@ -16,7 +16,7 @@ export class TuiInputPhoneExample1 {
         testValue: new FormControl('+77777777777', Validators.required),
     });
 
-    readonly countries: ReadonlyArray<TuiCountryIsoCode> = [
+    readonly countries: readonly TuiCountryIsoCode[] = [
         TuiCountryIsoCode.RU,
         TuiCountryIsoCode.KZ,
         TuiCountryIsoCode.UA,

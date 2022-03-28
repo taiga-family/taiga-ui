@@ -6,7 +6,7 @@ import {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 
 interface Orerations {
     title: string;
-    operations: ReadonlyArray<Oreration>;
+    operations: readonly Oreration[];
 }
 
 interface Oreration {
@@ -41,7 +41,7 @@ export class TuiFilterExample2 {
         ]),
     });
 
-    items: ReadonlyArray<Orerations> = [
+    items: readonly Orerations[] = [
         COMPLETED,
         {
             title: 'Drafts',

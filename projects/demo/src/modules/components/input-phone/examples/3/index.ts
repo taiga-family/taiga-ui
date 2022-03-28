@@ -21,7 +21,7 @@ class User {
     }
 }
 
-const DATA: ReadonlyArray<User> = [
+const DATA: readonly User[] = [
     new User(
         'Roman',
         'Sedov',
@@ -88,7 +88,7 @@ export class TuiInputPhoneExample3 {
 
     // Request imitation
     @tuiPure
-    private request(query: string): Observable<ReadonlyArray<User>> {
+    private request(query: string): Observable<readonly User[]> {
         return of(
             DATA.filter(
                 item =>
@@ -110,7 +110,7 @@ export class TuiInputPhoneExample3 {
         return 'Name';
     }
 
-    private isFullMatch(response: ReadonlyArray<User>, value: string): boolean {
+    private isFullMatch(response: readonly User[], value: string): boolean {
         return (
             response.length === 1 &&
             (String(response[0]) === value || response[0].phone === value)

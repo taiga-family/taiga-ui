@@ -7,13 +7,15 @@ import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable()
 export abstract class AbstractTuiDialogService<T extends {}> extends Observable<
-    readonly TuiDialog<T, any>[]
+    ReadonlyArray<TuiDialog<T, any>>
 > {
     protected abstract readonly component: PolymorpheusContent<TuiDialog<T, any>>;
 
     protected abstract readonly defaultOptions: T;
 
-    protected readonly dialogs$ = new BehaviorSubject<readonly TuiDialog<T, any>[]>([]);
+    protected readonly dialogs$ = new BehaviorSubject<ReadonlyArray<TuiDialog<T, any>>>(
+        [],
+    );
 
     protected constructor(
         @Inject(TuiIdService) private readonly idService: TuiIdService,

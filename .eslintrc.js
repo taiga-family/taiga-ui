@@ -27,5 +27,9 @@ module.exports = {
         '@typescript-eslint/no-unnecessary-type-constraint': 'error',
         '@typescript-eslint/prefer-includes': 'error',
         'prefer-template': 'error',
+        '@typescript-eslint/array-type': [
+            'error',
+            {default: 'array', readonly: 'array-simple'},
+        ],
     },
 };

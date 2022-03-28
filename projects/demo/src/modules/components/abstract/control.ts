@@ -39,7 +39,7 @@ export abstract class AbstractExampleTuiControl
 
     readonly hintContentVariants: readonly string[] = ['Some content'];
 
-    readonly hintDirectionVariants: ReadonlyArray<TuiDirection> = [
+    readonly hintDirectionVariants: readonly TuiDirection[] = [
         'left',
         'right',
         'bottom-left',
@@ -58,7 +58,7 @@ export abstract class AbstractExampleTuiControl
         'url',
     ];
 
-    readonly maxLengthVariants: ReadonlyArray<possibleGenericType> = [10];
+    readonly maxLengthVariants: readonly possibleGenericType[] = [10];
 
     readonly autocompleteVariants = [
         'off',
@@ -117,10 +117,7 @@ export abstract class AbstractExampleTuiControl
 
     hintMode: TuiHintModeT | null = null;
 
-    readonly dropdownAlignVariants: ReadonlyArray<TuiHorizontalDirection> = [
-        'left',
-        'right',
-    ];
+    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
     dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
 
@@ -128,7 +125,7 @@ export abstract class AbstractExampleTuiControl
 
     dropdownLimitWidth: TuiDropdownWidthT | null = this.dropdownLimitWidthVariants[0];
 
-    readonly dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection> = [
+    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         'top',
         'bottom',
     ];

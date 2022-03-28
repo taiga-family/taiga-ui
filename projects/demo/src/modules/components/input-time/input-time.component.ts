@@ -83,7 +83,7 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
 
     dropdownLimitWidth: TuiDropdownWidthT | null = this.dropdownLimitWidthVariants[0];
 
-    readonly dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection> = [
+    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         'top',
         'bottom',
     ];
@@ -98,7 +98,7 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
 
     itemSize: TuiSizeS | TuiSizeL = this.itemSizeVariants[1];
 
-    readonly itemsVariants: ReadonlyArray<ReadonlyArray<TuiTime>> = [
+    readonly itemsVariants: ReadonlyArray<readonly TuiTime[]> = [
         [],
         tuiCreateTimePeriods(),
     ];
@@ -107,11 +107,7 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
 
     strict = false;
 
-    readonly modeVariants: ReadonlyArray<TuiTimeMode> = [
-        'HH:MM',
-        'HH:MM:SS',
-        'HH:MM:SS.MSS',
-    ];
+    readonly modeVariants: readonly TuiTimeMode[] = ['HH:MM', 'HH:MM:SS', 'HH:MM:SS.MSS'];
 
     mode = this.modeVariants[0];
 }

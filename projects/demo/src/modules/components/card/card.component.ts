@@ -65,7 +65,7 @@ export class ExampleTuiCardComponent {
 
     brandLogoVariants = ['', ...BRAND_LOGOS];
 
-    sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
+    sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
 
     active = false;
     brandLogo = this.brandLogoVariants[0];

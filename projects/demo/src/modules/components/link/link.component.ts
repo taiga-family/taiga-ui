@@ -44,7 +44,7 @@ export class ExampleTuiLinkComponent {
 
     mode: 'positive' | 'negative' | null = null;
 
-    readonly iconAlignValues: ReadonlyArray<TuiHorizontalDirection> = ['right', 'left'];
+    readonly iconAlignValues: readonly TuiHorizontalDirection[] = ['right', 'left'];
 
     icon = null;
 

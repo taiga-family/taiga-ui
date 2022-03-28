@@ -50,10 +50,7 @@ export class ExampleTuiRadioBlockComponent extends AbstractExampleTuiControl {
         LESS: example3Less,
     };
 
-    readonly contentAlignVariants: ReadonlyArray<TuiHorizontalDirection> = [
-        'left',
-        'right',
-    ];
+    readonly contentAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
     contentAlign: TuiHorizontalDirection = this.contentAlignVariants[1];
 

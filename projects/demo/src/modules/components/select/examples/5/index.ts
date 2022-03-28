@@ -10,7 +10,7 @@ interface Python {
     readonly name: string;
 }
 
-const ITEMS: ReadonlyArray<Python> = [
+const ITEMS: readonly Python[] = [
     {id: 42, name: 'John Cleese'},
     {id: 237, name: 'Eric Idle'},
     {id: 666, name: 'Michael Palin'},
@@ -34,7 +34,7 @@ export class TuiSelectExample5 {
 
     @tuiPure
     stringify(
-        items: ReadonlyArray<Python>,
+        items: readonly Python[],
     ): TuiStringHandler<TuiContextWithImplicit<number>> {
         const map = new Map(items.map(({id, name}) => [id, name] as [number, string]));
 

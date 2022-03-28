@@ -19,7 +19,7 @@ export class InheritedDocumentationComponent {
 
     readonly booleanVariants: readonly boolean[] = [false, true];
 
-    readonly directionVariants: ReadonlyArray<TuiDirection> = [
+    readonly directionVariants: readonly TuiDirection[] = [
         'left',
         'right',
         'bottom-left',

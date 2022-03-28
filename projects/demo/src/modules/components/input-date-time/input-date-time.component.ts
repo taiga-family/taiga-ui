@@ -110,11 +110,7 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
 
     readonly control = new FormControl(null, Validators.required);
 
-    readonly modeVariants: ReadonlyArray<TuiTimeMode> = [
-        'HH:MM',
-        'HH:MM:SS',
-        'HH:MM:SS.MSS',
-    ];
+    readonly modeVariants: readonly TuiTimeMode[] = ['HH:MM', 'HH:MM:SS', 'HH:MM:SS.MSS'];
 
     mode = this.modeVariants[0];
 }

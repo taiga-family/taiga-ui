@@ -103,7 +103,7 @@ export class ExampleTuiDialogComponent {
 
     required = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiDialogSize> = [
+    readonly sizeVariants: readonly TuiDialogSize[] = [
         's',
         'm',
         'l',

@@ -8,7 +8,7 @@ import {map, startWith} from 'rxjs/operators';
  */
 export function itemsQueryListObservable<T>(
     queryList: QueryList<T>,
-): Observable<ReadonlyArray<T>> {
+): Observable<readonly T[]> {
     return queryList.changes.pipe(
         map(() => getOriginalArrayFromQueryList(queryList)),
         startWith(getOriginalArrayFromQueryList(queryList)),
