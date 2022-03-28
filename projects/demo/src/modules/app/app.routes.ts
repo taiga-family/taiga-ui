@@ -17,118 +17,118 @@ export const ROUTES = [
         path: 'getting-started',
         component: GettingStartedComponent,
         data: {
-            title: `Getting started`,
+            title: 'Getting started',
         },
     },
     {
         path: 'browser-support',
         loadChildren: () =>
-            import(`../info/browsers/browsers.module`).then(m => m.BrowsersModule),
+            import('../info/browsers/browsers.module').then(m => m.BrowsersModule),
         data: {
-            title: `Browser support`,
+            title: 'Browser support',
         },
     },
     {
         path: 'changelog',
         loadChildren: () =>
-            import(`../info/changelog/changelog.module`).then(m => m.ChangelogModule),
+            import('../info/changelog/changelog.module').then(m => m.ChangelogModule),
         data: {
-            title: `Changelog`,
+            title: 'Changelog',
         },
     },
     {
         path: 'tui-doc',
-        loadChildren: () => import(`../info/doc/doc.module`).then(m => m.DocModule),
+        loadChildren: () => import('../info/doc/doc.module').then(m => m.DocModule),
         data: {
-            title: `Documentation engine`,
+            title: 'Documentation engine',
         },
     },
     {
         path: 'related',
         loadChildren: () =>
-            import(`../info/related/related.module`).then(m => m.RelatedModule),
+            import('../info/related/related.module').then(m => m.RelatedModule),
         data: {
-            title: `Friendly libraries`,
+            title: 'Friendly libraries',
         },
     },
     {
         path: 'testing/disable-animation',
         loadChildren: () =>
-            import(`../info/testing/disable-animation/disable-animation.module`).then(
+            import('../info/testing/disable-animation/disable-animation.module').then(
                 m => m.DisableAnimationModule,
             ),
         data: {
-            title: `Disable animation`,
+            title: 'Disable animation',
         },
     },
     {
-        path: `testing/screenshot-bot`,
+        path: 'testing/screenshot-bot',
         loadChildren: () =>
             import(
-                `../info/testing/screenshot-github-bot/screenshot-github-bot.module`
+                '../info/testing/screenshot-github-bot/screenshot-github-bot.module'
             ).then(m => m.ScreenshotGithubBotModule),
         data: {
-            title: `Our screenshot bot`,
+            title: 'Our screenshot bot',
         },
     },
     // Customization
     {
         path: 'i18n',
         loadChildren: () =>
-            import(`../customization/i18n/i18n.module`).then(m => m.I18nModule),
+            import('../customization/i18n/i18n.module').then(m => m.I18nModule),
         data: {
-            title: `I18n`,
+            title: 'I18n',
         },
     },
     {
         path: 'variables',
         loadChildren: () =>
-            import(`../customization/variables/variables.module`).then(
+            import('../customization/variables/variables.module').then(
                 m => m.VariablesModule,
             ),
         data: {
-            title: `Variables`,
+            title: 'Variables',
         },
     },
     {
         path: 'wrapper',
         loadChildren: () =>
-            import(`../customization/wrapper/wrapper.module`).then(m => m.WrapperModule),
+            import('../customization/wrapper/wrapper.module').then(m => m.WrapperModule),
         data: {
-            title: `Wrapper`,
+            title: 'Wrapper',
         },
     },
     {
         path: 'dialogs',
         loadChildren: () =>
-            import(`../customization/dialogs/dialogs.module`).then(m => m.DialogsModule),
+            import('../customization/dialogs/dialogs.module').then(m => m.DialogsModule),
         data: {
-            title: `Dialogs`,
+            title: 'Dialogs',
         },
     },
     {
         path: 'portals',
         loadChildren: () =>
-            import(`../customization/portals/portals.module`).then(m => m.PortalsModule),
+            import('../customization/portals/portals.module').then(m => m.PortalsModule),
         data: {
-            title: `Portals`,
+            title: 'Portals',
         },
     },
     {
         path: 'icon-set',
         loadChildren: () =>
-            import(`../customization/icon-set/icon-set.module`).then(
+            import('../customization/icon-set/icon-set.module').then(
                 m => m.IconSetModule,
             ),
         data: {
-            title: `Icon set`,
+            title: 'Icon set',
         },
     },
     // COMPONENTS
     {
         path: 'components/accordion',
         loadChildren: () =>
-            import(`../components/accordion/accordion.module`).then(
+            import('../components/accordion/accordion.module').then(
                 m => m.ExampleTuiAccordionModule,
             ),
         data: {
@@ -138,7 +138,7 @@ export const ROUTES = [
     {
         path: 'components/action',
         loadChildren: () =>
-            import(`../components/action/action.module`).then(
+            import('../components/action/action.module').then(
                 m => m.ExampleTuiActionModule,
             ),
         data: {
@@ -148,7 +148,7 @@ export const ROUTES = [
     {
         path: 'components/avatar',
         loadChildren: () =>
-            import(`../components/avatar/avatar.module`).then(
+            import('../components/avatar/avatar.module').then(
                 m => m.ExampleTuiAvatarModule,
             ),
         data: {
@@ -158,7 +158,7 @@ export const ROUTES = [
     {
         path: 'components/badge',
         loadChildren: () =>
-            import(`../components/badge/badge.module`).then(m => m.ExampleTuiBadgeModule),
+            import('../components/badge/badge.module').then(m => m.ExampleTuiBadgeModule),
         data: {
             title: 'Badge',
         },
@@ -166,7 +166,7 @@ export const ROUTES = [
     {
         path: 'components/badged-content',
         loadChildren: () =>
-            import(`../components/badged-content/badged-content.module`).then(
+            import('../components/badged-content/badged-content.module').then(
                 m => m.ExampleTuiBadgedContentModule,
             ),
         data: {
@@ -176,7 +176,7 @@ export const ROUTES = [
     {
         path: 'navigation/breadcrumbs',
         loadChildren: () =>
-            import(`../components/breadcrumbs/breadcrumbs.module`).then(
+            import('../components/breadcrumbs/breadcrumbs.module').then(
                 m => m.ExampleTuiBreadcrumbsModule,
             ),
         data: {
@@ -186,7 +186,7 @@ export const ROUTES = [
     {
         path: 'components/button',
         loadChildren: () =>
-            import(`../components/button/button.module`).then(
+            import('../components/button/button.module').then(
                 m => m.ExampleTuiButtonModule,
             ),
         data: {
@@ -196,7 +196,7 @@ export const ROUTES = [
     {
         path: 'components/calendar',
         loadChildren: () =>
-            import(`../components/calendar/calendar.module`).then(
+            import('../components/calendar/calendar.module').then(
                 m => m.ExampleTuiCalendarModule,
             ),
         data: {
@@ -206,7 +206,7 @@ export const ROUTES = [
     {
         path: 'components/carousel',
         loadChildren: () =>
-            import(`../components/carousel/carousel.module`).then(
+            import('../components/carousel/carousel.module').then(
                 m => m.ExampleTuiCarouselModule,
             ),
         data: {
@@ -216,7 +216,7 @@ export const ROUTES = [
     {
         path: 'components/card',
         loadChildren: () =>
-            import(`../components/card/card.module`).then(m => m.ExampleTuiCardModule),
+            import('../components/card/card.module').then(m => m.ExampleTuiCardModule),
         data: {
             title: 'Card',
         },
@@ -224,7 +224,7 @@ export const ROUTES = [
     {
         path: 'components/checkbox',
         loadChildren: () =>
-            import(`../components/checkbox/checkbox.module`).then(
+            import('../components/checkbox/checkbox.module').then(
                 m => m.ExampleTuiCheckboxModule,
             ),
         data: {
@@ -234,7 +234,7 @@ export const ROUTES = [
     {
         path: 'components/checkbox-block',
         loadChildren: () =>
-            import(`../components/checkbox-block/checkbox-block.module`).then(
+            import('../components/checkbox-block/checkbox-block.module').then(
                 m => m.ExampleTuiCheckboxBlockModule,
             ),
         data: {
@@ -244,7 +244,7 @@ export const ROUTES = [
     {
         path: 'components/checkbox-labeled',
         loadChildren: () =>
-            import(`../components/checkbox-labeled/checkbox-labeled.module`).then(
+            import('../components/checkbox-labeled/checkbox-labeled.module').then(
                 m => m.ExampleTuiCheckboxLabeledModule,
             ),
         data: {
@@ -254,7 +254,7 @@ export const ROUTES = [
     {
         path: 'components/color-picker',
         loadChildren: () =>
-            import(`../components/color-picker/color-picker.module`).then(
+            import('../components/color-picker/color-picker.module').then(
                 m => m.ExampleTuiColorPickerModule,
             ),
         data: {
@@ -264,7 +264,7 @@ export const ROUTES = [
     {
         path: 'components/primitive-checkbox',
         loadChildren: () =>
-            import(`../components/primitive-checkbox/primitive-checkbox.module`).then(
+            import('../components/primitive-checkbox/primitive-checkbox.module').then(
                 m => m.ExampleTuiPrimitiveCheckboxModule,
             ),
         data: {
@@ -274,7 +274,7 @@ export const ROUTES = [
     {
         path: 'components/combo-box',
         loadChildren: () =>
-            import(`../components/combo-box/combo-box.module`).then(
+            import('../components/combo-box/combo-box.module').then(
                 m => m.ExampleTuiComboBoxModule,
             ),
         data: {
@@ -284,7 +284,7 @@ export const ROUTES = [
     {
         path: 'components/data-list',
         loadChildren: () =>
-            import(`../components/data-list/data-list.module`).then(
+            import('../components/data-list/data-list.module').then(
                 m => m.ExampleTuiDataListModule,
             ),
         data: {
@@ -294,7 +294,7 @@ export const ROUTES = [
     {
         path: 'components/dialog',
         loadChildren: () =>
-            import(`../components/dialog/dialog.module`).then(
+            import('../components/dialog/dialog.module').then(
                 m => m.ExampleTuiDialogModule,
             ),
         data: {
@@ -304,7 +304,7 @@ export const ROUTES = [
     {
         path: 'components/error',
         loadChildren: () =>
-            import(`../components/error/error.module`).then(m => m.ExampleTuiErrorModule),
+            import('../components/error/error.module').then(m => m.ExampleTuiErrorModule),
         data: {
             title: 'Error',
         },
@@ -312,7 +312,7 @@ export const ROUTES = [
     {
         path: 'components/expand',
         loadChildren: () =>
-            import(`../components/expand/expand.module`).then(
+            import('../components/expand/expand.module').then(
                 m => m.ExampleTuiExpandModule,
             ),
         data: {
@@ -322,7 +322,7 @@ export const ROUTES = [
     {
         path: 'components/field-error',
         loadChildren: () =>
-            import(`../components/field-error/field-error.module`).then(
+            import('../components/field-error/field-error.module').then(
                 m => m.ExampleTuiFieldErrorModule,
             ),
         data: {
@@ -332,7 +332,7 @@ export const ROUTES = [
     {
         path: 'pipes/field-error',
         loadChildren: () =>
-            import(`../pipes/field-error/field-error.module`).then(
+            import('../pipes/field-error/field-error.module').then(
                 m => m.ExampleTuiFieldErrorModule,
             ),
         data: {
@@ -342,7 +342,7 @@ export const ROUTES = [
     {
         path: 'components/input-files',
         loadChildren: () =>
-            import(`../components/input-files/input-files.module`).then(
+            import('../components/input-files/input-files.module').then(
                 m => m.ExampleTuiFilesModule,
             ),
         data: {
@@ -352,7 +352,7 @@ export const ROUTES = [
     {
         path: 'components/group',
         loadChildren: () =>
-            import(`../components/group/group.module`).then(m => m.ExampleTuiGroupModule),
+            import('../components/group/group.module').then(m => m.ExampleTuiGroupModule),
         data: {
             path: 'tui-group',
             title: 'Group',
@@ -361,7 +361,7 @@ export const ROUTES = [
     {
         path: 'components/hosted-dropdown',
         loadChildren: () =>
-            import(`../components/hosted-dropdown/hosted-dropdown.module`).then(
+            import('../components/hosted-dropdown/hosted-dropdown.module').then(
                 m => m.ExampleTuiHostedDropdownModule,
             ),
         data: {
@@ -371,7 +371,7 @@ export const ROUTES = [
     {
         path: 'components/input-inline',
         loadChildren: () =>
-            import(`../components/input-inline/input-inline.module`).then(
+            import('../components/input-inline/input-inline.module').then(
                 m => m.ExampleTuiInputInlineModule,
             ),
         data: {
@@ -381,7 +381,7 @@ export const ROUTES = [
     {
         path: 'components/input',
         loadChildren: () =>
-            import(`../components/input/input.module`).then(m => m.ExampleTuiInputModule),
+            import('../components/input/input.module').then(m => m.ExampleTuiInputModule),
         data: {
             title: 'Input',
         },
@@ -389,7 +389,7 @@ export const ROUTES = [
     {
         path: 'components/input-date',
         loadChildren: () =>
-            import(`../components/input-date/input-date.module`).then(
+            import('../components/input-date/input-date.module').then(
                 m => m.ExampleTuiInputDateModule,
             ),
         data: {
@@ -399,7 +399,7 @@ export const ROUTES = [
     {
         path: 'components/input-card',
         loadChildren: () =>
-            import(`../components/input-card/input-card.module`).then(
+            import('../components/input-card/input-card.module').then(
                 m => m.ExampleTuiInputCardModule,
             ),
         data: {
@@ -409,7 +409,7 @@ export const ROUTES = [
     {
         path: 'components/input-card-grouped',
         loadChildren: () =>
-            import(`../components/input-card-grouped/input-card-grouped.module`).then(
+            import('../components/input-card-grouped/input-card-grouped.module').then(
                 m => m.ExampleTuiInputCardGroupedModule,
             ),
         data: {
@@ -419,7 +419,7 @@ export const ROUTES = [
     {
         path: 'components/input-copy',
         loadChildren: () =>
-            import(`../components/input-copy/input-copy.module`).then(
+            import('../components/input-copy/input-copy.module').then(
                 m => m.ExampleTuiInputCopyModule,
             ),
         data: {
@@ -429,7 +429,7 @@ export const ROUTES = [
     {
         path: 'components/input-count',
         loadChildren: () =>
-            import(`../components/input-count/input-count.module`).then(
+            import('../components/input-count/input-count.module').then(
                 m => m.ExampleTuiInputCountModule,
             ),
         data: {
@@ -439,7 +439,7 @@ export const ROUTES = [
     {
         path: 'components/input-date-time',
         loadChildren: () =>
-            import(`../components/input-date-time/input-date-time.module`).then(
+            import('../components/input-date-time/input-date-time.module').then(
                 m => m.ExampleTuiInputDateTimeModule,
             ),
         data: {
@@ -449,7 +449,7 @@ export const ROUTES = [
     {
         path: 'components/input-file',
         loadChildren: () =>
-            import(`../components/input-file/input-file.module`).then(
+            import('../components/input-file/input-file.module').then(
                 m => m.ExampleTuiInputFileModule,
             ),
         data: {
@@ -459,7 +459,7 @@ export const ROUTES = [
     {
         path: 'components/input-month',
         loadChildren: () =>
-            import(`../components/input-month/input-month.module`).then(
+            import('../components/input-month/input-month.module').then(
                 m => m.ExampleInputMonthModule,
             ),
         data: {
@@ -469,7 +469,7 @@ export const ROUTES = [
     {
         path: 'components/input-month-range',
         loadChildren: () =>
-            import(`../components/input-month-range/input-month-range.module`).then(
+            import('../components/input-month-range/input-month-range.module').then(
                 m => m.ExampleTuiInputMonthRangeModule,
             ),
         data: {
@@ -479,7 +479,7 @@ export const ROUTES = [
     {
         path: 'components/input-number',
         loadChildren: () =>
-            import(`../components/input-number/input-number.module`).then(
+            import('../components/input-number/input-number.module').then(
                 m => m.ExampleTuiInputNumberModule,
             ),
         data: {
@@ -489,7 +489,7 @@ export const ROUTES = [
     {
         path: 'components/input-password',
         loadChildren: () =>
-            import(`../components/input-password/input-password.module`).then(
+            import('../components/input-password/input-password.module').then(
                 m => m.ExampleTuiInputPasswordModule,
             ),
         data: {
@@ -499,7 +499,7 @@ export const ROUTES = [
     {
         path: 'components/input-phone',
         loadChildren: () =>
-            import(`../components/input-phone/input-phone.module`).then(
+            import('../components/input-phone/input-phone.module').then(
                 m => m.ExampleTuiInputPhoneModule,
             ),
         data: {
@@ -509,7 +509,7 @@ export const ROUTES = [
     {
         path: 'components/input-range',
         loadChildren: () =>
-            import(`../components/input-range/input-range.module`).then(
+            import('../components/input-range/input-range.module').then(
                 m => m.ExampleTuiInputRangeModule,
             ),
         data: {
@@ -519,7 +519,7 @@ export const ROUTES = [
     {
         path: 'components/input-date-range',
         loadChildren: () =>
-            import(`../components/input-date-range/input-date-range.module`).then(
+            import('../components/input-date-range/input-date-range.module').then(
                 m => m.ExampleTuiInputDateRangeModule,
             ),
         data: {
@@ -529,7 +529,7 @@ export const ROUTES = [
     {
         path: 'components/input-slider',
         loadChildren: () =>
-            import(`../components/input-slider/input-slider.module`).then(
+            import('../components/input-slider/input-slider.module').then(
                 m => m.ExampleTuiInputSliderModule,
             ),
         data: {
@@ -539,7 +539,7 @@ export const ROUTES = [
     {
         path: 'components/input-tag',
         loadChildren: () =>
-            import(`../components/input-tag/input-tag.module`).then(
+            import('../components/input-tag/input-tag.module').then(
                 m => m.ExampleTuiInputTagModule,
             ),
         data: {
@@ -549,7 +549,7 @@ export const ROUTES = [
     {
         path: 'components/input-time',
         loadChildren: () =>
-            import(`../components/input-time/input-time.module`).then(
+            import('../components/input-time/input-time.module').then(
                 m => m.ExampleTuiInputTimeModule,
             ),
         data: {
@@ -560,7 +560,7 @@ export const ROUTES = [
         path: 'components/input-phone-international',
         loadChildren: () =>
             import(
-                `../components/input-phone-international/input-phone-international.module`
+                '../components/input-phone-international/input-phone-international.module'
             ).then(m => m.ExampleTuiInputPhoneInternationalModule),
         data: {
             title: 'InputPhoneInternational',
@@ -569,7 +569,7 @@ export const ROUTES = [
     {
         path: 'components/island',
         loadChildren: () =>
-            import(`../components/island/island.module`).then(
+            import('../components/island/island.module').then(
                 m => m.ExampleTuiIslandModule,
             ),
         data: {
@@ -579,7 +579,7 @@ export const ROUTES = [
     {
         path: 'components/label',
         loadChildren: () =>
-            import(`../components/label/label.module`).then(m => m.ExampleTuiLabelModule),
+            import('../components/label/label.module').then(m => m.ExampleTuiLabelModule),
         data: {
             title: 'Label',
         },
@@ -587,7 +587,7 @@ export const ROUTES = [
     {
         path: 'components/line-clamp',
         loadChildren: () =>
-            import(`../components/line-clamp/line-clamp.module`).then(
+            import('../components/line-clamp/line-clamp.module').then(
                 m => m.ExampleTuiLineClampModule,
             ),
         data: {
@@ -597,7 +597,7 @@ export const ROUTES = [
     {
         path: 'components/link',
         loadChildren: () =>
-            import(`../components/link/link.module`).then(m => m.ExampleTuiLinkModule),
+            import('../components/link/link.module').then(m => m.ExampleTuiLinkModule),
         data: {
             title: 'Link',
         },
@@ -605,7 +605,7 @@ export const ROUTES = [
     {
         path: 'components/loader',
         loadChildren: () =>
-            import(`../components/loader/loader.module`).then(
+            import('../components/loader/loader.module').then(
                 m => m.ExampleTuiLoaderModule,
             ),
         data: {
@@ -615,7 +615,7 @@ export const ROUTES = [
     {
         path: 'components/marker-icon',
         loadChildren: () =>
-            import(`../components/marker-icon/marker-icon.module`).then(
+            import('../components/marker-icon/marker-icon.module').then(
                 m => m.ExampleTuiMarkerIconModule,
             ),
         data: {
@@ -626,17 +626,17 @@ export const ROUTES = [
     {
         path: 'mobile-themes',
         loadChildren: () =>
-            import(`../components/mobile-themes/mobile-themes.module`).then(
+            import('../components/mobile-themes/mobile-themes.module').then(
                 m => m.ExampleTuiMobileThemesModule,
             ),
         data: {
-            title: `Mobile`,
+            title: 'Mobile',
         },
     },
     {
         path: 'components/notification',
         loadChildren: () =>
-            import(`../components/notification/notification.module`).then(
+            import('../components/notification/notification.module').then(
                 m => m.ExampleTuiNotificationModule,
             ),
         data: {
@@ -646,7 +646,7 @@ export const ROUTES = [
     {
         path: 'components/mobile-dialog',
         loadChildren: () =>
-            import(`../components/mobile-dialog/mobile-dialog.module`).then(
+            import('../components/mobile-dialog/mobile-dialog.module').then(
                 m => m.ExampleTuiMobileDialogModule,
             ),
         data: {
@@ -656,7 +656,7 @@ export const ROUTES = [
     {
         path: 'components/mobile-calendar',
         loadChildren: () =>
-            import(`../components/mobile-calendar/mobile-calendar.module`).then(
+            import('../components/mobile-calendar/mobile-calendar.module').then(
                 m => m.ExampleTuiMobileCalendarModule,
             ),
         data: {
@@ -666,7 +666,7 @@ export const ROUTES = [
     {
         path: 'components/pull-to-refresh',
         loadChildren: () =>
-            import(`../components/pull-to-refresh/pull-to-refresh.module`).then(
+            import('../components/pull-to-refresh/pull-to-refresh.module').then(
                 m => m.ExampleTuiPullToRefreshModule,
             ),
         data: {
@@ -676,7 +676,7 @@ export const ROUTES = [
     {
         path: 'components/money',
         loadChildren: () =>
-            import(`../components/money/money.module`).then(m => m.ExampleTuiMoneyModule),
+            import('../components/money/money.module').then(m => m.ExampleTuiMoneyModule),
         data: {
             title: 'Money',
         },
@@ -684,7 +684,7 @@ export const ROUTES = [
     {
         path: 'components/calendar-month',
         loadChildren: () =>
-            import(`../components/calendar-month/calendar-month.module`).then(
+            import('../components/calendar-month/calendar-month.module').then(
                 m => m.ExampleTuiCalendarMonthModule,
             ),
         data: {
@@ -694,7 +694,7 @@ export const ROUTES = [
     {
         path: 'components/multi-select',
         loadChildren: () =>
-            import(`../components/multi-select/multi-select.module`).then(
+            import('../components/multi-select/multi-select.module').then(
                 m => m.ExampleTuiMultiSelectModule,
             ),
         data: {
@@ -704,7 +704,7 @@ export const ROUTES = [
     {
         path: 'navigation/pagination',
         loadChildren: () =>
-            import(`../components/pagination/pagination.module`).then(
+            import('../components/pagination/pagination.module').then(
                 m => m.ExampleTuiPaginationModule,
             ),
         data: {
@@ -714,7 +714,7 @@ export const ROUTES = [
     {
         path: 'components/radio',
         loadChildren: () =>
-            import(`../components/radio/radio.module`).then(m => m.ExampleTuiRadioModule),
+            import('../components/radio/radio.module').then(m => m.ExampleTuiRadioModule),
         data: {
             title: 'Radio',
         },
@@ -722,7 +722,7 @@ export const ROUTES = [
     {
         path: 'components/radio-block',
         loadChildren: () =>
-            import(`../components/radio-block/radio-block.module`).then(
+            import('../components/radio-block/radio-block.module').then(
                 m => m.ExampleTuiRadioBlockModule,
             ),
         data: {
@@ -732,7 +732,7 @@ export const ROUTES = [
     {
         path: 'components/radio-labeled',
         loadChildren: () =>
-            import(`../components/radio-labeled/radio-labeled.module`).then(
+            import('../components/radio-labeled/radio-labeled.module').then(
                 m => m.ExampleTuiRadioLabeledModule,
             ),
         data: {
@@ -742,7 +742,7 @@ export const ROUTES = [
     {
         path: 'components/radio-list',
         loadChildren: () =>
-            import(`../components/radio-list/radio-list.module`).then(
+            import('../components/radio-list/radio-list.module').then(
                 m => m.ExampleTuiRadioListModule,
             ),
         data: {
@@ -752,7 +752,7 @@ export const ROUTES = [
     {
         path: 'components/rating',
         loadChildren: () =>
-            import(`../components/rating/rating.module`).then(
+            import('../components/rating/rating.module').then(
                 m => m.ExampleTuiRatingModule,
             ),
         data: {
@@ -762,7 +762,7 @@ export const ROUTES = [
     {
         path: 'components/range',
         loadChildren: () =>
-            import(`../components/range/range.module`).then(m => m.ExampleTuiRangeModule),
+            import('../components/range/range.module').then(m => m.ExampleTuiRangeModule),
         data: {
             title: 'range',
         },
@@ -770,7 +770,7 @@ export const ROUTES = [
     {
         path: 'components/calendar-range',
         loadChildren: () =>
-            import(`../components/calendar-range/calendar-range.module`).then(
+            import('../components/calendar-range/calendar-range.module').then(
                 m => m.ExampleTuiCalendarRangeModule,
             ),
         data: {
@@ -780,7 +780,7 @@ export const ROUTES = [
     {
         path: 'components/select',
         loadChildren: () =>
-            import(`../components/select/select.module`).then(
+            import('../components/select/select.module').then(
                 m => m.ExampleTuiSelectModule,
             ),
         data: {
@@ -790,7 +790,7 @@ export const ROUTES = [
     {
         path: 'components/scrollbar',
         loadChildren: () =>
-            import(`../components/scrollbar/scrollbar.module`).then(
+            import('../components/scrollbar/scrollbar.module').then(
                 m => m.ExampleTuiScrollbarModule,
             ),
         data: {
@@ -800,7 +800,7 @@ export const ROUTES = [
     {
         path: 'components/sheet',
         loadChildren: () =>
-            import(`../components/sheet/sheet.module`).then(m => m.ExampleTuiSheetModule),
+            import('../components/sheet/sheet.module').then(m => m.ExampleTuiSheetModule),
         data: {
             title: 'Sheet',
         },
@@ -808,7 +808,7 @@ export const ROUTES = [
     {
         path: 'components/slider',
         loadChildren: () =>
-            import(`../components/slider/slider.module`).then(
+            import('../components/slider/slider.module').then(
                 m => m.ExampleTuiSliderModule,
             ),
         data: {
@@ -818,7 +818,7 @@ export const ROUTES = [
     {
         path: 'components/slider-deprecated',
         loadChildren: () =>
-            import(`../components/slider-old/slider-old.module`).then(
+            import('../components/slider-old/slider-old.module').then(
                 m => m.ExampleTuiSliderOldModule,
             ),
         data: {
@@ -828,7 +828,7 @@ export const ROUTES = [
     {
         path: 'navigation/stepper',
         loadChildren: () =>
-            import(`../components/stepper/stepper.module`).then(
+            import('../components/stepper/stepper.module').then(
                 m => m.ExampleTuiStepperModule,
             ),
         data: {
@@ -838,7 +838,7 @@ export const ROUTES = [
     {
         path: 'components/preview',
         loadChildren: () =>
-            import(`../components/preview/preview.module`).then(
+            import('../components/preview/preview.module').then(
                 m => m.ExampleTuiPreviewModule,
             ),
         data: {
@@ -848,7 +848,7 @@ export const ROUTES = [
     {
         path: 'components/svg',
         loadChildren: () =>
-            import(`../components/svg/svg.module`).then(m => m.ExampleTuiSvgModule),
+            import('../components/svg/svg.module').then(m => m.ExampleTuiSvgModule),
         data: {
             title: 'Svg',
         },
@@ -856,7 +856,7 @@ export const ROUTES = [
     {
         path: 'navigation/tabs',
         loadChildren: () =>
-            import(`../components/tabs/tabs.module`).then(m => m.ExampleTuiTabsModule),
+            import('../components/tabs/tabs.module').then(m => m.ExampleTuiTabsModule),
         data: {
             title: 'Tabs',
         },
@@ -864,7 +864,7 @@ export const ROUTES = [
     {
         path: 'components/tag',
         loadChildren: () =>
-            import(`../components/tag/tag.module`).then(m => m.ExampleTuiTagModule),
+            import('../components/tag/tag.module').then(m => m.ExampleTuiTagModule),
         data: {
             title: 'Tag',
         },
@@ -872,7 +872,7 @@ export const ROUTES = [
     {
         path: 'components/theme-night',
         loadChildren: () =>
-            import(`../components/theme-night/theme-night.module`).then(
+            import('../components/theme-night/theme-night.module').then(
                 m => m.ExampleTuiThemeNightModule,
             ),
         data: {
@@ -882,7 +882,7 @@ export const ROUTES = [
     {
         path: 'components/text-area',
         loadChildren: () =>
-            import(`../components/text-area/text-area.module`).then(
+            import('../components/text-area/text-area.module').then(
                 m => m.ExampleTuiTextAreaModule,
             ),
         data: {
@@ -892,7 +892,7 @@ export const ROUTES = [
     {
         path: 'components/primitive-textfield',
         loadChildren: () =>
-            import(`../components/primitive-textfield/primitive-textfield.module`).then(
+            import('../components/primitive-textfield/primitive-textfield.module').then(
                 m => m.ExampleTuiPrimitiveTextfieldModule,
             ),
         data: {
@@ -902,7 +902,7 @@ export const ROUTES = [
     {
         path: 'components/pdf-viewer',
         loadChildren: () =>
-            import(`../components/pdf-viewer/pdf-viewer.module`).then(
+            import('../components/pdf-viewer/pdf-viewer.module').then(
                 m => m.ExampleTuiPdfViewerModule,
             ),
         data: {
@@ -912,7 +912,7 @@ export const ROUTES = [
     {
         path: 'components/progress-bar',
         loadChildren: () =>
-            import(`../components/progress-bar/progress-bar.module`).then(
+            import('../components/progress-bar/progress-bar.module').then(
                 m => m.ExampleTuiProgressBarModule,
             ),
         data: {
@@ -922,7 +922,7 @@ export const ROUTES = [
     {
         path: 'components/progress-circle',
         loadChildren: () =>
-            import(`../components/progress-circle/progress-circle.module`).then(
+            import('../components/progress-circle/progress-circle.module').then(
                 m => m.ExampleTuiProgressCircleModule,
             ),
         data: {
@@ -932,7 +932,7 @@ export const ROUTES = [
     {
         path: 'components/progress-segmented',
         loadChildren: () =>
-            import(`../components/progress-segmented/progress-segmented.module`).then(
+            import('../components/progress-segmented/progress-segmented.module').then(
                 m => m.ExampleTuiProgressSegmentedModule,
             ),
         data: {
@@ -942,7 +942,7 @@ export const ROUTES = [
     {
         path: 'components/theme-switcher',
         loadChildren: () =>
-            import(`../components/theme-switcher/theme-switcher.module`).then(
+            import('../components/theme-switcher/theme-switcher.module').then(
                 m => m.ExampleTuiThemeSwitcherModule,
             ),
         data: {
@@ -952,7 +952,7 @@ export const ROUTES = [
     {
         path: 'components/toggle',
         loadChildren: () =>
-            import(`../components/toggle/toggle.module`).then(
+            import('../components/toggle/toggle.module').then(
                 m => m.ExampleTuiToggleModule,
             ),
         data: {
@@ -962,7 +962,7 @@ export const ROUTES = [
     {
         path: 'components/tooltip',
         loadChildren: () =>
-            import(`../components/tooltip/tooltip.module`).then(
+            import('../components/tooltip/tooltip.module').then(
                 m => m.ExampleTuiTooltipModule,
             ),
         data: {
@@ -972,7 +972,7 @@ export const ROUTES = [
     {
         path: 'components/tree',
         loadChildren: () =>
-            import(`../components/tree/tree.module`).then(m => m.ExampleTuiTreeModule),
+            import('../components/tree/tree.module').then(m => m.ExampleTuiTreeModule),
         data: {
             title: 'Tree',
         },
@@ -980,7 +980,7 @@ export const ROUTES = [
     {
         path: 'components/toolbar',
         loadChildren: () =>
-            import(`../components/toolbar/toolbar.module`).then(
+            import('../components/toolbar/toolbar.module').then(
                 m => m.ExampleTuiToolbarModule,
             ),
         data: {
@@ -990,7 +990,7 @@ export const ROUTES = [
     {
         path: 'components/editor',
         loadChildren: () =>
-            import(`../components/editor/editor.module`).then(
+            import('../components/editor/editor.module').then(
                 m => m.ExampleTuiEditorModule,
             ),
         data: {
@@ -1000,7 +1000,7 @@ export const ROUTES = [
     {
         path: 'components/editor-new',
         loadChildren: () =>
-            import(`../components/editor-new/editor-new.module`).then(
+            import('../components/editor-new/editor-new.module').then(
                 m => m.ExampleTuiEditorNewModule,
             ),
         data: {
@@ -1010,7 +1010,7 @@ export const ROUTES = [
     {
         path: 'components/filter',
         loadChildren: () =>
-            import(`../components/filter/filter.module`).then(
+            import('../components/filter/filter.module').then(
                 m => m.ExampleTuiFilterModule,
             ),
         data: {
@@ -1021,7 +1021,7 @@ export const ROUTES = [
     {
         path: 'components/arc-chart',
         loadChildren: () =>
-            import(`../charts/arc-chart/arc-chart.module`).then(
+            import('../charts/arc-chart/arc-chart.module').then(
                 m => m.ExampleTuiArcChartModule,
             ),
         data: {
@@ -1031,7 +1031,7 @@ export const ROUTES = [
     {
         path: 'components/axes',
         loadChildren: () =>
-            import(`../charts/axes/axes.module`).then(m => m.ExampleTuiAxesModule),
+            import('../charts/axes/axes.module').then(m => m.ExampleTuiAxesModule),
         data: {
             title: 'Axes',
         },
@@ -1039,7 +1039,7 @@ export const ROUTES = [
     {
         path: 'components/bar',
         loadChildren: () =>
-            import(`../charts/bar/bar.module`).then(m => m.ExampleTuiBarModule),
+            import('../charts/bar/bar.module').then(m => m.ExampleTuiBarModule),
         data: {
             title: 'Bar',
         },
@@ -1047,7 +1047,7 @@ export const ROUTES = [
     {
         path: 'components/bar-chart',
         loadChildren: () =>
-            import(`../charts/bar-chart/bar-chart.module`).then(
+            import('../charts/bar-chart/bar-chart.module').then(
                 m => m.ExampleTuiBarChartModule,
             ),
         data: {
@@ -1057,7 +1057,7 @@ export const ROUTES = [
     {
         path: 'components/bar-set',
         loadChildren: () =>
-            import(`../charts/bar-set/bar-set.module`).then(
+            import('../charts/bar-set/bar-set.module').then(
                 m => m.ExampleTuiBarSetModule,
             ),
         data: {
@@ -1067,7 +1067,7 @@ export const ROUTES = [
     {
         path: 'components/legend-item',
         loadChildren: () =>
-            import(`../charts/legend-item/legend-item.module`).then(
+            import('../charts/legend-item/legend-item.module').then(
                 m => m.ExampleTuiLegendItemModule,
             ),
         data: {
@@ -1077,7 +1077,7 @@ export const ROUTES = [
     {
         path: 'components/line-chart',
         loadChildren: () =>
-            import(`../charts/line-chart/line-chart.module`).then(
+            import('../charts/line-chart/line-chart.module').then(
                 m => m.ExampleTuiLineChartModule,
             ),
         data: {
@@ -1087,7 +1087,7 @@ export const ROUTES = [
     {
         path: 'components/line-days-chart',
         loadChildren: () =>
-            import(`../charts/line-days-chart/line-days-chart.module`).then(
+            import('../charts/line-days-chart/line-days-chart.module').then(
                 m => m.ExampleTuiLineDaysChartModule,
             ),
         data: {
@@ -1097,7 +1097,7 @@ export const ROUTES = [
     {
         path: 'components/pie-chart',
         loadChildren: () =>
-            import(`../charts/pie-chart/pie-chart.module`).then(
+            import('../charts/pie-chart/pie-chart.module').then(
                 m => m.ExampleTuiPieChartModule,
             ),
         data: {
@@ -1107,7 +1107,7 @@ export const ROUTES = [
     {
         path: 'components/ring-chart',
         loadChildren: () =>
-            import(`../charts/ring-chart/ring-chart.module`).then(
+            import('../charts/ring-chart/ring-chart.module').then(
                 m => m.ExampleTuiRingChartModule,
             ),
         data: {
@@ -1118,88 +1118,88 @@ export const ROUTES = [
     {
         path: 'colors',
         loadChildren: () =>
-            import(`../markup/colors/colors.module`).then(m => m.ColorsModule),
+            import('../markup/colors/colors.module').then(m => m.ColorsModule),
         data: {
-            title: `Colors`,
+            title: 'Colors',
         },
     },
     {
         path: 'form',
-        loadChildren: () => import(`../markup/form/form.module`).then(m => m.FormModule),
+        loadChildren: () => import('../markup/form/form.module').then(m => m.FormModule),
         data: {
-            title: `Form`,
+            title: 'Form',
         },
     },
     {
         path: 'grid',
-        loadChildren: () => import(`../markup/grid/grid.module`).then(m => m.GridModule),
+        loadChildren: () => import('../markup/grid/grid.module').then(m => m.GridModule),
         data: {
-            title: `Grid`,
+            title: 'Grid',
         },
     },
     {
         path: 'icons',
         loadChildren: () =>
-            import(`../markup/icons/icons.module`).then(m => m.IconsModule),
+            import('../markup/icons/icons.module').then(m => m.IconsModule),
         data: {
-            title: `Icons`,
+            title: 'Icons',
         },
     },
     {
         path: 'lists',
         loadChildren: () =>
-            import(`../markup/lists/lists.module`).then(m => m.ListsModule),
+            import('../markup/lists/lists.module').then(m => m.ListsModule),
         data: {
-            title: `Lists`,
+            title: 'Lists',
         },
     },
     {
         path: 'shadows',
         loadChildren: () =>
-            import(`../markup/shadows/shadows.module`).then(m => m.ShadowsModule),
+            import('../markup/shadows/shadows.module').then(m => m.ShadowsModule),
         data: {
-            title: `Shadows`,
+            title: 'Shadows',
         },
     },
     {
         path: 'skeleton',
         loadChildren: () =>
-            import(`../markup/skeleton/skeleton.module`).then(m => m.SkeletonModule),
+            import('../markup/skeleton/skeleton.module').then(m => m.SkeletonModule),
         data: {
-            title: `Skeleton`,
+            title: 'Skeleton',
         },
     },
     {
         path: 'spaces',
         loadChildren: () =>
-            import(`../markup/spaces/spaces.module`).then(m => m.SpacesModule),
+            import('../markup/spaces/spaces.module').then(m => m.SpacesModule),
         data: {
-            title: `Spaces`,
+            title: 'Spaces',
         },
     },
     {
         path: 'tables',
         loadChildren: () =>
-            import(`../markup/tables/tables.module`).then(m => m.TablesModule),
+            import('../markup/tables/tables.module').then(m => m.TablesModule),
         data: {
-            title: `Tables`,
+            title: 'Tables',
         },
     },
     {
         path: 'typography',
         loadChildren: () =>
-            import(`../markup/typography/typography.module`).then(
+            import('../markup/typography/typography.module').then(
                 m => m.TypographyModule,
             ),
         data: {
-            title: `Typography`,
+            title: 'Typography',
         },
     },
     // DIRECTIVES
     {
         path: 'directives/active-zone',
         loadChildren: () =>
-            import(`../directives/active-zone/active-zone.module`).then(
+            import('../directives/active-zone/active-zone.module').then(
                 m => m.ExampleTuiActiveZoneModule,
             ),
         data: {
@@ -1209,7 +1209,7 @@ export const ROUTES = [
     {
         path: 'directives/copy-processor',
         loadChildren: () =>
-            import(`../directives/copy-processor/copy-processor.module`).then(
+            import('../directives/copy-processor/copy-processor.module').then(
                 m => m.ExampleTuiCopyProcessorModule,
             ),
         data: {
@@ -1219,7 +1219,7 @@ export const ROUTES = [
     {
         path: 'directives/dropdown',
         loadChildren: () =>
-            import(`../directives/dropdown/dropdown.module`).then(
+            import('../directives/dropdown/dropdown.module').then(
                 m => m.ExampleTuiDropdownModule,
             ),
         data: {
@@ -1239,7 +1239,7 @@ export const ROUTES = [
     {
         path: 'directives/dropdown-selection',
         loadChildren: () =>
-            import(`../directives/dropdown-selection/dropdown-selection.module`).then(
+            import('../directives/dropdown-selection/dropdown-selection.module').then(
                 m => m.ExampleTuiDropdownSelectionModule,
             ),
         data: {
@@ -1249,7 +1249,7 @@ export const ROUTES = [
     {
         path: 'directives/described-by',
         loadChildren: () =>
-            import(`../directives/described-by/described-by.module`).then(
+            import('../directives/described-by/described-by.module').then(
                 m => m.ExampleTuiDescribedByModule,
             ),
         data: {
@@ -1259,7 +1259,7 @@ export const ROUTES = [
     {
         path: 'directives/elastic-sticky',
         loadChildren: () =>
-            import(`../directives/elastic-sticky/elastic-sticky.module`).then(
+            import('../directives/elastic-sticky/elastic-sticky.module').then(
                 m => m.ExampleTuiElasticStickyModule,
             ),
         data: {
@@ -1269,7 +1269,7 @@ export const ROUTES = [
     {
         path: 'directives/element',
         loadChildren: () =>
-            import(`../directives/element/element.module`).then(
+            import('../directives/element/element.module').then(
                 m => m.ExampleTuiElementModule,
             ),
         data: {
@@ -1279,7 +1279,7 @@ export const ROUTES = [
     {
         path: 'directives/for',
         loadChildren: () =>
-            import(`../directives/for/for.module`).then(m => m.ExampleTuiForModule),
+            import('../directives/for/for.module').then(m => m.ExampleTuiForModule),
         data: {
             title: 'For',
         },
@@ -1287,7 +1287,7 @@ export const ROUTES = [
     {
         path: 'directives/highlight',
         loadChildren: () =>
-            import(`../directives/highlight/highlight.module`).then(
+            import('../directives/highlight/highlight.module').then(
                 m => m.ExampleTuiHighlightModule,
             ),
         data: {
@@ -1297,7 +1297,7 @@ export const ROUTES = [
     {
         path: 'directives/hint',
         loadChildren: () =>
-            import(`../directives/hint/hint.module`).then(m => m.ExampleTuiHintModule),
+            import('../directives/hint/hint.module').then(m => m.ExampleTuiHintModule),
         data: {
             title: 'Hint',
         },
@@ -1305,7 +1305,7 @@ export const ROUTES = [
     {
         path: 'directives/lazy-loading',
         loadChildren: () =>
-            import(`../directives/lazy-loading/lazy-loading.module`).then(
+            import('../directives/lazy-loading/lazy-loading.module').then(
                 m => m.ExampleTuiLazyLoadingModule,
             ),
         data: {
@@ -1315,7 +1315,7 @@ export const ROUTES = [
     {
         path: 'directives/manual-hint',
         loadChildren: () =>
-            import(`../directives/manual-hint/manual-hint.module`).then(
+            import('../directives/manual-hint/manual-hint.module').then(
                 m => m.ExampleTuiManualHintModule,
             ),
         data: {
@@ -1325,7 +1325,7 @@ export const ROUTES = [
     {
         path: 'directives/pointer-hint',
         loadChildren: () =>
-            import(`../directives/pointer-hint/pointer-hint.module`).then(
+            import('../directives/pointer-hint/pointer-hint.module').then(
                 m => m.ExampleTuiPointerHintModule,
             ),
         data: {
@@ -1335,7 +1335,7 @@ export const ROUTES = [
     {
         path: 'directives/pan',
         loadChildren: () =>
-            import(`../directives/pan/pan.module`).then(m => m.ExampleTuiPanModule),
+            import('../directives/pan/pan.module').then(m => m.ExampleTuiPanModule),
         data: {
             title: 'Pan',
         },
@@ -1343,7 +1343,7 @@ export const ROUTES = [
     {
         path: 'directives/swipe',
         loadChildren: () =>
-            import(`../directives/swipe/swipe.module`).then(m => m.ExampleTuiSwipeModule),
+            import('../directives/swipe/swipe.module').then(m => m.ExampleTuiSwipeModule),
         data: {
             title: 'Swipe',
         },
@@ -1351,7 +1351,7 @@ export const ROUTES = [
     {
         path: 'directives/let',
         loadChildren: () =>
-            import(`../directives/let/let.module`).then(m => m.ExampleTuiLetModule),
+            import('../directives/let/let.module').then(m => m.ExampleTuiLetModule),
         data: {
             title: 'Let',
         },
@@ -1359,7 +1359,7 @@ export const ROUTES = [
     {
         path: 'directives/zoom',
         loadChildren: () =>
-            import(`../directives/zoom/zoom.module`).then(m => m.ExampleTuiZoomModule),
+            import('../directives/zoom/zoom.module').then(m => m.ExampleTuiZoomModule),
         data: {
             title: 'Zoom',
         },
@@ -1367,7 +1367,7 @@ export const ROUTES = [
     {
         path: 'directives/overscroll',
         loadChildren: () =>
-            import(`../directives/overscroll/overscroll.module`).then(
+            import('../directives/overscroll/overscroll.module').then(
                 m => m.ExampleTuiOverscrollModule,
             ),
         data: {
@@ -1377,7 +1377,7 @@ export const ROUTES = [
     {
         path: 'directives/present',
         loadChildren: () =>
-            import(`../directives/present/present.module`).then(
+            import('../directives/present/present.module').then(
                 m => m.ExampleTuiPresentModule,
             ),
         data: {
@@ -1387,7 +1387,7 @@ export const ROUTES = [
     {
         path: 'components/resizable-column',
         loadChildren: () =>
-            import(`../tables/resizable-column/resizable-column.module`).then(
+            import('../tables/resizable-column/resizable-column.module').then(
                 m => m.ExampleTuiResizableColumnModule,
             ),
         data: {
@@ -1397,7 +1397,7 @@ export const ROUTES = [
     {
         path: 'components/reorder',
         loadChildren: () =>
-            import(`../tables/reorder/reorder.module`).then(
+            import('../tables/reorder/reorder.module').then(
                 m => m.ExampleTuiReorderModule,
             ),
         data: {
@@ -1407,7 +1407,7 @@ export const ROUTES = [
     {
         path: 'components/table',
         loadChildren: () =>
-            import(`../tables/table/table.module`).then(m => m.ExampleTuiTableModule),
+            import('../tables/table/table.module').then(m => m.ExampleTuiTableModule),
         data: {
             title: 'Table',
         },
@@ -1415,7 +1415,7 @@ export const ROUTES = [
     {
         path: 'components/table-pagination',
         loadChildren: () =>
-            import(`../tables/table-pagination/table-pagination.module`).then(
+            import('../tables/table-pagination/table-pagination.module').then(
                 m => m.ExampleTuiTablePaginationModule,
             ),
         data: {
@@ -1425,7 +1425,7 @@ export const ROUTES = [
     {
         path: 'directives/ripple',
         loadChildren: () =>
-            import(`../directives/ripple/ripple.module`).then(
+            import('../directives/ripple/ripple.module').then(
                 m => m.ExampleTuiRippleModule,
             ),
         data: {
@@ -1435,7 +1435,7 @@ export const ROUTES = [
     {
         path: 'directives/sidebar',
         loadChildren: () =>
-            import(`../directives/sidebar/sidebar.module`).then(
+            import('../directives/sidebar/sidebar.module').then(
                 m => m.ExampleTuiSidebarModule,
             ),
         data: {
@@ -1445,7 +1445,7 @@ export const ROUTES = [
     {
         path: 'directives/touchable',
         loadChildren: () =>
-            import(`../directives/touchable/touchable.module`).then(
+            import('../directives/touchable/touchable.module').then(
                 m => m.ExampleTuiTouchableModule,
             ),
         data: {
@@ -1455,7 +1455,7 @@ export const ROUTES = [
     {
         path: 'directives/validator',
         loadChildren: () =>
-            import(`../directives/validator/validator.module`).then(
+            import('../directives/validator/validator.module').then(
                 m => m.ExampleTuiValidatorModule,
             ),
         data: {
@@ -1465,7 +1465,7 @@ export const ROUTES = [
     {
         path: 'directives/media',
         loadChildren: () =>
-            import(`../directives/media/media.module`).then(m => m.ExampleTuiMediaModule),
+            import('../directives/media/media.module').then(m => m.ExampleTuiMediaModule),
         data: {
             title: 'Media',
         },
@@ -1473,7 +1473,7 @@ export const ROUTES = [
     {
         path: 'directives/mode',
         loadChildren: () =>
-            import(`../directives/mode/mode.module`).then(m => m.ExampleTuiModeModule),
+            import('../directives/mode/mode.module').then(m => m.ExampleTuiModeModule),
         data: {
             title: 'Mode',
         },
@@ -1481,7 +1481,7 @@ export const ROUTES = [
     {
         path: 'directives/auto-focus',
         loadChildren: () =>
-            import(`../directives/auto-focus/auto-focus.module`).then(
+            import('../directives/auto-focus/auto-focus.module').then(
                 m => m.ExampleTuiAutoFocusModule,
             ),
         data: {
@@ -1492,7 +1492,7 @@ export const ROUTES = [
     {
         path: 'pipes/currency',
         loadChildren: () =>
-            import(`../pipes/currency/currency.module`).then(
+            import('../pipes/currency/currency.module').then(
                 m => m.ExampleTuiCurrencyModule,
             ),
         data: {
@@ -1502,7 +1502,7 @@ export const ROUTES = [
     {
         path: 'pipes/filter',
         loadChildren: () =>
-            import(`../pipes/filter/filter.module`).then(m => m.ExampleTuiFilterModule),
+            import('../pipes/filter/filter.module').then(m => m.ExampleTuiFilterModule),
         data: {
             title: 'Filter',
         },
@@ -1510,7 +1510,7 @@ export const ROUTES = [
     {
         path: 'pipes/filter-by-input',
         loadChildren: () =>
-            import(`../pipes/filter-by-input/filter-by-input.module`).then(
+            import('../pipes/filter-by-input/filter-by-input.module').then(
                 m => m.ExampleTuiFilterByInputModule,
             ),
         data: {
@@ -1520,7 +1520,7 @@ export const ROUTES = [
     {
         path: 'pipes/format-number',
         loadChildren: () =>
-            import(`../pipes/format-number/format-number.module`).then(
+            import('../pipes/format-number/format-number.module').then(
                 m => m.ExampleTuiFormatNumberModule,
             ),
         data: {
@@ -1530,7 +1530,7 @@ export const ROUTES = [
     {
         path: 'pipes/format-phone',
         loadChildren: () =>
-            import(`../pipes/format-phone/format-phone.module`).then(
+            import('../pipes/format-phone/format-phone.module').then(
                 m => m.ExampleTuiFormatPhoneModule,
             ),
         data: {
@@ -1540,7 +1540,7 @@ export const ROUTES = [
     {
         path: 'pipes/mapper',
         loadChildren: () =>
-            import(`../pipes/mapper/mapper.module`).then(m => m.ExampleTuiMapperModule),
+            import('../pipes/mapper/mapper.module').then(m => m.ExampleTuiMapperModule),
         data: {
             title: 'Mapper',
         },
@@ -1548,7 +1548,7 @@ export const ROUTES = [
     {
         path: 'pipes/stringify',
         loadChildren: () =>
-            import(`../pipes/stringify/stringify.module`).then(
+            import('../pipes/stringify/stringify.module').then(
                 m => m.ExampleTuiStringifyModule,
             ),
         data: {
@@ -1558,7 +1558,7 @@ export const ROUTES = [
     {
         path: 'pipes/stringify-content',
         loadChildren: () =>
-            import(`../pipes/stringify-content/stringify-content.module`).then(
+            import('../pipes/stringify-content/stringify-content.module').then(
                 m => m.ExampleTuiStringifyContentModule,
             ),
         data: {
@@ -1569,7 +1569,7 @@ export const ROUTES = [
     {
         path: 'services/notifications-service',
         loadChildren: () =>
-            import(`../services/notifications/notifications.module`).then(
+            import('../services/notifications/notifications.module').then(
                 m => m.ExampleTuiNotificationsModule,
             ),
         data: {
@@ -1579,7 +1579,7 @@ export const ROUTES = [
     {
         path: 'services/destroy-service',
         loadChildren: () =>
-            import(`../services/destroy/destroy.module`).then(
+            import('../services/destroy/destroy.module').then(
                 m => m.ExampleTuiDestroyModule,
             ),
         data: {
@@ -1589,7 +1589,7 @@ export const ROUTES = [
     {
         path: 'services/scroll-service',
         loadChildren: () =>
-            import(`../services/scroll/scroll.module`).then(
+            import('../services/scroll/scroll.module').then(
                 m => m.ExampleTuiScrollModule,
             ),
         data: {
@@ -1599,7 +1599,7 @@ export const ROUTES = [
     {
         path: 'services/svg-service',
         loadChildren: () =>
-            import(`../services/svg/svg.module`).then(m => m.ExampleTuiSvgModule),
+            import('../services/svg/svg.module').then(m => m.ExampleTuiSvgModule),
         data: {
             title: 'SvgService',
         },
@@ -1607,7 +1607,7 @@ export const ROUTES = [
     {
         path: 'services/table-bars-service',
         loadChildren: () =>
-            import(`../services/table-bar/table-bar.module`).then(
+            import('../services/table-bar/table-bar.module').then(
                 m => m.ExampleTuiTableBarModule,
             ),
         data: {
@@ -1617,7 +1617,7 @@ export const ROUTES = [
     {
         path: 'directives/dropdown-controller',
         loadChildren: () =>
-            import(`../directives/dropdown-controller/dropdown-controller.module`).then(
+            import('../directives/dropdown-controller/dropdown-controller.module').then(
                 m => m.ExampleTuiDropdownControllerModule,
             ),
         data: {
@@ -1627,7 +1627,7 @@ export const ROUTES = [
     {
         path: 'directives/hint-controller',
         loadChildren: () =>
-            import(`../directives/hint-controller/hint-controller.module`).then(
+            import('../directives/hint-controller/hint-controller.module').then(
                 m => m.ExampleTuiHintControllerModule,
             ),
         data: {
@@ -1637,7 +1637,7 @@ export const ROUTES = [
     {
         path: 'directives/textfield-controller',
         loadChildren: () =>
-            import(`../directives/textfield-controller/textfield-controller.module`).then(
+            import('../directives/textfield-controller/textfield-controller.module').then(
                 m => m.ExampleTuiTextfieldControllerModule,
             ),
         data: {
@@ -1648,7 +1648,7 @@ export const ROUTES = [
     {
         path: 'decorators/default-prop',
         loadChildren: () =>
-            import(`../decorators/default-prop/default-prop.module`).then(
+            import('../decorators/default-prop/default-prop.module').then(
                 m => m.ExampleTuiDefaultPropModule,
             ),
         data: {
@@ -1658,7 +1658,7 @@ export const ROUTES = [
     {
         path: 'decorators/pure',
         loadChildren: () =>
-            import(`../decorators/pure/pure.module`).then(m => m.ExampleTuiPureModule),
+            import('../decorators/pure/pure.module').then(m => m.ExampleTuiPureModule),
         data: {
             title: 'Pure',
         },
@@ -1666,7 +1666,7 @@ export const ROUTES = [
     {
         path: 'decorators/required-setter',
         loadChildren: () =>
-            import(`../decorators/required-setter/required-setter.module`).then(
+            import('../decorators/required-setter/required-setter.module').then(
                 m => m.ExampleTuiRequiredSetterModule,
             ),
         data: {
@@ -1678,7 +1678,7 @@ export const ROUTES = [
     {
         path: 'utils/math',
         loadChildren: () =>
-            import(`../utils/math/math.module`).then(m => m.ExampleMathModule),
+            import('../utils/math/math.module').then(m => m.ExampleMathModule),
         data: {
             title: 'Math',
         },
@@ -1686,7 +1686,7 @@ export const ROUTES = [
     {
         path: 'utils/format',
         loadChildren: () =>
-            import(`../utils/format/format.module`).then(m => m.ExampleFormatModule),
+            import('../utils/format/format.module').then(m => m.ExampleFormatModule),
         data: {
             title: 'Format',
         },
@@ -1694,7 +1694,7 @@ export const ROUTES = [
     {
         path: 'utils/dom',
         loadChildren: () =>
-            import(`../utils/dom/dom.module`).then(m => m.ExampleDomModule),
+            import('../utils/dom/dom.module').then(m => m.ExampleDomModule),
         data: {
             title: 'DOM',
         },
@@ -1702,7 +1702,7 @@ export const ROUTES = [
     {
         path: 'utils/browser',
         loadChildren: () =>
-            import(`../utils/browser/browser.module`).then(m => m.ExampleBrowserModule),
+            import('../utils/browser/browser.module').then(m => m.ExampleBrowserModule),
         data: {
             title: 'Browser',
         },
@@ -1710,7 +1710,7 @@ export const ROUTES = [
     {
         path: 'utils/miscellaneous',
         loadChildren: () =>
-            import(`../utils/miscellaneous/miscellaneous.module`).then(
+            import('../utils/miscellaneous/miscellaneous.module').then(
                 m => m.ExampleMiscellaneousModule,
             ),
         data: {
@@ -1720,7 +1720,7 @@ export const ROUTES = [
     {
         path: 'utils/tokens',
         loadChildren: () =>
-            import(`../utils/tokens/tokens.module`).then(m => m.ExampleTokensModule),
+            import('../utils/tokens/tokens.module').then(m => m.ExampleTokensModule),
         data: {
             title: 'Tokens',
         },
@@ -1730,7 +1730,7 @@ export const ROUTES = [
     {
         path: 'animations',
         loadChildren: () =>
-            import(`../animations/animations.module`).then(
+            import('../animations/animations.module').then(
                 m => m.ExampleAnimationsModule,
             ),
         data: {
