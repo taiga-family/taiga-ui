@@ -1,12 +1,8 @@
 import {arrayFlat, getImports, Node} from 'ng-morph';
 
-export function getNamedImportReferences(
-    namedImport: string,
-    moduleSpecifier: string | string[] = '**/**',
-): Node[] {
+export function getNamedImportReferences(namedImport: string): Node[] {
     const importDeclarations = getImports('**/**', {
         namedImports: [namedImport],
-        moduleSpecifier: moduleSpecifier,
     });
 
     const namedImports = importDeclarations.map(declaration =>

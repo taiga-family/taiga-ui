@@ -1,37 +1,32 @@
 import {ImportSpecifier, Node, VariableDeclaration} from 'ng-morph';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
-import {ENUMS_TO_REPLACE} from '../constants/enums';
-import {removeImport} from '../../utils/remove-import';
+import {ENUMS_FOR_REPLACE} from '../constants/enums';
 
 export function replaceEnums() {
-    ENUMS_TO_REPLACE.forEach(({name, replaceValues, keepAsType}) => {
-        replaceEnumWithString(name, replaceValues, keepAsType);
+    ENUMS_FOR_REPLACE.forEach(({name, replaceValues}) => {
+        replaceEnumWithString(name, replaceValues);
     });
 }
 
-function replaceEnumWithString(
-    enumName: string,
-    replaceValues: Record<string, string>,
-    keepAsType = true,
-) {
+function replaceEnumWithString(enumName: string, replaceValues: Record<string, string>) {
     const references = getNamedImportReferences(enumName);
 
-    for (let ref of references) {
+    references.forEach(ref => {
         const parent = ref.getParent();
 
-        if (Node.isImportSpecifier(parent) && !(keepAsType && containTypeRef(parent))) {
+        if (Node.isImportSpecifier(parent)) {
             removeImport(parent);
-            continue;
+            return;
         }
 
-        if (Node.isTypeReferenceNode(parent) && !keepAsType) {
+        if (Node.isTypeReferenceNode(parent)) {
             const declaration = parent.getParent() as VariableDeclaration;
             declaration.removeType();
-            continue;
+            return;
         }
 
         if (!Node.isPropertyAccessExpression(parent)) {
-            continue;
+            return;
         }
 
         const key = Object.keys(replaceValues).find(key => parent.getName() === key);
@@ -39,12 +34,13 @@ function replaceEnumWithString(
         if (key) {
             parent.replaceWithText(`'${replaceValues[key]}'`);
         }
-    }
+    });
 }
 
-function containTypeRef(node: ImportSpecifier): boolean {
-    return node
-        .getNameNode()
-        .findReferencesAsNodes()
-        .some(ref => Node.isTypeReferenceNode(ref.getParent()));
+function removeImport(specifier: ImportSpecifier) {
+    if (specifier.getImportDeclaration().getNamedImports().length === 1) {
+        specifier.getImportDeclaration().remove();
+    } else {
+        specifier.remove();
+    }
 }
