@@ -1,4 +1,11 @@
-import {Component, Inject, ViewEncapsulation} from '@angular/core';
+import {
+    Component,
+    Inject,
+    InjectFlags,
+    Injector,
+    OnInit,
+    ViewEncapsulation,
+} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
@@ -13,6 +20,8 @@ import {Metrika} from 'ng-yandex-metrika';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
 
+import {environment} from '../../environments/environment';
+
 // @dynamic
 @Component({
     selector: 'app',
@@ -20,10 +29,10 @@ import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
     styleUrls: ['./app.style.less'],
     host: {'[class._is-cypress-mode]': 'isCypress'},
     encapsulation: ViewEncapsulation.None,
-    changeDetection,
     providers: [TuiDestroyService],
+    changeDetection,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     readonly isLanding$ = this.router.events.pipe(
         map(() => this.router.routerState.snapshot.url === '/'),
         distinctUntilChanged(),
@@ -33,21 +42,15 @@ export class AppComponent {
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
         @Inject(Router) private readonly router: Router,
-        @Inject(LOCAL_STORAGE) localStorage: Storage,
+        @Inject(LOCAL_STORAGE) private readonly localStorage: Storage,
         @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
-        @Inject(Metrika) private readonly metrika: Metrika,
         @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-    ) {
-        const env = localStorage.getItem('env');
+        private readonly injector: Injector,
+    ) {}
 
-        if (env) {
-            localStorage.removeItem('env');
-            router.navigateByUrl(env.replace(/\/[A-z0-9]*\//, ''));
-        }
-
-        if (!isCypress) {
-            this.initRouterSubscribtion();
-        }
+    async ngOnInit() {
+        await this.replaceEnvInURI();
+        this.enableYandexMetrika();
     }
 
     @tuiPure
@@ -60,16 +63,37 @@ export class AppComponent {
         );
     }
 
-    private initRouterSubscribtion() {
-        this.router.events
-            .pipe(
-                filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-                takeUntil(this.destroy$),
-            )
-            .subscribe(event => {
-                this.metrika.hit(event.urlAfterRedirects, {
-                    referer: event.url,
-                });
-            });
+    private async replaceEnvInURI() {
+        const env = this.localStorage.getItem('env');
+
+        if (env) {
+            localStorage.removeItem('env');
+            await this.router.navigateByUrl(env.replace(/\/[A-z0-9]*\//, ''));
+        }
+    }
+
+    private enableYandexMetrika() {
+        if (!environment.production || this.isCypress) {
+            console.info('Yandex.Metrika disabled for non-production mode.');
+
+            return;
+        }
+
+        try {
+            const metrika = this.injector.get(Metrika, null, InjectFlags.Optional);
+
+            this.router.events
+                .pipe(
+                    filter(
+                        (event): event is NavigationEnd => event instanceof NavigationEnd,
+                    ),
+                    takeUntil(this.destroy$),
+                )
+                .subscribe(event =>
+                    metrika?.hit(event.urlAfterRedirects, {referer: event.url}),
+                );
+        } catch {
+            console.error('You forgot to import MetrikaModule!');
+        }
     }
 }

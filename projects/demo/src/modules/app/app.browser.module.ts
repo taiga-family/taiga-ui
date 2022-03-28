@@ -27,6 +27,12 @@ import {LandingModule} from './landing/landing.module';
 import {LogoModule} from './logo/logo.module';
 import {VersionManagerModule} from './version-manager/version-manager.module';
 
+const PRODUCTION_MODULES = environment.production
+    ? ([
+          MetrikaModule.forRoot({id: environment.ym, webvisor: false, clickmap: false}),
+      ] as const)
+    : [];
+
 @NgModule({
     bootstrap: [AppComponent],
     imports: [
@@ -52,10 +58,8 @@ import {VersionManagerModule} from './version-manager/version-manager.module';
         VersionManagerModule,
         CustomHostModule,
         HttpClientModule,
-        MetrikaModule.forRoot({id: environment.ym, webvisor: false, clickmap: false}),
-        MarkdownModule.forRoot({
-            loader: HttpClient,
-        }),
+        MarkdownModule.forRoot({loader: HttpClient}),
+        ...PRODUCTION_MODULES,
     ],
     declarations: [AppComponent],
     providers: APP_PROVIDERS,
