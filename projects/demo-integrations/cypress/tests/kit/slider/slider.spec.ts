@@ -59,4 +59,24 @@ describe('Slider', () => {
             cy.get('@example').matchImageSnapshot(`02-slider-key-steps-${inputStep}step`);
         }
     });
+
+    it('with `min` > 0', () => {
+        cy.goToDemoPage(`${SLIDER_PAGE_URL}/API?min=1&max=10&segments=9`);
+        cy.hideHeader();
+        cy.hideNavigation();
+
+        cy.get('tui-doc-demo')
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .matchImageSnapshot(`03-min_1__max_10__value_1__segments_9`);
+    });
+
+    it('with `min` < 0 && `max` > 0 ', () => {
+        cy.goToDemoPage(`${SLIDER_PAGE_URL}/API?min=-5&max=5&segments=5`);
+        cy.hideHeader();
+        cy.hideNavigation();
+
+        cy.get('tui-doc-demo')
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .matchImageSnapshot(`04-min_-5__max_5__value_1__segments_5`);
+    });
 });
