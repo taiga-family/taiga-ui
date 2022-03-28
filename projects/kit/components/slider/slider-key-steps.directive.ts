@@ -29,6 +29,11 @@ import {TuiSliderComponent} from './slider.component';
 // @dynamic
 @Directive({
     selector: 'input[tuiSlider][keySteps]',
+    host: {
+        '[attr.aria-valuenow]': 'controlValue',
+        '[attr.aria-valuemin]': 'min',
+        '[attr.aria-valuemax]': 'max',
+    },
 })
 export class TuiSliderKeyStepsDirective
     extends AbstractTuiControl<number>
@@ -51,7 +56,15 @@ export class TuiSliderKeyStepsDirective
         return isNativeFocused(this.nativeFocusableElement);
     }
 
-    private get controlValue(): number {
+    get min(): number {
+        return this.keySteps[0]?.[1] || 0;
+    }
+
+    get max(): number {
+        return this.keySteps[this.keySteps.length - 1]?.[1] || 100;
+    }
+
+    get controlValue(): number {
         const {valuePercentage} = this.slider;
         const [lowerStep, upperStep] = findKeyStepsBoundariesByFn(
             this.keySteps,
