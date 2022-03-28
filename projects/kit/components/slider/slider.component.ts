@@ -37,7 +37,7 @@ import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider-options';
          * For change detection.
          * Webkit does not have built-in method for customization of filling progress (as Firefox).
          * We draw filling of progress by `background: linear-gradient(...)` of the track.
-         * This function triggers change detection (for `fillPercentage` function) when we drag thumb of the input.
+         * This function triggers change detection (for {@link valuePercentage} function) when we drag thumb of the input.
          */
         '(input)': '0',
         '[style.--tui-slider-track-color]': 'options.trackColor',
