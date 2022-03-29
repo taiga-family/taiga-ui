@@ -1,8 +1,9 @@
-name: Deploy
+name: Deploy / demo
 
 on:
   push:
     branches:
+      - main
       - 'release/**'
   workflow_dispatch:
 
@@ -20,17 +21,30 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - name: npm build demo
+      - name: npm build demo and demo:next (only release)
+        if: contains(github.base_ref, 'release/')
         run: |
           npm run build:demo
           npm run build:demo:next
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: Deploy (only release)
+        if: contains(github.base_ref, 'release/')
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: dist/demo/browser
+
+      - name: npm build demo:next (only main)
+        if: contains(github.base_ref, 'main')
+        run: npm run build:demo:next
+
+      - name: Deploy (only main)
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: dist/demo/browser/next
+          target-folder: next
 
 concurrency:
   group: deploy-${{ github.head_ref }}
