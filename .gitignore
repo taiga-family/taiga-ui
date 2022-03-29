@@ -30,3 +30,4 @@ quality-check
 dist
 **/cypress/screenshots
 **/cypress/snapshots
+.ssl
