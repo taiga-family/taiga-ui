@@ -26,6 +26,9 @@ jobs:
 
       - run: npm run build:demo:next
 
+      - name: Debug output
+        run: ls -la dist/demo/browser/next
+
       - name: Deploy next
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
@@ -33,10 +36,6 @@ jobs:
           folder: dist/demo/browser/next
           target-folder: next
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-          git-config-name: ${{ github.event.pusher.name }}
-          git-config-email: ${{ github.event.pusher.email }}
-          commit-message: Artifacts from https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          single-commit: false
           silent: false
 
 concurrency:
