@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy / next
 
 on:
   push:
@@ -24,11 +24,10 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - name: npm build demo
-        run: npm run build:demo:next
+      - run: npm run build:demo:next
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+      - name: Deploy next
+        uses: JamesIves/github-pages-deploy-action@4.2.5
         with:
           branch: gh-pages
           folder: dist/demo/browser/next

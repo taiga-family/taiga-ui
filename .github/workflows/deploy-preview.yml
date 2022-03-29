@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy / preview
 
 on: pull_request
 
@@ -17,7 +17,8 @@ jobs:
 
       - run: npm run build:demo
 
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Deploy preview
+        uses: FirebaseExtended/action-hosting-deploy@v0
         if: ${{ env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
