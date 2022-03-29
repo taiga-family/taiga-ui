@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.39.0](https://github.com/tinkoff/taiga-ui/compare/v2.38.0...v2.39.0) (2022-03-28)
+
+### Bug Fixes
+
+- **addon-doc:** ability to highlight with first letter in safari
+  ([#1550](https://github.com/tinkoff/taiga-ui/issues/1550))
+  ([0d7d345](https://github.com/tinkoff/taiga-ui/commit/0d7d34597cec1a546189b574bd66f4239c05752a))
+- **addon-tablebar:** fix adaptive container ([#1537](https://github.com/tinkoff/taiga-ui/issues/1537))
+  ([5e5ffd8](https://github.com/tinkoff/taiga-ui/commit/5e5ffd8d72d552235d5f6404a9ec9c67ecebc7dd))
+- **core:** fix textfield transition ([#1536](https://github.com/tinkoff/taiga-ui/issues/1536))
+  ([1aa51ec](https://github.com/tinkoff/taiga-ui/commit/1aa51eca00c20b15112713dff52fb4886c1af379))
+- **core:** hide placeholder without visible overflow ([#1551](https://github.com/tinkoff/taiga-ui/issues/1551))
+  ([200c61f](https://github.com/tinkoff/taiga-ui/commit/200c61f258c138c9b7badfac653e3f1bd41a6ab8))
+- **kit:** `Slider` distorted right border-radius ([#1548](https://github.com/tinkoff/taiga-ui/issues/1548))
+  ([8f56200](https://github.com/tinkoff/taiga-ui/commit/8f562007103ba9b450a5076ed8e00dd12a0bf837))
+- **kit:** `Slider` improve a11y for `keySteps` ([#1549](https://github.com/tinkoff/taiga-ui/issues/1549))
+  ([791042b](https://github.com/tinkoff/taiga-ui/commit/791042b9ba9673a18228ae81c939d297b8d5c5a0))
+- **kit:** correct handling of color theme in `input-tag` ([#1545](https://github.com/tinkoff/taiga-ui/issues/1545))
+  ([258c979](https://github.com/tinkoff/taiga-ui/commit/258c9799d44addb055fd0d93b060083cf0613a1d))
+
 ## [2.38.0](https://github.com/tinkoff/taiga-ui/compare/v2.37.1...v2.38.0) (2022-03-21)
 
 ### Features
