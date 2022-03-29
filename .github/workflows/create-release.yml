@@ -56,8 +56,8 @@ jobs:
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          release_name: Release ${{ steps.generare_body.outputs.tag_name }}
-          tag_name: ${{ steps.generare_body.outputs.tag_name }}
+          name: Release ${{ steps.generare_body.outputs.tag_name }}
+          tag: ${{ steps.generare_body.outputs.tag_name }}
           bodyFile: 'RELEASE_BODY.md'
           token: ${{ secrets.GITHUB_TOKEN }}
 
