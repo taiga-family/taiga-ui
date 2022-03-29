@@ -240,6 +240,19 @@ describe('InputPhoneInternational', () => {
 
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.TW);
         });
+
+        it('should paste current code + paste value, if code from paste data not found', () => {
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '43578');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.countryIsoCode = TuiCountryIsoCode.DM;
+            component.onPaste(pasteEvent);
+
+            expect(testComponent.control.value).toBe('+176743578');
+        });
     });
 
     describe('programmatically patch', () => {

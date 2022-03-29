@@ -27,6 +27,7 @@ import {
 import {
     TUI_ICONS_PATH,
     TUI_NON_DIGITS_REGEXP,
+    TUI_NON_PLUS_AND_DIGITS_REGEX,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeM,
@@ -146,6 +147,12 @@ export class TuiInputPhoneInternationalComponent
         const countryIsoCode = this.extractCountryCode(value);
 
         if (!countryIsoCode) {
+            this.updateValue(
+                `${this.inputPhoneCountryCode}${value}`
+                    .replace(TUI_NON_PLUS_AND_DIGITS_REGEX, '')
+                    .slice(0, this.getMaxAllowedLength(this.countryIsoCode)),
+            );
+
             return;
         }
 
@@ -230,7 +237,10 @@ export class TuiInputPhoneInternationalComponent
 
             return (
                 ruCodeTest ||
-                value.startsWith(this.isoToCountryCode(countryIsoCode).replace('+', ''))
+                (value.startsWith(
+                    this.isoToCountryCode(countryIsoCode).replace('+', ''),
+                ) &&
+                    value.length + 1 === this.getMaxAllowedLength(countryIsoCode))
             );
         });
     }
