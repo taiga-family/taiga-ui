@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" focusable="false" height="1.5em">
+    <g id="tuiIconToggleOnLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24" fill="none">
+            <svg x="-12" y="-12">
+                <path d="M12 8.5V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </svg>
+    </g>
+</svg>

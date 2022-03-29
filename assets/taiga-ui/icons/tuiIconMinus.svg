@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" focusable="false" height="1em">
+    <g id="tuiIconMinus" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="50%"
+            y="50%"
+            width="1em"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+        >
+            <svg x="-8" y="-8">
+                <path d="M3 9h10a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2z" fill="currentColor" />
+            </svg>
+        </svg>
+    </g>
+</svg>

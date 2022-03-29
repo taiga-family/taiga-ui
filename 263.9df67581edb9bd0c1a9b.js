@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[263],{GFiy:function(t,n,o){"use strict";o.r(n),n.default='```html\n<button tuiButton icon="tuiIconSettings">Button</button>\n```\n'}}]);

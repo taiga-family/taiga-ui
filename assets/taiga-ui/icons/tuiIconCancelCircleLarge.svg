@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" focusable="false">
+    <g id="tuiIconCancelCircleLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24" fill="none">
+            <svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M18.911 4.773A9.966 9.966 0 0 0 12 2C6.477 2 2 6.477 2 12a9.954 9.954 0 0 0 2.394 6.493l.006.007A9.966 9.966 0 0 0 12 22c5.523 0 10-4.477 10-10a9.954 9.954 0 0 0-2.394-6.493L19.6 5.5a10.065 10.065 0 0 0-.689-.727zM17.382 6.08A7.965 7.965 0 0 0 12 4a8 8 0 0 0-8 8c0 1.627.484 3.138 1.317 4.4L17.382 6.08zM6.618 17.919L18.683 7.6A7.954 7.954 0 0 1 20 12a8 8 0 0 1-8 8 7.966 7.966 0 0 1-5.382-2.08z"
+                    fill="currentColor"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" focusable="false">
+    <g id="tuiIconColorLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24" fill="none">
+            <svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 18H24V22H0V18Z" fill="currentColor" />
+                <path
+                    d="M7 15L8.66667 11.16M17 15L15.3333 11.16M15.3333 11.16L12 3L8.66667 11.16M15.3333 11.16H8.66667"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

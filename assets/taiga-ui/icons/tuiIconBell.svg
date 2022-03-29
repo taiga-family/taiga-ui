@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+    <g id="tuiIconBell" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            width="1em"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <svg x="-8" y="-8">
+                <path
+                    d="M12 5.4c0-1.167-.421-2.286-1.172-3.111C10.078 1.464 9.061 1 8 1c-1.06 0-2.078.464-2.828 1.289S4 4.233 4 5.4C4 10.533 2 12 2 12h12s-2-1.467-2-6.6zM9.153 14a1.333 1.333 0 0 1-2.306 0"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>

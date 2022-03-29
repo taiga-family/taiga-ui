@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false">
+    <g id="tuiIconCallIn" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            width="1em"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <svg x="-8" y="-8">
+                <g
+                    clip-path="url(#a)"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path
+                        d="M10.667 1.333v4h4M15.333.667l-4.666 4.666M14.667 11.28v2a1.332 1.332 0 0 1-1.454 1.333 13.193 13.193 0 0 1-5.753-2.047 13 13 0 0 1-4-4 13.193 13.193 0 0 1-2.047-5.78A1.333 1.333 0 0 1 2.74 1.333h2A1.333 1.333 0 0 1 6.073 2.48a8.56 8.56 0 0 0 .467 1.873 1.333 1.333 0 0 1-.3 1.407l-.847.846a10.667 10.667 0 0 0 4 4l.847-.846a1.334 1.334 0 0 1 1.407-.3 8.561 8.561 0 0 0 1.873.466 1.334 1.334 0 0 1 1.147 1.354z"
+                    />
+                </g>
+                <defs>
+                    <clipPath>
+                        <path fill="#fff" d="M0 0h16v16H0z" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </svg>
+    </g>
+</svg>
