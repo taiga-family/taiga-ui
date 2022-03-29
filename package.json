@@ -5,7 +5,7 @@
     "scripts": {
         "postinstall": "husky install && ngcc --async",
         "start": "nx serve",
-        "start:ssl": "nx serve --ssl",
+        "start:ssl": "nx mkcert demo && nx serve --ssl",
         "start:ru": "nx serve --configuration ru",
         "start:default": "nx serve --configuration def",
         "start:shadow": "nx serve --configuration shadow",
