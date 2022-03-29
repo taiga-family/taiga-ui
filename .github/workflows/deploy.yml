@@ -29,6 +29,12 @@ jobs:
         with:
           branch: gh-pages
           folder: dist/demo/browser
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+          git-config-name: ${{ github.event.pusher.name }}
+          git-config-email: ${{ github.event.pusher.email }}
+          commit-message: Artifacts from https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          single-commit: false
+          silent: false
 
 concurrency:
   group: deploy-${{ github.head_ref }}
