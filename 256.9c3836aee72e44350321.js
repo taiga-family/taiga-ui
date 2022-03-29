@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[256],{Tf4A:function(t,n,o){"use strict";o.r(n),n.default='<button tuiButton appearance="custom">See LESS tab</button>\n'}}]);
