@@ -24,9 +24,6 @@ describe('Tag component options', () => {
                 tuiTagOptionsProvider({
                     size: 'l',
                     status: 'error',
-                    hoverable: true,
-                    removable: true,
-                    disabled: true,
                     autoColor: true,
                 }),
             ],
@@ -40,9 +37,6 @@ describe('Tag component options', () => {
     it('override by custom options', () => {
         expect(testComponent.component.size).toEqual('l');
         expect(testComponent.component.status).toEqual('error');
-        expect(testComponent.component.hoverable).toEqual(true);
-        expect(testComponent.component.removable).toEqual(true);
-        expect(testComponent.component.disabled).toEqual(true);
         expect(testComponent.component.autoColor).toEqual(true);
     });
 });

@@ -79,16 +79,16 @@ export class TuiTagComponent {
     @Input()
     @HostBinding('class._hoverable')
     @tuiDefaultProp()
-    hoverable: boolean = this.options.hoverable;
+    hoverable = false;
 
     @Input()
     @tuiDefaultProp()
-    removable: boolean = this.options.removable;
+    removable = false;
 
     @Input()
     @HostBinding('class._disabled')
     @tuiDefaultProp()
-    disabled: boolean = this.options.disabled;
+    disabled = false;
 
     @Input()
     @HostBinding('class._autocolor')
