@@ -64,7 +64,7 @@ const lineType: TuiLineType = TuiLineType.Solid;
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
-   some = TuiTextAlign.Left;
+   some: TuiTextAlign = TuiTextAlign.Left;
    some2 = 'string';
    some3 = () => {
    if(this.some2 === TuiTextAlign.Right) {

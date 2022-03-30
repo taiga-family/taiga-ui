@@ -47,7 +47,7 @@ describe('ng-add', () => {
             project: '',
         };
 
-        const tree = await runner.runSchematicAsync('fresh', options, host).toPromise();
+        const tree = await runner.runSchematicAsync('ng-add', options, host).toPromise();
 
         expect(tree.readContent('package.json')).toEqual(
             `{

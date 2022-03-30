@@ -11,7 +11,7 @@ export function renameTypes() {
 function renameType(from: string, to: string, moduleSpecifier?: string | string[]) {
     const references = getNamedImportReferences(from, moduleSpecifier);
 
-    for (let ref of references) {
+    references.forEach(ref => {
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
@@ -20,8 +20,12 @@ function renameType(from: string, to: string, moduleSpecifier?: string | string[
                 .getNamedImports()
                 .find(specifier => specifier.getName() === from);
             namedImport?.replaceWithText(to);
-        } else if (Node.isTypeReferenceNode(parent)) {
-            parent.replaceWithText(to);
+            return;
         }
-    }
+
+        if (Node.isTypeReferenceNode(parent)) {
+            parent.replaceWithText(to);
+            return;
+        }
+    });
 }
