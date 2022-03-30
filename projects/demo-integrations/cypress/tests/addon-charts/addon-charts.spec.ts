@@ -8,8 +8,8 @@ describe('Addon charts', () => {
         cy.get('tui-line-chart-example-1 tui-line-chart .t-column')
             .first()
             .trigger('mouseenter', {force: true})
-            .wait(1000)
-            .get('tui-hint-box')
-            .should('not.exist');
+            .wait(1000);
+
+        cy.matchImageSnapshot('line-chart', {capture: 'viewport'});
     });
 });
