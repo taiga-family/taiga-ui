@@ -22,6 +22,7 @@ export class TuiSliderReadonlyDirective {
         @Inject(ElementRef) {nativeElement}: ElementRef,
         @Inject(TuiDestroyService) destroy$: Observable<unknown>,
     ) {
+        /* @HostListener('keydown.arrowLeft') doesn't invoke function if some system key (ctrl, control, meta) was pressed */
         typedFromEvent(nativeElement, 'keydown')
             .pipe(
                 filter(({key}) => this.ARROWS.includes(key)),

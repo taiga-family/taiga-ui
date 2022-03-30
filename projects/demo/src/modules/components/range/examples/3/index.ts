@@ -11,5 +11,4 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiRangeExample3 {
     value = [0, 250];
-    readonly labels: number[] = [0, 250, 500, 750, 1000];
 }
