@@ -12,6 +12,7 @@ describe('PortalService', () => {
         const viewRefStub: any = {destroy: () => called++};
 
         service.removeTemplate(viewRefStub);
+        expect(called).toEqual(1);
     });
 
     it('HostView removing', () => {
@@ -19,18 +20,21 @@ describe('PortalService', () => {
         const componentRefStub: any = {hostView: {destroy: () => called++}};
 
         service.remove(componentRefStub);
+        expect(called).toEqual(1);
     });
 
     it('throws an error with no host', () => {
+        let actual = '';
         const a: any = null;
         const b: any = null;
 
         try {
             service.add(a, b);
-            fail();
-        } catch (e) {
-            expect(e).toBeTruthy();
+        } catch (err) {
+            actual = err.message;
         }
+
+        expect(actual).toEqual('Portals cannot be used without TuiPortalHostComponent');
     });
 
     it('addTemplateChild with host attached', () => {
