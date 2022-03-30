@@ -1,6 +1,7 @@
-import {ImportSpecifier, Node, VariableDeclaration} from 'ng-morph';
+import {Node, VariableDeclaration} from 'ng-morph';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {ENUMS_FOR_REPLACE} from '../constants/enums';
+import {removeImport} from '../../utils/remove-import';
 
 export function replaceEnums() {
     ENUMS_FOR_REPLACE.forEach(({name, replaceValues}) => {
@@ -35,12 +36,4 @@ function replaceEnumWithString(enumName: string, replaceValues: Record<string, s
             parent.replaceWithText(`'${replaceValues[key]}'`);
         }
     });
-}
-
-function removeImport(specifier: ImportSpecifier) {
-    if (specifier.getImportDeclaration().getNamedImports().length === 1) {
-        specifier.getImportDeclaration().remove();
-    } else {
-        specifier.remove();
-    }
 }

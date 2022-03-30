@@ -3,6 +3,7 @@ import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {Schema} from '../ng-add/schema';
 import {replaceEnums} from './steps/replace-enums';
+import {renameTypes} from './steps/rename-types';
 
 export function updateToV3(_: Schema) {
     return async (tree: Tree, context: SchematicContext) => {
@@ -11,6 +12,7 @@ export function updateToV3(_: Schema) {
         setActiveProject(createProject(tree, '/', '**/**'));
 
         replaceEnums();
+        renameTypes();
 
         saveActiveProject();
     };

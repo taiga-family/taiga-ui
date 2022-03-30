@@ -27,23 +27,18 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should replaces enums with strings and removes imports', async () => {
+    it('should rename types', async () => {
         const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
 
         expect(tree.readContent('test/app/app.component.ts')).toEqual(
             `import {Component} from '@angular/core';
-import {some} from '@taiga-ui/cdk';
-const lineType = 'solid';
+import {TuiButtonOptions, some} from '@taiga-ui/core';
+
+const options: TuiButtonOptions = {};
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
-   some = 'left';
-   some2 = 'string';
-   some3 = () => {
-   if(this.some2 === 'right') {
-   return
-   }
-   }
+   some: TuiButtonOptions = {};
 }`,
         );
     });
@@ -57,20 +52,13 @@ function createMainFiles() {
     createSourceFile(
         'test/app/app.component.ts',
         `import {Component} from '@angular/core';
-import {TuiTextAlign, some} from '@taiga-ui/cdk';
-import {TuiLineType} from '@taiga-ui/cdk';
+import {ButtonOptions, some} from '@taiga-ui/core';
 
-const lineType: TuiLineType = TuiLineType.Solid;
+const options: ButtonOptions = {};
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
-   some: TuiTextAlign = TuiTextAlign.Left;
-   some2 = 'string';
-   some3 = () => {
-   if(this.some2 === TuiTextAlign.Right) {
-   return
-   }
-   }
+   some: ButtonOptions = {};
 }`,
     );
 
