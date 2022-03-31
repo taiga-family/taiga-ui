@@ -27,7 +27,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     formatPhone,
-    TUI_NON_PLUS_AND_DIGITS_REGEX,
+    TUI_MASK_SYMBOLS_REGEXP,
     TUI_TEXTFIELD_CLEANER,
     TuiDataListDirective,
     TuiDataListHost,
@@ -190,9 +190,7 @@ export class TuiInputPhoneComponent
         if (
             this.computedValue === this.countryCode ||
             (this.search !== null &&
-                isNaN(
-                    parseInt(this.search.replace(TUI_NON_PLUS_AND_DIGITS_REGEX, ''), 10),
-                ))
+                isNaN(parseInt(this.search.replace(TUI_MASK_SYMBOLS_REGEXP, ''), 10)))
         ) {
             this.updateSearch('');
         }
@@ -212,9 +210,7 @@ export class TuiInputPhoneComponent
     onValueChange(value: string) {
         value = value === '' ? this.countryCode : value;
 
-        const parsed = isText(value)
-            ? value
-            : value.replace(TUI_NON_PLUS_AND_DIGITS_REGEX, '');
+        const parsed = isText(value) ? value : value.replace(TUI_MASK_SYMBOLS_REGEXP, '');
 
         this.updateSearch(parsed);
         this.updateValue(parsed === this.countryCode || isText(parsed) ? '' : parsed);
@@ -293,7 +289,7 @@ export class TuiInputPhoneComponent
         this.updateSearch(
             this.allowText && isText(value)
                 ? value
-                : value.replace(TUI_NON_PLUS_AND_DIGITS_REGEX, ''),
+                : value.replace(TUI_MASK_SYMBOLS_REGEXP, ''),
         );
     }
 
@@ -305,7 +301,7 @@ export class TuiInputPhoneComponent
         const oldValueExist =
             this.value.length > this.countryCode.length &&
             this.value.length < this.maxPhoneLength;
-        const newValueLength = value.replace(TUI_NON_PLUS_AND_DIGITS_REGEX, '').length;
+        const newValueLength = value.replace(TUI_MASK_SYMBOLS_REGEXP, '').length;
         const cleanNewValue = value.replace(/[^0-9]+/g, '');
         const selectionLength = String(getSelection()).length;
 
@@ -346,5 +342,5 @@ export class TuiInputPhoneComponent
 }
 
 function isText(value: string): boolean {
-    return isNaN(parseInt(value.replace(TUI_NON_PLUS_AND_DIGITS_REGEX, ''), 10));
+    return isNaN(parseInt(value.replace(TUI_MASK_SYMBOLS_REGEXP, ''), 10));
 }

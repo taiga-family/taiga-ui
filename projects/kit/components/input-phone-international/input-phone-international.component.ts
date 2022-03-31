@@ -26,8 +26,8 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_ICONS_PATH,
+    TUI_MASK_SYMBOLS_REGEXP,
     TUI_NON_DIGITS_REGEXP,
-    TUI_NON_PLUS_AND_DIGITS_REGEX,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeM,
@@ -149,7 +149,7 @@ export class TuiInputPhoneInternationalComponent
         if (!countryIsoCode) {
             this.updateValue(
                 `${this.inputPhoneCountryCode}${value}`
-                    .replace(TUI_NON_PLUS_AND_DIGITS_REGEX, '')
+                    .replace(TUI_MASK_SYMBOLS_REGEXP, '')
                     .slice(0, this.getMaxAllowedLength(this.countryIsoCode)),
             );
 
