@@ -10,9 +10,11 @@ export abstract class AbstractExampleTuiHint {
         'right',
         'bottom-left',
         'bottom-right',
+        'bottom-middle',
         'top-left',
         'top-right',
+        'top-middle',
     ];
 
-    direction: TuiDirection = this.directionVariants[4];
+    direction: TuiDirection = this.directionVariants[5];
 }

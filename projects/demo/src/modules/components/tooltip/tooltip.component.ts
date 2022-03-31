@@ -45,8 +45,10 @@ export class ExampleTuiTooltipComponent {
         'right',
         'bottom-left',
         'bottom-right',
+        'bottom-middle',
         'top-left',
         'top-right',
+        'top-middle',
     ];
 
     direction: TuiDirection = this.directionVariants[2];
