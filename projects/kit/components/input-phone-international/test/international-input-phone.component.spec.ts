@@ -205,18 +205,6 @@ describe('InputPhoneInternational', () => {
             expect(testComponent.control.value).toEqual('+380123456789');
         });
 
-        it('should not update value on paste if there is no country code in list', () => {
-            const data = new DataTransfer();
-
-            data.setData('text/plain', '+244 (111)111-111');
-
-            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
-
-            component.onPaste(pasteEvent);
-
-            expect(testComponent.control.value).toEqual('+79110330102');
-        });
-
         it('should set country code on paste event 8(863)', () => {
             const data = new DataTransfer();
 
@@ -239,6 +227,19 @@ describe('InputPhoneInternational', () => {
             component.onPaste(pasteEvent);
 
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.TW);
+        });
+
+        it('should paste current code + paste value, if code from paste data not found', () => {
+            const data = new DataTransfer();
+
+            data.setData('text/plain', '43578');
+
+            const pasteEvent = new ClipboardEvent('paste', {clipboardData: data as any});
+
+            component.countryIsoCode = TuiCountryIsoCode.DM;
+            component.onPaste(pasteEvent);
+
+            expect(testComponent.control.value).toBe('+176743578');
         });
     });
 
