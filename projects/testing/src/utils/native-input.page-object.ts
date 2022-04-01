@@ -1,3 +1,4 @@
+import {DebugElement} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';
 
 import {createKeyboardEvent} from './keyboard-event';
@@ -9,12 +10,16 @@ export class NativeInputPO {
     constructor(
         private readonly fixture: ComponentFixture<any>,
         private readonly automationId: string,
+        private readonly hostDebugElement?: DebugElement,
     ) {
         this.pageObject = new PageObject(fixture);
     }
 
     get nativeElement(): any {
-        return this.pageObject.getByAutomationId(this.automationId)!.nativeElement;
+        return this.pageObject.getByAutomationId(
+            this.automationId,
+            this.hostDebugElement,
+        )!.nativeElement;
     }
 
     get value(): string {

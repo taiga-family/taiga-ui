@@ -2,35 +2,55 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    Directive,
     ElementRef,
     forwardRef,
     HostBinding,
     Inject,
+    Input,
     Optional,
+    QueryList,
     Self,
     ViewChild,
+    ViewChildren,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    EMPTY_QUERY,
     isNativeFocused,
+    isNativeFocusedIn,
     setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
+    TuiContextWithImplicit,
+    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    formatNumber,
-    maskedMoneyValueIsEmpty,
-    maskedNumberStringToNumber,
-    NumberFormatSettings,
-    TUI_NUMBER_FORMAT,
+    getFractionPartPadded,
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_APPEARANCE,
-    TuiBrightness,
-    TuiModeDirective,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
+    TuiDecimalT,
+    TuiSizeL,
+    TuiTextfieldController,
 } from '@taiga-ui/core';
-import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
+import {AbstractTuiInputSlider, quantumAssertion} from '@taiga-ui/kit/abstract';
+import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
+import {TuiRangeComponent} from '@taiga-ui/kit/components/range';
+import {TuiKeySteps} from '@taiga-ui/kit/types';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+/**
+ * Turn on new `InputRange`'s version.
+ * The new version will behave almost the same as `InputRange` from the next major release.
+ * @deprecated TODO remove me in v3.0 and make `InputRange` always "new".
+ */
+@Directive({
+    selector: 'tui-input-range[new]',
+})
+export class TuiNewInputRangeDirective {}
 
 // @dynamic
 @Component({
@@ -43,17 +63,53 @@ import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
             provide: TUI_FOCUSABLE_ITEM_ACCESSOR,
             useExisting: forwardRef(() => TuiInputRangeComponent),
         },
+        TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })
 export class TuiInputRangeComponent
     extends AbstractTuiInputSlider<[number, number]>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('nativeLeft')
-    private readonly nativeLeft?: ElementRef<HTMLInputElement>;
+    @ViewChildren(TuiInputNumberComponent)
+    private readonly inputNumberRefs: QueryList<TuiInputNumberComponent> = EMPTY_QUERY;
 
-    @ViewChild('nativeRight')
-    private readonly nativeRight?: ElementRef<HTMLInputElement>;
+    @ViewChild(TuiRangeComponent)
+    private readonly rangeRef: TuiRangeComponent | null = null;
+
+    private lastActiveSide: 'left' | 'right' = 'left';
+
+    @Input()
+    @tuiDefaultProp()
+    min = 0;
+
+    /* TODO: make `100` as default value (like in native sliders) */
+    @Input()
+    @tuiDefaultProp()
+    max = Infinity;
+
+    @Input()
+    @tuiDefaultProp(quantumAssertion, 'Quantum must be positive')
+    quantum = 1;
+
+    @Input()
+    @tuiDefaultProp()
+    steps = 0;
+
+    @Input()
+    @tuiDefaultProp()
+    segments = 0;
+
+    @Input()
+    @tuiDefaultProp()
+    keySteps: TuiKeySteps | null = null;
+
+    @Input()
+    @tuiDefaultProp()
+    leftValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+
+    @Input()
+    @tuiDefaultProp()
+    rightValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
 
     constructor(
         @Optional()
@@ -61,212 +117,147 @@ export class TuiInputRangeComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Optional()
-        @Inject(TuiModeDirective)
-        protected readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_IS_MOBILE)
         private readonly isMobile: boolean,
-        @Inject(TUI_NUMBER_FORMAT)
-        protected readonly numberFormat: NumberFormatSettings,
         @Inject(TUI_TEXTFIELD_APPEARANCE)
         readonly appearance: string,
+        @Inject(ElementRef) private readonly elementRef: ElementRef,
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
+        readonly controller: TuiTextfieldController,
+        @Optional()
+        @Inject(TuiNewInputRangeDirective)
+        readonly isNew: TuiNewInputRangeDirective | null,
     ) {
         super(control, changeDetectorRef);
     }
 
+    get leftFocusableElement(): HTMLInputElement | null {
+        const [leftTextInputRef] = this.inputNumberRefs;
+
+        return leftTextInputRef?.nativeFocusableElement || null;
+    }
+
+    get rightFocusableElement(): HTMLInputElement | null {
+        const [, rightTextInputRef] = this.inputNumberRefs;
+
+        return rightTextInputRef?.nativeFocusableElement || null;
+    }
+
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return !this.nativeLeft || this.disabled ? null : this.nativeLeft.nativeElement;
+        return !this.leftFocusableElement || this.disabled
+            ? null
+            : this.leftFocusableElement;
     }
 
     get focused(): boolean {
-        return this.focusedLeft || this.focusedRight;
+        return isNativeFocusedIn(this.elementRef.nativeElement);
     }
 
-    get focusedLeft(): boolean {
-        return !!this.nativeLeft && isNativeFocused(this.nativeLeft.nativeElement);
+    get showLeftValueContent(): boolean {
+        return (
+            !isNativeFocused(this.leftFocusableElement) &&
+            !(this.rangeRef?.focused && this.lastActiveSide === 'left')
+        );
     }
 
-    get focusedRight(): boolean {
-        return !!this.nativeRight && isNativeFocused(this.nativeRight.nativeElement);
+    get showRightValueContent(): boolean {
+        return (
+            !isNativeFocused(this.rightFocusableElement) &&
+            !(this.rangeRef?.focused && this.lastActiveSide === 'right')
+        );
     }
 
-    @HostBinding('class._min-label')
-    get showMinLabel(): boolean {
-        return !this.focusedLeft && !!this.minLabel && this.value[0] === this.min;
+    get precision(): number {
+        return getFractionPartPadded(this.quantum).length;
     }
 
-    @HostBinding('class._max-label')
-    get showMaxLabel(): boolean {
-        return !this.focusedRight && !!this.maxLabel && this.value[1] === this.max;
+    get decimal(): TuiDecimalT {
+        return this.precision ? 'not-zero' : 'never';
     }
 
-    @HostBinding('attr.data-mode')
-    get hostMode(): TuiBrightness | null {
-        return this.modeDirective && this.modeDirective.mode;
+    get computedSteps(): number {
+        return this.steps || (this.max - this.min) / this.quantum;
     }
 
-    get inputValueLeft(): string {
-        return this.nativeLeft ? this.nativeLeft.nativeElement.value : '';
+    get computedSize(): TuiSizeL {
+        return this.isNew && this.controller.size !== 's'
+            ? this.controller.size
+            : this.size;
     }
 
-    get inputValueRight(): string {
-        return this.nativeRight ? this.nativeRight.nativeElement.value : '';
-    }
-
-    get computedValueLeft(): string {
-        return this.computedPureValueLeft(this.value[0]);
-    }
-
-    get computedValueRight(): string {
-        return this.computedPureValueRight(this.value[1]);
+    /**
+     * TODO keep only controller.labelOutside in v3.0 (let user configure this property by yourself)
+     */
+    @HostBinding('class._label-outside')
+    get legacyLabelOutside(): boolean {
+        return this.isNew ? this.controller.labelOutside : this.computedSize === 'm';
     }
 
     onActiveZone(active: boolean) {
         this.updateFocused(active);
     }
 
-    onMouseDown() {
-        if (this.nativeRight && !this.isMobile) {
-            setNativeFocused(this.nativeRight.nativeElement);
+    onTextInputFocused(focused: boolean, right: boolean) {
+        if (focused) {
+            return;
+        }
+
+        const [leftTextInputRef, rightTextInputRef] = this.inputNumberRefs;
+        const inputRef = right ? rightTextInputRef : leftTextInputRef;
+        const valueIndex = right ? 1 : 0;
+
+        if (!inputRef.nativeValue || inputRef.value !== this.value[valueIndex]) {
+            this.updateTextInputValue(this.safeCurrentValue[valueIndex], right);
         }
     }
 
-    onKeyDownArrowUpLeft(event: KeyboardEvent) {
+    incrementByStep(event: KeyboardEvent, right: boolean) {
         if (this.readOnly) {
             return;
         }
 
         event.preventDefault();
-        this.processStep(true, false);
+        this.processStep(true, right);
     }
 
-    onKeyDownArrowDownLeft(event: KeyboardEvent) {
+    decrementByStep(event: KeyboardEvent, right: boolean) {
         if (this.readOnly) {
             return;
         }
 
         event.preventDefault();
-        this.processStep(false, false);
+        this.processStep(false, right);
     }
 
-    onKeyDownArrowUpRight(event: KeyboardEvent) {
-        if (this.readOnly) {
-            return;
-        }
-
-        event.preventDefault();
-        this.processStep(true, true);
+    onInputLeft(value: number | null) {
+        this.safelyUpdateValue([value ?? this.safeCurrentValue[0], this.value[1]]);
     }
 
-    onKeyDownArrowDownRight(event: KeyboardEvent) {
-        if (this.readOnly) {
-            return;
-        }
-
-        event.preventDefault();
-        this.processStep(false, true);
+    onInputRight(value: number | null) {
+        this.safelyUpdateValue([this.value[0], value ?? this.safeCurrentValue[1]]);
     }
 
-    onInputLeft() {
-        const value = this.inputValueLeft;
-        const capped = this.capInputValue(value, this.value[1]);
-        const postfix = value.slice(-1)[0] === ',' ? ',' : '';
+    onRangeValue([left, right]: [number, number]) {
+        this.rangeRef?.nativeFocusableElement?.focus();
 
-        if (maskedMoneyValueIsEmpty(value) || capped === null) {
-            return;
+        const isLeftValueChanged = left !== this.value[0];
+        const isRightValueChanged = right !== this.value[1];
+
+        if (isLeftValueChanged || isRightValueChanged) {
+            this.lastActiveSide = isLeftValueChanged ? 'left' : 'right';
         }
 
-        const newValue = this.formatNumber(capped) + postfix;
-
-        if (this.nativeLeft && this.inputValueLeft !== newValue) {
-            this.nativeLeft.nativeElement.value = newValue;
-        }
-
-        this.updateValue([capped, this.value[1]]);
+        this.safelyUpdateValue([left, right]);
     }
 
-    onInputRight() {
-        const value = this.inputValueRight;
-        const capped = this.capInputValue(value);
-        const postfix = value.slice(-1)[0] === ',' ? ',' : '';
+    focusToTextInput() {
+        const element =
+            this.lastActiveSide === 'left'
+                ? this.leftFocusableElement
+                : this.rightFocusableElement;
 
-        if (maskedMoneyValueIsEmpty(value) || capped === null) {
-            return;
-        }
-
-        const newValue = this.formatNumber(capped) + postfix;
-
-        if (this.nativeRight && this.inputValueRight !== newValue) {
-            this.nativeRight.nativeElement.value = newValue;
-        }
-
-        if (capped >= this.value[0]) {
-            this.updateValue([this.value[0], capped]);
-        }
-    }
-
-    onRangeValue(value: [number, number]) {
-        const guardedValue = value.map(item => this.valueGuard(item)) as [number, number];
-
-        if (
-            !this.nativeLeft ||
-            !this.nativeRight ||
-            (guardedValue[0] === this.value[0] && guardedValue[1] === this.value[1])
-        ) {
-            return;
-        }
-
-        if (!this.isMobile) {
-            const element =
-                guardedValue[0] !== this.value[0]
-                    ? this.nativeLeft.nativeElement
-                    : this.nativeRight.nativeElement;
-
+        if (!this.isMobile && element) {
             setNativeFocused(element);
-        }
-
-        this.updateValue(guardedValue);
-        this.nativeLeft.nativeElement.value = this.formatNumber(guardedValue[0]);
-    }
-
-    onLeftFocused(focused: boolean) {
-        if (focused || !this.nativeLeft) {
-            return;
-        }
-
-        const inputValue = maskedNumberStringToNumber(
-            this.computedValueLeft,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
-        const value = isNaN(inputValue) ? this.min : this.valueGuard(inputValue);
-
-        this.nativeLeft.nativeElement.value = this.formatNumber(value);
-
-        if (value !== this.value[0]) {
-            this.updateValue([value, this.value[1]]);
-        }
-    }
-
-    onRightFocused(focused: boolean) {
-        if (focused || !this.nativeRight) {
-            return;
-        }
-
-        const inputValue = maskedNumberStringToNumber(
-            this.computedValueRight,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
-
-        const value = isNaN(inputValue)
-            ? this.value[0]
-            : this.valueGuard(Math.max(inputValue, this.value[0]));
-
-        this.nativeRight.nativeElement.value = this.formatNumber(value);
-
-        if (value !== this.value[1]) {
-            this.updateValue([this.value[0], value]);
         }
     }
 
@@ -274,23 +265,14 @@ export class TuiInputRangeComponent
         return [0, 0];
     }
 
-    @tuiPure
-    private computedPureValueLeft(value: number) {
-        return this.formatNumber(value);
-    }
+    private safelyUpdateValue([leftValue, rightValue]: [number, number]) {
+        const leftGuardedValue = this.valueGuard(leftValue);
+        const rightGuardedValue = this.valueGuard(rightValue);
 
-    @tuiPure
-    private computedPureValueRight(value: number) {
-        return this.formatNumber(value);
-    }
+        const leftSafeValue = Math.min(leftGuardedValue, rightGuardedValue);
+        const rightSafeValue = Math.max(leftGuardedValue, rightGuardedValue);
 
-    private formatNumber(value: number): string {
-        return formatNumber(
-            value,
-            null,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
+        this.updateValue([leftSafeValue, rightSafeValue]);
     }
 
     private processStep(increment: boolean, right: boolean) {
@@ -306,7 +288,28 @@ export class TuiInputRangeComponent
         ];
 
         if (value[0] !== this.value[0] || value[1] !== this.value[1]) {
-            this.updateValue(value);
+            this.safelyUpdateValue(value);
+            this.updateTextInputValue(right ? value[1] : value[0], right);
+        }
+    }
+
+    private updateTextInputValue(value: number, right: boolean) {
+        const [leftInputRef, rightInputRef] = this.inputNumberRefs;
+        const textInputRef = right ? rightInputRef : leftInputRef;
+
+        if (textInputRef) {
+            textInputRef.nativeValue = textInputRef.getFormattedValue(value);
         }
     }
 }
+
+@Directive({
+    selector: '[tuiTextfieldNoneAppearance]',
+    providers: [
+        {
+            provide: TUI_TEXTFIELD_APPEARANCE,
+            useValue: 'none', // Not existing appearance to prevent any customization
+        },
+    ],
+})
+export class TuiTextfieldNoneAppearanceDirective {}

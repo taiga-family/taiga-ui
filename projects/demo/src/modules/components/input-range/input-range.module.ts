@@ -3,7 +3,11 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
+import {
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {
     TuiInputRangeModule,
     TuiInputSliderModule,
@@ -27,6 +31,7 @@ import {ExampleTuiInputRangeComponent} from './input-range.component';
         TuiAddonDocModule,
         TuiButtonModule,
         TuiLinkModule,
+        TuiTextfieldControllerModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputRangeComponent)),
     ],
     declarations: [

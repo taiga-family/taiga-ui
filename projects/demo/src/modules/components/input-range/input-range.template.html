@@ -39,20 +39,24 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-range
+                    new
                     [formControl]="control"
-                    [focusable]="focusable"
                     [min]="min"
                     [max]="max"
-                    [minLabel]="minLabel"
-                    [maxLabel]="maxLabel"
                     [segments]="segments"
-                    [segmentsPluralize]="segmentsPluralize"
-                    [size]="size"
                     [keySteps]="keySteps"
                     [pluralize]="pluralize"
                     [steps]="steps"
                     [quantum]="quantum"
+                    [leftValueContent]="leftValueContent"
+                    [rightValueContent]="rightValueContent"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
                     [readOnly]="readOnly"
+                    [size]="size"
+                    [minLabel]="minLabel"
+                    [maxLabel]="maxLabel"
+                    [segmentsPluralize]="segmentsPluralize"
                 >
                     Range
                 </tui-input-range>
@@ -68,16 +72,6 @@
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="quantum"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="quantumVariants"
-                [(documentationPropertyValue)]="quantum"
-            >
-                Minimum indivisible value
             </ng-template>
             <ng-template
                 i18n
@@ -101,23 +95,61 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="minLabel"
+                documentationPropertyName="quantum"
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="minLabelVariants"
-                [(documentationPropertyValue)]="minLabel"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="quantumVariants"
+                [(documentationPropertyValue)]="quantum"
             >
-                Label for min value
+                Minimum indivisible value
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="maxLabel"
+                documentationPropertyName="steps"
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="maxLabelVariants"
-                [(documentationPropertyValue)]="maxLabel"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="steps"
             >
-                Label for max value
+                Number of actual discrete slider steps
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="segments"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="segments"
+            >
+                A number of visual segments
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="keySteps"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiKeySteps"
+                [documentationPropertyValues]="keyStepsVariants"
+                [(documentationPropertyValue)]="keySteps"
+            >
+                Anchor points of non-uniform format between value and position
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="leftValueContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="valueContentVariants"
+                [(documentationPropertyValue)]="leftValueContent"
+            >
+                A template for custom view of the left selected value.
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="rightValueContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="valueContentVariants"
+                [(documentationPropertyValue)]="rightValueContent"
+            >
+                A template for custom view of the right selected value.
             </ng-template>
             <ng-template
                 i18n
@@ -139,28 +171,124 @@
             </ng-template>
             <ng-template
                 i18n
-                documentationPropertyName="segments"
+                documentationPropertyName="readOnly"
                 documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="segmentsVariants"
-                [(documentationPropertyValue)]="segments"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="readOnly"
             >
-                A number of visual segments
+                Component is read only
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyDeprecated]="true"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size
+
+                <p>
+                    Use
+                    <code>tuiTextfieldSize</code>
+                    instead.
+                </p>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="minLabel"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyDeprecated]="true"
+                [documentationPropertyValues]="minLabelVariants"
+                [(documentationPropertyValue)]="minLabel"
+            >
+                Label for min value
+
+                <p>
+                    Use
+                    <code>leftValueContent</code>
+                    instead.
+                </p>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="maxLabel"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyDeprecated]="true"
+                [documentationPropertyValues]="maxLabelVariants"
+                [(documentationPropertyValue)]="maxLabel"
+            >
+                Label for max value
+
+                <p>
+                    Use
+                    <code>rightValueContent</code>
+                    instead.
+                </p>
             </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="segmentsPluralize"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiPluralize"
+                [documentationPropertyDeprecated]="true"
                 [documentationPropertyValues]="pluralizeVariants"
                 [(documentationPropertyValue)]="segmentsPluralize"
             >
                 Plural forms for
                 <code>segments</code>
+
+                <p>
+                    <strong>
+                        See examples how to create ticks without this property
+                        (outside of the component).
+                    </strong>
+                </p>
             </ng-template>
+        </tui-doc-documentation>
+
+        <h6
+            i18n
+            class="tui-text_h6"
+        >
+            Can be expanded with
+            <a
+                tuiLink
+                target="_blank"
+                routerLink="/directives/textfield-controller"
+            >
+                TuiTextfieldController
+            </a>
+        </h6>
+
+        <p>
+            Requires you to import
+            <code>TuiTextfieldControllerModule</code>
+        </p>
+
+        <tui-doc-documentation>
             <ng-template
                 i18n
-                documentationPropertyName="size"
+                documentationPropertyName="tuiTextfieldLabelOutside"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="labelOutside"
+            >
+                Label is outside a component and made with
+                <a
+                    tuiLink
+                    routerLink="/components/label"
+                >
+                    <code>Label</code>
+                </a>
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldSize"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
@@ -168,28 +296,7 @@
             >
                 Size
             </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="steps"
-                documentationPropertyMode="input"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="stepsVariants"
-                [(documentationPropertyValue)]="steps"
-            >
-                Number of actual discrete slider steps
-            </ng-template>
-            <ng-template
-                i18n
-                documentationPropertyName="keySteps"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiKeySteps"
-                [documentationPropertyValues]="keyStepsVariants"
-                [(documentationPropertyValue)]="keySteps"
-            >
-                Anchor points of non-uniform format between value and position
-            </ng-template>
         </tui-doc-documentation>
-        <inherited-documentation></inherited-documentation>
     </ng-template>
 
     <ng-template pageTab>
