@@ -19,7 +19,7 @@ class User {
     }
 }
 
-const databaseMockData: ReadonlyArray<User> = [
+const databaseMockData: readonly User[] = [
     new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
     new User('Alex', 'Inkin', avatar),
     new User('Dmitriy', 'Demenskiy'),
@@ -39,10 +39,10 @@ const databaseMockData: ReadonlyArray<User> = [
 export class TuiMultiSelectExample2 {
     readonly search$ = new Subject<string>();
 
-    readonly items$: Observable<ReadonlyArray<User> | null> = this.search$.pipe(
+    readonly items$: Observable<readonly User[] | null> = this.search$.pipe(
         filter(value => value !== null),
         switchMap(search =>
-            this.serverRequest(search).pipe(startWith<ReadonlyArray<User> | null>(null)),
+            this.serverRequest(search).pipe(startWith<readonly User[] | null>(null)),
         ),
         startWith(databaseMockData),
     );
@@ -56,7 +56,7 @@ export class TuiMultiSelectExample2 {
     /**
      * Server request emulation
      */
-    private serverRequest(searchQuery: string): Observable<ReadonlyArray<User>> {
+    private serverRequest(searchQuery: string): Observable<readonly User[]> {
         const result = databaseMockData.filter(user =>
             user.toString().toLowerCase().includes(searchQuery.toLowerCase()),
         );

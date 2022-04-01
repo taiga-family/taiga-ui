@@ -19,7 +19,7 @@ class User {
     }
 }
 
-const databaseMockData: ReadonlyArray<User> = [
+const databaseMockData: readonly User[] = [
     new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
     new User('Alex', 'Inkin', avatar),
     new User('Dmitriy', 'Demenskiy'),

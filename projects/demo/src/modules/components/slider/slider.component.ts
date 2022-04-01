@@ -9,7 +9,7 @@ import {TuiSizeS} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiSliderComponent {
-    readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
+    readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
     readonly control = new FormControl(1);
 
     max = 5;

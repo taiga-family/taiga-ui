@@ -8,7 +8,7 @@ import {getDocumentOrShadowRoot} from './get-document-or-shadow-root';
  *
  * CAUTION: Empty array means element if offscreen i.e. covered by no elements, rather than not covered
  */
-export function getElementObscurers(element: Element): ReadonlyArray<Element> | null {
+export function getElementObscurers(element: Element): readonly Element[] | null {
     const {ownerDocument} = element;
 
     if (!ownerDocument || !ownerDocument.defaultView) {

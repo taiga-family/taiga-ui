@@ -10,10 +10,12 @@ import {switchMap} from 'rxjs/operators';
 import {ActionsContent} from './actions-content.component';
 import {PdfContent} from './pdf-content.component';
 
-export type Buttons = readonly Readonly<{
-    text: string;
-    onClick(context: TuiDialog<TuiPdfViewerOptions<Buttons>, string>): void;
-}>[];
+export type Buttons = ReadonlyArray<
+    Readonly<{
+        text: string;
+        onClick(context: TuiDialog<TuiPdfViewerOptions<Buttons>, string>): void;
+    }>
+>;
 
 @Component({
     selector: 'tui-pdf-viewer-example-2',

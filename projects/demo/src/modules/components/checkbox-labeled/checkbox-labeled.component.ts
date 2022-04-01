@@ -44,7 +44,7 @@ export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiContro
         HTML: example2Html,
     };
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     size: TuiSizeL = this.sizeVariants[0];
 

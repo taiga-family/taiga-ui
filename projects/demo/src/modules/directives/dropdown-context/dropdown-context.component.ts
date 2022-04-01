@@ -58,17 +58,14 @@ export class ExampleTuiDropdownContextComponent implements ExampleTuiDropdown {
         LESS: example3LESS,
     };
 
-    readonly dropdownAlignVariants: ReadonlyArray<TuiHorizontalDirection> = [
-        'left',
-        'right',
-    ];
+    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
-    readonly dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection> = [
+    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         'bottom',
         'top',
     ];
 
-    readonly dropdownLimitWidthVariants: ReadonlyArray<TuiDropdownWidthT> = [
+    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidthT[] = [
         'min',
         'auto',
         'fixed',

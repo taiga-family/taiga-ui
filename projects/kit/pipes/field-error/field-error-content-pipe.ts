@@ -20,7 +20,7 @@ export class TuiFieldErrorContentPipe implements PipeTransform, OnDestroy {
 
     constructor(@Inject(Injector) private readonly injector: Injector) {}
 
-    transform(order: ReadonlyArray<string>): PolymorpheusContent {
+    transform(order: readonly string[]): PolymorpheusContent {
         return this.getErrorContent(order);
     }
 

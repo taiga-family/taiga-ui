@@ -12,8 +12,8 @@ export const NAVIGATION_TITLE = new InjectionToken<Observable<string>>('Page tit
 export const NAVIGATION_LABELS = new InjectionToken<readonly string[]>(
     'Navigation sections labels for search',
 );
-export const NAVIGATION_ITEMS: InjectionToken<ReadonlyArray<TuiDocPages>> =
-    new InjectionToken<ReadonlyArray<TuiDocPages>>('Navigation pages');
+export const NAVIGATION_ITEMS: InjectionToken<readonly TuiDocPages[]> =
+    new InjectionToken<readonly TuiDocPages[]>('Navigation pages');
 
 export const NAVIGATION_PROVIDERS: Provider[] = [
     TuiDestroyService,
@@ -57,7 +57,7 @@ export function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
         .filter((item, index, array) => array.indexOf(item) === index);
 }
 
-export function itemsProviderFactory(pages: TuiDocPages): ReadonlyArray<TuiDocPages> {
+export function itemsProviderFactory(pages: TuiDocPages): readonly TuiDocPages[] {
     const labels = labelsProviderFactory(pages);
 
     return [

@@ -3,7 +3,7 @@ import * as allIcons from '@taiga-ui/icons';
 
 export type DemoTuiIcon = keyof typeof import('@taiga-ui/icons');
 
-export type DemoTuiIconsList = readonly (string | DemoTuiIcon)[];
+export type DemoTuiIconsList = ReadonlyArray<string | DemoTuiIcon>;
 
 export type DemoTuiIconsTabs = Record<string, Record<string, DemoTuiIconsList>>;
 

@@ -29,7 +29,7 @@ export class ExampleTuiHintControllerComponent {
 
     tuiHintMode: TuiHintModeT | null = null;
 
-    readonly directionVariants: ReadonlyArray<TuiDirection> = [
+    readonly directionVariants: readonly TuiDirection[] = [
         'left',
         'right',
         'bottom-left',

@@ -20,7 +20,7 @@ export class TableComponent {
     );
 
     @Input()
-    colors: ReadonlyArray<Color> = [];
+    colors: readonly Color[] = [];
 
     @Input()
     @HostBinding('class._dark')

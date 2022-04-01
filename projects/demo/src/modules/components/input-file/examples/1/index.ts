@@ -31,7 +31,7 @@ export class TuiInputFileExample1 {
     readonly control = new FormControl();
 
     @tuiPure
-    get loading$(): Observable<ReadonlyArray<File>> {
+    get loading$(): Observable<readonly File[]> {
         return this.requests$.pipe(
             map(file => (file instanceof File ? [file] : [])),
             startWith([]),
@@ -39,7 +39,7 @@ export class TuiInputFileExample1 {
     }
 
     @tuiPure
-    get rejected$(): Observable<ReadonlyArray<TuiFileLike>> {
+    get rejected$(): Observable<readonly TuiFileLike[]> {
         return this.requests$.pipe(
             map(file => (file instanceof RejectedFile ? [convertRejected(file)] : [])),
             tap(({length}) => {

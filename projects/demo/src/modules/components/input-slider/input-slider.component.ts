@@ -74,7 +74,7 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     quantum = this.quantumVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     size = this.sizeVariants[1];
 
@@ -118,7 +118,7 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     maxLabel = this.maxLabelVariants[0];
 
-    readonly keyStepsVariants: ReadonlyArray<TuiKeySteps> = [[[50, 1000]]];
+    readonly keyStepsVariants: readonly TuiKeySteps[] = [[[50, 1000]]];
 
     keySteps = null;
 

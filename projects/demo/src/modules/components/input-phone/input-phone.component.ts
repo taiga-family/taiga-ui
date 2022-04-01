@@ -48,10 +48,7 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
 
     cleaner = false;
 
-    readonly dropdownAlignVariants: ReadonlyArray<TuiHorizontalDirection> = [
-        'left',
-        'right',
-    ];
+    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
     dropdownAlign: TuiHorizontalDirection = this.dropdownAlignVariants[0];
 
@@ -59,7 +56,7 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
 
     dropdownLimitWidth: TuiDropdownWidthT | null = this.dropdownLimitWidthVariants[0];
 
-    readonly dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection> = [
+    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         'top',
         'bottom',
     ];

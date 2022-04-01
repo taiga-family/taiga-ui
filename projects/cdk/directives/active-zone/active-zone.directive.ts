@@ -21,7 +21,7 @@ import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
     exportAs: 'tuiActiveZone',
 })
 export class TuiActiveZoneDirective implements OnDestroy {
-    private subActiveZones: ReadonlyArray<TuiActiveZoneDirective> = [];
+    private subActiveZones: readonly TuiActiveZoneDirective[] = [];
 
     private tuiActiveZoneParent: TuiActiveZoneDirective | null = null;
 

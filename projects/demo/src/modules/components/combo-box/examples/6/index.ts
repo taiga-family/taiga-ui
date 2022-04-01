@@ -27,7 +27,7 @@ const STRINGIFY_EMPLOYEE: TuiStringHandler<Employee> = (item: Employee) =>
 export class TuiComboBoxExample6 {
     readonly testValue = new FormControl(null);
 
-    readonly items: ReadonlyArray<Employee> = [
+    readonly items: readonly Employee[] = [
         {id: 42, name: 'John Cleese', dept: {id: 566, title: 'Financial'}},
         {id: 237, name: 'Eric Idle', dept: {id: 560, title: 'Staffing'}},
         {id: 666, name: 'Michael Palin', dept: {id: 566, title: 'Financial'}},

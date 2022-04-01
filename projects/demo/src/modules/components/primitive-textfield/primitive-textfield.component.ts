@@ -69,7 +69,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     selectedIcon = this.iconVariants[0];
 
-    readonly iconAlignVariants: ReadonlyArray<TuiHorizontalDirection> = ['left', 'right'];
+    readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
     iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
 
@@ -144,7 +144,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     readonly hintContentVariants: readonly string[] = ['Ivan Ivanov'];
 
-    readonly hintDirectionVariants: ReadonlyArray<TuiDirection> = [
+    readonly hintDirectionVariants: readonly TuiDirection[] = [
         'left',
         'right',
         'bottom-left',

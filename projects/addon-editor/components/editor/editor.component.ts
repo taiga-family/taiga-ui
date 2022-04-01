@@ -90,7 +90,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
 
     @Input()
     @tuiDefaultProp()
-    tools: ReadonlyArray<TuiEditorTool> = defaultEditorTools;
+    tools: readonly TuiEditorTool[] = defaultEditorTools;
 
     @Input()
     @tuiDefaultProp()

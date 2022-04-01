@@ -4,7 +4,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiMultiSelectOptions<T> {
     readonly expandable: boolean;
-    readonly valueContent: PolymorpheusContent<TuiContextWithImplicit<ReadonlyArray<T>>>;
+    readonly valueContent: PolymorpheusContent<TuiContextWithImplicit<readonly T[]>>;
 }
 
 export const TUI_MULTI_SELECT_DEFAULT_OPTIONS: TuiMultiSelectOptions<unknown> = {

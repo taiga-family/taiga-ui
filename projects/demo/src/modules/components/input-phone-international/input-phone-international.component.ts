@@ -52,7 +52,7 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
 
     cleaner = false;
 
-    readonly dropdownDirectionVariants: ReadonlyArray<TuiVerticalDirection> = [
+    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         'top',
         'bottom',
     ];
@@ -65,7 +65,7 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
 
     control = new FormControl('', [Validators.required, Validators.minLength(9)]);
 
-    readonly countriesVariants: ReadonlyArray<ReadonlyArray<TuiCountryIsoCode>> = [
+    readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
         [
             TuiCountryIsoCode.RU,
             TuiCountryIsoCode.KZ,
@@ -77,7 +77,7 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
 
     countries = this.countriesVariants[0];
 
-    readonly countryIsoCodeVariants: ReadonlyArray<TuiCountryIsoCode> = [
+    readonly countryIsoCodeVariants: readonly TuiCountryIsoCode[] = [
         TuiCountryIsoCode.RU,
         TuiCountryIsoCode.KZ,
         TuiCountryIsoCode.UA,

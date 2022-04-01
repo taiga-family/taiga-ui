@@ -31,7 +31,7 @@ export class ExampleProgressCircleComponent {
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = ['s', 'm', 'l', 'xl'];
     size: TuiSizeS | TuiSizeXL = this.sizeVariants[1];
 
-    readonly colorVariants: ReadonlyArray<string> = [
+    readonly colorVariants: readonly string[] = [
         'var(--tui-primary)',
         'lightskyblue',
         '#3682db',

@@ -22,7 +22,7 @@ export class TuiDataListGroupWrapperComponent<T>
 {
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<ReadonlyArray<T>> | null = [];
+    items: ReadonlyArray<readonly T[]> | null = [];
 
     @Input()
     @tuiDefaultProp()

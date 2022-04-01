@@ -63,7 +63,7 @@ export class TuiDocNavigationComponent {
         readonly sidebar: unknown,
         @Inject(NAVIGATION_LABELS) readonly labels: string[],
         @Inject(NAVIGATION_ITEMS)
-        readonly items: ReadonlyArray<TuiDocPages>,
+        readonly items: readonly TuiDocPages[],
         @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
@@ -82,7 +82,7 @@ export class TuiDocNavigationComponent {
         return this.search.length > 2;
     }
 
-    get filteredItems(): ReadonlyArray<ReadonlyArray<TuiDocPage>> {
+    get filteredItems(): ReadonlyArray<readonly TuiDocPage[]> {
         return this.filterItems(this.flattenSubPages(this.items), this.search);
     }
 
@@ -116,9 +116,9 @@ export class TuiDocNavigationComponent {
 
     @tuiPure
     private filterItems(
-        items: ReadonlyArray<ReadonlyArray<TuiDocPage>>,
+        items: ReadonlyArray<readonly TuiDocPage[]>,
         search: string,
-    ): ReadonlyArray<ReadonlyArray<TuiDocPage>> {
+    ): ReadonlyArray<readonly TuiDocPage[]> {
         return items.map(section =>
             uniqBy(
                 section.filter(({title, keywords = ''}) => {
@@ -141,12 +141,12 @@ export class TuiDocNavigationComponent {
 
     @tuiPure
     private flattenSubPages(
-        items: ReadonlyArray<TuiDocPages>,
-    ): ReadonlyArray<ReadonlyArray<TuiDocPage>> {
-        return items.reduce<ReadonlyArray<ReadonlyArray<TuiDocPage>>>(
+        items: readonly TuiDocPages[],
+    ): ReadonlyArray<readonly TuiDocPage[]> {
+        return items.reduce<ReadonlyArray<readonly TuiDocPage[]>>(
             (array, item) => [
                 ...array,
-                item.reduce<ReadonlyArray<TuiDocPage>>(
+                item.reduce<readonly TuiDocPage[]>(
                     (pages, page) =>
                         'subPages' in page
                             ? [...pages, ...page.subPages]

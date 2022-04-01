@@ -66,7 +66,7 @@ export class TuiInputTimeComponent
 
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<TuiTime> = [];
+    items: readonly TuiTime[] = [];
 
     @Input()
     @tuiDefaultProp()
@@ -108,7 +108,7 @@ export class TuiInputTimeComponent
         return isNativeFocused(this.nativeFocusableElement);
     }
 
-    get filtered(): ReadonlyArray<TuiTime> {
+    get filtered(): readonly TuiTime[] {
         return this.filter(this.items, this.mode, this.computedSearch);
     }
 
@@ -258,10 +258,10 @@ export class TuiInputTimeComponent
 
     @tuiPure
     private filter(
-        items: ReadonlyArray<TuiTime>,
+        items: readonly TuiTime[],
         mode: TuiTimeMode,
         search: string,
-    ): ReadonlyArray<TuiTime> {
+    ): readonly TuiTime[] {
         return items.filter(item => item.toString(mode).includes(search));
     }
 

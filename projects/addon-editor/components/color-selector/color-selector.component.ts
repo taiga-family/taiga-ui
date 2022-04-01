@@ -60,7 +60,7 @@ export class TuiColorSelectorComponent {
 
     currentMode = this.modes[0];
 
-    readonly buttons: ReadonlyArray<TuiGradientDirection> = [
+    readonly buttons: readonly TuiGradientDirection[] = [
         'to top right',
         'to right',
         'to bottom right',

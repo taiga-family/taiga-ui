@@ -5,7 +5,7 @@ import {isEditingKey, TuiDataListComponent} from '@taiga-ui/core';
 
 interface Items<T> {
     readonly name: string;
-    readonly items: ReadonlyArray<T>;
+    readonly items: readonly T[];
 }
 
 @Component({

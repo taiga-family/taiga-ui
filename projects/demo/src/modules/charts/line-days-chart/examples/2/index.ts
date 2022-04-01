@@ -45,14 +45,12 @@ export class TuiLineDaysChartExample2 {
     readonly filter: TuiMatcher<[TuiDay, number]> = ([day], {from, to}: TuiDayRange) =>
         day.daySameOrAfter(from) && day.daySameOrBefore(to);
 
-    readonly toNumbers: TuiMapper<readonly [TuiDay, number][], readonly TuiPoint[]> = (
-        days,
-        {from}: TuiDayRange,
-    ) =>
-        days.map(
-            ([day, value]) =>
-                [TuiDay.lengthBetween(from, day), value] as [number, number],
-        );
+    readonly toNumbers: TuiMapper<ReadonlyArray<[TuiDay, number]>, readonly TuiPoint[]> =
+        (days, {from}: TuiDayRange) =>
+            days.map(
+                ([day, value]) =>
+                    [TuiDay.lengthBetween(from, day), value] as [number, number],
+            );
 
     onDataChange(data: TuiDayRange) {
         this.days = this.computeArrays(data);

@@ -15,13 +15,13 @@ function isRejectedFile(file: any): file is RejectedFile {
     return file instanceof RejectedFile;
 }
 
-function getRemoved<T>(oldArray: ReadonlyArray<T>, newArray: ReadonlyArray<T>): T | null {
+function getRemoved<T>(oldArray: readonly T[], newArray: readonly T[]): T | null {
     const filtered = oldArray.filter(item => !newArray.includes(item));
 
     return filtered.length === 1 ? filtered[0] : null;
 }
 
-function isNarrowed<T>(oldArray: ReadonlyArray<T>, newArray: ReadonlyArray<T>): boolean {
+function isNarrowed<T>(oldArray: readonly T[], newArray: readonly T[]): boolean {
     return newArray.every(item => oldArray.includes(item));
 }
 
@@ -43,9 +43,9 @@ function convertRejected({file, reason}: RejectedFile): TuiFileLike {
     encapsulation,
 })
 export class TuiInputFileExample3 {
-    private readonly files$ = new Subject<ReadonlyArray<TuiFileLike>>();
+    private readonly files$ = new Subject<readonly TuiFileLike[]>();
 
-    files: ReadonlyArray<TuiFileLike> = [
+    files: readonly TuiFileLike[] = [
         {
             name: 'Loading file.txt',
         },
@@ -55,8 +55,8 @@ export class TuiInputFileExample3 {
         },
     ];
 
-    loadingFiles: ReadonlyArray<TuiFileLike> = [this.files[0]];
-    rejectedFiles: ReadonlyArray<TuiFileLike> = [
+    loadingFiles: readonly TuiFileLike[] = [this.files[0]];
+    rejectedFiles: readonly TuiFileLike[] = [
         {
             name: 'File with an error.txt',
             content: 'Something went wrong this time',
@@ -84,7 +84,7 @@ export class TuiInputFileExample3 {
             });
     }
 
-    onModelChange(files: ReadonlyArray<TuiFileLike>) {
+    onModelChange(files: readonly TuiFileLike[]) {
         this.processNotification(files);
 
         if (isNarrowed(this.files, files)) {
@@ -99,7 +99,7 @@ export class TuiInputFileExample3 {
         this.files$.next(this.files);
     }
 
-    private processNotification(files: ReadonlyArray<TuiFileLike>) {
+    private processNotification(files: readonly TuiFileLike[]) {
         const removed = getRemoved(this.files, files);
 
         if (removed) {

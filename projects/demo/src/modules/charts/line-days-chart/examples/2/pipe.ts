@@ -47,10 +47,10 @@ export class LabelsPipe implements PipeTransform {
     }
 }
 
-function onlyMondays(range: ReadonlyArray<TuiDay>): readonly string[] {
+function onlyMondays(range: readonly TuiDay[]): readonly string[] {
     return range.filter(day => !day.dayOfWeek()).map(String);
 }
 
-function even<T>(array: ReadonlyArray<T>): ReadonlyArray<T> {
+function even<T>(array: readonly T[]): readonly T[] {
     return array.filter((_, i) => !(i % 2));
 }

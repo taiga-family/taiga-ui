@@ -34,7 +34,7 @@ export class ExampleTuiArcChartComponent {
 
     max = this.maxVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXL> = ['m', 'l', 'xl'];
+    readonly sizeVariants: readonly TuiSizeXL[] = ['m', 'l', 'xl'];
 
     size = this.sizeVariants[0];
 

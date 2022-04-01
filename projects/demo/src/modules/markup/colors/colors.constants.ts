@@ -3,7 +3,7 @@ export interface Color {
     readonly desc?: string;
 }
 
-export const BASE: ReadonlyArray<Color> = [
+export const BASE: readonly Color[] = [
     {
         name: '--tui-base-01',
         desc: $localize`Page primary background and icon fill for color inverted background`,
@@ -100,7 +100,7 @@ export const BASE: ReadonlyArray<Color> = [
     },
 ];
 
-export const BASE_NIGHT: ReadonlyArray<Color> = [
+export const BASE_NIGHT: readonly Color[] = [
     {
         name: '--tui-clear-inverse',
         desc: $localize`Filling color of interface elements on dark background: tages, badges, buttons`,
@@ -115,7 +115,7 @@ export const BASE_NIGHT: ReadonlyArray<Color> = [
     },
 ];
 
-export const STATUS: ReadonlyArray<Color> = [
+export const STATUS: readonly Color[] = [
     {
         name: '--tui-error-fill',
         desc: $localize`Icons or other elements with error status`,
@@ -178,7 +178,7 @@ export const STATUS: ReadonlyArray<Color> = [
     },
 ];
 
-export const STATUS_NIGHT: ReadonlyArray<Color> = [
+export const STATUS_NIGHT: readonly Color[] = [
     {
         name: '--tui-error-fill-night',
         desc: $localize`Icons or other elements with error status`,
@@ -265,7 +265,7 @@ export const SUPPORT: readonly string[] = [
     '--tui-support-21',
 ];
 
-export const TEXT: ReadonlyArray<Color> = [
+export const TEXT: readonly Color[] = [
     {
         name: '--tui-text-01',
         desc: $localize`Primary text and headings`,
@@ -304,7 +304,7 @@ export const TEXT: ReadonlyArray<Color> = [
     },
 ];
 
-export const TEXT_NIGHT: ReadonlyArray<Color> = [
+export const TEXT_NIGHT: readonly Color[] = [
     {
         name: '--tui-text-01-night',
         desc: $localize`Primary text and headings`,

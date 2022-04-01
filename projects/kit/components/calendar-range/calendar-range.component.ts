@@ -57,7 +57,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<TuiDayRangePeriod> = [];
+    items: readonly TuiDayRangePeriod[] = [];
 
     @Input()
     @tuiDefaultProp()
@@ -111,7 +111,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         item.append({month: 1});
 
     readonly mapper: TuiMapper<
-        ReadonlyArray<TuiDayRangePeriod>,
+        readonly TuiDayRangePeriod[],
         ReadonlyArray<TuiDayRangePeriod | string>
     > = (
         items,

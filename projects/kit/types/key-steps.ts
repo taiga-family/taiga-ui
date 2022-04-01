@@ -14,4 +14,4 @@
  *  ];
  *
  */
-export type TuiKeySteps = Array<[number, number]>;
+export type TuiKeySteps = [number, number][];

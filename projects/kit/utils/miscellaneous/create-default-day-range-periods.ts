@@ -10,7 +10,7 @@ export function tuiCreateDefaultDayRangePeriods(
         'Current month',
         'Previous month',
     ],
-): ReadonlyArray<TuiDayRangePeriod> {
+): readonly TuiDayRangePeriod[] {
     const today = TuiDay.currentLocal();
     const yesterday = today.append({day: -1});
     const startOfWeek = today.append({day: -today.dayOfWeek()});

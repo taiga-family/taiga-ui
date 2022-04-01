@@ -16,7 +16,7 @@ export class TuiToolbarNavigationManagerDirective {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {}
 
-    private get toolsContainers(): ReadonlyArray<HTMLElement> {
+    private get toolsContainers(): readonly HTMLElement[] {
         return Array.from(
             this.elementRef.nativeElement.querySelectorAll<HTMLElement>(
                 '[tuiToolbarTool]',

@@ -20,7 +20,7 @@ const EMPTY_RECORD = {};
     pure: false,
 })
 export class TuiFieldErrorPipe implements PipeTransform {
-    private order: ReadonlyArray<string> = [];
+    private order: readonly string[] = [];
 
     constructor(
         @Optional()
@@ -50,7 +50,7 @@ export class TuiFieldErrorPipe implements PipeTransform {
         }
     }
 
-    transform(order: ReadonlyArray<string>): Observable<TuiValidationError | null> {
+    transform(order: readonly string[]): Observable<TuiValidationError | null> {
         this.order = order;
 
         return this.computedError;

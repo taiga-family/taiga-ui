@@ -17,7 +17,7 @@ export class ExampleTuiPluralizeComponent {
 
     index = 10;
 
-    pluralizeVariants: ReadonlyArray<TuiPluralize> = [
+    pluralizeVariants: readonly TuiPluralize[] = [
         [$localize`feature`, $localize`features`, $localize`features`],
         [$localize`bug`, $localize`bugs`, $localize`bugs`],
     ];

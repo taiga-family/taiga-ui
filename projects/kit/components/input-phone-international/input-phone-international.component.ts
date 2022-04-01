@@ -79,7 +79,7 @@ export class TuiInputPhoneInternationalComponent
     }
 
     @Input()
-    countries: ReadonlyArray<TuiCountryIsoCode> = [];
+    countries: readonly TuiCountryIsoCode[] = [];
 
     @Output()
     readonly countryIsoCodeChange = new EventEmitter<TuiCountryIsoCode>();

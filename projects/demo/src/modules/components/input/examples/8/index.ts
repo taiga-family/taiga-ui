@@ -21,7 +21,7 @@ class User {
     }
 }
 
-const DATA: ReadonlyArray<User> = [
+const DATA: readonly User[] = [
     new User('Roman', 'Sedov', 'http://marsibarsi.me/images/1x1small.jpg'),
     new User('Alex', 'Inkin', avatar),
     new User('Gabriel José', 'de la Concordia «Gabo» García Márquez'),
@@ -64,7 +64,7 @@ export class TuiInputExample8 {
     }
 
     // Request imitation
-    private request(query: string): Observable<ReadonlyArray<User>> {
+    private request(query: string): Observable<readonly User[]> {
         return of(DATA.filter(item => TUI_DEFAULT_MATCHER(item, query)));
     }
 }

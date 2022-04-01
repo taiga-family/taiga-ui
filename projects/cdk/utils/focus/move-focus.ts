@@ -10,7 +10,7 @@ import {setNativeFocused} from './set-native-focused';
  */
 export function moveFocus(
     currentIndex: number,
-    elements: ReadonlyArray<HTMLElement>,
+    elements: readonly HTMLElement[],
     step: number,
 ) {
     currentIndex += step;

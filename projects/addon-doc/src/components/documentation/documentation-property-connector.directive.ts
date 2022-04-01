@@ -42,7 +42,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     documentationPropertyDeprecated = false;
 
     @Input()
-    documentationPropertyValues: ReadonlyArray<T> | null = null;
+    documentationPropertyValues: readonly T[] | null = null;
 
     @Output()
     readonly documentationPropertyValueChange = new EventEmitter<T | null>();

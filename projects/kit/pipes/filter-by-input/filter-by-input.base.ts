@@ -7,8 +7,8 @@ import {
 } from '@taiga-ui/cdk';
 import {isFlat} from '@taiga-ui/kit/utils';
 
-export type ArrayElement<A> = A extends readonly (infer T)[]
-    ? A extends readonly (readonly (infer G)[])[]
+export type ArrayElement<A> = A extends ReadonlyArray<infer T>
+    ? A extends ReadonlyArray<ReadonlyArray<infer G>>
         ? G
         : T
     : never;

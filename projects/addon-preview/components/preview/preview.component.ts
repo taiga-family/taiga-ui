@@ -114,7 +114,7 @@ export class TuiPreviewComponent {
         }
     }
 
-    onResize(contentResizeEntries: ReadonlyArray<ResizeObserverEntry>) {
+    onResize(contentResizeEntries: readonly ResizeObserverEntry[]) {
         if (contentResizeEntries.length === 0) {
             return;
         }

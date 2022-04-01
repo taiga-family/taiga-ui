@@ -20,7 +20,7 @@ interface Hero {
     encapsulation,
 })
 export class TuiMultiSelectExample3 {
-    readonly items: ReadonlyArray<Hero> = [
+    readonly items: readonly Hero[] = [
         {id: 1, name: 'Luke Skywalker'},
         {id: 2, name: 'Leia Organa Solo'},
         {id: 3, name: 'Darth Vader'},

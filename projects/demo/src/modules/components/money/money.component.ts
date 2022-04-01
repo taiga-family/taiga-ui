@@ -49,7 +49,7 @@ export class ExampleTuiMoneyComponent {
 
     decimal = this.decimalVariants[0];
 
-    readonly currencyVariants: ReadonlyArray<TuiCurrencyVariants> = [
+    readonly currencyVariants: readonly TuiCurrencyVariants[] = [
         TuiCurrency.Ruble,
         TuiCurrency.Euro,
         TuiCurrency.Dollar,

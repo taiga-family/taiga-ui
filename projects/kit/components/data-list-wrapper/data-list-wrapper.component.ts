@@ -38,7 +38,7 @@ export class TuiDataListWrapperComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @tuiDefaultProp()
-    items: ReadonlyArray<ReadonlyArray<T>> | ReadonlyArray<T> | null = [];
+    items: ReadonlyArray<readonly T[]> | readonly T[] | null = [];
 
     @Input()
     @tuiDefaultProp()
@@ -70,7 +70,7 @@ export class TuiDataListWrapperComponent<T> implements TuiDataListAccessor<T> {
         return {$implicit, active: isNativeFocused(nativeElement)};
     }
 
-    getOptions(includeDisabled: boolean = false): ReadonlyArray<T> {
+    getOptions(includeDisabled: boolean = false): readonly T[] {
         return this.optionsQuery
             .toArray()
             .filter(({disabled}) => includeDisabled || !disabled)

@@ -1,4 +1,4 @@
-function inspectArray(array: ReadonlyArray<any>, depth: number): string {
+function inspectArray(array: readonly any[], depth: number): string {
     if (depth === 0) {
         return '[…]';
     }

@@ -107,7 +107,7 @@ export class TuiTabsComponent implements AfterViewChecked {
         return itemsQueryListObservable(this.children).pipe(mapTo(true));
     }
 
-    get tabs(): ReadonlyArray<HTMLElement> {
+    get tabs(): readonly HTMLElement[] {
         return Array.from(
             this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[tuiTab]'),
         );

@@ -17,13 +17,13 @@ const DEEP_PATHS = [
     'components/toggle',
 ];
 
-const toggleExclusions: Record<string, ReadonlyArray<number>> = {
+const toggleExclusions: Record<string, readonly number[]> = {
     'components/button': [1],
     'components/group': [0], // [adaptive]
     'components/toggle': [2, 4], // [showLoader], [focusable]
 };
 
-const selectExclusions: Record<string, ReadonlyArray<number>> = {
+const selectExclusions: Record<string, readonly number[]> = {
     'components/calendar': [4, 5], // not visible for test props: [min], [minViewedMonth]
     'components/calendar-month': [2], // not visible for test props: [min]
 };

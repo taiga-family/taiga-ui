@@ -31,7 +31,7 @@ export class TuiProgressSegmentedComponent {
 
     @Input()
     @tuiDefaultProp()
-    colors: string | ReadonlyArray<string> = 'var(--tui-primary)';
+    colors: string | readonly string[] = 'var(--tui-primary)';
 
     getActiveColor(index: number = 0): string | null {
         return typeof this.colors === 'string'

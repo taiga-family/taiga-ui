@@ -57,7 +57,7 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     quantum = this.quantumVariants[0];
 
-    sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
+    sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     size = this.sizeVariants[1];
 
@@ -82,7 +82,7 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     maxLabel = this.maxLabelVariants[0];
 
-    keyStepsVariants: ReadonlyArray<TuiKeySteps> = [[[50, 1000]]];
+    keyStepsVariants: readonly TuiKeySteps[] = [[[50, 1000]]];
 
     keySteps = null;
 }

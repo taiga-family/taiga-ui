@@ -14,6 +14,6 @@ export class TuiTokensExample2 {
     constructor(
         @Optional()
         @Inject(TUI_DIALOGS)
-        readonly dialogs: readonly Observable<readonly unknown[]>[] | null,
+        readonly dialogs: ReadonlyArray<Observable<readonly unknown[]>> | null,
     ) {}
 }

@@ -14,7 +14,7 @@ export interface Item {
     encapsulation,
 })
 export class TuiFilterExample1 {
-    readonly items: ReadonlyArray<Item> = [
+    readonly items: readonly Item[] = [
         {
             name: 'Sword',
             price: 1000,

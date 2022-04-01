@@ -14,7 +14,7 @@ import {TuiFileLike} from '@taiga-ui/kit';
 export class TuiInputFilesExample3 {
     readonly control = new FormControl();
 
-    readonly files: ReadonlyArray<TuiFileLike> = [
+    readonly files: readonly TuiFileLike[] = [
         {
             name: 'Loaded.txt',
         },
@@ -27,7 +27,7 @@ export class TuiInputFilesExample3 {
         name: 'Loading file.txt',
     };
 
-    readonly rejectedFiles: ReadonlyArray<TuiFileLike> = [
+    readonly rejectedFiles: readonly TuiFileLike[] = [
         {
             name: 'File with an error.txt',
             content: 'Something went wrong this time',

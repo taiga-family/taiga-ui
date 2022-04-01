@@ -36,7 +36,7 @@ export class ExampleTuiEditorComponent extends AbstractExampleTuiControl {
 
     readonly control = new FormControl();
 
-    readonly toolsVariants: ReadonlyArray<TuiEditorTool[]> = [
+    readonly toolsVariants: readonly TuiEditorTool[][] = [
         defaultEditorTools,
         [
             TuiEditorTool.Bold,

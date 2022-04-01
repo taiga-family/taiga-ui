@@ -43,7 +43,7 @@ export class ExampleTuiRangeComponent {
         this.control.enable();
     }
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS> = ['s', 'm'];
+    readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
 
     size: TuiSizeS = this.sizeVariants[1];
 
@@ -74,11 +74,11 @@ export class ExampleTuiRangeComponent {
 
     pluralize = null;
 
-    readonly keyStepsVariants: ReadonlyArray<TuiKeySteps> = [[[50, 1000]]];
+    readonly keyStepsVariants: readonly TuiKeySteps[] = [[[50, 1000]]];
 
     keySteps = null;
 
-    readonly quantumVariants: ReadonlyArray<number> = [0.01, 0.1, 1, 10];
+    readonly quantumVariants: readonly number[] = [0.01, 0.1, 1, 10];
 
     quantum = this.quantumVariants[0];
 }

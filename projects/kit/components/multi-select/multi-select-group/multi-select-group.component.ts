@@ -103,7 +103,7 @@ export class TuiMultiSelectGroupComponent<T> {
             return;
         }
 
-        const controlValue: ReadonlyArray<T> = this.control.value || [];
+        const controlValue: readonly T[] = this.control.value || [];
         const {values} = this;
         const filtered = controlValue.filter(current =>
             values.every(item => !this.matcher(current, item)),
@@ -112,7 +112,7 @@ export class TuiMultiSelectGroupComponent<T> {
         this.control.control.setValue(checked ? filtered : [...filtered, ...values]);
     }
 
-    private get values(): ReadonlyArray<T> {
+    private get values(): readonly T[] {
         return this.filter(getOriginalArrayFromQueryList(this.options));
     }
 
@@ -121,21 +121,21 @@ export class TuiMultiSelectGroupComponent<T> {
     }
 
     @tuiPure
-    private get items$(): Observable<ReadonlyArray<T>> {
+    private get items$(): Observable<readonly T[]> {
         return itemsQueryListObservable(this.options).pipe(
             map(options => options.map(({value}) => value).filter(isPresent)),
         );
     }
 
     @tuiPure
-    private get valueChanges$(): Observable<ReadonlyArray<T>> {
-        return tuiReplayedValueChangesFrom<ReadonlyArray<T>>(this.control).pipe(
+    private get valueChanges$(): Observable<readonly T[]> {
+        return tuiReplayedValueChangesFrom<readonly T[]>(this.control).pipe(
             map(value => value || []),
         );
     }
 
     @tuiPure
-    private filter(items: ReadonlyArray<TuiOptionComponent<T>>): ReadonlyArray<T> {
+    private filter(items: ReadonlyArray<TuiOptionComponent<T>>): readonly T[] {
         return items.map(({value}) => value).filter(isPresent);
     }
 }

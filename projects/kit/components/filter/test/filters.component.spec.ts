@@ -49,7 +49,7 @@ describe('Filter', () => {
 
         control = new FormControl([]);
 
-        items: ReadonlyArray<any> = ARR_STRING;
+        items: readonly any[] = ARR_STRING;
 
         size: TuiSizeS = 'm';
 

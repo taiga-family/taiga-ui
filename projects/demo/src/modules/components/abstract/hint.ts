@@ -5,7 +5,7 @@ export abstract class AbstractExampleTuiHint {
 
     mode: TuiHintModeT | null = null;
 
-    readonly directionVariants: ReadonlyArray<TuiDirection> = [
+    readonly directionVariants: readonly TuiDirection[] = [
         'left',
         'right',
         'bottom-left',
