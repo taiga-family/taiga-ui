@@ -77,14 +77,14 @@
                     polymorpheus-outlet
                     class="t-text"
                     [content]="hintDirective.hint"
-                    [context]="getContentContext(point)"
+                    [context]="getContentContext(point, index)"
                 ></div>
                 <ng-template #single>
                     <div
                         polymorpheus-outlet
                         class="t-text"
                         [content]="hintContent"
-                        [context]="{ $implicit: point }"
+                        [context]="{ $implicit: point, index: index }"
                     ></div>
                 </ng-template>
             </ng-template>
