@@ -75,6 +75,9 @@ export class TuiToolbarNewComponent {
     @Output()
     readonly attachClicked = new EventEmitter<void>();
 
+    @Output()
+    readonly selectedLink = new EventEmitter<string>();
+
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
     toolsSet: Set<TuiEditorTool> = new Set(defaultEditorTools);
@@ -217,6 +220,8 @@ export class TuiToolbarNewComponent {
 
         if (url) {
             this.editor.toggleLink(url);
+            this.selectedLink.emit(url);
+            this.editor.selectClosest();
         }
     }
 

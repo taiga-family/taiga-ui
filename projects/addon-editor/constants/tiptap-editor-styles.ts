@@ -101,6 +101,7 @@ export const tiptapEditorStyles = `
 
 .tui-editor-socket a:hover {
     color: var(--tui-link-hover);
+    text-decoration: underline;
 }
 
 .tui-editor-socket a:active {

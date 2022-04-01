@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -21,17 +22,19 @@ import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {
     AbstractTuiControl,
-    ALWAYS_FALSE_HANDLER,
     isNativeFocusedIn,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiBooleanHandler,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
+import {TUI_DOCUMENT_OR_SHADOW_ROOT} from '@taiga-ui/core';
+import {TuiDropdownSelectionDirective} from '@taiga-ui/kit/directives';
 import {Editor} from '@tiptap/core';
 import {Observable} from 'rxjs';
 
 import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 
+// @dynamic
 @Component({
     selector: 'tui-editor[new]',
     templateUrl: './editor-new.component.html',
@@ -52,6 +55,11 @@ export class TuiEditorNewComponent
     @ViewChild(TuiEditLinkComponent, {read: ElementRef})
     private readonly editLink?: ElementRef<HTMLElement>;
 
+    @ViewChild(TuiDropdownSelectionDirective)
+    private readonly dropdownSelection?: TuiDropdownSelectionDirective;
+
+    private previousSelectedLink: string | null = null;
+
     @Input()
     @tuiDefaultProp()
     exampleText = '';
@@ -71,12 +79,20 @@ export class TuiEditorNewComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TIPTAP_EDITOR) readonly editorLoaded$: Observable<Editor | null>,
         @Inject(TuiTiptapEditorService) readonly editorService: TuiEditor,
+        @Inject(DOCUMENT)
+        private readonly documentRef: Document,
+        @Optional()
+        @Inject(TUI_DOCUMENT_OR_SHADOW_ROOT)
+        private readonly shadowRootRef: DocumentOrShadowRoot | null,
     ) {
         super(control, changeDetectorRef);
     }
 
     get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        return this.focused ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
+        return () =>
+            this.currentFocusedNodeIsAnchor()
+                ? this.isValidSelectionAnchorRange()
+                : this.previousFocusedNodeIsAnchor();
     }
 
     get editor(): TuiEditor | null {
@@ -101,6 +117,10 @@ export class TuiEditorNewComponent
         );
     }
 
+    private get selection() {
+        return (this.shadowRootRef || this.documentRef).getSelection();
+    }
+
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
     }
@@ -120,6 +140,48 @@ export class TuiEditorNewComponent
 
     removeLink() {
         this.editor?.unsetLink();
+        this.dropdownSelection?.closeDropdownBox();
+    }
+
+    selectedLink(url: string) {
+        this.previousSelectedLink = url;
+    }
+
+    selectLinkIfClosest() {
+        const link = this.getMarkedLinkBeforeSelectClosest();
+        const href = link?.attrs.href ?? null;
+
+        if (link && this.isValidSelectionAnchorRange()) {
+            this.editor?.selectClosest();
+
+            /**
+             * @note:
+             * if we already have a dropdown with link editing open,
+             * we need to reopen with a new template
+             */
+            if (this.previousSelectedLink != null && href != this.previousSelectedLink) {
+                this.dropdownSelection?.closeDropdownBox();
+                this.dropdownSelection?.openDropdownBox();
+            }
+        }
+
+        this.previousSelectedLink = href;
+    }
+
+    currentFocusedNodeIsAnchor(): boolean {
+        if (!this.selection?.anchorNode || !this.selection?.anchorNode?.parentElement) {
+            return false;
+        }
+
+        return !!this.selection.anchorNode.parentElement.closest('a');
+    }
+
+    previousFocusedNodeIsAnchor(): boolean {
+        if (!this.selection?.focusNode || !this.selection?.focusNode?.parentElement) {
+            return false;
+        }
+
+        return !!this.selection.focusNode.parentElement.closest('a');
     }
 
     ngOnDestroy() {
@@ -130,9 +192,32 @@ export class TuiEditorNewComponent
         return '';
     }
 
-    private readonly isSelectionLink = () => !!this.editor?.isActive('link');
-
     private get hasValue(): boolean {
         return !!this.value;
+    }
+
+    private getMarkedLinkBeforeSelectClosest() {
+        const [link] = this.editor?.state.tr.selection.$anchor.marks() ?? [];
+        const isLink = link?.type.name === 'link';
+
+        return isLink ? link : null;
+    }
+
+    private isValidSelectionAnchorRange() {
+        let isValid = false;
+        const isAnchor = this.currentFocusedNodeIsAnchor();
+
+        if (isAnchor && this.selection) {
+            const range = this.selection.getRangeAt(0);
+            const delta = Math.abs(range.endOffset - range.startOffset);
+            const length = (range.commonAncestorContainer as Text).length ?? 0;
+
+            isValid =
+                delta > 0 ||
+                (length === 1 && range.startOffset === 0) ||
+                (length > 1 && range.endOffset < length);
+        }
+
+        return isValid;
     }
 }

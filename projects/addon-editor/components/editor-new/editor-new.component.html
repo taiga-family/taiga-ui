@@ -20,6 +20,7 @@
                 new
                 [tools]="tools"
                 [disabled]="!interactive"
+                (selectedLink)="selectedLink($event)"
             >
                 <ng-content select="tools"></ng-content>
             </tui-toolbar>
@@ -39,29 +40,29 @@
 
         <tui-scrollbar class="t-scrollbar">
             <div
+                *ngIf="editorLoaded"
                 tuiDropdownLimitWidth="auto"
-                tuiDropdownSelectionPosition="tag"
+                tuiDropdownSelectionPosition="selection"
                 [tuiDropdownSelection]="dropdownSelectionHandler"
                 [tuiDropdownContent]="dropdown"
             >
                 <div
-                    *ngIf="editorLoaded"
                     tuiTiptapEditor
+                    spellcheck="false"
                     class="tui-editor-socket"
                     [value]="value"
                     [editable]="interactive"
                     (valueChange)="onModelChange($event)"
                     (stateChange)="(0)"
+                    (click)="selectLinkIfClosest()"
                 ></div>
+                <ng-template #dropdown>
+                    <tui-edit-link
+                        (addLink)="addLink($event)"
+                        (removeLink)="removeLink()"
+                    ></tui-edit-link>
+                </ng-template>
             </div>
         </tui-scrollbar>
-
-        <ng-template #dropdown>
-            <tui-edit-link
-                #editLinkDropdown
-                (addLink)="addLink($event)"
-                (removeLink)="removeLink()"
-            ></tui-edit-link>
-        </ng-template>
     </div>
 </tui-wrapper>

@@ -101,16 +101,7 @@ export abstract class AbstractTuiDropdown
         return checkFixedPosition(this.elementRef.nativeElement);
     }
 
-    @tuiPure
-    protected toggleDropdown(value: boolean) {
-        if (value) {
-            this.openDropdownBox();
-        } else {
-            this.closeDropdownBox();
-        }
-    }
-
-    protected openDropdownBox() {
+    openDropdownBox() {
         if (this.dropdownBoxRef !== null) {
             return;
         }
@@ -123,12 +114,21 @@ export abstract class AbstractTuiDropdown
         this.dropdownBoxRef.changeDetectorRef.detectChanges();
     }
 
-    protected closeDropdownBox() {
+    closeDropdownBox() {
         if (this.dropdownBoxRef === null) {
             return;
         }
 
         this.portalService.remove(this.dropdownBoxRef);
         this.dropdownBoxRef = null;
+    }
+
+    @tuiPure
+    protected toggleDropdown(value: boolean) {
+        if (value) {
+            this.openDropdownBox();
+        } else {
+            this.closeDropdownBox();
+        }
     }
 }

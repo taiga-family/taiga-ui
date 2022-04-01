@@ -37,7 +37,7 @@ import {
 } from '@taiga-ui/core';
 import {getWordRange} from '@taiga-ui/kit/utils/dom';
 import {merge} from 'rxjs';
-import {map, switchMapTo, takeUntil} from 'rxjs/operators';
+import {distinctUntilChanged, map, switchMapTo, takeUntil} from 'rxjs/operators';
 
 const EMPTY_RECT: ClientRect = {
     bottom: 0,
@@ -69,18 +69,24 @@ export class TuiDropdownSelectionDirective
     private ghost?: HTMLElement;
     private range?: Range;
 
+    /**
+     * @note:
+     * This state is needed when the focus drops from an element to another element
+     * and the selected element loses focus, then the target dropdown element can bounce
+     */
+    private fallbackSelectionRect: ClientRect | null = null;
+
     @Input()
     set tuiDropdownSelection(handler: TuiBooleanHandler<Range> | undefined) {
         if (!handler || !this.range) {
             return;
         }
 
-        const inHostAndValid =
-            this.elementRef.nativeElement.contains(this.range.commonAncestorContainer) &&
-            handler(this.range);
-
+        /**
+         * @note: don't trigger toggleDropdownBox here
+         * because it is called recursively
+         */
         this.visibilityHandler = handler;
-        this.toggleDropdownBox(inHostAndValid);
     }
 
     @Input('tuiDropdownSelectionPosition')
@@ -153,26 +159,12 @@ export class TuiDropdownSelectionDirective
                         return this.veryVerySadInputFix(active);
                     }
 
-                    return selection && selection.rangeCount
-                        ? selection.getRangeAt(0)
-                        : this.range;
+                    return selection?.rangeCount ? selection.getRangeAt(0) : this.range;
                 }),
+                distinctUntilChanged(),
                 takeUntil(destroy$),
             )
-            .subscribe(range => {
-                const contained =
-                    !!range && nativeElement.contains(range.commonAncestorContainer);
-
-                this.range = contained ? range : this.range;
-
-                const valid =
-                    contained &&
-                    (!this.visibilityHandler ||
-                        !this.range ||
-                        this.visibilityHandler(this.range));
-
-                this.toggleDropdownBox(!!range && (valid || this.inDropdown(range)));
-            });
+            .subscribe(range => this.updateRange(range, nativeElement));
     }
 
     get clientRect(): ClientRect {
@@ -208,6 +200,54 @@ export class TuiDropdownSelectionDirective
     }
 
     /**
+     * Toggle dropdown visibility
+     * has to be in ngZone.run() because it could be initiated inside iframe in Editor
+     * @note: don't use tuiPure here, it breaks rendering
+     */
+    private toggleDropdownVisibility(visible: boolean) {
+        this.ngZone.run(() => {
+            this.toggleDropdown(visible);
+            this.changeDetectorRef.markForCheck();
+        });
+    }
+
+    private updateRange(range: Range | undefined, nativeElement: HTMLElement) {
+        const contained =
+            !!range && nativeElement.contains(range.commonAncestorContainer);
+
+        this.range = contained ? range : this.range;
+
+        if (this.position === 'selection') {
+            this.saveFallbackSelectionRect();
+        }
+
+        const valid =
+            contained &&
+            (!this.visibilityHandler ||
+                !this.range ||
+                this.visibilityHandler(this.range));
+
+        const visible = !!range && (valid || this.inDropdown(range));
+
+        this.toggleDropdownVisibility(visible);
+    }
+
+    /**
+     * @note:
+     * since the focus is loosest from the selected element,
+     * the ClientRect can be equals EMPTY_RECT for a moment.
+     * We need to prevent bouncing
+     */
+    private saveFallbackSelectionRect() {
+        const fallbackRect: ClientRect =
+            this.range?.getBoundingClientRect().toJSON() ?? EMPTY_RECT;
+
+        if (fallbackRect.width !== 0 && fallbackRect.height !== 0) {
+            this.fallbackSelectionRect = fallbackRect;
+        }
+    }
+
+    /**
      * get ClientRect of current Range according to provided position
      */
     private get rangeRect(): ClientRect {
@@ -227,24 +267,18 @@ export class TuiDropdownSelectionDirective
             }
             case 'word':
                 return getWordRange(this.range).getBoundingClientRect();
-            default:
-                return this.range.getBoundingClientRect();
-        }
-    }
+            default: {
+                const range: DOMRect = this.range.getBoundingClientRect();
 
-    /**
-     * Toggle dropdown visibility (has to be in ngZone.run because it could be initiated inside iframe in Editor)
-     */
-    private toggleDropdownBox(visible: boolean) {
-        this.ngZone.run(() => {
-            if (visible) {
-                this.openDropdownBox();
-            } else {
-                this.closeDropdownBox();
+                /**
+                 * @note:
+                 * exclude the possibility when the dropdown element can bounce
+                 */
+                return range.width === 0 && range.height === 0
+                    ? this.fallbackSelectionRect ?? range
+                    : range;
             }
-
-            this.changeDetectorRef.markForCheck();
-        });
+        }
     }
 
     /**
