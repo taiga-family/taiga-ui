@@ -41,7 +41,7 @@ jobs:
           echo "::set-output name=new_version::$(node -p "require('./package.json').version")"
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.TINKOFF_BOT_PAT }}
           branch: release/${{ steps.run-release.outputs.new_version }}
