@@ -12,22 +12,22 @@ export function replaceEnums() {
 function replaceEnumWithString(enumName: string, replaceValues: Record<string, string>) {
     const references = getNamedImportReferences(enumName);
 
-    references.forEach(ref => {
+    for (let ref of references) {
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
             removeImport(parent);
-            return;
+            continue;
         }
 
         if (Node.isTypeReferenceNode(parent)) {
             const declaration = parent.getParent() as VariableDeclaration;
             declaration.removeType();
-            return;
+            continue;
         }
 
         if (!Node.isPropertyAccessExpression(parent)) {
-            return;
+            continue;
         }
 
         const key = Object.keys(replaceValues).find(key => parent.getName() === key);
@@ -35,5 +35,5 @@ function replaceEnumWithString(enumName: string, replaceValues: Record<string, s
         if (key) {
             parent.replaceWithText(`'${replaceValues[key]}'`);
         }
-    });
+    }
 }
