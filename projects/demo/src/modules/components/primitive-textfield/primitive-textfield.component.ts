@@ -149,8 +149,10 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         'right',
         'bottom-left',
         'bottom-right',
+        'bottom-middle',
         'top-left',
         'top-right',
+        'top-middle',
     ];
 
     readonly hintModeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];

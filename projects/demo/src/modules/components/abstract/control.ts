@@ -44,8 +44,10 @@ export abstract class AbstractExampleTuiControl
         'right',
         'bottom-left',
         'bottom-right',
+        'bottom-middle',
         'top-left',
         'top-right',
+        'top-middle',
     ];
 
     readonly hintModeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];
