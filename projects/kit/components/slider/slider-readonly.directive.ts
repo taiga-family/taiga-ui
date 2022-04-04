@@ -1,7 +1,16 @@
-import {Directive, ElementRef, HostListener, Inject, Input} from '@angular/core';
-import {tuiDefaultProp, TuiDestroyService, typedFromEvent} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
-import {filter, takeUntil} from 'rxjs/operators';
+import {Directive, HostListener, Input} from '@angular/core';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
+
+const SLIDER_INTERACTION_KEYS = [
+    'ArrowLeft',
+    'ArrowRight',
+    'ArrowUp',
+    'ArrowDown',
+    'Home',
+    'End',
+    'PageUp',
+    'PageDown',
+];
 
 /**
  * Native <input type='range' readonly> doesn't work.
@@ -9,37 +18,24 @@ import {filter, takeUntil} from 'rxjs/operators';
  */
 @Directive({
     selector: 'input[tuiSlider][readonly]',
-    providers: [TuiDestroyService],
 })
 export class TuiSliderReadonlyDirective {
-    private readonly ARROWS = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
-
     @Input()
     @tuiDefaultProp()
     readonly: '' | boolean = true;
 
-    constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef,
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-    ) {
-        /* @HostListener('keydown.arrowLeft') doesn't invoke function if some system key (ctrl, control, meta) was pressed */
-        typedFromEvent(nativeElement, 'keydown')
-            .pipe(
-                filter(({key}) => this.ARROWS.includes(key)),
-                takeUntil(destroy$),
-            )
-            .subscribe(event => this.preventEvent(event));
-    }
-
     @HostListener('mousedown', ['$event'])
     @HostListener('touchstart', ['$event'])
-    @HostListener('keydown.home', ['$event'])
-    @HostListener('keydown.end', ['$event'])
-    @HostListener('keydown.pageUp', ['$event'])
-    @HostListener('keydown.pageDown', ['$event'])
     preventEvent(event: Event) {
         if (this.readonly === '' || this.readonly) {
             event.preventDefault();
+        }
+    }
+
+    @HostListener('keydown', ['$event'])
+    preventKeyboardInteraction(event: KeyboardEvent) {
+        if (SLIDER_INTERACTION_KEYS.includes(event.key)) {
+            this.preventEvent(event);
         }
     }
 }

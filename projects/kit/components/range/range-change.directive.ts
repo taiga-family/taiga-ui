@@ -1,8 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, Inject} from '@angular/core';
-import {clamp, round, typedFromEvent} from '@taiga-ui/cdk';
+import {clamp, round, TuiDestroyService, typedFromEvent} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import {merge} from 'rxjs';
+import {merge, Observable, race} from 'rxjs';
 import {filter, map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 import {TuiRangeComponent} from './range.component';
@@ -10,6 +10,7 @@ import {TuiRangeComponent} from './range.component';
 // @dynamic
 @Directive({
     selector: 'tui-range',
+    providers: [TuiDestroyService],
 })
 export class TuiRangeChangeDirective {
     /**
@@ -41,6 +42,7 @@ export class TuiRangeChangeDirective {
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiRangeComponent) private readonly range: TuiRangeComponent,
+        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
     ) {
         let activeThumb: 'left' | 'right';
 
@@ -52,7 +54,7 @@ export class TuiRangeChangeDirective {
                 }),
                 switchMap(event => this.pointerMove$.pipe(startWith(event))),
                 map(({clientX}) => clamp(this.getFractionFromEvents(clientX), 0, 1)),
-                takeUntil(this.pointerUp$),
+                takeUntil(race(this.pointerUp$, destroy$)),
                 repeat(),
             )
             .subscribe(fraction => {

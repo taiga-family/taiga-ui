@@ -20,7 +20,6 @@ import {
     EMPTY_QUERY,
     isNativeFocusedIn,
     nonNegativeFiniteAssertion,
-    setNativeFocused,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -161,6 +160,7 @@ export class TuiRangeComponent
             target === this.elementRef.nativeElement
                 ? this.lastActiveThumb === 'right'
                 : target === rightThumbElement;
+        const activeThumbElement = isRightThumb ? rightThumbElement : leftThumbElement;
         const previousValue = isRightThumb ? this.value[1] : this.value[0];
         /** @bad TODO think about a solution without twice conversion */
         const previousFraction = this.getFractionFromValue(previousValue);
@@ -168,8 +168,8 @@ export class TuiRangeComponent
 
         this.processValue(this.getValueFromFraction(newFractionValue), isRightThumb);
 
-        if (rightThumbElement && leftThumbElement) {
-            setNativeFocused(isRightThumb ? rightThumbElement : leftThumbElement);
+        if (activeThumbElement) {
+            activeThumbElement.focus();
         }
     }
 
