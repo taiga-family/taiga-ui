@@ -1,4 +1,9 @@
-<tui-doc-page i18n-header header="Stepper" package="KIT" type="components">
+<tui-doc-page
+    i18n-header
+    header="Stepper"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Stepper makes visual step navigation</p>
 
@@ -11,7 +16,11 @@
             <tui-stepper-example-1></tui-stepper-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="vertical" heading="Vertical" [content]="example2">
+        <tui-doc-example
+            id="vertical"
+            heading="Vertical"
+            [content]="example2"
+        >
             <tui-stepper-example-2></tui-stepper-example-2>
         </tui-doc-example>
     </ng-template>
@@ -24,7 +33,11 @@
             >
                 <button tuiStep>Simple step</button>
                 <button tuiStep>Simple step</button>
-                <button tuiStep [state]="state" [icon]="icon">
+                <button
+                    tuiStep
+                    [state]="state"
+                    [icon]="icon"
+                >
                     Simple step
                 </button>
             </tui-stepper>

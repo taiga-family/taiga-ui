@@ -1,14 +1,29 @@
-<form class="b-form" [formGroup]="testForm">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
     <tui-notification i18n>
         Custom mode is set with
-        <a tuiLink routerLink="/directives/mode"><code>tuiMode</code></a>
+        <a
+            tuiLink
+            routerLink="/directives/mode"
+        >
+            <code>tuiMode</code>
+        </a>
         directive
     </tui-notification>
 
     <p>
-        <tui-input formControlName="testValue" [tuiTextfieldCleaner]="true">
+        <tui-input
+            formControlName="testValue"
+            [tuiTextfieldCleaner]="true"
+        >
             Type an email
-            <input tuiTextfield placeholder="mail@mail.ru" type="email" />
+            <input
+                tuiTextfield
+                placeholder="mail@mail.ru"
+                type="email"
+            />
         </tui-input>
     </p>
     <div>
@@ -19,7 +34,11 @@
                 [tuiTextfieldCleaner]="true"
             >
                 Type an email
-                <input tuiTextfield placeholder="mail@mail.ru" type="email" />
+                <input
+                    tuiTextfield
+                    placeholder="mail@mail.ru"
+                    type="email"
+                />
             </tui-input>
         </p>
     </div>
@@ -31,7 +50,11 @@
                 [tuiTextfieldCleaner]="true"
             >
                 Type an email
-                <input tuiTextfield placeholder="mail@mail.ru" type="email" />
+                <input
+                    tuiTextfield
+                    placeholder="mail@mail.ru"
+                    type="email"
+                />
             </tui-input>
         </p>
     </div>

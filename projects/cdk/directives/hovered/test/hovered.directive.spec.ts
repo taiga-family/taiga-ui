@@ -9,8 +9,14 @@ describe('TuiHovered directive', () => {
     @Component({
         template: `
             <div class="main">
-                <div class="hovered-1" (tuiHoveredChange)="hoveredChange(1)"></div>
-                <div class="hovered-2" (tuiHoveredChange)="hoveredChange(2)"></div>
+                <div
+                    class="hovered-1"
+                    (tuiHoveredChange)="hoveredChange(1)"
+                ></div>
+                <div
+                    class="hovered-2"
+                    (tuiHoveredChange)="hoveredChange(2)"
+                ></div>
             </div>
         `,
     })

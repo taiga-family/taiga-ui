@@ -10,7 +10,12 @@ describe('TuiDropdownContext directive', () => {
     @Component({
         template: `
             <tui-root>
-                <p id="root" [tuiDropdownContext]="ref">Some dumb text</p>
+                <p
+                    id="root"
+                    [tuiDropdownContext]="ref"
+                >
+                    Some dumb text
+                </p>
 
                 <ng-template #ref>
                     <p id="insideDropdown">Text inside dropdown</p>

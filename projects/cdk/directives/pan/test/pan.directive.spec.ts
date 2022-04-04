@@ -8,7 +8,10 @@ import {TuiPanModule} from '../pan.module';
 describe('TuiPan directive', () => {
     @Component({
         template: `
-            <div class="main" (tuiPan)="pan($event)"></div>
+            <div
+                class="main"
+                (tuiPan)="pan($event)"
+            ></div>
         `,
     })
     class TestComponent {

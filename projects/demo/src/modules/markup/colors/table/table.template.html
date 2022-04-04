@@ -1,5 +1,8 @@
 <ng-container *ngIf="theme$ | async"></ng-container>
-<tr *ngFor="let color of colors" class="color">
+<tr
+    *ngFor="let color of colors"
+    class="color"
+>
     <td>
         <h3 class="name">
             <tui-doc-copy
@@ -14,7 +17,10 @@
         <div>{{ color.desc }}</div>
     </td>
     <td>
-        <div class="demo" [style.background]="getValue(color.name)"></div>
+        <div
+            class="demo"
+            [style.background]="getValue(color.name)"
+        ></div>
     </td>
     <td>
         <div class="value">

@@ -9,7 +9,11 @@ import {TuiValidatorModule} from '../validator.module';
 describe('TuiValidator directive', () => {
     @Component({
         template: `
-            <input *ngIf="show" [formControl]="control" [tuiValidator]="validator" />
+            <input
+                *ngIf="show"
+                [formControl]="control"
+                [tuiValidator]="validator"
+            />
         `,
     })
     class TestComponent {

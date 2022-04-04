@@ -14,7 +14,11 @@ import {TuiSliderOldComponent} from '../slider-old.component';
 describe('Slider-old', () => {
     @Component({
         template: `
-            <tui-slider *ngIf="default" max="10" [formControl]="testValue"></tui-slider>
+            <tui-slider
+                *ngIf="default"
+                max="10"
+                [formControl]="testValue"
+            ></tui-slider>
             <tui-slider
                 *ngIf="!default"
                 [formControl]="testValue"

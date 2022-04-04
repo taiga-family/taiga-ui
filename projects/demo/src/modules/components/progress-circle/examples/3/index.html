@@ -1,4 +1,7 @@
-<label *ngIf="value$ | async as value" tuiProgressLabel>
+<label
+    *ngIf="value$ | async as value"
+    tuiProgressLabel
+>
     <span class="text">COMPLETED</span>
     <span class="percent">{{value}}%</span>
 

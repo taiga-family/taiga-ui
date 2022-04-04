@@ -1,7 +1,10 @@
 <span class="text">Your balance:</span>
 &nbsp;
 <tui-money [value]="value"></tui-money>
-<div tuiMode="onLight" class="controls tui-space_top-3">
+<div
+    tuiMode="onLight"
+    class="controls tui-space_top-3"
+>
     <button
         tuiButton
         type="button"
@@ -12,7 +15,12 @@
     >
         Submit
     </button>
-    <button tuiLink type="button" [pseudo]="true" (click)="increaseBalance()">
+    <button
+        tuiLink
+        type="button"
+        [pseudo]="true"
+        (click)="increaseBalance()"
+    >
         Increase
     </button>
 </div>

@@ -39,7 +39,10 @@
             [itemContent]="content"
         ></tui-data-list-wrapper>
     </tui-combo-box>
-    <tui-combo-box [formControl]="testValue" [valueContent]="content">
+    <tui-combo-box
+        [formControl]="testValue"
+        [valueContent]="content"
+    >
         Choose a developer
         <input
             tuiTextfield
@@ -54,7 +57,10 @@
     </tui-combo-box>
 </form>
 
-<ng-template #content let-data>
+<ng-template
+    #content
+    let-data
+>
     <div class="template">
         <tui-avatar
             size="xs"

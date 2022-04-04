@@ -9,7 +9,10 @@ import {TuiSwipeModule} from '../swipe.module';
 describe('TuiSwipe directive', () => {
     @Component({
         template: `
-            <div class="main" (tuiSwipe)="onSwipe($event)"></div>
+            <div
+                class="main"
+                (tuiSwipe)="onSwipe($event)"
+            ></div>
         `,
     })
     class TestComponent {

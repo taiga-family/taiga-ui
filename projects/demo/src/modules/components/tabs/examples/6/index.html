@@ -1,6 +1,11 @@
 <tui-tabs [(activeItemIndex)]="activeItemIndex">
     <ng-container *ngFor="let step of steps; let last = last">
-        <button tuiTab class="step" [disabled]="last" (click)="onClick(step)">
+        <button
+            tuiTab
+            class="step"
+            [disabled]="last"
+            (click)="onClick(step)"
+        >
             {{step}}
         </button>
         <tui-svg

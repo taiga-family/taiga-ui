@@ -15,7 +15,10 @@
 </ng-template>
 
 <ng-template #fileInfoTemplate>
-    <div class="preview" [class.preview_big]="isBig">
+    <div
+        class="preview"
+        [class.preview_big]="isBig"
+    >
         <img
             *ngIf="preview && (fileTexts$ | async) as texts; else loader"
             automation-id="tui-file__preview"
@@ -43,8 +46,18 @@
     </div>
     <div class="wrapper">
         <div class="text">
-            <div automation-id="tui-file__name" class="name">{{ name }}</div>
-            <div automation-id="tui-file__type" class="type">{{ type }}</div>
+            <div
+                automation-id="tui-file__name"
+                class="name"
+            >
+                {{ name }}
+            </div>
+            <div
+                automation-id="tui-file__type"
+                class="type"
+            >
+                {{ type }}
+            </div>
             <div
                 *ngIf="showSize && (fileSize$ | async) as fileSize"
                 automation-id="tui-file__size"

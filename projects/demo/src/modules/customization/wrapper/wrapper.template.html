@@ -1,4 +1,7 @@
-<tui-doc-page i18n-header header="Wrapper">
+<tui-doc-page
+    i18n-header
+    header="Wrapper"
+>
     <p i18n>
         Many Taiga UI components use
         <code>tui-wrapper</code>
@@ -18,7 +21,10 @@
     </p>
     <ul>
         <li *ngFor="let item of mixins">
-            <tui-doc-copy class="var" [cdkCopyToClipboard]="item">
+            <tui-doc-copy
+                class="var"
+                [cdkCopyToClipboard]="item"
+            >
                 <code>{{ item }}</code>
             </tui-doc-copy>
         </li>
@@ -29,7 +35,12 @@
         /
         <code>[data-mode='onLight']</code>
         selectors to account for
-        <a tuiLink routerLink="/directives/mode">Mode</a>
+        <a
+            tuiLink
+            routerLink="/directives/mode"
+        >
+            Mode
+        </a>
     </p>
 
     <tui-doc-example

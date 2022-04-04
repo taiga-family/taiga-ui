@@ -1,12 +1,25 @@
-<input type="text" [(ngModel)]="value" />
+<input
+    type="text"
+    [(ngModel)]="value"
+/>
 
-<label [tuiDropdownContent]="dropdownContent" [tuiDropdown]="open">
-    <input type="checkbox" [(ngModel)]="open" />
+<label
+    [tuiDropdownContent]="dropdownContent"
+    [tuiDropdown]="open"
+>
+    <input
+        type="checkbox"
+        [(ngModel)]="open"
+    />
     open
 </label>
 
 <ng-template #dropdownContent>
-    <input type="text" class="dropdown" [(ngModel)]="value" />
+    <input
+        type="text"
+        class="dropdown"
+        [(ngModel)]="value"
+    />
     <ng-container *ngIf="showBigText">
         <p id="aaa">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab

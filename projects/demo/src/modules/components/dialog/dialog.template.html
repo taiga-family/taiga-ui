@@ -1,14 +1,25 @@
-<tui-doc-page header="Dialog" package="CORE">
+<tui-doc-page
+    header="Dialog"
+    package="CORE"
+>
     <ng-template pageTab>
         <p i18n>Optional built-in implementation of Taiga UI modals</p>
 
         <p i18n>
             If you want custom dialogs see
-            <a tuiLink routerLink="/dialogs">this link</a>
+            <a
+                tuiLink
+                routerLink="/dialogs"
+            >
+                this link
+            </a>
             on creating your own implementation
         </p>
 
-        <tui-notification i18n class="tui-space_vertical-4">
+        <tui-notification
+            i18n
+            class="tui-space_vertical-4"
+        >
             Use
             <code><strong>TUI_DIALOGS_CLOSE</strong></code>
             token if you need to close dialog with from a stream. For example,
@@ -16,7 +27,10 @@
             <p><tui-doc-code [code]="dialogsCloseToken"></tui-doc-code></p>
         </tui-notification>
 
-        <tui-notification status="warning" class="tui-space_vertical-4">
+        <tui-notification
+            status="warning"
+            class="tui-space_vertical-4"
+        >
             Do not forget to add
             <code><strong>TuiDialogModule</strong></code>
             into your app.module to use dialogs (See also "Setup" for details)
@@ -96,8 +110,18 @@
             let-data="data"
             let-completeWith="completeWith"
         >
-            <h2 i18n [class.big]="size === 'xl'">I am an example of dialog</h2>
-            <h2 *ngIf="size === 'xl'" i18n>Template can be customized</h2>
+            <h2
+                i18n
+                [class.big]="size === 'xl'"
+            >
+                I am an example of dialog
+            </h2>
+            <h2
+                *ngIf="size === 'xl'"
+                i18n
+            >
+                Template can be customized
+            </h2>
             <p i18n>
                 Dialog has
                 <code>Observer</code>
@@ -162,7 +186,10 @@
                 Say "Hi and bye!"
             </button>
         </ng-template>
-        <div i18n class="b-full-width">
+        <div
+            i18n
+            class="b-full-width"
+        >
             <p>
                 To show a dialog, use method
                 <tui-doc-code [code]="method"></tui-doc-code>
@@ -310,7 +337,11 @@
 
             <li i18n>
                 You can also use a
-                <a routerLink="/dialogs" fragment="example-template" tuiLink>
+                <a
+                    routerLink="/dialogs"
+                    fragment="example-template"
+                    tuiLink
+                >
                     template
                 </a>
             </li>
@@ -368,7 +399,10 @@
         </ol>
     </ng-template>
 
-    <ng-template i18n-pageTab pageTab="Your own dialogs">
+    <ng-template
+        i18n-pageTab
+        pageTab="Your own dialogs"
+    >
         <p i18n>
             You can create your own dialogs. For example, special dialogs for
             mobile apps or with very customizable appearance.
@@ -386,7 +420,12 @@
 
         <p i18n>
             See example of custom dialog
-            <a tuiLink routerLink="/dialogs">here</a>
+            <a
+                tuiLink
+                routerLink="/dialogs"
+            >
+                here
+            </a>
             .
         </p>
     </ng-template>

@@ -10,7 +10,11 @@ import {TuiBadgeModule} from '../badge.module';
 describe('Badge', () => {
     @Component({
         template: `
-            <tui-badge [size]="size" [status]="status" [value]="value"></tui-badge>
+            <tui-badge
+                [size]="size"
+                [status]="status"
+                [value]="value"
+            ></tui-badge>
         `,
     })
     class TestComponent {

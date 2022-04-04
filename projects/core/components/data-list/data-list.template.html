@@ -1,4 +1,8 @@
-<div tabindex="0" class="trap" (focusin)="onFocus($event.target, true)"></div>
+<div
+    tabindex="0"
+    class="trap"
+    (focusin)="onFocus($event.target, true)"
+></div>
 <ng-content></ng-content>
 <div
     *ngIf="empty$ | async"
@@ -6,4 +10,8 @@
     class="empty"
     [content]="emptyContent || (defaultEmptyContent$ | async)"
 ></div>
-<div tabindex="0" class="trap" (focusin)="onFocus($event.target, false)"></div>
+<div
+    tabindex="0"
+    class="trap"
+    (focusin)="onFocus($event.target, false)"
+></div>

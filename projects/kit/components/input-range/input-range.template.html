@@ -15,7 +15,10 @@
         <ng-content></ng-content>
     </span>
     <div class="t-content">
-        <span *ngIf="!showMinLabel" class="t-label">
+        <span
+            *ngIf="!showMinLabel"
+            class="t-label"
+        >
             <span class="t-value">{{ inputValueLeft }}</span>
             <span
                 *ngIf="pluralizeMap"
@@ -41,7 +44,10 @@
         </span>
     </div>
 
-    <div class="t-native-wrapper" (tuiHoveredChange)="onHovered($event)">
+    <div
+        class="t-native-wrapper"
+        (tuiHoveredChange)="onHovered($event)"
+    >
         <input
             #nativeLeft
             automation-id="tui-input-range__native-left"

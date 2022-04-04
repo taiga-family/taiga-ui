@@ -1,15 +1,31 @@
-<tui-doc-page i18n-header header="Dropdown" package="CORE" type="directives">
+<tui-doc-page
+    i18n-header
+    header="Dropdown"
+    package="CORE"
+    type="directives"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <code>tuiDropdown</code>
             shows a dropdown with custom template. Use
-            <a tuiLink [routerLink]="['/directives/active-zone']">ActiveZone</a>
+            <a
+                tuiLink
+                [routerLink]="['/directives/active-zone']"
+            >
+                ActiveZone
+            </a>
             directive to hide dropdown.
         </div>
 
         <p i18n>
             See also
-            <a tuiLink [routerLink]="['/components/hosted-dropdown']">
+            <a
+                tuiLink
+                [routerLink]="['/components/hosted-dropdown']"
+            >
                 HostedDropdown
             </a>
         </p>
@@ -66,10 +82,18 @@
                     </i>
                 </button>
                 <ng-template #dropdownContent>
-                    <div i18n class="dropdown">
+                    <div
+                        i18n
+                        class="dropdown"
+                    >
                         Here can be any content
                         <p>You can even insert other components:</p>
-                        <button tuiButton type="button">Do not touch!</button>
+                        <button
+                            tuiButton
+                            type="button"
+                        >
+                            Do not touch!
+                        </button>
                         <p>Everything you want... *</p>
                         <sub>* except cases of Worldwide rights violation</sub>
                     </div>

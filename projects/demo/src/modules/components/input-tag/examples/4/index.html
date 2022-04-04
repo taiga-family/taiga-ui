@@ -10,7 +10,11 @@
     Try it
     <ng-container *ngIf="filtered.length">
         <tui-data-list *tuiDataList>
-            <button *ngFor="let item of filtered" tuiOption [value]="item">
+            <button
+                *ngFor="let item of filtered"
+                tuiOption
+                [value]="item"
+            >
                 {{item}}
             </button>
         </tui-data-list>

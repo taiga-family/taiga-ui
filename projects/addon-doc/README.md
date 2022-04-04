@@ -137,12 +137,20 @@ npm i @taiga-ui/addon-doc
    _Template:_
 
    ```html
-   <tui-doc-page header="Super" package="SUPER-PACKAGE" deprecated>
+   <tui-doc-page
+     header="Super"
+     package="SUPER-PACKAGE"
+     deprecated
+   >
      <ng-template pageTab>
        <!-- default tab name would be used -->
        This would be the content of a first tab
 
-       <tui-doc-example id="basic-example" heading="Example of usage" [content]="example">
+       <tui-doc-example
+         id="basic-example"
+         heading="Example of usage"
+         [content]="example"
+       >
          <example-1></example-1>
        </tui-doc-example>
      </ng-template>

@@ -13,7 +13,10 @@ describe('TuiFocused directive', () => {
                 class="main"
                 (tuiFocusedChange)="onFocusedChange($event)"
             ></div>
-            <div tabindex="0" class="other"></div>
+            <div
+                tabindex="0"
+                class="other"
+            ></div>
         `,
     })
     class TestComponent {

@@ -35,7 +35,10 @@
             [tuiFocusable]="isMoreFocusable"
             (keydown.arrowLeft.prevent)="onArrowLeft()"
         >
-            <span polymorpheus-outlet [content]="moreContent || more"></span>
+            <span
+                polymorpheus-outlet
+                [content]="moreContent || more"
+            ></span>
         </button>
         <ng-template #more>
             {{ moreWord$ | async }}
@@ -64,5 +67,8 @@
             </div>
         </div>
     </ng-template>
-    <tui-underline *ngIf="underline" [element]="activeElement"></tui-underline>
+    <tui-underline
+        *ngIf="underline"
+        [element]="activeElement"
+    ></tui-underline>
 </div>

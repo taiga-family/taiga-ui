@@ -6,7 +6,11 @@
     [context]="context"
 ></header>
 <div class="t-content">
-    <h2 class="t-heading" [id]="context.id" [textContent]="context.label"></h2>
+    <h2
+        class="t-heading"
+        [id]="context.id"
+        [textContent]="context.label"
+    ></h2>
     <section
         polymorpheus-outlet
         [context]="context"
@@ -26,7 +30,10 @@
         </ng-template>
     </section>
 </div>
-<div *ngIf="context.closeable" class="t-wrapper">
+<div
+    *ngIf="context.closeable"
+    class="t-wrapper"
+>
     <button
         tuiIconButton
         tuiPreventDefault="mousedown"

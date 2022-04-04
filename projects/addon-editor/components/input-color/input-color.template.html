@@ -1,4 +1,8 @@
-<tui-hosted-dropdown class="t-wrapper" [content]="picker" [(open)]="open">
+<tui-hosted-dropdown
+    class="t-wrapper"
+    [content]="picker"
+    [(open)]="open"
+>
     <tui-primitive-textfield
         iconAlign="left"
         tuiTextfieldAutocomplete="off"
@@ -23,10 +27,17 @@
 </tui-hosted-dropdown>
 
 <ng-template #color>
-    <div class="t-color" [style.background]="background"></div>
+    <div
+        class="t-color"
+        [style.background]="background"
+    ></div>
 </ng-template>
 
-<ng-template #picker="polymorpheus" polymorpheus let-activeZone>
+<ng-template
+    #picker="polymorpheus"
+    polymorpheus
+    let-activeZone
+>
     <tui-color-selector
         [tuiActiveZoneParent]="activeZone"
         [colors]="colors"

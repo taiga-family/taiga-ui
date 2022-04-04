@@ -5,7 +5,12 @@
         [ngTemplateOutlet]="headings[key.toString()]?.template || plain"
     >
         <ng-template #plain>
-            <th *ngIf="!th && !heads.length" tuiTh>{{ key.toString() }}</th>
+            <th
+                *ngIf="!th && !heads.length"
+                tuiTh
+            >
+                {{ key.toString() }}
+            </th>
         </ng-template>
     </ng-container>
 </ng-container>

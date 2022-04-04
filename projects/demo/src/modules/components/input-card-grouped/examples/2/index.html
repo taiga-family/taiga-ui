@@ -1,7 +1,20 @@
-<tui-input-card-grouped #component [formControl]="control">
-    <tui-data-list *tuiDataList (keydown.escape)="onEsc(component)">
-        <button tuiOption size="l" (click)="onClick(component)">
-            <tui-svg src="tuiIconPlus" class="new"></tui-svg>
+<tui-input-card-grouped
+    #component
+    [formControl]="control"
+>
+    <tui-data-list
+        *tuiDataList
+        (keydown.escape)="onEsc(component)"
+    >
+        <button
+            tuiOption
+            size="l"
+            (click)="onClick(component)"
+        >
+            <tui-svg
+                src="tuiIconPlus"
+                class="new"
+            ></tui-svg>
             <span class="label">New card</span>
         </button>
         <button
@@ -15,7 +28,11 @@
                 class="card"
                 [cardNumber]="item.card.slice(-4)"
             ></tui-card>
-            <label tuiLabel class="label" [label]="item.bank">
+            <label
+                tuiLabel
+                class="label"
+                [label]="item.bank"
+            >
                 {{item.name}}
             </label>
             <span>{{item.card.slice(-5)}}</span>

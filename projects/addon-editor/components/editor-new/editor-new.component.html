@@ -29,7 +29,10 @@
             >
                 <ng-content></ng-content>
             </div>
-            <div *ngIf="hasExampleText" class="t-example-text">
+            <div
+                *ngIf="hasExampleText"
+                class="t-example-text"
+            >
                 {{ exampleText }}
             </div>
         </div>

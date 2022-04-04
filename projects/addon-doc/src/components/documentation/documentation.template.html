@@ -1,10 +1,18 @@
-<h1 *ngIf="heading" class="t-heading">{{ heading }}</h1>
+<h1
+    *ngIf="heading"
+    class="t-heading"
+>
+    {{ heading }}
+</h1>
 <ng-content></ng-content>
 <table class="t-table">
     <tr class="t-row t-row_header">
         <th class="t-th t-cell t-cell_prop">{{ texts[2] }}</th>
         <th class="t-th">{{ type }}</th>
-        <th *ngIf="showValues && !isAPI" class="t-th t-cell t-cell_value">
+        <th
+            *ngIf="showValues && !isAPI"
+            class="t-th t-cell t-cell_value"
+        >
             {{ texts[3] }}
         </th>
     </tr>
@@ -57,7 +65,10 @@
                 </tui-tooltip>
             </span>
         </td>
-        <td *ngIf="showValues" class="t-cell">
+        <td
+            *ngIf="showValues"
+            class="t-cell"
+        >
             <ng-container
                 *ngIf="propertyConnector.shouldShowValues; else elseEmitter"
             >
@@ -79,7 +90,10 @@
                         [itemContent]="selectContent"
                     ></tui-data-list-wrapper>
                 </tui-select>
-                <ng-template #selectContent let-data>
+                <ng-template
+                    #selectContent
+                    let-data
+                >
                     <code>{{ inspectAny(data) }}</code>
                 </ng-template>
 
@@ -106,7 +120,10 @@
                             (valueChange)="propertyConnector.onValueChange($event)"
                         ></tui-primitive-textfield>
 
-                        <div *ngSwitchCase="'color'" tuiGroup>
+                        <div
+                            *ngSwitchCase="'color'"
+                            tuiGroup
+                        >
                             <tui-primitive-textfield
                                 tuiTextfieldType="color"
                                 tuiTextfieldSize="m"

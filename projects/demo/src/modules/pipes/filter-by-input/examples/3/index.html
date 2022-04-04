@@ -1,5 +1,11 @@
-<form class="b-form" [formGroup]="form">
-    <tui-combo-box formControlName="user" [stringify]="stringify">
+<form
+    class="b-form"
+    [formGroup]="form"
+>
+    <tui-combo-box
+        formControlName="user"
+        [stringify]="stringify"
+    >
         User
         <tui-data-list *tuiDataList>
             <button

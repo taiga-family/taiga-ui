@@ -8,7 +8,12 @@
     >
         Show/hide skeleton
     </button>
-    <button tuiButton type="button" size="xs" (click)="toggleLight()">
+    <button
+        tuiButton
+        type="button"
+        size="xs"
+        (click)="toggleLight()"
+    >
         Light mode
     </button>
 </p>
@@ -20,7 +25,11 @@
 >
     <div class="tui-row">
         <div class="tui-col_md-4 tui-col_stretch">
-            <tui-island size="l" class="island" [transparent]="true">
+            <tui-island
+                size="l"
+                class="island"
+                [transparent]="true"
+            >
                 <div class="tui-island__content">
                     <div class="tui-island__figure">
                         <form [formGroup]="testForm">

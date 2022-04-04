@@ -27,7 +27,10 @@
         (focusedChange)="onFocused($event)"
     >
         <ng-content></ng-content>
-        <ng-content select="input" ngProjectAs="input"></ng-content>
+        <ng-content
+            select="input"
+            ngProjectAs="input"
+        ></ng-content>
     </tui-primitive-textfield>
 
     <ng-template #mobileIconContent>
@@ -46,7 +49,10 @@
         ></tui-svg>
     </ng-template>
 
-    <ng-template #dropdown="polymorpheus" [polymorpheus]="type">
+    <ng-template
+        #dropdown="polymorpheus"
+        [polymorpheus]="type"
+    >
         <tui-calendar
             tuiPreventDefault="mousedown"
             automation-id="tui-input-date__calendar"
@@ -64,7 +70,11 @@
             tuiPreventDefault="mousedown"
             class="button"
         >
-            <button tuiLink type="button" (click)="onDayClick(items[0].day)">
+            <button
+                tuiLink
+                type="button"
+                (click)="onDayClick(items[0].day)"
+            >
                 {{ items[0] }}
             </button>
         </div>

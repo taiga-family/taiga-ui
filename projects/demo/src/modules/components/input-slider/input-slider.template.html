@@ -1,14 +1,26 @@
-<tui-doc-page header="InputSlider" package="KIT" type="components">
+<tui-doc-page
+    header="InputSlider"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>Component to input a limited range</p>
 
         <p i18n>
             Number formatting can be customized by using
-            <a tuiLink routerLink="/utils/tokens">TUI_NUMBER_FORMAT</a>
+            <a
+                tuiLink
+                routerLink="/utils/tokens"
+            >
+                TUI_NUMBER_FORMAT
+            </a>
         </p>
 
         <tui-notification status="warning">
-            <p i18n class="tui-space_top-0">
+            <p
+                i18n
+                class="tui-space_top-0"
+            >
                 This component is being refactored.
                 Soon&nbsp;(next&nbsp;major&nbsp;release) you will see the fresh
                 version of it!
@@ -57,7 +69,10 @@
             heading="With slider segments + ticks labels"
             [content]="example2"
         >
-            <tui-notification i18n class="tui-space_bottom-8">
+            <tui-notification
+                i18n
+                class="tui-space_bottom-8"
+            >
                 Use mixin
                 <code>tui-slider-ticks-labels</code>
                 to arrange ticks' labels (it places them strictly below ticks).
@@ -71,7 +86,10 @@
             heading="KeySteps"
             [content]="example3"
         >
-            <dl i18n class="tui-space_bottom-8 tui-space_top-0">
+            <dl
+                i18n
+                class="tui-space_bottom-8 tui-space_top-0"
+            >
                 <dt><strong>Key steps</strong></dt>
                 <dd>
                     anchor points of non-uniform format between value and

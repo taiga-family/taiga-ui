@@ -16,8 +16,17 @@
     (keydown)="onKeyDown($event.key, input.nativeFocusableElement)"
 >
     <tui-opt-group *ngIf="!value">
-        <button tuiOption [value]="all">All</button>
-        <button *ngFor="let item of items" tuiOption [value]="item.items">
+        <button
+            tuiOption
+            [value]="all"
+        >
+            All
+        </button>
+        <button
+            *ngFor="let item of items"
+            tuiOption
+            [value]="item.items"
+        >
             {{ item.name }} only
         </button>
     </tui-opt-group>
@@ -26,8 +35,15 @@
             *tuiLet="item.items | tuiFilter: filter:value as filtered"
             [label]="item.name"
         >
-            <tui-opt-group *ngIf="filtered.length" tuiMultiSelectGroup>
-                <button *ngFor="let item of filtered" tuiOption [value]="item">
+            <tui-opt-group
+                *ngIf="filtered.length"
+                tuiMultiSelectGroup
+            >
+                <button
+                    *ngFor="let item of filtered"
+                    tuiOption
+                    [value]="item"
+                >
                     {{ item }}
                 </button>
             </tui-opt-group>

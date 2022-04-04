@@ -1,5 +1,8 @@
 <form [formGroup]="testForm">
-    <tui-input-number formControlName="testValue" [postfix]="826 | tuiCurrency">
+    <tui-input-number
+        formControlName="testValue"
+        [postfix]="826 | tuiCurrency"
+    >
         Type a sum
     </tui-input-number>
 </form>

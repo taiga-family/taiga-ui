@@ -1,4 +1,7 @@
-<h2 class="header" [class.header_empty]="!heading">
+<h2
+    class="header"
+    [class.header_empty]="!heading"
+>
     <tui-input-inline
         *ngIf="editing else text"
         tuiAutoFocus

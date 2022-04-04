@@ -1,11 +1,20 @@
 <button class="t-prevent-parent-label-behavior">
     <!-- @note: this is a html huck to avoid autofocus, if the parent element is a label  -->
 </button>
-<div [tuiFocusable]="focusable" (focus)="onTopFocus()"></div>
-<div [tuiFocusable]="focusable" (focus)="onBottomFocus()"></div>
+<div
+    [tuiFocusable]="focusable"
+    (focus)="onTopFocus()"
+></div>
+<div
+    [tuiFocusable]="focusable"
+    (focus)="onBottomFocus()"
+></div>
 <!--TODO: i18n-->
 <ng-container *ngIf="texts$ | async as texts">
-    <div *ngIf="enabled(TuiEditorTool.Undo)" class="t-block">
+    <div
+        *ngIf="enabled(TuiEditorTool.Undo)"
+        class="t-block"
+    >
         <button
             #button
             #undoBtn
@@ -45,8 +54,15 @@
             (click)="redo()"
         ></button>
     </div>
-    <div *ngIf="enabled(TuiEditorTool.Size)" class="t-block">
-        <tui-hosted-dropdown #fonts class="t-wrapper" [content]="fontsDropdown">
+    <div
+        *ngIf="enabled(TuiEditorTool.Size)"
+        class="t-block"
+    >
+        <tui-hosted-dropdown
+            #fonts
+            class="t-wrapper"
+            [content]="fontsDropdown"
+        >
             <button
                 #button
                 #fontsBtn
@@ -80,7 +96,10 @@
             </ng-template>
         </tui-hosted-dropdown>
     </div>
-    <div *ngIf="firstBigBlockEnabled" class="t-block">
+    <div
+        *ngIf="firstBigBlockEnabled"
+        class="t-block"
+    >
         <!-- @bad TODO: Keyboard navigation-->
         <tui-hosted-dropdown
             *ngIf="formatEnabled"
@@ -107,7 +126,10 @@
                 (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
             <ng-template #formatDropdown>
-                <div #dropdown class="t-dropdown">
+                <div
+                    #dropdown
+                    class="t-dropdown"
+                >
                     <button
                         *ngIf="enabled(TuiEditorTool.Bold)"
                         tuiIconButton
@@ -185,7 +207,10 @@
                 (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
             <ng-template #alignDropdown>
-                <div #dropdown class="t-dropdown">
+                <div
+                    #dropdown
+                    class="t-dropdown"
+                >
                     <button
                         tuiIconButton
                         type="button"
@@ -255,7 +280,10 @@
                 (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
             <ng-template #listDropdown>
-                <div #dropdown class="t-dropdown">
+                <div
+                    #dropdown
+                    class="t-dropdown"
+                >
                     <button
                         tuiIconButton
                         type="button"
@@ -454,8 +482,14 @@
                 (keydown.arrowLeft.prevent)="onArrowLeft()"
                 (keydown.arrowRight.prevent)="onArrowRight()"
             ></button>
-            <div class="t-plate" [style.background]="foreColor"></div>
-            <ng-template #colorDropdown let-activeZone>
+            <div
+                class="t-plate"
+                [style.background]="foreColor"
+            ></div>
+            <ng-template
+                #colorDropdown
+                let-activeZone
+            >
                 <tui-color-selector
                     class="t-color-picker"
                     [tuiActiveZoneParent]="activeZone"
@@ -496,7 +530,10 @@
                 class="t-plate"
                 [style.background]="hiliteColor"
             ></div>
-            <ng-template #hiliteDropdown let-activeZone>
+            <ng-template
+                #hiliteDropdown
+                let-activeZone
+            >
                 <tui-color-selector
                     class="t-color-picker"
                     [tuiActiveZoneParent]="activeZone"
@@ -507,7 +544,10 @@
             </ng-template>
         </tui-hosted-dropdown>
     </div>
-    <div *ngIf="secondBigBlockEnabled" class="t-block">
+    <div
+        *ngIf="secondBigBlockEnabled"
+        class="t-block"
+    >
         <tui-hosted-dropdown
             *ngIf="enabled(TuiEditorTool.Code)"
             #codes
@@ -563,7 +603,10 @@
             (keydown.arrowRight.prevent)="onArrowRight()"
             (click)="onTeX()"
         ></button>
-        <div *ngIf="enabled(TuiEditorTool.Img)" class="t-wrapper">
+        <div
+            *ngIf="enabled(TuiEditorTool.Img)"
+            class="t-wrapper"
+        >
             <input
                 #image
                 type="file"
@@ -610,7 +653,10 @@
             (click)="insertHorizontalRule()"
         ></button>
     </div>
-    <div *ngIf="enabled(TuiEditorTool.Clear)" class="t-block">
+    <div
+        *ngIf="enabled(TuiEditorTool.Clear)"
+        class="t-block"
+    >
         <button
             #button
             #clearBtn

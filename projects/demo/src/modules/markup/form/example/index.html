@@ -2,9 +2,24 @@
     <div class="stepper">
         <tui-stepper [activeItemIndex]="0">
             <button tuiStep>First step</button>
-            <button tuiStep [disabled]="true">Second step</button>
-            <button tuiStep [disabled]="true">Third step</button>
-            <button tuiStep [disabled]="true">Fourth step</button>
+            <button
+                tuiStep
+                [disabled]="true"
+            >
+                Second step
+            </button>
+            <button
+                tuiStep
+                [disabled]="true"
+            >
+                Third step
+            </button>
+            <button
+                tuiStep
+                [disabled]="true"
+            >
+                Fourth step
+            </button>
         </tui-stepper>
     </div>
     <form [formGroup]="testForm">
@@ -87,7 +102,10 @@
                                 [items]="persons"
                             ></tui-data-list-wrapper>
                         </tui-select>
-                        <ng-template #personValueContent let-data>
+                        <ng-template
+                            #personValueContent
+                            let-data
+                        >
                             <div class="uppercase-name">
                                 {{data.firstName}} {{data.lastName}}
                             </div>
@@ -184,7 +202,10 @@
                     Header
                 </h3>
                 <div class="tui-form__row">
-                    <label tuiLabel label="From">
+                    <label
+                        tuiLabel
+                        label="From"
+                    >
                         <tui-select
                             formControlName="accountWherefrom"
                             class="accounts-select"
@@ -201,7 +222,10 @@
                     </label>
                 </div>
                 <div class="tui-form__row">
-                    <label tuiLabel label="To">
+                    <label
+                        tuiLabel
+                        label="To"
+                    >
                         <tui-select
                             formControlName="accountWhere"
                             class="accounts-select"
@@ -256,7 +280,10 @@
                 </div>
             </div>
         </div>
-        <ng-template #accountContent let-account>
+        <ng-template
+            #accountContent
+            let-account
+        >
             <span class="account">
                 {{account.name}}
                 <tui-money [value]="account.amount"></tui-money>

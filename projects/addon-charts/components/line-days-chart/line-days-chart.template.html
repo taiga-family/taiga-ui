@@ -13,7 +13,10 @@
     [yStringify]="yStringify"
     [xStringify]="xStringify ? daysStringify : null"
 ></tui-line-chart>
-<ng-template #hint let-point>
+<ng-template
+    #hint
+    let-point
+>
     <div
         polymorpheus-outlet
         [content]="hintContent"

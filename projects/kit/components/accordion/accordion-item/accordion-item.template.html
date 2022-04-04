@@ -16,7 +16,10 @@
         (tuiHoveredChange)="onHovered($event)"
         (click)="onRowToggle()"
     >
-        <div automation-id="tui-accordion__item-title" class="title">
+        <div
+            automation-id="tui-accordion__item-title"
+            class="title"
+        >
             <ng-content></ng-content>
         </div>
         <tui-svg
@@ -27,8 +30,14 @@
             [class.icon_open]="open"
         ></tui-svg>
     </div>
-    <tui-expand [async]="async" [expanded]="open">
-        <div *ngIf="eagerContent" class="content">
+    <tui-expand
+        [async]="async"
+        [expanded]="open"
+    >
+        <div
+            *ngIf="eagerContent"
+            class="content"
+        >
             <ng-content select="[tuiAccordionItemContent]"></ng-content>
         </div>
         <ng-template tuiExpandContent>

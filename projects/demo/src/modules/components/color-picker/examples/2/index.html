@@ -14,7 +14,10 @@
         Color me Kubrick
     </button>
 </tui-hosted-dropdown>
-<ng-template #picker let-activeZone>
+<ng-template
+    #picker
+    let-activeZone
+>
     <tui-color-selector
         [tuiActiveZoneParent]="activeZone"
         [(color)]="color"

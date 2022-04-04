@@ -26,7 +26,10 @@
         class="t-plate"
         [style.background]="selectedColor"
     ></div>
-    <ng-template #hiliteDropdown let-activeZone>
+    <ng-template
+        #hiliteDropdown
+        let-activeZone
+    >
         <tui-palette
             class="t-color-picker"
             [tuiActiveZoneParent]="activeZone"

@@ -10,8 +10,15 @@ import {TuiInputCVCModule} from '../input-CVC.module';
 describe('InputCVC', () => {
     @Component({
         template: `
-            <tui-input-cvc #default [formControl]="control"></tui-input-cvc>
-            <tui-input-cvc #custom [formControl]="control" [length]="4"></tui-input-cvc>
+            <tui-input-cvc
+                #default
+                [formControl]="control"
+            ></tui-input-cvc>
+            <tui-input-cvc
+                #custom
+                [formControl]="control"
+                [length]="4"
+            ></tui-input-cvc>
         `,
     })
     class TestComponent {

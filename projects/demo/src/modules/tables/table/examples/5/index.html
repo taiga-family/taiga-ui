@@ -7,7 +7,10 @@
         [maxBufferPx]="500"
         [minBufferPx]="400"
     >
-        <table tuiTable [columns]="columns">
+        <table
+            tuiTable
+            [columns]="columns"
+        >
             <thead>
                 <tr tuiThGroup>
                     <th
@@ -38,10 +41,28 @@
                 </tr>
             </thead>
             <tbody tuiTbody>
-                <tr *cdkVirtualFor="let item of data | tuiTableSort" tuiTr>
-                    <td *tuiCell="'name'" tuiTd>{{item.name}}</td>
-                    <td *tuiCell="'dob'" tuiTd>{{item.dob}}</td>
-                    <td *tuiCell="'age'" tuiTd>{{getAge(item)}}</td>
+                <tr
+                    *cdkVirtualFor="let item of data | tuiTableSort"
+                    tuiTr
+                >
+                    <td
+                        *tuiCell="'name'"
+                        tuiTd
+                    >
+                        {{item.name}}
+                    </td>
+                    <td
+                        *tuiCell="'dob'"
+                        tuiTd
+                    >
+                        {{item.dob}}
+                    </td>
+                    <td
+                        *tuiCell="'age'"
+                        tuiTd
+                    >
+                        {{getAge(item)}}
+                    </td>
                 </tr>
             </tbody>
         </table>

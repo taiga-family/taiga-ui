@@ -6,8 +6,14 @@
     [(search)]="search"
 >
     Find the best employees
-    <input tuiTextfield placeholder="Type a name" />
-    <ng-template #value let-item>
+    <input
+        tuiTextfield
+        placeholder="Type a name"
+    />
+    <ng-template
+        #value
+        let-item
+    >
         <tui-avatar
             size="xs"
             class="avatar"

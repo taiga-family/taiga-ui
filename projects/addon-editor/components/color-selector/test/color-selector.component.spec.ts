@@ -7,7 +7,10 @@ import {TuiColorSelectorModule} from '../color-selector.module';
 
 @Component({
     template: `
-        <tui-color-selector [colors]="colors" [(color)]="color"></tui-color-selector>
+        <tui-color-selector
+            [colors]="colors"
+            [(color)]="color"
+        ></tui-color-selector>
     `,
 })
 class TestComponent {

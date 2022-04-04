@@ -1,4 +1,7 @@
-<div class="content" (tuiActiveZoneChange)="onActiveZone($event)">
+<div
+    class="content"
+    (tuiActiveZoneChange)="onActiveZone($event)"
+>
     <ng-container *ngIf="sizeM;  else smallButtons">
         <ng-container *ngIf="texts$ | async as texts">
             <button
@@ -75,6 +78,9 @@
         ></button>
     </ng-template>
     <ng-template #dotsTemplate>
-        <div automation-id="tui-pagination__element" class="dots"></div>
+        <div
+            automation-id="tui-pagination__element"
+            class="dots"
+        ></div>
     </ng-template>
 </div>

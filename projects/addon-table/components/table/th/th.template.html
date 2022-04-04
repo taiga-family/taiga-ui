@@ -14,4 +14,8 @@
     ></tui-svg>
 </button>
 <ng-template #content><ng-content></ng-content></ng-template>
-<div *ngIf="resizable" class="t-bar" (tuiResized)="onResized($event)"></div>
+<div
+    *ngIf="resizable"
+    class="t-bar"
+    (tuiResized)="onResized($event)"
+></div>

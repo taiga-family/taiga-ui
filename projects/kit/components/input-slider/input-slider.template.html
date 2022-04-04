@@ -50,7 +50,10 @@
     />
 
     <!--TODO delete ticks labels in v3.0-->
-    <div *ngIf="segments && !isNew" class="t-ticks-labels">
+    <div
+        *ngIf="segments && !isNew"
+        class="t-ticks-labels"
+    >
         <span
             *tuiRepeatTimes="let tickIndex of segments + 1"
             automation-id="tui-slider__segment"

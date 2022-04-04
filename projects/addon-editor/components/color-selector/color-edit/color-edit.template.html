@@ -7,7 +7,12 @@
     [(ngModel)]="mode"
 >
     <tui-data-list *tuiDataList>
-        <button *ngFor="let item of modes" size="xs" tuiOption [value]="item">
+        <button
+            *ngFor="let item of modes"
+            size="xs"
+            tuiOption
+            [value]="item"
+        >
             {{ item }}
         </button>
     </tui-data-list>

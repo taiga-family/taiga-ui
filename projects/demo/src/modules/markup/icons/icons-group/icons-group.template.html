@@ -1,4 +1,9 @@
-<h2 i18n class="title">Search by name</h2>
+<h2
+    i18n
+    class="title"
+>
+    Search by name
+</h2>
 <tui-input
     i18n
     tuiHintContent="You can copy icon's name with a click"
@@ -10,7 +15,12 @@
 </tui-input>
 
 <ng-container *ngFor="let key of keys">
-    <h2 i18n class="title">{{ key }}</h2>
+    <h2
+        i18n
+        class="title"
+    >
+        {{ key }}
+    </h2>
     <div class="icons">
         <button
             *ngFor="let icon of iconsValues[key]"

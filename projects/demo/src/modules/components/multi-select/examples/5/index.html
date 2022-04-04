@@ -7,8 +7,15 @@
     [(ngModel)]="value"
 >
     <tui-data-list *tuiDataList>
-        <tui-opt-group tuiMultiSelectGroup label="Jedi">
-            <button *ngFor="let item of jedi" tuiOption [value]="item">
+        <tui-opt-group
+            tuiMultiSelectGroup
+            label="Jedi"
+        >
+            <button
+                *ngFor="let item of jedi"
+                tuiOption
+                [value]="item"
+            >
                 {{item}}
             </button>
         </tui-opt-group>

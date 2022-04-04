@@ -9,7 +9,10 @@ import {TuiDesignModeModule} from '../design-mode.module';
 describe('TuiDesignMode directive', () => {
     @Component({
         template: `
-            <iframe tuiDesignMode [(ngModel)]="model"></iframe>
+            <iframe
+                tuiDesignMode
+                [(ngModel)]="model"
+            ></iframe>
         `,
     })
     class TestComponent {

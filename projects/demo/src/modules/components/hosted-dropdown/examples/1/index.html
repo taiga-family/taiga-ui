@@ -3,7 +3,12 @@
     [content]="dropdown"
     [(open)]="open"
 >
-    <button tuiButton type="button" appearance="flat" [iconRight]="icon">
+    <button
+        tuiButton
+        type="button"
+        appearance="flat"
+        [iconRight]="icon"
+    >
         Button
     </button>
 </tui-hosted-dropdown>
@@ -16,7 +21,11 @@
 </ng-template>
 <ng-template #dropdown>
     <tui-data-list>
-        <button *ngFor="let item of items" tuiOption (click)="onClick()">
+        <button
+            *ngFor="let item of items"
+            tuiOption
+            (click)="onClick()"
+        >
             {{item}}
         </button>
     </tui-data-list>

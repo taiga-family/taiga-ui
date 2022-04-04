@@ -3,7 +3,11 @@
     <tui-money [value]="data"></tui-money>
 </p>
 
-<tui-input tuiTextfieldSize="m" tuiAutoFocus [(ngModel)]="name">
+<tui-input
+    tuiTextfieldSize="m"
+    tuiAutoFocus
+    [(ngModel)]="name"
+>
     Type a name
 </tui-input>
 
@@ -14,7 +18,10 @@
     [(ngModel)]="value"
 >
     Select a sum
-    <tui-data-list-wrapper *tuiDataList [items]="items"></tui-data-list-wrapper>
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items"
+    ></tui-data-list-wrapper>
 </tui-select>
 <button
     tuiButton
@@ -27,7 +34,12 @@
 </button>
 
 <p>
-    <button tuiButton type="button" size="m" (click)="showDialog(template)">
+    <button
+        tuiButton
+        type="button"
+        size="m"
+        (click)="showDialog(template)"
+    >
         Show one more dialog
     </button>
 </p>

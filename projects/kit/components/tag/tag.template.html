@@ -9,7 +9,12 @@
         class="left-content"
         [content]="leftContent"
     ></div>
-    <span automation-id="tui-tag__text" class="text">{{ displayText }}</span>
+    <span
+        automation-id="tui-tag__text"
+        class="text"
+    >
+        {{ displayText }}
+    </span>
     <tui-loader
         *ngIf="showLoader"
         class="icon icon_loader"

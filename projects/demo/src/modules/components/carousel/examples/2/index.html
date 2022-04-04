@@ -1,4 +1,8 @@
-<tui-carousel [draggable]="true" [itemsCount]="3" [(index)]="index">
+<tui-carousel
+    [draggable]="true"
+    [itemsCount]="3"
+    [(index)]="index"
+>
     <ng-container *ngFor="let item of items; let i = index">
         <img
             *tuiItem

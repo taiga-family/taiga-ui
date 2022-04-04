@@ -1,4 +1,7 @@
-<form class="b-form" [formGroup]="testForm">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
     <label
         i18n-label
         tuiLabel
@@ -16,7 +19,11 @@
         <tui-field-error formControlName="testValue2"></tui-field-error>
     </label>
 
-    <label tuiLabel i18n-label label="Set a password">
+    <label
+        tuiLabel
+        i18n-label
+        label="Set a password"
+    >
         <tui-input
             formControlName="testValue1"
             tuiTextfieldSize="m"

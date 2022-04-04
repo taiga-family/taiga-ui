@@ -7,9 +7,25 @@ import {TuiHighlightModule} from '../highlight.module';
 describe('TuiHighlight directive', () => {
     @Component({
         template: `
-            <div id="ica" tuiHighlight="ica">HAPICA</div>
-            <div id="dong" tuiHighlight="dong">ding</div>
-            <div id="aaa" tuiHighlight="aaa" tuiHighlightColor="yellow">aaabbb</div>
+            <div
+                id="ica"
+                tuiHighlight="ica"
+            >
+                HAPICA
+            </div>
+            <div
+                id="dong"
+                tuiHighlight="dong"
+            >
+                ding
+            </div>
+            <div
+                id="aaa"
+                tuiHighlight="aaa"
+                tuiHighlightColor="yellow"
+            >
+                aaabbb
+            </div>
         `,
     })
     class TestComponent {}

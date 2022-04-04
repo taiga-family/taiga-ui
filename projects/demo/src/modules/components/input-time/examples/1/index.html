@@ -1,5 +1,11 @@
-<form class="b-form" [formGroup]="testForm">
-    <tui-input-time formControlName="testValue" tuiTextfieldSize="s">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
+    <tui-input-time
+        formControlName="testValue"
+        tuiTextfieldSize="s"
+    >
         Input time
     </tui-input-time>
     <tui-input-time
@@ -16,7 +22,10 @@
         <code>tuiUnfinishedValidator</code>
         directive
     </p>
-    <tui-input-time tuiUnfinishedValidator formControlName="testValue">
+    <tui-input-time
+        tuiUnfinishedValidator
+        formControlName="testValue"
+    >
         Input time
     </tui-input-time>
 </form>

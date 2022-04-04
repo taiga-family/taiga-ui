@@ -1,4 +1,8 @@
-<tui-hosted-dropdown #dropdown [content]="content" [(open)]="dropdownOpen">
+<tui-hosted-dropdown
+    #dropdown
+    [content]="content"
+    [(open)]="dropdownOpen"
+>
     <button
         tuiIconButton
         appearance="flat"
@@ -7,7 +11,10 @@
         [pseudoHovered]="dropdown.open || null"
     ></button>
 </tui-hosted-dropdown>
-<ng-template #content let-activeZone>
+<ng-template
+    #content
+    let-activeZone
+>
     <tui-data-list
         tuiDataListDropdownManager
         [tuiActiveZoneParent]="activeZone"

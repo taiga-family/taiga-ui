@@ -1,6 +1,11 @@
 <ng-container *ngIf="items?.changes | async"></ng-container>
 
-<section tuiGroup orientation="vertical" class="t-files" [collapsed]="true">
+<section
+    tuiGroup
+    orientation="vertical"
+    class="t-files"
+    [collapsed]="true"
+>
     <ng-content></ng-content>
     <ng-container *ngFor="let item of items; let index = index">
         <ng-container
@@ -8,7 +13,10 @@
             [ngTemplateOutlet]="item"
         ></ng-container>
     </ng-container>
-    <tui-expand *ngIf="hasExtraItems" [expanded]="!hidden">
+    <tui-expand
+        *ngIf="hasExtraItems"
+        [expanded]="!hidden"
+    >
         <div class="t-extra-items">
             <ng-container *ngFor="let item of items; let index = index">
                 <ng-container

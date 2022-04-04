@@ -1,3 +1,8 @@
 ```html
-<button tuiButton icon="tuiIconSettings">Button</button>
+<button
+  tuiButton
+  icon="tuiIconSettings"
+>
+  Button
+</button>
 ```

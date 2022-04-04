@@ -21,7 +21,11 @@
 
 <h4>With link</h4>
 <tui-files>
-    <tui-file *tuiItem state="normal" [file]="fileWithLink"></tui-file>
+    <tui-file
+        *tuiItem
+        state="normal"
+        [file]="fileWithLink"
+    ></tui-file>
 </tui-files>
 
 <h4>With deleted state</h4>
@@ -32,7 +36,12 @@
         size="l"
         [file]="file"
     >
-        <button tuiLink (click)="restore(file)">Restore</button>
+        <button
+            tuiLink
+            (click)="restore(file)"
+        >
+            Restore
+        </button>
     </tui-file>
     <tui-file
         *ngFor="let file of restoredFiles"

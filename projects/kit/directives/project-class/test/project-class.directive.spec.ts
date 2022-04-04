@@ -11,9 +11,15 @@ import {TuiProjectClassModule} from '../project-class.module';
 describe('Directive TuiProjectClassDirective', () => {
     @Component({
         template: `
-            <div id="parent" [tuiProjectClass]="classNames">
+            <div
+                id="parent"
+                [tuiProjectClass]="classNames"
+            >
                 <div>
-                    <tui-combo-box id="predecessor" [formControl]="control">
+                    <tui-combo-box
+                        id="predecessor"
+                        [formControl]="control"
+                    >
                         <tui-data-list-wrapper
                             *tuiDataList
                             [items]="items"

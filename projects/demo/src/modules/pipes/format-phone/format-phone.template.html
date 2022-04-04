@@ -1,4 +1,8 @@
-<tui-doc-page header="FormatPhone" package="CORE" type="pipes">
+<tui-doc-page
+    header="FormatPhone"
+    package="CORE"
+    type="pipes"
+>
     <ng-template pageTab>
         <p i18n>Pipe to format phone number</p>
 
@@ -13,7 +17,10 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p i18n class="text b-full-width">
+        <p
+            i18n
+            class="text b-full-width"
+        >
             Formatted phone number: {{ index | tuiFormatPhone:
             countryCode:phoneMask }}
         </p>

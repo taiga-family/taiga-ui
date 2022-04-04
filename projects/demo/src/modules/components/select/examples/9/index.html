@@ -7,7 +7,11 @@
     >
         <ng-template tuiDataList>
             <tui-data-list>
-                <button *ngFor="let item of accounts" tuiOption [value]="item">
+                <button
+                    *ngFor="let item of accounts"
+                    tuiOption
+                    [value]="item"
+                >
                     <my-account [account]="item"></my-account>
                 </button>
             </tui-data-list>
@@ -23,7 +27,11 @@
     >
         <ng-template tuiDataList>
             <tui-data-list>
-                <button *ngFor="let item of accounts" tuiOption [value]="item">
+                <button
+                    *ngFor="let item of accounts"
+                    tuiOption
+                    [value]="item"
+                >
                     <my-account [account]="item"></my-account>
                 </button>
             </tui-data-list>
@@ -31,6 +39,9 @@
     </tui-select>
 </div>
 
-<ng-template #value let-account>
+<ng-template
+    #value
+    let-account
+>
     <my-account [account]="account"></my-account>
 </ng-template>

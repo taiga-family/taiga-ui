@@ -5,7 +5,10 @@ import {mapTo} from 'rxjs/operators';
 
 @Component({
     template: `
-        <iframe *ngIf="src$ | async as src; else loading" [src]="src"></iframe>
+        <iframe
+            *ngIf="src$ | async as src; else loading"
+            [src]="src"
+        ></iframe>
         <ng-template #loading><tui-loader size="xl"></tui-loader></ng-template>
     `,
     styles: [':host { display: flex; height: 100% } :host > * { flex: 1 }'],

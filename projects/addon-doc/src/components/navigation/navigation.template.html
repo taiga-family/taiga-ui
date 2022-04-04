@@ -20,7 +20,10 @@
     >
         {{ searchText }}
     </tui-primitive-textfield>
-    <ng-template #dropdown let-activeZone>
+    <ng-template
+        #dropdown
+        let-activeZone
+    >
         <tui-data-list>
             <tui-opt-group
                 *ngFor="let group of filtered; let index = index"
@@ -40,8 +43,14 @@
 </tui-hosted-dropdown>
 
 <nav class="t-navigation">
-    <tui-scrollbar class="t-scrollbar" [tuiMode]="mode$ | async">
-        <tui-accordion [closeOthers]="false" [rounded]="false">
+    <tui-scrollbar
+        class="t-scrollbar"
+        [tuiMode]="mode$ | async"
+    >
+        <tui-accordion
+            [closeOthers]="false"
+            [rounded]="false"
+        >
             <tui-accordion-item
                 *ngFor="let label of labels; index as index"
                 size="s"
@@ -74,7 +83,11 @@
             </ng-container>
         </div>
 
-        <ng-template #pages let-item="item" let-index="index">
+        <ng-template
+            #pages
+            let-item="item"
+            let-index="index"
+        >
             <a
                 *ngIf="!item.subPages; else subPages"
                 tuiLink

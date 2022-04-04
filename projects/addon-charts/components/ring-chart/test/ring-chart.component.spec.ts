@@ -8,7 +8,11 @@ import {TuiRingChartModule} from '../ring-chart.module';
 describe('RingChart', () => {
     @Component({
         template: `
-            <tui-ring-chart content="test" [value]="value" [size]="size"></tui-ring-chart>
+            <tui-ring-chart
+                content="test"
+                [value]="value"
+                [size]="size"
+            ></tui-ring-chart>
         `,
     })
     class TestComponent {

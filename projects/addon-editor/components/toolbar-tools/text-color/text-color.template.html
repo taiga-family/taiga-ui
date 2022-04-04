@@ -21,8 +21,14 @@
         [pseudoPressed]="color.open"
         [focusable]="color.open"
     ></button>
-    <div class="t-plate" [style.background]="selectedColor"></div>
-    <ng-template #colorDropdown let-activeZone>
+    <div
+        class="t-plate"
+        [style.background]="selectedColor"
+    ></div>
+    <ng-template
+        #colorDropdown
+        let-activeZone
+    >
         <tui-palette
             class="t-color-picker"
             [tuiActiveZoneParent]="activeZone"
