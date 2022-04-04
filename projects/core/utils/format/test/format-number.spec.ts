@@ -64,4 +64,12 @@ describe('Number formatting', () => {
     it('value with exponent and fractional part with and decimal bigger than precision', () => {
         expect(formatNumber(1.23e-8, 12)).toBe('0,000000012300');
     });
+
+    it('deletes trailing zeros when zero padding flag is disabled', () => {
+        expect(formatNumber(12345.6078, 2, ',', '.', false)).toBe('12.345,6');
+    });
+
+    it('displays without decimal separator when zero padding flag is disabled and there is no significant digits', () => {
+        expect(formatNumber(12345.006, 2, ',', '.', false)).toBe('12.345');
+    });
 });

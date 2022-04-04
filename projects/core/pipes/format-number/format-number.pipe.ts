@@ -17,13 +17,21 @@ export class TuiFormatNumberPipe implements PipeTransform {
      * @param decimalSeparator
      * @param thousandSeparator
      * @param decimalLimit number of digits of decimal part, null to keep untouched
+     * @param zeroPadding enable zeros at the end of decimal part
      */
     transform(
         value: number,
         decimalLimit: number | null = null,
         decimalSeparator: string = this.numberFormat.decimalSeparator,
         thousandSeparator: string = this.numberFormat.thousandSeparator,
+        zeroPadding: boolean = this.numberFormat.zeroPadding,
     ): string {
-        return formatNumber(value, decimalLimit, decimalSeparator, thousandSeparator);
+        return formatNumber(
+            value,
+            decimalLimit,
+            decimalSeparator,
+            thousandSeparator,
+            zeroPadding,
+        );
     }
 }
