@@ -7,6 +7,7 @@ import {TuiGroupStylesComponent} from './group-styles.component';
 
 @NgModule({
     imports: [CommonModule],
+    entryComponents: [TuiGroupStylesComponent],
     declarations: [TuiGroupComponent, TuiGroupDirective, TuiGroupStylesComponent],
     exports: [TuiGroupComponent, TuiGroupDirective, TuiGroupStylesComponent],
 })
