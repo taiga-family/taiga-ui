@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, Inject} from '@angular/core';
 import {clamp, round, TuiDestroyService, typedFromEvent} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import {merge, Observable, race} from 'rxjs';
+import {merge, Observable} from 'rxjs';
 import {filter, map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 import {TuiRangeComponent} from './range.component';
@@ -54,8 +54,9 @@ export class TuiRangeChangeDirective {
                 }),
                 switchMap(event => this.pointerMove$.pipe(startWith(event))),
                 map(({clientX}) => clamp(this.getFractionFromEvents(clientX), 0, 1)),
-                takeUntil(race(this.pointerUp$, destroy$)),
+                takeUntil(this.pointerUp$),
                 repeat(),
+                takeUntil(destroy$),
             )
             .subscribe(fraction => {
                 const value = this.range.getValueFromFraction(
