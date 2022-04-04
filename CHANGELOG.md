@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.40.0](https://github.com/tinkoff/taiga-ui/compare/v2.39.0...v2.40.0) (2022-04-04)
+
+### Features
+
+- **addon-charts:** add index to hint context ([#1580](https://github.com/tinkoff/taiga-ui/issues/1580))
+  ([5f11ccd](https://github.com/tinkoff/taiga-ui/commit/5f11ccd6b54c03fa58bd378bf77fde16f24c1cf2))
+- **core:** `formatNumber` add `zeroPadding` flag ([#1584](https://github.com/tinkoff/taiga-ui/issues/1584))
+  ([9b07aa5](https://github.com/tinkoff/taiga-ui/commit/9b07aa5fd6d5b628ba9e865143d0f8a5e871a3de))
+- **hint:** add middle position of top and bottom directions of hints
+  ([#1577](https://github.com/tinkoff/taiga-ui/issues/1577))
+  ([0567a79](https://github.com/tinkoff/taiga-ui/commit/0567a79e677472aec25ac2322e053cbc01edc0ec))
+- **kit:** `InputPhoneInternational` allow paste/drop value without code
+  ([#1572](https://github.com/tinkoff/taiga-ui/issues/1572))
+  ([7c419db](https://github.com/tinkoff/taiga-ui/commit/7c419dbbc26b050d2d61a2877e0cd293a6a13b3f))
+- **kit:** `TUI_TAG_OPTIONS` default options configuration for `Tag`
+  ([#1518](https://github.com/tinkoff/taiga-ui/issues/1518))
+  ([9c32f00](https://github.com/tinkoff/taiga-ui/commit/9c32f00315e265c95e26c4c2567aeee1fe2cd650))
+
+### Bug Fixes
+
+- **addon-charts:** `LineChart` fix empty hint without `hintContent`
+  ([#1574](https://github.com/tinkoff/taiga-ui/issues/1574))
+  ([6f381d8](https://github.com/tinkoff/taiga-ui/commit/6f381d8eb51b4d3ff9639801d9e964f56e0a1cd2))
+- bad colors in dialog when using dark theme ([#1565](https://github.com/tinkoff/taiga-ui/issues/1565))
+  ([46e8f5e](https://github.com/tinkoff/taiga-ui/commit/46e8f5ea010d4b7d856d4f206339640df432ad58))
+- **core:** compatible `TuiGroupModule` with `ViewEngine` ([#1589](https://github.com/tinkoff/taiga-ui/issues/1589))
+  ([84620b8](https://github.com/tinkoff/taiga-ui/commit/84620b8e608d091804af99dfef8b3c301f4c84bf))
+- **kit:** `InputNumber` apply caret fix for ios ([#1568](https://github.com/tinkoff/taiga-ui/issues/1568))
+  ([a326da4](https://github.com/tinkoff/taiga-ui/commit/a326da4be2061990cba1d407ef723937cad4c150))
+- **kit:** `Slider` incorrect behaviour for `min` !== 0 ([#1557](https://github.com/tinkoff/taiga-ui/issues/1557))
+  ([68d1132](https://github.com/tinkoff/taiga-ui/commit/68d11326543bf2626a4332e96b6432efabc13db5))
+- **kit:** `Slider` input-property `max` can be equal to zero ([#1587](https://github.com/tinkoff/taiga-ui/issues/1587))
+  ([6c2b614](https://github.com/tinkoff/taiga-ui/commit/6c2b6142a5772e0ef2dceb832f9c791703ba568e))
+
 ## [2.39.0](https://github.com/tinkoff/taiga-ui/compare/v2.38.0...v2.39.0) (2022-03-28)
 
 ### Bug Fixes
