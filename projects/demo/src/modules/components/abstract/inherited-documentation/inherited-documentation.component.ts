@@ -24,10 +24,10 @@ export class InheritedDocumentationComponent {
         'right',
         'bottom-left',
         'bottom-right',
-        'bottom-middle',
+        'bottom',
         'top-left',
         'top-right',
-        'top-middle',
+        'top',
     ];
 
     readonly modeVariants: readonly TuiHintModeT[] = ['error', 'onDark'];

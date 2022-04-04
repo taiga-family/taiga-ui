@@ -34,10 +34,10 @@ export class ExampleTuiHintControllerComponent {
         'right',
         'bottom-left',
         'bottom-right',
-        'bottom-middle',
+        'bottom',
         'top-left',
         'top-right',
-        'top-middle',
+        'top',
     ];
 
     tuiHintDirection: TuiDirection = this.directionVariants[2];

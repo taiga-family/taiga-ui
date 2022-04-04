@@ -34,8 +34,8 @@ const reverseDirectionsVertical: {[key in TuiDirection]: TuiDirection} = {
     'bottom-right': 'top-right',
     left: 'right',
     right: 'left',
-    'top-middle': 'bottom-middle',
-    'bottom-middle': 'top-middle',
+    top: 'bottom',
+    bottom: 'top',
 };
 const reverseDirectionsHorizontal: {[key in TuiDirection]: TuiDirection} = {
     'top-left': 'top-right',
@@ -44,8 +44,8 @@ const reverseDirectionsHorizontal: {[key in TuiDirection]: TuiDirection} = {
     'bottom-right': 'bottom-left',
     left: 'right',
     right: 'left',
-    'top-middle': 'top-middle',
-    'bottom-middle': 'bottom-middle',
+    top: 'top',
+    bottom: 'bottom',
 };
 
 // TODO: consider abstracting UI and move to CDK, split hint and overflow
@@ -125,10 +125,10 @@ export class TuiHintBoxComponent {
             'right',
             'bottom-left',
             'bottom-right',
-            'bottom-middle',
+            'bottom',
             'top-left',
             'top-right',
-            'top-middle',
+            'top',
         ];
 
         let top = 0;
@@ -184,11 +184,11 @@ export class TuiHintBoxComponent {
                     top = verticalBottom;
                     left = verticalLeft;
                     break;
-                case 'bottom-middle':
+                case 'bottom':
                     top = verticalBottom;
                     left = verticalMiddle;
                     break;
-                case 'top-middle':
+                case 'top':
                     top = verticalTop;
                     left = verticalMiddle;
                     break;
