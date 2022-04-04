@@ -1,7 +1,7 @@
 import {Directive, HostListener, Input} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 
-const SLIDER_INTERACTION_KEYS = [
+const SLIDER_INTERACTION_KEYS = new Set([
     'ArrowLeft',
     'ArrowRight',
     'ArrowUp',
@@ -10,7 +10,7 @@ const SLIDER_INTERACTION_KEYS = [
     'End',
     'PageUp',
     'PageDown',
-];
+]);
 
 /**
  * Native <input type='range' readonly> doesn't work.
@@ -34,7 +34,7 @@ export class TuiSliderReadonlyDirective {
 
     @HostListener('keydown', ['$event'])
     preventKeyboardInteraction(event: KeyboardEvent) {
-        if (SLIDER_INTERACTION_KEYS.includes(event.key)) {
+        if (SLIDER_INTERACTION_KEYS.has(event.key)) {
             this.preventEvent(event);
         }
     }
