@@ -5,10 +5,9 @@ describe('Calendars', () => {
         cy.viewport(720, 700);
     });
     it('Calendar', () => {
-        cy.goToDemoPage(
+        cy.tuiVisit(
             'components/calendar/API?tuiMode=null&value$=2&maxViewedMonth$=1&max$=0',
         );
-        cy.hideHeader();
 
         cy.get('tui-calendar')
             .first()
@@ -17,8 +16,7 @@ describe('Calendars', () => {
     });
 
     it('Month', () => {
-        cy.goToDemoPage('components/calendar-month/API?tuiMode=null&year$=1&value$=2');
-        cy.hideHeader();
+        cy.tuiVisit('components/calendar-month/API?tuiMode=null&year$=1&value$=2');
 
         cy.get('tui-calendar-month')
             .first()

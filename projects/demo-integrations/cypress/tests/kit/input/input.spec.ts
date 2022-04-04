@@ -6,11 +6,9 @@ describe('Input', () => {
     });
 
     it('has custom content (text) + cleaner + hint which dont overlapping each others', () => {
-        cy.goToDemoPage(
+        cy.tuiVisit(
             `${INPUT_PAGE_URL}/API?tuiHintContent=Some%20content&tuiTextfieldCleaner=true&tuiTextfieldCustomContent=%3Cspan%3ELongTextContent%3C%2Fspan%3E`,
         );
-        cy.hideHeader();
-        cy.hideNavigation();
 
         cy.get('#demoContent')
             .should('be.visible')
@@ -18,11 +16,9 @@ describe('Input', () => {
     });
 
     it('correctly aligns single custom content (as large icon)', () => {
-        cy.goToDemoPage(
+        cy.tuiVisit(
             `${INPUT_PAGE_URL}/API?tuiTextfieldCustomContent=tuiIconCalendarLarge`,
         );
-        cy.hideHeader();
-        cy.hideNavigation();
 
         cy.get('#demoContent')
             .should('be.visible')
@@ -30,11 +26,9 @@ describe('Input', () => {
     });
 
     it('custom content (as large icon) + cleaner + hint dont overlapping each others', () => {
-        cy.goToDemoPage(
+        cy.tuiVisit(
             `${INPUT_PAGE_URL}/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=tuiIconSearchLarge&tuiHintContent=Some%20content`,
         );
-        cy.hideHeader();
-        cy.hideNavigation();
 
         cy.get('#demoContent')
             .should('be.visible')
@@ -42,11 +36,9 @@ describe('Input', () => {
     });
 
     it('custom content (as normal-size icon) + cleaner + hint dont overlapping each others', () => {
-        cy.goToDemoPage(
+        cy.tuiVisit(
             `${INPUT_PAGE_URL}/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=tuiIconVisaMono&tuiHintContent=Some%20content`,
         );
-        cy.hideHeader();
-        cy.hideNavigation();
 
         cy.get('#demoContent')
             .should('be.visible')
@@ -55,7 +47,7 @@ describe('Input', () => {
 
     it('input overflow due to placeholder', () => {
         cy.viewport(400, 812);
-        cy.goToDemoPage(
+        cy.tuiVisit(
             `${INPUT_PAGE_URL}/API?tuiMode=null&icon=tuiIconSearch&iconAlign=left&tuiTextfieldExampleText=Lorem%20ipsum%20dolor%20sit%20amet,%20consectetur%20adipiscing%20elit,%20sed%20do%20eiusmod%20tempor%20incididunt%20ut%20labore&pseudoFocused=true`,
         );
 

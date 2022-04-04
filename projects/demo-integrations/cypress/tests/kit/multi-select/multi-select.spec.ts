@@ -7,8 +7,7 @@ describe('MultiSelect', () => {
     describe('Description and examples page', () => {
         beforeEach(() => {
             cy.viewport('macbook-13');
-            cy.goToDemoPage(MULTI_SELECT_PAGE_URL);
-            cy.hideHeader();
+            cy.tuiVisit(MULTI_SELECT_PAGE_URL);
         });
 
         it('does not overflow arrow icon by many tags', () => {
@@ -31,7 +30,7 @@ describe('MultiSelect', () => {
 
         ['s', 'm', 'l'].forEach(size => {
             it(`tuiTextfieldSize=${size}`, () => {
-                cy.goToDemoPage(
+                cy.tuiVisit(
                     `components/multi-select/API?tuiMode=null&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
                 );
 
@@ -53,11 +52,7 @@ describe('MultiSelect', () => {
     });
 
     it('checking that the arrow icon is rotated when enabled tuiTextfieldCleaner', () => {
-        cy.goToDemoPage(
-            'components/multi-select/API?tuiMode=null&tuiTextfieldCleaner=true',
-        );
-        cy.hideHeader();
-        cy.hideNavigation();
+        cy.tuiVisit('components/multi-select/API?tuiMode=null&tuiTextfieldCleaner=true');
 
         cy.getByAutomationId('tui-multi-select__arrow').click({force: true});
 

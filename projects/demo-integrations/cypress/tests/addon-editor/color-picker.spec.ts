@@ -2,8 +2,7 @@ import {WAIT_BEFORE_SCREENSHOT} from './utils';
 
 describe("Editor's color picker", () => {
     beforeEach(() => {
-        cy.goToDemoPage('components/color-picker');
-        cy.hideHeader();
+        cy.tuiVisit('components/color-picker');
     });
 
     it('opened color picker', () => {

@@ -7,7 +7,7 @@ const NEXT_URL_STORAGE_KEY = 'env';
 const DEFAULT_BASE_HREF = 'next/';
 const REPEATED_SLASH_REG = new RegExp('//', 'g');
 
-interface Options {
+interface TuiVisitOptions {
     /**
      * Cypress runs all tests within an iframe.
      * Sometimes our app can behave differently if it runs under iframe or not (see util {@link isInsideIframe}).
@@ -19,11 +19,13 @@ interface Options {
     hideCursor?: boolean;
     hideScrollbar?: boolean;
     noSmoothScroll?: boolean;
+    hideHeader?: boolean;
+    hideNavigation?: boolean;
 }
 
 const setBeforeLoadOptions = (
     windowRef: Window,
-    {inIframe}: Pick<Required<Options>, 'inIframe'>,
+    {inIframe}: Pick<Required<TuiVisitOptions>, 'inIframe'>,
 ): void => {
     if (!inIframe) {
         // @ts-ignore window.parent is readonly property
@@ -31,7 +33,7 @@ const setBeforeLoadOptions = (
     }
 };
 
-export const goToDemoPage = (path: string, options: Options = {}) => {
+export function tuiVisit(path: string, options: TuiVisitOptions = {}) {
     const {
         inIframe = true,
         waitAllIcons = true,
@@ -39,6 +41,8 @@ export const goToDemoPage = (path: string, options: Options = {}) => {
         hideCursor = true,
         hideScrollbar = true,
         noSmoothScroll = true,
+        hideHeader = true,
+        hideNavigation = true,
     } = options;
 
     stubExternalIcons();
@@ -88,4 +92,12 @@ export const goToDemoPage = (path: string, options: Options = {}) => {
     }
 
     cy.wait(DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION);
-};
+
+    if (hideHeader) {
+        cy.tuiHideHeader();
+    }
+
+    if (hideNavigation) {
+        cy.tuiHideNavigation();
+    }
+}
