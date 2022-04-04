@@ -59,7 +59,7 @@ export class TuiSliderComponent {
     }
 
     get max(): number {
-        return Number(this.elementRef.nativeElement.max) || 100;
+        return Number(this.elementRef.nativeElement.max || 100);
     }
 
     get step(): number {

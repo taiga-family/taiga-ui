@@ -3,11 +3,13 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {configureTestSuite} from '@taiga-ui/testing';
 
+import {TuiSliderComponent} from '../slider.component';
 import {TuiSliderModule} from '../slider.module';
 
 describe('Slider', () => {
     @Component({
         template: `
+            <input #nativeUsageAllDefaults tuiSlider type="range" />
             <input
                 #controller
                 tuiSlider
@@ -28,10 +30,16 @@ describe('Slider', () => {
     })
     class TestComponent {
         @ViewChild('controller', {static: true, read: ElementRef})
-        formControllerComponent!: ElementRef<HTMLInputElement>;
+        formControllerElementRef!: ElementRef<HTMLInputElement>;
 
         @ViewChild('model', {static: true, read: ElementRef})
-        ngModelComponent!: ElementRef<HTMLInputElement>;
+        ngModelElementRef!: ElementRef<HTMLInputElement>;
+
+        @ViewChild('model', {static: true})
+        ngModelComponentRef!: TuiSliderComponent;
+
+        @ViewChild('nativeUsageAllDefaults', {static: true})
+        nativeUsageAllDefaultsComponentRef!: TuiSliderComponent;
 
         ngModelValue = 5;
         formController = new FormControl(5);
@@ -67,8 +75,8 @@ describe('Slider', () => {
         expect(testComponent.formController.value).toBe(5);
         expect(testComponent.ngModelValue).toBe(5);
 
-        changeSliderValue(testComponent.formControllerComponent.nativeElement, '3');
-        changeSliderValue(testComponent.ngModelComponent.nativeElement, '3');
+        changeSliderValue(testComponent.formControllerElementRef.nativeElement, '3');
+        changeSliderValue(testComponent.ngModelElementRef.nativeElement, '3');
 
         fixture.detectChanges();
         await fixture.whenStable();
@@ -83,7 +91,7 @@ describe('Slider', () => {
             expectedFillPercentage: string,
         ) => {
             changeSliderValue(
-                testComponent.formControllerComponent.nativeElement,
+                testComponent.formControllerElementRef.nativeElement,
                 `${newValue}`,
             );
 
@@ -91,7 +99,7 @@ describe('Slider', () => {
             await fixture.whenStable();
 
             expect(
-                getFillPercentage(testComponent.formControllerComponent.nativeElement),
+                getFillPercentage(testComponent.formControllerElementRef.nativeElement),
             ).toBe(expectedFillPercentage);
         };
 
@@ -154,6 +162,44 @@ describe('Slider', () => {
                 await changeValueAndCheck(230, '90%');
             });
         });
+    });
+
+    describe('native slider defaults', () => {
+        // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#validation
+
+        it('max === 100', () => {
+            expect(testComponent.nativeUsageAllDefaultsComponentRef.max).toBe(100);
+        });
+
+        it('min === 0', () => {
+            expect(testComponent.nativeUsageAllDefaultsComponentRef.min).toBe(0);
+        });
+
+        it('value === 50', () => {
+            expect(testComponent.nativeUsageAllDefaultsComponentRef.value).toBe(50);
+        });
+
+        it('fill percentage === 50%', () => {
+            expect(testComponent.nativeUsageAllDefaultsComponentRef.valuePercentage).toBe(
+                50,
+            );
+        });
+    });
+
+    it('max can be 0', async () => {
+        testComponent.min = -100;
+        testComponent.max = 0;
+        fixture.detectChanges();
+
+        changeSliderValue(testComponent.ngModelElementRef.nativeElement, '-20');
+
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        expect(testComponent.ngModelComponentRef.max).toBe(0);
+        expect(getFillPercentage(testComponent.ngModelElementRef.nativeElement)).toBe(
+            '80%',
+        );
     });
 
     function changeSliderValue(el: HTMLInputElement, newValue: string) {
