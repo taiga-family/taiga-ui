@@ -25,12 +25,17 @@ export function formatNumber(
     let fractionPartPadded = getFractionPartPadded(value, decimalLimit);
 
     if (decimalLimit !== null) {
-        const zeroPaddingSize: number = zeroPadding
-            ? Math.max(decimalLimit - fractionPartPadded.length, 0)
-            : 0;
-        const zeroPartString = '0'.repeat(zeroPaddingSize);
+        if (zeroPadding) {
+            const zeroPaddingSize: number = Math.max(
+                decimalLimit - fractionPartPadded.length,
+                0,
+            );
+            const zeroPartString = '0'.repeat(zeroPaddingSize);
 
-        fractionPartPadded = `${fractionPartPadded}${zeroPartString}`;
+            fractionPartPadded = `${fractionPartPadded}${zeroPartString}`;
+        } else {
+            fractionPartPadded = fractionPartPadded.replace(/0*$/, '');
+        }
     }
 
     const remainder = integerPartString.length % 3;
@@ -45,7 +50,5 @@ export function formatNumber(
         result += integerPartString.charAt(i);
     }
 
-    return !!fractionPartPadded || decimalLimit
-        ? result + decimalSeparator + fractionPartPadded
-        : result;
+    return fractionPartPadded ? result + decimalSeparator + fractionPartPadded : result;
 }
