@@ -2,6 +2,7 @@ describe('Addon charts', () => {
     beforeEach(() => {
         cy.goToDemoPage('components/line-chart');
         cy.hideHeader();
+        cy.hideNavigation();
     });
 
     it('should not show hint', () => {
