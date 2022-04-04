@@ -10,6 +10,7 @@ import {
     Renderer2,
 } from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
+import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {
     EMPTY_QUERY,
     TuiContextWithImplicit,
@@ -73,7 +74,7 @@ export class TuiLineChartHintDirective {
     getContext(
         index: number,
         _chart: TuiLineChartComponent,
-    ): TuiContextWithImplicit<readonly TuiPoint[]> {
+    ): TuiLineChartHintContext<readonly TuiPoint[]> {
         return this.computeContext(index, this.charts);
     }
 
@@ -96,9 +97,10 @@ export class TuiLineChartHintDirective {
     private computeContext(
         index: number,
         charts: QueryList<TuiLineChartComponent>,
-    ): TuiContextWithImplicit<readonly TuiPoint[]> {
+    ): TuiLineChartHintContext<readonly TuiPoint[]> {
         return {
             $implicit: charts.map(chart => chart.value[index]),
+            index,
         };
     }
 }

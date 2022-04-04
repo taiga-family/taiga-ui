@@ -8,10 +8,10 @@ import {
     NgZone,
     Optional,
 } from '@angular/core';
+import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {draw} from '@taiga-ui/addon-charts/utils';
 import {
     inRange,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiIdService,
     tuiPure,
@@ -70,7 +70,7 @@ export class TuiLineChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<TuiPoint>> = '';
+    hintContent: PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> = '';
 
     @Input()
     @tuiDefaultProp()
@@ -170,10 +170,14 @@ export class TuiLineChartComponent {
         return `${this.autoIdString}_${index}`;
     }
 
-    getContentContext($implicit: TuiPoint): TuiContextWithImplicit<readonly TuiPoint[]> {
+    getContentContext(
+        $implicit: TuiPoint,
+        index: number,
+    ): TuiLineChartHintContext<readonly TuiPoint[]> {
         return (
             this.hintDirective?.getContext(this.value.indexOf($implicit), this) || {
                 $implicit: [],
+                index,
             }
         );
     }

@@ -21,6 +21,12 @@
         [height]="200"
         [value]="singleValue"
         [dots]="true"
-        [hintContent]="hint"
+        [hintContent]="hintContent"
     ></tui-line-chart>
 </tui-axes>
+
+<ng-template #hintContent let-value let-index="index">
+    <div>Vertical: {{value[0]}}</div>
+    <div>Horizontal: {{value[1]}}</div>
+    <div>index: {{index}}</div>
+</ng-template>
