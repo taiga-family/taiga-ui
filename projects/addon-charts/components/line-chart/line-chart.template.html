@@ -47,7 +47,7 @@
                 class="t-column"
                 [class.t-column_hovered]="hovered === index"
                 [tuiHintHost]="hintHost"
-                [tuiHint]="hint"
+                [tuiHint]="hintDirective || hintContent ? hint : ''"
                 [tuiHintId]="getHintId(index)"
                 [style.left.%]="getLeft(getX(index))"
                 [style.width.%]="getWidth(index)"
