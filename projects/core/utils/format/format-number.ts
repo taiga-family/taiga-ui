@@ -33,9 +33,7 @@ export function formatNumber(
             const zeroPartString = '0'.repeat(zeroPaddingSize);
 
             fractionPartPadded = `${fractionPartPadded}${zeroPartString}`;
-        }
-
-        if (!zeroPadding) {
+        } else {
             fractionPartPadded = fractionPartPadded.replace(/0*$/, '');
         }
     }
