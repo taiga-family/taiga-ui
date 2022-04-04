@@ -25,6 +25,8 @@ import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
+import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag-options';
+
 export const ALLOWED_SPACE_REGEXP = new RegExp(`,|[\\s]`);
 
 @Component({
@@ -63,7 +65,7 @@ export class TuiTagComponent {
     @Input()
     @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = 'm';
+    size: TuiSizeS | TuiSizeL = this.options.size;
 
     @Input()
     @tuiDefaultProp()
@@ -72,7 +74,7 @@ export class TuiTagComponent {
     @Input()
     @HostBinding('attr.data-tui-host-status')
     @tuiDefaultProp()
-    status: TuiStatusT = 'default';
+    status: TuiStatusT = this.options.status;
 
     @Input()
     @HostBinding('class._hoverable')
@@ -91,7 +93,7 @@ export class TuiTagComponent {
     @Input()
     @HostBinding('class._autocolor')
     @tuiDefaultProp()
-    autoColor = false;
+    autoColor: boolean = this.options.autoColor;
 
     // TODO: Remove null in 3.0
     @Input()
@@ -116,6 +118,7 @@ export class TuiTagComponent {
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_TAG_OPTIONS) private readonly options: TuiTagOptions,
     ) {}
 
     get backgroundColor(): string | null {

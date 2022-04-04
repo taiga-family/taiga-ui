@@ -15,12 +15,16 @@ export class ExampleTuiTagComponent {
     @ViewChild('errorIcon')
     errorTemplate?: TemplateRef<{}>;
 
+    readonly exampleOptions: RawLoaderContent = import(
+        '!!raw-loader!./examples/import/define-options.md'
+    );
+
     readonly exampleModule: RawLoaderContent = import(
-        '!!raw-loader!./examples/import/import-module.txt'
+        '!!raw-loader!./examples/import/import-module.md'
     );
 
     readonly exampleHtml: RawLoaderContent = import(
-        '!!raw-loader!./examples/import/insert-template.txt'
+        '!!raw-loader!./examples/import/insert-template.md'
     );
 
     readonly example1: TuiDocExample = {
@@ -44,6 +48,11 @@ export class ExampleTuiTagComponent {
         TypeScript: import('!!raw-loader!./examples/4/index.ts'),
         HTML: import('!!raw-loader!./examples/4/index.html'),
         LESS: import('!!raw-loader!./examples/4/index.less'),
+    };
+
+    readonly example5: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
+        HTML: import('!!raw-loader!./examples/5/index.html'),
     };
 
     removable = false;
