@@ -8,6 +8,6 @@ describe('NotificationsService', () => {
 
         cy.get(`tui-notifications-example-1 button`).first().click().wait(1000);
 
-        cy.get('tui-notification-alert').first().matchImageSnapshot('notification');
+        cy.get('tui-alert').first().matchImageSnapshot('notification');
     });
 });
