@@ -6,7 +6,7 @@ import {
 describe('Select', () => {
     beforeEach(() => {
         cy.viewport('macbook-13');
-        cy.goToDemoPage(SELECT_PAGE_URL);
+        cy.tuiVisit(SELECT_PAGE_URL);
     });
 
     it('opens dropdown by click on icon', () => {

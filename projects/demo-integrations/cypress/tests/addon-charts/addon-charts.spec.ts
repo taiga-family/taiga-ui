@@ -1,8 +1,6 @@
 describe('Addon charts', () => {
     beforeEach(() => {
-        cy.goToDemoPage('components/line-chart');
-        cy.hideHeader();
-        cy.hideNavigation();
+        cy.tuiVisit('components/line-chart');
     });
 
     it('should not show hint', () => {

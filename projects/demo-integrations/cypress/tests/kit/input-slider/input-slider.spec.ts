@@ -4,9 +4,7 @@ describe('InputSlider', () => {
     describe('examples page', () => {
         beforeEach(() => {
             cy.viewport('macbook-13');
-            cy.goToDemoPage(`${INPUT_SLIDER_PAGE_URL}`);
-            cy.hideHeader();
-            cy.hideNavigation();
+            cy.tuiVisit(`${INPUT_SLIDER_PAGE_URL}`);
         });
 
         it('typing new value inside text input also change slider position', () => {

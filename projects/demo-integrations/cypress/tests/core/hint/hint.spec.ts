@@ -4,7 +4,7 @@ describe('TuiHint', () => {
     });
 
     it('TuiHint works', () => {
-        cy.goToDemoPage('/directives/hint');
+        cy.tuiVisit('/directives/hint');
 
         cy.get('tui-hint-example-1 tui-avatar')
             .first()
@@ -16,16 +16,13 @@ describe('TuiHint', () => {
     });
 
     it('Manual hint works', () => {
-        cy.goToDemoPage(
-            `/directives/manual-hint/API?tuiMode=null&tuiManualHintShow=true`,
-        );
+        cy.tuiVisit(`/directives/manual-hint/API?tuiMode=null&tuiManualHintShow=true`);
 
         cy.get('tui-hint-box').first().wait(1000).matchImageSnapshot('manual-hint');
     });
 
     it('Tooltip horizontal direction', () => {
-        cy.goToDemoPage('/components/tooltip');
-        cy.hideHeader();
+        cy.tuiVisit('/components/tooltip');
         cy.get('tui-doc-example')
             .first()
             .trigger('mouseenter', {x: 35, y: 200})
@@ -34,8 +31,7 @@ describe('TuiHint', () => {
     });
 
     it('Tooltip vertical direction', () => {
-        cy.goToDemoPage('/components/tooltip');
-        cy.hideHeader();
+        cy.tuiVisit('/components/tooltip');
         cy.get('tui-doc-example')
             .first()
             .trigger('mouseenter', {x: 35, y: 270})

@@ -2,9 +2,7 @@ import {DEFAULT_TIMEOUT_AFTER_PAGE_REDIRECTION} from '../../../support/shared.en
 
 describe('Input tag', () => {
     beforeEach(() => {
-        cy.goToDemoPage(`components/input-tag`);
-        cy.hideHeader();
-        cy.hideNavigation();
+        cy.tuiVisit(`components/input-tag`);
     });
 
     it('switch theme mode', () => {

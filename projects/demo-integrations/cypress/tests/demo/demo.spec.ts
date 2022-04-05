@@ -5,8 +5,7 @@ import {EXAMPLE_ID} from '../../support/shared.entities';
 describe('Demo', () => {
     for (const path of DEMO_PATHS) {
         it(path, () => {
-            cy.goToDemoPage(path);
-            cy.hideHeader();
+            cy.tuiVisit(path);
 
             cy.get('tui-doc-example').each((example, index) => {
                 cy.wrap(example)

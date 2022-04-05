@@ -23,7 +23,7 @@ describe('Dialogs + browser back navigation', () => {
 
     describe('feature is enabled', () => {
         beforeEach(() => {
-            cy.goToDemoPage(DIALOG_PAGE_URL, {inIframe: false});
+            cy.tuiVisit(DIALOG_PAGE_URL, {inIframe: false});
         });
 
         it('closes dialog on browser back navigation', () => {
@@ -32,10 +32,10 @@ describe('Dialogs + browser back navigation', () => {
                 .find('button')
                 .first()
                 .click();
-            cy.waitKitDialog();
+            cy.tuiWaitKitDialog();
 
             cy.get('tui-dialog').get('button').contains('Show one more dialog').click();
-            cy.waitKitDialog();
+            cy.tuiWaitKitDialog();
 
             cy.matchImageSnapshot('4-1-opened-all-dialogs', {
                 capture: 'viewport',
@@ -65,7 +65,7 @@ describe('Dialogs + browser back navigation', () => {
                 .first()
                 .click();
 
-            cy.waitKitDialog();
+            cy.tuiWaitKitDialog();
 
             /* close dialog */
             cy.get('tui-dialog').find('button').first().click();
@@ -78,7 +78,7 @@ describe('Dialogs + browser back navigation', () => {
 
     describe('feature is disabled', () => {
         beforeEach(() => {
-            cy.goToDemoPage(DIALOG_PAGE_URL, {inIframe: true});
+            cy.tuiVisit(DIALOG_PAGE_URL, {inIframe: true});
         });
 
         it('does not depend on browser back navigation: no history changes on back button', () => {
@@ -89,7 +89,7 @@ describe('Dialogs + browser back navigation', () => {
                 .first()
                 .click();
 
-            cy.waitKitDialog();
+            cy.tuiWaitKitDialog();
 
             cy.url().should('equal', getFullUrl(DIALOG_PAGE_URL));
             goBack();

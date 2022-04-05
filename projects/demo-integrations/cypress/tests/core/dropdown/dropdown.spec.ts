@@ -4,7 +4,7 @@ describe('Dropdown', () => {
     });
 
     it('TuiDropdown', () => {
-        cy.goToDemoPage('/directives/dropdown');
+        cy.tuiVisit('/directives/dropdown');
 
         cy.get(`tui-dropdown-example-1 button`).first().click().wait(1000);
         cy.matchImageSnapshot('1');
@@ -14,7 +14,7 @@ describe('Dropdown', () => {
     });
 
     it('Hosted Dropdown', () => {
-        cy.goToDemoPage('/components/hosted-dropdown');
+        cy.tuiVisit('/components/hosted-dropdown');
 
         cy.get(`tui-hosted-dropdown-example-1 button`).first().click().wait(1000);
         cy.matchImageSnapshot('3');
