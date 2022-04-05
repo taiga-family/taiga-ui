@@ -1,4 +1,9 @@
-<button #component tuiButton type="button" class="tui-space_right-3">
+<button
+    #component
+    tuiButton
+    type="button"
+    class="tui-space_right-3"
+>
     component
 </button>
 <button
@@ -12,6 +17,10 @@
 </button>
 <p>component instanceof TuiButtonComponent: {{isButton(component)}}</p>
 <p>element instanceof ElementRef: {{isElement(element)}}</p>
-<button tuiButton type="button" (click)="element.nativeElement.focus()">
+<button
+    tuiButton
+    type="button"
+    (click)="element.nativeElement.focus()"
+>
     Focus element
 </button>

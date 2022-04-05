@@ -63,7 +63,12 @@ describe('Input', () => {
                             [items]="items"
                         ></tui-data-list-wrapper>
                     </tui-input>
-                    <button #submit type="submit">submit</button>
+                    <button
+                        #submit
+                        type="submit"
+                    >
+                        submit
+                    </button>
                 </form>
             </tui-root>
         `,

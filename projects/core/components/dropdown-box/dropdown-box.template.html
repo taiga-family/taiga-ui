@@ -6,7 +6,10 @@
     [tuiActiveZoneParent]="directive.activeZone"
 >
     <tui-scrollbar class="scroll">
-        <div tabindex="0" (focus)="onTopFocus()"></div>
+        <div
+            tabindex="0"
+            (focus)="onTopFocus()"
+        ></div>
         <div
             #content
             polymorpheus-outlet
@@ -14,6 +17,9 @@
             [content]="directive.content"
             [context]="getContext(directive.context, activeZone)"
         ></div>
-        <div tabindex="0" (focus)="onBottomFocus()"></div>
+        <div
+            tabindex="0"
+            (focus)="onBottomFocus()"
+        ></div>
     </tui-scrollbar>
 </div>

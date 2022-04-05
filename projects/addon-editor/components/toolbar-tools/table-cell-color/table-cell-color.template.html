@@ -26,7 +26,10 @@
             class="t-plate t-plate_paint"
             [style.background]="cellColor"
         ></div>
-        <ng-template #cellColorDropdown let-activeZone>
+        <ng-template
+            #cellColorDropdown
+            let-activeZone
+        >
             <tui-palette
                 class="t-color-picker"
                 [tuiActiveZoneParent]="activeZone"

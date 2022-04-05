@@ -25,7 +25,11 @@ describe('TuiHostedDropdown', () => {
                     <button id="native-button">Native button</button>
                     <button tuiButton>Button</button>
                 </tui-hosted-dropdown>
-                <tui-hosted-dropdown *ngIf="input" [content]="dropdown" [(open)]="open">
+                <tui-hosted-dropdown
+                    *ngIf="input"
+                    [content]="dropdown"
+                    [(open)]="open"
+                >
                     <tui-primitive-textfield>Entry field</tui-primitive-textfield>
                 </tui-hosted-dropdown>
                 <tui-hosted-dropdown
@@ -42,7 +46,13 @@ describe('TuiHostedDropdown', () => {
                 >
                     <div>
                         <button tuiButton>Button</button>
-                        <button #host tuiButton tuiHostedDropdownHost>Arrow</button>
+                        <button
+                            #host
+                            tuiButton
+                            tuiHostedDropdownHost
+                        >
+                            Arrow
+                        </button>
                     </div>
                 </tui-hosted-dropdown>
                 <ng-template #dropdown>

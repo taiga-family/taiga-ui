@@ -15,7 +15,10 @@
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <ng-content></ng-content>
-    <ng-template #dropdown="polymorpheus" polymorpheus>
+    <ng-template
+        #dropdown="polymorpheus"
+        polymorpheus
+    >
         <div
             #wrapper
             polymorpheus-outlet

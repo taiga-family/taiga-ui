@@ -24,7 +24,10 @@
             </tui-island>
         </div>
         <div class="tui-col_md-4">
-            <tui-island size="l" textAlign="center">
+            <tui-island
+                size="l"
+                textAlign="center"
+            >
                 <h3 class="title">Title!</h3>
                 <form [formGroup]="testForm">
                     <tui-input-phone
@@ -48,7 +51,11 @@
                 target="_blank"
                 [hoverable]="true"
             >
-                <img alt="Taiga" class="image" [src]="bannerImage" />
+                <img
+                    alt="Taiga"
+                    class="image"
+                    [src]="bannerImage"
+                />
                 <h3 class="title title_size_s">Title</h3>
                 <p class="text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -75,7 +82,11 @@
                 <h3 class="tui-island__title">Some product</h3>
                 <p class="tui-island__paragraph">{{collapsingText}}</p>
                 <p class="tui-island__paragraph tui-island__paragraph_link">
-                    <button tuiLink type="button" (click)="expandText()">
+                    <button
+                        tuiLink
+                        type="button"
+                        (click)="expandText()"
+                    >
                         Show
                         <ng-container *ngIf="expanded; else more">
                             less

@@ -1,4 +1,7 @@
-<h3 *ngIf="heading" class="t-title">
+<h3
+    *ngIf="heading"
+    class="t-title"
+>
     <span
         polymorpheus-outlet
         [content]="heading | tuiDocExampleCapitalize"
@@ -22,7 +25,10 @@
     [content]="description | tuiDocExampleCapitalize"
 ></h4>
 
-<div *ngIf="processor$ | async as content" class="t-example">
+<div
+    *ngIf="processor$ | async as content"
+    class="t-example"
+>
     <ng-container *ngIf="content | tuiDocExampleGetTabs: defaultTab as tabs">
         <div class="t-tabs-wrapper">
             <tui-tabs-with-more
@@ -30,7 +36,12 @@
                 [(activeItemIndex)]="activeItemIndex"
             >
                 <ng-container *ngFor="let tab of tabs">
-                    <button *tuiTab tuiTab>{{tab}}</button>
+                    <button
+                        *tuiTab
+                        tuiTab
+                    >
+                        {{tab}}
+                    </button>
                 </ng-container>
             </tui-tabs-with-more>
 
@@ -64,12 +75,18 @@
 </div>
 
 <ng-template #preview>
-    <div automation-id="tui-doc-example" class="t-demo">
+    <div
+        automation-id="tui-doc-example"
+        class="t-demo"
+    >
         <ng-content></ng-content>
     </div>
 </ng-template>
 
-<ng-template #codeSection let-code>
+<ng-template
+    #codeSection
+    let-code
+>
     <tui-doc-copy
         class="t-copy-code"
         [cdkCopyToClipboard]="code"

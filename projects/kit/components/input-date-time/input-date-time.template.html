@@ -25,7 +25,10 @@
         (focusedChange)="onFocused($event)"
     >
         <ng-content></ng-content>
-        <ng-content select="input" ngProjectAs="input"></ng-content>
+        <ng-content
+            select="input"
+            ngProjectAs="input"
+        ></ng-content>
     </tui-primitive-textfield>
 
     <ng-template #iconContent>
@@ -35,7 +38,10 @@
         ></tui-svg>
     </ng-template>
 
-    <ng-template #dropdown="polymorpheus" [polymorpheus]="type">
+    <ng-template
+        #dropdown="polymorpheus"
+        [polymorpheus]="type"
+    >
         <tui-calendar
             tuiPreventDefault="mousedown"
             automation-id="tui-input-date-time__calendar"

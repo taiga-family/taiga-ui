@@ -1,16 +1,27 @@
-<button tuiButton size="m" (click)="onClick()">
+<button
+    tuiButton
+    size="m"
+    (click)="onClick()"
+>
     Show dialog with carousel
 </button>
 
 <ng-template #header>
-    <div class="header" [style.backgroundImage]="background"></div>
+    <div
+        class="header"
+        [style.backgroundImage]="background"
+    ></div>
 </ng-template>
 <!-- TODO: need remove $any later -->
 <ng-template
     [tuiDialogOptions]="$any({ size: 's', header: header })"
     [(tuiDialog)]="open"
 >
-    <div tuiCarouselButtons class="wrapper" (touchstart.passive.stop)="0">
+    <div
+        tuiCarouselButtons
+        class="wrapper"
+        (touchstart.passive.stop)="0"
+    >
         <button
             tuiIconButton
             tuiMode="onDark"
@@ -29,7 +40,10 @@
                 <h2>Pagination</h2>
                 <p>
                     You can use
-                    <a tuiLink routerLink="/components/pagination">
+                    <a
+                        tuiLink
+                        routerLink="/components/pagination"
+                    >
                         Pagination
                     </a>
                     component with size 's' together with it
@@ -59,7 +73,11 @@
         [(index)]="index"
     ></tui-pagination>
     <div class="tui-space_top-4">
-        <button tuiButton appearance="primary" (click)="open = false">
+        <button
+            tuiButton
+            appearance="primary"
+            (click)="open = false"
+        >
             Got it!
         </button>
     </div>

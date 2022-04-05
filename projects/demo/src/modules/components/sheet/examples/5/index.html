@@ -1,12 +1,26 @@
-<button tuiButton (click)="toggle()">Show/Hide</button>
-<img src="assets/images/earth.jpg" alt="" class="preload" />
+<button
+    tuiButton
+    (click)="toggle()"
+>
+    Show/Hide
+</button>
+<img
+    src="assets/images/earth.jpg"
+    alt=""
+    class="preload"
+/>
 <ng-template
     let-scroll$="scroll$"
     [tuiSheetOptions]="options"
     [(tuiSheet)]="open"
 >
     <div class="wrapper">
-        <h2 tuiSheetHeading class="heading">Planet Earth</h2>
+        <h2
+            tuiSheetHeading
+            class="heading"
+        >
+            Planet Earth
+        </h2>
         <div class="earth">
             <img
                 src="assets/images/earth.jpg"

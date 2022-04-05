@@ -135,9 +135,9 @@
         "@nrwl/workspace": "13.8.2",
         "@nx-cloud/runners": "1.1.0",
         "@rollup/pluginutils": "~4.1.2",
-        "@tinkoff/eslint-config": "^1.26.3",
-        "@tinkoff/eslint-config-angular": "^1.27.3",
-        "@tinkoff/prettier-config": "^1.26.0",
+        "@tinkoff/eslint-config": "^1.29.2",
+        "@tinkoff/eslint-config-angular": "^1.29.0",
+        "@tinkoff/prettier-config": "^1.29.1",
         "@tinkoff/stylelint-config": "^1.16.1",
         "@types/cypress-image-snapshot": "^3.1.6",
         "@types/dompurify": "^2.3.3",
@@ -181,7 +181,8 @@
         "svgo": "~2.8.0",
         "ts-loader": "^5.4.5",
         "ts-node": "~7.0.1",
-        "typescript": "~3.8.3"
+        "typescript": "~3.8.3",
+        "prettier": "2.6.2"
     },
     "stylelint": {
         "extends": [

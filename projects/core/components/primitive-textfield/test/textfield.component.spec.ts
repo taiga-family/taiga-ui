@@ -8,9 +8,20 @@ import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
 describe('Textfield', () => {
     @Component({
         template: `
-            <input #auto tuiTextfield />
-            <input #attr id="attr" tuiTextfield />
-            <input #bind tuiTextfield [id]="value" />
+            <input
+                #auto
+                tuiTextfield
+            />
+            <input
+                #attr
+                id="attr"
+                tuiTextfield
+            />
+            <input
+                #bind
+                tuiTextfield
+                [id]="value"
+            />
         `,
     })
     class TestComponent {

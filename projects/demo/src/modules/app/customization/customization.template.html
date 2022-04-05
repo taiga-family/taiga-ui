@@ -1,6 +1,9 @@
 <h2 *ngIf="isIE; else customization">Not available in Internet Explorer.</h2>
 <ng-template #customization>
-    <tui-doc-demo #demo [attr.style]="style">
+    <tui-doc-demo
+        #demo
+        [attr.style]="style"
+    >
         <ng-content></ng-content>
     </tui-doc-demo>
     <tui-doc-documentation
@@ -17,7 +20,10 @@
         ></ng-template>
     </tui-doc-documentation>
     <ng-template #withMode>
-        <tui-accordion class="tui-space_top-6" [tuiMode]="null">
+        <tui-accordion
+            class="tui-space_top-6"
+            [tuiMode]="null"
+        >
             <tui-accordion-item>
                 Default
                 <tui-doc-documentation *tuiAccordionItemContent>

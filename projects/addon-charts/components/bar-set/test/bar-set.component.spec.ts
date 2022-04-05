@@ -9,7 +9,10 @@ import {TuiBarSetModule} from '../bar-set.module';
 describe('BarSet', () => {
     @Component({
         template: `
-            <tui-bar-set [value]="value" [collapsed]="collapsed"></tui-bar-set>
+            <tui-bar-set
+                [value]="value"
+                [collapsed]="collapsed"
+            ></tui-bar-set>
         `,
     })
     class TestComponent {

@@ -8,7 +8,10 @@ import {TuiBarChartModule} from '../bar-chart.module';
 describe('BarChart', () => {
     @Component({
         template: `
-            <tui-bar-chart [max]="max" [value]="value"></tui-bar-chart>
+            <tui-bar-chart
+                [max]="max"
+                [value]="value"
+            ></tui-bar-chart>
         `,
     })
     class TestComponent {

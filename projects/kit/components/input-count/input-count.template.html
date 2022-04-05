@@ -23,7 +23,10 @@
     (pressedChange)="onPressed($event)"
 >
     <ng-content></ng-content>
-    <ng-content select="input" ngProjectAs="input"></ng-content>
+    <ng-content
+        select="input"
+        ngProjectAs="input"
+    ></ng-content>
 </tui-primitive-textfield>
 <ng-container *ngIf="!buttonsHidden">
     <ng-container *ngIf="minusTexts$ | async as texts">

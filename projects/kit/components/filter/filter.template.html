@@ -8,7 +8,10 @@
         [size]="size"
         (ngModelChange)="onCheckbox($event, item)"
     >
-        <div automation-id="tui-filter__content" class="content">
+        <div
+            automation-id="tui-filter__content"
+            class="content"
+        >
             <div
                 polymorpheus-outlet
                 [content]="content"

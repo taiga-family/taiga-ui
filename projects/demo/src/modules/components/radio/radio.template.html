@@ -1,13 +1,23 @@
-<tui-doc-page header="Radio" package="KIT" type="components">
+<tui-doc-page
+    header="Radio"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             Radio button without a label. If you want to use it with a label,
             see
-            <a tuiLink routerLink="/components/radio-labeled">
+            <a
+                tuiLink
+                routerLink="/components/radio-labeled"
+            >
                 <code>RadioLabeled</code>
             </a>
             , and inside button — see
-            <a tuiLink routerLink="/components/radio-block">
+            <a
+                tuiLink
+                routerLink="/components/radio-block"
+            >
                 <code>RadioBlock</code>
             </a>
             .
@@ -79,7 +89,13 @@
                 ></tui-radio>
             </ng-template>
         </tui-doc-demo>
-        <button i18n tuiButton type="button" size="m" (click)="onClick()">
+        <button
+            i18n
+            tuiButton
+            type="button"
+            size="m"
+            (click)="onClick()"
+        >
             Set a value with a copy
         </button>
         <tui-doc-documentation>

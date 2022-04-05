@@ -12,7 +12,12 @@ describe('TuiLazyLoading directive', () => {
 
     @Component({
         template: `
-            <img id="image" loading="lazy" src="${picsumPhotos}" alt="picsum" />
+            <img
+                id="image"
+                loading="lazy"
+                src="${picsumPhotos}"
+                alt="picsum"
+            />
         `,
     })
     class TestComponent {}

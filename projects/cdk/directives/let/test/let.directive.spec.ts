@@ -7,7 +7,12 @@ import {TuiLetModule} from '../let.module';
 describe('Let', () => {
     @Component({
         template: `
-            <div *tuiLet="getter as value" #test>{{ value }}{{ value }}{{ value }}</div>
+            <div
+                *tuiLet="getter as value"
+                #test
+            >
+                {{ value }}{{ value }}{{ value }}
+            </div>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

@@ -1,4 +1,8 @@
-<tui-doc-page header="Accordion" package="KIT" type="components">
+<tui-doc-page
+    header="Accordion"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>An element that allows to show and hide content in sections</p>
 
@@ -43,7 +47,10 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-accordion [closeOthers]="closeOthers" [rounded]="rounded">
+            <tui-accordion
+                [closeOthers]="closeOthers"
+                [rounded]="rounded"
+            >
                 <tui-accordion-item
                     [borders]="borders"
                     [disabled]="disabled"
@@ -78,7 +85,10 @@
             </tui-accordion>
         </tui-doc-demo>
 
-        <tui-accordion class="b-full-width" [closeOthers]="false">
+        <tui-accordion
+            class="b-full-width"
+            [closeOthers]="false"
+        >
             <tui-accordion-item [open]="true">
                 TuiAccordionComponent
                 <ng-template tuiAccordionItemContent>

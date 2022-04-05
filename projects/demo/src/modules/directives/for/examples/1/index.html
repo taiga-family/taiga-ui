@@ -1,5 +1,10 @@
 <p>
-    <button tuiButton (click)="refresh()">Refresh</button>
+    <button
+        tuiButton
+        (click)="refresh()"
+    >
+        Refresh
+    </button>
 </p>
 <div *ngFor="let item of items$ | async else loading empty blank">{{item}}</div>
 <ng-template #loading>

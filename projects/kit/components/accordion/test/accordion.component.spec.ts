@@ -39,7 +39,10 @@ describe('Accordion', () => {
 
     @Component({
         template: `
-            <tui-accordion *ngIf="single" [rounded]="rounded">
+            <tui-accordion
+                *ngIf="single"
+                [rounded]="rounded"
+            >
                 <tui-accordion-item
                     automation-id="tui-accordion__item1"
                     [borders]="borders"
@@ -50,7 +53,10 @@ describe('Accordion', () => {
                     <ng-template tuiAccordionItemContent>Accordion content</ng-template>
                 </tui-accordion-item>
             </tui-accordion>
-            <tui-accordion *ngIf="!single" [closeOthers]="closeOthers">
+            <tui-accordion
+                *ngIf="!single"
+                [closeOthers]="closeOthers"
+            >
                 <tui-accordion-item automation-id="tui-accordion__item2">
                     Accordion header
                     <ng-template tuiAccordionItemContent>

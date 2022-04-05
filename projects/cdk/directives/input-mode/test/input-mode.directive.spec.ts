@@ -8,9 +8,20 @@ import {TuiInputModeModule} from '../input-mode.module';
 describe('TuiInputMode directive', () => {
     @Component({
         template: `
-            <input #inputDefault pattern="123" [tuiInputMode] />
-            <input #inputCustom [tuiInputMode]="inputMode" />
-            <input #inputWithPattern pattern="123" [tuiInputMode]="inputMode" />
+            <input
+                #inputDefault
+                pattern="123"
+                [tuiInputMode]
+            />
+            <input
+                #inputCustom
+                [tuiInputMode]="inputMode"
+            />
+            <input
+                #inputWithPattern
+                pattern="123"
+                [tuiInputMode]="inputMode"
+            />
         `,
     })
     class TestComponent {

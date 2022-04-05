@@ -1,6 +1,18 @@
-<h3 i18n class="title">Horizontal group</h3>
-<form class="group" [formGroup]="testForm">
-    <div tuiGroup class="group" [collapsed]="true">
+<h3
+    i18n
+    class="title"
+>
+    Horizontal group
+</h3>
+<form
+    class="group"
+    [formGroup]="testForm"
+>
+    <div
+        tuiGroup
+        class="group"
+        [collapsed]="true"
+    >
         <tui-radio-block
             contentAlign="right"
             formControlName="testValue"
@@ -27,9 +39,19 @@
         </tui-radio-block>
     </div>
 </form>
-<h3 i18n class="title">Vertical group</h3>
+<h3
+    i18n
+    class="title"
+>
+    Vertical group
+</h3>
 <form [formGroup]="testForm">
-    <div tuiGroup orientation="vertical" class="group" [collapsed]="true">
+    <div
+        tuiGroup
+        orientation="vertical"
+        class="group"
+        [collapsed]="true"
+    >
         <tui-radio-block
             contentAlign="right"
             formControlName="testValue"

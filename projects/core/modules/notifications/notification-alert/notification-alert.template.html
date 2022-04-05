@@ -21,7 +21,10 @@
     ></div>
 </tui-notification>
 <ng-template #noClose>
-    <tui-notification [status]="item.status" [hasIcon]="item.hasIcon">
+    <tui-notification
+        [status]="item.status"
+        [hasIcon]="item.hasIcon"
+    >
         <label
             *ngIf="item.label"
             polymorpheus-outlet

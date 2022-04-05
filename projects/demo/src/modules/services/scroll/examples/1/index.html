@@ -1,11 +1,20 @@
 <div class="flex">
-    <tui-input-count class="element" [(ngModel)]="scrollTop">
+    <tui-input-count
+        class="element"
+        [(ngModel)]="scrollTop"
+    >
         scrollTop
     </tui-input-count>
-    <tui-input-count class="element" [(ngModel)]="scrollLeft">
+    <tui-input-count
+        class="element"
+        [(ngModel)]="scrollLeft"
+    >
         scrollLeft
     </tui-input-count>
-    <tui-input-count class="element" [(ngModel)]="duration">
+    <tui-input-count
+        class="element"
+        [(ngModel)]="duration"
+    >
         duration
     </tui-input-count>
     <button
@@ -17,7 +26,11 @@
         Go!
     </button>
 </div>
-<tui-scrollbar #scrollRef="elementRef" tuiElement class="scrollbar">
+<tui-scrollbar
+    #scrollRef="elementRef"
+    tuiElement
+    class="scrollbar"
+>
     <div class="wrapper">
         <p>
             Monty Python (also collectively known as the Pythons) were a British

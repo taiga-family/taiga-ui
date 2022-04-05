@@ -6,7 +6,11 @@
     [pressed]="pressed"
     [invalid]="invalid"
 >
-    <span polymorpheus-outlet [content]="icon" [context]="{$implicit: size}">
+    <span
+        polymorpheus-outlet
+        [content]="icon"
+        [context]="{$implicit: size}"
+    >
         <ng-template let-icon>
             <tui-svg
                 class="mark"

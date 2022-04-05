@@ -1,4 +1,7 @@
-<form class="b-form" [formGroup]="testForm">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
     <tui-input-time
         formControlName="testValue"
         class="tui-space_bottom-2"
@@ -6,5 +9,8 @@
     >
         12h time
     </tui-input-time>
-    <tui-toggle formControlName="isPm" size="l"></tui-toggle>
+    <tui-toggle
+        formControlName="isPm"
+        size="l"
+    ></tui-toggle>
 </form>

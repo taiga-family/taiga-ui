@@ -2,6 +2,7 @@ const base = require('@tinkoff/prettier-config/angular');
 
 module.exports = {
     ...base,
+    singleAttributePerLine: true,
     overrides: [
         ...base.overrides,
         {

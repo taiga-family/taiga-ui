@@ -8,8 +8,14 @@
     [title]="texts[0]"
     (click)="onClick()"
 >
-    <span class="t-content" [class.t-content_moved]="copied$ | async">
-        <span class="t-initial" [attr.data-text]="texts[0]">
+    <span
+        class="t-content"
+        [class.t-content_moved]="copied$ | async"
+    >
+        <span
+            class="t-initial"
+            [attr.data-text]="texts[0]"
+        >
             <ng-content></ng-content>
         </span>
         {{ texts[1] }}

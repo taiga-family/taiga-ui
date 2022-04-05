@@ -1,10 +1,21 @@
-<tui-doc-page i18n-header header="Svg" package="CORE" type="components">
+<tui-doc-page
+    i18n-header
+    header="Svg"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>Svg</code>
             is a component for working with SVG-image and its colors. If you
             want to use custom icons that you don't trust, you need to provide a
-            <a tuiLink routerLink="/icon-set" fragment="sanitizer">sanitizer</a>
+            <a
+                tuiLink
+                routerLink="/icon-set"
+                fragment="sanitizer"
+            >
+                sanitizer
+            </a>
             .
         </p>
 
@@ -30,7 +41,10 @@
 
     <ng-template pageTab>
         <div class="b-full-width">
-            <tui-svg class="icon" [src]="icon"></tui-svg>
+            <tui-svg
+                class="icon"
+                [src]="icon"
+            ></tui-svg>
         </div>
 
         <tui-doc-documentation>

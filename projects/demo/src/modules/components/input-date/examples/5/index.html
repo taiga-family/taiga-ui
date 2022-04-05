@@ -1,5 +1,8 @@
 <h3>Control's output as TuiDay (default)</h3>
-<tui-input-date class="b-form" [formControl]="defaultControl">
+<tui-input-date
+    class="b-form"
+    [formControl]="defaultControl"
+>
     Choose a date
 </tui-input-date>
 <p>Stringified control value:</p>
@@ -13,7 +16,11 @@
     <code>toNativeDate</code>
     directive)
 </p>
-<tui-input-date toNativeDate class="b-form" [formControl]="nativeDateControl">
+<tui-input-date
+    toNativeDate
+    class="b-form"
+    [formControl]="nativeDateControl"
+>
     Choose a date
 </tui-input-date>
 <p>Stringified control value:</p>

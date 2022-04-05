@@ -10,7 +10,10 @@ import {TuiZoomModule} from '../zoom.module';
 describe('TuiZoom directive', () => {
     @Component({
         template: `
-            <div class="main" (tuiZoom)="onZoom($event)"></div>
+            <div
+                class="main"
+                (tuiZoom)="onZoom($event)"
+            ></div>
         `,
     })
     class TestComponent {

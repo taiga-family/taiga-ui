@@ -1,4 +1,7 @@
-<div i18n class="description">
+<div
+    i18n
+    class="description"
+>
     To highlight extra characters:
     <ul class="steps">
         <li>
@@ -14,8 +17,15 @@
     </ul>
 </div>
 
-<form class="form tui-col_md-6" [formGroup]="testForm">
-    <label tuiLabel label="Write a wise thought" class="tui-row">
+<form
+    class="form tui-col_md-6"
+    [formGroup]="testForm"
+>
+    <label
+        tuiLabel
+        label="Write a wise thought"
+        class="tui-row"
+    >
         <tui-text-area
             formControlName="testValue1"
             tuiHintContent="it's just a joke"

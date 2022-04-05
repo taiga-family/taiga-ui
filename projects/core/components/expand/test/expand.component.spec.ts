@@ -11,7 +11,10 @@ const ANIMATION_DELAY = 900;
 describe('expand', () => {
     @Component({
         template: `
-            <tui-expand [async]="async" [expanded]="expanded">
+            <tui-expand
+                [async]="async"
+                [expanded]="expanded"
+            >
                 <ng-template tuiExpandContent>
                     <div #content>content</div>
                 </ng-template>

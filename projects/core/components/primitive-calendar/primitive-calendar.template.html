@@ -1,5 +1,9 @@
 <div class="t-row t-row_weekday">
-    <div *ngFor="let day of weekDays$ | async" class="t-cell">{{ day }}</div>
+    <div
+        *ngFor="let day of weekDays$ | async"
+        class="t-cell"
+        [innerText]="day"
+    ></div>
 </div>
 <div *tuiLet="month | tuiCalendarSheet: true as sheet">
     <div

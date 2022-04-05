@@ -7,7 +7,11 @@
 >
     <ng-template tuiDataList>
         <tui-data-list *ngIf="items else loading">
-            <button *ngFor="let item of items" tuiOption [value]="item.id">
+            <button
+                *ngFor="let item of items"
+                tuiOption
+                [value]="item.id"
+            >
                 {{item.name}}
             </button>
         </tui-data-list>

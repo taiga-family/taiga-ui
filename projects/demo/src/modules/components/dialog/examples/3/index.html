@@ -2,11 +2,19 @@
     Your balance:
     <tui-money [value]="money"></tui-money>
 </p>
-<button tuiButton type="button" size="m" (click)="showDialog(template)">
+<button
+    tuiButton
+    type="button"
+    size="m"
+    (click)="showDialog(template)"
+>
     Show
 </button>
 
-<ng-template #template let-observer>
+<ng-template
+    #template
+    let-observer
+>
     <p i18n>You can show a dialog with template</p>
     <p>
         Your balance:
@@ -22,7 +30,12 @@
         Withdraw&nbsp;
         <tui-money [value]="100"></tui-money>
     </button>
-    <button tuiButton type="button" size="m" (click)="observer.complete()">
+    <button
+        tuiButton
+        type="button"
+        size="m"
+        (click)="observer.complete()"
+    >
         Cancel
     </button>
 </ng-template>

@@ -4,7 +4,11 @@
 </tui-notification>
 
 <div class="wrapper">
-    <tui-ring-chart size="s" class="chart" [value]="value"></tui-ring-chart>
+    <tui-ring-chart
+        size="s"
+        class="chart"
+        [value]="value"
+    ></tui-ring-chart>
 
     <div class="legend">
         <tui-legend-item
@@ -20,7 +24,10 @@
             <tui-primitive-checkbox
                 [value]="!item.disabled"
             ></tui-primitive-checkbox>
-            <tui-money [singleColor]="true" [value]="data[index]"></tui-money>
+            <tui-money
+                [singleColor]="true"
+                [value]="data[index]"
+            ></tui-money>
             <tui-svg
                 src="tuiIconCloseLarge"
                 class="disable"

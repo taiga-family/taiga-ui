@@ -1,10 +1,27 @@
-<button tuiButton type="button" size="m" (click)="showTableBar()">
+<button
+    tuiButton
+    type="button"
+    size="m"
+    (click)="showTableBar()"
+>
     Show TableBar
 </button>
 
-<ng-template #tableBarTemplate let-close>
-    <div tuiMode="onDark" class="content">
-        <button tuiButton type="button" size="m">Save</button>
+<ng-template
+    #tableBarTemplate
+    let-close
+>
+    <div
+        tuiMode="onDark"
+        class="content"
+    >
+        <button
+            tuiButton
+            type="button"
+            size="m"
+        >
+            Save
+        </button>
         <button
             tuiButton
             type="button"

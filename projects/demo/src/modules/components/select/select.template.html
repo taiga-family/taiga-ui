@@ -1,6 +1,13 @@
-<tui-doc-page header="Select" package="KIT" type="components">
+<tui-doc-page
+    header="Select"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <code>Select</code>
             is a field with dropdown to choose one item.
         </div>
@@ -39,11 +46,19 @@
             <tui-select-example-3></tui-select-example-3>
         </tui-doc-example>
 
-        <tui-doc-example id="datalist" heading="DataList" [content]="example4">
+        <tui-doc-example
+            id="datalist"
+            heading="DataList"
+            [content]="example4"
+        >
             <tui-select-example-4></tui-select-example-4>
         </tui-doc-example>
 
-        <tui-doc-example id="id" heading="ID only" [content]="example5">
+        <tui-doc-example
+            id="id"
+            heading="ID only"
+            [content]="example5"
+        >
             <tui-select-example-5></tui-select-example-5>
         </tui-doc-example>
 
@@ -124,8 +139,14 @@
             </ng-template>
         </tui-doc-demo>
 
-        <ng-template #valueTemplateContent let-item>
-            <tui-svg src="tuiIconCheck" class="icon"></tui-svg>
+        <ng-template
+            #valueTemplateContent
+            let-item
+        >
+            <tui-svg
+                src="tuiIconCheck"
+                class="icon"
+            ></tui-svg>
             <div class="text-overflow">{{ item }}</div>
         </ng-template>
         <div i18n>
@@ -135,7 +156,12 @@
                 :
             </p>
 
-            <button tuiButton type="button" size="m" (click)="setValue()">
+            <button
+                tuiButton
+                type="button"
+                size="m"
+                (click)="setValue()"
+            >
                 Set
             </button>
         </div>

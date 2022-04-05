@@ -204,7 +204,10 @@ describe('FieldError', () => {
                 <form [formGroup]="testForm">
                     <tui-input formControlName="control"></tui-input>
 
-                    <ng-template #errorContent="polymorpheus" polymorpheus>
+                    <ng-template
+                        #errorContent="polymorpheus"
+                        polymorpheus
+                    >
                         {{ testMes }}
                     </ng-template>
 

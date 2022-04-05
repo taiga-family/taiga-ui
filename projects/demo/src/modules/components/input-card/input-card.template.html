@@ -1,4 +1,8 @@
-<tui-doc-page header="InputCard" package="ADDON-COMMERCE" type="components">
+<tui-doc-page
+    header="InputCard"
+    package="ADDON-COMMERCE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             <code>InputCard</code>
@@ -9,7 +13,11 @@
             to input a card
         </p>
 
-        <tui-doc-example id="group" heading="tui-group" [content]="example1">
+        <tui-doc-example
+            id="group"
+            heading="tui-group"
+            [content]="example1"
+        >
             <tui-input-card-example-1></tui-input-card-example-1>
         </tui-doc-example>
     </ng-template>
@@ -17,7 +25,10 @@
     <ng-template pageTab>
         <tui-doc-demo [control]="control">
             <ng-template>
-                <form class="form" [formGroup]="control">
+                <form
+                    class="form"
+                    [formGroup]="control"
+                >
                     <tui-input-card
                         formControlName="card"
                         class="control"
@@ -87,7 +98,10 @@
                 to control validators to validate it with Luhn algorithm
             </p>
         </div>
-        <tui-accordion class="b-full-width" [closeOthers]="false">
+        <tui-accordion
+            class="b-full-width"
+            [closeOthers]="false"
+        >
             <tui-accordion-item [open]="true">
                 TuiInputCardComponent
                 <ng-template tuiAccordionItemContent>

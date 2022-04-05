@@ -11,7 +11,10 @@
             ></tui-svg>
         </div>
 
-        <div class="t-wrapper" [style.width.%]="percent">
+        <div
+            class="t-wrapper"
+            [style.width.%]="percent"
+        >
             <tui-svg
                 *tuiRepeatTimes="let index of max"
                 class="t-icon-filled"
@@ -19,7 +22,10 @@
             ></tui-svg>
         </div>
 
-        <tui-svg *tuiRepeatTimes="let item of max" [src]="iconNormal"></tui-svg>
+        <tui-svg
+            *tuiRepeatTimes="let item of max"
+            [src]="iconNormal"
+        ></tui-svg>
 
         <input
             #focusableElement

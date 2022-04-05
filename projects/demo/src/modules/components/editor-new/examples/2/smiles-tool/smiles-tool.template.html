@@ -15,8 +15,14 @@
         [pseudoPressed]="dropdown.open"
         [focusable]="dropdown.open"
     ></button>
-    <ng-template #smileDropdown let-activeZone>
-        <div class="smiles" [tuiActiveZoneParent]="activeZone">
+    <ng-template
+        #smileDropdown
+        let-activeZone
+    >
+        <div
+            class="smiles"
+            [tuiActiveZoneParent]="activeZone"
+        >
             <button
                 *ngFor="let smile of smiles"
                 class="smile"

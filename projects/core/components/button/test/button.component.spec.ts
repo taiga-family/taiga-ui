@@ -9,7 +9,13 @@ import {TuiButtonModule} from '../button.module';
 describe('Button', () => {
     @Component({
         template: `
-            <button tuiButton type="button" [showLoader]="showLoader">My button</button>
+            <button
+                tuiButton
+                type="button"
+                [showLoader]="showLoader"
+            >
+                My button
+            </button>
         `,
     })
     class TestComponent {

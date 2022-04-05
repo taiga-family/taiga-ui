@@ -5,7 +5,10 @@
         tuiRipple="var(--tui-text-01)"
         (click)="onClick(item.text)"
     >
-        <tui-svg class="tui-space_right-2" [src]="item.icon"></tui-svg>
+        <tui-svg
+            class="tui-space_right-2"
+            [src]="item.icon"
+        ></tui-svg>
         {{item.text}}
     </button>
 </tui-tabs>

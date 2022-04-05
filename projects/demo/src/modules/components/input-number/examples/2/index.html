@@ -1,11 +1,17 @@
-<form class="b-form" [formGroup]="testForm">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
     <tui-input-number
         formControlName="testValue"
         tuiTextfieldSize="s"
         postfix="kg"
     >
         Potatos
-        <input tuiTextfield name="potato" />
+        <input
+            tuiTextfield
+            name="potato"
+        />
     </tui-input-number>
     <tui-input-number
         formControlName="testValue"
@@ -15,7 +21,10 @@
         [tuiTextfieldLabelOutside]="true"
     >
         Milk
-        <input id="milk" tuiTextfield />
+        <input
+            id="milk"
+            tuiTextfield
+        />
     </tui-input-number>
     <tui-input-number
         postfix="cm"
@@ -23,6 +32,9 @@
         class="tui-space_top-2"
     >
         Carrot
-        <input tuiTextfield style="color: orange" />
+        <input
+            tuiTextfield
+            style="color: orange"
+        />
     </tui-input-number>
 </form>

@@ -21,7 +21,10 @@
         (hoveredChange)="onHovered($event)"
     >
         <ng-content></ng-content>
-        <ng-content select="input" ngProjectAs="input"></ng-content>
+        <ng-content
+            select="input"
+            ngProjectAs="input"
+        ></ng-content>
     </tui-primitive-textfield>
 
     <ng-template #dropdown>

@@ -6,7 +6,10 @@
                 [items]="items"
                 [itemContent]="tariff1ItemContent"
             ></tui-radio-list>
-            <ng-template #tariff1ItemContent let-data>
+            <ng-template
+                #tariff1ItemContent
+                let-data
+            >
                 <div>Option &laquo;{{data.name}}&raquo;.</div>
                 <div class="description">{{data.description}}</div>
             </ng-template>
@@ -20,7 +23,10 @@
                 [items]="items"
                 [itemContent]="tariff2ItemContent"
             ></tui-radio-list>
-            <ng-template #tariff2ItemContent let-data>
+            <ng-template
+                #tariff2ItemContent
+                let-data
+            >
                 &laquo;{{data.name}}&raquo;
             </ng-template>
         </form>

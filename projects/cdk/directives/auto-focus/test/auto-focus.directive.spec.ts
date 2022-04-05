@@ -21,7 +21,10 @@ describe('TuiAutoFocus directive', () => {
     describe('works for focusable HTML element', () => {
         @Component({
             template: `
-                <div tuiAutoFocus tabindex="0"></div>
+                <div
+                    tuiAutoFocus
+                    tabindex="0"
+                ></div>
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })
@@ -58,7 +61,12 @@ describe('TuiAutoFocus directive', () => {
     describe('works for TUI_FOCUSABLE_ITEM_ACCESSOR', () => {
         @Component({
             template: `
-                <p><input #input value="test" /></p>
+                <p>
+                    <input
+                        #input
+                        value="test"
+                    />
+                </p>
             `,
             selector: 'focusable-component',
             changeDetection: ChangeDetectionStrategy.OnPush,
@@ -168,7 +176,11 @@ describe('TuiAutoFocus directive', () => {
     describe('autoFocus flag is false', () => {
         @Component({
             template: `
-                <div tuiAutoFocus tabindex="0" [autoFocus]="autoFocus"></div>
+                <div
+                    tuiAutoFocus
+                    tabindex="0"
+                    [autoFocus]="autoFocus"
+                ></div>
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,
         })

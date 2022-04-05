@@ -9,7 +9,10 @@
         [@tuiSlideInTop]="animation"
         [class.t-bar_light]="item.mode === 'onDark'"
     >
-        <div class="t-container" [class.t-container_adaptive]="item.adaptive">
+        <div
+            class="t-container"
+            [class.t-container_adaptive]="item.adaptive"
+        >
             <div class="t-inner">
                 <div
                     polymorpheus-outlet

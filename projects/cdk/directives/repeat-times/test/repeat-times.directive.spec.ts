@@ -10,7 +10,11 @@ const DEFAULT_TEST_COUNT = 3;
 describe('TuiRepeatTimes directive', () => {
     @Component({
         template: `
-            <div *tuiRepeatTimes="let index of count" class="test-item" [title]="index">
+            <div
+                *tuiRepeatTimes="let index of count"
+                class="test-item"
+                [title]="index"
+            >
                 {{ index }}
             </div>
         `,

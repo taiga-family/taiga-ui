@@ -1,4 +1,7 @@
-<tui-scrollbar *ngIf="isYearPickerShown; else monthSelect" class="t-scrollbar">
+<tui-scrollbar
+    *ngIf="isYearPickerShown; else monthSelect"
+    class="t-scrollbar"
+>
     <tui-primitive-year-picker
         [min]="min"
         [max]="max"
@@ -15,7 +18,11 @@
         (leftClick)="onPreviousYear()"
         (rightClick)="onNextYear()"
     >
-        <button tuiLink [tuiFocusable]="false" (click)="onYearClick()">
+        <button
+            tuiLink
+            [tuiFocusable]="false"
+            (click)="onYearClick()"
+        >
             {{ year.formattedYear }}
         </button>
     </tui-primitive-spin-button>

@@ -1,4 +1,7 @@
-<nav tuiTabs [(activeItemIndex)]="index">
+<nav
+    tuiTabs
+    [(activeItemIndex)]="index"
+>
     <button tuiTab>Just a tab</button>
     <tui-hosted-dropdown
         tuiDropdownHover
@@ -6,7 +9,10 @@
         [content]="content"
         [(open)]="open"
     >
-        <button tuiTab (tui-tab-activate.stop)="noop()">
+        <button
+            tuiTab
+            (tui-tab-activate.stop)="noop()"
+        >
             Hoverable/Clickable
         </button>
         <ng-template #content>

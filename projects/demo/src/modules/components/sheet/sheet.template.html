@@ -1,8 +1,18 @@
-<tui-doc-page header="Sheet" package="ADDON-MOBILE" type="components">
-    <ng-template i18n pageTab>
+<tui-doc-page
+    header="Sheet"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template
+        i18n
+        pageTab
+    >
         A mobile draggable sheet popup
 
-        <tui-notification *ngIf="!isMobile" class="tui-space_top-4">
+        <tui-notification
+            *ngIf="!isMobile"
+            class="tui-space_top-4"
+        >
             This component only works on mobile devices. Enable emulation in
             DevTools
         </tui-notification>
@@ -49,7 +59,10 @@
             <tui-sheet-example-4></tui-sheet-example-4>
             <tui-notification class="tui-space_top-4">
                 Using
-                <a tuiLink routerLink="directives/elastic-sticky">
+                <a
+                    tuiLink
+                    routerLink="directives/elastic-sticky"
+                >
                     <code>ElasticSticky</code>
                 </a>
                 directive.
@@ -79,7 +92,12 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <button tuiButton (click)="toggle()">Toggle</button>
+            <button
+                tuiButton
+                (click)="toggle()"
+            >
+                Toggle
+            </button>
             <ng-template #template>
                 <div class="top">
                     <tui-avatar
@@ -90,7 +108,10 @@
                     <h2>Karl Gambolputty</h2>
                 </div>
             </ng-template>
-            <ng-template [tuiSheetOptions]="options" [(tuiSheet)]="open">
+            <ng-template
+                [tuiSheetOptions]="options"
+                [(tuiSheet)]="open"
+            >
                 Karl Gambolputty de von
                 Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
                 von Hautkopft of Ulm was the last-surviving relative of Johann
@@ -98,7 +119,12 @@
                 Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
                 von Hautkopft of Ulm.
                 <div class="tui-space_top-4">
-                    <button tuiButton (click)="toggle()">Close</button>
+                    <button
+                        tuiButton
+                        (click)="toggle()"
+                    >
+                        Close
+                    </button>
                 </div>
             </ng-template>
         </tui-doc-demo>

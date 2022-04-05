@@ -5,7 +5,10 @@
     type="directives"
 >
     <ng-template pageTab>
-        <p i18n class="description">
+        <p
+            i18n
+            class="description"
+        >
             <code>DropdownContext</code>
             allows to show custom right click context dropdown.
         </p>
@@ -53,11 +56,18 @@
                 Right click on me to
                 <strong>see a dropdown</strong>
             </p>
-            <ng-template #dropdownContent let-close="close">
+            <ng-template
+                #dropdownContent
+                let-close="close"
+            >
                 <div class="dropdown">
                     <ng-container *ngTemplateOutlet="tips"></ng-container>
 
-                    <button tuiButton type="button" (click)="close()">
+                    <button
+                        tuiButton
+                        type="button"
+                        (click)="close()"
+                    >
                         Close me
                     </button>
                 </div>
@@ -151,7 +161,11 @@
         </li>
         <li>
             To get
-            <a tuiLink routerLink="/directives/active-zone" target="_blank">
+            <a
+                tuiLink
+                routerLink="/directives/active-zone"
+                target="_blank"
+            >
                 ActiveZone
             </a>
             of opened dropdown you should declare local template variable which

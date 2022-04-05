@@ -24,7 +24,10 @@ describe('Notification', () => {
                 Short simple informational message
             </tui-notification>
             <ng-template #noClose>
-                <tui-notification [hasIcon]="hasIcon" [status]="status">
+                <tui-notification
+                    [hasIcon]="hasIcon"
+                    [status]="status"
+                >
                     Short simple informational message
                 </tui-notification>
             </ng-template>

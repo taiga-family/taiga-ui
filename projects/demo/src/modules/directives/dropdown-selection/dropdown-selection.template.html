@@ -19,7 +19,11 @@
             <tui-dropdown-selection-example-1></tui-dropdown-selection-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="textarea" heading="textarea" [content]="example2">
+        <tui-doc-example
+            id="textarea"
+            heading="textarea"
+            [content]="example2"
+        >
             <tui-dropdown-selection-example-2></tui-dropdown-selection-example-2>
         </tui-doc-example>
     </ng-template>
@@ -42,13 +46,21 @@
                 <strong>see a dropdown</strong>
             </p>
             <ng-template #dropdownContent>
-                <div i18n class="dropdown">
+                <div
+                    i18n
+                    class="dropdown"
+                >
                     Here you can have any content
                     <p>
                         You can select a text inside a dropdown and it will not
                         close a dropdown
                     </p>
-                    <button tuiButton type="button">Button</button>
+                    <button
+                        tuiButton
+                        type="button"
+                    >
+                        Button
+                    </button>
                 </div>
             </ng-template>
         </tui-doc-demo>

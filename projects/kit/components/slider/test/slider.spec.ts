@@ -9,7 +9,11 @@ import {TuiSliderModule} from '../slider.module';
 describe('Slider', () => {
     @Component({
         template: `
-            <input #nativeUsageAllDefaults tuiSlider type="range" />
+            <input
+                #nativeUsageAllDefaults
+                tuiSlider
+                type="range"
+            />
             <input
                 #controller
                 tuiSlider

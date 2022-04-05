@@ -1,5 +1,8 @@
 <ng-container *ngIf="items.changes | async"></ng-container>
-<div class="t-scroller" (tuiCarouselScroll)="onScroll($event)">
+<div
+    class="t-scroller"
+    (tuiCarouselScroll)="onScroll($event)"
+>
     <div class="t-wrapper">
         <div
             waIntersectionObserver

@@ -1,6 +1,14 @@
-<tui-doc-page i18n-header header="Tag" package="KIT" type="components">
+<tui-doc-page
+    i18n-header
+    header="Tag"
+    package="KIT"
+    type="components"
+>
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             Tags show information and they can be edited, deleted or clicked.
         </div>
 
@@ -75,7 +83,10 @@
                 (edited)="editTag($event)"
             ></tui-tag>
             <ng-template #errorIcon>
-                <tui-svg src="tuiIconAttention" class="error-icon"></tui-svg>
+                <tui-svg
+                    src="tuiIconAttention"
+                    class="error-icon"
+                ></tui-svg>
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>

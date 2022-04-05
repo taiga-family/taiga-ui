@@ -16,7 +16,10 @@
     </button>
 </tui-hosted-dropdown>
 
-<ng-template #content let-activeZone>
+<ng-template
+    #content
+    let-activeZone
+>
     <tui-data-list
         tuiDataListDropdownManager
         [tuiActiveZoneParent]="activeZone"
@@ -65,7 +68,10 @@
     </tui-data-list>
 
     <ng-template #money>
-        <form class="form" [formGroup]="moneyForm">
+        <form
+            class="form"
+            [formGroup]="moneyForm"
+        >
             <tui-input
                 automation-id="tui-data-money-input"
                 formControlName="moneyValue"
@@ -100,7 +106,10 @@
     </ng-template>
 
     <ng-template #input>
-        <form class="form" [formGroup]="testForm">
+        <form
+            class="form"
+            [formGroup]="testForm"
+        >
             <tui-input
                 automation-id="tui-data-list-email-field"
                 formControlName="testValue"
@@ -112,7 +121,10 @@
 
     <ng-template #currency>
         <div class="example">
-            <div tuiGroup class="group">
+            <div
+                tuiGroup
+                class="group"
+            >
                 <tui-input [(ngModel)]="dollar">1 Rub = (X) Dollars</tui-input>
                 <tui-input [(ngModel)]="euro">1 Rub = (Y) Euros</tui-input>
             </div>

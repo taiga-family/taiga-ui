@@ -4,7 +4,10 @@
         [ngTemplateOutlet]="items[key.toString()]?.template || plain"
     >
         <ng-template #plain>
-            <td *ngIf="item$ | async as item" tuiTd>
+            <td
+                *ngIf="item$ | async as item"
+                tuiTd
+            >
                 {{ item[key.toString()] }}
             </td>
         </ng-template>

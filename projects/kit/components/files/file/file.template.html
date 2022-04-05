@@ -24,8 +24,18 @@
     ></div>
     <div class="t-wrapper">
         <div class="t-text">
-            <div automation-id="tui-file__name" class="t-name">{{ name }}</div>
-            <div automation-id="tui-file__type" class="t-type">{{ type }}</div>
+            <div
+                automation-id="tui-file__name"
+                class="t-name"
+            >
+                {{ name }}
+            </div>
+            <div
+                automation-id="tui-file__type"
+                class="t-type"
+            >
+                {{ type }}
+            </div>
             <div
                 *ngIf="showSize && (fileSize$ | async) as fileSize"
                 automation-id="tui-file__size"

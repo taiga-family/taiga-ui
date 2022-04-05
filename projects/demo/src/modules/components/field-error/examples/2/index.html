@@ -1,5 +1,11 @@
-<form class="b-form" [formGroup]="testForm">
-    <label tuiLabel label="Secret number">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
+    <label
+        tuiLabel
+        label="Secret number"
+    >
         <tui-input
             formControlName="testValue1"
             tuiTextfieldSize="m"
@@ -32,7 +38,11 @@
 
         <ng-template #bigErrorContent>
             This company is already registered
-            <button tuiButton type="button" class="tui-space_top-2">
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_top-2"
+            >
                 It is mine
             </button>
         </ng-template>

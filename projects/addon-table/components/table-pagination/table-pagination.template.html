@@ -5,7 +5,10 @@
     </span>
     <span>
         {{ texts.linesPerPage }}
-        <tui-hosted-dropdown [content]="content" [(open)]="open">
+        <tui-hosted-dropdown
+            [content]="content"
+            [(open)]="open"
+        >
             <button tuiLink>
                 <strong>{{ start + 1 }}–{{ end }}</strong>
             </button>

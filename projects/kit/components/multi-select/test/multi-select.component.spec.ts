@@ -45,7 +45,10 @@ describe('MultiSelect', () => {
         @Component({
             template: `
                 <tui-root>
-                    <tui-multi-select [formControl]="control" [readOnly]="readOnly">
+                    <tui-multi-select
+                        [formControl]="control"
+                        [readOnly]="readOnly"
+                    >
                         <tui-data-list-wrapper
                             *tuiDataList
                             automation-id="tui-multi-select__menu"
@@ -237,7 +240,10 @@ describe('MultiSelect', () => {
         @Component({
             template: `
                 <tui-root>
-                    <tui-multi-select [formControl]="control" [readOnly]="readOnly">
+                    <tui-multi-select
+                        [formControl]="control"
+                        [readOnly]="readOnly"
+                    >
                         <tui-data-list-wrapper
                             *tuiDataList
                             automation-id="tui-multi-select__menu"

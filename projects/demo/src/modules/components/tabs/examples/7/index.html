@@ -1,6 +1,13 @@
-<tui-tabs-with-more [itemsLimit]="3" [(activeItemIndex)]="activeItemIndex">
+<tui-tabs-with-more
+    [itemsLimit]="3"
+    [(activeItemIndex)]="activeItemIndex"
+>
     <ng-container *ngFor="let item of items">
-        <button *tuiTab tuiTab (keydown.delete)="remove(item)">
+        <button
+            *tuiTab
+            tuiTab
+            (keydown.delete)="remove(item)"
+        >
             {{item}}
             <tui-svg
                 src="tuiIconCloseLarge"
@@ -11,7 +18,12 @@
     </ng-container>
 </tui-tabs-with-more>
 <p>{{items[activeItemIndex]}}</p>
-<button tuiButton (click)="add()">Add one more</button>
+<button
+    tuiButton
+    (click)="add()"
+>
+    Add one more
+</button>
 <tui-input-count
     class="tui-space_top-4"
     [max]="4"

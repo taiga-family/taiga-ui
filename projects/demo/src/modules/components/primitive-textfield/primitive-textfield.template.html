@@ -1,4 +1,8 @@
-<tui-doc-page header="PrimitiveTextfield" package="CORE" type="components">
+<tui-doc-page
+    header="PrimitiveTextfield"
+    package="CORE"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             PrimitiveTextfield is a flexible string input that can be used as a
@@ -15,7 +19,10 @@
         >
             <tui-notification class="tui-space_bottom-4 b-form">
                 Simplified version of
-                <a tuiLink routerLink="/components/input-password">
+                <a
+                    tuiLink
+                    routerLink="/components/input-password"
+                >
                     <code>InputPassword</code>
                 </a>
             </tui-notification>
@@ -79,8 +86,15 @@
                 Component label
             </tui-primitive-textfield>
         </tui-doc-demo>
-        <ng-template #template let-item>
-            <tui-avatar size="xs" class="avatar" [text]="item"></tui-avatar>
+        <ng-template
+            #template
+            let-item
+        >
+            <tui-avatar
+                size="xs"
+                class="avatar"
+                [text]="item"
+            ></tui-avatar>
             {{ item }}
         </ng-template>
         <ng-template #interactiveContent>
@@ -128,7 +142,10 @@
             >
                 Icon content. If content is a string, it is used as stringified
                 svg or a name of icon registered in
-                <a tuiLink routerLink="/services/svg-service">
+                <a
+                    tuiLink
+                    routerLink="/services/svg-service"
+                >
                     <code>SvgService</code>
                 </a>
             </ng-template>
@@ -150,7 +167,10 @@
                 [(documentationPropertyValue)]="prefix"
             >
                 Uneditable text before value. For example, currency symbol in
-                <a tuiLink routerLink="/components/input-number">
+                <a
+                    tuiLink
+                    routerLink="/components/input-number"
+                >
                     <code>InputNumber</code>
                 </a>
                 .
@@ -163,7 +183,10 @@
                 [(documentationPropertyValue)]="postfix"
             >
                 Uneditable text after value. For example, currency symbol in
-                <a tuiLink routerLink="/components/input-number">
+                <a
+                    tuiLink
+                    routerLink="/components/input-number"
+                >
                     <code>InputNumber</code>
                 </a>
                 .

@@ -16,11 +16,19 @@
             you do not need to provide a service. It is just available to inject
         </p>
 
-        <tui-doc-example id="text" heading="Text" [content]="example1">
+        <tui-doc-example
+            id="text"
+            heading="Text"
+            [content]="example1"
+        >
             <tui-notifications-example-1></tui-notifications-example-1>
         </tui-doc-example>
 
-        <tui-doc-example id="template" heading="Template" [content]="example2">
+        <tui-doc-example
+            id="template"
+            heading="Template"
+            [content]="example2"
+        >
             <tui-notifications-example-2></tui-notifications-example-2>
         </tui-doc-example>
 
@@ -52,10 +60,18 @@
     </ng-template>
 
     <ng-template pageTab>
-        <button tuiButton type="button" size="m" (click)="showNotification()">
+        <button
+            tuiButton
+            type="button"
+            size="m"
+            (click)="showNotification()"
+        >
             Show
         </button>
-        <div i18n class="b-full-width">
+        <div
+            i18n
+            class="b-full-width"
+        >
             <p>To show notification, use method</p>
             <tui-doc-code
                 class="tui-space_bottom-4"

@@ -1,14 +1,33 @@
-<tui-doc-page header="Editor[new]" package="ADDON-EDITOR" type="components">
+<tui-doc-page
+    header="Editor[new]"
+    package="ADDON-EDITOR"
+    type="components"
+>
     <ng-template pageTab>
         <p i18n>
             Rich Text Editor based on
-            <a tuiLink href="https://www.tiptap.dev/">TipTap Editor</a>
+            <a
+                tuiLink
+                href="https://www.tiptap.dev/"
+            >
+                TipTap Editor
+            </a>
             for using with Angular forms. For safety reasons use a
-            <a tuiLink routerLink="/icon-set" fragment="sanitizer">sanitizer</a>
+            <a
+                tuiLink
+                routerLink="/icon-set"
+                fragment="sanitizer"
+            >
+                sanitizer
+            </a>
             with this component.
         </p>
 
-        <tui-notification i18n status="warning" class="tui-space_top-4">
+        <tui-notification
+            i18n
+            status="warning"
+            class="tui-space_top-4"
+        >
             This component is experimental. Use it with caution. Expect breaking
             changes
         </tui-notification>
@@ -29,7 +48,10 @@
             [content]="example2"
         >
             You can create your own tool:
-            <ul i18n class="tui-list tui-space_bottom-6">
+            <ul
+                i18n
+                class="tui-list tui-space_bottom-6"
+            >
                 <li class="tui-list__item">
                     Create component with tool button (which can get access to
                     <a

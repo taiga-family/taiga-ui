@@ -5,7 +5,10 @@
     path="cdk/decorators/pure.ts"
 >
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             Decorator for memoization of pure methods and getters
         </div>
 
@@ -21,11 +24,19 @@
             similar to Angular pure pipes)
         </p>
 
-        <tui-doc-example id="getter" heading="Getter" [content]="example1">
+        <tui-doc-example
+            id="getter"
+            heading="Getter"
+            [content]="example1"
+        >
             <example-tui-pure-getter></example-tui-pure-getter>
         </tui-doc-example>
 
-        <tui-doc-example id="function" heading="Function" [content]="example2">
+        <tui-doc-example
+            id="function"
+            heading="Function"
+            [content]="example2"
+        >
             <example-tui-pure-function></example-tui-pure-function>
         </tui-doc-example>
     </ng-template>

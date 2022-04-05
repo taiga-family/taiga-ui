@@ -23,7 +23,10 @@
         (keydown.enter)="onFieldKeyDownEnter($event)"
     >
         <ng-content></ng-content>
-        <ng-content select="input" ngProjectAs="input"></ng-content>
+        <ng-content
+            select="input"
+            ngProjectAs="input"
+        ></ng-content>
         <div
             *ngIf="showValueTemplate"
             polymorpheus-outlet
@@ -35,6 +38,10 @@
     </tui-primitive-textfield>
 
     <ng-template #icon>
-        <div polymorpheus-outlet class="t-icon" [content]="arrow"></div>
+        <div
+            polymorpheus-outlet
+            class="t-icon"
+            [content]="arrow"
+        ></div>
     </ng-template>
 </tui-hosted-dropdown>

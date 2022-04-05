@@ -8,12 +8,27 @@
 >
     <defs>
         <mask [attr.id]="maskId">
-            <rect x="-200" y="-200" width="400" height="400" fill="white" />
-            <circle cx="0" cy="0" [attr.r]="radius" />
+            <rect
+                x="-200"
+                y="-200"
+                width="400"
+                height="400"
+                fill="white"
+            />
+            <circle
+                cx="0"
+                cy="0"
+                [attr.r]="radius"
+            />
         </mask>
     </defs>
     <g [style.mask]="mask">
-        <circle cx="0" cy="0" r="100" class="t-placeholder" />
+        <circle
+            cx="0"
+            cy="0"
+            r="100"
+            class="t-placeholder"
+        />
         <path
             *tuiRepeatTimes="let index of segments.length"
             fill="currentColor"
@@ -36,7 +51,10 @@
         </path>
     </g>
 </svg>
-<ng-template #template let-index>
+<ng-template
+    #template
+    let-index
+>
     <div
         polymorpheus-outlet
         class="t-text"

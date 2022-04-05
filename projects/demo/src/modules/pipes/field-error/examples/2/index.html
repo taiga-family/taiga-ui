@@ -1,5 +1,12 @@
-<form class="b-form" [formGroup]="testForm">
-    <label tuiLabel label="Enter an email" class="tui-space_bottom-4">
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
+    <label
+        tuiLabel
+        label="Enter an email"
+        class="tui-space_bottom-4"
+    >
         <tui-input
             i18n
             formControlName="testValue2"
@@ -20,7 +27,10 @@
         label="Minimum and maximum length"
         class="tui-space_bottom-4"
     >
-        <tui-input formControlName="testValue1" tuiTextfieldSize="m">
+        <tui-input
+            formControlName="testValue1"
+            tuiTextfieldSize="m"
+        >
             4 letters word...
         </tui-input>
 
@@ -30,8 +40,14 @@
         ></tui-error>
     </label>
 
-    <label tuiLabel label="Minimum number">
-        <tui-input-count formControlName="testValue3" tuiTextfieldSize="m">
+    <label
+        tuiLabel
+        label="Minimum number"
+    >
+        <tui-input-count
+            formControlName="testValue3"
+            tuiTextfieldSize="m"
+        >
             number
         </tui-input-count>
 

@@ -1,7 +1,13 @@
 <form class="b-form">
-    <tui-select tuiTextfieldSize="s" [formControl]="testValue">
+    <tui-select
+        tuiTextfieldSize="s"
+        [formControl]="testValue"
+    >
         Character
-        <input tuiTextfield placeholder="Choose your hero" />
+        <input
+            tuiTextfield
+            placeholder="Choose your hero"
+        />
         <tui-data-list-wrapper
             *tuiDataList
             [items]="items"
@@ -14,7 +20,10 @@
         [tuiTextfieldLabelOutside]="true"
     >
         Character
-        <input tuiTextfield placeholder="Choose your hero" />
+        <input
+            tuiTextfield
+            placeholder="Choose your hero"
+        />
         <tui-data-list-wrapper
             *tuiDataList
             [items]="items"
@@ -22,7 +31,10 @@
     </tui-select>
     <tui-select [formControl]="testValue">
         Character
-        <input tuiTextfield placeholder="Choose your hero" />
+        <input
+            tuiTextfield
+            placeholder="Choose your hero"
+        />
         <tui-data-list-wrapper
             *tuiDataList
             [items]="items"

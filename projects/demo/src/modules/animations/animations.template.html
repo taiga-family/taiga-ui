@@ -5,7 +5,10 @@
     path="core/animations"
 >
     <ng-template pageTab>
-        <label tuiLabel label="Speed of animations:">
+        <label
+            tuiLabel
+            label="Speed of animations:"
+        >
             <input
                 tuiSlider
                 type="range"
@@ -17,7 +20,10 @@
             />
 
             <div class="labels">
-                <span *ngFor="let label of speedTicksLabels" class="label">
+                <span
+                    *ngFor="let label of speedTicksLabels"
+                    class="label"
+                >
                     {{label}}ms
                 </span>
             </div>

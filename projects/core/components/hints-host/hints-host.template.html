@@ -7,7 +7,10 @@
     [tuiActiveZoneParent]="hint.activeZone"
     (tuiHoveredChange)="onHovered($event, hint)"
 >
-    <div polymorpheus-outlet [content]="hint.content">
+    <div
+        polymorpheus-outlet
+        [content]="hint.content"
+    >
         <ng-template let-text>
             <span class="t-text">{{ text }}</span>
         </ng-template>

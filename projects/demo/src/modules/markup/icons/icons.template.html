@@ -1,8 +1,20 @@
-<tui-doc-page i18n-header header="Icons">
-    <ng-template *ngFor="let key of keys" i18n-pageTab [pageTab]="key">
+<tui-doc-page
+    i18n-header
+    header="Icons"
+>
+    <ng-template
+        *ngFor="let key of keys"
+        i18n-pageTab
+        [pageTab]="key"
+    >
         <p i18n>
             These icons can be used by name in
-            <a tuiLink routerLink="/components/svg">Svg</a>
+            <a
+                tuiLink
+                routerLink="/components/svg"
+            >
+                Svg
+            </a>
             component and all Taiga UI component accepting icons as input.
         </p>
 

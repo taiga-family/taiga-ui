@@ -1,4 +1,7 @@
-<div tuiMode="onDark" class="wrapper">
+<div
+    tuiMode="onDark"
+    class="wrapper"
+>
     <h1 class="tui-text_h3 title">Monty Python</h1>
     <tui-tabs-with-more
         class="tabs"
@@ -7,7 +10,13 @@
     >
         <ng-container *ngFor="let tab of tabs">
             <ng-container *ngIf="isString(tab); else submenu">
-                <button *tuiTab tuiTab (click)="onClick(tab)">{{tab}}</button>
+                <button
+                    *tuiTab
+                    tuiTab
+                    (click)="onClick(tab)"
+                >
+                    {{tab}}
+                </button>
             </ng-container>
             <ng-template #submenu>
                 <tui-hosted-dropdown
@@ -16,7 +25,10 @@
                     [content]="dropdown"
                     [(open)]="open"
                 >
-                    <button tuiTab (tui-tab-activate)="stop($event)">
+                    <button
+                        tuiTab
+                        (tui-tab-activate)="stop($event)"
+                    >
                         Collaborators
                         <tui-svg
                             src="tuiIconChevronDown"

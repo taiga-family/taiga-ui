@@ -10,10 +10,31 @@ describe('Tabs', () => {
     @Component({
         template: `
             <tui-tabs [(activeItemIndex)]="activeItemIndex">
-                <button id="cards" tuiTab>Cards</button>
-                <button id="tariff" tuiTab>Rate</button>
-                <button id="calls" tuiTab disabled>Challenges</button>
-                <button id="settings" tuiTab>Settings</button>
+                <button
+                    id="cards"
+                    tuiTab
+                >
+                    Cards
+                </button>
+                <button
+                    id="tariff"
+                    tuiTab
+                >
+                    Rate
+                </button>
+                <button
+                    id="calls"
+                    tuiTab
+                    disabled
+                >
+                    Challenges
+                </button>
+                <button
+                    id="settings"
+                    tuiTab
+                >
+                    Settings
+                </button>
             </tui-tabs>
         `,
     })

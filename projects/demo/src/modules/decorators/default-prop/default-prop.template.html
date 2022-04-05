@@ -5,12 +5,18 @@
     path="cdk/decorators/default-prop.ts"
 >
     <ng-template pageTab>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             Decorator for
             <code>@Input</code>
             with default value
         </div>
-        <div i18n class="tui-space_bottom-3">
+        <div
+            i18n
+            class="tui-space_bottom-3"
+        >
             <strong>Warning:</strong>
             decorator overrides getter/setter of input
         </div>
@@ -26,7 +32,10 @@
 
         <div i18n>
             See
-            <a tuiLink [routerLink]="['/decorators/required-setter']">
+            <a
+                tuiLink
+                [routerLink]="['/decorators/required-setter']"
+            >
                 RequiredSetter
             </a>
             for work with setters
@@ -37,7 +46,10 @@
             <example-tui-default-prop-demo
                 [quantity]="quantity"
             ></example-tui-default-prop-demo>
-            <tui-input-count class="tui-space_top-4" [(ngModel)]="quantity">
+            <tui-input-count
+                class="tui-space_top-4"
+                [(ngModel)]="quantity"
+            >
                 quantity
             </tui-input-count>
             <button

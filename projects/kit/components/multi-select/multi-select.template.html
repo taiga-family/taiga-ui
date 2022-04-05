@@ -32,7 +32,10 @@
     >
         <ng-content></ng-content>
     </tui-input-tag>
-    <div class="t-wrapper" [class.t-wrapper_disabled]="disabled">
+    <div
+        class="t-wrapper"
+        [class.t-wrapper_disabled]="disabled"
+    >
         <div
             *ngIf="computedGroup"
             polymorpheus-outlet

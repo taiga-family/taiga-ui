@@ -1,8 +1,19 @@
 <ng-content></ng-content>
 <tr *ngIf="heading">
-    <th class="heading" [colSpan]="table.columns.length">
-        <button type="button" class="expand" (click)="onClick()">
-            <span polymorpheus-outlet class="name" [content]="heading"></span>
+    <th
+        class="heading"
+        [colSpan]="table.columns.length"
+    >
+        <button
+            type="button"
+            class="expand"
+            (click)="onClick()"
+        >
+            <span
+                polymorpheus-outlet
+                class="name"
+                [content]="heading"
+            ></span>
             <tui-svg
                 src="tuiIconChevronDownLarge"
                 class="chevron"
