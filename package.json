@@ -136,7 +136,7 @@
         "@nx-cloud/runners": "1.1.0",
         "@rollup/pluginutils": "~4.1.2",
         "@tinkoff/eslint-config": "^1.29.2",
-        "@tinkoff/eslint-config-angular": "^1.29.0",
+        "@tinkoff/eslint-config-angular": "^1.29.3",
         "@tinkoff/prettier-config": "^1.29.1",
         "@tinkoff/stylelint-config": "^1.16.1",
         "@types/cypress-image-snapshot": "^3.1.6",
