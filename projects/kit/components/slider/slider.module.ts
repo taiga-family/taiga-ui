@@ -14,6 +14,7 @@ import {
     TuiSliderTickLabelPipe,
 } from './slider-key-steps.directive';
 import {TuiSliderOldComponent} from './slider-old.component';
+import {TuiSliderReadonlyDirective} from './slider-readonly.directive';
 
 @NgModule({
     imports: [
@@ -27,12 +28,14 @@ import {TuiSliderOldComponent} from './slider-old.component';
     declarations: [
         TuiSliderComponent,
         TuiSliderKeyStepsDirective,
+        TuiSliderReadonlyDirective,
         TuiSliderTickLabelPipe,
         TuiSliderOldComponent,
     ],
     exports: [
         TuiSliderComponent,
         TuiSliderKeyStepsDirective,
+        TuiSliderReadonlyDirective,
         TuiSliderTickLabelPipe,
         TuiSliderOldComponent,
     ],

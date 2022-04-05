@@ -1,8 +1,8 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {PageObject} from '@taiga-ui/testing';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {TuiRootModule} from '@taiga-ui/core';
+import {createKeyboardEvent, PageObject} from '@taiga-ui/testing';
 
 import {TuiRangeComponent} from '../range.component';
 import {TuiRangeModule} from '../range.module';
@@ -10,19 +10,24 @@ import {TuiRangeModule} from '../range.module';
 describe('Range', () => {
     @Component({
         template: `
-            <tui-range
-                [formControl]="testValue"
-                [max]="max"
-                [min]="min"
-                [steps]="steps"
-                [segments]="segments"
-                [quantum]="quantum"
-            ></tui-range>
+            <tui-root>
+                <tui-range
+                    [formControl]="testValue"
+                    [max]="max"
+                    [min]="min"
+                    [steps]="steps"
+                    [segments]="segments"
+                    [quantum]="quantum"
+                ></tui-range>
+            </tui-root>
         `,
     })
     class TestComponent {
         @ViewChild(TuiRangeComponent, {static: true})
         component!: TuiRangeComponent;
+
+        @ViewChild(TuiRangeComponent, {static: true, read: ElementRef})
+        elementRef!: ElementRef<HTMLElement>;
 
         testValue = new FormControl([3, 5]);
         max = 11;
@@ -35,15 +40,11 @@ describe('Range', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let pageObject: PageObject<TestComponent>;
-    const keydownArrowLeft = new KeyboardEvent('keydown', {
-        key: 'arrowLeft',
-    });
-    const keydownArrowRight = new KeyboardEvent('keydown', {
-        key: 'arrowRight',
-    });
+    const keydownArrowLeft = createKeyboardEvent('ArrowLeft', 'keydown');
+    const keydownArrowRight = createKeyboardEvent('ArrowRight', 'keydown');
     const testContext = {
         get prefix() {
-            return 'tui-slider__';
+            return 'tui-range__';
         },
     };
 
@@ -55,15 +56,19 @@ describe('Range', () => {
         return pageObject.getByAutomationId(`${testContext.prefix}right`)!.nativeElement;
     }
 
-    function getBar(): HTMLElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}bar`)!.nativeElement;
+    function getFilledRangeOffeset(): {left: string; right: string} {
+        const computedStyles = testComponent.elementRef.nativeElement;
+
+        return {
+            left: getComputedStyle(computedStyles).getPropertyValue('--left'),
+            right: getComputedStyle(computedStyles).getPropertyValue('--right'),
+        };
     }
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, TuiRangeModule],
+            imports: [ReactiveFormsModule, TuiRootModule, TuiRangeModule],
             declarations: [TestComponent],
-            providers: NG_EVENT_PLUGINS,
         });
 
         fixture = TestBed.createComponent(TestComponent);
@@ -73,8 +78,8 @@ describe('Range', () => {
     });
 
     it('The bar is filled from 20% to 40%', () => {
-        expect(getBar().style.left).toBe('20%');
-        expect(getBar().style.right).toBe('60%');
+        expect(getFilledRangeOffeset().left).toBe('20%');
+        expect(getFilledRangeOffeset().right).toBe('60%');
     });
 
     describe('Changing values', () => {
@@ -97,16 +102,16 @@ describe('Range', () => {
                 getLeft().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(getBar().style.left).toBe('10%');
-                expect(getBar().style.right).toBe('60%');
+                expect(getFilledRangeOffeset().left).toBe('10%');
+                expect(getFilledRangeOffeset().right).toBe('60%');
             });
 
             it('Pressing the right arrow correctly paints the strip', () => {
                 getLeft().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(getBar().style.left).toBe('30%');
-                expect(getBar().style.right).toBe('60%');
+                expect(getFilledRangeOffeset().left).toBe('30%');
+                expect(getFilledRangeOffeset().right).toBe('60%');
             });
         });
 
@@ -129,16 +134,16 @@ describe('Range', () => {
                 getRight().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(getBar().style.left).toBe('20%');
-                expect(getBar().style.right).toBe('70%');
+                expect(getFilledRangeOffeset().left).toBe('20%');
+                expect(getFilledRangeOffeset().right).toBe('70%');
             });
 
             it('Pressing the right arrow correctly paints the strip', () => {
                 getRight().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(getBar().style.left).toBe('20%');
-                expect(getBar().style.right).toBe('50%');
+                expect(getFilledRangeOffeset().left).toBe('20%');
+                expect(getFilledRangeOffeset().right).toBe('50%');
             });
         });
 
