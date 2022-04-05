@@ -3,7 +3,11 @@
  */
 module.exports = {
     root: true,
-    extends: ['@tinkoff/eslint-config-angular', './scripts/eslint/nx.js'],
+    extends: [
+        './scripts/eslint/nx.js',
+        '@tinkoff/eslint-config-angular',
+        '@tinkoff/eslint-config-angular/html',
+    ],
     ignorePatterns: [
         'projects/**/test.ts',
         'projects/**/icons/all.ts',
