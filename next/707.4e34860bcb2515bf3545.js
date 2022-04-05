@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[707],{rxss:function(a,t,n){"use strict";n.r(t),t.default='```html\n<tui-tag [value]="tag"></tui-tag>\n\x3c!--Use can use tag as link--\x3e\n<a tuiTag href="//somesite.com" target="_blank" [value]="tag"></a>\n```\n'}}]);
