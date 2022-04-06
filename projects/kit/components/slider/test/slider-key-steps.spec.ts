@@ -103,7 +103,7 @@ describe('TuiSliderKeyStepsDirective', () => {
         }
     });
 
-    describe("makes correct approximation for native input value on initial values (which don't satisfy input's steps)", () => {
+    describe("makes correct approximation for native input value from formControl's initial values (which don't satisfy input's steps)", () => {
         const testsConditions = [
             {controlValue: 999_999, expectedNativeValue: 30},
             {controlValue: 945_000, expectedNativeValue: 29},
@@ -176,6 +176,63 @@ describe('TuiSliderKeyStepsDirective', () => {
 
         for (const {controlValue, expectedNativeValue} of testsConditions) {
             it(`${controlValue} => ${expectedNativeValue}/100`, () => {
+                testComponent.control = new FormControl(controlValue);
+                fixture.detectChanges();
+
+                expect(testComponent.inputElRef.nativeElement.value).toBe(
+                    `${expectedNativeValue}`,
+                );
+            });
+        }
+    });
+
+    describe('works even if slider has negative `min`-property', () => {
+        beforeEach(() => {
+            testComponent.min = -10;
+            testComponent.max = 10;
+
+            testComponent.keySteps = [
+                [0, 0],
+                [25, 10_000],
+                [50, 100_000],
+                [75, 500_000],
+                [100, 1_000_000],
+            ];
+        });
+
+        const testsConditions = [
+            // Q1 (every step increases control's value by 2_000)
+            {controlValue: 0, expectedNativeValue: -10},
+            {controlValue: 2_000, expectedNativeValue: -9},
+            {controlValue: 4_000, expectedNativeValue: -8},
+            {controlValue: 6_000, expectedNativeValue: -7},
+            {controlValue: 8_000, expectedNativeValue: -6},
+
+            // Q2 (every step increases control's value by 18_000)
+            {controlValue: 10_000, expectedNativeValue: -5},
+            {controlValue: 28_000, expectedNativeValue: -4},
+            {controlValue: 46_000, expectedNativeValue: -3},
+            {controlValue: 64_000, expectedNativeValue: -2},
+            {controlValue: 82_000, expectedNativeValue: -1},
+
+            // Q3 (every step increases control's value by 80_000)
+            {controlValue: 100_000, expectedNativeValue: 0},
+            {controlValue: 180_000, expectedNativeValue: 1},
+            {controlValue: 260_000, expectedNativeValue: 2},
+            {controlValue: 340_000, expectedNativeValue: 3},
+            {controlValue: 420_000, expectedNativeValue: 4},
+
+            // Q4 (every step increases control's value by 100_000)
+            {controlValue: 500_000, expectedNativeValue: 5},
+            {controlValue: 600_000, expectedNativeValue: 6},
+            {controlValue: 700_000, expectedNativeValue: 7},
+            {controlValue: 800_000, expectedNativeValue: 8},
+            {controlValue: 900_000, expectedNativeValue: 9},
+            {controlValue: 1_000_000, expectedNativeValue: 10},
+        ] as const;
+
+        for (const {controlValue, expectedNativeValue} of testsConditions) {
+            it(`${controlValue} => ${expectedNativeValue} (min = -10 | max = 10)`, () => {
                 testComponent.control = new FormControl(controlValue);
                 fixture.detectChanges();
 

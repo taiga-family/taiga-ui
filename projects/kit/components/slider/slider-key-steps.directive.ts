@@ -122,7 +122,7 @@ export class TuiSliderKeyStepsDirective
         const newValuePercentage =
             (upperStepPercent - lowerStepPercent) * ratio + lowerStepPercent;
 
-        return (newValuePercentage * (max - min)) / 100;
+        return (newValuePercentage * (max - min)) / 100 + min;
     }
 }
 
