@@ -17,9 +17,7 @@ describe('Range', () => {
 
     describe('examples page', () => {
         beforeEach(() => {
-            cy.goToDemoPage(RANGE_PAGE_URL);
-            cy.hideHeader();
-            cy.hideNavigation();
+            cy.tuiVisit(RANGE_PAGE_URL);
         });
 
         describe('change selected range on click', () => {
