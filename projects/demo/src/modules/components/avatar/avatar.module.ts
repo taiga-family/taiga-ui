@@ -9,6 +9,7 @@ import {TuiAvatarModule, TuiRadioListModule} from '@taiga-ui/kit';
 import {ExampleTuiAvatarComponent} from './avatar.component';
 import {TuiAvatarExample1} from './examples/1';
 import {TuiAvatarExample2} from './examples/2';
+import {TuiAvatarExample3} from './examples/3';
 
 @NgModule({
     imports: [
@@ -21,7 +22,12 @@ import {TuiAvatarExample2} from './examples/2';
         ReactiveFormsModule,
         RouterModule.forChild(generateRoutes(ExampleTuiAvatarComponent)),
     ],
-    declarations: [ExampleTuiAvatarComponent, TuiAvatarExample1, TuiAvatarExample2],
+    declarations: [
+        ExampleTuiAvatarComponent,
+        TuiAvatarExample1,
+        TuiAvatarExample2,
+        TuiAvatarExample3,
+    ],
     exports: [ExampleTuiAvatarComponent],
 })
 export class ExampleTuiAvatarModule {}

@@ -26,6 +26,15 @@
         >
             <tui-avatar-example-2></tui-avatar-example-2>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="options"
+            i18n-heading
+            heading="Options"
+            [content]="example3"
+        >
+            <tui-avatar-example-3></tui-avatar-example-3>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -114,6 +123,20 @@
                 <tui-doc-code
                     filename="myComponent.template.html"
                     [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Optionally use the
+                    <code>TUI_AVATAR_OPTIONS</code>
+                    injection token to override the default options for the
+                    component.
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleOptions"
                 ></tui-doc-code>
             </li>
         </ol>

@@ -9,6 +9,10 @@ import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiAvatarComponent {
+    readonly exampleOptions: RawLoaderContent = import(
+        '!!raw-loader!./examples/import/define-options.md'
+    );
+
     readonly exampleModule: RawLoaderContent = import(
         '!!raw-loader!./examples/import/import-module.md'
     );
@@ -25,6 +29,11 @@ export class ExampleTuiAvatarComponent {
     readonly example2: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/2/index.ts'),
         HTML: import('!!raw-loader!./examples/2/index.html'),
+    };
+
+    readonly example3: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
+        HTML: import('!!raw-loader!./examples/3/index.html'),
     };
 
     readonly avatarUrlVariants: readonly string[] = [
