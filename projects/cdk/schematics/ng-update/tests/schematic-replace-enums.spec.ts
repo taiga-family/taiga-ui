@@ -33,7 +33,8 @@ describe('ng-update', () => {
         expect(tree.readContent('test/app/app.component.ts')).toEqual(
             `import {Component} from '@angular/core';
 import {some} from '@taiga-ui/cdk';
-const lineType = 'solid';
+import {TuiLineType} from '@taiga-ui/cdk';
+const lineType: TuiLineType = 'solid';
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
@@ -44,6 +45,7 @@ export class AppComponent {
    return
    }
    }
+   decimal = 'never';
 }`,
         );
     });
@@ -59,6 +61,7 @@ function createMainFiles() {
         `import {Component} from '@angular/core';
 import {TuiTextAlign, some} from '@taiga-ui/cdk';
 import {TuiLineType} from '@taiga-ui/cdk';
+import {TuiDecimal} from '@taiga-ui/core';
 
 const lineType: TuiLineType = TuiLineType.Solid;
 
@@ -71,6 +74,7 @@ export class AppComponent {
    return
    }
    }
+   decimal = TuiDecimal.Never;
 }`,
     );
 
