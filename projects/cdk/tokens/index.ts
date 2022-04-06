@@ -1,4 +1,5 @@
 export * from './active-element';
+export * from './alerts';
 export * from './default-renderer';
 export * from './dialogs';
 export * from './focusable-item-accessor';

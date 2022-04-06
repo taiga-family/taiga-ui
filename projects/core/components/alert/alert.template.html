@@ -9,7 +9,7 @@
         polymorpheus-outlet
         automation-id="tui-notification-alert__heading"
         class="heading"
-        [content]="item.label"
+        [content]="$any(item.label)"
         [context]="context"
     ></label>
     <div
@@ -17,7 +17,7 @@
         automation-id="tui-notification-alert__content"
         class="content"
         [content]="item.content"
-        [context]="context"
+        [context]="$any(context)"
     ></div>
 </tui-notification>
 <ng-template #noClose>
@@ -30,7 +30,7 @@
             polymorpheus-outlet
             automation-id="tui-notification-alert__heading"
             class="heading"
-            [content]="item.label"
+            [content]="$any(item.label)"
             [context]="context"
         ></label>
         <div
@@ -38,7 +38,7 @@
             automation-id="tui-notification-alert__content"
             class="content"
             [content]="item.content"
-            [context]="context"
+            [context]="$any(context)"
         ></div>
     </tui-notification>
 </ng-template>

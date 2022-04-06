@@ -1,15 +1,7 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    Inject,
-    Optional,
-    Type,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
 import {TUI_DIALOGS, TUI_IS_MOBILE, tuiAssert} from '@taiga-ui/cdk';
 import {VERSION} from '@taiga-ui/core/constants';
-import {TuiNotificationsHostComponent} from '@taiga-ui/core/modules/notifications';
 import {TUI_IS_MOBILE_RES_PROVIDER} from '@taiga-ui/core/providers';
 import {
     TUI_ANIMATIONS_DURATION,
@@ -35,19 +27,15 @@ import {map} from 'rxjs/operators';
 })
 export class TuiRootComponent {
     readonly scrollbars$: Observable<boolean> =
-        this.dialogs && !this.isMobile
+        this.dialogs.length && !this.isMobile
             ? merge(...this.dialogs).pipe(map(({length}) => !length))
             : of(!this.isMobile);
 
     constructor(
         @Inject(TUI_ANIMATIONS_DURATION) readonly duration: number,
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
-        @Optional()
         @Inject(TUI_DIALOGS)
-        readonly dialogs: ReadonlyArray<Observable<readonly unknown[]>> | null,
-        @Optional()
-        @Inject(TuiNotificationsHostComponent)
-        readonly notificationsHost: Type<unknown>,
+        readonly dialogs: ReadonlyArray<Observable<readonly unknown[]>>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_ASSERT_ENABLED) enabled: boolean,
         @Inject(TUI_IS_MOBILE_RES) readonly isMobileRes$: Observable<boolean>,

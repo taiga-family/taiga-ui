@@ -10,7 +10,7 @@
     <ng-container ngProjectAs="tuiOverDialogs">
         <!-- Content over dialogs -->
     </ng-container>
-    <ng-container ngProjectAs="tuiOverNotifications">
+    <ng-container ngProjectAs="tuiOverAlerts">
         <!-- Content over notifications -->
     </ng-container>
     <ng-container ngProjectAs="tuiOverPortals">

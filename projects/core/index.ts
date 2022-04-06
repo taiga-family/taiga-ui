@@ -7,7 +7,6 @@ export * from '@taiga-ui/core/enums';
 export * from '@taiga-ui/core/interfaces';
 export * from '@taiga-ui/core/internal';
 export * from '@taiga-ui/core/mask';
-export * from '@taiga-ui/core/modules';
 export * from '@taiga-ui/core/observables';
 export * from '@taiga-ui/core/pipes';
 export * from '@taiga-ui/core/providers';
