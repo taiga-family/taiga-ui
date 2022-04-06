@@ -53,10 +53,10 @@ export abstract class AbstractTuiSlider<T>
         TuiEventWith<MouseEvent | TouchEvent, HTMLElement>
     >();
 
-    @ViewChild('dotLeft')
+    @ViewChild('dotLeft', {read: ElementRef})
     protected dotLeft?: ElementRef<TuiNativeFocusableElement>;
 
-    @ViewChild('dotRight')
+    @ViewChild('dotRight', {read: ElementRef})
     protected dotRight?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()
@@ -144,8 +144,7 @@ export abstract class AbstractTuiSlider<T>
 
     abstract get left(): number;
     abstract get right(): number;
-    protected abstract processValue(value: number, right?: boolean): void;
-    protected abstract processStep(increment: boolean, right?: boolean): void;
+    abstract processValue(value: number, right?: boolean): void;
 
     ngOnInit() {
         super.ngOnInit();
@@ -244,14 +243,6 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$.next(event);
     }
 
-    decrement(right: boolean) {
-        this.processStep(false, right);
-    }
-
-    increment(right: boolean) {
-        this.processStep(true, right);
-    }
-
     getSegmentLabel(segment: number): number {
         return round(this.getValueFromFraction(segment / this.segments), 2);
     }
@@ -280,21 +271,27 @@ export abstract class AbstractTuiSlider<T>
         this.focusVisibleRight = focusVisible;
     }
 
-    protected getFractionFromValue(value: number): number {
-        const fraction = (value - this.min) / this.length;
-
-        return this.keySteps !== null
-            ? this.fractionValueKeyStepConverter(value, false)
-            : clamp(Number.isFinite(fraction) ? fraction : 1, 0, 1);
-    }
-
-    protected getValueFromFraction(fraction: number): number {
+    getValueFromFraction(fraction: number): number {
         return this.keySteps !== null
             ? this.fractionValueKeyStepConverter(fraction, true)
             : round(
                   this.fractionGuard(fraction) * this.length + this.min,
                   TUI_FLOATING_PRECISION,
               );
+    }
+
+    fractionGuard(fraction: number): number {
+        return this.discrete
+            ? clamp(quantize(fraction, 1 / this.steps), 0, 1)
+            : clamp(fraction, 0, 1);
+    }
+
+    protected getFractionFromValue(value: number): number {
+        const fraction = (value - this.min) / this.length;
+
+        return this.keySteps !== null
+            ? this.fractionValueKeyStepConverter(value, false)
+            : clamp(Number.isFinite(fraction) ? fraction : 1, 0, 1);
     }
 
     protected getCalibratedFractionFromEvents(
@@ -373,12 +370,6 @@ export abstract class AbstractTuiSlider<T>
                   0,
                   100,
               ) / 100;
-    }
-
-    private fractionGuard(fraction: number): number {
-        return this.discrete
-            ? clamp(quantize(fraction, 1 / this.steps), 0, 1)
-            : clamp(fraction, 0, 1);
     }
 
     private getFractionFromEvents(rect: ClientRect, clientX: number): number {

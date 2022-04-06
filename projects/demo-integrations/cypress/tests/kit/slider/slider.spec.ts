@@ -9,9 +9,7 @@ describe('Slider', () => {
     });
 
     it('correctly displays values with float percentage progress', () => {
-        cy.goToDemoPage(`${SLIDER_PAGE_URL}/API?tuiMode=null&max=89&min=0&step=1&size=s`);
-        cy.hideHeader();
-        cy.hideNavigation();
+        cy.tuiVisit(`${SLIDER_PAGE_URL}/API?tuiMode=null&max=89&min=0&step=1&size=s`);
 
         cy.get('input[type="range"]').as('slider');
 
@@ -32,7 +30,7 @@ describe('Slider', () => {
     });
 
     it('correctly sets control value on input change (using TuiSliderKeyStepsDirective)', () => {
-        cy.goToDemoPage(SLIDER_PAGE_URL);
+        cy.tuiVisit(SLIDER_PAGE_URL);
 
         cy.get('#keySteps').as('example');
         cy.get('@example').find('input[type="range"]').as('slider');
@@ -61,9 +59,7 @@ describe('Slider', () => {
     });
 
     it('with `min` > 0', () => {
-        cy.goToDemoPage(`${SLIDER_PAGE_URL}/API?min=1&max=10&segments=9`);
-        cy.hideHeader();
-        cy.hideNavigation();
+        cy.tuiVisit(`${SLIDER_PAGE_URL}/API?min=1&max=10&segments=9`);
 
         cy.get('tui-doc-demo')
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
@@ -71,9 +67,7 @@ describe('Slider', () => {
     });
 
     it('with `min` < 0 && `max` > 0 ', () => {
-        cy.goToDemoPage(`${SLIDER_PAGE_URL}/API?min=-5&max=5&segments=5`);
-        cy.hideHeader();
-        cy.hideNavigation();
+        cy.tuiVisit(`${SLIDER_PAGE_URL}/API?min=-5&max=5&segments=5`);
 
         cy.get('tui-doc-demo')
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)

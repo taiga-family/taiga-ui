@@ -4,7 +4,7 @@ describe('NotificationsService', () => {
     });
 
     it('is shown correctly', () => {
-        cy.goToDemoPage(`/services/notifications-service`);
+        cy.tuiVisit(`/services/notifications-service`);
 
         cy.get(`tui-notifications-example-1 button`).first().click().wait(1000);
 

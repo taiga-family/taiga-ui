@@ -10,3 +10,4 @@ export const SELECT_PAGE_URL = 'components/select';
 export const SLIDER_PAGE_URL = 'components/slider';
 export const INPUT_SLIDER_PAGE_URL = 'components/input-slider';
 export const INPUT_PAGE_URL = 'components/input';
+export const RANGE_PAGE_URL = 'components/range';

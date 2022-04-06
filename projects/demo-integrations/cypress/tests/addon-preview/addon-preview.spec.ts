@@ -1,12 +1,11 @@
 describe('Addon preview', () => {
     beforeEach(() => {
-        cy.goToDemoPage('components/preview');
-        cy.hideHeader();
+        cy.tuiVisit('components/preview');
     });
 
     it('Full preview scrolled', () => {
         cy.get(`tui-preview-example-1 button`).first().click();
-        cy.waitKitDialog('tui-preview');
+        cy.tuiWaitKitDialog('tui-preview');
         cy.get('tui-preview')
             .wait(350)
             .get('tui-preview section')
@@ -18,9 +17,9 @@ describe('Addon preview', () => {
         });
     });
 
-    it('No preview avaliable', () => {
+    it('No preview available', () => {
         cy.get(`tui-preview-example-3 button`).first().click();
-        cy.waitKitDialog('tui-preview');
+        cy.tuiWaitKitDialog('tui-preview');
         cy.get('tui-preview')
             .wait(350)
             .matchImageSnapshot('preview-unavailable', {

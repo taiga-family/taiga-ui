@@ -4,10 +4,9 @@ describe('TuiPrimitiveTextfield', () => {
     });
 
     it('Tooltip in primitive-textfield works', () => {
-        cy.goToDemoPage(
+        cy.tuiVisit(
             `components/primitive-textfield/API?tuiMode=null&tuiHintContent=Ivan%20Ivanov`,
         );
-        cy.hideHeader();
         cy.get('#demoContent tui-tooltip')
             .first()
             .click()
@@ -18,10 +17,9 @@ describe('TuiPrimitiveTextfield', () => {
     });
 
     it("prefix + postfix align on the same line with input's value", () => {
-        cy.goToDemoPage(
+        cy.tuiVisit(
             `components/primitive-textfield/API?value=TEXT&postfix=__!&prefix=!__`,
         );
-        cy.hideHeader();
         cy.get('#demoContent')
             .should('be.visible')
             .matchImageSnapshot('02-prefix-postfix');

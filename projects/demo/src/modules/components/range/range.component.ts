@@ -1,16 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiPluralize, TuiSizeS} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
-
-import {default as example1Html} from '!!raw-loader!./examples/1/index.html';
-import {default as example1Ts} from '!!raw-loader!./examples/1/index.ts';
-import {default as exampleForm} from '!!raw-loader!./examples/import/declare-form.txt';
-import {default as exampleModule} from '!!raw-loader!./examples/import/import-module.txt';
-import {default as exampleHtml} from '!!raw-loader!./examples/import/insert-template.txt';
-
-import {FrontEndExample} from '../../interfaces/front-end-example';
 
 @Component({
     selector: 'example-range',
@@ -18,13 +11,31 @@ import {FrontEndExample} from '../../interfaces/front-end-example';
     changeDetection,
 })
 export class ExampleTuiRangeComponent {
-    readonly exampleModule = exampleModule;
-    readonly exampleHtml = exampleHtml;
-    readonly exampleForm = exampleForm;
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
+    readonly exampleForm = import('!!raw-loader!./examples/import/declare-form.md');
 
-    readonly example1: FrontEndExample = {
-        TypeScript: example1Ts,
-        HTML: example1Html,
+    readonly example1: TuiDocExample = {
+        HTML: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import('!!raw-loader!./examples/1/index'),
+    };
+
+    readonly example2: TuiDocExample = {
+        HTML: import('!!raw-loader!./examples/2/index.html'),
+        TypeScript: import('!!raw-loader!./examples/2/index'),
+        LESS: import('!!raw-loader!./examples/2/index.less'),
+    };
+
+    readonly example3: TuiDocExample = {
+        HTML: import('!!raw-loader!./examples/3/index.html'),
+        LESS: import('!!raw-loader!./examples/3/index.less'),
+        TypeScript: import('!!raw-loader!./examples/3/index'),
+    };
+
+    readonly example4: TuiDocExample = {
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        TypeScript: import('!!raw-loader!./examples/4/index'),
+        LESS: import('!!raw-loader!./examples/4/index.less'),
     };
 
     readonly control = new FormControl([0, 0]);
@@ -47,17 +58,11 @@ export class ExampleTuiRangeComponent {
 
     size: TuiSizeS = this.sizeVariants[1];
 
-    readonly minVariants: readonly number[] = [0, 1, 5, 7.77];
+    min = 0;
 
-    min = this.minVariants[0];
+    max = 100;
 
-    readonly maxVariants: readonly number[] = [10, 100, 10000];
-
-    max = this.maxVariants[0];
-
-    readonly segmentsVariants: readonly number[] = [0, 1, 5, 13];
-
-    segments = this.segmentsVariants[0];
+    segments = 0;
 
     readonly stepsVariants: readonly number[] = [0, 4, 10];
 

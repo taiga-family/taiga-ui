@@ -6,7 +6,7 @@ import {
 describe('DropdownContext', () => {
     beforeEach(() => {
         cy.viewport(720, 900);
-        cy.goToDemoPage(DROPDOWN_CONTEXT_PAGE_URL);
+        cy.tuiVisit(DROPDOWN_CONTEXT_PAGE_URL);
     });
 
     it('opens dropdown on right click', () => {

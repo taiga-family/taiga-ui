@@ -1,5 +1,7 @@
 @import 'https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap';
 
+/* stylelint-disable */
+
 body.tui-editor-socket {
     margin: 0;
     overflow: hidden;

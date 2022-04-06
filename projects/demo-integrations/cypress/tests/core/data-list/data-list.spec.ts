@@ -2,9 +2,7 @@ import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '../../../support/shared.entities';
 
 describe('DataList', () => {
     beforeEach(() => {
-        cy.goToDemoPage('/components/data-list');
-        cy.hideHeader();
-        cy.hideNavigation();
+        cy.tuiVisit('/components/data-list');
     });
 
     it('Complex', () => {

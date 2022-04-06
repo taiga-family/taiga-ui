@@ -52,8 +52,7 @@ describe('Deep', () => {
             let counter = 1;
 
             cy.viewport(1440, 1920); // TODO: need investigate later, why failed less than 1920px
-            cy.goToDemoPage(`/${path}/API`);
-            cy.hideHeader();
+            cy.tuiVisit(`/${path}/API`);
 
             cy.get(`table.t-table tui-select`).each(($select, selectIndex) => {
                 if (selectExclusions[path]?.includes(selectIndex)) {
