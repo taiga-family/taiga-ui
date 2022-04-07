@@ -2,26 +2,20 @@ name: Screenshot tests
 
 on:
   pull_request:
-    paths:
-      - 'projects/**'
-      - '!projects/*testing/**'
-      - '!projects/icons/**'
-      - 'angular.json'
-      - 'package.json'
-      - 'tsconfig*'
-      - '**/demo-integrations.yml'
+    paths-ignore:
+      - 'projects/*testing/**'
+      - 'projects/icons/**'
     branches-ignore:
-      - 'release/**'
+      - 'release**'
   push:
     branches:
       - '!main'
-      - '!release/**'
+      - '!release**'
 
 env:
   NX_BRANCH: ${{ github.event.number }}
   CYPRESS_API_URL: http://localhost:1234/
   SNAPSHOTS_PATH: ./projects/demo-integrations/cypress/snapshots
-
   # disable shared memory X11 affecting Cypress v4 and Chrome
   # https://github.com/cypress-io/cypress-docker-images/issues/270
   QT_X11_NO_MITSHM: 1
@@ -35,14 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-      CYPRESS_CACHE_FOLDER: ./node_modules/cache-cypress
-
     services:
       sorry-cypress-director:
         image: agoldis/sorry-cypress-director:2.1
         ports:
           - 1234:1234
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -55,10 +46,13 @@ jobs:
           branch: main
           push: false
 
-      - run: |
-          sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
+
+      - name: Show where is cypress cache
+        run: |
+          npx cypress cache path
+          npx cypress cache list
 
       - name: Ignore running parallel Xvfb servers
         run: Xvfb :99 &
@@ -73,6 +67,7 @@ jobs:
         run: |
           npm run serve:compiled & sleep 5
           curl -X GET -I -f "http://localhost:3333"
+
       - name: Run screenshot tests on demo/localhost
         run: npm run concurrently "npm run cy2:run:localhost" "sleep 10 && npm run cy2:run:localhost"
 
