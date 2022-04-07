@@ -5,7 +5,7 @@ inputs:
   node-version:
     description: Node.js version
     required: false
-    default: 14.x
+    default: 16.x
 
 runs:
   using: composite
@@ -21,10 +21,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: |
-          node_modules
-          */*/node_modules/
-          !node_modules/.cache
-          !*/*/node_modules/.cache
+          **/node_modules/
+          !**/node_modules/.cache
         key: modules-cache__nodejs-${{ inputs.node-version }}__${{ hashfiles('**/package-lock.json') }}
 
     - name: Restore from cache of builds
@@ -33,8 +31,7 @@ runs:
       uses: actions/cache@v3
       with:
         path: |
-          node_modules/.cache
-          */*/node_modules/.cache
+          **/node_modules/.cache
         key: builds-cache-hash__${{ hashFiles('**/package-lock.json') }}-${{ github.ref }}
         restore-keys: builds-cache__nodejs-${{ inputs.node-version }}__${{ hashFiles('**/package-lock.json') }}
 
@@ -46,6 +43,16 @@ runs:
         key: npm-cache__nodejs-${{ inputs.node-version }}__${{ hashFiles('**/package-lock.json') }}
         restore-keys: npm-cache-hash__
 
-    - run: npm ci
+    - name: Clean install dependencies
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      env:
+        NPM_CONFIG_CACHE: ~/.npm
+        CYPRESS_CACHE_FOLDER: ./node_modules/cache-cypress
+      run: npm ci
       shell: bash
+
+    - name: environment
+      shell: bash
+      run: |
+        node -v
+        npm -v
