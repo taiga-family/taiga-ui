@@ -15,7 +15,7 @@
         [max]="value[1]"
         [precision]="precision"
         [decimal]="decimal"
-        [postfix]="(minLabel || leftValueContent) && showLeftValueContent ? '' : value[0] | i18nPlural: pluralizeMap || pluralizeMapFallback"
+        [postfix]="pluralizeMap && !showLeftValueContent ? (value[0] | i18nPlural: pluralizeMap) : ''"
         [disabled]="computedDisabled"
         [readOnly]="readOnly"
         [tuiTextfieldSize]="computedSize"
@@ -23,12 +23,12 @@
         [ngModel]="value[0]"
         (ngModelChange)="onInputLeft($event)"
         (focusedChange)="onTextInputFocused($event, false)"
-        (keydown.arrowUp)="incrementByStep($event, false)"
-        (keydown.arrowDown)="decrementByStep($event, false)"
+        (keydown.arrowUp)="changeByStep($event, [1, 0])"
+        (keydown.arrowDown)="changeByStep($event, [-1, 0])"
     >
         <ng-content></ng-content>
         <div
-            *ngIf="(minLabel || leftValueContent) && showLeftValueContent"
+            *ngIf="showLeftValueContent"
             polymorpheus-outlet
             [content]="minLabel ? legacyMinLabel : leftValueContent"
             [context]="{$implicit: value[0]}"
@@ -49,11 +49,11 @@
         [ngModel]="value[1]"
         (ngModelChange)="onInputRight($event)"
         (focusedChange)="onTextInputFocused($event, true)"
-        (keydown.arrowUp)="incrementByStep($event, true)"
-        (keydown.arrowDown)="decrementByStep($event, true)"
+        (keydown.arrowUp)="changeByStep($event, [0, 1])"
+        (keydown.arrowDown)="changeByStep($event, [0, -1])"
     >
         <div
-            *ngIf="(maxLabel || rightValueContent) && showRightValueContent"
+            *ngIf="showRightValueContent"
             polymorpheus-outlet
             [content]="maxLabel ? legacyMaxLabel : rightValueContent"
             [context]="{$implicit: value[1]}"
@@ -62,11 +62,11 @@
 
     <!-- TODO replace by postfix of the right InputNumber (after fix https://github.com/Tinkoff/taiga-ui/issues/1193) -->
     <span
-        *ngIf="!((maxLabel || rightValueContent) && showRightValueContent) && pluralizeMap"
+        *ngIf="!showRightValueContent && pluralizeMap"
         automation-id="tui-input-range__pluralize-right"
         class="t-pluralize-right"
     >
-        &nbsp;{{value[1] | i18nPlural: pluralizeMap || pluralizeMapFallback}}
+        &nbsp;{{value[1] | i18nPlural: pluralizeMap}}
     </span>
 
     <tui-range

@@ -16,10 +16,11 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    clamp,
     EMPTY_QUERY,
     isNativeFocused,
     isNativeFocusedIn,
-    setNativeFocused,
+    round,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_IS_MOBILE,
     TuiContextWithImplicit,
@@ -39,6 +40,7 @@ import {
 import {AbstractTuiInputSlider, quantumAssertion} from '@taiga-ui/kit/abstract';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
 import {TuiRangeComponent} from '@taiga-ui/kit/components/range';
+import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -66,6 +68,10 @@ export class TuiNewInputRangeDirective {}
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })
+/**
+ * `AbstractTuiInputSlider` includes all legacy code (it can be deleted in v3.0)
+ * TODO replace `extends AbstractTuiInputSlider<[number, number]>` by `extends AbstractTuiControl<[number, number]> implements TuiWithOptionalMinMax<number>`
+ */
 export class TuiInputRangeComponent
     extends AbstractTuiInputSlider<[number, number]>
     implements TuiFocusableElementAccessor
@@ -132,21 +138,17 @@ export class TuiInputRangeComponent
     }
 
     get leftFocusableElement(): HTMLInputElement | null {
-        const [leftTextInputRef] = this.inputNumberRefs;
-
-        return leftTextInputRef?.nativeFocusableElement || null;
+        return this.inputNumberRefs.first?.nativeFocusableElement || null;
     }
 
     get rightFocusableElement(): HTMLInputElement | null {
-        const [, rightTextInputRef] = this.inputNumberRefs;
-
-        return rightTextInputRef?.nativeFocusableElement || null;
+        return this.inputNumberRefs.last?.nativeFocusableElement || null;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return !this.leftFocusableElement || this.disabled
+        return this.disabled
             ? null
-            : this.leftFocusableElement;
+            : this.leftFocusableElement || this.rightFocusableElement;
     }
 
     get focused(): boolean {
@@ -154,16 +156,18 @@ export class TuiInputRangeComponent
     }
 
     get showLeftValueContent(): boolean {
-        return (
-            !isNativeFocused(this.leftFocusableElement) &&
-            !(this.rangeRef?.focused && this.lastActiveSide === 'left')
+        return Boolean(
+            (this.minLabel || this.leftValueContent) &&
+                !isNativeFocused(this.leftFocusableElement) &&
+                !(this.rangeRef?.focused && this.lastActiveSide === 'left'),
         );
     }
 
     get showRightValueContent(): boolean {
-        return (
-            !isNativeFocused(this.rightFocusableElement) &&
-            !(this.rangeRef?.focused && this.lastActiveSide === 'right')
+        return Boolean(
+            (this.maxLabel || this.rightValueContent) &&
+                !isNativeFocused(this.rightFocusableElement) &&
+                !(this.rangeRef?.focused && this.lastActiveSide === 'right'),
         );
     }
 
@@ -185,9 +189,6 @@ export class TuiInputRangeComponent
             : this.size;
     }
 
-    /**
-     * TODO keep only controller.labelOutside in v3.0 (let user configure this property by yourself)
-     */
     @HostBinding('class._label-outside')
     get legacyLabelOutside(): boolean {
         return this.isNew ? this.controller.labelOutside : this.computedSize === 'm';
@@ -211,22 +212,30 @@ export class TuiInputRangeComponent
         }
     }
 
-    incrementByStep(event: KeyboardEvent, right: boolean) {
+    changeByStep(
+        event: KeyboardEvent,
+        [leftCoefficient, rightCoefficient]: [number, number],
+    ) {
         if (this.readOnly) {
             return;
         }
 
         event.preventDefault();
-        this.processStep(true, right);
-    }
 
-    decrementByStep(event: KeyboardEvent, right: boolean) {
-        if (this.readOnly) {
-            return;
+        const newValue = this.valueGuard([
+            this.value[0] + leftCoefficient * this.step,
+            this.value[1] + rightCoefficient * this.step,
+        ]);
+        const leftValueChanged = newValue[0] !== this.value[0];
+        const rightValueChanged = newValue[1] !== this.value[1];
+
+        if (leftValueChanged || rightValueChanged) {
+            this.safelyUpdateValue(newValue);
+            this.updateTextInputValue(
+                newValue[rightValueChanged ? 1 : 0],
+                rightValueChanged,
+            );
         }
-
-        event.preventDefault();
-        this.processStep(false, right);
     }
 
     onInputLeft(value: number | null) {
@@ -257,7 +266,7 @@ export class TuiInputRangeComponent
                 : this.rightFocusableElement;
 
         if (!this.isMobile && element) {
-            setNativeFocused(element);
+            element.focus();
         }
     }
 
@@ -265,32 +274,27 @@ export class TuiInputRangeComponent
         return [0, 0];
     }
 
-    private safelyUpdateValue([leftValue, rightValue]: [number, number]) {
-        const leftGuardedValue = this.valueGuard(leftValue);
-        const rightGuardedValue = this.valueGuard(rightValue);
-
-        const leftSafeValue = Math.min(leftGuardedValue, rightGuardedValue);
-        const rightSafeValue = Math.max(leftGuardedValue, rightGuardedValue);
-
-        this.updateValue([leftSafeValue, rightSafeValue]);
+    private safelyUpdateValue(value: [number, number]) {
+        this.updateValue(this.valueGuard(value));
     }
 
-    private processStep(increment: boolean, right: boolean) {
-        const start = this.valueGuard(
-            increment ? this.value[0] + this.step : this.value[0] - this.step,
-        );
-        const end = this.valueGuard(
-            increment ? this.value[1] + this.step : this.value[1] - this.step,
-        );
-        const value: [number, number] = [
-            right ? this.value[0] : Math.min(start, this.value[1]),
-            right ? Math.max(end, this.value[0]) : this.value[1],
-        ];
+    private valueGuard([leftValue, rightValue]: [number, number]): [number, number] {
+        const leftCalibratedValue = this.calibrate(leftValue);
+        const rightCalibratedValue = this.calibrate(rightValue);
 
-        if (value[0] !== this.value[0] || value[1] !== this.value[1]) {
-            this.safelyUpdateValue(value);
-            this.updateTextInputValue(right ? value[1] : value[0], right);
-        }
+        return [
+            Math.min(leftCalibratedValue, this.value[1]),
+            Math.max(rightCalibratedValue, this.value[0]),
+        ];
+    }
+
+    private calibrate(value: number): number {
+        const roundedValue = round(
+            Math.round(value / this.quantum) * this.quantum,
+            TUI_FLOATING_PRECISION,
+        );
+
+        return clamp(roundedValue, this.min, this.max);
     }
 
     private updateTextInputValue(value: number, right: boolean) {

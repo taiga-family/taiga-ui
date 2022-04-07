@@ -1,12 +1,11 @@
 import {Directive, HostBinding, Input} from '@angular/core';
-import {AbstractTuiControl, clamp, round, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
+import {AbstractTuiControl, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {
     TuiPluralize,
     tuiPluralizeToICU,
     TuiSizeL,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 
 export function quantumAssertion(quantum: number): boolean {
@@ -110,6 +109,9 @@ export abstract class AbstractTuiInputSlider<T>
     @tuiDefaultProp()
     size: TuiSizeL = 'l';
 
+    /**
+     * @deprecated replace by input-property {@link pluralize} in v3.0
+     */
     pluralizeMap: Record<string, string> | null = null;
     /** @deprecated TODO remove in v3.0 */
     segmentsPluralizeMap: Record<string, string> | null = null;
@@ -154,19 +156,6 @@ export abstract class AbstractTuiInputSlider<T>
 
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
-    }
-
-    protected valueGuard(value: number): number {
-        return this.quantum
-            ? clamp(
-                  round(
-                      Math.round(value / this.quantum) * this.quantum,
-                      TUI_FLOATING_PRECISION,
-                  ),
-                  this.min,
-                  this.max,
-              )
-            : clamp(value, this.min, this.max);
     }
 
     @tuiPure

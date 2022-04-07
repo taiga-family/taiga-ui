@@ -87,10 +87,11 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
         '',
         'TOP SECRET',
         ({$implicit: val}: TuiContextWithImplicit<number>) =>
-            val === this.max ? 'MAX' : val,
+            val === this.max ? 'MAX' : `${val}`,
         ({$implicit: val}: TuiContextWithImplicit<number>) =>
-            val === this.min ? 'MIN' : val,
-        ({$implicit: val}: TuiContextWithImplicit<number>) => (val === 5 ? 'FIVE' : val),
+            val === this.min ? 'MIN' : `${val}`,
+        ({$implicit: val}: TuiContextWithImplicit<number>) =>
+            val === 5 ? 'FIVE' : `${val}`,
     ];
 
     leftValueContent = this.valueContentVariants[0];
