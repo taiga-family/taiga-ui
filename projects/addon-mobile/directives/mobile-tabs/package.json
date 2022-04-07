@@ -1,7 +1,10 @@
 {
     "ngPackage": {
         "lib": {
-            "entryFile": "index.ts"
+            "entryFile": "index.ts",
+            "styleIncludePaths": [
+                "../../../core/styles"
+            ]
         }
     }
 }
