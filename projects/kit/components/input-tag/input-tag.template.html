@@ -54,7 +54,7 @@
                                 #tag
                                 automation-id="tui-input-tag__tag"
                                 class="t-tag"
-                                [status]="status$ | async"
+                                [status]="(status$ | async) || 'default'"
                                 [leftContent]="getLeftContent(item)"
                                 [allowSpaces]="allowSpaces"
                                 [tuiFocusable]="false"

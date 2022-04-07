@@ -182,7 +182,7 @@ export class TuiInputTagComponent
 
     @ViewChild(TuiScrollbarComponent)
     set scrollerSetter(scroller: TuiScrollbarComponent | null) {
-        this.initScrollerSubscrition(scroller);
+        this.initScrollerSubscription(scroller);
     }
 
     status$: Observable<TuiStatusT> = this.mode$.pipe(
@@ -475,8 +475,8 @@ export class TuiInputTagComponent
         }
     }
 
-    private initScrollerSubscrition(scroller: TuiScrollbarComponent | null) {
-        if (!scroller || !scroller.browserScrollRef) {
+    private initScrollerSubscription(scroller: TuiScrollbarComponent | null) {
+        if (!scroller?.browserScrollRef) {
             return;
         }
 
