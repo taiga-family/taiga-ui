@@ -35,6 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+      CYPRESS_CACHE_FOLDER: ./node_modules/cache-cypress
 
     services:
       sorry-cypress-director:

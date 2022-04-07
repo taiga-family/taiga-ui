@@ -1,12 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    TuiActiveZoneModule,
-    TuiFocusableModule,
-    TuiFocusVisibleModule,
-    TuiRepeatTimesModule,
-} from '@taiga-ui/cdk';
+import {TuiFocusableModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit/components/slider';
 
@@ -18,8 +13,6 @@ import {TuiRangeChangeDirective} from './range-change.directive';
         CommonModule,
         TuiRepeatTimesModule,
         TuiFocusableModule,
-        TuiActiveZoneModule,
-        TuiFocusVisibleModule,
         TuiFormatNumberPipeModule,
         TuiSliderModule,
         FormsModule,
