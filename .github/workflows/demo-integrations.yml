@@ -14,14 +14,6 @@ on:
 
 env:
   NX_BRANCH: ${{ github.event.number }}
-  CYPRESS_API_URL: http://localhost:1234/
-  SNAPSHOTS_PATH: ./projects/demo-integrations/cypress/snapshots
-  # disable shared memory X11 affecting Cypress v4 and Chrome
-  # https://github.com/cypress-io/cypress-docker-images/issues/270
-  QT_X11_NO_MITSHM: 1
-  _X11_NO_MITSHM: 1
-  _MITSHM: 0
-  DISPLAY: ':99'
 
 jobs:
   demo-integrations:
@@ -39,23 +31,14 @@ jobs:
         with:
           fetch-depth: 10
 
-      - name: Try rebase locally for check affected e2e
-        uses: imba-tjd/rebase-upstream-action@0.5
-        with:
-          upstream: Tinkoff/taiga-ui
-          branch: main
-          push: false
-
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - name: Show where is cypress cache
-        run: |
-          npx cypress cache path
-          npx cypress cache list
-
-      - name: Ignore running parallel Xvfb servers
-        run: Xvfb :99 &
+      - name: Setup Cypress and Sorry Cypress
+        uses: ./.github/actions/cypress
+        with:
+          cypress-api-url: http://localhost:1234/
+          snapshot-path: ./projects/demo-integrations/cypress/snapshots
 
       - name: Health check of taiga-ui.dev
         run: curl -X GET -I -f "https://taiga-ui.dev/next"
