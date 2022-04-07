@@ -29,7 +29,7 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
     providers: TUI_TAB_PROVIDERS,
     host: {
         '($.data-mode.attr)': 'mode$',
-        '[style.marginRight.px]': 'margin',
+        '[style.--tui-tab-margin.px]': 'margin',
         type: 'button',
     },
 })
