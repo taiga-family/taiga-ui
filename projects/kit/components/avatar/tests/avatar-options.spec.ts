@@ -1,10 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {
-    TuiAvatarComponent,
-    TuiAvatarModule,
-    tuiAvatarOptionsProvider,
-} from '@taiga-ui/kit';
+
+import {TuiAvatarComponent} from '../avatar.component';
+import {TuiAvatarModule} from '../avatar.module';
+import {tuiAvatarOptionsProvider} from '../avatar-options';
 
 describe('Avatar component options', () => {
     let fixture: ComponentFixture<TestComponent>;
