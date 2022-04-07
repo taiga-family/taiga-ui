@@ -5,5 +5,6 @@ export * from './items-handlers';
 export * from './mobile-aware';
 export * from './mobile-calendar';
 export * from './month-formatter';
+export * from './tab-margin';
 export * from './tag-status';
 export * from './validation-errors';

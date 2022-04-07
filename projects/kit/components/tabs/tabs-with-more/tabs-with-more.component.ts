@@ -20,10 +20,11 @@ import {
     isNativeFocused,
     setNativeFocused,
     toInt,
+    TuiActiveZoneDirective,
+    TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiHandler,
 } from '@taiga-ui/cdk';
-import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
+import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
@@ -46,11 +47,14 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
     private maxIndex = Infinity;
 
-    private readonly margin: TuiHandler<HTMLElement, number> = getMargin();
-
     @Input()
     @tuiDefaultProp()
     moreContent: PolymorpheusContent = '';
+
+    @Input()
+    @tuiDefaultProp()
+    dropdownContent: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>> =
+        '';
 
     @Input()
     @HostBinding('class._underline')
@@ -74,6 +78,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     open = false;
 
     constructor(
+        @Inject(TUI_TAB_MARGIN) private readonly margin: number,
         @Inject(TABS_REFRESH) private readonly refresh$: Observable<unknown>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
@@ -167,14 +172,13 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     private getMaxIndex(): number {
-        const {tabs, activeItemIndex} = this;
+        const {tabs, activeItemIndex, margin} = this;
 
         if (tabs.length < 2) {
             return 0;
         }
 
         const {clientWidth} = this.elementRef.nativeElement;
-        const margin = this.margin(tabs[0]);
         const activeWidth = tabs[activeItemIndex] ? tabs[activeItemIndex].scrollWidth : 0;
         const moreWidth = tabs[tabs.length - 1].scrollWidth;
         let maxIndex = tabs.length - 2;
@@ -214,35 +218,4 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         this.activeItemIndexChange.emit(activeItemIndex);
         this.maxIndex = this.getMaxIndex();
     }
-}
-
-function getMargin(): TuiHandler<HTMLElement | undefined, number> {
-    let cache = 0;
-
-    return tab => {
-        if (cache || !tab) {
-            return cache;
-        }
-
-        const walker: TreeWalker = tab.ownerDocument!.createTreeWalker(
-            tab.ownerDocument!.body,
-            NodeFilter.SHOW_ELEMENT,
-            {
-                acceptNode: node =>
-                    walker.currentNode.contains(node)
-                        ? NodeFilter.FILTER_REJECT
-                        : NodeFilter.FILTER_ACCEPT,
-            },
-        );
-
-        walker.currentNode = tab;
-
-        const next = walker.nextNode() as HTMLElement | null;
-        const fallback = tab.scrollWidth || 0;
-        const width = next ? next.offsetLeft - tab.offsetLeft : fallback;
-
-        cache = width - tab.scrollWidth;
-
-        return cache;
-    };
 }

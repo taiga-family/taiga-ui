@@ -25,7 +25,7 @@
     <tui-hosted-dropdown
         class="more_wrapper"
         [class.overflown]="!isMoreVisible"
-        [content]="dropdown"
+        [content]="dropdownContent || dropdown"
         [(open)]="open"
     >
         <button
