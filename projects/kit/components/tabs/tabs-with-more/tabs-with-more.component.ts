@@ -21,6 +21,7 @@ import {
     setNativeFocused,
     toInt,
     tuiDefaultProp,
+    TuiHandler,
 } from '@taiga-ui/cdk';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -29,7 +30,6 @@ import {filter, map} from 'rxjs/operators';
 
 import {TuiTabDirective} from '../tab.directive';
 import {TuiTabComponent} from '../tab/tab.component';
-import {TAB_MARGIN} from '../tabs.const';
 import {TABS_PROVIDERS, TABS_REFRESH} from './tabs-with-more.providers';
 
 // @dynamic
@@ -45,6 +45,8 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     private readonly moreButton?: ElementRef<HTMLButtonElement>;
 
     private maxIndex = Infinity;
+
+    private readonly margin: TuiHandler<HTMLElement, number> = getMargin();
 
     @Input()
     @tuiDefaultProp()
@@ -78,6 +80,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
     ) {}
 
+    // TODO: Improve performance
     get tabs(): readonly HTMLElement[] {
         return Array.from<HTMLElement>(
             this.elementRef.nativeElement.querySelectorAll('[tuiTab]'),
@@ -171,12 +174,13 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
 
         const {clientWidth} = this.elementRef.nativeElement;
+        const margin = this.margin(tabs[0]);
         const activeWidth = tabs[activeItemIndex] ? tabs[activeItemIndex].scrollWidth : 0;
         const moreWidth = tabs[tabs.length - 1].scrollWidth;
         let maxIndex = tabs.length - 2;
         let total =
-            tabs.reduce((acc, tab) => acc + tab.scrollWidth, 0) +
-            maxIndex * TAB_MARGIN -
+            tabs.reduce((acc, {scrollWidth}) => acc + scrollWidth, 0) +
+            maxIndex * margin -
             moreWidth;
 
         if (total <= clientWidth) {
@@ -184,12 +188,12 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
 
         while (maxIndex) {
-            total -= tabs[maxIndex].scrollWidth + TAB_MARGIN;
+            total -= tabs[maxIndex].scrollWidth + margin;
             maxIndex--;
 
             const activeDisplaced = activeItemIndex > maxIndex;
-            const activeOffset = activeDisplaced ? activeWidth + TAB_MARGIN : 0;
-            const currentWidth = total + activeOffset + moreWidth + TAB_MARGIN;
+            const activeOffset = activeDisplaced ? activeWidth + margin : 0;
+            const currentWidth = total + activeOffset + moreWidth + margin;
             // Needed for different rounding of visible and hidden elements scrollWidth
             const safetyOffset = toInt(this.maxIndex === maxIndex - 1);
 
@@ -210,4 +214,35 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         this.activeItemIndexChange.emit(activeItemIndex);
         this.maxIndex = this.getMaxIndex();
     }
+}
+
+function getMargin(): TuiHandler<HTMLElement | undefined, number> {
+    let cache = 0;
+
+    return tab => {
+        if (cache || !tab) {
+            return cache;
+        }
+
+        const walker: TreeWalker = tab.ownerDocument!.createTreeWalker(
+            tab.ownerDocument!.body,
+            NodeFilter.SHOW_ELEMENT,
+            {
+                acceptNode: node =>
+                    walker.currentNode.contains(node)
+                        ? NodeFilter.FILTER_REJECT
+                        : NodeFilter.FILTER_ACCEPT,
+            },
+        );
+
+        walker.currentNode = tab;
+
+        const next = walker.nextNode() as HTMLElement | null;
+        const fallback = tab.scrollWidth || 0;
+        const width = next ? next.offsetLeft - tab.offsetLeft : fallback;
+
+        cache = width - tab.scrollWidth;
+
+        return cache;
+    };
 }

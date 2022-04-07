@@ -2,7 +2,7 @@
     [itemsLimit]="3"
     [(activeItemIndex)]="activeItemIndex"
 >
-    <button
+    <a
         *tuiTab
         tuiTab
         (click)="onClick('Maps')"
@@ -12,8 +12,8 @@
             class="tui-space_right-2"
         ></tui-svg>
         Maps
-    </button>
-    <button
+    </a>
+    <a
         *tuiTab
         tuiTab
         disabled
@@ -24,8 +24,8 @@
             class="tui-space_right-2"
         ></tui-svg>
         Calls
-    </button>
-    <button
+    </a>
+    <a
         *tuiTab
         tuiTab
         (click)="onClick('Settings')"
@@ -35,8 +35,8 @@
             class="tui-space_right-2"
         ></tui-svg>
         Settings
-    </button>
-    <button
+    </a>
+    <a
         *tuiTab
         tuiTab
         (click)="onClick('Favorite')"
@@ -46,8 +46,8 @@
             class="tui-space_right-2"
         ></tui-svg>
         Favorite
-    </button>
-    <button
+    </a>
+    <a
         *tuiTab
         tuiTab
         (click)="onClick('Trash')"
@@ -57,7 +57,7 @@
             class="tui-space_right-2"
         ></tui-svg>
         Trash
-    </button>
+    </a>
 </tui-tabs-with-more>
 <tui-input-count
     class="tui-space_top-4"
