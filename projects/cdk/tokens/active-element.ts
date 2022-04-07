@@ -35,7 +35,9 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
 
             return merge(
                 focusout$.pipe(
+                    // eslint-disable-next-line rxjs/no-unsafe-takeuntil
                     takeUntil(mousedown$),
+                    // eslint-disable-next-line rxjs/no-ignored-notifier
                     repeatWhen(() => mouseup$),
                     withLatestFrom(removedElement$),
                     filter(([event, removedElement]) =>
@@ -64,8 +66,8 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                             ? of(getActualTarget(event))
                             : focusout$.pipe(
                                   take(1),
-                                  takeUntil(timer(0)),
                                   mapTo(getActualTarget(event)),
+                                  takeUntil(timer(0)),
                               ),
                     ),
                 ),

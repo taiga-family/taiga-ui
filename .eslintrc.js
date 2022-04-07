@@ -10,6 +10,7 @@ module.exports = {
         // './scripts/eslint/nx.js',
         '@tinkoff/eslint-config-angular',
         '@tinkoff/eslint-config-angular/html',
+        '@tinkoff/eslint-config-angular/rxjs',
     ],
     ignorePatterns: [
         'projects/**/test.ts',

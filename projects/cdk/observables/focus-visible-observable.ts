@@ -31,10 +31,18 @@ export function focusVisibleObservable(element: Element): Observable<boolean> {
     if (!documentMouseDownIsAlive$ || !documentMouseUpIsAlive$) {
         documentMouseUpIsAlive$ = typedFromEvent(ownerDocument, 'mouseup', {
             capture: true,
-        }).pipe(tuiIsAlive(), startWith(false), shareReplay(1));
+        }).pipe(
+            tuiIsAlive(),
+            startWith(false),
+            shareReplay({bufferSize: 1, refCount: true}),
+        );
         documentMouseDownIsAlive$ = typedFromEvent(ownerDocument, 'mousedown', {
             capture: true,
-        }).pipe(tuiIsAlive(), startWith(false), shareReplay(1));
+        }).pipe(
+            tuiIsAlive(),
+            startWith(false),
+            shareReplay({bufferSize: 1, refCount: true}),
+        );
     }
 
     return merge(

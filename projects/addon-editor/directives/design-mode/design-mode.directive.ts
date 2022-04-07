@@ -254,7 +254,6 @@ export class TuiDesignModeDirective
     private initPasteSubscription() {
         typedFromEvent(this.computedDocument, 'paste')
             .pipe(
-                takeUntil(this.destroy$),
                 filter(
                     event =>
                         !event.clipboardData ||
@@ -262,6 +261,7 @@ export class TuiDesignModeDirective
                 ),
                 preventDefault(),
                 map(event => this.sanitize(getClipboardDataText(event, 'text/html'))),
+                takeUntil(this.destroy$),
             )
             .subscribe(html => {
                 tuiInsertHtml(this.computedDocument, html);
@@ -278,8 +278,8 @@ export class TuiDesignModeDirective
                         dataTransfer: DataTransfer;
                     } => !!event.dataTransfer,
                 ),
-                takeUntil(this.destroy$),
                 preventDefault(),
+                takeUntil(this.destroy$),
             )
             .subscribe(event => {
                 this.setSelectionAt(event.x, event.y);

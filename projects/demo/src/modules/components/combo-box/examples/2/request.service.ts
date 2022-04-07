@@ -28,7 +28,7 @@ export class RequestService {
             ),
         ),
         takeUntil(this.destroy$),
-        shareReplay(1),
+        shareReplay({bufferSize: 1, refCount: true}),
     );
 
     constructor(@Inject(TuiDestroyService) private readonly destroy$: Observable<void>) {}

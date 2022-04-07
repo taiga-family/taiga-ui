@@ -45,9 +45,9 @@ export class TuiResizeService extends ResizeObserverService {
                     mapTo(EMPTY_ARRAY),
                 ),
             ),
-            takeUntil(destroy$),
             debounceTime(0),
             tuiZonefree(ngZone),
+            takeUntil(destroy$),
         );
     }
 }

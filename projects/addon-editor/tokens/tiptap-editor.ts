@@ -8,7 +8,7 @@ export const TIPTAP_EDITOR = new InjectionToken<Observable<Editor>>(
 
 export const LAZY_TIPTAP_EDITOR = new InjectionToken('Lazy loaded Editor', {
     factory: () => {
-        const editor$ = new ReplaySubject<typeof Editor>();
+        const editor$ = new ReplaySubject<typeof Editor>(1);
 
         import('@tiptap/core').then(m => editor$.next(m.Editor));
 

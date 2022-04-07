@@ -57,7 +57,7 @@ export class TuiDocExampleComponent {
 
     readonly processor$: Observable<Record<string, string>> = this.rawLoader$$.pipe(
         switchMap(rawLoadRecord),
-        map(this.processContent),
+        map(value => this.processContent(value)),
     );
 
     readonly loading$ = new Subject<boolean>();
