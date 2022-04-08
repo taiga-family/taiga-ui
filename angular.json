@@ -533,10 +533,6 @@
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
-                                },
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "6kb"
                                 }
                             ]
                         },
@@ -566,20 +562,11 @@
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
-                                },
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "6kb"
                                 }
                             ]
                         },
                         "hmr": {
-                            "budgets": [
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "6kb"
-                                }
-                            ],
+                            "budgets": [],
                             "fileReplacements": [
                                 {
                                     "replace": "projects/demo/src/environments/environment.ts",
@@ -588,12 +575,7 @@
                             ]
                         },
                         "def": {
-                            "budgets": [
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "6kb"
-                                }
-                            ],
+                            "budgets": [],
                             "fileReplacements": [
                                 {
                                     "replace": "projects/demo/src/emulate/change-detection-strategy.ts",
@@ -602,12 +584,7 @@
                             ]
                         },
                         "shadow": {
-                            "budgets": [
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "6kb"
-                                }
-                            ],
+                            "budgets": [],
                             "fileReplacements": [
                                 {
                                     "replace": "projects/demo/src/emulate/view-encapsulation.ts",
