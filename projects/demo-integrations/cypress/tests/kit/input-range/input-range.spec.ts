@@ -149,6 +149,33 @@ describe('InputRange', () => {
             });
         }
     });
+
+    describe('Range interactions', () => {
+        beforeEach(() => {
+            cy.tuiVisit(`${INPUT_RANGE_PAGE_URL}/API?min=-100&max=100&quantum=10`);
+            initializeAliases('#demoContent tui-input-range', [0, 10]);
+        });
+
+        it("clicking on the RIGHT side of the sliders' track changes only RIGHT value", () => {
+            cy.get('@rightSlider')
+                .click('right', {force: true})
+                .should('have.value', 100);
+
+            cy.get('@leftSlider').should('have.value', 0);
+            cy.get('@leftTextInput').should('have.value', 0);
+
+            cy.get('@rightTextInput').should('have.value', 100);
+        });
+
+        it("clicking on the LEFT side of the sliders' track changes only LEFT value", () => {
+            cy.get('@leftSlider').click('left', {force: true}).should('have.value', -100);
+
+            cy.get('@rightSlider').should('have.value', 10);
+            cy.get('@rightTextInput').should('have.value', 10);
+
+            cy.get('@leftTextInput').should('have.value', -100);
+        });
+    });
 });
 
 function initializeAliases(
