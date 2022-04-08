@@ -9,18 +9,15 @@
     >
         <ng-container *ngFor="let item of items; let index = index">
             <ng-container
-                *ngIf="index <= lastVisibleIndex || index === activeItemIndex"
+                *ngIf="index <= lastVisibleIndex; else hidden"
                 [ngTemplateOutlet]="item"
             ></ng-container>
+            <ng-template #hidden>
+                <div [class.t-overflown]="index !== activeItemIndex">
+                    <ng-container *ngTemplateOutlet="item"></ng-container>
+                </div>
+            </ng-template>
         </ng-container>
-        <div class="t-overflown">
-            <ng-container *ngFor="let item of items; let index = index">
-                <ng-container
-                    *ngIf="index > lastVisibleIndex && index !== activeItemIndex"
-                    [ngTemplateOutlet]="item"
-                ></ng-container>
-            </ng-container>
-        </div>
     </tui-tabs>
     <tui-hosted-dropdown
         class="t-more_wrapper"
