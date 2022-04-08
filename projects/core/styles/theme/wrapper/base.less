@@ -1,8 +1,8 @@
 @import '../../taiga-ui-local.less';
 
 /* stylelint-disable order/order */
-tui-wrapper,
-[tuiWrapper] {
+tui-wrapper:not([data-appearance='none']),
+[tuiWrapper]:not([data-appearance='none']) {
     .transition(~'color, background');
     position: relative;
     display: block;

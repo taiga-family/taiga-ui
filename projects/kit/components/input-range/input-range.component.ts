@@ -39,20 +39,10 @@ import {
 } from '@taiga-ui/core';
 import {AbstractTuiInputSlider, quantumAssertion} from '@taiga-ui/kit/abstract';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
-import {TuiRangeComponent} from '@taiga-ui/kit/components/range';
+import {TuiNewRangeDirective, TuiRangeComponent} from '@taiga-ui/kit/components/range';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-
-/**
- * Turn on new `InputRange`'s version.
- * The new version will behave almost the same as `InputRange` from the next major release.
- * @deprecated TODO remove me in v3.0 and make `InputRange` always "new".
- */
-@Directive({
-    selector: 'tui-input-range[new]',
-})
-export class TuiNewInputRangeDirective {}
 
 // @dynamic
 @Component({
@@ -67,6 +57,13 @@ export class TuiNewInputRangeDirective {}
         },
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
+    host: {
+        /**
+         * TODO delete it in v3.0
+         * Dont forget to clear html-tags
+         */
+        '[class._show-ticks-labels]': '!isNew',
+    },
 })
 /**
  * `AbstractTuiInputSlider` includes all legacy code (it can be deleted in v3.0)
@@ -131,8 +128,8 @@ export class TuiInputRangeComponent
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Optional()
-        @Inject(TuiNewInputRangeDirective)
-        readonly isNew: TuiNewInputRangeDirective | null,
+        @Inject(TuiNewRangeDirective)
+        readonly isNew: TuiNewRangeDirective | null,
     ) {
         super(control, changeDetectorRef);
     }
@@ -307,13 +304,18 @@ export class TuiInputRangeComponent
     }
 }
 
+export function tuiTextfieldAppearanceDirectiveFactory({nativeElement}: ElementRef) {
+    return nativeElement.getAttribute('tuiTextfieldAppearance');
+}
+
 @Directive({
-    selector: '[tuiTextfieldNoneAppearance]',
+    selector: '[tuiTextfieldAppearance]',
     providers: [
         {
             provide: TUI_TEXTFIELD_APPEARANCE,
-            useValue: 'none', // Not existing appearance to prevent any customization
+            deps: [ElementRef],
+            useFactory: tuiTextfieldAppearanceDirectiveFactory,
         },
     ],
 })
-export class TuiTextfieldNoneAppearanceDirective {}
+export class TuiTextfieldAppearanceDirective {}
