@@ -21,22 +21,21 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {
     EMPTY_QUERY,
-    itemsQueryListObservable,
     moveFocus,
     TUI_IS_ANDROID,
     TUI_IS_IOS,
     tuiDefaultProp,
     TuiDestroyService,
-    tuiPure,
     TuiResizeService,
 } from '@taiga-ui/cdk';
 import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
-import {filter, mapTo} from 'rxjs/operators';
+import {filter} from 'rxjs/operators';
 
 import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TAB_ACTIVATE} from '../tab/tab.providers';
-import {TAB_ACTIVE_CLASS} from '../tabs.const';
+
+const TAB_ACTIVE_CLASS = '_active';
 
 // TODO: remove in ivy compilation
 export const OBSERVER_INIT = {
@@ -61,7 +60,7 @@ export const OBSERVER_INIT = {
 })
 export class TuiTabsComponent implements AfterViewChecked {
     @ContentChildren(forwardRef(() => TuiTabComponent))
-    private readonly children: QueryList<unknown> = EMPTY_QUERY;
+    readonly children: QueryList<unknown> = EMPTY_QUERY;
 
     @Input()
     @HostBinding('class._underline')
@@ -100,11 +99,6 @@ export class TuiTabsComponent implements AfterViewChecked {
         resize$.pipe(filter(() => this.underline)).subscribe(() => {
             changeDetectorRef.detectChanges();
         });
-    }
-
-    @tuiPure
-    get refresh$(): Observable<boolean> {
-        return itemsQueryListObservable(this.children).pipe(mapTo(true));
     }
 
     get tabs(): readonly HTMLElement[] {

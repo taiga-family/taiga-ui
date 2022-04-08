@@ -17,6 +17,4 @@ export class TuiHostedDropdownExample4 {
         this.open = false;
         this.index = 1;
     }
-
-    noop() {}
 }

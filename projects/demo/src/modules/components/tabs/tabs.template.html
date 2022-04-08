@@ -7,10 +7,12 @@
     <ng-template pageTab>
         <p i18n>
             Component for creating tabs. It emulates appearance and behaviour of
-            native iOS and Android components when
-            <code>TUI_MOBILE_AWARE</code>
-            token is
-            <code>true</code>
+            native iOS and Android components with
+            <code>tuiMobileTabs</code>
+            directive from
+            <code>TuiMobileTabsModule</code>
+            of
+            <code>@taiga-ui/addon-mobile</code>
             .
         </p>
 
@@ -110,6 +112,19 @@
                 [(documentationPropertyValue)]="itemsLimit"
             >
                 Visible tabs count limit
+                <strong>
+                    for
+                    <code>TabsWithMore</code>
+                    only
+                </strong>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="dropdownContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+            >
+                "More" button dropdown content
                 <strong>
                     for
                     <code>TabsWithMore</code>

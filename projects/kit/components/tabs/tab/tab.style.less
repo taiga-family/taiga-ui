@@ -20,10 +20,7 @@
     text-decoration: none;
     color: inherit;
     transition-property: color, box-shadow, opacity;
-
-    &:not(:last-child) {
-        margin-right: 1.5rem;
-    }
+    margin-right: var(--tui-tab-margin, 1.5rem);
 
     &:hover {
         color: var(--tui-text-01);
@@ -48,7 +45,7 @@
             color: #fff;
         }
 
-        &._focus-visible .highlight {
+        &._focus-visible .t-highlight {
             background: var(--tui-clear-inverse);
             color: var(--tui-text-01);
         }
@@ -62,13 +59,13 @@
             color: var(--tui-text-01);
         }
 
-        &._focus-visible .highlight {
+        &._focus-visible .t-highlight {
             background: var(--tui-text-01);
             color: #fff;
         }
     }
 
-    &._focus-visible .highlight {
+    &._focus-visible .t-highlight {
         background: var(--tui-selection);
     }
 
@@ -96,7 +93,7 @@
             color: var(--tui-base-09);
         }
 
-        & .highlight {
+        & .t-highlight {
             width: auto;
         }
     }
@@ -124,13 +121,13 @@
             color: var(--tui-link);
         }
 
-        & .highlight {
+        & .t-highlight {
             width: auto;
         }
     }
 }
 
-.highlight {
+.t-highlight {
     display: inline-flex;
     width: 100%;
     align-items: center;

@@ -20,16 +20,17 @@ import {
     isNativeFocused,
     setNativeFocused,
     toInt,
+    TuiActiveZoneDirective,
+    TuiContextWithImplicit,
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
-import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
+import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 
 import {TuiTabDirective} from '../tab.directive';
 import {TuiTabComponent} from '../tab/tab.component';
-import {TAB_MARGIN} from '../tabs.const';
 import {TABS_PROVIDERS, TABS_REFRESH} from './tabs-with-more.providers';
 
 // @dynamic
@@ -49,6 +50,11 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     @Input()
     @tuiDefaultProp()
     moreContent: PolymorpheusContent = '';
+
+    @Input()
+    @tuiDefaultProp()
+    dropdownContent: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>> =
+        '';
 
     @Input()
     @HostBinding('class._underline')
@@ -72,12 +78,14 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     open = false;
 
     constructor(
+        @Inject(TUI_TAB_MARGIN) private readonly margin: number,
         @Inject(TABS_REFRESH) private readonly refresh$: Observable<unknown>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
     ) {}
 
+    // TODO: Improve performance
     get tabs(): readonly HTMLElement[] {
         return Array.from<HTMLElement>(
             this.elementRef.nativeElement.querySelectorAll('[tuiTab]'),
@@ -164,7 +172,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     private getMaxIndex(): number {
-        const {tabs, activeItemIndex} = this;
+        const {tabs, activeItemIndex, margin} = this;
 
         if (tabs.length < 2) {
             return 0;
@@ -175,8 +183,8 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         const moreWidth = tabs[tabs.length - 1].scrollWidth;
         let maxIndex = tabs.length - 2;
         let total =
-            tabs.reduce((acc, tab) => acc + tab.scrollWidth, 0) +
-            maxIndex * TAB_MARGIN -
+            tabs.reduce((acc, {scrollWidth}) => acc + scrollWidth, 0) +
+            maxIndex * margin -
             moreWidth;
 
         if (total <= clientWidth) {
@@ -184,12 +192,12 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
 
         while (maxIndex) {
-            total -= tabs[maxIndex].scrollWidth + TAB_MARGIN;
+            total -= tabs[maxIndex].scrollWidth + margin;
             maxIndex--;
 
             const activeDisplaced = activeItemIndex > maxIndex;
-            const activeOffset = activeDisplaced ? activeWidth + TAB_MARGIN : 0;
-            const currentWidth = total + activeOffset + moreWidth + TAB_MARGIN;
+            const activeOffset = activeDisplaced ? activeWidth + margin : 0;
+            const currentWidth = total + activeOffset + moreWidth + margin;
             // Needed for different rounding of visible and hidden elements scrollWidth
             const safetyOffset = toInt(this.maxIndex === maxIndex - 1);
 

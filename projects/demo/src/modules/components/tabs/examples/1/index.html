@@ -1,4 +1,7 @@
-<tui-tabs [(activeItemIndex)]="activeItemIndex">
+<tui-tabs
+    tuiMobileTabs
+    [(activeItemIndex)]="activeItemIndex"
+>
     <button
         *ngFor="let item of items"
         tuiTab

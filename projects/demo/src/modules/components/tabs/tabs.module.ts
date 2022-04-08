@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiRippleModule} from '@taiga-ui/addon-mobile';
+import {TuiMobileTabsModule, TuiRippleModule} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -37,6 +37,7 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         TuiHostedDropdownModule,
         TuiDataListModule,
         TuiAddonDocModule,
+        TuiMobileTabsModule,
         RouterModule.forChild(generateRoutes(ExampleTuiTabsComponent)),
     ],
     declarations: [

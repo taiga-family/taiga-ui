@@ -5,13 +5,12 @@
     <button tuiTab>Just a tab</button>
     <tui-hosted-dropdown
         tuiDropdownHover
-        class="tui-space_right-6"
         [content]="content"
         [(open)]="open"
     >
         <button
             tuiTab
-            (tui-tab-activate.stop)="noop()"
+            (tui-tab-activate.stop)="0"
         >
             Hoverable/Clickable
         </button>

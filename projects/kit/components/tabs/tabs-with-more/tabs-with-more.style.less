@@ -11,12 +11,12 @@
     overflow: hidden;
 }
 
-.wrapper {
+.t-wrapper {
     position: relative;
     display: flex;
 }
 
-.tabs {
+.t-tabs {
     height: inherit;
     font-size: inherit;
     font-weight: inherit;
@@ -25,23 +25,26 @@
     color: inherit;
 }
 
-.overflown {
-    margin-right: 1.5rem;
-
-    &_hidden {
-        margin: 0;
-        width: 0;
-        max-width: 0;
-        overflow: hidden;
-        visibility: hidden;
-    }
+.t-overflown {
+    position: relative;
+    display: flex;
+    margin: 0;
+    width: 0;
+    max-width: 0;
+    overflow: hidden;
+    visibility: hidden;
 }
 
-.more_wrapper {
+.t-more_wrapper {
+    position: relative;
     height: 100%;
 }
 
-.icon {
+.t-more {
+    margin: 0;
+}
+
+.t-icon {
     .transition(transform);
     margin-right: -0.25rem;
     vertical-align: bottom;
@@ -51,7 +54,7 @@
     }
 }
 
-.dropdown {
+.t-dropdown {
     padding: 0.5rem 0;
 
     /* stylelint-disable */

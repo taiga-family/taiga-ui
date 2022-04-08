@@ -1,7 +1,7 @@
 <ng-container *ngIf="items.changes | async"></ng-container>
-<div class="wrapper">
+<div class="t-wrapper">
     <tui-tabs
-        class="tabs"
+        class="t-tabs"
         [underline]="false"
         [activeItemIndex]="activeItemIndex"
         (activeItemIndexChange)="onActiveItemIndexChange($event)"
@@ -9,28 +9,28 @@
     >
         <ng-container *ngFor="let item of items; let index = index">
             <ng-container
-                *ngIf="index <= lastVisibleIndex; else hidden"
+                *ngIf="index <= lastVisibleIndex || index === activeItemIndex"
                 [ngTemplateOutlet]="item"
             ></ng-container>
-            <ng-template #hidden>
-                <div
-                    class="overflown"
-                    [class.overflown_hidden]="index !== activeItemIndex"
-                >
-                    <ng-container *ngTemplateOutlet="item"></ng-container>
-                </div>
-            </ng-template>
         </ng-container>
+        <div class="t-overflown">
+            <ng-container *ngFor="let item of items; let index = index">
+                <ng-container
+                    *ngIf="index > lastVisibleIndex && index !== activeItemIndex"
+                    [ngTemplateOutlet]="item"
+                ></ng-container>
+            </ng-container>
+        </div>
     </tui-tabs>
     <tui-hosted-dropdown
-        class="more_wrapper"
-        [class.overflown_hidden]="!isMoreVisible"
-        [content]="dropdown"
+        class="t-more_wrapper"
+        [class.t-overflown]="!isMoreVisible"
+        [content]="dropdownContent || dropdown"
         [(open)]="open"
     >
         <button
             tuiTab
-            class="more"
+            class="t-more"
             [class._active]="open"
             [tuiFocusable]="isMoreFocusable"
             (keydown.arrowLeft.prevent)="onArrowLeft()"
@@ -44,15 +44,15 @@
             {{ moreWord$ | async }}
             <tui-svg
                 src="tuiIconChevronDown"
-                class="icon"
-                [class.icon_rotated]="open"
+                class="t-icon"
+                [class.t-icon_rotated]="open"
             ></tui-svg>
         </ng-template>
     </tui-hosted-dropdown>
     <ng-template #dropdown>
         <div
             #element
-            class="dropdown"
+            class="t-dropdown"
             (keydown.arrowUp.prevent)="onWrapperArrow($event.target, element, true)"
             (keydown.arrowDown.prevent)="onWrapperArrow($event.target, element, false)"
         >

@@ -16,7 +16,7 @@ import {
     TuiFocusVisibleService,
 } from '@taiga-ui/cdk';
 import {TUI_MODE, TuiBrightness} from '@taiga-ui/core';
-import {TUI_MOBILE_AWARE} from '@taiga-ui/kit/tokens';
+import {TUI_MOBILE_AWARE, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 
 import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
@@ -29,6 +29,7 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
     providers: TUI_TAB_PROVIDERS,
     host: {
         '($.data-mode.attr)': 'mode$',
+        '[style.--tui-tab-margin.px]': 'margin',
         type: 'button',
     },
 })
@@ -49,6 +50,7 @@ export class TuiTabComponent implements OnDestroy {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TAB_EVENT) readonly event$: Observable<Event>,
+        @Inject(TUI_TAB_MARGIN) readonly margin: number,
         @Inject(TUI_MOBILE_AWARE) mobileAware: boolean,
         @Inject(TUI_IS_IOS) isIos: boolean,
         @Inject(TUI_IS_ANDROID) isAndroid: boolean,
