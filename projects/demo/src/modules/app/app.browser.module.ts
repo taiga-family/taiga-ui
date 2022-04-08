@@ -37,7 +37,6 @@ const PRODUCTION_MODULES = environment.production
     bootstrap: [AppComponent],
     imports: [
         BrowserModule.withServerTransition({appId: 'tui-demo'}),
-        // PrebootModule.withConfig({appRoot: 'app'}),
         AppRoutingModule,
         BrowserAnimationsModule,
         TuiDocMainModule,
