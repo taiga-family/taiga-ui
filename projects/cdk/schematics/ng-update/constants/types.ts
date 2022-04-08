@@ -7,11 +7,11 @@ export const TYPES_TO_RENAME: readonly TypeToRename[] = [
     {
         from: 'ButtonOptions',
         to: 'TuiButtonOptions',
-        moduleSpecifier: ['@taiga-ui/core', '@taiga-ui/core/components'],
+        moduleSpecifier: ['@taiga-ui/core'],
     },
     {
         from: 'RadioOptions',
         to: 'TuiRadioOptions',
-        moduleSpecifier: ['@taiga-ui/kit', '@taiga-ui/kit/components'],
+        moduleSpecifier: ['@taiga-ui/kit'],
     },
 ];

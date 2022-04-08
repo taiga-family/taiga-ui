@@ -32,14 +32,12 @@ describe('ng-update', () => {
 
         expect(tree.readContent('test/app/app.component.ts')).toEqual(
             `import { Component } from '@angular/core';
-import { TuiButtonOptions, some } from '@taiga-ui/core';
-
-const options: TuiButtonOptions = {};
+import { some } from '@taiga-ui/kit';
+import { any } from '@taiga-ui/cdk'
+import { unknown } from '@taiga-ui/core'
 
 @Component({templateUrl: './app.template.html'})
-export class AppComponent {
-   some: TuiButtonOptions = {};
-}`,
+export class AppComponent {}`,
         );
     });
 
@@ -52,14 +50,12 @@ function createMainFiles() {
     createSourceFile(
         'test/app/app.component.ts',
         `import { Component } from '@angular/core';
-import { ButtonOptions, some } from '@taiga-ui/core/types';
-
-const options: ButtonOptions = {};
+import { some } from '@taiga-ui/kit/types';
+import { any } from '@taiga-ui/cdk/directives/any'
+import { unknown } from '@taiga-ui/core'
 
 @Component({templateUrl: './app.template.html'})
-export class AppComponent {
-   some: ButtonOptions = {};
-}`,
+export class AppComponent {}`,
     );
 
     createSourceFile('test/app/app.template.html', `<app></app>`);
