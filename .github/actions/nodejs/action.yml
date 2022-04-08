@@ -43,16 +43,20 @@ runs:
         key: npm-cache__nodejs-${{ inputs.node-version }}__${{ hashFiles('**/package-lock.json') }}
         restore-keys: npm-cache-hash__
 
-    - name: Clean install dependencies
-      if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      env:
-        NPM_CONFIG_CACHE: ~/.npm
-        CYPRESS_CACHE_FOLDER: ./node_modules/cache-cypress
-      run: npm ci
-      shell: bash
-
-    - name: environment
-      shell: bash
+    - shell: bash
       run: |
+        echo "Show environment Node.js, npm ..."
         node -v
         npm -v
+
+    - shell: bash
+      run: |
+        echo "Provide global variables ..."
+        echo "NPM_CONFIG_CACHE=~/.npm" >> $GITHUB_ENV
+        echo "NODE_OPTIONS=--max-old-space-size=12288" >> $GITHUB_ENV
+        echo "CYPRESS_CACHE_FOLDER=node_modules/cache-cypress" >> $GITHUB_ENV
+
+    - name: Clean install dependencies
+      if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      run: npm ci
+      shell: bash
