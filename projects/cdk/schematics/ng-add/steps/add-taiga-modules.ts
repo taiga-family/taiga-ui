@@ -2,13 +2,10 @@ import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 
 import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {
-    addImports,
     addImportToNgModule,
     addProviderToNgModule,
     ClassDeclaration,
     createProject,
-    editImports,
-    getImports,
     getMainModule,
     saveActiveProject,
     setActiveProject,
@@ -22,6 +19,7 @@ import {
     SANITIZER_MODULES,
 } from '../constants/modules';
 import {Schema} from '../schema';
+import {addUniqueImport} from '../../utils/add-unique-import';
 
 export function addTaigaModules(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -80,37 +78,5 @@ function addTuiProviders(mainModule: ClassDeclaration, options: Schema) {
             module.name,
             module.packageName,
         );
-    });
-}
-
-function addUniqueImport(filePath: string, namedImport: string, packageName: string) {
-    const existingNamedImport = getImports(filePath, {
-        namedImports: namedImport,
-        moduleSpecifier: packageName,
-    });
-
-    if (existingNamedImport.length) {
-        return;
-    }
-
-    const existingDeclaration = getImports(filePath, {
-        moduleSpecifier: packageName,
-    });
-
-    if (existingDeclaration.length) {
-        const modules = existingDeclaration[0]
-            .getNamedImports()
-            .map(namedImport => namedImport.getText());
-
-        editImports(existingDeclaration, () => ({
-            namedImports: [...modules, namedImport],
-        }));
-
-        return;
-    }
-
-    addImports(filePath, {
-        moduleSpecifier: packageName,
-        namedImports: [namedImport],
     });
 }

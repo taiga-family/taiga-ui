@@ -31,14 +31,28 @@ describe('ng-update', () => {
         const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
 
         expect(tree.readContent('test/app/app.component.ts')).toEqual(
-            `import { Component } from '@angular/core';
-import { TuiButtonOptions, some } from '@taiga-ui/core';
-
-const options: TuiButtonOptions = {};
+            `import { getClosestFocusable } from "@taiga-ui/cdk";
+import { Validators } from "@angular/forms";
+import {Component} from '@angular/core';
+import { tuiCreateAutoCorrectedDatePipe, tuiCreateDateMask, tuiCreateDateRangeMask } from '@taiga-ui/kit';
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
-   some: TuiButtonOptions = {};
+   private readonly textMaskOptions = {
+        mask: tuiCreateDateMask('DMY', '.'),
+        pipe: tuiCreateAutoCorrectedDatePipe(this),
+        guide: false,
+    };
+
+    mask = tuiCreateDateRangeMask('DMY', '.');
+
+    control = new FormControl('', [Validators.nullValidator]);
+
+    onMouseDown(event: MouseEvent, target: HTMLElement) {
+        if (getClosestFocusable(target, 'button')) {
+            return;
+        }
+    }
 }`,
         );
     });
@@ -51,14 +65,29 @@ export class AppComponent {
 function createMainFiles() {
     createSourceFile(
         'test/app/app.component.ts',
-        `import { Component } from '@angular/core';
-import { ButtonOptions, some } from '@taiga-ui/core/types';
+        `import {Component} from '@angular/core';
+import {TUI_DATE_MASK, TUI_DATE_RANGE_MASK, tuiCreateAutoCorrectedDatePipe} from '@taiga-ui/kit';
+import {EMPTY_VALIDATOR} from '@taiga-ui/cdk';
+import { getClosestKeyboardFocusable } from '@taiga-ui/cdk';
 
-const options: ButtonOptions = {};
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent {
-   some: ButtonOptions = {};
+   private readonly textMaskOptions = {
+        mask: TUI_DATE_MASK,
+        pipe: tuiCreateAutoCorrectedDatePipe(this),
+        guide: false,
+    };
+
+    mask = TUI_DATE_RANGE_MASK;
+
+    control = new FormControl('', [EMPTY_VALIDATOR]);
+
+    onMouseDown(event: MouseEvent, target: HTMLElement) {
+        if (getClosestKeyboardFocusable(target, 'button')) {
+            return;
+        }
+    }
 }`,
     );
 

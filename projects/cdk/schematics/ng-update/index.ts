@@ -4,6 +4,8 @@ import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {Schema} from '../ng-add/schema';
 import {replaceEnums} from './steps/replace-enums';
 import {renameTypes} from './steps/rename-types';
+import {replaceConsts} from './steps/replace-const';
+import {replaceDeepImports} from './steps/replace-deep-import';
 
 export function updateToV3(_: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -11,8 +13,10 @@ export function updateToV3(_: Schema): Rule {
 
         setActiveProject(createProject(tree, '/', '**/**'));
 
+        replaceDeepImports();
         replaceEnums();
         renameTypes();
+        replaceConsts();
 
         saveActiveProject();
     };
