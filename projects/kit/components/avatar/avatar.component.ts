@@ -1,7 +1,15 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Input,
+} from '@angular/core';
 import {tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
-import {sizeBigger, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
+import {sizeBigger} from '@taiga-ui/core';
 import {stringHashToHsl} from '@taiga-ui/kit/utils/format';
+
+import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar-options';
 
 @Component({
     selector: 'tui-avatar',
@@ -13,7 +21,7 @@ export class TuiAvatarComponent {
     @Input()
     @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeXXL = 'm';
+    size = this.options.size;
 
     @Input('avatarUrl')
     @tuiRequiredSetter()
@@ -28,16 +36,18 @@ export class TuiAvatarComponent {
 
     @Input()
     @tuiDefaultProp()
-    autoColor = false;
+    autoColor: boolean = this.options.autoColor;
 
     @Input()
     @HostBinding('class._rounded')
     @tuiDefaultProp()
-    rounded = false;
+    rounded: boolean = this.options.rounded;
 
     avatarUrl: string | null = null;
 
     isUrlValid = false;
+
+    constructor(@Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions) {}
 
     @HostBinding('style.background')
     get bgColor(): string {
