@@ -259,6 +259,10 @@ export class TuiInputRangeComponent
         }
     }
 
+    onActiveThumbChange(activeThumb: 'right' | 'left') {
+        this.lastActiveSide = activeThumb;
+    }
+
     protected getFallbackValue(): [number, number] {
         return [0, 0];
     }
