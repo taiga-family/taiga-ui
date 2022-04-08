@@ -201,8 +201,8 @@
         }
     },
     "engines": {
-        "node": ">= 10",
-        "npm": ">= 3 < 7",
+        "node": ">= 14",
+        "npm": ">= 7",
         "yarn": "Please use npm instead of yarn to install dependencies"
     }
 }
