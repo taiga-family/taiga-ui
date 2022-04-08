@@ -79,8 +79,6 @@ export class TuiInputRangeComponent
     @ViewChild(TuiRangeComponent)
     private readonly rangeRef: TuiRangeComponent | null = null;
 
-    private lastActiveSide: 'left' | 'right' = 'left';
-
     @Input()
     @tuiDefaultProp()
     min = 0;
@@ -113,6 +111,8 @@ export class TuiInputRangeComponent
     @Input()
     @tuiDefaultProp()
     rightValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+
+    lastActiveSide: 'left' | 'right' = 'left';
 
     constructor(
         @Optional()
@@ -245,14 +245,6 @@ export class TuiInputRangeComponent
 
     onRangeValue([left, right]: [number, number]) {
         this.rangeRef?.nativeFocusableElement?.focus();
-
-        const isLeftValueChanged = left !== this.value[0];
-        const isRightValueChanged = right !== this.value[1];
-
-        if (isLeftValueChanged || isRightValueChanged) {
-            this.lastActiveSide = isLeftValueChanged ? 'left' : 'right';
-        }
-
         this.safelyUpdateValue([left, right]);
     }
 

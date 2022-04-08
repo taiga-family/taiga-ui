@@ -82,6 +82,7 @@
         [ngModel]="value"
         (ngModelChange)="onRangeValue($event)"
         (tuiPressedChange)="focusToTextInput()"
+        (activeThumbChange)="lastActiveSide = $event"
     ></tui-range>
 </tui-wrapper>
 
