@@ -41,12 +41,16 @@
             [attr.d]="d"
         />
     </svg>
-    <ng-container *ngIf="dots">
+    <ng-container *ngIf="dots || dotContent">
         <div
-            *ngFor="let point of value"
+            *ngFor="let point of value; let index = index"
+            polymorpheus-outlet
             class="t-dot"
+            [class.t-dot_default]="!dotContent"
             [style.left.%]="getLeft(point[0])"
             [style.bottom.%]="getBottom(point[1])"
+            [content]="dotContent"
+            [context]="{$implicit: point, index: index, hovered: hovered === index}"
         ></div>
     </ng-container>
     <ng-container *ngIf="hasHints">

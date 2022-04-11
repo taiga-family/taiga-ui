@@ -1,0 +1,28 @@
+<tui-axes
+    class="axes"
+    [verticalLines]="4"
+    [horizontalLines]="2"
+>
+    <tui-line-chart
+        [x]="0"
+        [y]="0"
+        [width]="400"
+        [height]="200"
+        [dotContent]="dot"
+        [value]="value"
+        [xStringify]="stringify"
+        [yStringify]="stringify"
+    ></tui-line-chart>
+</tui-axes>
+
+<ng-template
+    #dot
+    let-point
+    let-hovered="hovered"
+>
+    <tui-svg
+        class="icon"
+        [class.icon_visible]="hovered"
+        [src]="point[1] > 100 ? 'tuiIconHeartLarge' : 'tuiIconDislikeLarge' "
+    ></tui-svg>
+</ng-template>

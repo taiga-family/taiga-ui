@@ -88,6 +88,10 @@ export class TuiLineChartComponent {
     @tuiDefaultProp()
     dots = false;
 
+    @Input()
+    @tuiDefaultProp()
+    dotContent: PolymorpheusContent = '';
+
     value: readonly TuiPoint[] = [];
 
     constructor(
