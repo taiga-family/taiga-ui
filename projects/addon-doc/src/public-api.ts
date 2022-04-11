@@ -53,3 +53,5 @@ export * from './types/pages';
 export * from './addon-doc.module';
 export * from './utils/coerce-value';
 export * from './utils/generate-routes';
+export * from './utils/raw-load';
+export * from './utils/raw-load-record';

@@ -1,14 +1,6 @@
 import {Injectable} from '@angular/core';
 import stackblitz from '@stackblitz/sdk';
-import {CodeEditor} from '@taiga-ui/addon-doc';
-
-import {default as angularJson} from '!!raw-loader!./project-files/angular.txt';
-import {default as appModuleTs} from '!!raw-loader!./project-files/src/app/app.module.ts.txt';
-import {default as indexHtml} from '!!raw-loader!./project-files/src/index.html';
-import {default as mainTs} from '!!raw-loader!./project-files/src/main.ts.txt';
-import {default as polyfills} from '!!raw-loader!./project-files/src/polyfills.ts';
-import {default as styles} from '!!raw-loader!./project-files/src/styles.less';
-import {default as tsconfig} from '!!raw-loader!./project-files/tsconfig.txt';
+import {CodeEditor, rawLoad, tryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';
@@ -32,11 +24,36 @@ const APP_COMP_META = {
 export class StackblitzService implements CodeEditor {
     readonly name = 'Stackblitz';
 
-    open(component: string, sampleId: string, content: Record<string, string>) {
+    private static async getFiles() {
+        const [angularJson, tsconfig] = tryParseMarkdownCodeBlock(
+            await rawLoad(import('!!raw-loader!./project-files/configs.md')),
+        );
+        const [mainTs] = tryParseMarkdownCodeBlock(
+            await rawLoad(import('!!raw-loader!./project-files/src/main.ts.md')),
+        );
+        const [indexHtml] = tryParseMarkdownCodeBlock(
+            await rawLoad(import('!!raw-loader!./project-files/src/index.html.md')),
+        );
+        const [polyfills] = tryParseMarkdownCodeBlock(
+            await rawLoad(import('!!raw-loader!./project-files/src/polyfills.ts.md')),
+        );
+        const [styles] = tryParseMarkdownCodeBlock(
+            await rawLoad(import('!!raw-loader!./project-files/src/styles.less.md')),
+        );
+
+        return {angularJson, tsconfig, mainTs, indexHtml, polyfills, styles};
+    }
+
+    async open(component: string, sampleId: string, content: Record<string, string>) {
         if (!content.HTML || !content.TypeScript) {
             return;
         }
 
+        const [appModuleTs] = tryParseMarkdownCodeBlock(
+            await rawLoad(
+                import('!!raw-loader!./project-files/src/app/app.module.ts.md'),
+            ),
+        );
         const appModule = new TsFileModuleParser(appModuleTs);
         const appCompTs = new TsFileComponentParser(content.TypeScript);
 
@@ -67,6 +84,9 @@ export class StackblitzService implements CodeEditor {
         appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
         appCompTs.styleUrls = APP_COMP_META.STYLE_URLS;
         appCompTs.className = APP_COMP_META.CLASS_NAME;
+
+        const {tsconfig, angularJson, indexHtml, mainTs, polyfills, styles} =
+            await StackblitzService.getFiles();
 
         stackblitz.openProject({
             title: `${component}-${sampleId}`,

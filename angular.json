@@ -491,7 +491,6 @@
                             }
                         ],
                         "baseHref": "/",
-                        "deployUrl": "/",
                         "showCircularDependencies": false,
                         "styles": [
                             "projects/demo/src/styles.less",
@@ -545,7 +544,6 @@
                             ],
                             "optimization": true,
                             "baseHref": "/next/",
-                            "deployUrl": "/next/",
                             "outputPath": "dist/demo/browser/next",
                             "outputHashing": "all",
                             "sourceMap": false,
