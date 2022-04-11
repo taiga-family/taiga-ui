@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[452],{j6Xf:function(n,e,i){"use strict";i.r(e),e.default=".form {\n    display: flex;\n    align-items: flex-start;\n}\n\n.control {\n    flex: 1;\n    margin-right: 1.5rem;\n}\n"}}]);
