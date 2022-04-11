@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [2.41.0](https://github.com/tinkoff/taiga-ui/compare/v2.39.0...v2.41.0) (2022-04-11)
+## [2.41.0](https://github.com/tinkoff/taiga-ui/compare/v2.40.0...v2.41.0) (2022-04-11)
 
 ### Features
 
