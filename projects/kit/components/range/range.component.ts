@@ -33,12 +33,12 @@ import {TuiKeySteps} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
 
 /**
- * Turn on new `Range`'s version.
- * The new version will behave almost the same as `Range` from the next major release.
- * @deprecated TODO remove me in v3.0 and make `Range` always "new".
+ * Turn on new mode for `Range` and `InputRange`.
+ * The new version of component will behave almost the same as the same component from the next major release.
+ * @deprecated TODO remove me in v3.0 and make `Range` and `InputRange` always "new".
  */
 @Directive({
-    selector: 'tui-range[new]',
+    selector: 'tui-range[new], tui-input-range[new]',
 })
 export class TuiNewRangeDirective {}
 

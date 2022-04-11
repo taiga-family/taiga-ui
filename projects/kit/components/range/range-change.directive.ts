@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, Inject} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Inject, Output} from '@angular/core';
 import {clamp, round, TuiDestroyService, typedFromEvent} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {merge, Observable} from 'rxjs';
@@ -38,6 +38,9 @@ export class TuiRangeChangeDirective {
         typedFromEvent(this.documentRef, 'mouseup', {passive: true}),
     );
 
+    @Output()
+    activeThumbChange = new EventEmitter<'left' | 'right'>();
+
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
@@ -50,6 +53,7 @@ export class TuiRangeChangeDirective {
             .pipe(
                 tap(({clientX, target}) => {
                     activeThumb = this.detectActiveThumb(clientX, target);
+                    this.activeThumbChange.emit(activeThumb);
                     elementRef.nativeElement.focus();
                 }),
                 switchMap(event => this.pointerMove$.pipe(startWith(event))),

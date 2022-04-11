@@ -3,7 +3,13 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
+import {
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiNotificationModule,
+    TuiSvgModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {
     TuiInputRangeModule,
     TuiInputSliderModule,
@@ -13,6 +19,8 @@ import {
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputRangeExample1} from './examples/1';
 import {TuiInputRangeExample2} from './examples/2';
+import {TuiInputRangeExample3} from './examples/3';
+import {TuiInputRangeExample4} from './examples/4';
 import {ExampleTuiInputRangeComponent} from './input-range.component';
 
 @NgModule({
@@ -27,12 +35,17 @@ import {ExampleTuiInputRangeComponent} from './input-range.component';
         TuiAddonDocModule,
         TuiButtonModule,
         TuiLinkModule,
+        TuiTextfieldControllerModule,
+        TuiSvgModule,
+        TuiNotificationModule,
         RouterModule.forChild(generateRoutes(ExampleTuiInputRangeComponent)),
     ],
     declarations: [
         ExampleTuiInputRangeComponent,
         TuiInputRangeExample1,
         TuiInputRangeExample2,
+        TuiInputRangeExample3,
+        TuiInputRangeExample4,
     ],
     exports: [ExampleTuiInputRangeComponent],
 })

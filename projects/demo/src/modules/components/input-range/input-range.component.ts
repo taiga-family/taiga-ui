@@ -2,6 +2,7 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiPluralize, TuiSizeL} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
@@ -24,7 +25,7 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
     readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.html'),
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
         HTML: import('!!raw-loader!./examples/1/index.html'),
         LESS: import('!!raw-loader!./examples/1/index.less'),
     };
@@ -35,7 +36,18 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
         LESS: import('!!raw-loader!./examples/2/index.less'),
     };
 
-    control = new FormControl();
+    readonly example3: TuiDocExample = {
+        HTML: import('!!raw-loader!./examples/3/index.html'),
+        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
+    };
+
+    readonly example4: TuiDocExample = {
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        LESS: import('!!raw-loader!./examples/4/index.less'),
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+    };
+
+    control = new FormControl([0, 10]);
 
     minVariants: readonly number[] = [0, 5, 7.77, -10];
 
@@ -45,13 +57,9 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     max = this.maxVariants[0];
 
-    segmentsVariants: readonly number[] = [0, 1, 5, 13];
+    segments = 0;
 
-    segments = this.segmentsVariants[0];
-
-    stepsVariants: readonly number[] = [0, 4, 10];
-
-    steps = this.stepsVariants[0];
+    steps = 0;
 
     quantumVariants: readonly number[] = [1, 0.001, 10, 100];
 
@@ -85,4 +93,18 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
     keyStepsVariants: readonly TuiKeySteps[] = [[[50, 1000]]];
 
     keySteps = null;
+
+    readonly valueContentVariants = [
+        '',
+        'TOP SECRET',
+        ({$implicit: val}: TuiContextWithImplicit<number>) =>
+            val === this.max ? 'MAX' : `${val}`,
+        ({$implicit: val}: TuiContextWithImplicit<number>) =>
+            val === this.min ? 'MIN' : `${val}`,
+        ({$implicit: val}: TuiContextWithImplicit<number>) =>
+            val === 5 ? 'FIVE' : `${val}`,
+    ];
+
+    leftValueContent = this.valueContentVariants[0];
+    rightValueContent = this.valueContentVariants[0];
 }

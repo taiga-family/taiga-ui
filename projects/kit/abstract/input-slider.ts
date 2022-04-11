@@ -1,29 +1,12 @@
 import {Directive, HostBinding, Input} from '@angular/core';
+import {AbstractTuiControl, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {
-    AbstractTuiControl,
-    clamp,
-    round,
-    tuiDefaultProp,
-    TuiInputModeT,
-    TuiMapper,
-    tuiPure,
-} from '@taiga-ui/cdk';
-import {
-    maskedNumberStringToNumber,
-    NumberFormatSettings,
-    tuiCreateAutoCorrectedNumberPipe,
-    tuiCreateNumberMask,
     TuiPluralize,
     tuiPluralizeToICU,
     TuiSizeL,
-    TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {tuiEnableAutoCorrectDecimalSymbol} from '@taiga-ui/core/utils';
-import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {TuiKeySteps} from '@taiga-ui/kit/types';
-import {getPrecision} from '@taiga-ui/kit/utils';
-import {TextMaskConfig} from 'angular2-text-mask';
 
 export function quantumAssertion(quantum: number): boolean {
     return quantum > 0;
@@ -38,8 +21,6 @@ export abstract class AbstractTuiInputSlider<T>
     extends AbstractTuiControl<T>
     implements TuiWithOptionalMinMax<number>
 {
-    protected abstract readonly numberFormat: NumberFormatSettings;
-
     @Input()
     @tuiDefaultProp()
     min = 0;
@@ -48,10 +29,28 @@ export abstract class AbstractTuiInputSlider<T>
     @tuiDefaultProp()
     max = Infinity;
 
+    /**
+     * @deprecated This input-property will be deleted in next major update.
+     * Use `valueContent` for `InputSlider`.
+     * Use `leftValueContent` for `InputRange`.
+     * ___
+     * TODO remove in v3.0.
+     * Dont forget to delete backward-compatibility helpers inside `InputSlider` and `InputRange`:
+     *** {@link legacyMinMaxLabel}
+     */
     @Input()
     @tuiDefaultProp()
     minLabel = '';
 
+    /**
+     * @deprecated This input-property will be deleted in next major update.
+     * Use `valueContent` for `InputSlider`.
+     * Use `rightValueContent` for `InputRange`.
+     * ___
+     * TODO remove in v3.0.
+     * Dont forget to delete backward-compatibility helpers inside `InputSlider` and `InputRange`:
+     *** {@link legacyMinMaxLabel}
+     */
     @Input()
     @tuiDefaultProp()
     maxLabel = '';
@@ -101,10 +100,18 @@ export abstract class AbstractTuiInputSlider<T>
     @tuiDefaultProp()
     keySteps: TuiKeySteps | null = null;
 
+    /**
+     * @deprecated use `tuiTextfieldSize` instead
+     * TODO delete in v3.0
+     */
     @Input()
     @HostBinding('attr.data-size')
+    @tuiDefaultProp()
     size: TuiSizeL = 'l';
 
+    /**
+     * @deprecated replace by input-property {@link pluralize} in v3.0
+     */
     pluralizeMap: Record<string, string> | null = null;
     /** @deprecated TODO remove in v3.0 */
     segmentsPluralizeMap: Record<string, string> | null = null;
@@ -126,39 +133,9 @@ export abstract class AbstractTuiInputSlider<T>
         return segment === 0 ? `${texts[0]}` : `${texts[1]}`;
     }
 
-    mask: TuiMapper<number, TextMaskConfig> = (quantum: number, min: number) =>
-        ({
-            mask: tuiCreateNumberMask({
-                allowNegative: min < 0,
-                allowDecimal: !Number.isInteger(quantum),
-                decimalSymbol: this.numberFormat.decimalSeparator,
-                thousandSymbol: this.numberFormat.thousandSeparator,
-                decimalLimit: getPrecision(quantum),
-                autoCorrectDecimalSymbol: tuiEnableAutoCorrectDecimalSymbol(
-                    this.numberFormat,
-                ),
-            }),
-            pipe: tuiCreateAutoCorrectedNumberPipe(
-                0,
-                this.numberFormat.decimalSeparator,
-                this.numberFormat.thousandSeparator,
-                undefined,
-                min < 0,
-            ),
-            guide: false,
-        } as TuiTextMaskOptions as unknown as TextMaskConfig);
-
     @HostBinding('class._segmented')
     get segmented(): boolean {
         return this.segments > 0;
-    }
-
-    get hasPlaceholder(): boolean {
-        return this.size === 'l';
-    }
-
-    get inputMode(): TuiInputModeT {
-        return Number.isInteger(this.quantum) ? 'numeric' : 'decimal';
     }
 
     get length(): number {
@@ -179,36 +156,6 @@ export abstract class AbstractTuiInputSlider<T>
 
     onHovered(hovered: boolean) {
         this.updateHovered(hovered);
-    }
-
-    protected valueGuard(value: number): number {
-        return this.quantum
-            ? clamp(
-                  round(
-                      Math.round(value / this.quantum) * this.quantum,
-                      TUI_FLOATING_PRECISION,
-                  ),
-                  this.min,
-                  this.max,
-              )
-            : clamp(value, this.min, this.max);
-    }
-
-    protected capInputValue(value: string, max: number = this.max): number | null {
-        const capped = Math.min(
-            maskedNumberStringToNumber(
-                value,
-                this.numberFormat.decimalSeparator,
-                this.numberFormat.thousandSeparator,
-            ),
-            max,
-        );
-
-        if (this.min < 0 && capped < this.min) {
-            return this.min;
-        }
-
-        return isNaN(capped) || capped < this.min ? null : capped;
     }
 
     @tuiPure

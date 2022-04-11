@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
@@ -48,17 +48,27 @@ describe('InputRange', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let pageObject: PageObject<TestComponent>;
+
+    let leftInputWrapper: DebugElement;
+    let rightInputWrapper: DebugElement;
+
     let inputPOLeft: NativeInputPO;
     let inputPORight: NativeInputPO;
+
     const testContext = {
         get prefix() {
             return 'tui-input-range__';
         },
+        get nativeInputAutoId() {
+            return 'tui-primitive-textfield__native-input';
+        },
+        get valueContentAutoId() {
+            return 'tui-primitive-textfield__value';
+        },
+        get valueDecorationAutoId() {
+            return 'tui-primitive-textfield__value-decoration';
+        },
     };
-
-    function aid(aid: string): HTMLElement & {textContent: string} {
-        return pageObject.getByAutomationId(aid)!.nativeElement;
-    }
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -67,102 +77,76 @@ describe('InputRange', () => {
         });
     });
 
-    beforeEach(() => {
+    beforeEach(async () => {
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new PageObject(fixture);
         testComponent = fixture.componentInstance;
+
         fixture.detectChanges();
-        inputPOLeft = new NativeInputPO(fixture, `${testContext.prefix}native-left`);
-        inputPORight = new NativeInputPO(fixture, `${testContext.prefix}native-right`);
+        await fixture.whenStable();
+
+        initializeInputsPO();
     });
 
     describe('Default values', () => {
         beforeEach(() => {
             testComponent.default = true;
             fixture.detectChanges();
+
+            initializeInputsPO();
         });
 
         it('minLabel is missing', () => {
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}min-label`),
-            ).toBeNull();
+            expect(getLeftValueContent()).toBeNull();
         });
 
         it('maxLabel is missing', () => {
             testComponent.control.setValue([0, 10]);
             fixture.detectChanges();
 
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}min-label`),
-            ).toBeNull();
+            expect(getRightValueContent()).toBeNull();
         });
 
         it('Plural signature missing', () => {
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}pluralize-left`),
-            ).toBeNull();
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}pluralize-right`),
-            ).toBeNull();
+            expect(getLeftValueContent()).toBeNull();
+            expect(getRightValueContent()).toBeNull();
         });
     });
 
     describe('Labels', () => {
         it('Plural signature is present', () => {
-            expect(aid(`${testContext.prefix}pluralize-left`).textContent.trim()).toBe(
-                'лет',
-            );
-            expect(aid(`${testContext.prefix}pluralize-right`).textContent.trim()).toBe(
-                'год',
-            );
-        });
-
-        it('minLabel not shown at start > min', () => {
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}min-label`),
-            ).toBeNull();
+            expect(getLeftValueContent()).toBe(`0${CHAR_NO_BREAK_SPACE}лет`);
+            expect(getRightValueContent()).toBe(`1${CHAR_NO_BREAK_SPACE}год`);
         });
 
         it('minLabel is shown', () => {
             testComponent.control.setValue([-10, 10]);
             fixture.detectChanges();
 
-            expect(aid(`${testContext.prefix}min-label`).textContent.trim()).toBe(
-                testComponent.minLabel,
-            );
+            expect(getLeftValueContent()).toBe(testComponent.minLabel);
         });
 
         it('minLabel missing on focus', () => {
             testComponent.control.setValue([-10, 10]);
             inputPOLeft.focus();
 
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}min-label`),
-            ).toBeNull();
-        });
-
-        it('maxLabel not shown when end <max', () => {
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}min-label`),
-            ).toBeNull();
+            expect(getLeftValueContent()).toBeNull();
+            expect(getLeftValueDecoration()).toBe('0лет');
         });
 
         it('maxLabel is shown', () => {
             testComponent.control.setValue([-10, 10]);
             fixture.detectChanges();
 
-            expect(aid(`${testContext.prefix}max-label`).textContent.trim()).toBe(
-                testComponent.maxLabel,
-            );
+            expect(getRightValueContent()).toBe(testComponent.maxLabel);
         });
 
         it('maxLabel missing on focus', () => {
             testComponent.control.setValue([-10, 10]);
             inputPORight.focus();
 
-            expect(
-                pageObject.getByAutomationId(`${testContext.prefix}max-label`),
-            ).toBeNull();
+            expect(getRightValueContent()).toBeNull();
+            expect(getRightValueDecoration()).toBe('лет');
         });
     });
 
@@ -173,8 +157,12 @@ describe('InputRange', () => {
             expect(testComponent.control.value[0]).toBe(-5);
         });
 
-        it('Rounds the left value of an input field to the nearest quantum when focus is lost', () => {
+        it('Rounds the left value of an input field to the nearest quantum when focus is lost', async () => {
             inputPOLeft.sendTextAndBlur('-7');
+
+            await fixture.whenStable();
+            fixture.detectChanges();
+            await fixture.whenStable();
 
             expect(inputPOLeft.value).toBe('-5');
         });
@@ -185,25 +173,33 @@ describe('InputRange', () => {
             expect(testComponent.control.value[1]).toBe(5);
         });
 
-        it('Rounds the right value of an input field to the nearest quantum on loss of focus', () => {
+        it('Rounds the right value of an input field to the nearest quantum on loss of focus', async () => {
             inputPORight.sendTextAndBlur('7');
+
+            await fixture.whenStable();
+            fixture.detectChanges();
+            await fixture.whenStable();
 
             expect(inputPORight.value).toBe('5');
         });
     });
 
     describe('Deleting Values', () => {
-        it("Doesn't change value when left content is removed", () => {
+        it("Doesn't change value when left content is removed", async () => {
             inputPOLeft.sendTextAndBlur('-5');
             inputPOLeft.sendTextAndBlur('');
+
+            await fixture.whenStable();
 
             expect(testComponent.control.value[0]).toBe(-5);
             expect(inputPOLeft.value).toBe('-5');
         });
 
-        it("Doesn't change value when deleting right content", () => {
+        it("Doesn't change value when deleting right content", async () => {
             inputPORight.sendTextAndBlur('5');
             inputPORight.sendTextAndBlur('');
+
+            await fixture.whenStable();
 
             expect(testComponent.control.value[1]).toBe(5);
             expect(inputPORight.value).toBe('5');
@@ -220,7 +216,10 @@ describe('InputRange', () => {
         });
 
         it('Prevents the right value from becoming less than the left value when leaving the field', () => {
-            inputPORight.sendTextAndBlur('-5');
+            inputPOLeft.sendTextAndBlur('-5');
+            fixture.detectChanges();
+
+            inputPORight.sendTextAndBlur('-10');
 
             expect(testComponent.control.value[1]).toBe(testComponent.control.value[0]);
             expect(inputPORight.value).toBe(testComponent.control.value[0].toString());
@@ -405,4 +404,52 @@ describe('InputRange', () => {
             });
         });
     });
+
+    function getLeftValueContent(): string | null {
+        const valueContent = pageObject.getByAutomationId(
+            testContext.valueContentAutoId,
+            leftInputWrapper,
+        );
+
+        return valueContent && valueContent.nativeElement.textContent.trim();
+    }
+
+    function getRightValueContent(): string | null {
+        const valueContent = pageObject.getByAutomationId(
+            testContext.valueContentAutoId,
+            rightInputWrapper,
+        );
+
+        return valueContent && valueContent.nativeElement.textContent.trim();
+    }
+
+    function getLeftValueDecoration(): string {
+        return pageObject
+            .getByAutomationId(testContext.valueDecorationAutoId, leftInputWrapper)
+            ?.nativeElement.textContent.trim()
+            .replace('\n ', '');
+    }
+
+    function getRightValueDecoration(): string {
+        return pageObject
+            .getByAutomationId(`${testContext.prefix}pluralize-right`)
+            ?.nativeElement.textContent.trim()
+            .replace('\n ', '');
+    }
+
+    function initializeInputsPO() {
+        leftInputWrapper = pageObject.getByAutomationId('tui-input-range__left-input')!;
+        rightInputWrapper = pageObject.getByAutomationId('tui-input-range__right-input')!;
+
+        inputPOLeft = new NativeInputPO(
+            fixture,
+            testContext.nativeInputAutoId,
+            leftInputWrapper,
+        );
+        inputPORight = new NativeInputPO(
+            fixture,
+            testContext.nativeInputAutoId,
+            rightInputWrapper,
+        );
+    }
 });
