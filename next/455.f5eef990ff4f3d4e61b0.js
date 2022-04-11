@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[455],{SF2B:function(n,o,t){"use strict";t.r(o),o.default='<form\n    class="form"\n    [formGroup]="testForm"\n>\n    <tui-input-range\n        formControlName="testValue"\n        class="control"\n        [min]="min"\n        [max]="max"\n    ></tui-input-range>\n</form>\n'}}]);
