@@ -39,7 +39,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/addon-charts"
+                        "command": "cdk dist/addon-charts && npm publish --access public"
                     }
                 }
             }
@@ -80,7 +80,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/addon-commerce"
+                        "command": "cd dist/addon-commerce && npm publish --access public"
                     }
                 }
             }
@@ -121,7 +121,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/addon-doc"
+                        "command": "cd dist/addon-doc && npm publish --access public"
                     }
                 }
             }
@@ -169,7 +169,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/addon-editor"
+                        "command": "cd dist/addon-editor && npm publish --access public"
                     }
                 }
             }
@@ -210,7 +210,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/addon-mobile"
+                        "command": "cd dist/addon-mobile && npm publish --access public"
                     }
                 }
             }
@@ -250,7 +250,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/addon-preview"
+                        "command": "cd dist/addon-preview && npm publish --access public"
                     }
                 }
             }
@@ -291,7 +291,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/addon-table"
+                        "command": "cd dist/addon-table && npm publish --access public"
                     }
                 }
             }
@@ -332,7 +332,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/addon-tablebars"
+                        "command": "cd dist/addon-tablebars && npm publish --access public"
                     }
                 }
             }
@@ -412,7 +412,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/cdk"
+                        "command": "cd dist/cdk && npm publish --access public"
                     }
                 }
             }
@@ -450,7 +450,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/core"
+                        "command": "cd dist/core && npm publish --access public"
                     }
                 }
             }
@@ -722,7 +722,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/i18n"
+                        "command": "cd dist/i18n && npm publish --access public"
                     }
                 }
             }
@@ -762,7 +762,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/icons"
+                        "command": "cd dist/icons && npm publish --access public"
                     }
                 }
             }
@@ -803,7 +803,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/kit"
+                        "command": "cd dist/kit && npm publish --access public"
                     }
                 }
             }
@@ -864,7 +864,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish dist/taiga-schematics"
+                        "command": "cd dist/taiga-schematics && npm publish --access public"
                     }
                 }
             }
