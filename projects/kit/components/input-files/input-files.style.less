@@ -2,6 +2,20 @@
 
 tui-input-files {
     display: block;
+
+    .t-native {
+        .fullsize();
+        opacity: 0;
+        cursor: pointer;
+
+        &::-webkit-file-upload-button {
+            display: none;
+        }
+    }
+
+    .t-inline {
+        display: inline;
+    }
 }
 
 tui-wrapper[data-appearance='input-file'] {
@@ -105,18 +119,4 @@ tui-wrapper[data-appearance='input-file'] {
             }
         }
     }
-}
-
-.t-native {
-    .fullsize();
-    opacity: 0;
-    cursor: pointer;
-
-    &::-webkit-file-upload-button {
-        display: none;
-    }
-}
-
-.t-inline {
-    display: inline;
 }
