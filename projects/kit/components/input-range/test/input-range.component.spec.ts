@@ -1,7 +1,6 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {By} from '@angular/platform-browser';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
 
@@ -439,12 +438,8 @@ describe('InputRange', () => {
     }
 
     function initializeInputsPO() {
-        leftInputWrapper = fixture.debugElement.query(
-            By.css('tui-input-number:first-of-type'),
-        );
-        rightInputWrapper = fixture.debugElement.query(
-            By.css('tui-input-number:last-of-type'),
-        );
+        leftInputWrapper = pageObject.getByAutomationId('tui-input-range__left-input')!;
+        rightInputWrapper = pageObject.getByAutomationId('tui-input-range__right-input')!;
 
         inputPOLeft = new NativeInputPO(
             fixture,

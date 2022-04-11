@@ -10,7 +10,8 @@
 >
     <tui-input-number
         tuiTextfieldAppearance="none"
-        class="t-text-input"
+        automation-id="tui-input-range__left-input"
+        class="t-left t-text-input"
         [min]="min"
         [max]="value[1]"
         [precision]="precision"
@@ -35,39 +36,42 @@
         ></div>
     </tui-input-number>
 
-    <tui-input-number
-        tuiTextfieldAppearance="none"
-        class="t-text-input"
-        [min]="value[0]"
-        [max]="max"
-        [precision]="precision"
-        [decimal]="decimal"
-        [disabled]="computedDisabled"
-        [readOnly]="readOnly"
-        [tuiTextfieldSize]="computedSize"
-        [tuiTextfieldLabelOutside]="legacyLabelOutside"
-        [ngModel]="value[1]"
-        (ngModelChange)="onInputRight($event)"
-        (focusedChange)="onTextInputFocused($event, true)"
-        (keydown.arrowUp)="changeByStep($event, [0, 1])"
-        (keydown.arrowDown)="changeByStep($event, [0, -1])"
-    >
-        <div
-            *ngIf="showRightValueContent"
-            polymorpheus-outlet
-            [content]="maxLabel ? legacyMaxLabel : rightValueContent"
-            [context]="{$implicit: value[1]}"
-        ></div>
-    </tui-input-number>
+    <div class="t-right">
+        <tui-input-number
+            tuiTextfieldAppearance="none"
+            automation-id="tui-input-range__right-input"
+            class="t-text-input"
+            [min]="value[0]"
+            [max]="max"
+            [precision]="precision"
+            [decimal]="decimal"
+            [disabled]="computedDisabled"
+            [readOnly]="readOnly"
+            [tuiTextfieldSize]="computedSize"
+            [tuiTextfieldLabelOutside]="legacyLabelOutside"
+            [ngModel]="value[1]"
+            (ngModelChange)="onInputRight($event)"
+            (focusedChange)="onTextInputFocused($event, true)"
+            (keydown.arrowUp)="changeByStep($event, [0, 1])"
+            (keydown.arrowDown)="changeByStep($event, [0, -1])"
+        >
+            <div
+                *ngIf="showRightValueContent"
+                polymorpheus-outlet
+                [content]="maxLabel ? legacyMaxLabel : rightValueContent"
+                [context]="{$implicit: value[1]}"
+            ></div>
+        </tui-input-number>
 
-    <!-- TODO replace by postfix of the right InputNumber (after fix https://github.com/Tinkoff/taiga-ui/issues/1193) -->
-    <span
-        *ngIf="!showRightValueContent && pluralizeMap"
-        automation-id="tui-input-range__pluralize-right"
-        class="t-pluralize-right"
-    >
-        &nbsp;{{value[1] | i18nPlural: pluralizeMap}}
-    </span>
+        <!-- TODO replace by postfix of the right InputNumber (after fix https://github.com/Tinkoff/taiga-ui/issues/1193) -->
+        <span
+            *ngIf="!showRightValueContent && pluralizeMap"
+            automation-id="tui-input-range__pluralize-right"
+            class="t-pluralize-right"
+        >
+            &nbsp;{{value[1] | i18nPlural: pluralizeMap}}
+        </span>
+    </div>
 
     <tui-range
         class="t-slider"

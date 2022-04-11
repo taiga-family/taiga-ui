@@ -203,19 +203,50 @@ describe('InputRange', () => {
             });
         });
     });
+
+    describe('Very long placeholder', () => {
+        it('basic case', () => {
+            cy.viewport('macbook-11');
+            cy.tuiVisit(`${INPUT_RANGE_PAGE_URL}/API`);
+
+            cy.get('#demoContent')
+                .should('be.visible')
+                .matchImageSnapshot('01-long-placeholder_basic');
+        });
+
+        it('with `leftValueContent` and `rightValueContent`', () => {
+            cy.viewport('iphone-x');
+            cy.tuiVisit(
+                `${INPUT_RANGE_PAGE_URL}/API?rightValueContent=TOP%20SECRET&leftValueContent=I%20am%20a%20leftValueContent`,
+            );
+
+            cy.get('#demoContent')
+                .should('be.visible')
+                .matchImageSnapshot('02-long-placeholder_value-content');
+        });
+
+        it('with `pluralize`', () => {
+            cy.viewport('iphone-8');
+            cy.tuiVisit(`${INPUT_RANGE_PAGE_URL}/API?pluralize$=1`);
+
+            cy.get('#demoContent')
+                .should('be.visible')
+                .matchImageSnapshot('03-long-placeholder_pluralize');
+        });
+    });
 });
 
 function initializeAliases(
     inputRangeSelector: string,
     [expectedLeftValue, expectedRightValue]: [number, number],
 ) {
-    cy.get(`${inputRangeSelector} tui-input-number:first-of-type input`)
-        .should('be.visible')
+    cy.get(`${inputRangeSelector} [automation-id=tui-input-range__left-input] input`)
+        .should('exist')
         .should('have.value', expectedLeftValue)
         .as('leftTextInput');
 
-    cy.get(`${inputRangeSelector} tui-input-number:last-of-type input`)
-        .should('be.visible')
+    cy.get(`${inputRangeSelector} [automation-id=tui-input-range__right-input] input`)
+        .should('exist')
         .should('have.value', expectedRightValue)
         .as('rightTextInput');
 
@@ -225,7 +256,7 @@ function initializeAliases(
         .as('leftSlider');
 
     cy.get(`${inputRangeSelector} tui-range [tuiSlider]:last-of-type`)
-        .should('be.visible')
+        .should('exist')
         .should('have.value', expectedRightValue)
         .as('rightSlider');
 }

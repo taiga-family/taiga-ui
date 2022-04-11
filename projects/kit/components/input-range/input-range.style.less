@@ -1,13 +1,27 @@
 .t-wrapper {
+    position: relative;
+}
+
+.t-left {
+    width: 100%;
+}
+
+.t-right {
+    position: absolute;
+    right: 0;
+    top: 0;
     display: flex;
+    width: 50%;
+    height: 100%;
+    text-align: right;
+
+    & .t-text-input {
+        flex: 1;
+    }
 }
 
 .t-text-input {
-    flex: 1;
-
-    &:last-of-type {
-        text-align: right;
-    }
+    text-align: inherit;
 }
 
 .t-pluralize-right {
