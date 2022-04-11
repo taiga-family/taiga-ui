@@ -18,5 +18,8 @@
     "dependencies": {
         "@angular-devkit/schematics": "^9.1.12",
         "ng-morph": "^2.0.0"
+    },
+    "devDependencies": {
+        "@angular-devkit/schematics-cli": "~0.901.12"
     }
 }

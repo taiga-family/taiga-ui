@@ -4,7 +4,10 @@
 module.exports = {
     root: true,
     extends: [
-        './scripts/eslint/nx.js',
+        // TODO: warning No cached ProjectGraph is available. The rule will be skipped. @nrwl/nx/enforce-module-boundaries
+        // If you encounter this error as part of running standard `nx` commands then please open an issue on
+        // https://github.com/nrwl/nx
+        // './scripts/eslint/nx.js',
         '@tinkoff/eslint-config-angular',
         '@tinkoff/eslint-config-angular/html',
     ],
