@@ -23,4 +23,5 @@ import {TuiAlertService} from './alert.service';
 export class TuiAlertModule {}
 
 /** @deprecated use {@link TuiAlertModule} */
-export const TuiNotificationsModule = TuiAlertModule;
+@NgModule({imports: [TuiAlertModule]})
+export class TuiNotificationsModule {}
