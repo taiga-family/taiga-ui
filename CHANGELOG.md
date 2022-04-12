@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.41.0](https://github.com/tinkoff/taiga-ui/compare/v2.40.0...v2.41.0) (2022-04-11)
+
+### Features
+
+- **addon-mobile:** `MobileTabs` add directive, deprecate `TUI_MOBILE_AWARE` token
+  ([#1615](https://github.com/tinkoff/taiga-ui/issues/1615))
+  ([1921624](https://github.com/tinkoff/taiga-ui/commit/192162462b26533a4f8d38e3c9e27882d3cf1909))
+- **cdk:** `Alerts` add infrastructure for custom notifications
+  ([#1540](https://github.com/tinkoff/taiga-ui/issues/1540))
+  ([3d54b67](https://github.com/tinkoff/taiga-ui/commit/3d54b6761ccf937ffd4ce94c3c2a106c1b2fd386))
+- **kit:** `InputRange` refactor (use `InputNumber` inside) ([#1583](https://github.com/tinkoff/taiga-ui/issues/1583))
+  ([fc0f27a](https://github.com/tinkoff/taiga-ui/commit/fc0f27a3ff4d0117dcb09e51fc628550bc2589cd))
+- **kit:** `Range` use `Slider` inside ([#1538](https://github.com/tinkoff/taiga-ui/issues/1538))
+  ([245c8d5](https://github.com/tinkoff/taiga-ui/commit/245c8d59a1fbdfbf3a9a97e66ca1c44bda8ea8b3))
+- **kit:** `TabsWithMore` add input for custom dropdown content
+  ([7a0db9d](https://github.com/tinkoff/taiga-ui/commit/7a0db9d2a16cf80a009b451c46edd8e1838ec426))
+- **kit:** `TUI_AVATAR_OPTIONS` default options configuration for `Avatar`
+  ([#1600](https://github.com/tinkoff/taiga-ui/issues/1600))
+  ([ff4dc30](https://github.com/tinkoff/taiga-ui/commit/ff4dc309eddf4ecd42950f38418f1cd9c42be837))
+
+### Bug Fixes
+
+- **kit:** `InputFiles` fix styles ([#1619](https://github.com/tinkoff/taiga-ui/issues/1619))
+  ([9b55ce3](https://github.com/tinkoff/taiga-ui/commit/9b55ce30ca32d2d8c82327d192fb1254d57f9265))
+- **kit:** `keySteps` works if `Slider` has `min`-property !== 0
+  ([c2af899](https://github.com/tinkoff/taiga-ui/commit/c2af899a0415937101c227de0dd7f8753fcbab7f))
+- **kit:** provide default status when async pipe isn't emitted
+  ([#1605](https://github.com/tinkoff/taiga-ui/issues/1605))
+  ([46bda8b](https://github.com/tinkoff/taiga-ui/commit/46bda8b6e1cf7add5242cd526e63550ac5902518))
+
 ## [2.40.0](https://github.com/tinkoff/taiga-ui/compare/v2.39.0...v2.40.0) (2022-04-04)
 
 ### Features
