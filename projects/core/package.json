@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/core",
-    "version": "2.41.0",
+    "version": "2.40.1",
     "description": "Core library for creating Angular components and applications using Taiga UI",
     "keywords": [
         "angular",
@@ -16,11 +16,11 @@
     "homepage": "https://github.com/tinkoff/taiga-ui",
     "schematics": "./schematics/collection.json",
     "dependencies": {
-        "@taiga-ui/i18n": "^2.41.0"
+        "@taiga-ui/i18n": "^2.40.1"
     },
     "peerDependencies": {
-        "@taiga-ui/i18n": ">=2.41.0",
-        "@taiga-ui/cdk": ">=2.41.0",
+        "@taiga-ui/i18n": ">=2.40.1",
+        "@taiga-ui/cdk": ">=2.40.1",
         "@angular/animations": ">=9.0.0",
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
