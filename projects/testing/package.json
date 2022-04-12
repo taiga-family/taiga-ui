@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/testing",
-    "version": "2.40.1",
+    "version": "2.41.1",
     "description": "Utils functions for unit testing Taiga UI packages",
     "devDependencies": {
         "@types/jasmine": "~3.10.3",
