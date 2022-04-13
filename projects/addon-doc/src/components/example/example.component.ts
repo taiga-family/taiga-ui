@@ -12,10 +12,10 @@ import {TUI_IS_CYPRESS, TuiHandler} from '@taiga-ui/cdk';
 import {TuiNotification, TuiNotificationsService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
-import {CodeEditor} from '../../interfaces/code-editor';
+import {TuiCodeEditor} from '../../interfaces/code-editor';
 import {TuiDocExample} from '../../interfaces/page';
 import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';
 import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../tokens/example-content-processor';
@@ -60,6 +60,8 @@ export class TuiDocExampleComponent {
         map(this.processContent),
     );
 
+    readonly loading$ = new Subject<boolean>();
+
     constructor(
         @Attribute('id')
         readonly id: string | null,
@@ -71,7 +73,7 @@ export class TuiDocExampleComponent {
         @Inject(TUI_DOC_EXAMPLE_TEXTS) readonly texts: [string, string, string],
         @Optional()
         @Inject(TUI_DOC_CODE_EDITOR)
-        readonly codeEditor: CodeEditor | null,
+        readonly codeEditor: TuiCodeEditor | null,
         @Inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR)
         private readonly processContent: TuiHandler<
             Record<string, string>,
@@ -95,5 +97,12 @@ export class TuiDocExampleComponent {
                 status: TuiNotification.Success,
             })
             .subscribe();
+    }
+
+    edit(files: Record<string, string>) {
+        this.loading$.next(true);
+        this.codeEditor
+            ?.edit(this.componentName, this.id ?? '', files)
+            .finally(() => this.loading$.next(false));
     }
 }

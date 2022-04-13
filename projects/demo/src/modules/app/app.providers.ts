@@ -28,7 +28,7 @@ import {PROMPT_PROVIDER} from '../customization/dialogs/examples/1/prompt/prompt
 import {SEE_ALSO_GROUPS} from './app.const';
 import {LOGO_CONTENT} from './logo/logo.component';
 import {pages} from './pages';
-import {StackblitzService} from './stackblitz/stackblitz.service';
+import {TuiStackblitzService} from './stackblitz/stackblitz.service';
 import {exampleContentProcessor} from './utils';
 
 export const DEFAULT_TABS = [
@@ -104,7 +104,7 @@ export const APP_PROVIDERS = [
     },
     {
         provide: TUI_DOC_CODE_EDITOR,
-        useClass: StackblitzService,
+        useClass: TuiStackblitzService,
     },
     {
         provide: TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,

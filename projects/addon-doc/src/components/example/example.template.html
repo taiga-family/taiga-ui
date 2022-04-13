@@ -26,10 +26,10 @@
 ></h4>
 
 <div
-    *ngIf="processor$ | async as content"
+    *ngIf="processor$ | async as files"
     class="t-example"
 >
-    <ng-container *ngIf="content | tuiDocExampleGetTabs: defaultTab as tabs">
+    <ng-container *ngIf="files | tuiDocExampleGetTabs: defaultTab as tabs">
         <div class="t-tabs-wrapper">
             <tui-tabs-with-more
                 class="t-tabs"
@@ -50,7 +50,8 @@
                 tuiButton
                 appearance="flat"
                 size="s"
-                (click)="codeEditor.open(componentName, id || '',  content)"
+                [showLoader]="(loading$ | async) || false"
+                (click)="edit(files)"
             >
                 Edit on {{codeEditor.name}}
             </button>
@@ -67,7 +68,7 @@
             </ng-container>
             <ng-template #anotherTab>
                 <ng-container
-                    *ngTemplateOutlet="codeSection; context: { $implicit: content[tabs[activeItemIndex]] || '' }"
+                    *ngTemplateOutlet="codeSection; context: { $implicit: files[tabs[activeItemIndex]] || '' }"
                 ></ng-container>
             </ng-template>
         </div>
