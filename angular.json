@@ -39,7 +39,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/addon-charts"
+                        "command": "npm publish ./dist/addon-charts || echo 'already exists'"
                     }
                 }
             }
@@ -80,7 +80,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/addon-commerce"
+                        "command": "npm publish ./dist/addon-commerce || echo 'already exists'"
                     }
                 }
             }
@@ -121,7 +121,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/addon-doc"
+                        "command": "npm publish ./dist/addon-doc || echo 'already exists'"
                     }
                 }
             }
@@ -169,7 +169,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/addon-editor"
+                        "command": "npm publish ./dist/addon-editor || echo 'already exists'"
                     }
                 }
             }
@@ -210,7 +210,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/addon-mobile"
+                        "command": "npm publish ./dist/addon-mobile || echo 'already exists'"
                     }
                 }
             }
@@ -250,7 +250,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/addon-preview"
+                        "command": "npm publish ./dist/addon-preview || echo 'already exists'"
                     }
                 }
             }
@@ -291,7 +291,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/addon-table"
+                        "command": "npm publish ./dist/addon-table || echo 'already exists'"
                     }
                 }
             }
@@ -332,7 +332,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/addon-tablebars"
+                        "command": "npm publish ./dist/addon-tablebars || echo 'already exists'"
                     }
                 }
             }
@@ -412,7 +412,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/cdk"
+                        "command": "npm publish ./dist/cdk || echo 'already exists'"
                     }
                 }
             }
@@ -450,7 +450,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/core"
+                        "command": "npm publish ./dist/core || echo 'already exists'"
                     }
                 }
             }
@@ -722,7 +722,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/i18n"
+                        "command": "npm publish ./dist/i18n || echo 'already exists'"
                     }
                 }
             }
@@ -762,7 +762,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/icons"
+                        "command": "npm publish ./dist/icons || echo 'already exists'"
                     }
                 }
             }
@@ -803,7 +803,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/kit"
+                        "command": "npm publish ./dist/kit || echo 'already exists'"
                     }
                 }
             }
@@ -864,7 +864,7 @@
                 "publish": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
-                        "command": "npm publish ./dist/taiga-schematics"
+                        "command": "npm publish ./dist/taiga-schematics || echo 'already exists'"
                     }
                 }
             }

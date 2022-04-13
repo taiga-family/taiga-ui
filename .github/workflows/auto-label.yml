@@ -1,4 +1,4 @@
-name: Label approved PR
+name: Auto label
 
 on: pull_request_review
 
