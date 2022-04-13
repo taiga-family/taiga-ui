@@ -1,6 +1,11 @@
 name: Auto approve
 on: pull_request
 
+env:
+  CREATED_BY_BOT:
+    ${{ github.event.pull_request.user.login == 'tinkoff-bot' || github .event.pull_request.user.login ==
+    'dependabot-bot' }}
+
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
@@ -9,8 +14,6 @@ jobs:
         run: echo "This PR is opened by ${{ github.event.pull_request.user.login }}"
 
       - uses: hmarr/auto-approve-action@v2
-        if:
-          ${{ github.event.pull_request.user.login == 'tinkoff-bot' || github .event.pull_request.user.login ==
-          'dependabot-bot' }}
+        if: ${{ env.CREATED_BY_BOT == 'true' }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
