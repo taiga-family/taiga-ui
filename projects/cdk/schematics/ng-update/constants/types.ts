@@ -14,4 +14,9 @@ export const TYPES_TO_RENAME: readonly TypeToRename[] = [
         to: 'TuiRadioOptions',
         moduleSpecifier: ['@taiga-ui/kit'],
     },
+    {
+        from: 'CodeEditor',
+        to: 'TuiCodeEditor',
+        moduleSpecifier: ['@taiga-ui/addon-doc'],
+    },
 ];
