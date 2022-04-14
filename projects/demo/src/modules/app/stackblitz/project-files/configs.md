@@ -21,13 +21,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
-              "node_modules/@taiga-ui/core/styles/theme/variables.less",
-              "node_modules/@taiga-ui/core/styles/theme/wrapper.less",
-              "src/styles.less"
-            ],
-            "scripts": []
+            "styles": ["src/app/styles/taiga-ui-stackblitz.less", "src/styles.less"]
           },
           "configurations": {
             "production": {

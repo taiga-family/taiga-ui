@@ -4,10 +4,12 @@ import {TsFileComponentParser, TsFileModuleParser, TsFileParser} from '../classe
 import {isLess, isPrimaryComponentFile, isTS} from '../utils';
 
 export const prepareLess = (content: string): string => {
-    return content.replace(
-        '~@taiga-ui/core/styles/taiga-ui-local',
-        '@taiga-ui/core/styles/taiga-ui-local.less',
-    );
+    return content
+        .replace(
+            '~@taiga-ui/core/styles/taiga-ui-local',
+            'styles/taiga-ui-stackblitz.less',
+        )
+        .replace(/@import.+taiga-ui-local';/g, '');
 };
 
 export const appPrefix = (stringsPart: TemplateStringsArray, path: string = '') =>

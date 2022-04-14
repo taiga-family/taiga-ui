@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import stackblitz from '@stackblitz/sdk';
-import {rawLoad, tryParseMarkdownCodeBlock, TuiCodeEditor} from '@taiga-ui/addon-doc';
+import {TuiCodeEditor} from '@taiga-ui/addon-doc';
 
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';
+import {TuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
 import {
     appPrefix,
     getComponentsClassNames,
@@ -24,40 +25,18 @@ const APP_COMP_META = {
 export class TuiStackblitzService implements TuiCodeEditor {
     readonly name = 'Stackblitz';
 
-    private static async getFiles() {
-        const [
-            configsContent,
-            mainTsContent,
-            indexHtmlContent,
-            polyfillsContent,
-            stylesContent,
-        ]: string[] = await Promise.all([
-            rawLoad(import('!!raw-loader!./project-files/configs.md')),
-            rawLoad(import('!!raw-loader!./project-files/src/main.ts.md')),
-            rawLoad(import('!!raw-loader!./project-files/src/index.html.md')),
-            rawLoad(import('!!raw-loader!./project-files/src/polyfills.ts.md')),
-            rawLoad(import('!!raw-loader!./project-files/src/styles.less.md')),
-        ]);
-
-        const [angularJson, tsconfig] = tryParseMarkdownCodeBlock(configsContent);
-        const [mainTs] = tryParseMarkdownCodeBlock(mainTsContent);
-        const [indexHtml] = tryParseMarkdownCodeBlock(indexHtmlContent);
-        const [polyfills] = tryParseMarkdownCodeBlock(polyfillsContent);
-        const [styles] = tryParseMarkdownCodeBlock(stylesContent);
-
-        return {angularJson, tsconfig, mainTs, indexHtml, polyfills, styles};
-    }
-
     async edit(component: string, sampleId: string, content: Record<string, string>) {
         if (!content.HTML || !content.TypeScript) {
             return;
         }
 
-        const [appModuleTs] = tryParseMarkdownCodeBlock(
-            await rawLoad(
-                import('!!raw-loader!./project-files/src/app/app.module.ts.md'),
-            ),
-        );
+        const taigaStyles = await TuiStackblitzResourcesLoader.getTaigaStyles();
+
+        content = {...content, ...taigaStyles};
+
+        const {tsconfig, angularJson, indexHtml, mainTs, polyfills, styles, appModuleTs} =
+            await TuiStackblitzResourcesLoader.getProjectFiles();
+
         const appModule = new TsFileModuleParser(appModuleTs);
         const appCompTs = new TsFileComponentParser(content.TypeScript);
 
@@ -89,9 +68,6 @@ export class TuiStackblitzService implements TuiCodeEditor {
         appCompTs.styleUrls = APP_COMP_META.STYLE_URLS;
         appCompTs.className = APP_COMP_META.CLASS_NAME;
 
-        const {tsconfig, angularJson, indexHtml, mainTs, polyfills, styles} =
-            await TuiStackblitzService.getFiles();
-
         stackblitz.openProject({
             title: `${component}-${sampleId}`,
             description: `Taiga UI example of the component ${component}`,
@@ -118,6 +94,8 @@ export class TuiStackblitzService implements TuiCodeEditor {
      * @deprecated use `edit` method instead of `open`
      */
     open(component: string, sampleId: string, files: Record<string, string>) {
-        this.edit(component, sampleId, files).then(() => console.info('opened project'));
+        this.edit(component, sampleId, files).then(() =>
+            console.info('project is opened'),
+        );
     }
 }
