@@ -10,16 +10,15 @@
         "documentation",
         "storybook"
     ],
-    "schematics": "./schematics/collection.json",
-    "license": "Apache-2.0",
-    "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "license": "Apache-2.0",
     "dependencies": {
-        "markdown-it": "^12.3.2",
+        "@angular-devkit/schematics": "^9.1.12",
         "highlight.js": "^11.3.1",
+        "markdown-it": "^12.3.2",
         "ngx-highlightjs": "^4.1.4",
-        "schematics-utilities": "^1.0.1",
-        "@angular-devkit/schematics": "^9.1.12"
+        "schematics-utilities": "^1.0.1"
     },
     "devDependencies": {
         "@types/markdown-it": "^12.2.3"
@@ -30,10 +29,11 @@
         "@angular/forms": ">=9.0.0",
         "@angular/router": ">=9.0.0",
         "@ng-web-apis/common": ">=1.12.1 < 2",
-        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
+        "@taiga-ui/addon-mobile": ">=2.41.1",
         "@taiga-ui/cdk": ">=2.41.1",
         "@taiga-ui/core": ">=2.41.1",
         "@taiga-ui/kit": ">=2.41.1",
-        "@taiga-ui/addon-mobile": ">=2.41.1"
-    }
+        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4"
+    },
+    "schematics": "./schematics/collection.json"
 }

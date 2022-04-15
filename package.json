@@ -2,6 +2,25 @@
     "name": "@taiga-ui/components",
     "version": "2.41.1",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
+    "keywords": [
+        "angular",
+        "kit",
+        "ui",
+        "component-library",
+        "component",
+        "service",
+        "directive"
+    ],
+    "homepage": "https://github.com/tinkoff/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "license": "Apache-2.0",
+    "maintainers": [
+        "Alex Inkin <alexander@inkin.ru>",
+        "Roman Sedov <79601794011@ya.ru>"
+    ],
+    "workspaces": [
+        "projects/*"
+    ],
     "scripts": {
         "postinstall": "husky install && ngcc --async",
         "start": "nx serve",
@@ -45,29 +64,17 @@
         "run-many:build:libs": "nx run-many --target build --parallel --all --exclude=demo",
         "run-many:publish:libs": "nx run-many --target publish --all"
     },
-    "keywords": [
-        "angular",
-        "kit",
-        "ui",
-        "component-library",
-        "component",
-        "service",
-        "directive"
-    ],
-    "license": "Apache-2.0",
-    "authors": [
-        "Alex Inkin <alexander@inkin.ru>",
-        "Roman Sedov <79601794011@ya.ru>"
-    ],
-    "maintainers": [
-        "Alex Inkin <alexander@inkin.ru>",
-        "Roman Sedov <79601794011@ya.ru>"
-    ],
-    "workspaces": [
-        "projects/*"
-    ],
-    "repository": "https://github.com/tinkoff/taiga-ui",
-    "homepage": "https://github.com/tinkoff/taiga-ui",
+    "lint-staged": {
+        "*.{js,ts,html,md,less,json}": [
+            "npm run lint -- --fix",
+            "prettier --write",
+            "git add"
+        ],
+        "*.less": [
+            "stylelint --fix",
+            "git add"
+        ]
+    },
     "dependencies": {
         "@angular/animations": "~9.1.12",
         "@angular/cdk": "~9.2.4",
@@ -99,9 +106,9 @@
         "@nrwl/tao": "13.8.2",
         "@nrwl/workspace": "13.8.2",
         "@nx-cloud/runners": "1.1.0",
-        "@tinkoff/eslint-config": "^1.29.2",
-        "@tinkoff/eslint-config-angular": "^1.29.3",
-        "@tinkoff/prettier-config": "^1.29.1",
+        "@tinkoff/eslint-config": "^1.31.1",
+        "@tinkoff/eslint-config-angular": "^1.31.1",
+        "@tinkoff/prettier-config": "^1.32.1",
         "@tinkoff/stylelint-config": "^1.30.0",
         "@types/node": "^12.20.46",
         "angular-http-server": "^1.10.0",
@@ -121,25 +128,18 @@
         "ts-node": "~7.0.1",
         "typescript": "~3.8.3"
     },
-    "lint-staged": {
-        "*.{js,ts,html,md,less,json}": [
-            "npm run lint -- --fix",
-            "prettier --write",
-            "git add"
-        ],
-        "*.less": [
-            "stylelint --fix",
-            "git add"
-        ]
-    },
-    "standard-version": {
-        "scripts": {
-            "postbump": "node scripts/sync-versions.js && node projects/core/scripts/version.js && git add **/package.json && git add projects/core/constants/version.ts"
-        }
-    },
     "engines": {
         "node": ">= 14",
         "npm": ">= 7",
         "yarn": "Please use npm instead of yarn to install dependencies"
+    },
+    "authors": [
+        "Alex Inkin <alexander@inkin.ru>",
+        "Roman Sedov <79601794011@ya.ru>"
+    ],
+    "standard-version": {
+        "scripts": {
+            "postbump": "node scripts/sync-versions.js && node projects/core/scripts/version.js && git add **/package.json && git add projects/core/constants/version.ts"
+        }
     }
 }

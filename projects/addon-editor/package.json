@@ -10,9 +10,9 @@
         "text",
         "editor"
     ],
-    "license": "Apache-2.0",
-    "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "license": "Apache-2.0",
     "dependencies": {
         "@tiptap/core": "2.0.0-beta.151",
         "@tiptap/extension-bubble-menu": "2.0.0-beta.51",

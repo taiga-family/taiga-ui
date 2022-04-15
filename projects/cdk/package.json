@@ -11,9 +11,9 @@
         "service",
         "directive"
     ],
-    "license": "Apache-2.0",
-    "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "license": "Apache-2.0",
     "dependencies": {
         "@ng-web-apis/common": "^1.12.1",
         "@ng-web-apis/mutation-observer": "^1.1.0",
@@ -22,6 +22,10 @@
         "@tinkoff/ng-polymorpheus": "^3.1.12",
         "@types/resize-observer-browser": "^0.1.7"
     },
+    "devDependencies": {
+        "@angular-devkit/schematics": "^9.1.12",
+        "ng-morph": "^2.0.0"
+    },
     "peerDependencies": {
         "@angular/animations": ">=9.0.0",
         "@angular/common": ">=9.0.0",
@@ -29,11 +33,6 @@
         "@angular/forms": ">=9.0.0",
         "rxjs": ">=6.0.0"
     },
-    "devDependencies": {
-        "@angular-devkit/schematics": "^9.1.12",
-        "ng-morph": "^2.0.0"
-    },
-    "schematics": "./schematics/collection.json",
     "ng-update": {
         "migrations": "./schematics/migration.json",
         "packageGroup": [
@@ -51,5 +50,6 @@
             "@taiga-ui/addon-editor",
             "@taiga-ui/addon-mobile"
         ]
-    }
+    },
+    "schematics": "./schematics/collection.json"
 }

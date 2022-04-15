@@ -11,9 +11,9 @@
         "service",
         "directive"
     ],
-    "license": "Apache-2.0",
-    "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "license": "Apache-2.0",
     "peerDependencies": {
         "@angular/core": ">=9.0.0",
         "rxjs": ">=6.0.0"
