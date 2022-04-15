@@ -9,13 +9,14 @@ import {
     Renderer2,
     Self,
 } from '@angular/core';
-import {ANIMATION_FRAME} from '@ng-web-apis/common';
+import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk/interfaces';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
+import {px} from '@taiga-ui/cdk/utils';
 import {setNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {Observable, race, timer} from 'rxjs';
 import {map, skipWhile, take, throttleTime} from 'rxjs/operators';
@@ -25,6 +26,7 @@ const NG_ANIMATION_SELECTOR = '.ng-animating';
 
 // TODO: 3.0 change input name to tuiAutoFocus and handle empty string
 // TODO: refactor on this whole thing in 3.0
+// @dynamic
 @Directive({
     selector: '[tuiAutoFocus]',
 })
@@ -45,6 +47,7 @@ export class TuiAutoFocusDirective implements AfterViewInit {
         private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2)
         private readonly renderer: Renderer2,
+        @Inject(WINDOW) private readonly windowRef: Window,
     ) {}
 
     ngAfterViewInit(): void {
@@ -85,27 +88,21 @@ export class TuiAutoFocusDirective implements AfterViewInit {
     }
 
     private iosWebkitAutofocus(): void {
-        const fakeInput: HTMLElement = this.renderer.createElement('input');
+        const fakeInput: HTMLInputElement = this.makeFakeInput();
+        const duration = this.getMinAnimationTimeBeforeFocus();
 
-        fakeInput.style.position = 'absolute';
-        fakeInput.style.opacity = '0';
-        fakeInput.style.height = '0';
-
-        const blurHandler = (): void => setNativeFocused(fakeInput);
+        const blurHandler = (): void => fakeInput.focus({preventScroll: true});
         const focusHandler = (): void => {
             setTimeout(() => {
-                setNativeFocused(this.element);
-
+                this.element.focus({preventScroll: true});
+                fakeInput.removeEventListener('blur', blurHandler);
+                fakeInput.removeEventListener('focus', focusHandler);
                 /**
                  * @note:
                  * We can't remove the element immediately, because it breaks flow
                  */
-                setTimeout(() => {
-                    fakeInput.removeEventListener('blur', blurHandler);
-                    fakeInput.removeEventListener('focus', focusHandler);
-                    fakeInput.remove();
-                });
-            });
+                setTimeout(() => fakeInput.remove(), duration);
+            }, duration);
         };
 
         /**
@@ -121,6 +118,39 @@ export class TuiAutoFocusDirective implements AfterViewInit {
 
         this.element.parentElement?.appendChild(fakeInput);
 
-        setNativeFocused(fakeInput);
+        fakeInput.focus({preventScroll: true});
+    }
+
+    /**
+     * @note:
+     * We can't inject TUI_ANIMATION_DURATION
+     * due to cyclic dependencies
+     *
+     * This value is needed if the user is overriding
+     * the animation duration, so that browser frames redraws don't twitch when focus occurs
+     */
+    private getMinAnimationTimeBeforeFocus(): number {
+        return (
+            parseFloat(
+                this.windowRef
+                    .getComputedStyle(this.element)
+                    .getPropertyValue('--tui-duration'),
+            ) || 100
+        );
+    }
+
+    private makeFakeInput(): HTMLInputElement {
+        const fakeInput: HTMLInputElement = this.renderer.createElement('input');
+
+        /**
+         * @note: emulate textfield position in layout
+         */
+        fakeInput.style.height = px(this.element.clientHeight);
+        fakeInput.style.width = px(this.element.clientWidth);
+        fakeInput.style.position = 'absolute';
+        fakeInput.style.opacity = '0';
+        fakeInput.style.bottom = '0';
+
+        return fakeInput;
     }
 }

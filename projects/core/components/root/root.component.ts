@@ -44,5 +44,22 @@ export class TuiRootComponent {
     ) {
         tuiAssert.enabled = enabled;
         body.setAttribute('data-tui-theme', theme.toLowerCase());
+        this.unsetMobileOverflowStateForDesktop(body);
+    }
+
+    /**
+     * @note:
+     * By default, the mobile browser takes the static overflow (auto) state
+     * and then, there are no problems with recalculating the layout in iOS.
+     * However, for the desktop version, we need to remove this state.
+     *
+     * One of the problems is that if we dynamically add state
+     * for the mobile version, it won't work.
+     * Apparently in iOS you need a static state from CSS declarations.
+     */
+    private unsetMobileOverflowStateForDesktop(body: HTMLElement): void {
+        if (!this.isMobile && getComputedStyle(body).overflow === 'auto') {
+            body.style.overflow = 'initial';
+        }
     }
 }

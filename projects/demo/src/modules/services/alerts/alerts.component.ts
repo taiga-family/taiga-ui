@@ -15,8 +15,6 @@ import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-dat
     changeDetection,
 })
 export class ExampleTuiAlertsComponent {
-    readonly method = import('!!raw-loader!./method.md');
-
     readonly exampleImportModuleComponent = import(
         '!!raw-loader!./examples/import/import-module-component.md'
     );
@@ -36,6 +34,7 @@ export class ExampleTuiAlertsComponent {
     readonly exampleLazyModule = import('!!raw-loader!./examples/import/lazy-module.md');
     readonly exampleModule = import('!!raw-loader!./examples/import/module.md');
     readonly exampleOptions = import('!!raw-loader!./examples/import/define-options.md');
+    readonly method = import('!!raw-loader!./method.md');
 
     readonly example1: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/1/index.ts'),

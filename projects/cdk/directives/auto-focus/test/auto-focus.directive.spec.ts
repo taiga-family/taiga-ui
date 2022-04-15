@@ -167,7 +167,7 @@ describe('TuiAutoFocus directive', () => {
         it('focuses', fakeAsync(() => {
             fixture.detectChanges();
 
-            tick(100);
+            tick(300);
 
             expect(isNativeFocused(testComponent.element.nativeElement)).toBe(true);
         }));
