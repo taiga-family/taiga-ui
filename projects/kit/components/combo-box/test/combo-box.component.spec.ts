@@ -1,6 +1,7 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TUI_DEFAULT_IDENTITY_MATCHER,
@@ -15,7 +16,11 @@ import {
     TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
+import {
+    TUI_ARROW,
+    TUI_ARROW_MODE,
+    TuiDataListWrapperModule,
+} from '@taiga-ui/kit/components';
 import {configureTestSuite, NativeInputPO, PageObject} from '@taiga-ui/testing';
 
 import {TuiComboBoxComponent} from '../combo-box.component';
@@ -106,6 +111,12 @@ describe('ComboBox', () => {
                 TuiDataListWrapperModule,
             ],
             declarations: [TestComponent],
+            providers: [
+                {
+                    provide: TUI_ARROW_MODE,
+                    useValue: {interactive: TUI_ARROW, disabled: ''},
+                },
+            ],
         });
     });
 
@@ -203,6 +214,18 @@ describe('ComboBox', () => {
                 testComponent.component.onValueChange('');
                 fixture.detectChanges();
                 expect(testComponent.component.open).toEqual(true);
+            });
+        });
+
+        describe('readonly state', () => {
+            beforeEach(() => {
+                testComponent.readOnly = true;
+                fixture.detectChanges();
+            });
+
+            it('should be no icon', () => {
+                fixture.debugElement.query(By.css('.t-icon'));
+                expect(fixture.debugElement.query(By.css('.t-icon'))).toBeFalsy();
             });
         });
     });
