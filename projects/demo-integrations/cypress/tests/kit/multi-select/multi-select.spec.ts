@@ -23,6 +23,29 @@ describe('MultiSelect', () => {
                 .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
                 .matchImageSnapshot(`01-not-overflow-by-tags`);
         });
+
+        ['s', 'm', 'l'].forEach((size, index) => {
+            it(`multiselect inside dialog with tuiTextfieldSize=${size}`, () => {
+                cy.get('tui-multi-select-example-9 button').eq(index).click();
+                cy.tuiWaitKitDialog();
+
+                cy.get('tui-dialog')
+                    .findByAutomationId('tui-multi-select__arrow')
+                    .click({force: true});
+
+                [0, 1, 2].forEach(index => {
+                    cy.get('tui-data-list-wrapper')
+                        .findByAutomationId('tui-data-list-wrapper__option')
+                        .eq(index)
+                        .click({force: true});
+                });
+
+                cy.get('tui-dialog').matchImageSnapshot(
+                    `04-multi-select-inside-dialog-with-field-size-${size}`,
+                    {capture: 'viewport'},
+                );
+            });
+        });
     });
 
     describe('API page', () => {

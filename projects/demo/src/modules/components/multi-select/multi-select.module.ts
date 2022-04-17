@@ -10,6 +10,7 @@ import {
     TuiDataListModule,
     TuiDropdownControllerModule,
     TuiHintControllerModule,
+    TuiLabelModule,
     TuiLinkModule,
     TuiScrollbarModule,
     TuiTextfieldControllerModule,
@@ -31,6 +32,7 @@ import {TuiMultiSelectExample5} from './examples/5';
 import {TuiMultiSelectExample6} from './examples/6';
 import {TuiMultiSelectExample7} from './examples/7';
 import {TuiMultiSelectExample8} from './examples/8';
+import {TuiMultiSelectExample9} from './examples/9';
 import {ExampleTuiMultiSelectComponent} from './multi-select.component';
 
 @NgModule({
@@ -53,6 +55,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiTextfieldControllerModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
+        TuiLabelModule,
         RouterModule.forChild(generateRoutes(ExampleTuiMultiSelectComponent)),
         PolymorpheusModule,
     ],
@@ -66,6 +69,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiMultiSelectExample6,
         TuiMultiSelectExample7,
         TuiMultiSelectExample8,
+        TuiMultiSelectExample9,
     ],
     exports: [ExampleTuiMultiSelectComponent],
 })

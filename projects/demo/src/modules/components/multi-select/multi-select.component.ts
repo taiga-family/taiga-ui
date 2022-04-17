@@ -92,6 +92,11 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
         HTML: import('!!raw-loader!./examples/8/index.html'),
     };
 
+    readonly example9: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/9/index.ts'),
+        HTML: import('!!raw-loader!./examples/9/index.html'),
+    };
+
     labelOutside = true;
 
     dropdownMinHeight = DEFAULT_MIN_HEIGHT;
