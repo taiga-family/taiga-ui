@@ -13,7 +13,7 @@ export const TUI_WINDOW_HEIGHT = new InjectionToken<Observable<number>>(
             return typedFromEvent(windowRef, 'resize').pipe(
                 startWith(null),
                 map(() => windowRef.innerHeight),
-                shareReplay({refCount: true, bufferSize: 1}),
+                shareReplay({bufferSize: 1, refCount: true}),
             );
         },
     },

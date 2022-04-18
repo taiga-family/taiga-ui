@@ -38,7 +38,7 @@ export const TUI_EDITOR_NEW_PROVIDERS = [
 export function extensionsFactory(
     extensions: Promise<Extension>[],
 ): Observable<ReadonlyArray<Extension | Mark | Node>> {
-    const extensions$ = new ReplaySubject<ReadonlyArray<Extension | Mark | Node>>();
+    const extensions$ = new ReplaySubject<ReadonlyArray<Extension | Mark | Node>>(1);
 
     Promise.all(extensions).then(extensions => extensions$.next(extensions));
 
@@ -63,6 +63,6 @@ export function editorFactory(
                     extensions,
                 }),
         ),
-        shareReplay(),
+        shareReplay({bufferSize: 1, refCount: true}),
     );
 }

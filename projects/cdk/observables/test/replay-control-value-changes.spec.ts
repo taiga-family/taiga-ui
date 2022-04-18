@@ -35,8 +35,8 @@ describe('tuiReplayedValueChangesFrom', () => {
 
         tuiReplayedValueChangesFrom({} as AbstractControl).subscribe(
             () => {},
-            (err: Error) => {
-                actual = err.message;
+            (err: unknown) => {
+                actual = (err as Error).message;
             },
         );
 

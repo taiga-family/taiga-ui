@@ -23,7 +23,7 @@ export class TuiMultiSelectExample4 {
     // Server request emulation
     private readonly server$ = timer(5000).pipe(
         mapTo(DICTIONARY),
-        shareReplay({refCount: true, bufferSize: 1}),
+        shareReplay({bufferSize: 1, refCount: true}),
     );
 
     private readonly search$ = new Subject<string>();

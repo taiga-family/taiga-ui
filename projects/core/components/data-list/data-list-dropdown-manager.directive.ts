@@ -86,7 +86,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     private get elements$(): Observable<readonly HTMLElement[]> {
         return itemsQueryListObservable(this.elements).pipe(
             map(array => array.map(({nativeElement}) => nativeElement)),
-            shareReplay(1),
+            shareReplay({bufferSize: 1, refCount: true}),
         );
     }
 

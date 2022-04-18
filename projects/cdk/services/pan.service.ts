@@ -37,6 +37,7 @@ export class TuiPanService extends Observable<readonly [number, number]> {
 
                         return [deltaX, deltaY] as [number, number];
                     }),
+                    // eslint-disable-next-line rxjs/no-unsafe-takeuntil
                     takeUntil(
                         merge(
                             typedFromEvent(documentRef, 'touchend'),

@@ -73,7 +73,7 @@ export class TuiScrollbarDirective {
                 }),
             ),
         )
-            .pipe(takeUntil(destroy$), tuiZonefree(ngZone))
+            .pipe(tuiZonefree(ngZone), takeUntil(destroy$))
             .subscribe(([scrollTop, scrollLeft]) => {
                 const [x, y] = this.viewportScroller.getScrollPosition();
 
@@ -108,7 +108,7 @@ export class TuiScrollbarDirective {
             ),
             animationFrame$.pipe(throttleTime(POLLING_TIME)),
         )
-            .pipe(takeUntil(destroy$), tuiZonefree(ngZone))
+            .pipe(tuiZonefree(ngZone), takeUntil(destroy$))
             .subscribe(() => {
                 if (this.tuiScrollbar === 'vertical') {
                     renderer.setStyle(nativeElement, 'top', `${this.thumb * 100}%`);

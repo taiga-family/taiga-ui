@@ -71,13 +71,13 @@ export class TuiInputFileExample3 {
     ) {
         this.files$
             .pipe(
-                takeUntil(destroy$),
                 switchMap(files =>
                     combineLatest(
                         files.map(file => this.serverRequest(file).pipe(startWith(file))),
                     ),
                 ),
                 watch(changeDetectorRef),
+                takeUntil(destroy$),
             )
             .subscribe(response => {
                 this.processResponse(response);

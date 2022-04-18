@@ -40,5 +40,5 @@ export function valueStreamFactory(
     destroy$: Observable<void>,
     changeDetectorRef: ChangeDetectorRef,
 ): Observable<TuiDayRange | null> {
-    return (value$ || EMPTY).pipe(takeUntil(destroy$), watch(changeDetectorRef));
+    return (value$ || EMPTY).pipe(watch(changeDetectorRef), takeUntil(destroy$));
 }

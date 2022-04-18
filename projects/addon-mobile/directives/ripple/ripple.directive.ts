@@ -100,6 +100,7 @@ export class TuiRippleDirective {
                         touchEnd$.pipe(mapTo(true)),
                     ).pipe(
                         take(1),
+                        // eslint-disable-next-line rxjs/no-unsafe-takeuntil
                         takeUntil(touchMove$),
                         tap(() => {
                             renderer.setStyle(

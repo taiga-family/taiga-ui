@@ -23,7 +23,7 @@ export class TuiZoomService extends Observable<TuiZoom> {
                         typedFromEvent(nativeElement, 'touchmove', {
                             passive: true,
                         }).pipe(
-                            takeUntil(typedFromEvent(nativeElement, 'touchend')),
+                            preventDefault(),
                             scan(
                                 (prev, event) => {
                                     const distance = distanceBetweenTouches(event);
@@ -43,8 +43,6 @@ export class TuiZoomService extends Observable<TuiZoom> {
                                 },
                             ),
                             map(({event, delta}) => {
-                                event.preventDefault();
-
                                 const clientX =
                                     (event.touches[0].clientX +
                                         event.touches[1].clientX) /
@@ -56,6 +54,7 @@ export class TuiZoomService extends Observable<TuiZoom> {
 
                                 return {clientX, clientY, delta, event};
                             }),
+                            takeUntil(typedFromEvent(nativeElement, 'touchend')),
                         ),
                     ),
                 ),

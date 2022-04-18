@@ -38,7 +38,7 @@ export class TuiStaticRequestService {
                 xhr.abort();
             };
         });
-        const piped = observable.pipe(shareReplay(1));
+        const piped = observable.pipe(shareReplay({bufferSize: 1, refCount: false}));
 
         this.cache.set(url, piped);
 

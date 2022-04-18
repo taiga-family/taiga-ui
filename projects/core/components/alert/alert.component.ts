@@ -113,6 +113,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
         )
             .pipe(
                 takeUntil(fromEvent(this.elementRef.nativeElement, 'mouseenter')),
+                // eslint-disable-next-line rxjs/no-ignored-notifier
                 repeatWhen(() => fromEvent(this.elementRef.nativeElement, 'mouseleave')),
                 takeUntil(this.destroy$),
             )

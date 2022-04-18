@@ -26,8 +26,8 @@ export class TuiOverscrollDirective {
         typedFromEvent(nativeElement, 'wheel', {passive: false})
             .pipe(
                 filter(() => this.enabled),
-                takeUntil(destroy$),
                 tuiZonefree(ngZone),
+                takeUntil(destroy$),
             )
             .subscribe(event => {
                 this.processEvent(
@@ -70,8 +70,8 @@ export class TuiOverscrollDirective {
                         }),
                     );
                 }),
-                takeUntil(destroy$),
                 tuiZonefree(ngZone),
+                takeUntil(destroy$),
             )
             .subscribe();
     }
