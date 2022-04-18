@@ -10,18 +10,18 @@
         "card",
         "payment"
     ],
-    "license": "Apache-2.0",
-    "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "license": "Apache-2.0",
     "peerDependencies": {
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
         "@angular/forms": ">=9.0.0",
         "@ng-web-apis/common": ">=1.12.1 < 2",
-        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
         "@taiga-ui/cdk": ">=2.41.1",
         "@taiga-ui/core": ">=2.41.1",
         "@taiga-ui/i18n": ">=2.41.1",
+        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
         "angular2-text-mask": ">=9.0.0",
         "rxjs": ">=6.0.0"
     }

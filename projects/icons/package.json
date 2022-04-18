@@ -6,9 +6,9 @@
         "angular",
         "icon"
     ],
-    "license": "Apache-2.0",
-    "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "license": "Apache-2.0",
     "devDependencies": {
         "@rollup/pluginutils": "~4.1.2",
         "@types/svgo": "~2.6.2",

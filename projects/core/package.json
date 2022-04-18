@@ -11,16 +11,13 @@
         "service",
         "directive"
     ],
-    "license": "Apache-2.0",
-    "repository": "https://github.com/tinkoff/taiga-ui",
     "homepage": "https://github.com/tinkoff/taiga-ui",
-    "schematics": "./schematics/collection.json",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "license": "Apache-2.0",
     "dependencies": {
         "@taiga-ui/i18n": "^2.41.1"
     },
     "peerDependencies": {
-        "@taiga-ui/i18n": ">=2.41.1",
-        "@taiga-ui/cdk": ">=2.41.1",
         "@angular/animations": ">=9.0.0",
         "@angular/common": ">=9.0.0",
         "@angular/core": ">=9.0.0",
@@ -29,8 +26,11 @@
         "@angular/router": ">=9.0.0",
         "@ng-web-apis/common": ">=1.12.1 < 2",
         "@ng-web-apis/mutation-observer": ">=1.1.0",
+        "@taiga-ui/cdk": ">=2.41.1",
+        "@taiga-ui/i18n": ">=2.41.1",
         "@tinkoff/ng-event-plugins": ">=2.3.2",
         "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
         "rxjs": ">=6.0.0"
-    }
+    },
+    "schematics": "./schematics/collection.json"
 }
