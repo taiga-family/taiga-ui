@@ -48,8 +48,31 @@
             i18n-heading
             heading="Basic"
             [content]="example1"
+            [description]="stepQuantumDescription"
         >
-            <!-- TODO: make this example really basic (similar to https://taiga-ui.dev/components/input-slider#base) -->
+            <ng-template #stepQuantumDescription>
+                <p>
+                    Look into this example to understand difference between
+                    input-props
+                    <code>[steps]</code>
+                    and
+                    <code>[quantum]</code>
+                    .
+                </p>
+            </ng-template>
+
+            <p class="tui-space_top-0">
+                Slider's step changes value by
+                <code>1</code>
+                .
+            </p>
+            <p>
+                But text inputs allow to type decimal number which is multiple
+                of
+                <code>0.00001</code>
+                .
+            </p>
+
             <tui-input-range-example-1></tui-input-range-example-1>
         </tui-doc-example>
 
@@ -58,7 +81,21 @@
             i18n-heading
             heading="Override number format"
             [content]="example2"
+            [description]="numberFormatTokenDescription"
         >
+            <ng-template #numberFormatTokenDescription>
+                <p i18n>
+                    Number formatting can be customized by using
+                    <a
+                        tuiLink
+                        routerLink="/utils/tokens"
+                        fragment="number-format"
+                    >
+                        TUI_NUMBER_FORMAT
+                    </a>
+                    .
+                </p>
+            </ng-template>
             <tui-input-range-example-2></tui-input-range-example-2>
         </tui-doc-example>
 
@@ -86,6 +123,25 @@
                 to arrange ticks' labels (it places them strictly below ticks).
             </tui-notification>
             <tui-input-range-example-4></tui-input-range-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="keySteps"
+            i18n-heading
+            heading="KeySteps"
+            [content]="example5"
+        >
+            <dl
+                i18n
+                class="tui-space_bottom-8 tui-space_top-0"
+            >
+                <dt><strong>Key steps</strong></dt>
+                <dd>
+                    anchor points of non-uniform format between value and
+                    position
+                </dd>
+            </dl>
+            <tui-input-range-example-5></tui-input-range-example-5>
         </tui-doc-example>
     </ng-template>
 

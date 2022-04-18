@@ -25,15 +25,13 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
     readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.txt');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
         HTML: import('!!raw-loader!./examples/1/index.html'),
-        LESS: import('!!raw-loader!./examples/1/index.less'),
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
     };
 
     readonly example2: TuiDocExample = {
         TypeScript: import('!!raw-loader!./examples/2/index.ts'),
         HTML: import('!!raw-loader!./examples/2/index.html'),
-        LESS: import('!!raw-loader!./examples/2/index.less'),
     };
 
     readonly example3: TuiDocExample = {
@@ -45,6 +43,12 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
         HTML: import('!!raw-loader!./examples/4/index.html'),
         LESS: import('!!raw-loader!./examples/4/index.less'),
         TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+    };
+
+    readonly example5: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
+        HTML: import('!!raw-loader!./examples/5/index.html'),
+        LESS: import('!!raw-loader!./examples/5/index.less'),
     };
 
     control = new FormControl([0, 10]);
