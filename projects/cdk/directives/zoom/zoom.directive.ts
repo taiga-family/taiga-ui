@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
     outputs: ['tuiZoom'],
     providers: [TuiZoomService],
     host: {
-        '[style.touch-actions]': '"none"',
+        '[style.touch-action]': '"none"',
     },
 })
 export class TuiZoomDirective {
