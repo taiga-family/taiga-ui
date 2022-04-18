@@ -21,6 +21,7 @@ import {TuiInputRangeExample1} from './examples/1';
 import {TuiInputRangeExample2} from './examples/2';
 import {TuiInputRangeExample3} from './examples/3';
 import {TuiInputRangeExample4} from './examples/4';
+import {TuiInputRangeExample5} from './examples/5';
 import {ExampleTuiInputRangeComponent} from './input-range.component';
 
 @NgModule({
@@ -46,6 +47,7 @@ import {ExampleTuiInputRangeComponent} from './input-range.component';
         TuiInputRangeExample2,
         TuiInputRangeExample3,
         TuiInputRangeExample4,
+        TuiInputRangeExample5,
     ],
     exports: [ExampleTuiInputRangeComponent],
 })
