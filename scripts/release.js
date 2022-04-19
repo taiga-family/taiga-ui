@@ -10,7 +10,7 @@ const newVersion = bump(parsedVersion, mode);
 
 execSync('git checkout main', options);
 execSync('git pull', options);
-execSync(`git checkout -b release/${newVersion}`, options);
+execSync(`git checkout -B release/${newVersion}`, options);
 execSync(`npm run release -- --release-as ${mode}`, options);
 
 execSync(`npm run prettier`, options);
