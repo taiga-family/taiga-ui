@@ -6,7 +6,7 @@ import {AppBrowserModule} from './modules/app/app.browser.module';
 export const hmrBootstrap = (
     module: any,
     bootstrap: () => Promise<NgModuleRef<AppBrowserModule>>,
-) => {
+): void => {
     let ngModule: NgModuleRef<AppBrowserModule>;
 
     module.hot.accept();

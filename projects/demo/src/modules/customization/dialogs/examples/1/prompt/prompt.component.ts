@@ -17,7 +17,7 @@ export class PromptComponent {
         @Inject(POLYMORPHEUS_CONTEXT) readonly context: TuiDialog<PromptOptions, boolean>,
     ) {}
 
-    onClick(response: boolean) {
+    onClick(response: boolean): void {
         this.context.completeWith(response);
     }
 }

@@ -129,7 +129,7 @@ describe('Hint', () => {
             expect(getTooltip()).toBeNull();
         }));
 
-        function setHintThenEnterMouse(hint: Hint) {
+        function setHintThenEnterMouse(hint: Hint): void {
             setHint(hint);
 
             getHost().dispatchEvent(new Event('mouseenter'));
@@ -149,7 +149,7 @@ describe('Hint', () => {
         return document.querySelector('[automation-id=tui-hint-box__tooltip]');
     }
 
-    function setHint(hint: Hint) {
+    function setHint(hint: Hint): void {
         component.hint = hint;
         fixture.detectChanges();
     }

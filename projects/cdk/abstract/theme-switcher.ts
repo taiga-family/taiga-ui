@@ -29,17 +29,17 @@ export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
         return (<typeof AbstractTuiThemeSwitcher>this.constructor).style;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.removeTheme();
     }
 
-    private addTheme() {
+    private addTheme(): void {
         if (this.style) {
             this.documentRef.head.appendChild(this.style);
         }
     }
 
-    private removeTheme() {
+    private removeTheme(): void {
         if (this.style && this.documentRef.head.contains(this.style)) {
             this.documentRef.head.removeChild(this.style);
         }

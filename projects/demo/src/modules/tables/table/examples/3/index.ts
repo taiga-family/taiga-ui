@@ -90,7 +90,7 @@ export class TuiTableExample3 {
         key: K,
         current: Item,
         data: readonly Item[],
-    ) {
+    ): void {
         const updated = {...current, [key]: value};
 
         this.pythons =

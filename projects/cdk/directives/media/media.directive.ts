@@ -80,13 +80,13 @@ export class TuiMediaDirective {
     @HostListener('ended', ['true'])
     @HostListener('pause', ['true'])
     @HostListener('play', ['false'])
-    onPausedChange(paused: boolean) {
+    onPausedChange(paused: boolean): void {
         this.pausedChange.emit(paused);
         this.updatePlaybackRate(this.playbackRate);
     }
 
     @HostListener('volumechange')
-    onVolumeChange() {
+    onVolumeChange(): void {
         this.volume = this.elementRef.nativeElement.volume;
         this.volumeChange.emit(this.volume);
     }
@@ -94,16 +94,16 @@ export class TuiMediaDirective {
     @HostListener('timeupdate')
     @HostListener('seeking')
     @HostListener('seeked')
-    onCurrentTimeChange() {
+    onCurrentTimeChange(): void {
         this.currentTimeChange.emit(this.currentTime);
     }
 
     @HostListener('durationchange')
-    changeDetectionTrigger() {
+    changeDetectionTrigger(): void {
         // @bad TODO: consider if other events need to trigger CD
     }
 
-    private updatePlaybackRate(playbackRate: number) {
+    private updatePlaybackRate(playbackRate: number): void {
         this.playbackRate = playbackRate;
         this.elementRef.nativeElement.playbackRate = this.playbackRate;
     }

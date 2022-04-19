@@ -86,7 +86,7 @@ export class TuiDocNavigationComponent {
         return this.filterItems(this.flattenSubPages(this.items), this.search);
     }
 
-    get itemsWithoutSections() {
+    get itemsWithoutSections(): TuiDocPages {
         return this.items[this.items.length - 1];
     }
 
@@ -94,20 +94,20 @@ export class TuiDocNavigationComponent {
         return route === this.active;
     }
 
-    onGroupClick(index: number) {
+    onGroupClick(index: number): void {
         this.openPagesGroupsArr[index] = !this.openPagesGroupsArr[index];
     }
 
-    closeMenu() {
+    closeMenu(): void {
         this.menuOpen = false;
     }
 
-    onSearchChange(search: string) {
+    onSearchChange(search: string): void {
         this.search = search;
         this.open = this.canOpen;
     }
 
-    onClick() {
+    onClick(): void {
         this.open = false;
         this.menuOpen = false;
         this.search = '';
@@ -162,13 +162,13 @@ export class TuiDocNavigationComponent {
         return this.router.isActive(route, false);
     }
 
-    private handleAnchorLink(hash: string) {
+    private handleAnchorLink(hash: string): void {
         setTimeout(() => {
             this.navigateToAnchorLink(hash);
         }, SCROLL_INTO_VIEW_DELAY);
     }
 
-    private openActivePageGroup() {
+    private openActivePageGroup(): void {
         this.items.forEach((pages, pagesIndex) => {
             pages.forEach((page, pageIndex) => {
                 if ('route' in page && this.isActiveRoute(page.route)) {
@@ -189,7 +189,7 @@ export class TuiDocNavigationComponent {
         });
     }
 
-    private navigateToAnchorLink(fragment: string) {
+    private navigateToAnchorLink(fragment: string): void {
         const element = fragment && this.documentRef.querySelector(`#${fragment}`);
 
         if (!element) {

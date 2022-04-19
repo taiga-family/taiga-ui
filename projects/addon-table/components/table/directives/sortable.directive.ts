@@ -16,13 +16,13 @@ export class TuiSortableDirective<T> implements DoCheck {
         this.th.sorter = this.sorter;
     }
 
-    readonly sorter = () => 0;
+    readonly sorter = (): number => 0;
 
     get key(): keyof T {
         return this.th.key;
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.sortBy.tuiSortBy === this.key && this.table.sorter !== this.sorter) {
             this.table.updateSorter(this.sorter);
         }

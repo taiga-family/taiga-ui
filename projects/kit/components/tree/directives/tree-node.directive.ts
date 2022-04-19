@@ -21,7 +21,7 @@ export class TuiTreeNodeDirective<T> implements OnDestroy {
         private readonly component: TuiTreeItemComponent,
     ) {}
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.directive?.unregister(this.component);
     }
 }

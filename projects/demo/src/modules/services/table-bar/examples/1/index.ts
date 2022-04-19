@@ -23,7 +23,7 @@ export class TuiTableBarExampleComponent1 {
         private readonly tableBarsService: TuiTableBarsService,
     ) {}
 
-    showTableBar() {
+    showTableBar(): void {
         this.subscription.unsubscribe();
 
         this.subscription = this.tableBarsService

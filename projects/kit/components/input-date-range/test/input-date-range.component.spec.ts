@@ -77,7 +77,7 @@ const DEFAULT_TESTING_MODULE_META = {
 
 const initializeEnvironment = async (
     testComponentClass: Type<TestComponent> = TestComponent,
-) => {
+): Promise<void> => {
     fixture = TestBed.createComponent(testComponentClass);
     pageObject = new PageObject(fixture);
     testComponent = fixture.componentInstance;
@@ -423,7 +423,7 @@ describe('InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER', () => {
     });
 });
 
-function clickOnTextfield() {
+function clickOnTextfield(): void {
     getTextfield()!.nativeElement.click();
     fixture.detectChanges();
 }

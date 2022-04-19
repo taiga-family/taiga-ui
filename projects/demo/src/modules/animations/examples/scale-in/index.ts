@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
-import {tuiScaleIn} from '@taiga-ui/core';
+import {TuiDurationOptions, tuiScaleIn} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-scale-in-example',
@@ -23,10 +23,7 @@ export class TuiScaleInExample {
     ];
 
     @tuiPure
-    getAnimation(duration: number) {
-        return {
-            value: '',
-            params: {duration},
-        } as const;
+    getAnimation(duration: number): TuiDurationOptions {
+        return {value: '', params: {duration}};
     }
 }

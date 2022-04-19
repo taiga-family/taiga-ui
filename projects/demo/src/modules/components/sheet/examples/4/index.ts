@@ -23,12 +23,12 @@ export class TuiSheetExample4 {
         return `scale(${this.elastic * this.elastic})`;
     }
 
-    toggle() {
+    toggle(): void {
         this.elastic = 1;
         this.open = !this.open;
     }
 
-    onElastic(elastic: number) {
+    onElastic(elastic: number): void {
         this.elastic = elastic;
     }
 }

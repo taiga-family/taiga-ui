@@ -147,7 +147,7 @@ export abstract class AbstractTuiSlider<T>
     abstract get right(): number;
     abstract processValue(value: number, right?: boolean): void;
 
-    ngOnInit() {
+    ngOnInit(): void {
         super.ngOnInit();
 
         const mouseMoves$ = typedFromEvent(this.documentRef, 'mousemove');
@@ -221,12 +221,12 @@ export abstract class AbstractTuiSlider<T>
             });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         super.ngOnDestroy();
         this.pointerDown$.complete();
     }
 
-    onMouseDown(event: MouseEvent) {
+    onMouseDown(event: MouseEvent): void {
         if (this.disabled) {
             return;
         }
@@ -235,7 +235,7 @@ export abstract class AbstractTuiSlider<T>
         this.pointerDown$.next(event as TuiEventWith<MouseEvent, HTMLElement>);
     }
 
-    onTouchStart(event: TouchEvent) {
+    onTouchStart(event: TouchEvent): void {
         if (this.disabled) {
             return;
         }
@@ -260,15 +260,15 @@ export abstract class AbstractTuiSlider<T>
         return `${texts[1]} `;
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    onLeftFocusVisible(focusVisible: boolean) {
+    onLeftFocusVisible(focusVisible: boolean): void {
         this.focusVisibleLeft = focusVisible;
     }
 
-    onRightFocusVisible(focusVisible: boolean) {
+    onRightFocusVisible(focusVisible: boolean): void {
         this.focusVisibleRight = focusVisible;
     }
 
@@ -316,7 +316,7 @@ export abstract class AbstractTuiSlider<T>
             : clamp(value, this.min, this.max);
     }
 
-    private processFocus(right: boolean) {
+    private processFocus(right: boolean): void {
         if (!this.focusable || !this.dotRight || !this.dotLeft) {
             return;
         }

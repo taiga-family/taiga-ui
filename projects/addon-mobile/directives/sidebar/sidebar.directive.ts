@@ -51,11 +51,11 @@ export class TuiSidebarDirective<T = {}>
         super(content, changeDetectorRef);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.hide();
     }
 
-    private show() {
+    private show(): void {
         if (this.sidebarRef !== null) {
             return;
         }
@@ -67,7 +67,7 @@ export class TuiSidebarDirective<T = {}>
         this.sidebarRef.changeDetectorRef.detectChanges();
     }
 
-    private hide() {
+    private hide(): void {
         if (this.sidebarRef === null) {
             return;
         }

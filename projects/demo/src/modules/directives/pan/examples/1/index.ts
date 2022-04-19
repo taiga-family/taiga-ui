@@ -25,14 +25,14 @@ export class TuiPanExample1 {
 
     constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
 
-    onPan(delta: readonly [number, number]) {
+    onPan(delta: readonly [number, number]): void {
         this.coordinates$.next([
             this.currentCoords[0] + delta[0],
             this.currentCoords[1] + delta[1],
         ]);
     }
 
-    get currentCoords() {
+    get currentCoords(): number[] {
         return this.coordinates$.value;
     }
 }

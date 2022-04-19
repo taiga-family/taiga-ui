@@ -209,7 +209,7 @@ export class TuiInputDateComponent
     }
 
     @HostListener('click')
-    onClick() {
+    onClick(): void {
         if (!this.isMobile) {
             this.open = !this.open;
         }
@@ -219,7 +219,7 @@ export class TuiInputDateComponent
         return this.activeItem ? '' : filler;
     }
 
-    onMobileClick() {
+    onMobileClick(): void {
         if (!this.mobileCalendar) {
             this.open = !this.open;
 
@@ -243,7 +243,7 @@ export class TuiInputDateComponent
             });
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
         }
@@ -259,33 +259,33 @@ export class TuiInputDateComponent
         );
     }
 
-    onDayClick(value: TuiDay) {
+    onDayClick(value: TuiDay): void {
         this.updateValue(value);
         this.open = false;
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onMonthChange(month: TuiMonth) {
+    onMonthChange(month: TuiMonth): void {
         this.month = month;
     }
 
-    onOpenChange(open: boolean) {
+    onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    setDisabledState() {
+    setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
 
-    writeValue(value: TuiDay | null) {
+    writeValue(value: TuiDay | null): void {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : '';
     }

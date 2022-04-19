@@ -72,19 +72,19 @@ export class TuiCheckboxLabeledComponent
         return this.modeDirective ? this.modeDirective.mode : null;
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
-    onModelChange(value: boolean) {
+    onModelChange(value: boolean): void {
         this.updateValue(value);
     }
 }

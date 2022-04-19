@@ -148,15 +148,15 @@ export class TuiInputFilesComponent
         return this.getValueArray(this.value);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
@@ -164,7 +164,7 @@ export class TuiInputFilesComponent
         input: HTMLInputElement,
         texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
         units: [string, string, string],
-    ) {
+    ): void {
         this.processSelectedFiles(input.files, texts, units);
         input.value = '';
     }
@@ -173,15 +173,15 @@ export class TuiInputFilesComponent
         event: DataTransfer,
         texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
         units: [string, string, string],
-    ) {
+    ): void {
         this.processSelectedFiles(event.files, texts, units);
     }
 
-    onDragOver(dataTransfer: DataTransfer | null) {
+    onDragOver(dataTransfer: DataTransfer | null): void {
         this.dataTransfer = dataTransfer;
     }
 
-    removeFile(removedFile: TuiFileLike) {
+    removeFile(removedFile: TuiFileLike): void {
         this.updateValue(
             this.multiple ? this.arrayValue.filter(file => file !== removedFile) : null,
         );
@@ -245,7 +245,7 @@ export class TuiInputFilesComponent
         files: FileList | null,
         texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
         units: [string, string, string],
-    ) {
+    ): void {
         // IE11 after selecting a file through the open dialog generates a second event passing an empty FileList.
         if (!files?.length) {
             return;
@@ -302,7 +302,7 @@ export class TuiInputFilesComponent
         );
     }
 
-    private rejectFiles(rejectedFiles: readonly TuiFileLike[]) {
+    private rejectFiles(rejectedFiles: readonly TuiFileLike[]): void {
         this.reject.emit(this.multiple ? rejectedFiles : rejectedFiles[0]);
     }
 }

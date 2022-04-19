@@ -73,7 +73,7 @@ export class ExampleTuiAccordionComponent {
 
     constructor(@Inject(DOCUMENT) private readonly documentRef: Document) {}
 
-    onOpenChange(open: boolean) {
+    onOpenChange(open: boolean): void {
         this.open = open;
 
         if (!this.async || !open) {

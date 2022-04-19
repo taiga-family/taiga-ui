@@ -30,7 +30,7 @@ export class TuiInputPhoneExample1 {
         phoneCountryCode: TuiCountryIsoCode.BY,
     };
 
-    patchValue() {
+    patchValue(): void {
         this.countryIsoCode = this.contact.phoneCountryCode;
         this.testForm.get('testValue')?.patchValue(this.contact.phone);
     }

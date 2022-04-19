@@ -19,11 +19,11 @@ export class AlertExampleWithDataComponent {
         this.value = this.context.data;
     }
 
-    increaseBalance() {
+    increaseBalance(): void {
         this.value += 10;
     }
 
-    submit() {
+    submit(): void {
         this.context.emitAndCloseHook(this.value);
     }
 }

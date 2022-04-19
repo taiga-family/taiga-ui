@@ -108,11 +108,11 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     monthOffset: TuiMapper<TuiMonth, TuiMonth> = (value, offset: number) =>
         value.append({month: offset});
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setInitialMonths();
     }
 
-    onSectionFirstViewedMonth(month: TuiMonth) {
+    onSectionFirstViewedMonth(month: TuiMonth): void {
         this.userViewedMonthFirst = month;
 
         if (this.userViewedMonthSecond.year < this.userViewedMonthFirst.year) {
@@ -122,7 +122,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         }
     }
 
-    onSectionSecondViewedMonth(month: TuiMonth) {
+    onSectionSecondViewedMonth(month: TuiMonth): void {
         this.userViewedMonthSecond = month;
 
         if (this.userViewedMonthFirst.year > this.userViewedMonthSecond.year) {
@@ -132,11 +132,11 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         }
     }
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         this.dayClick.emit(day);
     }
 
-    private setInitialMonths() {
+    private setInitialMonths(): void {
         if (!this.value) {
             this.userViewedMonthSecond = this.updatedViewedMonthSecond(
                 this.defaultViewedMonthSecond,
@@ -148,7 +148,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         }
     }
 
-    private updatedViewedMonthSecond(month: TuiMonth) {
+    private updatedViewedMonthSecond(month: TuiMonth): TuiMonth {
         if (month.monthSameOrAfter(this.max)) {
             return this.max;
         }
@@ -160,7 +160,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         return month;
     }
 
-    private updatedViewedMonthFirst(month: TuiMonth) {
+    private updatedViewedMonthFirst(month: TuiMonth): TuiMonth {
         if (month.monthSameOrAfter(this.userViewedMonthSecond)) {
             return this.userViewedMonthSecond.append({month: -1});
         }
@@ -172,7 +172,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         return month;
     }
 
-    private updateViewedMonths() {
+    private updateViewedMonths(): void {
         this.userViewedMonthFirst =
             this.value === null ? this.defaultViewedMonthFirst : this.value.from;
         this.userViewedMonthSecond =

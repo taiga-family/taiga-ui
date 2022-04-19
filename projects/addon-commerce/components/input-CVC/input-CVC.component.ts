@@ -98,17 +98,17 @@ export class TuiInputCVCComponent
         return this.textfieldLabelOutside.labelOutside ? '' : this.exampleText;
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onCopy() {}
+    onCopy(): void {}
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.updateValue(value);
     }
 

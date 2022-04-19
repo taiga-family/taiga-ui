@@ -13,7 +13,7 @@ export class ExampleTuiRequiredSetterComponent {
 
     quantity?: number;
 
-    setUndefined() {
+    setUndefined(): void {
         this.quantity = undefined;
     }
 }

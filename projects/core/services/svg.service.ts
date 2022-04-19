@@ -27,7 +27,7 @@ export class TuiSvgService {
         this.define(icons);
     }
 
-    define(icons: Record<string, string>) {
+    define(icons: Record<string, string>): void {
         const {value} = this.items$;
 
         Object.keys(icons).forEach(key => {
@@ -41,7 +41,7 @@ export class TuiSvgService {
         return this.originals[name] || null;
     }
 
-    private defineIcon(name: string, src: string, map: Map<string, SafeHtml>) {
+    private defineIcon(name: string, src: string, map: Map<string, SafeHtml>): void {
         if (map.has(name)) {
             return;
         }

@@ -13,11 +13,11 @@ import {TuiInputCountComponent} from './input-count.component';
     ],
 })
 export class TuiInputCountDirective extends TuiAbstractTextfieldHost<TuiInputCountComponent> {
-    onValueChange() {
+    onValueChange(): void {
         this.host.onValueChange();
     }
 
-    process(input: HTMLInputElement) {
+    process(input: HTMLInputElement): void {
         input.autocomplete = 'off';
         input.inputMode = 'numeric';
     }

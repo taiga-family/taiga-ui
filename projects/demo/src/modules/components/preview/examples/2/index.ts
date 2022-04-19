@@ -20,7 +20,7 @@ export class TuiPreviewExample2 {
         private readonly previewDialogService: PreviewDialogService,
     ) {}
 
-    show() {
+    show(): void {
         this.previewDialogService.open(this.preview || '').subscribe();
     }
 }

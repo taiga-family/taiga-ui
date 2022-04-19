@@ -52,7 +52,7 @@ export class TuiLineDaysChartExample2 {
                     [TuiDay.lengthBetween(from, day), value] as [number, number],
             );
 
-    onDataChange(data: TuiDayRange) {
+    onDataChange(data: TuiDayRange): void {
         this.days = this.computeArrays(data);
     }
 

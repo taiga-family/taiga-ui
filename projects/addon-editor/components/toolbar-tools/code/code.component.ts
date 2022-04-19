@@ -30,7 +30,7 @@ export class CodeComponent {
         readonly codeOptionsTexts$: Observable<LanguageEditor['editorCodeOptions']>,
     ) {}
 
-    onCode(isCodeBlock: boolean) {
+    onCode(isCodeBlock: boolean): void {
         if (isCodeBlock) {
             this.editor.toggleCodeBlock();
         } else {

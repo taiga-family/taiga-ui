@@ -12,7 +12,7 @@ export class TuiAutoFocusExample1 {
     showInput = false;
     model = 'Focused after its appearance';
 
-    onClick() {
+    onClick(): void {
         this.showInput = true;
     }
 }

@@ -315,7 +315,7 @@ describe('InputPhone', () => {
             .nativeElement;
     }
 
-    function onPasteRemovePrefix(value: string, done: DoneFn) {
+    function onPasteRemovePrefix(value: string, done: DoneFn): void {
         const pasteEvent = new ClipboardEvent('paste', {bubbles: true});
         const clipboardData = {
             getData: () => value,
@@ -334,7 +334,7 @@ describe('InputPhone', () => {
         });
     }
 
-    function onDropRemovePrefix(value: string, done: DoneFn) {
+    function onDropRemovePrefix(value: string, done: DoneFn): void {
         const dragEvent = new DragEvent('drop', {bubbles: true});
         const dataTransfer = {
             getData: () => value,

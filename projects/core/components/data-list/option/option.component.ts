@@ -89,7 +89,7 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     }
 
     @HostListener('click')
-    onClick() {
+    onClick(): void {
         if (this.host && this.value !== undefined) {
             this.host.handleOption(this.value);
         }
@@ -99,12 +99,12 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     @shouldCall(shouldFocus)
     @HostListener('mousemove.init', ['$event'])
     @HostListener('mousemove.silent', ['$event'])
-    onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>) {
+    onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): void {
         setNativeFocused(currentTarget, true, true);
     }
 
     // Preventing focus loss upon focused option removal
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.dataList.handleFocusLossIfNecessary(this.elementRef.nativeElement);
     }
 }

@@ -28,7 +28,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
         max = TuiDay.currentLocal().append({year: 200});
         value = TuiDay.currentLocal();
         initialItem = TuiDay.currentLocal();
-        disabledItemHandler = (item: TuiDay) => item.day === 10;
+        disabledItemHandler = (item: TuiDay): boolean => item.day === 10;
     }
 
     let fixture: ComponentFixture<TestComponent>;

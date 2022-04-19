@@ -28,7 +28,7 @@ export class TuiDirectiveStylesService {
         @Inject(TUI_DEFAULT_RENDERER) private readonly renderer: Renderer2,
     ) {}
 
-    addComponent(component: Type<unknown>) {
+    addComponent(component: Type<unknown>): void {
         if (!this.map.has(component)) {
             this.map.set(
                 component,
@@ -38,7 +38,7 @@ export class TuiDirectiveStylesService {
     }
 
     /** @deprecated use components approach */
-    addStyle(styles: string, attribute: string) {
+    addStyle(styles: string, attribute: string): void {
         if (this.documentRef.head.querySelector(`style[${attribute}]`)) {
             return;
         }

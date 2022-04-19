@@ -132,7 +132,7 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
             : '';
     }
 
-    setValue() {
+    setValue(): void {
         this.control.setValue(new Account('Dollar', 237));
     }
 }

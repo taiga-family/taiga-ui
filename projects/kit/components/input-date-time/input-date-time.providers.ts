@@ -13,14 +13,16 @@ import {
     TUI_DATE_TIME_VALUE_TRANSFORMER,
 } from '@taiga-ui/kit/tokens';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
+import {Observable} from 'rxjs';
 
 import {TuiInputDateTimeComponent} from './input-date-time.component';
 
 // TODO: remove in ivy compilation
-export const TIME_STREAM_FACTORY = (
+export const TIME_STREAM_FACTORY = <T extends [TuiDay | null, TuiTime | null]>(
     control: NgControl | null,
-    valueTransformer: TuiControlValueTransformer<[TuiDay | null, TuiTime | null]>,
-) => TuiReplayControlValueChangesFactory(control, valueTransformer);
+    valueTransformer: TuiControlValueTransformer<T>,
+): Observable<T | null> | null =>
+    TuiReplayControlValueChangesFactory<T>(control, valueTransformer);
 
 export const TUI_INPUT_DATE_TIME_PROVIDERS = [
     {

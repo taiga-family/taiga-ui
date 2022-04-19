@@ -15,7 +15,7 @@ export class TuiMonthExample2 {
     max = new TuiMonth(2021, 7);
     min = new TuiMonth(2019, 7);
 
-    onMonthClick(month: TuiMonth) {
+    onMonthClick(month: TuiMonth): void {
         if (this.value === null || !this.value.isSingleMonth) {
             this.value = new TuiMonthRange(month, month);
 

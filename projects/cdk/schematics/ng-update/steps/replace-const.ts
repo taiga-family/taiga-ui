@@ -4,11 +4,11 @@ import {removeImport} from '../../utils/remove-import';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {CONSTS_TO_REPLACE, ReplacementConst} from '../constants/consts';
 
-export function replaceConsts() {
+export function replaceConsts(): void {
     CONSTS_TO_REPLACE.forEach(constToReplace => replaceConst(constToReplace));
 }
 
-export function replaceConst({from, to}: ReplacementConst) {
+export function replaceConst({from, to}: ReplacementConst): void {
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 
     for (let ref of references) {

@@ -19,7 +19,7 @@ export class TuiDataListExample2 {
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     ) {}
 
-    selectOption(item: string) {
+    selectOption(item: string): void {
         this.dropdownOpen = false;
         this.dialogService.open(`You selected ${item}`).subscribe();
     }

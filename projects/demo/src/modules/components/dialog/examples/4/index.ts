@@ -31,11 +31,11 @@ export class TuiDialogExampleComponent4 {
         return `calc((100% + 4rem) * ${1 / this.scale})`;
     }
 
-    onElastic(value: number) {
+    onElastic(value: number): void {
         this.scale = clamp(value, 0.5, 1);
     }
 
-    onFilterClick() {
+    onFilterClick(): void {
         this.filters = true;
         this.dialogService.open('Dialog with filters').subscribe({
             complete: () => {
@@ -44,7 +44,10 @@ export class TuiDialogExampleComponent4 {
         });
     }
 
-    showDialog(content: PolymorpheusContent<TuiDialogContext>, button: TemplateRef<{}>) {
+    showDialog(
+        content: PolymorpheusContent<TuiDialogContext>,
+        button: TemplateRef<{}>,
+    ): void {
         const templateRef = this.portalService.addTemplate(button);
 
         this.dialogService.open(content).subscribe({

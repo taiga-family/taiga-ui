@@ -29,7 +29,7 @@ export class TuiSelectExample4 {
         private readonly notifications: TuiNotificationsService,
     ) {}
 
-    addMore(select: TuiSelectComponent<unknown>) {
+    addMore(select: TuiSelectComponent<unknown>): void {
         select.handleOption(select.value);
         this.notifications.show('Add more is clicked').subscribe();
     }

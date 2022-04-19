@@ -69,7 +69,7 @@ export class TuiDialogComponent<O, I> {
             : this.animation;
     }
 
-    close() {
+    close(): void {
         if (this.context.required) {
             this.context.$implicit.error(REQUIRED_ERROR);
         } else {

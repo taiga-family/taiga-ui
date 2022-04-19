@@ -42,7 +42,7 @@ export class TuiDocMainComponent {
         return this.night ? 'onDark' : null;
     }
 
-    onMode(night: boolean) {
+    onMode(night: boolean): void {
         this.night = night;
         this.change$.next();
         this.storage.setItem('night', String(night));

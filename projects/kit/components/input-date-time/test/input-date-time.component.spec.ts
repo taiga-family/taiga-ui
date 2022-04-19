@@ -68,7 +68,7 @@ const DEFAULT_TESTING_MODULE_META = {
 
 const initializeEnvironment = async (
     componentClass: Type<TestComponent> = TestComponent,
-) => {
+): Promise<void> => {
     fixture = TestBed.createComponent(componentClass);
     component = fixture.componentInstance;
     pageObject = new PageObject(fixture);
@@ -526,7 +526,7 @@ function clickOnCellInsideCalendar(dayNumber: number): void {
     fixture.detectChanges();
 }
 
-function mouseDownOnTextfield() {
+function mouseDownOnTextfield(): void {
     getTextfield()!.nativeElement.dispatchEvent(
         new MouseEvent('mousedown', {bubbles: true}),
     );

@@ -16,7 +16,7 @@ export class TuiTagExample4 {
         'for awesome people',
     ];
 
-    handleTagEdited(newCaption: string, currentIndex: number) {
+    handleTagEdited(newCaption: string, currentIndex: number): void {
         this.tags = this.tags
             .map((caption, index) => (index === currentIndex ? newCaption : caption))
             .filter(Boolean);

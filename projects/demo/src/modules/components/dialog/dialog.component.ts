@@ -121,7 +121,7 @@ export class ExampleTuiDialogComponent {
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     ) {}
 
-    showDialog(content: TemplateRef<TuiDialogContext<number, number>>) {
+    showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
         const {data, label, required, closeable, dismissible, size} = this;
 
         this.dialogService

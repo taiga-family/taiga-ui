@@ -133,7 +133,7 @@ export class TuiButtonComponent
 
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 }

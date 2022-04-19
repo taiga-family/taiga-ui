@@ -346,15 +346,15 @@ export class TuiToolbarComponent {
         );
     }
 
-    onBottomFocus() {
+    onBottomFocus(): void {
         this.focusLast();
     }
 
-    onTopFocus() {
+    onTopFocus(): void {
         this.focusFirst();
     }
 
-    onArrowLeft() {
+    onArrowLeft(): void {
         const focusedIndex = this.buttons.reduce(
             (focusedIndex, button, index) => (button.focused ? index : focusedIndex),
             -1,
@@ -374,7 +374,7 @@ export class TuiToolbarComponent {
         }
     }
 
-    onArrowRight() {
+    onArrowRight(): void {
         const focusedIndex = this.buttons.reduce(
             (focusedIndex, button, index) => (button.focused ? index : focusedIndex),
             -1,
@@ -391,17 +391,17 @@ export class TuiToolbarComponent {
         }
     }
 
-    onFont(size: string) {
+    onFont(size: string): void {
         this.focusEditor();
         this.documentRef.execCommand('fontSize', false, size);
     }
 
-    onAlign(align: string) {
+    onAlign(align: string): void {
         this.focusEditor();
         this.documentRef.execCommand(align);
     }
 
-    onImage(input: HTMLInputElement) {
+    onImage(input: HTMLInputElement): void {
         const file = input.files && input.files[0];
 
         if (file) {
@@ -415,19 +415,19 @@ export class TuiToolbarComponent {
         input.value = '';
     }
 
-    onAttach() {
+    onAttach(): void {
         this.attachClicked.emit();
     }
 
-    onTeX() {
+    onTeX(): void {
         this.texClicked.emit();
     }
 
-    onLinkClick() {
+    onLinkClick(): void {
         this.focusEditor();
     }
 
-    onLink(hosted: TuiHostedDropdownComponent, url?: string) {
+    onLink(hosted: TuiHostedDropdownComponent, url?: string): void {
         hosted.open = false;
 
         if (url) {
@@ -435,7 +435,7 @@ export class TuiToolbarComponent {
         }
     }
 
-    onCode(code: string) {
+    onCode(code: string): void {
         if (this.codeOptions[0] === code) {
             this.toggleCode();
         } else {
@@ -447,78 +447,78 @@ export class TuiToolbarComponent {
         return this.tools.includes(tool);
     }
 
-    undo() {
+    undo(): void {
         this.focusEditor();
         this.documentRef.execCommand('undo');
     }
 
-    redo() {
+    redo(): void {
         this.focusEditor();
         this.documentRef.execCommand('redo');
     }
 
-    indent() {
+    indent(): void {
         this.focusEditor();
         this.documentRef.execCommand('indent');
     }
 
-    outdent() {
+    outdent(): void {
         this.focusEditor();
         this.documentRef.execCommand('outdent');
     }
 
-    insertHorizontalRule() {
+    insertHorizontalRule(): void {
         this.focusEditor();
         this.documentRef.execCommand('insertHorizontalRule');
     }
 
-    removeFormat() {
+    removeFormat(): void {
         // @bad TODO: Write our own method to remove PRE etc
         this.focusEditor();
         this.documentRef.execCommand('removeFormat');
     }
 
-    setForeColor(color: string) {
+    setForeColor(color: string): void {
         this.focusEditor();
         this.documentRef.execCommand('foreColor', false, color);
     }
 
-    setHiliteColor(color: string) {
+    setHiliteColor(color: string): void {
         this.focusEditor();
         this.documentRef.execCommand('hiliteColor', false, color);
     }
 
-    toggleBold() {
+    toggleBold(): void {
         this.focusEditor();
         this.documentRef.execCommand('bold');
     }
 
-    toggleItalic() {
+    toggleItalic(): void {
         this.focusEditor();
         this.documentRef.execCommand('italic');
     }
 
-    toggleUnderline() {
+    toggleUnderline(): void {
         this.focusEditor();
         this.documentRef.execCommand('underline');
     }
 
-    toggleStrikeThrough() {
+    toggleStrikeThrough(): void {
         this.focusEditor();
         this.documentRef.execCommand('strikeThrough');
     }
 
-    toggleOrderedList() {
+    toggleOrderedList(): void {
         this.focusEditor();
         this.documentRef.execCommand('insertOrderedList');
     }
 
-    toggleUnorderedList() {
+    toggleUnorderedList(): void {
         this.focusEditor();
         this.documentRef.execCommand('insertUnorderedList');
     }
 
-    toggleQuote() {
+    toggleQuote(): void {
         if (this.blockquote) {
             this.outdent();
         } else {
@@ -526,17 +526,17 @@ export class TuiToolbarComponent {
         }
     }
 
-    toggleSubscript() {
+    toggleSubscript(): void {
         this.focusEditor();
         this.documentRef.execCommand('subscript');
     }
 
-    toggleSuperscript() {
+    toggleSuperscript(): void {
         this.focusEditor();
         this.documentRef.execCommand('superscript');
     }
 
-    private toggleCode() {
+    private toggleCode(): void {
         this.focusEditor();
         this.documentRef.execCommand(
             'fontName',
@@ -546,7 +546,7 @@ export class TuiToolbarComponent {
     }
 
     // @bad TODO: Fix multiple issues with toggling
-    private togglePre() {
+    private togglePre(): void {
         const selection = this.documentRef.getSelection();
 
         if (!selection || selection.isCollapsed || !this.pre) {
@@ -583,12 +583,12 @@ export class TuiToolbarComponent {
         this.focusEditor();
     }
 
-    private addImage(image: string) {
+    private addImage(image: string): void {
         this.focusEditor();
         this.documentRef.execCommand('insertImage', false, image);
     }
 
-    private focusFirst() {
+    private focusFirst(): void {
         const {firstButton} = this;
 
         if (firstButton) {
@@ -596,7 +596,7 @@ export class TuiToolbarComponent {
         }
     }
 
-    private focusLast() {
+    private focusLast(): void {
         const {lastButton} = this;
 
         if (lastButton) {
@@ -604,7 +604,7 @@ export class TuiToolbarComponent {
         }
     }
 
-    private refreshRange() {
+    private refreshRange(): void {
         const selection = this.documentRef.defaultView
             ? this.documentRef.defaultView.getSelection()
             : null;
@@ -619,7 +619,7 @@ export class TuiToolbarComponent {
         }
     }
 
-    private restoreRange() {
+    private restoreRange(): void {
         const selection = this.documentRef.defaultView
             ? this.documentRef.defaultView.getSelection()
             : null;
@@ -638,7 +638,7 @@ export class TuiToolbarComponent {
         selection.addRange(this.range);
     }
 
-    private focusEditor() {
+    private focusEditor(): void {
         this.restoreRange();
 
         if (this.editor) {

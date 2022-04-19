@@ -140,11 +140,11 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
         return this.host.getBoundingClientRect();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.hintService.unregister(this);
     }
 
-    protected showTooltip() {
+    protected showTooltip(): void {
         if (this.content === '') {
             return;
         }
@@ -153,12 +153,12 @@ export class TuiHintDirective extends AbstractTuiHint implements OnDestroy {
         this.hintService.add(this);
     }
 
-    protected hideTooltip() {
+    protected hideTooltip(): void {
         this.toggleClass(false);
         this.hintService.remove(this);
     }
 
-    private toggleClass(add: boolean) {
+    private toggleClass(add: boolean): void {
         if (add) {
             this.renderer.addClass(this.elementRef.nativeElement, HINT_HOVERED_CLASS);
         } else {

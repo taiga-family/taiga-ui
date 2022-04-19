@@ -18,7 +18,7 @@ export class TuiSheetService {
         options: Partial<TuiSheetOptions> = {},
     ): Observable<G> {
         return new Observable($implicit => {
-            const completeWith = (result: G) => {
+            const completeWith = (result: G): void => {
                 $implicit.next(result);
                 $implicit.complete();
             };

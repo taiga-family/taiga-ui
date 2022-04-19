@@ -100,7 +100,7 @@ export class ExampleTuiFilterComponent {
         private readonly notifications: TuiNotificationsService,
     ) {}
 
-    onToggledItemChange(item: any) {
+    onToggledItemChange(item: any): void {
         this.notifications.show(String(item)).subscribe();
     }
 }

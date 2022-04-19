@@ -17,9 +17,15 @@ export interface TuiInputPasswordOptions {
 export type InputPasswordOptions = TuiInputPasswordOptions;
 
 // TODO: remove in ivy compilation
-export const PASSWORD_ICON_HIDE = ({$implicit}: any) =>
-    $implicit === 's' ? 'tuiIconEyeClosed' : 'tuiIconHideLarge';
-export const PASSWORD_ICON_SHOW = ({$implicit}: any) =>
+export const PASSWORD_ICON_HIDE = ({
+    $implicit,
+}: TuiContextWithImplicit<TuiSizeS | TuiSizeL>):
+    | 'tuiIconEyeClosed'
+    | 'tuiIconHideLarge' => ($implicit === 's' ? 'tuiIconEyeClosed' : 'tuiIconHideLarge');
+
+export const PASSWORD_ICON_SHOW = ({
+    $implicit,
+}: TuiContextWithImplicit<TuiSizeS | TuiSizeL>): 'tuiIconEyeOpen' | 'tuiIconShowLarge' =>
     $implicit === 's' ? 'tuiIconEyeOpen' : 'tuiIconShowLarge';
 
 /** Default values for the input password options. */

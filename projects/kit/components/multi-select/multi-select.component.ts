@@ -228,11 +228,11 @@ export class TuiMultiSelectComponent<T>
     > = handler => stringifiable =>
         typeof stringifiable === 'string' || handler(stringifiable.item);
 
-    onHoveredChange(hovered: boolean) {
+    onHoveredChange(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onSpace(event: Event) {
+    onSpace(event: Event): void {
         if (!this.editable) {
             event.preventDefault();
         }
@@ -242,7 +242,7 @@ export class TuiMultiSelectComponent<T>
         }
     }
 
-    handleOption(option: T) {
+    handleOption(option: T): void {
         const {value, identityMatcher} = this;
         const index = value.findIndex(item => identityMatcher(item, option));
 
@@ -252,7 +252,7 @@ export class TuiMultiSelectComponent<T>
         this.updateSearch(null);
     }
 
-    onEnter(event: Event) {
+    onEnter(event: Event): void {
         const {value} = this;
         const options = this.accessor ? this.accessor.getOptions() : [];
 
@@ -271,7 +271,7 @@ export class TuiMultiSelectComponent<T>
         this.updateSearch(null);
     }
 
-    onClick({nativeFocusableElement}: TuiInputTagComponent) {
+    onClick({nativeFocusableElement}: TuiInputTagComponent): void {
         if (
             this.editable &&
             this.interactive &&
@@ -282,25 +282,25 @@ export class TuiMultiSelectComponent<T>
         }
     }
 
-    onArrowClick() {
+    onArrowClick(): void {
         this.hostedDropdown?.updateOpen(!this.open);
         this.focusInput();
     }
 
-    onInput(value: ReadonlyArray<TuiStringifiableItem<T>>) {
+    onInput(value: ReadonlyArray<TuiStringifiableItem<T>>): void {
         this.updateValue(value.map(({item}) => item));
     }
 
-    onSearch(search: string | null) {
+    onSearch(search: string | null): void {
         this.open = true;
         this.updateSearch(search);
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    setDisabledState() {
+    setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
@@ -310,7 +310,7 @@ export class TuiMultiSelectComponent<T>
         return {$implicit};
     }
 
-    private updateSearch(search: string | null) {
+    private updateSearch(search: string | null): void {
         if (this.search === search) {
             return;
         }
@@ -319,7 +319,7 @@ export class TuiMultiSelectComponent<T>
         this.searchChange.emit(search);
     }
 
-    private focusInput(preventScroll: boolean = false) {
+    private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
         }

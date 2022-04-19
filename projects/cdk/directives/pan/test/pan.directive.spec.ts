@@ -17,7 +17,7 @@ describe('TuiPan directive', () => {
     class TestComponent {
         coords = [0, 0];
 
-        pan(delta: [number, number]) {
+        pan(delta: [number, number]): void {
             this.coords = delta;
         }
     }
@@ -57,7 +57,7 @@ describe('TuiPan directive', () => {
         y: number,
         element: HTMLElement,
         eventType: 'touchstart' | 'touchend' | 'touchmove',
-    ) {
+    ): void {
         const touchObj = new Touch({
             identifier: Date.now(),
             target: element,

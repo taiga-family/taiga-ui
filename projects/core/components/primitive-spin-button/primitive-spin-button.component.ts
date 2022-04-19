@@ -64,23 +64,23 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
         return this.computedDisabled || this.rightDisabled;
     }
 
-    onLeftClick() {
+    onLeftClick(): void {
         if (!this.leftComputedDisabled) {
             this.leftClick.emit();
         }
     }
 
-    onRightClick() {
+    onRightClick(): void {
         if (!this.rightComputedDisabled) {
             this.rightClick.emit();
         }
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 }

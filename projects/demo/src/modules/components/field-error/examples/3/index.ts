@@ -31,15 +31,15 @@ export class TuiFieldErrorExample3 {
         ),
     });
 
-    get formData() {
+    get formData(): FormArray {
         return <FormArray>this.testForm.get('phones');
     }
 
-    addPhone() {
+    addPhone(): void {
         this.formData.push(new FormControl('', this.addValidators()));
     }
 
-    removePhone(index: number) {
+    removePhone(index: number): void {
         this.formData.removeAt(index);
 
         let n = 0;

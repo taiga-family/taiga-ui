@@ -82,18 +82,18 @@ export class TuiDropdownContextDirective
     }
 
     @HostListener('click')
-    onHostClick() {
+    onHostClick(): void {
         this.closeDropdownBox();
     }
 
     @HostListener('contextmenu.prevent', ['$event.clientX', '$event.clientY'])
-    onContextMenu(x: number, y: number) {
+    onContextMenu(x: number, y: number): void {
         this.closeDropdownBox();
         this.openDropdown(x, y);
     }
 
     @HostListener('document:contextmenu', ['$event.target'])
-    onAnotherContextOpen(target: HTMLElement) {
+    onAnotherContextOpen(target: HTMLElement): void {
         const isAnotherContextOpened = !this.elementRef.nativeElement.contains(target);
 
         if (isAnotherContextOpened) {
@@ -103,7 +103,7 @@ export class TuiDropdownContextDirective
 
     @HostListener('document:keydown.arrowDown', ['$event', 'true'])
     @HostListener('document:keydown.arrowUp', ['$event', 'false'])
-    onArrow(event: KeyboardEvent, down: boolean) {
+    onArrow(event: KeyboardEvent, down: boolean): void {
         const activeElement = getNativeFocused(this.documentRef);
         const focusInside = activeElement && this.activeZone.contains(activeElement);
 
@@ -126,7 +126,7 @@ export class TuiDropdownContextDirective
     }
 
     @HostListener('document:keydown.esc', ['$event'])
-    onKeyDownEsc(event: KeyboardEvent) {
+    onKeyDownEsc(event: KeyboardEvent): void {
         if (!this.dropdownContent) {
             return;
         }

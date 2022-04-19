@@ -26,7 +26,7 @@ export class TuiMobileDialogExample1 {
         private readonly notifications: TuiNotificationsService,
     ) {}
 
-    show() {
+    show(): void {
         const actions = ['No thanks', 'Remind me later', 'Rate now'];
 
         this.dialogService

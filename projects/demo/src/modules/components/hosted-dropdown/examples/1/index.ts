@@ -18,7 +18,7 @@ export class TuiHostedDropdownExample1 {
 
     open = false;
 
-    onClick() {
+    onClick(): void {
         this.open = false;
 
         if (this.component && this.component.nativeFocusableElement) {

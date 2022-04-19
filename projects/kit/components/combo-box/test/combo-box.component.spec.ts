@@ -6,6 +6,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
+    TuiIdentityMatcher,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
@@ -88,7 +89,7 @@ describe('ComboBox', () => {
             return this.defaultInputs ? TUI_DEFAULT_STRINGIFY : stringify;
         }
 
-        get identityMatcher() {
+        get identityMatcher(): TuiIdentityMatcher<Beast> {
             return this.defaultInputs ? TUI_DEFAULT_IDENTITY_MATCHER : identityMatcher;
         }
     }

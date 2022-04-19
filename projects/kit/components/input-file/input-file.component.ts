@@ -181,15 +181,15 @@ export class TuiInputFileComponent
         return !!this.rejectedFiles.length || !!this.arrayValue.length;
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
@@ -198,7 +198,7 @@ export class TuiInputFileComponent
         input: HTMLInputElement,
         texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
         units: [string, string, string],
-    ) {
+    ): void {
         this.processSelectedFiles(input.files, texts, units);
         input.value = '';
     }
@@ -207,21 +207,21 @@ export class TuiInputFileComponent
         event: DataTransfer,
         texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
         units: [string, string, string],
-    ) {
+    ): void {
         this.processSelectedFiles(event.files, texts, units);
     }
 
-    onDragOver(dataTransfer: DataTransfer | null) {
+    onDragOver(dataTransfer: DataTransfer | null): void {
         this.dataTransfer = dataTransfer;
     }
 
-    removeFile(removedFile: TuiFileLike) {
+    removeFile(removedFile: TuiFileLike): void {
         this.updateValue(
             this.multiple ? this.arrayValue.filter(file => file !== removedFile) : null,
         );
     }
 
-    removeRejectedFile(removedFile: TuiFileLike) {
+    removeRejectedFile(removedFile: TuiFileLike): void {
         this.updateRejectedFiles(this.rejectedFiles.filter(file => file !== removedFile));
     }
 
@@ -313,7 +313,7 @@ export class TuiInputFileComponent
         files: FileList | null,
         texts: Record<'maxSizeRejectionReason' | 'formatRejectionReason', string>,
         units: [string, string, string],
-    ) {
+    ): void {
         // IE11 after selecting a file through the open dialog generates a second event passing an empty FileList.
         if (files === null || files.length === 0) {
             return;
@@ -366,7 +366,7 @@ export class TuiInputFileComponent
         );
     }
 
-    private updateRejectedFiles(rejectedFiles: readonly TuiFileLike[]) {
+    private updateRejectedFiles(rejectedFiles: readonly TuiFileLike[]): void {
         this.rejectedFiles = rejectedFiles;
         this.rejectedFilesChange.emit(rejectedFiles);
     }

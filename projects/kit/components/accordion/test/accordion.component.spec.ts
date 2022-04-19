@@ -108,7 +108,7 @@ describe('Accordion', () => {
 
         closeOthers = true;
         single = true;
-        borders = 'all';
+        borders: 'all' | 'top-bottom' | null = 'all';
         rounded = true;
         showArrow = true;
         open = false;
@@ -321,7 +321,7 @@ describe('Accordion', () => {
         );
     });
 
-    function sendKeydown(key: KeyboardEvent) {
+    function sendKeydown(key: KeyboardEvent): void {
         if (document.activeElement) {
             document.activeElement.dispatchEvent(key);
         }
@@ -340,7 +340,7 @@ describe('Accordion', () => {
         );
     }
 
-    function accordionHeaderClick(i: number) {
+    function accordionHeaderClick(i: number): void {
         getAccordionItemHeader(i)!.nativeElement.click();
     }
 

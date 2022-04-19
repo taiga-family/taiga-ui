@@ -27,7 +27,7 @@ export class TuiNotificationsExampleComponent2 {
         private readonly notificationsService: TuiNotificationsService,
     ) {}
 
-    showWithdrawAlert() {
+    showWithdrawAlert(): void {
         this.notificationsService
             .show(this.withdrawTemplate || '', {
                 label: 'A template sample',
@@ -37,7 +37,7 @@ export class TuiNotificationsExampleComponent2 {
             .subscribe();
     }
 
-    showDepositAlert() {
+    showDepositAlert(): void {
         this.notificationsService
             .show(this.depositTemplate || '', {
                 label: 'A template sample',
@@ -47,11 +47,11 @@ export class TuiNotificationsExampleComponent2 {
             .subscribe();
     }
 
-    withdraw() {
+    withdraw(): void {
         this.money -= 100;
     }
 
-    deposit() {
+    deposit(): void {
         this.money += 100;
     }
 }

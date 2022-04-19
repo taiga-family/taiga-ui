@@ -13,7 +13,7 @@ import {TuiTextAreaComponent} from './text-area.component';
     ],
 })
 export class TuiTextAreaDirective extends TuiAbstractTextfieldHost<TuiTextAreaComponent> {
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 }

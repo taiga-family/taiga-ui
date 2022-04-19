@@ -5,6 +5,11 @@ const TRANSITION = '{{duration}}ms ease-in-out';
 const DURATION = {params: {duration: 300}};
 const STAGGER = 300;
 
+export interface TuiDurationOptions {
+    value: string;
+    params: {duration: number};
+}
+
 export const tuiHeightCollapse = trigger('tuiHeightCollapse', [
     transition(
         ':enter',

@@ -16,15 +16,15 @@ export class TuiPresentExample1 {
 
     hovered = false;
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.hovered = hovered;
     }
 
-    onCSS(visible: boolean) {
+    onCSS(visible: boolean): void {
         this.counterCSS += visible ? 1 : -1;
     }
 
-    onIf(visible: boolean) {
+    onIf(visible: boolean): void {
         this.counterIf += visible ? 1 : -1;
     }
 }

@@ -9,7 +9,7 @@ import {TuiDocumentSelectionException} from '@taiga-ui/cdk';
  * @param documentRef document to execute on
  * @param text text to be inserted
  */
-export function tuiInsertText(documentRef: Document, text: string) {
+export function tuiInsertText(documentRef: Document, text: string): void {
     if (documentRef.queryCommandSupported('insertText')) {
         documentRef.execCommand('insertText', false, text);
 

@@ -17,7 +17,7 @@ export class TuiComboBoxStrictDirective<T> {
     ) {}
 
     @HostListener('input')
-    onInput() {
+    onInput(): void {
         this.comboBox.updateValue(
             this.strict || this.comboBox.search === '' ? null : this.comboBox.search,
         );

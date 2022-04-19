@@ -69,7 +69,7 @@ export class TuiLineDaysChartHintDirective {
         return this.computeContext(day, this.charts);
     }
 
-    raise(day: TuiDay) {
+    raise(day: TuiDay): void {
         const current = this.charts
             .map(({value}) => find(value, day))
             .filter(([_, value]) => !isNaN(value));

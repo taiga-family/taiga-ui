@@ -56,7 +56,7 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
         private readonly tableBarsService: TuiTableBarsService,
     ) {}
 
-    showTableBar() {
+    showTableBar(): void {
         this.subscription.unsubscribe();
 
         this.subscription = this.tableBarsService
@@ -69,11 +69,11 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
             .subscribe();
     }
 
-    destroy() {
+    destroy(): void {
         this.destroy$.next();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.destroy$.next();
         this.destroy$.complete();
     }

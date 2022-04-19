@@ -59,7 +59,7 @@ export class TuiTableDirective<T> extends TuiController {
     @tuiDefaultProp()
     sorter: TuiComparator<T> = () => 0;
 
-    updateSorter(sorter: TuiComparator<T> | null) {
+    updateSorter(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
             this.direction = this.direction === 1 ? -1 : 1;
             this.directionChange.emit(this.direction);
@@ -73,7 +73,7 @@ export class TuiTableDirective<T> extends TuiController {
         this.change$.next();
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.changeDetectorRef.detectChanges();
     }
 }

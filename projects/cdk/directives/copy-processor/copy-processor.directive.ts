@@ -16,7 +16,7 @@ export class TuiCopyProcessorDirective {
     constructor(@Inject(WINDOW) private readonly windowRef: Window) {}
 
     @HostListener('copy.prevent', ['$event'])
-    onCopy(event: ClipboardEvent) {
+    onCopy(event: ClipboardEvent): void {
         const selection = this.windowRef.getSelection();
 
         if (selection) {

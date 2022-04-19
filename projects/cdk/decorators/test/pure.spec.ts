@@ -63,12 +63,12 @@ describe('tuiPure', () => {
         class TestClass {
             sideEffect = 0;
 
-            get range() {
+            get range(): number[] {
                 return this.getRange();
             }
 
             @tuiPure
-            getRange() {
+            getRange(): number[] {
                 this.sideEffect++;
 
                 return Array.from({length: 5}, (_item, index: number) => index + 1);
@@ -88,7 +88,7 @@ describe('tuiPure', () => {
             sideEffect = 0;
 
             @tuiPure
-            voidFn() {
+            voidFn(): void {
                 this.sideEffect++;
 
                 // necessary for the test

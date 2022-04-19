@@ -59,7 +59,7 @@ export class TuiTreeComponent<T> implements DoCheck {
     @Input()
     content: PolymorpheusContent<TuiTreeContext<T>> = ({$implicit}) => String($implicit);
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         this.check$.next();
         this.item?.ngDoCheck();
         this.child?.ngDoCheck();

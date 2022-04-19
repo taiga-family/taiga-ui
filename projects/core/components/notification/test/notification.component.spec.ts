@@ -41,7 +41,7 @@ describe('Notification', () => {
         hasIcon = true;
         status: TuiNotification = TuiNotification.Info;
 
-        onClose() {}
+        onClose(): void {}
     }
 
     let fixture: ComponentFixture<TestComponent>;

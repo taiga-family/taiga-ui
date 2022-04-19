@@ -23,7 +23,7 @@ export class TuiSheetBarComponent {
         @Inject(NgZone) private readonly ngZone: NgZone,
     ) {}
 
-    private get stop() {
+    private get stop(): number {
         return this.sheet.stops[0] ?? 0;
     }
 }

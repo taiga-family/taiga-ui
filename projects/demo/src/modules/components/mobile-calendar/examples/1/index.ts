@@ -72,7 +72,7 @@ export class TuiMobileCalendarExample1 {
         return `${months[month]} ${day}, ${year}`;
     }
 
-    onClick() {
+    onClick(): void {
         this.dialog$.subscribe(value => {
             this.control.setValue(value);
         });

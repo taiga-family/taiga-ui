@@ -39,10 +39,10 @@ export class TuiCalendarSheetPipe implements PipeTransform {
                     firstDayOfWeek: this.firstDayOfWeek,
                 });
 
-                const isPrevMonthDay = (day: TuiDay, relativeToMonth = month) =>
+                const isPrevMonthDay = (day: TuiDay, relativeToMonth = month): boolean =>
                     day.year < relativeToMonth.year || day.month < relativeToMonth.month;
 
-                const isNextMonthDay = (day: TuiDay, relativeToMonth = month) =>
+                const isNextMonthDay = (day: TuiDay, relativeToMonth = month): boolean =>
                     day.year > relativeToMonth.year || day.month > relativeToMonth.month;
 
                 if (isPrevMonthDay(day) && !showAdjacentDays) {

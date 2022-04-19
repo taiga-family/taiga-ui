@@ -89,11 +89,11 @@ export class TuiPreviewComponent {
         readonly texts$: Observable<LanguagePreview['previewTexts']>,
     ) {}
 
-    rotate() {
+    rotate(): void {
         this.rotation$.next(this.rotation$.value - ROTATION_ANGLE);
     }
 
-    onPan(delta: readonly [number, number]) {
+    onPan(delta: readonly [number, number]): void {
         this.coordinates$.next(
             this.getGuardedCoordinates(
                 this.coordinates$.value[0] + delta[0],
@@ -102,19 +102,19 @@ export class TuiPreviewComponent {
         );
     }
 
-    onMutation(contentWrapper: HTMLElement) {
+    onMutation(contentWrapper: HTMLElement): void {
         const {clientWidth, clientHeight} = contentWrapper;
 
         this.refresh(clientWidth, clientHeight);
     }
 
-    onZoom({clientX, clientY, delta}: TuiZoom) {
+    onZoom({clientX, clientY, delta}: TuiZoom): void {
         if (this.zoomable) {
             this.processZoom(clientX, clientY, delta);
         }
     }
 
-    onResize(contentResizeEntries: readonly ResizeObserverEntry[]) {
+    onResize(contentResizeEntries: readonly ResizeObserverEntry[]): void {
         if (contentResizeEntries.length === 0) {
             return;
         }
@@ -124,7 +124,7 @@ export class TuiPreviewComponent {
         this.refresh(width, height);
     }
 
-    reset() {
+    reset(): void {
         this.zoom$.next(this.minZoom);
         this.coordinates$.next(EMPTY_COORDINATES);
     }
@@ -158,7 +158,7 @@ export class TuiPreviewComponent {
             : 1;
     }
 
-    private refresh(width: number, height: number) {
+    private refresh(width: number, height: number): void {
         this.width = width;
         this.height = height;
         this.minZoom = this.calculateMinZoom(
@@ -172,7 +172,7 @@ export class TuiPreviewComponent {
         this.rotation$.next(0);
     }
 
-    private processZoom(clientX: number, clientY: number, delta: number) {
+    private processZoom(clientX: number, clientY: number, delta: number): void {
         const oldScale = this.zoom$.value;
         const newScale = clamp(oldScale + delta, this.minZoom, 2);
 

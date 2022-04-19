@@ -1,4 +1,4 @@
-import {enableProdMode} from '@angular/core';
+import {enableProdMode, NgModuleRef} from '@angular/core';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 import {environment} from './environments/environment';
@@ -9,7 +9,8 @@ if (environment.production) {
     enableProdMode();
 }
 
-const bootstrap = async () => platformBrowserDynamic().bootstrapModule(AppBrowserModule);
+const bootstrap = async (): Promise<NgModuleRef<AppBrowserModule>> =>
+    platformBrowserDynamic().bootstrapModule(AppBrowserModule);
 
 if (environment.hmr) {
     if ((module as any)['hot']) {

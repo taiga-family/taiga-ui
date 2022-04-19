@@ -98,7 +98,7 @@ export class TuiMultiSelectGroupComponent<T> {
         );
     }
 
-    onClick(checked: boolean | null) {
+    onClick(checked: boolean | null): void {
         if (!this.control.control) {
             return;
         }

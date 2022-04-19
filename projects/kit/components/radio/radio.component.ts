@@ -125,25 +125,25 @@ export class TuiRadioComponent<T>
         return !this.readOnly && this.computedFocusable;
     }
 
-    onChecked(checked: boolean) {
+    onChecked(checked: boolean): void {
         if (checked) {
             this.updateValue(this.item !== undefined ? this.item : this.fallbackValue);
         }
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 

@@ -38,7 +38,7 @@ export class TuiSvgDefsHostComponent implements OnInit {
     }
 
     // @bad TODO: Looks like it could be async piped but it was probably written like that for a reason
-    ngOnInit() {
+    ngOnInit(): void {
         this.svgService.items$.pipe(takeUntil(this.destroy$)).subscribe(defsMap => {
             this.items = defsMap.values();
             this.changeDetectorRef.detectChanges();

@@ -123,11 +123,11 @@ export class TuiFileComponent {
         return this.calculateFileSize$(this.file, this.units$);
     }
 
-    onRemoveClick() {
+    onRemoveClick(): void {
         this.removed.emit();
     }
 
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.focused = focusVisible;
     }
 
@@ -170,7 +170,7 @@ export class TuiFileComponent {
     }
 
     @tuiPure
-    private getType(file: TuiFileLike) {
+    private getType(file: TuiFileLike): string {
         return `.${file.name.split('.').pop()}` || '';
     }
 }

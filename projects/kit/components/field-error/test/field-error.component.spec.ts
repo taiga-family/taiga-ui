@@ -86,11 +86,11 @@ describe('FieldError', () => {
                 formArray: new FormArray([new FormControl('')], [arrayValidator]),
             });
 
-            get formData() {
+            get formData(): FormArray {
                 return <FormArray>this.testForm.get('formArray');
             }
 
-            addItem() {
+            addItem(): void {
                 this.formData.push(new FormControl(''));
             }
         }

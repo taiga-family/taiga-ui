@@ -27,6 +27,7 @@ export function withPredicate<
  * static 'with' method. Use {@link withPredicate} decorator
  * to monkey-patch default static 'with' method.
  */
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const HarnessWith = <T>(hostSelector: string) =>
     class extends ComponentHarness {
         static hostSelector = hostSelector;

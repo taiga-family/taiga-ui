@@ -18,7 +18,9 @@ export class TuiInputSliderExample5 {
     readonly controlWithMinLabel = new FormControl(this.min);
     readonly controlWithMaxLabel = new FormControl(this.max);
 
-    readonly customLabel = ({$implicit}: TuiContextWithImplicit<number>) => {
+    readonly customLabel = ({
+        $implicit,
+    }: TuiContextWithImplicit<number>): string | number => {
         switch ($implicit) {
             case this.max:
                 return "Digits can't describe my love!";

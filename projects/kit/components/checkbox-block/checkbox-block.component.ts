@@ -102,23 +102,23 @@ export class TuiCheckboxBlockComponent
         return this.checked ? TuiAppearance.Primary : TuiAppearance.Secondary;
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 
-    onModelChange(value: boolean) {
+    onModelChange(value: boolean): void {
         this.updateValue(value);
     }
 }

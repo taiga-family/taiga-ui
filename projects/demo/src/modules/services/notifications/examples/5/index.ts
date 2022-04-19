@@ -57,11 +57,11 @@ export class TuiNotificationsExampleComponent5 {
             .pipe(takeUntil(router.events));
     }
 
-    showNotification() {
+    showNotification(): void {
         this.notification.subscribe();
     }
 
-    showNotificationWithCustomLabel() {
+    showNotificationWithCustomLabel(): void {
         this.notificationWithCustomLabel.subscribe();
     }
 }

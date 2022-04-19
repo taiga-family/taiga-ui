@@ -15,7 +15,7 @@ export class TuiDropdownContextExample3 {
         reportText: new FormControl('Misspell HERE!'),
     });
 
-    report() {
+    report(): void {
         console.info(this.testForm.value);
     }
 }

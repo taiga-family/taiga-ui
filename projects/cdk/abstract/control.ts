@@ -131,7 +131,7 @@ export abstract class AbstractTuiControl<T>
         return this.fromControlValue(controlValue);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (!this.ngControl?.valueChanges || !this.ngControl?.statusChanges) {
             return;
         }
@@ -141,30 +141,30 @@ export abstract class AbstractTuiControl<T>
             .subscribe(() => this.refreshLocalValue(this.safeCurrentValue));
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.destroy$.next();
         this.destroy$.complete();
     }
 
-    checkControlUpdate() {
+    checkControlUpdate(): void {
         this.changeDetectorRef.markForCheck();
     }
 
-    registerOnChange(onChange: (value: T | unknown) => void) {
+    registerOnChange(onChange: (value: T | unknown) => void): void {
         this.onChange = (componentValue: T) => {
             onChange(this.toControlValue(componentValue));
         };
     }
 
-    registerOnTouched(onTouched: () => void) {
+    registerOnTouched(onTouched: () => void): void {
         this.onTouched = onTouched;
     }
 
-    setDisabledState() {
+    setDisabledState(): void {
         this.checkControlUpdate();
     }
 
-    writeValue(value: T | null) {
+    writeValue(value: T | null): void {
         const controlValue =
             this.ngControl instanceof NgModel && this.previousInternalValue === undefined
                 ? this.ngControl.model
@@ -173,7 +173,7 @@ export abstract class AbstractTuiControl<T>
         this.refreshLocalValue(this.fromControlValue(controlValue));
     }
 
-    protected updateFocused(focused: boolean) {
+    protected updateFocused(focused: boolean): void {
         if (!focused) {
             this.controlMarkAsTouched();
         }
@@ -181,7 +181,7 @@ export abstract class AbstractTuiControl<T>
         super.updateFocused(focused);
     }
 
-    protected updateValue(value: T) {
+    protected updateValue(value: T): void {
         if (this.disabled || this.valueIdenticalComparator(this.value, value)) {
             return;
         }
@@ -201,17 +201,17 @@ export abstract class AbstractTuiControl<T>
         return (this.ngControl && extractor(this.ngControl)) ?? defaultFieldValue;
     }
 
-    private controlMarkAsTouched() {
+    private controlMarkAsTouched(): void {
         this.onTouched();
         this.checkControlUpdate();
     }
 
-    private controlSetValue(value: T) {
+    private controlSetValue(value: T): void {
         this.onChange(value);
         this.checkControlUpdate();
     }
 
-    private refreshLocalValue(value: T | null) {
+    private refreshLocalValue(value: T | null): void {
         this.previousInternalValue = value;
         this.checkControlUpdate();
     }

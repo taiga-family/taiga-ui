@@ -33,11 +33,11 @@ export class TuiDocHeaderComponent {
         @Inject(TuiSwipeService) private readonly swipes$: TuiSwipeService,
     ) {}
 
-    onClick() {
+    onClick(): void {
         this.stream$.next(true);
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         if (!active) {
             this.stream$.next(false);
         }

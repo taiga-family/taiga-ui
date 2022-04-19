@@ -20,7 +20,7 @@ export class TuiSheetExample5 {
         stops: ['4.5rem'],
     };
 
-    toggle() {
+    toggle(): void {
         this.open = !this.open;
     }
 

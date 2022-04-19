@@ -71,17 +71,17 @@ export class ExampleTuiDropdownComponent {
 
     open = false;
 
-    onClick() {
+    onClick(): void {
         this.open = !this.open;
     }
 
-    onObscured(obscured: boolean) {
+    onObscured(obscured: boolean): void {
         if (obscured) {
             this.open = false;
         }
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.open = active && this.open;
     }
 }

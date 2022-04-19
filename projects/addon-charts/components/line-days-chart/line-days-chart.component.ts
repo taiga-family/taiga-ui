@@ -141,7 +141,7 @@ export class TuiLineDaysChartComponent {
         return index - offset;
     }
 
-    onHovered(day: TuiDay | null) {
+    onHovered(day: TuiDay | null): void {
         if (!day) {
             this.charts.forEach(chart => chart.onHovered(NaN));
 
@@ -163,7 +163,7 @@ export class TuiLineDaysChartComponent {
         });
     }
 
-    raise(index: number, {value}: TuiLineChartComponent) {
+    raise(index: number, {value}: TuiLineChartComponent): void {
         const x = value[index][0];
         const month = this.getMonth(x);
 

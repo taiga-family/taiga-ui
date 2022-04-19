@@ -26,7 +26,7 @@ export class TuiBadgedContentExample2 {
         return this.contentTop === 50 ? '' : '';
     }
 
-    onClick() {
+    onClick(): void {
         this.contentTop++;
     }
 }

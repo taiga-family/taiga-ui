@@ -136,7 +136,7 @@ export class TuiSvgComponent {
         );
     }
 
-    onError(message: string = MISSING_EXTERNAL_ICON) {
+    onError(message: string = MISSING_EXTERNAL_ICON): void {
         const {icon} = this;
         const event = tuiCustomEvent<TuiIconError>(
             TUI_ICON_ERROR,

@@ -26,7 +26,7 @@ export class TuiDocCopyComponent {
         );
     }
 
-    onClick() {
+    onClick(): void {
         this.copy$.next();
     }
 }

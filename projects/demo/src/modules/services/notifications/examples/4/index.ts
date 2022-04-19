@@ -43,7 +43,7 @@ export class TuiNotificationsExampleComponent4 {
             );
     }
 
-    showNotification() {
+    showNotification(): void {
         this.notification.subscribe();
     }
 }

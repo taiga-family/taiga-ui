@@ -37,7 +37,7 @@ export class TuiLoaderDirective {
             });
     }
 
-    private animate(delta: number) {
+    private animate(delta: number): void {
         if (this.strokeDasharray < 0) {
             this.strokeDasharray = PERIMETER * 2;
             this.strokeDashoffset = 0;

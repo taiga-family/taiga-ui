@@ -89,7 +89,7 @@ export class TuiInputMonthComponent
             : 'tuiIconCalendar';
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         if (value) {
             return;
         }
@@ -98,33 +98,33 @@ export class TuiInputMonthComponent
         this.onOpenChange(true);
     }
 
-    onMonthClick(month: TuiMonth) {
+    onMonthClick(month: TuiMonth): void {
         this.updateValue(month);
         this.close();
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onOpenChange(open: boolean) {
+    onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    toggle() {
+    toggle(): void {
         this.open = !this.open;
     }
 
-    setDisabledState() {
+    setDisabledState(): void {
         super.setDisabledState();
         this.close();
     }
 
-    private close() {
+    private close(): void {
         this.open = false;
     }
 }

@@ -224,11 +224,11 @@ export class TuiPaginationComponent
             : TuiAppearance.Secondary;
     }
 
-    onElementClick(index: number) {
+    onElementClick(index: number): void {
         this.updateIndex(index);
     }
 
-    onElementKeyDownArrowLeft(element: TuiButtonComponent) {
+    onElementKeyDownArrowLeft(element: TuiButtonComponent): void {
         if (element === this.elements.first) {
             return;
         }
@@ -242,7 +242,7 @@ export class TuiPaginationComponent
         }
     }
 
-    onElementKeyDownArrowRight(element: TuiButtonComponent) {
+    onElementKeyDownArrowRight(element: TuiButtonComponent): void {
         if (element === this.elements.last) {
             return;
         }
@@ -256,12 +256,12 @@ export class TuiPaginationComponent
         }
     }
 
-    onArrowClick(direction: TuiHorizontalDirection) {
+    onArrowClick(direction: TuiHorizontalDirection): void {
         this.tryChangeTo(direction);
         this.focusActive();
     }
 
-    onActiveZone(focused: boolean) {
+    onActiveZone(focused: boolean): void {
         this.updateFocused(focused);
     }
 
@@ -310,13 +310,13 @@ export class TuiPaginationComponent
         return !this.itemsFit && index > this.maxHalfLength;
     }
 
-    private tryChangeTo(direction: TuiHorizontalDirection) {
+    private tryChangeTo(direction: TuiHorizontalDirection): void {
         this.updateIndex(
             clamp(this.index + horizontalDirectionToNumber(direction), 0, this.lastIndex),
         );
     }
 
-    private focusActive() {
+    private focusActive(): void {
         const {nativeFocusableElement} = this;
 
         if (nativeFocusableElement) {
@@ -324,7 +324,7 @@ export class TuiPaginationComponent
         }
     }
 
-    private updateIndex(index: number) {
+    private updateIndex(index: number): void {
         if (this.index === index) {
             return;
         }

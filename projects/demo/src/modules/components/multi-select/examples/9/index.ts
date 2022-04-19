@@ -30,7 +30,7 @@ export class TuiMultiSelectExample9 {
     showDialog(
         content: PolymorpheusContent<TuiDialogContext>,
         textFieldSize: TuiSizeL | TuiSizeS,
-    ) {
+    ): void {
         this.dialogService.open(content, {data: {textFieldSize}}).subscribe();
     }
 }

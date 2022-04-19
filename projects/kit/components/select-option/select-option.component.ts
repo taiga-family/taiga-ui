@@ -49,7 +49,7 @@ export class TuiSelectOptionComponent<T> implements OnInit {
         return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (isPresent(this.option.value) && this.host.checkOption) {
             this.host.checkOption(this.option.value);
         }

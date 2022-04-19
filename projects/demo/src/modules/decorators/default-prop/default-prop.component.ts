@@ -13,7 +13,7 @@ export class ExampleTuiDefaultPropComponent {
 
     quantity: number | undefined = 10;
 
-    setUndefined() {
+    setUndefined(): void {
         this.quantity = undefined;
     }
 }

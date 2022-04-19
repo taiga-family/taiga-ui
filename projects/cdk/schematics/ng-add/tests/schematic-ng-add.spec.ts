@@ -209,7 +209,9 @@ export class AppModule {}
     });
 });
 
-function createAngularJson({stylesExist}: {stylesExist: boolean} = {stylesExist: false}) {
+function createAngularJson(
+    {stylesExist}: {stylesExist: boolean} = {stylesExist: false},
+): void {
     createSourceFile(
         'angular.json',
         `
@@ -240,7 +242,7 @@ function createAngularJson({stylesExist}: {stylesExist: boolean} = {stylesExist:
     );
 }
 
-function createMainFiles() {
+function createMainFiles(): void {
     createSourceFile(
         'test/main.ts',
         `import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';

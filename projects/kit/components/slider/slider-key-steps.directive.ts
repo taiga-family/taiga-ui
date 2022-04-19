@@ -87,11 +87,11 @@ export class TuiSliderKeyStepsDirective
     }
 
     @HostListener('change')
-    updateControlValue() {
+    updateControlValue(): void {
         this.updateValue(this.controlValue);
     }
 
-    writeValue(controlValue: number | null) {
+    writeValue(controlValue: number | null): void {
         if (controlValue === null) {
             return;
         }

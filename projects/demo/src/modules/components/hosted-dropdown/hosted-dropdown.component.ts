@@ -102,12 +102,12 @@ export class ExampleTuiHostedDropdownComponent {
         return this.canOpenSelected === true || this.input.length > 2;
     }
 
-    onInput(input: string) {
+    onInput(input: string): void {
         this.input = input;
         this.open = this.canOpen;
     }
 
-    onClick() {
+    onClick(): void {
         this.open = false;
     }
 }

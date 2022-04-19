@@ -58,7 +58,7 @@ export class TuiSidebarComponent implements DoCheck {
         return this.directive.autoWidth;
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         this.directive.check();
     }
 }

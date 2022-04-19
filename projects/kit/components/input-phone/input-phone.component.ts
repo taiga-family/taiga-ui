@@ -161,11 +161,11 @@ export class TuiInputPhoneComponent
         return this.computedValue !== this.countryCode && this.textfieldCleaner.cleaner;
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onDrop(event: DragEvent) {
+    onDrop(event: DragEvent): void {
         if (!event.dataTransfer) {
             return;
         }
@@ -174,11 +174,11 @@ export class TuiInputPhoneComponent
         event.preventDefault();
     }
 
-    onPaste(event: Event) {
+    onPaste(event: Event): void {
         this.setValueWithoutPrefix(getClipboardDataText(event as ClipboardEvent));
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.updateFocused(active);
 
         if (active && !this.computedValue && !this.readOnly && !this.allowText) {
@@ -196,7 +196,7 @@ export class TuiInputPhoneComponent
         }
     }
 
-    onBackspace(event: Event) {
+    onBackspace(event: Event): void {
         const target = event.target as HTMLInputElement;
 
         if (
@@ -207,7 +207,7 @@ export class TuiInputPhoneComponent
         }
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         value = value === '' ? this.countryCode : value;
 
         const parsed = isText(value) ? value : value.replace(TUI_MASK_SYMBOLS_REGEXP, '');
@@ -217,19 +217,19 @@ export class TuiInputPhoneComponent
         this.open = true;
     }
 
-    handleOption(item: string) {
+    handleOption(item: string): void {
         this.focusInput();
         this.updateValue(item);
         this.updateSearch('');
         this.open = false;
     }
 
-    setDisabledState() {
+    setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
 
-    writeValue(value: string | null) {
+    writeValue(value: string | null): void {
         super.writeValue(value);
         this.updateSearch('');
     }
@@ -270,7 +270,7 @@ export class TuiInputPhoneComponent
         return !!this.search && isText(this.search);
     }
 
-    private setCaretPosition() {
+    private setCaretPosition(): void {
         if (this.caretIsInForbiddenArea && !!this.nativeFocusableElement) {
             this.nativeFocusableElement.setSelectionRange(
                 this.nonRemovableLength,
@@ -279,7 +279,7 @@ export class TuiInputPhoneComponent
         }
     }
 
-    private setValueWithoutPrefix(value: string) {
+    private setValueWithoutPrefix(value: string): void {
         if (this.readOnly) {
             return;
         }
@@ -319,13 +319,13 @@ export class TuiInputPhoneComponent
         );
     }
 
-    private focusInput() {
+    private focusInput(): void {
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement, true, true);
         }
     }
 
-    private updateSearch(search: string) {
+    private updateSearch(search: string): void {
         if (this.search === search) {
             return;
         }
@@ -334,7 +334,7 @@ export class TuiInputPhoneComponent
         this.searchChange.emit(search);
     }
 
-    private updateValueWithNewCountryCode(newCountryCode: string) {
+    private updateValueWithNewCountryCode(newCountryCode: string): void {
         if (!this.isTextValue) {
             this.updateValue(this.value.replace(this.countryCode, newCountryCode));
         }

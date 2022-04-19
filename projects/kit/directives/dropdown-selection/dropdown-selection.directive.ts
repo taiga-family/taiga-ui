@@ -196,7 +196,7 @@ export class TuiDropdownSelectionDirective
         };
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.closeDropdownBox();
 
         if (this.ghost) {
@@ -235,7 +235,7 @@ export class TuiDropdownSelectionDirective
     /**
      * Toggle dropdown visibility (has to be in ngZone.run because it could be initiated inside iframe in Editor)
      */
-    private toggleDropdownBox(visible: boolean) {
+    private toggleDropdownBox(visible: boolean): void {
         this.ngZone.run(() => {
             if (visible) {
                 this.openDropdownBox();

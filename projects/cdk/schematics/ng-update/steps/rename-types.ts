@@ -2,13 +2,13 @@ import {getNamedImportReferences} from '../../utils/get-named-import-references'
 import {Node} from 'ng-morph';
 import {TYPES_TO_RENAME} from '../constants/types';
 
-export function renameTypes() {
+export function renameTypes(): void {
     TYPES_TO_RENAME.forEach(({from, to, moduleSpecifier}) => {
         renameType(from, to, moduleSpecifier);
     });
 }
 
-function renameType(from: string, to: string, moduleSpecifier?: string | string[]) {
+function renameType(from: string, to: string, moduleSpecifier?: string | string[]): void {
     const references = getNamedImportReferences(from, moduleSpecifier);
 
     for (let ref of references) {

@@ -26,7 +26,7 @@ export function ngAdd(options: Schema): Rule {
     };
 }
 
-function addDependencies(tree: Tree, options: Schema) {
+function addDependencies(tree: Tree, options: Schema): void {
     const packages = [...MAIN_PACKAGES, ...options.addons];
 
     packages.forEach(pack => {
@@ -57,7 +57,7 @@ function addDependencies(tree: Tree, options: Schema) {
     }
 }
 
-function addAngularCdkDep(tree: Tree) {
+function addAngularCdkDep(tree: Tree): void {
     const angularCore = getPackageJsonDependency(tree, '@angular/core')?.version;
 
     if (!angularCore) {

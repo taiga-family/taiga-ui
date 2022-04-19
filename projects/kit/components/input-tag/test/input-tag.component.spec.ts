@@ -458,7 +458,7 @@ describe('InputTag', () => {
     testTooltip(testContext);
 });
 
-function getPlaceholderText<T>(fixture: ComponentFixture<T>) {
+function getPlaceholderText<T>(fixture: ComponentFixture<T>): string {
     return (
         new PageObject(fixture)
             .getByAutomationId('tui-input-tag__placeholder')

@@ -90,20 +90,20 @@ export class TuiInputComponent
         return this.interactive && !!this.datalist;
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.updateValue(value);
         this.open = true;
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    handleOption(item: unknown) {
+    handleOption(item: unknown): void {
         this.setNativeValue(String(item));
         this.focusInput();
         this.updateValue(String(item));
@@ -114,13 +114,13 @@ export class TuiInputComponent
         return '';
     }
 
-    private focusInput(preventScroll: boolean = false) {
+    private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
         }
     }
 
-    private setNativeValue(value: string) {
+    private setNativeValue(value: string): void {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.value = value;
         }

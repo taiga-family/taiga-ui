@@ -157,7 +157,7 @@ export class ExampleTuiNotificationsComponent {
         return this.content === 'String' ? this.content : this.component;
     }
 
-    showNotification() {
+    showNotification(): void {
         this.notificationsService
             .show(this.selectedContent, {
                 label: this.label,

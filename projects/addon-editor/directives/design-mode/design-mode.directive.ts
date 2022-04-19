@@ -123,7 +123,7 @@ export class TuiDesignModeDirective
     }
 
     @HostListener('load')
-    onLoad() {
+    onLoad(): void {
         this.initDOM();
         this.initObserver();
         this.initSubscriptions();
@@ -131,11 +131,11 @@ export class TuiDesignModeDirective
 
     @HostListener('document:mousedown', ['"none"'])
     @HostListener('document:mouseup', ['"all"'])
-    onPointer(pointerEvents: 'all' | 'none') {
+    onPointer(pointerEvents: 'all' | 'none'): void {
         this.pointerEvents = pointerEvents;
     }
 
-    writeValue(value: string) {
+    writeValue(value: string): void {
         this._value = value;
 
         if (!this.documentRef) {
@@ -146,11 +146,11 @@ export class TuiDesignModeDirective
         this.updateHeight();
     }
 
-    registerOnChange(onChange: (value: string) => void) {
+    registerOnChange(onChange: (value: string) => void): void {
         this.onChange = onChange;
     }
 
-    registerOnTouched(onTouched: () => void) {
+    registerOnTouched(onTouched: () => void): void {
         this.onTouched = onTouched;
     }
 
@@ -166,7 +166,7 @@ export class TuiDesignModeDirective
         }
     }
 
-    private initDOM() {
+    private initDOM(): void {
         const styleTag: HTMLStyleElement = this.renderer.createElement('style');
         const styles: Text = this.renderer.createText(this.styles);
 
@@ -182,7 +182,7 @@ export class TuiDesignModeDirective
         this.renderer.removeStyle(this.elementRef.nativeElement, 'visibility');
     }
 
-    private initObserver() {
+    private initObserver(): void {
         // Fallback for IE, removed on initial input event
         this.observer.observe(this.computedDocument.body, {
             characterData: true,
@@ -191,7 +191,7 @@ export class TuiDesignModeDirective
         });
     }
 
-    private initSubscriptions() {
+    private initSubscriptions(): void {
         this.initInputSubscription();
         this.initTabSubscription();
         this.initFocusSubscription();
@@ -200,7 +200,7 @@ export class TuiDesignModeDirective
         this.initImageSubscription();
     }
 
-    private initInputSubscription() {
+    private initInputSubscription(): void {
         typedFromEvent(this.computedDocument, 'input')
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
@@ -209,7 +209,7 @@ export class TuiDesignModeDirective
             });
     }
 
-    private initTabSubscription() {
+    private initTabSubscription(): void {
         typedFromEvent(this.computedDocument, 'keydown')
             .pipe(takeUntil(this.destroy$))
             .subscribe(event => {
@@ -231,7 +231,7 @@ export class TuiDesignModeDirective
             });
     }
 
-    private initFocusSubscription() {
+    private initFocusSubscription(): void {
         if (!this.computedDocument.defaultView) {
             return;
         }
@@ -251,7 +251,7 @@ export class TuiDesignModeDirective
             });
     }
 
-    private initPasteSubscription() {
+    private initPasteSubscription(): void {
         typedFromEvent(this.computedDocument, 'paste')
             .pipe(
                 filter(
@@ -268,7 +268,7 @@ export class TuiDesignModeDirective
             });
     }
 
-    private initDropSubscription() {
+    private initDropSubscription(): void {
         typedFromEvent(this.computedDocument, 'drop')
             .pipe(
                 filter(
@@ -297,7 +297,7 @@ export class TuiDesignModeDirective
             });
     }
 
-    private initImageSubscription() {
+    private initImageSubscription(): void {
         typedFromEvent(this.computedDocument, 'load', {capture: true})
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
@@ -305,7 +305,7 @@ export class TuiDesignModeDirective
             });
     }
 
-    private setExampleText(exampleText: string) {
+    private setExampleText(exampleText: string): void {
         this._exampleText = exampleText;
 
         if (this.documentRef) {
@@ -317,7 +317,7 @@ export class TuiDesignModeDirective
         }
     }
 
-    private handleImageDrop(dataTransfer: DataTransfer) {
+    private handleImageDrop(dataTransfer: DataTransfer): void {
         for (let i = 0; i < dataTransfer.files.length; i++) {
             const file = dataTransfer.files.item(i);
 
@@ -333,22 +333,22 @@ export class TuiDesignModeDirective
         }
     }
 
-    private addImage(image: string) {
+    private addImage(image: string): void {
         this.computedDocument.execCommand('insertImage', false, image);
     }
 
-    private update() {
+    private update(): void {
         this.updateValue();
         this.updateHeight();
         this.markForCheck();
     }
 
-    private updateValue() {
+    private updateValue(): void {
         this._value = this.computedDocument.body.innerHTML;
         this.onChange(this._value);
     }
 
-    private updateHeight() {
+    private updateHeight(): void {
         if (!this.documentRef?.createRange) {
             return;
         }
@@ -364,7 +364,7 @@ export class TuiDesignModeDirective
         );
     }
 
-    private setSelectionAt(x: number, y: number) {
+    private setSelectionAt(x: number, y: number): void {
         // IE
         if (
             !this.computedDocument.caretRangeFromPoint &&
@@ -419,7 +419,7 @@ export class TuiDesignModeDirective
         );
     }
 
-    private markForCheck() {
+    private markForCheck(): void {
         this.ngZone.run(() => {
             this.changeDetectorRef.markForCheck();
         });

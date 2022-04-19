@@ -38,7 +38,7 @@ export class TuiFilesComponent {
         return !!this.max && (this.items?.length ?? 0) > this.max;
     }
 
-    toggle() {
+    toggle(): void {
         this.hidden = !this.hidden;
     }
 }

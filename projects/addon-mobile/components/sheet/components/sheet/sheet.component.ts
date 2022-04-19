@@ -85,17 +85,17 @@ export class TuiSheetComponent<T> implements AfterViewInit {
     }
 
     @HostListener(TUI_SHEET_ID, ['$event.detail'])
-    onId(id: string) {
+    onId(id: string): void {
         this.id = id;
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         const stops = [...this.stops, this.sheetTop, this.contentTop];
 
         this.elementRef.nativeElement.scrollTop = stops[this.item.initial];
     }
 
-    scrollTo(top: number = this.sheetTop) {
+    scrollTo(top: number = this.sheetTop): void {
         const {nativeElement} = this.elementRef;
 
         if (this.isIos) {
@@ -105,7 +105,7 @@ export class TuiSheetComponent<T> implements AfterViewInit {
         nativeElement.scrollTo({top, behavior: 'smooth'});
     }
 
-    close() {
+    close(): void {
         if (this.context.closeable) {
             this.context.$implicit.complete();
         }

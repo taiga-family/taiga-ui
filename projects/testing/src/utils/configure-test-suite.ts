@@ -1,7 +1,7 @@
 import {ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
 
 // Forked from: https://github.com/topnotch48/ng-bullet-workspace/blob/6440299/projects/ng-bullet/src/testing.ts
-export const configureTestSuite = (configureModule?: () => void) => {
+export const configureTestSuite = (configureModule?: () => void): void => {
     const testBedApi = getTestBed();
     const originReset = TestBed.resetTestingModule;
 

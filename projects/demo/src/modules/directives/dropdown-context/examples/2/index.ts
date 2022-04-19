@@ -35,9 +35,9 @@ export class TuiDropdownContextExample2 {
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     ) {}
 
-    getObjectValues = (obj: Object) => Object.values(obj);
+    getObjectValues = (obj: Object): any[] => Object.values(obj);
 
-    printToConsole(action: string, contextInfo: unknown) {
+    printToConsole(action: string, contextInfo: unknown): void {
         this.dialogService
             .open(`[${action}]: ${JSON.stringify(contextInfo)}`)
             .subscribe();

@@ -44,7 +44,7 @@ export class TuiColorEditComponent {
         return Math.round(this.color[3] * 100);
     }
 
-    onHexChange(hex: string) {
+    onHexChange(hex: string): void {
         if (hex.length !== 6) {
             return;
         }
@@ -54,11 +54,11 @@ export class TuiColorEditComponent {
         this.updateColor([rgb[0], rgb[1], rgb[2], this.color[3]]);
     }
 
-    onRgbChange(...rgba: [number, number, number, number]) {
+    onRgbChange(...rgba: [number, number, number, number]): void {
         this.updateColor(rgba);
     }
 
-    private updateColor(color: [number, number, number, number]) {
+    private updateColor(color: [number, number, number, number]): void {
         this.color = color;
         this.colorChange.emit(color);
     }

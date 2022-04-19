@@ -148,7 +148,7 @@ export class TuiInputNumberComponent
     }
 
     @HostListener('keydown.0', ['$event'])
-    onZero(event: KeyboardEvent) {
+    onZero(event: KeyboardEvent): void {
         const decimal =
             this.nativeValue.split(this.numberFormat.decimalSeparator)[1] || '';
         const {nativeFocusableElement} = this;
@@ -195,7 +195,7 @@ export class TuiInputNumberComponent
             guide: false,
         } as TuiTextMaskOptions as unknown as TextMaskConfig);
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         if (maskedMoneyValueIsEmpty(value)) {
             this.updateValue(null);
 
@@ -226,7 +226,7 @@ export class TuiInputNumberComponent
         }
     }
 
-    onKeyDown(event: KeyboardEvent) {
+    onKeyDown(event: KeyboardEvent): void {
         if (!TUI_DECIMAL_SYMBOLS.includes(event.key)) {
             return;
         }
@@ -243,7 +243,7 @@ export class TuiInputNumberComponent
         }
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
         if (focused) {
@@ -264,11 +264,11 @@ export class TuiInputNumberComponent
         this.nativeValue = this.formattedValue;
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
@@ -321,7 +321,7 @@ export class TuiInputNumberComponent
         );
     }
 
-    private clear() {
+    private clear(): void {
         this.nativeValue = '';
         this.updateValue(null);
     }
@@ -341,7 +341,7 @@ export class TuiInputNumberComponent
         return ineligibleValue ? null : capped;
     }
 
-    private setCaretAfterComma() {
+    private setCaretAfterComma(): void {
         if (!this.nativeFocusableElement) {
             return;
         }

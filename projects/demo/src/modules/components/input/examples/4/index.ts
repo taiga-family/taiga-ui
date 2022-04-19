@@ -159,7 +159,7 @@ export class TuiInputExample4 {
         return this.isUserSelected ? this.lastUser!.accounts : [];
     }
 
-    onSelected(user: User) {
+    onSelected(user: User): void {
         this.lastUser = user;
         this.testForm.get('card')!.setValue(user.card);
     }

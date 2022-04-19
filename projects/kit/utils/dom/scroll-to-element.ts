@@ -1,4 +1,4 @@
-export function scrollToElement(element: HTMLElement, container: HTMLElement) {
+export function scrollToElement(element: HTMLElement, container: HTMLElement): void {
     const scrolledWidth = container.offsetWidth + container.scrollLeft;
     const elementWidth = element.offsetWidth;
     const elementX =

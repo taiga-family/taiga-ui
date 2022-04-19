@@ -32,7 +32,7 @@ export class ExampleTuiManualHintComponent extends AbstractExampleTuiHint {
 
     show = false;
 
-    sayHi() {
+    sayHi(): void {
         console.info('Hi all!');
     }
 }

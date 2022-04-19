@@ -61,7 +61,7 @@ function addTuiModules(
     );
 }
 
-function addTuiProviders(mainModule: ClassDeclaration, options: Schema) {
+function addTuiProviders(mainModule: ClassDeclaration, options: Schema): void {
     if (!options.addSanitizer) {
         return;
     }

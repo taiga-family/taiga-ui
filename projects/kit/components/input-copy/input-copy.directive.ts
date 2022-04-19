@@ -13,7 +13,7 @@ import {TuiInputCopyComponent} from './input-copy.component';
     ],
 })
 export class TuiInputCopyDirective extends TuiAbstractTextfieldHost<TuiInputCopyComponent> {
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 }

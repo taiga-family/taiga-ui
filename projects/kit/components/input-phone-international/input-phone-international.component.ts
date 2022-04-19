@@ -142,7 +142,7 @@ export class TuiInputPhoneInternationalComponent
 
     @HostListener('paste.capture.prevent.stop', ['$event'])
     @HostListener('drop.capture.prevent.stop', ['$event'])
-    onPaste(event: ClipboardEvent | DragEvent) {
+    onPaste(event: ClipboardEvent | DragEvent): void {
         let value = extractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, '');
         const countryIsoCode = this.extractCountryCode(value);
 
@@ -171,7 +171,7 @@ export class TuiInputPhoneInternationalComponent
         return `${this.staticPath}${code}.png`;
     }
 
-    onItemClick(isoCode: TuiCountryIsoCode) {
+    onItemClick(isoCode: TuiCountryIsoCode): void {
         this.open = false;
         this.updateCountryIsoCode(isoCode);
         // recalculates mask inside inputPhone to prevent isoCode conflict
@@ -188,7 +188,7 @@ export class TuiInputPhoneInternationalComponent
         }
     }
 
-    setDisabledState() {
+    setDisabledState(): void {
         super.setDisabledState();
         this.close();
     }
@@ -197,11 +197,11 @@ export class TuiInputPhoneInternationalComponent
         return this.countriesMasks[isoCode].replace(MASK_AFTER_CODE_REGEXP, '');
     }
 
-    onModelChange(value: string) {
+    onModelChange(value: string): void {
         this.updateValue(value);
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
@@ -214,7 +214,7 @@ export class TuiInputPhoneInternationalComponent
         return mask.replace(countryCode, '').trim();
     }
 
-    private close() {
+    private close(): void {
         this.open = false;
     }
 
@@ -222,7 +222,7 @@ export class TuiInputPhoneInternationalComponent
         return this.countriesMasks[isoCode].replace(/[()\- ]/g, '').length;
     }
 
-    private updateCountryIsoCode(code: TuiCountryIsoCode) {
+    private updateCountryIsoCode(code: TuiCountryIsoCode): void {
         this.countryIsoCode = code;
         this.countryIsoCodeChange.emit(code);
     }

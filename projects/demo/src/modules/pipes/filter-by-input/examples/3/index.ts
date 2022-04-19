@@ -23,5 +23,5 @@ export class TuiFilterByInputExample3 {
         user: new FormControl(),
     });
 
-    readonly stringify = ({name}: {name: string}) => name;
+    readonly stringify = ({name}: {name: string}): string => name;
 }

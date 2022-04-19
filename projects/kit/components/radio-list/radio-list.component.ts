@@ -113,7 +113,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
         return {$implicit: item, index, active};
     }
 
-    onModelChange(value: T) {
+    onModelChange(value: T): void {
         this.updateValue(value);
     }
 

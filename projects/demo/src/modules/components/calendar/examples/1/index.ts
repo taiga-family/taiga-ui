@@ -12,7 +12,7 @@ import {TuiDay} from '@taiga-ui/cdk';
 export class TuiCalendarExample1 {
     value: TuiDay | null = null;
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         this.value = day;
     }
 }

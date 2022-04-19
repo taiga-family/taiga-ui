@@ -15,7 +15,7 @@ export class TuiNotificationsExampleComponent1 {
         private readonly notificationsService: TuiNotificationsService,
     ) {}
 
-    showNotification() {
+    showNotification(): void {
         this.notificationsService
             .show('A simple option', {
                 label: 'With a heading!',

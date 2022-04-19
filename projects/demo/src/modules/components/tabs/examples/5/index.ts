@@ -34,12 +34,12 @@ export class TuiTabsExample5 {
         return this.tabs.indexOf(this.activeElement);
     }
 
-    stop(event: Event) {
+    stop(event: Event): void {
         // We need to stop tab custom event so parent component does not think its active
         event.stopPropagation();
     }
 
-    onClick(activeElement: string) {
+    onClick(activeElement: string): void {
         this.activeElement = activeElement;
         this.open = false;
     }

@@ -307,14 +307,14 @@ export class TuiInputTagComponent
             : '';
     }
 
-    onCleanerClick() {
+    onCleanerClick(): void {
         this.updateSearch('');
         this.clear();
         this.focusInput();
         this.parentHostedDropdown?.updateOpen(true);
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.open = false;
         this.addTag();
         this.updateFocused(active);
@@ -324,7 +324,7 @@ export class TuiInputTagComponent
         }
     }
 
-    onMouseDown(event: MouseEvent) {
+    onMouseDown(event: MouseEvent): void {
         const actualTarget = getActualTarget(event);
 
         if (
@@ -344,7 +344,7 @@ export class TuiInputTagComponent
         this.focusInput();
     }
 
-    onFieldKeyDownBackspace(event: Event) {
+    onFieldKeyDownBackspace(event: Event): void {
         if (!this.labelOutside && !this.hasNativeValue && this.value.length) {
             this.deleteLastEnabledItem();
         } else {
@@ -352,7 +352,7 @@ export class TuiInputTagComponent
         }
     }
 
-    onFieldKeyDownArrowLeft(event: Event) {
+    onFieldKeyDownArrowLeft(event: Event): void {
         if (!this.labelOutside || this.hasNativeValue || !this.value.length) {
             return;
         }
@@ -361,18 +361,18 @@ export class TuiInputTagComponent
         setNativeFocused(this.tags.last.nativeElement);
     }
 
-    onFieldKeyDownEnter() {
+    onFieldKeyDownEnter(): void {
         this.addTag();
         this.scrollToEnd$.next();
     }
 
-    onTagKeyDownArrowLeft(currentIndex: number) {
+    onTagKeyDownArrowLeft(currentIndex: number): void {
         if (currentIndex > 0) {
             this.onScrollKeyDown(currentIndex, -1);
         }
     }
 
-    onTagKeyDownArrowRight(currentIndex: number) {
+    onTagKeyDownArrowRight(currentIndex: number): void {
         if (currentIndex === this.value.length - 1) {
             this.focusInput();
         } else {
@@ -380,7 +380,7 @@ export class TuiInputTagComponent
         }
     }
 
-    onTagEdited(value: string, index: number) {
+    onTagEdited(value: string, index: number): void {
         this.focusInput();
         this.updateValue(
             this.value
@@ -399,7 +399,7 @@ export class TuiInputTagComponent
         );
     }
 
-    handleOption(item: string) {
+    handleOption(item: string): void {
         this.focusInput();
         this.updateSearch('');
         this.updateValue(this.value.concat(item));
@@ -407,7 +407,7 @@ export class TuiInputTagComponent
         this.scrollToEnd$.next();
     }
 
-    onInput(value: string) {
+    onInput(value: string): void {
         const array = this.allowSpaces
             ? value.split(this.separator)
             : value.split(ALLOWED_SPACE_REGEXP);
@@ -426,11 +426,11 @@ export class TuiInputTagComponent
         this.open = this.hasNativeValue;
     }
 
-    onHoveredChange(hovered: boolean) {
+    onHoveredChange(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    setDisabledState() {
+    setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
@@ -440,7 +440,7 @@ export class TuiInputTagComponent
         return tag.toString();
     }
 
-    protected updateValue(value: string[]) {
+    protected updateValue(value: string[]): void {
         const seen = new Set();
 
         super.updateValue(
@@ -454,7 +454,7 @@ export class TuiInputTagComponent
         );
     }
 
-    private onScrollKeyDown(currentIndex: number, flag: number) {
+    private onScrollKeyDown(currentIndex: number, flag: number): void {
         const tag = this.tags.find((_item, index) => index === currentIndex + flag);
 
         if (!tag || !this.scrollBar) {
@@ -474,7 +474,7 @@ export class TuiInputTagComponent
         }
     }
 
-    private initScrollerSubscription(scroller: TuiScrollbarComponent | null) {
+    private initScrollerSubscription(scroller: TuiScrollbarComponent | null): void {
         if (!scroller?.browserScrollRef) {
             return;
         }
@@ -499,7 +499,7 @@ export class TuiInputTagComponent
             .subscribe();
     }
 
-    private updateSearch(value: string) {
+    private updateSearch(value: string): void {
         if (this.focusableElement) {
             this.focusableElement.nativeElement.value = value;
         }
@@ -512,7 +512,7 @@ export class TuiInputTagComponent
         return scrollWidth > offsetWidth;
     }
 
-    private addTag() {
+    private addTag(): void {
         const inputValue = this.search.trim();
 
         if (!inputValue || this.disabledItemHandler(inputValue)) {
@@ -523,7 +523,7 @@ export class TuiInputTagComponent
         this.updateValue(this.value.concat(inputValue));
     }
 
-    private deleteLastEnabledItem() {
+    private deleteLastEnabledItem(): void {
         for (let index = this.value.length - 1; index >= 0; index--) {
             if (!this.disabledItemHandler(this.value[index])) {
                 this.updateValue([
@@ -536,7 +536,7 @@ export class TuiInputTagComponent
         }
     }
 
-    private focusInput(preventScroll: boolean = false) {
+    private focusInput(preventScroll: boolean = false): void {
         if (this.nativeFocusableElement) {
             setNativeFocused(this.nativeFocusableElement, true, preventScroll);
         }

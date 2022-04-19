@@ -41,7 +41,7 @@ export class TuiRepeatTimesDirective {
         private readonly templateRef: TemplateRef<TuiRepeatTimesContext>,
     ) {}
 
-    private addContainers(count: number) {
+    private addContainers(count: number): void {
         for (let index = this.viewContainer.length; index < count; index++) {
             this.viewContainer.createEmbeddedView<TuiRepeatTimesContext>(
                 this.templateRef,
@@ -50,7 +50,7 @@ export class TuiRepeatTimesDirective {
         }
     }
 
-    private removeContainers(amount: number) {
+    private removeContainers(amount: number): void {
         for (let index = 0; index < amount; index++) {
             this.viewContainer.remove();
         }

@@ -239,7 +239,7 @@ describe('InputRange', () => {
 function initializeAliases(
     inputRangeSelector: string,
     [expectedLeftValue, expectedRightValue]: [number, number],
-) {
+): void {
     cy.get(`${inputRangeSelector} [automation-id=tui-input-range__left-input] input`)
         .should('exist')
         .should('have.value', expectedLeftValue)

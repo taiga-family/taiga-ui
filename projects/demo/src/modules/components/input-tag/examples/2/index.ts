@@ -31,7 +31,7 @@ export class TuiInputTagExample2 {
         startWith(databaseMockData),
     );
 
-    onSearchChange(search: string) {
+    onSearchChange(search: string): void {
         this.search$.next(search);
     }
 

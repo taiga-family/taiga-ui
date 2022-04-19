@@ -1,7 +1,17 @@
 import {rawLoad, tryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 
+interface TuiProjectFiles {
+    angularJson: string;
+    tsconfig: string;
+    mainTs: string;
+    indexHtml: string;
+    polyfills: string;
+    appModuleTs: string;
+    styles: string;
+}
+
 export abstract class TuiStackblitzResourcesLoader {
-    static async getProjectFiles() {
+    static async getProjectFiles(): Promise<TuiProjectFiles> {
         const [
             configsContent,
             mainTsContent,
@@ -28,7 +38,7 @@ export abstract class TuiStackblitzResourcesLoader {
         return {angularJson, tsconfig, mainTs, indexHtml, polyfills, appModuleTs, styles};
     }
 
-    static async getTaigaStyles() {
+    static async getTaigaStyles(): Promise<Record<string, string>> {
         const styles: Record<string, string> = {};
 
         const [

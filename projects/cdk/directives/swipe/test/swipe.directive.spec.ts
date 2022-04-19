@@ -18,7 +18,7 @@ describe('TuiSwipe directive', () => {
     class TestComponent {
         swiped = '';
 
-        onSwipe(swipe: TuiSwipe) {
+        onSwipe(swipe: TuiSwipe): void {
             this.swiped = swipe.direction;
         }
     }
@@ -75,7 +75,7 @@ describe('TuiSwipe directive', () => {
         element: HTMLElement,
         eventType: 'touchstart' | 'touchend',
         identifier: number,
-    ) {
+    ): void {
         const touchObj = new Touch({
             identifier: identifier,
             target: element,

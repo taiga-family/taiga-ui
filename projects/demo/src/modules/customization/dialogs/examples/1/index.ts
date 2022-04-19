@@ -23,7 +23,7 @@ export class TuiDialogsExample1 {
         choose: PolymorpheusContent<any>,
         poorly: PolymorpheusContent<any>,
         wisely: PolymorpheusContent<any>,
-    ) {
+    ): void {
         this.promptService
             .open(choose, {
                 heading: 'Taiga UI is the best',

@@ -73,7 +73,7 @@ export class TuiStepComponent {
     }
 
     @HostListener('click')
-    activate() {
+    activate(): void {
         this.stepper.activate(this.index);
     }
 }

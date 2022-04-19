@@ -53,11 +53,11 @@ export class TuiRingChartComponent {
         return this.size !== 's' && !!this.content;
     }
 
-    onActiveItemIndexChange(index: number) {
+    onActiveItemIndexChange(index: number): void {
         this.updateActiveItemIndex(index);
     }
 
-    private updateActiveItemIndex(index: number) {
+    private updateActiveItemIndex(index: number): void {
         if (index === this.activeItemIndex) {
             return;
         }

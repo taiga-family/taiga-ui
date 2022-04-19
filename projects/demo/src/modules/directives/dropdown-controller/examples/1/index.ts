@@ -12,7 +12,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiDropdownControllerExample1 {
     open = false;
 
-    onClick() {
+    onClick(): void {
         this.open = !this.open;
     }
 }

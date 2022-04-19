@@ -26,15 +26,15 @@ describe('Editing links in Editor', () => {
         getScreenshotArea().matchImageSnapshot('1-exist-link');
     });
 
-    function focusToStartInEditor() {
+    function focusToStartInEditor(): void {
         getContentEditable().type('{moveToStart}').click();
     }
 
-    function getScreenshotArea() {
+    function getScreenshotArea(): Cypress.Chainable<JQuery> {
         return cy.get('@wrapper').wait(WAIT_BEFORE_SCREENSHOT);
     }
 
-    function getContentEditable() {
+    function getContentEditable(): Cypress.Chainable<JQuery> {
         return cy.get('@wrapper').find('[contenteditable]');
     }
 });

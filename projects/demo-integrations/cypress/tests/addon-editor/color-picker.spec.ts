@@ -26,7 +26,7 @@ describe("Editor's color picker", () => {
             .matchImageSnapshot('2-color-picker-with-rgb');
     });
 
-    function openColorPicker(alias: string) {
+    function openColorPicker(alias: string): void {
         cy.get('#dropdown').findByAutomationId('tui-doc-example').as(alias);
         cy.get('@wrapper')
             .scrollIntoView()
@@ -35,7 +35,7 @@ describe("Editor's color picker", () => {
             .click();
     }
 
-    function changeToHex() {
+    function changeToHex(): void {
         cy.get('tui-color-edit')
             .find('tui-select')
             .findByAutomationId('tui-primitive-textfield__native-input')
@@ -44,7 +44,7 @@ describe("Editor's color picker", () => {
             .click();
     }
 
-    function setInputBox(index: 1 | 2 | 3, value: number) {
+    function setInputBox(index: 1 | 2 | 3, value: number): void {
         cy.get(`tui-color-edit tui-input-count:nth-of-type(${index})`)
             .findByAutomationId('tui-primitive-textfield__native-input')
             .type(value.toString(), {force: true});

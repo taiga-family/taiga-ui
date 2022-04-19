@@ -31,15 +31,15 @@ export class TuiValidatorDirective implements Validator, OnChanges, OnDestroy {
         return this.tuiValidator(control);
     }
 
-    registerOnValidatorChange(onChange: Function) {
+    registerOnValidatorChange(onChange: Function): void {
         this.onChange = onChange;
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.onChange();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.tuiValidator = Validators.nullValidator;
         this.onChange();
     }

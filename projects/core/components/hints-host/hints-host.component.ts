@@ -32,7 +32,7 @@ export class TuiHintsHostComponent {
         return this.elementRef.nativeElement.getBoundingClientRect();
     }
 
-    onHovered(hovered: boolean, directive: AbstractTuiHint) {
+    onHovered(hovered: boolean, directive: AbstractTuiHint): void {
         if (directive instanceof TuiHintDirective) {
             directive.componentHovered$.next(hovered);
         }

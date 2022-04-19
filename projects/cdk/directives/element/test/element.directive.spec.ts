@@ -24,7 +24,7 @@ describe('TuiElement directive', () => {
         component: any;
         element: any;
 
-        storeRefs(component: any, element: any) {
+        storeRefs(component: any, element: any): void {
             this.component = component;
             this.element = element;
         }

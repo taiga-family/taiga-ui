@@ -17,11 +17,11 @@ export class TuiDialogExampleComponent3 {
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     ) {}
 
-    showDialog(content: PolymorpheusContent<TuiDialogContext>) {
+    showDialog(content: PolymorpheusContent<TuiDialogContext>): void {
         this.dialogService.open(content).subscribe();
     }
 
-    withdraw() {
+    withdraw(): void {
         this.money -= 100;
     }
 }

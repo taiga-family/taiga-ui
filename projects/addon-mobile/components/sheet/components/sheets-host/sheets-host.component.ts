@@ -24,7 +24,7 @@ export class TuiSheetsHostComponent {
         @Inject(TUI_WINDOW_HEIGHT) readonly height$: Observable<number>,
     ) {}
 
-    close({closeable, $implicit}: TuiSheet<unknown>) {
+    close({closeable, $implicit}: TuiSheet<unknown>): void {
         if (closeable) {
             $implicit.complete();
         }

@@ -17,7 +17,7 @@ export class TuiPdfViewerExample1 {
         @Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService,
     ) {}
 
-    show(actions: PolymorpheusContent<TuiPdfViewerOptions>) {
+    show(actions: PolymorpheusContent<TuiPdfViewerOptions>): void {
         this.pdfService
             .open(
                 this.sanitizer.bypassSecurityTrustResourceUrl('/assets/media/taiga.pdf'),

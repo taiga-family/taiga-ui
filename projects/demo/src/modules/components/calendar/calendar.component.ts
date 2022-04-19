@@ -122,7 +122,7 @@ export class ExampleTuiCalendarComponent {
         private readonly notifications: TuiNotificationsService,
     ) {}
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         this.notifications.show(String(day)).subscribe();
     }
 }

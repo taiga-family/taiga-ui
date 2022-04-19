@@ -27,13 +27,13 @@ export class TuiSheetHeadingComponent implements AfterViewInit {
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
     ) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.elementRef.nativeElement.dispatchEvent(
             new CustomEvent(TUI_SHEET_ID, {bubbles: true, detail: this.id}),
         );
     }
 
-    onClick() {
+    onClick(): void {
         this.elementRef.nativeElement.dispatchEvent(
             new CustomEvent(TUI_SHEET_CLOSE, {bubbles: true}),
         );

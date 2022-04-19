@@ -21,7 +21,7 @@ export class TuiSidebarExample1 {
         'ng-dompurify',
     ];
 
-    toggle(open: boolean) {
+    toggle(open: boolean): void {
         this.open = open;
     }
 }

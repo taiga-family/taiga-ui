@@ -93,7 +93,7 @@ describe('Slider', () => {
         const changeValueAndCheck = async (
             newValue: number,
             expectedFillPercentage: string,
-        ) => {
+        ): Promise<void> => {
             changeSliderValue(
                 testComponent.formControllerElementRef.nativeElement,
                 `${newValue}`,
@@ -206,7 +206,7 @@ describe('Slider', () => {
         );
     });
 
-    function changeSliderValue(el: HTMLInputElement, newValue: string) {
+    function changeSliderValue(el: HTMLInputElement, newValue: string): void {
         el.value = newValue;
         el.dispatchEvent(new Event('input'));
     }

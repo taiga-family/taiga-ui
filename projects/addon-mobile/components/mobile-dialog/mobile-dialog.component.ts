@@ -21,7 +21,7 @@ export class TuiMobileDialogComponent<I> {
         readonly context: TuiDialog<TuiMobileDialogOptions<I>, number>,
     ) {}
 
-    onAction(index: number) {
+    onAction(index: number): void {
         this.context.completeWith(index);
     }
 }

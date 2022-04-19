@@ -60,7 +60,7 @@ export class TuiCustomizationComponent implements AfterViewInit {
         return (this.demo && this.demo.mode) || null;
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         if (!this.demo) {
             return;
         }
@@ -78,7 +78,7 @@ export class TuiCustomizationComponent implements AfterViewInit {
         return key.includes('onLight');
     }
 
-    onModelChange(variable: string, value: string | number) {
+    onModelChange(variable: string, value: string | number): void {
         this.variables = {
             ...this.variables,
             [variable]: typeof value === 'string' ? value : px(value),

@@ -79,7 +79,7 @@ export class TuiLineChartHintDirective {
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
-    raise(index: number, _chart: TuiLineChartComponent) {
+    raise(index: number, _chart: TuiLineChartComponent): void {
         const current = this.charts.map(chart => chart.value[index]);
         const sorted = [...current].sort((a, b) => a[1] - b[1]);
 

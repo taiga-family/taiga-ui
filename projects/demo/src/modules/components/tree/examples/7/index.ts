@@ -45,7 +45,7 @@ export class TuiTreeExample7 {
     childrenHandler: TuiHandler<Item, readonly Item[]> = item =>
         this.service.getChildren(item);
 
-    onToggled(item: Item) {
+    onToggled(item: Item): void {
         this.service.loadChildren(item);
     }
 }

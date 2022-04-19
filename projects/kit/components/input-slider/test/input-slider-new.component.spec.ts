@@ -202,7 +202,9 @@ describe('InputSlider[new]', () => {
     });
 
     describe('`valueContent` prop', () => {
-        const customLabel = ({$implicit}: TuiContextWithImplicit<number>) => {
+        const customLabel = ({
+            $implicit,
+        }: TuiContextWithImplicit<number>): number | string => {
             switch ($implicit) {
                 case 100:
                     return 'MAX';
@@ -226,7 +228,10 @@ describe('InputSlider[new]', () => {
             fixture.detectChanges();
         });
 
-        const checkValueContent = async (value: number, expectedContent: string) => {
+        const checkValueContent = async (
+            value: number,
+            expectedContent: string,
+        ): Promise<void> => {
             inputPO.sendTextAndBlur(`${value}`);
 
             fixture.detectChanges();

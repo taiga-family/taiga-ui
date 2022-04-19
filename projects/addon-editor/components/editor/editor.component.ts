@@ -181,13 +181,13 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
             : this.documentRef;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if (this.resizeSubscription) {
             this.resizeSubscription.unsubscribe();
         }
     }
 
-    onMouseDown(event: MouseEvent) {
+    onMouseDown(event: MouseEvent): void {
         if (
             !this.focusableElement ||
             !this.focusableElement.nativeFocusableElement ||
@@ -202,20 +202,20 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
         setNativeFocused(this.focusableElement.nativeFocusableElement);
     }
 
-    onModelChange(value: string) {
+    onModelChange(value: string): void {
         this.updateValue(value.trim() === '<br>' ? '' : value);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onFocusedChange(focused: boolean) {
+    onFocusedChange(focused: boolean): void {
         this.updateFocused(focused);
         this.linkDropdownEnabled = focused || this.linkDropdownEnabled;
     }
 
-    onAddLink(url: string) {
+    onAddLink(url: string): void {
         this.selectClosest('a');
         this.computedDocument.execCommand('createLink', false, TEMP_URL);
 
@@ -234,7 +234,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
         this.computedDocument.dispatchEvent(new Event('input'));
     }
 
-    onRemoveLink() {
+    onRemoveLink(): void {
         this.selectClosest('a');
         this.computedDocument.execCommand('unlink');
         this.linkDropdownEnabled = false;
@@ -246,12 +246,12 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
     }
 
     // @bad TODO
-    onAttach() {
+    onAttach(): void {
         tuiAssert.assert(false, 'Attach is not implemented yet');
     }
 
     // @bad TODO
-    onTex() {
+    onTex(): void {
         tuiAssert.assert(false, 'Attach is not implemented yet');
     }
 
@@ -268,7 +268,7 @@ export class TuiEditorComponent extends AbstractTuiControl<string> implements On
         return !!this.value;
     }
 
-    private selectClosest(selector: string) {
+    private selectClosest(selector: string): void {
         setNativeFocused(this.computedDocument.body);
 
         const selection = this.computedDocument.getSelection();

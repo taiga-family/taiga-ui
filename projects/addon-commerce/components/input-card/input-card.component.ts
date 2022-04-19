@@ -137,7 +137,7 @@ export class TuiInputCardComponent
             .join('');
     }
 
-    onValueChange(value: string) {
+    onValueChange(value: string): void {
         const parsed = value.split(' ').join('');
         const currentBin = this.bin;
 
@@ -150,15 +150,15 @@ export class TuiInputCardComponent
         }
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    writeValue(value: string | null) {
+    writeValue(value: string | null): void {
         const currentBin = this.bin;
 
         super.writeValue(value);

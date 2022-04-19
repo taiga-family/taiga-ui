@@ -114,7 +114,7 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
         return this.control.get(control)!.disabled;
     }
 
-    toggleDisabled(value: boolean, control: string) {
+    toggleDisabled(value: boolean, control: string): void {
         if (value) {
             this.control.get(control)!.disable();
 
@@ -124,7 +124,7 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
         this.control.get(control)!.enable();
     }
 
-    onBinChange(bin: string | null) {
+    onBinChange(bin: string | null): void {
         this.notifications.show(`bin: ${bin}`).subscribe();
     }
 }

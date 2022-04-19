@@ -27,11 +27,11 @@ export class TuiIslandExample3 {
         return this.expanded ? 10 : 3;
     }
 
-    expandText() {
+    expandText(): void {
         this.expanded = !this.expanded;
     }
 
-    onIndexChange(index: number) {
+    onIndexChange(index: number): void {
         this.index = index;
     }
 }

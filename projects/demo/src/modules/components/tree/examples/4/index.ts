@@ -44,11 +44,11 @@ export class TuiTreeExample4 {
     readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
         item.children || EMPTY_ARRAY;
 
-    toggleTopmost() {
+    toggleTopmost(): void {
         this.map.set(this.data, !this.map.get(this.data));
     }
 
-    toggleLevel() {
+    toggleLevel(): void {
         this.map.set(this.data.children![0], !this.map.get(this.data.children![0]));
     }
 }

@@ -60,7 +60,7 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
             .subscribe(() => this.updateAttributes({width: this.width}));
     }
 
-    onHorizontalDrag([x]: readonly [number, number], direction: number) {
+    onHorizontalDrag([x]: readonly [number, number], direction: number): void {
         this._width = Math.max(this.minWidth, this.width + direction * x);
     }
 }

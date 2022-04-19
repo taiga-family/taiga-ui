@@ -40,21 +40,21 @@ export class TuiPreviewExample1 {
             : 'http://marsibarsi.me/images/1x1small.jpg';
     }
 
-    show() {
+    show(): void {
         this.previewService.open(this.preview || '').subscribe({
             complete: () => console.info('complete'),
         });
     }
 
-    download() {
+    download(): void {
         this.notificationsService.show('Downloading...').subscribe();
     }
 
-    delete() {
+    delete(): void {
         this.notificationsService.show('Deleting...').subscribe();
     }
 
-    onSwipe(swipe: TuiSwipe) {
+    onSwipe(swipe: TuiSwipe): void {
         if (swipe.direction === 'left') {
             this.index = clamp(this.index + 1, 0, this.length - 1);
         }

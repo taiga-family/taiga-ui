@@ -21,7 +21,7 @@ export class IconSetComponent {
 
     expanded = false;
 
-    toggle() {
+    toggle(): void {
         this.expanded = !this.expanded;
     }
 }

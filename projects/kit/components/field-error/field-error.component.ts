@@ -74,13 +74,13 @@ export class TuiFieldErrorComponent {
         return (this.invalid && this.touched && this.error) || of(null);
     }
 
-    registerOnChange() {}
+    registerOnChange(): void {}
 
-    registerOnTouched() {}
+    registerOnTouched(): void {}
 
-    setDisabledState() {}
+    setDisabledState(): void {}
 
-    writeValue() {}
+    writeValue(): void {}
 
     private get error(): Observable<TuiValidationError | null> {
         const {errorId} = this;

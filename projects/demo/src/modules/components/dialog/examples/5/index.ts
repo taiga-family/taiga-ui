@@ -20,7 +20,7 @@ export class TuiDialogExampleComponent5 {
         content: PolymorpheusContent<TuiDialogContext>,
         header: PolymorpheusContent,
         size: TuiDialogSize,
-    ) {
+    ): void {
         this.dialogService
             .open(content, {
                 label: 'What a cool library set',

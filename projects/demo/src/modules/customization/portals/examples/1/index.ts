@@ -14,18 +14,18 @@ export class TuiPortalsExample1 {
 
     constructor(
         @Inject(CustomPortalService)
-        private readonly customPortalServce: CustomPortalService,
+        private readonly customPortalService: CustomPortalService,
     ) {}
 
-    addTemplate(template: TemplateRef<any>) {
-        this.templates.push(this.customPortalServce.addTemplate(template));
+    addTemplate(template: TemplateRef<any>): void {
+        this.templates.push(this.customPortalService.addTemplate(template));
     }
 
-    removeTemplate() {
+    removeTemplate(): void {
         const viewRef = this.templates.pop();
 
         if (viewRef) {
-            this.customPortalServce.removeTemplate(viewRef);
+            this.customPortalService.removeTemplate(viewRef);
         }
     }
 }

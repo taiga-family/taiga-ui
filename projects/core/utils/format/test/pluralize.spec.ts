@@ -1,6 +1,6 @@
 import {pluralize} from '../pluralize';
 
-function check(value: number, result: string) {
+function check(value: number, result: string): void {
     expect(pluralize(value, ['год', 'года', 'лет'])).toBe(result);
 }
 

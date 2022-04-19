@@ -43,11 +43,11 @@ export class TuiFilterExample4 {
         );
     }
 
-    onModelChange(model: readonly string[]) {
+    onModelChange(model: readonly string[]): void {
         this.filters$.next(model);
     }
 
-    toggleAll() {
+    toggleAll(): void {
         this.filters$.next(
             this.items.length === this.filters$.value.length ? [] : [...this.items],
         );

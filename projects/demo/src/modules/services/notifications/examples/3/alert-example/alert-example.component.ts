@@ -14,11 +14,11 @@ export class AlertExampleComponent {
         private readonly context: TuiNotificationContentContext<boolean>,
     ) {}
 
-    ok() {
+    ok(): void {
         this.context.emitAndCloseHook(true);
     }
 
-    cancel() {
+    cancel(): void {
         this.context.emitAndCloseHook(false);
     }
 }

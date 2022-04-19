@@ -63,7 +63,7 @@ function addTuiModules(
     );
 }
 
-function addTuiProviders(mainModule: ClassDeclaration, options: Schema) {
+function addTuiProviders(mainModule: ClassDeclaration, options: Schema): void {
     if (!options.addSanitizer) {
         return;
     }
@@ -83,7 +83,11 @@ function addTuiProviders(mainModule: ClassDeclaration, options: Schema) {
     });
 }
 
-function addUniqueImport(filePath: string, namedImport: string, packageName: string) {
+function addUniqueImport(
+    filePath: string,
+    namedImport: string,
+    packageName: string,
+): void {
     const existingNamedImport = getImports(filePath, {
         namedImports: namedImport,
         moduleSpecifier: packageName,

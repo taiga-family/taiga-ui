@@ -44,11 +44,11 @@ export class TuiInputFilesExample3 {
 
     constructor(@Inject(TUI_IS_CYPRESS) readonly isCypress: boolean) {}
 
-    removeLoading() {
+    removeLoading(): void {
         this.loadingFile = null;
     }
 
-    restore(file: TuiFileLike | null) {
+    restore(file: TuiFileLike | null): void {
         if (!file) {
             return;
         }
@@ -59,7 +59,7 @@ export class TuiInputFilesExample3 {
         );
     }
 
-    remove(file: TuiFileLike) {
+    remove(file: TuiFileLike): void {
         this.removedFiles = [...this.removedFiles, file];
         this.restoredFiles = this.restoredFiles.filter(
             restored => file.name !== restored?.name,

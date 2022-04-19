@@ -154,7 +154,7 @@ export abstract class AbstractTuiInputSlider<T>
         return this.computePureKeySteps(this.keySteps, this.min, this.max);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 

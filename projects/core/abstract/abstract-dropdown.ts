@@ -76,11 +76,11 @@ export abstract class AbstractTuiDropdown
         readonly activeZone: TuiActiveZoneDirective | null,
     ) {}
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.closeDropdownBox();
     }
 
-    ngAfterViewChecked() {
+    ngAfterViewChecked(): void {
         // @awful TODO: This is probably wrong to call both but in TuiHostedDropdown some changes do not propagate otherwise
         if (this.dropdownBoxRef !== null) {
             this.dropdownBoxRef.changeDetectorRef.detectChanges();
@@ -102,7 +102,7 @@ export abstract class AbstractTuiDropdown
     }
 
     @tuiPure
-    protected toggleDropdown(value: boolean) {
+    protected toggleDropdown(value: boolean): void {
         if (value) {
             this.openDropdownBox();
         } else {
@@ -110,7 +110,7 @@ export abstract class AbstractTuiDropdown
         }
     }
 
-    protected openDropdownBox() {
+    protected openDropdownBox(): void {
         if (this.dropdownBoxRef !== null) {
             return;
         }
@@ -123,7 +123,7 @@ export abstract class AbstractTuiDropdown
         this.dropdownBoxRef.changeDetectorRef.detectChanges();
     }
 
-    protected closeDropdownBox() {
+    protected closeDropdownBox(): void {
         if (this.dropdownBoxRef === null) {
             return;
         }

@@ -119,23 +119,23 @@ export class TuiRadioBlockComponent<T>
         return this.checked ? TuiAppearance.Primary : TuiAppearance.Secondary;
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
-    onFocusVisible(focusVisible: boolean) {
+    onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 
-    onModelChange(value: T) {
+    onModelChange(value: T): void {
         this.updateValue(value);
     }
 }

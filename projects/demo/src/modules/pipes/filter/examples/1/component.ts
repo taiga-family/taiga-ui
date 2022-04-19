@@ -29,5 +29,5 @@ export class TuiFilterExample1 {
         },
     ];
 
-    readonly matcher = (item: Item, search: number) => item.price > search;
+    readonly matcher = (item: Item, search: number): boolean => item.price > search;
 }

@@ -102,34 +102,34 @@ export class TuiEditorNewComponent
         );
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    selectLinkIfClosest() {
+    selectLinkIfClosest(): void {
         if (this.getMarkedLinkBeforeSelectClosest()) {
             this.editor?.selectClosest();
         }
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    onModelChange(value: string) {
+    onModelChange(value: string): void {
         this.updateValue(value);
     }
 
-    addLink(link: string) {
+    addLink(link: string): void {
         this.editor?.selectClosest();
         this.editor?.setLink(link);
     }
 
-    removeLink() {
+    removeLink(): void {
         this.editor?.unsetLink();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.editor?.destroy();
     }
 
@@ -137,7 +137,7 @@ export class TuiEditorNewComponent
         return '';
     }
 
-    private readonly isSelectionLink = () => !!this.editor?.isActive('link');
+    private readonly isSelectionLink = (): boolean => !!this.editor?.isActive('link');
 
     private get hasValue(): boolean {
         return !!this.value;

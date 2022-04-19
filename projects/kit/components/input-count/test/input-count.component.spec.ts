@@ -386,14 +386,14 @@ describe('InputCount', () => {
         expect(inputPO.nativeElement.getAttribute('maxlength')).toBe('18');
     });
 
-    function clickPlusButton() {
+    function clickPlusButton(): void {
         const plusButton = getPlusButton();
 
         plusButton!.nativeElement.click();
         fixture.detectChanges();
     }
 
-    function clickMinusButton() {
+    function clickMinusButton(): void {
         const minusButton = getMinusButton();
 
         minusButton!.nativeElement.click();
@@ -423,6 +423,7 @@ describe('InputCount with TUI_INPUT_COUNT_OPTIONS', () => {
         component!: TuiInputCountComponent;
 
         control = new FormControl();
+        readOnly = false;
     }
 
     let fixture: ComponentFixture<TestComponent>;

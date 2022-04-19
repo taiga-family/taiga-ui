@@ -121,22 +121,22 @@ export class TuiTableExample4 {
         startWith([]),
     );
 
-    onEnabled(enabled: readonly string[]) {
+    onEnabled(enabled: readonly string[]): void {
         this.enabled = enabled;
         this.columns = this.initial
             .filter(column => enabled.includes(column))
             .map(column => KEYS[column]);
     }
 
-    onDirection(direction: -1 | 1) {
+    onDirection(direction: -1 | 1): void {
         this.direction$.next(direction);
     }
 
-    onSize(size: number) {
+    onSize(size: number): void {
         this.size$.next(size);
     }
 
-    onPage(page: number) {
+    onPage(page: number): void {
         this.page$.next(page);
     }
 

@@ -26,7 +26,7 @@ export class TuiInputInlineExample1 {
         return this.testForm.get('testValue4')!.value === '';
     }
 
-    onToggleClick() {
+    onToggleClick(): void {
         if (this.testForm.disabled) {
             this.testForm.enable();
         } else {

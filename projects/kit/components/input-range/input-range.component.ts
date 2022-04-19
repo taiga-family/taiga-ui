@@ -191,11 +191,11 @@ export class TuiInputRangeComponent
         return this.isNew ? this.controller.labelOutside : this.computedSize === 'm';
     }
 
-    onActiveZone(active: boolean) {
+    onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    onTextInputFocused(focused: boolean, right: boolean) {
+    onTextInputFocused(focused: boolean, right: boolean): void {
         if (focused) {
             return;
         }
@@ -212,7 +212,7 @@ export class TuiInputRangeComponent
     changeByStep(
         event: Event | KeyboardEvent,
         [leftCoefficient, rightCoefficient]: [number, number],
-    ) {
+    ): void {
         if (this.readOnly) {
             return;
         }
@@ -235,20 +235,20 @@ export class TuiInputRangeComponent
         }
     }
 
-    onInputLeft(value: number | null) {
+    onInputLeft(value: number | null): void {
         this.safelyUpdateValue([value ?? this.safeCurrentValue[0], this.value[1]]);
     }
 
-    onInputRight(value: number | null) {
+    onInputRight(value: number | null): void {
         this.safelyUpdateValue([this.value[0], value ?? this.safeCurrentValue[1]]);
     }
 
-    onRangeValue([left, right]: [number, number]) {
+    onRangeValue([left, right]: [number, number]): void {
         this.rangeRef?.nativeFocusableElement?.focus();
         this.safelyUpdateValue([left, right]);
     }
 
-    focusToTextInput() {
+    focusToTextInput(): void {
         const element =
             this.lastActiveSide === 'left'
                 ? this.leftFocusableElement
@@ -259,7 +259,7 @@ export class TuiInputRangeComponent
         }
     }
 
-    onActiveThumbChange(activeThumb: 'right' | 'left') {
+    onActiveThumbChange(activeThumb: 'right' | 'left'): void {
         this.lastActiveSide = activeThumb;
     }
 
@@ -267,7 +267,7 @@ export class TuiInputRangeComponent
         return [0, 0];
     }
 
-    private safelyUpdateValue(value: [number, number]) {
+    private safelyUpdateValue(value: [number, number]): void {
         this.updateValue(this.valueGuard(value));
     }
 
@@ -290,7 +290,7 @@ export class TuiInputRangeComponent
         return clamp(roundedValue, this.min, this.max);
     }
 
-    private updateTextInputValue(value: number, right: boolean) {
+    private updateTextInputValue(value: number, right: boolean): void {
         const [leftInputRef, rightInputRef] = this.inputNumberRefs;
         const textInputRef = right ? rightInputRef : leftInputRef;
 
@@ -300,7 +300,9 @@ export class TuiInputRangeComponent
     }
 }
 
-export function tuiTextfieldAppearanceDirectiveFactory({nativeElement}: ElementRef) {
+export function tuiTextfieldAppearanceDirectiveFactory({
+    nativeElement,
+}: ElementRef): string {
     return nativeElement.getAttribute('tuiTextfieldAppearance');
 }
 

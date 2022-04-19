@@ -63,17 +63,17 @@ export class TuiColorPickerComponent {
         );
     }
 
-    onPointChange(point: TuiPoint) {
+    onPointChange(point: TuiPoint): void {
         this.point = point;
         this.updateColor();
     }
 
-    onHueChange(hue: number) {
+    onHueChange(hue: number): void {
         this.hue = hue;
         this.updateColor();
     }
 
-    onOpacityChange(opacity: number) {
+    onOpacityChange(opacity: number): void {
         this.opacity = round(opacity, 2);
         this.updateColor();
     }
@@ -83,7 +83,7 @@ export class TuiColorPickerComponent {
         return hsvToRgb(hue * 360, point[0], (1 - point[1]) * 255);
     }
 
-    private updateColor() {
+    private updateColor(): void {
         // TODO: Revisit with updated TS, spread might work
         this.colorChange.emit([
             this.currentColor[0],

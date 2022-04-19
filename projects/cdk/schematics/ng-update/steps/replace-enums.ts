@@ -3,7 +3,7 @@ import {getNamedImportReferences} from '../../utils/get-named-import-references'
 import {ENUMS_TO_REPLACE} from '../constants/enums';
 import {removeImport} from '../../utils/remove-import';
 
-export function replaceEnums() {
+export function replaceEnums(): void {
     ENUMS_TO_REPLACE.forEach(({name, replaceValues, keepAsType}) => {
         replaceEnumWithString(name, replaceValues, keepAsType);
     });

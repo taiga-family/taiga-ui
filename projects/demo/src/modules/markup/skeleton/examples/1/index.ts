@@ -19,11 +19,11 @@ export class TuiSkeletonExample1 {
     lightMode = false;
     placeholder = 'Some paragraph with information';
 
-    showSkeleton() {
+    showSkeleton(): void {
         this.skeletonVisible = !this.skeletonVisible;
     }
 
-    toggleLight() {
+    toggleLight(): void {
         this.lightMode = !this.lightMode;
     }
 }

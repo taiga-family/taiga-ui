@@ -63,26 +63,26 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     rejectedFiles: TuiFileLike[] = [];
     maxFileSize = this.maxFileSizeVariants[2];
 
-    removeFile(file: TuiFileLike) {
+    removeFile(file: TuiFileLike): void {
         this.control.setValue(
             this.control.value.filter((current: File) => current.name !== file.name),
         );
     }
 
-    removeRejected(file: TuiFileLike) {
+    removeRejected(file: TuiFileLike): void {
         this.rejectedFiles = this.rejectedFiles.filter(
             rejectedFile => rejectedFile.name !== file.name,
         );
     }
 
-    updateRejected(file: TuiFileLike | readonly TuiFileLike[]) {
+    updateRejected(file: TuiFileLike | readonly TuiFileLike[]): void {
         this.rejectedFiles = [
             ...this.rejectedFiles,
             ...(Array.isArray(file) ? file : [file]),
         ];
     }
 
-    multipleChange(multiple: boolean) {
+    multipleChange(multiple: boolean): void {
         this.rejectedFiles = [];
         this.control.setValue(null);
         this.multiple = multiple;

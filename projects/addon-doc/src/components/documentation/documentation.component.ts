@@ -54,7 +54,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         readonly texts: [string, string, string, string, string],
     ) {}
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         itemsQueryListObservable(this.propertiesConnectors)
             .pipe(
                 switchMap(items => merge(...items.map(({changed$}) => changed$))),
@@ -117,7 +117,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     onColorChange(
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
         color: string,
-    ) {
+    ): void {
         const opacity = this.getOpacity(connector.documentationPropertyValue || '');
 
         if (opacity === 100) {
@@ -135,7 +135,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     onOpacityChange(
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
         opacity: number,
-    ) {
+    ): void {
         const hex = this.getColor(connector.documentationPropertyValue || '');
         const rgb = hexToRgb(hex);
         const result = `rgba(${rgb}, ${opacity / 100})`;

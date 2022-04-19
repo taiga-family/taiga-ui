@@ -32,7 +32,7 @@ export class TuiLazyLoadingService extends Observable<string> {
         );
     }
 
-    next(src: string) {
+    next(src: string): void {
         this.src$.next(src);
     }
 }

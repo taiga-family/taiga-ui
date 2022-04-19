@@ -21,7 +21,7 @@ export function testFiller(
     context: TestParams,
     setValue: any = 'value',
     clearValue: any = null,
-) {
+): void {
     let pageObject: PageObject<any>;
     let fixture: ComponentFixture<any>;
     let testComponent: TestComponent;

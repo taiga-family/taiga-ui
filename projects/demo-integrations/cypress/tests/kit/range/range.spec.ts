@@ -1,6 +1,6 @@
 import {RANGE_PAGE_URL} from '../../../support/shared.entities';
 
-const initializeBaseAliases = (exampleId: string) => {
+const initializeBaseAliases = (exampleId: string): void => {
     cy.get(`${exampleId} tui-range`).should('be.visible').as('range');
     cy.get(`${exampleId} tui-range input[type=range]:first-child`)
         .should('be.visible')
@@ -73,7 +73,7 @@ describe('Range', () => {
                 const checkValuesAfterPressing = (
                     key: string,
                     [leftSliderValue, rightSliderValue]: [number, number],
-                ) => {
+                ): void => {
                     cy.get('body').type(`{${key}}`);
                     cy.get('@leftSlider').should('have.value', leftSliderValue);
                     cy.get('@rightSlider').should('have.value', rightSliderValue);
@@ -174,7 +174,7 @@ describe('Range', () => {
                 const checkValuesAfterPressing = (
                     key: string,
                     [leftSliderValue, rightSliderValue]: [number, number],
-                ) => {
+                ): void => {
                     cy.get('body').type(`{${key}}`);
                     cy.get(`${EXAMPLE_ID} output`)
                         .invoke('text')

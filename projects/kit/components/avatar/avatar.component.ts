@@ -71,7 +71,7 @@ export class TuiAvatarComponent {
             : words[0].substr(0, 1);
     }
 
-    onError() {
+    onError(): void {
         this.isUrlValid = false;
     }
 }

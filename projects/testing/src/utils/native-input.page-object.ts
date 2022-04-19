@@ -30,7 +30,7 @@ export class NativeInputPO {
         return document.activeElement === this.nativeElement;
     }
 
-    sendText(value: string) {
+    sendText(value: string): void {
         const nativeElement = this.nativeElement;
 
         nativeElement.value = value;
@@ -40,28 +40,28 @@ export class NativeInputPO {
     }
 
     // @bad TODO: Fix this with actually moving focus rather than just blurring
-    sendTextAndBlur(value: string) {
+    sendTextAndBlur(value: string): void {
         this.focus();
         this.sendText(value);
         this.blur();
     }
 
-    sendKeydown(key: string) {
+    sendKeydown(key: string): void {
         this.nativeElement.dispatchEvent(createKeyboardEvent(key, 'keydown'));
         this.fixture.detectChanges();
     }
 
-    focus() {
+    focus(): void {
         this.nativeElement.focus();
         this.fixture.detectChanges();
     }
 
-    blur() {
+    blur(): void {
         this.nativeElement.blur();
         this.fixture.detectChanges();
     }
 
-    click() {
+    click(): void {
         this.nativeElement.click();
         this.fixture.detectChanges();
     }

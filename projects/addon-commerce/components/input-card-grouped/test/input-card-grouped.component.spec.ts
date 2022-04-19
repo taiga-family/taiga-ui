@@ -245,7 +245,7 @@ describe('InputCardGrouped', () => {
         });
     });
 
-    function testFormat(done: DoneFn, value: string, formatted: string) {
+    function testFormat(done: DoneFn, value: string, formatted: string): void {
         setCard(value);
         fixture.detectChanges();
 
@@ -271,7 +271,7 @@ describe('InputCardGrouped', () => {
         );
     }
 
-    function setCard(card: string) {
+    function setCard(card: string): void {
         testComponent.control.setValue({card});
     }
 

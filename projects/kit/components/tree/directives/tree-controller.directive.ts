@@ -35,11 +35,11 @@ export class TuiTreeControllerDirective<T>
 
     readonly items = new Map<TuiTreeItemComponent, T>();
 
-    register(item: TuiTreeItemComponent, value: T) {
+    register(item: TuiTreeItemComponent, value: T): void {
         this.items.set(item, value);
     }
 
-    unregister(item: TuiTreeItemComponent) {
+    unregister(item: TuiTreeItemComponent): void {
         this.items.delete(item);
     }
 
@@ -49,7 +49,7 @@ export class TuiTreeControllerDirective<T>
         return (value && this.map.get(value)) ?? this.fallback;
     }
 
-    toggle(item: TuiTreeItemComponent) {
+    toggle(item: TuiTreeItemComponent): void {
         const value = this.items.get(item);
         const expanded = this.isExpanded(item);
 

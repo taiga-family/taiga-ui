@@ -38,5 +38,5 @@ export class TuiBreadcrumbsWrapperComponent implements TuiModeDirective {
     readonly change$ = new Subject<void>();
     readonly mode = 'onLight';
 
-    ngOnChanges() {}
+    ngOnChanges(): void {}
 }

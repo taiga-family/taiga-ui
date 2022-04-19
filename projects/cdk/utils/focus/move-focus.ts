@@ -12,7 +12,7 @@ export function moveFocus(
     currentIndex: number,
     elements: readonly HTMLElement[],
     step: number,
-) {
+): void {
     currentIndex += step;
 
     while (currentIndex >= 0 && currentIndex < elements.length) {

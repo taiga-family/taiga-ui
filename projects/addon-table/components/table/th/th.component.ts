@@ -72,7 +72,7 @@ export class TuiThComponent<T> {
         return this.isCurrent ? 'tuiIconSortDown' : 'tuiIconSortOff';
     }
 
-    onResized(width: number) {
+    onResized(width: number): void {
         this.width = width;
     }
 }

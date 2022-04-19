@@ -17,7 +17,7 @@ export class TuiTabsExample3 {
         private readonly notifications: TuiNotificationsService,
     ) {}
 
-    onClick(item: string) {
+    onClick(item: string): void {
         this.notifications.show(item).subscribe();
     }
 }

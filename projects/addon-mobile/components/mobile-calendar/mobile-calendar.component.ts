@@ -135,16 +135,16 @@ export class TuiMobileCalendarComponent {
         return this.documentRef.documentElement.clientWidth / YEARS_IN_ROW;
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         // Virtual scroll has not yet rendered items even in ngAfterViewInit
         this.waitScrolledChange();
     }
 
-    onClose() {
+    onClose(): void {
         this.cancel.emit();
     }
 
-    onConfirm() {
+    onConfirm(): void {
         if (this.value) {
             this.confirm.emit(this.value);
         } else {
@@ -152,7 +152,7 @@ export class TuiMobileCalendarComponent {
         }
     }
 
-    onDayClick(day: TuiDay) {
+    onDayClick(day: TuiDay): void {
         if (this.single) {
             this.value = day;
 
@@ -184,7 +184,7 @@ export class TuiMobileCalendarComponent {
         return null;
     }
 
-    onMonthChange(month: number) {
+    onMonthChange(month: number): void {
         // Skipping initial callback where index === 0
         if (!month || this.activeMonth === month) {
             return;
@@ -202,7 +202,7 @@ export class TuiMobileCalendarComponent {
         this.scrollToActiveYear();
     }
 
-    setYear(year: number) {
+    setYear(year: number): void {
         if (this.activeYear === year) {
             return;
         }
@@ -252,11 +252,11 @@ export class TuiMobileCalendarComponent {
         );
     }
 
-    private getYearsViewportSize() {
+    private getYearsViewportSize(): number {
         return this.yearsScrollRef?.getViewportSize() || 0;
     }
 
-    private updateViewportDimension() {
+    private updateViewportDimension(): void {
         this.yearsScrollRef?.checkViewportSize();
         this.monthsScrollRef?.checkViewportSize();
     }
@@ -265,7 +265,7 @@ export class TuiMobileCalendarComponent {
         return this.getYearsViewportSize() > 0 ? identity : delay(200);
     }
 
-    private waitScrolledChange() {
+    private waitScrolledChange(): void {
         this.updateViewportDimension();
 
         this.monthsScrollRef?.scrolledIndexChange
@@ -279,7 +279,7 @@ export class TuiMobileCalendarComponent {
             });
     }
 
-    private initYearScroll() {
+    private initYearScroll(): void {
         const {yearsScrollRef} = this;
 
         if (!yearsScrollRef) {
@@ -343,7 +343,7 @@ export class TuiMobileCalendarComponent {
             });
     }
 
-    private initMonthScroll() {
+    private initMonthScroll(): void {
         const {monthsScrollRef} = this;
 
         if (!monthsScrollRef) {
@@ -381,14 +381,14 @@ export class TuiMobileCalendarComponent {
             });
     }
 
-    private scrollToActiveYear(behavior?: ScrollBehavior) {
+    private scrollToActiveYear(behavior?: ScrollBehavior): void {
         this.yearsScrollRef?.scrollToIndex(
             Math.max(this.activeYear - STARTING_YEAR - 2, 0),
             behavior,
         );
     }
 
-    private scrollToActiveMonth(behavior?: ScrollBehavior) {
+    private scrollToActiveMonth(behavior?: ScrollBehavior): void {
         this.monthsScrollRef?.scrollToIndex(this.activeMonth, behavior);
     }
 

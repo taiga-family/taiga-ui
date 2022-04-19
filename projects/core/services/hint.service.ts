@@ -25,26 +25,26 @@ export class TuiHintService extends BehaviorSubject<readonly AbstractTuiHint[]> 
         super([]);
     }
 
-    add(directive: AbstractTuiHint) {
+    add(directive: AbstractTuiHint): void {
         this.next(this.value.concat(directive));
     }
 
-    remove(directive: AbstractTuiHint) {
+    remove(directive: AbstractTuiHint): void {
         if (this.value.includes(directive)) {
             this.next(this.value.filter(hint => hint !== directive));
         }
     }
 
-    register(directive: TuiHintDirective) {
+    register(directive: TuiHintDirective): void {
         this.directives = [...this.directives, directive];
     }
 
-    unregister(directive: TuiHintDirective) {
+    unregister(directive: TuiHintDirective): void {
         this.remove(directive);
         this.directives = this.directives.filter(dir => dir !== directive);
     }
 
-    showHintForId(id: string) {
+    showHintForId(id: string): void {
         const directive = this.findDirectiveWithHintId(id);
 
         if (directive) {
@@ -52,7 +52,7 @@ export class TuiHintService extends BehaviorSubject<readonly AbstractTuiHint[]> 
         }
     }
 
-    hideHintForId(id: string) {
+    hideHintForId(id: string): void {
         const directive = this.findDirectiveWithHintId(id);
 
         if (directive) {

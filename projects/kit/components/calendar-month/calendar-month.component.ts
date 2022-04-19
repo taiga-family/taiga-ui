@@ -185,7 +185,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return range.from.monthSameOrBefore(month) && range.to.monthAfter(month);
     }
 
-    onPickerYearClick(year: TuiYear) {
+    onPickerYearClick(year: TuiYear): void {
         this.isYearPickerShown = false;
 
         if (this.year.yearSame(year)) {
@@ -196,7 +196,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         this.yearChange.emit(year);
     }
 
-    onItemClick(month: TuiMonth) {
+    onItemClick(month: TuiMonth): void {
         if (this.disabledItemHandlerWithMinMax(month)) {
             return;
         }
@@ -204,23 +204,23 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         this.monthClick.emit(month);
     }
 
-    onYearClick() {
+    onYearClick(): void {
         this.isYearPickerShown = true;
     }
 
-    onNextYear() {
+    onNextYear(): void {
         this.year = this.year.append({year: 1});
     }
 
-    onPreviousYear() {
+    onPreviousYear(): void {
         this.year = this.year.append({year: -1});
     }
 
-    onItemHovered(hovered: boolean, item: TuiMonth) {
+    onItemHovered(hovered: boolean, item: TuiMonth): void {
         this.updateHoveredItem(hovered ? item : null);
     }
 
-    onItemPressed(pressed: boolean, item: TuiMonth) {
+    onItemPressed(pressed: boolean, item: TuiMonth): void {
         this.updatePressedItem(pressed ? item : null);
     }
 
@@ -246,7 +246,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         );
     }
 
-    private updateHoveredItem(month: TuiMonth | null) {
+    private updateHoveredItem(month: TuiMonth | null): void {
         if (nullableSame(this.hoveredItem, month, (a, b) => a.monthSame(b))) {
             return;
         }
@@ -255,7 +255,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         this.hoveredItemChange.emit(month);
     }
 
-    private updatePressedItem(item: TuiMonth | null) {
+    private updatePressedItem(item: TuiMonth | null): void {
         this.pressedItem = item;
     }
 }

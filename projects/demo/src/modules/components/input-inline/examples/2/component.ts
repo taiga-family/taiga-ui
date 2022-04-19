@@ -19,18 +19,18 @@ export class TuiInputInlineExample2 {
         private readonly notifications: TuiNotificationsService,
     ) {}
 
-    toggle() {
+    toggle(): void {
         this.editing = !this.editing;
     }
 
-    onFocusedChange(focused: boolean) {
+    onFocusedChange(focused: boolean): void {
         if (!focused) {
             this.editing = false;
             this.saveHeading(this.heading);
         }
     }
 
-    private saveHeading(newHeading: string) {
+    private saveHeading(newHeading: string): void {
         this.notifications.show(newHeading, {label: 'New heading'}).subscribe();
     }
 }

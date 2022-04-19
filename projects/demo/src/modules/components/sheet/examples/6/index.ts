@@ -26,14 +26,14 @@ export class TuiSheetExample6 {
         'https://m.media-amazon.com/images/M/MV5BMTU3NDY1MTk3M15BMl5BanBnXkFtZTgwMjc3NjIwMjE@._V1_FMjpg_UX1024_.jpg',
     ];
 
-    toggle() {
+    toggle(): void {
         this.open = !this.open;
     }
 
     onIntersection(
         [{isIntersecting}]: IntersectionObserverEntry[],
         {classList}: HTMLElement,
-    ) {
+    ): void {
         classList.toggle('_visible', isIntersecting);
     }
 }

@@ -125,23 +125,23 @@ export class TuiInputPasswordComponent
         return this.isPasswordHidden || !this.interactive ? 'password' : 'text';
     }
 
-    onValueChange(textValue: string) {
+    onValueChange(textValue: string): void {
         this.updateValue(textValue);
     }
 
-    onFocused(focused: boolean) {
+    onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onHovered(hovered: boolean) {
+    onHovered(hovered: boolean): void {
         this.updateHovered(hovered);
     }
 
-    onPressed(pressed: boolean) {
+    onPressed(pressed: boolean): void {
         this.updatePressed(pressed);
     }
 
-    togglePasswordVisibility() {
+    togglePasswordVisibility(): void {
         this.isPasswordHidden = !this.isPasswordHidden;
     }
 
