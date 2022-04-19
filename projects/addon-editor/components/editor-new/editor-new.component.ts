@@ -28,6 +28,7 @@ import {
     tuiDefaultProp,
 } from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
+import {Mark} from 'prosemirror-model';
 import {Observable} from 'rxjs';
 
 import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
@@ -105,6 +106,12 @@ export class TuiEditorNewComponent
         this.updateHovered(hovered);
     }
 
+    selectLinkIfClosest() {
+        if (this.getMarkedLinkBeforeSelectClosest()) {
+            this.editor?.selectClosest();
+        }
+    }
+
     onActiveZone(active: boolean) {
         this.updateFocused(active);
     }
@@ -134,5 +141,12 @@ export class TuiEditorNewComponent
 
     private get hasValue(): boolean {
         return !!this.value;
+    }
+
+    private getMarkedLinkBeforeSelectClosest(): Mark | null {
+        const [link] = this.editor?.state.tr.selection.$anchor.marks() || [];
+        const isLink = link?.type.name === 'link';
+
+        return isLink ? link : null;
     }
 }
