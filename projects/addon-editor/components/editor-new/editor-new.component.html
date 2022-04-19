@@ -39,13 +39,13 @@
 
         <tui-scrollbar class="t-scrollbar">
             <div
+                *ngIf="editorLoaded"
                 tuiDropdownLimitWidth="auto"
                 tuiDropdownSelectionPosition="tag"
                 [tuiDropdownSelection]="dropdownSelectionHandler"
                 [tuiDropdownContent]="dropdown"
             >
                 <div
-                    *ngIf="editorLoaded"
                     tuiTiptapEditor
                     spellcheck="false"
                     class="tui-editor-socket"
@@ -53,15 +53,15 @@
                     [editable]="interactive"
                     (valueChange)="onModelChange($event)"
                     (stateChange)="(0)"
+                    (click)="selectLinkIfClosest()"
                 ></div>
+                <ng-template #dropdown>
+                    <tui-edit-link
+                        (addLink)="addLink($event)"
+                        (removeLink)="removeLink()"
+                    ></tui-edit-link>
+                </ng-template>
             </div>
         </tui-scrollbar>
-
-        <ng-template #dropdown>
-            <tui-edit-link
-                (addLink)="addLink($event)"
-                (removeLink)="removeLink()"
-            ></tui-edit-link>
-        </ng-template>
     </div>
 </tui-wrapper>
