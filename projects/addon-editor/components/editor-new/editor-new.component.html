@@ -47,6 +47,7 @@
                 <div
                     *ngIf="editorLoaded"
                     tuiTiptapEditor
+                    spellcheck="false"
                     class="tui-editor-socket"
                     [value]="value"
                     [editable]="interactive"
@@ -58,7 +59,6 @@
 
         <ng-template #dropdown>
             <tui-edit-link
-                #editLinkDropdown
                 (addLink)="addLink($event)"
                 (removeLink)="removeLink()"
             ></tui-edit-link>

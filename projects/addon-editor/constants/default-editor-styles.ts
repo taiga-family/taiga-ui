@@ -86,6 +86,10 @@ p:empty:before {
 }
 
 .tui-editor-socket a:hover {
+    text-decoration: underline;
+}
+
+.tui-editor-socket a:hover {
     color: #369;
 }
 
