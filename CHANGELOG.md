@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.42.0](https://github.com/tinkoff/taiga-ui/compare/v2.41.1...v2.42.0) (2022-04-19)
+
+### Bug Fixes
+
+- **cdk:** `Zoom` invalid css-property name `touch-action` ([#1639](https://github.com/tinkoff/taiga-ui/issues/1639))
+  ([e028867](https://github.com/tinkoff/taiga-ui/commit/e0288678bed5f0da3c23ac23bc7cefafc75a26cd))
+  ([4109aca](https://github.com/tinkoff/taiga-ui/commit/4109aca9875328dad8850543fa4a789be0c8e655))
+- **demo:** copy styles for compile `Less` files in stackblitz
+  ([6dfa459](https://github.com/tinkoff/taiga-ui/commit/6dfa459ea95547c0ad09ff623086d8682596c9dd))
+- **kit:** `Combobox` fix arrow in readonly state ([#1624](https://github.com/tinkoff/taiga-ui/issues/1624))
+  ([1507a2a](https://github.com/tinkoff/taiga-ui/commit/1507a2a1733d36028eaec35b4104cde0db47e803))
+- **kit:** `Pagination` & `Preview` show `undefined` for `title`
+  ([#1642](https://github.com/tinkoff/taiga-ui/issues/1642))
+  ([7158630](https://github.com/tinkoff/taiga-ui/commit/71586309a42c70f2674e55c02a94872b2abcf036))
+
 ### [2.41.1](https://github.com/tinkoff/taiga-ui/compare/v2.41.0.0...v2.41.1) (2022-04-12)
 
 ### Bug Fixes
