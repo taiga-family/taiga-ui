@@ -82,6 +82,7 @@ body.tui-editor-socket {
 
 .tui-editor-socket a:hover {
     color: #369;
+    text-decoration: underline;
 }
 
 .tui-editor-socket a:active {
