@@ -11,7 +11,7 @@ import {
     tuiReplayedValueChangesFrom,
 } from '@taiga-ui/cdk';
 import {TUI_ARROW} from '@taiga-ui/kit';
-import {BehaviorSubject, combineLatest, Observable, Subject, timer} from 'rxjs';
+import {BehaviorSubject, combineLatest, Observable, timer} from 'rxjs';
 import {
     debounceTime,
     filter,
@@ -76,26 +76,19 @@ const KEYS: Record<string, Key> = {
     encapsulation,
 })
 export class TuiTableExample4 {
-    private readonly size$ = new Subject<number>();
-    private readonly page$ = new Subject<number>();
-
-    readonly sorters: Record<Key, TuiComparator<User>> = {
-        name: () => 0,
-        dob: () => 0,
-        age: () => 0,
-    };
+    private readonly size$ = new BehaviorSubject(10);
+    private readonly page$ = new BehaviorSubject(0);
 
     readonly direction$ = new BehaviorSubject<-1 | 1>(1);
-
-    readonly sorter$ = new BehaviorSubject<TuiComparator<User>>(this.sorters.name);
+    readonly sorter$ = new BehaviorSubject<Key>('name');
 
     readonly minAge = new FormControl(21);
 
     readonly request$ = combineLatest([
-        this.sorter$.pipe(map(sorter => getKey(sorter, this.sorters))),
+        this.sorter$,
         this.direction$,
-        this.page$.pipe(startWith(0)),
-        this.size$.pipe(startWith(10)),
+        this.page$,
+        this.size$,
         tuiReplayedValueChangesFrom<number>(this.minAge),
     ]).pipe(
         // zero time debounce for a case when both key and direction change
@@ -174,17 +167,6 @@ export class TuiTableExample4 {
         // Imitating server response
         return timer(3000).pipe(mapTo(result));
     }
-}
-
-function getKey(
-    sorter: TuiComparator<User>,
-    dictionary: Record<Key, TuiComparator<User>>,
-): Key {
-    const pair = Object.entries(dictionary).find<[Key, TuiComparator<User>]>(
-        (item): item is [Key, TuiComparator<User>] => item[1] === sorter,
-    );
-
-    return pair ? pair[0] : 'name';
 }
 
 function sortBy(key: 'name' | 'dob' | 'age', direction: -1 | 1): TuiComparator<User> {

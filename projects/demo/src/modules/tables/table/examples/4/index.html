@@ -42,9 +42,9 @@
         tuiTable
         class="table"
         [columns]="columns"
-        [sorter]="sorter$ | async"
         [direction]="direction$ | async"
-        (sorterChange)="sorter$.next($event)"
+        [tuiSortBy]="sorter$ | async"
+        (tuiSortByChange)="sorter$.next($event)"
         (directionChange)="direction$.next($event)"
     >
         <thead>
@@ -52,21 +52,21 @@
                 <th
                     *tuiHead="'name'"
                     tuiTh
-                    [sorter]="sorters.name"
+                    tuiSortable
                 >
                     Name
                 </th>
                 <th
                     *tuiHead="'dob'"
                     tuiTh
-                    [sorter]="sorters.dob"
+                    tuiSortable
                 >
                     Date of Birth
                 </th>
                 <th
                     *tuiHead="'age'"
                     tuiTh
-                    [sorter]="sorters.age"
+                    tuiSortable
                 >
                     Age
                 </th>

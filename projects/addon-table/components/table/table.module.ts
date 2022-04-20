@@ -8,6 +8,8 @@ import {TuiCellDirective} from './directives/cell.directive';
 import {TuiHeadDirective} from './directives/head.directive';
 import {TuiResizedDirective} from './directives/resized.directive';
 import {TuiRowDirective} from './directives/row.directive';
+import {TuiSortByDirective} from './directives/sort-by.directive';
+import {TuiSortableDirective} from './directives/sortable.directive';
 import {TuiTableDirective} from './directives/table.directive';
 import {TuiTheadDirective} from './directives/thead.directive';
 import {TuiTableSortPipe} from './pipes/table-sort.pipe';
@@ -29,6 +31,8 @@ import {TuiTrComponent} from './tr/tr.component';
         TuiCellDirective,
         TuiHeadDirective,
         TuiRowDirective,
+        TuiSortByDirective,
+        TuiSortableDirective,
         TuiTheadDirective,
         TuiResizedDirective,
         TuiTableSortPipe,
@@ -43,6 +47,8 @@ import {TuiTrComponent} from './tr/tr.component';
         TuiCellDirective,
         TuiHeadDirective,
         TuiRowDirective,
+        TuiSortByDirective,
+        TuiSortableDirective,
         TuiTheadDirective,
         TuiTableSortPipe,
     ],
