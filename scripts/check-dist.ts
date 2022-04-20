@@ -6,9 +6,8 @@ import {checkIncorrectImports} from './shared/check-incorrect-imports';
 import {checkPrivateExports} from './shared/check-private-exports';
 import {checkRequireWithSrc} from './shared/check-require-with-src';
 
-const DIST_PATH = '../dist/';
-const folder = process.argv.length > 2 ? process.argv[2] : '';
-const pathToSearch = path.join(__dirname, DIST_PATH, folder);
+const workingDir = process.argv.length > 2 ? process.argv[2] : './dist';
+const pathToSearch = path.resolve(workingDir);
 
 (async function main(): Promise<void> {
     try {

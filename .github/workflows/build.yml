@@ -3,6 +3,7 @@ name: Build
 on:
   pull_request:
     paths:
+      - 'scripts/**'
       - 'projects/**'
       - '!projects/*testing/**'
       - '!projects/demo/**'
