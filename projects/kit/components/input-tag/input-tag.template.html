@@ -50,7 +50,7 @@
                     >
                         <ng-container *ngIf="labelOutside; else text">
                             <tui-tag
-                                *ngFor="let item of value; index as index"
+                                *ngFor="let item of value; index as index; trackBy: trackByFn"
                                 #tag
                                 automation-id="tui-input-tag__tag"
                                 class="t-tag"

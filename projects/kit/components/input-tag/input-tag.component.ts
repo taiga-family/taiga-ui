@@ -441,6 +441,11 @@ export class TuiInputTagComponent
         this.open = false;
     }
 
+    trackByFn(_: number, tag: string): string {
+        // Actually tag has TuiStringifiableItem type not string
+        return tag.toString();
+    }
+
     protected updateValue(value: string[]) {
         const seen = new Set();
 
