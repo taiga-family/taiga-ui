@@ -30,7 +30,7 @@ module.exports = {
         '@typescript-eslint/no-useless-constructor': 'off',
         'no-prototype-builtins': 'off',
         '@typescript-eslint/await-thenable': 'error',
-        'require-await': 'error',
+        'require-await': 'off',
         '@typescript-eslint/require-await': 'error',
         '@typescript-eslint/no-unnecessary-type-constraint': 'error',
         '@typescript-eslint/prefer-includes': 'error',
@@ -48,5 +48,15 @@ module.exports = {
         'rxjs/no-unsafe-first': 'error',
         'rxjs/no-unsafe-switchmap': 'error',
         'rxjs/throw-error': 'error',
+        '@typescript-eslint/promise-function-async': [
+            'error',
+            {
+                allowedPromiseNames: ['Thenable'],
+                checkArrowFunctions: true,
+                checkFunctionDeclarations: true,
+                checkFunctionExpressions: true,
+                checkMethodDeclarations: true,
+            },
+        ],
     },
 };

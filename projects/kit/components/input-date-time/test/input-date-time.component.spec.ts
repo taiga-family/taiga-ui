@@ -97,7 +97,7 @@ describe('InputDateTime', () => {
     it('does not clear not finished time string on the first blur', done => {
         fixture
             .whenStable()
-            .then(() => {
+            .then(async () => {
                 inputPO.sendText('12.07.2021 1');
                 inputPO.blur();
 
@@ -115,7 +115,7 @@ describe('InputDateTime', () => {
 
         fixture
             .whenStable()
-            .then(() => {
+            .then(async () => {
                 inputPO.sendText('12.07.20211');
                 inputPO.blur();
 
@@ -132,7 +132,7 @@ describe('InputDateTime', () => {
 
         fixture
             .whenStable()
-            .then(() => {
+            .then(async () => {
                 inputPO.sendText('14.07.202');
 
                 return fixture.whenStable();
@@ -148,13 +148,13 @@ describe('InputDateTime', () => {
 
         fixture
             .whenStable()
-            .then(() => {
+            .then(async () => {
                 inputPO.sendText(`05.07.2021${TIME_STRING}`);
                 mouseDownOnTextfield();
 
                 return fixture.whenStable();
             })
-            .then(() => {
+            .then(async () => {
                 expect(inputPO.value).toBe(`05.07.2021, ${TIME_STRING}`);
                 expect(getCalendar()).not.toBeFalsy();
                 clickOnCellInsideCalendar(27);
@@ -213,7 +213,7 @@ describe('InputDateTime', () => {
 
         fixture
             .whenStable()
-            .then(() => {
+            .then(async () => {
                 inputPO.sendText('14.08.2021 10:00');
 
                 return fixture.whenStable();
@@ -247,7 +247,7 @@ describe('InputDateTime', () => {
 
         fixture
             .whenStable()
-            .then(() => {
+            .then(async () => {
                 inputPO.sendText('12.08.2021, 14:00');
 
                 return fixture.whenStable();
@@ -264,13 +264,13 @@ describe('InputDateTime', () => {
 
         fixture
             .whenStable()
-            .then(() => {
+            .then(async () => {
                 inputPO.sendText(`14.07.2021${TIME_RAW}`);
                 mouseDownOnTextfield();
 
                 return fixture.whenStable();
             })
-            .then(() => {
+            .then(async () => {
                 expect(inputPO.value).toBe(`14.07.2021, ${TIME}`);
                 expect(getCalendar()).not.toBeFalsy();
                 clickOnCellInsideCalendar(10);
@@ -299,7 +299,7 @@ describe('InputDateTime', () => {
 
         fixture
             .whenStable()
-            .then(() => {
+            .then(async () => {
                 inputPO.sendText(
                     `${dayBeforeMaxString}${timeAfterMaxString.replace(':', '')}`,
                 );
@@ -307,7 +307,7 @@ describe('InputDateTime', () => {
 
                 return fixture.whenStable();
             })
-            .then(() => {
+            .then(async () => {
                 clickOnCellInsideCalendar(MAX_DAY.day);
 
                 return fixture.whenStable();
