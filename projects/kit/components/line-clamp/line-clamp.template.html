@@ -1,11 +1,9 @@
 <div
     polymorpheus-outlet
-    lineClamp
     tuiHintId="unnecessary"
     tuiHintMode="overflow"
     class="wrapper"
     [tuiHint]="computedContent"
-    [class.wrapper_ellipsis]="oneLine"
     [style.-webkit-line-clamp]="lineClamp$ | async"
     [content]="content"
     (tuiResize)="updateView()"
